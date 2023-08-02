@@ -13,6 +13,8 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterNodePoolNetworkConfigResult
     {
+        public readonly ImmutableArray<Outputs.GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigResult> AdditionalNodeNetworkConfigs;
+        public readonly ImmutableArray<Outputs.GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigResult> AdditionalPodNetworkConfigs;
         public readonly bool CreatePodRange;
         public readonly bool EnablePrivateNodes;
         public readonly ImmutableArray<Outputs.GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigResult> PodCidrOverprovisionConfigs;
@@ -21,6 +23,10 @@ namespace Pulumi.Gcp.Container.Outputs
 
         [OutputConstructor]
         private GetClusterNodePoolNetworkConfigResult(
+            ImmutableArray<Outputs.GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigResult> additionalNodeNetworkConfigs,
+
+            ImmutableArray<Outputs.GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigResult> additionalPodNetworkConfigs,
+
             bool createPodRange,
 
             bool enablePrivateNodes,
@@ -31,6 +37,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string podRange)
         {
+            AdditionalNodeNetworkConfigs = additionalNodeNetworkConfigs;
+            AdditionalPodNetworkConfigs = additionalPodNetworkConfigs;
             CreatePodRange = createPodRange;
             EnablePrivateNodes = enablePrivateNodes;
             PodCidrOverprovisionConfigs = podCidrOverprovisionConfigs;

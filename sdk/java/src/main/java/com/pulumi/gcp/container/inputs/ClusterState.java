@@ -72,6 +72,25 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Enable NET_ADMIN for the cluster. Defaults to
+     * `false`. This field should only be enabled for Autopilot clusters (`enable_autopilot`
+     * set to `true`).
+     * 
+     */
+    @Import(name="allowNetAdmin")
+    private @Nullable Output<Boolean> allowNetAdmin;
+
+    /**
+     * @return Enable NET_ADMIN for the cluster. Defaults to
+     * `false`. This field should only be enabled for Autopilot clusters (`enable_autopilot`
+     * set to `true`).
+     * 
+     */
+    public Optional<Output<Boolean>> allowNetAdmin() {
+        return Optional.ofNullable(this.allowNetAdmin);
+    }
+
+    /**
      * Configuration for the
      * [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
      * Structure is documented below.
@@ -416,6 +435,21 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> enableLegacyAbac() {
         return Optional.ofNullable(this.enableLegacyAbac);
+    }
+
+    /**
+     * Whether multi-networking is enabled for this cluster.
+     * 
+     */
+    @Import(name="enableMultiNetworking")
+    private @Nullable Output<Boolean> enableMultiNetworking;
+
+    /**
+     * @return Whether multi-networking is enabled for this cluster.
+     * 
+     */
+    public Optional<Output<Boolean>> enableMultiNetworking() {
+        return Optional.ofNullable(this.enableMultiNetworking);
     }
 
     /**
@@ -1377,6 +1411,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
     private ClusterState(ClusterState $) {
         this.addonsConfig = $.addonsConfig;
+        this.allowNetAdmin = $.allowNetAdmin;
         this.authenticatorGroupsConfig = $.authenticatorGroupsConfig;
         this.binaryAuthorization = $.binaryAuthorization;
         this.clusterAutoscaling = $.clusterAutoscaling;
@@ -1396,6 +1431,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.enableKubernetesAlpha = $.enableKubernetesAlpha;
         this.enableL4IlbSubsetting = $.enableL4IlbSubsetting;
         this.enableLegacyAbac = $.enableLegacyAbac;
+        this.enableMultiNetworking = $.enableMultiNetworking;
         this.enableShieldedNodes = $.enableShieldedNodes;
         this.enableTpu = $.enableTpu;
         this.endpoint = $.endpoint;
@@ -1486,6 +1522,31 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder addonsConfig(ClusterAddonsConfigArgs addonsConfig) {
             return addonsConfig(Output.of(addonsConfig));
+        }
+
+        /**
+         * @param allowNetAdmin Enable NET_ADMIN for the cluster. Defaults to
+         * `false`. This field should only be enabled for Autopilot clusters (`enable_autopilot`
+         * set to `true`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowNetAdmin(@Nullable Output<Boolean> allowNetAdmin) {
+            $.allowNetAdmin = allowNetAdmin;
+            return this;
+        }
+
+        /**
+         * @param allowNetAdmin Enable NET_ADMIN for the cluster. Defaults to
+         * `false`. This field should only be enabled for Autopilot clusters (`enable_autopilot`
+         * set to `true`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowNetAdmin(Boolean allowNetAdmin) {
+            return allowNetAdmin(Output.of(allowNetAdmin));
         }
 
         /**
@@ -1947,6 +2008,27 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder enableLegacyAbac(Boolean enableLegacyAbac) {
             return enableLegacyAbac(Output.of(enableLegacyAbac));
+        }
+
+        /**
+         * @param enableMultiNetworking Whether multi-networking is enabled for this cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableMultiNetworking(@Nullable Output<Boolean> enableMultiNetworking) {
+            $.enableMultiNetworking = enableMultiNetworking;
+            return this;
+        }
+
+        /**
+         * @param enableMultiNetworking Whether multi-networking is enabled for this cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableMultiNetworking(Boolean enableMultiNetworking) {
+            return enableMultiNetworking(Output.of(enableMultiNetworking));
         }
 
         /**

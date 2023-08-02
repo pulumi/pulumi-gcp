@@ -14,30 +14,66 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig {
     /**
-     * @return Optional. The version of software inside the cluster. It must be one of the supported (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
+     * @return The version of software inside the cluster. It must be one of the supported [Dataproc Versions](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions), such as &#34;1.2&#34; (including a subminor version, such as &#34;1.2.29&#34;), or the [&#34;preview&#34; version](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
      * 
      */
     private @Nullable String imageVersion;
+    /**
+     * @return The set of components to activate on the cluster.
+     * 
+     */
     private @Nullable List<String> optionalComponents;
     /**
-     * @return Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+     * @return The properties to set on daemon config files.
+     * 
+     * Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings:
+     * 
+     * * capacity-scheduler: `capacity-scheduler.xml`
+     * * core: `core-site.xml`
+     * * distcp: `distcp-default.xml`
+     * * hdfs: `hdfs-site.xml`
+     * * hive: `hive-site.xml`
+     * * mapred: `mapred-site.xml`
+     * * pig: `pig.properties`
+     * * spark: `spark-defaults.conf`
+     * * yarn: `yarn-site.xml`
+     * 
+     * For more information, see [Cluster properties](https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
      * 
      */
     private @Nullable Map<String,String> properties;
 
     private WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig() {}
     /**
-     * @return Optional. The version of software inside the cluster. It must be one of the supported (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
+     * @return The version of software inside the cluster. It must be one of the supported [Dataproc Versions](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions), such as &#34;1.2&#34; (including a subminor version, such as &#34;1.2.29&#34;), or the [&#34;preview&#34; version](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
      * 
      */
     public Optional<String> imageVersion() {
         return Optional.ofNullable(this.imageVersion);
     }
+    /**
+     * @return The set of components to activate on the cluster.
+     * 
+     */
     public List<String> optionalComponents() {
         return this.optionalComponents == null ? List.of() : this.optionalComponents;
     }
     /**
-     * @return Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+     * @return The properties to set on daemon config files.
+     * 
+     * Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings:
+     * 
+     * * capacity-scheduler: `capacity-scheduler.xml`
+     * * core: `core-site.xml`
+     * * distcp: `distcp-default.xml`
+     * * hdfs: `hdfs-site.xml`
+     * * hive: `hive-site.xml`
+     * * mapred: `mapred-site.xml`
+     * * pig: `pig.properties`
+     * * spark: `spark-defaults.conf`
+     * * yarn: `yarn-site.xml`
+     * 
+     * For more information, see [Cluster properties](https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
      * 
      */
     public Map<String,String> properties() {

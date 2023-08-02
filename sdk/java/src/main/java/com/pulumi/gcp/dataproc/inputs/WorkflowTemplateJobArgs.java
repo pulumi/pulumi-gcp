@@ -27,14 +27,14 @@ public final class WorkflowTemplateJobArgs extends com.pulumi.resources.Resource
     public static final WorkflowTemplateJobArgs Empty = new WorkflowTemplateJobArgs();
 
     /**
-     * Optional. Job is a Hadoop job.
+     * Job is a Hadoop job.
      * 
      */
     @Import(name="hadoopJob")
     private @Nullable Output<WorkflowTemplateJobHadoopJobArgs> hadoopJob;
 
     /**
-     * @return Optional. Job is a Hadoop job.
+     * @return Job is a Hadoop job.
      * 
      */
     public Optional<Output<WorkflowTemplateJobHadoopJobArgs>> hadoopJob() {
@@ -42,14 +42,14 @@ public final class WorkflowTemplateJobArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Optional. Job is a Hive job.
+     * Job is a Hive job.
      * 
      */
     @Import(name="hiveJob")
     private @Nullable Output<WorkflowTemplateJobHiveJobArgs> hiveJob;
 
     /**
-     * @return Optional. Job is a Hive job.
+     * @return Job is a Hive job.
      * 
      */
     public Optional<Output<WorkflowTemplateJobHiveJobArgs>> hiveJob() {
@@ -57,14 +57,14 @@ public final class WorkflowTemplateJobArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Optional. The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
+     * The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Optional. The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
+     * @return The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -72,14 +72,14 @@ public final class WorkflowTemplateJobArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Optional. Job is a Pig job.
+     * Job is a Pig job.
      * 
      */
     @Import(name="pigJob")
     private @Nullable Output<WorkflowTemplateJobPigJobArgs> pigJob;
 
     /**
-     * @return Optional. Job is a Pig job.
+     * @return Job is a Pig job.
      * 
      */
     public Optional<Output<WorkflowTemplateJobPigJobArgs>> pigJob() {
@@ -87,14 +87,14 @@ public final class WorkflowTemplateJobArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Optional. The optional list of prerequisite job step_ids. If not specified, the job will start at the beginning of workflow.
+     * The optional list of prerequisite job step_ids. If not specified, the job will start at the beginning of workflow.
      * 
      */
     @Import(name="prerequisiteStepIds")
     private @Nullable Output<List<String>> prerequisiteStepIds;
 
     /**
-     * @return Optional. The optional list of prerequisite job step_ids. If not specified, the job will start at the beginning of workflow.
+     * @return The optional list of prerequisite job step_ids. If not specified, the job will start at the beginning of workflow.
      * 
      */
     public Optional<Output<List<String>>> prerequisiteStepIds() {
@@ -102,14 +102,14 @@ public final class WorkflowTemplateJobArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Optional. Job is a Presto job.
+     * Job is a Presto job.
      * 
      */
     @Import(name="prestoJob")
     private @Nullable Output<WorkflowTemplateJobPrestoJobArgs> prestoJob;
 
     /**
-     * @return Optional. Job is a Presto job.
+     * @return Job is a Presto job.
      * 
      */
     public Optional<Output<WorkflowTemplateJobPrestoJobArgs>> prestoJob() {
@@ -117,14 +117,14 @@ public final class WorkflowTemplateJobArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Optional. Job is a PySpark job.
+     * Job is a PySpark job.
      * 
      */
     @Import(name="pysparkJob")
     private @Nullable Output<WorkflowTemplateJobPysparkJobArgs> pysparkJob;
 
     /**
-     * @return Optional. Job is a PySpark job.
+     * @return Job is a PySpark job.
      * 
      */
     public Optional<Output<WorkflowTemplateJobPysparkJobArgs>> pysparkJob() {
@@ -132,14 +132,14 @@ public final class WorkflowTemplateJobArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Optional. Job scheduling configuration.
+     * Job scheduling configuration.
      * 
      */
     @Import(name="scheduling")
     private @Nullable Output<WorkflowTemplateJobSchedulingArgs> scheduling;
 
     /**
-     * @return Optional. Job scheduling configuration.
+     * @return Job scheduling configuration.
      * 
      */
     public Optional<Output<WorkflowTemplateJobSchedulingArgs>> scheduling() {
@@ -147,14 +147,14 @@ public final class WorkflowTemplateJobArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Optional. Job is a Spark job.
+     * Job is a Spark job.
      * 
      */
     @Import(name="sparkJob")
     private @Nullable Output<WorkflowTemplateJobSparkJobArgs> sparkJob;
 
     /**
-     * @return Optional. Job is a Spark job.
+     * @return Job is a Spark job.
      * 
      */
     public Optional<Output<WorkflowTemplateJobSparkJobArgs>> sparkJob() {
@@ -162,14 +162,14 @@ public final class WorkflowTemplateJobArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Optional. Job is a SparkR job.
+     * Job is a SparkR job.
      * 
      */
     @Import(name="sparkRJob")
     private @Nullable Output<WorkflowTemplateJobSparkRJobArgs> sparkRJob;
 
     /**
-     * @return Optional. Job is a SparkR job.
+     * @return Job is a SparkR job.
      * 
      */
     public Optional<Output<WorkflowTemplateJobSparkRJobArgs>> sparkRJob() {
@@ -177,14 +177,14 @@ public final class WorkflowTemplateJobArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Optional. Job is a SparkSql job.
+     * Job is a SparkSql job.
      * 
      */
     @Import(name="sparkSqlJob")
     private @Nullable Output<WorkflowTemplateJobSparkSqlJobArgs> sparkSqlJob;
 
     /**
-     * @return Optional. Job is a SparkSql job.
+     * @return Job is a SparkSql job.
      * 
      */
     public Optional<Output<WorkflowTemplateJobSparkSqlJobArgs>> sparkSqlJob() {
@@ -242,7 +242,7 @@ public final class WorkflowTemplateJobArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param hadoopJob Optional. Job is a Hadoop job.
+         * @param hadoopJob Job is a Hadoop job.
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class WorkflowTemplateJobArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param hadoopJob Optional. Job is a Hadoop job.
+         * @param hadoopJob Job is a Hadoop job.
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class WorkflowTemplateJobArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param hiveJob Optional. Job is a Hive job.
+         * @param hiveJob Job is a Hive job.
          * 
          * @return builder
          * 
@@ -274,7 +274,7 @@ public final class WorkflowTemplateJobArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param hiveJob Optional. Job is a Hive job.
+         * @param hiveJob Job is a Hive job.
          * 
          * @return builder
          * 
@@ -284,7 +284,7 @@ public final class WorkflowTemplateJobArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param labels Optional. The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
+         * @param labels The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
          * 
          * @return builder
          * 
@@ -295,7 +295,7 @@ public final class WorkflowTemplateJobArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param labels Optional. The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
+         * @param labels The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
          * 
          * @return builder
          * 
@@ -305,7 +305,7 @@ public final class WorkflowTemplateJobArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param pigJob Optional. Job is a Pig job.
+         * @param pigJob Job is a Pig job.
          * 
          * @return builder
          * 
@@ -316,7 +316,7 @@ public final class WorkflowTemplateJobArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param pigJob Optional. Job is a Pig job.
+         * @param pigJob Job is a Pig job.
          * 
          * @return builder
          * 
@@ -326,7 +326,7 @@ public final class WorkflowTemplateJobArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param prerequisiteStepIds Optional. The optional list of prerequisite job step_ids. If not specified, the job will start at the beginning of workflow.
+         * @param prerequisiteStepIds The optional list of prerequisite job step_ids. If not specified, the job will start at the beginning of workflow.
          * 
          * @return builder
          * 
@@ -337,7 +337,7 @@ public final class WorkflowTemplateJobArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param prerequisiteStepIds Optional. The optional list of prerequisite job step_ids. If not specified, the job will start at the beginning of workflow.
+         * @param prerequisiteStepIds The optional list of prerequisite job step_ids. If not specified, the job will start at the beginning of workflow.
          * 
          * @return builder
          * 
@@ -347,7 +347,7 @@ public final class WorkflowTemplateJobArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param prerequisiteStepIds Optional. The optional list of prerequisite job step_ids. If not specified, the job will start at the beginning of workflow.
+         * @param prerequisiteStepIds The optional list of prerequisite job step_ids. If not specified, the job will start at the beginning of workflow.
          * 
          * @return builder
          * 
@@ -357,7 +357,7 @@ public final class WorkflowTemplateJobArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param prestoJob Optional. Job is a Presto job.
+         * @param prestoJob Job is a Presto job.
          * 
          * @return builder
          * 
@@ -368,7 +368,7 @@ public final class WorkflowTemplateJobArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param prestoJob Optional. Job is a Presto job.
+         * @param prestoJob Job is a Presto job.
          * 
          * @return builder
          * 
@@ -378,7 +378,7 @@ public final class WorkflowTemplateJobArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param pysparkJob Optional. Job is a PySpark job.
+         * @param pysparkJob Job is a PySpark job.
          * 
          * @return builder
          * 
@@ -389,7 +389,7 @@ public final class WorkflowTemplateJobArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param pysparkJob Optional. Job is a PySpark job.
+         * @param pysparkJob Job is a PySpark job.
          * 
          * @return builder
          * 
@@ -399,7 +399,7 @@ public final class WorkflowTemplateJobArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param scheduling Optional. Job scheduling configuration.
+         * @param scheduling Job scheduling configuration.
          * 
          * @return builder
          * 
@@ -410,7 +410,7 @@ public final class WorkflowTemplateJobArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param scheduling Optional. Job scheduling configuration.
+         * @param scheduling Job scheduling configuration.
          * 
          * @return builder
          * 
@@ -420,7 +420,7 @@ public final class WorkflowTemplateJobArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sparkJob Optional. Job is a Spark job.
+         * @param sparkJob Job is a Spark job.
          * 
          * @return builder
          * 
@@ -431,7 +431,7 @@ public final class WorkflowTemplateJobArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sparkJob Optional. Job is a Spark job.
+         * @param sparkJob Job is a Spark job.
          * 
          * @return builder
          * 
@@ -441,7 +441,7 @@ public final class WorkflowTemplateJobArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sparkRJob Optional. Job is a SparkR job.
+         * @param sparkRJob Job is a SparkR job.
          * 
          * @return builder
          * 
@@ -452,7 +452,7 @@ public final class WorkflowTemplateJobArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sparkRJob Optional. Job is a SparkR job.
+         * @param sparkRJob Job is a SparkR job.
          * 
          * @return builder
          * 
@@ -462,7 +462,7 @@ public final class WorkflowTemplateJobArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sparkSqlJob Optional. Job is a SparkSql job.
+         * @param sparkSqlJob Job is a SparkSql job.
          * 
          * @return builder
          * 
@@ -473,7 +473,7 @@ public final class WorkflowTemplateJobArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sparkSqlJob Optional. Job is a SparkSql job.
+         * @param sparkSqlJob Job is a SparkSql job.
          * 
          * @return builder
          * 

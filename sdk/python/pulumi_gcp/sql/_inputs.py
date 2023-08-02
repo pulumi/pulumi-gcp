@@ -179,6 +179,7 @@ class DatabaseInstanceReplicaConfigurationArgs:
                If the field is set to true the replica will be designated as a failover replica.
                If the master instance fails, the replica instance will be promoted as
                the new master instance.
+               > **NOTE:** Not supported for Postgres database.
         :param pulumi.Input[int] master_heartbeat_period: Time in ms between replication
                heartbeats.
         :param pulumi.Input[str] password: Password for the replication connection.
@@ -282,6 +283,7 @@ class DatabaseInstanceReplicaConfigurationArgs:
         If the field is set to true the replica will be designated as a failover replica.
         If the master instance fails, the replica instance will be promoted as
         the new master instance.
+        > **NOTE:** Not supported for Postgres database.
         """
         return pulumi.get(self, "failover_target")
 

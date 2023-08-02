@@ -18,17 +18,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfig {
     /**
-     * @return Optional. The Compute Engine accelerator configuration for these instances.
+     * @return The Compute Engine accelerator configuration for these instances.
      * 
      */
     private @Nullable List<WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator> accelerators;
     /**
-     * @return Optional. Disk option config settings.
+     * @return Disk option config settings.
      * 
      */
     private @Nullable WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig diskConfig;
     /**
-     * @return Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+     * @return The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
      * 
      */
     private @Nullable String image;
@@ -43,7 +43,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfig {
      */
     private @Nullable Boolean isPreemptible;
     /**
-     * @return Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * ` https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example,  `n1-standard-2`.
+     * @return The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * ` https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example,  `n1-standard-2`.
      * 
      */
     private @Nullable String machineType;
@@ -53,38 +53,38 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfig {
      */
     private @Nullable List<WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfig> managedGroupConfigs;
     /**
-     * @return Optional. Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+     * @return Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
      * 
      */
     private @Nullable String minCpuPlatform;
     /**
-     * @return Optional. The number of VM instances in the instance group. For master instance groups, must be set to 1.
+     * @return The number of VM instances in the instance group. For master instance groups, must be set to 1.
      * 
      */
     private @Nullable Integer numInstances;
     /**
-     * @return Optional. Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
+     * @return Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
      * 
      */
     private @Nullable String preemptibility;
 
     private WorkflowTemplatePlacementManagedClusterConfigMasterConfig() {}
     /**
-     * @return Optional. The Compute Engine accelerator configuration for these instances.
+     * @return The Compute Engine accelerator configuration for these instances.
      * 
      */
     public List<WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator> accelerators() {
         return this.accelerators == null ? List.of() : this.accelerators;
     }
     /**
-     * @return Optional. Disk option config settings.
+     * @return Disk option config settings.
      * 
      */
     public Optional<WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig> diskConfig() {
         return Optional.ofNullable(this.diskConfig);
     }
     /**
-     * @return Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+     * @return The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
      * 
      */
     public Optional<String> image() {
@@ -105,7 +105,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfig {
         return Optional.ofNullable(this.isPreemptible);
     }
     /**
-     * @return Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * ` https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example,  `n1-standard-2`.
+     * @return The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * ` https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example,  `n1-standard-2`.
      * 
      */
     public Optional<String> machineType() {
@@ -119,21 +119,21 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMasterConfig {
         return this.managedGroupConfigs == null ? List.of() : this.managedGroupConfigs;
     }
     /**
-     * @return Optional. Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+     * @return Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
      * 
      */
     public Optional<String> minCpuPlatform() {
         return Optional.ofNullable(this.minCpuPlatform);
     }
     /**
-     * @return Optional. The number of VM instances in the instance group. For master instance groups, must be set to 1.
+     * @return The number of VM instances in the instance group. For master instance groups, must be set to 1.
      * 
      */
     public Optional<Integer> numInstances() {
         return Optional.ofNullable(this.numInstances);
     }
     /**
-     * @return Optional. Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
+     * @return Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
      * 
      */
     public Optional<String> preemptibility() {

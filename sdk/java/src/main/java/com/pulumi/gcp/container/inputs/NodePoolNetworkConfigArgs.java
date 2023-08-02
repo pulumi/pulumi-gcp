@@ -5,9 +5,12 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.container.inputs.NodePoolNetworkConfigAdditionalNodeNetworkConfigArgs;
+import com.pulumi.gcp.container.inputs.NodePoolNetworkConfigAdditionalPodNetworkConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNetworkConfigPodCidrOverprovisionConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +19,40 @@ import javax.annotation.Nullable;
 public final class NodePoolNetworkConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final NodePoolNetworkConfigArgs Empty = new NodePoolNetworkConfigArgs();
+
+    /**
+     * We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface.
+     * Structure is documented below
+     * 
+     */
+    @Import(name="additionalNodeNetworkConfigs")
+    private @Nullable Output<List<NodePoolNetworkConfigAdditionalNodeNetworkConfigArgs>> additionalNodeNetworkConfigs;
+
+    /**
+     * @return We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface.
+     * Structure is documented below
+     * 
+     */
+    public Optional<Output<List<NodePoolNetworkConfigAdditionalNodeNetworkConfigArgs>>> additionalNodeNetworkConfigs() {
+        return Optional.ofNullable(this.additionalNodeNetworkConfigs);
+    }
+
+    /**
+     * We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node.
+     * Structure is documented below
+     * 
+     */
+    @Import(name="additionalPodNetworkConfigs")
+    private @Nullable Output<List<NodePoolNetworkConfigAdditionalPodNetworkConfigArgs>> additionalPodNetworkConfigs;
+
+    /**
+     * @return We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node.
+     * Structure is documented below
+     * 
+     */
+    public Optional<Output<List<NodePoolNetworkConfigAdditionalPodNetworkConfigArgs>>> additionalPodNetworkConfigs() {
+        return Optional.ofNullable(this.additionalPodNetworkConfigs);
+    }
 
     /**
      * Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
@@ -87,6 +124,8 @@ public final class NodePoolNetworkConfigArgs extends com.pulumi.resources.Resour
     private NodePoolNetworkConfigArgs() {}
 
     private NodePoolNetworkConfigArgs(NodePoolNetworkConfigArgs $) {
+        this.additionalNodeNetworkConfigs = $.additionalNodeNetworkConfigs;
+        this.additionalPodNetworkConfigs = $.additionalPodNetworkConfigs;
         this.createPodRange = $.createPodRange;
         this.enablePrivateNodes = $.enablePrivateNodes;
         this.podCidrOverprovisionConfig = $.podCidrOverprovisionConfig;
@@ -110,6 +149,74 @@ public final class NodePoolNetworkConfigArgs extends com.pulumi.resources.Resour
 
         public Builder(NodePoolNetworkConfigArgs defaults) {
             $ = new NodePoolNetworkConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param additionalNodeNetworkConfigs We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface.
+         * Structure is documented below
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalNodeNetworkConfigs(@Nullable Output<List<NodePoolNetworkConfigAdditionalNodeNetworkConfigArgs>> additionalNodeNetworkConfigs) {
+            $.additionalNodeNetworkConfigs = additionalNodeNetworkConfigs;
+            return this;
+        }
+
+        /**
+         * @param additionalNodeNetworkConfigs We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface.
+         * Structure is documented below
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalNodeNetworkConfigs(List<NodePoolNetworkConfigAdditionalNodeNetworkConfigArgs> additionalNodeNetworkConfigs) {
+            return additionalNodeNetworkConfigs(Output.of(additionalNodeNetworkConfigs));
+        }
+
+        /**
+         * @param additionalNodeNetworkConfigs We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface.
+         * Structure is documented below
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalNodeNetworkConfigs(NodePoolNetworkConfigAdditionalNodeNetworkConfigArgs... additionalNodeNetworkConfigs) {
+            return additionalNodeNetworkConfigs(List.of(additionalNodeNetworkConfigs));
+        }
+
+        /**
+         * @param additionalPodNetworkConfigs We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node.
+         * Structure is documented below
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalPodNetworkConfigs(@Nullable Output<List<NodePoolNetworkConfigAdditionalPodNetworkConfigArgs>> additionalPodNetworkConfigs) {
+            $.additionalPodNetworkConfigs = additionalPodNetworkConfigs;
+            return this;
+        }
+
+        /**
+         * @param additionalPodNetworkConfigs We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node.
+         * Structure is documented below
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalPodNetworkConfigs(List<NodePoolNetworkConfigAdditionalPodNetworkConfigArgs> additionalPodNetworkConfigs) {
+            return additionalPodNetworkConfigs(Output.of(additionalPodNetworkConfigs));
+        }
+
+        /**
+         * @param additionalPodNetworkConfigs We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node.
+         * Structure is documented below
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalPodNetworkConfigs(NodePoolNetworkConfigAdditionalPodNetworkConfigArgs... additionalPodNetworkConfigs) {
+            return additionalPodNetworkConfigs(List.of(additionalPodNetworkConfigs));
         }
 
         /**

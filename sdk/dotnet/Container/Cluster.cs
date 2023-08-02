@@ -119,6 +119,14 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.ClusterAddonsConfig> AddonsConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Enable NET_ADMIN for the cluster. Defaults to 
+        /// `false`. This field should only be enabled for Autopilot clusters (`enable_autopilot`
+        /// set to `true`).
+        /// </summary>
+        [Output("allowNetAdmin")]
+        public Output<bool?> AllowNetAdmin { get; private set; } = null!;
+
+        /// <summary>
         /// Configuration for the
         /// [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
         /// Structure is documented below.
@@ -258,6 +266,12 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Output("enableLegacyAbac")]
         public Output<bool?> EnableLegacyAbac { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether multi-networking is enabled for this cluster.
+        /// </summary>
+        [Output("enableMultiNetworking")]
+        public Output<bool?> EnableMultiNetworking { get; private set; } = null!;
 
         /// <summary>
         /// Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
@@ -718,6 +732,14 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterAddonsConfigArgs>? AddonsConfig { get; set; }
 
         /// <summary>
+        /// Enable NET_ADMIN for the cluster. Defaults to 
+        /// `false`. This field should only be enabled for Autopilot clusters (`enable_autopilot`
+        /// set to `true`).
+        /// </summary>
+        [Input("allowNetAdmin")]
+        public Input<bool>? AllowNetAdmin { get; set; }
+
+        /// <summary>
         /// Configuration for the
         /// [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
         /// Structure is documented below.
@@ -857,6 +879,12 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("enableLegacyAbac")]
         public Input<bool>? EnableLegacyAbac { get; set; }
+
+        /// <summary>
+        /// Whether multi-networking is enabled for this cluster.
+        /// </summary>
+        [Input("enableMultiNetworking")]
+        public Input<bool>? EnableMultiNetworking { get; set; }
 
         /// <summary>
         /// Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
@@ -1251,6 +1279,14 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterAddonsConfigGetArgs>? AddonsConfig { get; set; }
 
         /// <summary>
+        /// Enable NET_ADMIN for the cluster. Defaults to 
+        /// `false`. This field should only be enabled for Autopilot clusters (`enable_autopilot`
+        /// set to `true`).
+        /// </summary>
+        [Input("allowNetAdmin")]
+        public Input<bool>? AllowNetAdmin { get; set; }
+
+        /// <summary>
         /// Configuration for the
         /// [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
         /// Structure is documented below.
@@ -1390,6 +1426,12 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("enableLegacyAbac")]
         public Input<bool>? EnableLegacyAbac { get; set; }
+
+        /// <summary>
+        /// Whether multi-networking is enabled for this cluster.
+        /// </summary>
+        [Input("enableMultiNetworking")]
+        public Input<bool>? EnableMultiNetworking { get; set; }
 
         /// <summary>
         /// Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.

@@ -350,7 +350,10 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly template!: pulumi.Output<outputs.cloudrun.ServiceTemplate | undefined>;
     /**
-     * Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations
+     * (Output)
+     * Traffic specifies how to distribute traffic over a collection of Knative Revisions
+     * and Configurations
+     * Structure is documented below.
      */
     public readonly traffics!: pulumi.Output<outputs.cloudrun.ServiceTraffic[]>;
 
@@ -453,7 +456,10 @@ export interface ServiceState {
      */
     template?: pulumi.Input<inputs.cloudrun.ServiceTemplate>;
     /**
-     * Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations
+     * (Output)
+     * Traffic specifies how to distribute traffic over a collection of Knative Revisions
+     * and Configurations
+     * Structure is documented below.
      */
     traffics?: pulumi.Input<pulumi.Input<inputs.cloudrun.ServiceTraffic>[]>;
 }
@@ -512,7 +518,10 @@ export interface ServiceArgs {
      */
     template?: pulumi.Input<inputs.cloudrun.ServiceTemplate>;
     /**
-     * Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations
+     * (Output)
+     * Traffic specifies how to distribute traffic over a collection of Knative Revisions
+     * and Configurations
+     * Structure is documented below.
      */
     traffics?: pulumi.Input<pulumi.Input<inputs.cloudrun.ServiceTraffic>[]>;
 }

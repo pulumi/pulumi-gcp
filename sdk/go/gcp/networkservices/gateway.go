@@ -392,7 +392,7 @@ type Gateway struct {
 	// The configuration for multiple Gateway instances with the same scope will be merged as presented as
 	// a single coniguration to the proxy/load balancer.
 	// Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
-	Scope pulumi.StringOutput `pulumi:"scope"`
+	Scope pulumi.StringPtrOutput `pulumi:"scope"`
 	// Server-defined URL of this resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated.
@@ -418,9 +418,6 @@ func NewGateway(ctx *pulumi.Context,
 
 	if args.Ports == nil {
 		return nil, errors.New("invalid value for required argument 'Ports'")
-	}
-	if args.Scope == nil {
-		return nil, errors.New("invalid value for required argument 'Scope'")
 	}
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
@@ -612,7 +609,7 @@ type gatewayArgs struct {
 	// The configuration for multiple Gateway instances with the same scope will be merged as presented as
 	// a single coniguration to the proxy/load balancer.
 	// Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
-	Scope string `pulumi:"scope"`
+	Scope *string `pulumi:"scope"`
 	// A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated.
 	// If empty, TLS termination is disabled.
 	ServerTlsPolicy *string `pulumi:"serverTlsPolicy"`
@@ -667,7 +664,7 @@ type GatewayArgs struct {
 	// The configuration for multiple Gateway instances with the same scope will be merged as presented as
 	// a single coniguration to the proxy/load balancer.
 	// Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
-	Scope pulumi.StringInput
+	Scope pulumi.StringPtrInput
 	// A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated.
 	// If empty, TLS termination is disabled.
 	ServerTlsPolicy pulumi.StringPtrInput
@@ -845,8 +842,8 @@ func (o GatewayOutput) Project() pulumi.StringOutput {
 // The configuration for multiple Gateway instances with the same scope will be merged as presented as
 // a single coniguration to the proxy/load balancer.
 // Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
-func (o GatewayOutput) Scope() pulumi.StringOutput {
-	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Scope }).(pulumi.StringOutput)
+func (o GatewayOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringPtrOutput { return v.Scope }).(pulumi.StringPtrOutput)
 }
 
 // Server-defined URL of this resource.

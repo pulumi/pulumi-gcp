@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     public sealed class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig
     {
         /// <summary>
-        /// Optional. A target for the deployment.
+        /// A target for the deployment.
         /// </summary>
         public readonly Outputs.WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget? NamespacedGkeDeploymentTarget;
 

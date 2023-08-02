@@ -13,19 +13,19 @@ namespace Pulumi.Gcp.Dataproc.Inputs
     public sealed class WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. Size in GB of the boot disk (default is 500GB).
+        /// Size in GB of the boot disk (default is 500GB).
         /// </summary>
         [Input("bootDiskSizeGb")]
         public Input<int>? BootDiskSizeGb { get; set; }
 
         /// <summary>
-        /// Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+        /// Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
         /// </summary>
         [Input("bootDiskType")]
         public Input<string>? BootDiskType { get; set; }
 
         /// <summary>
-        /// Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+        /// Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
         /// </summary>
         [Input("numLocalSsds")]
         public Input<int>? NumLocalSsds { get; set; }

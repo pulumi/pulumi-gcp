@@ -5,9 +5,12 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.container.inputs.ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +19,20 @@ import javax.annotation.Nullable;
 public final class ClusterNodePoolNetworkConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ClusterNodePoolNetworkConfigArgs Empty = new ClusterNodePoolNetworkConfigArgs();
+
+    @Import(name="additionalNodeNetworkConfigs")
+    private @Nullable Output<List<ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs>> additionalNodeNetworkConfigs;
+
+    public Optional<Output<List<ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs>>> additionalNodeNetworkConfigs() {
+        return Optional.ofNullable(this.additionalNodeNetworkConfigs);
+    }
+
+    @Import(name="additionalPodNetworkConfigs")
+    private @Nullable Output<List<ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs>> additionalPodNetworkConfigs;
+
+    public Optional<Output<List<ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs>>> additionalPodNetworkConfigs() {
+        return Optional.ofNullable(this.additionalPodNetworkConfigs);
+    }
 
     /**
      * Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
@@ -93,6 +110,8 @@ public final class ClusterNodePoolNetworkConfigArgs extends com.pulumi.resources
     private ClusterNodePoolNetworkConfigArgs() {}
 
     private ClusterNodePoolNetworkConfigArgs(ClusterNodePoolNetworkConfigArgs $) {
+        this.additionalNodeNetworkConfigs = $.additionalNodeNetworkConfigs;
+        this.additionalPodNetworkConfigs = $.additionalPodNetworkConfigs;
         this.createPodRange = $.createPodRange;
         this.enablePrivateNodes = $.enablePrivateNodes;
         this.podCidrOverprovisionConfig = $.podCidrOverprovisionConfig;
@@ -116,6 +135,32 @@ public final class ClusterNodePoolNetworkConfigArgs extends com.pulumi.resources
 
         public Builder(ClusterNodePoolNetworkConfigArgs defaults) {
             $ = new ClusterNodePoolNetworkConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder additionalNodeNetworkConfigs(@Nullable Output<List<ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs>> additionalNodeNetworkConfigs) {
+            $.additionalNodeNetworkConfigs = additionalNodeNetworkConfigs;
+            return this;
+        }
+
+        public Builder additionalNodeNetworkConfigs(List<ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs> additionalNodeNetworkConfigs) {
+            return additionalNodeNetworkConfigs(Output.of(additionalNodeNetworkConfigs));
+        }
+
+        public Builder additionalNodeNetworkConfigs(ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs... additionalNodeNetworkConfigs) {
+            return additionalNodeNetworkConfigs(List.of(additionalNodeNetworkConfigs));
+        }
+
+        public Builder additionalPodNetworkConfigs(@Nullable Output<List<ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs>> additionalPodNetworkConfigs) {
+            $.additionalPodNetworkConfigs = additionalPodNetworkConfigs;
+            return this;
+        }
+
+        public Builder additionalPodNetworkConfigs(List<ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs> additionalPodNetworkConfigs) {
+            return additionalPodNetworkConfigs(Output.of(additionalPodNetworkConfigs));
+        }
+
+        public Builder additionalPodNetworkConfigs(ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs... additionalPodNetworkConfigs) {
+            return additionalPodNetworkConfigs(List.of(additionalPodNetworkConfigs));
         }
 
         /**

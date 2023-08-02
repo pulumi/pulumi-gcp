@@ -13,6 +13,8 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class ClusterNodePoolNetworkConfig
     {
+        public readonly ImmutableArray<Outputs.ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig> AdditionalNodeNetworkConfigs;
+        public readonly ImmutableArray<Outputs.ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig> AdditionalPodNetworkConfigs;
         /// <summary>
         /// Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
         /// </summary>
@@ -36,6 +38,10 @@ namespace Pulumi.Gcp.Container.Outputs
 
         [OutputConstructor]
         private ClusterNodePoolNetworkConfig(
+            ImmutableArray<Outputs.ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig> additionalNodeNetworkConfigs,
+
+            ImmutableArray<Outputs.ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig> additionalPodNetworkConfigs,
+
             bool? createPodRange,
 
             bool? enablePrivateNodes,
@@ -46,6 +52,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string? podRange)
         {
+            AdditionalNodeNetworkConfigs = additionalNodeNetworkConfigs;
+            AdditionalPodNetworkConfigs = additionalPodNetworkConfigs;
             CreatePodRange = createPodRange;
             EnablePrivateNodes = enablePrivateNodes;
             PodCidrOverprovisionConfig = podCidrOverprovisionConfig;

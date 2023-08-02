@@ -13,13 +13,13 @@ namespace Pulumi.Gcp.Dataproc.Inputs
     public sealed class WorkflowTemplateJobArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. Job is a Hadoop job.
+        /// Job is a Hadoop job.
         /// </summary>
         [Input("hadoopJob")]
         public Input<Inputs.WorkflowTemplateJobHadoopJobArgs>? HadoopJob { get; set; }
 
         /// <summary>
-        /// Optional. Job is a Hive job.
+        /// Job is a Hive job.
         /// </summary>
         [Input("hiveJob")]
         public Input<Inputs.WorkflowTemplateJobHiveJobArgs>? HiveJob { get; set; }
@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Optional. The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
+        /// The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -37,7 +37,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         }
 
         /// <summary>
-        /// Optional. Job is a Pig job.
+        /// Job is a Pig job.
         /// </summary>
         [Input("pigJob")]
         public Input<Inputs.WorkflowTemplateJobPigJobArgs>? PigJob { get; set; }
@@ -46,7 +46,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputList<string>? _prerequisiteStepIds;
 
         /// <summary>
-        /// Optional. The optional list of prerequisite job step_ids. If not specified, the job will start at the beginning of workflow.
+        /// The optional list of prerequisite job step_ids. If not specified, the job will start at the beginning of workflow.
         /// </summary>
         public InputList<string> PrerequisiteStepIds
         {
@@ -55,37 +55,37 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         }
 
         /// <summary>
-        /// Optional. Job is a Presto job.
+        /// Job is a Presto job.
         /// </summary>
         [Input("prestoJob")]
         public Input<Inputs.WorkflowTemplateJobPrestoJobArgs>? PrestoJob { get; set; }
 
         /// <summary>
-        /// Optional. Job is a PySpark job.
+        /// Job is a PySpark job.
         /// </summary>
         [Input("pysparkJob")]
         public Input<Inputs.WorkflowTemplateJobPysparkJobArgs>? PysparkJob { get; set; }
 
         /// <summary>
-        /// Optional. Job scheduling configuration.
+        /// Job scheduling configuration.
         /// </summary>
         [Input("scheduling")]
         public Input<Inputs.WorkflowTemplateJobSchedulingArgs>? Scheduling { get; set; }
 
         /// <summary>
-        /// Optional. Job is a Spark job.
+        /// Job is a Spark job.
         /// </summary>
         [Input("sparkJob")]
         public Input<Inputs.WorkflowTemplateJobSparkJobArgs>? SparkJob { get; set; }
 
         /// <summary>
-        /// Optional. Job is a SparkR job.
+        /// Job is a SparkR job.
         /// </summary>
         [Input("sparkRJob")]
         public Input<Inputs.WorkflowTemplateJobSparkRJobArgs>? SparkRJob { get; set; }
 
         /// <summary>
-        /// Optional. Job is a SparkSql job.
+        /// Job is a SparkSql job.
         /// </summary>
         [Input("sparkSqlJob")]
         public Input<Inputs.WorkflowTemplateJobSparkSqlJobArgs>? SparkSqlJob { get; set; }

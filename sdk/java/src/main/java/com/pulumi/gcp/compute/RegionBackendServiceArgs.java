@@ -471,6 +471,21 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * The security policy associated with this backend service.
+     * 
+     */
+    @Import(name="securityPolicy")
+    private @Nullable Output<String> securityPolicy;
+
+    /**
+     * @return The security policy associated with this backend service.
+     * 
+     */
+    public Optional<Output<String>> securityPolicy() {
+        return Optional.ofNullable(this.securityPolicy);
+    }
+
+    /**
      * Type of session affinity to use. The default is NONE. Session affinity is
      * not applicable if the protocol is UDP.
      * Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
@@ -548,6 +563,7 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
         this.project = $.project;
         this.protocol = $.protocol;
         this.region = $.region;
+        this.securityPolicy = $.securityPolicy;
         this.sessionAffinity = $.sessionAffinity;
         this.subsetting = $.subsetting;
         this.timeoutSec = $.timeoutSec;
@@ -1154,6 +1170,27 @@ public final class RegionBackendServiceArgs extends com.pulumi.resources.Resourc
          */
         public Builder region(String region) {
             return region(Output.of(region));
+        }
+
+        /**
+         * @param securityPolicy The security policy associated with this backend service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityPolicy(@Nullable Output<String> securityPolicy) {
+            $.securityPolicy = securityPolicy;
+            return this;
+        }
+
+        /**
+         * @param securityPolicy The security policy associated with this backend service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityPolicy(String securityPolicy) {
+            return securityPolicy(Output.of(securityPolicy));
         }
 
         /**

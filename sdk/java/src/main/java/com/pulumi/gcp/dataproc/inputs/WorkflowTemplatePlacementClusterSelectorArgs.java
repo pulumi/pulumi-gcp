@@ -32,14 +32,14 @@ public final class WorkflowTemplatePlacementClusterSelectorArgs extends com.pulu
     }
 
     /**
-     * Optional. The zone where workflow process executes. This parameter does not affect the selection of the cluster. If unspecified, the zone of the first cluster matching the selector is used.
+     * The zone where workflow process executes. This parameter does not affect the selection of the cluster. If unspecified, the zone of the first cluster matching the selector is used.
      * 
      */
     @Import(name="zone")
     private @Nullable Output<String> zone;
 
     /**
-     * @return Optional. The zone where workflow process executes. This parameter does not affect the selection of the cluster. If unspecified, the zone of the first cluster matching the selector is used.
+     * @return The zone where workflow process executes. This parameter does not affect the selection of the cluster. If unspecified, the zone of the first cluster matching the selector is used.
      * 
      */
     public Optional<Output<String>> zone() {
@@ -93,7 +93,7 @@ public final class WorkflowTemplatePlacementClusterSelectorArgs extends com.pulu
         }
 
         /**
-         * @param zone Optional. The zone where workflow process executes. This parameter does not affect the selection of the cluster. If unspecified, the zone of the first cluster matching the selector is used.
+         * @param zone The zone where workflow process executes. This parameter does not affect the selection of the cluster. If unspecified, the zone of the first cluster matching the selector is used.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class WorkflowTemplatePlacementClusterSelectorArgs extends com.pulu
         }
 
         /**
-         * @param zone Optional. The zone where workflow process executes. This parameter does not affect the selection of the cluster. If unspecified, the zone of the first cluster matching the selector is used.
+         * @param zone The zone where workflow process executes. This parameter does not affect the selection of the cluster. If unspecified, the zone of the first cluster matching the selector is used.
          * 
          * @return builder
          * 

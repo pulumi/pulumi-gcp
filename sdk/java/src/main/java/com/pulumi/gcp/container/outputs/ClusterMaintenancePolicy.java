@@ -46,7 +46,7 @@ public final class ClusterMaintenancePolicy {
      */
     private @Nullable ClusterMaintenancePolicyDailyMaintenanceWindow dailyMaintenanceWindow;
     /**
-     * @return Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to three maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
+     * @return Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to 20 maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
      * 
      */
     private @Nullable List<ClusterMaintenancePolicyMaintenanceExclusion> maintenanceExclusions;
@@ -142,7 +142,7 @@ public final class ClusterMaintenancePolicy {
         return Optional.ofNullable(this.dailyMaintenanceWindow);
     }
     /**
-     * @return Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to three maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
+     * @return Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to 20 maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
      * 
      */
     public List<ClusterMaintenancePolicyMaintenanceExclusion> maintenanceExclusions() {

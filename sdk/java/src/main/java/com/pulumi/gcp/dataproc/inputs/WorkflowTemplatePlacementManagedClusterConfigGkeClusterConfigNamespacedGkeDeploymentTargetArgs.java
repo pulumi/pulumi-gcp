@@ -16,14 +16,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig
     public static final WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetArgs Empty = new WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetArgs();
 
     /**
-     * Optional. A namespace within the GKE cluster to deploy into.
+     * A namespace within the GKE cluster to deploy into.
      * 
      */
     @Import(name="clusterNamespace")
     private @Nullable Output<String> clusterNamespace;
 
     /**
-     * @return Optional. A namespace within the GKE cluster to deploy into.
+     * @return A namespace within the GKE cluster to deploy into.
      * 
      */
     public Optional<Output<String>> clusterNamespace() {
@@ -31,14 +31,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig
     }
 
     /**
-     * Optional. The target GKE cluster to deploy to. Format: &#39;projects/{project}/locations/{location}/clusters/{cluster_id}&#39;
+     * The target GKE cluster to deploy to. Format: &#39;projects/{project}/locations/{location}/clusters/{cluster_id}&#39;
      * 
      */
     @Import(name="targetGkeCluster")
     private @Nullable Output<String> targetGkeCluster;
 
     /**
-     * @return Optional. The target GKE cluster to deploy to. Format: &#39;projects/{project}/locations/{location}/clusters/{cluster_id}&#39;
+     * @return The target GKE cluster to deploy to. Format: &#39;projects/{project}/locations/{location}/clusters/{cluster_id}&#39;
      * 
      */
     public Optional<Output<String>> targetGkeCluster() {
@@ -71,7 +71,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig
         }
 
         /**
-         * @param clusterNamespace Optional. A namespace within the GKE cluster to deploy into.
+         * @param clusterNamespace A namespace within the GKE cluster to deploy into.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig
         }
 
         /**
-         * @param clusterNamespace Optional. A namespace within the GKE cluster to deploy into.
+         * @param clusterNamespace A namespace within the GKE cluster to deploy into.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig
         }
 
         /**
-         * @param targetGkeCluster Optional. The target GKE cluster to deploy to. Format: &#39;projects/{project}/locations/{location}/clusters/{cluster_id}&#39;
+         * @param targetGkeCluster The target GKE cluster to deploy to. Format: &#39;projects/{project}/locations/{location}/clusters/{cluster_id}&#39;
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig
         }
 
         /**
-         * @param targetGkeCluster Optional. The target GKE cluster to deploy to. Format: &#39;projects/{project}/locations/{location}/clusters/{cluster_id}&#39;
+         * @param targetGkeCluster The target GKE cluster to deploy to. Format: &#39;projects/{project}/locations/{location}/clusters/{cluster_id}&#39;
          * 
          * @return builder
          * 

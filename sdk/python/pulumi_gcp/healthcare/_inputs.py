@@ -25,6 +25,7 @@ __all__ = [
     'FhirStoreStreamConfigArgs',
     'FhirStoreStreamConfigBigqueryDestinationArgs',
     'FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs',
+    'FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs',
     'Hl7StoreIamBindingConditionArgs',
     'Hl7StoreIamMemberConditionArgs',
     'Hl7StoreNotificationConfigArgs',
@@ -573,12 +574,15 @@ class FhirStoreStreamConfigBigqueryDestinationArgs:
 class FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs:
     def __init__(__self__, *,
                  recursive_structure_depth: pulumi.Input[int],
+                 last_updated_partition_config: Optional[pulumi.Input['FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs']] = None,
                  schema_type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[int] recursive_structure_depth: The depth for all recursive structures in the output analytics schema. For example, concept in the CodeSystem
                resource is a recursive structure; when the depth is 2, the CodeSystem table will have a column called
                concept.concept but not concept.concept.concept. If not specified or set to 0, the server will use the default
                value 2. The maximum depth allowed is 5.
+        :param pulumi.Input['FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs'] last_updated_partition_config: The configuration for exported BigQuery tables to be partitioned by FHIR resource's last updated time column.
+               Structure is documented below.
         :param pulumi.Input[str] schema_type: Specifies the output schema type.
                * ANALYTICS: Analytics schema defined by the FHIR community.
                See https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md.
@@ -588,6 +592,8 @@ class FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs:
                Possible values are: `ANALYTICS`, `ANALYTICS_V2`, `LOSSLESS`.
         """
         pulumi.set(__self__, "recursive_structure_depth", recursive_structure_depth)
+        if last_updated_partition_config is not None:
+            pulumi.set(__self__, "last_updated_partition_config", last_updated_partition_config)
         if schema_type is not None:
             pulumi.set(__self__, "schema_type", schema_type)
 
@@ -607,6 +613,19 @@ class FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs:
         pulumi.set(self, "recursive_structure_depth", value)
 
     @property
+    @pulumi.getter(name="lastUpdatedPartitionConfig")
+    def last_updated_partition_config(self) -> Optional[pulumi.Input['FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs']]:
+        """
+        The configuration for exported BigQuery tables to be partitioned by FHIR resource's last updated time column.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "last_updated_partition_config")
+
+    @last_updated_partition_config.setter
+    def last_updated_partition_config(self, value: Optional[pulumi.Input['FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs']]):
+        pulumi.set(self, "last_updated_partition_config", value)
+
+    @property
     @pulumi.getter(name="schemaType")
     def schema_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -623,6 +642,46 @@ class FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs:
     @schema_type.setter
     def schema_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "schema_type", value)
+
+
+@pulumi.input_type
+class FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 expiration_ms: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] type: Type of partitioning.
+               Possible values are: `PARTITION_TYPE_UNSPECIFIED`, `HOUR`, `DAY`, `MONTH`, `YEAR`.
+        :param pulumi.Input[str] expiration_ms: Number of milliseconds for which to keep the storage for a partition.
+        """
+        pulumi.set(__self__, "type", type)
+        if expiration_ms is not None:
+            pulumi.set(__self__, "expiration_ms", expiration_ms)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Type of partitioning.
+        Possible values are: `PARTITION_TYPE_UNSPECIFIED`, `HOUR`, `DAY`, `MONTH`, `YEAR`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="expirationMs")
+    def expiration_ms(self) -> Optional[pulumi.Input[str]]:
+        """
+        Number of milliseconds for which to keep the storage for a partition.
+        """
+        return pulumi.get(self, "expiration_ms")
+
+    @expiration_ms.setter
+    def expiration_ms(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expiration_ms", value)
 
 
 @pulumi.input_type

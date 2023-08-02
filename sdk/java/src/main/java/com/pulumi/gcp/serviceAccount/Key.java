@@ -65,8 +65,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.serviceAccount.Account;
  * import com.pulumi.gcp.serviceAccount.AccountArgs;
- * import com.pulumi.time.time_rotating;
- * import com.pulumi.time.Time_rotatingArgs;
+ * import com.pulumi.time.Rotating;
+ * import com.pulumi.time.RotatingArgs;
  * import com.pulumi.gcp.serviceAccount.Key;
  * import com.pulumi.gcp.serviceAccount.KeyArgs;
  * import java.util.List;
@@ -87,7 +87,7 @@ import javax.annotation.Nullable;
  *             .displayName(&#34;My Service Account&#34;)
  *             .build());
  * 
- *         var mykeyRotation = new Time_rotating(&#34;mykeyRotation&#34;, Time_rotatingArgs.builder()        
+ *         var mykeyRotation = new Rotating(&#34;mykeyRotation&#34;, RotatingArgs.builder()        
  *             .rotationDays(30)
  *             .build());
  * 

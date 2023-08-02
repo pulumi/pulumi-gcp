@@ -979,6 +979,20 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
         return this.region;
     }
     /**
+     * The security policy associated with this backend service.
+     * 
+     */
+    @Export(name="securityPolicy", type=String.class, parameters={})
+    private Output</* @Nullable */ String> securityPolicy;
+
+    /**
+     * @return The security policy associated with this backend service.
+     * 
+     */
+    public Output<Optional<String>> securityPolicy() {
+        return Codegen.optional(this.securityPolicy);
+    }
+    /**
      * The URI of the created resource.
      * 
      */

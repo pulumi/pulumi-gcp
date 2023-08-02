@@ -240,6 +240,101 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Service Attachment Reconcile Connections
+ * 
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckTcpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.RegionBackendService;
+ * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.ForwardingRule;
+ * import com.pulumi.gcp.compute.ForwardingRuleArgs;
+ * import com.pulumi.gcp.compute.ServiceAttachment;
+ * import com.pulumi.gcp.compute.ServiceAttachmentArgs;
+ * import com.pulumi.gcp.compute.inputs.ServiceAttachmentConsumerAcceptListArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var producerServiceHealthCheck = new HealthCheck(&#34;producerServiceHealthCheck&#34;, HealthCheckArgs.builder()        
+ *             .checkIntervalSec(1)
+ *             .timeoutSec(1)
+ *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
+ *                 .port(&#34;80&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var producerServiceBackend = new RegionBackendService(&#34;producerServiceBackend&#34;, RegionBackendServiceArgs.builder()        
+ *             .region(&#34;us-west2&#34;)
+ *             .healthChecks(producerServiceHealthCheck.id())
+ *             .build());
+ * 
+ *         var pscIlbNetwork = new Network(&#34;pscIlbNetwork&#34;, NetworkArgs.builder()        
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var pscIlbProducerSubnetwork = new Subnetwork(&#34;pscIlbProducerSubnetwork&#34;, SubnetworkArgs.builder()        
+ *             .region(&#34;us-west2&#34;)
+ *             .network(pscIlbNetwork.id())
+ *             .ipCidrRange(&#34;10.0.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var pscIlbTargetService = new ForwardingRule(&#34;pscIlbTargetService&#34;, ForwardingRuleArgs.builder()        
+ *             .region(&#34;us-west2&#34;)
+ *             .loadBalancingScheme(&#34;INTERNAL&#34;)
+ *             .backendService(producerServiceBackend.id())
+ *             .allPorts(true)
+ *             .network(pscIlbNetwork.name())
+ *             .subnetwork(pscIlbProducerSubnetwork.name())
+ *             .build());
+ * 
+ *         var pscIlbNat = new Subnetwork(&#34;pscIlbNat&#34;, SubnetworkArgs.builder()        
+ *             .region(&#34;us-west2&#34;)
+ *             .network(pscIlbNetwork.id())
+ *             .purpose(&#34;PRIVATE_SERVICE_CONNECT&#34;)
+ *             .ipCidrRange(&#34;10.1.0.0/16&#34;)
+ *             .build());
+ * 
+ *         var pscIlbServiceAttachment = new ServiceAttachment(&#34;pscIlbServiceAttachment&#34;, ServiceAttachmentArgs.builder()        
+ *             .region(&#34;us-west2&#34;)
+ *             .description(&#34;A service attachment configured with Terraform&#34;)
+ *             .domainNames(&#34;gcp.tfacc.hashicorptest.com.&#34;)
+ *             .enableProxyProtocol(true)
+ *             .connectionPreference(&#34;ACCEPT_MANUAL&#34;)
+ *             .natSubnets(pscIlbNat.id())
+ *             .targetService(pscIlbTargetService.id())
+ *             .consumerRejectLists(            
+ *                 &#34;673497134629&#34;,
+ *                 &#34;482878270665&#34;)
+ *             .consumerAcceptLists(ServiceAttachmentConsumerAcceptListArgs.builder()
+ *                 .projectIdOrNum(&#34;658859330310&#34;)
+ *                 .connectionLimit(4)
+ *                 .build())
+ *             .reconcileConnections(false)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -457,6 +552,26 @@ public class ServiceAttachment extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
+     * If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
+     * If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
+     * For newly created service attachment, this boolean defaults to true.
+     * 
+     */
+    @Export(name="reconcileConnections", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> reconcileConnections;
+
+    /**
+     * @return This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
+     * If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
+     * If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
+     * For newly created service attachment, this boolean defaults to true.
+     * 
+     */
+    public Output<Optional<Boolean>> reconcileConnections() {
+        return Codegen.optional(this.reconcileConnections);
     }
     /**
      * URL of the region where the resource resides.

@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudrun.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.cloudrun.outputs.GetServiceStatusCondition;
+import com.pulumi.gcp.cloudrun.outputs.GetServiceStatusTraffic;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -16,6 +17,7 @@ public final class GetServiceStatus {
     private String latestCreatedRevisionName;
     private String latestReadyRevisionName;
     private Integer observedGeneration;
+    private List<GetServiceStatusTraffic> traffics;
     private String url;
 
     private GetServiceStatus() {}
@@ -30,6 +32,9 @@ public final class GetServiceStatus {
     }
     public Integer observedGeneration() {
         return this.observedGeneration;
+    }
+    public List<GetServiceStatusTraffic> traffics() {
+        return this.traffics;
     }
     public String url() {
         return this.url;
@@ -48,6 +53,7 @@ public final class GetServiceStatus {
         private String latestCreatedRevisionName;
         private String latestReadyRevisionName;
         private Integer observedGeneration;
+        private List<GetServiceStatusTraffic> traffics;
         private String url;
         public Builder() {}
         public Builder(GetServiceStatus defaults) {
@@ -56,6 +62,7 @@ public final class GetServiceStatus {
     	      this.latestCreatedRevisionName = defaults.latestCreatedRevisionName;
     	      this.latestReadyRevisionName = defaults.latestReadyRevisionName;
     	      this.observedGeneration = defaults.observedGeneration;
+    	      this.traffics = defaults.traffics;
     	      this.url = defaults.url;
         }
 
@@ -83,6 +90,14 @@ public final class GetServiceStatus {
             return this;
         }
         @CustomType.Setter
+        public Builder traffics(List<GetServiceStatusTraffic> traffics) {
+            this.traffics = Objects.requireNonNull(traffics);
+            return this;
+        }
+        public Builder traffics(GetServiceStatusTraffic... traffics) {
+            return traffics(List.of(traffics));
+        }
+        @CustomType.Setter
         public Builder url(String url) {
             this.url = Objects.requireNonNull(url);
             return this;
@@ -93,6 +108,7 @@ public final class GetServiceStatus {
             o.latestCreatedRevisionName = latestCreatedRevisionName;
             o.latestReadyRevisionName = latestReadyRevisionName;
             o.observedGeneration = observedGeneration;
+            o.traffics = traffics;
             o.url = url;
             return o;
         }

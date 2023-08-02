@@ -40,8 +40,7 @@ namespace Pulumi.Gcp.OsConfig.Outputs
         public readonly string? Permissions;
         /// <summary>
         /// Desired state of the file. Possible values are:
-        /// `DESIRED_STATE_UNSPECIFIED`, `PRESENT`, `ABSENT`,
-        /// `CONTENTS_MATCH`.
+        /// `DESIRED_STATE_UNSPECIFIED`, `PRESENT`, `ABSENT`, `CONTENTS_MATCH`.
         /// </summary>
         public readonly string State;
 

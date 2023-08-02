@@ -752,6 +752,15 @@ class Job(pulumi.CustomResource):
             replication=gcp.secretmanager.SecretReplicationArgs(
                 automatic=True,
             ))
+        secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
+            secret=secret.name,
+            secret_data="secret-data")
+        project = gcp.organizations.get_project()
+        secret_access = gcp.secretmanager.SecretIamMember("secret-access",
+            secret_id=secret.id,
+            role="roles/secretmanager.secretAccessor",
+            member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com",
+            opts=pulumi.ResourceOptions(depends_on=[secret]))
         default = gcp.cloudrunv2.Job("default",
             location="us-central1",
             template=gcp.cloudrunv2.JobTemplateArgs(
@@ -776,16 +785,11 @@ class Job(pulumi.CustomResource):
                         )],
                     )],
                 ),
-            ))
-        project = gcp.organizations.get_project()
-        secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
-            secret=secret.name,
-            secret_data="secret-data")
-        secret_access = gcp.secretmanager.SecretIamMember("secret-access",
-            secret_id=secret.id,
-            role="roles/secretmanager.secretAccessor",
-            member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com",
-            opts=pulumi.ResourceOptions(depends_on=[secret]))
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[
+                    secret_version_data,
+                    secret_access,
+                ]))
         ```
         ### Cloudrunv2 Job Emptydir
 
@@ -1009,6 +1013,15 @@ class Job(pulumi.CustomResource):
             replication=gcp.secretmanager.SecretReplicationArgs(
                 automatic=True,
             ))
+        secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
+            secret=secret.name,
+            secret_data="secret-data")
+        project = gcp.organizations.get_project()
+        secret_access = gcp.secretmanager.SecretIamMember("secret-access",
+            secret_id=secret.id,
+            role="roles/secretmanager.secretAccessor",
+            member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com",
+            opts=pulumi.ResourceOptions(depends_on=[secret]))
         default = gcp.cloudrunv2.Job("default",
             location="us-central1",
             template=gcp.cloudrunv2.JobTemplateArgs(
@@ -1033,16 +1046,11 @@ class Job(pulumi.CustomResource):
                         )],
                     )],
                 ),
-            ))
-        project = gcp.organizations.get_project()
-        secret_version_data = gcp.secretmanager.SecretVersion("secret-version-data",
-            secret=secret.name,
-            secret_data="secret-data")
-        secret_access = gcp.secretmanager.SecretIamMember("secret-access",
-            secret_id=secret.id,
-            role="roles/secretmanager.secretAccessor",
-            member=f"serviceAccount:{project.number}-compute@developer.gserviceaccount.com",
-            opts=pulumi.ResourceOptions(depends_on=[secret]))
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[
+                    secret_version_data,
+                    secret_access,
+                ]))
         ```
         ### Cloudrunv2 Job Emptydir
 

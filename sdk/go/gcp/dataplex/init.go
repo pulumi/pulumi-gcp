@@ -45,6 +45,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &LakeIamMember{}
 	case "gcp:dataplex/lakeIamPolicy:LakeIamPolicy":
 		r = &LakeIamPolicy{}
+	case "gcp:dataplex/task:Task":
+		r = &Task{}
+	case "gcp:dataplex/taskIamBinding:TaskIamBinding":
+		r = &TaskIamBinding{}
+	case "gcp:dataplex/taskIamMember:TaskIamMember":
+		r = &TaskIamMember{}
+	case "gcp:dataplex/taskIamPolicy:TaskIamPolicy":
+		r = &TaskIamPolicy{}
 	case "gcp:dataplex/zone:Zone":
 		r = &Zone{}
 	case "gcp:dataplex/zoneIamBinding:ZoneIamBinding":
@@ -124,6 +132,26 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"dataplex/lakeIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataplex/task",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataplex/taskIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataplex/taskIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataplex/taskIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

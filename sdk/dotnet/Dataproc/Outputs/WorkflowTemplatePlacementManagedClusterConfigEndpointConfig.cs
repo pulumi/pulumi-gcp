@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     public sealed class WorkflowTemplatePlacementManagedClusterConfigEndpointConfig
     {
         /// <summary>
-        /// Optional. If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
+        /// If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
         /// </summary>
         public readonly bool? EnableHttpPortAccess;
         /// <summary>

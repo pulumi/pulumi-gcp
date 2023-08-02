@@ -19,14 +19,14 @@ public final class WorkflowTemplateJobSparkRJobArgs extends com.pulumi.resources
     public static final WorkflowTemplateJobSparkRJobArgs Empty = new WorkflowTemplateJobSparkRJobArgs();
 
     /**
-     * Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+     * HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
      * 
      */
     @Import(name="archiveUris")
     private @Nullable Output<List<String>> archiveUris;
 
     /**
-     * @return Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+     * @return HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
      * 
      */
     public Optional<Output<List<String>>> archiveUris() {
@@ -34,14 +34,14 @@ public final class WorkflowTemplateJobSparkRJobArgs extends com.pulumi.resources
     }
 
     /**
-     * Optional. The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+     * The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
      * 
      */
     @Import(name="args")
     private @Nullable Output<List<String>> args;
 
     /**
-     * @return Optional. The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+     * @return The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
      * 
      */
     public Optional<Output<List<String>>> args() {
@@ -49,14 +49,14 @@ public final class WorkflowTemplateJobSparkRJobArgs extends com.pulumi.resources
     }
 
     /**
-     * Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+     * HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
      * 
      */
     @Import(name="fileUris")
     private @Nullable Output<List<String>> fileUris;
 
     /**
-     * @return Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+     * @return HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
      * 
      */
     public Optional<Output<List<String>>> fileUris() {
@@ -64,14 +64,14 @@ public final class WorkflowTemplateJobSparkRJobArgs extends com.pulumi.resources
     }
 
     /**
-     * Optional. The runtime log config for job execution.
+     * The runtime log config for job execution.
      * 
      */
     @Import(name="loggingConfig")
     private @Nullable Output<WorkflowTemplateJobSparkRJobLoggingConfigArgs> loggingConfig;
 
     /**
-     * @return Optional. The runtime log config for job execution.
+     * @return The runtime log config for job execution.
      * 
      */
     public Optional<Output<WorkflowTemplateJobSparkRJobLoggingConfigArgs>> loggingConfig() {
@@ -94,14 +94,14 @@ public final class WorkflowTemplateJobSparkRJobArgs extends com.pulumi.resources
     }
 
     /**
-     * Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+     * A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
      * 
      */
     @Import(name="properties")
     private @Nullable Output<Map<String,String>> properties;
 
     /**
-     * @return Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+     * @return A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
      * 
      */
     public Optional<Output<Map<String,String>>> properties() {
@@ -138,7 +138,7 @@ public final class WorkflowTemplateJobSparkRJobArgs extends com.pulumi.resources
         }
 
         /**
-         * @param archiveUris Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+         * @param archiveUris HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
          * 
          * @return builder
          * 
@@ -149,7 +149,7 @@ public final class WorkflowTemplateJobSparkRJobArgs extends com.pulumi.resources
         }
 
         /**
-         * @param archiveUris Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+         * @param archiveUris HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class WorkflowTemplateJobSparkRJobArgs extends com.pulumi.resources
         }
 
         /**
-         * @param archiveUris Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+         * @param archiveUris HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class WorkflowTemplateJobSparkRJobArgs extends com.pulumi.resources
         }
 
         /**
-         * @param args Optional. The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+         * @param args The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class WorkflowTemplateJobSparkRJobArgs extends com.pulumi.resources
         }
 
         /**
-         * @param args Optional. The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+         * @param args The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class WorkflowTemplateJobSparkRJobArgs extends com.pulumi.resources
         }
 
         /**
-         * @param args Optional. The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+         * @param args The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class WorkflowTemplateJobSparkRJobArgs extends com.pulumi.resources
         }
 
         /**
-         * @param fileUris Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+         * @param fileUris HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
          * 
          * @return builder
          * 
@@ -211,7 +211,7 @@ public final class WorkflowTemplateJobSparkRJobArgs extends com.pulumi.resources
         }
 
         /**
-         * @param fileUris Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+         * @param fileUris HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
          * 
          * @return builder
          * 
@@ -221,7 +221,7 @@ public final class WorkflowTemplateJobSparkRJobArgs extends com.pulumi.resources
         }
 
         /**
-         * @param fileUris Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+         * @param fileUris HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class WorkflowTemplateJobSparkRJobArgs extends com.pulumi.resources
         }
 
         /**
-         * @param loggingConfig Optional. The runtime log config for job execution.
+         * @param loggingConfig The runtime log config for job execution.
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class WorkflowTemplateJobSparkRJobArgs extends com.pulumi.resources
         }
 
         /**
-         * @param loggingConfig Optional. The runtime log config for job execution.
+         * @param loggingConfig The runtime log config for job execution.
          * 
          * @return builder
          * 
@@ -273,7 +273,7 @@ public final class WorkflowTemplateJobSparkRJobArgs extends com.pulumi.resources
         }
 
         /**
-         * @param properties Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+         * @param properties A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
          * 
          * @return builder
          * 
@@ -284,7 +284,7 @@ public final class WorkflowTemplateJobSparkRJobArgs extends com.pulumi.resources
         }
 
         /**
-         * @param properties Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+         * @param properties A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
          * 
          * @return builder
          * 

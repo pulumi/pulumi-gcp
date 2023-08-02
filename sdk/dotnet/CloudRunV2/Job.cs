@@ -240,6 +240,27 @@ namespace Pulumi.Gcp.CloudRunV2
     ///         },
     ///     });
     /// 
+    ///     var secret_version_data = new Gcp.SecretManager.SecretVersion("secret-version-data", new()
+    ///     {
+    ///         Secret = secret.Name,
+    ///         SecretData = "secret-data",
+    ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var secret_access = new Gcp.SecretManager.SecretIamMember("secret-access", new()
+    ///     {
+    ///         SecretId = secret.Id,
+    ///         Role = "roles/secretmanager.secretAccessor",
+    ///         Member = $"serviceAccount:{project.Apply(getProjectResult =&gt; getProjectResult.Number)}-compute@developer.gserviceaccount.com",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             secret,
+    ///         },
+    ///     });
+    /// 
     ///     var @default = new Gcp.CloudRunV2.Job("default", new()
     ///     {
     ///         Location = "us-central1",
@@ -285,26 +306,12 @@ namespace Pulumi.Gcp.CloudRunV2
     ///                 },
     ///             },
     ///         },
-    ///     });
-    /// 
-    ///     var project = Gcp.Organizations.GetProject.Invoke();
-    /// 
-    ///     var secret_version_data = new Gcp.SecretManager.SecretVersion("secret-version-data", new()
-    ///     {
-    ///         Secret = secret.Name,
-    ///         SecretData = "secret-data",
-    ///     });
-    /// 
-    ///     var secret_access = new Gcp.SecretManager.SecretIamMember("secret-access", new()
-    ///     {
-    ///         SecretId = secret.Id,
-    ///         Role = "roles/secretmanager.secretAccessor",
-    ///         Member = $"serviceAccount:{project.Apply(getProjectResult =&gt; getProjectResult.Number)}-compute@developer.gserviceaccount.com",
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn = new[]
     ///         {
-    ///             secret,
+    ///             secret_version_data,
+    ///             secret_access,
     ///         },
     ///     });
     /// 

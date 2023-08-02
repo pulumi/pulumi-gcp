@@ -56,7 +56,8 @@ public final class ProjectSinkArgs extends com.pulumi.resources.ResourceArgs {
      * - `storage.googleapis.com/[GCS_BUCKET]`
      * - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
      * - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-     * - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+     * - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
+     * - `logging.googleapis.com/projects/[PROJECT_ID]`
      * 
      * The writer associated with the sink must have access to write to the above resource.
      * 
@@ -71,7 +72,8 @@ public final class ProjectSinkArgs extends com.pulumi.resources.ResourceArgs {
      * - `storage.googleapis.com/[GCS_BUCKET]`
      * - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
      * - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-     * - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+     * - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
+     * - `logging.googleapis.com/projects/[PROJECT_ID]`
      * 
      * The writer associated with the sink must have access to write to the above resource.
      * 
@@ -263,7 +265,8 @@ public final class ProjectSinkArgs extends com.pulumi.resources.ResourceArgs {
          * - `storage.googleapis.com/[GCS_BUCKET]`
          * - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
          * - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-         * - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+         * - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
+         * - `logging.googleapis.com/projects/[PROJECT_ID]`
          * 
          * The writer associated with the sink must have access to write to the above resource.
          * 
@@ -282,7 +285,8 @@ public final class ProjectSinkArgs extends com.pulumi.resources.ResourceArgs {
          * - `storage.googleapis.com/[GCS_BUCKET]`
          * - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
          * - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-         * - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+         * - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
+         * - `logging.googleapis.com/projects/[PROJECT_ID]`
          * 
          * The writer associated with the sink must have access to write to the above resource.
          * 

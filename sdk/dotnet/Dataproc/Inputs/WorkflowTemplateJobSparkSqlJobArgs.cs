@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputList<string>? _jarFileUris;
 
         /// <summary>
-        /// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+        /// HCFS URIs of jar files to be added to the Spark CLASSPATH.
         /// </summary>
         public InputList<string> JarFileUris
         {
@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         }
 
         /// <summary>
-        /// Optional. The runtime log config for job execution.
+        /// The runtime log config for job execution.
         /// </summary>
         [Input("loggingConfig")]
         public Input<Inputs.WorkflowTemplateJobSparkSqlJobLoggingConfigArgs>? LoggingConfig { get; set; }
@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputMap<string>? _properties;
 
         /// <summary>
-        /// Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.
+        /// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.
         /// </summary>
         public InputMap<string> Properties
         {
@@ -58,7 +58,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputMap<string>? _scriptVariables;
 
         /// <summary>
-        /// Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
+        /// Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
         /// </summary>
         public InputMap<string> ScriptVariables
         {

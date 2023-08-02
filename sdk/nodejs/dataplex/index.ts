@@ -60,6 +60,11 @@ export const getLakeIamPolicy: typeof import("./getLakeIamPolicy").getLakeIamPol
 export const getLakeIamPolicyOutput: typeof import("./getLakeIamPolicy").getLakeIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getLakeIamPolicy","getLakeIamPolicyOutput"], () => require("./getLakeIamPolicy"));
 
+export { GetTaskIamPolicyArgs, GetTaskIamPolicyResult, GetTaskIamPolicyOutputArgs } from "./getTaskIamPolicy";
+export const getTaskIamPolicy: typeof import("./getTaskIamPolicy").getTaskIamPolicy = null as any;
+export const getTaskIamPolicyOutput: typeof import("./getTaskIamPolicy").getTaskIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getTaskIamPolicy","getTaskIamPolicyOutput"], () => require("./getTaskIamPolicy"));
+
 export { GetZoneIamPolicyArgs, GetZoneIamPolicyResult, GetZoneIamPolicyOutputArgs } from "./getZoneIamPolicy";
 export const getZoneIamPolicy: typeof import("./getZoneIamPolicy").getZoneIamPolicy = null as any;
 export const getZoneIamPolicyOutput: typeof import("./getZoneIamPolicy").getZoneIamPolicyOutput = null as any;
@@ -84,6 +89,26 @@ export { LakeIamPolicyArgs, LakeIamPolicyState } from "./lakeIamPolicy";
 export type LakeIamPolicy = import("./lakeIamPolicy").LakeIamPolicy;
 export const LakeIamPolicy: typeof import("./lakeIamPolicy").LakeIamPolicy = null as any;
 utilities.lazyLoad(exports, ["LakeIamPolicy"], () => require("./lakeIamPolicy"));
+
+export { TaskArgs, TaskState } from "./task";
+export type Task = import("./task").Task;
+export const Task: typeof import("./task").Task = null as any;
+utilities.lazyLoad(exports, ["Task"], () => require("./task"));
+
+export { TaskIamBindingArgs, TaskIamBindingState } from "./taskIamBinding";
+export type TaskIamBinding = import("./taskIamBinding").TaskIamBinding;
+export const TaskIamBinding: typeof import("./taskIamBinding").TaskIamBinding = null as any;
+utilities.lazyLoad(exports, ["TaskIamBinding"], () => require("./taskIamBinding"));
+
+export { TaskIamMemberArgs, TaskIamMemberState } from "./taskIamMember";
+export type TaskIamMember = import("./taskIamMember").TaskIamMember;
+export const TaskIamMember: typeof import("./taskIamMember").TaskIamMember = null as any;
+utilities.lazyLoad(exports, ["TaskIamMember"], () => require("./taskIamMember"));
+
+export { TaskIamPolicyArgs, TaskIamPolicyState } from "./taskIamPolicy";
+export type TaskIamPolicy = import("./taskIamPolicy").TaskIamPolicy;
+export const TaskIamPolicy: typeof import("./taskIamPolicy").TaskIamPolicy = null as any;
+utilities.lazyLoad(exports, ["TaskIamPolicy"], () => require("./taskIamPolicy"));
 
 export { ZoneArgs, ZoneState } from "./zone";
 export type Zone = import("./zone").Zone;
@@ -134,6 +159,14 @@ const _module = {
                 return new LakeIamMember(name, <any>undefined, { urn })
             case "gcp:dataplex/lakeIamPolicy:LakeIamPolicy":
                 return new LakeIamPolicy(name, <any>undefined, { urn })
+            case "gcp:dataplex/task:Task":
+                return new Task(name, <any>undefined, { urn })
+            case "gcp:dataplex/taskIamBinding:TaskIamBinding":
+                return new TaskIamBinding(name, <any>undefined, { urn })
+            case "gcp:dataplex/taskIamMember:TaskIamMember":
+                return new TaskIamMember(name, <any>undefined, { urn })
+            case "gcp:dataplex/taskIamPolicy:TaskIamPolicy":
+                return new TaskIamPolicy(name, <any>undefined, { urn })
             case "gcp:dataplex/zone:Zone":
                 return new Zone(name, <any>undefined, { urn })
             case "gcp:dataplex/zoneIamBinding:ZoneIamBinding":
@@ -159,6 +192,10 @@ pulumi.runtime.registerResourceModule("gcp", "dataplex/lake", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/lakeIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/lakeIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/lakeIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataplex/task", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataplex/taskIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataplex/taskIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataplex/taskIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/zone", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/zoneIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/zoneIamMember", _module)

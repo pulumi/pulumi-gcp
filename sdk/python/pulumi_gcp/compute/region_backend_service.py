@@ -38,6 +38,7 @@ class RegionBackendServiceArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 security_policy: Optional[pulumi.Input[str]] = None,
                  session_affinity: Optional[pulumi.Input[str]] = None,
                  subsetting: Optional[pulumi.Input['RegionBackendServiceSubsettingArgs']] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None):
@@ -122,6 +123,7 @@ class RegionBackendServiceArgs:
                Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, `GRPC`, `UNSPECIFIED`.
         :param pulumi.Input[str] region: The Region in which the created backend service should reside.
                If it is not provided, the provider region is used.
+        :param pulumi.Input[str] security_policy: The security policy associated with this backend service.
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
                Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
@@ -174,6 +176,8 @@ class RegionBackendServiceArgs:
             pulumi.set(__self__, "protocol", protocol)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if security_policy is not None:
+            pulumi.set(__self__, "security_policy", security_policy)
         if session_affinity is not None:
             pulumi.set(__self__, "session_affinity", session_affinity)
         if subsetting is not None:
@@ -503,6 +507,18 @@ class RegionBackendServiceArgs:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter(name="securityPolicy")
+    def security_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The security policy associated with this backend service.
+        """
+        return pulumi.get(self, "security_policy")
+
+    @security_policy.setter
+    def security_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_policy", value)
+
+    @property
     @pulumi.getter(name="sessionAffinity")
     def session_affinity(self) -> Optional[pulumi.Input[str]]:
         """
@@ -570,6 +586,7 @@ class _RegionBackendServiceState:
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 security_policy: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  session_affinity: Optional[pulumi.Input[str]] = None,
                  subsetting: Optional[pulumi.Input['RegionBackendServiceSubsettingArgs']] = None,
@@ -658,6 +675,7 @@ class _RegionBackendServiceState:
                Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, `GRPC`, `UNSPECIFIED`.
         :param pulumi.Input[str] region: The Region in which the created backend service should reside.
                If it is not provided, the provider region is used.
+        :param pulumi.Input[str] security_policy: The security policy associated with this backend service.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
@@ -715,6 +733,8 @@ class _RegionBackendServiceState:
             pulumi.set(__self__, "protocol", protocol)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if security_policy is not None:
+            pulumi.set(__self__, "security_policy", security_policy)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
         if session_affinity is not None:
@@ -1071,6 +1091,18 @@ class _RegionBackendServiceState:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter(name="securityPolicy")
+    def security_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The security policy associated with this backend service.
+        """
+        return pulumi.get(self, "security_policy")
+
+    @security_policy.setter
+    def security_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_policy", value)
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1150,6 +1182,7 @@ class RegionBackendService(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 security_policy: Optional[pulumi.Input[str]] = None,
                  session_affinity: Optional[pulumi.Input[str]] = None,
                  subsetting: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceSubsettingArgs']]] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None,
@@ -1271,6 +1304,7 @@ class RegionBackendService(pulumi.CustomResource):
                Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, `GRPC`, `UNSPECIFIED`.
         :param pulumi.Input[str] region: The Region in which the created backend service should reside.
                If it is not provided, the provider region is used.
+        :param pulumi.Input[str] security_policy: The security policy associated with this backend service.
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
                Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
@@ -1358,6 +1392,7 @@ class RegionBackendService(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 security_policy: Optional[pulumi.Input[str]] = None,
                  session_affinity: Optional[pulumi.Input[str]] = None,
                  subsetting: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceSubsettingArgs']]] = None,
                  timeout_sec: Optional[pulumi.Input[int]] = None,
@@ -1392,6 +1427,7 @@ class RegionBackendService(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["protocol"] = protocol
             __props__.__dict__["region"] = region
+            __props__.__dict__["security_policy"] = security_policy
             __props__.__dict__["session_affinity"] = session_affinity
             __props__.__dict__["subsetting"] = subsetting
             __props__.__dict__["timeout_sec"] = timeout_sec
@@ -1432,6 +1468,7 @@ class RegionBackendService(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             protocol: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
+            security_policy: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             session_affinity: Optional[pulumi.Input[str]] = None,
             subsetting: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceSubsettingArgs']]] = None,
@@ -1525,6 +1562,7 @@ class RegionBackendService(pulumi.CustomResource):
                Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, `GRPC`, `UNSPECIFIED`.
         :param pulumi.Input[str] region: The Region in which the created backend service should reside.
                If it is not provided, the provider region is used.
+        :param pulumi.Input[str] security_policy: The security policy associated with this backend service.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
@@ -1562,6 +1600,7 @@ class RegionBackendService(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["protocol"] = protocol
         __props__.__dict__["region"] = region
+        __props__.__dict__["security_policy"] = security_policy
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["session_affinity"] = session_affinity
         __props__.__dict__["subsetting"] = subsetting
@@ -1817,6 +1856,14 @@ class RegionBackendService(pulumi.CustomResource):
         If it is not provided, the provider region is used.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="securityPolicy")
+    def security_policy(self) -> pulumi.Output[Optional[str]]:
+        """
+        The security policy associated with this backend service.
+        """
+        return pulumi.get(self, "security_policy")
 
     @property
     @pulumi.getter(name="selfLink")

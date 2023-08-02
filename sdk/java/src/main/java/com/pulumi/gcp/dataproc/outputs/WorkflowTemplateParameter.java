@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WorkflowTemplateParameter {
     /**
-     * @return Optional. Brief description of the parameter. Must not exceed 1024 characters.
+     * @return Brief description of the parameter. Must not exceed 1024 characters.
      * 
      */
     private @Nullable String description;
@@ -29,14 +29,14 @@ public final class WorkflowTemplateParameter {
      */
     private String name;
     /**
-     * @return Optional. Validation rules to be applied to this parameter&#39;s value.
+     * @return Validation rules to be applied to this parameter&#39;s value.
      * 
      */
     private @Nullable WorkflowTemplateParameterValidation validation;
 
     private WorkflowTemplateParameter() {}
     /**
-     * @return Optional. Brief description of the parameter. Must not exceed 1024 characters.
+     * @return Brief description of the parameter. Must not exceed 1024 characters.
      * 
      */
     public Optional<String> description() {
@@ -57,7 +57,7 @@ public final class WorkflowTemplateParameter {
         return this.name;
     }
     /**
-     * @return Optional. Validation rules to be applied to this parameter&#39;s value.
+     * @return Validation rules to be applied to this parameter&#39;s value.
      * 
      */
     public Optional<WorkflowTemplateParameterValidation> validation() {

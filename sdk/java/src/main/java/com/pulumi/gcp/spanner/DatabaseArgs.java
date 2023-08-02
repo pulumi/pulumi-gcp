@@ -76,6 +76,29 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether drop protection is enabled for this database. Defaults to false. Drop protection is different from the
+     * &#34;deletion_protection&#34; attribute in the following ways: (1) &#34;deletion_protection&#34; only protects the database from
+     * deletions in Terraform. whereas setting “enableDropProtection” to true protects the database from deletions in all
+     * interfaces. (2) Setting &#34;enableDropProtection&#34; to true also prevents the deletion of the parent instance containing the
+     * database. &#34;deletion_protection&#34; attribute does not provide protection against the deletion of the parent instance.
+     * 
+     */
+    @Import(name="enableDropProtection")
+    private @Nullable Output<Boolean> enableDropProtection;
+
+    /**
+     * @return Whether drop protection is enabled for this database. Defaults to false. Drop protection is different from the
+     * &#34;deletion_protection&#34; attribute in the following ways: (1) &#34;deletion_protection&#34; only protects the database from
+     * deletions in Terraform. whereas setting “enableDropProtection” to true protects the database from deletions in all
+     * interfaces. (2) Setting &#34;enableDropProtection&#34; to true also prevents the deletion of the parent instance containing the
+     * database. &#34;deletion_protection&#34; attribute does not provide protection against the deletion of the parent instance.
+     * 
+     */
+    public Optional<Output<Boolean>> enableDropProtection() {
+        return Optional.ofNullable(this.enableDropProtection);
+    }
+
+    /**
      * Encryption configuration for the database
      * Structure is documented below.
      * 
@@ -174,6 +197,7 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         this.databaseDialect = $.databaseDialect;
         this.ddls = $.ddls;
         this.deletionProtection = $.deletionProtection;
+        this.enableDropProtection = $.enableDropProtection;
         this.encryptionConfig = $.encryptionConfig;
         this.instance = $.instance;
         this.name = $.name;
@@ -285,6 +309,35 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder deletionProtection(Boolean deletionProtection) {
             return deletionProtection(Output.of(deletionProtection));
+        }
+
+        /**
+         * @param enableDropProtection Whether drop protection is enabled for this database. Defaults to false. Drop protection is different from the
+         * &#34;deletion_protection&#34; attribute in the following ways: (1) &#34;deletion_protection&#34; only protects the database from
+         * deletions in Terraform. whereas setting “enableDropProtection” to true protects the database from deletions in all
+         * interfaces. (2) Setting &#34;enableDropProtection&#34; to true also prevents the deletion of the parent instance containing the
+         * database. &#34;deletion_protection&#34; attribute does not provide protection against the deletion of the parent instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableDropProtection(@Nullable Output<Boolean> enableDropProtection) {
+            $.enableDropProtection = enableDropProtection;
+            return this;
+        }
+
+        /**
+         * @param enableDropProtection Whether drop protection is enabled for this database. Defaults to false. Drop protection is different from the
+         * &#34;deletion_protection&#34; attribute in the following ways: (1) &#34;deletion_protection&#34; only protects the database from
+         * deletions in Terraform. whereas setting “enableDropProtection” to true protects the database from deletions in all
+         * interfaces. (2) Setting &#34;enableDropProtection&#34; to true also prevents the deletion of the parent instance containing the
+         * database. &#34;deletion_protection&#34; attribute does not provide protection against the deletion of the parent instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableDropProtection(Boolean enableDropProtection) {
+            return enableDropProtection(Output.of(enableDropProtection));
         }
 
         /**

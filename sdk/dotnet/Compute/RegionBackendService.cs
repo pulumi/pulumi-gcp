@@ -251,6 +251,12 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
+        /// The security policy associated with this backend service.
+        /// </summary>
+        [Output("securityPolicy")]
+        public Output<string?> SecurityPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// The URI of the created resource.
         /// </summary>
         [Output("selfLink")]
@@ -520,6 +526,12 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Region { get; set; }
 
         /// <summary>
+        /// The security policy associated with this backend service.
+        /// </summary>
+        [Input("securityPolicy")]
+        public Input<string>? SecurityPolicy { get; set; }
+
+        /// <summary>
         /// Type of session affinity to use. The default is NONE. Session affinity is
         /// not applicable if the protocol is UDP.
         /// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
@@ -756,6 +768,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// The security policy associated with this backend service.
+        /// </summary>
+        [Input("securityPolicy")]
+        public Input<string>? SecurityPolicy { get; set; }
 
         /// <summary>
         /// The URI of the created resource.

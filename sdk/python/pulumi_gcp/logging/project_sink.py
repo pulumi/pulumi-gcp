@@ -33,7 +33,8 @@ class ProjectSinkArgs:
                - `storage.googleapis.com/[GCS_BUCKET]`
                - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
                - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-               - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+               - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
+               - `logging.googleapis.com/projects/[PROJECT_ID]`
                
                The writer associated with the sink must have access to write to the above resource.
         :param pulumi.Input['ProjectSinkBigqueryOptionsArgs'] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
@@ -79,7 +80,8 @@ class ProjectSinkArgs:
         - `storage.googleapis.com/[GCS_BUCKET]`
         - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
         - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-        - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+        - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
+        - `logging.googleapis.com/projects/[PROJECT_ID]`
 
         The writer associated with the sink must have access to write to the above resource.
         """
@@ -215,7 +217,8 @@ class _ProjectSinkState:
                - `storage.googleapis.com/[GCS_BUCKET]`
                - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
                - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-               - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+               - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
+               - `logging.googleapis.com/projects/[PROJECT_ID]`
                
                The writer associated with the sink must have access to write to the above resource.
         :param pulumi.Input[bool] disabled: If set to True, then this sink is disabled and it does not export any log entries.
@@ -288,7 +291,8 @@ class _ProjectSinkState:
         - `storage.googleapis.com/[GCS_BUCKET]`
         - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
         - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-        - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+        - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
+        - `logging.googleapis.com/projects/[PROJECT_ID]`
 
         The writer associated with the sink must have access to write to the above resource.
         """
@@ -424,7 +428,8 @@ class ProjectSink(pulumi.CustomResource):
                - `storage.googleapis.com/[GCS_BUCKET]`
                - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
                - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-               - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+               - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
+               - `logging.googleapis.com/projects/[PROJECT_ID]`
                
                The writer associated with the sink must have access to write to the above resource.
         :param pulumi.Input[bool] disabled: If set to True, then this sink is disabled and it does not export any log entries.
@@ -535,7 +540,8 @@ class ProjectSink(pulumi.CustomResource):
                - `storage.googleapis.com/[GCS_BUCKET]`
                - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
                - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-               - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+               - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
+               - `logging.googleapis.com/projects/[PROJECT_ID]`
                
                The writer associated with the sink must have access to write to the above resource.
         :param pulumi.Input[bool] disabled: If set to True, then this sink is disabled and it does not export any log entries.
@@ -595,7 +601,8 @@ class ProjectSink(pulumi.CustomResource):
         - `storage.googleapis.com/[GCS_BUCKET]`
         - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
         - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-        - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+        - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
+        - `logging.googleapis.com/projects/[PROJECT_ID]`
 
         The writer associated with the sink must have access to write to the above resource.
         """

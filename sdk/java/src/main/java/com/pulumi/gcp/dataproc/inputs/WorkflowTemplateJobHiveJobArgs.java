@@ -20,14 +20,14 @@ public final class WorkflowTemplateJobHiveJobArgs extends com.pulumi.resources.R
     public static final WorkflowTemplateJobHiveJobArgs Empty = new WorkflowTemplateJobHiveJobArgs();
 
     /**
-     * Optional. Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
+     * Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
      * 
      */
     @Import(name="continueOnFailure")
     private @Nullable Output<Boolean> continueOnFailure;
 
     /**
-     * @return Optional. Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
+     * @return Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
      * 
      */
     public Optional<Output<Boolean>> continueOnFailure() {
@@ -35,14 +35,14 @@ public final class WorkflowTemplateJobHiveJobArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Optional. HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
+     * HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
      * 
      */
     @Import(name="jarFileUris")
     private @Nullable Output<List<String>> jarFileUris;
 
     /**
-     * @return Optional. HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
+     * @return HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
      * 
      */
     public Optional<Output<List<String>>> jarFileUris() {
@@ -50,14 +50,14 @@ public final class WorkflowTemplateJobHiveJobArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
+     * A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
      * 
      */
     @Import(name="properties")
     private @Nullable Output<Map<String,String>> properties;
 
     /**
-     * @return Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
+     * @return A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
      * 
      */
     public Optional<Output<Map<String,String>>> properties() {
@@ -95,14 +95,14 @@ public final class WorkflowTemplateJobHiveJobArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Optional. Mapping of query variable names to values (equivalent to the Hive command: `SET name=&#34;value&#34;;`).
+     * Mapping of query variable names to values (equivalent to the Hive command: `SET name=&#34;value&#34;;`).
      * 
      */
     @Import(name="scriptVariables")
     private @Nullable Output<Map<String,String>> scriptVariables;
 
     /**
-     * @return Optional. Mapping of query variable names to values (equivalent to the Hive command: `SET name=&#34;value&#34;;`).
+     * @return Mapping of query variable names to values (equivalent to the Hive command: `SET name=&#34;value&#34;;`).
      * 
      */
     public Optional<Output<Map<String,String>>> scriptVariables() {
@@ -139,7 +139,7 @@ public final class WorkflowTemplateJobHiveJobArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param continueOnFailure Optional. Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
+         * @param continueOnFailure Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
          * 
          * @return builder
          * 
@@ -150,7 +150,7 @@ public final class WorkflowTemplateJobHiveJobArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param continueOnFailure Optional. Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
+         * @param continueOnFailure Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
          * 
          * @return builder
          * 
@@ -160,7 +160,7 @@ public final class WorkflowTemplateJobHiveJobArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param jarFileUris Optional. HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
+         * @param jarFileUris HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
          * 
          * @return builder
          * 
@@ -171,7 +171,7 @@ public final class WorkflowTemplateJobHiveJobArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param jarFileUris Optional. HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
+         * @param jarFileUris HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
          * 
          * @return builder
          * 
@@ -181,7 +181,7 @@ public final class WorkflowTemplateJobHiveJobArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param jarFileUris Optional. HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
+         * @param jarFileUris HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
          * 
          * @return builder
          * 
@@ -191,7 +191,7 @@ public final class WorkflowTemplateJobHiveJobArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param properties Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
+         * @param properties A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
          * 
          * @return builder
          * 
@@ -202,7 +202,7 @@ public final class WorkflowTemplateJobHiveJobArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param properties Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
+         * @param properties A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
          * 
          * @return builder
          * 
@@ -254,7 +254,7 @@ public final class WorkflowTemplateJobHiveJobArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param scriptVariables Optional. Mapping of query variable names to values (equivalent to the Hive command: `SET name=&#34;value&#34;;`).
+         * @param scriptVariables Mapping of query variable names to values (equivalent to the Hive command: `SET name=&#34;value&#34;;`).
          * 
          * @return builder
          * 
@@ -265,7 +265,7 @@ public final class WorkflowTemplateJobHiveJobArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param scriptVariables Optional. Mapping of query variable names to values (equivalent to the Hive command: `SET name=&#34;value&#34;;`).
+         * @param scriptVariables Mapping of query variable names to values (equivalent to the Hive command: `SET name=&#34;value&#34;;`).
          * 
          * @return builder
          * 

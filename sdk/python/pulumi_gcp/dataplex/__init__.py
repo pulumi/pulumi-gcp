@@ -16,11 +16,16 @@ from .datascan_iam_policy import *
 from .get_asset_iam_policy import *
 from .get_datascan_iam_policy import *
 from .get_lake_iam_policy import *
+from .get_task_iam_policy import *
 from .get_zone_iam_policy import *
 from .lake import *
 from .lake_iam_binding import *
 from .lake_iam_member import *
 from .lake_iam_policy import *
+from .task import *
+from .task_iam_binding import *
+from .task_iam_member import *
+from .task_iam_policy import *
 from .zone import *
 from .zone_iam_binding import *
 from .zone_iam_member import *

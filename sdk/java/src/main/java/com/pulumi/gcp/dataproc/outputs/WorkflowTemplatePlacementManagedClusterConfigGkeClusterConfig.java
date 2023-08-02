@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig {
     /**
-     * @return Optional. A target for the deployment.
+     * @return A target for the deployment.
      * 
      */
     private @Nullable WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget namespacedGkeDeploymentTarget;
 
     private WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig() {}
     /**
-     * @return Optional. A target for the deployment.
+     * @return A target for the deployment.
      * 
      */
     public Optional<WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget> namespacedGkeDeploymentTarget() {

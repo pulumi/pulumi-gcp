@@ -13,13 +13,13 @@ namespace Pulumi.Gcp.Dataproc.Inputs
     public sealed class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. A namespace within the GKE cluster to deploy into.
+        /// A namespace within the GKE cluster to deploy into.
         /// </summary>
         [Input("clusterNamespace")]
         public Input<string>? ClusterNamespace { get; set; }
 
         /// <summary>
-        /// Optional. The target GKE cluster to deploy to. Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
+        /// The target GKE cluster to deploy to. Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
         /// </summary>
         [Input("targetGkeCluster")]
         public Input<string>? TargetGkeCluster { get; set; }

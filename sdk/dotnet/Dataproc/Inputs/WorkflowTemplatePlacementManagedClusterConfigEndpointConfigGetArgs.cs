@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
     public sealed class WorkflowTemplatePlacementManagedClusterConfigEndpointConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
+        /// If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
         /// </summary>
         [Input("enableHttpPortAccess")]
         public Input<bool>? EnableHttpPortAccess { get; set; }

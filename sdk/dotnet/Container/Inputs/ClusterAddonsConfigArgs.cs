@@ -66,7 +66,7 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<Inputs.ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs>? GcpFilestoreCsiDriverConfig { get; set; }
 
         /// <summary>
-        /// )) The status of the GCSFuse CSI driver addon,
+        /// The status of the GCSFuse CSI driver addon,
         /// which allows the usage of a gcs bucket as volumes.
         /// It is disabled by default; set `enabled = true` to enable.
         /// </summary>

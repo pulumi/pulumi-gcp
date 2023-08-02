@@ -21,6 +21,7 @@ class ServiceArgs:
                  binary_authorization: Optional[pulumi.Input['ServiceBinaryAuthorizationArgs']] = None,
                  client: Optional[pulumi.Input[str]] = None,
                  client_version: Optional[pulumi.Input[str]] = None,
+                 custom_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ingress: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -47,6 +48,9 @@ class ServiceArgs:
                Structure is documented below.
         :param pulumi.Input[str] client: Arbitrary identifier for the API client.
         :param pulumi.Input[str] client_version: Arbitrary version identifier for the API client.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_audiences: One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
+               string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
+               https://cloud.google.com/run/docs/configuring/custom-audiences.
         :param pulumi.Input[str] description: User-provided description of the Service. This field currently has a 512-character limit.
         :param pulumi.Input[str] ingress: Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
                Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
@@ -80,6 +84,8 @@ class ServiceArgs:
             pulumi.set(__self__, "client", client)
         if client_version is not None:
             pulumi.set(__self__, "client_version", client_version)
+        if custom_audiences is not None:
+            pulumi.set(__self__, "custom_audiences", custom_audiences)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if ingress is not None:
@@ -167,6 +173,20 @@ class ServiceArgs:
     @client_version.setter
     def client_version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "client_version", value)
+
+    @property
+    @pulumi.getter(name="customAudiences")
+    def custom_audiences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
+        string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
+        https://cloud.google.com/run/docs/configuring/custom-audiences.
+        """
+        return pulumi.get(self, "custom_audiences")
+
+    @custom_audiences.setter
+    def custom_audiences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "custom_audiences", value)
 
     @property
     @pulumi.getter
@@ -288,6 +308,7 @@ class _ServiceState:
                  client: Optional[pulumi.Input[str]] = None,
                  client_version: Optional[pulumi.Input[str]] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceConditionArgs']]]] = None,
+                 custom_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  generation: Optional[pulumi.Input[str]] = None,
@@ -325,6 +346,9 @@ class _ServiceState:
         :param pulumi.Input[str] client_version: Arbitrary version identifier for the API client.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceConditionArgs']]] conditions: The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Service does not reach its Serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_audiences: One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
+               string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
+               https://cloud.google.com/run/docs/configuring/custom-audiences.
         :param pulumi.Input[str] description: User-provided description of the Service. This field currently has a 512-character limit.
         :param pulumi.Input[str] etag: A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
         :param pulumi.Input[str] generation: A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
@@ -377,6 +401,8 @@ class _ServiceState:
             pulumi.set(__self__, "client_version", client_version)
         if conditions is not None:
             pulumi.set(__self__, "conditions", conditions)
+        if custom_audiences is not None:
+            pulumi.set(__self__, "custom_audiences", custom_audiences)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if etag is not None:
@@ -486,6 +512,20 @@ class _ServiceState:
     @conditions.setter
     def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceConditionArgs']]]]):
         pulumi.set(self, "conditions", value)
+
+    @property
+    @pulumi.getter(name="customAudiences")
+    def custom_audiences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
+        string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
+        https://cloud.google.com/run/docs/configuring/custom-audiences.
+        """
+        return pulumi.get(self, "custom_audiences")
+
+    @custom_audiences.setter
+    def custom_audiences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "custom_audiences", value)
 
     @property
     @pulumi.getter
@@ -747,6 +787,7 @@ class Service(pulumi.CustomResource):
                  binary_authorization: Optional[pulumi.Input[pulumi.InputType['ServiceBinaryAuthorizationArgs']]] = None,
                  client: Optional[pulumi.Input[str]] = None,
                  client_version: Optional[pulumi.Input[str]] = None,
+                 custom_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ingress: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1028,6 +1069,9 @@ class Service(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] client: Arbitrary identifier for the API client.
         :param pulumi.Input[str] client_version: Arbitrary version identifier for the API client.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_audiences: One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
+               string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
+               https://cloud.google.com/run/docs/configuring/custom-audiences.
         :param pulumi.Input[str] description: User-provided description of the Service. This field currently has a 512-character limit.
         :param pulumi.Input[str] ingress: Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
                Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
@@ -1334,6 +1378,7 @@ class Service(pulumi.CustomResource):
                  binary_authorization: Optional[pulumi.Input[pulumi.InputType['ServiceBinaryAuthorizationArgs']]] = None,
                  client: Optional[pulumi.Input[str]] = None,
                  client_version: Optional[pulumi.Input[str]] = None,
+                 custom_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  ingress: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1356,6 +1401,7 @@ class Service(pulumi.CustomResource):
             __props__.__dict__["binary_authorization"] = binary_authorization
             __props__.__dict__["client"] = client
             __props__.__dict__["client_version"] = client_version
+            __props__.__dict__["custom_audiences"] = custom_audiences
             __props__.__dict__["description"] = description
             __props__.__dict__["ingress"] = ingress
             __props__.__dict__["labels"] = labels
@@ -1393,6 +1439,7 @@ class Service(pulumi.CustomResource):
             client: Optional[pulumi.Input[str]] = None,
             client_version: Optional[pulumi.Input[str]] = None,
             conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceConditionArgs']]]]] = None,
+            custom_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             generation: Optional[pulumi.Input[str]] = None,
@@ -1435,6 +1482,9 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] client_version: Arbitrary version identifier for the API client.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceConditionArgs']]]] conditions: The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Service does not reach its Serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_audiences: One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
+               string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
+               https://cloud.google.com/run/docs/configuring/custom-audiences.
         :param pulumi.Input[str] description: User-provided description of the Service. This field currently has a 512-character limit.
         :param pulumi.Input[str] etag: A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
         :param pulumi.Input[str] generation: A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
@@ -1486,6 +1536,7 @@ class Service(pulumi.CustomResource):
         __props__.__dict__["client"] = client
         __props__.__dict__["client_version"] = client_version
         __props__.__dict__["conditions"] = conditions
+        __props__.__dict__["custom_audiences"] = custom_audiences
         __props__.__dict__["description"] = description
         __props__.__dict__["etag"] = etag
         __props__.__dict__["generation"] = generation
@@ -1557,6 +1608,16 @@ class Service(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "conditions")
+
+    @property
+    @pulumi.getter(name="customAudiences")
+    def custom_audiences(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
+        string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
+        https://cloud.google.com/run/docs/configuring/custom-audiences.
+        """
+        return pulumi.get(self, "custom_audiences")
 
     @property
     @pulumi.getter

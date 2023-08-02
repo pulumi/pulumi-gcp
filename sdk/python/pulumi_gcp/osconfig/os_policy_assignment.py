@@ -486,9 +486,13 @@ class OsPolicyAssignment(pulumi.CustomResource):
                  skip_await_rollout: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        ## OS policy assignment is an API resource that is used to apply a set of OS policies to a dynamically targeted group of Compute Engine VM instances.
+        ## subcategory: "OS Config"
 
-        # google\\_os\\_config\\_os\\_policy\\_assignment
+        description: |-
+            OS policy assignment is an API resource that is used to apply a set of OS policies to a dynamically targeted group of Compute Engine VM instances.
+        ---
+
+        # osconfig.OsPolicyAssignment
 
         OS policy assignment is an API resource that is used to apply a set of OS
         policies to a dynamically targeted group of Compute Engine VM instances. An OS
@@ -635,9 +639,13 @@ class OsPolicyAssignment(pulumi.CustomResource):
                  args: OsPolicyAssignmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## OS policy assignment is an API resource that is used to apply a set of OS policies to a dynamically targeted group of Compute Engine VM instances.
+        ## subcategory: "OS Config"
 
-        # google\\_os\\_config\\_os\\_policy\\_assignment
+        description: |-
+            OS policy assignment is an API resource that is used to apply a set of OS policies to a dynamically targeted group of Compute Engine VM instances.
+        ---
+
+        # osconfig.OsPolicyAssignment
 
         OS policy assignment is an API resource that is used to apply a set of OS
         policies to a dynamically targeted group of Compute Engine VM instances. An OS

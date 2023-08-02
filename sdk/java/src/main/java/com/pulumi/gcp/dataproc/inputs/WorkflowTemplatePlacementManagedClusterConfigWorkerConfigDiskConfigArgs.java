@@ -17,14 +17,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDisk
     public static final WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs Empty = new WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs();
 
     /**
-     * Optional. Size in GB of the boot disk (default is 500GB).
+     * Size in GB of the boot disk (default is 500GB).
      * 
      */
     @Import(name="bootDiskSizeGb")
     private @Nullable Output<Integer> bootDiskSizeGb;
 
     /**
-     * @return Optional. Size in GB of the boot disk (default is 500GB).
+     * @return Size in GB of the boot disk (default is 500GB).
      * 
      */
     public Optional<Output<Integer>> bootDiskSizeGb() {
@@ -32,14 +32,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDisk
     }
 
     /**
-     * Optional. Type of the boot disk (default is &#34;pd-standard&#34;). Valid values: &#34;pd-ssd&#34; (Persistent Disk Solid State Drive) or &#34;pd-standard&#34; (Persistent Disk Hard Disk Drive).
+     * Type of the boot disk (default is &#34;pd-standard&#34;). Valid values: &#34;pd-ssd&#34; (Persistent Disk Solid State Drive) or &#34;pd-standard&#34; (Persistent Disk Hard Disk Drive).
      * 
      */
     @Import(name="bootDiskType")
     private @Nullable Output<String> bootDiskType;
 
     /**
-     * @return Optional. Type of the boot disk (default is &#34;pd-standard&#34;). Valid values: &#34;pd-ssd&#34; (Persistent Disk Solid State Drive) or &#34;pd-standard&#34; (Persistent Disk Hard Disk Drive).
+     * @return Type of the boot disk (default is &#34;pd-standard&#34;). Valid values: &#34;pd-ssd&#34; (Persistent Disk Solid State Drive) or &#34;pd-standard&#34; (Persistent Disk Hard Disk Drive).
      * 
      */
     public Optional<Output<String>> bootDiskType() {
@@ -47,14 +47,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDisk
     }
 
     /**
-     * Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+     * Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
      * 
      */
     @Import(name="numLocalSsds")
     private @Nullable Output<Integer> numLocalSsds;
 
     /**
-     * @return Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+     * @return Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
      * 
      */
     public Optional<Output<Integer>> numLocalSsds() {
@@ -88,7 +88,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDisk
         }
 
         /**
-         * @param bootDiskSizeGb Optional. Size in GB of the boot disk (default is 500GB).
+         * @param bootDiskSizeGb Size in GB of the boot disk (default is 500GB).
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDisk
         }
 
         /**
-         * @param bootDiskSizeGb Optional. Size in GB of the boot disk (default is 500GB).
+         * @param bootDiskSizeGb Size in GB of the boot disk (default is 500GB).
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDisk
         }
 
         /**
-         * @param bootDiskType Optional. Type of the boot disk (default is &#34;pd-standard&#34;). Valid values: &#34;pd-ssd&#34; (Persistent Disk Solid State Drive) or &#34;pd-standard&#34; (Persistent Disk Hard Disk Drive).
+         * @param bootDiskType Type of the boot disk (default is &#34;pd-standard&#34;). Valid values: &#34;pd-ssd&#34; (Persistent Disk Solid State Drive) or &#34;pd-standard&#34; (Persistent Disk Hard Disk Drive).
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDisk
         }
 
         /**
-         * @param bootDiskType Optional. Type of the boot disk (default is &#34;pd-standard&#34;). Valid values: &#34;pd-ssd&#34; (Persistent Disk Solid State Drive) or &#34;pd-standard&#34; (Persistent Disk Hard Disk Drive).
+         * @param bootDiskType Type of the boot disk (default is &#34;pd-standard&#34;). Valid values: &#34;pd-ssd&#34; (Persistent Disk Solid State Drive) or &#34;pd-standard&#34; (Persistent Disk Hard Disk Drive).
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDisk
         }
 
         /**
-         * @param numLocalSsds Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+         * @param numLocalSsds Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDisk
         }
 
         /**
-         * @param numLocalSsds Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+         * @param numLocalSsds Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
          * 
          * @return builder
          * 

@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     public sealed class WorkflowTemplatePlacement
     {
         /// <summary>
-        /// Optional. A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
+        /// A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
         /// </summary>
         public readonly Outputs.WorkflowTemplatePlacementClusterSelector? ClusterSelector;
         /// <summary>

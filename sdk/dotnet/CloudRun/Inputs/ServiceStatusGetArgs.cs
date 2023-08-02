@@ -54,6 +54,21 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         [Input("observedGeneration")]
         public Input<int>? ObservedGeneration { get; set; }
 
+        [Input("traffics")]
+        private InputList<Inputs.ServiceStatusTrafficGetArgs>? _traffics;
+
+        /// <summary>
+        /// (Output)
+        /// Traffic specifies how to distribute traffic over a collection of Knative Revisions
+        /// and Configurations
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ServiceStatusTrafficGetArgs> Traffics
+        {
+            get => _traffics ?? (_traffics = new InputList<Inputs.ServiceStatusTrafficGetArgs>());
+            set => _traffics = value;
+        }
+
         /// <summary>
         /// (Output)
         /// URL displays the URL for accessing tagged traffic targets. URL is displayed in status,

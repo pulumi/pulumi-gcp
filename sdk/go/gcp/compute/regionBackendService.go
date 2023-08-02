@@ -161,6 +161,8 @@ type RegionBackendService struct {
 	// The Region in which the created backend service should reside.
 	// If it is not provided, the provider region is used.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// The security policy associated with this backend service.
+	SecurityPolicy pulumi.StringPtrOutput `pulumi:"securityPolicy"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Type of session affinity to use. The default is NONE. Session affinity is
@@ -310,6 +312,8 @@ type regionBackendServiceState struct {
 	// The Region in which the created backend service should reside.
 	// If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
+	// The security policy associated with this backend service.
+	SecurityPolicy *string `pulumi:"securityPolicy"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// Type of session affinity to use. The default is NONE. Session affinity is
@@ -430,6 +434,8 @@ type RegionBackendServiceState struct {
 	// The Region in which the created backend service should reside.
 	// If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
+	// The security policy associated with this backend service.
+	SecurityPolicy pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
 	// Type of session affinity to use. The default is NONE. Session affinity is
@@ -549,6 +555,8 @@ type regionBackendServiceArgs struct {
 	// The Region in which the created backend service should reside.
 	// If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
+	// The security policy associated with this backend service.
+	SecurityPolicy *string `pulumi:"securityPolicy"`
 	// Type of session affinity to use. The default is NONE. Session affinity is
 	// not applicable if the protocol is UDP.
 	// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
@@ -663,6 +671,8 @@ type RegionBackendServiceArgs struct {
 	// The Region in which the created backend service should reside.
 	// If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
+	// The security policy associated with this backend service.
+	SecurityPolicy pulumi.StringPtrInput
 	// Type of session affinity to use. The default is NONE. Session affinity is
 	// not applicable if the protocol is UDP.
 	// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
@@ -939,6 +949,11 @@ func (o RegionBackendServiceOutput) Protocol() pulumi.StringOutput {
 // If it is not provided, the provider region is used.
 func (o RegionBackendServiceOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionBackendService) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// The security policy associated with this backend service.
+func (o RegionBackendServiceOutput) SecurityPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionBackendService) pulumi.StringPtrOutput { return v.SecurityPolicy }).(pulumi.StringPtrOutput)
 }
 
 // The URI of the created resource.

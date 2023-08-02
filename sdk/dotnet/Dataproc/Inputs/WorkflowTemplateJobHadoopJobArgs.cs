@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputList<string>? _archiveUris;
 
         /// <summary>
-        /// Optional. HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip.
+        /// HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip.
         /// </summary>
         public InputList<string> ArchiveUris
         {
@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputList<string>? _args;
 
         /// <summary>
-        /// Optional. The arguments to pass to the driver. Do not include arguments, such as `-libjars` or `-Dfoo=bar`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+        /// The arguments to pass to the driver. Do not include arguments, such as `-libjars` or `-Dfoo=bar`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
         /// </summary>
         public InputList<string> Args
         {
@@ -40,7 +40,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputList<string>? _fileUris;
 
         /// <summary>
-        /// Optional. HCFS (Hadoop Compatible Filesystem) URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
+        /// HCFS (Hadoop Compatible Filesystem) URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
         /// </summary>
         public InputList<string> FileUris
         {
@@ -52,7 +52,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputList<string>? _jarFileUris;
 
         /// <summary>
-        /// Optional. Jar file URIs to add to the CLASSPATHs of the Hadoop driver and tasks.
+        /// Jar file URIs to add to the CLASSPATHs of the Hadoop driver and tasks.
         /// </summary>
         public InputList<string> JarFileUris
         {
@@ -61,7 +61,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         }
 
         /// <summary>
-        /// Optional. The runtime log config for job execution.
+        /// The runtime log config for job execution.
         /// </summary>
         [Input("loggingConfig")]
         public Input<Inputs.WorkflowTemplateJobHadoopJobLoggingConfigArgs>? LoggingConfig { get; set; }
@@ -82,7 +82,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputMap<string>? _properties;
 
         /// <summary>
-        /// Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
+        /// A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
         /// </summary>
         public InputMap<string> Properties
         {

@@ -14,15 +14,15 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     public sealed class WorkflowTemplateJobSparkSqlJob
     {
         /// <summary>
-        /// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+        /// HCFS URIs of jar files to be added to the Spark CLASSPATH.
         /// </summary>
         public readonly ImmutableArray<string> JarFileUris;
         /// <summary>
-        /// Optional. The runtime log config for job execution.
+        /// The runtime log config for job execution.
         /// </summary>
         public readonly Outputs.WorkflowTemplateJobSparkSqlJobLoggingConfig? LoggingConfig;
         /// <summary>
-        /// Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.
+        /// A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Properties;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly Outputs.WorkflowTemplateJobSparkSqlJobQueryList? QueryList;
         /// <summary>
-        /// Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
+        /// Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
         /// </summary>
         public readonly ImmutableDictionary<string, string>? ScriptVariables;
 

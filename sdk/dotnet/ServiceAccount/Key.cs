@@ -42,7 +42,7 @@ namespace Pulumi.Gcp.ServiceAccount
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
-    /// using Time = Pulumi.Time;
+    /// using Time = Pulumiverse.Time;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -53,7 +53,7 @@ namespace Pulumi.Gcp.ServiceAccount
     ///     });
     /// 
     ///     // note this requires the terraform to be run regularly
-    ///     var mykeyRotation = new Time.Index.Time_rotating("mykeyRotation", new()
+    ///     var mykeyRotation = new Time.Rotating("mykeyRotation", new()
     ///     {
     ///         RotationDays = 30,
     ///     });

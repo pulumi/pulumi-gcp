@@ -394,7 +394,7 @@ namespace Pulumi.Gcp.NetworkServices
         /// Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
         /// </summary>
         [Output("scope")]
-        public Output<string> Scope { get; private set; } = null!;
+        public Output<string?> Scope { get; private set; } = null!;
 
         /// <summary>
         /// Server-defined URL of this resource.
@@ -587,8 +587,8 @@ namespace Pulumi.Gcp.NetworkServices
         /// a single coniguration to the proxy/load balancer.
         /// Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
         /// </summary>
-        [Input("scope", required: true)]
-        public Input<string> Scope { get; set; } = null!;
+        [Input("scope")]
+        public Input<string>? Scope { get; set; }
 
         /// <summary>
         /// A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated.

@@ -12,6 +12,22 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class ClusterNodePoolNetworkConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("additionalNodeNetworkConfigs")]
+        private InputList<Inputs.ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigGetArgs>? _additionalNodeNetworkConfigs;
+        public InputList<Inputs.ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigGetArgs> AdditionalNodeNetworkConfigs
+        {
+            get => _additionalNodeNetworkConfigs ?? (_additionalNodeNetworkConfigs = new InputList<Inputs.ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigGetArgs>());
+            set => _additionalNodeNetworkConfigs = value;
+        }
+
+        [Input("additionalPodNetworkConfigs")]
+        private InputList<Inputs.ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigGetArgs>? _additionalPodNetworkConfigs;
+        public InputList<Inputs.ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigGetArgs> AdditionalPodNetworkConfigs
+        {
+            get => _additionalPodNetworkConfigs ?? (_additionalPodNetworkConfigs = new InputList<Inputs.ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigGetArgs>());
+            set => _additionalPodNetworkConfigs = value;
+        }
+
         /// <summary>
         /// Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
         /// </summary>

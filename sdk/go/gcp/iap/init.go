@@ -61,6 +61,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WebIamMember{}
 	case "gcp:iap/webIamPolicy:WebIamPolicy":
 		r = &WebIamPolicy{}
+	case "gcp:iap/webRegionBackendServiceIamBinding:WebRegionBackendServiceIamBinding":
+		r = &WebRegionBackendServiceIamBinding{}
+	case "gcp:iap/webRegionBackendServiceIamMember:WebRegionBackendServiceIamMember":
+		r = &WebRegionBackendServiceIamMember{}
+	case "gcp:iap/webRegionBackendServiceIamPolicy:WebRegionBackendServiceIamPolicy":
+		r = &WebRegionBackendServiceIamPolicy{}
 	case "gcp:iap/webTypeAppEngingIamBinding:WebTypeAppEngingIamBinding":
 		r = &WebTypeAppEngingIamBinding{}
 	case "gcp:iap/webTypeAppEngingIamMember:WebTypeAppEngingIamMember":
@@ -184,6 +190,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"iap/webIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"iap/webRegionBackendServiceIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"iap/webRegionBackendServiceIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"iap/webRegionBackendServiceIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

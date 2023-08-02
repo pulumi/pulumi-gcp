@@ -18,7 +18,7 @@ public final class WorkflowTemplatePlacementClusterSelector {
      */
     private Map<String,String> clusterLabels;
     /**
-     * @return Optional. The zone where workflow process executes. This parameter does not affect the selection of the cluster. If unspecified, the zone of the first cluster matching the selector is used.
+     * @return The zone where workflow process executes. This parameter does not affect the selection of the cluster. If unspecified, the zone of the first cluster matching the selector is used.
      * 
      */
     private @Nullable String zone;
@@ -32,7 +32,7 @@ public final class WorkflowTemplatePlacementClusterSelector {
         return this.clusterLabels;
     }
     /**
-     * @return Optional. The zone where workflow process executes. This parameter does not affect the selection of the cluster. If unspecified, the zone of the first cluster matching the selector is used.
+     * @return The zone where workflow process executes. This parameter does not affect the selection of the cluster. If unspecified, the zone of the first cluster matching the selector is used.
      * 
      */
     public Optional<String> zone() {

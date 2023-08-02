@@ -127,6 +127,10 @@ import (
 //							}).(pulumi.StringOutput),
 //							SchemaConfig: &healthcare.FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs{
 //								RecursiveStructureDepth: pulumi.Int(3),
+//								LastUpdatedPartitionConfig: &healthcare.FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs{
+//									Type:         pulumi.String("HOUR"),
+//									ExpirationMs: pulumi.String("1000000"),
+//								},
 //							},
 //						},
 //					},

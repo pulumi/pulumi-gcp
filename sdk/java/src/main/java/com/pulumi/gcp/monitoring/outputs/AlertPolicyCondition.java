@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.monitoring.outputs.AlertPolicyConditionConditionAbsent;
 import com.pulumi.gcp.monitoring.outputs.AlertPolicyConditionConditionMatchedLog;
 import com.pulumi.gcp.monitoring.outputs.AlertPolicyConditionConditionMonitoringQueryLanguage;
+import com.pulumi.gcp.monitoring.outputs.AlertPolicyConditionConditionPrometheusQueryLanguage;
 import com.pulumi.gcp.monitoring.outputs.AlertPolicyConditionConditionThreshold;
 import java.lang.String;
 import java.util.Objects;
@@ -35,6 +36,16 @@ public final class AlertPolicyCondition {
      * 
      */
     private @Nullable AlertPolicyConditionConditionMonitoringQueryLanguage conditionMonitoringQueryLanguage;
+    /**
+     * @return A Monitoring Query Language query that outputs a boolean stream
+     * A condition type that allows alert policies to be defined using
+     * Prometheus Query Language (PromQL).
+     * The PrometheusQueryLanguageCondition message contains information
+     * from a Prometheus alerting rule and its associated rule group.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable AlertPolicyConditionConditionPrometheusQueryLanguage conditionPrometheusQueryLanguage;
     /**
      * @return A condition that compares a time series against a
      * threshold.
@@ -91,6 +102,18 @@ public final class AlertPolicyCondition {
         return Optional.ofNullable(this.conditionMonitoringQueryLanguage);
     }
     /**
+     * @return A Monitoring Query Language query that outputs a boolean stream
+     * A condition type that allows alert policies to be defined using
+     * Prometheus Query Language (PromQL).
+     * The PrometheusQueryLanguageCondition message contains information
+     * from a Prometheus alerting rule and its associated rule group.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<AlertPolicyConditionConditionPrometheusQueryLanguage> conditionPrometheusQueryLanguage() {
+        return Optional.ofNullable(this.conditionPrometheusQueryLanguage);
+    }
+    /**
      * @return A condition that compares a time series against a
      * threshold.
      * Structure is documented below.
@@ -136,6 +159,7 @@ public final class AlertPolicyCondition {
         private @Nullable AlertPolicyConditionConditionAbsent conditionAbsent;
         private @Nullable AlertPolicyConditionConditionMatchedLog conditionMatchedLog;
         private @Nullable AlertPolicyConditionConditionMonitoringQueryLanguage conditionMonitoringQueryLanguage;
+        private @Nullable AlertPolicyConditionConditionPrometheusQueryLanguage conditionPrometheusQueryLanguage;
         private @Nullable AlertPolicyConditionConditionThreshold conditionThreshold;
         private String displayName;
         private @Nullable String name;
@@ -145,6 +169,7 @@ public final class AlertPolicyCondition {
     	      this.conditionAbsent = defaults.conditionAbsent;
     	      this.conditionMatchedLog = defaults.conditionMatchedLog;
     	      this.conditionMonitoringQueryLanguage = defaults.conditionMonitoringQueryLanguage;
+    	      this.conditionPrometheusQueryLanguage = defaults.conditionPrometheusQueryLanguage;
     	      this.conditionThreshold = defaults.conditionThreshold;
     	      this.displayName = defaults.displayName;
     	      this.name = defaults.name;
@@ -163,6 +188,11 @@ public final class AlertPolicyCondition {
         @CustomType.Setter
         public Builder conditionMonitoringQueryLanguage(@Nullable AlertPolicyConditionConditionMonitoringQueryLanguage conditionMonitoringQueryLanguage) {
             this.conditionMonitoringQueryLanguage = conditionMonitoringQueryLanguage;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder conditionPrometheusQueryLanguage(@Nullable AlertPolicyConditionConditionPrometheusQueryLanguage conditionPrometheusQueryLanguage) {
+            this.conditionPrometheusQueryLanguage = conditionPrometheusQueryLanguage;
             return this;
         }
         @CustomType.Setter
@@ -185,6 +215,7 @@ public final class AlertPolicyCondition {
             o.conditionAbsent = conditionAbsent;
             o.conditionMatchedLog = conditionMatchedLog;
             o.conditionMonitoringQueryLanguage = conditionMonitoringQueryLanguage;
+            o.conditionPrometheusQueryLanguage = conditionPrometheusQueryLanguage;
             o.conditionThreshold = conditionThreshold;
             o.displayName = displayName;
             o.name = name;

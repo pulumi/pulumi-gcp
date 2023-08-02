@@ -143,6 +143,8 @@ __all__ = [
     'ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArgs',
     'ClusterNodePoolManagementArgs',
     'ClusterNodePoolNetworkConfigArgs',
+    'ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs',
+    'ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs',
     'ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs',
     'ClusterNodePoolNodeConfigArgs',
     'ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs',
@@ -186,6 +188,8 @@ __all__ = [
     'NodePoolAutoscalingArgs',
     'NodePoolManagementArgs',
     'NodePoolNetworkConfigArgs',
+    'NodePoolNetworkConfigAdditionalNodeNetworkConfigArgs',
+    'NodePoolNetworkConfigAdditionalPodNetworkConfigArgs',
     'NodePoolNetworkConfigPodCidrOverprovisionConfigArgs',
     'NodePoolNodeConfigArgs',
     'NodePoolNodeConfigAdvancedMachineFeaturesArgs',
@@ -2781,7 +2785,7 @@ class ClusterAddonsConfigArgs:
         :param pulumi.Input['ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs'] gcp_filestore_csi_driver_config: The status of the Filestore CSI driver addon,
                which allows the usage of filestore instance as volumes.
                It is disabled by default; set `enabled = true` to enable.
-        :param pulumi.Input['ClusterAddonsConfigGcsFuseCsiDriverConfigArgs'] gcs_fuse_csi_driver_config: )) The status of the GCSFuse CSI driver addon,
+        :param pulumi.Input['ClusterAddonsConfigGcsFuseCsiDriverConfigArgs'] gcs_fuse_csi_driver_config: The status of the GCSFuse CSI driver addon,
                which allows the usage of a gcs bucket as volumes.
                It is disabled by default; set `enabled = true` to enable.
         :param pulumi.Input['ClusterAddonsConfigGkeBackupAgentConfigArgs'] gke_backup_agent_config: .
@@ -2911,7 +2915,7 @@ class ClusterAddonsConfigArgs:
     @pulumi.getter(name="gcsFuseCsiDriverConfig")
     def gcs_fuse_csi_driver_config(self) -> Optional[pulumi.Input['ClusterAddonsConfigGcsFuseCsiDriverConfigArgs']]:
         """
-        )) The status of the GCSFuse CSI driver addon,
+        The status of the GCSFuse CSI driver addon,
         which allows the usage of a gcs bucket as volumes.
         It is disabled by default; set `enabled = true` to enable.
         """
@@ -4665,7 +4669,7 @@ class ClusterMaintenancePolicyArgs:
                ```python
                import pulumi
                ```
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionArgs']]] maintenance_exclusions: Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to three maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionArgs']]] maintenance_exclusions: Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to 20 maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
         :param pulumi.Input['ClusterMaintenancePolicyRecurringWindowArgs'] recurring_window: Time window for recurring maintenance operations.
                
                Specify `start_time` and `end_time` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) "Zulu" date format.  The start time's date is
@@ -4712,7 +4716,7 @@ class ClusterMaintenancePolicyArgs:
     @pulumi.getter(name="maintenanceExclusions")
     def maintenance_exclusions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionArgs']]]]:
         """
-        Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to three maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
+        Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to 20 maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
         """
         return pulumi.get(self, "maintenance_exclusions")
 
@@ -7083,6 +7087,8 @@ class ClusterNodePoolManagementArgs:
 @pulumi.input_type
 class ClusterNodePoolNetworkConfigArgs:
     def __init__(__self__, *,
+                 additional_node_network_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs']]]] = None,
+                 additional_pod_network_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs']]]] = None,
                  create_pod_range: Optional[pulumi.Input[bool]] = None,
                  enable_private_nodes: Optional[pulumi.Input[bool]] = None,
                  pod_cidr_overprovision_config: Optional[pulumi.Input['ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs']] = None,
@@ -7097,6 +7103,10 @@ class ClusterNodePoolNetworkConfigArgs:
         :param pulumi.Input[str] pod_ipv4_cidr_block: The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
         :param pulumi.Input[str] pod_range: The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
         """
+        if additional_node_network_configs is not None:
+            pulumi.set(__self__, "additional_node_network_configs", additional_node_network_configs)
+        if additional_pod_network_configs is not None:
+            pulumi.set(__self__, "additional_pod_network_configs", additional_pod_network_configs)
         if create_pod_range is not None:
             pulumi.set(__self__, "create_pod_range", create_pod_range)
         if enable_private_nodes is not None:
@@ -7107,6 +7117,24 @@ class ClusterNodePoolNetworkConfigArgs:
             pulumi.set(__self__, "pod_ipv4_cidr_block", pod_ipv4_cidr_block)
         if pod_range is not None:
             pulumi.set(__self__, "pod_range", pod_range)
+
+    @property
+    @pulumi.getter(name="additionalNodeNetworkConfigs")
+    def additional_node_network_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs']]]]:
+        return pulumi.get(self, "additional_node_network_configs")
+
+    @additional_node_network_configs.setter
+    def additional_node_network_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs']]]]):
+        pulumi.set(self, "additional_node_network_configs", value)
+
+    @property
+    @pulumi.getter(name="additionalPodNetworkConfigs")
+    def additional_pod_network_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs']]]]:
+        return pulumi.get(self, "additional_pod_network_configs")
+
+    @additional_pod_network_configs.setter
+    def additional_pod_network_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs']]]]):
+        pulumi.set(self, "additional_pod_network_configs", value)
 
     @property
     @pulumi.getter(name="createPodRange")
@@ -7167,6 +7195,100 @@ class ClusterNodePoolNetworkConfigArgs:
     @pod_range.setter
     def pod_range(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "pod_range", value)
+
+
+@pulumi.input_type
+class ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs:
+    def __init__(__self__, *,
+                 network: Optional[pulumi.Input[str]] = None,
+                 subnetwork: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] network: The name or self_link of the Google Compute Engine
+               network to which the cluster is connected. For Shared VPC, set this to the self link of the
+               shared network.
+        :param pulumi.Input[str] subnetwork: The name or self_link of the Google Compute Engine
+               subnetwork in which the cluster's instances are launched.
+        """
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if subnetwork is not None:
+            pulumi.set(__self__, "subnetwork", subnetwork)
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name or self_link of the Google Compute Engine
+        network to which the cluster is connected. For Shared VPC, set this to the self link of the
+        shared network.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter
+    def subnetwork(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name or self_link of the Google Compute Engine
+        subnetwork in which the cluster's instances are launched.
+        """
+        return pulumi.get(self, "subnetwork")
+
+    @subnetwork.setter
+    def subnetwork(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subnetwork", value)
+
+
+@pulumi.input_type
+class ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs:
+    def __init__(__self__, *,
+                 max_pods_per_node: Optional[pulumi.Input[int]] = None,
+                 secondary_pod_range: Optional[pulumi.Input[str]] = None,
+                 subnetwork: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] subnetwork: The name or self_link of the Google Compute Engine
+               subnetwork in which the cluster's instances are launched.
+        """
+        if max_pods_per_node is not None:
+            pulumi.set(__self__, "max_pods_per_node", max_pods_per_node)
+        if secondary_pod_range is not None:
+            pulumi.set(__self__, "secondary_pod_range", secondary_pod_range)
+        if subnetwork is not None:
+            pulumi.set(__self__, "subnetwork", subnetwork)
+
+    @property
+    @pulumi.getter(name="maxPodsPerNode")
+    def max_pods_per_node(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "max_pods_per_node")
+
+    @max_pods_per_node.setter
+    def max_pods_per_node(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_pods_per_node", value)
+
+    @property
+    @pulumi.getter(name="secondaryPodRange")
+    def secondary_pod_range(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "secondary_pod_range")
+
+    @secondary_pod_range.setter
+    def secondary_pod_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secondary_pod_range", value)
+
+    @property
+    @pulumi.getter
+    def subnetwork(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name or self_link of the Google Compute Engine
+        subnetwork in which the cluster's instances are launched.
+        """
+        return pulumi.get(self, "subnetwork")
+
+    @subnetwork.setter
+    def subnetwork(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subnetwork", value)
 
 
 @pulumi.input_type
@@ -9612,17 +9734,27 @@ class NodePoolManagementArgs:
 @pulumi.input_type
 class NodePoolNetworkConfigArgs:
     def __init__(__self__, *,
+                 additional_node_network_configs: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNetworkConfigAdditionalNodeNetworkConfigArgs']]]] = None,
+                 additional_pod_network_configs: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNetworkConfigAdditionalPodNetworkConfigArgs']]]] = None,
                  create_pod_range: Optional[pulumi.Input[bool]] = None,
                  enable_private_nodes: Optional[pulumi.Input[bool]] = None,
                  pod_cidr_overprovision_config: Optional[pulumi.Input['NodePoolNetworkConfigPodCidrOverprovisionConfigArgs']] = None,
                  pod_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  pod_range: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input['NodePoolNetworkConfigAdditionalNodeNetworkConfigArgs']]] additional_node_network_configs: We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface.
+               Structure is documented below
+        :param pulumi.Input[Sequence[pulumi.Input['NodePoolNetworkConfigAdditionalPodNetworkConfigArgs']]] additional_pod_network_configs: We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node.
+               Structure is documented below
         :param pulumi.Input[bool] create_pod_range: Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
         :param pulumi.Input[bool] enable_private_nodes: Whether nodes have internal IP addresses only.
         :param pulumi.Input[str] pod_ipv4_cidr_block: The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
         :param pulumi.Input[str] pod_range: The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
         """
+        if additional_node_network_configs is not None:
+            pulumi.set(__self__, "additional_node_network_configs", additional_node_network_configs)
+        if additional_pod_network_configs is not None:
+            pulumi.set(__self__, "additional_pod_network_configs", additional_pod_network_configs)
         if create_pod_range is not None:
             pulumi.set(__self__, "create_pod_range", create_pod_range)
         if enable_private_nodes is not None:
@@ -9633,6 +9765,32 @@ class NodePoolNetworkConfigArgs:
             pulumi.set(__self__, "pod_ipv4_cidr_block", pod_ipv4_cidr_block)
         if pod_range is not None:
             pulumi.set(__self__, "pod_range", pod_range)
+
+    @property
+    @pulumi.getter(name="additionalNodeNetworkConfigs")
+    def additional_node_network_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNetworkConfigAdditionalNodeNetworkConfigArgs']]]]:
+        """
+        We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface.
+        Structure is documented below
+        """
+        return pulumi.get(self, "additional_node_network_configs")
+
+    @additional_node_network_configs.setter
+    def additional_node_network_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNetworkConfigAdditionalNodeNetworkConfigArgs']]]]):
+        pulumi.set(self, "additional_node_network_configs", value)
+
+    @property
+    @pulumi.getter(name="additionalPodNetworkConfigs")
+    def additional_pod_network_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNetworkConfigAdditionalPodNetworkConfigArgs']]]]:
+        """
+        We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node.
+        Structure is documented below
+        """
+        return pulumi.get(self, "additional_pod_network_configs")
+
+    @additional_pod_network_configs.setter
+    def additional_pod_network_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNetworkConfigAdditionalPodNetworkConfigArgs']]]]):
+        pulumi.set(self, "additional_pod_network_configs", value)
 
     @property
     @pulumi.getter(name="createPodRange")
@@ -9690,6 +9848,100 @@ class NodePoolNetworkConfigArgs:
     @pod_range.setter
     def pod_range(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "pod_range", value)
+
+
+@pulumi.input_type
+class NodePoolNetworkConfigAdditionalNodeNetworkConfigArgs:
+    def __init__(__self__, *,
+                 network: Optional[pulumi.Input[str]] = None,
+                 subnetwork: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] network: Name of the VPC where the additional interface belongs.
+        :param pulumi.Input[str] subnetwork: Name of the subnetwork where the additional interface belongs.
+        """
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if subnetwork is not None:
+            pulumi.set(__self__, "subnetwork", subnetwork)
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the VPC where the additional interface belongs.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter
+    def subnetwork(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the subnetwork where the additional interface belongs.
+        """
+        return pulumi.get(self, "subnetwork")
+
+    @subnetwork.setter
+    def subnetwork(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subnetwork", value)
+
+
+@pulumi.input_type
+class NodePoolNetworkConfigAdditionalPodNetworkConfigArgs:
+    def __init__(__self__, *,
+                 max_pods_per_node: Optional[pulumi.Input[int]] = None,
+                 secondary_pod_range: Optional[pulumi.Input[str]] = None,
+                 subnetwork: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] max_pods_per_node: The maximum number of pods per node which use this pod network.
+        :param pulumi.Input[str] secondary_pod_range: The name of the secondary range on the subnet which provides IP address for this pod range.
+        :param pulumi.Input[str] subnetwork: Name of the subnetwork where the additional pod network belongs.
+        """
+        if max_pods_per_node is not None:
+            pulumi.set(__self__, "max_pods_per_node", max_pods_per_node)
+        if secondary_pod_range is not None:
+            pulumi.set(__self__, "secondary_pod_range", secondary_pod_range)
+        if subnetwork is not None:
+            pulumi.set(__self__, "subnetwork", subnetwork)
+
+    @property
+    @pulumi.getter(name="maxPodsPerNode")
+    def max_pods_per_node(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum number of pods per node which use this pod network.
+        """
+        return pulumi.get(self, "max_pods_per_node")
+
+    @max_pods_per_node.setter
+    def max_pods_per_node(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_pods_per_node", value)
+
+    @property
+    @pulumi.getter(name="secondaryPodRange")
+    def secondary_pod_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the secondary range on the subnet which provides IP address for this pod range.
+        """
+        return pulumi.get(self, "secondary_pod_range")
+
+    @secondary_pod_range.setter
+    def secondary_pod_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secondary_pod_range", value)
+
+    @property
+    @pulumi.getter
+    def subnetwork(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the subnetwork where the additional pod network belongs.
+        """
+        return pulumi.get(self, "subnetwork")
+
+    @subnetwork.setter
+    def subnetwork(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subnetwork", value)
 
 
 @pulumi.input_type

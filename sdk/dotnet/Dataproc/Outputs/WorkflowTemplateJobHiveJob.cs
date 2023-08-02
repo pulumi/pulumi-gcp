@@ -14,15 +14,15 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     public sealed class WorkflowTemplateJobHiveJob
     {
         /// <summary>
-        /// Optional. Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
+        /// Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
         /// </summary>
         public readonly bool? ContinueOnFailure;
         /// <summary>
-        /// Optional. HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
+        /// HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
         /// </summary>
         public readonly ImmutableArray<string> JarFileUris;
         /// <summary>
-        /// Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
+        /// A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Properties;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly Outputs.WorkflowTemplateJobHiveJobQueryList? QueryList;
         /// <summary>
-        /// Optional. Mapping of query variable names to values (equivalent to the Hive command: `SET name="value";`).
+        /// Mapping of query variable names to values (equivalent to the Hive command: `SET name="value";`).
         /// </summary>
         public readonly ImmutableDictionary<string, string>? ScriptVariables;
 

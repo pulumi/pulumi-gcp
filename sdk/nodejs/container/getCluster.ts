@@ -61,6 +61,7 @@ export interface GetClusterArgs {
  */
 export interface GetClusterResult {
     readonly addonsConfigs: outputs.container.GetClusterAddonsConfig[];
+    readonly allowNetAdmin: boolean;
     readonly authenticatorGroupsConfigs: outputs.container.GetClusterAuthenticatorGroupsConfig[];
     readonly binaryAuthorizations: outputs.container.GetClusterBinaryAuthorization[];
     readonly clusterAutoscalings: outputs.container.GetClusterClusterAutoscaling[];
@@ -80,6 +81,7 @@ export interface GetClusterResult {
     readonly enableKubernetesAlpha: boolean;
     readonly enableL4IlbSubsetting: boolean;
     readonly enableLegacyAbac: boolean;
+    readonly enableMultiNetworking: boolean;
     readonly enableShieldedNodes: boolean;
     readonly enableTpu: boolean;
     readonly endpoint: string;

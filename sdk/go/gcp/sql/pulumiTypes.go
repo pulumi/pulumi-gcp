@@ -341,6 +341,7 @@ type DatabaseInstanceReplicaConfiguration struct {
 	// If the field is set to true the replica will be designated as a failover replica.
 	// If the master instance fails, the replica instance will be promoted as
 	// the new master instance.
+	// > **NOTE:** Not supported for Postgres database.
 	FailoverTarget *bool `pulumi:"failoverTarget"`
 	// Time in ms between replication
 	// heartbeats.
@@ -386,6 +387,7 @@ type DatabaseInstanceReplicaConfigurationArgs struct {
 	// If the field is set to true the replica will be designated as a failover replica.
 	// If the master instance fails, the replica instance will be promoted as
 	// the new master instance.
+	// > **NOTE:** Not supported for Postgres database.
 	FailoverTarget pulumi.BoolPtrInput `pulumi:"failoverTarget"`
 	// Time in ms between replication
 	// heartbeats.
@@ -511,6 +513,7 @@ func (o DatabaseInstanceReplicaConfigurationOutput) DumpFilePath() pulumi.String
 // If the field is set to true the replica will be designated as a failover replica.
 // If the master instance fails, the replica instance will be promoted as
 // the new master instance.
+// > **NOTE:** Not supported for Postgres database.
 func (o DatabaseInstanceReplicaConfigurationOutput) FailoverTarget() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceReplicaConfiguration) *bool { return v.FailoverTarget }).(pulumi.BoolPtrOutput)
 }
@@ -624,6 +627,7 @@ func (o DatabaseInstanceReplicaConfigurationPtrOutput) DumpFilePath() pulumi.Str
 // If the field is set to true the replica will be designated as a failover replica.
 // If the master instance fails, the replica instance will be promoted as
 // the new master instance.
+// > **NOTE:** Not supported for Postgres database.
 func (o DatabaseInstanceReplicaConfigurationPtrOutput) FailoverTarget() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceReplicaConfiguration) *bool {
 		if v == nil {

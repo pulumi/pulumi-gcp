@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
     public sealed class WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
+        /// The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
         /// </summary>
         [Input("gcePdKmsKeyName")]
         public Input<string>? GcePdKmsKeyName { get; set; }

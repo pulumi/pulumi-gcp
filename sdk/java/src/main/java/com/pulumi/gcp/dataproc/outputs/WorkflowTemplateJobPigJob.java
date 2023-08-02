@@ -17,22 +17,22 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WorkflowTemplateJobPigJob {
     /**
-     * @return Optional. Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
+     * @return Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
      * 
      */
     private @Nullable Boolean continueOnFailure;
     /**
-     * @return Optional. HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
+     * @return HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
      * 
      */
     private @Nullable List<String> jarFileUris;
     /**
-     * @return Optional. The runtime log config for job execution.
+     * @return The runtime log config for job execution.
      * 
      */
     private @Nullable WorkflowTemplateJobPigJobLoggingConfig loggingConfig;
     /**
-     * @return Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
+     * @return A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
      * 
      */
     private @Nullable Map<String,String> properties;
@@ -47,35 +47,35 @@ public final class WorkflowTemplateJobPigJob {
      */
     private @Nullable WorkflowTemplateJobPigJobQueryList queryList;
     /**
-     * @return Optional. Mapping of query variable names to values (equivalent to the Pig command: `name=`).
+     * @return Mapping of query variable names to values (equivalent to the Pig command: `name=`).
      * 
      */
     private @Nullable Map<String,String> scriptVariables;
 
     private WorkflowTemplateJobPigJob() {}
     /**
-     * @return Optional. Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
+     * @return Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
      * 
      */
     public Optional<Boolean> continueOnFailure() {
         return Optional.ofNullable(this.continueOnFailure);
     }
     /**
-     * @return Optional. HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
+     * @return HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
      * 
      */
     public List<String> jarFileUris() {
         return this.jarFileUris == null ? List.of() : this.jarFileUris;
     }
     /**
-     * @return Optional. The runtime log config for job execution.
+     * @return The runtime log config for job execution.
      * 
      */
     public Optional<WorkflowTemplateJobPigJobLoggingConfig> loggingConfig() {
         return Optional.ofNullable(this.loggingConfig);
     }
     /**
-     * @return Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
+     * @return A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
      * 
      */
     public Map<String,String> properties() {
@@ -96,7 +96,7 @@ public final class WorkflowTemplateJobPigJob {
         return Optional.ofNullable(this.queryList);
     }
     /**
-     * @return Optional. Mapping of query variable names to values (equivalent to the Pig command: `name=`).
+     * @return Mapping of query variable names to values (equivalent to the Pig command: `name=`).
      * 
      */
     public Map<String,String> scriptVariables() {

@@ -15,7 +15,6 @@ __all__ = ['GatewayArgs', 'Gateway']
 class GatewayArgs:
     def __init__(__self__, *,
                  ports: pulumi.Input[Sequence[pulumi.Input[int]]],
-                 scope: pulumi.Input[str],
                  type: pulumi.Input[str],
                  addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  certificate_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -27,6 +26,7 @@ class GatewayArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 scope: Optional[pulumi.Input[str]] = None,
                  server_tls_policy: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None):
         """
@@ -34,10 +34,6 @@ class GatewayArgs:
         :param pulumi.Input[Sequence[pulumi.Input[int]]] ports: One or more port numbers (1-65535), on which the Gateway will receive traffic.
                The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are
                limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
-        :param pulumi.Input[str] scope: Immutable. Scope determines how configuration across multiple Gateway instances are merged.
-               The configuration for multiple Gateway instances with the same scope will be merged as presented as
-               a single coniguration to the proxy/load balancer.
-               Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
         :param pulumi.Input[str] type: Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
                Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] addresses: Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided,
@@ -63,6 +59,10 @@ class GatewayArgs:
                Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] scope: Immutable. Scope determines how configuration across multiple Gateway instances are merged.
+               The configuration for multiple Gateway instances with the same scope will be merged as presented as
+               a single coniguration to the proxy/load balancer.
+               Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
         :param pulumi.Input[str] server_tls_policy: A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated.
                If empty, TLS termination is disabled.
         :param pulumi.Input[str] subnetwork: The relative resource name identifying the subnetwork in which this SWG is allocated.
@@ -70,7 +70,6 @@ class GatewayArgs:
                Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY.
         """
         pulumi.set(__self__, "ports", ports)
-        pulumi.set(__self__, "scope", scope)
         pulumi.set(__self__, "type", type)
         if addresses is not None:
             pulumi.set(__self__, "addresses", addresses)
@@ -92,6 +91,8 @@ class GatewayArgs:
             pulumi.set(__self__, "network", network)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if scope is not None:
+            pulumi.set(__self__, "scope", scope)
         if server_tls_policy is not None:
             pulumi.set(__self__, "server_tls_policy", server_tls_policy)
         if subnetwork is not None:
@@ -110,21 +111,6 @@ class GatewayArgs:
     @ports.setter
     def ports(self, value: pulumi.Input[Sequence[pulumi.Input[int]]]):
         pulumi.set(self, "ports", value)
-
-    @property
-    @pulumi.getter
-    def scope(self) -> pulumi.Input[str]:
-        """
-        Immutable. Scope determines how configuration across multiple Gateway instances are merged.
-        The configuration for multiple Gateway instances with the same scope will be merged as presented as
-        a single coniguration to the proxy/load balancer.
-        Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
-        """
-        return pulumi.get(self, "scope")
-
-    @scope.setter
-    def scope(self, value: pulumi.Input[str]):
-        pulumi.set(self, "scope", value)
 
     @property
     @pulumi.getter
@@ -271,6 +257,21 @@ class GatewayArgs:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        Immutable. Scope determines how configuration across multiple Gateway instances are merged.
+        The configuration for multiple Gateway instances with the same scope will be merged as presented as
+        a single coniguration to the proxy/load balancer.
+        Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
+        """
+        return pulumi.get(self, "scope")
+
+    @scope.setter
+    def scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scope", value)
 
     @property
     @pulumi.getter(name="serverTlsPolicy")
@@ -1083,8 +1084,6 @@ class Gateway(pulumi.CustomResource):
                 raise TypeError("Missing required property 'ports'")
             __props__.__dict__["ports"] = ports
             __props__.__dict__["project"] = project
-            if scope is None and not opts.urn:
-                raise TypeError("Missing required property 'scope'")
             __props__.__dict__["scope"] = scope
             __props__.__dict__["server_tls_policy"] = server_tls_policy
             __props__.__dict__["subnetwork"] = subnetwork
@@ -1307,7 +1306,7 @@ class Gateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def scope(self) -> pulumi.Output[str]:
+    def scope(self) -> pulumi.Output[Optional[str]]:
         """
         Immutable. Scope determines how configuration across multiple Gateway instances are merged.
         The configuration for multiple Gateway instances with the same scope will be merged as presented as

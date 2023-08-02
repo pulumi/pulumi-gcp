@@ -2057,6 +2057,9 @@ func (o FhirStoreStreamConfigBigqueryDestinationOutput) SchemaConfig() FhirStore
 }
 
 type FhirStoreStreamConfigBigqueryDestinationSchemaConfig struct {
+	// The configuration for exported BigQuery tables to be partitioned by FHIR resource's last updated time column.
+	// Structure is documented below.
+	LastUpdatedPartitionConfig *FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig `pulumi:"lastUpdatedPartitionConfig"`
 	// The depth for all recursive structures in the output analytics schema. For example, concept in the CodeSystem
 	// resource is a recursive structure; when the depth is 2, the CodeSystem table will have a column called
 	// concept.concept but not concept.concept.concept. If not specified or set to 0, the server will use the default
@@ -2084,6 +2087,9 @@ type FhirStoreStreamConfigBigqueryDestinationSchemaConfigInput interface {
 }
 
 type FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs struct {
+	// The configuration for exported BigQuery tables to be partitioned by FHIR resource's last updated time column.
+	// Structure is documented below.
+	LastUpdatedPartitionConfig FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrInput `pulumi:"lastUpdatedPartitionConfig"`
 	// The depth for all recursive structures in the output analytics schema. For example, concept in the CodeSystem
 	// resource is a recursive structure; when the depth is 2, the CodeSystem table will have a column called
 	// concept.concept but not concept.concept.concept. If not specified or set to 0, the server will use the default
@@ -2125,6 +2131,14 @@ func (o FhirStoreStreamConfigBigqueryDestinationSchemaConfigOutput) ToFhirStoreS
 	return o
 }
 
+// The configuration for exported BigQuery tables to be partitioned by FHIR resource's last updated time column.
+// Structure is documented below.
+func (o FhirStoreStreamConfigBigqueryDestinationSchemaConfigOutput) LastUpdatedPartitionConfig() FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutput {
+	return o.ApplyT(func(v FhirStoreStreamConfigBigqueryDestinationSchemaConfig) *FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig {
+		return v.LastUpdatedPartitionConfig
+	}).(FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutput)
+}
+
 // The depth for all recursive structures in the output analytics schema. For example, concept in the CodeSystem
 // resource is a recursive structure; when the depth is 2, the CodeSystem table will have a column called
 // concept.concept but not concept.concept.concept. If not specified or set to 0, the server will use the default
@@ -2142,6 +2156,170 @@ func (o FhirStoreStreamConfigBigqueryDestinationSchemaConfigOutput) RecursiveStr
 //     Possible values are: `ANALYTICS`, `ANALYTICS_V2`, `LOSSLESS`.
 func (o FhirStoreStreamConfigBigqueryDestinationSchemaConfigOutput) SchemaType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FhirStoreStreamConfigBigqueryDestinationSchemaConfig) *string { return v.SchemaType }).(pulumi.StringPtrOutput)
+}
+
+type FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig struct {
+	// Number of milliseconds for which to keep the storage for a partition.
+	ExpirationMs *string `pulumi:"expirationMs"`
+	// Type of partitioning.
+	// Possible values are: `PARTITION_TYPE_UNSPECIFIED`, `HOUR`, `DAY`, `MONTH`, `YEAR`.
+	Type string `pulumi:"type"`
+}
+
+// FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigInput is an input type that accepts FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs and FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigOutput values.
+// You can construct a concrete instance of `FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigInput` via:
+//
+//	FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs{...}
+type FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigInput interface {
+	pulumi.Input
+
+	ToFhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigOutput() FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigOutput
+	ToFhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigOutputWithContext(context.Context) FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigOutput
+}
+
+type FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs struct {
+	// Number of milliseconds for which to keep the storage for a partition.
+	ExpirationMs pulumi.StringPtrInput `pulumi:"expirationMs"`
+	// Type of partitioning.
+	// Possible values are: `PARTITION_TYPE_UNSPECIFIED`, `HOUR`, `DAY`, `MONTH`, `YEAR`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig)(nil)).Elem()
+}
+
+func (i FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs) ToFhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigOutput() FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigOutput {
+	return i.ToFhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigOutputWithContext(context.Background())
+}
+
+func (i FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs) ToFhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigOutputWithContext(ctx context.Context) FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigOutput)
+}
+
+func (i FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs) ToFhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutput() FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutput {
+	return i.ToFhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs) ToFhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutputWithContext(ctx context.Context) FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigOutput).ToFhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutputWithContext(ctx)
+}
+
+// FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrInput is an input type that accepts FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs, FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtr and FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutput values.
+// You can construct a concrete instance of `FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrInput` via:
+//
+//	        FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrInput interface {
+	pulumi.Input
+
+	ToFhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutput() FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutput
+	ToFhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutputWithContext(context.Context) FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutput
+}
+
+type fhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrType FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs
+
+func FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtr(v *FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs) FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrInput {
+	return (*fhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrType)(v)
+}
+
+func (*fhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig)(nil)).Elem()
+}
+
+func (i *fhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrType) ToFhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutput() FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutput {
+	return i.ToFhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *fhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrType) ToFhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutputWithContext(ctx context.Context) FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutput)
+}
+
+type FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigOutput struct{ *pulumi.OutputState }
+
+func (FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig)(nil)).Elem()
+}
+
+func (o FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigOutput) ToFhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigOutput() FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigOutput {
+	return o
+}
+
+func (o FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigOutput) ToFhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigOutputWithContext(ctx context.Context) FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigOutput {
+	return o
+}
+
+func (o FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigOutput) ToFhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutput() FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutput {
+	return o.ToFhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigOutput) ToFhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutputWithContext(ctx context.Context) FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig) *FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig {
+		return &v
+	}).(FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutput)
+}
+
+// Number of milliseconds for which to keep the storage for a partition.
+func (o FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigOutput) ExpirationMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig) *string {
+		return v.ExpirationMs
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of partitioning.
+// Possible values are: `PARTITION_TYPE_UNSPECIFIED`, `HOUR`, `DAY`, `MONTH`, `YEAR`.
+func (o FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig) string {
+		return v.Type
+	}).(pulumi.StringOutput)
+}
+
+type FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig)(nil)).Elem()
+}
+
+func (o FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutput) ToFhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutput() FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutput {
+	return o
+}
+
+func (o FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutput) ToFhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutputWithContext(ctx context.Context) FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutput {
+	return o
+}
+
+func (o FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutput) Elem() FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigOutput {
+	return o.ApplyT(func(v *FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig) FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig
+		return ret
+	}).(FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigOutput)
+}
+
+// Number of milliseconds for which to keep the storage for a partition.
+func (o FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutput) ExpirationMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExpirationMs
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of partitioning.
+// Possible values are: `PARTITION_TYPE_UNSPECIFIED`, `HOUR`, `DAY`, `MONTH`, `YEAR`.
+func (o FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 type Hl7StoreIamBindingCondition struct {
@@ -3014,6 +3192,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreStreamConfigArrayInput)(nil)).Elem(), FhirStoreStreamConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreStreamConfigBigqueryDestinationInput)(nil)).Elem(), FhirStoreStreamConfigBigqueryDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreStreamConfigBigqueryDestinationSchemaConfigInput)(nil)).Elem(), FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigInput)(nil)).Elem(), FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrInput)(nil)).Elem(), FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Hl7StoreIamBindingConditionInput)(nil)).Elem(), Hl7StoreIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Hl7StoreIamBindingConditionPtrInput)(nil)).Elem(), Hl7StoreIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Hl7StoreIamMemberConditionInput)(nil)).Elem(), Hl7StoreIamMemberConditionArgs{})
@@ -3052,6 +3232,8 @@ func init() {
 	pulumi.RegisterOutputType(FhirStoreStreamConfigArrayOutput{})
 	pulumi.RegisterOutputType(FhirStoreStreamConfigBigqueryDestinationOutput{})
 	pulumi.RegisterOutputType(FhirStoreStreamConfigBigqueryDestinationSchemaConfigOutput{})
+	pulumi.RegisterOutputType(FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigOutput{})
+	pulumi.RegisterOutputType(FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigPtrOutput{})
 	pulumi.RegisterOutputType(Hl7StoreIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(Hl7StoreIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(Hl7StoreIamMemberConditionOutput{})

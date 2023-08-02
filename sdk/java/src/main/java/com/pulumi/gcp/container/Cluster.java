@@ -244,6 +244,24 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.addonsConfig;
     }
     /**
+     * Enable NET_ADMIN for the cluster. Defaults to
+     * `false`. This field should only be enabled for Autopilot clusters (`enable_autopilot`
+     * set to `true`).
+     * 
+     */
+    @Export(name="allowNetAdmin", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> allowNetAdmin;
+
+    /**
+     * @return Enable NET_ADMIN for the cluster. Defaults to
+     * `false`. This field should only be enabled for Autopilot clusters (`enable_autopilot`
+     * set to `true`).
+     * 
+     */
+    public Output<Optional<Boolean>> allowNetAdmin() {
+        return Codegen.optional(this.allowNetAdmin);
+    }
+    /**
      * Configuration for the
      * [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
      * Structure is documented below.
@@ -566,6 +584,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> enableLegacyAbac() {
         return Codegen.optional(this.enableLegacyAbac);
+    }
+    /**
+     * Whether multi-networking is enabled for this cluster.
+     * 
+     */
+    @Export(name="enableMultiNetworking", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> enableMultiNetworking;
+
+    /**
+     * @return Whether multi-networking is enabled for this cluster.
+     * 
+     */
+    public Output<Optional<Boolean>> enableMultiNetworking() {
+        return Codegen.optional(this.enableMultiNetworking);
     }
     /**
      * Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.

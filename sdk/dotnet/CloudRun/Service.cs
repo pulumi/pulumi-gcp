@@ -502,7 +502,10 @@ namespace Pulumi.Gcp.CloudRun
         public Output<Outputs.ServiceTemplate?> Template { get; private set; } = null!;
 
         /// <summary>
-        /// Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations
+        /// (Output)
+        /// Traffic specifies how to distribute traffic over a collection of Knative Revisions
+        /// and Configurations
+        /// Structure is documented below.
         /// </summary>
         [Output("traffics")]
         public Output<ImmutableArray<Outputs.ServiceTraffic>> Traffics { get; private set; } = null!;
@@ -618,7 +621,10 @@ namespace Pulumi.Gcp.CloudRun
         private InputList<Inputs.ServiceTrafficArgs>? _traffics;
 
         /// <summary>
-        /// Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations
+        /// (Output)
+        /// Traffic specifies how to distribute traffic over a collection of Knative Revisions
+        /// and Configurations
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.ServiceTrafficArgs> Traffics
         {
@@ -712,7 +718,10 @@ namespace Pulumi.Gcp.CloudRun
         private InputList<Inputs.ServiceTrafficGetArgs>? _traffics;
 
         /// <summary>
-        /// Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations
+        /// (Output)
+        /// Traffic specifies how to distribute traffic over a collection of Knative Revisions
+        /// and Configurations
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.ServiceTrafficGetArgs> Traffics
         {

@@ -560,6 +560,24 @@ public class Service extends com.pulumi.resources.CustomResource {
         return this.conditions;
     }
     /**
+     * One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
+     * string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
+     * https://cloud.google.com/run/docs/configuring/custom-audiences.
+     * 
+     */
+    @Export(name="customAudiences", type=List.class, parameters={String.class})
+    private Output</* @Nullable */ List<String>> customAudiences;
+
+    /**
+     * @return One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
+     * string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
+     * https://cloud.google.com/run/docs/configuring/custom-audiences.
+     * 
+     */
+    public Output<Optional<List<String>>> customAudiences() {
+        return Codegen.optional(this.customAudiences);
+    }
+    /**
      * User-provided description of the Service. This field currently has a 512-character limit.
      * 
      */

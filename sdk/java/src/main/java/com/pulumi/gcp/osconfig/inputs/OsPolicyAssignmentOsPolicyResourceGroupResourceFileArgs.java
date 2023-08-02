@@ -96,8 +96,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs exten
 
     /**
      * Desired state of the file. Possible values are:
-     * `DESIRED_STATE_UNSPECIFIED`, `PRESENT`, `ABSENT`,
-     * `CONTENTS_MATCH`.
+     * `DESIRED_STATE_UNSPECIFIED`, `PRESENT`, `ABSENT`, `CONTENTS_MATCH`.
      * 
      */
     @Import(name="state", required=true)
@@ -105,8 +104,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs exten
 
     /**
      * @return Desired state of the file. Possible values are:
-     * `DESIRED_STATE_UNSPECIFIED`, `PRESENT`, `ABSENT`,
-     * `CONTENTS_MATCH`.
+     * `DESIRED_STATE_UNSPECIFIED`, `PRESENT`, `ABSENT`, `CONTENTS_MATCH`.
      * 
      */
     public Output<String> state() {
@@ -245,8 +243,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs exten
 
         /**
          * @param state Desired state of the file. Possible values are:
-         * `DESIRED_STATE_UNSPECIFIED`, `PRESENT`, `ABSENT`,
-         * `CONTENTS_MATCH`.
+         * `DESIRED_STATE_UNSPECIFIED`, `PRESENT`, `ABSENT`, `CONTENTS_MATCH`.
          * 
          * @return builder
          * 
@@ -258,8 +255,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs exten
 
         /**
          * @param state Desired state of the file. Possible values are:
-         * `DESIRED_STATE_UNSPECIFIED`, `PRESENT`, `ABSENT`,
-         * `CONTENTS_MATCH`.
+         * `DESIRED_STATE_UNSPECIFIED`, `PRESENT`, `ABSENT`, `CONTENTS_MATCH`.
          * 
          * @return builder
          * 

@@ -9023,7 +9023,7 @@ type ClusterAddonsConfig struct {
 	// which allows the usage of filestore instance as volumes.
 	// It is disabled by default; set `enabled = true` to enable.
 	GcpFilestoreCsiDriverConfig *ClusterAddonsConfigGcpFilestoreCsiDriverConfig `pulumi:"gcpFilestoreCsiDriverConfig"`
-	// )) The status of the GCSFuse CSI driver addon,
+	// The status of the GCSFuse CSI driver addon,
 	// which allows the usage of a gcs bucket as volumes.
 	// It is disabled by default; set `enabled = true` to enable.
 	GcsFuseCsiDriverConfig *ClusterAddonsConfigGcsFuseCsiDriverConfig `pulumi:"gcsFuseCsiDriverConfig"`
@@ -9103,7 +9103,7 @@ type ClusterAddonsConfigArgs struct {
 	// which allows the usage of filestore instance as volumes.
 	// It is disabled by default; set `enabled = true` to enable.
 	GcpFilestoreCsiDriverConfig ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrInput `pulumi:"gcpFilestoreCsiDriverConfig"`
-	// )) The status of the GCSFuse CSI driver addon,
+	// The status of the GCSFuse CSI driver addon,
 	// which allows the usage of a gcs bucket as volumes.
 	// It is disabled by default; set `enabled = true` to enable.
 	GcsFuseCsiDriverConfig ClusterAddonsConfigGcsFuseCsiDriverConfigPtrInput `pulumi:"gcsFuseCsiDriverConfig"`
@@ -9270,7 +9270,7 @@ func (o ClusterAddonsConfigOutput) GcpFilestoreCsiDriverConfig() ClusterAddonsCo
 	}).(ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput)
 }
 
-// )) The status of the GCSFuse CSI driver addon,
+// The status of the GCSFuse CSI driver addon,
 // which allows the usage of a gcs bucket as volumes.
 // It is disabled by default; set `enabled = true` to enable.
 func (o ClusterAddonsConfigOutput) GcsFuseCsiDriverConfig() ClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutput {
@@ -9428,7 +9428,7 @@ func (o ClusterAddonsConfigPtrOutput) GcpFilestoreCsiDriverConfig() ClusterAddon
 	}).(ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput)
 }
 
-// )) The status of the GCSFuse CSI driver addon,
+// The status of the GCSFuse CSI driver addon,
 // which allows the usage of a gcs bucket as volumes.
 // It is disabled by default; set `enabled = true` to enable.
 func (o ClusterAddonsConfigPtrOutput) GcsFuseCsiDriverConfig() ClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutput {
@@ -15174,7 +15174,7 @@ type ClusterMaintenancePolicy struct {
 	// }
 	// ```
 	DailyMaintenanceWindow *ClusterMaintenancePolicyDailyMaintenanceWindow `pulumi:"dailyMaintenanceWindow"`
-	// Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to three maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
+	// Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to 20 maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
 	MaintenanceExclusions []ClusterMaintenancePolicyMaintenanceExclusion `pulumi:"maintenanceExclusions"`
 	// Time window for recurring maintenance operations.
 	//
@@ -15245,7 +15245,7 @@ type ClusterMaintenancePolicyArgs struct {
 	// }
 	// ```
 	DailyMaintenanceWindow ClusterMaintenancePolicyDailyMaintenanceWindowPtrInput `pulumi:"dailyMaintenanceWindow"`
-	// Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to three maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
+	// Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to 20 maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
 	MaintenanceExclusions ClusterMaintenancePolicyMaintenanceExclusionArrayInput `pulumi:"maintenanceExclusions"`
 	// Time window for recurring maintenance operations.
 	//
@@ -15389,7 +15389,7 @@ func (o ClusterMaintenancePolicyOutput) DailyMaintenanceWindow() ClusterMaintena
 	}).(ClusterMaintenancePolicyDailyMaintenanceWindowPtrOutput)
 }
 
-// Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to three maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
+// Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to 20 maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
 func (o ClusterMaintenancePolicyOutput) MaintenanceExclusions() ClusterMaintenancePolicyMaintenanceExclusionArrayOutput {
 	return o.ApplyT(func(v ClusterMaintenancePolicy) []ClusterMaintenancePolicyMaintenanceExclusion {
 		return v.MaintenanceExclusions
@@ -15495,7 +15495,7 @@ func (o ClusterMaintenancePolicyPtrOutput) DailyMaintenanceWindow() ClusterMaint
 	}).(ClusterMaintenancePolicyDailyMaintenanceWindowPtrOutput)
 }
 
-// Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to three maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
+// Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to 20 maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
 func (o ClusterMaintenancePolicyPtrOutput) MaintenanceExclusions() ClusterMaintenancePolicyMaintenanceExclusionArrayOutput {
 	return o.ApplyT(func(v *ClusterMaintenancePolicy) []ClusterMaintenancePolicyMaintenanceExclusion {
 		if v == nil {
@@ -22907,6 +22907,8 @@ func (o ClusterNodePoolManagementPtrOutput) AutoUpgrade() pulumi.BoolPtrOutput {
 }
 
 type ClusterNodePoolNetworkConfig struct {
+	AdditionalNodeNetworkConfigs []ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig `pulumi:"additionalNodeNetworkConfigs"`
+	AdditionalPodNetworkConfigs  []ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig  `pulumi:"additionalPodNetworkConfigs"`
 	// Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
 	CreatePodRange *bool `pulumi:"createPodRange"`
 	// Enables the private cluster feature,
@@ -22933,6 +22935,8 @@ type ClusterNodePoolNetworkConfigInput interface {
 }
 
 type ClusterNodePoolNetworkConfigArgs struct {
+	AdditionalNodeNetworkConfigs ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayInput `pulumi:"additionalNodeNetworkConfigs"`
+	AdditionalPodNetworkConfigs  ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayInput  `pulumi:"additionalPodNetworkConfigs"`
 	// Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
 	CreatePodRange pulumi.BoolPtrInput `pulumi:"createPodRange"`
 	// Enables the private cluster feature,
@@ -23024,6 +23028,18 @@ func (o ClusterNodePoolNetworkConfigOutput) ToClusterNodePoolNetworkConfigPtrOut
 	}).(ClusterNodePoolNetworkConfigPtrOutput)
 }
 
+func (o ClusterNodePoolNetworkConfigOutput) AdditionalNodeNetworkConfigs() ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput {
+	return o.ApplyT(func(v ClusterNodePoolNetworkConfig) []ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig {
+		return v.AdditionalNodeNetworkConfigs
+	}).(ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput)
+}
+
+func (o ClusterNodePoolNetworkConfigOutput) AdditionalPodNetworkConfigs() ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput {
+	return o.ApplyT(func(v ClusterNodePoolNetworkConfig) []ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig {
+		return v.AdditionalPodNetworkConfigs
+	}).(ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput)
+}
+
 // Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
 func (o ClusterNodePoolNetworkConfigOutput) CreatePodRange() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNetworkConfig) *bool { return v.CreatePodRange }).(pulumi.BoolPtrOutput)
@@ -23077,6 +23093,24 @@ func (o ClusterNodePoolNetworkConfigPtrOutput) Elem() ClusterNodePoolNetworkConf
 	}).(ClusterNodePoolNetworkConfigOutput)
 }
 
+func (o ClusterNodePoolNetworkConfigPtrOutput) AdditionalNodeNetworkConfigs() ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNetworkConfig) []ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalNodeNetworkConfigs
+	}).(ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput)
+}
+
+func (o ClusterNodePoolNetworkConfigPtrOutput) AdditionalPodNetworkConfigs() ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNetworkConfig) []ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalPodNetworkConfigs
+	}).(ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput)
+}
+
 // Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
 func (o ClusterNodePoolNetworkConfigPtrOutput) CreatePodRange() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNetworkConfig) *bool {
@@ -23127,6 +23161,233 @@ func (o ClusterNodePoolNetworkConfigPtrOutput) PodRange() pulumi.StringPtrOutput
 		}
 		return v.PodRange
 	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig struct {
+	// The name or selfLink of the Google Compute Engine
+	// network to which the cluster is connected. For Shared VPC, set this to the self link of the
+	// shared network.
+	Network *string `pulumi:"network"`
+	// The name or selfLink of the Google Compute Engine
+	// subnetwork in which the cluster's instances are launched.
+	Subnetwork *string `pulumi:"subnetwork"`
+}
+
+// ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigInput is an input type that accepts ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs and ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigInput` via:
+//
+//	ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs{...}
+type ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput() ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput
+	ToClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutputWithContext(context.Context) ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput
+}
+
+type ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs struct {
+	// The name or selfLink of the Google Compute Engine
+	// network to which the cluster is connected. For Shared VPC, set this to the self link of the
+	// shared network.
+	Network pulumi.StringPtrInput `pulumi:"network"`
+	// The name or selfLink of the Google Compute Engine
+	// subnetwork in which the cluster's instances are launched.
+	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
+}
+
+func (ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig)(nil)).Elem()
+}
+
+func (i ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs) ToClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput() ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput {
+	return i.ToClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs) ToClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutputWithContext(ctx context.Context) ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput)
+}
+
+// ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayInput is an input type that accepts ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArray and ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayInput` via:
+//
+//	ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArray{ ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs{...} }
+type ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput() ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput
+	ToClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutputWithContext(context.Context) ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput
+}
+
+type ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArray []ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigInput
+
+func (ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig)(nil)).Elem()
+}
+
+func (i ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArray) ToClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput() ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput {
+	return i.ToClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArray) ToClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutputWithContext(ctx context.Context) ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput)
+}
+
+type ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput) ToClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput() ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput) ToClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutputWithContext(ctx context.Context) ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput {
+	return o
+}
+
+// The name or selfLink of the Google Compute Engine
+// network to which the cluster is connected. For Shared VPC, set this to the self link of the
+// shared network.
+func (o ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// The name or selfLink of the Google Compute Engine
+// subnetwork in which the cluster's instances are launched.
+func (o ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput) Subnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
+}
+
+type ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput) ToClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput() ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput {
+	return o
+}
+
+func (o ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput) ToClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutputWithContext(ctx context.Context) ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput {
+	return o
+}
+
+func (o ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput) Index(i pulumi.IntInput) ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig {
+		return vs[0].([]ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig)[vs[1].(int)]
+	}).(ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput)
+}
+
+type ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig struct {
+	MaxPodsPerNode    *int    `pulumi:"maxPodsPerNode"`
+	SecondaryPodRange *string `pulumi:"secondaryPodRange"`
+	// The name or selfLink of the Google Compute Engine
+	// subnetwork in which the cluster's instances are launched.
+	Subnetwork *string `pulumi:"subnetwork"`
+}
+
+// ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigInput is an input type that accepts ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs and ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigInput` via:
+//
+//	ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs{...}
+type ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput() ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput
+	ToClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutputWithContext(context.Context) ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput
+}
+
+type ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs struct {
+	MaxPodsPerNode    pulumi.IntPtrInput    `pulumi:"maxPodsPerNode"`
+	SecondaryPodRange pulumi.StringPtrInput `pulumi:"secondaryPodRange"`
+	// The name or selfLink of the Google Compute Engine
+	// subnetwork in which the cluster's instances are launched.
+	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
+}
+
+func (ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig)(nil)).Elem()
+}
+
+func (i ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs) ToClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput() ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput {
+	return i.ToClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs) ToClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutputWithContext(ctx context.Context) ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput)
+}
+
+// ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayInput is an input type that accepts ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArray and ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayInput` via:
+//
+//	ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArray{ ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs{...} }
+type ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput() ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput
+	ToClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutputWithContext(context.Context) ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput
+}
+
+type ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArray []ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigInput
+
+func (ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig)(nil)).Elem()
+}
+
+func (i ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArray) ToClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput() ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput {
+	return i.ToClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArray) ToClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutputWithContext(ctx context.Context) ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput)
+}
+
+type ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput) ToClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput() ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput) ToClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutputWithContext(ctx context.Context) ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput) MaxPodsPerNode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig) *int { return v.MaxPodsPerNode }).(pulumi.IntPtrOutput)
+}
+
+func (o ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput) SecondaryPodRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig) *string { return v.SecondaryPodRange }).(pulumi.StringPtrOutput)
+}
+
+// The name or selfLink of the Google Compute Engine
+// subnetwork in which the cluster's instances are launched.
+func (o ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput) Subnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
+}
+
+type ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput) ToClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput() ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput {
+	return o
+}
+
+func (o ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput) ToClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutputWithContext(ctx context.Context) ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput {
+	return o
+}
+
+func (o ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput) Index(i pulumi.IntInput) ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig {
+		return vs[0].([]ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig)[vs[1].(int)]
+	}).(ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput)
 }
 
 type ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig struct {
@@ -31255,6 +31516,12 @@ func (o NodePoolManagementPtrOutput) AutoUpgrade() pulumi.BoolPtrOutput {
 }
 
 type NodePoolNetworkConfig struct {
+	// We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface.
+	// Structure is documented below
+	AdditionalNodeNetworkConfigs []NodePoolNetworkConfigAdditionalNodeNetworkConfig `pulumi:"additionalNodeNetworkConfigs"`
+	// We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node.
+	// Structure is documented below
+	AdditionalPodNetworkConfigs []NodePoolNetworkConfigAdditionalPodNetworkConfig `pulumi:"additionalPodNetworkConfigs"`
 	// Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
 	CreatePodRange *bool `pulumi:"createPodRange"`
 	// Whether nodes have internal IP addresses only.
@@ -31278,6 +31545,12 @@ type NodePoolNetworkConfigInput interface {
 }
 
 type NodePoolNetworkConfigArgs struct {
+	// We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface.
+	// Structure is documented below
+	AdditionalNodeNetworkConfigs NodePoolNetworkConfigAdditionalNodeNetworkConfigArrayInput `pulumi:"additionalNodeNetworkConfigs"`
+	// We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node.
+	// Structure is documented below
+	AdditionalPodNetworkConfigs NodePoolNetworkConfigAdditionalPodNetworkConfigArrayInput `pulumi:"additionalPodNetworkConfigs"`
 	// Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
 	CreatePodRange pulumi.BoolPtrInput `pulumi:"createPodRange"`
 	// Whether nodes have internal IP addresses only.
@@ -31366,6 +31639,22 @@ func (o NodePoolNetworkConfigOutput) ToNodePoolNetworkConfigPtrOutputWithContext
 	}).(NodePoolNetworkConfigPtrOutput)
 }
 
+// We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface.
+// Structure is documented below
+func (o NodePoolNetworkConfigOutput) AdditionalNodeNetworkConfigs() NodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput {
+	return o.ApplyT(func(v NodePoolNetworkConfig) []NodePoolNetworkConfigAdditionalNodeNetworkConfig {
+		return v.AdditionalNodeNetworkConfigs
+	}).(NodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput)
+}
+
+// We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node.
+// Structure is documented below
+func (o NodePoolNetworkConfigOutput) AdditionalPodNetworkConfigs() NodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput {
+	return o.ApplyT(func(v NodePoolNetworkConfig) []NodePoolNetworkConfigAdditionalPodNetworkConfig {
+		return v.AdditionalPodNetworkConfigs
+	}).(NodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput)
+}
+
 // Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
 func (o NodePoolNetworkConfigOutput) CreatePodRange() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NodePoolNetworkConfig) *bool { return v.CreatePodRange }).(pulumi.BoolPtrOutput)
@@ -31416,6 +31705,28 @@ func (o NodePoolNetworkConfigPtrOutput) Elem() NodePoolNetworkConfigOutput {
 	}).(NodePoolNetworkConfigOutput)
 }
 
+// We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface.
+// Structure is documented below
+func (o NodePoolNetworkConfigPtrOutput) AdditionalNodeNetworkConfigs() NodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput {
+	return o.ApplyT(func(v *NodePoolNetworkConfig) []NodePoolNetworkConfigAdditionalNodeNetworkConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalNodeNetworkConfigs
+	}).(NodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput)
+}
+
+// We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node.
+// Structure is documented below
+func (o NodePoolNetworkConfigPtrOutput) AdditionalPodNetworkConfigs() NodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput {
+	return o.ApplyT(func(v *NodePoolNetworkConfig) []NodePoolNetworkConfigAdditionalPodNetworkConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalPodNetworkConfigs
+	}).(NodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput)
+}
+
 // Whether to create a new range for pod IPs in this node pool. Defaults are provided for `podRange` and `podIpv4CidrBlock` if they are not specified.
 func (o NodePoolNetworkConfigPtrOutput) CreatePodRange() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodePoolNetworkConfig) *bool {
@@ -31463,6 +31774,227 @@ func (o NodePoolNetworkConfigPtrOutput) PodRange() pulumi.StringPtrOutput {
 		}
 		return v.PodRange
 	}).(pulumi.StringPtrOutput)
+}
+
+type NodePoolNetworkConfigAdditionalNodeNetworkConfig struct {
+	// Name of the VPC where the additional interface belongs.
+	Network *string `pulumi:"network"`
+	// Name of the subnetwork where the additional interface belongs.
+	Subnetwork *string `pulumi:"subnetwork"`
+}
+
+// NodePoolNetworkConfigAdditionalNodeNetworkConfigInput is an input type that accepts NodePoolNetworkConfigAdditionalNodeNetworkConfigArgs and NodePoolNetworkConfigAdditionalNodeNetworkConfigOutput values.
+// You can construct a concrete instance of `NodePoolNetworkConfigAdditionalNodeNetworkConfigInput` via:
+//
+//	NodePoolNetworkConfigAdditionalNodeNetworkConfigArgs{...}
+type NodePoolNetworkConfigAdditionalNodeNetworkConfigInput interface {
+	pulumi.Input
+
+	ToNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput() NodePoolNetworkConfigAdditionalNodeNetworkConfigOutput
+	ToNodePoolNetworkConfigAdditionalNodeNetworkConfigOutputWithContext(context.Context) NodePoolNetworkConfigAdditionalNodeNetworkConfigOutput
+}
+
+type NodePoolNetworkConfigAdditionalNodeNetworkConfigArgs struct {
+	// Name of the VPC where the additional interface belongs.
+	Network pulumi.StringPtrInput `pulumi:"network"`
+	// Name of the subnetwork where the additional interface belongs.
+	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
+}
+
+func (NodePoolNetworkConfigAdditionalNodeNetworkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNetworkConfigAdditionalNodeNetworkConfig)(nil)).Elem()
+}
+
+func (i NodePoolNetworkConfigAdditionalNodeNetworkConfigArgs) ToNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput() NodePoolNetworkConfigAdditionalNodeNetworkConfigOutput {
+	return i.ToNodePoolNetworkConfigAdditionalNodeNetworkConfigOutputWithContext(context.Background())
+}
+
+func (i NodePoolNetworkConfigAdditionalNodeNetworkConfigArgs) ToNodePoolNetworkConfigAdditionalNodeNetworkConfigOutputWithContext(ctx context.Context) NodePoolNetworkConfigAdditionalNodeNetworkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNetworkConfigAdditionalNodeNetworkConfigOutput)
+}
+
+// NodePoolNetworkConfigAdditionalNodeNetworkConfigArrayInput is an input type that accepts NodePoolNetworkConfigAdditionalNodeNetworkConfigArray and NodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput values.
+// You can construct a concrete instance of `NodePoolNetworkConfigAdditionalNodeNetworkConfigArrayInput` via:
+//
+//	NodePoolNetworkConfigAdditionalNodeNetworkConfigArray{ NodePoolNetworkConfigAdditionalNodeNetworkConfigArgs{...} }
+type NodePoolNetworkConfigAdditionalNodeNetworkConfigArrayInput interface {
+	pulumi.Input
+
+	ToNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput() NodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput
+	ToNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutputWithContext(context.Context) NodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput
+}
+
+type NodePoolNetworkConfigAdditionalNodeNetworkConfigArray []NodePoolNetworkConfigAdditionalNodeNetworkConfigInput
+
+func (NodePoolNetworkConfigAdditionalNodeNetworkConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodePoolNetworkConfigAdditionalNodeNetworkConfig)(nil)).Elem()
+}
+
+func (i NodePoolNetworkConfigAdditionalNodeNetworkConfigArray) ToNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput() NodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput {
+	return i.ToNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutputWithContext(context.Background())
+}
+
+func (i NodePoolNetworkConfigAdditionalNodeNetworkConfigArray) ToNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutputWithContext(ctx context.Context) NodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput)
+}
+
+type NodePoolNetworkConfigAdditionalNodeNetworkConfigOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNetworkConfigAdditionalNodeNetworkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNetworkConfigAdditionalNodeNetworkConfig)(nil)).Elem()
+}
+
+func (o NodePoolNetworkConfigAdditionalNodeNetworkConfigOutput) ToNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput() NodePoolNetworkConfigAdditionalNodeNetworkConfigOutput {
+	return o
+}
+
+func (o NodePoolNetworkConfigAdditionalNodeNetworkConfigOutput) ToNodePoolNetworkConfigAdditionalNodeNetworkConfigOutputWithContext(ctx context.Context) NodePoolNetworkConfigAdditionalNodeNetworkConfigOutput {
+	return o
+}
+
+// Name of the VPC where the additional interface belongs.
+func (o NodePoolNetworkConfigAdditionalNodeNetworkConfigOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolNetworkConfigAdditionalNodeNetworkConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// Name of the subnetwork where the additional interface belongs.
+func (o NodePoolNetworkConfigAdditionalNodeNetworkConfigOutput) Subnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolNetworkConfigAdditionalNodeNetworkConfig) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
+}
+
+type NodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodePoolNetworkConfigAdditionalNodeNetworkConfig)(nil)).Elem()
+}
+
+func (o NodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput) ToNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput() NodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput {
+	return o
+}
+
+func (o NodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput) ToNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutputWithContext(ctx context.Context) NodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput {
+	return o
+}
+
+func (o NodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput) Index(i pulumi.IntInput) NodePoolNetworkConfigAdditionalNodeNetworkConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodePoolNetworkConfigAdditionalNodeNetworkConfig {
+		return vs[0].([]NodePoolNetworkConfigAdditionalNodeNetworkConfig)[vs[1].(int)]
+	}).(NodePoolNetworkConfigAdditionalNodeNetworkConfigOutput)
+}
+
+type NodePoolNetworkConfigAdditionalPodNetworkConfig struct {
+	// The maximum number of pods per node which use this pod network.
+	MaxPodsPerNode *int `pulumi:"maxPodsPerNode"`
+	// The name of the secondary range on the subnet which provides IP address for this pod range.
+	SecondaryPodRange *string `pulumi:"secondaryPodRange"`
+	// Name of the subnetwork where the additional pod network belongs.
+	Subnetwork *string `pulumi:"subnetwork"`
+}
+
+// NodePoolNetworkConfigAdditionalPodNetworkConfigInput is an input type that accepts NodePoolNetworkConfigAdditionalPodNetworkConfigArgs and NodePoolNetworkConfigAdditionalPodNetworkConfigOutput values.
+// You can construct a concrete instance of `NodePoolNetworkConfigAdditionalPodNetworkConfigInput` via:
+//
+//	NodePoolNetworkConfigAdditionalPodNetworkConfigArgs{...}
+type NodePoolNetworkConfigAdditionalPodNetworkConfigInput interface {
+	pulumi.Input
+
+	ToNodePoolNetworkConfigAdditionalPodNetworkConfigOutput() NodePoolNetworkConfigAdditionalPodNetworkConfigOutput
+	ToNodePoolNetworkConfigAdditionalPodNetworkConfigOutputWithContext(context.Context) NodePoolNetworkConfigAdditionalPodNetworkConfigOutput
+}
+
+type NodePoolNetworkConfigAdditionalPodNetworkConfigArgs struct {
+	// The maximum number of pods per node which use this pod network.
+	MaxPodsPerNode pulumi.IntPtrInput `pulumi:"maxPodsPerNode"`
+	// The name of the secondary range on the subnet which provides IP address for this pod range.
+	SecondaryPodRange pulumi.StringPtrInput `pulumi:"secondaryPodRange"`
+	// Name of the subnetwork where the additional pod network belongs.
+	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
+}
+
+func (NodePoolNetworkConfigAdditionalPodNetworkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNetworkConfigAdditionalPodNetworkConfig)(nil)).Elem()
+}
+
+func (i NodePoolNetworkConfigAdditionalPodNetworkConfigArgs) ToNodePoolNetworkConfigAdditionalPodNetworkConfigOutput() NodePoolNetworkConfigAdditionalPodNetworkConfigOutput {
+	return i.ToNodePoolNetworkConfigAdditionalPodNetworkConfigOutputWithContext(context.Background())
+}
+
+func (i NodePoolNetworkConfigAdditionalPodNetworkConfigArgs) ToNodePoolNetworkConfigAdditionalPodNetworkConfigOutputWithContext(ctx context.Context) NodePoolNetworkConfigAdditionalPodNetworkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNetworkConfigAdditionalPodNetworkConfigOutput)
+}
+
+// NodePoolNetworkConfigAdditionalPodNetworkConfigArrayInput is an input type that accepts NodePoolNetworkConfigAdditionalPodNetworkConfigArray and NodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput values.
+// You can construct a concrete instance of `NodePoolNetworkConfigAdditionalPodNetworkConfigArrayInput` via:
+//
+//	NodePoolNetworkConfigAdditionalPodNetworkConfigArray{ NodePoolNetworkConfigAdditionalPodNetworkConfigArgs{...} }
+type NodePoolNetworkConfigAdditionalPodNetworkConfigArrayInput interface {
+	pulumi.Input
+
+	ToNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput() NodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput
+	ToNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutputWithContext(context.Context) NodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput
+}
+
+type NodePoolNetworkConfigAdditionalPodNetworkConfigArray []NodePoolNetworkConfigAdditionalPodNetworkConfigInput
+
+func (NodePoolNetworkConfigAdditionalPodNetworkConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodePoolNetworkConfigAdditionalPodNetworkConfig)(nil)).Elem()
+}
+
+func (i NodePoolNetworkConfigAdditionalPodNetworkConfigArray) ToNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput() NodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput {
+	return i.ToNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutputWithContext(context.Background())
+}
+
+func (i NodePoolNetworkConfigAdditionalPodNetworkConfigArray) ToNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutputWithContext(ctx context.Context) NodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput)
+}
+
+type NodePoolNetworkConfigAdditionalPodNetworkConfigOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNetworkConfigAdditionalPodNetworkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNetworkConfigAdditionalPodNetworkConfig)(nil)).Elem()
+}
+
+func (o NodePoolNetworkConfigAdditionalPodNetworkConfigOutput) ToNodePoolNetworkConfigAdditionalPodNetworkConfigOutput() NodePoolNetworkConfigAdditionalPodNetworkConfigOutput {
+	return o
+}
+
+func (o NodePoolNetworkConfigAdditionalPodNetworkConfigOutput) ToNodePoolNetworkConfigAdditionalPodNetworkConfigOutputWithContext(ctx context.Context) NodePoolNetworkConfigAdditionalPodNetworkConfigOutput {
+	return o
+}
+
+// The maximum number of pods per node which use this pod network.
+func (o NodePoolNetworkConfigAdditionalPodNetworkConfigOutput) MaxPodsPerNode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NodePoolNetworkConfigAdditionalPodNetworkConfig) *int { return v.MaxPodsPerNode }).(pulumi.IntPtrOutput)
+}
+
+// The name of the secondary range on the subnet which provides IP address for this pod range.
+func (o NodePoolNetworkConfigAdditionalPodNetworkConfigOutput) SecondaryPodRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolNetworkConfigAdditionalPodNetworkConfig) *string { return v.SecondaryPodRange }).(pulumi.StringPtrOutput)
+}
+
+// Name of the subnetwork where the additional pod network belongs.
+func (o NodePoolNetworkConfigAdditionalPodNetworkConfigOutput) Subnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolNetworkConfigAdditionalPodNetworkConfig) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
+}
+
+type NodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodePoolNetworkConfigAdditionalPodNetworkConfig)(nil)).Elem()
+}
+
+func (o NodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput) ToNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput() NodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput {
+	return o
+}
+
+func (o NodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput) ToNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutputWithContext(ctx context.Context) NodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput {
+	return o
+}
+
+func (o NodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput) Index(i pulumi.IntInput) NodePoolNetworkConfigAdditionalPodNetworkConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodePoolNetworkConfigAdditionalPodNetworkConfig {
+		return vs[0].([]NodePoolNetworkConfigAdditionalPodNetworkConfig)[vs[1].(int)]
+	}).(NodePoolNetworkConfigAdditionalPodNetworkConfigOutput)
 }
 
 type NodePoolNetworkConfigPodCidrOverprovisionConfig struct {
@@ -43278,11 +43810,13 @@ func (o GetClusterNodePoolManagementArrayOutput) Index(i pulumi.IntInput) GetClu
 }
 
 type GetClusterNodePoolNetworkConfig struct {
-	CreatePodRange              bool                                                        `pulumi:"createPodRange"`
-	EnablePrivateNodes          bool                                                        `pulumi:"enablePrivateNodes"`
-	PodCidrOverprovisionConfigs []GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig `pulumi:"podCidrOverprovisionConfigs"`
-	PodIpv4CidrBlock            string                                                      `pulumi:"podIpv4CidrBlock"`
-	PodRange                    string                                                      `pulumi:"podRange"`
+	AdditionalNodeNetworkConfigs []GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig `pulumi:"additionalNodeNetworkConfigs"`
+	AdditionalPodNetworkConfigs  []GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig  `pulumi:"additionalPodNetworkConfigs"`
+	CreatePodRange               bool                                                         `pulumi:"createPodRange"`
+	EnablePrivateNodes           bool                                                         `pulumi:"enablePrivateNodes"`
+	PodCidrOverprovisionConfigs  []GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig  `pulumi:"podCidrOverprovisionConfigs"`
+	PodIpv4CidrBlock             string                                                       `pulumi:"podIpv4CidrBlock"`
+	PodRange                     string                                                       `pulumi:"podRange"`
 }
 
 // GetClusterNodePoolNetworkConfigInput is an input type that accepts GetClusterNodePoolNetworkConfigArgs and GetClusterNodePoolNetworkConfigOutput values.
@@ -43297,11 +43831,13 @@ type GetClusterNodePoolNetworkConfigInput interface {
 }
 
 type GetClusterNodePoolNetworkConfigArgs struct {
-	CreatePodRange              pulumi.BoolInput                                                    `pulumi:"createPodRange"`
-	EnablePrivateNodes          pulumi.BoolInput                                                    `pulumi:"enablePrivateNodes"`
-	PodCidrOverprovisionConfigs GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayInput `pulumi:"podCidrOverprovisionConfigs"`
-	PodIpv4CidrBlock            pulumi.StringInput                                                  `pulumi:"podIpv4CidrBlock"`
-	PodRange                    pulumi.StringInput                                                  `pulumi:"podRange"`
+	AdditionalNodeNetworkConfigs GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayInput `pulumi:"additionalNodeNetworkConfigs"`
+	AdditionalPodNetworkConfigs  GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayInput  `pulumi:"additionalPodNetworkConfigs"`
+	CreatePodRange               pulumi.BoolInput                                                     `pulumi:"createPodRange"`
+	EnablePrivateNodes           pulumi.BoolInput                                                     `pulumi:"enablePrivateNodes"`
+	PodCidrOverprovisionConfigs  GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayInput  `pulumi:"podCidrOverprovisionConfigs"`
+	PodIpv4CidrBlock             pulumi.StringInput                                                   `pulumi:"podIpv4CidrBlock"`
+	PodRange                     pulumi.StringInput                                                   `pulumi:"podRange"`
 }
 
 func (GetClusterNodePoolNetworkConfigArgs) ElementType() reflect.Type {
@@ -43355,6 +43891,18 @@ func (o GetClusterNodePoolNetworkConfigOutput) ToGetClusterNodePoolNetworkConfig
 	return o
 }
 
+func (o GetClusterNodePoolNetworkConfigOutput) AdditionalNodeNetworkConfigs() GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNetworkConfig) []GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig {
+		return v.AdditionalNodeNetworkConfigs
+	}).(GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput)
+}
+
+func (o GetClusterNodePoolNetworkConfigOutput) AdditionalPodNetworkConfigs() GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNetworkConfig) []GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig {
+		return v.AdditionalPodNetworkConfigs
+	}).(GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput)
+}
+
 func (o GetClusterNodePoolNetworkConfigOutput) CreatePodRange() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClusterNodePoolNetworkConfig) bool { return v.CreatePodRange }).(pulumi.BoolOutput)
 }
@@ -43395,6 +43943,212 @@ func (o GetClusterNodePoolNetworkConfigArrayOutput) Index(i pulumi.IntInput) Get
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNetworkConfig {
 		return vs[0].([]GetClusterNodePoolNetworkConfig)[vs[1].(int)]
 	}).(GetClusterNodePoolNetworkConfigOutput)
+}
+
+type GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig struct {
+	Network    string `pulumi:"network"`
+	Subnetwork string `pulumi:"subnetwork"`
+}
+
+// GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigInput is an input type that accepts GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs and GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigInput` via:
+//
+//	GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs{...}
+type GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput() GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput
+	ToGetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutputWithContext(context.Context) GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput
+}
+
+type GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs struct {
+	Network    pulumi.StringInput `pulumi:"network"`
+	Subnetwork pulumi.StringInput `pulumi:"subnetwork"`
+}
+
+func (GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs) ToGetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput() GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput {
+	return i.ToGetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs) ToGetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput)
+}
+
+// GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayInput is an input type that accepts GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArray and GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayInput` via:
+//
+//	GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArray{ GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs{...} }
+type GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput() GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput
+	ToGetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutputWithContext(context.Context) GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput
+}
+
+type GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArray []GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigInput
+
+func (GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArray) ToGetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput() GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput {
+	return i.ToGetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArray) ToGetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput)
+}
+
+type GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput) ToGetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput() GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput) ToGetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig) string { return v.Network }).(pulumi.StringOutput)
+}
+
+func (o GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput) Subnetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig) string { return v.Subnetwork }).(pulumi.StringOutput)
+}
+
+type GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput) ToGetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput() GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput) ToGetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig {
+		return vs[0].([]GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig)[vs[1].(int)]
+	}).(GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput)
+}
+
+type GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig struct {
+	MaxPodsPerNode    int    `pulumi:"maxPodsPerNode"`
+	SecondaryPodRange string `pulumi:"secondaryPodRange"`
+	Subnetwork        string `pulumi:"subnetwork"`
+}
+
+// GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigInput is an input type that accepts GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs and GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigInput` via:
+//
+//	GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs{...}
+type GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput() GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput
+	ToGetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutputWithContext(context.Context) GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput
+}
+
+type GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs struct {
+	MaxPodsPerNode    pulumi.IntInput    `pulumi:"maxPodsPerNode"`
+	SecondaryPodRange pulumi.StringInput `pulumi:"secondaryPodRange"`
+	Subnetwork        pulumi.StringInput `pulumi:"subnetwork"`
+}
+
+func (GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs) ToGetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput() GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput {
+	return i.ToGetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs) ToGetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput)
+}
+
+// GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayInput is an input type that accepts GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArray and GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayInput` via:
+//
+//	GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArray{ GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs{...} }
+type GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput() GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput
+	ToGetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutputWithContext(context.Context) GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput
+}
+
+type GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArray []GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigInput
+
+func (GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArray) ToGetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput() GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput {
+	return i.ToGetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArray) ToGetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput)
+}
+
+type GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput) ToGetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput() GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput) ToGetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput) MaxPodsPerNode() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig) int { return v.MaxPodsPerNode }).(pulumi.IntOutput)
+}
+
+func (o GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput) SecondaryPodRange() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig) string { return v.SecondaryPodRange }).(pulumi.StringOutput)
+}
+
+func (o GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput) Subnetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig) string { return v.Subnetwork }).(pulumi.StringOutput)
+}
+
+type GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput) ToGetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput() GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput) ToGetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig {
+		return vs[0].([]GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig)[vs[1].(int)]
+	}).(GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput)
 }
 
 type GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig struct {
@@ -47884,6 +48638,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolManagementPtrInput)(nil)).Elem(), ClusterNodePoolManagementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNetworkConfigInput)(nil)).Elem(), ClusterNodePoolNetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNetworkConfigPtrInput)(nil)).Elem(), ClusterNodePoolNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigInput)(nil)).Elem(), ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayInput)(nil)).Elem(), ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigInput)(nil)).Elem(), ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayInput)(nil)).Elem(), ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigInput)(nil)).Elem(), ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrInput)(nil)).Elem(), ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigArgs{})
@@ -47970,6 +48728,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolManagementPtrInput)(nil)).Elem(), NodePoolManagementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNetworkConfigInput)(nil)).Elem(), NodePoolNetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNetworkConfigPtrInput)(nil)).Elem(), NodePoolNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNetworkConfigAdditionalNodeNetworkConfigInput)(nil)).Elem(), NodePoolNetworkConfigAdditionalNodeNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNetworkConfigAdditionalNodeNetworkConfigArrayInput)(nil)).Elem(), NodePoolNetworkConfigAdditionalNodeNetworkConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNetworkConfigAdditionalPodNetworkConfigInput)(nil)).Elem(), NodePoolNetworkConfigAdditionalPodNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNetworkConfigAdditionalPodNetworkConfigArrayInput)(nil)).Elem(), NodePoolNetworkConfigAdditionalPodNetworkConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNetworkConfigPodCidrOverprovisionConfigInput)(nil)).Elem(), NodePoolNetworkConfigPodCidrOverprovisionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNetworkConfigPodCidrOverprovisionConfigPtrInput)(nil)).Elem(), NodePoolNetworkConfigPodCidrOverprovisionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigInput)(nil)).Elem(), NodePoolNodeConfigArgs{})
@@ -48170,6 +48932,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolManagementArrayInput)(nil)).Elem(), GetClusterNodePoolManagementArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNetworkConfigInput)(nil)).Elem(), GetClusterNodePoolNetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNetworkConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNetworkConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigInput)(nil)).Elem(), GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigInput)(nil)).Elem(), GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigInput)(nil)).Elem(), GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigArgs{})
@@ -48516,6 +49282,10 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodePoolManagementPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNetworkConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNetworkConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigOutput{})
@@ -48602,6 +49372,10 @@ func init() {
 	pulumi.RegisterOutputType(NodePoolManagementPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNetworkConfigOutput{})
 	pulumi.RegisterOutputType(NodePoolNetworkConfigPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolNetworkConfigAdditionalNodeNetworkConfigOutput{})
+	pulumi.RegisterOutputType(NodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput{})
+	pulumi.RegisterOutputType(NodePoolNetworkConfigAdditionalPodNetworkConfigOutput{})
+	pulumi.RegisterOutputType(NodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput{})
 	pulumi.RegisterOutputType(NodePoolNetworkConfigPodCidrOverprovisionConfigOutput{})
 	pulumi.RegisterOutputType(NodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigOutput{})
@@ -48802,6 +49576,10 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodePoolManagementArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNetworkConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNetworkConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigOutput{})

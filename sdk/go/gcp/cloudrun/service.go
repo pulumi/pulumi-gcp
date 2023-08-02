@@ -488,7 +488,10 @@ type Service struct {
 	// https://github.com/knative/serving/blob/main/docs/client-conventions.md#associate-modifications-with-revisions Cloud Run
 	// does not currently support referencing a build that is responsible for materializing the container image from source.
 	Template ServiceTemplatePtrOutput `pulumi:"template"`
-	// Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations
+	// (Output)
+	// Traffic specifies how to distribute traffic over a collection of Knative Revisions
+	// and Configurations
+	// Structure is documented below.
 	Traffics ServiceTrafficArrayOutput `pulumi:"traffics"`
 }
 
@@ -565,7 +568,10 @@ type serviceState struct {
 	// https://github.com/knative/serving/blob/main/docs/client-conventions.md#associate-modifications-with-revisions Cloud Run
 	// does not currently support referencing a build that is responsible for materializing the container image from source.
 	Template *ServiceTemplate `pulumi:"template"`
-	// Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations
+	// (Output)
+	// Traffic specifies how to distribute traffic over a collection of Knative Revisions
+	// and Configurations
+	// Structure is documented below.
 	Traffics []ServiceTraffic `pulumi:"traffics"`
 }
 
@@ -610,7 +616,10 @@ type ServiceState struct {
 	// https://github.com/knative/serving/blob/main/docs/client-conventions.md#associate-modifications-with-revisions Cloud Run
 	// does not currently support referencing a build that is responsible for materializing the container image from source.
 	Template ServiceTemplatePtrInput
-	// Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations
+	// (Output)
+	// Traffic specifies how to distribute traffic over a collection of Knative Revisions
+	// and Configurations
+	// Structure is documented below.
 	Traffics ServiceTrafficArrayInput
 }
 
@@ -656,7 +665,10 @@ type serviceArgs struct {
 	// https://github.com/knative/serving/blob/main/docs/client-conventions.md#associate-modifications-with-revisions Cloud Run
 	// does not currently support referencing a build that is responsible for materializing the container image from source.
 	Template *ServiceTemplate `pulumi:"template"`
-	// Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations
+	// (Output)
+	// Traffic specifies how to distribute traffic over a collection of Knative Revisions
+	// and Configurations
+	// Structure is documented below.
 	Traffics []ServiceTraffic `pulumi:"traffics"`
 }
 
@@ -699,7 +711,10 @@ type ServiceArgs struct {
 	// https://github.com/knative/serving/blob/main/docs/client-conventions.md#associate-modifications-with-revisions Cloud Run
 	// does not currently support referencing a build that is responsible for materializing the container image from source.
 	Template ServiceTemplatePtrInput
-	// Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations
+	// (Output)
+	// Traffic specifies how to distribute traffic over a collection of Knative Revisions
+	// and Configurations
+	// Structure is documented below.
 	Traffics ServiceTrafficArrayInput
 }
 
@@ -851,7 +866,10 @@ func (o ServiceOutput) Template() ServiceTemplatePtrOutput {
 	return o.ApplyT(func(v *Service) ServiceTemplatePtrOutput { return v.Template }).(ServiceTemplatePtrOutput)
 }
 
-// Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations
+// (Output)
+// Traffic specifies how to distribute traffic over a collection of Knative Revisions
+// and Configurations
+// Structure is documented below.
 func (o ServiceOutput) Traffics() ServiceTrafficArrayOutput {
 	return o.ApplyT(func(v *Service) ServiceTrafficArrayOutput { return v.Traffics }).(ServiceTrafficArrayOutput)
 }

@@ -271,6 +271,7 @@ class DatabaseInstanceReplicaConfiguration(dict):
                If the field is set to true the replica will be designated as a failover replica.
                If the master instance fails, the replica instance will be promoted as
                the new master instance.
+               > **NOTE:** Not supported for Postgres database.
         :param int master_heartbeat_period: Time in ms between replication
                heartbeats.
         :param str password: Password for the replication connection.
@@ -354,6 +355,7 @@ class DatabaseInstanceReplicaConfiguration(dict):
         If the field is set to true the replica will be designated as a failover replica.
         If the master instance fails, the replica instance will be promoted as
         the new master instance.
+        > **NOTE:** Not supported for Postgres database.
         """
         return pulumi.get(self, "failover_target")
 

@@ -57,7 +57,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.ClusterAddonsConfigGcpFilestoreCsiDriverConfig? GcpFilestoreCsiDriverConfig;
         /// <summary>
-        /// )) The status of the GCSFuse CSI driver addon,
+        /// The status of the GCSFuse CSI driver addon,
         /// which allows the usage of a gcs bucket as volumes.
         /// It is disabled by default; set `enabled = true` to enable.
         /// </summary>

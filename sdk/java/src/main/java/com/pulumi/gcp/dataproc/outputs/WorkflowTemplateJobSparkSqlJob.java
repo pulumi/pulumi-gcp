@@ -16,17 +16,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WorkflowTemplateJobSparkSqlJob {
     /**
-     * @return Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+     * @return HCFS URIs of jar files to be added to the Spark CLASSPATH.
      * 
      */
     private @Nullable List<String> jarFileUris;
     /**
-     * @return Optional. The runtime log config for job execution.
+     * @return The runtime log config for job execution.
      * 
      */
     private @Nullable WorkflowTemplateJobSparkSqlJobLoggingConfig loggingConfig;
     /**
-     * @return Optional. A mapping of property names to values, used to configure Spark SQL&#39;s SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.
+     * @return A mapping of property names to values, used to configure Spark SQL&#39;s SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.
      * 
      */
     private @Nullable Map<String,String> properties;
@@ -41,28 +41,28 @@ public final class WorkflowTemplateJobSparkSqlJob {
      */
     private @Nullable WorkflowTemplateJobSparkSqlJobQueryList queryList;
     /**
-     * @return Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name=&#34;value&#34;;`).
+     * @return Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name=&#34;value&#34;;`).
      * 
      */
     private @Nullable Map<String,String> scriptVariables;
 
     private WorkflowTemplateJobSparkSqlJob() {}
     /**
-     * @return Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+     * @return HCFS URIs of jar files to be added to the Spark CLASSPATH.
      * 
      */
     public List<String> jarFileUris() {
         return this.jarFileUris == null ? List.of() : this.jarFileUris;
     }
     /**
-     * @return Optional. The runtime log config for job execution.
+     * @return The runtime log config for job execution.
      * 
      */
     public Optional<WorkflowTemplateJobSparkSqlJobLoggingConfig> loggingConfig() {
         return Optional.ofNullable(this.loggingConfig);
     }
     /**
-     * @return Optional. A mapping of property names to values, used to configure Spark SQL&#39;s SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.
+     * @return A mapping of property names to values, used to configure Spark SQL&#39;s SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.
      * 
      */
     public Map<String,String> properties() {
@@ -83,7 +83,7 @@ public final class WorkflowTemplateJobSparkSqlJob {
         return Optional.ofNullable(this.queryList);
     }
     /**
-     * @return Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name=&#34;value&#34;;`).
+     * @return Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name=&#34;value&#34;;`).
      * 
      */
     public Map<String,String> scriptVariables() {

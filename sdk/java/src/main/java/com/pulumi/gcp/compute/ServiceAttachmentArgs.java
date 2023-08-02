@@ -188,6 +188,27 @@ public final class ServiceAttachmentArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
+     * If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
+     * If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
+     * For newly created service attachment, this boolean defaults to true.
+     * 
+     */
+    @Import(name="reconcileConnections")
+    private @Nullable Output<Boolean> reconcileConnections;
+
+    /**
+     * @return This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
+     * If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
+     * If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
+     * For newly created service attachment, this boolean defaults to true.
+     * 
+     */
+    public Optional<Output<Boolean>> reconcileConnections() {
+        return Optional.ofNullable(this.reconcileConnections);
+    }
+
+    /**
      * URL of the region where the resource resides.
      * 
      */
@@ -231,6 +252,7 @@ public final class ServiceAttachmentArgs extends com.pulumi.resources.ResourceAr
         this.name = $.name;
         this.natSubnets = $.natSubnets;
         this.project = $.project;
+        this.reconcileConnections = $.reconcileConnections;
         this.region = $.region;
         this.targetService = $.targetService;
     }
@@ -520,6 +542,33 @@ public final class ServiceAttachmentArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param reconcileConnections This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
+         * If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
+         * If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
+         * For newly created service attachment, this boolean defaults to true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reconcileConnections(@Nullable Output<Boolean> reconcileConnections) {
+            $.reconcileConnections = reconcileConnections;
+            return this;
+        }
+
+        /**
+         * @param reconcileConnections This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
+         * If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
+         * If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
+         * For newly created service attachment, this boolean defaults to true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reconcileConnections(Boolean reconcileConnections) {
+            return reconcileConnections(Output.of(reconcileConnections));
         }
 
         /**

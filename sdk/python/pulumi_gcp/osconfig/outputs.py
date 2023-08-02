@@ -3253,8 +3253,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFile(dict):
         """
         :param str path: The absolute path of the file within the VM.
         :param str state: Desired state of the file. Possible values are:
-               `DESIRED_STATE_UNSPECIFIED`, `PRESENT`, `ABSENT`,
-               `CONTENTS_MATCH`.
+               `DESIRED_STATE_UNSPECIFIED`, `PRESENT`, `ABSENT`, `CONTENTS_MATCH`.
         :param str content: A a file with this content. The size of the content
                is limited to 1024 characters.
         :param 'OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs' file: A remote or local source. Structure is
@@ -3290,8 +3289,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFile(dict):
     def state(self) -> str:
         """
         Desired state of the file. Possible values are:
-        `DESIRED_STATE_UNSPECIFIED`, `PRESENT`, `ABSENT`,
-        `CONTENTS_MATCH`.
+        `DESIRED_STATE_UNSPECIFIED`, `PRESENT`, `ABSENT`, `CONTENTS_MATCH`.
         """
         return pulumi.get(self, "state")
 

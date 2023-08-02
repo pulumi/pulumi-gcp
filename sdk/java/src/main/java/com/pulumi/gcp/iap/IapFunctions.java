@@ -22,6 +22,8 @@ import com.pulumi.gcp.iap.inputs.GetWebBackendServiceIamPolicyArgs;
 import com.pulumi.gcp.iap.inputs.GetWebBackendServiceIamPolicyPlainArgs;
 import com.pulumi.gcp.iap.inputs.GetWebIamPolicyArgs;
 import com.pulumi.gcp.iap.inputs.GetWebIamPolicyPlainArgs;
+import com.pulumi.gcp.iap.inputs.GetWebRegionBackendServiceIamPolicyArgs;
+import com.pulumi.gcp.iap.inputs.GetWebRegionBackendServiceIamPolicyPlainArgs;
 import com.pulumi.gcp.iap.inputs.GetWebTypeAppEngineIamPolicyArgs;
 import com.pulumi.gcp.iap.inputs.GetWebTypeAppEngineIamPolicyPlainArgs;
 import com.pulumi.gcp.iap.inputs.GetWebTypeComputeIamPolicyArgs;
@@ -33,6 +35,7 @@ import com.pulumi.gcp.iap.outputs.GetTunnelIamPolicyResult;
 import com.pulumi.gcp.iap.outputs.GetTunnelInstanceIamPolicyResult;
 import com.pulumi.gcp.iap.outputs.GetWebBackendServiceIamPolicyResult;
 import com.pulumi.gcp.iap.outputs.GetWebIamPolicyResult;
+import com.pulumi.gcp.iap.outputs.GetWebRegionBackendServiceIamPolicyResult;
 import com.pulumi.gcp.iap.outputs.GetWebTypeAppEngineIamPolicyResult;
 import com.pulumi.gcp.iap.outputs.GetWebTypeComputeIamPolicyResult;
 import java.util.concurrent.CompletableFuture;
@@ -1281,6 +1284,162 @@ public final class IapFunctions {
      */
     public static CompletableFuture<GetWebIamPolicyResult> getWebIamPolicyPlain(GetWebIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:iap/getWebIamPolicy:getWebIamPolicy", TypeShape.of(GetWebIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for webregionbackendservice
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetWebRegionBackendServiceIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getWebRegionBackendServiceIamPolicy(GetWebRegionBackendServiceIamPolicyArgs.builder()
+     *             .project(google_compute_region_backend_service.default().project())
+     *             .region(google_compute_region_backend_service.default().region())
+     *             .webRegionBackendService(google_compute_region_backend_service.default().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetWebRegionBackendServiceIamPolicyResult> getWebRegionBackendServiceIamPolicy(GetWebRegionBackendServiceIamPolicyArgs args) {
+        return getWebRegionBackendServiceIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for webregionbackendservice
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetWebRegionBackendServiceIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getWebRegionBackendServiceIamPolicy(GetWebRegionBackendServiceIamPolicyArgs.builder()
+     *             .project(google_compute_region_backend_service.default().project())
+     *             .region(google_compute_region_backend_service.default().region())
+     *             .webRegionBackendService(google_compute_region_backend_service.default().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetWebRegionBackendServiceIamPolicyResult> getWebRegionBackendServiceIamPolicyPlain(GetWebRegionBackendServiceIamPolicyPlainArgs args) {
+        return getWebRegionBackendServiceIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for webregionbackendservice
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetWebRegionBackendServiceIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getWebRegionBackendServiceIamPolicy(GetWebRegionBackendServiceIamPolicyArgs.builder()
+     *             .project(google_compute_region_backend_service.default().project())
+     *             .region(google_compute_region_backend_service.default().region())
+     *             .webRegionBackendService(google_compute_region_backend_service.default().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetWebRegionBackendServiceIamPolicyResult> getWebRegionBackendServiceIamPolicy(GetWebRegionBackendServiceIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:iap/getWebRegionBackendServiceIamPolicy:getWebRegionBackendServiceIamPolicy", TypeShape.of(GetWebRegionBackendServiceIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for webregionbackendservice
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetWebRegionBackendServiceIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getWebRegionBackendServiceIamPolicy(GetWebRegionBackendServiceIamPolicyArgs.builder()
+     *             .project(google_compute_region_backend_service.default().project())
+     *             .region(google_compute_region_backend_service.default().region())
+     *             .webRegionBackendService(google_compute_region_backend_service.default().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetWebRegionBackendServiceIamPolicyResult> getWebRegionBackendServiceIamPolicyPlain(GetWebRegionBackendServiceIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:iap/getWebRegionBackendServiceIamPolicy:getWebRegionBackendServiceIamPolicy", TypeShape.of(GetWebRegionBackendServiceIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves the current IAM policy data for webtypeappengine

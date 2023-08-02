@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WorkflowTemplatePlacementManagedClusterConfigEndpointConfig {
     /**
-     * @return Optional. If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
+     * @return If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
      * 
      */
     private @Nullable Boolean enableHttpPortAccess;
@@ -26,7 +26,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigEndpointConfig {
 
     private WorkflowTemplatePlacementManagedClusterConfigEndpointConfig() {}
     /**
-     * @return Optional. If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
+     * @return If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
      * 
      */
     public Optional<Boolean> enableHttpPortAccess() {

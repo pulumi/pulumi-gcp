@@ -501,6 +501,14 @@ namespace Pulumi.Gcp.CloudRunV2
         public Output<ImmutableArray<Outputs.ServiceCondition>> Conditions { get; private set; } = null!;
 
         /// <summary>
+        /// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
+        /// string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
+        /// https://cloud.google.com/run/docs/configuring/custom-audiences.
+        /// </summary>
+        [Output("customAudiences")]
+        public Output<ImmutableArray<string>> CustomAudiences { get; private set; } = null!;
+
+        /// <summary>
         /// User-provided description of the Service. This field currently has a 512-character limit.
         /// </summary>
         [Output("description")]
@@ -722,6 +730,20 @@ namespace Pulumi.Gcp.CloudRunV2
         [Input("clientVersion")]
         public Input<string>? ClientVersion { get; set; }
 
+        [Input("customAudiences")]
+        private InputList<string>? _customAudiences;
+
+        /// <summary>
+        /// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
+        /// string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
+        /// https://cloud.google.com/run/docs/configuring/custom-audiences.
+        /// </summary>
+        public InputList<string> CustomAudiences
+        {
+            get => _customAudiences ?? (_customAudiences = new InputList<string>());
+            set => _customAudiences = value;
+        }
+
         /// <summary>
         /// User-provided description of the Service. This field currently has a 512-character limit.
         /// </summary>
@@ -863,6 +885,20 @@ namespace Pulumi.Gcp.CloudRunV2
         {
             get => _conditions ?? (_conditions = new InputList<Inputs.ServiceConditionGetArgs>());
             set => _conditions = value;
+        }
+
+        [Input("customAudiences")]
+        private InputList<string>? _customAudiences;
+
+        /// <summary>
+        /// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
+        /// string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
+        /// https://cloud.google.com/run/docs/configuring/custom-audiences.
+        /// </summary>
+        public InputList<string> CustomAudiences
+        {
+            get => _customAudiences ?? (_customAudiences = new InputList<string>());
+            set => _customAudiences = value;
         }
 
         /// <summary>

@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionAbsentArgs;
 import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionMatchedLogArgs;
 import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionMonitoringQueryLanguageArgs;
+import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionPrometheusQueryLanguageArgs;
 import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionThresholdArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -72,6 +73,31 @@ public final class AlertPolicyConditionArgs extends com.pulumi.resources.Resourc
      */
     public Optional<Output<AlertPolicyConditionConditionMonitoringQueryLanguageArgs>> conditionMonitoringQueryLanguage() {
         return Optional.ofNullable(this.conditionMonitoringQueryLanguage);
+    }
+
+    /**
+     * A Monitoring Query Language query that outputs a boolean stream
+     * A condition type that allows alert policies to be defined using
+     * Prometheus Query Language (PromQL).
+     * The PrometheusQueryLanguageCondition message contains information
+     * from a Prometheus alerting rule and its associated rule group.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="conditionPrometheusQueryLanguage")
+    private @Nullable Output<AlertPolicyConditionConditionPrometheusQueryLanguageArgs> conditionPrometheusQueryLanguage;
+
+    /**
+     * @return A Monitoring Query Language query that outputs a boolean stream
+     * A condition type that allows alert policies to be defined using
+     * Prometheus Query Language (PromQL).
+     * The PrometheusQueryLanguageCondition message contains information
+     * from a Prometheus alerting rule and its associated rule group.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AlertPolicyConditionConditionPrometheusQueryLanguageArgs>> conditionPrometheusQueryLanguage() {
+        return Optional.ofNullable(this.conditionPrometheusQueryLanguage);
     }
 
     /**
@@ -149,6 +175,7 @@ public final class AlertPolicyConditionArgs extends com.pulumi.resources.Resourc
         this.conditionAbsent = $.conditionAbsent;
         this.conditionMatchedLog = $.conditionMatchedLog;
         this.conditionMonitoringQueryLanguage = $.conditionMonitoringQueryLanguage;
+        this.conditionPrometheusQueryLanguage = $.conditionPrometheusQueryLanguage;
         this.conditionThreshold = $.conditionThreshold;
         this.displayName = $.displayName;
         this.name = $.name;
@@ -243,6 +270,37 @@ public final class AlertPolicyConditionArgs extends com.pulumi.resources.Resourc
          */
         public Builder conditionMonitoringQueryLanguage(AlertPolicyConditionConditionMonitoringQueryLanguageArgs conditionMonitoringQueryLanguage) {
             return conditionMonitoringQueryLanguage(Output.of(conditionMonitoringQueryLanguage));
+        }
+
+        /**
+         * @param conditionPrometheusQueryLanguage A Monitoring Query Language query that outputs a boolean stream
+         * A condition type that allows alert policies to be defined using
+         * Prometheus Query Language (PromQL).
+         * The PrometheusQueryLanguageCondition message contains information
+         * from a Prometheus alerting rule and its associated rule group.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder conditionPrometheusQueryLanguage(@Nullable Output<AlertPolicyConditionConditionPrometheusQueryLanguageArgs> conditionPrometheusQueryLanguage) {
+            $.conditionPrometheusQueryLanguage = conditionPrometheusQueryLanguage;
+            return this;
+        }
+
+        /**
+         * @param conditionPrometheusQueryLanguage A Monitoring Query Language query that outputs a boolean stream
+         * A condition type that allows alert policies to be defined using
+         * Prometheus Query Language (PromQL).
+         * The PrometheusQueryLanguageCondition message contains information
+         * from a Prometheus alerting rule and its associated rule group.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder conditionPrometheusQueryLanguage(AlertPolicyConditionConditionPrometheusQueryLanguageArgs conditionPrometheusQueryLanguage) {
+            return conditionPrometheusQueryLanguage(Output.of(conditionPrometheusQueryLanguage));
         }
 
         /**

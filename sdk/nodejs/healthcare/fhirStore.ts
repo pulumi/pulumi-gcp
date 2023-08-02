@@ -71,6 +71,10 @@ import * as utilities from "../utilities";
  *             datasetUri: pulumi.interpolate`bq://${bqDataset.project}.${bqDataset.datasetId}`,
  *             schemaConfig: {
  *                 recursiveStructureDepth: 3,
+ *                 lastUpdatedPartitionConfig: {
+ *                     type: "HOUR",
+ *                     expirationMs: "1000000",
+ *                 },
  *             },
  *         },
  *     }],

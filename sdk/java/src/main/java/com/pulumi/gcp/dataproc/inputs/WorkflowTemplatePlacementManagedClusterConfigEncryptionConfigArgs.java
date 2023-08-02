@@ -16,14 +16,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig
     public static final WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArgs Empty = new WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArgs();
 
     /**
-     * Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
+     * The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
      * 
      */
     @Import(name="gcePdKmsKeyName")
     private @Nullable Output<String> gcePdKmsKeyName;
 
     /**
-     * @return Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
+     * @return The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
      * 
      */
     public Optional<Output<String>> gcePdKmsKeyName() {
@@ -55,7 +55,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig
         }
 
         /**
-         * @param gcePdKmsKeyName Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
+         * @param gcePdKmsKeyName The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig
         }
 
         /**
-         * @param gcePdKmsKeyName Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
+         * @param gcePdKmsKeyName The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
          * 
          * @return builder
          * 

@@ -80,6 +80,11 @@ export const getWebIamPolicy: typeof import("./getWebIamPolicy").getWebIamPolicy
 export const getWebIamPolicyOutput: typeof import("./getWebIamPolicy").getWebIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getWebIamPolicy","getWebIamPolicyOutput"], () => require("./getWebIamPolicy"));
 
+export { GetWebRegionBackendServiceIamPolicyArgs, GetWebRegionBackendServiceIamPolicyResult, GetWebRegionBackendServiceIamPolicyOutputArgs } from "./getWebRegionBackendServiceIamPolicy";
+export const getWebRegionBackendServiceIamPolicy: typeof import("./getWebRegionBackendServiceIamPolicy").getWebRegionBackendServiceIamPolicy = null as any;
+export const getWebRegionBackendServiceIamPolicyOutput: typeof import("./getWebRegionBackendServiceIamPolicy").getWebRegionBackendServiceIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getWebRegionBackendServiceIamPolicy","getWebRegionBackendServiceIamPolicyOutput"], () => require("./getWebRegionBackendServiceIamPolicy"));
+
 export { GetWebTypeAppEngineIamPolicyArgs, GetWebTypeAppEngineIamPolicyResult, GetWebTypeAppEngineIamPolicyOutputArgs } from "./getWebTypeAppEngineIamPolicy";
 export const getWebTypeAppEngineIamPolicy: typeof import("./getWebTypeAppEngineIamPolicy").getWebTypeAppEngineIamPolicy = null as any;
 export const getWebTypeAppEngineIamPolicyOutput: typeof import("./getWebTypeAppEngineIamPolicy").getWebTypeAppEngineIamPolicyOutput = null as any;
@@ -149,6 +154,21 @@ export { WebIamPolicyArgs, WebIamPolicyState } from "./webIamPolicy";
 export type WebIamPolicy = import("./webIamPolicy").WebIamPolicy;
 export const WebIamPolicy: typeof import("./webIamPolicy").WebIamPolicy = null as any;
 utilities.lazyLoad(exports, ["WebIamPolicy"], () => require("./webIamPolicy"));
+
+export { WebRegionBackendServiceIamBindingArgs, WebRegionBackendServiceIamBindingState } from "./webRegionBackendServiceIamBinding";
+export type WebRegionBackendServiceIamBinding = import("./webRegionBackendServiceIamBinding").WebRegionBackendServiceIamBinding;
+export const WebRegionBackendServiceIamBinding: typeof import("./webRegionBackendServiceIamBinding").WebRegionBackendServiceIamBinding = null as any;
+utilities.lazyLoad(exports, ["WebRegionBackendServiceIamBinding"], () => require("./webRegionBackendServiceIamBinding"));
+
+export { WebRegionBackendServiceIamMemberArgs, WebRegionBackendServiceIamMemberState } from "./webRegionBackendServiceIamMember";
+export type WebRegionBackendServiceIamMember = import("./webRegionBackendServiceIamMember").WebRegionBackendServiceIamMember;
+export const WebRegionBackendServiceIamMember: typeof import("./webRegionBackendServiceIamMember").WebRegionBackendServiceIamMember = null as any;
+utilities.lazyLoad(exports, ["WebRegionBackendServiceIamMember"], () => require("./webRegionBackendServiceIamMember"));
+
+export { WebRegionBackendServiceIamPolicyArgs, WebRegionBackendServiceIamPolicyState } from "./webRegionBackendServiceIamPolicy";
+export type WebRegionBackendServiceIamPolicy = import("./webRegionBackendServiceIamPolicy").WebRegionBackendServiceIamPolicy;
+export const WebRegionBackendServiceIamPolicy: typeof import("./webRegionBackendServiceIamPolicy").WebRegionBackendServiceIamPolicy = null as any;
+utilities.lazyLoad(exports, ["WebRegionBackendServiceIamPolicy"], () => require("./webRegionBackendServiceIamPolicy"));
 
 export { WebTypeAppEngingIamBindingArgs, WebTypeAppEngingIamBindingState } from "./webTypeAppEngingIamBinding";
 export type WebTypeAppEngingIamBinding = import("./webTypeAppEngingIamBinding").WebTypeAppEngingIamBinding;
@@ -225,6 +245,12 @@ const _module = {
                 return new WebIamMember(name, <any>undefined, { urn })
             case "gcp:iap/webIamPolicy:WebIamPolicy":
                 return new WebIamPolicy(name, <any>undefined, { urn })
+            case "gcp:iap/webRegionBackendServiceIamBinding:WebRegionBackendServiceIamBinding":
+                return new WebRegionBackendServiceIamBinding(name, <any>undefined, { urn })
+            case "gcp:iap/webRegionBackendServiceIamMember:WebRegionBackendServiceIamMember":
+                return new WebRegionBackendServiceIamMember(name, <any>undefined, { urn })
+            case "gcp:iap/webRegionBackendServiceIamPolicy:WebRegionBackendServiceIamPolicy":
+                return new WebRegionBackendServiceIamPolicy(name, <any>undefined, { urn })
             case "gcp:iap/webTypeAppEngingIamBinding:WebTypeAppEngingIamBinding":
                 return new WebTypeAppEngingIamBinding(name, <any>undefined, { urn })
             case "gcp:iap/webTypeAppEngingIamMember:WebTypeAppEngingIamMember":
@@ -262,6 +288,9 @@ pulumi.runtime.registerResourceModule("gcp", "iap/webBackendServiceIamPolicy", _
 pulumi.runtime.registerResourceModule("gcp", "iap/webIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/webIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/webIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "iap/webRegionBackendServiceIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "iap/webRegionBackendServiceIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "iap/webRegionBackendServiceIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/webTypeAppEngingIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/webTypeAppEngingIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/webTypeAppEngingIamPolicy", _module)

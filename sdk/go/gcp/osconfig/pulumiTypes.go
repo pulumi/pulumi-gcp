@@ -7994,8 +7994,7 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourceFile struct {
 	// execute: 7 read and execute: 5 read and write: 6 read only: 4
 	Permissions *string `pulumi:"permissions"`
 	// Desired state of the file. Possible values are:
-	// `DESIRED_STATE_UNSPECIFIED`, `PRESENT`, `ABSENT`,
-	// `CONTENTS_MATCH`.
+	// `DESIRED_STATE_UNSPECIFIED`, `PRESENT`, `ABSENT`, `CONTENTS_MATCH`.
 	State string `pulumi:"state"`
 }
 
@@ -8029,8 +8028,7 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs struct {
 	// execute: 7 read and execute: 5 read and write: 6 read only: 4
 	Permissions pulumi.StringPtrInput `pulumi:"permissions"`
 	// Desired state of the file. Possible values are:
-	// `DESIRED_STATE_UNSPECIFIED`, `PRESENT`, `ABSENT`,
-	// `CONTENTS_MATCH`.
+	// `DESIRED_STATE_UNSPECIFIED`, `PRESENT`, `ABSENT`, `CONTENTS_MATCH`.
 	State pulumi.StringInput `pulumi:"state"`
 }
 
@@ -8143,8 +8141,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileOutput) Permissions()
 }
 
 // Desired state of the file. Possible values are:
-// `DESIRED_STATE_UNSPECIFIED`, `PRESENT`, `ABSENT`,
-// `CONTENTS_MATCH`.
+// `DESIRED_STATE_UNSPECIFIED`, `PRESENT`, `ABSENT`, `CONTENTS_MATCH`.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceFile) string { return v.State }).(pulumi.StringOutput)
 }
@@ -8223,8 +8220,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput) Permission
 }
 
 // Desired state of the file. Possible values are:
-// `DESIRED_STATE_UNSPECIFIED`, `PRESENT`, `ABSENT`,
-// `CONTENTS_MATCH`.
+// `DESIRED_STATE_UNSPECIFIED`, `PRESENT`, `ABSENT`, `CONTENTS_MATCH`.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceFile) *string {
 		if v == nil {

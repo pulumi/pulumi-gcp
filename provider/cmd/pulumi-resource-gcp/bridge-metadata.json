@@ -2596,6 +2596,9 @@
                             "fields": {
                                 "conditions": {
                                     "maxItemsOne": false
+                                },
+                                "traffic": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -2953,6 +2956,9 @@
                         "maxItemsOne": true
                     },
                     "conditions": {
+                        "maxItemsOne": false
+                    },
+                    "custom_audiences": {
                         "maxItemsOne": false
                     },
                     "template": {
@@ -8220,6 +8226,12 @@
                                     "maxItemsOne": true,
                                     "elem": {
                                         "fields": {
+                                            "additional_node_network_configs": {
+                                                "maxItemsOne": false
+                                            },
+                                            "additional_pod_network_configs": {
+                                                "maxItemsOne": false
+                                            },
                                             "pod_cidr_overprovision_config": {
                                                 "maxItemsOne": true
                                             }
@@ -8472,6 +8484,12 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "additional_node_network_configs": {
+                                    "maxItemsOne": false
+                                },
+                                "additional_pod_network_configs": {
+                                    "maxItemsOne": false
+                                },
                                 "pod_cidr_overprovision_config": {
                                     "maxItemsOne": true
                                 }
@@ -10950,6 +10968,145 @@
             },
             "google_dataplex_lake_iam_policy": {
                 "current": "gcp:dataplex/lakeIamPolicy:LakeIamPolicy",
+                "majorVersion": 6
+            },
+            "google_dataplex_task": {
+                "current": "gcp:dataplex/task:Task",
+                "majorVersion": 6,
+                "fields": {
+                    "execution_spec": {
+                        "maxItemsOne": true
+                    },
+                    "execution_status": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "latest_job": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "notebook": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "archive_uris": {
+                                    "maxItemsOne": false
+                                },
+                                "file_uris": {
+                                    "maxItemsOne": false
+                                },
+                                "infrastructure_spec": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "batch": {
+                                                "maxItemsOne": true
+                                            },
+                                            "container_image": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "java_jars": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "python_packages": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "vpc_network": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "network_tags": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "spark": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "archive_uris": {
+                                    "maxItemsOne": false
+                                },
+                                "file_uris": {
+                                    "maxItemsOne": false
+                                },
+                                "infrastructure_spec": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "batch": {
+                                                "maxItemsOne": true
+                                            },
+                                            "container_image": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "java_jars": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "python_packages": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "vpc_network": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "network_tags": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "trigger_spec": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_dataplex_task_iam_binding": {
+                "current": "gcp:dataplex/taskIamBinding:TaskIamBinding",
+                "majorVersion": 6,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    },
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_dataplex_task_iam_member": {
+                "current": "gcp:dataplex/taskIamMember:TaskIamMember",
+                "majorVersion": 6,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_dataplex_task_iam_policy": {
+                "current": "gcp:dataplex/taskIamPolicy:TaskIamPolicy",
                 "majorVersion": 6
             },
             "google_dataplex_zone": {
@@ -14506,7 +14663,14 @@
                                     "elem": {
                                         "fields": {
                                             "schema_config": {
-                                                "maxItemsOne": true
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "last_updated_partition_config": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
                                             }
                                         }
                                     }
@@ -14857,6 +15021,31 @@
             },
             "google_iap_web_iam_policy": {
                 "current": "gcp:iap/webIamPolicy:WebIamPolicy",
+                "majorVersion": 6
+            },
+            "google_iap_web_region_backend_service_iam_binding": {
+                "current": "gcp:iap/webRegionBackendServiceIamBinding:WebRegionBackendServiceIamBinding",
+                "majorVersion": 6,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    },
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_iap_web_region_backend_service_iam_member": {
+                "current": "gcp:iap/webRegionBackendServiceIamMember:WebRegionBackendServiceIamMember",
+                "majorVersion": 6,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_iap_web_region_backend_service_iam_policy": {
+                "current": "gcp:iap/webRegionBackendServiceIamPolicy:WebRegionBackendServiceIamPolicy",
                 "majorVersion": 6
             },
             "google_iap_web_type_app_engine_iam_binding": {
@@ -15421,6 +15610,9 @@
                                             }
                                         }
                                     }
+                                },
+                                "condition_prometheus_query_language": {
+                                    "maxItemsOne": true
                                 },
                                 "condition_threshold": {
                                     "maxItemsOne": true,
@@ -20147,6 +20339,9 @@
                             "fields": {
                                 "conditions": {
                                     "maxItemsOne": false
+                                },
+                                "traffic": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -22142,6 +22337,12 @@
                                     "maxItemsOne": false,
                                     "elem": {
                                         "fields": {
+                                            "additional_node_network_configs": {
+                                                "maxItemsOne": false
+                                            },
+                                            "additional_pod_network_configs": {
+                                                "maxItemsOne": false
+                                            },
                                             "pod_cidr_overprovision_config": {
                                                 "maxItemsOne": false
                                             }
@@ -22424,6 +22625,10 @@
             },
             "google_dataplex_lake_iam_policy": {
                 "current": "gcp:dataplex/getLakeIamPolicy:getLakeIamPolicy",
+                "majorVersion": 6
+            },
+            "google_dataplex_task_iam_policy": {
+                "current": "gcp:dataplex/getTaskIamPolicy:getTaskIamPolicy",
                 "majorVersion": 6
             },
             "google_dataplex_zone_iam_policy": {
@@ -22777,6 +22982,10 @@
             },
             "google_iap_web_iam_policy": {
                 "current": "gcp:iap/getWebIamPolicy:getWebIamPolicy",
+                "majorVersion": 6
+            },
+            "google_iap_web_region_backend_service_iam_policy": {
+                "current": "gcp:iap/getWebRegionBackendServiceIamPolicy:getWebRegionBackendServiceIamPolicy",
                 "majorVersion": 6
             },
             "google_iap_web_type_app_engine_iam_policy": {
@@ -24253,6 +24462,10 @@
             "gcp:dataplex/lakeIamBinding:LakeIamBinding": 0,
             "gcp:dataplex/lakeIamMember:LakeIamMember": 0,
             "gcp:dataplex/lakeIamPolicy:LakeIamPolicy": 0,
+            "gcp:dataplex/task:Task": 0,
+            "gcp:dataplex/taskIamBinding:TaskIamBinding": 0,
+            "gcp:dataplex/taskIamMember:TaskIamMember": 0,
+            "gcp:dataplex/taskIamPolicy:TaskIamPolicy": 0,
             "gcp:dataplex/zone:Zone": 0,
             "gcp:dataplex/zoneIamBinding:ZoneIamBinding": 0,
             "gcp:dataplex/zoneIamMember:ZoneIamMember": 0,
@@ -24412,6 +24625,9 @@
             "gcp:iap/webIamBinding:WebIamBinding": 0,
             "gcp:iap/webIamMember:WebIamMember": 0,
             "gcp:iap/webIamPolicy:WebIamPolicy": 0,
+            "gcp:iap/webRegionBackendServiceIamBinding:WebRegionBackendServiceIamBinding": 0,
+            "gcp:iap/webRegionBackendServiceIamMember:WebRegionBackendServiceIamMember": 0,
+            "gcp:iap/webRegionBackendServiceIamPolicy:WebRegionBackendServiceIamPolicy": 0,
             "gcp:iap/webTypeAppEngingIamBinding:WebTypeAppEngingIamBinding": 0,
             "gcp:iap/webTypeAppEngingIamMember:WebTypeAppEngingIamMember": 0,
             "gcp:iap/webTypeAppEngingIamPolicy:WebTypeAppEngingIamPolicy": 0,
@@ -24769,6 +24985,7 @@
             "gcp:dataplex/getAssetIamPolicy:getAssetIamPolicy": 0,
             "gcp:dataplex/getDatascanIamPolicy:getDatascanIamPolicy": 0,
             "gcp:dataplex/getLakeIamPolicy:getLakeIamPolicy": 0,
+            "gcp:dataplex/getTaskIamPolicy:getTaskIamPolicy": 0,
             "gcp:dataplex/getZoneIamPolicy:getZoneIamPolicy": 0,
             "gcp:dataproc/getAutoscalingPolicyIamPolicy:getAutoscalingPolicyIamPolicy": 0,
             "gcp:dataproc/getClusterIamPolicy:getClusterIamPolicy": 0,
@@ -24811,6 +25028,7 @@
             "gcp:iap/getTunnelInstanceIamPolicy:getTunnelInstanceIamPolicy": 0,
             "gcp:iap/getWebBackendServiceIamPolicy:getWebBackendServiceIamPolicy": 0,
             "gcp:iap/getWebIamPolicy:getWebIamPolicy": 0,
+            "gcp:iap/getWebRegionBackendServiceIamPolicy:getWebRegionBackendServiceIamPolicy": 0,
             "gcp:iap/getWebTypeAppEngineIamPolicy:getWebTypeAppEngineIamPolicy": 0,
             "gcp:iap/getWebTypeComputeIamPolicy:getWebTypeComputeIamPolicy": 0,
             "gcp:iot/getRegistryIamPolicy:getRegistryIamPolicy": 0,
@@ -25275,6 +25493,10 @@
             "gcp:dataplex/lakeIamBinding:LakeIamBinding": "google_dataplex_lake_iam_binding",
             "gcp:dataplex/lakeIamMember:LakeIamMember": "google_dataplex_lake_iam_member",
             "gcp:dataplex/lakeIamPolicy:LakeIamPolicy": "google_dataplex_lake_iam_policy",
+            "gcp:dataplex/task:Task": "google_dataplex_task",
+            "gcp:dataplex/taskIamBinding:TaskIamBinding": "google_dataplex_task_iam_binding",
+            "gcp:dataplex/taskIamMember:TaskIamMember": "google_dataplex_task_iam_member",
+            "gcp:dataplex/taskIamPolicy:TaskIamPolicy": "google_dataplex_task_iam_policy",
             "gcp:dataplex/zone:Zone": "google_dataplex_zone",
             "gcp:dataplex/zoneIamBinding:ZoneIamBinding": "google_dataplex_zone_iam_binding",
             "gcp:dataplex/zoneIamMember:ZoneIamMember": "google_dataplex_zone_iam_member",
@@ -25434,6 +25656,9 @@
             "gcp:iap/webIamBinding:WebIamBinding": "google_iap_web_iam_binding",
             "gcp:iap/webIamMember:WebIamMember": "google_iap_web_iam_member",
             "gcp:iap/webIamPolicy:WebIamPolicy": "google_iap_web_iam_policy",
+            "gcp:iap/webRegionBackendServiceIamBinding:WebRegionBackendServiceIamBinding": "google_iap_web_region_backend_service_iam_binding",
+            "gcp:iap/webRegionBackendServiceIamMember:WebRegionBackendServiceIamMember": "google_iap_web_region_backend_service_iam_member",
+            "gcp:iap/webRegionBackendServiceIamPolicy:WebRegionBackendServiceIamPolicy": "google_iap_web_region_backend_service_iam_policy",
             "gcp:iap/webTypeAppEngingIamBinding:WebTypeAppEngingIamBinding": "google_iap_web_type_app_engine_iam_binding",
             "gcp:iap/webTypeAppEngingIamMember:WebTypeAppEngingIamMember": "google_iap_web_type_app_engine_iam_member",
             "gcp:iap/webTypeAppEngingIamPolicy:WebTypeAppEngingIamPolicy": "google_iap_web_type_app_engine_iam_policy",
@@ -25791,6 +26016,7 @@
             "gcp:dataplex/getAssetIamPolicy:getAssetIamPolicy": "google_dataplex_asset_iam_policy",
             "gcp:dataplex/getDatascanIamPolicy:getDatascanIamPolicy": "google_dataplex_datascan_iam_policy",
             "gcp:dataplex/getLakeIamPolicy:getLakeIamPolicy": "google_dataplex_lake_iam_policy",
+            "gcp:dataplex/getTaskIamPolicy:getTaskIamPolicy": "google_dataplex_task_iam_policy",
             "gcp:dataplex/getZoneIamPolicy:getZoneIamPolicy": "google_dataplex_zone_iam_policy",
             "gcp:dataproc/getAutoscalingPolicyIamPolicy:getAutoscalingPolicyIamPolicy": "google_dataproc_autoscaling_policy_iam_policy",
             "gcp:dataproc/getClusterIamPolicy:getClusterIamPolicy": "google_dataproc_cluster_iam_policy",
@@ -25833,6 +26059,7 @@
             "gcp:iap/getTunnelInstanceIamPolicy:getTunnelInstanceIamPolicy": "google_iap_tunnel_instance_iam_policy",
             "gcp:iap/getWebBackendServiceIamPolicy:getWebBackendServiceIamPolicy": "google_iap_web_backend_service_iam_policy",
             "gcp:iap/getWebIamPolicy:getWebIamPolicy": "google_iap_web_iam_policy",
+            "gcp:iap/getWebRegionBackendServiceIamPolicy:getWebRegionBackendServiceIamPolicy": "google_iap_web_region_backend_service_iam_policy",
             "gcp:iap/getWebTypeAppEngineIamPolicy:getWebTypeAppEngineIamPolicy": "google_iap_web_type_app_engine_iam_policy",
             "gcp:iap/getWebTypeComputeIamPolicy:getWebTypeComputeIamPolicy": "google_iap_web_type_compute_iam_policy",
             "gcp:iot/getRegistryIamPolicy:getRegistryIamPolicy": "google_cloudiot_registry_iam_policy",
@@ -29036,7 +29263,12 @@
             "gcp:cloudrun/ServiceStatus:ServiceStatus": {
                 "latestCreatedRevisionName": "latest_created_revision_name",
                 "latestReadyRevisionName": "latest_ready_revision_name",
-                "observedGeneration": "observed_generation"
+                "observedGeneration": "observed_generation",
+                "traffics": "traffic"
+            },
+            "gcp:cloudrun/ServiceStatusTraffic:ServiceStatusTraffic": {
+                "latestRevision": "latest_revision",
+                "revisionName": "revision_name"
             },
             "gcp:cloudrun/ServiceTemplateMetadata:ServiceTemplateMetadata": {
                 "resourceVersion": "resource_version",
@@ -29134,7 +29366,12 @@
             "gcp:cloudrun/getServiceStatus:getServiceStatus": {
                 "latestCreatedRevisionName": "latest_created_revision_name",
                 "latestReadyRevisionName": "latest_ready_revision_name",
-                "observedGeneration": "observed_generation"
+                "observedGeneration": "observed_generation",
+                "traffics": "traffic"
+            },
+            "gcp:cloudrun/getServiceStatusTraffic:getServiceStatusTraffic": {
+                "latestRevision": "latest_revision",
+                "revisionName": "revision_name"
             },
             "gcp:cloudrun/getServiceTemplate:getServiceTemplate": {
                 "metadatas": "metadata",
@@ -29411,6 +29648,7 @@
             "gcp:cloudrunv2/service:Service": {
                 "binaryAuthorization": "binary_authorization",
                 "clientVersion": "client_version",
+                "customAudiences": "custom_audiences",
                 "latestCreatedRevision": "latest_created_revision",
                 "latestReadyRevision": "latest_ready_revision",
                 "launchStage": "launch_stage",
@@ -33075,6 +33313,7 @@
                 "logConfig": "log_config",
                 "outlierDetection": "outlier_detection",
                 "portName": "port_name",
+                "securityPolicy": "security_policy",
                 "selfLink": "self_link",
                 "sessionAffinity": "session_affinity",
                 "timeoutSec": "timeout_sec"
@@ -33371,6 +33610,7 @@
                 "domainNames": "domain_names",
                 "enableProxyProtocol": "enable_proxy_protocol",
                 "natSubnets": "nat_subnets",
+                "reconcileConnections": "reconcile_connections",
                 "selfLink": "self_link",
                 "targetService": "target_service"
             },
@@ -33940,11 +34180,17 @@
                 "autoUpgrade": "auto_upgrade"
             },
             "gcp:container/ClusterNodePoolNetworkConfig:ClusterNodePoolNetworkConfig": {
+                "additionalNodeNetworkConfigs": "additional_node_network_configs",
+                "additionalPodNetworkConfigs": "additional_pod_network_configs",
                 "createPodRange": "create_pod_range",
                 "enablePrivateNodes": "enable_private_nodes",
                 "podCidrOverprovisionConfig": "pod_cidr_overprovision_config",
                 "podIpv4CidrBlock": "pod_ipv4_cidr_block",
                 "podRange": "pod_range"
+            },
+            "gcp:container/ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig:ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig": {
+                "maxPodsPerNode": "max_pods_per_node",
+                "secondaryPodRange": "secondary_pod_range"
             },
             "gcp:container/ClusterNodePoolNodeConfig:ClusterNodePoolNodeConfig": {
                 "advancedMachineFeatures": "advanced_machine_features",
@@ -34084,11 +34330,17 @@
                 "autoUpgrade": "auto_upgrade"
             },
             "gcp:container/NodePoolNetworkConfig:NodePoolNetworkConfig": {
+                "additionalNodeNetworkConfigs": "additional_node_network_configs",
+                "additionalPodNetworkConfigs": "additional_pod_network_configs",
                 "createPodRange": "create_pod_range",
                 "enablePrivateNodes": "enable_private_nodes",
                 "podCidrOverprovisionConfig": "pod_cidr_overprovision_config",
                 "podIpv4CidrBlock": "pod_ipv4_cidr_block",
                 "podRange": "pod_range"
+            },
+            "gcp:container/NodePoolNetworkConfigAdditionalPodNetworkConfig:NodePoolNetworkConfigAdditionalPodNetworkConfig": {
+                "maxPodsPerNode": "max_pods_per_node",
+                "secondaryPodRange": "secondary_pod_range"
             },
             "gcp:container/NodePoolNodeConfig:NodePoolNodeConfig": {
                 "advancedMachineFeatures": "advanced_machine_features",
@@ -34228,6 +34480,7 @@
             },
             "gcp:container/cluster:Cluster": {
                 "addonsConfig": "addons_config",
+                "allowNetAdmin": "allow_net_admin",
                 "authenticatorGroupsConfig": "authenticator_groups_config",
                 "binaryAuthorization": "binary_authorization",
                 "clusterAutoscaling": "cluster_autoscaling",
@@ -34246,6 +34499,7 @@
                 "enableKubernetesAlpha": "enable_kubernetes_alpha",
                 "enableL4IlbSubsetting": "enable_l4_ilb_subsetting",
                 "enableLegacyAbac": "enable_legacy_abac",
+                "enableMultiNetworking": "enable_multi_networking",
                 "enableShieldedNodes": "enable_shielded_nodes",
                 "enableTpu": "enable_tpu",
                 "gatewayApiConfig": "gateway_api_config",
@@ -34306,6 +34560,7 @@
             },
             "gcp:container/getCluster:getCluster": {
                 "addonsConfigs": "addons_config",
+                "allowNetAdmin": "allow_net_admin",
                 "authenticatorGroupsConfigs": "authenticator_groups_config",
                 "binaryAuthorizations": "binary_authorization",
                 "clusterAutoscalings": "cluster_autoscaling",
@@ -34324,6 +34579,7 @@
                 "enableKubernetesAlpha": "enable_kubernetes_alpha",
                 "enableL4IlbSubsetting": "enable_l4_ilb_subsetting",
                 "enableLegacyAbac": "enable_legacy_abac",
+                "enableMultiNetworking": "enable_multi_networking",
                 "enableShieldedNodes": "enable_shielded_nodes",
                 "enableTpu": "enable_tpu",
                 "gatewayApiConfigs": "gateway_api_config",
@@ -34606,11 +34862,17 @@
                 "autoUpgrade": "auto_upgrade"
             },
             "gcp:container/getClusterNodePoolNetworkConfig:getClusterNodePoolNetworkConfig": {
+                "additionalNodeNetworkConfigs": "additional_node_network_configs",
+                "additionalPodNetworkConfigs": "additional_pod_network_configs",
                 "createPodRange": "create_pod_range",
                 "enablePrivateNodes": "enable_private_nodes",
                 "podCidrOverprovisionConfigs": "pod_cidr_overprovision_config",
                 "podIpv4CidrBlock": "pod_ipv4_cidr_block",
                 "podRange": "pod_range"
+            },
+            "gcp:container/getClusterNodePoolNetworkConfigAdditionalPodNetworkConfig:getClusterNodePoolNetworkConfigAdditionalPodNetworkConfig": {
+                "maxPodsPerNode": "max_pods_per_node",
+                "secondaryPodRange": "secondary_pod_range"
             },
             "gcp:container/getClusterNodePoolNodeConfig:getClusterNodePoolNodeConfig": {
                 "advancedMachineFeatures": "advanced_machine_features",
@@ -36066,6 +36328,72 @@
             "gcp:dataplex/LakeMetastoreStatus:LakeMetastoreStatus": {
                 "updateTime": "update_time"
             },
+            "gcp:dataplex/TaskExecutionSpec:TaskExecutionSpec": {
+                "kmsKey": "kms_key",
+                "maxJobExecutionLifetime": "max_job_execution_lifetime",
+                "serviceAccount": "service_account"
+            },
+            "gcp:dataplex/TaskExecutionStatus:TaskExecutionStatus": {
+                "latestJobs": "latest_job",
+                "updateTime": "update_time"
+            },
+            "gcp:dataplex/TaskExecutionStatusLatestJob:TaskExecutionStatusLatestJob": {
+                "endTime": "end_time",
+                "retryCount": "retry_count",
+                "serviceJob": "service_job",
+                "startTime": "start_time"
+            },
+            "gcp:dataplex/TaskNotebook:TaskNotebook": {
+                "archiveUris": "archive_uris",
+                "fileUris": "file_uris",
+                "infrastructureSpec": "infrastructure_spec"
+            },
+            "gcp:dataplex/TaskNotebookInfrastructureSpec:TaskNotebookInfrastructureSpec": {
+                "containerImage": "container_image",
+                "vpcNetwork": "vpc_network"
+            },
+            "gcp:dataplex/TaskNotebookInfrastructureSpecBatch:TaskNotebookInfrastructureSpecBatch": {
+                "executorsCount": "executors_count",
+                "maxExecutorsCount": "max_executors_count"
+            },
+            "gcp:dataplex/TaskNotebookInfrastructureSpecContainerImage:TaskNotebookInfrastructureSpecContainerImage": {
+                "javaJars": "java_jars",
+                "pythonPackages": "python_packages"
+            },
+            "gcp:dataplex/TaskNotebookInfrastructureSpecVpcNetwork:TaskNotebookInfrastructureSpecVpcNetwork": {
+                "networkTags": "network_tags",
+                "subNetwork": "sub_network"
+            },
+            "gcp:dataplex/TaskSpark:TaskSpark": {
+                "archiveUris": "archive_uris",
+                "fileUris": "file_uris",
+                "infrastructureSpec": "infrastructure_spec",
+                "mainClass": "main_class",
+                "mainJarFileUri": "main_jar_file_uri",
+                "pythonScriptFile": "python_script_file",
+                "sqlScript": "sql_script",
+                "sqlScriptFile": "sql_script_file"
+            },
+            "gcp:dataplex/TaskSparkInfrastructureSpec:TaskSparkInfrastructureSpec": {
+                "containerImage": "container_image",
+                "vpcNetwork": "vpc_network"
+            },
+            "gcp:dataplex/TaskSparkInfrastructureSpecBatch:TaskSparkInfrastructureSpecBatch": {
+                "executorsCount": "executors_count",
+                "maxExecutorsCount": "max_executors_count"
+            },
+            "gcp:dataplex/TaskSparkInfrastructureSpecContainerImage:TaskSparkInfrastructureSpecContainerImage": {
+                "javaJars": "java_jars",
+                "pythonPackages": "python_packages"
+            },
+            "gcp:dataplex/TaskSparkInfrastructureSpecVpcNetwork:TaskSparkInfrastructureSpecVpcNetwork": {
+                "networkTags": "network_tags",
+                "subNetwork": "sub_network"
+            },
+            "gcp:dataplex/TaskTriggerSpec:TaskTriggerSpec": {
+                "maxRetries": "max_retries",
+                "startTime": "start_time"
+            },
             "gcp:dataplex/ZoneAssetStatus:ZoneAssetStatus": {
                 "activeAssets": "active_assets",
                 "securityPolicyApplyingAssets": "security_policy_applying_assets",
@@ -36141,6 +36469,10 @@
             "gcp:dataplex/getLakeIamPolicy:getLakeIamPolicy": {
                 "policyData": "policy_data"
             },
+            "gcp:dataplex/getTaskIamPolicy:getTaskIamPolicy": {
+                "policyData": "policy_data",
+                "taskId": "task_id"
+            },
             "gcp:dataplex/getZoneIamPolicy:getZoneIamPolicy": {
                 "dataplexZone": "dataplex_zone",
                 "policyData": "policy_data"
@@ -36155,6 +36487,25 @@
             },
             "gcp:dataplex/lakeIamPolicy:LakeIamPolicy": {
                 "policyData": "policy_data"
+            },
+            "gcp:dataplex/task:Task": {
+                "createTime": "create_time",
+                "displayName": "display_name",
+                "executionSpec": "execution_spec",
+                "executionStatuses": "execution_status",
+                "taskId": "task_id",
+                "triggerSpec": "trigger_spec",
+                "updateTime": "update_time"
+            },
+            "gcp:dataplex/taskIamBinding:TaskIamBinding": {
+                "taskId": "task_id"
+            },
+            "gcp:dataplex/taskIamMember:TaskIamMember": {
+                "taskId": "task_id"
+            },
+            "gcp:dataplex/taskIamPolicy:TaskIamPolicy": {
+                "policyData": "policy_data",
+                "taskId": "task_id"
             },
             "gcp:dataplex/zone:Zone": {
                 "assetStatuses": "asset_status",
@@ -38429,8 +38780,12 @@
                 "schemaConfig": "schema_config"
             },
             "gcp:healthcare/FhirStoreStreamConfigBigqueryDestinationSchemaConfig:FhirStoreStreamConfigBigqueryDestinationSchemaConfig": {
+                "lastUpdatedPartitionConfig": "last_updated_partition_config",
                 "recursiveStructureDepth": "recursive_structure_depth",
                 "schemaType": "schema_type"
+            },
+            "gcp:healthcare/FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig:FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig": {
+                "expirationMs": "expiration_ms"
             },
             "gcp:healthcare/Hl7StoreNotificationConfig:Hl7StoreNotificationConfig": {
                 "pubsubTopic": "pubsub_topic"
@@ -38702,6 +39057,10 @@
             "gcp:iap/getWebIamPolicy:getWebIamPolicy": {
                 "policyData": "policy_data"
             },
+            "gcp:iap/getWebRegionBackendServiceIamPolicy:getWebRegionBackendServiceIamPolicy": {
+                "policyData": "policy_data",
+                "webRegionBackendService": "web_region_backend_service"
+            },
             "gcp:iap/getWebTypeAppEngineIamPolicy:getWebTypeAppEngineIamPolicy": {
                 "appId": "app_id",
                 "policyData": "policy_data"
@@ -38727,6 +39086,16 @@
             },
             "gcp:iap/webIamPolicy:WebIamPolicy": {
                 "policyData": "policy_data"
+            },
+            "gcp:iap/webRegionBackendServiceIamBinding:WebRegionBackendServiceIamBinding": {
+                "webRegionBackendService": "web_region_backend_service"
+            },
+            "gcp:iap/webRegionBackendServiceIamMember:WebRegionBackendServiceIamMember": {
+                "webRegionBackendService": "web_region_backend_service"
+            },
+            "gcp:iap/webRegionBackendServiceIamPolicy:WebRegionBackendServiceIamPolicy": {
+                "policyData": "policy_data",
+                "webRegionBackendService": "web_region_backend_service"
             },
             "gcp:iap/webTypeAppEngingIamBinding:WebTypeAppEngingIamBinding": {
                 "appId": "app_id"
@@ -39374,6 +39743,7 @@
                 "conditionAbsent": "condition_absent",
                 "conditionMatchedLog": "condition_matched_log",
                 "conditionMonitoringQueryLanguage": "condition_monitoring_query_language",
+                "conditionPrometheusQueryLanguage": "condition_prometheus_query_language",
                 "conditionThreshold": "condition_threshold",
                 "displayName": "display_name"
             },
@@ -39388,6 +39758,11 @@
             },
             "gcp:monitoring/AlertPolicyConditionConditionMonitoringQueryLanguage:AlertPolicyConditionConditionMonitoringQueryLanguage": {
                 "evaluationMissingData": "evaluation_missing_data"
+            },
+            "gcp:monitoring/AlertPolicyConditionConditionPrometheusQueryLanguage:AlertPolicyConditionConditionPrometheusQueryLanguage": {
+                "alertRule": "alert_rule",
+                "evaluationInterval": "evaluation_interval",
+                "ruleGroup": "rule_group"
             },
             "gcp:monitoring/AlertPolicyConditionConditionThreshold:AlertPolicyConditionConditionThreshold": {
                 "denominatorAggregations": "denominator_aggregations",
@@ -41290,6 +41665,7 @@
                 "databaseDialect": "database_dialect",
                 "ddls": "ddl",
                 "deletionProtection": "deletion_protection",
+                "enableDropProtection": "enable_drop_protection",
                 "encryptionConfig": "encryption_config",
                 "versionRetentionPeriod": "version_retention_period"
             },

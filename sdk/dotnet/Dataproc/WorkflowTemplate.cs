@@ -138,13 +138,13 @@ namespace Pulumi.Gcp.Dataproc
         public Output<ImmutableArray<Outputs.WorkflowTemplateJob>> Jobs { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
+        /// The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
         /// 
         /// (Optional)
-        /// Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
+        /// The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
         /// 
         /// (Optional)
-        /// Optional. The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
+        /// The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -162,7 +162,7 @@ namespace Pulumi.Gcp.Dataproc
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
+        /// Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
         /// </summary>
         [Output("parameters")]
         public Output<ImmutableArray<Outputs.WorkflowTemplateParameter>> Parameters { get; private set; } = null!;
@@ -186,7 +186,7 @@ namespace Pulumi.Gcp.Dataproc
         public Output<string> UpdateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
+        /// Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
         /// </summary>
         [Output("version")]
         public Output<int> Version { get; private set; } = null!;
@@ -259,13 +259,13 @@ namespace Pulumi.Gcp.Dataproc
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Optional. The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
+        /// The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
         /// 
         /// (Optional)
-        /// Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
+        /// The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
         /// 
         /// (Optional)
-        /// Optional. The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
+        /// The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -289,7 +289,7 @@ namespace Pulumi.Gcp.Dataproc
         private InputList<Inputs.WorkflowTemplateParameterArgs>? _parameters;
 
         /// <summary>
-        /// Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
+        /// Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
         /// </summary>
         public InputList<Inputs.WorkflowTemplateParameterArgs> Parameters
         {
@@ -310,7 +310,7 @@ namespace Pulumi.Gcp.Dataproc
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Optional. Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
+        /// Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
         /// </summary>
         [Input("version")]
         public Input<int>? Version { get; set; }
@@ -351,13 +351,13 @@ namespace Pulumi.Gcp.Dataproc
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Optional. The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
+        /// The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
         /// 
         /// (Optional)
-        /// Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
+        /// The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
         /// 
         /// (Optional)
-        /// Optional. The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
+        /// The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -381,7 +381,7 @@ namespace Pulumi.Gcp.Dataproc
         private InputList<Inputs.WorkflowTemplateParameterGetArgs>? _parameters;
 
         /// <summary>
-        /// Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
+        /// Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
         /// </summary>
         public InputList<Inputs.WorkflowTemplateParameterGetArgs> Parameters
         {
@@ -408,7 +408,7 @@ namespace Pulumi.Gcp.Dataproc
         public Input<string>? UpdateTime { get; set; }
 
         /// <summary>
-        /// Optional. Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
+        /// Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
         /// </summary>
         [Input("version")]
         public Input<int>? Version { get; set; }

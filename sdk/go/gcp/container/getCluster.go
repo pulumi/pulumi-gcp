@@ -69,6 +69,7 @@ type LookupClusterArgs struct {
 // A collection of values returned by getCluster.
 type LookupClusterResult struct {
 	AddonsConfigs              []GetClusterAddonsConfig              `pulumi:"addonsConfigs"`
+	AllowNetAdmin              bool                                  `pulumi:"allowNetAdmin"`
 	AuthenticatorGroupsConfigs []GetClusterAuthenticatorGroupsConfig `pulumi:"authenticatorGroupsConfigs"`
 	BinaryAuthorizations       []GetClusterBinaryAuthorization       `pulumi:"binaryAuthorizations"`
 	ClusterAutoscalings        []GetClusterClusterAutoscaling        `pulumi:"clusterAutoscalings"`
@@ -88,6 +89,7 @@ type LookupClusterResult struct {
 	EnableKubernetesAlpha      bool                                  `pulumi:"enableKubernetesAlpha"`
 	EnableL4IlbSubsetting      bool                                  `pulumi:"enableL4IlbSubsetting"`
 	EnableLegacyAbac           bool                                  `pulumi:"enableLegacyAbac"`
+	EnableMultiNetworking      bool                                  `pulumi:"enableMultiNetworking"`
 	EnableShieldedNodes        bool                                  `pulumi:"enableShieldedNodes"`
 	EnableTpu                  bool                                  `pulumi:"enableTpu"`
 	Endpoint                   string                                `pulumi:"endpoint"`
@@ -190,6 +192,10 @@ func (o LookupClusterResultOutput) AddonsConfigs() GetClusterAddonsConfigArrayOu
 	return o.ApplyT(func(v LookupClusterResult) []GetClusterAddonsConfig { return v.AddonsConfigs }).(GetClusterAddonsConfigArrayOutput)
 }
 
+func (o LookupClusterResultOutput) AllowNetAdmin() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupClusterResult) bool { return v.AllowNetAdmin }).(pulumi.BoolOutput)
+}
+
 func (o LookupClusterResultOutput) AuthenticatorGroupsConfigs() GetClusterAuthenticatorGroupsConfigArrayOutput {
 	return o.ApplyT(func(v LookupClusterResult) []GetClusterAuthenticatorGroupsConfig { return v.AuthenticatorGroupsConfigs }).(GetClusterAuthenticatorGroupsConfigArrayOutput)
 }
@@ -264,6 +270,10 @@ func (o LookupClusterResultOutput) EnableL4IlbSubsetting() pulumi.BoolOutput {
 
 func (o LookupClusterResultOutput) EnableLegacyAbac() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupClusterResult) bool { return v.EnableLegacyAbac }).(pulumi.BoolOutput)
+}
+
+func (o LookupClusterResultOutput) EnableMultiNetworking() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupClusterResult) bool { return v.EnableMultiNetworking }).(pulumi.BoolOutput)
 }
 
 func (o LookupClusterResultOutput) EnableShieldedNodes() pulumi.BoolOutput {

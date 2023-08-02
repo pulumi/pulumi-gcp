@@ -4,6 +4,7 @@
 package com.pulumi.gcp.healthcare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.healthcare.outputs.FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -12,6 +13,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class FhirStoreStreamConfigBigqueryDestinationSchemaConfig {
+    /**
+     * @return The configuration for exported BigQuery tables to be partitioned by FHIR resource&#39;s last updated time column.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig lastUpdatedPartitionConfig;
     /**
      * @return The depth for all recursive structures in the output analytics schema. For example, concept in the CodeSystem
      * resource is a recursive structure; when the depth is 2, the CodeSystem table will have a column called
@@ -33,6 +40,14 @@ public final class FhirStoreStreamConfigBigqueryDestinationSchemaConfig {
     private @Nullable String schemaType;
 
     private FhirStoreStreamConfigBigqueryDestinationSchemaConfig() {}
+    /**
+     * @return The configuration for exported BigQuery tables to be partitioned by FHIR resource&#39;s last updated time column.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig> lastUpdatedPartitionConfig() {
+        return Optional.ofNullable(this.lastUpdatedPartitionConfig);
+    }
     /**
      * @return The depth for all recursive structures in the output analytics schema. For example, concept in the CodeSystem
      * resource is a recursive structure; when the depth is 2, the CodeSystem table will have a column called
@@ -66,15 +81,22 @@ public final class FhirStoreStreamConfigBigqueryDestinationSchemaConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig lastUpdatedPartitionConfig;
         private Integer recursiveStructureDepth;
         private @Nullable String schemaType;
         public Builder() {}
         public Builder(FhirStoreStreamConfigBigqueryDestinationSchemaConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.lastUpdatedPartitionConfig = defaults.lastUpdatedPartitionConfig;
     	      this.recursiveStructureDepth = defaults.recursiveStructureDepth;
     	      this.schemaType = defaults.schemaType;
         }
 
+        @CustomType.Setter
+        public Builder lastUpdatedPartitionConfig(@Nullable FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig lastUpdatedPartitionConfig) {
+            this.lastUpdatedPartitionConfig = lastUpdatedPartitionConfig;
+            return this;
+        }
         @CustomType.Setter
         public Builder recursiveStructureDepth(Integer recursiveStructureDepth) {
             this.recursiveStructureDepth = Objects.requireNonNull(recursiveStructureDepth);
@@ -87,6 +109,7 @@ public final class FhirStoreStreamConfigBigqueryDestinationSchemaConfig {
         }
         public FhirStoreStreamConfigBigqueryDestinationSchemaConfig build() {
             final var o = new FhirStoreStreamConfigBigqueryDestinationSchemaConfig();
+            o.lastUpdatedPartitionConfig = lastUpdatedPartitionConfig;
             o.recursiveStructureDepth = recursiveStructureDepth;
             o.schemaType = schemaType;
             return o;

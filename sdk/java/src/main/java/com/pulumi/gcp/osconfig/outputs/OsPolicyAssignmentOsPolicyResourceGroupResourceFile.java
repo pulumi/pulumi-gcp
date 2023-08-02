@@ -43,8 +43,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceFile {
     private @Nullable String permissions;
     /**
      * @return Desired state of the file. Possible values are:
-     * `DESIRED_STATE_UNSPECIFIED`, `PRESENT`, `ABSENT`,
-     * `CONTENTS_MATCH`.
+     * `DESIRED_STATE_UNSPECIFIED`, `PRESENT`, `ABSENT`, `CONTENTS_MATCH`.
      * 
      */
     private String state;
@@ -89,8 +88,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceFile {
     }
     /**
      * @return Desired state of the file. Possible values are:
-     * `DESIRED_STATE_UNSPECIFIED`, `PRESENT`, `ABSENT`,
-     * `CONTENTS_MATCH`.
+     * `DESIRED_STATE_UNSPECIFIED`, `PRESENT`, `ABSENT`, `CONTENTS_MATCH`.
      * 
      */
     public String state() {
