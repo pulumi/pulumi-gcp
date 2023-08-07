@@ -11,6 +11,11 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'ConfigBlockingFunctions',
+    'ConfigBlockingFunctionsForwardInboundCredentials',
+    'ConfigBlockingFunctionsTrigger',
+    'ConfigQuota',
+    'ConfigQuotaSignUpQuotaConfig',
     'InboundSamlConfigIdpConfig',
     'InboundSamlConfigIdpConfigIdpCertificate',
     'InboundSamlConfigSpConfig',
@@ -25,6 +30,285 @@ __all__ = [
     'TenantInboundSamlConfigSpConfig',
     'TenantInboundSamlConfigSpConfigSpCertificate',
 ]
+
+@pulumi.output_type
+class ConfigBlockingFunctions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "forwardInboundCredentials":
+            suggest = "forward_inbound_credentials"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigBlockingFunctions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigBlockingFunctions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigBlockingFunctions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 triggers: Sequence['outputs.ConfigBlockingFunctionsTrigger'],
+                 forward_inbound_credentials: Optional['outputs.ConfigBlockingFunctionsForwardInboundCredentials'] = None):
+        """
+        :param Sequence['ConfigBlockingFunctionsTriggerArgs'] triggers: Map of Trigger to event type. Key should be one of the supported event types: "beforeCreate", "beforeSignIn".
+               Structure is documented below.
+        :param 'ConfigBlockingFunctionsForwardInboundCredentialsArgs' forward_inbound_credentials: The user credentials to include in the JWT payload that is sent to the registered Blocking Functions.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "triggers", triggers)
+        if forward_inbound_credentials is not None:
+            pulumi.set(__self__, "forward_inbound_credentials", forward_inbound_credentials)
+
+    @property
+    @pulumi.getter
+    def triggers(self) -> Sequence['outputs.ConfigBlockingFunctionsTrigger']:
+        """
+        Map of Trigger to event type. Key should be one of the supported event types: "beforeCreate", "beforeSignIn".
+        Structure is documented below.
+        """
+        return pulumi.get(self, "triggers")
+
+    @property
+    @pulumi.getter(name="forwardInboundCredentials")
+    def forward_inbound_credentials(self) -> Optional['outputs.ConfigBlockingFunctionsForwardInboundCredentials']:
+        """
+        The user credentials to include in the JWT payload that is sent to the registered Blocking Functions.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "forward_inbound_credentials")
+
+
+@pulumi.output_type
+class ConfigBlockingFunctionsForwardInboundCredentials(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessToken":
+            suggest = "access_token"
+        elif key == "idToken":
+            suggest = "id_token"
+        elif key == "refreshToken":
+            suggest = "refresh_token"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigBlockingFunctionsForwardInboundCredentials. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigBlockingFunctionsForwardInboundCredentials.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigBlockingFunctionsForwardInboundCredentials.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_token: Optional[bool] = None,
+                 id_token: Optional[bool] = None,
+                 refresh_token: Optional[bool] = None):
+        """
+        :param bool access_token: Whether to pass the user's OAuth identity provider's access token.
+        :param bool id_token: Whether to pass the user's OIDC identity provider's ID token.
+        :param bool refresh_token: Whether to pass the user's OAuth identity provider's refresh token.
+        """
+        if access_token is not None:
+            pulumi.set(__self__, "access_token", access_token)
+        if id_token is not None:
+            pulumi.set(__self__, "id_token", id_token)
+        if refresh_token is not None:
+            pulumi.set(__self__, "refresh_token", refresh_token)
+
+    @property
+    @pulumi.getter(name="accessToken")
+    def access_token(self) -> Optional[bool]:
+        """
+        Whether to pass the user's OAuth identity provider's access token.
+        """
+        return pulumi.get(self, "access_token")
+
+    @property
+    @pulumi.getter(name="idToken")
+    def id_token(self) -> Optional[bool]:
+        """
+        Whether to pass the user's OIDC identity provider's ID token.
+        """
+        return pulumi.get(self, "id_token")
+
+    @property
+    @pulumi.getter(name="refreshToken")
+    def refresh_token(self) -> Optional[bool]:
+        """
+        Whether to pass the user's OAuth identity provider's refresh token.
+        """
+        return pulumi.get(self, "refresh_token")
+
+
+@pulumi.output_type
+class ConfigBlockingFunctionsTrigger(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "eventType":
+            suggest = "event_type"
+        elif key == "functionUri":
+            suggest = "function_uri"
+        elif key == "updateTime":
+            suggest = "update_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigBlockingFunctionsTrigger. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigBlockingFunctionsTrigger.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigBlockingFunctionsTrigger.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 event_type: str,
+                 function_uri: str,
+                 update_time: Optional[str] = None):
+        """
+        :param str event_type: The identifier for this object. Format specified above.
+        :param str function_uri: HTTP URI trigger for the Cloud Function.
+        :param str update_time: (Output)
+               When the trigger was changed.
+        """
+        pulumi.set(__self__, "event_type", event_type)
+        pulumi.set(__self__, "function_uri", function_uri)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="eventType")
+    def event_type(self) -> str:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "event_type")
+
+    @property
+    @pulumi.getter(name="functionUri")
+    def function_uri(self) -> str:
+        """
+        HTTP URI trigger for the Cloud Function.
+        """
+        return pulumi.get(self, "function_uri")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[str]:
+        """
+        (Output)
+        When the trigger was changed.
+        """
+        return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class ConfigQuota(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "signUpQuotaConfig":
+            suggest = "sign_up_quota_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigQuota. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigQuota.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigQuota.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 sign_up_quota_config: Optional['outputs.ConfigQuotaSignUpQuotaConfig'] = None):
+        """
+        :param 'ConfigQuotaSignUpQuotaConfigArgs' sign_up_quota_config: Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP.
+               Structure is documented below.
+        """
+        if sign_up_quota_config is not None:
+            pulumi.set(__self__, "sign_up_quota_config", sign_up_quota_config)
+
+    @property
+    @pulumi.getter(name="signUpQuotaConfig")
+    def sign_up_quota_config(self) -> Optional['outputs.ConfigQuotaSignUpQuotaConfig']:
+        """
+        Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sign_up_quota_config")
+
+
+@pulumi.output_type
+class ConfigQuotaSignUpQuotaConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "quotaDuration":
+            suggest = "quota_duration"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigQuotaSignUpQuotaConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigQuotaSignUpQuotaConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigQuotaSignUpQuotaConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 quota: Optional[int] = None,
+                 quota_duration: Optional[str] = None,
+                 start_time: Optional[str] = None):
+        """
+        :param int quota: A sign up APIs quota that customers can override temporarily.
+        :param str quota_duration: How long this quota will be active for. It is measurred in seconds, e.g., Example: "9.615s".
+        :param str start_time: When this quota will take affect.
+        """
+        if quota is not None:
+            pulumi.set(__self__, "quota", quota)
+        if quota_duration is not None:
+            pulumi.set(__self__, "quota_duration", quota_duration)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter
+    def quota(self) -> Optional[int]:
+        """
+        A sign up APIs quota that customers can override temporarily.
+        """
+        return pulumi.get(self, "quota")
+
+    @property
+    @pulumi.getter(name="quotaDuration")
+    def quota_duration(self) -> Optional[str]:
+        """
+        How long this quota will be active for. It is measurred in seconds, e.g., Example: "9.615s".
+        """
+        return pulumi.get(self, "quota_duration")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[str]:
+        """
+        When this quota will take affect.
+        """
+        return pulumi.get(self, "start_time")
+
 
 @pulumi.output_type
 class InboundSamlConfigIdpConfig(dict):

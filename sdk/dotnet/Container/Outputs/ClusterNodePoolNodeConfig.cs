@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string? DiskType;
         /// <summary>
-        /// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+        /// ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -103,6 +103,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// ```
         /// </summary>
         public readonly Outputs.ClusterNodePoolNodeConfigGvnic? Gvnic;
+        public readonly Outputs.ClusterNodePoolNodeConfigHostMaintenancePolicy? HostMaintenancePolicy;
         /// <summary>
         /// The image type to use for this node. Note that changing the image type
         /// will delete and recreate all nodes in the node pool.
@@ -278,6 +279,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             Outputs.ClusterNodePoolNodeConfigGvnic? gvnic,
 
+            Outputs.ClusterNodePoolNodeConfigHostMaintenancePolicy? hostMaintenancePolicy,
+
             string? imageType,
 
             Outputs.ClusterNodePoolNodeConfigKubeletConfig? kubeletConfig,
@@ -333,6 +336,7 @@ namespace Pulumi.Gcp.Container.Outputs
             GcfsConfig = gcfsConfig;
             GuestAccelerators = guestAccelerators;
             Gvnic = gvnic;
+            HostMaintenancePolicy = hostMaintenancePolicy;
             ImageType = imageType;
             KubeletConfig = kubeletConfig;
             Labels = labels;

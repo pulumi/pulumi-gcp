@@ -1790,6 +1790,67 @@ export namespace alloydb {
         backupName?: string;
     }
 
+    export interface ClusterContinuousBackupConfig {
+        /**
+         * Whether continuous backup recovery is enabled. If not set, defaults to true.
+         */
+        enabled?: boolean;
+        /**
+         * EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+         * Structure is documented below.
+         */
+        encryptionConfig?: outputs.alloydb.ClusterContinuousBackupConfigEncryptionConfig;
+        /**
+         * The numbers of days that are eligible to restore from using PITR. To support the entire recovery window, backups and logs are retained for one day more than the recovery window.
+         * If not set, defaults to 14 days.
+         */
+        recoveryWindowDays: number;
+    }
+
+    export interface ClusterContinuousBackupConfigEncryptionConfig {
+        /**
+         * The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+         */
+        kmsKeyName?: string;
+    }
+
+    export interface ClusterContinuousBackupInfo {
+        /**
+         * (Output)
+         * The earliest restorable time that can be restored to. Output only field.
+         */
+        earliestRestorableTime: string;
+        /**
+         * (Output)
+         * When ContinuousBackup was most recently enabled. Set to null if ContinuousBackup is not enabled.
+         */
+        enabledTime: string;
+        /**
+         * (Output)
+         * Output only. The encryption information for the WALs and backups required for ContinuousBackup.
+         * Structure is documented below.
+         */
+        encryptionInfos: outputs.alloydb.ClusterContinuousBackupInfoEncryptionInfo[];
+        /**
+         * (Output)
+         * Days of the week on which a continuous backup is taken. Output only field. Ignored if passed into the request.
+         */
+        schedules: string[];
+    }
+
+    export interface ClusterContinuousBackupInfoEncryptionInfo {
+        /**
+         * (Output)
+         * Output only. Type of encryption.
+         */
+        encryptionType: string;
+        /**
+         * (Output)
+         * Output only. Cloud KMS key versions that are being used to protect the database or the backup.
+         */
+        kmsKeyVersions: string[];
+    }
+
     export interface ClusterEncryptionConfig {
         /**
          * The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
@@ -8375,7 +8436,6 @@ export namespace cloudbuild {
         logging?: string;
         /**
          * Compute Engine machine type on which to run the build.
-         * Possible values are: `UNSPECIFIED`, `N1_HIGHCPU_8`, `N1_HIGHCPU_32`, `E2_HIGHCPU_8`, `E2_HIGHCPU_32`.
          */
         machineType?: string;
         /**
@@ -9565,7 +9625,7 @@ export namespace cloudfunctionsv2 {
          * Google Cloud Storage generation for the object. If the generation
          * is omitted, the latest generation will be used.
          */
-        generation?: number;
+        generation: number;
         /**
          * Google Cloud Storage object containing the source.
          */
@@ -15002,6 +15062,10 @@ export namespace compute {
         externalIpv6: string;
         externalIpv6PrefixLength: string;
         /**
+         * The name of the instance. One of `name` or `selfLink` must be provided.
+         */
+        name: string;
+        /**
          * The [networking tier][network-tier] used for configuring this instance. One of `PREMIUM` or `STANDARD`.
          */
         networkTier: string;
@@ -15045,6 +15109,7 @@ export namespace compute {
          * Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
          */
         instanceTerminationAction: string;
+        localSsdRecoveryTimeouts: outputs.compute.GetInstanceSchedulingLocalSsdRecoveryTimeout[];
         maintenanceInterval: string;
         maxRunDurations: outputs.compute.GetInstanceSchedulingMaxRunDuration[];
         minNodeCpus: number;
@@ -15063,6 +15128,11 @@ export namespace compute {
          * Describe the type of preemptible VM.
          */
         provisioningModel: string;
+    }
+
+    export interface GetInstanceSchedulingLocalSsdRecoveryTimeout {
+        nanos: number;
+        seconds: number;
     }
 
     export interface GetInstanceSchedulingMaxRunDuration {
@@ -15329,6 +15399,10 @@ export namespace compute {
         externalIpv6: string;
         externalIpv6PrefixLength: string;
         /**
+         * The name of the instance template. One of `name`, `filter` or `selfLinkUnique` must be provided.
+         */
+        name: string;
+        /**
          * The [networking tier][network-tier] used for configuring
          * this instance template. This field can take the following values: PREMIUM or
          * STANDARD. If this field is not specified, it is assumed to be PREMIUM.
@@ -15371,6 +15445,7 @@ export namespace compute {
          * Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
          */
         instanceTerminationAction: string;
+        localSsdRecoveryTimeouts: outputs.compute.GetInstanceTemplateSchedulingLocalSsdRecoveryTimeout[];
         maintenanceInterval: string;
         maxRunDurations: outputs.compute.GetInstanceTemplateSchedulingMaxRunDuration[];
         minNodeCpus: number;
@@ -15397,6 +15472,11 @@ export namespace compute {
          * Describe the type of preemptible VM.
          */
         provisioningModel: string;
+    }
+
+    export interface GetInstanceTemplateSchedulingLocalSsdRecoveryTimeout {
+        nanos: number;
+        seconds: number;
     }
 
     export interface GetInstanceTemplateSchedulingMaxRunDuration {
@@ -15679,6 +15759,10 @@ export namespace compute {
         externalIpv6: string;
         externalIpv6PrefixLength: string;
         /**
+         * The name of the instance template. One of `name` or `filter` must be provided.
+         */
+        name: string;
+        /**
          * The [networking tier][network-tier] used for configuring
          * this instance template. This field can take the following values: PREMIUM or
          * STANDARD. If this field is not specified, it is assumed to be PREMIUM.
@@ -15721,6 +15805,7 @@ export namespace compute {
          * Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
          */
         instanceTerminationAction: string;
+        localSsdRecoveryTimeouts: outputs.compute.GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout[];
         maintenanceInterval: string;
         maxRunDurations: outputs.compute.GetRegionInstanceTemplateSchedulingMaxRunDuration[];
         minNodeCpus: number;
@@ -15747,6 +15832,11 @@ export namespace compute {
          * Describe the type of preemptible VM.
          */
         provisioningModel: string;
+    }
+
+    export interface GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout {
+        nanos: number;
+        seconds: number;
     }
 
     export interface GetRegionInstanceTemplateSchedulingMaxRunDuration {
@@ -16616,9 +16706,6 @@ export namespace compute {
          * field is only applicable for persistent disks.
          */
         labels: {[key: string]: any};
-        /**
-         * A tag is a key-value pair that can be attached to a Google Cloud resource. You can use tags to conditionally allow or deny policies based on whether a resource has a specific tag.
-         */
         resourceManagerTags?: {[key: string]: any};
         /**
          * The size of the image in gigabytes. If not specified, it
@@ -16714,6 +16801,11 @@ export namespace compute {
     export interface InstanceFromMachineImageNetworkInterfaceIpv6AccessConfig {
         externalIpv6: string;
         externalIpv6PrefixLength: string;
+        /**
+         * A unique name for the resource, required by GCE.
+         * Changing this forces a new resource to be created.
+         */
+        name: string;
         networkTier: string;
         publicPtrDomainName: string;
     }
@@ -16739,6 +16831,7 @@ export namespace compute {
     export interface InstanceFromMachineImageScheduling {
         automaticRestart: boolean;
         instanceTerminationAction: string;
+        localSsdRecoveryTimeout: outputs.compute.InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeout;
         maintenanceInterval: string;
         maxRunDuration: outputs.compute.InstanceFromMachineImageSchedulingMaxRunDuration;
         minNodeCpus: number;
@@ -16746,6 +16839,11 @@ export namespace compute {
         onHostMaintenance: string;
         preemptible: boolean;
         provisioningModel: string;
+    }
+
+    export interface InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeout {
+        nanos: number;
+        seconds: number;
     }
 
     export interface InstanceFromMachineImageSchedulingMaxRunDuration {
@@ -16851,6 +16949,11 @@ export namespace compute {
     export interface InstanceFromTemplateNetworkInterfaceIpv6AccessConfig {
         externalIpv6: string;
         externalIpv6PrefixLength: string;
+        /**
+         * A unique name for the resource, required by GCE.
+         * Changing this forces a new resource to be created.
+         */
+        name: string;
         networkTier: string;
         publicPtrDomainName: string;
     }
@@ -16876,6 +16979,7 @@ export namespace compute {
     export interface InstanceFromTemplateScheduling {
         automaticRestart: boolean;
         instanceTerminationAction: string;
+        localSsdRecoveryTimeout: outputs.compute.InstanceFromTemplateSchedulingLocalSsdRecoveryTimeout;
         maintenanceInterval: string;
         maxRunDuration: outputs.compute.InstanceFromTemplateSchedulingMaxRunDuration;
         minNodeCpus: number;
@@ -16883,6 +16987,11 @@ export namespace compute {
         onHostMaintenance: string;
         preemptible: boolean;
         provisioningModel: string;
+    }
+
+    export interface InstanceFromTemplateSchedulingLocalSsdRecoveryTimeout {
+        nanos: number;
+        seconds: number;
     }
 
     export interface InstanceFromTemplateSchedulingMaxRunDuration {
@@ -17271,8 +17380,22 @@ export namespace compute {
     }
 
     export interface InstanceNetworkInterfaceIpv6AccessConfig {
+        /**
+         * The first IPv6 address of the external IPv6 range associated 
+         * with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig.
+         * To use a static external IP address, it must be unused and in the same region as the instance's zone.
+         * If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
+         */
         externalIpv6: string;
+        /**
+         * The prefix length of the external IPv6 range.
+         */
         externalIpv6PrefixLength: string;
+        /**
+         * A unique name for the resource, required by GCE.
+         * Changing this forces a new resource to be created.
+         */
+        name: string;
         /**
          * The [networking tier][network-tier] used for configuring this instance.
          * This field can take the following values: PREMIUM, FIXED_STANDARD or STANDARD. If this field is
@@ -17303,9 +17426,6 @@ export namespace compute {
     }
 
     export interface InstanceParams {
-        /**
-         * A tag is a key-value pair that can be attached to a Google Cloud resource. You can use tags to conditionally allow or deny policies based on whether a resource has a specific tag.
-         */
         resourceManagerTags?: {[key: string]: any};
     }
 
@@ -17343,6 +17463,7 @@ export namespace compute {
          * Describe the type of termination action for VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
          */
         instanceTerminationAction?: string;
+        localSsdRecoveryTimeout?: outputs.compute.InstanceSchedulingLocalSsdRecoveryTimeout;
         maintenanceInterval?: string;
         maxRunDuration?: outputs.compute.InstanceSchedulingMaxRunDuration;
         /**
@@ -17378,9 +17499,13 @@ export namespace compute {
         provisioningModel: string;
     }
 
-    export interface InstanceSchedulingMaxRunDuration {
+    export interface InstanceSchedulingLocalSsdRecoveryTimeout {
         /**
          * Span of time that's a fraction of a second at nanosecond
+         * resolution. Durations less than one second are represented with a 0
+         * `seconds` field and a positive `nanos` field. Must be from 0 to
+         * 999,999,999 inclusive.
+         *
          * resolution. Durations less than one second are represented with a 0
          * `seconds` field and a positive `nanos` field. Must be from 0 to
          * 999,999,999 inclusive.
@@ -17388,6 +17513,32 @@ export namespace compute {
         nanos?: number;
         /**
          * Span of time at a resolution of a second. Must be from 0 to
+         * 315,576,000,000 inclusive. Note: these bounds are computed from: 60
+         * sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+         *
+         * 315,576,000,000 inclusive. Note: these bounds are computed from: 60
+         * sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+         */
+        seconds: number;
+    }
+
+    export interface InstanceSchedulingMaxRunDuration {
+        /**
+         * Span of time that's a fraction of a second at nanosecond
+         * resolution. Durations less than one second are represented with a 0
+         * `seconds` field and a positive `nanos` field. Must be from 0 to
+         * 999,999,999 inclusive.
+         *
+         * resolution. Durations less than one second are represented with a 0
+         * `seconds` field and a positive `nanos` field. Must be from 0 to
+         * 999,999,999 inclusive.
+         */
+        nanos?: number;
+        /**
+         * Span of time at a resolution of a second. Must be from 0 to
+         * 315,576,000,000 inclusive. Note: these bounds are computed from: 60
+         * sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+         *
          * 315,576,000,000 inclusive. Note: these bounds are computed from: 60
          * sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
          */
@@ -17735,6 +17886,11 @@ export namespace compute {
         externalIpv6: string;
         externalIpv6PrefixLength: string;
         /**
+         * The name of the instance template. If you leave
+         * this blank, the provider will auto-generate a unique name.
+         */
+        name: string;
+        /**
          * The [networking tier][network-tier] used for configuring
          * this instance template. This field can take the following values: PREMIUM,
          * STANDARD or FIXED_STANDARD. If this field is not specified, it is assumed to be PREMIUM.
@@ -17788,6 +17944,7 @@ export namespace compute {
          * Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
          */
         instanceTerminationAction?: string;
+        localSsdRecoveryTimeouts?: outputs.compute.InstanceTemplateSchedulingLocalSsdRecoveryTimeout[];
         maintenanceInterval?: string;
         /**
          * Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instanceTerminationAction`. Only support `DELETE` `instanceTerminationAction` at this point. Structure is documented below.
@@ -17823,9 +17980,13 @@ export namespace compute {
         provisioningModel: string;
     }
 
-    export interface InstanceTemplateSchedulingMaxRunDuration {
+    export interface InstanceTemplateSchedulingLocalSsdRecoveryTimeout {
         /**
          * Span of time that's a fraction of a second at nanosecond
+         * resolution. Durations less than one second are represented with a 0
+         * `seconds` field and a positive `nanos` field. Must be from 0 to
+         * 999,999,999 inclusive.
+         *
          * resolution. Durations less than one second are represented with a 0
          * `seconds` field and a positive `nanos` field. Must be from 0 to
          * 999,999,999 inclusive.
@@ -17833,6 +17994,32 @@ export namespace compute {
         nanos?: number;
         /**
          * Span of time at a resolution of a second. Must be from 0 to
+         * 315,576,000,000 inclusive. Note: these bounds are computed from: 60
+         * sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+         *
+         * 315,576,000,000 inclusive. Note: these bounds are computed from: 60
+         * sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+         */
+        seconds: number;
+    }
+
+    export interface InstanceTemplateSchedulingMaxRunDuration {
+        /**
+         * Span of time that's a fraction of a second at nanosecond
+         * resolution. Durations less than one second are represented with a 0
+         * `seconds` field and a positive `nanos` field. Must be from 0 to
+         * 999,999,999 inclusive.
+         *
+         * resolution. Durations less than one second are represented with a 0
+         * `seconds` field and a positive `nanos` field. Must be from 0 to
+         * 999,999,999 inclusive.
+         */
+        nanos?: number;
+        /**
+         * Span of time at a resolution of a second. Must be from 0 to
+         * 315,576,000,000 inclusive. Note: these bounds are computed from: 60
+         * sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+         *
          * 315,576,000,000 inclusive. Note: these bounds are computed from: 60
          * sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
          */
@@ -18926,6 +19113,10 @@ export namespace compute {
          * Possible values are: `DEFAULT_FOR_PROTOCOL`, `NEVER_PERSIST`, `ALWAYS_PERSIST`.
          */
         connectionPersistenceOnUnhealthyBackends?: string;
+        /**
+         * Enable Strong Session Affinity for Network Load Balancing. This option is not available publicly.
+         */
+        enableStrongAffinity?: boolean;
         /**
          * Specifies how long to keep a Connection Tracking entry while there is
          * no matching traffic (in seconds).
@@ -20120,6 +20311,7 @@ export namespace compute {
     export interface RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig {
         externalIpv6: string;
         externalIpv6PrefixLength: string;
+        name: string;
         /**
          * The [networking tier][network-tier] used for configuring
          * this instance template. This field can take the following values: PREMIUM,
@@ -20174,6 +20366,7 @@ export namespace compute {
          * Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
          */
         instanceTerminationAction?: string;
+        localSsdRecoveryTimeouts?: outputs.compute.RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout[];
         /**
          * Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.   
          * <a name="nestedGuestAccelerator"></a>The `guestAccelerator` block supports:
@@ -20210,6 +20403,29 @@ export namespace compute {
          * `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
          */
         provisioningModel: string;
+    }
+
+    export interface RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout {
+        /**
+         * Span of time that's a fraction of a second at nanosecond
+         * resolution. Durations less than one second are represented with a 0
+         * `seconds` field and a positive `nanos` field. Must be from 0 to
+         * 999,999,999 inclusive.
+         *
+         * resolution. Durations less than one second are represented with a 0
+         * `seconds` field and a positive `nanos` field. Must be from 0 to
+         * 999,999,999 inclusive.
+         */
+        nanos?: number;
+        /**
+         * Span of time at a resolution of a second. Must be from 0 to
+         * 315,576,000,000 inclusive. Note: these bounds are computed from: 60
+         * sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+         *
+         * 315,576,000,000 inclusive. Note: these bounds are computed from: 60
+         * sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+         */
+        seconds: number;
     }
 
     export interface RegionInstanceTemplateSchedulingMaxRunDuration {
@@ -26468,6 +26684,8 @@ export namespace container {
     export interface ClusterDatabaseEncryption {
         /**
          * the key to use to encrypt/decrypt secrets.  See the [DatabaseEncryption definition](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#Cluster.DatabaseEncryption) for more information.
+         *
+         * <a name="nestedEnableK8sBetaApis"></a>The `enableK8sBetaApis` block supports:
          */
         keyName?: string;
         /**
@@ -26498,6 +26716,13 @@ export namespace container {
          * The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
          */
         clusterDnsScope?: string;
+    }
+
+    export interface ClusterEnableK8sBetaApis {
+        /**
+         * Enabled Kubernetes Beta APIs. To list a Beta API resource, use the representation {group}/{version}/{resource}. The version must be a Beta version. Note that you cannot disable beta APIs that are already enabled on a cluster without recreating it. See the [Configure beta APIs](https://cloud.google.com/kubernetes-engine/docs/how-to/use-beta-apis#configure-beta-apis) for more information.
+         */
+        enabledApis: string[];
     }
 
     export interface ClusterGatewayApiConfig {
@@ -26747,7 +26972,7 @@ export namespace container {
          */
         diskType: string;
         /**
-         * Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+         * ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
          *
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
@@ -26793,6 +27018,7 @@ export namespace container {
          * ```
          */
         gvnic?: outputs.container.ClusterNodeConfigGvnic;
+        hostMaintenancePolicy?: outputs.container.ClusterNodeConfigHostMaintenancePolicy;
         /**
          * The image type to use for this node. Note that changing the image type
          * will delete and recreate all nodes in the node pool.
@@ -27012,6 +27238,10 @@ export namespace container {
          * Whether or not the Google Virtual NIC (gVNIC) is enabled
          */
         enabled: boolean;
+    }
+
+    export interface ClusterNodeConfigHostMaintenancePolicy {
+        maintenanceInterval: string;
     }
 
     export interface ClusterNodeConfigKubeletConfig {
@@ -27357,7 +27587,7 @@ export namespace container {
          */
         diskType: string;
         /**
-         * Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+         * ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
          *
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
@@ -27403,6 +27633,7 @@ export namespace container {
          * ```
          */
         gvnic?: outputs.container.ClusterNodePoolNodeConfigGvnic;
+        hostMaintenancePolicy?: outputs.container.ClusterNodePoolNodeConfigHostMaintenancePolicy;
         /**
          * The image type to use for this node. Note that changing the image type
          * will delete and recreate all nodes in the node pool.
@@ -27624,6 +27855,10 @@ export namespace container {
         enabled: boolean;
     }
 
+    export interface ClusterNodePoolNodeConfigHostMaintenancePolicy {
+        maintenanceInterval: string;
+    }
+
     export interface ClusterNodePoolNodeConfigKubeletConfig {
         /**
          * If true, enables CPU CFS quota enforcement for
@@ -27763,6 +27998,7 @@ export namespace container {
     }
 
     export interface ClusterNodePoolPlacementPolicy {
+        policyName?: string;
         tpuTopology?: string;
         /**
          * Telemetry integration for the cluster. Supported values (`ENABLED, DISABLED, SYSTEM_ONLY`);
@@ -28198,6 +28434,10 @@ export namespace container {
         clusterDnsScope: string;
     }
 
+    export interface GetClusterEnableK8sBetaApi {
+        enabledApis: string[];
+    }
+
     export interface GetClusterGatewayApiConfig {
         channel: string;
     }
@@ -28300,6 +28540,7 @@ export namespace container {
         gcfsConfigs: outputs.container.GetClusterNodeConfigGcfsConfig[];
         guestAccelerators: outputs.container.GetClusterNodeConfigGuestAccelerator[];
         gvnics: outputs.container.GetClusterNodeConfigGvnic[];
+        hostMaintenancePolicies: outputs.container.GetClusterNodeConfigHostMaintenancePolicy[];
         imageType: string;
         kubeletConfigs: outputs.container.GetClusterNodeConfigKubeletConfig[];
         labels: {[key: string]: string};
@@ -28360,6 +28601,10 @@ export namespace container {
 
     export interface GetClusterNodeConfigGvnic {
         enabled: boolean;
+    }
+
+    export interface GetClusterNodeConfigHostMaintenancePolicy {
+        maintenanceInterval: string;
     }
 
     export interface GetClusterNodeConfigKubeletConfig {
@@ -28502,6 +28747,7 @@ export namespace container {
         gcfsConfigs: outputs.container.GetClusterNodePoolNodeConfigGcfsConfig[];
         guestAccelerators: outputs.container.GetClusterNodePoolNodeConfigGuestAccelerator[];
         gvnics: outputs.container.GetClusterNodePoolNodeConfigGvnic[];
+        hostMaintenancePolicies: outputs.container.GetClusterNodePoolNodeConfigHostMaintenancePolicy[];
         imageType: string;
         kubeletConfigs: outputs.container.GetClusterNodePoolNodeConfigKubeletConfig[];
         labels: {[key: string]: string};
@@ -28564,6 +28810,10 @@ export namespace container {
         enabled: boolean;
     }
 
+    export interface GetClusterNodePoolNodeConfigHostMaintenancePolicy {
+        maintenanceInterval: string;
+    }
+
     export interface GetClusterNodePoolNodeConfigKubeletConfig {
         cpuCfsQuota: boolean;
         cpuCfsQuotaPeriod: string;
@@ -28615,6 +28865,7 @@ export namespace container {
     }
 
     export interface GetClusterNodePoolPlacementPolicy {
+        policyName: string;
         tpuTopology: string;
         type: string;
     }
@@ -28830,6 +29081,7 @@ export namespace container {
         gcfsConfig?: outputs.container.NodePoolNodeConfigGcfsConfig;
         guestAccelerators: outputs.container.NodePoolNodeConfigGuestAccelerator[];
         gvnic?: outputs.container.NodePoolNodeConfigGvnic;
+        hostMaintenancePolicy?: outputs.container.NodePoolNodeConfigHostMaintenancePolicy;
         imageType: string;
         kubeletConfig?: outputs.container.NodePoolNodeConfigKubeletConfig;
         labels: {[key: string]: string};
@@ -28897,6 +29149,10 @@ export namespace container {
         enabled: boolean;
     }
 
+    export interface NodePoolNodeConfigHostMaintenancePolicy {
+        maintenanceInterval: string;
+    }
+
     export interface NodePoolNodeConfigKubeletConfig {
         cpuCfsQuota?: boolean;
         cpuCfsQuotaPeriod?: string;
@@ -28948,6 +29204,12 @@ export namespace container {
     }
 
     export interface NodePoolPlacementPolicy {
+        /**
+         * If set, refers to the name of a custom resource policy supplied by the user.
+         * The resource policy must be in the same project and region as the node pool.
+         * If not found, InvalidArgument error is returned.
+         */
+        policyName?: string;
         /**
          * The [TPU placement topology](https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies) for pod slice node pool.
          */
@@ -40887,6 +41149,246 @@ export namespace endpoints {
 
 }
 
+export namespace essentialcontacts {
+    export interface DocumentAiWarehouseDocumentSchemaPropertyDefinition {
+        /**
+         * Date time property. Not supported by CMEK compliant deployment.
+         */
+        dateTimeTypeOptions?: outputs.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptions;
+        /**
+         * The display-name for the property, used for front-end.
+         */
+        displayName?: string;
+        /**
+         * Enum/categorical property.
+         * Structure is documented below.
+         */
+        enumTypeOptions?: outputs.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptions;
+        /**
+         * Float property.
+         */
+        floatTypeOptions?: outputs.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptions;
+        /**
+         * Integer property.
+         */
+        integerTypeOptions?: outputs.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptions;
+        /**
+         * Whether the property can be filtered. If this is a sub-property, all the parent properties must be marked filterable.
+         */
+        isFilterable?: boolean;
+        /**
+         * Whether the property is user supplied metadata.
+         */
+        isMetadata?: boolean;
+        /**
+         * Whether the property can have multiple values.
+         */
+        isRepeatable?: boolean;
+        /**
+         * Whether the property is mandatory.
+         */
+        isRequired?: boolean;
+        /**
+         * Indicates that the property should be included in a global search.
+         */
+        isSearchable?: boolean;
+        /**
+         * Map property.
+         */
+        mapTypeOptions?: outputs.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptions;
+        /**
+         * The name of the metadata property.
+         */
+        name: string;
+        /**
+         * Nested structured data property.
+         * Structure is documented below.
+         */
+        propertyTypeOptions?: outputs.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptions;
+        /**
+         * Stores the retrieval importance.
+         * Possible values are: `HIGHEST`, `HIGHER`, `HIGH`, `MEDIUM`, `LOW`, `LOWEST`.
+         */
+        retrievalImportance?: string;
+        /**
+         * The schema source information.
+         * Structure is documented below.
+         */
+        schemaSources?: outputs.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSource[];
+        /**
+         * Text property.
+         */
+        textTypeOptions?: outputs.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptions;
+        /**
+         * Timestamp property. Not supported by CMEK compliant deployment.
+         */
+        timestampTypeOptions?: outputs.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptions;
+    }
+
+    export interface DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptions {
+    }
+
+    export interface DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptions {
+        /**
+         * List of possible enum values.
+         */
+        possibleValues: string[];
+        /**
+         * Make sure the enum property value provided in the document is in the possile value list during document creation. The validation check runs by default.
+         *
+         * - - -
+         */
+        validationCheckDisabled?: boolean;
+    }
+
+    export interface DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptions {
+    }
+
+    export interface DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptions {
+    }
+
+    export interface DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptions {
+    }
+
+    export interface DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptions {
+        /**
+         * Defines the metadata for a schema property.
+         * Structure is documented below.
+         */
+        propertyDefinitions: outputs.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinition[];
+    }
+
+    export interface DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinition {
+        /**
+         * Date time property. Not supported by CMEK compliant deployment.
+         */
+        dateTimeTypeOptions?: outputs.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptions;
+        /**
+         * The display-name for the property, used for front-end.
+         */
+        displayName?: string;
+        /**
+         * Enum/categorical property.
+         * Structure is documented below.
+         */
+        enumTypeOptions?: outputs.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptions;
+        /**
+         * Float property.
+         */
+        floatTypeOptions?: outputs.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptions;
+        /**
+         * Integer property.
+         */
+        integerTypeOptions?: outputs.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptions;
+        /**
+         * Whether the property can be filtered. If this is a sub-property, all the parent properties must be marked filterable.
+         */
+        isFilterable?: boolean;
+        /**
+         * Whether the property is user supplied metadata.
+         */
+        isMetadata?: boolean;
+        /**
+         * Whether the property can have multiple values.
+         */
+        isRepeatable?: boolean;
+        /**
+         * Whether the property is mandatory.
+         */
+        isRequired?: boolean;
+        /**
+         * Indicates that the property should be included in a global search.
+         */
+        isSearchable?: boolean;
+        /**
+         * Map property.
+         */
+        mapTypeOptions?: outputs.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptions;
+        /**
+         * The name of the metadata property.
+         */
+        name: string;
+        /**
+         * Stores the retrieval importance.
+         * Possible values are: `HIGHEST`, `HIGHER`, `HIGH`, `MEDIUM`, `LOW`, `LOWEST`.
+         */
+        retrievalImportance?: string;
+        /**
+         * The schema source information.
+         * Structure is documented below.
+         */
+        schemaSources?: outputs.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSource[];
+        /**
+         * Text property.
+         */
+        textTypeOptions?: outputs.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptions;
+        /**
+         * Timestamp property. Not supported by CMEK compliant deployment.
+         */
+        timestampTypeOptions?: outputs.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptions;
+    }
+
+    export interface DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptions {
+    }
+
+    export interface DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptions {
+        /**
+         * List of possible enum values.
+         */
+        possibleValues: string[];
+        /**
+         * Make sure the enum property value provided in the document is in the possile value list during document creation. The validation check runs by default.
+         *
+         * - - -
+         */
+        validationCheckDisabled?: boolean;
+    }
+
+    export interface DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptions {
+    }
+
+    export interface DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptions {
+    }
+
+    export interface DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptions {
+    }
+
+    export interface DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSource {
+        /**
+         * The schema name in the source.
+         */
+        name?: string;
+        /**
+         * The Doc AI processor type name.
+         */
+        processorType?: string;
+    }
+
+    export interface DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptions {
+    }
+
+    export interface DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptions {
+    }
+
+    export interface DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSource {
+        /**
+         * The schema name in the source.
+         */
+        name?: string;
+        /**
+         * The Doc AI processor type name.
+         */
+        processorType?: string;
+    }
+
+    export interface DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptions {
+    }
+
+    export interface DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptions {
+    }
+
+}
+
 export namespace eventarc {
     export interface TriggerDestination {
         /**
@@ -44839,6 +45341,73 @@ export namespace iap {
 }
 
 export namespace identityplatform {
+    export interface ConfigBlockingFunctions {
+        /**
+         * The user credentials to include in the JWT payload that is sent to the registered Blocking Functions.
+         * Structure is documented below.
+         */
+        forwardInboundCredentials?: outputs.identityplatform.ConfigBlockingFunctionsForwardInboundCredentials;
+        /**
+         * Map of Trigger to event type. Key should be one of the supported event types: "beforeCreate", "beforeSignIn".
+         * Structure is documented below.
+         */
+        triggers: outputs.identityplatform.ConfigBlockingFunctionsTrigger[];
+    }
+
+    export interface ConfigBlockingFunctionsForwardInboundCredentials {
+        /**
+         * Whether to pass the user's OAuth identity provider's access token.
+         */
+        accessToken?: boolean;
+        /**
+         * Whether to pass the user's OIDC identity provider's ID token.
+         */
+        idToken?: boolean;
+        /**
+         * Whether to pass the user's OAuth identity provider's refresh token.
+         */
+        refreshToken?: boolean;
+    }
+
+    export interface ConfigBlockingFunctionsTrigger {
+        /**
+         * The identifier for this object. Format specified above.
+         */
+        eventType: string;
+        /**
+         * HTTP URI trigger for the Cloud Function.
+         */
+        functionUri: string;
+        /**
+         * (Output)
+         * When the trigger was changed.
+         */
+        updateTime: string;
+    }
+
+    export interface ConfigQuota {
+        /**
+         * Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP.
+         * Structure is documented below.
+         */
+        signUpQuotaConfig?: outputs.identityplatform.ConfigQuotaSignUpQuotaConfig;
+    }
+
+    export interface ConfigQuotaSignUpQuotaConfig {
+        /**
+         * A sign up APIs quota that customers can override temporarily.
+         */
+        quota?: number;
+        /**
+         * How long this quota will be active for. It is measurred in seconds, e.g., Example: "9.615s".
+         */
+        quotaDuration?: string;
+        /**
+         * When this quota will take affect.
+         */
+        startTime?: string;
+    }
+
     export interface InboundSamlConfigIdpConfig {
         /**
          * The IdP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
@@ -52193,8 +52762,13 @@ export namespace pubsub {
 
     export interface GetSubscriptionPushConfig {
         attributes: {[key: string]: string};
+        noWrappers: outputs.pubsub.GetSubscriptionPushConfigNoWrapper[];
         oidcTokens: outputs.pubsub.GetSubscriptionPushConfigOidcToken[];
         pushEndpoint: string;
+    }
+
+    export interface GetSubscriptionPushConfigNoWrapper {
+        writeMetadata: boolean;
     }
 
     export interface GetSubscriptionPushConfigOidcToken {
@@ -52363,6 +52937,12 @@ export namespace pubsub {
          */
         attributes?: {[key: string]: string};
         /**
+         * When set, the payload to the push endpoint is not wrapped.Sets the
+         * `data` field as the HTTP body for delivery.
+         * Structure is documented below.
+         */
+        noWrapper?: outputs.pubsub.SubscriptionPushConfigNoWrapper;
+        /**
          * If specified, Pub/Sub will generate and attach an OIDC JWT token as
          * an Authorization header in the HTTP request for every pushed message.
          * Structure is documented below.
@@ -52374,6 +52954,15 @@ export namespace pubsub {
          * "https://example.com/push".
          */
         pushEndpoint: string;
+    }
+
+    export interface SubscriptionPushConfigNoWrapper {
+        /**
+         * When true, writes the Pub/Sub message metadata to
+         * `x-goog-pubsub-<KEY>:<VAL>` headers of the HTTP request. Writes the
+         * Pub/Sub message attributes to `<KEY>:<VAL>` headers of the HTTP request.
+         */
+        writeMetadata: boolean;
     }
 
     export interface SubscriptionPushConfigOidcToken {
@@ -53301,7 +53890,7 @@ export namespace sql {
          */
         startTime: string;
         /**
-         * The number of days of transaction logs we retain for point in time restore, from 1-7.
+         * The number of days of transaction logs we retain for point in time restore, from 1-7. For PostgreSQL Enterprise Plus instances, the number of days of retained transaction logs can be set from 1 to 35.
          */
         transactionLogRetentionDays: number;
     }
@@ -55459,6 +56048,11 @@ export namespace workstations {
 
     export interface WorkstationConfigHostGceInstance {
         /**
+         * An accelerator card attached to the instance.
+         * Structure is documented below.
+         */
+        accelerators?: outputs.workstations.WorkstationConfigHostGceInstanceAccelerator[];
+        /**
          * Size of the boot disk in GB.
          */
         bootDiskSizeGb: number;
@@ -55492,6 +56086,17 @@ export namespace workstations {
          * Network tags to add to the Compute Engine machines backing the Workstations.
          */
         tags?: string[];
+    }
+
+    export interface WorkstationConfigHostGceInstanceAccelerator {
+        /**
+         * Number of accelerator cards exposed to the instance.
+         */
+        count: number;
+        /**
+         * Type of accelerator resource to attach to the instance, for example, "nvidia-tesla-p100".
+         */
+        type: string;
     }
 
     export interface WorkstationConfigHostGceInstanceConfidentialInstanceConfig {

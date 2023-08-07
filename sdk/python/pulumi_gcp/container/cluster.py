@@ -34,6 +34,7 @@ class ClusterArgs:
                  enable_autopilot: Optional[pulumi.Input[bool]] = None,
                  enable_binary_authorization: Optional[pulumi.Input[bool]] = None,
                  enable_intranode_visibility: Optional[pulumi.Input[bool]] = None,
+                 enable_k8s_beta_apis: Optional[pulumi.Input['ClusterEnableK8sBetaApisArgs']] = None,
                  enable_kubernetes_alpha: Optional[pulumi.Input[bool]] = None,
                  enable_l4_ilb_subsetting: Optional[pulumi.Input[bool]] = None,
                  enable_legacy_abac: Optional[pulumi.Input[bool]] = None,
@@ -125,6 +126,8 @@ class ClusterArgs:
                If enabled, all container images will be validated by Google Binary Authorization.
                Deprecated in favor of `binary_authorization`.
         :param pulumi.Input[bool] enable_intranode_visibility: Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
+        :param pulumi.Input['ClusterEnableK8sBetaApisArgs'] enable_k8s_beta_apis: Configuration for Kubernetes Beta APIs.
+               Structure is documented below.
         :param pulumi.Input[bool] enable_kubernetes_alpha: Whether to enable Kubernetes Alpha features for
                this cluster. Note that when this option is enabled, the cluster cannot be upgraded
                and will be automatically deleted after 30 days.
@@ -133,7 +136,8 @@ class ClusterArgs:
                When enabled, identities in the system, including service accounts, nodes, and controllers,
                will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
                Defaults to `false`
-        :param pulumi.Input[bool] enable_multi_networking: Whether multi-networking is enabled for this cluster.
+        :param pulumi.Input[bool] enable_multi_networking: )
+               Whether multi-networking is enabled for this cluster.
         :param pulumi.Input[bool] enable_shielded_nodes: Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
         :param pulumi.Input[bool] enable_tpu: Whether to enable Cloud TPU resources in this cluster.
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
@@ -323,6 +327,8 @@ class ClusterArgs:
             pulumi.set(__self__, "enable_binary_authorization", enable_binary_authorization)
         if enable_intranode_visibility is not None:
             pulumi.set(__self__, "enable_intranode_visibility", enable_intranode_visibility)
+        if enable_k8s_beta_apis is not None:
+            pulumi.set(__self__, "enable_k8s_beta_apis", enable_k8s_beta_apis)
         if enable_kubernetes_alpha is not None:
             pulumi.set(__self__, "enable_kubernetes_alpha", enable_kubernetes_alpha)
         if enable_l4_ilb_subsetting is not None:
@@ -661,6 +667,19 @@ class ClusterArgs:
         pulumi.set(self, "enable_intranode_visibility", value)
 
     @property
+    @pulumi.getter(name="enableK8sBetaApis")
+    def enable_k8s_beta_apis(self) -> Optional[pulumi.Input['ClusterEnableK8sBetaApisArgs']]:
+        """
+        Configuration for Kubernetes Beta APIs.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "enable_k8s_beta_apis")
+
+    @enable_k8s_beta_apis.setter
+    def enable_k8s_beta_apis(self, value: Optional[pulumi.Input['ClusterEnableK8sBetaApisArgs']]):
+        pulumi.set(self, "enable_k8s_beta_apis", value)
+
+    @property
     @pulumi.getter(name="enableKubernetesAlpha")
     def enable_kubernetes_alpha(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -705,6 +724,7 @@ class ClusterArgs:
     @pulumi.getter(name="enableMultiNetworking")
     def enable_multi_networking(self) -> Optional[pulumi.Input[bool]]:
         """
+        )
         Whether multi-networking is enabled for this cluster.
         """
         return pulumi.get(self, "enable_multi_networking")
@@ -1346,6 +1366,7 @@ class _ClusterState:
                  enable_autopilot: Optional[pulumi.Input[bool]] = None,
                  enable_binary_authorization: Optional[pulumi.Input[bool]] = None,
                  enable_intranode_visibility: Optional[pulumi.Input[bool]] = None,
+                 enable_k8s_beta_apis: Optional[pulumi.Input['ClusterEnableK8sBetaApisArgs']] = None,
                  enable_kubernetes_alpha: Optional[pulumi.Input[bool]] = None,
                  enable_l4_ilb_subsetting: Optional[pulumi.Input[bool]] = None,
                  enable_legacy_abac: Optional[pulumi.Input[bool]] = None,
@@ -1444,6 +1465,8 @@ class _ClusterState:
                If enabled, all container images will be validated by Google Binary Authorization.
                Deprecated in favor of `binary_authorization`.
         :param pulumi.Input[bool] enable_intranode_visibility: Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
+        :param pulumi.Input['ClusterEnableK8sBetaApisArgs'] enable_k8s_beta_apis: Configuration for Kubernetes Beta APIs.
+               Structure is documented below.
         :param pulumi.Input[bool] enable_kubernetes_alpha: Whether to enable Kubernetes Alpha features for
                this cluster. Note that when this option is enabled, the cluster cannot be upgraded
                and will be automatically deleted after 30 days.
@@ -1452,7 +1475,8 @@ class _ClusterState:
                When enabled, identities in the system, including service accounts, nodes, and controllers,
                will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
                Defaults to `false`
-        :param pulumi.Input[bool] enable_multi_networking: Whether multi-networking is enabled for this cluster.
+        :param pulumi.Input[bool] enable_multi_networking: )
+               Whether multi-networking is enabled for this cluster.
         :param pulumi.Input[bool] enable_shielded_nodes: Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
         :param pulumi.Input[bool] enable_tpu: Whether to enable Cloud TPU resources in this cluster.
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
@@ -1655,6 +1679,8 @@ class _ClusterState:
             pulumi.set(__self__, "enable_binary_authorization", enable_binary_authorization)
         if enable_intranode_visibility is not None:
             pulumi.set(__self__, "enable_intranode_visibility", enable_intranode_visibility)
+        if enable_k8s_beta_apis is not None:
+            pulumi.set(__self__, "enable_k8s_beta_apis", enable_k8s_beta_apis)
         if enable_kubernetes_alpha is not None:
             pulumi.set(__self__, "enable_kubernetes_alpha", enable_kubernetes_alpha)
         if enable_l4_ilb_subsetting is not None:
@@ -2007,6 +2033,19 @@ class _ClusterState:
         pulumi.set(self, "enable_intranode_visibility", value)
 
     @property
+    @pulumi.getter(name="enableK8sBetaApis")
+    def enable_k8s_beta_apis(self) -> Optional[pulumi.Input['ClusterEnableK8sBetaApisArgs']]:
+        """
+        Configuration for Kubernetes Beta APIs.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "enable_k8s_beta_apis")
+
+    @enable_k8s_beta_apis.setter
+    def enable_k8s_beta_apis(self, value: Optional[pulumi.Input['ClusterEnableK8sBetaApisArgs']]):
+        pulumi.set(self, "enable_k8s_beta_apis", value)
+
+    @property
     @pulumi.getter(name="enableKubernetesAlpha")
     def enable_kubernetes_alpha(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -2051,6 +2090,7 @@ class _ClusterState:
     @pulumi.getter(name="enableMultiNetworking")
     def enable_multi_networking(self) -> Optional[pulumi.Input[bool]]:
         """
+        )
         Whether multi-networking is enabled for this cluster.
         """
         return pulumi.get(self, "enable_multi_networking")
@@ -2782,6 +2822,7 @@ class Cluster(pulumi.CustomResource):
                  enable_autopilot: Optional[pulumi.Input[bool]] = None,
                  enable_binary_authorization: Optional[pulumi.Input[bool]] = None,
                  enable_intranode_visibility: Optional[pulumi.Input[bool]] = None,
+                 enable_k8s_beta_apis: Optional[pulumi.Input[pulumi.InputType['ClusterEnableK8sBetaApisArgs']]] = None,
                  enable_kubernetes_alpha: Optional[pulumi.Input[bool]] = None,
                  enable_l4_ilb_subsetting: Optional[pulumi.Input[bool]] = None,
                  enable_legacy_abac: Optional[pulumi.Input[bool]] = None,
@@ -2944,6 +2985,8 @@ class Cluster(pulumi.CustomResource):
                If enabled, all container images will be validated by Google Binary Authorization.
                Deprecated in favor of `binary_authorization`.
         :param pulumi.Input[bool] enable_intranode_visibility: Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
+        :param pulumi.Input[pulumi.InputType['ClusterEnableK8sBetaApisArgs']] enable_k8s_beta_apis: Configuration for Kubernetes Beta APIs.
+               Structure is documented below.
         :param pulumi.Input[bool] enable_kubernetes_alpha: Whether to enable Kubernetes Alpha features for
                this cluster. Note that when this option is enabled, the cluster cannot be upgraded
                and will be automatically deleted after 30 days.
@@ -2952,7 +2995,8 @@ class Cluster(pulumi.CustomResource):
                When enabled, identities in the system, including service accounts, nodes, and controllers,
                will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
                Defaults to `false`
-        :param pulumi.Input[bool] enable_multi_networking: Whether multi-networking is enabled for this cluster.
+        :param pulumi.Input[bool] enable_multi_networking: )
+               Whether multi-networking is enabled for this cluster.
         :param pulumi.Input[bool] enable_shielded_nodes: Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
         :param pulumi.Input[bool] enable_tpu: Whether to enable Cloud TPU resources in this cluster.
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
@@ -3212,6 +3256,7 @@ class Cluster(pulumi.CustomResource):
                  enable_autopilot: Optional[pulumi.Input[bool]] = None,
                  enable_binary_authorization: Optional[pulumi.Input[bool]] = None,
                  enable_intranode_visibility: Optional[pulumi.Input[bool]] = None,
+                 enable_k8s_beta_apis: Optional[pulumi.Input[pulumi.InputType['ClusterEnableK8sBetaApisArgs']]] = None,
                  enable_kubernetes_alpha: Optional[pulumi.Input[bool]] = None,
                  enable_l4_ilb_subsetting: Optional[pulumi.Input[bool]] = None,
                  enable_legacy_abac: Optional[pulumi.Input[bool]] = None,
@@ -3288,6 +3333,7 @@ class Cluster(pulumi.CustomResource):
                 pulumi.log.warn("""enable_binary_authorization is deprecated: Deprecated in favor of binary_authorization.""")
             __props__.__dict__["enable_binary_authorization"] = enable_binary_authorization
             __props__.__dict__["enable_intranode_visibility"] = enable_intranode_visibility
+            __props__.__dict__["enable_k8s_beta_apis"] = enable_k8s_beta_apis
             __props__.__dict__["enable_kubernetes_alpha"] = enable_kubernetes_alpha
             __props__.__dict__["enable_l4_ilb_subsetting"] = enable_l4_ilb_subsetting
             __props__.__dict__["enable_legacy_abac"] = enable_legacy_abac
@@ -3369,6 +3415,7 @@ class Cluster(pulumi.CustomResource):
             enable_autopilot: Optional[pulumi.Input[bool]] = None,
             enable_binary_authorization: Optional[pulumi.Input[bool]] = None,
             enable_intranode_visibility: Optional[pulumi.Input[bool]] = None,
+            enable_k8s_beta_apis: Optional[pulumi.Input[pulumi.InputType['ClusterEnableK8sBetaApisArgs']]] = None,
             enable_kubernetes_alpha: Optional[pulumi.Input[bool]] = None,
             enable_l4_ilb_subsetting: Optional[pulumi.Input[bool]] = None,
             enable_legacy_abac: Optional[pulumi.Input[bool]] = None,
@@ -3472,6 +3519,8 @@ class Cluster(pulumi.CustomResource):
                If enabled, all container images will be validated by Google Binary Authorization.
                Deprecated in favor of `binary_authorization`.
         :param pulumi.Input[bool] enable_intranode_visibility: Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
+        :param pulumi.Input[pulumi.InputType['ClusterEnableK8sBetaApisArgs']] enable_k8s_beta_apis: Configuration for Kubernetes Beta APIs.
+               Structure is documented below.
         :param pulumi.Input[bool] enable_kubernetes_alpha: Whether to enable Kubernetes Alpha features for
                this cluster. Note that when this option is enabled, the cluster cannot be upgraded
                and will be automatically deleted after 30 days.
@@ -3480,7 +3529,8 @@ class Cluster(pulumi.CustomResource):
                When enabled, identities in the system, including service accounts, nodes, and controllers,
                will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
                Defaults to `false`
-        :param pulumi.Input[bool] enable_multi_networking: Whether multi-networking is enabled for this cluster.
+        :param pulumi.Input[bool] enable_multi_networking: )
+               Whether multi-networking is enabled for this cluster.
         :param pulumi.Input[bool] enable_shielded_nodes: Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
         :param pulumi.Input[bool] enable_tpu: Whether to enable Cloud TPU resources in this cluster.
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
@@ -3666,6 +3716,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["enable_autopilot"] = enable_autopilot
         __props__.__dict__["enable_binary_authorization"] = enable_binary_authorization
         __props__.__dict__["enable_intranode_visibility"] = enable_intranode_visibility
+        __props__.__dict__["enable_k8s_beta_apis"] = enable_k8s_beta_apis
         __props__.__dict__["enable_kubernetes_alpha"] = enable_kubernetes_alpha
         __props__.__dict__["enable_l4_ilb_subsetting"] = enable_l4_ilb_subsetting
         __props__.__dict__["enable_legacy_abac"] = enable_legacy_abac
@@ -3894,6 +3945,15 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "enable_intranode_visibility")
 
     @property
+    @pulumi.getter(name="enableK8sBetaApis")
+    def enable_k8s_beta_apis(self) -> pulumi.Output[Optional['outputs.ClusterEnableK8sBetaApis']]:
+        """
+        Configuration for Kubernetes Beta APIs.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "enable_k8s_beta_apis")
+
+    @property
     @pulumi.getter(name="enableKubernetesAlpha")
     def enable_kubernetes_alpha(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -3926,6 +3986,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="enableMultiNetworking")
     def enable_multi_networking(self) -> pulumi.Output[Optional[bool]]:
         """
+        )
         Whether multi-networking is enabled for this cluster.
         """
         return pulumi.get(self, "enable_multi_networking")

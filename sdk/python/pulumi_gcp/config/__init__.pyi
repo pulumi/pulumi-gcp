@@ -140,6 +140,8 @@ dnsCustomEndpoint: Optional[str]
 
 documentAiCustomEndpoint: Optional[str]
 
+documentAiWarehouseCustomEndpoint: Optional[str]
+
 essentialContactsCustomEndpoint: Optional[str]
 
 eventarcCustomEndpoint: Optional[str]

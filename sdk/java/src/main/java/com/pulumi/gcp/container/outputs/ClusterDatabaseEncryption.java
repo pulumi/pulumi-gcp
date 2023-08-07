@@ -14,6 +14,8 @@ public final class ClusterDatabaseEncryption {
     /**
      * @return the key to use to encrypt/decrypt secrets.  See the [DatabaseEncryption definition](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#Cluster.DatabaseEncryption) for more information.
      * 
+     * &lt;a name=&#34;nested_enable_k8s_beta_apis&#34;&gt;&lt;/a&gt;The `enable_k8s_beta_apis` block supports:
+     * 
      */
     private @Nullable String keyName;
     /**
@@ -25,6 +27,8 @@ public final class ClusterDatabaseEncryption {
     private ClusterDatabaseEncryption() {}
     /**
      * @return the key to use to encrypt/decrypt secrets.  See the [DatabaseEncryption definition](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#Cluster.DatabaseEncryption) for more information.
+     * 
+     * &lt;a name=&#34;nested_enable_k8s_beta_apis&#34;&gt;&lt;/a&gt;The `enable_k8s_beta_apis` block supports:
      * 
      */
     public Optional<String> keyName() {

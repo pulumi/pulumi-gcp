@@ -21,12 +21,20 @@ public final class InstanceTemplateSchedulingMaxRunDurationArgs extends com.pulu
      * `seconds` field and a positive `nanos` field. Must be from 0 to
      * 999,999,999 inclusive.
      * 
+     * resolution. Durations less than one second are represented with a 0
+     * `seconds` field and a positive `nanos` field. Must be from 0 to
+     * 999,999,999 inclusive.
+     * 
      */
     @Import(name="nanos")
     private @Nullable Output<Integer> nanos;
 
     /**
      * @return Span of time that&#39;s a fraction of a second at nanosecond
+     * resolution. Durations less than one second are represented with a 0
+     * `seconds` field and a positive `nanos` field. Must be from 0 to
+     * 999,999,999 inclusive.
+     * 
      * resolution. Durations less than one second are represented with a 0
      * `seconds` field and a positive `nanos` field. Must be from 0 to
      * 999,999,999 inclusive.
@@ -41,12 +49,18 @@ public final class InstanceTemplateSchedulingMaxRunDurationArgs extends com.pulu
      * 315,576,000,000 inclusive. Note: these bounds are computed from: 60
      * sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
      * 
+     * 315,576,000,000 inclusive. Note: these bounds are computed from: 60
+     * sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+     * 
      */
     @Import(name="seconds", required=true)
     private Output<Integer> seconds;
 
     /**
      * @return Span of time at a resolution of a second. Must be from 0 to
+     * 315,576,000,000 inclusive. Note: these bounds are computed from: 60
+     * sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+     * 
      * 315,576,000,000 inclusive. Note: these bounds are computed from: 60
      * sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
      * 
@@ -86,6 +100,10 @@ public final class InstanceTemplateSchedulingMaxRunDurationArgs extends com.pulu
          * `seconds` field and a positive `nanos` field. Must be from 0 to
          * 999,999,999 inclusive.
          * 
+         * resolution. Durations less than one second are represented with a 0
+         * `seconds` field and a positive `nanos` field. Must be from 0 to
+         * 999,999,999 inclusive.
+         * 
          * @return builder
          * 
          */
@@ -96,6 +114,10 @@ public final class InstanceTemplateSchedulingMaxRunDurationArgs extends com.pulu
 
         /**
          * @param nanos Span of time that&#39;s a fraction of a second at nanosecond
+         * resolution. Durations less than one second are represented with a 0
+         * `seconds` field and a positive `nanos` field. Must be from 0 to
+         * 999,999,999 inclusive.
+         * 
          * resolution. Durations less than one second are represented with a 0
          * `seconds` field and a positive `nanos` field. Must be from 0 to
          * 999,999,999 inclusive.
@@ -112,6 +134,9 @@ public final class InstanceTemplateSchedulingMaxRunDurationArgs extends com.pulu
          * 315,576,000,000 inclusive. Note: these bounds are computed from: 60
          * sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
          * 
+         * 315,576,000,000 inclusive. Note: these bounds are computed from: 60
+         * sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+         * 
          * @return builder
          * 
          */
@@ -122,6 +147,9 @@ public final class InstanceTemplateSchedulingMaxRunDurationArgs extends com.pulu
 
         /**
          * @param seconds Span of time at a resolution of a second. Must be from 0 to
+         * 315,576,000,000 inclusive. Note: these bounds are computed from: 60
+         * sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+         * 
          * 315,576,000,000 inclusive. Note: these bounds are computed from: 60
          * sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
          * 

@@ -29,13 +29,16 @@ namespace Pulumi.Gcp.Alloydb
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork");
+    ///     var defaultNetwork = Gcp.Compute.GetNetwork.Invoke(new()
+    ///     {
+    ///         Name = "alloydb-network",
+    ///     });
     /// 
     ///     var defaultCluster = new Gcp.Alloydb.Cluster("defaultCluster", new()
     ///     {
     ///         ClusterId = "alloydb-cluster",
     ///         Location = "us-central1",
-    ///         Network = defaultNetwork.Id,
+    ///         Network = defaultNetwork.Apply(getNetworkResult =&gt; getNetworkResult.Id),
     ///         InitialUser = new Gcp.Alloydb.Inputs.ClusterInitialUserArgs
     ///         {
     ///             Password = "alloydb-cluster",
@@ -47,12 +50,12 @@ namespace Pulumi.Gcp.Alloydb
     ///         AddressType = "INTERNAL",
     ///         Purpose = "VPC_PEERING",
     ///         PrefixLength = 16,
-    ///         Network = defaultNetwork.Id,
+    ///         Network = defaultNetwork.Apply(getNetworkResult =&gt; getNetworkResult.Id),
     ///     });
     /// 
     ///     var vpcConnection = new Gcp.ServiceNetworking.Connection("vpcConnection", new()
     ///     {
-    ///         Network = defaultNetwork.Id,
+    ///         Network = defaultNetwork.Apply(getNetworkResult =&gt; getNetworkResult.Id),
     ///         Service = "servicenetworking.googleapis.com",
     ///         ReservedPeeringRanges = new[]
     ///         {

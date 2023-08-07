@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.PubSub.Outputs
     public sealed class GetSubscriptionPushConfigResult
     {
         public readonly ImmutableDictionary<string, string> Attributes;
+        public readonly ImmutableArray<Outputs.GetSubscriptionPushConfigNoWrapperResult> NoWrappers;
         public readonly ImmutableArray<Outputs.GetSubscriptionPushConfigOidcTokenResult> OidcTokens;
         public readonly string PushEndpoint;
 
@@ -21,11 +22,14 @@ namespace Pulumi.Gcp.PubSub.Outputs
         private GetSubscriptionPushConfigResult(
             ImmutableDictionary<string, string> attributes,
 
+            ImmutableArray<Outputs.GetSubscriptionPushConfigNoWrapperResult> noWrappers,
+
             ImmutableArray<Outputs.GetSubscriptionPushConfigOidcTokenResult> oidcTokens,
 
             string pushEndpoint)
         {
             Attributes = attributes;
+            NoWrappers = noWrappers;
             OidcTokens = oidcTokens;
             PushEndpoint = pushEndpoint;
         }

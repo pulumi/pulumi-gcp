@@ -15,6 +15,7 @@ import com.pulumi.gcp.container.inputs.ClusterCostManagementConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterDatabaseEncryptionArgs;
 import com.pulumi.gcp.container.inputs.ClusterDefaultSnatStatusArgs;
 import com.pulumi.gcp.container.inputs.ClusterDnsConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterEnableK8sBetaApisArgs;
 import com.pulumi.gcp.container.inputs.ClusterGatewayApiConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterIdentityServiceConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterIpAllocationPolicyArgs;
@@ -383,6 +384,23 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configuration for Kubernetes Beta APIs.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="enableK8sBetaApis")
+    private @Nullable Output<ClusterEnableK8sBetaApisArgs> enableK8sBetaApis;
+
+    /**
+     * @return Configuration for Kubernetes Beta APIs.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterEnableK8sBetaApisArgs>> enableK8sBetaApis() {
+        return Optional.ofNullable(this.enableK8sBetaApis);
+    }
+
+    /**
      * Whether to enable Kubernetes Alpha features for
      * this cluster. Note that when this option is enabled, the cluster cannot be upgraded
      * and will be automatically deleted after 30 days.
@@ -438,6 +456,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * )
      * Whether multi-networking is enabled for this cluster.
      * 
      */
@@ -445,7 +464,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> enableMultiNetworking;
 
     /**
-     * @return Whether multi-networking is enabled for this cluster.
+     * @return )
+     * Whether multi-networking is enabled for this cluster.
      * 
      */
     public Optional<Output<Boolean>> enableMultiNetworking() {
@@ -1317,6 +1337,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.enableAutopilot = $.enableAutopilot;
         this.enableBinaryAuthorization = $.enableBinaryAuthorization;
         this.enableIntranodeVisibility = $.enableIntranodeVisibility;
+        this.enableK8sBetaApis = $.enableK8sBetaApis;
         this.enableKubernetesAlpha = $.enableKubernetesAlpha;
         this.enableL4IlbSubsetting = $.enableL4IlbSubsetting;
         this.enableLegacyAbac = $.enableLegacyAbac;
@@ -1820,6 +1841,29 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param enableK8sBetaApis Configuration for Kubernetes Beta APIs.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableK8sBetaApis(@Nullable Output<ClusterEnableK8sBetaApisArgs> enableK8sBetaApis) {
+            $.enableK8sBetaApis = enableK8sBetaApis;
+            return this;
+        }
+
+        /**
+         * @param enableK8sBetaApis Configuration for Kubernetes Beta APIs.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableK8sBetaApis(ClusterEnableK8sBetaApisArgs enableK8sBetaApis) {
+            return enableK8sBetaApis(Output.of(enableK8sBetaApis));
+        }
+
+        /**
          * @param enableKubernetesAlpha Whether to enable Kubernetes Alpha features for
          * this cluster. Note that when this option is enabled, the cluster cannot be upgraded
          * and will be automatically deleted after 30 days.
@@ -1893,7 +1937,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableMultiNetworking Whether multi-networking is enabled for this cluster.
+         * @param enableMultiNetworking )
+         * Whether multi-networking is enabled for this cluster.
          * 
          * @return builder
          * 
@@ -1904,7 +1949,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableMultiNetworking Whether multi-networking is enabled for this cluster.
+         * @param enableMultiNetworking )
+         * Whether multi-networking is enabled for this cluster.
          * 
          * @return builder
          * 

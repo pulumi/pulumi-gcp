@@ -17,6 +17,7 @@ __all__ = [
     'WorkstationConfigEncryptionKeyArgs',
     'WorkstationConfigHostArgs',
     'WorkstationConfigHostGceInstanceArgs',
+    'WorkstationConfigHostGceInstanceAcceleratorArgs',
     'WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs',
     'WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs',
     'WorkstationConfigIamBindingConditionArgs',
@@ -385,6 +386,7 @@ class WorkstationConfigHostArgs:
 @pulumi.input_type
 class WorkstationConfigHostGceInstanceArgs:
     def __init__(__self__, *,
+                 accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceAcceleratorArgs']]]] = None,
                  boot_disk_size_gb: Optional[pulumi.Input[int]] = None,
                  confidential_instance_config: Optional[pulumi.Input['WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs']] = None,
                  disable_public_ip_addresses: Optional[pulumi.Input[bool]] = None,
@@ -394,6 +396,8 @@ class WorkstationConfigHostGceInstanceArgs:
                  shielded_instance_config: Optional[pulumi.Input['WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs']] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceAcceleratorArgs']]] accelerators: An accelerator card attached to the instance.
+               Structure is documented below.
         :param pulumi.Input[int] boot_disk_size_gb: Size of the boot disk in GB.
         :param pulumi.Input['WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs'] confidential_instance_config: A set of Compute Engine Confidential VM instance options.
                Structure is documented below.
@@ -405,6 +409,8 @@ class WorkstationConfigHostGceInstanceArgs:
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Network tags to add to the Compute Engine machines backing the Workstations.
         """
+        if accelerators is not None:
+            pulumi.set(__self__, "accelerators", accelerators)
         if boot_disk_size_gb is not None:
             pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
         if confidential_instance_config is not None:
@@ -421,6 +427,19 @@ class WorkstationConfigHostGceInstanceArgs:
             pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceAcceleratorArgs']]]]:
+        """
+        An accelerator card attached to the instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "accelerators")
+
+    @accelerators.setter
+    def accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceAcceleratorArgs']]]]):
+        pulumi.set(self, "accelerators", value)
 
     @property
     @pulumi.getter(name="bootDiskSizeGb")
@@ -519,6 +538,43 @@ class WorkstationConfigHostGceInstanceArgs:
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
+
+
+@pulumi.input_type
+class WorkstationConfigHostGceInstanceAcceleratorArgs:
+    def __init__(__self__, *,
+                 count: pulumi.Input[int],
+                 type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[int] count: Number of accelerator cards exposed to the instance.
+        :param pulumi.Input[str] type: Type of accelerator resource to attach to the instance, for example, "nvidia-tesla-p100".
+        """
+        pulumi.set(__self__, "count", count)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def count(self) -> pulumi.Input[int]:
+        """
+        Number of accelerator cards exposed to the instance.
+        """
+        return pulumi.get(self, "count")
+
+    @count.setter
+    def count(self, value: pulumi.Input[int]):
+        pulumi.set(self, "count", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Type of accelerator resource to attach to the instance, for example, "nvidia-tesla-p100".
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type

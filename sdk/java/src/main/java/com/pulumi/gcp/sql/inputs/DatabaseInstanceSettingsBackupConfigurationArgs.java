@@ -113,14 +113,14 @@ public final class DatabaseInstanceSettingsBackupConfigurationArgs extends com.p
     }
 
     /**
-     * The number of days of transaction logs we retain for point in time restore, from 1-7.
+     * The number of days of transaction logs we retain for point in time restore, from 1-7. For PostgreSQL Enterprise Plus instances, the number of days of retained transaction logs can be set from 1 to 35.
      * 
      */
     @Import(name="transactionLogRetentionDays")
     private @Nullable Output<Integer> transactionLogRetentionDays;
 
     /**
-     * @return The number of days of transaction logs we retain for point in time restore, from 1-7.
+     * @return The number of days of transaction logs we retain for point in time restore, from 1-7. For PostgreSQL Enterprise Plus instances, the number of days of retained transaction logs can be set from 1 to 35.
      * 
      */
     public Optional<Output<Integer>> transactionLogRetentionDays() {
@@ -288,7 +288,7 @@ public final class DatabaseInstanceSettingsBackupConfigurationArgs extends com.p
         }
 
         /**
-         * @param transactionLogRetentionDays The number of days of transaction logs we retain for point in time restore, from 1-7.
+         * @param transactionLogRetentionDays The number of days of transaction logs we retain for point in time restore, from 1-7. For PostgreSQL Enterprise Plus instances, the number of days of retained transaction logs can be set from 1 to 35.
          * 
          * @return builder
          * 
@@ -299,7 +299,7 @@ public final class DatabaseInstanceSettingsBackupConfigurationArgs extends com.p
         }
 
         /**
-         * @param transactionLogRetentionDays The number of days of transaction logs we retain for point in time restore, from 1-7.
+         * @param transactionLogRetentionDays The number of days of transaction logs we retain for point in time restore, from 1-7. For PostgreSQL Enterprise Plus instances, the number of days of retained transaction logs can be set from 1 to 35.
          * 
          * @return builder
          * 

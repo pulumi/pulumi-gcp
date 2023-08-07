@@ -24,6 +24,7 @@ import * as utilities from "../utilities";
  * const myProject = new gcp.organizations.Project("myProject", {
  *     projectId: "ae-project",
  *     orgId: "123456789",
+ *     billingAccount: "000000-0000000-0000000-000000",
  * });
  * const app = new gcp.appengine.Application("app", {
  *     project: myProject.projectId,

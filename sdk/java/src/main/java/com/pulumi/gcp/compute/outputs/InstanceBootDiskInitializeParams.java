@@ -33,10 +33,6 @@ public final class InstanceBootDiskInitializeParams {
      * 
      */
     private @Nullable Map<String,Object> labels;
-    /**
-     * @return A tag is a key-value pair that can be attached to a Google Cloud resource. You can use tags to conditionally allow or deny policies based on whether a resource has a specific tag.
-     * 
-     */
     private @Nullable Map<String,Object> resourceManagerTags;
     /**
      * @return The size of the image in gigabytes. If not specified, it
@@ -74,10 +70,6 @@ public final class InstanceBootDiskInitializeParams {
     public Map<String,Object> labels() {
         return this.labels == null ? Map.of() : this.labels;
     }
-    /**
-     * @return A tag is a key-value pair that can be attached to a Google Cloud resource. You can use tags to conditionally allow or deny policies based on whether a resource has a specific tag.
-     * 
-     */
     public Map<String,Object> resourceManagerTags() {
         return this.resourceManagerTags == null ? Map.of() : this.resourceManagerTags;
     }

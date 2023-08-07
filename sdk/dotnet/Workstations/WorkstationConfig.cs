@@ -400,6 +400,82 @@ namespace Pulumi.Gcp.Workstations
     /// 
     /// });
     /// ```
+    /// ### Workstation Config Accelerators
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork", new()
+    ///     {
+    ///         AutoCreateSubnetworks = false,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("defaultSubnetwork", new()
+    ///     {
+    ///         IpCidrRange = "10.0.0.0/24",
+    ///         Region = "us-central1",
+    ///         Network = defaultNetwork.Name,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var defaultWorkstationCluster = new Gcp.Workstations.WorkstationCluster("defaultWorkstationCluster", new()
+    ///     {
+    ///         WorkstationClusterId = "workstation-cluster",
+    ///         Network = defaultNetwork.Id,
+    ///         Subnetwork = defaultSubnetwork.Id,
+    ///         Location = "us-central1",
+    ///         Labels = 
+    ///         {
+    ///             { "label", "key" },
+    ///         },
+    ///         Annotations = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var defaultWorkstationConfig = new Gcp.Workstations.WorkstationConfig("defaultWorkstationConfig", new()
+    ///     {
+    ///         WorkstationConfigId = "workstation-config",
+    ///         WorkstationClusterId = defaultWorkstationCluster.WorkstationClusterId,
+    ///         Location = "us-central1",
+    ///         Host = new Gcp.Workstations.Inputs.WorkstationConfigHostArgs
+    ///         {
+    ///             GceInstance = new Gcp.Workstations.Inputs.WorkstationConfigHostGceInstanceArgs
+    ///             {
+    ///                 MachineType = "n1-standard-2",
+    ///                 BootDiskSizeGb = 35,
+    ///                 DisablePublicIpAddresses = true,
+    ///                 Accelerators = new[]
+    ///                 {
+    ///                     new Gcp.Workstations.Inputs.WorkstationConfigHostGceInstanceAcceleratorArgs
+    ///                     {
+    ///                         Type = "nvidia-tesla-p100",
+    ///                         Count = 1,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Workstation Config Encryption Key
     /// 
     /// ```csharp

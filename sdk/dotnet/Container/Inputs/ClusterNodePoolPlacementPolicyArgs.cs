@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class ClusterNodePoolPlacementPolicyArgs : global::Pulumi.ResourceArgs
     {
+        [Input("policyName")]
+        public Input<string>? PolicyName { get; set; }
+
         [Input("tpuTopology")]
         public Input<string>? TpuTopology { get; set; }
 

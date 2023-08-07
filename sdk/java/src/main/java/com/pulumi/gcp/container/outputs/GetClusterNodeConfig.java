@@ -10,6 +10,7 @@ import com.pulumi.gcp.container.outputs.GetClusterNodeConfigEphemeralStorageLoca
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigGcfsConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigGuestAccelerator;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigGvnic;
+import com.pulumi.gcp.container.outputs.GetClusterNodeConfigHostMaintenancePolicy;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigKubeletConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigLinuxNodeConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigLocalNvmeSsdBlockConfig;
@@ -37,6 +38,7 @@ public final class GetClusterNodeConfig {
     private List<GetClusterNodeConfigGcfsConfig> gcfsConfigs;
     private List<GetClusterNodeConfigGuestAccelerator> guestAccelerators;
     private List<GetClusterNodeConfigGvnic> gvnics;
+    private List<GetClusterNodeConfigHostMaintenancePolicy> hostMaintenancePolicies;
     private String imageType;
     private List<GetClusterNodeConfigKubeletConfig> kubeletConfigs;
     private Map<String,String> labels;
@@ -88,6 +90,9 @@ public final class GetClusterNodeConfig {
     }
     public List<GetClusterNodeConfigGvnic> gvnics() {
         return this.gvnics;
+    }
+    public List<GetClusterNodeConfigHostMaintenancePolicy> hostMaintenancePolicies() {
+        return this.hostMaintenancePolicies;
     }
     public String imageType() {
         return this.imageType;
@@ -177,6 +182,7 @@ public final class GetClusterNodeConfig {
         private List<GetClusterNodeConfigGcfsConfig> gcfsConfigs;
         private List<GetClusterNodeConfigGuestAccelerator> guestAccelerators;
         private List<GetClusterNodeConfigGvnic> gvnics;
+        private List<GetClusterNodeConfigHostMaintenancePolicy> hostMaintenancePolicies;
         private String imageType;
         private List<GetClusterNodeConfigKubeletConfig> kubeletConfigs;
         private Map<String,String> labels;
@@ -212,6 +218,7 @@ public final class GetClusterNodeConfig {
     	      this.gcfsConfigs = defaults.gcfsConfigs;
     	      this.guestAccelerators = defaults.guestAccelerators;
     	      this.gvnics = defaults.gvnics;
+    	      this.hostMaintenancePolicies = defaults.hostMaintenancePolicies;
     	      this.imageType = defaults.imageType;
     	      this.kubeletConfigs = defaults.kubeletConfigs;
     	      this.labels = defaults.labels;
@@ -299,6 +306,14 @@ public final class GetClusterNodeConfig {
         }
         public Builder gvnics(GetClusterNodeConfigGvnic... gvnics) {
             return gvnics(List.of(gvnics));
+        }
+        @CustomType.Setter
+        public Builder hostMaintenancePolicies(List<GetClusterNodeConfigHostMaintenancePolicy> hostMaintenancePolicies) {
+            this.hostMaintenancePolicies = Objects.requireNonNull(hostMaintenancePolicies);
+            return this;
+        }
+        public Builder hostMaintenancePolicies(GetClusterNodeConfigHostMaintenancePolicy... hostMaintenancePolicies) {
+            return hostMaintenancePolicies(List.of(hostMaintenancePolicies));
         }
         @CustomType.Setter
         public Builder imageType(String imageType) {
@@ -459,6 +474,7 @@ public final class GetClusterNodeConfig {
             o.gcfsConfigs = gcfsConfigs;
             o.guestAccelerators = guestAccelerators;
             o.gvnics = gvnics;
+            o.hostMaintenancePolicies = hostMaintenancePolicies;
             o.imageType = imageType;
             o.kubeletConfigs = kubeletConfigs;
             o.labels = labels;

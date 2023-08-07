@@ -98,6 +98,7 @@ __all__ = [
     'ClusterDatabaseEncryption',
     'ClusterDefaultSnatStatus',
     'ClusterDnsConfig',
+    'ClusterEnableK8sBetaApis',
     'ClusterGatewayApiConfig',
     'ClusterIdentityServiceConfig',
     'ClusterIpAllocationPolicy',
@@ -125,6 +126,7 @@ __all__ = [
     'ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig',
     'ClusterNodeConfigGuestAcceleratorGpuSharingConfig',
     'ClusterNodeConfigGvnic',
+    'ClusterNodeConfigHostMaintenancePolicy',
     'ClusterNodeConfigKubeletConfig',
     'ClusterNodeConfigLinuxNodeConfig',
     'ClusterNodeConfigLocalNvmeSsdBlockConfig',
@@ -156,6 +158,7 @@ __all__ = [
     'ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig',
     'ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig',
     'ClusterNodePoolNodeConfigGvnic',
+    'ClusterNodePoolNodeConfigHostMaintenancePolicy',
     'ClusterNodePoolNodeConfigKubeletConfig',
     'ClusterNodePoolNodeConfigLinuxNodeConfig',
     'ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig',
@@ -201,6 +204,7 @@ __all__ = [
     'NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig',
     'NodePoolNodeConfigGuestAcceleratorGpuSharingConfig',
     'NodePoolNodeConfigGvnic',
+    'NodePoolNodeConfigHostMaintenancePolicy',
     'NodePoolNodeConfigKubeletConfig',
     'NodePoolNodeConfigLinuxNodeConfig',
     'NodePoolNodeConfigLocalNvmeSsdBlockConfig',
@@ -245,6 +249,7 @@ __all__ = [
     'GetClusterDatabaseEncryptionResult',
     'GetClusterDefaultSnatStatusResult',
     'GetClusterDnsConfigResult',
+    'GetClusterEnableK8sBetaApiResult',
     'GetClusterGatewayApiConfigResult',
     'GetClusterIdentityServiceConfigResult',
     'GetClusterIpAllocationPolicyResult',
@@ -272,6 +277,7 @@ __all__ = [
     'GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigResult',
     'GetClusterNodeConfigGuestAcceleratorGpuSharingConfigResult',
     'GetClusterNodeConfigGvnicResult',
+    'GetClusterNodeConfigHostMaintenancePolicyResult',
     'GetClusterNodeConfigKubeletConfigResult',
     'GetClusterNodeConfigLinuxNodeConfigResult',
     'GetClusterNodeConfigLocalNvmeSsdBlockConfigResult',
@@ -303,6 +309,7 @@ __all__ = [
     'GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigResult',
     'GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigResult',
     'GetClusterNodePoolNodeConfigGvnicResult',
+    'GetClusterNodePoolNodeConfigHostMaintenancePolicyResult',
     'GetClusterNodePoolNodeConfigKubeletConfigResult',
     'GetClusterNodePoolNodeConfigLinuxNodeConfigResult',
     'GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigResult',
@@ -4825,6 +4832,8 @@ class ClusterDatabaseEncryption(dict):
         """
         :param str state: `ENCRYPTED` or `DECRYPTED`
         :param str key_name: the key to use to encrypt/decrypt secrets.  See the [DatabaseEncryption definition](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#Cluster.DatabaseEncryption) for more information.
+               
+               <a name="nested_enable_k8s_beta_apis"></a>The `enable_k8s_beta_apis` block supports:
         """
         pulumi.set(__self__, "state", state)
         if key_name is not None:
@@ -4843,6 +4852,8 @@ class ClusterDatabaseEncryption(dict):
     def key_name(self) -> Optional[str]:
         """
         the key to use to encrypt/decrypt secrets.  See the [DatabaseEncryption definition](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#Cluster.DatabaseEncryption) for more information.
+
+        <a name="nested_enable_k8s_beta_apis"></a>The `enable_k8s_beta_apis` block supports:
         """
         return pulumi.get(self, "key_name")
 
@@ -4931,6 +4942,41 @@ class ClusterDnsConfig(dict):
         The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
         """
         return pulumi.get(self, "cluster_dns_scope")
+
+
+@pulumi.output_type
+class ClusterEnableK8sBetaApis(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enabledApis":
+            suggest = "enabled_apis"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterEnableK8sBetaApis. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterEnableK8sBetaApis.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterEnableK8sBetaApis.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled_apis: Sequence[str]):
+        """
+        :param Sequence[str] enabled_apis: Enabled Kubernetes Beta APIs. To list a Beta API resource, use the representation {group}/{version}/{resource}. The version must be a Beta version. Note that you cannot disable beta APIs that are already enabled on a cluster without recreating it. See the [Configure beta APIs](https://cloud.google.com/kubernetes-engine/docs/how-to/use-beta-apis#configure-beta-apis) for more information.
+        """
+        pulumi.set(__self__, "enabled_apis", enabled_apis)
+
+    @property
+    @pulumi.getter(name="enabledApis")
+    def enabled_apis(self) -> Sequence[str]:
+        """
+        Enabled Kubernetes Beta APIs. To list a Beta API resource, use the representation {group}/{version}/{resource}. The version must be a Beta version. Note that you cannot disable beta APIs that are already enabled on a cluster without recreating it. See the [Configure beta APIs](https://cloud.google.com/kubernetes-engine/docs/how-to/use-beta-apis#configure-beta-apis) for more information.
+        """
+        return pulumi.get(self, "enabled_apis")
 
 
 @pulumi.output_type
@@ -5817,6 +5863,8 @@ class ClusterNodeConfig(dict):
             suggest = "gcfs_config"
         elif key == "guestAccelerators":
             suggest = "guest_accelerators"
+        elif key == "hostMaintenancePolicy":
+            suggest = "host_maintenance_policy"
         elif key == "imageType":
             suggest = "image_type"
         elif key == "kubeletConfig":
@@ -5873,6 +5921,7 @@ class ClusterNodeConfig(dict):
                  gcfs_config: Optional['outputs.ClusterNodeConfigGcfsConfig'] = None,
                  guest_accelerators: Optional[Sequence['outputs.ClusterNodeConfigGuestAccelerator']] = None,
                  gvnic: Optional['outputs.ClusterNodeConfigGvnic'] = None,
+                 host_maintenance_policy: Optional['outputs.ClusterNodeConfigHostMaintenancePolicy'] = None,
                  image_type: Optional[str] = None,
                  kubelet_config: Optional['outputs.ClusterNodeConfigKubeletConfig'] = None,
                  labels: Optional[Mapping[str, str]] = None,
@@ -5904,7 +5953,7 @@ class ClusterNodeConfig(dict):
                in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
         :param str disk_type: Type of the disk attached to each node
                (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
-        :param 'ClusterNodeConfigEphemeralStorageConfigArgs' ephemeral_storage_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+        :param 'ClusterNodeConfigEphemeralStorageConfigArgs' ephemeral_storage_config: ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
                
                ```python
                import pulumi
@@ -6024,6 +6073,8 @@ class ClusterNodeConfig(dict):
             pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         if gvnic is not None:
             pulumi.set(__self__, "gvnic", gvnic)
+        if host_maintenance_policy is not None:
+            pulumi.set(__self__, "host_maintenance_policy", host_maintenance_policy)
         if image_type is not None:
             pulumi.set(__self__, "image_type", image_type)
         if kubelet_config is not None:
@@ -6110,7 +6161,7 @@ class ClusterNodeConfig(dict):
     @pulumi.getter(name="ephemeralStorageConfig")
     def ephemeral_storage_config(self) -> Optional['outputs.ClusterNodeConfigEphemeralStorageConfig']:
         """
-        Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+        ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
 
         ```python
         import pulumi
@@ -6172,6 +6223,11 @@ class ClusterNodeConfig(dict):
         ```
         """
         return pulumi.get(self, "gvnic")
+
+    @property
+    @pulumi.getter(name="hostMaintenancePolicy")
+    def host_maintenance_policy(self) -> Optional['outputs.ClusterNodeConfigHostMaintenancePolicy']:
+        return pulumi.get(self, "host_maintenance_policy")
 
     @property
     @pulumi.getter(name="imageType")
@@ -6724,6 +6780,35 @@ class ClusterNodeConfigGvnic(dict):
         Whether or not the Google Virtual NIC (gVNIC) is enabled
         """
         return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class ClusterNodeConfigHostMaintenancePolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maintenanceInterval":
+            suggest = "maintenance_interval"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodeConfigHostMaintenancePolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodeConfigHostMaintenancePolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodeConfigHostMaintenancePolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 maintenance_interval: str):
+        pulumi.set(__self__, "maintenance_interval", maintenance_interval)
+
+    @property
+    @pulumi.getter(name="maintenanceInterval")
+    def maintenance_interval(self) -> str:
+        return pulumi.get(self, "maintenance_interval")
 
 
 @pulumi.output_type
@@ -7968,6 +8053,8 @@ class ClusterNodePoolNodeConfig(dict):
             suggest = "gcfs_config"
         elif key == "guestAccelerators":
             suggest = "guest_accelerators"
+        elif key == "hostMaintenancePolicy":
+            suggest = "host_maintenance_policy"
         elif key == "imageType":
             suggest = "image_type"
         elif key == "kubeletConfig":
@@ -8024,6 +8111,7 @@ class ClusterNodePoolNodeConfig(dict):
                  gcfs_config: Optional['outputs.ClusterNodePoolNodeConfigGcfsConfig'] = None,
                  guest_accelerators: Optional[Sequence['outputs.ClusterNodePoolNodeConfigGuestAccelerator']] = None,
                  gvnic: Optional['outputs.ClusterNodePoolNodeConfigGvnic'] = None,
+                 host_maintenance_policy: Optional['outputs.ClusterNodePoolNodeConfigHostMaintenancePolicy'] = None,
                  image_type: Optional[str] = None,
                  kubelet_config: Optional['outputs.ClusterNodePoolNodeConfigKubeletConfig'] = None,
                  labels: Optional[Mapping[str, str]] = None,
@@ -8055,7 +8143,7 @@ class ClusterNodePoolNodeConfig(dict):
                in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
         :param str disk_type: Type of the disk attached to each node
                (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
-        :param 'ClusterNodePoolNodeConfigEphemeralStorageConfigArgs' ephemeral_storage_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+        :param 'ClusterNodePoolNodeConfigEphemeralStorageConfigArgs' ephemeral_storage_config: ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
                
                ```python
                import pulumi
@@ -8175,6 +8263,8 @@ class ClusterNodePoolNodeConfig(dict):
             pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         if gvnic is not None:
             pulumi.set(__self__, "gvnic", gvnic)
+        if host_maintenance_policy is not None:
+            pulumi.set(__self__, "host_maintenance_policy", host_maintenance_policy)
         if image_type is not None:
             pulumi.set(__self__, "image_type", image_type)
         if kubelet_config is not None:
@@ -8261,7 +8351,7 @@ class ClusterNodePoolNodeConfig(dict):
     @pulumi.getter(name="ephemeralStorageConfig")
     def ephemeral_storage_config(self) -> Optional['outputs.ClusterNodePoolNodeConfigEphemeralStorageConfig']:
         """
-        Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+        ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
 
         ```python
         import pulumi
@@ -8323,6 +8413,11 @@ class ClusterNodePoolNodeConfig(dict):
         ```
         """
         return pulumi.get(self, "gvnic")
+
+    @property
+    @pulumi.getter(name="hostMaintenancePolicy")
+    def host_maintenance_policy(self) -> Optional['outputs.ClusterNodePoolNodeConfigHostMaintenancePolicy']:
+        return pulumi.get(self, "host_maintenance_policy")
 
     @property
     @pulumi.getter(name="imageType")
@@ -8878,6 +8973,35 @@ class ClusterNodePoolNodeConfigGvnic(dict):
 
 
 @pulumi.output_type
+class ClusterNodePoolNodeConfigHostMaintenancePolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maintenanceInterval":
+            suggest = "maintenance_interval"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNodeConfigHostMaintenancePolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolNodeConfigHostMaintenancePolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolNodeConfigHostMaintenancePolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 maintenance_interval: str):
+        pulumi.set(__self__, "maintenance_interval", maintenance_interval)
+
+    @property
+    @pulumi.getter(name="maintenanceInterval")
+    def maintenance_interval(self) -> str:
+        return pulumi.get(self, "maintenance_interval")
+
+
+@pulumi.output_type
 class ClusterNodePoolNodeConfigKubeletConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -9345,7 +9469,9 @@ class ClusterNodePoolPlacementPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "tpuTopology":
+        if key == "policyName":
+            suggest = "policy_name"
+        elif key == "tpuTopology":
             suggest = "tpu_topology"
 
         if suggest:
@@ -9361,12 +9487,15 @@ class ClusterNodePoolPlacementPolicy(dict):
 
     def __init__(__self__, *,
                  type: str,
+                 policy_name: Optional[str] = None,
                  tpu_topology: Optional[str] = None):
         """
         :param str type: Telemetry integration for the cluster. Supported values (`ENABLED, DISABLED, SYSTEM_ONLY`);
                `SYSTEM_ONLY` (Only system components are monitored and logged) is only available in GKE versions 1.15 and later.
         """
         pulumi.set(__self__, "type", type)
+        if policy_name is not None:
+            pulumi.set(__self__, "policy_name", policy_name)
         if tpu_topology is not None:
             pulumi.set(__self__, "tpu_topology", tpu_topology)
 
@@ -9378,6 +9507,11 @@ class ClusterNodePoolPlacementPolicy(dict):
         `SYSTEM_ONLY` (Only system components are monitored and logged) is only available in GKE versions 1.15 and later.
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="policyName")
+    def policy_name(self) -> Optional[str]:
+        return pulumi.get(self, "policy_name")
 
     @property
     @pulumi.getter(name="tpuTopology")
@@ -10731,6 +10865,8 @@ class NodePoolNodeConfig(dict):
             suggest = "gcfs_config"
         elif key == "guestAccelerators":
             suggest = "guest_accelerators"
+        elif key == "hostMaintenancePolicy":
+            suggest = "host_maintenance_policy"
         elif key == "imageType":
             suggest = "image_type"
         elif key == "kubeletConfig":
@@ -10787,6 +10923,7 @@ class NodePoolNodeConfig(dict):
                  gcfs_config: Optional['outputs.NodePoolNodeConfigGcfsConfig'] = None,
                  guest_accelerators: Optional[Sequence['outputs.NodePoolNodeConfigGuestAccelerator']] = None,
                  gvnic: Optional['outputs.NodePoolNodeConfigGvnic'] = None,
+                 host_maintenance_policy: Optional['outputs.NodePoolNodeConfigHostMaintenancePolicy'] = None,
                  image_type: Optional[str] = None,
                  kubelet_config: Optional['outputs.NodePoolNodeConfigKubeletConfig'] = None,
                  labels: Optional[Mapping[str, str]] = None,
@@ -10828,6 +10965,8 @@ class NodePoolNodeConfig(dict):
             pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         if gvnic is not None:
             pulumi.set(__self__, "gvnic", gvnic)
+        if host_maintenance_policy is not None:
+            pulumi.set(__self__, "host_maintenance_policy", host_maintenance_policy)
         if image_type is not None:
             pulumi.set(__self__, "image_type", image_type)
         if kubelet_config is not None:
@@ -10919,6 +11058,11 @@ class NodePoolNodeConfig(dict):
     @pulumi.getter
     def gvnic(self) -> Optional['outputs.NodePoolNodeConfigGvnic']:
         return pulumi.get(self, "gvnic")
+
+    @property
+    @pulumi.getter(name="hostMaintenancePolicy")
+    def host_maintenance_policy(self) -> Optional['outputs.NodePoolNodeConfigHostMaintenancePolicy']:
+        return pulumi.get(self, "host_maintenance_policy")
 
     @property
     @pulumi.getter(name="imageType")
@@ -11289,6 +11433,35 @@ class NodePoolNodeConfigGvnic(dict):
 
 
 @pulumi.output_type
+class NodePoolNodeConfigHostMaintenancePolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maintenanceInterval":
+            suggest = "maintenance_interval"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolNodeConfigHostMaintenancePolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolNodeConfigHostMaintenancePolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolNodeConfigHostMaintenancePolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 maintenance_interval: str):
+        pulumi.set(__self__, "maintenance_interval", maintenance_interval)
+
+    @property
+    @pulumi.getter(name="maintenanceInterval")
+    def maintenance_interval(self) -> str:
+        return pulumi.get(self, "maintenance_interval")
+
+
+@pulumi.output_type
 class NodePoolNodeConfigKubeletConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -11600,7 +11773,9 @@ class NodePoolPlacementPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "tpuTopology":
+        if key == "policyName":
+            suggest = "policy_name"
+        elif key == "tpuTopology":
             suggest = "tpu_topology"
 
         if suggest:
@@ -11616,14 +11791,20 @@ class NodePoolPlacementPolicy(dict):
 
     def __init__(__self__, *,
                  type: str,
+                 policy_name: Optional[str] = None,
                  tpu_topology: Optional[str] = None):
         """
         :param str type: The type of the policy. Supports a single value: COMPACT.
                Specifying COMPACT placement policy type places node pool's nodes in a closer
                physical proximity in order to reduce network latency between nodes.
+        :param str policy_name: If set, refers to the name of a custom resource policy supplied by the user.
+               The resource policy must be in the same project and region as the node pool.
+               If not found, InvalidArgument error is returned.
         :param str tpu_topology: The [TPU placement topology](https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies) for pod slice node pool.
         """
         pulumi.set(__self__, "type", type)
+        if policy_name is not None:
+            pulumi.set(__self__, "policy_name", policy_name)
         if tpu_topology is not None:
             pulumi.set(__self__, "tpu_topology", tpu_topology)
 
@@ -11636,6 +11817,16 @@ class NodePoolPlacementPolicy(dict):
         physical proximity in order to reduce network latency between nodes.
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="policyName")
+    def policy_name(self) -> Optional[str]:
+        """
+        If set, refers to the name of a custom resource policy supplied by the user.
+        The resource policy must be in the same project and region as the node pool.
+        If not found, InvalidArgument error is returned.
+        """
+        return pulumi.get(self, "policy_name")
 
     @property
     @pulumi.getter(name="tpuTopology")
@@ -12499,6 +12690,18 @@ class GetClusterDnsConfigResult(dict):
 
 
 @pulumi.output_type
+class GetClusterEnableK8sBetaApiResult(dict):
+    def __init__(__self__, *,
+                 enabled_apis: Sequence[str]):
+        pulumi.set(__self__, "enabled_apis", enabled_apis)
+
+    @property
+    @pulumi.getter(name="enabledApis")
+    def enabled_apis(self) -> Sequence[str]:
+        return pulumi.get(self, "enabled_apis")
+
+
+@pulumi.output_type
 class GetClusterGatewayApiConfigResult(dict):
     def __init__(__self__, *,
                  channel: str):
@@ -12866,6 +13069,7 @@ class GetClusterNodeConfigResult(dict):
                  gcfs_configs: Sequence['outputs.GetClusterNodeConfigGcfsConfigResult'],
                  guest_accelerators: Sequence['outputs.GetClusterNodeConfigGuestAcceleratorResult'],
                  gvnics: Sequence['outputs.GetClusterNodeConfigGvnicResult'],
+                 host_maintenance_policies: Sequence['outputs.GetClusterNodeConfigHostMaintenancePolicyResult'],
                  image_type: str,
                  kubelet_configs: Sequence['outputs.GetClusterNodeConfigKubeletConfigResult'],
                  labels: Mapping[str, str],
@@ -12898,6 +13102,7 @@ class GetClusterNodeConfigResult(dict):
         pulumi.set(__self__, "gcfs_configs", gcfs_configs)
         pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         pulumi.set(__self__, "gvnics", gvnics)
+        pulumi.set(__self__, "host_maintenance_policies", host_maintenance_policies)
         pulumi.set(__self__, "image_type", image_type)
         pulumi.set(__self__, "kubelet_configs", kubelet_configs)
         pulumi.set(__self__, "labels", labels)
@@ -12966,6 +13171,11 @@ class GetClusterNodeConfigResult(dict):
     @pulumi.getter
     def gvnics(self) -> Sequence['outputs.GetClusterNodeConfigGvnicResult']:
         return pulumi.get(self, "gvnics")
+
+    @property
+    @pulumi.getter(name="hostMaintenancePolicies")
+    def host_maintenance_policies(self) -> Sequence['outputs.GetClusterNodeConfigHostMaintenancePolicyResult']:
+        return pulumi.get(self, "host_maintenance_policies")
 
     @property
     @pulumi.getter(name="imageType")
@@ -13212,6 +13422,18 @@ class GetClusterNodeConfigGvnicResult(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetClusterNodeConfigHostMaintenancePolicyResult(dict):
+    def __init__(__self__, *,
+                 maintenance_interval: str):
+        pulumi.set(__self__, "maintenance_interval", maintenance_interval)
+
+    @property
+    @pulumi.getter(name="maintenanceInterval")
+    def maintenance_interval(self) -> str:
+        return pulumi.get(self, "maintenance_interval")
 
 
 @pulumi.output_type
@@ -13769,6 +13991,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
                  gcfs_configs: Sequence['outputs.GetClusterNodePoolNodeConfigGcfsConfigResult'],
                  guest_accelerators: Sequence['outputs.GetClusterNodePoolNodeConfigGuestAcceleratorResult'],
                  gvnics: Sequence['outputs.GetClusterNodePoolNodeConfigGvnicResult'],
+                 host_maintenance_policies: Sequence['outputs.GetClusterNodePoolNodeConfigHostMaintenancePolicyResult'],
                  image_type: str,
                  kubelet_configs: Sequence['outputs.GetClusterNodePoolNodeConfigKubeletConfigResult'],
                  labels: Mapping[str, str],
@@ -13801,6 +14024,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
         pulumi.set(__self__, "gcfs_configs", gcfs_configs)
         pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         pulumi.set(__self__, "gvnics", gvnics)
+        pulumi.set(__self__, "host_maintenance_policies", host_maintenance_policies)
         pulumi.set(__self__, "image_type", image_type)
         pulumi.set(__self__, "kubelet_configs", kubelet_configs)
         pulumi.set(__self__, "labels", labels)
@@ -13869,6 +14093,11 @@ class GetClusterNodePoolNodeConfigResult(dict):
     @pulumi.getter
     def gvnics(self) -> Sequence['outputs.GetClusterNodePoolNodeConfigGvnicResult']:
         return pulumi.get(self, "gvnics")
+
+    @property
+    @pulumi.getter(name="hostMaintenancePolicies")
+    def host_maintenance_policies(self) -> Sequence['outputs.GetClusterNodePoolNodeConfigHostMaintenancePolicyResult']:
+        return pulumi.get(self, "host_maintenance_policies")
 
     @property
     @pulumi.getter(name="imageType")
@@ -14118,6 +14347,18 @@ class GetClusterNodePoolNodeConfigGvnicResult(dict):
 
 
 @pulumi.output_type
+class GetClusterNodePoolNodeConfigHostMaintenancePolicyResult(dict):
+    def __init__(__self__, *,
+                 maintenance_interval: str):
+        pulumi.set(__self__, "maintenance_interval", maintenance_interval)
+
+    @property
+    @pulumi.getter(name="maintenanceInterval")
+    def maintenance_interval(self) -> str:
+        return pulumi.get(self, "maintenance_interval")
+
+
+@pulumi.output_type
 class GetClusterNodePoolNodeConfigKubeletConfigResult(dict):
     def __init__(__self__, *,
                  cpu_cfs_quota: bool,
@@ -14310,10 +14551,17 @@ class GetClusterNodePoolNodeConfigWorkloadMetadataConfigResult(dict):
 @pulumi.output_type
 class GetClusterNodePoolPlacementPolicyResult(dict):
     def __init__(__self__, *,
+                 policy_name: str,
                  tpu_topology: str,
                  type: str):
+        pulumi.set(__self__, "policy_name", policy_name)
         pulumi.set(__self__, "tpu_topology", tpu_topology)
         pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="policyName")
+    def policy_name(self) -> str:
+        return pulumi.get(self, "policy_name")
 
     @property
     @pulumi.getter(name="tpuTopology")

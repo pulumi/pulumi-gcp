@@ -89,15 +89,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const lookerNetwork = new gcp.compute.Network("lookerNetwork", {autoCreateSubnetworks: false});
+ * const lookerNetwork = gcp.compute.getNetwork({
+ *     name: "looker-network",
+ * });
  * const lookerRange = new gcp.compute.GlobalAddress("lookerRange", {
  *     purpose: "VPC_PEERING",
  *     addressType: "INTERNAL",
  *     prefixLength: 20,
- *     network: lookerNetwork.id,
+ *     network: lookerNetwork.then(lookerNetwork => lookerNetwork.id),
  * });
  * const lookerVpcConnection = new gcp.servicenetworking.Connection("lookerVpcConnection", {
- *     network: lookerNetwork.id,
+ *     network: lookerNetwork.then(lookerNetwork => lookerNetwork.id),
  *     service: "servicenetworking.googleapis.com",
  *     reservedPeeringRanges: [lookerRange.name],
  * });
@@ -107,7 +109,7 @@ import * as utilities from "../utilities";
  *     privateIpEnabled: true,
  *     publicIpEnabled: false,
  *     reservedRange: lookerRange.name,
- *     consumerNetwork: lookerNetwork.id,
+ *     consumerNetwork: lookerNetwork.then(lookerNetwork => lookerNetwork.id),
  *     adminSettings: {
  *         allowedEmailDomains: ["google.com"],
  *     },

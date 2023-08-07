@@ -14,6 +14,7 @@ import com.pulumi.gcp.container.outputs.GetClusterCostManagementConfig;
 import com.pulumi.gcp.container.outputs.GetClusterDatabaseEncryption;
 import com.pulumi.gcp.container.outputs.GetClusterDefaultSnatStatus;
 import com.pulumi.gcp.container.outputs.GetClusterDnsConfig;
+import com.pulumi.gcp.container.outputs.GetClusterEnableK8sBetaApi;
 import com.pulumi.gcp.container.outputs.GetClusterGatewayApiConfig;
 import com.pulumi.gcp.container.outputs.GetClusterIdentityServiceConfig;
 import com.pulumi.gcp.container.outputs.GetClusterIpAllocationPolicy;
@@ -68,6 +69,7 @@ public final class GetClusterResult {
     private Boolean enableAutopilot;
     private Boolean enableBinaryAuthorization;
     private Boolean enableIntranodeVisibility;
+    private List<GetClusterEnableK8sBetaApi> enableK8sBetaApis;
     private Boolean enableKubernetesAlpha;
     private Boolean enableL4IlbSubsetting;
     private Boolean enableLegacyAbac;
@@ -181,6 +183,9 @@ public final class GetClusterResult {
     }
     public Boolean enableIntranodeVisibility() {
         return this.enableIntranodeVisibility;
+    }
+    public List<GetClusterEnableK8sBetaApi> enableK8sBetaApis() {
+        return this.enableK8sBetaApis;
     }
     public Boolean enableKubernetesAlpha() {
         return this.enableKubernetesAlpha;
@@ -376,6 +381,7 @@ public final class GetClusterResult {
         private Boolean enableAutopilot;
         private Boolean enableBinaryAuthorization;
         private Boolean enableIntranodeVisibility;
+        private List<GetClusterEnableK8sBetaApi> enableK8sBetaApis;
         private Boolean enableKubernetesAlpha;
         private Boolean enableL4IlbSubsetting;
         private Boolean enableLegacyAbac;
@@ -451,6 +457,7 @@ public final class GetClusterResult {
     	      this.enableAutopilot = defaults.enableAutopilot;
     	      this.enableBinaryAuthorization = defaults.enableBinaryAuthorization;
     	      this.enableIntranodeVisibility = defaults.enableIntranodeVisibility;
+    	      this.enableK8sBetaApis = defaults.enableK8sBetaApis;
     	      this.enableKubernetesAlpha = defaults.enableKubernetesAlpha;
     	      this.enableL4IlbSubsetting = defaults.enableL4IlbSubsetting;
     	      this.enableLegacyAbac = defaults.enableLegacyAbac;
@@ -626,6 +633,14 @@ public final class GetClusterResult {
         public Builder enableIntranodeVisibility(Boolean enableIntranodeVisibility) {
             this.enableIntranodeVisibility = Objects.requireNonNull(enableIntranodeVisibility);
             return this;
+        }
+        @CustomType.Setter
+        public Builder enableK8sBetaApis(List<GetClusterEnableK8sBetaApi> enableK8sBetaApis) {
+            this.enableK8sBetaApis = Objects.requireNonNull(enableK8sBetaApis);
+            return this;
+        }
+        public Builder enableK8sBetaApis(GetClusterEnableK8sBetaApi... enableK8sBetaApis) {
+            return enableK8sBetaApis(List.of(enableK8sBetaApis));
         }
         @CustomType.Setter
         public Builder enableKubernetesAlpha(Boolean enableKubernetesAlpha) {
@@ -995,6 +1010,7 @@ public final class GetClusterResult {
             o.enableAutopilot = enableAutopilot;
             o.enableBinaryAuthorization = enableBinaryAuthorization;
             o.enableIntranodeVisibility = enableIntranodeVisibility;
+            o.enableK8sBetaApis = enableK8sBetaApis;
             o.enableKubernetesAlpha = enableKubernetesAlpha;
             o.enableL4IlbSubsetting = enableL4IlbSubsetting;
             o.enableLegacyAbac = enableLegacyAbac;

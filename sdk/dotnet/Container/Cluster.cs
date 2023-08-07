@@ -245,6 +245,13 @@ namespace Pulumi.Gcp.Container
         public Output<bool> EnableIntranodeVisibility { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for Kubernetes Beta APIs.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("enableK8sBetaApis")]
+        public Output<Outputs.ClusterEnableK8sBetaApis?> EnableK8sBetaApis { get; private set; } = null!;
+
+        /// <summary>
         /// Whether to enable Kubernetes Alpha features for
         /// this cluster. Note that when this option is enabled, the cluster cannot be upgraded
         /// and will be automatically deleted after 30 days.
@@ -268,6 +275,7 @@ namespace Pulumi.Gcp.Container
         public Output<bool?> EnableLegacyAbac { get; private set; } = null!;
 
         /// <summary>
+        /// )
         /// Whether multi-networking is enabled for this cluster.
         /// </summary>
         [Output("enableMultiNetworking")]
@@ -858,6 +866,13 @@ namespace Pulumi.Gcp.Container
         public Input<bool>? EnableIntranodeVisibility { get; set; }
 
         /// <summary>
+        /// Configuration for Kubernetes Beta APIs.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("enableK8sBetaApis")]
+        public Input<Inputs.ClusterEnableK8sBetaApisArgs>? EnableK8sBetaApis { get; set; }
+
+        /// <summary>
         /// Whether to enable Kubernetes Alpha features for
         /// this cluster. Note that when this option is enabled, the cluster cannot be upgraded
         /// and will be automatically deleted after 30 days.
@@ -881,6 +896,7 @@ namespace Pulumi.Gcp.Container
         public Input<bool>? EnableLegacyAbac { get; set; }
 
         /// <summary>
+        /// )
         /// Whether multi-networking is enabled for this cluster.
         /// </summary>
         [Input("enableMultiNetworking")]
@@ -1405,6 +1421,13 @@ namespace Pulumi.Gcp.Container
         public Input<bool>? EnableIntranodeVisibility { get; set; }
 
         /// <summary>
+        /// Configuration for Kubernetes Beta APIs.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("enableK8sBetaApis")]
+        public Input<Inputs.ClusterEnableK8sBetaApisGetArgs>? EnableK8sBetaApis { get; set; }
+
+        /// <summary>
         /// Whether to enable Kubernetes Alpha features for
         /// this cluster. Note that when this option is enabled, the cluster cannot be upgraded
         /// and will be automatically deleted after 30 days.
@@ -1428,6 +1451,7 @@ namespace Pulumi.Gcp.Container
         public Input<bool>? EnableLegacyAbac { get; set; }
 
         /// <summary>
+        /// )
         /// Whether multi-networking is enabled for this cluster.
         /// </summary>
         [Input("enableMultiNetworking")]

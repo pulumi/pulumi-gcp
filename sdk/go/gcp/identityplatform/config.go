@@ -63,6 +63,31 @@ import (
 //			_, err = identityplatform.NewConfig(ctx, "defaultConfig", &identityplatform.ConfigArgs{
 //				Project:                  defaultProject.ProjectId,
 //				AutodeleteAnonymousUsers: pulumi.Bool(true),
+//				BlockingFunctions: &identityplatform.ConfigBlockingFunctionsArgs{
+//					Triggers: identityplatform.ConfigBlockingFunctionsTriggerArray{
+//						&identityplatform.ConfigBlockingFunctionsTriggerArgs{
+//							EventType:   pulumi.String("beforeSignIn"),
+//							FunctionUri: pulumi.String("https://us-east1-my-project.cloudfunctions.net/before-sign-in"),
+//						},
+//					},
+//					ForwardInboundCredentials: &identityplatform.ConfigBlockingFunctionsForwardInboundCredentialsArgs{
+//						RefreshToken: pulumi.Bool(true),
+//						AccessToken:  pulumi.Bool(true),
+//						IdToken:      pulumi.Bool(true),
+//					},
+//				},
+//				Quota: &identityplatform.ConfigQuotaArgs{
+//					SignUpQuotaConfig: &identityplatform.ConfigQuotaSignUpQuotaConfigArgs{
+//						Quota:         pulumi.Int(1000),
+//						StartTime:     pulumi.String(""),
+//						QuotaDuration: pulumi.String("7200s"),
+//					},
+//				},
+//				AuthorizedDomains: pulumi.StringArray{
+//					pulumi.String("localhost"),
+//					pulumi.String("my-project.firebaseapp.com"),
+//					pulumi.String("my-project.web.app"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -97,13 +122,21 @@ import (
 type Config struct {
 	pulumi.CustomResourceState
 
+	// List of domains authorized for OAuth redirects.
+	AuthorizedDomains pulumi.StringArrayOutput `pulumi:"authorizedDomains"`
 	// Whether anonymous users will be auto-deleted after a period of 30 days
 	AutodeleteAnonymousUsers pulumi.BoolPtrOutput `pulumi:"autodeleteAnonymousUsers"`
+	// Configuration related to blocking functions.
+	// Structure is documented below.
+	BlockingFunctions ConfigBlockingFunctionsPtrOutput `pulumi:"blockingFunctions"`
 	// The name of the Config resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Configuration related to quotas.
+	// Structure is documented below.
+	Quota ConfigQuotaPtrOutput `pulumi:"quota"`
 }
 
 // NewConfig registers a new resource with the given unique name, arguments, and options.
@@ -136,23 +169,39 @@ func GetConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Config resources.
 type configState struct {
+	// List of domains authorized for OAuth redirects.
+	AuthorizedDomains []string `pulumi:"authorizedDomains"`
 	// Whether anonymous users will be auto-deleted after a period of 30 days
 	AutodeleteAnonymousUsers *bool `pulumi:"autodeleteAnonymousUsers"`
+	// Configuration related to blocking functions.
+	// Structure is documented below.
+	BlockingFunctions *ConfigBlockingFunctions `pulumi:"blockingFunctions"`
 	// The name of the Config resource
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Configuration related to quotas.
+	// Structure is documented below.
+	Quota *ConfigQuota `pulumi:"quota"`
 }
 
 type ConfigState struct {
+	// List of domains authorized for OAuth redirects.
+	AuthorizedDomains pulumi.StringArrayInput
 	// Whether anonymous users will be auto-deleted after a period of 30 days
 	AutodeleteAnonymousUsers pulumi.BoolPtrInput
+	// Configuration related to blocking functions.
+	// Structure is documented below.
+	BlockingFunctions ConfigBlockingFunctionsPtrInput
 	// The name of the Config resource
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Configuration related to quotas.
+	// Structure is documented below.
+	Quota ConfigQuotaPtrInput
 }
 
 func (ConfigState) ElementType() reflect.Type {
@@ -160,20 +209,36 @@ func (ConfigState) ElementType() reflect.Type {
 }
 
 type configArgs struct {
+	// List of domains authorized for OAuth redirects.
+	AuthorizedDomains []string `pulumi:"authorizedDomains"`
 	// Whether anonymous users will be auto-deleted after a period of 30 days
 	AutodeleteAnonymousUsers *bool `pulumi:"autodeleteAnonymousUsers"`
+	// Configuration related to blocking functions.
+	// Structure is documented below.
+	BlockingFunctions *ConfigBlockingFunctions `pulumi:"blockingFunctions"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Configuration related to quotas.
+	// Structure is documented below.
+	Quota *ConfigQuota `pulumi:"quota"`
 }
 
 // The set of arguments for constructing a Config resource.
 type ConfigArgs struct {
+	// List of domains authorized for OAuth redirects.
+	AuthorizedDomains pulumi.StringArrayInput
 	// Whether anonymous users will be auto-deleted after a period of 30 days
 	AutodeleteAnonymousUsers pulumi.BoolPtrInput
+	// Configuration related to blocking functions.
+	// Structure is documented below.
+	BlockingFunctions ConfigBlockingFunctionsPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Configuration related to quotas.
+	// Structure is documented below.
+	Quota ConfigQuotaPtrInput
 }
 
 func (ConfigArgs) ElementType() reflect.Type {
@@ -263,9 +328,20 @@ func (o ConfigOutput) ToConfigOutputWithContext(ctx context.Context) ConfigOutpu
 	return o
 }
 
+// List of domains authorized for OAuth redirects.
+func (o ConfigOutput) AuthorizedDomains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Config) pulumi.StringArrayOutput { return v.AuthorizedDomains }).(pulumi.StringArrayOutput)
+}
+
 // Whether anonymous users will be auto-deleted after a period of 30 days
 func (o ConfigOutput) AutodeleteAnonymousUsers() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Config) pulumi.BoolPtrOutput { return v.AutodeleteAnonymousUsers }).(pulumi.BoolPtrOutput)
+}
+
+// Configuration related to blocking functions.
+// Structure is documented below.
+func (o ConfigOutput) BlockingFunctions() ConfigBlockingFunctionsPtrOutput {
+	return o.ApplyT(func(v *Config) ConfigBlockingFunctionsPtrOutput { return v.BlockingFunctions }).(ConfigBlockingFunctionsPtrOutput)
 }
 
 // The name of the Config resource
@@ -277,6 +353,12 @@ func (o ConfigOutput) Name() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o ConfigOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Config) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Configuration related to quotas.
+// Structure is documented below.
+func (o ConfigOutput) Quota() ConfigQuotaPtrOutput {
+	return o.ApplyT(func(v *Config) ConfigQuotaPtrOutput { return v.Quota }).(ConfigQuotaPtrOutput)
 }
 
 type ConfigArrayOutput struct{ *pulumi.OutputState }

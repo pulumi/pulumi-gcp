@@ -68,6 +68,11 @@ namespace Pulumi.Gcp.Alloydb
     ///             User = "alloydb-cluster-full",
     ///             Password = "alloydb-cluster-full",
     ///         },
+    ///         ContinuousBackupConfig = new Gcp.Alloydb.Inputs.ClusterContinuousBackupConfigArgs
+    ///         {
+    ///             Enabled = true,
+    ///             RecoveryWindowDays = 14,
+    ///         },
     ///         AutomatedBackupPolicy = new Gcp.Alloydb.Inputs.ClusterAutomatedBackupPolicyArgs
     ///         {
     ///             Location = "us-central1",
@@ -134,8 +139,7 @@ namespace Pulumi.Gcp.Alloydb
     public partial class Cluster : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The automated backup policy for this cluster.
-        /// If no policy is provided then the default policy will be used. The default policy takes one backup a day, has a backup window of 1 hour, and retains backups for 14 days.
+        /// The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
         /// Structure is documented below.
         /// </summary>
         [Output("automatedBackupPolicy")]
@@ -153,6 +157,21 @@ namespace Pulumi.Gcp.Alloydb
         /// </summary>
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
+
+        /// <summary>
+        /// The continuous backup config for this cluster.
+        /// If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("continuousBackupConfig")]
+        public Output<Outputs.ClusterContinuousBackupConfig> ContinuousBackupConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// ContinuousBackupInfo describes the continuous backup properties of a cluster.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("continuousBackupInfos")]
+        public Output<ImmutableArray<Outputs.ClusterContinuousBackupInfo>> ContinuousBackupInfos { get; private set; } = null!;
 
         /// <summary>
         /// The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
@@ -174,7 +193,8 @@ namespace Pulumi.Gcp.Alloydb
         public Output<Outputs.ClusterEncryptionConfig?> EncryptionConfig { get; private set; } = null!;
 
         /// <summary>
-        /// EncryptionInfo describes the encryption information of a cluster or a backup.
+        /// (Output)
+        /// Output only. The encryption information for the WALs and backups required for ContinuousBackup.
         /// Structure is documented below.
         /// </summary>
         [Output("encryptionInfos")]
@@ -282,8 +302,7 @@ namespace Pulumi.Gcp.Alloydb
     public sealed class ClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The automated backup policy for this cluster.
-        /// If no policy is provided then the default policy will be used. The default policy takes one backup a day, has a backup window of 1 hour, and retains backups for 14 days.
+        /// The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
         /// Structure is documented below.
         /// </summary>
         [Input("automatedBackupPolicy")]
@@ -294,6 +313,14 @@ namespace Pulumi.Gcp.Alloydb
         /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
+
+        /// <summary>
+        /// The continuous backup config for this cluster.
+        /// If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("continuousBackupConfig")]
+        public Input<Inputs.ClusterContinuousBackupConfigArgs>? ContinuousBackupConfig { get; set; }
 
         /// <summary>
         /// User-settable and human-readable display name for the Cluster.
@@ -359,8 +386,7 @@ namespace Pulumi.Gcp.Alloydb
     public sealed class ClusterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The automated backup policy for this cluster.
-        /// If no policy is provided then the default policy will be used. The default policy takes one backup a day, has a backup window of 1 hour, and retains backups for 14 days.
+        /// The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
         /// Structure is documented below.
         /// </summary>
         [Input("automatedBackupPolicy")]
@@ -386,6 +412,27 @@ namespace Pulumi.Gcp.Alloydb
         public Input<string>? ClusterId { get; set; }
 
         /// <summary>
+        /// The continuous backup config for this cluster.
+        /// If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("continuousBackupConfig")]
+        public Input<Inputs.ClusterContinuousBackupConfigGetArgs>? ContinuousBackupConfig { get; set; }
+
+        [Input("continuousBackupInfos")]
+        private InputList<Inputs.ClusterContinuousBackupInfoGetArgs>? _continuousBackupInfos;
+
+        /// <summary>
+        /// ContinuousBackupInfo describes the continuous backup properties of a cluster.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ClusterContinuousBackupInfoGetArgs> ContinuousBackupInfos
+        {
+            get => _continuousBackupInfos ?? (_continuousBackupInfos = new InputList<Inputs.ClusterContinuousBackupInfoGetArgs>());
+            set => _continuousBackupInfos = value;
+        }
+
+        /// <summary>
         /// The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
         /// </summary>
         [Input("databaseVersion")]
@@ -408,7 +455,8 @@ namespace Pulumi.Gcp.Alloydb
         private InputList<Inputs.ClusterEncryptionInfoGetArgs>? _encryptionInfos;
 
         /// <summary>
-        /// EncryptionInfo describes the encryption information of a cluster or a backup.
+        /// (Output)
+        /// Output only. The encryption information for the WALs and backups required for ContinuousBackup.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.ClusterEncryptionInfoGetArgs> EncryptionInfos

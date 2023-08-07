@@ -16,6 +16,25 @@ public final class NodePoolPlacementPolicyArgs extends com.pulumi.resources.Reso
     public static final NodePoolPlacementPolicyArgs Empty = new NodePoolPlacementPolicyArgs();
 
     /**
+     * If set, refers to the name of a custom resource policy supplied by the user.
+     * The resource policy must be in the same project and region as the node pool.
+     * If not found, InvalidArgument error is returned.
+     * 
+     */
+    @Import(name="policyName")
+    private @Nullable Output<String> policyName;
+
+    /**
+     * @return If set, refers to the name of a custom resource policy supplied by the user.
+     * The resource policy must be in the same project and region as the node pool.
+     * If not found, InvalidArgument error is returned.
+     * 
+     */
+    public Optional<Output<String>> policyName() {
+        return Optional.ofNullable(this.policyName);
+    }
+
+    /**
      * The [TPU placement topology](https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies) for pod slice node pool.
      * 
      */
@@ -52,6 +71,7 @@ public final class NodePoolPlacementPolicyArgs extends com.pulumi.resources.Reso
     private NodePoolPlacementPolicyArgs() {}
 
     private NodePoolPlacementPolicyArgs(NodePoolPlacementPolicyArgs $) {
+        this.policyName = $.policyName;
         this.tpuTopology = $.tpuTopology;
         this.type = $.type;
     }
@@ -72,6 +92,31 @@ public final class NodePoolPlacementPolicyArgs extends com.pulumi.resources.Reso
 
         public Builder(NodePoolPlacementPolicyArgs defaults) {
             $ = new NodePoolPlacementPolicyArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param policyName If set, refers to the name of a custom resource policy supplied by the user.
+         * The resource policy must be in the same project and region as the node pool.
+         * If not found, InvalidArgument error is returned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policyName(@Nullable Output<String> policyName) {
+            $.policyName = policyName;
+            return this;
+        }
+
+        /**
+         * @param policyName If set, refers to the name of a custom resource policy supplied by the user.
+         * The resource policy must be in the same project and region as the node pool.
+         * If not found, InvalidArgument error is returned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policyName(String policyName) {
+            return policyName(Output.of(policyName));
         }
 
         /**

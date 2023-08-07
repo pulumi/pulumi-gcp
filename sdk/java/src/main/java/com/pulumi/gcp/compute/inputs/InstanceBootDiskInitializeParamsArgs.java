@@ -66,17 +66,9 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
         return Optional.ofNullable(this.labels);
     }
 
-    /**
-     * A tag is a key-value pair that can be attached to a Google Cloud resource. You can use tags to conditionally allow or deny policies based on whether a resource has a specific tag.
-     * 
-     */
     @Import(name="resourceManagerTags")
     private @Nullable Output<Map<String,Object>> resourceManagerTags;
 
-    /**
-     * @return A tag is a key-value pair that can be attached to a Google Cloud resource. You can use tags to conditionally allow or deny policies based on whether a resource has a specific tag.
-     * 
-     */
     public Optional<Output<Map<String,Object>>> resourceManagerTags() {
         return Optional.ofNullable(this.resourceManagerTags);
     }
@@ -201,23 +193,11 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
             return labels(Output.of(labels));
         }
 
-        /**
-         * @param resourceManagerTags A tag is a key-value pair that can be attached to a Google Cloud resource. You can use tags to conditionally allow or deny policies based on whether a resource has a specific tag.
-         * 
-         * @return builder
-         * 
-         */
         public Builder resourceManagerTags(@Nullable Output<Map<String,Object>> resourceManagerTags) {
             $.resourceManagerTags = resourceManagerTags;
             return this;
         }
 
-        /**
-         * @param resourceManagerTags A tag is a key-value pair that can be attached to a Google Cloud resource. You can use tags to conditionally allow or deny policies based on whether a resource has a specific tag.
-         * 
-         * @return builder
-         * 
-         */
         public Builder resourceManagerTags(Map<String,Object> resourceManagerTags) {
             return resourceManagerTags(Output.of(resourceManagerTags));
         }

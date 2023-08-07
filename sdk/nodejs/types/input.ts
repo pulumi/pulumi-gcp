@@ -1793,6 +1793,67 @@ export namespace alloydb {
         backupName?: pulumi.Input<string>;
     }
 
+    export interface ClusterContinuousBackupConfig {
+        /**
+         * Whether continuous backup recovery is enabled. If not set, defaults to true.
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+         * Structure is documented below.
+         */
+        encryptionConfig?: pulumi.Input<inputs.alloydb.ClusterContinuousBackupConfigEncryptionConfig>;
+        /**
+         * The numbers of days that are eligible to restore from using PITR. To support the entire recovery window, backups and logs are retained for one day more than the recovery window.
+         * If not set, defaults to 14 days.
+         */
+        recoveryWindowDays?: pulumi.Input<number>;
+    }
+
+    export interface ClusterContinuousBackupConfigEncryptionConfig {
+        /**
+         * The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+         */
+        kmsKeyName?: pulumi.Input<string>;
+    }
+
+    export interface ClusterContinuousBackupInfo {
+        /**
+         * (Output)
+         * The earliest restorable time that can be restored to. Output only field.
+         */
+        earliestRestorableTime?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * When ContinuousBackup was most recently enabled. Set to null if ContinuousBackup is not enabled.
+         */
+        enabledTime?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. The encryption information for the WALs and backups required for ContinuousBackup.
+         * Structure is documented below.
+         */
+        encryptionInfos?: pulumi.Input<pulumi.Input<inputs.alloydb.ClusterContinuousBackupInfoEncryptionInfo>[]>;
+        /**
+         * (Output)
+         * Days of the week on which a continuous backup is taken. Output only field. Ignored if passed into the request.
+         */
+        schedules?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface ClusterContinuousBackupInfoEncryptionInfo {
+        /**
+         * (Output)
+         * Output only. Type of encryption.
+         */
+        encryptionType?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. Cloud KMS key versions that are being used to protect the database or the backup.
+         */
+        kmsKeyVersions?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface ClusterEncryptionConfig {
         /**
          * The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
@@ -7855,7 +7916,6 @@ export namespace cloudbuild {
         logging?: pulumi.Input<string>;
         /**
          * Compute Engine machine type on which to run the build.
-         * Possible values are: `UNSPECIFIED`, `N1_HIGHCPU_8`, `N1_HIGHCPU_32`, `E2_HIGHCPU_8`, `E2_HIGHCPU_32`.
          */
         machineType?: pulumi.Input<string>;
         /**
@@ -13832,9 +13892,6 @@ export namespace compute {
          * field is only applicable for persistent disks.
          */
         labels?: pulumi.Input<{[key: string]: any}>;
-        /**
-         * A tag is a key-value pair that can be attached to a Google Cloud resource. You can use tags to conditionally allow or deny policies based on whether a resource has a specific tag.
-         */
         resourceManagerTags?: pulumi.Input<{[key: string]: any}>;
         /**
          * The size of the image in gigabytes. If not specified, it
@@ -13930,6 +13987,11 @@ export namespace compute {
     export interface InstanceFromMachineImageNetworkInterfaceIpv6AccessConfig {
         externalIpv6?: pulumi.Input<string>;
         externalIpv6PrefixLength?: pulumi.Input<string>;
+        /**
+         * A unique name for the resource, required by GCE.
+         * Changing this forces a new resource to be created.
+         */
+        name?: pulumi.Input<string>;
         networkTier: pulumi.Input<string>;
         publicPtrDomainName?: pulumi.Input<string>;
     }
@@ -13955,6 +14017,7 @@ export namespace compute {
     export interface InstanceFromMachineImageScheduling {
         automaticRestart?: pulumi.Input<boolean>;
         instanceTerminationAction?: pulumi.Input<string>;
+        localSsdRecoveryTimeout?: pulumi.Input<inputs.compute.InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeout>;
         maintenanceInterval?: pulumi.Input<string>;
         maxRunDuration?: pulumi.Input<inputs.compute.InstanceFromMachineImageSchedulingMaxRunDuration>;
         minNodeCpus?: pulumi.Input<number>;
@@ -13962,6 +14025,11 @@ export namespace compute {
         onHostMaintenance?: pulumi.Input<string>;
         preemptible?: pulumi.Input<boolean>;
         provisioningModel?: pulumi.Input<string>;
+    }
+
+    export interface InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeout {
+        nanos?: pulumi.Input<number>;
+        seconds: pulumi.Input<number>;
     }
 
     export interface InstanceFromMachineImageSchedulingMaxRunDuration {
@@ -14067,6 +14135,11 @@ export namespace compute {
     export interface InstanceFromTemplateNetworkInterfaceIpv6AccessConfig {
         externalIpv6?: pulumi.Input<string>;
         externalIpv6PrefixLength?: pulumi.Input<string>;
+        /**
+         * A unique name for the resource, required by GCE.
+         * Changing this forces a new resource to be created.
+         */
+        name?: pulumi.Input<string>;
         networkTier: pulumi.Input<string>;
         publicPtrDomainName?: pulumi.Input<string>;
     }
@@ -14092,6 +14165,7 @@ export namespace compute {
     export interface InstanceFromTemplateScheduling {
         automaticRestart?: pulumi.Input<boolean>;
         instanceTerminationAction?: pulumi.Input<string>;
+        localSsdRecoveryTimeout?: pulumi.Input<inputs.compute.InstanceFromTemplateSchedulingLocalSsdRecoveryTimeout>;
         maintenanceInterval?: pulumi.Input<string>;
         maxRunDuration?: pulumi.Input<inputs.compute.InstanceFromTemplateSchedulingMaxRunDuration>;
         minNodeCpus?: pulumi.Input<number>;
@@ -14099,6 +14173,11 @@ export namespace compute {
         onHostMaintenance?: pulumi.Input<string>;
         preemptible?: pulumi.Input<boolean>;
         provisioningModel?: pulumi.Input<string>;
+    }
+
+    export interface InstanceFromTemplateSchedulingLocalSsdRecoveryTimeout {
+        nanos?: pulumi.Input<number>;
+        seconds: pulumi.Input<number>;
     }
 
     export interface InstanceFromTemplateSchedulingMaxRunDuration {
@@ -14487,8 +14566,22 @@ export namespace compute {
     }
 
     export interface InstanceNetworkInterfaceIpv6AccessConfig {
+        /**
+         * The first IPv6 address of the external IPv6 range associated 
+         * with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig.
+         * To use a static external IP address, it must be unused and in the same region as the instance's zone.
+         * If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
+         */
         externalIpv6?: pulumi.Input<string>;
+        /**
+         * The prefix length of the external IPv6 range.
+         */
         externalIpv6PrefixLength?: pulumi.Input<string>;
+        /**
+         * A unique name for the resource, required by GCE.
+         * Changing this forces a new resource to be created.
+         */
+        name?: pulumi.Input<string>;
         /**
          * The [networking tier][network-tier] used for configuring this instance.
          * This field can take the following values: PREMIUM, FIXED_STANDARD or STANDARD. If this field is
@@ -14519,9 +14612,6 @@ export namespace compute {
     }
 
     export interface InstanceParams {
-        /**
-         * A tag is a key-value pair that can be attached to a Google Cloud resource. You can use tags to conditionally allow or deny policies based on whether a resource has a specific tag.
-         */
         resourceManagerTags?: pulumi.Input<{[key: string]: any}>;
     }
 
@@ -14559,6 +14649,7 @@ export namespace compute {
          * Describe the type of termination action for VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
          */
         instanceTerminationAction?: pulumi.Input<string>;
+        localSsdRecoveryTimeout?: pulumi.Input<inputs.compute.InstanceSchedulingLocalSsdRecoveryTimeout>;
         maintenanceInterval?: pulumi.Input<string>;
         maxRunDuration?: pulumi.Input<inputs.compute.InstanceSchedulingMaxRunDuration>;
         /**
@@ -14594,9 +14685,13 @@ export namespace compute {
         provisioningModel?: pulumi.Input<string>;
     }
 
-    export interface InstanceSchedulingMaxRunDuration {
+    export interface InstanceSchedulingLocalSsdRecoveryTimeout {
         /**
          * Span of time that's a fraction of a second at nanosecond
+         * resolution. Durations less than one second are represented with a 0
+         * `seconds` field and a positive `nanos` field. Must be from 0 to
+         * 999,999,999 inclusive.
+         *
          * resolution. Durations less than one second are represented with a 0
          * `seconds` field and a positive `nanos` field. Must be from 0 to
          * 999,999,999 inclusive.
@@ -14604,6 +14699,32 @@ export namespace compute {
         nanos?: pulumi.Input<number>;
         /**
          * Span of time at a resolution of a second. Must be from 0 to
+         * 315,576,000,000 inclusive. Note: these bounds are computed from: 60
+         * sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+         *
+         * 315,576,000,000 inclusive. Note: these bounds are computed from: 60
+         * sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+         */
+        seconds: pulumi.Input<number>;
+    }
+
+    export interface InstanceSchedulingMaxRunDuration {
+        /**
+         * Span of time that's a fraction of a second at nanosecond
+         * resolution. Durations less than one second are represented with a 0
+         * `seconds` field and a positive `nanos` field. Must be from 0 to
+         * 999,999,999 inclusive.
+         *
+         * resolution. Durations less than one second are represented with a 0
+         * `seconds` field and a positive `nanos` field. Must be from 0 to
+         * 999,999,999 inclusive.
+         */
+        nanos?: pulumi.Input<number>;
+        /**
+         * Span of time at a resolution of a second. Must be from 0 to
+         * 315,576,000,000 inclusive. Note: these bounds are computed from: 60
+         * sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+         *
          * 315,576,000,000 inclusive. Note: these bounds are computed from: 60
          * sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
          */
@@ -14951,6 +15072,11 @@ export namespace compute {
         externalIpv6?: pulumi.Input<string>;
         externalIpv6PrefixLength?: pulumi.Input<string>;
         /**
+         * The name of the instance template. If you leave
+         * this blank, the provider will auto-generate a unique name.
+         */
+        name?: pulumi.Input<string>;
+        /**
          * The [networking tier][network-tier] used for configuring
          * this instance template. This field can take the following values: PREMIUM,
          * STANDARD or FIXED_STANDARD. If this field is not specified, it is assumed to be PREMIUM.
@@ -15004,6 +15130,7 @@ export namespace compute {
          * Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
          */
         instanceTerminationAction?: pulumi.Input<string>;
+        localSsdRecoveryTimeouts?: pulumi.Input<pulumi.Input<inputs.compute.InstanceTemplateSchedulingLocalSsdRecoveryTimeout>[]>;
         maintenanceInterval?: pulumi.Input<string>;
         /**
          * Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instanceTerminationAction`. Only support `DELETE` `instanceTerminationAction` at this point. Structure is documented below.
@@ -15039,9 +15166,13 @@ export namespace compute {
         provisioningModel?: pulumi.Input<string>;
     }
 
-    export interface InstanceTemplateSchedulingMaxRunDuration {
+    export interface InstanceTemplateSchedulingLocalSsdRecoveryTimeout {
         /**
          * Span of time that's a fraction of a second at nanosecond
+         * resolution. Durations less than one second are represented with a 0
+         * `seconds` field and a positive `nanos` field. Must be from 0 to
+         * 999,999,999 inclusive.
+         *
          * resolution. Durations less than one second are represented with a 0
          * `seconds` field and a positive `nanos` field. Must be from 0 to
          * 999,999,999 inclusive.
@@ -15049,6 +15180,32 @@ export namespace compute {
         nanos?: pulumi.Input<number>;
         /**
          * Span of time at a resolution of a second. Must be from 0 to
+         * 315,576,000,000 inclusive. Note: these bounds are computed from: 60
+         * sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+         *
+         * 315,576,000,000 inclusive. Note: these bounds are computed from: 60
+         * sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+         */
+        seconds: pulumi.Input<number>;
+    }
+
+    export interface InstanceTemplateSchedulingMaxRunDuration {
+        /**
+         * Span of time that's a fraction of a second at nanosecond
+         * resolution. Durations less than one second are represented with a 0
+         * `seconds` field and a positive `nanos` field. Must be from 0 to
+         * 999,999,999 inclusive.
+         *
+         * resolution. Durations less than one second are represented with a 0
+         * `seconds` field and a positive `nanos` field. Must be from 0 to
+         * 999,999,999 inclusive.
+         */
+        nanos?: pulumi.Input<number>;
+        /**
+         * Span of time at a resolution of a second. Must be from 0 to
+         * 315,576,000,000 inclusive. Note: these bounds are computed from: 60
+         * sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+         *
          * 315,576,000,000 inclusive. Note: these bounds are computed from: 60
          * sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
          */
@@ -16142,6 +16299,10 @@ export namespace compute {
          * Possible values are: `DEFAULT_FOR_PROTOCOL`, `NEVER_PERSIST`, `ALWAYS_PERSIST`.
          */
         connectionPersistenceOnUnhealthyBackends?: pulumi.Input<string>;
+        /**
+         * Enable Strong Session Affinity for Network Load Balancing. This option is not available publicly.
+         */
+        enableStrongAffinity?: pulumi.Input<boolean>;
         /**
          * Specifies how long to keep a Connection Tracking entry while there is
          * no matching traffic (in seconds).
@@ -17336,6 +17497,7 @@ export namespace compute {
     export interface RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig {
         externalIpv6?: pulumi.Input<string>;
         externalIpv6PrefixLength?: pulumi.Input<string>;
+        name?: pulumi.Input<string>;
         /**
          * The [networking tier][network-tier] used for configuring
          * this instance template. This field can take the following values: PREMIUM,
@@ -17390,6 +17552,7 @@ export namespace compute {
          * Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
          */
         instanceTerminationAction?: pulumi.Input<string>;
+        localSsdRecoveryTimeouts?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout>[]>;
         /**
          * Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.   
          * <a name="nestedGuestAccelerator"></a>The `guestAccelerator` block supports:
@@ -17426,6 +17589,29 @@ export namespace compute {
          * `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
          */
         provisioningModel?: pulumi.Input<string>;
+    }
+
+    export interface RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout {
+        /**
+         * Span of time that's a fraction of a second at nanosecond
+         * resolution. Durations less than one second are represented with a 0
+         * `seconds` field and a positive `nanos` field. Must be from 0 to
+         * 999,999,999 inclusive.
+         *
+         * resolution. Durations less than one second are represented with a 0
+         * `seconds` field and a positive `nanos` field. Must be from 0 to
+         * 999,999,999 inclusive.
+         */
+        nanos?: pulumi.Input<number>;
+        /**
+         * Span of time at a resolution of a second. Must be from 0 to
+         * 315,576,000,000 inclusive. Note: these bounds are computed from: 60
+         * sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+         *
+         * 315,576,000,000 inclusive. Note: these bounds are computed from: 60
+         * sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+         */
+        seconds: pulumi.Input<number>;
     }
 
     export interface RegionInstanceTemplateSchedulingMaxRunDuration {
@@ -23620,6 +23806,8 @@ export namespace container {
     export interface ClusterDatabaseEncryption {
         /**
          * the key to use to encrypt/decrypt secrets.  See the [DatabaseEncryption definition](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#Cluster.DatabaseEncryption) for more information.
+         *
+         * <a name="nestedEnableK8sBetaApis"></a>The `enableK8sBetaApis` block supports:
          */
         keyName?: pulumi.Input<string>;
         /**
@@ -23650,6 +23838,13 @@ export namespace container {
          * The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` (default) or `CLUSTER_SCOPE` or `VPC_SCOPE`.
          */
         clusterDnsScope?: pulumi.Input<string>;
+    }
+
+    export interface ClusterEnableK8sBetaApis {
+        /**
+         * Enabled Kubernetes Beta APIs. To list a Beta API resource, use the representation {group}/{version}/{resource}. The version must be a Beta version. Note that you cannot disable beta APIs that are already enabled on a cluster without recreating it. See the [Configure beta APIs](https://cloud.google.com/kubernetes-engine/docs/how-to/use-beta-apis#configure-beta-apis) for more information.
+         */
+        enabledApis: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface ClusterGatewayApiConfig {
@@ -23899,7 +24094,7 @@ export namespace container {
          */
         diskType?: pulumi.Input<string>;
         /**
-         * Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+         * ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
          *
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
@@ -23945,6 +24140,7 @@ export namespace container {
          * ```
          */
         gvnic?: pulumi.Input<inputs.container.ClusterNodeConfigGvnic>;
+        hostMaintenancePolicy?: pulumi.Input<inputs.container.ClusterNodeConfigHostMaintenancePolicy>;
         /**
          * The image type to use for this node. Note that changing the image type
          * will delete and recreate all nodes in the node pool.
@@ -24164,6 +24360,10 @@ export namespace container {
          * Whether or not the Google Virtual NIC (gVNIC) is enabled
          */
         enabled: pulumi.Input<boolean>;
+    }
+
+    export interface ClusterNodeConfigHostMaintenancePolicy {
+        maintenanceInterval: pulumi.Input<string>;
     }
 
     export interface ClusterNodeConfigKubeletConfig {
@@ -24509,7 +24709,7 @@ export namespace container {
          */
         diskType?: pulumi.Input<string>;
         /**
-         * Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+         * ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
          *
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
@@ -24555,6 +24755,7 @@ export namespace container {
          * ```
          */
         gvnic?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfigGvnic>;
+        hostMaintenancePolicy?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfigHostMaintenancePolicy>;
         /**
          * The image type to use for this node. Note that changing the image type
          * will delete and recreate all nodes in the node pool.
@@ -24776,6 +24977,10 @@ export namespace container {
         enabled: pulumi.Input<boolean>;
     }
 
+    export interface ClusterNodePoolNodeConfigHostMaintenancePolicy {
+        maintenanceInterval: pulumi.Input<string>;
+    }
+
     export interface ClusterNodePoolNodeConfigKubeletConfig {
         /**
          * If true, enables CPU CFS quota enforcement for
@@ -24915,6 +25120,7 @@ export namespace container {
     }
 
     export interface ClusterNodePoolPlacementPolicy {
+        policyName?: pulumi.Input<string>;
         tpuTopology?: pulumi.Input<string>;
         /**
          * Telemetry integration for the cluster. Supported values (`ENABLED, DISABLED, SYSTEM_ONLY`);
@@ -25303,6 +25509,7 @@ export namespace container {
         gcfsConfig?: pulumi.Input<inputs.container.NodePoolNodeConfigGcfsConfig>;
         guestAccelerators?: pulumi.Input<pulumi.Input<inputs.container.NodePoolNodeConfigGuestAccelerator>[]>;
         gvnic?: pulumi.Input<inputs.container.NodePoolNodeConfigGvnic>;
+        hostMaintenancePolicy?: pulumi.Input<inputs.container.NodePoolNodeConfigHostMaintenancePolicy>;
         imageType?: pulumi.Input<string>;
         kubeletConfig?: pulumi.Input<inputs.container.NodePoolNodeConfigKubeletConfig>;
         labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -25370,6 +25577,10 @@ export namespace container {
         enabled: pulumi.Input<boolean>;
     }
 
+    export interface NodePoolNodeConfigHostMaintenancePolicy {
+        maintenanceInterval: pulumi.Input<string>;
+    }
+
     export interface NodePoolNodeConfigKubeletConfig {
         cpuCfsQuota?: pulumi.Input<boolean>;
         cpuCfsQuotaPeriod?: pulumi.Input<string>;
@@ -25421,6 +25632,12 @@ export namespace container {
     }
 
     export interface NodePoolPlacementPolicy {
+        /**
+         * If set, refers to the name of a custom resource policy supplied by the user.
+         * The resource policy must be in the same project and region as the node pool.
+         * If not found, InvalidArgument error is returned.
+         */
+        policyName?: pulumi.Input<string>;
         /**
          * The [TPU placement topology](https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies) for pod slice node pool.
          */
@@ -37241,6 +37458,245 @@ export namespace endpoints {
     }
 }
 
+export namespace essentialcontacts {
+    export interface DocumentAiWarehouseDocumentSchemaPropertyDefinition {
+        /**
+         * Date time property. Not supported by CMEK compliant deployment.
+         */
+        dateTimeTypeOptions?: pulumi.Input<inputs.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptions>;
+        /**
+         * The display-name for the property, used for front-end.
+         */
+        displayName?: pulumi.Input<string>;
+        /**
+         * Enum/categorical property.
+         * Structure is documented below.
+         */
+        enumTypeOptions?: pulumi.Input<inputs.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptions>;
+        /**
+         * Float property.
+         */
+        floatTypeOptions?: pulumi.Input<inputs.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptions>;
+        /**
+         * Integer property.
+         */
+        integerTypeOptions?: pulumi.Input<inputs.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptions>;
+        /**
+         * Whether the property can be filtered. If this is a sub-property, all the parent properties must be marked filterable.
+         */
+        isFilterable?: pulumi.Input<boolean>;
+        /**
+         * Whether the property is user supplied metadata.
+         */
+        isMetadata?: pulumi.Input<boolean>;
+        /**
+         * Whether the property can have multiple values.
+         */
+        isRepeatable?: pulumi.Input<boolean>;
+        /**
+         * Whether the property is mandatory.
+         */
+        isRequired?: pulumi.Input<boolean>;
+        /**
+         * Indicates that the property should be included in a global search.
+         */
+        isSearchable?: pulumi.Input<boolean>;
+        /**
+         * Map property.
+         */
+        mapTypeOptions?: pulumi.Input<inputs.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptions>;
+        /**
+         * The name of the metadata property.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Nested structured data property.
+         * Structure is documented below.
+         */
+        propertyTypeOptions?: pulumi.Input<inputs.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptions>;
+        /**
+         * Stores the retrieval importance.
+         * Possible values are: `HIGHEST`, `HIGHER`, `HIGH`, `MEDIUM`, `LOW`, `LOWEST`.
+         */
+        retrievalImportance?: pulumi.Input<string>;
+        /**
+         * The schema source information.
+         * Structure is documented below.
+         */
+        schemaSources?: pulumi.Input<pulumi.Input<inputs.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSource>[]>;
+        /**
+         * Text property.
+         */
+        textTypeOptions?: pulumi.Input<inputs.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptions>;
+        /**
+         * Timestamp property. Not supported by CMEK compliant deployment.
+         */
+        timestampTypeOptions?: pulumi.Input<inputs.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptions>;
+    }
+
+    export interface DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptions {
+    }
+
+    export interface DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptions {
+        /**
+         * List of possible enum values.
+         */
+        possibleValues: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Make sure the enum property value provided in the document is in the possile value list during document creation. The validation check runs by default.
+         *
+         * - - -
+         */
+        validationCheckDisabled?: pulumi.Input<boolean>;
+    }
+
+    export interface DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptions {
+    }
+
+    export interface DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptions {
+    }
+
+    export interface DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptions {
+    }
+
+    export interface DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptions {
+        /**
+         * Defines the metadata for a schema property.
+         * Structure is documented below.
+         */
+        propertyDefinitions: pulumi.Input<pulumi.Input<inputs.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinition>[]>;
+    }
+
+    export interface DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinition {
+        /**
+         * Date time property. Not supported by CMEK compliant deployment.
+         */
+        dateTimeTypeOptions?: pulumi.Input<inputs.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptions>;
+        /**
+         * The display-name for the property, used for front-end.
+         */
+        displayName?: pulumi.Input<string>;
+        /**
+         * Enum/categorical property.
+         * Structure is documented below.
+         */
+        enumTypeOptions?: pulumi.Input<inputs.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptions>;
+        /**
+         * Float property.
+         */
+        floatTypeOptions?: pulumi.Input<inputs.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptions>;
+        /**
+         * Integer property.
+         */
+        integerTypeOptions?: pulumi.Input<inputs.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptions>;
+        /**
+         * Whether the property can be filtered. If this is a sub-property, all the parent properties must be marked filterable.
+         */
+        isFilterable?: pulumi.Input<boolean>;
+        /**
+         * Whether the property is user supplied metadata.
+         */
+        isMetadata?: pulumi.Input<boolean>;
+        /**
+         * Whether the property can have multiple values.
+         */
+        isRepeatable?: pulumi.Input<boolean>;
+        /**
+         * Whether the property is mandatory.
+         */
+        isRequired?: pulumi.Input<boolean>;
+        /**
+         * Indicates that the property should be included in a global search.
+         */
+        isSearchable?: pulumi.Input<boolean>;
+        /**
+         * Map property.
+         */
+        mapTypeOptions?: pulumi.Input<inputs.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptions>;
+        /**
+         * The name of the metadata property.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Stores the retrieval importance.
+         * Possible values are: `HIGHEST`, `HIGHER`, `HIGH`, `MEDIUM`, `LOW`, `LOWEST`.
+         */
+        retrievalImportance?: pulumi.Input<string>;
+        /**
+         * The schema source information.
+         * Structure is documented below.
+         */
+        schemaSources?: pulumi.Input<pulumi.Input<inputs.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSource>[]>;
+        /**
+         * Text property.
+         */
+        textTypeOptions?: pulumi.Input<inputs.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptions>;
+        /**
+         * Timestamp property. Not supported by CMEK compliant deployment.
+         */
+        timestampTypeOptions?: pulumi.Input<inputs.essentialcontacts.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptions>;
+    }
+
+    export interface DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptions {
+    }
+
+    export interface DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptions {
+        /**
+         * List of possible enum values.
+         */
+        possibleValues: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Make sure the enum property value provided in the document is in the possile value list during document creation. The validation check runs by default.
+         *
+         * - - -
+         */
+        validationCheckDisabled?: pulumi.Input<boolean>;
+    }
+
+    export interface DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptions {
+    }
+
+    export interface DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptions {
+    }
+
+    export interface DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptions {
+    }
+
+    export interface DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSource {
+        /**
+         * The schema name in the source.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The Doc AI processor type name.
+         */
+        processorType?: pulumi.Input<string>;
+    }
+
+    export interface DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptions {
+    }
+
+    export interface DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptions {
+    }
+
+    export interface DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSource {
+        /**
+         * The schema name in the source.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The Doc AI processor type name.
+         */
+        processorType?: pulumi.Input<string>;
+    }
+
+    export interface DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptions {
+    }
+
+    export interface DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptions {
+    }
+}
+
 export namespace eventarc {
     export interface TriggerDestination {
         /**
@@ -41105,6 +41561,73 @@ export namespace iap {
 }
 
 export namespace identityplatform {
+    export interface ConfigBlockingFunctions {
+        /**
+         * The user credentials to include in the JWT payload that is sent to the registered Blocking Functions.
+         * Structure is documented below.
+         */
+        forwardInboundCredentials?: pulumi.Input<inputs.identityplatform.ConfigBlockingFunctionsForwardInboundCredentials>;
+        /**
+         * Map of Trigger to event type. Key should be one of the supported event types: "beforeCreate", "beforeSignIn".
+         * Structure is documented below.
+         */
+        triggers: pulumi.Input<pulumi.Input<inputs.identityplatform.ConfigBlockingFunctionsTrigger>[]>;
+    }
+
+    export interface ConfigBlockingFunctionsForwardInboundCredentials {
+        /**
+         * Whether to pass the user's OAuth identity provider's access token.
+         */
+        accessToken?: pulumi.Input<boolean>;
+        /**
+         * Whether to pass the user's OIDC identity provider's ID token.
+         */
+        idToken?: pulumi.Input<boolean>;
+        /**
+         * Whether to pass the user's OAuth identity provider's refresh token.
+         */
+        refreshToken?: pulumi.Input<boolean>;
+    }
+
+    export interface ConfigBlockingFunctionsTrigger {
+        /**
+         * The identifier for this object. Format specified above.
+         */
+        eventType: pulumi.Input<string>;
+        /**
+         * HTTP URI trigger for the Cloud Function.
+         */
+        functionUri: pulumi.Input<string>;
+        /**
+         * (Output)
+         * When the trigger was changed.
+         */
+        updateTime?: pulumi.Input<string>;
+    }
+
+    export interface ConfigQuota {
+        /**
+         * Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP.
+         * Structure is documented below.
+         */
+        signUpQuotaConfig?: pulumi.Input<inputs.identityplatform.ConfigQuotaSignUpQuotaConfig>;
+    }
+
+    export interface ConfigQuotaSignUpQuotaConfig {
+        /**
+         * A sign up APIs quota that customers can override temporarily.
+         */
+        quota?: pulumi.Input<number>;
+        /**
+         * How long this quota will be active for. It is measurred in seconds, e.g., Example: "9.615s".
+         */
+        quotaDuration?: pulumi.Input<string>;
+        /**
+         * When this quota will take affect.
+         */
+        startTime?: pulumi.Input<string>;
+    }
+
     export interface InboundSamlConfigIdpConfig {
         /**
          * The IdP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
@@ -48438,6 +48961,12 @@ export namespace pubsub {
          */
         attributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
+         * When set, the payload to the push endpoint is not wrapped.Sets the
+         * `data` field as the HTTP body for delivery.
+         * Structure is documented below.
+         */
+        noWrapper?: pulumi.Input<inputs.pubsub.SubscriptionPushConfigNoWrapper>;
+        /**
          * If specified, Pub/Sub will generate and attach an OIDC JWT token as
          * an Authorization header in the HTTP request for every pushed message.
          * Structure is documented below.
@@ -48449,6 +48978,15 @@ export namespace pubsub {
          * "https://example.com/push".
          */
         pushEndpoint: pulumi.Input<string>;
+    }
+
+    export interface SubscriptionPushConfigNoWrapper {
+        /**
+         * When true, writes the Pub/Sub message metadata to
+         * `x-goog-pubsub-<KEY>:<VAL>` headers of the HTTP request. Writes the
+         * Pub/Sub message attributes to `<KEY>:<VAL>` headers of the HTTP request.
+         */
+        writeMetadata: pulumi.Input<boolean>;
     }
 
     export interface SubscriptionPushConfigOidcToken {
@@ -49287,7 +49825,7 @@ export namespace sql {
          */
         startTime?: pulumi.Input<string>;
         /**
-         * The number of days of transaction logs we retain for point in time restore, from 1-7.
+         * The number of days of transaction logs we retain for point in time restore, from 1-7. For PostgreSQL Enterprise Plus instances, the number of days of retained transaction logs can be set from 1 to 35.
          */
         transactionLogRetentionDays?: pulumi.Input<number>;
     }
@@ -50839,6 +51377,11 @@ export namespace workstations {
 
     export interface WorkstationConfigHostGceInstance {
         /**
+         * An accelerator card attached to the instance.
+         * Structure is documented below.
+         */
+        accelerators?: pulumi.Input<pulumi.Input<inputs.workstations.WorkstationConfigHostGceInstanceAccelerator>[]>;
+        /**
          * Size of the boot disk in GB.
          */
         bootDiskSizeGb?: pulumi.Input<number>;
@@ -50872,6 +51415,17 @@ export namespace workstations {
          * Network tags to add to the Compute Engine machines backing the Workstations.
          */
         tags?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface WorkstationConfigHostGceInstanceAccelerator {
+        /**
+         * Number of accelerator cards exposed to the instance.
+         */
+        count: pulumi.Input<number>;
+        /**
+         * Type of accelerator resource to attach to the instance, for example, "nvidia-tesla-p100".
+         */
+        type: pulumi.Input<string>;
     }
 
     export interface WorkstationConfigHostGceInstanceConfidentialInstanceConfig {

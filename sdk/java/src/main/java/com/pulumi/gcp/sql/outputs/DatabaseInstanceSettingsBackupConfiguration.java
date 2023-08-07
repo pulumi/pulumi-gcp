@@ -47,7 +47,7 @@ public final class DatabaseInstanceSettingsBackupConfiguration {
      */
     private @Nullable String startTime;
     /**
-     * @return The number of days of transaction logs we retain for point in time restore, from 1-7.
+     * @return The number of days of transaction logs we retain for point in time restore, from 1-7. For PostgreSQL Enterprise Plus instances, the number of days of retained transaction logs can be set from 1 to 35.
      * 
      */
     private @Nullable Integer transactionLogRetentionDays;
@@ -98,7 +98,7 @@ public final class DatabaseInstanceSettingsBackupConfiguration {
         return Optional.ofNullable(this.startTime);
     }
     /**
-     * @return The number of days of transaction logs we retain for point in time restore, from 1-7.
+     * @return The number of days of transaction logs we retain for point in time restore, from 1-7. For PostgreSQL Enterprise Plus instances, the number of days of retained transaction logs can be set from 1 to 35.
      * 
      */
     public Optional<Integer> transactionLogRetentionDays() {

@@ -153,8 +153,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.Network;
- * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
  * import com.pulumi.gcp.compute.GlobalAddress;
  * import com.pulumi.gcp.compute.GlobalAddressArgs;
  * import com.pulumi.gcp.servicenetworking.Connection;
@@ -188,19 +188,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var lookerNetwork = new Network(&#34;lookerNetwork&#34;, NetworkArgs.builder()        
- *             .autoCreateSubnetworks(false)
+ *         final var lookerNetwork = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
+ *             .name(&#34;looker-network&#34;)
  *             .build());
  * 
  *         var lookerRange = new GlobalAddress(&#34;lookerRange&#34;, GlobalAddressArgs.builder()        
  *             .purpose(&#34;VPC_PEERING&#34;)
  *             .addressType(&#34;INTERNAL&#34;)
  *             .prefixLength(20)
- *             .network(lookerNetwork.id())
+ *             .network(lookerNetwork.applyValue(getNetworkResult -&gt; getNetworkResult.id()))
  *             .build());
  * 
  *         var lookerVpcConnection = new Connection(&#34;lookerVpcConnection&#34;, ConnectionArgs.builder()        
- *             .network(lookerNetwork.id())
+ *             .network(lookerNetwork.applyValue(getNetworkResult -&gt; getNetworkResult.id()))
  *             .service(&#34;servicenetworking.googleapis.com&#34;)
  *             .reservedPeeringRanges(lookerRange.name())
  *             .build());
@@ -211,7 +211,7 @@ import javax.annotation.Nullable;
  *             .privateIpEnabled(true)
  *             .publicIpEnabled(false)
  *             .reservedRange(lookerRange.name())
- *             .consumerNetwork(lookerNetwork.id())
+ *             .consumerNetwork(lookerNetwork.applyValue(getNetworkResult -&gt; getNetworkResult.id()))
  *             .adminSettings(InstanceAdminSettingsArgs.builder()
  *                 .allowedEmailDomains(&#34;google.com&#34;)
  *                 .build())

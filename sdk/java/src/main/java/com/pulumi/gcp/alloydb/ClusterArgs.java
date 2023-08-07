@@ -6,6 +6,7 @@ package com.pulumi.gcp.alloydb;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.alloydb.inputs.ClusterAutomatedBackupPolicyArgs;
+import com.pulumi.gcp.alloydb.inputs.ClusterContinuousBackupConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterEncryptionConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterInitialUserArgs;
 import java.lang.String;
@@ -20,8 +21,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     public static final ClusterArgs Empty = new ClusterArgs();
 
     /**
-     * The automated backup policy for this cluster.
-     * If no policy is provided then the default policy will be used. The default policy takes one backup a day, has a backup window of 1 hour, and retains backups for 14 days.
+     * The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
      * Structure is documented below.
      * 
      */
@@ -29,8 +29,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<ClusterAutomatedBackupPolicyArgs> automatedBackupPolicy;
 
     /**
-     * @return The automated backup policy for this cluster.
-     * If no policy is provided then the default policy will be used. The default policy takes one backup a day, has a backup window of 1 hour, and retains backups for 14 days.
+     * @return The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
      * Structure is documented below.
      * 
      */
@@ -51,6 +50,25 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Output<String> clusterId() {
         return this.clusterId;
+    }
+
+    /**
+     * The continuous backup config for this cluster.
+     * If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="continuousBackupConfig")
+    private @Nullable Output<ClusterContinuousBackupConfigArgs> continuousBackupConfig;
+
+    /**
+     * @return The continuous backup config for this cluster.
+     * If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterContinuousBackupConfigArgs>> continuousBackupConfig() {
+        return Optional.ofNullable(this.continuousBackupConfig);
     }
 
     /**
@@ -175,6 +193,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     private ClusterArgs(ClusterArgs $) {
         this.automatedBackupPolicy = $.automatedBackupPolicy;
         this.clusterId = $.clusterId;
+        this.continuousBackupConfig = $.continuousBackupConfig;
         this.displayName = $.displayName;
         this.encryptionConfig = $.encryptionConfig;
         this.initialUser = $.initialUser;
@@ -203,8 +222,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param automatedBackupPolicy The automated backup policy for this cluster.
-         * If no policy is provided then the default policy will be used. The default policy takes one backup a day, has a backup window of 1 hour, and retains backups for 14 days.
+         * @param automatedBackupPolicy The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
          * Structure is documented below.
          * 
          * @return builder
@@ -216,8 +234,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param automatedBackupPolicy The automated backup policy for this cluster.
-         * If no policy is provided then the default policy will be used. The default policy takes one backup a day, has a backup window of 1 hour, and retains backups for 14 days.
+         * @param automatedBackupPolicy The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
          * Structure is documented below.
          * 
          * @return builder
@@ -246,6 +263,31 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder clusterId(String clusterId) {
             return clusterId(Output.of(clusterId));
+        }
+
+        /**
+         * @param continuousBackupConfig The continuous backup config for this cluster.
+         * If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder continuousBackupConfig(@Nullable Output<ClusterContinuousBackupConfigArgs> continuousBackupConfig) {
+            $.continuousBackupConfig = continuousBackupConfig;
+            return this;
+        }
+
+        /**
+         * @param continuousBackupConfig The continuous backup config for this cluster.
+         * If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder continuousBackupConfig(ClusterContinuousBackupConfigArgs continuousBackupConfig) {
+            return continuousBackupConfig(Output.of(continuousBackupConfig));
         }
 
         /**

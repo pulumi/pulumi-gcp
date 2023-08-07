@@ -56,6 +56,38 @@ namespace Pulumi.Gcp.IdentityPlatform
     ///     {
     ///         Project = defaultProject.ProjectId,
     ///         AutodeleteAnonymousUsers = true,
+    ///         BlockingFunctions = new Gcp.IdentityPlatform.Inputs.ConfigBlockingFunctionsArgs
+    ///         {
+    ///             Triggers = new[]
+    ///             {
+    ///                 new Gcp.IdentityPlatform.Inputs.ConfigBlockingFunctionsTriggerArgs
+    ///                 {
+    ///                     EventType = "beforeSignIn",
+    ///                     FunctionUri = "https://us-east1-my-project.cloudfunctions.net/before-sign-in",
+    ///                 },
+    ///             },
+    ///             ForwardInboundCredentials = new Gcp.IdentityPlatform.Inputs.ConfigBlockingFunctionsForwardInboundCredentialsArgs
+    ///             {
+    ///                 RefreshToken = true,
+    ///                 AccessToken = true,
+    ///                 IdToken = true,
+    ///             },
+    ///         },
+    ///         Quota = new Gcp.IdentityPlatform.Inputs.ConfigQuotaArgs
+    ///         {
+    ///             SignUpQuotaConfig = new Gcp.IdentityPlatform.Inputs.ConfigQuotaSignUpQuotaConfigArgs
+    ///             {
+    ///                 Quota = 1000,
+    ///                 StartTime = "",
+    ///                 QuotaDuration = "7200s",
+    ///             },
+    ///         },
+    ///         AuthorizedDomains = new[]
+    ///         {
+    ///             "localhost",
+    ///             "my-project.firebaseapp.com",
+    ///             "my-project.web.app",
+    ///         },
     ///     });
     /// 
     /// });
@@ -81,10 +113,23 @@ namespace Pulumi.Gcp.IdentityPlatform
     public partial class Config : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// List of domains authorized for OAuth redirects.
+        /// </summary>
+        [Output("authorizedDomains")]
+        public Output<ImmutableArray<string>> AuthorizedDomains { get; private set; } = null!;
+
+        /// <summary>
         /// Whether anonymous users will be auto-deleted after a period of 30 days
         /// </summary>
         [Output("autodeleteAnonymousUsers")]
         public Output<bool?> AutodeleteAnonymousUsers { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration related to blocking functions.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("blockingFunctions")]
+        public Output<Outputs.ConfigBlockingFunctions?> BlockingFunctions { get; private set; } = null!;
 
         /// <summary>
         /// The name of the Config resource
@@ -98,6 +143,13 @@ namespace Pulumi.Gcp.IdentityPlatform
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration related to quotas.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("quota")]
+        public Output<Outputs.ConfigQuota?> Quota { get; private set; } = null!;
 
 
         /// <summary>
@@ -145,6 +197,18 @@ namespace Pulumi.Gcp.IdentityPlatform
 
     public sealed class ConfigArgs : global::Pulumi.ResourceArgs
     {
+        [Input("authorizedDomains")]
+        private InputList<string>? _authorizedDomains;
+
+        /// <summary>
+        /// List of domains authorized for OAuth redirects.
+        /// </summary>
+        public InputList<string> AuthorizedDomains
+        {
+            get => _authorizedDomains ?? (_authorizedDomains = new InputList<string>());
+            set => _authorizedDomains = value;
+        }
+
         /// <summary>
         /// Whether anonymous users will be auto-deleted after a period of 30 days
         /// </summary>
@@ -152,11 +216,25 @@ namespace Pulumi.Gcp.IdentityPlatform
         public Input<bool>? AutodeleteAnonymousUsers { get; set; }
 
         /// <summary>
+        /// Configuration related to blocking functions.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("blockingFunctions")]
+        public Input<Inputs.ConfigBlockingFunctionsArgs>? BlockingFunctions { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Configuration related to quotas.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("quota")]
+        public Input<Inputs.ConfigQuotaArgs>? Quota { get; set; }
 
         public ConfigArgs()
         {
@@ -166,11 +244,30 @@ namespace Pulumi.Gcp.IdentityPlatform
 
     public sealed class ConfigState : global::Pulumi.ResourceArgs
     {
+        [Input("authorizedDomains")]
+        private InputList<string>? _authorizedDomains;
+
+        /// <summary>
+        /// List of domains authorized for OAuth redirects.
+        /// </summary>
+        public InputList<string> AuthorizedDomains
+        {
+            get => _authorizedDomains ?? (_authorizedDomains = new InputList<string>());
+            set => _authorizedDomains = value;
+        }
+
         /// <summary>
         /// Whether anonymous users will be auto-deleted after a period of 30 days
         /// </summary>
         [Input("autodeleteAnonymousUsers")]
         public Input<bool>? AutodeleteAnonymousUsers { get; set; }
+
+        /// <summary>
+        /// Configuration related to blocking functions.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("blockingFunctions")]
+        public Input<Inputs.ConfigBlockingFunctionsGetArgs>? BlockingFunctions { get; set; }
 
         /// <summary>
         /// The name of the Config resource
@@ -184,6 +281,13 @@ namespace Pulumi.Gcp.IdentityPlatform
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Configuration related to quotas.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("quota")]
+        public Input<Inputs.ConfigQuotaGetArgs>? Quota { get; set; }
 
         public ConfigState()
         {

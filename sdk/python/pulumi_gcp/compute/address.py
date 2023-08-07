@@ -17,6 +17,8 @@ class AddressArgs:
                  address: Optional[pulumi.Input[str]] = None,
                  address_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 ip_version: Optional[pulumi.Input[str]] = None,
+                 ipv6_endpoint_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -28,15 +30,20 @@ class AddressArgs:
                  subnetwork: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Address resource.
-        :param pulumi.Input[str] address: The static external IP address represented by this resource. Only
-               IPv4 is supported. An address may only be specified for INTERNAL
-               address types. The IP address must be inside the specified subnetwork,
+        :param pulumi.Input[str] address: The static external IP address represented by this resource.
+               The IP address must be inside the specified subnetwork,
                if any. Set by the API if undefined.
         :param pulumi.Input[str] address_type: The type of address to reserve.
                Note: if you set this argument's value as `INTERNAL` you need to leave the `network_tier` argument unset in that resource block.
                Default value is `EXTERNAL`.
                Possible values are: `INTERNAL`, `EXTERNAL`.
         :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[str] ip_version: The IP Version that will be used by this address. The default value is `IPV4`.
+               Possible values are: `IPV4`, `IPV6`.
+        :param pulumi.Input[str] ipv6_endpoint_type: The endpoint type of this address, which should be VM or NETLB. This is
+               used for deciding which type of endpoint this address can be used after
+               the external IPv6 address reservation.
+               Possible values are: `VM`, `NETLB`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this address.  A list of key->value pairs.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -84,6 +91,10 @@ class AddressArgs:
             pulumi.set(__self__, "address_type", address_type)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if ip_version is not None:
+            pulumi.set(__self__, "ip_version", ip_version)
+        if ipv6_endpoint_type is not None:
+            pulumi.set(__self__, "ipv6_endpoint_type", ipv6_endpoint_type)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -107,9 +118,8 @@ class AddressArgs:
     @pulumi.getter
     def address(self) -> Optional[pulumi.Input[str]]:
         """
-        The static external IP address represented by this resource. Only
-        IPv4 is supported. An address may only be specified for INTERNAL
-        address types. The IP address must be inside the specified subnetwork,
+        The static external IP address represented by this resource.
+        The IP address must be inside the specified subnetwork,
         if any. Set by the API if undefined.
         """
         return pulumi.get(self, "address")
@@ -144,6 +154,34 @@ class AddressArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="ipVersion")
+    def ip_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP Version that will be used by this address. The default value is `IPV4`.
+        Possible values are: `IPV4`, `IPV6`.
+        """
+        return pulumi.get(self, "ip_version")
+
+    @ip_version.setter
+    def ip_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_version", value)
+
+    @property
+    @pulumi.getter(name="ipv6EndpointType")
+    def ipv6_endpoint_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The endpoint type of this address, which should be VM or NETLB. This is
+        used for deciding which type of endpoint this address can be used after
+        the external IPv6 address reservation.
+        Possible values are: `VM`, `NETLB`.
+        """
+        return pulumi.get(self, "ipv6_endpoint_type")
+
+    @ipv6_endpoint_type.setter
+    def ipv6_endpoint_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv6_endpoint_type", value)
 
     @property
     @pulumi.getter
@@ -292,6 +330,8 @@ class _AddressState:
                  address_type: Optional[pulumi.Input[str]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 ip_version: Optional[pulumi.Input[str]] = None,
+                 ipv6_endpoint_type: Optional[pulumi.Input[str]] = None,
                  label_fingerprint: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -306,9 +346,8 @@ class _AddressState:
                  users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Address resources.
-        :param pulumi.Input[str] address: The static external IP address represented by this resource. Only
-               IPv4 is supported. An address may only be specified for INTERNAL
-               address types. The IP address must be inside the specified subnetwork,
+        :param pulumi.Input[str] address: The static external IP address represented by this resource.
+               The IP address must be inside the specified subnetwork,
                if any. Set by the API if undefined.
         :param pulumi.Input[str] address_type: The type of address to reserve.
                Note: if you set this argument's value as `INTERNAL` you need to leave the `network_tier` argument unset in that resource block.
@@ -316,6 +355,12 @@ class _AddressState:
                Possible values are: `INTERNAL`, `EXTERNAL`.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[str] ip_version: The IP Version that will be used by this address. The default value is `IPV4`.
+               Possible values are: `IPV4`, `IPV6`.
+        :param pulumi.Input[str] ipv6_endpoint_type: The endpoint type of this address, which should be VM or NETLB. This is
+               used for deciding which type of endpoint this address can be used after
+               the external IPv6 address reservation.
+               Possible values are: `VM`, `NETLB`.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this address.  A list of key->value pairs.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and
@@ -368,6 +413,10 @@ class _AddressState:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if ip_version is not None:
+            pulumi.set(__self__, "ip_version", ip_version)
+        if ipv6_endpoint_type is not None:
+            pulumi.set(__self__, "ipv6_endpoint_type", ipv6_endpoint_type)
         if label_fingerprint is not None:
             pulumi.set(__self__, "label_fingerprint", label_fingerprint)
         if labels is not None:
@@ -397,9 +446,8 @@ class _AddressState:
     @pulumi.getter
     def address(self) -> Optional[pulumi.Input[str]]:
         """
-        The static external IP address represented by this resource. Only
-        IPv4 is supported. An address may only be specified for INTERNAL
-        address types. The IP address must be inside the specified subnetwork,
+        The static external IP address represented by this resource.
+        The IP address must be inside the specified subnetwork,
         if any. Set by the API if undefined.
         """
         return pulumi.get(self, "address")
@@ -446,6 +494,34 @@ class _AddressState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="ipVersion")
+    def ip_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP Version that will be used by this address. The default value is `IPV4`.
+        Possible values are: `IPV4`, `IPV6`.
+        """
+        return pulumi.get(self, "ip_version")
+
+    @ip_version.setter
+    def ip_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_version", value)
+
+    @property
+    @pulumi.getter(name="ipv6EndpointType")
+    def ipv6_endpoint_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The endpoint type of this address, which should be VM or NETLB. This is
+        used for deciding which type of endpoint this address can be used after
+        the external IPv6 address reservation.
+        Possible values are: `VM`, `NETLB`.
+        """
+        return pulumi.get(self, "ipv6_endpoint_type")
+
+    @ipv6_endpoint_type.setter
+    def ipv6_endpoint_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv6_endpoint_type", value)
 
     @property
     @pulumi.getter(name="labelFingerprint")
@@ -631,6 +707,8 @@ class Address(pulumi.CustomResource):
                  address: Optional[pulumi.Input[str]] = None,
                  address_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 ip_version: Optional[pulumi.Input[str]] = None,
+                 ipv6_endpoint_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -760,15 +838,20 @@ class Address(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] address: The static external IP address represented by this resource. Only
-               IPv4 is supported. An address may only be specified for INTERNAL
-               address types. The IP address must be inside the specified subnetwork,
+        :param pulumi.Input[str] address: The static external IP address represented by this resource.
+               The IP address must be inside the specified subnetwork,
                if any. Set by the API if undefined.
         :param pulumi.Input[str] address_type: The type of address to reserve.
                Note: if you set this argument's value as `INTERNAL` you need to leave the `network_tier` argument unset in that resource block.
                Default value is `EXTERNAL`.
                Possible values are: `INTERNAL`, `EXTERNAL`.
         :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[str] ip_version: The IP Version that will be used by this address. The default value is `IPV4`.
+               Possible values are: `IPV4`, `IPV6`.
+        :param pulumi.Input[str] ipv6_endpoint_type: The endpoint type of this address, which should be VM or NETLB. This is
+               used for deciding which type of endpoint this address can be used after
+               the external IPv6 address reservation.
+               Possible values are: `VM`, `NETLB`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this address.  A list of key->value pairs.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and
                comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -951,6 +1034,8 @@ class Address(pulumi.CustomResource):
                  address: Optional[pulumi.Input[str]] = None,
                  address_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 ip_version: Optional[pulumi.Input[str]] = None,
+                 ipv6_endpoint_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -972,6 +1057,8 @@ class Address(pulumi.CustomResource):
             __props__.__dict__["address"] = address
             __props__.__dict__["address_type"] = address_type
             __props__.__dict__["description"] = description
+            __props__.__dict__["ip_version"] = ip_version
+            __props__.__dict__["ipv6_endpoint_type"] = ipv6_endpoint_type
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
@@ -999,6 +1086,8 @@ class Address(pulumi.CustomResource):
             address_type: Optional[pulumi.Input[str]] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            ip_version: Optional[pulumi.Input[str]] = None,
+            ipv6_endpoint_type: Optional[pulumi.Input[str]] = None,
             label_fingerprint: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -1018,9 +1107,8 @@ class Address(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] address: The static external IP address represented by this resource. Only
-               IPv4 is supported. An address may only be specified for INTERNAL
-               address types. The IP address must be inside the specified subnetwork,
+        :param pulumi.Input[str] address: The static external IP address represented by this resource.
+               The IP address must be inside the specified subnetwork,
                if any. Set by the API if undefined.
         :param pulumi.Input[str] address_type: The type of address to reserve.
                Note: if you set this argument's value as `INTERNAL` you need to leave the `network_tier` argument unset in that resource block.
@@ -1028,6 +1116,12 @@ class Address(pulumi.CustomResource):
                Possible values are: `INTERNAL`, `EXTERNAL`.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[str] ip_version: The IP Version that will be used by this address. The default value is `IPV4`.
+               Possible values are: `IPV4`, `IPV6`.
+        :param pulumi.Input[str] ipv6_endpoint_type: The endpoint type of this address, which should be VM or NETLB. This is
+               used for deciding which type of endpoint this address can be used after
+               the external IPv6 address reservation.
+               Possible values are: `VM`, `NETLB`.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this address.  A list of key->value pairs.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and
@@ -1080,6 +1174,8 @@ class Address(pulumi.CustomResource):
         __props__.__dict__["address_type"] = address_type
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["description"] = description
+        __props__.__dict__["ip_version"] = ip_version
+        __props__.__dict__["ipv6_endpoint_type"] = ipv6_endpoint_type
         __props__.__dict__["label_fingerprint"] = label_fingerprint
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
@@ -1098,9 +1194,8 @@ class Address(pulumi.CustomResource):
     @pulumi.getter
     def address(self) -> pulumi.Output[str]:
         """
-        The static external IP address represented by this resource. Only
-        IPv4 is supported. An address may only be specified for INTERNAL
-        address types. The IP address must be inside the specified subnetwork,
+        The static external IP address represented by this resource.
+        The IP address must be inside the specified subnetwork,
         if any. Set by the API if undefined.
         """
         return pulumi.get(self, "address")
@@ -1131,6 +1226,26 @@ class Address(pulumi.CustomResource):
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="ipVersion")
+    def ip_version(self) -> pulumi.Output[Optional[str]]:
+        """
+        The IP Version that will be used by this address. The default value is `IPV4`.
+        Possible values are: `IPV4`, `IPV6`.
+        """
+        return pulumi.get(self, "ip_version")
+
+    @property
+    @pulumi.getter(name="ipv6EndpointType")
+    def ipv6_endpoint_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        The endpoint type of this address, which should be VM or NETLB. This is
+        used for deciding which type of endpoint this address can be used after
+        the external IPv6 address reservation.
+        Possible values are: `VM`, `NETLB`.
+        """
+        return pulumi.get(self, "ipv6_endpoint_type")
 
     @property
     @pulumi.getter(name="labelFingerprint")
@@ -1187,7 +1302,7 @@ class Address(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="prefixLength")
-    def prefix_length(self) -> pulumi.Output[Optional[int]]:
+    def prefix_length(self) -> pulumi.Output[int]:
         """
         The prefix length if the resource represents an IP range.
         """

@@ -12,6 +12,19 @@ namespace Pulumi.Gcp.Workstations.Inputs
 
     public sealed class WorkstationConfigHostGceInstanceArgs : global::Pulumi.ResourceArgs
     {
+        [Input("accelerators")]
+        private InputList<Inputs.WorkstationConfigHostGceInstanceAcceleratorArgs>? _accelerators;
+
+        /// <summary>
+        /// An accelerator card attached to the instance.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.WorkstationConfigHostGceInstanceAcceleratorArgs> Accelerators
+        {
+            get => _accelerators ?? (_accelerators = new InputList<Inputs.WorkstationConfigHostGceInstanceAcceleratorArgs>());
+            set => _accelerators = value;
+        }
+
         /// <summary>
         /// Size of the boot disk in GB.
         /// </summary>

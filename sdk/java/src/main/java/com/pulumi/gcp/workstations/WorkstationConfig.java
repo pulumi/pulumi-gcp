@@ -442,6 +442,84 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Workstation Config Accelerators
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.workstations.WorkstationCluster;
+ * import com.pulumi.gcp.workstations.WorkstationClusterArgs;
+ * import com.pulumi.gcp.workstations.WorkstationConfig;
+ * import com.pulumi.gcp.workstations.WorkstationConfigArgs;
+ * import com.pulumi.gcp.workstations.inputs.WorkstationConfigHostArgs;
+ * import com.pulumi.gcp.workstations.inputs.WorkstationConfigHostGceInstanceArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .autoCreateSubnetworks(false)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
+ *             .ipCidrRange(&#34;10.0.0.0/24&#34;)
+ *             .region(&#34;us-central1&#34;)
+ *             .network(defaultNetwork.name())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var defaultWorkstationCluster = new WorkstationCluster(&#34;defaultWorkstationCluster&#34;, WorkstationClusterArgs.builder()        
+ *             .workstationClusterId(&#34;workstation-cluster&#34;)
+ *             .network(defaultNetwork.id())
+ *             .subnetwork(defaultSubnetwork.id())
+ *             .location(&#34;us-central1&#34;)
+ *             .labels(Map.of(&#34;label&#34;, &#34;key&#34;))
+ *             .annotations(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var defaultWorkstationConfig = new WorkstationConfig(&#34;defaultWorkstationConfig&#34;, WorkstationConfigArgs.builder()        
+ *             .workstationConfigId(&#34;workstation-config&#34;)
+ *             .workstationClusterId(defaultWorkstationCluster.workstationClusterId())
+ *             .location(&#34;us-central1&#34;)
+ *             .host(WorkstationConfigHostArgs.builder()
+ *                 .gceInstance(WorkstationConfigHostGceInstanceArgs.builder()
+ *                     .machineType(&#34;n1-standard-2&#34;)
+ *                     .bootDiskSizeGb(35)
+ *                     .disablePublicIpAddresses(true)
+ *                     .accelerators(WorkstationConfigHostGceInstanceAcceleratorArgs.builder()
+ *                         .type(&#34;nvidia-tesla-p100&#34;)
+ *                         .count(&#34;1&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
  * ### Workstation Config Encryption Key
  * ```java
  * package generated_program;

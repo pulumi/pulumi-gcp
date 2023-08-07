@@ -400,6 +400,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> documentAiCustomEndpoint() {
         return Codegen.optional(this.documentAiCustomEndpoint);
     }
+    @Export(name="documentAiWarehouseCustomEndpoint", type=String.class, parameters={})
+    private Output</* @Nullable */ String> documentAiWarehouseCustomEndpoint;
+
+    public Output<Optional<String>> documentAiWarehouseCustomEndpoint() {
+        return Codegen.optional(this.documentAiWarehouseCustomEndpoint);
+    }
     @Export(name="essentialContactsCustomEndpoint", type=String.class, parameters={})
     private Output</* @Nullable */ String> essentialContactsCustomEndpoint;
 

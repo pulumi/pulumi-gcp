@@ -44,6 +44,9 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("gvnic")]
         public Input<Inputs.NodePoolNodeConfigGvnicGetArgs>? Gvnic { get; set; }
 
+        [Input("hostMaintenancePolicy")]
+        public Input<Inputs.NodePoolNodeConfigHostMaintenancePolicyGetArgs>? HostMaintenancePolicy { get; set; }
+
         [Input("imageType")]
         public Input<string>? ImageType { get; set; }
 

@@ -1366,6 +1366,581 @@ func (o ClusterBackupSourceArrayOutput) Index(i pulumi.IntInput) ClusterBackupSo
 	}).(ClusterBackupSourceOutput)
 }
 
+type ClusterContinuousBackupConfig struct {
+	// Whether continuous backup recovery is enabled. If not set, defaults to true.
+	Enabled *bool `pulumi:"enabled"`
+	// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+	// Structure is documented below.
+	EncryptionConfig *ClusterContinuousBackupConfigEncryptionConfig `pulumi:"encryptionConfig"`
+	// The numbers of days that are eligible to restore from using PITR. To support the entire recovery window, backups and logs are retained for one day more than the recovery window.
+	// If not set, defaults to 14 days.
+	RecoveryWindowDays *int `pulumi:"recoveryWindowDays"`
+}
+
+// ClusterContinuousBackupConfigInput is an input type that accepts ClusterContinuousBackupConfigArgs and ClusterContinuousBackupConfigOutput values.
+// You can construct a concrete instance of `ClusterContinuousBackupConfigInput` via:
+//
+//	ClusterContinuousBackupConfigArgs{...}
+type ClusterContinuousBackupConfigInput interface {
+	pulumi.Input
+
+	ToClusterContinuousBackupConfigOutput() ClusterContinuousBackupConfigOutput
+	ToClusterContinuousBackupConfigOutputWithContext(context.Context) ClusterContinuousBackupConfigOutput
+}
+
+type ClusterContinuousBackupConfigArgs struct {
+	// Whether continuous backup recovery is enabled. If not set, defaults to true.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+	// Structure is documented below.
+	EncryptionConfig ClusterContinuousBackupConfigEncryptionConfigPtrInput `pulumi:"encryptionConfig"`
+	// The numbers of days that are eligible to restore from using PITR. To support the entire recovery window, backups and logs are retained for one day more than the recovery window.
+	// If not set, defaults to 14 days.
+	RecoveryWindowDays pulumi.IntPtrInput `pulumi:"recoveryWindowDays"`
+}
+
+func (ClusterContinuousBackupConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterContinuousBackupConfig)(nil)).Elem()
+}
+
+func (i ClusterContinuousBackupConfigArgs) ToClusterContinuousBackupConfigOutput() ClusterContinuousBackupConfigOutput {
+	return i.ToClusterContinuousBackupConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterContinuousBackupConfigArgs) ToClusterContinuousBackupConfigOutputWithContext(ctx context.Context) ClusterContinuousBackupConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterContinuousBackupConfigOutput)
+}
+
+func (i ClusterContinuousBackupConfigArgs) ToClusterContinuousBackupConfigPtrOutput() ClusterContinuousBackupConfigPtrOutput {
+	return i.ToClusterContinuousBackupConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterContinuousBackupConfigArgs) ToClusterContinuousBackupConfigPtrOutputWithContext(ctx context.Context) ClusterContinuousBackupConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterContinuousBackupConfigOutput).ToClusterContinuousBackupConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterContinuousBackupConfigPtrInput is an input type that accepts ClusterContinuousBackupConfigArgs, ClusterContinuousBackupConfigPtr and ClusterContinuousBackupConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterContinuousBackupConfigPtrInput` via:
+//
+//	        ClusterContinuousBackupConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterContinuousBackupConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterContinuousBackupConfigPtrOutput() ClusterContinuousBackupConfigPtrOutput
+	ToClusterContinuousBackupConfigPtrOutputWithContext(context.Context) ClusterContinuousBackupConfigPtrOutput
+}
+
+type clusterContinuousBackupConfigPtrType ClusterContinuousBackupConfigArgs
+
+func ClusterContinuousBackupConfigPtr(v *ClusterContinuousBackupConfigArgs) ClusterContinuousBackupConfigPtrInput {
+	return (*clusterContinuousBackupConfigPtrType)(v)
+}
+
+func (*clusterContinuousBackupConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterContinuousBackupConfig)(nil)).Elem()
+}
+
+func (i *clusterContinuousBackupConfigPtrType) ToClusterContinuousBackupConfigPtrOutput() ClusterContinuousBackupConfigPtrOutput {
+	return i.ToClusterContinuousBackupConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterContinuousBackupConfigPtrType) ToClusterContinuousBackupConfigPtrOutputWithContext(ctx context.Context) ClusterContinuousBackupConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterContinuousBackupConfigPtrOutput)
+}
+
+type ClusterContinuousBackupConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterContinuousBackupConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterContinuousBackupConfig)(nil)).Elem()
+}
+
+func (o ClusterContinuousBackupConfigOutput) ToClusterContinuousBackupConfigOutput() ClusterContinuousBackupConfigOutput {
+	return o
+}
+
+func (o ClusterContinuousBackupConfigOutput) ToClusterContinuousBackupConfigOutputWithContext(ctx context.Context) ClusterContinuousBackupConfigOutput {
+	return o
+}
+
+func (o ClusterContinuousBackupConfigOutput) ToClusterContinuousBackupConfigPtrOutput() ClusterContinuousBackupConfigPtrOutput {
+	return o.ToClusterContinuousBackupConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterContinuousBackupConfigOutput) ToClusterContinuousBackupConfigPtrOutputWithContext(ctx context.Context) ClusterContinuousBackupConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterContinuousBackupConfig) *ClusterContinuousBackupConfig {
+		return &v
+	}).(ClusterContinuousBackupConfigPtrOutput)
+}
+
+// Whether continuous backup recovery is enabled. If not set, defaults to true.
+func (o ClusterContinuousBackupConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterContinuousBackupConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+// Structure is documented below.
+func (o ClusterContinuousBackupConfigOutput) EncryptionConfig() ClusterContinuousBackupConfigEncryptionConfigPtrOutput {
+	return o.ApplyT(func(v ClusterContinuousBackupConfig) *ClusterContinuousBackupConfigEncryptionConfig {
+		return v.EncryptionConfig
+	}).(ClusterContinuousBackupConfigEncryptionConfigPtrOutput)
+}
+
+// The numbers of days that are eligible to restore from using PITR. To support the entire recovery window, backups and logs are retained for one day more than the recovery window.
+// If not set, defaults to 14 days.
+func (o ClusterContinuousBackupConfigOutput) RecoveryWindowDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterContinuousBackupConfig) *int { return v.RecoveryWindowDays }).(pulumi.IntPtrOutput)
+}
+
+type ClusterContinuousBackupConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterContinuousBackupConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterContinuousBackupConfig)(nil)).Elem()
+}
+
+func (o ClusterContinuousBackupConfigPtrOutput) ToClusterContinuousBackupConfigPtrOutput() ClusterContinuousBackupConfigPtrOutput {
+	return o
+}
+
+func (o ClusterContinuousBackupConfigPtrOutput) ToClusterContinuousBackupConfigPtrOutputWithContext(ctx context.Context) ClusterContinuousBackupConfigPtrOutput {
+	return o
+}
+
+func (o ClusterContinuousBackupConfigPtrOutput) Elem() ClusterContinuousBackupConfigOutput {
+	return o.ApplyT(func(v *ClusterContinuousBackupConfig) ClusterContinuousBackupConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterContinuousBackupConfig
+		return ret
+	}).(ClusterContinuousBackupConfigOutput)
+}
+
+// Whether continuous backup recovery is enabled. If not set, defaults to true.
+func (o ClusterContinuousBackupConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterContinuousBackupConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+// Structure is documented below.
+func (o ClusterContinuousBackupConfigPtrOutput) EncryptionConfig() ClusterContinuousBackupConfigEncryptionConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterContinuousBackupConfig) *ClusterContinuousBackupConfigEncryptionConfig {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptionConfig
+	}).(ClusterContinuousBackupConfigEncryptionConfigPtrOutput)
+}
+
+// The numbers of days that are eligible to restore from using PITR. To support the entire recovery window, backups and logs are retained for one day more than the recovery window.
+// If not set, defaults to 14 days.
+func (o ClusterContinuousBackupConfigPtrOutput) RecoveryWindowDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterContinuousBackupConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RecoveryWindowDays
+	}).(pulumi.IntPtrOutput)
+}
+
+type ClusterContinuousBackupConfigEncryptionConfig struct {
+	// The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+	KmsKeyName *string `pulumi:"kmsKeyName"`
+}
+
+// ClusterContinuousBackupConfigEncryptionConfigInput is an input type that accepts ClusterContinuousBackupConfigEncryptionConfigArgs and ClusterContinuousBackupConfigEncryptionConfigOutput values.
+// You can construct a concrete instance of `ClusterContinuousBackupConfigEncryptionConfigInput` via:
+//
+//	ClusterContinuousBackupConfigEncryptionConfigArgs{...}
+type ClusterContinuousBackupConfigEncryptionConfigInput interface {
+	pulumi.Input
+
+	ToClusterContinuousBackupConfigEncryptionConfigOutput() ClusterContinuousBackupConfigEncryptionConfigOutput
+	ToClusterContinuousBackupConfigEncryptionConfigOutputWithContext(context.Context) ClusterContinuousBackupConfigEncryptionConfigOutput
+}
+
+type ClusterContinuousBackupConfigEncryptionConfigArgs struct {
+	// The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
+}
+
+func (ClusterContinuousBackupConfigEncryptionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterContinuousBackupConfigEncryptionConfig)(nil)).Elem()
+}
+
+func (i ClusterContinuousBackupConfigEncryptionConfigArgs) ToClusterContinuousBackupConfigEncryptionConfigOutput() ClusterContinuousBackupConfigEncryptionConfigOutput {
+	return i.ToClusterContinuousBackupConfigEncryptionConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterContinuousBackupConfigEncryptionConfigArgs) ToClusterContinuousBackupConfigEncryptionConfigOutputWithContext(ctx context.Context) ClusterContinuousBackupConfigEncryptionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterContinuousBackupConfigEncryptionConfigOutput)
+}
+
+func (i ClusterContinuousBackupConfigEncryptionConfigArgs) ToClusterContinuousBackupConfigEncryptionConfigPtrOutput() ClusterContinuousBackupConfigEncryptionConfigPtrOutput {
+	return i.ToClusterContinuousBackupConfigEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterContinuousBackupConfigEncryptionConfigArgs) ToClusterContinuousBackupConfigEncryptionConfigPtrOutputWithContext(ctx context.Context) ClusterContinuousBackupConfigEncryptionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterContinuousBackupConfigEncryptionConfigOutput).ToClusterContinuousBackupConfigEncryptionConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterContinuousBackupConfigEncryptionConfigPtrInput is an input type that accepts ClusterContinuousBackupConfigEncryptionConfigArgs, ClusterContinuousBackupConfigEncryptionConfigPtr and ClusterContinuousBackupConfigEncryptionConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterContinuousBackupConfigEncryptionConfigPtrInput` via:
+//
+//	        ClusterContinuousBackupConfigEncryptionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterContinuousBackupConfigEncryptionConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterContinuousBackupConfigEncryptionConfigPtrOutput() ClusterContinuousBackupConfigEncryptionConfigPtrOutput
+	ToClusterContinuousBackupConfigEncryptionConfigPtrOutputWithContext(context.Context) ClusterContinuousBackupConfigEncryptionConfigPtrOutput
+}
+
+type clusterContinuousBackupConfigEncryptionConfigPtrType ClusterContinuousBackupConfigEncryptionConfigArgs
+
+func ClusterContinuousBackupConfigEncryptionConfigPtr(v *ClusterContinuousBackupConfigEncryptionConfigArgs) ClusterContinuousBackupConfigEncryptionConfigPtrInput {
+	return (*clusterContinuousBackupConfigEncryptionConfigPtrType)(v)
+}
+
+func (*clusterContinuousBackupConfigEncryptionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterContinuousBackupConfigEncryptionConfig)(nil)).Elem()
+}
+
+func (i *clusterContinuousBackupConfigEncryptionConfigPtrType) ToClusterContinuousBackupConfigEncryptionConfigPtrOutput() ClusterContinuousBackupConfigEncryptionConfigPtrOutput {
+	return i.ToClusterContinuousBackupConfigEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterContinuousBackupConfigEncryptionConfigPtrType) ToClusterContinuousBackupConfigEncryptionConfigPtrOutputWithContext(ctx context.Context) ClusterContinuousBackupConfigEncryptionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterContinuousBackupConfigEncryptionConfigPtrOutput)
+}
+
+type ClusterContinuousBackupConfigEncryptionConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterContinuousBackupConfigEncryptionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterContinuousBackupConfigEncryptionConfig)(nil)).Elem()
+}
+
+func (o ClusterContinuousBackupConfigEncryptionConfigOutput) ToClusterContinuousBackupConfigEncryptionConfigOutput() ClusterContinuousBackupConfigEncryptionConfigOutput {
+	return o
+}
+
+func (o ClusterContinuousBackupConfigEncryptionConfigOutput) ToClusterContinuousBackupConfigEncryptionConfigOutputWithContext(ctx context.Context) ClusterContinuousBackupConfigEncryptionConfigOutput {
+	return o
+}
+
+func (o ClusterContinuousBackupConfigEncryptionConfigOutput) ToClusterContinuousBackupConfigEncryptionConfigPtrOutput() ClusterContinuousBackupConfigEncryptionConfigPtrOutput {
+	return o.ToClusterContinuousBackupConfigEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterContinuousBackupConfigEncryptionConfigOutput) ToClusterContinuousBackupConfigEncryptionConfigPtrOutputWithContext(ctx context.Context) ClusterContinuousBackupConfigEncryptionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterContinuousBackupConfigEncryptionConfig) *ClusterContinuousBackupConfigEncryptionConfig {
+		return &v
+	}).(ClusterContinuousBackupConfigEncryptionConfigPtrOutput)
+}
+
+// The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+func (o ClusterContinuousBackupConfigEncryptionConfigOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterContinuousBackupConfigEncryptionConfig) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
+}
+
+type ClusterContinuousBackupConfigEncryptionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterContinuousBackupConfigEncryptionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterContinuousBackupConfigEncryptionConfig)(nil)).Elem()
+}
+
+func (o ClusterContinuousBackupConfigEncryptionConfigPtrOutput) ToClusterContinuousBackupConfigEncryptionConfigPtrOutput() ClusterContinuousBackupConfigEncryptionConfigPtrOutput {
+	return o
+}
+
+func (o ClusterContinuousBackupConfigEncryptionConfigPtrOutput) ToClusterContinuousBackupConfigEncryptionConfigPtrOutputWithContext(ctx context.Context) ClusterContinuousBackupConfigEncryptionConfigPtrOutput {
+	return o
+}
+
+func (o ClusterContinuousBackupConfigEncryptionConfigPtrOutput) Elem() ClusterContinuousBackupConfigEncryptionConfigOutput {
+	return o.ApplyT(func(v *ClusterContinuousBackupConfigEncryptionConfig) ClusterContinuousBackupConfigEncryptionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterContinuousBackupConfigEncryptionConfig
+		return ret
+	}).(ClusterContinuousBackupConfigEncryptionConfigOutput)
+}
+
+// The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+func (o ClusterContinuousBackupConfigEncryptionConfigPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterContinuousBackupConfigEncryptionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterContinuousBackupInfo struct {
+	// (Output)
+	// The earliest restorable time that can be restored to. Output only field.
+	EarliestRestorableTime *string `pulumi:"earliestRestorableTime"`
+	// (Output)
+	// When ContinuousBackup was most recently enabled. Set to null if ContinuousBackup is not enabled.
+	EnabledTime *string `pulumi:"enabledTime"`
+	// (Output)
+	// Output only. The encryption information for the WALs and backups required for ContinuousBackup.
+	// Structure is documented below.
+	EncryptionInfos []ClusterContinuousBackupInfoEncryptionInfo `pulumi:"encryptionInfos"`
+	// (Output)
+	// Days of the week on which a continuous backup is taken. Output only field. Ignored if passed into the request.
+	Schedules []string `pulumi:"schedules"`
+}
+
+// ClusterContinuousBackupInfoInput is an input type that accepts ClusterContinuousBackupInfoArgs and ClusterContinuousBackupInfoOutput values.
+// You can construct a concrete instance of `ClusterContinuousBackupInfoInput` via:
+//
+//	ClusterContinuousBackupInfoArgs{...}
+type ClusterContinuousBackupInfoInput interface {
+	pulumi.Input
+
+	ToClusterContinuousBackupInfoOutput() ClusterContinuousBackupInfoOutput
+	ToClusterContinuousBackupInfoOutputWithContext(context.Context) ClusterContinuousBackupInfoOutput
+}
+
+type ClusterContinuousBackupInfoArgs struct {
+	// (Output)
+	// The earliest restorable time that can be restored to. Output only field.
+	EarliestRestorableTime pulumi.StringPtrInput `pulumi:"earliestRestorableTime"`
+	// (Output)
+	// When ContinuousBackup was most recently enabled. Set to null if ContinuousBackup is not enabled.
+	EnabledTime pulumi.StringPtrInput `pulumi:"enabledTime"`
+	// (Output)
+	// Output only. The encryption information for the WALs and backups required for ContinuousBackup.
+	// Structure is documented below.
+	EncryptionInfos ClusterContinuousBackupInfoEncryptionInfoArrayInput `pulumi:"encryptionInfos"`
+	// (Output)
+	// Days of the week on which a continuous backup is taken. Output only field. Ignored if passed into the request.
+	Schedules pulumi.StringArrayInput `pulumi:"schedules"`
+}
+
+func (ClusterContinuousBackupInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterContinuousBackupInfo)(nil)).Elem()
+}
+
+func (i ClusterContinuousBackupInfoArgs) ToClusterContinuousBackupInfoOutput() ClusterContinuousBackupInfoOutput {
+	return i.ToClusterContinuousBackupInfoOutputWithContext(context.Background())
+}
+
+func (i ClusterContinuousBackupInfoArgs) ToClusterContinuousBackupInfoOutputWithContext(ctx context.Context) ClusterContinuousBackupInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterContinuousBackupInfoOutput)
+}
+
+// ClusterContinuousBackupInfoArrayInput is an input type that accepts ClusterContinuousBackupInfoArray and ClusterContinuousBackupInfoArrayOutput values.
+// You can construct a concrete instance of `ClusterContinuousBackupInfoArrayInput` via:
+//
+//	ClusterContinuousBackupInfoArray{ ClusterContinuousBackupInfoArgs{...} }
+type ClusterContinuousBackupInfoArrayInput interface {
+	pulumi.Input
+
+	ToClusterContinuousBackupInfoArrayOutput() ClusterContinuousBackupInfoArrayOutput
+	ToClusterContinuousBackupInfoArrayOutputWithContext(context.Context) ClusterContinuousBackupInfoArrayOutput
+}
+
+type ClusterContinuousBackupInfoArray []ClusterContinuousBackupInfoInput
+
+func (ClusterContinuousBackupInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterContinuousBackupInfo)(nil)).Elem()
+}
+
+func (i ClusterContinuousBackupInfoArray) ToClusterContinuousBackupInfoArrayOutput() ClusterContinuousBackupInfoArrayOutput {
+	return i.ToClusterContinuousBackupInfoArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterContinuousBackupInfoArray) ToClusterContinuousBackupInfoArrayOutputWithContext(ctx context.Context) ClusterContinuousBackupInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterContinuousBackupInfoArrayOutput)
+}
+
+type ClusterContinuousBackupInfoOutput struct{ *pulumi.OutputState }
+
+func (ClusterContinuousBackupInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterContinuousBackupInfo)(nil)).Elem()
+}
+
+func (o ClusterContinuousBackupInfoOutput) ToClusterContinuousBackupInfoOutput() ClusterContinuousBackupInfoOutput {
+	return o
+}
+
+func (o ClusterContinuousBackupInfoOutput) ToClusterContinuousBackupInfoOutputWithContext(ctx context.Context) ClusterContinuousBackupInfoOutput {
+	return o
+}
+
+// (Output)
+// The earliest restorable time that can be restored to. Output only field.
+func (o ClusterContinuousBackupInfoOutput) EarliestRestorableTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterContinuousBackupInfo) *string { return v.EarliestRestorableTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// When ContinuousBackup was most recently enabled. Set to null if ContinuousBackup is not enabled.
+func (o ClusterContinuousBackupInfoOutput) EnabledTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterContinuousBackupInfo) *string { return v.EnabledTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. The encryption information for the WALs and backups required for ContinuousBackup.
+// Structure is documented below.
+func (o ClusterContinuousBackupInfoOutput) EncryptionInfos() ClusterContinuousBackupInfoEncryptionInfoArrayOutput {
+	return o.ApplyT(func(v ClusterContinuousBackupInfo) []ClusterContinuousBackupInfoEncryptionInfo {
+		return v.EncryptionInfos
+	}).(ClusterContinuousBackupInfoEncryptionInfoArrayOutput)
+}
+
+// (Output)
+// Days of the week on which a continuous backup is taken. Output only field. Ignored if passed into the request.
+func (o ClusterContinuousBackupInfoOutput) Schedules() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterContinuousBackupInfo) []string { return v.Schedules }).(pulumi.StringArrayOutput)
+}
+
+type ClusterContinuousBackupInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterContinuousBackupInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterContinuousBackupInfo)(nil)).Elem()
+}
+
+func (o ClusterContinuousBackupInfoArrayOutput) ToClusterContinuousBackupInfoArrayOutput() ClusterContinuousBackupInfoArrayOutput {
+	return o
+}
+
+func (o ClusterContinuousBackupInfoArrayOutput) ToClusterContinuousBackupInfoArrayOutputWithContext(ctx context.Context) ClusterContinuousBackupInfoArrayOutput {
+	return o
+}
+
+func (o ClusterContinuousBackupInfoArrayOutput) Index(i pulumi.IntInput) ClusterContinuousBackupInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterContinuousBackupInfo {
+		return vs[0].([]ClusterContinuousBackupInfo)[vs[1].(int)]
+	}).(ClusterContinuousBackupInfoOutput)
+}
+
+type ClusterContinuousBackupInfoEncryptionInfo struct {
+	// (Output)
+	// Output only. Type of encryption.
+	EncryptionType *string `pulumi:"encryptionType"`
+	// (Output)
+	// Output only. Cloud KMS key versions that are being used to protect the database or the backup.
+	KmsKeyVersions []string `pulumi:"kmsKeyVersions"`
+}
+
+// ClusterContinuousBackupInfoEncryptionInfoInput is an input type that accepts ClusterContinuousBackupInfoEncryptionInfoArgs and ClusterContinuousBackupInfoEncryptionInfoOutput values.
+// You can construct a concrete instance of `ClusterContinuousBackupInfoEncryptionInfoInput` via:
+//
+//	ClusterContinuousBackupInfoEncryptionInfoArgs{...}
+type ClusterContinuousBackupInfoEncryptionInfoInput interface {
+	pulumi.Input
+
+	ToClusterContinuousBackupInfoEncryptionInfoOutput() ClusterContinuousBackupInfoEncryptionInfoOutput
+	ToClusterContinuousBackupInfoEncryptionInfoOutputWithContext(context.Context) ClusterContinuousBackupInfoEncryptionInfoOutput
+}
+
+type ClusterContinuousBackupInfoEncryptionInfoArgs struct {
+	// (Output)
+	// Output only. Type of encryption.
+	EncryptionType pulumi.StringPtrInput `pulumi:"encryptionType"`
+	// (Output)
+	// Output only. Cloud KMS key versions that are being used to protect the database or the backup.
+	KmsKeyVersions pulumi.StringArrayInput `pulumi:"kmsKeyVersions"`
+}
+
+func (ClusterContinuousBackupInfoEncryptionInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterContinuousBackupInfoEncryptionInfo)(nil)).Elem()
+}
+
+func (i ClusterContinuousBackupInfoEncryptionInfoArgs) ToClusterContinuousBackupInfoEncryptionInfoOutput() ClusterContinuousBackupInfoEncryptionInfoOutput {
+	return i.ToClusterContinuousBackupInfoEncryptionInfoOutputWithContext(context.Background())
+}
+
+func (i ClusterContinuousBackupInfoEncryptionInfoArgs) ToClusterContinuousBackupInfoEncryptionInfoOutputWithContext(ctx context.Context) ClusterContinuousBackupInfoEncryptionInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterContinuousBackupInfoEncryptionInfoOutput)
+}
+
+// ClusterContinuousBackupInfoEncryptionInfoArrayInput is an input type that accepts ClusterContinuousBackupInfoEncryptionInfoArray and ClusterContinuousBackupInfoEncryptionInfoArrayOutput values.
+// You can construct a concrete instance of `ClusterContinuousBackupInfoEncryptionInfoArrayInput` via:
+//
+//	ClusterContinuousBackupInfoEncryptionInfoArray{ ClusterContinuousBackupInfoEncryptionInfoArgs{...} }
+type ClusterContinuousBackupInfoEncryptionInfoArrayInput interface {
+	pulumi.Input
+
+	ToClusterContinuousBackupInfoEncryptionInfoArrayOutput() ClusterContinuousBackupInfoEncryptionInfoArrayOutput
+	ToClusterContinuousBackupInfoEncryptionInfoArrayOutputWithContext(context.Context) ClusterContinuousBackupInfoEncryptionInfoArrayOutput
+}
+
+type ClusterContinuousBackupInfoEncryptionInfoArray []ClusterContinuousBackupInfoEncryptionInfoInput
+
+func (ClusterContinuousBackupInfoEncryptionInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterContinuousBackupInfoEncryptionInfo)(nil)).Elem()
+}
+
+func (i ClusterContinuousBackupInfoEncryptionInfoArray) ToClusterContinuousBackupInfoEncryptionInfoArrayOutput() ClusterContinuousBackupInfoEncryptionInfoArrayOutput {
+	return i.ToClusterContinuousBackupInfoEncryptionInfoArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterContinuousBackupInfoEncryptionInfoArray) ToClusterContinuousBackupInfoEncryptionInfoArrayOutputWithContext(ctx context.Context) ClusterContinuousBackupInfoEncryptionInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterContinuousBackupInfoEncryptionInfoArrayOutput)
+}
+
+type ClusterContinuousBackupInfoEncryptionInfoOutput struct{ *pulumi.OutputState }
+
+func (ClusterContinuousBackupInfoEncryptionInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterContinuousBackupInfoEncryptionInfo)(nil)).Elem()
+}
+
+func (o ClusterContinuousBackupInfoEncryptionInfoOutput) ToClusterContinuousBackupInfoEncryptionInfoOutput() ClusterContinuousBackupInfoEncryptionInfoOutput {
+	return o
+}
+
+func (o ClusterContinuousBackupInfoEncryptionInfoOutput) ToClusterContinuousBackupInfoEncryptionInfoOutputWithContext(ctx context.Context) ClusterContinuousBackupInfoEncryptionInfoOutput {
+	return o
+}
+
+// (Output)
+// Output only. Type of encryption.
+func (o ClusterContinuousBackupInfoEncryptionInfoOutput) EncryptionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterContinuousBackupInfoEncryptionInfo) *string { return v.EncryptionType }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. Cloud KMS key versions that are being used to protect the database or the backup.
+func (o ClusterContinuousBackupInfoEncryptionInfoOutput) KmsKeyVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterContinuousBackupInfoEncryptionInfo) []string { return v.KmsKeyVersions }).(pulumi.StringArrayOutput)
+}
+
+type ClusterContinuousBackupInfoEncryptionInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterContinuousBackupInfoEncryptionInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterContinuousBackupInfoEncryptionInfo)(nil)).Elem()
+}
+
+func (o ClusterContinuousBackupInfoEncryptionInfoArrayOutput) ToClusterContinuousBackupInfoEncryptionInfoArrayOutput() ClusterContinuousBackupInfoEncryptionInfoArrayOutput {
+	return o
+}
+
+func (o ClusterContinuousBackupInfoEncryptionInfoArrayOutput) ToClusterContinuousBackupInfoEncryptionInfoArrayOutputWithContext(ctx context.Context) ClusterContinuousBackupInfoEncryptionInfoArrayOutput {
+	return o
+}
+
+func (o ClusterContinuousBackupInfoEncryptionInfoArrayOutput) Index(i pulumi.IntInput) ClusterContinuousBackupInfoEncryptionInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterContinuousBackupInfoEncryptionInfo {
+		return vs[0].([]ClusterContinuousBackupInfoEncryptionInfo)[vs[1].(int)]
+	}).(ClusterContinuousBackupInfoEncryptionInfoOutput)
+}
+
 type ClusterEncryptionConfig struct {
 	// The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
 	KmsKeyName *string `pulumi:"kmsKeyName"`
@@ -2586,6 +3161,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArrayInput)(nil)).Elem(), ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterBackupSourceInput)(nil)).Elem(), ClusterBackupSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterBackupSourceArrayInput)(nil)).Elem(), ClusterBackupSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterContinuousBackupConfigInput)(nil)).Elem(), ClusterContinuousBackupConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterContinuousBackupConfigPtrInput)(nil)).Elem(), ClusterContinuousBackupConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterContinuousBackupConfigEncryptionConfigInput)(nil)).Elem(), ClusterContinuousBackupConfigEncryptionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterContinuousBackupConfigEncryptionConfigPtrInput)(nil)).Elem(), ClusterContinuousBackupConfigEncryptionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterContinuousBackupInfoInput)(nil)).Elem(), ClusterContinuousBackupInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterContinuousBackupInfoArrayInput)(nil)).Elem(), ClusterContinuousBackupInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterContinuousBackupInfoEncryptionInfoInput)(nil)).Elem(), ClusterContinuousBackupInfoEncryptionInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterContinuousBackupInfoEncryptionInfoArrayInput)(nil)).Elem(), ClusterContinuousBackupInfoEncryptionInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterEncryptionConfigInput)(nil)).Elem(), ClusterEncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterEncryptionConfigPtrInput)(nil)).Elem(), ClusterEncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterEncryptionInfoInput)(nil)).Elem(), ClusterEncryptionInfoArgs{})
@@ -2622,6 +3205,14 @@ func init() {
 	pulumi.RegisterOutputType(ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArrayOutput{})
 	pulumi.RegisterOutputType(ClusterBackupSourceOutput{})
 	pulumi.RegisterOutputType(ClusterBackupSourceArrayOutput{})
+	pulumi.RegisterOutputType(ClusterContinuousBackupConfigOutput{})
+	pulumi.RegisterOutputType(ClusterContinuousBackupConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterContinuousBackupConfigEncryptionConfigOutput{})
+	pulumi.RegisterOutputType(ClusterContinuousBackupConfigEncryptionConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterContinuousBackupInfoOutput{})
+	pulumi.RegisterOutputType(ClusterContinuousBackupInfoArrayOutput{})
+	pulumi.RegisterOutputType(ClusterContinuousBackupInfoEncryptionInfoOutput{})
+	pulumi.RegisterOutputType(ClusterContinuousBackupInfoEncryptionInfoArrayOutput{})
 	pulumi.RegisterOutputType(ClusterEncryptionConfigOutput{})
 	pulumi.RegisterOutputType(ClusterEncryptionConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterEncryptionInfoOutput{})

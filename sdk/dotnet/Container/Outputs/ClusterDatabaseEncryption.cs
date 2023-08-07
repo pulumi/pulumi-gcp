@@ -15,6 +15,8 @@ namespace Pulumi.Gcp.Container.Outputs
     {
         /// <summary>
         /// the key to use to encrypt/decrypt secrets.  See the [DatabaseEncryption definition](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#Cluster.DatabaseEncryption) for more information.
+        /// 
+        /// &lt;a name="nested_enable_k8s_beta_apis"&gt;&lt;/a&gt;The `enable_k8s_beta_apis` block supports:
         /// </summary>
         public readonly string? KeyName;
         /// <summary>

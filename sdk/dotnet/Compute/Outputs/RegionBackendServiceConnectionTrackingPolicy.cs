@@ -32,6 +32,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? ConnectionPersistenceOnUnhealthyBackends;
         /// <summary>
+        /// Enable Strong Session Affinity for Network Load Balancing. This option is not available publicly.
+        /// </summary>
+        public readonly bool? EnableStrongAffinity;
+        /// <summary>
         /// Specifies how long to keep a Connection Tracking entry while there is
         /// no matching traffic (in seconds).
         /// For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours.
@@ -53,11 +57,14 @@ namespace Pulumi.Gcp.Compute.Outputs
         private RegionBackendServiceConnectionTrackingPolicy(
             string? connectionPersistenceOnUnhealthyBackends,
 
+            bool? enableStrongAffinity,
+
             int? idleTimeoutSec,
 
             string? trackingMode)
         {
             ConnectionPersistenceOnUnhealthyBackends = connectionPersistenceOnUnhealthyBackends;
+            EnableStrongAffinity = enableStrongAffinity;
             IdleTimeoutSec = idleTimeoutSec;
             TrackingMode = trackingMode;
         }

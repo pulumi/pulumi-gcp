@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.compute.outputs.GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceTemplateSchedulingMaxRunDuration;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceTemplateSchedulingNodeAffinity;
 import java.lang.Boolean;
@@ -26,6 +27,7 @@ public final class GetRegionInstanceTemplateScheduling {
      * 
      */
     private String instanceTerminationAction;
+    private List<GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout> localSsdRecoveryTimeouts;
     private String maintenanceInterval;
     private List<GetRegionInstanceTemplateSchedulingMaxRunDuration> maxRunDurations;
     private Integer minNodeCpus;
@@ -73,6 +75,9 @@ public final class GetRegionInstanceTemplateScheduling {
      */
     public String instanceTerminationAction() {
         return this.instanceTerminationAction;
+    }
+    public List<GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout> localSsdRecoveryTimeouts() {
+        return this.localSsdRecoveryTimeouts;
     }
     public String maintenanceInterval() {
         return this.maintenanceInterval;
@@ -130,6 +135,7 @@ public final class GetRegionInstanceTemplateScheduling {
     public static final class Builder {
         private Boolean automaticRestart;
         private String instanceTerminationAction;
+        private List<GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout> localSsdRecoveryTimeouts;
         private String maintenanceInterval;
         private List<GetRegionInstanceTemplateSchedulingMaxRunDuration> maxRunDurations;
         private Integer minNodeCpus;
@@ -142,6 +148,7 @@ public final class GetRegionInstanceTemplateScheduling {
     	      Objects.requireNonNull(defaults);
     	      this.automaticRestart = defaults.automaticRestart;
     	      this.instanceTerminationAction = defaults.instanceTerminationAction;
+    	      this.localSsdRecoveryTimeouts = defaults.localSsdRecoveryTimeouts;
     	      this.maintenanceInterval = defaults.maintenanceInterval;
     	      this.maxRunDurations = defaults.maxRunDurations;
     	      this.minNodeCpus = defaults.minNodeCpus;
@@ -160,6 +167,14 @@ public final class GetRegionInstanceTemplateScheduling {
         public Builder instanceTerminationAction(String instanceTerminationAction) {
             this.instanceTerminationAction = Objects.requireNonNull(instanceTerminationAction);
             return this;
+        }
+        @CustomType.Setter
+        public Builder localSsdRecoveryTimeouts(List<GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout> localSsdRecoveryTimeouts) {
+            this.localSsdRecoveryTimeouts = Objects.requireNonNull(localSsdRecoveryTimeouts);
+            return this;
+        }
+        public Builder localSsdRecoveryTimeouts(GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout... localSsdRecoveryTimeouts) {
+            return localSsdRecoveryTimeouts(List.of(localSsdRecoveryTimeouts));
         }
         @CustomType.Setter
         public Builder maintenanceInterval(String maintenanceInterval) {
@@ -206,6 +221,7 @@ public final class GetRegionInstanceTemplateScheduling {
             final var o = new GetRegionInstanceTemplateScheduling();
             o.automaticRestart = automaticRestart;
             o.instanceTerminationAction = instanceTerminationAction;
+            o.localSsdRecoveryTimeouts = localSsdRecoveryTimeouts;
             o.maintenanceInterval = maintenanceInterval;
             o.maxRunDurations = maxRunDurations;
             o.minNodeCpus = minNodeCpus;

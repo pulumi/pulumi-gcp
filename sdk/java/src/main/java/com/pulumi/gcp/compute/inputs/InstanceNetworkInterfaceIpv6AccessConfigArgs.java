@@ -15,18 +15,57 @@ public final class InstanceNetworkInterfaceIpv6AccessConfigArgs extends com.pulu
 
     public static final InstanceNetworkInterfaceIpv6AccessConfigArgs Empty = new InstanceNetworkInterfaceIpv6AccessConfigArgs();
 
+    /**
+     * The first IPv6 address of the external IPv6 range associated
+     * with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig.
+     * To use a static external IP address, it must be unused and in the same region as the instance&#39;s zone.
+     * If not specified, Google Cloud will automatically assign an external IPv6 address from the instance&#39;s subnetwork.
+     * 
+     */
     @Import(name="externalIpv6")
     private @Nullable Output<String> externalIpv6;
 
+    /**
+     * @return The first IPv6 address of the external IPv6 range associated
+     * with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig.
+     * To use a static external IP address, it must be unused and in the same region as the instance&#39;s zone.
+     * If not specified, Google Cloud will automatically assign an external IPv6 address from the instance&#39;s subnetwork.
+     * 
+     */
     public Optional<Output<String>> externalIpv6() {
         return Optional.ofNullable(this.externalIpv6);
     }
 
+    /**
+     * The prefix length of the external IPv6 range.
+     * 
+     */
     @Import(name="externalIpv6PrefixLength")
     private @Nullable Output<String> externalIpv6PrefixLength;
 
+    /**
+     * @return The prefix length of the external IPv6 range.
+     * 
+     */
     public Optional<Output<String>> externalIpv6PrefixLength() {
         return Optional.ofNullable(this.externalIpv6PrefixLength);
+    }
+
+    /**
+     * A unique name for the resource, required by GCE.
+     * Changing this forces a new resource to be created.
+     * 
+     */
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    /**
+     * @return A unique name for the resource, required by GCE.
+     * Changing this forces a new resource to be created.
+     * 
+     */
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
     /**
@@ -86,6 +125,7 @@ public final class InstanceNetworkInterfaceIpv6AccessConfigArgs extends com.pulu
     private InstanceNetworkInterfaceIpv6AccessConfigArgs(InstanceNetworkInterfaceIpv6AccessConfigArgs $) {
         this.externalIpv6 = $.externalIpv6;
         this.externalIpv6PrefixLength = $.externalIpv6PrefixLength;
+        this.name = $.name;
         this.networkTier = $.networkTier;
         this.publicPtrDomainName = $.publicPtrDomainName;
     }
@@ -108,22 +148,75 @@ public final class InstanceNetworkInterfaceIpv6AccessConfigArgs extends com.pulu
             $ = new InstanceNetworkInterfaceIpv6AccessConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param externalIpv6 The first IPv6 address of the external IPv6 range associated
+         * with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig.
+         * To use a static external IP address, it must be unused and in the same region as the instance&#39;s zone.
+         * If not specified, Google Cloud will automatically assign an external IPv6 address from the instance&#39;s subnetwork.
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalIpv6(@Nullable Output<String> externalIpv6) {
             $.externalIpv6 = externalIpv6;
             return this;
         }
 
+        /**
+         * @param externalIpv6 The first IPv6 address of the external IPv6 range associated
+         * with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig.
+         * To use a static external IP address, it must be unused and in the same region as the instance&#39;s zone.
+         * If not specified, Google Cloud will automatically assign an external IPv6 address from the instance&#39;s subnetwork.
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalIpv6(String externalIpv6) {
             return externalIpv6(Output.of(externalIpv6));
         }
 
+        /**
+         * @param externalIpv6PrefixLength The prefix length of the external IPv6 range.
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalIpv6PrefixLength(@Nullable Output<String> externalIpv6PrefixLength) {
             $.externalIpv6PrefixLength = externalIpv6PrefixLength;
             return this;
         }
 
+        /**
+         * @param externalIpv6PrefixLength The prefix length of the external IPv6 range.
+         * 
+         * @return builder
+         * 
+         */
         public Builder externalIpv6PrefixLength(String externalIpv6PrefixLength) {
             return externalIpv6PrefixLength(Output.of(externalIpv6PrefixLength));
+        }
+
+        /**
+         * @param name A unique name for the resource, required by GCE.
+         * Changing this forces a new resource to be created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param name A unique name for the resource, required by GCE.
+         * Changing this forces a new resource to be created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            return name(Output.of(name));
         }
 
         /**

@@ -206,6 +206,9 @@ func GetDnsCustomEndpoint(ctx *pulumi.Context) string {
 func GetDocumentAiCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:documentAiCustomEndpoint")
 }
+func GetDocumentAiWarehouseCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:documentAiWarehouseCustomEndpoint")
+}
 func GetEssentialContactsCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:essentialContactsCustomEndpoint")
 }

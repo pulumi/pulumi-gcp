@@ -54,8 +54,8 @@ class GlobalAddressArgs:
                This should only be set when using an Internal address.
         :param pulumi.Input[int] prefix_length: The prefix length of the IP range. If not present, it means the
                address field is a single IP address.
-               This field is not applicable to addresses with addressType=EXTERNAL,
-               or addressType=INTERNAL when purpose=PRIVATE_SERVICE_CONNECT
+               This field is not applicable to addresses with addressType=INTERNAL
+               when purpose=PRIVATE_SERVICE_CONNECT
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] purpose: The purpose of the resource. Possible values include:
@@ -192,8 +192,8 @@ class GlobalAddressArgs:
         """
         The prefix length of the IP range. If not present, it means the
         address field is a single IP address.
-        This field is not applicable to addresses with addressType=EXTERNAL,
-        or addressType=INTERNAL when purpose=PRIVATE_SERVICE_CONNECT
+        This field is not applicable to addresses with addressType=INTERNAL
+        when purpose=PRIVATE_SERVICE_CONNECT
         """
         return pulumi.get(self, "prefix_length")
 
@@ -277,8 +277,8 @@ class _GlobalAddressState:
                This should only be set when using an Internal address.
         :param pulumi.Input[int] prefix_length: The prefix length of the IP range. If not present, it means the
                address field is a single IP address.
-               This field is not applicable to addresses with addressType=EXTERNAL,
-               or addressType=INTERNAL when purpose=PRIVATE_SERVICE_CONNECT
+               This field is not applicable to addresses with addressType=INTERNAL
+               when purpose=PRIVATE_SERVICE_CONNECT
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] purpose: The purpose of the resource. Possible values include:
@@ -446,8 +446,8 @@ class _GlobalAddressState:
         """
         The prefix length of the IP range. If not present, it means the
         address field is a single IP address.
-        This field is not applicable to addresses with addressType=EXTERNAL,
-        or addressType=INTERNAL when purpose=PRIVATE_SERVICE_CONNECT
+        This field is not applicable to addresses with addressType=INTERNAL
+        when purpose=PRIVATE_SERVICE_CONNECT
         """
         return pulumi.get(self, "prefix_length")
 
@@ -592,8 +592,8 @@ class GlobalAddress(pulumi.CustomResource):
                This should only be set when using an Internal address.
         :param pulumi.Input[int] prefix_length: The prefix length of the IP range. If not present, it means the
                address field is a single IP address.
-               This field is not applicable to addresses with addressType=EXTERNAL,
-               or addressType=INTERNAL when purpose=PRIVATE_SERVICE_CONNECT
+               This field is not applicable to addresses with addressType=INTERNAL
+               when purpose=PRIVATE_SERVICE_CONNECT
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] purpose: The purpose of the resource. Possible values include:
@@ -764,8 +764,8 @@ class GlobalAddress(pulumi.CustomResource):
                This should only be set when using an Internal address.
         :param pulumi.Input[int] prefix_length: The prefix length of the IP range. If not present, it means the
                address field is a single IP address.
-               This field is not applicable to addresses with addressType=EXTERNAL,
-               or addressType=INTERNAL when purpose=PRIVATE_SERVICE_CONNECT
+               This field is not applicable to addresses with addressType=INTERNAL
+               when purpose=PRIVATE_SERVICE_CONNECT
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] purpose: The purpose of the resource. Possible values include:
@@ -885,12 +885,12 @@ class GlobalAddress(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="prefixLength")
-    def prefix_length(self) -> pulumi.Output[Optional[int]]:
+    def prefix_length(self) -> pulumi.Output[int]:
         """
         The prefix length of the IP range. If not present, it means the
         address field is a single IP address.
-        This field is not applicable to addresses with addressType=EXTERNAL,
-        or addressType=INTERNAL when purpose=PRIVATE_SERVICE_CONNECT
+        This field is not applicable to addresses with addressType=INTERNAL
+        when purpose=PRIVATE_SERVICE_CONNECT
         """
         return pulumi.get(self, "prefix_length")
 

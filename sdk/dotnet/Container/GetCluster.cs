@@ -165,6 +165,7 @@ namespace Pulumi.Gcp.Container
         public readonly bool EnableAutopilot;
         public readonly bool EnableBinaryAuthorization;
         public readonly bool EnableIntranodeVisibility;
+        public readonly ImmutableArray<Outputs.GetClusterEnableK8sBetaApiResult> EnableK8sBetaApis;
         public readonly bool EnableKubernetesAlpha;
         public readonly bool EnableL4IlbSubsetting;
         public readonly bool EnableLegacyAbac;
@@ -260,6 +261,8 @@ namespace Pulumi.Gcp.Container
             bool enableBinaryAuthorization,
 
             bool enableIntranodeVisibility,
+
+            ImmutableArray<Outputs.GetClusterEnableK8sBetaApiResult> enableK8sBetaApis,
 
             bool enableKubernetesAlpha,
 
@@ -387,6 +390,7 @@ namespace Pulumi.Gcp.Container
             EnableAutopilot = enableAutopilot;
             EnableBinaryAuthorization = enableBinaryAuthorization;
             EnableIntranodeVisibility = enableIntranodeVisibility;
+            EnableK8sBetaApis = enableK8sBetaApis;
             EnableKubernetesAlpha = enableKubernetesAlpha;
             EnableL4IlbSubsetting = enableL4IlbSubsetting;
             EnableLegacyAbac = enableLegacyAbac;

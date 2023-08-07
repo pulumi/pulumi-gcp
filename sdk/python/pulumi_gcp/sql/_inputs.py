@@ -944,7 +944,7 @@ class DatabaseInstanceSettingsBackupConfigurationArgs:
         :param pulumi.Input[bool] point_in_time_recovery_enabled: True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL and SQL Server instances.
         :param pulumi.Input[str] start_time: `HH:MM` format time indicating when backup
                configuration starts.
-        :param pulumi.Input[int] transaction_log_retention_days: The number of days of transaction logs we retain for point in time restore, from 1-7.
+        :param pulumi.Input[int] transaction_log_retention_days: The number of days of transaction logs we retain for point in time restore, from 1-7. For PostgreSQL Enterprise Plus instances, the number of days of retained transaction logs can be set from 1 to 35.
         """
         if backup_retention_settings is not None:
             pulumi.set(__self__, "backup_retention_settings", backup_retention_settings)
@@ -1039,7 +1039,7 @@ class DatabaseInstanceSettingsBackupConfigurationArgs:
     @pulumi.getter(name="transactionLogRetentionDays")
     def transaction_log_retention_days(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of days of transaction logs we retain for point in time restore, from 1-7.
+        The number of days of transaction logs we retain for point in time restore, from 1-7. For PostgreSQL Enterprise Plus instances, the number of days of retained transaction logs can be set from 1 to 35.
         """
         return pulumi.get(self, "transaction_log_retention_days")
 

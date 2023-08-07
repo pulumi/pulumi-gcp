@@ -26,6 +26,14 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("instanceTerminationAction")]
         public Input<string>? InstanceTerminationAction { get; set; }
 
+        [Input("localSsdRecoveryTimeouts")]
+        private InputList<Inputs.RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutGetArgs>? _localSsdRecoveryTimeouts;
+        public InputList<Inputs.RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutGetArgs> LocalSsdRecoveryTimeouts
+        {
+            get => _localSsdRecoveryTimeouts ?? (_localSsdRecoveryTimeouts = new InputList<Inputs.RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutGetArgs>());
+            set => _localSsdRecoveryTimeouts = value;
+        }
+
         /// <summary>
         /// Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.   
         /// &lt;a name="nested_guest_accelerator"&gt;&lt;/a&gt;The `guest_accelerator` block supports:

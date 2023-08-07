@@ -18,6 +18,13 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("externalIpv6PrefixLength")]
         public Input<string>? ExternalIpv6PrefixLength { get; set; }
 
+        /// <summary>
+        /// A unique name for the resource, required by GCE.
+        /// Changing this forces a new resource to be created.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
         [Input("networkTier", required: true)]
         public Input<string> NetworkTier { get; set; } = null!;
 

@@ -13,9 +13,6 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class InstanceParams
     {
-        /// <summary>
-        /// A tag is a key-value pair that can be attached to a Google Cloud resource. You can use tags to conditionally allow or deny policies based on whether a resource has a specific tag.
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? ResourceManagerTags;
 
         [OutputConstructor]

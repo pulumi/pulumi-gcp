@@ -30,6 +30,23 @@ public final class InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs extends 
     }
 
     /**
+     * The name of the instance template. If you leave
+     * this blank, the provider will auto-generate a unique name.
+     * 
+     */
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    /**
+     * @return The name of the instance template. If you leave
+     * this blank, the provider will auto-generate a unique name.
+     * 
+     */
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
+    }
+
+    /**
      * The [networking tier][network-tier] used for configuring
      * this instance template. This field can take the following values: PREMIUM,
      * STANDARD or FIXED_STANDARD. If this field is not specified, it is assumed to be PREMIUM.
@@ -68,6 +85,7 @@ public final class InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs extends 
     private InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs(InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs $) {
         this.externalIpv6 = $.externalIpv6;
         this.externalIpv6PrefixLength = $.externalIpv6PrefixLength;
+        this.name = $.name;
         this.networkTier = $.networkTier;
         this.publicPtrDomainName = $.publicPtrDomainName;
     }
@@ -106,6 +124,29 @@ public final class InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs extends 
 
         public Builder externalIpv6PrefixLength(String externalIpv6PrefixLength) {
             return externalIpv6PrefixLength(Output.of(externalIpv6PrefixLength));
+        }
+
+        /**
+         * @param name The name of the instance template. If you leave
+         * this blank, the provider will auto-generate a unique name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param name The name of the instance template. If you leave
+         * this blank, the provider will auto-generate a unique name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            return name(Output.of(name));
         }
 
         /**

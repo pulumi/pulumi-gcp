@@ -11,6 +11,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterNodePoolPlacementPolicy {
+    private @Nullable String policyName;
     private @Nullable String tpuTopology;
     /**
      * @return Telemetry integration for the cluster. Supported values (`ENABLED, DISABLED, SYSTEM_ONLY`);
@@ -20,6 +21,9 @@ public final class ClusterNodePoolPlacementPolicy {
     private String type;
 
     private ClusterNodePoolPlacementPolicy() {}
+    public Optional<String> policyName() {
+        return Optional.ofNullable(this.policyName);
+    }
     public Optional<String> tpuTopology() {
         return Optional.ofNullable(this.tpuTopology);
     }
@@ -41,15 +45,22 @@ public final class ClusterNodePoolPlacementPolicy {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String policyName;
         private @Nullable String tpuTopology;
         private String type;
         public Builder() {}
         public Builder(ClusterNodePoolPlacementPolicy defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.policyName = defaults.policyName;
     	      this.tpuTopology = defaults.tpuTopology;
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
+        public Builder policyName(@Nullable String policyName) {
+            this.policyName = policyName;
+            return this;
+        }
         @CustomType.Setter
         public Builder tpuTopology(@Nullable String tpuTopology) {
             this.tpuTopology = tpuTopology;
@@ -62,6 +73,7 @@ public final class ClusterNodePoolPlacementPolicy {
         }
         public ClusterNodePoolPlacementPolicy build() {
             final var o = new ClusterNodePoolPlacementPolicy();
+            o.policyName = policyName;
             o.tpuTopology = tpuTopology;
             o.type = type;
             return o;

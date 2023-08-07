@@ -496,6 +496,7 @@ import javax.annotation.Nullable;
  *                 .trackingMode(&#34;PER_SESSION&#34;)
  *                 .connectionPersistenceOnUnhealthyBackends(&#34;NEVER_PERSIST&#34;)
  *                 .idleTimeoutSec(60)
+ *                 .enableStrongAffinity(true)
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)

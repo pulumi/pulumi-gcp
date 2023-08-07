@@ -10,8 +10,11 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.identityplatform.ConfigArgs;
 import com.pulumi.gcp.identityplatform.inputs.ConfigState;
+import com.pulumi.gcp.identityplatform.outputs.ConfigBlockingFunctions;
+import com.pulumi.gcp.identityplatform.outputs.ConfigQuota;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -44,6 +47,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.projects.ServiceArgs;
  * import com.pulumi.gcp.identityplatform.Config;
  * import com.pulumi.gcp.identityplatform.ConfigArgs;
+ * import com.pulumi.gcp.identityplatform.inputs.ConfigBlockingFunctionsArgs;
+ * import com.pulumi.gcp.identityplatform.inputs.ConfigBlockingFunctionsForwardInboundCredentialsArgs;
+ * import com.pulumi.gcp.identityplatform.inputs.ConfigQuotaArgs;
+ * import com.pulumi.gcp.identityplatform.inputs.ConfigQuotaSignUpQuotaConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -72,6 +79,28 @@ import javax.annotation.Nullable;
  *         var defaultConfig = new Config(&#34;defaultConfig&#34;, ConfigArgs.builder()        
  *             .project(defaultProject.projectId())
  *             .autodeleteAnonymousUsers(true)
+ *             .blockingFunctions(ConfigBlockingFunctionsArgs.builder()
+ *                 .triggers(ConfigBlockingFunctionsTriggerArgs.builder()
+ *                     .eventType(&#34;beforeSignIn&#34;)
+ *                     .functionUri(&#34;https://us-east1-my-project.cloudfunctions.net/before-sign-in&#34;)
+ *                     .build())
+ *                 .forwardInboundCredentials(ConfigBlockingFunctionsForwardInboundCredentialsArgs.builder()
+ *                     .refreshToken(true)
+ *                     .accessToken(true)
+ *                     .idToken(true)
+ *                     .build())
+ *                 .build())
+ *             .quota(ConfigQuotaArgs.builder()
+ *                 .signUpQuotaConfig(ConfigQuotaSignUpQuotaConfigArgs.builder()
+ *                     .quota(1000)
+ *                     .startTime(&#34;&#34;)
+ *                     .quotaDuration(&#34;7200s&#34;)
+ *                     .build())
+ *                 .build())
+ *             .authorizedDomains(            
+ *                 &#34;localhost&#34;,
+ *                 &#34;my-project.firebaseapp.com&#34;,
+ *                 &#34;my-project.web.app&#34;)
  *             .build());
  * 
  *     }
@@ -98,6 +127,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:identityplatform/config:Config")
 public class Config extends com.pulumi.resources.CustomResource {
     /**
+     * List of domains authorized for OAuth redirects.
+     * 
+     */
+    @Export(name="authorizedDomains", type=List.class, parameters={String.class})
+    private Output</* @Nullable */ List<String>> authorizedDomains;
+
+    /**
+     * @return List of domains authorized for OAuth redirects.
+     * 
+     */
+    public Output<Optional<List<String>>> authorizedDomains() {
+        return Codegen.optional(this.authorizedDomains);
+    }
+    /**
      * Whether anonymous users will be auto-deleted after a period of 30 days
      * 
      */
@@ -110,6 +153,22 @@ public class Config extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> autodeleteAnonymousUsers() {
         return Codegen.optional(this.autodeleteAnonymousUsers);
+    }
+    /**
+     * Configuration related to blocking functions.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="blockingFunctions", type=ConfigBlockingFunctions.class, parameters={})
+    private Output</* @Nullable */ ConfigBlockingFunctions> blockingFunctions;
+
+    /**
+     * @return Configuration related to blocking functions.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ConfigBlockingFunctions>> blockingFunctions() {
+        return Codegen.optional(this.blockingFunctions);
     }
     /**
      * The name of the Config resource
@@ -140,6 +199,22 @@ public class Config extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * Configuration related to quotas.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="quota", type=ConfigQuota.class, parameters={})
+    private Output</* @Nullable */ ConfigQuota> quota;
+
+    /**
+     * @return Configuration related to quotas.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ConfigQuota>> quota() {
+        return Codegen.optional(this.quota);
     }
 
     /**

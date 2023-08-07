@@ -191,8 +191,8 @@ public final class GlobalAddressState extends com.pulumi.resources.ResourceArgs 
     /**
      * The prefix length of the IP range. If not present, it means the
      * address field is a single IP address.
-     * This field is not applicable to addresses with addressType=EXTERNAL,
-     * or addressType=INTERNAL when purpose=PRIVATE_SERVICE_CONNECT
+     * This field is not applicable to addresses with addressType=INTERNAL
+     * when purpose=PRIVATE_SERVICE_CONNECT
      * 
      */
     @Import(name="prefixLength")
@@ -201,8 +201,8 @@ public final class GlobalAddressState extends com.pulumi.resources.ResourceArgs 
     /**
      * @return The prefix length of the IP range. If not present, it means the
      * address field is a single IP address.
-     * This field is not applicable to addresses with addressType=EXTERNAL,
-     * or addressType=INTERNAL when purpose=PRIVATE_SERVICE_CONNECT
+     * This field is not applicable to addresses with addressType=INTERNAL
+     * when purpose=PRIVATE_SERVICE_CONNECT
      * 
      */
     public Optional<Output<Integer>> prefixLength() {
@@ -524,8 +524,8 @@ public final class GlobalAddressState extends com.pulumi.resources.ResourceArgs 
         /**
          * @param prefixLength The prefix length of the IP range. If not present, it means the
          * address field is a single IP address.
-         * This field is not applicable to addresses with addressType=EXTERNAL,
-         * or addressType=INTERNAL when purpose=PRIVATE_SERVICE_CONNECT
+         * This field is not applicable to addresses with addressType=INTERNAL
+         * when purpose=PRIVATE_SERVICE_CONNECT
          * 
          * @return builder
          * 
@@ -538,8 +538,8 @@ public final class GlobalAddressState extends com.pulumi.resources.ResourceArgs 
         /**
          * @param prefixLength The prefix length of the IP range. If not present, it means the
          * address field is a single IP address.
-         * This field is not applicable to addresses with addressType=EXTERNAL,
-         * or addressType=INTERNAL when purpose=PRIVATE_SERVICE_CONNECT
+         * This field is not applicable to addresses with addressType=INTERNAL
+         * when purpose=PRIVATE_SERVICE_CONNECT
          * 
          * @return builder
          * 

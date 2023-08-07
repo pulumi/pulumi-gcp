@@ -42,6 +42,14 @@ namespace Pulumi.Gcp.PubSub.Inputs
         }
 
         /// <summary>
+        /// When set, the payload to the push endpoint is not wrapped.Sets the
+        /// `data` field as the HTTP body for delivery.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("noWrapper")]
+        public Input<Inputs.SubscriptionPushConfigNoWrapperArgs>? NoWrapper { get; set; }
+
+        /// <summary>
         /// If specified, Pub/Sub will generate and attach an OIDC JWT token as
         /// an Authorization header in the HTTP request for every pushed message.
         /// Structure is documented below.

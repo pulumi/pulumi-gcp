@@ -15,6 +15,13 @@ public final class ClusterNodePoolPlacementPolicyArgs extends com.pulumi.resourc
 
     public static final ClusterNodePoolPlacementPolicyArgs Empty = new ClusterNodePoolPlacementPolicyArgs();
 
+    @Import(name="policyName")
+    private @Nullable Output<String> policyName;
+
+    public Optional<Output<String>> policyName() {
+        return Optional.ofNullable(this.policyName);
+    }
+
     @Import(name="tpuTopology")
     private @Nullable Output<String> tpuTopology;
 
@@ -42,6 +49,7 @@ public final class ClusterNodePoolPlacementPolicyArgs extends com.pulumi.resourc
     private ClusterNodePoolPlacementPolicyArgs() {}
 
     private ClusterNodePoolPlacementPolicyArgs(ClusterNodePoolPlacementPolicyArgs $) {
+        this.policyName = $.policyName;
         this.tpuTopology = $.tpuTopology;
         this.type = $.type;
     }
@@ -62,6 +70,15 @@ public final class ClusterNodePoolPlacementPolicyArgs extends com.pulumi.resourc
 
         public Builder(ClusterNodePoolPlacementPolicyArgs defaults) {
             $ = new ClusterNodePoolPlacementPolicyArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder policyName(@Nullable Output<String> policyName) {
+            $.policyName = policyName;
+            return this;
+        }
+
+        public Builder policyName(String policyName) {
+            return policyName(Output.of(policyName));
         }
 
         public Builder tpuTopology(@Nullable Output<String> tpuTopology) {

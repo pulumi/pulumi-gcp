@@ -209,18 +209,16 @@ public final class TargetHttpsProxyState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * A list of SslCertificate resources that are used to authenticate
-     * connections between users and the load balancer. At least one SSL
-     * certificate must be specified.
+     * A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
+     * connections between users and the load balancer. At least one resource must be specified.
      * 
      */
     @Import(name="sslCertificates")
     private @Nullable Output<List<String>> sslCertificates;
 
     /**
-     * @return A list of SslCertificate resources that are used to authenticate
-     * connections between users and the load balancer. At least one SSL
-     * certificate must be specified.
+     * @return A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
+     * connections between users and the load balancer. At least one resource must be specified.
      * 
      */
     public Optional<Output<List<String>>> sslCertificates() {
@@ -554,9 +552,8 @@ public final class TargetHttpsProxyState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sslCertificates A list of SslCertificate resources that are used to authenticate
-         * connections between users and the load balancer. At least one SSL
-         * certificate must be specified.
+         * @param sslCertificates A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
+         * connections between users and the load balancer. At least one resource must be specified.
          * 
          * @return builder
          * 
@@ -567,9 +564,8 @@ public final class TargetHttpsProxyState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sslCertificates A list of SslCertificate resources that are used to authenticate
-         * connections between users and the load balancer. At least one SSL
-         * certificate must be specified.
+         * @param sslCertificates A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
+         * connections between users and the load balancer. At least one resource must be specified.
          * 
          * @return builder
          * 
@@ -579,9 +575,8 @@ public final class TargetHttpsProxyState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sslCertificates A list of SslCertificate resources that are used to authenticate
-         * connections between users and the load balancer. At least one SSL
-         * certificate must be specified.
+         * @param sslCertificates A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
+         * connections between users and the load balancer. At least one resource must be specified.
          * 
          * @return builder
          * 

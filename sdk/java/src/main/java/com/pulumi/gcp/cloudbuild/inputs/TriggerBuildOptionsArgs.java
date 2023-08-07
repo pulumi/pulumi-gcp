@@ -116,7 +116,6 @@ public final class TriggerBuildOptionsArgs extends com.pulumi.resources.Resource
 
     /**
      * Compute Engine machine type on which to run the build.
-     * Possible values are: `UNSPECIFIED`, `N1_HIGHCPU_8`, `N1_HIGHCPU_32`, `E2_HIGHCPU_8`, `E2_HIGHCPU_32`.
      * 
      */
     @Import(name="machineType")
@@ -124,7 +123,6 @@ public final class TriggerBuildOptionsArgs extends com.pulumi.resources.Resource
 
     /**
      * @return Compute Engine machine type on which to run the build.
-     * Possible values are: `UNSPECIFIED`, `N1_HIGHCPU_8`, `N1_HIGHCPU_32`, `E2_HIGHCPU_8`, `E2_HIGHCPU_32`.
      * 
      */
     public Optional<Output<String>> machineType() {
@@ -424,7 +422,6 @@ public final class TriggerBuildOptionsArgs extends com.pulumi.resources.Resource
 
         /**
          * @param machineType Compute Engine machine type on which to run the build.
-         * Possible values are: `UNSPECIFIED`, `N1_HIGHCPU_8`, `N1_HIGHCPU_32`, `E2_HIGHCPU_8`, `E2_HIGHCPU_32`.
          * 
          * @return builder
          * 
@@ -436,7 +433,6 @@ public final class TriggerBuildOptionsArgs extends com.pulumi.resources.Resource
 
         /**
          * @param machineType Compute Engine machine type on which to run the build.
-         * Possible values are: `UNSPECIFIED`, `N1_HIGHCPU_8`, `N1_HIGHCPU_32`, `E2_HIGHCPU_8`, `E2_HIGHCPU_32`.
          * 
          * @return builder
          * 

@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -60,6 +61,21 @@ public final class RegionBackendServiceConnectionTrackingPolicyArgs extends com.
     }
 
     /**
+     * Enable Strong Session Affinity for Network Load Balancing. This option is not available publicly.
+     * 
+     */
+    @Import(name="enableStrongAffinity")
+    private @Nullable Output<Boolean> enableStrongAffinity;
+
+    /**
+     * @return Enable Strong Session Affinity for Network Load Balancing. This option is not available publicly.
+     * 
+     */
+    public Optional<Output<Boolean>> enableStrongAffinity() {
+        return Optional.ofNullable(this.enableStrongAffinity);
+    }
+
+    /**
      * Specifies how long to keep a Connection Tracking entry while there is
      * no matching traffic (in seconds).
      * For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours.
@@ -111,6 +127,7 @@ public final class RegionBackendServiceConnectionTrackingPolicyArgs extends com.
 
     private RegionBackendServiceConnectionTrackingPolicyArgs(RegionBackendServiceConnectionTrackingPolicyArgs $) {
         this.connectionPersistenceOnUnhealthyBackends = $.connectionPersistenceOnUnhealthyBackends;
+        this.enableStrongAffinity = $.enableStrongAffinity;
         this.idleTimeoutSec = $.idleTimeoutSec;
         this.trackingMode = $.trackingMode;
     }
@@ -180,6 +197,27 @@ public final class RegionBackendServiceConnectionTrackingPolicyArgs extends com.
          */
         public Builder connectionPersistenceOnUnhealthyBackends(String connectionPersistenceOnUnhealthyBackends) {
             return connectionPersistenceOnUnhealthyBackends(Output.of(connectionPersistenceOnUnhealthyBackends));
+        }
+
+        /**
+         * @param enableStrongAffinity Enable Strong Session Affinity for Network Load Balancing. This option is not available publicly.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableStrongAffinity(@Nullable Output<Boolean> enableStrongAffinity) {
+            $.enableStrongAffinity = enableStrongAffinity;
+            return this;
+        }
+
+        /**
+         * @param enableStrongAffinity Enable Strong Session Affinity for Network Load Balancing. This option is not available publicly.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableStrongAffinity(Boolean enableStrongAffinity) {
+            return enableStrongAffinity(Output.of(enableStrongAffinity));
         }
 
         /**

@@ -121,9 +121,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// A list of SslCertificate resources that are used to authenticate
-        /// connections between users and the load balancer. At least one SSL
-        /// certificate must be specified.
+        /// A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
+        /// connections between users and the load balancer. At least one resource must be specified.
         /// </summary>
         [Output("sslCertificates")]
         public Output<ImmutableArray<string>> SslCertificates { get; private set; } = null!;
@@ -258,9 +257,8 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _sslCertificates;
 
         /// <summary>
-        /// A list of SslCertificate resources that are used to authenticate
-        /// connections between users and the load balancer. At least one SSL
-        /// certificate must be specified.
+        /// A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
+        /// connections between users and the load balancer. At least one resource must be specified.
         /// </summary>
         public InputList<string> SslCertificates
         {
@@ -378,9 +376,8 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _sslCertificates;
 
         /// <summary>
-        /// A list of SslCertificate resources that are used to authenticate
-        /// connections between users and the load balancer. At least one SSL
-        /// certificate must be specified.
+        /// A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
+        /// connections between users and the load balancer. At least one resource must be specified.
         /// </summary>
         public InputList<string> SslCertificates
         {

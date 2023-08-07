@@ -20,6 +20,7 @@ class ClusterArgs:
                  location: pulumi.Input[str],
                  network: pulumi.Input[str],
                  automated_backup_policy: Optional[pulumi.Input['ClusterAutomatedBackupPolicyArgs']] = None,
+                 continuous_backup_config: Optional[pulumi.Input['ClusterContinuousBackupConfigArgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  encryption_config: Optional[pulumi.Input['ClusterEncryptionConfigArgs']] = None,
                  initial_user: Optional[pulumi.Input['ClusterInitialUserArgs']] = None,
@@ -34,8 +35,10 @@ class ClusterArgs:
                - - -
         :param pulumi.Input[str] network: The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
                "projects/{projectNumber}/global/networks/{network_id}".
-        :param pulumi.Input['ClusterAutomatedBackupPolicyArgs'] automated_backup_policy: The automated backup policy for this cluster.
-               If no policy is provided then the default policy will be used. The default policy takes one backup a day, has a backup window of 1 hour, and retains backups for 14 days.
+        :param pulumi.Input['ClusterAutomatedBackupPolicyArgs'] automated_backup_policy: The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
+               Structure is documented below.
+        :param pulumi.Input['ClusterContinuousBackupConfigArgs'] continuous_backup_config: The continuous backup config for this cluster.
+               If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
                Structure is documented below.
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Cluster.
         :param pulumi.Input['ClusterEncryptionConfigArgs'] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
@@ -51,6 +54,8 @@ class ClusterArgs:
         pulumi.set(__self__, "network", network)
         if automated_backup_policy is not None:
             pulumi.set(__self__, "automated_backup_policy", automated_backup_policy)
+        if continuous_backup_config is not None:
+            pulumi.set(__self__, "continuous_backup_config", continuous_backup_config)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if encryption_config is not None:
@@ -106,8 +111,7 @@ class ClusterArgs:
     @pulumi.getter(name="automatedBackupPolicy")
     def automated_backup_policy(self) -> Optional[pulumi.Input['ClusterAutomatedBackupPolicyArgs']]:
         """
-        The automated backup policy for this cluster.
-        If no policy is provided then the default policy will be used. The default policy takes one backup a day, has a backup window of 1 hour, and retains backups for 14 days.
+        The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
         Structure is documented below.
         """
         return pulumi.get(self, "automated_backup_policy")
@@ -115,6 +119,20 @@ class ClusterArgs:
     @automated_backup_policy.setter
     def automated_backup_policy(self, value: Optional[pulumi.Input['ClusterAutomatedBackupPolicyArgs']]):
         pulumi.set(self, "automated_backup_policy", value)
+
+    @property
+    @pulumi.getter(name="continuousBackupConfig")
+    def continuous_backup_config(self) -> Optional[pulumi.Input['ClusterContinuousBackupConfigArgs']]:
+        """
+        The continuous backup config for this cluster.
+        If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "continuous_backup_config")
+
+    @continuous_backup_config.setter
+    def continuous_backup_config(self, value: Optional[pulumi.Input['ClusterContinuousBackupConfigArgs']]):
+        pulumi.set(self, "continuous_backup_config", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -186,6 +204,8 @@ class _ClusterState:
                  automated_backup_policy: Optional[pulumi.Input['ClusterAutomatedBackupPolicyArgs']] = None,
                  backup_sources: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterBackupSourceArgs']]]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
+                 continuous_backup_config: Optional[pulumi.Input['ClusterContinuousBackupConfigArgs']] = None,
+                 continuous_backup_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterContinuousBackupInfoArgs']]]] = None,
                  database_version: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  encryption_config: Optional[pulumi.Input['ClusterEncryptionConfigArgs']] = None,
@@ -200,17 +220,22 @@ class _ClusterState:
                  uid: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
-        :param pulumi.Input['ClusterAutomatedBackupPolicyArgs'] automated_backup_policy: The automated backup policy for this cluster.
-               If no policy is provided then the default policy will be used. The default policy takes one backup a day, has a backup window of 1 hour, and retains backups for 14 days.
+        :param pulumi.Input['ClusterAutomatedBackupPolicyArgs'] automated_backup_policy: The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterBackupSourceArgs']]] backup_sources: Cluster created from backup.
                Structure is documented below.
         :param pulumi.Input[str] cluster_id: The ID of the alloydb cluster.
+        :param pulumi.Input['ClusterContinuousBackupConfigArgs'] continuous_backup_config: The continuous backup config for this cluster.
+               If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterContinuousBackupInfoArgs']]] continuous_backup_infos: ContinuousBackupInfo describes the continuous backup properties of a cluster.
+               Structure is documented below.
         :param pulumi.Input[str] database_version: The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Cluster.
         :param pulumi.Input['ClusterEncryptionConfigArgs'] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['ClusterEncryptionInfoArgs']]] encryption_infos: EncryptionInfo describes the encryption information of a cluster or a backup.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterEncryptionInfoArgs']]] encryption_infos: (Output)
+               Output only. The encryption information for the WALs and backups required for ContinuousBackup.
                Structure is documented below.
         :param pulumi.Input['ClusterInitialUserArgs'] initial_user: Initial user to setup during cluster creation.
                Structure is documented below.
@@ -234,6 +259,10 @@ class _ClusterState:
             pulumi.set(__self__, "backup_sources", backup_sources)
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
+        if continuous_backup_config is not None:
+            pulumi.set(__self__, "continuous_backup_config", continuous_backup_config)
+        if continuous_backup_infos is not None:
+            pulumi.set(__self__, "continuous_backup_infos", continuous_backup_infos)
         if database_version is not None:
             pulumi.set(__self__, "database_version", database_version)
         if display_name is not None:
@@ -263,8 +292,7 @@ class _ClusterState:
     @pulumi.getter(name="automatedBackupPolicy")
     def automated_backup_policy(self) -> Optional[pulumi.Input['ClusterAutomatedBackupPolicyArgs']]:
         """
-        The automated backup policy for this cluster.
-        If no policy is provided then the default policy will be used. The default policy takes one backup a day, has a backup window of 1 hour, and retains backups for 14 days.
+        The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
         Structure is documented below.
         """
         return pulumi.get(self, "automated_backup_policy")
@@ -297,6 +325,33 @@ class _ClusterState:
     @cluster_id.setter
     def cluster_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cluster_id", value)
+
+    @property
+    @pulumi.getter(name="continuousBackupConfig")
+    def continuous_backup_config(self) -> Optional[pulumi.Input['ClusterContinuousBackupConfigArgs']]:
+        """
+        The continuous backup config for this cluster.
+        If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "continuous_backup_config")
+
+    @continuous_backup_config.setter
+    def continuous_backup_config(self, value: Optional[pulumi.Input['ClusterContinuousBackupConfigArgs']]):
+        pulumi.set(self, "continuous_backup_config", value)
+
+    @property
+    @pulumi.getter(name="continuousBackupInfos")
+    def continuous_backup_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterContinuousBackupInfoArgs']]]]:
+        """
+        ContinuousBackupInfo describes the continuous backup properties of a cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "continuous_backup_infos")
+
+    @continuous_backup_infos.setter
+    def continuous_backup_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterContinuousBackupInfoArgs']]]]):
+        pulumi.set(self, "continuous_backup_infos", value)
 
     @property
     @pulumi.getter(name="databaseVersion")
@@ -339,7 +394,8 @@ class _ClusterState:
     @pulumi.getter(name="encryptionInfos")
     def encryption_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterEncryptionInfoArgs']]]]:
         """
-        EncryptionInfo describes the encryption information of a cluster or a backup.
+        (Output)
+        Output only. The encryption information for the WALs and backups required for ContinuousBackup.
         Structure is documented below.
         """
         return pulumi.get(self, "encryption_infos")
@@ -459,6 +515,7 @@ class Cluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  automated_backup_policy: Optional[pulumi.Input[pulumi.InputType['ClusterAutomatedBackupPolicyArgs']]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
+                 continuous_backup_config: Optional[pulumi.Input[pulumi.InputType['ClusterContinuousBackupConfigArgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  encryption_config: Optional[pulumi.Input[pulumi.InputType['ClusterEncryptionConfigArgs']]] = None,
                  initial_user: Optional[pulumi.Input[pulumi.InputType['ClusterInitialUserArgs']]] = None,
@@ -509,6 +566,10 @@ class Cluster(pulumi.CustomResource):
                 user="alloydb-cluster-full",
                 password="alloydb-cluster-full",
             ),
+            continuous_backup_config=gcp.alloydb.ClusterContinuousBackupConfigArgs(
+                enabled=True,
+                recovery_window_days=14,
+            ),
             automated_backup_policy=gcp.alloydb.ClusterAutomatedBackupPolicyArgs(
                 location="us-central1",
                 backup_window="1800s",
@@ -557,10 +618,12 @@ class Cluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ClusterAutomatedBackupPolicyArgs']] automated_backup_policy: The automated backup policy for this cluster.
-               If no policy is provided then the default policy will be used. The default policy takes one backup a day, has a backup window of 1 hour, and retains backups for 14 days.
+        :param pulumi.Input[pulumi.InputType['ClusterAutomatedBackupPolicyArgs']] automated_backup_policy: The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
                Structure is documented below.
         :param pulumi.Input[str] cluster_id: The ID of the alloydb cluster.
+        :param pulumi.Input[pulumi.InputType['ClusterContinuousBackupConfigArgs']] continuous_backup_config: The continuous backup config for this cluster.
+               If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
+               Structure is documented below.
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Cluster.
         :param pulumi.Input[pulumi.InputType['ClusterEncryptionConfigArgs']] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
                Structure is documented below.
@@ -623,6 +686,10 @@ class Cluster(pulumi.CustomResource):
             initial_user=gcp.alloydb.ClusterInitialUserArgs(
                 user="alloydb-cluster-full",
                 password="alloydb-cluster-full",
+            ),
+            continuous_backup_config=gcp.alloydb.ClusterContinuousBackupConfigArgs(
+                enabled=True,
+                recovery_window_days=14,
             ),
             automated_backup_policy=gcp.alloydb.ClusterAutomatedBackupPolicyArgs(
                 location="us-central1",
@@ -687,6 +754,7 @@ class Cluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  automated_backup_policy: Optional[pulumi.Input[pulumi.InputType['ClusterAutomatedBackupPolicyArgs']]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
+                 continuous_backup_config: Optional[pulumi.Input[pulumi.InputType['ClusterContinuousBackupConfigArgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  encryption_config: Optional[pulumi.Input[pulumi.InputType['ClusterEncryptionConfigArgs']]] = None,
                  initial_user: Optional[pulumi.Input[pulumi.InputType['ClusterInitialUserArgs']]] = None,
@@ -707,6 +775,7 @@ class Cluster(pulumi.CustomResource):
             if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
             __props__.__dict__["cluster_id"] = cluster_id
+            __props__.__dict__["continuous_backup_config"] = continuous_backup_config
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["encryption_config"] = encryption_config
             __props__.__dict__["initial_user"] = initial_user
@@ -719,6 +788,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["network"] = network
             __props__.__dict__["project"] = project
             __props__.__dict__["backup_sources"] = None
+            __props__.__dict__["continuous_backup_infos"] = None
             __props__.__dict__["database_version"] = None
             __props__.__dict__["encryption_infos"] = None
             __props__.__dict__["migration_sources"] = None
@@ -737,6 +807,8 @@ class Cluster(pulumi.CustomResource):
             automated_backup_policy: Optional[pulumi.Input[pulumi.InputType['ClusterAutomatedBackupPolicyArgs']]] = None,
             backup_sources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterBackupSourceArgs']]]]] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
+            continuous_backup_config: Optional[pulumi.Input[pulumi.InputType['ClusterContinuousBackupConfigArgs']]] = None,
+            continuous_backup_infos: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterContinuousBackupInfoArgs']]]]] = None,
             database_version: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             encryption_config: Optional[pulumi.Input[pulumi.InputType['ClusterEncryptionConfigArgs']]] = None,
@@ -756,17 +828,22 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ClusterAutomatedBackupPolicyArgs']] automated_backup_policy: The automated backup policy for this cluster.
-               If no policy is provided then the default policy will be used. The default policy takes one backup a day, has a backup window of 1 hour, and retains backups for 14 days.
+        :param pulumi.Input[pulumi.InputType['ClusterAutomatedBackupPolicyArgs']] automated_backup_policy: The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterBackupSourceArgs']]]] backup_sources: Cluster created from backup.
                Structure is documented below.
         :param pulumi.Input[str] cluster_id: The ID of the alloydb cluster.
+        :param pulumi.Input[pulumi.InputType['ClusterContinuousBackupConfigArgs']] continuous_backup_config: The continuous backup config for this cluster.
+               If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterContinuousBackupInfoArgs']]]] continuous_backup_infos: ContinuousBackupInfo describes the continuous backup properties of a cluster.
+               Structure is documented below.
         :param pulumi.Input[str] database_version: The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Cluster.
         :param pulumi.Input[pulumi.InputType['ClusterEncryptionConfigArgs']] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterEncryptionInfoArgs']]]] encryption_infos: EncryptionInfo describes the encryption information of a cluster or a backup.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterEncryptionInfoArgs']]]] encryption_infos: (Output)
+               Output only. The encryption information for the WALs and backups required for ContinuousBackup.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterInitialUserArgs']] initial_user: Initial user to setup during cluster creation.
                Structure is documented below.
@@ -791,6 +868,8 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["automated_backup_policy"] = automated_backup_policy
         __props__.__dict__["backup_sources"] = backup_sources
         __props__.__dict__["cluster_id"] = cluster_id
+        __props__.__dict__["continuous_backup_config"] = continuous_backup_config
+        __props__.__dict__["continuous_backup_infos"] = continuous_backup_infos
         __props__.__dict__["database_version"] = database_version
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["encryption_config"] = encryption_config
@@ -809,8 +888,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="automatedBackupPolicy")
     def automated_backup_policy(self) -> pulumi.Output['outputs.ClusterAutomatedBackupPolicy']:
         """
-        The automated backup policy for this cluster.
-        If no policy is provided then the default policy will be used. The default policy takes one backup a day, has a backup window of 1 hour, and retains backups for 14 days.
+        The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
         Structure is documented below.
         """
         return pulumi.get(self, "automated_backup_policy")
@@ -831,6 +909,25 @@ class Cluster(pulumi.CustomResource):
         The ID of the alloydb cluster.
         """
         return pulumi.get(self, "cluster_id")
+
+    @property
+    @pulumi.getter(name="continuousBackupConfig")
+    def continuous_backup_config(self) -> pulumi.Output['outputs.ClusterContinuousBackupConfig']:
+        """
+        The continuous backup config for this cluster.
+        If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "continuous_backup_config")
+
+    @property
+    @pulumi.getter(name="continuousBackupInfos")
+    def continuous_backup_infos(self) -> pulumi.Output[Sequence['outputs.ClusterContinuousBackupInfo']]:
+        """
+        ContinuousBackupInfo describes the continuous backup properties of a cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "continuous_backup_infos")
 
     @property
     @pulumi.getter(name="databaseVersion")
@@ -861,7 +958,8 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="encryptionInfos")
     def encryption_infos(self) -> pulumi.Output[Sequence['outputs.ClusterEncryptionInfo']]:
         """
-        EncryptionInfo describes the encryption information of a cluster or a backup.
+        (Output)
+        Output only. The encryption information for the WALs and backups required for ContinuousBackup.
         Structure is documented below.
         """
         return pulumi.get(self, "encryption_infos")

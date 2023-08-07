@@ -10,6 +10,11 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'ConfigBlockingFunctionsArgs',
+    'ConfigBlockingFunctionsForwardInboundCredentialsArgs',
+    'ConfigBlockingFunctionsTriggerArgs',
+    'ConfigQuotaArgs',
+    'ConfigQuotaSignUpQuotaConfigArgs',
     'InboundSamlConfigIdpConfigArgs',
     'InboundSamlConfigIdpConfigIdpCertificateArgs',
     'InboundSamlConfigSpConfigArgs',
@@ -24,6 +29,238 @@ __all__ = [
     'TenantInboundSamlConfigSpConfigArgs',
     'TenantInboundSamlConfigSpConfigSpCertificateArgs',
 ]
+
+@pulumi.input_type
+class ConfigBlockingFunctionsArgs:
+    def __init__(__self__, *,
+                 triggers: pulumi.Input[Sequence[pulumi.Input['ConfigBlockingFunctionsTriggerArgs']]],
+                 forward_inbound_credentials: Optional[pulumi.Input['ConfigBlockingFunctionsForwardInboundCredentialsArgs']] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ConfigBlockingFunctionsTriggerArgs']]] triggers: Map of Trigger to event type. Key should be one of the supported event types: "beforeCreate", "beforeSignIn".
+               Structure is documented below.
+        :param pulumi.Input['ConfigBlockingFunctionsForwardInboundCredentialsArgs'] forward_inbound_credentials: The user credentials to include in the JWT payload that is sent to the registered Blocking Functions.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "triggers", triggers)
+        if forward_inbound_credentials is not None:
+            pulumi.set(__self__, "forward_inbound_credentials", forward_inbound_credentials)
+
+    @property
+    @pulumi.getter
+    def triggers(self) -> pulumi.Input[Sequence[pulumi.Input['ConfigBlockingFunctionsTriggerArgs']]]:
+        """
+        Map of Trigger to event type. Key should be one of the supported event types: "beforeCreate", "beforeSignIn".
+        Structure is documented below.
+        """
+        return pulumi.get(self, "triggers")
+
+    @triggers.setter
+    def triggers(self, value: pulumi.Input[Sequence[pulumi.Input['ConfigBlockingFunctionsTriggerArgs']]]):
+        pulumi.set(self, "triggers", value)
+
+    @property
+    @pulumi.getter(name="forwardInboundCredentials")
+    def forward_inbound_credentials(self) -> Optional[pulumi.Input['ConfigBlockingFunctionsForwardInboundCredentialsArgs']]:
+        """
+        The user credentials to include in the JWT payload that is sent to the registered Blocking Functions.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "forward_inbound_credentials")
+
+    @forward_inbound_credentials.setter
+    def forward_inbound_credentials(self, value: Optional[pulumi.Input['ConfigBlockingFunctionsForwardInboundCredentialsArgs']]):
+        pulumi.set(self, "forward_inbound_credentials", value)
+
+
+@pulumi.input_type
+class ConfigBlockingFunctionsForwardInboundCredentialsArgs:
+    def __init__(__self__, *,
+                 access_token: Optional[pulumi.Input[bool]] = None,
+                 id_token: Optional[pulumi.Input[bool]] = None,
+                 refresh_token: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] access_token: Whether to pass the user's OAuth identity provider's access token.
+        :param pulumi.Input[bool] id_token: Whether to pass the user's OIDC identity provider's ID token.
+        :param pulumi.Input[bool] refresh_token: Whether to pass the user's OAuth identity provider's refresh token.
+        """
+        if access_token is not None:
+            pulumi.set(__self__, "access_token", access_token)
+        if id_token is not None:
+            pulumi.set(__self__, "id_token", id_token)
+        if refresh_token is not None:
+            pulumi.set(__self__, "refresh_token", refresh_token)
+
+    @property
+    @pulumi.getter(name="accessToken")
+    def access_token(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to pass the user's OAuth identity provider's access token.
+        """
+        return pulumi.get(self, "access_token")
+
+    @access_token.setter
+    def access_token(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "access_token", value)
+
+    @property
+    @pulumi.getter(name="idToken")
+    def id_token(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to pass the user's OIDC identity provider's ID token.
+        """
+        return pulumi.get(self, "id_token")
+
+    @id_token.setter
+    def id_token(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "id_token", value)
+
+    @property
+    @pulumi.getter(name="refreshToken")
+    def refresh_token(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to pass the user's OAuth identity provider's refresh token.
+        """
+        return pulumi.get(self, "refresh_token")
+
+    @refresh_token.setter
+    def refresh_token(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "refresh_token", value)
+
+
+@pulumi.input_type
+class ConfigBlockingFunctionsTriggerArgs:
+    def __init__(__self__, *,
+                 event_type: pulumi.Input[str],
+                 function_uri: pulumi.Input[str],
+                 update_time: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] event_type: The identifier for this object. Format specified above.
+        :param pulumi.Input[str] function_uri: HTTP URI trigger for the Cloud Function.
+        :param pulumi.Input[str] update_time: (Output)
+               When the trigger was changed.
+        """
+        pulumi.set(__self__, "event_type", event_type)
+        pulumi.set(__self__, "function_uri", function_uri)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="eventType")
+    def event_type(self) -> pulumi.Input[str]:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "event_type")
+
+    @event_type.setter
+    def event_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "event_type", value)
+
+    @property
+    @pulumi.getter(name="functionUri")
+    def function_uri(self) -> pulumi.Input[str]:
+        """
+        HTTP URI trigger for the Cloud Function.
+        """
+        return pulumi.get(self, "function_uri")
+
+    @function_uri.setter
+    def function_uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "function_uri", value)
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        When the trigger was changed.
+        """
+        return pulumi.get(self, "update_time")
+
+    @update_time.setter
+    def update_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update_time", value)
+
+
+@pulumi.input_type
+class ConfigQuotaArgs:
+    def __init__(__self__, *,
+                 sign_up_quota_config: Optional[pulumi.Input['ConfigQuotaSignUpQuotaConfigArgs']] = None):
+        """
+        :param pulumi.Input['ConfigQuotaSignUpQuotaConfigArgs'] sign_up_quota_config: Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP.
+               Structure is documented below.
+        """
+        if sign_up_quota_config is not None:
+            pulumi.set(__self__, "sign_up_quota_config", sign_up_quota_config)
+
+    @property
+    @pulumi.getter(name="signUpQuotaConfig")
+    def sign_up_quota_config(self) -> Optional[pulumi.Input['ConfigQuotaSignUpQuotaConfigArgs']]:
+        """
+        Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sign_up_quota_config")
+
+    @sign_up_quota_config.setter
+    def sign_up_quota_config(self, value: Optional[pulumi.Input['ConfigQuotaSignUpQuotaConfigArgs']]):
+        pulumi.set(self, "sign_up_quota_config", value)
+
+
+@pulumi.input_type
+class ConfigQuotaSignUpQuotaConfigArgs:
+    def __init__(__self__, *,
+                 quota: Optional[pulumi.Input[int]] = None,
+                 quota_duration: Optional[pulumi.Input[str]] = None,
+                 start_time: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] quota: A sign up APIs quota that customers can override temporarily.
+        :param pulumi.Input[str] quota_duration: How long this quota will be active for. It is measurred in seconds, e.g., Example: "9.615s".
+        :param pulumi.Input[str] start_time: When this quota will take affect.
+        """
+        if quota is not None:
+            pulumi.set(__self__, "quota", quota)
+        if quota_duration is not None:
+            pulumi.set(__self__, "quota_duration", quota_duration)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter
+    def quota(self) -> Optional[pulumi.Input[int]]:
+        """
+        A sign up APIs quota that customers can override temporarily.
+        """
+        return pulumi.get(self, "quota")
+
+    @quota.setter
+    def quota(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "quota", value)
+
+    @property
+    @pulumi.getter(name="quotaDuration")
+    def quota_duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        How long this quota will be active for. It is measurred in seconds, e.g., Example: "9.615s".
+        """
+        return pulumi.get(self, "quota_duration")
+
+    @quota_duration.setter
+    def quota_duration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "quota_duration", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        When this quota will take affect.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "start_time", value)
+
 
 @pulumi.input_type
 class InboundSamlConfigIdpConfigArgs:

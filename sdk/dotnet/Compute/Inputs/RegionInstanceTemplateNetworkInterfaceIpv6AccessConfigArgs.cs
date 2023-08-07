@@ -18,6 +18,9 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("externalIpv6PrefixLength")]
         public Input<string>? ExternalIpv6PrefixLength { get; set; }
 
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
         /// <summary>
         /// The [networking tier][network-tier] used for configuring
         /// this instance template. This field can take the following values: PREMIUM,

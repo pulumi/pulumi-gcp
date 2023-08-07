@@ -18,6 +18,7 @@ __all__ = [
     'WorkstationConfigEncryptionKey',
     'WorkstationConfigHost',
     'WorkstationConfigHostGceInstance',
+    'WorkstationConfigHostGceInstanceAccelerator',
     'WorkstationConfigHostGceInstanceConfidentialInstanceConfig',
     'WorkstationConfigHostGceInstanceShieldedInstanceConfig',
     'WorkstationConfigIamBindingCondition',
@@ -419,6 +420,7 @@ class WorkstationConfigHostGceInstance(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 accelerators: Optional[Sequence['outputs.WorkstationConfigHostGceInstanceAccelerator']] = None,
                  boot_disk_size_gb: Optional[int] = None,
                  confidential_instance_config: Optional['outputs.WorkstationConfigHostGceInstanceConfidentialInstanceConfig'] = None,
                  disable_public_ip_addresses: Optional[bool] = None,
@@ -428,6 +430,8 @@ class WorkstationConfigHostGceInstance(dict):
                  shielded_instance_config: Optional['outputs.WorkstationConfigHostGceInstanceShieldedInstanceConfig'] = None,
                  tags: Optional[Sequence[str]] = None):
         """
+        :param Sequence['WorkstationConfigHostGceInstanceAcceleratorArgs'] accelerators: An accelerator card attached to the instance.
+               Structure is documented below.
         :param int boot_disk_size_gb: Size of the boot disk in GB.
         :param 'WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs' confidential_instance_config: A set of Compute Engine Confidential VM instance options.
                Structure is documented below.
@@ -439,6 +443,8 @@ class WorkstationConfigHostGceInstance(dict):
                Structure is documented below.
         :param Sequence[str] tags: Network tags to add to the Compute Engine machines backing the Workstations.
         """
+        if accelerators is not None:
+            pulumi.set(__self__, "accelerators", accelerators)
         if boot_disk_size_gb is not None:
             pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
         if confidential_instance_config is not None:
@@ -455,6 +461,15 @@ class WorkstationConfigHostGceInstance(dict):
             pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter
+    def accelerators(self) -> Optional[Sequence['outputs.WorkstationConfigHostGceInstanceAccelerator']]:
+        """
+        An accelerator card attached to the instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "accelerators")
 
     @property
     @pulumi.getter(name="bootDiskSizeGb")
@@ -521,6 +536,35 @@ class WorkstationConfigHostGceInstance(dict):
         Network tags to add to the Compute Engine machines backing the Workstations.
         """
         return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class WorkstationConfigHostGceInstanceAccelerator(dict):
+    def __init__(__self__, *,
+                 count: int,
+                 type: str):
+        """
+        :param int count: Number of accelerator cards exposed to the instance.
+        :param str type: Type of accelerator resource to attach to the instance, for example, "nvidia-tesla-p100".
+        """
+        pulumi.set(__self__, "count", count)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def count(self) -> int:
+        """
+        Number of accelerator cards exposed to the instance.
+        """
+        return pulumi.get(self, "count")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of accelerator resource to attach to the instance, for example, "nvidia-tesla-p100".
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type

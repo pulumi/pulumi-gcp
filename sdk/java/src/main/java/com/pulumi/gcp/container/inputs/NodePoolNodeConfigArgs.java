@@ -11,6 +11,7 @@ import com.pulumi.gcp.container.inputs.NodePoolNodeConfigEphemeralStorageLocalSs
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigGcfsConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigGuestAcceleratorArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigGvnicArgs;
+import com.pulumi.gcp.container.inputs.NodePoolNodeConfigHostMaintenancePolicyArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigKubeletConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigLinuxNodeConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs;
@@ -95,6 +96,13 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
 
     public Optional<Output<NodePoolNodeConfigGvnicArgs>> gvnic() {
         return Optional.ofNullable(this.gvnic);
+    }
+
+    @Import(name="hostMaintenancePolicy")
+    private @Nullable Output<NodePoolNodeConfigHostMaintenancePolicyArgs> hostMaintenancePolicy;
+
+    public Optional<Output<NodePoolNodeConfigHostMaintenancePolicyArgs>> hostMaintenancePolicy() {
+        return Optional.ofNullable(this.hostMaintenancePolicy);
     }
 
     @Import(name="imageType")
@@ -270,6 +278,7 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
         this.gcfsConfig = $.gcfsConfig;
         this.guestAccelerators = $.guestAccelerators;
         this.gvnic = $.gvnic;
+        this.hostMaintenancePolicy = $.hostMaintenancePolicy;
         this.imageType = $.imageType;
         this.kubeletConfig = $.kubeletConfig;
         this.labels = $.labels;
@@ -396,6 +405,15 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
 
         public Builder gvnic(NodePoolNodeConfigGvnicArgs gvnic) {
             return gvnic(Output.of(gvnic));
+        }
+
+        public Builder hostMaintenancePolicy(@Nullable Output<NodePoolNodeConfigHostMaintenancePolicyArgs> hostMaintenancePolicy) {
+            $.hostMaintenancePolicy = hostMaintenancePolicy;
+            return this;
+        }
+
+        public Builder hostMaintenancePolicy(NodePoolNodeConfigHostMaintenancePolicyArgs hostMaintenancePolicy) {
+            return hostMaintenancePolicy(Output.of(hostMaintenancePolicy));
         }
 
         public Builder imageType(@Nullable Output<String> imageType) {

@@ -266,6 +266,55 @@ import * as utilities from "../utilities";
  *     provider: google_beta,
  * });
  * ```
+ * ### Workstation Config Accelerators
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {autoCreateSubnetworks: false}, {
+ *     provider: google_beta,
+ * });
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
+ *     ipCidrRange: "10.0.0.0/24",
+ *     region: "us-central1",
+ *     network: defaultNetwork.name,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultWorkstationCluster = new gcp.workstations.WorkstationCluster("defaultWorkstationCluster", {
+ *     workstationClusterId: "workstation-cluster",
+ *     network: defaultNetwork.id,
+ *     subnetwork: defaultSubnetwork.id,
+ *     location: "us-central1",
+ *     labels: {
+ *         label: "key",
+ *     },
+ *     annotations: {
+ *         "label-one": "value-one",
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultWorkstationConfig = new gcp.workstations.WorkstationConfig("defaultWorkstationConfig", {
+ *     workstationConfigId: "workstation-config",
+ *     workstationClusterId: defaultWorkstationCluster.workstationClusterId,
+ *     location: "us-central1",
+ *     host: {
+ *         gceInstance: {
+ *             machineType: "n1-standard-2",
+ *             bootDiskSizeGb: 35,
+ *             disablePublicIpAddresses: true,
+ *             accelerators: [{
+ *                 type: "nvidia-tesla-p100",
+ *                 count: 1,
+ *             }],
+ *         },
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  * ### Workstation Config Encryption Key
  *
  * ```typescript

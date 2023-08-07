@@ -40,7 +40,7 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<string>? DiskType { get; set; }
 
         /// <summary>
-        /// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+        /// ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -125,6 +125,9 @@ namespace Pulumi.Gcp.Container.Inputs
         /// </summary>
         [Input("gvnic")]
         public Input<Inputs.ClusterNodeConfigGvnicGetArgs>? Gvnic { get; set; }
+
+        [Input("hostMaintenancePolicy")]
+        public Input<Inputs.ClusterNodeConfigHostMaintenancePolicyGetArgs>? HostMaintenancePolicy { get; set; }
 
         /// <summary>
         /// The image type to use for this node. Note that changing the image type

@@ -994,6 +994,9 @@ func (o WorkstationConfigHostPtrOutput) GceInstance() WorkstationConfigHostGceIn
 }
 
 type WorkstationConfigHostGceInstance struct {
+	// An accelerator card attached to the instance.
+	// Structure is documented below.
+	Accelerators []WorkstationConfigHostGceInstanceAccelerator `pulumi:"accelerators"`
 	// Size of the boot disk in GB.
 	BootDiskSizeGb *int `pulumi:"bootDiskSizeGb"`
 	// A set of Compute Engine Confidential VM instance options.
@@ -1026,6 +1029,9 @@ type WorkstationConfigHostGceInstanceInput interface {
 }
 
 type WorkstationConfigHostGceInstanceArgs struct {
+	// An accelerator card attached to the instance.
+	// Structure is documented below.
+	Accelerators WorkstationConfigHostGceInstanceAcceleratorArrayInput `pulumi:"accelerators"`
 	// Size of the boot disk in GB.
 	BootDiskSizeGb pulumi.IntPtrInput `pulumi:"bootDiskSizeGb"`
 	// A set of Compute Engine Confidential VM instance options.
@@ -1123,6 +1129,14 @@ func (o WorkstationConfigHostGceInstanceOutput) ToWorkstationConfigHostGceInstan
 	}).(WorkstationConfigHostGceInstancePtrOutput)
 }
 
+// An accelerator card attached to the instance.
+// Structure is documented below.
+func (o WorkstationConfigHostGceInstanceOutput) Accelerators() WorkstationConfigHostGceInstanceAcceleratorArrayOutput {
+	return o.ApplyT(func(v WorkstationConfigHostGceInstance) []WorkstationConfigHostGceInstanceAccelerator {
+		return v.Accelerators
+	}).(WorkstationConfigHostGceInstanceAcceleratorArrayOutput)
+}
+
 // Size of the boot disk in GB.
 func (o WorkstationConfigHostGceInstanceOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WorkstationConfigHostGceInstance) *int { return v.BootDiskSizeGb }).(pulumi.IntPtrOutput)
@@ -1191,6 +1205,17 @@ func (o WorkstationConfigHostGceInstancePtrOutput) Elem() WorkstationConfigHostG
 		var ret WorkstationConfigHostGceInstance
 		return ret
 	}).(WorkstationConfigHostGceInstanceOutput)
+}
+
+// An accelerator card attached to the instance.
+// Structure is documented below.
+func (o WorkstationConfigHostGceInstancePtrOutput) Accelerators() WorkstationConfigHostGceInstanceAcceleratorArrayOutput {
+	return o.ApplyT(func(v *WorkstationConfigHostGceInstance) []WorkstationConfigHostGceInstanceAccelerator {
+		if v == nil {
+			return nil
+		}
+		return v.Accelerators
+	}).(WorkstationConfigHostGceInstanceAcceleratorArrayOutput)
 }
 
 // Size of the boot disk in GB.
@@ -1273,6 +1298,112 @@ func (o WorkstationConfigHostGceInstancePtrOutput) Tags() pulumi.StringArrayOutp
 		}
 		return v.Tags
 	}).(pulumi.StringArrayOutput)
+}
+
+type WorkstationConfigHostGceInstanceAccelerator struct {
+	// Number of accelerator cards exposed to the instance.
+	Count int `pulumi:"count"`
+	// Type of accelerator resource to attach to the instance, for example, "nvidia-tesla-p100".
+	Type string `pulumi:"type"`
+}
+
+// WorkstationConfigHostGceInstanceAcceleratorInput is an input type that accepts WorkstationConfigHostGceInstanceAcceleratorArgs and WorkstationConfigHostGceInstanceAcceleratorOutput values.
+// You can construct a concrete instance of `WorkstationConfigHostGceInstanceAcceleratorInput` via:
+//
+//	WorkstationConfigHostGceInstanceAcceleratorArgs{...}
+type WorkstationConfigHostGceInstanceAcceleratorInput interface {
+	pulumi.Input
+
+	ToWorkstationConfigHostGceInstanceAcceleratorOutput() WorkstationConfigHostGceInstanceAcceleratorOutput
+	ToWorkstationConfigHostGceInstanceAcceleratorOutputWithContext(context.Context) WorkstationConfigHostGceInstanceAcceleratorOutput
+}
+
+type WorkstationConfigHostGceInstanceAcceleratorArgs struct {
+	// Number of accelerator cards exposed to the instance.
+	Count pulumi.IntInput `pulumi:"count"`
+	// Type of accelerator resource to attach to the instance, for example, "nvidia-tesla-p100".
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (WorkstationConfigHostGceInstanceAcceleratorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkstationConfigHostGceInstanceAccelerator)(nil)).Elem()
+}
+
+func (i WorkstationConfigHostGceInstanceAcceleratorArgs) ToWorkstationConfigHostGceInstanceAcceleratorOutput() WorkstationConfigHostGceInstanceAcceleratorOutput {
+	return i.ToWorkstationConfigHostGceInstanceAcceleratorOutputWithContext(context.Background())
+}
+
+func (i WorkstationConfigHostGceInstanceAcceleratorArgs) ToWorkstationConfigHostGceInstanceAcceleratorOutputWithContext(ctx context.Context) WorkstationConfigHostGceInstanceAcceleratorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigHostGceInstanceAcceleratorOutput)
+}
+
+// WorkstationConfigHostGceInstanceAcceleratorArrayInput is an input type that accepts WorkstationConfigHostGceInstanceAcceleratorArray and WorkstationConfigHostGceInstanceAcceleratorArrayOutput values.
+// You can construct a concrete instance of `WorkstationConfigHostGceInstanceAcceleratorArrayInput` via:
+//
+//	WorkstationConfigHostGceInstanceAcceleratorArray{ WorkstationConfigHostGceInstanceAcceleratorArgs{...} }
+type WorkstationConfigHostGceInstanceAcceleratorArrayInput interface {
+	pulumi.Input
+
+	ToWorkstationConfigHostGceInstanceAcceleratorArrayOutput() WorkstationConfigHostGceInstanceAcceleratorArrayOutput
+	ToWorkstationConfigHostGceInstanceAcceleratorArrayOutputWithContext(context.Context) WorkstationConfigHostGceInstanceAcceleratorArrayOutput
+}
+
+type WorkstationConfigHostGceInstanceAcceleratorArray []WorkstationConfigHostGceInstanceAcceleratorInput
+
+func (WorkstationConfigHostGceInstanceAcceleratorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkstationConfigHostGceInstanceAccelerator)(nil)).Elem()
+}
+
+func (i WorkstationConfigHostGceInstanceAcceleratorArray) ToWorkstationConfigHostGceInstanceAcceleratorArrayOutput() WorkstationConfigHostGceInstanceAcceleratorArrayOutput {
+	return i.ToWorkstationConfigHostGceInstanceAcceleratorArrayOutputWithContext(context.Background())
+}
+
+func (i WorkstationConfigHostGceInstanceAcceleratorArray) ToWorkstationConfigHostGceInstanceAcceleratorArrayOutputWithContext(ctx context.Context) WorkstationConfigHostGceInstanceAcceleratorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkstationConfigHostGceInstanceAcceleratorArrayOutput)
+}
+
+type WorkstationConfigHostGceInstanceAcceleratorOutput struct{ *pulumi.OutputState }
+
+func (WorkstationConfigHostGceInstanceAcceleratorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkstationConfigHostGceInstanceAccelerator)(nil)).Elem()
+}
+
+func (o WorkstationConfigHostGceInstanceAcceleratorOutput) ToWorkstationConfigHostGceInstanceAcceleratorOutput() WorkstationConfigHostGceInstanceAcceleratorOutput {
+	return o
+}
+
+func (o WorkstationConfigHostGceInstanceAcceleratorOutput) ToWorkstationConfigHostGceInstanceAcceleratorOutputWithContext(ctx context.Context) WorkstationConfigHostGceInstanceAcceleratorOutput {
+	return o
+}
+
+// Number of accelerator cards exposed to the instance.
+func (o WorkstationConfigHostGceInstanceAcceleratorOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v WorkstationConfigHostGceInstanceAccelerator) int { return v.Count }).(pulumi.IntOutput)
+}
+
+// Type of accelerator resource to attach to the instance, for example, "nvidia-tesla-p100".
+func (o WorkstationConfigHostGceInstanceAcceleratorOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkstationConfigHostGceInstanceAccelerator) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type WorkstationConfigHostGceInstanceAcceleratorArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkstationConfigHostGceInstanceAcceleratorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkstationConfigHostGceInstanceAccelerator)(nil)).Elem()
+}
+
+func (o WorkstationConfigHostGceInstanceAcceleratorArrayOutput) ToWorkstationConfigHostGceInstanceAcceleratorArrayOutput() WorkstationConfigHostGceInstanceAcceleratorArrayOutput {
+	return o
+}
+
+func (o WorkstationConfigHostGceInstanceAcceleratorArrayOutput) ToWorkstationConfigHostGceInstanceAcceleratorArrayOutputWithContext(ctx context.Context) WorkstationConfigHostGceInstanceAcceleratorArrayOutput {
+	return o
+}
+
+func (o WorkstationConfigHostGceInstanceAcceleratorArrayOutput) Index(i pulumi.IntInput) WorkstationConfigHostGceInstanceAcceleratorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkstationConfigHostGceInstanceAccelerator {
+		return vs[0].([]WorkstationConfigHostGceInstanceAccelerator)[vs[1].(int)]
+	}).(WorkstationConfigHostGceInstanceAcceleratorOutput)
 }
 
 type WorkstationConfigHostGceInstanceConfidentialInstanceConfig struct {
@@ -2590,6 +2721,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigHostPtrInput)(nil)).Elem(), WorkstationConfigHostArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigHostGceInstanceInput)(nil)).Elem(), WorkstationConfigHostGceInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigHostGceInstancePtrInput)(nil)).Elem(), WorkstationConfigHostGceInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigHostGceInstanceAcceleratorInput)(nil)).Elem(), WorkstationConfigHostGceInstanceAcceleratorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigHostGceInstanceAcceleratorArrayInput)(nil)).Elem(), WorkstationConfigHostGceInstanceAcceleratorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigHostGceInstanceConfidentialInstanceConfigInput)(nil)).Elem(), WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrInput)(nil)).Elem(), WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkstationConfigHostGceInstanceShieldedInstanceConfigInput)(nil)).Elem(), WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs{})
@@ -2620,6 +2753,8 @@ func init() {
 	pulumi.RegisterOutputType(WorkstationConfigHostPtrOutput{})
 	pulumi.RegisterOutputType(WorkstationConfigHostGceInstanceOutput{})
 	pulumi.RegisterOutputType(WorkstationConfigHostGceInstancePtrOutput{})
+	pulumi.RegisterOutputType(WorkstationConfigHostGceInstanceAcceleratorOutput{})
+	pulumi.RegisterOutputType(WorkstationConfigHostGceInstanceAcceleratorArrayOutput{})
 	pulumi.RegisterOutputType(WorkstationConfigHostGceInstanceConfidentialInstanceConfigOutput{})
 	pulumi.RegisterOutputType(WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(WorkstationConfigHostGceInstanceShieldedInstanceConfigOutput{})

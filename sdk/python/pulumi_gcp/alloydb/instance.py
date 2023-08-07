@@ -575,7 +575,7 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.Network("defaultNetwork")
+        default_network = gcp.compute.get_network(name="alloydb-network")
         default_cluster = gcp.alloydb.Cluster("defaultCluster",
             cluster_id="alloydb-cluster",
             location="us-central1",
@@ -664,7 +664,7 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.Network("defaultNetwork")
+        default_network = gcp.compute.get_network(name="alloydb-network")
         default_cluster = gcp.alloydb.Cluster("defaultCluster",
             cluster_id="alloydb-cluster",
             location="us-central1",

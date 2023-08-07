@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.compute.outputs.InstanceFromTemplateSchedulingLocalSsdRecoveryTimeout;
 import com.pulumi.gcp.compute.outputs.InstanceFromTemplateSchedulingMaxRunDuration;
 import com.pulumi.gcp.compute.outputs.InstanceFromTemplateSchedulingNodeAffinity;
 import java.lang.Boolean;
@@ -18,6 +19,7 @@ import javax.annotation.Nullable;
 public final class InstanceFromTemplateScheduling {
     private @Nullable Boolean automaticRestart;
     private @Nullable String instanceTerminationAction;
+    private @Nullable InstanceFromTemplateSchedulingLocalSsdRecoveryTimeout localSsdRecoveryTimeout;
     private @Nullable String maintenanceInterval;
     private @Nullable InstanceFromTemplateSchedulingMaxRunDuration maxRunDuration;
     private @Nullable Integer minNodeCpus;
@@ -32,6 +34,9 @@ public final class InstanceFromTemplateScheduling {
     }
     public Optional<String> instanceTerminationAction() {
         return Optional.ofNullable(this.instanceTerminationAction);
+    }
+    public Optional<InstanceFromTemplateSchedulingLocalSsdRecoveryTimeout> localSsdRecoveryTimeout() {
+        return Optional.ofNullable(this.localSsdRecoveryTimeout);
     }
     public Optional<String> maintenanceInterval() {
         return Optional.ofNullable(this.maintenanceInterval);
@@ -66,6 +71,7 @@ public final class InstanceFromTemplateScheduling {
     public static final class Builder {
         private @Nullable Boolean automaticRestart;
         private @Nullable String instanceTerminationAction;
+        private @Nullable InstanceFromTemplateSchedulingLocalSsdRecoveryTimeout localSsdRecoveryTimeout;
         private @Nullable String maintenanceInterval;
         private @Nullable InstanceFromTemplateSchedulingMaxRunDuration maxRunDuration;
         private @Nullable Integer minNodeCpus;
@@ -78,6 +84,7 @@ public final class InstanceFromTemplateScheduling {
     	      Objects.requireNonNull(defaults);
     	      this.automaticRestart = defaults.automaticRestart;
     	      this.instanceTerminationAction = defaults.instanceTerminationAction;
+    	      this.localSsdRecoveryTimeout = defaults.localSsdRecoveryTimeout;
     	      this.maintenanceInterval = defaults.maintenanceInterval;
     	      this.maxRunDuration = defaults.maxRunDuration;
     	      this.minNodeCpus = defaults.minNodeCpus;
@@ -95,6 +102,11 @@ public final class InstanceFromTemplateScheduling {
         @CustomType.Setter
         public Builder instanceTerminationAction(@Nullable String instanceTerminationAction) {
             this.instanceTerminationAction = instanceTerminationAction;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder localSsdRecoveryTimeout(@Nullable InstanceFromTemplateSchedulingLocalSsdRecoveryTimeout localSsdRecoveryTimeout) {
+            this.localSsdRecoveryTimeout = localSsdRecoveryTimeout;
             return this;
         }
         @CustomType.Setter
@@ -139,6 +151,7 @@ public final class InstanceFromTemplateScheduling {
             final var o = new InstanceFromTemplateScheduling();
             o.automaticRestart = automaticRestart;
             o.instanceTerminationAction = instanceTerminationAction;
+            o.localSsdRecoveryTimeout = localSsdRecoveryTimeout;
             o.maintenanceInterval = maintenanceInterval;
             o.maxRunDuration = maxRunDuration;
             o.minNodeCpus = minNodeCpus;

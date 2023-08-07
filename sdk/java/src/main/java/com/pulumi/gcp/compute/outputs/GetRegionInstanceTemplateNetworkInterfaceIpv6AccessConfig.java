@@ -12,6 +12,11 @@ public final class GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig {
     private String externalIpv6;
     private String externalIpv6PrefixLength;
     /**
+     * @return The name of the instance template. One of `name` or `filter` must be provided.
+     * 
+     */
+    private String name;
+    /**
      * @return The [networking tier][network-tier] used for configuring
      * this instance template. This field can take the following values: PREMIUM or
      * STANDARD. If this field is not specified, it is assumed to be PREMIUM.
@@ -26,6 +31,13 @@ public final class GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig {
     }
     public String externalIpv6PrefixLength() {
         return this.externalIpv6PrefixLength;
+    }
+    /**
+     * @return The name of the instance template. One of `name` or `filter` must be provided.
+     * 
+     */
+    public String name() {
+        return this.name;
     }
     /**
      * @return The [networking tier][network-tier] used for configuring
@@ -51,6 +63,7 @@ public final class GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig {
     public static final class Builder {
         private String externalIpv6;
         private String externalIpv6PrefixLength;
+        private String name;
         private String networkTier;
         private String publicPtrDomainName;
         public Builder() {}
@@ -58,6 +71,7 @@ public final class GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig {
     	      Objects.requireNonNull(defaults);
     	      this.externalIpv6 = defaults.externalIpv6;
     	      this.externalIpv6PrefixLength = defaults.externalIpv6PrefixLength;
+    	      this.name = defaults.name;
     	      this.networkTier = defaults.networkTier;
     	      this.publicPtrDomainName = defaults.publicPtrDomainName;
         }
@@ -70,6 +84,11 @@ public final class GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig {
         @CustomType.Setter
         public Builder externalIpv6PrefixLength(String externalIpv6PrefixLength) {
             this.externalIpv6PrefixLength = Objects.requireNonNull(externalIpv6PrefixLength);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder name(String name) {
+            this.name = Objects.requireNonNull(name);
             return this;
         }
         @CustomType.Setter
@@ -86,6 +105,7 @@ public final class GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig {
             final var o = new GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig();
             o.externalIpv6 = externalIpv6;
             o.externalIpv6PrefixLength = externalIpv6PrefixLength;
+            o.name = name;
             o.networkTier = networkTier;
             o.publicPtrDomainName = publicPtrDomainName;
             return o;

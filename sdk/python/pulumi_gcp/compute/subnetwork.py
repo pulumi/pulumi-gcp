@@ -50,7 +50,7 @@ class SubnetworkArgs:
                Possible values are: `EXTERNAL`, `INTERNAL`.
         :param pulumi.Input['SubnetworkLogConfigArgs'] log_config: Denotes the logging options for the subnetwork flow logs. If logging is enabled
                logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
-               subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`
+               subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially
                creating the resource. The name must be 1-63 characters long, and
@@ -64,12 +64,13 @@ class SubnetworkArgs:
         :param pulumi.Input[str] private_ipv6_google_access: The private IPv6 google access type for the VMs in this subnet.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] purpose: The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `INTERNAL_HTTPS_LOAD_BALANCER`, `REGIONAL_MANAGED_PROXY`, or `PRIVATE_SERVICE_CONNECT`.
+        :param pulumi.Input[str] purpose: The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `INTERNAL_HTTPS_LOAD_BALANCER`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY` or `PRIVATE_SERVICE_CONNECT`.
                A subnetwork with purpose set to `INTERNAL_HTTPS_LOAD_BALANCER` is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing.
                A subnetwork in a given region with purpose set to `REGIONAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the regional Envoy-based load balancers.
+               A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
                A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
                If unspecified, the purpose defaults to `PRIVATE_RFC_1918`.
-               The enableFlowLogs field isn't supported with the purpose field set to `INTERNAL_HTTPS_LOAD_BALANCER`.
+               The enableFlowLogs field isn't supported with the purpose field set to `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`.
         :param pulumi.Input[str] region: The GCP region for this subnetwork.
         :param pulumi.Input[str] role: The role of subnetwork.
                The value can be set to `ACTIVE` or `BACKUP`.
@@ -179,7 +180,7 @@ class SubnetworkArgs:
         """
         Denotes the logging options for the subnetwork flow logs. If logging is enabled
         logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
-        subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`
+        subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`
         Structure is documented below.
         """
         return pulumi.get(self, "log_config")
@@ -248,12 +249,13 @@ class SubnetworkArgs:
     @pulumi.getter
     def purpose(self) -> Optional[pulumi.Input[str]]:
         """
-        The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `INTERNAL_HTTPS_LOAD_BALANCER`, `REGIONAL_MANAGED_PROXY`, or `PRIVATE_SERVICE_CONNECT`.
+        The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `INTERNAL_HTTPS_LOAD_BALANCER`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY` or `PRIVATE_SERVICE_CONNECT`.
         A subnetwork with purpose set to `INTERNAL_HTTPS_LOAD_BALANCER` is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing.
         A subnetwork in a given region with purpose set to `REGIONAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the regional Envoy-based load balancers.
+        A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
         A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
         If unspecified, the purpose defaults to `PRIVATE_RFC_1918`.
-        The enableFlowLogs field isn't supported with the purpose field set to `INTERNAL_HTTPS_LOAD_BALANCER`.
+        The enableFlowLogs field isn't supported with the purpose field set to `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`.
         """
         return pulumi.get(self, "purpose")
 
@@ -365,7 +367,7 @@ class _SubnetworkState:
         :param pulumi.Input[str] ipv6_cidr_range: The range of internal IPv6 addresses that are owned by this subnetwork.
         :param pulumi.Input['SubnetworkLogConfigArgs'] log_config: Denotes the logging options for the subnetwork flow logs. If logging is enabled
                logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
-               subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`
+               subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially
                creating the resource. The name must be 1-63 characters long, and
@@ -384,12 +386,13 @@ class _SubnetworkState:
         :param pulumi.Input[str] private_ipv6_google_access: The private IPv6 google access type for the VMs in this subnet.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] purpose: The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `INTERNAL_HTTPS_LOAD_BALANCER`, `REGIONAL_MANAGED_PROXY`, or `PRIVATE_SERVICE_CONNECT`.
+        :param pulumi.Input[str] purpose: The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `INTERNAL_HTTPS_LOAD_BALANCER`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY` or `PRIVATE_SERVICE_CONNECT`.
                A subnetwork with purpose set to `INTERNAL_HTTPS_LOAD_BALANCER` is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing.
                A subnetwork in a given region with purpose set to `REGIONAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the regional Envoy-based load balancers.
+               A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
                A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
                If unspecified, the purpose defaults to `PRIVATE_RFC_1918`.
-               The enableFlowLogs field isn't supported with the purpose field set to `INTERNAL_HTTPS_LOAD_BALANCER`.
+               The enableFlowLogs field isn't supported with the purpose field set to `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`.
         :param pulumi.Input[str] region: The GCP region for this subnetwork.
         :param pulumi.Input[str] role: The role of subnetwork.
                The value can be set to `ACTIVE` or `BACKUP`.
@@ -565,7 +568,7 @@ class _SubnetworkState:
         """
         Denotes the logging options for the subnetwork flow logs. If logging is enabled
         logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
-        subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`
+        subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`
         Structure is documented below.
         """
         return pulumi.get(self, "log_config")
@@ -650,12 +653,13 @@ class _SubnetworkState:
     @pulumi.getter
     def purpose(self) -> Optional[pulumi.Input[str]]:
         """
-        The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `INTERNAL_HTTPS_LOAD_BALANCER`, `REGIONAL_MANAGED_PROXY`, or `PRIVATE_SERVICE_CONNECT`.
+        The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `INTERNAL_HTTPS_LOAD_BALANCER`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY` or `PRIVATE_SERVICE_CONNECT`.
         A subnetwork with purpose set to `INTERNAL_HTTPS_LOAD_BALANCER` is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing.
         A subnetwork in a given region with purpose set to `REGIONAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the regional Envoy-based load balancers.
+        A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
         A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
         If unspecified, the purpose defaults to `PRIVATE_RFC_1918`.
-        The enableFlowLogs field isn't supported with the purpose field set to `INTERNAL_HTTPS_LOAD_BALANCER`.
+        The enableFlowLogs field isn't supported with the purpose field set to `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`.
         """
         return pulumi.get(self, "purpose")
 
@@ -902,7 +906,7 @@ class Subnetwork(pulumi.CustomResource):
                Possible values are: `EXTERNAL`, `INTERNAL`.
         :param pulumi.Input[pulumi.InputType['SubnetworkLogConfigArgs']] log_config: Denotes the logging options for the subnetwork flow logs. If logging is enabled
                logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
-               subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`
+               subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially
                creating the resource. The name must be 1-63 characters long, and
@@ -921,12 +925,13 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[str] private_ipv6_google_access: The private IPv6 google access type for the VMs in this subnet.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] purpose: The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `INTERNAL_HTTPS_LOAD_BALANCER`, `REGIONAL_MANAGED_PROXY`, or `PRIVATE_SERVICE_CONNECT`.
+        :param pulumi.Input[str] purpose: The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `INTERNAL_HTTPS_LOAD_BALANCER`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY` or `PRIVATE_SERVICE_CONNECT`.
                A subnetwork with purpose set to `INTERNAL_HTTPS_LOAD_BALANCER` is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing.
                A subnetwork in a given region with purpose set to `REGIONAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the regional Envoy-based load balancers.
+               A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
                A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
                If unspecified, the purpose defaults to `PRIVATE_RFC_1918`.
-               The enableFlowLogs field isn't supported with the purpose field set to `INTERNAL_HTTPS_LOAD_BALANCER`.
+               The enableFlowLogs field isn't supported with the purpose field set to `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`.
         :param pulumi.Input[str] region: The GCP region for this subnetwork.
         :param pulumi.Input[str] role: The role of subnetwork.
                The value can be set to `ACTIVE` or `BACKUP`.
@@ -1199,7 +1204,7 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[str] ipv6_cidr_range: The range of internal IPv6 addresses that are owned by this subnetwork.
         :param pulumi.Input[pulumi.InputType['SubnetworkLogConfigArgs']] log_config: Denotes the logging options for the subnetwork flow logs. If logging is enabled
                logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
-               subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`
+               subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially
                creating the resource. The name must be 1-63 characters long, and
@@ -1218,12 +1223,13 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[str] private_ipv6_google_access: The private IPv6 google access type for the VMs in this subnet.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] purpose: The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `INTERNAL_HTTPS_LOAD_BALANCER`, `REGIONAL_MANAGED_PROXY`, or `PRIVATE_SERVICE_CONNECT`.
+        :param pulumi.Input[str] purpose: The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `INTERNAL_HTTPS_LOAD_BALANCER`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY` or `PRIVATE_SERVICE_CONNECT`.
                A subnetwork with purpose set to `INTERNAL_HTTPS_LOAD_BALANCER` is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing.
                A subnetwork in a given region with purpose set to `REGIONAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the regional Envoy-based load balancers.
+               A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
                A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
                If unspecified, the purpose defaults to `PRIVATE_RFC_1918`.
-               The enableFlowLogs field isn't supported with the purpose field set to `INTERNAL_HTTPS_LOAD_BALANCER`.
+               The enableFlowLogs field isn't supported with the purpose field set to `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`.
         :param pulumi.Input[str] region: The GCP region for this subnetwork.
         :param pulumi.Input[str] role: The role of subnetwork.
                The value can be set to `ACTIVE` or `BACKUP`.
@@ -1349,7 +1355,7 @@ class Subnetwork(pulumi.CustomResource):
         """
         Denotes the logging options for the subnetwork flow logs. If logging is enabled
         logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
-        subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`
+        subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`
         Structure is documented below.
         """
         return pulumi.get(self, "log_config")
@@ -1410,12 +1416,13 @@ class Subnetwork(pulumi.CustomResource):
     @pulumi.getter
     def purpose(self) -> pulumi.Output[str]:
         """
-        The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `INTERNAL_HTTPS_LOAD_BALANCER`, `REGIONAL_MANAGED_PROXY`, or `PRIVATE_SERVICE_CONNECT`.
+        The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `INTERNAL_HTTPS_LOAD_BALANCER`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY` or `PRIVATE_SERVICE_CONNECT`.
         A subnetwork with purpose set to `INTERNAL_HTTPS_LOAD_BALANCER` is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing.
         A subnetwork in a given region with purpose set to `REGIONAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the regional Envoy-based load balancers.
+        A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
         A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
         If unspecified, the purpose defaults to `PRIVATE_RFC_1918`.
-        The enableFlowLogs field isn't supported with the purpose field set to `INTERNAL_HTTPS_LOAD_BALANCER`.
+        The enableFlowLogs field isn't supported with the purpose field set to `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`.
         """
         return pulumi.get(self, "purpose")
 

@@ -257,9 +257,8 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:compute/address:Address")
 public class Address extends com.pulumi.resources.CustomResource {
     /**
-     * The static external IP address represented by this resource. Only
-     * IPv4 is supported. An address may only be specified for INTERNAL
-     * address types. The IP address must be inside the specified subnetwork,
+     * The static external IP address represented by this resource.
+     * The IP address must be inside the specified subnetwork,
      * if any. Set by the API if undefined.
      * 
      */
@@ -267,9 +266,8 @@ public class Address extends com.pulumi.resources.CustomResource {
     private Output<String> address;
 
     /**
-     * @return The static external IP address represented by this resource. Only
-     * IPv4 is supported. An address may only be specified for INTERNAL
-     * address types. The IP address must be inside the specified subnetwork,
+     * @return The static external IP address represented by this resource.
+     * The IP address must be inside the specified subnetwork,
      * if any. Set by the API if undefined.
      * 
      */
@@ -323,6 +321,42 @@ public class Address extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * The IP Version that will be used by this address. The default value is `IPV4`.
+     * Possible values are: `IPV4`, `IPV6`.
+     * 
+     */
+    @Export(name="ipVersion", type=String.class, parameters={})
+    private Output</* @Nullable */ String> ipVersion;
+
+    /**
+     * @return The IP Version that will be used by this address. The default value is `IPV4`.
+     * Possible values are: `IPV4`, `IPV6`.
+     * 
+     */
+    public Output<Optional<String>> ipVersion() {
+        return Codegen.optional(this.ipVersion);
+    }
+    /**
+     * The endpoint type of this address, which should be VM or NETLB. This is
+     * used for deciding which type of endpoint this address can be used after
+     * the external IPv6 address reservation.
+     * Possible values are: `VM`, `NETLB`.
+     * 
+     */
+    @Export(name="ipv6EndpointType", type=String.class, parameters={})
+    private Output</* @Nullable */ String> ipv6EndpointType;
+
+    /**
+     * @return The endpoint type of this address, which should be VM or NETLB. This is
+     * used for deciding which type of endpoint this address can be used after
+     * the external IPv6 address reservation.
+     * Possible values are: `VM`, `NETLB`.
+     * 
+     */
+    public Output<Optional<String>> ipv6EndpointType() {
+        return Codegen.optional(this.ipv6EndpointType);
     }
     /**
      * The fingerprint used for optimistic locking of this resource. Used internally during updates.
@@ -423,14 +457,14 @@ public class Address extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="prefixLength", type=Integer.class, parameters={})
-    private Output</* @Nullable */ Integer> prefixLength;
+    private Output<Integer> prefixLength;
 
     /**
      * @return The prefix length if the resource represents an IP range.
      * 
      */
-    public Output<Optional<Integer>> prefixLength() {
-        return Codegen.optional(this.prefixLength);
+    public Output<Integer> prefixLength() {
+        return this.prefixLength;
     }
     /**
      * The ID of the project in which the resource belongs.

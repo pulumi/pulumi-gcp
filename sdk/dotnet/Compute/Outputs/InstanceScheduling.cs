@@ -23,6 +23,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// Describe the type of termination action for VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         /// </summary>
         public readonly string? InstanceTerminationAction;
+        public readonly Outputs.InstanceSchedulingLocalSsdRecoveryTimeout? LocalSsdRecoveryTimeout;
         public readonly string? MaintenanceInterval;
         public readonly Outputs.InstanceSchedulingMaxRunDuration? MaxRunDuration;
         /// <summary>
@@ -63,6 +64,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? instanceTerminationAction,
 
+            Outputs.InstanceSchedulingLocalSsdRecoveryTimeout? localSsdRecoveryTimeout,
+
             string? maintenanceInterval,
 
             Outputs.InstanceSchedulingMaxRunDuration? maxRunDuration,
@@ -79,6 +82,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         {
             AutomaticRestart = automaticRestart;
             InstanceTerminationAction = instanceTerminationAction;
+            LocalSsdRecoveryTimeout = localSsdRecoveryTimeout;
             MaintenanceInterval = maintenanceInterval;
             MaxRunDuration = maxRunDuration;
             MinNodeCpus = minNodeCpus;

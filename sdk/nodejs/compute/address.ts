@@ -157,9 +157,8 @@ export class Address extends pulumi.CustomResource {
     }
 
     /**
-     * The static external IP address represented by this resource. Only
-     * IPv4 is supported. An address may only be specified for INTERNAL
-     * address types. The IP address must be inside the specified subnetwork,
+     * The static external IP address represented by this resource.
+     * The IP address must be inside the specified subnetwork,
      * if any. Set by the API if undefined.
      */
     public readonly address!: pulumi.Output<string>;
@@ -178,6 +177,18 @@ export class Address extends pulumi.CustomResource {
      * An optional description of this resource.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * The IP Version that will be used by this address. The default value is `IPV4`.
+     * Possible values are: `IPV4`, `IPV6`.
+     */
+    public readonly ipVersion!: pulumi.Output<string | undefined>;
+    /**
+     * The endpoint type of this address, which should be VM or NETLB. This is
+     * used for deciding which type of endpoint this address can be used after
+     * the external IPv6 address reservation.
+     * Possible values are: `VM`, `NETLB`.
+     */
+    public readonly ipv6EndpointType!: pulumi.Output<string | undefined>;
     /**
      * The fingerprint used for optimistic locking of this resource. Used internally during updates.
      */
@@ -214,7 +225,7 @@ export class Address extends pulumi.CustomResource {
     /**
      * The prefix length if the resource represents an IP range.
      */
-    public readonly prefixLength!: pulumi.Output<number | undefined>;
+    public readonly prefixLength!: pulumi.Output<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -275,6 +286,8 @@ export class Address extends pulumi.CustomResource {
             resourceInputs["addressType"] = state ? state.addressType : undefined;
             resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
+            resourceInputs["ipv6EndpointType"] = state ? state.ipv6EndpointType : undefined;
             resourceInputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -292,6 +305,8 @@ export class Address extends pulumi.CustomResource {
             resourceInputs["address"] = args ? args.address : undefined;
             resourceInputs["addressType"] = args ? args.addressType : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
+            resourceInputs["ipv6EndpointType"] = args ? args.ipv6EndpointType : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
@@ -316,9 +331,8 @@ export class Address extends pulumi.CustomResource {
  */
 export interface AddressState {
     /**
-     * The static external IP address represented by this resource. Only
-     * IPv4 is supported. An address may only be specified for INTERNAL
-     * address types. The IP address must be inside the specified subnetwork,
+     * The static external IP address represented by this resource.
+     * The IP address must be inside the specified subnetwork,
      * if any. Set by the API if undefined.
      */
     address?: pulumi.Input<string>;
@@ -337,6 +351,18 @@ export interface AddressState {
      * An optional description of this resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The IP Version that will be used by this address. The default value is `IPV4`.
+     * Possible values are: `IPV4`, `IPV6`.
+     */
+    ipVersion?: pulumi.Input<string>;
+    /**
+     * The endpoint type of this address, which should be VM or NETLB. This is
+     * used for deciding which type of endpoint this address can be used after
+     * the external IPv6 address reservation.
+     * Possible values are: `VM`, `NETLB`.
+     */
+    ipv6EndpointType?: pulumi.Input<string>;
     /**
      * The fingerprint used for optimistic locking of this resource. Used internally during updates.
      */
@@ -423,9 +449,8 @@ export interface AddressState {
  */
 export interface AddressArgs {
     /**
-     * The static external IP address represented by this resource. Only
-     * IPv4 is supported. An address may only be specified for INTERNAL
-     * address types. The IP address must be inside the specified subnetwork,
+     * The static external IP address represented by this resource.
+     * The IP address must be inside the specified subnetwork,
      * if any. Set by the API if undefined.
      */
     address?: pulumi.Input<string>;
@@ -440,6 +465,18 @@ export interface AddressArgs {
      * An optional description of this resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The IP Version that will be used by this address. The default value is `IPV4`.
+     * Possible values are: `IPV4`, `IPV6`.
+     */
+    ipVersion?: pulumi.Input<string>;
+    /**
+     * The endpoint type of this address, which should be VM or NETLB. This is
+     * used for deciding which type of endpoint this address can be used after
+     * the external IPv6 address reservation.
+     * Possible values are: `VM`, `NETLB`.
+     */
+    ipv6EndpointType?: pulumi.Input<string>;
     /**
      * Labels to apply to this address.  A list of key->value pairs.
      */

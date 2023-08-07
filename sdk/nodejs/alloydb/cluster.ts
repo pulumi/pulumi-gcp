@@ -49,6 +49,10 @@ import * as utilities from "../utilities";
  *         user: "alloydb-cluster-full",
  *         password: "alloydb-cluster-full",
  *     },
+ *     continuousBackupConfig: {
+ *         enabled: true,
+ *         recoveryWindowDays: 14,
+ *     },
  *     automatedBackupPolicy: {
  *         location: "us-central1",
  *         backupWindow: "1800s",
@@ -125,8 +129,7 @@ export class Cluster extends pulumi.CustomResource {
     }
 
     /**
-     * The automated backup policy for this cluster.
-     * If no policy is provided then the default policy will be used. The default policy takes one backup a day, has a backup window of 1 hour, and retains backups for 14 days.
+     * The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
      * Structure is documented below.
      */
     public readonly automatedBackupPolicy!: pulumi.Output<outputs.alloydb.ClusterAutomatedBackupPolicy>;
@@ -139,6 +142,17 @@ export class Cluster extends pulumi.CustomResource {
      * The ID of the alloydb cluster.
      */
     public readonly clusterId!: pulumi.Output<string>;
+    /**
+     * The continuous backup config for this cluster.
+     * If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
+     * Structure is documented below.
+     */
+    public readonly continuousBackupConfig!: pulumi.Output<outputs.alloydb.ClusterContinuousBackupConfig>;
+    /**
+     * ContinuousBackupInfo describes the continuous backup properties of a cluster.
+     * Structure is documented below.
+     */
+    public /*out*/ readonly continuousBackupInfos!: pulumi.Output<outputs.alloydb.ClusterContinuousBackupInfo[]>;
     /**
      * The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
      */
@@ -153,7 +167,8 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly encryptionConfig!: pulumi.Output<outputs.alloydb.ClusterEncryptionConfig | undefined>;
     /**
-     * EncryptionInfo describes the encryption information of a cluster or a backup.
+     * (Output)
+     * Output only. The encryption information for the WALs and backups required for ContinuousBackup.
      * Structure is documented below.
      */
     public /*out*/ readonly encryptionInfos!: pulumi.Output<outputs.alloydb.ClusterEncryptionInfo[]>;
@@ -213,6 +228,8 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["automatedBackupPolicy"] = state ? state.automatedBackupPolicy : undefined;
             resourceInputs["backupSources"] = state ? state.backupSources : undefined;
             resourceInputs["clusterId"] = state ? state.clusterId : undefined;
+            resourceInputs["continuousBackupConfig"] = state ? state.continuousBackupConfig : undefined;
+            resourceInputs["continuousBackupInfos"] = state ? state.continuousBackupInfos : undefined;
             resourceInputs["databaseVersion"] = state ? state.databaseVersion : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["encryptionConfig"] = state ? state.encryptionConfig : undefined;
@@ -238,6 +255,7 @@ export class Cluster extends pulumi.CustomResource {
             }
             resourceInputs["automatedBackupPolicy"] = args ? args.automatedBackupPolicy : undefined;
             resourceInputs["clusterId"] = args ? args.clusterId : undefined;
+            resourceInputs["continuousBackupConfig"] = args ? args.continuousBackupConfig : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
             resourceInputs["initialUser"] = args ? args.initialUser : undefined;
@@ -246,6 +264,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["backupSources"] = undefined /*out*/;
+            resourceInputs["continuousBackupInfos"] = undefined /*out*/;
             resourceInputs["databaseVersion"] = undefined /*out*/;
             resourceInputs["encryptionInfos"] = undefined /*out*/;
             resourceInputs["migrationSources"] = undefined /*out*/;
@@ -262,8 +281,7 @@ export class Cluster extends pulumi.CustomResource {
  */
 export interface ClusterState {
     /**
-     * The automated backup policy for this cluster.
-     * If no policy is provided then the default policy will be used. The default policy takes one backup a day, has a backup window of 1 hour, and retains backups for 14 days.
+     * The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
      * Structure is documented below.
      */
     automatedBackupPolicy?: pulumi.Input<inputs.alloydb.ClusterAutomatedBackupPolicy>;
@@ -276,6 +294,17 @@ export interface ClusterState {
      * The ID of the alloydb cluster.
      */
     clusterId?: pulumi.Input<string>;
+    /**
+     * The continuous backup config for this cluster.
+     * If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
+     * Structure is documented below.
+     */
+    continuousBackupConfig?: pulumi.Input<inputs.alloydb.ClusterContinuousBackupConfig>;
+    /**
+     * ContinuousBackupInfo describes the continuous backup properties of a cluster.
+     * Structure is documented below.
+     */
+    continuousBackupInfos?: pulumi.Input<pulumi.Input<inputs.alloydb.ClusterContinuousBackupInfo>[]>;
     /**
      * The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
      */
@@ -290,7 +319,8 @@ export interface ClusterState {
      */
     encryptionConfig?: pulumi.Input<inputs.alloydb.ClusterEncryptionConfig>;
     /**
-     * EncryptionInfo describes the encryption information of a cluster or a backup.
+     * (Output)
+     * Output only. The encryption information for the WALs and backups required for ContinuousBackup.
      * Structure is documented below.
      */
     encryptionInfos?: pulumi.Input<pulumi.Input<inputs.alloydb.ClusterEncryptionInfo>[]>;
@@ -340,8 +370,7 @@ export interface ClusterState {
  */
 export interface ClusterArgs {
     /**
-     * The automated backup policy for this cluster.
-     * If no policy is provided then the default policy will be used. The default policy takes one backup a day, has a backup window of 1 hour, and retains backups for 14 days.
+     * The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
      * Structure is documented below.
      */
     automatedBackupPolicy?: pulumi.Input<inputs.alloydb.ClusterAutomatedBackupPolicy>;
@@ -349,6 +378,12 @@ export interface ClusterArgs {
      * The ID of the alloydb cluster.
      */
     clusterId: pulumi.Input<string>;
+    /**
+     * The continuous backup config for this cluster.
+     * If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
+     * Structure is documented below.
+     */
+    continuousBackupConfig?: pulumi.Input<inputs.alloydb.ClusterContinuousBackupConfig>;
     /**
      * User-settable and human-readable display name for the Cluster.
      */

@@ -13,6 +13,14 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class NodePoolPlacementPolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// If set, refers to the name of a custom resource policy supplied by the user.
+        /// The resource policy must be in the same project and region as the node pool.
+        /// If not found, InvalidArgument error is returned.
+        /// </summary>
+        [Input("policyName")]
+        public Input<string>? PolicyName { get; set; }
+
+        /// <summary>
         /// The [TPU placement topology](https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies) for pod slice node pool.
         /// </summary>
         [Input("tpuTopology")]

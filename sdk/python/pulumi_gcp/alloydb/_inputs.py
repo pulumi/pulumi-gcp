@@ -19,6 +19,10 @@ __all__ = [
     'ClusterAutomatedBackupPolicyWeeklyScheduleArgs',
     'ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs',
     'ClusterBackupSourceArgs',
+    'ClusterContinuousBackupConfigArgs',
+    'ClusterContinuousBackupConfigEncryptionConfigArgs',
+    'ClusterContinuousBackupInfoArgs',
+    'ClusterContinuousBackupInfoEncryptionInfoArgs',
     'ClusterEncryptionConfigArgs',
     'ClusterEncryptionInfoArgs',
     'ClusterInitialUserArgs',
@@ -445,6 +449,212 @@ class ClusterBackupSourceArgs:
     @backup_name.setter
     def backup_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "backup_name", value)
+
+
+@pulumi.input_type
+class ClusterContinuousBackupConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 encryption_config: Optional[pulumi.Input['ClusterContinuousBackupConfigEncryptionConfigArgs']] = None,
+                 recovery_window_days: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Whether continuous backup recovery is enabled. If not set, defaults to true.
+        :param pulumi.Input['ClusterContinuousBackupConfigEncryptionConfigArgs'] encryption_config: EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+               Structure is documented below.
+        :param pulumi.Input[int] recovery_window_days: The numbers of days that are eligible to restore from using PITR. To support the entire recovery window, backups and logs are retained for one day more than the recovery window.
+               If not set, defaults to 14 days.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if encryption_config is not None:
+            pulumi.set(__self__, "encryption_config", encryption_config)
+        if recovery_window_days is not None:
+            pulumi.set(__self__, "recovery_window_days", recovery_window_days)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether continuous backup recovery is enabled. If not set, defaults to true.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="encryptionConfig")
+    def encryption_config(self) -> Optional[pulumi.Input['ClusterContinuousBackupConfigEncryptionConfigArgs']]:
+        """
+        EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_config")
+
+    @encryption_config.setter
+    def encryption_config(self, value: Optional[pulumi.Input['ClusterContinuousBackupConfigEncryptionConfigArgs']]):
+        pulumi.set(self, "encryption_config", value)
+
+    @property
+    @pulumi.getter(name="recoveryWindowDays")
+    def recovery_window_days(self) -> Optional[pulumi.Input[int]]:
+        """
+        The numbers of days that are eligible to restore from using PITR. To support the entire recovery window, backups and logs are retained for one day more than the recovery window.
+        If not set, defaults to 14 days.
+        """
+        return pulumi.get(self, "recovery_window_days")
+
+    @recovery_window_days.setter
+    def recovery_window_days(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "recovery_window_days", value)
+
+
+@pulumi.input_type
+class ClusterContinuousBackupConfigEncryptionConfigArgs:
+    def __init__(__self__, *,
+                 kms_key_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] kms_key_name: The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+        """
+        if kms_key_name is not None:
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_name", value)
+
+
+@pulumi.input_type
+class ClusterContinuousBackupInfoArgs:
+    def __init__(__self__, *,
+                 earliest_restorable_time: Optional[pulumi.Input[str]] = None,
+                 enabled_time: Optional[pulumi.Input[str]] = None,
+                 encryption_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterContinuousBackupInfoEncryptionInfoArgs']]]] = None,
+                 schedules: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] earliest_restorable_time: (Output)
+               The earliest restorable time that can be restored to. Output only field.
+        :param pulumi.Input[str] enabled_time: (Output)
+               When ContinuousBackup was most recently enabled. Set to null if ContinuousBackup is not enabled.
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterContinuousBackupInfoEncryptionInfoArgs']]] encryption_infos: (Output)
+               Output only. The encryption information for the WALs and backups required for ContinuousBackup.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] schedules: (Output)
+               Days of the week on which a continuous backup is taken. Output only field. Ignored if passed into the request.
+        """
+        if earliest_restorable_time is not None:
+            pulumi.set(__self__, "earliest_restorable_time", earliest_restorable_time)
+        if enabled_time is not None:
+            pulumi.set(__self__, "enabled_time", enabled_time)
+        if encryption_infos is not None:
+            pulumi.set(__self__, "encryption_infos", encryption_infos)
+        if schedules is not None:
+            pulumi.set(__self__, "schedules", schedules)
+
+    @property
+    @pulumi.getter(name="earliestRestorableTime")
+    def earliest_restorable_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The earliest restorable time that can be restored to. Output only field.
+        """
+        return pulumi.get(self, "earliest_restorable_time")
+
+    @earliest_restorable_time.setter
+    def earliest_restorable_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "earliest_restorable_time", value)
+
+    @property
+    @pulumi.getter(name="enabledTime")
+    def enabled_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        When ContinuousBackup was most recently enabled. Set to null if ContinuousBackup is not enabled.
+        """
+        return pulumi.get(self, "enabled_time")
+
+    @enabled_time.setter
+    def enabled_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "enabled_time", value)
+
+    @property
+    @pulumi.getter(name="encryptionInfos")
+    def encryption_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterContinuousBackupInfoEncryptionInfoArgs']]]]:
+        """
+        (Output)
+        Output only. The encryption information for the WALs and backups required for ContinuousBackup.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "encryption_infos")
+
+    @encryption_infos.setter
+    def encryption_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterContinuousBackupInfoEncryptionInfoArgs']]]]):
+        pulumi.set(self, "encryption_infos", value)
+
+    @property
+    @pulumi.getter
+    def schedules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        (Output)
+        Days of the week on which a continuous backup is taken. Output only field. Ignored if passed into the request.
+        """
+        return pulumi.get(self, "schedules")
+
+    @schedules.setter
+    def schedules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "schedules", value)
+
+
+@pulumi.input_type
+class ClusterContinuousBackupInfoEncryptionInfoArgs:
+    def __init__(__self__, *,
+                 encryption_type: Optional[pulumi.Input[str]] = None,
+                 kms_key_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] encryption_type: (Output)
+               Output only. Type of encryption.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] kms_key_versions: (Output)
+               Output only. Cloud KMS key versions that are being used to protect the database or the backup.
+        """
+        if encryption_type is not None:
+            pulumi.set(__self__, "encryption_type", encryption_type)
+        if kms_key_versions is not None:
+            pulumi.set(__self__, "kms_key_versions", kms_key_versions)
+
+    @property
+    @pulumi.getter(name="encryptionType")
+    def encryption_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Output only. Type of encryption.
+        """
+        return pulumi.get(self, "encryption_type")
+
+    @encryption_type.setter
+    def encryption_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encryption_type", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyVersions")
+    def kms_key_versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        (Output)
+        Output only. Cloud KMS key versions that are being used to protect the database or the backup.
+        """
+        return pulumi.get(self, "kms_key_versions")
+
+    @kms_key_versions.setter
+    def kms_key_versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "kms_key_versions", value)
 
 
 @pulumi.input_type
