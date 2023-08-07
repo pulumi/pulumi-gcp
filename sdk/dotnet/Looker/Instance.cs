@@ -123,9 +123,9 @@ namespace Pulumi.Gcp.Looker
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var lookerNetwork = new Gcp.Compute.Network("lookerNetwork", new()
+    ///     var lookerNetwork = Gcp.Compute.GetNetwork.Invoke(new()
     ///     {
-    ///         AutoCreateSubnetworks = false,
+    ///         Name = "looker-network",
     ///     });
     /// 
     ///     var lookerRange = new Gcp.Compute.GlobalAddress("lookerRange", new()
@@ -133,12 +133,12 @@ namespace Pulumi.Gcp.Looker
     ///         Purpose = "VPC_PEERING",
     ///         AddressType = "INTERNAL",
     ///         PrefixLength = 20,
-    ///         Network = lookerNetwork.Id,
+    ///         Network = lookerNetwork.Apply(getNetworkResult =&gt; getNetworkResult.Id),
     ///     });
     /// 
     ///     var lookerVpcConnection = new Gcp.ServiceNetworking.Connection("lookerVpcConnection", new()
     ///     {
-    ///         Network = lookerNetwork.Id,
+    ///         Network = lookerNetwork.Apply(getNetworkResult =&gt; getNetworkResult.Id),
     ///         Service = "servicenetworking.googleapis.com",
     ///         ReservedPeeringRanges = new[]
     ///         {
@@ -153,7 +153,7 @@ namespace Pulumi.Gcp.Looker
     ///         PrivateIpEnabled = true,
     ///         PublicIpEnabled = false,
     ///         ReservedRange = lookerRange.Name,
-    ///         ConsumerNetwork = lookerNetwork.Id,
+    ///         ConsumerNetwork = lookerNetwork.Apply(getNetworkResult =&gt; getNetworkResult.Id),
     ///         AdminSettings = new Gcp.Looker.Inputs.InstanceAdminSettingsArgs
     ///         {
     ///             AllowedEmailDomains = new[]

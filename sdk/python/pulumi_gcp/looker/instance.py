@@ -822,7 +822,7 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        looker_network = gcp.compute.Network("lookerNetwork", auto_create_subnetworks=False)
+        looker_network = gcp.compute.get_network(name="looker-network")
         looker_range = gcp.compute.GlobalAddress("lookerRange",
             purpose="VPC_PEERING",
             address_type="INTERNAL",
@@ -1040,7 +1040,7 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        looker_network = gcp.compute.Network("lookerNetwork", auto_create_subnetworks=False)
+        looker_network = gcp.compute.get_network(name="looker-network")
         looker_range = gcp.compute.GlobalAddress("lookerRange",
             purpose="VPC_PEERING",
             address_type="INTERNAL",

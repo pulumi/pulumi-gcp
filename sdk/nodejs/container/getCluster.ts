@@ -78,6 +78,7 @@ export interface GetClusterResult {
     readonly enableAutopilot: boolean;
     readonly enableBinaryAuthorization: boolean;
     readonly enableIntranodeVisibility: boolean;
+    readonly enableK8sBetaApis: outputs.container.GetClusterEnableK8sBetaApi[];
     readonly enableKubernetesAlpha: boolean;
     readonly enableL4IlbSubsetting: boolean;
     readonly enableLegacyAbac: boolean;

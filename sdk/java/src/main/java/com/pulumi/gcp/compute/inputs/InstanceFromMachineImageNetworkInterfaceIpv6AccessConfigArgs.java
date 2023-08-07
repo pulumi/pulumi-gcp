@@ -29,6 +29,23 @@ public final class InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArgs 
         return Optional.ofNullable(this.externalIpv6PrefixLength);
     }
 
+    /**
+     * A unique name for the resource, required by GCE.
+     * Changing this forces a new resource to be created.
+     * 
+     */
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    /**
+     * @return A unique name for the resource, required by GCE.
+     * Changing this forces a new resource to be created.
+     * 
+     */
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
+    }
+
     @Import(name="networkTier", required=true)
     private Output<String> networkTier;
 
@@ -48,6 +65,7 @@ public final class InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArgs 
     private InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArgs(InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArgs $) {
         this.externalIpv6 = $.externalIpv6;
         this.externalIpv6PrefixLength = $.externalIpv6PrefixLength;
+        this.name = $.name;
         this.networkTier = $.networkTier;
         this.publicPtrDomainName = $.publicPtrDomainName;
     }
@@ -86,6 +104,29 @@ public final class InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArgs 
 
         public Builder externalIpv6PrefixLength(String externalIpv6PrefixLength) {
             return externalIpv6PrefixLength(Output.of(externalIpv6PrefixLength));
+        }
+
+        /**
+         * @param name A unique name for the resource, required by GCE.
+         * Changing this forces a new resource to be created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param name A unique name for the resource, required by GCE.
+         * Changing this forces a new resource to be created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            return name(Output.of(name));
         }
 
         public Builder networkTier(Output<String> networkTier) {

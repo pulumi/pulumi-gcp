@@ -16,6 +16,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly string ExternalIpv6;
         public readonly string ExternalIpv6PrefixLength;
         /// <summary>
+        /// The name of the instance. One of `name` or `self_link` must be provided.
+        /// </summary>
+        public readonly string Name;
+        /// <summary>
         /// The [networking tier][network-tier] used for configuring this instance. One of `PREMIUM` or `STANDARD`.
         /// </summary>
         public readonly string NetworkTier;
@@ -30,12 +34,15 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string externalIpv6PrefixLength,
 
+            string name,
+
             string networkTier,
 
             string publicPtrDomainName)
         {
             ExternalIpv6 = externalIpv6;
             ExternalIpv6PrefixLength = externalIpv6PrefixLength;
+            Name = name;
             NetworkTier = networkTier;
             PublicPtrDomainName = publicPtrDomainName;
         }

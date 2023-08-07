@@ -53,7 +53,7 @@ import * as utilities from "../utilities";
  *     },
  *     networkConfig: {
  *         network: "default",
- *         ipAllocation: pulumi.all([privateIpAlloc.address, privateIpAlloc.prefixLength]).apply(([address, prefixLength]) => `${address}/${prefixLength}`),
+ *         ipAllocation: pulumi.interpolate`${privateIpAlloc.address}/${privateIpAlloc.prefixLength}`,
  *     },
  *     accelerators: [{
  *         acceleratorType: "CDC",

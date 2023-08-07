@@ -7,6 +7,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.alloydb.inputs.ClusterAutomatedBackupPolicyArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterBackupSourceArgs;
+import com.pulumi.gcp.alloydb.inputs.ClusterContinuousBackupConfigArgs;
+import com.pulumi.gcp.alloydb.inputs.ClusterContinuousBackupInfoArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterEncryptionConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterEncryptionInfoArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterInitialUserArgs;
@@ -24,8 +26,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     public static final ClusterState Empty = new ClusterState();
 
     /**
-     * The automated backup policy for this cluster.
-     * If no policy is provided then the default policy will be used. The default policy takes one backup a day, has a backup window of 1 hour, and retains backups for 14 days.
+     * The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
      * Structure is documented below.
      * 
      */
@@ -33,8 +34,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<ClusterAutomatedBackupPolicyArgs> automatedBackupPolicy;
 
     /**
-     * @return The automated backup policy for this cluster.
-     * If no policy is provided then the default policy will be used. The default policy takes one backup a day, has a backup window of 1 hour, and retains backups for 14 days.
+     * @return The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
      * Structure is documented below.
      * 
      */
@@ -72,6 +72,42 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> clusterId() {
         return Optional.ofNullable(this.clusterId);
+    }
+
+    /**
+     * The continuous backup config for this cluster.
+     * If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="continuousBackupConfig")
+    private @Nullable Output<ClusterContinuousBackupConfigArgs> continuousBackupConfig;
+
+    /**
+     * @return The continuous backup config for this cluster.
+     * If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterContinuousBackupConfigArgs>> continuousBackupConfig() {
+        return Optional.ofNullable(this.continuousBackupConfig);
+    }
+
+    /**
+     * ContinuousBackupInfo describes the continuous backup properties of a cluster.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="continuousBackupInfos")
+    private @Nullable Output<List<ClusterContinuousBackupInfoArgs>> continuousBackupInfos;
+
+    /**
+     * @return ContinuousBackupInfo describes the continuous backup properties of a cluster.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<ClusterContinuousBackupInfoArgs>>> continuousBackupInfos() {
+        return Optional.ofNullable(this.continuousBackupInfos);
     }
 
     /**
@@ -122,7 +158,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * EncryptionInfo describes the encryption information of a cluster or a backup.
+     * (Output)
+     * Output only. The encryption information for the WALs and backups required for ContinuousBackup.
      * Structure is documented below.
      * 
      */
@@ -130,7 +167,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<ClusterEncryptionInfoArgs>> encryptionInfos;
 
     /**
-     * @return EncryptionInfo describes the encryption information of a cluster or a backup.
+     * @return (Output)
+     * Output only. The encryption information for the WALs and backups required for ContinuousBackup.
      * Structure is documented below.
      * 
      */
@@ -276,6 +314,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.automatedBackupPolicy = $.automatedBackupPolicy;
         this.backupSources = $.backupSources;
         this.clusterId = $.clusterId;
+        this.continuousBackupConfig = $.continuousBackupConfig;
+        this.continuousBackupInfos = $.continuousBackupInfos;
         this.databaseVersion = $.databaseVersion;
         this.displayName = $.displayName;
         this.encryptionConfig = $.encryptionConfig;
@@ -309,8 +349,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param automatedBackupPolicy The automated backup policy for this cluster.
-         * If no policy is provided then the default policy will be used. The default policy takes one backup a day, has a backup window of 1 hour, and retains backups for 14 days.
+         * @param automatedBackupPolicy The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
          * Structure is documented below.
          * 
          * @return builder
@@ -322,8 +361,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param automatedBackupPolicy The automated backup policy for this cluster.
-         * If no policy is provided then the default policy will be used. The default policy takes one backup a day, has a backup window of 1 hour, and retains backups for 14 days.
+         * @param automatedBackupPolicy The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
          * Structure is documented below.
          * 
          * @return builder
@@ -386,6 +424,65 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder clusterId(String clusterId) {
             return clusterId(Output.of(clusterId));
+        }
+
+        /**
+         * @param continuousBackupConfig The continuous backup config for this cluster.
+         * If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder continuousBackupConfig(@Nullable Output<ClusterContinuousBackupConfigArgs> continuousBackupConfig) {
+            $.continuousBackupConfig = continuousBackupConfig;
+            return this;
+        }
+
+        /**
+         * @param continuousBackupConfig The continuous backup config for this cluster.
+         * If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder continuousBackupConfig(ClusterContinuousBackupConfigArgs continuousBackupConfig) {
+            return continuousBackupConfig(Output.of(continuousBackupConfig));
+        }
+
+        /**
+         * @param continuousBackupInfos ContinuousBackupInfo describes the continuous backup properties of a cluster.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder continuousBackupInfos(@Nullable Output<List<ClusterContinuousBackupInfoArgs>> continuousBackupInfos) {
+            $.continuousBackupInfos = continuousBackupInfos;
+            return this;
+        }
+
+        /**
+         * @param continuousBackupInfos ContinuousBackupInfo describes the continuous backup properties of a cluster.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder continuousBackupInfos(List<ClusterContinuousBackupInfoArgs> continuousBackupInfos) {
+            return continuousBackupInfos(Output.of(continuousBackupInfos));
+        }
+
+        /**
+         * @param continuousBackupInfos ContinuousBackupInfo describes the continuous backup properties of a cluster.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder continuousBackupInfos(ClusterContinuousBackupInfoArgs... continuousBackupInfos) {
+            return continuousBackupInfos(List.of(continuousBackupInfos));
         }
 
         /**
@@ -454,7 +551,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encryptionInfos EncryptionInfo describes the encryption information of a cluster or a backup.
+         * @param encryptionInfos (Output)
+         * Output only. The encryption information for the WALs and backups required for ContinuousBackup.
          * Structure is documented below.
          * 
          * @return builder
@@ -466,7 +564,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encryptionInfos EncryptionInfo describes the encryption information of a cluster or a backup.
+         * @param encryptionInfos (Output)
+         * Output only. The encryption information for the WALs and backups required for ContinuousBackup.
          * Structure is documented below.
          * 
          * @return builder
@@ -477,7 +576,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encryptionInfos EncryptionInfo describes the encryption information of a cluster or a backup.
+         * @param encryptionInfos (Output)
+         * Output only. The encryption information for the WALs and backups required for ContinuousBackup.
          * Structure is documented below.
          * 
          * @return builder

@@ -5,6 +5,7 @@ package com.pulumi.gcp.pubsub.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.pubsub.inputs.SubscriptionPushConfigNoWrapperArgs;
 import com.pulumi.gcp.pubsub.inputs.SubscriptionPushConfigOidcTokenArgs;
 import java.lang.String;
 import java.util.Map;
@@ -67,6 +68,25 @@ public final class SubscriptionPushConfigArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * When set, the payload to the push endpoint is not wrapped.Sets the
+     * `data` field as the HTTP body for delivery.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="noWrapper")
+    private @Nullable Output<SubscriptionPushConfigNoWrapperArgs> noWrapper;
+
+    /**
+     * @return When set, the payload to the push endpoint is not wrapped.Sets the
+     * `data` field as the HTTP body for delivery.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<SubscriptionPushConfigNoWrapperArgs>> noWrapper() {
+        return Optional.ofNullable(this.noWrapper);
+    }
+
+    /**
      * If specified, Pub/Sub will generate and attach an OIDC JWT token as
      * an Authorization header in the HTTP request for every pushed message.
      * Structure is documented below.
@@ -108,6 +128,7 @@ public final class SubscriptionPushConfigArgs extends com.pulumi.resources.Resou
 
     private SubscriptionPushConfigArgs(SubscriptionPushConfigArgs $) {
         this.attributes = $.attributes;
+        this.noWrapper = $.noWrapper;
         this.oidcToken = $.oidcToken;
         this.pushEndpoint = $.pushEndpoint;
     }
@@ -183,6 +204,31 @@ public final class SubscriptionPushConfigArgs extends com.pulumi.resources.Resou
          */
         public Builder attributes(Map<String,String> attributes) {
             return attributes(Output.of(attributes));
+        }
+
+        /**
+         * @param noWrapper When set, the payload to the push endpoint is not wrapped.Sets the
+         * `data` field as the HTTP body for delivery.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder noWrapper(@Nullable Output<SubscriptionPushConfigNoWrapperArgs> noWrapper) {
+            $.noWrapper = noWrapper;
+            return this;
+        }
+
+        /**
+         * @param noWrapper When set, the payload to the push endpoint is not wrapped.Sets the
+         * `data` field as the HTTP body for delivery.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder noWrapper(SubscriptionPushConfigNoWrapperArgs noWrapper) {
+            return noWrapper(Output.of(noWrapper));
         }
 
         /**

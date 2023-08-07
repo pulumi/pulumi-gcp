@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class ClusterNodePoolPlacementPolicy
     {
+        public readonly string? PolicyName;
         public readonly string? TpuTopology;
         /// <summary>
         /// Telemetry integration for the cluster. Supported values (`ENABLED, DISABLED, SYSTEM_ONLY`);
@@ -22,10 +23,13 @@ namespace Pulumi.Gcp.Container.Outputs
 
         [OutputConstructor]
         private ClusterNodePoolPlacementPolicy(
+            string? policyName,
+
             string? tpuTopology,
 
             string type)
         {
+            PolicyName = policyName;
             TpuTopology = tpuTopology;
             Type = type;
         }

@@ -19,6 +19,13 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? ExternalIpv6PrefixLength { get; set; }
 
         /// <summary>
+        /// The name of the instance template. If you leave
+        /// this blank, the provider will auto-generate a unique name.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
         /// The [networking tier][network-tier] used for configuring
         /// this instance template. This field can take the following values: PREMIUM,
         /// STANDARD or FIXED_STANDARD. If this field is not specified, it is assumed to be PREMIUM.

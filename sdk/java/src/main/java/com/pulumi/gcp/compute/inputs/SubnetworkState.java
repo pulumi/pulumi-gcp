@@ -168,7 +168,7 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
     /**
      * Denotes the logging options for the subnetwork flow logs. If logging is enabled
      * logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
-     * subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`
+     * subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`
      * Structure is documented below.
      * 
      */
@@ -178,7 +178,7 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Denotes the logging options for the subnetwork flow logs. If logging is enabled
      * logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
-     * subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`
+     * subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`
      * Structure is documented below.
      * 
      */
@@ -284,24 +284,26 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `INTERNAL_HTTPS_LOAD_BALANCER`, `REGIONAL_MANAGED_PROXY`, or `PRIVATE_SERVICE_CONNECT`.
+     * The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `INTERNAL_HTTPS_LOAD_BALANCER`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY` or `PRIVATE_SERVICE_CONNECT`.
      * A subnetwork with purpose set to `INTERNAL_HTTPS_LOAD_BALANCER` is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing.
      * A subnetwork in a given region with purpose set to `REGIONAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the regional Envoy-based load balancers.
+     * A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
      * A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
      * If unspecified, the purpose defaults to `PRIVATE_RFC_1918`.
-     * The enableFlowLogs field isn&#39;t supported with the purpose field set to `INTERNAL_HTTPS_LOAD_BALANCER`.
+     * The enableFlowLogs field isn&#39;t supported with the purpose field set to `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`.
      * 
      */
     @Import(name="purpose")
     private @Nullable Output<String> purpose;
 
     /**
-     * @return The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `INTERNAL_HTTPS_LOAD_BALANCER`, `REGIONAL_MANAGED_PROXY`, or `PRIVATE_SERVICE_CONNECT`.
+     * @return The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `INTERNAL_HTTPS_LOAD_BALANCER`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY` or `PRIVATE_SERVICE_CONNECT`.
      * A subnetwork with purpose set to `INTERNAL_HTTPS_LOAD_BALANCER` is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing.
      * A subnetwork in a given region with purpose set to `REGIONAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the regional Envoy-based load balancers.
+     * A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
      * A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
      * If unspecified, the purpose defaults to `PRIVATE_RFC_1918`.
-     * The enableFlowLogs field isn&#39;t supported with the purpose field set to `INTERNAL_HTTPS_LOAD_BALANCER`.
+     * The enableFlowLogs field isn&#39;t supported with the purpose field set to `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`.
      * 
      */
     public Optional<Output<String>> purpose() {
@@ -645,7 +647,7 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param logConfig Denotes the logging options for the subnetwork flow logs. If logging is enabled
          * logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
-         * subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`
+         * subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`
          * Structure is documented below.
          * 
          * @return builder
@@ -659,7 +661,7 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param logConfig Denotes the logging options for the subnetwork flow logs. If logging is enabled
          * logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
-         * subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER`
+         * subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`
          * Structure is documented below.
          * 
          * @return builder
@@ -797,12 +799,13 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param purpose The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `INTERNAL_HTTPS_LOAD_BALANCER`, `REGIONAL_MANAGED_PROXY`, or `PRIVATE_SERVICE_CONNECT`.
+         * @param purpose The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `INTERNAL_HTTPS_LOAD_BALANCER`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY` or `PRIVATE_SERVICE_CONNECT`.
          * A subnetwork with purpose set to `INTERNAL_HTTPS_LOAD_BALANCER` is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing.
          * A subnetwork in a given region with purpose set to `REGIONAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the regional Envoy-based load balancers.
+         * A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
          * A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
          * If unspecified, the purpose defaults to `PRIVATE_RFC_1918`.
-         * The enableFlowLogs field isn&#39;t supported with the purpose field set to `INTERNAL_HTTPS_LOAD_BALANCER`.
+         * The enableFlowLogs field isn&#39;t supported with the purpose field set to `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`.
          * 
          * @return builder
          * 
@@ -813,12 +816,13 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param purpose The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `INTERNAL_HTTPS_LOAD_BALANCER`, `REGIONAL_MANAGED_PROXY`, or `PRIVATE_SERVICE_CONNECT`.
+         * @param purpose The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `INTERNAL_HTTPS_LOAD_BALANCER`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY` or `PRIVATE_SERVICE_CONNECT`.
          * A subnetwork with purpose set to `INTERNAL_HTTPS_LOAD_BALANCER` is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing.
          * A subnetwork in a given region with purpose set to `REGIONAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the regional Envoy-based load balancers.
+         * A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
          * A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
          * If unspecified, the purpose defaults to `PRIVATE_RFC_1918`.
-         * The enableFlowLogs field isn&#39;t supported with the purpose field set to `INTERNAL_HTTPS_LOAD_BALANCER`.
+         * The enableFlowLogs field isn&#39;t supported with the purpose field set to `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`.
          * 
          * @return builder
          * 

@@ -474,6 +474,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.documentAiCustomEndpoint);
     }
 
+    @Import(name="documentAiWarehouseCustomEndpoint")
+    private @Nullable Output<String> documentAiWarehouseCustomEndpoint;
+
+    public Optional<Output<String>> documentAiWarehouseCustomEndpoint() {
+        return Optional.ofNullable(this.documentAiWarehouseCustomEndpoint);
+    }
+
     @Import(name="essentialContactsCustomEndpoint")
     private @Nullable Output<String> essentialContactsCustomEndpoint;
 
@@ -1088,6 +1095,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.disableGooglePartnerName = $.disableGooglePartnerName;
         this.dnsCustomEndpoint = $.dnsCustomEndpoint;
         this.documentAiCustomEndpoint = $.documentAiCustomEndpoint;
+        this.documentAiWarehouseCustomEndpoint = $.documentAiWarehouseCustomEndpoint;
         this.essentialContactsCustomEndpoint = $.essentialContactsCustomEndpoint;
         this.eventarcCustomEndpoint = $.eventarcCustomEndpoint;
         this.filestoreCustomEndpoint = $.filestoreCustomEndpoint;
@@ -1769,6 +1777,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder documentAiCustomEndpoint(String documentAiCustomEndpoint) {
             return documentAiCustomEndpoint(Output.of(documentAiCustomEndpoint));
+        }
+
+        public Builder documentAiWarehouseCustomEndpoint(@Nullable Output<String> documentAiWarehouseCustomEndpoint) {
+            $.documentAiWarehouseCustomEndpoint = documentAiWarehouseCustomEndpoint;
+            return this;
+        }
+
+        public Builder documentAiWarehouseCustomEndpoint(String documentAiWarehouseCustomEndpoint) {
+            return documentAiWarehouseCustomEndpoint(Output.of(documentAiWarehouseCustomEndpoint));
         }
 
         public Builder essentialContactsCustomEndpoint(@Nullable Output<String> essentialContactsCustomEndpoint) {

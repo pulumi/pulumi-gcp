@@ -967,7 +967,6 @@ class TriggerBuildOptions(dict):
         :param str logging: Option to specify the logging mode, which determines if and where build logs are stored.
                Possible values are: `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, `CLOUD_LOGGING_ONLY`, `NONE`.
         :param str machine_type: Compute Engine machine type on which to run the build.
-               Possible values are: `UNSPECIFIED`, `N1_HIGHCPU_8`, `N1_HIGHCPU_32`, `E2_HIGHCPU_8`, `E2_HIGHCPU_32`.
         :param str requested_verify_option: Requested verifiability options.
                Possible values are: `NOT_VERIFIED`, `VERIFIED`.
         :param Sequence[str] secret_envs: A list of global environment variables, which are encrypted using a Cloud Key Management
@@ -1069,7 +1068,6 @@ class TriggerBuildOptions(dict):
     def machine_type(self) -> Optional[str]:
         """
         Compute Engine machine type on which to run the build.
-        Possible values are: `UNSPECIFIED`, `N1_HIGHCPU_8`, `N1_HIGHCPU_32`, `E2_HIGHCPU_8`, `E2_HIGHCPU_32`.
         """
         return pulumi.get(self, "machine_type")
 

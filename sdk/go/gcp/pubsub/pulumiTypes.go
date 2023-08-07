@@ -1700,6 +1700,10 @@ type SubscriptionPushConfig struct {
 	// - v1beta1: uses the push format defined in the v1beta1 Pub/Sub API.
 	// - v1 or v1beta2: uses the push format defined in the v1 Pub/Sub API.
 	Attributes map[string]string `pulumi:"attributes"`
+	// When set, the payload to the push endpoint is not wrapped.Sets the
+	// `data` field as the HTTP body for delivery.
+	// Structure is documented below.
+	NoWrapper *SubscriptionPushConfigNoWrapper `pulumi:"noWrapper"`
 	// If specified, Pub/Sub will generate and attach an OIDC JWT token as
 	// an Authorization header in the HTTP request for every pushed message.
 	// Structure is documented below.
@@ -1741,6 +1745,10 @@ type SubscriptionPushConfigArgs struct {
 	// - v1beta1: uses the push format defined in the v1beta1 Pub/Sub API.
 	// - v1 or v1beta2: uses the push format defined in the v1 Pub/Sub API.
 	Attributes pulumi.StringMapInput `pulumi:"attributes"`
+	// When set, the payload to the push endpoint is not wrapped.Sets the
+	// `data` field as the HTTP body for delivery.
+	// Structure is documented below.
+	NoWrapper SubscriptionPushConfigNoWrapperPtrInput `pulumi:"noWrapper"`
 	// If specified, Pub/Sub will generate and attach an OIDC JWT token as
 	// an Authorization header in the HTTP request for every pushed message.
 	// Structure is documented below.
@@ -1850,6 +1858,13 @@ func (o SubscriptionPushConfigOutput) Attributes() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SubscriptionPushConfig) map[string]string { return v.Attributes }).(pulumi.StringMapOutput)
 }
 
+// When set, the payload to the push endpoint is not wrapped.Sets the
+// `data` field as the HTTP body for delivery.
+// Structure is documented below.
+func (o SubscriptionPushConfigOutput) NoWrapper() SubscriptionPushConfigNoWrapperPtrOutput {
+	return o.ApplyT(func(v SubscriptionPushConfig) *SubscriptionPushConfigNoWrapper { return v.NoWrapper }).(SubscriptionPushConfigNoWrapperPtrOutput)
+}
+
 // If specified, Pub/Sub will generate and attach an OIDC JWT token as
 // an Authorization header in the HTTP request for every pushed message.
 // Structure is documented below.
@@ -1915,6 +1930,18 @@ func (o SubscriptionPushConfigPtrOutput) Attributes() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
+// When set, the payload to the push endpoint is not wrapped.Sets the
+// `data` field as the HTTP body for delivery.
+// Structure is documented below.
+func (o SubscriptionPushConfigPtrOutput) NoWrapper() SubscriptionPushConfigNoWrapperPtrOutput {
+	return o.ApplyT(func(v *SubscriptionPushConfig) *SubscriptionPushConfigNoWrapper {
+		if v == nil {
+			return nil
+		}
+		return v.NoWrapper
+	}).(SubscriptionPushConfigNoWrapperPtrOutput)
+}
+
 // If specified, Pub/Sub will generate and attach an OIDC JWT token as
 // an Authorization header in the HTTP request for every pushed message.
 // Structure is documented below.
@@ -1937,6 +1964,151 @@ func (o SubscriptionPushConfigPtrOutput) PushEndpoint() pulumi.StringPtrOutput {
 		}
 		return &v.PushEndpoint
 	}).(pulumi.StringPtrOutput)
+}
+
+type SubscriptionPushConfigNoWrapper struct {
+	// When true, writes the Pub/Sub message metadata to
+	// `x-goog-pubsub-<KEY>:<VAL>` headers of the HTTP request. Writes the
+	// Pub/Sub message attributes to `<KEY>:<VAL>` headers of the HTTP request.
+	WriteMetadata bool `pulumi:"writeMetadata"`
+}
+
+// SubscriptionPushConfigNoWrapperInput is an input type that accepts SubscriptionPushConfigNoWrapperArgs and SubscriptionPushConfigNoWrapperOutput values.
+// You can construct a concrete instance of `SubscriptionPushConfigNoWrapperInput` via:
+//
+//	SubscriptionPushConfigNoWrapperArgs{...}
+type SubscriptionPushConfigNoWrapperInput interface {
+	pulumi.Input
+
+	ToSubscriptionPushConfigNoWrapperOutput() SubscriptionPushConfigNoWrapperOutput
+	ToSubscriptionPushConfigNoWrapperOutputWithContext(context.Context) SubscriptionPushConfigNoWrapperOutput
+}
+
+type SubscriptionPushConfigNoWrapperArgs struct {
+	// When true, writes the Pub/Sub message metadata to
+	// `x-goog-pubsub-<KEY>:<VAL>` headers of the HTTP request. Writes the
+	// Pub/Sub message attributes to `<KEY>:<VAL>` headers of the HTTP request.
+	WriteMetadata pulumi.BoolInput `pulumi:"writeMetadata"`
+}
+
+func (SubscriptionPushConfigNoWrapperArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionPushConfigNoWrapper)(nil)).Elem()
+}
+
+func (i SubscriptionPushConfigNoWrapperArgs) ToSubscriptionPushConfigNoWrapperOutput() SubscriptionPushConfigNoWrapperOutput {
+	return i.ToSubscriptionPushConfigNoWrapperOutputWithContext(context.Background())
+}
+
+func (i SubscriptionPushConfigNoWrapperArgs) ToSubscriptionPushConfigNoWrapperOutputWithContext(ctx context.Context) SubscriptionPushConfigNoWrapperOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionPushConfigNoWrapperOutput)
+}
+
+func (i SubscriptionPushConfigNoWrapperArgs) ToSubscriptionPushConfigNoWrapperPtrOutput() SubscriptionPushConfigNoWrapperPtrOutput {
+	return i.ToSubscriptionPushConfigNoWrapperPtrOutputWithContext(context.Background())
+}
+
+func (i SubscriptionPushConfigNoWrapperArgs) ToSubscriptionPushConfigNoWrapperPtrOutputWithContext(ctx context.Context) SubscriptionPushConfigNoWrapperPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionPushConfigNoWrapperOutput).ToSubscriptionPushConfigNoWrapperPtrOutputWithContext(ctx)
+}
+
+// SubscriptionPushConfigNoWrapperPtrInput is an input type that accepts SubscriptionPushConfigNoWrapperArgs, SubscriptionPushConfigNoWrapperPtr and SubscriptionPushConfigNoWrapperPtrOutput values.
+// You can construct a concrete instance of `SubscriptionPushConfigNoWrapperPtrInput` via:
+//
+//	        SubscriptionPushConfigNoWrapperArgs{...}
+//
+//	or:
+//
+//	        nil
+type SubscriptionPushConfigNoWrapperPtrInput interface {
+	pulumi.Input
+
+	ToSubscriptionPushConfigNoWrapperPtrOutput() SubscriptionPushConfigNoWrapperPtrOutput
+	ToSubscriptionPushConfigNoWrapperPtrOutputWithContext(context.Context) SubscriptionPushConfigNoWrapperPtrOutput
+}
+
+type subscriptionPushConfigNoWrapperPtrType SubscriptionPushConfigNoWrapperArgs
+
+func SubscriptionPushConfigNoWrapperPtr(v *SubscriptionPushConfigNoWrapperArgs) SubscriptionPushConfigNoWrapperPtrInput {
+	return (*subscriptionPushConfigNoWrapperPtrType)(v)
+}
+
+func (*subscriptionPushConfigNoWrapperPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionPushConfigNoWrapper)(nil)).Elem()
+}
+
+func (i *subscriptionPushConfigNoWrapperPtrType) ToSubscriptionPushConfigNoWrapperPtrOutput() SubscriptionPushConfigNoWrapperPtrOutput {
+	return i.ToSubscriptionPushConfigNoWrapperPtrOutputWithContext(context.Background())
+}
+
+func (i *subscriptionPushConfigNoWrapperPtrType) ToSubscriptionPushConfigNoWrapperPtrOutputWithContext(ctx context.Context) SubscriptionPushConfigNoWrapperPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionPushConfigNoWrapperPtrOutput)
+}
+
+type SubscriptionPushConfigNoWrapperOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionPushConfigNoWrapperOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionPushConfigNoWrapper)(nil)).Elem()
+}
+
+func (o SubscriptionPushConfigNoWrapperOutput) ToSubscriptionPushConfigNoWrapperOutput() SubscriptionPushConfigNoWrapperOutput {
+	return o
+}
+
+func (o SubscriptionPushConfigNoWrapperOutput) ToSubscriptionPushConfigNoWrapperOutputWithContext(ctx context.Context) SubscriptionPushConfigNoWrapperOutput {
+	return o
+}
+
+func (o SubscriptionPushConfigNoWrapperOutput) ToSubscriptionPushConfigNoWrapperPtrOutput() SubscriptionPushConfigNoWrapperPtrOutput {
+	return o.ToSubscriptionPushConfigNoWrapperPtrOutputWithContext(context.Background())
+}
+
+func (o SubscriptionPushConfigNoWrapperOutput) ToSubscriptionPushConfigNoWrapperPtrOutputWithContext(ctx context.Context) SubscriptionPushConfigNoWrapperPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubscriptionPushConfigNoWrapper) *SubscriptionPushConfigNoWrapper {
+		return &v
+	}).(SubscriptionPushConfigNoWrapperPtrOutput)
+}
+
+// When true, writes the Pub/Sub message metadata to
+// `x-goog-pubsub-<KEY>:<VAL>` headers of the HTTP request. Writes the
+// Pub/Sub message attributes to `<KEY>:<VAL>` headers of the HTTP request.
+func (o SubscriptionPushConfigNoWrapperOutput) WriteMetadata() pulumi.BoolOutput {
+	return o.ApplyT(func(v SubscriptionPushConfigNoWrapper) bool { return v.WriteMetadata }).(pulumi.BoolOutput)
+}
+
+type SubscriptionPushConfigNoWrapperPtrOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionPushConfigNoWrapperPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionPushConfigNoWrapper)(nil)).Elem()
+}
+
+func (o SubscriptionPushConfigNoWrapperPtrOutput) ToSubscriptionPushConfigNoWrapperPtrOutput() SubscriptionPushConfigNoWrapperPtrOutput {
+	return o
+}
+
+func (o SubscriptionPushConfigNoWrapperPtrOutput) ToSubscriptionPushConfigNoWrapperPtrOutputWithContext(ctx context.Context) SubscriptionPushConfigNoWrapperPtrOutput {
+	return o
+}
+
+func (o SubscriptionPushConfigNoWrapperPtrOutput) Elem() SubscriptionPushConfigNoWrapperOutput {
+	return o.ApplyT(func(v *SubscriptionPushConfigNoWrapper) SubscriptionPushConfigNoWrapper {
+		if v != nil {
+			return *v
+		}
+		var ret SubscriptionPushConfigNoWrapper
+		return ret
+	}).(SubscriptionPushConfigNoWrapperOutput)
+}
+
+// When true, writes the Pub/Sub message metadata to
+// `x-goog-pubsub-<KEY>:<VAL>` headers of the HTTP request. Writes the
+// Pub/Sub message attributes to `<KEY>:<VAL>` headers of the HTTP request.
+func (o SubscriptionPushConfigNoWrapperPtrOutput) WriteMetadata() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SubscriptionPushConfigNoWrapper) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.WriteMetadata
+	}).(pulumi.BoolPtrOutput)
 }
 
 type SubscriptionPushConfigOidcToken struct {
@@ -3258,6 +3430,7 @@ func (o GetSubscriptionExpirationPolicyArrayOutput) Index(i pulumi.IntInput) Get
 
 type GetSubscriptionPushConfig struct {
 	Attributes   map[string]string                    `pulumi:"attributes"`
+	NoWrappers   []GetSubscriptionPushConfigNoWrapper `pulumi:"noWrappers"`
 	OidcTokens   []GetSubscriptionPushConfigOidcToken `pulumi:"oidcTokens"`
 	PushEndpoint string                               `pulumi:"pushEndpoint"`
 }
@@ -3275,6 +3448,7 @@ type GetSubscriptionPushConfigInput interface {
 
 type GetSubscriptionPushConfigArgs struct {
 	Attributes   pulumi.StringMapInput                        `pulumi:"attributes"`
+	NoWrappers   GetSubscriptionPushConfigNoWrapperArrayInput `pulumi:"noWrappers"`
 	OidcTokens   GetSubscriptionPushConfigOidcTokenArrayInput `pulumi:"oidcTokens"`
 	PushEndpoint pulumi.StringInput                           `pulumi:"pushEndpoint"`
 }
@@ -3334,6 +3508,10 @@ func (o GetSubscriptionPushConfigOutput) Attributes() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetSubscriptionPushConfig) map[string]string { return v.Attributes }).(pulumi.StringMapOutput)
 }
 
+func (o GetSubscriptionPushConfigOutput) NoWrappers() GetSubscriptionPushConfigNoWrapperArrayOutput {
+	return o.ApplyT(func(v GetSubscriptionPushConfig) []GetSubscriptionPushConfigNoWrapper { return v.NoWrappers }).(GetSubscriptionPushConfigNoWrapperArrayOutput)
+}
+
 func (o GetSubscriptionPushConfigOutput) OidcTokens() GetSubscriptionPushConfigOidcTokenArrayOutput {
 	return o.ApplyT(func(v GetSubscriptionPushConfig) []GetSubscriptionPushConfigOidcToken { return v.OidcTokens }).(GetSubscriptionPushConfigOidcTokenArrayOutput)
 }
@@ -3360,6 +3538,100 @@ func (o GetSubscriptionPushConfigArrayOutput) Index(i pulumi.IntInput) GetSubscr
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSubscriptionPushConfig {
 		return vs[0].([]GetSubscriptionPushConfig)[vs[1].(int)]
 	}).(GetSubscriptionPushConfigOutput)
+}
+
+type GetSubscriptionPushConfigNoWrapper struct {
+	WriteMetadata bool `pulumi:"writeMetadata"`
+}
+
+// GetSubscriptionPushConfigNoWrapperInput is an input type that accepts GetSubscriptionPushConfigNoWrapperArgs and GetSubscriptionPushConfigNoWrapperOutput values.
+// You can construct a concrete instance of `GetSubscriptionPushConfigNoWrapperInput` via:
+//
+//	GetSubscriptionPushConfigNoWrapperArgs{...}
+type GetSubscriptionPushConfigNoWrapperInput interface {
+	pulumi.Input
+
+	ToGetSubscriptionPushConfigNoWrapperOutput() GetSubscriptionPushConfigNoWrapperOutput
+	ToGetSubscriptionPushConfigNoWrapperOutputWithContext(context.Context) GetSubscriptionPushConfigNoWrapperOutput
+}
+
+type GetSubscriptionPushConfigNoWrapperArgs struct {
+	WriteMetadata pulumi.BoolInput `pulumi:"writeMetadata"`
+}
+
+func (GetSubscriptionPushConfigNoWrapperArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubscriptionPushConfigNoWrapper)(nil)).Elem()
+}
+
+func (i GetSubscriptionPushConfigNoWrapperArgs) ToGetSubscriptionPushConfigNoWrapperOutput() GetSubscriptionPushConfigNoWrapperOutput {
+	return i.ToGetSubscriptionPushConfigNoWrapperOutputWithContext(context.Background())
+}
+
+func (i GetSubscriptionPushConfigNoWrapperArgs) ToGetSubscriptionPushConfigNoWrapperOutputWithContext(ctx context.Context) GetSubscriptionPushConfigNoWrapperOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubscriptionPushConfigNoWrapperOutput)
+}
+
+// GetSubscriptionPushConfigNoWrapperArrayInput is an input type that accepts GetSubscriptionPushConfigNoWrapperArray and GetSubscriptionPushConfigNoWrapperArrayOutput values.
+// You can construct a concrete instance of `GetSubscriptionPushConfigNoWrapperArrayInput` via:
+//
+//	GetSubscriptionPushConfigNoWrapperArray{ GetSubscriptionPushConfigNoWrapperArgs{...} }
+type GetSubscriptionPushConfigNoWrapperArrayInput interface {
+	pulumi.Input
+
+	ToGetSubscriptionPushConfigNoWrapperArrayOutput() GetSubscriptionPushConfigNoWrapperArrayOutput
+	ToGetSubscriptionPushConfigNoWrapperArrayOutputWithContext(context.Context) GetSubscriptionPushConfigNoWrapperArrayOutput
+}
+
+type GetSubscriptionPushConfigNoWrapperArray []GetSubscriptionPushConfigNoWrapperInput
+
+func (GetSubscriptionPushConfigNoWrapperArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSubscriptionPushConfigNoWrapper)(nil)).Elem()
+}
+
+func (i GetSubscriptionPushConfigNoWrapperArray) ToGetSubscriptionPushConfigNoWrapperArrayOutput() GetSubscriptionPushConfigNoWrapperArrayOutput {
+	return i.ToGetSubscriptionPushConfigNoWrapperArrayOutputWithContext(context.Background())
+}
+
+func (i GetSubscriptionPushConfigNoWrapperArray) ToGetSubscriptionPushConfigNoWrapperArrayOutputWithContext(ctx context.Context) GetSubscriptionPushConfigNoWrapperArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubscriptionPushConfigNoWrapperArrayOutput)
+}
+
+type GetSubscriptionPushConfigNoWrapperOutput struct{ *pulumi.OutputState }
+
+func (GetSubscriptionPushConfigNoWrapperOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubscriptionPushConfigNoWrapper)(nil)).Elem()
+}
+
+func (o GetSubscriptionPushConfigNoWrapperOutput) ToGetSubscriptionPushConfigNoWrapperOutput() GetSubscriptionPushConfigNoWrapperOutput {
+	return o
+}
+
+func (o GetSubscriptionPushConfigNoWrapperOutput) ToGetSubscriptionPushConfigNoWrapperOutputWithContext(ctx context.Context) GetSubscriptionPushConfigNoWrapperOutput {
+	return o
+}
+
+func (o GetSubscriptionPushConfigNoWrapperOutput) WriteMetadata() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSubscriptionPushConfigNoWrapper) bool { return v.WriteMetadata }).(pulumi.BoolOutput)
+}
+
+type GetSubscriptionPushConfigNoWrapperArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSubscriptionPushConfigNoWrapperArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSubscriptionPushConfigNoWrapper)(nil)).Elem()
+}
+
+func (o GetSubscriptionPushConfigNoWrapperArrayOutput) ToGetSubscriptionPushConfigNoWrapperArrayOutput() GetSubscriptionPushConfigNoWrapperArrayOutput {
+	return o
+}
+
+func (o GetSubscriptionPushConfigNoWrapperArrayOutput) ToGetSubscriptionPushConfigNoWrapperArrayOutputWithContext(ctx context.Context) GetSubscriptionPushConfigNoWrapperArrayOutput {
+	return o
+}
+
+func (o GetSubscriptionPushConfigNoWrapperArrayOutput) Index(i pulumi.IntInput) GetSubscriptionPushConfigNoWrapperOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSubscriptionPushConfigNoWrapper {
+		return vs[0].([]GetSubscriptionPushConfigNoWrapper)[vs[1].(int)]
+	}).(GetSubscriptionPushConfigNoWrapperOutput)
 }
 
 type GetSubscriptionPushConfigOidcToken struct {
@@ -3779,6 +4051,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionIAMMemberConditionPtrInput)(nil)).Elem(), SubscriptionIAMMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionPushConfigInput)(nil)).Elem(), SubscriptionPushConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionPushConfigPtrInput)(nil)).Elem(), SubscriptionPushConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionPushConfigNoWrapperInput)(nil)).Elem(), SubscriptionPushConfigNoWrapperArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionPushConfigNoWrapperPtrInput)(nil)).Elem(), SubscriptionPushConfigNoWrapperArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionPushConfigOidcTokenInput)(nil)).Elem(), SubscriptionPushConfigOidcTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionPushConfigOidcTokenPtrInput)(nil)).Elem(), SubscriptionPushConfigOidcTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionRetryPolicyInput)(nil)).Elem(), SubscriptionRetryPolicyArgs{})
@@ -3799,6 +4073,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionExpirationPolicyArrayInput)(nil)).Elem(), GetSubscriptionExpirationPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionPushConfigInput)(nil)).Elem(), GetSubscriptionPushConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionPushConfigArrayInput)(nil)).Elem(), GetSubscriptionPushConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionPushConfigNoWrapperInput)(nil)).Elem(), GetSubscriptionPushConfigNoWrapperArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionPushConfigNoWrapperArrayInput)(nil)).Elem(), GetSubscriptionPushConfigNoWrapperArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionPushConfigOidcTokenInput)(nil)).Elem(), GetSubscriptionPushConfigOidcTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionPushConfigOidcTokenArrayInput)(nil)).Elem(), GetSubscriptionPushConfigOidcTokenArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionRetryPolicyInput)(nil)).Elem(), GetSubscriptionRetryPolicyArgs{})
@@ -3829,6 +4105,8 @@ func init() {
 	pulumi.RegisterOutputType(SubscriptionIAMMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(SubscriptionPushConfigOutput{})
 	pulumi.RegisterOutputType(SubscriptionPushConfigPtrOutput{})
+	pulumi.RegisterOutputType(SubscriptionPushConfigNoWrapperOutput{})
+	pulumi.RegisterOutputType(SubscriptionPushConfigNoWrapperPtrOutput{})
 	pulumi.RegisterOutputType(SubscriptionPushConfigOidcTokenOutput{})
 	pulumi.RegisterOutputType(SubscriptionPushConfigOidcTokenPtrOutput{})
 	pulumi.RegisterOutputType(SubscriptionRetryPolicyOutput{})
@@ -3849,6 +4127,8 @@ func init() {
 	pulumi.RegisterOutputType(GetSubscriptionExpirationPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetSubscriptionPushConfigOutput{})
 	pulumi.RegisterOutputType(GetSubscriptionPushConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetSubscriptionPushConfigNoWrapperOutput{})
+	pulumi.RegisterOutputType(GetSubscriptionPushConfigNoWrapperArrayOutput{})
 	pulumi.RegisterOutputType(GetSubscriptionPushConfigOidcTokenOutput{})
 	pulumi.RegisterOutputType(GetSubscriptionPushConfigOidcTokenArrayOutput{})
 	pulumi.RegisterOutputType(GetSubscriptionRetryPolicyOutput{})

@@ -240,9 +240,8 @@ import (
 type Address struct {
 	pulumi.CustomResourceState
 
-	// The static external IP address represented by this resource. Only
-	// IPv4 is supported. An address may only be specified for INTERNAL
-	// address types. The IP address must be inside the specified subnetwork,
+	// The static external IP address represented by this resource.
+	// The IP address must be inside the specified subnetwork,
 	// if any. Set by the API if undefined.
 	Address pulumi.StringOutput `pulumi:"address"`
 	// The type of address to reserve.
@@ -254,6 +253,14 @@ type Address struct {
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The IP Version that will be used by this address. The default value is `IPV4`.
+	// Possible values are: `IPV4`, `IPV6`.
+	IpVersion pulumi.StringPtrOutput `pulumi:"ipVersion"`
+	// The endpoint type of this address, which should be VM or NETLB. This is
+	// used for deciding which type of endpoint this address can be used after
+	// the external IPv6 address reservation.
+	// Possible values are: `VM`, `NETLB`.
+	Ipv6EndpointType pulumi.StringPtrOutput `pulumi:"ipv6EndpointType"`
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
 	// Labels to apply to this address.  A list of key->value pairs.
@@ -277,7 +284,7 @@ type Address struct {
 	// Possible values are: `PREMIUM`, `STANDARD`.
 	NetworkTier pulumi.StringOutput `pulumi:"networkTier"`
 	// The prefix length if the resource represents an IP range.
-	PrefixLength pulumi.IntPtrOutput `pulumi:"prefixLength"`
+	PrefixLength pulumi.IntOutput `pulumi:"prefixLength"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -340,9 +347,8 @@ func GetAddress(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Address resources.
 type addressState struct {
-	// The static external IP address represented by this resource. Only
-	// IPv4 is supported. An address may only be specified for INTERNAL
-	// address types. The IP address must be inside the specified subnetwork,
+	// The static external IP address represented by this resource.
+	// The IP address must be inside the specified subnetwork,
 	// if any. Set by the API if undefined.
 	Address *string `pulumi:"address"`
 	// The type of address to reserve.
@@ -354,6 +360,14 @@ type addressState struct {
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
+	// The IP Version that will be used by this address. The default value is `IPV4`.
+	// Possible values are: `IPV4`, `IPV6`.
+	IpVersion *string `pulumi:"ipVersion"`
+	// The endpoint type of this address, which should be VM or NETLB. This is
+	// used for deciding which type of endpoint this address can be used after
+	// the external IPv6 address reservation.
+	// Possible values are: `VM`, `NETLB`.
+	Ipv6EndpointType *string `pulumi:"ipv6EndpointType"`
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
 	// Labels to apply to this address.  A list of key->value pairs.
@@ -411,9 +425,8 @@ type addressState struct {
 }
 
 type AddressState struct {
-	// The static external IP address represented by this resource. Only
-	// IPv4 is supported. An address may only be specified for INTERNAL
-	// address types. The IP address must be inside the specified subnetwork,
+	// The static external IP address represented by this resource.
+	// The IP address must be inside the specified subnetwork,
 	// if any. Set by the API if undefined.
 	Address pulumi.StringPtrInput
 	// The type of address to reserve.
@@ -425,6 +438,14 @@ type AddressState struct {
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
+	// The IP Version that will be used by this address. The default value is `IPV4`.
+	// Possible values are: `IPV4`, `IPV6`.
+	IpVersion pulumi.StringPtrInput
+	// The endpoint type of this address, which should be VM or NETLB. This is
+	// used for deciding which type of endpoint this address can be used after
+	// the external IPv6 address reservation.
+	// Possible values are: `VM`, `NETLB`.
+	Ipv6EndpointType pulumi.StringPtrInput
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint pulumi.StringPtrInput
 	// Labels to apply to this address.  A list of key->value pairs.
@@ -486,9 +507,8 @@ func (AddressState) ElementType() reflect.Type {
 }
 
 type addressArgs struct {
-	// The static external IP address represented by this resource. Only
-	// IPv4 is supported. An address may only be specified for INTERNAL
-	// address types. The IP address must be inside the specified subnetwork,
+	// The static external IP address represented by this resource.
+	// The IP address must be inside the specified subnetwork,
 	// if any. Set by the API if undefined.
 	Address *string `pulumi:"address"`
 	// The type of address to reserve.
@@ -498,6 +518,14 @@ type addressArgs struct {
 	AddressType *string `pulumi:"addressType"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
+	// The IP Version that will be used by this address. The default value is `IPV4`.
+	// Possible values are: `IPV4`, `IPV6`.
+	IpVersion *string `pulumi:"ipVersion"`
+	// The endpoint type of this address, which should be VM or NETLB. This is
+	// used for deciding which type of endpoint this address can be used after
+	// the external IPv6 address reservation.
+	// Possible values are: `VM`, `NETLB`.
+	Ipv6EndpointType *string `pulumi:"ipv6EndpointType"`
 	// Labels to apply to this address.  A list of key->value pairs.
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the resource. The name must be 1-63 characters long, and
@@ -550,9 +578,8 @@ type addressArgs struct {
 
 // The set of arguments for constructing a Address resource.
 type AddressArgs struct {
-	// The static external IP address represented by this resource. Only
-	// IPv4 is supported. An address may only be specified for INTERNAL
-	// address types. The IP address must be inside the specified subnetwork,
+	// The static external IP address represented by this resource.
+	// The IP address must be inside the specified subnetwork,
 	// if any. Set by the API if undefined.
 	Address pulumi.StringPtrInput
 	// The type of address to reserve.
@@ -562,6 +589,14 @@ type AddressArgs struct {
 	AddressType pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
+	// The IP Version that will be used by this address. The default value is `IPV4`.
+	// Possible values are: `IPV4`, `IPV6`.
+	IpVersion pulumi.StringPtrInput
+	// The endpoint type of this address, which should be VM or NETLB. This is
+	// used for deciding which type of endpoint this address can be used after
+	// the external IPv6 address reservation.
+	// Possible values are: `VM`, `NETLB`.
+	Ipv6EndpointType pulumi.StringPtrInput
 	// Labels to apply to this address.  A list of key->value pairs.
 	Labels pulumi.StringMapInput
 	// Name of the resource. The name must be 1-63 characters long, and
@@ -699,9 +734,8 @@ func (o AddressOutput) ToAddressOutputWithContext(ctx context.Context) AddressOu
 	return o
 }
 
-// The static external IP address represented by this resource. Only
-// IPv4 is supported. An address may only be specified for INTERNAL
-// address types. The IP address must be inside the specified subnetwork,
+// The static external IP address represented by this resource.
+// The IP address must be inside the specified subnetwork,
 // if any. Set by the API if undefined.
 func (o AddressOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v *Address) pulumi.StringOutput { return v.Address }).(pulumi.StringOutput)
@@ -723,6 +757,20 @@ func (o AddressOutput) CreationTimestamp() pulumi.StringOutput {
 // An optional description of this resource.
 func (o AddressOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Address) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The IP Version that will be used by this address. The default value is `IPV4`.
+// Possible values are: `IPV4`, `IPV6`.
+func (o AddressOutput) IpVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Address) pulumi.StringPtrOutput { return v.IpVersion }).(pulumi.StringPtrOutput)
+}
+
+// The endpoint type of this address, which should be VM or NETLB. This is
+// used for deciding which type of endpoint this address can be used after
+// the external IPv6 address reservation.
+// Possible values are: `VM`, `NETLB`.
+func (o AddressOutput) Ipv6EndpointType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Address) pulumi.StringPtrOutput { return v.Ipv6EndpointType }).(pulumi.StringPtrOutput)
 }
 
 // The fingerprint used for optimistic locking of this resource. Used internally during updates.
@@ -763,8 +811,8 @@ func (o AddressOutput) NetworkTier() pulumi.StringOutput {
 }
 
 // The prefix length if the resource represents an IP range.
-func (o AddressOutput) PrefixLength() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Address) pulumi.IntPtrOutput { return v.PrefixLength }).(pulumi.IntPtrOutput)
+func (o AddressOutput) PrefixLength() pulumi.IntOutput {
+	return o.ApplyT(func(v *Address) pulumi.IntOutput { return v.PrefixLength }).(pulumi.IntOutput)
 }
 
 // The ID of the project in which the resource belongs.

@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.compute.inputs.RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs;
 import com.pulumi.gcp.compute.inputs.RegionInstanceTemplateSchedulingMaxRunDurationArgs;
 import com.pulumi.gcp.compute.inputs.RegionInstanceTemplateSchedulingNodeAffinityArgs;
 import java.lang.Boolean;
@@ -52,6 +53,13 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
      */
     public Optional<Output<String>> instanceTerminationAction() {
         return Optional.ofNullable(this.instanceTerminationAction);
+    }
+
+    @Import(name="localSsdRecoveryTimeouts")
+    private @Nullable Output<List<RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs>> localSsdRecoveryTimeouts;
+
+    public Optional<Output<List<RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs>>> localSsdRecoveryTimeouts() {
+        return Optional.ofNullable(this.localSsdRecoveryTimeouts);
     }
 
     /**
@@ -178,6 +186,7 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
     private RegionInstanceTemplateSchedulingArgs(RegionInstanceTemplateSchedulingArgs $) {
         this.automaticRestart = $.automaticRestart;
         this.instanceTerminationAction = $.instanceTerminationAction;
+        this.localSsdRecoveryTimeouts = $.localSsdRecoveryTimeouts;
         this.maintenanceInterval = $.maintenanceInterval;
         this.maxRunDuration = $.maxRunDuration;
         this.minNodeCpus = $.minNodeCpus;
@@ -249,6 +258,19 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
          */
         public Builder instanceTerminationAction(String instanceTerminationAction) {
             return instanceTerminationAction(Output.of(instanceTerminationAction));
+        }
+
+        public Builder localSsdRecoveryTimeouts(@Nullable Output<List<RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs>> localSsdRecoveryTimeouts) {
+            $.localSsdRecoveryTimeouts = localSsdRecoveryTimeouts;
+            return this;
+        }
+
+        public Builder localSsdRecoveryTimeouts(List<RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs> localSsdRecoveryTimeouts) {
+            return localSsdRecoveryTimeouts(Output.of(localSsdRecoveryTimeouts));
+        }
+
+        public Builder localSsdRecoveryTimeouts(RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs... localSsdRecoveryTimeouts) {
+            return localSsdRecoveryTimeouts(List.of(localSsdRecoveryTimeouts));
         }
 
         /**

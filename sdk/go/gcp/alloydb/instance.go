@@ -38,14 +38,16 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", nil)
+//			defaultNetwork, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
+//				Name: "alloydb-network",
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			defaultCluster, err := alloydb.NewCluster(ctx, "defaultCluster", &alloydb.ClusterArgs{
 //				ClusterId: pulumi.String("alloydb-cluster"),
 //				Location:  pulumi.String("us-central1"),
-//				Network:   defaultNetwork.ID(),
+//				Network:   *pulumi.String(defaultNetwork.Id),
 //				InitialUser: &alloydb.ClusterInitialUserArgs{
 //					Password: pulumi.String("alloydb-cluster"),
 //				},
@@ -57,13 +59,13 @@ import (
 //				AddressType:  pulumi.String("INTERNAL"),
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				PrefixLength: pulumi.Int(16),
-//				Network:      defaultNetwork.ID(),
+//				Network:      *pulumi.String(defaultNetwork.Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			vpcConnection, err := servicenetworking.NewConnection(ctx, "vpcConnection", &servicenetworking.ConnectionArgs{
-//				Network: defaultNetwork.ID(),
+//				Network: *pulumi.String(defaultNetwork.Id),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					privateIpAlloc.Name,

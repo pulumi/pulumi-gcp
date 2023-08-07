@@ -209,6 +209,11 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly enableIntranodeVisibility!: pulumi.Output<boolean>;
     /**
+     * Configuration for Kubernetes Beta APIs.
+     * Structure is documented below.
+     */
+    public readonly enableK8sBetaApis!: pulumi.Output<outputs.container.ClusterEnableK8sBetaApis | undefined>;
+    /**
      * Whether to enable Kubernetes Alpha features for
      * this cluster. Note that when this option is enabled, the cluster cannot be upgraded
      * and will be automatically deleted after 30 days.
@@ -226,6 +231,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly enableLegacyAbac!: pulumi.Output<boolean | undefined>;
     /**
+     * )
      * Whether multi-networking is enabled for this cluster.
      */
     public readonly enableMultiNetworking!: pulumi.Output<boolean | undefined>;
@@ -568,6 +574,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["enableAutopilot"] = state ? state.enableAutopilot : undefined;
             resourceInputs["enableBinaryAuthorization"] = state ? state.enableBinaryAuthorization : undefined;
             resourceInputs["enableIntranodeVisibility"] = state ? state.enableIntranodeVisibility : undefined;
+            resourceInputs["enableK8sBetaApis"] = state ? state.enableK8sBetaApis : undefined;
             resourceInputs["enableKubernetesAlpha"] = state ? state.enableKubernetesAlpha : undefined;
             resourceInputs["enableL4IlbSubsetting"] = state ? state.enableL4IlbSubsetting : undefined;
             resourceInputs["enableLegacyAbac"] = state ? state.enableLegacyAbac : undefined;
@@ -641,6 +648,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["enableAutopilot"] = args ? args.enableAutopilot : undefined;
             resourceInputs["enableBinaryAuthorization"] = args ? args.enableBinaryAuthorization : undefined;
             resourceInputs["enableIntranodeVisibility"] = args ? args.enableIntranodeVisibility : undefined;
+            resourceInputs["enableK8sBetaApis"] = args ? args.enableK8sBetaApis : undefined;
             resourceInputs["enableKubernetesAlpha"] = args ? args.enableKubernetesAlpha : undefined;
             resourceInputs["enableL4IlbSubsetting"] = args ? args.enableL4IlbSubsetting : undefined;
             resourceInputs["enableLegacyAbac"] = args ? args.enableLegacyAbac : undefined;
@@ -804,6 +812,11 @@ export interface ClusterState {
      */
     enableIntranodeVisibility?: pulumi.Input<boolean>;
     /**
+     * Configuration for Kubernetes Beta APIs.
+     * Structure is documented below.
+     */
+    enableK8sBetaApis?: pulumi.Input<inputs.container.ClusterEnableK8sBetaApis>;
+    /**
      * Whether to enable Kubernetes Alpha features for
      * this cluster. Note that when this option is enabled, the cluster cannot be upgraded
      * and will be automatically deleted after 30 days.
@@ -821,6 +834,7 @@ export interface ClusterState {
      */
     enableLegacyAbac?: pulumi.Input<boolean>;
     /**
+     * )
      * Whether multi-networking is enabled for this cluster.
      */
     enableMultiNetworking?: pulumi.Input<boolean>;
@@ -1237,6 +1251,11 @@ export interface ClusterArgs {
      */
     enableIntranodeVisibility?: pulumi.Input<boolean>;
     /**
+     * Configuration for Kubernetes Beta APIs.
+     * Structure is documented below.
+     */
+    enableK8sBetaApis?: pulumi.Input<inputs.container.ClusterEnableK8sBetaApis>;
+    /**
      * Whether to enable Kubernetes Alpha features for
      * this cluster. Note that when this option is enabled, the cluster cannot be upgraded
      * and will be automatically deleted after 30 days.
@@ -1254,6 +1273,7 @@ export interface ClusterArgs {
      */
     enableLegacyAbac?: pulumi.Input<boolean>;
     /**
+     * )
      * Whether multi-networking is enabled for this cluster.
      */
     enableMultiNetworking?: pulumi.Input<boolean>;

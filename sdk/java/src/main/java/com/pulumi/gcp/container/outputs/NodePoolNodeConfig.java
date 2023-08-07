@@ -10,6 +10,7 @@ import com.pulumi.gcp.container.outputs.NodePoolNodeConfigEphemeralStorageLocalS
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigGcfsConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigGuestAccelerator;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigGvnic;
+import com.pulumi.gcp.container.outputs.NodePoolNodeConfigHostMaintenancePolicy;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigKubeletConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigLinuxNodeConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigLocalNvmeSsdBlockConfig;
@@ -39,6 +40,7 @@ public final class NodePoolNodeConfig {
     private @Nullable NodePoolNodeConfigGcfsConfig gcfsConfig;
     private @Nullable List<NodePoolNodeConfigGuestAccelerator> guestAccelerators;
     private @Nullable NodePoolNodeConfigGvnic gvnic;
+    private @Nullable NodePoolNodeConfigHostMaintenancePolicy hostMaintenancePolicy;
     private @Nullable String imageType;
     private @Nullable NodePoolNodeConfigKubeletConfig kubeletConfig;
     private @Nullable Map<String,String> labels;
@@ -90,6 +92,9 @@ public final class NodePoolNodeConfig {
     }
     public Optional<NodePoolNodeConfigGvnic> gvnic() {
         return Optional.ofNullable(this.gvnic);
+    }
+    public Optional<NodePoolNodeConfigHostMaintenancePolicy> hostMaintenancePolicy() {
+        return Optional.ofNullable(this.hostMaintenancePolicy);
     }
     public Optional<String> imageType() {
         return Optional.ofNullable(this.imageType);
@@ -179,6 +184,7 @@ public final class NodePoolNodeConfig {
         private @Nullable NodePoolNodeConfigGcfsConfig gcfsConfig;
         private @Nullable List<NodePoolNodeConfigGuestAccelerator> guestAccelerators;
         private @Nullable NodePoolNodeConfigGvnic gvnic;
+        private @Nullable NodePoolNodeConfigHostMaintenancePolicy hostMaintenancePolicy;
         private @Nullable String imageType;
         private @Nullable NodePoolNodeConfigKubeletConfig kubeletConfig;
         private @Nullable Map<String,String> labels;
@@ -214,6 +220,7 @@ public final class NodePoolNodeConfig {
     	      this.gcfsConfig = defaults.gcfsConfig;
     	      this.guestAccelerators = defaults.guestAccelerators;
     	      this.gvnic = defaults.gvnic;
+    	      this.hostMaintenancePolicy = defaults.hostMaintenancePolicy;
     	      this.imageType = defaults.imageType;
     	      this.kubeletConfig = defaults.kubeletConfig;
     	      this.labels = defaults.labels;
@@ -285,6 +292,11 @@ public final class NodePoolNodeConfig {
         @CustomType.Setter
         public Builder gvnic(@Nullable NodePoolNodeConfigGvnic gvnic) {
             this.gvnic = gvnic;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder hostMaintenancePolicy(@Nullable NodePoolNodeConfigHostMaintenancePolicy hostMaintenancePolicy) {
+            this.hostMaintenancePolicy = hostMaintenancePolicy;
             return this;
         }
         @CustomType.Setter
@@ -422,6 +434,7 @@ public final class NodePoolNodeConfig {
             o.gcfsConfig = gcfsConfig;
             o.guestAccelerators = guestAccelerators;
             o.gvnic = gvnic;
+            o.hostMaintenancePolicy = hostMaintenancePolicy;
             o.imageType = imageType;
             o.kubeletConfig = kubeletConfig;
             o.labels = labels;

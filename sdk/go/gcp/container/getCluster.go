@@ -86,6 +86,7 @@ type LookupClusterResult struct {
 	EnableAutopilot            bool                                  `pulumi:"enableAutopilot"`
 	EnableBinaryAuthorization  bool                                  `pulumi:"enableBinaryAuthorization"`
 	EnableIntranodeVisibility  bool                                  `pulumi:"enableIntranodeVisibility"`
+	EnableK8sBetaApis          []GetClusterEnableK8sBetaApi          `pulumi:"enableK8sBetaApis"`
 	EnableKubernetesAlpha      bool                                  `pulumi:"enableKubernetesAlpha"`
 	EnableL4IlbSubsetting      bool                                  `pulumi:"enableL4IlbSubsetting"`
 	EnableLegacyAbac           bool                                  `pulumi:"enableLegacyAbac"`
@@ -258,6 +259,10 @@ func (o LookupClusterResultOutput) EnableBinaryAuthorization() pulumi.BoolOutput
 
 func (o LookupClusterResultOutput) EnableIntranodeVisibility() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupClusterResult) bool { return v.EnableIntranodeVisibility }).(pulumi.BoolOutput)
+}
+
+func (o LookupClusterResultOutput) EnableK8sBetaApis() GetClusterEnableK8sBetaApiArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterEnableK8sBetaApi { return v.EnableK8sBetaApis }).(GetClusterEnableK8sBetaApiArrayOutput)
 }
 
 func (o LookupClusterResultOutput) EnableKubernetesAlpha() pulumi.BoolOutput {

@@ -13,6 +13,7 @@ import javax.annotation.Nullable;
 public final class RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig {
     private @Nullable String externalIpv6;
     private @Nullable String externalIpv6PrefixLength;
+    private @Nullable String name;
     /**
      * @return The [networking tier][network-tier] used for configuring
      * this instance template. This field can take the following values: PREMIUM,
@@ -32,6 +33,9 @@ public final class RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig {
     }
     public Optional<String> externalIpv6PrefixLength() {
         return Optional.ofNullable(this.externalIpv6PrefixLength);
+    }
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
     /**
      * @return The [networking tier][network-tier] used for configuring
@@ -61,6 +65,7 @@ public final class RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig {
     public static final class Builder {
         private @Nullable String externalIpv6;
         private @Nullable String externalIpv6PrefixLength;
+        private @Nullable String name;
         private String networkTier;
         private @Nullable String publicPtrDomainName;
         public Builder() {}
@@ -68,6 +73,7 @@ public final class RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig {
     	      Objects.requireNonNull(defaults);
     	      this.externalIpv6 = defaults.externalIpv6;
     	      this.externalIpv6PrefixLength = defaults.externalIpv6PrefixLength;
+    	      this.name = defaults.name;
     	      this.networkTier = defaults.networkTier;
     	      this.publicPtrDomainName = defaults.publicPtrDomainName;
         }
@@ -80,6 +86,11 @@ public final class RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig {
         @CustomType.Setter
         public Builder externalIpv6PrefixLength(@Nullable String externalIpv6PrefixLength) {
             this.externalIpv6PrefixLength = externalIpv6PrefixLength;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder name(@Nullable String name) {
+            this.name = name;
             return this;
         }
         @CustomType.Setter
@@ -96,6 +107,7 @@ public final class RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig {
             final var o = new RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig();
             o.externalIpv6 = externalIpv6;
             o.externalIpv6PrefixLength = externalIpv6PrefixLength;
+            o.name = name;
             o.networkTier = networkTier;
             o.publicPtrDomainName = publicPtrDomainName;
             return o;

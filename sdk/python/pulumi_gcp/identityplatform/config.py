@@ -8,24 +8,52 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['ConfigArgs', 'Config']
 
 @pulumi.input_type
 class ConfigArgs:
     def __init__(__self__, *,
+                 authorized_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  autodelete_anonymous_users: Optional[pulumi.Input[bool]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 blocking_functions: Optional[pulumi.Input['ConfigBlockingFunctionsArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 quota: Optional[pulumi.Input['ConfigQuotaArgs']] = None):
         """
         The set of arguments for constructing a Config resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_domains: List of domains authorized for OAuth redirects.
         :param pulumi.Input[bool] autodelete_anonymous_users: Whether anonymous users will be auto-deleted after a period of 30 days
+        :param pulumi.Input['ConfigBlockingFunctionsArgs'] blocking_functions: Configuration related to blocking functions.
+               Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['ConfigQuotaArgs'] quota: Configuration related to quotas.
+               Structure is documented below.
         """
+        if authorized_domains is not None:
+            pulumi.set(__self__, "authorized_domains", authorized_domains)
         if autodelete_anonymous_users is not None:
             pulumi.set(__self__, "autodelete_anonymous_users", autodelete_anonymous_users)
+        if blocking_functions is not None:
+            pulumi.set(__self__, "blocking_functions", blocking_functions)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if quota is not None:
+            pulumi.set(__self__, "quota", quota)
+
+    @property
+    @pulumi.getter(name="authorizedDomains")
+    def authorized_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of domains authorized for OAuth redirects.
+        """
+        return pulumi.get(self, "authorized_domains")
+
+    @authorized_domains.setter
+    def authorized_domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "authorized_domains", value)
 
     @property
     @pulumi.getter(name="autodeleteAnonymousUsers")
@@ -38,6 +66,19 @@ class ConfigArgs:
     @autodelete_anonymous_users.setter
     def autodelete_anonymous_users(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "autodelete_anonymous_users", value)
+
+    @property
+    @pulumi.getter(name="blockingFunctions")
+    def blocking_functions(self) -> Optional[pulumi.Input['ConfigBlockingFunctionsArgs']]:
+        """
+        Configuration related to blocking functions.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "blocking_functions")
+
+    @blocking_functions.setter
+    def blocking_functions(self, value: Optional[pulumi.Input['ConfigBlockingFunctionsArgs']]):
+        pulumi.set(self, "blocking_functions", value)
 
     @property
     @pulumi.getter
@@ -52,26 +93,65 @@ class ConfigArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter
+    def quota(self) -> Optional[pulumi.Input['ConfigQuotaArgs']]:
+        """
+        Configuration related to quotas.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "quota")
+
+    @quota.setter
+    def quota(self, value: Optional[pulumi.Input['ConfigQuotaArgs']]):
+        pulumi.set(self, "quota", value)
+
 
 @pulumi.input_type
 class _ConfigState:
     def __init__(__self__, *,
+                 authorized_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  autodelete_anonymous_users: Optional[pulumi.Input[bool]] = None,
+                 blocking_functions: Optional[pulumi.Input['ConfigBlockingFunctionsArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 quota: Optional[pulumi.Input['ConfigQuotaArgs']] = None):
         """
         Input properties used for looking up and filtering Config resources.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_domains: List of domains authorized for OAuth redirects.
         :param pulumi.Input[bool] autodelete_anonymous_users: Whether anonymous users will be auto-deleted after a period of 30 days
+        :param pulumi.Input['ConfigBlockingFunctionsArgs'] blocking_functions: Configuration related to blocking functions.
+               Structure is documented below.
         :param pulumi.Input[str] name: The name of the Config resource
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['ConfigQuotaArgs'] quota: Configuration related to quotas.
+               Structure is documented below.
         """
+        if authorized_domains is not None:
+            pulumi.set(__self__, "authorized_domains", authorized_domains)
         if autodelete_anonymous_users is not None:
             pulumi.set(__self__, "autodelete_anonymous_users", autodelete_anonymous_users)
+        if blocking_functions is not None:
+            pulumi.set(__self__, "blocking_functions", blocking_functions)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if quota is not None:
+            pulumi.set(__self__, "quota", quota)
+
+    @property
+    @pulumi.getter(name="authorizedDomains")
+    def authorized_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of domains authorized for OAuth redirects.
+        """
+        return pulumi.get(self, "authorized_domains")
+
+    @authorized_domains.setter
+    def authorized_domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "authorized_domains", value)
 
     @property
     @pulumi.getter(name="autodeleteAnonymousUsers")
@@ -84,6 +164,19 @@ class _ConfigState:
     @autodelete_anonymous_users.setter
     def autodelete_anonymous_users(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "autodelete_anonymous_users", value)
+
+    @property
+    @pulumi.getter(name="blockingFunctions")
+    def blocking_functions(self) -> Optional[pulumi.Input['ConfigBlockingFunctionsArgs']]:
+        """
+        Configuration related to blocking functions.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "blocking_functions")
+
+    @blocking_functions.setter
+    def blocking_functions(self, value: Optional[pulumi.Input['ConfigBlockingFunctionsArgs']]):
+        pulumi.set(self, "blocking_functions", value)
 
     @property
     @pulumi.getter
@@ -110,14 +203,30 @@ class _ConfigState:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter
+    def quota(self) -> Optional[pulumi.Input['ConfigQuotaArgs']]:
+        """
+        Configuration related to quotas.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "quota")
+
+    @quota.setter
+    def quota(self, value: Optional[pulumi.Input['ConfigQuotaArgs']]):
+        pulumi.set(self, "quota", value)
+
 
 class Config(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 authorized_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  autodelete_anonymous_users: Optional[pulumi.Input[bool]] = None,
+                 blocking_functions: Optional[pulumi.Input[pulumi.InputType['ConfigBlockingFunctionsArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 quota: Optional[pulumi.Input[pulumi.InputType['ConfigQuotaArgs']]] = None,
                  __props__=None):
         """
         Identity Platform configuration for a Cloud project. Identity Platform is an
@@ -153,7 +262,30 @@ class Config(pulumi.CustomResource):
             service="identitytoolkit.googleapis.com")
         default_config = gcp.identityplatform.Config("defaultConfig",
             project=default_project.project_id,
-            autodelete_anonymous_users=True)
+            autodelete_anonymous_users=True,
+            blocking_functions=gcp.identityplatform.ConfigBlockingFunctionsArgs(
+                triggers=[gcp.identityplatform.ConfigBlockingFunctionsTriggerArgs(
+                    event_type="beforeSignIn",
+                    function_uri="https://us-east1-my-project.cloudfunctions.net/before-sign-in",
+                )],
+                forward_inbound_credentials=gcp.identityplatform.ConfigBlockingFunctionsForwardInboundCredentialsArgs(
+                    refresh_token=True,
+                    access_token=True,
+                    id_token=True,
+                ),
+            ),
+            quota=gcp.identityplatform.ConfigQuotaArgs(
+                sign_up_quota_config=gcp.identityplatform.ConfigQuotaSignUpQuotaConfigArgs(
+                    quota=1000,
+                    start_time="",
+                    quota_duration="7200s",
+                ),
+            ),
+            authorized_domains=[
+                "localhost",
+                "my-project.firebaseapp.com",
+                "my-project.web.app",
+            ])
         ```
 
         ## Import
@@ -174,9 +306,14 @@ class Config(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_domains: List of domains authorized for OAuth redirects.
         :param pulumi.Input[bool] autodelete_anonymous_users: Whether anonymous users will be auto-deleted after a period of 30 days
+        :param pulumi.Input[pulumi.InputType['ConfigBlockingFunctionsArgs']] blocking_functions: Configuration related to blocking functions.
+               Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[pulumi.InputType['ConfigQuotaArgs']] quota: Configuration related to quotas.
+               Structure is documented below.
         """
         ...
     @overload
@@ -218,7 +355,30 @@ class Config(pulumi.CustomResource):
             service="identitytoolkit.googleapis.com")
         default_config = gcp.identityplatform.Config("defaultConfig",
             project=default_project.project_id,
-            autodelete_anonymous_users=True)
+            autodelete_anonymous_users=True,
+            blocking_functions=gcp.identityplatform.ConfigBlockingFunctionsArgs(
+                triggers=[gcp.identityplatform.ConfigBlockingFunctionsTriggerArgs(
+                    event_type="beforeSignIn",
+                    function_uri="https://us-east1-my-project.cloudfunctions.net/before-sign-in",
+                )],
+                forward_inbound_credentials=gcp.identityplatform.ConfigBlockingFunctionsForwardInboundCredentialsArgs(
+                    refresh_token=True,
+                    access_token=True,
+                    id_token=True,
+                ),
+            ),
+            quota=gcp.identityplatform.ConfigQuotaArgs(
+                sign_up_quota_config=gcp.identityplatform.ConfigQuotaSignUpQuotaConfigArgs(
+                    quota=1000,
+                    start_time="",
+                    quota_duration="7200s",
+                ),
+            ),
+            authorized_domains=[
+                "localhost",
+                "my-project.firebaseapp.com",
+                "my-project.web.app",
+            ])
         ```
 
         ## Import
@@ -252,8 +412,11 @@ class Config(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 authorized_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  autodelete_anonymous_users: Optional[pulumi.Input[bool]] = None,
+                 blocking_functions: Optional[pulumi.Input[pulumi.InputType['ConfigBlockingFunctionsArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 quota: Optional[pulumi.Input[pulumi.InputType['ConfigQuotaArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -263,8 +426,11 @@ class Config(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConfigArgs.__new__(ConfigArgs)
 
+            __props__.__dict__["authorized_domains"] = authorized_domains
             __props__.__dict__["autodelete_anonymous_users"] = autodelete_anonymous_users
+            __props__.__dict__["blocking_functions"] = blocking_functions
             __props__.__dict__["project"] = project
+            __props__.__dict__["quota"] = quota
             __props__.__dict__["name"] = None
         super(Config, __self__).__init__(
             'gcp:identityplatform/config:Config',
@@ -276,9 +442,12 @@ class Config(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            authorized_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             autodelete_anonymous_users: Optional[pulumi.Input[bool]] = None,
+            blocking_functions: Optional[pulumi.Input[pulumi.InputType['ConfigBlockingFunctionsArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            project: Optional[pulumi.Input[str]] = None) -> 'Config':
+            project: Optional[pulumi.Input[str]] = None,
+            quota: Optional[pulumi.Input[pulumi.InputType['ConfigQuotaArgs']]] = None) -> 'Config':
         """
         Get an existing Config resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -286,19 +455,35 @@ class Config(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] authorized_domains: List of domains authorized for OAuth redirects.
         :param pulumi.Input[bool] autodelete_anonymous_users: Whether anonymous users will be auto-deleted after a period of 30 days
+        :param pulumi.Input[pulumi.InputType['ConfigBlockingFunctionsArgs']] blocking_functions: Configuration related to blocking functions.
+               Structure is documented below.
         :param pulumi.Input[str] name: The name of the Config resource
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[pulumi.InputType['ConfigQuotaArgs']] quota: Configuration related to quotas.
+               Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ConfigState.__new__(_ConfigState)
 
+        __props__.__dict__["authorized_domains"] = authorized_domains
         __props__.__dict__["autodelete_anonymous_users"] = autodelete_anonymous_users
+        __props__.__dict__["blocking_functions"] = blocking_functions
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["quota"] = quota
         return Config(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="authorizedDomains")
+    def authorized_domains(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        List of domains authorized for OAuth redirects.
+        """
+        return pulumi.get(self, "authorized_domains")
 
     @property
     @pulumi.getter(name="autodeleteAnonymousUsers")
@@ -307,6 +492,15 @@ class Config(pulumi.CustomResource):
         Whether anonymous users will be auto-deleted after a period of 30 days
         """
         return pulumi.get(self, "autodelete_anonymous_users")
+
+    @property
+    @pulumi.getter(name="blockingFunctions")
+    def blocking_functions(self) -> pulumi.Output[Optional['outputs.ConfigBlockingFunctions']]:
+        """
+        Configuration related to blocking functions.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "blocking_functions")
 
     @property
     @pulumi.getter
@@ -324,4 +518,13 @@ class Config(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def quota(self) -> pulumi.Output[Optional['outputs.ConfigQuota']]:
+        """
+        Configuration related to quotas.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "quota")
 

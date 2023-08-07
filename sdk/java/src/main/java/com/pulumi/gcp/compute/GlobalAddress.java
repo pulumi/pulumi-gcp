@@ -281,22 +281,22 @@ public class GlobalAddress extends com.pulumi.resources.CustomResource {
     /**
      * The prefix length of the IP range. If not present, it means the
      * address field is a single IP address.
-     * This field is not applicable to addresses with addressType=EXTERNAL,
-     * or addressType=INTERNAL when purpose=PRIVATE_SERVICE_CONNECT
+     * This field is not applicable to addresses with addressType=INTERNAL
+     * when purpose=PRIVATE_SERVICE_CONNECT
      * 
      */
     @Export(name="prefixLength", type=Integer.class, parameters={})
-    private Output</* @Nullable */ Integer> prefixLength;
+    private Output<Integer> prefixLength;
 
     /**
      * @return The prefix length of the IP range. If not present, it means the
      * address field is a single IP address.
-     * This field is not applicable to addresses with addressType=EXTERNAL,
-     * or addressType=INTERNAL when purpose=PRIVATE_SERVICE_CONNECT
+     * This field is not applicable to addresses with addressType=INTERNAL
+     * when purpose=PRIVATE_SERVICE_CONNECT
      * 
      */
-    public Output<Optional<Integer>> prefixLength() {
-        return Codegen.optional(this.prefixLength);
+    public Output<Integer> prefixLength() {
+        return this.prefixLength;
     }
     /**
      * The ID of the project in which the resource belongs.

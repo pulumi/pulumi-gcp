@@ -4,6 +4,7 @@
 package com.pulumi.gcp.pubsub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.pubsub.outputs.SubscriptionPushConfigNoWrapper;
 import com.pulumi.gcp.pubsub.outputs.SubscriptionPushConfigOidcToken;
 import java.lang.String;
 import java.util.Map;
@@ -35,6 +36,13 @@ public final class SubscriptionPushConfig {
      * 
      */
     private @Nullable Map<String,String> attributes;
+    /**
+     * @return When set, the payload to the push endpoint is not wrapped.Sets the
+     * `data` field as the HTTP body for delivery.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable SubscriptionPushConfigNoWrapper noWrapper;
     /**
      * @return If specified, Pub/Sub will generate and attach an OIDC JWT token as
      * an Authorization header in the HTTP request for every pushed message.
@@ -76,6 +84,15 @@ public final class SubscriptionPushConfig {
         return this.attributes == null ? Map.of() : this.attributes;
     }
     /**
+     * @return When set, the payload to the push endpoint is not wrapped.Sets the
+     * `data` field as the HTTP body for delivery.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<SubscriptionPushConfigNoWrapper> noWrapper() {
+        return Optional.ofNullable(this.noWrapper);
+    }
+    /**
      * @return If specified, Pub/Sub will generate and attach an OIDC JWT token as
      * an Authorization header in the HTTP request for every pushed message.
      * Structure is documented below.
@@ -104,12 +121,14 @@ public final class SubscriptionPushConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Map<String,String> attributes;
+        private @Nullable SubscriptionPushConfigNoWrapper noWrapper;
         private @Nullable SubscriptionPushConfigOidcToken oidcToken;
         private String pushEndpoint;
         public Builder() {}
         public Builder(SubscriptionPushConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.attributes = defaults.attributes;
+    	      this.noWrapper = defaults.noWrapper;
     	      this.oidcToken = defaults.oidcToken;
     	      this.pushEndpoint = defaults.pushEndpoint;
         }
@@ -117,6 +136,11 @@ public final class SubscriptionPushConfig {
         @CustomType.Setter
         public Builder attributes(@Nullable Map<String,String> attributes) {
             this.attributes = attributes;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder noWrapper(@Nullable SubscriptionPushConfigNoWrapper noWrapper) {
+            this.noWrapper = noWrapper;
             return this;
         }
         @CustomType.Setter
@@ -132,6 +156,7 @@ public final class SubscriptionPushConfig {
         public SubscriptionPushConfig build() {
             final var o = new SubscriptionPushConfig();
             o.attributes = attributes;
+            o.noWrapper = noWrapper;
             o.oidcToken = oidcToken;
             o.pushEndpoint = pushEndpoint;
             return o;

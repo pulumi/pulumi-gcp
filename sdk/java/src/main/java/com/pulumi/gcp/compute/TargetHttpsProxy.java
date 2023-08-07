@@ -383,18 +383,16 @@ public class TargetHttpsProxy extends com.pulumi.resources.CustomResource {
         return this.selfLink;
     }
     /**
-     * A list of SslCertificate resources that are used to authenticate
-     * connections between users and the load balancer. At least one SSL
-     * certificate must be specified.
+     * A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
+     * connections between users and the load balancer. At least one resource must be specified.
      * 
      */
     @Export(name="sslCertificates", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> sslCertificates;
 
     /**
-     * @return A list of SslCertificate resources that are used to authenticate
-     * connections between users and the load balancer. At least one SSL
-     * certificate must be specified.
+     * @return A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
+     * connections between users and the load balancer. At least one resource must be specified.
      * 
      */
     public Output<Optional<List<String>>> sslCertificates() {

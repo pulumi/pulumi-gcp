@@ -834,6 +834,48 @@ class WorkstationConfig(pulumi.CustomResource):
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
+        ### Workstation Config Accelerators
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+            ip_cidr_range="10.0.0.0/24",
+            region="us-central1",
+            network=default_network.name,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_workstation_cluster = gcp.workstations.WorkstationCluster("defaultWorkstationCluster",
+            workstation_cluster_id="workstation-cluster",
+            network=default_network.id,
+            subnetwork=default_subnetwork.id,
+            location="us-central1",
+            labels={
+                "label": "key",
+            },
+            annotations={
+                "label-one": "value-one",
+            },
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_workstation_config = gcp.workstations.WorkstationConfig("defaultWorkstationConfig",
+            workstation_config_id="workstation-config",
+            workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
+            location="us-central1",
+            host=gcp.workstations.WorkstationConfigHostArgs(
+                gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArgs(
+                    machine_type="n1-standard-2",
+                    boot_disk_size_gb=35,
+                    disable_public_ip_addresses=True,
+                    accelerators=[gcp.workstations.WorkstationConfigHostGceInstanceAcceleratorArgs(
+                        type="nvidia-tesla-p100",
+                        count=1,
+                    )],
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
         ### Workstation Config Encryption Key
 
         ```python
@@ -1157,6 +1199,48 @@ class WorkstationConfig(pulumi.CustomResource):
                         enable_secure_boot=True,
                         enable_vtpm=True,
                     ),
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Workstation Config Accelerators
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+            ip_cidr_range="10.0.0.0/24",
+            region="us-central1",
+            network=default_network.name,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_workstation_cluster = gcp.workstations.WorkstationCluster("defaultWorkstationCluster",
+            workstation_cluster_id="workstation-cluster",
+            network=default_network.id,
+            subnetwork=default_subnetwork.id,
+            location="us-central1",
+            labels={
+                "label": "key",
+            },
+            annotations={
+                "label-one": "value-one",
+            },
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_workstation_config = gcp.workstations.WorkstationConfig("defaultWorkstationConfig",
+            workstation_config_id="workstation-config",
+            workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
+            location="us-central1",
+            host=gcp.workstations.WorkstationConfigHostArgs(
+                gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArgs(
+                    machine_type="n1-standard-2",
+                    boot_disk_size_gb=35,
+                    disable_public_ip_addresses=True,
+                    accelerators=[gcp.workstations.WorkstationConfigHostGceInstanceAcceleratorArgs(
+                        type="nvidia-tesla-p100",
+                        count=1,
+                    )],
                 ),
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))

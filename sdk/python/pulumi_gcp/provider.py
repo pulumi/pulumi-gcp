@@ -80,6 +80,7 @@ class ProviderArgs:
                  disable_google_partner_name: Optional[pulumi.Input[bool]] = None,
                  dns_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  document_ai_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 document_ai_warehouse_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  essential_contacts_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  eventarc_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  filestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -291,6 +292,8 @@ class ProviderArgs:
             pulumi.set(__self__, "dns_custom_endpoint", dns_custom_endpoint)
         if document_ai_custom_endpoint is not None:
             pulumi.set(__self__, "document_ai_custom_endpoint", document_ai_custom_endpoint)
+        if document_ai_warehouse_custom_endpoint is not None:
+            pulumi.set(__self__, "document_ai_warehouse_custom_endpoint", document_ai_warehouse_custom_endpoint)
         if essential_contacts_custom_endpoint is not None:
             pulumi.set(__self__, "essential_contacts_custom_endpoint", essential_contacts_custom_endpoint)
         if eventarc_custom_endpoint is not None:
@@ -1038,6 +1041,15 @@ class ProviderArgs:
     @document_ai_custom_endpoint.setter
     def document_ai_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "document_ai_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="documentAiWarehouseCustomEndpoint")
+    def document_ai_warehouse_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "document_ai_warehouse_custom_endpoint")
+
+    @document_ai_warehouse_custom_endpoint.setter
+    def document_ai_warehouse_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "document_ai_warehouse_custom_endpoint", value)
 
     @property
     @pulumi.getter(name="essentialContactsCustomEndpoint")
@@ -1812,6 +1824,7 @@ class Provider(pulumi.ProviderResource):
                  disable_google_partner_name: Optional[pulumi.Input[bool]] = None,
                  dns_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  document_ai_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 document_ai_warehouse_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  essential_contacts_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  eventarc_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  filestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1992,6 +2005,7 @@ class Provider(pulumi.ProviderResource):
                  disable_google_partner_name: Optional[pulumi.Input[bool]] = None,
                  dns_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  document_ai_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 document_ai_warehouse_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  essential_contacts_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  eventarc_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  filestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2144,6 +2158,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["disable_google_partner_name"] = pulumi.Output.from_input(disable_google_partner_name).apply(pulumi.runtime.to_json) if disable_google_partner_name is not None else None
             __props__.__dict__["dns_custom_endpoint"] = dns_custom_endpoint
             __props__.__dict__["document_ai_custom_endpoint"] = document_ai_custom_endpoint
+            __props__.__dict__["document_ai_warehouse_custom_endpoint"] = document_ai_warehouse_custom_endpoint
             __props__.__dict__["essential_contacts_custom_endpoint"] = essential_contacts_custom_endpoint
             __props__.__dict__["eventarc_custom_endpoint"] = eventarc_custom_endpoint
             __props__.__dict__["filestore_custom_endpoint"] = filestore_custom_endpoint
@@ -2548,6 +2563,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="documentAiCustomEndpoint")
     def document_ai_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "document_ai_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="documentAiWarehouseCustomEndpoint")
+    def document_ai_warehouse_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "document_ai_warehouse_custom_endpoint")
 
     @property
     @pulumi.getter(name="essentialContactsCustomEndpoint")

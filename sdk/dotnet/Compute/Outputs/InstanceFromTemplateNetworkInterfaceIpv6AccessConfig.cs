@@ -15,6 +15,11 @@ namespace Pulumi.Gcp.Compute.Outputs
     {
         public readonly string? ExternalIpv6;
         public readonly string? ExternalIpv6PrefixLength;
+        /// <summary>
+        /// A unique name for the resource, required by GCE.
+        /// Changing this forces a new resource to be created.
+        /// </summary>
+        public readonly string? Name;
         public readonly string NetworkTier;
         public readonly string? PublicPtrDomainName;
 
@@ -24,12 +29,15 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? externalIpv6PrefixLength,
 
+            string? name,
+
             string networkTier,
 
             string? publicPtrDomainName)
         {
             ExternalIpv6 = externalIpv6;
             ExternalIpv6PrefixLength = externalIpv6PrefixLength;
+            Name = name;
             NetworkTier = networkTier;
             PublicPtrDomainName = publicPtrDomainName;
         }

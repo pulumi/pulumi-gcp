@@ -191,9 +191,8 @@ namespace Pulumi.Gcp.Compute
     public partial class Address : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The static external IP address represented by this resource. Only
-        /// IPv4 is supported. An address may only be specified for INTERNAL
-        /// address types. The IP address must be inside the specified subnetwork,
+        /// The static external IP address represented by this resource.
+        /// The IP address must be inside the specified subnetwork,
         /// if any. Set by the API if undefined.
         /// </summary>
         [Output("address")]
@@ -219,6 +218,22 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// The IP Version that will be used by this address. The default value is `IPV4`.
+        /// Possible values are: `IPV4`, `IPV6`.
+        /// </summary>
+        [Output("ipVersion")]
+        public Output<string?> IpVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// The endpoint type of this address, which should be VM or NETLB. This is
+        /// used for deciding which type of endpoint this address can be used after
+        /// the external IPv6 address reservation.
+        /// Possible values are: `VM`, `NETLB`.
+        /// </summary>
+        [Output("ipv6EndpointType")]
+        public Output<string?> Ipv6EndpointType { get; private set; } = null!;
 
         /// <summary>
         /// The fingerprint used for optimistic locking of this resource. Used internally during updates.
@@ -267,7 +282,7 @@ namespace Pulumi.Gcp.Compute
         /// The prefix length if the resource represents an IP range.
         /// </summary>
         [Output("prefixLength")]
-        public Output<int?> PrefixLength { get; private set; } = null!;
+        public Output<int> PrefixLength { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -370,9 +385,8 @@ namespace Pulumi.Gcp.Compute
     public sealed class AddressArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The static external IP address represented by this resource. Only
-        /// IPv4 is supported. An address may only be specified for INTERNAL
-        /// address types. The IP address must be inside the specified subnetwork,
+        /// The static external IP address represented by this resource.
+        /// The IP address must be inside the specified subnetwork,
         /// if any. Set by the API if undefined.
         /// </summary>
         [Input("address")]
@@ -392,6 +406,22 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The IP Version that will be used by this address. The default value is `IPV4`.
+        /// Possible values are: `IPV4`, `IPV6`.
+        /// </summary>
+        [Input("ipVersion")]
+        public Input<string>? IpVersion { get; set; }
+
+        /// <summary>
+        /// The endpoint type of this address, which should be VM or NETLB. This is
+        /// used for deciding which type of endpoint this address can be used after
+        /// the external IPv6 address reservation.
+        /// Possible values are: `VM`, `NETLB`.
+        /// </summary>
+        [Input("ipv6EndpointType")]
+        public Input<string>? Ipv6EndpointType { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -493,9 +523,8 @@ namespace Pulumi.Gcp.Compute
     public sealed class AddressState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The static external IP address represented by this resource. Only
-        /// IPv4 is supported. An address may only be specified for INTERNAL
-        /// address types. The IP address must be inside the specified subnetwork,
+        /// The static external IP address represented by this resource.
+        /// The IP address must be inside the specified subnetwork,
         /// if any. Set by the API if undefined.
         /// </summary>
         [Input("address")]
@@ -521,6 +550,22 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The IP Version that will be used by this address. The default value is `IPV4`.
+        /// Possible values are: `IPV4`, `IPV6`.
+        /// </summary>
+        [Input("ipVersion")]
+        public Input<string>? IpVersion { get; set; }
+
+        /// <summary>
+        /// The endpoint type of this address, which should be VM or NETLB. This is
+        /// used for deciding which type of endpoint this address can be used after
+        /// the external IPv6 address reservation.
+        /// Possible values are: `VM`, `NETLB`.
+        /// </summary>
+        [Input("ipv6EndpointType")]
+        public Input<string>? Ipv6EndpointType { get; set; }
 
         /// <summary>
         /// The fingerprint used for optimistic locking of this resource. Used internally during updates.

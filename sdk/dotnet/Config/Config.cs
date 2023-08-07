@@ -487,6 +487,13 @@ namespace Pulumi.Gcp
             set => _documentAiCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _documentAiWarehouseCustomEndpoint = new __Value<string?>(() => __config.Get("documentAiWarehouseCustomEndpoint"));
+        public static string? DocumentAiWarehouseCustomEndpoint
+        {
+            get => _documentAiWarehouseCustomEndpoint.Get();
+            set => _documentAiWarehouseCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _essentialContactsCustomEndpoint = new __Value<string?>(() => __config.Get("essentialContactsCustomEndpoint"));
         public static string? EssentialContactsCustomEndpoint
         {

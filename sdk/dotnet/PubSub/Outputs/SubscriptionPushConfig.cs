@@ -35,6 +35,12 @@ namespace Pulumi.Gcp.PubSub.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Attributes;
         /// <summary>
+        /// When set, the payload to the push endpoint is not wrapped.Sets the
+        /// `data` field as the HTTP body for delivery.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.SubscriptionPushConfigNoWrapper? NoWrapper;
+        /// <summary>
         /// If specified, Pub/Sub will generate and attach an OIDC JWT token as
         /// an Authorization header in the HTTP request for every pushed message.
         /// Structure is documented below.
@@ -51,11 +57,14 @@ namespace Pulumi.Gcp.PubSub.Outputs
         private SubscriptionPushConfig(
             ImmutableDictionary<string, string>? attributes,
 
+            Outputs.SubscriptionPushConfigNoWrapper? noWrapper,
+
             Outputs.SubscriptionPushConfigOidcToken? oidcToken,
 
             string pushEndpoint)
         {
             Attributes = attributes;
+            NoWrapper = noWrapper;
             OidcToken = oidcToken;
             PushEndpoint = pushEndpoint;
         }

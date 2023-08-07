@@ -87,9 +87,8 @@ type TargetHttpsProxy struct {
 	QuicOverride pulumi.StringPtrOutput `pulumi:"quicOverride"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// A list of SslCertificate resources that are used to authenticate
-	// connections between users and the load balancer. At least one SSL
-	// certificate must be specified.
+	// A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
+	// connections between users and the load balancer. At least one resource must be specified.
 	SslCertificates pulumi.StringArrayOutput `pulumi:"sslCertificates"`
 	// A reference to the SslPolicy resource that will be associated with
 	// the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
@@ -175,9 +174,8 @@ type targetHttpsProxyState struct {
 	QuicOverride *string `pulumi:"quicOverride"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// A list of SslCertificate resources that are used to authenticate
-	// connections between users and the load balancer. At least one SSL
-	// certificate must be specified.
+	// A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
+	// connections between users and the load balancer. At least one resource must be specified.
 	SslCertificates []string `pulumi:"sslCertificates"`
 	// A reference to the SslPolicy resource that will be associated with
 	// the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
@@ -231,9 +229,8 @@ type TargetHttpsProxyState struct {
 	QuicOverride pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
-	// A list of SslCertificate resources that are used to authenticate
-	// connections between users and the load balancer. At least one SSL
-	// certificate must be specified.
+	// A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
+	// connections between users and the load balancer. At least one resource must be specified.
 	SslCertificates pulumi.StringArrayInput
 	// A reference to the SslPolicy resource that will be associated with
 	// the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
@@ -285,9 +282,8 @@ type targetHttpsProxyArgs struct {
 	// Default value is `NONE`.
 	// Possible values are: `NONE`, `ENABLE`, `DISABLE`.
 	QuicOverride *string `pulumi:"quicOverride"`
-	// A list of SslCertificate resources that are used to authenticate
-	// connections between users and the load balancer. At least one SSL
-	// certificate must be specified.
+	// A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
+	// connections between users and the load balancer. At least one resource must be specified.
 	SslCertificates []string `pulumi:"sslCertificates"`
 	// A reference to the SslPolicy resource that will be associated with
 	// the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
@@ -336,9 +332,8 @@ type TargetHttpsProxyArgs struct {
 	// Default value is `NONE`.
 	// Possible values are: `NONE`, `ENABLE`, `DISABLE`.
 	QuicOverride pulumi.StringPtrInput
-	// A list of SslCertificate resources that are used to authenticate
-	// connections between users and the load balancer. At least one SSL
-	// certificate must be specified.
+	// A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
+	// connections between users and the load balancer. At least one resource must be specified.
 	SslCertificates pulumi.StringArrayInput
 	// A reference to the SslPolicy resource that will be associated with
 	// the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
@@ -508,9 +503,8 @@ func (o TargetHttpsProxyOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *TargetHttpsProxy) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
 }
 
-// A list of SslCertificate resources that are used to authenticate
-// connections between users and the load balancer. At least one SSL
-// certificate must be specified.
+// A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
+// connections between users and the load balancer. At least one resource must be specified.
 func (o TargetHttpsProxyOutput) SslCertificates() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TargetHttpsProxy) pulumi.StringArrayOutput { return v.SslCertificates }).(pulumi.StringArrayOutput)
 }

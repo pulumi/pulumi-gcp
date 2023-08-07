@@ -12,6 +12,13 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NodePoolPlacementPolicy {
     /**
+     * @return If set, refers to the name of a custom resource policy supplied by the user.
+     * The resource policy must be in the same project and region as the node pool.
+     * If not found, InvalidArgument error is returned.
+     * 
+     */
+    private @Nullable String policyName;
+    /**
      * @return The [TPU placement topology](https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies) for pod slice node pool.
      * 
      */
@@ -25,6 +32,15 @@ public final class NodePoolPlacementPolicy {
     private String type;
 
     private NodePoolPlacementPolicy() {}
+    /**
+     * @return If set, refers to the name of a custom resource policy supplied by the user.
+     * The resource policy must be in the same project and region as the node pool.
+     * If not found, InvalidArgument error is returned.
+     * 
+     */
+    public Optional<String> policyName() {
+        return Optional.ofNullable(this.policyName);
+    }
     /**
      * @return The [TPU placement topology](https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies) for pod slice node pool.
      * 
@@ -51,15 +67,22 @@ public final class NodePoolPlacementPolicy {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String policyName;
         private @Nullable String tpuTopology;
         private String type;
         public Builder() {}
         public Builder(NodePoolPlacementPolicy defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.policyName = defaults.policyName;
     	      this.tpuTopology = defaults.tpuTopology;
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
+        public Builder policyName(@Nullable String policyName) {
+            this.policyName = policyName;
+            return this;
+        }
         @CustomType.Setter
         public Builder tpuTopology(@Nullable String tpuTopology) {
             this.tpuTopology = tpuTopology;
@@ -72,6 +95,7 @@ public final class NodePoolPlacementPolicy {
         }
         public NodePoolPlacementPolicy build() {
             final var o = new NodePoolPlacementPolicy();
+            o.policyName = policyName;
             o.tpuTopology = tpuTopology;
             o.type = type;
             return o;

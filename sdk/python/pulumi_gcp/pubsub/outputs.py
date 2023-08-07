@@ -22,6 +22,7 @@ __all__ = [
     'SubscriptionIAMBindingCondition',
     'SubscriptionIAMMemberCondition',
     'SubscriptionPushConfig',
+    'SubscriptionPushConfigNoWrapper',
     'SubscriptionPushConfigOidcToken',
     'SubscriptionRetryPolicy',
     'TopicIAMBindingCondition',
@@ -32,6 +33,7 @@ __all__ = [
     'GetSubscriptionDeadLetterPolicyResult',
     'GetSubscriptionExpirationPolicyResult',
     'GetSubscriptionPushConfigResult',
+    'GetSubscriptionPushConfigNoWrapperResult',
     'GetSubscriptionPushConfigOidcTokenResult',
     'GetSubscriptionRetryPolicyResult',
     'GetTopicMessageStoragePolicyResult',
@@ -494,6 +496,8 @@ class SubscriptionPushConfig(dict):
         suggest = None
         if key == "pushEndpoint":
             suggest = "push_endpoint"
+        elif key == "noWrapper":
+            suggest = "no_wrapper"
         elif key == "oidcToken":
             suggest = "oidc_token"
 
@@ -511,6 +515,7 @@ class SubscriptionPushConfig(dict):
     def __init__(__self__, *,
                  push_endpoint: str,
                  attributes: Optional[Mapping[str, str]] = None,
+                 no_wrapper: Optional['outputs.SubscriptionPushConfigNoWrapper'] = None,
                  oidc_token: Optional['outputs.SubscriptionPushConfigOidcToken'] = None):
         """
         :param str push_endpoint: A URL locating the endpoint to which messages should be pushed.
@@ -534,6 +539,9 @@ class SubscriptionPushConfig(dict):
                The possible values for this attribute are:
                - v1beta1: uses the push format defined in the v1beta1 Pub/Sub API.
                - v1 or v1beta2: uses the push format defined in the v1 Pub/Sub API.
+        :param 'SubscriptionPushConfigNoWrapperArgs' no_wrapper: When set, the payload to the push endpoint is not wrapped.Sets the
+               `data` field as the HTTP body for delivery.
+               Structure is documented below.
         :param 'SubscriptionPushConfigOidcTokenArgs' oidc_token: If specified, Pub/Sub will generate and attach an OIDC JWT token as
                an Authorization header in the HTTP request for every pushed message.
                Structure is documented below.
@@ -541,6 +549,8 @@ class SubscriptionPushConfig(dict):
         pulumi.set(__self__, "push_endpoint", push_endpoint)
         if attributes is not None:
             pulumi.set(__self__, "attributes", attributes)
+        if no_wrapper is not None:
+            pulumi.set(__self__, "no_wrapper", no_wrapper)
         if oidc_token is not None:
             pulumi.set(__self__, "oidc_token", oidc_token)
 
@@ -580,6 +590,16 @@ class SubscriptionPushConfig(dict):
         return pulumi.get(self, "attributes")
 
     @property
+    @pulumi.getter(name="noWrapper")
+    def no_wrapper(self) -> Optional['outputs.SubscriptionPushConfigNoWrapper']:
+        """
+        When set, the payload to the push endpoint is not wrapped.Sets the
+        `data` field as the HTTP body for delivery.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "no_wrapper")
+
+    @property
     @pulumi.getter(name="oidcToken")
     def oidc_token(self) -> Optional['outputs.SubscriptionPushConfigOidcToken']:
         """
@@ -588,6 +608,45 @@ class SubscriptionPushConfig(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "oidc_token")
+
+
+@pulumi.output_type
+class SubscriptionPushConfigNoWrapper(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "writeMetadata":
+            suggest = "write_metadata"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SubscriptionPushConfigNoWrapper. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SubscriptionPushConfigNoWrapper.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SubscriptionPushConfigNoWrapper.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 write_metadata: bool):
+        """
+        :param bool write_metadata: When true, writes the Pub/Sub message metadata to
+               `x-goog-pubsub-<KEY>:<VAL>` headers of the HTTP request. Writes the
+               Pub/Sub message attributes to `<KEY>:<VAL>` headers of the HTTP request.
+        """
+        pulumi.set(__self__, "write_metadata", write_metadata)
+
+    @property
+    @pulumi.getter(name="writeMetadata")
+    def write_metadata(self) -> bool:
+        """
+        When true, writes the Pub/Sub message metadata to
+        `x-goog-pubsub-<KEY>:<VAL>` headers of the HTTP request. Writes the
+        Pub/Sub message attributes to `<KEY>:<VAL>` headers of the HTTP request.
+        """
+        return pulumi.get(self, "write_metadata")
 
 
 @pulumi.output_type
@@ -914,9 +973,11 @@ class GetSubscriptionExpirationPolicyResult(dict):
 class GetSubscriptionPushConfigResult(dict):
     def __init__(__self__, *,
                  attributes: Mapping[str, str],
+                 no_wrappers: Sequence['outputs.GetSubscriptionPushConfigNoWrapperResult'],
                  oidc_tokens: Sequence['outputs.GetSubscriptionPushConfigOidcTokenResult'],
                  push_endpoint: str):
         pulumi.set(__self__, "attributes", attributes)
+        pulumi.set(__self__, "no_wrappers", no_wrappers)
         pulumi.set(__self__, "oidc_tokens", oidc_tokens)
         pulumi.set(__self__, "push_endpoint", push_endpoint)
 
@@ -924,6 +985,11 @@ class GetSubscriptionPushConfigResult(dict):
     @pulumi.getter
     def attributes(self) -> Mapping[str, str]:
         return pulumi.get(self, "attributes")
+
+    @property
+    @pulumi.getter(name="noWrappers")
+    def no_wrappers(self) -> Sequence['outputs.GetSubscriptionPushConfigNoWrapperResult']:
+        return pulumi.get(self, "no_wrappers")
 
     @property
     @pulumi.getter(name="oidcTokens")
@@ -934,6 +1000,18 @@ class GetSubscriptionPushConfigResult(dict):
     @pulumi.getter(name="pushEndpoint")
     def push_endpoint(self) -> str:
         return pulumi.get(self, "push_endpoint")
+
+
+@pulumi.output_type
+class GetSubscriptionPushConfigNoWrapperResult(dict):
+    def __init__(__self__, *,
+                 write_metadata: bool):
+        pulumi.set(__self__, "write_metadata", write_metadata)
+
+    @property
+    @pulumi.getter(name="writeMetadata")
+    def write_metadata(self) -> bool:
+        return pulumi.get(self, "write_metadata")
 
 
 @pulumi.output_type

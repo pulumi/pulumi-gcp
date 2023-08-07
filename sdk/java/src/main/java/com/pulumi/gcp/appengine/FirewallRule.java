@@ -55,6 +55,7 @@ import javax.annotation.Nullable;
  *         var myProject = new Project(&#34;myProject&#34;, ProjectArgs.builder()        
  *             .projectId(&#34;ae-project&#34;)
  *             .orgId(&#34;123456789&#34;)
+ *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
  *             .build());
  * 
  *         var app = new Application(&#34;app&#34;, ApplicationArgs.builder()        

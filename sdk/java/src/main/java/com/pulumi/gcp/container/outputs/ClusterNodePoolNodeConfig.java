@@ -10,6 +10,7 @@ import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigEphemeralStorag
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigGcfsConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigGuestAccelerator;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigGvnic;
+import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigHostMaintenancePolicy;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigKubeletConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigLinuxNodeConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig;
@@ -54,7 +55,7 @@ public final class ClusterNodePoolNodeConfig {
      */
     private @Nullable String diskType;
     /**
-     * @return Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+     * @return ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
      * ```java
      * package generated_program;
      * 
@@ -176,6 +177,7 @@ public final class ClusterNodePoolNodeConfig {
      * 
      */
     private @Nullable ClusterNodePoolNodeConfigGvnic gvnic;
+    private @Nullable ClusterNodePoolNodeConfigHostMaintenancePolicy hostMaintenancePolicy;
     /**
      * @return The image type to use for this node. Note that changing the image type
      * will delete and recreate all nodes in the node pool.
@@ -422,7 +424,7 @@ public final class ClusterNodePoolNodeConfig {
         return Optional.ofNullable(this.diskType);
     }
     /**
-     * @return Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+     * @return ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
      * ```java
      * package generated_program;
      * 
@@ -553,6 +555,9 @@ public final class ClusterNodePoolNodeConfig {
      */
     public Optional<ClusterNodePoolNodeConfigGvnic> gvnic() {
         return Optional.ofNullable(this.gvnic);
+    }
+    public Optional<ClusterNodePoolNodeConfigHostMaintenancePolicy> hostMaintenancePolicy() {
+        return Optional.ofNullable(this.hostMaintenancePolicy);
     }
     /**
      * @return The image type to use for this node. Note that changing the image type
@@ -831,6 +836,7 @@ public final class ClusterNodePoolNodeConfig {
         private @Nullable ClusterNodePoolNodeConfigGcfsConfig gcfsConfig;
         private @Nullable List<ClusterNodePoolNodeConfigGuestAccelerator> guestAccelerators;
         private @Nullable ClusterNodePoolNodeConfigGvnic gvnic;
+        private @Nullable ClusterNodePoolNodeConfigHostMaintenancePolicy hostMaintenancePolicy;
         private @Nullable String imageType;
         private @Nullable ClusterNodePoolNodeConfigKubeletConfig kubeletConfig;
         private @Nullable Map<String,String> labels;
@@ -866,6 +872,7 @@ public final class ClusterNodePoolNodeConfig {
     	      this.gcfsConfig = defaults.gcfsConfig;
     	      this.guestAccelerators = defaults.guestAccelerators;
     	      this.gvnic = defaults.gvnic;
+    	      this.hostMaintenancePolicy = defaults.hostMaintenancePolicy;
     	      this.imageType = defaults.imageType;
     	      this.kubeletConfig = defaults.kubeletConfig;
     	      this.labels = defaults.labels;
@@ -937,6 +944,11 @@ public final class ClusterNodePoolNodeConfig {
         @CustomType.Setter
         public Builder gvnic(@Nullable ClusterNodePoolNodeConfigGvnic gvnic) {
             this.gvnic = gvnic;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder hostMaintenancePolicy(@Nullable ClusterNodePoolNodeConfigHostMaintenancePolicy hostMaintenancePolicy) {
+            this.hostMaintenancePolicy = hostMaintenancePolicy;
             return this;
         }
         @CustomType.Setter
@@ -1074,6 +1086,7 @@ public final class ClusterNodePoolNodeConfig {
             o.gcfsConfig = gcfsConfig;
             o.guestAccelerators = guestAccelerators;
             o.gvnic = gvnic;
+            o.hostMaintenancePolicy = hostMaintenancePolicy;
             o.imageType = imageType;
             o.kubeletConfig = kubeletConfig;
             o.labels = labels;

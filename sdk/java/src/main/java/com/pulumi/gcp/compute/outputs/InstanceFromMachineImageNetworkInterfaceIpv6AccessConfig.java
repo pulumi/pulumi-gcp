@@ -13,6 +13,12 @@ import javax.annotation.Nullable;
 public final class InstanceFromMachineImageNetworkInterfaceIpv6AccessConfig {
     private @Nullable String externalIpv6;
     private @Nullable String externalIpv6PrefixLength;
+    /**
+     * @return A unique name for the resource, required by GCE.
+     * Changing this forces a new resource to be created.
+     * 
+     */
+    private @Nullable String name;
     private String networkTier;
     private @Nullable String publicPtrDomainName;
 
@@ -22,6 +28,14 @@ public final class InstanceFromMachineImageNetworkInterfaceIpv6AccessConfig {
     }
     public Optional<String> externalIpv6PrefixLength() {
         return Optional.ofNullable(this.externalIpv6PrefixLength);
+    }
+    /**
+     * @return A unique name for the resource, required by GCE.
+     * Changing this forces a new resource to be created.
+     * 
+     */
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
     public String networkTier() {
         return this.networkTier;
@@ -41,6 +55,7 @@ public final class InstanceFromMachineImageNetworkInterfaceIpv6AccessConfig {
     public static final class Builder {
         private @Nullable String externalIpv6;
         private @Nullable String externalIpv6PrefixLength;
+        private @Nullable String name;
         private String networkTier;
         private @Nullable String publicPtrDomainName;
         public Builder() {}
@@ -48,6 +63,7 @@ public final class InstanceFromMachineImageNetworkInterfaceIpv6AccessConfig {
     	      Objects.requireNonNull(defaults);
     	      this.externalIpv6 = defaults.externalIpv6;
     	      this.externalIpv6PrefixLength = defaults.externalIpv6PrefixLength;
+    	      this.name = defaults.name;
     	      this.networkTier = defaults.networkTier;
     	      this.publicPtrDomainName = defaults.publicPtrDomainName;
         }
@@ -60,6 +76,11 @@ public final class InstanceFromMachineImageNetworkInterfaceIpv6AccessConfig {
         @CustomType.Setter
         public Builder externalIpv6PrefixLength(@Nullable String externalIpv6PrefixLength) {
             this.externalIpv6PrefixLength = externalIpv6PrefixLength;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder name(@Nullable String name) {
+            this.name = name;
             return this;
         }
         @CustomType.Setter
@@ -76,6 +97,7 @@ public final class InstanceFromMachineImageNetworkInterfaceIpv6AccessConfig {
             final var o = new InstanceFromMachineImageNetworkInterfaceIpv6AccessConfig();
             o.externalIpv6 = externalIpv6;
             o.externalIpv6PrefixLength = externalIpv6PrefixLength;
+            o.name = name;
             o.networkTier = networkTier;
             o.publicPtrDomainName = publicPtrDomainName;
             return o;

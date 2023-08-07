@@ -277,6 +277,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('documentAiCustomEndpoint')
 
     @property
+    def document_ai_warehouse_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('documentAiWarehouseCustomEndpoint')
+
+    @property
     def essential_contacts_custom_endpoint(self) -> Optional[str]:
         return __config__.get('essentialContactsCustomEndpoint')
 

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -31,6 +32,11 @@ public final class RegionBackendServiceConnectionTrackingPolicy {
      * 
      */
     private @Nullable String connectionPersistenceOnUnhealthyBackends;
+    /**
+     * @return Enable Strong Session Affinity for Network Load Balancing. This option is not available publicly.
+     * 
+     */
+    private @Nullable Boolean enableStrongAffinity;
     /**
      * @return Specifies how long to keep a Connection Tracking entry while there is
      * no matching traffic (in seconds).
@@ -74,6 +80,13 @@ public final class RegionBackendServiceConnectionTrackingPolicy {
         return Optional.ofNullable(this.connectionPersistenceOnUnhealthyBackends);
     }
     /**
+     * @return Enable Strong Session Affinity for Network Load Balancing. This option is not available publicly.
+     * 
+     */
+    public Optional<Boolean> enableStrongAffinity() {
+        return Optional.ofNullable(this.enableStrongAffinity);
+    }
+    /**
      * @return Specifies how long to keep a Connection Tracking entry while there is
      * no matching traffic (in seconds).
      * For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours.
@@ -107,12 +120,14 @@ public final class RegionBackendServiceConnectionTrackingPolicy {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String connectionPersistenceOnUnhealthyBackends;
+        private @Nullable Boolean enableStrongAffinity;
         private @Nullable Integer idleTimeoutSec;
         private @Nullable String trackingMode;
         public Builder() {}
         public Builder(RegionBackendServiceConnectionTrackingPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.connectionPersistenceOnUnhealthyBackends = defaults.connectionPersistenceOnUnhealthyBackends;
+    	      this.enableStrongAffinity = defaults.enableStrongAffinity;
     	      this.idleTimeoutSec = defaults.idleTimeoutSec;
     	      this.trackingMode = defaults.trackingMode;
         }
@@ -120,6 +135,11 @@ public final class RegionBackendServiceConnectionTrackingPolicy {
         @CustomType.Setter
         public Builder connectionPersistenceOnUnhealthyBackends(@Nullable String connectionPersistenceOnUnhealthyBackends) {
             this.connectionPersistenceOnUnhealthyBackends = connectionPersistenceOnUnhealthyBackends;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableStrongAffinity(@Nullable Boolean enableStrongAffinity) {
+            this.enableStrongAffinity = enableStrongAffinity;
             return this;
         }
         @CustomType.Setter
@@ -135,6 +155,7 @@ public final class RegionBackendServiceConnectionTrackingPolicy {
         public RegionBackendServiceConnectionTrackingPolicy build() {
             final var o = new RegionBackendServiceConnectionTrackingPolicy();
             o.connectionPersistenceOnUnhealthyBackends = connectionPersistenceOnUnhealthyBackends;
+            o.enableStrongAffinity = enableStrongAffinity;
             o.idleTimeoutSec = idleTimeoutSec;
             o.trackingMode = trackingMode;
             return o;

@@ -529,6 +529,14 @@ Object.defineProperty(exports, "documentAiCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const documentAiWarehouseCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "documentAiWarehouseCustomEndpoint", {
+    get() {
+        return __config.get("documentAiWarehouseCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const essentialContactsCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "essentialContactsCustomEndpoint", {
     get() {

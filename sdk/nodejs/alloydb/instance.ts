@@ -22,11 +22,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {});
+ * const defaultNetwork = gcp.compute.getNetwork({
+ *     name: "alloydb-network",
+ * });
  * const defaultCluster = new gcp.alloydb.Cluster("defaultCluster", {
  *     clusterId: "alloydb-cluster",
  *     location: "us-central1",
- *     network: defaultNetwork.id,
+ *     network: defaultNetwork.then(defaultNetwork => defaultNetwork.id),
  *     initialUser: {
  *         password: "alloydb-cluster",
  *     },
@@ -35,10 +37,10 @@ import * as utilities from "../utilities";
  *     addressType: "INTERNAL",
  *     purpose: "VPC_PEERING",
  *     prefixLength: 16,
- *     network: defaultNetwork.id,
+ *     network: defaultNetwork.then(defaultNetwork => defaultNetwork.id),
  * });
  * const vpcConnection = new gcp.servicenetworking.Connection("vpcConnection", {
- *     network: defaultNetwork.id,
+ *     network: defaultNetwork.then(defaultNetwork => defaultNetwork.id),
  *     service: "servicenetworking.googleapis.com",
  *     reservedPeeringRanges: [privateIpAlloc.name],
  * });

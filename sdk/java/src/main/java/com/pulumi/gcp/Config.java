@@ -209,6 +209,9 @@ public final class Config {
     public Optional<String> documentAiCustomEndpoint() {
         return Codegen.stringProp("documentAiCustomEndpoint").config(config).get();
     }
+    public Optional<String> documentAiWarehouseCustomEndpoint() {
+        return Codegen.stringProp("documentAiWarehouseCustomEndpoint").config(config).get();
+    }
     public Optional<String> essentialContactsCustomEndpoint() {
         return Codegen.stringProp("essentialContactsCustomEndpoint").config(config).get();
     }

@@ -5,8 +5,11 @@ package com.pulumi.gcp.identityplatform.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.identityplatform.inputs.ConfigBlockingFunctionsArgs;
+import com.pulumi.gcp.identityplatform.inputs.ConfigQuotaArgs;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,6 +18,21 @@ import javax.annotation.Nullable;
 public final class ConfigState extends com.pulumi.resources.ResourceArgs {
 
     public static final ConfigState Empty = new ConfigState();
+
+    /**
+     * List of domains authorized for OAuth redirects.
+     * 
+     */
+    @Import(name="authorizedDomains")
+    private @Nullable Output<List<String>> authorizedDomains;
+
+    /**
+     * @return List of domains authorized for OAuth redirects.
+     * 
+     */
+    public Optional<Output<List<String>>> authorizedDomains() {
+        return Optional.ofNullable(this.authorizedDomains);
+    }
 
     /**
      * Whether anonymous users will be auto-deleted after a period of 30 days
@@ -29,6 +47,23 @@ public final class ConfigState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> autodeleteAnonymousUsers() {
         return Optional.ofNullable(this.autodeleteAnonymousUsers);
+    }
+
+    /**
+     * Configuration related to blocking functions.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="blockingFunctions")
+    private @Nullable Output<ConfigBlockingFunctionsArgs> blockingFunctions;
+
+    /**
+     * @return Configuration related to blocking functions.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ConfigBlockingFunctionsArgs>> blockingFunctions() {
+        return Optional.ofNullable(this.blockingFunctions);
     }
 
     /**
@@ -63,12 +98,32 @@ public final class ConfigState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * Configuration related to quotas.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="quota")
+    private @Nullable Output<ConfigQuotaArgs> quota;
+
+    /**
+     * @return Configuration related to quotas.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ConfigQuotaArgs>> quota() {
+        return Optional.ofNullable(this.quota);
+    }
+
     private ConfigState() {}
 
     private ConfigState(ConfigState $) {
+        this.authorizedDomains = $.authorizedDomains;
         this.autodeleteAnonymousUsers = $.autodeleteAnonymousUsers;
+        this.blockingFunctions = $.blockingFunctions;
         this.name = $.name;
         this.project = $.project;
+        this.quota = $.quota;
     }
 
     public static Builder builder() {
@@ -90,6 +145,37 @@ public final class ConfigState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param authorizedDomains List of domains authorized for OAuth redirects.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authorizedDomains(@Nullable Output<List<String>> authorizedDomains) {
+            $.authorizedDomains = authorizedDomains;
+            return this;
+        }
+
+        /**
+         * @param authorizedDomains List of domains authorized for OAuth redirects.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authorizedDomains(List<String> authorizedDomains) {
+            return authorizedDomains(Output.of(authorizedDomains));
+        }
+
+        /**
+         * @param authorizedDomains List of domains authorized for OAuth redirects.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authorizedDomains(String... authorizedDomains) {
+            return authorizedDomains(List.of(authorizedDomains));
+        }
+
+        /**
          * @param autodeleteAnonymousUsers Whether anonymous users will be auto-deleted after a period of 30 days
          * 
          * @return builder
@@ -108,6 +194,29 @@ public final class ConfigState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder autodeleteAnonymousUsers(Boolean autodeleteAnonymousUsers) {
             return autodeleteAnonymousUsers(Output.of(autodeleteAnonymousUsers));
+        }
+
+        /**
+         * @param blockingFunctions Configuration related to blocking functions.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder blockingFunctions(@Nullable Output<ConfigBlockingFunctionsArgs> blockingFunctions) {
+            $.blockingFunctions = blockingFunctions;
+            return this;
+        }
+
+        /**
+         * @param blockingFunctions Configuration related to blocking functions.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder blockingFunctions(ConfigBlockingFunctionsArgs blockingFunctions) {
+            return blockingFunctions(Output.of(blockingFunctions));
         }
 
         /**
@@ -152,6 +261,29 @@ public final class ConfigState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param quota Configuration related to quotas.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder quota(@Nullable Output<ConfigQuotaArgs> quota) {
+            $.quota = quota;
+            return this;
+        }
+
+        /**
+         * @param quota Configuration related to quotas.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder quota(ConfigQuotaArgs quota) {
+            return quota(Output.of(quota));
         }
 
         public ConfigState build() {

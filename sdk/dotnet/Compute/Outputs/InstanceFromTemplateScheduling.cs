@@ -15,6 +15,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     {
         public readonly bool? AutomaticRestart;
         public readonly string? InstanceTerminationAction;
+        public readonly Outputs.InstanceFromTemplateSchedulingLocalSsdRecoveryTimeout? LocalSsdRecoveryTimeout;
         public readonly string? MaintenanceInterval;
         public readonly Outputs.InstanceFromTemplateSchedulingMaxRunDuration? MaxRunDuration;
         public readonly int? MinNodeCpus;
@@ -28,6 +29,8 @@ namespace Pulumi.Gcp.Compute.Outputs
             bool? automaticRestart,
 
             string? instanceTerminationAction,
+
+            Outputs.InstanceFromTemplateSchedulingLocalSsdRecoveryTimeout? localSsdRecoveryTimeout,
 
             string? maintenanceInterval,
 
@@ -45,6 +48,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         {
             AutomaticRestart = automaticRestart;
             InstanceTerminationAction = instanceTerminationAction;
+            LocalSsdRecoveryTimeout = localSsdRecoveryTimeout;
             MaintenanceInterval = maintenanceInterval;
             MaxRunDuration = maxRunDuration;
             MinNodeCpus = minNodeCpus;

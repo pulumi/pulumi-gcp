@@ -19,9 +19,8 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
     public static final AddressState Empty = new AddressState();
 
     /**
-     * The static external IP address represented by this resource. Only
-     * IPv4 is supported. An address may only be specified for INTERNAL
-     * address types. The IP address must be inside the specified subnetwork,
+     * The static external IP address represented by this resource.
+     * The IP address must be inside the specified subnetwork,
      * if any. Set by the API if undefined.
      * 
      */
@@ -29,9 +28,8 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> address;
 
     /**
-     * @return The static external IP address represented by this resource. Only
-     * IPv4 is supported. An address may only be specified for INTERNAL
-     * address types. The IP address must be inside the specified subnetwork,
+     * @return The static external IP address represented by this resource.
+     * The IP address must be inside the specified subnetwork,
      * if any. Set by the API if undefined.
      * 
      */
@@ -88,6 +86,44 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * The IP Version that will be used by this address. The default value is `IPV4`.
+     * Possible values are: `IPV4`, `IPV6`.
+     * 
+     */
+    @Import(name="ipVersion")
+    private @Nullable Output<String> ipVersion;
+
+    /**
+     * @return The IP Version that will be used by this address. The default value is `IPV4`.
+     * Possible values are: `IPV4`, `IPV6`.
+     * 
+     */
+    public Optional<Output<String>> ipVersion() {
+        return Optional.ofNullable(this.ipVersion);
+    }
+
+    /**
+     * The endpoint type of this address, which should be VM or NETLB. This is
+     * used for deciding which type of endpoint this address can be used after
+     * the external IPv6 address reservation.
+     * Possible values are: `VM`, `NETLB`.
+     * 
+     */
+    @Import(name="ipv6EndpointType")
+    private @Nullable Output<String> ipv6EndpointType;
+
+    /**
+     * @return The endpoint type of this address, which should be VM or NETLB. This is
+     * used for deciding which type of endpoint this address can be used after
+     * the external IPv6 address reservation.
+     * Possible values are: `VM`, `NETLB`.
+     * 
+     */
+    public Optional<Output<String>> ipv6EndpointType() {
+        return Optional.ofNullable(this.ipv6EndpointType);
     }
 
     /**
@@ -337,6 +373,8 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
         this.addressType = $.addressType;
         this.creationTimestamp = $.creationTimestamp;
         this.description = $.description;
+        this.ipVersion = $.ipVersion;
+        this.ipv6EndpointType = $.ipv6EndpointType;
         this.labelFingerprint = $.labelFingerprint;
         this.labels = $.labels;
         this.name = $.name;
@@ -370,9 +408,8 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param address The static external IP address represented by this resource. Only
-         * IPv4 is supported. An address may only be specified for INTERNAL
-         * address types. The IP address must be inside the specified subnetwork,
+         * @param address The static external IP address represented by this resource.
+         * The IP address must be inside the specified subnetwork,
          * if any. Set by the API if undefined.
          * 
          * @return builder
@@ -384,9 +421,8 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param address The static external IP address represented by this resource. Only
-         * IPv4 is supported. An address may only be specified for INTERNAL
-         * address types. The IP address must be inside the specified subnetwork,
+         * @param address The static external IP address represented by this resource.
+         * The IP address must be inside the specified subnetwork,
          * if any. Set by the API if undefined.
          * 
          * @return builder
@@ -463,6 +499,56 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param ipVersion The IP Version that will be used by this address. The default value is `IPV4`.
+         * Possible values are: `IPV4`, `IPV6`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipVersion(@Nullable Output<String> ipVersion) {
+            $.ipVersion = ipVersion;
+            return this;
+        }
+
+        /**
+         * @param ipVersion The IP Version that will be used by this address. The default value is `IPV4`.
+         * Possible values are: `IPV4`, `IPV6`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipVersion(String ipVersion) {
+            return ipVersion(Output.of(ipVersion));
+        }
+
+        /**
+         * @param ipv6EndpointType The endpoint type of this address, which should be VM or NETLB. This is
+         * used for deciding which type of endpoint this address can be used after
+         * the external IPv6 address reservation.
+         * Possible values are: `VM`, `NETLB`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6EndpointType(@Nullable Output<String> ipv6EndpointType) {
+            $.ipv6EndpointType = ipv6EndpointType;
+            return this;
+        }
+
+        /**
+         * @param ipv6EndpointType The endpoint type of this address, which should be VM or NETLB. This is
+         * used for deciding which type of endpoint this address can be used after
+         * the external IPv6 address reservation.
+         * Possible values are: `VM`, `NETLB`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6EndpointType(String ipv6EndpointType) {
+            return ipv6EndpointType(Output.of(ipv6EndpointType));
         }
 
         /**

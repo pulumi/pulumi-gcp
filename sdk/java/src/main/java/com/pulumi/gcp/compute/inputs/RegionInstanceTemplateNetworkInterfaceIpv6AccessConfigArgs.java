@@ -29,6 +29,13 @@ public final class RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs ex
         return Optional.ofNullable(this.externalIpv6PrefixLength);
     }
 
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
+    }
+
     /**
      * The [networking tier][network-tier] used for configuring
      * this instance template. This field can take the following values: PREMIUM,
@@ -68,6 +75,7 @@ public final class RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs ex
     private RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs(RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs $) {
         this.externalIpv6 = $.externalIpv6;
         this.externalIpv6PrefixLength = $.externalIpv6PrefixLength;
+        this.name = $.name;
         this.networkTier = $.networkTier;
         this.publicPtrDomainName = $.publicPtrDomainName;
     }
@@ -106,6 +114,15 @@ public final class RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs ex
 
         public Builder externalIpv6PrefixLength(String externalIpv6PrefixLength) {
             return externalIpv6PrefixLength(Output.of(externalIpv6PrefixLength));
+        }
+
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        public Builder name(String name) {
+            return name(Output.of(name));
         }
 
         /**

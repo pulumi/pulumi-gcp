@@ -3790,6 +3790,22 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "essentialcontacts/documentAiWarehouseDocumentSchema",
+  "fqn": "pulumi_gcp.essentialcontacts",
+  "classes": {
+   "gcp:essentialcontacts/documentAiWarehouseDocumentSchema:DocumentAiWarehouseDocumentSchema": "DocumentAiWarehouseDocumentSchema"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "essentialcontacts/documentAiWarehouseLocation",
+  "fqn": "pulumi_gcp.essentialcontacts",
+  "classes": {
+   "gcp:essentialcontacts/documentAiWarehouseLocation:DocumentAiWarehouseLocation": "DocumentAiWarehouseLocation"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "eventarc/channel",
   "fqn": "pulumi_gcp.eventarc",
   "classes": {

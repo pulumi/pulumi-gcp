@@ -20,6 +20,7 @@ import com.pulumi.gcp.container.outputs.ClusterCostManagementConfig;
 import com.pulumi.gcp.container.outputs.ClusterDatabaseEncryption;
 import com.pulumi.gcp.container.outputs.ClusterDefaultSnatStatus;
 import com.pulumi.gcp.container.outputs.ClusterDnsConfig;
+import com.pulumi.gcp.container.outputs.ClusterEnableK8sBetaApis;
 import com.pulumi.gcp.container.outputs.ClusterGatewayApiConfig;
 import com.pulumi.gcp.container.outputs.ClusterIdentityServiceConfig;
 import com.pulumi.gcp.container.outputs.ClusterIpAllocationPolicy;
@@ -534,6 +535,22 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.enableIntranodeVisibility;
     }
     /**
+     * Configuration for Kubernetes Beta APIs.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="enableK8sBetaApis", type=ClusterEnableK8sBetaApis.class, parameters={})
+    private Output</* @Nullable */ ClusterEnableK8sBetaApis> enableK8sBetaApis;
+
+    /**
+     * @return Configuration for Kubernetes Beta APIs.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ClusterEnableK8sBetaApis>> enableK8sBetaApis() {
+        return Codegen.optional(this.enableK8sBetaApis);
+    }
+    /**
      * Whether to enable Kubernetes Alpha features for
      * this cluster. Note that when this option is enabled, the cluster cannot be upgraded
      * and will be automatically deleted after 30 days.
@@ -586,6 +603,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enableLegacyAbac);
     }
     /**
+     * )
      * Whether multi-networking is enabled for this cluster.
      * 
      */
@@ -593,7 +611,8 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> enableMultiNetworking;
 
     /**
-     * @return Whether multi-networking is enabled for this cluster.
+     * @return )
+     * Whether multi-networking is enabled for this cluster.
      * 
      */
     public Output<Optional<Boolean>> enableMultiNetworking() {

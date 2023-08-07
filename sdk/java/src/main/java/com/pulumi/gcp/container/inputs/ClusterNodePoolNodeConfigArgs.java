@@ -11,6 +11,7 @@ import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigEphemeralStorage
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigGcfsConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigGuestAcceleratorArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigGvnicArgs;
+import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigHostMaintenancePolicyArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigKubeletConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigLinuxNodeConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs;
@@ -101,7 +102,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+     * ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
      * ```java
      * package generated_program;
      * 
@@ -130,7 +131,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
     private @Nullable Output<ClusterNodePoolNodeConfigEphemeralStorageConfigArgs> ephemeralStorageConfig;
 
     /**
-     * @return Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+     * @return ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
      * ```java
      * package generated_program;
      * 
@@ -369,6 +370,13 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
      */
     public Optional<Output<ClusterNodePoolNodeConfigGvnicArgs>> gvnic() {
         return Optional.ofNullable(this.gvnic);
+    }
+
+    @Import(name="hostMaintenancePolicy")
+    private @Nullable Output<ClusterNodePoolNodeConfigHostMaintenancePolicyArgs> hostMaintenancePolicy;
+
+    public Optional<Output<ClusterNodePoolNodeConfigHostMaintenancePolicyArgs>> hostMaintenancePolicy() {
+        return Optional.ofNullable(this.hostMaintenancePolicy);
     }
 
     /**
@@ -922,6 +930,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
         this.gcfsConfig = $.gcfsConfig;
         this.guestAccelerators = $.guestAccelerators;
         this.gvnic = $.gvnic;
+        this.hostMaintenancePolicy = $.hostMaintenancePolicy;
         this.imageType = $.imageType;
         this.kubeletConfig = $.kubeletConfig;
         this.labels = $.labels;
@@ -1056,7 +1065,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param ephemeralStorageConfig Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+         * @param ephemeralStorageConfig ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
          * ```java
          * package generated_program;
          * 
@@ -1089,7 +1098,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param ephemeralStorageConfig Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+         * @param ephemeralStorageConfig ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
          * ```java
          * package generated_program;
          * 
@@ -1365,6 +1374,15 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
          */
         public Builder gvnic(ClusterNodePoolNodeConfigGvnicArgs gvnic) {
             return gvnic(Output.of(gvnic));
+        }
+
+        public Builder hostMaintenancePolicy(@Nullable Output<ClusterNodePoolNodeConfigHostMaintenancePolicyArgs> hostMaintenancePolicy) {
+            $.hostMaintenancePolicy = hostMaintenancePolicy;
+            return this;
+        }
+
+        public Builder hostMaintenancePolicy(ClusterNodePoolNodeConfigHostMaintenancePolicyArgs hostMaintenancePolicy) {
+            return hostMaintenancePolicy(Output.of(hostMaintenancePolicy));
         }
 
         /**

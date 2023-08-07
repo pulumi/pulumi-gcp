@@ -139,9 +139,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			lookerNetwork, err := compute.NewNetwork(ctx, "lookerNetwork", &compute.NetworkArgs{
-//				AutoCreateSubnetworks: pulumi.Bool(false),
-//			})
+//			lookerNetwork, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
+//				Name: "looker-network",
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -149,13 +149,13 @@ import (
 //				Purpose:      pulumi.String("VPC_PEERING"),
 //				AddressType:  pulumi.String("INTERNAL"),
 //				PrefixLength: pulumi.Int(20),
-//				Network:      lookerNetwork.ID(),
+//				Network:      *pulumi.String(lookerNetwork.Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			lookerVpcConnection, err := servicenetworking.NewConnection(ctx, "lookerVpcConnection", &servicenetworking.ConnectionArgs{
-//				Network: lookerNetwork.ID(),
+//				Network: *pulumi.String(lookerNetwork.Id),
 //				Service: pulumi.String("servicenetworking.googleapis.com"),
 //				ReservedPeeringRanges: pulumi.StringArray{
 //					lookerRange.Name,
@@ -170,7 +170,7 @@ import (
 //				PrivateIpEnabled: pulumi.Bool(true),
 //				PublicIpEnabled:  pulumi.Bool(false),
 //				ReservedRange:    lookerRange.Name,
-//				ConsumerNetwork:  lookerNetwork.ID(),
+//				ConsumerNetwork:  *pulumi.String(lookerNetwork.Id),
 //				AdminSettings: &looker.InstanceAdminSettingsArgs{
 //					AllowedEmailDomains: pulumi.StringArray{
 //						pulumi.String("google.com"),

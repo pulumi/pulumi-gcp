@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -41,6 +43,29 @@ import * as utilities from "../utilities";
  * const defaultConfig = new gcp.identityplatform.Config("defaultConfig", {
  *     project: defaultProject.projectId,
  *     autodeleteAnonymousUsers: true,
+ *     blockingFunctions: {
+ *         triggers: [{
+ *             eventType: "beforeSignIn",
+ *             functionUri: "https://us-east1-my-project.cloudfunctions.net/before-sign-in",
+ *         }],
+ *         forwardInboundCredentials: {
+ *             refreshToken: true,
+ *             accessToken: true,
+ *             idToken: true,
+ *         },
+ *     },
+ *     quota: {
+ *         signUpQuotaConfig: {
+ *             quota: 1000,
+ *             startTime: "",
+ *             quotaDuration: "7200s",
+ *         },
+ *     },
+ *     authorizedDomains: [
+ *         "localhost",
+ *         "my-project.firebaseapp.com",
+ *         "my-project.web.app",
+ *     ],
  * });
  * ```
  *
@@ -89,9 +114,18 @@ export class Config extends pulumi.CustomResource {
     }
 
     /**
+     * List of domains authorized for OAuth redirects.
+     */
+    public readonly authorizedDomains!: pulumi.Output<string[] | undefined>;
+    /**
      * Whether anonymous users will be auto-deleted after a period of 30 days
      */
     public readonly autodeleteAnonymousUsers!: pulumi.Output<boolean | undefined>;
+    /**
+     * Configuration related to blocking functions.
+     * Structure is documented below.
+     */
+    public readonly blockingFunctions!: pulumi.Output<outputs.identityplatform.ConfigBlockingFunctions | undefined>;
     /**
      * The name of the Config resource
      */
@@ -101,6 +135,11 @@ export class Config extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * Configuration related to quotas.
+     * Structure is documented below.
+     */
+    public readonly quota!: pulumi.Output<outputs.identityplatform.ConfigQuota | undefined>;
 
     /**
      * Create a Config resource with the given unique name, arguments, and options.
@@ -115,13 +154,19 @@ export class Config extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConfigState | undefined;
+            resourceInputs["authorizedDomains"] = state ? state.authorizedDomains : undefined;
             resourceInputs["autodeleteAnonymousUsers"] = state ? state.autodeleteAnonymousUsers : undefined;
+            resourceInputs["blockingFunctions"] = state ? state.blockingFunctions : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["quota"] = state ? state.quota : undefined;
         } else {
             const args = argsOrState as ConfigArgs | undefined;
+            resourceInputs["authorizedDomains"] = args ? args.authorizedDomains : undefined;
             resourceInputs["autodeleteAnonymousUsers"] = args ? args.autodeleteAnonymousUsers : undefined;
+            resourceInputs["blockingFunctions"] = args ? args.blockingFunctions : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["quota"] = args ? args.quota : undefined;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -134,9 +179,18 @@ export class Config extends pulumi.CustomResource {
  */
 export interface ConfigState {
     /**
+     * List of domains authorized for OAuth redirects.
+     */
+    authorizedDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Whether anonymous users will be auto-deleted after a period of 30 days
      */
     autodeleteAnonymousUsers?: pulumi.Input<boolean>;
+    /**
+     * Configuration related to blocking functions.
+     * Structure is documented below.
+     */
+    blockingFunctions?: pulumi.Input<inputs.identityplatform.ConfigBlockingFunctions>;
     /**
      * The name of the Config resource
      */
@@ -146,6 +200,11 @@ export interface ConfigState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Configuration related to quotas.
+     * Structure is documented below.
+     */
+    quota?: pulumi.Input<inputs.identityplatform.ConfigQuota>;
 }
 
 /**
@@ -153,12 +212,26 @@ export interface ConfigState {
  */
 export interface ConfigArgs {
     /**
+     * List of domains authorized for OAuth redirects.
+     */
+    authorizedDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Whether anonymous users will be auto-deleted after a period of 30 days
      */
     autodeleteAnonymousUsers?: pulumi.Input<boolean>;
+    /**
+     * Configuration related to blocking functions.
+     * Structure is documented below.
+     */
+    blockingFunctions?: pulumi.Input<inputs.identityplatform.ConfigBlockingFunctions>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Configuration related to quotas.
+     * Structure is documented below.
+     */
+    quota?: pulumi.Input<inputs.identityplatform.ConfigQuota>;
 }

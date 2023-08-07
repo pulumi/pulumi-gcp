@@ -106,6 +106,7 @@ __all__ = [
     'InstanceFromMachineImageReservationAffinity',
     'InstanceFromMachineImageReservationAffinitySpecificReservation',
     'InstanceFromMachineImageScheduling',
+    'InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeout',
     'InstanceFromMachineImageSchedulingMaxRunDuration',
     'InstanceFromMachineImageSchedulingNodeAffinity',
     'InstanceFromMachineImageScratchDisk',
@@ -126,6 +127,7 @@ __all__ = [
     'InstanceFromTemplateReservationAffinity',
     'InstanceFromTemplateReservationAffinitySpecificReservation',
     'InstanceFromTemplateScheduling',
+    'InstanceFromTemplateSchedulingLocalSsdRecoveryTimeout',
     'InstanceFromTemplateSchedulingMaxRunDuration',
     'InstanceFromTemplateSchedulingNodeAffinity',
     'InstanceFromTemplateScratchDisk',
@@ -159,6 +161,7 @@ __all__ = [
     'InstanceReservationAffinity',
     'InstanceReservationAffinitySpecificReservation',
     'InstanceScheduling',
+    'InstanceSchedulingLocalSsdRecoveryTimeout',
     'InstanceSchedulingMaxRunDuration',
     'InstanceSchedulingNodeAffinity',
     'InstanceScratchDisk',
@@ -179,6 +182,7 @@ __all__ = [
     'InstanceTemplateReservationAffinity',
     'InstanceTemplateReservationAffinitySpecificReservation',
     'InstanceTemplateScheduling',
+    'InstanceTemplateSchedulingLocalSsdRecoveryTimeout',
     'InstanceTemplateSchedulingMaxRunDuration',
     'InstanceTemplateSchedulingNodeAffinity',
     'InstanceTemplateServiceAccount',
@@ -288,6 +292,7 @@ __all__ = [
     'RegionInstanceTemplateReservationAffinity',
     'RegionInstanceTemplateReservationAffinitySpecificReservation',
     'RegionInstanceTemplateScheduling',
+    'RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout',
     'RegionInstanceTemplateSchedulingMaxRunDuration',
     'RegionInstanceTemplateSchedulingNodeAffinity',
     'RegionInstanceTemplateServiceAccount',
@@ -592,6 +597,7 @@ __all__ = [
     'GetInstanceReservationAffinityResult',
     'GetInstanceReservationAffinitySpecificReservationResult',
     'GetInstanceSchedulingResult',
+    'GetInstanceSchedulingLocalSsdRecoveryTimeoutResult',
     'GetInstanceSchedulingMaxRunDurationResult',
     'GetInstanceSchedulingNodeAffinityResult',
     'GetInstanceScratchDiskResult',
@@ -612,6 +618,7 @@ __all__ = [
     'GetInstanceTemplateReservationAffinityResult',
     'GetInstanceTemplateReservationAffinitySpecificReservationResult',
     'GetInstanceTemplateSchedulingResult',
+    'GetInstanceTemplateSchedulingLocalSsdRecoveryTimeoutResult',
     'GetInstanceTemplateSchedulingMaxRunDurationResult',
     'GetInstanceTemplateSchedulingNodeAffinityResult',
     'GetInstanceTemplateServiceAccountResult',
@@ -633,6 +640,7 @@ __all__ = [
     'GetRegionInstanceTemplateReservationAffinityResult',
     'GetRegionInstanceTemplateReservationAffinitySpecificReservationResult',
     'GetRegionInstanceTemplateSchedulingResult',
+    'GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutResult',
     'GetRegionInstanceTemplateSchedulingMaxRunDurationResult',
     'GetRegionInstanceTemplateSchedulingNodeAffinityResult',
     'GetRegionInstanceTemplateServiceAccountResult',
@@ -6938,7 +6946,6 @@ class InstanceBootDiskInitializeParams(dict):
                These images can be referred by family name here.
         :param Mapping[str, Any] labels: A set of key/value label pairs assigned to the disk. This  
                field is only applicable for persistent disks.
-        :param Mapping[str, Any] resource_manager_tags: A tag is a key-value pair that can be attached to a Google Cloud resource. You can use tags to conditionally allow or deny policies based on whether a resource has a specific tag.
         :param int size: The size of the image in gigabytes. If not specified, it
                will inherit the size of its base image.
         :param str type: The GCE disk type. Such as pd-standard, pd-balanced or pd-ssd.
@@ -6982,9 +6989,6 @@ class InstanceBootDiskInitializeParams(dict):
     @property
     @pulumi.getter(name="resourceManagerTags")
     def resource_manager_tags(self) -> Optional[Mapping[str, Any]]:
-        """
-        A tag is a key-value pair that can be attached to a Google Cloud resource. You can use tags to conditionally allow or deny policies based on whether a resource has a specific tag.
-        """
         return pulumi.get(self, "resource_manager_tags")
 
     @property
@@ -7631,12 +7635,19 @@ class InstanceFromMachineImageNetworkInterfaceIpv6AccessConfig(dict):
                  network_tier: str,
                  external_ipv6: Optional[str] = None,
                  external_ipv6_prefix_length: Optional[str] = None,
+                 name: Optional[str] = None,
                  public_ptr_domain_name: Optional[str] = None):
+        """
+        :param str name: A unique name for the resource, required by GCE.
+               Changing this forces a new resource to be created.
+        """
         pulumi.set(__self__, "network_tier", network_tier)
         if external_ipv6 is not None:
             pulumi.set(__self__, "external_ipv6", external_ipv6)
         if external_ipv6_prefix_length is not None:
             pulumi.set(__self__, "external_ipv6_prefix_length", external_ipv6_prefix_length)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if public_ptr_domain_name is not None:
             pulumi.set(__self__, "public_ptr_domain_name", public_ptr_domain_name)
 
@@ -7654,6 +7665,15 @@ class InstanceFromMachineImageNetworkInterfaceIpv6AccessConfig(dict):
     @pulumi.getter(name="externalIpv6PrefixLength")
     def external_ipv6_prefix_length(self) -> Optional[str]:
         return pulumi.get(self, "external_ipv6_prefix_length")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        A unique name for the resource, required by GCE.
+        Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="publicPtrDomainName")
@@ -7785,6 +7805,8 @@ class InstanceFromMachineImageScheduling(dict):
             suggest = "automatic_restart"
         elif key == "instanceTerminationAction":
             suggest = "instance_termination_action"
+        elif key == "localSsdRecoveryTimeout":
+            suggest = "local_ssd_recovery_timeout"
         elif key == "maintenanceInterval":
             suggest = "maintenance_interval"
         elif key == "maxRunDuration":
@@ -7812,6 +7834,7 @@ class InstanceFromMachineImageScheduling(dict):
     def __init__(__self__, *,
                  automatic_restart: Optional[bool] = None,
                  instance_termination_action: Optional[str] = None,
+                 local_ssd_recovery_timeout: Optional['outputs.InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeout'] = None,
                  maintenance_interval: Optional[str] = None,
                  max_run_duration: Optional['outputs.InstanceFromMachineImageSchedulingMaxRunDuration'] = None,
                  min_node_cpus: Optional[int] = None,
@@ -7823,6 +7846,8 @@ class InstanceFromMachineImageScheduling(dict):
             pulumi.set(__self__, "automatic_restart", automatic_restart)
         if instance_termination_action is not None:
             pulumi.set(__self__, "instance_termination_action", instance_termination_action)
+        if local_ssd_recovery_timeout is not None:
+            pulumi.set(__self__, "local_ssd_recovery_timeout", local_ssd_recovery_timeout)
         if maintenance_interval is not None:
             pulumi.set(__self__, "maintenance_interval", maintenance_interval)
         if max_run_duration is not None:
@@ -7847,6 +7872,11 @@ class InstanceFromMachineImageScheduling(dict):
     @pulumi.getter(name="instanceTerminationAction")
     def instance_termination_action(self) -> Optional[str]:
         return pulumi.get(self, "instance_termination_action")
+
+    @property
+    @pulumi.getter(name="localSsdRecoveryTimeout")
+    def local_ssd_recovery_timeout(self) -> Optional['outputs.InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeout']:
+        return pulumi.get(self, "local_ssd_recovery_timeout")
 
     @property
     @pulumi.getter(name="maintenanceInterval")
@@ -7882,6 +7912,26 @@ class InstanceFromMachineImageScheduling(dict):
     @pulumi.getter(name="provisioningModel")
     def provisioning_model(self) -> Optional[str]:
         return pulumi.get(self, "provisioning_model")
+
+
+@pulumi.output_type
+class InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeout(dict):
+    def __init__(__self__, *,
+                 seconds: int,
+                 nanos: Optional[int] = None):
+        pulumi.set(__self__, "seconds", seconds)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> int:
+        return pulumi.get(self, "seconds")
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[int]:
+        return pulumi.get(self, "nanos")
 
 
 @pulumi.output_type
@@ -8611,12 +8661,19 @@ class InstanceFromTemplateNetworkInterfaceIpv6AccessConfig(dict):
                  network_tier: str,
                  external_ipv6: Optional[str] = None,
                  external_ipv6_prefix_length: Optional[str] = None,
+                 name: Optional[str] = None,
                  public_ptr_domain_name: Optional[str] = None):
+        """
+        :param str name: A unique name for the resource, required by GCE.
+               Changing this forces a new resource to be created.
+        """
         pulumi.set(__self__, "network_tier", network_tier)
         if external_ipv6 is not None:
             pulumi.set(__self__, "external_ipv6", external_ipv6)
         if external_ipv6_prefix_length is not None:
             pulumi.set(__self__, "external_ipv6_prefix_length", external_ipv6_prefix_length)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if public_ptr_domain_name is not None:
             pulumi.set(__self__, "public_ptr_domain_name", public_ptr_domain_name)
 
@@ -8634,6 +8691,15 @@ class InstanceFromTemplateNetworkInterfaceIpv6AccessConfig(dict):
     @pulumi.getter(name="externalIpv6PrefixLength")
     def external_ipv6_prefix_length(self) -> Optional[str]:
         return pulumi.get(self, "external_ipv6_prefix_length")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        A unique name for the resource, required by GCE.
+        Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="publicPtrDomainName")
@@ -8765,6 +8831,8 @@ class InstanceFromTemplateScheduling(dict):
             suggest = "automatic_restart"
         elif key == "instanceTerminationAction":
             suggest = "instance_termination_action"
+        elif key == "localSsdRecoveryTimeout":
+            suggest = "local_ssd_recovery_timeout"
         elif key == "maintenanceInterval":
             suggest = "maintenance_interval"
         elif key == "maxRunDuration":
@@ -8792,6 +8860,7 @@ class InstanceFromTemplateScheduling(dict):
     def __init__(__self__, *,
                  automatic_restart: Optional[bool] = None,
                  instance_termination_action: Optional[str] = None,
+                 local_ssd_recovery_timeout: Optional['outputs.InstanceFromTemplateSchedulingLocalSsdRecoveryTimeout'] = None,
                  maintenance_interval: Optional[str] = None,
                  max_run_duration: Optional['outputs.InstanceFromTemplateSchedulingMaxRunDuration'] = None,
                  min_node_cpus: Optional[int] = None,
@@ -8803,6 +8872,8 @@ class InstanceFromTemplateScheduling(dict):
             pulumi.set(__self__, "automatic_restart", automatic_restart)
         if instance_termination_action is not None:
             pulumi.set(__self__, "instance_termination_action", instance_termination_action)
+        if local_ssd_recovery_timeout is not None:
+            pulumi.set(__self__, "local_ssd_recovery_timeout", local_ssd_recovery_timeout)
         if maintenance_interval is not None:
             pulumi.set(__self__, "maintenance_interval", maintenance_interval)
         if max_run_duration is not None:
@@ -8827,6 +8898,11 @@ class InstanceFromTemplateScheduling(dict):
     @pulumi.getter(name="instanceTerminationAction")
     def instance_termination_action(self) -> Optional[str]:
         return pulumi.get(self, "instance_termination_action")
+
+    @property
+    @pulumi.getter(name="localSsdRecoveryTimeout")
+    def local_ssd_recovery_timeout(self) -> Optional['outputs.InstanceFromTemplateSchedulingLocalSsdRecoveryTimeout']:
+        return pulumi.get(self, "local_ssd_recovery_timeout")
 
     @property
     @pulumi.getter(name="maintenanceInterval")
@@ -8862,6 +8938,26 @@ class InstanceFromTemplateScheduling(dict):
     @pulumi.getter(name="provisioningModel")
     def provisioning_model(self) -> Optional[str]:
         return pulumi.get(self, "provisioning_model")
+
+
+@pulumi.output_type
+class InstanceFromTemplateSchedulingLocalSsdRecoveryTimeout(dict):
+    def __init__(__self__, *,
+                 seconds: int,
+                 nanos: Optional[int] = None):
+        pulumi.set(__self__, "seconds", seconds)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> int:
+        return pulumi.get(self, "seconds")
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[int]:
+        return pulumi.get(self, "nanos")
 
 
 @pulumi.output_type
@@ -10294,6 +10390,7 @@ class InstanceNetworkInterfaceIpv6AccessConfig(dict):
                  network_tier: str,
                  external_ipv6: Optional[str] = None,
                  external_ipv6_prefix_length: Optional[str] = None,
+                 name: Optional[str] = None,
                  public_ptr_domain_name: Optional[str] = None):
         """
         :param str network_tier: The [networking tier][network-tier] used for configuring this instance.
@@ -10303,6 +10400,13 @@ class InstanceNetworkInterfaceIpv6AccessConfig(dict):
                <a name="nested_ipv6_access_config"></a>The `ipv6_access_config` block supports:
                
                subnet has an external subnet. Only PREMIUM or STANDARD tier is valid for IPv6.
+        :param str external_ipv6: The first IPv6 address of the external IPv6 range associated 
+               with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig.
+               To use a static external IP address, it must be unused and in the same region as the instance's zone.
+               If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
+        :param str external_ipv6_prefix_length: The prefix length of the external IPv6 range.
+        :param str name: A unique name for the resource, required by GCE.
+               Changing this forces a new resource to be created.
         :param str public_ptr_domain_name: The DNS domain name for the public PTR record.
                To set this field on an instance, you must be verified as the owner of the domain.
                See [the docs](https://cloud.google.com/compute/docs/instances/create-ptr-record) for how
@@ -10315,6 +10419,8 @@ class InstanceNetworkInterfaceIpv6AccessConfig(dict):
             pulumi.set(__self__, "external_ipv6", external_ipv6)
         if external_ipv6_prefix_length is not None:
             pulumi.set(__self__, "external_ipv6_prefix_length", external_ipv6_prefix_length)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if public_ptr_domain_name is not None:
             pulumi.set(__self__, "public_ptr_domain_name", public_ptr_domain_name)
 
@@ -10335,12 +10441,30 @@ class InstanceNetworkInterfaceIpv6AccessConfig(dict):
     @property
     @pulumi.getter(name="externalIpv6")
     def external_ipv6(self) -> Optional[str]:
+        """
+        The first IPv6 address of the external IPv6 range associated 
+        with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig.
+        To use a static external IP address, it must be unused and in the same region as the instance's zone.
+        If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
+        """
         return pulumi.get(self, "external_ipv6")
 
     @property
     @pulumi.getter(name="externalIpv6PrefixLength")
     def external_ipv6_prefix_length(self) -> Optional[str]:
+        """
+        The prefix length of the external IPv6 range.
+        """
         return pulumi.get(self, "external_ipv6_prefix_length")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        A unique name for the resource, required by GCE.
+        Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="publicPtrDomainName")
@@ -10414,18 +10538,12 @@ class InstanceParams(dict):
 
     def __init__(__self__, *,
                  resource_manager_tags: Optional[Mapping[str, Any]] = None):
-        """
-        :param Mapping[str, Any] resource_manager_tags: A tag is a key-value pair that can be attached to a Google Cloud resource. You can use tags to conditionally allow or deny policies based on whether a resource has a specific tag.
-        """
         if resource_manager_tags is not None:
             pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
 
     @property
     @pulumi.getter(name="resourceManagerTags")
     def resource_manager_tags(self) -> Optional[Mapping[str, Any]]:
-        """
-        A tag is a key-value pair that can be attached to a Google Cloud resource. You can use tags to conditionally allow or deny policies based on whether a resource has a specific tag.
-        """
         return pulumi.get(self, "resource_manager_tags")
 
 
@@ -10516,6 +10634,8 @@ class InstanceScheduling(dict):
             suggest = "automatic_restart"
         elif key == "instanceTerminationAction":
             suggest = "instance_termination_action"
+        elif key == "localSsdRecoveryTimeout":
+            suggest = "local_ssd_recovery_timeout"
         elif key == "maintenanceInterval":
             suggest = "maintenance_interval"
         elif key == "maxRunDuration":
@@ -10543,6 +10663,7 @@ class InstanceScheduling(dict):
     def __init__(__self__, *,
                  automatic_restart: Optional[bool] = None,
                  instance_termination_action: Optional[str] = None,
+                 local_ssd_recovery_timeout: Optional['outputs.InstanceSchedulingLocalSsdRecoveryTimeout'] = None,
                  maintenance_interval: Optional[str] = None,
                  max_run_duration: Optional['outputs.InstanceSchedulingMaxRunDuration'] = None,
                  min_node_cpus: Optional[int] = None,
@@ -10576,6 +10697,8 @@ class InstanceScheduling(dict):
             pulumi.set(__self__, "automatic_restart", automatic_restart)
         if instance_termination_action is not None:
             pulumi.set(__self__, "instance_termination_action", instance_termination_action)
+        if local_ssd_recovery_timeout is not None:
+            pulumi.set(__self__, "local_ssd_recovery_timeout", local_ssd_recovery_timeout)
         if maintenance_interval is not None:
             pulumi.set(__self__, "maintenance_interval", maintenance_interval)
         if max_run_duration is not None:
@@ -10608,6 +10731,11 @@ class InstanceScheduling(dict):
         Describe the type of termination action for VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         """
         return pulumi.get(self, "instance_termination_action")
+
+    @property
+    @pulumi.getter(name="localSsdRecoveryTimeout")
+    def local_ssd_recovery_timeout(self) -> Optional['outputs.InstanceSchedulingLocalSsdRecoveryTimeout']:
+        return pulumi.get(self, "local_ssd_recovery_timeout")
 
     @property
     @pulumi.getter(name="maintenanceInterval")
@@ -10672,7 +10800,7 @@ class InstanceScheduling(dict):
 
 
 @pulumi.output_type
-class InstanceSchedulingMaxRunDuration(dict):
+class InstanceSchedulingLocalSsdRecoveryTimeout(dict):
     def __init__(__self__, *,
                  seconds: int,
                  nanos: Optional[int] = None):
@@ -10680,7 +10808,14 @@ class InstanceSchedulingMaxRunDuration(dict):
         :param int seconds: Span of time at a resolution of a second. Must be from 0 to
                315,576,000,000 inclusive. Note: these bounds are computed from: 60
                sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+               
+               315,576,000,000 inclusive. Note: these bounds are computed from: 60
+               sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
         :param int nanos: Span of time that's a fraction of a second at nanosecond
+               resolution. Durations less than one second are represented with a 0
+               `seconds` field and a positive `nanos` field. Must be from 0 to
+               999,999,999 inclusive.
+               
                resolution. Durations less than one second are represented with a 0
                `seconds` field and a positive `nanos` field. Must be from 0 to
                999,999,999 inclusive.
@@ -10696,6 +10831,9 @@ class InstanceSchedulingMaxRunDuration(dict):
         Span of time at a resolution of a second. Must be from 0 to
         315,576,000,000 inclusive. Note: these bounds are computed from: 60
         sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+
+        315,576,000,000 inclusive. Note: these bounds are computed from: 60
+        sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
         """
         return pulumi.get(self, "seconds")
 
@@ -10704,6 +10842,64 @@ class InstanceSchedulingMaxRunDuration(dict):
     def nanos(self) -> Optional[int]:
         """
         Span of time that's a fraction of a second at nanosecond
+        resolution. Durations less than one second are represented with a 0
+        `seconds` field and a positive `nanos` field. Must be from 0 to
+        999,999,999 inclusive.
+
+        resolution. Durations less than one second are represented with a 0
+        `seconds` field and a positive `nanos` field. Must be from 0 to
+        999,999,999 inclusive.
+        """
+        return pulumi.get(self, "nanos")
+
+
+@pulumi.output_type
+class InstanceSchedulingMaxRunDuration(dict):
+    def __init__(__self__, *,
+                 seconds: int,
+                 nanos: Optional[int] = None):
+        """
+        :param int seconds: Span of time at a resolution of a second. Must be from 0 to
+               315,576,000,000 inclusive. Note: these bounds are computed from: 60
+               sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+               
+               315,576,000,000 inclusive. Note: these bounds are computed from: 60
+               sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+        :param int nanos: Span of time that's a fraction of a second at nanosecond
+               resolution. Durations less than one second are represented with a 0
+               `seconds` field and a positive `nanos` field. Must be from 0 to
+               999,999,999 inclusive.
+               
+               resolution. Durations less than one second are represented with a 0
+               `seconds` field and a positive `nanos` field. Must be from 0 to
+               999,999,999 inclusive.
+        """
+        pulumi.set(__self__, "seconds", seconds)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> int:
+        """
+        Span of time at a resolution of a second. Must be from 0 to
+        315,576,000,000 inclusive. Note: these bounds are computed from: 60
+        sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+
+        315,576,000,000 inclusive. Note: these bounds are computed from: 60
+        sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+        """
+        return pulumi.get(self, "seconds")
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[int]:
+        """
+        Span of time that's a fraction of a second at nanosecond
+        resolution. Durations less than one second are represented with a 0
+        `seconds` field and a positive `nanos` field. Must be from 0 to
+        999,999,999 inclusive.
+
         resolution. Durations less than one second are represented with a 0
         `seconds` field and a positive `nanos` field. Must be from 0 to
         999,999,999 inclusive.
@@ -11872,6 +12068,7 @@ class InstanceTemplateNetworkInterfaceIpv6AccessConfig(dict):
                  network_tier: str,
                  external_ipv6: Optional[str] = None,
                  external_ipv6_prefix_length: Optional[str] = None,
+                 name: Optional[str] = None,
                  public_ptr_domain_name: Optional[str] = None):
         """
         :param str network_tier: The [networking tier][network-tier] used for configuring
@@ -11881,12 +12078,16 @@ class InstanceTemplateNetworkInterfaceIpv6AccessConfig(dict):
                <a name="nested_ipv6_access_config"></a>The `ipv6_access_config` block supports:
                
                subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
+        :param str name: The name of the instance template. If you leave
+               this blank, the provider will auto-generate a unique name.
         """
         pulumi.set(__self__, "network_tier", network_tier)
         if external_ipv6 is not None:
             pulumi.set(__self__, "external_ipv6", external_ipv6)
         if external_ipv6_prefix_length is not None:
             pulumi.set(__self__, "external_ipv6_prefix_length", external_ipv6_prefix_length)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if public_ptr_domain_name is not None:
             pulumi.set(__self__, "public_ptr_domain_name", public_ptr_domain_name)
 
@@ -11913,6 +12114,15 @@ class InstanceTemplateNetworkInterfaceIpv6AccessConfig(dict):
     @pulumi.getter(name="externalIpv6PrefixLength")
     def external_ipv6_prefix_length(self) -> Optional[str]:
         return pulumi.get(self, "external_ipv6_prefix_length")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of the instance template. If you leave
+        this blank, the provider will auto-generate a unique name.
+        """
+        return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="publicPtrDomainName")
@@ -12042,6 +12252,8 @@ class InstanceTemplateScheduling(dict):
             suggest = "automatic_restart"
         elif key == "instanceTerminationAction":
             suggest = "instance_termination_action"
+        elif key == "localSsdRecoveryTimeouts":
+            suggest = "local_ssd_recovery_timeouts"
         elif key == "maintenanceInterval":
             suggest = "maintenance_interval"
         elif key == "maxRunDuration":
@@ -12069,6 +12281,7 @@ class InstanceTemplateScheduling(dict):
     def __init__(__self__, *,
                  automatic_restart: Optional[bool] = None,
                  instance_termination_action: Optional[str] = None,
+                 local_ssd_recovery_timeouts: Optional[Sequence['outputs.InstanceTemplateSchedulingLocalSsdRecoveryTimeout']] = None,
                  maintenance_interval: Optional[str] = None,
                  max_run_duration: Optional['outputs.InstanceTemplateSchedulingMaxRunDuration'] = None,
                  min_node_cpus: Optional[int] = None,
@@ -12102,6 +12315,8 @@ class InstanceTemplateScheduling(dict):
             pulumi.set(__self__, "automatic_restart", automatic_restart)
         if instance_termination_action is not None:
             pulumi.set(__self__, "instance_termination_action", instance_termination_action)
+        if local_ssd_recovery_timeouts is not None:
+            pulumi.set(__self__, "local_ssd_recovery_timeouts", local_ssd_recovery_timeouts)
         if maintenance_interval is not None:
             pulumi.set(__self__, "maintenance_interval", maintenance_interval)
         if max_run_duration is not None:
@@ -12134,6 +12349,11 @@ class InstanceTemplateScheduling(dict):
         Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         """
         return pulumi.get(self, "instance_termination_action")
+
+    @property
+    @pulumi.getter(name="localSsdRecoveryTimeouts")
+    def local_ssd_recovery_timeouts(self) -> Optional[Sequence['outputs.InstanceTemplateSchedulingLocalSsdRecoveryTimeout']]:
+        return pulumi.get(self, "local_ssd_recovery_timeouts")
 
     @property
     @pulumi.getter(name="maintenanceInterval")
@@ -12198,7 +12418,7 @@ class InstanceTemplateScheduling(dict):
 
 
 @pulumi.output_type
-class InstanceTemplateSchedulingMaxRunDuration(dict):
+class InstanceTemplateSchedulingLocalSsdRecoveryTimeout(dict):
     def __init__(__self__, *,
                  seconds: int,
                  nanos: Optional[int] = None):
@@ -12206,7 +12426,14 @@ class InstanceTemplateSchedulingMaxRunDuration(dict):
         :param int seconds: Span of time at a resolution of a second. Must be from 0 to
                315,576,000,000 inclusive. Note: these bounds are computed from: 60
                sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+               
+               315,576,000,000 inclusive. Note: these bounds are computed from: 60
+               sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
         :param int nanos: Span of time that's a fraction of a second at nanosecond
+               resolution. Durations less than one second are represented with a 0
+               `seconds` field and a positive `nanos` field. Must be from 0 to
+               999,999,999 inclusive.
+               
                resolution. Durations less than one second are represented with a 0
                `seconds` field and a positive `nanos` field. Must be from 0 to
                999,999,999 inclusive.
@@ -12222,6 +12449,9 @@ class InstanceTemplateSchedulingMaxRunDuration(dict):
         Span of time at a resolution of a second. Must be from 0 to
         315,576,000,000 inclusive. Note: these bounds are computed from: 60
         sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+
+        315,576,000,000 inclusive. Note: these bounds are computed from: 60
+        sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
         """
         return pulumi.get(self, "seconds")
 
@@ -12230,6 +12460,64 @@ class InstanceTemplateSchedulingMaxRunDuration(dict):
     def nanos(self) -> Optional[int]:
         """
         Span of time that's a fraction of a second at nanosecond
+        resolution. Durations less than one second are represented with a 0
+        `seconds` field and a positive `nanos` field. Must be from 0 to
+        999,999,999 inclusive.
+
+        resolution. Durations less than one second are represented with a 0
+        `seconds` field and a positive `nanos` field. Must be from 0 to
+        999,999,999 inclusive.
+        """
+        return pulumi.get(self, "nanos")
+
+
+@pulumi.output_type
+class InstanceTemplateSchedulingMaxRunDuration(dict):
+    def __init__(__self__, *,
+                 seconds: int,
+                 nanos: Optional[int] = None):
+        """
+        :param int seconds: Span of time at a resolution of a second. Must be from 0 to
+               315,576,000,000 inclusive. Note: these bounds are computed from: 60
+               sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+               
+               315,576,000,000 inclusive. Note: these bounds are computed from: 60
+               sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+        :param int nanos: Span of time that's a fraction of a second at nanosecond
+               resolution. Durations less than one second are represented with a 0
+               `seconds` field and a positive `nanos` field. Must be from 0 to
+               999,999,999 inclusive.
+               
+               resolution. Durations less than one second are represented with a 0
+               `seconds` field and a positive `nanos` field. Must be from 0 to
+               999,999,999 inclusive.
+        """
+        pulumi.set(__self__, "seconds", seconds)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> int:
+        """
+        Span of time at a resolution of a second. Must be from 0 to
+        315,576,000,000 inclusive. Note: these bounds are computed from: 60
+        sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+
+        315,576,000,000 inclusive. Note: these bounds are computed from: 60
+        sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+        """
+        return pulumi.get(self, "seconds")
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[int]:
+        """
+        Span of time that's a fraction of a second at nanosecond
+        resolution. Durations less than one second are represented with a 0
+        `seconds` field and a positive `nanos` field. Must be from 0 to
+        999,999,999 inclusive.
+
         resolution. Durations less than one second are represented with a 0
         `seconds` field and a positive `nanos` field. Must be from 0 to
         999,999,999 inclusive.
@@ -15626,6 +15914,8 @@ class RegionBackendServiceConnectionTrackingPolicy(dict):
         suggest = None
         if key == "connectionPersistenceOnUnhealthyBackends":
             suggest = "connection_persistence_on_unhealthy_backends"
+        elif key == "enableStrongAffinity":
+            suggest = "enable_strong_affinity"
         elif key == "idleTimeoutSec":
             suggest = "idle_timeout_sec"
         elif key == "trackingMode":
@@ -15644,6 +15934,7 @@ class RegionBackendServiceConnectionTrackingPolicy(dict):
 
     def __init__(__self__, *,
                  connection_persistence_on_unhealthy_backends: Optional[str] = None,
+                 enable_strong_affinity: Optional[bool] = None,
                  idle_timeout_sec: Optional[int] = None,
                  tracking_mode: Optional[str] = None):
         """
@@ -15662,6 +15953,7 @@ class RegionBackendServiceConnectionTrackingPolicy(dict):
                generally not recommended to use this mode overriding the default.
                Default value is `DEFAULT_FOR_PROTOCOL`.
                Possible values are: `DEFAULT_FOR_PROTOCOL`, `NEVER_PERSIST`, `ALWAYS_PERSIST`.
+        :param bool enable_strong_affinity: Enable Strong Session Affinity for Network Load Balancing. This option is not available publicly.
         :param int idle_timeout_sec: Specifies how long to keep a Connection Tracking entry while there is
                no matching traffic (in seconds).
                For L4 ILB the minimum(default) is 10 minutes and maximum is 16 hours.
@@ -15676,6 +15968,8 @@ class RegionBackendServiceConnectionTrackingPolicy(dict):
         """
         if connection_persistence_on_unhealthy_backends is not None:
             pulumi.set(__self__, "connection_persistence_on_unhealthy_backends", connection_persistence_on_unhealthy_backends)
+        if enable_strong_affinity is not None:
+            pulumi.set(__self__, "enable_strong_affinity", enable_strong_affinity)
         if idle_timeout_sec is not None:
             pulumi.set(__self__, "idle_timeout_sec", idle_timeout_sec)
         if tracking_mode is not None:
@@ -15702,6 +15996,14 @@ class RegionBackendServiceConnectionTrackingPolicy(dict):
         Possible values are: `DEFAULT_FOR_PROTOCOL`, `NEVER_PERSIST`, `ALWAYS_PERSIST`.
         """
         return pulumi.get(self, "connection_persistence_on_unhealthy_backends")
+
+    @property
+    @pulumi.getter(name="enableStrongAffinity")
+    def enable_strong_affinity(self) -> Optional[bool]:
+        """
+        Enable Strong Session Affinity for Network Load Balancing. This option is not available publicly.
+        """
+        return pulumi.get(self, "enable_strong_affinity")
 
     @property
     @pulumi.getter(name="idleTimeoutSec")
@@ -19595,6 +19897,7 @@ class RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig(dict):
                  network_tier: str,
                  external_ipv6: Optional[str] = None,
                  external_ipv6_prefix_length: Optional[str] = None,
+                 name: Optional[str] = None,
                  public_ptr_domain_name: Optional[str] = None):
         """
         :param str network_tier: The [networking tier][network-tier] used for configuring
@@ -19610,6 +19913,8 @@ class RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig(dict):
             pulumi.set(__self__, "external_ipv6", external_ipv6)
         if external_ipv6_prefix_length is not None:
             pulumi.set(__self__, "external_ipv6_prefix_length", external_ipv6_prefix_length)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if public_ptr_domain_name is not None:
             pulumi.set(__self__, "public_ptr_domain_name", public_ptr_domain_name)
 
@@ -19636,6 +19941,11 @@ class RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig(dict):
     @pulumi.getter(name="externalIpv6PrefixLength")
     def external_ipv6_prefix_length(self) -> Optional[str]:
         return pulumi.get(self, "external_ipv6_prefix_length")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="publicPtrDomainName")
@@ -19765,6 +20075,8 @@ class RegionInstanceTemplateScheduling(dict):
             suggest = "automatic_restart"
         elif key == "instanceTerminationAction":
             suggest = "instance_termination_action"
+        elif key == "localSsdRecoveryTimeouts":
+            suggest = "local_ssd_recovery_timeouts"
         elif key == "maintenanceInterval":
             suggest = "maintenance_interval"
         elif key == "maxRunDuration":
@@ -19792,6 +20104,7 @@ class RegionInstanceTemplateScheduling(dict):
     def __init__(__self__, *,
                  automatic_restart: Optional[bool] = None,
                  instance_termination_action: Optional[str] = None,
+                 local_ssd_recovery_timeouts: Optional[Sequence['outputs.RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout']] = None,
                  maintenance_interval: Optional[str] = None,
                  max_run_duration: Optional['outputs.RegionInstanceTemplateSchedulingMaxRunDuration'] = None,
                  min_node_cpus: Optional[int] = None,
@@ -19826,6 +20139,8 @@ class RegionInstanceTemplateScheduling(dict):
             pulumi.set(__self__, "automatic_restart", automatic_restart)
         if instance_termination_action is not None:
             pulumi.set(__self__, "instance_termination_action", instance_termination_action)
+        if local_ssd_recovery_timeouts is not None:
+            pulumi.set(__self__, "local_ssd_recovery_timeouts", local_ssd_recovery_timeouts)
         if maintenance_interval is not None:
             pulumi.set(__self__, "maintenance_interval", maintenance_interval)
         if max_run_duration is not None:
@@ -19858,6 +20173,11 @@ class RegionInstanceTemplateScheduling(dict):
         Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         """
         return pulumi.get(self, "instance_termination_action")
+
+    @property
+    @pulumi.getter(name="localSsdRecoveryTimeouts")
+    def local_ssd_recovery_timeouts(self) -> Optional[Sequence['outputs.RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout']]:
+        return pulumi.get(self, "local_ssd_recovery_timeouts")
 
     @property
     @pulumi.getter(name="maintenanceInterval")
@@ -19922,6 +20242,60 @@ class RegionInstanceTemplateScheduling(dict):
         `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
         """
         return pulumi.get(self, "provisioning_model")
+
+
+@pulumi.output_type
+class RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout(dict):
+    def __init__(__self__, *,
+                 seconds: int,
+                 nanos: Optional[int] = None):
+        """
+        :param int seconds: Span of time at a resolution of a second. Must be from 0 to
+               315,576,000,000 inclusive. Note: these bounds are computed from: 60
+               sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+               
+               315,576,000,000 inclusive. Note: these bounds are computed from: 60
+               sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+        :param int nanos: Span of time that's a fraction of a second at nanosecond
+               resolution. Durations less than one second are represented with a 0
+               `seconds` field and a positive `nanos` field. Must be from 0 to
+               999,999,999 inclusive.
+               
+               resolution. Durations less than one second are represented with a 0
+               `seconds` field and a positive `nanos` field. Must be from 0 to
+               999,999,999 inclusive.
+        """
+        pulumi.set(__self__, "seconds", seconds)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> int:
+        """
+        Span of time at a resolution of a second. Must be from 0 to
+        315,576,000,000 inclusive. Note: these bounds are computed from: 60
+        sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+
+        315,576,000,000 inclusive. Note: these bounds are computed from: 60
+        sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years.
+        """
+        return pulumi.get(self, "seconds")
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[int]:
+        """
+        Span of time that's a fraction of a second at nanosecond
+        resolution. Durations less than one second are represented with a 0
+        `seconds` field and a positive `nanos` field. Must be from 0 to
+        999,999,999 inclusive.
+
+        resolution. Durations less than one second are represented with a 0
+        `seconds` field and a positive `nanos` field. Must be from 0 to
+        999,999,999 inclusive.
+        """
+        return pulumi.get(self, "nanos")
 
 
 @pulumi.output_type
@@ -38915,14 +39289,17 @@ class GetInstanceNetworkInterfaceIpv6AccessConfigResult(dict):
     def __init__(__self__, *,
                  external_ipv6: str,
                  external_ipv6_prefix_length: str,
+                 name: str,
                  network_tier: str,
                  public_ptr_domain_name: str):
         """
+        :param str name: The name of the instance. One of `name` or `self_link` must be provided.
         :param str network_tier: The [networking tier][network-tier] used for configuring this instance. One of `PREMIUM` or `STANDARD`.
         :param str public_ptr_domain_name: The DNS domain name for the public PTR record.
         """
         pulumi.set(__self__, "external_ipv6", external_ipv6)
         pulumi.set(__self__, "external_ipv6_prefix_length", external_ipv6_prefix_length)
+        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "network_tier", network_tier)
         pulumi.set(__self__, "public_ptr_domain_name", public_ptr_domain_name)
 
@@ -38935,6 +39312,14 @@ class GetInstanceNetworkInterfaceIpv6AccessConfigResult(dict):
     @pulumi.getter(name="externalIpv6PrefixLength")
     def external_ipv6_prefix_length(self) -> str:
         return pulumi.get(self, "external_ipv6_prefix_length")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the instance. One of `name` or `self_link` must be provided.
+        """
+        return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="networkTier")
@@ -39032,6 +39417,7 @@ class GetInstanceSchedulingResult(dict):
     def __init__(__self__, *,
                  automatic_restart: bool,
                  instance_termination_action: str,
+                 local_ssd_recovery_timeouts: Sequence['outputs.GetInstanceSchedulingLocalSsdRecoveryTimeoutResult'],
                  maintenance_interval: str,
                  max_run_durations: Sequence['outputs.GetInstanceSchedulingMaxRunDurationResult'],
                  min_node_cpus: int,
@@ -39051,6 +39437,7 @@ class GetInstanceSchedulingResult(dict):
         """
         pulumi.set(__self__, "automatic_restart", automatic_restart)
         pulumi.set(__self__, "instance_termination_action", instance_termination_action)
+        pulumi.set(__self__, "local_ssd_recovery_timeouts", local_ssd_recovery_timeouts)
         pulumi.set(__self__, "maintenance_interval", maintenance_interval)
         pulumi.set(__self__, "max_run_durations", max_run_durations)
         pulumi.set(__self__, "min_node_cpus", min_node_cpus)
@@ -39075,6 +39462,11 @@ class GetInstanceSchedulingResult(dict):
         Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         """
         return pulumi.get(self, "instance_termination_action")
+
+    @property
+    @pulumi.getter(name="localSsdRecoveryTimeouts")
+    def local_ssd_recovery_timeouts(self) -> Sequence['outputs.GetInstanceSchedulingLocalSsdRecoveryTimeoutResult']:
+        return pulumi.get(self, "local_ssd_recovery_timeouts")
 
     @property
     @pulumi.getter(name="maintenanceInterval")
@@ -39121,6 +39513,25 @@ class GetInstanceSchedulingResult(dict):
         Describe the type of preemptible VM.
         """
         return pulumi.get(self, "provisioning_model")
+
+
+@pulumi.output_type
+class GetInstanceSchedulingLocalSsdRecoveryTimeoutResult(dict):
+    def __init__(__self__, *,
+                 nanos: int,
+                 seconds: int):
+        pulumi.set(__self__, "nanos", nanos)
+        pulumi.set(__self__, "seconds", seconds)
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> int:
+        return pulumi.get(self, "nanos")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> int:
+        return pulumi.get(self, "seconds")
 
 
 @pulumi.output_type
@@ -39871,15 +40282,18 @@ class GetInstanceTemplateNetworkInterfaceIpv6AccessConfigResult(dict):
     def __init__(__self__, *,
                  external_ipv6: str,
                  external_ipv6_prefix_length: str,
+                 name: str,
                  network_tier: str,
                  public_ptr_domain_name: str):
         """
+        :param str name: The name of the instance template. One of `name`, `filter` or `self_link_unique` must be provided.
         :param str network_tier: The [networking tier][network-tier] used for configuring
                this instance template. This field can take the following values: PREMIUM or
                STANDARD. If this field is not specified, it is assumed to be PREMIUM.
         """
         pulumi.set(__self__, "external_ipv6", external_ipv6)
         pulumi.set(__self__, "external_ipv6_prefix_length", external_ipv6_prefix_length)
+        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "network_tier", network_tier)
         pulumi.set(__self__, "public_ptr_domain_name", public_ptr_domain_name)
 
@@ -39892,6 +40306,14 @@ class GetInstanceTemplateNetworkInterfaceIpv6AccessConfigResult(dict):
     @pulumi.getter(name="externalIpv6PrefixLength")
     def external_ipv6_prefix_length(self) -> str:
         return pulumi.get(self, "external_ipv6_prefix_length")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the instance template. One of `name`, `filter` or `self_link_unique` must be provided.
+        """
+        return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="networkTier")
@@ -39982,6 +40404,7 @@ class GetInstanceTemplateSchedulingResult(dict):
     def __init__(__self__, *,
                  automatic_restart: bool,
                  instance_termination_action: str,
+                 local_ssd_recovery_timeouts: Sequence['outputs.GetInstanceTemplateSchedulingLocalSsdRecoveryTimeoutResult'],
                  maintenance_interval: str,
                  max_run_durations: Sequence['outputs.GetInstanceTemplateSchedulingMaxRunDurationResult'],
                  min_node_cpus: int,
@@ -40008,6 +40431,7 @@ class GetInstanceTemplateSchedulingResult(dict):
         """
         pulumi.set(__self__, "automatic_restart", automatic_restart)
         pulumi.set(__self__, "instance_termination_action", instance_termination_action)
+        pulumi.set(__self__, "local_ssd_recovery_timeouts", local_ssd_recovery_timeouts)
         pulumi.set(__self__, "maintenance_interval", maintenance_interval)
         pulumi.set(__self__, "max_run_durations", max_run_durations)
         pulumi.set(__self__, "min_node_cpus", min_node_cpus)
@@ -40033,6 +40457,11 @@ class GetInstanceTemplateSchedulingResult(dict):
         Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         """
         return pulumi.get(self, "instance_termination_action")
+
+    @property
+    @pulumi.getter(name="localSsdRecoveryTimeouts")
+    def local_ssd_recovery_timeouts(self) -> Sequence['outputs.GetInstanceTemplateSchedulingLocalSsdRecoveryTimeoutResult']:
+        return pulumi.get(self, "local_ssd_recovery_timeouts")
 
     @property
     @pulumi.getter(name="maintenanceInterval")
@@ -40087,6 +40516,25 @@ class GetInstanceTemplateSchedulingResult(dict):
         Describe the type of preemptible VM.
         """
         return pulumi.get(self, "provisioning_model")
+
+
+@pulumi.output_type
+class GetInstanceTemplateSchedulingLocalSsdRecoveryTimeoutResult(dict):
+    def __init__(__self__, *,
+                 nanos: int,
+                 seconds: int):
+        pulumi.set(__self__, "nanos", nanos)
+        pulumi.set(__self__, "seconds", seconds)
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> int:
+        return pulumi.get(self, "nanos")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> int:
+        return pulumi.get(self, "seconds")
 
 
 @pulumi.output_type
@@ -40874,15 +41322,18 @@ class GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigResult(dict):
     def __init__(__self__, *,
                  external_ipv6: str,
                  external_ipv6_prefix_length: str,
+                 name: str,
                  network_tier: str,
                  public_ptr_domain_name: str):
         """
+        :param str name: The name of the instance template. One of `name` or `filter` must be provided.
         :param str network_tier: The [networking tier][network-tier] used for configuring
                this instance template. This field can take the following values: PREMIUM or
                STANDARD. If this field is not specified, it is assumed to be PREMIUM.
         """
         pulumi.set(__self__, "external_ipv6", external_ipv6)
         pulumi.set(__self__, "external_ipv6_prefix_length", external_ipv6_prefix_length)
+        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "network_tier", network_tier)
         pulumi.set(__self__, "public_ptr_domain_name", public_ptr_domain_name)
 
@@ -40895,6 +41346,14 @@ class GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfigResult(dict):
     @pulumi.getter(name="externalIpv6PrefixLength")
     def external_ipv6_prefix_length(self) -> str:
         return pulumi.get(self, "external_ipv6_prefix_length")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the instance template. One of `name` or `filter` must be provided.
+        """
+        return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="networkTier")
@@ -40985,6 +41444,7 @@ class GetRegionInstanceTemplateSchedulingResult(dict):
     def __init__(__self__, *,
                  automatic_restart: bool,
                  instance_termination_action: str,
+                 local_ssd_recovery_timeouts: Sequence['outputs.GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutResult'],
                  maintenance_interval: str,
                  max_run_durations: Sequence['outputs.GetRegionInstanceTemplateSchedulingMaxRunDurationResult'],
                  min_node_cpus: int,
@@ -41011,6 +41471,7 @@ class GetRegionInstanceTemplateSchedulingResult(dict):
         """
         pulumi.set(__self__, "automatic_restart", automatic_restart)
         pulumi.set(__self__, "instance_termination_action", instance_termination_action)
+        pulumi.set(__self__, "local_ssd_recovery_timeouts", local_ssd_recovery_timeouts)
         pulumi.set(__self__, "maintenance_interval", maintenance_interval)
         pulumi.set(__self__, "max_run_durations", max_run_durations)
         pulumi.set(__self__, "min_node_cpus", min_node_cpus)
@@ -41036,6 +41497,11 @@ class GetRegionInstanceTemplateSchedulingResult(dict):
         Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         """
         return pulumi.get(self, "instance_termination_action")
+
+    @property
+    @pulumi.getter(name="localSsdRecoveryTimeouts")
+    def local_ssd_recovery_timeouts(self) -> Sequence['outputs.GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutResult']:
+        return pulumi.get(self, "local_ssd_recovery_timeouts")
 
     @property
     @pulumi.getter(name="maintenanceInterval")
@@ -41090,6 +41556,25 @@ class GetRegionInstanceTemplateSchedulingResult(dict):
         Describe the type of preemptible VM.
         """
         return pulumi.get(self, "provisioning_model")
+
+
+@pulumi.output_type
+class GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutResult(dict):
+    def __init__(__self__, *,
+                 nanos: int,
+                 seconds: int):
+        pulumi.set(__self__, "nanos", nanos)
+        pulumi.set(__self__, "seconds", seconds)
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> int:
+        return pulumi.get(self, "nanos")
+
+    @property
+    @pulumi.getter
+    def seconds(self) -> int:
+        return pulumi.get(self, "seconds")
 
 
 @pulumi.output_type

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.compute.outputs.GetInstanceSchedulingLocalSsdRecoveryTimeout;
 import com.pulumi.gcp.compute.outputs.GetInstanceSchedulingMaxRunDuration;
 import com.pulumi.gcp.compute.outputs.GetInstanceSchedulingNodeAffinity;
 import java.lang.Boolean;
@@ -25,6 +26,7 @@ public final class GetInstanceScheduling {
      * 
      */
     private String instanceTerminationAction;
+    private List<GetInstanceSchedulingLocalSsdRecoveryTimeout> localSsdRecoveryTimeouts;
     private String maintenanceInterval;
     private List<GetInstanceSchedulingMaxRunDuration> maxRunDurations;
     private Integer minNodeCpus;
@@ -62,6 +64,9 @@ public final class GetInstanceScheduling {
      */
     public String instanceTerminationAction() {
         return this.instanceTerminationAction;
+    }
+    public List<GetInstanceSchedulingLocalSsdRecoveryTimeout> localSsdRecoveryTimeouts() {
+        return this.localSsdRecoveryTimeouts;
     }
     public String maintenanceInterval() {
         return this.maintenanceInterval;
@@ -110,6 +115,7 @@ public final class GetInstanceScheduling {
     public static final class Builder {
         private Boolean automaticRestart;
         private String instanceTerminationAction;
+        private List<GetInstanceSchedulingLocalSsdRecoveryTimeout> localSsdRecoveryTimeouts;
         private String maintenanceInterval;
         private List<GetInstanceSchedulingMaxRunDuration> maxRunDurations;
         private Integer minNodeCpus;
@@ -122,6 +128,7 @@ public final class GetInstanceScheduling {
     	      Objects.requireNonNull(defaults);
     	      this.automaticRestart = defaults.automaticRestart;
     	      this.instanceTerminationAction = defaults.instanceTerminationAction;
+    	      this.localSsdRecoveryTimeouts = defaults.localSsdRecoveryTimeouts;
     	      this.maintenanceInterval = defaults.maintenanceInterval;
     	      this.maxRunDurations = defaults.maxRunDurations;
     	      this.minNodeCpus = defaults.minNodeCpus;
@@ -140,6 +147,14 @@ public final class GetInstanceScheduling {
         public Builder instanceTerminationAction(String instanceTerminationAction) {
             this.instanceTerminationAction = Objects.requireNonNull(instanceTerminationAction);
             return this;
+        }
+        @CustomType.Setter
+        public Builder localSsdRecoveryTimeouts(List<GetInstanceSchedulingLocalSsdRecoveryTimeout> localSsdRecoveryTimeouts) {
+            this.localSsdRecoveryTimeouts = Objects.requireNonNull(localSsdRecoveryTimeouts);
+            return this;
+        }
+        public Builder localSsdRecoveryTimeouts(GetInstanceSchedulingLocalSsdRecoveryTimeout... localSsdRecoveryTimeouts) {
+            return localSsdRecoveryTimeouts(List.of(localSsdRecoveryTimeouts));
         }
         @CustomType.Setter
         public Builder maintenanceInterval(String maintenanceInterval) {
@@ -186,6 +201,7 @@ public final class GetInstanceScheduling {
             final var o = new GetInstanceScheduling();
             o.automaticRestart = automaticRestart;
             o.instanceTerminationAction = instanceTerminationAction;
+            o.localSsdRecoveryTimeouts = localSsdRecoveryTimeouts;
             o.maintenanceInterval = maintenanceInterval;
             o.maxRunDurations = maxRunDurations;
             o.minNodeCpus = minNodeCpus;

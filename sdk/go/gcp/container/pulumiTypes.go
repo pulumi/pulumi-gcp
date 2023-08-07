@@ -13830,6 +13830,8 @@ func (o ClusterCostManagementConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 
 type ClusterDatabaseEncryption struct {
 	// the key to use to encrypt/decrypt secrets.  See the [DatabaseEncryption definition](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#Cluster.DatabaseEncryption) for more information.
+	//
+	// <a name="nestedEnableK8sBetaApis"></a>The `enableK8sBetaApis` block supports:
 	KeyName *string `pulumi:"keyName"`
 	// `ENCRYPTED` or `DECRYPTED`
 	State string `pulumi:"state"`
@@ -13848,6 +13850,8 @@ type ClusterDatabaseEncryptionInput interface {
 
 type ClusterDatabaseEncryptionArgs struct {
 	// the key to use to encrypt/decrypt secrets.  See the [DatabaseEncryption definition](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#Cluster.DatabaseEncryption) for more information.
+	//
+	// <a name="nestedEnableK8sBetaApis"></a>The `enableK8sBetaApis` block supports:
 	KeyName pulumi.StringPtrInput `pulumi:"keyName"`
 	// `ENCRYPTED` or `DECRYPTED`
 	State pulumi.StringInput `pulumi:"state"`
@@ -13931,6 +13935,8 @@ func (o ClusterDatabaseEncryptionOutput) ToClusterDatabaseEncryptionPtrOutputWit
 }
 
 // the key to use to encrypt/decrypt secrets.  See the [DatabaseEncryption definition](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#Cluster.DatabaseEncryption) for more information.
+//
+// <a name="nestedEnableK8sBetaApis"></a>The `enableK8sBetaApis` block supports:
 func (o ClusterDatabaseEncryptionOutput) KeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterDatabaseEncryption) *string { return v.KeyName }).(pulumi.StringPtrOutput)
 }
@@ -13965,6 +13971,8 @@ func (o ClusterDatabaseEncryptionPtrOutput) Elem() ClusterDatabaseEncryptionOutp
 }
 
 // the key to use to encrypt/decrypt secrets.  See the [DatabaseEncryption definition](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#Cluster.DatabaseEncryption) for more information.
+//
+// <a name="nestedEnableK8sBetaApis"></a>The `enableK8sBetaApis` block supports:
 func (o ClusterDatabaseEncryptionPtrOutput) KeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterDatabaseEncryption) *string {
 		if v == nil {
@@ -14302,6 +14310,143 @@ func (o ClusterDnsConfigPtrOutput) ClusterDnsScope() pulumi.StringPtrOutput {
 		}
 		return v.ClusterDnsScope
 	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterEnableK8sBetaApis struct {
+	// Enabled Kubernetes Beta APIs. To list a Beta API resource, use the representation {group}/{version}/{resource}. The version must be a Beta version. Note that you cannot disable beta APIs that are already enabled on a cluster without recreating it. See the [Configure beta APIs](https://cloud.google.com/kubernetes-engine/docs/how-to/use-beta-apis#configure-beta-apis) for more information.
+	EnabledApis []string `pulumi:"enabledApis"`
+}
+
+// ClusterEnableK8sBetaApisInput is an input type that accepts ClusterEnableK8sBetaApisArgs and ClusterEnableK8sBetaApisOutput values.
+// You can construct a concrete instance of `ClusterEnableK8sBetaApisInput` via:
+//
+//	ClusterEnableK8sBetaApisArgs{...}
+type ClusterEnableK8sBetaApisInput interface {
+	pulumi.Input
+
+	ToClusterEnableK8sBetaApisOutput() ClusterEnableK8sBetaApisOutput
+	ToClusterEnableK8sBetaApisOutputWithContext(context.Context) ClusterEnableK8sBetaApisOutput
+}
+
+type ClusterEnableK8sBetaApisArgs struct {
+	// Enabled Kubernetes Beta APIs. To list a Beta API resource, use the representation {group}/{version}/{resource}. The version must be a Beta version. Note that you cannot disable beta APIs that are already enabled on a cluster without recreating it. See the [Configure beta APIs](https://cloud.google.com/kubernetes-engine/docs/how-to/use-beta-apis#configure-beta-apis) for more information.
+	EnabledApis pulumi.StringArrayInput `pulumi:"enabledApis"`
+}
+
+func (ClusterEnableK8sBetaApisArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterEnableK8sBetaApis)(nil)).Elem()
+}
+
+func (i ClusterEnableK8sBetaApisArgs) ToClusterEnableK8sBetaApisOutput() ClusterEnableK8sBetaApisOutput {
+	return i.ToClusterEnableK8sBetaApisOutputWithContext(context.Background())
+}
+
+func (i ClusterEnableK8sBetaApisArgs) ToClusterEnableK8sBetaApisOutputWithContext(ctx context.Context) ClusterEnableK8sBetaApisOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterEnableK8sBetaApisOutput)
+}
+
+func (i ClusterEnableK8sBetaApisArgs) ToClusterEnableK8sBetaApisPtrOutput() ClusterEnableK8sBetaApisPtrOutput {
+	return i.ToClusterEnableK8sBetaApisPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterEnableK8sBetaApisArgs) ToClusterEnableK8sBetaApisPtrOutputWithContext(ctx context.Context) ClusterEnableK8sBetaApisPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterEnableK8sBetaApisOutput).ToClusterEnableK8sBetaApisPtrOutputWithContext(ctx)
+}
+
+// ClusterEnableK8sBetaApisPtrInput is an input type that accepts ClusterEnableK8sBetaApisArgs, ClusterEnableK8sBetaApisPtr and ClusterEnableK8sBetaApisPtrOutput values.
+// You can construct a concrete instance of `ClusterEnableK8sBetaApisPtrInput` via:
+//
+//	        ClusterEnableK8sBetaApisArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterEnableK8sBetaApisPtrInput interface {
+	pulumi.Input
+
+	ToClusterEnableK8sBetaApisPtrOutput() ClusterEnableK8sBetaApisPtrOutput
+	ToClusterEnableK8sBetaApisPtrOutputWithContext(context.Context) ClusterEnableK8sBetaApisPtrOutput
+}
+
+type clusterEnableK8sBetaApisPtrType ClusterEnableK8sBetaApisArgs
+
+func ClusterEnableK8sBetaApisPtr(v *ClusterEnableK8sBetaApisArgs) ClusterEnableK8sBetaApisPtrInput {
+	return (*clusterEnableK8sBetaApisPtrType)(v)
+}
+
+func (*clusterEnableK8sBetaApisPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterEnableK8sBetaApis)(nil)).Elem()
+}
+
+func (i *clusterEnableK8sBetaApisPtrType) ToClusterEnableK8sBetaApisPtrOutput() ClusterEnableK8sBetaApisPtrOutput {
+	return i.ToClusterEnableK8sBetaApisPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterEnableK8sBetaApisPtrType) ToClusterEnableK8sBetaApisPtrOutputWithContext(ctx context.Context) ClusterEnableK8sBetaApisPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterEnableK8sBetaApisPtrOutput)
+}
+
+type ClusterEnableK8sBetaApisOutput struct{ *pulumi.OutputState }
+
+func (ClusterEnableK8sBetaApisOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterEnableK8sBetaApis)(nil)).Elem()
+}
+
+func (o ClusterEnableK8sBetaApisOutput) ToClusterEnableK8sBetaApisOutput() ClusterEnableK8sBetaApisOutput {
+	return o
+}
+
+func (o ClusterEnableK8sBetaApisOutput) ToClusterEnableK8sBetaApisOutputWithContext(ctx context.Context) ClusterEnableK8sBetaApisOutput {
+	return o
+}
+
+func (o ClusterEnableK8sBetaApisOutput) ToClusterEnableK8sBetaApisPtrOutput() ClusterEnableK8sBetaApisPtrOutput {
+	return o.ToClusterEnableK8sBetaApisPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterEnableK8sBetaApisOutput) ToClusterEnableK8sBetaApisPtrOutputWithContext(ctx context.Context) ClusterEnableK8sBetaApisPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterEnableK8sBetaApis) *ClusterEnableK8sBetaApis {
+		return &v
+	}).(ClusterEnableK8sBetaApisPtrOutput)
+}
+
+// Enabled Kubernetes Beta APIs. To list a Beta API resource, use the representation {group}/{version}/{resource}. The version must be a Beta version. Note that you cannot disable beta APIs that are already enabled on a cluster without recreating it. See the [Configure beta APIs](https://cloud.google.com/kubernetes-engine/docs/how-to/use-beta-apis#configure-beta-apis) for more information.
+func (o ClusterEnableK8sBetaApisOutput) EnabledApis() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterEnableK8sBetaApis) []string { return v.EnabledApis }).(pulumi.StringArrayOutput)
+}
+
+type ClusterEnableK8sBetaApisPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterEnableK8sBetaApisPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterEnableK8sBetaApis)(nil)).Elem()
+}
+
+func (o ClusterEnableK8sBetaApisPtrOutput) ToClusterEnableK8sBetaApisPtrOutput() ClusterEnableK8sBetaApisPtrOutput {
+	return o
+}
+
+func (o ClusterEnableK8sBetaApisPtrOutput) ToClusterEnableK8sBetaApisPtrOutputWithContext(ctx context.Context) ClusterEnableK8sBetaApisPtrOutput {
+	return o
+}
+
+func (o ClusterEnableK8sBetaApisPtrOutput) Elem() ClusterEnableK8sBetaApisOutput {
+	return o.ApplyT(func(v *ClusterEnableK8sBetaApis) ClusterEnableK8sBetaApis {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterEnableK8sBetaApis
+		return ret
+	}).(ClusterEnableK8sBetaApisOutput)
+}
+
+// Enabled Kubernetes Beta APIs. To list a Beta API resource, use the representation {group}/{version}/{resource}. The version must be a Beta version. Note that you cannot disable beta APIs that are already enabled on a cluster without recreating it. See the [Configure beta APIs](https://cloud.google.com/kubernetes-engine/docs/how-to/use-beta-apis#configure-beta-apis) for more information.
+func (o ClusterEnableK8sBetaApisPtrOutput) EnabledApis() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClusterEnableK8sBetaApis) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EnabledApis
+	}).(pulumi.StringArrayOutput)
 }
 
 type ClusterGatewayApiConfig struct {
@@ -17468,7 +17613,7 @@ type ClusterNodeConfig struct {
 	// Type of the disk attached to each node
 	// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
 	DiskType *string `pulumi:"diskType"`
-	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+	// ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
 	//
 	// ```go
 	// package main
@@ -17543,7 +17688,8 @@ type ClusterNodeConfig struct {
 	// 	})
 	// }
 	// ```
-	Gvnic *ClusterNodeConfigGvnic `pulumi:"gvnic"`
+	Gvnic                 *ClusterNodeConfigGvnic                 `pulumi:"gvnic"`
+	HostMaintenancePolicy *ClusterNodeConfigHostMaintenancePolicy `pulumi:"hostMaintenancePolicy"`
 	// The image type to use for this node. Note that changing the image type
 	// will delete and recreate all nodes in the node pool.
 	ImageType *string `pulumi:"imageType"`
@@ -17691,7 +17837,7 @@ type ClusterNodeConfigArgs struct {
 	// Type of the disk attached to each node
 	// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
-	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+	// ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
 	//
 	// ```go
 	// package main
@@ -17766,7 +17912,8 @@ type ClusterNodeConfigArgs struct {
 	// 	})
 	// }
 	// ```
-	Gvnic ClusterNodeConfigGvnicPtrInput `pulumi:"gvnic"`
+	Gvnic                 ClusterNodeConfigGvnicPtrInput                 `pulumi:"gvnic"`
+	HostMaintenancePolicy ClusterNodeConfigHostMaintenancePolicyPtrInput `pulumi:"hostMaintenancePolicy"`
 	// The image type to use for this node. Note that changing the image type
 	// will delete and recreate all nodes in the node pool.
 	ImageType pulumi.StringPtrInput `pulumi:"imageType"`
@@ -17991,7 +18138,7 @@ func (o ClusterNodeConfigOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
 
-// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+// ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
 //
 // ```go
 // package main
@@ -18094,6 +18241,10 @@ func (o ClusterNodeConfigOutput) GuestAccelerators() ClusterNodeConfigGuestAccel
 // ```
 func (o ClusterNodeConfigOutput) Gvnic() ClusterNodeConfigGvnicPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigGvnic { return v.Gvnic }).(ClusterNodeConfigGvnicPtrOutput)
+}
+
+func (o ClusterNodeConfigOutput) HostMaintenancePolicy() ClusterNodeConfigHostMaintenancePolicyPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigHostMaintenancePolicy { return v.HostMaintenancePolicy }).(ClusterNodeConfigHostMaintenancePolicyPtrOutput)
 }
 
 // The image type to use for this node. Note that changing the image type
@@ -18363,7 +18514,7 @@ func (o ClusterNodeConfigPtrOutput) DiskType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+// ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
 //
 // ```go
 // package main
@@ -18489,6 +18640,15 @@ func (o ClusterNodeConfigPtrOutput) Gvnic() ClusterNodeConfigGvnicPtrOutput {
 		}
 		return v.Gvnic
 	}).(ClusterNodeConfigGvnicPtrOutput)
+}
+
+func (o ClusterNodeConfigPtrOutput) HostMaintenancePolicy() ClusterNodeConfigHostMaintenancePolicyPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfig) *ClusterNodeConfigHostMaintenancePolicy {
+		if v == nil {
+			return nil
+		}
+		return v.HostMaintenancePolicy
+	}).(ClusterNodeConfigHostMaintenancePolicyPtrOutput)
 }
 
 // The image type to use for this node. Note that changing the image type
@@ -19947,6 +20107,139 @@ func (o ClusterNodeConfigGvnicPtrOutput) Enabled() pulumi.BoolPtrOutput {
 		}
 		return &v.Enabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+type ClusterNodeConfigHostMaintenancePolicy struct {
+	MaintenanceInterval string `pulumi:"maintenanceInterval"`
+}
+
+// ClusterNodeConfigHostMaintenancePolicyInput is an input type that accepts ClusterNodeConfigHostMaintenancePolicyArgs and ClusterNodeConfigHostMaintenancePolicyOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigHostMaintenancePolicyInput` via:
+//
+//	ClusterNodeConfigHostMaintenancePolicyArgs{...}
+type ClusterNodeConfigHostMaintenancePolicyInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigHostMaintenancePolicyOutput() ClusterNodeConfigHostMaintenancePolicyOutput
+	ToClusterNodeConfigHostMaintenancePolicyOutputWithContext(context.Context) ClusterNodeConfigHostMaintenancePolicyOutput
+}
+
+type ClusterNodeConfigHostMaintenancePolicyArgs struct {
+	MaintenanceInterval pulumi.StringInput `pulumi:"maintenanceInterval"`
+}
+
+func (ClusterNodeConfigHostMaintenancePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigHostMaintenancePolicy)(nil)).Elem()
+}
+
+func (i ClusterNodeConfigHostMaintenancePolicyArgs) ToClusterNodeConfigHostMaintenancePolicyOutput() ClusterNodeConfigHostMaintenancePolicyOutput {
+	return i.ToClusterNodeConfigHostMaintenancePolicyOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigHostMaintenancePolicyArgs) ToClusterNodeConfigHostMaintenancePolicyOutputWithContext(ctx context.Context) ClusterNodeConfigHostMaintenancePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigHostMaintenancePolicyOutput)
+}
+
+func (i ClusterNodeConfigHostMaintenancePolicyArgs) ToClusterNodeConfigHostMaintenancePolicyPtrOutput() ClusterNodeConfigHostMaintenancePolicyPtrOutput {
+	return i.ToClusterNodeConfigHostMaintenancePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigHostMaintenancePolicyArgs) ToClusterNodeConfigHostMaintenancePolicyPtrOutputWithContext(ctx context.Context) ClusterNodeConfigHostMaintenancePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigHostMaintenancePolicyOutput).ToClusterNodeConfigHostMaintenancePolicyPtrOutputWithContext(ctx)
+}
+
+// ClusterNodeConfigHostMaintenancePolicyPtrInput is an input type that accepts ClusterNodeConfigHostMaintenancePolicyArgs, ClusterNodeConfigHostMaintenancePolicyPtr and ClusterNodeConfigHostMaintenancePolicyPtrOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigHostMaintenancePolicyPtrInput` via:
+//
+//	        ClusterNodeConfigHostMaintenancePolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodeConfigHostMaintenancePolicyPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigHostMaintenancePolicyPtrOutput() ClusterNodeConfigHostMaintenancePolicyPtrOutput
+	ToClusterNodeConfigHostMaintenancePolicyPtrOutputWithContext(context.Context) ClusterNodeConfigHostMaintenancePolicyPtrOutput
+}
+
+type clusterNodeConfigHostMaintenancePolicyPtrType ClusterNodeConfigHostMaintenancePolicyArgs
+
+func ClusterNodeConfigHostMaintenancePolicyPtr(v *ClusterNodeConfigHostMaintenancePolicyArgs) ClusterNodeConfigHostMaintenancePolicyPtrInput {
+	return (*clusterNodeConfigHostMaintenancePolicyPtrType)(v)
+}
+
+func (*clusterNodeConfigHostMaintenancePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeConfigHostMaintenancePolicy)(nil)).Elem()
+}
+
+func (i *clusterNodeConfigHostMaintenancePolicyPtrType) ToClusterNodeConfigHostMaintenancePolicyPtrOutput() ClusterNodeConfigHostMaintenancePolicyPtrOutput {
+	return i.ToClusterNodeConfigHostMaintenancePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodeConfigHostMaintenancePolicyPtrType) ToClusterNodeConfigHostMaintenancePolicyPtrOutputWithContext(ctx context.Context) ClusterNodeConfigHostMaintenancePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigHostMaintenancePolicyPtrOutput)
+}
+
+type ClusterNodeConfigHostMaintenancePolicyOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigHostMaintenancePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigHostMaintenancePolicy)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigHostMaintenancePolicyOutput) ToClusterNodeConfigHostMaintenancePolicyOutput() ClusterNodeConfigHostMaintenancePolicyOutput {
+	return o
+}
+
+func (o ClusterNodeConfigHostMaintenancePolicyOutput) ToClusterNodeConfigHostMaintenancePolicyOutputWithContext(ctx context.Context) ClusterNodeConfigHostMaintenancePolicyOutput {
+	return o
+}
+
+func (o ClusterNodeConfigHostMaintenancePolicyOutput) ToClusterNodeConfigHostMaintenancePolicyPtrOutput() ClusterNodeConfigHostMaintenancePolicyPtrOutput {
+	return o.ToClusterNodeConfigHostMaintenancePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodeConfigHostMaintenancePolicyOutput) ToClusterNodeConfigHostMaintenancePolicyPtrOutputWithContext(ctx context.Context) ClusterNodeConfigHostMaintenancePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodeConfigHostMaintenancePolicy) *ClusterNodeConfigHostMaintenancePolicy {
+		return &v
+	}).(ClusterNodeConfigHostMaintenancePolicyPtrOutput)
+}
+
+func (o ClusterNodeConfigHostMaintenancePolicyOutput) MaintenanceInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodeConfigHostMaintenancePolicy) string { return v.MaintenanceInterval }).(pulumi.StringOutput)
+}
+
+type ClusterNodeConfigHostMaintenancePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigHostMaintenancePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeConfigHostMaintenancePolicy)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigHostMaintenancePolicyPtrOutput) ToClusterNodeConfigHostMaintenancePolicyPtrOutput() ClusterNodeConfigHostMaintenancePolicyPtrOutput {
+	return o
+}
+
+func (o ClusterNodeConfigHostMaintenancePolicyPtrOutput) ToClusterNodeConfigHostMaintenancePolicyPtrOutputWithContext(ctx context.Context) ClusterNodeConfigHostMaintenancePolicyPtrOutput {
+	return o
+}
+
+func (o ClusterNodeConfigHostMaintenancePolicyPtrOutput) Elem() ClusterNodeConfigHostMaintenancePolicyOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigHostMaintenancePolicy) ClusterNodeConfigHostMaintenancePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodeConfigHostMaintenancePolicy
+		return ret
+	}).(ClusterNodeConfigHostMaintenancePolicyOutput)
+}
+
+func (o ClusterNodeConfigHostMaintenancePolicyPtrOutput) MaintenanceInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigHostMaintenancePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MaintenanceInterval
+	}).(pulumi.StringPtrOutput)
 }
 
 type ClusterNodeConfigKubeletConfig struct {
@@ -23547,7 +23840,7 @@ type ClusterNodePoolNodeConfig struct {
 	// Type of the disk attached to each node
 	// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
 	DiskType *string `pulumi:"diskType"`
-	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+	// ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
 	//
 	// ```go
 	// package main
@@ -23622,7 +23915,8 @@ type ClusterNodePoolNodeConfig struct {
 	// 	})
 	// }
 	// ```
-	Gvnic *ClusterNodePoolNodeConfigGvnic `pulumi:"gvnic"`
+	Gvnic                 *ClusterNodePoolNodeConfigGvnic                 `pulumi:"gvnic"`
+	HostMaintenancePolicy *ClusterNodePoolNodeConfigHostMaintenancePolicy `pulumi:"hostMaintenancePolicy"`
 	// The image type to use for this node. Note that changing the image type
 	// will delete and recreate all nodes in the node pool.
 	ImageType *string `pulumi:"imageType"`
@@ -23770,7 +24064,7 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// Type of the disk attached to each node
 	// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
-	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+	// ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
 	//
 	// ```go
 	// package main
@@ -23845,7 +24139,8 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// 	})
 	// }
 	// ```
-	Gvnic ClusterNodePoolNodeConfigGvnicPtrInput `pulumi:"gvnic"`
+	Gvnic                 ClusterNodePoolNodeConfigGvnicPtrInput                 `pulumi:"gvnic"`
+	HostMaintenancePolicy ClusterNodePoolNodeConfigHostMaintenancePolicyPtrInput `pulumi:"hostMaintenancePolicy"`
 	// The image type to use for this node. Note that changing the image type
 	// will delete and recreate all nodes in the node pool.
 	ImageType pulumi.StringPtrInput `pulumi:"imageType"`
@@ -24072,7 +24367,7 @@ func (o ClusterNodePoolNodeConfigOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
 
-// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+// ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
 //
 // ```go
 // package main
@@ -24179,6 +24474,12 @@ func (o ClusterNodePoolNodeConfigOutput) GuestAccelerators() ClusterNodePoolNode
 // ```
 func (o ClusterNodePoolNodeConfigOutput) Gvnic() ClusterNodePoolNodeConfigGvnicPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigGvnic { return v.Gvnic }).(ClusterNodePoolNodeConfigGvnicPtrOutput)
+}
+
+func (o ClusterNodePoolNodeConfigOutput) HostMaintenancePolicy() ClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigHostMaintenancePolicy {
+		return v.HostMaintenancePolicy
+	}).(ClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutput)
 }
 
 // The image type to use for this node. Note that changing the image type
@@ -24458,7 +24759,7 @@ func (o ClusterNodePoolNodeConfigPtrOutput) DiskType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+// ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
 //
 // ```go
 // package main
@@ -24584,6 +24885,15 @@ func (o ClusterNodePoolNodeConfigPtrOutput) Gvnic() ClusterNodePoolNodeConfigGvn
 		}
 		return v.Gvnic
 	}).(ClusterNodePoolNodeConfigGvnicPtrOutput)
+}
+
+func (o ClusterNodePoolNodeConfigPtrOutput) HostMaintenancePolicy() ClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigHostMaintenancePolicy {
+		if v == nil {
+			return nil
+		}
+		return v.HostMaintenancePolicy
+	}).(ClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutput)
 }
 
 // The image type to use for this node. Note that changing the image type
@@ -26044,6 +26354,139 @@ func (o ClusterNodePoolNodeConfigGvnicPtrOutput) Enabled() pulumi.BoolPtrOutput 
 		}
 		return &v.Enabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+type ClusterNodePoolNodeConfigHostMaintenancePolicy struct {
+	MaintenanceInterval string `pulumi:"maintenanceInterval"`
+}
+
+// ClusterNodePoolNodeConfigHostMaintenancePolicyInput is an input type that accepts ClusterNodePoolNodeConfigHostMaintenancePolicyArgs and ClusterNodePoolNodeConfigHostMaintenancePolicyOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigHostMaintenancePolicyInput` via:
+//
+//	ClusterNodePoolNodeConfigHostMaintenancePolicyArgs{...}
+type ClusterNodePoolNodeConfigHostMaintenancePolicyInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigHostMaintenancePolicyOutput() ClusterNodePoolNodeConfigHostMaintenancePolicyOutput
+	ToClusterNodePoolNodeConfigHostMaintenancePolicyOutputWithContext(context.Context) ClusterNodePoolNodeConfigHostMaintenancePolicyOutput
+}
+
+type ClusterNodePoolNodeConfigHostMaintenancePolicyArgs struct {
+	MaintenanceInterval pulumi.StringInput `pulumi:"maintenanceInterval"`
+}
+
+func (ClusterNodePoolNodeConfigHostMaintenancePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigHostMaintenancePolicy)(nil)).Elem()
+}
+
+func (i ClusterNodePoolNodeConfigHostMaintenancePolicyArgs) ToClusterNodePoolNodeConfigHostMaintenancePolicyOutput() ClusterNodePoolNodeConfigHostMaintenancePolicyOutput {
+	return i.ToClusterNodePoolNodeConfigHostMaintenancePolicyOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigHostMaintenancePolicyArgs) ToClusterNodePoolNodeConfigHostMaintenancePolicyOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigHostMaintenancePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigHostMaintenancePolicyOutput)
+}
+
+func (i ClusterNodePoolNodeConfigHostMaintenancePolicyArgs) ToClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutput() ClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutput {
+	return i.ToClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigHostMaintenancePolicyArgs) ToClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigHostMaintenancePolicyOutput).ToClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutputWithContext(ctx)
+}
+
+// ClusterNodePoolNodeConfigHostMaintenancePolicyPtrInput is an input type that accepts ClusterNodePoolNodeConfigHostMaintenancePolicyArgs, ClusterNodePoolNodeConfigHostMaintenancePolicyPtr and ClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigHostMaintenancePolicyPtrInput` via:
+//
+//	        ClusterNodePoolNodeConfigHostMaintenancePolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodePoolNodeConfigHostMaintenancePolicyPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutput() ClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutput
+	ToClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutputWithContext(context.Context) ClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutput
+}
+
+type clusterNodePoolNodeConfigHostMaintenancePolicyPtrType ClusterNodePoolNodeConfigHostMaintenancePolicyArgs
+
+func ClusterNodePoolNodeConfigHostMaintenancePolicyPtr(v *ClusterNodePoolNodeConfigHostMaintenancePolicyArgs) ClusterNodePoolNodeConfigHostMaintenancePolicyPtrInput {
+	return (*clusterNodePoolNodeConfigHostMaintenancePolicyPtrType)(v)
+}
+
+func (*clusterNodePoolNodeConfigHostMaintenancePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolNodeConfigHostMaintenancePolicy)(nil)).Elem()
+}
+
+func (i *clusterNodePoolNodeConfigHostMaintenancePolicyPtrType) ToClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutput() ClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutput {
+	return i.ToClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodePoolNodeConfigHostMaintenancePolicyPtrType) ToClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutput)
+}
+
+type ClusterNodePoolNodeConfigHostMaintenancePolicyOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigHostMaintenancePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigHostMaintenancePolicy)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigHostMaintenancePolicyOutput) ToClusterNodePoolNodeConfigHostMaintenancePolicyOutput() ClusterNodePoolNodeConfigHostMaintenancePolicyOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigHostMaintenancePolicyOutput) ToClusterNodePoolNodeConfigHostMaintenancePolicyOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigHostMaintenancePolicyOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigHostMaintenancePolicyOutput) ToClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutput() ClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutput {
+	return o.ToClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodePoolNodeConfigHostMaintenancePolicyOutput) ToClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodePoolNodeConfigHostMaintenancePolicy) *ClusterNodePoolNodeConfigHostMaintenancePolicy {
+		return &v
+	}).(ClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutput)
+}
+
+func (o ClusterNodePoolNodeConfigHostMaintenancePolicyOutput) MaintenanceInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigHostMaintenancePolicy) string { return v.MaintenanceInterval }).(pulumi.StringOutput)
+}
+
+type ClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolNodeConfigHostMaintenancePolicy)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutput) ToClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutput() ClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutput) ToClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutput) Elem() ClusterNodePoolNodeConfigHostMaintenancePolicyOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigHostMaintenancePolicy) ClusterNodePoolNodeConfigHostMaintenancePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodePoolNodeConfigHostMaintenancePolicy
+		return ret
+	}).(ClusterNodePoolNodeConfigHostMaintenancePolicyOutput)
+}
+
+func (o ClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutput) MaintenanceInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigHostMaintenancePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MaintenanceInterval
+	}).(pulumi.StringPtrOutput)
 }
 
 type ClusterNodePoolNodeConfigKubeletConfig struct {
@@ -27609,6 +28052,7 @@ func (o ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrOutput) Mode() pulumi.
 }
 
 type ClusterNodePoolPlacementPolicy struct {
+	PolicyName  *string `pulumi:"policyName"`
 	TpuTopology *string `pulumi:"tpuTopology"`
 	// Telemetry integration for the cluster. Supported values (`ENABLED, DISABLED, SYSTEM_ONLY`);
 	// `SYSTEM_ONLY` (Only system components are monitored and logged) is only available in GKE versions 1.15 and later.
@@ -27627,6 +28071,7 @@ type ClusterNodePoolPlacementPolicyInput interface {
 }
 
 type ClusterNodePoolPlacementPolicyArgs struct {
+	PolicyName  pulumi.StringPtrInput `pulumi:"policyName"`
 	TpuTopology pulumi.StringPtrInput `pulumi:"tpuTopology"`
 	// Telemetry integration for the cluster. Supported values (`ENABLED, DISABLED, SYSTEM_ONLY`);
 	// `SYSTEM_ONLY` (Only system components are monitored and logged) is only available in GKE versions 1.15 and later.
@@ -27710,6 +28155,10 @@ func (o ClusterNodePoolPlacementPolicyOutput) ToClusterNodePoolPlacementPolicyPt
 	}).(ClusterNodePoolPlacementPolicyPtrOutput)
 }
 
+func (o ClusterNodePoolPlacementPolicyOutput) PolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolPlacementPolicy) *string { return v.PolicyName }).(pulumi.StringPtrOutput)
+}
+
 func (o ClusterNodePoolPlacementPolicyOutput) TpuTopology() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolPlacementPolicy) *string { return v.TpuTopology }).(pulumi.StringPtrOutput)
 }
@@ -27742,6 +28191,15 @@ func (o ClusterNodePoolPlacementPolicyPtrOutput) Elem() ClusterNodePoolPlacement
 		var ret ClusterNodePoolPlacementPolicy
 		return ret
 	}).(ClusterNodePoolPlacementPolicyOutput)
+}
+
+func (o ClusterNodePoolPlacementPolicyPtrOutput) PolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolPlacementPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PolicyName
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ClusterNodePoolPlacementPolicyPtrOutput) TpuTopology() pulumi.StringPtrOutput {
@@ -32140,6 +32598,7 @@ type NodePoolNodeConfig struct {
 	GcfsConfig                     *NodePoolNodeConfigGcfsConfig                     `pulumi:"gcfsConfig"`
 	GuestAccelerators              []NodePoolNodeConfigGuestAccelerator              `pulumi:"guestAccelerators"`
 	Gvnic                          *NodePoolNodeConfigGvnic                          `pulumi:"gvnic"`
+	HostMaintenancePolicy          *NodePoolNodeConfigHostMaintenancePolicy          `pulumi:"hostMaintenancePolicy"`
 	ImageType                      *string                                           `pulumi:"imageType"`
 	KubeletConfig                  *NodePoolNodeConfigKubeletConfig                  `pulumi:"kubeletConfig"`
 	Labels                         map[string]string                                 `pulumi:"labels"`
@@ -32186,6 +32645,7 @@ type NodePoolNodeConfigArgs struct {
 	GcfsConfig                     NodePoolNodeConfigGcfsConfigPtrInput                     `pulumi:"gcfsConfig"`
 	GuestAccelerators              NodePoolNodeConfigGuestAcceleratorArrayInput             `pulumi:"guestAccelerators"`
 	Gvnic                          NodePoolNodeConfigGvnicPtrInput                          `pulumi:"gvnic"`
+	HostMaintenancePolicy          NodePoolNodeConfigHostMaintenancePolicyPtrInput          `pulumi:"hostMaintenancePolicy"`
 	ImageType                      pulumi.StringPtrInput                                    `pulumi:"imageType"`
 	KubeletConfig                  NodePoolNodeConfigKubeletConfigPtrInput                  `pulumi:"kubeletConfig"`
 	Labels                         pulumi.StringMapInput                                    `pulumi:"labels"`
@@ -32326,6 +32786,10 @@ func (o NodePoolNodeConfigOutput) GuestAccelerators() NodePoolNodeConfigGuestAcc
 
 func (o NodePoolNodeConfigOutput) Gvnic() NodePoolNodeConfigGvnicPtrOutput {
 	return o.ApplyT(func(v NodePoolNodeConfig) *NodePoolNodeConfigGvnic { return v.Gvnic }).(NodePoolNodeConfigGvnicPtrOutput)
+}
+
+func (o NodePoolNodeConfigOutput) HostMaintenancePolicy() NodePoolNodeConfigHostMaintenancePolicyPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfig) *NodePoolNodeConfigHostMaintenancePolicy { return v.HostMaintenancePolicy }).(NodePoolNodeConfigHostMaintenancePolicyPtrOutput)
 }
 
 func (o NodePoolNodeConfigOutput) ImageType() pulumi.StringPtrOutput {
@@ -32525,6 +32989,15 @@ func (o NodePoolNodeConfigPtrOutput) Gvnic() NodePoolNodeConfigGvnicPtrOutput {
 		}
 		return v.Gvnic
 	}).(NodePoolNodeConfigGvnicPtrOutput)
+}
+
+func (o NodePoolNodeConfigPtrOutput) HostMaintenancePolicy() NodePoolNodeConfigHostMaintenancePolicyPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfig) *NodePoolNodeConfigHostMaintenancePolicy {
+		if v == nil {
+			return nil
+		}
+		return v.HostMaintenancePolicy
+	}).(NodePoolNodeConfigHostMaintenancePolicyPtrOutput)
 }
 
 func (o NodePoolNodeConfigPtrOutput) ImageType() pulumi.StringPtrOutput {
@@ -33811,6 +34284,139 @@ func (o NodePoolNodeConfigGvnicPtrOutput) Enabled() pulumi.BoolPtrOutput {
 		}
 		return &v.Enabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+type NodePoolNodeConfigHostMaintenancePolicy struct {
+	MaintenanceInterval string `pulumi:"maintenanceInterval"`
+}
+
+// NodePoolNodeConfigHostMaintenancePolicyInput is an input type that accepts NodePoolNodeConfigHostMaintenancePolicyArgs and NodePoolNodeConfigHostMaintenancePolicyOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigHostMaintenancePolicyInput` via:
+//
+//	NodePoolNodeConfigHostMaintenancePolicyArgs{...}
+type NodePoolNodeConfigHostMaintenancePolicyInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigHostMaintenancePolicyOutput() NodePoolNodeConfigHostMaintenancePolicyOutput
+	ToNodePoolNodeConfigHostMaintenancePolicyOutputWithContext(context.Context) NodePoolNodeConfigHostMaintenancePolicyOutput
+}
+
+type NodePoolNodeConfigHostMaintenancePolicyArgs struct {
+	MaintenanceInterval pulumi.StringInput `pulumi:"maintenanceInterval"`
+}
+
+func (NodePoolNodeConfigHostMaintenancePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigHostMaintenancePolicy)(nil)).Elem()
+}
+
+func (i NodePoolNodeConfigHostMaintenancePolicyArgs) ToNodePoolNodeConfigHostMaintenancePolicyOutput() NodePoolNodeConfigHostMaintenancePolicyOutput {
+	return i.ToNodePoolNodeConfigHostMaintenancePolicyOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigHostMaintenancePolicyArgs) ToNodePoolNodeConfigHostMaintenancePolicyOutputWithContext(ctx context.Context) NodePoolNodeConfigHostMaintenancePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigHostMaintenancePolicyOutput)
+}
+
+func (i NodePoolNodeConfigHostMaintenancePolicyArgs) ToNodePoolNodeConfigHostMaintenancePolicyPtrOutput() NodePoolNodeConfigHostMaintenancePolicyPtrOutput {
+	return i.ToNodePoolNodeConfigHostMaintenancePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigHostMaintenancePolicyArgs) ToNodePoolNodeConfigHostMaintenancePolicyPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigHostMaintenancePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigHostMaintenancePolicyOutput).ToNodePoolNodeConfigHostMaintenancePolicyPtrOutputWithContext(ctx)
+}
+
+// NodePoolNodeConfigHostMaintenancePolicyPtrInput is an input type that accepts NodePoolNodeConfigHostMaintenancePolicyArgs, NodePoolNodeConfigHostMaintenancePolicyPtr and NodePoolNodeConfigHostMaintenancePolicyPtrOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigHostMaintenancePolicyPtrInput` via:
+//
+//	        NodePoolNodeConfigHostMaintenancePolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type NodePoolNodeConfigHostMaintenancePolicyPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigHostMaintenancePolicyPtrOutput() NodePoolNodeConfigHostMaintenancePolicyPtrOutput
+	ToNodePoolNodeConfigHostMaintenancePolicyPtrOutputWithContext(context.Context) NodePoolNodeConfigHostMaintenancePolicyPtrOutput
+}
+
+type nodePoolNodeConfigHostMaintenancePolicyPtrType NodePoolNodeConfigHostMaintenancePolicyArgs
+
+func NodePoolNodeConfigHostMaintenancePolicyPtr(v *NodePoolNodeConfigHostMaintenancePolicyArgs) NodePoolNodeConfigHostMaintenancePolicyPtrInput {
+	return (*nodePoolNodeConfigHostMaintenancePolicyPtrType)(v)
+}
+
+func (*nodePoolNodeConfigHostMaintenancePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolNodeConfigHostMaintenancePolicy)(nil)).Elem()
+}
+
+func (i *nodePoolNodeConfigHostMaintenancePolicyPtrType) ToNodePoolNodeConfigHostMaintenancePolicyPtrOutput() NodePoolNodeConfigHostMaintenancePolicyPtrOutput {
+	return i.ToNodePoolNodeConfigHostMaintenancePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolNodeConfigHostMaintenancePolicyPtrType) ToNodePoolNodeConfigHostMaintenancePolicyPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigHostMaintenancePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigHostMaintenancePolicyPtrOutput)
+}
+
+type NodePoolNodeConfigHostMaintenancePolicyOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigHostMaintenancePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigHostMaintenancePolicy)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigHostMaintenancePolicyOutput) ToNodePoolNodeConfigHostMaintenancePolicyOutput() NodePoolNodeConfigHostMaintenancePolicyOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigHostMaintenancePolicyOutput) ToNodePoolNodeConfigHostMaintenancePolicyOutputWithContext(ctx context.Context) NodePoolNodeConfigHostMaintenancePolicyOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigHostMaintenancePolicyOutput) ToNodePoolNodeConfigHostMaintenancePolicyPtrOutput() NodePoolNodeConfigHostMaintenancePolicyPtrOutput {
+	return o.ToNodePoolNodeConfigHostMaintenancePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolNodeConfigHostMaintenancePolicyOutput) ToNodePoolNodeConfigHostMaintenancePolicyPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigHostMaintenancePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolNodeConfigHostMaintenancePolicy) *NodePoolNodeConfigHostMaintenancePolicy {
+		return &v
+	}).(NodePoolNodeConfigHostMaintenancePolicyPtrOutput)
+}
+
+func (o NodePoolNodeConfigHostMaintenancePolicyOutput) MaintenanceInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigHostMaintenancePolicy) string { return v.MaintenanceInterval }).(pulumi.StringOutput)
+}
+
+type NodePoolNodeConfigHostMaintenancePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigHostMaintenancePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolNodeConfigHostMaintenancePolicy)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigHostMaintenancePolicyPtrOutput) ToNodePoolNodeConfigHostMaintenancePolicyPtrOutput() NodePoolNodeConfigHostMaintenancePolicyPtrOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigHostMaintenancePolicyPtrOutput) ToNodePoolNodeConfigHostMaintenancePolicyPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigHostMaintenancePolicyPtrOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigHostMaintenancePolicyPtrOutput) Elem() NodePoolNodeConfigHostMaintenancePolicyOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigHostMaintenancePolicy) NodePoolNodeConfigHostMaintenancePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolNodeConfigHostMaintenancePolicy
+		return ret
+	}).(NodePoolNodeConfigHostMaintenancePolicyOutput)
+}
+
+func (o NodePoolNodeConfigHostMaintenancePolicyPtrOutput) MaintenanceInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigHostMaintenancePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MaintenanceInterval
+	}).(pulumi.StringPtrOutput)
 }
 
 type NodePoolNodeConfigKubeletConfig struct {
@@ -35182,6 +35788,10 @@ func (o NodePoolNodeConfigWorkloadMetadataConfigPtrOutput) Mode() pulumi.StringP
 }
 
 type NodePoolPlacementPolicy struct {
+	// If set, refers to the name of a custom resource policy supplied by the user.
+	// The resource policy must be in the same project and region as the node pool.
+	// If not found, InvalidArgument error is returned.
+	PolicyName *string `pulumi:"policyName"`
 	// The [TPU placement topology](https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies) for pod slice node pool.
 	TpuTopology *string `pulumi:"tpuTopology"`
 	// The type of the policy. Supports a single value: COMPACT.
@@ -35202,6 +35812,10 @@ type NodePoolPlacementPolicyInput interface {
 }
 
 type NodePoolPlacementPolicyArgs struct {
+	// If set, refers to the name of a custom resource policy supplied by the user.
+	// The resource policy must be in the same project and region as the node pool.
+	// If not found, InvalidArgument error is returned.
+	PolicyName pulumi.StringPtrInput `pulumi:"policyName"`
 	// The [TPU placement topology](https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies) for pod slice node pool.
 	TpuTopology pulumi.StringPtrInput `pulumi:"tpuTopology"`
 	// The type of the policy. Supports a single value: COMPACT.
@@ -35287,6 +35901,13 @@ func (o NodePoolPlacementPolicyOutput) ToNodePoolPlacementPolicyPtrOutputWithCon
 	}).(NodePoolPlacementPolicyPtrOutput)
 }
 
+// If set, refers to the name of a custom resource policy supplied by the user.
+// The resource policy must be in the same project and region as the node pool.
+// If not found, InvalidArgument error is returned.
+func (o NodePoolPlacementPolicyOutput) PolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolPlacementPolicy) *string { return v.PolicyName }).(pulumi.StringPtrOutput)
+}
+
 // The [TPU placement topology](https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies) for pod slice node pool.
 func (o NodePoolPlacementPolicyOutput) TpuTopology() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolPlacementPolicy) *string { return v.TpuTopology }).(pulumi.StringPtrOutput)
@@ -35321,6 +35942,18 @@ func (o NodePoolPlacementPolicyPtrOutput) Elem() NodePoolPlacementPolicyOutput {
 		var ret NodePoolPlacementPolicy
 		return ret
 	}).(NodePoolPlacementPolicyOutput)
+}
+
+// If set, refers to the name of a custom resource policy supplied by the user.
+// The resource policy must be in the same project and region as the node pool.
+// If not found, InvalidArgument error is returned.
+func (o NodePoolPlacementPolicyPtrOutput) PolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolPlacementPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PolicyName
+	}).(pulumi.StringPtrOutput)
 }
 
 // The [TPU placement topology](https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies) for pod slice node pool.
@@ -39020,6 +39653,100 @@ func (o GetClusterDnsConfigArrayOutput) Index(i pulumi.IntInput) GetClusterDnsCo
 	}).(GetClusterDnsConfigOutput)
 }
 
+type GetClusterEnableK8sBetaApi struct {
+	EnabledApis []string `pulumi:"enabledApis"`
+}
+
+// GetClusterEnableK8sBetaApiInput is an input type that accepts GetClusterEnableK8sBetaApiArgs and GetClusterEnableK8sBetaApiOutput values.
+// You can construct a concrete instance of `GetClusterEnableK8sBetaApiInput` via:
+//
+//	GetClusterEnableK8sBetaApiArgs{...}
+type GetClusterEnableK8sBetaApiInput interface {
+	pulumi.Input
+
+	ToGetClusterEnableK8sBetaApiOutput() GetClusterEnableK8sBetaApiOutput
+	ToGetClusterEnableK8sBetaApiOutputWithContext(context.Context) GetClusterEnableK8sBetaApiOutput
+}
+
+type GetClusterEnableK8sBetaApiArgs struct {
+	EnabledApis pulumi.StringArrayInput `pulumi:"enabledApis"`
+}
+
+func (GetClusterEnableK8sBetaApiArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterEnableK8sBetaApi)(nil)).Elem()
+}
+
+func (i GetClusterEnableK8sBetaApiArgs) ToGetClusterEnableK8sBetaApiOutput() GetClusterEnableK8sBetaApiOutput {
+	return i.ToGetClusterEnableK8sBetaApiOutputWithContext(context.Background())
+}
+
+func (i GetClusterEnableK8sBetaApiArgs) ToGetClusterEnableK8sBetaApiOutputWithContext(ctx context.Context) GetClusterEnableK8sBetaApiOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterEnableK8sBetaApiOutput)
+}
+
+// GetClusterEnableK8sBetaApiArrayInput is an input type that accepts GetClusterEnableK8sBetaApiArray and GetClusterEnableK8sBetaApiArrayOutput values.
+// You can construct a concrete instance of `GetClusterEnableK8sBetaApiArrayInput` via:
+//
+//	GetClusterEnableK8sBetaApiArray{ GetClusterEnableK8sBetaApiArgs{...} }
+type GetClusterEnableK8sBetaApiArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterEnableK8sBetaApiArrayOutput() GetClusterEnableK8sBetaApiArrayOutput
+	ToGetClusterEnableK8sBetaApiArrayOutputWithContext(context.Context) GetClusterEnableK8sBetaApiArrayOutput
+}
+
+type GetClusterEnableK8sBetaApiArray []GetClusterEnableK8sBetaApiInput
+
+func (GetClusterEnableK8sBetaApiArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterEnableK8sBetaApi)(nil)).Elem()
+}
+
+func (i GetClusterEnableK8sBetaApiArray) ToGetClusterEnableK8sBetaApiArrayOutput() GetClusterEnableK8sBetaApiArrayOutput {
+	return i.ToGetClusterEnableK8sBetaApiArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterEnableK8sBetaApiArray) ToGetClusterEnableK8sBetaApiArrayOutputWithContext(ctx context.Context) GetClusterEnableK8sBetaApiArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterEnableK8sBetaApiArrayOutput)
+}
+
+type GetClusterEnableK8sBetaApiOutput struct{ *pulumi.OutputState }
+
+func (GetClusterEnableK8sBetaApiOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterEnableK8sBetaApi)(nil)).Elem()
+}
+
+func (o GetClusterEnableK8sBetaApiOutput) ToGetClusterEnableK8sBetaApiOutput() GetClusterEnableK8sBetaApiOutput {
+	return o
+}
+
+func (o GetClusterEnableK8sBetaApiOutput) ToGetClusterEnableK8sBetaApiOutputWithContext(ctx context.Context) GetClusterEnableK8sBetaApiOutput {
+	return o
+}
+
+func (o GetClusterEnableK8sBetaApiOutput) EnabledApis() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterEnableK8sBetaApi) []string { return v.EnabledApis }).(pulumi.StringArrayOutput)
+}
+
+type GetClusterEnableK8sBetaApiArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterEnableK8sBetaApiArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterEnableK8sBetaApi)(nil)).Elem()
+}
+
+func (o GetClusterEnableK8sBetaApiArrayOutput) ToGetClusterEnableK8sBetaApiArrayOutput() GetClusterEnableK8sBetaApiArrayOutput {
+	return o
+}
+
+func (o GetClusterEnableK8sBetaApiArrayOutput) ToGetClusterEnableK8sBetaApiArrayOutputWithContext(ctx context.Context) GetClusterEnableK8sBetaApiArrayOutput {
+	return o
+}
+
+func (o GetClusterEnableK8sBetaApiArrayOutput) Index(i pulumi.IntInput) GetClusterEnableK8sBetaApiOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterEnableK8sBetaApi {
+		return vs[0].([]GetClusterEnableK8sBetaApi)[vs[1].(int)]
+	}).(GetClusterEnableK8sBetaApiOutput)
+}
+
 type GetClusterGatewayApiConfig struct {
 	Channel string `pulumi:"channel"`
 }
@@ -40858,6 +41585,7 @@ type GetClusterNodeConfig struct {
 	GcfsConfigs                     []GetClusterNodeConfigGcfsConfig                     `pulumi:"gcfsConfigs"`
 	GuestAccelerators               []GetClusterNodeConfigGuestAccelerator               `pulumi:"guestAccelerators"`
 	Gvnics                          []GetClusterNodeConfigGvnic                          `pulumi:"gvnics"`
+	HostMaintenancePolicies         []GetClusterNodeConfigHostMaintenancePolicy          `pulumi:"hostMaintenancePolicies"`
 	ImageType                       string                                               `pulumi:"imageType"`
 	KubeletConfigs                  []GetClusterNodeConfigKubeletConfig                  `pulumi:"kubeletConfigs"`
 	Labels                          map[string]string                                    `pulumi:"labels"`
@@ -40904,6 +41632,7 @@ type GetClusterNodeConfigArgs struct {
 	GcfsConfigs                     GetClusterNodeConfigGcfsConfigArrayInput                     `pulumi:"gcfsConfigs"`
 	GuestAccelerators               GetClusterNodeConfigGuestAcceleratorArrayInput               `pulumi:"guestAccelerators"`
 	Gvnics                          GetClusterNodeConfigGvnicArrayInput                          `pulumi:"gvnics"`
+	HostMaintenancePolicies         GetClusterNodeConfigHostMaintenancePolicyArrayInput          `pulumi:"hostMaintenancePolicies"`
 	ImageType                       pulumi.StringInput                                           `pulumi:"imageType"`
 	KubeletConfigs                  GetClusterNodeConfigKubeletConfigArrayInput                  `pulumi:"kubeletConfigs"`
 	Labels                          pulumi.StringMapInput                                        `pulumi:"labels"`
@@ -41020,6 +41749,12 @@ func (o GetClusterNodeConfigOutput) GuestAccelerators() GetClusterNodeConfigGues
 
 func (o GetClusterNodeConfigOutput) Gvnics() GetClusterNodeConfigGvnicArrayOutput {
 	return o.ApplyT(func(v GetClusterNodeConfig) []GetClusterNodeConfigGvnic { return v.Gvnics }).(GetClusterNodeConfigGvnicArrayOutput)
+}
+
+func (o GetClusterNodeConfigOutput) HostMaintenancePolicies() GetClusterNodeConfigHostMaintenancePolicyArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfig) []GetClusterNodeConfigHostMaintenancePolicy {
+		return v.HostMaintenancePolicies
+	}).(GetClusterNodeConfigHostMaintenancePolicyArrayOutput)
 }
 
 func (o GetClusterNodeConfigOutput) ImageType() pulumi.StringOutput {
@@ -41926,6 +42661,100 @@ func (o GetClusterNodeConfigGvnicArrayOutput) Index(i pulumi.IntInput) GetCluste
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigGvnic {
 		return vs[0].([]GetClusterNodeConfigGvnic)[vs[1].(int)]
 	}).(GetClusterNodeConfigGvnicOutput)
+}
+
+type GetClusterNodeConfigHostMaintenancePolicy struct {
+	MaintenanceInterval string `pulumi:"maintenanceInterval"`
+}
+
+// GetClusterNodeConfigHostMaintenancePolicyInput is an input type that accepts GetClusterNodeConfigHostMaintenancePolicyArgs and GetClusterNodeConfigHostMaintenancePolicyOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigHostMaintenancePolicyInput` via:
+//
+//	GetClusterNodeConfigHostMaintenancePolicyArgs{...}
+type GetClusterNodeConfigHostMaintenancePolicyInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigHostMaintenancePolicyOutput() GetClusterNodeConfigHostMaintenancePolicyOutput
+	ToGetClusterNodeConfigHostMaintenancePolicyOutputWithContext(context.Context) GetClusterNodeConfigHostMaintenancePolicyOutput
+}
+
+type GetClusterNodeConfigHostMaintenancePolicyArgs struct {
+	MaintenanceInterval pulumi.StringInput `pulumi:"maintenanceInterval"`
+}
+
+func (GetClusterNodeConfigHostMaintenancePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigHostMaintenancePolicy)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigHostMaintenancePolicyArgs) ToGetClusterNodeConfigHostMaintenancePolicyOutput() GetClusterNodeConfigHostMaintenancePolicyOutput {
+	return i.ToGetClusterNodeConfigHostMaintenancePolicyOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigHostMaintenancePolicyArgs) ToGetClusterNodeConfigHostMaintenancePolicyOutputWithContext(ctx context.Context) GetClusterNodeConfigHostMaintenancePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigHostMaintenancePolicyOutput)
+}
+
+// GetClusterNodeConfigHostMaintenancePolicyArrayInput is an input type that accepts GetClusterNodeConfigHostMaintenancePolicyArray and GetClusterNodeConfigHostMaintenancePolicyArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigHostMaintenancePolicyArrayInput` via:
+//
+//	GetClusterNodeConfigHostMaintenancePolicyArray{ GetClusterNodeConfigHostMaintenancePolicyArgs{...} }
+type GetClusterNodeConfigHostMaintenancePolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigHostMaintenancePolicyArrayOutput() GetClusterNodeConfigHostMaintenancePolicyArrayOutput
+	ToGetClusterNodeConfigHostMaintenancePolicyArrayOutputWithContext(context.Context) GetClusterNodeConfigHostMaintenancePolicyArrayOutput
+}
+
+type GetClusterNodeConfigHostMaintenancePolicyArray []GetClusterNodeConfigHostMaintenancePolicyInput
+
+func (GetClusterNodeConfigHostMaintenancePolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigHostMaintenancePolicy)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigHostMaintenancePolicyArray) ToGetClusterNodeConfigHostMaintenancePolicyArrayOutput() GetClusterNodeConfigHostMaintenancePolicyArrayOutput {
+	return i.ToGetClusterNodeConfigHostMaintenancePolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigHostMaintenancePolicyArray) ToGetClusterNodeConfigHostMaintenancePolicyArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigHostMaintenancePolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigHostMaintenancePolicyArrayOutput)
+}
+
+type GetClusterNodeConfigHostMaintenancePolicyOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigHostMaintenancePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigHostMaintenancePolicy)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigHostMaintenancePolicyOutput) ToGetClusterNodeConfigHostMaintenancePolicyOutput() GetClusterNodeConfigHostMaintenancePolicyOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigHostMaintenancePolicyOutput) ToGetClusterNodeConfigHostMaintenancePolicyOutputWithContext(ctx context.Context) GetClusterNodeConfigHostMaintenancePolicyOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigHostMaintenancePolicyOutput) MaintenanceInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigHostMaintenancePolicy) string { return v.MaintenanceInterval }).(pulumi.StringOutput)
+}
+
+type GetClusterNodeConfigHostMaintenancePolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigHostMaintenancePolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigHostMaintenancePolicy)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigHostMaintenancePolicyArrayOutput) ToGetClusterNodeConfigHostMaintenancePolicyArrayOutput() GetClusterNodeConfigHostMaintenancePolicyArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigHostMaintenancePolicyArrayOutput) ToGetClusterNodeConfigHostMaintenancePolicyArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigHostMaintenancePolicyArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigHostMaintenancePolicyArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigHostMaintenancePolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigHostMaintenancePolicy {
+		return vs[0].([]GetClusterNodeConfigHostMaintenancePolicy)[vs[1].(int)]
+	}).(GetClusterNodeConfigHostMaintenancePolicyOutput)
 }
 
 type GetClusterNodeConfigKubeletConfig struct {
@@ -44255,6 +45084,7 @@ type GetClusterNodePoolNodeConfig struct {
 	GcfsConfigs                     []GetClusterNodePoolNodeConfigGcfsConfig                     `pulumi:"gcfsConfigs"`
 	GuestAccelerators               []GetClusterNodePoolNodeConfigGuestAccelerator               `pulumi:"guestAccelerators"`
 	Gvnics                          []GetClusterNodePoolNodeConfigGvnic                          `pulumi:"gvnics"`
+	HostMaintenancePolicies         []GetClusterNodePoolNodeConfigHostMaintenancePolicy          `pulumi:"hostMaintenancePolicies"`
 	ImageType                       string                                                       `pulumi:"imageType"`
 	KubeletConfigs                  []GetClusterNodePoolNodeConfigKubeletConfig                  `pulumi:"kubeletConfigs"`
 	Labels                          map[string]string                                            `pulumi:"labels"`
@@ -44301,6 +45131,7 @@ type GetClusterNodePoolNodeConfigArgs struct {
 	GcfsConfigs                     GetClusterNodePoolNodeConfigGcfsConfigArrayInput                     `pulumi:"gcfsConfigs"`
 	GuestAccelerators               GetClusterNodePoolNodeConfigGuestAcceleratorArrayInput               `pulumi:"guestAccelerators"`
 	Gvnics                          GetClusterNodePoolNodeConfigGvnicArrayInput                          `pulumi:"gvnics"`
+	HostMaintenancePolicies         GetClusterNodePoolNodeConfigHostMaintenancePolicyArrayInput          `pulumi:"hostMaintenancePolicies"`
 	ImageType                       pulumi.StringInput                                                   `pulumi:"imageType"`
 	KubeletConfigs                  GetClusterNodePoolNodeConfigKubeletConfigArrayInput                  `pulumi:"kubeletConfigs"`
 	Labels                          pulumi.StringMapInput                                                `pulumi:"labels"`
@@ -44419,6 +45250,12 @@ func (o GetClusterNodePoolNodeConfigOutput) GuestAccelerators() GetClusterNodePo
 
 func (o GetClusterNodePoolNodeConfigOutput) Gvnics() GetClusterNodePoolNodeConfigGvnicArrayOutput {
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigGvnic { return v.Gvnics }).(GetClusterNodePoolNodeConfigGvnicArrayOutput)
+}
+
+func (o GetClusterNodePoolNodeConfigOutput) HostMaintenancePolicies() GetClusterNodePoolNodeConfigHostMaintenancePolicyArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigHostMaintenancePolicy {
+		return v.HostMaintenancePolicies
+	}).(GetClusterNodePoolNodeConfigHostMaintenancePolicyArrayOutput)
 }
 
 func (o GetClusterNodePoolNodeConfigOutput) ImageType() pulumi.StringOutput {
@@ -45339,6 +46176,100 @@ func (o GetClusterNodePoolNodeConfigGvnicArrayOutput) Index(i pulumi.IntInput) G
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigGvnic {
 		return vs[0].([]GetClusterNodePoolNodeConfigGvnic)[vs[1].(int)]
 	}).(GetClusterNodePoolNodeConfigGvnicOutput)
+}
+
+type GetClusterNodePoolNodeConfigHostMaintenancePolicy struct {
+	MaintenanceInterval string `pulumi:"maintenanceInterval"`
+}
+
+// GetClusterNodePoolNodeConfigHostMaintenancePolicyInput is an input type that accepts GetClusterNodePoolNodeConfigHostMaintenancePolicyArgs and GetClusterNodePoolNodeConfigHostMaintenancePolicyOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigHostMaintenancePolicyInput` via:
+//
+//	GetClusterNodePoolNodeConfigHostMaintenancePolicyArgs{...}
+type GetClusterNodePoolNodeConfigHostMaintenancePolicyInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigHostMaintenancePolicyOutput() GetClusterNodePoolNodeConfigHostMaintenancePolicyOutput
+	ToGetClusterNodePoolNodeConfigHostMaintenancePolicyOutputWithContext(context.Context) GetClusterNodePoolNodeConfigHostMaintenancePolicyOutput
+}
+
+type GetClusterNodePoolNodeConfigHostMaintenancePolicyArgs struct {
+	MaintenanceInterval pulumi.StringInput `pulumi:"maintenanceInterval"`
+}
+
+func (GetClusterNodePoolNodeConfigHostMaintenancePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigHostMaintenancePolicy)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigHostMaintenancePolicyArgs) ToGetClusterNodePoolNodeConfigHostMaintenancePolicyOutput() GetClusterNodePoolNodeConfigHostMaintenancePolicyOutput {
+	return i.ToGetClusterNodePoolNodeConfigHostMaintenancePolicyOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigHostMaintenancePolicyArgs) ToGetClusterNodePoolNodeConfigHostMaintenancePolicyOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigHostMaintenancePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigHostMaintenancePolicyOutput)
+}
+
+// GetClusterNodePoolNodeConfigHostMaintenancePolicyArrayInput is an input type that accepts GetClusterNodePoolNodeConfigHostMaintenancePolicyArray and GetClusterNodePoolNodeConfigHostMaintenancePolicyArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigHostMaintenancePolicyArrayInput` via:
+//
+//	GetClusterNodePoolNodeConfigHostMaintenancePolicyArray{ GetClusterNodePoolNodeConfigHostMaintenancePolicyArgs{...} }
+type GetClusterNodePoolNodeConfigHostMaintenancePolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigHostMaintenancePolicyArrayOutput() GetClusterNodePoolNodeConfigHostMaintenancePolicyArrayOutput
+	ToGetClusterNodePoolNodeConfigHostMaintenancePolicyArrayOutputWithContext(context.Context) GetClusterNodePoolNodeConfigHostMaintenancePolicyArrayOutput
+}
+
+type GetClusterNodePoolNodeConfigHostMaintenancePolicyArray []GetClusterNodePoolNodeConfigHostMaintenancePolicyInput
+
+func (GetClusterNodePoolNodeConfigHostMaintenancePolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigHostMaintenancePolicy)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigHostMaintenancePolicyArray) ToGetClusterNodePoolNodeConfigHostMaintenancePolicyArrayOutput() GetClusterNodePoolNodeConfigHostMaintenancePolicyArrayOutput {
+	return i.ToGetClusterNodePoolNodeConfigHostMaintenancePolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigHostMaintenancePolicyArray) ToGetClusterNodePoolNodeConfigHostMaintenancePolicyArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigHostMaintenancePolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigHostMaintenancePolicyArrayOutput)
+}
+
+type GetClusterNodePoolNodeConfigHostMaintenancePolicyOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigHostMaintenancePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigHostMaintenancePolicy)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigHostMaintenancePolicyOutput) ToGetClusterNodePoolNodeConfigHostMaintenancePolicyOutput() GetClusterNodePoolNodeConfigHostMaintenancePolicyOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigHostMaintenancePolicyOutput) ToGetClusterNodePoolNodeConfigHostMaintenancePolicyOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigHostMaintenancePolicyOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigHostMaintenancePolicyOutput) MaintenanceInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigHostMaintenancePolicy) string { return v.MaintenanceInterval }).(pulumi.StringOutput)
+}
+
+type GetClusterNodePoolNodeConfigHostMaintenancePolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigHostMaintenancePolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigHostMaintenancePolicy)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigHostMaintenancePolicyArrayOutput) ToGetClusterNodePoolNodeConfigHostMaintenancePolicyArrayOutput() GetClusterNodePoolNodeConfigHostMaintenancePolicyArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigHostMaintenancePolicyArrayOutput) ToGetClusterNodePoolNodeConfigHostMaintenancePolicyArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigHostMaintenancePolicyArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigHostMaintenancePolicyArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNodeConfigHostMaintenancePolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigHostMaintenancePolicy {
+		return vs[0].([]GetClusterNodePoolNodeConfigHostMaintenancePolicy)[vs[1].(int)]
+	}).(GetClusterNodePoolNodeConfigHostMaintenancePolicyOutput)
 }
 
 type GetClusterNodePoolNodeConfigKubeletConfig struct {
@@ -46344,6 +47275,7 @@ func (o GetClusterNodePoolNodeConfigWorkloadMetadataConfigArrayOutput) Index(i p
 }
 
 type GetClusterNodePoolPlacementPolicy struct {
+	PolicyName  string `pulumi:"policyName"`
 	TpuTopology string `pulumi:"tpuTopology"`
 	Type        string `pulumi:"type"`
 }
@@ -46360,6 +47292,7 @@ type GetClusterNodePoolPlacementPolicyInput interface {
 }
 
 type GetClusterNodePoolPlacementPolicyArgs struct {
+	PolicyName  pulumi.StringInput `pulumi:"policyName"`
 	TpuTopology pulumi.StringInput `pulumi:"tpuTopology"`
 	Type        pulumi.StringInput `pulumi:"type"`
 }
@@ -46413,6 +47346,10 @@ func (o GetClusterNodePoolPlacementPolicyOutput) ToGetClusterNodePoolPlacementPo
 
 func (o GetClusterNodePoolPlacementPolicyOutput) ToGetClusterNodePoolPlacementPolicyOutputWithContext(ctx context.Context) GetClusterNodePoolPlacementPolicyOutput {
 	return o
+}
+
+func (o GetClusterNodePoolPlacementPolicyOutput) PolicyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolPlacementPolicy) string { return v.PolicyName }).(pulumi.StringOutput)
 }
 
 func (o GetClusterNodePoolPlacementPolicyOutput) TpuTopology() pulumi.StringOutput {
@@ -48546,6 +49483,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDefaultSnatStatusPtrInput)(nil)).Elem(), ClusterDefaultSnatStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDnsConfigInput)(nil)).Elem(), ClusterDnsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDnsConfigPtrInput)(nil)).Elem(), ClusterDnsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterEnableK8sBetaApisInput)(nil)).Elem(), ClusterEnableK8sBetaApisArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterEnableK8sBetaApisPtrInput)(nil)).Elem(), ClusterEnableK8sBetaApisArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterGatewayApiConfigInput)(nil)).Elem(), ClusterGatewayApiConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterGatewayApiConfigPtrInput)(nil)).Elem(), ClusterGatewayApiConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIdentityServiceConfigInput)(nil)).Elem(), ClusterIdentityServiceConfigArgs{})
@@ -48600,6 +49539,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrInput)(nil)).Elem(), ClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigGvnicInput)(nil)).Elem(), ClusterNodeConfigGvnicArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigGvnicPtrInput)(nil)).Elem(), ClusterNodeConfigGvnicArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigHostMaintenancePolicyInput)(nil)).Elem(), ClusterNodeConfigHostMaintenancePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigHostMaintenancePolicyPtrInput)(nil)).Elem(), ClusterNodeConfigHostMaintenancePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigKubeletConfigInput)(nil)).Elem(), ClusterNodeConfigKubeletConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigKubeletConfigPtrInput)(nil)).Elem(), ClusterNodeConfigKubeletConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigLinuxNodeConfigInput)(nil)).Elem(), ClusterNodeConfigLinuxNodeConfigArgs{})
@@ -48662,6 +49603,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigGvnicInput)(nil)).Elem(), ClusterNodePoolNodeConfigGvnicArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigGvnicPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigGvnicArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigHostMaintenancePolicyInput)(nil)).Elem(), ClusterNodePoolNodeConfigHostMaintenancePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigHostMaintenancePolicyPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigHostMaintenancePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigKubeletConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigKubeletConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigKubeletConfigPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigKubeletConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigLinuxNodeConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigLinuxNodeConfigArgs{})
@@ -48752,6 +49695,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrInput)(nil)).Elem(), NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigGvnicInput)(nil)).Elem(), NodePoolNodeConfigGvnicArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigGvnicPtrInput)(nil)).Elem(), NodePoolNodeConfigGvnicArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigHostMaintenancePolicyInput)(nil)).Elem(), NodePoolNodeConfigHostMaintenancePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigHostMaintenancePolicyPtrInput)(nil)).Elem(), NodePoolNodeConfigHostMaintenancePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigKubeletConfigInput)(nil)).Elem(), NodePoolNodeConfigKubeletConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigKubeletConfigPtrInput)(nil)).Elem(), NodePoolNodeConfigKubeletConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigLinuxNodeConfigInput)(nil)).Elem(), NodePoolNodeConfigLinuxNodeConfigArgs{})
@@ -48840,6 +49785,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterDefaultSnatStatusArrayInput)(nil)).Elem(), GetClusterDefaultSnatStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterDnsConfigInput)(nil)).Elem(), GetClusterDnsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterDnsConfigArrayInput)(nil)).Elem(), GetClusterDnsConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterEnableK8sBetaApiInput)(nil)).Elem(), GetClusterEnableK8sBetaApiArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterEnableK8sBetaApiArrayInput)(nil)).Elem(), GetClusterEnableK8sBetaApiArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterGatewayApiConfigInput)(nil)).Elem(), GetClusterGatewayApiConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterGatewayApiConfigArrayInput)(nil)).Elem(), GetClusterGatewayApiConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterIdentityServiceConfigInput)(nil)).Elem(), GetClusterIdentityServiceConfigArgs{})
@@ -48894,6 +49841,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGvnicInput)(nil)).Elem(), GetClusterNodeConfigGvnicArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGvnicArrayInput)(nil)).Elem(), GetClusterNodeConfigGvnicArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigHostMaintenancePolicyInput)(nil)).Elem(), GetClusterNodeConfigHostMaintenancePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigHostMaintenancePolicyArrayInput)(nil)).Elem(), GetClusterNodeConfigHostMaintenancePolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigKubeletConfigInput)(nil)).Elem(), GetClusterNodeConfigKubeletConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigKubeletConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigKubeletConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigLinuxNodeConfigInput)(nil)).Elem(), GetClusterNodeConfigLinuxNodeConfigArgs{})
@@ -48956,6 +49905,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigGvnicInput)(nil)).Elem(), GetClusterNodePoolNodeConfigGvnicArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigGvnicArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigGvnicArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigHostMaintenancePolicyInput)(nil)).Elem(), GetClusterNodePoolNodeConfigHostMaintenancePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigHostMaintenancePolicyArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigHostMaintenancePolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigKubeletConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigKubeletConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigKubeletConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigKubeletConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigLinuxNodeConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigLinuxNodeConfigArgs{})
@@ -49190,6 +50141,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterDefaultSnatStatusPtrOutput{})
 	pulumi.RegisterOutputType(ClusterDnsConfigOutput{})
 	pulumi.RegisterOutputType(ClusterDnsConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterEnableK8sBetaApisOutput{})
+	pulumi.RegisterOutputType(ClusterEnableK8sBetaApisPtrOutput{})
 	pulumi.RegisterOutputType(ClusterGatewayApiConfigOutput{})
 	pulumi.RegisterOutputType(ClusterGatewayApiConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterIdentityServiceConfigOutput{})
@@ -49244,6 +50197,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigGvnicOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigGvnicPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigHostMaintenancePolicyOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigHostMaintenancePolicyPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigKubeletConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigKubeletConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigLinuxNodeConfigOutput{})
@@ -49306,6 +50261,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigGvnicOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigGvnicPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigHostMaintenancePolicyOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigHostMaintenancePolicyPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigKubeletConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigKubeletConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigLinuxNodeConfigOutput{})
@@ -49396,6 +50353,8 @@ func init() {
 	pulumi.RegisterOutputType(NodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigGvnicOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigGvnicPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigHostMaintenancePolicyOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigHostMaintenancePolicyPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigKubeletConfigOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigKubeletConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigLinuxNodeConfigOutput{})
@@ -49484,6 +50443,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterDefaultSnatStatusArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterDnsConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterDnsConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterEnableK8sBetaApiOutput{})
+	pulumi.RegisterOutputType(GetClusterEnableK8sBetaApiArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterGatewayApiConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterGatewayApiConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterIdentityServiceConfigOutput{})
@@ -49538,6 +50499,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigGvnicOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigGvnicArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigHostMaintenancePolicyOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigHostMaintenancePolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigKubeletConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigKubeletConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigLinuxNodeConfigOutput{})
@@ -49600,6 +50563,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigGvnicOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigGvnicArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigHostMaintenancePolicyOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigHostMaintenancePolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigKubeletConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigKubeletConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigLinuxNodeConfigOutput{})

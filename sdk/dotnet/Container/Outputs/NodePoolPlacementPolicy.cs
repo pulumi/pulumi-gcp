@@ -14,6 +14,12 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class NodePoolPlacementPolicy
     {
         /// <summary>
+        /// If set, refers to the name of a custom resource policy supplied by the user.
+        /// The resource policy must be in the same project and region as the node pool.
+        /// If not found, InvalidArgument error is returned.
+        /// </summary>
+        public readonly string? PolicyName;
+        /// <summary>
         /// The [TPU placement topology](https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies) for pod slice node pool.
         /// </summary>
         public readonly string? TpuTopology;
@@ -26,10 +32,13 @@ namespace Pulumi.Gcp.Container.Outputs
 
         [OutputConstructor]
         private NodePoolPlacementPolicy(
+            string? policyName,
+
             string? tpuTopology,
 
             string type)
         {
+            PolicyName = policyName;
             TpuTopology = tpuTopology;
             Type = type;
         }

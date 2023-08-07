@@ -624,6 +624,8 @@
         "essentialcontacts/contact.ts",
         "essentialcontacts/documentAiProcessor.ts",
         "essentialcontacts/documentAiProcessorDefaultVersion.ts",
+        "essentialcontacts/documentAiWarehouseDocumentSchema.ts",
+        "essentialcontacts/documentAiWarehouseLocation.ts",
         "essentialcontacts/index.ts",
         "eventarc/channel.ts",
         "eventarc/googleChannelConfig.ts",

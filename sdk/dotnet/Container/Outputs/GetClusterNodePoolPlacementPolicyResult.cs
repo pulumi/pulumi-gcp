@@ -13,15 +13,19 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterNodePoolPlacementPolicyResult
     {
+        public readonly string PolicyName;
         public readonly string TpuTopology;
         public readonly string Type;
 
         [OutputConstructor]
         private GetClusterNodePoolPlacementPolicyResult(
+            string policyName,
+
             string tpuTopology,
 
             string type)
         {
+            PolicyName = policyName;
             TpuTopology = tpuTopology;
             Type = type;
         }

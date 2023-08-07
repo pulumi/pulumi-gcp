@@ -20,6 +20,16 @@ export type DocumentAiProcessorDefaultVersion = import("./documentAiProcessorDef
 export const DocumentAiProcessorDefaultVersion: typeof import("./documentAiProcessorDefaultVersion").DocumentAiProcessorDefaultVersion = null as any;
 utilities.lazyLoad(exports, ["DocumentAiProcessorDefaultVersion"], () => require("./documentAiProcessorDefaultVersion"));
 
+export { DocumentAiWarehouseDocumentSchemaArgs, DocumentAiWarehouseDocumentSchemaState } from "./documentAiWarehouseDocumentSchema";
+export type DocumentAiWarehouseDocumentSchema = import("./documentAiWarehouseDocumentSchema").DocumentAiWarehouseDocumentSchema;
+export const DocumentAiWarehouseDocumentSchema: typeof import("./documentAiWarehouseDocumentSchema").DocumentAiWarehouseDocumentSchema = null as any;
+utilities.lazyLoad(exports, ["DocumentAiWarehouseDocumentSchema"], () => require("./documentAiWarehouseDocumentSchema"));
+
+export { DocumentAiWarehouseLocationArgs, DocumentAiWarehouseLocationState } from "./documentAiWarehouseLocation";
+export type DocumentAiWarehouseLocation = import("./documentAiWarehouseLocation").DocumentAiWarehouseLocation;
+export const DocumentAiWarehouseLocation: typeof import("./documentAiWarehouseLocation").DocumentAiWarehouseLocation = null as any;
+utilities.lazyLoad(exports, ["DocumentAiWarehouseLocation"], () => require("./documentAiWarehouseLocation"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -31,6 +41,10 @@ const _module = {
                 return new DocumentAiProcessor(name, <any>undefined, { urn })
             case "gcp:essentialcontacts/documentAiProcessorDefaultVersion:DocumentAiProcessorDefaultVersion":
                 return new DocumentAiProcessorDefaultVersion(name, <any>undefined, { urn })
+            case "gcp:essentialcontacts/documentAiWarehouseDocumentSchema:DocumentAiWarehouseDocumentSchema":
+                return new DocumentAiWarehouseDocumentSchema(name, <any>undefined, { urn })
+            case "gcp:essentialcontacts/documentAiWarehouseLocation:DocumentAiWarehouseLocation":
+                return new DocumentAiWarehouseLocation(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -39,3 +53,5 @@ const _module = {
 pulumi.runtime.registerResourceModule("gcp", "essentialcontacts/contact", _module)
 pulumi.runtime.registerResourceModule("gcp", "essentialcontacts/documentAiProcessor", _module)
 pulumi.runtime.registerResourceModule("gcp", "essentialcontacts/documentAiProcessorDefaultVersion", _module)
+pulumi.runtime.registerResourceModule("gcp", "essentialcontacts/documentAiWarehouseDocumentSchema", _module)
+pulumi.runtime.registerResourceModule("gcp", "essentialcontacts/documentAiWarehouseLocation", _module)

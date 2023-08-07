@@ -2232,7 +2232,6 @@ type TriggerBuildOptions struct {
 	// Possible values are: `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, `CLOUD_LOGGING_ONLY`, `NONE`.
 	Logging *string `pulumi:"logging"`
 	// Compute Engine machine type on which to run the build.
-	// Possible values are: `UNSPECIFIED`, `N1_HIGHCPU_8`, `N1_HIGHCPU_32`, `E2_HIGHCPU_8`, `E2_HIGHCPU_32`.
 	MachineType *string `pulumi:"machineType"`
 	// Requested verifiability options.
 	// Possible values are: `NOT_VERIFIED`, `VERIFIED`.
@@ -2295,7 +2294,6 @@ type TriggerBuildOptionsArgs struct {
 	// Possible values are: `LOGGING_UNSPECIFIED`, `LEGACY`, `GCS_ONLY`, `STACKDRIVER_ONLY`, `CLOUD_LOGGING_ONLY`, `NONE`.
 	Logging pulumi.StringPtrInput `pulumi:"logging"`
 	// Compute Engine machine type on which to run the build.
-	// Possible values are: `UNSPECIFIED`, `N1_HIGHCPU_8`, `N1_HIGHCPU_32`, `E2_HIGHCPU_8`, `E2_HIGHCPU_32`.
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
 	// Requested verifiability options.
 	// Possible values are: `NOT_VERIFIED`, `VERIFIED`.
@@ -2438,7 +2436,6 @@ func (o TriggerBuildOptionsOutput) Logging() pulumi.StringPtrOutput {
 }
 
 // Compute Engine machine type on which to run the build.
-// Possible values are: `UNSPECIFIED`, `N1_HIGHCPU_8`, `N1_HIGHCPU_32`, `E2_HIGHCPU_8`, `E2_HIGHCPU_32`.
 func (o TriggerBuildOptionsOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggerBuildOptions) *string { return v.MachineType }).(pulumi.StringPtrOutput)
 }
@@ -2572,7 +2569,6 @@ func (o TriggerBuildOptionsPtrOutput) Logging() pulumi.StringPtrOutput {
 }
 
 // Compute Engine machine type on which to run the build.
-// Possible values are: `UNSPECIFIED`, `N1_HIGHCPU_8`, `N1_HIGHCPU_32`, `E2_HIGHCPU_8`, `E2_HIGHCPU_32`.
 func (o TriggerBuildOptionsPtrOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TriggerBuildOptions) *string {
 		if v == nil {

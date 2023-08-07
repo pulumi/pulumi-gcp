@@ -199,6 +199,9 @@ type Cluster struct {
 	EnableBinaryAuthorization pulumi.BoolPtrOutput `pulumi:"enableBinaryAuthorization"`
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
 	EnableIntranodeVisibility pulumi.BoolOutput `pulumi:"enableIntranodeVisibility"`
+	// Configuration for Kubernetes Beta APIs.
+	// Structure is documented below.
+	EnableK8sBetaApis ClusterEnableK8sBetaApisPtrOutput `pulumi:"enableK8sBetaApis"`
 	// Whether to enable Kubernetes Alpha features for
 	// this cluster. Note that when this option is enabled, the cluster cannot be upgraded
 	// and will be automatically deleted after 30 days.
@@ -210,6 +213,7 @@ type Cluster struct {
 	// will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
 	// Defaults to `false`
 	EnableLegacyAbac pulumi.BoolPtrOutput `pulumi:"enableLegacyAbac"`
+	// )
 	// Whether multi-networking is enabled for this cluster.
 	EnableMultiNetworking pulumi.BoolPtrOutput `pulumi:"enableMultiNetworking"`
 	// Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
@@ -518,6 +522,9 @@ type clusterState struct {
 	EnableBinaryAuthorization *bool `pulumi:"enableBinaryAuthorization"`
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
 	EnableIntranodeVisibility *bool `pulumi:"enableIntranodeVisibility"`
+	// Configuration for Kubernetes Beta APIs.
+	// Structure is documented below.
+	EnableK8sBetaApis *ClusterEnableK8sBetaApis `pulumi:"enableK8sBetaApis"`
 	// Whether to enable Kubernetes Alpha features for
 	// this cluster. Note that when this option is enabled, the cluster cannot be upgraded
 	// and will be automatically deleted after 30 days.
@@ -529,6 +536,7 @@ type clusterState struct {
 	// will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
 	// Defaults to `false`
 	EnableLegacyAbac *bool `pulumi:"enableLegacyAbac"`
+	// )
 	// Whether multi-networking is enabled for this cluster.
 	EnableMultiNetworking *bool `pulumi:"enableMultiNetworking"`
 	// Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
@@ -808,6 +816,9 @@ type ClusterState struct {
 	EnableBinaryAuthorization pulumi.BoolPtrInput
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
 	EnableIntranodeVisibility pulumi.BoolPtrInput
+	// Configuration for Kubernetes Beta APIs.
+	// Structure is documented below.
+	EnableK8sBetaApis ClusterEnableK8sBetaApisPtrInput
 	// Whether to enable Kubernetes Alpha features for
 	// this cluster. Note that when this option is enabled, the cluster cannot be upgraded
 	// and will be automatically deleted after 30 days.
@@ -819,6 +830,7 @@ type ClusterState struct {
 	// will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
 	// Defaults to `false`
 	EnableLegacyAbac pulumi.BoolPtrInput
+	// )
 	// Whether multi-networking is enabled for this cluster.
 	EnableMultiNetworking pulumi.BoolPtrInput
 	// Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
@@ -1102,6 +1114,9 @@ type clusterArgs struct {
 	EnableBinaryAuthorization *bool `pulumi:"enableBinaryAuthorization"`
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
 	EnableIntranodeVisibility *bool `pulumi:"enableIntranodeVisibility"`
+	// Configuration for Kubernetes Beta APIs.
+	// Structure is documented below.
+	EnableK8sBetaApis *ClusterEnableK8sBetaApis `pulumi:"enableK8sBetaApis"`
 	// Whether to enable Kubernetes Alpha features for
 	// this cluster. Note that when this option is enabled, the cluster cannot be upgraded
 	// and will be automatically deleted after 30 days.
@@ -1113,6 +1128,7 @@ type clusterArgs struct {
 	// will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
 	// Defaults to `false`
 	EnableLegacyAbac *bool `pulumi:"enableLegacyAbac"`
+	// )
 	// Whether multi-networking is enabled for this cluster.
 	EnableMultiNetworking *bool `pulumi:"enableMultiNetworking"`
 	// Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
@@ -1373,6 +1389,9 @@ type ClusterArgs struct {
 	EnableBinaryAuthorization pulumi.BoolPtrInput
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
 	EnableIntranodeVisibility pulumi.BoolPtrInput
+	// Configuration for Kubernetes Beta APIs.
+	// Structure is documented below.
+	EnableK8sBetaApis ClusterEnableK8sBetaApisPtrInput
 	// Whether to enable Kubernetes Alpha features for
 	// this cluster. Note that when this option is enabled, the cluster cannot be upgraded
 	// and will be automatically deleted after 30 days.
@@ -1384,6 +1403,7 @@ type ClusterArgs struct {
 	// will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
 	// Defaults to `false`
 	EnableLegacyAbac pulumi.BoolPtrInput
+	// )
 	// Whether multi-networking is enabled for this cluster.
 	EnableMultiNetworking pulumi.BoolPtrInput
 	// Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
@@ -1783,6 +1803,12 @@ func (o ClusterOutput) EnableIntranodeVisibility() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolOutput { return v.EnableIntranodeVisibility }).(pulumi.BoolOutput)
 }
 
+// Configuration for Kubernetes Beta APIs.
+// Structure is documented below.
+func (o ClusterOutput) EnableK8sBetaApis() ClusterEnableK8sBetaApisPtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterEnableK8sBetaApisPtrOutput { return v.EnableK8sBetaApis }).(ClusterEnableK8sBetaApisPtrOutput)
+}
+
 // Whether to enable Kubernetes Alpha features for
 // this cluster. Note that when this option is enabled, the cluster cannot be upgraded
 // and will be automatically deleted after 30 days.
@@ -1803,6 +1829,7 @@ func (o ClusterOutput) EnableLegacyAbac() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.EnableLegacyAbac }).(pulumi.BoolPtrOutput)
 }
 
+// )
 // Whether multi-networking is enabled for this cluster.
 func (o ClusterOutput) EnableMultiNetworking() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.EnableMultiNetworking }).(pulumi.BoolPtrOutput)

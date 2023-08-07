@@ -26,6 +26,14 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("instanceTerminationAction")]
         public Input<string>? InstanceTerminationAction { get; set; }
 
+        [Input("localSsdRecoveryTimeouts")]
+        private InputList<Inputs.InstanceTemplateSchedulingLocalSsdRecoveryTimeoutGetArgs>? _localSsdRecoveryTimeouts;
+        public InputList<Inputs.InstanceTemplateSchedulingLocalSsdRecoveryTimeoutGetArgs> LocalSsdRecoveryTimeouts
+        {
+            get => _localSsdRecoveryTimeouts ?? (_localSsdRecoveryTimeouts = new InputList<Inputs.InstanceTemplateSchedulingLocalSsdRecoveryTimeoutGetArgs>());
+            set => _localSsdRecoveryTimeouts = value;
+        }
+
         [Input("maintenanceInterval")]
         public Input<string>? MaintenanceInterval { get; set; }
 

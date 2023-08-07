@@ -40,7 +40,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly string? StartTime;
         /// <summary>
-        /// The number of days of transaction logs we retain for point in time restore, from 1-7.
+        /// The number of days of transaction logs we retain for point in time restore, from 1-7. For PostgreSQL Enterprise Plus instances, the number of days of retained transaction logs can be set from 1 to 35.
         /// </summary>
         public readonly int? TransactionLogRetentionDays;
 

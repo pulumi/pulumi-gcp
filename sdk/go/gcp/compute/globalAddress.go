@@ -141,9 +141,9 @@ type GlobalAddress struct {
 	Network pulumi.StringPtrOutput `pulumi:"network"`
 	// The prefix length of the IP range. If not present, it means the
 	// address field is a single IP address.
-	// This field is not applicable to addresses with addressType=EXTERNAL,
-	// or addressType=INTERNAL when purpose=PRIVATE_SERVICE_CONNECT
-	PrefixLength pulumi.IntPtrOutput `pulumi:"prefixLength"`
+	// This field is not applicable to addresses with addressType=INTERNAL
+	// when purpose=PRIVATE_SERVICE_CONNECT
+	PrefixLength pulumi.IntOutput `pulumi:"prefixLength"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -223,8 +223,8 @@ type globalAddressState struct {
 	Network *string `pulumi:"network"`
 	// The prefix length of the IP range. If not present, it means the
 	// address field is a single IP address.
-	// This field is not applicable to addresses with addressType=EXTERNAL,
-	// or addressType=INTERNAL when purpose=PRIVATE_SERVICE_CONNECT
+	// This field is not applicable to addresses with addressType=INTERNAL
+	// when purpose=PRIVATE_SERVICE_CONNECT
 	PrefixLength *int `pulumi:"prefixLength"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -276,8 +276,8 @@ type GlobalAddressState struct {
 	Network pulumi.StringPtrInput
 	// The prefix length of the IP range. If not present, it means the
 	// address field is a single IP address.
-	// This field is not applicable to addresses with addressType=EXTERNAL,
-	// or addressType=INTERNAL when purpose=PRIVATE_SERVICE_CONNECT
+	// This field is not applicable to addresses with addressType=INTERNAL
+	// when purpose=PRIVATE_SERVICE_CONNECT
 	PrefixLength pulumi.IntPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -329,8 +329,8 @@ type globalAddressArgs struct {
 	Network *string `pulumi:"network"`
 	// The prefix length of the IP range. If not present, it means the
 	// address field is a single IP address.
-	// This field is not applicable to addresses with addressType=EXTERNAL,
-	// or addressType=INTERNAL when purpose=PRIVATE_SERVICE_CONNECT
+	// This field is not applicable to addresses with addressType=INTERNAL
+	// when purpose=PRIVATE_SERVICE_CONNECT
 	PrefixLength *int `pulumi:"prefixLength"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -377,8 +377,8 @@ type GlobalAddressArgs struct {
 	Network pulumi.StringPtrInput
 	// The prefix length of the IP range. If not present, it means the
 	// address field is a single IP address.
-	// This field is not applicable to addresses with addressType=EXTERNAL,
-	// or addressType=INTERNAL when purpose=PRIVATE_SERVICE_CONNECT
+	// This field is not applicable to addresses with addressType=INTERNAL
+	// when purpose=PRIVATE_SERVICE_CONNECT
 	PrefixLength pulumi.IntPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -541,10 +541,10 @@ func (o GlobalAddressOutput) Network() pulumi.StringPtrOutput {
 
 // The prefix length of the IP range. If not present, it means the
 // address field is a single IP address.
-// This field is not applicable to addresses with addressType=EXTERNAL,
-// or addressType=INTERNAL when purpose=PRIVATE_SERVICE_CONNECT
-func (o GlobalAddressOutput) PrefixLength() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GlobalAddress) pulumi.IntPtrOutput { return v.PrefixLength }).(pulumi.IntPtrOutput)
+// This field is not applicable to addresses with addressType=INTERNAL
+// when purpose=PRIVATE_SERVICE_CONNECT
+func (o GlobalAddressOutput) PrefixLength() pulumi.IntOutput {
+	return o.ApplyT(func(v *GlobalAddress) pulumi.IntOutput { return v.PrefixLength }).(pulumi.IntOutput)
 }
 
 // The ID of the project in which the resource belongs.

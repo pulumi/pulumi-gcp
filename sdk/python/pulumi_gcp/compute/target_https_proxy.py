@@ -58,9 +58,8 @@ class TargetHttpsProxyArgs:
                specified, Google manages whether QUIC is used.
                Default value is `NONE`.
                Possible values are: `NONE`, `ENABLE`, `DISABLE`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssl_certificates: A list of SslCertificate resources that are used to authenticate
-               connections between users and the load balancer. At least one SSL
-               certificate must be specified.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssl_certificates: A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
+               connections between users and the load balancer. At least one resource must be specified.
         :param pulumi.Input[str] ssl_policy: A reference to the SslPolicy resource that will be associated with
                the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
                resource will not have any SSL policy configured.
@@ -209,9 +208,8 @@ class TargetHttpsProxyArgs:
     @pulumi.getter(name="sslCertificates")
     def ssl_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of SslCertificate resources that are used to authenticate
-        connections between users and the load balancer. At least one SSL
-        certificate must be specified.
+        A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
+        connections between users and the load balancer. At least one resource must be specified.
         """
         return pulumi.get(self, "ssl_certificates")
 
@@ -282,9 +280,8 @@ class _TargetHttpsProxyState:
                Default value is `NONE`.
                Possible values are: `NONE`, `ENABLE`, `DISABLE`.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssl_certificates: A list of SslCertificate resources that are used to authenticate
-               connections between users and the load balancer. At least one SSL
-               certificate must be specified.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssl_certificates: A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
+               connections between users and the load balancer. At least one resource must be specified.
         :param pulumi.Input[str] ssl_policy: A reference to the SslPolicy resource that will be associated with
                the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
                resource will not have any SSL policy configured.
@@ -465,9 +462,8 @@ class _TargetHttpsProxyState:
     @pulumi.getter(name="sslCertificates")
     def ssl_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of SslCertificate resources that are used to authenticate
-        connections between users and the load balancer. At least one SSL
-        certificate must be specified.
+        A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
+        connections between users and the load balancer. At least one resource must be specified.
         """
         return pulumi.get(self, "ssl_certificates")
 
@@ -579,9 +575,8 @@ class TargetHttpsProxy(pulumi.CustomResource):
                specified, Google manages whether QUIC is used.
                Default value is `NONE`.
                Possible values are: `NONE`, `ENABLE`, `DISABLE`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssl_certificates: A list of SslCertificate resources that are used to authenticate
-               connections between users and the load balancer. At least one SSL
-               certificate must be specified.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssl_certificates: A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
+               connections between users and the load balancer. At least one resource must be specified.
         :param pulumi.Input[str] ssl_policy: A reference to the SslPolicy resource that will be associated with
                the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
                resource will not have any SSL policy configured.
@@ -734,9 +729,8 @@ class TargetHttpsProxy(pulumi.CustomResource):
                Default value is `NONE`.
                Possible values are: `NONE`, `ENABLE`, `DISABLE`.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssl_certificates: A list of SslCertificate resources that are used to authenticate
-               connections between users and the load balancer. At least one SSL
-               certificate must be specified.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ssl_certificates: A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
+               connections between users and the load balancer. At least one resource must be specified.
         :param pulumi.Input[str] ssl_policy: A reference to the SslPolicy resource that will be associated with
                the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
                resource will not have any SSL policy configured.
@@ -869,9 +863,8 @@ class TargetHttpsProxy(pulumi.CustomResource):
     @pulumi.getter(name="sslCertificates")
     def ssl_certificates(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        A list of SslCertificate resources that are used to authenticate
-        connections between users and the load balancer. At least one SSL
-        certificate must be specified.
+        A list of SslCertificate resource URLs or Certificate Manager certificate URLs that are used to authenticate
+        connections between users and the load balancer. At least one resource must be specified.
         """
         return pulumi.get(self, "ssl_certificates")
 

@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.Workstations.Outputs
     public sealed class WorkstationConfigHostGceInstance
     {
         /// <summary>
+        /// An accelerator card attached to the instance.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.WorkstationConfigHostGceInstanceAccelerator> Accelerators;
+        /// <summary>
         /// Size of the boot disk in GB.
         /// </summary>
         public readonly int? BootDiskSizeGb;
@@ -50,6 +55,8 @@ namespace Pulumi.Gcp.Workstations.Outputs
 
         [OutputConstructor]
         private WorkstationConfigHostGceInstance(
+            ImmutableArray<Outputs.WorkstationConfigHostGceInstanceAccelerator> accelerators,
+
             int? bootDiskSizeGb,
 
             Outputs.WorkstationConfigHostGceInstanceConfidentialInstanceConfig? confidentialInstanceConfig,
@@ -66,6 +73,7 @@ namespace Pulumi.Gcp.Workstations.Outputs
 
             ImmutableArray<string> tags)
         {
+            Accelerators = accelerators;
             BootDiskSizeGb = bootDiskSizeGb;
             ConfidentialInstanceConfig = confidentialInstanceConfig;
             DisablePublicIpAddresses = disablePublicIpAddresses;

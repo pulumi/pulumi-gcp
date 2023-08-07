@@ -10,6 +10,7 @@ import com.pulumi.gcp.container.outputs.ClusterNodeConfigEphemeralStorageLocalSs
 import com.pulumi.gcp.container.outputs.ClusterNodeConfigGcfsConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfigGuestAccelerator;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfigGvnic;
+import com.pulumi.gcp.container.outputs.ClusterNodeConfigHostMaintenancePolicy;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfigKubeletConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfigLinuxNodeConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodeConfigLocalNvmeSsdBlockConfig;
@@ -54,7 +55,7 @@ public final class ClusterNodeConfig {
      */
     private @Nullable String diskType;
     /**
-     * @return Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+     * @return ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
      * ```java
      * package generated_program;
      * 
@@ -176,6 +177,7 @@ public final class ClusterNodeConfig {
      * 
      */
     private @Nullable ClusterNodeConfigGvnic gvnic;
+    private @Nullable ClusterNodeConfigHostMaintenancePolicy hostMaintenancePolicy;
     /**
      * @return The image type to use for this node. Note that changing the image type
      * will delete and recreate all nodes in the node pool.
@@ -422,7 +424,7 @@ public final class ClusterNodeConfig {
         return Optional.ofNullable(this.diskType);
     }
     /**
-     * @return Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+     * @return ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
      * ```java
      * package generated_program;
      * 
@@ -553,6 +555,9 @@ public final class ClusterNodeConfig {
      */
     public Optional<ClusterNodeConfigGvnic> gvnic() {
         return Optional.ofNullable(this.gvnic);
+    }
+    public Optional<ClusterNodeConfigHostMaintenancePolicy> hostMaintenancePolicy() {
+        return Optional.ofNullable(this.hostMaintenancePolicy);
     }
     /**
      * @return The image type to use for this node. Note that changing the image type
@@ -831,6 +836,7 @@ public final class ClusterNodeConfig {
         private @Nullable ClusterNodeConfigGcfsConfig gcfsConfig;
         private @Nullable List<ClusterNodeConfigGuestAccelerator> guestAccelerators;
         private @Nullable ClusterNodeConfigGvnic gvnic;
+        private @Nullable ClusterNodeConfigHostMaintenancePolicy hostMaintenancePolicy;
         private @Nullable String imageType;
         private @Nullable ClusterNodeConfigKubeletConfig kubeletConfig;
         private @Nullable Map<String,String> labels;
@@ -866,6 +872,7 @@ public final class ClusterNodeConfig {
     	      this.gcfsConfig = defaults.gcfsConfig;
     	      this.guestAccelerators = defaults.guestAccelerators;
     	      this.gvnic = defaults.gvnic;
+    	      this.hostMaintenancePolicy = defaults.hostMaintenancePolicy;
     	      this.imageType = defaults.imageType;
     	      this.kubeletConfig = defaults.kubeletConfig;
     	      this.labels = defaults.labels;
@@ -937,6 +944,11 @@ public final class ClusterNodeConfig {
         @CustomType.Setter
         public Builder gvnic(@Nullable ClusterNodeConfigGvnic gvnic) {
             this.gvnic = gvnic;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder hostMaintenancePolicy(@Nullable ClusterNodeConfigHostMaintenancePolicy hostMaintenancePolicy) {
+            this.hostMaintenancePolicy = hostMaintenancePolicy;
             return this;
         }
         @CustomType.Setter
@@ -1074,6 +1086,7 @@ public final class ClusterNodeConfig {
             o.gcfsConfig = gcfsConfig;
             o.guestAccelerators = guestAccelerators;
             o.gvnic = gvnic;
+            o.hostMaintenancePolicy = hostMaintenancePolicy;
             o.imageType = imageType;
             o.kubeletConfig = kubeletConfig;
             o.labels = labels;

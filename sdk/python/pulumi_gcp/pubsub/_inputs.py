@@ -21,6 +21,7 @@ __all__ = [
     'SubscriptionIAMBindingConditionArgs',
     'SubscriptionIAMMemberConditionArgs',
     'SubscriptionPushConfigArgs',
+    'SubscriptionPushConfigNoWrapperArgs',
     'SubscriptionPushConfigOidcTokenArgs',
     'SubscriptionRetryPolicyArgs',
     'TopicIAMBindingConditionArgs',
@@ -457,6 +458,7 @@ class SubscriptionPushConfigArgs:
     def __init__(__self__, *,
                  push_endpoint: pulumi.Input[str],
                  attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 no_wrapper: Optional[pulumi.Input['SubscriptionPushConfigNoWrapperArgs']] = None,
                  oidc_token: Optional[pulumi.Input['SubscriptionPushConfigOidcTokenArgs']] = None):
         """
         :param pulumi.Input[str] push_endpoint: A URL locating the endpoint to which messages should be pushed.
@@ -480,6 +482,9 @@ class SubscriptionPushConfigArgs:
                The possible values for this attribute are:
                - v1beta1: uses the push format defined in the v1beta1 Pub/Sub API.
                - v1 or v1beta2: uses the push format defined in the v1 Pub/Sub API.
+        :param pulumi.Input['SubscriptionPushConfigNoWrapperArgs'] no_wrapper: When set, the payload to the push endpoint is not wrapped.Sets the
+               `data` field as the HTTP body for delivery.
+               Structure is documented below.
         :param pulumi.Input['SubscriptionPushConfigOidcTokenArgs'] oidc_token: If specified, Pub/Sub will generate and attach an OIDC JWT token as
                an Authorization header in the HTTP request for every pushed message.
                Structure is documented below.
@@ -487,6 +492,8 @@ class SubscriptionPushConfigArgs:
         pulumi.set(__self__, "push_endpoint", push_endpoint)
         if attributes is not None:
             pulumi.set(__self__, "attributes", attributes)
+        if no_wrapper is not None:
+            pulumi.set(__self__, "no_wrapper", no_wrapper)
         if oidc_token is not None:
             pulumi.set(__self__, "oidc_token", oidc_token)
 
@@ -534,6 +541,20 @@ class SubscriptionPushConfigArgs:
         pulumi.set(self, "attributes", value)
 
     @property
+    @pulumi.getter(name="noWrapper")
+    def no_wrapper(self) -> Optional[pulumi.Input['SubscriptionPushConfigNoWrapperArgs']]:
+        """
+        When set, the payload to the push endpoint is not wrapped.Sets the
+        `data` field as the HTTP body for delivery.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "no_wrapper")
+
+    @no_wrapper.setter
+    def no_wrapper(self, value: Optional[pulumi.Input['SubscriptionPushConfigNoWrapperArgs']]):
+        pulumi.set(self, "no_wrapper", value)
+
+    @property
     @pulumi.getter(name="oidcToken")
     def oidc_token(self) -> Optional[pulumi.Input['SubscriptionPushConfigOidcTokenArgs']]:
         """
@@ -546,6 +567,32 @@ class SubscriptionPushConfigArgs:
     @oidc_token.setter
     def oidc_token(self, value: Optional[pulumi.Input['SubscriptionPushConfigOidcTokenArgs']]):
         pulumi.set(self, "oidc_token", value)
+
+
+@pulumi.input_type
+class SubscriptionPushConfigNoWrapperArgs:
+    def __init__(__self__, *,
+                 write_metadata: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[bool] write_metadata: When true, writes the Pub/Sub message metadata to
+               `x-goog-pubsub-<KEY>:<VAL>` headers of the HTTP request. Writes the
+               Pub/Sub message attributes to `<KEY>:<VAL>` headers of the HTTP request.
+        """
+        pulumi.set(__self__, "write_metadata", write_metadata)
+
+    @property
+    @pulumi.getter(name="writeMetadata")
+    def write_metadata(self) -> pulumi.Input[bool]:
+        """
+        When true, writes the Pub/Sub message metadata to
+        `x-goog-pubsub-<KEY>:<VAL>` headers of the HTTP request. Writes the
+        Pub/Sub message attributes to `<KEY>:<VAL>` headers of the HTTP request.
+        """
+        return pulumi.get(self, "write_metadata")
+
+    @write_metadata.setter
+    def write_metadata(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "write_metadata", value)
 
 
 @pulumi.input_type

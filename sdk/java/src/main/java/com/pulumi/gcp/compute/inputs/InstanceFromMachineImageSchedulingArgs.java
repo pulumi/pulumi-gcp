@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeoutArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageSchedulingMaxRunDurationArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageSchedulingNodeAffinityArgs;
 import java.lang.Boolean;
@@ -32,6 +33,13 @@ public final class InstanceFromMachineImageSchedulingArgs extends com.pulumi.res
 
     public Optional<Output<String>> instanceTerminationAction() {
         return Optional.ofNullable(this.instanceTerminationAction);
+    }
+
+    @Import(name="localSsdRecoveryTimeout")
+    private @Nullable Output<InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeoutArgs> localSsdRecoveryTimeout;
+
+    public Optional<Output<InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeoutArgs>> localSsdRecoveryTimeout() {
+        return Optional.ofNullable(this.localSsdRecoveryTimeout);
     }
 
     @Import(name="maintenanceInterval")
@@ -88,6 +96,7 @@ public final class InstanceFromMachineImageSchedulingArgs extends com.pulumi.res
     private InstanceFromMachineImageSchedulingArgs(InstanceFromMachineImageSchedulingArgs $) {
         this.automaticRestart = $.automaticRestart;
         this.instanceTerminationAction = $.instanceTerminationAction;
+        this.localSsdRecoveryTimeout = $.localSsdRecoveryTimeout;
         this.maintenanceInterval = $.maintenanceInterval;
         this.maxRunDuration = $.maxRunDuration;
         this.minNodeCpus = $.minNodeCpus;
@@ -131,6 +140,15 @@ public final class InstanceFromMachineImageSchedulingArgs extends com.pulumi.res
 
         public Builder instanceTerminationAction(String instanceTerminationAction) {
             return instanceTerminationAction(Output.of(instanceTerminationAction));
+        }
+
+        public Builder localSsdRecoveryTimeout(@Nullable Output<InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeoutArgs> localSsdRecoveryTimeout) {
+            $.localSsdRecoveryTimeout = localSsdRecoveryTimeout;
+            return this;
+        }
+
+        public Builder localSsdRecoveryTimeout(InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeoutArgs localSsdRecoveryTimeout) {
+            return localSsdRecoveryTimeout(Output.of(localSsdRecoveryTimeout));
         }
 
         public Builder maintenanceInterval(@Nullable Output<String> maintenanceInterval) {

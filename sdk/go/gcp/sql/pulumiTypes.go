@@ -1907,7 +1907,7 @@ type DatabaseInstanceSettingsBackupConfiguration struct {
 	// `HH:MM` format time indicating when backup
 	// configuration starts.
 	StartTime *string `pulumi:"startTime"`
-	// The number of days of transaction logs we retain for point in time restore, from 1-7.
+	// The number of days of transaction logs we retain for point in time restore, from 1-7. For PostgreSQL Enterprise Plus instances, the number of days of retained transaction logs can be set from 1 to 35.
 	TransactionLogRetentionDays *int `pulumi:"transactionLogRetentionDays"`
 }
 
@@ -1937,7 +1937,7 @@ type DatabaseInstanceSettingsBackupConfigurationArgs struct {
 	// `HH:MM` format time indicating when backup
 	// configuration starts.
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
-	// The number of days of transaction logs we retain for point in time restore, from 1-7.
+	// The number of days of transaction logs we retain for point in time restore, from 1-7. For PostgreSQL Enterprise Plus instances, the number of days of retained transaction logs can be set from 1 to 35.
 	TransactionLogRetentionDays pulumi.IntPtrInput `pulumi:"transactionLogRetentionDays"`
 }
 
@@ -2052,7 +2052,7 @@ func (o DatabaseInstanceSettingsBackupConfigurationOutput) StartTime() pulumi.St
 	return o.ApplyT(func(v DatabaseInstanceSettingsBackupConfiguration) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }
 
-// The number of days of transaction logs we retain for point in time restore, from 1-7.
+// The number of days of transaction logs we retain for point in time restore, from 1-7. For PostgreSQL Enterprise Plus instances, the number of days of retained transaction logs can be set from 1 to 35.
 func (o DatabaseInstanceSettingsBackupConfigurationOutput) TransactionLogRetentionDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsBackupConfiguration) *int { return v.TransactionLogRetentionDays }).(pulumi.IntPtrOutput)
 }
@@ -2143,7 +2143,7 @@ func (o DatabaseInstanceSettingsBackupConfigurationPtrOutput) StartTime() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
-// The number of days of transaction logs we retain for point in time restore, from 1-7.
+// The number of days of transaction logs we retain for point in time restore, from 1-7. For PostgreSQL Enterprise Plus instances, the number of days of retained transaction logs can be set from 1 to 35.
 func (o DatabaseInstanceSettingsBackupConfigurationPtrOutput) TransactionLogRetentionDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettingsBackupConfiguration) *int {
 		if v == nil {

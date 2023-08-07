@@ -4,6 +4,7 @@
 package com.pulumi.gcp.pubsub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.pubsub.outputs.GetSubscriptionPushConfigNoWrapper;
 import com.pulumi.gcp.pubsub.outputs.GetSubscriptionPushConfigOidcToken;
 import java.lang.String;
 import java.util.List;
@@ -13,12 +14,16 @@ import java.util.Objects;
 @CustomType
 public final class GetSubscriptionPushConfig {
     private Map<String,String> attributes;
+    private List<GetSubscriptionPushConfigNoWrapper> noWrappers;
     private List<GetSubscriptionPushConfigOidcToken> oidcTokens;
     private String pushEndpoint;
 
     private GetSubscriptionPushConfig() {}
     public Map<String,String> attributes() {
         return this.attributes;
+    }
+    public List<GetSubscriptionPushConfigNoWrapper> noWrappers() {
+        return this.noWrappers;
     }
     public List<GetSubscriptionPushConfigOidcToken> oidcTokens() {
         return this.oidcTokens;
@@ -37,12 +42,14 @@ public final class GetSubscriptionPushConfig {
     @CustomType.Builder
     public static final class Builder {
         private Map<String,String> attributes;
+        private List<GetSubscriptionPushConfigNoWrapper> noWrappers;
         private List<GetSubscriptionPushConfigOidcToken> oidcTokens;
         private String pushEndpoint;
         public Builder() {}
         public Builder(GetSubscriptionPushConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.attributes = defaults.attributes;
+    	      this.noWrappers = defaults.noWrappers;
     	      this.oidcTokens = defaults.oidcTokens;
     	      this.pushEndpoint = defaults.pushEndpoint;
         }
@@ -51,6 +58,14 @@ public final class GetSubscriptionPushConfig {
         public Builder attributes(Map<String,String> attributes) {
             this.attributes = Objects.requireNonNull(attributes);
             return this;
+        }
+        @CustomType.Setter
+        public Builder noWrappers(List<GetSubscriptionPushConfigNoWrapper> noWrappers) {
+            this.noWrappers = Objects.requireNonNull(noWrappers);
+            return this;
+        }
+        public Builder noWrappers(GetSubscriptionPushConfigNoWrapper... noWrappers) {
+            return noWrappers(List.of(noWrappers));
         }
         @CustomType.Setter
         public Builder oidcTokens(List<GetSubscriptionPushConfigOidcToken> oidcTokens) {
@@ -68,6 +83,7 @@ public final class GetSubscriptionPushConfig {
         public GetSubscriptionPushConfig build() {
             final var o = new GetSubscriptionPushConfig();
             o.attributes = attributes;
+            o.noWrappers = noWrappers;
             o.oidcTokens = oidcTokens;
             o.pushEndpoint = pushEndpoint;
             return o;

@@ -144,10 +144,10 @@ export class GlobalAddress extends pulumi.CustomResource {
     /**
      * The prefix length of the IP range. If not present, it means the
      * address field is a single IP address.
-     * This field is not applicable to addresses with addressType=EXTERNAL,
-     * or addressType=INTERNAL when purpose=PRIVATE_SERVICE_CONNECT
+     * This field is not applicable to addresses with addressType=INTERNAL
+     * when purpose=PRIVATE_SERVICE_CONNECT
      */
-    public readonly prefixLength!: pulumi.Output<number | undefined>;
+    public readonly prefixLength!: pulumi.Output<number>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -273,8 +273,8 @@ export interface GlobalAddressState {
     /**
      * The prefix length of the IP range. If not present, it means the
      * address field is a single IP address.
-     * This field is not applicable to addresses with addressType=EXTERNAL,
-     * or addressType=INTERNAL when purpose=PRIVATE_SERVICE_CONNECT
+     * This field is not applicable to addresses with addressType=INTERNAL
+     * when purpose=PRIVATE_SERVICE_CONNECT
      */
     prefixLength?: pulumi.Input<number>;
     /**
@@ -348,8 +348,8 @@ export interface GlobalAddressArgs {
     /**
      * The prefix length of the IP range. If not present, it means the
      * address field is a single IP address.
-     * This field is not applicable to addresses with addressType=EXTERNAL,
-     * or addressType=INTERNAL when purpose=PRIVATE_SERVICE_CONNECT
+     * This field is not applicable to addresses with addressType=INTERNAL
+     * when purpose=PRIVATE_SERVICE_CONNECT
      */
     prefixLength?: pulumi.Input<number>;
     /**

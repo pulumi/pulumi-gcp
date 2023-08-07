@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.compute.inputs.InstanceSchedulingLocalSsdRecoveryTimeoutArgs;
 import com.pulumi.gcp.compute.inputs.InstanceSchedulingMaxRunDurationArgs;
 import com.pulumi.gcp.compute.inputs.InstanceSchedulingNodeAffinityArgs;
 import java.lang.Boolean;
@@ -52,6 +53,13 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<String>> instanceTerminationAction() {
         return Optional.ofNullable(this.instanceTerminationAction);
+    }
+
+    @Import(name="localSsdRecoveryTimeout")
+    private @Nullable Output<InstanceSchedulingLocalSsdRecoveryTimeoutArgs> localSsdRecoveryTimeout;
+
+    public Optional<Output<InstanceSchedulingLocalSsdRecoveryTimeoutArgs>> localSsdRecoveryTimeout() {
+        return Optional.ofNullable(this.localSsdRecoveryTimeout);
     }
 
     @Import(name="maintenanceInterval")
@@ -170,6 +178,7 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
     private InstanceSchedulingArgs(InstanceSchedulingArgs $) {
         this.automaticRestart = $.automaticRestart;
         this.instanceTerminationAction = $.instanceTerminationAction;
+        this.localSsdRecoveryTimeout = $.localSsdRecoveryTimeout;
         this.maintenanceInterval = $.maintenanceInterval;
         this.maxRunDuration = $.maxRunDuration;
         this.minNodeCpus = $.minNodeCpus;
@@ -241,6 +250,15 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
          */
         public Builder instanceTerminationAction(String instanceTerminationAction) {
             return instanceTerminationAction(Output.of(instanceTerminationAction));
+        }
+
+        public Builder localSsdRecoveryTimeout(@Nullable Output<InstanceSchedulingLocalSsdRecoveryTimeoutArgs> localSsdRecoveryTimeout) {
+            $.localSsdRecoveryTimeout = localSsdRecoveryTimeout;
+            return this;
+        }
+
+        public Builder localSsdRecoveryTimeout(InstanceSchedulingLocalSsdRecoveryTimeoutArgs localSsdRecoveryTimeout) {
+            return localSsdRecoveryTimeout(Output.of(localSsdRecoveryTimeout));
         }
 
         public Builder maintenanceInterval(@Nullable Output<String> maintenanceInterval) {

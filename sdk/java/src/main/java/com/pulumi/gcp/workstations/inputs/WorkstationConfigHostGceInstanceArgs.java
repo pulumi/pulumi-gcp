@@ -5,6 +5,7 @@ package com.pulumi.gcp.workstations.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.workstations.inputs.WorkstationConfigHostGceInstanceAcceleratorArgs;
 import com.pulumi.gcp.workstations.inputs.WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs;
 import com.pulumi.gcp.workstations.inputs.WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs;
 import java.lang.Boolean;
@@ -19,6 +20,23 @@ import javax.annotation.Nullable;
 public final class WorkstationConfigHostGceInstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final WorkstationConfigHostGceInstanceArgs Empty = new WorkstationConfigHostGceInstanceArgs();
+
+    /**
+     * An accelerator card attached to the instance.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="accelerators")
+    private @Nullable Output<List<WorkstationConfigHostGceInstanceAcceleratorArgs>> accelerators;
+
+    /**
+     * @return An accelerator card attached to the instance.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<WorkstationConfigHostGceInstanceAcceleratorArgs>>> accelerators() {
+        return Optional.ofNullable(this.accelerators);
+    }
 
     /**
      * Size of the boot disk in GB.
@@ -147,6 +165,7 @@ public final class WorkstationConfigHostGceInstanceArgs extends com.pulumi.resou
     private WorkstationConfigHostGceInstanceArgs() {}
 
     private WorkstationConfigHostGceInstanceArgs(WorkstationConfigHostGceInstanceArgs $) {
+        this.accelerators = $.accelerators;
         this.bootDiskSizeGb = $.bootDiskSizeGb;
         this.confidentialInstanceConfig = $.confidentialInstanceConfig;
         this.disablePublicIpAddresses = $.disablePublicIpAddresses;
@@ -173,6 +192,40 @@ public final class WorkstationConfigHostGceInstanceArgs extends com.pulumi.resou
 
         public Builder(WorkstationConfigHostGceInstanceArgs defaults) {
             $ = new WorkstationConfigHostGceInstanceArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param accelerators An accelerator card attached to the instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accelerators(@Nullable Output<List<WorkstationConfigHostGceInstanceAcceleratorArgs>> accelerators) {
+            $.accelerators = accelerators;
+            return this;
+        }
+
+        /**
+         * @param accelerators An accelerator card attached to the instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accelerators(List<WorkstationConfigHostGceInstanceAcceleratorArgs> accelerators) {
+            return accelerators(Output.of(accelerators));
+        }
+
+        /**
+         * @param accelerators An accelerator card attached to the instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accelerators(WorkstationConfigHostGceInstanceAcceleratorArgs... accelerators) {
+            return accelerators(List.of(accelerators));
         }
 
         /**

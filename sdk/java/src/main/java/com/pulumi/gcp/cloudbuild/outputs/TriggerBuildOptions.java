@@ -52,7 +52,6 @@ public final class TriggerBuildOptions {
     private @Nullable String logging;
     /**
      * @return Compute Engine machine type on which to run the build.
-     * Possible values are: `UNSPECIFIED`, `N1_HIGHCPU_8`, `N1_HIGHCPU_32`, `E2_HIGHCPU_8`, `E2_HIGHCPU_32`.
      * 
      */
     private @Nullable String machineType;
@@ -149,7 +148,6 @@ public final class TriggerBuildOptions {
     }
     /**
      * @return Compute Engine machine type on which to run the build.
-     * Possible values are: `UNSPECIFIED`, `N1_HIGHCPU_8`, `N1_HIGHCPU_32`, `E2_HIGHCPU_8`, `E2_HIGHCPU_32`.
      * 
      */
     public Optional<String> machineType() {

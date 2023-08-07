@@ -13,6 +13,781 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type ConfigBlockingFunctions struct {
+	// The user credentials to include in the JWT payload that is sent to the registered Blocking Functions.
+	// Structure is documented below.
+	ForwardInboundCredentials *ConfigBlockingFunctionsForwardInboundCredentials `pulumi:"forwardInboundCredentials"`
+	// Map of Trigger to event type. Key should be one of the supported event types: "beforeCreate", "beforeSignIn".
+	// Structure is documented below.
+	Triggers []ConfigBlockingFunctionsTrigger `pulumi:"triggers"`
+}
+
+// ConfigBlockingFunctionsInput is an input type that accepts ConfigBlockingFunctionsArgs and ConfigBlockingFunctionsOutput values.
+// You can construct a concrete instance of `ConfigBlockingFunctionsInput` via:
+//
+//	ConfigBlockingFunctionsArgs{...}
+type ConfigBlockingFunctionsInput interface {
+	pulumi.Input
+
+	ToConfigBlockingFunctionsOutput() ConfigBlockingFunctionsOutput
+	ToConfigBlockingFunctionsOutputWithContext(context.Context) ConfigBlockingFunctionsOutput
+}
+
+type ConfigBlockingFunctionsArgs struct {
+	// The user credentials to include in the JWT payload that is sent to the registered Blocking Functions.
+	// Structure is documented below.
+	ForwardInboundCredentials ConfigBlockingFunctionsForwardInboundCredentialsPtrInput `pulumi:"forwardInboundCredentials"`
+	// Map of Trigger to event type. Key should be one of the supported event types: "beforeCreate", "beforeSignIn".
+	// Structure is documented below.
+	Triggers ConfigBlockingFunctionsTriggerArrayInput `pulumi:"triggers"`
+}
+
+func (ConfigBlockingFunctionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigBlockingFunctions)(nil)).Elem()
+}
+
+func (i ConfigBlockingFunctionsArgs) ToConfigBlockingFunctionsOutput() ConfigBlockingFunctionsOutput {
+	return i.ToConfigBlockingFunctionsOutputWithContext(context.Background())
+}
+
+func (i ConfigBlockingFunctionsArgs) ToConfigBlockingFunctionsOutputWithContext(ctx context.Context) ConfigBlockingFunctionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigBlockingFunctionsOutput)
+}
+
+func (i ConfigBlockingFunctionsArgs) ToConfigBlockingFunctionsPtrOutput() ConfigBlockingFunctionsPtrOutput {
+	return i.ToConfigBlockingFunctionsPtrOutputWithContext(context.Background())
+}
+
+func (i ConfigBlockingFunctionsArgs) ToConfigBlockingFunctionsPtrOutputWithContext(ctx context.Context) ConfigBlockingFunctionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigBlockingFunctionsOutput).ToConfigBlockingFunctionsPtrOutputWithContext(ctx)
+}
+
+// ConfigBlockingFunctionsPtrInput is an input type that accepts ConfigBlockingFunctionsArgs, ConfigBlockingFunctionsPtr and ConfigBlockingFunctionsPtrOutput values.
+// You can construct a concrete instance of `ConfigBlockingFunctionsPtrInput` via:
+//
+//	        ConfigBlockingFunctionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConfigBlockingFunctionsPtrInput interface {
+	pulumi.Input
+
+	ToConfigBlockingFunctionsPtrOutput() ConfigBlockingFunctionsPtrOutput
+	ToConfigBlockingFunctionsPtrOutputWithContext(context.Context) ConfigBlockingFunctionsPtrOutput
+}
+
+type configBlockingFunctionsPtrType ConfigBlockingFunctionsArgs
+
+func ConfigBlockingFunctionsPtr(v *ConfigBlockingFunctionsArgs) ConfigBlockingFunctionsPtrInput {
+	return (*configBlockingFunctionsPtrType)(v)
+}
+
+func (*configBlockingFunctionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigBlockingFunctions)(nil)).Elem()
+}
+
+func (i *configBlockingFunctionsPtrType) ToConfigBlockingFunctionsPtrOutput() ConfigBlockingFunctionsPtrOutput {
+	return i.ToConfigBlockingFunctionsPtrOutputWithContext(context.Background())
+}
+
+func (i *configBlockingFunctionsPtrType) ToConfigBlockingFunctionsPtrOutputWithContext(ctx context.Context) ConfigBlockingFunctionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigBlockingFunctionsPtrOutput)
+}
+
+type ConfigBlockingFunctionsOutput struct{ *pulumi.OutputState }
+
+func (ConfigBlockingFunctionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigBlockingFunctions)(nil)).Elem()
+}
+
+func (o ConfigBlockingFunctionsOutput) ToConfigBlockingFunctionsOutput() ConfigBlockingFunctionsOutput {
+	return o
+}
+
+func (o ConfigBlockingFunctionsOutput) ToConfigBlockingFunctionsOutputWithContext(ctx context.Context) ConfigBlockingFunctionsOutput {
+	return o
+}
+
+func (o ConfigBlockingFunctionsOutput) ToConfigBlockingFunctionsPtrOutput() ConfigBlockingFunctionsPtrOutput {
+	return o.ToConfigBlockingFunctionsPtrOutputWithContext(context.Background())
+}
+
+func (o ConfigBlockingFunctionsOutput) ToConfigBlockingFunctionsPtrOutputWithContext(ctx context.Context) ConfigBlockingFunctionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigBlockingFunctions) *ConfigBlockingFunctions {
+		return &v
+	}).(ConfigBlockingFunctionsPtrOutput)
+}
+
+// The user credentials to include in the JWT payload that is sent to the registered Blocking Functions.
+// Structure is documented below.
+func (o ConfigBlockingFunctionsOutput) ForwardInboundCredentials() ConfigBlockingFunctionsForwardInboundCredentialsPtrOutput {
+	return o.ApplyT(func(v ConfigBlockingFunctions) *ConfigBlockingFunctionsForwardInboundCredentials {
+		return v.ForwardInboundCredentials
+	}).(ConfigBlockingFunctionsForwardInboundCredentialsPtrOutput)
+}
+
+// Map of Trigger to event type. Key should be one of the supported event types: "beforeCreate", "beforeSignIn".
+// Structure is documented below.
+func (o ConfigBlockingFunctionsOutput) Triggers() ConfigBlockingFunctionsTriggerArrayOutput {
+	return o.ApplyT(func(v ConfigBlockingFunctions) []ConfigBlockingFunctionsTrigger { return v.Triggers }).(ConfigBlockingFunctionsTriggerArrayOutput)
+}
+
+type ConfigBlockingFunctionsPtrOutput struct{ *pulumi.OutputState }
+
+func (ConfigBlockingFunctionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigBlockingFunctions)(nil)).Elem()
+}
+
+func (o ConfigBlockingFunctionsPtrOutput) ToConfigBlockingFunctionsPtrOutput() ConfigBlockingFunctionsPtrOutput {
+	return o
+}
+
+func (o ConfigBlockingFunctionsPtrOutput) ToConfigBlockingFunctionsPtrOutputWithContext(ctx context.Context) ConfigBlockingFunctionsPtrOutput {
+	return o
+}
+
+func (o ConfigBlockingFunctionsPtrOutput) Elem() ConfigBlockingFunctionsOutput {
+	return o.ApplyT(func(v *ConfigBlockingFunctions) ConfigBlockingFunctions {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigBlockingFunctions
+		return ret
+	}).(ConfigBlockingFunctionsOutput)
+}
+
+// The user credentials to include in the JWT payload that is sent to the registered Blocking Functions.
+// Structure is documented below.
+func (o ConfigBlockingFunctionsPtrOutput) ForwardInboundCredentials() ConfigBlockingFunctionsForwardInboundCredentialsPtrOutput {
+	return o.ApplyT(func(v *ConfigBlockingFunctions) *ConfigBlockingFunctionsForwardInboundCredentials {
+		if v == nil {
+			return nil
+		}
+		return v.ForwardInboundCredentials
+	}).(ConfigBlockingFunctionsForwardInboundCredentialsPtrOutput)
+}
+
+// Map of Trigger to event type. Key should be one of the supported event types: "beforeCreate", "beforeSignIn".
+// Structure is documented below.
+func (o ConfigBlockingFunctionsPtrOutput) Triggers() ConfigBlockingFunctionsTriggerArrayOutput {
+	return o.ApplyT(func(v *ConfigBlockingFunctions) []ConfigBlockingFunctionsTrigger {
+		if v == nil {
+			return nil
+		}
+		return v.Triggers
+	}).(ConfigBlockingFunctionsTriggerArrayOutput)
+}
+
+type ConfigBlockingFunctionsForwardInboundCredentials struct {
+	// Whether to pass the user's OAuth identity provider's access token.
+	AccessToken *bool `pulumi:"accessToken"`
+	// Whether to pass the user's OIDC identity provider's ID token.
+	IdToken *bool `pulumi:"idToken"`
+	// Whether to pass the user's OAuth identity provider's refresh token.
+	RefreshToken *bool `pulumi:"refreshToken"`
+}
+
+// ConfigBlockingFunctionsForwardInboundCredentialsInput is an input type that accepts ConfigBlockingFunctionsForwardInboundCredentialsArgs and ConfigBlockingFunctionsForwardInboundCredentialsOutput values.
+// You can construct a concrete instance of `ConfigBlockingFunctionsForwardInboundCredentialsInput` via:
+//
+//	ConfigBlockingFunctionsForwardInboundCredentialsArgs{...}
+type ConfigBlockingFunctionsForwardInboundCredentialsInput interface {
+	pulumi.Input
+
+	ToConfigBlockingFunctionsForwardInboundCredentialsOutput() ConfigBlockingFunctionsForwardInboundCredentialsOutput
+	ToConfigBlockingFunctionsForwardInboundCredentialsOutputWithContext(context.Context) ConfigBlockingFunctionsForwardInboundCredentialsOutput
+}
+
+type ConfigBlockingFunctionsForwardInboundCredentialsArgs struct {
+	// Whether to pass the user's OAuth identity provider's access token.
+	AccessToken pulumi.BoolPtrInput `pulumi:"accessToken"`
+	// Whether to pass the user's OIDC identity provider's ID token.
+	IdToken pulumi.BoolPtrInput `pulumi:"idToken"`
+	// Whether to pass the user's OAuth identity provider's refresh token.
+	RefreshToken pulumi.BoolPtrInput `pulumi:"refreshToken"`
+}
+
+func (ConfigBlockingFunctionsForwardInboundCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigBlockingFunctionsForwardInboundCredentials)(nil)).Elem()
+}
+
+func (i ConfigBlockingFunctionsForwardInboundCredentialsArgs) ToConfigBlockingFunctionsForwardInboundCredentialsOutput() ConfigBlockingFunctionsForwardInboundCredentialsOutput {
+	return i.ToConfigBlockingFunctionsForwardInboundCredentialsOutputWithContext(context.Background())
+}
+
+func (i ConfigBlockingFunctionsForwardInboundCredentialsArgs) ToConfigBlockingFunctionsForwardInboundCredentialsOutputWithContext(ctx context.Context) ConfigBlockingFunctionsForwardInboundCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigBlockingFunctionsForwardInboundCredentialsOutput)
+}
+
+func (i ConfigBlockingFunctionsForwardInboundCredentialsArgs) ToConfigBlockingFunctionsForwardInboundCredentialsPtrOutput() ConfigBlockingFunctionsForwardInboundCredentialsPtrOutput {
+	return i.ToConfigBlockingFunctionsForwardInboundCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i ConfigBlockingFunctionsForwardInboundCredentialsArgs) ToConfigBlockingFunctionsForwardInboundCredentialsPtrOutputWithContext(ctx context.Context) ConfigBlockingFunctionsForwardInboundCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigBlockingFunctionsForwardInboundCredentialsOutput).ToConfigBlockingFunctionsForwardInboundCredentialsPtrOutputWithContext(ctx)
+}
+
+// ConfigBlockingFunctionsForwardInboundCredentialsPtrInput is an input type that accepts ConfigBlockingFunctionsForwardInboundCredentialsArgs, ConfigBlockingFunctionsForwardInboundCredentialsPtr and ConfigBlockingFunctionsForwardInboundCredentialsPtrOutput values.
+// You can construct a concrete instance of `ConfigBlockingFunctionsForwardInboundCredentialsPtrInput` via:
+//
+//	        ConfigBlockingFunctionsForwardInboundCredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConfigBlockingFunctionsForwardInboundCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToConfigBlockingFunctionsForwardInboundCredentialsPtrOutput() ConfigBlockingFunctionsForwardInboundCredentialsPtrOutput
+	ToConfigBlockingFunctionsForwardInboundCredentialsPtrOutputWithContext(context.Context) ConfigBlockingFunctionsForwardInboundCredentialsPtrOutput
+}
+
+type configBlockingFunctionsForwardInboundCredentialsPtrType ConfigBlockingFunctionsForwardInboundCredentialsArgs
+
+func ConfigBlockingFunctionsForwardInboundCredentialsPtr(v *ConfigBlockingFunctionsForwardInboundCredentialsArgs) ConfigBlockingFunctionsForwardInboundCredentialsPtrInput {
+	return (*configBlockingFunctionsForwardInboundCredentialsPtrType)(v)
+}
+
+func (*configBlockingFunctionsForwardInboundCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigBlockingFunctionsForwardInboundCredentials)(nil)).Elem()
+}
+
+func (i *configBlockingFunctionsForwardInboundCredentialsPtrType) ToConfigBlockingFunctionsForwardInboundCredentialsPtrOutput() ConfigBlockingFunctionsForwardInboundCredentialsPtrOutput {
+	return i.ToConfigBlockingFunctionsForwardInboundCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *configBlockingFunctionsForwardInboundCredentialsPtrType) ToConfigBlockingFunctionsForwardInboundCredentialsPtrOutputWithContext(ctx context.Context) ConfigBlockingFunctionsForwardInboundCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigBlockingFunctionsForwardInboundCredentialsPtrOutput)
+}
+
+type ConfigBlockingFunctionsForwardInboundCredentialsOutput struct{ *pulumi.OutputState }
+
+func (ConfigBlockingFunctionsForwardInboundCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigBlockingFunctionsForwardInboundCredentials)(nil)).Elem()
+}
+
+func (o ConfigBlockingFunctionsForwardInboundCredentialsOutput) ToConfigBlockingFunctionsForwardInboundCredentialsOutput() ConfigBlockingFunctionsForwardInboundCredentialsOutput {
+	return o
+}
+
+func (o ConfigBlockingFunctionsForwardInboundCredentialsOutput) ToConfigBlockingFunctionsForwardInboundCredentialsOutputWithContext(ctx context.Context) ConfigBlockingFunctionsForwardInboundCredentialsOutput {
+	return o
+}
+
+func (o ConfigBlockingFunctionsForwardInboundCredentialsOutput) ToConfigBlockingFunctionsForwardInboundCredentialsPtrOutput() ConfigBlockingFunctionsForwardInboundCredentialsPtrOutput {
+	return o.ToConfigBlockingFunctionsForwardInboundCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o ConfigBlockingFunctionsForwardInboundCredentialsOutput) ToConfigBlockingFunctionsForwardInboundCredentialsPtrOutputWithContext(ctx context.Context) ConfigBlockingFunctionsForwardInboundCredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigBlockingFunctionsForwardInboundCredentials) *ConfigBlockingFunctionsForwardInboundCredentials {
+		return &v
+	}).(ConfigBlockingFunctionsForwardInboundCredentialsPtrOutput)
+}
+
+// Whether to pass the user's OAuth identity provider's access token.
+func (o ConfigBlockingFunctionsForwardInboundCredentialsOutput) AccessToken() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConfigBlockingFunctionsForwardInboundCredentials) *bool { return v.AccessToken }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to pass the user's OIDC identity provider's ID token.
+func (o ConfigBlockingFunctionsForwardInboundCredentialsOutput) IdToken() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConfigBlockingFunctionsForwardInboundCredentials) *bool { return v.IdToken }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to pass the user's OAuth identity provider's refresh token.
+func (o ConfigBlockingFunctionsForwardInboundCredentialsOutput) RefreshToken() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConfigBlockingFunctionsForwardInboundCredentials) *bool { return v.RefreshToken }).(pulumi.BoolPtrOutput)
+}
+
+type ConfigBlockingFunctionsForwardInboundCredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (ConfigBlockingFunctionsForwardInboundCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigBlockingFunctionsForwardInboundCredentials)(nil)).Elem()
+}
+
+func (o ConfigBlockingFunctionsForwardInboundCredentialsPtrOutput) ToConfigBlockingFunctionsForwardInboundCredentialsPtrOutput() ConfigBlockingFunctionsForwardInboundCredentialsPtrOutput {
+	return o
+}
+
+func (o ConfigBlockingFunctionsForwardInboundCredentialsPtrOutput) ToConfigBlockingFunctionsForwardInboundCredentialsPtrOutputWithContext(ctx context.Context) ConfigBlockingFunctionsForwardInboundCredentialsPtrOutput {
+	return o
+}
+
+func (o ConfigBlockingFunctionsForwardInboundCredentialsPtrOutput) Elem() ConfigBlockingFunctionsForwardInboundCredentialsOutput {
+	return o.ApplyT(func(v *ConfigBlockingFunctionsForwardInboundCredentials) ConfigBlockingFunctionsForwardInboundCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigBlockingFunctionsForwardInboundCredentials
+		return ret
+	}).(ConfigBlockingFunctionsForwardInboundCredentialsOutput)
+}
+
+// Whether to pass the user's OAuth identity provider's access token.
+func (o ConfigBlockingFunctionsForwardInboundCredentialsPtrOutput) AccessToken() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConfigBlockingFunctionsForwardInboundCredentials) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AccessToken
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to pass the user's OIDC identity provider's ID token.
+func (o ConfigBlockingFunctionsForwardInboundCredentialsPtrOutput) IdToken() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConfigBlockingFunctionsForwardInboundCredentials) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IdToken
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to pass the user's OAuth identity provider's refresh token.
+func (o ConfigBlockingFunctionsForwardInboundCredentialsPtrOutput) RefreshToken() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConfigBlockingFunctionsForwardInboundCredentials) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RefreshToken
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ConfigBlockingFunctionsTrigger struct {
+	// The identifier for this object. Format specified above.
+	EventType string `pulumi:"eventType"`
+	// HTTP URI trigger for the Cloud Function.
+	FunctionUri string `pulumi:"functionUri"`
+	// (Output)
+	// When the trigger was changed.
+	UpdateTime *string `pulumi:"updateTime"`
+}
+
+// ConfigBlockingFunctionsTriggerInput is an input type that accepts ConfigBlockingFunctionsTriggerArgs and ConfigBlockingFunctionsTriggerOutput values.
+// You can construct a concrete instance of `ConfigBlockingFunctionsTriggerInput` via:
+//
+//	ConfigBlockingFunctionsTriggerArgs{...}
+type ConfigBlockingFunctionsTriggerInput interface {
+	pulumi.Input
+
+	ToConfigBlockingFunctionsTriggerOutput() ConfigBlockingFunctionsTriggerOutput
+	ToConfigBlockingFunctionsTriggerOutputWithContext(context.Context) ConfigBlockingFunctionsTriggerOutput
+}
+
+type ConfigBlockingFunctionsTriggerArgs struct {
+	// The identifier for this object. Format specified above.
+	EventType pulumi.StringInput `pulumi:"eventType"`
+	// HTTP URI trigger for the Cloud Function.
+	FunctionUri pulumi.StringInput `pulumi:"functionUri"`
+	// (Output)
+	// When the trigger was changed.
+	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
+}
+
+func (ConfigBlockingFunctionsTriggerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigBlockingFunctionsTrigger)(nil)).Elem()
+}
+
+func (i ConfigBlockingFunctionsTriggerArgs) ToConfigBlockingFunctionsTriggerOutput() ConfigBlockingFunctionsTriggerOutput {
+	return i.ToConfigBlockingFunctionsTriggerOutputWithContext(context.Background())
+}
+
+func (i ConfigBlockingFunctionsTriggerArgs) ToConfigBlockingFunctionsTriggerOutputWithContext(ctx context.Context) ConfigBlockingFunctionsTriggerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigBlockingFunctionsTriggerOutput)
+}
+
+// ConfigBlockingFunctionsTriggerArrayInput is an input type that accepts ConfigBlockingFunctionsTriggerArray and ConfigBlockingFunctionsTriggerArrayOutput values.
+// You can construct a concrete instance of `ConfigBlockingFunctionsTriggerArrayInput` via:
+//
+//	ConfigBlockingFunctionsTriggerArray{ ConfigBlockingFunctionsTriggerArgs{...} }
+type ConfigBlockingFunctionsTriggerArrayInput interface {
+	pulumi.Input
+
+	ToConfigBlockingFunctionsTriggerArrayOutput() ConfigBlockingFunctionsTriggerArrayOutput
+	ToConfigBlockingFunctionsTriggerArrayOutputWithContext(context.Context) ConfigBlockingFunctionsTriggerArrayOutput
+}
+
+type ConfigBlockingFunctionsTriggerArray []ConfigBlockingFunctionsTriggerInput
+
+func (ConfigBlockingFunctionsTriggerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigBlockingFunctionsTrigger)(nil)).Elem()
+}
+
+func (i ConfigBlockingFunctionsTriggerArray) ToConfigBlockingFunctionsTriggerArrayOutput() ConfigBlockingFunctionsTriggerArrayOutput {
+	return i.ToConfigBlockingFunctionsTriggerArrayOutputWithContext(context.Background())
+}
+
+func (i ConfigBlockingFunctionsTriggerArray) ToConfigBlockingFunctionsTriggerArrayOutputWithContext(ctx context.Context) ConfigBlockingFunctionsTriggerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigBlockingFunctionsTriggerArrayOutput)
+}
+
+type ConfigBlockingFunctionsTriggerOutput struct{ *pulumi.OutputState }
+
+func (ConfigBlockingFunctionsTriggerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigBlockingFunctionsTrigger)(nil)).Elem()
+}
+
+func (o ConfigBlockingFunctionsTriggerOutput) ToConfigBlockingFunctionsTriggerOutput() ConfigBlockingFunctionsTriggerOutput {
+	return o
+}
+
+func (o ConfigBlockingFunctionsTriggerOutput) ToConfigBlockingFunctionsTriggerOutputWithContext(ctx context.Context) ConfigBlockingFunctionsTriggerOutput {
+	return o
+}
+
+// The identifier for this object. Format specified above.
+func (o ConfigBlockingFunctionsTriggerOutput) EventType() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigBlockingFunctionsTrigger) string { return v.EventType }).(pulumi.StringOutput)
+}
+
+// HTTP URI trigger for the Cloud Function.
+func (o ConfigBlockingFunctionsTriggerOutput) FunctionUri() pulumi.StringOutput {
+	return o.ApplyT(func(v ConfigBlockingFunctionsTrigger) string { return v.FunctionUri }).(pulumi.StringOutput)
+}
+
+// (Output)
+// When the trigger was changed.
+func (o ConfigBlockingFunctionsTriggerOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigBlockingFunctionsTrigger) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
+}
+
+type ConfigBlockingFunctionsTriggerArrayOutput struct{ *pulumi.OutputState }
+
+func (ConfigBlockingFunctionsTriggerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConfigBlockingFunctionsTrigger)(nil)).Elem()
+}
+
+func (o ConfigBlockingFunctionsTriggerArrayOutput) ToConfigBlockingFunctionsTriggerArrayOutput() ConfigBlockingFunctionsTriggerArrayOutput {
+	return o
+}
+
+func (o ConfigBlockingFunctionsTriggerArrayOutput) ToConfigBlockingFunctionsTriggerArrayOutputWithContext(ctx context.Context) ConfigBlockingFunctionsTriggerArrayOutput {
+	return o
+}
+
+func (o ConfigBlockingFunctionsTriggerArrayOutput) Index(i pulumi.IntInput) ConfigBlockingFunctionsTriggerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConfigBlockingFunctionsTrigger {
+		return vs[0].([]ConfigBlockingFunctionsTrigger)[vs[1].(int)]
+	}).(ConfigBlockingFunctionsTriggerOutput)
+}
+
+type ConfigQuota struct {
+	// Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP.
+	// Structure is documented below.
+	SignUpQuotaConfig *ConfigQuotaSignUpQuotaConfig `pulumi:"signUpQuotaConfig"`
+}
+
+// ConfigQuotaInput is an input type that accepts ConfigQuotaArgs and ConfigQuotaOutput values.
+// You can construct a concrete instance of `ConfigQuotaInput` via:
+//
+//	ConfigQuotaArgs{...}
+type ConfigQuotaInput interface {
+	pulumi.Input
+
+	ToConfigQuotaOutput() ConfigQuotaOutput
+	ToConfigQuotaOutputWithContext(context.Context) ConfigQuotaOutput
+}
+
+type ConfigQuotaArgs struct {
+	// Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP.
+	// Structure is documented below.
+	SignUpQuotaConfig ConfigQuotaSignUpQuotaConfigPtrInput `pulumi:"signUpQuotaConfig"`
+}
+
+func (ConfigQuotaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigQuota)(nil)).Elem()
+}
+
+func (i ConfigQuotaArgs) ToConfigQuotaOutput() ConfigQuotaOutput {
+	return i.ToConfigQuotaOutputWithContext(context.Background())
+}
+
+func (i ConfigQuotaArgs) ToConfigQuotaOutputWithContext(ctx context.Context) ConfigQuotaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigQuotaOutput)
+}
+
+func (i ConfigQuotaArgs) ToConfigQuotaPtrOutput() ConfigQuotaPtrOutput {
+	return i.ToConfigQuotaPtrOutputWithContext(context.Background())
+}
+
+func (i ConfigQuotaArgs) ToConfigQuotaPtrOutputWithContext(ctx context.Context) ConfigQuotaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigQuotaOutput).ToConfigQuotaPtrOutputWithContext(ctx)
+}
+
+// ConfigQuotaPtrInput is an input type that accepts ConfigQuotaArgs, ConfigQuotaPtr and ConfigQuotaPtrOutput values.
+// You can construct a concrete instance of `ConfigQuotaPtrInput` via:
+//
+//	        ConfigQuotaArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConfigQuotaPtrInput interface {
+	pulumi.Input
+
+	ToConfigQuotaPtrOutput() ConfigQuotaPtrOutput
+	ToConfigQuotaPtrOutputWithContext(context.Context) ConfigQuotaPtrOutput
+}
+
+type configQuotaPtrType ConfigQuotaArgs
+
+func ConfigQuotaPtr(v *ConfigQuotaArgs) ConfigQuotaPtrInput {
+	return (*configQuotaPtrType)(v)
+}
+
+func (*configQuotaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigQuota)(nil)).Elem()
+}
+
+func (i *configQuotaPtrType) ToConfigQuotaPtrOutput() ConfigQuotaPtrOutput {
+	return i.ToConfigQuotaPtrOutputWithContext(context.Background())
+}
+
+func (i *configQuotaPtrType) ToConfigQuotaPtrOutputWithContext(ctx context.Context) ConfigQuotaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigQuotaPtrOutput)
+}
+
+type ConfigQuotaOutput struct{ *pulumi.OutputState }
+
+func (ConfigQuotaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigQuota)(nil)).Elem()
+}
+
+func (o ConfigQuotaOutput) ToConfigQuotaOutput() ConfigQuotaOutput {
+	return o
+}
+
+func (o ConfigQuotaOutput) ToConfigQuotaOutputWithContext(ctx context.Context) ConfigQuotaOutput {
+	return o
+}
+
+func (o ConfigQuotaOutput) ToConfigQuotaPtrOutput() ConfigQuotaPtrOutput {
+	return o.ToConfigQuotaPtrOutputWithContext(context.Background())
+}
+
+func (o ConfigQuotaOutput) ToConfigQuotaPtrOutputWithContext(ctx context.Context) ConfigQuotaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigQuota) *ConfigQuota {
+		return &v
+	}).(ConfigQuotaPtrOutput)
+}
+
+// Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP.
+// Structure is documented below.
+func (o ConfigQuotaOutput) SignUpQuotaConfig() ConfigQuotaSignUpQuotaConfigPtrOutput {
+	return o.ApplyT(func(v ConfigQuota) *ConfigQuotaSignUpQuotaConfig { return v.SignUpQuotaConfig }).(ConfigQuotaSignUpQuotaConfigPtrOutput)
+}
+
+type ConfigQuotaPtrOutput struct{ *pulumi.OutputState }
+
+func (ConfigQuotaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigQuota)(nil)).Elem()
+}
+
+func (o ConfigQuotaPtrOutput) ToConfigQuotaPtrOutput() ConfigQuotaPtrOutput {
+	return o
+}
+
+func (o ConfigQuotaPtrOutput) ToConfigQuotaPtrOutputWithContext(ctx context.Context) ConfigQuotaPtrOutput {
+	return o
+}
+
+func (o ConfigQuotaPtrOutput) Elem() ConfigQuotaOutput {
+	return o.ApplyT(func(v *ConfigQuota) ConfigQuota {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigQuota
+		return ret
+	}).(ConfigQuotaOutput)
+}
+
+// Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP.
+// Structure is documented below.
+func (o ConfigQuotaPtrOutput) SignUpQuotaConfig() ConfigQuotaSignUpQuotaConfigPtrOutput {
+	return o.ApplyT(func(v *ConfigQuota) *ConfigQuotaSignUpQuotaConfig {
+		if v == nil {
+			return nil
+		}
+		return v.SignUpQuotaConfig
+	}).(ConfigQuotaSignUpQuotaConfigPtrOutput)
+}
+
+type ConfigQuotaSignUpQuotaConfig struct {
+	// A sign up APIs quota that customers can override temporarily.
+	Quota *int `pulumi:"quota"`
+	// How long this quota will be active for. It is measurred in seconds, e.g., Example: "9.615s".
+	QuotaDuration *string `pulumi:"quotaDuration"`
+	// When this quota will take affect.
+	StartTime *string `pulumi:"startTime"`
+}
+
+// ConfigQuotaSignUpQuotaConfigInput is an input type that accepts ConfigQuotaSignUpQuotaConfigArgs and ConfigQuotaSignUpQuotaConfigOutput values.
+// You can construct a concrete instance of `ConfigQuotaSignUpQuotaConfigInput` via:
+//
+//	ConfigQuotaSignUpQuotaConfigArgs{...}
+type ConfigQuotaSignUpQuotaConfigInput interface {
+	pulumi.Input
+
+	ToConfigQuotaSignUpQuotaConfigOutput() ConfigQuotaSignUpQuotaConfigOutput
+	ToConfigQuotaSignUpQuotaConfigOutputWithContext(context.Context) ConfigQuotaSignUpQuotaConfigOutput
+}
+
+type ConfigQuotaSignUpQuotaConfigArgs struct {
+	// A sign up APIs quota that customers can override temporarily.
+	Quota pulumi.IntPtrInput `pulumi:"quota"`
+	// How long this quota will be active for. It is measurred in seconds, e.g., Example: "9.615s".
+	QuotaDuration pulumi.StringPtrInput `pulumi:"quotaDuration"`
+	// When this quota will take affect.
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+}
+
+func (ConfigQuotaSignUpQuotaConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigQuotaSignUpQuotaConfig)(nil)).Elem()
+}
+
+func (i ConfigQuotaSignUpQuotaConfigArgs) ToConfigQuotaSignUpQuotaConfigOutput() ConfigQuotaSignUpQuotaConfigOutput {
+	return i.ToConfigQuotaSignUpQuotaConfigOutputWithContext(context.Background())
+}
+
+func (i ConfigQuotaSignUpQuotaConfigArgs) ToConfigQuotaSignUpQuotaConfigOutputWithContext(ctx context.Context) ConfigQuotaSignUpQuotaConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigQuotaSignUpQuotaConfigOutput)
+}
+
+func (i ConfigQuotaSignUpQuotaConfigArgs) ToConfigQuotaSignUpQuotaConfigPtrOutput() ConfigQuotaSignUpQuotaConfigPtrOutput {
+	return i.ToConfigQuotaSignUpQuotaConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConfigQuotaSignUpQuotaConfigArgs) ToConfigQuotaSignUpQuotaConfigPtrOutputWithContext(ctx context.Context) ConfigQuotaSignUpQuotaConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigQuotaSignUpQuotaConfigOutput).ToConfigQuotaSignUpQuotaConfigPtrOutputWithContext(ctx)
+}
+
+// ConfigQuotaSignUpQuotaConfigPtrInput is an input type that accepts ConfigQuotaSignUpQuotaConfigArgs, ConfigQuotaSignUpQuotaConfigPtr and ConfigQuotaSignUpQuotaConfigPtrOutput values.
+// You can construct a concrete instance of `ConfigQuotaSignUpQuotaConfigPtrInput` via:
+//
+//	        ConfigQuotaSignUpQuotaConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConfigQuotaSignUpQuotaConfigPtrInput interface {
+	pulumi.Input
+
+	ToConfigQuotaSignUpQuotaConfigPtrOutput() ConfigQuotaSignUpQuotaConfigPtrOutput
+	ToConfigQuotaSignUpQuotaConfigPtrOutputWithContext(context.Context) ConfigQuotaSignUpQuotaConfigPtrOutput
+}
+
+type configQuotaSignUpQuotaConfigPtrType ConfigQuotaSignUpQuotaConfigArgs
+
+func ConfigQuotaSignUpQuotaConfigPtr(v *ConfigQuotaSignUpQuotaConfigArgs) ConfigQuotaSignUpQuotaConfigPtrInput {
+	return (*configQuotaSignUpQuotaConfigPtrType)(v)
+}
+
+func (*configQuotaSignUpQuotaConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigQuotaSignUpQuotaConfig)(nil)).Elem()
+}
+
+func (i *configQuotaSignUpQuotaConfigPtrType) ToConfigQuotaSignUpQuotaConfigPtrOutput() ConfigQuotaSignUpQuotaConfigPtrOutput {
+	return i.ToConfigQuotaSignUpQuotaConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *configQuotaSignUpQuotaConfigPtrType) ToConfigQuotaSignUpQuotaConfigPtrOutputWithContext(ctx context.Context) ConfigQuotaSignUpQuotaConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigQuotaSignUpQuotaConfigPtrOutput)
+}
+
+type ConfigQuotaSignUpQuotaConfigOutput struct{ *pulumi.OutputState }
+
+func (ConfigQuotaSignUpQuotaConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigQuotaSignUpQuotaConfig)(nil)).Elem()
+}
+
+func (o ConfigQuotaSignUpQuotaConfigOutput) ToConfigQuotaSignUpQuotaConfigOutput() ConfigQuotaSignUpQuotaConfigOutput {
+	return o
+}
+
+func (o ConfigQuotaSignUpQuotaConfigOutput) ToConfigQuotaSignUpQuotaConfigOutputWithContext(ctx context.Context) ConfigQuotaSignUpQuotaConfigOutput {
+	return o
+}
+
+func (o ConfigQuotaSignUpQuotaConfigOutput) ToConfigQuotaSignUpQuotaConfigPtrOutput() ConfigQuotaSignUpQuotaConfigPtrOutput {
+	return o.ToConfigQuotaSignUpQuotaConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConfigQuotaSignUpQuotaConfigOutput) ToConfigQuotaSignUpQuotaConfigPtrOutputWithContext(ctx context.Context) ConfigQuotaSignUpQuotaConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigQuotaSignUpQuotaConfig) *ConfigQuotaSignUpQuotaConfig {
+		return &v
+	}).(ConfigQuotaSignUpQuotaConfigPtrOutput)
+}
+
+// A sign up APIs quota that customers can override temporarily.
+func (o ConfigQuotaSignUpQuotaConfigOutput) Quota() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConfigQuotaSignUpQuotaConfig) *int { return v.Quota }).(pulumi.IntPtrOutput)
+}
+
+// How long this quota will be active for. It is measurred in seconds, e.g., Example: "9.615s".
+func (o ConfigQuotaSignUpQuotaConfigOutput) QuotaDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigQuotaSignUpQuotaConfig) *string { return v.QuotaDuration }).(pulumi.StringPtrOutput)
+}
+
+// When this quota will take affect.
+func (o ConfigQuotaSignUpQuotaConfigOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigQuotaSignUpQuotaConfig) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+type ConfigQuotaSignUpQuotaConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConfigQuotaSignUpQuotaConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigQuotaSignUpQuotaConfig)(nil)).Elem()
+}
+
+func (o ConfigQuotaSignUpQuotaConfigPtrOutput) ToConfigQuotaSignUpQuotaConfigPtrOutput() ConfigQuotaSignUpQuotaConfigPtrOutput {
+	return o
+}
+
+func (o ConfigQuotaSignUpQuotaConfigPtrOutput) ToConfigQuotaSignUpQuotaConfigPtrOutputWithContext(ctx context.Context) ConfigQuotaSignUpQuotaConfigPtrOutput {
+	return o
+}
+
+func (o ConfigQuotaSignUpQuotaConfigPtrOutput) Elem() ConfigQuotaSignUpQuotaConfigOutput {
+	return o.ApplyT(func(v *ConfigQuotaSignUpQuotaConfig) ConfigQuotaSignUpQuotaConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigQuotaSignUpQuotaConfig
+		return ret
+	}).(ConfigQuotaSignUpQuotaConfigOutput)
+}
+
+// A sign up APIs quota that customers can override temporarily.
+func (o ConfigQuotaSignUpQuotaConfigPtrOutput) Quota() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ConfigQuotaSignUpQuotaConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Quota
+	}).(pulumi.IntPtrOutput)
+}
+
+// How long this quota will be active for. It is measurred in seconds, e.g., Example: "9.615s".
+func (o ConfigQuotaSignUpQuotaConfigPtrOutput) QuotaDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigQuotaSignUpQuotaConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QuotaDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// When this quota will take affect.
+func (o ConfigQuotaSignUpQuotaConfigPtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigQuotaSignUpQuotaConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartTime
+	}).(pulumi.StringPtrOutput)
+}
+
 type InboundSamlConfigIdpConfig struct {
 	// The IdP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
 	// Structure is documented below.
@@ -2062,6 +2837,16 @@ func (o TenantInboundSamlConfigSpConfigSpCertificateArrayOutput) Index(i pulumi.
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigBlockingFunctionsInput)(nil)).Elem(), ConfigBlockingFunctionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigBlockingFunctionsPtrInput)(nil)).Elem(), ConfigBlockingFunctionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigBlockingFunctionsForwardInboundCredentialsInput)(nil)).Elem(), ConfigBlockingFunctionsForwardInboundCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigBlockingFunctionsForwardInboundCredentialsPtrInput)(nil)).Elem(), ConfigBlockingFunctionsForwardInboundCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigBlockingFunctionsTriggerInput)(nil)).Elem(), ConfigBlockingFunctionsTriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigBlockingFunctionsTriggerArrayInput)(nil)).Elem(), ConfigBlockingFunctionsTriggerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigQuotaInput)(nil)).Elem(), ConfigQuotaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigQuotaPtrInput)(nil)).Elem(), ConfigQuotaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigQuotaSignUpQuotaConfigInput)(nil)).Elem(), ConfigQuotaSignUpQuotaConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConfigQuotaSignUpQuotaConfigPtrInput)(nil)).Elem(), ConfigQuotaSignUpQuotaConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InboundSamlConfigIdpConfigInput)(nil)).Elem(), InboundSamlConfigIdpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InboundSamlConfigIdpConfigPtrInput)(nil)).Elem(), InboundSamlConfigIdpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InboundSamlConfigIdpConfigIdpCertificateInput)(nil)).Elem(), InboundSamlConfigIdpConfigIdpCertificateArgs{})
@@ -2088,6 +2873,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantInboundSamlConfigSpConfigPtrInput)(nil)).Elem(), TenantInboundSamlConfigSpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantInboundSamlConfigSpConfigSpCertificateInput)(nil)).Elem(), TenantInboundSamlConfigSpConfigSpCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TenantInboundSamlConfigSpConfigSpCertificateArrayInput)(nil)).Elem(), TenantInboundSamlConfigSpConfigSpCertificateArray{})
+	pulumi.RegisterOutputType(ConfigBlockingFunctionsOutput{})
+	pulumi.RegisterOutputType(ConfigBlockingFunctionsPtrOutput{})
+	pulumi.RegisterOutputType(ConfigBlockingFunctionsForwardInboundCredentialsOutput{})
+	pulumi.RegisterOutputType(ConfigBlockingFunctionsForwardInboundCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(ConfigBlockingFunctionsTriggerOutput{})
+	pulumi.RegisterOutputType(ConfigBlockingFunctionsTriggerArrayOutput{})
+	pulumi.RegisterOutputType(ConfigQuotaOutput{})
+	pulumi.RegisterOutputType(ConfigQuotaPtrOutput{})
+	pulumi.RegisterOutputType(ConfigQuotaSignUpQuotaConfigOutput{})
+	pulumi.RegisterOutputType(ConfigQuotaSignUpQuotaConfigPtrOutput{})
 	pulumi.RegisterOutputType(InboundSamlConfigIdpConfigOutput{})
 	pulumi.RegisterOutputType(InboundSamlConfigIdpConfigPtrOutput{})
 	pulumi.RegisterOutputType(InboundSamlConfigIdpConfigIdpCertificateOutput{})

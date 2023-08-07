@@ -90,6 +90,10 @@ import (
 //					User:     pulumi.String("alloydb-cluster-full"),
 //					Password: pulumi.String("alloydb-cluster-full"),
 //				},
+//				ContinuousBackupConfig: &alloydb.ClusterContinuousBackupConfigArgs{
+//					Enabled:            pulumi.Bool(true),
+//					RecoveryWindowDays: pulumi.Int(14),
+//				},
 //				AutomatedBackupPolicy: &alloydb.ClusterAutomatedBackupPolicyArgs{
 //					Location:     pulumi.String("us-central1"),
 //					BackupWindow: pulumi.String("1800s"),
@@ -161,8 +165,7 @@ import (
 type Cluster struct {
 	pulumi.CustomResourceState
 
-	// The automated backup policy for this cluster.
-	// If no policy is provided then the default policy will be used. The default policy takes one backup a day, has a backup window of 1 hour, and retains backups for 14 days.
+	// The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
 	// Structure is documented below.
 	AutomatedBackupPolicy ClusterAutomatedBackupPolicyOutput `pulumi:"automatedBackupPolicy"`
 	// Cluster created from backup.
@@ -170,6 +173,13 @@ type Cluster struct {
 	BackupSources ClusterBackupSourceArrayOutput `pulumi:"backupSources"`
 	// The ID of the alloydb cluster.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
+	// The continuous backup config for this cluster.
+	// If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
+	// Structure is documented below.
+	ContinuousBackupConfig ClusterContinuousBackupConfigOutput `pulumi:"continuousBackupConfig"`
+	// ContinuousBackupInfo describes the continuous backup properties of a cluster.
+	// Structure is documented below.
+	ContinuousBackupInfos ClusterContinuousBackupInfoArrayOutput `pulumi:"continuousBackupInfos"`
 	// The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
 	DatabaseVersion pulumi.StringOutput `pulumi:"databaseVersion"`
 	// User-settable and human-readable display name for the Cluster.
@@ -177,7 +187,8 @@ type Cluster struct {
 	// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
 	// Structure is documented below.
 	EncryptionConfig ClusterEncryptionConfigPtrOutput `pulumi:"encryptionConfig"`
-	// EncryptionInfo describes the encryption information of a cluster or a backup.
+	// (Output)
+	// Output only. The encryption information for the WALs and backups required for ContinuousBackup.
 	// Structure is documented below.
 	EncryptionInfos ClusterEncryptionInfoArrayOutput `pulumi:"encryptionInfos"`
 	// Initial user to setup during cluster creation.
@@ -243,8 +254,7 @@ func GetCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Cluster resources.
 type clusterState struct {
-	// The automated backup policy for this cluster.
-	// If no policy is provided then the default policy will be used. The default policy takes one backup a day, has a backup window of 1 hour, and retains backups for 14 days.
+	// The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
 	// Structure is documented below.
 	AutomatedBackupPolicy *ClusterAutomatedBackupPolicy `pulumi:"automatedBackupPolicy"`
 	// Cluster created from backup.
@@ -252,6 +262,13 @@ type clusterState struct {
 	BackupSources []ClusterBackupSource `pulumi:"backupSources"`
 	// The ID of the alloydb cluster.
 	ClusterId *string `pulumi:"clusterId"`
+	// The continuous backup config for this cluster.
+	// If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
+	// Structure is documented below.
+	ContinuousBackupConfig *ClusterContinuousBackupConfig `pulumi:"continuousBackupConfig"`
+	// ContinuousBackupInfo describes the continuous backup properties of a cluster.
+	// Structure is documented below.
+	ContinuousBackupInfos []ClusterContinuousBackupInfo `pulumi:"continuousBackupInfos"`
 	// The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
 	DatabaseVersion *string `pulumi:"databaseVersion"`
 	// User-settable and human-readable display name for the Cluster.
@@ -259,7 +276,8 @@ type clusterState struct {
 	// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
 	// Structure is documented below.
 	EncryptionConfig *ClusterEncryptionConfig `pulumi:"encryptionConfig"`
-	// EncryptionInfo describes the encryption information of a cluster or a backup.
+	// (Output)
+	// Output only. The encryption information for the WALs and backups required for ContinuousBackup.
 	// Structure is documented below.
 	EncryptionInfos []ClusterEncryptionInfo `pulumi:"encryptionInfos"`
 	// Initial user to setup during cluster creation.
@@ -287,8 +305,7 @@ type clusterState struct {
 }
 
 type ClusterState struct {
-	// The automated backup policy for this cluster.
-	// If no policy is provided then the default policy will be used. The default policy takes one backup a day, has a backup window of 1 hour, and retains backups for 14 days.
+	// The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
 	// Structure is documented below.
 	AutomatedBackupPolicy ClusterAutomatedBackupPolicyPtrInput
 	// Cluster created from backup.
@@ -296,6 +313,13 @@ type ClusterState struct {
 	BackupSources ClusterBackupSourceArrayInput
 	// The ID of the alloydb cluster.
 	ClusterId pulumi.StringPtrInput
+	// The continuous backup config for this cluster.
+	// If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
+	// Structure is documented below.
+	ContinuousBackupConfig ClusterContinuousBackupConfigPtrInput
+	// ContinuousBackupInfo describes the continuous backup properties of a cluster.
+	// Structure is documented below.
+	ContinuousBackupInfos ClusterContinuousBackupInfoArrayInput
 	// The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
 	DatabaseVersion pulumi.StringPtrInput
 	// User-settable and human-readable display name for the Cluster.
@@ -303,7 +327,8 @@ type ClusterState struct {
 	// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
 	// Structure is documented below.
 	EncryptionConfig ClusterEncryptionConfigPtrInput
-	// EncryptionInfo describes the encryption information of a cluster or a backup.
+	// (Output)
+	// Output only. The encryption information for the WALs and backups required for ContinuousBackup.
 	// Structure is documented below.
 	EncryptionInfos ClusterEncryptionInfoArrayInput
 	// Initial user to setup during cluster creation.
@@ -335,12 +360,15 @@ func (ClusterState) ElementType() reflect.Type {
 }
 
 type clusterArgs struct {
-	// The automated backup policy for this cluster.
-	// If no policy is provided then the default policy will be used. The default policy takes one backup a day, has a backup window of 1 hour, and retains backups for 14 days.
+	// The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
 	// Structure is documented below.
 	AutomatedBackupPolicy *ClusterAutomatedBackupPolicy `pulumi:"automatedBackupPolicy"`
 	// The ID of the alloydb cluster.
 	ClusterId string `pulumi:"clusterId"`
+	// The continuous backup config for this cluster.
+	// If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
+	// Structure is documented below.
+	ContinuousBackupConfig *ClusterContinuousBackupConfig `pulumi:"continuousBackupConfig"`
 	// User-settable and human-readable display name for the Cluster.
 	DisplayName *string `pulumi:"displayName"`
 	// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
@@ -365,12 +393,15 @@ type clusterArgs struct {
 
 // The set of arguments for constructing a Cluster resource.
 type ClusterArgs struct {
-	// The automated backup policy for this cluster.
-	// If no policy is provided then the default policy will be used. The default policy takes one backup a day, has a backup window of 1 hour, and retains backups for 14 days.
+	// The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
 	// Structure is documented below.
 	AutomatedBackupPolicy ClusterAutomatedBackupPolicyPtrInput
 	// The ID of the alloydb cluster.
 	ClusterId pulumi.StringInput
+	// The continuous backup config for this cluster.
+	// If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
+	// Structure is documented below.
+	ContinuousBackupConfig ClusterContinuousBackupConfigPtrInput
 	// User-settable and human-readable display name for the Cluster.
 	DisplayName pulumi.StringPtrInput
 	// EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
@@ -480,8 +511,7 @@ func (o ClusterOutput) ToClusterOutputWithContext(ctx context.Context) ClusterOu
 	return o
 }
 
-// The automated backup policy for this cluster.
-// If no policy is provided then the default policy will be used. The default policy takes one backup a day, has a backup window of 1 hour, and retains backups for 14 days.
+// The automated backup policy for this cluster. AutomatedBackupPolicy is disabled by default.
 // Structure is documented below.
 func (o ClusterOutput) AutomatedBackupPolicy() ClusterAutomatedBackupPolicyOutput {
 	return o.ApplyT(func(v *Cluster) ClusterAutomatedBackupPolicyOutput { return v.AutomatedBackupPolicy }).(ClusterAutomatedBackupPolicyOutput)
@@ -496,6 +526,19 @@ func (o ClusterOutput) BackupSources() ClusterBackupSourceArrayOutput {
 // The ID of the alloydb cluster.
 func (o ClusterOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// The continuous backup config for this cluster.
+// If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
+// Structure is documented below.
+func (o ClusterOutput) ContinuousBackupConfig() ClusterContinuousBackupConfigOutput {
+	return o.ApplyT(func(v *Cluster) ClusterContinuousBackupConfigOutput { return v.ContinuousBackupConfig }).(ClusterContinuousBackupConfigOutput)
+}
+
+// ContinuousBackupInfo describes the continuous backup properties of a cluster.
+// Structure is documented below.
+func (o ClusterOutput) ContinuousBackupInfos() ClusterContinuousBackupInfoArrayOutput {
+	return o.ApplyT(func(v *Cluster) ClusterContinuousBackupInfoArrayOutput { return v.ContinuousBackupInfos }).(ClusterContinuousBackupInfoArrayOutput)
 }
 
 // The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
@@ -514,7 +557,8 @@ func (o ClusterOutput) EncryptionConfig() ClusterEncryptionConfigPtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterEncryptionConfigPtrOutput { return v.EncryptionConfig }).(ClusterEncryptionConfigPtrOutput)
 }
 
-// EncryptionInfo describes the encryption information of a cluster or a backup.
+// (Output)
+// Output only. The encryption information for the WALs and backups required for ContinuousBackup.
 // Structure is documented below.
 func (o ClusterOutput) EncryptionInfos() ClusterEncryptionInfoArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClusterEncryptionInfoArrayOutput { return v.EncryptionInfos }).(ClusterEncryptionInfoArrayOutput)

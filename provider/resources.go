@@ -2985,6 +2985,10 @@ func Provider() tfbridge.ProviderInfo {
 			"google_document_ai_processor_default_version": {
 				Tok: gcpResource(gcpEssentialContacts, "DocumentAiProcessorDefaultVersion"),
 			},
+			"google_document_ai_warehouse_location": {Tok: gcpResource(gcpEssentialContacts, "DocumentAiWarehouseLocation")},
+			"google_document_ai_warehouse_document_schema": {
+				Tok: gcpResource(gcpEssentialContacts, "DocumentAiWarehouseDocumentSchema"),
+			},
 
 			// workflows
 			"google_workflows_workflow": {Tok: gcpResource(gcpWorkflows, "Workflow")},
