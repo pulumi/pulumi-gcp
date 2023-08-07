@@ -823,6 +823,36 @@
                     "backup_source": {
                         "maxItemsOne": false
                     },
+                    "continuous_backup_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "encryption_config": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "continuous_backup_info": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "encryption_info": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "kms_key_versions": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "schedule": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "encryption_config": {
                         "maxItemsOne": true
                     },
@@ -4634,6 +4664,9 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "local_ssd_recovery_timeout": {
+                                    "maxItemsOne": true
+                                },
                                 "max_run_duration": {
                                     "maxItemsOne": true
                                 },
@@ -4743,6 +4776,9 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "local_ssd_recovery_timeout": {
+                                    "maxItemsOne": true
+                                },
                                 "max_run_duration": {
                                     "maxItemsOne": true
                                 },
@@ -4852,6 +4888,9 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "local_ssd_recovery_timeout": {
+                                    "maxItemsOne": true
+                                },
                                 "max_run_duration": {
                                     "maxItemsOne": true
                                 },
@@ -5071,6 +5110,9 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "local_ssd_recovery_timeout": {
+                                    "maxItemsOne": false
+                                },
                                 "max_run_duration": {
                                     "maxItemsOne": true
                                 },
@@ -5881,6 +5923,9 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "local_ssd_recovery_timeout": {
+                                    "maxItemsOne": false
+                                },
                                 "max_run_duration": {
                                     "maxItemsOne": true
                                 },
@@ -8026,6 +8071,16 @@
                     "dns_config": {
                         "maxItemsOne": true
                     },
+                    "enable_k8s_beta_apis": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "enabled_apis": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "gateway_api_config": {
                         "maxItemsOne": true
                     },
@@ -8144,6 +8199,9 @@
                                     }
                                 },
                                 "gvnic": {
+                                    "maxItemsOne": true
+                                },
+                                "host_maintenance_policy": {
                                     "maxItemsOne": true
                                 },
                                 "kubelet_config": {
@@ -8268,6 +8326,9 @@
                                                 }
                                             },
                                             "gvnic": {
+                                                "maxItemsOne": true
+                                            },
+                                            "host_maintenance_policy": {
                                                 "maxItemsOne": true
                                             },
                                             "kubelet_config": {
@@ -8526,6 +8587,9 @@
                                     }
                                 },
                                 "gvnic": {
+                                    "maxItemsOne": true
+                                },
+                                "host_maintenance_policy": {
                                     "maxItemsOne": true
                                 },
                                 "kubelet_config": {
@@ -13118,6 +13182,99 @@
                 "current": "gcp:essentialcontacts/documentAiProcessorDefaultVersion:DocumentAiProcessorDefaultVersion",
                 "majorVersion": 6
             },
+            "google_document_ai_warehouse_document_schema": {
+                "current": "gcp:essentialcontacts/documentAiWarehouseDocumentSchema:DocumentAiWarehouseDocumentSchema",
+                "majorVersion": 6,
+                "fields": {
+                    "property_definitions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "date_time_type_options": {
+                                    "maxItemsOne": true
+                                },
+                                "enum_type_options": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "possible_values": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "float_type_options": {
+                                    "maxItemsOne": true
+                                },
+                                "integer_type_options": {
+                                    "maxItemsOne": true
+                                },
+                                "map_type_options": {
+                                    "maxItemsOne": true
+                                },
+                                "property_type_options": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "property_definitions": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "date_time_type_options": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "enum_type_options": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "possible_values": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "float_type_options": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "integer_type_options": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "map_type_options": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "schema_sources": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "text_type_options": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "timestamp_type_options": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "schema_sources": {
+                                    "maxItemsOne": false
+                                },
+                                "text_type_options": {
+                                    "maxItemsOne": true
+                                },
+                                "timestamp_type_options": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "google_document_ai_warehouse_location": {
+                "current": "gcp:essentialcontacts/documentAiWarehouseLocation:DocumentAiWarehouseLocation",
+                "majorVersion": 6
+            },
             "google_endpoints_service": {
                 "current": "gcp:endpoints/service:Service",
                 "majorVersion": 6,
@@ -15100,7 +15257,35 @@
             },
             "google_identity_platform_config": {
                 "current": "gcp:identityplatform/config:Config",
-                "majorVersion": 6
+                "majorVersion": 6,
+                "fields": {
+                    "authorized_domains": {
+                        "maxItemsOne": false
+                    },
+                    "blocking_functions": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "forward_inbound_credentials": {
+                                    "maxItemsOne": true
+                                },
+                                "triggers": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "quota": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "sign_up_quota_config": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "google_identity_platform_default_supported_idp_config": {
                 "current": "gcp:identityplatform/defaultSupportedIdpConfig:DefaultSupportedIdpConfig",
@@ -18604,6 +18789,9 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "no_wrapper": {
+                                    "maxItemsOne": true
+                                },
                                 "oidc_token": {
                                     "maxItemsOne": true
                                 }
@@ -19954,6 +20142,9 @@
                                     "maxItemsOne": true,
                                     "elem": {
                                         "fields": {
+                                            "accelerators": {
+                                                "maxItemsOne": false
+                                            },
                                             "confidential_instance_config": {
                                                 "maxItemsOne": true
                                             },
@@ -21286,6 +21477,9 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "local_ssd_recovery_timeout": {
+                                    "maxItemsOne": false
+                                },
                                 "max_run_duration": {
                                     "maxItemsOne": false
                                 },
@@ -21484,6 +21678,9 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "local_ssd_recovery_timeout": {
+                                    "maxItemsOne": false
+                                },
                                 "max_run_duration": {
                                     "maxItemsOne": false
                                 },
@@ -21659,6 +21856,9 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "local_ssd_recovery_timeout": {
+                                    "maxItemsOne": false
+                                },
                                 "max_run_duration": {
                                     "maxItemsOne": false
                                 },
@@ -22137,6 +22337,16 @@
                     "dns_config": {
                         "maxItemsOne": false
                     },
+                    "enable_k8s_beta_apis": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "enabled_apis": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "gateway_api_config": {
                         "maxItemsOne": false
                     },
@@ -22255,6 +22465,9 @@
                                     }
                                 },
                                 "gvnic": {
+                                    "maxItemsOne": false
+                                },
+                                "host_maintenance_policy": {
                                     "maxItemsOne": false
                                 },
                                 "kubelet_config": {
@@ -22379,6 +22592,9 @@
                                                 }
                                             },
                                             "gvnic": {
+                                                "maxItemsOne": false
+                                            },
+                                            "host_maintenance_policy": {
                                                 "maxItemsOne": false
                                             },
                                             "kubelet_config": {
@@ -23392,6 +23608,9 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "no_wrapper": {
+                                    "maxItemsOne": false
+                                },
                                 "oidc_token": {
                                     "maxItemsOne": false
                                 }
@@ -24526,6 +24745,8 @@
             "gcp:essentialcontacts/contact:Contact": 0,
             "gcp:essentialcontacts/documentAiProcessor:DocumentAiProcessor": 0,
             "gcp:essentialcontacts/documentAiProcessorDefaultVersion:DocumentAiProcessorDefaultVersion": 0,
+            "gcp:essentialcontacts/documentAiWarehouseDocumentSchema:DocumentAiWarehouseDocumentSchema": 0,
+            "gcp:essentialcontacts/documentAiWarehouseLocation:DocumentAiWarehouseLocation": 0,
             "gcp:eventarc/channel:Channel": 0,
             "gcp:eventarc/googleChannelConfig:GoogleChannelConfig": 0,
             "gcp:eventarc/trigger:Trigger": 0,
@@ -25557,6 +25778,8 @@
             "gcp:essentialcontacts/contact:Contact": "google_essential_contacts_contact",
             "gcp:essentialcontacts/documentAiProcessor:DocumentAiProcessor": "google_document_ai_processor",
             "gcp:essentialcontacts/documentAiProcessorDefaultVersion:DocumentAiProcessorDefaultVersion": "google_document_ai_processor_default_version",
+            "gcp:essentialcontacts/documentAiWarehouseDocumentSchema:DocumentAiWarehouseDocumentSchema": "google_document_ai_warehouse_document_schema",
+            "gcp:essentialcontacts/documentAiWarehouseLocation:DocumentAiWarehouseLocation": "google_document_ai_warehouse_location",
             "gcp:eventarc/channel:Channel": "google_eventarc_channel",
             "gcp:eventarc/googleChannelConfig:GoogleChannelConfig": "google_eventarc_google_channel_config",
             "gcp:eventarc/trigger:Trigger": "google_eventarc_trigger",
@@ -26503,6 +26726,23 @@
             "gcp:alloydb/ClusterBackupSource:ClusterBackupSource": {
                 "backupName": "backup_name"
             },
+            "gcp:alloydb/ClusterContinuousBackupConfig:ClusterContinuousBackupConfig": {
+                "encryptionConfig": "encryption_config",
+                "recoveryWindowDays": "recovery_window_days"
+            },
+            "gcp:alloydb/ClusterContinuousBackupConfigEncryptionConfig:ClusterContinuousBackupConfigEncryptionConfig": {
+                "kmsKeyName": "kms_key_name"
+            },
+            "gcp:alloydb/ClusterContinuousBackupInfo:ClusterContinuousBackupInfo": {
+                "earliestRestorableTime": "earliest_restorable_time",
+                "enabledTime": "enabled_time",
+                "encryptionInfos": "encryption_info",
+                "schedules": "schedule"
+            },
+            "gcp:alloydb/ClusterContinuousBackupInfoEncryptionInfo:ClusterContinuousBackupInfoEncryptionInfo": {
+                "encryptionType": "encryption_type",
+                "kmsKeyVersions": "kms_key_versions"
+            },
             "gcp:alloydb/ClusterEncryptionConfig:ClusterEncryptionConfig": {
                 "kmsKeyName": "kms_key_name"
             },
@@ -26533,6 +26773,8 @@
                 "automatedBackupPolicy": "automated_backup_policy",
                 "backupSources": "backup_source",
                 "clusterId": "cluster_id",
+                "continuousBackupConfig": "continuous_backup_config",
+                "continuousBackupInfos": "continuous_backup_info",
                 "databaseVersion": "database_version",
                 "displayName": "display_name",
                 "encryptionConfig": "encryption_config",
@@ -30268,6 +30510,7 @@
             "gcp:compute/InstanceFromMachineImageScheduling:InstanceFromMachineImageScheduling": {
                 "automaticRestart": "automatic_restart",
                 "instanceTerminationAction": "instance_termination_action",
+                "localSsdRecoveryTimeout": "local_ssd_recovery_timeout",
                 "maintenanceInterval": "maintenance_interval",
                 "maxRunDuration": "max_run_duration",
                 "minNodeCpus": "min_node_cpus",
@@ -30343,6 +30586,7 @@
             "gcp:compute/InstanceFromTemplateScheduling:InstanceFromTemplateScheduling": {
                 "automaticRestart": "automatic_restart",
                 "instanceTerminationAction": "instance_termination_action",
+                "localSsdRecoveryTimeout": "local_ssd_recovery_timeout",
                 "maintenanceInterval": "maintenance_interval",
                 "maxRunDuration": "max_run_duration",
                 "minNodeCpus": "min_node_cpus",
@@ -30442,6 +30686,7 @@
             "gcp:compute/InstanceScheduling:InstanceScheduling": {
                 "automaticRestart": "automatic_restart",
                 "instanceTerminationAction": "instance_termination_action",
+                "localSsdRecoveryTimeout": "local_ssd_recovery_timeout",
                 "maintenanceInterval": "maintenance_interval",
                 "maxRunDuration": "max_run_duration",
                 "minNodeCpus": "min_node_cpus",
@@ -30522,6 +30767,7 @@
             "gcp:compute/InstanceTemplateScheduling:InstanceTemplateScheduling": {
                 "automaticRestart": "automatic_restart",
                 "instanceTerminationAction": "instance_termination_action",
+                "localSsdRecoveryTimeouts": "local_ssd_recovery_timeout",
                 "maintenanceInterval": "maintenance_interval",
                 "maxRunDuration": "max_run_duration",
                 "minNodeCpus": "min_node_cpus",
@@ -30680,6 +30926,7 @@
             },
             "gcp:compute/RegionBackendServiceConnectionTrackingPolicy:RegionBackendServiceConnectionTrackingPolicy": {
                 "connectionPersistenceOnUnhealthyBackends": "connection_persistence_on_unhealthy_backends",
+                "enableStrongAffinity": "enable_strong_affinity",
                 "idleTimeoutSec": "idle_timeout_sec",
                 "trackingMode": "tracking_mode"
             },
@@ -30877,6 +31124,7 @@
             "gcp:compute/RegionInstanceTemplateScheduling:RegionInstanceTemplateScheduling": {
                 "automaticRestart": "automatic_restart",
                 "instanceTerminationAction": "instance_termination_action",
+                "localSsdRecoveryTimeouts": "local_ssd_recovery_timeout",
                 "maintenanceInterval": "maintenance_interval",
                 "maxRunDuration": "max_run_duration",
                 "minNodeCpus": "min_node_cpus",
@@ -31761,6 +32009,8 @@
             "gcp:compute/address:Address": {
                 "addressType": "address_type",
                 "creationTimestamp": "creation_timestamp",
+                "ipVersion": "ip_version",
+                "ipv6EndpointType": "ipv6_endpoint_type",
                 "labelFingerprint": "label_fingerprint",
                 "networkTier": "network_tier",
                 "prefixLength": "prefix_length",
@@ -32426,6 +32676,7 @@
             "gcp:compute/getInstanceScheduling:getInstanceScheduling": {
                 "automaticRestart": "automatic_restart",
                 "instanceTerminationAction": "instance_termination_action",
+                "localSsdRecoveryTimeouts": "local_ssd_recovery_timeout",
                 "maintenanceInterval": "maintenance_interval",
                 "maxRunDurations": "max_run_duration",
                 "minNodeCpus": "min_node_cpus",
@@ -32531,6 +32782,7 @@
             "gcp:compute/getInstanceTemplateScheduling:getInstanceTemplateScheduling": {
                 "automaticRestart": "automatic_restart",
                 "instanceTerminationAction": "instance_termination_action",
+                "localSsdRecoveryTimeouts": "local_ssd_recovery_timeout",
                 "maintenanceInterval": "maintenance_interval",
                 "maxRunDurations": "max_run_duration",
                 "minNodeCpus": "min_node_cpus",
@@ -32679,6 +32931,7 @@
             "gcp:compute/getRegionInstanceTemplateScheduling:getRegionInstanceTemplateScheduling": {
                 "automaticRestart": "automatic_restart",
                 "instanceTerminationAction": "instance_termination_action",
+                "localSsdRecoveryTimeouts": "local_ssd_recovery_timeout",
                 "maintenanceInterval": "maintenance_interval",
                 "maxRunDurations": "max_run_duration",
                 "minNodeCpus": "min_node_cpus",
@@ -34021,6 +34274,9 @@
                 "clusterDnsDomain": "cluster_dns_domain",
                 "clusterDnsScope": "cluster_dns_scope"
             },
+            "gcp:container/ClusterEnableK8sBetaApis:ClusterEnableK8sBetaApis": {
+                "enabledApis": "enabled_apis"
+            },
             "gcp:container/ClusterIpAllocationPolicy:ClusterIpAllocationPolicy": {
                 "clusterIpv4CidrBlock": "cluster_ipv4_cidr_block",
                 "clusterSecondaryRangeName": "cluster_secondary_range_name",
@@ -34083,6 +34339,7 @@
                 "ephemeralStorageLocalSsdConfig": "ephemeral_storage_local_ssd_config",
                 "gcfsConfig": "gcfs_config",
                 "guestAccelerators": "guest_accelerator",
+                "hostMaintenancePolicy": "host_maintenance_policy",
                 "imageType": "image_type",
                 "kubeletConfig": "kubelet_config",
                 "linuxNodeConfig": "linux_node_config",
@@ -34122,6 +34379,9 @@
             "gcp:container/ClusterNodeConfigGuestAcceleratorGpuSharingConfig:ClusterNodeConfigGuestAcceleratorGpuSharingConfig": {
                 "gpuSharingStrategy": "gpu_sharing_strategy",
                 "maxSharedClientsPerGpu": "max_shared_clients_per_gpu"
+            },
+            "gcp:container/ClusterNodeConfigHostMaintenancePolicy:ClusterNodeConfigHostMaintenancePolicy": {
+                "maintenanceInterval": "maintenance_interval"
             },
             "gcp:container/ClusterNodeConfigKubeletConfig:ClusterNodeConfigKubeletConfig": {
                 "cpuCfsQuota": "cpu_cfs_quota",
@@ -34201,6 +34461,7 @@
                 "ephemeralStorageLocalSsdConfig": "ephemeral_storage_local_ssd_config",
                 "gcfsConfig": "gcfs_config",
                 "guestAccelerators": "guest_accelerator",
+                "hostMaintenancePolicy": "host_maintenance_policy",
                 "imageType": "image_type",
                 "kubeletConfig": "kubelet_config",
                 "linuxNodeConfig": "linux_node_config",
@@ -34241,6 +34502,9 @@
                 "gpuSharingStrategy": "gpu_sharing_strategy",
                 "maxSharedClientsPerGpu": "max_shared_clients_per_gpu"
             },
+            "gcp:container/ClusterNodePoolNodeConfigHostMaintenancePolicy:ClusterNodePoolNodeConfigHostMaintenancePolicy": {
+                "maintenanceInterval": "maintenance_interval"
+            },
             "gcp:container/ClusterNodePoolNodeConfigKubeletConfig:ClusterNodePoolNodeConfigKubeletConfig": {
                 "cpuCfsQuota": "cpu_cfs_quota",
                 "cpuCfsQuotaPeriod": "cpu_cfs_quota_period",
@@ -34264,6 +34528,7 @@
                 "nodeAffinities": "node_affinity"
             },
             "gcp:container/ClusterNodePoolPlacementPolicy:ClusterNodePoolPlacementPolicy": {
+                "policyName": "policy_name",
                 "tpuTopology": "tpu_topology"
             },
             "gcp:container/ClusterNodePoolUpgradeSettings:ClusterNodePoolUpgradeSettings": {
@@ -34351,6 +34616,7 @@
                 "ephemeralStorageLocalSsdConfig": "ephemeral_storage_local_ssd_config",
                 "gcfsConfig": "gcfs_config",
                 "guestAccelerators": "guest_accelerator",
+                "hostMaintenancePolicy": "host_maintenance_policy",
                 "imageType": "image_type",
                 "kubeletConfig": "kubelet_config",
                 "linuxNodeConfig": "linux_node_config",
@@ -34391,6 +34657,9 @@
                 "gpuSharingStrategy": "gpu_sharing_strategy",
                 "maxSharedClientsPerGpu": "max_shared_clients_per_gpu"
             },
+            "gcp:container/NodePoolNodeConfigHostMaintenancePolicy:NodePoolNodeConfigHostMaintenancePolicy": {
+                "maintenanceInterval": "maintenance_interval"
+            },
             "gcp:container/NodePoolNodeConfigKubeletConfig:NodePoolNodeConfigKubeletConfig": {
                 "cpuCfsQuota": "cpu_cfs_quota",
                 "cpuCfsQuotaPeriod": "cpu_cfs_quota_period",
@@ -34414,6 +34683,7 @@
                 "nodeAffinities": "node_affinity"
             },
             "gcp:container/NodePoolPlacementPolicy:NodePoolPlacementPolicy": {
+                "policyName": "policy_name",
                 "tpuTopology": "tpu_topology"
             },
             "gcp:container/NodePoolUpgradeSettings:NodePoolUpgradeSettings": {
@@ -34496,6 +34766,7 @@
                 "enableAutopilot": "enable_autopilot",
                 "enableBinaryAuthorization": "enable_binary_authorization",
                 "enableIntranodeVisibility": "enable_intranode_visibility",
+                "enableK8sBetaApis": "enable_k8s_beta_apis",
                 "enableKubernetesAlpha": "enable_kubernetes_alpha",
                 "enableL4IlbSubsetting": "enable_l4_ilb_subsetting",
                 "enableLegacyAbac": "enable_legacy_abac",
@@ -34576,6 +34847,7 @@
                 "enableAutopilot": "enable_autopilot",
                 "enableBinaryAuthorization": "enable_binary_authorization",
                 "enableIntranodeVisibility": "enable_intranode_visibility",
+                "enableK8sBetaApis": "enable_k8s_beta_apis",
                 "enableKubernetesAlpha": "enable_kubernetes_alpha",
                 "enableL4IlbSubsetting": "enable_l4_ilb_subsetting",
                 "enableLegacyAbac": "enable_legacy_abac",
@@ -34700,6 +34972,9 @@
                 "clusterDnsDomain": "cluster_dns_domain",
                 "clusterDnsScope": "cluster_dns_scope"
             },
+            "gcp:container/getClusterEnableK8sBetaApi:getClusterEnableK8sBetaApi": {
+                "enabledApis": "enabled_apis"
+            },
             "gcp:container/getClusterIpAllocationPolicy:getClusterIpAllocationPolicy": {
                 "clusterIpv4CidrBlock": "cluster_ipv4_cidr_block",
                 "clusterSecondaryRangeName": "cluster_secondary_range_name",
@@ -34763,6 +35038,7 @@
                 "gcfsConfigs": "gcfs_config",
                 "guestAccelerators": "guest_accelerator",
                 "gvnics": "gvnic",
+                "hostMaintenancePolicies": "host_maintenance_policy",
                 "imageType": "image_type",
                 "kubeletConfigs": "kubelet_config",
                 "linuxNodeConfigs": "linux_node_config",
@@ -34802,6 +35078,9 @@
             "gcp:container/getClusterNodeConfigGuestAcceleratorGpuSharingConfig:getClusterNodeConfigGuestAcceleratorGpuSharingConfig": {
                 "gpuSharingStrategy": "gpu_sharing_strategy",
                 "maxSharedClientsPerGpu": "max_shared_clients_per_gpu"
+            },
+            "gcp:container/getClusterNodeConfigHostMaintenancePolicy:getClusterNodeConfigHostMaintenancePolicy": {
+                "maintenanceInterval": "maintenance_interval"
             },
             "gcp:container/getClusterNodeConfigKubeletConfig:getClusterNodeConfigKubeletConfig": {
                 "cpuCfsQuota": "cpu_cfs_quota",
@@ -34884,6 +35163,7 @@
                 "gcfsConfigs": "gcfs_config",
                 "guestAccelerators": "guest_accelerator",
                 "gvnics": "gvnic",
+                "hostMaintenancePolicies": "host_maintenance_policy",
                 "imageType": "image_type",
                 "kubeletConfigs": "kubelet_config",
                 "linuxNodeConfigs": "linux_node_config",
@@ -34924,6 +35204,9 @@
                 "gpuSharingStrategy": "gpu_sharing_strategy",
                 "maxSharedClientsPerGpu": "max_shared_clients_per_gpu"
             },
+            "gcp:container/getClusterNodePoolNodeConfigHostMaintenancePolicy:getClusterNodePoolNodeConfigHostMaintenancePolicy": {
+                "maintenanceInterval": "maintenance_interval"
+            },
             "gcp:container/getClusterNodePoolNodeConfigKubeletConfig:getClusterNodePoolNodeConfigKubeletConfig": {
                 "cpuCfsQuota": "cpu_cfs_quota",
                 "cpuCfsQuotaPeriod": "cpu_cfs_quota_period",
@@ -34947,6 +35230,7 @@
                 "nodeAffinities": "node_affinity"
             },
             "gcp:container/getClusterNodePoolPlacementPolicy:getClusterNodePoolPlacementPolicy": {
+                "policyName": "policy_name",
                 "tpuTopology": "tpu_topology"
             },
             "gcp:container/getClusterNodePoolUpgradeSetting:getClusterNodePoolUpgradeSetting": {
@@ -37885,6 +38169,58 @@
                 "policyData": "policy_data",
                 "serviceName": "service_name"
             },
+            "gcp:essentialcontacts/DocumentAiWarehouseDocumentSchemaPropertyDefinition:DocumentAiWarehouseDocumentSchemaPropertyDefinition": {
+                "dateTimeTypeOptions": "date_time_type_options",
+                "displayName": "display_name",
+                "enumTypeOptions": "enum_type_options",
+                "floatTypeOptions": "float_type_options",
+                "integerTypeOptions": "integer_type_options",
+                "isFilterable": "is_filterable",
+                "isMetadata": "is_metadata",
+                "isRepeatable": "is_repeatable",
+                "isRequired": "is_required",
+                "isSearchable": "is_searchable",
+                "mapTypeOptions": "map_type_options",
+                "propertyTypeOptions": "property_type_options",
+                "retrievalImportance": "retrieval_importance",
+                "schemaSources": "schema_sources",
+                "textTypeOptions": "text_type_options",
+                "timestampTypeOptions": "timestamp_type_options"
+            },
+            "gcp:essentialcontacts/DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptions:DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptions": {
+                "possibleValues": "possible_values",
+                "validationCheckDisabled": "validation_check_disabled"
+            },
+            "gcp:essentialcontacts/DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptions:DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptions": {
+                "propertyDefinitions": "property_definitions"
+            },
+            "gcp:essentialcontacts/DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinition:DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinition": {
+                "dateTimeTypeOptions": "date_time_type_options",
+                "displayName": "display_name",
+                "enumTypeOptions": "enum_type_options",
+                "floatTypeOptions": "float_type_options",
+                "integerTypeOptions": "integer_type_options",
+                "isFilterable": "is_filterable",
+                "isMetadata": "is_metadata",
+                "isRepeatable": "is_repeatable",
+                "isRequired": "is_required",
+                "isSearchable": "is_searchable",
+                "mapTypeOptions": "map_type_options",
+                "retrievalImportance": "retrieval_importance",
+                "schemaSources": "schema_sources",
+                "textTypeOptions": "text_type_options",
+                "timestampTypeOptions": "timestamp_type_options"
+            },
+            "gcp:essentialcontacts/DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptions:DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptions": {
+                "possibleValues": "possible_values",
+                "validationCheckDisabled": "validation_check_disabled"
+            },
+            "gcp:essentialcontacts/DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSource:DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSource": {
+                "processorType": "processor_type"
+            },
+            "gcp:essentialcontacts/DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSource:DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSource": {
+                "processorType": "processor_type"
+            },
             "gcp:essentialcontacts/contact:Contact": {
                 "languageTag": "language_tag",
                 "notificationCategorySubscriptions": "notification_category_subscriptions"
@@ -37892,6 +38228,19 @@
             "gcp:essentialcontacts/documentAiProcessor:DocumentAiProcessor": {
                 "displayName": "display_name",
                 "kmsKeyName": "kms_key_name"
+            },
+            "gcp:essentialcontacts/documentAiWarehouseDocumentSchema:DocumentAiWarehouseDocumentSchema": {
+                "displayName": "display_name",
+                "documentIsFolder": "document_is_folder",
+                "projectNumber": "project_number",
+                "propertyDefinitions": "property_definitions"
+            },
+            "gcp:essentialcontacts/documentAiWarehouseLocation:DocumentAiWarehouseLocation": {
+                "accessControlMode": "access_control_mode",
+                "databaseType": "database_type",
+                "documentCreatorDefaultRole": "document_creator_default_role",
+                "kmsKey": "kms_key",
+                "projectNumber": "project_number"
             },
             "gcp:eventarc/TriggerDestination:TriggerDestination": {
                 "cloudFunction": "cloud_function",
@@ -39110,6 +39459,26 @@
             "gcp:iap/webTypeComputeIamPolicy:WebTypeComputeIamPolicy": {
                 "policyData": "policy_data"
             },
+            "gcp:identityplatform/ConfigBlockingFunctions:ConfigBlockingFunctions": {
+                "forwardInboundCredentials": "forward_inbound_credentials"
+            },
+            "gcp:identityplatform/ConfigBlockingFunctionsForwardInboundCredentials:ConfigBlockingFunctionsForwardInboundCredentials": {
+                "accessToken": "access_token",
+                "idToken": "id_token",
+                "refreshToken": "refresh_token"
+            },
+            "gcp:identityplatform/ConfigBlockingFunctionsTrigger:ConfigBlockingFunctionsTrigger": {
+                "eventType": "event_type",
+                "functionUri": "function_uri",
+                "updateTime": "update_time"
+            },
+            "gcp:identityplatform/ConfigQuota:ConfigQuota": {
+                "signUpQuotaConfig": "sign_up_quota_config"
+            },
+            "gcp:identityplatform/ConfigQuotaSignUpQuotaConfig:ConfigQuotaSignUpQuotaConfig": {
+                "quotaDuration": "quota_duration",
+                "startTime": "start_time"
+            },
             "gcp:identityplatform/InboundSamlConfigIdpConfig:InboundSamlConfigIdpConfig": {
                 "idpCertificates": "idp_certificates",
                 "idpEntityId": "idp_entity_id",
@@ -39161,7 +39530,9 @@
                 "x509Certificate": "x509_certificate"
             },
             "gcp:identityplatform/config:Config": {
-                "autodeleteAnonymousUsers": "autodelete_anonymous_users"
+                "authorizedDomains": "authorized_domains",
+                "autodeleteAnonymousUsers": "autodelete_anonymous_users",
+                "blockingFunctions": "blocking_functions"
             },
             "gcp:identityplatform/defaultSupportedIdpConfig:DefaultSupportedIdpConfig": {
                 "clientId": "client_id",
@@ -39270,6 +39641,7 @@
                 "disableGooglePartnerName": "disable_google_partner_name",
                 "dnsCustomEndpoint": "dns_custom_endpoint",
                 "documentAiCustomEndpoint": "document_ai_custom_endpoint",
+                "documentAiWarehouseCustomEndpoint": "document_ai_warehouse_custom_endpoint",
                 "essentialContactsCustomEndpoint": "essential_contacts_custom_endpoint",
                 "eventarcCustomEndpoint": "eventarc_custom_endpoint",
                 "filestoreCustomEndpoint": "filestore_custom_endpoint",
@@ -41221,8 +41593,12 @@
                 "maxDeliveryAttempts": "max_delivery_attempts"
             },
             "gcp:pubsub/SubscriptionPushConfig:SubscriptionPushConfig": {
+                "noWrapper": "no_wrapper",
                 "oidcToken": "oidc_token",
                 "pushEndpoint": "push_endpoint"
+            },
+            "gcp:pubsub/SubscriptionPushConfigNoWrapper:SubscriptionPushConfigNoWrapper": {
+                "writeMetadata": "write_metadata"
             },
             "gcp:pubsub/SubscriptionPushConfigOidcToken:SubscriptionPushConfigOidcToken": {
                 "serviceAccountEmail": "service_account_email"
@@ -41259,8 +41635,12 @@
                 "policyData": "policy_data"
             },
             "gcp:pubsub/getSubscriptionPushConfig:getSubscriptionPushConfig": {
+                "noWrappers": "no_wrapper",
                 "oidcTokens": "oidc_token",
                 "pushEndpoint": "push_endpoint"
+            },
+            "gcp:pubsub/getSubscriptionPushConfigNoWrapper:getSubscriptionPushConfigNoWrapper": {
+                "writeMetadata": "write_metadata"
             },
             "gcp:pubsub/getSubscriptionPushConfigOidcToken:getSubscriptionPushConfigOidcToken": {
                 "serviceAccountEmail": "service_account_email"
@@ -43055,6 +43435,7 @@
             "disableGooglePartnerName": "disable_google_partner_name",
             "dnsCustomEndpoint": "dns_custom_endpoint",
             "documentAiCustomEndpoint": "document_ai_custom_endpoint",
+            "documentAiWarehouseCustomEndpoint": "document_ai_warehouse_custom_endpoint",
             "essentialContactsCustomEndpoint": "essential_contacts_custom_endpoint",
             "eventarcCustomEndpoint": "eventarc_custom_endpoint",
             "filestoreCustomEndpoint": "filestore_custom_endpoint",
