@@ -1,6 +1,6 @@
 module github.com/pulumi/pulumi-gcp/provider/v6
 
-go 1.19
+go 1.20
 
 require (
 	github.com/hashicorp/terraform-provider-google-beta v0.0.0
