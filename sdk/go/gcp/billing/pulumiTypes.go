@@ -999,6 +999,11 @@ type BudgetBudgetFilter struct {
 	// all usage for the billing account, regardless of which project
 	// the usage occurred on.
 	Projects []string `pulumi:"projects"`
+	// A set of folder and organization names of the form folders/{folderId} or organizations/{organizationId},
+	// specifying that usage from only this set of folders and organizations should be included in the budget.
+	// If omitted, the budget includes all usage that the billing account pays for. If the folder or organization
+	// contains projects that are paid for by a different Cloud Billing account, the budget doesn't apply to those projects.
+	ResourceAncestors []string `pulumi:"resourceAncestors"`
 	// A set of services of the form services/{service_id},
 	// specifying that usage from only this set of services should be
 	// included in the budget. If omitted, the report will include
@@ -1058,6 +1063,11 @@ type BudgetBudgetFilterArgs struct {
 	// all usage for the billing account, regardless of which project
 	// the usage occurred on.
 	Projects pulumi.StringArrayInput `pulumi:"projects"`
+	// A set of folder and organization names of the form folders/{folderId} or organizations/{organizationId},
+	// specifying that usage from only this set of folders and organizations should be included in the budget.
+	// If omitted, the budget includes all usage that the billing account pays for. If the folder or organization
+	// contains projects that are paid for by a different Cloud Billing account, the budget doesn't apply to those projects.
+	ResourceAncestors pulumi.StringArrayInput `pulumi:"resourceAncestors"`
 	// A set of services of the form services/{service_id},
 	// specifying that usage from only this set of services should be
 	// included in the budget. If omitted, the report will include
@@ -1200,6 +1210,14 @@ func (o BudgetBudgetFilterOutput) Projects() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BudgetBudgetFilter) []string { return v.Projects }).(pulumi.StringArrayOutput)
 }
 
+// A set of folder and organization names of the form folders/{folderId} or organizations/{organizationId},
+// specifying that usage from only this set of folders and organizations should be included in the budget.
+// If omitted, the budget includes all usage that the billing account pays for. If the folder or organization
+// contains projects that are paid for by a different Cloud Billing account, the budget doesn't apply to those projects.
+func (o BudgetBudgetFilterOutput) ResourceAncestors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BudgetBudgetFilter) []string { return v.ResourceAncestors }).(pulumi.StringArrayOutput)
+}
+
 // A set of services of the form services/{service_id},
 // specifying that usage from only this set of services should be
 // included in the budget. If omitted, the report will include
@@ -1320,6 +1338,19 @@ func (o BudgetBudgetFilterPtrOutput) Projects() pulumi.StringArrayOutput {
 			return nil
 		}
 		return v.Projects
+	}).(pulumi.StringArrayOutput)
+}
+
+// A set of folder and organization names of the form folders/{folderId} or organizations/{organizationId},
+// specifying that usage from only this set of folders and organizations should be included in the budget.
+// If omitted, the budget includes all usage that the billing account pays for. If the folder or organization
+// contains projects that are paid for by a different Cloud Billing account, the budget doesn't apply to those projects.
+func (o BudgetBudgetFilterPtrOutput) ResourceAncestors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BudgetBudgetFilter) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceAncestors
 	}).(pulumi.StringArrayOutput)
 }
 

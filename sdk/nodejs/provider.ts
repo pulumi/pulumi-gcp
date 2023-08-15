@@ -73,6 +73,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly containerAwsCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly containerAzureCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly containerCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly coreBillingCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly credentials!: pulumi.Output<string | undefined>;
     public readonly dataCatalogCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly dataFusionCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -225,6 +226,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["containerAwsCustomEndpoint"] = args ? args.containerAwsCustomEndpoint : undefined;
             resourceInputs["containerAzureCustomEndpoint"] = args ? args.containerAzureCustomEndpoint : undefined;
             resourceInputs["containerCustomEndpoint"] = args ? args.containerCustomEndpoint : undefined;
+            resourceInputs["coreBillingCustomEndpoint"] = args ? args.coreBillingCustomEndpoint : undefined;
             resourceInputs["credentials"] = args ? args.credentials : undefined;
             resourceInputs["dataCatalogCustomEndpoint"] = args ? args.dataCatalogCustomEndpoint : undefined;
             resourceInputs["dataFusionCustomEndpoint"] = args ? args.dataFusionCustomEndpoint : undefined;
@@ -379,6 +381,7 @@ export interface ProviderArgs {
     containerAwsCustomEndpoint?: pulumi.Input<string>;
     containerAzureCustomEndpoint?: pulumi.Input<string>;
     containerCustomEndpoint?: pulumi.Input<string>;
+    coreBillingCustomEndpoint?: pulumi.Input<string>;
     credentials?: pulumi.Input<string>;
     dataCatalogCustomEndpoint?: pulumi.Input<string>;
     dataFusionCustomEndpoint?: pulumi.Input<string>;

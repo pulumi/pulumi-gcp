@@ -284,6 +284,11 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly eventTrigger!: pulumi.Output<outputs.cloudfunctionsv2.FunctionEventTrigger | undefined>;
     /**
+     * Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources.
+     * It must match the pattern projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}.
+     */
+    public readonly kmsKeyName!: pulumi.Output<string | undefined>;
+    /**
      * A set of key/value label pairs associated with this Cloud Function.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
@@ -339,6 +344,7 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["environment"] = state ? state.environment : undefined;
             resourceInputs["eventTrigger"] = state ? state.eventTrigger : undefined;
+            resourceInputs["kmsKeyName"] = state ? state.kmsKeyName : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -352,6 +358,7 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["buildConfig"] = args ? args.buildConfig : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["eventTrigger"] = args ? args.eventTrigger : undefined;
+            resourceInputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -391,6 +398,11 @@ export interface FunctionState {
      * Structure is documented below.
      */
     eventTrigger?: pulumi.Input<inputs.cloudfunctionsv2.FunctionEventTrigger>;
+    /**
+     * Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources.
+     * It must match the pattern projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}.
+     */
+    kmsKeyName?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs associated with this Cloud Function.
      */
@@ -451,6 +463,11 @@ export interface FunctionArgs {
      * Structure is documented below.
      */
     eventTrigger?: pulumi.Input<inputs.cloudfunctionsv2.FunctionEventTrigger>;
+    /**
+     * Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources.
+     * It must match the pattern projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}.
+     */
+    kmsKeyName?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs associated with this Cloud Function.
      */

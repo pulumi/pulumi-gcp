@@ -121,6 +121,10 @@ export class Trigger extends pulumi.CustomResource {
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
+     * Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
+     */
+    public readonly eventDataContentType!: pulumi.Output<string | undefined>;
+    /**
      * Optional. User labels attached to the triggers that can be used to group resources.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
@@ -175,6 +179,7 @@ export class Trigger extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["destination"] = state ? state.destination : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["eventDataContentType"] = state ? state.eventDataContentType : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["matchingCriterias"] = state ? state.matchingCriterias : undefined;
@@ -197,6 +202,7 @@ export class Trigger extends pulumi.CustomResource {
             }
             resourceInputs["channel"] = args ? args.channel : undefined;
             resourceInputs["destination"] = args ? args.destination : undefined;
+            resourceInputs["eventDataContentType"] = args ? args.eventDataContentType : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["matchingCriterias"] = args ? args.matchingCriterias : undefined;
@@ -239,6 +245,10 @@ export interface TriggerState {
      * Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
      */
     etag?: pulumi.Input<string>;
+    /**
+     * Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
+     */
+    eventDataContentType?: pulumi.Input<string>;
     /**
      * Optional. User labels attached to the triggers that can be used to group resources.
      */
@@ -289,6 +299,10 @@ export interface TriggerArgs {
      * Required. Destination specifies where the events should be sent to.
      */
     destination: pulumi.Input<inputs.eventarc.TriggerDestination>;
+    /**
+     * Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
+     */
+    eventDataContentType?: pulumi.Input<string>;
     /**
      * Optional. User labels attached to the triggers that can be used to group resources.
      */

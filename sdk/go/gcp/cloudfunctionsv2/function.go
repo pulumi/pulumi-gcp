@@ -346,6 +346,9 @@ type Function struct {
 	// response to a condition in another service.
 	// Structure is documented below.
 	EventTrigger FunctionEventTriggerPtrOutput `pulumi:"eventTrigger"`
+	// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources.
+	// It must match the pattern projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}.
+	KmsKeyName pulumi.StringPtrOutput `pulumi:"kmsKeyName"`
 	// A set of key/value label pairs associated with this Cloud Function.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location of this cloud function.
@@ -411,6 +414,9 @@ type functionState struct {
 	// response to a condition in another service.
 	// Structure is documented below.
 	EventTrigger *FunctionEventTrigger `pulumi:"eventTrigger"`
+	// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources.
+	// It must match the pattern projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}.
+	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// A set of key/value label pairs associated with this Cloud Function.
 	Labels map[string]string `pulumi:"labels"`
 	// The location of this cloud function.
@@ -447,6 +453,9 @@ type FunctionState struct {
 	// response to a condition in another service.
 	// Structure is documented below.
 	EventTrigger FunctionEventTriggerPtrInput
+	// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources.
+	// It must match the pattern projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}.
+	KmsKeyName pulumi.StringPtrInput
 	// A set of key/value label pairs associated with this Cloud Function.
 	Labels pulumi.StringMapInput
 	// The location of this cloud function.
@@ -485,6 +494,9 @@ type functionArgs struct {
 	// response to a condition in another service.
 	// Structure is documented below.
 	EventTrigger *FunctionEventTrigger `pulumi:"eventTrigger"`
+	// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources.
+	// It must match the pattern projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}.
+	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// A set of key/value label pairs associated with this Cloud Function.
 	Labels map[string]string `pulumi:"labels"`
 	// The location of this cloud function.
@@ -514,6 +526,9 @@ type FunctionArgs struct {
 	// response to a condition in another service.
 	// Structure is documented below.
 	EventTrigger FunctionEventTriggerPtrInput
+	// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources.
+	// It must match the pattern projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}.
+	KmsKeyName pulumi.StringPtrInput
 	// A set of key/value label pairs associated with this Cloud Function.
 	Labels pulumi.StringMapInput
 	// The location of this cloud function.
@@ -640,6 +655,12 @@ func (o FunctionOutput) Environment() pulumi.StringOutput {
 // Structure is documented below.
 func (o FunctionOutput) EventTrigger() FunctionEventTriggerPtrOutput {
 	return o.ApplyT(func(v *Function) FunctionEventTriggerPtrOutput { return v.EventTrigger }).(FunctionEventTriggerPtrOutput)
+}
+
+// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources.
+// It must match the pattern projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}.
+func (o FunctionOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringPtrOutput { return v.KmsKeyName }).(pulumi.StringPtrOutput)
 }
 
 // A set of key/value label pairs associated with this Cloud Function.

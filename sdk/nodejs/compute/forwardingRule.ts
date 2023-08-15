@@ -114,7 +114,8 @@ export class ForwardingRule extends pulumi.CustomResource {
      * * If `IPProtocol` is one of TCP, UDP, or SCTP.
      * * By internal TCP/UDP load balancers, backend service-based network load
      * balancers, and internal and external protocol forwarding.
-     *
+     * This option should be set to TRUE when the Forwarding Rule
+     * IPProtocol is set to L3_DEFAULT.
      * Set this field to true to allow packets addressed to any port or packets
      * lacking destination port information (for example, UDP fragments after the
      * first fragment) to be forwarded to the backends configured with this
@@ -201,9 +202,19 @@ export class ForwardingRule extends pulumi.CustomResource {
      * The valid IP protocols are different for different load balancing products
      * as described in [Load balancing
      * features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
+     * A Forwarding Rule with protocol L3_DEFAULT can attach with target instance or
+     * backend service with UNSPECIFIED protocol.
+     * A forwarding rule with "L3_DEFAULT" IPProtocal cannot be attached to a backend service with TCP or UDP.
      * Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, `L3_DEFAULT`.
      */
     public readonly ipProtocol!: pulumi.Output<string>;
+    /**
+     * The IP address version that will be used by this forwarding rule.
+     * Valid options are IPV4 and IPV6.
+     * If not set, the IPv4 address will be used by default.
+     * Possible values are: `IPV4`, `IPV6`.
+     */
+    public readonly ipVersion!: pulumi.Output<string>;
     /**
      * Indicates whether or not this load balancer can be used as a collector for
      * packet mirroring. To prevent mirroring loops, instances behind this
@@ -300,7 +311,7 @@ export class ForwardingRule extends pulumi.CustomResource {
      * This field can only be used:
      * * If `IPProtocol` is one of TCP, UDP, or SCTP.
      * * By internal TCP/UDP load balancers, backend service-based network load
-     * balancers, and internal protocol forwarding.
+     * balancers, internal protocol forwarding and when protocol is not L3_DEFAULT.
      *
      * You can specify a list of up to five ports by number, separated by commas.
      * The ports can be contiguous or discontiguous. Only packets addressed to
@@ -411,6 +422,7 @@ export class ForwardingRule extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
             resourceInputs["ipProtocol"] = state ? state.ipProtocol : undefined;
+            resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
             resourceInputs["isMirroringCollector"] = state ? state.isMirroringCollector : undefined;
             resourceInputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
@@ -441,6 +453,7 @@ export class ForwardingRule extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["ipAddress"] = args ? args.ipAddress : undefined;
             resourceInputs["ipProtocol"] = args ? args.ipProtocol : undefined;
+            resourceInputs["ipVersion"] = args ? args.ipVersion : undefined;
             resourceInputs["isMirroringCollector"] = args ? args.isMirroringCollector : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["loadBalancingScheme"] = args ? args.loadBalancingScheme : undefined;
@@ -479,7 +492,8 @@ export interface ForwardingRuleState {
      * * If `IPProtocol` is one of TCP, UDP, or SCTP.
      * * By internal TCP/UDP load balancers, backend service-based network load
      * balancers, and internal and external protocol forwarding.
-     *
+     * This option should be set to TRUE when the Forwarding Rule
+     * IPProtocol is set to L3_DEFAULT.
      * Set this field to true to allow packets addressed to any port or packets
      * lacking destination port information (for example, UDP fragments after the
      * first fragment) to be forwarded to the backends configured with this
@@ -566,9 +580,19 @@ export interface ForwardingRuleState {
      * The valid IP protocols are different for different load balancing products
      * as described in [Load balancing
      * features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
+     * A Forwarding Rule with protocol L3_DEFAULT can attach with target instance or
+     * backend service with UNSPECIFIED protocol.
+     * A forwarding rule with "L3_DEFAULT" IPProtocal cannot be attached to a backend service with TCP or UDP.
      * Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, `L3_DEFAULT`.
      */
     ipProtocol?: pulumi.Input<string>;
+    /**
+     * The IP address version that will be used by this forwarding rule.
+     * Valid options are IPV4 and IPV6.
+     * If not set, the IPv4 address will be used by default.
+     * Possible values are: `IPV4`, `IPV6`.
+     */
+    ipVersion?: pulumi.Input<string>;
     /**
      * Indicates whether or not this load balancer can be used as a collector for
      * packet mirroring. To prevent mirroring loops, instances behind this
@@ -665,7 +689,7 @@ export interface ForwardingRuleState {
      * This field can only be used:
      * * If `IPProtocol` is one of TCP, UDP, or SCTP.
      * * By internal TCP/UDP load balancers, backend service-based network load
-     * balancers, and internal protocol forwarding.
+     * balancers, internal protocol forwarding and when protocol is not L3_DEFAULT.
      *
      * You can specify a list of up to five ports by number, separated by commas.
      * The ports can be contiguous or discontiguous. Only packets addressed to
@@ -764,7 +788,8 @@ export interface ForwardingRuleArgs {
      * * If `IPProtocol` is one of TCP, UDP, or SCTP.
      * * By internal TCP/UDP load balancers, backend service-based network load
      * balancers, and internal and external protocol forwarding.
-     *
+     * This option should be set to TRUE when the Forwarding Rule
+     * IPProtocol is set to L3_DEFAULT.
      * Set this field to true to allow packets addressed to any port or packets
      * lacking destination port information (for example, UDP fragments after the
      * first fragment) to be forwarded to the backends configured with this
@@ -843,9 +868,19 @@ export interface ForwardingRuleArgs {
      * The valid IP protocols are different for different load balancing products
      * as described in [Load balancing
      * features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
+     * A Forwarding Rule with protocol L3_DEFAULT can attach with target instance or
+     * backend service with UNSPECIFIED protocol.
+     * A forwarding rule with "L3_DEFAULT" IPProtocal cannot be attached to a backend service with TCP or UDP.
      * Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, `L3_DEFAULT`.
      */
     ipProtocol?: pulumi.Input<string>;
+    /**
+     * The IP address version that will be used by this forwarding rule.
+     * Valid options are IPV4 and IPV6.
+     * If not set, the IPv4 address will be used by default.
+     * Possible values are: `IPV4`, `IPV6`.
+     */
+    ipVersion?: pulumi.Input<string>;
     /**
      * Indicates whether or not this load balancer can be used as a collector for
      * packet mirroring. To prevent mirroring loops, instances behind this
@@ -937,7 +972,7 @@ export interface ForwardingRuleArgs {
      * This field can only be used:
      * * If `IPProtocol` is one of TCP, UDP, or SCTP.
      * * By internal TCP/UDP load balancers, backend service-based network load
-     * balancers, and internal protocol forwarding.
+     * balancers, internal protocol forwarding and when protocol is not L3_DEFAULT.
      *
      * You can specify a list of up to five ports by number, separated by commas.
      * The ports can be contiguous or discontiguous. Only packets addressed to

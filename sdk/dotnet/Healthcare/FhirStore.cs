@@ -208,6 +208,7 @@ namespace Pulumi.Gcp.Healthcare
     ///             {
     ///                 PubsubTopic = topic.Id,
     ///                 SendFullResource = true,
+    ///                 SendPreviousResourceOnDelete = true,
     ///             },
     ///         },
     ///     }, new CustomResourceOptions

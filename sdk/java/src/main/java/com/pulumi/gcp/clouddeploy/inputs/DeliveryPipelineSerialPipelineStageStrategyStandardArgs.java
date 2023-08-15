@@ -5,6 +5,8 @@ package com.pulumi.gcp.clouddeploy.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.clouddeploy.inputs.DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs;
+import com.pulumi.gcp.clouddeploy.inputs.DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs;
 import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +16,36 @@ import javax.annotation.Nullable;
 public final class DeliveryPipelineSerialPipelineStageStrategyStandardArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final DeliveryPipelineSerialPipelineStageStrategyStandardArgs Empty = new DeliveryPipelineSerialPipelineStageStrategyStandardArgs();
+
+    /**
+     * (Beta only) Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
+     * 
+     */
+    @Import(name="postdeploy")
+    private @Nullable Output<DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs> postdeploy;
+
+    /**
+     * @return (Beta only) Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
+     * 
+     */
+    public Optional<Output<DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs>> postdeploy() {
+        return Optional.ofNullable(this.postdeploy);
+    }
+
+    /**
+     * (Beta only) Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
+     * 
+     */
+    @Import(name="predeploy")
+    private @Nullable Output<DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs> predeploy;
+
+    /**
+     * @return (Beta only) Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
+     * 
+     */
+    public Optional<Output<DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs>> predeploy() {
+        return Optional.ofNullable(this.predeploy);
+    }
 
     /**
      * Whether to verify a deployment.
@@ -33,6 +65,8 @@ public final class DeliveryPipelineSerialPipelineStageStrategyStandardArgs exten
     private DeliveryPipelineSerialPipelineStageStrategyStandardArgs() {}
 
     private DeliveryPipelineSerialPipelineStageStrategyStandardArgs(DeliveryPipelineSerialPipelineStageStrategyStandardArgs $) {
+        this.postdeploy = $.postdeploy;
+        this.predeploy = $.predeploy;
         this.verify = $.verify;
     }
 
@@ -52,6 +86,48 @@ public final class DeliveryPipelineSerialPipelineStageStrategyStandardArgs exten
 
         public Builder(DeliveryPipelineSerialPipelineStageStrategyStandardArgs defaults) {
             $ = new DeliveryPipelineSerialPipelineStageStrategyStandardArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param postdeploy (Beta only) Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder postdeploy(@Nullable Output<DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs> postdeploy) {
+            $.postdeploy = postdeploy;
+            return this;
+        }
+
+        /**
+         * @param postdeploy (Beta only) Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder postdeploy(DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs postdeploy) {
+            return postdeploy(Output.of(postdeploy));
+        }
+
+        /**
+         * @param predeploy (Beta only) Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder predeploy(@Nullable Output<DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs> predeploy) {
+            $.predeploy = predeploy;
+            return this;
+        }
+
+        /**
+         * @param predeploy (Beta only) Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder predeploy(DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs predeploy) {
+            return predeploy(Output.of(predeploy));
         }
 
         /**

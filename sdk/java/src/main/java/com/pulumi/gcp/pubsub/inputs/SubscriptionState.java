@@ -6,6 +6,7 @@ package com.pulumi.gcp.pubsub.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.pubsub.inputs.SubscriptionBigqueryConfigArgs;
+import com.pulumi.gcp.pubsub.inputs.SubscriptionCloudStorageConfigArgs;
 import com.pulumi.gcp.pubsub.inputs.SubscriptionDeadLetterPolicyArgs;
 import com.pulumi.gcp.pubsub.inputs.SubscriptionExpirationPolicyArgs;
 import com.pulumi.gcp.pubsub.inputs.SubscriptionPushConfigArgs;
@@ -68,8 +69,8 @@ public final class SubscriptionState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * If delivery to BigQuery is used with this subscription, this field is used to configure it.
-     * Either pushConfig or bigQueryConfig can be set, but not both.
-     * If both are empty, then the subscriber will pull and ack messages using API methods.
+     * Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
+     * If all three are empty, then the subscriber will pull and ack messages using API methods.
      * Structure is documented below.
      * 
      */
@@ -78,13 +79,34 @@ public final class SubscriptionState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return If delivery to BigQuery is used with this subscription, this field is used to configure it.
-     * Either pushConfig or bigQueryConfig can be set, but not both.
-     * If both are empty, then the subscriber will pull and ack messages using API methods.
+     * Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
+     * If all three are empty, then the subscriber will pull and ack messages using API methods.
      * Structure is documented below.
      * 
      */
     public Optional<Output<SubscriptionBigqueryConfigArgs>> bigqueryConfig() {
         return Optional.ofNullable(this.bigqueryConfig);
+    }
+
+    /**
+     * If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
+     * Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
+     * If all three are empty, then the subscriber will pull and ack messages using API methods.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="cloudStorageConfig")
+    private @Nullable Output<SubscriptionCloudStorageConfigArgs> cloudStorageConfig;
+
+    /**
+     * @return If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
+     * Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
+     * If all three are empty, then the subscriber will pull and ack messages using API methods.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<SubscriptionCloudStorageConfigArgs>> cloudStorageConfig() {
+        return Optional.ofNullable(this.cloudStorageConfig);
     }
 
     /**
@@ -373,6 +395,7 @@ public final class SubscriptionState extends com.pulumi.resources.ResourceArgs {
     private SubscriptionState(SubscriptionState $) {
         this.ackDeadlineSeconds = $.ackDeadlineSeconds;
         this.bigqueryConfig = $.bigqueryConfig;
+        this.cloudStorageConfig = $.cloudStorageConfig;
         this.deadLetterPolicy = $.deadLetterPolicy;
         this.enableExactlyOnceDelivery = $.enableExactlyOnceDelivery;
         this.enableMessageOrdering = $.enableMessageOrdering;
@@ -457,8 +480,8 @@ public final class SubscriptionState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param bigqueryConfig If delivery to BigQuery is used with this subscription, this field is used to configure it.
-         * Either pushConfig or bigQueryConfig can be set, but not both.
-         * If both are empty, then the subscriber will pull and ack messages using API methods.
+         * Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
+         * If all three are empty, then the subscriber will pull and ack messages using API methods.
          * Structure is documented below.
          * 
          * @return builder
@@ -471,8 +494,8 @@ public final class SubscriptionState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param bigqueryConfig If delivery to BigQuery is used with this subscription, this field is used to configure it.
-         * Either pushConfig or bigQueryConfig can be set, but not both.
-         * If both are empty, then the subscriber will pull and ack messages using API methods.
+         * Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
+         * If all three are empty, then the subscriber will pull and ack messages using API methods.
          * Structure is documented below.
          * 
          * @return builder
@@ -480,6 +503,33 @@ public final class SubscriptionState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder bigqueryConfig(SubscriptionBigqueryConfigArgs bigqueryConfig) {
             return bigqueryConfig(Output.of(bigqueryConfig));
+        }
+
+        /**
+         * @param cloudStorageConfig If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
+         * Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
+         * If all three are empty, then the subscriber will pull and ack messages using API methods.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloudStorageConfig(@Nullable Output<SubscriptionCloudStorageConfigArgs> cloudStorageConfig) {
+            $.cloudStorageConfig = cloudStorageConfig;
+            return this;
+        }
+
+        /**
+         * @param cloudStorageConfig If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
+         * Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
+         * If all three are empty, then the subscriber will pull and ack messages using API methods.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloudStorageConfig(SubscriptionCloudStorageConfigArgs cloudStorageConfig) {
+            return cloudStorageConfig(Output.of(cloudStorageConfig));
         }
 
         /**

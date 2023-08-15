@@ -17,6 +17,8 @@ __all__ = [
     'LiteTopicReservationConfig',
     'LiteTopicRetentionConfig',
     'SubscriptionBigqueryConfig',
+    'SubscriptionCloudStorageConfig',
+    'SubscriptionCloudStorageConfigAvroConfig',
     'SubscriptionDeadLetterPolicy',
     'SubscriptionExpirationPolicy',
     'SubscriptionIAMBindingCondition',
@@ -30,6 +32,8 @@ __all__ = [
     'TopicMessageStoragePolicy',
     'TopicSchemaSettings',
     'GetSubscriptionBigqueryConfigResult',
+    'GetSubscriptionCloudStorageConfigResult',
+    'GetSubscriptionCloudStorageConfigAvroConfigResult',
     'GetSubscriptionDeadLetterPolicyResult',
     'GetSubscriptionExpirationPolicyResult',
     'GetSubscriptionPushConfigResult',
@@ -325,6 +329,167 @@ class SubscriptionBigqueryConfig(dict):
         """
         When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to additional columns in the table.
         The subscription name, messageId, and publishTime fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column.
+        """
+        return pulumi.get(self, "write_metadata")
+
+
+@pulumi.output_type
+class SubscriptionCloudStorageConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "avroConfig":
+            suggest = "avro_config"
+        elif key == "filenamePrefix":
+            suggest = "filename_prefix"
+        elif key == "filenameSuffix":
+            suggest = "filename_suffix"
+        elif key == "maxBytes":
+            suggest = "max_bytes"
+        elif key == "maxDuration":
+            suggest = "max_duration"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SubscriptionCloudStorageConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SubscriptionCloudStorageConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SubscriptionCloudStorageConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bucket: str,
+                 avro_config: Optional['outputs.SubscriptionCloudStorageConfigAvroConfig'] = None,
+                 filename_prefix: Optional[str] = None,
+                 filename_suffix: Optional[str] = None,
+                 max_bytes: Optional[int] = None,
+                 max_duration: Optional[str] = None,
+                 state: Optional[str] = None):
+        """
+        :param str bucket: User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like "gs://".
+        :param 'SubscriptionCloudStorageConfigAvroConfigArgs' avro_config: If set, message data will be written to Cloud Storage in Avro format.
+               Structure is documented below.
+        :param str filename_prefix: User-provided prefix for Cloud Storage filename.
+        :param str filename_suffix: User-provided suffix for Cloud Storage filename. Must not end in "/".
+        :param int max_bytes: The maximum bytes that can be written to a Cloud Storage file before a new file is created. Min 1 KB, max 10 GiB.
+               The maxBytes limit may be exceeded in cases where messages are larger than the limit.
+        :param str max_duration: The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes.
+               May not exceed the subscription's acknowledgement deadline.
+               A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        :param str state: (Output)
+               An output-only field that indicates whether or not the subscription can receive messages.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        if avro_config is not None:
+            pulumi.set(__self__, "avro_config", avro_config)
+        if filename_prefix is not None:
+            pulumi.set(__self__, "filename_prefix", filename_prefix)
+        if filename_suffix is not None:
+            pulumi.set(__self__, "filename_suffix", filename_suffix)
+        if max_bytes is not None:
+            pulumi.set(__self__, "max_bytes", max_bytes)
+        if max_duration is not None:
+            pulumi.set(__self__, "max_duration", max_duration)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> str:
+        """
+        User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like "gs://".
+        """
+        return pulumi.get(self, "bucket")
+
+    @property
+    @pulumi.getter(name="avroConfig")
+    def avro_config(self) -> Optional['outputs.SubscriptionCloudStorageConfigAvroConfig']:
+        """
+        If set, message data will be written to Cloud Storage in Avro format.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "avro_config")
+
+    @property
+    @pulumi.getter(name="filenamePrefix")
+    def filename_prefix(self) -> Optional[str]:
+        """
+        User-provided prefix for Cloud Storage filename.
+        """
+        return pulumi.get(self, "filename_prefix")
+
+    @property
+    @pulumi.getter(name="filenameSuffix")
+    def filename_suffix(self) -> Optional[str]:
+        """
+        User-provided suffix for Cloud Storage filename. Must not end in "/".
+        """
+        return pulumi.get(self, "filename_suffix")
+
+    @property
+    @pulumi.getter(name="maxBytes")
+    def max_bytes(self) -> Optional[int]:
+        """
+        The maximum bytes that can be written to a Cloud Storage file before a new file is created. Min 1 KB, max 10 GiB.
+        The maxBytes limit may be exceeded in cases where messages are larger than the limit.
+        """
+        return pulumi.get(self, "max_bytes")
+
+    @property
+    @pulumi.getter(name="maxDuration")
+    def max_duration(self) -> Optional[str]:
+        """
+        The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes.
+        May not exceed the subscription's acknowledgement deadline.
+        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "max_duration")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        """
+        (Output)
+        An output-only field that indicates whether or not the subscription can receive messages.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class SubscriptionCloudStorageConfigAvroConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "writeMetadata":
+            suggest = "write_metadata"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SubscriptionCloudStorageConfigAvroConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SubscriptionCloudStorageConfigAvroConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SubscriptionCloudStorageConfigAvroConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 write_metadata: Optional[bool] = None):
+        """
+        :param bool write_metadata: When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.
+        """
+        if write_metadata is not None:
+            pulumi.set(__self__, "write_metadata", write_metadata)
+
+    @property
+    @pulumi.getter(name="writeMetadata")
+    def write_metadata(self) -> Optional[bool]:
+        """
+        When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.
         """
         return pulumi.get(self, "write_metadata")
 
@@ -931,6 +1096,72 @@ class GetSubscriptionBigqueryConfigResult(dict):
     @pulumi.getter(name="useTopicSchema")
     def use_topic_schema(self) -> bool:
         return pulumi.get(self, "use_topic_schema")
+
+    @property
+    @pulumi.getter(name="writeMetadata")
+    def write_metadata(self) -> bool:
+        return pulumi.get(self, "write_metadata")
+
+
+@pulumi.output_type
+class GetSubscriptionCloudStorageConfigResult(dict):
+    def __init__(__self__, *,
+                 avro_configs: Sequence['outputs.GetSubscriptionCloudStorageConfigAvroConfigResult'],
+                 bucket: str,
+                 filename_prefix: str,
+                 filename_suffix: str,
+                 max_bytes: int,
+                 max_duration: str,
+                 state: str):
+        pulumi.set(__self__, "avro_configs", avro_configs)
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "filename_prefix", filename_prefix)
+        pulumi.set(__self__, "filename_suffix", filename_suffix)
+        pulumi.set(__self__, "max_bytes", max_bytes)
+        pulumi.set(__self__, "max_duration", max_duration)
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="avroConfigs")
+    def avro_configs(self) -> Sequence['outputs.GetSubscriptionCloudStorageConfigAvroConfigResult']:
+        return pulumi.get(self, "avro_configs")
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> str:
+        return pulumi.get(self, "bucket")
+
+    @property
+    @pulumi.getter(name="filenamePrefix")
+    def filename_prefix(self) -> str:
+        return pulumi.get(self, "filename_prefix")
+
+    @property
+    @pulumi.getter(name="filenameSuffix")
+    def filename_suffix(self) -> str:
+        return pulumi.get(self, "filename_suffix")
+
+    @property
+    @pulumi.getter(name="maxBytes")
+    def max_bytes(self) -> int:
+        return pulumi.get(self, "max_bytes")
+
+    @property
+    @pulumi.getter(name="maxDuration")
+    def max_duration(self) -> str:
+        return pulumi.get(self, "max_duration")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class GetSubscriptionCloudStorageConfigAvroConfigResult(dict):
+    def __init__(__self__, *,
+                 write_metadata: bool):
+        pulumi.set(__self__, "write_metadata", write_metadata)
 
     @property
     @pulumi.getter(name="writeMetadata")

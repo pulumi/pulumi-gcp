@@ -252,7 +252,7 @@ type BackendService struct {
 	// load balancing cannot be used with the other. For more information, refer to
 	// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
 	// Default value is `EXTERNAL`.
-	// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_MANAGED`.
+	// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrOutput `pulumi:"loadBalancingScheme"`
 	// A list of locality load balancing policies to be used in order of
 	// preference. Either the policy or the customPolicy field should be set.
@@ -293,8 +293,10 @@ type BackendService struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The protocol this BackendService uses to communicate with backends.
 	// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-	// types and may result in errors if used with the GA API.
-	// Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`.
+	// types and may result in errors if used with the GA API. **NOTE**: With protocol “UNSPECIFIED”,
+	// the backend service can be used by Layer 4 Internal Load Balancing or Network Load Balancing
+	// with TCP/UDP/L3_DEFAULT Forwarding Rule protocol.
+	// Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`, `UNSPECIFIED`.
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
 	// The security policy associated with this backend service.
 	SecurityPolicy pulumi.StringPtrOutput `pulumi:"securityPolicy"`
@@ -411,7 +413,7 @@ type backendServiceState struct {
 	// load balancing cannot be used with the other. For more information, refer to
 	// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
 	// Default value is `EXTERNAL`.
-	// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_MANAGED`.
+	// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// A list of locality load balancing policies to be used in order of
 	// preference. Either the policy or the customPolicy field should be set.
@@ -452,8 +454,10 @@ type backendServiceState struct {
 	Project *string `pulumi:"project"`
 	// The protocol this BackendService uses to communicate with backends.
 	// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-	// types and may result in errors if used with the GA API.
-	// Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`.
+	// types and may result in errors if used with the GA API. **NOTE**: With protocol “UNSPECIFIED”,
+	// the backend service can be used by Layer 4 Internal Load Balancing or Network Load Balancing
+	// with TCP/UDP/L3_DEFAULT Forwarding Rule protocol.
+	// Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`, `UNSPECIFIED`.
 	Protocol *string `pulumi:"protocol"`
 	// The security policy associated with this backend service.
 	SecurityPolicy *string `pulumi:"securityPolicy"`
@@ -541,7 +545,7 @@ type BackendServiceState struct {
 	// load balancing cannot be used with the other. For more information, refer to
 	// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
 	// Default value is `EXTERNAL`.
-	// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_MANAGED`.
+	// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrInput
 	// A list of locality load balancing policies to be used in order of
 	// preference. Either the policy or the customPolicy field should be set.
@@ -582,8 +586,10 @@ type BackendServiceState struct {
 	Project pulumi.StringPtrInput
 	// The protocol this BackendService uses to communicate with backends.
 	// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-	// types and may result in errors if used with the GA API.
-	// Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`.
+	// types and may result in errors if used with the GA API. **NOTE**: With protocol “UNSPECIFIED”,
+	// the backend service can be used by Layer 4 Internal Load Balancing or Network Load Balancing
+	// with TCP/UDP/L3_DEFAULT Forwarding Rule protocol.
+	// Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`, `UNSPECIFIED`.
 	Protocol pulumi.StringPtrInput
 	// The security policy associated with this backend service.
 	SecurityPolicy pulumi.StringPtrInput
@@ -668,7 +674,7 @@ type backendServiceArgs struct {
 	// load balancing cannot be used with the other. For more information, refer to
 	// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
 	// Default value is `EXTERNAL`.
-	// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_MANAGED`.
+	// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// A list of locality load balancing policies to be used in order of
 	// preference. Either the policy or the customPolicy field should be set.
@@ -709,8 +715,10 @@ type backendServiceArgs struct {
 	Project *string `pulumi:"project"`
 	// The protocol this BackendService uses to communicate with backends.
 	// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-	// types and may result in errors if used with the GA API.
-	// Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`.
+	// types and may result in errors if used with the GA API. **NOTE**: With protocol “UNSPECIFIED”,
+	// the backend service can be used by Layer 4 Internal Load Balancing or Network Load Balancing
+	// with TCP/UDP/L3_DEFAULT Forwarding Rule protocol.
+	// Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`, `UNSPECIFIED`.
 	Protocol *string `pulumi:"protocol"`
 	// The security policy associated with this backend service.
 	SecurityPolicy *string `pulumi:"securityPolicy"`
@@ -790,7 +798,7 @@ type BackendServiceArgs struct {
 	// load balancing cannot be used with the other. For more information, refer to
 	// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
 	// Default value is `EXTERNAL`.
-	// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_MANAGED`.
+	// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrInput
 	// A list of locality load balancing policies to be used in order of
 	// preference. Either the policy or the customPolicy field should be set.
@@ -831,8 +839,10 @@ type BackendServiceArgs struct {
 	Project pulumi.StringPtrInput
 	// The protocol this BackendService uses to communicate with backends.
 	// The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-	// types and may result in errors if used with the GA API.
-	// Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`.
+	// types and may result in errors if used with the GA API. **NOTE**: With protocol “UNSPECIFIED”,
+	// the backend service can be used by Layer 4 Internal Load Balancing or Network Load Balancing
+	// with TCP/UDP/L3_DEFAULT Forwarding Rule protocol.
+	// Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`, `UNSPECIFIED`.
 	Protocol pulumi.StringPtrInput
 	// The security policy associated with this backend service.
 	SecurityPolicy pulumi.StringPtrInput
@@ -1055,7 +1065,7 @@ func (o BackendServiceOutput) Iap() BackendServiceIapPtrOutput {
 // load balancing cannot be used with the other. For more information, refer to
 // [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
 // Default value is `EXTERNAL`.
-// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_MANAGED`.
+// Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
 func (o BackendServiceOutput) LoadBalancingScheme() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BackendService) pulumi.StringPtrOutput { return v.LoadBalancingScheme }).(pulumi.StringPtrOutput)
 }
@@ -1120,8 +1130,10 @@ func (o BackendServiceOutput) Project() pulumi.StringOutput {
 
 // The protocol this BackendService uses to communicate with backends.
 // The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-// types and may result in errors if used with the GA API.
-// Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`.
+// types and may result in errors if used with the GA API. **NOTE**: With protocol “UNSPECIFIED”,
+// the backend service can be used by Layer 4 Internal Load Balancing or Network Load Balancing
+// with TCP/UDP/L3_DEFAULT Forwarding Rule protocol.
+// Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`, `UNSPECIFIED`.
 func (o BackendServiceOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackendService) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
 }

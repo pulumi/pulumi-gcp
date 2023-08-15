@@ -120,7 +120,8 @@ namespace Pulumi.Gcp.Compute
         /// * If `IPProtocol` is one of TCP, UDP, or SCTP.
         /// * By internal TCP/UDP load balancers, backend service-based network load
         /// balancers, and internal and external protocol forwarding.
-        /// 
+        /// This option should be set to TRUE when the Forwarding Rule
+        /// IPProtocol is set to L3_DEFAULT.
         /// Set this field to true to allow packets addressed to any port or packets
         /// lacking destination port information (for example, UDP fragments after the
         /// first fragment) to be forwarded to the backends configured with this
@@ -223,10 +224,22 @@ namespace Pulumi.Gcp.Compute
         /// The valid IP protocols are different for different load balancing products
         /// as described in [Load balancing
         /// features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
+        /// A Forwarding Rule with protocol L3_DEFAULT can attach with target instance or
+        /// backend service with UNSPECIFIED protocol.
+        /// A forwarding rule with "L3_DEFAULT" IPProtocal cannot be attached to a backend service with TCP or UDP.
         /// Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, `L3_DEFAULT`.
         /// </summary>
         [Output("ipProtocol")]
         public Output<string> IpProtocol { get; private set; } = null!;
+
+        /// <summary>
+        /// The IP address version that will be used by this forwarding rule.
+        /// Valid options are IPV4 and IPV6.
+        /// If not set, the IPv4 address will be used by default.
+        /// Possible values are: `IPV4`, `IPV6`.
+        /// </summary>
+        [Output("ipVersion")]
+        public Output<string> IpVersion { get; private set; } = null!;
 
         /// <summary>
         /// Indicates whether or not this load balancer can be used as a collector for
@@ -342,7 +355,7 @@ namespace Pulumi.Gcp.Compute
         /// This field can only be used:
         /// * If `IPProtocol` is one of TCP, UDP, or SCTP.
         /// * By internal TCP/UDP load balancers, backend service-based network load
-        /// balancers, and internal protocol forwarding.
+        /// balancers, internal protocol forwarding and when protocol is not L3_DEFAULT.
         /// 
         /// You can specify a list of up to five ports by number, separated by commas.
         /// The ports can be contiguous or discontiguous. Only packets addressed to
@@ -505,7 +518,8 @@ namespace Pulumi.Gcp.Compute
         /// * If `IPProtocol` is one of TCP, UDP, or SCTP.
         /// * By internal TCP/UDP load balancers, backend service-based network load
         /// balancers, and internal and external protocol forwarding.
-        /// 
+        /// This option should be set to TRUE when the Forwarding Rule
+        /// IPProtocol is set to L3_DEFAULT.
         /// Set this field to true to allow packets addressed to any port or packets
         /// lacking destination port information (for example, UDP fragments after the
         /// first fragment) to be forwarded to the backends configured with this
@@ -596,10 +610,22 @@ namespace Pulumi.Gcp.Compute
         /// The valid IP protocols are different for different load balancing products
         /// as described in [Load balancing
         /// features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
+        /// A Forwarding Rule with protocol L3_DEFAULT can attach with target instance or
+        /// backend service with UNSPECIFIED protocol.
+        /// A forwarding rule with "L3_DEFAULT" IPProtocal cannot be attached to a backend service with TCP or UDP.
         /// Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, `L3_DEFAULT`.
         /// </summary>
         [Input("ipProtocol")]
         public Input<string>? IpProtocol { get; set; }
+
+        /// <summary>
+        /// The IP address version that will be used by this forwarding rule.
+        /// Valid options are IPV4 and IPV6.
+        /// If not set, the IPv4 address will be used by default.
+        /// Possible values are: `IPV4`, `IPV6`.
+        /// </summary>
+        [Input("ipVersion")]
+        public Input<string>? IpVersion { get; set; }
 
         /// <summary>
         /// Indicates whether or not this load balancer can be used as a collector for
@@ -717,7 +743,7 @@ namespace Pulumi.Gcp.Compute
         /// This field can only be used:
         /// * If `IPProtocol` is one of TCP, UDP, or SCTP.
         /// * By internal TCP/UDP load balancers, backend service-based network load
-        /// balancers, and internal protocol forwarding.
+        /// balancers, internal protocol forwarding and when protocol is not L3_DEFAULT.
         /// 
         /// You can specify a list of up to five ports by number, separated by commas.
         /// The ports can be contiguous or discontiguous. Only packets addressed to
@@ -832,7 +858,8 @@ namespace Pulumi.Gcp.Compute
         /// * If `IPProtocol` is one of TCP, UDP, or SCTP.
         /// * By internal TCP/UDP load balancers, backend service-based network load
         /// balancers, and internal and external protocol forwarding.
-        /// 
+        /// This option should be set to TRUE when the Forwarding Rule
+        /// IPProtocol is set to L3_DEFAULT.
         /// Set this field to true to allow packets addressed to any port or packets
         /// lacking destination port information (for example, UDP fragments after the
         /// first fragment) to be forwarded to the backends configured with this
@@ -935,10 +962,22 @@ namespace Pulumi.Gcp.Compute
         /// The valid IP protocols are different for different load balancing products
         /// as described in [Load balancing
         /// features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
+        /// A Forwarding Rule with protocol L3_DEFAULT can attach with target instance or
+        /// backend service with UNSPECIFIED protocol.
+        /// A forwarding rule with "L3_DEFAULT" IPProtocal cannot be attached to a backend service with TCP or UDP.
         /// Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, `L3_DEFAULT`.
         /// </summary>
         [Input("ipProtocol")]
         public Input<string>? IpProtocol { get; set; }
+
+        /// <summary>
+        /// The IP address version that will be used by this forwarding rule.
+        /// Valid options are IPV4 and IPV6.
+        /// If not set, the IPv4 address will be used by default.
+        /// Possible values are: `IPV4`, `IPV6`.
+        /// </summary>
+        [Input("ipVersion")]
+        public Input<string>? IpVersion { get; set; }
 
         /// <summary>
         /// Indicates whether or not this load balancer can be used as a collector for
@@ -1063,7 +1102,7 @@ namespace Pulumi.Gcp.Compute
         /// This field can only be used:
         /// * If `IPProtocol` is one of TCP, UDP, or SCTP.
         /// * By internal TCP/UDP load balancers, backend service-based network load
-        /// balancers, and internal protocol forwarding.
+        /// balancers, internal protocol forwarding and when protocol is not L3_DEFAULT.
         /// 
         /// You can specify a list of up to five ports by number, separated by commas.
         /// The ports can be contiguous or discontiguous. Only packets addressed to

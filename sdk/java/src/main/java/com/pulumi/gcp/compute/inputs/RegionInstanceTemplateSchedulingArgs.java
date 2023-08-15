@@ -162,7 +162,7 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
 
     /**
      * Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
-     * `preemptible` should be `true` and `auto_restart` should be
+     * `preemptible` should be `true` and `automatic_restart` should be
      * `false`. For more info about
      * `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
      * 
@@ -172,7 +172,7 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
 
     /**
      * @return Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
-     * `preemptible` should be `true` and `auto_restart` should be
+     * `preemptible` should be `true` and `automatic_restart` should be
      * `false`. For more info about
      * `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
      * 
@@ -419,7 +419,7 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
 
         /**
          * @param provisioningModel Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
-         * `preemptible` should be `true` and `auto_restart` should be
+         * `preemptible` should be `true` and `automatic_restart` should be
          * `false`. For more info about
          * `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
          * 
@@ -433,7 +433,7 @@ public final class RegionInstanceTemplateSchedulingArgs extends com.pulumi.resou
 
         /**
          * @param provisioningModel Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
-         * `preemptible` should be `true` and `auto_restart` should be
+         * `preemptible` should be `true` and `automatic_restart` should be
          * `false`. For more info about
          * `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
          * 

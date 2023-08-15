@@ -371,49 +371,6 @@ class User(pulumi.CustomResource):
 
         > **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
 
-        ## Example Usage
-
-        Example creating a SQL User.
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_random as random
-
-        db_name_suffix = random.RandomId("dbNameSuffix", byte_length=4)
-        main = gcp.sql.DatabaseInstance("main",
-            database_version="MYSQL_5_7",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-            ))
-        users = gcp.sql.User("users",
-            instance=main.name,
-            host="me.com",
-            password="changeme")
-        ```
-
-        Example creating a Cloud IAM User. (For MySQL, specify `cloudsql_iam_authentication`)
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_random as random
-
-        db_name_suffix = random.RandomId("dbNameSuffix", byte_length=4)
-        main = gcp.sql.DatabaseInstance("main",
-            database_version="POSTGRES_9_6",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-                database_flags=[gcp.sql.DatabaseInstanceSettingsDatabaseFlagArgs(
-                    name="cloudsql.iam_authentication",
-                    value="on",
-                )],
-            ))
-        users = gcp.sql.User("users",
-            instance=main.name,
-            type="CLOUD_IAM_USER")
-        ```
-
         ## Import
 
         SQL users for MySQL databases can be imported using the `project`, `instance`, `host` and `name`, e.g.
@@ -464,49 +421,6 @@ class User(pulumi.CustomResource):
         Creates a new Google SQL User on a Google SQL User Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/users).
 
         > **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
-
-        ## Example Usage
-
-        Example creating a SQL User.
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_random as random
-
-        db_name_suffix = random.RandomId("dbNameSuffix", byte_length=4)
-        main = gcp.sql.DatabaseInstance("main",
-            database_version="MYSQL_5_7",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-            ))
-        users = gcp.sql.User("users",
-            instance=main.name,
-            host="me.com",
-            password="changeme")
-        ```
-
-        Example creating a Cloud IAM User. (For MySQL, specify `cloudsql_iam_authentication`)
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-        import pulumi_random as random
-
-        db_name_suffix = random.RandomId("dbNameSuffix", byte_length=4)
-        main = gcp.sql.DatabaseInstance("main",
-            database_version="POSTGRES_9_6",
-            settings=gcp.sql.DatabaseInstanceSettingsArgs(
-                tier="db-f1-micro",
-                database_flags=[gcp.sql.DatabaseInstanceSettingsDatabaseFlagArgs(
-                    name="cloudsql.iam_authentication",
-                    value="on",
-                )],
-            ))
-        users = gcp.sql.User("users",
-            instance=main.name,
-            type="CLOUD_IAM_USER")
-        ```
 
         ## Import
 

@@ -64,11 +64,35 @@ public final class FhirStoreNotificationConfigArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.sendFullResource);
     }
 
+    /**
+     * Whether to send full FHIR resource to this Pub/Sub topic for deleting FHIR resource. Note that setting this to
+     * true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a
+     * resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always
+     * check the &#34;payloadType&#34; label from a Pub/Sub message to determine whether it needs to fetch the full previous
+     * resource as a separate operation.
+     * 
+     */
+    @Import(name="sendPreviousResourceOnDelete")
+    private @Nullable Output<Boolean> sendPreviousResourceOnDelete;
+
+    /**
+     * @return Whether to send full FHIR resource to this Pub/Sub topic for deleting FHIR resource. Note that setting this to
+     * true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a
+     * resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always
+     * check the &#34;payloadType&#34; label from a Pub/Sub message to determine whether it needs to fetch the full previous
+     * resource as a separate operation.
+     * 
+     */
+    public Optional<Output<Boolean>> sendPreviousResourceOnDelete() {
+        return Optional.ofNullable(this.sendPreviousResourceOnDelete);
+    }
+
     private FhirStoreNotificationConfigArgs() {}
 
     private FhirStoreNotificationConfigArgs(FhirStoreNotificationConfigArgs $) {
         this.pubsubTopic = $.pubsubTopic;
         this.sendFullResource = $.sendFullResource;
+        this.sendPreviousResourceOnDelete = $.sendPreviousResourceOnDelete;
     }
 
     public static Builder builder() {
@@ -147,6 +171,35 @@ public final class FhirStoreNotificationConfigArgs extends com.pulumi.resources.
          */
         public Builder sendFullResource(Boolean sendFullResource) {
             return sendFullResource(Output.of(sendFullResource));
+        }
+
+        /**
+         * @param sendPreviousResourceOnDelete Whether to send full FHIR resource to this Pub/Sub topic for deleting FHIR resource. Note that setting this to
+         * true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a
+         * resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always
+         * check the &#34;payloadType&#34; label from a Pub/Sub message to determine whether it needs to fetch the full previous
+         * resource as a separate operation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sendPreviousResourceOnDelete(@Nullable Output<Boolean> sendPreviousResourceOnDelete) {
+            $.sendPreviousResourceOnDelete = sendPreviousResourceOnDelete;
+            return this;
+        }
+
+        /**
+         * @param sendPreviousResourceOnDelete Whether to send full FHIR resource to this Pub/Sub topic for deleting FHIR resource. Note that setting this to
+         * true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a
+         * resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always
+         * check the &#34;payloadType&#34; label from a Pub/Sub message to determine whether it needs to fetch the full previous
+         * resource as a separate operation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sendPreviousResourceOnDelete(Boolean sendPreviousResourceOnDelete) {
+            return sendPreviousResourceOnDelete(Output.of(sendPreviousResourceOnDelete));
         }
 
         public FhirStoreNotificationConfigArgs build() {

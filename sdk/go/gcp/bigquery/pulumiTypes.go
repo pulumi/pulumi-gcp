@@ -9433,6 +9433,10 @@ type TableExternalDataConfiguration struct {
 	// Additional properties to set if
 	// `sourceFormat` is set to "CSV". Structure is documented below.
 	CsvOptions *TableExternalDataConfigurationCsvOptions `pulumi:"csvOptions"`
+	// Specifies how source URIs are interpreted for constructing the file set to load.
+	// By default source URIs are expanded against the underlying storage.
+	// Other options include specifying manifest files. Only applicable to object storage systems. Docs
+	FileSetSpecType *string `pulumi:"fileSetSpecType"`
 	// Additional options if
 	// `sourceFormat` is set to "GOOGLE_SHEETS". Structure is
 	// documented below.
@@ -9515,6 +9519,10 @@ type TableExternalDataConfigurationArgs struct {
 	// Additional properties to set if
 	// `sourceFormat` is set to "CSV". Structure is documented below.
 	CsvOptions TableExternalDataConfigurationCsvOptionsPtrInput `pulumi:"csvOptions"`
+	// Specifies how source URIs are interpreted for constructing the file set to load.
+	// By default source URIs are expanded against the underlying storage.
+	// Other options include specifying manifest files. Only applicable to object storage systems. Docs
+	FileSetSpecType pulumi.StringPtrInput `pulumi:"fileSetSpecType"`
 	// Additional options if
 	// `sourceFormat` is set to "GOOGLE_SHEETS". Structure is
 	// documented below.
@@ -9677,6 +9685,13 @@ func (o TableExternalDataConfigurationOutput) ConnectionId() pulumi.StringPtrOut
 // `sourceFormat` is set to "CSV". Structure is documented below.
 func (o TableExternalDataConfigurationOutput) CsvOptions() TableExternalDataConfigurationCsvOptionsPtrOutput {
 	return o.ApplyT(func(v TableExternalDataConfiguration) *TableExternalDataConfigurationCsvOptions { return v.CsvOptions }).(TableExternalDataConfigurationCsvOptionsPtrOutput)
+}
+
+// Specifies how source URIs are interpreted for constructing the file set to load.
+// By default source URIs are expanded against the underlying storage.
+// Other options include specifying manifest files. Only applicable to object storage systems. Docs
+func (o TableExternalDataConfigurationOutput) FileSetSpecType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableExternalDataConfiguration) *string { return v.FileSetSpecType }).(pulumi.StringPtrOutput)
 }
 
 // Additional options if
@@ -9853,6 +9868,18 @@ func (o TableExternalDataConfigurationPtrOutput) CsvOptions() TableExternalDataC
 		}
 		return v.CsvOptions
 	}).(TableExternalDataConfigurationCsvOptionsPtrOutput)
+}
+
+// Specifies how source URIs are interpreted for constructing the file set to load.
+// By default source URIs are expanded against the underlying storage.
+// Other options include specifying manifest files. Only applicable to object storage systems. Docs
+func (o TableExternalDataConfigurationPtrOutput) FileSetSpecType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableExternalDataConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FileSetSpecType
+	}).(pulumi.StringPtrOutput)
 }
 
 // Additional options if

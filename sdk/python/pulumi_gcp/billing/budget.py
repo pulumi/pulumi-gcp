@@ -363,6 +363,7 @@ class Budget(pulumi.CustomResource):
                     "PROMOTION",
                     "FREE_TIER",
                 ],
+                resource_ancestors=["organizations/123456789"],
             ),
             amount=gcp.billing.BudgetAmountArgs(
                 specified_amount=gcp.billing.BudgetAmountSpecifiedAmountArgs(
@@ -580,6 +581,7 @@ class Budget(pulumi.CustomResource):
                     "PROMOTION",
                     "FREE_TIER",
                 ],
+                resource_ancestors=["organizations/123456789"],
             ),
             amount=gcp.billing.BudgetAmountArgs(
                 specified_amount=gcp.billing.BudgetAmountSpecifiedAmountArgs(

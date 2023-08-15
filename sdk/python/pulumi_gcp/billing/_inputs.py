@@ -326,6 +326,7 @@ class BudgetBudgetFilterArgs:
                  custom_period: Optional[pulumi.Input['BudgetBudgetFilterCustomPeriodArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 resource_ancestors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  subaccounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -353,6 +354,10 @@ class BudgetBudgetFilterArgs:
                included in the budget. If omitted, the report will include
                all usage for the billing account, regardless of which project
                the usage occurred on.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_ancestors: A set of folder and organization names of the form folders/{folderId} or organizations/{organizationId},
+               specifying that usage from only this set of folders and organizations should be included in the budget.
+               If omitted, the budget includes all usage that the billing account pays for. If the folder or organization
+               contains projects that are paid for by a different Cloud Billing account, the budget doesn't apply to those projects.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] services: A set of services of the form services/{service_id},
                specifying that usage from only this set of services should be
                included in the budget. If omitted, the report will include
@@ -379,6 +384,8 @@ class BudgetBudgetFilterArgs:
             pulumi.set(__self__, "labels", labels)
         if projects is not None:
             pulumi.set(__self__, "projects", projects)
+        if resource_ancestors is not None:
+            pulumi.set(__self__, "resource_ancestors", resource_ancestors)
         if services is not None:
             pulumi.set(__self__, "services", services)
         if subaccounts is not None:
@@ -473,6 +480,21 @@ class BudgetBudgetFilterArgs:
     @projects.setter
     def projects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "projects", value)
+
+    @property
+    @pulumi.getter(name="resourceAncestors")
+    def resource_ancestors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A set of folder and organization names of the form folders/{folderId} or organizations/{organizationId},
+        specifying that usage from only this set of folders and organizations should be included in the budget.
+        If omitted, the budget includes all usage that the billing account pays for. If the folder or organization
+        contains projects that are paid for by a different Cloud Billing account, the budget doesn't apply to those projects.
+        """
+        return pulumi.get(self, "resource_ancestors")
+
+    @resource_ancestors.setter
+    def resource_ancestors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "resource_ancestors", value)
 
     @property
     @pulumi.getter

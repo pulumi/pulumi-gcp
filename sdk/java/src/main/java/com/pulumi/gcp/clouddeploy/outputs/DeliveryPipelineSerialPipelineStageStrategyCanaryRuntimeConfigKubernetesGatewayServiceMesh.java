@@ -6,6 +6,8 @@ package com.pulumi.gcp.clouddeploy.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh {
@@ -19,6 +21,11 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
      * 
      */
     private String httpRoute;
+    /**
+     * @return Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
+     * 
+     */
+    private @Nullable String routeUpdateWaitTime;
     /**
      * @return Required. Name of the Kubernetes Service.
      * 
@@ -41,6 +48,13 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
         return this.httpRoute;
     }
     /**
+     * @return Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
+     * 
+     */
+    public Optional<String> routeUpdateWaitTime() {
+        return Optional.ofNullable(this.routeUpdateWaitTime);
+    }
+    /**
      * @return Required. Name of the Kubernetes Service.
      * 
      */
@@ -59,12 +73,14 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
     public static final class Builder {
         private String deployment;
         private String httpRoute;
+        private @Nullable String routeUpdateWaitTime;
         private String service;
         public Builder() {}
         public Builder(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.deployment = defaults.deployment;
     	      this.httpRoute = defaults.httpRoute;
+    	      this.routeUpdateWaitTime = defaults.routeUpdateWaitTime;
     	      this.service = defaults.service;
         }
 
@@ -79,6 +95,11 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
             return this;
         }
         @CustomType.Setter
+        public Builder routeUpdateWaitTime(@Nullable String routeUpdateWaitTime) {
+            this.routeUpdateWaitTime = routeUpdateWaitTime;
+            return this;
+        }
+        @CustomType.Setter
         public Builder service(String service) {
             this.service = Objects.requireNonNull(service);
             return this;
@@ -87,6 +108,7 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
             final var o = new DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh();
             o.deployment = deployment;
             o.httpRoute = httpRoute;
+            o.routeUpdateWaitTime = routeUpdateWaitTime;
             o.service = service;
             return o;
         }

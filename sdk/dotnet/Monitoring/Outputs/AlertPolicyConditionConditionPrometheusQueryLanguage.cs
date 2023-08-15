@@ -41,7 +41,7 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// alerting rule, then this value should be taken from the enclosing
         /// rule group.
         /// </summary>
-        public readonly string EvaluationInterval;
+        public readonly string? EvaluationInterval;
         /// <summary>
         /// Labels to add to or overwrite in the PromQL query result. Label names
         /// must be valid.
@@ -76,7 +76,7 @@ namespace Pulumi.Gcp.Monitoring.Outputs
 
             string? duration,
 
-            string evaluationInterval,
+            string? evaluationInterval,
 
             ImmutableDictionary<string, string>? labels,
 

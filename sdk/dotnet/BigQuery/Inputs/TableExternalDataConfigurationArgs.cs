@@ -50,6 +50,14 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public Input<Inputs.TableExternalDataConfigurationCsvOptionsArgs>? CsvOptions { get; set; }
 
         /// <summary>
+        /// Specifies how source URIs are interpreted for constructing the file set to load.
+        /// By default source URIs are expanded against the underlying storage.
+        /// Other options include specifying manifest files. Only applicable to object storage systems. Docs
+        /// </summary>
+        [Input("fileSetSpecType")]
+        public Input<string>? FileSetSpecType { get; set; }
+
+        /// <summary>
         /// Additional options if
         /// `source_format` is set to "GOOGLE_SHEETS". Structure is
         /// documented below.

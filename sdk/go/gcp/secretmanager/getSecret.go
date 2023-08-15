@@ -58,8 +58,9 @@ type LookupSecretArgs struct {
 
 // A collection of values returned by getSecret.
 type LookupSecretResult struct {
-	CreateTime string `pulumi:"createTime"`
-	ExpireTime string `pulumi:"expireTime"`
+	Annotations map[string]string `pulumi:"annotations"`
+	CreateTime  string            `pulumi:"createTime"`
+	ExpireTime  string            `pulumi:"expireTime"`
 	// The provider-assigned unique ID for this managed resource.
 	Id           string                 `pulumi:"id"`
 	Labels       map[string]string      `pulumi:"labels"`
@@ -110,6 +111,10 @@ func (o LookupSecretResultOutput) ToLookupSecretResultOutput() LookupSecretResul
 
 func (o LookupSecretResultOutput) ToLookupSecretResultOutputWithContext(ctx context.Context) LookupSecretResultOutput {
 	return o
+}
+
+func (o LookupSecretResultOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupSecretResult) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 func (o LookupSecretResultOutput) CreateTime() pulumi.StringOutput {

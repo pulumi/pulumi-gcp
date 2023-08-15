@@ -4,6 +4,8 @@
 package com.pulumi.gcp.clouddeploy.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.clouddeploy.outputs.DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy;
+import com.pulumi.gcp.clouddeploy.outputs.DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy;
 import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,12 +14,36 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DeliveryPipelineSerialPipelineStageStrategyStandard {
     /**
+     * @return (Beta only) Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
+     * 
+     */
+    private @Nullable DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy postdeploy;
+    /**
+     * @return (Beta only) Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
+     * 
+     */
+    private @Nullable DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy predeploy;
+    /**
      * @return Whether to verify a deployment.
      * 
      */
     private @Nullable Boolean verify;
 
     private DeliveryPipelineSerialPipelineStageStrategyStandard() {}
+    /**
+     * @return (Beta only) Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
+     * 
+     */
+    public Optional<DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy> postdeploy() {
+        return Optional.ofNullable(this.postdeploy);
+    }
+    /**
+     * @return (Beta only) Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
+     * 
+     */
+    public Optional<DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy> predeploy() {
+        return Optional.ofNullable(this.predeploy);
+    }
     /**
      * @return Whether to verify a deployment.
      * 
@@ -35,13 +61,27 @@ public final class DeliveryPipelineSerialPipelineStageStrategyStandard {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy postdeploy;
+        private @Nullable DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy predeploy;
         private @Nullable Boolean verify;
         public Builder() {}
         public Builder(DeliveryPipelineSerialPipelineStageStrategyStandard defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.postdeploy = defaults.postdeploy;
+    	      this.predeploy = defaults.predeploy;
     	      this.verify = defaults.verify;
         }
 
+        @CustomType.Setter
+        public Builder postdeploy(@Nullable DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy postdeploy) {
+            this.postdeploy = postdeploy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder predeploy(@Nullable DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy predeploy) {
+            this.predeploy = predeploy;
+            return this;
+        }
         @CustomType.Setter
         public Builder verify(@Nullable Boolean verify) {
             this.verify = verify;
@@ -49,6 +89,8 @@ public final class DeliveryPipelineSerialPipelineStageStrategyStandard {
         }
         public DeliveryPipelineSerialPipelineStageStrategyStandard build() {
             final var o = new DeliveryPipelineSerialPipelineStageStrategyStandard();
+            o.postdeploy = postdeploy;
+            o.predeploy = predeploy;
             o.verify = verify;
             return o;
         }

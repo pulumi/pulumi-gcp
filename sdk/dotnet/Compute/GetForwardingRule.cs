@@ -148,6 +148,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string Id;
         public readonly string IpAddress;
         public readonly string IpProtocol;
+        public readonly string IpVersion;
         public readonly bool IsMirroringCollector;
         public readonly string LabelFingerprint;
         public readonly ImmutableDictionary<string, string> Labels;
@@ -191,6 +192,8 @@ namespace Pulumi.Gcp.Compute
             string ipAddress,
 
             string ipProtocol,
+
+            string ipVersion,
 
             bool isMirroringCollector,
 
@@ -244,6 +247,7 @@ namespace Pulumi.Gcp.Compute
             Id = id;
             IpAddress = ipAddress;
             IpProtocol = ipProtocol;
+            IpVersion = ipVersion;
             IsMirroringCollector = isMirroringCollector;
             LabelFingerprint = labelFingerprint;
             Labels = labels;

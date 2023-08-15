@@ -44,7 +44,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string? ServicesSecondaryRangeName;
         /// <summary>
-        /// The IP Stack Type of the cluster. 
+        /// The IP Stack Type of the cluster.
         /// Default value is `IPV4`.
         /// Possible values are `IPV4` and `IPV4_IPV6`.
         /// </summary>

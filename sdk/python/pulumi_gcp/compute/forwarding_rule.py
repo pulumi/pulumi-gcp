@@ -23,6 +23,7 @@ class ForwardingRuleArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  ip_protocol: Optional[pulumi.Input[str]] = None,
+                 ip_version: Optional[pulumi.Input[str]] = None,
                  is_mirroring_collector: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  load_balancing_scheme: Optional[pulumi.Input[str]] = None,
@@ -45,7 +46,8 @@ class ForwardingRuleArgs:
                * If `IPProtocol` is one of TCP, UDP, or SCTP.
                * By internal TCP/UDP load balancers, backend service-based network load
                balancers, and internal and external protocol forwarding.
-               
+               This option should be set to TRUE when the Forwarding Rule
+               IPProtocol is set to L3_DEFAULT.
                Set this field to true to allow packets addressed to any port or packets
                lacking destination port information (for example, UDP fragments after the
                first fragment) to be forwarded to the backends configured with this
@@ -106,7 +108,14 @@ class ForwardingRuleArgs:
                The valid IP protocols are different for different load balancing products
                as described in [Load balancing
                features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
+               A Forwarding Rule with protocol L3_DEFAULT can attach with target instance or
+               backend service with UNSPECIFIED protocol.
+               A forwarding rule with "L3_DEFAULT" IPProtocal cannot be attached to a backend service with TCP or UDP.
                Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, `L3_DEFAULT`.
+        :param pulumi.Input[str] ip_version: The IP address version that will be used by this forwarding rule.
+               Valid options are IPV4 and IPV6.
+               If not set, the IPv4 address will be used by default.
+               Possible values are: `IPV4`, `IPV6`.
         :param pulumi.Input[bool] is_mirroring_collector: Indicates whether or not this load balancer can be used as a collector for
                packet mirroring. To prevent mirroring loops, instances behind this
                load balancer will not have their traffic mirrored even if a
@@ -173,7 +182,7 @@ class ForwardingRuleArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: This field can only be used:
                * If `IPProtocol` is one of TCP, UDP, or SCTP.
                * By internal TCP/UDP load balancers, backend service-based network load
-               balancers, and internal protocol forwarding.
+               balancers, internal protocol forwarding and when protocol is not L3_DEFAULT.
                
                You can specify a list of up to five ports by number, separated by commas.
                The ports can be contiguous or discontiguous. Only packets addressed to
@@ -236,6 +245,8 @@ class ForwardingRuleArgs:
             pulumi.set(__self__, "ip_address", ip_address)
         if ip_protocol is not None:
             pulumi.set(__self__, "ip_protocol", ip_protocol)
+        if ip_version is not None:
+            pulumi.set(__self__, "ip_version", ip_version)
         if is_mirroring_collector is not None:
             pulumi.set(__self__, "is_mirroring_collector", is_mirroring_collector)
         if labels is not None:
@@ -277,7 +288,8 @@ class ForwardingRuleArgs:
         * If `IPProtocol` is one of TCP, UDP, or SCTP.
         * By internal TCP/UDP load balancers, backend service-based network load
         balancers, and internal and external protocol forwarding.
-
+        This option should be set to TRUE when the Forwarding Rule
+        IPProtocol is set to L3_DEFAULT.
         Set this field to true to allow packets addressed to any port or packets
         lacking destination port information (for example, UDP fragments after the
         first fragment) to be forwarded to the backends configured with this
@@ -404,6 +416,9 @@ class ForwardingRuleArgs:
         The valid IP protocols are different for different load balancing products
         as described in [Load balancing
         features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
+        A Forwarding Rule with protocol L3_DEFAULT can attach with target instance or
+        backend service with UNSPECIFIED protocol.
+        A forwarding rule with "L3_DEFAULT" IPProtocal cannot be attached to a backend service with TCP or UDP.
         Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, `L3_DEFAULT`.
         """
         return pulumi.get(self, "ip_protocol")
@@ -411,6 +426,21 @@ class ForwardingRuleArgs:
     @ip_protocol.setter
     def ip_protocol(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ip_protocol", value)
+
+    @property
+    @pulumi.getter(name="ipVersion")
+    def ip_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP address version that will be used by this forwarding rule.
+        Valid options are IPV4 and IPV6.
+        If not set, the IPv4 address will be used by default.
+        Possible values are: `IPV4`, `IPV6`.
+        """
+        return pulumi.get(self, "ip_version")
+
+    @ip_version.setter
+    def ip_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_version", value)
 
     @property
     @pulumi.getter(name="isMirroringCollector")
@@ -570,7 +600,7 @@ class ForwardingRuleArgs:
         This field can only be used:
         * If `IPProtocol` is one of TCP, UDP, or SCTP.
         * By internal TCP/UDP load balancers, backend service-based network load
-        balancers, and internal protocol forwarding.
+        balancers, internal protocol forwarding and when protocol is not L3_DEFAULT.
 
         You can specify a list of up to five ports by number, separated by commas.
         The ports can be contiguous or discontiguous. Only packets addressed to
@@ -715,6 +745,7 @@ class _ForwardingRuleState:
                  description: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  ip_protocol: Optional[pulumi.Input[str]] = None,
+                 ip_version: Optional[pulumi.Input[str]] = None,
                  is_mirroring_collector: Optional[pulumi.Input[bool]] = None,
                  label_fingerprint: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -742,7 +773,8 @@ class _ForwardingRuleState:
                * If `IPProtocol` is one of TCP, UDP, or SCTP.
                * By internal TCP/UDP load balancers, backend service-based network load
                balancers, and internal and external protocol forwarding.
-               
+               This option should be set to TRUE when the Forwarding Rule
+               IPProtocol is set to L3_DEFAULT.
                Set this field to true to allow packets addressed to any port or packets
                lacking destination port information (for example, UDP fragments after the
                first fragment) to be forwarded to the backends configured with this
@@ -805,7 +837,14 @@ class _ForwardingRuleState:
                The valid IP protocols are different for different load balancing products
                as described in [Load balancing
                features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
+               A Forwarding Rule with protocol L3_DEFAULT can attach with target instance or
+               backend service with UNSPECIFIED protocol.
+               A forwarding rule with "L3_DEFAULT" IPProtocal cannot be attached to a backend service with TCP or UDP.
                Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, `L3_DEFAULT`.
+        :param pulumi.Input[str] ip_version: The IP address version that will be used by this forwarding rule.
+               Valid options are IPV4 and IPV6.
+               If not set, the IPv4 address will be used by default.
+               Possible values are: `IPV4`, `IPV6`.
         :param pulumi.Input[bool] is_mirroring_collector: Indicates whether or not this load balancer can be used as a collector for
                packet mirroring. To prevent mirroring loops, instances behind this
                load balancer will not have their traffic mirrored even if a
@@ -874,7 +913,7 @@ class _ForwardingRuleState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: This field can only be used:
                * If `IPProtocol` is one of TCP, UDP, or SCTP.
                * By internal TCP/UDP load balancers, backend service-based network load
-               balancers, and internal protocol forwarding.
+               balancers, internal protocol forwarding and when protocol is not L3_DEFAULT.
                
                You can specify a list of up to five ports by number, separated by commas.
                The ports can be contiguous or discontiguous. Only packets addressed to
@@ -946,6 +985,8 @@ class _ForwardingRuleState:
             pulumi.set(__self__, "ip_address", ip_address)
         if ip_protocol is not None:
             pulumi.set(__self__, "ip_protocol", ip_protocol)
+        if ip_version is not None:
+            pulumi.set(__self__, "ip_version", ip_version)
         if is_mirroring_collector is not None:
             pulumi.set(__self__, "is_mirroring_collector", is_mirroring_collector)
         if label_fingerprint is not None:
@@ -997,7 +1038,8 @@ class _ForwardingRuleState:
         * If `IPProtocol` is one of TCP, UDP, or SCTP.
         * By internal TCP/UDP load balancers, backend service-based network load
         balancers, and internal and external protocol forwarding.
-
+        This option should be set to TRUE when the Forwarding Rule
+        IPProtocol is set to L3_DEFAULT.
         Set this field to true to allow packets addressed to any port or packets
         lacking destination port information (for example, UDP fragments after the
         first fragment) to be forwarded to the backends configured with this
@@ -1148,6 +1190,9 @@ class _ForwardingRuleState:
         The valid IP protocols are different for different load balancing products
         as described in [Load balancing
         features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
+        A Forwarding Rule with protocol L3_DEFAULT can attach with target instance or
+        backend service with UNSPECIFIED protocol.
+        A forwarding rule with "L3_DEFAULT" IPProtocal cannot be attached to a backend service with TCP or UDP.
         Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, `L3_DEFAULT`.
         """
         return pulumi.get(self, "ip_protocol")
@@ -1155,6 +1200,21 @@ class _ForwardingRuleState:
     @ip_protocol.setter
     def ip_protocol(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ip_protocol", value)
+
+    @property
+    @pulumi.getter(name="ipVersion")
+    def ip_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP address version that will be used by this forwarding rule.
+        Valid options are IPV4 and IPV6.
+        If not set, the IPv4 address will be used by default.
+        Possible values are: `IPV4`, `IPV6`.
+        """
+        return pulumi.get(self, "ip_version")
+
+    @ip_version.setter
+    def ip_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_version", value)
 
     @property
     @pulumi.getter(name="isMirroringCollector")
@@ -1327,7 +1387,7 @@ class _ForwardingRuleState:
         This field can only be used:
         * If `IPProtocol` is one of TCP, UDP, or SCTP.
         * By internal TCP/UDP load balancers, backend service-based network load
-        balancers, and internal protocol forwarding.
+        balancers, internal protocol forwarding and when protocol is not L3_DEFAULT.
 
         You can specify a list of up to five ports by number, separated by commas.
         The ports can be contiguous or discontiguous. Only packets addressed to
@@ -1521,6 +1581,7 @@ class ForwardingRule(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  ip_protocol: Optional[pulumi.Input[str]] = None,
+                 ip_version: Optional[pulumi.Input[str]] = None,
                  is_mirroring_collector: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  load_balancing_scheme: Optional[pulumi.Input[str]] = None,
@@ -1614,7 +1675,8 @@ class ForwardingRule(pulumi.CustomResource):
                * If `IPProtocol` is one of TCP, UDP, or SCTP.
                * By internal TCP/UDP load balancers, backend service-based network load
                balancers, and internal and external protocol forwarding.
-               
+               This option should be set to TRUE when the Forwarding Rule
+               IPProtocol is set to L3_DEFAULT.
                Set this field to true to allow packets addressed to any port or packets
                lacking destination port information (for example, UDP fragments after the
                first fragment) to be forwarded to the backends configured with this
@@ -1675,7 +1737,14 @@ class ForwardingRule(pulumi.CustomResource):
                The valid IP protocols are different for different load balancing products
                as described in [Load balancing
                features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
+               A Forwarding Rule with protocol L3_DEFAULT can attach with target instance or
+               backend service with UNSPECIFIED protocol.
+               A forwarding rule with "L3_DEFAULT" IPProtocal cannot be attached to a backend service with TCP or UDP.
                Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, `L3_DEFAULT`.
+        :param pulumi.Input[str] ip_version: The IP address version that will be used by this forwarding rule.
+               Valid options are IPV4 and IPV6.
+               If not set, the IPv4 address will be used by default.
+               Possible values are: `IPV4`, `IPV6`.
         :param pulumi.Input[bool] is_mirroring_collector: Indicates whether or not this load balancer can be used as a collector for
                packet mirroring. To prevent mirroring loops, instances behind this
                load balancer will not have their traffic mirrored even if a
@@ -1742,7 +1811,7 @@ class ForwardingRule(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: This field can only be used:
                * If `IPProtocol` is one of TCP, UDP, or SCTP.
                * By internal TCP/UDP load balancers, backend service-based network load
-               balancers, and internal protocol forwarding.
+               balancers, internal protocol forwarding and when protocol is not L3_DEFAULT.
                
                You can specify a list of up to five ports by number, separated by commas.
                The ports can be contiguous or discontiguous. Only packets addressed to
@@ -1889,6 +1958,7 @@ class ForwardingRule(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  ip_protocol: Optional[pulumi.Input[str]] = None,
+                 ip_version: Optional[pulumi.Input[str]] = None,
                  is_mirroring_collector: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  load_balancing_scheme: Optional[pulumi.Input[str]] = None,
@@ -1921,6 +1991,7 @@ class ForwardingRule(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["ip_address"] = ip_address
             __props__.__dict__["ip_protocol"] = ip_protocol
+            __props__.__dict__["ip_version"] = ip_version
             __props__.__dict__["is_mirroring_collector"] = is_mirroring_collector
             __props__.__dict__["labels"] = labels
             __props__.__dict__["load_balancing_scheme"] = load_balancing_scheme
@@ -1963,6 +2034,7 @@ class ForwardingRule(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             ip_address: Optional[pulumi.Input[str]] = None,
             ip_protocol: Optional[pulumi.Input[str]] = None,
+            ip_version: Optional[pulumi.Input[str]] = None,
             is_mirroring_collector: Optional[pulumi.Input[bool]] = None,
             label_fingerprint: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1995,7 +2067,8 @@ class ForwardingRule(pulumi.CustomResource):
                * If `IPProtocol` is one of TCP, UDP, or SCTP.
                * By internal TCP/UDP load balancers, backend service-based network load
                balancers, and internal and external protocol forwarding.
-               
+               This option should be set to TRUE when the Forwarding Rule
+               IPProtocol is set to L3_DEFAULT.
                Set this field to true to allow packets addressed to any port or packets
                lacking destination port information (for example, UDP fragments after the
                first fragment) to be forwarded to the backends configured with this
@@ -2058,7 +2131,14 @@ class ForwardingRule(pulumi.CustomResource):
                The valid IP protocols are different for different load balancing products
                as described in [Load balancing
                features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
+               A Forwarding Rule with protocol L3_DEFAULT can attach with target instance or
+               backend service with UNSPECIFIED protocol.
+               A forwarding rule with "L3_DEFAULT" IPProtocal cannot be attached to a backend service with TCP or UDP.
                Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, `L3_DEFAULT`.
+        :param pulumi.Input[str] ip_version: The IP address version that will be used by this forwarding rule.
+               Valid options are IPV4 and IPV6.
+               If not set, the IPv4 address will be used by default.
+               Possible values are: `IPV4`, `IPV6`.
         :param pulumi.Input[bool] is_mirroring_collector: Indicates whether or not this load balancer can be used as a collector for
                packet mirroring. To prevent mirroring loops, instances behind this
                load balancer will not have their traffic mirrored even if a
@@ -2127,7 +2207,7 @@ class ForwardingRule(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: This field can only be used:
                * If `IPProtocol` is one of TCP, UDP, or SCTP.
                * By internal TCP/UDP load balancers, backend service-based network load
-               balancers, and internal protocol forwarding.
+               balancers, internal protocol forwarding and when protocol is not L3_DEFAULT.
                
                You can specify a list of up to five ports by number, separated by commas.
                The ports can be contiguous or discontiguous. Only packets addressed to
@@ -2194,6 +2274,7 @@ class ForwardingRule(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["ip_address"] = ip_address
         __props__.__dict__["ip_protocol"] = ip_protocol
+        __props__.__dict__["ip_version"] = ip_version
         __props__.__dict__["is_mirroring_collector"] = is_mirroring_collector
         __props__.__dict__["label_fingerprint"] = label_fingerprint
         __props__.__dict__["labels"] = labels
@@ -2225,7 +2306,8 @@ class ForwardingRule(pulumi.CustomResource):
         * If `IPProtocol` is one of TCP, UDP, or SCTP.
         * By internal TCP/UDP load balancers, backend service-based network load
         balancers, and internal and external protocol forwarding.
-
+        This option should be set to TRUE when the Forwarding Rule
+        IPProtocol is set to L3_DEFAULT.
         Set this field to true to allow packets addressed to any port or packets
         lacking destination port information (for example, UDP fragments after the
         first fragment) to be forwarded to the backends configured with this
@@ -2344,9 +2426,23 @@ class ForwardingRule(pulumi.CustomResource):
         The valid IP protocols are different for different load balancing products
         as described in [Load balancing
         features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
+        A Forwarding Rule with protocol L3_DEFAULT can attach with target instance or
+        backend service with UNSPECIFIED protocol.
+        A forwarding rule with "L3_DEFAULT" IPProtocal cannot be attached to a backend service with TCP or UDP.
         Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, `L3_DEFAULT`.
         """
         return pulumi.get(self, "ip_protocol")
+
+    @property
+    @pulumi.getter(name="ipVersion")
+    def ip_version(self) -> pulumi.Output[str]:
+        """
+        The IP address version that will be used by this forwarding rule.
+        Valid options are IPV4 and IPV6.
+        If not set, the IPv4 address will be used by default.
+        Possible values are: `IPV4`, `IPV6`.
+        """
+        return pulumi.get(self, "ip_version")
 
     @property
     @pulumi.getter(name="isMirroringCollector")
@@ -2483,7 +2579,7 @@ class ForwardingRule(pulumi.CustomResource):
         This field can only be used:
         * If `IPProtocol` is one of TCP, UDP, or SCTP.
         * By internal TCP/UDP load balancers, backend service-based network load
-        balancers, and internal protocol forwarding.
+        balancers, internal protocol forwarding and when protocol is not L3_DEFAULT.
 
         You can specify a list of up to five ports by number, separated by commas.
         The ports can be contiguous or discontiguous. Only packets addressed to

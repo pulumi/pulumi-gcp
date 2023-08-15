@@ -16,6 +16,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSecretResult {
+    private Map<String,String> annotations;
     private String createTime;
     private String expireTime;
     /**
@@ -33,6 +34,9 @@ public final class GetSecretResult {
     private String ttl;
 
     private GetSecretResult() {}
+    public Map<String,String> annotations() {
+        return this.annotations;
+    }
     public String createTime() {
         return this.createTime;
     }
@@ -80,6 +84,7 @@ public final class GetSecretResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Map<String,String> annotations;
         private String createTime;
         private String expireTime;
         private String id;
@@ -94,6 +99,7 @@ public final class GetSecretResult {
         public Builder() {}
         public Builder(GetSecretResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.annotations = defaults.annotations;
     	      this.createTime = defaults.createTime;
     	      this.expireTime = defaults.expireTime;
     	      this.id = defaults.id;
@@ -107,6 +113,11 @@ public final class GetSecretResult {
     	      this.ttl = defaults.ttl;
         }
 
+        @CustomType.Setter
+        public Builder annotations(Map<String,String> annotations) {
+            this.annotations = Objects.requireNonNull(annotations);
+            return this;
+        }
         @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
@@ -173,6 +184,7 @@ public final class GetSecretResult {
         }
         public GetSecretResult build() {
             final var o = new GetSecretResult();
+            o.annotations = annotations;
             o.createTime = createTime;
             o.expireTime = expireTime;
             o.id = id;

@@ -377,6 +377,22 @@ public class Function extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.eventTrigger);
     }
     /**
+     * Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources.
+     * It must match the pattern projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}.
+     * 
+     */
+    @Export(name="kmsKeyName", type=String.class, parameters={})
+    private Output</* @Nullable */ String> kmsKeyName;
+
+    /**
+     * @return Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources.
+     * It must match the pattern projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}.
+     * 
+     */
+    public Output<Optional<String>> kmsKeyName() {
+        return Codegen.optional(this.kmsKeyName);
+    }
+    /**
      * A set of key/value label pairs associated with this Cloud Function.
      * 
      */

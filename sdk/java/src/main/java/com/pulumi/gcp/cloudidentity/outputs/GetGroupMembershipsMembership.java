@@ -39,6 +39,10 @@ public final class GetGroupMembershipsMembership {
      * 
      */
     private List<GetGroupMembershipsMembershipRole> roles;
+    /**
+     * @return The type of the membership.
+     * 
+     */
     private String type;
     private String updateTime;
 
@@ -81,6 +85,10 @@ public final class GetGroupMembershipsMembership {
     public List<GetGroupMembershipsMembershipRole> roles() {
         return this.roles;
     }
+    /**
+     * @return The type of the membership.
+     * 
+     */
     public String type() {
         return this.type;
     }

@@ -254,12 +254,21 @@ namespace Pulumi.Gcp.PubSub
 
         /// <summary>
         /// If delivery to BigQuery is used with this subscription, this field is used to configure it.
-        /// Either pushConfig or bigQueryConfig can be set, but not both.
-        /// If both are empty, then the subscriber will pull and ack messages using API methods.
+        /// Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
+        /// If all three are empty, then the subscriber will pull and ack messages using API methods.
         /// Structure is documented below.
         /// </summary>
         [Output("bigqueryConfig")]
         public Output<Outputs.SubscriptionBigqueryConfig?> BigqueryConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
+        /// Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
+        /// If all three are empty, then the subscriber will pull and ack messages using API methods.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("cloudStorageConfig")]
+        public Output<Outputs.SubscriptionCloudStorageConfig?> CloudStorageConfig { get; private set; } = null!;
 
         /// <summary>
         /// A policy that specifies the conditions for dead lettering messages in
@@ -451,12 +460,21 @@ namespace Pulumi.Gcp.PubSub
 
         /// <summary>
         /// If delivery to BigQuery is used with this subscription, this field is used to configure it.
-        /// Either pushConfig or bigQueryConfig can be set, but not both.
-        /// If both are empty, then the subscriber will pull and ack messages using API methods.
+        /// Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
+        /// If all three are empty, then the subscriber will pull and ack messages using API methods.
         /// Structure is documented below.
         /// </summary>
         [Input("bigqueryConfig")]
         public Input<Inputs.SubscriptionBigqueryConfigArgs>? BigqueryConfig { get; set; }
+
+        /// <summary>
+        /// If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
+        /// Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
+        /// If all three are empty, then the subscriber will pull and ack messages using API methods.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("cloudStorageConfig")]
+        public Input<Inputs.SubscriptionCloudStorageConfigArgs>? CloudStorageConfig { get; set; }
 
         /// <summary>
         /// A policy that specifies the conditions for dead lettering messages in
@@ -616,12 +634,21 @@ namespace Pulumi.Gcp.PubSub
 
         /// <summary>
         /// If delivery to BigQuery is used with this subscription, this field is used to configure it.
-        /// Either pushConfig or bigQueryConfig can be set, but not both.
-        /// If both are empty, then the subscriber will pull and ack messages using API methods.
+        /// Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
+        /// If all three are empty, then the subscriber will pull and ack messages using API methods.
         /// Structure is documented below.
         /// </summary>
         [Input("bigqueryConfig")]
         public Input<Inputs.SubscriptionBigqueryConfigGetArgs>? BigqueryConfig { get; set; }
+
+        /// <summary>
+        /// If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
+        /// Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
+        /// If all three are empty, then the subscriber will pull and ack messages using API methods.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("cloudStorageConfig")]
+        public Input<Inputs.SubscriptionCloudStorageConfigGetArgs>? CloudStorageConfig { get; set; }
 
         /// <summary>
         /// A policy that specifies the conditions for dead lettering messages in

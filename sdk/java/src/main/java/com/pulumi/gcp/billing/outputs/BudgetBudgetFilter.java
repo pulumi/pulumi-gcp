@@ -63,6 +63,14 @@ public final class BudgetBudgetFilter {
      */
     private @Nullable List<String> projects;
     /**
+     * @return A set of folder and organization names of the form folders/{folderId} or organizations/{organizationId},
+     * specifying that usage from only this set of folders and organizations should be included in the budget.
+     * If omitted, the budget includes all usage that the billing account pays for. If the folder or organization
+     * contains projects that are paid for by a different Cloud Billing account, the budget doesn&#39;t apply to those projects.
+     * 
+     */
+    private @Nullable List<String> resourceAncestors;
+    /**
      * @return A set of services of the form services/{service_id},
      * specifying that usage from only this set of services should be
      * included in the budget. If omitted, the report will include
@@ -146,6 +154,16 @@ public final class BudgetBudgetFilter {
         return this.projects == null ? List.of() : this.projects;
     }
     /**
+     * @return A set of folder and organization names of the form folders/{folderId} or organizations/{organizationId},
+     * specifying that usage from only this set of folders and organizations should be included in the budget.
+     * If omitted, the budget includes all usage that the billing account pays for. If the folder or organization
+     * contains projects that are paid for by a different Cloud Billing account, the budget doesn&#39;t apply to those projects.
+     * 
+     */
+    public List<String> resourceAncestors() {
+        return this.resourceAncestors == null ? List.of() : this.resourceAncestors;
+    }
+    /**
      * @return A set of services of the form services/{service_id},
      * specifying that usage from only this set of services should be
      * included in the budget. If omitted, the report will include
@@ -186,6 +204,7 @@ public final class BudgetBudgetFilter {
         private @Nullable BudgetBudgetFilterCustomPeriod customPeriod;
         private @Nullable Map<String,String> labels;
         private @Nullable List<String> projects;
+        private @Nullable List<String> resourceAncestors;
         private @Nullable List<String> services;
         private @Nullable List<String> subaccounts;
         public Builder() {}
@@ -197,6 +216,7 @@ public final class BudgetBudgetFilter {
     	      this.customPeriod = defaults.customPeriod;
     	      this.labels = defaults.labels;
     	      this.projects = defaults.projects;
+    	      this.resourceAncestors = defaults.resourceAncestors;
     	      this.services = defaults.services;
     	      this.subaccounts = defaults.subaccounts;
         }
@@ -238,6 +258,14 @@ public final class BudgetBudgetFilter {
             return projects(List.of(projects));
         }
         @CustomType.Setter
+        public Builder resourceAncestors(@Nullable List<String> resourceAncestors) {
+            this.resourceAncestors = resourceAncestors;
+            return this;
+        }
+        public Builder resourceAncestors(String... resourceAncestors) {
+            return resourceAncestors(List.of(resourceAncestors));
+        }
+        @CustomType.Setter
         public Builder services(@Nullable List<String> services) {
             this.services = services;
             return this;
@@ -261,6 +289,7 @@ public final class BudgetBudgetFilter {
             o.customPeriod = customPeriod;
             o.labels = labels;
             o.projects = projects;
+            o.resourceAncestors = resourceAncestors;
             o.services = services;
             o.subaccounts = subaccounts;
             return o;

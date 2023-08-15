@@ -30,6 +30,11 @@ export const getAccountIamPolicy: typeof import("./getAccountIamPolicy").getAcco
 export const getAccountIamPolicyOutput: typeof import("./getAccountIamPolicy").getAccountIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getAccountIamPolicy","getAccountIamPolicyOutput"], () => require("./getAccountIamPolicy"));
 
+export { ProjectInfoArgs, ProjectInfoState } from "./projectInfo";
+export type ProjectInfo = import("./projectInfo").ProjectInfo;
+export const ProjectInfo: typeof import("./projectInfo").ProjectInfo = null as any;
+utilities.lazyLoad(exports, ["ProjectInfo"], () => require("./projectInfo"));
+
 export { SubAccountArgs, SubAccountState } from "./subAccount";
 export type SubAccount = import("./subAccount").SubAccount;
 export const SubAccount: typeof import("./subAccount").SubAccount = null as any;
@@ -48,6 +53,8 @@ const _module = {
                 return new AccountIamPolicy(name, <any>undefined, { urn })
             case "gcp:billing/budget:Budget":
                 return new Budget(name, <any>undefined, { urn })
+            case "gcp:billing/projectInfo:ProjectInfo":
+                return new ProjectInfo(name, <any>undefined, { urn })
             case "gcp:billing/subAccount:SubAccount":
                 return new SubAccount(name, <any>undefined, { urn })
             default:
@@ -59,4 +66,5 @@ pulumi.runtime.registerResourceModule("gcp", "billing/accountIamBinding", _modul
 pulumi.runtime.registerResourceModule("gcp", "billing/accountIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "billing/accountIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "billing/budget", _module)
+pulumi.runtime.registerResourceModule("gcp", "billing/projectInfo", _module)
 pulumi.runtime.registerResourceModule("gcp", "billing/subAccount", _module)

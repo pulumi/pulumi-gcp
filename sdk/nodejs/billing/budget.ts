@@ -90,6 +90,7 @@ import * as utilities from "../utilities";
  *             "PROMOTION",
  *             "FREE_TIER",
  *         ],
+ *         resourceAncestors: ["organizations/123456789"],
  *     },
  *     amount: {
  *         specifiedAmount: {

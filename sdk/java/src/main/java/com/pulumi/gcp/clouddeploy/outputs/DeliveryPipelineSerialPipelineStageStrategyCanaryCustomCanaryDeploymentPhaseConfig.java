@@ -4,6 +4,8 @@
 package com.pulumi.gcp.clouddeploy.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.clouddeploy.outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy;
+import com.pulumi.gcp.clouddeploy.outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -24,6 +26,16 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanary
      * 
      */
     private String phaseId;
+    /**
+     * @return (Beta only) Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will not be present for this phase.
+     * 
+     */
+    private @Nullable DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy postdeploy;
+    /**
+     * @return (Beta only) Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will not be present for this phase.
+     * 
+     */
+    private @Nullable DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy predeploy;
     /**
      * @return Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
      * 
@@ -53,6 +65,20 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanary
         return this.phaseId;
     }
     /**
+     * @return (Beta only) Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will not be present for this phase.
+     * 
+     */
+    public Optional<DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy> postdeploy() {
+        return Optional.ofNullable(this.postdeploy);
+    }
+    /**
+     * @return (Beta only) Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will not be present for this phase.
+     * 
+     */
+    public Optional<DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy> predeploy() {
+        return Optional.ofNullable(this.predeploy);
+    }
+    /**
      * @return Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
      * 
      */
@@ -80,6 +106,8 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanary
     public static final class Builder {
         private Integer percentage;
         private String phaseId;
+        private @Nullable DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy postdeploy;
+        private @Nullable DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy predeploy;
         private @Nullable List<String> profiles;
         private @Nullable Boolean verify;
         public Builder() {}
@@ -87,6 +115,8 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanary
     	      Objects.requireNonNull(defaults);
     	      this.percentage = defaults.percentage;
     	      this.phaseId = defaults.phaseId;
+    	      this.postdeploy = defaults.postdeploy;
+    	      this.predeploy = defaults.predeploy;
     	      this.profiles = defaults.profiles;
     	      this.verify = defaults.verify;
         }
@@ -99,6 +129,16 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanary
         @CustomType.Setter
         public Builder phaseId(String phaseId) {
             this.phaseId = Objects.requireNonNull(phaseId);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder postdeploy(@Nullable DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy postdeploy) {
+            this.postdeploy = postdeploy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder predeploy(@Nullable DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy predeploy) {
+            this.predeploy = predeploy;
             return this;
         }
         @CustomType.Setter
@@ -118,6 +158,8 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanary
             final var o = new DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig();
             o.percentage = percentage;
             o.phaseId = phaseId;
+            o.postdeploy = postdeploy;
+            o.predeploy = predeploy;
             o.profiles = profiles;
             o.verify = verify;
             return o;

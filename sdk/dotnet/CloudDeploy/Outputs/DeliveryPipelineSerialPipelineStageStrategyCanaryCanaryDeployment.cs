@@ -18,6 +18,14 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
         /// </summary>
         public readonly ImmutableArray<int> Percentages;
         /// <summary>
+        /// (Beta only) Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
+        /// </summary>
+        public readonly Outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy? Postdeploy;
+        /// <summary>
+        /// (Beta only) Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job will not be present.
+        /// </summary>
+        public readonly Outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy? Predeploy;
+        /// <summary>
         /// Whether to run verify tests after each percentage deployment.
         /// </summary>
         public readonly bool? Verify;
@@ -26,9 +34,15 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
         private DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment(
             ImmutableArray<int> percentages,
 
+            Outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy? postdeploy,
+
+            Outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy? predeploy,
+
             bool? verify)
         {
             Percentages = percentages;
+            Postdeploy = postdeploy;
+            Predeploy = predeploy;
             Verify = verify;
         }
     }

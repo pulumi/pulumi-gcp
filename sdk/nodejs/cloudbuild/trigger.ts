@@ -125,7 +125,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const webhookTriggerSecretKey = new gcp.secretmanager.Secret("webhookTriggerSecretKey", {
- *     secretId: "webhook_trigger-secret-key-1",
+ *     secretId: "webhook-trigger-secret-key",
  *     replication: {
  *         userManaged: {
  *             replicas: [{
@@ -257,7 +257,7 @@ import * as utilities from "../utilities";
  *             invertRegex: true,
  *             tag: "^0.1.*",
  *         },
- *         repoSlug: "terraform-provider-google",
+ *         repoSlug: "bbs-push-trigger",
  *     },
  *     filename: "cloudbuild.yaml",
  *     location: "us-central1",

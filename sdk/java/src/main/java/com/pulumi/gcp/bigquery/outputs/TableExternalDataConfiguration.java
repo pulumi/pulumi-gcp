@@ -53,6 +53,13 @@ public final class TableExternalDataConfiguration {
      */
     private @Nullable TableExternalDataConfigurationCsvOptions csvOptions;
     /**
+     * @return Specifies how source URIs are interpreted for constructing the file set to load.
+     * By default source URIs are expanded against the underlying storage.
+     * Other options include specifying manifest files. Only applicable to object storage systems. Docs
+     * 
+     */
+    private @Nullable String fileSetSpecType;
+    /**
      * @return Additional options if
      * `source_format` is set to &#34;GOOGLE_SHEETS&#34;. Structure is
      * documented below.
@@ -184,6 +191,15 @@ public final class TableExternalDataConfiguration {
         return Optional.ofNullable(this.csvOptions);
     }
     /**
+     * @return Specifies how source URIs are interpreted for constructing the file set to load.
+     * By default source URIs are expanded against the underlying storage.
+     * Other options include specifying manifest files. Only applicable to object storage systems. Docs
+     * 
+     */
+    public Optional<String> fileSetSpecType() {
+        return Optional.ofNullable(this.fileSetSpecType);
+    }
+    /**
      * @return Additional options if
      * `source_format` is set to &#34;GOOGLE_SHEETS&#34;. Structure is
      * documented below.
@@ -309,6 +325,7 @@ public final class TableExternalDataConfiguration {
         private @Nullable String compression;
         private @Nullable String connectionId;
         private @Nullable TableExternalDataConfigurationCsvOptions csvOptions;
+        private @Nullable String fileSetSpecType;
         private @Nullable TableExternalDataConfigurationGoogleSheetsOptions googleSheetsOptions;
         private @Nullable TableExternalDataConfigurationHivePartitioningOptions hivePartitioningOptions;
         private @Nullable Boolean ignoreUnknownValues;
@@ -329,6 +346,7 @@ public final class TableExternalDataConfiguration {
     	      this.compression = defaults.compression;
     	      this.connectionId = defaults.connectionId;
     	      this.csvOptions = defaults.csvOptions;
+    	      this.fileSetSpecType = defaults.fileSetSpecType;
     	      this.googleSheetsOptions = defaults.googleSheetsOptions;
     	      this.hivePartitioningOptions = defaults.hivePartitioningOptions;
     	      this.ignoreUnknownValues = defaults.ignoreUnknownValues;
@@ -366,6 +384,11 @@ public final class TableExternalDataConfiguration {
         @CustomType.Setter
         public Builder csvOptions(@Nullable TableExternalDataConfigurationCsvOptions csvOptions) {
             this.csvOptions = csvOptions;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder fileSetSpecType(@Nullable String fileSetSpecType) {
+            this.fileSetSpecType = fileSetSpecType;
             return this;
         }
         @CustomType.Setter
@@ -438,6 +461,7 @@ public final class TableExternalDataConfiguration {
             o.compression = compression;
             o.connectionId = connectionId;
             o.csvOptions = csvOptions;
+            o.fileSetSpecType = fileSetSpecType;
             o.googleSheetsOptions = googleSheetsOptions;
             o.hivePartitioningOptions = hivePartitioningOptions;
             o.ignoreUnknownValues = ignoreUnknownValues;

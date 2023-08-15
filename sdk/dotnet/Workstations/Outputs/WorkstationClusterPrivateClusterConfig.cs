@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.Workstations.Outputs
     public sealed class WorkstationClusterPrivateClusterConfig
     {
         /// <summary>
+        /// Additional project IDs that are allowed to attach to the workstation cluster's service attachment.
+        /// By default, the workstation cluster's project and the VPC host project (if different) are allowed.
+        /// </summary>
+        public readonly ImmutableArray<string> AllowedProjects;
+        /// <summary>
         /// (Output)
         /// Hostname for the workstation cluster.
         /// This field will be populated only when private endpoint is enabled.
@@ -34,12 +39,15 @@ namespace Pulumi.Gcp.Workstations.Outputs
 
         [OutputConstructor]
         private WorkstationClusterPrivateClusterConfig(
+            ImmutableArray<string> allowedProjects,
+
             string? clusterHostname,
 
             bool enablePrivateEndpoint,
 
             string? serviceAttachmentUri)
         {
+            AllowedProjects = allowedProjects;
             ClusterHostname = clusterHostname;
             EnablePrivateEndpoint = enablePrivateEndpoint;
             ServiceAttachmentUri = serviceAttachmentUri;

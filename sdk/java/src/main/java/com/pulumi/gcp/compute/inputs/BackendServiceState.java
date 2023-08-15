@@ -342,7 +342,7 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
      * load balancing cannot be used with the other. For more information, refer to
      * [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
      * Default value is `EXTERNAL`.
-     * Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_MANAGED`.
+     * Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
      * 
      */
     @Import(name="loadBalancingScheme")
@@ -354,7 +354,7 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
      * load balancing cannot be used with the other. For more information, refer to
      * [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
      * Default value is `EXTERNAL`.
-     * Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_MANAGED`.
+     * Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
      * 
      */
     public Optional<Output<String>> loadBalancingScheme() {
@@ -515,8 +515,10 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
     /**
      * The protocol this BackendService uses to communicate with backends.
      * The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-     * types and may result in errors if used with the GA API.
-     * Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`.
+     * types and may result in errors if used with the GA API. **NOTE**: With protocol “UNSPECIFIED”,
+     * the backend service can be used by Layer 4 Internal Load Balancing or Network Load Balancing
+     * with TCP/UDP/L3_DEFAULT Forwarding Rule protocol.
+     * Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`, `UNSPECIFIED`.
      * 
      */
     @Import(name="protocol")
@@ -525,8 +527,10 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
     /**
      * @return The protocol this BackendService uses to communicate with backends.
      * The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-     * types and may result in errors if used with the GA API.
-     * Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`.
+     * types and may result in errors if used with the GA API. **NOTE**: With protocol “UNSPECIFIED”,
+     * the backend service can be used by Layer 4 Internal Load Balancing or Network Load Balancing
+     * with TCP/UDP/L3_DEFAULT Forwarding Rule protocol.
+     * Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`, `UNSPECIFIED`.
      * 
      */
     public Optional<Output<String>> protocol() {
@@ -1126,7 +1130,7 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
          * load balancing cannot be used with the other. For more information, refer to
          * [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
          * Default value is `EXTERNAL`.
-         * Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_MANAGED`.
+         * Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
          * 
          * @return builder
          * 
@@ -1142,7 +1146,7 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
          * load balancing cannot be used with the other. For more information, refer to
          * [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
          * Default value is `EXTERNAL`.
-         * Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_MANAGED`.
+         * Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
          * 
          * @return builder
          * 
@@ -1363,8 +1367,10 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
         /**
          * @param protocol The protocol this BackendService uses to communicate with backends.
          * The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-         * types and may result in errors if used with the GA API.
-         * Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`.
+         * types and may result in errors if used with the GA API. **NOTE**: With protocol “UNSPECIFIED”,
+         * the backend service can be used by Layer 4 Internal Load Balancing or Network Load Balancing
+         * with TCP/UDP/L3_DEFAULT Forwarding Rule protocol.
+         * Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`, `UNSPECIFIED`.
          * 
          * @return builder
          * 
@@ -1377,8 +1383,10 @@ public final class BackendServiceState extends com.pulumi.resources.ResourceArgs
         /**
          * @param protocol The protocol this BackendService uses to communicate with backends.
          * The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-         * types and may result in errors if used with the GA API.
-         * Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`.
+         * types and may result in errors if used with the GA API. **NOTE**: With protocol “UNSPECIFIED”,
+         * the backend service can be used by Layer 4 Internal Load Balancing or Network Load Balancing
+         * with TCP/UDP/L3_DEFAULT Forwarding Rule protocol.
+         * Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`, `UNSPECIFIED`.
          * 
          * @return builder
          * 

@@ -730,6 +730,7 @@ class FhirStore(pulumi.CustomResource):
             notification_configs=[gcp.healthcare.FhirStoreNotificationConfigArgs(
                 pubsub_topic=topic.id,
                 send_full_resource=True,
+                send_previous_resource_on_delete=True,
             )],
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
@@ -925,6 +926,7 @@ class FhirStore(pulumi.CustomResource):
             notification_configs=[gcp.healthcare.FhirStoreNotificationConfigArgs(
                 pubsub_topic=topic.id,
                 send_full_resource=True,
+                send_previous_resource_on_delete=True,
             )],
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```

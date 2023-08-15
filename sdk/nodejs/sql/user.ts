@@ -11,53 +11,6 @@ import * as utilities from "../utilities";
  *
  * > **Note:** All arguments including the username and password will be stored in the raw state as plain-text.
  *
- * ## Example Usage
- *
- * Example creating a SQL User.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * as random from "@pulumi/random";
- *
- * const dbNameSuffix = new random.RandomId("dbNameSuffix", {byteLength: 4});
- * const main = new gcp.sql.DatabaseInstance("main", {
- *     databaseVersion: "MYSQL_5_7",
- *     settings: {
- *         tier: "db-f1-micro",
- *     },
- * });
- * const users = new gcp.sql.User("users", {
- *     instance: main.name,
- *     host: "me.com",
- *     password: "changeme",
- * });
- * ```
- *
- * Example creating a Cloud IAM User. (For MySQL, specify `cloudsqlIamAuthentication`)
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * as random from "@pulumi/random";
- *
- * const dbNameSuffix = new random.RandomId("dbNameSuffix", {byteLength: 4});
- * const main = new gcp.sql.DatabaseInstance("main", {
- *     databaseVersion: "POSTGRES_9_6",
- *     settings: {
- *         tier: "db-f1-micro",
- *         databaseFlags: [{
- *             name: "cloudsql.iam_authentication",
- *             value: "on",
- *         }],
- *     },
- * });
- * const users = new gcp.sql.User("users", {
- *     instance: main.name,
- *     type: "CLOUD_IAM_USER",
- * });
- * ```
- *
  * ## Import
  *
  * SQL users for MySQL databases can be imported using the `project`, `instance`, `host` and `name`, e.g.

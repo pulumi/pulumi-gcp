@@ -1166,6 +1166,8 @@ func (o AssetIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 type AssetResourceSpec struct {
 	// Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
 	Name *string `pulumi:"name"`
+	// Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets. Possible values: DIRECT, MANAGED
+	ReadAccessMode *string `pulumi:"readAccessMode"`
 	// Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
 	//
 	// ***
@@ -1186,6 +1188,8 @@ type AssetResourceSpecInput interface {
 type AssetResourceSpecArgs struct {
 	// Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets. Possible values: DIRECT, MANAGED
+	ReadAccessMode pulumi.StringPtrInput `pulumi:"readAccessMode"`
 	// Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
 	//
 	// ***
@@ -1274,6 +1278,11 @@ func (o AssetResourceSpecOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AssetResourceSpec) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets. Possible values: DIRECT, MANAGED
+func (o AssetResourceSpecOutput) ReadAccessMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AssetResourceSpec) *string { return v.ReadAccessMode }).(pulumi.StringPtrOutput)
+}
+
 // Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
 //
 // ***
@@ -1312,6 +1321,16 @@ func (o AssetResourceSpecPtrOutput) Name() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets. Possible values: DIRECT, MANAGED
+func (o AssetResourceSpecPtrOutput) ReadAccessMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AssetResourceSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReadAccessMode
 	}).(pulumi.StringPtrOutput)
 }
 

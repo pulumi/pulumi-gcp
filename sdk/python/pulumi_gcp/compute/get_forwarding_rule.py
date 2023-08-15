@@ -22,7 +22,7 @@ class GetForwardingRuleResult:
     """
     A collection of values returned by getForwardingRule.
     """
-    def __init__(__self__, all_ports=None, allow_global_access=None, allow_psc_global_access=None, backend_service=None, base_forwarding_rule=None, creation_timestamp=None, description=None, id=None, ip_address=None, ip_protocol=None, is_mirroring_collector=None, label_fingerprint=None, labels=None, load_balancing_scheme=None, name=None, network=None, network_tier=None, no_automate_dns_zone=None, port_range=None, ports=None, project=None, psc_connection_id=None, psc_connection_status=None, region=None, self_link=None, service_directory_registrations=None, service_label=None, service_name=None, source_ip_ranges=None, subnetwork=None, target=None):
+    def __init__(__self__, all_ports=None, allow_global_access=None, allow_psc_global_access=None, backend_service=None, base_forwarding_rule=None, creation_timestamp=None, description=None, id=None, ip_address=None, ip_protocol=None, ip_version=None, is_mirroring_collector=None, label_fingerprint=None, labels=None, load_balancing_scheme=None, name=None, network=None, network_tier=None, no_automate_dns_zone=None, port_range=None, ports=None, project=None, psc_connection_id=None, psc_connection_status=None, region=None, self_link=None, service_directory_registrations=None, service_label=None, service_name=None, source_ip_ranges=None, subnetwork=None, target=None):
         if all_ports and not isinstance(all_ports, bool):
             raise TypeError("Expected argument 'all_ports' to be a bool")
         pulumi.set(__self__, "all_ports", all_ports)
@@ -53,6 +53,9 @@ class GetForwardingRuleResult:
         if ip_protocol and not isinstance(ip_protocol, str):
             raise TypeError("Expected argument 'ip_protocol' to be a str")
         pulumi.set(__self__, "ip_protocol", ip_protocol)
+        if ip_version and not isinstance(ip_version, str):
+            raise TypeError("Expected argument 'ip_version' to be a str")
+        pulumi.set(__self__, "ip_version", ip_version)
         if is_mirroring_collector and not isinstance(is_mirroring_collector, bool):
             raise TypeError("Expected argument 'is_mirroring_collector' to be a bool")
         pulumi.set(__self__, "is_mirroring_collector", is_mirroring_collector)
@@ -169,6 +172,11 @@ class GetForwardingRuleResult:
     @pulumi.getter(name="ipProtocol")
     def ip_protocol(self) -> str:
         return pulumi.get(self, "ip_protocol")
+
+    @property
+    @pulumi.getter(name="ipVersion")
+    def ip_version(self) -> str:
+        return pulumi.get(self, "ip_version")
 
     @property
     @pulumi.getter(name="isMirroringCollector")
@@ -292,6 +300,7 @@ class AwaitableGetForwardingRuleResult(GetForwardingRuleResult):
             id=self.id,
             ip_address=self.ip_address,
             ip_protocol=self.ip_protocol,
+            ip_version=self.ip_version,
             is_mirroring_collector=self.is_mirroring_collector,
             label_fingerprint=self.label_fingerprint,
             labels=self.labels,
@@ -359,6 +368,7 @@ def get_forwarding_rule(name: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         ip_address=pulumi.get(__ret__, 'ip_address'),
         ip_protocol=pulumi.get(__ret__, 'ip_protocol'),
+        ip_version=pulumi.get(__ret__, 'ip_version'),
         is_mirroring_collector=pulumi.get(__ret__, 'is_mirroring_collector'),
         label_fingerprint=pulumi.get(__ret__, 'label_fingerprint'),
         labels=pulumi.get(__ret__, 'labels'),

@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.container.inputs.ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterMonitoringConfigManagedPrometheusArgs;
 import java.lang.String;
 import java.util.List;
@@ -16,6 +17,21 @@ import javax.annotation.Nullable;
 public final class ClusterMonitoringConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ClusterMonitoringConfigArgs Empty = new ClusterMonitoringConfigArgs();
+
+    /**
+     * Configuration for Advanced Datapath Monitoring. Structure is documented below.
+     * 
+     */
+    @Import(name="advancedDatapathObservabilityConfigs")
+    private @Nullable Output<List<ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs>> advancedDatapathObservabilityConfigs;
+
+    /**
+     * @return Configuration for Advanced Datapath Monitoring. Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs>>> advancedDatapathObservabilityConfigs() {
+        return Optional.ofNullable(this.advancedDatapathObservabilityConfigs);
+    }
 
     /**
      * The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, and `SCHEDULER`. In beta provider, `WORKLOADS` is supported on top of those 4 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
@@ -50,6 +66,7 @@ public final class ClusterMonitoringConfigArgs extends com.pulumi.resources.Reso
     private ClusterMonitoringConfigArgs() {}
 
     private ClusterMonitoringConfigArgs(ClusterMonitoringConfigArgs $) {
+        this.advancedDatapathObservabilityConfigs = $.advancedDatapathObservabilityConfigs;
         this.enableComponents = $.enableComponents;
         this.managedPrometheus = $.managedPrometheus;
     }
@@ -70,6 +87,37 @@ public final class ClusterMonitoringConfigArgs extends com.pulumi.resources.Reso
 
         public Builder(ClusterMonitoringConfigArgs defaults) {
             $ = new ClusterMonitoringConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param advancedDatapathObservabilityConfigs Configuration for Advanced Datapath Monitoring. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder advancedDatapathObservabilityConfigs(@Nullable Output<List<ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs>> advancedDatapathObservabilityConfigs) {
+            $.advancedDatapathObservabilityConfigs = advancedDatapathObservabilityConfigs;
+            return this;
+        }
+
+        /**
+         * @param advancedDatapathObservabilityConfigs Configuration for Advanced Datapath Monitoring. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder advancedDatapathObservabilityConfigs(List<ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs> advancedDatapathObservabilityConfigs) {
+            return advancedDatapathObservabilityConfigs(Output.of(advancedDatapathObservabilityConfigs));
+        }
+
+        /**
+         * @param advancedDatapathObservabilityConfigs Configuration for Advanced Datapath Monitoring. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder advancedDatapathObservabilityConfigs(ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs... advancedDatapathObservabilityConfigs) {
+            return advancedDatapathObservabilityConfigs(List.of(advancedDatapathObservabilityConfigs));
         }
 
         /**

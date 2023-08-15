@@ -5,6 +5,8 @@ package com.pulumi.gcp.clouddeploy.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.clouddeploy.inputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgs;
+import com.pulumi.gcp.clouddeploy.inputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.List;
@@ -33,6 +35,36 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploy
     }
 
     /**
+     * (Beta only) Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
+     * 
+     */
+    @Import(name="postdeploy")
+    private @Nullable Output<DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgs> postdeploy;
+
+    /**
+     * @return (Beta only) Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
+     * 
+     */
+    public Optional<Output<DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgs>> postdeploy() {
+        return Optional.ofNullable(this.postdeploy);
+    }
+
+    /**
+     * (Beta only) Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job will not be present.
+     * 
+     */
+    @Import(name="predeploy")
+    private @Nullable Output<DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgs> predeploy;
+
+    /**
+     * @return (Beta only) Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job will not be present.
+     * 
+     */
+    public Optional<Output<DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgs>> predeploy() {
+        return Optional.ofNullable(this.predeploy);
+    }
+
+    /**
      * Whether to run verify tests after each percentage deployment.
      * 
      */
@@ -51,6 +83,8 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploy
 
     private DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs $) {
         this.percentages = $.percentages;
+        this.postdeploy = $.postdeploy;
+        this.predeploy = $.predeploy;
         this.verify = $.verify;
     }
 
@@ -101,6 +135,48 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploy
          */
         public Builder percentages(Integer... percentages) {
             return percentages(List.of(percentages));
+        }
+
+        /**
+         * @param postdeploy (Beta only) Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder postdeploy(@Nullable Output<DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgs> postdeploy) {
+            $.postdeploy = postdeploy;
+            return this;
+        }
+
+        /**
+         * @param postdeploy (Beta only) Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder postdeploy(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgs postdeploy) {
+            return postdeploy(Output.of(postdeploy));
+        }
+
+        /**
+         * @param predeploy (Beta only) Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job will not be present.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder predeploy(@Nullable Output<DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgs> predeploy) {
+            $.predeploy = predeploy;
+            return this;
+        }
+
+        /**
+         * @param predeploy (Beta only) Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job will not be present.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder predeploy(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgs predeploy) {
+            return predeploy(Output.of(predeploy));
         }
 
         /**

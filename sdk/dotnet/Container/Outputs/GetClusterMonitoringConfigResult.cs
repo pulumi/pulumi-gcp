@@ -13,15 +13,19 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class GetClusterMonitoringConfigResult
     {
+        public readonly ImmutableArray<Outputs.GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigResult> AdvancedDatapathObservabilityConfigs;
         public readonly ImmutableArray<string> EnableComponents;
         public readonly ImmutableArray<Outputs.GetClusterMonitoringConfigManagedPrometheusResult> ManagedPrometheuses;
 
         [OutputConstructor]
         private GetClusterMonitoringConfigResult(
+            ImmutableArray<Outputs.GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigResult> advancedDatapathObservabilityConfigs,
+
             ImmutableArray<string> enableComponents,
 
             ImmutableArray<Outputs.GetClusterMonitoringConfigManagedPrometheusResult> managedPrometheuses)
         {
+            AdvancedDatapathObservabilityConfigs = advancedDatapathObservabilityConfigs;
             EnableComponents = enableComponents;
             ManagedPrometheuses = managedPrometheuses;
         }

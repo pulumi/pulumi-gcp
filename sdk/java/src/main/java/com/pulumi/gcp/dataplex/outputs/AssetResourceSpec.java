@@ -17,6 +17,11 @@ public final class AssetResourceSpec {
      */
     private @Nullable String name;
     /**
+     * @return Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets. Possible values: DIRECT, MANAGED
+     * 
+     */
+    private @Nullable String readAccessMode;
+    /**
      * @return Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
      * 
      * ***
@@ -31,6 +36,13 @@ public final class AssetResourceSpec {
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
+    }
+    /**
+     * @return Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets. Possible values: DIRECT, MANAGED
+     * 
+     */
+    public Optional<String> readAccessMode() {
+        return Optional.ofNullable(this.readAccessMode);
     }
     /**
      * @return Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
@@ -52,17 +64,24 @@ public final class AssetResourceSpec {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String name;
+        private @Nullable String readAccessMode;
         private String type;
         public Builder() {}
         public Builder(AssetResourceSpec defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
+    	      this.readAccessMode = defaults.readAccessMode;
     	      this.type = defaults.type;
         }
 
         @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder readAccessMode(@Nullable String readAccessMode) {
+            this.readAccessMode = readAccessMode;
             return this;
         }
         @CustomType.Setter
@@ -73,6 +92,7 @@ public final class AssetResourceSpec {
         public AssetResourceSpec build() {
             final var o = new AssetResourceSpec();
             o.name = name;
+            o.readAccessMode = readAccessMode;
             o.type = type;
             return o;
         }

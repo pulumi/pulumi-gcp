@@ -21,6 +21,39 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
     public static final SecretState Empty = new SecretState();
 
     /**
+     * Custom metadata about the secret.
+     * Annotations are distinct from various forms of labels. Annotations exist to allow
+     * client tools to store their own state information without requiring a database.
+     * Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of
+     * maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and
+     * may have dashes (-), underscores (_), dots (.), and alphanumerics in between these
+     * symbols.
+     * The total size of annotation keys and values must be less than 16KiB.
+     * An object containing a list of &#34;key&#34;: value pairs. Example:
+     * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * 
+     */
+    @Import(name="annotations")
+    private @Nullable Output<Map<String,String>> annotations;
+
+    /**
+     * @return Custom metadata about the secret.
+     * Annotations are distinct from various forms of labels. Annotations exist to allow
+     * client tools to store their own state information without requiring a database.
+     * Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of
+     * maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and
+     * may have dashes (-), underscores (_), dots (.), and alphanumerics in between these
+     * symbols.
+     * The total size of annotation keys and values must be less than 16KiB.
+     * An object containing a list of &#34;key&#34;: value pairs. Example:
+     * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> annotations() {
+        return Optional.ofNullable(this.annotations);
+    }
+
+    /**
      * The time at which the Secret was created.
      * 
      */
@@ -203,6 +236,7 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
     private SecretState() {}
 
     private SecretState(SecretState $) {
+        this.annotations = $.annotations;
         this.createTime = $.createTime;
         this.expireTime = $.expireTime;
         this.labels = $.labels;
@@ -231,6 +265,45 @@ public final class SecretState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(SecretState defaults) {
             $ = new SecretState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param annotations Custom metadata about the secret.
+         * Annotations are distinct from various forms of labels. Annotations exist to allow
+         * client tools to store their own state information without requiring a database.
+         * Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of
+         * maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and
+         * may have dashes (-), underscores (_), dots (.), and alphanumerics in between these
+         * symbols.
+         * The total size of annotation keys and values must be less than 16KiB.
+         * An object containing a list of &#34;key&#34;: value pairs. Example:
+         * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder annotations(@Nullable Output<Map<String,String>> annotations) {
+            $.annotations = annotations;
+            return this;
+        }
+
+        /**
+         * @param annotations Custom metadata about the secret.
+         * Annotations are distinct from various forms of labels. Annotations exist to allow
+         * client tools to store their own state information without requiring a database.
+         * Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of
+         * maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and
+         * may have dashes (-), underscores (_), dots (.), and alphanumerics in between these
+         * symbols.
+         * The total size of annotation keys and values must be less than 16KiB.
+         * An object containing a list of &#34;key&#34;: value pairs. Example:
+         * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder annotations(Map<String,String> annotations) {
+            return annotations(Output.of(annotations));
         }
 
         /**

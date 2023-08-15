@@ -73,6 +73,23 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources.
+     * It must match the pattern projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}.
+     * 
+     */
+    @Import(name="kmsKeyName")
+    private @Nullable Output<String> kmsKeyName;
+
+    /**
+     * @return Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources.
+     * It must match the pattern projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}.
+     * 
+     */
+    public Optional<Output<String>> kmsKeyName() {
+        return Optional.ofNullable(this.kmsKeyName);
+    }
+
+    /**
      * A set of key/value label pairs associated with this Cloud Function.
      * 
      */
@@ -163,6 +180,7 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
         this.buildConfig = $.buildConfig;
         this.description = $.description;
         this.eventTrigger = $.eventTrigger;
+        this.kmsKeyName = $.kmsKeyName;
         this.labels = $.labels;
         this.location = $.location;
         this.name = $.name;
@@ -257,6 +275,29 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder eventTrigger(FunctionEventTriggerArgs eventTrigger) {
             return eventTrigger(Output.of(eventTrigger));
+        }
+
+        /**
+         * @param kmsKeyName Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources.
+         * It must match the pattern projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKeyName(@Nullable Output<String> kmsKeyName) {
+            $.kmsKeyName = kmsKeyName;
+            return this;
+        }
+
+        /**
+         * @param kmsKeyName Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources.
+         * It must match the pattern projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKeyName(String kmsKeyName) {
+            return kmsKeyName(Output.of(kmsKeyName));
         }
 
         /**

@@ -143,6 +143,10 @@ namespace Pulumi.Gcp.Billing
     ///                 "PROMOTION",
     ///                 "FREE_TIER",
     ///             },
+    ///             ResourceAncestors = new[]
+    ///             {
+    ///                 "organizations/123456789",
+    ///             },
     ///         },
     ///         Amount = new Gcp.Billing.Inputs.BudgetAmountArgs
     ///         {

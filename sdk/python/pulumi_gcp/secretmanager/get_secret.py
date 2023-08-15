@@ -22,7 +22,10 @@ class GetSecretResult:
     """
     A collection of values returned by getSecret.
     """
-    def __init__(__self__, create_time=None, expire_time=None, id=None, labels=None, name=None, project=None, replications=None, rotations=None, secret_id=None, topics=None, ttl=None):
+    def __init__(__self__, annotations=None, create_time=None, expire_time=None, id=None, labels=None, name=None, project=None, replications=None, rotations=None, secret_id=None, topics=None, ttl=None):
+        if annotations and not isinstance(annotations, dict):
+            raise TypeError("Expected argument 'annotations' to be a dict")
+        pulumi.set(__self__, "annotations", annotations)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -56,6 +59,11 @@ class GetSecretResult:
         if ttl and not isinstance(ttl, str):
             raise TypeError("Expected argument 'ttl' to be a str")
         pulumi.set(__self__, "ttl", ttl)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Mapping[str, str]:
+        return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter(name="createTime")
@@ -122,6 +130,7 @@ class AwaitableGetSecretResult(GetSecretResult):
         if False:
             yield self
         return GetSecretResult(
+            annotations=self.annotations,
             create_time=self.create_time,
             expire_time=self.expire_time,
             id=self.id,
@@ -161,6 +170,7 @@ def get_secret(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:secretmanager/getSecret:getSecret', __args__, opts=opts, typ=GetSecretResult).value
 
     return AwaitableGetSecretResult(
+        annotations=pulumi.get(__ret__, 'annotations'),
         create_time=pulumi.get(__ret__, 'create_time'),
         expire_time=pulumi.get(__ret__, 'expire_time'),
         id=pulumi.get(__ret__, 'id'),

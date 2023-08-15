@@ -125,6 +125,7 @@ namespace Pulumi.Gcp.PubSub
     {
         public readonly int AckDeadlineSeconds;
         public readonly ImmutableArray<Outputs.GetSubscriptionBigqueryConfigResult> BigqueryConfigs;
+        public readonly ImmutableArray<Outputs.GetSubscriptionCloudStorageConfigResult> CloudStorageConfigs;
         public readonly ImmutableArray<Outputs.GetSubscriptionDeadLetterPolicyResult> DeadLetterPolicies;
         public readonly bool EnableExactlyOnceDelivery;
         public readonly bool EnableMessageOrdering;
@@ -148,6 +149,8 @@ namespace Pulumi.Gcp.PubSub
             int ackDeadlineSeconds,
 
             ImmutableArray<Outputs.GetSubscriptionBigqueryConfigResult> bigqueryConfigs,
+
+            ImmutableArray<Outputs.GetSubscriptionCloudStorageConfigResult> cloudStorageConfigs,
 
             ImmutableArray<Outputs.GetSubscriptionDeadLetterPolicyResult> deadLetterPolicies,
 
@@ -179,6 +182,7 @@ namespace Pulumi.Gcp.PubSub
         {
             AckDeadlineSeconds = ackDeadlineSeconds;
             BigqueryConfigs = bigqueryConfigs;
+            CloudStorageConfigs = cloudStorageConfigs;
             DeadLetterPolicies = deadLetterPolicies;
             EnableExactlyOnceDelivery = enableExactlyOnceDelivery;
             EnableMessageOrdering = enableMessageOrdering;

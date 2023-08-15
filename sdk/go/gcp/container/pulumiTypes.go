@@ -17153,6 +17153,8 @@ func (o ClusterMeshCertificatesPtrOutput) EnableCertificates() pulumi.BoolPtrOut
 }
 
 type ClusterMonitoringConfig struct {
+	// Configuration for Advanced Datapath Monitoring. Structure is documented below.
+	AdvancedDatapathObservabilityConfigs []ClusterMonitoringConfigAdvancedDatapathObservabilityConfig `pulumi:"advancedDatapathObservabilityConfigs"`
 	// The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, and `SCHEDULER`. In beta provider, `WORKLOADS` is supported on top of those 4 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
 	EnableComponents []string `pulumi:"enableComponents"`
 	// Configuration for Managed Service for Prometheus. Structure is documented below.
@@ -17171,6 +17173,8 @@ type ClusterMonitoringConfigInput interface {
 }
 
 type ClusterMonitoringConfigArgs struct {
+	// Configuration for Advanced Datapath Monitoring. Structure is documented below.
+	AdvancedDatapathObservabilityConfigs ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayInput `pulumi:"advancedDatapathObservabilityConfigs"`
 	// The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, and `SCHEDULER`. In beta provider, `WORKLOADS` is supported on top of those 4 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
 	EnableComponents pulumi.StringArrayInput `pulumi:"enableComponents"`
 	// Configuration for Managed Service for Prometheus. Structure is documented below.
@@ -17254,6 +17258,13 @@ func (o ClusterMonitoringConfigOutput) ToClusterMonitoringConfigPtrOutputWithCon
 	}).(ClusterMonitoringConfigPtrOutput)
 }
 
+// Configuration for Advanced Datapath Monitoring. Structure is documented below.
+func (o ClusterMonitoringConfigOutput) AdvancedDatapathObservabilityConfigs() ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput {
+	return o.ApplyT(func(v ClusterMonitoringConfig) []ClusterMonitoringConfigAdvancedDatapathObservabilityConfig {
+		return v.AdvancedDatapathObservabilityConfigs
+	}).(ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput)
+}
+
 // The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, and `SCHEDULER`. In beta provider, `WORKLOADS` is supported on top of those 4 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
 func (o ClusterMonitoringConfigOutput) EnableComponents() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterMonitoringConfig) []string { return v.EnableComponents }).(pulumi.StringArrayOutput)
@@ -17288,6 +17299,16 @@ func (o ClusterMonitoringConfigPtrOutput) Elem() ClusterMonitoringConfigOutput {
 	}).(ClusterMonitoringConfigOutput)
 }
 
+// Configuration for Advanced Datapath Monitoring. Structure is documented below.
+func (o ClusterMonitoringConfigPtrOutput) AdvancedDatapathObservabilityConfigs() ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput {
+	return o.ApplyT(func(v *ClusterMonitoringConfig) []ClusterMonitoringConfigAdvancedDatapathObservabilityConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AdvancedDatapathObservabilityConfigs
+	}).(ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput)
+}
+
 // The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, and `SCHEDULER`. In beta provider, `WORKLOADS` is supported on top of those 4 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
 func (o ClusterMonitoringConfigPtrOutput) EnableComponents() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClusterMonitoringConfig) []string {
@@ -17306,6 +17327,109 @@ func (o ClusterMonitoringConfigPtrOutput) ManagedPrometheus() ClusterMonitoringC
 		}
 		return v.ManagedPrometheus
 	}).(ClusterMonitoringConfigManagedPrometheusPtrOutput)
+}
+
+type ClusterMonitoringConfigAdvancedDatapathObservabilityConfig struct {
+	EnableMetrics bool `pulumi:"enableMetrics"`
+	// Mode used to make Relay available.
+	RelayMode *string `pulumi:"relayMode"`
+}
+
+// ClusterMonitoringConfigAdvancedDatapathObservabilityConfigInput is an input type that accepts ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs and ClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput values.
+// You can construct a concrete instance of `ClusterMonitoringConfigAdvancedDatapathObservabilityConfigInput` via:
+//
+//	ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs{...}
+type ClusterMonitoringConfigAdvancedDatapathObservabilityConfigInput interface {
+	pulumi.Input
+
+	ToClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput() ClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput
+	ToClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutputWithContext(context.Context) ClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput
+}
+
+type ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs struct {
+	EnableMetrics pulumi.BoolInput `pulumi:"enableMetrics"`
+	// Mode used to make Relay available.
+	RelayMode pulumi.StringPtrInput `pulumi:"relayMode"`
+}
+
+func (ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterMonitoringConfigAdvancedDatapathObservabilityConfig)(nil)).Elem()
+}
+
+func (i ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs) ToClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput() ClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput {
+	return i.ToClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs) ToClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutputWithContext(ctx context.Context) ClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput)
+}
+
+// ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayInput is an input type that accepts ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArray and ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput values.
+// You can construct a concrete instance of `ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayInput` via:
+//
+//	ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArray{ ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs{...} }
+type ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayInput interface {
+	pulumi.Input
+
+	ToClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput() ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput
+	ToClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutputWithContext(context.Context) ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput
+}
+
+type ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArray []ClusterMonitoringConfigAdvancedDatapathObservabilityConfigInput
+
+func (ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterMonitoringConfigAdvancedDatapathObservabilityConfig)(nil)).Elem()
+}
+
+func (i ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArray) ToClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput() ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput {
+	return i.ToClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArray) ToClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutputWithContext(ctx context.Context) ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput)
+}
+
+type ClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterMonitoringConfigAdvancedDatapathObservabilityConfig)(nil)).Elem()
+}
+
+func (o ClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput) ToClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput() ClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput {
+	return o
+}
+
+func (o ClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput) ToClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutputWithContext(ctx context.Context) ClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput {
+	return o
+}
+
+func (o ClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput) EnableMetrics() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterMonitoringConfigAdvancedDatapathObservabilityConfig) bool { return v.EnableMetrics }).(pulumi.BoolOutput)
+}
+
+// Mode used to make Relay available.
+func (o ClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput) RelayMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterMonitoringConfigAdvancedDatapathObservabilityConfig) *string { return v.RelayMode }).(pulumi.StringPtrOutput)
+}
+
+type ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterMonitoringConfigAdvancedDatapathObservabilityConfig)(nil)).Elem()
+}
+
+func (o ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput) ToClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput() ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput {
+	return o
+}
+
+func (o ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput) ToClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutputWithContext(ctx context.Context) ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput {
+	return o
+}
+
+func (o ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput) Index(i pulumi.IntInput) ClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterMonitoringConfigAdvancedDatapathObservabilityConfig {
+		return vs[0].([]ClusterMonitoringConfigAdvancedDatapathObservabilityConfig)[vs[1].(int)]
+	}).(ClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput)
 }
 
 type ClusterMonitoringConfigManagedPrometheus struct {
@@ -41280,8 +41404,9 @@ func (o GetClusterMeshCertificateArrayOutput) Index(i pulumi.IntInput) GetCluste
 }
 
 type GetClusterMonitoringConfig struct {
-	EnableComponents    []string                                      `pulumi:"enableComponents"`
-	ManagedPrometheuses []GetClusterMonitoringConfigManagedPrometheus `pulumi:"managedPrometheuses"`
+	AdvancedDatapathObservabilityConfigs []GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig `pulumi:"advancedDatapathObservabilityConfigs"`
+	EnableComponents                     []string                                                        `pulumi:"enableComponents"`
+	ManagedPrometheuses                  []GetClusterMonitoringConfigManagedPrometheus                   `pulumi:"managedPrometheuses"`
 }
 
 // GetClusterMonitoringConfigInput is an input type that accepts GetClusterMonitoringConfigArgs and GetClusterMonitoringConfigOutput values.
@@ -41296,8 +41421,9 @@ type GetClusterMonitoringConfigInput interface {
 }
 
 type GetClusterMonitoringConfigArgs struct {
-	EnableComponents    pulumi.StringArrayInput                               `pulumi:"enableComponents"`
-	ManagedPrometheuses GetClusterMonitoringConfigManagedPrometheusArrayInput `pulumi:"managedPrometheuses"`
+	AdvancedDatapathObservabilityConfigs GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayInput `pulumi:"advancedDatapathObservabilityConfigs"`
+	EnableComponents                     pulumi.StringArrayInput                                                 `pulumi:"enableComponents"`
+	ManagedPrometheuses                  GetClusterMonitoringConfigManagedPrometheusArrayInput                   `pulumi:"managedPrometheuses"`
 }
 
 func (GetClusterMonitoringConfigArgs) ElementType() reflect.Type {
@@ -41351,6 +41477,12 @@ func (o GetClusterMonitoringConfigOutput) ToGetClusterMonitoringConfigOutputWith
 	return o
 }
 
+func (o GetClusterMonitoringConfigOutput) AdvancedDatapathObservabilityConfigs() GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterMonitoringConfig) []GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig {
+		return v.AdvancedDatapathObservabilityConfigs
+	}).(GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput)
+}
+
 func (o GetClusterMonitoringConfigOutput) EnableComponents() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetClusterMonitoringConfig) []string { return v.EnableComponents }).(pulumi.StringArrayOutput)
 }
@@ -41379,6 +41511,106 @@ func (o GetClusterMonitoringConfigArrayOutput) Index(i pulumi.IntInput) GetClust
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterMonitoringConfig {
 		return vs[0].([]GetClusterMonitoringConfig)[vs[1].(int)]
 	}).(GetClusterMonitoringConfigOutput)
+}
+
+type GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig struct {
+	EnableMetrics bool   `pulumi:"enableMetrics"`
+	RelayMode     string `pulumi:"relayMode"`
+}
+
+// GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigInput is an input type that accepts GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs and GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput values.
+// You can construct a concrete instance of `GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigInput` via:
+//
+//	GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs{...}
+type GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput() GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput
+	ToGetClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutputWithContext(context.Context) GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput
+}
+
+type GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs struct {
+	EnableMetrics pulumi.BoolInput   `pulumi:"enableMetrics"`
+	RelayMode     pulumi.StringInput `pulumi:"relayMode"`
+}
+
+func (GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig)(nil)).Elem()
+}
+
+func (i GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs) ToGetClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput() GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput {
+	return i.ToGetClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs) ToGetClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutputWithContext(ctx context.Context) GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput)
+}
+
+// GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayInput is an input type that accepts GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArray and GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayInput` via:
+//
+//	GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArray{ GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs{...} }
+type GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput() GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput
+	ToGetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutputWithContext(context.Context) GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput
+}
+
+type GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArray []GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigInput
+
+func (GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig)(nil)).Elem()
+}
+
+func (i GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArray) ToGetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput() GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput {
+	return i.ToGetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArray) ToGetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutputWithContext(ctx context.Context) GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput)
+}
+
+type GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig)(nil)).Elem()
+}
+
+func (o GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput) ToGetClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput() GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput {
+	return o
+}
+
+func (o GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput) ToGetClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutputWithContext(ctx context.Context) GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput {
+	return o
+}
+
+func (o GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput) EnableMetrics() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig) bool { return v.EnableMetrics }).(pulumi.BoolOutput)
+}
+
+func (o GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput) RelayMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig) string { return v.RelayMode }).(pulumi.StringOutput)
+}
+
+type GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig)(nil)).Elem()
+}
+
+func (o GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput) ToGetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput() GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput) ToGetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutputWithContext(ctx context.Context) GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput) Index(i pulumi.IntInput) GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig {
+		return vs[0].([]GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig)[vs[1].(int)]
+	}).(GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput)
 }
 
 type GetClusterMonitoringConfigManagedPrometheus struct {
@@ -49517,6 +49749,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMeshCertificatesPtrInput)(nil)).Elem(), ClusterMeshCertificatesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMonitoringConfigInput)(nil)).Elem(), ClusterMonitoringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMonitoringConfigPtrInput)(nil)).Elem(), ClusterMonitoringConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMonitoringConfigAdvancedDatapathObservabilityConfigInput)(nil)).Elem(), ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayInput)(nil)).Elem(), ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMonitoringConfigManagedPrometheusInput)(nil)).Elem(), ClusterMonitoringConfigManagedPrometheusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMonitoringConfigManagedPrometheusPtrInput)(nil)).Elem(), ClusterMonitoringConfigManagedPrometheusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNetworkPolicyInput)(nil)).Elem(), ClusterNetworkPolicyArgs{})
@@ -49819,6 +50053,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterMeshCertificateArrayInput)(nil)).Elem(), GetClusterMeshCertificateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterMonitoringConfigInput)(nil)).Elem(), GetClusterMonitoringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterMonitoringConfigArrayInput)(nil)).Elem(), GetClusterMonitoringConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigInput)(nil)).Elem(), GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayInput)(nil)).Elem(), GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterMonitoringConfigManagedPrometheusInput)(nil)).Elem(), GetClusterMonitoringConfigManagedPrometheusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterMonitoringConfigManagedPrometheusArrayInput)(nil)).Elem(), GetClusterMonitoringConfigManagedPrometheusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNetworkPolicyInput)(nil)).Elem(), GetClusterNetworkPolicyArgs{})
@@ -50175,6 +50411,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterMeshCertificatesPtrOutput{})
 	pulumi.RegisterOutputType(ClusterMonitoringConfigOutput{})
 	pulumi.RegisterOutputType(ClusterMonitoringConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput{})
+	pulumi.RegisterOutputType(ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput{})
 	pulumi.RegisterOutputType(ClusterMonitoringConfigManagedPrometheusOutput{})
 	pulumi.RegisterOutputType(ClusterMonitoringConfigManagedPrometheusPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNetworkPolicyOutput{})
@@ -50477,6 +50715,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterMeshCertificateArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterMonitoringConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterMonitoringConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterMonitoringConfigManagedPrometheusOutput{})
 	pulumi.RegisterOutputType(GetClusterMonitoringConfigManagedPrometheusArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNetworkPolicyOutput{})

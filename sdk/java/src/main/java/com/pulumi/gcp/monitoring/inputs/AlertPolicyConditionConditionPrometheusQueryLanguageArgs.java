@@ -80,8 +80,8 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguageArgs exte
      * rule group.
      * 
      */
-    @Import(name="evaluationInterval", required=true)
-    private Output<String> evaluationInterval;
+    @Import(name="evaluationInterval")
+    private @Nullable Output<String> evaluationInterval;
 
     /**
      * @return How often this rule should be evaluated. Must be a positive multiple
@@ -91,8 +91,8 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguageArgs exte
      * rule group.
      * 
      */
-    public Output<String> evaluationInterval() {
-        return this.evaluationInterval;
+    public Optional<Output<String>> evaluationInterval() {
+        return Optional.ofNullable(this.evaluationInterval);
     }
 
     /**
@@ -277,7 +277,7 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguageArgs exte
          * @return builder
          * 
          */
-        public Builder evaluationInterval(Output<String> evaluationInterval) {
+        public Builder evaluationInterval(@Nullable Output<String> evaluationInterval) {
             $.evaluationInterval = evaluationInterval;
             return this;
         }
@@ -390,7 +390,6 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguageArgs exte
         }
 
         public AlertPolicyConditionConditionPrometheusQueryLanguageArgs build() {
-            $.evaluationInterval = Objects.requireNonNull($.evaluationInterval, "expected parameter 'evaluationInterval' to be non-null");
             $.query = Objects.requireNonNull($.query, "expected parameter 'query' to be non-null");
             return $;
         }

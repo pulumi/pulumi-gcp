@@ -16,6 +16,8 @@ __all__ = [
     'LiteTopicReservationConfigArgs',
     'LiteTopicRetentionConfigArgs',
     'SubscriptionBigqueryConfigArgs',
+    'SubscriptionCloudStorageConfigArgs',
+    'SubscriptionCloudStorageConfigAvroConfigArgs',
     'SubscriptionDeadLetterPolicyArgs',
     'SubscriptionExpirationPolicyArgs',
     'SubscriptionIAMBindingConditionArgs',
@@ -268,6 +270,157 @@ class SubscriptionBigqueryConfigArgs:
         """
         When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to additional columns in the table.
         The subscription name, messageId, and publishTime fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column.
+        """
+        return pulumi.get(self, "write_metadata")
+
+    @write_metadata.setter
+    def write_metadata(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "write_metadata", value)
+
+
+@pulumi.input_type
+class SubscriptionCloudStorageConfigArgs:
+    def __init__(__self__, *,
+                 bucket: pulumi.Input[str],
+                 avro_config: Optional[pulumi.Input['SubscriptionCloudStorageConfigAvroConfigArgs']] = None,
+                 filename_prefix: Optional[pulumi.Input[str]] = None,
+                 filename_suffix: Optional[pulumi.Input[str]] = None,
+                 max_bytes: Optional[pulumi.Input[int]] = None,
+                 max_duration: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] bucket: User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like "gs://".
+        :param pulumi.Input['SubscriptionCloudStorageConfigAvroConfigArgs'] avro_config: If set, message data will be written to Cloud Storage in Avro format.
+               Structure is documented below.
+        :param pulumi.Input[str] filename_prefix: User-provided prefix for Cloud Storage filename.
+        :param pulumi.Input[str] filename_suffix: User-provided suffix for Cloud Storage filename. Must not end in "/".
+        :param pulumi.Input[int] max_bytes: The maximum bytes that can be written to a Cloud Storage file before a new file is created. Min 1 KB, max 10 GiB.
+               The maxBytes limit may be exceeded in cases where messages are larger than the limit.
+        :param pulumi.Input[str] max_duration: The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes.
+               May not exceed the subscription's acknowledgement deadline.
+               A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        :param pulumi.Input[str] state: (Output)
+               An output-only field that indicates whether or not the subscription can receive messages.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        if avro_config is not None:
+            pulumi.set(__self__, "avro_config", avro_config)
+        if filename_prefix is not None:
+            pulumi.set(__self__, "filename_prefix", filename_prefix)
+        if filename_suffix is not None:
+            pulumi.set(__self__, "filename_suffix", filename_suffix)
+        if max_bytes is not None:
+            pulumi.set(__self__, "max_bytes", max_bytes)
+        if max_duration is not None:
+            pulumi.set(__self__, "max_duration", max_duration)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> pulumi.Input[str]:
+        """
+        User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like "gs://".
+        """
+        return pulumi.get(self, "bucket")
+
+    @bucket.setter
+    def bucket(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter(name="avroConfig")
+    def avro_config(self) -> Optional[pulumi.Input['SubscriptionCloudStorageConfigAvroConfigArgs']]:
+        """
+        If set, message data will be written to Cloud Storage in Avro format.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "avro_config")
+
+    @avro_config.setter
+    def avro_config(self, value: Optional[pulumi.Input['SubscriptionCloudStorageConfigAvroConfigArgs']]):
+        pulumi.set(self, "avro_config", value)
+
+    @property
+    @pulumi.getter(name="filenamePrefix")
+    def filename_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        User-provided prefix for Cloud Storage filename.
+        """
+        return pulumi.get(self, "filename_prefix")
+
+    @filename_prefix.setter
+    def filename_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "filename_prefix", value)
+
+    @property
+    @pulumi.getter(name="filenameSuffix")
+    def filename_suffix(self) -> Optional[pulumi.Input[str]]:
+        """
+        User-provided suffix for Cloud Storage filename. Must not end in "/".
+        """
+        return pulumi.get(self, "filename_suffix")
+
+    @filename_suffix.setter
+    def filename_suffix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "filename_suffix", value)
+
+    @property
+    @pulumi.getter(name="maxBytes")
+    def max_bytes(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum bytes that can be written to a Cloud Storage file before a new file is created. Min 1 KB, max 10 GiB.
+        The maxBytes limit may be exceeded in cases where messages are larger than the limit.
+        """
+        return pulumi.get(self, "max_bytes")
+
+    @max_bytes.setter
+    def max_bytes(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_bytes", value)
+
+    @property
+    @pulumi.getter(name="maxDuration")
+    def max_duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes.
+        May not exceed the subscription's acknowledgement deadline.
+        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "max_duration")
+
+    @max_duration.setter
+    def max_duration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_duration", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        An output-only field that indicates whether or not the subscription can receive messages.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+
+@pulumi.input_type
+class SubscriptionCloudStorageConfigAvroConfigArgs:
+    def __init__(__self__, *,
+                 write_metadata: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] write_metadata: When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.
+        """
+        if write_metadata is not None:
+            pulumi.set(__self__, "write_metadata", write_metadata)
+
+    @property
+    @pulumi.getter(name="writeMetadata")
+    def write_metadata(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.
         """
         return pulumi.get(self, "write_metadata")
 

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.container.outputs.GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig;
 import com.pulumi.gcp.container.outputs.GetClusterMonitoringConfigManagedPrometheus;
 import java.lang.String;
 import java.util.List;
@@ -11,10 +12,14 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterMonitoringConfig {
+    private List<GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig> advancedDatapathObservabilityConfigs;
     private List<String> enableComponents;
     private List<GetClusterMonitoringConfigManagedPrometheus> managedPrometheuses;
 
     private GetClusterMonitoringConfig() {}
+    public List<GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig> advancedDatapathObservabilityConfigs() {
+        return this.advancedDatapathObservabilityConfigs;
+    }
     public List<String> enableComponents() {
         return this.enableComponents;
     }
@@ -31,15 +36,25 @@ public final class GetClusterMonitoringConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig> advancedDatapathObservabilityConfigs;
         private List<String> enableComponents;
         private List<GetClusterMonitoringConfigManagedPrometheus> managedPrometheuses;
         public Builder() {}
         public Builder(GetClusterMonitoringConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.advancedDatapathObservabilityConfigs = defaults.advancedDatapathObservabilityConfigs;
     	      this.enableComponents = defaults.enableComponents;
     	      this.managedPrometheuses = defaults.managedPrometheuses;
         }
 
+        @CustomType.Setter
+        public Builder advancedDatapathObservabilityConfigs(List<GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig> advancedDatapathObservabilityConfigs) {
+            this.advancedDatapathObservabilityConfigs = Objects.requireNonNull(advancedDatapathObservabilityConfigs);
+            return this;
+        }
+        public Builder advancedDatapathObservabilityConfigs(GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig... advancedDatapathObservabilityConfigs) {
+            return advancedDatapathObservabilityConfigs(List.of(advancedDatapathObservabilityConfigs));
+        }
         @CustomType.Setter
         public Builder enableComponents(List<String> enableComponents) {
             this.enableComponents = Objects.requireNonNull(enableComponents);
@@ -58,6 +73,7 @@ public final class GetClusterMonitoringConfig {
         }
         public GetClusterMonitoringConfig build() {
             final var o = new GetClusterMonitoringConfig();
+            o.advancedDatapathObservabilityConfigs = advancedDatapathObservabilityConfigs;
             o.enableComponents = enableComponents;
             o.managedPrometheuses = managedPrometheuses;
             return o;

@@ -213,9 +213,8 @@ type InstanceGroupManager struct {
 	// instances in the group are added. Updating the target pools attribute does
 	// not affect existing instances.
 	TargetPools pulumi.StringArrayOutput `pulumi:"targetPools"`
-	// The target number of running instances for this managed
-	// instance group. This value should always be explicitly set unless this resource is attached to
-	// an autoscaler, in which case it should never be set. Defaults to `0`.
+	// The target number of running instances for this managed instance group. This value should always be explicitly set
+	// unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
 	TargetSize pulumi.IntOutput `pulumi:"targetSize"`
 	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
 	//
@@ -334,9 +333,8 @@ type instanceGroupManagerState struct {
 	// instances in the group are added. Updating the target pools attribute does
 	// not affect existing instances.
 	TargetPools []string `pulumi:"targetPools"`
-	// The target number of running instances for this managed
-	// instance group. This value should always be explicitly set unless this resource is attached to
-	// an autoscaler, in which case it should never be set. Defaults to `0`.
+	// The target number of running instances for this managed instance group. This value should always be explicitly set
+	// unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
 	TargetSize *int `pulumi:"targetSize"`
 	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
 	//
@@ -420,9 +418,8 @@ type InstanceGroupManagerState struct {
 	// instances in the group are added. Updating the target pools attribute does
 	// not affect existing instances.
 	TargetPools pulumi.StringArrayInput
-	// The target number of running instances for this managed
-	// instance group. This value should always be explicitly set unless this resource is attached to
-	// an autoscaler, in which case it should never be set. Defaults to `0`.
+	// The target number of running instances for this managed instance group. This value should always be explicitly set
+	// unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
 	TargetSize pulumi.IntPtrInput
 	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
 	//
@@ -501,9 +498,8 @@ type instanceGroupManagerArgs struct {
 	// instances in the group are added. Updating the target pools attribute does
 	// not affect existing instances.
 	TargetPools []string `pulumi:"targetPools"`
-	// The target number of running instances for this managed
-	// instance group. This value should always be explicitly set unless this resource is attached to
-	// an autoscaler, in which case it should never be set. Defaults to `0`.
+	// The target number of running instances for this managed instance group. This value should always be explicitly set
+	// unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
 	TargetSize *int `pulumi:"targetSize"`
 	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
 	//
@@ -579,9 +575,8 @@ type InstanceGroupManagerArgs struct {
 	// instances in the group are added. Updating the target pools attribute does
 	// not affect existing instances.
 	TargetPools pulumi.StringArrayInput
-	// The target number of running instances for this managed
-	// instance group. This value should always be explicitly set unless this resource is attached to
-	// an autoscaler, in which case it should never be set. Defaults to `0`.
+	// The target number of running instances for this managed instance group. This value should always be explicitly set
+	// unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
 	TargetSize pulumi.IntPtrInput
 	// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
 	//
@@ -815,9 +810,8 @@ func (o InstanceGroupManagerOutput) TargetPools() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *InstanceGroupManager) pulumi.StringArrayOutput { return v.TargetPools }).(pulumi.StringArrayOutput)
 }
 
-// The target number of running instances for this managed
-// instance group. This value should always be explicitly set unless this resource is attached to
-// an autoscaler, in which case it should never be set. Defaults to `0`.
+// The target number of running instances for this managed instance group. This value should always be explicitly set
+// unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
 func (o InstanceGroupManagerOutput) TargetSize() pulumi.IntOutput {
 	return o.ApplyT(func(v *InstanceGroupManager) pulumi.IntOutput { return v.TargetSize }).(pulumi.IntOutput)
 }

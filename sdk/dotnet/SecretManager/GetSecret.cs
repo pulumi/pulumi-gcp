@@ -113,6 +113,7 @@ namespace Pulumi.Gcp.SecretManager
     [OutputType]
     public sealed class GetSecretResult
     {
+        public readonly ImmutableDictionary<string, string> Annotations;
         public readonly string CreateTime;
         public readonly string ExpireTime;
         /// <summary>
@@ -130,6 +131,8 @@ namespace Pulumi.Gcp.SecretManager
 
         [OutputConstructor]
         private GetSecretResult(
+            ImmutableDictionary<string, string> annotations,
+
             string createTime,
 
             string expireTime,
@@ -152,6 +155,7 @@ namespace Pulumi.Gcp.SecretManager
 
             string ttl)
         {
+            Annotations = annotations;
             CreateTime = createTime;
             ExpireTime = expireTime;
             Id = id;

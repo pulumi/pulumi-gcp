@@ -73,6 +73,7 @@ export interface GetGlobalForwardingRuleResult {
     readonly pscConnectionStatus: string;
     readonly selfLink: string;
     readonly sourceIpRanges: string[];
+    readonly subnetwork: string;
     readonly target: string;
 }
 /**

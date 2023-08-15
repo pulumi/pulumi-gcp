@@ -251,6 +251,7 @@ import javax.annotation.Nullable;
  *             .notificationConfigs(FhirStoreNotificationConfigArgs.builder()
  *                 .pubsubTopic(topic.id())
  *                 .sendFullResource(true)
+ *                 .sendPreviousResourceOnDelete(true)
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)

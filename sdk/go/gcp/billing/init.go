@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AccountIamPolicy{}
 	case "gcp:billing/budget:Budget":
 		r = &Budget{}
+	case "gcp:billing/projectInfo:ProjectInfo":
+		r = &ProjectInfo{}
 	case "gcp:billing/subAccount:SubAccount":
 		r = &SubAccount{}
 	default:
@@ -62,6 +64,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"billing/budget",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"billing/projectInfo",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

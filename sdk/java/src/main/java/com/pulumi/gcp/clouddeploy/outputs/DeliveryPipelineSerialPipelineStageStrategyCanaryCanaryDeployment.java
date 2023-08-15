@@ -4,6 +4,8 @@
 package com.pulumi.gcp.clouddeploy.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.clouddeploy.outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy;
+import com.pulumi.gcp.clouddeploy.outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.List;
@@ -19,6 +21,16 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploy
      */
     private List<Integer> percentages;
     /**
+     * @return (Beta only) Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
+     * 
+     */
+    private @Nullable DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy postdeploy;
+    /**
+     * @return (Beta only) Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job will not be present.
+     * 
+     */
+    private @Nullable DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy predeploy;
+    /**
      * @return Whether to run verify tests after each percentage deployment.
      * 
      */
@@ -31,6 +43,20 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploy
      */
     public List<Integer> percentages() {
         return this.percentages;
+    }
+    /**
+     * @return (Beta only) Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
+     * 
+     */
+    public Optional<DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy> postdeploy() {
+        return Optional.ofNullable(this.postdeploy);
+    }
+    /**
+     * @return (Beta only) Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job will not be present.
+     * 
+     */
+    public Optional<DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy> predeploy() {
+        return Optional.ofNullable(this.predeploy);
     }
     /**
      * @return Whether to run verify tests after each percentage deployment.
@@ -50,11 +76,15 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploy
     @CustomType.Builder
     public static final class Builder {
         private List<Integer> percentages;
+        private @Nullable DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy postdeploy;
+        private @Nullable DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy predeploy;
         private @Nullable Boolean verify;
         public Builder() {}
         public Builder(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.percentages = defaults.percentages;
+    	      this.postdeploy = defaults.postdeploy;
+    	      this.predeploy = defaults.predeploy;
     	      this.verify = defaults.verify;
         }
 
@@ -67,6 +97,16 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploy
             return percentages(List.of(percentages));
         }
         @CustomType.Setter
+        public Builder postdeploy(@Nullable DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy postdeploy) {
+            this.postdeploy = postdeploy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder predeploy(@Nullable DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy predeploy) {
+            this.predeploy = predeploy;
+            return this;
+        }
+        @CustomType.Setter
         public Builder verify(@Nullable Boolean verify) {
             this.verify = verify;
             return this;
@@ -74,6 +114,8 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploy
         public DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment build() {
             final var o = new DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment();
             o.percentages = percentages;
+            o.postdeploy = postdeploy;
+            o.predeploy = predeploy;
             o.verify = verify;
             return o;
         }

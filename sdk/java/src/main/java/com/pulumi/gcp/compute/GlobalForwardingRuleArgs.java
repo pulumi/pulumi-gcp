@@ -198,7 +198,7 @@ public final class GlobalForwardingRuleArgs extends com.pulumi.resources.Resourc
      * For more information about forwarding rules, refer to
      * [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
      * Default value is `EXTERNAL`.
-     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
      * 
      */
     @Import(name="loadBalancingScheme")
@@ -209,7 +209,7 @@ public final class GlobalForwardingRuleArgs extends com.pulumi.resources.Resourc
      * For more information about forwarding rules, refer to
      * [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
      * Default value is `EXTERNAL`.
-     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
      * 
      */
     public Optional<Output<String>> loadBalancingScheme() {
@@ -416,6 +416,31 @@ public final class GlobalForwardingRuleArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * This field identifies the subnetwork that the load balanced IP should
+     * belong to for this Forwarding Rule, used in internal load balancing and
+     * network load balancing with IPv6.
+     * If the network specified is in auto subnet mode, this field is optional.
+     * However, a subnetwork must be specified if the network is in custom subnet
+     * mode or when creating external forwarding rule with IPv6.
+     * 
+     */
+    @Import(name="subnetwork")
+    private @Nullable Output<String> subnetwork;
+
+    /**
+     * @return This field identifies the subnetwork that the load balanced IP should
+     * belong to for this Forwarding Rule, used in internal load balancing and
+     * network load balancing with IPv6.
+     * If the network specified is in auto subnet mode, this field is optional.
+     * However, a subnetwork must be specified if the network is in custom subnet
+     * mode or when creating external forwarding rule with IPv6.
+     * 
+     */
+    public Optional<Output<String>> subnetwork() {
+        return Optional.ofNullable(this.subnetwork);
+    }
+
+    /**
      * The URL of the target resource to receive the matched traffic.  For
      * regional forwarding rules, this target must be in the same region as the
      * forwarding rule. For global forwarding rules, this target must be a global
@@ -471,6 +496,7 @@ public final class GlobalForwardingRuleArgs extends com.pulumi.resources.Resourc
         this.portRange = $.portRange;
         this.project = $.project;
         this.sourceIpRanges = $.sourceIpRanges;
+        this.subnetwork = $.subnetwork;
         this.target = $.target;
     }
 
@@ -707,7 +733,7 @@ public final class GlobalForwardingRuleArgs extends com.pulumi.resources.Resourc
          * For more information about forwarding rules, refer to
          * [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
          * Default value is `EXTERNAL`.
-         * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+         * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
          * 
          * @return builder
          * 
@@ -722,7 +748,7 @@ public final class GlobalForwardingRuleArgs extends com.pulumi.resources.Resourc
          * For more information about forwarding rules, refer to
          * [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
          * Default value is `EXTERNAL`.
-         * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+         * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
          * 
          * @return builder
          * 
@@ -1004,6 +1030,37 @@ public final class GlobalForwardingRuleArgs extends com.pulumi.resources.Resourc
          */
         public Builder sourceIpRanges(String... sourceIpRanges) {
             return sourceIpRanges(List.of(sourceIpRanges));
+        }
+
+        /**
+         * @param subnetwork This field identifies the subnetwork that the load balanced IP should
+         * belong to for this Forwarding Rule, used in internal load balancing and
+         * network load balancing with IPv6.
+         * If the network specified is in auto subnet mode, this field is optional.
+         * However, a subnetwork must be specified if the network is in custom subnet
+         * mode or when creating external forwarding rule with IPv6.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnetwork(@Nullable Output<String> subnetwork) {
+            $.subnetwork = subnetwork;
+            return this;
+        }
+
+        /**
+         * @param subnetwork This field identifies the subnetwork that the load balanced IP should
+         * belong to for this Forwarding Rule, used in internal load balancing and
+         * network load balancing with IPv6.
+         * If the network specified is in auto subnet mode, this field is optional.
+         * However, a subnetwork must be specified if the network is in custom subnet
+         * mode or when creating external forwarding rule with IPv6.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnetwork(String subnetwork) {
+            return subnetwork(Output.of(subnetwork));
         }
 
         /**

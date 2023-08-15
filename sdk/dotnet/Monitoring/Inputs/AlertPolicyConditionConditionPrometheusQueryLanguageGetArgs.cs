@@ -44,8 +44,8 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         /// alerting rule, then this value should be taken from the enclosing
         /// rule group.
         /// </summary>
-        [Input("evaluationInterval", required: true)]
-        public Input<string> EvaluationInterval { get; set; } = null!;
+        [Input("evaluationInterval")]
+        public Input<string>? EvaluationInterval { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

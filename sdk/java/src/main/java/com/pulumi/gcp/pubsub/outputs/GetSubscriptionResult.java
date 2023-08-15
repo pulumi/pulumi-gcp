@@ -5,6 +5,7 @@ package com.pulumi.gcp.pubsub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.pubsub.outputs.GetSubscriptionBigqueryConfig;
+import com.pulumi.gcp.pubsub.outputs.GetSubscriptionCloudStorageConfig;
 import com.pulumi.gcp.pubsub.outputs.GetSubscriptionDeadLetterPolicy;
 import com.pulumi.gcp.pubsub.outputs.GetSubscriptionExpirationPolicy;
 import com.pulumi.gcp.pubsub.outputs.GetSubscriptionPushConfig;
@@ -22,6 +23,7 @@ import javax.annotation.Nullable;
 public final class GetSubscriptionResult {
     private Integer ackDeadlineSeconds;
     private List<GetSubscriptionBigqueryConfig> bigqueryConfigs;
+    private List<GetSubscriptionCloudStorageConfig> cloudStorageConfigs;
     private List<GetSubscriptionDeadLetterPolicy> deadLetterPolicies;
     private Boolean enableExactlyOnceDelivery;
     private Boolean enableMessageOrdering;
@@ -47,6 +49,9 @@ public final class GetSubscriptionResult {
     }
     public List<GetSubscriptionBigqueryConfig> bigqueryConfigs() {
         return this.bigqueryConfigs;
+    }
+    public List<GetSubscriptionCloudStorageConfig> cloudStorageConfigs() {
+        return this.cloudStorageConfigs;
     }
     public List<GetSubscriptionDeadLetterPolicy> deadLetterPolicies() {
         return this.deadLetterPolicies;
@@ -106,6 +111,7 @@ public final class GetSubscriptionResult {
     public static final class Builder {
         private Integer ackDeadlineSeconds;
         private List<GetSubscriptionBigqueryConfig> bigqueryConfigs;
+        private List<GetSubscriptionCloudStorageConfig> cloudStorageConfigs;
         private List<GetSubscriptionDeadLetterPolicy> deadLetterPolicies;
         private Boolean enableExactlyOnceDelivery;
         private Boolean enableMessageOrdering;
@@ -125,6 +131,7 @@ public final class GetSubscriptionResult {
     	      Objects.requireNonNull(defaults);
     	      this.ackDeadlineSeconds = defaults.ackDeadlineSeconds;
     	      this.bigqueryConfigs = defaults.bigqueryConfigs;
+    	      this.cloudStorageConfigs = defaults.cloudStorageConfigs;
     	      this.deadLetterPolicies = defaults.deadLetterPolicies;
     	      this.enableExactlyOnceDelivery = defaults.enableExactlyOnceDelivery;
     	      this.enableMessageOrdering = defaults.enableMessageOrdering;
@@ -153,6 +160,14 @@ public final class GetSubscriptionResult {
         }
         public Builder bigqueryConfigs(GetSubscriptionBigqueryConfig... bigqueryConfigs) {
             return bigqueryConfigs(List.of(bigqueryConfigs));
+        }
+        @CustomType.Setter
+        public Builder cloudStorageConfigs(List<GetSubscriptionCloudStorageConfig> cloudStorageConfigs) {
+            this.cloudStorageConfigs = Objects.requireNonNull(cloudStorageConfigs);
+            return this;
+        }
+        public Builder cloudStorageConfigs(GetSubscriptionCloudStorageConfig... cloudStorageConfigs) {
+            return cloudStorageConfigs(List.of(cloudStorageConfigs));
         }
         @CustomType.Setter
         public Builder deadLetterPolicies(List<GetSubscriptionDeadLetterPolicy> deadLetterPolicies) {
@@ -240,6 +255,7 @@ public final class GetSubscriptionResult {
             final var o = new GetSubscriptionResult();
             o.ackDeadlineSeconds = ackDeadlineSeconds;
             o.bigqueryConfigs = bigqueryConfigs;
+            o.cloudStorageConfigs = cloudStorageConfigs;
             o.deadLetterPolicies = deadLetterPolicies;
             o.enableExactlyOnceDelivery = enableExactlyOnceDelivery;
             o.enableMessageOrdering = enableMessageOrdering;

@@ -182,7 +182,7 @@ namespace Pulumi.Gcp.CloudBuild
     /// {
     ///     var webhookTriggerSecretKey = new Gcp.SecretManager.Secret("webhookTriggerSecretKey", new()
     ///     {
-    ///         SecretId = "webhook_trigger-secret-key-1",
+    ///         SecretId = "webhook-trigger-secret-key",
     ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
     ///         {
     ///             UserManaged = new Gcp.SecretManager.Inputs.SecretReplicationUserManagedArgs
@@ -382,7 +382,7 @@ namespace Pulumi.Gcp.CloudBuild
     ///                 InvertRegex = true,
     ///                 Tag = "^0.1.*",
     ///             },
-    ///             RepoSlug = "terraform-provider-google",
+    ///             RepoSlug = "bbs-push-trigger",
     ///         },
     ///         Filename = "cloudbuild.yaml",
     ///         Location = "us-central1",

@@ -361,6 +361,13 @@ namespace Pulumi.Gcp.CloudFunctionsV2
         public Output<Outputs.FunctionEventTrigger?> EventTrigger { get; private set; } = null!;
 
         /// <summary>
+        /// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources.
+        /// It must match the pattern projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}.
+        /// </summary>
+        [Output("kmsKeyName")]
+        public Output<string?> KmsKeyName { get; private set; } = null!;
+
+        /// <summary>
         /// A set of key/value label pairs associated with this Cloud Function.
         /// </summary>
         [Output("labels")]
@@ -482,6 +489,13 @@ namespace Pulumi.Gcp.CloudFunctionsV2
         [Input("eventTrigger")]
         public Input<Inputs.FunctionEventTriggerArgs>? EventTrigger { get; set; }
 
+        /// <summary>
+        /// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources.
+        /// It must match the pattern projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}.
+        /// </summary>
+        [Input("kmsKeyName")]
+        public Input<string>? KmsKeyName { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -559,6 +573,13 @@ namespace Pulumi.Gcp.CloudFunctionsV2
         /// </summary>
         [Input("eventTrigger")]
         public Input<Inputs.FunctionEventTriggerGetArgs>? EventTrigger { get; set; }
+
+        /// <summary>
+        /// Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources.
+        /// It must match the pattern projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}.
+        /// </summary>
+        [Input("kmsKeyName")]
+        public Input<string>? KmsKeyName { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

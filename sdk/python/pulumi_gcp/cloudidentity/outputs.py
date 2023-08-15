@@ -218,6 +218,7 @@ class GetGroupMembershipsMembershipResult(dict):
         :param str name: The name of the MembershipRole. One of OWNER, MANAGER, MEMBER.
         :param Sequence['GetGroupMembershipsMembershipPreferredMemberKeyArgs'] preferred_member_keys: EntityKey of the member.  Structure is documented below.
         :param Sequence['GetGroupMembershipsMembershipRoleArgs'] roles: The MembershipRoles that apply to the Membership. Structure is documented below.
+        :param str type: The type of the membership.
         """
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "group", group)
@@ -276,6 +277,9 @@ class GetGroupMembershipsMembershipResult(dict):
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        The type of the membership.
+        """
         return pulumi.get(self, "type")
 
     @property

@@ -348,6 +348,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.containerCustomEndpoint);
     }
 
+    @Import(name="coreBillingCustomEndpoint")
+    private @Nullable Output<String> coreBillingCustomEndpoint;
+
+    public Optional<Output<String>> coreBillingCustomEndpoint() {
+        return Optional.ofNullable(this.coreBillingCustomEndpoint);
+    }
+
     @Import(name="credentials")
     private @Nullable Output<String> credentials;
 
@@ -1077,6 +1084,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.containerAwsCustomEndpoint = $.containerAwsCustomEndpoint;
         this.containerAzureCustomEndpoint = $.containerAzureCustomEndpoint;
         this.containerCustomEndpoint = $.containerCustomEndpoint;
+        this.coreBillingCustomEndpoint = $.coreBillingCustomEndpoint;
         this.credentials = $.credentials;
         this.dataCatalogCustomEndpoint = $.dataCatalogCustomEndpoint;
         this.dataFusionCustomEndpoint = $.dataFusionCustomEndpoint;
@@ -1615,6 +1623,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder containerCustomEndpoint(String containerCustomEndpoint) {
             return containerCustomEndpoint(Output.of(containerCustomEndpoint));
+        }
+
+        public Builder coreBillingCustomEndpoint(@Nullable Output<String> coreBillingCustomEndpoint) {
+            $.coreBillingCustomEndpoint = coreBillingCustomEndpoint;
+            return this;
+        }
+
+        public Builder coreBillingCustomEndpoint(String coreBillingCustomEndpoint) {
+            return coreBillingCustomEndpoint(Output.of(coreBillingCustomEndpoint));
         }
 
         public Builder credentials(@Nullable Output<String> credentials) {

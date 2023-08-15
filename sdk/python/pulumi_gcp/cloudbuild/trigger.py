@@ -1138,7 +1138,7 @@ class Trigger(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         webhook_trigger_secret_key = gcp.secretmanager.Secret("webhookTriggerSecretKey",
-            secret_id="webhook_trigger-secret-key-1",
+            secret_id="webhook-trigger-secret-key",
             replication=gcp.secretmanager.SecretReplicationArgs(
                 user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
                     replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
@@ -1259,7 +1259,7 @@ class Trigger(pulumi.CustomResource):
                     invert_regex=True,
                     tag="^0.1.*",
                 ),
-                repo_slug="terraform-provider-google",
+                repo_slug="bbs-push-trigger",
             ),
             filename="cloudbuild.yaml",
             location="us-central1")
@@ -1552,7 +1552,7 @@ class Trigger(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         webhook_trigger_secret_key = gcp.secretmanager.Secret("webhookTriggerSecretKey",
-            secret_id="webhook_trigger-secret-key-1",
+            secret_id="webhook-trigger-secret-key",
             replication=gcp.secretmanager.SecretReplicationArgs(
                 user_managed=gcp.secretmanager.SecretReplicationUserManagedArgs(
                     replicas=[gcp.secretmanager.SecretReplicationUserManagedReplicaArgs(
@@ -1673,7 +1673,7 @@ class Trigger(pulumi.CustomResource):
                     invert_regex=True,
                     tag="^0.1.*",
                 ),
-                repo_slug="terraform-provider-google",
+                repo_slug="bbs-push-trigger",
             ),
             filename="cloudbuild.yaml",
             location="us-central1")

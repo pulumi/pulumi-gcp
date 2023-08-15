@@ -47,6 +47,7 @@ export interface GetSecretArgs {
  * A collection of values returned by getSecret.
  */
 export interface GetSecretResult {
+    readonly annotations: {[key: string]: string};
     readonly createTime: string;
     readonly expireTime: string;
     /**
