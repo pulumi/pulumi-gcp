@@ -10575,7 +10575,7 @@ class InstanceSchedulingArgs:
                If this field is set to true, then `automatic_restart` must be
                set to false.  Defaults to false.
         :param pulumi.Input[str] provisioning_model: Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`, 
-               `preemptible` should be `true` and `auto_restart` should be
+               `preemptible` should be `true` and `automatic_restart` should be
                `false`. For more info about
                `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
         """
@@ -10714,7 +10714,7 @@ class InstanceSchedulingArgs:
     def provisioning_model(self) -> Optional[pulumi.Input[str]]:
         """
         Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`, 
-        `preemptible` should be `true` and `auto_restart` should be
+        `preemptible` should be `true` and `automatic_restart` should be
         `false`. For more info about
         `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
         """
@@ -12197,7 +12197,7 @@ class InstanceTemplateSchedulingArgs:
                false. Read more on this
                [here](https://cloud.google.com/compute/docs/instances/preemptible).
         :param pulumi.Input[str] provisioning_model: Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`, 
-               `preemptible` should be `true` and `auto_restart` should be
+               `preemptible` should be `true` and `automatic_restart` should be
                `false`. For more info about
                `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
         """
@@ -12336,7 +12336,7 @@ class InstanceTemplateSchedulingArgs:
     def provisioning_model(self) -> Optional[pulumi.Input[str]]:
         """
         Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`, 
-        `preemptible` should be `true` and `auto_restart` should be
+        `preemptible` should be `true` and `automatic_restart` should be
         `false`. For more info about
         `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
         """
@@ -12537,8 +12537,10 @@ class InstanceTemplateServiceAccountArgs:
                
                The [service accounts documentation](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam)
                explains that access scopes are the legacy method of specifying permissions for your instance.
-               If you are following best practices and using IAM roles to grant permissions to service accounts,
-               then you can define this field as an empty list.
+               To follow best practices you should create a dedicated service account with the minimum permissions the VM requires.
+               To use a dedicated service account this field should be configured as a list containing the `cloud-platform` scope.
+               See [Authenticate workloads using service accounts best practices](https://cloud.google.com/compute/docs/access/create-enable-service-accounts-for-instances#best_practices)
+               and [Best practices for using service accounts](https://cloud.google.com/iam/docs/best-practices-service-accounts#single-purpose).
         :param pulumi.Input[str] email: The service account e-mail address. If not given, the
                default Google Compute Engine service account is used.
         """
@@ -12556,8 +12558,10 @@ class InstanceTemplateServiceAccountArgs:
 
         The [service accounts documentation](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam)
         explains that access scopes are the legacy method of specifying permissions for your instance.
-        If you are following best practices and using IAM roles to grant permissions to service accounts,
-        then you can define this field as an empty list.
+        To follow best practices you should create a dedicated service account with the minimum permissions the VM requires.
+        To use a dedicated service account this field should be configured as a list containing the `cloud-platform` scope.
+        See [Authenticate workloads using service accounts best practices](https://cloud.google.com/compute/docs/access/create-enable-service-accounts-for-instances#best_practices)
+        and [Best practices for using service accounts](https://cloud.google.com/iam/docs/best-practices-service-accounts#single-purpose).
         """
         return pulumi.get(self, "scopes")
 
@@ -20021,7 +20025,7 @@ class RegionInstanceTemplateSchedulingArgs:
                false. Read more on this
                [here](https://cloud.google.com/compute/docs/instances/preemptible).
         :param pulumi.Input[str] provisioning_model: Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`, 
-               `preemptible` should be `true` and `auto_restart` should be
+               `preemptible` should be `true` and `automatic_restart` should be
                `false`. For more info about
                `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
         """
@@ -20163,7 +20167,7 @@ class RegionInstanceTemplateSchedulingArgs:
     def provisioning_model(self) -> Optional[pulumi.Input[str]]:
         """
         Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`, 
-        `preemptible` should be `true` and `auto_restart` should be
+        `preemptible` should be `true` and `automatic_restart` should be
         `false`. For more info about
         `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
         """
@@ -20350,8 +20354,10 @@ class RegionInstanceTemplateServiceAccountArgs:
                
                The [service accounts documentation](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam)
                explains that access scopes are the legacy method of specifying permissions for your instance.
-               If you are following best practices and using IAM roles to grant permissions to service accounts,
-               then you can define this field as an empty list.
+               To follow best practices you should create a dedicated service account with the minimum permissions the VM requires.
+               To use a dedicated service account this field should be configured as a list containing the `cloud-platform` scope.
+               See [Authenticate workloads using service accounts best practices](https://cloud.google.com/compute/docs/access/create-enable-service-accounts-for-instances#best_practices)
+               and [Best practices for using service accounts](https://cloud.google.com/iam/docs/best-practices-service-accounts#single-purpose).
         :param pulumi.Input[str] email: The service account e-mail address. If not given, the
                default Google Compute Engine service account is used.
         """
@@ -20369,8 +20375,10 @@ class RegionInstanceTemplateServiceAccountArgs:
 
         The [service accounts documentation](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam)
         explains that access scopes are the legacy method of specifying permissions for your instance.
-        If you are following best practices and using IAM roles to grant permissions to service accounts,
-        then you can define this field as an empty list.
+        To follow best practices you should create a dedicated service account with the minimum permissions the VM requires.
+        To use a dedicated service account this field should be configured as a list containing the `cloud-platform` scope.
+        See [Authenticate workloads using service accounts best practices](https://cloud.google.com/compute/docs/access/create-enable-service-accounts-for-instances#best_practices)
+        and [Best practices for using service accounts](https://cloud.google.com/iam/docs/best-practices-service-accounts#single-purpose).
         """
         return pulumi.get(self, "scopes")
 

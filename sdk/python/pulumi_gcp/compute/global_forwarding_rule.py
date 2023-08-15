@@ -30,7 +30,8 @@ class GlobalForwardingRuleArgs:
                  no_automate_dns_zone: Optional[pulumi.Input[bool]] = None,
                  port_range: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 subnetwork: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a GlobalForwardingRule resource.
         :param pulumi.Input[str] target: The URL of the target resource to receive the matched traffic.  For
@@ -99,7 +100,7 @@ class GlobalForwardingRuleArgs:
                For more information about forwarding rules, refer to
                [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
                Default value is `EXTERNAL`.
-               Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+               Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
         :param pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterArgs']]] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing
                configuration to a limited set xDS compliant clients. In their xDS
                requests to Loadbalancer, xDS clients present node metadata. If a
@@ -154,6 +155,12 @@ class GlobalForwardingRuleArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_ip_ranges: If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
+        :param pulumi.Input[str] subnetwork: This field identifies the subnetwork that the load balanced IP should
+               belong to for this Forwarding Rule, used in internal load balancing and
+               network load balancing with IPv6.
+               If the network specified is in auto subnet mode, this field is optional.
+               However, a subnetwork must be specified if the network is in custom subnet
+               mode or when creating external forwarding rule with IPv6.
         """
         pulumi.set(__self__, "target", target)
         if allow_psc_global_access is not None:
@@ -184,6 +191,8 @@ class GlobalForwardingRuleArgs:
             pulumi.set(__self__, "project", project)
         if source_ip_ranges is not None:
             pulumi.set(__self__, "source_ip_ranges", source_ip_ranges)
+        if subnetwork is not None:
+            pulumi.set(__self__, "subnetwork", subnetwork)
 
     @property
     @pulumi.getter
@@ -332,7 +341,7 @@ class GlobalForwardingRuleArgs:
         For more information about forwarding rules, refer to
         [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
         Default value is `EXTERNAL`.
-        Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+        Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
         """
         return pulumi.get(self, "load_balancing_scheme")
 
@@ -471,6 +480,23 @@ class GlobalForwardingRuleArgs:
     def source_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "source_ip_ranges", value)
 
+    @property
+    @pulumi.getter
+    def subnetwork(self) -> Optional[pulumi.Input[str]]:
+        """
+        This field identifies the subnetwork that the load balanced IP should
+        belong to for this Forwarding Rule, used in internal load balancing and
+        network load balancing with IPv6.
+        If the network specified is in auto subnet mode, this field is optional.
+        However, a subnetwork must be specified if the network is in custom subnet
+        mode or when creating external forwarding rule with IPv6.
+        """
+        return pulumi.get(self, "subnetwork")
+
+    @subnetwork.setter
+    def subnetwork(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subnetwork", value)
+
 
 @pulumi.input_type
 class _GlobalForwardingRuleState:
@@ -494,6 +520,7 @@ class _GlobalForwardingRuleState:
                  psc_connection_status: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 subnetwork: Optional[pulumi.Input[str]] = None,
                  target: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering GlobalForwardingRule resources.
@@ -552,7 +579,7 @@ class _GlobalForwardingRuleState:
                For more information about forwarding rules, refer to
                [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
                Default value is `EXTERNAL`.
-               Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+               Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
         :param pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterArgs']]] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing
                configuration to a limited set xDS compliant clients. In their xDS
                requests to Loadbalancer, xDS clients present node metadata. If a
@@ -610,6 +637,12 @@ class _GlobalForwardingRuleState:
         :param pulumi.Input[str] psc_connection_status: The PSC connection status of the PSC Forwarding Rule. Possible values: `STATUS_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_ip_ranges: If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
+        :param pulumi.Input[str] subnetwork: This field identifies the subnetwork that the load balanced IP should
+               belong to for this Forwarding Rule, used in internal load balancing and
+               network load balancing with IPv6.
+               If the network specified is in auto subnet mode, this field is optional.
+               However, a subnetwork must be specified if the network is in custom subnet
+               mode or when creating external forwarding rule with IPv6.
         :param pulumi.Input[str] target: The URL of the target resource to receive the matched traffic.  For
                regional forwarding rules, this target must be in the same region as the
                forwarding rule. For global forwarding rules, this target must be a global
@@ -663,6 +696,8 @@ class _GlobalForwardingRuleState:
             pulumi.set(__self__, "self_link", self_link)
         if source_ip_ranges is not None:
             pulumi.set(__self__, "source_ip_ranges", source_ip_ranges)
+        if subnetwork is not None:
+            pulumi.set(__self__, "subnetwork", subnetwork)
         if target is not None:
             pulumi.set(__self__, "target", target)
 
@@ -813,7 +848,7 @@ class _GlobalForwardingRuleState:
         For more information about forwarding rules, refer to
         [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
         Default value is `EXTERNAL`.
-        Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+        Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
         """
         return pulumi.get(self, "load_balancing_scheme")
 
@@ -990,6 +1025,23 @@ class _GlobalForwardingRuleState:
 
     @property
     @pulumi.getter
+    def subnetwork(self) -> Optional[pulumi.Input[str]]:
+        """
+        This field identifies the subnetwork that the load balanced IP should
+        belong to for this Forwarding Rule, used in internal load balancing and
+        network load balancing with IPv6.
+        If the network specified is in auto subnet mode, this field is optional.
+        However, a subnetwork must be specified if the network is in custom subnet
+        mode or when creating external forwarding rule with IPv6.
+        """
+        return pulumi.get(self, "subnetwork")
+
+    @subnetwork.setter
+    def subnetwork(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subnetwork", value)
+
+    @property
+    @pulumi.getter
     def target(self) -> Optional[pulumi.Input[str]]:
         """
         The URL of the target resource to receive the matched traffic.  For
@@ -1033,6 +1085,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
                  port_range: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 subnetwork: Optional[pulumi.Input[str]] = None,
                  target: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -1215,7 +1268,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
                For more information about forwarding rules, refer to
                [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
                Default value is `EXTERNAL`.
-               Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+               Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GlobalForwardingRuleMetadataFilterArgs']]]] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing
                configuration to a limited set xDS compliant clients. In their xDS
                requests to Loadbalancer, xDS clients present node metadata. If a
@@ -1270,6 +1323,12 @@ class GlobalForwardingRule(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_ip_ranges: If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
+        :param pulumi.Input[str] subnetwork: This field identifies the subnetwork that the load balanced IP should
+               belong to for this Forwarding Rule, used in internal load balancing and
+               network load balancing with IPv6.
+               If the network specified is in auto subnet mode, this field is optional.
+               However, a subnetwork must be specified if the network is in custom subnet
+               mode or when creating external forwarding rule with IPv6.
         :param pulumi.Input[str] target: The URL of the target resource to receive the matched traffic.  For
                regional forwarding rules, this target must be in the same region as the
                forwarding rule. For global forwarding rules, this target must be a global
@@ -1446,6 +1505,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
                  port_range: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 subnetwork: Optional[pulumi.Input[str]] = None,
                  target: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1470,6 +1530,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
             __props__.__dict__["port_range"] = port_range
             __props__.__dict__["project"] = project
             __props__.__dict__["source_ip_ranges"] = source_ip_ranges
+            __props__.__dict__["subnetwork"] = subnetwork
             if target is None and not opts.urn:
                 raise TypeError("Missing required property 'target'")
             __props__.__dict__["target"] = target
@@ -1507,6 +1568,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
             psc_connection_status: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            subnetwork: Optional[pulumi.Input[str]] = None,
             target: Optional[pulumi.Input[str]] = None) -> 'GlobalForwardingRule':
         """
         Get an existing GlobalForwardingRule resource's state with the given name, id, and optional extra
@@ -1570,7 +1632,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
                For more information about forwarding rules, refer to
                [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
                Default value is `EXTERNAL`.
-               Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+               Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GlobalForwardingRuleMetadataFilterArgs']]]] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing
                configuration to a limited set xDS compliant clients. In their xDS
                requests to Loadbalancer, xDS clients present node metadata. If a
@@ -1628,6 +1690,12 @@ class GlobalForwardingRule(pulumi.CustomResource):
         :param pulumi.Input[str] psc_connection_status: The PSC connection status of the PSC Forwarding Rule. Possible values: `STATUS_UNSPECIFIED`, `PENDING`, `ACCEPTED`, `REJECTED`, `CLOSED`
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_ip_ranges: If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
+        :param pulumi.Input[str] subnetwork: This field identifies the subnetwork that the load balanced IP should
+               belong to for this Forwarding Rule, used in internal load balancing and
+               network load balancing with IPv6.
+               If the network specified is in auto subnet mode, this field is optional.
+               However, a subnetwork must be specified if the network is in custom subnet
+               mode or when creating external forwarding rule with IPv6.
         :param pulumi.Input[str] target: The URL of the target resource to receive the matched traffic.  For
                regional forwarding rules, this target must be in the same region as the
                forwarding rule. For global forwarding rules, this target must be a global
@@ -1666,6 +1734,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
         __props__.__dict__["psc_connection_status"] = psc_connection_status
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["source_ip_ranges"] = source_ip_ranges
+        __props__.__dict__["subnetwork"] = subnetwork
         __props__.__dict__["target"] = target
         return GlobalForwardingRule(resource_name, opts=opts, __props__=__props__)
 
@@ -1784,7 +1853,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
         For more information about forwarding rules, refer to
         [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
         Default value is `EXTERNAL`.
-        Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+        Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
         """
         return pulumi.get(self, "load_balancing_scheme")
 
@@ -1914,6 +1983,19 @@ class GlobalForwardingRule(pulumi.CustomResource):
         If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
         """
         return pulumi.get(self, "source_ip_ranges")
+
+    @property
+    @pulumi.getter
+    def subnetwork(self) -> pulumi.Output[str]:
+        """
+        This field identifies the subnetwork that the load balanced IP should
+        belong to for this Forwarding Rule, used in internal load balancing and
+        network load balancing with IPv6.
+        If the network specified is in auto subnet mode, this field is optional.
+        However, a subnetwork must be specified if the network is in custom subnet
+        mode or when creating external forwarding rule with IPv6.
+        """
+        return pulumi.get(self, "subnetwork")
 
     @property
     @pulumi.getter

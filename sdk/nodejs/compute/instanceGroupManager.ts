@@ -224,9 +224,8 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      */
     public readonly targetPools!: pulumi.Output<string[] | undefined>;
     /**
-     * The target number of running instances for this managed
-     * instance group. This value should always be explicitly set unless this resource is attached to
-     * an autoscaler, in which case it should never be set. Defaults to `0`.
+     * The target number of running instances for this managed instance group. This value should always be explicitly set
+     * unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
      */
     public readonly targetSize!: pulumi.Output<number>;
     /**
@@ -433,9 +432,8 @@ export interface InstanceGroupManagerState {
      */
     targetPools?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The target number of running instances for this managed
-     * instance group. This value should always be explicitly set unless this resource is attached to
-     * an autoscaler, in which case it should never be set. Defaults to `0`.
+     * The target number of running instances for this managed instance group. This value should always be explicitly set
+     * unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
      */
     targetSize?: pulumi.Input<number>;
     /**
@@ -551,9 +549,8 @@ export interface InstanceGroupManagerArgs {
      */
     targetPools?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The target number of running instances for this managed
-     * instance group. This value should always be explicitly set unless this resource is attached to
-     * an autoscaler, in which case it should never be set. Defaults to `0`.
+     * The target number of running instances for this managed instance group. This value should always be explicitly set
+     * unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
      */
     targetSize?: pulumi.Input<number>;
     /**

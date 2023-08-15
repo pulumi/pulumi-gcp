@@ -20,14 +20,20 @@ __all__ = [
     'DeliveryPipelineSerialPipelineStageStrategyArgs',
     'DeliveryPipelineSerialPipelineStageStrategyCanaryArgs',
     'DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgs',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgs',
     'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArgs',
     'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgs',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgs',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgs',
     'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgs',
     'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgs',
     'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesArgs',
     'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs',
     'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgs',
     'DeliveryPipelineSerialPipelineStageStrategyStandardArgs',
+    'DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs',
+    'DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs',
     'TargetAnthosClusterArgs',
     'TargetExecutionConfigArgs',
     'TargetGkeArgs',
@@ -417,12 +423,20 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryArgs:
 class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs:
     def __init__(__self__, *,
                  percentages: pulumi.Input[Sequence[pulumi.Input[int]]],
+                 postdeploy: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgs']] = None,
+                 predeploy: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgs']] = None,
                  verify: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[int]]] percentages: Required. The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 <= n < 100.
+        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgs'] postdeploy: (Beta only) Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
+        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgs'] predeploy: (Beta only) Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job will not be present.
         :param pulumi.Input[bool] verify: Whether to run verify tests after each percentage deployment.
         """
         pulumi.set(__self__, "percentages", percentages)
+        if postdeploy is not None:
+            pulumi.set(__self__, "postdeploy", postdeploy)
+        if predeploy is not None:
+            pulumi.set(__self__, "predeploy", predeploy)
         if verify is not None:
             pulumi.set(__self__, "verify", verify)
 
@@ -440,6 +454,30 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs:
 
     @property
     @pulumi.getter
+    def postdeploy(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgs']]:
+        """
+        (Beta only) Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
+        """
+        return pulumi.get(self, "postdeploy")
+
+    @postdeploy.setter
+    def postdeploy(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgs']]):
+        pulumi.set(self, "postdeploy", value)
+
+    @property
+    @pulumi.getter
+    def predeploy(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgs']]:
+        """
+        (Beta only) Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job will not be present.
+        """
+        return pulumi.get(self, "predeploy")
+
+    @predeploy.setter
+    def predeploy(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgs']]):
+        pulumi.set(self, "predeploy", value)
+
+    @property
+    @pulumi.getter
     def verify(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether to run verify tests after each percentage deployment.
@@ -449,6 +487,52 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs:
     @verify.setter
     def verify(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "verify", value)
+
+
+@pulumi.input_type
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgs:
+    def __init__(__self__, *,
+                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] actions: Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.
+        """
+        if actions is not None:
+            pulumi.set(__self__, "actions", actions)
+
+    @property
+    @pulumi.getter
+    def actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.
+        """
+        return pulumi.get(self, "actions")
+
+    @actions.setter
+    def actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "actions", value)
+
+
+@pulumi.input_type
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgs:
+    def __init__(__self__, *,
+                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] actions: Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.
+        """
+        if actions is not None:
+            pulumi.set(__self__, "actions", actions)
+
+    @property
+    @pulumi.getter
+    def actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.
+        """
+        return pulumi.get(self, "actions")
+
+    @actions.setter
+    def actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "actions", value)
 
 
 @pulumi.input_type
@@ -478,11 +562,15 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPha
     def __init__(__self__, *,
                  percentage: pulumi.Input[int],
                  phase_id: pulumi.Input[str],
+                 postdeploy: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgs']] = None,
+                 predeploy: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgs']] = None,
                  profiles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  verify: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[int] percentage: Required. Percentage deployment for the phase.
         :param pulumi.Input[str] phase_id: Required. The ID to assign to the `Rollout` phase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgs'] postdeploy: (Beta only) Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will not be present for this phase.
+        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgs'] predeploy: (Beta only) Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will not be present for this phase.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] profiles: Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
         :param pulumi.Input[bool] verify: Whether to run verify tests after the deployment.
                
@@ -490,6 +578,10 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPha
         """
         pulumi.set(__self__, "percentage", percentage)
         pulumi.set(__self__, "phase_id", phase_id)
+        if postdeploy is not None:
+            pulumi.set(__self__, "postdeploy", postdeploy)
+        if predeploy is not None:
+            pulumi.set(__self__, "predeploy", predeploy)
         if profiles is not None:
             pulumi.set(__self__, "profiles", profiles)
         if verify is not None:
@@ -521,6 +613,30 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPha
 
     @property
     @pulumi.getter
+    def postdeploy(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgs']]:
+        """
+        (Beta only) Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will not be present for this phase.
+        """
+        return pulumi.get(self, "postdeploy")
+
+    @postdeploy.setter
+    def postdeploy(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgs']]):
+        pulumi.set(self, "postdeploy", value)
+
+    @property
+    @pulumi.getter
+    def predeploy(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgs']]:
+        """
+        (Beta only) Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will not be present for this phase.
+        """
+        return pulumi.get(self, "predeploy")
+
+    @predeploy.setter
+    def predeploy(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgs']]):
+        pulumi.set(self, "predeploy", value)
+
+    @property
+    @pulumi.getter
     def profiles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
@@ -544,6 +660,52 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPha
     @verify.setter
     def verify(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "verify", value)
+
+
+@pulumi.input_type
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgs:
+    def __init__(__self__, *,
+                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] actions: Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.
+        """
+        if actions is not None:
+            pulumi.set(__self__, "actions", actions)
+
+    @property
+    @pulumi.getter
+    def actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.
+        """
+        return pulumi.get(self, "actions")
+
+    @actions.setter
+    def actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "actions", value)
+
+
+@pulumi.input_type
+class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgs:
+    def __init__(__self__, *,
+                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] actions: Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.
+        """
+        if actions is not None:
+            pulumi.set(__self__, "actions", actions)
+
+    @property
+    @pulumi.getter
+    def actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.
+        """
+        return pulumi.get(self, "actions")
+
+    @actions.setter
+    def actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "actions", value)
 
 
 @pulumi.input_type
@@ -652,15 +814,19 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGa
     def __init__(__self__, *,
                  deployment: pulumi.Input[str],
                  http_route: pulumi.Input[str],
-                 service: pulumi.Input[str]):
+                 service: pulumi.Input[str],
+                 route_update_wait_time: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] deployment: Required. Name of the Kubernetes Deployment whose traffic is managed by the specified HTTPRoute and Service.
         :param pulumi.Input[str] http_route: Required. Name of the Gateway API HTTPRoute.
         :param pulumi.Input[str] service: Required. Name of the Kubernetes Service.
+        :param pulumi.Input[str] route_update_wait_time: Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
         """
         pulumi.set(__self__, "deployment", deployment)
         pulumi.set(__self__, "http_route", http_route)
         pulumi.set(__self__, "service", service)
+        if route_update_wait_time is not None:
+            pulumi.set(__self__, "route_update_wait_time", route_update_wait_time)
 
     @property
     @pulumi.getter
@@ -697,6 +863,18 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGa
     @service.setter
     def service(self, value: pulumi.Input[str]):
         pulumi.set(self, "service", value)
+
+    @property
+    @pulumi.getter(name="routeUpdateWaitTime")
+    def route_update_wait_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
+        """
+        return pulumi.get(self, "route_update_wait_time")
+
+    @route_update_wait_time.setter
+    def route_update_wait_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "route_update_wait_time", value)
 
 
 @pulumi.input_type
@@ -755,12 +933,44 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesSe
 @pulumi.input_type
 class DeliveryPipelineSerialPipelineStageStrategyStandardArgs:
     def __init__(__self__, *,
+                 postdeploy: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs']] = None,
+                 predeploy: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs']] = None,
                  verify: Optional[pulumi.Input[bool]] = None):
         """
+        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs'] postdeploy: (Beta only) Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
+        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs'] predeploy: (Beta only) Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
         :param pulumi.Input[bool] verify: Whether to verify a deployment.
         """
+        if postdeploy is not None:
+            pulumi.set(__self__, "postdeploy", postdeploy)
+        if predeploy is not None:
+            pulumi.set(__self__, "predeploy", predeploy)
         if verify is not None:
             pulumi.set(__self__, "verify", verify)
+
+    @property
+    @pulumi.getter
+    def postdeploy(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs']]:
+        """
+        (Beta only) Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
+        """
+        return pulumi.get(self, "postdeploy")
+
+    @postdeploy.setter
+    def postdeploy(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs']]):
+        pulumi.set(self, "postdeploy", value)
+
+    @property
+    @pulumi.getter
+    def predeploy(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs']]:
+        """
+        (Beta only) Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
+        """
+        return pulumi.get(self, "predeploy")
+
+    @predeploy.setter
+    def predeploy(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs']]):
+        pulumi.set(self, "predeploy", value)
 
     @property
     @pulumi.getter
@@ -773,6 +983,52 @@ class DeliveryPipelineSerialPipelineStageStrategyStandardArgs:
     @verify.setter
     def verify(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "verify", value)
+
+
+@pulumi.input_type
+class DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs:
+    def __init__(__self__, *,
+                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] actions: Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.
+        """
+        if actions is not None:
+            pulumi.set(__self__, "actions", actions)
+
+    @property
+    @pulumi.getter
+    def actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.
+        """
+        return pulumi.get(self, "actions")
+
+    @actions.setter
+    def actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "actions", value)
+
+
+@pulumi.input_type
+class DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs:
+    def __init__(__self__, *,
+                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] actions: Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.
+        """
+        if actions is not None:
+            pulumi.set(__self__, "actions", actions)
+
+    @property
+    @pulumi.getter
+    def actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.
+        """
+        return pulumi.get(self, "actions")
+
+    @actions.setter
+    def actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "actions", value)
 
 
 @pulumi.input_type

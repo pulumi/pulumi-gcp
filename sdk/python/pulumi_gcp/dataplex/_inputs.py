@@ -527,16 +527,20 @@ class AssetIamMemberConditionArgs:
 class AssetResourceSpecArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 read_access_mode: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] type: Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
                
                - - -
         :param pulumi.Input[str] name: Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
+        :param pulumi.Input[str] read_access_mode: Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets. Possible values: DIRECT, MANAGED
         """
         pulumi.set(__self__, "type", type)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if read_access_mode is not None:
+            pulumi.set(__self__, "read_access_mode", read_access_mode)
 
     @property
     @pulumi.getter
@@ -563,6 +567,18 @@ class AssetResourceSpecArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="readAccessMode")
+    def read_access_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets. Possible values: DIRECT, MANAGED
+        """
+        return pulumi.get(self, "read_access_mode")
+
+    @read_access_mode.setter
+    def read_access_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "read_access_mode", value)
 
 
 @pulumi.input_type

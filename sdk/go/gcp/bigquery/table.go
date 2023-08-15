@@ -165,6 +165,8 @@ type Table struct {
 	// If specified, configures this table as a materialized view.
 	// Structure is documented below.
 	MaterializedView TableMaterializedViewPtrOutput `pulumi:"materializedView"`
+	// The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+	MaxStaleness pulumi.StringPtrOutput `pulumi:"maxStaleness"`
 	// The size of this table in bytes, excluding any data in the streaming buffer.
 	NumBytes pulumi.IntOutput `pulumi:"numBytes"`
 	// The number of bytes in the table that are considered "long-term storage".
@@ -282,6 +284,8 @@ type tableState struct {
 	// If specified, configures this table as a materialized view.
 	// Structure is documented below.
 	MaterializedView *TableMaterializedView `pulumi:"materializedView"`
+	// The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+	MaxStaleness *string `pulumi:"maxStaleness"`
 	// The size of this table in bytes, excluding any data in the streaming buffer.
 	NumBytes *int `pulumi:"numBytes"`
 	// The number of bytes in the table that are considered "long-term storage".
@@ -364,6 +368,8 @@ type TableState struct {
 	// If specified, configures this table as a materialized view.
 	// Structure is documented below.
 	MaterializedView TableMaterializedViewPtrInput
+	// The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+	MaxStaleness pulumi.StringPtrInput
 	// The size of this table in bytes, excluding any data in the streaming buffer.
 	NumBytes pulumi.IntPtrInput
 	// The number of bytes in the table that are considered "long-term storage".
@@ -442,6 +448,8 @@ type tableArgs struct {
 	// If specified, configures this table as a materialized view.
 	// Structure is documented below.
 	MaterializedView *TableMaterializedView `pulumi:"materializedView"`
+	// The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+	MaxStaleness *string `pulumi:"maxStaleness"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -506,6 +514,8 @@ type TableArgs struct {
 	// If specified, configures this table as a materialized view.
 	// Structure is documented below.
 	MaterializedView TableMaterializedViewPtrInput
+	// The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+	MaxStaleness pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -703,6 +713,11 @@ func (o TableOutput) Location() pulumi.StringOutput {
 // Structure is documented below.
 func (o TableOutput) MaterializedView() TableMaterializedViewPtrOutput {
 	return o.ApplyT(func(v *Table) TableMaterializedViewPtrOutput { return v.MaterializedView }).(TableMaterializedViewPtrOutput)
+}
+
+// The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+func (o TableOutput) MaxStaleness() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Table) pulumi.StringPtrOutput { return v.MaxStaleness }).(pulumi.StringPtrOutput)
 }
 
 // The size of this table in bytes, excluding any data in the streaming buffer.

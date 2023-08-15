@@ -126,6 +126,8 @@ type Trigger struct {
 	Destination TriggerDestinationOutput `pulumi:"destination"`
 	// Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
+	// Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
+	EventDataContentType pulumi.StringPtrOutput `pulumi:"eventDataContentType"`
 	// Optional. User labels attached to the triggers that can be used to group resources.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location for the resource
@@ -195,6 +197,8 @@ type triggerState struct {
 	Destination *TriggerDestination `pulumi:"destination"`
 	// Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
+	// Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
+	EventDataContentType *string `pulumi:"eventDataContentType"`
 	// Optional. User labels attached to the triggers that can be used to group resources.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
@@ -226,6 +230,8 @@ type TriggerState struct {
 	Destination TriggerDestinationPtrInput
 	// Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
+	// Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
+	EventDataContentType pulumi.StringPtrInput
 	// Optional. User labels attached to the triggers that can be used to group resources.
 	Labels pulumi.StringMapInput
 	// The location for the resource
@@ -255,6 +261,8 @@ type triggerArgs struct {
 	Channel *string `pulumi:"channel"`
 	// Required. Destination specifies where the events should be sent to.
 	Destination TriggerDestination `pulumi:"destination"`
+	// Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
+	EventDataContentType *string `pulumi:"eventDataContentType"`
 	// Optional. User labels attached to the triggers that can be used to group resources.
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
@@ -277,6 +285,8 @@ type TriggerArgs struct {
 	Channel pulumi.StringPtrInput
 	// Required. Destination specifies where the events should be sent to.
 	Destination TriggerDestinationInput
+	// Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
+	EventDataContentType pulumi.StringPtrInput
 	// Optional. User labels attached to the triggers that can be used to group resources.
 	Labels pulumi.StringMapInput
 	// The location for the resource
@@ -403,6 +413,11 @@ func (o TriggerOutput) Destination() TriggerDestinationOutput {
 // Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
 func (o TriggerOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
+func (o TriggerOutput) EventDataContentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.StringPtrOutput { return v.EventDataContentType }).(pulumi.StringPtrOutput)
 }
 
 // Optional. User labels attached to the triggers that can be used to group resources.

@@ -22,6 +22,14 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
         /// </summary>
         public readonly string PhaseId;
         /// <summary>
+        /// (Beta only) Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will not be present for this phase.
+        /// </summary>
+        public readonly Outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy? Postdeploy;
+        /// <summary>
+        /// (Beta only) Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will not be present for this phase.
+        /// </summary>
+        public readonly Outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy? Predeploy;
+        /// <summary>
         /// Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
         /// </summary>
         public readonly ImmutableArray<string> Profiles;
@@ -38,12 +46,18 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
 
             string phaseId,
 
+            Outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy? postdeploy,
+
+            Outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy? predeploy,
+
             ImmutableArray<string> profiles,
 
             bool? verify)
         {
             Percentage = percentage;
             PhaseId = phaseId;
+            Postdeploy = postdeploy;
+            Predeploy = predeploy;
             Profiles = profiles;
             Verify = verify;
         }

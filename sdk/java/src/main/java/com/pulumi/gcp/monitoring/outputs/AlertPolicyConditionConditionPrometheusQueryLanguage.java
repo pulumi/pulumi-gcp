@@ -43,7 +43,7 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguage {
      * rule group.
      * 
      */
-    private String evaluationInterval;
+    private @Nullable String evaluationInterval;
     /**
      * @return Labels to add to or overwrite in the PromQL query result. Label names
      * must be valid.
@@ -111,8 +111,8 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguage {
      * rule group.
      * 
      */
-    public String evaluationInterval() {
-        return this.evaluationInterval;
+    public Optional<String> evaluationInterval() {
+        return Optional.ofNullable(this.evaluationInterval);
     }
     /**
      * @return Labels to add to or overwrite in the PromQL query result. Label names
@@ -162,7 +162,7 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguage {
     public static final class Builder {
         private @Nullable String alertRule;
         private @Nullable String duration;
-        private String evaluationInterval;
+        private @Nullable String evaluationInterval;
         private @Nullable Map<String,String> labels;
         private String query;
         private @Nullable String ruleGroup;
@@ -188,8 +188,8 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguage {
             return this;
         }
         @CustomType.Setter
-        public Builder evaluationInterval(String evaluationInterval) {
-            this.evaluationInterval = Objects.requireNonNull(evaluationInterval);
+        public Builder evaluationInterval(@Nullable String evaluationInterval) {
+            this.evaluationInterval = evaluationInterval;
             return this;
         }
         @CustomType.Setter

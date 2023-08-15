@@ -203,11 +203,18 @@ export class Subscription extends pulumi.CustomResource {
     public readonly ackDeadlineSeconds!: pulumi.Output<number>;
     /**
      * If delivery to BigQuery is used with this subscription, this field is used to configure it.
-     * Either pushConfig or bigQueryConfig can be set, but not both.
-     * If both are empty, then the subscriber will pull and ack messages using API methods.
+     * Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
+     * If all three are empty, then the subscriber will pull and ack messages using API methods.
      * Structure is documented below.
      */
     public readonly bigqueryConfig!: pulumi.Output<outputs.pubsub.SubscriptionBigqueryConfig | undefined>;
+    /**
+     * If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
+     * Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
+     * If all three are empty, then the subscriber will pull and ack messages using API methods.
+     * Structure is documented below.
+     */
+    public readonly cloudStorageConfig!: pulumi.Output<outputs.pubsub.SubscriptionCloudStorageConfig | undefined>;
     /**
      * A policy that specifies the conditions for dead lettering messages in
      * this subscription. If deadLetterPolicy is not set, dead lettering
@@ -320,6 +327,7 @@ export class Subscription extends pulumi.CustomResource {
             const state = argsOrState as SubscriptionState | undefined;
             resourceInputs["ackDeadlineSeconds"] = state ? state.ackDeadlineSeconds : undefined;
             resourceInputs["bigqueryConfig"] = state ? state.bigqueryConfig : undefined;
+            resourceInputs["cloudStorageConfig"] = state ? state.cloudStorageConfig : undefined;
             resourceInputs["deadLetterPolicy"] = state ? state.deadLetterPolicy : undefined;
             resourceInputs["enableExactlyOnceDelivery"] = state ? state.enableExactlyOnceDelivery : undefined;
             resourceInputs["enableMessageOrdering"] = state ? state.enableMessageOrdering : undefined;
@@ -340,6 +348,7 @@ export class Subscription extends pulumi.CustomResource {
             }
             resourceInputs["ackDeadlineSeconds"] = args ? args.ackDeadlineSeconds : undefined;
             resourceInputs["bigqueryConfig"] = args ? args.bigqueryConfig : undefined;
+            resourceInputs["cloudStorageConfig"] = args ? args.cloudStorageConfig : undefined;
             resourceInputs["deadLetterPolicy"] = args ? args.deadLetterPolicy : undefined;
             resourceInputs["enableExactlyOnceDelivery"] = args ? args.enableExactlyOnceDelivery : undefined;
             resourceInputs["enableMessageOrdering"] = args ? args.enableMessageOrdering : undefined;
@@ -383,11 +392,18 @@ export interface SubscriptionState {
     ackDeadlineSeconds?: pulumi.Input<number>;
     /**
      * If delivery to BigQuery is used with this subscription, this field is used to configure it.
-     * Either pushConfig or bigQueryConfig can be set, but not both.
-     * If both are empty, then the subscriber will pull and ack messages using API methods.
+     * Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
+     * If all three are empty, then the subscriber will pull and ack messages using API methods.
      * Structure is documented below.
      */
     bigqueryConfig?: pulumi.Input<inputs.pubsub.SubscriptionBigqueryConfig>;
+    /**
+     * If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
+     * Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
+     * If all three are empty, then the subscriber will pull and ack messages using API methods.
+     * Structure is documented below.
+     */
+    cloudStorageConfig?: pulumi.Input<inputs.pubsub.SubscriptionCloudStorageConfig>;
     /**
      * A policy that specifies the conditions for dead lettering messages in
      * this subscription. If deadLetterPolicy is not set, dead lettering
@@ -510,11 +526,18 @@ export interface SubscriptionArgs {
     ackDeadlineSeconds?: pulumi.Input<number>;
     /**
      * If delivery to BigQuery is used with this subscription, this field is used to configure it.
-     * Either pushConfig or bigQueryConfig can be set, but not both.
-     * If both are empty, then the subscriber will pull and ack messages using API methods.
+     * Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
+     * If all three are empty, then the subscriber will pull and ack messages using API methods.
      * Structure is documented below.
      */
     bigqueryConfig?: pulumi.Input<inputs.pubsub.SubscriptionBigqueryConfig>;
+    /**
+     * If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
+     * Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
+     * If all three are empty, then the subscriber will pull and ack messages using API methods.
+     * Structure is documented below.
+     */
+    cloudStorageConfig?: pulumi.Input<inputs.pubsub.SubscriptionCloudStorageConfig>;
     /**
      * A policy that specifies the conditions for dead lettering messages in
      * this subscription. If deadLetterPolicy is not set, dead lettering

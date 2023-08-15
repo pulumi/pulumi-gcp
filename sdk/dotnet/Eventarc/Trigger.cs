@@ -141,6 +141,12 @@ namespace Pulumi.Gcp.Eventarc
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
+        /// </summary>
+        [Output("eventDataContentType")]
+        public Output<string?> EventDataContentType { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. User labels attached to the triggers that can be used to group resources.
         /// </summary>
         [Output("labels")]
@@ -252,6 +258,12 @@ namespace Pulumi.Gcp.Eventarc
         [Input("destination", required: true)]
         public Input<Inputs.TriggerDestinationArgs> Destination { get; set; } = null!;
 
+        /// <summary>
+        /// Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
+        /// </summary>
+        [Input("eventDataContentType")]
+        public Input<string>? EventDataContentType { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -355,6 +367,12 @@ namespace Pulumi.Gcp.Eventarc
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
+
+        /// <summary>
+        /// Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
+        /// </summary>
+        [Input("eventDataContentType")]
+        public Input<string>? EventDataContentType { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

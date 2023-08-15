@@ -262,6 +262,21 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+     * 
+     */
+    @Import(name="maxStaleness")
+    private @Nullable Output<String> maxStaleness;
+
+    /**
+     * @return The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+     * 
+     */
+    public Optional<Output<String>> maxStaleness() {
+        return Optional.ofNullable(this.maxStaleness);
+    }
+
+    /**
      * The size of this table in bytes, excluding any data in the streaming buffer.
      * 
      */
@@ -475,6 +490,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         this.lastModifiedTime = $.lastModifiedTime;
         this.location = $.location;
         this.materializedView = $.materializedView;
+        this.maxStaleness = $.maxStaleness;
         this.numBytes = $.numBytes;
         this.numLongTermBytes = $.numLongTermBytes;
         this.numRows = $.numRows;
@@ -836,6 +852,27 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder materializedView(TableMaterializedViewArgs materializedView) {
             return materializedView(Output.of(materializedView));
+        }
+
+        /**
+         * @param maxStaleness The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxStaleness(@Nullable Output<String> maxStaleness) {
+            $.maxStaleness = maxStaleness;
+            return this;
+        }
+
+        /**
+         * @param maxStaleness The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxStaleness(String maxStaleness) {
+            return maxStaleness(Output.of(maxStaleness));
         }
 
         /**

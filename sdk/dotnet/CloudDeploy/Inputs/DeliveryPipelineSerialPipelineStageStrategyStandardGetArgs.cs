@@ -13,6 +13,18 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
     public sealed class DeliveryPipelineSerialPipelineStageStrategyStandardGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Beta only) Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
+        /// </summary>
+        [Input("postdeploy")]
+        public Input<Inputs.DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployGetArgs>? Postdeploy { get; set; }
+
+        /// <summary>
+        /// (Beta only) Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
+        /// </summary>
+        [Input("predeploy")]
+        public Input<Inputs.DeliveryPipelineSerialPipelineStageStrategyStandardPredeployGetArgs>? Predeploy { get; set; }
+
+        /// <summary>
         /// Whether to verify a deployment.
         /// </summary>
         [Input("verify")]

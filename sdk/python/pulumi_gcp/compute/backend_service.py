@@ -90,7 +90,7 @@ class BackendServiceArgs:
                load balancing cannot be used with the other. For more information, refer to
                [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
                Default value is `EXTERNAL`.
-               Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_MANAGED`.
+               Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
         :param pulumi.Input[Sequence[pulumi.Input['BackendServiceLocalityLbPolicyArgs']]] locality_lb_policies: A list of locality load balancing policies to be used in order of
                preference. Either the policy or the customPolicy field should be set.
                Overrides any value set in the localityLbPolicy field.
@@ -124,8 +124,10 @@ class BackendServiceArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] protocol: The protocol this BackendService uses to communicate with backends.
                The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-               types and may result in errors if used with the GA API.
-               Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`.
+               types and may result in errors if used with the GA API. **NOTE**: With protocol “UNSPECIFIED”,
+               the backend service can be used by Layer 4 Internal Load Balancing or Network Load Balancing
+               with TCP/UDP/L3_DEFAULT Forwarding Rule protocol.
+               Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`, `UNSPECIFIED`.
         :param pulumi.Input[str] security_policy: The security policy associated with this backend service.
         :param pulumi.Input['BackendServiceSecuritySettingsArgs'] security_settings: The security settings that apply to this backend service. This field is applicable to either
                a regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and
@@ -396,7 +398,7 @@ class BackendServiceArgs:
         load balancing cannot be used with the other. For more information, refer to
         [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
         Default value is `EXTERNAL`.
-        Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_MANAGED`.
+        Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
         """
         return pulumi.get(self, "load_balancing_scheme")
 
@@ -518,8 +520,10 @@ class BackendServiceArgs:
         """
         The protocol this BackendService uses to communicate with backends.
         The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-        types and may result in errors if used with the GA API.
-        Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`.
+        types and may result in errors if used with the GA API. **NOTE**: With protocol “UNSPECIFIED”,
+        the backend service can be used by Layer 4 Internal Load Balancing or Network Load Balancing
+        with TCP/UDP/L3_DEFAULT Forwarding Rule protocol.
+        Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`, `UNSPECIFIED`.
         """
         return pulumi.get(self, "protocol")
 
@@ -668,7 +672,7 @@ class _BackendServiceState:
                load balancing cannot be used with the other. For more information, refer to
                [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
                Default value is `EXTERNAL`.
-               Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_MANAGED`.
+               Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
         :param pulumi.Input[Sequence[pulumi.Input['BackendServiceLocalityLbPolicyArgs']]] locality_lb_policies: A list of locality load balancing policies to be used in order of
                preference. Either the policy or the customPolicy field should be set.
                Overrides any value set in the localityLbPolicy field.
@@ -702,8 +706,10 @@ class _BackendServiceState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] protocol: The protocol this BackendService uses to communicate with backends.
                The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-               types and may result in errors if used with the GA API.
-               Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`.
+               types and may result in errors if used with the GA API. **NOTE**: With protocol “UNSPECIFIED”,
+               the backend service can be used by Layer 4 Internal Load Balancing or Network Load Balancing
+               with TCP/UDP/L3_DEFAULT Forwarding Rule protocol.
+               Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`, `UNSPECIFIED`.
         :param pulumi.Input[str] security_policy: The security policy associated with this backend service.
         :param pulumi.Input['BackendServiceSecuritySettingsArgs'] security_settings: The security settings that apply to this backend service. This field is applicable to either
                a regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and
@@ -1020,7 +1026,7 @@ class _BackendServiceState:
         load balancing cannot be used with the other. For more information, refer to
         [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
         Default value is `EXTERNAL`.
-        Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_MANAGED`.
+        Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
         """
         return pulumi.get(self, "load_balancing_scheme")
 
@@ -1142,8 +1148,10 @@ class _BackendServiceState:
         """
         The protocol this BackendService uses to communicate with backends.
         The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-        types and may result in errors if used with the GA API.
-        Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`.
+        types and may result in errors if used with the GA API. **NOTE**: With protocol “UNSPECIFIED”,
+        the backend service can be used by Layer 4 Internal Load Balancing or Network Load Balancing
+        with TCP/UDP/L3_DEFAULT Forwarding Rule protocol.
+        Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`, `UNSPECIFIED`.
         """
         return pulumi.get(self, "protocol")
 
@@ -1402,7 +1410,7 @@ class BackendService(pulumi.CustomResource):
                load balancing cannot be used with the other. For more information, refer to
                [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
                Default value is `EXTERNAL`.
-               Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_MANAGED`.
+               Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendServiceLocalityLbPolicyArgs']]]] locality_lb_policies: A list of locality load balancing policies to be used in order of
                preference. Either the policy or the customPolicy field should be set.
                Overrides any value set in the localityLbPolicy field.
@@ -1436,8 +1444,10 @@ class BackendService(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] protocol: The protocol this BackendService uses to communicate with backends.
                The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-               types and may result in errors if used with the GA API.
-               Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`.
+               types and may result in errors if used with the GA API. **NOTE**: With protocol “UNSPECIFIED”,
+               the backend service can be used by Layer 4 Internal Load Balancing or Network Load Balancing
+               with TCP/UDP/L3_DEFAULT Forwarding Rule protocol.
+               Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`, `UNSPECIFIED`.
         :param pulumi.Input[str] security_policy: The security policy associated with this backend service.
         :param pulumi.Input[pulumi.InputType['BackendServiceSecuritySettingsArgs']] security_settings: The security settings that apply to this backend service. This field is applicable to either
                a regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and
@@ -1738,7 +1748,7 @@ class BackendService(pulumi.CustomResource):
                load balancing cannot be used with the other. For more information, refer to
                [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
                Default value is `EXTERNAL`.
-               Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_MANAGED`.
+               Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendServiceLocalityLbPolicyArgs']]]] locality_lb_policies: A list of locality load balancing policies to be used in order of
                preference. Either the policy or the customPolicy field should be set.
                Overrides any value set in the localityLbPolicy field.
@@ -1772,8 +1782,10 @@ class BackendService(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] protocol: The protocol this BackendService uses to communicate with backends.
                The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-               types and may result in errors if used with the GA API.
-               Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`.
+               types and may result in errors if used with the GA API. **NOTE**: With protocol “UNSPECIFIED”,
+               the backend service can be used by Layer 4 Internal Load Balancing or Network Load Balancing
+               with TCP/UDP/L3_DEFAULT Forwarding Rule protocol.
+               Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`, `UNSPECIFIED`.
         :param pulumi.Input[str] security_policy: The security policy associated with this backend service.
         :param pulumi.Input[pulumi.InputType['BackendServiceSecuritySettingsArgs']] security_settings: The security settings that apply to this backend service. This field is applicable to either
                a regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and
@@ -1996,7 +2008,7 @@ class BackendService(pulumi.CustomResource):
         load balancing cannot be used with the other. For more information, refer to
         [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
         Default value is `EXTERNAL`.
-        Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `EXTERNAL_MANAGED`.
+        Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
         """
         return pulumi.get(self, "load_balancing_scheme")
 
@@ -2086,8 +2098,10 @@ class BackendService(pulumi.CustomResource):
         """
         The protocol this BackendService uses to communicate with backends.
         The default is HTTP. **NOTE**: HTTP2 is only valid for beta HTTP/2 load balancer
-        types and may result in errors if used with the GA API.
-        Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`.
+        types and may result in errors if used with the GA API. **NOTE**: With protocol “UNSPECIFIED”,
+        the backend service can be used by Layer 4 Internal Load Balancing or Network Load Balancing
+        with TCP/UDP/L3_DEFAULT Forwarding Rule protocol.
+        Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`, `UNSPECIFIED`.
         """
         return pulumi.get(self, "protocol")
 

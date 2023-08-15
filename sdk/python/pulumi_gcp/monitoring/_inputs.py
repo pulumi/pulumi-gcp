@@ -966,18 +966,13 @@ class AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs:
 @pulumi.input_type
 class AlertPolicyConditionConditionPrometheusQueryLanguageArgs:
     def __init__(__self__, *,
-                 evaluation_interval: pulumi.Input[str],
                  query: pulumi.Input[str],
                  alert_rule: Optional[pulumi.Input[str]] = None,
                  duration: Optional[pulumi.Input[str]] = None,
+                 evaluation_interval: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  rule_group: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] evaluation_interval: How often this rule should be evaluated. Must be a positive multiple
-               of 30 seconds or missing. The default value is 30 seconds. If this
-               PrometheusQueryLanguageCondition was generated from a Prometheus
-               alerting rule, then this value should be taken from the enclosing
-               rule group.
         :param pulumi.Input[str] query: The PromQL expression to evaluate. Every evaluation cycle this
                expression is evaluated at the current time, and all resultant time
                series become pending/firing alerts. This field must not be empty.
@@ -996,6 +991,11 @@ class AlertPolicyConditionConditionPrometheusQueryLanguageArgs:
                to be "true" for this long. Alerts whose PromQL expression was not
                evaluated to be "true" for long enough are considered pending. The
                default value is zero. Must be zero or positive.
+        :param pulumi.Input[str] evaluation_interval: How often this rule should be evaluated. Must be a positive multiple
+               of 30 seconds or missing. The default value is 30 seconds. If this
+               PrometheusQueryLanguageCondition was generated from a Prometheus
+               alerting rule, then this value should be taken from the enclosing
+               rule group.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to add to or overwrite in the PromQL query result. Label names
                must be valid.
                Label values can be templatized by using variables. The only available
@@ -1012,32 +1012,17 @@ class AlertPolicyConditionConditionPrometheusQueryLanguageArgs:
                This field is optional. If this field is not empty, then it must be a
                valid Prometheus label name.
         """
-        pulumi.set(__self__, "evaluation_interval", evaluation_interval)
         pulumi.set(__self__, "query", query)
         if alert_rule is not None:
             pulumi.set(__self__, "alert_rule", alert_rule)
         if duration is not None:
             pulumi.set(__self__, "duration", duration)
+        if evaluation_interval is not None:
+            pulumi.set(__self__, "evaluation_interval", evaluation_interval)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if rule_group is not None:
             pulumi.set(__self__, "rule_group", rule_group)
-
-    @property
-    @pulumi.getter(name="evaluationInterval")
-    def evaluation_interval(self) -> pulumi.Input[str]:
-        """
-        How often this rule should be evaluated. Must be a positive multiple
-        of 30 seconds or missing. The default value is 30 seconds. If this
-        PrometheusQueryLanguageCondition was generated from a Prometheus
-        alerting rule, then this value should be taken from the enclosing
-        rule group.
-        """
-        return pulumi.get(self, "evaluation_interval")
-
-    @evaluation_interval.setter
-    def evaluation_interval(self, value: pulumi.Input[str]):
-        pulumi.set(self, "evaluation_interval", value)
 
     @property
     @pulumi.getter
@@ -1089,6 +1074,22 @@ class AlertPolicyConditionConditionPrometheusQueryLanguageArgs:
     @duration.setter
     def duration(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "duration", value)
+
+    @property
+    @pulumi.getter(name="evaluationInterval")
+    def evaluation_interval(self) -> Optional[pulumi.Input[str]]:
+        """
+        How often this rule should be evaluated. Must be a positive multiple
+        of 30 seconds or missing. The default value is 30 seconds. If this
+        PrometheusQueryLanguageCondition was generated from a Prometheus
+        alerting rule, then this value should be taken from the enclosing
+        rule group.
+        """
+        return pulumi.get(self, "evaluation_interval")
+
+    @evaluation_interval.setter
+    def evaluation_interval(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "evaluation_interval", value)
 
     @property
     @pulumi.getter

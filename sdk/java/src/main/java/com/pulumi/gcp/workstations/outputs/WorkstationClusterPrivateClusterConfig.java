@@ -6,12 +6,19 @@ package com.pulumi.gcp.workstations.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class WorkstationClusterPrivateClusterConfig {
+    /**
+     * @return Additional project IDs that are allowed to attach to the workstation cluster&#39;s service attachment.
+     * By default, the workstation cluster&#39;s project and the VPC host project (if different) are allowed.
+     * 
+     */
+    private @Nullable List<String> allowedProjects;
     /**
      * @return (Output)
      * Hostname for the workstation cluster.
@@ -35,6 +42,14 @@ public final class WorkstationClusterPrivateClusterConfig {
     private @Nullable String serviceAttachmentUri;
 
     private WorkstationClusterPrivateClusterConfig() {}
+    /**
+     * @return Additional project IDs that are allowed to attach to the workstation cluster&#39;s service attachment.
+     * By default, the workstation cluster&#39;s project and the VPC host project (if different) are allowed.
+     * 
+     */
+    public List<String> allowedProjects() {
+        return this.allowedProjects == null ? List.of() : this.allowedProjects;
+    }
     /**
      * @return (Output)
      * Hostname for the workstation cluster.
@@ -72,17 +87,27 @@ public final class WorkstationClusterPrivateClusterConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<String> allowedProjects;
         private @Nullable String clusterHostname;
         private Boolean enablePrivateEndpoint;
         private @Nullable String serviceAttachmentUri;
         public Builder() {}
         public Builder(WorkstationClusterPrivateClusterConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.allowedProjects = defaults.allowedProjects;
     	      this.clusterHostname = defaults.clusterHostname;
     	      this.enablePrivateEndpoint = defaults.enablePrivateEndpoint;
     	      this.serviceAttachmentUri = defaults.serviceAttachmentUri;
         }
 
+        @CustomType.Setter
+        public Builder allowedProjects(@Nullable List<String> allowedProjects) {
+            this.allowedProjects = allowedProjects;
+            return this;
+        }
+        public Builder allowedProjects(String... allowedProjects) {
+            return allowedProjects(List.of(allowedProjects));
+        }
         @CustomType.Setter
         public Builder clusterHostname(@Nullable String clusterHostname) {
             this.clusterHostname = clusterHostname;
@@ -100,6 +125,7 @@ public final class WorkstationClusterPrivateClusterConfig {
         }
         public WorkstationClusterPrivateClusterConfig build() {
             final var o = new WorkstationClusterPrivateClusterConfig();
+            o.allowedProjects = allowedProjects;
             o.clusterHostname = clusterHostname;
             o.enablePrivateEndpoint = enablePrivateEndpoint;
             o.serviceAttachmentUri = serviceAttachmentUri;

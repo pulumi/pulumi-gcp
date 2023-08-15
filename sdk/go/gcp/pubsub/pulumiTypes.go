@@ -985,6 +985,414 @@ func (o SubscriptionBigqueryConfigPtrOutput) WriteMetadata() pulumi.BoolPtrOutpu
 	}).(pulumi.BoolPtrOutput)
 }
 
+type SubscriptionCloudStorageConfig struct {
+	// If set, message data will be written to Cloud Storage in Avro format.
+	// Structure is documented below.
+	AvroConfig *SubscriptionCloudStorageConfigAvroConfig `pulumi:"avroConfig"`
+	// User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like "gs://".
+	Bucket string `pulumi:"bucket"`
+	// User-provided prefix for Cloud Storage filename.
+	FilenamePrefix *string `pulumi:"filenamePrefix"`
+	// User-provided suffix for Cloud Storage filename. Must not end in "/".
+	FilenameSuffix *string `pulumi:"filenameSuffix"`
+	// The maximum bytes that can be written to a Cloud Storage file before a new file is created. Min 1 KB, max 10 GiB.
+	// The maxBytes limit may be exceeded in cases where messages are larger than the limit.
+	MaxBytes *int `pulumi:"maxBytes"`
+	// The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes.
+	// May not exceed the subscription's acknowledgement deadline.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+	MaxDuration *string `pulumi:"maxDuration"`
+	// (Output)
+	// An output-only field that indicates whether or not the subscription can receive messages.
+	State *string `pulumi:"state"`
+}
+
+// SubscriptionCloudStorageConfigInput is an input type that accepts SubscriptionCloudStorageConfigArgs and SubscriptionCloudStorageConfigOutput values.
+// You can construct a concrete instance of `SubscriptionCloudStorageConfigInput` via:
+//
+//	SubscriptionCloudStorageConfigArgs{...}
+type SubscriptionCloudStorageConfigInput interface {
+	pulumi.Input
+
+	ToSubscriptionCloudStorageConfigOutput() SubscriptionCloudStorageConfigOutput
+	ToSubscriptionCloudStorageConfigOutputWithContext(context.Context) SubscriptionCloudStorageConfigOutput
+}
+
+type SubscriptionCloudStorageConfigArgs struct {
+	// If set, message data will be written to Cloud Storage in Avro format.
+	// Structure is documented below.
+	AvroConfig SubscriptionCloudStorageConfigAvroConfigPtrInput `pulumi:"avroConfig"`
+	// User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like "gs://".
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// User-provided prefix for Cloud Storage filename.
+	FilenamePrefix pulumi.StringPtrInput `pulumi:"filenamePrefix"`
+	// User-provided suffix for Cloud Storage filename. Must not end in "/".
+	FilenameSuffix pulumi.StringPtrInput `pulumi:"filenameSuffix"`
+	// The maximum bytes that can be written to a Cloud Storage file before a new file is created. Min 1 KB, max 10 GiB.
+	// The maxBytes limit may be exceeded in cases where messages are larger than the limit.
+	MaxBytes pulumi.IntPtrInput `pulumi:"maxBytes"`
+	// The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes.
+	// May not exceed the subscription's acknowledgement deadline.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+	MaxDuration pulumi.StringPtrInput `pulumi:"maxDuration"`
+	// (Output)
+	// An output-only field that indicates whether or not the subscription can receive messages.
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (SubscriptionCloudStorageConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionCloudStorageConfig)(nil)).Elem()
+}
+
+func (i SubscriptionCloudStorageConfigArgs) ToSubscriptionCloudStorageConfigOutput() SubscriptionCloudStorageConfigOutput {
+	return i.ToSubscriptionCloudStorageConfigOutputWithContext(context.Background())
+}
+
+func (i SubscriptionCloudStorageConfigArgs) ToSubscriptionCloudStorageConfigOutputWithContext(ctx context.Context) SubscriptionCloudStorageConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionCloudStorageConfigOutput)
+}
+
+func (i SubscriptionCloudStorageConfigArgs) ToSubscriptionCloudStorageConfigPtrOutput() SubscriptionCloudStorageConfigPtrOutput {
+	return i.ToSubscriptionCloudStorageConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SubscriptionCloudStorageConfigArgs) ToSubscriptionCloudStorageConfigPtrOutputWithContext(ctx context.Context) SubscriptionCloudStorageConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionCloudStorageConfigOutput).ToSubscriptionCloudStorageConfigPtrOutputWithContext(ctx)
+}
+
+// SubscriptionCloudStorageConfigPtrInput is an input type that accepts SubscriptionCloudStorageConfigArgs, SubscriptionCloudStorageConfigPtr and SubscriptionCloudStorageConfigPtrOutput values.
+// You can construct a concrete instance of `SubscriptionCloudStorageConfigPtrInput` via:
+//
+//	        SubscriptionCloudStorageConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type SubscriptionCloudStorageConfigPtrInput interface {
+	pulumi.Input
+
+	ToSubscriptionCloudStorageConfigPtrOutput() SubscriptionCloudStorageConfigPtrOutput
+	ToSubscriptionCloudStorageConfigPtrOutputWithContext(context.Context) SubscriptionCloudStorageConfigPtrOutput
+}
+
+type subscriptionCloudStorageConfigPtrType SubscriptionCloudStorageConfigArgs
+
+func SubscriptionCloudStorageConfigPtr(v *SubscriptionCloudStorageConfigArgs) SubscriptionCloudStorageConfigPtrInput {
+	return (*subscriptionCloudStorageConfigPtrType)(v)
+}
+
+func (*subscriptionCloudStorageConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionCloudStorageConfig)(nil)).Elem()
+}
+
+func (i *subscriptionCloudStorageConfigPtrType) ToSubscriptionCloudStorageConfigPtrOutput() SubscriptionCloudStorageConfigPtrOutput {
+	return i.ToSubscriptionCloudStorageConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *subscriptionCloudStorageConfigPtrType) ToSubscriptionCloudStorageConfigPtrOutputWithContext(ctx context.Context) SubscriptionCloudStorageConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionCloudStorageConfigPtrOutput)
+}
+
+type SubscriptionCloudStorageConfigOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionCloudStorageConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionCloudStorageConfig)(nil)).Elem()
+}
+
+func (o SubscriptionCloudStorageConfigOutput) ToSubscriptionCloudStorageConfigOutput() SubscriptionCloudStorageConfigOutput {
+	return o
+}
+
+func (o SubscriptionCloudStorageConfigOutput) ToSubscriptionCloudStorageConfigOutputWithContext(ctx context.Context) SubscriptionCloudStorageConfigOutput {
+	return o
+}
+
+func (o SubscriptionCloudStorageConfigOutput) ToSubscriptionCloudStorageConfigPtrOutput() SubscriptionCloudStorageConfigPtrOutput {
+	return o.ToSubscriptionCloudStorageConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SubscriptionCloudStorageConfigOutput) ToSubscriptionCloudStorageConfigPtrOutputWithContext(ctx context.Context) SubscriptionCloudStorageConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubscriptionCloudStorageConfig) *SubscriptionCloudStorageConfig {
+		return &v
+	}).(SubscriptionCloudStorageConfigPtrOutput)
+}
+
+// If set, message data will be written to Cloud Storage in Avro format.
+// Structure is documented below.
+func (o SubscriptionCloudStorageConfigOutput) AvroConfig() SubscriptionCloudStorageConfigAvroConfigPtrOutput {
+	return o.ApplyT(func(v SubscriptionCloudStorageConfig) *SubscriptionCloudStorageConfigAvroConfig { return v.AvroConfig }).(SubscriptionCloudStorageConfigAvroConfigPtrOutput)
+}
+
+// User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like "gs://".
+func (o SubscriptionCloudStorageConfigOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v SubscriptionCloudStorageConfig) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// User-provided prefix for Cloud Storage filename.
+func (o SubscriptionCloudStorageConfigOutput) FilenamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubscriptionCloudStorageConfig) *string { return v.FilenamePrefix }).(pulumi.StringPtrOutput)
+}
+
+// User-provided suffix for Cloud Storage filename. Must not end in "/".
+func (o SubscriptionCloudStorageConfigOutput) FilenameSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubscriptionCloudStorageConfig) *string { return v.FilenameSuffix }).(pulumi.StringPtrOutput)
+}
+
+// The maximum bytes that can be written to a Cloud Storage file before a new file is created. Min 1 KB, max 10 GiB.
+// The maxBytes limit may be exceeded in cases where messages are larger than the limit.
+func (o SubscriptionCloudStorageConfigOutput) MaxBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SubscriptionCloudStorageConfig) *int { return v.MaxBytes }).(pulumi.IntPtrOutput)
+}
+
+// The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes.
+// May not exceed the subscription's acknowledgement deadline.
+// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+func (o SubscriptionCloudStorageConfigOutput) MaxDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubscriptionCloudStorageConfig) *string { return v.MaxDuration }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// An output-only field that indicates whether or not the subscription can receive messages.
+func (o SubscriptionCloudStorageConfigOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubscriptionCloudStorageConfig) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type SubscriptionCloudStorageConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionCloudStorageConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionCloudStorageConfig)(nil)).Elem()
+}
+
+func (o SubscriptionCloudStorageConfigPtrOutput) ToSubscriptionCloudStorageConfigPtrOutput() SubscriptionCloudStorageConfigPtrOutput {
+	return o
+}
+
+func (o SubscriptionCloudStorageConfigPtrOutput) ToSubscriptionCloudStorageConfigPtrOutputWithContext(ctx context.Context) SubscriptionCloudStorageConfigPtrOutput {
+	return o
+}
+
+func (o SubscriptionCloudStorageConfigPtrOutput) Elem() SubscriptionCloudStorageConfigOutput {
+	return o.ApplyT(func(v *SubscriptionCloudStorageConfig) SubscriptionCloudStorageConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SubscriptionCloudStorageConfig
+		return ret
+	}).(SubscriptionCloudStorageConfigOutput)
+}
+
+// If set, message data will be written to Cloud Storage in Avro format.
+// Structure is documented below.
+func (o SubscriptionCloudStorageConfigPtrOutput) AvroConfig() SubscriptionCloudStorageConfigAvroConfigPtrOutput {
+	return o.ApplyT(func(v *SubscriptionCloudStorageConfig) *SubscriptionCloudStorageConfigAvroConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AvroConfig
+	}).(SubscriptionCloudStorageConfigAvroConfigPtrOutput)
+}
+
+// User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like "gs://".
+func (o SubscriptionCloudStorageConfigPtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionCloudStorageConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// User-provided prefix for Cloud Storage filename.
+func (o SubscriptionCloudStorageConfigPtrOutput) FilenamePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionCloudStorageConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FilenamePrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// User-provided suffix for Cloud Storage filename. Must not end in "/".
+func (o SubscriptionCloudStorageConfigPtrOutput) FilenameSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionCloudStorageConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FilenameSuffix
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum bytes that can be written to a Cloud Storage file before a new file is created. Min 1 KB, max 10 GiB.
+// The maxBytes limit may be exceeded in cases where messages are larger than the limit.
+func (o SubscriptionCloudStorageConfigPtrOutput) MaxBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SubscriptionCloudStorageConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxBytes
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes.
+// May not exceed the subscription's acknowledgement deadline.
+// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+func (o SubscriptionCloudStorageConfigPtrOutput) MaxDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionCloudStorageConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxDuration
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// An output-only field that indicates whether or not the subscription can receive messages.
+func (o SubscriptionCloudStorageConfigPtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionCloudStorageConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
+type SubscriptionCloudStorageConfigAvroConfig struct {
+	// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.
+	WriteMetadata *bool `pulumi:"writeMetadata"`
+}
+
+// SubscriptionCloudStorageConfigAvroConfigInput is an input type that accepts SubscriptionCloudStorageConfigAvroConfigArgs and SubscriptionCloudStorageConfigAvroConfigOutput values.
+// You can construct a concrete instance of `SubscriptionCloudStorageConfigAvroConfigInput` via:
+//
+//	SubscriptionCloudStorageConfigAvroConfigArgs{...}
+type SubscriptionCloudStorageConfigAvroConfigInput interface {
+	pulumi.Input
+
+	ToSubscriptionCloudStorageConfigAvroConfigOutput() SubscriptionCloudStorageConfigAvroConfigOutput
+	ToSubscriptionCloudStorageConfigAvroConfigOutputWithContext(context.Context) SubscriptionCloudStorageConfigAvroConfigOutput
+}
+
+type SubscriptionCloudStorageConfigAvroConfigArgs struct {
+	// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.
+	WriteMetadata pulumi.BoolPtrInput `pulumi:"writeMetadata"`
+}
+
+func (SubscriptionCloudStorageConfigAvroConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionCloudStorageConfigAvroConfig)(nil)).Elem()
+}
+
+func (i SubscriptionCloudStorageConfigAvroConfigArgs) ToSubscriptionCloudStorageConfigAvroConfigOutput() SubscriptionCloudStorageConfigAvroConfigOutput {
+	return i.ToSubscriptionCloudStorageConfigAvroConfigOutputWithContext(context.Background())
+}
+
+func (i SubscriptionCloudStorageConfigAvroConfigArgs) ToSubscriptionCloudStorageConfigAvroConfigOutputWithContext(ctx context.Context) SubscriptionCloudStorageConfigAvroConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionCloudStorageConfigAvroConfigOutput)
+}
+
+func (i SubscriptionCloudStorageConfigAvroConfigArgs) ToSubscriptionCloudStorageConfigAvroConfigPtrOutput() SubscriptionCloudStorageConfigAvroConfigPtrOutput {
+	return i.ToSubscriptionCloudStorageConfigAvroConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SubscriptionCloudStorageConfigAvroConfigArgs) ToSubscriptionCloudStorageConfigAvroConfigPtrOutputWithContext(ctx context.Context) SubscriptionCloudStorageConfigAvroConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionCloudStorageConfigAvroConfigOutput).ToSubscriptionCloudStorageConfigAvroConfigPtrOutputWithContext(ctx)
+}
+
+// SubscriptionCloudStorageConfigAvroConfigPtrInput is an input type that accepts SubscriptionCloudStorageConfigAvroConfigArgs, SubscriptionCloudStorageConfigAvroConfigPtr and SubscriptionCloudStorageConfigAvroConfigPtrOutput values.
+// You can construct a concrete instance of `SubscriptionCloudStorageConfigAvroConfigPtrInput` via:
+//
+//	        SubscriptionCloudStorageConfigAvroConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type SubscriptionCloudStorageConfigAvroConfigPtrInput interface {
+	pulumi.Input
+
+	ToSubscriptionCloudStorageConfigAvroConfigPtrOutput() SubscriptionCloudStorageConfigAvroConfigPtrOutput
+	ToSubscriptionCloudStorageConfigAvroConfigPtrOutputWithContext(context.Context) SubscriptionCloudStorageConfigAvroConfigPtrOutput
+}
+
+type subscriptionCloudStorageConfigAvroConfigPtrType SubscriptionCloudStorageConfigAvroConfigArgs
+
+func SubscriptionCloudStorageConfigAvroConfigPtr(v *SubscriptionCloudStorageConfigAvroConfigArgs) SubscriptionCloudStorageConfigAvroConfigPtrInput {
+	return (*subscriptionCloudStorageConfigAvroConfigPtrType)(v)
+}
+
+func (*subscriptionCloudStorageConfigAvroConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionCloudStorageConfigAvroConfig)(nil)).Elem()
+}
+
+func (i *subscriptionCloudStorageConfigAvroConfigPtrType) ToSubscriptionCloudStorageConfigAvroConfigPtrOutput() SubscriptionCloudStorageConfigAvroConfigPtrOutput {
+	return i.ToSubscriptionCloudStorageConfigAvroConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *subscriptionCloudStorageConfigAvroConfigPtrType) ToSubscriptionCloudStorageConfigAvroConfigPtrOutputWithContext(ctx context.Context) SubscriptionCloudStorageConfigAvroConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionCloudStorageConfigAvroConfigPtrOutput)
+}
+
+type SubscriptionCloudStorageConfigAvroConfigOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionCloudStorageConfigAvroConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionCloudStorageConfigAvroConfig)(nil)).Elem()
+}
+
+func (o SubscriptionCloudStorageConfigAvroConfigOutput) ToSubscriptionCloudStorageConfigAvroConfigOutput() SubscriptionCloudStorageConfigAvroConfigOutput {
+	return o
+}
+
+func (o SubscriptionCloudStorageConfigAvroConfigOutput) ToSubscriptionCloudStorageConfigAvroConfigOutputWithContext(ctx context.Context) SubscriptionCloudStorageConfigAvroConfigOutput {
+	return o
+}
+
+func (o SubscriptionCloudStorageConfigAvroConfigOutput) ToSubscriptionCloudStorageConfigAvroConfigPtrOutput() SubscriptionCloudStorageConfigAvroConfigPtrOutput {
+	return o.ToSubscriptionCloudStorageConfigAvroConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SubscriptionCloudStorageConfigAvroConfigOutput) ToSubscriptionCloudStorageConfigAvroConfigPtrOutputWithContext(ctx context.Context) SubscriptionCloudStorageConfigAvroConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubscriptionCloudStorageConfigAvroConfig) *SubscriptionCloudStorageConfigAvroConfig {
+		return &v
+	}).(SubscriptionCloudStorageConfigAvroConfigPtrOutput)
+}
+
+// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.
+func (o SubscriptionCloudStorageConfigAvroConfigOutput) WriteMetadata() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SubscriptionCloudStorageConfigAvroConfig) *bool { return v.WriteMetadata }).(pulumi.BoolPtrOutput)
+}
+
+type SubscriptionCloudStorageConfigAvroConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionCloudStorageConfigAvroConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionCloudStorageConfigAvroConfig)(nil)).Elem()
+}
+
+func (o SubscriptionCloudStorageConfigAvroConfigPtrOutput) ToSubscriptionCloudStorageConfigAvroConfigPtrOutput() SubscriptionCloudStorageConfigAvroConfigPtrOutput {
+	return o
+}
+
+func (o SubscriptionCloudStorageConfigAvroConfigPtrOutput) ToSubscriptionCloudStorageConfigAvroConfigPtrOutputWithContext(ctx context.Context) SubscriptionCloudStorageConfigAvroConfigPtrOutput {
+	return o
+}
+
+func (o SubscriptionCloudStorageConfigAvroConfigPtrOutput) Elem() SubscriptionCloudStorageConfigAvroConfigOutput {
+	return o.ApplyT(func(v *SubscriptionCloudStorageConfigAvroConfig) SubscriptionCloudStorageConfigAvroConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SubscriptionCloudStorageConfigAvroConfig
+		return ret
+	}).(SubscriptionCloudStorageConfigAvroConfigOutput)
+}
+
+// When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.
+func (o SubscriptionCloudStorageConfigAvroConfigPtrOutput) WriteMetadata() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SubscriptionCloudStorageConfigAvroConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.WriteMetadata
+	}).(pulumi.BoolPtrOutput)
+}
+
 type SubscriptionDeadLetterPolicy struct {
 	// The name of the topic to which dead letter messages should be published.
 	// Format is `projects/{project}/topics/{topic}`.
@@ -3234,6 +3642,232 @@ func (o GetSubscriptionBigqueryConfigArrayOutput) Index(i pulumi.IntInput) GetSu
 	}).(GetSubscriptionBigqueryConfigOutput)
 }
 
+type GetSubscriptionCloudStorageConfig struct {
+	AvroConfigs    []GetSubscriptionCloudStorageConfigAvroConfig `pulumi:"avroConfigs"`
+	Bucket         string                                        `pulumi:"bucket"`
+	FilenamePrefix string                                        `pulumi:"filenamePrefix"`
+	FilenameSuffix string                                        `pulumi:"filenameSuffix"`
+	MaxBytes       int                                           `pulumi:"maxBytes"`
+	MaxDuration    string                                        `pulumi:"maxDuration"`
+	State          string                                        `pulumi:"state"`
+}
+
+// GetSubscriptionCloudStorageConfigInput is an input type that accepts GetSubscriptionCloudStorageConfigArgs and GetSubscriptionCloudStorageConfigOutput values.
+// You can construct a concrete instance of `GetSubscriptionCloudStorageConfigInput` via:
+//
+//	GetSubscriptionCloudStorageConfigArgs{...}
+type GetSubscriptionCloudStorageConfigInput interface {
+	pulumi.Input
+
+	ToGetSubscriptionCloudStorageConfigOutput() GetSubscriptionCloudStorageConfigOutput
+	ToGetSubscriptionCloudStorageConfigOutputWithContext(context.Context) GetSubscriptionCloudStorageConfigOutput
+}
+
+type GetSubscriptionCloudStorageConfigArgs struct {
+	AvroConfigs    GetSubscriptionCloudStorageConfigAvroConfigArrayInput `pulumi:"avroConfigs"`
+	Bucket         pulumi.StringInput                                    `pulumi:"bucket"`
+	FilenamePrefix pulumi.StringInput                                    `pulumi:"filenamePrefix"`
+	FilenameSuffix pulumi.StringInput                                    `pulumi:"filenameSuffix"`
+	MaxBytes       pulumi.IntInput                                       `pulumi:"maxBytes"`
+	MaxDuration    pulumi.StringInput                                    `pulumi:"maxDuration"`
+	State          pulumi.StringInput                                    `pulumi:"state"`
+}
+
+func (GetSubscriptionCloudStorageConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubscriptionCloudStorageConfig)(nil)).Elem()
+}
+
+func (i GetSubscriptionCloudStorageConfigArgs) ToGetSubscriptionCloudStorageConfigOutput() GetSubscriptionCloudStorageConfigOutput {
+	return i.ToGetSubscriptionCloudStorageConfigOutputWithContext(context.Background())
+}
+
+func (i GetSubscriptionCloudStorageConfigArgs) ToGetSubscriptionCloudStorageConfigOutputWithContext(ctx context.Context) GetSubscriptionCloudStorageConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubscriptionCloudStorageConfigOutput)
+}
+
+// GetSubscriptionCloudStorageConfigArrayInput is an input type that accepts GetSubscriptionCloudStorageConfigArray and GetSubscriptionCloudStorageConfigArrayOutput values.
+// You can construct a concrete instance of `GetSubscriptionCloudStorageConfigArrayInput` via:
+//
+//	GetSubscriptionCloudStorageConfigArray{ GetSubscriptionCloudStorageConfigArgs{...} }
+type GetSubscriptionCloudStorageConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetSubscriptionCloudStorageConfigArrayOutput() GetSubscriptionCloudStorageConfigArrayOutput
+	ToGetSubscriptionCloudStorageConfigArrayOutputWithContext(context.Context) GetSubscriptionCloudStorageConfigArrayOutput
+}
+
+type GetSubscriptionCloudStorageConfigArray []GetSubscriptionCloudStorageConfigInput
+
+func (GetSubscriptionCloudStorageConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSubscriptionCloudStorageConfig)(nil)).Elem()
+}
+
+func (i GetSubscriptionCloudStorageConfigArray) ToGetSubscriptionCloudStorageConfigArrayOutput() GetSubscriptionCloudStorageConfigArrayOutput {
+	return i.ToGetSubscriptionCloudStorageConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetSubscriptionCloudStorageConfigArray) ToGetSubscriptionCloudStorageConfigArrayOutputWithContext(ctx context.Context) GetSubscriptionCloudStorageConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubscriptionCloudStorageConfigArrayOutput)
+}
+
+type GetSubscriptionCloudStorageConfigOutput struct{ *pulumi.OutputState }
+
+func (GetSubscriptionCloudStorageConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubscriptionCloudStorageConfig)(nil)).Elem()
+}
+
+func (o GetSubscriptionCloudStorageConfigOutput) ToGetSubscriptionCloudStorageConfigOutput() GetSubscriptionCloudStorageConfigOutput {
+	return o
+}
+
+func (o GetSubscriptionCloudStorageConfigOutput) ToGetSubscriptionCloudStorageConfigOutputWithContext(ctx context.Context) GetSubscriptionCloudStorageConfigOutput {
+	return o
+}
+
+func (o GetSubscriptionCloudStorageConfigOutput) AvroConfigs() GetSubscriptionCloudStorageConfigAvroConfigArrayOutput {
+	return o.ApplyT(func(v GetSubscriptionCloudStorageConfig) []GetSubscriptionCloudStorageConfigAvroConfig {
+		return v.AvroConfigs
+	}).(GetSubscriptionCloudStorageConfigAvroConfigArrayOutput)
+}
+
+func (o GetSubscriptionCloudStorageConfigOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubscriptionCloudStorageConfig) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+func (o GetSubscriptionCloudStorageConfigOutput) FilenamePrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubscriptionCloudStorageConfig) string { return v.FilenamePrefix }).(pulumi.StringOutput)
+}
+
+func (o GetSubscriptionCloudStorageConfigOutput) FilenameSuffix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubscriptionCloudStorageConfig) string { return v.FilenameSuffix }).(pulumi.StringOutput)
+}
+
+func (o GetSubscriptionCloudStorageConfigOutput) MaxBytes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSubscriptionCloudStorageConfig) int { return v.MaxBytes }).(pulumi.IntOutput)
+}
+
+func (o GetSubscriptionCloudStorageConfigOutput) MaxDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubscriptionCloudStorageConfig) string { return v.MaxDuration }).(pulumi.StringOutput)
+}
+
+func (o GetSubscriptionCloudStorageConfigOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubscriptionCloudStorageConfig) string { return v.State }).(pulumi.StringOutput)
+}
+
+type GetSubscriptionCloudStorageConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSubscriptionCloudStorageConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSubscriptionCloudStorageConfig)(nil)).Elem()
+}
+
+func (o GetSubscriptionCloudStorageConfigArrayOutput) ToGetSubscriptionCloudStorageConfigArrayOutput() GetSubscriptionCloudStorageConfigArrayOutput {
+	return o
+}
+
+func (o GetSubscriptionCloudStorageConfigArrayOutput) ToGetSubscriptionCloudStorageConfigArrayOutputWithContext(ctx context.Context) GetSubscriptionCloudStorageConfigArrayOutput {
+	return o
+}
+
+func (o GetSubscriptionCloudStorageConfigArrayOutput) Index(i pulumi.IntInput) GetSubscriptionCloudStorageConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSubscriptionCloudStorageConfig {
+		return vs[0].([]GetSubscriptionCloudStorageConfig)[vs[1].(int)]
+	}).(GetSubscriptionCloudStorageConfigOutput)
+}
+
+type GetSubscriptionCloudStorageConfigAvroConfig struct {
+	WriteMetadata bool `pulumi:"writeMetadata"`
+}
+
+// GetSubscriptionCloudStorageConfigAvroConfigInput is an input type that accepts GetSubscriptionCloudStorageConfigAvroConfigArgs and GetSubscriptionCloudStorageConfigAvroConfigOutput values.
+// You can construct a concrete instance of `GetSubscriptionCloudStorageConfigAvroConfigInput` via:
+//
+//	GetSubscriptionCloudStorageConfigAvroConfigArgs{...}
+type GetSubscriptionCloudStorageConfigAvroConfigInput interface {
+	pulumi.Input
+
+	ToGetSubscriptionCloudStorageConfigAvroConfigOutput() GetSubscriptionCloudStorageConfigAvroConfigOutput
+	ToGetSubscriptionCloudStorageConfigAvroConfigOutputWithContext(context.Context) GetSubscriptionCloudStorageConfigAvroConfigOutput
+}
+
+type GetSubscriptionCloudStorageConfigAvroConfigArgs struct {
+	WriteMetadata pulumi.BoolInput `pulumi:"writeMetadata"`
+}
+
+func (GetSubscriptionCloudStorageConfigAvroConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubscriptionCloudStorageConfigAvroConfig)(nil)).Elem()
+}
+
+func (i GetSubscriptionCloudStorageConfigAvroConfigArgs) ToGetSubscriptionCloudStorageConfigAvroConfigOutput() GetSubscriptionCloudStorageConfigAvroConfigOutput {
+	return i.ToGetSubscriptionCloudStorageConfigAvroConfigOutputWithContext(context.Background())
+}
+
+func (i GetSubscriptionCloudStorageConfigAvroConfigArgs) ToGetSubscriptionCloudStorageConfigAvroConfigOutputWithContext(ctx context.Context) GetSubscriptionCloudStorageConfigAvroConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubscriptionCloudStorageConfigAvroConfigOutput)
+}
+
+// GetSubscriptionCloudStorageConfigAvroConfigArrayInput is an input type that accepts GetSubscriptionCloudStorageConfigAvroConfigArray and GetSubscriptionCloudStorageConfigAvroConfigArrayOutput values.
+// You can construct a concrete instance of `GetSubscriptionCloudStorageConfigAvroConfigArrayInput` via:
+//
+//	GetSubscriptionCloudStorageConfigAvroConfigArray{ GetSubscriptionCloudStorageConfigAvroConfigArgs{...} }
+type GetSubscriptionCloudStorageConfigAvroConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetSubscriptionCloudStorageConfigAvroConfigArrayOutput() GetSubscriptionCloudStorageConfigAvroConfigArrayOutput
+	ToGetSubscriptionCloudStorageConfigAvroConfigArrayOutputWithContext(context.Context) GetSubscriptionCloudStorageConfigAvroConfigArrayOutput
+}
+
+type GetSubscriptionCloudStorageConfigAvroConfigArray []GetSubscriptionCloudStorageConfigAvroConfigInput
+
+func (GetSubscriptionCloudStorageConfigAvroConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSubscriptionCloudStorageConfigAvroConfig)(nil)).Elem()
+}
+
+func (i GetSubscriptionCloudStorageConfigAvroConfigArray) ToGetSubscriptionCloudStorageConfigAvroConfigArrayOutput() GetSubscriptionCloudStorageConfigAvroConfigArrayOutput {
+	return i.ToGetSubscriptionCloudStorageConfigAvroConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetSubscriptionCloudStorageConfigAvroConfigArray) ToGetSubscriptionCloudStorageConfigAvroConfigArrayOutputWithContext(ctx context.Context) GetSubscriptionCloudStorageConfigAvroConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubscriptionCloudStorageConfigAvroConfigArrayOutput)
+}
+
+type GetSubscriptionCloudStorageConfigAvroConfigOutput struct{ *pulumi.OutputState }
+
+func (GetSubscriptionCloudStorageConfigAvroConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubscriptionCloudStorageConfigAvroConfig)(nil)).Elem()
+}
+
+func (o GetSubscriptionCloudStorageConfigAvroConfigOutput) ToGetSubscriptionCloudStorageConfigAvroConfigOutput() GetSubscriptionCloudStorageConfigAvroConfigOutput {
+	return o
+}
+
+func (o GetSubscriptionCloudStorageConfigAvroConfigOutput) ToGetSubscriptionCloudStorageConfigAvroConfigOutputWithContext(ctx context.Context) GetSubscriptionCloudStorageConfigAvroConfigOutput {
+	return o
+}
+
+func (o GetSubscriptionCloudStorageConfigAvroConfigOutput) WriteMetadata() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSubscriptionCloudStorageConfigAvroConfig) bool { return v.WriteMetadata }).(pulumi.BoolOutput)
+}
+
+type GetSubscriptionCloudStorageConfigAvroConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSubscriptionCloudStorageConfigAvroConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSubscriptionCloudStorageConfigAvroConfig)(nil)).Elem()
+}
+
+func (o GetSubscriptionCloudStorageConfigAvroConfigArrayOutput) ToGetSubscriptionCloudStorageConfigAvroConfigArrayOutput() GetSubscriptionCloudStorageConfigAvroConfigArrayOutput {
+	return o
+}
+
+func (o GetSubscriptionCloudStorageConfigAvroConfigArrayOutput) ToGetSubscriptionCloudStorageConfigAvroConfigArrayOutputWithContext(ctx context.Context) GetSubscriptionCloudStorageConfigAvroConfigArrayOutput {
+	return o
+}
+
+func (o GetSubscriptionCloudStorageConfigAvroConfigArrayOutput) Index(i pulumi.IntInput) GetSubscriptionCloudStorageConfigAvroConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSubscriptionCloudStorageConfigAvroConfig {
+		return vs[0].([]GetSubscriptionCloudStorageConfigAvroConfig)[vs[1].(int)]
+	}).(GetSubscriptionCloudStorageConfigAvroConfigOutput)
+}
+
 type GetSubscriptionDeadLetterPolicy struct {
 	DeadLetterTopic     string `pulumi:"deadLetterTopic"`
 	MaxDeliveryAttempts int    `pulumi:"maxDeliveryAttempts"`
@@ -4041,6 +4675,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LiteTopicRetentionConfigPtrInput)(nil)).Elem(), LiteTopicRetentionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionBigqueryConfigInput)(nil)).Elem(), SubscriptionBigqueryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionBigqueryConfigPtrInput)(nil)).Elem(), SubscriptionBigqueryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionCloudStorageConfigInput)(nil)).Elem(), SubscriptionCloudStorageConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionCloudStorageConfigPtrInput)(nil)).Elem(), SubscriptionCloudStorageConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionCloudStorageConfigAvroConfigInput)(nil)).Elem(), SubscriptionCloudStorageConfigAvroConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionCloudStorageConfigAvroConfigPtrInput)(nil)).Elem(), SubscriptionCloudStorageConfigAvroConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionDeadLetterPolicyInput)(nil)).Elem(), SubscriptionDeadLetterPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionDeadLetterPolicyPtrInput)(nil)).Elem(), SubscriptionDeadLetterPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionExpirationPolicyInput)(nil)).Elem(), SubscriptionExpirationPolicyArgs{})
@@ -4067,6 +4705,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicSchemaSettingsPtrInput)(nil)).Elem(), TopicSchemaSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionBigqueryConfigInput)(nil)).Elem(), GetSubscriptionBigqueryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionBigqueryConfigArrayInput)(nil)).Elem(), GetSubscriptionBigqueryConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionCloudStorageConfigInput)(nil)).Elem(), GetSubscriptionCloudStorageConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionCloudStorageConfigArrayInput)(nil)).Elem(), GetSubscriptionCloudStorageConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionCloudStorageConfigAvroConfigInput)(nil)).Elem(), GetSubscriptionCloudStorageConfigAvroConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionCloudStorageConfigAvroConfigArrayInput)(nil)).Elem(), GetSubscriptionCloudStorageConfigAvroConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionDeadLetterPolicyInput)(nil)).Elem(), GetSubscriptionDeadLetterPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionDeadLetterPolicyArrayInput)(nil)).Elem(), GetSubscriptionDeadLetterPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubscriptionExpirationPolicyInput)(nil)).Elem(), GetSubscriptionExpirationPolicyArgs{})
@@ -4095,6 +4737,10 @@ func init() {
 	pulumi.RegisterOutputType(LiteTopicRetentionConfigPtrOutput{})
 	pulumi.RegisterOutputType(SubscriptionBigqueryConfigOutput{})
 	pulumi.RegisterOutputType(SubscriptionBigqueryConfigPtrOutput{})
+	pulumi.RegisterOutputType(SubscriptionCloudStorageConfigOutput{})
+	pulumi.RegisterOutputType(SubscriptionCloudStorageConfigPtrOutput{})
+	pulumi.RegisterOutputType(SubscriptionCloudStorageConfigAvroConfigOutput{})
+	pulumi.RegisterOutputType(SubscriptionCloudStorageConfigAvroConfigPtrOutput{})
 	pulumi.RegisterOutputType(SubscriptionDeadLetterPolicyOutput{})
 	pulumi.RegisterOutputType(SubscriptionDeadLetterPolicyPtrOutput{})
 	pulumi.RegisterOutputType(SubscriptionExpirationPolicyOutput{})
@@ -4121,6 +4767,10 @@ func init() {
 	pulumi.RegisterOutputType(TopicSchemaSettingsPtrOutput{})
 	pulumi.RegisterOutputType(GetSubscriptionBigqueryConfigOutput{})
 	pulumi.RegisterOutputType(GetSubscriptionBigqueryConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetSubscriptionCloudStorageConfigOutput{})
+	pulumi.RegisterOutputType(GetSubscriptionCloudStorageConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetSubscriptionCloudStorageConfigAvroConfigOutput{})
+	pulumi.RegisterOutputType(GetSubscriptionCloudStorageConfigAvroConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetSubscriptionDeadLetterPolicyOutput{})
 	pulumi.RegisterOutputType(GetSubscriptionDeadLetterPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetSubscriptionExpirationPolicyOutput{})

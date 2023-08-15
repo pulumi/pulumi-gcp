@@ -30,15 +30,26 @@ namespace Pulumi.Gcp.Healthcare.Outputs
         /// it needs to fetch the full resource as a separate operation.
         /// </summary>
         public readonly bool? SendFullResource;
+        /// <summary>
+        /// Whether to send full FHIR resource to this Pub/Sub topic for deleting FHIR resource. Note that setting this to
+        /// true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a
+        /// resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always
+        /// check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full previous
+        /// resource as a separate operation.
+        /// </summary>
+        public readonly bool? SendPreviousResourceOnDelete;
 
         [OutputConstructor]
         private FhirStoreNotificationConfig(
             string pubsubTopic,
 
-            bool? sendFullResource)
+            bool? sendFullResource,
+
+            bool? sendPreviousResourceOnDelete)
         {
             PubsubTopic = pubsubTopic;
             SendFullResource = sendFullResource;
+            SendPreviousResourceOnDelete = sendPreviousResourceOnDelete;
         }
     }
 }

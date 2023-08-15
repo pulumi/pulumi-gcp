@@ -307,10 +307,15 @@ type Subscription struct {
 	// will eventually redeliver the message.
 	AckDeadlineSeconds pulumi.IntOutput `pulumi:"ackDeadlineSeconds"`
 	// If delivery to BigQuery is used with this subscription, this field is used to configure it.
-	// Either pushConfig or bigQueryConfig can be set, but not both.
-	// If both are empty, then the subscriber will pull and ack messages using API methods.
+	// Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
+	// If all three are empty, then the subscriber will pull and ack messages using API methods.
 	// Structure is documented below.
 	BigqueryConfig SubscriptionBigqueryConfigPtrOutput `pulumi:"bigqueryConfig"`
+	// If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
+	// Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
+	// If all three are empty, then the subscriber will pull and ack messages using API methods.
+	// Structure is documented below.
+	CloudStorageConfig SubscriptionCloudStorageConfigPtrOutput `pulumi:"cloudStorageConfig"`
 	// A policy that specifies the conditions for dead lettering messages in
 	// this subscription. If deadLetterPolicy is not set, dead lettering
 	// is disabled.
@@ -432,10 +437,15 @@ type subscriptionState struct {
 	// will eventually redeliver the message.
 	AckDeadlineSeconds *int `pulumi:"ackDeadlineSeconds"`
 	// If delivery to BigQuery is used with this subscription, this field is used to configure it.
-	// Either pushConfig or bigQueryConfig can be set, but not both.
-	// If both are empty, then the subscriber will pull and ack messages using API methods.
+	// Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
+	// If all three are empty, then the subscriber will pull and ack messages using API methods.
 	// Structure is documented below.
 	BigqueryConfig *SubscriptionBigqueryConfig `pulumi:"bigqueryConfig"`
+	// If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
+	// Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
+	// If all three are empty, then the subscriber will pull and ack messages using API methods.
+	// Structure is documented below.
+	CloudStorageConfig *SubscriptionCloudStorageConfig `pulumi:"cloudStorageConfig"`
 	// A policy that specifies the conditions for dead lettering messages in
 	// this subscription. If deadLetterPolicy is not set, dead lettering
 	// is disabled.
@@ -525,10 +535,15 @@ type SubscriptionState struct {
 	// will eventually redeliver the message.
 	AckDeadlineSeconds pulumi.IntPtrInput
 	// If delivery to BigQuery is used with this subscription, this field is used to configure it.
-	// Either pushConfig or bigQueryConfig can be set, but not both.
-	// If both are empty, then the subscriber will pull and ack messages using API methods.
+	// Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
+	// If all three are empty, then the subscriber will pull and ack messages using API methods.
 	// Structure is documented below.
 	BigqueryConfig SubscriptionBigqueryConfigPtrInput
+	// If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
+	// Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
+	// If all three are empty, then the subscriber will pull and ack messages using API methods.
+	// Structure is documented below.
+	CloudStorageConfig SubscriptionCloudStorageConfigPtrInput
 	// A policy that specifies the conditions for dead lettering messages in
 	// this subscription. If deadLetterPolicy is not set, dead lettering
 	// is disabled.
@@ -622,10 +637,15 @@ type subscriptionArgs struct {
 	// will eventually redeliver the message.
 	AckDeadlineSeconds *int `pulumi:"ackDeadlineSeconds"`
 	// If delivery to BigQuery is used with this subscription, this field is used to configure it.
-	// Either pushConfig or bigQueryConfig can be set, but not both.
-	// If both are empty, then the subscriber will pull and ack messages using API methods.
+	// Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
+	// If all three are empty, then the subscriber will pull and ack messages using API methods.
 	// Structure is documented below.
 	BigqueryConfig *SubscriptionBigqueryConfig `pulumi:"bigqueryConfig"`
+	// If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
+	// Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
+	// If all three are empty, then the subscriber will pull and ack messages using API methods.
+	// Structure is documented below.
+	CloudStorageConfig *SubscriptionCloudStorageConfig `pulumi:"cloudStorageConfig"`
 	// A policy that specifies the conditions for dead lettering messages in
 	// this subscription. If deadLetterPolicy is not set, dead lettering
 	// is disabled.
@@ -716,10 +736,15 @@ type SubscriptionArgs struct {
 	// will eventually redeliver the message.
 	AckDeadlineSeconds pulumi.IntPtrInput
 	// If delivery to BigQuery is used with this subscription, this field is used to configure it.
-	// Either pushConfig or bigQueryConfig can be set, but not both.
-	// If both are empty, then the subscriber will pull and ack messages using API methods.
+	// Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
+	// If all three are empty, then the subscriber will pull and ack messages using API methods.
 	// Structure is documented below.
 	BigqueryConfig SubscriptionBigqueryConfigPtrInput
+	// If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
+	// Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
+	// If all three are empty, then the subscriber will pull and ack messages using API methods.
+	// Structure is documented below.
+	CloudStorageConfig SubscriptionCloudStorageConfigPtrInput
 	// A policy that specifies the conditions for dead lettering messages in
 	// this subscription. If deadLetterPolicy is not set, dead lettering
 	// is disabled.
@@ -898,11 +923,19 @@ func (o SubscriptionOutput) AckDeadlineSeconds() pulumi.IntOutput {
 }
 
 // If delivery to BigQuery is used with this subscription, this field is used to configure it.
-// Either pushConfig or bigQueryConfig can be set, but not both.
-// If both are empty, then the subscriber will pull and ack messages using API methods.
+// Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
+// If all three are empty, then the subscriber will pull and ack messages using API methods.
 // Structure is documented below.
 func (o SubscriptionOutput) BigqueryConfig() SubscriptionBigqueryConfigPtrOutput {
 	return o.ApplyT(func(v *Subscription) SubscriptionBigqueryConfigPtrOutput { return v.BigqueryConfig }).(SubscriptionBigqueryConfigPtrOutput)
+}
+
+// If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
+// Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
+// If all three are empty, then the subscriber will pull and ack messages using API methods.
+// Structure is documented below.
+func (o SubscriptionOutput) CloudStorageConfig() SubscriptionCloudStorageConfigPtrOutput {
+	return o.ApplyT(func(v *Subscription) SubscriptionCloudStorageConfigPtrOutput { return v.CloudStorageConfig }).(SubscriptionCloudStorageConfigPtrOutput)
 }
 
 // A policy that specifies the conditions for dead lettering messages in

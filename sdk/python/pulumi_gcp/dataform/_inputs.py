@@ -11,6 +11,9 @@ from .. import _utilities
 
 __all__ = [
     'RepositoryGitRemoteSettingsArgs',
+    'RepositoryReleaseConfigCodeCompilationConfigArgs',
+    'RepositoryReleaseConfigRecentScheduledReleaseRecordArgs',
+    'RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgs',
     'RepositoryWorkspaceCompilationOverridesArgs',
 ]
 
@@ -82,6 +85,253 @@ class RepositoryGitRemoteSettingsArgs:
     @token_status.setter
     def token_status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "token_status", value)
+
+
+@pulumi.input_type
+class RepositoryReleaseConfigCodeCompilationConfigArgs:
+    def __init__(__self__, *,
+                 assertion_schema: Optional[pulumi.Input[str]] = None,
+                 database_suffix: Optional[pulumi.Input[str]] = None,
+                 default_database: Optional[pulumi.Input[str]] = None,
+                 default_location: Optional[pulumi.Input[str]] = None,
+                 default_schema: Optional[pulumi.Input[str]] = None,
+                 schema_suffix: Optional[pulumi.Input[str]] = None,
+                 table_prefix: Optional[pulumi.Input[str]] = None,
+                 vars: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] assertion_schema: Optional. The default schema (BigQuery dataset ID) for assertions.
+        :param pulumi.Input[str] database_suffix: Optional. The suffix that should be appended to all database (Google Cloud project ID) names.
+        :param pulumi.Input[str] default_database: Optional. The default database (Google Cloud project ID).
+        :param pulumi.Input[str] default_location: Optional. The default BigQuery location to use. Defaults to "US".
+               See the BigQuery docs for a full list of locations: https://cloud.google.com/bigquery/docs/locations.
+        :param pulumi.Input[str] default_schema: Optional. The default schema (BigQuery dataset ID).
+        :param pulumi.Input[str] schema_suffix: Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
+        :param pulumi.Input[str] table_prefix: Optional. The prefix that should be prepended to all table names.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] vars: Optional. User-defined variables that are made available to project code during compilation.
+               An object containing a list of "key": value pairs.
+               Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        """
+        if assertion_schema is not None:
+            pulumi.set(__self__, "assertion_schema", assertion_schema)
+        if database_suffix is not None:
+            pulumi.set(__self__, "database_suffix", database_suffix)
+        if default_database is not None:
+            pulumi.set(__self__, "default_database", default_database)
+        if default_location is not None:
+            pulumi.set(__self__, "default_location", default_location)
+        if default_schema is not None:
+            pulumi.set(__self__, "default_schema", default_schema)
+        if schema_suffix is not None:
+            pulumi.set(__self__, "schema_suffix", schema_suffix)
+        if table_prefix is not None:
+            pulumi.set(__self__, "table_prefix", table_prefix)
+        if vars is not None:
+            pulumi.set(__self__, "vars", vars)
+
+    @property
+    @pulumi.getter(name="assertionSchema")
+    def assertion_schema(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The default schema (BigQuery dataset ID) for assertions.
+        """
+        return pulumi.get(self, "assertion_schema")
+
+    @assertion_schema.setter
+    def assertion_schema(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "assertion_schema", value)
+
+    @property
+    @pulumi.getter(name="databaseSuffix")
+    def database_suffix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The suffix that should be appended to all database (Google Cloud project ID) names.
+        """
+        return pulumi.get(self, "database_suffix")
+
+    @database_suffix.setter
+    def database_suffix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "database_suffix", value)
+
+    @property
+    @pulumi.getter(name="defaultDatabase")
+    def default_database(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The default database (Google Cloud project ID).
+        """
+        return pulumi.get(self, "default_database")
+
+    @default_database.setter
+    def default_database(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_database", value)
+
+    @property
+    @pulumi.getter(name="defaultLocation")
+    def default_location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The default BigQuery location to use. Defaults to "US".
+        See the BigQuery docs for a full list of locations: https://cloud.google.com/bigquery/docs/locations.
+        """
+        return pulumi.get(self, "default_location")
+
+    @default_location.setter
+    def default_location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_location", value)
+
+    @property
+    @pulumi.getter(name="defaultSchema")
+    def default_schema(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The default schema (BigQuery dataset ID).
+        """
+        return pulumi.get(self, "default_schema")
+
+    @default_schema.setter
+    def default_schema(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_schema", value)
+
+    @property
+    @pulumi.getter(name="schemaSuffix")
+    def schema_suffix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
+        """
+        return pulumi.get(self, "schema_suffix")
+
+    @schema_suffix.setter
+    def schema_suffix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schema_suffix", value)
+
+    @property
+    @pulumi.getter(name="tablePrefix")
+    def table_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The prefix that should be prepended to all table names.
+        """
+        return pulumi.get(self, "table_prefix")
+
+    @table_prefix.setter
+    def table_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "table_prefix", value)
+
+    @property
+    @pulumi.getter
+    def vars(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. User-defined variables that are made available to project code during compilation.
+        An object containing a list of "key": value pairs.
+        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        """
+        return pulumi.get(self, "vars")
+
+    @vars.setter
+    def vars(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "vars", value)
+
+
+@pulumi.input_type
+class RepositoryReleaseConfigRecentScheduledReleaseRecordArgs:
+    def __init__(__self__, *,
+                 compilation_result: Optional[pulumi.Input[str]] = None,
+                 error_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgs']]]] = None,
+                 release_time: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] compilation_result: (Output)
+               The name of the created compilation result, if one was successfully created. Must be in the format projects/*/locations/*/repositories/*/compilationResults/*.
+        :param pulumi.Input[Sequence[pulumi.Input['RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgs']]] error_statuses: (Output)
+               The error status encountered upon this attempt to create the compilation result, if the attempt was unsuccessful.
+               Structure is documented below.
+        :param pulumi.Input[str] release_time: (Output)
+               The timestamp of this release attempt.
+        """
+        if compilation_result is not None:
+            pulumi.set(__self__, "compilation_result", compilation_result)
+        if error_statuses is not None:
+            pulumi.set(__self__, "error_statuses", error_statuses)
+        if release_time is not None:
+            pulumi.set(__self__, "release_time", release_time)
+
+    @property
+    @pulumi.getter(name="compilationResult")
+    def compilation_result(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The name of the created compilation result, if one was successfully created. Must be in the format projects/*/locations/*/repositories/*/compilationResults/*.
+        """
+        return pulumi.get(self, "compilation_result")
+
+    @compilation_result.setter
+    def compilation_result(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "compilation_result", value)
+
+    @property
+    @pulumi.getter(name="errorStatuses")
+    def error_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgs']]]]:
+        """
+        (Output)
+        The error status encountered upon this attempt to create the compilation result, if the attempt was unsuccessful.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "error_statuses")
+
+    @error_statuses.setter
+    def error_statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgs']]]]):
+        pulumi.set(self, "error_statuses", value)
+
+    @property
+    @pulumi.getter(name="releaseTime")
+    def release_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The timestamp of this release attempt.
+        """
+        return pulumi.get(self, "release_time")
+
+    @release_time.setter
+    def release_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "release_time", value)
+
+
+@pulumi.input_type
+class RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgs:
+    def __init__(__self__, *,
+                 code: Optional[pulumi.Input[int]] = None,
+                 message: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] code: (Output)
+               The status code, which should be an enum value of google.rpc.Code.
+        :param pulumi.Input[str] message: (Output)
+               A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Output)
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "code", value)
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "message", value)
 
 
 @pulumi.input_type

@@ -353,6 +353,20 @@ public class Table extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.materializedView);
     }
     /**
+     * The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+     * 
+     */
+    @Export(name="maxStaleness", type=String.class, parameters={})
+    private Output</* @Nullable */ String> maxStaleness;
+
+    /**
+     * @return The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+     * 
+     */
+    public Output<Optional<String>> maxStaleness() {
+        return Codegen.optional(this.maxStaleness);
+    }
+    /**
      * The size of this table in bytes, excluding any data in the streaming buffer.
      * 
      */

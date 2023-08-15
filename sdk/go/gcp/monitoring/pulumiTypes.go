@@ -2181,7 +2181,7 @@ type AlertPolicyConditionConditionPrometheusQueryLanguage struct {
 	// PrometheusQueryLanguageCondition was generated from a Prometheus
 	// alerting rule, then this value should be taken from the enclosing
 	// rule group.
-	EvaluationInterval string `pulumi:"evaluationInterval"`
+	EvaluationInterval *string `pulumi:"evaluationInterval"`
 	// Labels to add to or overwrite in the PromQL query result. Label names
 	// must be valid.
 	// Label values can be templatized by using variables. The only available
@@ -2239,7 +2239,7 @@ type AlertPolicyConditionConditionPrometheusQueryLanguageArgs struct {
 	// PrometheusQueryLanguageCondition was generated from a Prometheus
 	// alerting rule, then this value should be taken from the enclosing
 	// rule group.
-	EvaluationInterval pulumi.StringInput `pulumi:"evaluationInterval"`
+	EvaluationInterval pulumi.StringPtrInput `pulumi:"evaluationInterval"`
 	// Labels to add to or overwrite in the PromQL query result. Label names
 	// must be valid.
 	// Label values can be templatized by using variables. The only available
@@ -2368,8 +2368,8 @@ func (o AlertPolicyConditionConditionPrometheusQueryLanguageOutput) Duration() p
 // PrometheusQueryLanguageCondition was generated from a Prometheus
 // alerting rule, then this value should be taken from the enclosing
 // rule group.
-func (o AlertPolicyConditionConditionPrometheusQueryLanguageOutput) EvaluationInterval() pulumi.StringOutput {
-	return o.ApplyT(func(v AlertPolicyConditionConditionPrometheusQueryLanguage) string { return v.EvaluationInterval }).(pulumi.StringOutput)
+func (o AlertPolicyConditionConditionPrometheusQueryLanguageOutput) EvaluationInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertPolicyConditionConditionPrometheusQueryLanguage) *string { return v.EvaluationInterval }).(pulumi.StringPtrOutput)
 }
 
 // Labels to add to or overwrite in the PromQL query result. Label names
@@ -2469,7 +2469,7 @@ func (o AlertPolicyConditionConditionPrometheusQueryLanguagePtrOutput) Evaluatio
 		if v == nil {
 			return nil
 		}
-		return &v.EvaluationInterval
+		return v.EvaluationInterval
 	}).(pulumi.StringPtrOutput)
 }
 

@@ -25,6 +25,12 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
         public Input<string> HttpRoute { get; set; } = null!;
 
         /// <summary>
+        /// Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
+        /// </summary>
+        [Input("routeUpdateWaitTime")]
+        public Input<string>? RouteUpdateWaitTime { get; set; }
+
+        /// <summary>
         /// Required. Name of the Kubernetes Service.
         /// </summary>
         [Input("service", required: true)]

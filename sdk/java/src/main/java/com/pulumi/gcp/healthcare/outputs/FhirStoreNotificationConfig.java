@@ -31,6 +31,15 @@ public final class FhirStoreNotificationConfig {
      * 
      */
     private @Nullable Boolean sendFullResource;
+    /**
+     * @return Whether to send full FHIR resource to this Pub/Sub topic for deleting FHIR resource. Note that setting this to
+     * true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a
+     * resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always
+     * check the &#34;payloadType&#34; label from a Pub/Sub message to determine whether it needs to fetch the full previous
+     * resource as a separate operation.
+     * 
+     */
+    private @Nullable Boolean sendPreviousResourceOnDelete;
 
     private FhirStoreNotificationConfig() {}
     /**
@@ -56,6 +65,17 @@ public final class FhirStoreNotificationConfig {
     public Optional<Boolean> sendFullResource() {
         return Optional.ofNullable(this.sendFullResource);
     }
+    /**
+     * @return Whether to send full FHIR resource to this Pub/Sub topic for deleting FHIR resource. Note that setting this to
+     * true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a
+     * resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always
+     * check the &#34;payloadType&#34; label from a Pub/Sub message to determine whether it needs to fetch the full previous
+     * resource as a separate operation.
+     * 
+     */
+    public Optional<Boolean> sendPreviousResourceOnDelete() {
+        return Optional.ofNullable(this.sendPreviousResourceOnDelete);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -68,11 +88,13 @@ public final class FhirStoreNotificationConfig {
     public static final class Builder {
         private String pubsubTopic;
         private @Nullable Boolean sendFullResource;
+        private @Nullable Boolean sendPreviousResourceOnDelete;
         public Builder() {}
         public Builder(FhirStoreNotificationConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.pubsubTopic = defaults.pubsubTopic;
     	      this.sendFullResource = defaults.sendFullResource;
+    	      this.sendPreviousResourceOnDelete = defaults.sendPreviousResourceOnDelete;
         }
 
         @CustomType.Setter
@@ -85,10 +107,16 @@ public final class FhirStoreNotificationConfig {
             this.sendFullResource = sendFullResource;
             return this;
         }
+        @CustomType.Setter
+        public Builder sendPreviousResourceOnDelete(@Nullable Boolean sendPreviousResourceOnDelete) {
+            this.sendPreviousResourceOnDelete = sendPreviousResourceOnDelete;
+            return this;
+        }
         public FhirStoreNotificationConfig build() {
             final var o = new FhirStoreNotificationConfig();
             o.pubsubTopic = pubsubTopic;
             o.sendFullResource = sendFullResource;
+            o.sendPreviousResourceOnDelete = sendPreviousResourceOnDelete;
             return o;
         }
     }

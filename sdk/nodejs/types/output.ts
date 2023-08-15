@@ -4666,6 +4666,12 @@ export namespace bigquery {
          */
         csvOptions?: outputs.bigquery.TableExternalDataConfigurationCsvOptions;
         /**
+         * Specifies how source URIs are interpreted for constructing the file set to load.
+         * By default source URIs are expanded against the underlying storage.
+         * Other options include specifying manifest files. Only applicable to object storage systems. Docs
+         */
+        fileSetSpecType?: string;
+        /**
          * Additional options if
          * `sourceFormat` is set to "GOOGLE_SHEETS". Structure is
          * documented below.
@@ -5266,6 +5272,13 @@ export namespace billing {
          * the usage occurred on.
          */
         projects?: string[];
+        /**
+         * A set of folder and organization names of the form folders/{folderId} or organizations/{organizationId},
+         * specifying that usage from only this set of folders and organizations should be included in the budget.
+         * If omitted, the budget includes all usage that the billing account pays for. If the folder or organization
+         * contains projects that are paid for by a different Cloud Billing account, the budget doesn't apply to those projects.
+         */
+        resourceAncestors?: string[];
         /**
          * A set of services of the form services/{service_id},
          * specifying that usage from only this set of services should be
@@ -9222,9 +9235,31 @@ export namespace clouddeploy {
          */
         percentages: number[];
         /**
+         * (Beta only) Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
+         */
+        postdeploy?: outputs.clouddeploy.DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy;
+        /**
+         * (Beta only) Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job will not be present.
+         */
+        predeploy?: outputs.clouddeploy.DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy;
+        /**
          * Whether to run verify tests after each percentage deployment.
          */
         verify?: boolean;
+    }
+
+    export interface DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy {
+        /**
+         * Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.
+         */
+        actions?: string[];
+    }
+
+    export interface DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy {
+        /**
+         * Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.
+         */
+        actions?: string[];
     }
 
     export interface DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment {
@@ -9244,6 +9279,14 @@ export namespace clouddeploy {
          */
         phaseId: string;
         /**
+         * (Beta only) Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will not be present for this phase.
+         */
+        postdeploy?: outputs.clouddeploy.DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy;
+        /**
+         * (Beta only) Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will not be present for this phase.
+         */
+        predeploy?: outputs.clouddeploy.DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy;
+        /**
          * Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
          */
         profiles?: string[];
@@ -9253,6 +9296,20 @@ export namespace clouddeploy {
          * - - -
          */
         verify?: boolean;
+    }
+
+    export interface DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy {
+        /**
+         * Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.
+         */
+        actions?: string[];
+    }
+
+    export interface DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy {
+        /**
+         * Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.
+         */
+        actions?: string[];
     }
 
     export interface DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig {
@@ -9294,6 +9351,10 @@ export namespace clouddeploy {
          */
         httpRoute: string;
         /**
+         * Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
+         */
+        routeUpdateWaitTime?: string;
+        /**
          * Required. Name of the Kubernetes Service.
          */
         service: string;
@@ -9316,9 +9377,31 @@ export namespace clouddeploy {
 
     export interface DeliveryPipelineSerialPipelineStageStrategyStandard {
         /**
+         * (Beta only) Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
+         */
+        postdeploy?: outputs.clouddeploy.DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy;
+        /**
+         * (Beta only) Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
+         */
+        predeploy?: outputs.clouddeploy.DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy;
+        /**
          * Whether to verify a deployment.
          */
         verify?: boolean;
+    }
+
+    export interface DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy {
+        /**
+         * Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.
+         */
+        actions?: string[];
+    }
+
+    export interface DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy {
+        /**
+         * Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.
+         */
+        actions?: string[];
     }
 
     export interface TargetAnthosCluster {
@@ -9950,6 +10033,9 @@ export namespace cloudidentity {
          * The MembershipRoles that apply to the Membership. Structure is documented below.
          */
         roles: outputs.cloudidentity.GetGroupMembershipsMembershipRole[];
+        /**
+         * The type of the membership.
+         */
         type: string;
         updateTime: string;
     }
@@ -17492,7 +17578,7 @@ export namespace compute {
         preemptible?: boolean;
         /**
          * Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`, 
-         * `preemptible` should be `true` and `autoRestart` should be
+         * `preemptible` should be `true` and `automaticRestart` should be
          * `false`. For more info about
          * `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
          */
@@ -17973,7 +18059,7 @@ export namespace compute {
         preemptible?: boolean;
         /**
          * Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`, 
-         * `preemptible` should be `true` and `autoRestart` should be
+         * `preemptible` should be `true` and `automaticRestart` should be
          * `false`. For more info about
          * `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
          */
@@ -18055,8 +18141,10 @@ export namespace compute {
          *
          * The [service accounts documentation](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam)
          * explains that access scopes are the legacy method of specifying permissions for your instance.
-         * If you are following best practices and using IAM roles to grant permissions to service accounts,
-         * then you can define this field as an empty list.
+         * To follow best practices you should create a dedicated service account with the minimum permissions the VM requires.
+         * To use a dedicated service account this field should be configured as a list containing the `cloud-platform` scope.
+         * See [Authenticate workloads using service accounts best practices](https://cloud.google.com/compute/docs/access/create-enable-service-accounts-for-instances#best_practices)
+         * and [Best practices for using service accounts](https://cloud.google.com/iam/docs/best-practices-service-accounts#single-purpose).
          */
         scopes: string[];
     }
@@ -20398,7 +20486,7 @@ export namespace compute {
         preemptible?: boolean;
         /**
          * Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`, 
-         * `preemptible` should be `true` and `autoRestart` should be
+         * `preemptible` should be `true` and `automaticRestart` should be
          * `false`. For more info about
          * `SPOT`, read [here](https://cloud.google.com/compute/docs/instances/spot)
          */
@@ -20473,8 +20561,10 @@ export namespace compute {
          *
          * The [service accounts documentation](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam)
          * explains that access scopes are the legacy method of specifying permissions for your instance.
-         * If you are following best practices and using IAM roles to grant permissions to service accounts,
-         * then you can define this field as an empty list.
+         * To follow best practices you should create a dedicated service account with the minimum permissions the VM requires.
+         * To use a dedicated service account this field should be configured as a list containing the `cloud-platform` scope.
+         * See [Authenticate workloads using service accounts best practices](https://cloud.google.com/compute/docs/access/create-enable-service-accounts-for-instances#best_practices)
+         * and [Best practices for using service accounts](https://cloud.google.com/iam/docs/best-practices-service-accounts#single-purpose).
          */
         scopes: string[];
     }
@@ -26771,7 +26861,7 @@ export namespace container {
          */
         servicesSecondaryRangeName: string;
         /**
-         * The IP Stack Type of the cluster. 
+         * The IP Stack Type of the cluster.
          * Default value is `IPV4`.
          * Possible values are `IPV4` and `IPV4_IPV6`.
          */
@@ -26924,6 +27014,10 @@ export namespace container {
 
     export interface ClusterMonitoringConfig {
         /**
+         * Configuration for Advanced Datapath Monitoring. Structure is documented below.
+         */
+        advancedDatapathObservabilityConfigs: outputs.container.ClusterMonitoringConfigAdvancedDatapathObservabilityConfig[];
+        /**
          * The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, and `SCHEDULER`. In beta provider, `WORKLOADS` is supported on top of those 4 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
          */
         enableComponents: string[];
@@ -26931,6 +27025,14 @@ export namespace container {
          * Configuration for Managed Service for Prometheus. Structure is documented below.
          */
         managedPrometheus: outputs.container.ClusterMonitoringConfigManagedPrometheus;
+    }
+
+    export interface ClusterMonitoringConfigAdvancedDatapathObservabilityConfig {
+        enableMetrics: boolean;
+        /**
+         * Mode used to make Relay available.
+         */
+        relayMode: string;
     }
 
     export interface ClusterMonitoringConfigManagedPrometheus {
@@ -28517,8 +28619,14 @@ export namespace container {
     }
 
     export interface GetClusterMonitoringConfig {
+        advancedDatapathObservabilityConfigs: outputs.container.GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig[];
         enableComponents: string[];
         managedPrometheuses: outputs.container.GetClusterMonitoringConfigManagedPrometheus[];
+    }
+
+    export interface GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig {
+        enableMetrics: boolean;
+        relayMode: string;
     }
 
     export interface GetClusterMonitoringConfigManagedPrometheus {
@@ -30020,6 +30128,76 @@ export namespace dataform {
          * The Git remote's URL.
          */
         url: string;
+    }
+
+    export interface RepositoryReleaseConfigCodeCompilationConfig {
+        /**
+         * Optional. The default schema (BigQuery dataset ID) for assertions.
+         */
+        assertionSchema?: string;
+        /**
+         * Optional. The suffix that should be appended to all database (Google Cloud project ID) names.
+         */
+        databaseSuffix?: string;
+        /**
+         * Optional. The default database (Google Cloud project ID).
+         */
+        defaultDatabase?: string;
+        /**
+         * Optional. The default BigQuery location to use. Defaults to "US".
+         * See the BigQuery docs for a full list of locations: https://cloud.google.com/bigquery/docs/locations.
+         */
+        defaultLocation?: string;
+        /**
+         * Optional. The default schema (BigQuery dataset ID).
+         */
+        defaultSchema?: string;
+        /**
+         * Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
+         */
+        schemaSuffix?: string;
+        /**
+         * Optional. The prefix that should be prepended to all table names.
+         */
+        tablePrefix?: string;
+        /**
+         * Optional. User-defined variables that are made available to project code during compilation.
+         * An object containing a list of "key": value pairs.
+         * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+         */
+        vars?: {[key: string]: string};
+    }
+
+    export interface RepositoryReleaseConfigRecentScheduledReleaseRecord {
+        /**
+         * (Output)
+         * The name of the created compilation result, if one was successfully created. Must be in the format projects/*&#47;locations/*&#47;repositories/*&#47;compilationResults/*.
+         */
+        compilationResult: string;
+        /**
+         * (Output)
+         * The error status encountered upon this attempt to create the compilation result, if the attempt was unsuccessful.
+         * Structure is documented below.
+         */
+        errorStatuses: outputs.dataform.RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus[];
+        /**
+         * (Output)
+         * The timestamp of this release attempt.
+         */
+        releaseTime: string;
+    }
+
+    export interface RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus {
+        /**
+         * (Output)
+         * The status code, which should be an enum value of google.rpc.Code.
+         */
+        code: number;
+        /**
+         * (Output)
+         * A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+         */
+        message: string;
     }
 
     export interface RepositoryWorkspaceCompilationOverrides {
@@ -35082,6 +35260,10 @@ export namespace dataplex {
          * Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
          */
         name?: string;
+        /**
+         * Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets. Possible values: DIRECT, MANAGED
+         */
+        readAccessMode: string;
         /**
          * Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
          *
@@ -44604,6 +44786,14 @@ export namespace healthcare {
          * it needs to fetch the full resource as a separate operation.
          */
         sendFullResource?: boolean;
+        /**
+         * Whether to send full FHIR resource to this Pub/Sub topic for deleting FHIR resource. Note that setting this to
+         * true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a
+         * resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always
+         * check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full previous
+         * resource as a separate operation.
+         */
+        sendPreviousResourceOnDelete?: boolean;
     }
 
     export interface FhirStoreStreamConfig {
@@ -46966,7 +47156,7 @@ export namespace monitoring {
          * alerting rule, then this value should be taken from the enclosing
          * rule group.
          */
-        evaluationInterval: string;
+        evaluationInterval?: string;
         /**
          * Labels to add to or overwrite in the PromQL query result. Label names
          * must be valid.
@@ -48077,6 +48267,17 @@ export namespace monitoring {
 export namespace networkconnectivity {
     export interface HubRoutingVpc {
         uri: string;
+    }
+
+    export interface ServiceConnectionPolicyPscConfig {
+        /**
+         * Max number of PSC connections for this policy.
+         */
+        limit?: string;
+        /**
+         * IDs of the subnetworks or fully qualified identifiers for the subnetworks
+         */
+        subnetworks: string[];
     }
 
     export interface SpokeLinkedInterconnectAttachments {
@@ -52751,6 +52952,20 @@ export namespace pubsub {
         writeMetadata: boolean;
     }
 
+    export interface GetSubscriptionCloudStorageConfig {
+        avroConfigs: outputs.pubsub.GetSubscriptionCloudStorageConfigAvroConfig[];
+        bucket: string;
+        filenamePrefix: string;
+        filenameSuffix: string;
+        maxBytes: number;
+        maxDuration: string;
+        state: string;
+    }
+
+    export interface GetSubscriptionCloudStorageConfigAvroConfig {
+        writeMetadata: boolean;
+    }
+
     export interface GetSubscriptionDeadLetterPolicy {
         deadLetterTopic: string;
         maxDeliveryAttempts: number;
@@ -52861,6 +53076,49 @@ export namespace pubsub {
         /**
          * When true, write the subscription name, messageId, publishTime, attributes, and orderingKey to additional columns in the table.
          * The subscription name, messageId, and publishTime fields are put in their own columns while all other message properties (other than data) are written to a JSON object in the attributes column.
+         */
+        writeMetadata?: boolean;
+    }
+
+    export interface SubscriptionCloudStorageConfig {
+        /**
+         * If set, message data will be written to Cloud Storage in Avro format.
+         * Structure is documented below.
+         */
+        avroConfig?: outputs.pubsub.SubscriptionCloudStorageConfigAvroConfig;
+        /**
+         * User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like "gs://".
+         */
+        bucket: string;
+        /**
+         * User-provided prefix for Cloud Storage filename.
+         */
+        filenamePrefix?: string;
+        /**
+         * User-provided suffix for Cloud Storage filename. Must not end in "/".
+         */
+        filenameSuffix?: string;
+        /**
+         * The maximum bytes that can be written to a Cloud Storage file before a new file is created. Min 1 KB, max 10 GiB.
+         * The maxBytes limit may be exceeded in cases where messages are larger than the limit.
+         */
+        maxBytes?: number;
+        /**
+         * The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes.
+         * May not exceed the subscription's acknowledgement deadline.
+         * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+         */
+        maxDuration?: string;
+        /**
+         * (Output)
+         * An output-only field that indicates whether or not the subscription can receive messages.
+         */
+        state: string;
+    }
+
+    export interface SubscriptionCloudStorageConfigAvroConfig {
+        /**
+         * When true, write the subscription name, messageId, publishTime, attributes, and orderingKey as additional fields in the output.
          */
         writeMetadata?: boolean;
     }
@@ -55961,6 +56219,11 @@ export namespace workstations {
     }
 
     export interface WorkstationClusterPrivateClusterConfig {
+        /**
+         * Additional project IDs that are allowed to attach to the workstation cluster's service attachment.
+         * By default, the workstation cluster's project and the VPC host project (if different) are allowed.
+         */
+        allowedProjects: string[];
         /**
          * (Output)
          * Hostname for the workstation cluster.

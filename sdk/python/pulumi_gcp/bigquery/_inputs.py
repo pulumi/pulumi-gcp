@@ -3518,6 +3518,7 @@ class TableExternalDataConfigurationArgs:
                  compression: Optional[pulumi.Input[str]] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
                  csv_options: Optional[pulumi.Input['TableExternalDataConfigurationCsvOptionsArgs']] = None,
+                 file_set_spec_type: Optional[pulumi.Input[str]] = None,
                  google_sheets_options: Optional[pulumi.Input['TableExternalDataConfigurationGoogleSheetsOptionsArgs']] = None,
                  hive_partitioning_options: Optional[pulumi.Input['TableExternalDataConfigurationHivePartitioningOptionsArgs']] = None,
                  ignore_unknown_values: Optional[pulumi.Input[bool]] = None,
@@ -3544,6 +3545,9 @@ class TableExternalDataConfigurationArgs:
                or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
         :param pulumi.Input['TableExternalDataConfigurationCsvOptionsArgs'] csv_options: Additional properties to set if
                `source_format` is set to "CSV". Structure is documented below.
+        :param pulumi.Input[str] file_set_spec_type: Specifies how source URIs are interpreted for constructing the file set to load.
+               By default source URIs are expanded against the underlying storage.
+               Other options include specifying manifest files. Only applicable to object storage systems. Docs
         :param pulumi.Input['TableExternalDataConfigurationGoogleSheetsOptionsArgs'] google_sheets_options: Additional options if
                `source_format` is set to "GOOGLE_SHEETS". Structure is
                documented below.
@@ -3592,6 +3596,8 @@ class TableExternalDataConfigurationArgs:
             pulumi.set(__self__, "connection_id", connection_id)
         if csv_options is not None:
             pulumi.set(__self__, "csv_options", csv_options)
+        if file_set_spec_type is not None:
+            pulumi.set(__self__, "file_set_spec_type", file_set_spec_type)
         if google_sheets_options is not None:
             pulumi.set(__self__, "google_sheets_options", google_sheets_options)
         if hive_partitioning_options is not None:
@@ -3694,6 +3700,20 @@ class TableExternalDataConfigurationArgs:
     @csv_options.setter
     def csv_options(self, value: Optional[pulumi.Input['TableExternalDataConfigurationCsvOptionsArgs']]):
         pulumi.set(self, "csv_options", value)
+
+    @property
+    @pulumi.getter(name="fileSetSpecType")
+    def file_set_spec_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies how source URIs are interpreted for constructing the file set to load.
+        By default source URIs are expanded against the underlying storage.
+        Other options include specifying manifest files. Only applicable to object storage systems. Docs
+        """
+        return pulumi.get(self, "file_set_spec_type")
+
+    @file_set_spec_type.setter
+    def file_set_spec_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "file_set_spec_type", value)
 
     @property
     @pulumi.getter(name="googleSheetsOptions")

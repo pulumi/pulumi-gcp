@@ -335,18 +335,16 @@ public final class InstanceGroupManagerState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The target number of running instances for this managed
-     * instance group. This value should always be explicitly set unless this resource is attached to
-     * an autoscaler, in which case it should never be set. Defaults to `0`.
+     * The target number of running instances for this managed instance group. This value should always be explicitly set
+     * unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
      * 
      */
     @Import(name="targetSize")
     private @Nullable Output<Integer> targetSize;
 
     /**
-     * @return The target number of running instances for this managed
-     * instance group. This value should always be explicitly set unless this resource is attached to
-     * an autoscaler, in which case it should never be set. Defaults to `0`.
+     * @return The target number of running instances for this managed instance group. This value should always be explicitly set
+     * unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
      * 
      */
     public Optional<Output<Integer>> targetSize() {
@@ -973,9 +971,8 @@ public final class InstanceGroupManagerState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param targetSize The target number of running instances for this managed
-         * instance group. This value should always be explicitly set unless this resource is attached to
-         * an autoscaler, in which case it should never be set. Defaults to `0`.
+         * @param targetSize The target number of running instances for this managed instance group. This value should always be explicitly set
+         * unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
          * 
          * @return builder
          * 
@@ -986,9 +983,8 @@ public final class InstanceGroupManagerState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param targetSize The target number of running instances for this managed
-         * instance group. This value should always be explicitly set unless this resource is attached to
-         * an autoscaler, in which case it should never be set. Defaults to `0`.
+         * @param targetSize The target number of running instances for this managed instance group. This value should always be explicitly set
+         * unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
          * 
          * @return builder
          * 

@@ -1154,6 +1154,10 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput) RuntimeConfi
 type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment struct {
 	// Required. The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 <= n < 100.
 	Percentages []int `pulumi:"percentages"`
+	// (Beta only) Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
+	Postdeploy *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy `pulumi:"postdeploy"`
+	// (Beta only) Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job will not be present.
+	Predeploy *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy `pulumi:"predeploy"`
 	// Whether to run verify tests after each percentage deployment.
 	Verify *bool `pulumi:"verify"`
 }
@@ -1172,6 +1176,10 @@ type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentInput inte
 type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs struct {
 	// Required. The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 <= n < 100.
 	Percentages pulumi.IntArrayInput `pulumi:"percentages"`
+	// (Beta only) Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
+	Postdeploy DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrInput `pulumi:"postdeploy"`
+	// (Beta only) Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job will not be present.
+	Predeploy DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrInput `pulumi:"predeploy"`
 	// Whether to run verify tests after each percentage deployment.
 	Verify pulumi.BoolPtrInput `pulumi:"verify"`
 }
@@ -1258,6 +1266,20 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutput)
 	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment) []int { return v.Percentages }).(pulumi.IntArrayOutput)
 }
 
+// (Beta only) Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutput) Postdeploy() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment) *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy {
+		return v.Postdeploy
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutput)
+}
+
+// (Beta only) Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job will not be present.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutput) Predeploy() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment) *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy {
+		return v.Predeploy
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutput)
+}
+
 // Whether to run verify tests after each percentage deployment.
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutput) Verify() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment) *bool { return v.Verify }).(pulumi.BoolPtrOutput)
@@ -1297,6 +1319,26 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutp
 	}).(pulumi.IntArrayOutput)
 }
 
+// (Beta only) Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput) Postdeploy() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment) *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy {
+		if v == nil {
+			return nil
+		}
+		return v.Postdeploy
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutput)
+}
+
+// (Beta only) Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job will not be present.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput) Predeploy() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment) *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy {
+		if v == nil {
+			return nil
+		}
+		return v.Predeploy
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutput)
+}
+
 // Whether to run verify tests after each percentage deployment.
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput) Verify() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment) *bool {
@@ -1305,6 +1347,284 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutp
 		}
 		return v.Verify
 	}).(pulumi.BoolPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy struct {
+	// Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.
+	Actions []string `pulumi:"actions"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgs and DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgs struct {
+	// Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.
+	Actions pulumi.StringArrayInput `pulumi:"actions"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployOutput)
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployOutput).ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutputWithContext(ctx)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgs, DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtr and DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrInput` via:
+//
+//	        DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutput
+}
+
+type deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrType DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgs
+
+func DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtr(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgs) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrInput {
+	return (*deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrType)(v)
+}
+
+func (*deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy)(nil)).Elem()
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutputWithContext(context.Background())
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutput {
+	return o.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy) *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy {
+		return &v
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutput)
+}
+
+// Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployOutput) Actions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy) []string {
+		return v.Actions
+	}).(pulumi.StringArrayOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy
+		return ret
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployOutput)
+}
+
+// Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutput) Actions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Actions
+	}).(pulumi.StringArrayOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy struct {
+	// Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.
+	Actions []string `pulumi:"actions"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgs and DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgs struct {
+	// Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.
+	Actions pulumi.StringArrayInput `pulumi:"actions"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployOutput)
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployOutput).ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutputWithContext(ctx)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgs, DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtr and DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrInput` via:
+//
+//	        DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutput
+}
+
+type deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrType DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgs
+
+func DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtr(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgs) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrInput {
+	return (*deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrType)(v)
+}
+
+func (*deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy)(nil)).Elem()
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutputWithContext(context.Background())
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutput {
+	return o.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy) *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy {
+		return &v
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutput)
+}
+
+// Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployOutput) Actions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy) []string {
+		return v.Actions
+	}).(pulumi.StringArrayOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy) DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy
+		return ret
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployOutput)
+}
+
+// Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutput) Actions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Actions
+	}).(pulumi.StringArrayOutput)
 }
 
 type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment struct {
@@ -1451,6 +1771,10 @@ type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhas
 	Percentage int `pulumi:"percentage"`
 	// Required. The ID to assign to the `Rollout` phase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
 	PhaseId string `pulumi:"phaseId"`
+	// (Beta only) Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will not be present for this phase.
+	Postdeploy *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy `pulumi:"postdeploy"`
+	// (Beta only) Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will not be present for this phase.
+	Predeploy *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy `pulumi:"predeploy"`
 	// Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
 	Profiles []string `pulumi:"profiles"`
 	// Whether to run verify tests after the deployment.
@@ -1475,6 +1799,10 @@ type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhas
 	Percentage pulumi.IntInput `pulumi:"percentage"`
 	// Required. The ID to assign to the `Rollout` phase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
 	PhaseId pulumi.StringInput `pulumi:"phaseId"`
+	// (Beta only) Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will not be present for this phase.
+	Postdeploy DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrInput `pulumi:"postdeploy"`
+	// (Beta only) Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will not be present for this phase.
+	Predeploy DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrInput `pulumi:"predeploy"`
 	// Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
 	Profiles pulumi.StringArrayInput `pulumi:"profiles"`
 	// Whether to run verify tests after the deployment.
@@ -1548,6 +1876,20 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentP
 	}).(pulumi.StringOutput)
 }
 
+// (Beta only) Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will not be present for this phase.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutput) Postdeploy() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig) *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy {
+		return v.Postdeploy
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutput)
+}
+
+// (Beta only) Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will not be present for this phase.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutput) Predeploy() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig) *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy {
+		return v.Predeploy
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutput)
+}
+
 // Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutput) Profiles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig) []string {
@@ -1582,6 +1924,284 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentP
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig {
 		return vs[0].([]DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig)[vs[1].(int)]
 	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy struct {
+	// Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.
+	Actions []string `pulumi:"actions"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgs and DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgs struct {
+	// Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.
+	Actions pulumi.StringArrayInput `pulumi:"actions"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployOutput)
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployOutput).ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutputWithContext(ctx)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgs, DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtr and DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrInput` via:
+//
+//	        DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutput
+}
+
+type deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrType DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgs
+
+func DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtr(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgs) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrInput {
+	return (*deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrType)(v)
+}
+
+func (*deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy)(nil)).Elem()
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutputWithContext(context.Background())
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutput {
+	return o.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy) *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy {
+		return &v
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutput)
+}
+
+// Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployOutput) Actions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy) []string {
+		return v.Actions
+	}).(pulumi.StringArrayOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy
+		return ret
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployOutput)
+}
+
+// Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutput) Actions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Actions
+	}).(pulumi.StringArrayOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy struct {
+	// Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.
+	Actions []string `pulumi:"actions"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgs and DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgs struct {
+	// Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.
+	Actions pulumi.StringArrayInput `pulumi:"actions"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployOutput)
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployOutput).ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutputWithContext(ctx)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgs, DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtr and DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrInput` via:
+//
+//	        DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutput
+}
+
+type deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrType DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgs
+
+func DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtr(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgs) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrInput {
+	return (*deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrType)(v)
+}
+
+func (*deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy)(nil)).Elem()
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutputWithContext(context.Background())
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutput {
+	return o.ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy) *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy {
+		return &v
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutput)
+}
+
+// Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployOutput) Actions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy) []string {
+		return v.Actions
+	}).(pulumi.StringArrayOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy) DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy
+		return ret
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployOutput)
+}
+
+// Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutput) Actions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Actions
+	}).(pulumi.StringArrayOutput)
 }
 
 type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig struct {
@@ -2048,6 +2668,8 @@ type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGat
 	Deployment string `pulumi:"deployment"`
 	// Required. Name of the Gateway API HTTPRoute.
 	HttpRoute string `pulumi:"httpRoute"`
+	// Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
+	RouteUpdateWaitTime *string `pulumi:"routeUpdateWaitTime"`
 	// Required. Name of the Kubernetes Service.
 	Service string `pulumi:"service"`
 }
@@ -2068,6 +2690,8 @@ type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGat
 	Deployment pulumi.StringInput `pulumi:"deployment"`
 	// Required. Name of the Gateway API HTTPRoute.
 	HttpRoute pulumi.StringInput `pulumi:"httpRoute"`
+	// Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
+	RouteUpdateWaitTime pulumi.StringPtrInput `pulumi:"routeUpdateWaitTime"`
 	// Required. Name of the Kubernetes Service.
 	Service pulumi.StringInput `pulumi:"service"`
 }
@@ -2163,6 +2787,13 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes
 	}).(pulumi.StringOutput)
 }
 
+// Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshOutput) RouteUpdateWaitTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh) *string {
+		return v.RouteUpdateWaitTime
+	}).(pulumi.StringPtrOutput)
+}
+
 // Required. Name of the Kubernetes Service.
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh) string {
@@ -2211,6 +2842,16 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes
 			return nil
 		}
 		return &v.HttpRoute
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput) RouteUpdateWaitTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RouteUpdateWaitTime
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2406,6 +3047,10 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes
 }
 
 type DeliveryPipelineSerialPipelineStageStrategyStandard struct {
+	// (Beta only) Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
+	Postdeploy *DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy `pulumi:"postdeploy"`
+	// (Beta only) Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
+	Predeploy *DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy `pulumi:"predeploy"`
 	// Whether to verify a deployment.
 	Verify *bool `pulumi:"verify"`
 }
@@ -2422,6 +3067,10 @@ type DeliveryPipelineSerialPipelineStageStrategyStandardInput interface {
 }
 
 type DeliveryPipelineSerialPipelineStageStrategyStandardArgs struct {
+	// (Beta only) Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
+	Postdeploy DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrInput `pulumi:"postdeploy"`
+	// (Beta only) Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
+	Predeploy DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrInput `pulumi:"predeploy"`
 	// Whether to verify a deployment.
 	Verify pulumi.BoolPtrInput `pulumi:"verify"`
 }
@@ -2503,6 +3152,20 @@ func (o DeliveryPipelineSerialPipelineStageStrategyStandardOutput) ToDeliveryPip
 	}).(DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput)
 }
 
+// (Beta only) Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardOutput) Postdeploy() DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandard) *DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy {
+		return v.Postdeploy
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput)
+}
+
+// (Beta only) Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardOutput) Predeploy() DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandard) *DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy {
+		return v.Predeploy
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput)
+}
+
 // Whether to verify a deployment.
 func (o DeliveryPipelineSerialPipelineStageStrategyStandardOutput) Verify() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandard) *bool { return v.Verify }).(pulumi.BoolPtrOutput)
@@ -2532,6 +3195,26 @@ func (o DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput) Elem() Del
 	}).(DeliveryPipelineSerialPipelineStageStrategyStandardOutput)
 }
 
+// (Beta only) Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput) Postdeploy() DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyStandard) *DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy {
+		if v == nil {
+			return nil
+		}
+		return v.Postdeploy
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput)
+}
+
+// (Beta only) Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput) Predeploy() DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyStandard) *DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy {
+		if v == nil {
+			return nil
+		}
+		return v.Predeploy
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput)
+}
+
 // Whether to verify a deployment.
 func (o DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput) Verify() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyStandard) *bool {
@@ -2540,6 +3223,280 @@ func (o DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput) Verify() p
 		}
 		return v.Verify
 	}).(pulumi.BoolPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy struct {
+	// Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.
+	Actions []string `pulumi:"actions"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs and DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs struct {
+	// Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.
+	Actions pulumi.StringArrayInput `pulumi:"actions"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployOutput)
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployOutput).ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutputWithContext(ctx)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs, DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtr and DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrInput` via:
+//
+//	        DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput
+}
+
+type deliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrType DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs
+
+func DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtr(v *DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs) DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrInput {
+	return (*deliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrType)(v)
+}
+
+func (*deliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy)(nil)).Elem()
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrType) ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutputWithContext(context.Background())
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrType) ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput {
+	return o.ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy) *DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy {
+		return &v
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput)
+}
+
+// Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployOutput) Actions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy) []string { return v.Actions }).(pulumi.StringArrayOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy) DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy
+		return ret
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployOutput)
+}
+
+// Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput) Actions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Actions
+	}).(pulumi.StringArrayOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy struct {
+	// Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.
+	Actions []string `pulumi:"actions"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyStandardPredeployInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs and DeliveryPipelineSerialPipelineStageStrategyStandardPredeployOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyStandardPredeployInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyStandardPredeployInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPredeployOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPredeployOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs struct {
+	// Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.
+	Actions pulumi.StringArrayInput `pulumi:"actions"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPredeployOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPredeployOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardPredeployOutput)
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs) ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardPredeployOutput).ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutputWithContext(ctx)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs, DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtr and DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrInput` via:
+//
+//	        DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput
+}
+
+type deliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrType DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs
+
+func DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtr(v *DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs) DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrInput {
+	return (*deliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrType)(v)
+}
+
+func (*deliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy)(nil)).Elem()
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrType) ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutputWithContext(context.Background())
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrType) ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardPredeployOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardPredeployOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPredeployOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPredeployOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPredeployOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPredeployOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPredeployOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput {
+	return o.ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPredeployOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy) *DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy {
+		return &v
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput)
+}
+
+// Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPredeployOutput) Actions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy) []string { return v.Actions }).(pulumi.StringArrayOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput() DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyStandardPredeployOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy) DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy
+		return ret
+	}).(DeliveryPipelineSerialPipelineStageStrategyStandardPredeployOutput)
+}
+
+// Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.
+func (o DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput) Actions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Actions
+	}).(pulumi.StringArrayOutput)
 }
 
 type TargetAnthosCluster struct {
@@ -3263,10 +4220,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrayInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgs{})
@@ -3279,6 +4244,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardPredeployInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetAnthosClusterInput)(nil)).Elem(), TargetAnthosClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetAnthosClusterPtrInput)(nil)).Elem(), TargetAnthosClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetExecutionConfigInput)(nil)).Elem(), TargetExecutionConfigArgs{})
@@ -3309,10 +4278,18 @@ func init() {
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPtrOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployPtrOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployPtrOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPtrOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArrayOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployPtrOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployPtrOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigPtrOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunOutput{})
@@ -3325,6 +4302,10 @@ func init() {
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardPtrOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployPtrOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardPredeployOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput{})
 	pulumi.RegisterOutputType(TargetAnthosClusterOutput{})
 	pulumi.RegisterOutputType(TargetAnthosClusterPtrOutput{})
 	pulumi.RegisterOutputType(TargetExecutionConfigOutput{})

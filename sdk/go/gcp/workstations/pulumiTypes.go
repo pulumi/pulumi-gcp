@@ -138,6 +138,9 @@ func (o WorkstationClusterConditionArrayOutput) Index(i pulumi.IntInput) Worksta
 }
 
 type WorkstationClusterPrivateClusterConfig struct {
+	// Additional project IDs that are allowed to attach to the workstation cluster's service attachment.
+	// By default, the workstation cluster's project and the VPC host project (if different) are allowed.
+	AllowedProjects []string `pulumi:"allowedProjects"`
 	// (Output)
 	// Hostname for the workstation cluster.
 	// This field will be populated only when private endpoint is enabled.
@@ -164,6 +167,9 @@ type WorkstationClusterPrivateClusterConfigInput interface {
 }
 
 type WorkstationClusterPrivateClusterConfigArgs struct {
+	// Additional project IDs that are allowed to attach to the workstation cluster's service attachment.
+	// By default, the workstation cluster's project and the VPC host project (if different) are allowed.
+	AllowedProjects pulumi.StringArrayInput `pulumi:"allowedProjects"`
 	// (Output)
 	// Hostname for the workstation cluster.
 	// This field will be populated only when private endpoint is enabled.
@@ -255,6 +261,12 @@ func (o WorkstationClusterPrivateClusterConfigOutput) ToWorkstationClusterPrivat
 	}).(WorkstationClusterPrivateClusterConfigPtrOutput)
 }
 
+// Additional project IDs that are allowed to attach to the workstation cluster's service attachment.
+// By default, the workstation cluster's project and the VPC host project (if different) are allowed.
+func (o WorkstationClusterPrivateClusterConfigOutput) AllowedProjects() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkstationClusterPrivateClusterConfig) []string { return v.AllowedProjects }).(pulumi.StringArrayOutput)
+}
+
 // (Output)
 // Hostname for the workstation cluster.
 // This field will be populated only when private endpoint is enabled.
@@ -298,6 +310,17 @@ func (o WorkstationClusterPrivateClusterConfigPtrOutput) Elem() WorkstationClust
 		var ret WorkstationClusterPrivateClusterConfig
 		return ret
 	}).(WorkstationClusterPrivateClusterConfigOutput)
+}
+
+// Additional project IDs that are allowed to attach to the workstation cluster's service attachment.
+// By default, the workstation cluster's project and the VPC host project (if different) are allowed.
+func (o WorkstationClusterPrivateClusterConfigPtrOutput) AllowedProjects() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkstationClusterPrivateClusterConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedProjects
+	}).(pulumi.StringArrayOutput)
 }
 
 // (Output)

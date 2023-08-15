@@ -39,6 +39,7 @@ public final class GetGlobalForwardingRuleResult {
     private String pscConnectionStatus;
     private String selfLink;
     private List<String> sourceIpRanges;
+    private String subnetwork;
     private String target;
 
     private GetGlobalForwardingRuleResult() {}
@@ -106,6 +107,9 @@ public final class GetGlobalForwardingRuleResult {
     public List<String> sourceIpRanges() {
         return this.sourceIpRanges;
     }
+    public String subnetwork() {
+        return this.subnetwork;
+    }
     public String target() {
         return this.target;
     }
@@ -139,6 +143,7 @@ public final class GetGlobalForwardingRuleResult {
         private String pscConnectionStatus;
         private String selfLink;
         private List<String> sourceIpRanges;
+        private String subnetwork;
         private String target;
         public Builder() {}
         public Builder(GetGlobalForwardingRuleResult defaults) {
@@ -163,6 +168,7 @@ public final class GetGlobalForwardingRuleResult {
     	      this.pscConnectionStatus = defaults.pscConnectionStatus;
     	      this.selfLink = defaults.selfLink;
     	      this.sourceIpRanges = defaults.sourceIpRanges;
+    	      this.subnetwork = defaults.subnetwork;
     	      this.target = defaults.target;
         }
 
@@ -273,6 +279,11 @@ public final class GetGlobalForwardingRuleResult {
             return sourceIpRanges(List.of(sourceIpRanges));
         }
         @CustomType.Setter
+        public Builder subnetwork(String subnetwork) {
+            this.subnetwork = Objects.requireNonNull(subnetwork);
+            return this;
+        }
+        @CustomType.Setter
         public Builder target(String target) {
             this.target = Objects.requireNonNull(target);
             return this;
@@ -299,6 +310,7 @@ public final class GetGlobalForwardingRuleResult {
             o.pscConnectionStatus = pscConnectionStatus;
             o.selfLink = selfLink;
             o.sourceIpRanges = sourceIpRanges;
+            o.subnetwork = subnetwork;
             o.target = target;
             return o;
         }

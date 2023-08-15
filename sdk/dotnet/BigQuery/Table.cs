@@ -209,6 +209,12 @@ namespace Pulumi.Gcp.BigQuery
         public Output<Outputs.TableMaterializedView?> MaterializedView { get; private set; } = null!;
 
         /// <summary>
+        /// The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+        /// </summary>
+        [Output("maxStaleness")]
+        public Output<string?> MaxStaleness { get; private set; } = null!;
+
+        /// <summary>
         /// The size of this table in bytes, excluding any data in the streaming buffer.
         /// </summary>
         [Output("numBytes")]
@@ -422,6 +428,12 @@ namespace Pulumi.Gcp.BigQuery
         public Input<Inputs.TableMaterializedViewArgs>? MaterializedView { get; set; }
 
         /// <summary>
+        /// The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+        /// </summary>
+        [Input("maxStaleness")]
+        public Input<string>? MaxStaleness { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs. If it
         /// is not provided, the provider project is used.
         /// </summary>
@@ -588,6 +600,12 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("materializedView")]
         public Input<Inputs.TableMaterializedViewGetArgs>? MaterializedView { get; set; }
+
+        /// <summary>
+        /// The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+        /// </summary>
+        [Input("maxStaleness")]
+        public Input<string>? MaxStaleness { get; set; }
 
         /// <summary>
         /// The size of this table in bytes, excluding any data in the streaming buffer.

@@ -375,7 +375,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var webhookTriggerSecretKey = new Secret(&#34;webhookTriggerSecretKey&#34;, SecretArgs.builder()        
- *             .secretId(&#34;webhook_trigger-secret-key-1&#34;)
+ *             .secretId(&#34;webhook-trigger-secret-key&#34;)
  *             .replication(SecretReplicationArgs.builder()
  *                 .userManaged(SecretReplicationUserManagedArgs.builder()
  *                     .replicas(SecretReplicationUserManagedReplicaArgs.builder()
@@ -605,7 +605,7 @@ import javax.annotation.Nullable;
  *                     .invertRegex(true)
  *                     .tag(&#34;^0.1.*&#34;)
  *                     .build())
- *                 .repoSlug(&#34;terraform-provider-google&#34;)
+ *                 .repoSlug(&#34;bbs-push-trigger&#34;)
  *                 .build())
  *             .filename(&#34;cloudbuild.yaml&#34;)
  *             .location(&#34;us-central1&#34;)

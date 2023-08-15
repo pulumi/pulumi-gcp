@@ -152,6 +152,9 @@ func GetContainerAzureCustomEndpoint(ctx *pulumi.Context) string {
 func GetContainerCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:containerCustomEndpoint")
 }
+func GetCoreBillingCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:coreBillingCustomEndpoint")
+}
 func GetCredentials(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:credentials")
 }

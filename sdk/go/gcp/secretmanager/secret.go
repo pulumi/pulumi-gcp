@@ -59,6 +59,44 @@ import (
 //	}
 //
 // ```
+// ### Secret With Annotations
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/secretmanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := secretmanager.NewSecret(ctx, "secret-with-annotations", &secretmanager.SecretArgs{
+//				Annotations: pulumi.StringMap{
+//					"key1": pulumi.String("someval"),
+//					"key2": pulumi.String("someval2"),
+//					"key3": pulumi.String("someval3"),
+//					"key4": pulumi.String("someval4"),
+//					"key5": pulumi.String("someval5"),
+//				},
+//				Labels: pulumi.StringMap{
+//					"label": pulumi.String("my-label"),
+//				},
+//				Replication: &secretmanager.SecretReplicationArgs{
+//					Automatic: pulumi.Bool(true),
+//				},
+//				SecretId: pulumi.String("secret"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -84,6 +122,17 @@ import (
 type Secret struct {
 	pulumi.CustomResourceState
 
+	// Custom metadata about the secret.
+	// Annotations are distinct from various forms of labels. Annotations exist to allow
+	// client tools to store their own state information without requiring a database.
+	// Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of
+	// maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and
+	// may have dashes (-), underscores (_), dots (.), and alphanumerics in between these
+	// symbols.
+	// The total size of annotation keys and values must be less than 16KiB.
+	// An object containing a list of "key": value pairs. Example:
+	// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// The time at which the Secret was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
@@ -157,6 +206,17 @@ func GetSecret(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Secret resources.
 type secretState struct {
+	// Custom metadata about the secret.
+	// Annotations are distinct from various forms of labels. Annotations exist to allow
+	// client tools to store their own state information without requiring a database.
+	// Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of
+	// maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and
+	// may have dashes (-), underscores (_), dots (.), and alphanumerics in between these
+	// symbols.
+	// The total size of annotation keys and values must be less than 16KiB.
+	// An object containing a list of "key": value pairs. Example:
+	// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	Annotations map[string]string `pulumi:"annotations"`
 	// The time at which the Secret was created.
 	CreateTime *string `pulumi:"createTime"`
 	// Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
@@ -195,6 +255,17 @@ type secretState struct {
 }
 
 type SecretState struct {
+	// Custom metadata about the secret.
+	// Annotations are distinct from various forms of labels. Annotations exist to allow
+	// client tools to store their own state information without requiring a database.
+	// Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of
+	// maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and
+	// may have dashes (-), underscores (_), dots (.), and alphanumerics in between these
+	// symbols.
+	// The total size of annotation keys and values must be less than 16KiB.
+	// An object containing a list of "key": value pairs. Example:
+	// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	Annotations pulumi.StringMapInput
 	// The time at which the Secret was created.
 	CreateTime pulumi.StringPtrInput
 	// Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
@@ -237,6 +308,17 @@ func (SecretState) ElementType() reflect.Type {
 }
 
 type secretArgs struct {
+	// Custom metadata about the secret.
+	// Annotations are distinct from various forms of labels. Annotations exist to allow
+	// client tools to store their own state information without requiring a database.
+	// Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of
+	// maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and
+	// may have dashes (-), underscores (_), dots (.), and alphanumerics in between these
+	// symbols.
+	// The total size of annotation keys and values must be less than 16KiB.
+	// An object containing a list of "key": value pairs. Example:
+	// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	Annotations map[string]string `pulumi:"annotations"`
 	// Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	ExpireTime *string `pulumi:"expireTime"`
@@ -271,6 +353,17 @@ type secretArgs struct {
 
 // The set of arguments for constructing a Secret resource.
 type SecretArgs struct {
+	// Custom metadata about the secret.
+	// Annotations are distinct from various forms of labels. Annotations exist to allow
+	// client tools to store their own state information without requiring a database.
+	// Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of
+	// maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and
+	// may have dashes (-), underscores (_), dots (.), and alphanumerics in between these
+	// symbols.
+	// The total size of annotation keys and values must be less than 16KiB.
+	// An object containing a list of "key": value pairs. Example:
+	// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	Annotations pulumi.StringMapInput
 	// Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	ExpireTime pulumi.StringPtrInput
@@ -388,6 +481,20 @@ func (o SecretOutput) ToSecretOutput() SecretOutput {
 
 func (o SecretOutput) ToSecretOutputWithContext(ctx context.Context) SecretOutput {
 	return o
+}
+
+// Custom metadata about the secret.
+// Annotations are distinct from various forms of labels. Annotations exist to allow
+// client tools to store their own state information without requiring a database.
+// Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of
+// maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and
+// may have dashes (-), underscores (_), dots (.), and alphanumerics in between these
+// symbols.
+// The total size of annotation keys and values must be less than 16KiB.
+// An object containing a list of "key": value pairs. Example:
+// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+func (o SecretOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Secret) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
 // The time at which the Secret was created.

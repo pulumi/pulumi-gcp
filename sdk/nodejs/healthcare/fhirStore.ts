@@ -129,6 +129,7 @@ import * as utilities from "../utilities";
  *     notificationConfigs: [{
  *         pubsubTopic: topic.id,
  *         sendFullResource: true,
+ *         sendPreviousResourceOnDelete: true,
  *     }],
  * }, {
  *     provider: google_beta,

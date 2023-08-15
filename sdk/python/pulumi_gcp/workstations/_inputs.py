@@ -93,10 +93,13 @@ class WorkstationClusterConditionArgs:
 class WorkstationClusterPrivateClusterConfigArgs:
     def __init__(__self__, *,
                  enable_private_endpoint: pulumi.Input[bool],
+                 allowed_projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  cluster_hostname: Optional[pulumi.Input[str]] = None,
                  service_attachment_uri: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] enable_private_endpoint: Whether Workstations endpoint is private.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_projects: Additional project IDs that are allowed to attach to the workstation cluster's service attachment.
+               By default, the workstation cluster's project and the VPC host project (if different) are allowed.
         :param pulumi.Input[str] cluster_hostname: (Output)
                Hostname for the workstation cluster.
                This field will be populated only when private endpoint is enabled.
@@ -107,6 +110,8 @@ class WorkstationClusterPrivateClusterConfigArgs:
                To access workstations in the cluster, configure access to the managed service using (Private Service Connect)[https://cloud.google.com/vpc/docs/configure-private-service-connect-services].
         """
         pulumi.set(__self__, "enable_private_endpoint", enable_private_endpoint)
+        if allowed_projects is not None:
+            pulumi.set(__self__, "allowed_projects", allowed_projects)
         if cluster_hostname is not None:
             pulumi.set(__self__, "cluster_hostname", cluster_hostname)
         if service_attachment_uri is not None:
@@ -123,6 +128,19 @@ class WorkstationClusterPrivateClusterConfigArgs:
     @enable_private_endpoint.setter
     def enable_private_endpoint(self, value: pulumi.Input[bool]):
         pulumi.set(self, "enable_private_endpoint", value)
+
+    @property
+    @pulumi.getter(name="allowedProjects")
+    def allowed_projects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Additional project IDs that are allowed to attach to the workstation cluster's service attachment.
+        By default, the workstation cluster's project and the VPC host project (if different) are allowed.
+        """
+        return pulumi.get(self, "allowed_projects")
+
+    @allowed_projects.setter
+    def allowed_projects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_projects", value)
 
     @property
     @pulumi.getter(name="clusterHostname")

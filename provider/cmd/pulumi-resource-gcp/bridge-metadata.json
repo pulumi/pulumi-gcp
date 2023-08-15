@@ -2300,6 +2300,9 @@
                                 "projects": {
                                     "maxItemsOne": false
                                 },
+                                "resource_ancestors": {
+                                    "maxItemsOne": false
+                                },
                                 "services": {
                                     "maxItemsOne": false
                                 },
@@ -2313,6 +2316,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "google_billing_project_info": {
+                "current": "gcp:billing/projectInfo:ProjectInfo",
+                "majorVersion": 6
             },
             "google_billing_subaccount": {
                 "current": "gcp:billing/subAccount:SubAccount",
@@ -3567,6 +3574,26 @@
                                                                             "fields": {
                                                                                 "percentages": {
                                                                                     "maxItemsOne": false
+                                                                                },
+                                                                                "postdeploy": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "actions": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "predeploy": {
+                                                                                    "maxItemsOne": true,
+                                                                                    "elem": {
+                                                                                        "fields": {
+                                                                                            "actions": {
+                                                                                                "maxItemsOne": false
+                                                                                            }
+                                                                                        }
+                                                                                    }
                                                                                 }
                                                                             }
                                                                         }
@@ -3579,6 +3606,26 @@
                                                                                     "maxItemsOne": false,
                                                                                     "elem": {
                                                                                         "fields": {
+                                                                                            "postdeploy": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "actions": {
+                                                                                                            "maxItemsOne": false
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            },
+                                                                                            "predeploy": {
+                                                                                                "maxItemsOne": true,
+                                                                                                "elem": {
+                                                                                                    "fields": {
+                                                                                                        "actions": {
+                                                                                                            "maxItemsOne": false
+                                                                                                        }
+                                                                                                    }
+                                                                                                }
+                                                                                            },
                                                                                             "profiles": {
                                                                                                 "maxItemsOne": false
                                                                                             }
@@ -3615,7 +3662,31 @@
                                                             }
                                                         },
                                                         "standard": {
-                                                            "maxItemsOne": true
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "postdeploy": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "actions": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "predeploy": {
+                                                                        "maxItemsOne": true,
+                                                                        "elem": {
+                                                                            "fields": {
+                                                                                "actions": {
+                                                                                    "maxItemsOne": false
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
                                                         }
                                                     }
                                                 }
@@ -8157,6 +8228,9 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "advanced_datapath_observability_config": {
+                                    "maxItemsOne": false
+                                },
                                 "enable_components": {
                                     "maxItemsOne": false
                                 },
@@ -10702,6 +10776,25 @@
                     },
                     "workspace_compilation_overrides": {
                         "maxItemsOne": true
+                    }
+                }
+            },
+            "google_dataform_repository_release_config": {
+                "current": "gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig",
+                "majorVersion": 6,
+                "fields": {
+                    "code_compilation_config": {
+                        "maxItemsOne": true
+                    },
+                    "recent_scheduled_release_records": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "error_status": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -16077,6 +16170,25 @@
                     }
                 }
             },
+            "google_network_connectivity_service_connection_policy": {
+                "current": "gcp:networkconnectivity/serviceConnectionPolicy:ServiceConnectionPolicy",
+                "majorVersion": 6,
+                "fields": {
+                    "psc_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "subnetworks": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "psc_connections": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "google_network_connectivity_spoke": {
                 "current": "gcp:networkconnectivity/spoke:Spoke",
                 "majorVersion": 6,
@@ -18779,6 +18891,16 @@
                     "bigquery_config": {
                         "maxItemsOne": true
                     },
+                    "cloud_storage_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "avro_config": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
                     "dead_letter_policy": {
                         "maxItemsOne": true
                     },
@@ -20100,7 +20222,14 @@
                         }
                     },
                     "private_cluster_config": {
-                        "maxItemsOne": true
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "allowed_projects": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -22423,6 +22552,9 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "advanced_datapath_observability_config": {
+                                    "maxItemsOne": false
+                                },
                                 "enable_components": {
                                     "maxItemsOne": false
                                 },
@@ -23598,6 +23730,16 @@
                     "bigquery_config": {
                         "maxItemsOne": false
                     },
+                    "cloud_storage_config": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "avro_config": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "dead_letter_policy": {
                         "maxItemsOne": false
                     },
@@ -24428,6 +24570,7 @@
             "gcp:billing/accountIamMember:AccountIamMember": 0,
             "gcp:billing/accountIamPolicy:AccountIamPolicy": 0,
             "gcp:billing/budget:Budget": 0,
+            "gcp:billing/projectInfo:ProjectInfo": 0,
             "gcp:billing/subAccount:SubAccount": 0,
             "gcp:binaryauthorization/attestor:Attestor": 0,
             "gcp:binaryauthorization/attestorIamBinding:AttestorIamBinding": 0,
@@ -24664,6 +24807,7 @@
             "gcp:dataflow/flexTemplateJob:FlexTemplateJob": 0,
             "gcp:dataflow/job:Job": 0,
             "gcp:dataform/repository:Repository": 0,
+            "gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig": 0,
             "gcp:datafusion/instance:Instance": 0,
             "gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate": 0,
             "gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate": 0,
@@ -24910,6 +25054,7 @@
             "gcp:monitoring/slo:Slo": 0,
             "gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig": 0,
             "gcp:networkconnectivity/hub:Hub": 0,
+            "gcp:networkconnectivity/serviceConnectionPolicy:ServiceConnectionPolicy": 0,
             "gcp:networkconnectivity/spoke:Spoke": 0,
             "gcp:networkmanagement/connectivityTest:ConnectivityTest": 0,
             "gcp:networksecurity/addressGroup:AddressGroup": 0,
@@ -25461,6 +25606,7 @@
             "gcp:billing/accountIamMember:AccountIamMember": "google_billing_account_iam_member",
             "gcp:billing/accountIamPolicy:AccountIamPolicy": "google_billing_account_iam_policy",
             "gcp:billing/budget:Budget": "google_billing_budget",
+            "gcp:billing/projectInfo:ProjectInfo": "google_billing_project_info",
             "gcp:billing/subAccount:SubAccount": "google_billing_subaccount",
             "gcp:binaryauthorization/attestor:Attestor": "google_binary_authorization_attestor",
             "gcp:binaryauthorization/attestorIamBinding:AttestorIamBinding": "google_binary_authorization_attestor_iam_binding",
@@ -25697,6 +25843,7 @@
             "gcp:dataflow/flexTemplateJob:FlexTemplateJob": "google_dataflow_flex_template_job",
             "gcp:dataflow/job:Job": "google_dataflow_job",
             "gcp:dataform/repository:Repository": "google_dataform_repository",
+            "gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig": "google_dataform_repository_release_config",
             "gcp:datafusion/instance:Instance": "google_data_fusion_instance",
             "gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate": "google_data_loss_prevention_deidentify_template",
             "gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate": "google_data_loss_prevention_inspect_template",
@@ -25943,6 +26090,7 @@
             "gcp:monitoring/slo:Slo": "google_monitoring_slo",
             "gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig": "google_monitoring_uptime_check_config",
             "gcp:networkconnectivity/hub:Hub": "google_network_connectivity_hub",
+            "gcp:networkconnectivity/serviceConnectionPolicy:ServiceConnectionPolicy": "google_network_connectivity_service_connection_policy",
             "gcp:networkconnectivity/spoke:Spoke": "google_network_connectivity_spoke",
             "gcp:networkmanagement/connectivityTest:ConnectivityTest": "google_network_management_connectivity_test",
             "gcp:networksecurity/addressGroup:AddressGroup": "google_network_security_address_group",
@@ -27654,6 +27802,7 @@
                 "avroOptions": "avro_options",
                 "connectionId": "connection_id",
                 "csvOptions": "csv_options",
+                "fileSetSpecType": "file_set_spec_type",
                 "googleSheetsOptions": "google_sheets_options",
                 "hivePartitioningOptions": "hive_partitioning_options",
                 "ignoreUnknownValues": "ignore_unknown_values",
@@ -27840,6 +27989,7 @@
                 "friendlyName": "friendly_name",
                 "lastModifiedTime": "last_modified_time",
                 "materializedView": "materialized_view",
+                "maxStaleness": "max_staleness",
                 "numBytes": "num_bytes",
                 "numLongTermBytes": "num_long_term_bytes",
                 "numRows": "num_rows",
@@ -27987,7 +28137,8 @@
                 "calendarPeriod": "calendar_period",
                 "creditTypes": "credit_types",
                 "creditTypesTreatment": "credit_types_treatment",
-                "customPeriod": "custom_period"
+                "customPeriod": "custom_period",
+                "resourceAncestors": "resource_ancestors"
             },
             "gcp:billing/BudgetBudgetFilterCustomPeriod:BudgetBudgetFilterCustomPeriod": {
                 "endDate": "end_date",
@@ -28017,6 +28168,9 @@
             "gcp:billing/getAccountIamPolicy:getAccountIamPolicy": {
                 "billingAccountId": "billing_account_id",
                 "policyData": "policy_data"
+            },
+            "gcp:billing/projectInfo:ProjectInfo": {
+                "billingAccount": "billing_account"
             },
             "gcp:billing/subAccount:SubAccount": {
                 "billingAccountId": "billing_account_id",
@@ -29199,7 +29353,8 @@
                 "serviceNetworking": "service_networking"
             },
             "gcp:clouddeploy/DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh:DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh": {
-                "httpRoute": "http_route"
+                "httpRoute": "http_route",
+                "routeUpdateWaitTime": "route_update_wait_time"
             },
             "gcp:clouddeploy/DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking:DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking": {
                 "disablePodOverprovisioning": "disable_pod_overprovisioning"
@@ -29377,6 +29532,7 @@
             "gcp:cloudfunctionsv2/function:Function": {
                 "buildConfig": "build_config",
                 "eventTrigger": "event_trigger",
+                "kmsKeyName": "kms_key_name",
                 "serviceConfig": "service_config",
                 "updateTime": "update_time"
             },
@@ -29393,6 +29549,7 @@
             "gcp:cloudfunctionsv2/getFunction:getFunction": {
                 "buildConfigs": "build_config",
                 "eventTriggers": "event_trigger",
+                "kmsKeyName": "kms_key_name",
                 "serviceConfigs": "service_config",
                 "updateTime": "update_time"
             },
@@ -32162,6 +32319,7 @@
                 "creationTimestamp": "creation_timestamp",
                 "ipAddress": "ip_address",
                 "ipProtocol": "ip_protocol",
+                "ipVersion": "ip_version",
                 "isMirroringCollector": "is_mirroring_collector",
                 "labelFingerprint": "label_fingerprint",
                 "loadBalancingScheme": "load_balancing_scheme",
@@ -32392,6 +32550,7 @@
                 "creationTimestamp": "creation_timestamp",
                 "ipAddress": "ip_address",
                 "ipProtocol": "ip_protocol",
+                "ipVersion": "ip_version",
                 "isMirroringCollector": "is_mirroring_collector",
                 "labelFingerprint": "label_fingerprint",
                 "loadBalancingScheme": "load_balancing_scheme",
@@ -34327,8 +34486,13 @@
                 "enableCertificates": "enable_certificates"
             },
             "gcp:container/ClusterMonitoringConfig:ClusterMonitoringConfig": {
+                "advancedDatapathObservabilityConfigs": "advanced_datapath_observability_config",
                 "enableComponents": "enable_components",
                 "managedPrometheus": "managed_prometheus"
+            },
+            "gcp:container/ClusterMonitoringConfigAdvancedDatapathObservabilityConfig:ClusterMonitoringConfigAdvancedDatapathObservabilityConfig": {
+                "enableMetrics": "enable_metrics",
+                "relayMode": "relay_mode"
             },
             "gcp:container/ClusterNodeConfig:ClusterNodeConfig": {
                 "advancedMachineFeatures": "advanced_machine_features",
@@ -35025,8 +35189,13 @@
                 "enableCertificates": "enable_certificates"
             },
             "gcp:container/getClusterMonitoringConfig:getClusterMonitoringConfig": {
+                "advancedDatapathObservabilityConfigs": "advanced_datapath_observability_config",
                 "enableComponents": "enable_components",
                 "managedPrometheuses": "managed_prometheus"
+            },
+            "gcp:container/getClusterMonitoringConfigAdvancedDatapathObservabilityConfig:getClusterMonitoringConfigAdvancedDatapathObservabilityConfig": {
+                "enableMetrics": "enable_metrics",
+                "relayMode": "relay_mode"
             },
             "gcp:container/getClusterNodeConfig:getClusterNodeConfig": {
                 "advancedMachineFeatures": "advanced_machine_features",
@@ -35595,6 +35764,20 @@
                 "defaultBranch": "default_branch",
                 "tokenStatus": "token_status"
             },
+            "gcp:dataform/RepositoryReleaseConfigCodeCompilationConfig:RepositoryReleaseConfigCodeCompilationConfig": {
+                "assertionSchema": "assertion_schema",
+                "databaseSuffix": "database_suffix",
+                "defaultDatabase": "default_database",
+                "defaultLocation": "default_location",
+                "defaultSchema": "default_schema",
+                "schemaSuffix": "schema_suffix",
+                "tablePrefix": "table_prefix"
+            },
+            "gcp:dataform/RepositoryReleaseConfigRecentScheduledReleaseRecord:RepositoryReleaseConfigRecentScheduledReleaseRecord": {
+                "compilationResult": "compilation_result",
+                "errorStatuses": "error_status",
+                "releaseTime": "release_time"
+            },
             "gcp:dataform/RepositoryWorkspaceCompilationOverrides:RepositoryWorkspaceCompilationOverrides": {
                 "defaultDatabase": "default_database",
                 "schemaSuffix": "schema_suffix",
@@ -35603,6 +35786,13 @@
             "gcp:dataform/repository:Repository": {
                 "gitRemoteSettings": "git_remote_settings",
                 "workspaceCompilationOverrides": "workspace_compilation_overrides"
+            },
+            "gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig": {
+                "codeCompilationConfig": "code_compilation_config",
+                "cronSchedule": "cron_schedule",
+                "gitCommitish": "git_commitish",
+                "recentScheduledReleaseRecords": "recent_scheduled_release_records",
+                "timeZone": "time_zone"
             },
             "gcp:datafusion/InstanceAccelerator:InstanceAccelerator": {
                 "acceleratorType": "accelerator_type"
@@ -36482,6 +36672,9 @@
             "gcp:dataplex/AssetDiscoveryStatusStat:AssetDiscoveryStatusStat": {
                 "dataItems": "data_items",
                 "dataSize": "data_size"
+            },
+            "gcp:dataplex/AssetResourceSpec:AssetResourceSpec": {
+                "readAccessMode": "read_access_mode"
             },
             "gcp:dataplex/AssetResourceStatus:AssetResourceStatus": {
                 "updateTime": "update_time"
@@ -38263,6 +38456,7 @@
             },
             "gcp:eventarc/trigger:Trigger": {
                 "createTime": "create_time",
+                "eventDataContentType": "event_data_content_type",
                 "matchingCriterias": "matching_criteria",
                 "serviceAccount": "service_account",
                 "transports": "transport",
@@ -39118,7 +39312,8 @@
             },
             "gcp:healthcare/FhirStoreNotificationConfig:FhirStoreNotificationConfig": {
                 "pubsubTopic": "pubsub_topic",
-                "sendFullResource": "send_full_resource"
+                "sendFullResource": "send_full_resource",
+                "sendPreviousResourceOnDelete": "send_previous_resource_on_delete"
             },
             "gcp:healthcare/FhirStoreStreamConfig:FhirStoreStreamConfig": {
                 "bigqueryDestination": "bigquery_destination",
@@ -39624,6 +39819,7 @@
                 "containerAwsCustomEndpoint": "container_aws_custom_endpoint",
                 "containerAzureCustomEndpoint": "container_azure_custom_endpoint",
                 "containerCustomEndpoint": "container_custom_endpoint",
+                "coreBillingCustomEndpoint": "core_billing_custom_endpoint",
                 "dataCatalogCustomEndpoint": "data_catalog_custom_endpoint",
                 "dataFusionCustomEndpoint": "data_fusion_custom_endpoint",
                 "dataLossPreventionCustomEndpoint": "data_loss_prevention_custom_endpoint",
@@ -40411,6 +40607,13 @@
                 "createTime": "create_time",
                 "routingVpcs": "routing_vpcs",
                 "uniqueId": "unique_id",
+                "updateTime": "update_time"
+            },
+            "gcp:networkconnectivity/serviceConnectionPolicy:ServiceConnectionPolicy": {
+                "createTime": "create_time",
+                "pscConfig": "psc_config",
+                "pscConnections": "psc_connections",
+                "serviceClass": "service_class",
                 "updateTime": "update_time"
             },
             "gcp:networkconnectivity/spoke:Spoke": {
@@ -41588,6 +41791,16 @@
                 "useTopicSchema": "use_topic_schema",
                 "writeMetadata": "write_metadata"
             },
+            "gcp:pubsub/SubscriptionCloudStorageConfig:SubscriptionCloudStorageConfig": {
+                "avroConfig": "avro_config",
+                "filenamePrefix": "filename_prefix",
+                "filenameSuffix": "filename_suffix",
+                "maxBytes": "max_bytes",
+                "maxDuration": "max_duration"
+            },
+            "gcp:pubsub/SubscriptionCloudStorageConfigAvroConfig:SubscriptionCloudStorageConfigAvroConfig": {
+                "writeMetadata": "write_metadata"
+            },
             "gcp:pubsub/SubscriptionDeadLetterPolicy:SubscriptionDeadLetterPolicy": {
                 "deadLetterTopic": "dead_letter_topic",
                 "maxDeliveryAttempts": "max_delivery_attempts"
@@ -41613,6 +41826,7 @@
             "gcp:pubsub/getSubscription:getSubscription": {
                 "ackDeadlineSeconds": "ack_deadline_seconds",
                 "bigqueryConfigs": "bigquery_config",
+                "cloudStorageConfigs": "cloud_storage_config",
                 "deadLetterPolicies": "dead_letter_policy",
                 "enableExactlyOnceDelivery": "enable_exactly_once_delivery",
                 "enableMessageOrdering": "enable_message_ordering",
@@ -41625,6 +41839,16 @@
             "gcp:pubsub/getSubscriptionBigqueryConfig:getSubscriptionBigqueryConfig": {
                 "dropUnknownFields": "drop_unknown_fields",
                 "useTopicSchema": "use_topic_schema",
+                "writeMetadata": "write_metadata"
+            },
+            "gcp:pubsub/getSubscriptionCloudStorageConfig:getSubscriptionCloudStorageConfig": {
+                "avroConfigs": "avro_config",
+                "filenamePrefix": "filename_prefix",
+                "filenameSuffix": "filename_suffix",
+                "maxBytes": "max_bytes",
+                "maxDuration": "max_duration"
+            },
+            "gcp:pubsub/getSubscriptionCloudStorageConfigAvroConfig:getSubscriptionCloudStorageConfigAvroConfig": {
                 "writeMetadata": "write_metadata"
             },
             "gcp:pubsub/getSubscriptionDeadLetterPolicy:getSubscriptionDeadLetterPolicy": {
@@ -41675,6 +41899,7 @@
             "gcp:pubsub/subscription:Subscription": {
                 "ackDeadlineSeconds": "ack_deadline_seconds",
                 "bigqueryConfig": "bigquery_config",
+                "cloudStorageConfig": "cloud_storage_config",
                 "deadLetterPolicy": "dead_letter_policy",
                 "enableExactlyOnceDelivery": "enable_exactly_once_delivery",
                 "enableMessageOrdering": "enable_message_ordering",
@@ -43263,6 +43488,7 @@
                 "updateTime": "update_time"
             },
             "gcp:workstations/WorkstationClusterPrivateClusterConfig:WorkstationClusterPrivateClusterConfig": {
+                "allowedProjects": "allowed_projects",
                 "clusterHostname": "cluster_hostname",
                 "enablePrivateEndpoint": "enable_private_endpoint",
                 "serviceAttachmentUri": "service_attachment_uri"
@@ -43418,6 +43644,7 @@
             "containerAwsCustomEndpoint": "container_aws_custom_endpoint",
             "containerAzureCustomEndpoint": "container_azure_custom_endpoint",
             "containerCustomEndpoint": "container_custom_endpoint",
+            "coreBillingCustomEndpoint": "core_billing_custom_endpoint",
             "dataCatalogCustomEndpoint": "data_catalog_custom_endpoint",
             "dataFusionCustomEndpoint": "data_fusion_custom_endpoint",
             "dataLossPreventionCustomEndpoint": "data_loss_prevention_custom_endpoint",

@@ -156,6 +156,9 @@ namespace Pulumi.Gcp
         [Output("containerCustomEndpoint")]
         public Output<string?> ContainerCustomEndpoint { get; private set; } = null!;
 
+        [Output("coreBillingCustomEndpoint")]
+        public Output<string?> CoreBillingCustomEndpoint { get; private set; } = null!;
+
         [Output("credentials")]
         public Output<string?> Credentials { get; private set; } = null!;
 
@@ -603,6 +606,9 @@ namespace Pulumi.Gcp
 
         [Input("containerCustomEndpoint")]
         public Input<string>? ContainerCustomEndpoint { get; set; }
+
+        [Input("coreBillingCustomEndpoint")]
+        public Input<string>? CoreBillingCustomEndpoint { get; set; }
 
         [Input("credentials")]
         public Input<string>? Credentials { get; set; }

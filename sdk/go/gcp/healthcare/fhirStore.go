@@ -232,8 +232,9 @@ import (
 //				},
 //				NotificationConfigs: healthcare.FhirStoreNotificationConfigArray{
 //					&healthcare.FhirStoreNotificationConfigArgs{
-//						PubsubTopic:      topic.ID(),
-//						SendFullResource: pulumi.Bool(true),
+//						PubsubTopic:                  topic.ID(),
+//						SendFullResource:             pulumi.Bool(true),
+//						SendPreviousResourceOnDelete: pulumi.Bool(true),
 //					},
 //				},
 //			}, pulumi.Provider(google_beta))

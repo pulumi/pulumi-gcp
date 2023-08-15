@@ -11,6 +11,7 @@ from .. import _utilities
 
 __all__ = [
     'HubRoutingVpcArgs',
+    'ServiceConnectionPolicyPscConfigArgs',
     'SpokeLinkedInterconnectAttachmentsArgs',
     'SpokeLinkedRouterApplianceInstancesArgs',
     'SpokeLinkedRouterApplianceInstancesInstanceArgs',
@@ -32,6 +33,44 @@ class HubRoutingVpcArgs:
     @uri.setter
     def uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "uri", value)
+
+
+@pulumi.input_type
+class ServiceConnectionPolicyPscConfigArgs:
+    def __init__(__self__, *,
+                 subnetworks: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 limit: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subnetworks: IDs of the subnetworks or fully qualified identifiers for the subnetworks
+        :param pulumi.Input[str] limit: Max number of PSC connections for this policy.
+        """
+        pulumi.set(__self__, "subnetworks", subnetworks)
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+
+    @property
+    @pulumi.getter
+    def subnetworks(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        IDs of the subnetworks or fully qualified identifiers for the subnetworks
+        """
+        return pulumi.get(self, "subnetworks")
+
+    @subnetworks.setter
+    def subnetworks(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "subnetworks", value)
+
+    @property
+    @pulumi.getter
+    def limit(self) -> Optional[pulumi.Input[str]]:
+        """
+        Max number of PSC connections for this policy.
+        """
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "limit", value)
 
 
 @pulumi.input_type

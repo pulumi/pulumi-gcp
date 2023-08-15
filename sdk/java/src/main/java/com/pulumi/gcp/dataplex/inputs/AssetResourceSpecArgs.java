@@ -31,6 +31,21 @@ public final class AssetResourceSpecArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets. Possible values: DIRECT, MANAGED
+     * 
+     */
+    @Import(name="readAccessMode")
+    private @Nullable Output<String> readAccessMode;
+
+    /**
+     * @return Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets. Possible values: DIRECT, MANAGED
+     * 
+     */
+    public Optional<Output<String>> readAccessMode() {
+        return Optional.ofNullable(this.readAccessMode);
+    }
+
+    /**
      * Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
      * 
      * ***
@@ -53,6 +68,7 @@ public final class AssetResourceSpecArgs extends com.pulumi.resources.ResourceAr
 
     private AssetResourceSpecArgs(AssetResourceSpecArgs $) {
         this.name = $.name;
+        this.readAccessMode = $.readAccessMode;
         this.type = $.type;
     }
 
@@ -93,6 +109,27 @@ public final class AssetResourceSpecArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param readAccessMode Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets. Possible values: DIRECT, MANAGED
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readAccessMode(@Nullable Output<String> readAccessMode) {
+            $.readAccessMode = readAccessMode;
+            return this;
+        }
+
+        /**
+         * @param readAccessMode Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets. Possible values: DIRECT, MANAGED
+         * 
+         * @return builder
+         * 
+         */
+        public Builder readAccessMode(String readAccessMode) {
+            return readAccessMode(Output.of(readAccessMode));
         }
 
         /**

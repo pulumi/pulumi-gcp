@@ -64,6 +64,7 @@ type Provider struct {
 	ContainerAwsCustomEndpoint             pulumi.StringPtrOutput `pulumi:"containerAwsCustomEndpoint"`
 	ContainerAzureCustomEndpoint           pulumi.StringPtrOutput `pulumi:"containerAzureCustomEndpoint"`
 	ContainerCustomEndpoint                pulumi.StringPtrOutput `pulumi:"containerCustomEndpoint"`
+	CoreBillingCustomEndpoint              pulumi.StringPtrOutput `pulumi:"coreBillingCustomEndpoint"`
 	Credentials                            pulumi.StringPtrOutput `pulumi:"credentials"`
 	DataCatalogCustomEndpoint              pulumi.StringPtrOutput `pulumi:"dataCatalogCustomEndpoint"`
 	DataFusionCustomEndpoint               pulumi.StringPtrOutput `pulumi:"dataFusionCustomEndpoint"`
@@ -238,6 +239,7 @@ type providerArgs struct {
 	ContainerAwsCustomEndpoint             *string           `pulumi:"containerAwsCustomEndpoint"`
 	ContainerAzureCustomEndpoint           *string           `pulumi:"containerAzureCustomEndpoint"`
 	ContainerCustomEndpoint                *string           `pulumi:"containerCustomEndpoint"`
+	CoreBillingCustomEndpoint              *string           `pulumi:"coreBillingCustomEndpoint"`
 	Credentials                            *string           `pulumi:"credentials"`
 	DataCatalogCustomEndpoint              *string           `pulumi:"dataCatalogCustomEndpoint"`
 	DataFusionCustomEndpoint               *string           `pulumi:"dataFusionCustomEndpoint"`
@@ -386,6 +388,7 @@ type ProviderArgs struct {
 	ContainerAwsCustomEndpoint             pulumi.StringPtrInput
 	ContainerAzureCustomEndpoint           pulumi.StringPtrInput
 	ContainerCustomEndpoint                pulumi.StringPtrInput
+	CoreBillingCustomEndpoint              pulumi.StringPtrInput
 	Credentials                            pulumi.StringPtrInput
 	DataCatalogCustomEndpoint              pulumi.StringPtrInput
 	DataFusionCustomEndpoint               pulumi.StringPtrInput
@@ -704,6 +707,10 @@ func (o ProviderOutput) ContainerAzureCustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) ContainerCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ContainerCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) CoreBillingCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.CoreBillingCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) Credentials() pulumi.StringPtrOutput {

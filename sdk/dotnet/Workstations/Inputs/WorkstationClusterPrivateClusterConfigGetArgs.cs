@@ -12,6 +12,19 @@ namespace Pulumi.Gcp.Workstations.Inputs
 
     public sealed class WorkstationClusterPrivateClusterConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("allowedProjects")]
+        private InputList<string>? _allowedProjects;
+
+        /// <summary>
+        /// Additional project IDs that are allowed to attach to the workstation cluster's service attachment.
+        /// By default, the workstation cluster's project and the VPC host project (if different) are allowed.
+        /// </summary>
+        public InputList<string> AllowedProjects
+        {
+            get => _allowedProjects ?? (_allowedProjects = new InputList<string>());
+            set => _allowedProjects = value;
+        }
+
         /// <summary>
         /// (Output)
         /// Hostname for the workstation cluster.

@@ -1040,6 +1040,227 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Global Internal Http Lb With Mig Backend
+ * 
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckHttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.InstanceTemplate;
+ * import com.pulumi.gcp.compute.InstanceTemplateArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateNetworkInterfaceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskArgs;
+ * import com.pulumi.gcp.compute.InstanceGroupManager;
+ * import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceGroupManagerVersionArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.inputs.BackendServiceBackendArgs;
+ * import com.pulumi.gcp.compute.URLMap;
+ * import com.pulumi.gcp.compute.URLMapArgs;
+ * import com.pulumi.gcp.compute.TargetHttpProxy;
+ * import com.pulumi.gcp.compute.TargetHttpProxyArgs;
+ * import com.pulumi.gcp.compute.GlobalForwardingRule;
+ * import com.pulumi.gcp.compute.GlobalForwardingRuleArgs;
+ * import com.pulumi.gcp.compute.Firewall;
+ * import com.pulumi.gcp.compute.FirewallArgs;
+ * import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
+ * import com.pulumi.gcp.compute.Instance;
+ * import com.pulumi.gcp.compute.InstanceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var gilbNetwork = new Network(&#34;gilbNetwork&#34;, NetworkArgs.builder()        
+ *             .autoCreateSubnetworks(false)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var proxySubnet = new Subnetwork(&#34;proxySubnet&#34;, SubnetworkArgs.builder()        
+ *             .ipCidrRange(&#34;10.0.0.0/24&#34;)
+ *             .region(&#34;europe-west1&#34;)
+ *             .purpose(&#34;GLOBAL_MANAGED_PROXY&#34;)
+ *             .role(&#34;ACTIVE&#34;)
+ *             .network(gilbNetwork.id())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var gilbSubnet = new Subnetwork(&#34;gilbSubnet&#34;, SubnetworkArgs.builder()        
+ *             .ipCidrRange(&#34;10.0.1.0/24&#34;)
+ *             .region(&#34;europe-west1&#34;)
+ *             .network(gilbNetwork.id())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var defaultHealthCheck = new HealthCheck(&#34;defaultHealthCheck&#34;, HealthCheckArgs.builder()        
+ *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
+ *                 .portSpecification(&#34;USE_SERVING_PORT&#34;)
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var instanceTemplate = new InstanceTemplate(&#34;instanceTemplate&#34;, InstanceTemplateArgs.builder()        
+ *             .machineType(&#34;e2-small&#34;)
+ *             .tags(&#34;http-server&#34;)
+ *             .networkInterfaces(InstanceTemplateNetworkInterfaceArgs.builder()
+ *                 .network(gilbNetwork.id())
+ *                 .subnetwork(gilbSubnet.id())
+ *                 .accessConfigs()
+ *                 .build())
+ *             .disks(InstanceTemplateDiskArgs.builder()
+ *                 .sourceImage(&#34;debian-cloud/debian-10&#34;)
+ *                 .autoDelete(true)
+ *                 .boot(true)
+ *                 .build())
+ *             .metadata(Map.of(&#34;startup-script&#34;, &#34;&#34;&#34;
+ * #! /bin/bash
+ * set -euo pipefail
+ * 
+ * export DEBIAN_FRONTEND=noninteractive
+ * apt-get update
+ * apt-get install -y nginx-light jq
+ * 
+ * NAME=$(curl -H &#34;Metadata-Flavor: Google&#34; &#34;http://metadata.google.internal/computeMetadata/v1/instance/hostname&#34;)
+ * IP=$(curl -H &#34;Metadata-Flavor: Google&#34; &#34;http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip&#34;)
+ * METADATA=$(curl -f -H &#34;Metadata-Flavor: Google&#34; &#34;http://metadata.google.internal/computeMetadata/v1/instance/attributes/?recursive=True&#34; | jq &#39;del(.[&#34;startup-script&#34;])&#39;)
+ * 
+ * cat &lt;&lt;EOF &gt; /var/www/html/index.html
+ * &lt;pre&gt;
+ * Name: $NAME
+ * IP: $IP
+ * Metadata: $METADATA
+ * &lt;/pre&gt;
+ * EOF
+ *             &#34;&#34;&#34;))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var mig = new InstanceGroupManager(&#34;mig&#34;, InstanceGroupManagerArgs.builder()        
+ *             .zone(&#34;europe-west1-b&#34;)
+ *             .versions(InstanceGroupManagerVersionArgs.builder()
+ *                 .instanceTemplate(instanceTemplate.id())
+ *                 .name(&#34;primary&#34;)
+ *                 .build())
+ *             .baseInstanceName(&#34;vm&#34;)
+ *             .targetSize(2)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var defaultBackendService = new BackendService(&#34;defaultBackendService&#34;, BackendServiceArgs.builder()        
+ *             .protocol(&#34;HTTP&#34;)
+ *             .loadBalancingScheme(&#34;INTERNAL_MANAGED&#34;)
+ *             .timeoutSec(10)
+ *             .healthChecks(defaultHealthCheck.id())
+ *             .backends(BackendServiceBackendArgs.builder()
+ *                 .group(mig.instanceGroup())
+ *                 .balancingMode(&#34;UTILIZATION&#34;)
+ *                 .capacityScaler(1)
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var defaultURLMap = new URLMap(&#34;defaultURLMap&#34;, URLMapArgs.builder()        
+ *             .defaultService(defaultBackendService.id())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var defaultTargetHttpProxy = new TargetHttpProxy(&#34;defaultTargetHttpProxy&#34;, TargetHttpProxyArgs.builder()        
+ *             .urlMap(defaultURLMap.id())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var googleComputeForwardingRule = new GlobalForwardingRule(&#34;googleComputeForwardingRule&#34;, GlobalForwardingRuleArgs.builder()        
+ *             .ipProtocol(&#34;TCP&#34;)
+ *             .loadBalancingScheme(&#34;INTERNAL_MANAGED&#34;)
+ *             .portRange(&#34;80&#34;)
+ *             .target(defaultTargetHttpProxy.id())
+ *             .network(gilbNetwork.id())
+ *             .subnetwork(gilbSubnet.id())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .dependsOn(proxySubnet)
+ *                 .build());
+ * 
+ *         var fw_iap = new Firewall(&#34;fw-iap&#34;, FirewallArgs.builder()        
+ *             .direction(&#34;INGRESS&#34;)
+ *             .network(gilbNetwork.id())
+ *             .sourceRanges(            
+ *                 &#34;130.211.0.0/22&#34;,
+ *                 &#34;35.191.0.0/16&#34;,
+ *                 &#34;35.235.240.0/20&#34;)
+ *             .allows(FirewallAllowArgs.builder()
+ *                 .protocol(&#34;tcp&#34;)
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var fw_gilb_to_backends = new Firewall(&#34;fw-gilb-to-backends&#34;, FirewallArgs.builder()        
+ *             .direction(&#34;INGRESS&#34;)
+ *             .network(gilbNetwork.id())
+ *             .sourceRanges(&#34;10.0.0.0/24&#34;)
+ *             .targetTags(&#34;http-server&#34;)
+ *             .allows(FirewallAllowArgs.builder()
+ *                 .protocol(&#34;tcp&#34;)
+ *                 .ports(                
+ *                     &#34;80&#34;,
+ *                     &#34;443&#34;,
+ *                     &#34;8080&#34;)
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var vm_test = new Instance(&#34;vm-test&#34;, InstanceArgs.builder()        
+ *             .zone(&#34;europe-west1-b&#34;)
+ *             .machineType(&#34;e2-small&#34;)
+ *             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
+ *                 .network(gilbNetwork.id())
+ *                 .subnetwork(gilbSubnet.id())
+ *                 .build())
+ *             .bootDisk(InstanceBootDiskArgs.builder()
+ *                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
+ *                     .image(&#34;debian-cloud/debian-10&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
  * ### Private Service Connect Google Apis
  * ```java
  * package generated_program;
@@ -1402,7 +1623,7 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
      * For more information about forwarding rules, refer to
      * [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
      * Default value is `EXTERNAL`.
-     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
      * 
      */
     @Export(name="loadBalancingScheme", type=String.class, parameters={})
@@ -1413,7 +1634,7 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
      * For more information about forwarding rules, refer to
      * [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
      * Default value is `EXTERNAL`.
-     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
      * 
      */
     public Output<Optional<String>> loadBalancingScheme() {
@@ -1652,6 +1873,30 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<String>>> sourceIpRanges() {
         return Codegen.optional(this.sourceIpRanges);
+    }
+    /**
+     * This field identifies the subnetwork that the load balanced IP should
+     * belong to for this Forwarding Rule, used in internal load balancing and
+     * network load balancing with IPv6.
+     * If the network specified is in auto subnet mode, this field is optional.
+     * However, a subnetwork must be specified if the network is in custom subnet
+     * mode or when creating external forwarding rule with IPv6.
+     * 
+     */
+    @Export(name="subnetwork", type=String.class, parameters={})
+    private Output<String> subnetwork;
+
+    /**
+     * @return This field identifies the subnetwork that the load balanced IP should
+     * belong to for this Forwarding Rule, used in internal load balancing and
+     * network load balancing with IPv6.
+     * If the network specified is in auto subnet mode, this field is optional.
+     * However, a subnetwork must be specified if the network is in custom subnet
+     * mode or when creating external forwarding rule with IPv6.
+     * 
+     */
+    public Output<String> subnetwork() {
+        return this.subnetwork;
     }
     /**
      * The URL of the target resource to receive the matched traffic.  For

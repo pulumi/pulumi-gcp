@@ -184,6 +184,10 @@ export class Table extends pulumi.CustomResource {
      */
     public readonly materializedView!: pulumi.Output<outputs.bigquery.TableMaterializedView | undefined>;
     /**
+     * The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+     */
+    public readonly maxStaleness!: pulumi.Output<string | undefined>;
+    /**
      * The size of this table in bytes, excluding any data in the streaming buffer.
      */
     public /*out*/ readonly numBytes!: pulumi.Output<number>;
@@ -271,6 +275,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["lastModifiedTime"] = state ? state.lastModifiedTime : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["materializedView"] = state ? state.materializedView : undefined;
+            resourceInputs["maxStaleness"] = state ? state.maxStaleness : undefined;
             resourceInputs["numBytes"] = state ? state.numBytes : undefined;
             resourceInputs["numLongTermBytes"] = state ? state.numLongTermBytes : undefined;
             resourceInputs["numRows"] = state ? state.numRows : undefined;
@@ -300,6 +305,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["friendlyName"] = args ? args.friendlyName : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["materializedView"] = args ? args.materializedView : undefined;
+            resourceInputs["maxStaleness"] = args ? args.maxStaleness : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["rangePartitioning"] = args ? args.rangePartitioning : undefined;
             resourceInputs["schema"] = args ? args.schema : undefined;
@@ -394,6 +400,10 @@ export interface TableState {
      * Structure is documented below.
      */
     materializedView?: pulumi.Input<inputs.bigquery.TableMaterializedView>;
+    /**
+     * The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+     */
+    maxStaleness?: pulumi.Input<string>;
     /**
      * The size of this table in bytes, excluding any data in the streaming buffer.
      */
@@ -513,6 +523,10 @@ export interface TableArgs {
      * Structure is documented below.
      */
     materializedView?: pulumi.Input<inputs.bigquery.TableMaterializedView>;
+    /**
+     * The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+     */
+    maxStaleness?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.

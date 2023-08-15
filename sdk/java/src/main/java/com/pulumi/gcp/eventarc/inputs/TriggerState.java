@@ -96,6 +96,21 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
+     * 
+     */
+    @Import(name="eventDataContentType")
+    private @Nullable Output<String> eventDataContentType;
+
+    /**
+     * @return Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
+     * 
+     */
+    public Optional<Output<String>> eventDataContentType() {
+        return Optional.ofNullable(this.eventDataContentType);
+    }
+
+    /**
      * Optional. User labels attached to the triggers that can be used to group resources.
      * 
      */
@@ -238,6 +253,7 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
         this.createTime = $.createTime;
         this.destination = $.destination;
         this.etag = $.etag;
+        this.eventDataContentType = $.eventDataContentType;
         this.labels = $.labels;
         this.location = $.location;
         this.matchingCriterias = $.matchingCriterias;
@@ -370,6 +386,27 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder etag(String etag) {
             return etag(Output.of(etag));
+        }
+
+        /**
+         * @param eventDataContentType Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder eventDataContentType(@Nullable Output<String> eventDataContentType) {
+            $.eventDataContentType = eventDataContentType;
+            return this;
+        }
+
+        /**
+         * @param eventDataContentType Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder eventDataContentType(String eventDataContentType) {
+            return eventDataContentType(Output.of(eventDataContentType));
         }
 
         /**

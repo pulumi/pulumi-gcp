@@ -25,6 +25,18 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
         }
 
         /// <summary>
+        /// (Beta only) Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
+        /// </summary>
+        [Input("postdeploy")]
+        public Input<Inputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgs>? Postdeploy { get; set; }
+
+        /// <summary>
+        /// (Beta only) Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job will not be present.
+        /// </summary>
+        [Input("predeploy")]
+        public Input<Inputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgs>? Predeploy { get; set; }
+
+        /// <summary>
         /// Whether to run verify tests after each percentage deployment.
         /// </summary>
         [Input("verify")]

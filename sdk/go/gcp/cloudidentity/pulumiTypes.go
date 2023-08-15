@@ -726,9 +726,10 @@ type GetGroupMembershipsMembership struct {
 	// EntityKey of the member.  Structure is documented below.
 	PreferredMemberKeys []GetGroupMembershipsMembershipPreferredMemberKey `pulumi:"preferredMemberKeys"`
 	// The MembershipRoles that apply to the Membership. Structure is documented below.
-	Roles      []GetGroupMembershipsMembershipRole `pulumi:"roles"`
-	Type       string                              `pulumi:"type"`
-	UpdateTime string                              `pulumi:"updateTime"`
+	Roles []GetGroupMembershipsMembershipRole `pulumi:"roles"`
+	// The type of the membership.
+	Type       string `pulumi:"type"`
+	UpdateTime string `pulumi:"updateTime"`
 }
 
 // GetGroupMembershipsMembershipInput is an input type that accepts GetGroupMembershipsMembershipArgs and GetGroupMembershipsMembershipOutput values.
@@ -753,9 +754,10 @@ type GetGroupMembershipsMembershipArgs struct {
 	// EntityKey of the member.  Structure is documented below.
 	PreferredMemberKeys GetGroupMembershipsMembershipPreferredMemberKeyArrayInput `pulumi:"preferredMemberKeys"`
 	// The MembershipRoles that apply to the Membership. Structure is documented below.
-	Roles      GetGroupMembershipsMembershipRoleArrayInput `pulumi:"roles"`
-	Type       pulumi.StringInput                          `pulumi:"type"`
-	UpdateTime pulumi.StringInput                          `pulumi:"updateTime"`
+	Roles GetGroupMembershipsMembershipRoleArrayInput `pulumi:"roles"`
+	// The type of the membership.
+	Type       pulumi.StringInput `pulumi:"type"`
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
 }
 
 func (GetGroupMembershipsMembershipArgs) ElementType() reflect.Type {
@@ -840,6 +842,7 @@ func (o GetGroupMembershipsMembershipOutput) Roles() GetGroupMembershipsMembersh
 	return o.ApplyT(func(v GetGroupMembershipsMembership) []GetGroupMembershipsMembershipRole { return v.Roles }).(GetGroupMembershipsMembershipRoleArrayOutput)
 }
 
+// The type of the membership.
 func (o GetGroupMembershipsMembershipOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupMembershipsMembership) string { return v.Type }).(pulumi.StringOutput)
 }

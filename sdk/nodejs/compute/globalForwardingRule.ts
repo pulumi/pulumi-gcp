@@ -260,7 +260,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      * For more information about forwarding rules, refer to
      * [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
      * Default value is `EXTERNAL`.
-     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
      */
     public readonly loadBalancingScheme!: pulumi.Output<string | undefined>;
     /**
@@ -351,6 +351,15 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      */
     public readonly sourceIpRanges!: pulumi.Output<string[] | undefined>;
     /**
+     * This field identifies the subnetwork that the load balanced IP should
+     * belong to for this Forwarding Rule, used in internal load balancing and
+     * network load balancing with IPv6.
+     * If the network specified is in auto subnet mode, this field is optional.
+     * However, a subnetwork must be specified if the network is in custom subnet
+     * mode or when creating external forwarding rule with IPv6.
+     */
+    public readonly subnetwork!: pulumi.Output<string>;
+    /**
      * The URL of the target resource to receive the matched traffic.  For
      * regional forwarding rules, this target must be in the same region as the
      * forwarding rule. For global forwarding rules, this target must be a global
@@ -400,6 +409,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
             resourceInputs["pscConnectionStatus"] = state ? state.pscConnectionStatus : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["sourceIpRanges"] = state ? state.sourceIpRanges : undefined;
+            resourceInputs["subnetwork"] = state ? state.subnetwork : undefined;
             resourceInputs["target"] = state ? state.target : undefined;
         } else {
             const args = argsOrState as GlobalForwardingRuleArgs | undefined;
@@ -420,6 +430,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
             resourceInputs["portRange"] = args ? args.portRange : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["sourceIpRanges"] = args ? args.sourceIpRanges : undefined;
+            resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
             resourceInputs["target"] = args ? args.target : undefined;
             resourceInputs["baseForwardingRule"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
@@ -516,7 +527,7 @@ export interface GlobalForwardingRuleState {
      * For more information about forwarding rules, refer to
      * [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
      * Default value is `EXTERNAL`.
-     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
      */
     loadBalancingScheme?: pulumi.Input<string>;
     /**
@@ -606,6 +617,15 @@ export interface GlobalForwardingRuleState {
      * If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
      */
     sourceIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * This field identifies the subnetwork that the load balanced IP should
+     * belong to for this Forwarding Rule, used in internal load balancing and
+     * network load balancing with IPv6.
+     * If the network specified is in auto subnet mode, this field is optional.
+     * However, a subnetwork must be specified if the network is in custom subnet
+     * mode or when creating external forwarding rule with IPv6.
+     */
+    subnetwork?: pulumi.Input<string>;
     /**
      * The URL of the target resource to receive the matched traffic.  For
      * regional forwarding rules, this target must be in the same region as the
@@ -700,7 +720,7 @@ export interface GlobalForwardingRuleArgs {
      * For more information about forwarding rules, refer to
      * [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
      * Default value is `EXTERNAL`.
-     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+     * Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
      */
     loadBalancingScheme?: pulumi.Input<string>;
     /**
@@ -778,6 +798,15 @@ export interface GlobalForwardingRuleArgs {
      * If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
      */
     sourceIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * This field identifies the subnetwork that the load balanced IP should
+     * belong to for this Forwarding Rule, used in internal load balancing and
+     * network load balancing with IPv6.
+     * If the network specified is in auto subnet mode, this field is optional.
+     * However, a subnetwork must be specified if the network is in custom subnet
+     * mode or when creating external forwarding rule with IPv6.
+     */
+    subnetwork?: pulumi.Input<string>;
     /**
      * The URL of the target resource to receive the matched traffic.  For
      * regional forwarding rules, this target must be in the same region as the

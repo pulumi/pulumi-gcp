@@ -12,6 +12,18 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class ClusterMonitoringConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("advancedDatapathObservabilityConfigs")]
+        private InputList<Inputs.ClusterMonitoringConfigAdvancedDatapathObservabilityConfigGetArgs>? _advancedDatapathObservabilityConfigs;
+
+        /// <summary>
+        /// Configuration for Advanced Datapath Monitoring. Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.ClusterMonitoringConfigAdvancedDatapathObservabilityConfigGetArgs> AdvancedDatapathObservabilityConfigs
+        {
+            get => _advancedDatapathObservabilityConfigs ?? (_advancedDatapathObservabilityConfigs = new InputList<Inputs.ClusterMonitoringConfigAdvancedDatapathObservabilityConfigGetArgs>());
+            set => _advancedDatapathObservabilityConfigs = value;
+        }
+
         [Input("enableComponents")]
         private InputList<string>? _enableComponents;
 

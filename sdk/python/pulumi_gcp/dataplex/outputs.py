@@ -513,18 +513,39 @@ class AssetIamMemberCondition(dict):
 
 @pulumi.output_type
 class AssetResourceSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "readAccessMode":
+            suggest = "read_access_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AssetResourceSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AssetResourceSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AssetResourceSpec.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
-                 name: Optional[str] = None):
+                 name: Optional[str] = None,
+                 read_access_mode: Optional[str] = None):
         """
         :param str type: Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
                
                - - -
         :param str name: Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
+        :param str read_access_mode: Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets. Possible values: DIRECT, MANAGED
         """
         pulumi.set(__self__, "type", type)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if read_access_mode is not None:
+            pulumi.set(__self__, "read_access_mode", read_access_mode)
 
     @property
     @pulumi.getter
@@ -543,6 +564,14 @@ class AssetResourceSpec(dict):
         Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="readAccessMode")
+    def read_access_mode(self) -> Optional[str]:
+        """
+        Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets. Possible values: DIRECT, MANAGED
+        """
+        return pulumi.get(self, "read_access_mode")
 
 
 @pulumi.output_type

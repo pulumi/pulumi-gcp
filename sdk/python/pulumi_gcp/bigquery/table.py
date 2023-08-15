@@ -27,6 +27,7 @@ class TableArgs:
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  materialized_view: Optional[pulumi.Input['TableMaterializedViewArgs']] = None,
+                 max_staleness: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  range_partitioning: Optional[pulumi.Input['TableRangePartitioningArgs']] = None,
                  schema: Optional[pulumi.Input[str]] = None,
@@ -59,6 +60,7 @@ class TableArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A mapping of labels to assign to the resource.
         :param pulumi.Input['TableMaterializedViewArgs'] materialized_view: If specified, configures this table as a materialized view.
                Structure is documented below.
+        :param pulumi.Input[str] max_staleness: The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input['TableRangePartitioningArgs'] range_partitioning: If specified, configures range-based
@@ -99,6 +101,8 @@ class TableArgs:
             pulumi.set(__self__, "labels", labels)
         if materialized_view is not None:
             pulumi.set(__self__, "materialized_view", materialized_view)
+        if max_staleness is not None:
+            pulumi.set(__self__, "max_staleness", max_staleness)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if range_partitioning is not None:
@@ -257,6 +261,18 @@ class TableArgs:
         pulumi.set(self, "materialized_view", value)
 
     @property
+    @pulumi.getter(name="maxStaleness")
+    def max_staleness(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+        """
+        return pulumi.get(self, "max_staleness")
+
+    @max_staleness.setter
+    def max_staleness(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_staleness", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
@@ -348,6 +364,7 @@ class _TableState:
                  last_modified_time: Optional[pulumi.Input[int]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  materialized_view: Optional[pulumi.Input['TableMaterializedViewArgs']] = None,
+                 max_staleness: Optional[pulumi.Input[str]] = None,
                  num_bytes: Optional[pulumi.Input[int]] = None,
                  num_long_term_bytes: Optional[pulumi.Input[int]] = None,
                  num_rows: Optional[pulumi.Input[int]] = None,
@@ -388,6 +405,7 @@ class _TableState:
         :param pulumi.Input[str] location: The geographic location where the table resides. This value is inherited from the dataset.
         :param pulumi.Input['TableMaterializedViewArgs'] materialized_view: If specified, configures this table as a materialized view.
                Structure is documented below.
+        :param pulumi.Input[str] max_staleness: The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
         :param pulumi.Input[int] num_bytes: The size of this table in bytes, excluding any data in the streaming buffer.
         :param pulumi.Input[int] num_long_term_bytes: The number of bytes in the table that are considered "long-term storage".
         :param pulumi.Input[int] num_rows: The number of rows of data in this table, excluding any data in the streaming buffer.
@@ -444,6 +462,8 @@ class _TableState:
             pulumi.set(__self__, "location", location)
         if materialized_view is not None:
             pulumi.set(__self__, "materialized_view", materialized_view)
+        if max_staleness is not None:
+            pulumi.set(__self__, "max_staleness", max_staleness)
         if num_bytes is not None:
             pulumi.set(__self__, "num_bytes", num_bytes)
         if num_long_term_bytes is not None:
@@ -649,6 +669,18 @@ class _TableState:
         pulumi.set(self, "materialized_view", value)
 
     @property
+    @pulumi.getter(name="maxStaleness")
+    def max_staleness(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+        """
+        return pulumi.get(self, "max_staleness")
+
+    @max_staleness.setter
+    def max_staleness(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_staleness", value)
+
+    @property
     @pulumi.getter(name="numBytes")
     def num_bytes(self) -> Optional[pulumi.Input[int]]:
         """
@@ -812,6 +844,7 @@ class Table(pulumi.CustomResource):
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  materialized_view: Optional[pulumi.Input[pulumi.InputType['TableMaterializedViewArgs']]] = None,
+                 max_staleness: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  range_partitioning: Optional[pulumi.Input[pulumi.InputType['TableRangePartitioningArgs']]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
@@ -921,6 +954,7 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A mapping of labels to assign to the resource.
         :param pulumi.Input[pulumi.InputType['TableMaterializedViewArgs']] materialized_view: If specified, configures this table as a materialized view.
                Structure is documented below.
+        :param pulumi.Input[str] max_staleness: The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['TableRangePartitioningArgs']] range_partitioning: If specified, configures range-based
@@ -1051,6 +1085,7 @@ class Table(pulumi.CustomResource):
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  materialized_view: Optional[pulumi.Input[pulumi.InputType['TableMaterializedViewArgs']]] = None,
+                 max_staleness: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  range_partitioning: Optional[pulumi.Input[pulumi.InputType['TableRangePartitioningArgs']]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
@@ -1078,6 +1113,7 @@ class Table(pulumi.CustomResource):
             __props__.__dict__["friendly_name"] = friendly_name
             __props__.__dict__["labels"] = labels
             __props__.__dict__["materialized_view"] = materialized_view
+            __props__.__dict__["max_staleness"] = max_staleness
             __props__.__dict__["project"] = project
             __props__.__dict__["range_partitioning"] = range_partitioning
             __props__.__dict__["schema"] = schema
@@ -1119,6 +1155,7 @@ class Table(pulumi.CustomResource):
             last_modified_time: Optional[pulumi.Input[int]] = None,
             location: Optional[pulumi.Input[str]] = None,
             materialized_view: Optional[pulumi.Input[pulumi.InputType['TableMaterializedViewArgs']]] = None,
+            max_staleness: Optional[pulumi.Input[str]] = None,
             num_bytes: Optional[pulumi.Input[int]] = None,
             num_long_term_bytes: Optional[pulumi.Input[int]] = None,
             num_rows: Optional[pulumi.Input[int]] = None,
@@ -1164,6 +1201,7 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[str] location: The geographic location where the table resides. This value is inherited from the dataset.
         :param pulumi.Input[pulumi.InputType['TableMaterializedViewArgs']] materialized_view: If specified, configures this table as a materialized view.
                Structure is documented below.
+        :param pulumi.Input[str] max_staleness: The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
         :param pulumi.Input[int] num_bytes: The size of this table in bytes, excluding any data in the streaming buffer.
         :param pulumi.Input[int] num_long_term_bytes: The number of bytes in the table that are considered "long-term storage".
         :param pulumi.Input[int] num_rows: The number of rows of data in this table, excluding any data in the streaming buffer.
@@ -1210,6 +1248,7 @@ class Table(pulumi.CustomResource):
         __props__.__dict__["last_modified_time"] = last_modified_time
         __props__.__dict__["location"] = location
         __props__.__dict__["materialized_view"] = materialized_view
+        __props__.__dict__["max_staleness"] = max_staleness
         __props__.__dict__["num_bytes"] = num_bytes
         __props__.__dict__["num_long_term_bytes"] = num_long_term_bytes
         __props__.__dict__["num_rows"] = num_rows
@@ -1347,6 +1386,14 @@ class Table(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "materialized_view")
+
+    @property
+    @pulumi.getter(name="maxStaleness")
+    def max_staleness(self) -> pulumi.Output[Optional[str]]:
+        """
+        The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+        """
+        return pulumi.get(self, "max_staleness")
 
     @property
     @pulumi.getter(name="numBytes")

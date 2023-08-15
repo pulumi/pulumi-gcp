@@ -29,6 +29,7 @@ public final class GetForwardingRuleResult {
     private String id;
     private String ipAddress;
     private String ipProtocol;
+    private String ipVersion;
     private Boolean isMirroringCollector;
     private String labelFingerprint;
     private Map<String,String> labels;
@@ -85,6 +86,9 @@ public final class GetForwardingRuleResult {
     }
     public String ipProtocol() {
         return this.ipProtocol;
+    }
+    public String ipVersion() {
+        return this.ipVersion;
     }
     public Boolean isMirroringCollector() {
         return this.isMirroringCollector;
@@ -169,6 +173,7 @@ public final class GetForwardingRuleResult {
         private String id;
         private String ipAddress;
         private String ipProtocol;
+        private String ipVersion;
         private Boolean isMirroringCollector;
         private String labelFingerprint;
         private Map<String,String> labels;
@@ -203,6 +208,7 @@ public final class GetForwardingRuleResult {
     	      this.id = defaults.id;
     	      this.ipAddress = defaults.ipAddress;
     	      this.ipProtocol = defaults.ipProtocol;
+    	      this.ipVersion = defaults.ipVersion;
     	      this.isMirroringCollector = defaults.isMirroringCollector;
     	      this.labelFingerprint = defaults.labelFingerprint;
     	      this.labels = defaults.labels;
@@ -274,6 +280,11 @@ public final class GetForwardingRuleResult {
         @CustomType.Setter
         public Builder ipProtocol(String ipProtocol) {
             this.ipProtocol = Objects.requireNonNull(ipProtocol);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ipVersion(String ipVersion) {
+            this.ipVersion = Objects.requireNonNull(ipVersion);
             return this;
         }
         @CustomType.Setter
@@ -402,6 +413,7 @@ public final class GetForwardingRuleResult {
             o.id = id;
             o.ipAddress = ipAddress;
             o.ipProtocol = ipProtocol;
+            o.ipVersion = ipVersion;
             o.isMirroringCollector = isMirroringCollector;
             o.labelFingerprint = labelFingerprint;
             o.labels = labels;

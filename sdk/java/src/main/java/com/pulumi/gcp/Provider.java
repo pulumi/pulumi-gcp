@@ -298,6 +298,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> containerCustomEndpoint() {
         return Codegen.optional(this.containerCustomEndpoint);
     }
+    @Export(name="coreBillingCustomEndpoint", type=String.class, parameters={})
+    private Output</* @Nullable */ String> coreBillingCustomEndpoint;
+
+    public Output<Optional<String>> coreBillingCustomEndpoint() {
+        return Codegen.optional(this.coreBillingCustomEndpoint);
+    }
     @Export(name="credentials", type=String.class, parameters={})
     private Output</* @Nullable */ String> credentials;
 

@@ -62,6 +62,7 @@ class ProviderArgs:
                  container_aws_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  container_azure_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  container_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 core_billing_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  credentials: Optional[pulumi.Input[str]] = None,
                  data_catalog_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  data_fusion_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -256,6 +257,8 @@ class ProviderArgs:
             pulumi.set(__self__, "container_azure_custom_endpoint", container_azure_custom_endpoint)
         if container_custom_endpoint is not None:
             pulumi.set(__self__, "container_custom_endpoint", container_custom_endpoint)
+        if core_billing_custom_endpoint is not None:
+            pulumi.set(__self__, "core_billing_custom_endpoint", core_billing_custom_endpoint)
         if credentials is not None:
             pulumi.set(__self__, "credentials", credentials)
         if data_catalog_custom_endpoint is not None:
@@ -879,6 +882,15 @@ class ProviderArgs:
     @container_custom_endpoint.setter
     def container_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "container_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="coreBillingCustomEndpoint")
+    def core_billing_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "core_billing_custom_endpoint")
+
+    @core_billing_custom_endpoint.setter
+    def core_billing_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "core_billing_custom_endpoint", value)
 
     @property
     @pulumi.getter
@@ -1806,6 +1818,7 @@ class Provider(pulumi.ProviderResource):
                  container_aws_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  container_azure_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  container_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 core_billing_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  credentials: Optional[pulumi.Input[str]] = None,
                  data_catalog_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  data_fusion_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1987,6 +2000,7 @@ class Provider(pulumi.ProviderResource):
                  container_aws_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  container_azure_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  container_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 core_billing_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  credentials: Optional[pulumi.Input[str]] = None,
                  data_catalog_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  data_fusion_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2140,6 +2154,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["container_aws_custom_endpoint"] = container_aws_custom_endpoint
             __props__.__dict__["container_azure_custom_endpoint"] = container_azure_custom_endpoint
             __props__.__dict__["container_custom_endpoint"] = container_custom_endpoint
+            __props__.__dict__["core_billing_custom_endpoint"] = core_billing_custom_endpoint
             __props__.__dict__["credentials"] = credentials
             __props__.__dict__["data_catalog_custom_endpoint"] = data_catalog_custom_endpoint
             __props__.__dict__["data_fusion_custom_endpoint"] = data_fusion_custom_endpoint
@@ -2478,6 +2493,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="containerCustomEndpoint")
     def container_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "container_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="coreBillingCustomEndpoint")
+    def core_billing_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "core_billing_custom_endpoint")
 
     @property
     @pulumi.getter

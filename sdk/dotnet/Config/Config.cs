@@ -361,6 +361,13 @@ namespace Pulumi.Gcp
             set => _containerCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _coreBillingCustomEndpoint = new __Value<string?>(() => __config.Get("coreBillingCustomEndpoint"));
+        public static string? CoreBillingCustomEndpoint
+        {
+            get => _coreBillingCustomEndpoint.Get();
+            set => _coreBillingCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _credentials = new __Value<string?>(() => __config.Get("credentials"));
         public static string? Credentials
         {

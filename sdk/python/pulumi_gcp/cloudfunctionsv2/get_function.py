@@ -22,7 +22,7 @@ class GetFunctionResult:
     """
     A collection of values returned by getFunction.
     """
-    def __init__(__self__, build_configs=None, description=None, environment=None, event_triggers=None, id=None, labels=None, location=None, name=None, project=None, service_configs=None, state=None, update_time=None, url=None):
+    def __init__(__self__, build_configs=None, description=None, environment=None, event_triggers=None, id=None, kms_key_name=None, labels=None, location=None, name=None, project=None, service_configs=None, state=None, update_time=None, url=None):
         if build_configs and not isinstance(build_configs, list):
             raise TypeError("Expected argument 'build_configs' to be a list")
         pulumi.set(__self__, "build_configs", build_configs)
@@ -38,6 +38,9 @@ class GetFunctionResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if kms_key_name and not isinstance(kms_key_name, str):
+            raise TypeError("Expected argument 'kms_key_name' to be a str")
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
@@ -92,6 +95,11 @@ class GetFunctionResult:
         return pulumi.get(self, "id")
 
     @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> str:
+        return pulumi.get(self, "kms_key_name")
+
+    @property
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         return pulumi.get(self, "labels")
@@ -143,6 +151,7 @@ class AwaitableGetFunctionResult(GetFunctionResult):
             environment=self.environment,
             event_triggers=self.event_triggers,
             id=self.id,
+            kms_key_name=self.kms_key_name,
             labels=self.labels,
             location=self.location,
             name=self.name,
@@ -193,6 +202,7 @@ def get_function(location: Optional[str] = None,
         environment=pulumi.get(__ret__, 'environment'),
         event_triggers=pulumi.get(__ret__, 'event_triggers'),
         id=pulumi.get(__ret__, 'id'),
+        kms_key_name=pulumi.get(__ret__, 'kms_key_name'),
         labels=pulumi.get(__ret__, 'labels'),
         location=pulumi.get(__ret__, 'location'),
         name=pulumi.get(__ret__, 'name'),

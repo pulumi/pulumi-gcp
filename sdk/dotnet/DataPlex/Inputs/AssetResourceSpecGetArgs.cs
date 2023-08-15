@@ -19,6 +19,12 @@ namespace Pulumi.Gcp.DataPlex.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets. Possible values: DIRECT, MANAGED
+        /// </summary>
+        [Input("readAccessMode")]
+        public Input<string>? ReadAccessMode { get; set; }
+
+        /// <summary>
         /// Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
         /// 
         /// - - -

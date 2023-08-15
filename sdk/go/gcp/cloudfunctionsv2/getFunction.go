@@ -72,6 +72,7 @@ type LookupFunctionResult struct {
 	EventTriggers []GetFunctionEventTrigger `pulumi:"eventTriggers"`
 	// The provider-assigned unique ID for this managed resource.
 	Id             string                     `pulumi:"id"`
+	KmsKeyName     string                     `pulumi:"kmsKeyName"`
 	Labels         map[string]string          `pulumi:"labels"`
 	Location       string                     `pulumi:"location"`
 	Name           string                     `pulumi:"name"`
@@ -146,6 +147,10 @@ func (o LookupFunctionResultOutput) EventTriggers() GetFunctionEventTriggerArray
 // The provider-assigned unique ID for this managed resource.
 func (o LookupFunctionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFunctionResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupFunctionResultOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFunctionResult) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
 
 func (o LookupFunctionResultOutput) Labels() pulumi.StringMapOutput {

@@ -18,6 +18,7 @@ class SecretArgs:
     def __init__(__self__, *,
                  replication: pulumi.Input['SecretReplicationArgs'],
                  secret_id: pulumi.Input[str],
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -30,6 +31,16 @@ class SecretArgs:
                after the Secret has been created.
                Structure is documented below.
         :param pulumi.Input[str] secret_id: This must be unique within the project.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Custom metadata about the secret.
+               Annotations are distinct from various forms of labels. Annotations exist to allow
+               client tools to store their own state information without requiring a database.
+               Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of
+               maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and
+               may have dashes (-), underscores (_), dots (.), and alphanumerics in between these
+               symbols.
+               The total size of annotation keys and values must be less than 16KiB.
+               An object containing a list of "key": value pairs. Example:
+               { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] expire_time: Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels assigned to this Secret.
@@ -51,6 +62,8 @@ class SecretArgs:
         """
         pulumi.set(__self__, "replication", replication)
         pulumi.set(__self__, "secret_id", secret_id)
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
         if expire_time is not None:
             pulumi.set(__self__, "expire_time", expire_time)
         if labels is not None:
@@ -89,6 +102,27 @@ class SecretArgs:
     @secret_id.setter
     def secret_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "secret_id", value)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Custom metadata about the secret.
+        Annotations are distinct from various forms of labels. Annotations exist to allow
+        client tools to store their own state information without requiring a database.
+        Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of
+        maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and
+        may have dashes (-), underscores (_), dots (.), and alphanumerics in between these
+        symbols.
+        The total size of annotation keys and values must be less than 16KiB.
+        An object containing a list of "key": value pairs. Example:
+        { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        """
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "annotations", value)
 
     @property
     @pulumi.getter(name="expireTime")
@@ -178,6 +212,7 @@ class SecretArgs:
 @pulumi.input_type
 class _SecretState:
     def __init__(__self__, *,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -190,6 +225,16 @@ class _SecretState:
                  ttl: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Secret resources.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Custom metadata about the secret.
+               Annotations are distinct from various forms of labels. Annotations exist to allow
+               client tools to store their own state information without requiring a database.
+               Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of
+               maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and
+               may have dashes (-), underscores (_), dots (.), and alphanumerics in between these
+               symbols.
+               The total size of annotation keys and values must be less than 16KiB.
+               An object containing a list of "key": value pairs. Example:
+               { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] create_time: The time at which the Secret was created.
         :param pulumi.Input[str] expire_time: Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -216,6 +261,8 @@ class _SecretState:
         :param pulumi.Input[str] ttl: The TTL for the Secret.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         """
+        if annotations is not None:
+            pulumi.set(__self__, "annotations", annotations)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if expire_time is not None:
@@ -236,6 +283,27 @@ class _SecretState:
             pulumi.set(__self__, "topics", topics)
         if ttl is not None:
             pulumi.set(__self__, "ttl", ttl)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Custom metadata about the secret.
+        Annotations are distinct from various forms of labels. Annotations exist to allow
+        client tools to store their own state information without requiring a database.
+        Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of
+        maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and
+        may have dashes (-), underscores (_), dots (.), and alphanumerics in between these
+        symbols.
+        The total size of annotation keys and values must be less than 16KiB.
+        An object containing a list of "key": value pairs. Example:
+        { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        """
+        return pulumi.get(self, "annotations")
+
+    @annotations.setter
+    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "annotations", value)
 
     @property
     @pulumi.getter(name="createTime")
@@ -378,6 +446,7 @@ class Secret(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -419,6 +488,28 @@ class Secret(pulumi.CustomResource):
             ),
             secret_id="secret")
         ```
+        ### Secret With Annotations
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        secret_with_annotations = gcp.secretmanager.Secret("secret-with-annotations",
+            annotations={
+                "key1": "someval",
+                "key2": "someval2",
+                "key3": "someval3",
+                "key4": "someval4",
+                "key5": "someval5",
+            },
+            labels={
+                "label": "my-label",
+            },
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                automatic=True,
+            ),
+            secret_id="secret")
+        ```
 
         ## Import
 
@@ -438,6 +529,16 @@ class Secret(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Custom metadata about the secret.
+               Annotations are distinct from various forms of labels. Annotations exist to allow
+               client tools to store their own state information without requiring a database.
+               Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of
+               maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and
+               may have dashes (-), underscores (_), dots (.), and alphanumerics in between these
+               symbols.
+               The total size of annotation keys and values must be less than 16KiB.
+               An object containing a list of "key": value pairs. Example:
+               { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] expire_time: Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels assigned to this Secret.
@@ -499,6 +600,28 @@ class Secret(pulumi.CustomResource):
             ),
             secret_id="secret")
         ```
+        ### Secret With Annotations
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        secret_with_annotations = gcp.secretmanager.Secret("secret-with-annotations",
+            annotations={
+                "key1": "someval",
+                "key2": "someval2",
+                "key3": "someval3",
+                "key4": "someval4",
+                "key5": "someval5",
+            },
+            labels={
+                "label": "my-label",
+            },
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                automatic=True,
+            ),
+            secret_id="secret")
+        ```
 
         ## Import
 
@@ -531,6 +654,7 @@ class Secret(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -548,6 +672,7 @@ class Secret(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SecretArgs.__new__(SecretArgs)
 
+            __props__.__dict__["annotations"] = annotations
             __props__.__dict__["expire_time"] = expire_time
             __props__.__dict__["labels"] = labels
             __props__.__dict__["project"] = project
@@ -572,6 +697,7 @@ class Secret(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             expire_time: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -589,6 +715,16 @@ class Secret(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Custom metadata about the secret.
+               Annotations are distinct from various forms of labels. Annotations exist to allow
+               client tools to store their own state information without requiring a database.
+               Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of
+               maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and
+               may have dashes (-), underscores (_), dots (.), and alphanumerics in between these
+               symbols.
+               The total size of annotation keys and values must be less than 16KiB.
+               An object containing a list of "key": value pairs. Example:
+               { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] create_time: The time at which the Secret was created.
         :param pulumi.Input[str] expire_time: Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -619,6 +755,7 @@ class Secret(pulumi.CustomResource):
 
         __props__ = _SecretState.__new__(_SecretState)
 
+        __props__.__dict__["annotations"] = annotations
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["expire_time"] = expire_time
         __props__.__dict__["labels"] = labels
@@ -630,6 +767,23 @@ class Secret(pulumi.CustomResource):
         __props__.__dict__["topics"] = topics
         __props__.__dict__["ttl"] = ttl
         return Secret(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        Custom metadata about the secret.
+        Annotations are distinct from various forms of labels. Annotations exist to allow
+        client tools to store their own state information without requiring a database.
+        Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of
+        maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and
+        may have dashes (-), underscores (_), dots (.), and alphanumerics in between these
+        symbols.
+        The total size of annotation keys and values must be less than 16KiB.
+        An object containing a list of "key": value pairs. Example:
+        { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        """
+        return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter(name="createTime")

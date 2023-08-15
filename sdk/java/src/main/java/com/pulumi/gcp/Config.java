@@ -155,6 +155,9 @@ public final class Config {
     public Optional<String> containerCustomEndpoint() {
         return Codegen.stringProp("containerCustomEndpoint").config(config).get();
     }
+    public Optional<String> coreBillingCustomEndpoint() {
+        return Codegen.stringProp("coreBillingCustomEndpoint").config(config).get();
+    }
     public Optional<String> credentials() {
         return Codegen.stringProp("credentials").config(config).get();
     }

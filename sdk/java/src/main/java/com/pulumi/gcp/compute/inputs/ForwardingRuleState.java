@@ -24,13 +24,14 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
      * * If `IPProtocol` is one of TCP, UDP, or SCTP.
      * * By internal TCP/UDP load balancers, backend service-based network load
      *   balancers, and internal and external protocol forwarding.
-     * 
-     * Set this field to true to allow packets addressed to any port or packets
-     * lacking destination port information (for example, UDP fragments after the
-     * first fragment) to be forwarded to the backends configured with this
-     * forwarding rule.
-     * The `ports`, `port_range`, and
-     * `allPorts` fields are mutually exclusive.
+     *   This option should be set to TRUE when the Forwarding Rule
+     *   IPProtocol is set to L3_DEFAULT.
+     *   Set this field to true to allow packets addressed to any port or packets
+     *   lacking destination port information (for example, UDP fragments after the
+     *   first fragment) to be forwarded to the backends configured with this
+     *   forwarding rule.
+     *   The `ports`, `port_range`, and
+     *   `allPorts` fields are mutually exclusive.
      * 
      */
     @Import(name="allPorts")
@@ -41,13 +42,14 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
      * * If `IPProtocol` is one of TCP, UDP, or SCTP.
      * * By internal TCP/UDP load balancers, backend service-based network load
      *   balancers, and internal and external protocol forwarding.
-     * 
-     * Set this field to true to allow packets addressed to any port or packets
-     * lacking destination port information (for example, UDP fragments after the
-     * first fragment) to be forwarded to the backends configured with this
-     * forwarding rule.
-     * The `ports`, `port_range`, and
-     * `allPorts` fields are mutually exclusive.
+     *   This option should be set to TRUE when the Forwarding Rule
+     *   IPProtocol is set to L3_DEFAULT.
+     *   Set this field to true to allow packets addressed to any port or packets
+     *   lacking destination port information (for example, UDP fragments after the
+     *   first fragment) to be forwarded to the backends configured with this
+     *   forwarding rule.
+     *   The `ports`, `port_range`, and
+     *   `allPorts` fields are mutually exclusive.
      * 
      */
     public Optional<Output<Boolean>> allPorts() {
@@ -250,6 +252,9 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
      * The valid IP protocols are different for different load balancing products
      * as described in [Load balancing
      * features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
+     * A Forwarding Rule with protocol L3_DEFAULT can attach with target instance or
+     * backend service with UNSPECIFIED protocol.
+     * A forwarding rule with &#34;L3_DEFAULT&#34; IPProtocal cannot be attached to a backend service with TCP or UDP.
      * Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, `L3_DEFAULT`.
      * 
      */
@@ -265,11 +270,35 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
      * The valid IP protocols are different for different load balancing products
      * as described in [Load balancing
      * features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
+     * A Forwarding Rule with protocol L3_DEFAULT can attach with target instance or
+     * backend service with UNSPECIFIED protocol.
+     * A forwarding rule with &#34;L3_DEFAULT&#34; IPProtocal cannot be attached to a backend service with TCP or UDP.
      * Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, `L3_DEFAULT`.
      * 
      */
     public Optional<Output<String>> ipProtocol() {
         return Optional.ofNullable(this.ipProtocol);
+    }
+
+    /**
+     * The IP address version that will be used by this forwarding rule.
+     * Valid options are IPV4 and IPV6.
+     * If not set, the IPv4 address will be used by default.
+     * Possible values are: `IPV4`, `IPV6`.
+     * 
+     */
+    @Import(name="ipVersion")
+    private @Nullable Output<String> ipVersion;
+
+    /**
+     * @return The IP address version that will be used by this forwarding rule.
+     * Valid options are IPV4 and IPV6.
+     * If not set, the IPv4 address will be used by default.
+     * Possible values are: `IPV4`, `IPV6`.
+     * 
+     */
+    public Optional<Output<String>> ipVersion() {
+        return Optional.ofNullable(this.ipVersion);
     }
 
     /**
@@ -521,7 +550,7 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
      * This field can only be used:
      * * If `IPProtocol` is one of TCP, UDP, or SCTP.
      * * By internal TCP/UDP load balancers, backend service-based network load
-     *   balancers, and internal protocol forwarding.
+     *   balancers, internal protocol forwarding and when protocol is not L3_DEFAULT.
      * 
      * You can specify a list of up to five ports by number, separated by commas.
      * The ports can be contiguous or discontiguous. Only packets addressed to
@@ -543,7 +572,7 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
      * @return This field can only be used:
      * * If `IPProtocol` is one of TCP, UDP, or SCTP.
      * * By internal TCP/UDP load balancers, backend service-based network load
-     *   balancers, and internal protocol forwarding.
+     *   balancers, internal protocol forwarding and when protocol is not L3_DEFAULT.
      * 
      * You can specify a list of up to five ports by number, separated by commas.
      * The ports can be contiguous or discontiguous. Only packets addressed to
@@ -797,6 +826,7 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
         this.description = $.description;
         this.ipAddress = $.ipAddress;
         this.ipProtocol = $.ipProtocol;
+        this.ipVersion = $.ipVersion;
         this.isMirroringCollector = $.isMirroringCollector;
         this.labelFingerprint = $.labelFingerprint;
         this.labels = $.labels;
@@ -843,13 +873,14 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
          * * If `IPProtocol` is one of TCP, UDP, or SCTP.
          * * By internal TCP/UDP load balancers, backend service-based network load
          *   balancers, and internal and external protocol forwarding.
-         * 
-         * Set this field to true to allow packets addressed to any port or packets
-         * lacking destination port information (for example, UDP fragments after the
-         * first fragment) to be forwarded to the backends configured with this
-         * forwarding rule.
-         * The `ports`, `port_range`, and
-         * `allPorts` fields are mutually exclusive.
+         *   This option should be set to TRUE when the Forwarding Rule
+         *   IPProtocol is set to L3_DEFAULT.
+         *   Set this field to true to allow packets addressed to any port or packets
+         *   lacking destination port information (for example, UDP fragments after the
+         *   first fragment) to be forwarded to the backends configured with this
+         *   forwarding rule.
+         *   The `ports`, `port_range`, and
+         *   `allPorts` fields are mutually exclusive.
          * 
          * @return builder
          * 
@@ -864,13 +895,14 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
          * * If `IPProtocol` is one of TCP, UDP, or SCTP.
          * * By internal TCP/UDP load balancers, backend service-based network load
          *   balancers, and internal and external protocol forwarding.
-         * 
-         * Set this field to true to allow packets addressed to any port or packets
-         * lacking destination port information (for example, UDP fragments after the
-         * first fragment) to be forwarded to the backends configured with this
-         * forwarding rule.
-         * The `ports`, `port_range`, and
-         * `allPorts` fields are mutually exclusive.
+         *   This option should be set to TRUE when the Forwarding Rule
+         *   IPProtocol is set to L3_DEFAULT.
+         *   Set this field to true to allow packets addressed to any port or packets
+         *   lacking destination port information (for example, UDP fragments after the
+         *   first fragment) to be forwarded to the backends configured with this
+         *   forwarding rule.
+         *   The `ports`, `port_range`, and
+         *   `allPorts` fields are mutually exclusive.
          * 
          * @return builder
          * 
@@ -1117,6 +1149,9 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
          * The valid IP protocols are different for different load balancing products
          * as described in [Load balancing
          * features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
+         * A Forwarding Rule with protocol L3_DEFAULT can attach with target instance or
+         * backend service with UNSPECIFIED protocol.
+         * A forwarding rule with &#34;L3_DEFAULT&#34; IPProtocal cannot be attached to a backend service with TCP or UDP.
          * Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, `L3_DEFAULT`.
          * 
          * @return builder
@@ -1136,6 +1171,9 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
          * The valid IP protocols are different for different load balancing products
          * as described in [Load balancing
          * features](https://cloud.google.com/load-balancing/docs/features#protocols_from_the_load_balancer_to_the_backends).
+         * A Forwarding Rule with protocol L3_DEFAULT can attach with target instance or
+         * backend service with UNSPECIFIED protocol.
+         * A forwarding rule with &#34;L3_DEFAULT&#34; IPProtocal cannot be attached to a backend service with TCP or UDP.
          * Possible values are: `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, `ICMP`, `L3_DEFAULT`.
          * 
          * @return builder
@@ -1143,6 +1181,33 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
          */
         public Builder ipProtocol(String ipProtocol) {
             return ipProtocol(Output.of(ipProtocol));
+        }
+
+        /**
+         * @param ipVersion The IP address version that will be used by this forwarding rule.
+         * Valid options are IPV4 and IPV6.
+         * If not set, the IPv4 address will be used by default.
+         * Possible values are: `IPV4`, `IPV6`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipVersion(@Nullable Output<String> ipVersion) {
+            $.ipVersion = ipVersion;
+            return this;
+        }
+
+        /**
+         * @param ipVersion The IP address version that will be used by this forwarding rule.
+         * Valid options are IPV4 and IPV6.
+         * If not set, the IPv4 address will be used by default.
+         * Possible values are: `IPV4`, `IPV6`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipVersion(String ipVersion) {
+            return ipVersion(Output.of(ipVersion));
         }
 
         /**
@@ -1448,7 +1513,7 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
          * @param ports This field can only be used:
          * * If `IPProtocol` is one of TCP, UDP, or SCTP.
          * * By internal TCP/UDP load balancers, backend service-based network load
-         *   balancers, and internal protocol forwarding.
+         *   balancers, internal protocol forwarding and when protocol is not L3_DEFAULT.
          * 
          * You can specify a list of up to five ports by number, separated by commas.
          * The ports can be contiguous or discontiguous. Only packets addressed to
@@ -1474,7 +1539,7 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
          * @param ports This field can only be used:
          * * If `IPProtocol` is one of TCP, UDP, or SCTP.
          * * By internal TCP/UDP load balancers, backend service-based network load
-         *   balancers, and internal protocol forwarding.
+         *   balancers, internal protocol forwarding and when protocol is not L3_DEFAULT.
          * 
          * You can specify a list of up to five ports by number, separated by commas.
          * The ports can be contiguous or discontiguous. Only packets addressed to
@@ -1499,7 +1564,7 @@ public final class ForwardingRuleState extends com.pulumi.resources.ResourceArgs
          * @param ports This field can only be used:
          * * If `IPProtocol` is one of TCP, UDP, or SCTP.
          * * By internal TCP/UDP load balancers, backend service-based network load
-         *   balancers, and internal protocol forwarding.
+         *   balancers, internal protocol forwarding and when protocol is not L3_DEFAULT.
          * 
          * You can specify a list of up to five ports by number, separated by commas.
          * The ports can be contiguous or discontiguous. Only packets addressed to

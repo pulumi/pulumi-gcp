@@ -75,6 +75,7 @@ type LookupForwardingRuleResult struct {
 	Id                            string                                          `pulumi:"id"`
 	IpAddress                     string                                          `pulumi:"ipAddress"`
 	IpProtocol                    string                                          `pulumi:"ipProtocol"`
+	IpVersion                     string                                          `pulumi:"ipVersion"`
 	IsMirroringCollector          bool                                            `pulumi:"isMirroringCollector"`
 	LabelFingerprint              string                                          `pulumi:"labelFingerprint"`
 	Labels                        map[string]string                               `pulumi:"labels"`
@@ -183,6 +184,10 @@ func (o LookupForwardingRuleResultOutput) IpAddress() pulumi.StringOutput {
 
 func (o LookupForwardingRuleResultOutput) IpProtocol() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupForwardingRuleResult) string { return v.IpProtocol }).(pulumi.StringOutput)
+}
+
+func (o LookupForwardingRuleResultOutput) IpVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupForwardingRuleResult) string { return v.IpVersion }).(pulumi.StringOutput)
 }
 
 func (o LookupForwardingRuleResultOutput) IsMirroringCollector() pulumi.BoolOutput {

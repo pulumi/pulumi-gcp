@@ -104,6 +104,8 @@ containerAzureCustomEndpoint: Optional[str]
 
 containerCustomEndpoint: Optional[str]
 
+coreBillingCustomEndpoint: Optional[str]
+
 credentials: Optional[str]
 
 dataCatalogCustomEndpoint: Optional[str]

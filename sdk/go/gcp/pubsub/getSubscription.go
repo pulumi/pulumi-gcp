@@ -63,13 +63,14 @@ type LookupSubscriptionArgs struct {
 
 // A collection of values returned by getSubscription.
 type LookupSubscriptionResult struct {
-	AckDeadlineSeconds        int                               `pulumi:"ackDeadlineSeconds"`
-	BigqueryConfigs           []GetSubscriptionBigqueryConfig   `pulumi:"bigqueryConfigs"`
-	DeadLetterPolicies        []GetSubscriptionDeadLetterPolicy `pulumi:"deadLetterPolicies"`
-	EnableExactlyOnceDelivery bool                              `pulumi:"enableExactlyOnceDelivery"`
-	EnableMessageOrdering     bool                              `pulumi:"enableMessageOrdering"`
-	ExpirationPolicies        []GetSubscriptionExpirationPolicy `pulumi:"expirationPolicies"`
-	Filter                    string                            `pulumi:"filter"`
+	AckDeadlineSeconds        int                                 `pulumi:"ackDeadlineSeconds"`
+	BigqueryConfigs           []GetSubscriptionBigqueryConfig     `pulumi:"bigqueryConfigs"`
+	CloudStorageConfigs       []GetSubscriptionCloudStorageConfig `pulumi:"cloudStorageConfigs"`
+	DeadLetterPolicies        []GetSubscriptionDeadLetterPolicy   `pulumi:"deadLetterPolicies"`
+	EnableExactlyOnceDelivery bool                                `pulumi:"enableExactlyOnceDelivery"`
+	EnableMessageOrdering     bool                                `pulumi:"enableMessageOrdering"`
+	ExpirationPolicies        []GetSubscriptionExpirationPolicy   `pulumi:"expirationPolicies"`
+	Filter                    string                              `pulumi:"filter"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                       string                       `pulumi:"id"`
 	Labels                   map[string]string            `pulumi:"labels"`
@@ -131,6 +132,10 @@ func (o LookupSubscriptionResultOutput) AckDeadlineSeconds() pulumi.IntOutput {
 
 func (o LookupSubscriptionResultOutput) BigqueryConfigs() GetSubscriptionBigqueryConfigArrayOutput {
 	return o.ApplyT(func(v LookupSubscriptionResult) []GetSubscriptionBigqueryConfig { return v.BigqueryConfigs }).(GetSubscriptionBigqueryConfigArrayOutput)
+}
+
+func (o LookupSubscriptionResultOutput) CloudStorageConfigs() GetSubscriptionCloudStorageConfigArrayOutput {
+	return o.ApplyT(func(v LookupSubscriptionResult) []GetSubscriptionCloudStorageConfig { return v.CloudStorageConfigs }).(GetSubscriptionCloudStorageConfigArrayOutput)
 }
 
 func (o LookupSubscriptionResultOutput) DeadLetterPolicies() GetSubscriptionDeadLetterPolicyArrayOutput {

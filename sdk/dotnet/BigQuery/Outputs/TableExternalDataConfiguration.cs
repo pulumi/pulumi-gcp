@@ -41,6 +41,12 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// </summary>
         public readonly Outputs.TableExternalDataConfigurationCsvOptions? CsvOptions;
         /// <summary>
+        /// Specifies how source URIs are interpreted for constructing the file set to load.
+        /// By default source URIs are expanded against the underlying storage.
+        /// Other options include specifying manifest files. Only applicable to object storage systems. Docs
+        /// </summary>
+        public readonly string? FileSetSpecType;
+        /// <summary>
         /// Additional options if
         /// `source_format` is set to "GOOGLE_SHEETS". Structure is
         /// documented below.
@@ -128,6 +134,8 @@ namespace Pulumi.Gcp.BigQuery.Outputs
 
             Outputs.TableExternalDataConfigurationCsvOptions? csvOptions,
 
+            string? fileSetSpecType,
+
             Outputs.TableExternalDataConfigurationGoogleSheetsOptions? googleSheetsOptions,
 
             Outputs.TableExternalDataConfigurationHivePartitioningOptions? hivePartitioningOptions,
@@ -157,6 +165,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
             Compression = compression;
             ConnectionId = connectionId;
             CsvOptions = csvOptions;
+            FileSetSpecType = fileSetSpecType;
             GoogleSheetsOptions = googleSheetsOptions;
             HivePartitioningOptions = hivePartitioningOptions;
             IgnoreUnknownValues = ignoreUnknownValues;

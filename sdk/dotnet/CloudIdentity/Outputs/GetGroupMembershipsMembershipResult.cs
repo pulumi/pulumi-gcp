@@ -34,6 +34,9 @@ namespace Pulumi.Gcp.CloudIdentity.Outputs
         /// The MembershipRoles that apply to the Membership. Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGroupMembershipsMembershipRoleResult> Roles;
+        /// <summary>
+        /// The type of the membership.
+        /// </summary>
         public readonly string Type;
         public readonly string UpdateTime;
 

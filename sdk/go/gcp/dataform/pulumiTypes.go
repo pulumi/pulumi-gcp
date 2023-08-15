@@ -211,6 +211,529 @@ func (o RepositoryGitRemoteSettingsPtrOutput) Url() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type RepositoryReleaseConfigCodeCompilationConfig struct {
+	// Optional. The default schema (BigQuery dataset ID) for assertions.
+	AssertionSchema *string `pulumi:"assertionSchema"`
+	// Optional. The suffix that should be appended to all database (Google Cloud project ID) names.
+	DatabaseSuffix *string `pulumi:"databaseSuffix"`
+	// Optional. The default database (Google Cloud project ID).
+	DefaultDatabase *string `pulumi:"defaultDatabase"`
+	// Optional. The default BigQuery location to use. Defaults to "US".
+	// See the BigQuery docs for a full list of locations: https://cloud.google.com/bigquery/docs/locations.
+	DefaultLocation *string `pulumi:"defaultLocation"`
+	// Optional. The default schema (BigQuery dataset ID).
+	DefaultSchema *string `pulumi:"defaultSchema"`
+	// Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
+	SchemaSuffix *string `pulumi:"schemaSuffix"`
+	// Optional. The prefix that should be prepended to all table names.
+	TablePrefix *string `pulumi:"tablePrefix"`
+	// Optional. User-defined variables that are made available to project code during compilation.
+	// An object containing a list of "key": value pairs.
+	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	Vars map[string]string `pulumi:"vars"`
+}
+
+// RepositoryReleaseConfigCodeCompilationConfigInput is an input type that accepts RepositoryReleaseConfigCodeCompilationConfigArgs and RepositoryReleaseConfigCodeCompilationConfigOutput values.
+// You can construct a concrete instance of `RepositoryReleaseConfigCodeCompilationConfigInput` via:
+//
+//	RepositoryReleaseConfigCodeCompilationConfigArgs{...}
+type RepositoryReleaseConfigCodeCompilationConfigInput interface {
+	pulumi.Input
+
+	ToRepositoryReleaseConfigCodeCompilationConfigOutput() RepositoryReleaseConfigCodeCompilationConfigOutput
+	ToRepositoryReleaseConfigCodeCompilationConfigOutputWithContext(context.Context) RepositoryReleaseConfigCodeCompilationConfigOutput
+}
+
+type RepositoryReleaseConfigCodeCompilationConfigArgs struct {
+	// Optional. The default schema (BigQuery dataset ID) for assertions.
+	AssertionSchema pulumi.StringPtrInput `pulumi:"assertionSchema"`
+	// Optional. The suffix that should be appended to all database (Google Cloud project ID) names.
+	DatabaseSuffix pulumi.StringPtrInput `pulumi:"databaseSuffix"`
+	// Optional. The default database (Google Cloud project ID).
+	DefaultDatabase pulumi.StringPtrInput `pulumi:"defaultDatabase"`
+	// Optional. The default BigQuery location to use. Defaults to "US".
+	// See the BigQuery docs for a full list of locations: https://cloud.google.com/bigquery/docs/locations.
+	DefaultLocation pulumi.StringPtrInput `pulumi:"defaultLocation"`
+	// Optional. The default schema (BigQuery dataset ID).
+	DefaultSchema pulumi.StringPtrInput `pulumi:"defaultSchema"`
+	// Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
+	SchemaSuffix pulumi.StringPtrInput `pulumi:"schemaSuffix"`
+	// Optional. The prefix that should be prepended to all table names.
+	TablePrefix pulumi.StringPtrInput `pulumi:"tablePrefix"`
+	// Optional. User-defined variables that are made available to project code during compilation.
+	// An object containing a list of "key": value pairs.
+	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	Vars pulumi.StringMapInput `pulumi:"vars"`
+}
+
+func (RepositoryReleaseConfigCodeCompilationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryReleaseConfigCodeCompilationConfig)(nil)).Elem()
+}
+
+func (i RepositoryReleaseConfigCodeCompilationConfigArgs) ToRepositoryReleaseConfigCodeCompilationConfigOutput() RepositoryReleaseConfigCodeCompilationConfigOutput {
+	return i.ToRepositoryReleaseConfigCodeCompilationConfigOutputWithContext(context.Background())
+}
+
+func (i RepositoryReleaseConfigCodeCompilationConfigArgs) ToRepositoryReleaseConfigCodeCompilationConfigOutputWithContext(ctx context.Context) RepositoryReleaseConfigCodeCompilationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryReleaseConfigCodeCompilationConfigOutput)
+}
+
+func (i RepositoryReleaseConfigCodeCompilationConfigArgs) ToRepositoryReleaseConfigCodeCompilationConfigPtrOutput() RepositoryReleaseConfigCodeCompilationConfigPtrOutput {
+	return i.ToRepositoryReleaseConfigCodeCompilationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RepositoryReleaseConfigCodeCompilationConfigArgs) ToRepositoryReleaseConfigCodeCompilationConfigPtrOutputWithContext(ctx context.Context) RepositoryReleaseConfigCodeCompilationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryReleaseConfigCodeCompilationConfigOutput).ToRepositoryReleaseConfigCodeCompilationConfigPtrOutputWithContext(ctx)
+}
+
+// RepositoryReleaseConfigCodeCompilationConfigPtrInput is an input type that accepts RepositoryReleaseConfigCodeCompilationConfigArgs, RepositoryReleaseConfigCodeCompilationConfigPtr and RepositoryReleaseConfigCodeCompilationConfigPtrOutput values.
+// You can construct a concrete instance of `RepositoryReleaseConfigCodeCompilationConfigPtrInput` via:
+//
+//	        RepositoryReleaseConfigCodeCompilationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type RepositoryReleaseConfigCodeCompilationConfigPtrInput interface {
+	pulumi.Input
+
+	ToRepositoryReleaseConfigCodeCompilationConfigPtrOutput() RepositoryReleaseConfigCodeCompilationConfigPtrOutput
+	ToRepositoryReleaseConfigCodeCompilationConfigPtrOutputWithContext(context.Context) RepositoryReleaseConfigCodeCompilationConfigPtrOutput
+}
+
+type repositoryReleaseConfigCodeCompilationConfigPtrType RepositoryReleaseConfigCodeCompilationConfigArgs
+
+func RepositoryReleaseConfigCodeCompilationConfigPtr(v *RepositoryReleaseConfigCodeCompilationConfigArgs) RepositoryReleaseConfigCodeCompilationConfigPtrInput {
+	return (*repositoryReleaseConfigCodeCompilationConfigPtrType)(v)
+}
+
+func (*repositoryReleaseConfigCodeCompilationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryReleaseConfigCodeCompilationConfig)(nil)).Elem()
+}
+
+func (i *repositoryReleaseConfigCodeCompilationConfigPtrType) ToRepositoryReleaseConfigCodeCompilationConfigPtrOutput() RepositoryReleaseConfigCodeCompilationConfigPtrOutput {
+	return i.ToRepositoryReleaseConfigCodeCompilationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *repositoryReleaseConfigCodeCompilationConfigPtrType) ToRepositoryReleaseConfigCodeCompilationConfigPtrOutputWithContext(ctx context.Context) RepositoryReleaseConfigCodeCompilationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryReleaseConfigCodeCompilationConfigPtrOutput)
+}
+
+type RepositoryReleaseConfigCodeCompilationConfigOutput struct{ *pulumi.OutputState }
+
+func (RepositoryReleaseConfigCodeCompilationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryReleaseConfigCodeCompilationConfig)(nil)).Elem()
+}
+
+func (o RepositoryReleaseConfigCodeCompilationConfigOutput) ToRepositoryReleaseConfigCodeCompilationConfigOutput() RepositoryReleaseConfigCodeCompilationConfigOutput {
+	return o
+}
+
+func (o RepositoryReleaseConfigCodeCompilationConfigOutput) ToRepositoryReleaseConfigCodeCompilationConfigOutputWithContext(ctx context.Context) RepositoryReleaseConfigCodeCompilationConfigOutput {
+	return o
+}
+
+func (o RepositoryReleaseConfigCodeCompilationConfigOutput) ToRepositoryReleaseConfigCodeCompilationConfigPtrOutput() RepositoryReleaseConfigCodeCompilationConfigPtrOutput {
+	return o.ToRepositoryReleaseConfigCodeCompilationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RepositoryReleaseConfigCodeCompilationConfigOutput) ToRepositoryReleaseConfigCodeCompilationConfigPtrOutputWithContext(ctx context.Context) RepositoryReleaseConfigCodeCompilationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryReleaseConfigCodeCompilationConfig) *RepositoryReleaseConfigCodeCompilationConfig {
+		return &v
+	}).(RepositoryReleaseConfigCodeCompilationConfigPtrOutput)
+}
+
+// Optional. The default schema (BigQuery dataset ID) for assertions.
+func (o RepositoryReleaseConfigCodeCompilationConfigOutput) AssertionSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryReleaseConfigCodeCompilationConfig) *string { return v.AssertionSchema }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The suffix that should be appended to all database (Google Cloud project ID) names.
+func (o RepositoryReleaseConfigCodeCompilationConfigOutput) DatabaseSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryReleaseConfigCodeCompilationConfig) *string { return v.DatabaseSuffix }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The default database (Google Cloud project ID).
+func (o RepositoryReleaseConfigCodeCompilationConfigOutput) DefaultDatabase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryReleaseConfigCodeCompilationConfig) *string { return v.DefaultDatabase }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The default BigQuery location to use. Defaults to "US".
+// See the BigQuery docs for a full list of locations: https://cloud.google.com/bigquery/docs/locations.
+func (o RepositoryReleaseConfigCodeCompilationConfigOutput) DefaultLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryReleaseConfigCodeCompilationConfig) *string { return v.DefaultLocation }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The default schema (BigQuery dataset ID).
+func (o RepositoryReleaseConfigCodeCompilationConfigOutput) DefaultSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryReleaseConfigCodeCompilationConfig) *string { return v.DefaultSchema }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
+func (o RepositoryReleaseConfigCodeCompilationConfigOutput) SchemaSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryReleaseConfigCodeCompilationConfig) *string { return v.SchemaSuffix }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The prefix that should be prepended to all table names.
+func (o RepositoryReleaseConfigCodeCompilationConfigOutput) TablePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryReleaseConfigCodeCompilationConfig) *string { return v.TablePrefix }).(pulumi.StringPtrOutput)
+}
+
+// Optional. User-defined variables that are made available to project code during compilation.
+// An object containing a list of "key": value pairs.
+// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+func (o RepositoryReleaseConfigCodeCompilationConfigOutput) Vars() pulumi.StringMapOutput {
+	return o.ApplyT(func(v RepositoryReleaseConfigCodeCompilationConfig) map[string]string { return v.Vars }).(pulumi.StringMapOutput)
+}
+
+type RepositoryReleaseConfigCodeCompilationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RepositoryReleaseConfigCodeCompilationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryReleaseConfigCodeCompilationConfig)(nil)).Elem()
+}
+
+func (o RepositoryReleaseConfigCodeCompilationConfigPtrOutput) ToRepositoryReleaseConfigCodeCompilationConfigPtrOutput() RepositoryReleaseConfigCodeCompilationConfigPtrOutput {
+	return o
+}
+
+func (o RepositoryReleaseConfigCodeCompilationConfigPtrOutput) ToRepositoryReleaseConfigCodeCompilationConfigPtrOutputWithContext(ctx context.Context) RepositoryReleaseConfigCodeCompilationConfigPtrOutput {
+	return o
+}
+
+func (o RepositoryReleaseConfigCodeCompilationConfigPtrOutput) Elem() RepositoryReleaseConfigCodeCompilationConfigOutput {
+	return o.ApplyT(func(v *RepositoryReleaseConfigCodeCompilationConfig) RepositoryReleaseConfigCodeCompilationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RepositoryReleaseConfigCodeCompilationConfig
+		return ret
+	}).(RepositoryReleaseConfigCodeCompilationConfigOutput)
+}
+
+// Optional. The default schema (BigQuery dataset ID) for assertions.
+func (o RepositoryReleaseConfigCodeCompilationConfigPtrOutput) AssertionSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryReleaseConfigCodeCompilationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AssertionSchema
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The suffix that should be appended to all database (Google Cloud project ID) names.
+func (o RepositoryReleaseConfigCodeCompilationConfigPtrOutput) DatabaseSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryReleaseConfigCodeCompilationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DatabaseSuffix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The default database (Google Cloud project ID).
+func (o RepositoryReleaseConfigCodeCompilationConfigPtrOutput) DefaultDatabase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryReleaseConfigCodeCompilationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultDatabase
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The default BigQuery location to use. Defaults to "US".
+// See the BigQuery docs for a full list of locations: https://cloud.google.com/bigquery/docs/locations.
+func (o RepositoryReleaseConfigCodeCompilationConfigPtrOutput) DefaultLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryReleaseConfigCodeCompilationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The default schema (BigQuery dataset ID).
+func (o RepositoryReleaseConfigCodeCompilationConfigPtrOutput) DefaultSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryReleaseConfigCodeCompilationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultSchema
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
+func (o RepositoryReleaseConfigCodeCompilationConfigPtrOutput) SchemaSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryReleaseConfigCodeCompilationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaSuffix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The prefix that should be prepended to all table names.
+func (o RepositoryReleaseConfigCodeCompilationConfigPtrOutput) TablePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryReleaseConfigCodeCompilationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TablePrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. User-defined variables that are made available to project code during compilation.
+// An object containing a list of "key": value pairs.
+// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+func (o RepositoryReleaseConfigCodeCompilationConfigPtrOutput) Vars() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RepositoryReleaseConfigCodeCompilationConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Vars
+	}).(pulumi.StringMapOutput)
+}
+
+type RepositoryReleaseConfigRecentScheduledReleaseRecord struct {
+	// (Output)
+	// The name of the created compilation result, if one was successfully created. Must be in the format projects/*/locations/*/repositories/*/compilationResults/*.
+	CompilationResult *string `pulumi:"compilationResult"`
+	// (Output)
+	// The error status encountered upon this attempt to create the compilation result, if the attempt was unsuccessful.
+	// Structure is documented below.
+	ErrorStatuses []RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus `pulumi:"errorStatuses"`
+	// (Output)
+	// The timestamp of this release attempt.
+	ReleaseTime *string `pulumi:"releaseTime"`
+}
+
+// RepositoryReleaseConfigRecentScheduledReleaseRecordInput is an input type that accepts RepositoryReleaseConfigRecentScheduledReleaseRecordArgs and RepositoryReleaseConfigRecentScheduledReleaseRecordOutput values.
+// You can construct a concrete instance of `RepositoryReleaseConfigRecentScheduledReleaseRecordInput` via:
+//
+//	RepositoryReleaseConfigRecentScheduledReleaseRecordArgs{...}
+type RepositoryReleaseConfigRecentScheduledReleaseRecordInput interface {
+	pulumi.Input
+
+	ToRepositoryReleaseConfigRecentScheduledReleaseRecordOutput() RepositoryReleaseConfigRecentScheduledReleaseRecordOutput
+	ToRepositoryReleaseConfigRecentScheduledReleaseRecordOutputWithContext(context.Context) RepositoryReleaseConfigRecentScheduledReleaseRecordOutput
+}
+
+type RepositoryReleaseConfigRecentScheduledReleaseRecordArgs struct {
+	// (Output)
+	// The name of the created compilation result, if one was successfully created. Must be in the format projects/*/locations/*/repositories/*/compilationResults/*.
+	CompilationResult pulumi.StringPtrInput `pulumi:"compilationResult"`
+	// (Output)
+	// The error status encountered upon this attempt to create the compilation result, if the attempt was unsuccessful.
+	// Structure is documented below.
+	ErrorStatuses RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayInput `pulumi:"errorStatuses"`
+	// (Output)
+	// The timestamp of this release attempt.
+	ReleaseTime pulumi.StringPtrInput `pulumi:"releaseTime"`
+}
+
+func (RepositoryReleaseConfigRecentScheduledReleaseRecordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryReleaseConfigRecentScheduledReleaseRecord)(nil)).Elem()
+}
+
+func (i RepositoryReleaseConfigRecentScheduledReleaseRecordArgs) ToRepositoryReleaseConfigRecentScheduledReleaseRecordOutput() RepositoryReleaseConfigRecentScheduledReleaseRecordOutput {
+	return i.ToRepositoryReleaseConfigRecentScheduledReleaseRecordOutputWithContext(context.Background())
+}
+
+func (i RepositoryReleaseConfigRecentScheduledReleaseRecordArgs) ToRepositoryReleaseConfigRecentScheduledReleaseRecordOutputWithContext(ctx context.Context) RepositoryReleaseConfigRecentScheduledReleaseRecordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryReleaseConfigRecentScheduledReleaseRecordOutput)
+}
+
+// RepositoryReleaseConfigRecentScheduledReleaseRecordArrayInput is an input type that accepts RepositoryReleaseConfigRecentScheduledReleaseRecordArray and RepositoryReleaseConfigRecentScheduledReleaseRecordArrayOutput values.
+// You can construct a concrete instance of `RepositoryReleaseConfigRecentScheduledReleaseRecordArrayInput` via:
+//
+//	RepositoryReleaseConfigRecentScheduledReleaseRecordArray{ RepositoryReleaseConfigRecentScheduledReleaseRecordArgs{...} }
+type RepositoryReleaseConfigRecentScheduledReleaseRecordArrayInput interface {
+	pulumi.Input
+
+	ToRepositoryReleaseConfigRecentScheduledReleaseRecordArrayOutput() RepositoryReleaseConfigRecentScheduledReleaseRecordArrayOutput
+	ToRepositoryReleaseConfigRecentScheduledReleaseRecordArrayOutputWithContext(context.Context) RepositoryReleaseConfigRecentScheduledReleaseRecordArrayOutput
+}
+
+type RepositoryReleaseConfigRecentScheduledReleaseRecordArray []RepositoryReleaseConfigRecentScheduledReleaseRecordInput
+
+func (RepositoryReleaseConfigRecentScheduledReleaseRecordArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RepositoryReleaseConfigRecentScheduledReleaseRecord)(nil)).Elem()
+}
+
+func (i RepositoryReleaseConfigRecentScheduledReleaseRecordArray) ToRepositoryReleaseConfigRecentScheduledReleaseRecordArrayOutput() RepositoryReleaseConfigRecentScheduledReleaseRecordArrayOutput {
+	return i.ToRepositoryReleaseConfigRecentScheduledReleaseRecordArrayOutputWithContext(context.Background())
+}
+
+func (i RepositoryReleaseConfigRecentScheduledReleaseRecordArray) ToRepositoryReleaseConfigRecentScheduledReleaseRecordArrayOutputWithContext(ctx context.Context) RepositoryReleaseConfigRecentScheduledReleaseRecordArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryReleaseConfigRecentScheduledReleaseRecordArrayOutput)
+}
+
+type RepositoryReleaseConfigRecentScheduledReleaseRecordOutput struct{ *pulumi.OutputState }
+
+func (RepositoryReleaseConfigRecentScheduledReleaseRecordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryReleaseConfigRecentScheduledReleaseRecord)(nil)).Elem()
+}
+
+func (o RepositoryReleaseConfigRecentScheduledReleaseRecordOutput) ToRepositoryReleaseConfigRecentScheduledReleaseRecordOutput() RepositoryReleaseConfigRecentScheduledReleaseRecordOutput {
+	return o
+}
+
+func (o RepositoryReleaseConfigRecentScheduledReleaseRecordOutput) ToRepositoryReleaseConfigRecentScheduledReleaseRecordOutputWithContext(ctx context.Context) RepositoryReleaseConfigRecentScheduledReleaseRecordOutput {
+	return o
+}
+
+// (Output)
+// The name of the created compilation result, if one was successfully created. Must be in the format projects/*/locations/*/repositories/*/compilationResults/*.
+func (o RepositoryReleaseConfigRecentScheduledReleaseRecordOutput) CompilationResult() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryReleaseConfigRecentScheduledReleaseRecord) *string { return v.CompilationResult }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The error status encountered upon this attempt to create the compilation result, if the attempt was unsuccessful.
+// Structure is documented below.
+func (o RepositoryReleaseConfigRecentScheduledReleaseRecordOutput) ErrorStatuses() RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayOutput {
+	return o.ApplyT(func(v RepositoryReleaseConfigRecentScheduledReleaseRecord) []RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus {
+		return v.ErrorStatuses
+	}).(RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayOutput)
+}
+
+// (Output)
+// The timestamp of this release attempt.
+func (o RepositoryReleaseConfigRecentScheduledReleaseRecordOutput) ReleaseTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryReleaseConfigRecentScheduledReleaseRecord) *string { return v.ReleaseTime }).(pulumi.StringPtrOutput)
+}
+
+type RepositoryReleaseConfigRecentScheduledReleaseRecordArrayOutput struct{ *pulumi.OutputState }
+
+func (RepositoryReleaseConfigRecentScheduledReleaseRecordArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RepositoryReleaseConfigRecentScheduledReleaseRecord)(nil)).Elem()
+}
+
+func (o RepositoryReleaseConfigRecentScheduledReleaseRecordArrayOutput) ToRepositoryReleaseConfigRecentScheduledReleaseRecordArrayOutput() RepositoryReleaseConfigRecentScheduledReleaseRecordArrayOutput {
+	return o
+}
+
+func (o RepositoryReleaseConfigRecentScheduledReleaseRecordArrayOutput) ToRepositoryReleaseConfigRecentScheduledReleaseRecordArrayOutputWithContext(ctx context.Context) RepositoryReleaseConfigRecentScheduledReleaseRecordArrayOutput {
+	return o
+}
+
+func (o RepositoryReleaseConfigRecentScheduledReleaseRecordArrayOutput) Index(i pulumi.IntInput) RepositoryReleaseConfigRecentScheduledReleaseRecordOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RepositoryReleaseConfigRecentScheduledReleaseRecord {
+		return vs[0].([]RepositoryReleaseConfigRecentScheduledReleaseRecord)[vs[1].(int)]
+	}).(RepositoryReleaseConfigRecentScheduledReleaseRecordOutput)
+}
+
+type RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code *int `pulumi:"code"`
+	// (Output)
+	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+	Message *string `pulumi:"message"`
+}
+
+// RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusInput is an input type that accepts RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgs and RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusOutput values.
+// You can construct a concrete instance of `RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusInput` via:
+//
+//	RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgs{...}
+type RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusInput interface {
+	pulumi.Input
+
+	ToRepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusOutput() RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusOutput
+	ToRepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusOutputWithContext(context.Context) RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusOutput
+}
+
+type RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgs struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// (Output)
+	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus)(nil)).Elem()
+}
+
+func (i RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgs) ToRepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusOutput() RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusOutput {
+	return i.ToRepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusOutputWithContext(context.Background())
+}
+
+func (i RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgs) ToRepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusOutputWithContext(ctx context.Context) RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusOutput)
+}
+
+// RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayInput is an input type that accepts RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArray and RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayOutput values.
+// You can construct a concrete instance of `RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayInput` via:
+//
+//	RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArray{ RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgs{...} }
+type RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayInput interface {
+	pulumi.Input
+
+	ToRepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayOutput() RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayOutput
+	ToRepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayOutputWithContext(context.Context) RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayOutput
+}
+
+type RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArray []RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusInput
+
+func (RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus)(nil)).Elem()
+}
+
+func (i RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArray) ToRepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayOutput() RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayOutput {
+	return i.ToRepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayOutputWithContext(context.Background())
+}
+
+func (i RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArray) ToRepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayOutputWithContext(ctx context.Context) RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayOutput)
+}
+
+type RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusOutput struct{ *pulumi.OutputState }
+
+func (RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus)(nil)).Elem()
+}
+
+func (o RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusOutput) ToRepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusOutput() RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusOutput {
+	return o
+}
+
+func (o RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusOutput) ToRepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusOutputWithContext(ctx context.Context) RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusOutput {
+	return o
+}
+
+// (Output)
+// The status code, which should be an enum value of google.rpc.Code.
+func (o RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+func (o RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus)(nil)).Elem()
+}
+
+func (o RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayOutput) ToRepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayOutput() RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayOutput {
+	return o
+}
+
+func (o RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayOutput) ToRepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayOutputWithContext(ctx context.Context) RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayOutput {
+	return o
+}
+
+func (o RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayOutput) Index(i pulumi.IntInput) RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus {
+		return vs[0].([]RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus)[vs[1].(int)]
+	}).(RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusOutput)
+}
+
 type RepositoryWorkspaceCompilationOverrides struct {
 	// Optional. The default database (Google Cloud project ID).
 	DefaultDatabase *string `pulumi:"defaultDatabase"`
@@ -389,10 +912,22 @@ func (o RepositoryWorkspaceCompilationOverridesPtrOutput) TablePrefix() pulumi.S
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryGitRemoteSettingsInput)(nil)).Elem(), RepositoryGitRemoteSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryGitRemoteSettingsPtrInput)(nil)).Elem(), RepositoryGitRemoteSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryReleaseConfigCodeCompilationConfigInput)(nil)).Elem(), RepositoryReleaseConfigCodeCompilationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryReleaseConfigCodeCompilationConfigPtrInput)(nil)).Elem(), RepositoryReleaseConfigCodeCompilationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryReleaseConfigRecentScheduledReleaseRecordInput)(nil)).Elem(), RepositoryReleaseConfigRecentScheduledReleaseRecordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryReleaseConfigRecentScheduledReleaseRecordArrayInput)(nil)).Elem(), RepositoryReleaseConfigRecentScheduledReleaseRecordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusInput)(nil)).Elem(), RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayInput)(nil)).Elem(), RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryWorkspaceCompilationOverridesInput)(nil)).Elem(), RepositoryWorkspaceCompilationOverridesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryWorkspaceCompilationOverridesPtrInput)(nil)).Elem(), RepositoryWorkspaceCompilationOverridesArgs{})
 	pulumi.RegisterOutputType(RepositoryGitRemoteSettingsOutput{})
 	pulumi.RegisterOutputType(RepositoryGitRemoteSettingsPtrOutput{})
+	pulumi.RegisterOutputType(RepositoryReleaseConfigCodeCompilationConfigOutput{})
+	pulumi.RegisterOutputType(RepositoryReleaseConfigCodeCompilationConfigPtrOutput{})
+	pulumi.RegisterOutputType(RepositoryReleaseConfigRecentScheduledReleaseRecordOutput{})
+	pulumi.RegisterOutputType(RepositoryReleaseConfigRecentScheduledReleaseRecordArrayOutput{})
+	pulumi.RegisterOutputType(RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusOutput{})
+	pulumi.RegisterOutputType(RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayOutput{})
 	pulumi.RegisterOutputType(RepositoryWorkspaceCompilationOverridesOutput{})
 	pulumi.RegisterOutputType(RepositoryWorkspaceCompilationOverridesPtrOutput{})
 }

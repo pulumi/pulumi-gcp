@@ -39,6 +39,29 @@ import * as utilities from "../utilities";
  *     secretId: "secret",
  * });
  * ```
+ * ### Secret With Annotations
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const secret_with_annotations = new gcp.secretmanager.Secret("secret-with-annotations", {
+ *     annotations: {
+ *         key1: "someval",
+ *         key2: "someval2",
+ *         key3: "someval3",
+ *         key4: "someval4",
+ *         key5: "someval5",
+ *     },
+ *     labels: {
+ *         label: "my-label",
+ *     },
+ *     replication: {
+ *         automatic: true,
+ *     },
+ *     secretId: "secret",
+ * });
+ * ```
  *
  * ## Import
  *
@@ -84,6 +107,19 @@ export class Secret extends pulumi.CustomResource {
         return obj['__pulumiType'] === Secret.__pulumiType;
     }
 
+    /**
+     * Custom metadata about the secret.
+     * Annotations are distinct from various forms of labels. Annotations exist to allow
+     * client tools to store their own state information without requiring a database.
+     * Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of
+     * maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and
+     * may have dashes (-), underscores (_), dots (.), and alphanumerics in between these
+     * symbols.
+     * The total size of annotation keys and values must be less than 16KiB.
+     * An object containing a list of "key": value pairs. Example:
+     * { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     */
+    public readonly annotations!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The time at which the Secret was created.
      */
@@ -153,6 +189,7 @@ export class Secret extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecretState | undefined;
+            resourceInputs["annotations"] = state ? state.annotations : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["expireTime"] = state ? state.expireTime : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
@@ -171,6 +208,7 @@ export class Secret extends pulumi.CustomResource {
             if ((!args || args.secretId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'secretId'");
             }
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
             resourceInputs["expireTime"] = args ? args.expireTime : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -191,6 +229,19 @@ export class Secret extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Secret resources.
  */
 export interface SecretState {
+    /**
+     * Custom metadata about the secret.
+     * Annotations are distinct from various forms of labels. Annotations exist to allow
+     * client tools to store their own state information without requiring a database.
+     * Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of
+     * maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and
+     * may have dashes (-), underscores (_), dots (.), and alphanumerics in between these
+     * symbols.
+     * The total size of annotation keys and values must be less than 16KiB.
+     * An object containing a list of "key": value pairs. Example:
+     * { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     */
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The time at which the Secret was created.
      */
@@ -252,6 +303,19 @@ export interface SecretState {
  * The set of arguments for constructing a Secret resource.
  */
 export interface SecretArgs {
+    /**
+     * Custom metadata about the secret.
+     * Annotations are distinct from various forms of labels. Annotations exist to allow
+     * client tools to store their own state information without requiring a database.
+     * Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of
+     * maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and
+     * may have dashes (-), underscores (_), dots (.), and alphanumerics in between these
+     * symbols.
+     * The total size of annotation keys and values must be less than 16KiB.
+     * An object containing a list of "key": value pairs. Example:
+     * { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     */
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
      * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".

@@ -10,6 +10,11 @@ export type Repository = import("./repository").Repository;
 export const Repository: typeof import("./repository").Repository = null as any;
 utilities.lazyLoad(exports, ["Repository"], () => require("./repository"));
 
+export { RepositoryReleaseConfigArgs, RepositoryReleaseConfigState } from "./repositoryReleaseConfig";
+export type RepositoryReleaseConfig = import("./repositoryReleaseConfig").RepositoryReleaseConfig;
+export const RepositoryReleaseConfig: typeof import("./repositoryReleaseConfig").RepositoryReleaseConfig = null as any;
+utilities.lazyLoad(exports, ["RepositoryReleaseConfig"], () => require("./repositoryReleaseConfig"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -17,9 +22,12 @@ const _module = {
         switch (type) {
             case "gcp:dataform/repository:Repository":
                 return new Repository(name, <any>undefined, { urn })
+            case "gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig":
+                return new RepositoryReleaseConfig(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "dataform/repository", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataform/repositoryReleaseConfig", _module)

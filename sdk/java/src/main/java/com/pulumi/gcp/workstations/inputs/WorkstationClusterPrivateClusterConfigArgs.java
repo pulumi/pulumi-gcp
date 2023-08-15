@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,6 +16,23 @@ import javax.annotation.Nullable;
 public final class WorkstationClusterPrivateClusterConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final WorkstationClusterPrivateClusterConfigArgs Empty = new WorkstationClusterPrivateClusterConfigArgs();
+
+    /**
+     * Additional project IDs that are allowed to attach to the workstation cluster&#39;s service attachment.
+     * By default, the workstation cluster&#39;s project and the VPC host project (if different) are allowed.
+     * 
+     */
+    @Import(name="allowedProjects")
+    private @Nullable Output<List<String>> allowedProjects;
+
+    /**
+     * @return Additional project IDs that are allowed to attach to the workstation cluster&#39;s service attachment.
+     * By default, the workstation cluster&#39;s project and the VPC host project (if different) are allowed.
+     * 
+     */
+    public Optional<Output<List<String>>> allowedProjects() {
+        return Optional.ofNullable(this.allowedProjects);
+    }
 
     /**
      * (Output)
@@ -76,6 +94,7 @@ public final class WorkstationClusterPrivateClusterConfigArgs extends com.pulumi
     private WorkstationClusterPrivateClusterConfigArgs() {}
 
     private WorkstationClusterPrivateClusterConfigArgs(WorkstationClusterPrivateClusterConfigArgs $) {
+        this.allowedProjects = $.allowedProjects;
         this.clusterHostname = $.clusterHostname;
         this.enablePrivateEndpoint = $.enablePrivateEndpoint;
         this.serviceAttachmentUri = $.serviceAttachmentUri;
@@ -97,6 +116,40 @@ public final class WorkstationClusterPrivateClusterConfigArgs extends com.pulumi
 
         public Builder(WorkstationClusterPrivateClusterConfigArgs defaults) {
             $ = new WorkstationClusterPrivateClusterConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param allowedProjects Additional project IDs that are allowed to attach to the workstation cluster&#39;s service attachment.
+         * By default, the workstation cluster&#39;s project and the VPC host project (if different) are allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedProjects(@Nullable Output<List<String>> allowedProjects) {
+            $.allowedProjects = allowedProjects;
+            return this;
+        }
+
+        /**
+         * @param allowedProjects Additional project IDs that are allowed to attach to the workstation cluster&#39;s service attachment.
+         * By default, the workstation cluster&#39;s project and the VPC host project (if different) are allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedProjects(List<String> allowedProjects) {
+            return allowedProjects(Output.of(allowedProjects));
+        }
+
+        /**
+         * @param allowedProjects Additional project IDs that are allowed to attach to the workstation cluster&#39;s service attachment.
+         * By default, the workstation cluster&#39;s project and the VPC host project (if different) are allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowedProjects(String... allowedProjects) {
+            return allowedProjects(List.of(allowedProjects));
         }
 
         /**

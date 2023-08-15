@@ -7,6 +7,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
@@ -44,6 +46,21 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
     }
 
     /**
+     * Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
+     * 
+     */
+    @Import(name="routeUpdateWaitTime")
+    private @Nullable Output<String> routeUpdateWaitTime;
+
+    /**
+     * @return Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
+     * 
+     */
+    public Optional<Output<String>> routeUpdateWaitTime() {
+        return Optional.ofNullable(this.routeUpdateWaitTime);
+    }
+
+    /**
      * Required. Name of the Kubernetes Service.
      * 
      */
@@ -63,6 +80,7 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
     private DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs $) {
         this.deployment = $.deployment;
         this.httpRoute = $.httpRoute;
+        this.routeUpdateWaitTime = $.routeUpdateWaitTime;
         this.service = $.service;
     }
 
@@ -124,6 +142,27 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
          */
         public Builder httpRoute(String httpRoute) {
             return httpRoute(Output.of(httpRoute));
+        }
+
+        /**
+         * @param routeUpdateWaitTime Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routeUpdateWaitTime(@Nullable Output<String> routeUpdateWaitTime) {
+            $.routeUpdateWaitTime = routeUpdateWaitTime;
+            return this;
+        }
+
+        /**
+         * @param routeUpdateWaitTime Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routeUpdateWaitTime(String routeUpdateWaitTime) {
+            return routeUpdateWaitTime(Output.of(routeUpdateWaitTime));
         }
 
         /**

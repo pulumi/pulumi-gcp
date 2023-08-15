@@ -55,6 +55,39 @@ namespace Pulumi.Gcp.SecretManager
     /// 
     /// });
     /// ```
+    /// ### Secret With Annotations
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var secret_with_annotations = new Gcp.SecretManager.Secret("secret-with-annotations", new()
+    ///     {
+    ///         Annotations = 
+    ///         {
+    ///             { "key1", "someval" },
+    ///             { "key2", "someval2" },
+    ///             { "key3", "someval3" },
+    ///             { "key4", "someval4" },
+    ///             { "key5", "someval5" },
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "label", "my-label" },
+    ///         },
+    ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
+    ///         {
+    ///             Automatic = true,
+    ///         },
+    ///         SecretId = "secret",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -75,6 +108,21 @@ namespace Pulumi.Gcp.SecretManager
     [GcpResourceType("gcp:secretmanager/secret:Secret")]
     public partial class Secret : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Custom metadata about the secret.
+        /// Annotations are distinct from various forms of labels. Annotations exist to allow
+        /// client tools to store their own state information without requiring a database.
+        /// Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of
+        /// maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and
+        /// may have dashes (-), underscores (_), dots (.), and alphanumerics in between these
+        /// symbols.
+        /// The total size of annotation keys and values must be less than 16KiB.
+        /// An object containing a list of "key": value pairs. Example:
+        /// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// </summary>
+        [Output("annotations")]
+        public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
+
         /// <summary>
         /// The time at which the Secret was created.
         /// </summary>
@@ -196,6 +244,27 @@ namespace Pulumi.Gcp.SecretManager
 
     public sealed class SecretArgs : global::Pulumi.ResourceArgs
     {
+        [Input("annotations")]
+        private InputMap<string>? _annotations;
+
+        /// <summary>
+        /// Custom metadata about the secret.
+        /// Annotations are distinct from various forms of labels. Annotations exist to allow
+        /// client tools to store their own state information without requiring a database.
+        /// Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of
+        /// maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and
+        /// may have dashes (-), underscores (_), dots (.), and alphanumerics in between these
+        /// symbols.
+        /// The total size of annotation keys and values must be less than 16KiB.
+        /// An object containing a list of "key": value pairs. Example:
+        /// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// </summary>
+        public InputMap<string> Annotations
+        {
+            get => _annotations ?? (_annotations = new InputMap<string>());
+            set => _annotations = value;
+        }
+
         /// <summary>
         /// Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
         /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -278,6 +347,27 @@ namespace Pulumi.Gcp.SecretManager
 
     public sealed class SecretState : global::Pulumi.ResourceArgs
     {
+        [Input("annotations")]
+        private InputMap<string>? _annotations;
+
+        /// <summary>
+        /// Custom metadata about the secret.
+        /// Annotations are distinct from various forms of labels. Annotations exist to allow
+        /// client tools to store their own state information without requiring a database.
+        /// Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of
+        /// maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and
+        /// may have dashes (-), underscores (_), dots (.), and alphanumerics in between these
+        /// symbols.
+        /// The total size of annotation keys and values must be less than 16KiB.
+        /// An object containing a list of "key": value pairs. Example:
+        /// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// </summary>
+        public InputMap<string> Annotations
+        {
+            get => _annotations ?? (_annotations = new InputMap<string>());
+            set => _annotations = value;
+        }
+
         /// <summary>
         /// The time at which the Secret was created.
         /// </summary>

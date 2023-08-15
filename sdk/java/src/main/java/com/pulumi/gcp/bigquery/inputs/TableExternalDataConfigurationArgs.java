@@ -114,6 +114,25 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
     }
 
     /**
+     * Specifies how source URIs are interpreted for constructing the file set to load.
+     * By default source URIs are expanded against the underlying storage.
+     * Other options include specifying manifest files. Only applicable to object storage systems. Docs
+     * 
+     */
+    @Import(name="fileSetSpecType")
+    private @Nullable Output<String> fileSetSpecType;
+
+    /**
+     * @return Specifies how source URIs are interpreted for constructing the file set to load.
+     * By default source URIs are expanded against the underlying storage.
+     * Other options include specifying manifest files. Only applicable to object storage systems. Docs
+     * 
+     */
+    public Optional<Output<String>> fileSetSpecType() {
+        return Optional.ofNullable(this.fileSetSpecType);
+    }
+
+    /**
      * Additional options if
      * `source_format` is set to &#34;GOOGLE_SHEETS&#34;. Structure is
      * documented below.
@@ -355,6 +374,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
         this.compression = $.compression;
         this.connectionId = $.connectionId;
         this.csvOptions = $.csvOptions;
+        this.fileSetSpecType = $.fileSetSpecType;
         this.googleSheetsOptions = $.googleSheetsOptions;
         this.hivePartitioningOptions = $.hivePartitioningOptions;
         this.ignoreUnknownValues = $.ignoreUnknownValues;
@@ -504,6 +524,31 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
          */
         public Builder csvOptions(TableExternalDataConfigurationCsvOptionsArgs csvOptions) {
             return csvOptions(Output.of(csvOptions));
+        }
+
+        /**
+         * @param fileSetSpecType Specifies how source URIs are interpreted for constructing the file set to load.
+         * By default source URIs are expanded against the underlying storage.
+         * Other options include specifying manifest files. Only applicable to object storage systems. Docs
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fileSetSpecType(@Nullable Output<String> fileSetSpecType) {
+            $.fileSetSpecType = fileSetSpecType;
+            return this;
+        }
+
+        /**
+         * @param fileSetSpecType Specifies how source URIs are interpreted for constructing the file set to load.
+         * By default source URIs are expanded against the underlying storage.
+         * Other options include specifying manifest files. Only applicable to object storage systems. Docs
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fileSetSpecType(String fileSetSpecType) {
+            return fileSetSpecType(Output.of(fileSetSpecType));
         }
 
         /**

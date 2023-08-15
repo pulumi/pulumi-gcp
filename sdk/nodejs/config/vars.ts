@@ -385,6 +385,14 @@ Object.defineProperty(exports, "containerCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const coreBillingCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "coreBillingCustomEndpoint", {
+    get() {
+        return __config.get("coreBillingCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const credentials: string | undefined;
 Object.defineProperty(exports, "credentials", {
     get() {

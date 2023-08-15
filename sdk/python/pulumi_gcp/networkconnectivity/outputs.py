@@ -12,6 +12,7 @@ from . import outputs
 
 __all__ = [
     'HubRoutingVpc',
+    'ServiceConnectionPolicyPscConfig',
     'SpokeLinkedInterconnectAttachments',
     'SpokeLinkedRouterApplianceInstances',
     'SpokeLinkedRouterApplianceInstancesInstance',
@@ -29,6 +30,36 @@ class HubRoutingVpc(dict):
     @pulumi.getter
     def uri(self) -> Optional[str]:
         return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class ServiceConnectionPolicyPscConfig(dict):
+    def __init__(__self__, *,
+                 subnetworks: Sequence[str],
+                 limit: Optional[str] = None):
+        """
+        :param Sequence[str] subnetworks: IDs of the subnetworks or fully qualified identifiers for the subnetworks
+        :param str limit: Max number of PSC connections for this policy.
+        """
+        pulumi.set(__self__, "subnetworks", subnetworks)
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+
+    @property
+    @pulumi.getter
+    def subnetworks(self) -> Sequence[str]:
+        """
+        IDs of the subnetworks or fully qualified identifiers for the subnetworks
+        """
+        return pulumi.get(self, "subnetworks")
+
+    @property
+    @pulumi.getter
+    def limit(self) -> Optional[str]:
+        """
+        Max number of PSC connections for this policy.
+        """
+        return pulumi.get(self, "limit")
 
 
 @pulumi.output_type

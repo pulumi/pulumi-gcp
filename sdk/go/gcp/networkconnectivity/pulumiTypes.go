@@ -107,6 +107,162 @@ func (o HubRoutingVpcArrayOutput) Index(i pulumi.IntInput) HubRoutingVpcOutput {
 	}).(HubRoutingVpcOutput)
 }
 
+type ServiceConnectionPolicyPscConfig struct {
+	// Max number of PSC connections for this policy.
+	Limit *string `pulumi:"limit"`
+	// IDs of the subnetworks or fully qualified identifiers for the subnetworks
+	Subnetworks []string `pulumi:"subnetworks"`
+}
+
+// ServiceConnectionPolicyPscConfigInput is an input type that accepts ServiceConnectionPolicyPscConfigArgs and ServiceConnectionPolicyPscConfigOutput values.
+// You can construct a concrete instance of `ServiceConnectionPolicyPscConfigInput` via:
+//
+//	ServiceConnectionPolicyPscConfigArgs{...}
+type ServiceConnectionPolicyPscConfigInput interface {
+	pulumi.Input
+
+	ToServiceConnectionPolicyPscConfigOutput() ServiceConnectionPolicyPscConfigOutput
+	ToServiceConnectionPolicyPscConfigOutputWithContext(context.Context) ServiceConnectionPolicyPscConfigOutput
+}
+
+type ServiceConnectionPolicyPscConfigArgs struct {
+	// Max number of PSC connections for this policy.
+	Limit pulumi.StringPtrInput `pulumi:"limit"`
+	// IDs of the subnetworks or fully qualified identifiers for the subnetworks
+	Subnetworks pulumi.StringArrayInput `pulumi:"subnetworks"`
+}
+
+func (ServiceConnectionPolicyPscConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceConnectionPolicyPscConfig)(nil)).Elem()
+}
+
+func (i ServiceConnectionPolicyPscConfigArgs) ToServiceConnectionPolicyPscConfigOutput() ServiceConnectionPolicyPscConfigOutput {
+	return i.ToServiceConnectionPolicyPscConfigOutputWithContext(context.Background())
+}
+
+func (i ServiceConnectionPolicyPscConfigArgs) ToServiceConnectionPolicyPscConfigOutputWithContext(ctx context.Context) ServiceConnectionPolicyPscConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceConnectionPolicyPscConfigOutput)
+}
+
+func (i ServiceConnectionPolicyPscConfigArgs) ToServiceConnectionPolicyPscConfigPtrOutput() ServiceConnectionPolicyPscConfigPtrOutput {
+	return i.ToServiceConnectionPolicyPscConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceConnectionPolicyPscConfigArgs) ToServiceConnectionPolicyPscConfigPtrOutputWithContext(ctx context.Context) ServiceConnectionPolicyPscConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceConnectionPolicyPscConfigOutput).ToServiceConnectionPolicyPscConfigPtrOutputWithContext(ctx)
+}
+
+// ServiceConnectionPolicyPscConfigPtrInput is an input type that accepts ServiceConnectionPolicyPscConfigArgs, ServiceConnectionPolicyPscConfigPtr and ServiceConnectionPolicyPscConfigPtrOutput values.
+// You can construct a concrete instance of `ServiceConnectionPolicyPscConfigPtrInput` via:
+//
+//	        ServiceConnectionPolicyPscConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceConnectionPolicyPscConfigPtrInput interface {
+	pulumi.Input
+
+	ToServiceConnectionPolicyPscConfigPtrOutput() ServiceConnectionPolicyPscConfigPtrOutput
+	ToServiceConnectionPolicyPscConfigPtrOutputWithContext(context.Context) ServiceConnectionPolicyPscConfigPtrOutput
+}
+
+type serviceConnectionPolicyPscConfigPtrType ServiceConnectionPolicyPscConfigArgs
+
+func ServiceConnectionPolicyPscConfigPtr(v *ServiceConnectionPolicyPscConfigArgs) ServiceConnectionPolicyPscConfigPtrInput {
+	return (*serviceConnectionPolicyPscConfigPtrType)(v)
+}
+
+func (*serviceConnectionPolicyPscConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceConnectionPolicyPscConfig)(nil)).Elem()
+}
+
+func (i *serviceConnectionPolicyPscConfigPtrType) ToServiceConnectionPolicyPscConfigPtrOutput() ServiceConnectionPolicyPscConfigPtrOutput {
+	return i.ToServiceConnectionPolicyPscConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceConnectionPolicyPscConfigPtrType) ToServiceConnectionPolicyPscConfigPtrOutputWithContext(ctx context.Context) ServiceConnectionPolicyPscConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceConnectionPolicyPscConfigPtrOutput)
+}
+
+type ServiceConnectionPolicyPscConfigOutput struct{ *pulumi.OutputState }
+
+func (ServiceConnectionPolicyPscConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceConnectionPolicyPscConfig)(nil)).Elem()
+}
+
+func (o ServiceConnectionPolicyPscConfigOutput) ToServiceConnectionPolicyPscConfigOutput() ServiceConnectionPolicyPscConfigOutput {
+	return o
+}
+
+func (o ServiceConnectionPolicyPscConfigOutput) ToServiceConnectionPolicyPscConfigOutputWithContext(ctx context.Context) ServiceConnectionPolicyPscConfigOutput {
+	return o
+}
+
+func (o ServiceConnectionPolicyPscConfigOutput) ToServiceConnectionPolicyPscConfigPtrOutput() ServiceConnectionPolicyPscConfigPtrOutput {
+	return o.ToServiceConnectionPolicyPscConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceConnectionPolicyPscConfigOutput) ToServiceConnectionPolicyPscConfigPtrOutputWithContext(ctx context.Context) ServiceConnectionPolicyPscConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceConnectionPolicyPscConfig) *ServiceConnectionPolicyPscConfig {
+		return &v
+	}).(ServiceConnectionPolicyPscConfigPtrOutput)
+}
+
+// Max number of PSC connections for this policy.
+func (o ServiceConnectionPolicyPscConfigOutput) Limit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceConnectionPolicyPscConfig) *string { return v.Limit }).(pulumi.StringPtrOutput)
+}
+
+// IDs of the subnetworks or fully qualified identifiers for the subnetworks
+func (o ServiceConnectionPolicyPscConfigOutput) Subnetworks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServiceConnectionPolicyPscConfig) []string { return v.Subnetworks }).(pulumi.StringArrayOutput)
+}
+
+type ServiceConnectionPolicyPscConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceConnectionPolicyPscConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceConnectionPolicyPscConfig)(nil)).Elem()
+}
+
+func (o ServiceConnectionPolicyPscConfigPtrOutput) ToServiceConnectionPolicyPscConfigPtrOutput() ServiceConnectionPolicyPscConfigPtrOutput {
+	return o
+}
+
+func (o ServiceConnectionPolicyPscConfigPtrOutput) ToServiceConnectionPolicyPscConfigPtrOutputWithContext(ctx context.Context) ServiceConnectionPolicyPscConfigPtrOutput {
+	return o
+}
+
+func (o ServiceConnectionPolicyPscConfigPtrOutput) Elem() ServiceConnectionPolicyPscConfigOutput {
+	return o.ApplyT(func(v *ServiceConnectionPolicyPscConfig) ServiceConnectionPolicyPscConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceConnectionPolicyPscConfig
+		return ret
+	}).(ServiceConnectionPolicyPscConfigOutput)
+}
+
+// Max number of PSC connections for this policy.
+func (o ServiceConnectionPolicyPscConfigPtrOutput) Limit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceConnectionPolicyPscConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Limit
+	}).(pulumi.StringPtrOutput)
+}
+
+// IDs of the subnetworks or fully qualified identifiers for the subnetworks
+func (o ServiceConnectionPolicyPscConfigPtrOutput) Subnetworks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServiceConnectionPolicyPscConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Subnetworks
+	}).(pulumi.StringArrayOutput)
+}
+
 type SpokeLinkedInterconnectAttachments struct {
 	// A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
 	SiteToSiteDataTransfer bool `pulumi:"siteToSiteDataTransfer"`
@@ -692,6 +848,8 @@ func (o SpokeLinkedVpnTunnelsPtrOutput) Uris() pulumi.StringArrayOutput {
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HubRoutingVpcInput)(nil)).Elem(), HubRoutingVpcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HubRoutingVpcArrayInput)(nil)).Elem(), HubRoutingVpcArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceConnectionPolicyPscConfigInput)(nil)).Elem(), ServiceConnectionPolicyPscConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceConnectionPolicyPscConfigPtrInput)(nil)).Elem(), ServiceConnectionPolicyPscConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpokeLinkedInterconnectAttachmentsInput)(nil)).Elem(), SpokeLinkedInterconnectAttachmentsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpokeLinkedInterconnectAttachmentsPtrInput)(nil)).Elem(), SpokeLinkedInterconnectAttachmentsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpokeLinkedRouterApplianceInstancesInput)(nil)).Elem(), SpokeLinkedRouterApplianceInstancesArgs{})
@@ -702,6 +860,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SpokeLinkedVpnTunnelsPtrInput)(nil)).Elem(), SpokeLinkedVpnTunnelsArgs{})
 	pulumi.RegisterOutputType(HubRoutingVpcOutput{})
 	pulumi.RegisterOutputType(HubRoutingVpcArrayOutput{})
+	pulumi.RegisterOutputType(ServiceConnectionPolicyPscConfigOutput{})
+	pulumi.RegisterOutputType(ServiceConnectionPolicyPscConfigPtrOutput{})
 	pulumi.RegisterOutputType(SpokeLinkedInterconnectAttachmentsOutput{})
 	pulumi.RegisterOutputType(SpokeLinkedInterconnectAttachmentsPtrOutput{})
 	pulumi.RegisterOutputType(SpokeLinkedRouterApplianceInstancesOutput{})

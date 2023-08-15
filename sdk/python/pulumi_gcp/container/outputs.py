@@ -115,6 +115,7 @@ __all__ = [
     'ClusterMasterAuthorizedNetworksConfigCidrBlock',
     'ClusterMeshCertificates',
     'ClusterMonitoringConfig',
+    'ClusterMonitoringConfigAdvancedDatapathObservabilityConfig',
     'ClusterMonitoringConfigManagedPrometheus',
     'ClusterNetworkPolicy',
     'ClusterNodeConfig',
@@ -266,6 +267,7 @@ __all__ = [
     'GetClusterMasterAuthorizedNetworksConfigCidrBlockResult',
     'GetClusterMeshCertificateResult',
     'GetClusterMonitoringConfigResult',
+    'GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigResult',
     'GetClusterMonitoringConfigManagedPrometheusResult',
     'GetClusterNetworkPolicyResult',
     'GetClusterNodeConfigResult',
@@ -5070,7 +5072,7 @@ class ClusterIpAllocationPolicy(dict):
                secondary range in the cluster's subnetwork to use for service `ClusterIP`s.
                Alternatively, `services_ipv4_cidr_block` can be used to automatically create a
                GKE-managed one.
-        :param str stack_type: The IP Stack Type of the cluster. 
+        :param str stack_type: The IP Stack Type of the cluster.
                Default value is `IPV4`.
                Possible values are `IPV4` and `IPV4_IPV6`.
         """
@@ -5141,7 +5143,7 @@ class ClusterIpAllocationPolicy(dict):
     @pulumi.getter(name="stackType")
     def stack_type(self) -> Optional[str]:
         """
-        The IP Stack Type of the cluster. 
+        The IP Stack Type of the cluster.
         Default value is `IPV4`.
         Possible values are `IPV4` and `IPV4_IPV6`.
         """
@@ -5749,7 +5751,9 @@ class ClusterMonitoringConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "enableComponents":
+        if key == "advancedDatapathObservabilityConfigs":
+            suggest = "advanced_datapath_observability_configs"
+        elif key == "enableComponents":
             suggest = "enable_components"
         elif key == "managedPrometheus":
             suggest = "managed_prometheus"
@@ -5766,16 +5770,28 @@ class ClusterMonitoringConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 advanced_datapath_observability_configs: Optional[Sequence['outputs.ClusterMonitoringConfigAdvancedDatapathObservabilityConfig']] = None,
                  enable_components: Optional[Sequence[str]] = None,
                  managed_prometheus: Optional['outputs.ClusterMonitoringConfigManagedPrometheus'] = None):
         """
+        :param Sequence['ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs'] advanced_datapath_observability_configs: Configuration for Advanced Datapath Monitoring. Structure is documented below.
         :param Sequence[str] enable_components: The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, and `SCHEDULER`. In beta provider, `WORKLOADS` is supported on top of those 4 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.)
         :param 'ClusterMonitoringConfigManagedPrometheusArgs' managed_prometheus: Configuration for Managed Service for Prometheus. Structure is documented below.
         """
+        if advanced_datapath_observability_configs is not None:
+            pulumi.set(__self__, "advanced_datapath_observability_configs", advanced_datapath_observability_configs)
         if enable_components is not None:
             pulumi.set(__self__, "enable_components", enable_components)
         if managed_prometheus is not None:
             pulumi.set(__self__, "managed_prometheus", managed_prometheus)
+
+    @property
+    @pulumi.getter(name="advancedDatapathObservabilityConfigs")
+    def advanced_datapath_observability_configs(self) -> Optional[Sequence['outputs.ClusterMonitoringConfigAdvancedDatapathObservabilityConfig']]:
+        """
+        Configuration for Advanced Datapath Monitoring. Structure is documented below.
+        """
+        return pulumi.get(self, "advanced_datapath_observability_configs")
 
     @property
     @pulumi.getter(name="enableComponents")
@@ -5792,6 +5808,51 @@ class ClusterMonitoringConfig(dict):
         Configuration for Managed Service for Prometheus. Structure is documented below.
         """
         return pulumi.get(self, "managed_prometheus")
+
+
+@pulumi.output_type
+class ClusterMonitoringConfigAdvancedDatapathObservabilityConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableMetrics":
+            suggest = "enable_metrics"
+        elif key == "relayMode":
+            suggest = "relay_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterMonitoringConfigAdvancedDatapathObservabilityConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterMonitoringConfigAdvancedDatapathObservabilityConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterMonitoringConfigAdvancedDatapathObservabilityConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_metrics: bool,
+                 relay_mode: Optional[str] = None):
+        """
+        :param str relay_mode: Mode used to make Relay available.
+        """
+        pulumi.set(__self__, "enable_metrics", enable_metrics)
+        if relay_mode is not None:
+            pulumi.set(__self__, "relay_mode", relay_mode)
+
+    @property
+    @pulumi.getter(name="enableMetrics")
+    def enable_metrics(self) -> bool:
+        return pulumi.get(self, "enable_metrics")
+
+    @property
+    @pulumi.getter(name="relayMode")
+    def relay_mode(self) -> Optional[str]:
+        """
+        Mode used to make Relay available.
+        """
+        return pulumi.get(self, "relay_mode")
 
 
 @pulumi.output_type
@@ -13010,10 +13071,17 @@ class GetClusterMeshCertificateResult(dict):
 @pulumi.output_type
 class GetClusterMonitoringConfigResult(dict):
     def __init__(__self__, *,
+                 advanced_datapath_observability_configs: Sequence['outputs.GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigResult'],
                  enable_components: Sequence[str],
                  managed_prometheuses: Sequence['outputs.GetClusterMonitoringConfigManagedPrometheusResult']):
+        pulumi.set(__self__, "advanced_datapath_observability_configs", advanced_datapath_observability_configs)
         pulumi.set(__self__, "enable_components", enable_components)
         pulumi.set(__self__, "managed_prometheuses", managed_prometheuses)
+
+    @property
+    @pulumi.getter(name="advancedDatapathObservabilityConfigs")
+    def advanced_datapath_observability_configs(self) -> Sequence['outputs.GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigResult']:
+        return pulumi.get(self, "advanced_datapath_observability_configs")
 
     @property
     @pulumi.getter(name="enableComponents")
@@ -13024,6 +13092,25 @@ class GetClusterMonitoringConfigResult(dict):
     @pulumi.getter(name="managedPrometheuses")
     def managed_prometheuses(self) -> Sequence['outputs.GetClusterMonitoringConfigManagedPrometheusResult']:
         return pulumi.get(self, "managed_prometheuses")
+
+
+@pulumi.output_type
+class GetClusterMonitoringConfigAdvancedDatapathObservabilityConfigResult(dict):
+    def __init__(__self__, *,
+                 enable_metrics: bool,
+                 relay_mode: str):
+        pulumi.set(__self__, "enable_metrics", enable_metrics)
+        pulumi.set(__self__, "relay_mode", relay_mode)
+
+    @property
+    @pulumi.getter(name="enableMetrics")
+    def enable_metrics(self) -> bool:
+        return pulumi.get(self, "enable_metrics")
+
+    @property
+    @pulumi.getter(name="relayMode")
+    def relay_mode(self) -> str:
+        return pulumi.get(self, "relay_mode")
 
 
 @pulumi.output_type

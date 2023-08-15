@@ -85,9 +85,8 @@ class RegionInstanceGroupManagerArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_pools: The full URL of all target pools to which new
                instances in the group are added. Updating the target pools attribute does
                not affect existing instances.
-        :param pulumi.Input[int] target_size: The target number of running instances for this managed
-               instance group. This value should always be explicitly set unless this resource is attached to
-               an autoscaler, in which case it should never be set. Defaults to `0`.
+        :param pulumi.Input[int] target_size: The target number of running instances for this managed instance group. This value should always be explicitly set
+               unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
         :param pulumi.Input['RegionInstanceGroupManagerUpdatePolicyArgs'] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
         :param pulumi.Input[bool] wait_for_instances: Whether to wait for all instances to be created/updated before
                returning. Note that if this is set to true and the operation does not succeed, the provider will
@@ -375,9 +374,8 @@ class RegionInstanceGroupManagerArgs:
     @pulumi.getter(name="targetSize")
     def target_size(self) -> Optional[pulumi.Input[int]]:
         """
-        The target number of running instances for this managed
-        instance group. This value should always be explicitly set unless this resource is attached to
-        an autoscaler, in which case it should never be set. Defaults to `0`.
+        The target number of running instances for this managed instance group. This value should always be explicitly set
+        unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
         """
         return pulumi.get(self, "target_size")
 
@@ -504,9 +502,8 @@ class _RegionInstanceGroupManagerState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_pools: The full URL of all target pools to which new
                instances in the group are added. Updating the target pools attribute does
                not affect existing instances.
-        :param pulumi.Input[int] target_size: The target number of running instances for this managed
-               instance group. This value should always be explicitly set unless this resource is attached to
-               an autoscaler, in which case it should never be set. Defaults to `0`.
+        :param pulumi.Input[int] target_size: The target number of running instances for this managed instance group. This value should always be explicitly set
+               unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
         :param pulumi.Input['RegionInstanceGroupManagerUpdatePolicyArgs'] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerVersionArgs']]] versions: Application versions managed by this instance group. Each
                version deals with a specific instance template, allowing canary release scenarios.
@@ -841,9 +838,8 @@ class _RegionInstanceGroupManagerState:
     @pulumi.getter(name="targetSize")
     def target_size(self) -> Optional[pulumi.Input[int]]:
         """
-        The target number of running instances for this managed
-        instance group. This value should always be explicitly set unless this resource is attached to
-        an autoscaler, in which case it should never be set. Defaults to `0`.
+        The target number of running instances for this managed instance group. This value should always be explicitly set
+        unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
         """
         return pulumi.get(self, "target_size")
 
@@ -1067,9 +1063,8 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_pools: The full URL of all target pools to which new
                instances in the group are added. Updating the target pools attribute does
                not affect existing instances.
-        :param pulumi.Input[int] target_size: The target number of running instances for this managed
-               instance group. This value should always be explicitly set unless this resource is attached to
-               an autoscaler, in which case it should never be set. Defaults to `0`.
+        :param pulumi.Input[int] target_size: The target number of running instances for this managed instance group. This value should always be explicitly set
+               unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
         :param pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerUpdatePolicyArgs']] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerVersionArgs']]]] versions: Application versions managed by this instance group. Each
                version deals with a specific instance template, allowing canary release scenarios.
@@ -1339,9 +1334,8 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_pools: The full URL of all target pools to which new
                instances in the group are added. Updating the target pools attribute does
                not affect existing instances.
-        :param pulumi.Input[int] target_size: The target number of running instances for this managed
-               instance group. This value should always be explicitly set unless this resource is attached to
-               an autoscaler, in which case it should never be set. Defaults to `0`.
+        :param pulumi.Input[int] target_size: The target number of running instances for this managed instance group. This value should always be explicitly set
+               unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
         :param pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerUpdatePolicyArgs']] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerVersionArgs']]]] versions: Application versions managed by this instance group. Each
                version deals with a specific instance template, allowing canary release scenarios.
@@ -1576,9 +1570,8 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
     @pulumi.getter(name="targetSize")
     def target_size(self) -> pulumi.Output[int]:
         """
-        The target number of running instances for this managed
-        instance group. This value should always be explicitly set unless this resource is attached to
-        an autoscaler, in which case it should never be set. Defaults to `0`.
+        The target number of running instances for this managed instance group. This value should always be explicitly set
+        unless this resource is attached to an autoscaler, in which case it should never be set. Defaults to 0.
         """
         return pulumi.get(self, "target_size")
 

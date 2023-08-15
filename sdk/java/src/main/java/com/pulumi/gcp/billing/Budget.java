@@ -179,6 +179,7 @@ import javax.annotation.Nullable;
  *                 .creditTypes(                
  *                     &#34;PROMOTION&#34;,
  *                     &#34;FREE_TIER&#34;)
+ *                 .resourceAncestors(&#34;organizations/123456789&#34;)
  *                 .build())
  *             .amount(BudgetAmountArgs.builder()
  *                 .specifiedAmount(BudgetAmountSpecifiedAmountArgs.builder()

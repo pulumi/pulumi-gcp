@@ -427,7 +427,8 @@ class FhirStoreIamMemberConditionArgs:
 class FhirStoreNotificationConfigArgs:
     def __init__(__self__, *,
                  pubsub_topic: pulumi.Input[str],
-                 send_full_resource: Optional[pulumi.Input[bool]] = None):
+                 send_full_resource: Optional[pulumi.Input[bool]] = None,
+                 send_previous_resource_on_delete: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] pubsub_topic: The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
                PubsubMessage.Data will contain the resource name. PubsubMessage.MessageId is the ID of this message.
@@ -440,10 +441,17 @@ class FhirStoreNotificationConfigArgs:
                full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will be
                sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether
                it needs to fetch the full resource as a separate operation.
+        :param pulumi.Input[bool] send_previous_resource_on_delete: Whether to send full FHIR resource to this Pub/Sub topic for deleting FHIR resource. Note that setting this to
+               true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a
+               resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always
+               check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full previous
+               resource as a separate operation.
         """
         pulumi.set(__self__, "pubsub_topic", pubsub_topic)
         if send_full_resource is not None:
             pulumi.set(__self__, "send_full_resource", send_full_resource)
+        if send_previous_resource_on_delete is not None:
+            pulumi.set(__self__, "send_previous_resource_on_delete", send_previous_resource_on_delete)
 
     @property
     @pulumi.getter(name="pubsubTopic")
@@ -477,6 +485,22 @@ class FhirStoreNotificationConfigArgs:
     @send_full_resource.setter
     def send_full_resource(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "send_full_resource", value)
+
+    @property
+    @pulumi.getter(name="sendPreviousResourceOnDelete")
+    def send_previous_resource_on_delete(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to send full FHIR resource to this Pub/Sub topic for deleting FHIR resource. Note that setting this to
+        true does not guarantee that all previous resources will be sent in the format of full FHIR resource. When a
+        resource change is too large or during heavy traffic, only the resource name will be sent. Clients should always
+        check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full previous
+        resource as a separate operation.
+        """
+        return pulumi.get(self, "send_previous_resource_on_delete")
+
+    @send_previous_resource_on_delete.setter
+    def send_previous_resource_on_delete(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "send_previous_resource_on_delete", value)
 
 
 @pulumi.input_type

@@ -20,6 +20,7 @@ class TriggerArgs:
                  location: pulumi.Input[str],
                  matching_criterias: pulumi.Input[Sequence[pulumi.Input['TriggerMatchingCriteriaArgs']]],
                  channel: Optional[pulumi.Input[str]] = None,
+                 event_data_content_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -31,6 +32,7 @@ class TriggerArgs:
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[Sequence[pulumi.Input['TriggerMatchingCriteriaArgs']]] matching_criterias: Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
         :param pulumi.Input[str] channel: Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
+        :param pulumi.Input[str] event_data_content_type: Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User labels attached to the triggers that can be used to group resources.
         :param pulumi.Input[str] name: Required. The resource name of the trigger. Must be unique within the location on the project.
         :param pulumi.Input[str] project: The project for the resource
@@ -42,6 +44,8 @@ class TriggerArgs:
         pulumi.set(__self__, "matching_criterias", matching_criterias)
         if channel is not None:
             pulumi.set(__self__, "channel", channel)
+        if event_data_content_type is not None:
+            pulumi.set(__self__, "event_data_content_type", event_data_content_type)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -100,6 +104,18 @@ class TriggerArgs:
     @channel.setter
     def channel(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "channel", value)
+
+    @property
+    @pulumi.getter(name="eventDataContentType")
+    def event_data_content_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
+        """
+        return pulumi.get(self, "event_data_content_type")
+
+    @event_data_content_type.setter
+    def event_data_content_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "event_data_content_type", value)
 
     @property
     @pulumi.getter
@@ -170,6 +186,7 @@ class _TriggerState:
                  create_time: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input['TriggerDestinationArgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
+                 event_data_content_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  matching_criterias: Optional[pulumi.Input[Sequence[pulumi.Input['TriggerMatchingCriteriaArgs']]]] = None,
@@ -186,6 +203,7 @@ class _TriggerState:
         :param pulumi.Input[str] create_time: Output only. The creation time.
         :param pulumi.Input['TriggerDestinationArgs'] destination: Required. Destination specifies where the events should be sent to.
         :param pulumi.Input[str] etag: Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
+        :param pulumi.Input[str] event_data_content_type: Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User labels attached to the triggers that can be used to group resources.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[Sequence[pulumi.Input['TriggerMatchingCriteriaArgs']]] matching_criterias: Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
@@ -206,6 +224,8 @@ class _TriggerState:
             pulumi.set(__self__, "destination", destination)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
+        if event_data_content_type is not None:
+            pulumi.set(__self__, "event_data_content_type", event_data_content_type)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -284,6 +304,18 @@ class _TriggerState:
     @etag.setter
     def etag(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter(name="eventDataContentType")
+    def event_data_content_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
+        """
+        return pulumi.get(self, "event_data_content_type")
+
+    @event_data_content_type.setter
+    def event_data_content_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "event_data_content_type", value)
 
     @property
     @pulumi.getter
@@ -401,6 +433,7 @@ class Trigger(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  channel: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input[pulumi.InputType['TriggerDestinationArgs']]] = None,
+                 event_data_content_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  matching_criterias: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TriggerMatchingCriteriaArgs']]]]] = None,
@@ -477,6 +510,7 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] channel: Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
         :param pulumi.Input[pulumi.InputType['TriggerDestinationArgs']] destination: Required. Destination specifies where the events should be sent to.
+        :param pulumi.Input[str] event_data_content_type: Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User labels attached to the triggers that can be used to group resources.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TriggerMatchingCriteriaArgs']]]] matching_criterias: Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
@@ -572,6 +606,7 @@ class Trigger(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  channel: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input[pulumi.InputType['TriggerDestinationArgs']]] = None,
+                 event_data_content_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  matching_criterias: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TriggerMatchingCriteriaArgs']]]]] = None,
@@ -592,6 +627,7 @@ class Trigger(pulumi.CustomResource):
             if destination is None and not opts.urn:
                 raise TypeError("Missing required property 'destination'")
             __props__.__dict__["destination"] = destination
+            __props__.__dict__["event_data_content_type"] = event_data_content_type
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
@@ -623,6 +659,7 @@ class Trigger(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             destination: Optional[pulumi.Input[pulumi.InputType['TriggerDestinationArgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
+            event_data_content_type: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             matching_criterias: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TriggerMatchingCriteriaArgs']]]]] = None,
@@ -644,6 +681,7 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Output only. The creation time.
         :param pulumi.Input[pulumi.InputType['TriggerDestinationArgs']] destination: Required. Destination specifies where the events should be sent to.
         :param pulumi.Input[str] etag: Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
+        :param pulumi.Input[str] event_data_content_type: Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User labels attached to the triggers that can be used to group resources.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TriggerMatchingCriteriaArgs']]]] matching_criterias: Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
@@ -663,6 +701,7 @@ class Trigger(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["destination"] = destination
         __props__.__dict__["etag"] = etag
+        __props__.__dict__["event_data_content_type"] = event_data_content_type
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
         __props__.__dict__["matching_criterias"] = matching_criterias
@@ -713,6 +752,14 @@ class Trigger(pulumi.CustomResource):
         Output only. This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
         """
         return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="eventDataContentType")
+    def event_data_content_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
+        """
+        return pulumi.get(self, "event_data_content_type")
 
     @property
     @pulumi.getter

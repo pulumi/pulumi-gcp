@@ -142,6 +142,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string PscConnectionStatus;
         public readonly string SelfLink;
         public readonly ImmutableArray<string> SourceIpRanges;
+        public readonly string Subnetwork;
         public readonly string Target;
 
         [OutputConstructor]
@@ -186,6 +187,8 @@ namespace Pulumi.Gcp.Compute
 
             ImmutableArray<string> sourceIpRanges,
 
+            string subnetwork,
+
             string target)
         {
             AllowPscGlobalAccess = allowPscGlobalAccess;
@@ -208,6 +211,7 @@ namespace Pulumi.Gcp.Compute
             PscConnectionStatus = pscConnectionStatus;
             SelfLink = selfLink;
             SourceIpRanges = sourceIpRanges;
+            Subnetwork = subnetwork;
             Target = target;
         }
     }

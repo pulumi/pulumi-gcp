@@ -25,6 +25,7 @@ public final class GetFunctionResult {
      * 
      */
     private String id;
+    private String kmsKeyName;
     private Map<String,String> labels;
     private String location;
     private String name;
@@ -53,6 +54,9 @@ public final class GetFunctionResult {
      */
     public String id() {
         return this.id;
+    }
+    public String kmsKeyName() {
+        return this.kmsKeyName;
     }
     public Map<String,String> labels() {
         return this.labels;
@@ -93,6 +97,7 @@ public final class GetFunctionResult {
         private String environment;
         private List<GetFunctionEventTrigger> eventTriggers;
         private String id;
+        private String kmsKeyName;
         private Map<String,String> labels;
         private String location;
         private String name;
@@ -109,6 +114,7 @@ public final class GetFunctionResult {
     	      this.environment = defaults.environment;
     	      this.eventTriggers = defaults.eventTriggers;
     	      this.id = defaults.id;
+    	      this.kmsKeyName = defaults.kmsKeyName;
     	      this.labels = defaults.labels;
     	      this.location = defaults.location;
     	      this.name = defaults.name;
@@ -148,6 +154,11 @@ public final class GetFunctionResult {
         @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder kmsKeyName(String kmsKeyName) {
+            this.kmsKeyName = Objects.requireNonNull(kmsKeyName);
             return this;
         }
         @CustomType.Setter
@@ -200,6 +211,7 @@ public final class GetFunctionResult {
             o.environment = environment;
             o.eventTriggers = eventTriggers;
             o.id = id;
+            o.kmsKeyName = kmsKeyName;
             o.labels = labels;
             o.location = location;
             o.name = name;

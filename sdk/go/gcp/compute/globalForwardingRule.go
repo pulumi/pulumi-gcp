@@ -294,7 +294,7 @@ type GlobalForwardingRule struct {
 	// For more information about forwarding rules, refer to
 	// [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
 	// Default value is `EXTERNAL`.
-	// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+	// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrOutput `pulumi:"loadBalancingScheme"`
 	// Opaque filter criteria used by Loadbalancer to restrict routing
 	// configuration to a limited set xDS compliant clients. In their xDS
@@ -363,6 +363,13 @@ type GlobalForwardingRule struct {
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
 	SourceIpRanges pulumi.StringArrayOutput `pulumi:"sourceIpRanges"`
+	// This field identifies the subnetwork that the load balanced IP should
+	// belong to for this Forwarding Rule, used in internal load balancing and
+	// network load balancing with IPv6.
+	// If the network specified is in auto subnet mode, this field is optional.
+	// However, a subnetwork must be specified if the network is in custom subnet
+	// mode or when creating external forwarding rule with IPv6.
+	Subnetwork pulumi.StringOutput `pulumi:"subnetwork"`
 	// The URL of the target resource to receive the matched traffic.  For
 	// regional forwarding rules, this target must be in the same region as the
 	// forwarding rule. For global forwarding rules, this target must be a global
@@ -475,7 +482,7 @@ type globalForwardingRuleState struct {
 	// For more information about forwarding rules, refer to
 	// [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
 	// Default value is `EXTERNAL`.
-	// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+	// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// Opaque filter criteria used by Loadbalancer to restrict routing
 	// configuration to a limited set xDS compliant clients. In their xDS
@@ -544,6 +551,13 @@ type globalForwardingRuleState struct {
 	SelfLink *string `pulumi:"selfLink"`
 	// If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
 	SourceIpRanges []string `pulumi:"sourceIpRanges"`
+	// This field identifies the subnetwork that the load balanced IP should
+	// belong to for this Forwarding Rule, used in internal load balancing and
+	// network load balancing with IPv6.
+	// If the network specified is in auto subnet mode, this field is optional.
+	// However, a subnetwork must be specified if the network is in custom subnet
+	// mode or when creating external forwarding rule with IPv6.
+	Subnetwork *string `pulumi:"subnetwork"`
 	// The URL of the target resource to receive the matched traffic.  For
 	// regional forwarding rules, this target must be in the same region as the
 	// forwarding rule. For global forwarding rules, this target must be a global
@@ -624,7 +638,7 @@ type GlobalForwardingRuleState struct {
 	// For more information about forwarding rules, refer to
 	// [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
 	// Default value is `EXTERNAL`.
-	// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+	// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrInput
 	// Opaque filter criteria used by Loadbalancer to restrict routing
 	// configuration to a limited set xDS compliant clients. In their xDS
@@ -693,6 +707,13 @@ type GlobalForwardingRuleState struct {
 	SelfLink pulumi.StringPtrInput
 	// If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
 	SourceIpRanges pulumi.StringArrayInput
+	// This field identifies the subnetwork that the load balanced IP should
+	// belong to for this Forwarding Rule, used in internal load balancing and
+	// network load balancing with IPv6.
+	// If the network specified is in auto subnet mode, this field is optional.
+	// However, a subnetwork must be specified if the network is in custom subnet
+	// mode or when creating external forwarding rule with IPv6.
+	Subnetwork pulumi.StringPtrInput
 	// The URL of the target resource to receive the matched traffic.  For
 	// regional forwarding rules, this target must be in the same region as the
 	// forwarding rule. For global forwarding rules, this target must be a global
@@ -772,7 +793,7 @@ type globalForwardingRuleArgs struct {
 	// For more information about forwarding rules, refer to
 	// [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
 	// Default value is `EXTERNAL`.
-	// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+	// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
 	LoadBalancingScheme *string `pulumi:"loadBalancingScheme"`
 	// Opaque filter criteria used by Loadbalancer to restrict routing
 	// configuration to a limited set xDS compliant clients. In their xDS
@@ -835,6 +856,13 @@ type globalForwardingRuleArgs struct {
 	Project *string `pulumi:"project"`
 	// If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
 	SourceIpRanges []string `pulumi:"sourceIpRanges"`
+	// This field identifies the subnetwork that the load balanced IP should
+	// belong to for this Forwarding Rule, used in internal load balancing and
+	// network load balancing with IPv6.
+	// If the network specified is in auto subnet mode, this field is optional.
+	// However, a subnetwork must be specified if the network is in custom subnet
+	// mode or when creating external forwarding rule with IPv6.
+	Subnetwork *string `pulumi:"subnetwork"`
 	// The URL of the target resource to receive the matched traffic.  For
 	// regional forwarding rules, this target must be in the same region as the
 	// forwarding rule. For global forwarding rules, this target must be a global
@@ -911,7 +939,7 @@ type GlobalForwardingRuleArgs struct {
 	// For more information about forwarding rules, refer to
 	// [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
 	// Default value is `EXTERNAL`.
-	// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+	// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
 	LoadBalancingScheme pulumi.StringPtrInput
 	// Opaque filter criteria used by Loadbalancer to restrict routing
 	// configuration to a limited set xDS compliant clients. In their xDS
@@ -974,6 +1002,13 @@ type GlobalForwardingRuleArgs struct {
 	Project pulumi.StringPtrInput
 	// If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
 	SourceIpRanges pulumi.StringArrayInput
+	// This field identifies the subnetwork that the load balanced IP should
+	// belong to for this Forwarding Rule, used in internal load balancing and
+	// network load balancing with IPv6.
+	// If the network specified is in auto subnet mode, this field is optional.
+	// However, a subnetwork must be specified if the network is in custom subnet
+	// mode or when creating external forwarding rule with IPv6.
+	Subnetwork pulumi.StringPtrInput
 	// The URL of the target resource to receive the matched traffic.  For
 	// regional forwarding rules, this target must be in the same region as the
 	// forwarding rule. For global forwarding rules, this target must be a global
@@ -1164,7 +1199,7 @@ func (o GlobalForwardingRuleOutput) Labels() pulumi.StringMapOutput {
 // For more information about forwarding rules, refer to
 // [Forwarding rule concepts](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts).
 // Default value is `EXTERNAL`.
-// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
+// Possible values are: `EXTERNAL`, `EXTERNAL_MANAGED`, `INTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
 func (o GlobalForwardingRuleOutput) LoadBalancingScheme() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringPtrOutput { return v.LoadBalancingScheme }).(pulumi.StringPtrOutput)
 }
@@ -1264,6 +1299,16 @@ func (o GlobalForwardingRuleOutput) SelfLink() pulumi.StringOutput {
 // If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
 func (o GlobalForwardingRuleOutput) SourceIpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringArrayOutput { return v.SourceIpRanges }).(pulumi.StringArrayOutput)
+}
+
+// This field identifies the subnetwork that the load balanced IP should
+// belong to for this Forwarding Rule, used in internal load balancing and
+// network load balancing with IPv6.
+// If the network specified is in auto subnet mode, this field is optional.
+// However, a subnetwork must be specified if the network is in custom subnet
+// mode or when creating external forwarding rule with IPv6.
+func (o GlobalForwardingRuleOutput) Subnetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringOutput { return v.Subnetwork }).(pulumi.StringOutput)
 }
 
 // The URL of the target resource to receive the matched traffic.  For

@@ -1254,6 +1254,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "billing/projectInfo",
+  "fqn": "pulumi_gcp.billing",
+  "classes": {
+   "gcp:billing/projectInfo:ProjectInfo": "ProjectInfo"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "billing/subAccount",
   "fqn": "pulumi_gcp.billing",
   "classes": {
@@ -3138,6 +3146,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.dataform",
   "classes": {
    "gcp:dataform/repository:Repository": "Repository"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataform/repositoryReleaseConfig",
+  "fqn": "pulumi_gcp.dataform",
+  "classes": {
+   "gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig": "RepositoryReleaseConfig"
   }
  },
  {
@@ -5106,6 +5122,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.networkconnectivity",
   "classes": {
    "gcp:networkconnectivity/hub:Hub": "Hub"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networkconnectivity/serviceConnectionPolicy",
+  "fqn": "pulumi_gcp.networkconnectivity",
+  "classes": {
+   "gcp:networkconnectivity/serviceConnectionPolicy:ServiceConnectionPolicy": "ServiceConnectionPolicy"
   }
  },
  {

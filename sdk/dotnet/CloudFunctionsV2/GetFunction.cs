@@ -145,6 +145,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string KmsKeyName;
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Location;
         public readonly string Name;
@@ -165,6 +166,8 @@ namespace Pulumi.Gcp.CloudFunctionsV2
             ImmutableArray<Outputs.GetFunctionEventTriggerResult> eventTriggers,
 
             string id,
+
+            string kmsKeyName,
 
             ImmutableDictionary<string, string> labels,
 
@@ -187,6 +190,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
             Environment = environment;
             EventTriggers = eventTriggers;
             Id = id;
+            KmsKeyName = kmsKeyName;
             Labels = labels;
             Location = location;
             Name = name;

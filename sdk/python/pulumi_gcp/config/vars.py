@@ -205,6 +205,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('containerCustomEndpoint')
 
     @property
+    def core_billing_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('coreBillingCustomEndpoint')
+
+    @property
     def credentials(self) -> Optional[str]:
         return __config__.get('credentials')
 

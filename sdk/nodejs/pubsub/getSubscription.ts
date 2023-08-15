@@ -54,6 +54,7 @@ export interface GetSubscriptionArgs {
 export interface GetSubscriptionResult {
     readonly ackDeadlineSeconds: number;
     readonly bigqueryConfigs: outputs.pubsub.GetSubscriptionBigqueryConfig[];
+    readonly cloudStorageConfigs: outputs.pubsub.GetSubscriptionCloudStorageConfig[];
     readonly deadLetterPolicies: outputs.pubsub.GetSubscriptionDeadLetterPolicy[];
     readonly enableExactlyOnceDelivery: boolean;
     readonly enableMessageOrdering: boolean;

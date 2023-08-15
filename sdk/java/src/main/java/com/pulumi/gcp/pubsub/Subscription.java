@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.pubsub.SubscriptionArgs;
 import com.pulumi.gcp.pubsub.inputs.SubscriptionState;
 import com.pulumi.gcp.pubsub.outputs.SubscriptionBigqueryConfig;
+import com.pulumi.gcp.pubsub.outputs.SubscriptionCloudStorageConfig;
 import com.pulumi.gcp.pubsub.outputs.SubscriptionDeadLetterPolicy;
 import com.pulumi.gcp.pubsub.outputs.SubscriptionExpirationPolicy;
 import com.pulumi.gcp.pubsub.outputs.SubscriptionPushConfig;
@@ -347,8 +348,8 @@ public class Subscription extends com.pulumi.resources.CustomResource {
     }
     /**
      * If delivery to BigQuery is used with this subscription, this field is used to configure it.
-     * Either pushConfig or bigQueryConfig can be set, but not both.
-     * If both are empty, then the subscriber will pull and ack messages using API methods.
+     * Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
+     * If all three are empty, then the subscriber will pull and ack messages using API methods.
      * Structure is documented below.
      * 
      */
@@ -357,13 +358,33 @@ public class Subscription extends com.pulumi.resources.CustomResource {
 
     /**
      * @return If delivery to BigQuery is used with this subscription, this field is used to configure it.
-     * Either pushConfig or bigQueryConfig can be set, but not both.
-     * If both are empty, then the subscriber will pull and ack messages using API methods.
+     * Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
+     * If all three are empty, then the subscriber will pull and ack messages using API methods.
      * Structure is documented below.
      * 
      */
     public Output<Optional<SubscriptionBigqueryConfig>> bigqueryConfig() {
         return Codegen.optional(this.bigqueryConfig);
+    }
+    /**
+     * If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
+     * Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
+     * If all three are empty, then the subscriber will pull and ack messages using API methods.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="cloudStorageConfig", type=SubscriptionCloudStorageConfig.class, parameters={})
+    private Output</* @Nullable */ SubscriptionCloudStorageConfig> cloudStorageConfig;
+
+    /**
+     * @return If delivery to Cloud Storage is used with this subscription, this field is used to configure it.
+     * Either pushConfig, bigQueryConfig or cloudStorageConfig can be set, but not combined.
+     * If all three are empty, then the subscriber will pull and ack messages using API methods.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<SubscriptionCloudStorageConfig>> cloudStorageConfig() {
+        return Codegen.optional(this.cloudStorageConfig);
     }
     /**
      * A policy that specifies the conditions for dead lettering messages in

@@ -145,6 +145,27 @@ public final class BudgetBudgetFilterArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * A set of folder and organization names of the form folders/{folderId} or organizations/{organizationId},
+     * specifying that usage from only this set of folders and organizations should be included in the budget.
+     * If omitted, the budget includes all usage that the billing account pays for. If the folder or organization
+     * contains projects that are paid for by a different Cloud Billing account, the budget doesn&#39;t apply to those projects.
+     * 
+     */
+    @Import(name="resourceAncestors")
+    private @Nullable Output<List<String>> resourceAncestors;
+
+    /**
+     * @return A set of folder and organization names of the form folders/{folderId} or organizations/{organizationId},
+     * specifying that usage from only this set of folders and organizations should be included in the budget.
+     * If omitted, the budget includes all usage that the billing account pays for. If the folder or organization
+     * contains projects that are paid for by a different Cloud Billing account, the budget doesn&#39;t apply to those projects.
+     * 
+     */
+    public Optional<Output<List<String>>> resourceAncestors() {
+        return Optional.ofNullable(this.resourceAncestors);
+    }
+
+    /**
      * A set of services of the form services/{service_id},
      * specifying that usage from only this set of services should be
      * included in the budget. If omitted, the report will include
@@ -205,6 +226,7 @@ public final class BudgetBudgetFilterArgs extends com.pulumi.resources.ResourceA
         this.customPeriod = $.customPeriod;
         this.labels = $.labels;
         this.projects = $.projects;
+        this.resourceAncestors = $.resourceAncestors;
         this.services = $.services;
         this.subaccounts = $.subaccounts;
     }
@@ -414,6 +436,46 @@ public final class BudgetBudgetFilterArgs extends com.pulumi.resources.ResourceA
          */
         public Builder projects(String... projects) {
             return projects(List.of(projects));
+        }
+
+        /**
+         * @param resourceAncestors A set of folder and organization names of the form folders/{folderId} or organizations/{organizationId},
+         * specifying that usage from only this set of folders and organizations should be included in the budget.
+         * If omitted, the budget includes all usage that the billing account pays for. If the folder or organization
+         * contains projects that are paid for by a different Cloud Billing account, the budget doesn&#39;t apply to those projects.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceAncestors(@Nullable Output<List<String>> resourceAncestors) {
+            $.resourceAncestors = resourceAncestors;
+            return this;
+        }
+
+        /**
+         * @param resourceAncestors A set of folder and organization names of the form folders/{folderId} or organizations/{organizationId},
+         * specifying that usage from only this set of folders and organizations should be included in the budget.
+         * If omitted, the budget includes all usage that the billing account pays for. If the folder or organization
+         * contains projects that are paid for by a different Cloud Billing account, the budget doesn&#39;t apply to those projects.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceAncestors(List<String> resourceAncestors) {
+            return resourceAncestors(Output.of(resourceAncestors));
+        }
+
+        /**
+         * @param resourceAncestors A set of folder and organization names of the form folders/{folderId} or organizations/{organizationId},
+         * specifying that usage from only this set of folders and organizations should be included in the budget.
+         * If omitted, the budget includes all usage that the billing account pays for. If the folder or organization
+         * contains projects that are paid for by a different Cloud Billing account, the budget doesn&#39;t apply to those projects.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceAncestors(String... resourceAncestors) {
+            return resourceAncestors(List.of(resourceAncestors));
         }
 
         /**

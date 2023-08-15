@@ -85,6 +85,8 @@ class WorkstationClusterPrivateClusterConfig(dict):
         suggest = None
         if key == "enablePrivateEndpoint":
             suggest = "enable_private_endpoint"
+        elif key == "allowedProjects":
+            suggest = "allowed_projects"
         elif key == "clusterHostname":
             suggest = "cluster_hostname"
         elif key == "serviceAttachmentUri":
@@ -103,10 +105,13 @@ class WorkstationClusterPrivateClusterConfig(dict):
 
     def __init__(__self__, *,
                  enable_private_endpoint: bool,
+                 allowed_projects: Optional[Sequence[str]] = None,
                  cluster_hostname: Optional[str] = None,
                  service_attachment_uri: Optional[str] = None):
         """
         :param bool enable_private_endpoint: Whether Workstations endpoint is private.
+        :param Sequence[str] allowed_projects: Additional project IDs that are allowed to attach to the workstation cluster's service attachment.
+               By default, the workstation cluster's project and the VPC host project (if different) are allowed.
         :param str cluster_hostname: (Output)
                Hostname for the workstation cluster.
                This field will be populated only when private endpoint is enabled.
@@ -117,6 +122,8 @@ class WorkstationClusterPrivateClusterConfig(dict):
                To access workstations in the cluster, configure access to the managed service using (Private Service Connect)[https://cloud.google.com/vpc/docs/configure-private-service-connect-services].
         """
         pulumi.set(__self__, "enable_private_endpoint", enable_private_endpoint)
+        if allowed_projects is not None:
+            pulumi.set(__self__, "allowed_projects", allowed_projects)
         if cluster_hostname is not None:
             pulumi.set(__self__, "cluster_hostname", cluster_hostname)
         if service_attachment_uri is not None:
@@ -129,6 +136,15 @@ class WorkstationClusterPrivateClusterConfig(dict):
         Whether Workstations endpoint is private.
         """
         return pulumi.get(self, "enable_private_endpoint")
+
+    @property
+    @pulumi.getter(name="allowedProjects")
+    def allowed_projects(self) -> Optional[Sequence[str]]:
+        """
+        Additional project IDs that are allowed to attach to the workstation cluster's service attachment.
+        By default, the workstation cluster's project and the VPC host project (if different) are allowed.
+        """
+        return pulumi.get(self, "allowed_projects")
 
     @property
     @pulumi.getter(name="clusterHostname")

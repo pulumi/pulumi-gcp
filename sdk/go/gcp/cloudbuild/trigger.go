@@ -226,7 +226,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			webhookTriggerSecretKey, err := secretmanager.NewSecret(ctx, "webhookTriggerSecretKey", &secretmanager.SecretArgs{
-//				SecretId: pulumi.String("webhook_trigger-secret-key-1"),
+//				SecretId: pulumi.String("webhook-trigger-secret-key"),
 //				Replication: &secretmanager.SecretReplicationArgs{
 //					UserManaged: &secretmanager.SecretReplicationUserManagedArgs{
 //						Replicas: secretmanager.SecretReplicationUserManagedReplicaArray{
@@ -446,7 +446,7 @@ import (
 //						InvertRegex: pulumi.Bool(true),
 //						Tag:         pulumi.String("^0.1.*"),
 //					},
-//					RepoSlug: pulumi.String("terraform-provider-google"),
+//					RepoSlug: pulumi.String("bbs-push-trigger"),
 //				},
 //				Filename: pulumi.String("cloudbuild.yaml"),
 //				Location: pulumi.String("us-central1"),

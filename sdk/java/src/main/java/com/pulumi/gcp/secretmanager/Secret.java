@@ -70,6 +70,47 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Secret With Annotations
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.secretmanager.Secret;
+ * import com.pulumi.gcp.secretmanager.SecretArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var secret_with_annotations = new Secret(&#34;secret-with-annotations&#34;, SecretArgs.builder()        
+ *             .annotations(Map.ofEntries(
+ *                 Map.entry(&#34;key1&#34;, &#34;someval&#34;),
+ *                 Map.entry(&#34;key2&#34;, &#34;someval2&#34;),
+ *                 Map.entry(&#34;key3&#34;, &#34;someval3&#34;),
+ *                 Map.entry(&#34;key4&#34;, &#34;someval4&#34;),
+ *                 Map.entry(&#34;key5&#34;, &#34;someval5&#34;)
+ *             ))
+ *             .labels(Map.of(&#34;label&#34;, &#34;my-label&#34;))
+ *             .replication(SecretReplicationArgs.builder()
+ *                 .automatic(true)
+ *                 .build())
+ *             .secretId(&#34;secret&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -90,6 +131,38 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:secretmanager/secret:Secret")
 public class Secret extends com.pulumi.resources.CustomResource {
+    /**
+     * Custom metadata about the secret.
+     * Annotations are distinct from various forms of labels. Annotations exist to allow
+     * client tools to store their own state information without requiring a database.
+     * Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of
+     * maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and
+     * may have dashes (-), underscores (_), dots (.), and alphanumerics in between these
+     * symbols.
+     * The total size of annotation keys and values must be less than 16KiB.
+     * An object containing a list of &#34;key&#34;: value pairs. Example:
+     * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * 
+     */
+    @Export(name="annotations", type=Map.class, parameters={String.class, String.class})
+    private Output</* @Nullable */ Map<String,String>> annotations;
+
+    /**
+     * @return Custom metadata about the secret.
+     * Annotations are distinct from various forms of labels. Annotations exist to allow
+     * client tools to store their own state information without requiring a database.
+     * Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of
+     * maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and
+     * may have dashes (-), underscores (_), dots (.), and alphanumerics in between these
+     * symbols.
+     * The total size of annotation keys and values must be less than 16KiB.
+     * An object containing a list of &#34;key&#34;: value pairs. Example:
+     * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> annotations() {
+        return Codegen.optional(this.annotations);
+    }
     /**
      * The time at which the Secret was created.
      * 

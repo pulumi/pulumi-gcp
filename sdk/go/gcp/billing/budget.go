@@ -165,6 +165,9 @@ import (
 //						pulumi.String("PROMOTION"),
 //						pulumi.String("FREE_TIER"),
 //					},
+//					ResourceAncestors: pulumi.StringArray{
+//						pulumi.String("organizations/123456789"),
+//					},
 //				},
 //				Amount: &billing.BudgetAmountArgs{
 //					SpecifiedAmount: &billing.BudgetAmountSpecifiedAmountArgs{

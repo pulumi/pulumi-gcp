@@ -7,14 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * ## subcategory: "OS Config"
- *
- * description: |-
- *     OS policy assignment is an API resource that is used to apply a set of OS policies to a dynamically targeted group of Compute Engine VM instances.
- * ---
- *
- * # gcp.osconfig.OsPolicyAssignment
- *
  * OS policy assignment is an API resource that is used to apply a set of OS
  * policies to a dynamically targeted group of Compute Engine VM instances. An OS
  * policy is used to define the desired state configuration for a Compute Engine VM
