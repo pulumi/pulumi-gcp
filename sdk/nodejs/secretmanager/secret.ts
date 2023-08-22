@@ -175,6 +175,16 @@ export class Secret extends pulumi.CustomResource {
      * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
      */
     public readonly ttl!: pulumi.Output<string | undefined>;
+    /**
+     * Mapping from version alias to version name.
+     * A version alias is a string with a maximum length of 63 characters and can contain
+     * uppercase and lowercase letters, numerals, and the hyphen (-) and underscore ('_')
+     * characters. An alias string must start with a letter and cannot be the string
+     * 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret.
+     * An object containing a list of "key": value pairs. Example:
+     * { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     */
+    public readonly versionAliases!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Secret resource with the given unique name, arguments, and options.
@@ -200,6 +210,7 @@ export class Secret extends pulumi.CustomResource {
             resourceInputs["secretId"] = state ? state.secretId : undefined;
             resourceInputs["topics"] = state ? state.topics : undefined;
             resourceInputs["ttl"] = state ? state.ttl : undefined;
+            resourceInputs["versionAliases"] = state ? state.versionAliases : undefined;
         } else {
             const args = argsOrState as SecretArgs | undefined;
             if ((!args || args.replication === undefined) && !opts.urn) {
@@ -217,6 +228,7 @@ export class Secret extends pulumi.CustomResource {
             resourceInputs["secretId"] = args ? args.secretId : undefined;
             resourceInputs["topics"] = args ? args.topics : undefined;
             resourceInputs["ttl"] = args ? args.ttl : undefined;
+            resourceInputs["versionAliases"] = args ? args.versionAliases : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
         }
@@ -297,6 +309,16 @@ export interface SecretState {
      * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
      */
     ttl?: pulumi.Input<string>;
+    /**
+     * Mapping from version alias to version name.
+     * A version alias is a string with a maximum length of 63 characters and can contain
+     * uppercase and lowercase letters, numerals, and the hyphen (-) and underscore ('_')
+     * characters. An alias string must start with a letter and cannot be the string
+     * 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret.
+     * An object containing a list of "key": value pairs. Example:
+     * { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     */
+    versionAliases?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -362,4 +384,14 @@ export interface SecretArgs {
      * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
      */
     ttl?: pulumi.Input<string>;
+    /**
+     * Mapping from version alias to version name.
+     * A version alias is a string with a maximum length of 63 characters and can contain
+     * uppercase and lowercase letters, numerals, and the hyphen (-) and underscore ('_')
+     * characters. An alias string must start with a letter and cannot be the string
+     * 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret.
+     * An object containing a list of "key": value pairs. Example:
+     * { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     */
+    versionAliases?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

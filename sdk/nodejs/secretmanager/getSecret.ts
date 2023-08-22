@@ -62,6 +62,7 @@ export interface GetSecretResult {
     readonly secretId: string;
     readonly topics: outputs.secretmanager.GetSecretTopic[];
     readonly ttl: string;
+    readonly versionAliases: {[key: string]: string};
 }
 /**
  * Use this data source to get information about a Secret Manager Secret

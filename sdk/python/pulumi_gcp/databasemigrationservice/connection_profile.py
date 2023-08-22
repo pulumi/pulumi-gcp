@@ -515,6 +515,7 @@ class ConnectionProfile(pulumi.CustomResource):
                         "cloudfoo": "cloudbar",
                     },
                     tier="db-n1-standard-1",
+                    edition="ENTERPRISE",
                     storage_auto_resize_limit="0",
                     activation_policy="ALWAYS",
                     ip_config=gcp.databasemigrationservice.ConnectionProfileCloudsqlSettingsIpConfigArgs(
@@ -685,6 +686,7 @@ class ConnectionProfile(pulumi.CustomResource):
                         "cloudfoo": "cloudbar",
                     },
                     tier="db-n1-standard-1",
+                    edition="ENTERPRISE",
                     storage_auto_resize_limit="0",
                     activation_policy="ALWAYS",
                     ip_config=gcp.databasemigrationservice.ConnectionProfileCloudsqlSettingsIpConfigArgs(

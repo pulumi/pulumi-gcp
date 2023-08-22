@@ -114,8 +114,8 @@ import (
 //			defaultCertificate, err := certificatemanager.NewCertificate(ctx, "defaultCertificate", &certificatemanager.CertificateArgs{
 //				Location: pulumi.String("us-central1"),
 //				SelfManaged: &certificatemanager.CertificateSelfManagedArgs{
-//					PemCertificate: readFileOrPanic("test-fixtures/certificatemanager/cert.pem"),
-//					PemPrivateKey:  readFileOrPanic("test-fixtures/certificatemanager/private-key.pem"),
+//					PemCertificate: readFileOrPanic("test-fixtures/cert.pem"),
+//					PemPrivateKey:  readFileOrPanic("test-fixtures/private-key.pem"),
 //				},
 //			})
 //			if err != nil {
@@ -223,8 +223,8 @@ import (
 //			defaultCertificate, err := certificatemanager.NewCertificate(ctx, "defaultCertificate", &certificatemanager.CertificateArgs{
 //				Location: pulumi.String("us-south1"),
 //				SelfManaged: &certificatemanager.CertificateSelfManagedArgs{
-//					PemCertificate: readFileOrPanic("test-fixtures/certificatemanager/cert.pem"),
-//					PemPrivateKey:  readFileOrPanic("test-fixtures/certificatemanager/private-key.pem"),
+//					PemCertificate: readFileOrPanic("test-fixtures/cert.pem"),
+//					PemPrivateKey:  readFileOrPanic("test-fixtures/private-key.pem"),
 //				},
 //			})
 //			if err != nil {

@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  * const bucket = new gcp.storage.Bucket("bucket", {location: "US"});
  * const object = new gcp.storage.BucketObject("object", {
  *     bucket: bucket.name,
- *     source: new pulumi.asset.FileAsset("./test-fixtures/appengine/hello-world.zip"),
+ *     source: new pulumi.asset.FileAsset("./test-fixtures/hello-world.zip"),
  * });
  * const liveappV1 = new gcp.appengine.StandardAppVersion("liveappV1", {
  *     versionId: "v1",

@@ -151,6 +151,7 @@ from .region_network_firewall_policy_association import *
 from .region_network_firewall_policy_rule import *
 from .region_per_instance_config import *
 from .region_security_policy import *
+from .region_security_policy_rule import *
 from .region_ssl_certificate import *
 from .region_ssl_policy import *
 from .region_target_http_proxy import *

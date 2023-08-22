@@ -19,8 +19,6 @@ public final class VMwareClusterControlPlaneNodeVsphereConfigArgs extends com.pu
      * (Output)
      * The Vsphere datastore used by the Control Plane Node.
      * 
-     * ***
-     * 
      */
     @Import(name="datastore")
     private @Nullable Output<String> datastore;
@@ -29,17 +27,37 @@ public final class VMwareClusterControlPlaneNodeVsphereConfigArgs extends com.pu
      * @return (Output)
      * The Vsphere datastore used by the Control Plane Node.
      * 
-     * ***
-     * 
      */
     public Optional<Output<String>> datastore() {
         return Optional.ofNullable(this.datastore);
+    }
+
+    /**
+     * (Output)
+     * The Vsphere storage policy used by the control plane Node.
+     * 
+     * ***
+     * 
+     */
+    @Import(name="storagePolicyName")
+    private @Nullable Output<String> storagePolicyName;
+
+    /**
+     * @return (Output)
+     * The Vsphere storage policy used by the control plane Node.
+     * 
+     * ***
+     * 
+     */
+    public Optional<Output<String>> storagePolicyName() {
+        return Optional.ofNullable(this.storagePolicyName);
     }
 
     private VMwareClusterControlPlaneNodeVsphereConfigArgs() {}
 
     private VMwareClusterControlPlaneNodeVsphereConfigArgs(VMwareClusterControlPlaneNodeVsphereConfigArgs $) {
         this.datastore = $.datastore;
+        this.storagePolicyName = $.storagePolicyName;
     }
 
     public static Builder builder() {
@@ -64,8 +82,6 @@ public final class VMwareClusterControlPlaneNodeVsphereConfigArgs extends com.pu
          * @param datastore (Output)
          * The Vsphere datastore used by the Control Plane Node.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -78,13 +94,38 @@ public final class VMwareClusterControlPlaneNodeVsphereConfigArgs extends com.pu
          * @param datastore (Output)
          * The Vsphere datastore used by the Control Plane Node.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
         public Builder datastore(String datastore) {
             return datastore(Output.of(datastore));
+        }
+
+        /**
+         * @param storagePolicyName (Output)
+         * The Vsphere storage policy used by the control plane Node.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storagePolicyName(@Nullable Output<String> storagePolicyName) {
+            $.storagePolicyName = storagePolicyName;
+            return this;
+        }
+
+        /**
+         * @param storagePolicyName (Output)
+         * The Vsphere storage policy used by the control plane Node.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storagePolicyName(String storagePolicyName) {
+            return storagePolicyName(Output.of(storagePolicyName));
         }
 
         public VMwareClusterControlPlaneNodeVsphereConfigArgs build() {

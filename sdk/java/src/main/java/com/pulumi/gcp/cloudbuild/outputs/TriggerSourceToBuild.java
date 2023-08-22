@@ -12,6 +12,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TriggerSourceToBuild {
     /**
+     * @return The full resource name of the bitbucket server config.
+     * Format: projects/{project}/locations/{location}/bitbucketServerConfigs/{id}.
+     * 
+     */
+    private @Nullable String bitbucketServerConfig;
+    /**
      * @return The full resource name of the github enterprise config.
      * Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
      * 
@@ -42,6 +48,14 @@ public final class TriggerSourceToBuild {
     private @Nullable String uri;
 
     private TriggerSourceToBuild() {}
+    /**
+     * @return The full resource name of the bitbucket server config.
+     * Format: projects/{project}/locations/{location}/bitbucketServerConfigs/{id}.
+     * 
+     */
+    public Optional<String> bitbucketServerConfig() {
+        return Optional.ofNullable(this.bitbucketServerConfig);
+    }
     /**
      * @return The full resource name of the github enterprise config.
      * Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
@@ -91,6 +105,7 @@ public final class TriggerSourceToBuild {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String bitbucketServerConfig;
         private @Nullable String githubEnterpriseConfig;
         private String ref;
         private String repoType;
@@ -99,6 +114,7 @@ public final class TriggerSourceToBuild {
         public Builder() {}
         public Builder(TriggerSourceToBuild defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.bitbucketServerConfig = defaults.bitbucketServerConfig;
     	      this.githubEnterpriseConfig = defaults.githubEnterpriseConfig;
     	      this.ref = defaults.ref;
     	      this.repoType = defaults.repoType;
@@ -106,6 +122,11 @@ public final class TriggerSourceToBuild {
     	      this.uri = defaults.uri;
         }
 
+        @CustomType.Setter
+        public Builder bitbucketServerConfig(@Nullable String bitbucketServerConfig) {
+            this.bitbucketServerConfig = bitbucketServerConfig;
+            return this;
+        }
         @CustomType.Setter
         public Builder githubEnterpriseConfig(@Nullable String githubEnterpriseConfig) {
             this.githubEnterpriseConfig = githubEnterpriseConfig;
@@ -133,6 +154,7 @@ public final class TriggerSourceToBuild {
         }
         public TriggerSourceToBuild build() {
             final var o = new TriggerSourceToBuild();
+            o.bitbucketServerConfig = bitbucketServerConfig;
             o.githubEnterpriseConfig = githubEnterpriseConfig;
             o.ref = ref;
             o.repoType = repoType;

@@ -1553,6 +1553,7 @@ type EnvironmentConfigPrivateEnvironmentConfig struct {
 	CloudComposerConnectionSubnetwork *string `pulumi:"cloudComposerConnectionSubnetwork"`
 	CloudComposerNetworkIpv4CidrBlock *string `pulumi:"cloudComposerNetworkIpv4CidrBlock"`
 	CloudSqlIpv4CidrBlock             *string `pulumi:"cloudSqlIpv4CidrBlock"`
+	ConnectionType                    *string `pulumi:"connectionType"`
 	EnablePrivateEndpoint             *bool   `pulumi:"enablePrivateEndpoint"`
 	EnablePrivatelyUsedPublicIps      *bool   `pulumi:"enablePrivatelyUsedPublicIps"`
 	MasterIpv4CidrBlock               *string `pulumi:"masterIpv4CidrBlock"`
@@ -1574,6 +1575,7 @@ type EnvironmentConfigPrivateEnvironmentConfigArgs struct {
 	CloudComposerConnectionSubnetwork pulumi.StringPtrInput `pulumi:"cloudComposerConnectionSubnetwork"`
 	CloudComposerNetworkIpv4CidrBlock pulumi.StringPtrInput `pulumi:"cloudComposerNetworkIpv4CidrBlock"`
 	CloudSqlIpv4CidrBlock             pulumi.StringPtrInput `pulumi:"cloudSqlIpv4CidrBlock"`
+	ConnectionType                    pulumi.StringPtrInput `pulumi:"connectionType"`
 	EnablePrivateEndpoint             pulumi.BoolPtrInput   `pulumi:"enablePrivateEndpoint"`
 	EnablePrivatelyUsedPublicIps      pulumi.BoolPtrInput   `pulumi:"enablePrivatelyUsedPublicIps"`
 	MasterIpv4CidrBlock               pulumi.StringPtrInput `pulumi:"masterIpv4CidrBlock"`
@@ -1669,6 +1671,10 @@ func (o EnvironmentConfigPrivateEnvironmentConfigOutput) CloudSqlIpv4CidrBlock()
 	return o.ApplyT(func(v EnvironmentConfigPrivateEnvironmentConfig) *string { return v.CloudSqlIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
+func (o EnvironmentConfigPrivateEnvironmentConfigOutput) ConnectionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfigPrivateEnvironmentConfig) *string { return v.ConnectionType }).(pulumi.StringPtrOutput)
+}
+
 func (o EnvironmentConfigPrivateEnvironmentConfigOutput) EnablePrivateEndpoint() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigPrivateEnvironmentConfig) *bool { return v.EnablePrivateEndpoint }).(pulumi.BoolPtrOutput)
 }
@@ -1733,6 +1739,15 @@ func (o EnvironmentConfigPrivateEnvironmentConfigPtrOutput) CloudSqlIpv4CidrBloc
 			return nil
 		}
 		return v.CloudSqlIpv4CidrBlock
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o EnvironmentConfigPrivateEnvironmentConfigPtrOutput) ConnectionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfigPrivateEnvironmentConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionType
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4664,6 +4679,7 @@ type GetEnvironmentConfigPrivateEnvironmentConfig struct {
 	CloudComposerConnectionSubnetwork string `pulumi:"cloudComposerConnectionSubnetwork"`
 	CloudComposerNetworkIpv4CidrBlock string `pulumi:"cloudComposerNetworkIpv4CidrBlock"`
 	CloudSqlIpv4CidrBlock             string `pulumi:"cloudSqlIpv4CidrBlock"`
+	ConnectionType                    string `pulumi:"connectionType"`
 	EnablePrivateEndpoint             bool   `pulumi:"enablePrivateEndpoint"`
 	EnablePrivatelyUsedPublicIps      bool   `pulumi:"enablePrivatelyUsedPublicIps"`
 	MasterIpv4CidrBlock               string `pulumi:"masterIpv4CidrBlock"`
@@ -4685,6 +4701,7 @@ type GetEnvironmentConfigPrivateEnvironmentConfigArgs struct {
 	CloudComposerConnectionSubnetwork pulumi.StringInput `pulumi:"cloudComposerConnectionSubnetwork"`
 	CloudComposerNetworkIpv4CidrBlock pulumi.StringInput `pulumi:"cloudComposerNetworkIpv4CidrBlock"`
 	CloudSqlIpv4CidrBlock             pulumi.StringInput `pulumi:"cloudSqlIpv4CidrBlock"`
+	ConnectionType                    pulumi.StringInput `pulumi:"connectionType"`
 	EnablePrivateEndpoint             pulumi.BoolInput   `pulumi:"enablePrivateEndpoint"`
 	EnablePrivatelyUsedPublicIps      pulumi.BoolInput   `pulumi:"enablePrivatelyUsedPublicIps"`
 	MasterIpv4CidrBlock               pulumi.StringInput `pulumi:"masterIpv4CidrBlock"`
@@ -4756,6 +4773,10 @@ func (o GetEnvironmentConfigPrivateEnvironmentConfigOutput) CloudComposerNetwork
 
 func (o GetEnvironmentConfigPrivateEnvironmentConfigOutput) CloudSqlIpv4CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigPrivateEnvironmentConfig) string { return v.CloudSqlIpv4CidrBlock }).(pulumi.StringOutput)
+}
+
+func (o GetEnvironmentConfigPrivateEnvironmentConfigOutput) ConnectionType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigPrivateEnvironmentConfig) string { return v.ConnectionType }).(pulumi.StringOutput)
 }
 
 func (o GetEnvironmentConfigPrivateEnvironmentConfigOutput) EnablePrivateEndpoint() pulumi.BoolOutput {

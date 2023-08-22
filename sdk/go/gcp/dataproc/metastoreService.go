@@ -154,6 +154,72 @@ import (
 //	}
 //
 // ```
+// ### Dataproc Metastore Service Dpms2
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataproc.NewMetastoreService(ctx, "dpms2", &dataproc.MetastoreServiceArgs{
+//				DatabaseType: pulumi.String("SPANNER"),
+//				HiveMetastoreConfig: &dataproc.MetastoreServiceHiveMetastoreConfigArgs{
+//					Version: pulumi.String("3.1.2"),
+//				},
+//				Location: pulumi.String("us-central1"),
+//				ScalingConfig: &dataproc.MetastoreServiceScalingConfigArgs{
+//					InstanceSize: pulumi.String("EXTRA_SMALL"),
+//				},
+//				ServiceId: pulumi.String("dpms2"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Dataproc Metastore Service Dpms2 Scaling Factor
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataproc.NewMetastoreService(ctx, "dpms2ScalingFactor", &dataproc.MetastoreServiceArgs{
+//				DatabaseType: pulumi.String("SPANNER"),
+//				HiveMetastoreConfig: &dataproc.MetastoreServiceHiveMetastoreConfigArgs{
+//					Version: pulumi.String("3.1.2"),
+//				},
+//				Location: pulumi.String("us-central1"),
+//				ScalingConfig: &dataproc.MetastoreServiceScalingConfigArgs{
+//					ScalingFactor: pulumi.Float64(2),
+//				},
+//				ServiceId: pulumi.String("dpms2sf"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -224,6 +290,9 @@ type MetastoreService struct {
 	// Default value is `STABLE`.
 	// Possible values are: `CANARY`, `STABLE`.
 	ReleaseChannel pulumi.StringPtrOutput `pulumi:"releaseChannel"`
+	// Represents the scaling configuration of a metastore service.
+	// Structure is documented below.
+	ScalingConfig MetastoreServiceScalingConfigPtrOutput `pulumi:"scalingConfig"`
 	// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 63 characters.
@@ -322,6 +391,9 @@ type metastoreServiceState struct {
 	// Default value is `STABLE`.
 	// Possible values are: `CANARY`, `STABLE`.
 	ReleaseChannel *string `pulumi:"releaseChannel"`
+	// Represents the scaling configuration of a metastore service.
+	// Structure is documented below.
+	ScalingConfig *MetastoreServiceScalingConfig `pulumi:"scalingConfig"`
 	// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 63 characters.
@@ -388,6 +460,9 @@ type MetastoreServiceState struct {
 	// Default value is `STABLE`.
 	// Possible values are: `CANARY`, `STABLE`.
 	ReleaseChannel pulumi.StringPtrInput
+	// Represents the scaling configuration of a metastore service.
+	// Structure is documented below.
+	ScalingConfig MetastoreServiceScalingConfigPtrInput
 	// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 63 characters.
@@ -451,6 +526,9 @@ type metastoreServiceArgs struct {
 	// Default value is `STABLE`.
 	// Possible values are: `CANARY`, `STABLE`.
 	ReleaseChannel *string `pulumi:"releaseChannel"`
+	// Represents the scaling configuration of a metastore service.
+	// Structure is documented below.
+	ScalingConfig *MetastoreServiceScalingConfig `pulumi:"scalingConfig"`
 	// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 63 characters.
@@ -505,6 +583,9 @@ type MetastoreServiceArgs struct {
 	// Default value is `STABLE`.
 	// Possible values are: `CANARY`, `STABLE`.
 	ReleaseChannel pulumi.StringPtrInput
+	// Represents the scaling configuration of a metastore service.
+	// Structure is documented below.
+	ScalingConfig MetastoreServiceScalingConfigPtrInput
 	// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
 	// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
 	// 3 and 63 characters.
@@ -694,6 +775,12 @@ func (o MetastoreServiceOutput) Project() pulumi.StringOutput {
 // Possible values are: `CANARY`, `STABLE`.
 func (o MetastoreServiceOutput) ReleaseChannel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetastoreService) pulumi.StringPtrOutput { return v.ReleaseChannel }).(pulumi.StringPtrOutput)
+}
+
+// Represents the scaling configuration of a metastore service.
+// Structure is documented below.
+func (o MetastoreServiceOutput) ScalingConfig() MetastoreServiceScalingConfigPtrOutput {
+	return o.ApplyT(func(v *MetastoreService) MetastoreServiceScalingConfigPtrOutput { return v.ScalingConfig }).(MetastoreServiceScalingConfigPtrOutput)
 }
 
 // The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),

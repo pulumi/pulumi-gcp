@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *         var caAuthority = new Authority(&#34;caAuthority&#34;, AuthorityArgs.builder()        
  *             .location(&#34;us-central1&#34;)
  *             .pool(pool.name())
- *             .certificateAuthorityId(&#34;my-ca&#34;)
+ *             .certificateAuthorityId(&#34;ca-authority&#34;)
  *             .config(AuthorityConfigArgs.builder()
  *                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
  *                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()

@@ -79,6 +79,7 @@ public final class GetRegionInstanceTemplateDisk {
      * 
      */
     private String mode;
+    private Integer provisionedIops;
     /**
      * @return (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
      * 
@@ -195,6 +196,9 @@ public final class GetRegionInstanceTemplateDisk {
     public String mode() {
         return this.mode;
     }
+    public Integer provisionedIops() {
+        return this.provisionedIops;
+    }
     /**
      * @return (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
      * 
@@ -260,6 +264,7 @@ public final class GetRegionInstanceTemplateDisk {
         private String interface_;
         private Map<String,String> labels;
         private String mode;
+        private Integer provisionedIops;
         private List<String> resourcePolicies;
         private String source;
         private String sourceImage;
@@ -280,6 +285,7 @@ public final class GetRegionInstanceTemplateDisk {
     	      this.interface_ = defaults.interface_;
     	      this.labels = defaults.labels;
     	      this.mode = defaults.mode;
+    	      this.provisionedIops = defaults.provisionedIops;
     	      this.resourcePolicies = defaults.resourcePolicies;
     	      this.source = defaults.source;
     	      this.sourceImage = defaults.sourceImage;
@@ -343,6 +349,11 @@ public final class GetRegionInstanceTemplateDisk {
             return this;
         }
         @CustomType.Setter
+        public Builder provisionedIops(Integer provisionedIops) {
+            this.provisionedIops = Objects.requireNonNull(provisionedIops);
+            return this;
+        }
+        @CustomType.Setter
         public Builder resourcePolicies(List<String> resourcePolicies) {
             this.resourcePolicies = Objects.requireNonNull(resourcePolicies);
             return this;
@@ -398,6 +409,7 @@ public final class GetRegionInstanceTemplateDisk {
             o.interface_ = interface_;
             o.labels = labels;
             o.mode = mode;
+            o.provisionedIops = provisionedIops;
             o.resourcePolicies = resourcePolicies;
             o.source = source;
             o.sourceImage = sourceImage;

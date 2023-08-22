@@ -4025,6 +4025,9 @@ func (o TriggerBuildStepVolumeArrayOutput) Index(i pulumi.IntInput) TriggerBuild
 }
 
 type TriggerGitFileSource struct {
+	// The full resource name of the bitbucket server config.
+	// Format: projects/{project}/locations/{location}/bitbucketServerConfigs/{id}.
+	BitbucketServerConfig *string `pulumi:"bitbucketServerConfig"`
 	// The full resource name of the github enterprise config.
 	// Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
 	GithubEnterpriseConfig *string `pulumi:"githubEnterpriseConfig"`
@@ -4058,6 +4061,9 @@ type TriggerGitFileSourceInput interface {
 }
 
 type TriggerGitFileSourceArgs struct {
+	// The full resource name of the bitbucket server config.
+	// Format: projects/{project}/locations/{location}/bitbucketServerConfigs/{id}.
+	BitbucketServerConfig pulumi.StringPtrInput `pulumi:"bitbucketServerConfig"`
 	// The full resource name of the github enterprise config.
 	// Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
 	GithubEnterpriseConfig pulumi.StringPtrInput `pulumi:"githubEnterpriseConfig"`
@@ -4156,6 +4162,12 @@ func (o TriggerGitFileSourceOutput) ToTriggerGitFileSourcePtrOutputWithContext(c
 	}).(TriggerGitFileSourcePtrOutput)
 }
 
+// The full resource name of the bitbucket server config.
+// Format: projects/{project}/locations/{location}/bitbucketServerConfigs/{id}.
+func (o TriggerGitFileSourceOutput) BitbucketServerConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerGitFileSource) *string { return v.BitbucketServerConfig }).(pulumi.StringPtrOutput)
+}
+
 // The full resource name of the github enterprise config.
 // Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
 func (o TriggerGitFileSourceOutput) GithubEnterpriseConfig() pulumi.StringPtrOutput {
@@ -4215,6 +4227,17 @@ func (o TriggerGitFileSourcePtrOutput) Elem() TriggerGitFileSourceOutput {
 		var ret TriggerGitFileSource
 		return ret
 	}).(TriggerGitFileSourceOutput)
+}
+
+// The full resource name of the bitbucket server config.
+// Format: projects/{project}/locations/{location}/bitbucketServerConfigs/{id}.
+func (o TriggerGitFileSourcePtrOutput) BitbucketServerConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerGitFileSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BitbucketServerConfig
+	}).(pulumi.StringPtrOutput)
 }
 
 // The full resource name of the github enterprise config.
@@ -5623,6 +5646,9 @@ func (o TriggerRepositoryEventConfigPushPtrOutput) Tag() pulumi.StringPtrOutput 
 }
 
 type TriggerSourceToBuild struct {
+	// The full resource name of the bitbucket server config.
+	// Format: projects/{project}/locations/{location}/bitbucketServerConfigs/{id}.
+	BitbucketServerConfig *string `pulumi:"bitbucketServerConfig"`
 	// The full resource name of the github enterprise config.
 	// Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
 	GithubEnterpriseConfig *string `pulumi:"githubEnterpriseConfig"`
@@ -5651,6 +5677,9 @@ type TriggerSourceToBuildInput interface {
 }
 
 type TriggerSourceToBuildArgs struct {
+	// The full resource name of the bitbucket server config.
+	// Format: projects/{project}/locations/{location}/bitbucketServerConfigs/{id}.
+	BitbucketServerConfig pulumi.StringPtrInput `pulumi:"bitbucketServerConfig"`
 	// The full resource name of the github enterprise config.
 	// Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
 	GithubEnterpriseConfig pulumi.StringPtrInput `pulumi:"githubEnterpriseConfig"`
@@ -5744,6 +5773,12 @@ func (o TriggerSourceToBuildOutput) ToTriggerSourceToBuildPtrOutputWithContext(c
 	}).(TriggerSourceToBuildPtrOutput)
 }
 
+// The full resource name of the bitbucket server config.
+// Format: projects/{project}/locations/{location}/bitbucketServerConfigs/{id}.
+func (o TriggerSourceToBuildOutput) BitbucketServerConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggerSourceToBuild) *string { return v.BitbucketServerConfig }).(pulumi.StringPtrOutput)
+}
+
 // The full resource name of the github enterprise config.
 // Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
 func (o TriggerSourceToBuildOutput) GithubEnterpriseConfig() pulumi.StringPtrOutput {
@@ -5795,6 +5830,17 @@ func (o TriggerSourceToBuildPtrOutput) Elem() TriggerSourceToBuildOutput {
 		var ret TriggerSourceToBuild
 		return ret
 	}).(TriggerSourceToBuildOutput)
+}
+
+// The full resource name of the bitbucket server config.
+// Format: projects/{project}/locations/{location}/bitbucketServerConfigs/{id}.
+func (o TriggerSourceToBuildPtrOutput) BitbucketServerConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TriggerSourceToBuild) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BitbucketServerConfig
+	}).(pulumi.StringPtrOutput)
 }
 
 // The full resource name of the github enterprise config.
@@ -8695,6 +8741,7 @@ func (o GetTriggerBuildStepVolumeArrayOutput) Index(i pulumi.IntInput) GetTrigge
 }
 
 type GetTriggerGitFileSource struct {
+	BitbucketServerConfig  string `pulumi:"bitbucketServerConfig"`
 	GithubEnterpriseConfig string `pulumi:"githubEnterpriseConfig"`
 	Path                   string `pulumi:"path"`
 	RepoType               string `pulumi:"repoType"`
@@ -8715,6 +8762,7 @@ type GetTriggerGitFileSourceInput interface {
 }
 
 type GetTriggerGitFileSourceArgs struct {
+	BitbucketServerConfig  pulumi.StringInput `pulumi:"bitbucketServerConfig"`
 	GithubEnterpriseConfig pulumi.StringInput `pulumi:"githubEnterpriseConfig"`
 	Path                   pulumi.StringInput `pulumi:"path"`
 	RepoType               pulumi.StringInput `pulumi:"repoType"`
@@ -8772,6 +8820,10 @@ func (o GetTriggerGitFileSourceOutput) ToGetTriggerGitFileSourceOutput() GetTrig
 
 func (o GetTriggerGitFileSourceOutput) ToGetTriggerGitFileSourceOutputWithContext(ctx context.Context) GetTriggerGitFileSourceOutput {
 	return o
+}
+
+func (o GetTriggerGitFileSourceOutput) BitbucketServerConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerGitFileSource) string { return v.BitbucketServerConfig }).(pulumi.StringOutput)
 }
 
 func (o GetTriggerGitFileSourceOutput) GithubEnterpriseConfig() pulumi.StringOutput {
@@ -9581,6 +9633,7 @@ func (o GetTriggerRepositoryEventConfigPushArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetTriggerSourceToBuild struct {
+	BitbucketServerConfig  string `pulumi:"bitbucketServerConfig"`
 	GithubEnterpriseConfig string `pulumi:"githubEnterpriseConfig"`
 	Ref                    string `pulumi:"ref"`
 	RepoType               string `pulumi:"repoType"`
@@ -9600,6 +9653,7 @@ type GetTriggerSourceToBuildInput interface {
 }
 
 type GetTriggerSourceToBuildArgs struct {
+	BitbucketServerConfig  pulumi.StringInput `pulumi:"bitbucketServerConfig"`
 	GithubEnterpriseConfig pulumi.StringInput `pulumi:"githubEnterpriseConfig"`
 	Ref                    pulumi.StringInput `pulumi:"ref"`
 	RepoType               pulumi.StringInput `pulumi:"repoType"`
@@ -9656,6 +9710,10 @@ func (o GetTriggerSourceToBuildOutput) ToGetTriggerSourceToBuildOutput() GetTrig
 
 func (o GetTriggerSourceToBuildOutput) ToGetTriggerSourceToBuildOutputWithContext(ctx context.Context) GetTriggerSourceToBuildOutput {
 	return o
+}
+
+func (o GetTriggerSourceToBuildOutput) BitbucketServerConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTriggerSourceToBuild) string { return v.BitbucketServerConfig }).(pulumi.StringOutput)
 }
 
 func (o GetTriggerSourceToBuildOutput) GithubEnterpriseConfig() pulumi.StringOutput {

@@ -247,11 +247,6 @@ import (
 //				},
 //				Visibility: pulumi.String("private"),
 //				PrivateVisibilityConfig: &dns.ManagedZonePrivateVisibilityConfigArgs{
-//					Networks: dns.ManagedZonePrivateVisibilityConfigNetworkArray{
-//						&dns.ManagedZonePrivateVisibilityConfigNetworkArgs{
-//							NetworkUrl: network_1.ID(),
-//						},
-//					},
 //					GkeClusters: dns.ManagedZonePrivateVisibilityConfigGkeClusterArray{
 //						&dns.ManagedZonePrivateVisibilityConfigGkeClusterArgs{
 //							GkeClusterName: cluster_1.ID(),
@@ -460,7 +455,7 @@ type ManagedZone struct {
 	// Structure is documented below.
 	PeeringConfig ManagedZonePeeringConfigPtrOutput `pulumi:"peeringConfig"`
 	// For privately visible zones, the set of Virtual Private Cloud
-	// resources that the zone is visible from.
+	// resources that the zone is visible from. At least one of `gkeClusters` or `networks` must be specified.
 	// Structure is documented below.
 	PrivateVisibilityConfig ManagedZonePrivateVisibilityConfigPtrOutput `pulumi:"privateVisibilityConfig"`
 	// The ID of the project in which the resource belongs.
@@ -553,7 +548,7 @@ type managedZoneState struct {
 	// Structure is documented below.
 	PeeringConfig *ManagedZonePeeringConfig `pulumi:"peeringConfig"`
 	// For privately visible zones, the set of Virtual Private Cloud
-	// resources that the zone is visible from.
+	// resources that the zone is visible from. At least one of `gkeClusters` or `networks` must be specified.
 	// Structure is documented below.
 	PrivateVisibilityConfig *ManagedZonePrivateVisibilityConfig `pulumi:"privateVisibilityConfig"`
 	// The ID of the project in which the resource belongs.
@@ -611,7 +606,7 @@ type ManagedZoneState struct {
 	// Structure is documented below.
 	PeeringConfig ManagedZonePeeringConfigPtrInput
 	// For privately visible zones, the set of Virtual Private Cloud
-	// resources that the zone is visible from.
+	// resources that the zone is visible from. At least one of `gkeClusters` or `networks` must be specified.
 	// Structure is documented below.
 	PrivateVisibilityConfig ManagedZonePrivateVisibilityConfigPtrInput
 	// The ID of the project in which the resource belongs.
@@ -665,7 +660,7 @@ type managedZoneArgs struct {
 	// Structure is documented below.
 	PeeringConfig *ManagedZonePeeringConfig `pulumi:"peeringConfig"`
 	// For privately visible zones, the set of Virtual Private Cloud
-	// resources that the zone is visible from.
+	// resources that the zone is visible from. At least one of `gkeClusters` or `networks` must be specified.
 	// Structure is documented below.
 	PrivateVisibilityConfig *ManagedZonePrivateVisibilityConfig `pulumi:"privateVisibilityConfig"`
 	// The ID of the project in which the resource belongs.
@@ -716,7 +711,7 @@ type ManagedZoneArgs struct {
 	// Structure is documented below.
 	PeeringConfig ManagedZonePeeringConfigPtrInput
 	// For privately visible zones, the set of Virtual Private Cloud
-	// resources that the zone is visible from.
+	// resources that the zone is visible from. At least one of `gkeClusters` or `networks` must be specified.
 	// Structure is documented below.
 	PrivateVisibilityConfig ManagedZonePrivateVisibilityConfigPtrInput
 	// The ID of the project in which the resource belongs.
@@ -896,7 +891,7 @@ func (o ManagedZoneOutput) PeeringConfig() ManagedZonePeeringConfigPtrOutput {
 }
 
 // For privately visible zones, the set of Virtual Private Cloud
-// resources that the zone is visible from.
+// resources that the zone is visible from. At least one of `gkeClusters` or `networks` must be specified.
 // Structure is documented below.
 func (o ManagedZoneOutput) PrivateVisibilityConfig() ManagedZonePrivateVisibilityConfigPtrOutput {
 	return o.ApplyT(func(v *ManagedZone) ManagedZonePrivateVisibilityConfigPtrOutput { return v.PrivateVisibilityConfig }).(ManagedZonePrivateVisibilityConfigPtrOutput)

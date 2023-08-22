@@ -136,6 +136,60 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// });
     /// ```
+    /// ### Dataproc Metastore Service Dpms2
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var dpms2 = new Gcp.Dataproc.MetastoreService("dpms2", new()
+    ///     {
+    ///         DatabaseType = "SPANNER",
+    ///         HiveMetastoreConfig = new Gcp.Dataproc.Inputs.MetastoreServiceHiveMetastoreConfigArgs
+    ///         {
+    ///             Version = "3.1.2",
+    ///         },
+    ///         Location = "us-central1",
+    ///         ScalingConfig = new Gcp.Dataproc.Inputs.MetastoreServiceScalingConfigArgs
+    ///         {
+    ///             InstanceSize = "EXTRA_SMALL",
+    ///         },
+    ///         ServiceId = "dpms2",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Dataproc Metastore Service Dpms2 Scaling Factor
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var dpms2ScalingFactor = new Gcp.Dataproc.MetastoreService("dpms2ScalingFactor", new()
+    ///     {
+    ///         DatabaseType = "SPANNER",
+    ///         HiveMetastoreConfig = new Gcp.Dataproc.Inputs.MetastoreServiceHiveMetastoreConfigArgs
+    ///         {
+    ///             Version = "3.1.2",
+    ///         },
+    ///         Location = "us-central1",
+    ///         ScalingConfig = new Gcp.Dataproc.Inputs.MetastoreServiceScalingConfigArgs
+    ///         {
+    ///             ScalingFactor = 2,
+    ///         },
+    ///         ServiceId = "dpms2sf",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -260,6 +314,13 @@ namespace Pulumi.Gcp.Dataproc
         /// </summary>
         [Output("releaseChannel")]
         public Output<string?> ReleaseChannel { get; private set; } = null!;
+
+        /// <summary>
+        /// Represents the scaling configuration of a metastore service.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("scalingConfig")]
+        public Output<Outputs.MetastoreServiceScalingConfig?> ScalingConfig { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
@@ -443,6 +504,13 @@ namespace Pulumi.Gcp.Dataproc
         public Input<string>? ReleaseChannel { get; set; }
 
         /// <summary>
+        /// Represents the scaling configuration of a metastore service.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("scalingConfig")]
+        public Input<Inputs.MetastoreServiceScalingConfigArgs>? ScalingConfig { get; set; }
+
+        /// <summary>
         /// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
         /// and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
         /// 3 and 63 characters.
@@ -585,6 +653,13 @@ namespace Pulumi.Gcp.Dataproc
         /// </summary>
         [Input("releaseChannel")]
         public Input<string>? ReleaseChannel { get; set; }
+
+        /// <summary>
+        /// Represents the scaling configuration of a metastore service.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("scalingConfig")]
+        public Input<Inputs.MetastoreServiceScalingConfigGetArgs>? ScalingConfig { get; set; }
 
         /// <summary>
         /// The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),

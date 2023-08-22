@@ -59,6 +59,12 @@ public final class ConnectionProfileCloudsqlSettings {
      */
     private @Nullable String databaseVersion;
     /**
+     * @return The edition of the given Cloud SQL instance.
+     * Possible values are: `ENTERPRISE`, `ENTERPRISE_PLUS`.
+     * 
+     */
+    private @Nullable String edition;
+    /**
      * @return The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
      * Structure is documented below.
      * 
@@ -165,6 +171,14 @@ public final class ConnectionProfileCloudsqlSettings {
         return Optional.ofNullable(this.databaseVersion);
     }
     /**
+     * @return The edition of the given Cloud SQL instance.
+     * Possible values are: `ENTERPRISE`, `ENTERPRISE_PLUS`.
+     * 
+     */
+    public Optional<String> edition() {
+        return Optional.ofNullable(this.edition);
+    }
+    /**
      * @return The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
      * Structure is documented below.
      * 
@@ -242,6 +256,7 @@ public final class ConnectionProfileCloudsqlSettings {
         private @Nullable String dataDiskType;
         private @Nullable Map<String,String> databaseFlags;
         private @Nullable String databaseVersion;
+        private @Nullable String edition;
         private @Nullable ConnectionProfileCloudsqlSettingsIpConfig ipConfig;
         private @Nullable String rootPassword;
         private @Nullable Boolean rootPasswordSet;
@@ -261,6 +276,7 @@ public final class ConnectionProfileCloudsqlSettings {
     	      this.dataDiskType = defaults.dataDiskType;
     	      this.databaseFlags = defaults.databaseFlags;
     	      this.databaseVersion = defaults.databaseVersion;
+    	      this.edition = defaults.edition;
     	      this.ipConfig = defaults.ipConfig;
     	      this.rootPassword = defaults.rootPassword;
     	      this.rootPasswordSet = defaults.rootPasswordSet;
@@ -309,6 +325,11 @@ public final class ConnectionProfileCloudsqlSettings {
         @CustomType.Setter
         public Builder databaseVersion(@Nullable String databaseVersion) {
             this.databaseVersion = databaseVersion;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder edition(@Nullable String edition) {
+            this.edition = edition;
             return this;
         }
         @CustomType.Setter
@@ -361,6 +382,7 @@ public final class ConnectionProfileCloudsqlSettings {
             o.dataDiskType = dataDiskType;
             o.databaseFlags = databaseFlags;
             o.databaseVersion = databaseVersion;
+            o.edition = edition;
             o.ipConfig = ipConfig;
             o.rootPassword = rootPassword;
             o.rootPasswordSet = rootPasswordSet;

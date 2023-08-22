@@ -433,6 +433,26 @@ namespace Pulumi.Gcp.CloudRunV2
         public Output<ImmutableArray<Outputs.JobCondition>> Conditions { get; private set; } = null!;
 
         /// <summary>
+        /// (Output)
+        /// Creation timestamp of the execution.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Email address of the authenticated creator.
+        /// </summary>
+        [Output("creator")]
+        public Output<string> Creator { get; private set; } = null!;
+
+        /// <summary>
+        /// The deletion time.
+        /// </summary>
+        [Output("deleteTime")]
+        public Output<string> DeleteTime { get; private set; } = null!;
+
+        /// <summary>
         /// A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
         /// </summary>
         [Output("etag")]
@@ -443,6 +463,12 @@ namespace Pulumi.Gcp.CloudRunV2
         /// </summary>
         [Output("executionCount")]
         public Output<int> ExecutionCount { get; private set; } = null!;
+
+        /// <summary>
+        /// For a deleted resource, the time after which it will be permamently deleted.
+        /// </summary>
+        [Output("expireTime")]
+        public Output<string> ExpireTime { get; private set; } = null!;
 
         /// <summary>
         /// A number that monotonically increases every time the user modifies the desired state.
@@ -465,6 +491,12 @@ namespace Pulumi.Gcp.CloudRunV2
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// Email address of the last authenticated modifier.
+        /// </summary>
+        [Output("lastModifier")]
+        public Output<string> LastModifier { get; private set; } = null!;
 
         /// <summary>
         /// Name of the last created execution.
@@ -535,6 +567,12 @@ namespace Pulumi.Gcp.CloudRunV2
         /// </summary>
         [Output("uid")]
         public Output<string> Uid { get; private set; } = null!;
+
+        /// <summary>
+        /// The last-modified time.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
 
 
         /// <summary>
@@ -741,6 +779,26 @@ namespace Pulumi.Gcp.CloudRunV2
         }
 
         /// <summary>
+        /// (Output)
+        /// Creation timestamp of the execution.
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Email address of the authenticated creator.
+        /// </summary>
+        [Input("creator")]
+        public Input<string>? Creator { get; set; }
+
+        /// <summary>
+        /// The deletion time.
+        /// </summary>
+        [Input("deleteTime")]
+        public Input<string>? DeleteTime { get; set; }
+
+        /// <summary>
         /// A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
         /// </summary>
         [Input("etag")]
@@ -751,6 +809,12 @@ namespace Pulumi.Gcp.CloudRunV2
         /// </summary>
         [Input("executionCount")]
         public Input<int>? ExecutionCount { get; set; }
+
+        /// <summary>
+        /// For a deleted resource, the time after which it will be permamently deleted.
+        /// </summary>
+        [Input("expireTime")]
+        public Input<string>? ExpireTime { get; set; }
 
         /// <summary>
         /// A number that monotonically increases every time the user modifies the desired state.
@@ -779,6 +843,12 @@ namespace Pulumi.Gcp.CloudRunV2
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
+
+        /// <summary>
+        /// Email address of the last authenticated modifier.
+        /// </summary>
+        [Input("lastModifier")]
+        public Input<string>? LastModifier { get; set; }
 
         [Input("latestCreatedExecutions")]
         private InputList<Inputs.JobLatestCreatedExecutionGetArgs>? _latestCreatedExecutions;
@@ -861,6 +931,12 @@ namespace Pulumi.Gcp.CloudRunV2
         /// </summary>
         [Input("uid")]
         public Input<string>? Uid { get; set; }
+
+        /// <summary>
+        /// The last-modified time.
+        /// </summary>
+        [Input("updateTime")]
+        public Input<string>? UpdateTime { get; set; }
 
         public JobState()
         {

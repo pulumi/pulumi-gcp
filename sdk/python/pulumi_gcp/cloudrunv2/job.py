@@ -238,10 +238,15 @@ class _JobState:
                  client: Optional[pulumi.Input[str]] = None,
                  client_version: Optional[pulumi.Input[str]] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input['JobConditionArgs']]]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
+                 creator: Optional[pulumi.Input[str]] = None,
+                 delete_time: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  execution_count: Optional[pulumi.Input[int]] = None,
+                 expire_time: Optional[pulumi.Input[str]] = None,
                  generation: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 last_modifier: Optional[pulumi.Input[str]] = None,
                  latest_created_executions: Optional[pulumi.Input[Sequence[pulumi.Input['JobLatestCreatedExecutionArgs']]]] = None,
                  launch_stage: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -251,7 +256,8 @@ class _JobState:
                  reconciling: Optional[pulumi.Input[bool]] = None,
                  template: Optional[pulumi.Input['JobTemplateArgs']] = None,
                  terminal_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['JobTerminalConditionArgs']]]] = None,
-                 uid: Optional[pulumi.Input[str]] = None):
+                 uid: Optional[pulumi.Input[str]] = None,
+                 update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Job resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
@@ -270,8 +276,14 @@ class _JobState:
         :param pulumi.Input[str] client_version: Arbitrary version identifier for the API client.
         :param pulumi.Input[Sequence[pulumi.Input['JobConditionArgs']]] conditions: The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job does not reach its desired state. See comments in reconciling for additional information on `reconciliation` process in Cloud Run.
                Structure is documented below.
+        :param pulumi.Input[str] create_time: (Output)
+               Creation timestamp of the execution.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[str] creator: Email address of the authenticated creator.
+        :param pulumi.Input[str] delete_time: The deletion time.
         :param pulumi.Input[str] etag: A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
         :param pulumi.Input[int] execution_count: Number of executions created for this job.
+        :param pulumi.Input[str] expire_time: For a deleted resource, the time after which it will be permamently deleted.
         :param pulumi.Input[str] generation: A number that monotonically increases every time the user modifies the desired state.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
                or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
@@ -284,6 +296,7 @@ class _JobState:
                environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
                Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
                All system labels in v1 now have a corresponding field in v2 Job.
+        :param pulumi.Input[str] last_modifier: Email address of the last authenticated modifier.
         :param pulumi.Input[Sequence[pulumi.Input['JobLatestCreatedExecutionArgs']]] latest_created_executions: Name of the last created execution.
                Structure is documented below.
         :param pulumi.Input[str] launch_stage: The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
@@ -304,6 +317,7 @@ class _JobState:
         :param pulumi.Input[Sequence[pulumi.Input['JobTerminalConditionArgs']]] terminal_conditions: The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the desired state
                Structure is documented below.
         :param pulumi.Input[str] uid: Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
+        :param pulumi.Input[str] update_time: The last-modified time.
         """
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
@@ -315,14 +329,24 @@ class _JobState:
             pulumi.set(__self__, "client_version", client_version)
         if conditions is not None:
             pulumi.set(__self__, "conditions", conditions)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if creator is not None:
+            pulumi.set(__self__, "creator", creator)
+        if delete_time is not None:
+            pulumi.set(__self__, "delete_time", delete_time)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
         if execution_count is not None:
             pulumi.set(__self__, "execution_count", execution_count)
+        if expire_time is not None:
+            pulumi.set(__self__, "expire_time", expire_time)
         if generation is not None:
             pulumi.set(__self__, "generation", generation)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if last_modifier is not None:
+            pulumi.set(__self__, "last_modifier", last_modifier)
         if latest_created_executions is not None:
             pulumi.set(__self__, "latest_created_executions", latest_created_executions)
         if launch_stage is not None:
@@ -343,6 +367,8 @@ class _JobState:
             pulumi.set(__self__, "terminal_conditions", terminal_conditions)
         if uid is not None:
             pulumi.set(__self__, "uid", uid)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter
@@ -416,6 +442,44 @@ class _JobState:
         pulumi.set(self, "conditions", value)
 
     @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Creation timestamp of the execution.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter
+    def creator(self) -> Optional[pulumi.Input[str]]:
+        """
+        Email address of the authenticated creator.
+        """
+        return pulumi.get(self, "creator")
+
+    @creator.setter
+    def creator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "creator", value)
+
+    @property
+    @pulumi.getter(name="deleteTime")
+    def delete_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The deletion time.
+        """
+        return pulumi.get(self, "delete_time")
+
+    @delete_time.setter
+    def delete_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "delete_time", value)
+
+    @property
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
@@ -438,6 +502,18 @@ class _JobState:
     @execution_count.setter
     def execution_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "execution_count", value)
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        For a deleted resource, the time after which it will be permamently deleted.
+        """
+        return pulumi.get(self, "expire_time")
+
+    @expire_time.setter
+    def expire_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expire_time", value)
 
     @property
     @pulumi.getter
@@ -472,6 +548,18 @@ class _JobState:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="lastModifier")
+    def last_modifier(self) -> Optional[pulumi.Input[str]]:
+        """
+        Email address of the last authenticated modifier.
+        """
+        return pulumi.get(self, "last_modifier")
+
+    @last_modifier.setter
+    def last_modifier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_modifier", value)
 
     @property
     @pulumi.getter(name="latestCreatedExecutions")
@@ -602,6 +690,18 @@ class _JobState:
     @uid.setter
     def uid(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "uid", value)
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The last-modified time.
+        """
+        return pulumi.get(self, "update_time")
+
+    @update_time.setter
+    def update_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update_time", value)
 
 
 class Job(pulumi.CustomResource):
@@ -1145,14 +1245,20 @@ class Job(pulumi.CustomResource):
                 raise TypeError("Missing required property 'template'")
             __props__.__dict__["template"] = template
             __props__.__dict__["conditions"] = None
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["creator"] = None
+            __props__.__dict__["delete_time"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["execution_count"] = None
+            __props__.__dict__["expire_time"] = None
             __props__.__dict__["generation"] = None
+            __props__.__dict__["last_modifier"] = None
             __props__.__dict__["latest_created_executions"] = None
             __props__.__dict__["observed_generation"] = None
             __props__.__dict__["reconciling"] = None
             __props__.__dict__["terminal_conditions"] = None
             __props__.__dict__["uid"] = None
+            __props__.__dict__["update_time"] = None
         super(Job, __self__).__init__(
             'gcp:cloudrunv2/job:Job',
             resource_name,
@@ -1168,10 +1274,15 @@ class Job(pulumi.CustomResource):
             client: Optional[pulumi.Input[str]] = None,
             client_version: Optional[pulumi.Input[str]] = None,
             conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobConditionArgs']]]]] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
+            creator: Optional[pulumi.Input[str]] = None,
+            delete_time: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             execution_count: Optional[pulumi.Input[int]] = None,
+            expire_time: Optional[pulumi.Input[str]] = None,
             generation: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            last_modifier: Optional[pulumi.Input[str]] = None,
             latest_created_executions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobLatestCreatedExecutionArgs']]]]] = None,
             launch_stage: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
@@ -1181,7 +1292,8 @@ class Job(pulumi.CustomResource):
             reconciling: Optional[pulumi.Input[bool]] = None,
             template: Optional[pulumi.Input[pulumi.InputType['JobTemplateArgs']]] = None,
             terminal_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobTerminalConditionArgs']]]]] = None,
-            uid: Optional[pulumi.Input[str]] = None) -> 'Job':
+            uid: Optional[pulumi.Input[str]] = None,
+            update_time: Optional[pulumi.Input[str]] = None) -> 'Job':
         """
         Get an existing Job resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1205,8 +1317,14 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] client_version: Arbitrary version identifier for the API client.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobConditionArgs']]]] conditions: The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job does not reach its desired state. See comments in reconciling for additional information on `reconciliation` process in Cloud Run.
                Structure is documented below.
+        :param pulumi.Input[str] create_time: (Output)
+               Creation timestamp of the execution.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[str] creator: Email address of the authenticated creator.
+        :param pulumi.Input[str] delete_time: The deletion time.
         :param pulumi.Input[str] etag: A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
         :param pulumi.Input[int] execution_count: Number of executions created for this job.
+        :param pulumi.Input[str] expire_time: For a deleted resource, the time after which it will be permamently deleted.
         :param pulumi.Input[str] generation: A number that monotonically increases every time the user modifies the desired state.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
                or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
@@ -1219,6 +1337,7 @@ class Job(pulumi.CustomResource):
                environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
                Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
                All system labels in v1 now have a corresponding field in v2 Job.
+        :param pulumi.Input[str] last_modifier: Email address of the last authenticated modifier.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobLatestCreatedExecutionArgs']]]] latest_created_executions: Name of the last created execution.
                Structure is documented below.
         :param pulumi.Input[str] launch_stage: The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
@@ -1239,6 +1358,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobTerminalConditionArgs']]]] terminal_conditions: The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the desired state
                Structure is documented below.
         :param pulumi.Input[str] uid: Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
+        :param pulumi.Input[str] update_time: The last-modified time.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1249,10 +1369,15 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["client"] = client
         __props__.__dict__["client_version"] = client_version
         __props__.__dict__["conditions"] = conditions
+        __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["creator"] = creator
+        __props__.__dict__["delete_time"] = delete_time
         __props__.__dict__["etag"] = etag
         __props__.__dict__["execution_count"] = execution_count
+        __props__.__dict__["expire_time"] = expire_time
         __props__.__dict__["generation"] = generation
         __props__.__dict__["labels"] = labels
+        __props__.__dict__["last_modifier"] = last_modifier
         __props__.__dict__["latest_created_executions"] = latest_created_executions
         __props__.__dict__["launch_stage"] = launch_stage
         __props__.__dict__["location"] = location
@@ -1263,6 +1388,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["template"] = template
         __props__.__dict__["terminal_conditions"] = terminal_conditions
         __props__.__dict__["uid"] = uid
+        __props__.__dict__["update_time"] = update_time
         return Job(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1317,6 +1443,32 @@ class Job(pulumi.CustomResource):
         return pulumi.get(self, "conditions")
 
     @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        (Output)
+        Creation timestamp of the execution.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def creator(self) -> pulumi.Output[str]:
+        """
+        Email address of the authenticated creator.
+        """
+        return pulumi.get(self, "creator")
+
+    @property
+    @pulumi.getter(name="deleteTime")
+    def delete_time(self) -> pulumi.Output[str]:
+        """
+        The deletion time.
+        """
+        return pulumi.get(self, "delete_time")
+
+    @property
     @pulumi.getter
     def etag(self) -> pulumi.Output[str]:
         """
@@ -1331,6 +1483,14 @@ class Job(pulumi.CustomResource):
         Number of executions created for this job.
         """
         return pulumi.get(self, "execution_count")
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> pulumi.Output[str]:
+        """
+        For a deleted resource, the time after which it will be permamently deleted.
+        """
+        return pulumi.get(self, "expire_time")
 
     @property
     @pulumi.getter
@@ -1357,6 +1517,14 @@ class Job(pulumi.CustomResource):
         All system labels in v1 now have a corresponding field in v2 Job.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="lastModifier")
+    def last_modifier(self) -> pulumi.Output[str]:
+        """
+        Email address of the last authenticated modifier.
+        """
+        return pulumi.get(self, "last_modifier")
 
     @property
     @pulumi.getter(name="latestCreatedExecutions")
@@ -1447,4 +1615,12 @@ class Job(pulumi.CustomResource):
         Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         """
         return pulumi.get(self, "uid")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Output[str]:
+        """
+        The last-modified time.
+        """
+        return pulumi.get(self, "update_time")
 

@@ -74,6 +74,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// read-write mode.
         /// </summary>
         public readonly string? Mode;
+        public readonly int? ProvisionedIops;
         /// <summary>
         /// - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
         /// </summary>
@@ -144,6 +145,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? mode,
 
+            int? provisionedIops,
+
             string? resourcePolicies,
 
             string? source,
@@ -168,6 +171,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             Interface = @interface;
             Labels = labels;
             Mode = mode;
+            ProvisionedIops = provisionedIops;
             ResourcePolicies = resourcePolicies;
             Source = source;
             SourceImage = sourceImage;

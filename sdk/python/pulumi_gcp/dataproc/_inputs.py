@@ -87,6 +87,7 @@ __all__ = [
     'MetastoreServiceMetadataIntegrationDataCatalogConfigArgs',
     'MetastoreServiceNetworkConfigArgs',
     'MetastoreServiceNetworkConfigConsumerArgs',
+    'MetastoreServiceScalingConfigArgs',
     'MetastoreServiceTelemetryConfigArgs',
     'WorkflowTemplateJobArgs',
     'WorkflowTemplateJobHadoopJobArgs',
@@ -5156,6 +5157,47 @@ class MetastoreServiceNetworkConfigConsumerArgs:
     @endpoint_uri.setter
     def endpoint_uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "endpoint_uri", value)
+
+
+@pulumi.input_type
+class MetastoreServiceScalingConfigArgs:
+    def __init__(__self__, *,
+                 instance_size: Optional[pulumi.Input[str]] = None,
+                 scaling_factor: Optional[pulumi.Input[float]] = None):
+        """
+        :param pulumi.Input[str] instance_size: Metastore instance sizes.
+               Possible values are: `EXTRA_SMALL`, `SMALL`, `MEDIUM`, `LARGE`, `EXTRA_LARGE`.
+        :param pulumi.Input[float] scaling_factor: Scaling factor, in increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
+        """
+        if instance_size is not None:
+            pulumi.set(__self__, "instance_size", instance_size)
+        if scaling_factor is not None:
+            pulumi.set(__self__, "scaling_factor", scaling_factor)
+
+    @property
+    @pulumi.getter(name="instanceSize")
+    def instance_size(self) -> Optional[pulumi.Input[str]]:
+        """
+        Metastore instance sizes.
+        Possible values are: `EXTRA_SMALL`, `SMALL`, `MEDIUM`, `LARGE`, `EXTRA_LARGE`.
+        """
+        return pulumi.get(self, "instance_size")
+
+    @instance_size.setter
+    def instance_size(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_size", value)
+
+    @property
+    @pulumi.getter(name="scalingFactor")
+    def scaling_factor(self) -> Optional[pulumi.Input[float]]:
+        """
+        Scaling factor, in increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
+        """
+        return pulumi.get(self, "scaling_factor")
+
+    @scaling_factor.setter
+    def scaling_factor(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "scaling_factor", value)
 
 
 @pulumi.input_type

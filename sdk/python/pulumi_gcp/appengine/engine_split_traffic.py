@@ -190,7 +190,7 @@ class EngineSplitTraffic(pulumi.CustomResource):
         bucket = gcp.storage.Bucket("bucket", location="US")
         object = gcp.storage.BucketObject("object",
             bucket=bucket.name,
-            source=pulumi.FileAsset("./test-fixtures/appengine/hello-world.zip"))
+            source=pulumi.FileAsset("./test-fixtures/hello-world.zip"))
         liveapp_v1 = gcp.appengine.StandardAppVersion("liveappV1",
             version_id="v1",
             service="liveapp",
@@ -283,7 +283,7 @@ class EngineSplitTraffic(pulumi.CustomResource):
         bucket = gcp.storage.Bucket("bucket", location="US")
         object = gcp.storage.BucketObject("object",
             bucket=bucket.name,
-            source=pulumi.FileAsset("./test-fixtures/appengine/hello-world.zip"))
+            source=pulumi.FileAsset("./test-fixtures/hello-world.zip"))
         liveapp_v1 = gcp.appengine.StandardAppVersion("liveappV1",
             version_id="v1",
             service="liveapp",

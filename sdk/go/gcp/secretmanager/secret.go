@@ -168,6 +168,14 @@ type Secret struct {
 	// The TTL for the Secret.
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 	Ttl pulumi.StringPtrOutput `pulumi:"ttl"`
+	// Mapping from version alias to version name.
+	// A version alias is a string with a maximum length of 63 characters and can contain
+	// uppercase and lowercase letters, numerals, and the hyphen (-) and underscore ('_')
+	// characters. An alias string must start with a letter and cannot be the string
+	// 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret.
+	// An object containing a list of "key": value pairs. Example:
+	// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	VersionAliases pulumi.StringMapOutput `pulumi:"versionAliases"`
 }
 
 // NewSecret registers a new resource with the given unique name, arguments, and options.
@@ -252,6 +260,14 @@ type secretState struct {
 	// The TTL for the Secret.
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 	Ttl *string `pulumi:"ttl"`
+	// Mapping from version alias to version name.
+	// A version alias is a string with a maximum length of 63 characters and can contain
+	// uppercase and lowercase letters, numerals, and the hyphen (-) and underscore ('_')
+	// characters. An alias string must start with a letter and cannot be the string
+	// 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret.
+	// An object containing a list of "key": value pairs. Example:
+	// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	VersionAliases map[string]string `pulumi:"versionAliases"`
 }
 
 type SecretState struct {
@@ -301,6 +317,14 @@ type SecretState struct {
 	// The TTL for the Secret.
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 	Ttl pulumi.StringPtrInput
+	// Mapping from version alias to version name.
+	// A version alias is a string with a maximum length of 63 characters and can contain
+	// uppercase and lowercase letters, numerals, and the hyphen (-) and underscore ('_')
+	// characters. An alias string must start with a letter and cannot be the string
+	// 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret.
+	// An object containing a list of "key": value pairs. Example:
+	// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	VersionAliases pulumi.StringMapInput
 }
 
 func (SecretState) ElementType() reflect.Type {
@@ -349,6 +373,14 @@ type secretArgs struct {
 	// The TTL for the Secret.
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 	Ttl *string `pulumi:"ttl"`
+	// Mapping from version alias to version name.
+	// A version alias is a string with a maximum length of 63 characters and can contain
+	// uppercase and lowercase letters, numerals, and the hyphen (-) and underscore ('_')
+	// characters. An alias string must start with a letter and cannot be the string
+	// 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret.
+	// An object containing a list of "key": value pairs. Example:
+	// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	VersionAliases map[string]string `pulumi:"versionAliases"`
 }
 
 // The set of arguments for constructing a Secret resource.
@@ -394,6 +426,14 @@ type SecretArgs struct {
 	// The TTL for the Secret.
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 	Ttl pulumi.StringPtrInput
+	// Mapping from version alias to version name.
+	// A version alias is a string with a maximum length of 63 characters and can contain
+	// uppercase and lowercase letters, numerals, and the hyphen (-) and underscore ('_')
+	// characters. An alias string must start with a letter and cannot be the string
+	// 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret.
+	// An object containing a list of "key": value pairs. Example:
+	// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	VersionAliases pulumi.StringMapInput
 }
 
 func (SecretArgs) ElementType() reflect.Type {
@@ -560,6 +600,17 @@ func (o SecretOutput) Topics() SecretTopicArrayOutput {
 // A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 func (o SecretOutput) Ttl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Secret) pulumi.StringPtrOutput { return v.Ttl }).(pulumi.StringPtrOutput)
+}
+
+// Mapping from version alias to version name.
+// A version alias is a string with a maximum length of 63 characters and can contain
+// uppercase and lowercase letters, numerals, and the hyphen (-) and underscore ('_')
+// characters. An alias string must start with a letter and cannot be the string
+// 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret.
+// An object containing a list of "key": value pairs. Example:
+// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+func (o SecretOutput) VersionAliases() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Secret) pulumi.StringMapOutput { return v.VersionAliases }).(pulumi.StringMapOutput)
 }
 
 type SecretArrayOutput struct{ *pulumi.OutputState }

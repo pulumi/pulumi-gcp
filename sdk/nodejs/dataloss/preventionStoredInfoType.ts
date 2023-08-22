@@ -64,7 +64,7 @@ import * as utilities from "../utilities";
  * });
  * const object = new gcp.storage.BucketObject("object", {
  *     bucket: bucket.name,
- *     source: new pulumi.asset.FileAsset("./test-fixtures/dlp/words.txt"),
+ *     source: new pulumi.asset.FileAsset("./test-fixtures/words.txt"),
  * });
  * const large = new gcp.dataloss.PreventionStoredInfoType("large", {
  *     parent: "projects/my-project-name",

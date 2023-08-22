@@ -29,6 +29,7 @@ type Provider struct {
 	AppEngineCustomEndpoint                pulumi.StringPtrOutput `pulumi:"appEngineCustomEndpoint"`
 	ArtifactRegistryCustomEndpoint         pulumi.StringPtrOutput `pulumi:"artifactRegistryCustomEndpoint"`
 	AssuredWorkloadsCustomEndpoint         pulumi.StringPtrOutput `pulumi:"assuredWorkloadsCustomEndpoint"`
+	BackupDrCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"backupDrCustomEndpoint"`
 	BeyondcorpCustomEndpoint               pulumi.StringPtrOutput `pulumi:"beyondcorpCustomEndpoint"`
 	BigQueryCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"bigQueryCustomEndpoint"`
 	BigqueryAnalyticsHubCustomEndpoint     pulumi.StringPtrOutput `pulumi:"bigqueryAnalyticsHubCustomEndpoint"`
@@ -203,6 +204,7 @@ type providerArgs struct {
 	AppEngineCustomEndpoint                *string           `pulumi:"appEngineCustomEndpoint"`
 	ArtifactRegistryCustomEndpoint         *string           `pulumi:"artifactRegistryCustomEndpoint"`
 	AssuredWorkloadsCustomEndpoint         *string           `pulumi:"assuredWorkloadsCustomEndpoint"`
+	BackupDrCustomEndpoint                 *string           `pulumi:"backupDrCustomEndpoint"`
 	Batching                               *ProviderBatching `pulumi:"batching"`
 	BeyondcorpCustomEndpoint               *string           `pulumi:"beyondcorpCustomEndpoint"`
 	BigQueryCustomEndpoint                 *string           `pulumi:"bigQueryCustomEndpoint"`
@@ -352,6 +354,7 @@ type ProviderArgs struct {
 	AppEngineCustomEndpoint                pulumi.StringPtrInput
 	ArtifactRegistryCustomEndpoint         pulumi.StringPtrInput
 	AssuredWorkloadsCustomEndpoint         pulumi.StringPtrInput
+	BackupDrCustomEndpoint                 pulumi.StringPtrInput
 	Batching                               ProviderBatchingPtrInput
 	BeyondcorpCustomEndpoint               pulumi.StringPtrInput
 	BigQueryCustomEndpoint                 pulumi.StringPtrInput
@@ -567,6 +570,10 @@ func (o ProviderOutput) ArtifactRegistryCustomEndpoint() pulumi.StringPtrOutput 
 
 func (o ProviderOutput) AssuredWorkloadsCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AssuredWorkloadsCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) BackupDrCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.BackupDrCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) BeyondcorpCustomEndpoint() pulumi.StringPtrOutput {

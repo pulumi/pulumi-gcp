@@ -32,6 +32,7 @@ public final class GetSecretResult {
     private String secretId;
     private List<GetSecretTopic> topics;
     private String ttl;
+    private Map<String,String> versionAliases;
 
     private GetSecretResult() {}
     public Map<String,String> annotations() {
@@ -74,6 +75,9 @@ public final class GetSecretResult {
     public String ttl() {
         return this.ttl;
     }
+    public Map<String,String> versionAliases() {
+        return this.versionAliases;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -96,6 +100,7 @@ public final class GetSecretResult {
         private String secretId;
         private List<GetSecretTopic> topics;
         private String ttl;
+        private Map<String,String> versionAliases;
         public Builder() {}
         public Builder(GetSecretResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -111,6 +116,7 @@ public final class GetSecretResult {
     	      this.secretId = defaults.secretId;
     	      this.topics = defaults.topics;
     	      this.ttl = defaults.ttl;
+    	      this.versionAliases = defaults.versionAliases;
         }
 
         @CustomType.Setter
@@ -182,6 +188,11 @@ public final class GetSecretResult {
             this.ttl = Objects.requireNonNull(ttl);
             return this;
         }
+        @CustomType.Setter
+        public Builder versionAliases(Map<String,String> versionAliases) {
+            this.versionAliases = Objects.requireNonNull(versionAliases);
+            return this;
+        }
         public GetSecretResult build() {
             final var o = new GetSecretResult();
             o.annotations = annotations;
@@ -196,6 +207,7 @@ public final class GetSecretResult {
             o.secretId = secretId;
             o.topics = topics;
             o.ttl = ttl;
+            o.versionAliases = versionAliases;
             return o;
         }
     }

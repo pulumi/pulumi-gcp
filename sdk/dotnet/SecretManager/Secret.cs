@@ -198,6 +198,18 @@ namespace Pulumi.Gcp.SecretManager
         [Output("ttl")]
         public Output<string?> Ttl { get; private set; } = null!;
 
+        /// <summary>
+        /// Mapping from version alias to version name.
+        /// A version alias is a string with a maximum length of 63 characters and can contain
+        /// uppercase and lowercase letters, numerals, and the hyphen (-) and underscore ('_')
+        /// characters. An alias string must start with a letter and cannot be the string
+        /// 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret.
+        /// An object containing a list of "key": value pairs. Example:
+        /// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// </summary>
+        [Output("versionAliases")]
+        public Output<ImmutableDictionary<string, string>?> VersionAliases { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Secret resource with the given unique name, arguments, and options.
@@ -339,6 +351,24 @@ namespace Pulumi.Gcp.SecretManager
         [Input("ttl")]
         public Input<string>? Ttl { get; set; }
 
+        [Input("versionAliases")]
+        private InputMap<string>? _versionAliases;
+
+        /// <summary>
+        /// Mapping from version alias to version name.
+        /// A version alias is a string with a maximum length of 63 characters and can contain
+        /// uppercase and lowercase letters, numerals, and the hyphen (-) and underscore ('_')
+        /// characters. An alias string must start with a letter and cannot be the string
+        /// 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret.
+        /// An object containing a list of "key": value pairs. Example:
+        /// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// </summary>
+        public InputMap<string> VersionAliases
+        {
+            get => _versionAliases ?? (_versionAliases = new InputMap<string>());
+            set => _versionAliases = value;
+        }
+
         public SecretArgs()
         {
         }
@@ -454,6 +484,24 @@ namespace Pulumi.Gcp.SecretManager
         /// </summary>
         [Input("ttl")]
         public Input<string>? Ttl { get; set; }
+
+        [Input("versionAliases")]
+        private InputMap<string>? _versionAliases;
+
+        /// <summary>
+        /// Mapping from version alias to version name.
+        /// A version alias is a string with a maximum length of 63 characters and can contain
+        /// uppercase and lowercase letters, numerals, and the hyphen (-) and underscore ('_')
+        /// characters. An alias string must start with a letter and cannot be the string
+        /// 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret.
+        /// An object containing a list of "key": value pairs. Example:
+        /// { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// </summary>
+        public InputMap<string> VersionAliases
+        {
+            get => _versionAliases ?? (_versionAliases = new InputMap<string>());
+            set => _versionAliases = value;
+        }
 
         public SecretState()
         {

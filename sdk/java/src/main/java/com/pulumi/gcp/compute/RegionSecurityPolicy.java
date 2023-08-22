@@ -11,7 +11,9 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.RegionSecurityPolicyArgs;
 import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyState;
 import com.pulumi.gcp.compute.outputs.RegionSecurityPolicyDdosProtectionConfig;
+import com.pulumi.gcp.compute.outputs.RegionSecurityPolicyUserDefinedField;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -80,6 +82,55 @@ import javax.annotation.Nullable;
  *             .ddosProtectionConfig(RegionSecurityPolicyDdosProtectionConfigArgs.builder()
  *                 .ddosProtection(&#34;ADVANCED_PREVIEW&#34;)
  *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Region Security Policy With User Defined Fields
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionSecurityPolicy;
+ * import com.pulumi.gcp.compute.RegionSecurityPolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyUserDefinedFieldArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var region_sec_policy_user_defined_fields = new RegionSecurityPolicy(&#34;region-sec-policy-user-defined-fields&#34;, RegionSecurityPolicyArgs.builder()        
+ *             .description(&#34;with user defined fields&#34;)
+ *             .type(&#34;CLOUD_ARMOR_NETWORK&#34;)
+ *             .userDefinedFields(            
+ *                 RegionSecurityPolicyUserDefinedFieldArgs.builder()
+ *                     .name(&#34;SIG1_AT_0&#34;)
+ *                     .base(&#34;UDP&#34;)
+ *                     .offset(8)
+ *                     .size(2)
+ *                     .mask(&#34;0x8F00&#34;)
+ *                     .build(),
+ *                 RegionSecurityPolicyUserDefinedFieldArgs.builder()
+ *                     .name(&#34;SIG2_AT_8&#34;)
+ *                     .base(&#34;UDP&#34;)
+ *                     .offset(16)
+ *                     .size(4)
+ *                     .mask(&#34;0xFFFFFFFF&#34;)
+ *                     .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)
  *                 .build());
@@ -274,6 +325,26 @@ public class RegionSecurityPolicy extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> type() {
         return Codegen.optional(this.type);
+    }
+    /**
+     * Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies.
+     * A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits.
+     * Rules may then specify matching values for these fields.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="userDefinedFields", type=List.class, parameters={RegionSecurityPolicyUserDefinedField.class})
+    private Output</* @Nullable */ List<RegionSecurityPolicyUserDefinedField>> userDefinedFields;
+
+    /**
+     * @return Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies.
+     * A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits.
+     * Rules may then specify matching values for these fields.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<List<RegionSecurityPolicyUserDefinedField>>> userDefinedFields() {
+        return Codegen.optional(this.userDefinedFields);
     }
 
     /**

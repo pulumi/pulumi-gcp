@@ -15,6 +15,7 @@ public final class EnvironmentConfigPrivateEnvironmentConfig {
     private @Nullable String cloudComposerConnectionSubnetwork;
     private @Nullable String cloudComposerNetworkIpv4CidrBlock;
     private @Nullable String cloudSqlIpv4CidrBlock;
+    private @Nullable String connectionType;
     private @Nullable Boolean enablePrivateEndpoint;
     private @Nullable Boolean enablePrivatelyUsedPublicIps;
     private @Nullable String masterIpv4CidrBlock;
@@ -29,6 +30,9 @@ public final class EnvironmentConfigPrivateEnvironmentConfig {
     }
     public Optional<String> cloudSqlIpv4CidrBlock() {
         return Optional.ofNullable(this.cloudSqlIpv4CidrBlock);
+    }
+    public Optional<String> connectionType() {
+        return Optional.ofNullable(this.connectionType);
     }
     public Optional<Boolean> enablePrivateEndpoint() {
         return Optional.ofNullable(this.enablePrivateEndpoint);
@@ -55,6 +59,7 @@ public final class EnvironmentConfigPrivateEnvironmentConfig {
         private @Nullable String cloudComposerConnectionSubnetwork;
         private @Nullable String cloudComposerNetworkIpv4CidrBlock;
         private @Nullable String cloudSqlIpv4CidrBlock;
+        private @Nullable String connectionType;
         private @Nullable Boolean enablePrivateEndpoint;
         private @Nullable Boolean enablePrivatelyUsedPublicIps;
         private @Nullable String masterIpv4CidrBlock;
@@ -65,6 +70,7 @@ public final class EnvironmentConfigPrivateEnvironmentConfig {
     	      this.cloudComposerConnectionSubnetwork = defaults.cloudComposerConnectionSubnetwork;
     	      this.cloudComposerNetworkIpv4CidrBlock = defaults.cloudComposerNetworkIpv4CidrBlock;
     	      this.cloudSqlIpv4CidrBlock = defaults.cloudSqlIpv4CidrBlock;
+    	      this.connectionType = defaults.connectionType;
     	      this.enablePrivateEndpoint = defaults.enablePrivateEndpoint;
     	      this.enablePrivatelyUsedPublicIps = defaults.enablePrivatelyUsedPublicIps;
     	      this.masterIpv4CidrBlock = defaults.masterIpv4CidrBlock;
@@ -84,6 +90,11 @@ public final class EnvironmentConfigPrivateEnvironmentConfig {
         @CustomType.Setter
         public Builder cloudSqlIpv4CidrBlock(@Nullable String cloudSqlIpv4CidrBlock) {
             this.cloudSqlIpv4CidrBlock = cloudSqlIpv4CidrBlock;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder connectionType(@Nullable String connectionType) {
+            this.connectionType = connectionType;
             return this;
         }
         @CustomType.Setter
@@ -111,6 +122,7 @@ public final class EnvironmentConfigPrivateEnvironmentConfig {
             o.cloudComposerConnectionSubnetwork = cloudComposerConnectionSubnetwork;
             o.cloudComposerNetworkIpv4CidrBlock = cloudComposerNetworkIpv4CidrBlock;
             o.cloudSqlIpv4CidrBlock = cloudSqlIpv4CidrBlock;
+            o.connectionType = connectionType;
             o.enablePrivateEndpoint = enablePrivateEndpoint;
             o.enablePrivatelyUsedPublicIps = enablePrivatelyUsedPublicIps;
             o.masterIpv4CidrBlock = masterIpv4CidrBlock;

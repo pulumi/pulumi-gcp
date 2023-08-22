@@ -130,8 +130,8 @@ import javax.annotation.Nullable;
  *         var defaultCertificate = new Certificate(&#34;defaultCertificate&#34;, CertificateArgs.builder()        
  *             .location(&#34;us-central1&#34;)
  *             .selfManaged(CertificateSelfManagedArgs.builder()
- *                 .pemCertificate(Files.readString(Paths.get(&#34;test-fixtures/certificatemanager/cert.pem&#34;)))
- *                 .pemPrivateKey(Files.readString(Paths.get(&#34;test-fixtures/certificatemanager/private-key.pem&#34;)))
+ *                 .pemCertificate(Files.readString(Paths.get(&#34;test-fixtures/cert.pem&#34;)))
+ *                 .pemPrivateKey(Files.readString(Paths.get(&#34;test-fixtures/private-key.pem&#34;)))
  *                 .build())
  *             .build());
  * 
@@ -224,8 +224,8 @@ import javax.annotation.Nullable;
  *         var defaultCertificate = new Certificate(&#34;defaultCertificate&#34;, CertificateArgs.builder()        
  *             .location(&#34;us-south1&#34;)
  *             .selfManaged(CertificateSelfManagedArgs.builder()
- *                 .pemCertificate(Files.readString(Paths.get(&#34;test-fixtures/certificatemanager/cert.pem&#34;)))
- *                 .pemPrivateKey(Files.readString(Paths.get(&#34;test-fixtures/certificatemanager/private-key.pem&#34;)))
+ *                 .pemCertificate(Files.readString(Paths.get(&#34;test-fixtures/cert.pem&#34;)))
+ *                 .pemPrivateKey(Files.readString(Paths.get(&#34;test-fixtures/private-key.pem&#34;)))
  *                 .build())
  *             .build());
  * 

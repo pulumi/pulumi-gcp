@@ -400,6 +400,7 @@ class ConnectionProfileCloudsqlSettingsArgs:
                  data_disk_type: Optional[pulumi.Input[str]] = None,
                  database_flags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  database_version: Optional[pulumi.Input[str]] = None,
+                 edition: Optional[pulumi.Input[str]] = None,
                  ip_config: Optional[pulumi.Input['ConnectionProfileCloudsqlSettingsIpConfigArgs']] = None,
                  root_password: Optional[pulumi.Input[str]] = None,
                  root_password_set: Optional[pulumi.Input[bool]] = None,
@@ -421,6 +422,8 @@ class ConnectionProfileCloudsqlSettingsArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] database_flags: The database flags passed to the Cloud SQL instance at startup.
         :param pulumi.Input[str] database_version: The database engine type and version.
                Currently supported values located at https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles#sqldatabaseversion
+        :param pulumi.Input[str] edition: The edition of the given Cloud SQL instance.
+               Possible values are: `ENTERPRISE`, `ENTERPRISE_PLUS`.
         :param pulumi.Input['ConnectionProfileCloudsqlSettingsIpConfigArgs'] ip_config: The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
                Structure is documented below.
         :param pulumi.Input[str] root_password: Input only. Initial root password.
@@ -450,6 +453,8 @@ class ConnectionProfileCloudsqlSettingsArgs:
             pulumi.set(__self__, "database_flags", database_flags)
         if database_version is not None:
             pulumi.set(__self__, "database_version", database_version)
+        if edition is not None:
+            pulumi.set(__self__, "edition", edition)
         if ip_config is not None:
             pulumi.set(__self__, "ip_config", ip_config)
         if root_password is not None:
@@ -576,6 +581,19 @@ class ConnectionProfileCloudsqlSettingsArgs:
     @database_version.setter
     def database_version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "database_version", value)
+
+    @property
+    @pulumi.getter
+    def edition(self) -> Optional[pulumi.Input[str]]:
+        """
+        The edition of the given Cloud SQL instance.
+        Possible values are: `ENTERPRISE`, `ENTERPRISE_PLUS`.
+        """
+        return pulumi.get(self, "edition")
+
+    @edition.setter
+    def edition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "edition", value)
 
     @property
     @pulumi.getter(name="ipConfig")

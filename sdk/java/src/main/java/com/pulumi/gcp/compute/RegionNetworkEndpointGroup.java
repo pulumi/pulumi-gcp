@@ -188,7 +188,7 @@ import javax.annotation.Nullable;
  * 
  *         var appengineNegBucketObject = new BucketObject(&#34;appengineNegBucketObject&#34;, BucketObjectArgs.builder()        
  *             .bucket(appengineNegBucket.name())
- *             .source(new FileAsset(&#34;./test-fixtures/appengine/hello-world.zip&#34;))
+ *             .source(new FileAsset(&#34;./test-fixtures/hello-world.zip&#34;))
  *             .build());
  * 
  *         var appengineNegFlexibleAppVersion = new FlexibleAppVersion(&#34;appengineNegFlexibleAppVersion&#34;, FlexibleAppVersionArgs.builder()        

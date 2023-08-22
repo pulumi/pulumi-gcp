@@ -9,6 +9,7 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTriggerGitFileSource {
+    private String bitbucketServerConfig;
     private String githubEnterpriseConfig;
     private String path;
     private String repoType;
@@ -17,6 +18,9 @@ public final class GetTriggerGitFileSource {
     private String uri;
 
     private GetTriggerGitFileSource() {}
+    public String bitbucketServerConfig() {
+        return this.bitbucketServerConfig;
+    }
     public String githubEnterpriseConfig() {
         return this.githubEnterpriseConfig;
     }
@@ -45,6 +49,7 @@ public final class GetTriggerGitFileSource {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String bitbucketServerConfig;
         private String githubEnterpriseConfig;
         private String path;
         private String repoType;
@@ -54,6 +59,7 @@ public final class GetTriggerGitFileSource {
         public Builder() {}
         public Builder(GetTriggerGitFileSource defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.bitbucketServerConfig = defaults.bitbucketServerConfig;
     	      this.githubEnterpriseConfig = defaults.githubEnterpriseConfig;
     	      this.path = defaults.path;
     	      this.repoType = defaults.repoType;
@@ -62,6 +68,11 @@ public final class GetTriggerGitFileSource {
     	      this.uri = defaults.uri;
         }
 
+        @CustomType.Setter
+        public Builder bitbucketServerConfig(String bitbucketServerConfig) {
+            this.bitbucketServerConfig = Objects.requireNonNull(bitbucketServerConfig);
+            return this;
+        }
         @CustomType.Setter
         public Builder githubEnterpriseConfig(String githubEnterpriseConfig) {
             this.githubEnterpriseConfig = Objects.requireNonNull(githubEnterpriseConfig);
@@ -94,6 +105,7 @@ public final class GetTriggerGitFileSource {
         }
         public GetTriggerGitFileSource build() {
             final var o = new GetTriggerGitFileSource();
+            o.bitbucketServerConfig = bitbucketServerConfig;
             o.githubEnterpriseConfig = githubEnterpriseConfig;
             o.path = path;
             o.repoType = repoType;

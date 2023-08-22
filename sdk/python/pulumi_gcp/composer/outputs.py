@@ -628,6 +628,8 @@ class EnvironmentConfigPrivateEnvironmentConfig(dict):
             suggest = "cloud_composer_network_ipv4_cidr_block"
         elif key == "cloudSqlIpv4CidrBlock":
             suggest = "cloud_sql_ipv4_cidr_block"
+        elif key == "connectionType":
+            suggest = "connection_type"
         elif key == "enablePrivateEndpoint":
             suggest = "enable_private_endpoint"
         elif key == "enablePrivatelyUsedPublicIps":
@@ -652,6 +654,7 @@ class EnvironmentConfigPrivateEnvironmentConfig(dict):
                  cloud_composer_connection_subnetwork: Optional[str] = None,
                  cloud_composer_network_ipv4_cidr_block: Optional[str] = None,
                  cloud_sql_ipv4_cidr_block: Optional[str] = None,
+                 connection_type: Optional[str] = None,
                  enable_private_endpoint: Optional[bool] = None,
                  enable_privately_used_public_ips: Optional[bool] = None,
                  master_ipv4_cidr_block: Optional[str] = None,
@@ -662,6 +665,8 @@ class EnvironmentConfigPrivateEnvironmentConfig(dict):
             pulumi.set(__self__, "cloud_composer_network_ipv4_cidr_block", cloud_composer_network_ipv4_cidr_block)
         if cloud_sql_ipv4_cidr_block is not None:
             pulumi.set(__self__, "cloud_sql_ipv4_cidr_block", cloud_sql_ipv4_cidr_block)
+        if connection_type is not None:
+            pulumi.set(__self__, "connection_type", connection_type)
         if enable_private_endpoint is not None:
             pulumi.set(__self__, "enable_private_endpoint", enable_private_endpoint)
         if enable_privately_used_public_ips is not None:
@@ -685,6 +690,11 @@ class EnvironmentConfigPrivateEnvironmentConfig(dict):
     @pulumi.getter(name="cloudSqlIpv4CidrBlock")
     def cloud_sql_ipv4_cidr_block(self) -> Optional[str]:
         return pulumi.get(self, "cloud_sql_ipv4_cidr_block")
+
+    @property
+    @pulumi.getter(name="connectionType")
+    def connection_type(self) -> Optional[str]:
+        return pulumi.get(self, "connection_type")
 
     @property
     @pulumi.getter(name="enablePrivateEndpoint")
@@ -1584,6 +1594,7 @@ class GetEnvironmentConfigPrivateEnvironmentConfigResult(dict):
                  cloud_composer_connection_subnetwork: str,
                  cloud_composer_network_ipv4_cidr_block: str,
                  cloud_sql_ipv4_cidr_block: str,
+                 connection_type: str,
                  enable_private_endpoint: bool,
                  enable_privately_used_public_ips: bool,
                  master_ipv4_cidr_block: str,
@@ -1591,6 +1602,7 @@ class GetEnvironmentConfigPrivateEnvironmentConfigResult(dict):
         pulumi.set(__self__, "cloud_composer_connection_subnetwork", cloud_composer_connection_subnetwork)
         pulumi.set(__self__, "cloud_composer_network_ipv4_cidr_block", cloud_composer_network_ipv4_cidr_block)
         pulumi.set(__self__, "cloud_sql_ipv4_cidr_block", cloud_sql_ipv4_cidr_block)
+        pulumi.set(__self__, "connection_type", connection_type)
         pulumi.set(__self__, "enable_private_endpoint", enable_private_endpoint)
         pulumi.set(__self__, "enable_privately_used_public_ips", enable_privately_used_public_ips)
         pulumi.set(__self__, "master_ipv4_cidr_block", master_ipv4_cidr_block)
@@ -1610,6 +1622,11 @@ class GetEnvironmentConfigPrivateEnvironmentConfigResult(dict):
     @pulumi.getter(name="cloudSqlIpv4CidrBlock")
     def cloud_sql_ipv4_cidr_block(self) -> str:
         return pulumi.get(self, "cloud_sql_ipv4_cidr_block")
+
+    @property
+    @pulumi.getter(name="connectionType")
+    def connection_type(self) -> str:
+        return pulumi.get(self, "connection_type")
 
     @property
     @pulumi.getter(name="enablePrivateEndpoint")

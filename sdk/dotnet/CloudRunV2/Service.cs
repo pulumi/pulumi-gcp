@@ -501,12 +501,30 @@ namespace Pulumi.Gcp.CloudRunV2
         public Output<ImmutableArray<Outputs.ServiceCondition>> Conditions { get; private set; } = null!;
 
         /// <summary>
+        /// The creation time.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Email address of the authenticated creator.
+        /// </summary>
+        [Output("creator")]
+        public Output<string> Creator { get; private set; } = null!;
+
+        /// <summary>
         /// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
         /// string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
         /// https://cloud.google.com/run/docs/configuring/custom-audiences.
         /// </summary>
         [Output("customAudiences")]
         public Output<ImmutableArray<string>> CustomAudiences { get; private set; } = null!;
+
+        /// <summary>
+        /// The deletion time.
+        /// </summary>
+        [Output("deleteTime")]
+        public Output<string> DeleteTime { get; private set; } = null!;
 
         /// <summary>
         /// User-provided description of the Service. This field currently has a 512-character limit.
@@ -519,6 +537,12 @@ namespace Pulumi.Gcp.CloudRunV2
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
+        /// For a deleted resource, the time after which it will be permamently deleted.
+        /// </summary>
+        [Output("expireTime")]
+        public Output<string> ExpireTime { get; private set; } = null!;
 
         /// <summary>
         /// A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
@@ -547,6 +571,12 @@ namespace Pulumi.Gcp.CloudRunV2
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// Email address of the last authenticated modifier.
+        /// </summary>
+        [Output("lastModifier")]
+        public Output<string> LastModifier { get; private set; } = null!;
 
         /// <summary>
         /// Name of the last created revision. See comments in reconciling for additional information on reconciliation process in Cloud Run.
@@ -636,6 +666,12 @@ namespace Pulumi.Gcp.CloudRunV2
         /// </summary>
         [Output("uid")]
         public Output<string> Uid { get; private set; } = null!;
+
+        /// <summary>
+        /// The last-modified time.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
 
         /// <summary>
         /// (Output)
@@ -887,6 +923,18 @@ namespace Pulumi.Gcp.CloudRunV2
             set => _conditions = value;
         }
 
+        /// <summary>
+        /// The creation time.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Email address of the authenticated creator.
+        /// </summary>
+        [Input("creator")]
+        public Input<string>? Creator { get; set; }
+
         [Input("customAudiences")]
         private InputList<string>? _customAudiences;
 
@@ -902,6 +950,12 @@ namespace Pulumi.Gcp.CloudRunV2
         }
 
         /// <summary>
+        /// The deletion time.
+        /// </summary>
+        [Input("deleteTime")]
+        public Input<string>? DeleteTime { get; set; }
+
+        /// <summary>
         /// User-provided description of the Service. This field currently has a 512-character limit.
         /// </summary>
         [Input("description")]
@@ -912,6 +966,12 @@ namespace Pulumi.Gcp.CloudRunV2
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
+
+        /// <summary>
+        /// For a deleted resource, the time after which it will be permamently deleted.
+        /// </summary>
+        [Input("expireTime")]
+        public Input<string>? ExpireTime { get; set; }
 
         /// <summary>
         /// A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
@@ -946,6 +1006,12 @@ namespace Pulumi.Gcp.CloudRunV2
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
+
+        /// <summary>
+        /// Email address of the last authenticated modifier.
+        /// </summary>
+        [Input("lastModifier")]
+        public Input<string>? LastModifier { get; set; }
 
         /// <summary>
         /// Name of the last created revision. See comments in reconciling for additional information on reconciliation process in Cloud Run.
@@ -1053,6 +1119,12 @@ namespace Pulumi.Gcp.CloudRunV2
         /// </summary>
         [Input("uid")]
         public Input<string>? Uid { get; set; }
+
+        /// <summary>
+        /// The last-modified time.
+        /// </summary>
+        [Input("updateTime")]
+        public Input<string>? UpdateTime { get; set; }
 
         /// <summary>
         /// (Output)

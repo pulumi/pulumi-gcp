@@ -708,8 +708,8 @@ class Gateway(pulumi.CustomResource):
         default_certificate = gcp.certificatemanager.Certificate("defaultCertificate",
             location="us-central1",
             self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
-                pem_certificate=(lambda path: open(path).read())("test-fixtures/certificatemanager/cert.pem"),
-                pem_private_key=(lambda path: open(path).read())("test-fixtures/certificatemanager/private-key.pem"),
+                pem_certificate=(lambda path: open(path).read())("test-fixtures/cert.pem"),
+                pem_private_key=(lambda path: open(path).read())("test-fixtures/private-key.pem"),
             ))
         default_network = gcp.compute.Network("defaultNetwork",
             routing_mode="REGIONAL",
@@ -756,8 +756,8 @@ class Gateway(pulumi.CustomResource):
         default_certificate = gcp.certificatemanager.Certificate("defaultCertificate",
             location="us-south1",
             self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
-                pem_certificate=(lambda path: open(path).read())("test-fixtures/certificatemanager/cert.pem"),
-                pem_private_key=(lambda path: open(path).read())("test-fixtures/certificatemanager/private-key.pem"),
+                pem_certificate=(lambda path: open(path).read())("test-fixtures/cert.pem"),
+                pem_private_key=(lambda path: open(path).read())("test-fixtures/private-key.pem"),
             ))
         default_network = gcp.compute.Network("defaultNetwork",
             routing_mode="REGIONAL",
@@ -916,8 +916,8 @@ class Gateway(pulumi.CustomResource):
         default_certificate = gcp.certificatemanager.Certificate("defaultCertificate",
             location="us-central1",
             self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
-                pem_certificate=(lambda path: open(path).read())("test-fixtures/certificatemanager/cert.pem"),
-                pem_private_key=(lambda path: open(path).read())("test-fixtures/certificatemanager/private-key.pem"),
+                pem_certificate=(lambda path: open(path).read())("test-fixtures/cert.pem"),
+                pem_private_key=(lambda path: open(path).read())("test-fixtures/private-key.pem"),
             ))
         default_network = gcp.compute.Network("defaultNetwork",
             routing_mode="REGIONAL",
@@ -964,8 +964,8 @@ class Gateway(pulumi.CustomResource):
         default_certificate = gcp.certificatemanager.Certificate("defaultCertificate",
             location="us-south1",
             self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
-                pem_certificate=(lambda path: open(path).read())("test-fixtures/certificatemanager/cert.pem"),
-                pem_private_key=(lambda path: open(path).read())("test-fixtures/certificatemanager/private-key.pem"),
+                pem_certificate=(lambda path: open(path).read())("test-fixtures/cert.pem"),
+                pem_private_key=(lambda path: open(path).read())("test-fixtures/private-key.pem"),
             ))
         default_network = gcp.compute.Network("defaultNetwork",
             routing_mode="REGIONAL",

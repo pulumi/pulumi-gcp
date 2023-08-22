@@ -155,7 +155,7 @@ import (
 //			}
 //			appengineNegBucketObject, err := storage.NewBucketObject(ctx, "appengineNegBucketObject", &storage.BucketObjectArgs{
 //				Bucket: appengineNegBucket.Name,
-//				Source: pulumi.NewFileAsset("./test-fixtures/appengine/hello-world.zip"),
+//				Source: pulumi.NewFileAsset("./test-fixtures/hello-world.zip"),
 //			})
 //			if err != nil {
 //				return err

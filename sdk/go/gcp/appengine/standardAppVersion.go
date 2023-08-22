@@ -78,7 +78,7 @@ import (
 //			}
 //			object, err := storage.NewBucketObject(ctx, "object", &storage.BucketObjectArgs{
 //				Bucket: bucket.Name,
-//				Source: pulumi.NewFileAsset("./test-fixtures/appengine/hello-world.zip"),
+//				Source: pulumi.NewFileAsset("./test-fixtures/hello-world.zip"),
 //			})
 //			if err != nil {
 //				return err

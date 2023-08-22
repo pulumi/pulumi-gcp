@@ -67,6 +67,48 @@ import (
 //	}
 //
 // ```
+// ### Region Security Policy With User Defined Fields
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewRegionSecurityPolicy(ctx, "region-sec-policy-user-defined-fields", &compute.RegionSecurityPolicyArgs{
+//				Description: pulumi.String("with user defined fields"),
+//				Type:        pulumi.String("CLOUD_ARMOR_NETWORK"),
+//				UserDefinedFields: compute.RegionSecurityPolicyUserDefinedFieldArray{
+//					&compute.RegionSecurityPolicyUserDefinedFieldArgs{
+//						Name:   pulumi.String("SIG1_AT_0"),
+//						Base:   pulumi.String("UDP"),
+//						Offset: pulumi.Int(8),
+//						Size:   pulumi.Int(2),
+//						Mask:   pulumi.String("0x8F00"),
+//					},
+//					&compute.RegionSecurityPolicyUserDefinedFieldArgs{
+//						Name:   pulumi.String("SIG2_AT_8"),
+//						Base:   pulumi.String("UDP"),
+//						Offset: pulumi.Int(16),
+//						Size:   pulumi.Int(4),
+//						Mask:   pulumi.String("0xFFFFFFFF"),
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -130,6 +172,11 @@ type RegionSecurityPolicy struct {
 	//   This field can be set only at resource creation time.
 	//   Possible values are: `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_NETWORK`.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
+	// Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies.
+	// A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits.
+	// Rules may then specify matching values for these fields.
+	// Structure is documented below.
+	UserDefinedFields RegionSecurityPolicyUserDefinedFieldArrayOutput `pulumi:"userDefinedFields"`
 }
 
 // NewRegionSecurityPolicy registers a new resource with the given unique name, arguments, and options.
@@ -194,6 +241,11 @@ type regionSecurityPolicyState struct {
 	//   This field can be set only at resource creation time.
 	//   Possible values are: `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_NETWORK`.
 	Type *string `pulumi:"type"`
+	// Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies.
+	// A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits.
+	// Rules may then specify matching values for these fields.
+	// Structure is documented below.
+	UserDefinedFields []RegionSecurityPolicyUserDefinedField `pulumi:"userDefinedFields"`
 }
 
 type RegionSecurityPolicyState struct {
@@ -229,6 +281,11 @@ type RegionSecurityPolicyState struct {
 	//   This field can be set only at resource creation time.
 	//   Possible values are: `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_NETWORK`.
 	Type pulumi.StringPtrInput
+	// Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies.
+	// A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits.
+	// Rules may then specify matching values for these fields.
+	// Structure is documented below.
+	UserDefinedFields RegionSecurityPolicyUserDefinedFieldArrayInput
 }
 
 func (RegionSecurityPolicyState) ElementType() reflect.Type {
@@ -259,6 +316,11 @@ type regionSecurityPolicyArgs struct {
 	//   This field can be set only at resource creation time.
 	//   Possible values are: `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_NETWORK`.
 	Type *string `pulumi:"type"`
+	// Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies.
+	// A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits.
+	// Rules may then specify matching values for these fields.
+	// Structure is documented below.
+	UserDefinedFields []RegionSecurityPolicyUserDefinedField `pulumi:"userDefinedFields"`
 }
 
 // The set of arguments for constructing a RegionSecurityPolicy resource.
@@ -286,6 +348,11 @@ type RegionSecurityPolicyArgs struct {
 	//   This field can be set only at resource creation time.
 	//   Possible values are: `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_NETWORK`.
 	Type pulumi.StringPtrInput
+	// Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies.
+	// A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits.
+	// Rules may then specify matching values for these fields.
+	// Structure is documented below.
+	UserDefinedFields RegionSecurityPolicyUserDefinedFieldArrayInput
 }
 
 func (RegionSecurityPolicyArgs) ElementType() reflect.Type {
@@ -437,6 +504,16 @@ func (o RegionSecurityPolicyOutput) SelfLinkWithPolicyId() pulumi.StringOutput {
 //     Possible values are: `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_NETWORK`.
 func (o RegionSecurityPolicyOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionSecurityPolicy) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies.
+// A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits.
+// Rules may then specify matching values for these fields.
+// Structure is documented below.
+func (o RegionSecurityPolicyOutput) UserDefinedFields() RegionSecurityPolicyUserDefinedFieldArrayOutput {
+	return o.ApplyT(func(v *RegionSecurityPolicy) RegionSecurityPolicyUserDefinedFieldArrayOutput {
+		return v.UserDefinedFields
+	}).(RegionSecurityPolicyUserDefinedFieldArrayOutput)
 }
 
 type RegionSecurityPolicyArrayOutput struct{ *pulumi.OutputState }

@@ -84,7 +84,7 @@ import * as utilities from "../utilities";
  * const appengineNegBucket = new gcp.storage.Bucket("appengineNegBucket", {location: "US"});
  * const appengineNegBucketObject = new gcp.storage.BucketObject("appengineNegBucketObject", {
  *     bucket: appengineNegBucket.name,
- *     source: new pulumi.asset.FileAsset("./test-fixtures/appengine/hello-world.zip"),
+ *     source: new pulumi.asset.FileAsset("./test-fixtures/hello-world.zip"),
  * });
  * const appengineNegFlexibleAppVersion = new gcp.appengine.FlexibleAppVersion("appengineNegFlexibleAppVersion", {
  *     versionId: "v1",

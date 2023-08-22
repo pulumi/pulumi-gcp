@@ -15,6 +15,7 @@ import com.pulumi.gcp.dataproc.outputs.MetastoreServiceHiveMetastoreConfig;
 import com.pulumi.gcp.dataproc.outputs.MetastoreServiceMaintenanceWindow;
 import com.pulumi.gcp.dataproc.outputs.MetastoreServiceMetadataIntegration;
 import com.pulumi.gcp.dataproc.outputs.MetastoreServiceNetworkConfig;
+import com.pulumi.gcp.dataproc.outputs.MetastoreServiceScalingConfig;
 import com.pulumi.gcp.dataproc.outputs.MetastoreServiceTelemetryConfig;
 import java.lang.Integer;
 import java.lang.String;
@@ -179,6 +180,84 @@ import javax.annotation.Nullable;
  *                     .subnetwork(subnet.id())
  *                     .build())
  *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Dataproc Metastore Service Dpms2
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.dataproc.MetastoreService;
+ * import com.pulumi.gcp.dataproc.MetastoreServiceArgs;
+ * import com.pulumi.gcp.dataproc.inputs.MetastoreServiceHiveMetastoreConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.MetastoreServiceScalingConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var dpms2 = new MetastoreService(&#34;dpms2&#34;, MetastoreServiceArgs.builder()        
+ *             .databaseType(&#34;SPANNER&#34;)
+ *             .hiveMetastoreConfig(MetastoreServiceHiveMetastoreConfigArgs.builder()
+ *                 .version(&#34;3.1.2&#34;)
+ *                 .build())
+ *             .location(&#34;us-central1&#34;)
+ *             .scalingConfig(MetastoreServiceScalingConfigArgs.builder()
+ *                 .instanceSize(&#34;EXTRA_SMALL&#34;)
+ *                 .build())
+ *             .serviceId(&#34;dpms2&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Dataproc Metastore Service Dpms2 Scaling Factor
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.dataproc.MetastoreService;
+ * import com.pulumi.gcp.dataproc.MetastoreServiceArgs;
+ * import com.pulumi.gcp.dataproc.inputs.MetastoreServiceHiveMetastoreConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.MetastoreServiceScalingConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var dpms2ScalingFactor = new MetastoreService(&#34;dpms2ScalingFactor&#34;, MetastoreServiceArgs.builder()        
+ *             .databaseType(&#34;SPANNER&#34;)
+ *             .hiveMetastoreConfig(MetastoreServiceHiveMetastoreConfigArgs.builder()
+ *                 .version(&#34;3.1.2&#34;)
+ *                 .build())
+ *             .location(&#34;us-central1&#34;)
+ *             .scalingConfig(MetastoreServiceScalingConfigArgs.builder()
+ *                 .scalingFactor(&#34;2&#34;)
+ *                 .build())
+ *             .serviceId(&#34;dpms2sf&#34;)
  *             .build());
  * 
  *     }
@@ -443,6 +522,22 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> releaseChannel() {
         return Codegen.optional(this.releaseChannel);
+    }
+    /**
+     * Represents the scaling configuration of a metastore service.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="scalingConfig", type=MetastoreServiceScalingConfig.class, parameters={})
+    private Output</* @Nullable */ MetastoreServiceScalingConfig> scalingConfig;
+
+    /**
+     * @return Represents the scaling configuration of a metastore service.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<MetastoreServiceScalingConfig>> scalingConfig() {
+        return Codegen.optional(this.scalingConfig);
     }
     /**
      * The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),

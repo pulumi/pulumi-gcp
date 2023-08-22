@@ -132,7 +132,7 @@ namespace Pulumi.Gcp.Compute
     ///     var appengineNegBucketObject = new Gcp.Storage.BucketObject("appengineNegBucketObject", new()
     ///     {
     ///         Bucket = appengineNegBucket.Name,
-    ///         Source = new FileAsset("./test-fixtures/appengine/hello-world.zip"),
+    ///         Source = new FileAsset("./test-fixtures/hello-world.zip"),
     ///     });
     /// 
     ///     var appengineNegFlexibleAppVersion = new Gcp.AppEngine.FlexibleAppVersion("appengineNegFlexibleAppVersion", new()

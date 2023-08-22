@@ -93,7 +93,7 @@ import (
 //			caAuthority, err := certificateauthority.NewAuthority(ctx, "caAuthority", &certificateauthority.AuthorityArgs{
 //				Location:               pulumi.String("us-central1"),
 //				Pool:                   pool.Name,
-//				CertificateAuthorityId: pulumi.String("my-ca"),
+//				CertificateAuthorityId: pulumi.String("ca-authority"),
 //				Config: &certificateauthority.AuthorityConfigArgs{
 //					SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
 //						Subject: &certificateauthority.AuthorityConfigSubjectConfigSubjectArgs{
@@ -243,8 +243,8 @@ import (
 //				Description: pulumi.String("Regional cert"),
 //				Location:    pulumi.String("us-central1"),
 //				SelfManaged: &certificatemanager.CertificateSelfManagedArgs{
-//					PemCertificate: readFileOrPanic("test-fixtures/certificatemanager/cert.pem"),
-//					PemPrivateKey:  readFileOrPanic("test-fixtures/certificatemanager/private-key.pem"),
+//					PemCertificate: readFileOrPanic("test-fixtures/cert.pem"),
+//					PemPrivateKey:  readFileOrPanic("test-fixtures/private-key.pem"),
 //				},
 //			})
 //			if err != nil {
@@ -305,7 +305,8 @@ type Certificate struct {
 	// If unsure, choose this option.
 	// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
 	// served from non-core Google data centers.
-	// Currently allowed only for managed certificates.
+	// ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
+	// see https://cloud.google.com/compute/docs/regions-zones
 	Scope pulumi.StringPtrOutput `pulumi:"scope"`
 	// Certificate data for a SelfManaged Certificate.
 	// SelfManaged Certificates are uploaded by the user. Updating such
@@ -369,7 +370,8 @@ type certificateState struct {
 	// If unsure, choose this option.
 	// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
 	// served from non-core Google data centers.
-	// Currently allowed only for managed certificates.
+	// ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
+	// see https://cloud.google.com/compute/docs/regions-zones
 	Scope *string `pulumi:"scope"`
 	// Certificate data for a SelfManaged Certificate.
 	// SelfManaged Certificates are uploaded by the user. Updating such
@@ -404,7 +406,8 @@ type CertificateState struct {
 	// If unsure, choose this option.
 	// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
 	// served from non-core Google data centers.
-	// Currently allowed only for managed certificates.
+	// ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
+	// see https://cloud.google.com/compute/docs/regions-zones
 	Scope pulumi.StringPtrInput
 	// Certificate data for a SelfManaged Certificate.
 	// SelfManaged Certificates are uploaded by the user. Updating such
@@ -443,7 +446,8 @@ type certificateArgs struct {
 	// If unsure, choose this option.
 	// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
 	// served from non-core Google data centers.
-	// Currently allowed only for managed certificates.
+	// ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
+	// see https://cloud.google.com/compute/docs/regions-zones
 	Scope *string `pulumi:"scope"`
 	// Certificate data for a SelfManaged Certificate.
 	// SelfManaged Certificates are uploaded by the user. Updating such
@@ -479,7 +483,8 @@ type CertificateArgs struct {
 	// If unsure, choose this option.
 	// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
 	// served from non-core Google data centers.
-	// Currently allowed only for managed certificates.
+	// ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
+	// see https://cloud.google.com/compute/docs/regions-zones
 	Scope pulumi.StringPtrInput
 	// Certificate data for a SelfManaged Certificate.
 	// SelfManaged Certificates are uploaded by the user. Updating such
@@ -618,7 +623,8 @@ func (o CertificateOutput) Project() pulumi.StringOutput {
 // If unsure, choose this option.
 // EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
 // served from non-core Google data centers.
-// Currently allowed only for managed certificates.
+// ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
+// see https://cloud.google.com/compute/docs/regions-zones
 func (o CertificateOutput) Scope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.Scope }).(pulumi.StringPtrOutput)
 }

@@ -32,6 +32,8 @@ artifactRegistryCustomEndpoint: Optional[str]
 
 assuredWorkloadsCustomEndpoint: Optional[str]
 
+backupDrCustomEndpoint: Optional[str]
+
 batching: Optional[str]
 
 beyondcorpCustomEndpoint: Optional[str]

@@ -4326,15 +4326,20 @@ class VMwareClusterControlPlaneNodeAutoResizeConfigArgs:
 @pulumi.input_type
 class VMwareClusterControlPlaneNodeVsphereConfigArgs:
     def __init__(__self__, *,
-                 datastore: Optional[pulumi.Input[str]] = None):
+                 datastore: Optional[pulumi.Input[str]] = None,
+                 storage_policy_name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] datastore: (Output)
                The Vsphere datastore used by the Control Plane Node.
+        :param pulumi.Input[str] storage_policy_name: (Output)
+               The Vsphere storage policy used by the control plane Node.
                
                - - -
         """
         if datastore is not None:
             pulumi.set(__self__, "datastore", datastore)
+        if storage_policy_name is not None:
+            pulumi.set(__self__, "storage_policy_name", storage_policy_name)
 
     @property
     @pulumi.getter
@@ -4342,14 +4347,27 @@ class VMwareClusterControlPlaneNodeVsphereConfigArgs:
         """
         (Output)
         The Vsphere datastore used by the Control Plane Node.
-
-        - - -
         """
         return pulumi.get(self, "datastore")
 
     @datastore.setter
     def datastore(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "datastore", value)
+
+    @property
+    @pulumi.getter(name="storagePolicyName")
+    def storage_policy_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The Vsphere storage policy used by the control plane Node.
+
+        - - -
+        """
+        return pulumi.get(self, "storage_policy_name")
+
+    @storage_policy_name.setter
+    def storage_policy_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_policy_name", value)
 
 
 @pulumi.input_type
@@ -5628,7 +5646,8 @@ class VMwareClusterVcenterArgs:
                  datacenter: Optional[pulumi.Input[str]] = None,
                  datastore: Optional[pulumi.Input[str]] = None,
                  folder: Optional[pulumi.Input[str]] = None,
-                 resource_pool: Optional[pulumi.Input[str]] = None):
+                 resource_pool: Optional[pulumi.Input[str]] = None,
+                 storage_policy_name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] address: The load balancer's IP address.
         :param pulumi.Input[str] ca_cert_data: (Output)
@@ -5639,12 +5658,14 @@ class VMwareClusterVcenterArgs:
                The name of the vCenter datacenter for the user cluster.
         :param pulumi.Input[str] datastore: (Output)
                The Vsphere datastore used by the Control Plane Node.
-               
-               - - -
         :param pulumi.Input[str] folder: (Output)
                The name of the vCenter folder for the user cluster.
         :param pulumi.Input[str] resource_pool: (Output)
                The name of the vCenter resource pool for the user cluster.
+        :param pulumi.Input[str] storage_policy_name: (Output)
+               The Vsphere storage policy used by the control plane Node.
+               
+               - - -
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -5660,6 +5681,8 @@ class VMwareClusterVcenterArgs:
             pulumi.set(__self__, "folder", folder)
         if resource_pool is not None:
             pulumi.set(__self__, "resource_pool", resource_pool)
+        if storage_policy_name is not None:
+            pulumi.set(__self__, "storage_policy_name", storage_policy_name)
 
     @property
     @pulumi.getter
@@ -5718,8 +5741,6 @@ class VMwareClusterVcenterArgs:
         """
         (Output)
         The Vsphere datastore used by the Control Plane Node.
-
-        - - -
         """
         return pulumi.get(self, "datastore")
 
@@ -5752,6 +5773,21 @@ class VMwareClusterVcenterArgs:
     @resource_pool.setter
     def resource_pool(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resource_pool", value)
+
+    @property
+    @pulumi.getter(name="storagePolicyName")
+    def storage_policy_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The Vsphere storage policy used by the control plane Node.
+
+        - - -
+        """
+        return pulumi.get(self, "storage_policy_name")
+
+    @storage_policy_name.setter
+    def storage_policy_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_policy_name", value)
 
 
 @pulumi.input_type

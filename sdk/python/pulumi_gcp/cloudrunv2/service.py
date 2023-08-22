@@ -308,12 +308,17 @@ class _ServiceState:
                  client: Optional[pulumi.Input[str]] = None,
                  client_version: Optional[pulumi.Input[str]] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceConditionArgs']]]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
+                 creator: Optional[pulumi.Input[str]] = None,
                  custom_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 delete_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
+                 expire_time: Optional[pulumi.Input[str]] = None,
                  generation: Optional[pulumi.Input[str]] = None,
                  ingress: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 last_modifier: Optional[pulumi.Input[str]] = None,
                  latest_created_revision: Optional[pulumi.Input[str]] = None,
                  latest_ready_revision: Optional[pulumi.Input[str]] = None,
                  launch_stage: Optional[pulumi.Input[str]] = None,
@@ -327,6 +332,7 @@ class _ServiceState:
                  traffic_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficStatusArgs']]]] = None,
                  traffics: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
+                 update_time: Optional[pulumi.Input[str]] = None,
                  uri: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Service resources.
@@ -346,11 +352,15 @@ class _ServiceState:
         :param pulumi.Input[str] client_version: Arbitrary version identifier for the API client.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceConditionArgs']]] conditions: The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Service does not reach its Serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
                Structure is documented below.
+        :param pulumi.Input[str] create_time: The creation time.
+        :param pulumi.Input[str] creator: Email address of the authenticated creator.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_audiences: One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
                string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
                https://cloud.google.com/run/docs/configuring/custom-audiences.
+        :param pulumi.Input[str] delete_time: The deletion time.
         :param pulumi.Input[str] description: User-provided description of the Service. This field currently has a 512-character limit.
         :param pulumi.Input[str] etag: A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
+        :param pulumi.Input[str] expire_time: For a deleted resource, the time after which it will be permamently deleted.
         :param pulumi.Input[str] generation: A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
         :param pulumi.Input[str] ingress: Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
                Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
@@ -364,6 +374,7 @@ class _ServiceState:
                environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
                Cloud Run API v2 does not support labels with  `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
                All system labels in v1 now have a corresponding field in v2 Service.
+        :param pulumi.Input[str] last_modifier: Email address of the last authenticated modifier.
         :param pulumi.Input[str] latest_created_revision: Name of the last created revision. See comments in reconciling for additional information on reconciliation process in Cloud Run.
         :param pulumi.Input[str] latest_ready_revision: Name of the latest revision that is serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run.
         :param pulumi.Input[str] launch_stage: The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
@@ -388,6 +399,7 @@ class _ServiceState:
         :param pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]] traffics: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
                Structure is documented below.
         :param pulumi.Input[str] uid: Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
+        :param pulumi.Input[str] update_time: The last-modified time.
         :param pulumi.Input[str] uri: (Output)
                Displays the target URI.
         """
@@ -401,18 +413,28 @@ class _ServiceState:
             pulumi.set(__self__, "client_version", client_version)
         if conditions is not None:
             pulumi.set(__self__, "conditions", conditions)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if creator is not None:
+            pulumi.set(__self__, "creator", creator)
         if custom_audiences is not None:
             pulumi.set(__self__, "custom_audiences", custom_audiences)
+        if delete_time is not None:
+            pulumi.set(__self__, "delete_time", delete_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
+        if expire_time is not None:
+            pulumi.set(__self__, "expire_time", expire_time)
         if generation is not None:
             pulumi.set(__self__, "generation", generation)
         if ingress is not None:
             pulumi.set(__self__, "ingress", ingress)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if last_modifier is not None:
+            pulumi.set(__self__, "last_modifier", last_modifier)
         if latest_created_revision is not None:
             pulumi.set(__self__, "latest_created_revision", latest_created_revision)
         if latest_ready_revision is not None:
@@ -439,6 +461,8 @@ class _ServiceState:
             pulumi.set(__self__, "traffics", traffics)
         if uid is not None:
             pulumi.set(__self__, "uid", uid)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
         if uri is not None:
             pulumi.set(__self__, "uri", uri)
 
@@ -514,6 +538,30 @@ class _ServiceState:
         pulumi.set(self, "conditions", value)
 
     @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The creation time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter
+    def creator(self) -> Optional[pulumi.Input[str]]:
+        """
+        Email address of the authenticated creator.
+        """
+        return pulumi.get(self, "creator")
+
+    @creator.setter
+    def creator(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "creator", value)
+
+    @property
     @pulumi.getter(name="customAudiences")
     def custom_audiences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -526,6 +574,18 @@ class _ServiceState:
     @custom_audiences.setter
     def custom_audiences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "custom_audiences", value)
+
+    @property
+    @pulumi.getter(name="deleteTime")
+    def delete_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The deletion time.
+        """
+        return pulumi.get(self, "delete_time")
+
+    @delete_time.setter
+    def delete_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "delete_time", value)
 
     @property
     @pulumi.getter
@@ -550,6 +610,18 @@ class _ServiceState:
     @etag.setter
     def etag(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        For a deleted resource, the time after which it will be permamently deleted.
+        """
+        return pulumi.get(self, "expire_time")
+
+    @expire_time.setter
+    def expire_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expire_time", value)
 
     @property
     @pulumi.getter
@@ -596,6 +668,18 @@ class _ServiceState:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="lastModifier")
+    def last_modifier(self) -> Optional[pulumi.Input[str]]:
+        """
+        Email address of the last authenticated modifier.
+        """
+        return pulumi.get(self, "last_modifier")
+
+    @last_modifier.setter
+    def last_modifier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_modifier", value)
 
     @property
     @pulumi.getter(name="latestCreatedRevision")
@@ -763,6 +847,18 @@ class _ServiceState:
     @uid.setter
     def uid(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "uid", value)
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The last-modified time.
+        """
+        return pulumi.get(self, "update_time")
+
+    @update_time.setter
+    def update_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update_time", value)
 
     @property
     @pulumi.getter
@@ -1414,8 +1510,13 @@ class Service(pulumi.CustomResource):
             __props__.__dict__["template"] = template
             __props__.__dict__["traffics"] = traffics
             __props__.__dict__["conditions"] = None
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["creator"] = None
+            __props__.__dict__["delete_time"] = None
             __props__.__dict__["etag"] = None
+            __props__.__dict__["expire_time"] = None
             __props__.__dict__["generation"] = None
+            __props__.__dict__["last_modifier"] = None
             __props__.__dict__["latest_created_revision"] = None
             __props__.__dict__["latest_ready_revision"] = None
             __props__.__dict__["observed_generation"] = None
@@ -1423,6 +1524,7 @@ class Service(pulumi.CustomResource):
             __props__.__dict__["terminal_conditions"] = None
             __props__.__dict__["traffic_statuses"] = None
             __props__.__dict__["uid"] = None
+            __props__.__dict__["update_time"] = None
             __props__.__dict__["uri"] = None
         super(Service, __self__).__init__(
             'gcp:cloudrunv2/service:Service',
@@ -1439,12 +1541,17 @@ class Service(pulumi.CustomResource):
             client: Optional[pulumi.Input[str]] = None,
             client_version: Optional[pulumi.Input[str]] = None,
             conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceConditionArgs']]]]] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
+            creator: Optional[pulumi.Input[str]] = None,
             custom_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            delete_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
+            expire_time: Optional[pulumi.Input[str]] = None,
             generation: Optional[pulumi.Input[str]] = None,
             ingress: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            last_modifier: Optional[pulumi.Input[str]] = None,
             latest_created_revision: Optional[pulumi.Input[str]] = None,
             latest_ready_revision: Optional[pulumi.Input[str]] = None,
             launch_stage: Optional[pulumi.Input[str]] = None,
@@ -1458,6 +1565,7 @@ class Service(pulumi.CustomResource):
             traffic_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficStatusArgs']]]]] = None,
             traffics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficArgs']]]]] = None,
             uid: Optional[pulumi.Input[str]] = None,
+            update_time: Optional[pulumi.Input[str]] = None,
             uri: Optional[pulumi.Input[str]] = None) -> 'Service':
         """
         Get an existing Service resource's state with the given name, id, and optional extra
@@ -1482,11 +1590,15 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] client_version: Arbitrary version identifier for the API client.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceConditionArgs']]]] conditions: The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Service does not reach its Serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
                Structure is documented below.
+        :param pulumi.Input[str] create_time: The creation time.
+        :param pulumi.Input[str] creator: Email address of the authenticated creator.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_audiences: One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
                string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
                https://cloud.google.com/run/docs/configuring/custom-audiences.
+        :param pulumi.Input[str] delete_time: The deletion time.
         :param pulumi.Input[str] description: User-provided description of the Service. This field currently has a 512-character limit.
         :param pulumi.Input[str] etag: A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
+        :param pulumi.Input[str] expire_time: For a deleted resource, the time after which it will be permamently deleted.
         :param pulumi.Input[str] generation: A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
         :param pulumi.Input[str] ingress: Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
                Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
@@ -1500,6 +1612,7 @@ class Service(pulumi.CustomResource):
                environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
                Cloud Run API v2 does not support labels with  `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
                All system labels in v1 now have a corresponding field in v2 Service.
+        :param pulumi.Input[str] last_modifier: Email address of the last authenticated modifier.
         :param pulumi.Input[str] latest_created_revision: Name of the last created revision. See comments in reconciling for additional information on reconciliation process in Cloud Run.
         :param pulumi.Input[str] latest_ready_revision: Name of the latest revision that is serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run.
         :param pulumi.Input[str] launch_stage: The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/products#product-launch-stages). Cloud Run supports ALPHA, BETA, and GA.
@@ -1524,6 +1637,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficArgs']]]] traffics: Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest Ready Revision.
                Structure is documented below.
         :param pulumi.Input[str] uid: Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
+        :param pulumi.Input[str] update_time: The last-modified time.
         :param pulumi.Input[str] uri: (Output)
                Displays the target URI.
         """
@@ -1536,12 +1650,17 @@ class Service(pulumi.CustomResource):
         __props__.__dict__["client"] = client
         __props__.__dict__["client_version"] = client_version
         __props__.__dict__["conditions"] = conditions
+        __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["creator"] = creator
         __props__.__dict__["custom_audiences"] = custom_audiences
+        __props__.__dict__["delete_time"] = delete_time
         __props__.__dict__["description"] = description
         __props__.__dict__["etag"] = etag
+        __props__.__dict__["expire_time"] = expire_time
         __props__.__dict__["generation"] = generation
         __props__.__dict__["ingress"] = ingress
         __props__.__dict__["labels"] = labels
+        __props__.__dict__["last_modifier"] = last_modifier
         __props__.__dict__["latest_created_revision"] = latest_created_revision
         __props__.__dict__["latest_ready_revision"] = latest_ready_revision
         __props__.__dict__["launch_stage"] = launch_stage
@@ -1555,6 +1674,7 @@ class Service(pulumi.CustomResource):
         __props__.__dict__["traffic_statuses"] = traffic_statuses
         __props__.__dict__["traffics"] = traffics
         __props__.__dict__["uid"] = uid
+        __props__.__dict__["update_time"] = update_time
         __props__.__dict__["uri"] = uri
         return Service(resource_name, opts=opts, __props__=__props__)
 
@@ -1610,6 +1730,22 @@ class Service(pulumi.CustomResource):
         return pulumi.get(self, "conditions")
 
     @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The creation time.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def creator(self) -> pulumi.Output[str]:
+        """
+        Email address of the authenticated creator.
+        """
+        return pulumi.get(self, "creator")
+
+    @property
     @pulumi.getter(name="customAudiences")
     def custom_audiences(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
@@ -1618,6 +1754,14 @@ class Service(pulumi.CustomResource):
         https://cloud.google.com/run/docs/configuring/custom-audiences.
         """
         return pulumi.get(self, "custom_audiences")
+
+    @property
+    @pulumi.getter(name="deleteTime")
+    def delete_time(self) -> pulumi.Output[str]:
+        """
+        The deletion time.
+        """
+        return pulumi.get(self, "delete_time")
 
     @property
     @pulumi.getter
@@ -1634,6 +1778,14 @@ class Service(pulumi.CustomResource):
         A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
         """
         return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> pulumi.Output[str]:
+        """
+        For a deleted resource, the time after which it will be permamently deleted.
+        """
+        return pulumi.get(self, "expire_time")
 
     @property
     @pulumi.getter
@@ -1668,6 +1820,14 @@ class Service(pulumi.CustomResource):
         All system labels in v1 now have a corresponding field in v2 Service.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="lastModifier")
+    def last_modifier(self) -> pulumi.Output[str]:
+        """
+        Email address of the last authenticated modifier.
+        """
+        return pulumi.get(self, "last_modifier")
 
     @property
     @pulumi.getter(name="latestCreatedRevision")
@@ -1783,6 +1943,14 @@ class Service(pulumi.CustomResource):
         Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
         """
         return pulumi.get(self, "uid")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Output[str]:
+        """
+        The last-modified time.
+        """
+        return pulumi.get(self, "update_time")
 
     @property
     @pulumi.getter

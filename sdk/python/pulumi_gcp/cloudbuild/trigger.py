@@ -1218,6 +1218,27 @@ class Trigger(pulumi.CustomResource):
                 uri="https://hashicorp/terraform-provider-google-beta",
             ))
         ```
+        ### Cloudbuild Trigger Manual Bitbucket Server
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        manual_bitbucket_trigger = gcp.cloudbuild.Trigger("manual-bitbucket-trigger",
+            git_file_source=gcp.cloudbuild.TriggerGitFileSourceArgs(
+                bitbucket_server_config="projects/myProject/locations/global/bitbucketServerConfigs/configID",
+                path="cloudbuild.yaml",
+                repo_type="BITBUCKET_SERVER",
+                revision="refs/heads/main",
+                uri="https://bbs.com/scm/stag/test-repo.git",
+            ),
+            source_to_build=gcp.cloudbuild.TriggerSourceToBuildArgs(
+                bitbucket_server_config="projects/myProject/locations/global/bitbucketServerConfigs/configID",
+                ref="refs/heads/main",
+                repo_type="BITBUCKET_SERVER",
+                uri="https://bbs.com/scm/stag/test-repo.git",
+            ))
+        ```
         ### Cloudbuild Trigger Repo
 
         ```python
@@ -1630,6 +1651,27 @@ class Trigger(pulumi.CustomResource):
                 ref="refs/heads/main",
                 repo_type="GITHUB",
                 uri="https://hashicorp/terraform-provider-google-beta",
+            ))
+        ```
+        ### Cloudbuild Trigger Manual Bitbucket Server
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        manual_bitbucket_trigger = gcp.cloudbuild.Trigger("manual-bitbucket-trigger",
+            git_file_source=gcp.cloudbuild.TriggerGitFileSourceArgs(
+                bitbucket_server_config="projects/myProject/locations/global/bitbucketServerConfigs/configID",
+                path="cloudbuild.yaml",
+                repo_type="BITBUCKET_SERVER",
+                revision="refs/heads/main",
+                uri="https://bbs.com/scm/stag/test-repo.git",
+            ),
+            source_to_build=gcp.cloudbuild.TriggerSourceToBuildArgs(
+                bitbucket_server_config="projects/myProject/locations/global/bitbucketServerConfigs/configID",
+                ref="refs/heads/main",
+                repo_type="BITBUCKET_SERVER",
+                uri="https://bbs.com/scm/stag/test-repo.git",
             ))
         ```
         ### Cloudbuild Trigger Repo

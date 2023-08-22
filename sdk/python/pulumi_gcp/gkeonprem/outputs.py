@@ -4684,16 +4684,38 @@ class VMwareClusterControlPlaneNodeAutoResizeConfig(dict):
 
 @pulumi.output_type
 class VMwareClusterControlPlaneNodeVsphereConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "storagePolicyName":
+            suggest = "storage_policy_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VMwareClusterControlPlaneNodeVsphereConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VMwareClusterControlPlaneNodeVsphereConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VMwareClusterControlPlaneNodeVsphereConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 datastore: Optional[str] = None):
+                 datastore: Optional[str] = None,
+                 storage_policy_name: Optional[str] = None):
         """
         :param str datastore: (Output)
                The Vsphere datastore used by the Control Plane Node.
+        :param str storage_policy_name: (Output)
+               The Vsphere storage policy used by the control plane Node.
                
                - - -
         """
         if datastore is not None:
             pulumi.set(__self__, "datastore", datastore)
+        if storage_policy_name is not None:
+            pulumi.set(__self__, "storage_policy_name", storage_policy_name)
 
     @property
     @pulumi.getter
@@ -4701,10 +4723,19 @@ class VMwareClusterControlPlaneNodeVsphereConfig(dict):
         """
         (Output)
         The Vsphere datastore used by the Control Plane Node.
+        """
+        return pulumi.get(self, "datastore")
+
+    @property
+    @pulumi.getter(name="storagePolicyName")
+    def storage_policy_name(self) -> Optional[str]:
+        """
+        (Output)
+        The Vsphere storage policy used by the control plane Node.
 
         - - -
         """
-        return pulumi.get(self, "datastore")
+        return pulumi.get(self, "storage_policy_name")
 
 
 @pulumi.output_type
@@ -6009,6 +6040,8 @@ class VMwareClusterVcenter(dict):
             suggest = "ca_cert_data"
         elif key == "resourcePool":
             suggest = "resource_pool"
+        elif key == "storagePolicyName":
+            suggest = "storage_policy_name"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in VMwareClusterVcenter. Access the value via the '{suggest}' property getter instead.")
@@ -6028,7 +6061,8 @@ class VMwareClusterVcenter(dict):
                  datacenter: Optional[str] = None,
                  datastore: Optional[str] = None,
                  folder: Optional[str] = None,
-                 resource_pool: Optional[str] = None):
+                 resource_pool: Optional[str] = None,
+                 storage_policy_name: Optional[str] = None):
         """
         :param str address: The load balancer's IP address.
         :param str ca_cert_data: (Output)
@@ -6039,12 +6073,14 @@ class VMwareClusterVcenter(dict):
                The name of the vCenter datacenter for the user cluster.
         :param str datastore: (Output)
                The Vsphere datastore used by the Control Plane Node.
-               
-               - - -
         :param str folder: (Output)
                The name of the vCenter folder for the user cluster.
         :param str resource_pool: (Output)
                The name of the vCenter resource pool for the user cluster.
+        :param str storage_policy_name: (Output)
+               The Vsphere storage policy used by the control plane Node.
+               
+               - - -
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -6060,6 +6096,8 @@ class VMwareClusterVcenter(dict):
             pulumi.set(__self__, "folder", folder)
         if resource_pool is not None:
             pulumi.set(__self__, "resource_pool", resource_pool)
+        if storage_policy_name is not None:
+            pulumi.set(__self__, "storage_policy_name", storage_policy_name)
 
     @property
     @pulumi.getter
@@ -6102,8 +6140,6 @@ class VMwareClusterVcenter(dict):
         """
         (Output)
         The Vsphere datastore used by the Control Plane Node.
-
-        - - -
         """
         return pulumi.get(self, "datastore")
 
@@ -6124,6 +6160,17 @@ class VMwareClusterVcenter(dict):
         The name of the vCenter resource pool for the user cluster.
         """
         return pulumi.get(self, "resource_pool")
+
+    @property
+    @pulumi.getter(name="storagePolicyName")
+    def storage_policy_name(self) -> Optional[str]:
+        """
+        (Output)
+        The Vsphere storage policy used by the control plane Node.
+
+        - - -
+        """
+        return pulumi.get(self, "storage_policy_name")
 
 
 @pulumi.output_type

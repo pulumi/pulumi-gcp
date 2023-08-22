@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -71,12 +72,28 @@ public final class SecurityPolicyAdvancedOptionsConfigArgs extends com.pulumi.re
         return Optional.ofNullable(this.logLevel);
     }
 
+    /**
+     * ) An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+     * 
+     */
+    @Import(name="userIpRequestHeaders")
+    private @Nullable Output<List<String>> userIpRequestHeaders;
+
+    /**
+     * @return ) An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+     * 
+     */
+    public Optional<Output<List<String>>> userIpRequestHeaders() {
+        return Optional.ofNullable(this.userIpRequestHeaders);
+    }
+
     private SecurityPolicyAdvancedOptionsConfigArgs() {}
 
     private SecurityPolicyAdvancedOptionsConfigArgs(SecurityPolicyAdvancedOptionsConfigArgs $) {
         this.jsonCustomConfig = $.jsonCustomConfig;
         this.jsonParsing = $.jsonParsing;
         this.logLevel = $.logLevel;
+        this.userIpRequestHeaders = $.userIpRequestHeaders;
     }
 
     public static Builder builder() {
@@ -168,6 +185,37 @@ public final class SecurityPolicyAdvancedOptionsConfigArgs extends com.pulumi.re
          */
         public Builder logLevel(String logLevel) {
             return logLevel(Output.of(logLevel));
+        }
+
+        /**
+         * @param userIpRequestHeaders ) An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userIpRequestHeaders(@Nullable Output<List<String>> userIpRequestHeaders) {
+            $.userIpRequestHeaders = userIpRequestHeaders;
+            return this;
+        }
+
+        /**
+         * @param userIpRequestHeaders ) An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userIpRequestHeaders(List<String> userIpRequestHeaders) {
+            return userIpRequestHeaders(Output.of(userIpRequestHeaders));
+        }
+
+        /**
+         * @param userIpRequestHeaders ) An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userIpRequestHeaders(String... userIpRequestHeaders) {
+            return userIpRequestHeaders(List.of(userIpRequestHeaders));
         }
 
         public SecurityPolicyAdvancedOptionsConfigArgs build() {

@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var @default = new Gcp.Compute.NetworkEdgeSecurityService("default", new()
     ///     {
-    ///         Region = "asia-southeast1",
+    ///         Region = "us-east1",
     ///         Description = "My basic resource",
     ///     }, new CustomResourceOptions
     ///     {

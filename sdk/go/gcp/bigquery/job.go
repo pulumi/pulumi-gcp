@@ -226,7 +226,7 @@ import (
 //				return err
 //			}
 //			testBucketObject, err := storage.NewBucketObject(ctx, "testBucketObject", &storage.BucketObjectArgs{
-//				Source: pulumi.NewFileAsset("./test-fixtures/bigquerytable/test.parquet.gzip"),
+//				Source: pulumi.NewFileAsset("./test-fixtures/test.parquet.gzip"),
 //				Bucket: testBucket.Name,
 //			})
 //			if err != nil {

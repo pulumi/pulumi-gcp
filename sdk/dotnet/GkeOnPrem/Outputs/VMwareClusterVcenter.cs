@@ -35,8 +35,6 @@ namespace Pulumi.Gcp.GkeOnPrem.Outputs
         /// <summary>
         /// (Output)
         /// The Vsphere datastore used by the Control Plane Node.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string? Datastore;
         /// <summary>
@@ -49,6 +47,13 @@ namespace Pulumi.Gcp.GkeOnPrem.Outputs
         /// The name of the vCenter resource pool for the user cluster.
         /// </summary>
         public readonly string? ResourcePool;
+        /// <summary>
+        /// (Output)
+        /// The Vsphere storage policy used by the control plane Node.
+        /// 
+        /// - - -
+        /// </summary>
+        public readonly string? StoragePolicyName;
 
         [OutputConstructor]
         private VMwareClusterVcenter(
@@ -64,7 +69,9 @@ namespace Pulumi.Gcp.GkeOnPrem.Outputs
 
             string? folder,
 
-            string? resourcePool)
+            string? resourcePool,
+
+            string? storagePolicyName)
         {
             Address = address;
             CaCertData = caCertData;
@@ -73,6 +80,7 @@ namespace Pulumi.Gcp.GkeOnPrem.Outputs
             Datastore = datastore;
             Folder = folder;
             ResourcePool = resourcePool;
+            StoragePolicyName = storagePolicyName;
         }
     }
 }

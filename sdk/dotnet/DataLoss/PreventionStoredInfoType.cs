@@ -95,7 +95,7 @@ namespace Pulumi.Gcp.DataLoss
     ///     var @object = new Gcp.Storage.BucketObject("object", new()
     ///     {
     ///         Bucket = bucket.Name,
-    ///         Source = new FileAsset("./test-fixtures/dlp/words.txt"),
+    ///         Source = new FileAsset("./test-fixtures/words.txt"),
     ///     });
     /// 
     ///     var large = new Gcp.DataLoss.PreventionStoredInfoType("large", new()

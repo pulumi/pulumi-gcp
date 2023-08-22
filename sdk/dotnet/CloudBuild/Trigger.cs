@@ -316,6 +316,37 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// });
     /// ```
+    /// ### Cloudbuild Trigger Manual Bitbucket Server
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var manual_bitbucket_trigger = new Gcp.CloudBuild.Trigger("manual-bitbucket-trigger", new()
+    ///     {
+    ///         GitFileSource = new Gcp.CloudBuild.Inputs.TriggerGitFileSourceArgs
+    ///         {
+    ///             BitbucketServerConfig = "projects/myProject/locations/global/bitbucketServerConfigs/configID",
+    ///             Path = "cloudbuild.yaml",
+    ///             RepoType = "BITBUCKET_SERVER",
+    ///             Revision = "refs/heads/main",
+    ///             Uri = "https://bbs.com/scm/stag/test-repo.git",
+    ///         },
+    ///         SourceToBuild = new Gcp.CloudBuild.Inputs.TriggerSourceToBuildArgs
+    ///         {
+    ///             BitbucketServerConfig = "projects/myProject/locations/global/bitbucketServerConfigs/configID",
+    ///             Ref = "refs/heads/main",
+    ///             RepoType = "BITBUCKET_SERVER",
+    ///             Uri = "https://bbs.com/scm/stag/test-repo.git",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Cloudbuild Trigger Repo
     /// 
     /// ```csharp

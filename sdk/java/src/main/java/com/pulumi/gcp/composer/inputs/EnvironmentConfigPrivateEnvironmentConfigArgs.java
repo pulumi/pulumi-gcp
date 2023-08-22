@@ -37,6 +37,13 @@ public final class EnvironmentConfigPrivateEnvironmentConfigArgs extends com.pul
         return Optional.ofNullable(this.cloudSqlIpv4CidrBlock);
     }
 
+    @Import(name="connectionType")
+    private @Nullable Output<String> connectionType;
+
+    public Optional<Output<String>> connectionType() {
+        return Optional.ofNullable(this.connectionType);
+    }
+
     @Import(name="enablePrivateEndpoint")
     private @Nullable Output<Boolean> enablePrivateEndpoint;
 
@@ -71,6 +78,7 @@ public final class EnvironmentConfigPrivateEnvironmentConfigArgs extends com.pul
         this.cloudComposerConnectionSubnetwork = $.cloudComposerConnectionSubnetwork;
         this.cloudComposerNetworkIpv4CidrBlock = $.cloudComposerNetworkIpv4CidrBlock;
         this.cloudSqlIpv4CidrBlock = $.cloudSqlIpv4CidrBlock;
+        this.connectionType = $.connectionType;
         this.enablePrivateEndpoint = $.enablePrivateEndpoint;
         this.enablePrivatelyUsedPublicIps = $.enablePrivatelyUsedPublicIps;
         this.masterIpv4CidrBlock = $.masterIpv4CidrBlock;
@@ -120,6 +128,15 @@ public final class EnvironmentConfigPrivateEnvironmentConfigArgs extends com.pul
 
         public Builder cloudSqlIpv4CidrBlock(String cloudSqlIpv4CidrBlock) {
             return cloudSqlIpv4CidrBlock(Output.of(cloudSqlIpv4CidrBlock));
+        }
+
+        public Builder connectionType(@Nullable Output<String> connectionType) {
+            $.connectionType = connectionType;
+            return this;
+        }
+
+        public Builder connectionType(String connectionType) {
+            return connectionType(Output.of(connectionType));
         }
 
         public Builder enablePrivateEndpoint(@Nullable Output<Boolean> enablePrivateEndpoint) {

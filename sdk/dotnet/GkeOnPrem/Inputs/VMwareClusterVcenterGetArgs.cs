@@ -42,8 +42,6 @@ namespace Pulumi.Gcp.GkeOnPrem.Inputs
         /// <summary>
         /// (Output)
         /// The Vsphere datastore used by the Control Plane Node.
-        /// 
-        /// - - -
         /// </summary>
         [Input("datastore")]
         public Input<string>? Datastore { get; set; }
@@ -61,6 +59,15 @@ namespace Pulumi.Gcp.GkeOnPrem.Inputs
         /// </summary>
         [Input("resourcePool")]
         public Input<string>? ResourcePool { get; set; }
+
+        /// <summary>
+        /// (Output)
+        /// The Vsphere storage policy used by the control plane Node.
+        /// 
+        /// - - -
+        /// </summary>
+        [Input("storagePolicyName")]
+        public Input<string>? StoragePolicyName { get; set; }
 
         public VMwareClusterVcenterGetArgs()
         {

@@ -22,7 +22,7 @@ class GetSecretResult:
     """
     A collection of values returned by getSecret.
     """
-    def __init__(__self__, annotations=None, create_time=None, expire_time=None, id=None, labels=None, name=None, project=None, replications=None, rotations=None, secret_id=None, topics=None, ttl=None):
+    def __init__(__self__, annotations=None, create_time=None, expire_time=None, id=None, labels=None, name=None, project=None, replications=None, rotations=None, secret_id=None, topics=None, ttl=None, version_aliases=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -59,6 +59,9 @@ class GetSecretResult:
         if ttl and not isinstance(ttl, str):
             raise TypeError("Expected argument 'ttl' to be a str")
         pulumi.set(__self__, "ttl", ttl)
+        if version_aliases and not isinstance(version_aliases, dict):
+            raise TypeError("Expected argument 'version_aliases' to be a dict")
+        pulumi.set(__self__, "version_aliases", version_aliases)
 
     @property
     @pulumi.getter
@@ -123,6 +126,11 @@ class GetSecretResult:
     def ttl(self) -> str:
         return pulumi.get(self, "ttl")
 
+    @property
+    @pulumi.getter(name="versionAliases")
+    def version_aliases(self) -> Mapping[str, str]:
+        return pulumi.get(self, "version_aliases")
+
 
 class AwaitableGetSecretResult(GetSecretResult):
     # pylint: disable=using-constant-test
@@ -141,7 +149,8 @@ class AwaitableGetSecretResult(GetSecretResult):
             rotations=self.rotations,
             secret_id=self.secret_id,
             topics=self.topics,
-            ttl=self.ttl)
+            ttl=self.ttl,
+            version_aliases=self.version_aliases)
 
 
 def get_secret(project: Optional[str] = None,
@@ -181,7 +190,8 @@ def get_secret(project: Optional[str] = None,
         rotations=pulumi.get(__ret__, 'rotations'),
         secret_id=pulumi.get(__ret__, 'secret_id'),
         topics=pulumi.get(__ret__, 'topics'),
-        ttl=pulumi.get(__ret__, 'ttl'))
+        ttl=pulumi.get(__ret__, 'ttl'),
+        version_aliases=pulumi.get(__ret__, 'version_aliases'))
 
 
 @_utilities.lift_output_func(get_secret)

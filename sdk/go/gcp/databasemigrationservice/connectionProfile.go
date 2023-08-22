@@ -117,6 +117,7 @@ import (
 //							"cloudfoo": pulumi.String("cloudbar"),
 //						},
 //						Tier:                   pulumi.String("db-n1-standard-1"),
+//						Edition:                pulumi.String("ENTERPRISE"),
 //						StorageAutoResizeLimit: pulumi.String("0"),
 //						ActivationPolicy:       pulumi.String("ALWAYS"),
 //						IpConfig: &databasemigrationservice.ConnectionProfileCloudsqlSettingsIpConfigArgs{

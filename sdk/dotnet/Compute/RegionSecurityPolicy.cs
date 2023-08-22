@@ -57,6 +57,46 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Region Security Policy With User Defined Fields
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var region_sec_policy_user_defined_fields = new Gcp.Compute.RegionSecurityPolicy("region-sec-policy-user-defined-fields", new()
+    ///     {
+    ///         Description = "with user defined fields",
+    ///         Type = "CLOUD_ARMOR_NETWORK",
+    ///         UserDefinedFields = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionSecurityPolicyUserDefinedFieldArgs
+    ///             {
+    ///                 Name = "SIG1_AT_0",
+    ///                 Base = "UDP",
+    ///                 Offset = 8,
+    ///                 Size = 2,
+    ///                 Mask = "0x8F00",
+    ///             },
+    ///             new Gcp.Compute.Inputs.RegionSecurityPolicyUserDefinedFieldArgs
+    ///             {
+    ///                 Name = "SIG2_AT_8",
+    ///                 Base = "UDP",
+    ///                 Offset = 16,
+    ///                 Size = 4,
+    ///                 Mask = "0xFFFFFFFF",
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -154,6 +194,15 @@ namespace Pulumi.Gcp.Compute
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
 
+        /// <summary>
+        /// Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies.
+        /// A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits.
+        /// Rules may then specify matching values for these fields.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("userDefinedFields")]
+        public Output<ImmutableArray<Outputs.RegionSecurityPolicyUserDefinedField>> UserDefinedFields { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a RegionSecurityPolicy resource with the given unique name, arguments, and options.
@@ -248,6 +297,21 @@ namespace Pulumi.Gcp.Compute
         [Input("type")]
         public Input<string>? Type { get; set; }
 
+        [Input("userDefinedFields")]
+        private InputList<Inputs.RegionSecurityPolicyUserDefinedFieldArgs>? _userDefinedFields;
+
+        /// <summary>
+        /// Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies.
+        /// A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits.
+        /// Rules may then specify matching values for these fields.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.RegionSecurityPolicyUserDefinedFieldArgs> UserDefinedFields
+        {
+            get => _userDefinedFields ?? (_userDefinedFields = new InputList<Inputs.RegionSecurityPolicyUserDefinedFieldArgs>());
+            set => _userDefinedFields = value;
+        }
+
         public RegionSecurityPolicyArgs()
         {
         }
@@ -328,6 +392,21 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
+
+        [Input("userDefinedFields")]
+        private InputList<Inputs.RegionSecurityPolicyUserDefinedFieldGetArgs>? _userDefinedFields;
+
+        /// <summary>
+        /// Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies.
+        /// A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits.
+        /// Rules may then specify matching values for these fields.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.RegionSecurityPolicyUserDefinedFieldGetArgs> UserDefinedFields
+        {
+            get => _userDefinedFields ?? (_userDefinedFields = new InputList<Inputs.RegionSecurityPolicyUserDefinedFieldGetArgs>());
+            set => _userDefinedFields = value;
+        }
 
         public RegionSecurityPolicyState()
         {

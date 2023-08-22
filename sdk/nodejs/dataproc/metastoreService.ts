@@ -88,6 +88,42 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Dataproc Metastore Service Dpms2
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const dpms2 = new gcp.dataproc.MetastoreService("dpms2", {
+ *     databaseType: "SPANNER",
+ *     hiveMetastoreConfig: {
+ *         version: "3.1.2",
+ *     },
+ *     location: "us-central1",
+ *     scalingConfig: {
+ *         instanceSize: "EXTRA_SMALL",
+ *     },
+ *     serviceId: "dpms2",
+ * });
+ * ```
+ * ### Dataproc Metastore Service Dpms2 Scaling Factor
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const dpms2ScalingFactor = new gcp.dataproc.MetastoreService("dpms2ScalingFactor", {
+ *     databaseType: "SPANNER",
+ *     hiveMetastoreConfig: {
+ *         version: "3.1.2",
+ *     },
+ *     location: "us-central1",
+ *     scalingConfig: {
+ *         scalingFactor: 2,
+ *     },
+ *     serviceId: "dpms2sf",
+ * });
+ * ```
  *
  * ## Import
  *
@@ -209,6 +245,11 @@ export class MetastoreService extends pulumi.CustomResource {
      */
     public readonly releaseChannel!: pulumi.Output<string | undefined>;
     /**
+     * Represents the scaling configuration of a metastore service.
+     * Structure is documented below.
+     */
+    public readonly scalingConfig!: pulumi.Output<outputs.dataproc.MetastoreServiceScalingConfig | undefined>;
+    /**
      * The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
      * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
      * 3 and 63 characters.
@@ -268,6 +309,7 @@ export class MetastoreService extends pulumi.CustomResource {
             resourceInputs["port"] = state ? state.port : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["releaseChannel"] = state ? state.releaseChannel : undefined;
+            resourceInputs["scalingConfig"] = state ? state.scalingConfig : undefined;
             resourceInputs["serviceId"] = state ? state.serviceId : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["stateMessage"] = state ? state.stateMessage : undefined;
@@ -291,6 +333,7 @@ export class MetastoreService extends pulumi.CustomResource {
             resourceInputs["port"] = args ? args.port : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["releaseChannel"] = args ? args.releaseChannel : undefined;
+            resourceInputs["scalingConfig"] = args ? args.scalingConfig : undefined;
             resourceInputs["serviceId"] = args ? args.serviceId : undefined;
             resourceInputs["telemetryConfig"] = args ? args.telemetryConfig : undefined;
             resourceInputs["tier"] = args ? args.tier : undefined;
@@ -385,6 +428,11 @@ export interface MetastoreServiceState {
      * Possible values are: `CANARY`, `STABLE`.
      */
     releaseChannel?: pulumi.Input<string>;
+    /**
+     * Represents the scaling configuration of a metastore service.
+     * Structure is documented below.
+     */
+    scalingConfig?: pulumi.Input<inputs.dataproc.MetastoreServiceScalingConfig>;
     /**
      * The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
      * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
@@ -484,6 +532,11 @@ export interface MetastoreServiceArgs {
      * Possible values are: `CANARY`, `STABLE`.
      */
     releaseChannel?: pulumi.Input<string>;
+    /**
+     * Represents the scaling configuration of a metastore service.
+     * Structure is documented below.
+     */
+    scalingConfig?: pulumi.Input<inputs.dataproc.MetastoreServiceScalingConfig>;
     /**
      * The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
      * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between

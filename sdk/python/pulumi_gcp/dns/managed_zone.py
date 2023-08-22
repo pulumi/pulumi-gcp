@@ -52,7 +52,7 @@ class ManagedZoneArgs:
                zone. The value of this field contains the network to peer with.
                Structure is documented below.
         :param pulumi.Input['ManagedZonePrivateVisibilityConfigArgs'] private_visibility_config: For privately visible zones, the set of Virtual Private Cloud
-               resources that the zone is visible from.
+               resources that the zone is visible from. At least one of `gke_clusters` or `networks` must be specified.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -219,7 +219,7 @@ class ManagedZoneArgs:
     def private_visibility_config(self) -> Optional[pulumi.Input['ManagedZonePrivateVisibilityConfigArgs']]:
         """
         For privately visible zones, the set of Virtual Private Cloud
-        resources that the zone is visible from.
+        resources that the zone is visible from. At least one of `gke_clusters` or `networks` must be specified.
         Structure is documented below.
         """
         return pulumi.get(self, "private_visibility_config")
@@ -331,7 +331,7 @@ class _ManagedZoneState:
                zone. The value of this field contains the network to peer with.
                Structure is documented below.
         :param pulumi.Input['ManagedZonePrivateVisibilityConfigArgs'] private_visibility_config: For privately visible zones, the set of Virtual Private Cloud
-               resources that the zone is visible from.
+               resources that the zone is visible from. At least one of `gke_clusters` or `networks` must be specified.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -543,7 +543,7 @@ class _ManagedZoneState:
     def private_visibility_config(self) -> Optional[pulumi.Input['ManagedZonePrivateVisibilityConfigArgs']]:
         """
         For privately visible zones, the set of Virtual Private Cloud
-        resources that the zone is visible from.
+        resources that the zone is visible from. At least one of `gke_clusters` or `networks` must be specified.
         Structure is documented below.
         """
         return pulumi.get(self, "private_visibility_config")
@@ -767,9 +767,6 @@ class ManagedZone(pulumi.CustomResource):
             },
             visibility="private",
             private_visibility_config=gcp.dns.ManagedZonePrivateVisibilityConfigArgs(
-                networks=[gcp.dns.ManagedZonePrivateVisibilityConfigNetworkArgs(
-                    network_url=network_1.id,
-                )],
                 gke_clusters=[gcp.dns.ManagedZonePrivateVisibilityConfigGkeClusterArgs(
                     gke_cluster_name=cluster_1.id,
                 )],
@@ -876,7 +873,7 @@ class ManagedZone(pulumi.CustomResource):
                zone. The value of this field contains the network to peer with.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ManagedZonePrivateVisibilityConfigArgs']] private_visibility_config: For privately visible zones, the set of Virtual Private Cloud
-               resources that the zone is visible from.
+               resources that the zone is visible from. At least one of `gke_clusters` or `networks` must be specified.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1035,9 +1032,6 @@ class ManagedZone(pulumi.CustomResource):
             },
             visibility="private",
             private_visibility_config=gcp.dns.ManagedZonePrivateVisibilityConfigArgs(
-                networks=[gcp.dns.ManagedZonePrivateVisibilityConfigNetworkArgs(
-                    network_url=network_1.id,
-                )],
                 gke_clusters=[gcp.dns.ManagedZonePrivateVisibilityConfigGkeClusterArgs(
                     gke_cluster_name=cluster_1.id,
                 )],
@@ -1240,7 +1234,7 @@ class ManagedZone(pulumi.CustomResource):
                zone. The value of this field contains the network to peer with.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ManagedZonePrivateVisibilityConfigArgs']] private_visibility_config: For privately visible zones, the set of Virtual Private Cloud
-               resources that the zone is visible from.
+               resources that the zone is visible from. At least one of `gke_clusters` or `networks` must be specified.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1390,7 +1384,7 @@ class ManagedZone(pulumi.CustomResource):
     def private_visibility_config(self) -> pulumi.Output[Optional['outputs.ManagedZonePrivateVisibilityConfig']]:
         """
         For privately visible zones, the set of Virtual Private Cloud
-        resources that the zone is visible from.
+        resources that the zone is visible from. At least one of `gke_clusters` or `networks` must be specified.
         Structure is documented below.
         """
         return pulumi.get(self, "private_visibility_config")

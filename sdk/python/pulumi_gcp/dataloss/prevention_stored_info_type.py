@@ -384,7 +384,7 @@ class PreventionStoredInfoType(pulumi.CustomResource):
             force_destroy=True)
         object = gcp.storage.BucketObject("object",
             bucket=bucket.name,
-            source=pulumi.FileAsset("./test-fixtures/dlp/words.txt"))
+            source=pulumi.FileAsset("./test-fixtures/words.txt"))
         large = gcp.dataloss.PreventionStoredInfoType("large",
             parent="projects/my-project-name",
             description="Description",
@@ -510,7 +510,7 @@ class PreventionStoredInfoType(pulumi.CustomResource):
             force_destroy=True)
         object = gcp.storage.BucketObject("object",
             bucket=bucket.name,
-            source=pulumi.FileAsset("./test-fixtures/dlp/words.txt"))
+            source=pulumi.FileAsset("./test-fixtures/words.txt"))
         large = gcp.dataloss.PreventionStoredInfoType("large",
             parent="projects/my-project-name",
             description="Description",

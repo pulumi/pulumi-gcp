@@ -38,8 +38,6 @@ public final class VMwareClusterVcenter {
      * @return (Output)
      * The Vsphere datastore used by the Control Plane Node.
      * 
-     * ***
-     * 
      */
     private @Nullable String datastore;
     /**
@@ -54,6 +52,14 @@ public final class VMwareClusterVcenter {
      * 
      */
     private @Nullable String resourcePool;
+    /**
+     * @return (Output)
+     * The Vsphere storage policy used by the control plane Node.
+     * 
+     * ***
+     * 
+     */
+    private @Nullable String storagePolicyName;
 
     private VMwareClusterVcenter() {}
     /**
@@ -91,8 +97,6 @@ public final class VMwareClusterVcenter {
      * @return (Output)
      * The Vsphere datastore used by the Control Plane Node.
      * 
-     * ***
-     * 
      */
     public Optional<String> datastore() {
         return Optional.ofNullable(this.datastore);
@@ -113,6 +117,16 @@ public final class VMwareClusterVcenter {
     public Optional<String> resourcePool() {
         return Optional.ofNullable(this.resourcePool);
     }
+    /**
+     * @return (Output)
+     * The Vsphere storage policy used by the control plane Node.
+     * 
+     * ***
+     * 
+     */
+    public Optional<String> storagePolicyName() {
+        return Optional.ofNullable(this.storagePolicyName);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -130,6 +144,7 @@ public final class VMwareClusterVcenter {
         private @Nullable String datastore;
         private @Nullable String folder;
         private @Nullable String resourcePool;
+        private @Nullable String storagePolicyName;
         public Builder() {}
         public Builder(VMwareClusterVcenter defaults) {
     	      Objects.requireNonNull(defaults);
@@ -140,6 +155,7 @@ public final class VMwareClusterVcenter {
     	      this.datastore = defaults.datastore;
     	      this.folder = defaults.folder;
     	      this.resourcePool = defaults.resourcePool;
+    	      this.storagePolicyName = defaults.storagePolicyName;
         }
 
         @CustomType.Setter
@@ -177,6 +193,11 @@ public final class VMwareClusterVcenter {
             this.resourcePool = resourcePool;
             return this;
         }
+        @CustomType.Setter
+        public Builder storagePolicyName(@Nullable String storagePolicyName) {
+            this.storagePolicyName = storagePolicyName;
+            return this;
+        }
         public VMwareClusterVcenter build() {
             final var o = new VMwareClusterVcenter();
             o.address = address;
@@ -186,6 +207,7 @@ public final class VMwareClusterVcenter {
             o.datastore = datastore;
             o.folder = folder;
             o.resourcePool = resourcePool;
+            o.storagePolicyName = storagePolicyName;
             return o;
         }
     }

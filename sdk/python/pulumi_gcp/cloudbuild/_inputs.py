@@ -1812,6 +1812,7 @@ class TriggerGitFileSourceArgs:
     def __init__(__self__, *,
                  path: pulumi.Input[str],
                  repo_type: pulumi.Input[str],
+                 bitbucket_server_config: Optional[pulumi.Input[str]] = None,
                  github_enterprise_config: Optional[pulumi.Input[str]] = None,
                  repository: Optional[pulumi.Input[str]] = None,
                  revision: Optional[pulumi.Input[str]] = None,
@@ -1821,6 +1822,8 @@ class TriggerGitFileSourceArgs:
         :param pulumi.Input[str] repo_type: The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
                Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER
                Possible values are: `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, `BITBUCKET_SERVER`.
+        :param pulumi.Input[str] bitbucket_server_config: The full resource name of the bitbucket server config.
+               Format: projects/{project}/locations/{location}/bitbucketServerConfigs/{id}.
         :param pulumi.Input[str] github_enterprise_config: The full resource name of the github enterprise config.
                Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
         :param pulumi.Input[str] repository: The fully qualified resource name of the Repo API repository. The fully qualified resource name of the Repo API repository.
@@ -1833,6 +1836,8 @@ class TriggerGitFileSourceArgs:
         """
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "repo_type", repo_type)
+        if bitbucket_server_config is not None:
+            pulumi.set(__self__, "bitbucket_server_config", bitbucket_server_config)
         if github_enterprise_config is not None:
             pulumi.set(__self__, "github_enterprise_config", github_enterprise_config)
         if repository is not None:
@@ -1867,6 +1872,19 @@ class TriggerGitFileSourceArgs:
     @repo_type.setter
     def repo_type(self, value: pulumi.Input[str]):
         pulumi.set(self, "repo_type", value)
+
+    @property
+    @pulumi.getter(name="bitbucketServerConfig")
+    def bitbucket_server_config(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full resource name of the bitbucket server config.
+        Format: projects/{project}/locations/{location}/bitbucketServerConfigs/{id}.
+        """
+        return pulumi.get(self, "bitbucket_server_config")
+
+    @bitbucket_server_config.setter
+    def bitbucket_server_config(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bitbucket_server_config", value)
 
     @property
     @pulumi.getter(name="githubEnterpriseConfig")
@@ -2386,6 +2404,7 @@ class TriggerSourceToBuildArgs:
     def __init__(__self__, *,
                  ref: pulumi.Input[str],
                  repo_type: pulumi.Input[str],
+                 bitbucket_server_config: Optional[pulumi.Input[str]] = None,
                  github_enterprise_config: Optional[pulumi.Input[str]] = None,
                  repository: Optional[pulumi.Input[str]] = None,
                  uri: Optional[pulumi.Input[str]] = None):
@@ -2394,6 +2413,8 @@ class TriggerSourceToBuildArgs:
         :param pulumi.Input[str] repo_type: The type of the repo, since it may not be explicit from the repo field (e.g from a URL).
                Values can be UNKNOWN, CLOUD_SOURCE_REPOSITORIES, GITHUB, BITBUCKET_SERVER
                Possible values are: `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, `BITBUCKET_SERVER`.
+        :param pulumi.Input[str] bitbucket_server_config: The full resource name of the bitbucket server config.
+               Format: projects/{project}/locations/{location}/bitbucketServerConfigs/{id}.
         :param pulumi.Input[str] github_enterprise_config: The full resource name of the github enterprise config.
                Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
         :param pulumi.Input[str] repository: The qualified resource name of the Repo API repository.
@@ -2402,6 +2423,8 @@ class TriggerSourceToBuildArgs:
         """
         pulumi.set(__self__, "ref", ref)
         pulumi.set(__self__, "repo_type", repo_type)
+        if bitbucket_server_config is not None:
+            pulumi.set(__self__, "bitbucket_server_config", bitbucket_server_config)
         if github_enterprise_config is not None:
             pulumi.set(__self__, "github_enterprise_config", github_enterprise_config)
         if repository is not None:
@@ -2434,6 +2457,19 @@ class TriggerSourceToBuildArgs:
     @repo_type.setter
     def repo_type(self, value: pulumi.Input[str]):
         pulumi.set(self, "repo_type", value)
+
+    @property
+    @pulumi.getter(name="bitbucketServerConfig")
+    def bitbucket_server_config(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full resource name of the bitbucket server config.
+        Format: projects/{project}/locations/{location}/bitbucketServerConfigs/{id}.
+        """
+        return pulumi.get(self, "bitbucket_server_config")
+
+    @bitbucket_server_config.setter
+    def bitbucket_server_config(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bitbucket_server_config", value)
 
     @property
     @pulumi.getter(name="githubEnterpriseConfig")

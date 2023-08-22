@@ -53,8 +53,8 @@ import * as utilities from "../utilities";
  * const defaultCertificate = new gcp.certificatemanager.Certificate("defaultCertificate", {
  *     location: "us-central1",
  *     selfManaged: {
- *         pemCertificate: fs.readFileSync("test-fixtures/certificatemanager/cert.pem"),
- *         pemPrivateKey: fs.readFileSync("test-fixtures/certificatemanager/private-key.pem"),
+ *         pemCertificate: fs.readFileSync("test-fixtures/cert.pem"),
+ *         pemPrivateKey: fs.readFileSync("test-fixtures/private-key.pem"),
  *     },
  * });
  * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {
@@ -109,8 +109,8 @@ import * as utilities from "../utilities";
  * const defaultCertificate = new gcp.certificatemanager.Certificate("defaultCertificate", {
  *     location: "us-south1",
  *     selfManaged: {
- *         pemCertificate: fs.readFileSync("test-fixtures/certificatemanager/cert.pem"),
- *         pemPrivateKey: fs.readFileSync("test-fixtures/certificatemanager/private-key.pem"),
+ *         pemCertificate: fs.readFileSync("test-fixtures/cert.pem"),
+ *         pemPrivateKey: fs.readFileSync("test-fixtures/private-key.pem"),
  *     },
  * });
  * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {

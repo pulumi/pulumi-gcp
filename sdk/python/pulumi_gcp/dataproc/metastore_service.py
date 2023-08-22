@@ -29,6 +29,7 @@ class MetastoreServiceArgs:
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  release_channel: Optional[pulumi.Input[str]] = None,
+                 scaling_config: Optional[pulumi.Input['MetastoreServiceScalingConfigArgs']] = None,
                  telemetry_config: Optional[pulumi.Input['MetastoreServiceTelemetryConfigArgs']] = None,
                  tier: Optional[pulumi.Input[str]] = None):
         """
@@ -65,6 +66,8 @@ class MetastoreServiceArgs:
         :param pulumi.Input[str] release_channel: The release channel of the service. If unspecified, defaults to `STABLE`.
                Default value is `STABLE`.
                Possible values are: `CANARY`, `STABLE`.
+        :param pulumi.Input['MetastoreServiceScalingConfigArgs'] scaling_config: Represents the scaling configuration of a metastore service.
+               Structure is documented below.
         :param pulumi.Input['MetastoreServiceTelemetryConfigArgs'] telemetry_config: The configuration specifying telemetry settings for the Dataproc Metastore service. If unspecified defaults to JSON.
                Structure is documented below.
         :param pulumi.Input[str] tier: The tier of the service.
@@ -95,6 +98,8 @@ class MetastoreServiceArgs:
             pulumi.set(__self__, "project", project)
         if release_channel is not None:
             pulumi.set(__self__, "release_channel", release_channel)
+        if scaling_config is not None:
+            pulumi.set(__self__, "scaling_config", scaling_config)
         if telemetry_config is not None:
             pulumi.set(__self__, "telemetry_config", telemetry_config)
         if tier is not None:
@@ -276,6 +281,19 @@ class MetastoreServiceArgs:
         pulumi.set(self, "release_channel", value)
 
     @property
+    @pulumi.getter(name="scalingConfig")
+    def scaling_config(self) -> Optional[pulumi.Input['MetastoreServiceScalingConfigArgs']]:
+        """
+        Represents the scaling configuration of a metastore service.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "scaling_config")
+
+    @scaling_config.setter
+    def scaling_config(self, value: Optional[pulumi.Input['MetastoreServiceScalingConfigArgs']]):
+        pulumi.set(self, "scaling_config", value)
+
+    @property
     @pulumi.getter(name="telemetryConfig")
     def telemetry_config(self) -> Optional[pulumi.Input['MetastoreServiceTelemetryConfigArgs']]:
         """
@@ -320,6 +338,7 @@ class _MetastoreServiceState:
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  release_channel: Optional[pulumi.Input[str]] = None,
+                 scaling_config: Optional[pulumi.Input['MetastoreServiceScalingConfigArgs']] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  state_message: Optional[pulumi.Input[str]] = None,
@@ -358,6 +377,8 @@ class _MetastoreServiceState:
         :param pulumi.Input[str] release_channel: The release channel of the service. If unspecified, defaults to `STABLE`.
                Default value is `STABLE`.
                Possible values are: `CANARY`, `STABLE`.
+        :param pulumi.Input['MetastoreServiceScalingConfigArgs'] scaling_config: Represents the scaling configuration of a metastore service.
+               Structure is documented below.
         :param pulumi.Input[str] service_id: The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
                and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
                3 and 63 characters.
@@ -402,6 +423,8 @@ class _MetastoreServiceState:
             pulumi.set(__self__, "project", project)
         if release_channel is not None:
             pulumi.set(__self__, "release_channel", release_channel)
+        if scaling_config is not None:
+            pulumi.set(__self__, "scaling_config", scaling_config)
         if service_id is not None:
             pulumi.set(__self__, "service_id", service_id)
         if state is not None:
@@ -611,6 +634,19 @@ class _MetastoreServiceState:
         pulumi.set(self, "release_channel", value)
 
     @property
+    @pulumi.getter(name="scalingConfig")
+    def scaling_config(self) -> Optional[pulumi.Input['MetastoreServiceScalingConfigArgs']]:
+        """
+        Represents the scaling configuration of a metastore service.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "scaling_config")
+
+    @scaling_config.setter
+    def scaling_config(self, value: Optional[pulumi.Input['MetastoreServiceScalingConfigArgs']]):
+        pulumi.set(self, "scaling_config", value)
+
+    @property
     @pulumi.getter(name="serviceId")
     def service_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -707,6 +743,7 @@ class MetastoreService(pulumi.CustomResource):
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  release_channel: Optional[pulumi.Input[str]] = None,
+                 scaling_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceScalingConfigArgs']]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
                  telemetry_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceTelemetryConfigArgs']]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
@@ -786,6 +823,40 @@ class MetastoreService(pulumi.CustomResource):
                 )],
             ))
         ```
+        ### Dataproc Metastore Service Dpms2
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dpms2 = gcp.dataproc.MetastoreService("dpms2",
+            database_type="SPANNER",
+            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
+                version="3.1.2",
+            ),
+            location="us-central1",
+            scaling_config=gcp.dataproc.MetastoreServiceScalingConfigArgs(
+                instance_size="EXTRA_SMALL",
+            ),
+            service_id="dpms2")
+        ```
+        ### Dataproc Metastore Service Dpms2 Scaling Factor
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dpms2_scaling_factor = gcp.dataproc.MetastoreService("dpms2ScalingFactor",
+            database_type="SPANNER",
+            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
+                version="3.1.2",
+            ),
+            location="us-central1",
+            scaling_config=gcp.dataproc.MetastoreServiceScalingConfigArgs(
+                scaling_factor=2,
+            ),
+            service_id="dpms2sf")
+        ```
 
         ## Import
 
@@ -831,6 +902,8 @@ class MetastoreService(pulumi.CustomResource):
         :param pulumi.Input[str] release_channel: The release channel of the service. If unspecified, defaults to `STABLE`.
                Default value is `STABLE`.
                Possible values are: `CANARY`, `STABLE`.
+        :param pulumi.Input[pulumi.InputType['MetastoreServiceScalingConfigArgs']] scaling_config: Represents the scaling configuration of a metastore service.
+               Structure is documented below.
         :param pulumi.Input[str] service_id: The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
                and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
                3 and 63 characters.
@@ -923,6 +996,40 @@ class MetastoreService(pulumi.CustomResource):
                 )],
             ))
         ```
+        ### Dataproc Metastore Service Dpms2
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dpms2 = gcp.dataproc.MetastoreService("dpms2",
+            database_type="SPANNER",
+            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
+                version="3.1.2",
+            ),
+            location="us-central1",
+            scaling_config=gcp.dataproc.MetastoreServiceScalingConfigArgs(
+                instance_size="EXTRA_SMALL",
+            ),
+            service_id="dpms2")
+        ```
+        ### Dataproc Metastore Service Dpms2 Scaling Factor
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dpms2_scaling_factor = gcp.dataproc.MetastoreService("dpms2ScalingFactor",
+            database_type="SPANNER",
+            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
+                version="3.1.2",
+            ),
+            location="us-central1",
+            scaling_config=gcp.dataproc.MetastoreServiceScalingConfigArgs(
+                scaling_factor=2,
+            ),
+            service_id="dpms2sf")
+        ```
 
         ## Import
 
@@ -967,6 +1074,7 @@ class MetastoreService(pulumi.CustomResource):
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  release_channel: Optional[pulumi.Input[str]] = None,
+                 scaling_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceScalingConfigArgs']]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
                  telemetry_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceTelemetryConfigArgs']]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
@@ -991,6 +1099,7 @@ class MetastoreService(pulumi.CustomResource):
             __props__.__dict__["port"] = port
             __props__.__dict__["project"] = project
             __props__.__dict__["release_channel"] = release_channel
+            __props__.__dict__["scaling_config"] = scaling_config
             if service_id is None and not opts.urn:
                 raise TypeError("Missing required property 'service_id'")
             __props__.__dict__["service_id"] = service_id
@@ -1027,6 +1136,7 @@ class MetastoreService(pulumi.CustomResource):
             port: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
             release_channel: Optional[pulumi.Input[str]] = None,
+            scaling_config: Optional[pulumi.Input[pulumi.InputType['MetastoreServiceScalingConfigArgs']]] = None,
             service_id: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
             state_message: Optional[pulumi.Input[str]] = None,
@@ -1070,6 +1180,8 @@ class MetastoreService(pulumi.CustomResource):
         :param pulumi.Input[str] release_channel: The release channel of the service. If unspecified, defaults to `STABLE`.
                Default value is `STABLE`.
                Possible values are: `CANARY`, `STABLE`.
+        :param pulumi.Input[pulumi.InputType['MetastoreServiceScalingConfigArgs']] scaling_config: Represents the scaling configuration of a metastore service.
+               Structure is documented below.
         :param pulumi.Input[str] service_id: The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
                and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
                3 and 63 characters.
@@ -1103,6 +1215,7 @@ class MetastoreService(pulumi.CustomResource):
         __props__.__dict__["port"] = port
         __props__.__dict__["project"] = project
         __props__.__dict__["release_channel"] = release_channel
+        __props__.__dict__["scaling_config"] = scaling_config
         __props__.__dict__["service_id"] = service_id
         __props__.__dict__["state"] = state
         __props__.__dict__["state_message"] = state_message
@@ -1245,6 +1358,15 @@ class MetastoreService(pulumi.CustomResource):
         Possible values are: `CANARY`, `STABLE`.
         """
         return pulumi.get(self, "release_channel")
+
+    @property
+    @pulumi.getter(name="scalingConfig")
+    def scaling_config(self) -> pulumi.Output[Optional['outputs.MetastoreServiceScalingConfig']]:
+        """
+        Represents the scaling configuration of a metastore service.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "scaling_config")
 
     @property
     @pulumi.getter(name="serviceId")

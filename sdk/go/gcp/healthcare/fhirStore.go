@@ -55,6 +55,7 @@ import (
 //				DisableReferentialIntegrity:     pulumi.Bool(false),
 //				DisableResourceVersioning:       pulumi.Bool(false),
 //				EnableHistoryImport:             pulumi.Bool(false),
+//				DefaultSearchHandlingStrict:     pulumi.Bool(false),
 //				NotificationConfig: &healthcare.FhirStoreNotificationConfigArgs{
 //					PubsubTopic: topic.ID(),
 //				},
@@ -273,6 +274,10 @@ type FhirStore struct {
 	//
 	// ***
 	Dataset pulumi.StringOutput `pulumi:"dataset"`
+	// If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
+	// If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
+	// The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
+	DefaultSearchHandlingStrict pulumi.BoolPtrOutput `pulumi:"defaultSearchHandlingStrict"`
 	// Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store
 	// creation. The default value is false, meaning that the API will enforce referential integrity and fail the
 	// requests that will result in inconsistent state in the FHIR store. When this field is set to true, the API
@@ -375,6 +380,10 @@ type fhirStoreState struct {
 	//
 	// ***
 	Dataset *string `pulumi:"dataset"`
+	// If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
+	// If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
+	// The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
+	DefaultSearchHandlingStrict *bool `pulumi:"defaultSearchHandlingStrict"`
 	// Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store
 	// creation. The default value is false, meaning that the API will enforce referential integrity and fail the
 	// requests that will result in inconsistent state in the FHIR store. When this field is set to true, the API
@@ -445,6 +454,10 @@ type FhirStoreState struct {
 	//
 	// ***
 	Dataset pulumi.StringPtrInput
+	// If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
+	// If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
+	// The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
+	DefaultSearchHandlingStrict pulumi.BoolPtrInput
 	// Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store
 	// creation. The default value is false, meaning that the API will enforce referential integrity and fail the
 	// requests that will result in inconsistent state in the FHIR store. When this field is set to true, the API
@@ -519,6 +532,10 @@ type fhirStoreArgs struct {
 	//
 	// ***
 	Dataset string `pulumi:"dataset"`
+	// If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
+	// If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
+	// The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
+	DefaultSearchHandlingStrict *bool `pulumi:"defaultSearchHandlingStrict"`
 	// Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store
 	// creation. The default value is false, meaning that the API will enforce referential integrity and fail the
 	// requests that will result in inconsistent state in the FHIR store. When this field is set to true, the API
@@ -588,6 +605,10 @@ type FhirStoreArgs struct {
 	//
 	// ***
 	Dataset pulumi.StringInput
+	// If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
+	// If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
+	// The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
+	DefaultSearchHandlingStrict pulumi.BoolPtrInput
 	// Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store
 	// creation. The default value is false, meaning that the API will enforce referential integrity and fail the
 	// requests that will result in inconsistent state in the FHIR store. When this field is set to true, the API
@@ -746,6 +767,13 @@ func (o FhirStoreOutput) ComplexDataTypeReferenceParsing() pulumi.StringOutput {
 // ***
 func (o FhirStoreOutput) Dataset() pulumi.StringOutput {
 	return o.ApplyT(func(v *FhirStore) pulumi.StringOutput { return v.Dataset }).(pulumi.StringOutput)
+}
+
+// If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
+// If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
+// The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
+func (o FhirStoreOutput) DefaultSearchHandlingStrict() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FhirStore) pulumi.BoolPtrOutput { return v.DefaultSearchHandlingStrict }).(pulumi.BoolPtrOutput)
 }
 
 // Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store

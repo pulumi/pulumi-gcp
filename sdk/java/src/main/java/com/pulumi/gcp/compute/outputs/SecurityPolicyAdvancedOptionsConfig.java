@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.compute.outputs.SecurityPolicyAdvancedOptionsConfigJsonCustomConfig;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -32,6 +33,11 @@ public final class SecurityPolicyAdvancedOptionsConfig {
      * 
      */
     private @Nullable String logLevel;
+    /**
+     * @return ) An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+     * 
+     */
+    private @Nullable List<String> userIpRequestHeaders;
 
     private SecurityPolicyAdvancedOptionsConfig() {}
     /**
@@ -60,6 +66,13 @@ public final class SecurityPolicyAdvancedOptionsConfig {
     public Optional<String> logLevel() {
         return Optional.ofNullable(this.logLevel);
     }
+    /**
+     * @return ) An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+     * 
+     */
+    public List<String> userIpRequestHeaders() {
+        return this.userIpRequestHeaders == null ? List.of() : this.userIpRequestHeaders;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -73,12 +86,14 @@ public final class SecurityPolicyAdvancedOptionsConfig {
         private @Nullable SecurityPolicyAdvancedOptionsConfigJsonCustomConfig jsonCustomConfig;
         private @Nullable String jsonParsing;
         private @Nullable String logLevel;
+        private @Nullable List<String> userIpRequestHeaders;
         public Builder() {}
         public Builder(SecurityPolicyAdvancedOptionsConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.jsonCustomConfig = defaults.jsonCustomConfig;
     	      this.jsonParsing = defaults.jsonParsing;
     	      this.logLevel = defaults.logLevel;
+    	      this.userIpRequestHeaders = defaults.userIpRequestHeaders;
         }
 
         @CustomType.Setter
@@ -96,11 +111,20 @@ public final class SecurityPolicyAdvancedOptionsConfig {
             this.logLevel = logLevel;
             return this;
         }
+        @CustomType.Setter
+        public Builder userIpRequestHeaders(@Nullable List<String> userIpRequestHeaders) {
+            this.userIpRequestHeaders = userIpRequestHeaders;
+            return this;
+        }
+        public Builder userIpRequestHeaders(String... userIpRequestHeaders) {
+            return userIpRequestHeaders(List.of(userIpRequestHeaders));
+        }
         public SecurityPolicyAdvancedOptionsConfig build() {
             final var o = new SecurityPolicyAdvancedOptionsConfig();
             o.jsonCustomConfig = jsonCustomConfig;
             o.jsonParsing = jsonParsing;
             o.logLevel = logLevel;
+            o.userIpRequestHeaders = userIpRequestHeaders;
             return o;
         }
     }

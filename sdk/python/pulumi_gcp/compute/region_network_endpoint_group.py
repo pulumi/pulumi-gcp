@@ -615,7 +615,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         appengine_neg_bucket = gcp.storage.Bucket("appengineNegBucket", location="US")
         appengine_neg_bucket_object = gcp.storage.BucketObject("appengineNegBucketObject",
             bucket=appengine_neg_bucket.name,
-            source=pulumi.FileAsset("./test-fixtures/appengine/hello-world.zip"))
+            source=pulumi.FileAsset("./test-fixtures/hello-world.zip"))
         appengine_neg_flexible_app_version = gcp.appengine.FlexibleAppVersion("appengineNegFlexibleAppVersion",
             version_id="v1",
             service="appengine-network-endpoint-group",
@@ -813,7 +813,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         appengine_neg_bucket = gcp.storage.Bucket("appengineNegBucket", location="US")
         appengine_neg_bucket_object = gcp.storage.BucketObject("appengineNegBucketObject",
             bucket=appengine_neg_bucket.name,
-            source=pulumi.FileAsset("./test-fixtures/appengine/hello-world.zip"))
+            source=pulumi.FileAsset("./test-fixtures/hello-world.zip"))
         appengine_neg_flexible_app_version = gcp.appengine.FlexibleAppVersion("appengineNegFlexibleAppVersion",
             version_id="v1",
             service="appengine-network-endpoint-group",

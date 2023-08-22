@@ -441,24 +441,16 @@ class ManagedZonePeeringConfigTargetNetworkArgs:
 @pulumi.input_type
 class ManagedZonePrivateVisibilityConfigArgs:
     def __init__(__self__, *,
-                 networks: pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigNetworkArgs']]],
-                 gke_clusters: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigGkeClusterArgs']]]] = None):
+                 gke_clusters: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigGkeClusterArgs']]]] = None,
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigNetworkArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigGkeClusterArgs']]] gke_clusters: The list of Google Kubernetes Engine clusters that can see this zone.
                Structure is documented below.
         """
-        pulumi.set(__self__, "networks", networks)
         if gke_clusters is not None:
             pulumi.set(__self__, "gke_clusters", gke_clusters)
-
-    @property
-    @pulumi.getter
-    def networks(self) -> pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigNetworkArgs']]]:
-        return pulumi.get(self, "networks")
-
-    @networks.setter
-    def networks(self, value: pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigNetworkArgs']]]):
-        pulumi.set(self, "networks", value)
+        if networks is not None:
+            pulumi.set(__self__, "networks", networks)
 
     @property
     @pulumi.getter(name="gkeClusters")
@@ -472,6 +464,15 @@ class ManagedZonePrivateVisibilityConfigArgs:
     @gke_clusters.setter
     def gke_clusters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigGkeClusterArgs']]]]):
         pulumi.set(self, "gke_clusters", value)
+
+    @property
+    @pulumi.getter
+    def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigNetworkArgs']]]]:
+        return pulumi.get(self, "networks")
+
+    @networks.setter
+    def networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigNetworkArgs']]]]):
+        pulumi.set(self, "networks", value)
 
 
 @pulumi.input_type
@@ -848,7 +849,7 @@ class RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgs:
         """
         :param pulumi.Input[str] ip_address: The frontend IP address of the load balancer.
         :param pulumi.Input[str] ip_protocol: The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
-        :param pulumi.Input[str] load_balancer_type: The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb"]
+        :param pulumi.Input[str] load_balancer_type: The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
         :param pulumi.Input[str] network_url: The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
         :param pulumi.Input[str] port: The configured port of the load balancer.
         :param pulumi.Input[str] project: The ID of the project in which the load balancer belongs.
@@ -891,7 +892,7 @@ class RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgs:
     @pulumi.getter(name="loadBalancerType")
     def load_balancer_type(self) -> pulumi.Input[str]:
         """
-        The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb"]
+        The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
         """
         return pulumi.get(self, "load_balancer_type")
 
@@ -1114,7 +1115,7 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLo
         """
         :param pulumi.Input[str] ip_address: The frontend IP address of the load balancer.
         :param pulumi.Input[str] ip_protocol: The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
-        :param pulumi.Input[str] load_balancer_type: The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb"]
+        :param pulumi.Input[str] load_balancer_type: The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
         :param pulumi.Input[str] network_url: The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
         :param pulumi.Input[str] port: The configured port of the load balancer.
         :param pulumi.Input[str] project: The ID of the project in which the load balancer belongs.
@@ -1157,7 +1158,7 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLo
     @pulumi.getter(name="loadBalancerType")
     def load_balancer_type(self) -> pulumi.Input[str]:
         """
-        The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb"]
+        The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
         """
         return pulumi.get(self, "load_balancer_type")
 
@@ -1251,7 +1252,7 @@ class RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs:
         """
         :param pulumi.Input[str] ip_address: The frontend IP address of the load balancer.
         :param pulumi.Input[str] ip_protocol: The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
-        :param pulumi.Input[str] load_balancer_type: The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb"]
+        :param pulumi.Input[str] load_balancer_type: The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
         :param pulumi.Input[str] network_url: The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
         :param pulumi.Input[str] port: The configured port of the load balancer.
         :param pulumi.Input[str] project: The ID of the project in which the load balancer belongs.
@@ -1294,7 +1295,7 @@ class RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs:
     @pulumi.getter(name="loadBalancerType")
     def load_balancer_type(self) -> pulumi.Input[str]:
         """
-        The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb"]
+        The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
         """
         return pulumi.get(self, "load_balancer_type")
 
@@ -1444,7 +1445,7 @@ class RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgs:
         """
         :param pulumi.Input[str] ip_address: The frontend IP address of the load balancer.
         :param pulumi.Input[str] ip_protocol: The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
-        :param pulumi.Input[str] load_balancer_type: The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb"]
+        :param pulumi.Input[str] load_balancer_type: The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
         :param pulumi.Input[str] network_url: The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
         :param pulumi.Input[str] port: The configured port of the load balancer.
         :param pulumi.Input[str] project: The ID of the project in which the load balancer belongs.
@@ -1487,7 +1488,7 @@ class RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgs:
     @pulumi.getter(name="loadBalancerType")
     def load_balancer_type(self) -> pulumi.Input[str]:
         """
-        The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb"]
+        The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
         """
         return pulumi.get(self, "load_balancer_type")
 

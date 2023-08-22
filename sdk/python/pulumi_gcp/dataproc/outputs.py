@@ -88,6 +88,7 @@ __all__ = [
     'MetastoreServiceMetadataIntegrationDataCatalogConfig',
     'MetastoreServiceNetworkConfig',
     'MetastoreServiceNetworkConfigConsumer',
+    'MetastoreServiceScalingConfig',
     'MetastoreServiceTelemetryConfig',
     'WorkflowTemplateJob',
     'WorkflowTemplateJobHadoopJob',
@@ -5436,6 +5437,58 @@ class MetastoreServiceNetworkConfigConsumer(dict):
         The URI of the endpoint used to access the metastore service.
         """
         return pulumi.get(self, "endpoint_uri")
+
+
+@pulumi.output_type
+class MetastoreServiceScalingConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "instanceSize":
+            suggest = "instance_size"
+        elif key == "scalingFactor":
+            suggest = "scaling_factor"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetastoreServiceScalingConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetastoreServiceScalingConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetastoreServiceScalingConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 instance_size: Optional[str] = None,
+                 scaling_factor: Optional[float] = None):
+        """
+        :param str instance_size: Metastore instance sizes.
+               Possible values are: `EXTRA_SMALL`, `SMALL`, `MEDIUM`, `LARGE`, `EXTRA_LARGE`.
+        :param float scaling_factor: Scaling factor, in increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
+        """
+        if instance_size is not None:
+            pulumi.set(__self__, "instance_size", instance_size)
+        if scaling_factor is not None:
+            pulumi.set(__self__, "scaling_factor", scaling_factor)
+
+    @property
+    @pulumi.getter(name="instanceSize")
+    def instance_size(self) -> Optional[str]:
+        """
+        Metastore instance sizes.
+        Possible values are: `EXTRA_SMALL`, `SMALL`, `MEDIUM`, `LARGE`, `EXTRA_LARGE`.
+        """
+        return pulumi.get(self, "instance_size")
+
+    @property
+    @pulumi.getter(name="scalingFactor")
+    def scaling_factor(self) -> Optional[float]:
+        """
+        Scaling factor, in increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
+        """
+        return pulumi.get(self, "scaling_factor")
 
 
 @pulumi.output_type

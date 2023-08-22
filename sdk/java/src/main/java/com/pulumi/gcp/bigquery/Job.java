@@ -263,7 +263,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var testBucketObject = new BucketObject(&#34;testBucketObject&#34;, BucketObjectArgs.builder()        
- *             .source(new FileAsset(&#34;./test-fixtures/bigquerytable/test.parquet.gzip&#34;))
+ *             .source(new FileAsset(&#34;./test-fixtures/test.parquet.gzip&#34;))
  *             .bucket(testBucket.name())
  *             .build());
  * 

@@ -213,6 +213,28 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Cloudbuild Trigger Manual Bitbucket Server
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const manual_bitbucket_trigger = new gcp.cloudbuild.Trigger("manual-bitbucket-trigger", {
+ *     gitFileSource: {
+ *         bitbucketServerConfig: "projects/myProject/locations/global/bitbucketServerConfigs/configID",
+ *         path: "cloudbuild.yaml",
+ *         repoType: "BITBUCKET_SERVER",
+ *         revision: "refs/heads/main",
+ *         uri: "https://bbs.com/scm/stag/test-repo.git",
+ *     },
+ *     sourceToBuild: {
+ *         bitbucketServerConfig: "projects/myProject/locations/global/bitbucketServerConfigs/configID",
+ *         ref: "refs/heads/main",
+ *         repoType: "BITBUCKET_SERVER",
+ *         uri: "https://bbs.com/scm/stag/test-repo.git",
+ *     },
+ * });
+ * ```
  * ### Cloudbuild Trigger Repo
  *
  * ```typescript

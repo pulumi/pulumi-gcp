@@ -68,7 +68,7 @@ import * as utilities from "../utilities";
  * });
  * const object = new gcp.storage.BucketObject("object", {
  *     bucket: bucket.name,
- *     source: new pulumi.asset.FileAsset("./test-fixtures/appengine/hello-world.zip"),
+ *     source: new pulumi.asset.FileAsset("./test-fixtures/hello-world.zip"),
  * });
  * const myappV1 = new gcp.appengine.FlexibleAppVersion("myappV1", {
  *     versionId: "v1",

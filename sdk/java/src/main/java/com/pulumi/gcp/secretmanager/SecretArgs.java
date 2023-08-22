@@ -201,6 +201,33 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.ttl);
     }
 
+    /**
+     * Mapping from version alias to version name.
+     * A version alias is a string with a maximum length of 63 characters and can contain
+     * uppercase and lowercase letters, numerals, and the hyphen (-) and underscore (&#39;_&#39;)
+     * characters. An alias string must start with a letter and cannot be the string
+     * &#39;latest&#39; or &#39;NEW&#39;. No more than 50 aliases can be assigned to a given secret.
+     * An object containing a list of &#34;key&#34;: value pairs. Example:
+     * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * 
+     */
+    @Import(name="versionAliases")
+    private @Nullable Output<Map<String,String>> versionAliases;
+
+    /**
+     * @return Mapping from version alias to version name.
+     * A version alias is a string with a maximum length of 63 characters and can contain
+     * uppercase and lowercase letters, numerals, and the hyphen (-) and underscore (&#39;_&#39;)
+     * characters. An alias string must start with a letter and cannot be the string
+     * &#39;latest&#39; or &#39;NEW&#39;. No more than 50 aliases can be assigned to a given secret.
+     * An object containing a list of &#34;key&#34;: value pairs. Example:
+     * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> versionAliases() {
+        return Optional.ofNullable(this.versionAliases);
+    }
+
     private SecretArgs() {}
 
     private SecretArgs(SecretArgs $) {
@@ -213,6 +240,7 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
         this.secretId = $.secretId;
         this.topics = $.topics;
         this.ttl = $.ttl;
+        this.versionAliases = $.versionAliases;
     }
 
     public static Builder builder() {
@@ -477,6 +505,39 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder ttl(String ttl) {
             return ttl(Output.of(ttl));
+        }
+
+        /**
+         * @param versionAliases Mapping from version alias to version name.
+         * A version alias is a string with a maximum length of 63 characters and can contain
+         * uppercase and lowercase letters, numerals, and the hyphen (-) and underscore (&#39;_&#39;)
+         * characters. An alias string must start with a letter and cannot be the string
+         * &#39;latest&#39; or &#39;NEW&#39;. No more than 50 aliases can be assigned to a given secret.
+         * An object containing a list of &#34;key&#34;: value pairs. Example:
+         * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder versionAliases(@Nullable Output<Map<String,String>> versionAliases) {
+            $.versionAliases = versionAliases;
+            return this;
+        }
+
+        /**
+         * @param versionAliases Mapping from version alias to version name.
+         * A version alias is a string with a maximum length of 63 characters and can contain
+         * uppercase and lowercase letters, numerals, and the hyphen (-) and underscore (&#39;_&#39;)
+         * characters. An alias string must start with a letter and cannot be the string
+         * &#39;latest&#39; or &#39;NEW&#39;. No more than 50 aliases can be assigned to a given secret.
+         * An object containing a list of &#34;key&#34;: value pairs. Example:
+         * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder versionAliases(Map<String,String> versionAliases) {
+            return versionAliases(Output.of(versionAliases));
         }
 
         public SecretArgs build() {

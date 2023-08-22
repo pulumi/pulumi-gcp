@@ -46,7 +46,8 @@ class CertificateArgs:
                If unsure, choose this option.
                EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
                served from non-core Google data centers.
-               Currently allowed only for managed certificates.
+               ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
+               see https://cloud.google.com/compute/docs/regions-zones
         :param pulumi.Input['CertificateSelfManagedArgs'] self_managed: Certificate data for a SelfManaged Certificate.
                SelfManaged Certificates are uploaded by the user. Updating such
                certificates before they expire remains the user's responsibility.
@@ -159,7 +160,8 @@ class CertificateArgs:
         If unsure, choose this option.
         EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
         served from non-core Google data centers.
-        Currently allowed only for managed certificates.
+        ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
+        see https://cloud.google.com/compute/docs/regions-zones
         """
         return pulumi.get(self, "scope")
 
@@ -216,7 +218,8 @@ class _CertificateState:
                If unsure, choose this option.
                EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
                served from non-core Google data centers.
-               Currently allowed only for managed certificates.
+               ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
+               see https://cloud.google.com/compute/docs/regions-zones
         :param pulumi.Input['CertificateSelfManagedArgs'] self_managed: Certificate data for a SelfManaged Certificate.
                SelfManaged Certificates are uploaded by the user. Updating such
                certificates before they expire remains the user's responsibility.
@@ -329,7 +332,8 @@ class _CertificateState:
         If unsure, choose this option.
         EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
         served from non-core Google data centers.
-        Currently allowed only for managed certificates.
+        ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
+        see https://cloud.google.com/compute/docs/regions-zones
         """
         return pulumi.get(self, "scope")
 
@@ -413,7 +417,7 @@ class Certificate(pulumi.CustomResource):
         ca_authority = gcp.certificateauthority.Authority("caAuthority",
             location="us-central1",
             pool=pool.name,
-            certificate_authority_id="my-ca",
+            certificate_authority_id="ca-authority",
             config=gcp.certificateauthority.AuthorityConfigArgs(
                 subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
                     subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
@@ -501,8 +505,8 @@ class Certificate(pulumi.CustomResource):
             description="Regional cert",
             location="us-central1",
             self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
-                pem_certificate=(lambda path: open(path).read())("test-fixtures/certificatemanager/cert.pem"),
-                pem_private_key=(lambda path: open(path).read())("test-fixtures/certificatemanager/private-key.pem"),
+                pem_certificate=(lambda path: open(path).read())("test-fixtures/cert.pem"),
+                pem_private_key=(lambda path: open(path).read())("test-fixtures/private-key.pem"),
             ))
         ```
 
@@ -544,7 +548,8 @@ class Certificate(pulumi.CustomResource):
                If unsure, choose this option.
                EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
                served from non-core Google data centers.
-               Currently allowed only for managed certificates.
+               ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
+               see https://cloud.google.com/compute/docs/regions-zones
         :param pulumi.Input[pulumi.InputType['CertificateSelfManagedArgs']] self_managed: Certificate data for a SelfManaged Certificate.
                SelfManaged Certificates are uploaded by the user. Updating such
                certificates before they expire remains the user's responsibility.
@@ -602,7 +607,7 @@ class Certificate(pulumi.CustomResource):
         ca_authority = gcp.certificateauthority.Authority("caAuthority",
             location="us-central1",
             pool=pool.name,
-            certificate_authority_id="my-ca",
+            certificate_authority_id="ca-authority",
             config=gcp.certificateauthority.AuthorityConfigArgs(
                 subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
                     subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
@@ -690,8 +695,8 @@ class Certificate(pulumi.CustomResource):
             description="Regional cert",
             location="us-central1",
             self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
-                pem_certificate=(lambda path: open(path).read())("test-fixtures/certificatemanager/cert.pem"),
-                pem_private_key=(lambda path: open(path).read())("test-fixtures/certificatemanager/private-key.pem"),
+                pem_certificate=(lambda path: open(path).read())("test-fixtures/cert.pem"),
+                pem_private_key=(lambda path: open(path).read())("test-fixtures/private-key.pem"),
             ))
         ```
 
@@ -796,7 +801,8 @@ class Certificate(pulumi.CustomResource):
                If unsure, choose this option.
                EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
                served from non-core Google data centers.
-               Currently allowed only for managed certificates.
+               ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
+               see https://cloud.google.com/compute/docs/regions-zones
         :param pulumi.Input[pulumi.InputType['CertificateSelfManagedArgs']] self_managed: Certificate data for a SelfManaged Certificate.
                SelfManaged Certificates are uploaded by the user. Updating such
                certificates before they expire remains the user's responsibility.
@@ -882,7 +888,8 @@ class Certificate(pulumi.CustomResource):
         If unsure, choose this option.
         EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
         served from non-core Google data centers.
-        Currently allowed only for managed certificates.
+        ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
+        see https://cloud.google.com/compute/docs/regions-zones
         """
         return pulumi.get(self, "scope")
 

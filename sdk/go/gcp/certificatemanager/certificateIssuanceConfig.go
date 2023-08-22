@@ -46,7 +46,7 @@ import (
 //			caAuthority, err := certificateauthority.NewAuthority(ctx, "caAuthority", &certificateauthority.AuthorityArgs{
 //				Location:               pulumi.String("us-central1"),
 //				Pool:                   pool.Name,
-//				CertificateAuthorityId: pulumi.String("my-ca"),
+//				CertificateAuthorityId: pulumi.String("ca-authority"),
 //				Config: &certificateauthority.AuthorityConfigArgs{
 //					SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
 //						Subject: &certificateauthority.AuthorityConfigSubjectConfigSubjectArgs{

@@ -96,6 +96,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.assuredWorkloadsCustomEndpoint);
     }
 
+    @Import(name="backupDrCustomEndpoint")
+    private @Nullable Output<String> backupDrCustomEndpoint;
+
+    public Optional<Output<String>> backupDrCustomEndpoint() {
+        return Optional.ofNullable(this.backupDrCustomEndpoint);
+    }
+
     @Import(name="batching", json=true)
     private @Nullable Output<ProviderBatchingArgs> batching;
 
@@ -1048,6 +1055,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.appEngineCustomEndpoint = $.appEngineCustomEndpoint;
         this.artifactRegistryCustomEndpoint = $.artifactRegistryCustomEndpoint;
         this.assuredWorkloadsCustomEndpoint = $.assuredWorkloadsCustomEndpoint;
+        this.backupDrCustomEndpoint = $.backupDrCustomEndpoint;
         this.batching = $.batching;
         this.beyondcorpCustomEndpoint = $.beyondcorpCustomEndpoint;
         this.bigQueryCustomEndpoint = $.bigQueryCustomEndpoint;
@@ -1299,6 +1307,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder assuredWorkloadsCustomEndpoint(String assuredWorkloadsCustomEndpoint) {
             return assuredWorkloadsCustomEndpoint(Output.of(assuredWorkloadsCustomEndpoint));
+        }
+
+        public Builder backupDrCustomEndpoint(@Nullable Output<String> backupDrCustomEndpoint) {
+            $.backupDrCustomEndpoint = backupDrCustomEndpoint;
+            return this;
+        }
+
+        public Builder backupDrCustomEndpoint(String backupDrCustomEndpoint) {
+            return backupDrCustomEndpoint(Output.of(backupDrCustomEndpoint));
         }
 
         public Builder batching(@Nullable Output<ProviderBatchingArgs> batching) {

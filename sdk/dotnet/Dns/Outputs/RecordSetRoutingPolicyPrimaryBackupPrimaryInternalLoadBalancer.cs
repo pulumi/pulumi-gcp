@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Dns.Outputs
         /// </summary>
         public readonly string IpProtocol;
         /// <summary>
-        /// The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb"]
+        /// The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
         /// </summary>
         public readonly string LoadBalancerType;
         /// <summary>

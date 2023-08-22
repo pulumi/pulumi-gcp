@@ -125,6 +125,244 @@ namespace Pulumi.Gcp.Container
     /// 
     /// });
     /// ```
+    /// ### Basic_enum_aws_cluster
+    /// A basic example of a containeraws cluster with lowercase enums
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var versions = Gcp.Container.GetAwsVersions.Invoke(new()
+    ///     {
+    ///         Location = "us-west1",
+    ///         Project = "my-project-name",
+    ///     });
+    /// 
+    ///     var primary = new Gcp.Container.AwsCluster("primary", new()
+    ///     {
+    ///         Annotations = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///         Authorization = new Gcp.Container.Inputs.AwsClusterAuthorizationArgs
+    ///         {
+    ///             AdminUsers = new[]
+    ///             {
+    ///                 new Gcp.Container.Inputs.AwsClusterAuthorizationAdminUserArgs
+    ///                 {
+    ///                     Username = "my@service-account.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///         AwsRegion = "my-aws-region",
+    ///         ControlPlane = new Gcp.Container.Inputs.AwsClusterControlPlaneArgs
+    ///         {
+    ///             AwsServicesAuthentication = new Gcp.Container.Inputs.AwsClusterControlPlaneAwsServicesAuthenticationArgs
+    ///             {
+    ///                 RoleArn = "arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
+    ///                 RoleSessionName = "my--1p-dev-session",
+    ///             },
+    ///             ConfigEncryption = new Gcp.Container.Inputs.AwsClusterControlPlaneConfigEncryptionArgs
+    ///             {
+    ///                 KmsKeyArn = "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+    ///             },
+    ///             DatabaseEncryption = new Gcp.Container.Inputs.AwsClusterControlPlaneDatabaseEncryptionArgs
+    ///             {
+    ///                 KmsKeyArn = "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+    ///             },
+    ///             IamInstanceProfile = "my--1p-dev-controlplane",
+    ///             InstanceType = "t3.medium",
+    ///             MainVolume = new Gcp.Container.Inputs.AwsClusterControlPlaneMainVolumeArgs
+    ///             {
+    ///                 Iops = 3000,
+    ///                 KmsKeyArn = "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+    ///                 SizeGib = 10,
+    ///                 VolumeType = "gp3",
+    ///             },
+    ///             ProxyConfig = new Gcp.Container.Inputs.AwsClusterControlPlaneProxyConfigArgs
+    ///             {
+    ///                 SecretArn = "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
+    ///                 SecretVersion = "12345678-ABCD-EFGH-IJKL-987654321098",
+    ///             },
+    ///             RootVolume = new Gcp.Container.Inputs.AwsClusterControlPlaneRootVolumeArgs
+    ///             {
+    ///                 Iops = 3000,
+    ///                 KmsKeyArn = "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+    ///                 SizeGib = 10,
+    ///                 VolumeType = "gp3",
+    ///             },
+    ///             SecurityGroupIds = new[]
+    ///             {
+    ///                 "sg-00000000000000000",
+    ///             },
+    ///             SshConfig = new Gcp.Container.Inputs.AwsClusterControlPlaneSshConfigArgs
+    ///             {
+    ///                 Ec2KeyPair = "my--1p-dev-ssh",
+    ///             },
+    ///             SubnetIds = new[]
+    ///             {
+    ///                 "subnet-00000000000000000",
+    ///             },
+    ///             Tags = 
+    ///             {
+    ///                 { "owner", "my@service-account.com" },
+    ///             },
+    ///             Version = versions.Apply(getAwsVersionsResult =&gt; getAwsVersionsResult.ValidVersions[0]),
+    ///         },
+    ///         Description = "A sample aws cluster",
+    ///         Fleet = new Gcp.Container.Inputs.AwsClusterFleetArgs
+    ///         {
+    ///             Project = "my-project-number",
+    ///         },
+    ///         Location = "us-west1",
+    ///         Networking = new Gcp.Container.Inputs.AwsClusterNetworkingArgs
+    ///         {
+    ///             PodAddressCidrBlocks = new[]
+    ///             {
+    ///                 "10.2.0.0/16",
+    ///             },
+    ///             ServiceAddressCidrBlocks = new[]
+    ///             {
+    ///                 "10.1.0.0/16",
+    ///             },
+    ///             VpcId = "vpc-00000000000000000",
+    ///         },
+    ///         Project = "my-project-name",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Beta_basic_enum_aws_cluster
+    /// A basic example of a containeraws cluster with lowercase enums (beta)
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var versions = Gcp.Container.GetAwsVersions.Invoke(new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Location = "us-west1",
+    ///     });
+    /// 
+    ///     var primary = new Gcp.Container.AwsCluster("primary", new()
+    ///     {
+    ///         Authorization = new Gcp.Container.Inputs.AwsClusterAuthorizationArgs
+    ///         {
+    ///             AdminUsers = new[]
+    ///             {
+    ///                 new Gcp.Container.Inputs.AwsClusterAuthorizationAdminUserArgs
+    ///                 {
+    ///                     Username = "my@service-account.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///         AwsRegion = "my-aws-region",
+    ///         ControlPlane = new Gcp.Container.Inputs.AwsClusterControlPlaneArgs
+    ///         {
+    ///             AwsServicesAuthentication = new Gcp.Container.Inputs.AwsClusterControlPlaneAwsServicesAuthenticationArgs
+    ///             {
+    ///                 RoleArn = "arn:aws:iam::012345678910:role/my--1p-dev-oneplatform",
+    ///                 RoleSessionName = "my--1p-dev-session",
+    ///             },
+    ///             ConfigEncryption = new Gcp.Container.Inputs.AwsClusterControlPlaneConfigEncryptionArgs
+    ///             {
+    ///                 KmsKeyArn = "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+    ///             },
+    ///             DatabaseEncryption = new Gcp.Container.Inputs.AwsClusterControlPlaneDatabaseEncryptionArgs
+    ///             {
+    ///                 KmsKeyArn = "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+    ///             },
+    ///             IamInstanceProfile = "my--1p-dev-controlplane",
+    ///             SubnetIds = new[]
+    ///             {
+    ///                 "subnet-00000000000000000",
+    ///             },
+    ///             Version = versions.Apply(getAwsVersionsResult =&gt; getAwsVersionsResult.ValidVersions[0]),
+    ///             InstanceType = "t3.medium",
+    ///             MainVolume = new Gcp.Container.Inputs.AwsClusterControlPlaneMainVolumeArgs
+    ///             {
+    ///                 Iops = 3000,
+    ///                 KmsKeyArn = "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+    ///                 SizeGib = 10,
+    ///                 VolumeType = "gp3",
+    ///             },
+    ///             ProxyConfig = new Gcp.Container.Inputs.AwsClusterControlPlaneProxyConfigArgs
+    ///             {
+    ///                 SecretArn = "arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF",
+    ///                 SecretVersion = "12345678-ABCD-EFGH-IJKL-987654321098",
+    ///             },
+    ///             RootVolume = new Gcp.Container.Inputs.AwsClusterControlPlaneRootVolumeArgs
+    ///             {
+    ///                 Iops = 3000,
+    ///                 KmsKeyArn = "arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111",
+    ///                 SizeGib = 10,
+    ///                 VolumeType = "gp3",
+    ///             },
+    ///             SecurityGroupIds = new[]
+    ///             {
+    ///                 "sg-00000000000000000",
+    ///             },
+    ///             SshConfig = new Gcp.Container.Inputs.AwsClusterControlPlaneSshConfigArgs
+    ///             {
+    ///                 Ec2KeyPair = "my--1p-dev-ssh",
+    ///             },
+    ///             Tags = 
+    ///             {
+    ///                 { "owner", "my@service-account.com" },
+    ///             },
+    ///             InstancePlacement = new Gcp.Container.Inputs.AwsClusterControlPlaneInstancePlacementArgs
+    ///             {
+    ///                 Tenancy = "dedicated",
+    ///             },
+    ///         },
+    ///         Fleet = new Gcp.Container.Inputs.AwsClusterFleetArgs
+    ///         {
+    ///             Project = "my-project-number",
+    ///         },
+    ///         Location = "us-west1",
+    ///         Networking = new Gcp.Container.Inputs.AwsClusterNetworkingArgs
+    ///         {
+    ///             PodAddressCidrBlocks = new[]
+    ///             {
+    ///                 "10.2.0.0/16",
+    ///             },
+    ///             ServiceAddressCidrBlocks = new[]
+    ///             {
+    ///                 "10.1.0.0/16",
+    ///             },
+    ///             VpcId = "vpc-00000000000000000",
+    ///         },
+    ///         Annotations = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///         Description = "A sample aws cluster",
+    ///         Project = "my-project-name",
+    ///         LoggingConfig = new Gcp.Container.Inputs.AwsClusterLoggingConfigArgs
+    ///         {
+    ///             ComponentConfig = new Gcp.Container.Inputs.AwsClusterLoggingConfigComponentConfigArgs
+    ///             {
+    ///                 EnableComponents = new[]
+    ///                 {
+    ///                     "system_components",
+    ///                     "workloads",
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

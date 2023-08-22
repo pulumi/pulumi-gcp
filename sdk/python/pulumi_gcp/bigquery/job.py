@@ -513,7 +513,7 @@ class Job(pulumi.CustomResource):
             location="US",
             uniform_bucket_level_access=True)
         test_bucket_object = gcp.storage.BucketObject("testBucketObject",
-            source=pulumi.FileAsset("./test-fixtures/bigquerytable/test.parquet.gzip"),
+            source=pulumi.FileAsset("./test-fixtures/test.parquet.gzip"),
             bucket=test_bucket.name)
         test_dataset = gcp.bigquery.Dataset("testDataset",
             dataset_id="job_load_dataset",
@@ -772,7 +772,7 @@ class Job(pulumi.CustomResource):
             location="US",
             uniform_bucket_level_access=True)
         test_bucket_object = gcp.storage.BucketObject("testBucketObject",
-            source=pulumi.FileAsset("./test-fixtures/bigquerytable/test.parquet.gzip"),
+            source=pulumi.FileAsset("./test-fixtures/test.parquet.gzip"),
             bucket=test_bucket.name)
         test_dataset = gcp.bigquery.Dataset("testDataset",
             dataset_id="job_load_dataset",

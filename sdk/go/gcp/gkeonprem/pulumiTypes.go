@@ -13419,9 +13419,12 @@ func (o VMwareClusterControlPlaneNodeAutoResizeConfigPtrOutput) Enabled() pulumi
 type VMwareClusterControlPlaneNodeVsphereConfig struct {
 	// (Output)
 	// The Vsphere datastore used by the Control Plane Node.
+	Datastore *string `pulumi:"datastore"`
+	// (Output)
+	// The Vsphere storage policy used by the control plane Node.
 	//
 	// ***
-	Datastore *string `pulumi:"datastore"`
+	StoragePolicyName *string `pulumi:"storagePolicyName"`
 }
 
 // VMwareClusterControlPlaneNodeVsphereConfigInput is an input type that accepts VMwareClusterControlPlaneNodeVsphereConfigArgs and VMwareClusterControlPlaneNodeVsphereConfigOutput values.
@@ -13438,9 +13441,12 @@ type VMwareClusterControlPlaneNodeVsphereConfigInput interface {
 type VMwareClusterControlPlaneNodeVsphereConfigArgs struct {
 	// (Output)
 	// The Vsphere datastore used by the Control Plane Node.
+	Datastore pulumi.StringPtrInput `pulumi:"datastore"`
+	// (Output)
+	// The Vsphere storage policy used by the control plane Node.
 	//
 	// ***
-	Datastore pulumi.StringPtrInput `pulumi:"datastore"`
+	StoragePolicyName pulumi.StringPtrInput `pulumi:"storagePolicyName"`
 }
 
 func (VMwareClusterControlPlaneNodeVsphereConfigArgs) ElementType() reflect.Type {
@@ -13496,10 +13502,16 @@ func (o VMwareClusterControlPlaneNodeVsphereConfigOutput) ToVMwareClusterControl
 
 // (Output)
 // The Vsphere datastore used by the Control Plane Node.
-//
-// ***
 func (o VMwareClusterControlPlaneNodeVsphereConfigOutput) Datastore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VMwareClusterControlPlaneNodeVsphereConfig) *string { return v.Datastore }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The Vsphere storage policy used by the control plane Node.
+//
+// ***
+func (o VMwareClusterControlPlaneNodeVsphereConfigOutput) StoragePolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VMwareClusterControlPlaneNodeVsphereConfig) *string { return v.StoragePolicyName }).(pulumi.StringPtrOutput)
 }
 
 type VMwareClusterControlPlaneNodeVsphereConfigArrayOutput struct{ *pulumi.OutputState }
@@ -17081,8 +17093,6 @@ type VMwareClusterVcenter struct {
 	Datacenter *string `pulumi:"datacenter"`
 	// (Output)
 	// The Vsphere datastore used by the Control Plane Node.
-	//
-	// ***
 	Datastore *string `pulumi:"datastore"`
 	// (Output)
 	// The name of the vCenter folder for the user cluster.
@@ -17090,6 +17100,11 @@ type VMwareClusterVcenter struct {
 	// (Output)
 	// The name of the vCenter resource pool for the user cluster.
 	ResourcePool *string `pulumi:"resourcePool"`
+	// (Output)
+	// The Vsphere storage policy used by the control plane Node.
+	//
+	// ***
+	StoragePolicyName *string `pulumi:"storagePolicyName"`
 }
 
 // VMwareClusterVcenterInput is an input type that accepts VMwareClusterVcenterArgs and VMwareClusterVcenterOutput values.
@@ -17117,8 +17132,6 @@ type VMwareClusterVcenterArgs struct {
 	Datacenter pulumi.StringPtrInput `pulumi:"datacenter"`
 	// (Output)
 	// The Vsphere datastore used by the Control Plane Node.
-	//
-	// ***
 	Datastore pulumi.StringPtrInput `pulumi:"datastore"`
 	// (Output)
 	// The name of the vCenter folder for the user cluster.
@@ -17126,6 +17139,11 @@ type VMwareClusterVcenterArgs struct {
 	// (Output)
 	// The name of the vCenter resource pool for the user cluster.
 	ResourcePool pulumi.StringPtrInput `pulumi:"resourcePool"`
+	// (Output)
+	// The Vsphere storage policy used by the control plane Node.
+	//
+	// ***
+	StoragePolicyName pulumi.StringPtrInput `pulumi:"storagePolicyName"`
 }
 
 func (VMwareClusterVcenterArgs) ElementType() reflect.Type {
@@ -17204,8 +17222,6 @@ func (o VMwareClusterVcenterOutput) Datacenter() pulumi.StringPtrOutput {
 
 // (Output)
 // The Vsphere datastore used by the Control Plane Node.
-//
-// ***
 func (o VMwareClusterVcenterOutput) Datastore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VMwareClusterVcenter) *string { return v.Datastore }).(pulumi.StringPtrOutput)
 }
@@ -17220,6 +17236,14 @@ func (o VMwareClusterVcenterOutput) Folder() pulumi.StringPtrOutput {
 // The name of the vCenter resource pool for the user cluster.
 func (o VMwareClusterVcenterOutput) ResourcePool() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VMwareClusterVcenter) *string { return v.ResourcePool }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The Vsphere storage policy used by the control plane Node.
+//
+// ***
+func (o VMwareClusterVcenterOutput) StoragePolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VMwareClusterVcenter) *string { return v.StoragePolicyName }).(pulumi.StringPtrOutput)
 }
 
 type VMwareClusterVcenterArrayOutput struct{ *pulumi.OutputState }

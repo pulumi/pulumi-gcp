@@ -217,6 +217,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RegionPerInstanceConfig{}
 	case "gcp:compute/regionSecurityPolicy:RegionSecurityPolicy":
 		r = &RegionSecurityPolicy{}
+	case "gcp:compute/regionSecurityPolicyRule:RegionSecurityPolicyRule":
+		r = &RegionSecurityPolicyRule{}
 	case "gcp:compute/regionSslCertificate:RegionSslCertificate":
 		r = &RegionSslCertificate{}
 	case "gcp:compute/regionSslPolicy:RegionSslPolicy":
@@ -794,6 +796,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"compute/regionSecurityPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/regionSecurityPolicyRule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

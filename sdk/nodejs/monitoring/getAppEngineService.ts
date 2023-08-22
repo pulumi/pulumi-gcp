@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  * const bucket = new gcp.storage.Bucket("bucket", {location: "US"});
  * const object = new gcp.storage.BucketObject("object", {
  *     bucket: bucket.name,
- *     source: new pulumi.asset.FileAsset("./test-fixtures/appengine/hello-world.zip"),
+ *     source: new pulumi.asset.FileAsset("./test-fixtures/hello-world.zip"),
  * });
  * const myapp = new gcp.appengine.StandardAppVersion("myapp", {
  *     versionId: "v1",
@@ -135,7 +135,7 @@ export interface GetAppEngineServiceResult {
  * const bucket = new gcp.storage.Bucket("bucket", {location: "US"});
  * const object = new gcp.storage.BucketObject("object", {
  *     bucket: bucket.name,
- *     source: new pulumi.asset.FileAsset("./test-fixtures/appengine/hello-world.zip"),
+ *     source: new pulumi.asset.FileAsset("./test-fixtures/hello-world.zip"),
  * });
  * const myapp = new gcp.appengine.StandardAppVersion("myapp", {
  *     versionId: "v1",

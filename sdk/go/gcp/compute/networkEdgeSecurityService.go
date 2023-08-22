@@ -27,7 +27,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewNetworkEdgeSecurityService(ctx, "default", &compute.NetworkEdgeSecurityServiceArgs{
-//				Region:      pulumi.String("asia-southeast1"),
+//				Region:      pulumi.String("us-east1"),
 //				Description: pulumi.String("My basic resource"),
 //			}, pulumi.Provider(google_beta))
 //			if err != nil {

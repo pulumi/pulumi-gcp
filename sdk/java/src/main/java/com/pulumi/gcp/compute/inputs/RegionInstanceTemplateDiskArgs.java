@@ -213,6 +213,13 @@ public final class RegionInstanceTemplateDiskArgs extends com.pulumi.resources.R
         return Optional.ofNullable(this.mode);
     }
 
+    @Import(name="provisionedIops")
+    private @Nullable Output<Integer> provisionedIops;
+
+    public Optional<Output<Integer>> provisionedIops() {
+        return Optional.ofNullable(this.provisionedIops);
+    }
+
     /**
      * - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
      * 
@@ -369,6 +376,7 @@ public final class RegionInstanceTemplateDiskArgs extends com.pulumi.resources.R
         this.interface_ = $.interface_;
         this.labels = $.labels;
         this.mode = $.mode;
+        this.provisionedIops = $.provisionedIops;
         this.resourcePolicies = $.resourcePolicies;
         this.source = $.source;
         this.sourceImage = $.sourceImage;
@@ -646,6 +654,15 @@ public final class RegionInstanceTemplateDiskArgs extends com.pulumi.resources.R
          */
         public Builder mode(String mode) {
             return mode(Output.of(mode));
+        }
+
+        public Builder provisionedIops(@Nullable Output<Integer> provisionedIops) {
+            $.provisionedIops = provisionedIops;
+            return this;
+        }
+
+        public Builder provisionedIops(Integer provisionedIops) {
+            return provisionedIops(Output.of(provisionedIops));
         }
 
         /**
