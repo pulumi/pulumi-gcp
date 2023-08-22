@@ -1,0 +1,25 @@
+From 066a92829c5695f66a745e43675b1c874ee35901 Mon Sep 17 00:00:00 2001
+From: Hao Nan Li <haonan@google.com>
+Date: Wed, 26 Jul 2023 14:34:37 -0700
+Subject: [PATCH 03/13] Add changelog 4.75.1
+
+---
+ CHANGELOG.md | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index 6d28d161c..9e5a6a925 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -1258,7 +1258,7 @@ BUG FIXES:
+ * iam: fixed permadiff resulting from empty fields being sent in requests to set conditional IAM policies ([#4723](https://github.com/hashicorp/terraform-provider-google-beta/pull/4723))
+ * secretmanager: fixed a bug where `google_secret_manager_secret_version` that was destroyed outside of Terraform would not be recreated on apply ([#4719](https://github.com/hashicorp/terraform-provider-google-beta/pull/4719))
+ * storagetransfer: fixed a crash in `google_storagetransfer_job` when `transfer_schedule` is empty ([#4745](https://github.com/hashicorp/terraform-provider-google-beta/pull/4745))
+- 
++
+ ## 4.38.0 (September 26, 2022)
+ 
+ FEATURES:
+-- 
+2.39.2 (Apple Git-143)
+
