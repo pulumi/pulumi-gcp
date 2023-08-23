@@ -26,10 +26,12 @@ builds:
   - darwin
   - windows
   - linux
-  hooks:
-    post:
-    - env GOOS={{ .Os }} GOARCH={{ .Arch }} go clean -cache
-    - env GOOS={{ .Os }} GOARCH={{ .Arch }} go clean -modcache
+  # TODO: enable this once we have identified why go clean -modcache fails for Windows.
+  # See: https://github.com/pulumi/pulumi-gcp/issues/1161
+  # hooks:
+  #   post:
+  #   - env GOOS={{ .Os }} GOARCH={{ .Arch }} go clean -cache
+  #   - env GOOS={{ .Os }} GOARCH={{ .Arch }} go clean -modcache
   ignore: []
   ldflags:
   - -X github.com/pulumi/pulumi-gcp/provider/v6/pkg/version.Version={{.Tag}}
