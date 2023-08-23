@@ -1,7 +1,7 @@
 From 26af5215eca1fa61df5b572dff76d4bdb40b0e97 Mon Sep 17 00:00:00 2001
 From: Daniel Bradley <daniel@pulumi.com>
 Date: Tue, 7 Mar 2023 12:56:24 +0000
-Subject: [PATCH 11/13] Significant docs changes
+Subject: [PATCH 7/9] Significant docs changes
 
 ---
  website/docs/r/api_gateway_api.html.markdown  |  3 -

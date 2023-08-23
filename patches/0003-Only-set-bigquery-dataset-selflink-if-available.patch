@@ -1,7 +1,7 @@
 From 4baf5b1f56a6bafa64ea914e7fd31908c1975299 Mon Sep 17 00:00:00 2001
 From: Daniel Bradley <daniel@pulumi.com>
 Date: Tue, 7 Mar 2023 11:55:24 +0000
-Subject: [PATCH 07/13] Only set bigquery dataset selflink if available
+Subject: [PATCH 3/9] Only set bigquery dataset selflink if available
 
 ---
  .../services/bigquery/resource_bigquery_dataset.go       | 9 +++++++--

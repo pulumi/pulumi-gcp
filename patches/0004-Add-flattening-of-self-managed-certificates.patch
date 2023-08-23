@@ -1,7 +1,7 @@
 From 08925784e03693273729d3126f412180fa48eb9b Mon Sep 17 00:00:00 2001
 From: Daniel Bradley <daniel@pulumi.com>
 Date: Tue, 7 Mar 2023 11:57:44 +0000
-Subject: [PATCH 08/13] Add flattening of self managed certificates
+Subject: [PATCH 4/9] Add flattening of self managed certificates
 
 ---
  ...esource_certificate_manager_certificate.go | 27 +++++++++++++++++++

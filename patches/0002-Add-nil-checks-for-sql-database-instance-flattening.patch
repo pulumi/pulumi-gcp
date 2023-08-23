@@ -1,7 +1,7 @@
 From 6101049171c65b529ca7359437ec40237a85f669 Mon Sep 17 00:00:00 2001
 From: Daniel Bradley <daniel@pulumi.com>
 Date: Tue, 7 Mar 2023 11:50:33 +0000
-Subject: [PATCH 06/13] Add nil checks for sql database instance flattening
+Subject: [PATCH 2/9] Add nil checks for sql database instance flattening
 
 ---
  .../sql/resource_sql_database_instance.go     | 24 +++++++++++++++++++

@@ -1,7 +1,7 @@
 From 32b5559ce04aa464c2f1d25585e9ffc1ac609f4a Mon Sep 17 00:00:00 2001
 From: Daniel Bradley <daniel@pulumi.com>
 Date: Tue, 7 Mar 2023 11:09:59 +0000
-Subject: [PATCH 05/13] Allow disabling the partner name
+Subject: [PATCH 1/9] Allow disabling the partner name
 
 Add options to set or disable partner name.
 ---

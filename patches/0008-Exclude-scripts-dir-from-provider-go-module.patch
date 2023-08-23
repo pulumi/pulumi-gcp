@@ -1,7 +1,7 @@
 From d26eb90269af5e9fb7fe12bb81f790b49d897189 Mon Sep 17 00:00:00 2001
 From: Aaron Friel <mayreply@aaronfriel.com>
 Date: Thu, 22 Jun 2023 09:45:36 -0700
-Subject: [PATCH 12/13] Exclude scripts dir from provider go module
+Subject: [PATCH 8/9] Exclude scripts dir from provider go module
 
 This directory references a private Go module, which we cannot "go vet" or check.
 ---

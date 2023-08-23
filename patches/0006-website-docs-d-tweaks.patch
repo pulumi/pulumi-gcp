@@ -1,7 +1,7 @@
 From 14d85b3a5fe0975cd5f9ce2552de04810f14b589 Mon Sep 17 00:00:00 2001
 From: Daniel Bradley <daniel@pulumi.com>
 Date: Tue, 7 Mar 2023 11:16:06 +0000
-Subject: [PATCH 10/13] website/docs/d tweaks
+Subject: [PATCH 6/9] website/docs/d tweaks
 
 ---
  website/docs/d/cloud_run_service.html.markdown      |  2 +-
