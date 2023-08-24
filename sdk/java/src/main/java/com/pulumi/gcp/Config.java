@@ -47,6 +47,9 @@ public final class Config {
     public Optional<String> assuredWorkloadsCustomEndpoint() {
         return Codegen.stringProp("assuredWorkloadsCustomEndpoint").config(config).get();
     }
+    public Optional<String> backupDrCustomEndpoint() {
+        return Codegen.stringProp("backupDrCustomEndpoint").config(config).get();
+    }
     public Optional<Batching> batching() {
         return Codegen.objectProp("batching", Batching.class).config(config).get();
     }

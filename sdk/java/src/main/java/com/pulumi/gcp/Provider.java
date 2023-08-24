@@ -88,6 +88,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> assuredWorkloadsCustomEndpoint() {
         return Codegen.optional(this.assuredWorkloadsCustomEndpoint);
     }
+    @Export(name="backupDrCustomEndpoint", type=String.class, parameters={})
+    private Output</* @Nullable */ String> backupDrCustomEndpoint;
+
+    public Output<Optional<String>> backupDrCustomEndpoint() {
+        return Codegen.optional(this.backupDrCustomEndpoint);
+    }
     @Export(name="beyondcorpCustomEndpoint", type=String.class, parameters={})
     private Output</* @Nullable */ String> beyondcorpCustomEndpoint;
 

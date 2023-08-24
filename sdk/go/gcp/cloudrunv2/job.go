@@ -421,10 +421,20 @@ type Job struct {
 	// The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job does not reach its desired state. See comments in reconciling for additional information on `reconciliation` process in Cloud Run.
 	// Structure is documented below.
 	Conditions JobConditionArrayOutput `pulumi:"conditions"`
+	// (Output)
+	// Creation timestamp of the execution.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Email address of the authenticated creator.
+	Creator pulumi.StringOutput `pulumi:"creator"`
+	// The deletion time.
+	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
 	// A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Number of executions created for this job.
 	ExecutionCount pulumi.IntOutput `pulumi:"executionCount"`
+	// For a deleted resource, the time after which it will be permamently deleted.
+	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
 	// A number that monotonically increases every time the user modifies the desired state.
 	Generation pulumi.StringOutput `pulumi:"generation"`
 	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
@@ -439,6 +449,8 @@ type Job struct {
 	// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
 	// All system labels in v1 now have a corresponding field in v2 Job.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// Email address of the last authenticated modifier.
+	LastModifier pulumi.StringOutput `pulumi:"lastModifier"`
 	// Name of the last created execution.
 	// Structure is documented below.
 	LatestCreatedExecutions JobLatestCreatedExecutionArrayOutput `pulumi:"latestCreatedExecutions"`
@@ -469,6 +481,8 @@ type Job struct {
 	TerminalConditions JobTerminalConditionArrayOutput `pulumi:"terminalConditions"`
 	// Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
 	Uid pulumi.StringOutput `pulumi:"uid"`
+	// The last-modified time.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
 // NewJob registers a new resource with the given unique name, arguments, and options.
@@ -525,10 +539,20 @@ type jobState struct {
 	// The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job does not reach its desired state. See comments in reconciling for additional information on `reconciliation` process in Cloud Run.
 	// Structure is documented below.
 	Conditions []JobCondition `pulumi:"conditions"`
+	// (Output)
+	// Creation timestamp of the execution.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	CreateTime *string `pulumi:"createTime"`
+	// Email address of the authenticated creator.
+	Creator *string `pulumi:"creator"`
+	// The deletion time.
+	DeleteTime *string `pulumi:"deleteTime"`
 	// A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
 	Etag *string `pulumi:"etag"`
 	// Number of executions created for this job.
 	ExecutionCount *int `pulumi:"executionCount"`
+	// For a deleted resource, the time after which it will be permamently deleted.
+	ExpireTime *string `pulumi:"expireTime"`
 	// A number that monotonically increases every time the user modifies the desired state.
 	Generation *string `pulumi:"generation"`
 	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
@@ -543,6 +567,8 @@ type jobState struct {
 	// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
 	// All system labels in v1 now have a corresponding field in v2 Job.
 	Labels map[string]string `pulumi:"labels"`
+	// Email address of the last authenticated modifier.
+	LastModifier *string `pulumi:"lastModifier"`
 	// Name of the last created execution.
 	// Structure is documented below.
 	LatestCreatedExecutions []JobLatestCreatedExecution `pulumi:"latestCreatedExecutions"`
@@ -573,6 +599,8 @@ type jobState struct {
 	TerminalConditions []JobTerminalCondition `pulumi:"terminalConditions"`
 	// Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
 	Uid *string `pulumi:"uid"`
+	// The last-modified time.
+	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type JobState struct {
@@ -597,10 +625,20 @@ type JobState struct {
 	// The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Job does not reach its desired state. See comments in reconciling for additional information on `reconciliation` process in Cloud Run.
 	// Structure is documented below.
 	Conditions JobConditionArrayInput
+	// (Output)
+	// Creation timestamp of the execution.
+	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	CreateTime pulumi.StringPtrInput
+	// Email address of the authenticated creator.
+	Creator pulumi.StringPtrInput
+	// The deletion time.
+	DeleteTime pulumi.StringPtrInput
 	// A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
 	Etag pulumi.StringPtrInput
 	// Number of executions created for this job.
 	ExecutionCount pulumi.IntPtrInput
+	// For a deleted resource, the time after which it will be permamently deleted.
+	ExpireTime pulumi.StringPtrInput
 	// A number that monotonically increases every time the user modifies the desired state.
 	Generation pulumi.StringPtrInput
 	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
@@ -615,6 +653,8 @@ type JobState struct {
 	// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
 	// All system labels in v1 now have a corresponding field in v2 Job.
 	Labels pulumi.StringMapInput
+	// Email address of the last authenticated modifier.
+	LastModifier pulumi.StringPtrInput
 	// Name of the last created execution.
 	// Structure is documented below.
 	LatestCreatedExecutions JobLatestCreatedExecutionArrayInput
@@ -645,6 +685,8 @@ type JobState struct {
 	TerminalConditions JobTerminalConditionArrayInput
 	// Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
 	Uid pulumi.StringPtrInput
+	// The last-modified time.
+	UpdateTime pulumi.StringPtrInput
 }
 
 func (JobState) ElementType() reflect.Type {
@@ -871,6 +913,23 @@ func (o JobOutput) Conditions() JobConditionArrayOutput {
 	return o.ApplyT(func(v *Job) JobConditionArrayOutput { return v.Conditions }).(JobConditionArrayOutput)
 }
 
+// (Output)
+// Creation timestamp of the execution.
+// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o JobOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Email address of the authenticated creator.
+func (o JobOutput) Creator() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Creator }).(pulumi.StringOutput)
+}
+
+// The deletion time.
+func (o JobOutput) DeleteTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
 // A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
 func (o JobOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
@@ -879,6 +938,11 @@ func (o JobOutput) Etag() pulumi.StringOutput {
 // Number of executions created for this job.
 func (o JobOutput) ExecutionCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Job) pulumi.IntOutput { return v.ExecutionCount }).(pulumi.IntOutput)
+}
+
+// For a deleted resource, the time after which it will be permamently deleted.
+func (o JobOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.ExpireTime }).(pulumi.StringOutput)
 }
 
 // A number that monotonically increases every time the user modifies the desired state.
@@ -899,6 +963,11 @@ func (o JobOutput) Generation() pulumi.StringOutput {
 // All system labels in v1 now have a corresponding field in v2 Job.
 func (o JobOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Email address of the last authenticated modifier.
+func (o JobOutput) LastModifier() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.LastModifier }).(pulumi.StringOutput)
 }
 
 // Name of the last created execution.
@@ -959,6 +1028,11 @@ func (o JobOutput) TerminalConditions() JobTerminalConditionArrayOutput {
 // Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
 func (o JobOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
+}
+
+// The last-modified time.
+func (o JobOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
 type JobArrayOutput struct{ *pulumi.OutputState }

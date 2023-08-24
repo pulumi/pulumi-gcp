@@ -51,6 +51,9 @@ namespace Pulumi.Gcp
         [Output("assuredWorkloadsCustomEndpoint")]
         public Output<string?> AssuredWorkloadsCustomEndpoint { get; private set; } = null!;
 
+        [Output("backupDrCustomEndpoint")]
+        public Output<string?> BackupDrCustomEndpoint { get; private set; } = null!;
+
         [Output("beyondcorpCustomEndpoint")]
         public Output<string?> BeyondcorpCustomEndpoint { get; private set; } = null!;
 
@@ -498,6 +501,9 @@ namespace Pulumi.Gcp
 
         [Input("assuredWorkloadsCustomEndpoint")]
         public Input<string>? AssuredWorkloadsCustomEndpoint { get; set; }
+
+        [Input("backupDrCustomEndpoint")]
+        public Input<string>? BackupDrCustomEndpoint { get; set; }
 
         [Input("batching", json: true)]
         public Input<Inputs.ProviderBatchingArgs>? Batching { get; set; }

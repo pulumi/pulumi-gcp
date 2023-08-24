@@ -85,8 +85,8 @@ namespace Pulumi.Gcp.NetworkServices
     ///         Location = "us-central1",
     ///         SelfManaged = new Gcp.CertificateManager.Inputs.CertificateSelfManagedArgs
     ///         {
-    ///             PemCertificate = File.ReadAllText("test-fixtures/certificatemanager/cert.pem"),
-    ///             PemPrivateKey = File.ReadAllText("test-fixtures/certificatemanager/private-key.pem"),
+    ///             PemCertificate = File.ReadAllText("test-fixtures/cert.pem"),
+    ///             PemPrivateKey = File.ReadAllText("test-fixtures/private-key.pem"),
     ///         },
     ///     });
     /// 
@@ -176,8 +176,8 @@ namespace Pulumi.Gcp.NetworkServices
     ///         Location = "us-south1",
     ///         SelfManaged = new Gcp.CertificateManager.Inputs.CertificateSelfManagedArgs
     ///         {
-    ///             PemCertificate = File.ReadAllText("test-fixtures/certificatemanager/cert.pem"),
-    ///             PemPrivateKey = File.ReadAllText("test-fixtures/certificatemanager/private-key.pem"),
+    ///             PemCertificate = File.ReadAllText("test-fixtures/cert.pem"),
+    ///             PemPrivateKey = File.ReadAllText("test-fixtures/private-key.pem"),
     ///         },
     ///     });
     /// 

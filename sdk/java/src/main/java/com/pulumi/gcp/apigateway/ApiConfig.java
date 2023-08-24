@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *             .openapiDocuments(ApiConfigOpenapiDocumentArgs.builder()
  *                 .document(ApiConfigOpenapiDocumentDocumentArgs.builder()
  *                     .path(&#34;spec.yaml&#34;)
- *                     .contents(Base64.getEncoder().encodeToString(Files.readAllBytes(Paths.get(&#34;test-fixtures/apigateway/openapi.yaml&#34;))))
+ *                     .contents(Base64.getEncoder().encodeToString(Files.readAllBytes(Paths.get(&#34;test-fixtures/openapi.yaml&#34;))))
  *                     .build())
  *                 .build())
  *             .build(), CustomResourceOptions.builder()

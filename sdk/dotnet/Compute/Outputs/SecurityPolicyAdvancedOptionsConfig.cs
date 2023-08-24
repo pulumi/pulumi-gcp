@@ -30,6 +30,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// * VERBOSE - Verbose log level.
         /// </summary>
         public readonly string? LogLevel;
+        /// <summary>
+        /// ) An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+        /// </summary>
+        public readonly ImmutableArray<string> UserIpRequestHeaders;
 
         [OutputConstructor]
         private SecurityPolicyAdvancedOptionsConfig(
@@ -37,11 +41,14 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? jsonParsing,
 
-            string? logLevel)
+            string? logLevel,
+
+            ImmutableArray<string> userIpRequestHeaders)
         {
             JsonCustomConfig = jsonCustomConfig;
             JsonParsing = jsonParsing;
             LogLevel = logLevel;
+            UserIpRequestHeaders = userIpRequestHeaders;
         }
     }
 }

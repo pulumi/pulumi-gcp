@@ -13,6 +13,13 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
     public sealed class TriggerSourceToBuildGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The full resource name of the bitbucket server config.
+        /// Format: projects/{project}/locations/{location}/bitbucketServerConfigs/{id}.
+        /// </summary>
+        [Input("bitbucketServerConfig")]
+        public Input<string>? BitbucketServerConfig { get; set; }
+
+        /// <summary>
         /// The full resource name of the github enterprise config.
         /// Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
         /// </summary>

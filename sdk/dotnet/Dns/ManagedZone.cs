@@ -227,13 +227,6 @@ namespace Pulumi.Gcp.Dns
     ///         Visibility = "private",
     ///         PrivateVisibilityConfig = new Gcp.Dns.Inputs.ManagedZonePrivateVisibilityConfigArgs
     ///         {
-    ///             Networks = new[]
-    ///             {
-    ///                 new Gcp.Dns.Inputs.ManagedZonePrivateVisibilityConfigNetworkArgs
-    ///                 {
-    ///                     NetworkUrl = network_1.Id,
-    ///                 },
-    ///             },
     ///             GkeClusters = new[]
     ///             {
     ///                 new Gcp.Dns.Inputs.ManagedZonePrivateVisibilityConfigGkeClusterArgs
@@ -470,7 +463,7 @@ namespace Pulumi.Gcp.Dns
 
         /// <summary>
         /// For privately visible zones, the set of Virtual Private Cloud
-        /// resources that the zone is visible from.
+        /// resources that the zone is visible from. At least one of `gke_clusters` or `networks` must be specified.
         /// Structure is documented below.
         /// </summary>
         [Output("privateVisibilityConfig")]
@@ -625,7 +618,7 @@ namespace Pulumi.Gcp.Dns
 
         /// <summary>
         /// For privately visible zones, the set of Virtual Private Cloud
-        /// resources that the zone is visible from.
+        /// resources that the zone is visible from. At least one of `gke_clusters` or `networks` must be specified.
         /// Structure is documented below.
         /// </summary>
         [Input("privateVisibilityConfig")]
@@ -769,7 +762,7 @@ namespace Pulumi.Gcp.Dns
 
         /// <summary>
         /// For privately visible zones, the set of Virtual Private Cloud
-        /// resources that the zone is visible from.
+        /// resources that the zone is visible from. At least one of `gke_clusters` or `networks` must be specified.
         /// Structure is documented below.
         /// </summary>
         [Input("privateVisibilityConfig")]

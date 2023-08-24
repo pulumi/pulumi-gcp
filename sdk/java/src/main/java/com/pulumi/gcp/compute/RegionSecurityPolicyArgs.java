@@ -6,7 +6,9 @@ package com.pulumi.gcp.compute;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyDdosProtectionConfigArgs;
+import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyUserDefinedFieldArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -128,6 +130,27 @@ public final class RegionSecurityPolicyArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.type);
     }
 
+    /**
+     * Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies.
+     * A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits.
+     * Rules may then specify matching values for these fields.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="userDefinedFields")
+    private @Nullable Output<List<RegionSecurityPolicyUserDefinedFieldArgs>> userDefinedFields;
+
+    /**
+     * @return Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies.
+     * A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits.
+     * Rules may then specify matching values for these fields.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<RegionSecurityPolicyUserDefinedFieldArgs>>> userDefinedFields() {
+        return Optional.ofNullable(this.userDefinedFields);
+    }
+
     private RegionSecurityPolicyArgs() {}
 
     private RegionSecurityPolicyArgs(RegionSecurityPolicyArgs $) {
@@ -137,6 +160,7 @@ public final class RegionSecurityPolicyArgs extends com.pulumi.resources.Resourc
         this.project = $.project;
         this.region = $.region;
         this.type = $.type;
+        this.userDefinedFields = $.userDefinedFields;
     }
 
     public static Builder builder() {
@@ -303,6 +327,46 @@ public final class RegionSecurityPolicyArgs extends com.pulumi.resources.Resourc
          */
         public Builder type(String type) {
             return type(Output.of(type));
+        }
+
+        /**
+         * @param userDefinedFields Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies.
+         * A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits.
+         * Rules may then specify matching values for these fields.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userDefinedFields(@Nullable Output<List<RegionSecurityPolicyUserDefinedFieldArgs>> userDefinedFields) {
+            $.userDefinedFields = userDefinedFields;
+            return this;
+        }
+
+        /**
+         * @param userDefinedFields Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies.
+         * A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits.
+         * Rules may then specify matching values for these fields.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userDefinedFields(List<RegionSecurityPolicyUserDefinedFieldArgs> userDefinedFields) {
+            return userDefinedFields(Output.of(userDefinedFields));
+        }
+
+        /**
+         * @param userDefinedFields Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies.
+         * A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits.
+         * Rules may then specify matching values for these fields.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userDefinedFields(RegionSecurityPolicyUserDefinedFieldArgs... userDefinedFields) {
+            return userDefinedFields(List.of(userDefinedFields));
         }
 
         public RegionSecurityPolicyArgs build() {

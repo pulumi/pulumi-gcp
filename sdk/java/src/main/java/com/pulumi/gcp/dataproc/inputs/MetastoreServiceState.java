@@ -10,6 +10,7 @@ import com.pulumi.gcp.dataproc.inputs.MetastoreServiceHiveMetastoreConfigArgs;
 import com.pulumi.gcp.dataproc.inputs.MetastoreServiceMaintenanceWindowArgs;
 import com.pulumi.gcp.dataproc.inputs.MetastoreServiceMetadataIntegrationArgs;
 import com.pulumi.gcp.dataproc.inputs.MetastoreServiceNetworkConfigArgs;
+import com.pulumi.gcp.dataproc.inputs.MetastoreServiceScalingConfigArgs;
 import com.pulumi.gcp.dataproc.inputs.MetastoreServiceTelemetryConfigArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -279,6 +280,23 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Represents the scaling configuration of a metastore service.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="scalingConfig")
+    private @Nullable Output<MetastoreServiceScalingConfigArgs> scalingConfig;
+
+    /**
+     * @return Represents the scaling configuration of a metastore service.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<MetastoreServiceScalingConfigArgs>> scalingConfig() {
+        return Optional.ofNullable(this.scalingConfig);
+    }
+
+    /**
      * The ID of the metastore service. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
      * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
      * 3 and 63 characters.
@@ -398,6 +416,7 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
         this.port = $.port;
         this.project = $.project;
         this.releaseChannel = $.releaseChannel;
+        this.scalingConfig = $.scalingConfig;
         this.serviceId = $.serviceId;
         this.state = $.state;
         this.stateMessage = $.stateMessage;
@@ -767,6 +786,29 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
          */
         public Builder releaseChannel(String releaseChannel) {
             return releaseChannel(Output.of(releaseChannel));
+        }
+
+        /**
+         * @param scalingConfig Represents the scaling configuration of a metastore service.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scalingConfig(@Nullable Output<MetastoreServiceScalingConfigArgs> scalingConfig) {
+            $.scalingConfig = scalingConfig;
+            return this;
+        }
+
+        /**
+         * @param scalingConfig Represents the scaling configuration of a metastore service.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scalingConfig(MetastoreServiceScalingConfigArgs scalingConfig) {
+            return scalingConfig(Output.of(scalingConfig));
         }
 
         /**

@@ -33,6 +33,7 @@ import * as utilities from "../utilities";
  *     disableReferentialIntegrity: false,
  *     disableResourceVersioning: false,
  *     enableHistoryImport: false,
+ *     defaultSearchHandlingStrict: false,
  *     notificationConfig: {
  *         pubsubTopic: topic.id,
  *     },
@@ -190,6 +191,12 @@ export class FhirStore extends pulumi.CustomResource {
      */
     public readonly dataset!: pulumi.Output<string>;
     /**
+     * If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
+     * If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
+     * The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
+     */
+    public readonly defaultSearchHandlingStrict!: pulumi.Output<boolean | undefined>;
+    /**
      * Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store
      * creation. The default value is false, meaning that the API will enforce referential integrity and fail the
      * requests that will result in inconsistent state in the FHIR store. When this field is set to true, the API
@@ -286,6 +293,7 @@ export class FhirStore extends pulumi.CustomResource {
             const state = argsOrState as FhirStoreState | undefined;
             resourceInputs["complexDataTypeReferenceParsing"] = state ? state.complexDataTypeReferenceParsing : undefined;
             resourceInputs["dataset"] = state ? state.dataset : undefined;
+            resourceInputs["defaultSearchHandlingStrict"] = state ? state.defaultSearchHandlingStrict : undefined;
             resourceInputs["disableReferentialIntegrity"] = state ? state.disableReferentialIntegrity : undefined;
             resourceInputs["disableResourceVersioning"] = state ? state.disableResourceVersioning : undefined;
             resourceInputs["enableHistoryImport"] = state ? state.enableHistoryImport : undefined;
@@ -304,6 +312,7 @@ export class FhirStore extends pulumi.CustomResource {
             }
             resourceInputs["complexDataTypeReferenceParsing"] = args ? args.complexDataTypeReferenceParsing : undefined;
             resourceInputs["dataset"] = args ? args.dataset : undefined;
+            resourceInputs["defaultSearchHandlingStrict"] = args ? args.defaultSearchHandlingStrict : undefined;
             resourceInputs["disableReferentialIntegrity"] = args ? args.disableReferentialIntegrity : undefined;
             resourceInputs["disableResourceVersioning"] = args ? args.disableResourceVersioning : undefined;
             resourceInputs["enableHistoryImport"] = args ? args.enableHistoryImport : undefined;
@@ -338,6 +347,12 @@ export interface FhirStoreState {
      * - - -
      */
     dataset?: pulumi.Input<string>;
+    /**
+     * If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
+     * If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
+     * The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
+     */
+    defaultSearchHandlingStrict?: pulumi.Input<boolean>;
     /**
      * Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store
      * creation. The default value is false, meaning that the API will enforce referential integrity and fail the
@@ -438,6 +453,12 @@ export interface FhirStoreArgs {
      * - - -
      */
     dataset: pulumi.Input<string>;
+    /**
+     * If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
+     * If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
+     * The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
+     */
+    defaultSearchHandlingStrict?: pulumi.Input<boolean>;
     /**
      * Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store
      * creation. The default value is false, meaning that the API will enforce referential integrity and fail the

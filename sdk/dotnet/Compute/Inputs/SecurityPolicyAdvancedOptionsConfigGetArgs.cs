@@ -35,6 +35,18 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("logLevel")]
         public Input<string>? LogLevel { get; set; }
 
+        [Input("userIpRequestHeaders")]
+        private InputList<string>? _userIpRequestHeaders;
+
+        /// <summary>
+        /// ) An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+        /// </summary>
+        public InputList<string> UserIpRequestHeaders
+        {
+            get => _userIpRequestHeaders ?? (_userIpRequestHeaders = new InputList<string>());
+            set => _userIpRequestHeaders = value;
+        }
+
         public SecurityPolicyAdvancedOptionsConfigGetArgs()
         {
         }

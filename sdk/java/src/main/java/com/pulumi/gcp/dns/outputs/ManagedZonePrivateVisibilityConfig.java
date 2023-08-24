@@ -18,7 +18,7 @@ public final class ManagedZonePrivateVisibilityConfig {
      * 
      */
     private @Nullable List<ManagedZonePrivateVisibilityConfigGkeCluster> gkeClusters;
-    private List<ManagedZonePrivateVisibilityConfigNetwork> networks;
+    private @Nullable List<ManagedZonePrivateVisibilityConfigNetwork> networks;
 
     private ManagedZonePrivateVisibilityConfig() {}
     /**
@@ -30,7 +30,7 @@ public final class ManagedZonePrivateVisibilityConfig {
         return this.gkeClusters == null ? List.of() : this.gkeClusters;
     }
     public List<ManagedZonePrivateVisibilityConfigNetwork> networks() {
-        return this.networks;
+        return this.networks == null ? List.of() : this.networks;
     }
 
     public static Builder builder() {
@@ -43,7 +43,7 @@ public final class ManagedZonePrivateVisibilityConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<ManagedZonePrivateVisibilityConfigGkeCluster> gkeClusters;
-        private List<ManagedZonePrivateVisibilityConfigNetwork> networks;
+        private @Nullable List<ManagedZonePrivateVisibilityConfigNetwork> networks;
         public Builder() {}
         public Builder(ManagedZonePrivateVisibilityConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -60,8 +60,8 @@ public final class ManagedZonePrivateVisibilityConfig {
             return gkeClusters(List.of(gkeClusters));
         }
         @CustomType.Setter
-        public Builder networks(List<ManagedZonePrivateVisibilityConfigNetwork> networks) {
-            this.networks = Objects.requireNonNull(networks);
+        public Builder networks(@Nullable List<ManagedZonePrivateVisibilityConfigNetwork> networks) {
+            this.networks = networks;
             return this;
         }
         public Builder networks(ManagedZonePrivateVisibilityConfigNetwork... networks) {

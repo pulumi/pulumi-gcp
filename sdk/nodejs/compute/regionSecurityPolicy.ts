@@ -37,6 +37,35 @@ import * as utilities from "../utilities";
  *     provider: google_beta,
  * });
  * ```
+ * ### Region Security Policy With User Defined Fields
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const region_sec_policy_user_defined_fields = new gcp.compute.RegionSecurityPolicy("region-sec-policy-user-defined-fields", {
+ *     description: "with user defined fields",
+ *     type: "CLOUD_ARMOR_NETWORK",
+ *     userDefinedFields: [
+ *         {
+ *             name: "SIG1_AT_0",
+ *             base: "UDP",
+ *             offset: 8,
+ *             size: 2,
+ *             mask: "0x8F00",
+ *         },
+ *         {
+ *             name: "SIG2_AT_8",
+ *             base: "UDP",
+ *             offset: 16,
+ *             size: 4,
+ *             mask: "0xFFFFFFFF",
+ *         },
+ *     ],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -139,6 +168,13 @@ export class RegionSecurityPolicy extends pulumi.CustomResource {
      * Possible values are: `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_NETWORK`.
      */
     public readonly type!: pulumi.Output<string | undefined>;
+    /**
+     * Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies.
+     * A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits.
+     * Rules may then specify matching values for these fields.
+     * Structure is documented below.
+     */
+    public readonly userDefinedFields!: pulumi.Output<outputs.compute.RegionSecurityPolicyUserDefinedField[] | undefined>;
 
     /**
      * Create a RegionSecurityPolicy resource with the given unique name, arguments, and options.
@@ -163,6 +199,7 @@ export class RegionSecurityPolicy extends pulumi.CustomResource {
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["selfLinkWithPolicyId"] = state ? state.selfLinkWithPolicyId : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["userDefinedFields"] = state ? state.userDefinedFields : undefined;
         } else {
             const args = argsOrState as RegionSecurityPolicyArgs | undefined;
             resourceInputs["ddosProtectionConfig"] = args ? args.ddosProtectionConfig : undefined;
@@ -171,6 +208,7 @@ export class RegionSecurityPolicy extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["userDefinedFields"] = args ? args.userDefinedFields : undefined;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["policyId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
@@ -238,6 +276,13 @@ export interface RegionSecurityPolicyState {
      * Possible values are: `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_NETWORK`.
      */
     type?: pulumi.Input<string>;
+    /**
+     * Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies.
+     * A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits.
+     * Rules may then specify matching values for these fields.
+     * Structure is documented below.
+     */
+    userDefinedFields?: pulumi.Input<pulumi.Input<inputs.compute.RegionSecurityPolicyUserDefinedField>[]>;
 }
 
 /**
@@ -280,4 +325,11 @@ export interface RegionSecurityPolicyArgs {
      * Possible values are: `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_NETWORK`.
      */
     type?: pulumi.Input<string>;
+    /**
+     * Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies.
+     * A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits.
+     * Rules may then specify matching values for these fields.
+     * Structure is documented below.
+     */
+    userDefinedFields?: pulumi.Input<pulumi.Input<inputs.compute.RegionSecurityPolicyUserDefinedField>[]>;
 }

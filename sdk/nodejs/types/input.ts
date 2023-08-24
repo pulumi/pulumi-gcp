@@ -3408,6 +3408,36 @@ export namespace assuredworkloads {
     }
 }
 
+export namespace backupdisasterrecovery {
+    export interface ManagementServerManagementUri {
+        /**
+         * (Output)
+         * The management console api endpoint.
+         */
+        api?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The management console webUi.
+         */
+        webUi?: pulumi.Input<string>;
+    }
+
+    export interface ManagementServerNetwork {
+        /**
+         * Network with format `projects/{{project_id}}/global/networks/{{network_id}}`
+         */
+        network: pulumi.Input<string>;
+        /**
+         * Type of Network peeringMode
+         * Default value is `PRIVATE_SERVICE_ACCESS`.
+         * Possible values are: `PRIVATE_SERVICE_ACCESS`.
+         *
+         * - - -
+         */
+        peeringMode?: pulumi.Input<string>;
+    }
+}
+
 export namespace beyondcorp {
     export interface AppConnectionApplicationEndpoint {
         /**
@@ -8202,6 +8232,11 @@ export namespace cloudbuild {
 
     export interface TriggerGitFileSource {
         /**
+         * The full resource name of the bitbucket server config.
+         * Format: projects/{project}/locations/{location}/bitbucketServerConfigs/{id}.
+         */
+        bitbucketServerConfig?: pulumi.Input<string>;
+        /**
          * The full resource name of the github enterprise config.
          * Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
          */
@@ -8366,6 +8401,11 @@ export namespace cloudbuild {
     }
 
     export interface TriggerSourceToBuild {
+        /**
+         * The full resource name of the bitbucket server config.
+         * Format: projects/{project}/locations/{location}/bitbucketServerConfigs/{id}.
+         */
+        bitbucketServerConfig?: pulumi.Input<string>;
         /**
          * The full resource name of the github enterprise config.
          * Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
@@ -11856,6 +11896,7 @@ export namespace composer {
         cloudComposerConnectionSubnetwork?: pulumi.Input<string>;
         cloudComposerNetworkIpv4CidrBlock?: pulumi.Input<string>;
         cloudSqlIpv4CidrBlock?: pulumi.Input<string>;
+        connectionType?: pulumi.Input<string>;
         enablePrivateEndpoint?: pulumi.Input<boolean>;
         enablePrivatelyUsedPublicIps?: pulumi.Input<boolean>;
         masterIpv4CidrBlock?: pulumi.Input<string>;
@@ -14959,6 +15000,7 @@ export namespace compute {
          * read-write mode.
          */
         mode?: pulumi.Input<string>;
+        provisionedIops?: pulumi.Input<number>;
         /**
          * - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
          */
@@ -17400,6 +17442,7 @@ export namespace compute {
          * read-write mode.
          */
         mode?: pulumi.Input<string>;
+        provisionedIops?: pulumi.Input<number>;
         /**
          * - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
          */
@@ -18051,6 +18094,105 @@ export namespace compute {
          * Possible values are: `ADVANCED`, `ADVANCED_PREVIEW`, `STANDARD`.
          */
         ddosProtection: pulumi.Input<string>;
+    }
+
+    export interface RegionSecurityPolicyRuleMatch {
+        /**
+         * The configuration options available when specifying versionedExpr.
+         * This field must be specified if versionedExpr is specified and cannot be specified if versionedExpr is not specified.
+         * Structure is documented below.
+         */
+        config?: pulumi.Input<inputs.compute.RegionSecurityPolicyRuleMatchConfig>;
+        /**
+         * Preconfigured versioned expression. If this field is specified, config must also be specified.
+         * Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding srcIpRange field in config.
+         * Possible values are: `SRC_IPS_V1`.
+         */
+        versionedExpr?: pulumi.Input<string>;
+    }
+
+    export interface RegionSecurityPolicyRuleMatchConfig {
+        /**
+         * CIDR IP address range. Maximum number of srcIpRanges allowed is 10.
+         */
+        srcIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface RegionSecurityPolicyRuleNetworkMatch {
+        /**
+         * Destination IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+         */
+        destIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Destination port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+         */
+        destPorts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * IPv4 protocol / IPv6 next header (after extension headers). Each element can be an 8-bit unsigned decimal number (e.g. "6"), range (e.g. "253-254"), or one of the following protocol names: "tcp", "udp", "icmp", "esp", "ah", "ipip", or "sctp".
+         */
+        ipProtocols?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * BGP Autonomous System Number associated with the source IP address.
+         */
+        srcAsns?: pulumi.Input<pulumi.Input<number>[]>;
+        /**
+         * Source IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+         */
+        srcIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Source port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+         */
+        srcPorts?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Two-letter ISO 3166-1 alpha-2 country code associated with the source IP address.
+         */
+        srcRegionCodes?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * User-defined fields. Each element names a defined field and lists the matching values for that field.
+         * Structure is documented below.
+         */
+        userDefinedFields?: pulumi.Input<pulumi.Input<inputs.compute.RegionSecurityPolicyRuleNetworkMatchUserDefinedField>[]>;
+    }
+
+    export interface RegionSecurityPolicyRuleNetworkMatchUserDefinedField {
+        /**
+         * Name of the user-defined field, as given in the definition.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * Matching values of the field. Each element can be a 32-bit unsigned decimal or hexadecimal (starting with "0x") number (e.g. "64") or range (e.g. "0x400-0x7ff").
+         */
+        values?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface RegionSecurityPolicyUserDefinedField {
+        /**
+         * The base relative to which 'offset' is measured. Possible values are:
+         * - IPV4: Points to the beginning of the IPv4 header.
+         * - IPV6: Points to the beginning of the IPv6 header.
+         * - TCP: Points to the beginning of the TCP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments.
+         * - UDP: Points to the beginning of the UDP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments.
+         * Possible values are: `IPV4`, `IPV6`, `TCP`, `UDP`.
+         */
+        base: pulumi.Input<string>;
+        /**
+         * If specified, apply this mask (bitwise AND) to the field to ignore bits before matching.
+         * Encoded as a hexadecimal number (starting with "0x").
+         * The last byte of the field (in network byte order) corresponds to the least significant byte of the mask.
+         */
+        mask?: pulumi.Input<string>;
+        /**
+         * The name of this field. Must be unique within the policy.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * Offset of the first byte of the field (in network byte order) relative to 'base'.
+         */
+        offset?: pulumi.Input<number>;
+        /**
+         * Size of the field in bytes. Valid values: 1-4.
+         */
+        size?: pulumi.Input<number>;
     }
 
     export interface RegionUrlMapDefaultRouteAction {
@@ -20095,6 +20237,10 @@ export namespace compute {
          * * VERBOSE - Verbose log level.
          */
         logLevel?: pulumi.Input<string>;
+        /**
+         * ) An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+         */
+        userIpRequestHeaders?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface SecurityPolicyAdvancedOptionsConfigJsonCustomConfig {
@@ -26042,6 +26188,11 @@ export namespace databasemigrationservice {
          * Currently supported values located at https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles#sqldatabaseversion
          */
         databaseVersion?: pulumi.Input<string>;
+        /**
+         * The edition of the given Cloud SQL instance.
+         * Possible values are: `ENTERPRISE`, `ENTERPRISE_PLUS`.
+         */
+        edition?: pulumi.Input<string>;
         /**
          * The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
          * Structure is documented below.
@@ -34244,6 +34395,18 @@ export namespace dataproc {
         subnetwork: pulumi.Input<string>;
     }
 
+    export interface MetastoreServiceScalingConfig {
+        /**
+         * Metastore instance sizes.
+         * Possible values are: `EXTRA_SMALL`, `SMALL`, `MEDIUM`, `LARGE`, `EXTRA_LARGE`.
+         */
+        instanceSize?: pulumi.Input<string>;
+        /**
+         * Scaling factor, in increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
+         */
+        scalingFactor?: pulumi.Input<number>;
+    }
+
     export interface MetastoreServiceTelemetryConfig {
         /**
          * The output format of the Dataproc Metastore service's logs.
@@ -37189,7 +37352,7 @@ export namespace dns {
          * Structure is documented below.
          */
         gkeClusters?: pulumi.Input<pulumi.Input<inputs.dns.ManagedZonePrivateVisibilityConfigGkeCluster>[]>;
-        networks: pulumi.Input<pulumi.Input<inputs.dns.ManagedZonePrivateVisibilityConfigNetwork>[]>;
+        networks?: pulumi.Input<pulumi.Input<inputs.dns.ManagedZonePrivateVisibilityConfigNetwork>[]>;
     }
 
     export interface ManagedZonePrivateVisibilityConfigGkeCluster {
@@ -37318,7 +37481,7 @@ export namespace dns {
          */
         ipProtocol: pulumi.Input<string>;
         /**
-         * The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb"]
+         * The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
          */
         loadBalancerType: pulumi.Input<string>;
         /**
@@ -37393,7 +37556,7 @@ export namespace dns {
          */
         ipProtocol: pulumi.Input<string>;
         /**
-         * The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb"]
+         * The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
          */
         loadBalancerType: pulumi.Input<string>;
         /**
@@ -37432,7 +37595,7 @@ export namespace dns {
          */
         ipProtocol: pulumi.Input<string>;
         /**
-         * The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb"]
+         * The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
          */
         loadBalancerType: pulumi.Input<string>;
         /**
@@ -37487,7 +37650,7 @@ export namespace dns {
          */
         ipProtocol: pulumi.Input<string>;
         /**
-         * The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb"]
+         * The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
          */
         loadBalancerType: pulumi.Input<string>;
         /**
@@ -40352,10 +40515,15 @@ export namespace gkeonprem {
         /**
          * (Output)
          * The Vsphere datastore used by the Control Plane Node.
+         */
+        datastore?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The Vsphere storage policy used by the control plane Node.
          *
          * - - -
          */
-        datastore?: pulumi.Input<string>;
+        storagePolicyName?: pulumi.Input<string>;
     }
 
     export interface VMwareClusterDataplaneV2 {
@@ -40761,8 +40929,6 @@ export namespace gkeonprem {
         /**
          * (Output)
          * The Vsphere datastore used by the Control Plane Node.
-         *
-         * - - -
          */
         datastore?: pulumi.Input<string>;
         /**
@@ -40775,6 +40941,13 @@ export namespace gkeonprem {
          * The name of the vCenter resource pool for the user cluster.
          */
         resourcePool?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The Vsphere storage policy used by the control plane Node.
+         *
+         * - - -
+         */
+        storagePolicyName?: pulumi.Input<string>;
     }
 
     export interface VMwareNodePoolConfig {

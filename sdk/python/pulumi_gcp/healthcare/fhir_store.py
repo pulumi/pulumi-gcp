@@ -18,6 +18,7 @@ class FhirStoreArgs:
     def __init__(__self__, *,
                  dataset: pulumi.Input[str],
                  complex_data_type_reference_parsing: Optional[pulumi.Input[str]] = None,
+                 default_search_handling_strict: Optional[pulumi.Input[bool]] = None,
                  disable_referential_integrity: Optional[pulumi.Input[bool]] = None,
                  disable_resource_versioning: Optional[pulumi.Input[bool]] = None,
                  enable_history_import: Optional[pulumi.Input[bool]] = None,
@@ -37,6 +38,9 @@ class FhirStoreArgs:
                - - -
         :param pulumi.Input[str] complex_data_type_reference_parsing: Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED by default after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
                Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
+        :param pulumi.Input[bool] default_search_handling_strict: If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
+               If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
+               The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
         :param pulumi.Input[bool] disable_referential_integrity: Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store
                creation. The default value is false, meaning that the API will enforce referential integrity and fail the
                requests that will result in inconsistent state in the FHIR store. When this field is set to true, the API
@@ -88,6 +92,8 @@ class FhirStoreArgs:
         pulumi.set(__self__, "dataset", dataset)
         if complex_data_type_reference_parsing is not None:
             pulumi.set(__self__, "complex_data_type_reference_parsing", complex_data_type_reference_parsing)
+        if default_search_handling_strict is not None:
+            pulumi.set(__self__, "default_search_handling_strict", default_search_handling_strict)
         if disable_referential_integrity is not None:
             pulumi.set(__self__, "disable_referential_integrity", disable_referential_integrity)
         if disable_resource_versioning is not None:
@@ -137,6 +143,20 @@ class FhirStoreArgs:
     @complex_data_type_reference_parsing.setter
     def complex_data_type_reference_parsing(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "complex_data_type_reference_parsing", value)
+
+    @property
+    @pulumi.getter(name="defaultSearchHandlingStrict")
+    def default_search_handling_strict(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
+        If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
+        The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
+        """
+        return pulumi.get(self, "default_search_handling_strict")
+
+    @default_search_handling_strict.setter
+    def default_search_handling_strict(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "default_search_handling_strict", value)
 
     @property
     @pulumi.getter(name="disableReferentialIntegrity")
@@ -301,6 +321,7 @@ class _FhirStoreState:
     def __init__(__self__, *,
                  complex_data_type_reference_parsing: Optional[pulumi.Input[str]] = None,
                  dataset: Optional[pulumi.Input[str]] = None,
+                 default_search_handling_strict: Optional[pulumi.Input[bool]] = None,
                  disable_referential_integrity: Optional[pulumi.Input[bool]] = None,
                  disable_resource_versioning: Optional[pulumi.Input[bool]] = None,
                  enable_history_import: Optional[pulumi.Input[bool]] = None,
@@ -321,6 +342,9 @@ class _FhirStoreState:
                
                
                - - -
+        :param pulumi.Input[bool] default_search_handling_strict: If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
+               If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
+               The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
         :param pulumi.Input[bool] disable_referential_integrity: Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store
                creation. The default value is false, meaning that the API will enforce referential integrity and fail the
                requests that will result in inconsistent state in the FHIR store. When this field is set to true, the API
@@ -374,6 +398,8 @@ class _FhirStoreState:
             pulumi.set(__self__, "complex_data_type_reference_parsing", complex_data_type_reference_parsing)
         if dataset is not None:
             pulumi.set(__self__, "dataset", dataset)
+        if default_search_handling_strict is not None:
+            pulumi.set(__self__, "default_search_handling_strict", default_search_handling_strict)
         if disable_referential_integrity is not None:
             pulumi.set(__self__, "disable_referential_integrity", disable_referential_integrity)
         if disable_resource_versioning is not None:
@@ -425,6 +451,20 @@ class _FhirStoreState:
     @dataset.setter
     def dataset(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "dataset", value)
+
+    @property
+    @pulumi.getter(name="defaultSearchHandlingStrict")
+    def default_search_handling_strict(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
+        If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
+        The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
+        """
+        return pulumi.get(self, "default_search_handling_strict")
+
+    @default_search_handling_strict.setter
+    def default_search_handling_strict(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "default_search_handling_strict", value)
 
     @property
     @pulumi.getter(name="disableReferentialIntegrity")
@@ -603,6 +643,7 @@ class FhirStore(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  complex_data_type_reference_parsing: Optional[pulumi.Input[str]] = None,
                  dataset: Optional[pulumi.Input[str]] = None,
+                 default_search_handling_strict: Optional[pulumi.Input[bool]] = None,
                  disable_referential_integrity: Optional[pulumi.Input[bool]] = None,
                  disable_resource_versioning: Optional[pulumi.Input[bool]] = None,
                  enable_history_import: Optional[pulumi.Input[bool]] = None,
@@ -641,6 +682,7 @@ class FhirStore(pulumi.CustomResource):
             disable_referential_integrity=False,
             disable_resource_versioning=False,
             enable_history_import=False,
+            default_search_handling_strict=False,
             notification_config=gcp.healthcare.FhirStoreNotificationConfigArgs(
                 pubsub_topic=topic.id,
             ),
@@ -756,6 +798,9 @@ class FhirStore(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[bool] default_search_handling_strict: If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
+               If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
+               The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
         :param pulumi.Input[bool] disable_referential_integrity: Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store
                creation. The default value is false, meaning that the API will enforce referential integrity and fail the
                requests that will result in inconsistent state in the FHIR store. When this field is set to true, the API
@@ -837,6 +882,7 @@ class FhirStore(pulumi.CustomResource):
             disable_referential_integrity=False,
             disable_resource_versioning=False,
             enable_history_import=False,
+            default_search_handling_strict=False,
             notification_config=gcp.healthcare.FhirStoreNotificationConfigArgs(
                 pubsub_topic=topic.id,
             ),
@@ -960,6 +1006,7 @@ class FhirStore(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  complex_data_type_reference_parsing: Optional[pulumi.Input[str]] = None,
                  dataset: Optional[pulumi.Input[str]] = None,
+                 default_search_handling_strict: Optional[pulumi.Input[bool]] = None,
                  disable_referential_integrity: Optional[pulumi.Input[bool]] = None,
                  disable_resource_versioning: Optional[pulumi.Input[bool]] = None,
                  enable_history_import: Optional[pulumi.Input[bool]] = None,
@@ -983,6 +1030,7 @@ class FhirStore(pulumi.CustomResource):
             if dataset is None and not opts.urn:
                 raise TypeError("Missing required property 'dataset'")
             __props__.__dict__["dataset"] = dataset
+            __props__.__dict__["default_search_handling_strict"] = default_search_handling_strict
             __props__.__dict__["disable_referential_integrity"] = disable_referential_integrity
             __props__.__dict__["disable_resource_versioning"] = disable_resource_versioning
             __props__.__dict__["enable_history_import"] = enable_history_import
@@ -1006,6 +1054,7 @@ class FhirStore(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             complex_data_type_reference_parsing: Optional[pulumi.Input[str]] = None,
             dataset: Optional[pulumi.Input[str]] = None,
+            default_search_handling_strict: Optional[pulumi.Input[bool]] = None,
             disable_referential_integrity: Optional[pulumi.Input[bool]] = None,
             disable_resource_versioning: Optional[pulumi.Input[bool]] = None,
             enable_history_import: Optional[pulumi.Input[bool]] = None,
@@ -1031,6 +1080,9 @@ class FhirStore(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[bool] default_search_handling_strict: If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
+               If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
+               The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
         :param pulumi.Input[bool] disable_referential_integrity: Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store
                creation. The default value is false, meaning that the API will enforce referential integrity and fail the
                requests that will result in inconsistent state in the FHIR store. When this field is set to true, the API
@@ -1086,6 +1138,7 @@ class FhirStore(pulumi.CustomResource):
 
         __props__.__dict__["complex_data_type_reference_parsing"] = complex_data_type_reference_parsing
         __props__.__dict__["dataset"] = dataset
+        __props__.__dict__["default_search_handling_strict"] = default_search_handling_strict
         __props__.__dict__["disable_referential_integrity"] = disable_referential_integrity
         __props__.__dict__["disable_resource_versioning"] = disable_resource_versioning
         __props__.__dict__["enable_history_import"] = enable_history_import
@@ -1119,6 +1172,16 @@ class FhirStore(pulumi.CustomResource):
         - - -
         """
         return pulumi.get(self, "dataset")
+
+    @property
+    @pulumi.getter(name="defaultSearchHandlingStrict")
+    def default_search_handling_strict(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
+        If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
+        The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
+        """
+        return pulumi.get(self, "default_search_handling_strict")
 
     @property
     @pulumi.getter(name="disableReferentialIntegrity")

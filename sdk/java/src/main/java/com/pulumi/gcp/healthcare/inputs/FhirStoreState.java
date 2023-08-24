@@ -59,6 +59,25 @@ public final class FhirStoreState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
+     * If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
+     * The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
+     * 
+     */
+    @Import(name="defaultSearchHandlingStrict")
+    private @Nullable Output<Boolean> defaultSearchHandlingStrict;
+
+    /**
+     * @return If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
+     * If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
+     * The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
+     * 
+     */
+    public Optional<Output<Boolean>> defaultSearchHandlingStrict() {
+        return Optional.ofNullable(this.defaultSearchHandlingStrict);
+    }
+
+    /**
      * Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store
      * creation. The default value is false, meaning that the API will enforce referential integrity and fail the
      * requests that will result in inconsistent state in the FHIR store. When this field is set to true, the API
@@ -302,6 +321,7 @@ public final class FhirStoreState extends com.pulumi.resources.ResourceArgs {
     private FhirStoreState(FhirStoreState $) {
         this.complexDataTypeReferenceParsing = $.complexDataTypeReferenceParsing;
         this.dataset = $.dataset;
+        this.defaultSearchHandlingStrict = $.defaultSearchHandlingStrict;
         this.disableReferentialIntegrity = $.disableReferentialIntegrity;
         this.disableResourceVersioning = $.disableResourceVersioning;
         this.enableHistoryImport = $.enableHistoryImport;
@@ -381,6 +401,31 @@ public final class FhirStoreState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder dataset(String dataset) {
             return dataset(Output.of(dataset));
+        }
+
+        /**
+         * @param defaultSearchHandlingStrict If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
+         * If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
+         * The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultSearchHandlingStrict(@Nullable Output<Boolean> defaultSearchHandlingStrict) {
+            $.defaultSearchHandlingStrict = defaultSearchHandlingStrict;
+            return this;
+        }
+
+        /**
+         * @param defaultSearchHandlingStrict If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
+         * If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
+         * The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultSearchHandlingStrict(Boolean defaultSearchHandlingStrict) {
+            return defaultSearchHandlingStrict(Output.of(defaultSearchHandlingStrict));
         }
 
         /**

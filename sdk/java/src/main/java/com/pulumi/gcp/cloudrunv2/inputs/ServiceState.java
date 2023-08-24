@@ -122,6 +122,36 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The creation time.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return The creation time.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * Email address of the authenticated creator.
+     * 
+     */
+    @Import(name="creator")
+    private @Nullable Output<String> creator;
+
+    /**
+     * @return Email address of the authenticated creator.
+     * 
+     */
+    public Optional<Output<String>> creator() {
+        return Optional.ofNullable(this.creator);
+    }
+
+    /**
      * One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
      * string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
      * https://cloud.google.com/run/docs/configuring/custom-audiences.
@@ -138,6 +168,21 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<String>>> customAudiences() {
         return Optional.ofNullable(this.customAudiences);
+    }
+
+    /**
+     * The deletion time.
+     * 
+     */
+    @Import(name="deleteTime")
+    private @Nullable Output<String> deleteTime;
+
+    /**
+     * @return The deletion time.
+     * 
+     */
+    public Optional<Output<String>> deleteTime() {
+        return Optional.ofNullable(this.deleteTime);
     }
 
     /**
@@ -168,6 +213,21 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> etag() {
         return Optional.ofNullable(this.etag);
+    }
+
+    /**
+     * For a deleted resource, the time after which it will be permamently deleted.
+     * 
+     */
+    @Import(name="expireTime")
+    private @Nullable Output<String> expireTime;
+
+    /**
+     * @return For a deleted resource, the time after which it will be permamently deleted.
+     * 
+     */
+    public Optional<Output<String>> expireTime() {
+        return Optional.ofNullable(this.expireTime);
     }
 
     /**
@@ -233,6 +293,21 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Map<String,String>>> labels() {
         return Optional.ofNullable(this.labels);
+    }
+
+    /**
+     * Email address of the last authenticated modifier.
+     * 
+     */
+    @Import(name="lastModifier")
+    private @Nullable Output<String> lastModifier;
+
+    /**
+     * @return Email address of the last authenticated modifier.
+     * 
+     */
+    public Optional<Output<String>> lastModifier() {
+        return Optional.ofNullable(this.lastModifier);
     }
 
     /**
@@ -453,6 +528,21 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The last-modified time.
+     * 
+     */
+    @Import(name="updateTime")
+    private @Nullable Output<String> updateTime;
+
+    /**
+     * @return The last-modified time.
+     * 
+     */
+    public Optional<Output<String>> updateTime() {
+        return Optional.ofNullable(this.updateTime);
+    }
+
+    /**
      * (Output)
      * Displays the target URI.
      * 
@@ -477,12 +567,17 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         this.client = $.client;
         this.clientVersion = $.clientVersion;
         this.conditions = $.conditions;
+        this.createTime = $.createTime;
+        this.creator = $.creator;
         this.customAudiences = $.customAudiences;
+        this.deleteTime = $.deleteTime;
         this.description = $.description;
         this.etag = $.etag;
+        this.expireTime = $.expireTime;
         this.generation = $.generation;
         this.ingress = $.ingress;
         this.labels = $.labels;
+        this.lastModifier = $.lastModifier;
         this.latestCreatedRevision = $.latestCreatedRevision;
         this.latestReadyRevision = $.latestReadyRevision;
         this.launchStage = $.launchStage;
@@ -496,6 +591,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         this.trafficStatuses = $.trafficStatuses;
         this.traffics = $.traffics;
         this.uid = $.uid;
+        this.updateTime = $.updateTime;
         this.uri = $.uri;
     }
 
@@ -656,6 +752,48 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param createTime The creation time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime The creation time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param creator Email address of the authenticated creator.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder creator(@Nullable Output<String> creator) {
+            $.creator = creator;
+            return this;
+        }
+
+        /**
+         * @param creator Email address of the authenticated creator.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder creator(String creator) {
+            return creator(Output.of(creator));
+        }
+
+        /**
          * @param customAudiences One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
          * string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
          * https://cloud.google.com/run/docs/configuring/custom-audiences.
@@ -690,6 +828,27 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder customAudiences(String... customAudiences) {
             return customAudiences(List.of(customAudiences));
+        }
+
+        /**
+         * @param deleteTime The deletion time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteTime(@Nullable Output<String> deleteTime) {
+            $.deleteTime = deleteTime;
+            return this;
+        }
+
+        /**
+         * @param deleteTime The deletion time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteTime(String deleteTime) {
+            return deleteTime(Output.of(deleteTime));
         }
 
         /**
@@ -732,6 +891,27 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder etag(String etag) {
             return etag(Output.of(etag));
+        }
+
+        /**
+         * @param expireTime For a deleted resource, the time after which it will be permamently deleted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expireTime(@Nullable Output<String> expireTime) {
+            $.expireTime = expireTime;
+            return this;
+        }
+
+        /**
+         * @param expireTime For a deleted resource, the time after which it will be permamently deleted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expireTime(String expireTime) {
+            return expireTime(Output.of(expireTime));
         }
 
         /**
@@ -815,6 +995,27 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder labels(Map<String,String> labels) {
             return labels(Output.of(labels));
+        }
+
+        /**
+         * @param lastModifier Email address of the last authenticated modifier.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastModifier(@Nullable Output<String> lastModifier) {
+            $.lastModifier = lastModifier;
+            return this;
+        }
+
+        /**
+         * @param lastModifier Email address of the last authenticated modifier.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastModifier(String lastModifier) {
+            return lastModifier(Output.of(lastModifier));
         }
 
         /**
@@ -1143,6 +1344,27 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder uid(String uid) {
             return uid(Output.of(uid));
+        }
+
+        /**
+         * @param updateTime The last-modified time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateTime(@Nullable Output<String> updateTime) {
+            $.updateTime = updateTime;
+            return this;
+        }
+
+        /**
+         * @param updateTime The last-modified time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateTime(String updateTime) {
+            return updateTime(Output.of(updateTime));
         }
 
         /**

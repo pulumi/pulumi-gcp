@@ -341,11 +341,23 @@ export class Service extends pulumi.CustomResource {
      */
     public /*out*/ readonly conditions!: pulumi.Output<outputs.cloudrunv2.ServiceCondition[]>;
     /**
+     * The creation time.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Email address of the authenticated creator.
+     */
+    public /*out*/ readonly creator!: pulumi.Output<string>;
+    /**
      * One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
      * string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
      * https://cloud.google.com/run/docs/configuring/custom-audiences.
      */
     public readonly customAudiences!: pulumi.Output<string[] | undefined>;
+    /**
+     * The deletion time.
+     */
+    public /*out*/ readonly deleteTime!: pulumi.Output<string>;
     /**
      * User-provided description of the Service. This field currently has a 512-character limit.
      */
@@ -354,6 +366,10 @@ export class Service extends pulumi.CustomResource {
      * A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
+    /**
+     * For a deleted resource, the time after which it will be permamently deleted.
+     */
+    public /*out*/ readonly expireTime!: pulumi.Output<string>;
     /**
      * A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
      */
@@ -376,6 +392,10 @@ export class Service extends pulumi.CustomResource {
      * All system labels in v1 now have a corresponding field in v2 Service.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * Email address of the last authenticated modifier.
+     */
+    public /*out*/ readonly lastModifier!: pulumi.Output<string>;
     /**
      * Name of the last created revision. See comments in reconciling for additional information on reconciliation process in Cloud Run.
      */
@@ -440,6 +460,10 @@ export class Service extends pulumi.CustomResource {
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
     /**
+     * The last-modified time.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    /**
      * (Output)
      * Displays the target URI.
      */
@@ -463,12 +487,17 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["client"] = state ? state.client : undefined;
             resourceInputs["clientVersion"] = state ? state.clientVersion : undefined;
             resourceInputs["conditions"] = state ? state.conditions : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["creator"] = state ? state.creator : undefined;
             resourceInputs["customAudiences"] = state ? state.customAudiences : undefined;
+            resourceInputs["deleteTime"] = state ? state.deleteTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["expireTime"] = state ? state.expireTime : undefined;
             resourceInputs["generation"] = state ? state.generation : undefined;
             resourceInputs["ingress"] = state ? state.ingress : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["lastModifier"] = state ? state.lastModifier : undefined;
             resourceInputs["latestCreatedRevision"] = state ? state.latestCreatedRevision : undefined;
             resourceInputs["latestReadyRevision"] = state ? state.latestReadyRevision : undefined;
             resourceInputs["launchStage"] = state ? state.launchStage : undefined;
@@ -482,6 +511,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["trafficStatuses"] = state ? state.trafficStatuses : undefined;
             resourceInputs["traffics"] = state ? state.traffics : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
+            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
             resourceInputs["uri"] = state ? state.uri : undefined;
         } else {
             const args = argsOrState as ServiceArgs | undefined;
@@ -503,8 +533,13 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["template"] = args ? args.template : undefined;
             resourceInputs["traffics"] = args ? args.traffics : undefined;
             resourceInputs["conditions"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["creator"] = undefined /*out*/;
+            resourceInputs["deleteTime"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["expireTime"] = undefined /*out*/;
             resourceInputs["generation"] = undefined /*out*/;
+            resourceInputs["lastModifier"] = undefined /*out*/;
             resourceInputs["latestCreatedRevision"] = undefined /*out*/;
             resourceInputs["latestReadyRevision"] = undefined /*out*/;
             resourceInputs["observedGeneration"] = undefined /*out*/;
@@ -512,6 +547,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["terminalConditions"] = undefined /*out*/;
             resourceInputs["trafficStatuses"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["uri"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -555,11 +591,23 @@ export interface ServiceState {
      */
     conditions?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.ServiceCondition>[]>;
     /**
+     * The creation time.
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * Email address of the authenticated creator.
+     */
+    creator?: pulumi.Input<string>;
+    /**
      * One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
      * string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
      * https://cloud.google.com/run/docs/configuring/custom-audiences.
      */
     customAudiences?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The deletion time.
+     */
+    deleteTime?: pulumi.Input<string>;
     /**
      * User-provided description of the Service. This field currently has a 512-character limit.
      */
@@ -568,6 +616,10 @@ export interface ServiceState {
      * A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
      */
     etag?: pulumi.Input<string>;
+    /**
+     * For a deleted resource, the time after which it will be permamently deleted.
+     */
+    expireTime?: pulumi.Input<string>;
     /**
      * A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
      */
@@ -590,6 +642,10 @@ export interface ServiceState {
      * All system labels in v1 now have a corresponding field in v2 Service.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Email address of the last authenticated modifier.
+     */
+    lastModifier?: pulumi.Input<string>;
     /**
      * Name of the last created revision. See comments in reconciling for additional information on reconciliation process in Cloud Run.
      */
@@ -653,6 +709,10 @@ export interface ServiceState {
      * Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
      */
     uid?: pulumi.Input<string>;
+    /**
+     * The last-modified time.
+     */
+    updateTime?: pulumi.Input<string>;
     /**
      * (Output)
      * Displays the target URI.

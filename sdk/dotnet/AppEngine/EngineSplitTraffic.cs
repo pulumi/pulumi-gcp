@@ -35,7 +35,7 @@ namespace Pulumi.Gcp.AppEngine
     ///     var @object = new Gcp.Storage.BucketObject("object", new()
     ///     {
     ///         Bucket = bucket.Name,
-    ///         Source = new FileAsset("./test-fixtures/appengine/hello-world.zip"),
+    ///         Source = new FileAsset("./test-fixtures/hello-world.zip"),
     ///     });
     /// 
     ///     var liveappV1 = new Gcp.AppEngine.StandardAppVersion("liveappV1", new()

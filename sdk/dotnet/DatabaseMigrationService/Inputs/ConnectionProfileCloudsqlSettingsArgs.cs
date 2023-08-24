@@ -71,6 +71,13 @@ namespace Pulumi.Gcp.DatabaseMigrationService.Inputs
         public Input<string>? DatabaseVersion { get; set; }
 
         /// <summary>
+        /// The edition of the given Cloud SQL instance.
+        /// Possible values are: `ENTERPRISE`, `ENTERPRISE_PLUS`.
+        /// </summary>
+        [Input("edition")]
+        public Input<string>? Edition { get; set; }
+
+        /// <summary>
         /// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
         /// Structure is documented below.
         /// </summary>

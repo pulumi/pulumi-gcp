@@ -16,6 +16,7 @@ namespace Pulumi.Gcp.Composer.Outputs
         public readonly string? CloudComposerConnectionSubnetwork;
         public readonly string? CloudComposerNetworkIpv4CidrBlock;
         public readonly string? CloudSqlIpv4CidrBlock;
+        public readonly string? ConnectionType;
         public readonly bool? EnablePrivateEndpoint;
         public readonly bool? EnablePrivatelyUsedPublicIps;
         public readonly string? MasterIpv4CidrBlock;
@@ -29,6 +30,8 @@ namespace Pulumi.Gcp.Composer.Outputs
 
             string? cloudSqlIpv4CidrBlock,
 
+            string? connectionType,
+
             bool? enablePrivateEndpoint,
 
             bool? enablePrivatelyUsedPublicIps,
@@ -40,6 +43,7 @@ namespace Pulumi.Gcp.Composer.Outputs
             CloudComposerConnectionSubnetwork = cloudComposerConnectionSubnetwork;
             CloudComposerNetworkIpv4CidrBlock = cloudComposerNetworkIpv4CidrBlock;
             CloudSqlIpv4CidrBlock = cloudSqlIpv4CidrBlock;
+            ConnectionType = connectionType;
             EnablePrivateEndpoint = enablePrivateEndpoint;
             EnablePrivatelyUsedPublicIps = enablePrivatelyUsedPublicIps;
             MasterIpv4CidrBlock = masterIpv4CidrBlock;

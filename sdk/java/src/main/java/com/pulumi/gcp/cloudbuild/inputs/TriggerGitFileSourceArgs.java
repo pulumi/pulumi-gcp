@@ -16,6 +16,23 @@ public final class TriggerGitFileSourceArgs extends com.pulumi.resources.Resourc
     public static final TriggerGitFileSourceArgs Empty = new TriggerGitFileSourceArgs();
 
     /**
+     * The full resource name of the bitbucket server config.
+     * Format: projects/{project}/locations/{location}/bitbucketServerConfigs/{id}.
+     * 
+     */
+    @Import(name="bitbucketServerConfig")
+    private @Nullable Output<String> bitbucketServerConfig;
+
+    /**
+     * @return The full resource name of the bitbucket server config.
+     * Format: projects/{project}/locations/{location}/bitbucketServerConfigs/{id}.
+     * 
+     */
+    public Optional<Output<String>> bitbucketServerConfig() {
+        return Optional.ofNullable(this.bitbucketServerConfig);
+    }
+
+    /**
      * The full resource name of the github enterprise config.
      * Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
      * 
@@ -122,6 +139,7 @@ public final class TriggerGitFileSourceArgs extends com.pulumi.resources.Resourc
     private TriggerGitFileSourceArgs() {}
 
     private TriggerGitFileSourceArgs(TriggerGitFileSourceArgs $) {
+        this.bitbucketServerConfig = $.bitbucketServerConfig;
         this.githubEnterpriseConfig = $.githubEnterpriseConfig;
         this.path = $.path;
         this.repoType = $.repoType;
@@ -146,6 +164,29 @@ public final class TriggerGitFileSourceArgs extends com.pulumi.resources.Resourc
 
         public Builder(TriggerGitFileSourceArgs defaults) {
             $ = new TriggerGitFileSourceArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param bitbucketServerConfig The full resource name of the bitbucket server config.
+         * Format: projects/{project}/locations/{location}/bitbucketServerConfigs/{id}.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bitbucketServerConfig(@Nullable Output<String> bitbucketServerConfig) {
+            $.bitbucketServerConfig = bitbucketServerConfig;
+            return this;
+        }
+
+        /**
+         * @param bitbucketServerConfig The full resource name of the bitbucket server config.
+         * Format: projects/{project}/locations/{location}/bitbucketServerConfigs/{id}.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bitbucketServerConfig(String bitbucketServerConfig) {
+            return bitbucketServerConfig(Output.of(bitbucketServerConfig));
         }
 
         /**

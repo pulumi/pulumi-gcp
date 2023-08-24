@@ -1,7 +1,7 @@
-From ffa4f56d985c1ac9cdc5b4b50a0636a172cbc6c1 Mon Sep 17 00:00:00 2001
+From 32b5559ce04aa464c2f1d25585e9ffc1ac609f4a Mon Sep 17 00:00:00 2001
 From: Daniel Bradley <daniel@pulumi.com>
 Date: Tue, 7 Mar 2023 11:09:59 +0000
-Subject: [PATCH 04/12] Allow disabling the partner name
+Subject: [PATCH 1/9] Allow disabling the partner name
 
 Add options to set or disable partner name.
 ---
@@ -10,10 +10,10 @@ Add options to set or disable partner name.
  2 files changed, 31 insertions(+), 3 deletions(-)
 
 diff --git a/google-beta/provider/provider.go b/google-beta/provider/provider.go
-index aecc42137..9804a42cd 100644
+index 2b894c5fb..6944d78b0 100644
 --- a/google-beta/provider/provider.go
 +++ b/google-beta/provider/provider.go
-@@ -227,6 +227,19 @@ func Provider() *schema.Provider {
+@@ -231,6 +231,19 @@ func Provider() *schema.Provider {
  				Optional: true,
  			},
  
@@ -33,7 +33,7 @@ index aecc42137..9804a42cd 100644
  			"request_reason": {
  				Type:     schema.TypeString,
  				Optional: true,
-@@ -1839,6 +1852,21 @@ func providerConfigure(ctx context.Context, d *schema.ResourceData, p *schema.Pr
+@@ -1870,6 +1883,21 @@ func providerConfigure(ctx context.Context, d *schema.ResourceData, p *schema.Pr
  		UserAgent:           p.UserAgent("terraform-provider-google-beta", version.ProviderVersion),
  	}
  
@@ -74,5 +74,5 @@ index d0f4777ca..dc0f460e4 100644
  
  // Deprecated: For backward compatibility snakeToPascalCase is still working,
 -- 
-2.39.1
+2.39.2 (Apple Git-143)
 

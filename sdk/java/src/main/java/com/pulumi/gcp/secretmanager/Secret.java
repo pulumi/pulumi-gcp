@@ -333,6 +333,32 @@ public class Secret extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> ttl() {
         return Codegen.optional(this.ttl);
     }
+    /**
+     * Mapping from version alias to version name.
+     * A version alias is a string with a maximum length of 63 characters and can contain
+     * uppercase and lowercase letters, numerals, and the hyphen (-) and underscore (&#39;_&#39;)
+     * characters. An alias string must start with a letter and cannot be the string
+     * &#39;latest&#39; or &#39;NEW&#39;. No more than 50 aliases can be assigned to a given secret.
+     * An object containing a list of &#34;key&#34;: value pairs. Example:
+     * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * 
+     */
+    @Export(name="versionAliases", type=Map.class, parameters={String.class, String.class})
+    private Output</* @Nullable */ Map<String,String>> versionAliases;
+
+    /**
+     * @return Mapping from version alias to version name.
+     * A version alias is a string with a maximum length of 63 characters and can contain
+     * uppercase and lowercase letters, numerals, and the hyphen (-) and underscore (&#39;_&#39;)
+     * characters. An alias string must start with a letter and cannot be the string
+     * &#39;latest&#39; or &#39;NEW&#39;. No more than 50 aliases can be assigned to a given secret.
+     * An object containing a list of &#34;key&#34;: value pairs. Example:
+     * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> versionAliases() {
+        return Codegen.optional(this.versionAliases);
+    }
 
     /**
      *

@@ -49,7 +49,7 @@ namespace Pulumi.Gcp.Monitoring
         ///     var @object = new Gcp.Storage.BucketObject("object", new()
         ///     {
         ///         Bucket = bucket.Name,
-        ///         Source = new FileAsset("./test-fixtures/appengine/hello-world.zip"),
+        ///         Source = new FileAsset("./test-fixtures/hello-world.zip"),
         ///     });
         /// 
         ///     var myapp = new Gcp.AppEngine.StandardAppVersion("myapp", new()
@@ -131,7 +131,7 @@ namespace Pulumi.Gcp.Monitoring
         ///     var @object = new Gcp.Storage.BucketObject("object", new()
         ///     {
         ///         Bucket = bucket.Name,
-        ///         Source = new FileAsset("./test-fixtures/appengine/hello-world.zip"),
+        ///         Source = new FileAsset("./test-fixtures/hello-world.zip"),
         ///     });
         /// 
         ///     var myapp = new Gcp.AppEngine.StandardAppVersion("myapp", new()

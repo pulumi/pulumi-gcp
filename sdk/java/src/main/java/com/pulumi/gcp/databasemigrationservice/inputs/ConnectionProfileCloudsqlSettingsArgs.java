@@ -147,6 +147,23 @@ public final class ConnectionProfileCloudsqlSettingsArgs extends com.pulumi.reso
     }
 
     /**
+     * The edition of the given Cloud SQL instance.
+     * Possible values are: `ENTERPRISE`, `ENTERPRISE_PLUS`.
+     * 
+     */
+    @Import(name="edition")
+    private @Nullable Output<String> edition;
+
+    /**
+     * @return The edition of the given Cloud SQL instance.
+     * Possible values are: `ENTERPRISE`, `ENTERPRISE_PLUS`.
+     * 
+     */
+    public Optional<Output<String>> edition() {
+        return Optional.ofNullable(this.edition);
+    }
+
+    /**
      * The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
      * Structure is documented below.
      * 
@@ -285,6 +302,7 @@ public final class ConnectionProfileCloudsqlSettingsArgs extends com.pulumi.reso
         this.dataDiskType = $.dataDiskType;
         this.databaseFlags = $.databaseFlags;
         this.databaseVersion = $.databaseVersion;
+        this.edition = $.edition;
         this.ipConfig = $.ipConfig;
         this.rootPassword = $.rootPassword;
         this.rootPasswordSet = $.rootPasswordSet;
@@ -487,6 +505,29 @@ public final class ConnectionProfileCloudsqlSettingsArgs extends com.pulumi.reso
          */
         public Builder databaseVersion(String databaseVersion) {
             return databaseVersion(Output.of(databaseVersion));
+        }
+
+        /**
+         * @param edition The edition of the given Cloud SQL instance.
+         * Possible values are: `ENTERPRISE`, `ENTERPRISE_PLUS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder edition(@Nullable Output<String> edition) {
+            $.edition = edition;
+            return this;
+        }
+
+        /**
+         * @param edition The edition of the given Cloud SQL instance.
+         * Possible values are: `ENTERPRISE`, `ENTERPRISE_PLUS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder edition(String edition) {
+            return edition(Output.of(edition));
         }
 
         /**

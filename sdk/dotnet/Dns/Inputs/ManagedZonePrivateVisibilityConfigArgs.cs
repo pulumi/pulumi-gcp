@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.Dns.Inputs
             set => _gkeClusters = value;
         }
 
-        [Input("networks", required: true)]
+        [Input("networks")]
         private InputList<Inputs.ManagedZonePrivateVisibilityConfigNetworkArgs>? _networks;
         public InputList<Inputs.ManagedZonePrivateVisibilityConfigNetworkArgs> Networks
         {

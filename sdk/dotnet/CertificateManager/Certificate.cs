@@ -80,7 +80,7 @@ namespace Pulumi.Gcp.CertificateManager
     ///     {
     ///         Location = "us-central1",
     ///         Pool = pool.Name,
-    ///         CertificateAuthorityId = "my-ca",
+    ///         CertificateAuthorityId = "ca-authority",
     ///         Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
     ///         {
     ///             SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs
@@ -225,8 +225,8 @@ namespace Pulumi.Gcp.CertificateManager
     ///         Location = "us-central1",
     ///         SelfManaged = new Gcp.CertificateManager.Inputs.CertificateSelfManagedArgs
     ///         {
-    ///             PemCertificate = File.ReadAllText("test-fixtures/certificatemanager/cert.pem"),
-    ///             PemPrivateKey = File.ReadAllText("test-fixtures/certificatemanager/private-key.pem"),
+    ///             PemCertificate = File.ReadAllText("test-fixtures/cert.pem"),
+    ///             PemPrivateKey = File.ReadAllText("test-fixtures/private-key.pem"),
     ///         },
     ///     });
     /// 
@@ -303,7 +303,8 @@ namespace Pulumi.Gcp.CertificateManager
         /// If unsure, choose this option.
         /// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
         /// served from non-core Google data centers.
-        /// Currently allowed only for managed certificates.
+        /// ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
+        /// see https://cloud.google.com/compute/docs/regions-zones
         /// </summary>
         [Output("scope")]
         public Output<string?> Scope { get; private set; } = null!;
@@ -420,7 +421,8 @@ namespace Pulumi.Gcp.CertificateManager
         /// If unsure, choose this option.
         /// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
         /// served from non-core Google data centers.
-        /// Currently allowed only for managed certificates.
+        /// ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
+        /// see https://cloud.google.com/compute/docs/regions-zones
         /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }
@@ -499,7 +501,8 @@ namespace Pulumi.Gcp.CertificateManager
         /// If unsure, choose this option.
         /// EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
         /// served from non-core Google data centers.
-        /// Currently allowed only for managed certificates.
+        /// ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
+        /// see https://cloud.google.com/compute/docs/regions-zones
         /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }

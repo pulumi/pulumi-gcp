@@ -146,7 +146,7 @@ def get_app_engine_service(module_id: Optional[str] = None,
     bucket = gcp.storage.Bucket("bucket", location="US")
     object = gcp.storage.BucketObject("object",
         bucket=bucket.name,
-        source=pulumi.FileAsset("./test-fixtures/appengine/hello-world.zip"))
+        source=pulumi.FileAsset("./test-fixtures/hello-world.zip"))
     myapp = gcp.appengine.StandardAppVersion("myapp",
         version_id="v1",
         service="myapp",
@@ -222,7 +222,7 @@ def get_app_engine_service_output(module_id: Optional[pulumi.Input[str]] = None,
     bucket = gcp.storage.Bucket("bucket", location="US")
     object = gcp.storage.BucketObject("object",
         bucket=bucket.name,
-        source=pulumi.FileAsset("./test-fixtures/appengine/hello-world.zip"))
+        source=pulumi.FileAsset("./test-fixtures/hello-world.zip"))
     myapp = gcp.appengine.StandardAppVersion("myapp",
         version_id="v1",
         service="myapp",

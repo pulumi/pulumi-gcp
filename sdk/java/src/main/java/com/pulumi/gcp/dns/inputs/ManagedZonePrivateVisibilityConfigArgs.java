@@ -34,11 +34,11 @@ public final class ManagedZonePrivateVisibilityConfigArgs extends com.pulumi.res
         return Optional.ofNullable(this.gkeClusters);
     }
 
-    @Import(name="networks", required=true)
-    private Output<List<ManagedZonePrivateVisibilityConfigNetworkArgs>> networks;
+    @Import(name="networks")
+    private @Nullable Output<List<ManagedZonePrivateVisibilityConfigNetworkArgs>> networks;
 
-    public Output<List<ManagedZonePrivateVisibilityConfigNetworkArgs>> networks() {
-        return this.networks;
+    public Optional<Output<List<ManagedZonePrivateVisibilityConfigNetworkArgs>>> networks() {
+        return Optional.ofNullable(this.networks);
     }
 
     private ManagedZonePrivateVisibilityConfigArgs() {}
@@ -100,7 +100,7 @@ public final class ManagedZonePrivateVisibilityConfigArgs extends com.pulumi.res
             return gkeClusters(List.of(gkeClusters));
         }
 
-        public Builder networks(Output<List<ManagedZonePrivateVisibilityConfigNetworkArgs>> networks) {
+        public Builder networks(@Nullable Output<List<ManagedZonePrivateVisibilityConfigNetworkArgs>> networks) {
             $.networks = networks;
             return this;
         }
@@ -114,7 +114,6 @@ public final class ManagedZonePrivateVisibilityConfigArgs extends com.pulumi.res
         }
 
         public ManagedZonePrivateVisibilityConfigArgs build() {
-            $.networks = Objects.requireNonNull($.networks, "expected parameter 'networks' to be non-null");
             return $;
         }
     }

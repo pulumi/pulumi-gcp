@@ -1159,6 +1159,9 @@ type ConnectionProfileCloudsqlSettings struct {
 	// The database engine type and version.
 	// Currently supported values located at https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles#sqldatabaseversion
 	DatabaseVersion *string `pulumi:"databaseVersion"`
+	// The edition of the given Cloud SQL instance.
+	// Possible values are: `ENTERPRISE`, `ENTERPRISE_PLUS`.
+	Edition *string `pulumi:"edition"`
 	// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
 	// Structure is documented below.
 	IpConfig *ConnectionProfileCloudsqlSettingsIpConfig `pulumi:"ipConfig"`
@@ -1213,6 +1216,9 @@ type ConnectionProfileCloudsqlSettingsArgs struct {
 	// The database engine type and version.
 	// Currently supported values located at https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles#sqldatabaseversion
 	DatabaseVersion pulumi.StringPtrInput `pulumi:"databaseVersion"`
+	// The edition of the given Cloud SQL instance.
+	// Possible values are: `ENTERPRISE`, `ENTERPRISE_PLUS`.
+	Edition pulumi.StringPtrInput `pulumi:"edition"`
 	// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
 	// Structure is documented below.
 	IpConfig ConnectionProfileCloudsqlSettingsIpConfigPtrInput `pulumi:"ipConfig"`
@@ -1354,6 +1360,12 @@ func (o ConnectionProfileCloudsqlSettingsOutput) DatabaseFlags() pulumi.StringMa
 // Currently supported values located at https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles#sqldatabaseversion
 func (o ConnectionProfileCloudsqlSettingsOutput) DatabaseVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionProfileCloudsqlSettings) *string { return v.DatabaseVersion }).(pulumi.StringPtrOutput)
+}
+
+// The edition of the given Cloud SQL instance.
+// Possible values are: `ENTERPRISE`, `ENTERPRISE_PLUS`.
+func (o ConnectionProfileCloudsqlSettingsOutput) Edition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionProfileCloudsqlSettings) *string { return v.Edition }).(pulumi.StringPtrOutput)
 }
 
 // The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
@@ -1507,6 +1519,17 @@ func (o ConnectionProfileCloudsqlSettingsPtrOutput) DatabaseVersion() pulumi.Str
 			return nil
 		}
 		return v.DatabaseVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The edition of the given Cloud SQL instance.
+// Possible values are: `ENTERPRISE`, `ENTERPRISE_PLUS`.
+func (o ConnectionProfileCloudsqlSettingsPtrOutput) Edition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfileCloudsqlSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Edition
 	}).(pulumi.StringPtrOutput)
 }
 

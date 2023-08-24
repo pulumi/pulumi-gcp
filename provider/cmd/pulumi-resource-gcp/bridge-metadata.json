@@ -1603,6 +1603,18 @@
                     }
                 }
             },
+            "google_backup_dr_management_server": {
+                "current": "gcp:backupdisasterrecovery/managementServer:ManagementServer",
+                "majorVersion": 6,
+                "fields": {
+                    "management_uri": {
+                        "maxItemsOne": false
+                    },
+                    "networks": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "google_beyondcorp_app_connection": {
                 "current": "gcp:beyondcorp/appConnection:AppConnection",
                 "majorVersion": 6,
@@ -6161,6 +6173,70 @@
                 "fields": {
                     "ddos_protection_config": {
                         "maxItemsOne": true
+                    },
+                    "user_defined_fields": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_compute_region_security_policy_rule": {
+                "current": "gcp:compute/regionSecurityPolicyRule:RegionSecurityPolicyRule",
+                "majorVersion": 6,
+                "fields": {
+                    "match": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "src_ip_ranges": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "network_match": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "dest_ip_ranges": {
+                                    "maxItemsOne": false
+                                },
+                                "dest_ports": {
+                                    "maxItemsOne": false
+                                },
+                                "ip_protocols": {
+                                    "maxItemsOne": false
+                                },
+                                "src_asns": {
+                                    "maxItemsOne": false
+                                },
+                                "src_ip_ranges": {
+                                    "maxItemsOne": false
+                                },
+                                "src_ports": {
+                                    "maxItemsOne": false
+                                },
+                                "src_region_codes": {
+                                    "maxItemsOne": false
+                                },
+                                "user_defined_fields": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "values": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -6821,6 +6897,9 @@
                                             }
                                         }
                                     }
+                                },
+                                "user_ip_request_headers": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -11855,6 +11934,9 @@
                                 }
                             }
                         }
+                    },
+                    "scaling_config": {
+                        "maxItemsOne": true
                     },
                     "telemetry_config": {
                         "maxItemsOne": true
@@ -24522,6 +24604,7 @@
             "gcp:artifactregistry/repositoryIamMember:RepositoryIamMember": 0,
             "gcp:artifactregistry/repositoryIamPolicy:RepositoryIamPolicy": 0,
             "gcp:assuredworkloads/workload:Workload": 0,
+            "gcp:backupdisasterrecovery/managementServer:ManagementServer": 0,
             "gcp:beyondcorp/appConnection:AppConnection": 0,
             "gcp:beyondcorp/appConnector:AppConnector": 0,
             "gcp:beyondcorp/appGateway:AppGateway": 0,
@@ -24733,6 +24816,7 @@
             "gcp:compute/regionNetworkFirewallPolicyRule:RegionNetworkFirewallPolicyRule": 0,
             "gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig": 0,
             "gcp:compute/regionSecurityPolicy:RegionSecurityPolicy": 0,
+            "gcp:compute/regionSecurityPolicyRule:RegionSecurityPolicyRule": 0,
             "gcp:compute/regionSslCertificate:RegionSslCertificate": 0,
             "gcp:compute/regionSslPolicy:RegionSslPolicy": 0,
             "gcp:compute/regionTargetHttpProxy:RegionTargetHttpProxy": 0,
@@ -25558,6 +25642,7 @@
             "gcp:artifactregistry/repositoryIamMember:RepositoryIamMember": "google_artifact_registry_repository_iam_member",
             "gcp:artifactregistry/repositoryIamPolicy:RepositoryIamPolicy": "google_artifact_registry_repository_iam_policy",
             "gcp:assuredworkloads/workload:Workload": "google_assured_workloads_workload",
+            "gcp:backupdisasterrecovery/managementServer:ManagementServer": "google_backup_dr_management_server",
             "gcp:beyondcorp/appConnection:AppConnection": "google_beyondcorp_app_connection",
             "gcp:beyondcorp/appConnector:AppConnector": "google_beyondcorp_app_connector",
             "gcp:beyondcorp/appGateway:AppGateway": "google_beyondcorp_app_gateway",
@@ -25769,6 +25854,7 @@
             "gcp:compute/regionNetworkFirewallPolicyRule:RegionNetworkFirewallPolicyRule": "google_compute_region_network_firewall_policy_rule",
             "gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig": "google_compute_region_per_instance_config",
             "gcp:compute/regionSecurityPolicy:RegionSecurityPolicy": "google_compute_region_security_policy",
+            "gcp:compute/regionSecurityPolicyRule:RegionSecurityPolicyRule": "google_compute_region_security_policy_rule",
             "gcp:compute/regionSslCertificate:RegionSslCertificate": "google_compute_region_ssl_certificate",
             "gcp:compute/regionSslPolicy:RegionSslPolicy": "google_compute_region_ssl_policy",
             "gcp:compute/regionTargetHttpProxy:RegionTargetHttpProxy": "google_compute_region_target_http_proxy",
@@ -27548,6 +27634,16 @@
                 "provisionedResourcesParent": "provisioned_resources_parent",
                 "resourceSettings": "resource_settings"
             },
+            "gcp:backupdisasterrecovery/ManagementServerManagementUri:ManagementServerManagementUri": {
+                "webUi": "web_ui"
+            },
+            "gcp:backupdisasterrecovery/ManagementServerNetwork:ManagementServerNetwork": {
+                "peeringMode": "peering_mode"
+            },
+            "gcp:backupdisasterrecovery/managementServer:ManagementServer": {
+                "managementUris": "management_uri",
+                "oauth2ClientId": "oauth2_client_id"
+            },
             "gcp:beyondcorp/AppConnectionGateway:AppConnectionGateway": {
                 "appGateway": "app_gateway",
                 "ingressPort": "ingress_port"
@@ -29040,6 +29136,7 @@
                 "waitFors": "wait_for"
             },
             "gcp:cloudbuild/TriggerGitFileSource:TriggerGitFileSource": {
+                "bitbucketServerConfig": "bitbucket_server_config",
                 "githubEnterpriseConfig": "github_enterprise_config",
                 "repoType": "repo_type"
             },
@@ -29068,6 +29165,7 @@
                 "invertRegex": "invert_regex"
             },
             "gcp:cloudbuild/TriggerSourceToBuild:TriggerSourceToBuild": {
+                "bitbucketServerConfig": "bitbucket_server_config",
                 "githubEnterpriseConfig": "github_enterprise_config",
                 "repoType": "repo_type"
             },
@@ -29189,6 +29287,7 @@
                 "waitFors": "wait_for"
             },
             "gcp:cloudbuild/getTriggerGitFileSource:getTriggerGitFileSource": {
+                "bitbucketServerConfig": "bitbucket_server_config",
                 "githubEnterpriseConfig": "github_enterprise_config",
                 "repoType": "repo_type"
             },
@@ -29219,6 +29318,7 @@
                 "invertRegex": "invert_regex"
             },
             "gcp:cloudbuild/getTriggerSourceToBuild:getTriggerSourceToBuild": {
+                "bitbucketServerConfig": "bitbucket_server_config",
                 "githubEnterpriseConfig": "github_enterprise_config",
                 "repoType": "repo_type"
             },
@@ -30035,11 +30135,16 @@
             "gcp:cloudrunv2/job:Job": {
                 "binaryAuthorization": "binary_authorization",
                 "clientVersion": "client_version",
+                "createTime": "create_time",
+                "deleteTime": "delete_time",
                 "executionCount": "execution_count",
+                "expireTime": "expire_time",
+                "lastModifier": "last_modifier",
                 "latestCreatedExecutions": "latest_created_execution",
                 "launchStage": "launch_stage",
                 "observedGeneration": "observed_generation",
-                "terminalConditions": "terminal_condition"
+                "terminalConditions": "terminal_condition",
+                "updateTime": "update_time"
             },
             "gcp:cloudrunv2/jobIamPolicy:JobIamPolicy": {
                 "policyData": "policy_data"
@@ -30047,14 +30152,19 @@
             "gcp:cloudrunv2/service:Service": {
                 "binaryAuthorization": "binary_authorization",
                 "clientVersion": "client_version",
+                "createTime": "create_time",
                 "customAudiences": "custom_audiences",
+                "deleteTime": "delete_time",
+                "expireTime": "expire_time",
+                "lastModifier": "last_modifier",
                 "latestCreatedRevision": "latest_created_revision",
                 "latestReadyRevision": "latest_ready_revision",
                 "launchStage": "launch_stage",
                 "observedGeneration": "observed_generation",
                 "terminalConditions": "terminal_condition",
                 "trafficStatuses": "traffic_statuses",
-                "traffics": "traffic"
+                "traffics": "traffic",
+                "updateTime": "update_time"
             },
             "gcp:cloudrunv2/serviceIamPolicy:ServiceIamPolicy": {
                 "policyData": "policy_data"
@@ -30176,6 +30286,7 @@
                 "cloudComposerConnectionSubnetwork": "cloud_composer_connection_subnetwork",
                 "cloudComposerNetworkIpv4CidrBlock": "cloud_composer_network_ipv4_cidr_block",
                 "cloudSqlIpv4CidrBlock": "cloud_sql_ipv4_cidr_block",
+                "connectionType": "connection_type",
                 "enablePrivateEndpoint": "enable_private_endpoint",
                 "enablePrivatelyUsedPublicIps": "enable_privately_used_public_ips",
                 "masterIpv4CidrBlock": "master_ipv4_cidr_block",
@@ -30283,6 +30394,7 @@
                 "cloudComposerConnectionSubnetwork": "cloud_composer_connection_subnetwork",
                 "cloudComposerNetworkIpv4CidrBlock": "cloud_composer_network_ipv4_cidr_block",
                 "cloudSqlIpv4CidrBlock": "cloud_sql_ipv4_cidr_block",
+                "connectionType": "connection_type",
                 "enablePrivateEndpoint": "enable_private_endpoint",
                 "enablePrivatelyUsedPublicIps": "enable_privately_used_public_ips",
                 "masterIpv4CidrBlock": "master_ipv4_cidr_block",
@@ -30871,6 +30983,7 @@
                 "diskName": "disk_name",
                 "diskSizeGb": "disk_size_gb",
                 "diskType": "disk_type",
+                "provisionedIops": "provisioned_iops",
                 "resourcePolicies": "resource_policies",
                 "sourceImage": "source_image",
                 "sourceImageEncryptionKey": "source_image_encryption_key",
@@ -31229,6 +31342,7 @@
                 "diskName": "disk_name",
                 "diskSizeGb": "disk_size_gb",
                 "diskType": "disk_type",
+                "provisionedIops": "provisioned_iops",
                 "resourcePolicies": "resource_policies",
                 "sourceImage": "source_image",
                 "sourceImageEncryptionKey": "source_image_encryption_key",
@@ -31344,6 +31458,22 @@
             },
             "gcp:compute/RegionSecurityPolicyDdosProtectionConfig:RegionSecurityPolicyDdosProtectionConfig": {
                 "ddosProtection": "ddos_protection"
+            },
+            "gcp:compute/RegionSecurityPolicyRuleMatch:RegionSecurityPolicyRuleMatch": {
+                "versionedExpr": "versioned_expr"
+            },
+            "gcp:compute/RegionSecurityPolicyRuleMatchConfig:RegionSecurityPolicyRuleMatchConfig": {
+                "srcIpRanges": "src_ip_ranges"
+            },
+            "gcp:compute/RegionSecurityPolicyRuleNetworkMatch:RegionSecurityPolicyRuleNetworkMatch": {
+                "destIpRanges": "dest_ip_ranges",
+                "destPorts": "dest_ports",
+                "ipProtocols": "ip_protocols",
+                "srcAsns": "src_asns",
+                "srcIpRanges": "src_ip_ranges",
+                "srcPorts": "src_ports",
+                "srcRegionCodes": "src_region_codes",
+                "userDefinedFields": "user_defined_fields"
             },
             "gcp:compute/RegionUrlMapDefaultRouteAction:RegionUrlMapDefaultRouteAction": {
                 "corsPolicy": "cors_policy",
@@ -31729,7 +31859,8 @@
             "gcp:compute/SecurityPolicyAdvancedOptionsConfig:SecurityPolicyAdvancedOptionsConfig": {
                 "jsonCustomConfig": "json_custom_config",
                 "jsonParsing": "json_parsing",
-                "logLevel": "log_level"
+                "logLevel": "log_level",
+                "userIpRequestHeaders": "user_ip_request_headers"
             },
             "gcp:compute/SecurityPolicyAdvancedOptionsConfigJsonCustomConfig:SecurityPolicyAdvancedOptionsConfigJsonCustomConfig": {
                 "contentTypes": "content_types"
@@ -32888,6 +33019,7 @@
                 "diskName": "disk_name",
                 "diskSizeGb": "disk_size_gb",
                 "diskType": "disk_type",
+                "provisionedIops": "provisioned_iops",
                 "resourcePolicies": "resource_policies",
                 "sourceImage": "source_image",
                 "sourceImageEncryptionKeys": "source_image_encryption_key",
@@ -33038,6 +33170,7 @@
                 "diskName": "disk_name",
                 "diskSizeGb": "disk_size_gb",
                 "diskType": "disk_type",
+                "provisionedIops": "provisioned_iops",
                 "resourcePolicies": "resource_policies",
                 "sourceImage": "source_image",
                 "sourceImageEncryptionKeys": "source_image_encryption_key",
@@ -33861,7 +33994,12 @@
                 "ddosProtectionConfig": "ddos_protection_config",
                 "policyId": "policy_id",
                 "selfLink": "self_link",
-                "selfLinkWithPolicyId": "self_link_with_policy_id"
+                "selfLinkWithPolicyId": "self_link_with_policy_id",
+                "userDefinedFields": "user_defined_fields"
+            },
+            "gcp:compute/regionSecurityPolicyRule:RegionSecurityPolicyRule": {
+                "networkMatch": "network_match",
+                "securityPolicy": "security_policy"
             },
             "gcp:compute/regionSslCertificate:RegionSslCertificate": {
                 "certificateId": "certificate_id",
@@ -37307,6 +37445,10 @@
             "gcp:dataproc/MetastoreServiceNetworkConfigConsumer:MetastoreServiceNetworkConfigConsumer": {
                 "endpointUri": "endpoint_uri"
             },
+            "gcp:dataproc/MetastoreServiceScalingConfig:MetastoreServiceScalingConfig": {
+                "instanceSize": "instance_size",
+                "scalingFactor": "scaling_factor"
+            },
             "gcp:dataproc/MetastoreServiceTelemetryConfig:MetastoreServiceTelemetryConfig": {
                 "logFormat": "log_format"
             },
@@ -37660,6 +37802,7 @@
                 "metadataIntegration": "metadata_integration",
                 "networkConfig": "network_config",
                 "releaseChannel": "release_channel",
+                "scalingConfig": "scaling_config",
                 "serviceId": "service_id",
                 "stateMessage": "state_message",
                 "telemetryConfig": "telemetry_config"
@@ -39137,6 +39280,9 @@
                 "autoResizeConfig": "auto_resize_config",
                 "vsphereConfigs": "vsphere_config"
             },
+            "gcp:gkeonprem/VMwareClusterControlPlaneNodeVsphereConfig:VMwareClusterControlPlaneNodeVsphereConfig": {
+                "storagePolicyName": "storage_policy_name"
+            },
             "gcp:gkeonprem/VMwareClusterDataplaneV2:VMwareClusterDataplaneV2": {
                 "advancedNetworking": "advanced_networking",
                 "dataplaneV2Enabled": "dataplane_v2_enabled",
@@ -39205,7 +39351,8 @@
             },
             "gcp:gkeonprem/VMwareClusterVcenter:VMwareClusterVcenter": {
                 "caCertData": "ca_cert_data",
-                "resourcePool": "resource_pool"
+                "resourcePool": "resource_pool",
+                "storagePolicyName": "storage_policy_name"
             },
             "gcp:gkeonprem/VMwareNodePoolConfig:VMwareNodePoolConfig": {
                 "bootDiskSizeGb": "boot_disk_size_gb",
@@ -39386,6 +39533,7 @@
             },
             "gcp:healthcare/fhirStore:FhirStore": {
                 "complexDataTypeReferenceParsing": "complex_data_type_reference_parsing",
+                "defaultSearchHandlingStrict": "default_search_handling_strict",
                 "disableReferentialIntegrity": "disable_referential_integrity",
                 "disableResourceVersioning": "disable_resource_versioning",
                 "enableHistoryImport": "enable_history_import",
@@ -39784,6 +39932,7 @@
                 "appEngineCustomEndpoint": "app_engine_custom_endpoint",
                 "artifactRegistryCustomEndpoint": "artifact_registry_custom_endpoint",
                 "assuredWorkloadsCustomEndpoint": "assured_workloads_custom_endpoint",
+                "backupDrCustomEndpoint": "backup_dr_custom_endpoint",
                 "beyondcorpCustomEndpoint": "beyondcorp_custom_endpoint",
                 "bigQueryCustomEndpoint": "big_query_custom_endpoint",
                 "bigqueryAnalyticsHubCustomEndpoint": "bigquery_analytics_hub_custom_endpoint",
@@ -42085,7 +42234,8 @@
                 "expireTime": "expire_time",
                 "replications": "replication",
                 "rotations": "rotation",
-                "secretId": "secret_id"
+                "secretId": "secret_id",
+                "versionAliases": "version_aliases"
             },
             "gcp:secretmanager/getSecretIamPolicy:getSecretIamPolicy": {
                 "policyData": "policy_data",
@@ -42115,7 +42265,8 @@
             "gcp:secretmanager/secret:Secret": {
                 "createTime": "create_time",
                 "expireTime": "expire_time",
-                "secretId": "secret_id"
+                "secretId": "secret_id",
+                "versionAliases": "version_aliases"
             },
             "gcp:secretmanager/secretIamBinding:SecretIamBinding": {
                 "secretId": "secret_id"
@@ -43609,6 +43760,7 @@
             "appEngineCustomEndpoint": "app_engine_custom_endpoint",
             "artifactRegistryCustomEndpoint": "artifact_registry_custom_endpoint",
             "assuredWorkloadsCustomEndpoint": "assured_workloads_custom_endpoint",
+            "backupDrCustomEndpoint": "backup_dr_custom_endpoint",
             "beyondcorpCustomEndpoint": "beyondcorp_custom_endpoint",
             "bigQueryCustomEndpoint": "big_query_custom_endpoint",
             "bigqueryAnalyticsHubCustomEndpoint": "bigquery_analytics_hub_custom_endpoint",

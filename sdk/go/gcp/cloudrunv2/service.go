@@ -484,14 +484,22 @@ type Service struct {
 	// The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Service does not reach its Serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
 	// Structure is documented below.
 	Conditions ServiceConditionArrayOutput `pulumi:"conditions"`
+	// The creation time.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Email address of the authenticated creator.
+	Creator pulumi.StringOutput `pulumi:"creator"`
 	// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
 	// string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
 	// https://cloud.google.com/run/docs/configuring/custom-audiences.
 	CustomAudiences pulumi.StringArrayOutput `pulumi:"customAudiences"`
+	// The deletion time.
+	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
 	// User-provided description of the Service. This field currently has a 512-character limit.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
 	Etag pulumi.StringOutput `pulumi:"etag"`
+	// For a deleted resource, the time after which it will be permamently deleted.
+	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
 	// A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
 	Generation pulumi.StringOutput `pulumi:"generation"`
 	// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
@@ -508,6 +516,8 @@ type Service struct {
 	// Cloud Run API v2 does not support labels with  `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
 	// All system labels in v1 now have a corresponding field in v2 Service.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// Email address of the last authenticated modifier.
+	LastModifier pulumi.StringOutput `pulumi:"lastModifier"`
 	// Name of the last created revision. See comments in reconciling for additional information on reconciliation process in Cloud Run.
 	LatestCreatedRevision pulumi.StringOutput `pulumi:"latestCreatedRevision"`
 	// Name of the latest revision that is serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run.
@@ -545,6 +555,8 @@ type Service struct {
 	Traffics ServiceTrafficArrayOutput `pulumi:"traffics"`
 	// Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
 	Uid pulumi.StringOutput `pulumi:"uid"`
+	// The last-modified time.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// (Output)
 	// Displays the target URI.
 	Uri pulumi.StringOutput `pulumi:"uri"`
@@ -604,14 +616,22 @@ type serviceState struct {
 	// The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Service does not reach its Serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
 	// Structure is documented below.
 	Conditions []ServiceCondition `pulumi:"conditions"`
+	// The creation time.
+	CreateTime *string `pulumi:"createTime"`
+	// Email address of the authenticated creator.
+	Creator *string `pulumi:"creator"`
 	// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
 	// string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
 	// https://cloud.google.com/run/docs/configuring/custom-audiences.
 	CustomAudiences []string `pulumi:"customAudiences"`
+	// The deletion time.
+	DeleteTime *string `pulumi:"deleteTime"`
 	// User-provided description of the Service. This field currently has a 512-character limit.
 	Description *string `pulumi:"description"`
 	// A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
 	Etag *string `pulumi:"etag"`
+	// For a deleted resource, the time after which it will be permamently deleted.
+	ExpireTime *string `pulumi:"expireTime"`
 	// A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
 	Generation *string `pulumi:"generation"`
 	// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
@@ -628,6 +648,8 @@ type serviceState struct {
 	// Cloud Run API v2 does not support labels with  `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
 	// All system labels in v1 now have a corresponding field in v2 Service.
 	Labels map[string]string `pulumi:"labels"`
+	// Email address of the last authenticated modifier.
+	LastModifier *string `pulumi:"lastModifier"`
 	// Name of the last created revision. See comments in reconciling for additional information on reconciliation process in Cloud Run.
 	LatestCreatedRevision *string `pulumi:"latestCreatedRevision"`
 	// Name of the latest revision that is serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run.
@@ -665,6 +687,8 @@ type serviceState struct {
 	Traffics []ServiceTraffic `pulumi:"traffics"`
 	// Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
 	Uid *string `pulumi:"uid"`
+	// The last-modified time.
+	UpdateTime *string `pulumi:"updateTime"`
 	// (Output)
 	// Displays the target URI.
 	Uri *string `pulumi:"uri"`
@@ -692,14 +716,22 @@ type ServiceState struct {
 	// The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Service does not reach its Serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
 	// Structure is documented below.
 	Conditions ServiceConditionArrayInput
+	// The creation time.
+	CreateTime pulumi.StringPtrInput
+	// Email address of the authenticated creator.
+	Creator pulumi.StringPtrInput
 	// One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
 	// string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
 	// https://cloud.google.com/run/docs/configuring/custom-audiences.
 	CustomAudiences pulumi.StringArrayInput
+	// The deletion time.
+	DeleteTime pulumi.StringPtrInput
 	// User-provided description of the Service. This field currently has a 512-character limit.
 	Description pulumi.StringPtrInput
 	// A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
 	Etag pulumi.StringPtrInput
+	// For a deleted resource, the time after which it will be permamently deleted.
+	ExpireTime pulumi.StringPtrInput
 	// A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
 	Generation pulumi.StringPtrInput
 	// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
@@ -716,6 +748,8 @@ type ServiceState struct {
 	// Cloud Run API v2 does not support labels with  `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
 	// All system labels in v1 now have a corresponding field in v2 Service.
 	Labels pulumi.StringMapInput
+	// Email address of the last authenticated modifier.
+	LastModifier pulumi.StringPtrInput
 	// Name of the last created revision. See comments in reconciling for additional information on reconciliation process in Cloud Run.
 	LatestCreatedRevision pulumi.StringPtrInput
 	// Name of the latest revision that is serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run.
@@ -753,6 +787,8 @@ type ServiceState struct {
 	Traffics ServiceTrafficArrayInput
 	// Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
 	Uid pulumi.StringPtrInput
+	// The last-modified time.
+	UpdateTime pulumi.StringPtrInput
 	// (Output)
 	// Displays the target URI.
 	Uri pulumi.StringPtrInput
@@ -1004,11 +1040,26 @@ func (o ServiceOutput) Conditions() ServiceConditionArrayOutput {
 	return o.ApplyT(func(v *Service) ServiceConditionArrayOutput { return v.Conditions }).(ServiceConditionArrayOutput)
 }
 
+// The creation time.
+func (o ServiceOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Email address of the authenticated creator.
+func (o ServiceOutput) Creator() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Creator }).(pulumi.StringOutput)
+}
+
 // One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
 // string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
 // https://cloud.google.com/run/docs/configuring/custom-audiences.
 func (o ServiceOutput) CustomAudiences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringArrayOutput { return v.CustomAudiences }).(pulumi.StringArrayOutput)
+}
+
+// The deletion time.
+func (o ServiceOutput) DeleteTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
 }
 
 // User-provided description of the Service. This field currently has a 512-character limit.
@@ -1019,6 +1070,11 @@ func (o ServiceOutput) Description() pulumi.StringPtrOutput {
 // A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
 func (o ServiceOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// For a deleted resource, the time after which it will be permamently deleted.
+func (o ServiceOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.ExpireTime }).(pulumi.StringOutput)
 }
 
 // A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
@@ -1044,6 +1100,11 @@ func (o ServiceOutput) Ingress() pulumi.StringOutput {
 // All system labels in v1 now have a corresponding field in v2 Service.
 func (o ServiceOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Email address of the last authenticated modifier.
+func (o ServiceOutput) LastModifier() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.LastModifier }).(pulumi.StringOutput)
 }
 
 // Name of the last created revision. See comments in reconciling for additional information on reconciliation process in Cloud Run.
@@ -1120,6 +1181,11 @@ func (o ServiceOutput) Traffics() ServiceTrafficArrayOutput {
 // Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
 func (o ServiceOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
+}
+
+// The last-modified time.
+func (o ServiceOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
 // (Output)

@@ -1180,7 +1180,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
             location="US")
         object = gcp.storage.BucketObject("object",
             bucket=bucket.name,
-            source=pulumi.FileAsset("./test-fixtures/appengine/hello-world.zip"))
+            source=pulumi.FileAsset("./test-fixtures/hello-world.zip"))
         myapp_v1 = gcp.appengine.FlexibleAppVersion("myappV1",
             version_id="v1",
             project=gae_api.project,
@@ -1356,7 +1356,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
             location="US")
         object = gcp.storage.BucketObject("object",
             bucket=bucket.name,
-            source=pulumi.FileAsset("./test-fixtures/appengine/hello-world.zip"))
+            source=pulumi.FileAsset("./test-fixtures/hello-world.zip"))
         myapp_v1 = gcp.appengine.FlexibleAppVersion("myappV1",
             version_id="v1",
             project=gae_api.project,

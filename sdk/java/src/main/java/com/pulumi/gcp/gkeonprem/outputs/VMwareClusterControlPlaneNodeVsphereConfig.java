@@ -15,21 +15,35 @@ public final class VMwareClusterControlPlaneNodeVsphereConfig {
      * @return (Output)
      * The Vsphere datastore used by the Control Plane Node.
      * 
+     */
+    private @Nullable String datastore;
+    /**
+     * @return (Output)
+     * The Vsphere storage policy used by the control plane Node.
+     * 
      * ***
      * 
      */
-    private @Nullable String datastore;
+    private @Nullable String storagePolicyName;
 
     private VMwareClusterControlPlaneNodeVsphereConfig() {}
     /**
      * @return (Output)
      * The Vsphere datastore used by the Control Plane Node.
      * 
-     * ***
-     * 
      */
     public Optional<String> datastore() {
         return Optional.ofNullable(this.datastore);
+    }
+    /**
+     * @return (Output)
+     * The Vsphere storage policy used by the control plane Node.
+     * 
+     * ***
+     * 
+     */
+    public Optional<String> storagePolicyName() {
+        return Optional.ofNullable(this.storagePolicyName);
     }
 
     public static Builder builder() {
@@ -42,10 +56,12 @@ public final class VMwareClusterControlPlaneNodeVsphereConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String datastore;
+        private @Nullable String storagePolicyName;
         public Builder() {}
         public Builder(VMwareClusterControlPlaneNodeVsphereConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.datastore = defaults.datastore;
+    	      this.storagePolicyName = defaults.storagePolicyName;
         }
 
         @CustomType.Setter
@@ -53,9 +69,15 @@ public final class VMwareClusterControlPlaneNodeVsphereConfig {
             this.datastore = datastore;
             return this;
         }
+        @CustomType.Setter
+        public Builder storagePolicyName(@Nullable String storagePolicyName) {
+            this.storagePolicyName = storagePolicyName;
+            return this;
+        }
         public VMwareClusterControlPlaneNodeVsphereConfig build() {
             final var o = new VMwareClusterControlPlaneNodeVsphereConfig();
             o.datastore = datastore;
+            o.storagePolicyName = storagePolicyName;
             return o;
         }
     }

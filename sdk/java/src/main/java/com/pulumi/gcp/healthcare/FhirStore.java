@@ -70,6 +70,7 @@ import javax.annotation.Nullable;
  *             .disableReferentialIntegrity(false)
  *             .disableResourceVersioning(false)
  *             .enableHistoryImport(false)
+ *             .defaultSearchHandlingStrict(false)
  *             .notificationConfig(FhirStoreNotificationConfigArgs.builder()
  *                 .pubsubTopic(topic.id())
  *                 .build())
@@ -311,6 +312,24 @@ public class FhirStore extends com.pulumi.resources.CustomResource {
      */
     public Output<String> dataset() {
         return this.dataset;
+    }
+    /**
+     * If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
+     * If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
+     * The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
+     * 
+     */
+    @Export(name="defaultSearchHandlingStrict", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> defaultSearchHandlingStrict;
+
+    /**
+     * @return If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
+     * If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
+     * The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
+     * 
+     */
+    public Output<Optional<Boolean>> defaultSearchHandlingStrict() {
+        return Codegen.optional(this.defaultSearchHandlingStrict);
     }
     /**
      * Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store

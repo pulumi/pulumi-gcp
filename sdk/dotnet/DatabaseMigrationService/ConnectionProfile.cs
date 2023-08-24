@@ -120,6 +120,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///                     { "cloudfoo", "cloudbar" },
     ///                 },
     ///                 Tier = "db-n1-standard-1",
+    ///                 Edition = "ENTERPRISE",
     ///                 StorageAutoResizeLimit = "0",
     ///                 ActivationPolicy = "ALWAYS",
     ///                 IpConfig = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfileCloudsqlSettingsIpConfigArgs

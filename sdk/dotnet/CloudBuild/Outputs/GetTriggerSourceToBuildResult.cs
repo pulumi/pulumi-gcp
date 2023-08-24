@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
     [OutputType]
     public sealed class GetTriggerSourceToBuildResult
     {
+        public readonly string BitbucketServerConfig;
         public readonly string GithubEnterpriseConfig;
         public readonly string Ref;
         public readonly string RepoType;
@@ -21,6 +22,8 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
 
         [OutputConstructor]
         private GetTriggerSourceToBuildResult(
+            string bitbucketServerConfig,
+
             string githubEnterpriseConfig,
 
             string @ref,
@@ -31,6 +34,7 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
 
             string uri)
         {
+            BitbucketServerConfig = bitbucketServerConfig;
             GithubEnterpriseConfig = githubEnterpriseConfig;
             Ref = @ref;
             RepoType = repoType;

@@ -181,7 +181,7 @@ public final class ManagedZoneArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * For privately visible zones, the set of Virtual Private Cloud
-     * resources that the zone is visible from.
+     * resources that the zone is visible from. At least one of `gke_clusters` or `networks` must be specified.
      * Structure is documented below.
      * 
      */
@@ -190,7 +190,7 @@ public final class ManagedZoneArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return For privately visible zones, the set of Virtual Private Cloud
-     * resources that the zone is visible from.
+     * resources that the zone is visible from. At least one of `gke_clusters` or `networks` must be specified.
      * Structure is documented below.
      * 
      */
@@ -520,7 +520,7 @@ public final class ManagedZoneArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param privateVisibilityConfig For privately visible zones, the set of Virtual Private Cloud
-         * resources that the zone is visible from.
+         * resources that the zone is visible from. At least one of `gke_clusters` or `networks` must be specified.
          * Structure is documented below.
          * 
          * @return builder
@@ -533,7 +533,7 @@ public final class ManagedZoneArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param privateVisibilityConfig For privately visible zones, the set of Virtual Private Cloud
-         * resources that the zone is visible from.
+         * resources that the zone is visible from. At least one of `gke_clusters` or `networks` must be specified.
          * Structure is documented below.
          * 
          * @return builder

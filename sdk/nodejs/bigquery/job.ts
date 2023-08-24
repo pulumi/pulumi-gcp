@@ -142,7 +142,7 @@ import * as utilities from "../utilities";
  *     uniformBucketLevelAccess: true,
  * });
  * const testBucketObject = new gcp.storage.BucketObject("testBucketObject", {
- *     source: new pulumi.asset.FileAsset("./test-fixtures/bigquerytable/test.parquet.gzip"),
+ *     source: new pulumi.asset.FileAsset("./test-fixtures/test.parquet.gzip"),
  *     bucket: testBucket.name,
  * });
  * const testDataset = new gcp.bigquery.Dataset("testDataset", {

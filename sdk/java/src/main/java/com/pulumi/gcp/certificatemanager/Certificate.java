@@ -126,7 +126,7 @@ import javax.annotation.Nullable;
  *         var caAuthority = new Authority(&#34;caAuthority&#34;, AuthorityArgs.builder()        
  *             .location(&#34;us-central1&#34;)
  *             .pool(pool.name())
- *             .certificateAuthorityId(&#34;my-ca&#34;)
+ *             .certificateAuthorityId(&#34;ca-authority&#34;)
  *             .config(AuthorityConfigArgs.builder()
  *                 .subjectConfig(AuthorityConfigSubjectConfigArgs.builder()
  *                     .subject(AuthorityConfigSubjectConfigSubjectArgs.builder()
@@ -264,8 +264,8 @@ import javax.annotation.Nullable;
  *             .description(&#34;Regional cert&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .selfManaged(CertificateSelfManagedArgs.builder()
- *                 .pemCertificate(Files.readString(Paths.get(&#34;test-fixtures/certificatemanager/cert.pem&#34;)))
- *                 .pemPrivateKey(Files.readString(Paths.get(&#34;test-fixtures/certificatemanager/private-key.pem&#34;)))
+ *                 .pemCertificate(Files.readString(Paths.get(&#34;test-fixtures/cert.pem&#34;)))
+ *                 .pemPrivateKey(Files.readString(Paths.get(&#34;test-fixtures/private-key.pem&#34;)))
  *                 .build())
  *             .build());
  * 
@@ -398,7 +398,8 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * If unsure, choose this option.
      * EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
      * served from non-core Google data centers.
-     * Currently allowed only for managed certificates.
+     * ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
+     * see https://cloud.google.com/compute/docs/regions-zones
      * 
      */
     @Export(name="scope", type=String.class, parameters={})
@@ -410,7 +411,8 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * If unsure, choose this option.
      * EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
      * served from non-core Google data centers.
-     * Currently allowed only for managed certificates.
+     * ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
+     * see https://cloud.google.com/compute/docs/regions-zones
      * 
      */
     public Output<Optional<String>> scope() {

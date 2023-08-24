@@ -372,6 +372,43 @@ import (
 //	}
 //
 // ```
+// ### Cloudbuild Trigger Manual Bitbucket Server
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudbuild"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudbuild.NewTrigger(ctx, "manual-bitbucket-trigger", &cloudbuild.TriggerArgs{
+//				GitFileSource: &cloudbuild.TriggerGitFileSourceArgs{
+//					BitbucketServerConfig: pulumi.String("projects/myProject/locations/global/bitbucketServerConfigs/configID"),
+//					Path:                  pulumi.String("cloudbuild.yaml"),
+//					RepoType:              pulumi.String("BITBUCKET_SERVER"),
+//					Revision:              pulumi.String("refs/heads/main"),
+//					Uri:                   pulumi.String("https://bbs.com/scm/stag/test-repo.git"),
+//				},
+//				SourceToBuild: &cloudbuild.TriggerSourceToBuildArgs{
+//					BitbucketServerConfig: pulumi.String("projects/myProject/locations/global/bitbucketServerConfigs/configID"),
+//					Ref:                   pulumi.String("refs/heads/main"),
+//					RepoType:              pulumi.String("BITBUCKET_SERVER"),
+//					Uri:                   pulumi.String("https://bbs.com/scm/stag/test-repo.git"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Cloudbuild Trigger Repo
 //
 // ```go

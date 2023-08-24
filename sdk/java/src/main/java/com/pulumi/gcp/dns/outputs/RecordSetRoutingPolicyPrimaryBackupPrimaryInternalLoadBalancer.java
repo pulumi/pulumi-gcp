@@ -22,7 +22,7 @@ public final class RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalance
      */
     private String ipProtocol;
     /**
-     * @return The type of load balancer. This value is case-sensitive. Possible values: [&#34;regionalL4ilb&#34;, &#34;regionalL7ilb&#34;]
+     * @return The type of load balancer. This value is case-sensitive. Possible values: [&#34;regionalL4ilb&#34;, &#34;regionalL7ilb&#34;, &#34;globalL7ilb&#34;]
      * 
      */
     private String loadBalancerType;
@@ -63,7 +63,7 @@ public final class RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalance
         return this.ipProtocol;
     }
     /**
-     * @return The type of load balancer. This value is case-sensitive. Possible values: [&#34;regionalL4ilb&#34;, &#34;regionalL7ilb&#34;]
+     * @return The type of load balancer. This value is case-sensitive. Possible values: [&#34;regionalL4ilb&#34;, &#34;regionalL7ilb&#34;, &#34;globalL7ilb&#34;]
      * 
      */
     public String loadBalancerType() {

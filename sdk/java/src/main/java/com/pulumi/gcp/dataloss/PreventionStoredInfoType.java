@@ -140,7 +140,7 @@ import javax.annotation.Nullable;
  * 
  *         var object = new BucketObject(&#34;object&#34;, BucketObjectArgs.builder()        
  *             .bucket(bucket.name())
- *             .source(new FileAsset(&#34;./test-fixtures/dlp/words.txt&#34;))
+ *             .source(new FileAsset(&#34;./test-fixtures/words.txt&#34;))
  *             .build());
  * 
  *         var large = new PreventionStoredInfoType(&#34;large&#34;, PreventionStoredInfoTypeArgs.builder()        

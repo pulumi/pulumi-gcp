@@ -157,7 +157,7 @@ class ServiceNetworkSettings(pulumi.CustomResource):
         bucket = gcp.storage.Bucket("bucket", location="US")
         object = gcp.storage.BucketObject("object",
             bucket=bucket.name,
-            source=pulumi.FileAsset("./test-fixtures/appengine/hello-world.zip"))
+            source=pulumi.FileAsset("./test-fixtures/hello-world.zip"))
         internalapp_standard_app_version = gcp.appengine.StandardAppVersion("internalappStandardAppVersion",
             version_id="v1",
             service="internalapp",
@@ -228,7 +228,7 @@ class ServiceNetworkSettings(pulumi.CustomResource):
         bucket = gcp.storage.Bucket("bucket", location="US")
         object = gcp.storage.BucketObject("object",
             bucket=bucket.name,
-            source=pulumi.FileAsset("./test-fixtures/appengine/hello-world.zip"))
+            source=pulumi.FileAsset("./test-fixtures/hello-world.zip"))
         internalapp_standard_app_version = gcp.appengine.StandardAppVersion("internalappStandardAppVersion",
             version_id="v1",
             service="internalapp",

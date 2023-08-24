@@ -201,7 +201,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     ///     var testBucketObject = new Gcp.Storage.BucketObject("testBucketObject", new()
     ///     {
-    ///         Source = new FileAsset("./test-fixtures/bigquerytable/test.parquet.gzip"),
+    ///         Source = new FileAsset("./test-fixtures/test.parquet.gzip"),
     ///         Bucket = testBucket.Name,
     ///     });
     /// 

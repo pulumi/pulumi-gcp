@@ -266,9 +266,6 @@ import javax.annotation.Nullable;
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .visibility(&#34;private&#34;)
  *             .privateVisibilityConfig(ManagedZonePrivateVisibilityConfigArgs.builder()
- *                 .networks(ManagedZonePrivateVisibilityConfigNetworkArgs.builder()
- *                     .networkUrl(network_1.id())
- *                     .build())
  *                 .gkeClusters(ManagedZonePrivateVisibilityConfigGkeClusterArgs.builder()
  *                     .gkeClusterName(cluster_1.id())
  *                     .build())
@@ -639,7 +636,7 @@ public class ManagedZone extends com.pulumi.resources.CustomResource {
     }
     /**
      * For privately visible zones, the set of Virtual Private Cloud
-     * resources that the zone is visible from.
+     * resources that the zone is visible from. At least one of `gke_clusters` or `networks` must be specified.
      * Structure is documented below.
      * 
      */
@@ -648,7 +645,7 @@ public class ManagedZone extends com.pulumi.resources.CustomResource {
 
     /**
      * @return For privately visible zones, the set of Virtual Private Cloud
-     * resources that the zone is visible from.
+     * resources that the zone is visible from. At least one of `gke_clusters` or `networks` must be specified.
      * Structure is documented below.
      * 
      */

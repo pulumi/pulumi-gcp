@@ -61,6 +61,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('assuredWorkloadsCustomEndpoint')
 
     @property
+    def backup_dr_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('backupDrCustomEndpoint')
+
+    @property
     def batching(self) -> Optional[str]:
         return __config__.get('batching')
 

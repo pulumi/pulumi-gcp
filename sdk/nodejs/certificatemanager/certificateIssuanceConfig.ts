@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  * const caAuthority = new gcp.certificateauthority.Authority("caAuthority", {
  *     location: "us-central1",
  *     pool: pool.name,
- *     certificateAuthorityId: "my-ca",
+ *     certificateAuthorityId: "ca-authority",
  *     config: {
  *         subjectConfig: {
  *             subject: {

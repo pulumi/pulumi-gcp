@@ -301,6 +301,20 @@ export class Job extends pulumi.CustomResource {
      */
     public /*out*/ readonly conditions!: pulumi.Output<outputs.cloudrunv2.JobCondition[]>;
     /**
+     * (Output)
+     * Creation timestamp of the execution.
+     * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Email address of the authenticated creator.
+     */
+    public /*out*/ readonly creator!: pulumi.Output<string>;
+    /**
+     * The deletion time.
+     */
+    public /*out*/ readonly deleteTime!: pulumi.Output<string>;
+    /**
      * A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
@@ -308,6 +322,10 @@ export class Job extends pulumi.CustomResource {
      * Number of executions created for this job.
      */
     public /*out*/ readonly executionCount!: pulumi.Output<number>;
+    /**
+     * For a deleted resource, the time after which it will be permamently deleted.
+     */
+    public /*out*/ readonly expireTime!: pulumi.Output<string>;
     /**
      * A number that monotonically increases every time the user modifies the desired state.
      */
@@ -326,6 +344,10 @@ export class Job extends pulumi.CustomResource {
      * All system labels in v1 now have a corresponding field in v2 Job.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * Email address of the last authenticated modifier.
+     */
+    public /*out*/ readonly lastModifier!: pulumi.Output<string>;
     /**
      * Name of the last created execution.
      * Structure is documented below.
@@ -376,6 +398,10 @@ export class Job extends pulumi.CustomResource {
      * Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
+    /**
+     * The last-modified time.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a Job resource with the given unique name, arguments, and options.
@@ -395,10 +421,15 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["client"] = state ? state.client : undefined;
             resourceInputs["clientVersion"] = state ? state.clientVersion : undefined;
             resourceInputs["conditions"] = state ? state.conditions : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["creator"] = state ? state.creator : undefined;
+            resourceInputs["deleteTime"] = state ? state.deleteTime : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["executionCount"] = state ? state.executionCount : undefined;
+            resourceInputs["expireTime"] = state ? state.expireTime : undefined;
             resourceInputs["generation"] = state ? state.generation : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["lastModifier"] = state ? state.lastModifier : undefined;
             resourceInputs["latestCreatedExecutions"] = state ? state.latestCreatedExecutions : undefined;
             resourceInputs["launchStage"] = state ? state.launchStage : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
@@ -409,6 +440,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["template"] = state ? state.template : undefined;
             resourceInputs["terminalConditions"] = state ? state.terminalConditions : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
+            resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as JobArgs | undefined;
             if ((!args || args.template === undefined) && !opts.urn) {
@@ -425,14 +457,20 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["template"] = args ? args.template : undefined;
             resourceInputs["conditions"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["creator"] = undefined /*out*/;
+            resourceInputs["deleteTime"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["executionCount"] = undefined /*out*/;
+            resourceInputs["expireTime"] = undefined /*out*/;
             resourceInputs["generation"] = undefined /*out*/;
+            resourceInputs["lastModifier"] = undefined /*out*/;
             resourceInputs["latestCreatedExecutions"] = undefined /*out*/;
             resourceInputs["observedGeneration"] = undefined /*out*/;
             resourceInputs["reconciling"] = undefined /*out*/;
             resourceInputs["terminalConditions"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Job.__pulumiType, name, resourceInputs, opts);
@@ -475,6 +513,20 @@ export interface JobState {
      */
     conditions?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.JobCondition>[]>;
     /**
+     * (Output)
+     * Creation timestamp of the execution.
+     * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * Email address of the authenticated creator.
+     */
+    creator?: pulumi.Input<string>;
+    /**
+     * The deletion time.
+     */
+    deleteTime?: pulumi.Input<string>;
+    /**
      * A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
      */
     etag?: pulumi.Input<string>;
@@ -482,6 +534,10 @@ export interface JobState {
      * Number of executions created for this job.
      */
     executionCount?: pulumi.Input<number>;
+    /**
+     * For a deleted resource, the time after which it will be permamently deleted.
+     */
+    expireTime?: pulumi.Input<string>;
     /**
      * A number that monotonically increases every time the user modifies the desired state.
      */
@@ -500,6 +556,10 @@ export interface JobState {
      * All system labels in v1 now have a corresponding field in v2 Job.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Email address of the last authenticated modifier.
+     */
+    lastModifier?: pulumi.Input<string>;
     /**
      * Name of the last created execution.
      * Structure is documented below.
@@ -550,6 +610,10 @@ export interface JobState {
      * Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
      */
     uid?: pulumi.Input<string>;
+    /**
+     * The last-modified time.
+     */
+    updateTime?: pulumi.Input<string>;
 }
 
 /**

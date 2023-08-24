@@ -14722,6 +14722,166 @@ func (o MetastoreServiceNetworkConfigConsumerArrayOutput) Index(i pulumi.IntInpu
 	}).(MetastoreServiceNetworkConfigConsumerOutput)
 }
 
+type MetastoreServiceScalingConfig struct {
+	// Metastore instance sizes.
+	// Possible values are: `EXTRA_SMALL`, `SMALL`, `MEDIUM`, `LARGE`, `EXTRA_LARGE`.
+	InstanceSize *string `pulumi:"instanceSize"`
+	// Scaling factor, in increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
+	ScalingFactor *float64 `pulumi:"scalingFactor"`
+}
+
+// MetastoreServiceScalingConfigInput is an input type that accepts MetastoreServiceScalingConfigArgs and MetastoreServiceScalingConfigOutput values.
+// You can construct a concrete instance of `MetastoreServiceScalingConfigInput` via:
+//
+//	MetastoreServiceScalingConfigArgs{...}
+type MetastoreServiceScalingConfigInput interface {
+	pulumi.Input
+
+	ToMetastoreServiceScalingConfigOutput() MetastoreServiceScalingConfigOutput
+	ToMetastoreServiceScalingConfigOutputWithContext(context.Context) MetastoreServiceScalingConfigOutput
+}
+
+type MetastoreServiceScalingConfigArgs struct {
+	// Metastore instance sizes.
+	// Possible values are: `EXTRA_SMALL`, `SMALL`, `MEDIUM`, `LARGE`, `EXTRA_LARGE`.
+	InstanceSize pulumi.StringPtrInput `pulumi:"instanceSize"`
+	// Scaling factor, in increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
+	ScalingFactor pulumi.Float64PtrInput `pulumi:"scalingFactor"`
+}
+
+func (MetastoreServiceScalingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreServiceScalingConfig)(nil)).Elem()
+}
+
+func (i MetastoreServiceScalingConfigArgs) ToMetastoreServiceScalingConfigOutput() MetastoreServiceScalingConfigOutput {
+	return i.ToMetastoreServiceScalingConfigOutputWithContext(context.Background())
+}
+
+func (i MetastoreServiceScalingConfigArgs) ToMetastoreServiceScalingConfigOutputWithContext(ctx context.Context) MetastoreServiceScalingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceScalingConfigOutput)
+}
+
+func (i MetastoreServiceScalingConfigArgs) ToMetastoreServiceScalingConfigPtrOutput() MetastoreServiceScalingConfigPtrOutput {
+	return i.ToMetastoreServiceScalingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i MetastoreServiceScalingConfigArgs) ToMetastoreServiceScalingConfigPtrOutputWithContext(ctx context.Context) MetastoreServiceScalingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceScalingConfigOutput).ToMetastoreServiceScalingConfigPtrOutputWithContext(ctx)
+}
+
+// MetastoreServiceScalingConfigPtrInput is an input type that accepts MetastoreServiceScalingConfigArgs, MetastoreServiceScalingConfigPtr and MetastoreServiceScalingConfigPtrOutput values.
+// You can construct a concrete instance of `MetastoreServiceScalingConfigPtrInput` via:
+//
+//	        MetastoreServiceScalingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type MetastoreServiceScalingConfigPtrInput interface {
+	pulumi.Input
+
+	ToMetastoreServiceScalingConfigPtrOutput() MetastoreServiceScalingConfigPtrOutput
+	ToMetastoreServiceScalingConfigPtrOutputWithContext(context.Context) MetastoreServiceScalingConfigPtrOutput
+}
+
+type metastoreServiceScalingConfigPtrType MetastoreServiceScalingConfigArgs
+
+func MetastoreServiceScalingConfigPtr(v *MetastoreServiceScalingConfigArgs) MetastoreServiceScalingConfigPtrInput {
+	return (*metastoreServiceScalingConfigPtrType)(v)
+}
+
+func (*metastoreServiceScalingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreServiceScalingConfig)(nil)).Elem()
+}
+
+func (i *metastoreServiceScalingConfigPtrType) ToMetastoreServiceScalingConfigPtrOutput() MetastoreServiceScalingConfigPtrOutput {
+	return i.ToMetastoreServiceScalingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *metastoreServiceScalingConfigPtrType) ToMetastoreServiceScalingConfigPtrOutputWithContext(ctx context.Context) MetastoreServiceScalingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceScalingConfigPtrOutput)
+}
+
+type MetastoreServiceScalingConfigOutput struct{ *pulumi.OutputState }
+
+func (MetastoreServiceScalingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreServiceScalingConfig)(nil)).Elem()
+}
+
+func (o MetastoreServiceScalingConfigOutput) ToMetastoreServiceScalingConfigOutput() MetastoreServiceScalingConfigOutput {
+	return o
+}
+
+func (o MetastoreServiceScalingConfigOutput) ToMetastoreServiceScalingConfigOutputWithContext(ctx context.Context) MetastoreServiceScalingConfigOutput {
+	return o
+}
+
+func (o MetastoreServiceScalingConfigOutput) ToMetastoreServiceScalingConfigPtrOutput() MetastoreServiceScalingConfigPtrOutput {
+	return o.ToMetastoreServiceScalingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o MetastoreServiceScalingConfigOutput) ToMetastoreServiceScalingConfigPtrOutputWithContext(ctx context.Context) MetastoreServiceScalingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetastoreServiceScalingConfig) *MetastoreServiceScalingConfig {
+		return &v
+	}).(MetastoreServiceScalingConfigPtrOutput)
+}
+
+// Metastore instance sizes.
+// Possible values are: `EXTRA_SMALL`, `SMALL`, `MEDIUM`, `LARGE`, `EXTRA_LARGE`.
+func (o MetastoreServiceScalingConfigOutput) InstanceSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MetastoreServiceScalingConfig) *string { return v.InstanceSize }).(pulumi.StringPtrOutput)
+}
+
+// Scaling factor, in increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
+func (o MetastoreServiceScalingConfigOutput) ScalingFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v MetastoreServiceScalingConfig) *float64 { return v.ScalingFactor }).(pulumi.Float64PtrOutput)
+}
+
+type MetastoreServiceScalingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (MetastoreServiceScalingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreServiceScalingConfig)(nil)).Elem()
+}
+
+func (o MetastoreServiceScalingConfigPtrOutput) ToMetastoreServiceScalingConfigPtrOutput() MetastoreServiceScalingConfigPtrOutput {
+	return o
+}
+
+func (o MetastoreServiceScalingConfigPtrOutput) ToMetastoreServiceScalingConfigPtrOutputWithContext(ctx context.Context) MetastoreServiceScalingConfigPtrOutput {
+	return o
+}
+
+func (o MetastoreServiceScalingConfigPtrOutput) Elem() MetastoreServiceScalingConfigOutput {
+	return o.ApplyT(func(v *MetastoreServiceScalingConfig) MetastoreServiceScalingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret MetastoreServiceScalingConfig
+		return ret
+	}).(MetastoreServiceScalingConfigOutput)
+}
+
+// Metastore instance sizes.
+// Possible values are: `EXTRA_SMALL`, `SMALL`, `MEDIUM`, `LARGE`, `EXTRA_LARGE`.
+func (o MetastoreServiceScalingConfigPtrOutput) InstanceSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreServiceScalingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceSize
+	}).(pulumi.StringPtrOutput)
+}
+
+// Scaling factor, in increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
+func (o MetastoreServiceScalingConfigPtrOutput) ScalingFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *MetastoreServiceScalingConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ScalingFactor
+	}).(pulumi.Float64PtrOutput)
+}
+
 type MetastoreServiceTelemetryConfig struct {
 	// The output format of the Dataproc Metastore service's logs.
 	// Default value is `JSON`.
@@ -25362,6 +25522,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceNetworkConfigPtrInput)(nil)).Elem(), MetastoreServiceNetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceNetworkConfigConsumerInput)(nil)).Elem(), MetastoreServiceNetworkConfigConsumerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceNetworkConfigConsumerArrayInput)(nil)).Elem(), MetastoreServiceNetworkConfigConsumerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceScalingConfigInput)(nil)).Elem(), MetastoreServiceScalingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceScalingConfigPtrInput)(nil)).Elem(), MetastoreServiceScalingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceTelemetryConfigInput)(nil)).Elem(), MetastoreServiceTelemetryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetastoreServiceTelemetryConfigPtrInput)(nil)).Elem(), MetastoreServiceTelemetryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkflowTemplateJobInput)(nil)).Elem(), WorkflowTemplateJobArgs{})
@@ -25630,6 +25792,8 @@ func init() {
 	pulumi.RegisterOutputType(MetastoreServiceNetworkConfigPtrOutput{})
 	pulumi.RegisterOutputType(MetastoreServiceNetworkConfigConsumerOutput{})
 	pulumi.RegisterOutputType(MetastoreServiceNetworkConfigConsumerArrayOutput{})
+	pulumi.RegisterOutputType(MetastoreServiceScalingConfigOutput{})
+	pulumi.RegisterOutputType(MetastoreServiceScalingConfigPtrOutput{})
 	pulumi.RegisterOutputType(MetastoreServiceTelemetryConfigOutput{})
 	pulumi.RegisterOutputType(MetastoreServiceTelemetryConfigPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplateJobOutput{})

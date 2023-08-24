@@ -560,6 +560,34 @@ public class Service extends com.pulumi.resources.CustomResource {
         return this.conditions;
     }
     /**
+     * The creation time.
+     * 
+     */
+    @Export(name="createTime", type=String.class, parameters={})
+    private Output<String> createTime;
+
+    /**
+     * @return The creation time.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * Email address of the authenticated creator.
+     * 
+     */
+    @Export(name="creator", type=String.class, parameters={})
+    private Output<String> creator;
+
+    /**
+     * @return Email address of the authenticated creator.
+     * 
+     */
+    public Output<String> creator() {
+        return this.creator;
+    }
+    /**
      * One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
      * string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
      * https://cloud.google.com/run/docs/configuring/custom-audiences.
@@ -576,6 +604,20 @@ public class Service extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<String>>> customAudiences() {
         return Codegen.optional(this.customAudiences);
+    }
+    /**
+     * The deletion time.
+     * 
+     */
+    @Export(name="deleteTime", type=String.class, parameters={})
+    private Output<String> deleteTime;
+
+    /**
+     * @return The deletion time.
+     * 
+     */
+    public Output<String> deleteTime() {
+        return this.deleteTime;
     }
     /**
      * User-provided description of the Service. This field currently has a 512-character limit.
@@ -604,6 +646,20 @@ public class Service extends com.pulumi.resources.CustomResource {
      */
     public Output<String> etag() {
         return this.etag;
+    }
+    /**
+     * For a deleted resource, the time after which it will be permamently deleted.
+     * 
+     */
+    @Export(name="expireTime", type=String.class, parameters={})
+    private Output<String> expireTime;
+
+    /**
+     * @return For a deleted resource, the time after which it will be permamently deleted.
+     * 
+     */
+    public Output<String> expireTime() {
+        return this.expireTime;
     }
     /**
      * A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
@@ -666,6 +722,20 @@ public class Service extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,String>>> labels() {
         return Codegen.optional(this.labels);
+    }
+    /**
+     * Email address of the last authenticated modifier.
+     * 
+     */
+    @Export(name="lastModifier", type=String.class, parameters={})
+    private Output<String> lastModifier;
+
+    /**
+     * @return Email address of the last authenticated modifier.
+     * 
+     */
+    public Output<String> lastModifier() {
+        return this.lastModifier;
     }
     /**
      * Name of the last created revision. See comments in reconciling for additional information on reconciliation process in Cloud Run.
@@ -870,6 +940,20 @@ public class Service extends com.pulumi.resources.CustomResource {
      */
     public Output<String> uid() {
         return this.uid;
+    }
+    /**
+     * The last-modified time.
+     * 
+     */
+    @Export(name="updateTime", type=String.class, parameters={})
+    private Output<String> updateTime;
+
+    /**
+     * @return The last-modified time.
+     * 
+     */
+    public Output<String> updateTime() {
+        return this.updateTime;
     }
     /**
      * (Output)

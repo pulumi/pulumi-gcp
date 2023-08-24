@@ -13,6 +13,7 @@ public final class GetEnvironmentConfigPrivateEnvironmentConfig {
     private String cloudComposerConnectionSubnetwork;
     private String cloudComposerNetworkIpv4CidrBlock;
     private String cloudSqlIpv4CidrBlock;
+    private String connectionType;
     private Boolean enablePrivateEndpoint;
     private Boolean enablePrivatelyUsedPublicIps;
     private String masterIpv4CidrBlock;
@@ -27,6 +28,9 @@ public final class GetEnvironmentConfigPrivateEnvironmentConfig {
     }
     public String cloudSqlIpv4CidrBlock() {
         return this.cloudSqlIpv4CidrBlock;
+    }
+    public String connectionType() {
+        return this.connectionType;
     }
     public Boolean enablePrivateEndpoint() {
         return this.enablePrivateEndpoint;
@@ -53,6 +57,7 @@ public final class GetEnvironmentConfigPrivateEnvironmentConfig {
         private String cloudComposerConnectionSubnetwork;
         private String cloudComposerNetworkIpv4CidrBlock;
         private String cloudSqlIpv4CidrBlock;
+        private String connectionType;
         private Boolean enablePrivateEndpoint;
         private Boolean enablePrivatelyUsedPublicIps;
         private String masterIpv4CidrBlock;
@@ -63,6 +68,7 @@ public final class GetEnvironmentConfigPrivateEnvironmentConfig {
     	      this.cloudComposerConnectionSubnetwork = defaults.cloudComposerConnectionSubnetwork;
     	      this.cloudComposerNetworkIpv4CidrBlock = defaults.cloudComposerNetworkIpv4CidrBlock;
     	      this.cloudSqlIpv4CidrBlock = defaults.cloudSqlIpv4CidrBlock;
+    	      this.connectionType = defaults.connectionType;
     	      this.enablePrivateEndpoint = defaults.enablePrivateEndpoint;
     	      this.enablePrivatelyUsedPublicIps = defaults.enablePrivatelyUsedPublicIps;
     	      this.masterIpv4CidrBlock = defaults.masterIpv4CidrBlock;
@@ -82,6 +88,11 @@ public final class GetEnvironmentConfigPrivateEnvironmentConfig {
         @CustomType.Setter
         public Builder cloudSqlIpv4CidrBlock(String cloudSqlIpv4CidrBlock) {
             this.cloudSqlIpv4CidrBlock = Objects.requireNonNull(cloudSqlIpv4CidrBlock);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder connectionType(String connectionType) {
+            this.connectionType = Objects.requireNonNull(connectionType);
             return this;
         }
         @CustomType.Setter
@@ -109,6 +120,7 @@ public final class GetEnvironmentConfigPrivateEnvironmentConfig {
             o.cloudComposerConnectionSubnetwork = cloudComposerConnectionSubnetwork;
             o.cloudComposerNetworkIpv4CidrBlock = cloudComposerNetworkIpv4CidrBlock;
             o.cloudSqlIpv4CidrBlock = cloudSqlIpv4CidrBlock;
+            o.connectionType = connectionType;
             o.enablePrivateEndpoint = enablePrivateEndpoint;
             o.enablePrivatelyUsedPublicIps = enablePrivatelyUsedPublicIps;
             o.masterIpv4CidrBlock = masterIpv4CidrBlock;

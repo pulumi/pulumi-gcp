@@ -514,6 +514,49 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Cloudbuild Trigger Manual Bitbucket Server
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudbuild.Trigger;
+ * import com.pulumi.gcp.cloudbuild.TriggerArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerGitFileSourceArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerSourceToBuildArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var manual_bitbucket_trigger = new Trigger(&#34;manual-bitbucket-trigger&#34;, TriggerArgs.builder()        
+ *             .gitFileSource(TriggerGitFileSourceArgs.builder()
+ *                 .bitbucketServerConfig(&#34;projects/myProject/locations/global/bitbucketServerConfigs/configID&#34;)
+ *                 .path(&#34;cloudbuild.yaml&#34;)
+ *                 .repoType(&#34;BITBUCKET_SERVER&#34;)
+ *                 .revision(&#34;refs/heads/main&#34;)
+ *                 .uri(&#34;https://bbs.com/scm/stag/test-repo.git&#34;)
+ *                 .build())
+ *             .sourceToBuild(TriggerSourceToBuildArgs.builder()
+ *                 .bitbucketServerConfig(&#34;projects/myProject/locations/global/bitbucketServerConfigs/configID&#34;)
+ *                 .ref(&#34;refs/heads/main&#34;)
+ *                 .repoType(&#34;BITBUCKET_SERVER&#34;)
+ *                 .uri(&#34;https://bbs.com/scm/stag/test-repo.git&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ### Cloudbuild Trigger Repo
  * ```java
  * package generated_program;

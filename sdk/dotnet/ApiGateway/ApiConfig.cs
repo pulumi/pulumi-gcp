@@ -54,7 +54,7 @@ namespace Pulumi.Gcp.ApiGateway
     ///                 Document = new Gcp.ApiGateway.Inputs.ApiConfigOpenapiDocumentDocumentArgs
     ///                 {
     ///                     Path = "spec.yaml",
-    ///                     Contents = ReadFileBase64("test-fixtures/apigateway/openapi.yaml"),
+    ///                     Contents = ReadFileBase64("test-fixtures/openapi.yaml"),
     ///                 },
     ///             },
     ///         },

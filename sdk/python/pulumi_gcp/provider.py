@@ -26,6 +26,7 @@ class ProviderArgs:
                  app_engine_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  artifact_registry_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  assured_workloads_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 backup_dr_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  batching: Optional[pulumi.Input['ProviderBatchingArgs']] = None,
                  beyondcorp_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  big_query_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -185,6 +186,8 @@ class ProviderArgs:
             pulumi.set(__self__, "artifact_registry_custom_endpoint", artifact_registry_custom_endpoint)
         if assured_workloads_custom_endpoint is not None:
             pulumi.set(__self__, "assured_workloads_custom_endpoint", assured_workloads_custom_endpoint)
+        if backup_dr_custom_endpoint is not None:
+            pulumi.set(__self__, "backup_dr_custom_endpoint", backup_dr_custom_endpoint)
         if batching is not None:
             pulumi.set(__self__, "batching", batching)
         if beyondcorp_custom_endpoint is not None:
@@ -558,6 +561,15 @@ class ProviderArgs:
     @assured_workloads_custom_endpoint.setter
     def assured_workloads_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "assured_workloads_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="backupDrCustomEndpoint")
+    def backup_dr_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "backup_dr_custom_endpoint")
+
+    @backup_dr_custom_endpoint.setter
+    def backup_dr_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "backup_dr_custom_endpoint", value)
 
     @property
     @pulumi.getter
@@ -1782,6 +1794,7 @@ class Provider(pulumi.ProviderResource):
                  app_engine_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  artifact_registry_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  assured_workloads_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 backup_dr_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  batching: Optional[pulumi.Input[pulumi.InputType['ProviderBatchingArgs']]] = None,
                  beyondcorp_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  big_query_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1964,6 +1977,7 @@ class Provider(pulumi.ProviderResource):
                  app_engine_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  artifact_registry_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  assured_workloads_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 backup_dr_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  batching: Optional[pulumi.Input[pulumi.InputType['ProviderBatchingArgs']]] = None,
                  beyondcorp_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  big_query_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2118,6 +2132,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["app_engine_custom_endpoint"] = app_engine_custom_endpoint
             __props__.__dict__["artifact_registry_custom_endpoint"] = artifact_registry_custom_endpoint
             __props__.__dict__["assured_workloads_custom_endpoint"] = assured_workloads_custom_endpoint
+            __props__.__dict__["backup_dr_custom_endpoint"] = backup_dr_custom_endpoint
             __props__.__dict__["batching"] = pulumi.Output.from_input(batching).apply(pulumi.runtime.to_json) if batching is not None else None
             __props__.__dict__["beyondcorp_custom_endpoint"] = beyondcorp_custom_endpoint
             __props__.__dict__["big_query_custom_endpoint"] = big_query_custom_endpoint
@@ -2318,6 +2333,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="assuredWorkloadsCustomEndpoint")
     def assured_workloads_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "assured_workloads_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="backupDrCustomEndpoint")
+    def backup_dr_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "backup_dr_custom_endpoint")
 
     @property
     @pulumi.getter(name="beyondcorpCustomEndpoint")

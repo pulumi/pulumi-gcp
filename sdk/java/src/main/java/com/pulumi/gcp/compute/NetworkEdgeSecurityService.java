@@ -40,7 +40,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new NetworkEdgeSecurityService(&#34;default&#34;, NetworkEdgeSecurityServiceArgs.builder()        
- *             .region(&#34;asia-southeast1&#34;)
+ *             .region(&#34;us-east1&#34;)
  *             .description(&#34;My basic resource&#34;)
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)

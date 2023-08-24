@@ -115,7 +115,7 @@ import (
 //			}
 //			object, err := storage.NewBucketObject(ctx, "object", &storage.BucketObjectArgs{
 //				Bucket: bucket.Name,
-//				Source: pulumi.NewFileAsset("./test-fixtures/dlp/words.txt"),
+//				Source: pulumi.NewFileAsset("./test-fixtures/words.txt"),
 //			})
 //			if err != nil {
 //				return err

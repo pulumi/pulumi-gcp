@@ -59,7 +59,7 @@ import (
 //					&apigateway.ApiConfigOpenapiDocumentArgs{
 //						Document: &apigateway.ApiConfigOpenapiDocumentDocumentArgs{
 //							Path:     pulumi.String("spec.yaml"),
-//							Contents: filebase64OrPanic("test-fixtures/apigateway/openapi.yaml"),
+//							Contents: filebase64OrPanic("test-fixtures/openapi.yaml"),
 //						},
 //					},
 //				},

@@ -88,6 +88,7 @@ public final class RegionInstanceTemplateDisk {
      * 
      */
     private @Nullable String mode;
+    private @Nullable Integer provisionedIops;
     /**
      * @return - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
      * 
@@ -235,6 +236,9 @@ public final class RegionInstanceTemplateDisk {
     public Optional<String> mode() {
         return Optional.ofNullable(this.mode);
     }
+    public Optional<Integer> provisionedIops() {
+        return Optional.ofNullable(this.provisionedIops);
+    }
     /**
      * @return - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
      * 
@@ -323,6 +327,7 @@ public final class RegionInstanceTemplateDisk {
         private @Nullable String interface_;
         private @Nullable Map<String,String> labels;
         private @Nullable String mode;
+        private @Nullable Integer provisionedIops;
         private @Nullable String resourcePolicies;
         private @Nullable String source;
         private @Nullable String sourceImage;
@@ -343,6 +348,7 @@ public final class RegionInstanceTemplateDisk {
     	      this.interface_ = defaults.interface_;
     	      this.labels = defaults.labels;
     	      this.mode = defaults.mode;
+    	      this.provisionedIops = defaults.provisionedIops;
     	      this.resourcePolicies = defaults.resourcePolicies;
     	      this.source = defaults.source;
     	      this.sourceImage = defaults.sourceImage;
@@ -403,6 +409,11 @@ public final class RegionInstanceTemplateDisk {
             return this;
         }
         @CustomType.Setter
+        public Builder provisionedIops(@Nullable Integer provisionedIops) {
+            this.provisionedIops = provisionedIops;
+            return this;
+        }
+        @CustomType.Setter
         public Builder resourcePolicies(@Nullable String resourcePolicies) {
             this.resourcePolicies = resourcePolicies;
             return this;
@@ -449,6 +460,7 @@ public final class RegionInstanceTemplateDisk {
             o.interface_ = interface_;
             o.labels = labels;
             o.mode = mode;
+            o.provisionedIops = provisionedIops;
             o.resourcePolicies = resourcePolicies;
             o.source = source;
             o.sourceImage = sourceImage;

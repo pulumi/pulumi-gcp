@@ -39,7 +39,7 @@ namespace Pulumi.Gcp.CertificateManager
     ///     {
     ///         Location = "us-central1",
     ///         Pool = pool.Name,
-    ///         CertificateAuthorityId = "my-ca",
+    ///         CertificateAuthorityId = "ca-authority",
     ///         Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
     ///         {
     ///             SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs

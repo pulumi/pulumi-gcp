@@ -28,6 +28,8 @@ if typing.TYPE_CHECKING:
     artifactregistry = __artifactregistry
     import pulumi_gcp.assuredworkloads as __assuredworkloads
     assuredworkloads = __assuredworkloads
+    import pulumi_gcp.backupdisasterrecovery as __backupdisasterrecovery
+    backupdisasterrecovery = __backupdisasterrecovery
     import pulumi_gcp.beyondcorp as __beyondcorp
     beyondcorp = __beyondcorp
     import pulumi_gcp.bigquery as __bigquery
@@ -226,6 +228,7 @@ else:
     appengine = _utilities.lazy_import('pulumi_gcp.appengine')
     artifactregistry = _utilities.lazy_import('pulumi_gcp.artifactregistry')
     assuredworkloads = _utilities.lazy_import('pulumi_gcp.assuredworkloads')
+    backupdisasterrecovery = _utilities.lazy_import('pulumi_gcp.backupdisasterrecovery')
     beyondcorp = _utilities.lazy_import('pulumi_gcp.beyondcorp')
     bigquery = _utilities.lazy_import('pulumi_gcp.bigquery')
     bigqueryanalyticshub = _utilities.lazy_import('pulumi_gcp.bigqueryanalyticshub')
@@ -866,6 +869,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.assuredworkloads",
   "classes": {
    "gcp:assuredworkloads/workload:Workload": "Workload"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "backupdisasterrecovery/managementServer",
+  "fqn": "pulumi_gcp.backupdisasterrecovery",
+  "classes": {
+   "gcp:backupdisasterrecovery/managementServer:ManagementServer": "ManagementServer"
   }
  },
  {
@@ -2554,6 +2565,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.compute",
   "classes": {
    "gcp:compute/regionSecurityPolicy:RegionSecurityPolicy": "RegionSecurityPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/regionSecurityPolicyRule",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/regionSecurityPolicyRule:RegionSecurityPolicyRule": "RegionSecurityPolicyRule"
   }
  },
  {

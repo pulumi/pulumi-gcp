@@ -1,14 +1,14 @@
-From b96486cd8e943fcfebef438cb29436e7ce6069b2 Mon Sep 17 00:00:00 2001
+From d015070b956d755f60298d4f18cedfee9e46ad64 Mon Sep 17 00:00:00 2001
 From: Daniel Bradley <daniel@pulumi.com>
 Date: Tue, 7 Mar 2023 12:00:07 +0000
-Subject: [PATCH 08/12] Remove security policy default versioned_expr
+Subject: [PATCH 5/9] Remove security policy default versioned_expr
 
 ---
  google-beta/services/compute/resource_compute_security_policy.go | 1 -
  1 file changed, 1 deletion(-)
 
 diff --git a/google-beta/services/compute/resource_compute_security_policy.go b/google-beta/services/compute/resource_compute_security_policy.go
-index 298e92165..81597972a 100644
+index f54f5e74d..fdcf16433 100644
 --- a/google-beta/services/compute/resource_compute_security_policy.go
 +++ b/google-beta/services/compute/resource_compute_security_policy.go
 @@ -115,7 +115,6 @@ func ResourceComputeSecurityPolicy() *schema.Resource {
@@ -20,5 +20,5 @@ index 298e92165..81597972a 100644
  										Description:  `Predefined rule expression. If this field is specified, config must also be specified. Available options:   SRC_IPS_V1: Must specify the corresponding src_ip_ranges field in config.`,
  									},
 -- 
-2.39.1
+2.39.2 (Apple Git-143)
 

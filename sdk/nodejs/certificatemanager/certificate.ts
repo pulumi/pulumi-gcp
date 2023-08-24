@@ -56,7 +56,7 @@ import * as utilities from "../utilities";
  * const caAuthority = new gcp.certificateauthority.Authority("caAuthority", {
  *     location: "us-central1",
  *     pool: pool.name,
- *     certificateAuthorityId: "my-ca",
+ *     certificateAuthorityId: "ca-authority",
  *     config: {
  *         subjectConfig: {
  *             subject: {
@@ -152,8 +152,8 @@ import * as utilities from "../utilities";
  *     description: "Regional cert",
  *     location: "us-central1",
  *     selfManaged: {
- *         pemCertificate: fs.readFileSync("test-fixtures/certificatemanager/cert.pem"),
- *         pemPrivateKey: fs.readFileSync("test-fixtures/certificatemanager/private-key.pem"),
+ *         pemCertificate: fs.readFileSync("test-fixtures/cert.pem"),
+ *         pemPrivateKey: fs.readFileSync("test-fixtures/private-key.pem"),
  *     },
  * });
  * ```
@@ -241,7 +241,8 @@ export class Certificate extends pulumi.CustomResource {
      * If unsure, choose this option.
      * EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
      * served from non-core Google data centers.
-     * Currently allowed only for managed certificates.
+     * ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
+     * see https://cloud.google.com/compute/docs/regions-zones
      */
     public readonly scope!: pulumi.Output<string | undefined>;
     /**
@@ -332,7 +333,8 @@ export interface CertificateState {
      * If unsure, choose this option.
      * EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
      * served from non-core Google data centers.
-     * Currently allowed only for managed certificates.
+     * ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
+     * see https://cloud.google.com/compute/docs/regions-zones
      */
     scope?: pulumi.Input<string>;
     /**
@@ -387,7 +389,8 @@ export interface CertificateArgs {
      * If unsure, choose this option.
      * EDGE_CACHE: Certificates with scope EDGE_CACHE are special-purposed certificates,
      * served from non-core Google data centers.
-     * Currently allowed only for managed certificates.
+     * ALL_REGIONS: Certificates with ALL_REGIONS scope are served from all GCP regions (You can only use ALL_REGIONS with global certs).
+     * see https://cloud.google.com/compute/docs/regions-zones
      */
     scope?: pulumi.Input<string>;
     /**

@@ -480,6 +480,7 @@ class ConnectionProfileCloudsqlSettings(dict):
                  data_disk_type: Optional[str] = None,
                  database_flags: Optional[Mapping[str, str]] = None,
                  database_version: Optional[str] = None,
+                 edition: Optional[str] = None,
                  ip_config: Optional['outputs.ConnectionProfileCloudsqlSettingsIpConfig'] = None,
                  root_password: Optional[str] = None,
                  root_password_set: Optional[bool] = None,
@@ -501,6 +502,8 @@ class ConnectionProfileCloudsqlSettings(dict):
         :param Mapping[str, str] database_flags: The database flags passed to the Cloud SQL instance at startup.
         :param str database_version: The database engine type and version.
                Currently supported values located at https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles#sqldatabaseversion
+        :param str edition: The edition of the given Cloud SQL instance.
+               Possible values are: `ENTERPRISE`, `ENTERPRISE_PLUS`.
         :param 'ConnectionProfileCloudsqlSettingsIpConfigArgs' ip_config: The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
                Structure is documented below.
         :param str root_password: Input only. Initial root password.
@@ -530,6 +533,8 @@ class ConnectionProfileCloudsqlSettings(dict):
             pulumi.set(__self__, "database_flags", database_flags)
         if database_version is not None:
             pulumi.set(__self__, "database_version", database_version)
+        if edition is not None:
+            pulumi.set(__self__, "edition", edition)
         if ip_config is not None:
             pulumi.set(__self__, "ip_config", ip_config)
         if root_password is not None:
@@ -620,6 +625,15 @@ class ConnectionProfileCloudsqlSettings(dict):
         Currently supported values located at https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles#sqldatabaseversion
         """
         return pulumi.get(self, "database_version")
+
+    @property
+    @pulumi.getter
+    def edition(self) -> Optional[str]:
+        """
+        The edition of the given Cloud SQL instance.
+        Possible values are: `ENTERPRISE`, `ENTERPRISE_PLUS`.
+        """
+        return pulumi.get(self, "edition")
 
     @property
     @pulumi.getter(name="ipConfig")

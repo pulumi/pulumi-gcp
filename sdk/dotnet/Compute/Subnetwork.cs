@@ -125,7 +125,7 @@ namespace Pulumi.Gcp.Compute
     ///     {
     ///         IpCidrRange = "10.0.0.0/22",
     ///         Region = "us-central1",
-    ///         Purpose = "INTERNAL_HTTPS_LOAD_BALANCER",
+    ///         Purpose = "REGIONAL_MANAGED_PROXY",
     ///         Role = "ACTIVE",
     ///         Network = custom_test.Id,
     ///     }, new CustomResourceOptions
@@ -270,9 +270,10 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Ipv6CidrRange { get; private set; } = null!;
 
         /// <summary>
-        /// Denotes the logging options for the subnetwork flow logs. If logging is enabled
-        /// logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
-        /// subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`
+        /// This field denotes the VPC flow logging options for this subnetwork. If
+        /// logging is enabled, logs are exported to Cloud Logging. Flow logging
+        /// isn't supported if the subnet `purpose` field is set to subnetwork is
+        /// `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`.
         /// Structure is documented below.
         /// </summary>
         [Output("logConfig")]
@@ -321,13 +322,12 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `INTERNAL_HTTPS_LOAD_BALANCER`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY` or `PRIVATE_SERVICE_CONNECT`.
-        /// A subnetwork with purpose set to `INTERNAL_HTTPS_LOAD_BALANCER` is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing.
-        /// A subnetwork in a given region with purpose set to `REGIONAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the regional Envoy-based load balancers.
+        /// The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, or `PRIVATE_SERVICE_CONNECT`.
+        /// A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
         /// A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
         /// A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
+        /// Note that `REGIONAL_MANAGED_PROXY` is the preferred setting for all regional Envoy load balancers.
         /// If unspecified, the purpose defaults to `PRIVATE_RFC_1918`.
-        /// The enableFlowLogs field isn't supported with the purpose field set to `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`.
         /// </summary>
         [Output("purpose")]
         public Output<string> Purpose { get; private set; } = null!;
@@ -340,10 +340,10 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The role of subnetwork.
+        /// Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
         /// The value can be set to `ACTIVE` or `BACKUP`.
-        /// An `ACTIVE` subnetwork is one that is currently being used.
+        /// An `ACTIVE` subnetwork is one that is currently being used for Envoy-based load balancers in a region.
         /// A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
-        /// Subnetwork role must be specified when purpose is set to `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY`.
         /// Possible values are: `ACTIVE`, `BACKUP`.
         /// </summary>
         [Output("role")]
@@ -446,9 +446,10 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Ipv6AccessType { get; set; }
 
         /// <summary>
-        /// Denotes the logging options for the subnetwork flow logs. If logging is enabled
-        /// logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
-        /// subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`
+        /// This field denotes the VPC flow logging options for this subnetwork. If
+        /// logging is enabled, logs are exported to Cloud Logging. Flow logging
+        /// isn't supported if the subnet `purpose` field is set to subnetwork is
+        /// `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`.
         /// Structure is documented below.
         /// </summary>
         [Input("logConfig")]
@@ -497,13 +498,12 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `INTERNAL_HTTPS_LOAD_BALANCER`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY` or `PRIVATE_SERVICE_CONNECT`.
-        /// A subnetwork with purpose set to `INTERNAL_HTTPS_LOAD_BALANCER` is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing.
-        /// A subnetwork in a given region with purpose set to `REGIONAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the regional Envoy-based load balancers.
+        /// The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, or `PRIVATE_SERVICE_CONNECT`.
+        /// A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
         /// A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
         /// A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
+        /// Note that `REGIONAL_MANAGED_PROXY` is the preferred setting for all regional Envoy load balancers.
         /// If unspecified, the purpose defaults to `PRIVATE_RFC_1918`.
-        /// The enableFlowLogs field isn't supported with the purpose field set to `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`.
         /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }
@@ -516,10 +516,10 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The role of subnetwork.
+        /// Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
         /// The value can be set to `ACTIVE` or `BACKUP`.
-        /// An `ACTIVE` subnetwork is one that is currently being used.
+        /// An `ACTIVE` subnetwork is one that is currently being used for Envoy-based load balancers in a region.
         /// A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
-        /// Subnetwork role must be specified when purpose is set to `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY`.
         /// Possible values are: `ACTIVE`, `BACKUP`.
         /// </summary>
         [Input("role")]
@@ -615,9 +615,10 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Ipv6CidrRange { get; set; }
 
         /// <summary>
-        /// Denotes the logging options for the subnetwork flow logs. If logging is enabled
-        /// logs will be exported to Stackdriver. This field cannot be set if the `purpose` of this
-        /// subnetwork is `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`
+        /// This field denotes the VPC flow logging options for this subnetwork. If
+        /// logging is enabled, logs are exported to Cloud Logging. Flow logging
+        /// isn't supported if the subnet `purpose` field is set to subnetwork is
+        /// `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`.
         /// Structure is documented below.
         /// </summary>
         [Input("logConfig")]
@@ -666,13 +667,12 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `INTERNAL_HTTPS_LOAD_BALANCER`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY` or `PRIVATE_SERVICE_CONNECT`.
-        /// A subnetwork with purpose set to `INTERNAL_HTTPS_LOAD_BALANCER` is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing.
-        /// A subnetwork in a given region with purpose set to `REGIONAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the regional Envoy-based load balancers.
+        /// The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, or `PRIVATE_SERVICE_CONNECT`.
+        /// A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
         /// A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
         /// A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
+        /// Note that `REGIONAL_MANAGED_PROXY` is the preferred setting for all regional Envoy load balancers.
         /// If unspecified, the purpose defaults to `PRIVATE_RFC_1918`.
-        /// The enableFlowLogs field isn't supported with the purpose field set to `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY` or `GLOBAL_MANAGED_PROXY`.
         /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }
@@ -685,10 +685,10 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The role of subnetwork.
+        /// Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
         /// The value can be set to `ACTIVE` or `BACKUP`.
-        /// An `ACTIVE` subnetwork is one that is currently being used.
+        /// An `ACTIVE` subnetwork is one that is currently being used for Envoy-based load balancers in a region.
         /// A `BACKUP` subnetwork is one that is ready to be promoted to `ACTIVE` or is currently draining.
-        /// Subnetwork role must be specified when purpose is set to `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY`.
         /// Possible values are: `ACTIVE`, `BACKUP`.
         /// </summary>
         [Input("role")]

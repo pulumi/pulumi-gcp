@@ -465,7 +465,7 @@ class ApiConfig(pulumi.CustomResource):
             openapi_documents=[gcp.apigateway.ApiConfigOpenapiDocumentArgs(
                 document=gcp.apigateway.ApiConfigOpenapiDocumentDocumentArgs(
                     path="spec.yaml",
-                    contents=(lambda path: base64.b64encode(open(path).read().encode()).decode())("test-fixtures/apigateway/openapi.yaml"),
+                    contents=(lambda path: base64.b64encode(open(path).read().encode()).decode())("test-fixtures/openapi.yaml"),
                 ),
             )],
             opts=pulumi.ResourceOptions(provider=google_beta))
@@ -542,7 +542,7 @@ class ApiConfig(pulumi.CustomResource):
             openapi_documents=[gcp.apigateway.ApiConfigOpenapiDocumentArgs(
                 document=gcp.apigateway.ApiConfigOpenapiDocumentDocumentArgs(
                     path="spec.yaml",
-                    contents=(lambda path: base64.b64encode(open(path).read().encode()).decode())("test-fixtures/apigateway/openapi.yaml"),
+                    contents=(lambda path: base64.b64encode(open(path).read().encode()).decode())("test-fixtures/openapi.yaml"),
                 ),
             )],
             opts=pulumi.ResourceOptions(provider=google_beta))

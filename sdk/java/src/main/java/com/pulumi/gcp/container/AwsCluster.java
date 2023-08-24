@@ -131,6 +131,226 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Basic_enum_aws_cluster
+ * A basic example of a containeraws cluster with lowercase enums
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.container.ContainerFunctions;
+ * import com.pulumi.gcp.container.inputs.GetAwsVersionsArgs;
+ * import com.pulumi.gcp.container.AwsCluster;
+ * import com.pulumi.gcp.container.AwsClusterArgs;
+ * import com.pulumi.gcp.container.inputs.AwsClusterAuthorizationArgs;
+ * import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneArgs;
+ * import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneAwsServicesAuthenticationArgs;
+ * import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneConfigEncryptionArgs;
+ * import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneDatabaseEncryptionArgs;
+ * import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneMainVolumeArgs;
+ * import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneProxyConfigArgs;
+ * import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneRootVolumeArgs;
+ * import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneSshConfigArgs;
+ * import com.pulumi.gcp.container.inputs.AwsClusterFleetArgs;
+ * import com.pulumi.gcp.container.inputs.AwsClusterNetworkingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var versions = ContainerFunctions.getAwsVersions(GetAwsVersionsArgs.builder()
+ *             .location(&#34;us-west1&#34;)
+ *             .project(&#34;my-project-name&#34;)
+ *             .build());
+ * 
+ *         var primary = new AwsCluster(&#34;primary&#34;, AwsClusterArgs.builder()        
+ *             .annotations(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
+ *             .authorization(AwsClusterAuthorizationArgs.builder()
+ *                 .adminUsers(AwsClusterAuthorizationAdminUserArgs.builder()
+ *                     .username(&#34;my@service-account.com&#34;)
+ *                     .build())
+ *                 .build())
+ *             .awsRegion(&#34;my-aws-region&#34;)
+ *             .controlPlane(AwsClusterControlPlaneArgs.builder()
+ *                 .awsServicesAuthentication(AwsClusterControlPlaneAwsServicesAuthenticationArgs.builder()
+ *                     .roleArn(&#34;arn:aws:iam::012345678910:role/my--1p-dev-oneplatform&#34;)
+ *                     .roleSessionName(&#34;my--1p-dev-session&#34;)
+ *                     .build())
+ *                 .configEncryption(AwsClusterControlPlaneConfigEncryptionArgs.builder()
+ *                     .kmsKeyArn(&#34;arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111&#34;)
+ *                     .build())
+ *                 .databaseEncryption(AwsClusterControlPlaneDatabaseEncryptionArgs.builder()
+ *                     .kmsKeyArn(&#34;arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111&#34;)
+ *                     .build())
+ *                 .iamInstanceProfile(&#34;my--1p-dev-controlplane&#34;)
+ *                 .instanceType(&#34;t3.medium&#34;)
+ *                 .mainVolume(AwsClusterControlPlaneMainVolumeArgs.builder()
+ *                     .iops(3000)
+ *                     .kmsKeyArn(&#34;arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111&#34;)
+ *                     .sizeGib(10)
+ *                     .volumeType(&#34;gp3&#34;)
+ *                     .build())
+ *                 .proxyConfig(AwsClusterControlPlaneProxyConfigArgs.builder()
+ *                     .secretArn(&#34;arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF&#34;)
+ *                     .secretVersion(&#34;12345678-ABCD-EFGH-IJKL-987654321098&#34;)
+ *                     .build())
+ *                 .rootVolume(AwsClusterControlPlaneRootVolumeArgs.builder()
+ *                     .iops(3000)
+ *                     .kmsKeyArn(&#34;arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111&#34;)
+ *                     .sizeGib(10)
+ *                     .volumeType(&#34;gp3&#34;)
+ *                     .build())
+ *                 .securityGroupIds(&#34;sg-00000000000000000&#34;)
+ *                 .sshConfig(AwsClusterControlPlaneSshConfigArgs.builder()
+ *                     .ec2KeyPair(&#34;my--1p-dev-ssh&#34;)
+ *                     .build())
+ *                 .subnetIds(&#34;subnet-00000000000000000&#34;)
+ *                 .tags(Map.of(&#34;owner&#34;, &#34;my@service-account.com&#34;))
+ *                 .version(versions.applyValue(getAwsVersionsResult -&gt; getAwsVersionsResult.validVersions()[0]))
+ *                 .build())
+ *             .description(&#34;A sample aws cluster&#34;)
+ *             .fleet(AwsClusterFleetArgs.builder()
+ *                 .project(&#34;my-project-number&#34;)
+ *                 .build())
+ *             .location(&#34;us-west1&#34;)
+ *             .networking(AwsClusterNetworkingArgs.builder()
+ *                 .podAddressCidrBlocks(&#34;10.2.0.0/16&#34;)
+ *                 .serviceAddressCidrBlocks(&#34;10.1.0.0/16&#34;)
+ *                 .vpcId(&#34;vpc-00000000000000000&#34;)
+ *                 .build())
+ *             .project(&#34;my-project-name&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Beta_basic_enum_aws_cluster
+ * A basic example of a containeraws cluster with lowercase enums (beta)
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.container.ContainerFunctions;
+ * import com.pulumi.gcp.container.inputs.GetAwsVersionsArgs;
+ * import com.pulumi.gcp.container.AwsCluster;
+ * import com.pulumi.gcp.container.AwsClusterArgs;
+ * import com.pulumi.gcp.container.inputs.AwsClusterAuthorizationArgs;
+ * import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneArgs;
+ * import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneAwsServicesAuthenticationArgs;
+ * import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneConfigEncryptionArgs;
+ * import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneDatabaseEncryptionArgs;
+ * import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneMainVolumeArgs;
+ * import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneProxyConfigArgs;
+ * import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneRootVolumeArgs;
+ * import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneSshConfigArgs;
+ * import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneInstancePlacementArgs;
+ * import com.pulumi.gcp.container.inputs.AwsClusterFleetArgs;
+ * import com.pulumi.gcp.container.inputs.AwsClusterNetworkingArgs;
+ * import com.pulumi.gcp.container.inputs.AwsClusterLoggingConfigArgs;
+ * import com.pulumi.gcp.container.inputs.AwsClusterLoggingConfigComponentConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var versions = ContainerFunctions.getAwsVersions(GetAwsVersionsArgs.builder()
+ *             .project(&#34;my-project-name&#34;)
+ *             .location(&#34;us-west1&#34;)
+ *             .build());
+ * 
+ *         var primary = new AwsCluster(&#34;primary&#34;, AwsClusterArgs.builder()        
+ *             .authorization(AwsClusterAuthorizationArgs.builder()
+ *                 .adminUsers(AwsClusterAuthorizationAdminUserArgs.builder()
+ *                     .username(&#34;my@service-account.com&#34;)
+ *                     .build())
+ *                 .build())
+ *             .awsRegion(&#34;my-aws-region&#34;)
+ *             .controlPlane(AwsClusterControlPlaneArgs.builder()
+ *                 .awsServicesAuthentication(AwsClusterControlPlaneAwsServicesAuthenticationArgs.builder()
+ *                     .roleArn(&#34;arn:aws:iam::012345678910:role/my--1p-dev-oneplatform&#34;)
+ *                     .roleSessionName(&#34;my--1p-dev-session&#34;)
+ *                     .build())
+ *                 .configEncryption(AwsClusterControlPlaneConfigEncryptionArgs.builder()
+ *                     .kmsKeyArn(&#34;arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111&#34;)
+ *                     .build())
+ *                 .databaseEncryption(AwsClusterControlPlaneDatabaseEncryptionArgs.builder()
+ *                     .kmsKeyArn(&#34;arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111&#34;)
+ *                     .build())
+ *                 .iamInstanceProfile(&#34;my--1p-dev-controlplane&#34;)
+ *                 .subnetIds(&#34;subnet-00000000000000000&#34;)
+ *                 .version(versions.applyValue(getAwsVersionsResult -&gt; getAwsVersionsResult.validVersions()[0]))
+ *                 .instanceType(&#34;t3.medium&#34;)
+ *                 .mainVolume(AwsClusterControlPlaneMainVolumeArgs.builder()
+ *                     .iops(3000)
+ *                     .kmsKeyArn(&#34;arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111&#34;)
+ *                     .sizeGib(10)
+ *                     .volumeType(&#34;gp3&#34;)
+ *                     .build())
+ *                 .proxyConfig(AwsClusterControlPlaneProxyConfigArgs.builder()
+ *                     .secretArn(&#34;arn:aws:secretsmanager:us-west-2:126285863215:secret:proxy_config20210824150329476300000001-ABCDEF&#34;)
+ *                     .secretVersion(&#34;12345678-ABCD-EFGH-IJKL-987654321098&#34;)
+ *                     .build())
+ *                 .rootVolume(AwsClusterControlPlaneRootVolumeArgs.builder()
+ *                     .iops(3000)
+ *                     .kmsKeyArn(&#34;arn:aws:kms:my-aws-region:012345678910:key/12345678-1234-1234-1234-123456789111&#34;)
+ *                     .sizeGib(10)
+ *                     .volumeType(&#34;gp3&#34;)
+ *                     .build())
+ *                 .securityGroupIds(&#34;sg-00000000000000000&#34;)
+ *                 .sshConfig(AwsClusterControlPlaneSshConfigArgs.builder()
+ *                     .ec2KeyPair(&#34;my--1p-dev-ssh&#34;)
+ *                     .build())
+ *                 .tags(Map.of(&#34;owner&#34;, &#34;my@service-account.com&#34;))
+ *                 .instancePlacement(AwsClusterControlPlaneInstancePlacementArgs.builder()
+ *                     .tenancy(&#34;dedicated&#34;)
+ *                     .build())
+ *                 .build())
+ *             .fleet(AwsClusterFleetArgs.builder()
+ *                 .project(&#34;my-project-number&#34;)
+ *                 .build())
+ *             .location(&#34;us-west1&#34;)
+ *             .networking(AwsClusterNetworkingArgs.builder()
+ *                 .podAddressCidrBlocks(&#34;10.2.0.0/16&#34;)
+ *                 .serviceAddressCidrBlocks(&#34;10.1.0.0/16&#34;)
+ *                 .vpcId(&#34;vpc-00000000000000000&#34;)
+ *                 .build())
+ *             .annotations(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
+ *             .description(&#34;A sample aws cluster&#34;)
+ *             .project(&#34;my-project-name&#34;)
+ *             .loggingConfig(AwsClusterLoggingConfigArgs.builder()
+ *                 .componentConfig(AwsClusterLoggingConfigComponentConfigArgs.builder()
+ *                     .enableComponents(                    
+ *                         &#34;system_components&#34;,
+ *                         &#34;workloads&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

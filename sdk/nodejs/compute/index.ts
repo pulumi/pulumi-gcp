@@ -734,6 +734,11 @@ export type RegionSecurityPolicy = import("./regionSecurityPolicy").RegionSecuri
 export const RegionSecurityPolicy: typeof import("./regionSecurityPolicy").RegionSecurityPolicy = null as any;
 utilities.lazyLoad(exports, ["RegionSecurityPolicy"], () => require("./regionSecurityPolicy"));
 
+export { RegionSecurityPolicyRuleArgs, RegionSecurityPolicyRuleState } from "./regionSecurityPolicyRule";
+export type RegionSecurityPolicyRule = import("./regionSecurityPolicyRule").RegionSecurityPolicyRule;
+export const RegionSecurityPolicyRule: typeof import("./regionSecurityPolicyRule").RegionSecurityPolicyRule = null as any;
+utilities.lazyLoad(exports, ["RegionSecurityPolicyRule"], () => require("./regionSecurityPolicyRule"));
+
 export { RegionSslCertificateArgs, RegionSslCertificateState } from "./regionSslCertificate";
 export type RegionSslCertificate = import("./regionSslCertificate").RegionSslCertificate;
 export const RegionSslCertificate: typeof import("./regionSslCertificate").RegionSslCertificate = null as any;
@@ -1130,6 +1135,8 @@ const _module = {
                 return new RegionPerInstanceConfig(name, <any>undefined, { urn })
             case "gcp:compute/regionSecurityPolicy:RegionSecurityPolicy":
                 return new RegionSecurityPolicy(name, <any>undefined, { urn })
+            case "gcp:compute/regionSecurityPolicyRule:RegionSecurityPolicyRule":
+                return new RegionSecurityPolicyRule(name, <any>undefined, { urn })
             case "gcp:compute/regionSslCertificate:RegionSslCertificate":
                 return new RegionSslCertificate(name, <any>undefined, { urn })
             case "gcp:compute/regionSslPolicy:RegionSslPolicy":
@@ -1309,6 +1316,7 @@ pulumi.runtime.registerResourceModule("gcp", "compute/regionNetworkFirewallPolic
 pulumi.runtime.registerResourceModule("gcp", "compute/regionNetworkFirewallPolicyRule", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionPerInstanceConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionSecurityPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/regionSecurityPolicyRule", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionSslCertificate", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionSslPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionTargetHttpProxy", _module)

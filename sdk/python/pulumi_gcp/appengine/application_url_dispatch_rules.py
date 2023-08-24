@@ -125,7 +125,7 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
         bucket = gcp.storage.Bucket("bucket", location="US")
         object = gcp.storage.BucketObject("object",
             bucket=bucket.name,
-            source=pulumi.FileAsset("./test-fixtures/appengine/hello-world.zip"))
+            source=pulumi.FileAsset("./test-fixtures/hello-world.zip"))
         admin_v3 = gcp.appengine.StandardAppVersion("adminV3",
             version_id="v3",
             service="admin",
@@ -194,7 +194,7 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
         bucket = gcp.storage.Bucket("bucket", location="US")
         object = gcp.storage.BucketObject("object",
             bucket=bucket.name,
-            source=pulumi.FileAsset("./test-fixtures/appengine/hello-world.zip"))
+            source=pulumi.FileAsset("./test-fixtures/hello-world.zip"))
         admin_v3 = gcp.appengine.StandardAppVersion("adminV3",
             version_id="v3",
             service="admin",

@@ -122,6 +122,55 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Output)
+     * Creation timestamp of the execution.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return (Output)
+     * Creation timestamp of the execution.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * Email address of the authenticated creator.
+     * 
+     */
+    @Import(name="creator")
+    private @Nullable Output<String> creator;
+
+    /**
+     * @return Email address of the authenticated creator.
+     * 
+     */
+    public Optional<Output<String>> creator() {
+        return Optional.ofNullable(this.creator);
+    }
+
+    /**
+     * The deletion time.
+     * 
+     */
+    @Import(name="deleteTime")
+    private @Nullable Output<String> deleteTime;
+
+    /**
+     * @return The deletion time.
+     * 
+     */
+    public Optional<Output<String>> deleteTime() {
+        return Optional.ofNullable(this.deleteTime);
+    }
+
+    /**
      * A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
      * 
      */
@@ -149,6 +198,21 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Integer>> executionCount() {
         return Optional.ofNullable(this.executionCount);
+    }
+
+    /**
+     * For a deleted resource, the time after which it will be permamently deleted.
+     * 
+     */
+    @Import(name="expireTime")
+    private @Nullable Output<String> expireTime;
+
+    /**
+     * @return For a deleted resource, the time after which it will be permamently deleted.
+     * 
+     */
+    public Optional<Output<String>> expireTime() {
+        return Optional.ofNullable(this.expireTime);
     }
 
     /**
@@ -199,6 +263,21 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Map<String,String>>> labels() {
         return Optional.ofNullable(this.labels);
+    }
+
+    /**
+     * Email address of the last authenticated modifier.
+     * 
+     */
+    @Import(name="lastModifier")
+    private @Nullable Output<String> lastModifier;
+
+    /**
+     * @return Email address of the last authenticated modifier.
+     * 
+     */
+    public Optional<Output<String>> lastModifier() {
+        return Optional.ofNullable(this.lastModifier);
     }
 
     /**
@@ -371,6 +450,21 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.uid);
     }
 
+    /**
+     * The last-modified time.
+     * 
+     */
+    @Import(name="updateTime")
+    private @Nullable Output<String> updateTime;
+
+    /**
+     * @return The last-modified time.
+     * 
+     */
+    public Optional<Output<String>> updateTime() {
+        return Optional.ofNullable(this.updateTime);
+    }
+
     private JobState() {}
 
     private JobState(JobState $) {
@@ -379,10 +473,15 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         this.client = $.client;
         this.clientVersion = $.clientVersion;
         this.conditions = $.conditions;
+        this.createTime = $.createTime;
+        this.creator = $.creator;
+        this.deleteTime = $.deleteTime;
         this.etag = $.etag;
         this.executionCount = $.executionCount;
+        this.expireTime = $.expireTime;
         this.generation = $.generation;
         this.labels = $.labels;
+        this.lastModifier = $.lastModifier;
         this.latestCreatedExecutions = $.latestCreatedExecutions;
         this.launchStage = $.launchStage;
         this.location = $.location;
@@ -393,6 +492,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         this.template = $.template;
         this.terminalConditions = $.terminalConditions;
         this.uid = $.uid;
+        this.updateTime = $.updateTime;
     }
 
     public static Builder builder() {
@@ -552,6 +652,73 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param createTime (Output)
+         * Creation timestamp of the execution.
+         * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime (Output)
+         * Creation timestamp of the execution.
+         * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param creator Email address of the authenticated creator.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder creator(@Nullable Output<String> creator) {
+            $.creator = creator;
+            return this;
+        }
+
+        /**
+         * @param creator Email address of the authenticated creator.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder creator(String creator) {
+            return creator(Output.of(creator));
+        }
+
+        /**
+         * @param deleteTime The deletion time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteTime(@Nullable Output<String> deleteTime) {
+            $.deleteTime = deleteTime;
+            return this;
+        }
+
+        /**
+         * @param deleteTime The deletion time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteTime(String deleteTime) {
+            return deleteTime(Output.of(deleteTime));
+        }
+
+        /**
          * @param etag A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
          * 
          * @return builder
@@ -591,6 +758,27 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder executionCount(Integer executionCount) {
             return executionCount(Output.of(executionCount));
+        }
+
+        /**
+         * @param expireTime For a deleted resource, the time after which it will be permamently deleted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expireTime(@Nullable Output<String> expireTime) {
+            $.expireTime = expireTime;
+            return this;
+        }
+
+        /**
+         * @param expireTime For a deleted resource, the time after which it will be permamently deleted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expireTime(String expireTime) {
+            return expireTime(Output.of(expireTime));
         }
 
         /**
@@ -653,6 +841,27 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder labels(Map<String,String> labels) {
             return labels(Output.of(labels));
+        }
+
+        /**
+         * @param lastModifier Email address of the last authenticated modifier.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastModifier(@Nullable Output<String> lastModifier) {
+            $.lastModifier = lastModifier;
+            return this;
+        }
+
+        /**
+         * @param lastModifier Email address of the last authenticated modifier.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastModifier(String lastModifier) {
+            return lastModifier(Output.of(lastModifier));
         }
 
         /**
@@ -905,6 +1114,27 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder uid(String uid) {
             return uid(Output.of(uid));
+        }
+
+        /**
+         * @param updateTime The last-modified time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateTime(@Nullable Output<String> updateTime) {
+            $.updateTime = updateTime;
+            return this;
+        }
+
+        /**
+         * @param updateTime The last-modified time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder updateTime(String updateTime) {
+            return updateTime(Output.of(updateTime));
         }
 
         public JobState build() {

@@ -109,6 +109,13 @@ namespace Pulumi.Gcp
             set => _assuredWorkloadsCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _backupDrCustomEndpoint = new __Value<string?>(() => __config.Get("backupDrCustomEndpoint"));
+        public static string? BackupDrCustomEndpoint
+        {
+            get => _backupDrCustomEndpoint.Get();
+            set => _backupDrCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<Pulumi.Gcp.Config.Types.Batching?> _batching = new __Value<Pulumi.Gcp.Config.Types.Batching?>(() => __config.GetObject<Pulumi.Gcp.Config.Types.Batching>("batching"));
         public static Pulumi.Gcp.Config.Types.Batching? Batching
         {

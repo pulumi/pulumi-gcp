@@ -426,7 +426,7 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
         ca_authority = gcp.certificateauthority.Authority("caAuthority",
             location="us-central1",
             pool=pool.name,
-            certificate_authority_id="my-ca",
+            certificate_authority_id="ca-authority",
             config=gcp.certificateauthority.AuthorityConfigArgs(
                 subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
                     subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
@@ -540,7 +540,7 @@ class CertificateIssuanceConfig(pulumi.CustomResource):
         ca_authority = gcp.certificateauthority.Authority("caAuthority",
             location="us-central1",
             pool=pool.name,
-            certificate_authority_id="my-ca",
+            certificate_authority_id="ca-authority",
             config=gcp.certificateauthority.AuthorityConfigArgs(
                 subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
                     subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(

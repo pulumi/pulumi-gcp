@@ -312,6 +312,11 @@ __all__ = [
     'RegionPerInstanceConfigPreservedStateInternalIp',
     'RegionPerInstanceConfigPreservedStateInternalIpIpAddress',
     'RegionSecurityPolicyDdosProtectionConfig',
+    'RegionSecurityPolicyRuleMatch',
+    'RegionSecurityPolicyRuleMatchConfig',
+    'RegionSecurityPolicyRuleNetworkMatch',
+    'RegionSecurityPolicyRuleNetworkMatchUserDefinedField',
+    'RegionSecurityPolicyUserDefinedField',
     'RegionUrlMapDefaultRouteAction',
     'RegionUrlMapDefaultRouteActionCorsPolicy',
     'RegionUrlMapDefaultRouteActionFaultInjectionPolicy',
@@ -11205,6 +11210,8 @@ class InstanceTemplateDisk(dict):
             suggest = "disk_size_gb"
         elif key == "diskType":
             suggest = "disk_type"
+        elif key == "provisionedIops":
+            suggest = "provisioned_iops"
         elif key == "resourcePolicies":
             suggest = "resource_policies"
         elif key == "sourceImage":
@@ -11238,6 +11245,7 @@ class InstanceTemplateDisk(dict):
                  interface: Optional[str] = None,
                  labels: Optional[Mapping[str, str]] = None,
                  mode: Optional[str] = None,
+                 provisioned_iops: Optional[int] = None,
                  resource_policies: Optional[str] = None,
                  source: Optional[str] = None,
                  source_image: Optional[str] = None,
@@ -11324,6 +11332,8 @@ class InstanceTemplateDisk(dict):
             pulumi.set(__self__, "labels", labels)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
+        if provisioned_iops is not None:
+            pulumi.set(__self__, "provisioned_iops", provisioned_iops)
         if resource_policies is not None:
             pulumi.set(__self__, "resource_policies", resource_policies)
         if source is not None:
@@ -11439,6 +11449,11 @@ class InstanceTemplateDisk(dict):
         read-write mode.
         """
         return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> Optional[int]:
+        return pulumi.get(self, "provisioned_iops")
 
     @property
     @pulumi.getter(name="resourcePolicies")
@@ -19068,6 +19083,8 @@ class RegionInstanceTemplateDisk(dict):
             suggest = "disk_size_gb"
         elif key == "diskType":
             suggest = "disk_type"
+        elif key == "provisionedIops":
+            suggest = "provisioned_iops"
         elif key == "resourcePolicies":
             suggest = "resource_policies"
         elif key == "sourceImage":
@@ -19101,6 +19118,7 @@ class RegionInstanceTemplateDisk(dict):
                  interface: Optional[str] = None,
                  labels: Optional[Mapping[str, str]] = None,
                  mode: Optional[str] = None,
+                 provisioned_iops: Optional[int] = None,
                  resource_policies: Optional[str] = None,
                  source: Optional[str] = None,
                  source_image: Optional[str] = None,
@@ -19187,6 +19205,8 @@ class RegionInstanceTemplateDisk(dict):
             pulumi.set(__self__, "labels", labels)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
+        if provisioned_iops is not None:
+            pulumi.set(__self__, "provisioned_iops", provisioned_iops)
         if resource_policies is not None:
             pulumi.set(__self__, "resource_policies", resource_policies)
         if source is not None:
@@ -19302,6 +19322,11 @@ class RegionInstanceTemplateDisk(dict):
         read-write mode.
         """
         return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> Optional[int]:
+        return pulumi.get(self, "provisioned_iops")
 
     @property
     @pulumi.getter(name="resourcePolicies")
@@ -21486,6 +21511,345 @@ class RegionSecurityPolicyDdosProtectionConfig(dict):
         Possible values are: `ADVANCED`, `ADVANCED_PREVIEW`, `STANDARD`.
         """
         return pulumi.get(self, "ddos_protection")
+
+
+@pulumi.output_type
+class RegionSecurityPolicyRuleMatch(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "versionedExpr":
+            suggest = "versioned_expr"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionSecurityPolicyRuleMatch. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionSecurityPolicyRuleMatch.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionSecurityPolicyRuleMatch.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 config: Optional['outputs.RegionSecurityPolicyRuleMatchConfig'] = None,
+                 versioned_expr: Optional[str] = None):
+        """
+        :param 'RegionSecurityPolicyRuleMatchConfigArgs' config: The configuration options available when specifying versionedExpr.
+               This field must be specified if versionedExpr is specified and cannot be specified if versionedExpr is not specified.
+               Structure is documented below.
+        :param str versioned_expr: Preconfigured versioned expression. If this field is specified, config must also be specified.
+               Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding srcIpRange field in config.
+               Possible values are: `SRC_IPS_V1`.
+        """
+        if config is not None:
+            pulumi.set(__self__, "config", config)
+        if versioned_expr is not None:
+            pulumi.set(__self__, "versioned_expr", versioned_expr)
+
+    @property
+    @pulumi.getter
+    def config(self) -> Optional['outputs.RegionSecurityPolicyRuleMatchConfig']:
+        """
+        The configuration options available when specifying versionedExpr.
+        This field must be specified if versionedExpr is specified and cannot be specified if versionedExpr is not specified.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "config")
+
+    @property
+    @pulumi.getter(name="versionedExpr")
+    def versioned_expr(self) -> Optional[str]:
+        """
+        Preconfigured versioned expression. If this field is specified, config must also be specified.
+        Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding srcIpRange field in config.
+        Possible values are: `SRC_IPS_V1`.
+        """
+        return pulumi.get(self, "versioned_expr")
+
+
+@pulumi.output_type
+class RegionSecurityPolicyRuleMatchConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "srcIpRanges":
+            suggest = "src_ip_ranges"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionSecurityPolicyRuleMatchConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionSecurityPolicyRuleMatchConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionSecurityPolicyRuleMatchConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 src_ip_ranges: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] src_ip_ranges: CIDR IP address range. Maximum number of srcIpRanges allowed is 10.
+        """
+        if src_ip_ranges is not None:
+            pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
+
+    @property
+    @pulumi.getter(name="srcIpRanges")
+    def src_ip_ranges(self) -> Optional[Sequence[str]]:
+        """
+        CIDR IP address range. Maximum number of srcIpRanges allowed is 10.
+        """
+        return pulumi.get(self, "src_ip_ranges")
+
+
+@pulumi.output_type
+class RegionSecurityPolicyRuleNetworkMatch(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "destIpRanges":
+            suggest = "dest_ip_ranges"
+        elif key == "destPorts":
+            suggest = "dest_ports"
+        elif key == "ipProtocols":
+            suggest = "ip_protocols"
+        elif key == "srcAsns":
+            suggest = "src_asns"
+        elif key == "srcIpRanges":
+            suggest = "src_ip_ranges"
+        elif key == "srcPorts":
+            suggest = "src_ports"
+        elif key == "srcRegionCodes":
+            suggest = "src_region_codes"
+        elif key == "userDefinedFields":
+            suggest = "user_defined_fields"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionSecurityPolicyRuleNetworkMatch. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionSecurityPolicyRuleNetworkMatch.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionSecurityPolicyRuleNetworkMatch.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dest_ip_ranges: Optional[Sequence[str]] = None,
+                 dest_ports: Optional[Sequence[str]] = None,
+                 ip_protocols: Optional[Sequence[str]] = None,
+                 src_asns: Optional[Sequence[int]] = None,
+                 src_ip_ranges: Optional[Sequence[str]] = None,
+                 src_ports: Optional[Sequence[str]] = None,
+                 src_region_codes: Optional[Sequence[str]] = None,
+                 user_defined_fields: Optional[Sequence['outputs.RegionSecurityPolicyRuleNetworkMatchUserDefinedField']] = None):
+        """
+        :param Sequence[str] dest_ip_ranges: Destination IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+        :param Sequence[str] dest_ports: Destination port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+        :param Sequence[str] ip_protocols: IPv4 protocol / IPv6 next header (after extension headers). Each element can be an 8-bit unsigned decimal number (e.g. "6"), range (e.g. "253-254"), or one of the following protocol names: "tcp", "udp", "icmp", "esp", "ah", "ipip", or "sctp".
+        :param Sequence[int] src_asns: BGP Autonomous System Number associated with the source IP address.
+        :param Sequence[str] src_ip_ranges: Source IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+        :param Sequence[str] src_ports: Source port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+        :param Sequence[str] src_region_codes: Two-letter ISO 3166-1 alpha-2 country code associated with the source IP address.
+        :param Sequence['RegionSecurityPolicyRuleNetworkMatchUserDefinedFieldArgs'] user_defined_fields: User-defined fields. Each element names a defined field and lists the matching values for that field.
+               Structure is documented below.
+        """
+        if dest_ip_ranges is not None:
+            pulumi.set(__self__, "dest_ip_ranges", dest_ip_ranges)
+        if dest_ports is not None:
+            pulumi.set(__self__, "dest_ports", dest_ports)
+        if ip_protocols is not None:
+            pulumi.set(__self__, "ip_protocols", ip_protocols)
+        if src_asns is not None:
+            pulumi.set(__self__, "src_asns", src_asns)
+        if src_ip_ranges is not None:
+            pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
+        if src_ports is not None:
+            pulumi.set(__self__, "src_ports", src_ports)
+        if src_region_codes is not None:
+            pulumi.set(__self__, "src_region_codes", src_region_codes)
+        if user_defined_fields is not None:
+            pulumi.set(__self__, "user_defined_fields", user_defined_fields)
+
+    @property
+    @pulumi.getter(name="destIpRanges")
+    def dest_ip_ranges(self) -> Optional[Sequence[str]]:
+        """
+        Destination IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+        """
+        return pulumi.get(self, "dest_ip_ranges")
+
+    @property
+    @pulumi.getter(name="destPorts")
+    def dest_ports(self) -> Optional[Sequence[str]]:
+        """
+        Destination port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+        """
+        return pulumi.get(self, "dest_ports")
+
+    @property
+    @pulumi.getter(name="ipProtocols")
+    def ip_protocols(self) -> Optional[Sequence[str]]:
+        """
+        IPv4 protocol / IPv6 next header (after extension headers). Each element can be an 8-bit unsigned decimal number (e.g. "6"), range (e.g. "253-254"), or one of the following protocol names: "tcp", "udp", "icmp", "esp", "ah", "ipip", or "sctp".
+        """
+        return pulumi.get(self, "ip_protocols")
+
+    @property
+    @pulumi.getter(name="srcAsns")
+    def src_asns(self) -> Optional[Sequence[int]]:
+        """
+        BGP Autonomous System Number associated with the source IP address.
+        """
+        return pulumi.get(self, "src_asns")
+
+    @property
+    @pulumi.getter(name="srcIpRanges")
+    def src_ip_ranges(self) -> Optional[Sequence[str]]:
+        """
+        Source IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+        """
+        return pulumi.get(self, "src_ip_ranges")
+
+    @property
+    @pulumi.getter(name="srcPorts")
+    def src_ports(self) -> Optional[Sequence[str]]:
+        """
+        Source port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+        """
+        return pulumi.get(self, "src_ports")
+
+    @property
+    @pulumi.getter(name="srcRegionCodes")
+    def src_region_codes(self) -> Optional[Sequence[str]]:
+        """
+        Two-letter ISO 3166-1 alpha-2 country code associated with the source IP address.
+        """
+        return pulumi.get(self, "src_region_codes")
+
+    @property
+    @pulumi.getter(name="userDefinedFields")
+    def user_defined_fields(self) -> Optional[Sequence['outputs.RegionSecurityPolicyRuleNetworkMatchUserDefinedField']]:
+        """
+        User-defined fields. Each element names a defined field and lists the matching values for that field.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "user_defined_fields")
+
+
+@pulumi.output_type
+class RegionSecurityPolicyRuleNetworkMatchUserDefinedField(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None,
+                 values: Optional[Sequence[str]] = None):
+        """
+        :param str name: Name of the user-defined field, as given in the definition.
+        :param Sequence[str] values: Matching values of the field. Each element can be a 32-bit unsigned decimal or hexadecimal (starting with "0x") number (e.g. "64") or range (e.g. "0x400-0x7ff").
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of the user-defined field, as given in the definition.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence[str]]:
+        """
+        Matching values of the field. Each element can be a 32-bit unsigned decimal or hexadecimal (starting with "0x") number (e.g. "64") or range (e.g. "0x400-0x7ff").
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class RegionSecurityPolicyUserDefinedField(dict):
+    def __init__(__self__, *,
+                 base: str,
+                 mask: Optional[str] = None,
+                 name: Optional[str] = None,
+                 offset: Optional[int] = None,
+                 size: Optional[int] = None):
+        """
+        :param str base: The base relative to which 'offset' is measured. Possible values are:
+               - IPV4: Points to the beginning of the IPv4 header.
+               - IPV6: Points to the beginning of the IPv6 header.
+               - TCP: Points to the beginning of the TCP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments.
+               - UDP: Points to the beginning of the UDP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments.
+               Possible values are: `IPV4`, `IPV6`, `TCP`, `UDP`.
+        :param str mask: If specified, apply this mask (bitwise AND) to the field to ignore bits before matching.
+               Encoded as a hexadecimal number (starting with "0x").
+               The last byte of the field (in network byte order) corresponds to the least significant byte of the mask.
+        :param str name: The name of this field. Must be unique within the policy.
+        :param int offset: Offset of the first byte of the field (in network byte order) relative to 'base'.
+        :param int size: Size of the field in bytes. Valid values: 1-4.
+        """
+        pulumi.set(__self__, "base", base)
+        if mask is not None:
+            pulumi.set(__self__, "mask", mask)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if offset is not None:
+            pulumi.set(__self__, "offset", offset)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+
+    @property
+    @pulumi.getter
+    def base(self) -> str:
+        """
+        The base relative to which 'offset' is measured. Possible values are:
+        - IPV4: Points to the beginning of the IPv4 header.
+        - IPV6: Points to the beginning of the IPv6 header.
+        - TCP: Points to the beginning of the TCP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments.
+        - UDP: Points to the beginning of the UDP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments.
+        Possible values are: `IPV4`, `IPV6`, `TCP`, `UDP`.
+        """
+        return pulumi.get(self, "base")
+
+    @property
+    @pulumi.getter
+    def mask(self) -> Optional[str]:
+        """
+        If specified, apply this mask (bitwise AND) to the field to ignore bits before matching.
+        Encoded as a hexadecimal number (starting with "0x").
+        The last byte of the field (in network byte order) corresponds to the least significant byte of the mask.
+        """
+        return pulumi.get(self, "mask")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of this field. Must be unique within the policy.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def offset(self) -> Optional[int]:
+        """
+        Offset of the first byte of the field (in network byte order) relative to 'base'.
+        """
+        return pulumi.get(self, "offset")
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[int]:
+        """
+        Size of the field in bytes. Valid values: 1-4.
+        """
+        return pulumi.get(self, "size")
 
 
 @pulumi.output_type
@@ -28526,6 +28890,8 @@ class SecurityPolicyAdvancedOptionsConfig(dict):
             suggest = "json_parsing"
         elif key == "logLevel":
             suggest = "log_level"
+        elif key == "userIpRequestHeaders":
+            suggest = "user_ip_request_headers"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in SecurityPolicyAdvancedOptionsConfig. Access the value via the '{suggest}' property getter instead.")
@@ -28541,7 +28907,8 @@ class SecurityPolicyAdvancedOptionsConfig(dict):
     def __init__(__self__, *,
                  json_custom_config: Optional['outputs.SecurityPolicyAdvancedOptionsConfigJsonCustomConfig'] = None,
                  json_parsing: Optional[str] = None,
-                 log_level: Optional[str] = None):
+                 log_level: Optional[str] = None,
+                 user_ip_request_headers: Optional[Sequence[str]] = None):
         """
         :param 'SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs' json_custom_config: Custom configuration to apply the JSON parsing. Only applicable when
                `json_parsing` is set to `STANDARD`. Structure is documented below.
@@ -28551,6 +28918,7 @@ class SecurityPolicyAdvancedOptionsConfig(dict):
         :param str log_level: Log level to use. Defaults to `NORMAL`.
                * NORMAL - Normal log level.
                * VERBOSE - Verbose log level.
+        :param Sequence[str] user_ip_request_headers: ) An optional list of case-insensitive request header names to use for resolving the callers client IP address.
         """
         if json_custom_config is not None:
             pulumi.set(__self__, "json_custom_config", json_custom_config)
@@ -28558,6 +28926,8 @@ class SecurityPolicyAdvancedOptionsConfig(dict):
             pulumi.set(__self__, "json_parsing", json_parsing)
         if log_level is not None:
             pulumi.set(__self__, "log_level", log_level)
+        if user_ip_request_headers is not None:
+            pulumi.set(__self__, "user_ip_request_headers", user_ip_request_headers)
 
     @property
     @pulumi.getter(name="jsonCustomConfig")
@@ -28587,6 +28957,14 @@ class SecurityPolicyAdvancedOptionsConfig(dict):
         * VERBOSE - Verbose log level.
         """
         return pulumi.get(self, "log_level")
+
+    @property
+    @pulumi.getter(name="userIpRequestHeaders")
+    def user_ip_request_headers(self) -> Optional[Sequence[str]]:
+        """
+        ) An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+        """
+        return pulumi.get(self, "user_ip_request_headers")
 
 
 @pulumi.output_type
@@ -39742,6 +40120,7 @@ class GetInstanceTemplateDiskResult(dict):
                  interface: str,
                  labels: Mapping[str, str],
                  mode: str,
+                 provisioned_iops: int,
                  resource_policies: Sequence[str],
                  source: str,
                  source_image: str,
@@ -39796,6 +40175,7 @@ class GetInstanceTemplateDiskResult(dict):
         pulumi.set(__self__, "interface", interface)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "provisioned_iops", provisioned_iops)
         pulumi.set(__self__, "resource_policies", resource_policies)
         pulumi.set(__self__, "source", source)
         pulumi.set(__self__, "source_image", source_image)
@@ -39896,6 +40276,11 @@ class GetInstanceTemplateDiskResult(dict):
         read-write mode.
         """
         return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> int:
+        return pulumi.get(self, "provisioned_iops")
 
     @property
     @pulumi.getter(name="resourcePolicies")
@@ -40803,6 +41188,7 @@ class GetRegionInstanceTemplateDiskResult(dict):
                  interface: str,
                  labels: Mapping[str, str],
                  mode: str,
+                 provisioned_iops: int,
                  resource_policies: Sequence[str],
                  source: str,
                  source_image: str,
@@ -40857,6 +41243,7 @@ class GetRegionInstanceTemplateDiskResult(dict):
         pulumi.set(__self__, "interface", interface)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "provisioned_iops", provisioned_iops)
         pulumi.set(__self__, "resource_policies", resource_policies)
         pulumi.set(__self__, "source", source)
         pulumi.set(__self__, "source_image", source_image)
@@ -40957,6 +41344,11 @@ class GetRegionInstanceTemplateDiskResult(dict):
         read-write mode.
         """
         return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> int:
+        return pulumi.get(self, "provisioned_iops")
 
     @property
     @pulumi.getter(name="resourcePolicies")

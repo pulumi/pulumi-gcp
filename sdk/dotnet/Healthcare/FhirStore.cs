@@ -46,6 +46,7 @@ namespace Pulumi.Gcp.Healthcare
     ///         DisableReferentialIntegrity = false,
     ///         DisableResourceVersioning = false,
     ///         EnableHistoryImport = false,
+    ///         DefaultSearchHandlingStrict = false,
     ///         NotificationConfig = new Gcp.Healthcare.Inputs.FhirStoreNotificationConfigArgs
     ///         {
     ///             PubsubTopic = topic.Id,
@@ -252,6 +253,14 @@ namespace Pulumi.Gcp.Healthcare
         public Output<string> Dataset { get; private set; } = null!;
 
         /// <summary>
+        /// If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
+        /// If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
+        /// The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
+        /// </summary>
+        [Output("defaultSearchHandlingStrict")]
+        public Output<bool?> DefaultSearchHandlingStrict { get; private set; } = null!;
+
+        /// <summary>
         /// Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store
         /// creation. The default value is false, meaning that the API will enforce referential integrity and fail the
         /// requests that will result in inconsistent state in the FHIR store. When this field is set to true, the API
@@ -418,6 +427,14 @@ namespace Pulumi.Gcp.Healthcare
         public Input<string> Dataset { get; set; } = null!;
 
         /// <summary>
+        /// If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
+        /// If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
+        /// The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
+        /// </summary>
+        [Input("defaultSearchHandlingStrict")]
+        public Input<bool>? DefaultSearchHandlingStrict { get; set; }
+
+        /// <summary>
         /// Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store
         /// creation. The default value is false, meaning that the API will enforce referential integrity and fail the
         /// requests that will result in inconsistent state in the FHIR store. When this field is set to true, the API
@@ -556,6 +573,14 @@ namespace Pulumi.Gcp.Healthcare
         /// </summary>
         [Input("dataset")]
         public Input<string>? Dataset { get; set; }
+
+        /// <summary>
+        /// If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
+        /// If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
+        /// The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
+        /// </summary>
+        [Input("defaultSearchHandlingStrict")]
+        public Input<bool>? DefaultSearchHandlingStrict { get; set; }
 
         /// <summary>
         /// Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store

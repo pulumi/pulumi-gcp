@@ -50,6 +50,11 @@ namespace Pulumi.Gcp.DatabaseMigrationService.Outputs
         /// </summary>
         public readonly string? DatabaseVersion;
         /// <summary>
+        /// The edition of the given Cloud SQL instance.
+        /// Possible values are: `ENTERPRISE`, `ENTERPRISE_PLUS`.
+        /// </summary>
+        public readonly string? Edition;
+        /// <summary>
         /// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
         /// Structure is documented below.
         /// </summary>
@@ -104,6 +109,8 @@ namespace Pulumi.Gcp.DatabaseMigrationService.Outputs
 
             string? databaseVersion,
 
+            string? edition,
+
             Outputs.ConnectionProfileCloudsqlSettingsIpConfig? ipConfig,
 
             string? rootPassword,
@@ -128,6 +135,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService.Outputs
             DataDiskType = dataDiskType;
             DatabaseFlags = databaseFlags;
             DatabaseVersion = databaseVersion;
+            Edition = edition;
             IpConfig = ipConfig;
             RootPassword = rootPassword;
             RootPasswordSet = rootPasswordSet;

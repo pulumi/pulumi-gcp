@@ -9,6 +9,7 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTriggerSourceToBuild {
+    private String bitbucketServerConfig;
     private String githubEnterpriseConfig;
     private String ref;
     private String repoType;
@@ -16,6 +17,9 @@ public final class GetTriggerSourceToBuild {
     private String uri;
 
     private GetTriggerSourceToBuild() {}
+    public String bitbucketServerConfig() {
+        return this.bitbucketServerConfig;
+    }
     public String githubEnterpriseConfig() {
         return this.githubEnterpriseConfig;
     }
@@ -41,6 +45,7 @@ public final class GetTriggerSourceToBuild {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String bitbucketServerConfig;
         private String githubEnterpriseConfig;
         private String ref;
         private String repoType;
@@ -49,6 +54,7 @@ public final class GetTriggerSourceToBuild {
         public Builder() {}
         public Builder(GetTriggerSourceToBuild defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.bitbucketServerConfig = defaults.bitbucketServerConfig;
     	      this.githubEnterpriseConfig = defaults.githubEnterpriseConfig;
     	      this.ref = defaults.ref;
     	      this.repoType = defaults.repoType;
@@ -56,6 +62,11 @@ public final class GetTriggerSourceToBuild {
     	      this.uri = defaults.uri;
         }
 
+        @CustomType.Setter
+        public Builder bitbucketServerConfig(String bitbucketServerConfig) {
+            this.bitbucketServerConfig = Objects.requireNonNull(bitbucketServerConfig);
+            return this;
+        }
         @CustomType.Setter
         public Builder githubEnterpriseConfig(String githubEnterpriseConfig) {
             this.githubEnterpriseConfig = Objects.requireNonNull(githubEnterpriseConfig);
@@ -83,6 +94,7 @@ public final class GetTriggerSourceToBuild {
         }
         public GetTriggerSourceToBuild build() {
             final var o = new GetTriggerSourceToBuild();
+            o.bitbucketServerConfig = bitbucketServerConfig;
             o.githubEnterpriseConfig = githubEnterpriseConfig;
             o.ref = ref;
             o.repoType = repoType;

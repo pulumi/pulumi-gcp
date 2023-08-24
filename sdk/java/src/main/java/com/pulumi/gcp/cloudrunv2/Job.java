@@ -503,6 +503,52 @@ public class Job extends com.pulumi.resources.CustomResource {
         return this.conditions;
     }
     /**
+     * (Output)
+     * Creation timestamp of the execution.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
+    @Export(name="createTime", type=String.class, parameters={})
+    private Output<String> createTime;
+
+    /**
+     * @return (Output)
+     * Creation timestamp of the execution.
+     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * Email address of the authenticated creator.
+     * 
+     */
+    @Export(name="creator", type=String.class, parameters={})
+    private Output<String> creator;
+
+    /**
+     * @return Email address of the authenticated creator.
+     * 
+     */
+    public Output<String> creator() {
+        return this.creator;
+    }
+    /**
+     * The deletion time.
+     * 
+     */
+    @Export(name="deleteTime", type=String.class, parameters={})
+    private Output<String> deleteTime;
+
+    /**
+     * @return The deletion time.
+     * 
+     */
+    public Output<String> deleteTime() {
+        return this.deleteTime;
+    }
+    /**
      * A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
      * 
      */
@@ -529,6 +575,20 @@ public class Job extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> executionCount() {
         return this.executionCount;
+    }
+    /**
+     * For a deleted resource, the time after which it will be permamently deleted.
+     * 
+     */
+    @Export(name="expireTime", type=String.class, parameters={})
+    private Output<String> expireTime;
+
+    /**
+     * @return For a deleted resource, the time after which it will be permamently deleted.
+     * 
+     */
+    public Output<String> expireTime() {
+        return this.expireTime;
     }
     /**
      * A number that monotonically increases every time the user modifies the desired state.
@@ -577,6 +637,20 @@ public class Job extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,String>>> labels() {
         return Codegen.optional(this.labels);
+    }
+    /**
+     * Email address of the last authenticated modifier.
+     * 
+     */
+    @Export(name="lastModifier", type=String.class, parameters={})
+    private Output<String> lastModifier;
+
+    /**
+     * @return Email address of the last authenticated modifier.
+     * 
+     */
+    public Output<String> lastModifier() {
+        return this.lastModifier;
     }
     /**
      * Name of the last created execution.
@@ -737,6 +811,20 @@ public class Job extends com.pulumi.resources.CustomResource {
      */
     public Output<String> uid() {
         return this.uid;
+    }
+    /**
+     * The last-modified time.
+     * 
+     */
+    @Export(name="updateTime", type=String.class, parameters={})
+    private Output<String> updateTime;
+
+    /**
+     * @return The last-modified time.
+     * 
+     */
+    public Output<String> updateTime() {
+        return this.updateTime;
     }
 
     /**

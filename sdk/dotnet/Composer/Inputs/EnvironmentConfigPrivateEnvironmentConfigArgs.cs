@@ -21,6 +21,9 @@ namespace Pulumi.Gcp.Composer.Inputs
         [Input("cloudSqlIpv4CidrBlock")]
         public Input<string>? CloudSqlIpv4CidrBlock { get; set; }
 
+        [Input("connectionType")]
+        public Input<string>? ConnectionType { get; set; }
+
         [Input("enablePrivateEndpoint")]
         public Input<bool>? EnablePrivateEndpoint { get; set; }
 

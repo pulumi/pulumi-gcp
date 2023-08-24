@@ -85,8 +85,6 @@ public final class VMwareClusterVcenterArgs extends com.pulumi.resources.Resourc
      * (Output)
      * The Vsphere datastore used by the Control Plane Node.
      * 
-     * ***
-     * 
      */
     @Import(name="datastore")
     private @Nullable Output<String> datastore;
@@ -94,8 +92,6 @@ public final class VMwareClusterVcenterArgs extends com.pulumi.resources.Resourc
     /**
      * @return (Output)
      * The Vsphere datastore used by the Control Plane Node.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> datastore() {
@@ -136,6 +132,27 @@ public final class VMwareClusterVcenterArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.resourcePool);
     }
 
+    /**
+     * (Output)
+     * The Vsphere storage policy used by the control plane Node.
+     * 
+     * ***
+     * 
+     */
+    @Import(name="storagePolicyName")
+    private @Nullable Output<String> storagePolicyName;
+
+    /**
+     * @return (Output)
+     * The Vsphere storage policy used by the control plane Node.
+     * 
+     * ***
+     * 
+     */
+    public Optional<Output<String>> storagePolicyName() {
+        return Optional.ofNullable(this.storagePolicyName);
+    }
+
     private VMwareClusterVcenterArgs() {}
 
     private VMwareClusterVcenterArgs(VMwareClusterVcenterArgs $) {
@@ -146,6 +163,7 @@ public final class VMwareClusterVcenterArgs extends com.pulumi.resources.Resourc
         this.datastore = $.datastore;
         this.folder = $.folder;
         this.resourcePool = $.resourcePool;
+        this.storagePolicyName = $.storagePolicyName;
     }
 
     public static Builder builder() {
@@ -260,8 +278,6 @@ public final class VMwareClusterVcenterArgs extends com.pulumi.resources.Resourc
          * @param datastore (Output)
          * The Vsphere datastore used by the Control Plane Node.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -273,8 +289,6 @@ public final class VMwareClusterVcenterArgs extends com.pulumi.resources.Resourc
         /**
          * @param datastore (Output)
          * The Vsphere datastore used by the Control Plane Node.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -327,6 +341,33 @@ public final class VMwareClusterVcenterArgs extends com.pulumi.resources.Resourc
          */
         public Builder resourcePool(String resourcePool) {
             return resourcePool(Output.of(resourcePool));
+        }
+
+        /**
+         * @param storagePolicyName (Output)
+         * The Vsphere storage policy used by the control plane Node.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storagePolicyName(@Nullable Output<String> storagePolicyName) {
+            $.storagePolicyName = storagePolicyName;
+            return this;
+        }
+
+        /**
+         * @param storagePolicyName (Output)
+         * The Vsphere storage policy used by the control plane Node.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storagePolicyName(String storagePolicyName) {
+            return storagePolicyName(Output.of(storagePolicyName));
         }
 
         public VMwareClusterVcenterArgs build() {

@@ -83,6 +83,7 @@ import * as utilities from "../utilities";
  *                 cloudfoo: "cloudbar",
  *             },
  *             tier: "db-n1-standard-1",
+ *             edition: "ENTERPRISE",
  *             storageAutoResizeLimit: "0",
  *             activationPolicy: "ALWAYS",
  *             ipConfig: {

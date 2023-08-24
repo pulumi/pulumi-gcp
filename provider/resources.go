@@ -44,6 +44,7 @@ const (
 	gcpAppEngine                = "AppEngine"                // AppEngine resources
 	gcpArtifactRegistry         = "ArtifactRegistry"         // ArtifactRegistry resources
 	gcpAssuredWorkloads         = "AssuredWorkloads"         // AssuredWorkloads resources
+	gcpBackupDR                 = "BackupDisasterRecovery"   // Backup and Disaster Recovery resources
 	gcpBeyondcorp               = "Beyondcorp"               // Beyondcorp resources
 	gcpBigQueryAnalyticsHub     = "BigQueryAnalyticsHub"     // BigQuery Analytics Hub resources
 	gcpBigQueryDataPolicy       = "BigQueryDataPolicy"       // BigQuery Data Policy resources
@@ -149,6 +150,7 @@ var moduleMapping = map[string]string{
 	"app_engine":                      gcpAppEngine,
 	"artifact_registry":               gcpArtifactRegistry,
 	"assured_workloads":               gcpAssuredWorkloads,
+	"backup_dr":                       gcpBackupDR,
 	"beyondcorp":                      gcpBeyondcorp,
 	"bigquery_analytics_hub":          gcpBigQueryAnalyticsHub,
 	"bigquery_datapolicy_data_policy": gcpBigQueryDataPolicy,

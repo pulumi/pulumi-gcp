@@ -150,9 +150,6 @@ import * as utilities from "../utilities";
  *     },
  *     visibility: "private",
  *     privateVisibilityConfig: {
- *         networks: [{
- *             networkUrl: network_1.id,
- *         }],
  *         gkeClusters: [{
  *             gkeClusterName: cluster_1.id,
  *         }],
@@ -335,7 +332,7 @@ export class ManagedZone extends pulumi.CustomResource {
     public readonly peeringConfig!: pulumi.Output<outputs.dns.ManagedZonePeeringConfig | undefined>;
     /**
      * For privately visible zones, the set of Virtual Private Cloud
-     * resources that the zone is visible from.
+     * resources that the zone is visible from. At least one of `gkeClusters` or `networks` must be specified.
      * Structure is documented below.
      */
     public readonly privateVisibilityConfig!: pulumi.Output<outputs.dns.ManagedZonePrivateVisibilityConfig | undefined>;
@@ -487,7 +484,7 @@ export interface ManagedZoneState {
     peeringConfig?: pulumi.Input<inputs.dns.ManagedZonePeeringConfig>;
     /**
      * For privately visible zones, the set of Virtual Private Cloud
-     * resources that the zone is visible from.
+     * resources that the zone is visible from. At least one of `gkeClusters` or `networks` must be specified.
      * Structure is documented below.
      */
     privateVisibilityConfig?: pulumi.Input<inputs.dns.ManagedZonePrivateVisibilityConfig>;
@@ -568,7 +565,7 @@ export interface ManagedZoneArgs {
     peeringConfig?: pulumi.Input<inputs.dns.ManagedZonePeeringConfig>;
     /**
      * For privately visible zones, the set of Virtual Private Cloud
-     * resources that the zone is visible from.
+     * resources that the zone is visible from. At least one of `gkeClusters` or `networks` must be specified.
      * Structure is documented below.
      */
     privateVisibilityConfig?: pulumi.Input<inputs.dns.ManagedZonePrivateVisibilityConfig>;

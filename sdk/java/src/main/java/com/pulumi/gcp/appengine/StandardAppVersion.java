@@ -98,7 +98,7 @@ import javax.annotation.Nullable;
  * 
  *         var object = new BucketObject(&#34;object&#34;, BucketObjectArgs.builder()        
  *             .bucket(bucket.name())
- *             .source(new FileAsset(&#34;./test-fixtures/appengine/hello-world.zip&#34;))
+ *             .source(new FileAsset(&#34;./test-fixtures/hello-world.zip&#34;))
  *             .build());
  * 
  *         var myappV1 = new StandardAppVersion(&#34;myappV1&#34;, StandardAppVersionArgs.builder()        

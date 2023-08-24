@@ -1694,11 +1694,11 @@ export namespace alloydb {
          * The backup window must be at least 5 minutes long. There is no upper bound on the window. If not set, it will default to 1 hour.
          * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
          */
-        backupWindow?: string;
+        backupWindow: string;
         /**
          * Whether automated backups are enabled.
          */
-        enabled?: boolean;
+        enabled: boolean;
         /**
          * EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
          * Structure is documented below.
@@ -1711,7 +1711,7 @@ export namespace alloydb {
         /**
          * The location where the backup will be stored. Currently, the only supported option is to store the backup in the same region as the cluster.
          */
-        location?: string;
+        location: string;
         /**
          * Quantity-based Backup retention policy to retain recent backups. Conflicts with 'time_based_retention', both can't be set together.
          * Structure is documented below.
@@ -3517,6 +3517,37 @@ export namespace assuredworkloads {
          * Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT) Possible values: RESOURCE_TYPE_UNSPECIFIED, CONSUMER_PROJECT, ENCRYPTION_KEYS_PROJECT, KEYRING, CONSUMER_FOLDER
          */
         resourceType?: string;
+    }
+
+}
+
+export namespace backupdisasterrecovery {
+    export interface ManagementServerManagementUri {
+        /**
+         * (Output)
+         * The management console api endpoint.
+         */
+        api: string;
+        /**
+         * (Output)
+         * The management console webUi.
+         */
+        webUi: string;
+    }
+
+    export interface ManagementServerNetwork {
+        /**
+         * Network with format `projects/{{project_id}}/global/networks/{{network_id}}`
+         */
+        network: string;
+        /**
+         * Type of Network peeringMode
+         * Default value is `PRIVATE_SERVICE_ACCESS`.
+         * Possible values are: `PRIVATE_SERVICE_ACCESS`.
+         *
+         * - - -
+         */
+        peeringMode?: string;
     }
 
 }
@@ -8128,6 +8159,7 @@ export namespace cloudbuild {
     }
 
     export interface GetTriggerGitFileSource {
+        bitbucketServerConfig: string;
         githubEnterpriseConfig: string;
         path: string;
         repoType: string;
@@ -8182,6 +8214,7 @@ export namespace cloudbuild {
     }
 
     export interface GetTriggerSourceToBuild {
+        bitbucketServerConfig: string;
         githubEnterpriseConfig: string;
         ref: string;
         repoType: string;
@@ -8722,6 +8755,11 @@ export namespace cloudbuild {
 
     export interface TriggerGitFileSource {
         /**
+         * The full resource name of the bitbucket server config.
+         * Format: projects/{project}/locations/{location}/bitbucketServerConfigs/{id}.
+         */
+        bitbucketServerConfig?: string;
+        /**
          * The full resource name of the github enterprise config.
          * Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
          */
@@ -8886,6 +8924,11 @@ export namespace cloudbuild {
     }
 
     export interface TriggerSourceToBuild {
+        /**
+         * The full resource name of the bitbucket server config.
+         * Format: projects/{project}/locations/{location}/bitbucketServerConfigs/{id}.
+         */
+        bitbucketServerConfig?: string;
         /**
          * The full resource name of the github enterprise config.
          * Format: projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}. projects/{project}/githubEnterpriseConfigs/{id}.
@@ -12888,6 +12931,7 @@ export namespace composer {
         cloudComposerConnectionSubnetwork: string;
         cloudComposerNetworkIpv4CidrBlock: string;
         cloudSqlIpv4CidrBlock: string;
+        connectionType: string;
         enablePrivateEndpoint?: boolean;
         enablePrivatelyUsedPublicIps: boolean;
         masterIpv4CidrBlock: string;
@@ -13036,6 +13080,7 @@ export namespace composer {
         cloudComposerConnectionSubnetwork: string;
         cloudComposerNetworkIpv4CidrBlock: string;
         cloudSqlIpv4CidrBlock: string;
+        connectionType: string;
         enablePrivateEndpoint: boolean;
         enablePrivatelyUsedPublicIps: boolean;
         masterIpv4CidrBlock: string;
@@ -15336,6 +15381,7 @@ export namespace compute {
          * read-write mode.
          */
         mode: string;
+        provisionedIops: number;
         /**
          * (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
          */
@@ -15705,6 +15751,7 @@ export namespace compute {
          * read-write mode.
          */
         mode: string;
+        provisionedIops: number;
         /**
          * (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
          */
@@ -17776,6 +17823,7 @@ export namespace compute {
          * read-write mode.
          */
         mode: string;
+        provisionedIops: number;
         /**
          * - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
          */
@@ -20217,6 +20265,7 @@ export namespace compute {
          * read-write mode.
          */
         mode: string;
+        provisionedIops: number;
         /**
          * - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
          */
@@ -20868,6 +20917,105 @@ export namespace compute {
          * Possible values are: `ADVANCED`, `ADVANCED_PREVIEW`, `STANDARD`.
          */
         ddosProtection: string;
+    }
+
+    export interface RegionSecurityPolicyRuleMatch {
+        /**
+         * The configuration options available when specifying versionedExpr.
+         * This field must be specified if versionedExpr is specified and cannot be specified if versionedExpr is not specified.
+         * Structure is documented below.
+         */
+        config?: outputs.compute.RegionSecurityPolicyRuleMatchConfig;
+        /**
+         * Preconfigured versioned expression. If this field is specified, config must also be specified.
+         * Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding srcIpRange field in config.
+         * Possible values are: `SRC_IPS_V1`.
+         */
+        versionedExpr?: string;
+    }
+
+    export interface RegionSecurityPolicyRuleMatchConfig {
+        /**
+         * CIDR IP address range. Maximum number of srcIpRanges allowed is 10.
+         */
+        srcIpRanges?: string[];
+    }
+
+    export interface RegionSecurityPolicyRuleNetworkMatch {
+        /**
+         * Destination IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+         */
+        destIpRanges?: string[];
+        /**
+         * Destination port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+         */
+        destPorts?: string[];
+        /**
+         * IPv4 protocol / IPv6 next header (after extension headers). Each element can be an 8-bit unsigned decimal number (e.g. "6"), range (e.g. "253-254"), or one of the following protocol names: "tcp", "udp", "icmp", "esp", "ah", "ipip", or "sctp".
+         */
+        ipProtocols?: string[];
+        /**
+         * BGP Autonomous System Number associated with the source IP address.
+         */
+        srcAsns?: number[];
+        /**
+         * Source IPv4/IPv6 addresses or CIDR prefixes, in standard text format.
+         */
+        srcIpRanges?: string[];
+        /**
+         * Source port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
+         */
+        srcPorts?: string[];
+        /**
+         * Two-letter ISO 3166-1 alpha-2 country code associated with the source IP address.
+         */
+        srcRegionCodes?: string[];
+        /**
+         * User-defined fields. Each element names a defined field and lists the matching values for that field.
+         * Structure is documented below.
+         */
+        userDefinedFields?: outputs.compute.RegionSecurityPolicyRuleNetworkMatchUserDefinedField[];
+    }
+
+    export interface RegionSecurityPolicyRuleNetworkMatchUserDefinedField {
+        /**
+         * Name of the user-defined field, as given in the definition.
+         */
+        name?: string;
+        /**
+         * Matching values of the field. Each element can be a 32-bit unsigned decimal or hexadecimal (starting with "0x") number (e.g. "64") or range (e.g. "0x400-0x7ff").
+         */
+        values?: string[];
+    }
+
+    export interface RegionSecurityPolicyUserDefinedField {
+        /**
+         * The base relative to which 'offset' is measured. Possible values are:
+         * - IPV4: Points to the beginning of the IPv4 header.
+         * - IPV6: Points to the beginning of the IPv6 header.
+         * - TCP: Points to the beginning of the TCP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments.
+         * - UDP: Points to the beginning of the UDP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments.
+         * Possible values are: `IPV4`, `IPV6`, `TCP`, `UDP`.
+         */
+        base: string;
+        /**
+         * If specified, apply this mask (bitwise AND) to the field to ignore bits before matching.
+         * Encoded as a hexadecimal number (starting with "0x").
+         * The last byte of the field (in network byte order) corresponds to the least significant byte of the mask.
+         */
+        mask?: string;
+        /**
+         * The name of this field. Must be unique within the policy.
+         */
+        name?: string;
+        /**
+         * Offset of the first byte of the field (in network byte order) relative to 'base'.
+         */
+        offset?: number;
+        /**
+         * Size of the field in bytes. Valid values: 1-4.
+         */
+        size?: number;
     }
 
     export interface RegionUrlMapDefaultRouteAction {
@@ -22970,6 +23118,10 @@ export namespace compute {
          * * VERBOSE - Verbose log level.
          */
         logLevel: string;
+        /**
+         * ) An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+         */
+        userIpRequestHeaders?: string[];
     }
 
     export interface SecurityPolicyAdvancedOptionsConfigJsonCustomConfig {
@@ -29625,6 +29777,11 @@ export namespace databasemigrationservice {
          * Currently supported values located at https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles#sqldatabaseversion
          */
         databaseVersion?: string;
+        /**
+         * The edition of the given Cloud SQL instance.
+         * Possible values are: `ENTERPRISE`, `ENTERPRISE_PLUS`.
+         */
+        edition?: string;
         /**
          * The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
          * Structure is documented below.
@@ -37833,6 +37990,18 @@ export namespace dataproc {
         subnetwork: string;
     }
 
+    export interface MetastoreServiceScalingConfig {
+        /**
+         * Metastore instance sizes.
+         * Possible values are: `EXTRA_SMALL`, `SMALL`, `MEDIUM`, `LARGE`, `EXTRA_LARGE`.
+         */
+        instanceSize?: string;
+        /**
+         * Scaling factor, in increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
+         */
+        scalingFactor?: number;
+    }
+
     export interface MetastoreServiceTelemetryConfig {
         /**
          * The output format of the Dataproc Metastore service's logs.
@@ -40887,7 +41056,7 @@ export namespace dns {
          * Structure is documented below.
          */
         gkeClusters?: outputs.dns.ManagedZonePrivateVisibilityConfigGkeCluster[];
-        networks: outputs.dns.ManagedZonePrivateVisibilityConfigNetwork[];
+        networks?: outputs.dns.ManagedZonePrivateVisibilityConfigNetwork[];
     }
 
     export interface ManagedZonePrivateVisibilityConfigGkeCluster {
@@ -41016,7 +41185,7 @@ export namespace dns {
          */
         ipProtocol: string;
         /**
-         * The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb"]
+         * The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
          */
         loadBalancerType: string;
         /**
@@ -41091,7 +41260,7 @@ export namespace dns {
          */
         ipProtocol: string;
         /**
-         * The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb"]
+         * The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
          */
         loadBalancerType: string;
         /**
@@ -41130,7 +41299,7 @@ export namespace dns {
          */
         ipProtocol: string;
         /**
-         * The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb"]
+         * The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
          */
         loadBalancerType: string;
         /**
@@ -41185,7 +41354,7 @@ export namespace dns {
          */
         ipProtocol: string;
         /**
-         * The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb"]
+         * The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb", "globalL7ilb"]
          */
         loadBalancerType: string;
         /**
@@ -44104,10 +44273,15 @@ export namespace gkeonprem {
         /**
          * (Output)
          * The Vsphere datastore used by the Control Plane Node.
+         */
+        datastore: string;
+        /**
+         * (Output)
+         * The Vsphere storage policy used by the control plane Node.
          *
          * - - -
          */
-        datastore: string;
+        storagePolicyName: string;
     }
 
     export interface VMwareClusterDataplaneV2 {
@@ -44513,8 +44687,6 @@ export namespace gkeonprem {
         /**
          * (Output)
          * The Vsphere datastore used by the Control Plane Node.
-         *
-         * - - -
          */
         datastore: string;
         /**
@@ -44527,6 +44699,13 @@ export namespace gkeonprem {
          * The name of the vCenter resource pool for the user cluster.
          */
         resourcePool: string;
+        /**
+         * (Output)
+         * The Vsphere storage policy used by the control plane Node.
+         *
+         * - - -
+         */
+        storagePolicyName: string;
     }
 
     export interface VMwareNodePoolConfig {

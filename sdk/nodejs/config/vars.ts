@@ -97,6 +97,14 @@ Object.defineProperty(exports, "assuredWorkloadsCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const backupDrCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "backupDrCustomEndpoint", {
+    get() {
+        return __config.get("backupDrCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const batching: outputs.config.Batching | undefined;
 Object.defineProperty(exports, "batching", {
     get() {

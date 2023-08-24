@@ -21,7 +21,8 @@ class RegionSecurityPolicyArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input[str]] = None,
+                 user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyUserDefinedFieldArgs']]]] = None):
         """
         The set of arguments for constructing a RegionSecurityPolicy resource.
         :param pulumi.Input['RegionSecurityPolicyDdosProtectionConfigArgs'] ddos_protection_config: Configuration for Google Cloud Armor DDOS Proctection Config.
@@ -42,6 +43,10 @@ class RegionSecurityPolicyArgs:
                - CLOUD_ARMOR_NETWORK: Cloud Armor network policies can be configured to filter packets targeting network load balancing resources such as backend services, target pools, target instances, and instances with external IPs. They filter requests before the request is served from the application.
                This field can be set only at resource creation time.
                Possible values are: `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_NETWORK`.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyUserDefinedFieldArgs']]] user_defined_fields: Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies.
+               A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits.
+               Rules may then specify matching values for these fields.
+               Structure is documented below.
         """
         if ddos_protection_config is not None:
             pulumi.set(__self__, "ddos_protection_config", ddos_protection_config)
@@ -55,6 +60,8 @@ class RegionSecurityPolicyArgs:
             pulumi.set(__self__, "region", region)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if user_defined_fields is not None:
+            pulumi.set(__self__, "user_defined_fields", user_defined_fields)
 
     @property
     @pulumi.getter(name="ddosProtectionConfig")
@@ -140,6 +147,21 @@ class RegionSecurityPolicyArgs:
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
 
+    @property
+    @pulumi.getter(name="userDefinedFields")
+    def user_defined_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyUserDefinedFieldArgs']]]]:
+        """
+        Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies.
+        A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits.
+        Rules may then specify matching values for these fields.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "user_defined_fields")
+
+    @user_defined_fields.setter
+    def user_defined_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyUserDefinedFieldArgs']]]]):
+        pulumi.set(self, "user_defined_fields", value)
+
 
 @pulumi.input_type
 class _RegionSecurityPolicyState:
@@ -153,7 +175,8 @@ class _RegionSecurityPolicyState:
                  region: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_policy_id: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input[str]] = None,
+                 user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyUserDefinedFieldArgs']]]] = None):
         """
         Input properties used for looking up and filtering RegionSecurityPolicy resources.
         :param pulumi.Input['RegionSecurityPolicyDdosProtectionConfigArgs'] ddos_protection_config: Configuration for Google Cloud Armor DDOS Proctection Config.
@@ -179,6 +202,10 @@ class _RegionSecurityPolicyState:
                - CLOUD_ARMOR_NETWORK: Cloud Armor network policies can be configured to filter packets targeting network load balancing resources such as backend services, target pools, target instances, and instances with external IPs. They filter requests before the request is served from the application.
                This field can be set only at resource creation time.
                Possible values are: `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_NETWORK`.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyUserDefinedFieldArgs']]] user_defined_fields: Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies.
+               A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits.
+               Rules may then specify matching values for these fields.
+               Structure is documented below.
         """
         if ddos_protection_config is not None:
             pulumi.set(__self__, "ddos_protection_config", ddos_protection_config)
@@ -200,6 +227,8 @@ class _RegionSecurityPolicyState:
             pulumi.set(__self__, "self_link_with_policy_id", self_link_with_policy_id)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if user_defined_fields is not None:
+            pulumi.set(__self__, "user_defined_fields", user_defined_fields)
 
     @property
     @pulumi.getter(name="ddosProtectionConfig")
@@ -334,6 +363,21 @@ class _RegionSecurityPolicyState:
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
 
+    @property
+    @pulumi.getter(name="userDefinedFields")
+    def user_defined_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyUserDefinedFieldArgs']]]]:
+        """
+        Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies.
+        A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits.
+        Rules may then specify matching values for these fields.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "user_defined_fields")
+
+    @user_defined_fields.setter
+    def user_defined_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionSecurityPolicyUserDefinedFieldArgs']]]]):
+        pulumi.set(self, "user_defined_fields", value)
+
 
 class RegionSecurityPolicy(pulumi.CustomResource):
     @overload
@@ -346,6 +390,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
+                 user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionSecurityPolicyUserDefinedFieldArgs']]]]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -372,6 +417,33 @@ class RegionSecurityPolicy(pulumi.CustomResource):
             ddos_protection_config=gcp.compute.RegionSecurityPolicyDdosProtectionConfigArgs(
                 ddos_protection="ADVANCED_PREVIEW",
             ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Region Security Policy With User Defined Fields
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        region_sec_policy_user_defined_fields = gcp.compute.RegionSecurityPolicy("region-sec-policy-user-defined-fields",
+            description="with user defined fields",
+            type="CLOUD_ARMOR_NETWORK",
+            user_defined_fields=[
+                gcp.compute.RegionSecurityPolicyUserDefinedFieldArgs(
+                    name="SIG1_AT_0",
+                    base="UDP",
+                    offset=8,
+                    size=2,
+                    mask="0x8F00",
+                ),
+                gcp.compute.RegionSecurityPolicyUserDefinedFieldArgs(
+                    name="SIG2_AT_8",
+                    base="UDP",
+                    offset=16,
+                    size=4,
+                    mask="0xFFFFFFFF",
+                ),
+            ],
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
@@ -415,6 +487,10 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                - CLOUD_ARMOR_NETWORK: Cloud Armor network policies can be configured to filter packets targeting network load balancing resources such as backend services, target pools, target instances, and instances with external IPs. They filter requests before the request is served from the application.
                This field can be set only at resource creation time.
                Possible values are: `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_NETWORK`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionSecurityPolicyUserDefinedFieldArgs']]]] user_defined_fields: Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies.
+               A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits.
+               Rules may then specify matching values for these fields.
+               Structure is documented below.
         """
         ...
     @overload
@@ -447,6 +523,33 @@ class RegionSecurityPolicy(pulumi.CustomResource):
             ddos_protection_config=gcp.compute.RegionSecurityPolicyDdosProtectionConfigArgs(
                 ddos_protection="ADVANCED_PREVIEW",
             ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Region Security Policy With User Defined Fields
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        region_sec_policy_user_defined_fields = gcp.compute.RegionSecurityPolicy("region-sec-policy-user-defined-fields",
+            description="with user defined fields",
+            type="CLOUD_ARMOR_NETWORK",
+            user_defined_fields=[
+                gcp.compute.RegionSecurityPolicyUserDefinedFieldArgs(
+                    name="SIG1_AT_0",
+                    base="UDP",
+                    offset=8,
+                    size=2,
+                    mask="0x8F00",
+                ),
+                gcp.compute.RegionSecurityPolicyUserDefinedFieldArgs(
+                    name="SIG2_AT_8",
+                    base="UDP",
+                    offset=16,
+                    size=4,
+                    mask="0xFFFFFFFF",
+                ),
+            ],
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
@@ -491,6 +594,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
+                 user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionSecurityPolicyUserDefinedFieldArgs']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -506,6 +610,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
             __props__.__dict__["type"] = type
+            __props__.__dict__["user_defined_fields"] = user_defined_fields
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["policy_id"] = None
             __props__.__dict__["self_link"] = None
@@ -529,7 +634,8 @@ class RegionSecurityPolicy(pulumi.CustomResource):
             region: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             self_link_with_policy_id: Optional[pulumi.Input[str]] = None,
-            type: Optional[pulumi.Input[str]] = None) -> 'RegionSecurityPolicy':
+            type: Optional[pulumi.Input[str]] = None,
+            user_defined_fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionSecurityPolicyUserDefinedFieldArgs']]]]] = None) -> 'RegionSecurityPolicy':
         """
         Get an existing RegionSecurityPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -560,6 +666,10 @@ class RegionSecurityPolicy(pulumi.CustomResource):
                - CLOUD_ARMOR_NETWORK: Cloud Armor network policies can be configured to filter packets targeting network load balancing resources such as backend services, target pools, target instances, and instances with external IPs. They filter requests before the request is served from the application.
                This field can be set only at resource creation time.
                Possible values are: `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_NETWORK`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionSecurityPolicyUserDefinedFieldArgs']]]] user_defined_fields: Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies.
+               A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits.
+               Rules may then specify matching values for these fields.
+               Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -575,6 +685,7 @@ class RegionSecurityPolicy(pulumi.CustomResource):
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["self_link_with_policy_id"] = self_link_with_policy_id
         __props__.__dict__["type"] = type
+        __props__.__dict__["user_defined_fields"] = user_defined_fields
         return RegionSecurityPolicy(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -669,4 +780,15 @@ class RegionSecurityPolicy(pulumi.CustomResource):
         Possible values are: `CLOUD_ARMOR`, `CLOUD_ARMOR_EDGE`, `CLOUD_ARMOR_NETWORK`.
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="userDefinedFields")
+    def user_defined_fields(self) -> pulumi.Output[Optional[Sequence['outputs.RegionSecurityPolicyUserDefinedField']]]:
+        """
+        Definitions of user-defined fields for CLOUD_ARMOR_NETWORK policies.
+        A user-defined field consists of up to 4 bytes extracted from a fixed offset in the packet, relative to the IPv4, IPv6, TCP, or UDP header, with an optional mask to select certain bits.
+        Rules may then specify matching values for these fields.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "user_defined_fields")
 
