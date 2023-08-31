@@ -1,6 +1,6 @@
 module github.com/pulumi/pulumi-gcp/examples/v5
 
-go 1.20
+go 1.21
 
 require (
 	github.com/pulumi/pulumi/pkg/v3 v3.17.0
