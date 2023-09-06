@@ -11,7 +11,7 @@ namespace Pulumi.Gcp.Storage.Outputs
 {
 
     [OutputType]
-    public sealed class BucketIAMMemberCondition
+    public sealed class BucketIamMemberCondition
     {
         /// <summary>
         /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.Storage.Outputs
         public readonly string Title;
 
         [OutputConstructor]
-        private BucketIAMMemberCondition(
+        private BucketIamMemberCondition(
             string? description,
 
             string expression,

@@ -34,11 +34,11 @@ namespace Pulumi.Gcp.Notebooks
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     var admin = Gcp.Organizations.GetIamPolicy.Invoke(new()
     ///     {
     ///         Bindings = new[]
     ///         {
-    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             new Gcp.Organizations.Inputs.GetIamPolicyBindingInputArgs
     ///             {
     ///                 Role = "roles/viewer",
     ///                 Members = new[]
@@ -54,7 +54,7 @@ namespace Pulumi.Gcp.Notebooks
     ///         Project = google_notebooks_runtime.Runtime.Project,
     ///         Location = google_notebooks_runtime.Runtime.Location,
     ///         RuntimeName = google_notebooks_runtime.Runtime.Name,
-    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///         PolicyData = admin.Apply(getIamPolicyResult =&gt; getIamPolicyResult.PolicyData),
     ///     });
     /// 
     /// });

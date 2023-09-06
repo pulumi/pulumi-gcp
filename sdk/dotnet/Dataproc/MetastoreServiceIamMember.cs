@@ -34,11 +34,11 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     var admin = Gcp.Organizations.GetIamPolicy.Invoke(new()
     ///     {
     ///         Bindings = new[]
     ///         {
-    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             new Gcp.Organizations.Inputs.GetIamPolicyBindingInputArgs
     ///             {
     ///                 Role = "roles/viewer",
     ///                 Members = new[]
@@ -54,7 +54,7 @@ namespace Pulumi.Gcp.Dataproc
     ///         Project = google_dataproc_metastore_service.Default.Project,
     ///         Location = google_dataproc_metastore_service.Default.Location,
     ///         ServiceId = google_dataproc_metastore_service.Default.Service_id,
-    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///         PolicyData = admin.Apply(getIamPolicyResult =&gt; getIamPolicyResult.PolicyData),
     ///     });
     /// 
     /// });

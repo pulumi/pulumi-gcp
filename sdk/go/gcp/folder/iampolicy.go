@@ -295,7 +295,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:folder/iAMPolicy:IamPolicy my_folder "folder roles/viewer user:foo@example.com"
+//	$ pulumi import gcp:folder/iamPolicy:IamPolicy my_folder "folder roles/viewer user:foo@example.com"
 //
 // ```
 //
@@ -305,7 +305,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:folder/iAMPolicy:IamPolicy my_folder "folder roles/viewer"
+//	$ pulumi import gcp:folder/iamPolicy:IamPolicy my_folder "folder roles/viewer"
 //
 // ```
 //
@@ -315,7 +315,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:folder/iAMPolicy:IamPolicy my_folder folder
+//	$ pulumi import gcp:folder/iamPolicy:IamPolicy my_folder folder
 //
 // ```
 //
@@ -323,7 +323,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:folder/iAMPolicy:IamPolicy my_folder "folder foo.googleapis.com"
+//	$ pulumi import gcp:folder/iamPolicy:IamPolicy my_folder "folder foo.googleapis.com"
 //
 // ```
 //
@@ -333,11 +333,9 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:folder/iAMPolicy:IamPolicy to include the title of condition, e.g. `google_folder_iam_binding.my_folder "folder roles/{{role_id}} condition-title"`
+//	$ pulumi import gcp:folder/iamPolicy:IamPolicy to include the title of condition, e.g. `google_folder_iam_binding.my_folder "folder roles/{{role_id}} condition-title"`
 //
 // ```
-//
-// Deprecated: gcp.folder/iampolicy.IamPolicy has been deprecated in favor of gcp.folder/iampolicy.IamPolicy
 type IamPolicy struct {
 	pulumi.CustomResourceState
 
@@ -369,15 +367,9 @@ func NewIamPolicy(ctx *pulumi.Context,
 	if args.PolicyData == nil {
 		return nil, errors.New("invalid value for required argument 'PolicyData'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("gcp:folder/iAMPolicy:IAMPolicy"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource IamPolicy
-	err := ctx.RegisterResource("gcp:folder/iAMPolicy:IamPolicy", name, args, &resource, opts...)
+	err := ctx.RegisterResource("gcp:folder/iamPolicy:IamPolicy", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -389,7 +381,7 @@ func NewIamPolicy(ctx *pulumi.Context,
 func GetIamPolicy(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *IamPolicyState, opts ...pulumi.ResourceOption) (*IamPolicy, error) {
 	var resource IamPolicy
-	err := ctx.ReadResource("gcp:folder/iAMPolicy:IamPolicy", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("gcp:folder/iamPolicy:IamPolicy", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  *
  * const gcsAccount = gcp.storage.getProjectServiceAccount({});
  * const topic = new gcp.pubsub.Topic("topic", {});
- * const binding = new gcp.pubsub.TopicIAMBinding("binding", {
+ * const binding = new gcp.pubsub.TopicIamBinding("binding", {
  *     topic: topic.id,
  *     role: "roles/pubsub.publisher",
  *     members: [gcsAccount.then(gcsAccount => `serviceAccount:${gcsAccount.emailAddress}`)],

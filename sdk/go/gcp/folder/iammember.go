@@ -295,7 +295,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:folder/iAMMember:IamMember my_folder "folder roles/viewer user:foo@example.com"
+//	$ pulumi import gcp:folder/iamMember:IamMember my_folder "folder roles/viewer user:foo@example.com"
 //
 // ```
 //
@@ -305,7 +305,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:folder/iAMMember:IamMember my_folder "folder roles/viewer"
+//	$ pulumi import gcp:folder/iamMember:IamMember my_folder "folder roles/viewer"
 //
 // ```
 //
@@ -315,7 +315,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:folder/iAMMember:IamMember my_folder folder
+//	$ pulumi import gcp:folder/iamMember:IamMember my_folder folder
 //
 // ```
 //
@@ -323,7 +323,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:folder/iAMMember:IamMember my_folder "folder foo.googleapis.com"
+//	$ pulumi import gcp:folder/iamMember:IamMember my_folder "folder foo.googleapis.com"
 //
 // ```
 //
@@ -333,11 +333,9 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:folder/iAMMember:IamMember to include the title of condition, e.g. `google_folder_iam_binding.my_folder "folder roles/{{role_id}} condition-title"`
+//	$ pulumi import gcp:folder/iamMember:IamMember to include the title of condition, e.g. `google_folder_iam_binding.my_folder "folder roles/{{role_id}} condition-title"`
 //
 // ```
-//
-// Deprecated: gcp.folder/iammember.IamMember has been deprecated in favor of gcp.folder/iammember.IamMember
 type IamMember struct {
 	pulumi.CustomResourceState
 
@@ -371,15 +369,9 @@ func NewIamMember(ctx *pulumi.Context,
 	if args.Role == nil {
 		return nil, errors.New("invalid value for required argument 'Role'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("gcp:folder/iAMMember:IAMMember"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource IamMember
-	err := ctx.RegisterResource("gcp:folder/iAMMember:IamMember", name, args, &resource, opts...)
+	err := ctx.RegisterResource("gcp:folder/iamMember:IamMember", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -391,7 +383,7 @@ func NewIamMember(ctx *pulumi.Context,
 func GetIamMember(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *IamMemberState, opts ...pulumi.ResourceOption) (*IamMember, error) {
 	var resource IamMember
-	err := ctx.ReadResource("gcp:folder/iAMMember:IamMember", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("gcp:folder/iamMember:IamMember", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

@@ -11,18 +11,18 @@ from .. import _utilities
 
 __all__ = [
     'AccessApprovalSettingsEnrolledServiceArgs',
-    'IAMBindingConditionArgs',
-    'IAMMemberConditionArgs',
     'IamAuditConfigAuditLogConfigArgs',
+    'IamBindingConditionArgs',
+    'IamMemberConditionArgs',
     'PolicyBooleanPolicyArgs',
     'PolicyListPolicyArgs',
     'PolicyListPolicyAllowArgs',
     'PolicyListPolicyDenyArgs',
     'PolicyRestorePolicyArgs',
-    'GetIAMPolicyAuditConfigArgs',
-    'GetIAMPolicyAuditConfigAuditLogConfigArgs',
-    'GetIAMPolicyBindingArgs',
-    'GetIAMPolicyBindingConditionArgs',
+    'GetIamPolicyAuditConfigArgs',
+    'GetIamPolicyAuditConfigAuditLogConfigArgs',
+    'GetIamPolicyBindingArgs',
+    'GetIamPolicyBindingConditionArgs',
 ]
 
 @pulumi.input_type
@@ -92,7 +92,55 @@ class AccessApprovalSettingsEnrolledServiceArgs:
 
 
 @pulumi.input_type
-class IAMBindingConditionArgs:
+class IamAuditConfigAuditLogConfigArgs:
+    def __init__(__self__, *,
+                 log_type: pulumi.Input[str],
+                 exempted_members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] log_type: Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] exempted_members: Identities that do not cause logging for this type of permission.
+               Each entry can have one of the following values:
+               * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+               * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        """
+        pulumi.set(__self__, "log_type", log_type)
+        if exempted_members is not None:
+            pulumi.set(__self__, "exempted_members", exempted_members)
+
+    @property
+    @pulumi.getter(name="logType")
+    def log_type(self) -> pulumi.Input[str]:
+        """
+        Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
+        """
+        return pulumi.get(self, "log_type")
+
+    @log_type.setter
+    def log_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "log_type", value)
+
+    @property
+    @pulumi.getter(name="exemptedMembers")
+    def exempted_members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Identities that do not cause logging for this type of permission.
+        Each entry can have one of the following values:
+        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        """
+        return pulumi.get(self, "exempted_members")
+
+    @exempted_members.setter
+    def exempted_members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "exempted_members", value)
+
+
+@pulumi.input_type
+class IamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -131,7 +179,7 @@ class IAMBindingConditionArgs:
 
 
 @pulumi.input_type
-class IAMMemberConditionArgs:
+class IamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -189,54 +237,6 @@ class IAMMemberConditionArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-
-@pulumi.input_type
-class IamAuditConfigAuditLogConfigArgs:
-    def __init__(__self__, *,
-                 log_type: pulumi.Input[str],
-                 exempted_members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] log_type: Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] exempted_members: Identities that do not cause logging for this type of permission.
-               Each entry can have one of the following values:
-               * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-               * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-               * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-               * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-        """
-        pulumi.set(__self__, "log_type", log_type)
-        if exempted_members is not None:
-            pulumi.set(__self__, "exempted_members", exempted_members)
-
-    @property
-    @pulumi.getter(name="logType")
-    def log_type(self) -> pulumi.Input[str]:
-        """
-        Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
-        """
-        return pulumi.get(self, "log_type")
-
-    @log_type.setter
-    def log_type(self, value: pulumi.Input[str]):
-        pulumi.set(self, "log_type", value)
-
-    @property
-    @pulumi.getter(name="exemptedMembers")
-    def exempted_members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Identities that do not cause logging for this type of permission.
-        Each entry can have one of the following values:
-        * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
-        * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-        * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-        * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-        """
-        return pulumi.get(self, "exempted_members")
-
-    @exempted_members.setter
-    def exempted_members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "exempted_members", value)
 
 
 @pulumi.input_type
@@ -435,12 +435,12 @@ class PolicyRestorePolicyArgs:
 
 
 @pulumi.input_type
-class GetIAMPolicyAuditConfigArgs:
+class GetIamPolicyAuditConfigArgs:
     def __init__(__self__, *,
-                 audit_log_configs: Sequence['GetIAMPolicyAuditConfigAuditLogConfigArgs'],
+                 audit_log_configs: Sequence['GetIamPolicyAuditConfigAuditLogConfigArgs'],
                  service: str):
         """
-        :param Sequence['GetIAMPolicyAuditConfigAuditLogConfigArgs'] audit_log_configs: A nested block that defines the operations you'd like to log.
+        :param Sequence['GetIamPolicyAuditConfigAuditLogConfigArgs'] audit_log_configs: A nested block that defines the operations you'd like to log.
         :param str service: Defines a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
         """
         pulumi.set(__self__, "audit_log_configs", audit_log_configs)
@@ -448,14 +448,14 @@ class GetIAMPolicyAuditConfigArgs:
 
     @property
     @pulumi.getter(name="auditLogConfigs")
-    def audit_log_configs(self) -> Sequence['GetIAMPolicyAuditConfigAuditLogConfigArgs']:
+    def audit_log_configs(self) -> Sequence['GetIamPolicyAuditConfigAuditLogConfigArgs']:
         """
         A nested block that defines the operations you'd like to log.
         """
         return pulumi.get(self, "audit_log_configs")
 
     @audit_log_configs.setter
-    def audit_log_configs(self, value: Sequence['GetIAMPolicyAuditConfigAuditLogConfigArgs']):
+    def audit_log_configs(self, value: Sequence['GetIamPolicyAuditConfigAuditLogConfigArgs']):
         pulumi.set(self, "audit_log_configs", value)
 
     @property
@@ -472,7 +472,7 @@ class GetIAMPolicyAuditConfigArgs:
 
 
 @pulumi.input_type
-class GetIAMPolicyAuditConfigAuditLogConfigArgs:
+class GetIamPolicyAuditConfigAuditLogConfigArgs:
     def __init__(__self__, *,
                  log_type: str,
                  exempted_members: Optional[Sequence[str]] = None):
@@ -510,11 +510,11 @@ class GetIAMPolicyAuditConfigAuditLogConfigArgs:
 
 
 @pulumi.input_type
-class GetIAMPolicyBindingArgs:
+class GetIamPolicyBindingArgs:
     def __init__(__self__, *,
                  members: Sequence[str],
                  role: str,
-                 condition: Optional['GetIAMPolicyBindingConditionArgs'] = None):
+                 condition: Optional['GetIamPolicyBindingConditionArgs'] = None):
         """
         :param Sequence[str] members: An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
                Each entry can have one of the following values:
@@ -527,7 +527,7 @@ class GetIAMPolicyBindingArgs:
         :param str role: The role/permission that will be granted to the members.
                See the [IAM Roles](https://cloud.google.com/compute/docs/access/iam) documentation for a complete list of roles.
                Note that custom roles must be of the format `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        :param 'GetIAMPolicyBindingConditionArgs' condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
+        :param 'GetIamPolicyBindingConditionArgs' condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
         """
         pulumi.set(__self__, "members", members)
         pulumi.set(__self__, "role", role)
@@ -569,19 +569,19 @@ class GetIAMPolicyBindingArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional['GetIAMPolicyBindingConditionArgs']:
+    def condition(self) -> Optional['GetIamPolicyBindingConditionArgs']:
         """
         An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
         """
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional['GetIAMPolicyBindingConditionArgs']):
+    def condition(self, value: Optional['GetIamPolicyBindingConditionArgs']):
         pulumi.set(self, "condition", value)
 
 
 @pulumi.input_type
-class GetIAMPolicyBindingConditionArgs:
+class GetIamPolicyBindingConditionArgs:
     def __init__(__self__, *,
                  expression: str,
                  title: str,

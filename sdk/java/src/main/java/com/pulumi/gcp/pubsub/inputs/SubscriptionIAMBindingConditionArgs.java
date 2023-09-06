@@ -11,9 +11,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class SubscriptionIAMBindingConditionArgs extends com.pulumi.resources.ResourceArgs {
+public final class SubscriptionIamBindingConditionArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final SubscriptionIAMBindingConditionArgs Empty = new SubscriptionIAMBindingConditionArgs();
+    public static final SubscriptionIamBindingConditionArgs Empty = new SubscriptionIamBindingConditionArgs();
 
     @Import(name="description")
     private @Nullable Output<String> description;
@@ -36,9 +36,9 @@ public final class SubscriptionIAMBindingConditionArgs extends com.pulumi.resour
         return this.title;
     }
 
-    private SubscriptionIAMBindingConditionArgs() {}
+    private SubscriptionIamBindingConditionArgs() {}
 
-    private SubscriptionIAMBindingConditionArgs(SubscriptionIAMBindingConditionArgs $) {
+    private SubscriptionIamBindingConditionArgs(SubscriptionIamBindingConditionArgs $) {
         this.description = $.description;
         this.expression = $.expression;
         this.title = $.title;
@@ -47,19 +47,19 @@ public final class SubscriptionIAMBindingConditionArgs extends com.pulumi.resour
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(SubscriptionIAMBindingConditionArgs defaults) {
+    public static Builder builder(SubscriptionIamBindingConditionArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private SubscriptionIAMBindingConditionArgs $;
+        private SubscriptionIamBindingConditionArgs $;
 
         public Builder() {
-            $ = new SubscriptionIAMBindingConditionArgs();
+            $ = new SubscriptionIamBindingConditionArgs();
         }
 
-        public Builder(SubscriptionIAMBindingConditionArgs defaults) {
-            $ = new SubscriptionIAMBindingConditionArgs(Objects.requireNonNull(defaults));
+        public Builder(SubscriptionIamBindingConditionArgs defaults) {
+            $ = new SubscriptionIamBindingConditionArgs(Objects.requireNonNull(defaults));
         }
 
         public Builder description(@Nullable Output<String> description) {
@@ -89,7 +89,7 @@ public final class SubscriptionIAMBindingConditionArgs extends com.pulumi.resour
             return title(Output.of(title));
         }
 
-        public SubscriptionIAMBindingConditionArgs build() {
+        public SubscriptionIamBindingConditionArgs build() {
             $.expression = Objects.requireNonNull($.expression, "expected parameter 'expression' to be non-null");
             $.title = Objects.requireNonNull($.title, "expected parameter 'title' to be non-null");
             return $;

@@ -11,9 +11,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class TunnelInstanceIAMBindingConditionArgs extends com.pulumi.resources.ResourceArgs {
+public final class TunnelInstanceIamBindingConditionArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final TunnelInstanceIAMBindingConditionArgs Empty = new TunnelInstanceIAMBindingConditionArgs();
+    public static final TunnelInstanceIamBindingConditionArgs Empty = new TunnelInstanceIamBindingConditionArgs();
 
     /**
      * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -68,9 +68,9 @@ public final class TunnelInstanceIAMBindingConditionArgs extends com.pulumi.reso
         return this.title;
     }
 
-    private TunnelInstanceIAMBindingConditionArgs() {}
+    private TunnelInstanceIamBindingConditionArgs() {}
 
-    private TunnelInstanceIAMBindingConditionArgs(TunnelInstanceIAMBindingConditionArgs $) {
+    private TunnelInstanceIamBindingConditionArgs(TunnelInstanceIamBindingConditionArgs $) {
         this.description = $.description;
         this.expression = $.expression;
         this.title = $.title;
@@ -79,19 +79,19 @@ public final class TunnelInstanceIAMBindingConditionArgs extends com.pulumi.reso
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(TunnelInstanceIAMBindingConditionArgs defaults) {
+    public static Builder builder(TunnelInstanceIamBindingConditionArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private TunnelInstanceIAMBindingConditionArgs $;
+        private TunnelInstanceIamBindingConditionArgs $;
 
         public Builder() {
-            $ = new TunnelInstanceIAMBindingConditionArgs();
+            $ = new TunnelInstanceIamBindingConditionArgs();
         }
 
-        public Builder(TunnelInstanceIAMBindingConditionArgs defaults) {
-            $ = new TunnelInstanceIAMBindingConditionArgs(Objects.requireNonNull(defaults));
+        public Builder(TunnelInstanceIamBindingConditionArgs defaults) {
+            $ = new TunnelInstanceIamBindingConditionArgs(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -165,7 +165,7 @@ public final class TunnelInstanceIAMBindingConditionArgs extends com.pulumi.reso
             return title(Output.of(title));
         }
 
-        public TunnelInstanceIAMBindingConditionArgs build() {
+        public TunnelInstanceIamBindingConditionArgs build() {
             $.expression = Objects.requireNonNull($.expression, "expected parameter 'expression' to be non-null");
             $.title = Objects.requireNonNull($.title, "expected parameter 'title' to be non-null");
             return $;

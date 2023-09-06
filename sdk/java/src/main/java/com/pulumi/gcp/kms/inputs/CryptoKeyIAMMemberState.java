@@ -5,16 +5,16 @@ package com.pulumi.gcp.kms.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.gcp.kms.inputs.CryptoKeyIAMMemberConditionArgs;
+import com.pulumi.gcp.kms.inputs.CryptoKeyIamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class CryptoKeyIAMMemberState extends com.pulumi.resources.ResourceArgs {
+public final class CryptoKeyIamMemberState extends com.pulumi.resources.ResourceArgs {
 
-    public static final CryptoKeyIAMMemberState Empty = new CryptoKeyIAMMemberState();
+    public static final CryptoKeyIamMemberState Empty = new CryptoKeyIamMemberState();
 
     /**
      * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -22,14 +22,14 @@ public final class CryptoKeyIAMMemberState extends com.pulumi.resources.Resource
      * 
      */
     @Import(name="condition")
-    private @Nullable Output<CryptoKeyIAMMemberConditionArgs> condition;
+    private @Nullable Output<CryptoKeyIamMemberConditionArgs> condition;
 
     /**
      * @return ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      * 
      */
-    public Optional<Output<CryptoKeyIAMMemberConditionArgs>> condition() {
+    public Optional<Output<CryptoKeyIamMemberConditionArgs>> condition() {
         return Optional.ofNullable(this.condition);
     }
 
@@ -111,9 +111,9 @@ public final class CryptoKeyIAMMemberState extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.role);
     }
 
-    private CryptoKeyIAMMemberState() {}
+    private CryptoKeyIamMemberState() {}
 
-    private CryptoKeyIAMMemberState(CryptoKeyIAMMemberState $) {
+    private CryptoKeyIamMemberState(CryptoKeyIamMemberState $) {
         this.condition = $.condition;
         this.cryptoKeyId = $.cryptoKeyId;
         this.etag = $.etag;
@@ -124,19 +124,19 @@ public final class CryptoKeyIAMMemberState extends com.pulumi.resources.Resource
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(CryptoKeyIAMMemberState defaults) {
+    public static Builder builder(CryptoKeyIamMemberState defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private CryptoKeyIAMMemberState $;
+        private CryptoKeyIamMemberState $;
 
         public Builder() {
-            $ = new CryptoKeyIAMMemberState();
+            $ = new CryptoKeyIamMemberState();
         }
 
-        public Builder(CryptoKeyIAMMemberState defaults) {
-            $ = new CryptoKeyIAMMemberState(Objects.requireNonNull(defaults));
+        public Builder(CryptoKeyIamMemberState defaults) {
+            $ = new CryptoKeyIamMemberState(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -146,7 +146,7 @@ public final class CryptoKeyIAMMemberState extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-        public Builder condition(@Nullable Output<CryptoKeyIAMMemberConditionArgs> condition) {
+        public Builder condition(@Nullable Output<CryptoKeyIamMemberConditionArgs> condition) {
             $.condition = condition;
             return this;
         }
@@ -158,7 +158,7 @@ public final class CryptoKeyIAMMemberState extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-        public Builder condition(CryptoKeyIAMMemberConditionArgs condition) {
+        public Builder condition(CryptoKeyIamMemberConditionArgs condition) {
             return condition(Output.of(condition));
         }
 
@@ -260,7 +260,7 @@ public final class CryptoKeyIAMMemberState extends com.pulumi.resources.Resource
             return role(Output.of(role));
         }
 
-        public CryptoKeyIAMMemberState build() {
+        public CryptoKeyIamMemberState build() {
             return $;
         }
     }

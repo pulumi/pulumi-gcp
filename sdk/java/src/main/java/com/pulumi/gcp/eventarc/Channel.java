@@ -30,8 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.kms.KmsFunctions;
  * import com.pulumi.gcp.kms.inputs.GetKMSKeyRingArgs;
  * import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyArgs;
- * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
- * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
+ * import com.pulumi.gcp.kms.CryptoKeyIamMember;
+ * import com.pulumi.gcp.kms.CryptoKeyIamMemberArgs;
  * import com.pulumi.gcp.eventarc.Channel;
  * import com.pulumi.gcp.eventarc.ChannelArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *             .keyRing(testKeyRing.applyValue(getKMSKeyRingResult -&gt; getKMSKeyRingResult.id()))
  *             .build());
  * 
- *         var key1Member = new CryptoKeyIAMMember(&#34;key1Member&#34;, CryptoKeyIAMMemberArgs.builder()        
+ *         var key1Member = new CryptoKeyIamMember(&#34;key1Member&#34;, CryptoKeyIamMemberArgs.builder()        
  *             .cryptoKeyId(data.google_kms_crypto_key().key1().id())
  *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
  *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-eventarc.iam.gserviceaccount.com&#34;, testProject.applyValue(getProjectResult -&gt; getProjectResult.number())))

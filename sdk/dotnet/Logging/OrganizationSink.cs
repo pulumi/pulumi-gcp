@@ -38,7 +38,7 @@ namespace Pulumi.Gcp.Logging
     ///         Filter = "resource.type = gce_instance AND severity &gt;= WARNING",
     ///     });
     /// 
-    ///     var log_writer = new Gcp.Projects.IAMMember("log-writer", new()
+    ///     var log_writer = new Gcp.Projects.IamMember("log-writer", new()
     ///     {
     ///         Project = "your-project-id",
     ///         Role = "roles/storage.objectCreator",

@@ -5,16 +5,16 @@ package com.pulumi.gcp.kms;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.gcp.kms.inputs.KeyRingIAMMemberConditionArgs;
+import com.pulumi.gcp.kms.inputs.KeyRingIamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class KeyRingIAMMemberArgs extends com.pulumi.resources.ResourceArgs {
+public final class KeyRingIamMemberArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final KeyRingIAMMemberArgs Empty = new KeyRingIAMMemberArgs();
+    public static final KeyRingIamMemberArgs Empty = new KeyRingIamMemberArgs();
 
     /**
      * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -22,14 +22,14 @@ public final class KeyRingIAMMemberArgs extends com.pulumi.resources.ResourceArg
      * 
      */
     @Import(name="condition")
-    private @Nullable Output<KeyRingIAMMemberConditionArgs> condition;
+    private @Nullable Output<KeyRingIamMemberConditionArgs> condition;
 
     /**
      * @return ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      * 
      */
-    public Optional<Output<KeyRingIAMMemberConditionArgs>> condition() {
+    public Optional<Output<KeyRingIamMemberConditionArgs>> condition() {
         return Optional.ofNullable(this.condition);
     }
 
@@ -81,7 +81,7 @@ public final class KeyRingIAMMemberArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * The role that should be applied. Only one
-     * `gcp.kms.KeyRingIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.kms.KeyRingIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -90,7 +90,7 @@ public final class KeyRingIAMMemberArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return The role that should be applied. Only one
-     * `gcp.kms.KeyRingIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.kms.KeyRingIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -98,9 +98,9 @@ public final class KeyRingIAMMemberArgs extends com.pulumi.resources.ResourceArg
         return this.role;
     }
 
-    private KeyRingIAMMemberArgs() {}
+    private KeyRingIamMemberArgs() {}
 
-    private KeyRingIAMMemberArgs(KeyRingIAMMemberArgs $) {
+    private KeyRingIamMemberArgs(KeyRingIamMemberArgs $) {
         this.condition = $.condition;
         this.keyRingId = $.keyRingId;
         this.member = $.member;
@@ -110,19 +110,19 @@ public final class KeyRingIAMMemberArgs extends com.pulumi.resources.ResourceArg
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(KeyRingIAMMemberArgs defaults) {
+    public static Builder builder(KeyRingIamMemberArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private KeyRingIAMMemberArgs $;
+        private KeyRingIamMemberArgs $;
 
         public Builder() {
-            $ = new KeyRingIAMMemberArgs();
+            $ = new KeyRingIamMemberArgs();
         }
 
-        public Builder(KeyRingIAMMemberArgs defaults) {
-            $ = new KeyRingIAMMemberArgs(Objects.requireNonNull(defaults));
+        public Builder(KeyRingIamMemberArgs defaults) {
+            $ = new KeyRingIamMemberArgs(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -132,7 +132,7 @@ public final class KeyRingIAMMemberArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder condition(@Nullable Output<KeyRingIAMMemberConditionArgs> condition) {
+        public Builder condition(@Nullable Output<KeyRingIamMemberConditionArgs> condition) {
             $.condition = condition;
             return this;
         }
@@ -144,7 +144,7 @@ public final class KeyRingIAMMemberArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder condition(KeyRingIAMMemberConditionArgs condition) {
+        public Builder condition(KeyRingIamMemberConditionArgs condition) {
             return condition(Output.of(condition));
         }
 
@@ -204,7 +204,7 @@ public final class KeyRingIAMMemberArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.kms.KeyRingIAMBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.kms.KeyRingIamBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder
@@ -217,7 +217,7 @@ public final class KeyRingIAMMemberArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.kms.KeyRingIAMBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.kms.KeyRingIamBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder
@@ -227,7 +227,7 @@ public final class KeyRingIAMMemberArgs extends com.pulumi.resources.ResourceArg
             return role(Output.of(role));
         }
 
-        public KeyRingIAMMemberArgs build() {
+        public KeyRingIamMemberArgs build() {
             $.keyRingId = Objects.requireNonNull($.keyRingId, "expected parameter 'keyRingId' to be non-null");
             $.member = Objects.requireNonNull($.member, "expected parameter 'member' to be non-null");
             $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");

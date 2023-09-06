@@ -8,9 +8,9 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
-import com.pulumi.gcp.compute.SubnetworkIAMMemberArgs;
-import com.pulumi.gcp.compute.inputs.SubnetworkIAMMemberState;
-import com.pulumi.gcp.compute.outputs.SubnetworkIAMMemberCondition;
+import com.pulumi.gcp.compute.SubnetworkIamMemberArgs;
+import com.pulumi.gcp.compute.inputs.SubnetworkIamMemberState;
+import com.pulumi.gcp.compute.outputs.SubnetworkIamMemberCondition;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,17 +18,17 @@ import javax.annotation.Nullable;
 /**
  * Three different resources help you manage your IAM policy for Compute Engine Subnetwork. Each of these resources serves a different use case:
  * 
- * * `gcp.compute.SubnetworkIAMPolicy`: Authoritative. Sets the IAM policy for the subnetwork and replaces any existing policy already attached.
- * * `gcp.compute.SubnetworkIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the subnetwork are preserved.
- * * `gcp.compute.SubnetworkIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the subnetwork are preserved.
+ * * `gcp.compute.SubnetworkIamPolicy`: Authoritative. Sets the IAM policy for the subnetwork and replaces any existing policy already attached.
+ * * `gcp.compute.SubnetworkIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the subnetwork are preserved.
+ * * `gcp.compute.SubnetworkIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the subnetwork are preserved.
  * 
  * A data source can be used to retrieve policy data in advent you do not need creation
  * 
- * * `gcp.compute.SubnetworkIAMPolicy`: Retrieves the IAM policy for the subnetwork
+ * * `gcp.compute.SubnetworkIamPolicy`: Retrieves the IAM policy for the subnetwork
  * 
- * &gt; **Note:** `gcp.compute.SubnetworkIAMPolicy` **cannot** be used in conjunction with `gcp.compute.SubnetworkIAMBinding` and `gcp.compute.SubnetworkIAMMember` or they will fight over what your policy should be.
+ * &gt; **Note:** `gcp.compute.SubnetworkIamPolicy` **cannot** be used in conjunction with `gcp.compute.SubnetworkIamBinding` and `gcp.compute.SubnetworkIamMember` or they will fight over what your policy should be.
  * 
- * &gt; **Note:** `gcp.compute.SubnetworkIAMBinding` resources **can be** used in conjunction with `gcp.compute.SubnetworkIAMMember` resources **only if** they do not grant privilege to the same role.
+ * &gt; **Note:** `gcp.compute.SubnetworkIamBinding` resources **can be** used in conjunction with `gcp.compute.SubnetworkIamMember` resources **only if** they do not grant privilege to the same role.
  * 
  * &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
  * 
@@ -40,9 +40,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
- * import com.pulumi.gcp.compute.SubnetworkIAMPolicy;
- * import com.pulumi.gcp.compute.SubnetworkIAMPolicyArgs;
+ * import com.pulumi.gcp.organizations.inputs.GetIamPolicyArgs;
+ * import com.pulumi.gcp.compute.SubnetworkIamPolicy;
+ * import com.pulumi.gcp.compute.SubnetworkIamPolicyArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -56,18 +56,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
- *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *         final var admin = OrganizationsFunctions.getIamPolicy(GetIamPolicyArgs.builder()
+ *             .bindings(GetIamPolicyBindingArgs.builder()
  *                 .role(&#34;roles/compute.networkUser&#34;)
  *                 .members(&#34;user:jane@example.com&#34;)
  *                 .build())
  *             .build());
  * 
- *         var policy = new SubnetworkIAMPolicy(&#34;policy&#34;, SubnetworkIAMPolicyArgs.builder()        
+ *         var policy = new SubnetworkIamPolicy(&#34;policy&#34;, SubnetworkIamPolicyArgs.builder()        
  *             .project(google_compute_subnetwork.network-with-private-secondary-ip-ranges().project())
  *             .region(google_compute_subnetwork.network-with-private-secondary-ip-ranges().region())
  *             .subnetwork(google_compute_subnetwork.network-with-private-secondary-ip-ranges().name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIamPolicyResult -&gt; getIamPolicyResult.policyData()))
  *             .build());
  * 
  *     }
@@ -82,9 +82,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
- * import com.pulumi.gcp.compute.SubnetworkIAMPolicy;
- * import com.pulumi.gcp.compute.SubnetworkIAMPolicyArgs;
+ * import com.pulumi.gcp.organizations.inputs.GetIamPolicyArgs;
+ * import com.pulumi.gcp.compute.SubnetworkIamPolicy;
+ * import com.pulumi.gcp.compute.SubnetworkIamPolicyArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -98,11 +98,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
- *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *         final var admin = OrganizationsFunctions.getIamPolicy(GetIamPolicyArgs.builder()
+ *             .bindings(GetIamPolicyBindingArgs.builder()
  *                 .role(&#34;roles/compute.networkUser&#34;)
  *                 .members(&#34;user:jane@example.com&#34;)
- *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
+ *                 .condition(GetIamPolicyBindingConditionArgs.builder()
  *                     .title(&#34;expires_after_2019_12_31&#34;)
  *                     .description(&#34;Expiring at midnight of 2019-12-31&#34;)
  *                     .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
@@ -110,11 +110,11 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new SubnetworkIAMPolicy(&#34;policy&#34;, SubnetworkIAMPolicyArgs.builder()        
+ *         var policy = new SubnetworkIamPolicy(&#34;policy&#34;, SubnetworkIamPolicyArgs.builder()        
  *             .project(google_compute_subnetwork.network-with-private-secondary-ip-ranges().project())
  *             .region(google_compute_subnetwork.network-with-private-secondary-ip-ranges().region())
  *             .subnetwork(google_compute_subnetwork.network-with-private-secondary-ip-ranges().name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIamPolicyResult -&gt; getIamPolicyResult.policyData()))
  *             .build());
  * 
  *     }
@@ -127,8 +127,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.SubnetworkIAMBinding;
- * import com.pulumi.gcp.compute.SubnetworkIAMBindingArgs;
+ * import com.pulumi.gcp.compute.SubnetworkIamBinding;
+ * import com.pulumi.gcp.compute.SubnetworkIamBindingArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -142,7 +142,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new SubnetworkIAMBinding(&#34;binding&#34;, SubnetworkIAMBindingArgs.builder()        
+ *         var binding = new SubnetworkIamBinding(&#34;binding&#34;, SubnetworkIamBindingArgs.builder()        
  *             .project(google_compute_subnetwork.network-with-private-secondary-ip-ranges().project())
  *             .region(google_compute_subnetwork.network-with-private-secondary-ip-ranges().region())
  *             .subnetwork(google_compute_subnetwork.network-with-private-secondary-ip-ranges().name())
@@ -161,9 +161,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.SubnetworkIAMBinding;
- * import com.pulumi.gcp.compute.SubnetworkIAMBindingArgs;
- * import com.pulumi.gcp.compute.inputs.SubnetworkIAMBindingConditionArgs;
+ * import com.pulumi.gcp.compute.SubnetworkIamBinding;
+ * import com.pulumi.gcp.compute.SubnetworkIamBindingArgs;
+ * import com.pulumi.gcp.compute.inputs.SubnetworkIamBindingConditionArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -177,13 +177,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new SubnetworkIAMBinding(&#34;binding&#34;, SubnetworkIAMBindingArgs.builder()        
+ *         var binding = new SubnetworkIamBinding(&#34;binding&#34;, SubnetworkIamBindingArgs.builder()        
  *             .project(google_compute_subnetwork.network-with-private-secondary-ip-ranges().project())
  *             .region(google_compute_subnetwork.network-with-private-secondary-ip-ranges().region())
  *             .subnetwork(google_compute_subnetwork.network-with-private-secondary-ip-ranges().name())
  *             .role(&#34;roles/compute.networkUser&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
- *             .condition(SubnetworkIAMBindingConditionArgs.builder()
+ *             .condition(SubnetworkIamBindingConditionArgs.builder()
  *                 .title(&#34;expires_after_2019_12_31&#34;)
  *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
  *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
@@ -200,8 +200,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.SubnetworkIAMMember;
- * import com.pulumi.gcp.compute.SubnetworkIAMMemberArgs;
+ * import com.pulumi.gcp.compute.SubnetworkIamMember;
+ * import com.pulumi.gcp.compute.SubnetworkIamMemberArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -215,7 +215,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new SubnetworkIAMMember(&#34;member&#34;, SubnetworkIAMMemberArgs.builder()        
+ *         var member = new SubnetworkIamMember(&#34;member&#34;, SubnetworkIamMemberArgs.builder()        
  *             .project(google_compute_subnetwork.network-with-private-secondary-ip-ranges().project())
  *             .region(google_compute_subnetwork.network-with-private-secondary-ip-ranges().region())
  *             .subnetwork(google_compute_subnetwork.network-with-private-secondary-ip-ranges().name())
@@ -234,9 +234,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.SubnetworkIAMMember;
- * import com.pulumi.gcp.compute.SubnetworkIAMMemberArgs;
- * import com.pulumi.gcp.compute.inputs.SubnetworkIAMMemberConditionArgs;
+ * import com.pulumi.gcp.compute.SubnetworkIamMember;
+ * import com.pulumi.gcp.compute.SubnetworkIamMemberArgs;
+ * import com.pulumi.gcp.compute.inputs.SubnetworkIamMemberConditionArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -250,13 +250,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new SubnetworkIAMMember(&#34;member&#34;, SubnetworkIAMMemberArgs.builder()        
+ *         var member = new SubnetworkIamMember(&#34;member&#34;, SubnetworkIamMemberArgs.builder()        
  *             .project(google_compute_subnetwork.network-with-private-secondary-ip-ranges().project())
  *             .region(google_compute_subnetwork.network-with-private-secondary-ip-ranges().region())
  *             .subnetwork(google_compute_subnetwork.network-with-private-secondary-ip-ranges().name())
  *             .role(&#34;roles/compute.networkUser&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
- *             .condition(SubnetworkIAMMemberConditionArgs.builder()
+ *             .condition(SubnetworkIamMemberConditionArgs.builder()
  *                 .title(&#34;expires_after_2019_12_31&#34;)
  *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
  *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
@@ -272,19 +272,19 @@ import javax.annotation.Nullable;
  * For all import syntaxes, the &#34;resource in question&#34; can take any of the following forms* projects/{{project}}/regions/{{region}}/subnetworks/{{name}} * {{project}}/{{region}}/{{name}} * {{region}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Compute Engine subnetwork IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
  * 
  * ```sh
- *  $ pulumi import gcp:compute/subnetworkIAMMember:SubnetworkIAMMember editor &#34;projects/{{project}}/regions/{{region}}/subnetworks/{{subnetwork}} roles/compute.networkUser user:jane@example.com&#34;
+ *  $ pulumi import gcp:compute/subnetworkIamMember:SubnetworkIamMember editor &#34;projects/{{project}}/regions/{{region}}/subnetworks/{{subnetwork}} roles/compute.networkUser user:jane@example.com&#34;
  * ```
  * 
  *  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
  * 
  * ```sh
- *  $ pulumi import gcp:compute/subnetworkIAMMember:SubnetworkIAMMember editor &#34;projects/{{project}}/regions/{{region}}/subnetworks/{{subnetwork}} roles/compute.networkUser&#34;
+ *  $ pulumi import gcp:compute/subnetworkIamMember:SubnetworkIamMember editor &#34;projects/{{project}}/regions/{{region}}/subnetworks/{{subnetwork}} roles/compute.networkUser&#34;
  * ```
  * 
  *  IAM policy imports use the identifier of the resource in question, e.g.
  * 
  * ```sh
- *  $ pulumi import gcp:compute/subnetworkIAMMember:SubnetworkIAMMember editor projects/{{project}}/regions/{{region}}/subnetworks/{{subnetwork}}
+ *  $ pulumi import gcp:compute/subnetworkIamMember:SubnetworkIamMember editor projects/{{project}}/regions/{{region}}/subnetworks/{{subnetwork}}
  * ```
  * 
  *  -&gt; **Custom Roles**If you&#39;re importing a IAM resource with a custom role, make sure to use the
@@ -292,22 +292,22 @@ import javax.annotation.Nullable;
  * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * 
  */
-@ResourceType(type="gcp:compute/subnetworkIAMMember:SubnetworkIAMMember")
-public class SubnetworkIAMMember extends com.pulumi.resources.CustomResource {
+@ResourceType(type="gcp:compute/subnetworkIamMember:SubnetworkIamMember")
+public class SubnetworkIamMember extends com.pulumi.resources.CustomResource {
     /**
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      * 
      */
-    @Export(name="condition", type=SubnetworkIAMMemberCondition.class, parameters={})
-    private Output</* @Nullable */ SubnetworkIAMMemberCondition> condition;
+    @Export(name="condition", type=SubnetworkIamMemberCondition.class, parameters={})
+    private Output</* @Nullable */ SubnetworkIamMemberCondition> condition;
 
     /**
      * @return An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      * 
      */
-    public Output<Optional<SubnetworkIAMMemberCondition>> condition() {
+    public Output<Optional<SubnetworkIamMemberCondition>> condition() {
         return Codegen.optional(this.condition);
     }
     /**
@@ -392,7 +392,7 @@ public class SubnetworkIAMMember extends com.pulumi.resources.CustomResource {
     }
     /**
      * The role that should be applied. Only one
-     * `gcp.compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.compute.SubnetworkIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -401,7 +401,7 @@ public class SubnetworkIAMMember extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The role that should be applied. Only one
-     * `gcp.compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.compute.SubnetworkIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -427,15 +427,15 @@ public class SubnetworkIAMMember extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SubnetworkIAMMember(String name) {
-        this(name, SubnetworkIAMMemberArgs.Empty);
+    public SubnetworkIamMember(String name) {
+        this(name, SubnetworkIamMemberArgs.Empty);
     }
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SubnetworkIAMMember(String name, SubnetworkIAMMemberArgs args) {
+    public SubnetworkIamMember(String name, SubnetworkIamMemberArgs args) {
         this(name, args, null);
     }
     /**
@@ -444,12 +444,12 @@ public class SubnetworkIAMMember extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SubnetworkIAMMember(String name, SubnetworkIAMMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/subnetworkIAMMember:SubnetworkIAMMember", name, args == null ? SubnetworkIAMMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public SubnetworkIamMember(String name, SubnetworkIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/subnetworkIamMember:SubnetworkIamMember", name, args == null ? SubnetworkIamMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private SubnetworkIAMMember(String name, Output<String> id, @Nullable SubnetworkIAMMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/subnetworkIAMMember:SubnetworkIAMMember", name, state, makeResourceOptions(options, id));
+    private SubnetworkIamMember(String name, Output<String> id, @Nullable SubnetworkIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/subnetworkIamMember:SubnetworkIamMember", name, state, makeResourceOptions(options, id));
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
@@ -468,7 +468,7 @@ public class SubnetworkIAMMember extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SubnetworkIAMMember get(String name, Output<String> id, @Nullable SubnetworkIAMMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        return new SubnetworkIAMMember(name, id, state, options);
+    public static SubnetworkIamMember get(String name, Output<String> id, @Nullable SubnetworkIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        return new SubnetworkIamMember(name, id, state, options);
     }
 }

@@ -11,14 +11,14 @@ namespace Pulumi.Gcp.Folder.Outputs
 {
 
     [OutputType]
-    public sealed class IAMBindingCondition
+    public sealed class IamBindingCondition
     {
         public readonly string? Description;
         public readonly string Expression;
         public readonly string Title;
 
         [OutputConstructor]
-        private IAMBindingCondition(
+        private IamBindingCondition(
             string? description,
 
             string expression,

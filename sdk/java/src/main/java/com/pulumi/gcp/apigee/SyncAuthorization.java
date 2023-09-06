@@ -39,8 +39,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.apigee.OrganizationArgs;
  * import com.pulumi.gcp.serviceAccount.Account;
  * import com.pulumi.gcp.serviceAccount.AccountArgs;
- * import com.pulumi.gcp.projects.IAMBinding;
- * import com.pulumi.gcp.projects.IAMBindingArgs;
+ * import com.pulumi.gcp.projects.IamBinding;
+ * import com.pulumi.gcp.projects.IamBindingArgs;
  * import com.pulumi.gcp.apigee.SyncAuthorization;
  * import com.pulumi.gcp.apigee.SyncAuthorizationArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -81,7 +81,7 @@ import javax.annotation.Nullable;
  *             .displayName(&#34;Service Account&#34;)
  *             .build());
  * 
- *         var synchronizer_iam = new IAMBinding(&#34;synchronizer-iam&#34;, IAMBindingArgs.builder()        
+ *         var synchronizer_iam = new IamBinding(&#34;synchronizer-iam&#34;, IamBindingArgs.builder()        
  *             .project(project.projectId())
  *             .role(&#34;roles/apigee.synchronizerManager&#34;)
  *             .members(serviceAccount.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))

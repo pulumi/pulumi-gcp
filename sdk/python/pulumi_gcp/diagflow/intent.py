@@ -606,7 +606,7 @@ class Intent(pulumi.CustomResource):
             service="dialogflow.googleapis.com",
             disable_dependent_services=False)
         dialogflow_service_account = gcp.service_account.Account("dialogflowServiceAccount", account_id="my-account")
-        agent_create = gcp.projects.IAMMember("agentCreate",
+        agent_create = gcp.projects.IamMember("agentCreate",
             project=agent_project_service.project,
             role="roles/dialogflow.admin",
             member=dialogflow_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
@@ -720,7 +720,7 @@ class Intent(pulumi.CustomResource):
             service="dialogflow.googleapis.com",
             disable_dependent_services=False)
         dialogflow_service_account = gcp.service_account.Account("dialogflowServiceAccount", account_id="my-account")
-        agent_create = gcp.projects.IAMMember("agentCreate",
+        agent_create = gcp.projects.IamMember("agentCreate",
             project=agent_project_service.project,
             role="roles/dialogflow.admin",
             member=dialogflow_service_account.email.apply(lambda email: f"serviceAccount:{email}"))

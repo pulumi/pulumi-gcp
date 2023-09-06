@@ -11,7 +11,7 @@ namespace Pulumi.Gcp.Kms.Outputs
 {
 
     [OutputType]
-    public sealed class CryptoKeyIAMMemberCondition
+    public sealed class CryptoKeyIamMemberCondition
     {
         /// <summary>
         /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.Kms.Outputs
         public readonly string Title;
 
         [OutputConstructor]
-        private CryptoKeyIAMMemberCondition(
+        private CryptoKeyIamMemberCondition(
             string? description,
 
             string expression,

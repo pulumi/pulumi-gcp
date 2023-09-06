@@ -11,14 +11,14 @@ namespace Pulumi.Gcp.Dataproc.Outputs
 {
 
     [OutputType]
-    public sealed class JobIAMBindingCondition
+    public sealed class JobIamBindingCondition
     {
         public readonly string? Description;
         public readonly string Expression;
         public readonly string Title;
 
         [OutputConstructor]
-        private JobIAMBindingCondition(
+        private JobIamBindingCondition(
             string? description,
 
             string expression,

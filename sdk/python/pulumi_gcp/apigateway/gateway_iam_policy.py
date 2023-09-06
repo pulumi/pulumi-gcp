@@ -260,7 +260,7 @@ class GatewayIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIamPolicyBindingArgs(
             role="roles/apigateway.viewer",
             members=["user:jane@example.com"],
         )])
@@ -376,7 +376,7 @@ class GatewayIamPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIamPolicyBindingArgs(
             role="roles/apigateway.viewer",
             members=["user:jane@example.com"],
         )])

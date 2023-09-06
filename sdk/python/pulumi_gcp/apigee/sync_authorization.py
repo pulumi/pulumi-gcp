@@ -171,7 +171,7 @@ class SyncAuthorization(pulumi.CustomResource):
         service_account = gcp.service_account.Account("serviceAccount",
             account_id="my-account",
             display_name="Service Account")
-        synchronizer_iam = gcp.projects.IAMBinding("synchronizer-iam",
+        synchronizer_iam = gcp.projects.IamBinding("synchronizer-iam",
             project=project.project_id,
             role="roles/apigee.synchronizerManager",
             members=[service_account.email.apply(lambda email: f"serviceAccount:{email}")])
@@ -239,7 +239,7 @@ class SyncAuthorization(pulumi.CustomResource):
         service_account = gcp.service_account.Account("serviceAccount",
             account_id="my-account",
             display_name="Service Account")
-        synchronizer_iam = gcp.projects.IAMBinding("synchronizer-iam",
+        synchronizer_iam = gcp.projects.IamBinding("synchronizer-iam",
             project=project.project_id,
             role="roles/apigee.synchronizerManager",
             members=[service_account.email.apply(lambda email: f"serviceAccount:{email}")])

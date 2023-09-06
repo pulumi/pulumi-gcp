@@ -4,30 +4,30 @@
 package com.pulumi.gcp.organizations.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.gcp.organizations.outputs.GetIAMPolicyAuditConfigAuditLogConfig;
+import com.pulumi.gcp.organizations.outputs.GetIamPolicyAuditConfigAuditLogConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 
 @CustomType
-public final class GetIAMPolicyAuditConfig {
+public final class GetIamPolicyAuditConfig {
     /**
      * @return A nested block that defines the operations you&#39;d like to log.
      * 
      */
-    private List<GetIAMPolicyAuditConfigAuditLogConfig> auditLogConfigs;
+    private List<GetIamPolicyAuditConfigAuditLogConfig> auditLogConfigs;
     /**
      * @return Defines a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
      * 
      */
     private String service;
 
-    private GetIAMPolicyAuditConfig() {}
+    private GetIamPolicyAuditConfig() {}
     /**
      * @return A nested block that defines the operations you&#39;d like to log.
      * 
      */
-    public List<GetIAMPolicyAuditConfigAuditLogConfig> auditLogConfigs() {
+    public List<GetIamPolicyAuditConfigAuditLogConfig> auditLogConfigs() {
         return this.auditLogConfigs;
     }
     /**
@@ -42,26 +42,26 @@ public final class GetIAMPolicyAuditConfig {
         return new Builder();
     }
 
-    public static Builder builder(GetIAMPolicyAuditConfig defaults) {
+    public static Builder builder(GetIamPolicyAuditConfig defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<GetIAMPolicyAuditConfigAuditLogConfig> auditLogConfigs;
+        private List<GetIamPolicyAuditConfigAuditLogConfig> auditLogConfigs;
         private String service;
         public Builder() {}
-        public Builder(GetIAMPolicyAuditConfig defaults) {
+        public Builder(GetIamPolicyAuditConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.auditLogConfigs = defaults.auditLogConfigs;
     	      this.service = defaults.service;
         }
 
         @CustomType.Setter
-        public Builder auditLogConfigs(List<GetIAMPolicyAuditConfigAuditLogConfig> auditLogConfigs) {
+        public Builder auditLogConfigs(List<GetIamPolicyAuditConfigAuditLogConfig> auditLogConfigs) {
             this.auditLogConfigs = Objects.requireNonNull(auditLogConfigs);
             return this;
         }
-        public Builder auditLogConfigs(GetIAMPolicyAuditConfigAuditLogConfig... auditLogConfigs) {
+        public Builder auditLogConfigs(GetIamPolicyAuditConfigAuditLogConfig... auditLogConfigs) {
             return auditLogConfigs(List.of(auditLogConfigs));
         }
         @CustomType.Setter
@@ -69,8 +69,8 @@ public final class GetIAMPolicyAuditConfig {
             this.service = Objects.requireNonNull(service);
             return this;
         }
-        public GetIAMPolicyAuditConfig build() {
-            final var o = new GetIAMPolicyAuditConfig();
+        public GetIamPolicyAuditConfig build() {
+            final var o = new GetIamPolicyAuditConfig();
             o.auditLogConfigs = auditLogConfigs;
             o.service = service;
             return o;

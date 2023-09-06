@@ -12,13 +12,13 @@ namespace Pulumi.Gcp.Kms
     /// <summary>
     /// Three different resources help you manage your IAM policy for KMS crypto key. Each of these resources serves a different use case:
     /// 
-    /// * `gcp.kms.CryptoKeyIAMPolicy`: Authoritative. Sets the IAM policy for the crypto key and replaces any existing policy already attached.
-    /// * `gcp.kms.CryptoKeyIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the crypto key are preserved.
-    /// * `gcp.kms.CryptoKeyIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the crypto key are preserved.
+    /// * `gcp.kms.CryptoKeyIamPolicy`: Authoritative. Sets the IAM policy for the crypto key and replaces any existing policy already attached.
+    /// * `gcp.kms.CryptoKeyIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the crypto key are preserved.
+    /// * `gcp.kms.CryptoKeyIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the crypto key are preserved.
     /// 
-    /// &gt; **Note:** `gcp.kms.CryptoKeyIAMPolicy` **cannot** be used in conjunction with `gcp.kms.CryptoKeyIAMBinding` and `gcp.kms.CryptoKeyIAMMember` or they will fight over what your policy should be.
+    /// &gt; **Note:** `gcp.kms.CryptoKeyIamPolicy` **cannot** be used in conjunction with `gcp.kms.CryptoKeyIamBinding` and `gcp.kms.CryptoKeyIamMember` or they will fight over what your policy should be.
     /// 
-    /// &gt; **Note:** `gcp.kms.CryptoKeyIAMBinding` resources **can be** used in conjunction with `gcp.kms.CryptoKeyIAMMember` resources **only if** they do not grant privilege to the same role.
+    /// &gt; **Note:** `gcp.kms.CryptoKeyIamBinding` resources **can be** used in conjunction with `gcp.kms.CryptoKeyIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -39,11 +39,11 @@ namespace Pulumi.Gcp.Kms
     ///         RotationPeriod = "100000s",
     ///     });
     /// 
-    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     var admin = Gcp.Organizations.GetIamPolicy.Invoke(new()
     ///     {
     ///         Bindings = new[]
     ///         {
-    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             new Gcp.Organizations.Inputs.GetIamPolicyBindingInputArgs
     ///             {
     ///                 Role = "roles/cloudkms.cryptoKeyEncrypter",
     ///                 Members = new[]
@@ -54,10 +54,10 @@ namespace Pulumi.Gcp.Kms
     ///         },
     ///     });
     /// 
-    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIAMPolicy("cryptoKey", new()
+    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIamPolicy("cryptoKey", new()
     ///     {
     ///         CryptoKeyId = key.Id,
-    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///         PolicyData = admin.Apply(getIamPolicyResult =&gt; getIamPolicyResult.PolicyData),
     ///     });
     /// 
     /// });
@@ -73,13 +73,13 @@ namespace Pulumi.Gcp.Kms
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     var admin = Gcp.Organizations.GetIamPolicy.Invoke(new()
     ///     {
     ///         Bindings = new[]
     ///         {
-    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             new Gcp.Organizations.Inputs.GetIamPolicyBindingInputArgs
     ///             {
-    ///                 Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionInputArgs
+    ///                 Condition = new Gcp.Organizations.Inputs.GetIamPolicyBindingConditionInputArgs
     ///                 {
     ///                     Description = "Expiring at midnight of 2019-12-31",
     ///                     Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
@@ -105,7 +105,7 @@ namespace Pulumi.Gcp.Kms
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIAMBinding("cryptoKey", new()
+    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIamBinding("cryptoKey", new()
     ///     {
     ///         CryptoKeyId = google_kms_crypto_key.Key.Id,
     ///         Role = "roles/cloudkms.cryptoKeyEncrypter",
@@ -128,7 +128,7 @@ namespace Pulumi.Gcp.Kms
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIAMBinding("cryptoKey", new()
+    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIamBinding("cryptoKey", new()
     ///     {
     ///         CryptoKeyId = google_kms_crypto_key.Key.Id,
     ///         Role = "roles/cloudkms.cryptoKeyEncrypter",
@@ -136,7 +136,7 @@ namespace Pulumi.Gcp.Kms
     ///         {
     ///             "user:jane@example.com",
     ///         },
-    ///         Condition = new Gcp.Kms.Inputs.CryptoKeyIAMBindingConditionArgs
+    ///         Condition = new Gcp.Kms.Inputs.CryptoKeyIamBindingConditionArgs
     ///         {
     ///             Title = "expires_after_2019_12_31",
     ///             Description = "Expiring at midnight of 2019-12-31",
@@ -155,7 +155,7 @@ namespace Pulumi.Gcp.Kms
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIAMMember("cryptoKey", new()
+    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIamMember("cryptoKey", new()
     ///     {
     ///         CryptoKeyId = google_kms_crypto_key.Key.Id,
     ///         Role = "roles/cloudkms.cryptoKeyEncrypter",
@@ -175,12 +175,12 @@ namespace Pulumi.Gcp.Kms
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIAMMember("cryptoKey", new()
+    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIamMember("cryptoKey", new()
     ///     {
     ///         CryptoKeyId = google_kms_crypto_key.Key.Id,
     ///         Role = "roles/cloudkms.cryptoKeyEncrypter",
     ///         Member = "user:jane@example.com",
-    ///         Condition = new Gcp.Kms.Inputs.CryptoKeyIAMMemberConditionArgs
+    ///         Condition = new Gcp.Kms.Inputs.CryptoKeyIamMemberConditionArgs
     ///         {
     ///             Title = "expires_after_2019_12_31",
     ///             Description = "Expiring at midnight of 2019-12-31",
@@ -198,7 +198,7 @@ namespace Pulumi.Gcp.Kms
     /// This member resource can be imported using the `crypto_key_id`, role, and member identity e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy crypto_key "your-project-id/location-name/key-ring-name/key-name roles/viewer user:foo@example.com"
+    ///  $ pulumi import gcp:kms/cryptoKeyIamPolicy:CryptoKeyIamPolicy crypto_key "your-project-id/location-name/key-ring-name/key-name roles/viewer user:foo@example.com"
     /// ```
     /// 
     ///  IAM binding imports use space-delimited identifiers; first the resource in question and then the role.
@@ -206,7 +206,7 @@ namespace Pulumi.Gcp.Kms
     /// These bindings can be imported using the `crypto_key_id` and role, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy crypto_key "your-project-id/location-name/key-ring-name/key-name roles/editor"
+    ///  $ pulumi import gcp:kms/cryptoKeyIamPolicy:CryptoKeyIamPolicy crypto_key "your-project-id/location-name/key-ring-name/key-name roles/editor"
     /// ```
     /// 
     ///  IAM policy imports use the identifier of the resource in question.
@@ -214,11 +214,11 @@ namespace Pulumi.Gcp.Kms
     /// This policy resource can be imported using the `crypto_key_id`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy crypto_key your-project-id/location-name/key-ring-name/key-name
+    ///  $ pulumi import gcp:kms/cryptoKeyIamPolicy:CryptoKeyIamPolicy crypto_key your-project-id/location-name/key-ring-name/key-name
     /// ```
     /// </summary>
-    [GcpResourceType("gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy")]
-    public partial class CryptoKeyIAMPolicy : global::Pulumi.CustomResource
+    [GcpResourceType("gcp:kms/cryptoKeyIamPolicy:CryptoKeyIamPolicy")]
+    public partial class CryptoKeyIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The crypto key ID, in the form
@@ -246,26 +246,26 @@ namespace Pulumi.Gcp.Kms
 
         /// <summary>
         /// The policy data generated by
-        /// a `gcp.organizations.getIAMPolicy` data source.
+        /// a `gcp.organizations.getIamPolicy` data source.
         /// </summary>
         [Output("policyData")]
         public Output<string> PolicyData { get; private set; } = null!;
 
 
         /// <summary>
-        /// Create a CryptoKeyIAMPolicy resource with the given unique name, arguments, and options.
+        /// Create a CryptoKeyIamPolicy resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public CryptoKeyIAMPolicy(string name, CryptoKeyIAMPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy", name, args ?? new CryptoKeyIAMPolicyArgs(), MakeResourceOptions(options, ""))
+        public CryptoKeyIamPolicy(string name, CryptoKeyIamPolicyArgs args, CustomResourceOptions? options = null)
+            : base("gcp:kms/cryptoKeyIamPolicy:CryptoKeyIamPolicy", name, args ?? new CryptoKeyIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private CryptoKeyIAMPolicy(string name, Input<string> id, CryptoKeyIAMPolicyState? state = null, CustomResourceOptions? options = null)
-            : base("gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy", name, state, MakeResourceOptions(options, id))
+        private CryptoKeyIamPolicy(string name, Input<string> id, CryptoKeyIamPolicyState? state = null, CustomResourceOptions? options = null)
+            : base("gcp:kms/cryptoKeyIamPolicy:CryptoKeyIamPolicy", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -281,7 +281,7 @@ namespace Pulumi.Gcp.Kms
             return merged;
         }
         /// <summary>
-        /// Get an existing CryptoKeyIAMPolicy resource's state with the given name, ID, and optional extra
+        /// Get an existing CryptoKeyIamPolicy resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -289,13 +289,13 @@ namespace Pulumi.Gcp.Kms
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static CryptoKeyIAMPolicy Get(string name, Input<string> id, CryptoKeyIAMPolicyState? state = null, CustomResourceOptions? options = null)
+        public static CryptoKeyIamPolicy Get(string name, Input<string> id, CryptoKeyIamPolicyState? state = null, CustomResourceOptions? options = null)
         {
-            return new CryptoKeyIAMPolicy(name, id, state, options);
+            return new CryptoKeyIamPolicy(name, id, state, options);
         }
     }
 
-    public sealed class CryptoKeyIAMPolicyArgs : global::Pulumi.ResourceArgs
+    public sealed class CryptoKeyIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The crypto key ID, in the form
@@ -317,18 +317,18 @@ namespace Pulumi.Gcp.Kms
 
         /// <summary>
         /// The policy data generated by
-        /// a `gcp.organizations.getIAMPolicy` data source.
+        /// a `gcp.organizations.getIamPolicy` data source.
         /// </summary>
         [Input("policyData", required: true)]
         public Input<string> PolicyData { get; set; } = null!;
 
-        public CryptoKeyIAMPolicyArgs()
+        public CryptoKeyIamPolicyArgs()
         {
         }
-        public static new CryptoKeyIAMPolicyArgs Empty => new CryptoKeyIAMPolicyArgs();
+        public static new CryptoKeyIamPolicyArgs Empty => new CryptoKeyIamPolicyArgs();
     }
 
-    public sealed class CryptoKeyIAMPolicyState : global::Pulumi.ResourceArgs
+    public sealed class CryptoKeyIamPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The crypto key ID, in the form
@@ -356,14 +356,14 @@ namespace Pulumi.Gcp.Kms
 
         /// <summary>
         /// The policy data generated by
-        /// a `gcp.organizations.getIAMPolicy` data source.
+        /// a `gcp.organizations.getIamPolicy` data source.
         /// </summary>
         [Input("policyData")]
         public Input<string>? PolicyData { get; set; }
 
-        public CryptoKeyIAMPolicyState()
+        public CryptoKeyIamPolicyState()
         {
         }
-        public static new CryptoKeyIAMPolicyState Empty => new CryptoKeyIAMPolicyState();
+        public static new CryptoKeyIamPolicyState Empty => new CryptoKeyIamPolicyState();
     }
 }

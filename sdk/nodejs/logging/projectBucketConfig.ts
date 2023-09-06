@@ -74,7 +74,7 @@ import * as utilities from "../utilities";
  *     keyRing: keyring.id,
  *     rotationPeriod: "100000s",
  * });
- * const cryptoKeyBinding = new gcp.kms.CryptoKeyIAMBinding("cryptoKeyBinding", {
+ * const cryptoKeyBinding = new gcp.kms.CryptoKeyIamBinding("cryptoKeyBinding", {
  *     cryptoKeyId: key.id,
  *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
  *     members: [cmekSettings.then(cmekSettings => `serviceAccount:${cmekSettings.serviceAccountId}`)],

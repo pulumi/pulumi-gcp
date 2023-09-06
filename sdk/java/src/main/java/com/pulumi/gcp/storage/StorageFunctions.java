@@ -1141,8 +1141,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetProjectServiceAccountArgs;
-     * import com.pulumi.gcp.pubsub.TopicIAMBinding;
-     * import com.pulumi.gcp.pubsub.TopicIAMBindingArgs;
+     * import com.pulumi.gcp.pubsub.TopicIamBinding;
+     * import com.pulumi.gcp.pubsub.TopicIamBindingArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1158,7 +1158,7 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
-     *         var binding = new TopicIAMBinding(&#34;binding&#34;, TopicIAMBindingArgs.builder()        
+     *         var binding = new TopicIamBinding(&#34;binding&#34;, TopicIamBindingArgs.builder()        
      *             .topic(google_pubsub_topic.topic().name())
      *             .role(&#34;roles/pubsub.publisher&#34;)
      *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
@@ -1176,8 +1176,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetProjectServiceAccountArgs;
-     * import com.pulumi.gcp.kms.CryptoKeyIAMBinding;
-     * import com.pulumi.gcp.kms.CryptoKeyIAMBindingArgs;
+     * import com.pulumi.gcp.kms.CryptoKeyIamBinding;
+     * import com.pulumi.gcp.kms.CryptoKeyIamBindingArgs;
      * import com.pulumi.gcp.storage.Bucket;
      * import com.pulumi.gcp.storage.BucketArgs;
      * import com.pulumi.gcp.storage.inputs.BucketEncryptionArgs;
@@ -1197,7 +1197,7 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
-     *         var binding = new CryptoKeyIAMBinding(&#34;binding&#34;, CryptoKeyIAMBindingArgs.builder()        
+     *         var binding = new CryptoKeyIamBinding(&#34;binding&#34;, CryptoKeyIamBindingArgs.builder()        
      *             .cryptoKeyId(&#34;your-crypto-key-id&#34;)
      *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
      *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
@@ -1264,8 +1264,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetProjectServiceAccountArgs;
-     * import com.pulumi.gcp.pubsub.TopicIAMBinding;
-     * import com.pulumi.gcp.pubsub.TopicIAMBindingArgs;
+     * import com.pulumi.gcp.pubsub.TopicIamBinding;
+     * import com.pulumi.gcp.pubsub.TopicIamBindingArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1281,7 +1281,7 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
-     *         var binding = new TopicIAMBinding(&#34;binding&#34;, TopicIAMBindingArgs.builder()        
+     *         var binding = new TopicIamBinding(&#34;binding&#34;, TopicIamBindingArgs.builder()        
      *             .topic(google_pubsub_topic.topic().name())
      *             .role(&#34;roles/pubsub.publisher&#34;)
      *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
@@ -1299,8 +1299,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetProjectServiceAccountArgs;
-     * import com.pulumi.gcp.kms.CryptoKeyIAMBinding;
-     * import com.pulumi.gcp.kms.CryptoKeyIAMBindingArgs;
+     * import com.pulumi.gcp.kms.CryptoKeyIamBinding;
+     * import com.pulumi.gcp.kms.CryptoKeyIamBindingArgs;
      * import com.pulumi.gcp.storage.Bucket;
      * import com.pulumi.gcp.storage.BucketArgs;
      * import com.pulumi.gcp.storage.inputs.BucketEncryptionArgs;
@@ -1320,7 +1320,7 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
-     *         var binding = new CryptoKeyIAMBinding(&#34;binding&#34;, CryptoKeyIAMBindingArgs.builder()        
+     *         var binding = new CryptoKeyIamBinding(&#34;binding&#34;, CryptoKeyIamBindingArgs.builder()        
      *             .cryptoKeyId(&#34;your-crypto-key-id&#34;)
      *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
      *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
@@ -1387,8 +1387,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetProjectServiceAccountArgs;
-     * import com.pulumi.gcp.pubsub.TopicIAMBinding;
-     * import com.pulumi.gcp.pubsub.TopicIAMBindingArgs;
+     * import com.pulumi.gcp.pubsub.TopicIamBinding;
+     * import com.pulumi.gcp.pubsub.TopicIamBindingArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1404,7 +1404,7 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
-     *         var binding = new TopicIAMBinding(&#34;binding&#34;, TopicIAMBindingArgs.builder()        
+     *         var binding = new TopicIamBinding(&#34;binding&#34;, TopicIamBindingArgs.builder()        
      *             .topic(google_pubsub_topic.topic().name())
      *             .role(&#34;roles/pubsub.publisher&#34;)
      *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
@@ -1422,8 +1422,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetProjectServiceAccountArgs;
-     * import com.pulumi.gcp.kms.CryptoKeyIAMBinding;
-     * import com.pulumi.gcp.kms.CryptoKeyIAMBindingArgs;
+     * import com.pulumi.gcp.kms.CryptoKeyIamBinding;
+     * import com.pulumi.gcp.kms.CryptoKeyIamBindingArgs;
      * import com.pulumi.gcp.storage.Bucket;
      * import com.pulumi.gcp.storage.BucketArgs;
      * import com.pulumi.gcp.storage.inputs.BucketEncryptionArgs;
@@ -1443,7 +1443,7 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
-     *         var binding = new CryptoKeyIAMBinding(&#34;binding&#34;, CryptoKeyIAMBindingArgs.builder()        
+     *         var binding = new CryptoKeyIamBinding(&#34;binding&#34;, CryptoKeyIamBindingArgs.builder()        
      *             .cryptoKeyId(&#34;your-crypto-key-id&#34;)
      *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
      *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
@@ -1510,8 +1510,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetProjectServiceAccountArgs;
-     * import com.pulumi.gcp.pubsub.TopicIAMBinding;
-     * import com.pulumi.gcp.pubsub.TopicIAMBindingArgs;
+     * import com.pulumi.gcp.pubsub.TopicIamBinding;
+     * import com.pulumi.gcp.pubsub.TopicIamBindingArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1527,7 +1527,7 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
-     *         var binding = new TopicIAMBinding(&#34;binding&#34;, TopicIAMBindingArgs.builder()        
+     *         var binding = new TopicIamBinding(&#34;binding&#34;, TopicIamBindingArgs.builder()        
      *             .topic(google_pubsub_topic.topic().name())
      *             .role(&#34;roles/pubsub.publisher&#34;)
      *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
@@ -1545,8 +1545,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetProjectServiceAccountArgs;
-     * import com.pulumi.gcp.kms.CryptoKeyIAMBinding;
-     * import com.pulumi.gcp.kms.CryptoKeyIAMBindingArgs;
+     * import com.pulumi.gcp.kms.CryptoKeyIamBinding;
+     * import com.pulumi.gcp.kms.CryptoKeyIamBindingArgs;
      * import com.pulumi.gcp.storage.Bucket;
      * import com.pulumi.gcp.storage.BucketArgs;
      * import com.pulumi.gcp.storage.inputs.BucketEncryptionArgs;
@@ -1566,7 +1566,7 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
-     *         var binding = new CryptoKeyIAMBinding(&#34;binding&#34;, CryptoKeyIAMBindingArgs.builder()        
+     *         var binding = new CryptoKeyIamBinding(&#34;binding&#34;, CryptoKeyIamBindingArgs.builder()        
      *             .cryptoKeyId(&#34;your-crypto-key-id&#34;)
      *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
      *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
@@ -1633,8 +1633,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetProjectServiceAccountArgs;
-     * import com.pulumi.gcp.pubsub.TopicIAMBinding;
-     * import com.pulumi.gcp.pubsub.TopicIAMBindingArgs;
+     * import com.pulumi.gcp.pubsub.TopicIamBinding;
+     * import com.pulumi.gcp.pubsub.TopicIamBindingArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1650,7 +1650,7 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
-     *         var binding = new TopicIAMBinding(&#34;binding&#34;, TopicIAMBindingArgs.builder()        
+     *         var binding = new TopicIamBinding(&#34;binding&#34;, TopicIamBindingArgs.builder()        
      *             .topic(google_pubsub_topic.topic().name())
      *             .role(&#34;roles/pubsub.publisher&#34;)
      *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
@@ -1668,8 +1668,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetProjectServiceAccountArgs;
-     * import com.pulumi.gcp.kms.CryptoKeyIAMBinding;
-     * import com.pulumi.gcp.kms.CryptoKeyIAMBindingArgs;
+     * import com.pulumi.gcp.kms.CryptoKeyIamBinding;
+     * import com.pulumi.gcp.kms.CryptoKeyIamBindingArgs;
      * import com.pulumi.gcp.storage.Bucket;
      * import com.pulumi.gcp.storage.BucketArgs;
      * import com.pulumi.gcp.storage.inputs.BucketEncryptionArgs;
@@ -1689,7 +1689,7 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
-     *         var binding = new CryptoKeyIAMBinding(&#34;binding&#34;, CryptoKeyIAMBindingArgs.builder()        
+     *         var binding = new CryptoKeyIamBinding(&#34;binding&#34;, CryptoKeyIamBindingArgs.builder()        
      *             .cryptoKeyId(&#34;your-crypto-key-id&#34;)
      *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
      *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
@@ -1756,8 +1756,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetProjectServiceAccountArgs;
-     * import com.pulumi.gcp.pubsub.TopicIAMBinding;
-     * import com.pulumi.gcp.pubsub.TopicIAMBindingArgs;
+     * import com.pulumi.gcp.pubsub.TopicIamBinding;
+     * import com.pulumi.gcp.pubsub.TopicIamBindingArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1773,7 +1773,7 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
-     *         var binding = new TopicIAMBinding(&#34;binding&#34;, TopicIAMBindingArgs.builder()        
+     *         var binding = new TopicIamBinding(&#34;binding&#34;, TopicIamBindingArgs.builder()        
      *             .topic(google_pubsub_topic.topic().name())
      *             .role(&#34;roles/pubsub.publisher&#34;)
      *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
@@ -1791,8 +1791,8 @@ public final class StorageFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.storage.StorageFunctions;
      * import com.pulumi.gcp.storage.inputs.GetProjectServiceAccountArgs;
-     * import com.pulumi.gcp.kms.CryptoKeyIAMBinding;
-     * import com.pulumi.gcp.kms.CryptoKeyIAMBindingArgs;
+     * import com.pulumi.gcp.kms.CryptoKeyIamBinding;
+     * import com.pulumi.gcp.kms.CryptoKeyIamBindingArgs;
      * import com.pulumi.gcp.storage.Bucket;
      * import com.pulumi.gcp.storage.BucketArgs;
      * import com.pulumi.gcp.storage.inputs.BucketEncryptionArgs;
@@ -1812,7 +1812,7 @@ public final class StorageFunctions {
      *     public static void stack(Context ctx) {
      *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
      * 
-     *         var binding = new CryptoKeyIAMBinding(&#34;binding&#34;, CryptoKeyIAMBindingArgs.builder()        
+     *         var binding = new CryptoKeyIamBinding(&#34;binding&#34;, CryptoKeyIamBindingArgs.builder()        
      *             .cryptoKeyId(&#34;your-crypto-key-id&#34;)
      *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
      *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))

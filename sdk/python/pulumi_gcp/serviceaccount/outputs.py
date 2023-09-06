@@ -10,12 +10,12 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'IAMBindingCondition',
-    'IAMMemberCondition',
+    'IamBindingCondition',
+    'IamMemberCondition',
 ]
 
 @pulumi.output_type
-class IAMBindingCondition(dict):
+class IamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -64,7 +64,7 @@ class IAMBindingCondition(dict):
 
 
 @pulumi.output_type
-class IAMMemberCondition(dict):
+class IamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,

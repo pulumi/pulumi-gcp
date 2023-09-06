@@ -30,11 +30,11 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     var admin = Gcp.Organizations.GetIamPolicy.Invoke(new()
     ///     {
     ///         Bindings = new[]
     ///         {
-    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             new Gcp.Organizations.Inputs.GetIamPolicyBindingInputArgs
     ///             {
     ///                 Role = "roles/editor",
     ///                 Members = new[]
@@ -48,7 +48,7 @@ namespace Pulumi.Gcp.Healthcare
     ///     var hl7V2Store = new Gcp.Healthcare.Hl7StoreIamPolicy("hl7V2Store", new()
     ///     {
     ///         Hl7V2StoreId = "your-hl7-v2-store-id",
-    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///         PolicyData = admin.Apply(getIamPolicyResult =&gt; getIamPolicyResult.PolicyData),
     ///     });
     /// 
     /// });

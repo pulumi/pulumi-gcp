@@ -44,8 +44,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.storage.StorageFunctions;
  * import com.pulumi.gcp.storage.inputs.GetProjectServiceAccountArgs;
  * import com.pulumi.gcp.pubsub.Topic;
- * import com.pulumi.gcp.pubsub.TopicIAMBinding;
- * import com.pulumi.gcp.pubsub.TopicIAMBindingArgs;
+ * import com.pulumi.gcp.pubsub.TopicIamBinding;
+ * import com.pulumi.gcp.pubsub.TopicIamBindingArgs;
  * import com.pulumi.gcp.storage.Bucket;
  * import com.pulumi.gcp.storage.BucketArgs;
  * import com.pulumi.gcp.storage.Notification;
@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  * 
  *         var topic = new Topic(&#34;topic&#34;);
  * 
- *         var binding = new TopicIAMBinding(&#34;binding&#34;, TopicIAMBindingArgs.builder()        
+ *         var binding = new TopicIamBinding(&#34;binding&#34;, TopicIamBindingArgs.builder()        
  *             .topic(topic.id())
  *             .role(&#34;roles/pubsub.publisher&#34;)
  *             .members(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))

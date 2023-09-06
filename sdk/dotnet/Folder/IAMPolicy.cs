@@ -12,14 +12,14 @@ namespace Pulumi.Gcp.Folder
     /// <summary>
     /// Four different resources help you manage your IAM policy for a folder. Each of these resources serves a different use case:
     /// 
-    /// * `gcp.folder.IAMPolicy`: Authoritative. Sets the IAM policy for the folder and replaces any existing policy already attached.
-    /// * `gcp.folder.IAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the folder are preserved.
-    /// * `gcp.folder.IAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the folder are preserved.
+    /// * `gcp.folder.IamPolicy`: Authoritative. Sets the IAM policy for the folder and replaces any existing policy already attached.
+    /// * `gcp.folder.IamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the folder are preserved.
+    /// * `gcp.folder.IamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the folder are preserved.
     /// * `gcp.folder.IamAuditConfig`: Authoritative for a given service. Updates the IAM policy to enable audit logging for the given service.
     /// 
-    /// &gt; **Note:** `gcp.folder.IAMPolicy` **cannot** be used in conjunction with `gcp.folder.IAMBinding`, `gcp.folder.IAMMember`, or `gcp.folder.IamAuditConfig` or they will fight over what your policy should be.
+    /// &gt; **Note:** `gcp.folder.IamPolicy` **cannot** be used in conjunction with `gcp.folder.IamBinding`, `gcp.folder.IamMember`, or `gcp.folder.IamAuditConfig` or they will fight over what your policy should be.
     /// 
-    /// &gt; **Note:** `gcp.folder.IAMBinding` resources **can be** used in conjunction with `gcp.folder.IAMMember` resources **only if** they do not grant privilege to the same role.
+    /// &gt; **Note:** `gcp.folder.IamBinding` resources **can be** used in conjunction with `gcp.folder.IamMember` resources **only if** they do not grant privilege to the same role.
     /// 
     /// &gt; **Note:** The underlying API method `projects.setIamPolicy` has constraints which are documented [here](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
     ///    IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning a 400 error code so please review these if you encounter errors with this resource.
@@ -27,9 +27,9 @@ namespace Pulumi.Gcp.Folder
     /// ## google\_folder\_iam\_policy
     /// 
     /// !&gt; **Be careful!** You can accidentally lock yourself out of your folder
-    ///    using this resource. Deleting a `gcp.folder.IAMPolicy` removes access
+    ///    using this resource. Deleting a `gcp.folder.IamPolicy` removes access
     ///    from anyone without permissions on its parent folder/organization. Proceed with caution.
-    ///    It's not recommended to use `gcp.folder.IAMPolicy` with your provider folder
+    ///    It's not recommended to use `gcp.folder.IamPolicy` with your provider folder
     ///    to avoid locking yourself out, and it should generally only be used with folders
     ///    fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
     ///    applying the change.
@@ -42,11 +42,11 @@ namespace Pulumi.Gcp.Folder
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     var admin = Gcp.Organizations.GetIamPolicy.Invoke(new()
     ///     {
     ///         Bindings = new[]
     ///         {
-    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             new Gcp.Organizations.Inputs.GetIamPolicyBindingInputArgs
     ///             {
     ///                 Role = "roles/editor",
     ///                 Members = new[]
@@ -57,10 +57,10 @@ namespace Pulumi.Gcp.Folder
     ///         },
     ///     });
     /// 
-    ///     var folder = new Gcp.Folder.IAMPolicy("folder", new()
+    ///     var folder = new Gcp.Folder.IamPolicy("folder", new()
     ///     {
     ///         Folder = "folders/1234567",
-    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///         PolicyData = admin.Apply(getIamPolicyResult =&gt; getIamPolicyResult.PolicyData),
     ///     });
     /// 
     /// });
@@ -76,13 +76,13 @@ namespace Pulumi.Gcp.Folder
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     var admin = Gcp.Organizations.GetIamPolicy.Invoke(new()
     ///     {
     ///         Bindings = new[]
     ///         {
-    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             new Gcp.Organizations.Inputs.GetIamPolicyBindingInputArgs
     ///             {
-    ///                 Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionInputArgs
+    ///                 Condition = new Gcp.Organizations.Inputs.GetIamPolicyBindingConditionInputArgs
     ///                 {
     ///                     Description = "Expiring at midnight of 2019-12-31",
     ///                     Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
@@ -97,10 +97,10 @@ namespace Pulumi.Gcp.Folder
     ///         },
     ///     });
     /// 
-    ///     var folder = new Gcp.Folder.IAMPolicy("folder", new()
+    ///     var folder = new Gcp.Folder.IamPolicy("folder", new()
     ///     {
     ///         Folder = "folders/1234567",
-    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///         PolicyData = admin.Apply(getIamPolicyResult =&gt; getIamPolicyResult.PolicyData),
     ///     });
     /// 
     /// });
@@ -116,7 +116,7 @@ namespace Pulumi.Gcp.Folder
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var folder = new Gcp.Folder.IAMBinding("folder", new()
+    ///     var folder = new Gcp.Folder.IamBinding("folder", new()
     ///     {
     ///         Folder = "folders/1234567",
     ///         Members = new[]
@@ -139,9 +139,9 @@ namespace Pulumi.Gcp.Folder
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var folder = new Gcp.Folder.IAMBinding("folder", new()
+    ///     var folder = new Gcp.Folder.IamBinding("folder", new()
     ///     {
-    ///         Condition = new Gcp.Folder.Inputs.IAMBindingConditionArgs
+    ///         Condition = new Gcp.Folder.Inputs.IamBindingConditionArgs
     ///         {
     ///             Description = "Expiring at midnight of 2019-12-31",
     ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
@@ -168,7 +168,7 @@ namespace Pulumi.Gcp.Folder
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var folder = new Gcp.Folder.IAMMember("folder", new()
+    ///     var folder = new Gcp.Folder.IamMember("folder", new()
     ///     {
     ///         Folder = "folders/1234567",
     ///         Member = "user:jane@example.com",
@@ -188,9 +188,9 @@ namespace Pulumi.Gcp.Folder
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var folder = new Gcp.Folder.IAMMember("folder", new()
+    ///     var folder = new Gcp.Folder.IamMember("folder", new()
     ///     {
-    ///         Condition = new Gcp.Folder.Inputs.IAMMemberConditionArgs
+    ///         Condition = new Gcp.Folder.Inputs.IamMemberConditionArgs
     ///         {
     ///             Description = "Expiring at midnight of 2019-12-31",
     ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
@@ -245,7 +245,7 @@ namespace Pulumi.Gcp.Folder
     /// This member resource can be imported using the `folder`, role, and member e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:folder/iAMPolicy:IAMPolicy my_folder "folder roles/viewer user:foo@example.com"
+    ///  $ pulumi import gcp:folder/iamPolicy:IamPolicy my_folder "folder roles/viewer user:foo@example.com"
     /// ```
     /// 
     ///  IAM binding imports use space-delimited identifiers; the resource in question and the role.
@@ -253,7 +253,7 @@ namespace Pulumi.Gcp.Folder
     /// This binding resource can be imported using the `folder` and role, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:folder/iAMPolicy:IAMPolicy my_folder "folder roles/viewer"
+    ///  $ pulumi import gcp:folder/iamPolicy:IamPolicy my_folder "folder roles/viewer"
     /// ```
     /// 
     ///  IAM policy imports use the identifier of the resource in question.
@@ -261,13 +261,13 @@ namespace Pulumi.Gcp.Folder
     /// This policy resource can be imported using the `folder`.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:folder/iAMPolicy:IAMPolicy my_folder folder
+    ///  $ pulumi import gcp:folder/iamPolicy:IamPolicy my_folder folder
     /// ```
     /// 
     ///  IAM audit config imports use the identifier of the resource in question and the service, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:folder/iAMPolicy:IAMPolicy my_folder "folder foo.googleapis.com"
+    ///  $ pulumi import gcp:folder/iamPolicy:IamPolicy my_folder "folder foo.googleapis.com"
     /// ```
     /// 
     ///  -&gt; **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
@@ -275,11 +275,11 @@ namespace Pulumi.Gcp.Folder
     /// full name of the custom role, e.g. `organizations/{{org_id}}/roles/{{role_id}}`. -&gt; **Conditional IAM Bindings**If you're importing a IAM binding with a condition block, make sure
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:folder/iAMPolicy:IAMPolicy to include the title of condition, e.g. `google_folder_iam_binding.my_folder "folder roles/{{role_id}} condition-title"`
+    ///  $ pulumi import gcp:folder/iamPolicy:IamPolicy to include the title of condition, e.g. `google_folder_iam_binding.my_folder "folder roles/{{role_id}} condition-title"`
     /// ```
     /// </summary>
-    [GcpResourceType("gcp:folder/iAMPolicy:IAMPolicy")]
-    public partial class IAMPolicy : global::Pulumi.CustomResource
+    [GcpResourceType("gcp:folder/iamPolicy:IamPolicy")]
+    public partial class IamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// (Computed) The etag of the folder's IAM policy.
@@ -294,7 +294,7 @@ namespace Pulumi.Gcp.Folder
         public Output<string> Folder { get; private set; } = null!;
 
         /// <summary>
-        /// The `gcp.organizations.getIAMPolicy` data source that represents
+        /// The `gcp.organizations.getIamPolicy` data source that represents
         /// the IAM policy that will be applied to the folder. The policy will be
         /// merged with any existing policy applied to the folder.
         /// 
@@ -308,19 +308,19 @@ namespace Pulumi.Gcp.Folder
 
 
         /// <summary>
-        /// Create a IAMPolicy resource with the given unique name, arguments, and options.
+        /// Create a IamPolicy resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public IAMPolicy(string name, IAMPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp:folder/iAMPolicy:IAMPolicy", name, args ?? new IAMPolicyArgs(), MakeResourceOptions(options, ""))
+        public IamPolicy(string name, IamPolicyArgs args, CustomResourceOptions? options = null)
+            : base("gcp:folder/iamPolicy:IamPolicy", name, args ?? new IamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private IAMPolicy(string name, Input<string> id, IAMPolicyState? state = null, CustomResourceOptions? options = null)
-            : base("gcp:folder/iAMPolicy:IAMPolicy", name, state, MakeResourceOptions(options, id))
+        private IamPolicy(string name, Input<string> id, IamPolicyState? state = null, CustomResourceOptions? options = null)
+            : base("gcp:folder/iamPolicy:IamPolicy", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -336,7 +336,7 @@ namespace Pulumi.Gcp.Folder
             return merged;
         }
         /// <summary>
-        /// Get an existing IAMPolicy resource's state with the given name, ID, and optional extra
+        /// Get an existing IamPolicy resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -344,13 +344,13 @@ namespace Pulumi.Gcp.Folder
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static IAMPolicy Get(string name, Input<string> id, IAMPolicyState? state = null, CustomResourceOptions? options = null)
+        public static IamPolicy Get(string name, Input<string> id, IamPolicyState? state = null, CustomResourceOptions? options = null)
         {
-            return new IAMPolicy(name, id, state, options);
+            return new IamPolicy(name, id, state, options);
         }
     }
 
-    public sealed class IAMPolicyArgs : global::Pulumi.ResourceArgs
+    public sealed class IamPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
@@ -359,7 +359,7 @@ namespace Pulumi.Gcp.Folder
         public Input<string> Folder { get; set; } = null!;
 
         /// <summary>
-        /// The `gcp.organizations.getIAMPolicy` data source that represents
+        /// The `gcp.organizations.getIamPolicy` data source that represents
         /// the IAM policy that will be applied to the folder. The policy will be
         /// merged with any existing policy applied to the folder.
         /// 
@@ -371,13 +371,13 @@ namespace Pulumi.Gcp.Folder
         [Input("policyData", required: true)]
         public Input<string> PolicyData { get; set; } = null!;
 
-        public IAMPolicyArgs()
+        public IamPolicyArgs()
         {
         }
-        public static new IAMPolicyArgs Empty => new IAMPolicyArgs();
+        public static new IamPolicyArgs Empty => new IamPolicyArgs();
     }
 
-    public sealed class IAMPolicyState : global::Pulumi.ResourceArgs
+    public sealed class IamPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (Computed) The etag of the folder's IAM policy.
@@ -392,7 +392,7 @@ namespace Pulumi.Gcp.Folder
         public Input<string>? Folder { get; set; }
 
         /// <summary>
-        /// The `gcp.organizations.getIAMPolicy` data source that represents
+        /// The `gcp.organizations.getIamPolicy` data source that represents
         /// the IAM policy that will be applied to the folder. The policy will be
         /// merged with any existing policy applied to the folder.
         /// 
@@ -404,9 +404,9 @@ namespace Pulumi.Gcp.Folder
         [Input("policyData")]
         public Input<string>? PolicyData { get; set; }
 
-        public IAMPolicyState()
+        public IamPolicyState()
         {
         }
-        public static new IAMPolicyState Empty => new IAMPolicyState();
+        public static new IamPolicyState Empty => new IamPolicyState();
     }
 }

@@ -34,11 +34,11 @@ namespace Pulumi.Gcp.CloudRun
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     var admin = Gcp.Organizations.GetIamPolicy.Invoke(new()
     ///     {
     ///         Bindings = new[]
     ///         {
-    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             new Gcp.Organizations.Inputs.GetIamPolicyBindingInputArgs
     ///             {
     ///                 Role = "roles/viewer",
     ///                 Members = new[]
@@ -54,7 +54,7 @@ namespace Pulumi.Gcp.CloudRun
     ///         Location = google_cloud_run_service.Default.Location,
     ///         Project = google_cloud_run_service.Default.Project,
     ///         Service = google_cloud_run_service.Default.Name,
-    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///         PolicyData = admin.Apply(getIamPolicyResult =&gt; getIamPolicyResult.PolicyData),
     ///     });
     /// 
     /// });

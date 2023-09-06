@@ -11,17 +11,17 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['BucketIAMMemberArgs', 'BucketIAMMember']
+__all__ = ['BucketIamMemberArgs', 'BucketIamMember']
 
 @pulumi.input_type
-class BucketIAMMemberArgs:
+class BucketIamMemberArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[str],
                  member: pulumi.Input[str],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['BucketIAMMemberConditionArgs']] = None):
+                 condition: Optional[pulumi.Input['BucketIamMemberConditionArgs']] = None):
         """
-        The set of arguments for constructing a BucketIAMMember resource.
+        The set of arguments for constructing a BucketIamMember resource.
         :param pulumi.Input[str] bucket: Used to find the parent resource to bind the IAM policy to
                
                * `member/members` - (Required) Identities that will be granted the privilege in `role`.
@@ -36,9 +36,9 @@ class BucketIAMMemberArgs:
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         :param pulumi.Input[str] role: The role that should be applied. Only one
-               `storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
+               `storage.BucketIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        :param pulumi.Input['BucketIAMMemberConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input['BucketIamMemberConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         """
         pulumi.set(__self__, "bucket", bucket)
@@ -85,7 +85,7 @@ class BucketIAMMemberArgs:
     def role(self) -> pulumi.Input[str]:
         """
         The role that should be applied. Only one
-        `storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
+        `storage.BucketIamBinding` can be used per role. Note that custom roles must be of the format
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         return pulumi.get(self, "role")
@@ -96,7 +96,7 @@ class BucketIAMMemberArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['BucketIAMMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['BucketIamMemberConditionArgs']]:
         """
         An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
@@ -104,20 +104,20 @@ class BucketIAMMemberArgs:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['BucketIAMMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['BucketIamMemberConditionArgs']]):
         pulumi.set(self, "condition", value)
 
 
 @pulumi.input_type
-class _BucketIAMMemberState:
+class _BucketIamMemberState:
     def __init__(__self__, *,
                  bucket: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input['BucketIAMMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['BucketIamMemberConditionArgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None):
         """
-        Input properties used for looking up and filtering BucketIAMMember resources.
+        Input properties used for looking up and filtering BucketIamMember resources.
         :param pulumi.Input[str] bucket: Used to find the parent resource to bind the IAM policy to
                
                * `member/members` - (Required) Identities that will be granted the privilege in `role`.
@@ -131,11 +131,11 @@ class _BucketIAMMemberState:
                * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
-        :param pulumi.Input['BucketIAMMemberConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input['BucketIamMemberConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[str] role: The role that should be applied. Only one
-               `storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
+               `storage.BucketIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         if bucket is not None:
@@ -175,7 +175,7 @@ class _BucketIAMMemberState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['BucketIAMMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['BucketIamMemberConditionArgs']]:
         """
         An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
@@ -183,7 +183,7 @@ class _BucketIAMMemberState:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['BucketIAMMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['BucketIamMemberConditionArgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -212,7 +212,7 @@ class _BucketIAMMemberState:
     def role(self) -> Optional[pulumi.Input[str]]:
         """
         The role that should be applied. Only one
-        `storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
+        `storage.BucketIamBinding` can be used per role. Note that custom roles must be of the format
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         return pulumi.get(self, "role")
@@ -222,30 +222,30 @@ class _BucketIAMMemberState:
         pulumi.set(self, "role", value)
 
 
-class BucketIAMMember(pulumi.CustomResource):
+class BucketIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['BucketIAMMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['BucketIamMemberConditionArgs']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Three different resources help you manage your IAM policy for Cloud Storage Bucket. Each of these resources serves a different use case:
 
-        * `storage.BucketIAMPolicy`: Authoritative. Sets the IAM policy for the bucket and replaces any existing policy already attached.
-        * `storage.BucketIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the bucket are preserved.
-        * `storage.BucketIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the bucket are preserved.
+        * `storage.BucketIamPolicy`: Authoritative. Sets the IAM policy for the bucket and replaces any existing policy already attached.
+        * `storage.BucketIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the bucket are preserved.
+        * `storage.BucketIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the bucket are preserved.
 
         A data source can be used to retrieve policy data in advent you do not need creation
 
-        * `storage.BucketIAMPolicy`: Retrieves the IAM policy for the bucket
+        * `storage.BucketIamPolicy`: Retrieves the IAM policy for the bucket
 
-        > **Note:** `storage.BucketIAMPolicy` **cannot** be used in conjunction with `storage.BucketIAMBinding` and `storage.BucketIAMMember` or they will fight over what your policy should be.
+        > **Note:** `storage.BucketIamPolicy` **cannot** be used in conjunction with `storage.BucketIamBinding` and `storage.BucketIamMember` or they will fight over what your policy should be.
 
-        > **Note:** `storage.BucketIAMBinding` resources **can be** used in conjunction with `storage.BucketIAMMember` resources **only if** they do not grant privilege to the same role.
+        > **Note:** `storage.BucketIamBinding` resources **can be** used in conjunction with `storage.BucketIamMember` resources **only if** they do not grant privilege to the same role.
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
@@ -255,11 +255,11 @@ class BucketIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIamPolicyBindingArgs(
             role="roles/storage.admin",
             members=["user:jane@example.com"],
         )])
-        policy = gcp.storage.BucketIAMPolicy("policy",
+        policy = gcp.storage.BucketIamPolicy("policy",
             bucket=google_storage_bucket["default"]["name"],
             policy_data=admin.policy_data)
         ```
@@ -270,16 +270,16 @@ class BucketIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIamPolicyBindingArgs(
             role="roles/storage.admin",
             members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+            condition=gcp.organizations.GetIamPolicyBindingConditionArgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ),
         )])
-        policy = gcp.storage.BucketIAMPolicy("policy",
+        policy = gcp.storage.BucketIamPolicy("policy",
             bucket=google_storage_bucket["default"]["name"],
             policy_data=admin.policy_data)
         ```
@@ -289,7 +289,7 @@ class BucketIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        binding = gcp.storage.BucketIAMBinding("binding",
+        binding = gcp.storage.BucketIamBinding("binding",
             bucket=google_storage_bucket["default"]["name"],
             role="roles/storage.admin",
             members=["user:jane@example.com"])
@@ -301,11 +301,11 @@ class BucketIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        binding = gcp.storage.BucketIAMBinding("binding",
+        binding = gcp.storage.BucketIamBinding("binding",
             bucket=google_storage_bucket["default"]["name"],
             role="roles/storage.admin",
             members=["user:jane@example.com"],
-            condition=gcp.storage.BucketIAMBindingConditionArgs(
+            condition=gcp.storage.BucketIamBindingConditionArgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -317,7 +317,7 @@ class BucketIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        member = gcp.storage.BucketIAMMember("member",
+        member = gcp.storage.BucketIamMember("member",
             bucket=google_storage_bucket["default"]["name"],
             role="roles/storage.admin",
             member="user:jane@example.com")
@@ -329,11 +329,11 @@ class BucketIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        member = gcp.storage.BucketIAMMember("member",
+        member = gcp.storage.BucketIamMember("member",
             bucket=google_storage_bucket["default"]["name"],
             role="roles/storage.admin",
             member="user:jane@example.com",
-            condition=gcp.storage.BucketIAMMemberConditionArgs(
+            condition=gcp.storage.BucketIamMemberConditionArgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -345,19 +345,19 @@ class BucketIAMMember(pulumi.CustomResource):
         For all import syntaxes, the "resource in question" can take any of the following forms* b/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Storage bucket IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
 
         ```sh
-         $ pulumi import gcp:storage/bucketIAMMember:BucketIAMMember editor "b/{{bucket}} roles/storage.objectViewer user:jane@example.com"
+         $ pulumi import gcp:storage/bucketIamMember:BucketIamMember editor "b/{{bucket}} roles/storage.objectViewer user:jane@example.com"
         ```
 
          IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
 
         ```sh
-         $ pulumi import gcp:storage/bucketIAMMember:BucketIAMMember editor "b/{{bucket}} roles/storage.objectViewer"
+         $ pulumi import gcp:storage/bucketIamMember:BucketIamMember editor "b/{{bucket}} roles/storage.objectViewer"
         ```
 
          IAM policy imports use the identifier of the resource in question, e.g.
 
         ```sh
-         $ pulumi import gcp:storage/bucketIAMMember:BucketIAMMember editor b/{{bucket}}
+         $ pulumi import gcp:storage/bucketIamMember:BucketIamMember editor b/{{bucket}}
         ```
 
          -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
@@ -379,32 +379,32 @@ class BucketIAMMember(pulumi.CustomResource):
                * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
-        :param pulumi.Input[pulumi.InputType['BucketIAMMemberConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[pulumi.InputType['BucketIamMemberConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] role: The role that should be applied. Only one
-               `storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
+               `storage.BucketIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: BucketIAMMemberArgs,
+                 args: BucketIamMemberArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Cloud Storage Bucket. Each of these resources serves a different use case:
 
-        * `storage.BucketIAMPolicy`: Authoritative. Sets the IAM policy for the bucket and replaces any existing policy already attached.
-        * `storage.BucketIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the bucket are preserved.
-        * `storage.BucketIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the bucket are preserved.
+        * `storage.BucketIamPolicy`: Authoritative. Sets the IAM policy for the bucket and replaces any existing policy already attached.
+        * `storage.BucketIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the bucket are preserved.
+        * `storage.BucketIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the bucket are preserved.
 
         A data source can be used to retrieve policy data in advent you do not need creation
 
-        * `storage.BucketIAMPolicy`: Retrieves the IAM policy for the bucket
+        * `storage.BucketIamPolicy`: Retrieves the IAM policy for the bucket
 
-        > **Note:** `storage.BucketIAMPolicy` **cannot** be used in conjunction with `storage.BucketIAMBinding` and `storage.BucketIAMMember` or they will fight over what your policy should be.
+        > **Note:** `storage.BucketIamPolicy` **cannot** be used in conjunction with `storage.BucketIamBinding` and `storage.BucketIamMember` or they will fight over what your policy should be.
 
-        > **Note:** `storage.BucketIAMBinding` resources **can be** used in conjunction with `storage.BucketIAMMember` resources **only if** they do not grant privilege to the same role.
+        > **Note:** `storage.BucketIamBinding` resources **can be** used in conjunction with `storage.BucketIamMember` resources **only if** they do not grant privilege to the same role.
 
         > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 
@@ -414,11 +414,11 @@ class BucketIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIamPolicyBindingArgs(
             role="roles/storage.admin",
             members=["user:jane@example.com"],
         )])
-        policy = gcp.storage.BucketIAMPolicy("policy",
+        policy = gcp.storage.BucketIamPolicy("policy",
             bucket=google_storage_bucket["default"]["name"],
             policy_data=admin.policy_data)
         ```
@@ -429,16 +429,16 @@ class BucketIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIamPolicyBindingArgs(
             role="roles/storage.admin",
             members=["user:jane@example.com"],
-            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+            condition=gcp.organizations.GetIamPolicyBindingConditionArgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
             ),
         )])
-        policy = gcp.storage.BucketIAMPolicy("policy",
+        policy = gcp.storage.BucketIamPolicy("policy",
             bucket=google_storage_bucket["default"]["name"],
             policy_data=admin.policy_data)
         ```
@@ -448,7 +448,7 @@ class BucketIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        binding = gcp.storage.BucketIAMBinding("binding",
+        binding = gcp.storage.BucketIamBinding("binding",
             bucket=google_storage_bucket["default"]["name"],
             role="roles/storage.admin",
             members=["user:jane@example.com"])
@@ -460,11 +460,11 @@ class BucketIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        binding = gcp.storage.BucketIAMBinding("binding",
+        binding = gcp.storage.BucketIamBinding("binding",
             bucket=google_storage_bucket["default"]["name"],
             role="roles/storage.admin",
             members=["user:jane@example.com"],
-            condition=gcp.storage.BucketIAMBindingConditionArgs(
+            condition=gcp.storage.BucketIamBindingConditionArgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -476,7 +476,7 @@ class BucketIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        member = gcp.storage.BucketIAMMember("member",
+        member = gcp.storage.BucketIamMember("member",
             bucket=google_storage_bucket["default"]["name"],
             role="roles/storage.admin",
             member="user:jane@example.com")
@@ -488,11 +488,11 @@ class BucketIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        member = gcp.storage.BucketIAMMember("member",
+        member = gcp.storage.BucketIamMember("member",
             bucket=google_storage_bucket["default"]["name"],
             role="roles/storage.admin",
             member="user:jane@example.com",
-            condition=gcp.storage.BucketIAMMemberConditionArgs(
+            condition=gcp.storage.BucketIamMemberConditionArgs(
                 title="expires_after_2019_12_31",
                 description="Expiring at midnight of 2019-12-31",
                 expression="request.time < timestamp(\\"2020-01-01T00:00:00Z\\")",
@@ -504,19 +504,19 @@ class BucketIAMMember(pulumi.CustomResource):
         For all import syntaxes, the "resource in question" can take any of the following forms* b/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Storage bucket IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
 
         ```sh
-         $ pulumi import gcp:storage/bucketIAMMember:BucketIAMMember editor "b/{{bucket}} roles/storage.objectViewer user:jane@example.com"
+         $ pulumi import gcp:storage/bucketIamMember:BucketIamMember editor "b/{{bucket}} roles/storage.objectViewer user:jane@example.com"
         ```
 
          IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
 
         ```sh
-         $ pulumi import gcp:storage/bucketIAMMember:BucketIAMMember editor "b/{{bucket}} roles/storage.objectViewer"
+         $ pulumi import gcp:storage/bucketIamMember:BucketIamMember editor "b/{{bucket}} roles/storage.objectViewer"
         ```
 
          IAM policy imports use the identifier of the resource in question, e.g.
 
         ```sh
-         $ pulumi import gcp:storage/bucketIAMMember:BucketIAMMember editor b/{{bucket}}
+         $ pulumi import gcp:storage/bucketIamMember:BucketIamMember editor b/{{bucket}}
         ```
 
          -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
@@ -524,12 +524,12 @@ class BucketIAMMember(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param BucketIAMMemberArgs args: The arguments to use to populate this resource's properties.
+        :param BucketIamMemberArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(BucketIAMMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(BucketIamMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -539,7 +539,7 @@ class BucketIAMMember(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['BucketIAMMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['BucketIamMemberConditionArgs']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -549,7 +549,7 @@ class BucketIAMMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = BucketIAMMemberArgs.__new__(BucketIAMMemberArgs)
+            __props__ = BucketIamMemberArgs.__new__(BucketIamMemberArgs)
 
             if bucket is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket'")
@@ -562,8 +562,8 @@ class BucketIAMMember(pulumi.CustomResource):
                 raise TypeError("Missing required property 'role'")
             __props__.__dict__["role"] = role
             __props__.__dict__["etag"] = None
-        super(BucketIAMMember, __self__).__init__(
-            'gcp:storage/bucketIAMMember:BucketIAMMember',
+        super(BucketIamMember, __self__).__init__(
+            'gcp:storage/bucketIamMember:BucketIamMember',
             resource_name,
             __props__,
             opts)
@@ -573,12 +573,12 @@ class BucketIAMMember(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             bucket: Optional[pulumi.Input[str]] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['BucketIAMMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['BucketIamMemberConditionArgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             member: Optional[pulumi.Input[str]] = None,
-            role: Optional[pulumi.Input[str]] = None) -> 'BucketIAMMember':
+            role: Optional[pulumi.Input[str]] = None) -> 'BucketIamMember':
         """
-        Get an existing BucketIAMMember resource's state with the given name, id, and optional extra
+        Get an existing BucketIamMember resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -597,23 +597,23 @@ class BucketIAMMember(pulumi.CustomResource):
                * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
-        :param pulumi.Input[pulumi.InputType['BucketIAMMemberConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[pulumi.InputType['BucketIamMemberConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[str] role: The role that should be applied. Only one
-               `storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
+               `storage.BucketIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _BucketIAMMemberState.__new__(_BucketIAMMemberState)
+        __props__ = _BucketIamMemberState.__new__(_BucketIamMemberState)
 
         __props__.__dict__["bucket"] = bucket
         __props__.__dict__["condition"] = condition
         __props__.__dict__["etag"] = etag
         __props__.__dict__["member"] = member
         __props__.__dict__["role"] = role
-        return BucketIAMMember(resource_name, opts=opts, __props__=__props__)
+        return BucketIamMember(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
@@ -637,7 +637,7 @@ class BucketIAMMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def condition(self) -> pulumi.Output[Optional['outputs.BucketIAMMemberCondition']]:
+    def condition(self) -> pulumi.Output[Optional['outputs.BucketIamMemberCondition']]:
         """
         An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
@@ -662,7 +662,7 @@ class BucketIAMMember(pulumi.CustomResource):
     def role(self) -> pulumi.Output[str]:
         """
         The role that should be applied. Only one
-        `storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
+        `storage.BucketIamBinding` can be used per role. Note that custom roles must be of the format
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         return pulumi.get(self, "role")

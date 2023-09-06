@@ -237,7 +237,7 @@ class DatasetIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIamPolicyBindingArgs(
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
@@ -342,7 +342,7 @@ class DatasetIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIamPolicyBindingArgs(
             role="roles/editor",
             members=["user:jane@example.com"],
         )])

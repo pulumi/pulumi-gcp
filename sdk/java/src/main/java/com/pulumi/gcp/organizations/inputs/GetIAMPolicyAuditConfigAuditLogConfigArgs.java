@@ -12,9 +12,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class GetIAMPolicyAuditConfigAuditLogConfigArgs extends com.pulumi.resources.ResourceArgs {
+public final class GetIamPolicyAuditConfigAuditLogConfigArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final GetIAMPolicyAuditConfigAuditLogConfigArgs Empty = new GetIAMPolicyAuditConfigAuditLogConfigArgs();
+    public static final GetIamPolicyAuditConfigAuditLogConfigArgs Empty = new GetIamPolicyAuditConfigAuditLogConfigArgs();
 
     /**
      * Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `members` array for `binding`.
@@ -46,9 +46,9 @@ public final class GetIAMPolicyAuditConfigAuditLogConfigArgs extends com.pulumi.
         return this.logType;
     }
 
-    private GetIAMPolicyAuditConfigAuditLogConfigArgs() {}
+    private GetIamPolicyAuditConfigAuditLogConfigArgs() {}
 
-    private GetIAMPolicyAuditConfigAuditLogConfigArgs(GetIAMPolicyAuditConfigAuditLogConfigArgs $) {
+    private GetIamPolicyAuditConfigAuditLogConfigArgs(GetIamPolicyAuditConfigAuditLogConfigArgs $) {
         this.exemptedMembers = $.exemptedMembers;
         this.logType = $.logType;
     }
@@ -56,19 +56,19 @@ public final class GetIAMPolicyAuditConfigAuditLogConfigArgs extends com.pulumi.
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(GetIAMPolicyAuditConfigAuditLogConfigArgs defaults) {
+    public static Builder builder(GetIamPolicyAuditConfigAuditLogConfigArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private GetIAMPolicyAuditConfigAuditLogConfigArgs $;
+        private GetIamPolicyAuditConfigAuditLogConfigArgs $;
 
         public Builder() {
-            $ = new GetIAMPolicyAuditConfigAuditLogConfigArgs();
+            $ = new GetIamPolicyAuditConfigAuditLogConfigArgs();
         }
 
-        public Builder(GetIAMPolicyAuditConfigAuditLogConfigArgs defaults) {
-            $ = new GetIAMPolicyAuditConfigAuditLogConfigArgs(Objects.requireNonNull(defaults));
+        public Builder(GetIamPolicyAuditConfigAuditLogConfigArgs defaults) {
+            $ = new GetIamPolicyAuditConfigAuditLogConfigArgs(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -123,7 +123,7 @@ public final class GetIAMPolicyAuditConfigAuditLogConfigArgs extends com.pulumi.
             return logType(Output.of(logType));
         }
 
-        public GetIAMPolicyAuditConfigAuditLogConfigArgs build() {
+        public GetIamPolicyAuditConfigAuditLogConfigArgs build() {
             $.logType = Objects.requireNonNull($.logType, "expected parameter 'logType' to be non-null");
             return $;
         }

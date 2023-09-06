@@ -513,19 +513,19 @@ class Stream(pulumi.CustomResource):
         bucket = gcp.storage.Bucket("bucket",
             location="US",
             uniform_bucket_level_access=True)
-        viewer = gcp.storage.BucketIAMMember("viewer",
+        viewer = gcp.storage.BucketIamMember("viewer",
             bucket=bucket.name,
             role="roles/storage.objectViewer",
             member=f"serviceAccount:service-{project.number}@gcp-sa-datastream.iam.gserviceaccount.com")
-        creator = gcp.storage.BucketIAMMember("creator",
+        creator = gcp.storage.BucketIamMember("creator",
             bucket=bucket.name,
             role="roles/storage.objectCreator",
             member=f"serviceAccount:service-{project.number}@gcp-sa-datastream.iam.gserviceaccount.com")
-        reader = gcp.storage.BucketIAMMember("reader",
+        reader = gcp.storage.BucketIamMember("reader",
             bucket=bucket.name,
             role="roles/storage.legacyBucketReader",
             member=f"serviceAccount:service-{project.number}@gcp-sa-datastream.iam.gserviceaccount.com")
-        key_user = gcp.kms.CryptoKeyIAMMember("keyUser",
+        key_user = gcp.kms.CryptoKeyIamMember("keyUser",
             crypto_key_id="kms-name",
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-datastream.iam.gserviceaccount.com")
@@ -919,7 +919,7 @@ class Stream(pulumi.CustomResource):
                 password=user.password,
             ))
         bq_sa = gcp.bigquery.get_default_service_account()
-        bigquery_key_user = gcp.kms.CryptoKeyIAMMember("bigqueryKeyUser",
+        bigquery_key_user = gcp.kms.CryptoKeyIamMember("bigqueryKeyUser",
             crypto_key_id="bigquery-kms-name",
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:{bq_sa.email}")
@@ -1060,19 +1060,19 @@ class Stream(pulumi.CustomResource):
         bucket = gcp.storage.Bucket("bucket",
             location="US",
             uniform_bucket_level_access=True)
-        viewer = gcp.storage.BucketIAMMember("viewer",
+        viewer = gcp.storage.BucketIamMember("viewer",
             bucket=bucket.name,
             role="roles/storage.objectViewer",
             member=f"serviceAccount:service-{project.number}@gcp-sa-datastream.iam.gserviceaccount.com")
-        creator = gcp.storage.BucketIAMMember("creator",
+        creator = gcp.storage.BucketIamMember("creator",
             bucket=bucket.name,
             role="roles/storage.objectCreator",
             member=f"serviceAccount:service-{project.number}@gcp-sa-datastream.iam.gserviceaccount.com")
-        reader = gcp.storage.BucketIAMMember("reader",
+        reader = gcp.storage.BucketIamMember("reader",
             bucket=bucket.name,
             role="roles/storage.legacyBucketReader",
             member=f"serviceAccount:service-{project.number}@gcp-sa-datastream.iam.gserviceaccount.com")
-        key_user = gcp.kms.CryptoKeyIAMMember("keyUser",
+        key_user = gcp.kms.CryptoKeyIamMember("keyUser",
             crypto_key_id="kms-name",
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-datastream.iam.gserviceaccount.com")
@@ -1466,7 +1466,7 @@ class Stream(pulumi.CustomResource):
                 password=user.password,
             ))
         bq_sa = gcp.bigquery.get_default_service_account()
-        bigquery_key_user = gcp.kms.CryptoKeyIAMMember("bigqueryKeyUser",
+        bigquery_key_user = gcp.kms.CryptoKeyIamMember("bigqueryKeyUser",
             crypto_key_id="bigquery-kms-name",
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:{bq_sa.email}")

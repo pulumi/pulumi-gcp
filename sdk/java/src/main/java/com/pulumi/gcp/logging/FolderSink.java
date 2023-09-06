@@ -37,8 +37,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.FolderArgs;
  * import com.pulumi.gcp.logging.FolderSink;
  * import com.pulumi.gcp.logging.FolderSinkArgs;
- * import com.pulumi.gcp.projects.IAMBinding;
- * import com.pulumi.gcp.projects.IAMBindingArgs;
+ * import com.pulumi.gcp.projects.IamBinding;
+ * import com.pulumi.gcp.projects.IamBindingArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *             .filter(&#34;resource.type = gce_instance AND severity &gt;= WARNING&#34;)
  *             .build());
  * 
- *         var log_writer = new IAMBinding(&#34;log-writer&#34;, IAMBindingArgs.builder()        
+ *         var log_writer = new IamBinding(&#34;log-writer&#34;, IamBindingArgs.builder()        
  *             .project(&#34;your-project-id&#34;)
  *             .role(&#34;roles/storage.objectCreator&#34;)
  *             .members(my_sink.writerIdentity())

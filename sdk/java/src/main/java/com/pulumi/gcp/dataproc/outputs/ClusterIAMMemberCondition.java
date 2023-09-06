@@ -10,12 +10,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
-public final class ClusterIAMMemberCondition {
+public final class ClusterIamMemberCondition {
     private @Nullable String description;
     private String expression;
     private String title;
 
-    private ClusterIAMMemberCondition() {}
+    private ClusterIamMemberCondition() {}
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
@@ -30,7 +30,7 @@ public final class ClusterIAMMemberCondition {
         return new Builder();
     }
 
-    public static Builder builder(ClusterIAMMemberCondition defaults) {
+    public static Builder builder(ClusterIamMemberCondition defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -39,7 +39,7 @@ public final class ClusterIAMMemberCondition {
         private String expression;
         private String title;
         public Builder() {}
-        public Builder(ClusterIAMMemberCondition defaults) {
+        public Builder(ClusterIamMemberCondition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
     	      this.expression = defaults.expression;
@@ -61,8 +61,8 @@ public final class ClusterIAMMemberCondition {
             this.title = Objects.requireNonNull(title);
             return this;
         }
-        public ClusterIAMMemberCondition build() {
-            final var o = new ClusterIAMMemberCondition();
+        public ClusterIamMemberCondition build() {
+            final var o = new ClusterIamMemberCondition();
             o.description = description;
             o.expression = expression;
             o.title = title;

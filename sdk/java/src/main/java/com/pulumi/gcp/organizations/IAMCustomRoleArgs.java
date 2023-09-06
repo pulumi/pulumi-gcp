@@ -12,9 +12,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class IAMCustomRoleArgs extends com.pulumi.resources.ResourceArgs {
+public final class IamCustomRoleArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final IAMCustomRoleArgs Empty = new IAMCustomRoleArgs();
+    public static final IamCustomRoleArgs Empty = new IamCustomRoleArgs();
 
     /**
      * A human-readable description for the role.
@@ -110,9 +110,9 @@ public final class IAMCustomRoleArgs extends com.pulumi.resources.ResourceArgs {
         return this.title;
     }
 
-    private IAMCustomRoleArgs() {}
+    private IamCustomRoleArgs() {}
 
-    private IAMCustomRoleArgs(IAMCustomRoleArgs $) {
+    private IamCustomRoleArgs(IamCustomRoleArgs $) {
         this.description = $.description;
         this.orgId = $.orgId;
         this.permissions = $.permissions;
@@ -124,19 +124,19 @@ public final class IAMCustomRoleArgs extends com.pulumi.resources.ResourceArgs {
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(IAMCustomRoleArgs defaults) {
+    public static Builder builder(IamCustomRoleArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private IAMCustomRoleArgs $;
+        private IamCustomRoleArgs $;
 
         public Builder() {
-            $ = new IAMCustomRoleArgs();
+            $ = new IamCustomRoleArgs();
         }
 
-        public Builder(IAMCustomRoleArgs defaults) {
-            $ = new IAMCustomRoleArgs(Objects.requireNonNull(defaults));
+        public Builder(IamCustomRoleArgs defaults) {
+            $ = new IamCustomRoleArgs(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -279,7 +279,7 @@ public final class IAMCustomRoleArgs extends com.pulumi.resources.ResourceArgs {
             return title(Output.of(title));
         }
 
-        public IAMCustomRoleArgs build() {
+        public IamCustomRoleArgs build() {
             $.orgId = Objects.requireNonNull($.orgId, "expected parameter 'orgId' to be non-null");
             $.permissions = Objects.requireNonNull($.permissions, "expected parameter 'permissions' to be non-null");
             $.roleId = Objects.requireNonNull($.roleId, "expected parameter 'roleId' to be non-null");

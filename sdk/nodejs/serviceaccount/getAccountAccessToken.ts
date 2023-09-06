@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const token_creator_iam = new gcp.serviceaccount.IAMBinding("token-creator-iam", {
+ * const token_creator_iam = new gcp.serviceaccount.IamBinding("token-creator-iam", {
  *     members: ["serviceAccount:service_A@projectA.iam.gserviceaccount.com"],
  *     role: "roles/iam.serviceAccountTokenCreator",
  *     serviceAccountId: "projects/-/serviceAccounts/service_B@projectB.iam.gserviceaccount.com",
@@ -121,7 +121,7 @@ export interface GetAccountAccessTokenResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const token_creator_iam = new gcp.serviceaccount.IAMBinding("token-creator-iam", {
+ * const token_creator_iam = new gcp.serviceaccount.IamBinding("token-creator-iam", {
  *     members: ["serviceAccount:service_A@projectA.iam.gserviceaccount.com"],
  *     role: "roles/iam.serviceAccountTokenCreator",
  *     serviceAccountId: "projects/-/serviceAccounts/service_B@projectB.iam.gserviceaccount.com",

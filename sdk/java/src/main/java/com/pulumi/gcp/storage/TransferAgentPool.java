@@ -34,8 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.storage.StorageFunctions;
  * import com.pulumi.gcp.storage.inputs.GetTransferProjectServiceAccountArgs;
- * import com.pulumi.gcp.projects.IAMMember;
- * import com.pulumi.gcp.projects.IAMMemberArgs;
+ * import com.pulumi.gcp.projects.IamMember;
+ * import com.pulumi.gcp.projects.IamMemberArgs;
  * import com.pulumi.gcp.storage.TransferAgentPool;
  * import com.pulumi.gcp.storage.TransferAgentPoolArgs;
  * import com.pulumi.gcp.storage.inputs.TransferAgentPoolBandwidthLimitArgs;
@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *             .project(&#34;my-project-name&#34;)
  *             .build());
  * 
- *         var pubsubEditorRole = new IAMMember(&#34;pubsubEditorRole&#34;, IAMMemberArgs.builder()        
+ *         var pubsubEditorRole = new IamMember(&#34;pubsubEditorRole&#34;, IamMemberArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .role(&#34;roles/pubsub.editor&#34;)
  *             .member(String.format(&#34;serviceAccount:%s&#34;, default_.email()))

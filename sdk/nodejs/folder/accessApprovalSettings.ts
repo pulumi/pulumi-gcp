@@ -63,7 +63,7 @@ import * as utilities from "../utilities";
  * const serviceAccount = gcp.accessapproval.getFolderServiceAccountOutput({
  *     folderId: myFolder.folderId,
  * });
- * const iam = new gcp.kms.CryptoKeyIAMMember("iam", {
+ * const iam = new gcp.kms.CryptoKeyIamMember("iam", {
  *     cryptoKeyId: cryptoKey.id,
  *     role: "roles/cloudkms.signerVerifier",
  *     member: serviceAccount.apply(serviceAccount => `serviceAccount:${serviceAccount.accountEmail}`),

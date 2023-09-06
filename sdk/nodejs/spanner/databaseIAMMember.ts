@@ -9,16 +9,16 @@ import * as utilities from "../utilities";
 /**
  * Three different resources help you manage your IAM policy for a Spanner database. Each of these resources serves a different use case:
  *
- * * `gcp.spanner.DatabaseIAMPolicy`: Authoritative. Sets the IAM policy for the database and replaces any existing policy already attached.
+ * * `gcp.spanner.DatabaseIamPolicy`: Authoritative. Sets the IAM policy for the database and replaces any existing policy already attached.
  *
- * > **Warning:** It's entirely possibly to lock yourself out of your database using `gcp.spanner.DatabaseIAMPolicy`. Any permissions granted by default will be removed unless you include them in your config.
+ * > **Warning:** It's entirely possibly to lock yourself out of your database using `gcp.spanner.DatabaseIamPolicy`. Any permissions granted by default will be removed unless you include them in your config.
  *
- * * `gcp.spanner.DatabaseIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the database are preserved.
- * * `gcp.spanner.DatabaseIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the database are preserved.
+ * * `gcp.spanner.DatabaseIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the database are preserved.
+ * * `gcp.spanner.DatabaseIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the database are preserved.
  *
- * > **Note:** `gcp.spanner.DatabaseIAMPolicy` **cannot** be used in conjunction with `gcp.spanner.DatabaseIAMBinding` and `gcp.spanner.DatabaseIAMMember` or they will fight over what your policy should be.
+ * > **Note:** `gcp.spanner.DatabaseIamPolicy` **cannot** be used in conjunction with `gcp.spanner.DatabaseIamBinding` and `gcp.spanner.DatabaseIamMember` or they will fight over what your policy should be.
  *
- * > **Note:** `gcp.spanner.DatabaseIAMBinding` resources **can be** used in conjunction with `gcp.spanner.DatabaseIAMMember` resources **only if** they do not grant privilege to the same role.
+ * > **Note:** `gcp.spanner.DatabaseIamBinding` resources **can be** used in conjunction with `gcp.spanner.DatabaseIamMember` resources **only if** they do not grant privilege to the same role.
  *
  * ## google\_spanner\_database\_iam\_policy
  *
@@ -26,13 +26,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const admin = gcp.organizations.getIAMPolicy({
+ * const admin = gcp.organizations.getIamPolicy({
  *     bindings: [{
  *         role: "roles/editor",
  *         members: ["user:jane@example.com"],
  *     }],
  * });
- * const database = new gcp.spanner.DatabaseIAMPolicy("database", {
+ * const database = new gcp.spanner.DatabaseIamPolicy("database", {
  *     instance: "your-instance-name",
  *     database: "your-database-name",
  *     policyData: admin.then(admin => admin.policyData),
@@ -45,7 +45,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const database = new gcp.spanner.DatabaseIAMBinding("database", {
+ * const database = new gcp.spanner.DatabaseIamBinding("database", {
  *     database: "your-database-name",
  *     instance: "your-instance-name",
  *     members: ["user:jane@example.com"],
@@ -59,7 +59,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const database = new gcp.spanner.DatabaseIAMMember("database", {
+ * const database = new gcp.spanner.DatabaseIamMember("database", {
  *     database: "your-database-name",
  *     instance: "your-instance-name",
  *     member: "user:jane@example.com",
@@ -72,28 +72,28 @@ import * as utilities from "../utilities";
  * For all import syntaxes, the "resource in question" can take any of the following forms* {{project}}/{{instance}}/{{database}} * {{instance}}/{{database}} (project is taken from provider project) IAM member imports use space-delimited identifiers; the resource in question, the role, and the member identity, e.g.
  *
  * ```sh
- *  $ pulumi import gcp:spanner/databaseIAMMember:DatabaseIAMMember database "project-name/instance-name/database-name roles/viewer user:foo@example.com"
+ *  $ pulumi import gcp:spanner/databaseIamMember:DatabaseIamMember database "project-name/instance-name/database-name roles/viewer user:foo@example.com"
  * ```
  *
  *  IAM binding imports use space-delimited identifiers; the resource in question and the role, e.g.
  *
  * ```sh
- *  $ pulumi import gcp:spanner/databaseIAMMember:DatabaseIAMMember database "project-name/instance-name/database-name roles/viewer"
+ *  $ pulumi import gcp:spanner/databaseIamMember:DatabaseIamMember database "project-name/instance-name/database-name roles/viewer"
  * ```
  *
  *  IAM policy imports use the identifier of the resource in question, e.g.
  *
  * ```sh
- *  $ pulumi import gcp:spanner/databaseIAMMember:DatabaseIAMMember database project-name/instance-name/database-name
+ *  $ pulumi import gcp:spanner/databaseIamMember:DatabaseIamMember database project-name/instance-name/database-name
  * ```
  *
  *  -> **Custom Roles:** If you're importing a IAM resource with a custom role, make sure to use the
  *
  * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  */
-export class DatabaseIAMMember extends pulumi.CustomResource {
+export class DatabaseIamMember extends pulumi.CustomResource {
     /**
-     * Get an existing DatabaseIAMMember resource's state with the given name, ID, and optional extra
+     * Get an existing DatabaseIamMember resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -101,25 +101,25 @@ export class DatabaseIAMMember extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DatabaseIAMMemberState, opts?: pulumi.CustomResourceOptions): DatabaseIAMMember {
-        return new DatabaseIAMMember(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: DatabaseIamMemberState, opts?: pulumi.CustomResourceOptions): DatabaseIamMember {
+        return new DatabaseIamMember(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp:spanner/databaseIAMMember:DatabaseIAMMember';
+    public static readonly __pulumiType = 'gcp:spanner/databaseIamMember:DatabaseIamMember';
 
     /**
-     * Returns true if the given object is an instance of DatabaseIAMMember.  This is designed to work even
+     * Returns true if the given object is an instance of DatabaseIamMember.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is DatabaseIAMMember {
+    public static isInstance(obj: any): obj is DatabaseIamMember {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === DatabaseIAMMember.__pulumiType;
+        return obj['__pulumiType'] === DatabaseIamMember.__pulumiType;
     }
 
-    public readonly condition!: pulumi.Output<outputs.spanner.DatabaseIAMMemberCondition | undefined>;
+    public readonly condition!: pulumi.Output<outputs.spanner.DatabaseIamMemberCondition | undefined>;
     /**
      * The name of the Spanner database.
      */
@@ -149,24 +149,24 @@ export class DatabaseIAMMember extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
-     * `gcp.spanner.DatabaseIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.spanner.DatabaseIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     public readonly role!: pulumi.Output<string>;
 
     /**
-     * Create a DatabaseIAMMember resource with the given unique name, arguments, and options.
+     * Create a DatabaseIamMember resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: DatabaseIAMMemberArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: DatabaseIAMMemberArgs | DatabaseIAMMemberState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: DatabaseIamMemberArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: DatabaseIamMemberArgs | DatabaseIamMemberState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as DatabaseIAMMemberState | undefined;
+            const state = argsOrState as DatabaseIamMemberState | undefined;
             resourceInputs["condition"] = state ? state.condition : undefined;
             resourceInputs["database"] = state ? state.database : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
@@ -175,7 +175,7 @@ export class DatabaseIAMMember extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["role"] = state ? state.role : undefined;
         } else {
-            const args = argsOrState as DatabaseIAMMemberArgs | undefined;
+            const args = argsOrState as DatabaseIamMemberArgs | undefined;
             if ((!args || args.database === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'database'");
             }
@@ -197,15 +197,15 @@ export class DatabaseIAMMember extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(DatabaseIAMMember.__pulumiType, name, resourceInputs, opts);
+        super(DatabaseIamMember.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering DatabaseIAMMember resources.
+ * Input properties used for looking up and filtering DatabaseIamMember resources.
  */
-export interface DatabaseIAMMemberState {
-    condition?: pulumi.Input<inputs.spanner.DatabaseIAMMemberCondition>;
+export interface DatabaseIamMemberState {
+    condition?: pulumi.Input<inputs.spanner.DatabaseIamMemberCondition>;
     /**
      * The name of the Spanner database.
      */
@@ -235,17 +235,17 @@ export interface DatabaseIAMMemberState {
     project?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
-     * `gcp.spanner.DatabaseIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.spanner.DatabaseIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     role?: pulumi.Input<string>;
 }
 
 /**
- * The set of arguments for constructing a DatabaseIAMMember resource.
+ * The set of arguments for constructing a DatabaseIamMember resource.
  */
-export interface DatabaseIAMMemberArgs {
-    condition?: pulumi.Input<inputs.spanner.DatabaseIAMMemberCondition>;
+export interface DatabaseIamMemberArgs {
+    condition?: pulumi.Input<inputs.spanner.DatabaseIamMemberCondition>;
     /**
      * The name of the Spanner database.
      */
@@ -271,7 +271,7 @@ export interface DatabaseIAMMemberArgs {
     project?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
-     * `gcp.spanner.DatabaseIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.spanner.DatabaseIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     role: pulumi.Input<string>;

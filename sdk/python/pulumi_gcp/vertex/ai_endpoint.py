@@ -474,7 +474,7 @@ class AiEndpoint(pulumi.CustomResource):
                 kms_key_name="kms-name",
             ),
             opts=pulumi.ResourceOptions(depends_on=[vertex_vpc_connection]))
-        crypto_key = gcp.kms.CryptoKeyIAMMember("cryptoKey",
+        crypto_key = gcp.kms.CryptoKeyIamMember("cryptoKey",
             crypto_key_id="kms-name",
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-aiplatform.iam.gserviceaccount.com")
@@ -559,7 +559,7 @@ class AiEndpoint(pulumi.CustomResource):
                 kms_key_name="kms-name",
             ),
             opts=pulumi.ResourceOptions(depends_on=[vertex_vpc_connection]))
-        crypto_key = gcp.kms.CryptoKeyIAMMember("cryptoKey",
+        crypto_key = gcp.kms.CryptoKeyIamMember("cryptoKey",
             crypto_key_id="kms-name",
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-aiplatform.iam.gserviceaccount.com")

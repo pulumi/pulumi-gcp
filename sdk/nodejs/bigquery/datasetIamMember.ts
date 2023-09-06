@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const owner = gcp.organizations.getIAMPolicy({
+ * const owner = gcp.organizations.getIamPolicy({
  *     bindings: [{
  *         role: "roles/bigquery.dataOwner",
  *         members: ["user:jane@example.com"],

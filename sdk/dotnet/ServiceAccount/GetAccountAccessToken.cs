@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var token_creator_iam = new Gcp.ServiceAccount.IAMBinding("token-creator-iam", new()
+        ///     var token_creator_iam = new Gcp.ServiceAccount.IamBinding("token-creator-iam", new()
         ///     {
         ///         Members = new[]
         ///         {
@@ -114,7 +114,7 @@ namespace Pulumi.Gcp.ServiceAccount
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var token_creator_iam = new Gcp.ServiceAccount.IAMBinding("token-creator-iam", new()
+        ///     var token_creator_iam = new Gcp.ServiceAccount.IamBinding("token-creator-iam", new()
         ///     {
         ///         Members = new[]
         ///         {

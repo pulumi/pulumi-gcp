@@ -35,7 +35,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.organizations.inputs.GetIamPolicyArgs;
  * import com.pulumi.gcp.healthcare.DicomStoreIamPolicy;
  * import com.pulumi.gcp.healthcare.DicomStoreIamPolicyArgs;
  * import java.util.List;
@@ -51,8 +51,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
- *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *         final var admin = OrganizationsFunctions.getIamPolicy(GetIamPolicyArgs.builder()
+ *             .bindings(GetIamPolicyBindingArgs.builder()
  *                 .role(&#34;roles/editor&#34;)
  *                 .members(&#34;user:jane@example.com&#34;)
  *                 .build())
@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  * 
  *         var dicomStore = new DicomStoreIamPolicy(&#34;dicomStore&#34;, DicomStoreIamPolicyArgs.builder()        
  *             .dicomStoreId(&#34;your-dicom-store-id&#34;)
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIamPolicyResult -&gt; getIamPolicyResult.policyData()))
  *             .build());
  * 
  *     }

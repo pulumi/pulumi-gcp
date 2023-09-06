@@ -9,13 +9,13 @@ import * as utilities from "../utilities";
  *
  * Three different resources help you manage your IAM policy for a service account. Each of these resources serves a different use case:
  *
- * * `gcp.serviceAccount.IAMPolicy`: Authoritative. Sets the IAM policy for the service account and replaces any existing policy already attached.
- * * `gcp.serviceAccount.IAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the service account are preserved.
- * * `gcp.serviceAccount.IAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the service account are preserved.
+ * * `gcp.serviceAccount.IamPolicy`: Authoritative. Sets the IAM policy for the service account and replaces any existing policy already attached.
+ * * `gcp.serviceAccount.IamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the service account are preserved.
+ * * `gcp.serviceAccount.IamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the service account are preserved.
  *
- * > **Note:** `gcp.serviceAccount.IAMPolicy` **cannot** be used in conjunction with `gcp.serviceAccount.IAMBinding` and `gcp.serviceAccount.IAMMember` or they will fight over what your policy should be.
+ * > **Note:** `gcp.serviceAccount.IamPolicy` **cannot** be used in conjunction with `gcp.serviceAccount.IamBinding` and `gcp.serviceAccount.IamMember` or they will fight over what your policy should be.
  *
- * > **Note:** `gcp.serviceAccount.IAMBinding` resources **can be** used in conjunction with `gcp.serviceAccount.IAMMember` resources **only if** they do not grant privilege to the same role.
+ * > **Note:** `gcp.serviceAccount.IamBinding` resources **can be** used in conjunction with `gcp.serviceAccount.IamMember` resources **only if** they do not grant privilege to the same role.
  *
  * ## Example Usage
  * ### Service Account IAM Policy
@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const admin = gcp.organizations.getIAMPolicy({
+ * const admin = gcp.organizations.getIamPolicy({
  *     bindings: [{
  *         role: "roles/iam.serviceAccountUser",
  *         members: ["user:jane@example.com"],
@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  *     accountId: "my-service-account",
  *     displayName: "A service account that only Jane can interact with",
  * });
- * const admin_account_iam = new gcp.serviceaccount.IAMPolicy("admin-account-iam", {
+ * const admin_account_iam = new gcp.serviceaccount.IamPolicy("admin-account-iam", {
  *     serviceAccountId: sa.name,
  *     policyData: admin.then(admin => admin.policyData),
  * });
@@ -49,7 +49,7 @@ import * as utilities from "../utilities";
  *     accountId: "my-service-account",
  *     displayName: "A service account that only Jane can use",
  * });
- * const admin_account_iam = new gcp.serviceaccount.IAMBinding("admin-account-iam", {
+ * const admin_account_iam = new gcp.serviceaccount.IamBinding("admin-account-iam", {
  *     serviceAccountId: sa.name,
  *     role: "roles/iam.serviceAccountUser",
  *     members: ["user:jane@example.com"],
@@ -65,7 +65,7 @@ import * as utilities from "../utilities";
  *     accountId: "my-service-account",
  *     displayName: "A service account that only Jane can use",
  * });
- * const admin_account_iam = new gcp.serviceaccount.IAMBinding("admin-account-iam", {
+ * const admin_account_iam = new gcp.serviceaccount.IamBinding("admin-account-iam", {
  *     serviceAccountId: sa.name,
  *     role: "roles/iam.serviceAccountUser",
  *     members: ["user:jane@example.com"],
@@ -87,13 +87,13 @@ import * as utilities from "../utilities";
  *     accountId: "my-service-account",
  *     displayName: "A service account that Jane can use",
  * });
- * const admin_account_iam = new gcp.serviceaccount.IAMMember("admin-account-iam", {
+ * const admin_account_iam = new gcp.serviceaccount.IamMember("admin-account-iam", {
  *     serviceAccountId: sa.name,
  *     role: "roles/iam.serviceAccountUser",
  *     member: "user:jane@example.com",
  * });
  * // Allow SA service account use the default GCE account
- * const gce_default_account_iam = new gcp.serviceaccount.IAMMember("gce-default-account-iam", {
+ * const gce_default_account_iam = new gcp.serviceaccount.IamMember("gce-default-account-iam", {
  *     serviceAccountId: _default.then(_default => _default.name),
  *     role: "roles/iam.serviceAccountUser",
  *     member: pulumi.interpolate`serviceAccount:${sa.email}`,
@@ -109,7 +109,7 @@ import * as utilities from "../utilities";
  *     accountId: "my-service-account",
  *     displayName: "A service account that Jane can use",
  * });
- * const admin_account_iam = new gcp.serviceaccount.IAMMember("admin-account-iam", {
+ * const admin_account_iam = new gcp.serviceaccount.IamMember("admin-account-iam", {
  *     serviceAccountId: sa.name,
  *     role: "roles/iam.serviceAccountUser",
  *     member: "user:jane@example.com",
@@ -126,30 +126,30 @@ import * as utilities from "../utilities";
  * Service account IAM resources can be imported using the project, service account email, role, member identity, and condition (beta).
  *
  * ```sh
- *  $ pulumi import gcp:serviceAccount/iAMPolicy:IAMPolicy admin-account-iam projects/{your-project-id}/serviceAccounts/{your-service-account-email}
+ *  $ pulumi import gcp:serviceAccount/iamPolicy:IamPolicy admin-account-iam projects/{your-project-id}/serviceAccounts/{your-service-account-email}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:serviceAccount/iAMPolicy:IAMPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser"
+ *  $ pulumi import gcp:serviceAccount/iamPolicy:IamPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser"
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:serviceAccount/iAMPolicy:IAMPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/editor user:foo@example.com"
+ *  $ pulumi import gcp:serviceAccount/iamPolicy:IamPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/editor user:foo@example.com"
  * ```
  *
  *  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`. With conditions
  *
  * ```sh
- *  $ pulumi import gcp:serviceAccount/iAMPolicy:IAMPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser expires_after_2019_12_31"
+ *  $ pulumi import gcp:serviceAccount/iamPolicy:IamPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser expires_after_2019_12_31"
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:serviceAccount/iAMPolicy:IAMPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser user:foo@example.com expires_after_2019_12_31"
+ *  $ pulumi import gcp:serviceAccount/iamPolicy:IamPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser user:foo@example.com expires_after_2019_12_31"
  * ```
  */
-export class IAMPolicy extends pulumi.CustomResource {
+export class IamPolicy extends pulumi.CustomResource {
     /**
-     * Get an existing IAMPolicy resource's state with the given name, ID, and optional extra
+     * Get an existing IamPolicy resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -157,22 +157,22 @@ export class IAMPolicy extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: IAMPolicyState, opts?: pulumi.CustomResourceOptions): IAMPolicy {
-        return new IAMPolicy(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: IamPolicyState, opts?: pulumi.CustomResourceOptions): IamPolicy {
+        return new IamPolicy(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp:serviceAccount/iAMPolicy:IAMPolicy';
+    public static readonly __pulumiType = 'gcp:serviceAccount/iamPolicy:IamPolicy';
 
     /**
-     * Returns true if the given object is an instance of IAMPolicy.  This is designed to work even
+     * Returns true if the given object is an instance of IamPolicy.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is IAMPolicy {
+    public static isInstance(obj: any): obj is IamPolicy {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === IAMPolicy.__pulumiType;
+        return obj['__pulumiType'] === IamPolicy.__pulumiType;
     }
 
     /**
@@ -181,7 +181,7 @@ export class IAMPolicy extends pulumi.CustomResource {
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
      * The policy data generated by
-     * a `gcp.organizations.getIAMPolicy` data source.
+     * a `gcp.organizations.getIamPolicy` data source.
      */
     public readonly policyData!: pulumi.Output<string>;
     /**
@@ -199,23 +199,23 @@ export class IAMPolicy extends pulumi.CustomResource {
     public readonly serviceAccountId!: pulumi.Output<string>;
 
     /**
-     * Create a IAMPolicy resource with the given unique name, arguments, and options.
+     * Create a IamPolicy resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: IAMPolicyArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: IAMPolicyArgs | IAMPolicyState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: IamPolicyArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: IamPolicyArgs | IamPolicyState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as IAMPolicyState | undefined;
+            const state = argsOrState as IamPolicyState | undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["policyData"] = state ? state.policyData : undefined;
             resourceInputs["serviceAccountId"] = state ? state.serviceAccountId : undefined;
         } else {
-            const args = argsOrState as IAMPolicyArgs | undefined;
+            const args = argsOrState as IamPolicyArgs | undefined;
             if ((!args || args.policyData === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyData'");
             }
@@ -227,21 +227,21 @@ export class IAMPolicy extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(IAMPolicy.__pulumiType, name, resourceInputs, opts);
+        super(IamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering IAMPolicy resources.
+ * Input properties used for looking up and filtering IamPolicy resources.
  */
-export interface IAMPolicyState {
+export interface IamPolicyState {
     /**
      * (Computed) The etag of the service account IAM policy.
      */
     etag?: pulumi.Input<string>;
     /**
      * The policy data generated by
-     * a `gcp.organizations.getIAMPolicy` data source.
+     * a `gcp.organizations.getIamPolicy` data source.
      */
     policyData?: pulumi.Input<string>;
     /**
@@ -260,12 +260,12 @@ export interface IAMPolicyState {
 }
 
 /**
- * The set of arguments for constructing a IAMPolicy resource.
+ * The set of arguments for constructing a IamPolicy resource.
  */
-export interface IAMPolicyArgs {
+export interface IamPolicyArgs {
     /**
      * The policy data generated by
-     * a `gcp.organizations.getIAMPolicy` data source.
+     * a `gcp.organizations.getIamPolicy` data source.
      */
     policyData: pulumi.Input<string>;
     /**

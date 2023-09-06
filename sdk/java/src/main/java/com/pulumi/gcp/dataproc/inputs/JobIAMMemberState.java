@@ -5,21 +5,21 @@ package com.pulumi.gcp.dataproc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.gcp.dataproc.inputs.JobIAMMemberConditionArgs;
+import com.pulumi.gcp.dataproc.inputs.JobIamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class JobIAMMemberState extends com.pulumi.resources.ResourceArgs {
+public final class JobIamMemberState extends com.pulumi.resources.ResourceArgs {
 
-    public static final JobIAMMemberState Empty = new JobIAMMemberState();
+    public static final JobIamMemberState Empty = new JobIamMemberState();
 
     @Import(name="condition")
-    private @Nullable Output<JobIAMMemberConditionArgs> condition;
+    private @Nullable Output<JobIamMemberConditionArgs> condition;
 
-    public Optional<Output<JobIAMMemberConditionArgs>> condition() {
+    public Optional<Output<JobIamMemberConditionArgs>> condition() {
         return Optional.ofNullable(this.condition);
     }
 
@@ -88,10 +88,10 @@ public final class JobIAMMemberState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The role that should be applied. Only one
-     * `gcp.dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.dataproc.JobIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
-     * `gcp.dataproc.JobIAMPolicy` only:
+     * `gcp.dataproc.JobIamPolicy` only:
      * 
      */
     @Import(name="role")
@@ -99,19 +99,19 @@ public final class JobIAMMemberState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The role that should be applied. Only one
-     * `gcp.dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.dataproc.JobIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
-     * `gcp.dataproc.JobIAMPolicy` only:
+     * `gcp.dataproc.JobIamPolicy` only:
      * 
      */
     public Optional<Output<String>> role() {
         return Optional.ofNullable(this.role);
     }
 
-    private JobIAMMemberState() {}
+    private JobIamMemberState() {}
 
-    private JobIAMMemberState(JobIAMMemberState $) {
+    private JobIamMemberState(JobIamMemberState $) {
         this.condition = $.condition;
         this.etag = $.etag;
         this.jobId = $.jobId;
@@ -124,27 +124,27 @@ public final class JobIAMMemberState extends com.pulumi.resources.ResourceArgs {
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(JobIAMMemberState defaults) {
+    public static Builder builder(JobIamMemberState defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private JobIAMMemberState $;
+        private JobIamMemberState $;
 
         public Builder() {
-            $ = new JobIAMMemberState();
+            $ = new JobIamMemberState();
         }
 
-        public Builder(JobIAMMemberState defaults) {
-            $ = new JobIAMMemberState(Objects.requireNonNull(defaults));
+        public Builder(JobIamMemberState defaults) {
+            $ = new JobIamMemberState(Objects.requireNonNull(defaults));
         }
 
-        public Builder condition(@Nullable Output<JobIAMMemberConditionArgs> condition) {
+        public Builder condition(@Nullable Output<JobIamMemberConditionArgs> condition) {
             $.condition = condition;
             return this;
         }
 
-        public Builder condition(JobIAMMemberConditionArgs condition) {
+        public Builder condition(JobIamMemberConditionArgs condition) {
             return condition(Output.of(condition));
         }
 
@@ -235,10 +235,10 @@ public final class JobIAMMemberState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.dataproc.JobIamBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
-         * `gcp.dataproc.JobIAMPolicy` only:
+         * `gcp.dataproc.JobIamPolicy` only:
          * 
          * @return builder
          * 
@@ -250,10 +250,10 @@ public final class JobIAMMemberState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.dataproc.JobIamBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
-         * `gcp.dataproc.JobIAMPolicy` only:
+         * `gcp.dataproc.JobIamPolicy` only:
          * 
          * @return builder
          * 
@@ -262,7 +262,7 @@ public final class JobIAMMemberState extends com.pulumi.resources.ResourceArgs {
             return role(Output.of(role));
         }
 
-        public JobIAMMemberState build() {
+        public JobIamMemberState build() {
             return $;
         }
     }

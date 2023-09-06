@@ -11,9 +11,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class BucketIAMBindingConditionArgs extends com.pulumi.resources.ResourceArgs {
+public final class BucketIamBindingConditionArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final BucketIAMBindingConditionArgs Empty = new BucketIAMBindingConditionArgs();
+    public static final BucketIamBindingConditionArgs Empty = new BucketIamBindingConditionArgs();
 
     /**
      * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -68,9 +68,9 @@ public final class BucketIAMBindingConditionArgs extends com.pulumi.resources.Re
         return this.title;
     }
 
-    private BucketIAMBindingConditionArgs() {}
+    private BucketIamBindingConditionArgs() {}
 
-    private BucketIAMBindingConditionArgs(BucketIAMBindingConditionArgs $) {
+    private BucketIamBindingConditionArgs(BucketIamBindingConditionArgs $) {
         this.description = $.description;
         this.expression = $.expression;
         this.title = $.title;
@@ -79,19 +79,19 @@ public final class BucketIAMBindingConditionArgs extends com.pulumi.resources.Re
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(BucketIAMBindingConditionArgs defaults) {
+    public static Builder builder(BucketIamBindingConditionArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private BucketIAMBindingConditionArgs $;
+        private BucketIamBindingConditionArgs $;
 
         public Builder() {
-            $ = new BucketIAMBindingConditionArgs();
+            $ = new BucketIamBindingConditionArgs();
         }
 
-        public Builder(BucketIAMBindingConditionArgs defaults) {
-            $ = new BucketIAMBindingConditionArgs(Objects.requireNonNull(defaults));
+        public Builder(BucketIamBindingConditionArgs defaults) {
+            $ = new BucketIamBindingConditionArgs(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -165,7 +165,7 @@ public final class BucketIAMBindingConditionArgs extends com.pulumi.resources.Re
             return title(Output.of(title));
         }
 
-        public BucketIAMBindingConditionArgs build() {
+        public BucketIamBindingConditionArgs build() {
             $.expression = Objects.requireNonNull($.expression, "expected parameter 'expression' to be non-null");
             $.title = Objects.requireNonNull($.title, "expected parameter 'title' to be non-null");
             return $;

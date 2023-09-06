@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  * const default = gcp.storage.getTransferProjectServiceAccount({
  *     project: "my-project-name",
  * });
- * const pubsubEditorRole = new gcp.projects.IAMMember("pubsubEditorRole", {
+ * const pubsubEditorRole = new gcp.projects.IamMember("pubsubEditorRole", {
  *     project: "my-project-name",
  *     role: "roles/pubsub.editor",
  *     member: _default.then(_default => `serviceAccount:${_default.email}`),

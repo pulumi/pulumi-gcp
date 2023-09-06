@@ -12,13 +12,13 @@ namespace Pulumi.Gcp.Kms
     /// <summary>
     /// Three different resources help you manage your IAM policy for KMS key ring. Each of these resources serves a different use case:
     /// 
-    /// * `gcp.kms.KeyRingIAMPolicy`: Authoritative. Sets the IAM policy for the key ring and replaces any existing policy already attached.
-    /// * `gcp.kms.KeyRingIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the key ring are preserved.
-    /// * `gcp.kms.KeyRingIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the key ring are preserved.
+    /// * `gcp.kms.KeyRingIamPolicy`: Authoritative. Sets the IAM policy for the key ring and replaces any existing policy already attached.
+    /// * `gcp.kms.KeyRingIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the key ring are preserved.
+    /// * `gcp.kms.KeyRingIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the key ring are preserved.
     /// 
-    /// &gt; **Note:** `gcp.kms.KeyRingIAMPolicy` **cannot** be used in conjunction with `gcp.kms.KeyRingIAMBinding` and `gcp.kms.KeyRingIAMMember` or they will fight over what your policy should be.
+    /// &gt; **Note:** `gcp.kms.KeyRingIamPolicy` **cannot** be used in conjunction with `gcp.kms.KeyRingIamBinding` and `gcp.kms.KeyRingIamMember` or they will fight over what your policy should be.
     /// 
-    /// &gt; **Note:** `gcp.kms.KeyRingIAMBinding` resources **can be** used in conjunction with `gcp.kms.KeyRingIAMMember` resources **only if** they do not grant privilege to the same role.
+    /// &gt; **Note:** `gcp.kms.KeyRingIamBinding` resources **can be** used in conjunction with `gcp.kms.KeyRingIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
     /// ## google\_kms\_key\_ring\_iam\_policy
     /// 
@@ -35,11 +35,11 @@ namespace Pulumi.Gcp.Kms
     ///         Location = "global",
     ///     });
     /// 
-    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     var admin = Gcp.Organizations.GetIamPolicy.Invoke(new()
     ///     {
     ///         Bindings = new[]
     ///         {
-    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             new Gcp.Organizations.Inputs.GetIamPolicyBindingInputArgs
     ///             {
     ///                 Role = "roles/editor",
     ///                 Members = new[]
@@ -50,10 +50,10 @@ namespace Pulumi.Gcp.Kms
     ///         },
     ///     });
     /// 
-    ///     var keyRing = new Gcp.Kms.KeyRingIAMPolicy("keyRing", new()
+    ///     var keyRing = new Gcp.Kms.KeyRingIamPolicy("keyRing", new()
     ///     {
     ///         KeyRingId = keyring.Id,
-    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///         PolicyData = admin.Apply(getIamPolicyResult =&gt; getIamPolicyResult.PolicyData),
     ///     });
     /// 
     /// });
@@ -74,18 +74,18 @@ namespace Pulumi.Gcp.Kms
     ///         Location = "global",
     ///     });
     /// 
-    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     var admin = Gcp.Organizations.GetIamPolicy.Invoke(new()
     ///     {
     ///         Bindings = new[]
     ///         {
-    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             new Gcp.Organizations.Inputs.GetIamPolicyBindingInputArgs
     ///             {
     ///                 Role = "roles/editor",
     ///                 Members = new[]
     ///                 {
     ///                     "user:jane@example.com",
     ///                 },
-    ///                 Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionInputArgs
+    ///                 Condition = new Gcp.Organizations.Inputs.GetIamPolicyBindingConditionInputArgs
     ///                 {
     ///                     Title = "expires_after_2019_12_31",
     ///                     Description = "Expiring at midnight of 2019-12-31",
@@ -95,10 +95,10 @@ namespace Pulumi.Gcp.Kms
     ///         },
     ///     });
     /// 
-    ///     var keyRing = new Gcp.Kms.KeyRingIAMPolicy("keyRing", new()
+    ///     var keyRing = new Gcp.Kms.KeyRingIamPolicy("keyRing", new()
     ///     {
     ///         KeyRingId = keyring.Id,
-    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///         PolicyData = admin.Apply(getIamPolicyResult =&gt; getIamPolicyResult.PolicyData),
     ///     });
     /// 
     /// });
@@ -114,7 +114,7 @@ namespace Pulumi.Gcp.Kms
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var keyRing = new Gcp.Kms.KeyRingIAMBinding("keyRing", new()
+    ///     var keyRing = new Gcp.Kms.KeyRingIamBinding("keyRing", new()
     ///     {
     ///         KeyRingId = "your-key-ring-id",
     ///         Members = new[]
@@ -137,9 +137,9 @@ namespace Pulumi.Gcp.Kms
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var keyRing = new Gcp.Kms.KeyRingIAMBinding("keyRing", new()
+    ///     var keyRing = new Gcp.Kms.KeyRingIamBinding("keyRing", new()
     ///     {
-    ///         Condition = new Gcp.Kms.Inputs.KeyRingIAMBindingConditionArgs
+    ///         Condition = new Gcp.Kms.Inputs.KeyRingIamBindingConditionArgs
     ///         {
     ///             Description = "Expiring at midnight of 2019-12-31",
     ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
@@ -166,7 +166,7 @@ namespace Pulumi.Gcp.Kms
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var keyRing = new Gcp.Kms.KeyRingIAMMember("keyRing", new()
+    ///     var keyRing = new Gcp.Kms.KeyRingIamMember("keyRing", new()
     ///     {
     ///         KeyRingId = "your-key-ring-id",
     ///         Member = "user:jane@example.com",
@@ -186,9 +186,9 @@ namespace Pulumi.Gcp.Kms
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var keyRing = new Gcp.Kms.KeyRingIAMMember("keyRing", new()
+    ///     var keyRing = new Gcp.Kms.KeyRingIamMember("keyRing", new()
     ///     {
-    ///         Condition = new Gcp.Kms.Inputs.KeyRingIAMMemberConditionArgs
+    ///         Condition = new Gcp.Kms.Inputs.KeyRingIamMemberConditionArgs
     ///         {
     ///             Description = "Expiring at midnight of 2019-12-31",
     ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
@@ -209,7 +209,7 @@ namespace Pulumi.Gcp.Kms
     /// This member resource can be imported using the `key_ring_id`, role, and account e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:kms/keyRingIAMBinding:KeyRingIAMBinding key_ring_iam "your-project-id/location-name/key-ring-name roles/viewer user:foo@example.com"
+    ///  $ pulumi import gcp:kms/keyRingIamBinding:KeyRingIamBinding key_ring_iam "your-project-id/location-name/key-ring-name roles/viewer user:foo@example.com"
     /// ```
     /// 
     ///  IAM binding imports use space-delimited identifiers; the resource in question and the role.
@@ -217,7 +217,7 @@ namespace Pulumi.Gcp.Kms
     /// This binding resource can be imported using the `key_ring_id` and role, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:kms/keyRingIAMBinding:KeyRingIAMBinding key_ring_iam "your-project-id/location-name/key-ring-name roles/cloudkms.admin"
+    ///  $ pulumi import gcp:kms/keyRingIamBinding:KeyRingIamBinding key_ring_iam "your-project-id/location-name/key-ring-name roles/cloudkms.admin"
     /// ```
     /// 
     ///  IAM policy imports use the identifier of the resource in question.
@@ -225,18 +225,18 @@ namespace Pulumi.Gcp.Kms
     /// This policy resource can be imported using the `key_ring_id`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:kms/keyRingIAMBinding:KeyRingIAMBinding key_ring_iam your-project-id/location-name/key-ring-name
+    ///  $ pulumi import gcp:kms/keyRingIamBinding:KeyRingIamBinding key_ring_iam your-project-id/location-name/key-ring-name
     /// ```
     /// </summary>
-    [GcpResourceType("gcp:kms/keyRingIAMBinding:KeyRingIAMBinding")]
-    public partial class KeyRingIAMBinding : global::Pulumi.CustomResource
+    [GcpResourceType("gcp:kms/keyRingIamBinding:KeyRingIamBinding")]
+    public partial class KeyRingIamBinding : global::Pulumi.CustomResource
     {
         /// <summary>
         /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         /// Structure is documented below.
         /// </summary>
         [Output("condition")]
-        public Output<Outputs.KeyRingIAMBindingCondition?> Condition { get; private set; } = null!;
+        public Output<Outputs.KeyRingIamBindingCondition?> Condition { get; private set; } = null!;
 
         /// <summary>
         /// (Computed) The etag of the key ring's IAM policy.
@@ -267,7 +267,7 @@ namespace Pulumi.Gcp.Kms
 
         /// <summary>
         /// The role that should be applied. Only one
-        /// `gcp.kms.KeyRingIAMBinding` can be used per role. Note that custom roles must be of the format
+        /// `gcp.kms.KeyRingIamBinding` can be used per role. Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
         /// </summary>
         [Output("role")]
@@ -275,19 +275,19 @@ namespace Pulumi.Gcp.Kms
 
 
         /// <summary>
-        /// Create a KeyRingIAMBinding resource with the given unique name, arguments, and options.
+        /// Create a KeyRingIamBinding resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public KeyRingIAMBinding(string name, KeyRingIAMBindingArgs args, CustomResourceOptions? options = null)
-            : base("gcp:kms/keyRingIAMBinding:KeyRingIAMBinding", name, args ?? new KeyRingIAMBindingArgs(), MakeResourceOptions(options, ""))
+        public KeyRingIamBinding(string name, KeyRingIamBindingArgs args, CustomResourceOptions? options = null)
+            : base("gcp:kms/keyRingIamBinding:KeyRingIamBinding", name, args ?? new KeyRingIamBindingArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private KeyRingIAMBinding(string name, Input<string> id, KeyRingIAMBindingState? state = null, CustomResourceOptions? options = null)
-            : base("gcp:kms/keyRingIAMBinding:KeyRingIAMBinding", name, state, MakeResourceOptions(options, id))
+        private KeyRingIamBinding(string name, Input<string> id, KeyRingIamBindingState? state = null, CustomResourceOptions? options = null)
+            : base("gcp:kms/keyRingIamBinding:KeyRingIamBinding", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -303,7 +303,7 @@ namespace Pulumi.Gcp.Kms
             return merged;
         }
         /// <summary>
-        /// Get an existing KeyRingIAMBinding resource's state with the given name, ID, and optional extra
+        /// Get an existing KeyRingIamBinding resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -311,20 +311,20 @@ namespace Pulumi.Gcp.Kms
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static KeyRingIAMBinding Get(string name, Input<string> id, KeyRingIAMBindingState? state = null, CustomResourceOptions? options = null)
+        public static KeyRingIamBinding Get(string name, Input<string> id, KeyRingIamBindingState? state = null, CustomResourceOptions? options = null)
         {
-            return new KeyRingIAMBinding(name, id, state, options);
+            return new KeyRingIamBinding(name, id, state, options);
         }
     }
 
-    public sealed class KeyRingIAMBindingArgs : global::Pulumi.ResourceArgs
+    public sealed class KeyRingIamBindingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         /// Structure is documented below.
         /// </summary>
         [Input("condition")]
-        public Input<Inputs.KeyRingIAMBindingConditionArgs>? Condition { get; set; }
+        public Input<Inputs.KeyRingIamBindingConditionArgs>? Condition { get; set; }
 
         /// <summary>
         /// The key ring ID, in the form
@@ -354,26 +354,26 @@ namespace Pulumi.Gcp.Kms
 
         /// <summary>
         /// The role that should be applied. Only one
-        /// `gcp.kms.KeyRingIAMBinding` can be used per role. Note that custom roles must be of the format
+        /// `gcp.kms.KeyRingIamBinding` can be used per role. Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
         /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
 
-        public KeyRingIAMBindingArgs()
+        public KeyRingIamBindingArgs()
         {
         }
-        public static new KeyRingIAMBindingArgs Empty => new KeyRingIAMBindingArgs();
+        public static new KeyRingIamBindingArgs Empty => new KeyRingIamBindingArgs();
     }
 
-    public sealed class KeyRingIAMBindingState : global::Pulumi.ResourceArgs
+    public sealed class KeyRingIamBindingState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         /// Structure is documented below.
         /// </summary>
         [Input("condition")]
-        public Input<Inputs.KeyRingIAMBindingConditionGetArgs>? Condition { get; set; }
+        public Input<Inputs.KeyRingIamBindingConditionGetArgs>? Condition { get; set; }
 
         /// <summary>
         /// (Computed) The etag of the key ring's IAM policy.
@@ -409,15 +409,15 @@ namespace Pulumi.Gcp.Kms
 
         /// <summary>
         /// The role that should be applied. Only one
-        /// `gcp.kms.KeyRingIAMBinding` can be used per role. Note that custom roles must be of the format
+        /// `gcp.kms.KeyRingIamBinding` can be used per role. Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 
-        public KeyRingIAMBindingState()
+        public KeyRingIamBindingState()
         {
         }
-        public static new KeyRingIAMBindingState Empty => new KeyRingIAMBindingState();
+        public static new KeyRingIamBindingState Empty => new KeyRingIamBindingState();
     }
 }

@@ -9,9 +9,9 @@ import java.lang.String;
 import java.util.Objects;
 
 
-public final class IAMPolicyArgs extends com.pulumi.resources.ResourceArgs {
+public final class IamPolicyArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final IAMPolicyArgs Empty = new IAMPolicyArgs();
+    public static final IamPolicyArgs Empty = new IamPolicyArgs();
 
     /**
      * The organization id of the target organization.
@@ -29,7 +29,7 @@ public final class IAMPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The `gcp.organizations.getIAMPolicy` data source that represents
+     * The `gcp.organizations.getIamPolicy` data source that represents
      * the IAM policy that will be applied to the organization. The policy will be
      * merged with any existing policy applied to the organization.
      * 
@@ -43,7 +43,7 @@ public final class IAMPolicyArgs extends com.pulumi.resources.ResourceArgs {
     private Output<String> policyData;
 
     /**
-     * @return The `gcp.organizations.getIAMPolicy` data source that represents
+     * @return The `gcp.organizations.getIamPolicy` data source that represents
      * the IAM policy that will be applied to the organization. The policy will be
      * merged with any existing policy applied to the organization.
      * 
@@ -57,9 +57,9 @@ public final class IAMPolicyArgs extends com.pulumi.resources.ResourceArgs {
         return this.policyData;
     }
 
-    private IAMPolicyArgs() {}
+    private IamPolicyArgs() {}
 
-    private IAMPolicyArgs(IAMPolicyArgs $) {
+    private IamPolicyArgs(IamPolicyArgs $) {
         this.orgId = $.orgId;
         this.policyData = $.policyData;
     }
@@ -67,19 +67,19 @@ public final class IAMPolicyArgs extends com.pulumi.resources.ResourceArgs {
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(IAMPolicyArgs defaults) {
+    public static Builder builder(IamPolicyArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private IAMPolicyArgs $;
+        private IamPolicyArgs $;
 
         public Builder() {
-            $ = new IAMPolicyArgs();
+            $ = new IamPolicyArgs();
         }
 
-        public Builder(IAMPolicyArgs defaults) {
-            $ = new IAMPolicyArgs(Objects.requireNonNull(defaults));
+        public Builder(IamPolicyArgs defaults) {
+            $ = new IamPolicyArgs(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -104,7 +104,7 @@ public final class IAMPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policyData The `gcp.organizations.getIAMPolicy` data source that represents
+         * @param policyData The `gcp.organizations.getIamPolicy` data source that represents
          * the IAM policy that will be applied to the organization. The policy will be
          * merged with any existing policy applied to the organization.
          * 
@@ -122,7 +122,7 @@ public final class IAMPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policyData The `gcp.organizations.getIAMPolicy` data source that represents
+         * @param policyData The `gcp.organizations.getIamPolicy` data source that represents
          * the IAM policy that will be applied to the organization. The policy will be
          * merged with any existing policy applied to the organization.
          * 
@@ -138,7 +138,7 @@ public final class IAMPolicyArgs extends com.pulumi.resources.ResourceArgs {
             return policyData(Output.of(policyData));
         }
 
-        public IAMPolicyArgs build() {
+        public IamPolicyArgs build() {
             $.orgId = Objects.requireNonNull($.orgId, "expected parameter 'orgId' to be non-null");
             $.policyData = Objects.requireNonNull($.policyData, "expected parameter 'policyData' to be non-null");
             return $;

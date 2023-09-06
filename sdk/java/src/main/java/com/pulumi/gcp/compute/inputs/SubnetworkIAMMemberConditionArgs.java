@@ -11,9 +11,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class SubnetworkIAMMemberConditionArgs extends com.pulumi.resources.ResourceArgs {
+public final class SubnetworkIamMemberConditionArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final SubnetworkIAMMemberConditionArgs Empty = new SubnetworkIAMMemberConditionArgs();
+    public static final SubnetworkIamMemberConditionArgs Empty = new SubnetworkIamMemberConditionArgs();
 
     /**
      * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -68,9 +68,9 @@ public final class SubnetworkIAMMemberConditionArgs extends com.pulumi.resources
         return this.title;
     }
 
-    private SubnetworkIAMMemberConditionArgs() {}
+    private SubnetworkIamMemberConditionArgs() {}
 
-    private SubnetworkIAMMemberConditionArgs(SubnetworkIAMMemberConditionArgs $) {
+    private SubnetworkIamMemberConditionArgs(SubnetworkIamMemberConditionArgs $) {
         this.description = $.description;
         this.expression = $.expression;
         this.title = $.title;
@@ -79,19 +79,19 @@ public final class SubnetworkIAMMemberConditionArgs extends com.pulumi.resources
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(SubnetworkIAMMemberConditionArgs defaults) {
+    public static Builder builder(SubnetworkIamMemberConditionArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private SubnetworkIAMMemberConditionArgs $;
+        private SubnetworkIamMemberConditionArgs $;
 
         public Builder() {
-            $ = new SubnetworkIAMMemberConditionArgs();
+            $ = new SubnetworkIamMemberConditionArgs();
         }
 
-        public Builder(SubnetworkIAMMemberConditionArgs defaults) {
-            $ = new SubnetworkIAMMemberConditionArgs(Objects.requireNonNull(defaults));
+        public Builder(SubnetworkIamMemberConditionArgs defaults) {
+            $ = new SubnetworkIamMemberConditionArgs(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -165,7 +165,7 @@ public final class SubnetworkIAMMemberConditionArgs extends com.pulumi.resources
             return title(Output.of(title));
         }
 
-        public SubnetworkIAMMemberConditionArgs build() {
+        public SubnetworkIamMemberConditionArgs build() {
             $.expression = Objects.requireNonNull($.expression, "expected parameter 'expression' to be non-null");
             $.title = Objects.requireNonNull($.title, "expected parameter 'title' to be non-null");
             return $;

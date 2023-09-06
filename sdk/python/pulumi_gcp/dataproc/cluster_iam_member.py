@@ -11,22 +11,22 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ClusterIAMMemberArgs', 'ClusterIAMMember']
+__all__ = ['ClusterIamMemberArgs', 'ClusterIamMember']
 
 @pulumi.input_type
-class ClusterIAMMemberArgs:
+class ClusterIamMemberArgs:
     def __init__(__self__, *,
                  cluster: pulumi.Input[str],
                  member: pulumi.Input[str],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['ClusterIAMMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['ClusterIamMemberConditionArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None):
         """
-        The set of arguments for constructing a ClusterIAMMember resource.
+        The set of arguments for constructing a ClusterIamMember resource.
         :param pulumi.Input[str] cluster: The name or relative resource id of the cluster to manage IAM policies for.
                
-               For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
+               For `dataproc.ClusterIamMember` or `dataproc.ClusterIamBinding`:
                
                * `member/members` - (Required) Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
@@ -37,10 +37,10 @@ class ClusterIAMMemberArgs:
                * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         :param pulumi.Input[str] role: The role that should be applied. Only one
-               `dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
+               `dataproc.ClusterIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
                
-               `dataproc.ClusterIAMPolicy` only:
+               `dataproc.ClusterIamPolicy` only:
         :param pulumi.Input[str] project: The project in which the cluster belongs. If it
                is not provided, the provider will use a default.
         :param pulumi.Input[str] region: The region in which the cluster belongs. If it
@@ -62,7 +62,7 @@ class ClusterIAMMemberArgs:
         """
         The name or relative resource id of the cluster to manage IAM policies for.
 
-        For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
+        For `dataproc.ClusterIamMember` or `dataproc.ClusterIamBinding`:
 
         * `member/members` - (Required) Identities that will be granted the privilege in `role`.
         Each entry can have one of the following values:
@@ -93,10 +93,10 @@ class ClusterIAMMemberArgs:
     def role(self) -> pulumi.Input[str]:
         """
         The role that should be applied. Only one
-        `dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
+        `dataproc.ClusterIamBinding` can be used per role. Note that custom roles must be of the format
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
 
-        `dataproc.ClusterIAMPolicy` only:
+        `dataproc.ClusterIamPolicy` only:
         """
         return pulumi.get(self, "role")
 
@@ -106,11 +106,11 @@ class ClusterIAMMemberArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['ClusterIAMMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['ClusterIamMemberConditionArgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['ClusterIAMMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['ClusterIamMemberConditionArgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -141,20 +141,20 @@ class ClusterIAMMemberArgs:
 
 
 @pulumi.input_type
-class _ClusterIAMMemberState:
+class _ClusterIamMemberState:
     def __init__(__self__, *,
                  cluster: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input['ClusterIAMMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['ClusterIamMemberConditionArgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None):
         """
-        Input properties used for looking up and filtering ClusterIAMMember resources.
+        Input properties used for looking up and filtering ClusterIamMember resources.
         :param pulumi.Input[str] cluster: The name or relative resource id of the cluster to manage IAM policies for.
                
-               For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
+               For `dataproc.ClusterIamMember` or `dataproc.ClusterIamBinding`:
                
                * `member/members` - (Required) Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
@@ -170,10 +170,10 @@ class _ClusterIAMMemberState:
         :param pulumi.Input[str] region: The region in which the cluster belongs. If it
                is not provided, the provider will use a default.
         :param pulumi.Input[str] role: The role that should be applied. Only one
-               `dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
+               `dataproc.ClusterIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
                
-               `dataproc.ClusterIAMPolicy` only:
+               `dataproc.ClusterIamPolicy` only:
         """
         if cluster is not None:
             pulumi.set(__self__, "cluster", cluster)
@@ -196,7 +196,7 @@ class _ClusterIAMMemberState:
         """
         The name or relative resource id of the cluster to manage IAM policies for.
 
-        For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
+        For `dataproc.ClusterIamMember` or `dataproc.ClusterIamBinding`:
 
         * `member/members` - (Required) Identities that will be granted the privilege in `role`.
         Each entry can have one of the following values:
@@ -215,11 +215,11 @@ class _ClusterIAMMemberState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['ClusterIAMMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['ClusterIamMemberConditionArgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['ClusterIAMMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['ClusterIamMemberConditionArgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -274,10 +274,10 @@ class _ClusterIAMMemberState:
     def role(self) -> Optional[pulumi.Input[str]]:
         """
         The role that should be applied. Only one
-        `dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
+        `dataproc.ClusterIamBinding` can be used per role. Note that custom roles must be of the format
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
 
-        `dataproc.ClusterIAMPolicy` only:
+        `dataproc.ClusterIamPolicy` only:
         """
         return pulumi.get(self, "role")
 
@@ -286,13 +286,13 @@ class _ClusterIAMMemberState:
         pulumi.set(self, "role", value)
 
 
-class ClusterIAMMember(pulumi.CustomResource):
+class ClusterIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['ClusterIAMMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['ClusterIamMemberConditionArgs']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -301,13 +301,13 @@ class ClusterIAMMember(pulumi.CustomResource):
         """
         Three different resources help you manage IAM policies on dataproc clusters. Each of these resources serves a different use case:
 
-        * `dataproc.ClusterIAMPolicy`: Authoritative. Sets the IAM policy for the cluster and replaces any existing policy already attached.
-        * `dataproc.ClusterIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the cluster are preserved.
-        * `dataproc.ClusterIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the cluster are preserved.
+        * `dataproc.ClusterIamPolicy`: Authoritative. Sets the IAM policy for the cluster and replaces any existing policy already attached.
+        * `dataproc.ClusterIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the cluster are preserved.
+        * `dataproc.ClusterIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the cluster are preserved.
 
-        > **Note:** `dataproc.ClusterIAMPolicy` **cannot** be used in conjunction with `dataproc.ClusterIAMBinding` and `dataproc.ClusterIAMMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the cluster as `dataproc.ClusterIAMPolicy` replaces the entire policy.
+        > **Note:** `dataproc.ClusterIamPolicy` **cannot** be used in conjunction with `dataproc.ClusterIamBinding` and `dataproc.ClusterIamMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the cluster as `dataproc.ClusterIamPolicy` replaces the entire policy.
 
-        > **Note:** `dataproc.ClusterIAMBinding` resources **can be** used in conjunction with `dataproc.ClusterIAMMember` resources **only if** they do not grant privilege to the same role.
+        > **Note:** `dataproc.ClusterIamBinding` resources **can be** used in conjunction with `dataproc.ClusterIamMember` resources **only if** they do not grant privilege to the same role.
 
         ## google\\_dataproc\\_cluster\\_iam\\_policy
 
@@ -315,11 +315,11 @@ class ClusterIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIamPolicyBindingArgs(
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
-        editor = gcp.dataproc.ClusterIAMPolicy("editor",
+        editor = gcp.dataproc.ClusterIamPolicy("editor",
             project="your-project",
             region="your-region",
             cluster="your-dataproc-cluster",
@@ -332,7 +332,7 @@ class ClusterIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        editor = gcp.dataproc.ClusterIAMBinding("editor",
+        editor = gcp.dataproc.ClusterIamBinding("editor",
             cluster="your-dataproc-cluster",
             members=["user:jane@example.com"],
             role="roles/editor")
@@ -344,7 +344,7 @@ class ClusterIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        editor = gcp.dataproc.ClusterIAMMember("editor",
+        editor = gcp.dataproc.ClusterIamMember("editor",
             cluster="your-dataproc-cluster",
             member="user:jane@example.com",
             role="roles/editor")
@@ -355,15 +355,15 @@ class ClusterIAMMember(pulumi.CustomResource):
         Cluster IAM resources can be imported using the project, region, cluster name, role and/or member.
 
         ```sh
-         $ pulumi import gcp:dataproc/clusterIAMMember:ClusterIAMMember editor "projects/{project}/regions/{region}/clusters/{cluster}"
+         $ pulumi import gcp:dataproc/clusterIamMember:ClusterIamMember editor "projects/{project}/regions/{region}/clusters/{cluster}"
         ```
 
         ```sh
-         $ pulumi import gcp:dataproc/clusterIAMMember:ClusterIAMMember editor "projects/{project}/regions/{region}/clusters/{cluster} roles/editor"
+         $ pulumi import gcp:dataproc/clusterIamMember:ClusterIamMember editor "projects/{project}/regions/{region}/clusters/{cluster} roles/editor"
         ```
 
         ```sh
-         $ pulumi import gcp:dataproc/clusterIAMMember:ClusterIAMMember editor "projects/{project}/regions/{region}/clusters/{cluster} roles/editor user:jane@example.com"
+         $ pulumi import gcp:dataproc/clusterIamMember:ClusterIamMember editor "projects/{project}/regions/{region}/clusters/{cluster} roles/editor user:jane@example.com"
         ```
 
          -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
@@ -374,7 +374,7 @@ class ClusterIAMMember(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster: The name or relative resource id of the cluster to manage IAM policies for.
                
-               For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
+               For `dataproc.ClusterIamMember` or `dataproc.ClusterIamBinding`:
                
                * `member/members` - (Required) Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
@@ -389,27 +389,27 @@ class ClusterIAMMember(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region in which the cluster belongs. If it
                is not provided, the provider will use a default.
         :param pulumi.Input[str] role: The role that should be applied. Only one
-               `dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
+               `dataproc.ClusterIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
                
-               `dataproc.ClusterIAMPolicy` only:
+               `dataproc.ClusterIamPolicy` only:
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ClusterIAMMemberArgs,
+                 args: ClusterIamMemberArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage IAM policies on dataproc clusters. Each of these resources serves a different use case:
 
-        * `dataproc.ClusterIAMPolicy`: Authoritative. Sets the IAM policy for the cluster and replaces any existing policy already attached.
-        * `dataproc.ClusterIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the cluster are preserved.
-        * `dataproc.ClusterIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the cluster are preserved.
+        * `dataproc.ClusterIamPolicy`: Authoritative. Sets the IAM policy for the cluster and replaces any existing policy already attached.
+        * `dataproc.ClusterIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the cluster are preserved.
+        * `dataproc.ClusterIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the cluster are preserved.
 
-        > **Note:** `dataproc.ClusterIAMPolicy` **cannot** be used in conjunction with `dataproc.ClusterIAMBinding` and `dataproc.ClusterIAMMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the cluster as `dataproc.ClusterIAMPolicy` replaces the entire policy.
+        > **Note:** `dataproc.ClusterIamPolicy` **cannot** be used in conjunction with `dataproc.ClusterIamBinding` and `dataproc.ClusterIamMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the cluster as `dataproc.ClusterIamPolicy` replaces the entire policy.
 
-        > **Note:** `dataproc.ClusterIAMBinding` resources **can be** used in conjunction with `dataproc.ClusterIAMMember` resources **only if** they do not grant privilege to the same role.
+        > **Note:** `dataproc.ClusterIamBinding` resources **can be** used in conjunction with `dataproc.ClusterIamMember` resources **only if** they do not grant privilege to the same role.
 
         ## google\\_dataproc\\_cluster\\_iam\\_policy
 
@@ -417,11 +417,11 @@ class ClusterIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIamPolicyBindingArgs(
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
-        editor = gcp.dataproc.ClusterIAMPolicy("editor",
+        editor = gcp.dataproc.ClusterIamPolicy("editor",
             project="your-project",
             region="your-region",
             cluster="your-dataproc-cluster",
@@ -434,7 +434,7 @@ class ClusterIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        editor = gcp.dataproc.ClusterIAMBinding("editor",
+        editor = gcp.dataproc.ClusterIamBinding("editor",
             cluster="your-dataproc-cluster",
             members=["user:jane@example.com"],
             role="roles/editor")
@@ -446,7 +446,7 @@ class ClusterIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        editor = gcp.dataproc.ClusterIAMMember("editor",
+        editor = gcp.dataproc.ClusterIamMember("editor",
             cluster="your-dataproc-cluster",
             member="user:jane@example.com",
             role="roles/editor")
@@ -457,15 +457,15 @@ class ClusterIAMMember(pulumi.CustomResource):
         Cluster IAM resources can be imported using the project, region, cluster name, role and/or member.
 
         ```sh
-         $ pulumi import gcp:dataproc/clusterIAMMember:ClusterIAMMember editor "projects/{project}/regions/{region}/clusters/{cluster}"
+         $ pulumi import gcp:dataproc/clusterIamMember:ClusterIamMember editor "projects/{project}/regions/{region}/clusters/{cluster}"
         ```
 
         ```sh
-         $ pulumi import gcp:dataproc/clusterIAMMember:ClusterIAMMember editor "projects/{project}/regions/{region}/clusters/{cluster} roles/editor"
+         $ pulumi import gcp:dataproc/clusterIamMember:ClusterIamMember editor "projects/{project}/regions/{region}/clusters/{cluster} roles/editor"
         ```
 
         ```sh
-         $ pulumi import gcp:dataproc/clusterIAMMember:ClusterIAMMember editor "projects/{project}/regions/{region}/clusters/{cluster} roles/editor user:jane@example.com"
+         $ pulumi import gcp:dataproc/clusterIamMember:ClusterIamMember editor "projects/{project}/regions/{region}/clusters/{cluster} roles/editor user:jane@example.com"
         ```
 
          -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
@@ -473,12 +473,12 @@ class ClusterIAMMember(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param ClusterIAMMemberArgs args: The arguments to use to populate this resource's properties.
+        :param ClusterIamMemberArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ClusterIAMMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ClusterIamMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -488,7 +488,7 @@ class ClusterIAMMember(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cluster: Optional[pulumi.Input[str]] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['ClusterIAMMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['ClusterIamMemberConditionArgs']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -500,7 +500,7 @@ class ClusterIAMMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ClusterIAMMemberArgs.__new__(ClusterIAMMemberArgs)
+            __props__ = ClusterIamMemberArgs.__new__(ClusterIamMemberArgs)
 
             if cluster is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster'")
@@ -515,8 +515,8 @@ class ClusterIAMMember(pulumi.CustomResource):
                 raise TypeError("Missing required property 'role'")
             __props__.__dict__["role"] = role
             __props__.__dict__["etag"] = None
-        super(ClusterIAMMember, __self__).__init__(
-            'gcp:dataproc/clusterIAMMember:ClusterIAMMember',
+        super(ClusterIamMember, __self__).__init__(
+            'gcp:dataproc/clusterIamMember:ClusterIamMember',
             resource_name,
             __props__,
             opts)
@@ -526,14 +526,14 @@ class ClusterIAMMember(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cluster: Optional[pulumi.Input[str]] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['ClusterIAMMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['ClusterIamMemberConditionArgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             member: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            role: Optional[pulumi.Input[str]] = None) -> 'ClusterIAMMember':
+            role: Optional[pulumi.Input[str]] = None) -> 'ClusterIamMember':
         """
-        Get an existing ClusterIAMMember resource's state with the given name, id, and optional extra
+        Get an existing ClusterIamMember resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -541,7 +541,7 @@ class ClusterIAMMember(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster: The name or relative resource id of the cluster to manage IAM policies for.
                
-               For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
+               For `dataproc.ClusterIamMember` or `dataproc.ClusterIamBinding`:
                
                * `member/members` - (Required) Identities that will be granted the privilege in `role`.
                Each entry can have one of the following values:
@@ -557,14 +557,14 @@ class ClusterIAMMember(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region in which the cluster belongs. If it
                is not provided, the provider will use a default.
         :param pulumi.Input[str] role: The role that should be applied. Only one
-               `dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
+               `dataproc.ClusterIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
                
-               `dataproc.ClusterIAMPolicy` only:
+               `dataproc.ClusterIamPolicy` only:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _ClusterIAMMemberState.__new__(_ClusterIAMMemberState)
+        __props__ = _ClusterIamMemberState.__new__(_ClusterIamMemberState)
 
         __props__.__dict__["cluster"] = cluster
         __props__.__dict__["condition"] = condition
@@ -573,7 +573,7 @@ class ClusterIAMMember(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["region"] = region
         __props__.__dict__["role"] = role
-        return ClusterIAMMember(resource_name, opts=opts, __props__=__props__)
+        return ClusterIamMember(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
@@ -581,7 +581,7 @@ class ClusterIAMMember(pulumi.CustomResource):
         """
         The name or relative resource id of the cluster to manage IAM policies for.
 
-        For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
+        For `dataproc.ClusterIamMember` or `dataproc.ClusterIamBinding`:
 
         * `member/members` - (Required) Identities that will be granted the privilege in `role`.
         Each entry can have one of the following values:
@@ -596,7 +596,7 @@ class ClusterIAMMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def condition(self) -> pulumi.Output[Optional['outputs.ClusterIAMMemberCondition']]:
+    def condition(self) -> pulumi.Output[Optional['outputs.ClusterIamMemberCondition']]:
         return pulumi.get(self, "condition")
 
     @property
@@ -635,10 +635,10 @@ class ClusterIAMMember(pulumi.CustomResource):
     def role(self) -> pulumi.Output[str]:
         """
         The role that should be applied. Only one
-        `dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
+        `dataproc.ClusterIamBinding` can be used per role. Note that custom roles must be of the format
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
 
-        `dataproc.ClusterIAMPolicy` only:
+        `dataproc.ClusterIamPolicy` only:
         """
         return pulumi.get(self, "role")
 

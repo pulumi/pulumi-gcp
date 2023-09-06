@@ -8,8 +8,8 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
-import com.pulumi.gcp.serviceAccount.IAMPolicyArgs;
-import com.pulumi.gcp.serviceAccount.inputs.IAMPolicyState;
+import com.pulumi.gcp.serviceAccount.IamPolicyArgs;
+import com.pulumi.gcp.serviceAccount.inputs.IamPolicyState;
 import java.lang.String;
 import javax.annotation.Nullable;
 
@@ -18,13 +18,13 @@ import javax.annotation.Nullable;
  * 
  * Three different resources help you manage your IAM policy for a service account. Each of these resources serves a different use case:
  * 
- * * `gcp.serviceAccount.IAMPolicy`: Authoritative. Sets the IAM policy for the service account and replaces any existing policy already attached.
- * * `gcp.serviceAccount.IAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the service account are preserved.
- * * `gcp.serviceAccount.IAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the service account are preserved.
+ * * `gcp.serviceAccount.IamPolicy`: Authoritative. Sets the IAM policy for the service account and replaces any existing policy already attached.
+ * * `gcp.serviceAccount.IamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the service account are preserved.
+ * * `gcp.serviceAccount.IamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the service account are preserved.
  * 
- * &gt; **Note:** `gcp.serviceAccount.IAMPolicy` **cannot** be used in conjunction with `gcp.serviceAccount.IAMBinding` and `gcp.serviceAccount.IAMMember` or they will fight over what your policy should be.
+ * &gt; **Note:** `gcp.serviceAccount.IamPolicy` **cannot** be used in conjunction with `gcp.serviceAccount.IamBinding` and `gcp.serviceAccount.IamMember` or they will fight over what your policy should be.
  * 
- * &gt; **Note:** `gcp.serviceAccount.IAMBinding` resources **can be** used in conjunction with `gcp.serviceAccount.IAMMember` resources **only if** they do not grant privilege to the same role.
+ * &gt; **Note:** `gcp.serviceAccount.IamBinding` resources **can be** used in conjunction with `gcp.serviceAccount.IamMember` resources **only if** they do not grant privilege to the same role.
  * 
  * ## Example Usage
  * ### Service Account IAM Policy
@@ -35,11 +35,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.organizations.inputs.GetIamPolicyArgs;
  * import com.pulumi.gcp.serviceAccount.Account;
  * import com.pulumi.gcp.serviceAccount.AccountArgs;
- * import com.pulumi.gcp.serviceAccount.IAMPolicy;
- * import com.pulumi.gcp.serviceAccount.IAMPolicyArgs;
+ * import com.pulumi.gcp.serviceAccount.IamPolicy;
+ * import com.pulumi.gcp.serviceAccount.IamPolicyArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -53,8 +53,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
- *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *         final var admin = OrganizationsFunctions.getIamPolicy(GetIamPolicyArgs.builder()
+ *             .bindings(GetIamPolicyBindingArgs.builder()
  *                 .role(&#34;roles/iam.serviceAccountUser&#34;)
  *                 .members(&#34;user:jane@example.com&#34;)
  *                 .build())
@@ -65,9 +65,9 @@ import javax.annotation.Nullable;
  *             .displayName(&#34;A service account that only Jane can interact with&#34;)
  *             .build());
  * 
- *         var admin_account_iam = new IAMPolicy(&#34;admin-account-iam&#34;, IAMPolicyArgs.builder()        
+ *         var admin_account_iam = new IamPolicy(&#34;admin-account-iam&#34;, IamPolicyArgs.builder()        
  *             .serviceAccountId(sa.name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIamPolicyResult -&gt; getIamPolicyResult.policyData()))
  *             .build());
  * 
  *     }
@@ -82,8 +82,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.serviceAccount.Account;
  * import com.pulumi.gcp.serviceAccount.AccountArgs;
- * import com.pulumi.gcp.serviceAccount.IAMBinding;
- * import com.pulumi.gcp.serviceAccount.IAMBindingArgs;
+ * import com.pulumi.gcp.serviceAccount.IamBinding;
+ * import com.pulumi.gcp.serviceAccount.IamBindingArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -102,7 +102,7 @@ import javax.annotation.Nullable;
  *             .displayName(&#34;A service account that only Jane can use&#34;)
  *             .build());
  * 
- *         var admin_account_iam = new IAMBinding(&#34;admin-account-iam&#34;, IAMBindingArgs.builder()        
+ *         var admin_account_iam = new IamBinding(&#34;admin-account-iam&#34;, IamBindingArgs.builder()        
  *             .serviceAccountId(sa.name())
  *             .role(&#34;roles/iam.serviceAccountUser&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
@@ -120,9 +120,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.serviceAccount.Account;
  * import com.pulumi.gcp.serviceAccount.AccountArgs;
- * import com.pulumi.gcp.serviceAccount.IAMBinding;
- * import com.pulumi.gcp.serviceAccount.IAMBindingArgs;
- * import com.pulumi.gcp.serviceAccount.inputs.IAMBindingConditionArgs;
+ * import com.pulumi.gcp.serviceAccount.IamBinding;
+ * import com.pulumi.gcp.serviceAccount.IamBindingArgs;
+ * import com.pulumi.gcp.serviceAccount.inputs.IamBindingConditionArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -141,11 +141,11 @@ import javax.annotation.Nullable;
  *             .displayName(&#34;A service account that only Jane can use&#34;)
  *             .build());
  * 
- *         var admin_account_iam = new IAMBinding(&#34;admin-account-iam&#34;, IAMBindingArgs.builder()        
+ *         var admin_account_iam = new IamBinding(&#34;admin-account-iam&#34;, IamBindingArgs.builder()        
  *             .serviceAccountId(sa.name())
  *             .role(&#34;roles/iam.serviceAccountUser&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
- *             .condition(IAMBindingConditionArgs.builder()
+ *             .condition(IamBindingConditionArgs.builder()
  *                 .title(&#34;expires_after_2019_12_31&#34;)
  *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
  *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
@@ -166,8 +166,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.inputs.GetDefaultServiceAccountArgs;
  * import com.pulumi.gcp.serviceAccount.Account;
  * import com.pulumi.gcp.serviceAccount.AccountArgs;
- * import com.pulumi.gcp.serviceAccount.IAMMember;
- * import com.pulumi.gcp.serviceAccount.IAMMemberArgs;
+ * import com.pulumi.gcp.serviceAccount.IamMember;
+ * import com.pulumi.gcp.serviceAccount.IamMemberArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -188,13 +188,13 @@ import javax.annotation.Nullable;
  *             .displayName(&#34;A service account that Jane can use&#34;)
  *             .build());
  * 
- *         var admin_account_iam = new IAMMember(&#34;admin-account-iam&#34;, IAMMemberArgs.builder()        
+ *         var admin_account_iam = new IamMember(&#34;admin-account-iam&#34;, IamMemberArgs.builder()        
  *             .serviceAccountId(sa.name())
  *             .role(&#34;roles/iam.serviceAccountUser&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .build());
  * 
- *         var gce_default_account_iam = new IAMMember(&#34;gce-default-account-iam&#34;, IAMMemberArgs.builder()        
+ *         var gce_default_account_iam = new IamMember(&#34;gce-default-account-iam&#34;, IamMemberArgs.builder()        
  *             .serviceAccountId(default_.name())
  *             .role(&#34;roles/iam.serviceAccountUser&#34;)
  *             .member(sa.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
@@ -212,9 +212,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.serviceAccount.Account;
  * import com.pulumi.gcp.serviceAccount.AccountArgs;
- * import com.pulumi.gcp.serviceAccount.IAMMember;
- * import com.pulumi.gcp.serviceAccount.IAMMemberArgs;
- * import com.pulumi.gcp.serviceAccount.inputs.IAMMemberConditionArgs;
+ * import com.pulumi.gcp.serviceAccount.IamMember;
+ * import com.pulumi.gcp.serviceAccount.IamMemberArgs;
+ * import com.pulumi.gcp.serviceAccount.inputs.IamMemberConditionArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -233,11 +233,11 @@ import javax.annotation.Nullable;
  *             .displayName(&#34;A service account that Jane can use&#34;)
  *             .build());
  * 
- *         var admin_account_iam = new IAMMember(&#34;admin-account-iam&#34;, IAMMemberArgs.builder()        
+ *         var admin_account_iam = new IamMember(&#34;admin-account-iam&#34;, IamMemberArgs.builder()        
  *             .serviceAccountId(sa.name())
  *             .role(&#34;roles/iam.serviceAccountUser&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
- *             .condition(IAMMemberConditionArgs.builder()
+ *             .condition(IamMemberConditionArgs.builder()
  *                 .title(&#34;expires_after_2019_12_31&#34;)
  *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
  *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
@@ -253,30 +253,30 @@ import javax.annotation.Nullable;
  * Service account IAM resources can be imported using the project, service account email, role, member identity, and condition (beta).
  * 
  * ```sh
- *  $ pulumi import gcp:serviceAccount/iAMPolicy:IAMPolicy admin-account-iam projects/{your-project-id}/serviceAccounts/{your-service-account-email}
+ *  $ pulumi import gcp:serviceAccount/iamPolicy:IamPolicy admin-account-iam projects/{your-project-id}/serviceAccounts/{your-service-account-email}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:serviceAccount/iAMPolicy:IAMPolicy admin-account-iam &#34;projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser&#34;
+ *  $ pulumi import gcp:serviceAccount/iamPolicy:IamPolicy admin-account-iam &#34;projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser&#34;
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:serviceAccount/iAMPolicy:IAMPolicy admin-account-iam &#34;projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/editor user:foo@example.com&#34;
+ *  $ pulumi import gcp:serviceAccount/iamPolicy:IamPolicy admin-account-iam &#34;projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/editor user:foo@example.com&#34;
  * ```
  * 
  *  -&gt; **Custom Roles**If you&#39;re importing a IAM resource with a custom role, make sure to use the full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`. With conditions
  * 
  * ```sh
- *  $ pulumi import gcp:serviceAccount/iAMPolicy:IAMPolicy admin-account-iam &#34;projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser expires_after_2019_12_31&#34;
+ *  $ pulumi import gcp:serviceAccount/iamPolicy:IamPolicy admin-account-iam &#34;projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser expires_after_2019_12_31&#34;
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:serviceAccount/iAMPolicy:IAMPolicy admin-account-iam &#34;projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser user:foo@example.com expires_after_2019_12_31&#34;
+ *  $ pulumi import gcp:serviceAccount/iamPolicy:IamPolicy admin-account-iam &#34;projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser user:foo@example.com expires_after_2019_12_31&#34;
  * ```
  * 
  */
-@ResourceType(type="gcp:serviceAccount/iAMPolicy:IAMPolicy")
-public class IAMPolicy extends com.pulumi.resources.CustomResource {
+@ResourceType(type="gcp:serviceAccount/iamPolicy:IamPolicy")
+public class IamPolicy extends com.pulumi.resources.CustomResource {
     /**
      * (Computed) The etag of the service account IAM policy.
      * 
@@ -293,7 +293,7 @@ public class IAMPolicy extends com.pulumi.resources.CustomResource {
     }
     /**
      * The policy data generated by
-     * a `gcp.organizations.getIAMPolicy` data source.
+     * a `gcp.organizations.getIamPolicy` data source.
      * 
      */
     @Export(name="policyData", type=String.class, parameters={})
@@ -301,7 +301,7 @@ public class IAMPolicy extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The policy data generated by
-     * a `gcp.organizations.getIAMPolicy` data source.
+     * a `gcp.organizations.getIamPolicy` data source.
      * 
      */
     public Output<String> policyData() {
@@ -344,15 +344,15 @@ public class IAMPolicy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public IAMPolicy(String name) {
-        this(name, IAMPolicyArgs.Empty);
+    public IamPolicy(String name) {
+        this(name, IamPolicyArgs.Empty);
     }
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public IAMPolicy(String name, IAMPolicyArgs args) {
+    public IamPolicy(String name, IamPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -361,12 +361,12 @@ public class IAMPolicy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public IAMPolicy(String name, IAMPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:serviceAccount/iAMPolicy:IAMPolicy", name, args == null ? IAMPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public IamPolicy(String name, IamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:serviceAccount/iamPolicy:IamPolicy", name, args == null ? IamPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private IAMPolicy(String name, Output<String> id, @Nullable IAMPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:serviceAccount/iAMPolicy:IAMPolicy", name, state, makeResourceOptions(options, id));
+    private IamPolicy(String name, Output<String> id, @Nullable IamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:serviceAccount/iamPolicy:IamPolicy", name, state, makeResourceOptions(options, id));
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
@@ -385,7 +385,7 @@ public class IAMPolicy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static IAMPolicy get(String name, Output<String> id, @Nullable IAMPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        return new IAMPolicy(name, id, state, options);
+    public static IamPolicy get(String name, Output<String> id, @Nullable IamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        return new IamPolicy(name, id, state, options);
     }
 }

@@ -172,8 +172,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.looker.inputs.InstanceOauthConfigArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
- * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
- * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
+ * import com.pulumi.gcp.kms.CryptoKeyIamMember;
+ * import com.pulumi.gcp.kms.CryptoKeyIamMemberArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -255,7 +255,7 @@ import javax.annotation.Nullable;
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var cryptoKey = new CryptoKeyIAMMember(&#34;cryptoKey&#34;, CryptoKeyIAMMemberArgs.builder()        
+ *         var cryptoKey = new CryptoKeyIamMember(&#34;cryptoKey&#34;, CryptoKeyIamMemberArgs.builder()        
  *             .cryptoKeyId(&#34;looker-kms-key&#34;)
  *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
  *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-looker.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))

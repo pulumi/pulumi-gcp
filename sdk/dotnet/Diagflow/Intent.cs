@@ -78,7 +78,7 @@ namespace Pulumi.Gcp.Diagflow
     ///         AccountId = "my-account",
     ///     });
     /// 
-    ///     var agentCreate = new Gcp.Projects.IAMMember("agentCreate", new()
+    ///     var agentCreate = new Gcp.Projects.IamMember("agentCreate", new()
     ///     {
     ///         Project = agentProjectService.Project,
     ///         Role = "roles/dialogflow.admin",

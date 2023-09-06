@@ -20,20 +20,20 @@ export type BucketAccessControl = import("./bucketAccessControl").BucketAccessCo
 export const BucketAccessControl: typeof import("./bucketAccessControl").BucketAccessControl = null as any;
 utilities.lazyLoad(exports, ["BucketAccessControl"], () => require("./bucketAccessControl"));
 
-export { BucketIAMBindingArgs, BucketIAMBindingState } from "./bucketIAMBinding";
-export type BucketIAMBinding = import("./bucketIAMBinding").BucketIAMBinding;
-export const BucketIAMBinding: typeof import("./bucketIAMBinding").BucketIAMBinding = null as any;
-utilities.lazyLoad(exports, ["BucketIAMBinding"], () => require("./bucketIAMBinding"));
+export { BucketIamBindingArgs, BucketIamBindingState } from "./bucketIamBinding";
+export type BucketIamBinding = import("./bucketIamBinding").BucketIamBinding;
+export const BucketIamBinding: typeof import("./bucketIamBinding").BucketIamBinding = null as any;
+utilities.lazyLoad(exports, ["BucketIamBinding"], () => require("./bucketIamBinding"));
 
-export { BucketIAMMemberArgs, BucketIAMMemberState } from "./bucketIAMMember";
-export type BucketIAMMember = import("./bucketIAMMember").BucketIAMMember;
-export const BucketIAMMember: typeof import("./bucketIAMMember").BucketIAMMember = null as any;
-utilities.lazyLoad(exports, ["BucketIAMMember"], () => require("./bucketIAMMember"));
+export { BucketIamMemberArgs, BucketIamMemberState } from "./bucketIamMember";
+export type BucketIamMember = import("./bucketIamMember").BucketIamMember;
+export const BucketIamMember: typeof import("./bucketIamMember").BucketIamMember = null as any;
+utilities.lazyLoad(exports, ["BucketIamMember"], () => require("./bucketIamMember"));
 
-export { BucketIAMPolicyArgs, BucketIAMPolicyState } from "./bucketIAMPolicy";
-export type BucketIAMPolicy = import("./bucketIAMPolicy").BucketIAMPolicy;
-export const BucketIAMPolicy: typeof import("./bucketIAMPolicy").BucketIAMPolicy = null as any;
-utilities.lazyLoad(exports, ["BucketIAMPolicy"], () => require("./bucketIAMPolicy"));
+export { BucketIamPolicyArgs, BucketIamPolicyState } from "./bucketIamPolicy";
+export type BucketIamPolicy = import("./bucketIamPolicy").BucketIamPolicy;
+export const BucketIamPolicy: typeof import("./bucketIamPolicy").BucketIamPolicy = null as any;
+utilities.lazyLoad(exports, ["BucketIamPolicy"], () => require("./bucketIamPolicy"));
 
 export { BucketObjectArgs, BucketObjectState } from "./bucketObject";
 export type BucketObject = import("./bucketObject").BucketObject;
@@ -132,12 +132,12 @@ const _module = {
                 return new BucketACL(name, <any>undefined, { urn })
             case "gcp:storage/bucketAccessControl:BucketAccessControl":
                 return new BucketAccessControl(name, <any>undefined, { urn })
-            case "gcp:storage/bucketIAMBinding:BucketIAMBinding":
-                return new BucketIAMBinding(name, <any>undefined, { urn })
-            case "gcp:storage/bucketIAMMember:BucketIAMMember":
-                return new BucketIAMMember(name, <any>undefined, { urn })
-            case "gcp:storage/bucketIAMPolicy:BucketIAMPolicy":
-                return new BucketIAMPolicy(name, <any>undefined, { urn })
+            case "gcp:storage/bucketIamBinding:BucketIamBinding":
+                return new BucketIamBinding(name, <any>undefined, { urn })
+            case "gcp:storage/bucketIamMember:BucketIamMember":
+                return new BucketIamMember(name, <any>undefined, { urn })
+            case "gcp:storage/bucketIamPolicy:BucketIamPolicy":
+                return new BucketIamPolicy(name, <any>undefined, { urn })
             case "gcp:storage/bucketObject:BucketObject":
                 return new BucketObject(name, <any>undefined, { urn })
             case "gcp:storage/defaultObjectACL:DefaultObjectACL":
@@ -164,9 +164,9 @@ const _module = {
 pulumi.runtime.registerResourceModule("gcp", "storage/bucket", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/bucketACL", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/bucketAccessControl", _module)
-pulumi.runtime.registerResourceModule("gcp", "storage/bucketIAMBinding", _module)
-pulumi.runtime.registerResourceModule("gcp", "storage/bucketIAMMember", _module)
-pulumi.runtime.registerResourceModule("gcp", "storage/bucketIAMPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "storage/bucketIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "storage/bucketIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "storage/bucketIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/bucketObject", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/defaultObjectACL", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/defaultObjectAccessControl", _module)

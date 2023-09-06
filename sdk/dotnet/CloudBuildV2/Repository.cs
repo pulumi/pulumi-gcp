@@ -53,11 +53,11 @@ namespace Pulumi.Gcp.CloudBuildV2
     ///         SecretData = "&lt;webhook-secret-data&gt;",
     ///     });
     /// 
-    ///     var p4sa_secretAccessor = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     var p4sa_secretAccessor = Gcp.Organizations.GetIamPolicy.Invoke(new()
     ///     {
     ///         Bindings = new[]
     ///         {
-    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             new Gcp.Organizations.Inputs.GetIamPolicyBindingInputArgs
     ///             {
     ///                 Role = "roles/secretmanager.secretAccessor",
     ///                 Members = new[]
@@ -71,13 +71,13 @@ namespace Pulumi.Gcp.CloudBuildV2
     ///     var policy_pk = new Gcp.SecretManager.SecretIamPolicy("policy-pk", new()
     ///     {
     ///         SecretId = private_key_secret.SecretId,
-    ///         PolicyData = p4sa_secretAccessor.Apply(p4sa_secretAccessor =&gt; p4sa_secretAccessor.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData)),
+    ///         PolicyData = p4sa_secretAccessor.Apply(p4sa_secretAccessor =&gt; p4sa_secretAccessor.Apply(getIamPolicyResult =&gt; getIamPolicyResult.PolicyData)),
     ///     });
     /// 
     ///     var policy_whs = new Gcp.SecretManager.SecretIamPolicy("policy-whs", new()
     ///     {
     ///         SecretId = webhook_secret_secret.SecretId,
-    ///         PolicyData = p4sa_secretAccessor.Apply(p4sa_secretAccessor =&gt; p4sa_secretAccessor.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData)),
+    ///         PolicyData = p4sa_secretAccessor.Apply(p4sa_secretAccessor =&gt; p4sa_secretAccessor.Apply(getIamPolicyResult =&gt; getIamPolicyResult.PolicyData)),
     ///     });
     /// 
     ///     var my_connection = new Gcp.CloudBuildV2.Connection("my-connection", new()
@@ -136,11 +136,11 @@ namespace Pulumi.Gcp.CloudBuildV2
     ///         SecretData = File.ReadAllText("my-github-token.txt"),
     ///     });
     /// 
-    ///     var p4sa_secretAccessor = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     var p4sa_secretAccessor = Gcp.Organizations.GetIamPolicy.Invoke(new()
     ///     {
     ///         Bindings = new[]
     ///         {
-    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             new Gcp.Organizations.Inputs.GetIamPolicyBindingInputArgs
     ///             {
     ///                 Role = "roles/secretmanager.secretAccessor",
     ///                 Members = new[]
@@ -154,7 +154,7 @@ namespace Pulumi.Gcp.CloudBuildV2
     ///     var policy = new Gcp.SecretManager.SecretIamPolicy("policy", new()
     ///     {
     ///         SecretId = github_token_secret.SecretId,
-    ///         PolicyData = p4sa_secretAccessor.Apply(p4sa_secretAccessor =&gt; p4sa_secretAccessor.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData)),
+    ///         PolicyData = p4sa_secretAccessor.Apply(p4sa_secretAccessor =&gt; p4sa_secretAccessor.Apply(getIamPolicyResult =&gt; getIamPolicyResult.PolicyData)),
     ///     });
     /// 
     ///     var my_connection = new Gcp.CloudBuildV2.Connection("my-connection", new()

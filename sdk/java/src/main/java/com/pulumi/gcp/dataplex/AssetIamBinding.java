@@ -39,7 +39,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.organizations.inputs.GetIamPolicyArgs;
  * import com.pulumi.gcp.dataplex.AssetIamPolicy;
  * import com.pulumi.gcp.dataplex.AssetIamPolicyArgs;
  * import java.util.List;
@@ -55,8 +55,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
- *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *         final var admin = OrganizationsFunctions.getIamPolicy(GetIamPolicyArgs.builder()
+ *             .bindings(GetIamPolicyBindingArgs.builder()
  *                 .role(&#34;roles/viewer&#34;)
  *                 .members(&#34;user:jane@example.com&#34;)
  *                 .build())
@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *             .lake(google_dataplex_asset.example().lake())
  *             .dataplexZone(google_dataplex_asset.example().dataplex_zone())
  *             .asset(google_dataplex_asset.example().name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIamPolicyResult -&gt; getIamPolicyResult.policyData()))
  *             .build());
  * 
  *     }

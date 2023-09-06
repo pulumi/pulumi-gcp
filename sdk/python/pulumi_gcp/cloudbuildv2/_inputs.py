@@ -18,8 +18,8 @@ __all__ = [
     'ConnectionGitlabConfigAuthorizerCredentialArgs',
     'ConnectionGitlabConfigReadAuthorizerCredentialArgs',
     'ConnectionGitlabConfigServiceDirectoryConfigArgs',
-    'ConnectionIAMBindingConditionArgs',
-    'ConnectionIAMMemberConditionArgs',
+    'ConnectionIamBindingConditionArgs',
+    'ConnectionIamMemberConditionArgs',
     'ConnectionInstallationStateArgs',
 ]
 
@@ -476,7 +476,7 @@ class ConnectionGitlabConfigServiceDirectoryConfigArgs:
 
 
 @pulumi.input_type
-class ConnectionIAMBindingConditionArgs:
+class ConnectionIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -515,7 +515,7 @@ class ConnectionIAMBindingConditionArgs:
 
 
 @pulumi.input_type
-class ConnectionIAMMemberConditionArgs:
+class ConnectionIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],

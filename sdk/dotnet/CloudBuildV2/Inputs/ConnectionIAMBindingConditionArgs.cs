@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudBuildV2.Inputs
 {
 
-    public sealed class ConnectionIAMBindingConditionArgs : global::Pulumi.ResourceArgs
+    public sealed class ConnectionIamBindingConditionArgs : global::Pulumi.ResourceArgs
     {
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -21,9 +21,9 @@ namespace Pulumi.Gcp.CloudBuildV2.Inputs
         [Input("title", required: true)]
         public Input<string> Title { get; set; } = null!;
 
-        public ConnectionIAMBindingConditionArgs()
+        public ConnectionIamBindingConditionArgs()
         {
         }
-        public static new ConnectionIAMBindingConditionArgs Empty => new ConnectionIAMBindingConditionArgs();
+        public static new ConnectionIamBindingConditionArgs Empty => new ConnectionIamBindingConditionArgs();
     }
 }

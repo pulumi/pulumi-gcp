@@ -140,7 +140,7 @@ class Registry(pulumi.CustomResource):
         registry = gcp.container.Registry("registry",
             project="my-project",
             location="EU")
-        viewer = gcp.storage.BucketIAMMember("viewer",
+        viewer = gcp.storage.BucketIamMember("viewer",
             bucket=registry.id,
             role="roles/storage.objectViewer",
             member="user:jane@example.com")
@@ -186,7 +186,7 @@ class Registry(pulumi.CustomResource):
         registry = gcp.container.Registry("registry",
             project="my-project",
             location="EU")
-        viewer = gcp.storage.BucketIAMMember("viewer",
+        viewer = gcp.storage.BucketIamMember("viewer",
             bucket=registry.id,
             role="roles/storage.objectViewer",
             member="user:jane@example.com")

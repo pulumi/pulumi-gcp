@@ -12,20 +12,20 @@ namespace Pulumi.Gcp.Organizations
     /// <summary>
     /// Four different resources help you manage your IAM policy for a organization. Each of these resources serves a different use case:
     /// 
-    /// * `gcp.organizations.IAMPolicy`: Authoritative. Sets the IAM policy for the organization and replaces any existing policy already attached.
-    /// * `gcp.organizations.IAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the organization are preserved.
-    /// * `gcp.organizations.IAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the organization are preserved.
+    /// * `gcp.organizations.IamPolicy`: Authoritative. Sets the IAM policy for the organization and replaces any existing policy already attached.
+    /// * `gcp.organizations.IamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the organization are preserved.
+    /// * `gcp.organizations.IamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the organization are preserved.
     /// * `gcp.organizations.IamAuditConfig`: Authoritative for a given service. Updates the IAM policy to enable audit logging for the given service.
     /// 
-    /// &gt; **Note:** `gcp.organizations.IAMPolicy` **cannot** be used in conjunction with `gcp.organizations.IAMBinding`, `gcp.organizations.IAMMember`, or `gcp.organizations.IamAuditConfig` or they will fight over what your policy should be.
+    /// &gt; **Note:** `gcp.organizations.IamPolicy` **cannot** be used in conjunction with `gcp.organizations.IamBinding`, `gcp.organizations.IamMember`, or `gcp.organizations.IamAuditConfig` or they will fight over what your policy should be.
     /// 
-    /// &gt; **Note:** `gcp.organizations.IAMBinding` resources **can be** used in conjunction with `gcp.organizations.IAMMember` resources **only if** they do not grant privilege to the same role.
+    /// &gt; **Note:** `gcp.organizations.IamBinding` resources **can be** used in conjunction with `gcp.organizations.IamMember` resources **only if** they do not grant privilege to the same role.
     /// 
     /// ## google\_organization\_iam\_policy
     /// 
     /// !&gt; **Warning:** New organizations have several default policies which will,
     ///    without extreme caution, be **overwritten** by use of this resource.
-    ///    The safest alternative is to use multiple `gcp.organizations.IAMBinding`
+    ///    The safest alternative is to use multiple `gcp.organizations.IamBinding`
     ///    resources. This resource makes it easy to remove your own access to
     ///    an organization, which will require a call to Google Support to have
     ///    fixed, and can take multiple days to resolve.
@@ -43,11 +43,11 @@ namespace Pulumi.Gcp.Organizations
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     var admin = Gcp.Organizations.GetIamPolicy.Invoke(new()
     ///     {
     ///         Bindings = new[]
     ///         {
-    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             new Gcp.Organizations.Inputs.GetIamPolicyBindingInputArgs
     ///             {
     ///                 Role = "roles/editor",
     ///                 Members = new[]
@@ -58,10 +58,10 @@ namespace Pulumi.Gcp.Organizations
     ///         },
     ///     });
     /// 
-    ///     var organization = new Gcp.Organizations.IAMPolicy("organization", new()
+    ///     var organization = new Gcp.Organizations.IamPolicy("organization", new()
     ///     {
     ///         OrgId = "1234567890",
-    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///         PolicyData = admin.Apply(getIamPolicyResult =&gt; getIamPolicyResult.PolicyData),
     ///     });
     /// 
     /// });
@@ -77,13 +77,13 @@ namespace Pulumi.Gcp.Organizations
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     var admin = Gcp.Organizations.GetIamPolicy.Invoke(new()
     ///     {
     ///         Bindings = new[]
     ///         {
-    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             new Gcp.Organizations.Inputs.GetIamPolicyBindingInputArgs
     ///             {
-    ///                 Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionInputArgs
+    ///                 Condition = new Gcp.Organizations.Inputs.GetIamPolicyBindingConditionInputArgs
     ///                 {
     ///                     Description = "Expiring at midnight of 2019-12-31",
     ///                     Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
@@ -98,10 +98,10 @@ namespace Pulumi.Gcp.Organizations
     ///         },
     ///     });
     /// 
-    ///     var organization = new Gcp.Organizations.IAMPolicy("organization", new()
+    ///     var organization = new Gcp.Organizations.IamPolicy("organization", new()
     ///     {
     ///         OrgId = "1234567890",
-    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///         PolicyData = admin.Apply(getIamPolicyResult =&gt; getIamPolicyResult.PolicyData),
     ///     });
     /// 
     /// });
@@ -119,7 +119,7 @@ namespace Pulumi.Gcp.Organizations
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var organization = new Gcp.Organizations.IAMBinding("organization", new()
+    ///     var organization = new Gcp.Organizations.IamBinding("organization", new()
     ///     {
     ///         Members = new[]
     ///         {
@@ -142,9 +142,9 @@ namespace Pulumi.Gcp.Organizations
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var organization = new Gcp.Organizations.IAMBinding("organization", new()
+    ///     var organization = new Gcp.Organizations.IamBinding("organization", new()
     ///     {
-    ///         Condition = new Gcp.Organizations.Inputs.IAMBindingConditionArgs
+    ///         Condition = new Gcp.Organizations.Inputs.IamBindingConditionArgs
     ///         {
     ///             Description = "Expiring at midnight of 2019-12-31",
     ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
@@ -171,7 +171,7 @@ namespace Pulumi.Gcp.Organizations
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var organization = new Gcp.Organizations.IAMMember("organization", new()
+    ///     var organization = new Gcp.Organizations.IamMember("organization", new()
     ///     {
     ///         Member = "user:jane@example.com",
     ///         OrgId = "1234567890",
@@ -191,9 +191,9 @@ namespace Pulumi.Gcp.Organizations
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var organization = new Gcp.Organizations.IAMMember("organization", new()
+    ///     var organization = new Gcp.Organizations.IamMember("organization", new()
     ///     {
-    ///         Condition = new Gcp.Organizations.Inputs.IAMMemberConditionArgs
+    ///         Condition = new Gcp.Organizations.Inputs.IamMemberConditionArgs
     ///         {
     ///             Description = "Expiring at midnight of 2019-12-31",
     ///             Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
@@ -248,7 +248,7 @@ namespace Pulumi.Gcp.Organizations
     /// This member resource can be imported using the `org_id`, role, and member e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:organizations/iAMPolicy:IAMPolicy my_organization "your-orgid roles/viewer user:foo@example.com"
+    ///  $ pulumi import gcp:organizations/iamPolicy:IamPolicy my_organization "your-orgid roles/viewer user:foo@example.com"
     /// ```
     /// 
     ///  IAM binding imports use space-delimited identifiers; the resource in question and the role.
@@ -256,7 +256,7 @@ namespace Pulumi.Gcp.Organizations
     /// This binding resource can be imported using the `org_id` and role, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:organizations/iAMPolicy:IAMPolicy my_organization "your-org-id roles/viewer"
+    ///  $ pulumi import gcp:organizations/iamPolicy:IamPolicy my_organization "your-org-id roles/viewer"
     /// ```
     /// 
     ///  IAM policy imports use the identifier of the resource in question.
@@ -264,13 +264,13 @@ namespace Pulumi.Gcp.Organizations
     /// This policy resource can be imported using the `org_id`.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:organizations/iAMPolicy:IAMPolicy my_organization your-org-id
+    ///  $ pulumi import gcp:organizations/iamPolicy:IamPolicy my_organization your-org-id
     /// ```
     /// 
     ///  IAM audit config imports use the identifier of the resource in question and the service, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:organizations/iAMPolicy:IAMPolicy my_organization "your-organization-id foo.googleapis.com"
+    ///  $ pulumi import gcp:organizations/iamPolicy:IamPolicy my_organization "your-organization-id foo.googleapis.com"
     /// ```
     /// 
     ///  -&gt; **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
@@ -278,11 +278,11 @@ namespace Pulumi.Gcp.Organizations
     /// full name of the custom role, e.g. `organizations/{{org_id}}/roles/{{role_id}}`. -&gt; **Conditional IAM Bindings**If you're importing a IAM binding with a condition block, make sure
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:organizations/iAMPolicy:IAMPolicy to include the title of condition, e.g. `google_organization_iam_binding.my_organization "your-org-id roles/{{role_id}} condition-title"`
+    ///  $ pulumi import gcp:organizations/iamPolicy:IamPolicy to include the title of condition, e.g. `google_organization_iam_binding.my_organization "your-org-id roles/{{role_id}} condition-title"`
     /// ```
     /// </summary>
-    [GcpResourceType("gcp:organizations/iAMPolicy:IAMPolicy")]
-    public partial class IAMPolicy : global::Pulumi.CustomResource
+    [GcpResourceType("gcp:organizations/iamPolicy:IamPolicy")]
+    public partial class IamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// (Computed) The etag of the organization's IAM policy.
@@ -297,7 +297,7 @@ namespace Pulumi.Gcp.Organizations
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
-        /// The `gcp.organizations.getIAMPolicy` data source that represents
+        /// The `gcp.organizations.getIamPolicy` data source that represents
         /// the IAM policy that will be applied to the organization. The policy will be
         /// merged with any existing policy applied to the organization.
         /// 
@@ -311,19 +311,19 @@ namespace Pulumi.Gcp.Organizations
 
 
         /// <summary>
-        /// Create a IAMPolicy resource with the given unique name, arguments, and options.
+        /// Create a IamPolicy resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public IAMPolicy(string name, IAMPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp:organizations/iAMPolicy:IAMPolicy", name, args ?? new IAMPolicyArgs(), MakeResourceOptions(options, ""))
+        public IamPolicy(string name, IamPolicyArgs args, CustomResourceOptions? options = null)
+            : base("gcp:organizations/iamPolicy:IamPolicy", name, args ?? new IamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private IAMPolicy(string name, Input<string> id, IAMPolicyState? state = null, CustomResourceOptions? options = null)
-            : base("gcp:organizations/iAMPolicy:IAMPolicy", name, state, MakeResourceOptions(options, id))
+        private IamPolicy(string name, Input<string> id, IamPolicyState? state = null, CustomResourceOptions? options = null)
+            : base("gcp:organizations/iamPolicy:IamPolicy", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -339,7 +339,7 @@ namespace Pulumi.Gcp.Organizations
             return merged;
         }
         /// <summary>
-        /// Get an existing IAMPolicy resource's state with the given name, ID, and optional extra
+        /// Get an existing IamPolicy resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -347,13 +347,13 @@ namespace Pulumi.Gcp.Organizations
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static IAMPolicy Get(string name, Input<string> id, IAMPolicyState? state = null, CustomResourceOptions? options = null)
+        public static IamPolicy Get(string name, Input<string> id, IamPolicyState? state = null, CustomResourceOptions? options = null)
         {
-            return new IAMPolicy(name, id, state, options);
+            return new IamPolicy(name, id, state, options);
         }
     }
 
-    public sealed class IAMPolicyArgs : global::Pulumi.ResourceArgs
+    public sealed class IamPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The organization id of the target organization.
@@ -362,7 +362,7 @@ namespace Pulumi.Gcp.Organizations
         public Input<string> OrgId { get; set; } = null!;
 
         /// <summary>
-        /// The `gcp.organizations.getIAMPolicy` data source that represents
+        /// The `gcp.organizations.getIamPolicy` data source that represents
         /// the IAM policy that will be applied to the organization. The policy will be
         /// merged with any existing policy applied to the organization.
         /// 
@@ -374,13 +374,13 @@ namespace Pulumi.Gcp.Organizations
         [Input("policyData", required: true)]
         public Input<string> PolicyData { get; set; } = null!;
 
-        public IAMPolicyArgs()
+        public IamPolicyArgs()
         {
         }
-        public static new IAMPolicyArgs Empty => new IAMPolicyArgs();
+        public static new IamPolicyArgs Empty => new IamPolicyArgs();
     }
 
-    public sealed class IAMPolicyState : global::Pulumi.ResourceArgs
+    public sealed class IamPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (Computed) The etag of the organization's IAM policy.
@@ -395,7 +395,7 @@ namespace Pulumi.Gcp.Organizations
         public Input<string>? OrgId { get; set; }
 
         /// <summary>
-        /// The `gcp.organizations.getIAMPolicy` data source that represents
+        /// The `gcp.organizations.getIamPolicy` data source that represents
         /// the IAM policy that will be applied to the organization. The policy will be
         /// merged with any existing policy applied to the organization.
         /// 
@@ -407,9 +407,9 @@ namespace Pulumi.Gcp.Organizations
         [Input("policyData")]
         public Input<string>? PolicyData { get; set; }
 
-        public IAMPolicyState()
+        public IamPolicyState()
         {
         }
-        public static new IAMPolicyState Empty => new IAMPolicyState();
+        public static new IamPolicyState Empty => new IamPolicyState();
     }
 }

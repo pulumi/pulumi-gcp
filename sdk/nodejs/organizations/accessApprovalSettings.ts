@@ -61,7 +61,7 @@ import * as utilities from "../utilities";
  * const serviceAccount = gcp.accessapproval.getOrganizationServiceAccount({
  *     organizationId: "123456789",
  * });
- * const iam = new gcp.kms.CryptoKeyIAMMember("iam", {
+ * const iam = new gcp.kms.CryptoKeyIamMember("iam", {
  *     cryptoKeyId: cryptoKey.id,
  *     role: "roles/cloudkms.signerVerifier",
  *     member: serviceAccount.then(serviceAccount => `serviceAccount:${serviceAccount.accountEmail}`),

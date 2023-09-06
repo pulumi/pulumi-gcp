@@ -149,8 +149,8 @@ __all__ = [
     'InstanceGroupManagerVersionTargetSizeArgs',
     'InstanceGroupNamedPortArgs',
     'InstanceGuestAcceleratorArgs',
-    'InstanceIAMBindingConditionArgs',
-    'InstanceIAMMemberConditionArgs',
+    'InstanceIamBindingConditionArgs',
+    'InstanceIamMemberConditionArgs',
     'InstanceNetworkInterfaceArgs',
     'InstanceNetworkInterfaceAccessConfigArgs',
     'InstanceNetworkInterfaceAliasIpRangeArgs',
@@ -441,8 +441,8 @@ __all__ = [
     'SnapshotIamMemberConditionArgs',
     'SnapshotSnapshotEncryptionKeyArgs',
     'SnapshotSourceDiskEncryptionKeyArgs',
-    'SubnetworkIAMBindingConditionArgs',
-    'SubnetworkIAMMemberConditionArgs',
+    'SubnetworkIamBindingConditionArgs',
+    'SubnetworkIamMemberConditionArgs',
     'SubnetworkLogConfigArgs',
     'SubnetworkSecondaryIpRangeArgs',
     'URLMapDefaultRouteActionArgs',
@@ -9855,7 +9855,7 @@ class InstanceGuestAcceleratorArgs:
 
 
 @pulumi.input_type
-class InstanceIAMBindingConditionArgs:
+class InstanceIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -9916,7 +9916,7 @@ class InstanceIAMBindingConditionArgs:
 
 
 @pulumi.input_type
-class InstanceIAMMemberConditionArgs:
+class InstanceIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -30002,7 +30002,7 @@ class SnapshotSourceDiskEncryptionKeyArgs:
 
 
 @pulumi.input_type
-class SubnetworkIAMBindingConditionArgs:
+class SubnetworkIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -30063,7 +30063,7 @@ class SubnetworkIAMBindingConditionArgs:
 
 
 @pulumi.input_type
-class SubnetworkIAMMemberConditionArgs:
+class SubnetworkIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],

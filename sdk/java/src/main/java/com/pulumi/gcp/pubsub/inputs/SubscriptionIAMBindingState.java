@@ -5,7 +5,7 @@ package com.pulumi.gcp.pubsub.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.gcp.pubsub.inputs.SubscriptionIAMBindingConditionArgs;
+import com.pulumi.gcp.pubsub.inputs.SubscriptionIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -13,14 +13,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class SubscriptionIAMBindingState extends com.pulumi.resources.ResourceArgs {
+public final class SubscriptionIamBindingState extends com.pulumi.resources.ResourceArgs {
 
-    public static final SubscriptionIAMBindingState Empty = new SubscriptionIAMBindingState();
+    public static final SubscriptionIamBindingState Empty = new SubscriptionIamBindingState();
 
     @Import(name="condition")
-    private @Nullable Output<SubscriptionIAMBindingConditionArgs> condition;
+    private @Nullable Output<SubscriptionIamBindingConditionArgs> condition;
 
-    public Optional<Output<SubscriptionIAMBindingConditionArgs>> condition() {
+    public Optional<Output<SubscriptionIamBindingConditionArgs>> condition() {
         return Optional.ofNullable(this.condition);
     }
 
@@ -65,7 +65,7 @@ public final class SubscriptionIAMBindingState extends com.pulumi.resources.Reso
 
     /**
      * The role that should be applied. Only one
-     * `gcp.pubsub.SubscriptionIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.pubsub.SubscriptionIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -74,7 +74,7 @@ public final class SubscriptionIAMBindingState extends com.pulumi.resources.Reso
 
     /**
      * @return The role that should be applied. Only one
-     * `gcp.pubsub.SubscriptionIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.pubsub.SubscriptionIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -115,9 +115,9 @@ public final class SubscriptionIAMBindingState extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.subscription);
     }
 
-    private SubscriptionIAMBindingState() {}
+    private SubscriptionIamBindingState() {}
 
-    private SubscriptionIAMBindingState(SubscriptionIAMBindingState $) {
+    private SubscriptionIamBindingState(SubscriptionIamBindingState $) {
         this.condition = $.condition;
         this.etag = $.etag;
         this.members = $.members;
@@ -129,27 +129,27 @@ public final class SubscriptionIAMBindingState extends com.pulumi.resources.Reso
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(SubscriptionIAMBindingState defaults) {
+    public static Builder builder(SubscriptionIamBindingState defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private SubscriptionIAMBindingState $;
+        private SubscriptionIamBindingState $;
 
         public Builder() {
-            $ = new SubscriptionIAMBindingState();
+            $ = new SubscriptionIamBindingState();
         }
 
-        public Builder(SubscriptionIAMBindingState defaults) {
-            $ = new SubscriptionIAMBindingState(Objects.requireNonNull(defaults));
+        public Builder(SubscriptionIamBindingState defaults) {
+            $ = new SubscriptionIamBindingState(Objects.requireNonNull(defaults));
         }
 
-        public Builder condition(@Nullable Output<SubscriptionIAMBindingConditionArgs> condition) {
+        public Builder condition(@Nullable Output<SubscriptionIamBindingConditionArgs> condition) {
             $.condition = condition;
             return this;
         }
 
-        public Builder condition(SubscriptionIAMBindingConditionArgs condition) {
+        public Builder condition(SubscriptionIamBindingConditionArgs condition) {
             return condition(Output.of(condition));
         }
 
@@ -212,7 +212,7 @@ public final class SubscriptionIAMBindingState extends com.pulumi.resources.Reso
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.pubsub.SubscriptionIAMBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.pubsub.SubscriptionIamBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder
@@ -225,7 +225,7 @@ public final class SubscriptionIAMBindingState extends com.pulumi.resources.Reso
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.pubsub.SubscriptionIAMBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.pubsub.SubscriptionIamBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder
@@ -274,7 +274,7 @@ public final class SubscriptionIAMBindingState extends com.pulumi.resources.Reso
             return subscription(Output.of(subscription));
         }
 
-        public SubscriptionIAMBindingState build() {
+        public SubscriptionIamBindingState build() {
             return $;
         }
     }

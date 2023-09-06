@@ -24,7 +24,7 @@ class RepositoryIamBindingArgs:
         """
         The set of arguments for constructing a RepositoryIamBinding resource.
         :param pulumi.Input[str] role: The role that should be applied. Only one
-               `pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
+               `pubsub.TopicIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -72,7 +72,7 @@ class RepositoryIamBindingArgs:
     def role(self) -> pulumi.Input[str]:
         """
         The role that should be applied. Only one
-        `pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
+        `pubsub.TopicIamBinding` can be used per role. Note that custom roles must be of the format
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         return pulumi.get(self, "role")
@@ -143,7 +143,7 @@ class _RepositoryIamBindingState:
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         :param pulumi.Input[str] role: The role that should be applied. Only one
-               `pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
+               `pubsub.TopicIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         if condition is not None:
@@ -228,7 +228,7 @@ class _RepositoryIamBindingState:
     def role(self) -> Optional[pulumi.Input[str]]:
         """
         The role that should be applied. Only one
-        `pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
+        `pubsub.TopicIamBinding` can be used per role. Note that custom roles must be of the format
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         return pulumi.get(self, "role")
@@ -252,17 +252,17 @@ class RepositoryIamBinding(pulumi.CustomResource):
         """
         Three different resources help you manage your IAM policy for Cloud Pub/Sub Topic. Each of these resources serves a different use case:
 
-        * `pubsub.TopicIAMPolicy`: Authoritative. Sets the IAM policy for the topic and replaces any existing policy already attached.
-        * `pubsub.TopicIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the topic are preserved.
-        * `pubsub.TopicIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the topic are preserved.
+        * `pubsub.TopicIamPolicy`: Authoritative. Sets the IAM policy for the topic and replaces any existing policy already attached.
+        * `pubsub.TopicIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the topic are preserved.
+        * `pubsub.TopicIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the topic are preserved.
 
         A data source can be used to retrieve policy data in advent you do not need creation
 
-        * `pubsub.TopicIAMPolicy`: Retrieves the IAM policy for the topic
+        * `pubsub.TopicIamPolicy`: Retrieves the IAM policy for the topic
 
-        > **Note:** `pubsub.TopicIAMPolicy` **cannot** be used in conjunction with `pubsub.TopicIAMBinding` and `pubsub.TopicIAMMember` or they will fight over what your policy should be.
+        > **Note:** `pubsub.TopicIamPolicy` **cannot** be used in conjunction with `pubsub.TopicIamBinding` and `pubsub.TopicIamMember` or they will fight over what your policy should be.
 
-        > **Note:** `pubsub.TopicIAMBinding` resources **can be** used in conjunction with `pubsub.TopicIAMMember` resources **only if** they do not grant privilege to the same role.
+        > **Note:** `pubsub.TopicIamBinding` resources **can be** used in conjunction with `pubsub.TopicIamMember` resources **only if** they do not grant privilege to the same role.
 
         ## google\\_pubsub\\_topic\\_iam\\_policy
 
@@ -270,11 +270,11 @@ class RepositoryIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIamPolicyBindingArgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
-        policy = gcp.pubsub.TopicIAMPolicy("policy",
+        policy = gcp.pubsub.TopicIamPolicy("policy",
             project=google_pubsub_topic["example"]["project"],
             topic=google_pubsub_topic["example"]["name"],
             policy_data=admin.policy_data)
@@ -286,7 +286,7 @@ class RepositoryIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        binding = gcp.pubsub.TopicIAMBinding("binding",
+        binding = gcp.pubsub.TopicIamBinding("binding",
             project=google_pubsub_topic["example"]["project"],
             topic=google_pubsub_topic["example"]["name"],
             role="roles/viewer",
@@ -299,7 +299,7 @@ class RepositoryIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        member = gcp.pubsub.TopicIAMMember("member",
+        member = gcp.pubsub.TopicIamMember("member",
             project=google_pubsub_topic["example"]["project"],
             topic=google_pubsub_topic["example"]["name"],
             role="roles/viewer",
@@ -347,7 +347,7 @@ class RepositoryIamBinding(pulumi.CustomResource):
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         :param pulumi.Input[str] role: The role that should be applied. Only one
-               `pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
+               `pubsub.TopicIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         ...
@@ -359,17 +359,17 @@ class RepositoryIamBinding(pulumi.CustomResource):
         """
         Three different resources help you manage your IAM policy for Cloud Pub/Sub Topic. Each of these resources serves a different use case:
 
-        * `pubsub.TopicIAMPolicy`: Authoritative. Sets the IAM policy for the topic and replaces any existing policy already attached.
-        * `pubsub.TopicIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the topic are preserved.
-        * `pubsub.TopicIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the topic are preserved.
+        * `pubsub.TopicIamPolicy`: Authoritative. Sets the IAM policy for the topic and replaces any existing policy already attached.
+        * `pubsub.TopicIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the topic are preserved.
+        * `pubsub.TopicIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the topic are preserved.
 
         A data source can be used to retrieve policy data in advent you do not need creation
 
-        * `pubsub.TopicIAMPolicy`: Retrieves the IAM policy for the topic
+        * `pubsub.TopicIamPolicy`: Retrieves the IAM policy for the topic
 
-        > **Note:** `pubsub.TopicIAMPolicy` **cannot** be used in conjunction with `pubsub.TopicIAMBinding` and `pubsub.TopicIAMMember` or they will fight over what your policy should be.
+        > **Note:** `pubsub.TopicIamPolicy` **cannot** be used in conjunction with `pubsub.TopicIamBinding` and `pubsub.TopicIamMember` or they will fight over what your policy should be.
 
-        > **Note:** `pubsub.TopicIAMBinding` resources **can be** used in conjunction with `pubsub.TopicIAMMember` resources **only if** they do not grant privilege to the same role.
+        > **Note:** `pubsub.TopicIamBinding` resources **can be** used in conjunction with `pubsub.TopicIamMember` resources **only if** they do not grant privilege to the same role.
 
         ## google\\_pubsub\\_topic\\_iam\\_policy
 
@@ -377,11 +377,11 @@ class RepositoryIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIamPolicyBindingArgs(
             role="roles/viewer",
             members=["user:jane@example.com"],
         )])
-        policy = gcp.pubsub.TopicIAMPolicy("policy",
+        policy = gcp.pubsub.TopicIamPolicy("policy",
             project=google_pubsub_topic["example"]["project"],
             topic=google_pubsub_topic["example"]["name"],
             policy_data=admin.policy_data)
@@ -393,7 +393,7 @@ class RepositoryIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        binding = gcp.pubsub.TopicIAMBinding("binding",
+        binding = gcp.pubsub.TopicIamBinding("binding",
             project=google_pubsub_topic["example"]["project"],
             topic=google_pubsub_topic["example"]["name"],
             role="roles/viewer",
@@ -406,7 +406,7 @@ class RepositoryIamBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        member = gcp.pubsub.TopicIAMMember("member",
+        member = gcp.pubsub.TopicIamMember("member",
             project=google_pubsub_topic["example"]["project"],
             topic=google_pubsub_topic["example"]["name"],
             role="roles/viewer",
@@ -517,7 +517,7 @@ class RepositoryIamBinding(pulumi.CustomResource):
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         :param pulumi.Input[str] role: The role that should be applied. Only one
-               `pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
+               `pubsub.TopicIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -581,7 +581,7 @@ class RepositoryIamBinding(pulumi.CustomResource):
     def role(self) -> pulumi.Output[str]:
         """
         The role that should be applied. Only one
-        `pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
+        `pubsub.TopicIamBinding` can be used per role. Note that custom roles must be of the format
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         return pulumi.get(self, "role")

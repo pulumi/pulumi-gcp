@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Iap.Inputs
 {
 
-    public sealed class TunnelInstanceIAMBindingConditionArgs : global::Pulumi.ResourceArgs
+    public sealed class TunnelInstanceIamBindingConditionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -34,9 +34,9 @@ namespace Pulumi.Gcp.Iap.Inputs
         [Input("title", required: true)]
         public Input<string> Title { get; set; } = null!;
 
-        public TunnelInstanceIAMBindingConditionArgs()
+        public TunnelInstanceIamBindingConditionArgs()
         {
         }
-        public static new TunnelInstanceIAMBindingConditionArgs Empty => new TunnelInstanceIAMBindingConditionArgs();
+        public static new TunnelInstanceIamBindingConditionArgs Empty => new TunnelInstanceIamBindingConditionArgs();
     }
 }

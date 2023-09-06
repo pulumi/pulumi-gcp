@@ -7,17 +7,17 @@ import * as utilities from "../utilities";
 /**
  * Three different resources help you manage your IAM policy for Cloud Pub/Sub Topic. Each of these resources serves a different use case:
  *
- * * `gcp.pubsub.TopicIAMPolicy`: Authoritative. Sets the IAM policy for the topic and replaces any existing policy already attached.
- * * `gcp.pubsub.TopicIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the topic are preserved.
- * * `gcp.pubsub.TopicIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the topic are preserved.
+ * * `gcp.pubsub.TopicIamPolicy`: Authoritative. Sets the IAM policy for the topic and replaces any existing policy already attached.
+ * * `gcp.pubsub.TopicIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the topic are preserved.
+ * * `gcp.pubsub.TopicIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the topic are preserved.
  *
  * A data source can be used to retrieve policy data in advent you do not need creation
  *
- * * `gcp.pubsub.TopicIAMPolicy`: Retrieves the IAM policy for the topic
+ * * `gcp.pubsub.TopicIamPolicy`: Retrieves the IAM policy for the topic
  *
- * > **Note:** `gcp.pubsub.TopicIAMPolicy` **cannot** be used in conjunction with `gcp.pubsub.TopicIAMBinding` and `gcp.pubsub.TopicIAMMember` or they will fight over what your policy should be.
+ * > **Note:** `gcp.pubsub.TopicIamPolicy` **cannot** be used in conjunction with `gcp.pubsub.TopicIamBinding` and `gcp.pubsub.TopicIamMember` or they will fight over what your policy should be.
  *
- * > **Note:** `gcp.pubsub.TopicIAMBinding` resources **can be** used in conjunction with `gcp.pubsub.TopicIAMMember` resources **only if** they do not grant privilege to the same role.
+ * > **Note:** `gcp.pubsub.TopicIamBinding` resources **can be** used in conjunction with `gcp.pubsub.TopicIamMember` resources **only if** they do not grant privilege to the same role.
  *
  * ## google\_pubsub\_topic\_iam\_policy
  *
@@ -25,13 +25,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const admin = gcp.organizations.getIAMPolicy({
+ * const admin = gcp.organizations.getIamPolicy({
  *     bindings: [{
  *         role: "roles/viewer",
  *         members: ["user:jane@example.com"],
  *     }],
  * });
- * const policy = new gcp.pubsub.TopicIAMPolicy("policy", {
+ * const policy = new gcp.pubsub.TopicIamPolicy("policy", {
  *     project: google_pubsub_topic.example.project,
  *     topic: google_pubsub_topic.example.name,
  *     policyData: admin.then(admin => admin.policyData),
@@ -44,7 +44,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const binding = new gcp.pubsub.TopicIAMBinding("binding", {
+ * const binding = new gcp.pubsub.TopicIamBinding("binding", {
  *     project: google_pubsub_topic.example.project,
  *     topic: google_pubsub_topic.example.name,
  *     role: "roles/viewer",
@@ -58,7 +58,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const member = new gcp.pubsub.TopicIAMMember("member", {
+ * const member = new gcp.pubsub.TopicIamMember("member", {
  *     project: google_pubsub_topic.example.project,
  *     topic: google_pubsub_topic.example.name,
  *     role: "roles/viewer",
@@ -71,28 +71,28 @@ import * as utilities from "../utilities";
  * For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/topics/{{name}} * {{project}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Pub/Sub topic IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
  *
  * ```sh
- *  $ pulumi import gcp:pubsub/topicIAMPolicy:TopicIAMPolicy editor "projects/{{project}}/topics/{{topic}} roles/viewer user:jane@example.com"
+ *  $ pulumi import gcp:pubsub/topicIamPolicy:TopicIamPolicy editor "projects/{{project}}/topics/{{topic}} roles/viewer user:jane@example.com"
  * ```
  *
  *  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
  *
  * ```sh
- *  $ pulumi import gcp:pubsub/topicIAMPolicy:TopicIAMPolicy editor "projects/{{project}}/topics/{{topic}} roles/viewer"
+ *  $ pulumi import gcp:pubsub/topicIamPolicy:TopicIamPolicy editor "projects/{{project}}/topics/{{topic}} roles/viewer"
  * ```
  *
  *  IAM policy imports use the identifier of the resource in question, e.g.
  *
  * ```sh
- *  $ pulumi import gcp:pubsub/topicIAMPolicy:TopicIAMPolicy editor projects/{{project}}/topics/{{topic}}
+ *  $ pulumi import gcp:pubsub/topicIamPolicy:TopicIamPolicy editor projects/{{project}}/topics/{{topic}}
  * ```
  *
  *  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
  *
  * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  */
-export class TopicIAMPolicy extends pulumi.CustomResource {
+export class TopicIamPolicy extends pulumi.CustomResource {
     /**
-     * Get an existing TopicIAMPolicy resource's state with the given name, ID, and optional extra
+     * Get an existing TopicIamPolicy resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -100,22 +100,22 @@ export class TopicIAMPolicy extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: TopicIAMPolicyState, opts?: pulumi.CustomResourceOptions): TopicIAMPolicy {
-        return new TopicIAMPolicy(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: TopicIamPolicyState, opts?: pulumi.CustomResourceOptions): TopicIamPolicy {
+        return new TopicIamPolicy(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp:pubsub/topicIAMPolicy:TopicIAMPolicy';
+    public static readonly __pulumiType = 'gcp:pubsub/topicIamPolicy:TopicIamPolicy';
 
     /**
-     * Returns true if the given object is an instance of TopicIAMPolicy.  This is designed to work even
+     * Returns true if the given object is an instance of TopicIamPolicy.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is TopicIAMPolicy {
+    public static isInstance(obj: any): obj is TopicIamPolicy {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === TopicIAMPolicy.__pulumiType;
+        return obj['__pulumiType'] === TopicIamPolicy.__pulumiType;
     }
 
     /**
@@ -124,7 +124,7 @@ export class TopicIAMPolicy extends pulumi.CustomResource {
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
      * The policy data generated by
-     * a `gcp.organizations.getIAMPolicy` data source.
+     * a `gcp.organizations.getIamPolicy` data source.
      */
     public readonly policyData!: pulumi.Output<string>;
     /**
@@ -150,24 +150,24 @@ export class TopicIAMPolicy extends pulumi.CustomResource {
     public readonly topic!: pulumi.Output<string>;
 
     /**
-     * Create a TopicIAMPolicy resource with the given unique name, arguments, and options.
+     * Create a TopicIamPolicy resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: TopicIAMPolicyArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: TopicIAMPolicyArgs | TopicIAMPolicyState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: TopicIamPolicyArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: TopicIamPolicyArgs | TopicIamPolicyState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as TopicIAMPolicyState | undefined;
+            const state = argsOrState as TopicIamPolicyState | undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["policyData"] = state ? state.policyData : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["topic"] = state ? state.topic : undefined;
         } else {
-            const args = argsOrState as TopicIAMPolicyArgs | undefined;
+            const args = argsOrState as TopicIamPolicyArgs | undefined;
             if ((!args || args.policyData === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyData'");
             }
@@ -180,21 +180,21 @@ export class TopicIAMPolicy extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(TopicIAMPolicy.__pulumiType, name, resourceInputs, opts);
+        super(TopicIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering TopicIAMPolicy resources.
+ * Input properties used for looking up and filtering TopicIamPolicy resources.
  */
-export interface TopicIAMPolicyState {
+export interface TopicIamPolicyState {
     /**
      * (Computed) The etag of the IAM policy.
      */
     etag?: pulumi.Input<string>;
     /**
      * The policy data generated by
-     * a `gcp.organizations.getIAMPolicy` data source.
+     * a `gcp.organizations.getIamPolicy` data source.
      */
     policyData?: pulumi.Input<string>;
     /**
@@ -221,12 +221,12 @@ export interface TopicIAMPolicyState {
 }
 
 /**
- * The set of arguments for constructing a TopicIAMPolicy resource.
+ * The set of arguments for constructing a TopicIamPolicy resource.
  */
-export interface TopicIAMPolicyArgs {
+export interface TopicIamPolicyArgs {
     /**
      * The policy data generated by
-     * a `gcp.organizations.getIAMPolicy` data source.
+     * a `gcp.organizations.getIamPolicy` data source.
      */
     policyData: pulumi.Input<string>;
     /**

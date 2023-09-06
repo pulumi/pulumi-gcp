@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  * an existing Google Cloud Platform Organization.
  *
  * > **Note:** This resource __must not__ be used in conjunction with
- *    `gcp.organizations.IAMMember` for the __same role__ or they will fight over
+ *    `gcp.organizations.IamMember` for the __same role__ or they will fight over
  *    what your policy should be.
  *
  * > **Note:** On create, this resource will overwrite members of any existing roles.
@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const binding = new gcp.organizations.IAMBinding("binding", {
+ * const binding = new gcp.organizations.IamBinding("binding", {
  *     members: ["user:alice@gmail.com"],
  *     orgId: "123456789",
  *     role: "roles/browser",
@@ -38,16 +38,16 @@ import * as utilities from "../utilities";
  * These bindings can be imported using the `org_id` and role, e.g.
  *
  * ```sh
- *  $ pulumi import gcp:organizations/iAMBinding:IAMBinding my_org "your-org-id roles/viewer"
+ *  $ pulumi import gcp:organizations/iamBinding:IamBinding my_org "your-org-id roles/viewer"
  * ```
  *
  *  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
  *
  * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  */
-export class IAMBinding extends pulumi.CustomResource {
+export class IamBinding extends pulumi.CustomResource {
     /**
-     * Get an existing IAMBinding resource's state with the given name, ID, and optional extra
+     * Get an existing IamBinding resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -55,25 +55,25 @@ export class IAMBinding extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: IAMBindingState, opts?: pulumi.CustomResourceOptions): IAMBinding {
-        return new IAMBinding(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: IamBindingState, opts?: pulumi.CustomResourceOptions): IamBinding {
+        return new IamBinding(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp:organizations/iAMBinding:IAMBinding';
+    public static readonly __pulumiType = 'gcp:organizations/iamBinding:IamBinding';
 
     /**
-     * Returns true if the given object is an instance of IAMBinding.  This is designed to work even
+     * Returns true if the given object is an instance of IamBinding.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is IAMBinding {
+    public static isInstance(obj: any): obj is IamBinding {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === IAMBinding.__pulumiType;
+        return obj['__pulumiType'] === IamBinding.__pulumiType;
     }
 
-    public readonly condition!: pulumi.Output<outputs.organizations.IAMBindingCondition | undefined>;
+    public readonly condition!: pulumi.Output<outputs.organizations.IamBindingCondition | undefined>;
     /**
      * (Computed) The etag of the organization's IAM policy.
      */
@@ -88,31 +88,31 @@ export class IAMBinding extends pulumi.CustomResource {
     public readonly orgId!: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
-     * `gcp.organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.organizations.IamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     public readonly role!: pulumi.Output<string>;
 
     /**
-     * Create a IAMBinding resource with the given unique name, arguments, and options.
+     * Create a IamBinding resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: IAMBindingArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: IAMBindingArgs | IAMBindingState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: IamBindingArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: IamBindingArgs | IamBindingState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as IAMBindingState | undefined;
+            const state = argsOrState as IamBindingState | undefined;
             resourceInputs["condition"] = state ? state.condition : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["members"] = state ? state.members : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
             resourceInputs["role"] = state ? state.role : undefined;
         } else {
-            const args = argsOrState as IAMBindingArgs | undefined;
+            const args = argsOrState as IamBindingArgs | undefined;
             if ((!args || args.members === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'members'");
             }
@@ -129,15 +129,15 @@ export class IAMBinding extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(IAMBinding.__pulumiType, name, resourceInputs, opts);
+        super(IamBinding.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering IAMBinding resources.
+ * Input properties used for looking up and filtering IamBinding resources.
  */
-export interface IAMBindingState {
-    condition?: pulumi.Input<inputs.organizations.IAMBindingCondition>;
+export interface IamBindingState {
+    condition?: pulumi.Input<inputs.organizations.IamBindingCondition>;
     /**
      * (Computed) The etag of the organization's IAM policy.
      */
@@ -152,17 +152,17 @@ export interface IAMBindingState {
     orgId?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
-     * `gcp.organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.organizations.IamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     role?: pulumi.Input<string>;
 }
 
 /**
- * The set of arguments for constructing a IAMBinding resource.
+ * The set of arguments for constructing a IamBinding resource.
  */
-export interface IAMBindingArgs {
-    condition?: pulumi.Input<inputs.organizations.IAMBindingCondition>;
+export interface IamBindingArgs {
+    condition?: pulumi.Input<inputs.organizations.IamBindingCondition>;
     /**
      * A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
      */
@@ -173,7 +173,7 @@ export interface IAMBindingArgs {
     orgId: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
-     * `gcp.organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.organizations.IamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     role: pulumi.Input<string>;

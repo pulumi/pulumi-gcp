@@ -49,7 +49,7 @@ namespace Pulumi.Gcp.Container
     ///         Location = "EU",
     ///     });
     /// 
-    ///     var viewer = new Gcp.Storage.BucketIAMMember("viewer", new()
+    ///     var viewer = new Gcp.Storage.BucketIamMember("viewer", new()
     ///     {
     ///         Bucket = registry.Id,
     ///         Role = "roles/storage.objectViewer",

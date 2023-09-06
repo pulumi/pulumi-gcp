@@ -44,8 +44,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
- * import com.pulumi.gcp.projects.IAMMember;
- * import com.pulumi.gcp.projects.IAMMemberArgs;
+ * import com.pulumi.gcp.projects.IamMember;
+ * import com.pulumi.gcp.projects.IamMemberArgs;
  * import com.pulumi.gcp.bigquery.Dataset;
  * import com.pulumi.gcp.bigquery.DatasetArgs;
  * import com.pulumi.gcp.bigquery.DataTransferConfig;
@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var permissions = new IAMMember(&#34;permissions&#34;, IAMMemberArgs.builder()        
+ *         var permissions = new IamMember(&#34;permissions&#34;, IamMemberArgs.builder()        
  *             .project(project.applyValue(getProjectResult -&gt; getProjectResult.projectId()))
  *             .role(&#34;roles/iam.serviceAccountTokenCreator&#34;)
  *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))

@@ -11,14 +11,14 @@ namespace Pulumi.Gcp.PubSub.Outputs
 {
 
     [OutputType]
-    public sealed class TopicIAMMemberCondition
+    public sealed class TopicIamMemberCondition
     {
         public readonly string? Description;
         public readonly string Expression;
         public readonly string Title;
 
         [OutputConstructor]
-        private TopicIAMMemberCondition(
+        private TopicIamMemberCondition(
             string? description,
 
             string expression,

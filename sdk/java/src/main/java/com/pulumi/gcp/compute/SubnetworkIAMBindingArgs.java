@@ -5,7 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.gcp.compute.inputs.SubnetworkIAMBindingConditionArgs;
+import com.pulumi.gcp.compute.inputs.SubnetworkIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -13,9 +13,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class SubnetworkIAMBindingArgs extends com.pulumi.resources.ResourceArgs {
+public final class SubnetworkIamBindingArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final SubnetworkIAMBindingArgs Empty = new SubnetworkIAMBindingArgs();
+    public static final SubnetworkIamBindingArgs Empty = new SubnetworkIamBindingArgs();
 
     /**
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -23,14 +23,14 @@ public final class SubnetworkIAMBindingArgs extends com.pulumi.resources.Resourc
      * 
      */
     @Import(name="condition")
-    private @Nullable Output<SubnetworkIAMBindingConditionArgs> condition;
+    private @Nullable Output<SubnetworkIamBindingConditionArgs> condition;
 
     /**
      * @return An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      * 
      */
-    public Optional<Output<SubnetworkIAMBindingConditionArgs>> condition() {
+    public Optional<Output<SubnetworkIamBindingConditionArgs>> condition() {
         return Optional.ofNullable(this.condition);
     }
 
@@ -105,7 +105,7 @@ public final class SubnetworkIAMBindingArgs extends com.pulumi.resources.Resourc
 
     /**
      * The role that should be applied. Only one
-     * `gcp.compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.compute.SubnetworkIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -114,7 +114,7 @@ public final class SubnetworkIAMBindingArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return The role that should be applied. Only one
-     * `gcp.compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.compute.SubnetworkIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -137,9 +137,9 @@ public final class SubnetworkIAMBindingArgs extends com.pulumi.resources.Resourc
         return this.subnetwork;
     }
 
-    private SubnetworkIAMBindingArgs() {}
+    private SubnetworkIamBindingArgs() {}
 
-    private SubnetworkIAMBindingArgs(SubnetworkIAMBindingArgs $) {
+    private SubnetworkIamBindingArgs(SubnetworkIamBindingArgs $) {
         this.condition = $.condition;
         this.members = $.members;
         this.project = $.project;
@@ -151,19 +151,19 @@ public final class SubnetworkIAMBindingArgs extends com.pulumi.resources.Resourc
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(SubnetworkIAMBindingArgs defaults) {
+    public static Builder builder(SubnetworkIamBindingArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private SubnetworkIAMBindingArgs $;
+        private SubnetworkIamBindingArgs $;
 
         public Builder() {
-            $ = new SubnetworkIAMBindingArgs();
+            $ = new SubnetworkIamBindingArgs();
         }
 
-        public Builder(SubnetworkIAMBindingArgs defaults) {
-            $ = new SubnetworkIAMBindingArgs(Objects.requireNonNull(defaults));
+        public Builder(SubnetworkIamBindingArgs defaults) {
+            $ = new SubnetworkIamBindingArgs(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -173,7 +173,7 @@ public final class SubnetworkIAMBindingArgs extends com.pulumi.resources.Resourc
          * @return builder
          * 
          */
-        public Builder condition(@Nullable Output<SubnetworkIAMBindingConditionArgs> condition) {
+        public Builder condition(@Nullable Output<SubnetworkIamBindingConditionArgs> condition) {
             $.condition = condition;
             return this;
         }
@@ -185,7 +185,7 @@ public final class SubnetworkIAMBindingArgs extends com.pulumi.resources.Resourc
          * @return builder
          * 
          */
-        public Builder condition(SubnetworkIAMBindingConditionArgs condition) {
+        public Builder condition(SubnetworkIamBindingConditionArgs condition) {
             return condition(Output.of(condition));
         }
 
@@ -278,7 +278,7 @@ public final class SubnetworkIAMBindingArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.compute.SubnetworkIamBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder
@@ -291,7 +291,7 @@ public final class SubnetworkIAMBindingArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.compute.SubnetworkIamBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder
@@ -322,7 +322,7 @@ public final class SubnetworkIAMBindingArgs extends com.pulumi.resources.Resourc
             return subnetwork(Output.of(subnetwork));
         }
 
-        public SubnetworkIAMBindingArgs build() {
+        public SubnetworkIamBindingArgs build() {
             $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
             $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
             $.subnetwork = Objects.requireNonNull($.subnetwork, "expected parameter 'subnetwork' to be non-null");

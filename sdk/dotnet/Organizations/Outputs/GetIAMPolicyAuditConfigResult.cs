@@ -11,20 +11,20 @@ namespace Pulumi.Gcp.Organizations.Outputs
 {
 
     [OutputType]
-    public sealed class GetIAMPolicyAuditConfigResult
+    public sealed class GetIamPolicyAuditConfigResult
     {
         /// <summary>
         /// A nested block that defines the operations you'd like to log.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetIAMPolicyAuditConfigAuditLogConfigResult> AuditLogConfigs;
+        public readonly ImmutableArray<Outputs.GetIamPolicyAuditConfigAuditLogConfigResult> AuditLogConfigs;
         /// <summary>
         /// Defines a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
         /// </summary>
         public readonly string Service;
 
         [OutputConstructor]
-        private GetIAMPolicyAuditConfigResult(
-            ImmutableArray<Outputs.GetIAMPolicyAuditConfigAuditLogConfigResult> auditLogConfigs,
+        private GetIamPolicyAuditConfigResult(
+            ImmutableArray<Outputs.GetIamPolicyAuditConfigAuditLogConfigResult> auditLogConfigs,
 
             string service)
         {

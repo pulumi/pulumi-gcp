@@ -150,8 +150,8 @@ __all__ = [
     'InstanceGroupManagerVersionTargetSize',
     'InstanceGroupNamedPort',
     'InstanceGuestAccelerator',
-    'InstanceIAMBindingCondition',
-    'InstanceIAMMemberCondition',
+    'InstanceIamBindingCondition',
+    'InstanceIamMemberCondition',
     'InstanceNetworkInterface',
     'InstanceNetworkInterfaceAccessConfig',
     'InstanceNetworkInterfaceAliasIpRange',
@@ -444,8 +444,8 @@ __all__ = [
     'SnapshotIamMemberCondition',
     'SnapshotSnapshotEncryptionKey',
     'SnapshotSourceDiskEncryptionKey',
-    'SubnetworkIAMBindingCondition',
-    'SubnetworkIAMMemberCondition',
+    'SubnetworkIamBindingCondition',
+    'SubnetworkIamMemberCondition',
     'SubnetworkLogConfig',
     'SubnetworkSecondaryIpRange',
     'URLMapDefaultRouteAction',
@@ -9925,7 +9925,7 @@ class InstanceGuestAccelerator(dict):
 
 
 @pulumi.output_type
-class InstanceIAMBindingCondition(dict):
+class InstanceIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -9974,7 +9974,7 @@ class InstanceIAMBindingCondition(dict):
 
 
 @pulumi.output_type
-class InstanceIAMMemberCondition(dict):
+class InstanceIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -30702,7 +30702,7 @@ class SnapshotSourceDiskEncryptionKey(dict):
 
 
 @pulumi.output_type
-class SubnetworkIAMBindingCondition(dict):
+class SubnetworkIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -30751,7 +30751,7 @@ class SubnetworkIAMBindingCondition(dict):
 
 
 @pulumi.output_type
-class SubnetworkIAMMemberCondition(dict):
+class SubnetworkIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,

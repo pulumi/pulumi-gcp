@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  *     billingAccount: "ABCDEF-012345-GHIJKL",
  *     destination: pulumi.interpolate`storage.googleapis.com/${log_bucket.name}`,
  * });
- * const log_writer = new gcp.projects.IAMBinding("log-writer", {
+ * const log_writer = new gcp.projects.IamBinding("log-writer", {
  *     project: "your-project-id",
  *     role: "roles/storage.objectCreator",
  *     members: [my_sink.writerIdentity],

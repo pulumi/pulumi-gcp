@@ -117,7 +117,7 @@ namespace Pulumi.Gcp.DataFusion
     /// 
     ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
-    ///     var cryptoKeyBinding = new Gcp.Kms.CryptoKeyIAMBinding("cryptoKeyBinding", new()
+    ///     var cryptoKeyBinding = new Gcp.Kms.CryptoKeyIamBinding("cryptoKeyBinding", new()
     ///     {
     ///         CryptoKeyId = cryptoKey.Id,
     ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",

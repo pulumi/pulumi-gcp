@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  * }, {
  *     provider: google_beta,
  * });
- * const hcSaBqJobuser = new gcp.projects.IAMMember("hcSaBqJobuser", {
+ * const hcSaBqJobuser = new gcp.projects.IamMember("hcSaBqJobuser", {
  *     project: project.then(project => project.projectId),
  *     role: "roles/bigquery.jobUser",
  *     member: pulumi.interpolate`serviceAccount:${hcSa.email}`,

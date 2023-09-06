@@ -20,7 +20,7 @@ public final class TableEncryptionConfigurationArgs extends com.pulumi.resources
      * encrypt this table.  Note that the default bigquery service account will need to have
      * encrypt/decrypt permissions on this key - you may want to see the
      * `gcp.bigquery.getDefaultServiceAccount` datasource and the
-     * `gcp.kms.CryptoKeyIAMBinding` resource.
+     * `gcp.kms.CryptoKeyIamBinding` resource.
      * 
      */
     @Import(name="kmsKeyName", required=true)
@@ -31,7 +31,7 @@ public final class TableEncryptionConfigurationArgs extends com.pulumi.resources
      * encrypt this table.  Note that the default bigquery service account will need to have
      * encrypt/decrypt permissions on this key - you may want to see the
      * `gcp.bigquery.getDefaultServiceAccount` datasource and the
-     * `gcp.kms.CryptoKeyIAMBinding` resource.
+     * `gcp.kms.CryptoKeyIamBinding` resource.
      * 
      */
     public Output<String> kmsKeyName() {
@@ -83,7 +83,7 @@ public final class TableEncryptionConfigurationArgs extends com.pulumi.resources
          * encrypt this table.  Note that the default bigquery service account will need to have
          * encrypt/decrypt permissions on this key - you may want to see the
          * `gcp.bigquery.getDefaultServiceAccount` datasource and the
-         * `gcp.kms.CryptoKeyIAMBinding` resource.
+         * `gcp.kms.CryptoKeyIamBinding` resource.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class TableEncryptionConfigurationArgs extends com.pulumi.resources
          * encrypt this table.  Note that the default bigquery service account will need to have
          * encrypt/decrypt permissions on this key - you may want to see the
          * `gcp.bigquery.getDefaultServiceAccount` datasource and the
-         * `gcp.kms.CryptoKeyIAMBinding` resource.
+         * `gcp.kms.CryptoKeyIamBinding` resource.
          * 
          * @return builder
          * 

@@ -46,7 +46,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const gcsAccount = gcp.storage.getProjectServiceAccount({});
- * const binding = new gcp.pubsub.TopicIAMBinding("binding", {
+ * const binding = new gcp.pubsub.TopicIamBinding("binding", {
  *     topic: google_pubsub_topic.topic.name,
  *     role: "roles/pubsub.publisher",
  *     members: [gcsAccount.then(gcsAccount => `serviceAccount:${gcsAccount.emailAddress}`)],
@@ -59,7 +59,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const gcsAccount = gcp.storage.getProjectServiceAccount({});
- * const binding = new gcp.kms.CryptoKeyIAMBinding("binding", {
+ * const binding = new gcp.kms.CryptoKeyIamBinding("binding", {
  *     cryptoKeyId: "your-crypto-key-id",
  *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
  *     members: [gcsAccount.then(gcsAccount => `serviceAccount:${gcsAccount.emailAddress}`)],
@@ -161,7 +161,7 @@ export interface GetProjectServiceAccountResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const gcsAccount = gcp.storage.getProjectServiceAccount({});
- * const binding = new gcp.pubsub.TopicIAMBinding("binding", {
+ * const binding = new gcp.pubsub.TopicIamBinding("binding", {
  *     topic: google_pubsub_topic.topic.name,
  *     role: "roles/pubsub.publisher",
  *     members: [gcsAccount.then(gcsAccount => `serviceAccount:${gcsAccount.emailAddress}`)],
@@ -174,7 +174,7 @@ export interface GetProjectServiceAccountResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const gcsAccount = gcp.storage.getProjectServiceAccount({});
- * const binding = new gcp.kms.CryptoKeyIAMBinding("binding", {
+ * const binding = new gcp.kms.CryptoKeyIamBinding("binding", {
  *     cryptoKeyId: "your-crypto-key-id",
  *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
  *     members: [gcsAccount.then(gcsAccount => `serviceAccount:${gcsAccount.emailAddress}`)],

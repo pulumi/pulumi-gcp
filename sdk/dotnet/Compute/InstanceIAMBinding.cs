@@ -12,17 +12,17 @@ namespace Pulumi.Gcp.Compute
     /// <summary>
     /// Three different resources help you manage your IAM policy for Compute Engine Instance. Each of these resources serves a different use case:
     /// 
-    /// * `gcp.compute.InstanceIAMPolicy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.
-    /// * `gcp.compute.InstanceIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved.
-    /// * `gcp.compute.InstanceIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved.
+    /// * `gcp.compute.InstanceIamPolicy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.
+    /// * `gcp.compute.InstanceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved.
+    /// * `gcp.compute.InstanceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved.
     /// 
     /// A data source can be used to retrieve policy data in advent you do not need creation
     /// 
-    /// * `gcp.compute.InstanceIAMPolicy`: Retrieves the IAM policy for the instance
+    /// * `gcp.compute.InstanceIamPolicy`: Retrieves the IAM policy for the instance
     /// 
-    /// &gt; **Note:** `gcp.compute.InstanceIAMPolicy` **cannot** be used in conjunction with `gcp.compute.InstanceIAMBinding` and `gcp.compute.InstanceIAMMember` or they will fight over what your policy should be.
+    /// &gt; **Note:** `gcp.compute.InstanceIamPolicy` **cannot** be used in conjunction with `gcp.compute.InstanceIamBinding` and `gcp.compute.InstanceIamMember` or they will fight over what your policy should be.
     /// 
-    /// &gt; **Note:** `gcp.compute.InstanceIAMBinding` resources **can be** used in conjunction with `gcp.compute.InstanceIAMMember` resources **only if** they do not grant privilege to the same role.
+    /// &gt; **Note:** `gcp.compute.InstanceIamBinding` resources **can be** used in conjunction with `gcp.compute.InstanceIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
     /// &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
     /// 
@@ -36,11 +36,11 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     var admin = Gcp.Organizations.GetIamPolicy.Invoke(new()
     ///     {
     ///         Bindings = new[]
     ///         {
-    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             new Gcp.Organizations.Inputs.GetIamPolicyBindingInputArgs
     ///             {
     ///                 Role = "roles/compute.osLogin",
     ///                 Members = new[]
@@ -51,12 +51,12 @@ namespace Pulumi.Gcp.Compute
     ///         },
     ///     });
     /// 
-    ///     var policy = new Gcp.Compute.InstanceIAMPolicy("policy", new()
+    ///     var policy = new Gcp.Compute.InstanceIamPolicy("policy", new()
     ///     {
     ///         Project = google_compute_instance.Default.Project,
     ///         Zone = google_compute_instance.Default.Zone,
     ///         InstanceName = google_compute_instance.Default.Name,
-    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///         PolicyData = admin.Apply(getIamPolicyResult =&gt; getIamPolicyResult.PolicyData),
     ///     });
     /// 
     /// });
@@ -72,18 +72,18 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     var admin = Gcp.Organizations.GetIamPolicy.Invoke(new()
     ///     {
     ///         Bindings = new[]
     ///         {
-    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             new Gcp.Organizations.Inputs.GetIamPolicyBindingInputArgs
     ///             {
     ///                 Role = "roles/compute.osLogin",
     ///                 Members = new[]
     ///                 {
     ///                     "user:jane@example.com",
     ///                 },
-    ///                 Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionInputArgs
+    ///                 Condition = new Gcp.Organizations.Inputs.GetIamPolicyBindingConditionInputArgs
     ///                 {
     ///                     Title = "expires_after_2019_12_31",
     ///                     Description = "Expiring at midnight of 2019-12-31",
@@ -93,12 +93,12 @@ namespace Pulumi.Gcp.Compute
     ///         },
     ///     });
     /// 
-    ///     var policy = new Gcp.Compute.InstanceIAMPolicy("policy", new()
+    ///     var policy = new Gcp.Compute.InstanceIamPolicy("policy", new()
     ///     {
     ///         Project = google_compute_instance.Default.Project,
     ///         Zone = google_compute_instance.Default.Zone,
     ///         InstanceName = google_compute_instance.Default.Name,
-    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///         PolicyData = admin.Apply(getIamPolicyResult =&gt; getIamPolicyResult.PolicyData),
     ///     });
     /// 
     /// });
@@ -113,7 +113,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var binding = new Gcp.Compute.InstanceIAMBinding("binding", new()
+    ///     var binding = new Gcp.Compute.InstanceIamBinding("binding", new()
     ///     {
     ///         Project = google_compute_instance.Default.Project,
     ///         Zone = google_compute_instance.Default.Zone,
@@ -138,7 +138,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var binding = new Gcp.Compute.InstanceIAMBinding("binding", new()
+    ///     var binding = new Gcp.Compute.InstanceIamBinding("binding", new()
     ///     {
     ///         Project = google_compute_instance.Default.Project,
     ///         Zone = google_compute_instance.Default.Zone,
@@ -148,7 +148,7 @@ namespace Pulumi.Gcp.Compute
     ///         {
     ///             "user:jane@example.com",
     ///         },
-    ///         Condition = new Gcp.Compute.Inputs.InstanceIAMBindingConditionArgs
+    ///         Condition = new Gcp.Compute.Inputs.InstanceIamBindingConditionArgs
     ///         {
     ///             Title = "expires_after_2019_12_31",
     ///             Description = "Expiring at midnight of 2019-12-31",
@@ -168,7 +168,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var member = new Gcp.Compute.InstanceIAMMember("member", new()
+    ///     var member = new Gcp.Compute.InstanceIamMember("member", new()
     ///     {
     ///         Project = google_compute_instance.Default.Project,
     ///         Zone = google_compute_instance.Default.Zone,
@@ -190,14 +190,14 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var member = new Gcp.Compute.InstanceIAMMember("member", new()
+    ///     var member = new Gcp.Compute.InstanceIamMember("member", new()
     ///     {
     ///         Project = google_compute_instance.Default.Project,
     ///         Zone = google_compute_instance.Default.Zone,
     ///         InstanceName = google_compute_instance.Default.Name,
     ///         Role = "roles/compute.osLogin",
     ///         Member = "user:jane@example.com",
-    ///         Condition = new Gcp.Compute.Inputs.InstanceIAMMemberConditionArgs
+    ///         Condition = new Gcp.Compute.Inputs.InstanceIamMemberConditionArgs
     ///         {
     ///             Title = "expires_after_2019_12_31",
     ///             Description = "Expiring at midnight of 2019-12-31",
@@ -213,34 +213,34 @@ namespace Pulumi.Gcp.Compute
     /// For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/zones/{{zone}}/instances/{{name}} * {{project}}/{{zone}}/{{name}} * {{zone}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Compute Engine instance IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:compute/instanceIAMBinding:InstanceIAMBinding editor "projects/{{project}}/zones/{{zone}}/instances/{{instance}} roles/compute.osLogin user:jane@example.com"
+    ///  $ pulumi import gcp:compute/instanceIamBinding:InstanceIamBinding editor "projects/{{project}}/zones/{{zone}}/instances/{{instance}} roles/compute.osLogin user:jane@example.com"
     /// ```
     /// 
     ///  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:compute/instanceIAMBinding:InstanceIAMBinding editor "projects/{{project}}/zones/{{zone}}/instances/{{instance}} roles/compute.osLogin"
+    ///  $ pulumi import gcp:compute/instanceIamBinding:InstanceIamBinding editor "projects/{{project}}/zones/{{zone}}/instances/{{instance}} roles/compute.osLogin"
     /// ```
     /// 
     ///  IAM policy imports use the identifier of the resource in question, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:compute/instanceIAMBinding:InstanceIAMBinding editor projects/{{project}}/zones/{{zone}}/instances/{{instance}}
+    ///  $ pulumi import gcp:compute/instanceIamBinding:InstanceIamBinding editor projects/{{project}}/zones/{{zone}}/instances/{{instance}}
     /// ```
     /// 
     ///  -&gt; **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
     /// 
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
-    [GcpResourceType("gcp:compute/instanceIAMBinding:InstanceIAMBinding")]
-    public partial class InstanceIAMBinding : global::Pulumi.CustomResource
+    [GcpResourceType("gcp:compute/instanceIamBinding:InstanceIamBinding")]
+    public partial class InstanceIamBinding : global::Pulumi.CustomResource
     {
         /// <summary>
         /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         /// Structure is documented below.
         /// </summary>
         [Output("condition")]
-        public Output<Outputs.InstanceIAMBindingCondition?> Condition { get; private set; } = null!;
+        public Output<Outputs.InstanceIamBindingCondition?> Condition { get; private set; } = null!;
 
         /// <summary>
         /// (Computed) The etag of the IAM policy.
@@ -278,7 +278,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The role that should be applied. Only one
-        /// `gcp.compute.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+        /// `gcp.compute.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
         /// </summary>
         [Output("role")]
@@ -294,19 +294,19 @@ namespace Pulumi.Gcp.Compute
 
 
         /// <summary>
-        /// Create a InstanceIAMBinding resource with the given unique name, arguments, and options.
+        /// Create a InstanceIamBinding resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public InstanceIAMBinding(string name, InstanceIAMBindingArgs args, CustomResourceOptions? options = null)
-            : base("gcp:compute/instanceIAMBinding:InstanceIAMBinding", name, args ?? new InstanceIAMBindingArgs(), MakeResourceOptions(options, ""))
+        public InstanceIamBinding(string name, InstanceIamBindingArgs args, CustomResourceOptions? options = null)
+            : base("gcp:compute/instanceIamBinding:InstanceIamBinding", name, args ?? new InstanceIamBindingArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private InstanceIAMBinding(string name, Input<string> id, InstanceIAMBindingState? state = null, CustomResourceOptions? options = null)
-            : base("gcp:compute/instanceIAMBinding:InstanceIAMBinding", name, state, MakeResourceOptions(options, id))
+        private InstanceIamBinding(string name, Input<string> id, InstanceIamBindingState? state = null, CustomResourceOptions? options = null)
+            : base("gcp:compute/instanceIamBinding:InstanceIamBinding", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -322,7 +322,7 @@ namespace Pulumi.Gcp.Compute
             return merged;
         }
         /// <summary>
-        /// Get an existing InstanceIAMBinding resource's state with the given name, ID, and optional extra
+        /// Get an existing InstanceIamBinding resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -330,20 +330,20 @@ namespace Pulumi.Gcp.Compute
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static InstanceIAMBinding Get(string name, Input<string> id, InstanceIAMBindingState? state = null, CustomResourceOptions? options = null)
+        public static InstanceIamBinding Get(string name, Input<string> id, InstanceIamBindingState? state = null, CustomResourceOptions? options = null)
         {
-            return new InstanceIAMBinding(name, id, state, options);
+            return new InstanceIamBinding(name, id, state, options);
         }
     }
 
-    public sealed class InstanceIAMBindingArgs : global::Pulumi.ResourceArgs
+    public sealed class InstanceIamBindingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         /// Structure is documented below.
         /// </summary>
         [Input("condition")]
-        public Input<Inputs.InstanceIAMBindingConditionArgs>? Condition { get; set; }
+        public Input<Inputs.InstanceIamBindingConditionArgs>? Condition { get; set; }
 
         /// <summary>
         /// Used to find the parent resource to bind the IAM policy to
@@ -380,7 +380,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The role that should be applied. Only one
-        /// `gcp.compute.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+        /// `gcp.compute.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
         /// </summary>
         [Input("role", required: true)]
@@ -394,20 +394,20 @@ namespace Pulumi.Gcp.Compute
         [Input("zone")]
         public Input<string>? Zone { get; set; }
 
-        public InstanceIAMBindingArgs()
+        public InstanceIamBindingArgs()
         {
         }
-        public static new InstanceIAMBindingArgs Empty => new InstanceIAMBindingArgs();
+        public static new InstanceIamBindingArgs Empty => new InstanceIamBindingArgs();
     }
 
-    public sealed class InstanceIAMBindingState : global::Pulumi.ResourceArgs
+    public sealed class InstanceIamBindingState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         /// Structure is documented below.
         /// </summary>
         [Input("condition")]
-        public Input<Inputs.InstanceIAMBindingConditionGetArgs>? Condition { get; set; }
+        public Input<Inputs.InstanceIamBindingConditionGetArgs>? Condition { get; set; }
 
         /// <summary>
         /// (Computed) The etag of the IAM policy.
@@ -450,7 +450,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The role that should be applied. Only one
-        /// `gcp.compute.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+        /// `gcp.compute.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
         /// </summary>
         [Input("role")]
@@ -464,9 +464,9 @@ namespace Pulumi.Gcp.Compute
         [Input("zone")]
         public Input<string>? Zone { get; set; }
 
-        public InstanceIAMBindingState()
+        public InstanceIamBindingState()
         {
         }
-        public static new InstanceIAMBindingState Empty => new InstanceIAMBindingState();
+        public static new InstanceIamBindingState Empty => new InstanceIamBindingState();
     }
 }

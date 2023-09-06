@@ -11,18 +11,18 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['InstanceIAMMemberArgs', 'InstanceIAMMember']
+__all__ = ['InstanceIamMemberArgs', 'InstanceIamMember']
 
 @pulumi.input_type
-class InstanceIAMMemberArgs:
+class InstanceIamMemberArgs:
     def __init__(__self__, *,
                  instance: pulumi.Input[str],
                  member: pulumi.Input[str],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['InstanceIAMMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['InstanceIamMemberConditionArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
-        The set of arguments for constructing a InstanceIAMMember resource.
+        The set of arguments for constructing a InstanceIamMember resource.
         :param pulumi.Input[str] instance: The name of the instance.
                
                * `member/members` - (Required) Identities that will be granted the privilege in `role`.
@@ -34,7 +34,7 @@ class InstanceIAMMemberArgs:
                * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         :param pulumi.Input[str] role: The role that should be applied. Only one
-               `spanner.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+               `spanner.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
@@ -82,7 +82,7 @@ class InstanceIAMMemberArgs:
     def role(self) -> pulumi.Input[str]:
         """
         The role that should be applied. Only one
-        `spanner.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+        `spanner.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         return pulumi.get(self, "role")
@@ -93,11 +93,11 @@ class InstanceIAMMemberArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['InstanceIAMMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['InstanceIamMemberConditionArgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['InstanceIAMMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['InstanceIamMemberConditionArgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -115,16 +115,16 @@ class InstanceIAMMemberArgs:
 
 
 @pulumi.input_type
-class _InstanceIAMMemberState:
+class _InstanceIamMemberState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['InstanceIAMMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['InstanceIamMemberConditionArgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None):
         """
-        Input properties used for looking up and filtering InstanceIAMMember resources.
+        Input properties used for looking up and filtering InstanceIamMember resources.
         :param pulumi.Input[str] etag: (Computed) The etag of the instance's IAM policy.
         :param pulumi.Input[str] instance: The name of the instance.
                
@@ -139,7 +139,7 @@ class _InstanceIAMMemberState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] role: The role that should be applied. Only one
-               `spanner.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+               `spanner.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         if condition is not None:
@@ -157,11 +157,11 @@ class _InstanceIAMMemberState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['InstanceIAMMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['InstanceIamMemberConditionArgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['InstanceIAMMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['InstanceIamMemberConditionArgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -224,7 +224,7 @@ class _InstanceIAMMemberState:
     def role(self) -> Optional[pulumi.Input[str]]:
         """
         The role that should be applied. Only one
-        `spanner.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+        `spanner.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         return pulumi.get(self, "role")
@@ -234,12 +234,12 @@ class _InstanceIAMMemberState:
         pulumi.set(self, "role", value)
 
 
-class InstanceIAMMember(pulumi.CustomResource):
+class InstanceIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['InstanceIAMMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['InstanceIamMemberConditionArgs']]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -248,16 +248,16 @@ class InstanceIAMMember(pulumi.CustomResource):
         """
         Three different resources help you manage your IAM policy for a Spanner instance. Each of these resources serves a different use case:
 
-        * `spanner.InstanceIAMPolicy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.
+        * `spanner.InstanceIamPolicy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.
 
-        > **Warning:** It's entirely possibly to lock yourself out of your instance using `spanner.InstanceIAMPolicy`. Any permissions granted by default will be removed unless you include them in your config.
+        > **Warning:** It's entirely possibly to lock yourself out of your instance using `spanner.InstanceIamPolicy`. Any permissions granted by default will be removed unless you include them in your config.
 
-        * `spanner.InstanceIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved.
-        * `spanner.InstanceIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved.
+        * `spanner.InstanceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved.
+        * `spanner.InstanceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved.
 
-        > **Note:** `spanner.InstanceIAMPolicy` **cannot** be used in conjunction with `spanner.InstanceIAMBinding` and `spanner.InstanceIAMMember` or they will fight over what your policy should be.
+        > **Note:** `spanner.InstanceIamPolicy` **cannot** be used in conjunction with `spanner.InstanceIamBinding` and `spanner.InstanceIamMember` or they will fight over what your policy should be.
 
-        > **Note:** `spanner.InstanceIAMBinding` resources **can be** used in conjunction with `spanner.InstanceIAMMember` resources **only if** they do not grant privilege to the same role.
+        > **Note:** `spanner.InstanceIamBinding` resources **can be** used in conjunction with `spanner.InstanceIamMember` resources **only if** they do not grant privilege to the same role.
 
         ## google\\_spanner\\_instance\\_iam\\_policy
 
@@ -265,11 +265,11 @@ class InstanceIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIamPolicyBindingArgs(
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
-        instance = gcp.spanner.InstanceIAMPolicy("instance",
+        instance = gcp.spanner.InstanceIamPolicy("instance",
             instance="your-instance-name",
             policy_data=admin.policy_data)
         ```
@@ -280,7 +280,7 @@ class InstanceIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        instance = gcp.spanner.InstanceIAMBinding("instance",
+        instance = gcp.spanner.InstanceIamBinding("instance",
             instance="your-instance-name",
             members=["user:jane@example.com"],
             role="roles/spanner.databaseAdmin")
@@ -292,7 +292,7 @@ class InstanceIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        instance = gcp.spanner.InstanceIAMMember("instance",
+        instance = gcp.spanner.InstanceIamMember("instance",
             instance="your-instance-name",
             member="user:jane@example.com",
             role="roles/spanner.databaseAdmin")
@@ -303,19 +303,19 @@ class InstanceIAMMember(pulumi.CustomResource):
         For all import syntaxes, the "resource in question" can take any of the following forms* {{project}}/{{name}} * {{name}} (project is taken from provider project) IAM member imports use space-delimited identifiers; the resource in question, the role, and the account, e.g.
 
         ```sh
-         $ pulumi import gcp:spanner/instanceIAMMember:InstanceIAMMember instance "project-name/instance-name roles/viewer user:foo@example.com"
+         $ pulumi import gcp:spanner/instanceIamMember:InstanceIamMember instance "project-name/instance-name roles/viewer user:foo@example.com"
         ```
 
          IAM binding imports use space-delimited identifiers; the resource in question and the role, e.g.
 
         ```sh
-         $ pulumi import gcp:spanner/instanceIAMMember:InstanceIAMMember instance "project-name/instance-name roles/viewer"
+         $ pulumi import gcp:spanner/instanceIamMember:InstanceIamMember instance "project-name/instance-name roles/viewer"
         ```
 
          IAM policy imports use the identifier of the resource in question, e.g.
 
         ```sh
-         $ pulumi import gcp:spanner/instanceIAMMember:InstanceIAMMember instance project-name/instance-name
+         $ pulumi import gcp:spanner/instanceIamMember:InstanceIamMember instance project-name/instance-name
         ```
 
          -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
@@ -337,28 +337,28 @@ class InstanceIAMMember(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] role: The role that should be applied. Only one
-               `spanner.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+               `spanner.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: InstanceIAMMemberArgs,
+                 args: InstanceIamMemberArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for a Spanner instance. Each of these resources serves a different use case:
 
-        * `spanner.InstanceIAMPolicy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.
+        * `spanner.InstanceIamPolicy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.
 
-        > **Warning:** It's entirely possibly to lock yourself out of your instance using `spanner.InstanceIAMPolicy`. Any permissions granted by default will be removed unless you include them in your config.
+        > **Warning:** It's entirely possibly to lock yourself out of your instance using `spanner.InstanceIamPolicy`. Any permissions granted by default will be removed unless you include them in your config.
 
-        * `spanner.InstanceIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved.
-        * `spanner.InstanceIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved.
+        * `spanner.InstanceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved.
+        * `spanner.InstanceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved.
 
-        > **Note:** `spanner.InstanceIAMPolicy` **cannot** be used in conjunction with `spanner.InstanceIAMBinding` and `spanner.InstanceIAMMember` or they will fight over what your policy should be.
+        > **Note:** `spanner.InstanceIamPolicy` **cannot** be used in conjunction with `spanner.InstanceIamBinding` and `spanner.InstanceIamMember` or they will fight over what your policy should be.
 
-        > **Note:** `spanner.InstanceIAMBinding` resources **can be** used in conjunction with `spanner.InstanceIAMMember` resources **only if** they do not grant privilege to the same role.
+        > **Note:** `spanner.InstanceIamBinding` resources **can be** used in conjunction with `spanner.InstanceIamMember` resources **only if** they do not grant privilege to the same role.
 
         ## google\\_spanner\\_instance\\_iam\\_policy
 
@@ -366,11 +366,11 @@ class InstanceIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIamPolicyBindingArgs(
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
-        instance = gcp.spanner.InstanceIAMPolicy("instance",
+        instance = gcp.spanner.InstanceIamPolicy("instance",
             instance="your-instance-name",
             policy_data=admin.policy_data)
         ```
@@ -381,7 +381,7 @@ class InstanceIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        instance = gcp.spanner.InstanceIAMBinding("instance",
+        instance = gcp.spanner.InstanceIamBinding("instance",
             instance="your-instance-name",
             members=["user:jane@example.com"],
             role="roles/spanner.databaseAdmin")
@@ -393,7 +393,7 @@ class InstanceIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        instance = gcp.spanner.InstanceIAMMember("instance",
+        instance = gcp.spanner.InstanceIamMember("instance",
             instance="your-instance-name",
             member="user:jane@example.com",
             role="roles/spanner.databaseAdmin")
@@ -404,19 +404,19 @@ class InstanceIAMMember(pulumi.CustomResource):
         For all import syntaxes, the "resource in question" can take any of the following forms* {{project}}/{{name}} * {{name}} (project is taken from provider project) IAM member imports use space-delimited identifiers; the resource in question, the role, and the account, e.g.
 
         ```sh
-         $ pulumi import gcp:spanner/instanceIAMMember:InstanceIAMMember instance "project-name/instance-name roles/viewer user:foo@example.com"
+         $ pulumi import gcp:spanner/instanceIamMember:InstanceIamMember instance "project-name/instance-name roles/viewer user:foo@example.com"
         ```
 
          IAM binding imports use space-delimited identifiers; the resource in question and the role, e.g.
 
         ```sh
-         $ pulumi import gcp:spanner/instanceIAMMember:InstanceIAMMember instance "project-name/instance-name roles/viewer"
+         $ pulumi import gcp:spanner/instanceIamMember:InstanceIamMember instance "project-name/instance-name roles/viewer"
         ```
 
          IAM policy imports use the identifier of the resource in question, e.g.
 
         ```sh
-         $ pulumi import gcp:spanner/instanceIAMMember:InstanceIAMMember instance project-name/instance-name
+         $ pulumi import gcp:spanner/instanceIamMember:InstanceIamMember instance project-name/instance-name
         ```
 
          -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
@@ -424,12 +424,12 @@ class InstanceIAMMember(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param InstanceIAMMemberArgs args: The arguments to use to populate this resource's properties.
+        :param InstanceIamMemberArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(InstanceIAMMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(InstanceIamMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -438,7 +438,7 @@ class InstanceIAMMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['InstanceIAMMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['InstanceIamMemberConditionArgs']]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -450,7 +450,7 @@ class InstanceIAMMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = InstanceIAMMemberArgs.__new__(InstanceIAMMemberArgs)
+            __props__ = InstanceIamMemberArgs.__new__(InstanceIamMemberArgs)
 
             __props__.__dict__["condition"] = condition
             if instance is None and not opts.urn:
@@ -464,8 +464,8 @@ class InstanceIAMMember(pulumi.CustomResource):
                 raise TypeError("Missing required property 'role'")
             __props__.__dict__["role"] = role
             __props__.__dict__["etag"] = None
-        super(InstanceIAMMember, __self__).__init__(
-            'gcp:spanner/instanceIAMMember:InstanceIAMMember',
+        super(InstanceIamMember, __self__).__init__(
+            'gcp:spanner/instanceIamMember:InstanceIamMember',
             resource_name,
             __props__,
             opts)
@@ -474,14 +474,14 @@ class InstanceIAMMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['InstanceIAMMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['InstanceIamMemberConditionArgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             instance: Optional[pulumi.Input[str]] = None,
             member: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            role: Optional[pulumi.Input[str]] = None) -> 'InstanceIAMMember':
+            role: Optional[pulumi.Input[str]] = None) -> 'InstanceIamMember':
         """
-        Get an existing InstanceIAMMember resource's state with the given name, id, and optional extra
+        Get an existing InstanceIamMember resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -501,12 +501,12 @@ class InstanceIAMMember(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] role: The role that should be applied. Only one
-               `spanner.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+               `spanner.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _InstanceIAMMemberState.__new__(_InstanceIAMMemberState)
+        __props__ = _InstanceIamMemberState.__new__(_InstanceIamMemberState)
 
         __props__.__dict__["condition"] = condition
         __props__.__dict__["etag"] = etag
@@ -514,11 +514,11 @@ class InstanceIAMMember(pulumi.CustomResource):
         __props__.__dict__["member"] = member
         __props__.__dict__["project"] = project
         __props__.__dict__["role"] = role
-        return InstanceIAMMember(resource_name, opts=opts, __props__=__props__)
+        return InstanceIamMember(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
-    def condition(self) -> pulumi.Output[Optional['outputs.InstanceIAMMemberCondition']]:
+    def condition(self) -> pulumi.Output[Optional['outputs.InstanceIamMemberCondition']]:
         return pulumi.get(self, "condition")
 
     @property
@@ -565,7 +565,7 @@ class InstanceIAMMember(pulumi.CustomResource):
     def role(self) -> pulumi.Output[str]:
         """
         The role that should be applied. Only one
-        `spanner.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+        `spanner.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         return pulumi.get(self, "role")

@@ -295,7 +295,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:projects/iAMMember:IamMember my_project "your-project-id roles/viewer user:foo@example.com"
+//	$ pulumi import gcp:projects/iamMember:IamMember my_project "your-project-id roles/viewer user:foo@example.com"
 //
 // ```
 //
@@ -305,7 +305,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:projects/iAMMember:IamMember my_project "your-project-id roles/viewer"
+//	$ pulumi import gcp:projects/iamMember:IamMember my_project "your-project-id roles/viewer"
 //
 // ```
 //
@@ -315,7 +315,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:projects/iAMMember:IamMember my_project your-project-id
+//	$ pulumi import gcp:projects/iamMember:IamMember my_project your-project-id
 //
 // ```
 //
@@ -323,7 +323,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:projects/iAMMember:IamMember my_project "your-project-id foo.googleapis.com"
+//	$ pulumi import gcp:projects/iamMember:IamMember my_project "your-project-id foo.googleapis.com"
 //
 // ```
 //
@@ -333,11 +333,9 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:projects/iAMMember:IamMember to include the title of condition, e.g. `google_project_iam_binding.my_project "{{your-project-id}} roles/{{role_id}} condition-title"`
+//	$ pulumi import gcp:projects/iamMember:IamMember to include the title of condition, e.g. `google_project_iam_binding.my_project "{{your-project-id}} roles/{{role_id}} condition-title"`
 //
 // ```
-//
-// Deprecated: gcp.projects/iammember.IamMember has been deprecated in favor of gcp.projects/iammember.IamMember
 type IamMember struct {
 	pulumi.CustomResourceState
 
@@ -372,15 +370,9 @@ func NewIamMember(ctx *pulumi.Context,
 	if args.Role == nil {
 		return nil, errors.New("invalid value for required argument 'Role'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("gcp:projects/iAMMember:IAMMember"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource IamMember
-	err := ctx.RegisterResource("gcp:projects/iAMMember:IamMember", name, args, &resource, opts...)
+	err := ctx.RegisterResource("gcp:projects/iamMember:IamMember", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -392,7 +384,7 @@ func NewIamMember(ctx *pulumi.Context,
 func GetIamMember(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *IamMemberState, opts ...pulumi.ResourceOption) (*IamMember, error) {
 	var resource IamMember
-	err := ctx.ReadResource("gcp:projects/iAMMember:IamMember", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("gcp:projects/iamMember:IamMember", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

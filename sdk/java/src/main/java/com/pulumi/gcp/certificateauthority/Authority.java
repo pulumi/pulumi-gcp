@@ -251,8 +251,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.projects.ServiceIdentity;
  * import com.pulumi.gcp.projects.ServiceIdentityArgs;
- * import com.pulumi.gcp.kms.CryptoKeyIAMBinding;
- * import com.pulumi.gcp.kms.CryptoKeyIAMBindingArgs;
+ * import com.pulumi.gcp.kms.CryptoKeyIamBinding;
+ * import com.pulumi.gcp.kms.CryptoKeyIamBindingArgs;
  * import com.pulumi.gcp.certificateauthority.Authority;
  * import com.pulumi.gcp.certificateauthority.AuthorityArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.AuthorityKeySpecArgs;
@@ -283,13 +283,13 @@ import javax.annotation.Nullable;
  *             .service(&#34;privateca.googleapis.com&#34;)
  *             .build());
  * 
- *         var privatecaSaKeyuserSignerverifier = new CryptoKeyIAMBinding(&#34;privatecaSaKeyuserSignerverifier&#34;, CryptoKeyIAMBindingArgs.builder()        
+ *         var privatecaSaKeyuserSignerverifier = new CryptoKeyIamBinding(&#34;privatecaSaKeyuserSignerverifier&#34;, CryptoKeyIamBindingArgs.builder()        
  *             .cryptoKeyId(&#34;projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key&#34;)
  *             .role(&#34;roles/cloudkms.signerVerifier&#34;)
  *             .members(privatecaSa.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
  *             .build());
  * 
- *         var privatecaSaKeyuserViewer = new CryptoKeyIAMBinding(&#34;privatecaSaKeyuserViewer&#34;, CryptoKeyIAMBindingArgs.builder()        
+ *         var privatecaSaKeyuserViewer = new CryptoKeyIamBinding(&#34;privatecaSaKeyuserViewer&#34;, CryptoKeyIamBindingArgs.builder()        
  *             .cryptoKeyId(&#34;projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key&#34;)
  *             .role(&#34;roles/viewer&#34;)
  *             .members(privatecaSa.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))

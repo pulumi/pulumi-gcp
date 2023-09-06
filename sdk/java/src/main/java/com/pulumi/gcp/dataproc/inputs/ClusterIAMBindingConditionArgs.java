@@ -11,9 +11,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class ClusterIAMBindingConditionArgs extends com.pulumi.resources.ResourceArgs {
+public final class ClusterIamBindingConditionArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final ClusterIAMBindingConditionArgs Empty = new ClusterIAMBindingConditionArgs();
+    public static final ClusterIamBindingConditionArgs Empty = new ClusterIamBindingConditionArgs();
 
     @Import(name="description")
     private @Nullable Output<String> description;
@@ -36,9 +36,9 @@ public final class ClusterIAMBindingConditionArgs extends com.pulumi.resources.R
         return this.title;
     }
 
-    private ClusterIAMBindingConditionArgs() {}
+    private ClusterIamBindingConditionArgs() {}
 
-    private ClusterIAMBindingConditionArgs(ClusterIAMBindingConditionArgs $) {
+    private ClusterIamBindingConditionArgs(ClusterIamBindingConditionArgs $) {
         this.description = $.description;
         this.expression = $.expression;
         this.title = $.title;
@@ -47,19 +47,19 @@ public final class ClusterIAMBindingConditionArgs extends com.pulumi.resources.R
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(ClusterIAMBindingConditionArgs defaults) {
+    public static Builder builder(ClusterIamBindingConditionArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private ClusterIAMBindingConditionArgs $;
+        private ClusterIamBindingConditionArgs $;
 
         public Builder() {
-            $ = new ClusterIAMBindingConditionArgs();
+            $ = new ClusterIamBindingConditionArgs();
         }
 
-        public Builder(ClusterIAMBindingConditionArgs defaults) {
-            $ = new ClusterIAMBindingConditionArgs(Objects.requireNonNull(defaults));
+        public Builder(ClusterIamBindingConditionArgs defaults) {
+            $ = new ClusterIamBindingConditionArgs(Objects.requireNonNull(defaults));
         }
 
         public Builder description(@Nullable Output<String> description) {
@@ -89,7 +89,7 @@ public final class ClusterIAMBindingConditionArgs extends com.pulumi.resources.R
             return title(Output.of(title));
         }
 
-        public ClusterIAMBindingConditionArgs build() {
+        public ClusterIamBindingConditionArgs build() {
             $.expression = Objects.requireNonNull($.expression, "expected parameter 'expression' to be non-null");
             $.title = Objects.requireNonNull($.title, "expected parameter 'title' to be non-null");
             return $;

@@ -11,14 +11,14 @@ namespace Pulumi.Gcp.Spanner.Outputs
 {
 
     [OutputType]
-    public sealed class DatabaseIAMMemberCondition
+    public sealed class DatabaseIamMemberCondition
     {
         public readonly string? Description;
         public readonly string Expression;
         public readonly string Title;
 
         [OutputConstructor]
-        private DatabaseIAMMemberCondition(
+        private DatabaseIamMemberCondition(
             string? description,
 
             string expression,

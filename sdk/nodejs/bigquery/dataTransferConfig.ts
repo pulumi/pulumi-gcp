@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const project = gcp.organizations.getProject({});
- * const permissions = new gcp.projects.IAMMember("permissions", {
+ * const permissions = new gcp.projects.IamMember("permissions", {
  *     project: project.then(project => project.projectId),
  *     role: "roles/iam.serviceAccountTokenCreator",
  *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com`),

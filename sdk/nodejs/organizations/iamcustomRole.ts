@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my_custom_role = new gcp.organizations.IAMCustomRole("my-custom-role", {
+ * const my_custom_role = new gcp.organizations.IamCustomRole("my-custom-role", {
  *     description: "A description",
  *     orgId: "123456789",
  *     permissions: [
@@ -43,12 +43,12 @@ import * as utilities from "../utilities";
  * Customized IAM organization role can be imported using their URI, e.g.
  *
  * ```sh
- *  $ pulumi import gcp:organizations/iAMCustomRole:IAMCustomRole my-custom-role organizations/123456789/roles/myCustomRole
+ *  $ pulumi import gcp:organizations/iamCustomRole:IamCustomRole my-custom-role organizations/123456789/roles/myCustomRole
  * ```
  */
-export class IAMCustomRole extends pulumi.CustomResource {
+export class IamCustomRole extends pulumi.CustomResource {
     /**
-     * Get an existing IAMCustomRole resource's state with the given name, ID, and optional extra
+     * Get an existing IamCustomRole resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -56,22 +56,22 @@ export class IAMCustomRole extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: IAMCustomRoleState, opts?: pulumi.CustomResourceOptions): IAMCustomRole {
-        return new IAMCustomRole(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: IamCustomRoleState, opts?: pulumi.CustomResourceOptions): IamCustomRole {
+        return new IamCustomRole(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp:organizations/iAMCustomRole:IAMCustomRole';
+    public static readonly __pulumiType = 'gcp:organizations/iamCustomRole:IamCustomRole';
 
     /**
-     * Returns true if the given object is an instance of IAMCustomRole.  This is designed to work even
+     * Returns true if the given object is an instance of IamCustomRole.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is IAMCustomRole {
+    public static isInstance(obj: any): obj is IamCustomRole {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === IAMCustomRole.__pulumiType;
+        return obj['__pulumiType'] === IamCustomRole.__pulumiType;
     }
 
     /**
@@ -110,18 +110,18 @@ export class IAMCustomRole extends pulumi.CustomResource {
     public readonly title!: pulumi.Output<string>;
 
     /**
-     * Create a IAMCustomRole resource with the given unique name, arguments, and options.
+     * Create a IamCustomRole resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: IAMCustomRoleArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: IAMCustomRoleArgs | IAMCustomRoleState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: IamCustomRoleArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: IamCustomRoleArgs | IamCustomRoleState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as IAMCustomRoleState | undefined;
+            const state = argsOrState as IamCustomRoleState | undefined;
             resourceInputs["deleted"] = state ? state.deleted : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -131,7 +131,7 @@ export class IAMCustomRole extends pulumi.CustomResource {
             resourceInputs["stage"] = state ? state.stage : undefined;
             resourceInputs["title"] = state ? state.title : undefined;
         } else {
-            const args = argsOrState as IAMCustomRoleArgs | undefined;
+            const args = argsOrState as IamCustomRoleArgs | undefined;
             if ((!args || args.orgId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
@@ -154,14 +154,14 @@ export class IAMCustomRole extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(IAMCustomRole.__pulumiType, name, resourceInputs, opts);
+        super(IamCustomRole.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering IAMCustomRole resources.
+ * Input properties used for looking up and filtering IamCustomRole resources.
  */
-export interface IAMCustomRoleState {
+export interface IamCustomRoleState {
     /**
      * (Optional) The current deleted state of the role.
      */
@@ -199,9 +199,9 @@ export interface IAMCustomRoleState {
 }
 
 /**
- * The set of arguments for constructing a IAMCustomRole resource.
+ * The set of arguments for constructing a IamCustomRole resource.
  */
-export interface IAMCustomRoleArgs {
+export interface IamCustomRoleArgs {
     /**
      * A human-readable description for the role.
      */

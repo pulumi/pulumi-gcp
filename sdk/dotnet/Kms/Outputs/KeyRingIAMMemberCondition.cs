@@ -11,7 +11,7 @@ namespace Pulumi.Gcp.Kms.Outputs
 {
 
     [OutputType]
-    public sealed class KeyRingIAMMemberCondition
+    public sealed class KeyRingIamMemberCondition
     {
         /// <summary>
         /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.Kms.Outputs
         public readonly string Title;
 
         [OutputConstructor]
-        private KeyRingIAMMemberCondition(
+        private KeyRingIamMemberCondition(
             string? description,
 
             string expression,

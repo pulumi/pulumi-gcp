@@ -112,7 +112,7 @@ namespace Pulumi.Gcp.Logging
     ///         RotationPeriod = "100000s",
     ///     });
     /// 
-    ///     var cryptoKeyBinding = new Gcp.Kms.CryptoKeyIAMBinding("cryptoKeyBinding", new()
+    ///     var cryptoKeyBinding = new Gcp.Kms.CryptoKeyIamBinding("cryptoKeyBinding", new()
     ///     {
     ///         CryptoKeyId = key.Id,
     ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",

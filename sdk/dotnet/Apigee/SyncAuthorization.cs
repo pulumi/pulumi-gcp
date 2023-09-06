@@ -61,7 +61,7 @@ namespace Pulumi.Gcp.Apigee
     ///         DisplayName = "Service Account",
     ///     });
     /// 
-    ///     var synchronizer_iam = new Gcp.Projects.IAMBinding("synchronizer-iam", new()
+    ///     var synchronizer_iam = new Gcp.Projects.IamBinding("synchronizer-iam", new()
     ///     {
     ///         Project = project.ProjectId,
     ///         Role = "roles/apigee.synchronizerManager",

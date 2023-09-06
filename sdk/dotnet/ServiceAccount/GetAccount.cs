@@ -142,7 +142,7 @@ namespace Pulumi.Gcp.ServiceAccount
         public readonly string DisplayName;
         /// <summary>
         /// The e-mail address of the service account. This value
-        /// should be referenced from any `gcp.organizations.getIAMPolicy` data sources
+        /// should be referenced from any `gcp.organizations.getIamPolicy` data sources
         /// that would grant the service account privileges.
         /// </summary>
         public readonly string Email;

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Folder.Inputs
 {
 
-    public sealed class IAMBindingConditionArgs : global::Pulumi.ResourceArgs
+    public sealed class IamBindingConditionArgs : global::Pulumi.ResourceArgs
     {
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -21,9 +21,9 @@ namespace Pulumi.Gcp.Folder.Inputs
         [Input("title", required: true)]
         public Input<string> Title { get; set; } = null!;
 
-        public IAMBindingConditionArgs()
+        public IamBindingConditionArgs()
         {
         }
-        public static new IAMBindingConditionArgs Empty => new IAMBindingConditionArgs();
+        public static new IamBindingConditionArgs Empty => new IamBindingConditionArgs();
     }
 }

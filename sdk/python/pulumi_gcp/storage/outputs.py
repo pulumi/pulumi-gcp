@@ -15,8 +15,8 @@ __all__ = [
     'BucketCor',
     'BucketCustomPlacementConfig',
     'BucketEncryption',
-    'BucketIAMBindingCondition',
-    'BucketIAMMemberCondition',
+    'BucketIamBindingCondition',
+    'BucketIamMemberCondition',
     'BucketLifecycleRule',
     'BucketLifecycleRuleAction',
     'BucketLifecycleRuleCondition',
@@ -249,7 +249,7 @@ class BucketEncryption(dict):
 
 
 @pulumi.output_type
-class BucketIAMBindingCondition(dict):
+class BucketIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -298,7 +298,7 @@ class BucketIAMBindingCondition(dict):
 
 
 @pulumi.output_type
-class BucketIAMMemberCondition(dict):
+class BucketIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,

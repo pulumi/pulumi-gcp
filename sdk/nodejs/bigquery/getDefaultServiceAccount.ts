@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const bqSa = gcp.bigquery.getDefaultServiceAccount({});
- * const keySaUser = new gcp.kms.CryptoKeyIAMMember("keySaUser", {
+ * const keySaUser = new gcp.kms.CryptoKeyIamMember("keySaUser", {
  *     cryptoKeyId: google_kms_crypto_key.key.id,
  *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
  *     member: bqSa.then(bqSa => `serviceAccount:${bqSa.email}`),
@@ -85,7 +85,7 @@ export interface GetDefaultServiceAccountResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const bqSa = gcp.bigquery.getDefaultServiceAccount({});
- * const keySaUser = new gcp.kms.CryptoKeyIAMMember("keySaUser", {
+ * const keySaUser = new gcp.kms.CryptoKeyIamMember("keySaUser", {
  *     cryptoKeyId: google_kms_crypto_key.key.id,
  *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
  *     member: bqSa.then(bqSa => `serviceAccount:${bqSa.email}`),

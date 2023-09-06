@@ -49,7 +49,7 @@ import * as utilities from "../utilities";
  *     role: "roles/run.invoker",
  *     members: [pulumi.interpolate`serviceAccount:${sa.email}`],
  * });
- * const project = new gcp.projects.IAMBinding("project", {
+ * const project = new gcp.projects.IamBinding("project", {
  *     role: "roles/iam.serviceAccountTokenCreator",
  *     members: [pulumi.interpolate`serviceAccount:${sa.email}`],
  * });
@@ -137,17 +137,17 @@ import * as utilities from "../utilities";
  *         },
  *     },
  * });
- * const noauthIAMPolicy = gcp.organizations.getIAMPolicy({
+ * const noauthIamPolicy = gcp.organizations.getIamPolicy({
  *     bindings: [{
  *         role: "roles/run.invoker",
  *         members: ["allUsers"],
  *     }],
  * });
- * const noauthIamPolicy = new gcp.cloudrun.IamPolicy("noauthIamPolicy", {
+ * const noauthCloudrun_iamPolicyIamPolicy = new gcp.cloudrun.IamPolicy("noauthCloudrun/iamPolicyIamPolicy", {
  *     location: _default.location,
  *     project: _default.project,
  *     service: _default.name,
- *     policyData: noauthIAMPolicy.then(noauthIAMPolicy => noauthIAMPolicy.policyData),
+ *     policyData: noauthIamPolicy.then(noauthIamPolicy => noauthIamPolicy.policyData),
  * });
  * ```
  * ### Cloud Run Service Probes

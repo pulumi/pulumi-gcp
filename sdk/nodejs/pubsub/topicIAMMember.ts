@@ -9,17 +9,17 @@ import * as utilities from "../utilities";
 /**
  * Three different resources help you manage your IAM policy for Cloud Pub/Sub Topic. Each of these resources serves a different use case:
  *
- * * `gcp.pubsub.TopicIAMPolicy`: Authoritative. Sets the IAM policy for the topic and replaces any existing policy already attached.
- * * `gcp.pubsub.TopicIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the topic are preserved.
- * * `gcp.pubsub.TopicIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the topic are preserved.
+ * * `gcp.pubsub.TopicIamPolicy`: Authoritative. Sets the IAM policy for the topic and replaces any existing policy already attached.
+ * * `gcp.pubsub.TopicIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the topic are preserved.
+ * * `gcp.pubsub.TopicIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the topic are preserved.
  *
  * A data source can be used to retrieve policy data in advent you do not need creation
  *
- * * `gcp.pubsub.TopicIAMPolicy`: Retrieves the IAM policy for the topic
+ * * `gcp.pubsub.TopicIamPolicy`: Retrieves the IAM policy for the topic
  *
- * > **Note:** `gcp.pubsub.TopicIAMPolicy` **cannot** be used in conjunction with `gcp.pubsub.TopicIAMBinding` and `gcp.pubsub.TopicIAMMember` or they will fight over what your policy should be.
+ * > **Note:** `gcp.pubsub.TopicIamPolicy` **cannot** be used in conjunction with `gcp.pubsub.TopicIamBinding` and `gcp.pubsub.TopicIamMember` or they will fight over what your policy should be.
  *
- * > **Note:** `gcp.pubsub.TopicIAMBinding` resources **can be** used in conjunction with `gcp.pubsub.TopicIAMMember` resources **only if** they do not grant privilege to the same role.
+ * > **Note:** `gcp.pubsub.TopicIamBinding` resources **can be** used in conjunction with `gcp.pubsub.TopicIamMember` resources **only if** they do not grant privilege to the same role.
  *
  * ## google\_pubsub\_topic\_iam\_policy
  *
@@ -27,13 +27,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const admin = gcp.organizations.getIAMPolicy({
+ * const admin = gcp.organizations.getIamPolicy({
  *     bindings: [{
  *         role: "roles/viewer",
  *         members: ["user:jane@example.com"],
  *     }],
  * });
- * const policy = new gcp.pubsub.TopicIAMPolicy("policy", {
+ * const policy = new gcp.pubsub.TopicIamPolicy("policy", {
  *     project: google_pubsub_topic.example.project,
  *     topic: google_pubsub_topic.example.name,
  *     policyData: admin.then(admin => admin.policyData),
@@ -46,7 +46,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const binding = new gcp.pubsub.TopicIAMBinding("binding", {
+ * const binding = new gcp.pubsub.TopicIamBinding("binding", {
  *     project: google_pubsub_topic.example.project,
  *     topic: google_pubsub_topic.example.name,
  *     role: "roles/viewer",
@@ -60,7 +60,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const member = new gcp.pubsub.TopicIAMMember("member", {
+ * const member = new gcp.pubsub.TopicIamMember("member", {
  *     project: google_pubsub_topic.example.project,
  *     topic: google_pubsub_topic.example.name,
  *     role: "roles/viewer",
@@ -73,28 +73,28 @@ import * as utilities from "../utilities";
  * For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/topics/{{name}} * {{project}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Pub/Sub topic IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
  *
  * ```sh
- *  $ pulumi import gcp:pubsub/topicIAMMember:TopicIAMMember editor "projects/{{project}}/topics/{{topic}} roles/viewer user:jane@example.com"
+ *  $ pulumi import gcp:pubsub/topicIamMember:TopicIamMember editor "projects/{{project}}/topics/{{topic}} roles/viewer user:jane@example.com"
  * ```
  *
  *  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
  *
  * ```sh
- *  $ pulumi import gcp:pubsub/topicIAMMember:TopicIAMMember editor "projects/{{project}}/topics/{{topic}} roles/viewer"
+ *  $ pulumi import gcp:pubsub/topicIamMember:TopicIamMember editor "projects/{{project}}/topics/{{topic}} roles/viewer"
  * ```
  *
  *  IAM policy imports use the identifier of the resource in question, e.g.
  *
  * ```sh
- *  $ pulumi import gcp:pubsub/topicIAMMember:TopicIAMMember editor projects/{{project}}/topics/{{topic}}
+ *  $ pulumi import gcp:pubsub/topicIamMember:TopicIamMember editor projects/{{project}}/topics/{{topic}}
  * ```
  *
  *  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
  *
  * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  */
-export class TopicIAMMember extends pulumi.CustomResource {
+export class TopicIamMember extends pulumi.CustomResource {
     /**
-     * Get an existing TopicIAMMember resource's state with the given name, ID, and optional extra
+     * Get an existing TopicIamMember resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -102,25 +102,25 @@ export class TopicIAMMember extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: TopicIAMMemberState, opts?: pulumi.CustomResourceOptions): TopicIAMMember {
-        return new TopicIAMMember(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: TopicIamMemberState, opts?: pulumi.CustomResourceOptions): TopicIamMember {
+        return new TopicIamMember(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp:pubsub/topicIAMMember:TopicIAMMember';
+    public static readonly __pulumiType = 'gcp:pubsub/topicIamMember:TopicIamMember';
 
     /**
-     * Returns true if the given object is an instance of TopicIAMMember.  This is designed to work even
+     * Returns true if the given object is an instance of TopicIamMember.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is TopicIAMMember {
+    public static isInstance(obj: any): obj is TopicIamMember {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === TopicIAMMember.__pulumiType;
+        return obj['__pulumiType'] === TopicIamMember.__pulumiType;
     }
 
-    public readonly condition!: pulumi.Output<outputs.pubsub.TopicIAMMemberCondition | undefined>;
+    public readonly condition!: pulumi.Output<outputs.pubsub.TopicIamMemberCondition | undefined>;
     /**
      * (Computed) The etag of the IAM policy.
      */
@@ -145,7 +145,7 @@ export class TopicIAMMember extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
-     * `gcp.pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.pubsub.TopicIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     public readonly role!: pulumi.Output<string>;
@@ -155,18 +155,18 @@ export class TopicIAMMember extends pulumi.CustomResource {
     public readonly topic!: pulumi.Output<string>;
 
     /**
-     * Create a TopicIAMMember resource with the given unique name, arguments, and options.
+     * Create a TopicIamMember resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: TopicIAMMemberArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: TopicIAMMemberArgs | TopicIAMMemberState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: TopicIamMemberArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: TopicIamMemberArgs | TopicIamMemberState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as TopicIAMMemberState | undefined;
+            const state = argsOrState as TopicIamMemberState | undefined;
             resourceInputs["condition"] = state ? state.condition : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["member"] = state ? state.member : undefined;
@@ -174,7 +174,7 @@ export class TopicIAMMember extends pulumi.CustomResource {
             resourceInputs["role"] = state ? state.role : undefined;
             resourceInputs["topic"] = state ? state.topic : undefined;
         } else {
-            const args = argsOrState as TopicIAMMemberArgs | undefined;
+            const args = argsOrState as TopicIamMemberArgs | undefined;
             if ((!args || args.member === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'member'");
             }
@@ -192,15 +192,15 @@ export class TopicIAMMember extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(TopicIAMMember.__pulumiType, name, resourceInputs, opts);
+        super(TopicIamMember.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering TopicIAMMember resources.
+ * Input properties used for looking up and filtering TopicIamMember resources.
  */
-export interface TopicIAMMemberState {
-    condition?: pulumi.Input<inputs.pubsub.TopicIAMMemberCondition>;
+export interface TopicIamMemberState {
+    condition?: pulumi.Input<inputs.pubsub.TopicIamMemberCondition>;
     /**
      * (Computed) The etag of the IAM policy.
      */
@@ -225,7 +225,7 @@ export interface TopicIAMMemberState {
     project?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
-     * `gcp.pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.pubsub.TopicIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     role?: pulumi.Input<string>;
@@ -236,10 +236,10 @@ export interface TopicIAMMemberState {
 }
 
 /**
- * The set of arguments for constructing a TopicIAMMember resource.
+ * The set of arguments for constructing a TopicIamMember resource.
  */
-export interface TopicIAMMemberArgs {
-    condition?: pulumi.Input<inputs.pubsub.TopicIAMMemberCondition>;
+export interface TopicIamMemberArgs {
+    condition?: pulumi.Input<inputs.pubsub.TopicIamMemberCondition>;
     member: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
@@ -260,7 +260,7 @@ export interface TopicIAMMemberArgs {
     project?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
-     * `gcp.pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.pubsub.TopicIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     role: pulumi.Input<string>;

@@ -10,12 +10,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
-public final class JobIAMMemberCondition {
+public final class JobIamMemberCondition {
     private @Nullable String description;
     private String expression;
     private String title;
 
-    private JobIAMMemberCondition() {}
+    private JobIamMemberCondition() {}
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
@@ -30,7 +30,7 @@ public final class JobIAMMemberCondition {
         return new Builder();
     }
 
-    public static Builder builder(JobIAMMemberCondition defaults) {
+    public static Builder builder(JobIamMemberCondition defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -39,7 +39,7 @@ public final class JobIAMMemberCondition {
         private String expression;
         private String title;
         public Builder() {}
-        public Builder(JobIAMMemberCondition defaults) {
+        public Builder(JobIamMemberCondition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
     	      this.expression = defaults.expression;
@@ -61,8 +61,8 @@ public final class JobIAMMemberCondition {
             this.title = Objects.requireNonNull(title);
             return this;
         }
-        public JobIAMMemberCondition build() {
-            final var o = new JobIAMMemberCondition();
+        public JobIamMemberCondition build() {
+            final var o = new JobIamMemberCondition();
             o.description = description;
             o.expression = expression;
             o.title = title;

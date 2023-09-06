@@ -12,17 +12,17 @@ namespace Pulumi.Gcp.CloudBuildV2
     /// <summary>
     /// Three different resources help you manage your IAM policy for Cloud Build v2 Connection. Each of these resources serves a different use case:
     /// 
-    /// * `gcp.cloudbuildv2.ConnectionIAMPolicy`: Authoritative. Sets the IAM policy for the connection and replaces any existing policy already attached.
-    /// * `gcp.cloudbuildv2.ConnectionIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the connection are preserved.
-    /// * `gcp.cloudbuildv2.ConnectionIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the connection are preserved.
+    /// * `gcp.cloudbuildv2.ConnectionIamPolicy`: Authoritative. Sets the IAM policy for the connection and replaces any existing policy already attached.
+    /// * `gcp.cloudbuildv2.ConnectionIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the connection are preserved.
+    /// * `gcp.cloudbuildv2.ConnectionIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the connection are preserved.
     /// 
     /// A data source can be used to retrieve policy data in advent you do not need creation
     /// 
-    /// * `gcp.cloudbuildv2.ConnectionIAMPolicy`: Retrieves the IAM policy for the connection
+    /// * `gcp.cloudbuildv2.ConnectionIamPolicy`: Retrieves the IAM policy for the connection
     /// 
-    /// &gt; **Note:** `gcp.cloudbuildv2.ConnectionIAMPolicy` **cannot** be used in conjunction with `gcp.cloudbuildv2.ConnectionIAMBinding` and `gcp.cloudbuildv2.ConnectionIAMMember` or they will fight over what your policy should be.
+    /// &gt; **Note:** `gcp.cloudbuildv2.ConnectionIamPolicy` **cannot** be used in conjunction with `gcp.cloudbuildv2.ConnectionIamBinding` and `gcp.cloudbuildv2.ConnectionIamMember` or they will fight over what your policy should be.
     /// 
-    /// &gt; **Note:** `gcp.cloudbuildv2.ConnectionIAMBinding` resources **can be** used in conjunction with `gcp.cloudbuildv2.ConnectionIAMMember` resources **only if** they do not grant privilege to the same role.
+    /// &gt; **Note:** `gcp.cloudbuildv2.ConnectionIamBinding` resources **can be** used in conjunction with `gcp.cloudbuildv2.ConnectionIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
     /// ## google\_cloudbuildv2\_connection\_iam\_policy
     /// 
@@ -34,11 +34,11 @@ namespace Pulumi.Gcp.CloudBuildV2
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     var admin = Gcp.Organizations.GetIamPolicy.Invoke(new()
     ///     {
     ///         Bindings = new[]
     ///         {
-    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             new Gcp.Organizations.Inputs.GetIamPolicyBindingInputArgs
     ///             {
     ///                 Role = "roles/cloudbuild.connectionViewer",
     ///                 Members = new[]
@@ -49,11 +49,11 @@ namespace Pulumi.Gcp.CloudBuildV2
     ///         },
     ///     });
     /// 
-    ///     var policy = new Gcp.CloudBuildV2.ConnectionIAMPolicy("policy", new()
+    ///     var policy = new Gcp.CloudBuildV2.ConnectionIamPolicy("policy", new()
     ///     {
     ///         Project = google_cloudbuildv2_connection.My_connection.Project,
     ///         Location = google_cloudbuildv2_connection.My_connection.Location,
-    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///         PolicyData = admin.Apply(getIamPolicyResult =&gt; getIamPolicyResult.PolicyData),
     ///     });
     /// 
     /// });
@@ -69,7 +69,7 @@ namespace Pulumi.Gcp.CloudBuildV2
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var binding = new Gcp.CloudBuildV2.ConnectionIAMBinding("binding", new()
+    ///     var binding = new Gcp.CloudBuildV2.ConnectionIamBinding("binding", new()
     ///     {
     ///         Project = google_cloudbuildv2_connection.My_connection.Project,
     ///         Location = google_cloudbuildv2_connection.My_connection.Location,
@@ -93,7 +93,7 @@ namespace Pulumi.Gcp.CloudBuildV2
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var member = new Gcp.CloudBuildV2.ConnectionIAMMember("member", new()
+    ///     var member = new Gcp.CloudBuildV2.ConnectionIamMember("member", new()
     ///     {
     ///         Project = google_cloudbuildv2_connection.My_connection.Project,
     ///         Location = google_cloudbuildv2_connection.My_connection.Location,
@@ -109,30 +109,30 @@ namespace Pulumi.Gcp.CloudBuildV2
     /// For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/connections/{{name}} * {{project}}/{{location}}/{{name}} * {{location}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Build v2 connection IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:cloudbuildv2/connectionIAMMember:ConnectionIAMMember editor "projects/{{project}}/locations/{{location}}/connections/{{connection}} roles/cloudbuild.connectionViewer user:jane@example.com"
+    ///  $ pulumi import gcp:cloudbuildv2/connectionIamMember:ConnectionIamMember editor "projects/{{project}}/locations/{{location}}/connections/{{connection}} roles/cloudbuild.connectionViewer user:jane@example.com"
     /// ```
     /// 
     ///  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:cloudbuildv2/connectionIAMMember:ConnectionIAMMember editor "projects/{{project}}/locations/{{location}}/connections/{{connection}} roles/cloudbuild.connectionViewer"
+    ///  $ pulumi import gcp:cloudbuildv2/connectionIamMember:ConnectionIamMember editor "projects/{{project}}/locations/{{location}}/connections/{{connection}} roles/cloudbuild.connectionViewer"
     /// ```
     /// 
     ///  IAM policy imports use the identifier of the resource in question, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:cloudbuildv2/connectionIAMMember:ConnectionIAMMember editor projects/{{project}}/locations/{{location}}/connections/{{connection}}
+    ///  $ pulumi import gcp:cloudbuildv2/connectionIamMember:ConnectionIamMember editor projects/{{project}}/locations/{{location}}/connections/{{connection}}
     /// ```
     /// 
     ///  -&gt; **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
     /// 
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
-    [GcpResourceType("gcp:cloudbuildv2/connectionIAMMember:ConnectionIAMMember")]
-    public partial class ConnectionIAMMember : global::Pulumi.CustomResource
+    [GcpResourceType("gcp:cloudbuildv2/connectionIamMember:ConnectionIamMember")]
+    public partial class ConnectionIamMember : global::Pulumi.CustomResource
     {
         [Output("condition")]
-        public Output<Outputs.ConnectionIAMMemberCondition?> Condition { get; private set; } = null!;
+        public Output<Outputs.ConnectionIamMemberCondition?> Condition { get; private set; } = null!;
 
         /// <summary>
         /// (Computed) The etag of the IAM policy.
@@ -173,7 +173,7 @@ namespace Pulumi.Gcp.CloudBuildV2
 
         /// <summary>
         /// The role that should be applied. Only one
-        /// `gcp.cloudbuildv2.ConnectionIAMBinding` can be used per role. Note that custom roles must be of the format
+        /// `gcp.cloudbuildv2.ConnectionIamBinding` can be used per role. Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
         /// </summary>
         [Output("role")]
@@ -181,19 +181,19 @@ namespace Pulumi.Gcp.CloudBuildV2
 
 
         /// <summary>
-        /// Create a ConnectionIAMMember resource with the given unique name, arguments, and options.
+        /// Create a ConnectionIamMember resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public ConnectionIAMMember(string name, ConnectionIAMMemberArgs args, CustomResourceOptions? options = null)
-            : base("gcp:cloudbuildv2/connectionIAMMember:ConnectionIAMMember", name, args ?? new ConnectionIAMMemberArgs(), MakeResourceOptions(options, ""))
+        public ConnectionIamMember(string name, ConnectionIamMemberArgs args, CustomResourceOptions? options = null)
+            : base("gcp:cloudbuildv2/connectionIamMember:ConnectionIamMember", name, args ?? new ConnectionIamMemberArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private ConnectionIAMMember(string name, Input<string> id, ConnectionIAMMemberState? state = null, CustomResourceOptions? options = null)
-            : base("gcp:cloudbuildv2/connectionIAMMember:ConnectionIAMMember", name, state, MakeResourceOptions(options, id))
+        private ConnectionIamMember(string name, Input<string> id, ConnectionIamMemberState? state = null, CustomResourceOptions? options = null)
+            : base("gcp:cloudbuildv2/connectionIamMember:ConnectionIamMember", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -209,7 +209,7 @@ namespace Pulumi.Gcp.CloudBuildV2
             return merged;
         }
         /// <summary>
-        /// Get an existing ConnectionIAMMember resource's state with the given name, ID, and optional extra
+        /// Get an existing ConnectionIamMember resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -217,16 +217,16 @@ namespace Pulumi.Gcp.CloudBuildV2
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static ConnectionIAMMember Get(string name, Input<string> id, ConnectionIAMMemberState? state = null, CustomResourceOptions? options = null)
+        public static ConnectionIamMember Get(string name, Input<string> id, ConnectionIamMemberState? state = null, CustomResourceOptions? options = null)
         {
-            return new ConnectionIAMMember(name, id, state, options);
+            return new ConnectionIamMember(name, id, state, options);
         }
     }
 
-    public sealed class ConnectionIAMMemberArgs : global::Pulumi.ResourceArgs
+    public sealed class ConnectionIamMemberArgs : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
-        public Input<Inputs.ConnectionIAMMemberConditionArgs>? Condition { get; set; }
+        public Input<Inputs.ConnectionIamMemberConditionArgs>? Condition { get; set; }
 
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -261,22 +261,22 @@ namespace Pulumi.Gcp.CloudBuildV2
 
         /// <summary>
         /// The role that should be applied. Only one
-        /// `gcp.cloudbuildv2.ConnectionIAMBinding` can be used per role. Note that custom roles must be of the format
+        /// `gcp.cloudbuildv2.ConnectionIamBinding` can be used per role. Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
         /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
 
-        public ConnectionIAMMemberArgs()
+        public ConnectionIamMemberArgs()
         {
         }
-        public static new ConnectionIAMMemberArgs Empty => new ConnectionIAMMemberArgs();
+        public static new ConnectionIamMemberArgs Empty => new ConnectionIamMemberArgs();
     }
 
-    public sealed class ConnectionIAMMemberState : global::Pulumi.ResourceArgs
+    public sealed class ConnectionIamMemberState : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
-        public Input<Inputs.ConnectionIAMMemberConditionGetArgs>? Condition { get; set; }
+        public Input<Inputs.ConnectionIamMemberConditionGetArgs>? Condition { get; set; }
 
         /// <summary>
         /// (Computed) The etag of the IAM policy.
@@ -317,15 +317,15 @@ namespace Pulumi.Gcp.CloudBuildV2
 
         /// <summary>
         /// The role that should be applied. Only one
-        /// `gcp.cloudbuildv2.ConnectionIAMBinding` can be used per role. Note that custom roles must be of the format
+        /// `gcp.cloudbuildv2.ConnectionIamBinding` can be used per role. Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 
-        public ConnectionIAMMemberState()
+        public ConnectionIamMemberState()
         {
         }
-        public static new ConnectionIAMMemberState Empty => new ConnectionIAMMemberState();
+        public static new ConnectionIamMemberState Empty => new ConnectionIamMemberState();
     }
 }

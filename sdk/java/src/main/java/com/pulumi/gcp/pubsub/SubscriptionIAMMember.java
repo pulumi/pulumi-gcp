@@ -8,9 +8,9 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
-import com.pulumi.gcp.pubsub.SubscriptionIAMMemberArgs;
-import com.pulumi.gcp.pubsub.inputs.SubscriptionIAMMemberState;
-import com.pulumi.gcp.pubsub.outputs.SubscriptionIAMMemberCondition;
+import com.pulumi.gcp.pubsub.SubscriptionIamMemberArgs;
+import com.pulumi.gcp.pubsub.inputs.SubscriptionIamMemberState;
+import com.pulumi.gcp.pubsub.outputs.SubscriptionIamMemberCondition;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,13 +18,13 @@ import javax.annotation.Nullable;
 /**
  * Three different resources help you manage your IAM policy for pubsub subscription. Each of these resources serves a different use case:
  * 
- * * `gcp.pubsub.SubscriptionIAMPolicy`: Authoritative. Sets the IAM policy for the subscription and replaces any existing policy already attached.
- * * `gcp.pubsub.SubscriptionIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the subscription are preserved.
- * * `gcp.pubsub.SubscriptionIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the subscription are preserved.
+ * * `gcp.pubsub.SubscriptionIamPolicy`: Authoritative. Sets the IAM policy for the subscription and replaces any existing policy already attached.
+ * * `gcp.pubsub.SubscriptionIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the subscription are preserved.
+ * * `gcp.pubsub.SubscriptionIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the subscription are preserved.
  * 
- * &gt; **Note:** `gcp.pubsub.SubscriptionIAMPolicy` **cannot** be used in conjunction with `gcp.pubsub.SubscriptionIAMBinding` and `gcp.pubsub.SubscriptionIAMMember` or they will fight over what your policy should be.
+ * &gt; **Note:** `gcp.pubsub.SubscriptionIamPolicy` **cannot** be used in conjunction with `gcp.pubsub.SubscriptionIamBinding` and `gcp.pubsub.SubscriptionIamMember` or they will fight over what your policy should be.
  * 
- * &gt; **Note:** `gcp.pubsub.SubscriptionIAMBinding` resources **can be** used in conjunction with `gcp.pubsub.SubscriptionIAMMember` resources **only if** they do not grant privilege to the same role.
+ * &gt; **Note:** `gcp.pubsub.SubscriptionIamBinding` resources **can be** used in conjunction with `gcp.pubsub.SubscriptionIamMember` resources **only if** they do not grant privilege to the same role.
  * 
  * ## google\_pubsub\_subscription\_iam\_policy
  * ```java
@@ -34,9 +34,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
- * import com.pulumi.gcp.pubsub.SubscriptionIAMPolicy;
- * import com.pulumi.gcp.pubsub.SubscriptionIAMPolicyArgs;
+ * import com.pulumi.gcp.organizations.inputs.GetIamPolicyArgs;
+ * import com.pulumi.gcp.pubsub.SubscriptionIamPolicy;
+ * import com.pulumi.gcp.pubsub.SubscriptionIamPolicyArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -50,16 +50,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
- *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *         final var admin = OrganizationsFunctions.getIamPolicy(GetIamPolicyArgs.builder()
+ *             .bindings(GetIamPolicyBindingArgs.builder()
  *                 .role(&#34;roles/editor&#34;)
  *                 .members(&#34;user:jane@example.com&#34;)
  *                 .build())
  *             .build());
  * 
- *         var editor = new SubscriptionIAMPolicy(&#34;editor&#34;, SubscriptionIAMPolicyArgs.builder()        
+ *         var editor = new SubscriptionIamPolicy(&#34;editor&#34;, SubscriptionIamPolicyArgs.builder()        
  *             .subscription(&#34;your-subscription-name&#34;)
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIamPolicyResult -&gt; getIamPolicyResult.policyData()))
  *             .build());
  * 
  *     }
@@ -73,8 +73,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.pubsub.SubscriptionIAMBinding;
- * import com.pulumi.gcp.pubsub.SubscriptionIAMBindingArgs;
+ * import com.pulumi.gcp.pubsub.SubscriptionIamBinding;
+ * import com.pulumi.gcp.pubsub.SubscriptionIamBindingArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -88,7 +88,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var editor = new SubscriptionIAMBinding(&#34;editor&#34;, SubscriptionIAMBindingArgs.builder()        
+ *         var editor = new SubscriptionIamBinding(&#34;editor&#34;, SubscriptionIamBindingArgs.builder()        
  *             .members(&#34;user:jane@example.com&#34;)
  *             .role(&#34;roles/editor&#34;)
  *             .subscription(&#34;your-subscription-name&#34;)
@@ -105,8 +105,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.pubsub.SubscriptionIAMMember;
- * import com.pulumi.gcp.pubsub.SubscriptionIAMMemberArgs;
+ * import com.pulumi.gcp.pubsub.SubscriptionIamMember;
+ * import com.pulumi.gcp.pubsub.SubscriptionIamMemberArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -120,7 +120,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var editor = new SubscriptionIAMMember(&#34;editor&#34;, SubscriptionIAMMemberArgs.builder()        
+ *         var editor = new SubscriptionIamMember(&#34;editor&#34;, SubscriptionIamMemberArgs.builder()        
  *             .member(&#34;user:jane@example.com&#34;)
  *             .role(&#34;roles/editor&#34;)
  *             .subscription(&#34;your-subscription-name&#34;)
@@ -135,15 +135,15 @@ import javax.annotation.Nullable;
  * Pubsub subscription IAM resources can be imported using the project, subscription name, role and member.
  * 
  * ```sh
- *  $ pulumi import gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember editor projects/{your-project-id}/subscriptions/{your-subscription-name}
+ *  $ pulumi import gcp:pubsub/subscriptionIamMember:SubscriptionIamMember editor projects/{your-project-id}/subscriptions/{your-subscription-name}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember editor &#34;projects/{your-project-id}/subscriptions/{your-subscription-name} roles/editor&#34;
+ *  $ pulumi import gcp:pubsub/subscriptionIamMember:SubscriptionIamMember editor &#34;projects/{your-project-id}/subscriptions/{your-subscription-name} roles/editor&#34;
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember editor &#34;projects/{your-project-id}/subscriptions/{your-subscription-name} roles/editor jane@example.com&#34;
+ *  $ pulumi import gcp:pubsub/subscriptionIamMember:SubscriptionIamMember editor &#34;projects/{your-project-id}/subscriptions/{your-subscription-name} roles/editor jane@example.com&#34;
  * ```
  * 
  *  -&gt; **Custom Roles**If you&#39;re importing a IAM resource with a custom role, make sure to use the
@@ -151,12 +151,12 @@ import javax.annotation.Nullable;
  * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * 
  */
-@ResourceType(type="gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember")
-public class SubscriptionIAMMember extends com.pulumi.resources.CustomResource {
-    @Export(name="condition", type=SubscriptionIAMMemberCondition.class, parameters={})
-    private Output</* @Nullable */ SubscriptionIAMMemberCondition> condition;
+@ResourceType(type="gcp:pubsub/subscriptionIamMember:SubscriptionIamMember")
+public class SubscriptionIamMember extends com.pulumi.resources.CustomResource {
+    @Export(name="condition", type=SubscriptionIamMemberCondition.class, parameters={})
+    private Output</* @Nullable */ SubscriptionIamMemberCondition> condition;
 
-    public Output<Optional<SubscriptionIAMMemberCondition>> condition() {
+    public Output<Optional<SubscriptionIamMemberCondition>> condition() {
         return Codegen.optional(this.condition);
     }
     /**
@@ -197,7 +197,7 @@ public class SubscriptionIAMMember extends com.pulumi.resources.CustomResource {
     }
     /**
      * The role that should be applied. Only one
-     * `gcp.pubsub.SubscriptionIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.pubsub.SubscriptionIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -206,7 +206,7 @@ public class SubscriptionIAMMember extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The role that should be applied. Only one
-     * `gcp.pubsub.SubscriptionIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.pubsub.SubscriptionIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -250,15 +250,15 @@ public class SubscriptionIAMMember extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SubscriptionIAMMember(String name) {
-        this(name, SubscriptionIAMMemberArgs.Empty);
+    public SubscriptionIamMember(String name) {
+        this(name, SubscriptionIamMemberArgs.Empty);
     }
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SubscriptionIAMMember(String name, SubscriptionIAMMemberArgs args) {
+    public SubscriptionIamMember(String name, SubscriptionIamMemberArgs args) {
         this(name, args, null);
     }
     /**
@@ -267,12 +267,12 @@ public class SubscriptionIAMMember extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SubscriptionIAMMember(String name, SubscriptionIAMMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember", name, args == null ? SubscriptionIAMMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public SubscriptionIamMember(String name, SubscriptionIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:pubsub/subscriptionIamMember:SubscriptionIamMember", name, args == null ? SubscriptionIamMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private SubscriptionIAMMember(String name, Output<String> id, @Nullable SubscriptionIAMMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember", name, state, makeResourceOptions(options, id));
+    private SubscriptionIamMember(String name, Output<String> id, @Nullable SubscriptionIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:pubsub/subscriptionIamMember:SubscriptionIamMember", name, state, makeResourceOptions(options, id));
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
@@ -291,7 +291,7 @@ public class SubscriptionIAMMember extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SubscriptionIAMMember get(String name, Output<String> id, @Nullable SubscriptionIAMMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        return new SubscriptionIAMMember(name, id, state, options);
+    public static SubscriptionIamMember get(String name, Output<String> id, @Nullable SubscriptionIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        return new SubscriptionIamMember(name, id, state, options);
     }
 }

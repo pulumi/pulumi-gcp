@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         /// encrypt this table.  Note that the default bigquery service account will need to have
         /// encrypt/decrypt permissions on this key - you may want to see the
         /// `gcp.bigquery.getDefaultServiceAccount` datasource and the
-        /// `gcp.kms.CryptoKeyIAMBinding` resource.
+        /// `gcp.kms.CryptoKeyIamBinding` resource.
         /// </summary>
         [Input("kmsKeyName", required: true)]
         public Input<string> KmsKeyName { get; set; } = null!;

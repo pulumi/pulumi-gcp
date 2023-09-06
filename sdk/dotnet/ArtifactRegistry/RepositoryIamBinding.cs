@@ -34,11 +34,11 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     var admin = Gcp.Organizations.GetIamPolicy.Invoke(new()
     ///     {
     ///         Bindings = new[]
     ///         {
-    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             new Gcp.Organizations.Inputs.GetIamPolicyBindingInputArgs
     ///             {
     ///                 Role = "roles/artifactregistry.reader",
     ///                 Members = new[]
@@ -54,7 +54,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     ///         Project = google_artifact_registry_repository.My_repo.Project,
     ///         Location = google_artifact_registry_repository.My_repo.Location,
     ///         Repository = google_artifact_registry_repository.My_repo.Name,
-    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///         PolicyData = admin.Apply(getIamPolicyResult =&gt; getIamPolicyResult.PolicyData),
     ///     });
     /// 
     /// });

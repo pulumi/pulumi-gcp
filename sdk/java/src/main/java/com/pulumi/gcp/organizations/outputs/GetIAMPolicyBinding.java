@@ -4,7 +4,7 @@
 package com.pulumi.gcp.organizations.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.gcp.organizations.outputs.GetIAMPolicyBindingCondition;
+import com.pulumi.gcp.organizations.outputs.GetIamPolicyBindingCondition;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -12,12 +12,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
-public final class GetIAMPolicyBinding {
+public final class GetIamPolicyBinding {
     /**
      * @return An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
      * 
      */
-    private @Nullable GetIAMPolicyBindingCondition condition;
+    private @Nullable GetIamPolicyBindingCondition condition;
     /**
      * @return An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
      * Each entry can have one of the following values:
@@ -38,12 +38,12 @@ public final class GetIAMPolicyBinding {
      */
     private String role;
 
-    private GetIAMPolicyBinding() {}
+    private GetIamPolicyBinding() {}
     /**
      * @return An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
      * 
      */
-    public Optional<GetIAMPolicyBindingCondition> condition() {
+    public Optional<GetIamPolicyBindingCondition> condition() {
         return Optional.ofNullable(this.condition);
     }
     /**
@@ -74,16 +74,16 @@ public final class GetIAMPolicyBinding {
         return new Builder();
     }
 
-    public static Builder builder(GetIAMPolicyBinding defaults) {
+    public static Builder builder(GetIamPolicyBinding defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable GetIAMPolicyBindingCondition condition;
+        private @Nullable GetIamPolicyBindingCondition condition;
         private List<String> members;
         private String role;
         public Builder() {}
-        public Builder(GetIAMPolicyBinding defaults) {
+        public Builder(GetIamPolicyBinding defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.condition = defaults.condition;
     	      this.members = defaults.members;
@@ -91,7 +91,7 @@ public final class GetIAMPolicyBinding {
         }
 
         @CustomType.Setter
-        public Builder condition(@Nullable GetIAMPolicyBindingCondition condition) {
+        public Builder condition(@Nullable GetIamPolicyBindingCondition condition) {
             this.condition = condition;
             return this;
         }
@@ -108,8 +108,8 @@ public final class GetIAMPolicyBinding {
             this.role = Objects.requireNonNull(role);
             return this;
         }
-        public GetIAMPolicyBinding build() {
-            final var o = new GetIAMPolicyBinding();
+        public GetIamPolicyBinding build() {
+            final var o = new GetIamPolicyBinding();
             o.condition = condition;
             o.members = members;
             o.role = role;

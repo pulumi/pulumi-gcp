@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  *     destination: pulumi.interpolate`storage.googleapis.com/${log_bucket.name}`,
  *     filter: "resource.type = gce_instance AND severity >= WARNING",
  * });
- * const log_writer = new gcp.projects.IAMBinding("log-writer", {
+ * const log_writer = new gcp.projects.IamBinding("log-writer", {
  *     project: "your-project-id",
  *     role: "roles/storage.objectCreator",
  *     members: [my_sink.writerIdentity],

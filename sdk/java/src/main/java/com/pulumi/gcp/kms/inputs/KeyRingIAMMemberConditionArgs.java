@@ -11,9 +11,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class KeyRingIAMMemberConditionArgs extends com.pulumi.resources.ResourceArgs {
+public final class KeyRingIamMemberConditionArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final KeyRingIAMMemberConditionArgs Empty = new KeyRingIAMMemberConditionArgs();
+    public static final KeyRingIamMemberConditionArgs Empty = new KeyRingIamMemberConditionArgs();
 
     /**
      * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -68,9 +68,9 @@ public final class KeyRingIAMMemberConditionArgs extends com.pulumi.resources.Re
         return this.title;
     }
 
-    private KeyRingIAMMemberConditionArgs() {}
+    private KeyRingIamMemberConditionArgs() {}
 
-    private KeyRingIAMMemberConditionArgs(KeyRingIAMMemberConditionArgs $) {
+    private KeyRingIamMemberConditionArgs(KeyRingIamMemberConditionArgs $) {
         this.description = $.description;
         this.expression = $.expression;
         this.title = $.title;
@@ -79,19 +79,19 @@ public final class KeyRingIAMMemberConditionArgs extends com.pulumi.resources.Re
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(KeyRingIAMMemberConditionArgs defaults) {
+    public static Builder builder(KeyRingIamMemberConditionArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private KeyRingIAMMemberConditionArgs $;
+        private KeyRingIamMemberConditionArgs $;
 
         public Builder() {
-            $ = new KeyRingIAMMemberConditionArgs();
+            $ = new KeyRingIamMemberConditionArgs();
         }
 
-        public Builder(KeyRingIAMMemberConditionArgs defaults) {
-            $ = new KeyRingIAMMemberConditionArgs(Objects.requireNonNull(defaults));
+        public Builder(KeyRingIamMemberConditionArgs defaults) {
+            $ = new KeyRingIamMemberConditionArgs(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -165,7 +165,7 @@ public final class KeyRingIAMMemberConditionArgs extends com.pulumi.resources.Re
             return title(Output.of(title));
         }
 
-        public KeyRingIAMMemberConditionArgs build() {
+        public KeyRingIamMemberConditionArgs build() {
             $.expression = Objects.requireNonNull($.expression, "expected parameter 'expression' to be non-null");
             $.title = Objects.requireNonNull($.title, "expected parameter 'title' to be non-null");
             return $;

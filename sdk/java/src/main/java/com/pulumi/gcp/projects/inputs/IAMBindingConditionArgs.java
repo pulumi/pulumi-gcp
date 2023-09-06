@@ -11,9 +11,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class IAMBindingConditionArgs extends com.pulumi.resources.ResourceArgs {
+public final class IamBindingConditionArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final IAMBindingConditionArgs Empty = new IAMBindingConditionArgs();
+    public static final IamBindingConditionArgs Empty = new IamBindingConditionArgs();
 
     /**
      * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -68,9 +68,9 @@ public final class IAMBindingConditionArgs extends com.pulumi.resources.Resource
         return this.title;
     }
 
-    private IAMBindingConditionArgs() {}
+    private IamBindingConditionArgs() {}
 
-    private IAMBindingConditionArgs(IAMBindingConditionArgs $) {
+    private IamBindingConditionArgs(IamBindingConditionArgs $) {
         this.description = $.description;
         this.expression = $.expression;
         this.title = $.title;
@@ -79,19 +79,19 @@ public final class IAMBindingConditionArgs extends com.pulumi.resources.Resource
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(IAMBindingConditionArgs defaults) {
+    public static Builder builder(IamBindingConditionArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private IAMBindingConditionArgs $;
+        private IamBindingConditionArgs $;
 
         public Builder() {
-            $ = new IAMBindingConditionArgs();
+            $ = new IamBindingConditionArgs();
         }
 
-        public Builder(IAMBindingConditionArgs defaults) {
-            $ = new IAMBindingConditionArgs(Objects.requireNonNull(defaults));
+        public Builder(IamBindingConditionArgs defaults) {
+            $ = new IamBindingConditionArgs(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -165,7 +165,7 @@ public final class IAMBindingConditionArgs extends com.pulumi.resources.Resource
             return title(Output.of(title));
         }
 
-        public IAMBindingConditionArgs build() {
+        public IamBindingConditionArgs build() {
             $.expression = Objects.requireNonNull($.expression, "expected parameter 'expression' to be non-null");
             $.title = Objects.requireNonNull($.title, "expected parameter 'title' to be non-null");
             return $;

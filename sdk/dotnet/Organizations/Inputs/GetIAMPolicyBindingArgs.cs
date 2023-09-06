@@ -10,13 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Organizations.Inputs
 {
 
-    public sealed class GetIAMPolicyBindingInputArgs : global::Pulumi.ResourceArgs
+    public sealed class GetIamPolicyBindingInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
         /// </summary>
         [Input("condition")]
-        public Input<Inputs.GetIAMPolicyBindingConditionInputArgs>? Condition { get; set; }
+        public Input<Inputs.GetIamPolicyBindingConditionInputArgs>? Condition { get; set; }
 
         [Input("members", required: true)]
         private InputList<string>? _members;
@@ -45,9 +45,9 @@ namespace Pulumi.Gcp.Organizations.Inputs
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
 
-        public GetIAMPolicyBindingInputArgs()
+        public GetIamPolicyBindingInputArgs()
         {
         }
-        public static new GetIAMPolicyBindingInputArgs Empty => new GetIAMPolicyBindingInputArgs();
+        public static new GetIamPolicyBindingInputArgs Empty => new GetIamPolicyBindingInputArgs();
     }
 }

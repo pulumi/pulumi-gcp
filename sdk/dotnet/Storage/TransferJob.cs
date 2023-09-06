@@ -43,7 +43,7 @@ namespace Pulumi.Gcp.Storage
     ///         Location = "US",
     ///     });
     /// 
-    ///     var s3_backup_bucketBucketIAMMember = new Gcp.Storage.BucketIAMMember("s3-backup-bucketBucketIAMMember", new()
+    ///     var s3_backup_bucketBucketIamMember = new Gcp.Storage.BucketIamMember("s3-backup-bucketBucketIamMember", new()
     ///     {
     ///         Bucket = s3_backup_bucketBucket.Name,
     ///         Role = "roles/storage.admin",
@@ -58,7 +58,7 @@ namespace Pulumi.Gcp.Storage
     /// 
     ///     var topic = new Gcp.PubSub.Topic("topic");
     /// 
-    ///     var notificationConfig = new Gcp.PubSub.TopicIAMMember("notificationConfig", new()
+    ///     var notificationConfig = new Gcp.PubSub.TopicIamMember("notificationConfig", new()
     ///     {
     ///         Topic = topic.Id,
     ///         Role = "roles/pubsub.publisher",
@@ -135,7 +135,7 @@ namespace Pulumi.Gcp.Storage
     ///     {
     ///         DependsOn = new[]
     ///         {
-    ///             s3_backup_bucketBucketIAMMember,
+    ///             s3_backup_bucketBucketIamMember,
     ///             notificationConfig,
     ///         },
     ///     });

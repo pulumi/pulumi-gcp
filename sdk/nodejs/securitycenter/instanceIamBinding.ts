@@ -72,7 +72,7 @@ import * as utilities from "../utilities";
  * const keyRing = new gcp.kms.KeyRing("keyRing", {location: "us-central1"});
  * const cryptoKey = new gcp.kms.CryptoKey("cryptoKey", {keyRing: keyRing.id});
  * const project = gcp.organizations.getProject({});
- * const cryptoKeyBinding = new gcp.kms.CryptoKeyIAMBinding("cryptoKeyBinding", {
+ * const cryptoKeyBinding = new gcp.kms.CryptoKeyIamBinding("cryptoKeyBinding", {
  *     cryptoKeyId: cryptoKey.id,
  *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
  *     members: [project.then(project => `serviceAccount:service-${project.number}@gcp-sa-datafusion.iam.gserviceaccount.com`)],

@@ -34,11 +34,11 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     var admin = Gcp.Organizations.GetIamPolicy.Invoke(new()
     ///     {
     ///         Bindings = new[]
     ///         {
-    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             new Gcp.Organizations.Inputs.GetIamPolicyBindingInputArgs
     ///             {
     ///                 Role = "roles/viewer",
     ///                 Members = new[]
@@ -55,7 +55,7 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     ///         Location = google_bigquery_analytics_hub_listing.Listing.Location,
     ///         DataExchangeId = google_bigquery_analytics_hub_listing.Listing.Data_exchange_id,
     ///         ListingId = google_bigquery_analytics_hub_listing.Listing.Listing_id,
-    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///         PolicyData = admin.Apply(getIamPolicyResult =&gt; getIamPolicyResult.PolicyData),
     ///     });
     /// 
     /// });

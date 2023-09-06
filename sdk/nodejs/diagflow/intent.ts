@@ -48,7 +48,7 @@ import * as utilities from "../utilities";
  *     disableDependentServices: false,
  * });
  * const dialogflowServiceAccount = new gcp.serviceaccount.Account("dialogflowServiceAccount", {accountId: "my-account"});
- * const agentCreate = new gcp.projects.IAMMember("agentCreate", {
+ * const agentCreate = new gcp.projects.IamMember("agentCreate", {
  *     project: agentProjectService.project,
  *     role: "roles/dialogflow.admin",
  *     member: pulumi.interpolate`serviceAccount:${dialogflowServiceAccount.email}`,

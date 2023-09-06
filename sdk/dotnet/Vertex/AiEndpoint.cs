@@ -82,7 +82,7 @@ namespace Pulumi.Gcp.Vertex
     ///         },
     ///     });
     /// 
-    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIAMMember("cryptoKey", new()
+    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIamMember("cryptoKey", new()
     ///     {
     ///         CryptoKeyId = "kms-name",
     ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",

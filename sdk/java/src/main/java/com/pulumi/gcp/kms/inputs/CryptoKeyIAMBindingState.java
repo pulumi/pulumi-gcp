@@ -5,7 +5,7 @@ package com.pulumi.gcp.kms.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.gcp.kms.inputs.CryptoKeyIAMBindingConditionArgs;
+import com.pulumi.gcp.kms.inputs.CryptoKeyIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -13,9 +13,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class CryptoKeyIAMBindingState extends com.pulumi.resources.ResourceArgs {
+public final class CryptoKeyIamBindingState extends com.pulumi.resources.ResourceArgs {
 
-    public static final CryptoKeyIAMBindingState Empty = new CryptoKeyIAMBindingState();
+    public static final CryptoKeyIamBindingState Empty = new CryptoKeyIamBindingState();
 
     /**
      * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -23,14 +23,14 @@ public final class CryptoKeyIAMBindingState extends com.pulumi.resources.Resourc
      * 
      */
     @Import(name="condition")
-    private @Nullable Output<CryptoKeyIAMBindingConditionArgs> condition;
+    private @Nullable Output<CryptoKeyIamBindingConditionArgs> condition;
 
     /**
      * @return ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      * 
      */
-    public Optional<Output<CryptoKeyIAMBindingConditionArgs>> condition() {
+    public Optional<Output<CryptoKeyIamBindingConditionArgs>> condition() {
         return Optional.ofNullable(this.condition);
     }
 
@@ -112,9 +112,9 @@ public final class CryptoKeyIAMBindingState extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.role);
     }
 
-    private CryptoKeyIAMBindingState() {}
+    private CryptoKeyIamBindingState() {}
 
-    private CryptoKeyIAMBindingState(CryptoKeyIAMBindingState $) {
+    private CryptoKeyIamBindingState(CryptoKeyIamBindingState $) {
         this.condition = $.condition;
         this.cryptoKeyId = $.cryptoKeyId;
         this.etag = $.etag;
@@ -125,19 +125,19 @@ public final class CryptoKeyIAMBindingState extends com.pulumi.resources.Resourc
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(CryptoKeyIAMBindingState defaults) {
+    public static Builder builder(CryptoKeyIamBindingState defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private CryptoKeyIAMBindingState $;
+        private CryptoKeyIamBindingState $;
 
         public Builder() {
-            $ = new CryptoKeyIAMBindingState();
+            $ = new CryptoKeyIamBindingState();
         }
 
-        public Builder(CryptoKeyIAMBindingState defaults) {
-            $ = new CryptoKeyIAMBindingState(Objects.requireNonNull(defaults));
+        public Builder(CryptoKeyIamBindingState defaults) {
+            $ = new CryptoKeyIamBindingState(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -147,7 +147,7 @@ public final class CryptoKeyIAMBindingState extends com.pulumi.resources.Resourc
          * @return builder
          * 
          */
-        public Builder condition(@Nullable Output<CryptoKeyIAMBindingConditionArgs> condition) {
+        public Builder condition(@Nullable Output<CryptoKeyIamBindingConditionArgs> condition) {
             $.condition = condition;
             return this;
         }
@@ -159,7 +159,7 @@ public final class CryptoKeyIAMBindingState extends com.pulumi.resources.Resourc
          * @return builder
          * 
          */
-        public Builder condition(CryptoKeyIAMBindingConditionArgs condition) {
+        public Builder condition(CryptoKeyIamBindingConditionArgs condition) {
             return condition(Output.of(condition));
         }
 
@@ -265,7 +265,7 @@ public final class CryptoKeyIAMBindingState extends com.pulumi.resources.Resourc
             return role(Output.of(role));
         }
 
-        public CryptoKeyIAMBindingState build() {
+        public CryptoKeyIamBindingState build() {
             return $;
         }
     }

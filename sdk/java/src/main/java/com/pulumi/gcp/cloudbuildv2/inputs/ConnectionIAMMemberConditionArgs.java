@@ -11,9 +11,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class ConnectionIAMMemberConditionArgs extends com.pulumi.resources.ResourceArgs {
+public final class ConnectionIamMemberConditionArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final ConnectionIAMMemberConditionArgs Empty = new ConnectionIAMMemberConditionArgs();
+    public static final ConnectionIamMemberConditionArgs Empty = new ConnectionIamMemberConditionArgs();
 
     @Import(name="description")
     private @Nullable Output<String> description;
@@ -36,9 +36,9 @@ public final class ConnectionIAMMemberConditionArgs extends com.pulumi.resources
         return this.title;
     }
 
-    private ConnectionIAMMemberConditionArgs() {}
+    private ConnectionIamMemberConditionArgs() {}
 
-    private ConnectionIAMMemberConditionArgs(ConnectionIAMMemberConditionArgs $) {
+    private ConnectionIamMemberConditionArgs(ConnectionIamMemberConditionArgs $) {
         this.description = $.description;
         this.expression = $.expression;
         this.title = $.title;
@@ -47,19 +47,19 @@ public final class ConnectionIAMMemberConditionArgs extends com.pulumi.resources
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(ConnectionIAMMemberConditionArgs defaults) {
+    public static Builder builder(ConnectionIamMemberConditionArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private ConnectionIAMMemberConditionArgs $;
+        private ConnectionIamMemberConditionArgs $;
 
         public Builder() {
-            $ = new ConnectionIAMMemberConditionArgs();
+            $ = new ConnectionIamMemberConditionArgs();
         }
 
-        public Builder(ConnectionIAMMemberConditionArgs defaults) {
-            $ = new ConnectionIAMMemberConditionArgs(Objects.requireNonNull(defaults));
+        public Builder(ConnectionIamMemberConditionArgs defaults) {
+            $ = new ConnectionIamMemberConditionArgs(Objects.requireNonNull(defaults));
         }
 
         public Builder description(@Nullable Output<String> description) {
@@ -89,7 +89,7 @@ public final class ConnectionIAMMemberConditionArgs extends com.pulumi.resources
             return title(Output.of(title));
         }
 
-        public ConnectionIAMMemberConditionArgs build() {
+        public ConnectionIamMemberConditionArgs build() {
             $.expression = Objects.requireNonNull($.expression, "expected parameter 'expression' to be non-null");
             $.title = Objects.requireNonNull($.title, "expected parameter 'title' to be non-null");
             return $;

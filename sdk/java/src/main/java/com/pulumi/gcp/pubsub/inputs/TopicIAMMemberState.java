@@ -5,21 +5,21 @@ package com.pulumi.gcp.pubsub.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.gcp.pubsub.inputs.TopicIAMMemberConditionArgs;
+import com.pulumi.gcp.pubsub.inputs.TopicIamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class TopicIAMMemberState extends com.pulumi.resources.ResourceArgs {
+public final class TopicIamMemberState extends com.pulumi.resources.ResourceArgs {
 
-    public static final TopicIAMMemberState Empty = new TopicIAMMemberState();
+    public static final TopicIamMemberState Empty = new TopicIamMemberState();
 
     @Import(name="condition")
-    private @Nullable Output<TopicIAMMemberConditionArgs> condition;
+    private @Nullable Output<TopicIamMemberConditionArgs> condition;
 
-    public Optional<Output<TopicIAMMemberConditionArgs>> condition() {
+    public Optional<Output<TopicIamMemberConditionArgs>> condition() {
         return Optional.ofNullable(this.condition);
     }
 
@@ -88,7 +88,7 @@ public final class TopicIAMMemberState extends com.pulumi.resources.ResourceArgs
 
     /**
      * The role that should be applied. Only one
-     * `gcp.pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.pubsub.TopicIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -97,7 +97,7 @@ public final class TopicIAMMemberState extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return The role that should be applied. Only one
-     * `gcp.pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.pubsub.TopicIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -120,9 +120,9 @@ public final class TopicIAMMemberState extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.topic);
     }
 
-    private TopicIAMMemberState() {}
+    private TopicIamMemberState() {}
 
-    private TopicIAMMemberState(TopicIAMMemberState $) {
+    private TopicIamMemberState(TopicIamMemberState $) {
         this.condition = $.condition;
         this.etag = $.etag;
         this.member = $.member;
@@ -134,27 +134,27 @@ public final class TopicIAMMemberState extends com.pulumi.resources.ResourceArgs
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(TopicIAMMemberState defaults) {
+    public static Builder builder(TopicIamMemberState defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private TopicIAMMemberState $;
+        private TopicIamMemberState $;
 
         public Builder() {
-            $ = new TopicIAMMemberState();
+            $ = new TopicIamMemberState();
         }
 
-        public Builder(TopicIAMMemberState defaults) {
-            $ = new TopicIAMMemberState(Objects.requireNonNull(defaults));
+        public Builder(TopicIamMemberState defaults) {
+            $ = new TopicIamMemberState(Objects.requireNonNull(defaults));
         }
 
-        public Builder condition(@Nullable Output<TopicIAMMemberConditionArgs> condition) {
+        public Builder condition(@Nullable Output<TopicIamMemberConditionArgs> condition) {
             $.condition = condition;
             return this;
         }
 
-        public Builder condition(TopicIAMMemberConditionArgs condition) {
+        public Builder condition(TopicIamMemberConditionArgs condition) {
             return condition(Output.of(condition));
         }
 
@@ -237,7 +237,7 @@ public final class TopicIAMMemberState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.pubsub.TopicIamBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder
@@ -250,7 +250,7 @@ public final class TopicIAMMemberState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.pubsub.TopicIamBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder
@@ -281,7 +281,7 @@ public final class TopicIAMMemberState extends com.pulumi.resources.ResourceArgs
             return topic(Output.of(topic));
         }
 
-        public TopicIAMMemberState build() {
+        public TopicIamMemberState build() {
             return $;
         }
     }

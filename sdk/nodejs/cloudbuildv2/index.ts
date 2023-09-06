@@ -10,20 +10,20 @@ export type Connection = import("./connection").Connection;
 export const Connection: typeof import("./connection").Connection = null as any;
 utilities.lazyLoad(exports, ["Connection"], () => require("./connection"));
 
-export { ConnectionIAMBindingArgs, ConnectionIAMBindingState } from "./connectionIAMBinding";
-export type ConnectionIAMBinding = import("./connectionIAMBinding").ConnectionIAMBinding;
-export const ConnectionIAMBinding: typeof import("./connectionIAMBinding").ConnectionIAMBinding = null as any;
-utilities.lazyLoad(exports, ["ConnectionIAMBinding"], () => require("./connectionIAMBinding"));
+export { ConnectionIamBindingArgs, ConnectionIamBindingState } from "./connectionIamBinding";
+export type ConnectionIamBinding = import("./connectionIamBinding").ConnectionIamBinding;
+export const ConnectionIamBinding: typeof import("./connectionIamBinding").ConnectionIamBinding = null as any;
+utilities.lazyLoad(exports, ["ConnectionIamBinding"], () => require("./connectionIamBinding"));
 
-export { ConnectionIAMMemberArgs, ConnectionIAMMemberState } from "./connectionIAMMember";
-export type ConnectionIAMMember = import("./connectionIAMMember").ConnectionIAMMember;
-export const ConnectionIAMMember: typeof import("./connectionIAMMember").ConnectionIAMMember = null as any;
-utilities.lazyLoad(exports, ["ConnectionIAMMember"], () => require("./connectionIAMMember"));
+export { ConnectionIamMemberArgs, ConnectionIamMemberState } from "./connectionIamMember";
+export type ConnectionIamMember = import("./connectionIamMember").ConnectionIamMember;
+export const ConnectionIamMember: typeof import("./connectionIamMember").ConnectionIamMember = null as any;
+utilities.lazyLoad(exports, ["ConnectionIamMember"], () => require("./connectionIamMember"));
 
-export { ConnectionIAMPolicyArgs, ConnectionIAMPolicyState } from "./connectionIAMPolicy";
-export type ConnectionIAMPolicy = import("./connectionIAMPolicy").ConnectionIAMPolicy;
-export const ConnectionIAMPolicy: typeof import("./connectionIAMPolicy").ConnectionIAMPolicy = null as any;
-utilities.lazyLoad(exports, ["ConnectionIAMPolicy"], () => require("./connectionIAMPolicy"));
+export { ConnectionIamPolicyArgs, ConnectionIamPolicyState } from "./connectionIamPolicy";
+export type ConnectionIamPolicy = import("./connectionIamPolicy").ConnectionIamPolicy;
+export const ConnectionIamPolicy: typeof import("./connectionIamPolicy").ConnectionIamPolicy = null as any;
+utilities.lazyLoad(exports, ["ConnectionIamPolicy"], () => require("./connectionIamPolicy"));
 
 export { GetConnectionIamPolicyArgs, GetConnectionIamPolicyResult, GetConnectionIamPolicyOutputArgs } from "./getConnectionIamPolicy";
 export const getConnectionIamPolicy: typeof import("./getConnectionIamPolicy").getConnectionIamPolicy = null as any;
@@ -42,12 +42,12 @@ const _module = {
         switch (type) {
             case "gcp:cloudbuildv2/connection:Connection":
                 return new Connection(name, <any>undefined, { urn })
-            case "gcp:cloudbuildv2/connectionIAMBinding:ConnectionIAMBinding":
-                return new ConnectionIAMBinding(name, <any>undefined, { urn })
-            case "gcp:cloudbuildv2/connectionIAMMember:ConnectionIAMMember":
-                return new ConnectionIAMMember(name, <any>undefined, { urn })
-            case "gcp:cloudbuildv2/connectionIAMPolicy:ConnectionIAMPolicy":
-                return new ConnectionIAMPolicy(name, <any>undefined, { urn })
+            case "gcp:cloudbuildv2/connectionIamBinding:ConnectionIamBinding":
+                return new ConnectionIamBinding(name, <any>undefined, { urn })
+            case "gcp:cloudbuildv2/connectionIamMember:ConnectionIamMember":
+                return new ConnectionIamMember(name, <any>undefined, { urn })
+            case "gcp:cloudbuildv2/connectionIamPolicy:ConnectionIamPolicy":
+                return new ConnectionIamPolicy(name, <any>undefined, { urn })
             case "gcp:cloudbuildv2/repository:Repository":
                 return new Repository(name, <any>undefined, { urn })
             default:
@@ -56,7 +56,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "cloudbuildv2/connection", _module)
-pulumi.runtime.registerResourceModule("gcp", "cloudbuildv2/connectionIAMBinding", _module)
-pulumi.runtime.registerResourceModule("gcp", "cloudbuildv2/connectionIAMMember", _module)
-pulumi.runtime.registerResourceModule("gcp", "cloudbuildv2/connectionIAMPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "cloudbuildv2/connectionIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "cloudbuildv2/connectionIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "cloudbuildv2/connectionIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "cloudbuildv2/repository", _module)

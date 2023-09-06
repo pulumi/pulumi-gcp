@@ -11,24 +11,24 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['JobIAMMemberArgs', 'JobIAMMember']
+__all__ = ['JobIamMemberArgs', 'JobIamMember']
 
 @pulumi.input_type
-class JobIAMMemberArgs:
+class JobIamMemberArgs:
     def __init__(__self__, *,
                  job_id: pulumi.Input[str],
                  member: pulumi.Input[str],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['JobIAMMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['JobIamMemberConditionArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None):
         """
-        The set of arguments for constructing a JobIAMMember resource.
+        The set of arguments for constructing a JobIamMember resource.
         :param pulumi.Input[str] role: The role that should be applied. Only one
-               `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
+               `dataproc.JobIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
                
-               `dataproc.JobIAMPolicy` only:
+               `dataproc.JobIamPolicy` only:
         :param pulumi.Input[str] project: The project in which the job belongs. If it
                is not provided, the provider will use a default.
         :param pulumi.Input[str] region: The region in which the job belongs. If it
@@ -67,10 +67,10 @@ class JobIAMMemberArgs:
     def role(self) -> pulumi.Input[str]:
         """
         The role that should be applied. Only one
-        `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
+        `dataproc.JobIamBinding` can be used per role. Note that custom roles must be of the format
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
 
-        `dataproc.JobIAMPolicy` only:
+        `dataproc.JobIamPolicy` only:
         """
         return pulumi.get(self, "role")
 
@@ -80,11 +80,11 @@ class JobIAMMemberArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['JobIAMMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['JobIamMemberConditionArgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['JobIAMMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['JobIamMemberConditionArgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -115,9 +115,9 @@ class JobIAMMemberArgs:
 
 
 @pulumi.input_type
-class _JobIAMMemberState:
+class _JobIamMemberState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['JobIAMMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['JobIamMemberConditionArgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  job_id: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
@@ -125,17 +125,17 @@ class _JobIAMMemberState:
                  region: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None):
         """
-        Input properties used for looking up and filtering JobIAMMember resources.
+        Input properties used for looking up and filtering JobIamMember resources.
         :param pulumi.Input[str] etag: (Computed) The etag of the jobs's IAM policy.
         :param pulumi.Input[str] project: The project in which the job belongs. If it
                is not provided, the provider will use a default.
         :param pulumi.Input[str] region: The region in which the job belongs. If it
                is not provided, the provider will use a default.
         :param pulumi.Input[str] role: The role that should be applied. Only one
-               `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
+               `dataproc.JobIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
                
-               `dataproc.JobIAMPolicy` only:
+               `dataproc.JobIamPolicy` only:
         """
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
@@ -154,11 +154,11 @@ class _JobIAMMemberState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['JobIAMMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['JobIamMemberConditionArgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['JobIAMMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['JobIamMemberConditionArgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -222,10 +222,10 @@ class _JobIAMMemberState:
     def role(self) -> Optional[pulumi.Input[str]]:
         """
         The role that should be applied. Only one
-        `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
+        `dataproc.JobIamBinding` can be used per role. Note that custom roles must be of the format
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
 
-        `dataproc.JobIAMPolicy` only:
+        `dataproc.JobIamPolicy` only:
         """
         return pulumi.get(self, "role")
 
@@ -234,12 +234,12 @@ class _JobIAMMemberState:
         pulumi.set(self, "role", value)
 
 
-class JobIAMMember(pulumi.CustomResource):
+class JobIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['JobIAMMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['JobIamMemberConditionArgs']]] = None,
                  job_id: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -249,13 +249,13 @@ class JobIAMMember(pulumi.CustomResource):
         """
         Three different resources help you manage IAM policies on dataproc jobs. Each of these resources serves a different use case:
 
-        * `dataproc.JobIAMPolicy`: Authoritative. Sets the IAM policy for the job and replaces any existing policy already attached.
-        * `dataproc.JobIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the job are preserved.
-        * `dataproc.JobIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the job are preserved.
+        * `dataproc.JobIamPolicy`: Authoritative. Sets the IAM policy for the job and replaces any existing policy already attached.
+        * `dataproc.JobIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the job are preserved.
+        * `dataproc.JobIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the job are preserved.
 
-        > **Note:** `dataproc.JobIAMPolicy` **cannot** be used in conjunction with `dataproc.JobIAMBinding` and `dataproc.JobIAMMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the job as `dataproc.JobIAMPolicy` replaces the entire policy.
+        > **Note:** `dataproc.JobIamPolicy` **cannot** be used in conjunction with `dataproc.JobIamBinding` and `dataproc.JobIamMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the job as `dataproc.JobIamPolicy` replaces the entire policy.
 
-        > **Note:** `dataproc.JobIAMBinding` resources **can be** used in conjunction with `dataproc.JobIAMMember` resources **only if** they do not grant privilege to the same role.
+        > **Note:** `dataproc.JobIamBinding` resources **can be** used in conjunction with `dataproc.JobIamMember` resources **only if** they do not grant privilege to the same role.
 
         ## google\\_dataproc\\_job\\_iam\\_policy
 
@@ -263,11 +263,11 @@ class JobIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIamPolicyBindingArgs(
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
-        editor = gcp.dataproc.JobIAMPolicy("editor",
+        editor = gcp.dataproc.JobIamPolicy("editor",
             project="your-project",
             region="your-region",
             job_id="your-dataproc-job",
@@ -280,7 +280,7 @@ class JobIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        editor = gcp.dataproc.JobIAMBinding("editor",
+        editor = gcp.dataproc.JobIamBinding("editor",
             job_id="your-dataproc-job",
             members=["user:jane@example.com"],
             role="roles/editor")
@@ -292,7 +292,7 @@ class JobIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        editor = gcp.dataproc.JobIAMMember("editor",
+        editor = gcp.dataproc.JobIamMember("editor",
             job_id="your-dataproc-job",
             member="user:jane@example.com",
             role="roles/editor")
@@ -303,15 +303,15 @@ class JobIAMMember(pulumi.CustomResource):
         Job IAM resources can be imported using the project, region, job id, role and/or member.
 
         ```sh
-         $ pulumi import gcp:dataproc/jobIAMMember:JobIAMMember editor "projects/{project}/regions/{region}/jobs/{job_id}"
+         $ pulumi import gcp:dataproc/jobIamMember:JobIamMember editor "projects/{project}/regions/{region}/jobs/{job_id}"
         ```
 
         ```sh
-         $ pulumi import gcp:dataproc/jobIAMMember:JobIAMMember editor "projects/{project}/regions/{region}/jobs/{job_id} roles/editor"
+         $ pulumi import gcp:dataproc/jobIamMember:JobIamMember editor "projects/{project}/regions/{region}/jobs/{job_id} roles/editor"
         ```
 
         ```sh
-         $ pulumi import gcp:dataproc/jobIAMMember:JobIAMMember editor "projects/{project}/regions/{region}/jobs/{job_id} roles/editor user:jane@example.com"
+         $ pulumi import gcp:dataproc/jobIamMember:JobIamMember editor "projects/{project}/regions/{region}/jobs/{job_id} roles/editor user:jane@example.com"
         ```
 
          -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
@@ -325,27 +325,27 @@ class JobIAMMember(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region in which the job belongs. If it
                is not provided, the provider will use a default.
         :param pulumi.Input[str] role: The role that should be applied. Only one
-               `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
+               `dataproc.JobIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
                
-               `dataproc.JobIAMPolicy` only:
+               `dataproc.JobIamPolicy` only:
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: JobIAMMemberArgs,
+                 args: JobIamMemberArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage IAM policies on dataproc jobs. Each of these resources serves a different use case:
 
-        * `dataproc.JobIAMPolicy`: Authoritative. Sets the IAM policy for the job and replaces any existing policy already attached.
-        * `dataproc.JobIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the job are preserved.
-        * `dataproc.JobIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the job are preserved.
+        * `dataproc.JobIamPolicy`: Authoritative. Sets the IAM policy for the job and replaces any existing policy already attached.
+        * `dataproc.JobIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the job are preserved.
+        * `dataproc.JobIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the job are preserved.
 
-        > **Note:** `dataproc.JobIAMPolicy` **cannot** be used in conjunction with `dataproc.JobIAMBinding` and `dataproc.JobIAMMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the job as `dataproc.JobIAMPolicy` replaces the entire policy.
+        > **Note:** `dataproc.JobIamPolicy` **cannot** be used in conjunction with `dataproc.JobIamBinding` and `dataproc.JobIamMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the job as `dataproc.JobIamPolicy` replaces the entire policy.
 
-        > **Note:** `dataproc.JobIAMBinding` resources **can be** used in conjunction with `dataproc.JobIAMMember` resources **only if** they do not grant privilege to the same role.
+        > **Note:** `dataproc.JobIamBinding` resources **can be** used in conjunction with `dataproc.JobIamMember` resources **only if** they do not grant privilege to the same role.
 
         ## google\\_dataproc\\_job\\_iam\\_policy
 
@@ -353,11 +353,11 @@ class JobIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIamPolicyBindingArgs(
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
-        editor = gcp.dataproc.JobIAMPolicy("editor",
+        editor = gcp.dataproc.JobIamPolicy("editor",
             project="your-project",
             region="your-region",
             job_id="your-dataproc-job",
@@ -370,7 +370,7 @@ class JobIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        editor = gcp.dataproc.JobIAMBinding("editor",
+        editor = gcp.dataproc.JobIamBinding("editor",
             job_id="your-dataproc-job",
             members=["user:jane@example.com"],
             role="roles/editor")
@@ -382,7 +382,7 @@ class JobIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        editor = gcp.dataproc.JobIAMMember("editor",
+        editor = gcp.dataproc.JobIamMember("editor",
             job_id="your-dataproc-job",
             member="user:jane@example.com",
             role="roles/editor")
@@ -393,15 +393,15 @@ class JobIAMMember(pulumi.CustomResource):
         Job IAM resources can be imported using the project, region, job id, role and/or member.
 
         ```sh
-         $ pulumi import gcp:dataproc/jobIAMMember:JobIAMMember editor "projects/{project}/regions/{region}/jobs/{job_id}"
+         $ pulumi import gcp:dataproc/jobIamMember:JobIamMember editor "projects/{project}/regions/{region}/jobs/{job_id}"
         ```
 
         ```sh
-         $ pulumi import gcp:dataproc/jobIAMMember:JobIAMMember editor "projects/{project}/regions/{region}/jobs/{job_id} roles/editor"
+         $ pulumi import gcp:dataproc/jobIamMember:JobIamMember editor "projects/{project}/regions/{region}/jobs/{job_id} roles/editor"
         ```
 
         ```sh
-         $ pulumi import gcp:dataproc/jobIAMMember:JobIAMMember editor "projects/{project}/regions/{region}/jobs/{job_id} roles/editor user:jane@example.com"
+         $ pulumi import gcp:dataproc/jobIamMember:JobIamMember editor "projects/{project}/regions/{region}/jobs/{job_id} roles/editor user:jane@example.com"
         ```
 
          -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
@@ -409,12 +409,12 @@ class JobIAMMember(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param JobIAMMemberArgs args: The arguments to use to populate this resource's properties.
+        :param JobIamMemberArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(JobIAMMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(JobIamMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -423,7 +423,7 @@ class JobIAMMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['JobIAMMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['JobIamMemberConditionArgs']]] = None,
                  job_id: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -436,7 +436,7 @@ class JobIAMMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = JobIAMMemberArgs.__new__(JobIAMMemberArgs)
+            __props__ = JobIamMemberArgs.__new__(JobIamMemberArgs)
 
             __props__.__dict__["condition"] = condition
             if job_id is None and not opts.urn:
@@ -451,8 +451,8 @@ class JobIAMMember(pulumi.CustomResource):
                 raise TypeError("Missing required property 'role'")
             __props__.__dict__["role"] = role
             __props__.__dict__["etag"] = None
-        super(JobIAMMember, __self__).__init__(
-            'gcp:dataproc/jobIAMMember:JobIAMMember',
+        super(JobIamMember, __self__).__init__(
+            'gcp:dataproc/jobIamMember:JobIamMember',
             resource_name,
             __props__,
             opts)
@@ -461,15 +461,15 @@ class JobIAMMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['JobIAMMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['JobIamMemberConditionArgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             job_id: Optional[pulumi.Input[str]] = None,
             member: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            role: Optional[pulumi.Input[str]] = None) -> 'JobIAMMember':
+            role: Optional[pulumi.Input[str]] = None) -> 'JobIamMember':
         """
-        Get an existing JobIAMMember resource's state with the given name, id, and optional extra
+        Get an existing JobIamMember resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -481,14 +481,14 @@ class JobIAMMember(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region in which the job belongs. If it
                is not provided, the provider will use a default.
         :param pulumi.Input[str] role: The role that should be applied. Only one
-               `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
+               `dataproc.JobIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
                
-               `dataproc.JobIAMPolicy` only:
+               `dataproc.JobIamPolicy` only:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _JobIAMMemberState.__new__(_JobIAMMemberState)
+        __props__ = _JobIamMemberState.__new__(_JobIamMemberState)
 
         __props__.__dict__["condition"] = condition
         __props__.__dict__["etag"] = etag
@@ -497,11 +497,11 @@ class JobIAMMember(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["region"] = region
         __props__.__dict__["role"] = role
-        return JobIAMMember(resource_name, opts=opts, __props__=__props__)
+        return JobIamMember(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
-    def condition(self) -> pulumi.Output[Optional['outputs.JobIAMMemberCondition']]:
+    def condition(self) -> pulumi.Output[Optional['outputs.JobIamMemberCondition']]:
         return pulumi.get(self, "condition")
 
     @property
@@ -545,10 +545,10 @@ class JobIAMMember(pulumi.CustomResource):
     def role(self) -> pulumi.Output[str]:
         """
         The role that should be applied. Only one
-        `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
+        `dataproc.JobIamBinding` can be used per role. Note that custom roles must be of the format
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
 
-        `dataproc.JobIAMPolicy` only:
+        `dataproc.JobIamPolicy` only:
         """
         return pulumi.get(self, "role")
 

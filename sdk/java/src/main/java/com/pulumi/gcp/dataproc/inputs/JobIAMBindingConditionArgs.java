@@ -11,9 +11,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class JobIAMBindingConditionArgs extends com.pulumi.resources.ResourceArgs {
+public final class JobIamBindingConditionArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final JobIAMBindingConditionArgs Empty = new JobIAMBindingConditionArgs();
+    public static final JobIamBindingConditionArgs Empty = new JobIamBindingConditionArgs();
 
     @Import(name="description")
     private @Nullable Output<String> description;
@@ -36,9 +36,9 @@ public final class JobIAMBindingConditionArgs extends com.pulumi.resources.Resou
         return this.title;
     }
 
-    private JobIAMBindingConditionArgs() {}
+    private JobIamBindingConditionArgs() {}
 
-    private JobIAMBindingConditionArgs(JobIAMBindingConditionArgs $) {
+    private JobIamBindingConditionArgs(JobIamBindingConditionArgs $) {
         this.description = $.description;
         this.expression = $.expression;
         this.title = $.title;
@@ -47,19 +47,19 @@ public final class JobIAMBindingConditionArgs extends com.pulumi.resources.Resou
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(JobIAMBindingConditionArgs defaults) {
+    public static Builder builder(JobIamBindingConditionArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private JobIAMBindingConditionArgs $;
+        private JobIamBindingConditionArgs $;
 
         public Builder() {
-            $ = new JobIAMBindingConditionArgs();
+            $ = new JobIamBindingConditionArgs();
         }
 
-        public Builder(JobIAMBindingConditionArgs defaults) {
-            $ = new JobIAMBindingConditionArgs(Objects.requireNonNull(defaults));
+        public Builder(JobIamBindingConditionArgs defaults) {
+            $ = new JobIamBindingConditionArgs(Objects.requireNonNull(defaults));
         }
 
         public Builder description(@Nullable Output<String> description) {
@@ -89,7 +89,7 @@ public final class JobIAMBindingConditionArgs extends com.pulumi.resources.Resou
             return title(Output.of(title));
         }
 
-        public JobIAMBindingConditionArgs build() {
+        public JobIamBindingConditionArgs build() {
             $.expression = Objects.requireNonNull($.expression, "expected parameter 'expression' to be non-null");
             $.title = Objects.requireNonNull($.title, "expected parameter 'title' to be non-null");
             return $;

@@ -12,16 +12,16 @@ namespace Pulumi.Gcp.Spanner
     /// <summary>
     /// Three different resources help you manage your IAM policy for a Spanner instance. Each of these resources serves a different use case:
     /// 
-    /// * `gcp.spanner.InstanceIAMPolicy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.
+    /// * `gcp.spanner.InstanceIamPolicy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.
     /// 
-    /// &gt; **Warning:** It's entirely possibly to lock yourself out of your instance using `gcp.spanner.InstanceIAMPolicy`. Any permissions granted by default will be removed unless you include them in your config.
+    /// &gt; **Warning:** It's entirely possibly to lock yourself out of your instance using `gcp.spanner.InstanceIamPolicy`. Any permissions granted by default will be removed unless you include them in your config.
     /// 
-    /// * `gcp.spanner.InstanceIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved.
-    /// * `gcp.spanner.InstanceIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved.
+    /// * `gcp.spanner.InstanceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved.
+    /// * `gcp.spanner.InstanceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved.
     /// 
-    /// &gt; **Note:** `gcp.spanner.InstanceIAMPolicy` **cannot** be used in conjunction with `gcp.spanner.InstanceIAMBinding` and `gcp.spanner.InstanceIAMMember` or they will fight over what your policy should be.
+    /// &gt; **Note:** `gcp.spanner.InstanceIamPolicy` **cannot** be used in conjunction with `gcp.spanner.InstanceIamBinding` and `gcp.spanner.InstanceIamMember` or they will fight over what your policy should be.
     /// 
-    /// &gt; **Note:** `gcp.spanner.InstanceIAMBinding` resources **can be** used in conjunction with `gcp.spanner.InstanceIAMMember` resources **only if** they do not grant privilege to the same role.
+    /// &gt; **Note:** `gcp.spanner.InstanceIamBinding` resources **can be** used in conjunction with `gcp.spanner.InstanceIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
     /// ## google\_spanner\_instance\_iam\_policy
     /// 
@@ -33,11 +33,11 @@ namespace Pulumi.Gcp.Spanner
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     var admin = Gcp.Organizations.GetIamPolicy.Invoke(new()
     ///     {
     ///         Bindings = new[]
     ///         {
-    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             new Gcp.Organizations.Inputs.GetIamPolicyBindingInputArgs
     ///             {
     ///                 Role = "roles/editor",
     ///                 Members = new[]
@@ -48,10 +48,10 @@ namespace Pulumi.Gcp.Spanner
     ///         },
     ///     });
     /// 
-    ///     var instance = new Gcp.Spanner.InstanceIAMPolicy("instance", new()
+    ///     var instance = new Gcp.Spanner.InstanceIamPolicy("instance", new()
     ///     {
     ///         Instance = "your-instance-name",
-    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///         PolicyData = admin.Apply(getIamPolicyResult =&gt; getIamPolicyResult.PolicyData),
     ///     });
     /// 
     /// });
@@ -67,7 +67,7 @@ namespace Pulumi.Gcp.Spanner
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var instance = new Gcp.Spanner.InstanceIAMBinding("instance", new()
+    ///     var instance = new Gcp.Spanner.InstanceIamBinding("instance", new()
     ///     {
     ///         Instance = "your-instance-name",
     ///         Members = new[]
@@ -90,7 +90,7 @@ namespace Pulumi.Gcp.Spanner
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var instance = new Gcp.Spanner.InstanceIAMMember("instance", new()
+    ///     var instance = new Gcp.Spanner.InstanceIamMember("instance", new()
     ///     {
     ///         Instance = "your-instance-name",
     ///         Member = "user:jane@example.com",
@@ -105,27 +105,27 @@ namespace Pulumi.Gcp.Spanner
     /// For all import syntaxes, the "resource in question" can take any of the following forms* {{project}}/{{name}} * {{name}} (project is taken from provider project) IAM member imports use space-delimited identifiers; the resource in question, the role, and the account, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:spanner/instanceIAMPolicy:InstanceIAMPolicy instance "project-name/instance-name roles/viewer user:foo@example.com"
+    ///  $ pulumi import gcp:spanner/instanceIamPolicy:InstanceIamPolicy instance "project-name/instance-name roles/viewer user:foo@example.com"
     /// ```
     /// 
     ///  IAM binding imports use space-delimited identifiers; the resource in question and the role, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:spanner/instanceIAMPolicy:InstanceIAMPolicy instance "project-name/instance-name roles/viewer"
+    ///  $ pulumi import gcp:spanner/instanceIamPolicy:InstanceIamPolicy instance "project-name/instance-name roles/viewer"
     /// ```
     /// 
     ///  IAM policy imports use the identifier of the resource in question, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:spanner/instanceIAMPolicy:InstanceIAMPolicy instance project-name/instance-name
+    ///  $ pulumi import gcp:spanner/instanceIamPolicy:InstanceIamPolicy instance project-name/instance-name
     /// ```
     /// 
     ///  -&gt; **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
     /// 
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
-    [GcpResourceType("gcp:spanner/instanceIAMPolicy:InstanceIAMPolicy")]
-    public partial class InstanceIAMPolicy : global::Pulumi.CustomResource
+    [GcpResourceType("gcp:spanner/instanceIamPolicy:InstanceIamPolicy")]
+    public partial class InstanceIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// (Computed) The etag of the instance's IAM policy.
@@ -150,7 +150,7 @@ namespace Pulumi.Gcp.Spanner
 
         /// <summary>
         /// The policy data generated by
-        /// a `gcp.organizations.getIAMPolicy` data source.
+        /// a `gcp.organizations.getIamPolicy` data source.
         /// </summary>
         [Output("policyData")]
         public Output<string> PolicyData { get; private set; } = null!;
@@ -164,19 +164,19 @@ namespace Pulumi.Gcp.Spanner
 
 
         /// <summary>
-        /// Create a InstanceIAMPolicy resource with the given unique name, arguments, and options.
+        /// Create a InstanceIamPolicy resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public InstanceIAMPolicy(string name, InstanceIAMPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp:spanner/instanceIAMPolicy:InstanceIAMPolicy", name, args ?? new InstanceIAMPolicyArgs(), MakeResourceOptions(options, ""))
+        public InstanceIamPolicy(string name, InstanceIamPolicyArgs args, CustomResourceOptions? options = null)
+            : base("gcp:spanner/instanceIamPolicy:InstanceIamPolicy", name, args ?? new InstanceIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private InstanceIAMPolicy(string name, Input<string> id, InstanceIAMPolicyState? state = null, CustomResourceOptions? options = null)
-            : base("gcp:spanner/instanceIAMPolicy:InstanceIAMPolicy", name, state, MakeResourceOptions(options, id))
+        private InstanceIamPolicy(string name, Input<string> id, InstanceIamPolicyState? state = null, CustomResourceOptions? options = null)
+            : base("gcp:spanner/instanceIamPolicy:InstanceIamPolicy", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -192,7 +192,7 @@ namespace Pulumi.Gcp.Spanner
             return merged;
         }
         /// <summary>
-        /// Get an existing InstanceIAMPolicy resource's state with the given name, ID, and optional extra
+        /// Get an existing InstanceIamPolicy resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -200,13 +200,13 @@ namespace Pulumi.Gcp.Spanner
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static InstanceIAMPolicy Get(string name, Input<string> id, InstanceIAMPolicyState? state = null, CustomResourceOptions? options = null)
+        public static InstanceIamPolicy Get(string name, Input<string> id, InstanceIamPolicyState? state = null, CustomResourceOptions? options = null)
         {
-            return new InstanceIAMPolicy(name, id, state, options);
+            return new InstanceIamPolicy(name, id, state, options);
         }
     }
 
-    public sealed class InstanceIAMPolicyArgs : global::Pulumi.ResourceArgs
+    public sealed class InstanceIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the instance.
@@ -225,7 +225,7 @@ namespace Pulumi.Gcp.Spanner
 
         /// <summary>
         /// The policy data generated by
-        /// a `gcp.organizations.getIAMPolicy` data source.
+        /// a `gcp.organizations.getIamPolicy` data source.
         /// </summary>
         [Input("policyData", required: true)]
         public Input<string> PolicyData { get; set; } = null!;
@@ -237,13 +237,13 @@ namespace Pulumi.Gcp.Spanner
         [Input("project")]
         public Input<string>? Project { get; set; }
 
-        public InstanceIAMPolicyArgs()
+        public InstanceIamPolicyArgs()
         {
         }
-        public static new InstanceIAMPolicyArgs Empty => new InstanceIAMPolicyArgs();
+        public static new InstanceIamPolicyArgs Empty => new InstanceIamPolicyArgs();
     }
 
-    public sealed class InstanceIAMPolicyState : global::Pulumi.ResourceArgs
+    public sealed class InstanceIamPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (Computed) The etag of the instance's IAM policy.
@@ -268,7 +268,7 @@ namespace Pulumi.Gcp.Spanner
 
         /// <summary>
         /// The policy data generated by
-        /// a `gcp.organizations.getIAMPolicy` data source.
+        /// a `gcp.organizations.getIamPolicy` data source.
         /// </summary>
         [Input("policyData")]
         public Input<string>? PolicyData { get; set; }
@@ -280,9 +280,9 @@ namespace Pulumi.Gcp.Spanner
         [Input("project")]
         public Input<string>? Project { get; set; }
 
-        public InstanceIAMPolicyState()
+        public InstanceIamPolicyState()
         {
         }
-        public static new InstanceIAMPolicyState Empty => new InstanceIAMPolicyState();
+        public static new InstanceIamPolicyState Empty => new InstanceIamPolicyState();
     }
 }

@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * const serviceAccount = gcp.accessapproval.getFolderServiceAccount({
  *     folderId: "my-folder",
  * });
- * const iam = new gcp.kms.CryptoKeyIAMMember("iam", {
+ * const iam = new gcp.kms.CryptoKeyIamMember("iam", {
  *     cryptoKeyId: google_kms_crypto_key.crypto_key.id,
  *     role: "roles/cloudkms.signerVerifier",
  *     member: serviceAccount.then(serviceAccount => `serviceAccount:${serviceAccount.accountEmail}`),
@@ -84,7 +84,7 @@ export interface GetFolderServiceAccountResult {
  * const serviceAccount = gcp.accessapproval.getFolderServiceAccount({
  *     folderId: "my-folder",
  * });
- * const iam = new gcp.kms.CryptoKeyIAMMember("iam", {
+ * const iam = new gcp.kms.CryptoKeyIamMember("iam", {
  *     cryptoKeyId: google_kms_crypto_key.crypto_key.id,
  *     role: "roles/cloudkms.signerVerifier",
  *     member: serviceAccount.then(serviceAccount => `serviceAccount:${serviceAccount.accountEmail}`),

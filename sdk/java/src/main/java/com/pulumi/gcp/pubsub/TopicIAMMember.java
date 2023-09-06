@@ -8,9 +8,9 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
-import com.pulumi.gcp.pubsub.TopicIAMMemberArgs;
-import com.pulumi.gcp.pubsub.inputs.TopicIAMMemberState;
-import com.pulumi.gcp.pubsub.outputs.TopicIAMMemberCondition;
+import com.pulumi.gcp.pubsub.TopicIamMemberArgs;
+import com.pulumi.gcp.pubsub.inputs.TopicIamMemberState;
+import com.pulumi.gcp.pubsub.outputs.TopicIamMemberCondition;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,17 +18,17 @@ import javax.annotation.Nullable;
 /**
  * Three different resources help you manage your IAM policy for Cloud Pub/Sub Topic. Each of these resources serves a different use case:
  * 
- * * `gcp.pubsub.TopicIAMPolicy`: Authoritative. Sets the IAM policy for the topic and replaces any existing policy already attached.
- * * `gcp.pubsub.TopicIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the topic are preserved.
- * * `gcp.pubsub.TopicIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the topic are preserved.
+ * * `gcp.pubsub.TopicIamPolicy`: Authoritative. Sets the IAM policy for the topic and replaces any existing policy already attached.
+ * * `gcp.pubsub.TopicIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the topic are preserved.
+ * * `gcp.pubsub.TopicIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the topic are preserved.
  * 
  * A data source can be used to retrieve policy data in advent you do not need creation
  * 
- * * `gcp.pubsub.TopicIAMPolicy`: Retrieves the IAM policy for the topic
+ * * `gcp.pubsub.TopicIamPolicy`: Retrieves the IAM policy for the topic
  * 
- * &gt; **Note:** `gcp.pubsub.TopicIAMPolicy` **cannot** be used in conjunction with `gcp.pubsub.TopicIAMBinding` and `gcp.pubsub.TopicIAMMember` or they will fight over what your policy should be.
+ * &gt; **Note:** `gcp.pubsub.TopicIamPolicy` **cannot** be used in conjunction with `gcp.pubsub.TopicIamBinding` and `gcp.pubsub.TopicIamMember` or they will fight over what your policy should be.
  * 
- * &gt; **Note:** `gcp.pubsub.TopicIAMBinding` resources **can be** used in conjunction with `gcp.pubsub.TopicIAMMember` resources **only if** they do not grant privilege to the same role.
+ * &gt; **Note:** `gcp.pubsub.TopicIamBinding` resources **can be** used in conjunction with `gcp.pubsub.TopicIamMember` resources **only if** they do not grant privilege to the same role.
  * 
  * ## google\_pubsub\_topic\_iam\_policy
  * ```java
@@ -38,9 +38,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
- * import com.pulumi.gcp.pubsub.TopicIAMPolicy;
- * import com.pulumi.gcp.pubsub.TopicIAMPolicyArgs;
+ * import com.pulumi.gcp.organizations.inputs.GetIamPolicyArgs;
+ * import com.pulumi.gcp.pubsub.TopicIamPolicy;
+ * import com.pulumi.gcp.pubsub.TopicIamPolicyArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -54,17 +54,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
- *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *         final var admin = OrganizationsFunctions.getIamPolicy(GetIamPolicyArgs.builder()
+ *             .bindings(GetIamPolicyBindingArgs.builder()
  *                 .role(&#34;roles/viewer&#34;)
  *                 .members(&#34;user:jane@example.com&#34;)
  *                 .build())
  *             .build());
  * 
- *         var policy = new TopicIAMPolicy(&#34;policy&#34;, TopicIAMPolicyArgs.builder()        
+ *         var policy = new TopicIamPolicy(&#34;policy&#34;, TopicIamPolicyArgs.builder()        
  *             .project(google_pubsub_topic.example().project())
  *             .topic(google_pubsub_topic.example().name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIamPolicyResult -&gt; getIamPolicyResult.policyData()))
  *             .build());
  * 
  *     }
@@ -78,8 +78,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.pubsub.TopicIAMBinding;
- * import com.pulumi.gcp.pubsub.TopicIAMBindingArgs;
+ * import com.pulumi.gcp.pubsub.TopicIamBinding;
+ * import com.pulumi.gcp.pubsub.TopicIamBindingArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -93,7 +93,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new TopicIAMBinding(&#34;binding&#34;, TopicIAMBindingArgs.builder()        
+ *         var binding = new TopicIamBinding(&#34;binding&#34;, TopicIamBindingArgs.builder()        
  *             .project(google_pubsub_topic.example().project())
  *             .topic(google_pubsub_topic.example().name())
  *             .role(&#34;roles/viewer&#34;)
@@ -111,8 +111,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.pubsub.TopicIAMMember;
- * import com.pulumi.gcp.pubsub.TopicIAMMemberArgs;
+ * import com.pulumi.gcp.pubsub.TopicIamMember;
+ * import com.pulumi.gcp.pubsub.TopicIamMemberArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -126,7 +126,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new TopicIAMMember(&#34;member&#34;, TopicIAMMemberArgs.builder()        
+ *         var member = new TopicIamMember(&#34;member&#34;, TopicIamMemberArgs.builder()        
  *             .project(google_pubsub_topic.example().project())
  *             .topic(google_pubsub_topic.example().name())
  *             .role(&#34;roles/viewer&#34;)
@@ -142,19 +142,19 @@ import javax.annotation.Nullable;
  * For all import syntaxes, the &#34;resource in question&#34; can take any of the following forms* projects/{{project}}/topics/{{name}} * {{project}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Pub/Sub topic IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
  * 
  * ```sh
- *  $ pulumi import gcp:pubsub/topicIAMMember:TopicIAMMember editor &#34;projects/{{project}}/topics/{{topic}} roles/viewer user:jane@example.com&#34;
+ *  $ pulumi import gcp:pubsub/topicIamMember:TopicIamMember editor &#34;projects/{{project}}/topics/{{topic}} roles/viewer user:jane@example.com&#34;
  * ```
  * 
  *  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
  * 
  * ```sh
- *  $ pulumi import gcp:pubsub/topicIAMMember:TopicIAMMember editor &#34;projects/{{project}}/topics/{{topic}} roles/viewer&#34;
+ *  $ pulumi import gcp:pubsub/topicIamMember:TopicIamMember editor &#34;projects/{{project}}/topics/{{topic}} roles/viewer&#34;
  * ```
  * 
  *  IAM policy imports use the identifier of the resource in question, e.g.
  * 
  * ```sh
- *  $ pulumi import gcp:pubsub/topicIAMMember:TopicIAMMember editor projects/{{project}}/topics/{{topic}}
+ *  $ pulumi import gcp:pubsub/topicIamMember:TopicIamMember editor projects/{{project}}/topics/{{topic}}
  * ```
  * 
  *  -&gt; **Custom Roles**If you&#39;re importing a IAM resource with a custom role, make sure to use the
@@ -162,12 +162,12 @@ import javax.annotation.Nullable;
  * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * 
  */
-@ResourceType(type="gcp:pubsub/topicIAMMember:TopicIAMMember")
-public class TopicIAMMember extends com.pulumi.resources.CustomResource {
-    @Export(name="condition", type=TopicIAMMemberCondition.class, parameters={})
-    private Output</* @Nullable */ TopicIAMMemberCondition> condition;
+@ResourceType(type="gcp:pubsub/topicIamMember:TopicIamMember")
+public class TopicIamMember extends com.pulumi.resources.CustomResource {
+    @Export(name="condition", type=TopicIamMemberCondition.class, parameters={})
+    private Output</* @Nullable */ TopicIamMemberCondition> condition;
 
-    public Output<Optional<TopicIAMMemberCondition>> condition() {
+    public Output<Optional<TopicIamMemberCondition>> condition() {
         return Codegen.optional(this.condition);
     }
     /**
@@ -232,7 +232,7 @@ public class TopicIAMMember extends com.pulumi.resources.CustomResource {
     }
     /**
      * The role that should be applied. Only one
-     * `gcp.pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.pubsub.TopicIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -241,7 +241,7 @@ public class TopicIAMMember extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The role that should be applied. Only one
-     * `gcp.pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.pubsub.TopicIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -267,15 +267,15 @@ public class TopicIAMMember extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public TopicIAMMember(String name) {
-        this(name, TopicIAMMemberArgs.Empty);
+    public TopicIamMember(String name) {
+        this(name, TopicIamMemberArgs.Empty);
     }
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public TopicIAMMember(String name, TopicIAMMemberArgs args) {
+    public TopicIamMember(String name, TopicIamMemberArgs args) {
         this(name, args, null);
     }
     /**
@@ -284,12 +284,12 @@ public class TopicIAMMember extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public TopicIAMMember(String name, TopicIAMMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:pubsub/topicIAMMember:TopicIAMMember", name, args == null ? TopicIAMMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public TopicIamMember(String name, TopicIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:pubsub/topicIamMember:TopicIamMember", name, args == null ? TopicIamMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private TopicIAMMember(String name, Output<String> id, @Nullable TopicIAMMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:pubsub/topicIAMMember:TopicIAMMember", name, state, makeResourceOptions(options, id));
+    private TopicIamMember(String name, Output<String> id, @Nullable TopicIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:pubsub/topicIamMember:TopicIamMember", name, state, makeResourceOptions(options, id));
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
@@ -308,7 +308,7 @@ public class TopicIAMMember extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static TopicIAMMember get(String name, Output<String> id, @Nullable TopicIAMMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        return new TopicIAMMember(name, id, state, options);
+    public static TopicIamMember get(String name, Output<String> id, @Nullable TopicIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        return new TopicIamMember(name, id, state, options);
     }
 }

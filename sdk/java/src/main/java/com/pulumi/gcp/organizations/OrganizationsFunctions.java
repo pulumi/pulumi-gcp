@@ -16,8 +16,8 @@ import com.pulumi.gcp.organizations.inputs.GetFolderArgs;
 import com.pulumi.gcp.organizations.inputs.GetFolderPlainArgs;
 import com.pulumi.gcp.organizations.inputs.GetFoldersArgs;
 import com.pulumi.gcp.organizations.inputs.GetFoldersPlainArgs;
-import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
-import com.pulumi.gcp.organizations.inputs.GetIAMPolicyPlainArgs;
+import com.pulumi.gcp.organizations.inputs.GetIamPolicyArgs;
+import com.pulumi.gcp.organizations.inputs.GetIamPolicyPlainArgs;
 import com.pulumi.gcp.organizations.inputs.GetOrganizationArgs;
 import com.pulumi.gcp.organizations.inputs.GetOrganizationPlainArgs;
 import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
@@ -28,7 +28,7 @@ import com.pulumi.gcp.organizations.outputs.GetClientConfigResult;
 import com.pulumi.gcp.organizations.outputs.GetClientOpenIdUserInfoResult;
 import com.pulumi.gcp.organizations.outputs.GetFolderResult;
 import com.pulumi.gcp.organizations.outputs.GetFoldersResult;
-import com.pulumi.gcp.organizations.outputs.GetIAMPolicyResult;
+import com.pulumi.gcp.organizations.outputs.GetIamPolicyResult;
 import com.pulumi.gcp.organizations.outputs.GetOrganizationResult;
 import com.pulumi.gcp.organizations.outputs.GetProjectResult;
 import com.pulumi.resources.InvokeArgs;
@@ -1275,9 +1275,9 @@ public final class OrganizationsFunctions {
     }
     /**
      * Generates an IAM policy document that may be referenced by and applied to
-     * other Google Cloud Platform IAM resources, such as the `gcp.projects.IAMPolicy` resource.
+     * other Google Cloud Platform IAM resources, such as the `gcp.projects.IamPolicy` resource.
      * 
-     * **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `gcp.projects.IAMPolicy` and others have limitations in their API methods which are noted on their respective page.
+     * **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `gcp.projects.IamPolicy` and others have limitations in their API methods which are noted on their respective page.
      * ```java
      * package generated_program;
      * 
@@ -1285,7 +1285,7 @@ public final class OrganizationsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+     * import com.pulumi.gcp.organizations.inputs.GetIamPolicyArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1299,27 +1299,27 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
-     *             .auditConfigs(GetIAMPolicyAuditConfigArgs.builder()
+     *         final var admin = OrganizationsFunctions.getIamPolicy(GetIamPolicyArgs.builder()
+     *             .auditConfigs(GetIamPolicyAuditConfigArgs.builder()
      *                 .auditLogConfigs(                
-     *                     GetIAMPolicyAuditConfigAuditLogConfigArgs.builder()
+     *                     GetIamPolicyAuditConfigAuditLogConfigArgs.builder()
      *                         .exemptedMembers(&#34;user:you@domain.com&#34;)
      *                         .logType(&#34;DATA_READ&#34;)
      *                         .build(),
-     *                     GetIAMPolicyAuditConfigAuditLogConfigArgs.builder()
+     *                     GetIamPolicyAuditConfigAuditLogConfigArgs.builder()
      *                         .logType(&#34;DATA_WRITE&#34;)
      *                         .build(),
-     *                     GetIAMPolicyAuditConfigAuditLogConfigArgs.builder()
+     *                     GetIamPolicyAuditConfigAuditLogConfigArgs.builder()
      *                         .logType(&#34;ADMIN_READ&#34;)
      *                         .build())
      *                 .service(&#34;cloudkms.googleapis.com&#34;)
      *                 .build())
      *             .bindings(            
-     *                 GetIAMPolicyBindingArgs.builder()
+     *                 GetIamPolicyBindingArgs.builder()
      *                     .members(&#34;serviceAccount:your-custom-sa@your-project.iam.gserviceaccount.com&#34;)
      *                     .role(&#34;roles/compute.instanceAdmin&#34;)
      *                     .build(),
-     *                 GetIAMPolicyBindingArgs.builder()
+     *                 GetIamPolicyBindingArgs.builder()
      *                     .members(&#34;user:alice@gmail.com&#34;)
      *                     .role(&#34;roles/storage.objectViewer&#34;)
      *                     .build())
@@ -1334,14 +1334,14 @@ public final class OrganizationsFunctions {
      * from another resource is the only way to apply an IAM policy to a resource.
      * 
      */
-    public static Output<GetIAMPolicyResult> getIAMPolicy() {
-        return getIAMPolicy(GetIAMPolicyArgs.Empty, InvokeOptions.Empty);
+    public static Output<GetIamPolicyResult> getIamPolicy() {
+        return getIamPolicy(GetIamPolicyArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * Generates an IAM policy document that may be referenced by and applied to
-     * other Google Cloud Platform IAM resources, such as the `gcp.projects.IAMPolicy` resource.
+     * other Google Cloud Platform IAM resources, such as the `gcp.projects.IamPolicy` resource.
      * 
-     * **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `gcp.projects.IAMPolicy` and others have limitations in their API methods which are noted on their respective page.
+     * **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `gcp.projects.IamPolicy` and others have limitations in their API methods which are noted on their respective page.
      * ```java
      * package generated_program;
      * 
@@ -1349,7 +1349,7 @@ public final class OrganizationsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+     * import com.pulumi.gcp.organizations.inputs.GetIamPolicyArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1363,27 +1363,27 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
-     *             .auditConfigs(GetIAMPolicyAuditConfigArgs.builder()
+     *         final var admin = OrganizationsFunctions.getIamPolicy(GetIamPolicyArgs.builder()
+     *             .auditConfigs(GetIamPolicyAuditConfigArgs.builder()
      *                 .auditLogConfigs(                
-     *                     GetIAMPolicyAuditConfigAuditLogConfigArgs.builder()
+     *                     GetIamPolicyAuditConfigAuditLogConfigArgs.builder()
      *                         .exemptedMembers(&#34;user:you@domain.com&#34;)
      *                         .logType(&#34;DATA_READ&#34;)
      *                         .build(),
-     *                     GetIAMPolicyAuditConfigAuditLogConfigArgs.builder()
+     *                     GetIamPolicyAuditConfigAuditLogConfigArgs.builder()
      *                         .logType(&#34;DATA_WRITE&#34;)
      *                         .build(),
-     *                     GetIAMPolicyAuditConfigAuditLogConfigArgs.builder()
+     *                     GetIamPolicyAuditConfigAuditLogConfigArgs.builder()
      *                         .logType(&#34;ADMIN_READ&#34;)
      *                         .build())
      *                 .service(&#34;cloudkms.googleapis.com&#34;)
      *                 .build())
      *             .bindings(            
-     *                 GetIAMPolicyBindingArgs.builder()
+     *                 GetIamPolicyBindingArgs.builder()
      *                     .members(&#34;serviceAccount:your-custom-sa@your-project.iam.gserviceaccount.com&#34;)
      *                     .role(&#34;roles/compute.instanceAdmin&#34;)
      *                     .build(),
-     *                 GetIAMPolicyBindingArgs.builder()
+     *                 GetIamPolicyBindingArgs.builder()
      *                     .members(&#34;user:alice@gmail.com&#34;)
      *                     .role(&#34;roles/storage.objectViewer&#34;)
      *                     .build())
@@ -1398,14 +1398,14 @@ public final class OrganizationsFunctions {
      * from another resource is the only way to apply an IAM policy to a resource.
      * 
      */
-    public static CompletableFuture<GetIAMPolicyResult> getIAMPolicyPlain() {
-        return getIAMPolicyPlain(GetIAMPolicyPlainArgs.Empty, InvokeOptions.Empty);
+    public static CompletableFuture<GetIamPolicyResult> getIamPolicyPlain() {
+        return getIamPolicyPlain(GetIamPolicyPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * Generates an IAM policy document that may be referenced by and applied to
-     * other Google Cloud Platform IAM resources, such as the `gcp.projects.IAMPolicy` resource.
+     * other Google Cloud Platform IAM resources, such as the `gcp.projects.IamPolicy` resource.
      * 
-     * **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `gcp.projects.IAMPolicy` and others have limitations in their API methods which are noted on their respective page.
+     * **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `gcp.projects.IamPolicy` and others have limitations in their API methods which are noted on their respective page.
      * ```java
      * package generated_program;
      * 
@@ -1413,7 +1413,7 @@ public final class OrganizationsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+     * import com.pulumi.gcp.organizations.inputs.GetIamPolicyArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1427,27 +1427,27 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
-     *             .auditConfigs(GetIAMPolicyAuditConfigArgs.builder()
+     *         final var admin = OrganizationsFunctions.getIamPolicy(GetIamPolicyArgs.builder()
+     *             .auditConfigs(GetIamPolicyAuditConfigArgs.builder()
      *                 .auditLogConfigs(                
-     *                     GetIAMPolicyAuditConfigAuditLogConfigArgs.builder()
+     *                     GetIamPolicyAuditConfigAuditLogConfigArgs.builder()
      *                         .exemptedMembers(&#34;user:you@domain.com&#34;)
      *                         .logType(&#34;DATA_READ&#34;)
      *                         .build(),
-     *                     GetIAMPolicyAuditConfigAuditLogConfigArgs.builder()
+     *                     GetIamPolicyAuditConfigAuditLogConfigArgs.builder()
      *                         .logType(&#34;DATA_WRITE&#34;)
      *                         .build(),
-     *                     GetIAMPolicyAuditConfigAuditLogConfigArgs.builder()
+     *                     GetIamPolicyAuditConfigAuditLogConfigArgs.builder()
      *                         .logType(&#34;ADMIN_READ&#34;)
      *                         .build())
      *                 .service(&#34;cloudkms.googleapis.com&#34;)
      *                 .build())
      *             .bindings(            
-     *                 GetIAMPolicyBindingArgs.builder()
+     *                 GetIamPolicyBindingArgs.builder()
      *                     .members(&#34;serviceAccount:your-custom-sa@your-project.iam.gserviceaccount.com&#34;)
      *                     .role(&#34;roles/compute.instanceAdmin&#34;)
      *                     .build(),
-     *                 GetIAMPolicyBindingArgs.builder()
+     *                 GetIamPolicyBindingArgs.builder()
      *                     .members(&#34;user:alice@gmail.com&#34;)
      *                     .role(&#34;roles/storage.objectViewer&#34;)
      *                     .build())
@@ -1462,14 +1462,14 @@ public final class OrganizationsFunctions {
      * from another resource is the only way to apply an IAM policy to a resource.
      * 
      */
-    public static Output<GetIAMPolicyResult> getIAMPolicy(GetIAMPolicyArgs args) {
-        return getIAMPolicy(args, InvokeOptions.Empty);
+    public static Output<GetIamPolicyResult> getIamPolicy(GetIamPolicyArgs args) {
+        return getIamPolicy(args, InvokeOptions.Empty);
     }
     /**
      * Generates an IAM policy document that may be referenced by and applied to
-     * other Google Cloud Platform IAM resources, such as the `gcp.projects.IAMPolicy` resource.
+     * other Google Cloud Platform IAM resources, such as the `gcp.projects.IamPolicy` resource.
      * 
-     * **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `gcp.projects.IAMPolicy` and others have limitations in their API methods which are noted on their respective page.
+     * **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `gcp.projects.IamPolicy` and others have limitations in their API methods which are noted on their respective page.
      * ```java
      * package generated_program;
      * 
@@ -1477,7 +1477,7 @@ public final class OrganizationsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+     * import com.pulumi.gcp.organizations.inputs.GetIamPolicyArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1491,27 +1491,27 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
-     *             .auditConfigs(GetIAMPolicyAuditConfigArgs.builder()
+     *         final var admin = OrganizationsFunctions.getIamPolicy(GetIamPolicyArgs.builder()
+     *             .auditConfigs(GetIamPolicyAuditConfigArgs.builder()
      *                 .auditLogConfigs(                
-     *                     GetIAMPolicyAuditConfigAuditLogConfigArgs.builder()
+     *                     GetIamPolicyAuditConfigAuditLogConfigArgs.builder()
      *                         .exemptedMembers(&#34;user:you@domain.com&#34;)
      *                         .logType(&#34;DATA_READ&#34;)
      *                         .build(),
-     *                     GetIAMPolicyAuditConfigAuditLogConfigArgs.builder()
+     *                     GetIamPolicyAuditConfigAuditLogConfigArgs.builder()
      *                         .logType(&#34;DATA_WRITE&#34;)
      *                         .build(),
-     *                     GetIAMPolicyAuditConfigAuditLogConfigArgs.builder()
+     *                     GetIamPolicyAuditConfigAuditLogConfigArgs.builder()
      *                         .logType(&#34;ADMIN_READ&#34;)
      *                         .build())
      *                 .service(&#34;cloudkms.googleapis.com&#34;)
      *                 .build())
      *             .bindings(            
-     *                 GetIAMPolicyBindingArgs.builder()
+     *                 GetIamPolicyBindingArgs.builder()
      *                     .members(&#34;serviceAccount:your-custom-sa@your-project.iam.gserviceaccount.com&#34;)
      *                     .role(&#34;roles/compute.instanceAdmin&#34;)
      *                     .build(),
-     *                 GetIAMPolicyBindingArgs.builder()
+     *                 GetIamPolicyBindingArgs.builder()
      *                     .members(&#34;user:alice@gmail.com&#34;)
      *                     .role(&#34;roles/storage.objectViewer&#34;)
      *                     .build())
@@ -1526,14 +1526,14 @@ public final class OrganizationsFunctions {
      * from another resource is the only way to apply an IAM policy to a resource.
      * 
      */
-    public static CompletableFuture<GetIAMPolicyResult> getIAMPolicyPlain(GetIAMPolicyPlainArgs args) {
-        return getIAMPolicyPlain(args, InvokeOptions.Empty);
+    public static CompletableFuture<GetIamPolicyResult> getIamPolicyPlain(GetIamPolicyPlainArgs args) {
+        return getIamPolicyPlain(args, InvokeOptions.Empty);
     }
     /**
      * Generates an IAM policy document that may be referenced by and applied to
-     * other Google Cloud Platform IAM resources, such as the `gcp.projects.IAMPolicy` resource.
+     * other Google Cloud Platform IAM resources, such as the `gcp.projects.IamPolicy` resource.
      * 
-     * **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `gcp.projects.IAMPolicy` and others have limitations in their API methods which are noted on their respective page.
+     * **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `gcp.projects.IamPolicy` and others have limitations in their API methods which are noted on their respective page.
      * ```java
      * package generated_program;
      * 
@@ -1541,7 +1541,7 @@ public final class OrganizationsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+     * import com.pulumi.gcp.organizations.inputs.GetIamPolicyArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1555,27 +1555,27 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
-     *             .auditConfigs(GetIAMPolicyAuditConfigArgs.builder()
+     *         final var admin = OrganizationsFunctions.getIamPolicy(GetIamPolicyArgs.builder()
+     *             .auditConfigs(GetIamPolicyAuditConfigArgs.builder()
      *                 .auditLogConfigs(                
-     *                     GetIAMPolicyAuditConfigAuditLogConfigArgs.builder()
+     *                     GetIamPolicyAuditConfigAuditLogConfigArgs.builder()
      *                         .exemptedMembers(&#34;user:you@domain.com&#34;)
      *                         .logType(&#34;DATA_READ&#34;)
      *                         .build(),
-     *                     GetIAMPolicyAuditConfigAuditLogConfigArgs.builder()
+     *                     GetIamPolicyAuditConfigAuditLogConfigArgs.builder()
      *                         .logType(&#34;DATA_WRITE&#34;)
      *                         .build(),
-     *                     GetIAMPolicyAuditConfigAuditLogConfigArgs.builder()
+     *                     GetIamPolicyAuditConfigAuditLogConfigArgs.builder()
      *                         .logType(&#34;ADMIN_READ&#34;)
      *                         .build())
      *                 .service(&#34;cloudkms.googleapis.com&#34;)
      *                 .build())
      *             .bindings(            
-     *                 GetIAMPolicyBindingArgs.builder()
+     *                 GetIamPolicyBindingArgs.builder()
      *                     .members(&#34;serviceAccount:your-custom-sa@your-project.iam.gserviceaccount.com&#34;)
      *                     .role(&#34;roles/compute.instanceAdmin&#34;)
      *                     .build(),
-     *                 GetIAMPolicyBindingArgs.builder()
+     *                 GetIamPolicyBindingArgs.builder()
      *                     .members(&#34;user:alice@gmail.com&#34;)
      *                     .role(&#34;roles/storage.objectViewer&#34;)
      *                     .build())
@@ -1590,14 +1590,14 @@ public final class OrganizationsFunctions {
      * from another resource is the only way to apply an IAM policy to a resource.
      * 
      */
-    public static Output<GetIAMPolicyResult> getIAMPolicy(GetIAMPolicyArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("gcp:organizations/getIAMPolicy:getIAMPolicy", TypeShape.of(GetIAMPolicyResult.class), args, Utilities.withVersion(options));
+    public static Output<GetIamPolicyResult> getIamPolicy(GetIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:organizations/getIamPolicy:getIamPolicy", TypeShape.of(GetIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Generates an IAM policy document that may be referenced by and applied to
-     * other Google Cloud Platform IAM resources, such as the `gcp.projects.IAMPolicy` resource.
+     * other Google Cloud Platform IAM resources, such as the `gcp.projects.IamPolicy` resource.
      * 
-     * **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `gcp.projects.IAMPolicy` and others have limitations in their API methods which are noted on their respective page.
+     * **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `gcp.projects.IamPolicy` and others have limitations in their API methods which are noted on their respective page.
      * ```java
      * package generated_program;
      * 
@@ -1605,7 +1605,7 @@ public final class OrganizationsFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+     * import com.pulumi.gcp.organizations.inputs.GetIamPolicyArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -1619,27 +1619,27 @@ public final class OrganizationsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
-     *             .auditConfigs(GetIAMPolicyAuditConfigArgs.builder()
+     *         final var admin = OrganizationsFunctions.getIamPolicy(GetIamPolicyArgs.builder()
+     *             .auditConfigs(GetIamPolicyAuditConfigArgs.builder()
      *                 .auditLogConfigs(                
-     *                     GetIAMPolicyAuditConfigAuditLogConfigArgs.builder()
+     *                     GetIamPolicyAuditConfigAuditLogConfigArgs.builder()
      *                         .exemptedMembers(&#34;user:you@domain.com&#34;)
      *                         .logType(&#34;DATA_READ&#34;)
      *                         .build(),
-     *                     GetIAMPolicyAuditConfigAuditLogConfigArgs.builder()
+     *                     GetIamPolicyAuditConfigAuditLogConfigArgs.builder()
      *                         .logType(&#34;DATA_WRITE&#34;)
      *                         .build(),
-     *                     GetIAMPolicyAuditConfigAuditLogConfigArgs.builder()
+     *                     GetIamPolicyAuditConfigAuditLogConfigArgs.builder()
      *                         .logType(&#34;ADMIN_READ&#34;)
      *                         .build())
      *                 .service(&#34;cloudkms.googleapis.com&#34;)
      *                 .build())
      *             .bindings(            
-     *                 GetIAMPolicyBindingArgs.builder()
+     *                 GetIamPolicyBindingArgs.builder()
      *                     .members(&#34;serviceAccount:your-custom-sa@your-project.iam.gserviceaccount.com&#34;)
      *                     .role(&#34;roles/compute.instanceAdmin&#34;)
      *                     .build(),
-     *                 GetIAMPolicyBindingArgs.builder()
+     *                 GetIamPolicyBindingArgs.builder()
      *                     .members(&#34;user:alice@gmail.com&#34;)
      *                     .role(&#34;roles/storage.objectViewer&#34;)
      *                     .build())
@@ -1654,8 +1654,8 @@ public final class OrganizationsFunctions {
      * from another resource is the only way to apply an IAM policy to a resource.
      * 
      */
-    public static CompletableFuture<GetIAMPolicyResult> getIAMPolicyPlain(GetIAMPolicyPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("gcp:organizations/getIAMPolicy:getIAMPolicy", TypeShape.of(GetIAMPolicyResult.class), args, Utilities.withVersion(options));
+    public static CompletableFuture<GetIamPolicyResult> getIamPolicyPlain(GetIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:organizations/getIamPolicy:getIamPolicy", TypeShape.of(GetIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get information about a Google Cloud Organization. Note that you must have the `roles/resourcemanager.organizationViewer` role (or equivalent permissions) at the organization level to use this datasource.

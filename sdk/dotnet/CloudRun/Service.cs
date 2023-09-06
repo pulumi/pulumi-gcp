@@ -75,7 +75,7 @@ namespace Pulumi.Gcp.CloudRun
     ///         },
     ///     });
     /// 
-    ///     var project = new Gcp.Projects.IAMBinding("project", new()
+    ///     var project = new Gcp.Projects.IamBinding("project", new()
     ///     {
     ///         Role = "roles/iam.serviceAccountTokenCreator",
     ///         Members = new[]
@@ -222,11 +222,11 @@ namespace Pulumi.Gcp.CloudRun
     ///         },
     ///     });
     /// 
-    ///     var noauthIAMPolicy = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     var noauthIamPolicy = Gcp.Organizations.GetIamPolicy.Invoke(new()
     ///     {
     ///         Bindings = new[]
     ///         {
-    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             new Gcp.Organizations.Inputs.GetIamPolicyBindingInputArgs
     ///             {
     ///                 Role = "roles/run.invoker",
     ///                 Members = new[]
@@ -237,12 +237,12 @@ namespace Pulumi.Gcp.CloudRun
     ///         },
     ///     });
     /// 
-    ///     var noauthIamPolicy = new Gcp.CloudRun.IamPolicy("noauthIamPolicy", new()
+    ///     var noauthCloudrun_iamPolicyIamPolicy = new Gcp.CloudRun.IamPolicy("noauthCloudrun/iamPolicyIamPolicy", new()
     ///     {
     ///         Location = @default.Location,
     ///         Project = @default.Project,
     ///         Service = @default.Name,
-    ///         PolicyData = noauthIAMPolicy.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///         PolicyData = noauthIamPolicy.Apply(getIamPolicyResult =&gt; getIamPolicyResult.PolicyData),
     ///     });
     /// 
     /// });

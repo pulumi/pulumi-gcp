@@ -34,11 +34,11 @@ namespace Pulumi.Gcp.ApiGateway
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     var admin = Gcp.Organizations.GetIamPolicy.Invoke(new()
     ///     {
     ///         Bindings = new[]
     ///         {
-    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             new Gcp.Organizations.Inputs.GetIamPolicyBindingInputArgs
     ///             {
     ///                 Role = "roles/apigateway.viewer",
     ///                 Members = new[]
@@ -53,7 +53,7 @@ namespace Pulumi.Gcp.ApiGateway
     ///     {
     ///         Api = google_api_gateway_api_config.Api_cfg.Api,
     ///         ApiConfig = google_api_gateway_api_config.Api_cfg.Api_config_id,
-    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///         PolicyData = admin.Apply(getIamPolicyResult =&gt; getIamPolicyResult.PolicyData),
     ///     }, new CustomResourceOptions
     ///     {
     ///         Provider = google_beta,

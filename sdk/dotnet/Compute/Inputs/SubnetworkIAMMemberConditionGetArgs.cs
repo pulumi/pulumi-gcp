@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute.Inputs
 {
 
-    public sealed class SubnetworkIAMMemberConditionGetArgs : global::Pulumi.ResourceArgs
+    public sealed class SubnetworkIamMemberConditionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -34,9 +34,9 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("title", required: true)]
         public Input<string> Title { get; set; } = null!;
 
-        public SubnetworkIAMMemberConditionGetArgs()
+        public SubnetworkIamMemberConditionGetArgs()
         {
         }
-        public static new SubnetworkIAMMemberConditionGetArgs Empty => new SubnetworkIAMMemberConditionGetArgs();
+        public static new SubnetworkIamMemberConditionGetArgs Empty => new SubnetworkIamMemberConditionGetArgs();
     }
 }

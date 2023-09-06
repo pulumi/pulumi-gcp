@@ -246,19 +246,19 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:serviceAccount/iAMMember:IamMember admin-account-iam projects/{your-project-id}/serviceAccounts/{your-service-account-email}
+//	$ pulumi import gcp:serviceAccount/iamMember:IamMember admin-account-iam projects/{your-project-id}/serviceAccounts/{your-service-account-email}
 //
 // ```
 //
 // ```sh
 //
-//	$ pulumi import gcp:serviceAccount/iAMMember:IamMember admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser"
+//	$ pulumi import gcp:serviceAccount/iamMember:IamMember admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser"
 //
 // ```
 //
 // ```sh
 //
-//	$ pulumi import gcp:serviceAccount/iAMMember:IamMember admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/editor user:foo@example.com"
+//	$ pulumi import gcp:serviceAccount/iamMember:IamMember admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/editor user:foo@example.com"
 //
 // ```
 //
@@ -266,17 +266,15 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:serviceAccount/iAMMember:IamMember admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser expires_after_2019_12_31"
+//	$ pulumi import gcp:serviceAccount/iamMember:IamMember admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser expires_after_2019_12_31"
 //
 // ```
 //
 // ```sh
 //
-//	$ pulumi import gcp:serviceAccount/iAMMember:IamMember admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser user:foo@example.com expires_after_2019_12_31"
+//	$ pulumi import gcp:serviceAccount/iamMember:IamMember admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser user:foo@example.com expires_after_2019_12_31"
 //
 // ```
-//
-// Deprecated: gcp.serviceaccount/iammember.IamMember has been deprecated in favor of gcp.serviceaccount/iammember.IamMember
 type IamMember struct {
 	pulumi.CustomResourceState
 
@@ -319,15 +317,9 @@ func NewIamMember(ctx *pulumi.Context,
 	if args.ServiceAccountId == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceAccountId'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("gcp:serviceAccount/iAMMember:IAMMember"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource IamMember
-	err := ctx.RegisterResource("gcp:serviceAccount/iAMMember:IamMember", name, args, &resource, opts...)
+	err := ctx.RegisterResource("gcp:serviceAccount/iamMember:IamMember", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -339,7 +331,7 @@ func NewIamMember(ctx *pulumi.Context,
 func GetIamMember(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *IamMemberState, opts ...pulumi.ResourceOption) (*IamMember, error) {
 	var resource IamMember
-	err := ctx.ReadResource("gcp:serviceAccount/iAMMember:IamMember", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("gcp:serviceAccount/iamMember:IamMember", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

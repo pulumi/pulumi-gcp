@@ -10,7 +10,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
-public final class GetIAMPolicyBindingCondition {
+public final class GetIamPolicyBindingCondition {
     /**
      * @return An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
      * 
@@ -27,7 +27,7 @@ public final class GetIAMPolicyBindingCondition {
      */
     private String title;
 
-    private GetIAMPolicyBindingCondition() {}
+    private GetIamPolicyBindingCondition() {}
     /**
      * @return An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
      * 
@@ -54,7 +54,7 @@ public final class GetIAMPolicyBindingCondition {
         return new Builder();
     }
 
-    public static Builder builder(GetIAMPolicyBindingCondition defaults) {
+    public static Builder builder(GetIamPolicyBindingCondition defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -63,7 +63,7 @@ public final class GetIAMPolicyBindingCondition {
         private String expression;
         private String title;
         public Builder() {}
-        public Builder(GetIAMPolicyBindingCondition defaults) {
+        public Builder(GetIamPolicyBindingCondition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
     	      this.expression = defaults.expression;
@@ -85,8 +85,8 @@ public final class GetIAMPolicyBindingCondition {
             this.title = Objects.requireNonNull(title);
             return this;
         }
-        public GetIAMPolicyBindingCondition build() {
-            final var o = new GetIAMPolicyBindingCondition();
+        public GetIamPolicyBindingCondition build() {
+            final var o = new GetIamPolicyBindingCondition();
             o.description = description;
             o.expression = expression;
             o.title = title;

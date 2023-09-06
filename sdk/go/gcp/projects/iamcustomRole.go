@@ -66,23 +66,21 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:projects/iAMCustomRole:IamCustomRole default projects/{{project}}/roles/{{role_id}}
+//	$ pulumi import gcp:projects/iamCustomRole:IamCustomRole default projects/{{project}}/roles/{{role_id}}
 //
 // ```
 //
 // ```sh
 //
-//	$ pulumi import gcp:projects/iAMCustomRole:IamCustomRole default {{project}}/{{role_id}}
+//	$ pulumi import gcp:projects/iamCustomRole:IamCustomRole default {{project}}/{{role_id}}
 //
 // ```
 //
 // ```sh
 //
-//	$ pulumi import gcp:projects/iAMCustomRole:IamCustomRole default {{role_id}}
+//	$ pulumi import gcp:projects/iamCustomRole:IamCustomRole default {{role_id}}
 //
 // ```
-//
-// Deprecated: gcp.projects/iamcustomrole.IamCustomRole has been deprecated in favor of gcp.projects/iamcustomrole.IamCustomRole
 type IamCustomRole struct {
 	pulumi.CustomResourceState
 
@@ -123,15 +121,9 @@ func NewIamCustomRole(ctx *pulumi.Context,
 	if args.Title == nil {
 		return nil, errors.New("invalid value for required argument 'Title'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("gcp:projects/iAMCustomRole:IAMCustomRole"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource IamCustomRole
-	err := ctx.RegisterResource("gcp:projects/iAMCustomRole:IamCustomRole", name, args, &resource, opts...)
+	err := ctx.RegisterResource("gcp:projects/iamCustomRole:IamCustomRole", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -143,7 +135,7 @@ func NewIamCustomRole(ctx *pulumi.Context,
 func GetIamCustomRole(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *IamCustomRoleState, opts ...pulumi.ResourceOption) (*IamCustomRole, error) {
 	var resource IamCustomRole
-	err := ctx.ReadResource("gcp:projects/iAMCustomRole:IamCustomRole", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("gcp:projects/iamCustomRole:IamCustomRole", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

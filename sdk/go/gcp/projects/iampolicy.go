@@ -295,7 +295,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:projects/iAMPolicy:IamPolicy my_project "your-project-id roles/viewer user:foo@example.com"
+//	$ pulumi import gcp:projects/iamPolicy:IamPolicy my_project "your-project-id roles/viewer user:foo@example.com"
 //
 // ```
 //
@@ -305,7 +305,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:projects/iAMPolicy:IamPolicy my_project "your-project-id roles/viewer"
+//	$ pulumi import gcp:projects/iamPolicy:IamPolicy my_project "your-project-id roles/viewer"
 //
 // ```
 //
@@ -315,7 +315,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:projects/iAMPolicy:IamPolicy my_project your-project-id
+//	$ pulumi import gcp:projects/iamPolicy:IamPolicy my_project your-project-id
 //
 // ```
 //
@@ -323,7 +323,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:projects/iAMPolicy:IamPolicy my_project "your-project-id foo.googleapis.com"
+//	$ pulumi import gcp:projects/iamPolicy:IamPolicy my_project "your-project-id foo.googleapis.com"
 //
 // ```
 //
@@ -333,11 +333,9 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:projects/iAMPolicy:IamPolicy to include the title of condition, e.g. `google_project_iam_binding.my_project "{{your-project-id}} roles/{{role_id}} condition-title"`
+//	$ pulumi import gcp:projects/iamPolicy:IamPolicy to include the title of condition, e.g. `google_project_iam_binding.my_project "{{your-project-id}} roles/{{role_id}} condition-title"`
 //
 // ```
-//
-// Deprecated: gcp.projects/iampolicy.IamPolicy has been deprecated in favor of gcp.projects/iampolicy.IamPolicy
 type IamPolicy struct {
 	pulumi.CustomResourceState
 
@@ -370,15 +368,9 @@ func NewIamPolicy(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("gcp:projects/iAMPolicy:IAMPolicy"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource IamPolicy
-	err := ctx.RegisterResource("gcp:projects/iAMPolicy:IamPolicy", name, args, &resource, opts...)
+	err := ctx.RegisterResource("gcp:projects/iamPolicy:IamPolicy", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -390,7 +382,7 @@ func NewIamPolicy(ctx *pulumi.Context,
 func GetIamPolicy(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *IamPolicyState, opts ...pulumi.ResourceOption) (*IamPolicy, error) {
 	var resource IamPolicy
-	err := ctx.ReadResource("gcp:projects/iAMPolicy:IamPolicy", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("gcp:projects/iamPolicy:IamPolicy", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

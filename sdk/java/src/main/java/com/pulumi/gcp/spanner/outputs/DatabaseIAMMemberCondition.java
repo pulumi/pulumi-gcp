@@ -10,12 +10,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
-public final class DatabaseIAMMemberCondition {
+public final class DatabaseIamMemberCondition {
     private @Nullable String description;
     private String expression;
     private String title;
 
-    private DatabaseIAMMemberCondition() {}
+    private DatabaseIamMemberCondition() {}
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
@@ -30,7 +30,7 @@ public final class DatabaseIAMMemberCondition {
         return new Builder();
     }
 
-    public static Builder builder(DatabaseIAMMemberCondition defaults) {
+    public static Builder builder(DatabaseIamMemberCondition defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -39,7 +39,7 @@ public final class DatabaseIAMMemberCondition {
         private String expression;
         private String title;
         public Builder() {}
-        public Builder(DatabaseIAMMemberCondition defaults) {
+        public Builder(DatabaseIamMemberCondition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
     	      this.expression = defaults.expression;
@@ -61,8 +61,8 @@ public final class DatabaseIAMMemberCondition {
             this.title = Objects.requireNonNull(title);
             return this;
         }
-        public DatabaseIAMMemberCondition build() {
-            final var o = new DatabaseIAMMemberCondition();
+        public DatabaseIamMemberCondition build() {
+            final var o = new DatabaseIamMemberCondition();
             o.description = description;
             o.expression = expression;
             o.title = title;

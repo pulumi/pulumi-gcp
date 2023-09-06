@@ -11,7 +11,7 @@ namespace Pulumi.Gcp.Projects.Outputs
 {
 
     [OutputType]
-    public sealed class IAMMemberCondition
+    public sealed class IamMemberCondition
     {
         /// <summary>
         /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.Projects.Outputs
         public readonly string Title;
 
         [OutputConstructor]
-        private IAMMemberCondition(
+        private IamMemberCondition(
             string? description,
 
             string expression,

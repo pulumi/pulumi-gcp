@@ -52,7 +52,7 @@ import * as utilities from "../utilities";
  * }, {
  *     dependsOn: [vertexVpcConnection],
  * });
- * const cryptoKey = new gcp.kms.CryptoKeyIAMMember("cryptoKey", {
+ * const cryptoKey = new gcp.kms.CryptoKeyIamMember("cryptoKey", {
  *     cryptoKeyId: "kms-name",
  *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
  *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-aiplatform.iam.gserviceaccount.com`),

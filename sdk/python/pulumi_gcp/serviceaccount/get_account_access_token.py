@@ -113,7 +113,7 @@ def get_account_access_token(delegates: Optional[Sequence[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    token_creator_iam = gcp.service_account.IAMBinding("token-creator-iam",
+    token_creator_iam = gcp.service_account.IamBinding("token-creator-iam",
         members=["serviceAccount:service_A@projectA.iam.gserviceaccount.com"],
         role="roles/iam.serviceAccountTokenCreator",
         service_account_id="projects/-/serviceAccounts/service_B@projectB.iam.gserviceaccount.com")
@@ -186,7 +186,7 @@ def get_account_access_token_output(delegates: Optional[pulumi.Input[Optional[Se
     import pulumi
     import pulumi_gcp as gcp
 
-    token_creator_iam = gcp.service_account.IAMBinding("token-creator-iam",
+    token_creator_iam = gcp.service_account.IamBinding("token-creator-iam",
         members=["serviceAccount:service_A@projectA.iam.gserviceaccount.com"],
         role="roles/iam.serviceAccountTokenCreator",
         service_account_id="projects/-/serviceAccounts/service_B@projectB.iam.gserviceaccount.com")

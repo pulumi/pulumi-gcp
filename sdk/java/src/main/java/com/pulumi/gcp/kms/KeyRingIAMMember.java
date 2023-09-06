@@ -8,9 +8,9 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
-import com.pulumi.gcp.kms.KeyRingIAMMemberArgs;
-import com.pulumi.gcp.kms.inputs.KeyRingIAMMemberState;
-import com.pulumi.gcp.kms.outputs.KeyRingIAMMemberCondition;
+import com.pulumi.gcp.kms.KeyRingIamMemberArgs;
+import com.pulumi.gcp.kms.inputs.KeyRingIamMemberState;
+import com.pulumi.gcp.kms.outputs.KeyRingIamMemberCondition;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,13 +18,13 @@ import javax.annotation.Nullable;
 /**
  * Three different resources help you manage your IAM policy for KMS key ring. Each of these resources serves a different use case:
  * 
- * * `gcp.kms.KeyRingIAMPolicy`: Authoritative. Sets the IAM policy for the key ring and replaces any existing policy already attached.
- * * `gcp.kms.KeyRingIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the key ring are preserved.
- * * `gcp.kms.KeyRingIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the key ring are preserved.
+ * * `gcp.kms.KeyRingIamPolicy`: Authoritative. Sets the IAM policy for the key ring and replaces any existing policy already attached.
+ * * `gcp.kms.KeyRingIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the key ring are preserved.
+ * * `gcp.kms.KeyRingIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the key ring are preserved.
  * 
- * &gt; **Note:** `gcp.kms.KeyRingIAMPolicy` **cannot** be used in conjunction with `gcp.kms.KeyRingIAMBinding` and `gcp.kms.KeyRingIAMMember` or they will fight over what your policy should be.
+ * &gt; **Note:** `gcp.kms.KeyRingIamPolicy` **cannot** be used in conjunction with `gcp.kms.KeyRingIamBinding` and `gcp.kms.KeyRingIamMember` or they will fight over what your policy should be.
  * 
- * &gt; **Note:** `gcp.kms.KeyRingIAMBinding` resources **can be** used in conjunction with `gcp.kms.KeyRingIAMMember` resources **only if** they do not grant privilege to the same role.
+ * &gt; **Note:** `gcp.kms.KeyRingIamBinding` resources **can be** used in conjunction with `gcp.kms.KeyRingIamMember` resources **only if** they do not grant privilege to the same role.
  * 
  * ## google\_kms\_key\_ring\_iam\_policy
  * ```java
@@ -36,9 +36,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.kms.KeyRing;
  * import com.pulumi.gcp.kms.KeyRingArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
- * import com.pulumi.gcp.kms.KeyRingIAMPolicy;
- * import com.pulumi.gcp.kms.KeyRingIAMPolicyArgs;
+ * import com.pulumi.gcp.organizations.inputs.GetIamPolicyArgs;
+ * import com.pulumi.gcp.kms.KeyRingIamPolicy;
+ * import com.pulumi.gcp.kms.KeyRingIamPolicyArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -56,16 +56,16 @@ import javax.annotation.Nullable;
  *             .location(&#34;global&#34;)
  *             .build());
  * 
- *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
- *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *         final var admin = OrganizationsFunctions.getIamPolicy(GetIamPolicyArgs.builder()
+ *             .bindings(GetIamPolicyBindingArgs.builder()
  *                 .role(&#34;roles/editor&#34;)
  *                 .members(&#34;user:jane@example.com&#34;)
  *                 .build())
  *             .build());
  * 
- *         var keyRing = new KeyRingIAMPolicy(&#34;keyRing&#34;, KeyRingIAMPolicyArgs.builder()        
+ *         var keyRing = new KeyRingIamPolicy(&#34;keyRing&#34;, KeyRingIamPolicyArgs.builder()        
  *             .keyRingId(keyring.id())
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIamPolicyResult -&gt; getIamPolicyResult.policyData()))
  *             .build());
  * 
  *     }
@@ -82,9 +82,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.kms.KeyRing;
  * import com.pulumi.gcp.kms.KeyRingArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
- * import com.pulumi.gcp.kms.KeyRingIAMPolicy;
- * import com.pulumi.gcp.kms.KeyRingIAMPolicyArgs;
+ * import com.pulumi.gcp.organizations.inputs.GetIamPolicyArgs;
+ * import com.pulumi.gcp.kms.KeyRingIamPolicy;
+ * import com.pulumi.gcp.kms.KeyRingIamPolicyArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -102,11 +102,11 @@ import javax.annotation.Nullable;
  *             .location(&#34;global&#34;)
  *             .build());
  * 
- *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
- *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *         final var admin = OrganizationsFunctions.getIamPolicy(GetIamPolicyArgs.builder()
+ *             .bindings(GetIamPolicyBindingArgs.builder()
  *                 .role(&#34;roles/editor&#34;)
  *                 .members(&#34;user:jane@example.com&#34;)
- *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
+ *                 .condition(GetIamPolicyBindingConditionArgs.builder()
  *                     .title(&#34;expires_after_2019_12_31&#34;)
  *                     .description(&#34;Expiring at midnight of 2019-12-31&#34;)
  *                     .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
@@ -114,9 +114,9 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var keyRing = new KeyRingIAMPolicy(&#34;keyRing&#34;, KeyRingIAMPolicyArgs.builder()        
+ *         var keyRing = new KeyRingIamPolicy(&#34;keyRing&#34;, KeyRingIamPolicyArgs.builder()        
  *             .keyRingId(keyring.id())
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIamPolicyResult -&gt; getIamPolicyResult.policyData()))
  *             .build());
  * 
  *     }
@@ -130,8 +130,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.kms.KeyRingIAMBinding;
- * import com.pulumi.gcp.kms.KeyRingIAMBindingArgs;
+ * import com.pulumi.gcp.kms.KeyRingIamBinding;
+ * import com.pulumi.gcp.kms.KeyRingIamBindingArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -145,7 +145,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyRing = new KeyRingIAMBinding(&#34;keyRing&#34;, KeyRingIAMBindingArgs.builder()        
+ *         var keyRing = new KeyRingIamBinding(&#34;keyRing&#34;, KeyRingIamBindingArgs.builder()        
  *             .keyRingId(&#34;your-key-ring-id&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .role(&#34;roles/cloudkms.admin&#34;)
@@ -162,9 +162,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.kms.KeyRingIAMBinding;
- * import com.pulumi.gcp.kms.KeyRingIAMBindingArgs;
- * import com.pulumi.gcp.kms.inputs.KeyRingIAMBindingConditionArgs;
+ * import com.pulumi.gcp.kms.KeyRingIamBinding;
+ * import com.pulumi.gcp.kms.KeyRingIamBindingArgs;
+ * import com.pulumi.gcp.kms.inputs.KeyRingIamBindingConditionArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -178,8 +178,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyRing = new KeyRingIAMBinding(&#34;keyRing&#34;, KeyRingIAMBindingArgs.builder()        
- *             .condition(KeyRingIAMBindingConditionArgs.builder()
+ *         var keyRing = new KeyRingIamBinding(&#34;keyRing&#34;, KeyRingIamBindingArgs.builder()        
+ *             .condition(KeyRingIamBindingConditionArgs.builder()
  *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
  *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
  *                 .title(&#34;expires_after_2019_12_31&#34;)
@@ -200,8 +200,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.kms.KeyRingIAMMember;
- * import com.pulumi.gcp.kms.KeyRingIAMMemberArgs;
+ * import com.pulumi.gcp.kms.KeyRingIamMember;
+ * import com.pulumi.gcp.kms.KeyRingIamMemberArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -215,7 +215,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyRing = new KeyRingIAMMember(&#34;keyRing&#34;, KeyRingIAMMemberArgs.builder()        
+ *         var keyRing = new KeyRingIamMember(&#34;keyRing&#34;, KeyRingIamMemberArgs.builder()        
  *             .keyRingId(&#34;your-key-ring-id&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .role(&#34;roles/cloudkms.admin&#34;)
@@ -232,9 +232,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.kms.KeyRingIAMMember;
- * import com.pulumi.gcp.kms.KeyRingIAMMemberArgs;
- * import com.pulumi.gcp.kms.inputs.KeyRingIAMMemberConditionArgs;
+ * import com.pulumi.gcp.kms.KeyRingIamMember;
+ * import com.pulumi.gcp.kms.KeyRingIamMemberArgs;
+ * import com.pulumi.gcp.kms.inputs.KeyRingIamMemberConditionArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -248,8 +248,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyRing = new KeyRingIAMMember(&#34;keyRing&#34;, KeyRingIAMMemberArgs.builder()        
- *             .condition(KeyRingIAMMemberConditionArgs.builder()
+ *         var keyRing = new KeyRingIamMember(&#34;keyRing&#34;, KeyRingIamMemberArgs.builder()        
+ *             .condition(KeyRingIamMemberConditionArgs.builder()
  *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
  *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
  *                 .title(&#34;expires_after_2019_12_31&#34;)
@@ -270,7 +270,7 @@ import javax.annotation.Nullable;
  * This member resource can be imported using the `key_ring_id`, role, and account e.g.
  * 
  * ```sh
- *  $ pulumi import gcp:kms/keyRingIAMMember:KeyRingIAMMember key_ring_iam &#34;your-project-id/location-name/key-ring-name roles/viewer user:foo@example.com&#34;
+ *  $ pulumi import gcp:kms/keyRingIamMember:KeyRingIamMember key_ring_iam &#34;your-project-id/location-name/key-ring-name roles/viewer user:foo@example.com&#34;
  * ```
  * 
  *  IAM binding imports use space-delimited identifiers; the resource in question and the role.
@@ -278,7 +278,7 @@ import javax.annotation.Nullable;
  * This binding resource can be imported using the `key_ring_id` and role, e.g.
  * 
  * ```sh
- *  $ pulumi import gcp:kms/keyRingIAMMember:KeyRingIAMMember key_ring_iam &#34;your-project-id/location-name/key-ring-name roles/cloudkms.admin&#34;
+ *  $ pulumi import gcp:kms/keyRingIamMember:KeyRingIamMember key_ring_iam &#34;your-project-id/location-name/key-ring-name roles/cloudkms.admin&#34;
  * ```
  * 
  *  IAM policy imports use the identifier of the resource in question.
@@ -286,26 +286,26 @@ import javax.annotation.Nullable;
  * This policy resource can be imported using the `key_ring_id`, e.g.
  * 
  * ```sh
- *  $ pulumi import gcp:kms/keyRingIAMMember:KeyRingIAMMember key_ring_iam your-project-id/location-name/key-ring-name
+ *  $ pulumi import gcp:kms/keyRingIamMember:KeyRingIamMember key_ring_iam your-project-id/location-name/key-ring-name
  * ```
  * 
  */
-@ResourceType(type="gcp:kms/keyRingIAMMember:KeyRingIAMMember")
-public class KeyRingIAMMember extends com.pulumi.resources.CustomResource {
+@ResourceType(type="gcp:kms/keyRingIamMember:KeyRingIamMember")
+public class KeyRingIamMember extends com.pulumi.resources.CustomResource {
     /**
      * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      * 
      */
-    @Export(name="condition", type=KeyRingIAMMemberCondition.class, parameters={})
-    private Output</* @Nullable */ KeyRingIAMMemberCondition> condition;
+    @Export(name="condition", type=KeyRingIamMemberCondition.class, parameters={})
+    private Output</* @Nullable */ KeyRingIamMemberCondition> condition;
 
     /**
      * @return ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      * 
      */
-    public Output<Optional<KeyRingIAMMemberCondition>> condition() {
+    public Output<Optional<KeyRingIamMemberCondition>> condition() {
         return Codegen.optional(this.condition);
     }
     /**
@@ -368,7 +368,7 @@ public class KeyRingIAMMember extends com.pulumi.resources.CustomResource {
     }
     /**
      * The role that should be applied. Only one
-     * `gcp.kms.KeyRingIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.kms.KeyRingIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -377,7 +377,7 @@ public class KeyRingIAMMember extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The role that should be applied. Only one
-     * `gcp.kms.KeyRingIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.kms.KeyRingIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -389,15 +389,15 @@ public class KeyRingIAMMember extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public KeyRingIAMMember(String name) {
-        this(name, KeyRingIAMMemberArgs.Empty);
+    public KeyRingIamMember(String name) {
+        this(name, KeyRingIamMemberArgs.Empty);
     }
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public KeyRingIAMMember(String name, KeyRingIAMMemberArgs args) {
+    public KeyRingIamMember(String name, KeyRingIamMemberArgs args) {
         this(name, args, null);
     }
     /**
@@ -406,12 +406,12 @@ public class KeyRingIAMMember extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public KeyRingIAMMember(String name, KeyRingIAMMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:kms/keyRingIAMMember:KeyRingIAMMember", name, args == null ? KeyRingIAMMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public KeyRingIamMember(String name, KeyRingIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:kms/keyRingIamMember:KeyRingIamMember", name, args == null ? KeyRingIamMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private KeyRingIAMMember(String name, Output<String> id, @Nullable KeyRingIAMMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:kms/keyRingIAMMember:KeyRingIAMMember", name, state, makeResourceOptions(options, id));
+    private KeyRingIamMember(String name, Output<String> id, @Nullable KeyRingIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:kms/keyRingIamMember:KeyRingIamMember", name, state, makeResourceOptions(options, id));
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
@@ -430,7 +430,7 @@ public class KeyRingIAMMember extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static KeyRingIAMMember get(String name, Output<String> id, @Nullable KeyRingIAMMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        return new KeyRingIAMMember(name, id, state, options);
+    public static KeyRingIamMember get(String name, Output<String> id, @Nullable KeyRingIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        return new KeyRingIamMember(name, id, state, options);
     }
 }

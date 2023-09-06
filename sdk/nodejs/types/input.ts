@@ -4594,7 +4594,7 @@ export namespace bigquery {
          * encrypt this table.  Note that the default bigquery service account will need to have
          * encrypt/decrypt permissions on this key - you may want to see the
          * `gcp.bigquery.getDefaultServiceAccount` datasource and the
-         * `gcp.kms.CryptoKeyIAMBinding` resource.
+         * `gcp.kms.CryptoKeyIamBinding` resource.
          */
         kmsKeyName: pulumi.Input<string>;
         /**
@@ -8754,13 +8754,13 @@ export namespace cloudbuildv2 {
         service: pulumi.Input<string>;
     }
 
-    export interface ConnectionIAMBindingCondition {
+    export interface ConnectionIamBindingCondition {
         description?: pulumi.Input<string>;
         expression: pulumi.Input<string>;
         title: pulumi.Input<string>;
     }
 
-    export interface ConnectionIAMMemberCondition {
+    export interface ConnectionIamMemberCondition {
         description?: pulumi.Input<string>;
         expression: pulumi.Input<string>;
         title: pulumi.Input<string>;
@@ -14681,7 +14681,7 @@ export namespace compute {
         type: pulumi.Input<string>;
     }
 
-    export interface InstanceIAMBindingCondition {
+    export interface InstanceIamBindingCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
          *
@@ -14700,7 +14700,7 @@ export namespace compute {
         title: pulumi.Input<string>;
     }
 
-    export interface InstanceIAMMemberCondition {
+    export interface InstanceIamMemberCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
          *
@@ -20884,7 +20884,7 @@ export namespace compute {
         rawKey?: pulumi.Input<string>;
     }
 
-    export interface SubnetworkIAMBindingCondition {
+    export interface SubnetworkIamBindingCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
          *
@@ -20903,7 +20903,7 @@ export namespace compute {
         title: pulumi.Input<string>;
     }
 
-    export interface SubnetworkIAMMemberCondition {
+    export interface SubnetworkIamMemberCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
          *
@@ -34118,13 +34118,13 @@ export namespace dataproc {
         numLocalSsds?: pulumi.Input<number>;
     }
 
-    export interface ClusterIAMBindingCondition {
+    export interface ClusterIamBindingCondition {
         description?: pulumi.Input<string>;
         expression: pulumi.Input<string>;
         title: pulumi.Input<string>;
     }
 
-    export interface ClusterIAMMemberCondition {
+    export interface ClusterIamMemberCondition {
         description?: pulumi.Input<string>;
         expression: pulumi.Input<string>;
         title: pulumi.Input<string>;
@@ -34387,13 +34387,13 @@ export namespace dataproc {
         scriptVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
 
-    export interface JobIAMBindingCondition {
+    export interface JobIamBindingCondition {
         description?: pulumi.Input<string>;
         expression: pulumi.Input<string>;
         title: pulumi.Input<string>;
     }
 
-    export interface JobIAMMemberCondition {
+    export interface JobIamMemberCondition {
         description?: pulumi.Input<string>;
         expression: pulumi.Input<string>;
         title: pulumi.Input<string>;
@@ -39819,13 +39819,24 @@ export namespace folder {
         enrollmentLevel?: pulumi.Input<string>;
     }
 
-    export interface IAMBindingCondition {
+    export interface IamAuditConfigAuditLogConfig {
+        /**
+         * Identities that do not cause logging for this type of permission.  The format is the same as that for `members`.
+         */
+        exemptedMembers?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
+         */
+        logType: pulumi.Input<string>;
+    }
+
+    export interface IamBindingCondition {
         description?: pulumi.Input<string>;
         expression: pulumi.Input<string>;
         title: pulumi.Input<string>;
     }
 
-    export interface IAMMemberCondition {
+    export interface IamMemberCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
          *
@@ -39842,17 +39853,6 @@ export namespace folder {
          * A title for the expression, i.e. a short string describing its purpose.
          */
         title: pulumi.Input<string>;
-    }
-
-    export interface IamAuditConfigAuditLogConfig {
-        /**
-         * Identities that do not cause logging for this type of permission.  The format is the same as that for `members`.
-         */
-        exemptedMembers?: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
-         */
-        logType: pulumi.Input<string>;
     }
 
     export interface OrganizationPolicyBooleanPolicy {
@@ -43062,7 +43062,7 @@ export namespace iap {
         title: pulumi.Input<string>;
     }
 
-    export interface TunnelInstanceIAMBindingCondition {
+    export interface TunnelInstanceIamBindingCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
          *
@@ -43081,7 +43081,7 @@ export namespace iap {
         title: pulumi.Input<string>;
     }
 
-    export interface TunnelInstanceIAMMemberCondition {
+    export interface TunnelInstanceIamMemberCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
          *
@@ -43687,7 +43687,7 @@ export namespace iot {
 }
 
 export namespace kms {
-    export interface CryptoKeyIAMBindingCondition {
+    export interface CryptoKeyIamBindingCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
          *
@@ -43706,7 +43706,7 @@ export namespace kms {
         title: pulumi.Input<string>;
     }
 
-    export interface CryptoKeyIAMMemberCondition {
+    export interface CryptoKeyIamMemberCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
          *
@@ -43786,7 +43786,7 @@ export namespace kms {
         protectionLevel?: pulumi.Input<string>;
     }
 
-    export interface KeyRingIAMBindingCondition {
+    export interface KeyRingIamBindingCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
          *
@@ -43805,7 +43805,7 @@ export namespace kms {
         title: pulumi.Input<string>;
     }
 
-    export interface KeyRingIAMMemberCondition {
+    export interface KeyRingIamMemberCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
          *
@@ -48233,29 +48233,29 @@ export namespace organizations {
         enrollmentLevel?: pulumi.Input<string>;
     }
 
-    export interface GetIAMPolicyAuditConfig {
+    export interface GetIamPolicyAuditConfig {
         /**
          * A nested block that defines the operations you'd like to log.
          */
-        auditLogConfigs: inputs.organizations.GetIAMPolicyAuditConfigAuditLogConfig[];
+        auditLogConfigs: inputs.organizations.GetIamPolicyAuditConfigAuditLogConfig[];
         /**
          * Defines a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
          */
         service: string;
     }
 
-    export interface GetIAMPolicyAuditConfigArgs {
+    export interface GetIamPolicyAuditConfigArgs {
         /**
          * A nested block that defines the operations you'd like to log.
          */
-        auditLogConfigs: pulumi.Input<pulumi.Input<inputs.organizations.GetIAMPolicyAuditConfigAuditLogConfigArgs>[]>;
+        auditLogConfigs: pulumi.Input<pulumi.Input<inputs.organizations.GetIamPolicyAuditConfigAuditLogConfigArgs>[]>;
         /**
          * Defines a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
          */
         service: pulumi.Input<string>;
     }
 
-    export interface GetIAMPolicyAuditConfigAuditLogConfig {
+    export interface GetIamPolicyAuditConfigAuditLogConfig {
         /**
          * Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `members` array for `binding`.
          */
@@ -48266,7 +48266,7 @@ export namespace organizations {
         logType: string;
     }
 
-    export interface GetIAMPolicyAuditConfigAuditLogConfigArgs {
+    export interface GetIamPolicyAuditConfigAuditLogConfigArgs {
         /**
          * Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `members` array for `binding`.
          */
@@ -48277,11 +48277,11 @@ export namespace organizations {
         logType: pulumi.Input<string>;
     }
 
-    export interface GetIAMPolicyBinding {
+    export interface GetIamPolicyBinding {
         /**
          * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
          */
-        condition?: inputs.organizations.GetIAMPolicyBindingCondition;
+        condition?: inputs.organizations.GetIamPolicyBindingCondition;
         /**
          * An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
          * Each entry can have one of the following values:
@@ -48301,11 +48301,11 @@ export namespace organizations {
         role: string;
     }
 
-    export interface GetIAMPolicyBindingArgs {
+    export interface GetIamPolicyBindingArgs {
         /**
          * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
          */
-        condition?: pulumi.Input<inputs.organizations.GetIAMPolicyBindingConditionArgs>;
+        condition?: pulumi.Input<inputs.organizations.GetIamPolicyBindingConditionArgs>;
         /**
          * An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
          * Each entry can have one of the following values:
@@ -48325,7 +48325,7 @@ export namespace organizations {
         role: pulumi.Input<string>;
     }
 
-    export interface GetIAMPolicyBindingCondition {
+    export interface GetIamPolicyBindingCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
          */
@@ -48340,34 +48340,9 @@ export namespace organizations {
         title: string;
     }
 
-    export interface GetIAMPolicyBindingConditionArgs {
+    export interface GetIamPolicyBindingConditionArgs {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         */
-        description?: pulumi.Input<string>;
-        /**
-         * Textual representation of an expression in Common Expression Language syntax.
-         */
-        expression: pulumi.Input<string>;
-        /**
-         * A title for the expression, i.e. a short string describing its purpose.
-         */
-        title: pulumi.Input<string>;
-    }
-
-    export interface IAMBindingCondition {
-        description?: pulumi.Input<string>;
-        expression: pulumi.Input<string>;
-        title: pulumi.Input<string>;
-    }
-
-    export interface IAMMemberCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         *
-         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-         * consider it to be an entirely different resource and will treat it as such.
          */
         description?: pulumi.Input<string>;
         /**
@@ -48394,6 +48369,31 @@ export namespace organizations {
          * Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
          */
         logType: pulumi.Input<string>;
+    }
+
+    export interface IamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface IamMemberCondition {
+        /**
+         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         *
+         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+         * consider it to be an entirely different resource and will treat it as such.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: pulumi.Input<string>;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
+        title: pulumi.Input<string>;
     }
 
     export interface PolicyBooleanPolicy {
@@ -50524,7 +50524,7 @@ export namespace projects {
         allowedIps: pulumi.Input<pulumi.Input<string>[]>;
     }
 
-    export interface IAMAuditConfigAuditLogConfig {
+    export interface IamAuditConfigAuditLogConfig {
         /**
          * Identities that do not cause logging for this type of permission.  The format is the same as that for `members`.
          */
@@ -50535,7 +50535,7 @@ export namespace projects {
         logType: pulumi.Input<string>;
     }
 
-    export interface IAMBindingCondition {
+    export interface IamBindingCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
          *
@@ -50554,7 +50554,7 @@ export namespace projects {
         title: pulumi.Input<string>;
     }
 
-    export interface IAMMemberCondition {
+    export interface IamMemberCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
          *
@@ -50785,13 +50785,13 @@ export namespace pubsub {
         ttl: pulumi.Input<string>;
     }
 
-    export interface SubscriptionIAMBindingCondition {
+    export interface SubscriptionIamBindingCondition {
         description?: pulumi.Input<string>;
         expression: pulumi.Input<string>;
         title: pulumi.Input<string>;
     }
 
-    export interface SubscriptionIAMMemberCondition {
+    export interface SubscriptionIamMemberCondition {
         description?: pulumi.Input<string>;
         expression: pulumi.Input<string>;
         title: pulumi.Input<string>;
@@ -50880,13 +50880,13 @@ export namespace pubsub {
         minimumBackoff?: pulumi.Input<string>;
     }
 
-    export interface TopicIAMBindingCondition {
+    export interface TopicIamBindingCondition {
         description?: pulumi.Input<string>;
         expression: pulumi.Input<string>;
         title: pulumi.Input<string>;
     }
 
-    export interface TopicIAMMemberCondition {
+    export interface TopicIamMemberCondition {
         description?: pulumi.Input<string>;
         expression: pulumi.Input<string>;
         title: pulumi.Input<string>;
@@ -51404,7 +51404,7 @@ export namespace securitycenter {
 }
 
 export namespace serviceAccount {
-    export interface IAMBindingCondition {
+    export interface IamBindingCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
          *
@@ -51423,7 +51423,7 @@ export namespace serviceAccount {
         title: pulumi.Input<string>;
     }
 
-    export interface IAMMemberCondition {
+    export interface IamMemberCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
          *
@@ -51513,25 +51513,25 @@ export namespace spanner {
         kmsKeyName: pulumi.Input<string>;
     }
 
-    export interface DatabaseIAMBindingCondition {
+    export interface DatabaseIamBindingCondition {
         description?: pulumi.Input<string>;
         expression: pulumi.Input<string>;
         title: pulumi.Input<string>;
     }
 
-    export interface DatabaseIAMMemberCondition {
+    export interface DatabaseIamMemberCondition {
         description?: pulumi.Input<string>;
         expression: pulumi.Input<string>;
         title: pulumi.Input<string>;
     }
 
-    export interface InstanceIAMBindingCondition {
+    export interface InstanceIamBindingCondition {
         description?: pulumi.Input<string>;
         expression: pulumi.Input<string>;
         title: pulumi.Input<string>;
     }
 
-    export interface InstanceIAMMemberCondition {
+    export interface InstanceIamMemberCondition {
         description?: pulumi.Input<string>;
         expression: pulumi.Input<string>;
         title: pulumi.Input<string>;
@@ -52080,7 +52080,7 @@ export namespace storage {
         defaultKmsKeyName: pulumi.Input<string>;
     }
 
-    export interface BucketIAMBindingCondition {
+    export interface BucketIamBindingCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
          *
@@ -52099,7 +52099,7 @@ export namespace storage {
         title: pulumi.Input<string>;
     }
 
-    export interface BucketIAMMemberCondition {
+    export interface BucketIamMemberCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
          *

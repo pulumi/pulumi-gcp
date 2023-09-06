@@ -49,8 +49,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.serviceAccount.AccountArgs;
  * import com.pulumi.gcp.cloudrun.IamBinding;
  * import com.pulumi.gcp.cloudrun.IamBindingArgs;
- * import com.pulumi.gcp.projects.IAMBinding;
- * import com.pulumi.gcp.projects.IAMBindingArgs;
+ * import com.pulumi.gcp.projects.IamBinding;
+ * import com.pulumi.gcp.projects.IamBindingArgs;
  * import com.pulumi.gcp.pubsub.Topic;
  * import com.pulumi.gcp.pubsub.Subscription;
  * import com.pulumi.gcp.pubsub.SubscriptionArgs;
@@ -96,7 +96,7 @@ import javax.annotation.Nullable;
  *             .members(sa.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
  *             .build());
  * 
- *         var project = new IAMBinding(&#34;project&#34;, IAMBindingArgs.builder()        
+ *         var project = new IamBinding(&#34;project&#34;, IamBindingArgs.builder()        
  *             .role(&#34;roles/iam.serviceAccountTokenCreator&#34;)
  *             .members(sa.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
  *             .build());
@@ -231,7 +231,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
  * import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.organizations.inputs.GetIamPolicyArgs;
  * import com.pulumi.gcp.cloudrun.IamPolicy;
  * import com.pulumi.gcp.cloudrun.IamPolicyArgs;
  * import java.util.List;
@@ -258,18 +258,18 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         final var noauthIAMPolicy = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
- *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *         final var noauthIamPolicy = OrganizationsFunctions.getIamPolicy(GetIamPolicyArgs.builder()
+ *             .bindings(GetIamPolicyBindingArgs.builder()
  *                 .role(&#34;roles/run.invoker&#34;)
  *                 .members(&#34;allUsers&#34;)
  *                 .build())
  *             .build());
  * 
- *         var noauthIamPolicy = new IamPolicy(&#34;noauthIamPolicy&#34;, IamPolicyArgs.builder()        
+ *         var noauthCloudrun_iamPolicyIamPolicy = new IamPolicy(&#34;noauthCloudrun/iamPolicyIamPolicy&#34;, IamPolicyArgs.builder()        
  *             .location(default_.location())
  *             .project(default_.project())
  *             .service(default_.name())
- *             .policyData(noauthIAMPolicy.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(noauthIamPolicy.applyValue(getIamPolicyResult -&gt; getIamPolicyResult.policyData()))
  *             .build());
  * 
  *     }

@@ -9,14 +9,14 @@ import * as utilities from "../utilities";
 /**
  * Four different resources help you manage your IAM policy for a folder. Each of these resources serves a different use case:
  *
- * * `gcp.folder.IAMPolicy`: Authoritative. Sets the IAM policy for the folder and replaces any existing policy already attached.
- * * `gcp.folder.IAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the folder are preserved.
- * * `gcp.folder.IAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the folder are preserved.
+ * * `gcp.folder.IamPolicy`: Authoritative. Sets the IAM policy for the folder and replaces any existing policy already attached.
+ * * `gcp.folder.IamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the folder are preserved.
+ * * `gcp.folder.IamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the folder are preserved.
  * * `gcp.folder.IamAuditConfig`: Authoritative for a given service. Updates the IAM policy to enable audit logging for the given service.
  *
- * > **Note:** `gcp.folder.IAMPolicy` **cannot** be used in conjunction with `gcp.folder.IAMBinding`, `gcp.folder.IAMMember`, or `gcp.folder.IamAuditConfig` or they will fight over what your policy should be.
+ * > **Note:** `gcp.folder.IamPolicy` **cannot** be used in conjunction with `gcp.folder.IamBinding`, `gcp.folder.IamMember`, or `gcp.folder.IamAuditConfig` or they will fight over what your policy should be.
  *
- * > **Note:** `gcp.folder.IAMBinding` resources **can be** used in conjunction with `gcp.folder.IAMMember` resources **only if** they do not grant privilege to the same role.
+ * > **Note:** `gcp.folder.IamBinding` resources **can be** used in conjunction with `gcp.folder.IamMember` resources **only if** they do not grant privilege to the same role.
  *
  * > **Note:** The underlying API method `projects.setIamPolicy` has constraints which are documented [here](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
  *    IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning a 400 error code so please review these if you encounter errors with this resource.
@@ -24,9 +24,9 @@ import * as utilities from "../utilities";
  * ## google\_folder\_iam\_policy
  *
  * !> **Be careful!** You can accidentally lock yourself out of your folder
- *    using this resource. Deleting a `gcp.folder.IAMPolicy` removes access
+ *    using this resource. Deleting a `gcp.folder.IamPolicy` removes access
  *    from anyone without permissions on its parent folder/organization. Proceed with caution.
- *    It's not recommended to use `gcp.folder.IAMPolicy` with your provider folder
+ *    It's not recommended to use `gcp.folder.IamPolicy` with your provider folder
  *    to avoid locking yourself out, and it should generally only be used with folders
  *    fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
  *    applying the change.
@@ -35,13 +35,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const admin = gcp.organizations.getIAMPolicy({
+ * const admin = gcp.organizations.getIamPolicy({
  *     bindings: [{
  *         role: "roles/editor",
  *         members: ["user:jane@example.com"],
  *     }],
  * });
- * const folder = new gcp.folder.IAMPolicy("folder", {
+ * const folder = new gcp.folder.IamPolicy("folder", {
  *     folder: "folders/1234567",
  *     policyData: admin.then(admin => admin.policyData),
  * });
@@ -53,7 +53,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const admin = gcp.organizations.getIAMPolicy({
+ * const admin = gcp.organizations.getIamPolicy({
  *     bindings: [{
  *         condition: {
  *             description: "Expiring at midnight of 2019-12-31",
@@ -64,7 +64,7 @@ import * as utilities from "../utilities";
  *         role: "roles/compute.admin",
  *     }],
  * });
- * const folder = new gcp.folder.IAMPolicy("folder", {
+ * const folder = new gcp.folder.IamPolicy("folder", {
  *     folder: "folders/1234567",
  *     policyData: admin.then(admin => admin.policyData),
  * });
@@ -76,7 +76,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const folder = new gcp.folder.IAMBinding("folder", {
+ * const folder = new gcp.folder.IamBinding("folder", {
  *     folder: "folders/1234567",
  *     members: ["user:jane@example.com"],
  *     role: "roles/editor",
@@ -89,7 +89,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const folder = new gcp.folder.IAMBinding("folder", {
+ * const folder = new gcp.folder.IamBinding("folder", {
  *     condition: {
  *         description: "Expiring at midnight of 2019-12-31",
  *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
@@ -107,7 +107,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const folder = new gcp.folder.IAMMember("folder", {
+ * const folder = new gcp.folder.IamMember("folder", {
  *     folder: "folders/1234567",
  *     member: "user:jane@example.com",
  *     role: "roles/editor",
@@ -120,7 +120,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const folder = new gcp.folder.IAMMember("folder", {
+ * const folder = new gcp.folder.IamMember("folder", {
  *     condition: {
  *         description: "Expiring at midnight of 2019-12-31",
  *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",

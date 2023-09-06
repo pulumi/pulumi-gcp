@@ -40,20 +40,20 @@ export const getIamPolicy: typeof import("./getIamPolicy").getIamPolicy = null a
 export const getIamPolicyOutput: typeof import("./getIamPolicy").getIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getIamPolicy","getIamPolicyOutput"], () => require("./getIamPolicy"));
 
-export { IAMBindingArgs, IAMBindingState } from "./iambinding";
-export type IAMBinding = import("./iambinding").IAMBinding;
-export const IAMBinding: typeof import("./iambinding").IAMBinding = null as any;
-utilities.lazyLoad(exports, ["IAMBinding"], () => require("./iambinding"));
+export { IamBindingArgs, IamBindingState } from "./iamBinding";
+export type IamBinding = import("./iamBinding").IamBinding;
+export const IamBinding: typeof import("./iamBinding").IamBinding = null as any;
+utilities.lazyLoad(exports, ["IamBinding"], () => require("./iamBinding"));
 
-export { IAMMemberArgs, IAMMemberState } from "./iammember";
-export type IAMMember = import("./iammember").IAMMember;
-export const IAMMember: typeof import("./iammember").IAMMember = null as any;
-utilities.lazyLoad(exports, ["IAMMember"], () => require("./iammember"));
+export { IamMemberArgs, IamMemberState } from "./iamMember";
+export type IamMember = import("./iamMember").IamMember;
+export const IamMember: typeof import("./iamMember").IamMember = null as any;
+utilities.lazyLoad(exports, ["IamMember"], () => require("./iamMember"));
 
-export { IAMPolicyArgs, IAMPolicyState } from "./iampolicy";
-export type IAMPolicy = import("./iampolicy").IAMPolicy;
-export const IAMPolicy: typeof import("./iampolicy").IAMPolicy = null as any;
-utilities.lazyLoad(exports, ["IAMPolicy"], () => require("./iampolicy"));
+export { IamPolicyArgs, IamPolicyState } from "./iamPolicy";
+export type IamPolicy = import("./iamPolicy").IamPolicy;
+export const IamPolicy: typeof import("./iamPolicy").IamPolicy = null as any;
+utilities.lazyLoad(exports, ["IamPolicy"], () => require("./iamPolicy"));
 
 export { KeyArgs, KeyState } from "./key";
 export type Key = import("./key").Key;
@@ -67,12 +67,12 @@ const _module = {
         switch (type) {
             case "gcp:serviceAccount/account:Account":
                 return new Account(name, <any>undefined, { urn })
-            case "gcp:serviceAccount/iAMBinding:IAMBinding":
-                return new IAMBinding(name, <any>undefined, { urn })
-            case "gcp:serviceAccount/iAMMember:IAMMember":
-                return new IAMMember(name, <any>undefined, { urn })
-            case "gcp:serviceAccount/iAMPolicy:IAMPolicy":
-                return new IAMPolicy(name, <any>undefined, { urn })
+            case "gcp:serviceAccount/iamBinding:IamBinding":
+                return new IamBinding(name, <any>undefined, { urn })
+            case "gcp:serviceAccount/iamMember:IamMember":
+                return new IamMember(name, <any>undefined, { urn })
+            case "gcp:serviceAccount/iamPolicy:IamPolicy":
+                return new IamPolicy(name, <any>undefined, { urn })
             case "gcp:serviceAccount/key:Key":
                 return new Key(name, <any>undefined, { urn })
             default:
@@ -81,7 +81,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "serviceAccount/account", _module)
-pulumi.runtime.registerResourceModule("gcp", "serviceAccount/iAMBinding", _module)
-pulumi.runtime.registerResourceModule("gcp", "serviceAccount/iAMMember", _module)
-pulumi.runtime.registerResourceModule("gcp", "serviceAccount/iAMPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "serviceAccount/iamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "serviceAccount/iamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "serviceAccount/iamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "serviceAccount/key", _module)

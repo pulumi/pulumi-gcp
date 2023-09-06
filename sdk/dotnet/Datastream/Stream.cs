@@ -111,28 +111,28 @@ namespace Pulumi.Gcp.Datastream
     ///         UniformBucketLevelAccess = true,
     ///     });
     /// 
-    ///     var viewer = new Gcp.Storage.BucketIAMMember("viewer", new()
+    ///     var viewer = new Gcp.Storage.BucketIamMember("viewer", new()
     ///     {
     ///         Bucket = bucket.Name,
     ///         Role = "roles/storage.objectViewer",
     ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-datastream.iam.gserviceaccount.com",
     ///     });
     /// 
-    ///     var creator = new Gcp.Storage.BucketIAMMember("creator", new()
+    ///     var creator = new Gcp.Storage.BucketIamMember("creator", new()
     ///     {
     ///         Bucket = bucket.Name,
     ///         Role = "roles/storage.objectCreator",
     ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-datastream.iam.gserviceaccount.com",
     ///     });
     /// 
-    ///     var reader = new Gcp.Storage.BucketIAMMember("reader", new()
+    ///     var reader = new Gcp.Storage.BucketIamMember("reader", new()
     ///     {
     ///         Bucket = bucket.Name,
     ///         Role = "roles/storage.legacyBucketReader",
     ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-datastream.iam.gserviceaccount.com",
     ///     });
     /// 
-    ///     var keyUser = new Gcp.Kms.CryptoKeyIAMMember("keyUser", new()
+    ///     var keyUser = new Gcp.Kms.CryptoKeyIamMember("keyUser", new()
     ///     {
     ///         CryptoKeyId = "kms-name",
     ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
@@ -786,7 +786,7 @@ namespace Pulumi.Gcp.Datastream
     /// 
     ///     var bqSa = Gcp.BigQuery.GetDefaultServiceAccount.Invoke();
     /// 
-    ///     var bigqueryKeyUser = new Gcp.Kms.CryptoKeyIAMMember("bigqueryKeyUser", new()
+    ///     var bigqueryKeyUser = new Gcp.Kms.CryptoKeyIamMember("bigqueryKeyUser", new()
     ///     {
     ///         CryptoKeyId = "bigquery-kms-name",
     ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",

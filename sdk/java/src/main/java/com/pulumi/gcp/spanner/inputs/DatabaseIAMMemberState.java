@@ -5,21 +5,21 @@ package com.pulumi.gcp.spanner.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.gcp.spanner.inputs.DatabaseIAMMemberConditionArgs;
+import com.pulumi.gcp.spanner.inputs.DatabaseIamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class DatabaseIAMMemberState extends com.pulumi.resources.ResourceArgs {
+public final class DatabaseIamMemberState extends com.pulumi.resources.ResourceArgs {
 
-    public static final DatabaseIAMMemberState Empty = new DatabaseIAMMemberState();
+    public static final DatabaseIamMemberState Empty = new DatabaseIamMemberState();
 
     @Import(name="condition")
-    private @Nullable Output<DatabaseIAMMemberConditionArgs> condition;
+    private @Nullable Output<DatabaseIamMemberConditionArgs> condition;
 
-    public Optional<Output<DatabaseIAMMemberConditionArgs>> condition() {
+    public Optional<Output<DatabaseIamMemberConditionArgs>> condition() {
         return Optional.ofNullable(this.condition);
     }
 
@@ -112,7 +112,7 @@ public final class DatabaseIAMMemberState extends com.pulumi.resources.ResourceA
 
     /**
      * The role that should be applied. Only one
-     * `gcp.spanner.DatabaseIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.spanner.DatabaseIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -121,7 +121,7 @@ public final class DatabaseIAMMemberState extends com.pulumi.resources.ResourceA
 
     /**
      * @return The role that should be applied. Only one
-     * `gcp.spanner.DatabaseIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.spanner.DatabaseIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -129,9 +129,9 @@ public final class DatabaseIAMMemberState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.role);
     }
 
-    private DatabaseIAMMemberState() {}
+    private DatabaseIamMemberState() {}
 
-    private DatabaseIAMMemberState(DatabaseIAMMemberState $) {
+    private DatabaseIamMemberState(DatabaseIamMemberState $) {
         this.condition = $.condition;
         this.database = $.database;
         this.etag = $.etag;
@@ -144,27 +144,27 @@ public final class DatabaseIAMMemberState extends com.pulumi.resources.ResourceA
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(DatabaseIAMMemberState defaults) {
+    public static Builder builder(DatabaseIamMemberState defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private DatabaseIAMMemberState $;
+        private DatabaseIamMemberState $;
 
         public Builder() {
-            $ = new DatabaseIAMMemberState();
+            $ = new DatabaseIamMemberState();
         }
 
-        public Builder(DatabaseIAMMemberState defaults) {
-            $ = new DatabaseIAMMemberState(Objects.requireNonNull(defaults));
+        public Builder(DatabaseIamMemberState defaults) {
+            $ = new DatabaseIamMemberState(Objects.requireNonNull(defaults));
         }
 
-        public Builder condition(@Nullable Output<DatabaseIAMMemberConditionArgs> condition) {
+        public Builder condition(@Nullable Output<DatabaseIamMemberConditionArgs> condition) {
             $.condition = condition;
             return this;
         }
 
-        public Builder condition(DatabaseIAMMemberConditionArgs condition) {
+        public Builder condition(DatabaseIamMemberConditionArgs condition) {
             return condition(Output.of(condition));
         }
 
@@ -283,7 +283,7 @@ public final class DatabaseIAMMemberState extends com.pulumi.resources.ResourceA
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.spanner.DatabaseIAMBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.spanner.DatabaseIamBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder
@@ -296,7 +296,7 @@ public final class DatabaseIAMMemberState extends com.pulumi.resources.ResourceA
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.spanner.DatabaseIAMBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.spanner.DatabaseIamBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder
@@ -306,7 +306,7 @@ public final class DatabaseIAMMemberState extends com.pulumi.resources.ResourceA
             return role(Output.of(role));
         }
 
-        public DatabaseIAMMemberState build() {
+        public DatabaseIamMemberState build() {
             return $;
         }
     }

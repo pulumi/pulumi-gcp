@@ -11,10 +11,10 @@ from .. import _utilities
 
 __all__ = [
     'DatabaseEncryptionConfigArgs',
-    'DatabaseIAMBindingConditionArgs',
-    'DatabaseIAMMemberConditionArgs',
-    'InstanceIAMBindingConditionArgs',
-    'InstanceIAMMemberConditionArgs',
+    'DatabaseIamBindingConditionArgs',
+    'DatabaseIamMemberConditionArgs',
+    'InstanceIamBindingConditionArgs',
+    'InstanceIamMemberConditionArgs',
 ]
 
 @pulumi.input_type
@@ -42,7 +42,7 @@ class DatabaseEncryptionConfigArgs:
 
 
 @pulumi.input_type
-class DatabaseIAMBindingConditionArgs:
+class DatabaseIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -81,7 +81,7 @@ class DatabaseIAMBindingConditionArgs:
 
 
 @pulumi.input_type
-class DatabaseIAMMemberConditionArgs:
+class DatabaseIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -120,7 +120,7 @@ class DatabaseIAMMemberConditionArgs:
 
 
 @pulumi.input_type
-class InstanceIAMBindingConditionArgs:
+class InstanceIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -159,7 +159,7 @@ class InstanceIAMBindingConditionArgs:
 
 
 @pulumi.input_type
-class InstanceIAMMemberConditionArgs:
+class InstanceIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],

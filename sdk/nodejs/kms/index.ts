@@ -10,20 +10,20 @@ export type CryptoKey = import("./cryptoKey").CryptoKey;
 export const CryptoKey: typeof import("./cryptoKey").CryptoKey = null as any;
 utilities.lazyLoad(exports, ["CryptoKey"], () => require("./cryptoKey"));
 
-export { CryptoKeyIAMBindingArgs, CryptoKeyIAMBindingState } from "./cryptoKeyIAMBinding";
-export type CryptoKeyIAMBinding = import("./cryptoKeyIAMBinding").CryptoKeyIAMBinding;
-export const CryptoKeyIAMBinding: typeof import("./cryptoKeyIAMBinding").CryptoKeyIAMBinding = null as any;
-utilities.lazyLoad(exports, ["CryptoKeyIAMBinding"], () => require("./cryptoKeyIAMBinding"));
+export { CryptoKeyIamBindingArgs, CryptoKeyIamBindingState } from "./cryptoKeyIamBinding";
+export type CryptoKeyIamBinding = import("./cryptoKeyIamBinding").CryptoKeyIamBinding;
+export const CryptoKeyIamBinding: typeof import("./cryptoKeyIamBinding").CryptoKeyIamBinding = null as any;
+utilities.lazyLoad(exports, ["CryptoKeyIamBinding"], () => require("./cryptoKeyIamBinding"));
 
-export { CryptoKeyIAMMemberArgs, CryptoKeyIAMMemberState } from "./cryptoKeyIAMMember";
-export type CryptoKeyIAMMember = import("./cryptoKeyIAMMember").CryptoKeyIAMMember;
-export const CryptoKeyIAMMember: typeof import("./cryptoKeyIAMMember").CryptoKeyIAMMember = null as any;
-utilities.lazyLoad(exports, ["CryptoKeyIAMMember"], () => require("./cryptoKeyIAMMember"));
+export { CryptoKeyIamMemberArgs, CryptoKeyIamMemberState } from "./cryptoKeyIamMember";
+export type CryptoKeyIamMember = import("./cryptoKeyIamMember").CryptoKeyIamMember;
+export const CryptoKeyIamMember: typeof import("./cryptoKeyIamMember").CryptoKeyIamMember = null as any;
+utilities.lazyLoad(exports, ["CryptoKeyIamMember"], () => require("./cryptoKeyIamMember"));
 
-export { CryptoKeyIAMPolicyArgs, CryptoKeyIAMPolicyState } from "./cryptoKeyIAMPolicy";
-export type CryptoKeyIAMPolicy = import("./cryptoKeyIAMPolicy").CryptoKeyIAMPolicy;
-export const CryptoKeyIAMPolicy: typeof import("./cryptoKeyIAMPolicy").CryptoKeyIAMPolicy = null as any;
-utilities.lazyLoad(exports, ["CryptoKeyIAMPolicy"], () => require("./cryptoKeyIAMPolicy"));
+export { CryptoKeyIamPolicyArgs, CryptoKeyIamPolicyState } from "./cryptoKeyIamPolicy";
+export type CryptoKeyIamPolicy = import("./cryptoKeyIamPolicy").CryptoKeyIamPolicy;
+export const CryptoKeyIamPolicy: typeof import("./cryptoKeyIamPolicy").CryptoKeyIamPolicy = null as any;
+utilities.lazyLoad(exports, ["CryptoKeyIamPolicy"], () => require("./cryptoKeyIamPolicy"));
 
 export { CryptoKeyVersionArgs, CryptoKeyVersionState } from "./cryptoKeyVersion";
 export type CryptoKeyVersion = import("./cryptoKeyVersion").CryptoKeyVersion;
@@ -75,20 +75,20 @@ export type KeyRing = import("./keyRing").KeyRing;
 export const KeyRing: typeof import("./keyRing").KeyRing = null as any;
 utilities.lazyLoad(exports, ["KeyRing"], () => require("./keyRing"));
 
-export { KeyRingIAMBindingArgs, KeyRingIAMBindingState } from "./keyRingIAMBinding";
-export type KeyRingIAMBinding = import("./keyRingIAMBinding").KeyRingIAMBinding;
-export const KeyRingIAMBinding: typeof import("./keyRingIAMBinding").KeyRingIAMBinding = null as any;
-utilities.lazyLoad(exports, ["KeyRingIAMBinding"], () => require("./keyRingIAMBinding"));
+export { KeyRingIamBindingArgs, KeyRingIamBindingState } from "./keyRingIamBinding";
+export type KeyRingIamBinding = import("./keyRingIamBinding").KeyRingIamBinding;
+export const KeyRingIamBinding: typeof import("./keyRingIamBinding").KeyRingIamBinding = null as any;
+utilities.lazyLoad(exports, ["KeyRingIamBinding"], () => require("./keyRingIamBinding"));
 
-export { KeyRingIAMMemberArgs, KeyRingIAMMemberState } from "./keyRingIAMMember";
-export type KeyRingIAMMember = import("./keyRingIAMMember").KeyRingIAMMember;
-export const KeyRingIAMMember: typeof import("./keyRingIAMMember").KeyRingIAMMember = null as any;
-utilities.lazyLoad(exports, ["KeyRingIAMMember"], () => require("./keyRingIAMMember"));
+export { KeyRingIamMemberArgs, KeyRingIamMemberState } from "./keyRingIamMember";
+export type KeyRingIamMember = import("./keyRingIamMember").KeyRingIamMember;
+export const KeyRingIamMember: typeof import("./keyRingIamMember").KeyRingIamMember = null as any;
+utilities.lazyLoad(exports, ["KeyRingIamMember"], () => require("./keyRingIamMember"));
 
-export { KeyRingIAMPolicyArgs, KeyRingIAMPolicyState } from "./keyRingIAMPolicy";
-export type KeyRingIAMPolicy = import("./keyRingIAMPolicy").KeyRingIAMPolicy;
-export const KeyRingIAMPolicy: typeof import("./keyRingIAMPolicy").KeyRingIAMPolicy = null as any;
-utilities.lazyLoad(exports, ["KeyRingIAMPolicy"], () => require("./keyRingIAMPolicy"));
+export { KeyRingIamPolicyArgs, KeyRingIamPolicyState } from "./keyRingIamPolicy";
+export type KeyRingIamPolicy = import("./keyRingIamPolicy").KeyRingIamPolicy;
+export const KeyRingIamPolicy: typeof import("./keyRingIamPolicy").KeyRingIamPolicy = null as any;
+utilities.lazyLoad(exports, ["KeyRingIamPolicy"], () => require("./keyRingIamPolicy"));
 
 export { KeyRingImportJobArgs, KeyRingImportJobState } from "./keyRingImportJob";
 export type KeyRingImportJob = import("./keyRingImportJob").KeyRingImportJob;
@@ -112,22 +112,22 @@ const _module = {
         switch (type) {
             case "gcp:kms/cryptoKey:CryptoKey":
                 return new CryptoKey(name, <any>undefined, { urn })
-            case "gcp:kms/cryptoKeyIAMBinding:CryptoKeyIAMBinding":
-                return new CryptoKeyIAMBinding(name, <any>undefined, { urn })
-            case "gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember":
-                return new CryptoKeyIAMMember(name, <any>undefined, { urn })
-            case "gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy":
-                return new CryptoKeyIAMPolicy(name, <any>undefined, { urn })
+            case "gcp:kms/cryptoKeyIamBinding:CryptoKeyIamBinding":
+                return new CryptoKeyIamBinding(name, <any>undefined, { urn })
+            case "gcp:kms/cryptoKeyIamMember:CryptoKeyIamMember":
+                return new CryptoKeyIamMember(name, <any>undefined, { urn })
+            case "gcp:kms/cryptoKeyIamPolicy:CryptoKeyIamPolicy":
+                return new CryptoKeyIamPolicy(name, <any>undefined, { urn })
             case "gcp:kms/cryptoKeyVersion:CryptoKeyVersion":
                 return new CryptoKeyVersion(name, <any>undefined, { urn })
             case "gcp:kms/keyRing:KeyRing":
                 return new KeyRing(name, <any>undefined, { urn })
-            case "gcp:kms/keyRingIAMBinding:KeyRingIAMBinding":
-                return new KeyRingIAMBinding(name, <any>undefined, { urn })
-            case "gcp:kms/keyRingIAMMember:KeyRingIAMMember":
-                return new KeyRingIAMMember(name, <any>undefined, { urn })
-            case "gcp:kms/keyRingIAMPolicy:KeyRingIAMPolicy":
-                return new KeyRingIAMPolicy(name, <any>undefined, { urn })
+            case "gcp:kms/keyRingIamBinding:KeyRingIamBinding":
+                return new KeyRingIamBinding(name, <any>undefined, { urn })
+            case "gcp:kms/keyRingIamMember:KeyRingIamMember":
+                return new KeyRingIamMember(name, <any>undefined, { urn })
+            case "gcp:kms/keyRingIamPolicy:KeyRingIamPolicy":
+                return new KeyRingIamPolicy(name, <any>undefined, { urn })
             case "gcp:kms/keyRingImportJob:KeyRingImportJob":
                 return new KeyRingImportJob(name, <any>undefined, { urn })
             case "gcp:kms/registry:Registry":
@@ -140,14 +140,14 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "kms/cryptoKey", _module)
-pulumi.runtime.registerResourceModule("gcp", "kms/cryptoKeyIAMBinding", _module)
-pulumi.runtime.registerResourceModule("gcp", "kms/cryptoKeyIAMMember", _module)
-pulumi.runtime.registerResourceModule("gcp", "kms/cryptoKeyIAMPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "kms/cryptoKeyIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "kms/cryptoKeyIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "kms/cryptoKeyIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "kms/cryptoKeyVersion", _module)
 pulumi.runtime.registerResourceModule("gcp", "kms/keyRing", _module)
-pulumi.runtime.registerResourceModule("gcp", "kms/keyRingIAMBinding", _module)
-pulumi.runtime.registerResourceModule("gcp", "kms/keyRingIAMMember", _module)
-pulumi.runtime.registerResourceModule("gcp", "kms/keyRingIAMPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "kms/keyRingIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "kms/keyRingIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "kms/keyRingIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "kms/keyRingImportJob", _module)
 pulumi.runtime.registerResourceModule("gcp", "kms/registry", _module)
 pulumi.runtime.registerResourceModule("gcp", "kms/secretCiphertext", _module)

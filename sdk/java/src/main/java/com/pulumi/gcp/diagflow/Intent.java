@@ -82,8 +82,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.projects.ServiceArgs;
  * import com.pulumi.gcp.serviceAccount.Account;
  * import com.pulumi.gcp.serviceAccount.AccountArgs;
- * import com.pulumi.gcp.projects.IAMMember;
- * import com.pulumi.gcp.projects.IAMMemberArgs;
+ * import com.pulumi.gcp.projects.IamMember;
+ * import com.pulumi.gcp.projects.IamMemberArgs;
  * import com.pulumi.gcp.diagflow.Agent;
  * import com.pulumi.gcp.diagflow.AgentArgs;
  * import com.pulumi.gcp.diagflow.Intent;
@@ -117,7 +117,7 @@ import javax.annotation.Nullable;
  *             .accountId(&#34;my-account&#34;)
  *             .build());
  * 
- *         var agentCreate = new IAMMember(&#34;agentCreate&#34;, IAMMemberArgs.builder()        
+ *         var agentCreate = new IamMember(&#34;agentCreate&#34;, IamMemberArgs.builder()        
  *             .project(agentProjectService.project())
  *             .role(&#34;roles/dialogflow.admin&#34;)
  *             .member(dialogflowServiceAccount.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))

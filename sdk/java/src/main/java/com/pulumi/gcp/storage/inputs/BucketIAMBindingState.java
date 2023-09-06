@@ -5,7 +5,7 @@ package com.pulumi.gcp.storage.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.gcp.storage.inputs.BucketIAMBindingConditionArgs;
+import com.pulumi.gcp.storage.inputs.BucketIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -13,9 +13,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class BucketIAMBindingState extends com.pulumi.resources.ResourceArgs {
+public final class BucketIamBindingState extends com.pulumi.resources.ResourceArgs {
 
-    public static final BucketIAMBindingState Empty = new BucketIAMBindingState();
+    public static final BucketIamBindingState Empty = new BucketIamBindingState();
 
     /**
      * Used to find the parent resource to bind the IAM policy to
@@ -62,14 +62,14 @@ public final class BucketIAMBindingState extends com.pulumi.resources.ResourceAr
      * 
      */
     @Import(name="condition")
-    private @Nullable Output<BucketIAMBindingConditionArgs> condition;
+    private @Nullable Output<BucketIamBindingConditionArgs> condition;
 
     /**
      * @return An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      * 
      */
-    public Optional<Output<BucketIAMBindingConditionArgs>> condition() {
+    public Optional<Output<BucketIamBindingConditionArgs>> condition() {
         return Optional.ofNullable(this.condition);
     }
 
@@ -97,7 +97,7 @@ public final class BucketIAMBindingState extends com.pulumi.resources.ResourceAr
 
     /**
      * The role that should be applied. Only one
-     * `gcp.storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.storage.BucketIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -106,7 +106,7 @@ public final class BucketIAMBindingState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return The role that should be applied. Only one
-     * `gcp.storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.storage.BucketIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -114,9 +114,9 @@ public final class BucketIAMBindingState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.role);
     }
 
-    private BucketIAMBindingState() {}
+    private BucketIamBindingState() {}
 
-    private BucketIAMBindingState(BucketIAMBindingState $) {
+    private BucketIamBindingState(BucketIamBindingState $) {
         this.bucket = $.bucket;
         this.condition = $.condition;
         this.etag = $.etag;
@@ -127,19 +127,19 @@ public final class BucketIAMBindingState extends com.pulumi.resources.ResourceAr
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(BucketIAMBindingState defaults) {
+    public static Builder builder(BucketIamBindingState defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private BucketIAMBindingState $;
+        private BucketIamBindingState $;
 
         public Builder() {
-            $ = new BucketIAMBindingState();
+            $ = new BucketIamBindingState();
         }
 
-        public Builder(BucketIAMBindingState defaults) {
-            $ = new BucketIAMBindingState(Objects.requireNonNull(defaults));
+        public Builder(BucketIamBindingState defaults) {
+            $ = new BucketIamBindingState(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -194,7 +194,7 @@ public final class BucketIAMBindingState extends com.pulumi.resources.ResourceAr
          * @return builder
          * 
          */
-        public Builder condition(@Nullable Output<BucketIAMBindingConditionArgs> condition) {
+        public Builder condition(@Nullable Output<BucketIamBindingConditionArgs> condition) {
             $.condition = condition;
             return this;
         }
@@ -206,7 +206,7 @@ public final class BucketIAMBindingState extends com.pulumi.resources.ResourceAr
          * @return builder
          * 
          */
-        public Builder condition(BucketIAMBindingConditionArgs condition) {
+        public Builder condition(BucketIamBindingConditionArgs condition) {
             return condition(Output.of(condition));
         }
 
@@ -246,7 +246,7 @@ public final class BucketIAMBindingState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.storage.BucketIamBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder
@@ -259,7 +259,7 @@ public final class BucketIAMBindingState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.storage.BucketIamBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder
@@ -269,7 +269,7 @@ public final class BucketIAMBindingState extends com.pulumi.resources.ResourceAr
             return role(Output.of(role));
         }
 
-        public BucketIAMBindingState build() {
+        public BucketIamBindingState build() {
             return $;
         }
     }

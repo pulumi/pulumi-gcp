@@ -11,9 +11,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class DatabaseIAMBindingConditionArgs extends com.pulumi.resources.ResourceArgs {
+public final class DatabaseIamBindingConditionArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final DatabaseIAMBindingConditionArgs Empty = new DatabaseIAMBindingConditionArgs();
+    public static final DatabaseIamBindingConditionArgs Empty = new DatabaseIamBindingConditionArgs();
 
     @Import(name="description")
     private @Nullable Output<String> description;
@@ -36,9 +36,9 @@ public final class DatabaseIAMBindingConditionArgs extends com.pulumi.resources.
         return this.title;
     }
 
-    private DatabaseIAMBindingConditionArgs() {}
+    private DatabaseIamBindingConditionArgs() {}
 
-    private DatabaseIAMBindingConditionArgs(DatabaseIAMBindingConditionArgs $) {
+    private DatabaseIamBindingConditionArgs(DatabaseIamBindingConditionArgs $) {
         this.description = $.description;
         this.expression = $.expression;
         this.title = $.title;
@@ -47,19 +47,19 @@ public final class DatabaseIAMBindingConditionArgs extends com.pulumi.resources.
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(DatabaseIAMBindingConditionArgs defaults) {
+    public static Builder builder(DatabaseIamBindingConditionArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private DatabaseIAMBindingConditionArgs $;
+        private DatabaseIamBindingConditionArgs $;
 
         public Builder() {
-            $ = new DatabaseIAMBindingConditionArgs();
+            $ = new DatabaseIamBindingConditionArgs();
         }
 
-        public Builder(DatabaseIAMBindingConditionArgs defaults) {
-            $ = new DatabaseIAMBindingConditionArgs(Objects.requireNonNull(defaults));
+        public Builder(DatabaseIamBindingConditionArgs defaults) {
+            $ = new DatabaseIamBindingConditionArgs(Objects.requireNonNull(defaults));
         }
 
         public Builder description(@Nullable Output<String> description) {
@@ -89,7 +89,7 @@ public final class DatabaseIAMBindingConditionArgs extends com.pulumi.resources.
             return title(Output.of(title));
         }
 
-        public DatabaseIAMBindingConditionArgs build() {
+        public DatabaseIamBindingConditionArgs build() {
             $.expression = Objects.requireNonNull($.expression, "expected parameter 'expression' to be non-null");
             $.title = Objects.requireNonNull($.title, "expected parameter 'title' to be non-null");
             return $;

@@ -27,15 +27,15 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ApiKey{}
 	case "gcp:projects/defaultServiceAccounts:DefaultServiceAccounts":
 		r = &DefaultServiceAccounts{}
-	case "gcp:projects/iAMAuditConfig:IamAuditConfig":
+	case "gcp:projects/iamAuditConfig:IamAuditConfig":
 		r = &IamAuditConfig{}
-	case "gcp:projects/iAMBinding:IamBinding":
+	case "gcp:projects/iamBinding:IamBinding":
 		r = &IamBinding{}
-	case "gcp:projects/iAMCustomRole:IamCustomRole":
+	case "gcp:projects/iamCustomRole:IamCustomRole":
 		r = &IamCustomRole{}
-	case "gcp:projects/iAMMember:IamMember":
+	case "gcp:projects/iamMember:IamMember":
 		r = &IamMember{}
-	case "gcp:projects/iAMPolicy:IamPolicy":
+	case "gcp:projects/iamPolicy:IamPolicy":
 		r = &IamPolicy{}
 	case "gcp:projects/organizationPolicy:OrganizationPolicy":
 		r = &OrganizationPolicy{}
@@ -75,27 +75,27 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"projects/iAMAuditConfig",
+		"projects/iamAuditConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"projects/iAMBinding",
+		"projects/iamBinding",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"projects/iAMCustomRole",
+		"projects/iamCustomRole",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"projects/iAMMember",
+		"projects/iamMember",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"projects/iAMPolicy",
+		"projects/iamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

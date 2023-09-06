@@ -8,8 +8,8 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
-import com.pulumi.gcp.organizations.IAMCustomRoleArgs;
-import com.pulumi.gcp.organizations.inputs.IAMCustomRoleState;
+import com.pulumi.gcp.organizations.IamCustomRoleArgs;
+import com.pulumi.gcp.organizations.inputs.IamCustomRoleState;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -38,8 +38,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.organizations.IAMCustomRole;
- * import com.pulumi.gcp.organizations.IAMCustomRoleArgs;
+ * import com.pulumi.gcp.organizations.IamCustomRole;
+ * import com.pulumi.gcp.organizations.IamCustomRoleArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_custom_role = new IAMCustomRole(&#34;my-custom-role&#34;, IAMCustomRoleArgs.builder()        
+ *         var my_custom_role = new IamCustomRole(&#34;my-custom-role&#34;, IamCustomRoleArgs.builder()        
  *             .description(&#34;A description&#34;)
  *             .orgId(&#34;123456789&#34;)
  *             .permissions(            
@@ -73,12 +73,12 @@ import javax.annotation.Nullable;
  * Customized IAM organization role can be imported using their URI, e.g.
  * 
  * ```sh
- *  $ pulumi import gcp:organizations/iAMCustomRole:IAMCustomRole my-custom-role organizations/123456789/roles/myCustomRole
+ *  $ pulumi import gcp:organizations/iamCustomRole:IamCustomRole my-custom-role organizations/123456789/roles/myCustomRole
  * ```
  * 
  */
-@ResourceType(type="gcp:organizations/iAMCustomRole:IAMCustomRole")
-public class IAMCustomRole extends com.pulumi.resources.CustomResource {
+@ResourceType(type="gcp:organizations/iamCustomRole:IamCustomRole")
+public class IamCustomRole extends com.pulumi.resources.CustomResource {
     /**
      * (Optional) The current deleted state of the role.
      * 
@@ -200,15 +200,15 @@ public class IAMCustomRole extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public IAMCustomRole(String name) {
-        this(name, IAMCustomRoleArgs.Empty);
+    public IamCustomRole(String name) {
+        this(name, IamCustomRoleArgs.Empty);
     }
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public IAMCustomRole(String name, IAMCustomRoleArgs args) {
+    public IamCustomRole(String name, IamCustomRoleArgs args) {
         this(name, args, null);
     }
     /**
@@ -217,12 +217,12 @@ public class IAMCustomRole extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public IAMCustomRole(String name, IAMCustomRoleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:organizations/iAMCustomRole:IAMCustomRole", name, args == null ? IAMCustomRoleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public IamCustomRole(String name, IamCustomRoleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:organizations/iamCustomRole:IamCustomRole", name, args == null ? IamCustomRoleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private IAMCustomRole(String name, Output<String> id, @Nullable IAMCustomRoleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:organizations/iAMCustomRole:IAMCustomRole", name, state, makeResourceOptions(options, id));
+    private IamCustomRole(String name, Output<String> id, @Nullable IamCustomRoleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:organizations/iamCustomRole:IamCustomRole", name, state, makeResourceOptions(options, id));
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
@@ -241,7 +241,7 @@ public class IAMCustomRole extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static IAMCustomRole get(String name, Output<String> id, @Nullable IAMCustomRoleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        return new IAMCustomRole(name, id, state, options);
+    public static IamCustomRole get(String name, Output<String> id, @Nullable IamCustomRoleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        return new IamCustomRole(name, id, state, options);
     }
 }

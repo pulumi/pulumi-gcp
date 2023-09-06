@@ -5,7 +5,7 @@ package com.pulumi.gcp.projects.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.gcp.projects.inputs.IAMAuditConfigAuditLogConfigArgs;
+import com.pulumi.gcp.projects.inputs.IamAuditConfigAuditLogConfigArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -13,22 +13,22 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class IAMAuditConfigState extends com.pulumi.resources.ResourceArgs {
+public final class IamAuditConfigState extends com.pulumi.resources.ResourceArgs {
 
-    public static final IAMAuditConfigState Empty = new IAMAuditConfigState();
+    public static final IamAuditConfigState Empty = new IamAuditConfigState();
 
     /**
      * The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
      * 
      */
     @Import(name="auditLogConfigs")
-    private @Nullable Output<List<IAMAuditConfigAuditLogConfigArgs>> auditLogConfigs;
+    private @Nullable Output<List<IamAuditConfigAuditLogConfigArgs>> auditLogConfigs;
 
     /**
      * @return The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
      * 
      */
-    public Optional<Output<List<IAMAuditConfigAuditLogConfigArgs>>> auditLogConfigs() {
+    public Optional<Output<List<IamAuditConfigAuditLogConfigArgs>>> auditLogConfigs() {
         return Optional.ofNullable(this.auditLogConfigs);
     }
 
@@ -79,9 +79,9 @@ public final class IAMAuditConfigState extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.service);
     }
 
-    private IAMAuditConfigState() {}
+    private IamAuditConfigState() {}
 
-    private IAMAuditConfigState(IAMAuditConfigState $) {
+    private IamAuditConfigState(IamAuditConfigState $) {
         this.auditLogConfigs = $.auditLogConfigs;
         this.etag = $.etag;
         this.project = $.project;
@@ -91,19 +91,19 @@ public final class IAMAuditConfigState extends com.pulumi.resources.ResourceArgs
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(IAMAuditConfigState defaults) {
+    public static Builder builder(IamAuditConfigState defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private IAMAuditConfigState $;
+        private IamAuditConfigState $;
 
         public Builder() {
-            $ = new IAMAuditConfigState();
+            $ = new IamAuditConfigState();
         }
 
-        public Builder(IAMAuditConfigState defaults) {
-            $ = new IAMAuditConfigState(Objects.requireNonNull(defaults));
+        public Builder(IamAuditConfigState defaults) {
+            $ = new IamAuditConfigState(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -112,7 +112,7 @@ public final class IAMAuditConfigState extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder auditLogConfigs(@Nullable Output<List<IAMAuditConfigAuditLogConfigArgs>> auditLogConfigs) {
+        public Builder auditLogConfigs(@Nullable Output<List<IamAuditConfigAuditLogConfigArgs>> auditLogConfigs) {
             $.auditLogConfigs = auditLogConfigs;
             return this;
         }
@@ -123,7 +123,7 @@ public final class IAMAuditConfigState extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder auditLogConfigs(List<IAMAuditConfigAuditLogConfigArgs> auditLogConfigs) {
+        public Builder auditLogConfigs(List<IamAuditConfigAuditLogConfigArgs> auditLogConfigs) {
             return auditLogConfigs(Output.of(auditLogConfigs));
         }
 
@@ -133,7 +133,7 @@ public final class IAMAuditConfigState extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder auditLogConfigs(IAMAuditConfigAuditLogConfigArgs... auditLogConfigs) {
+        public Builder auditLogConfigs(IamAuditConfigAuditLogConfigArgs... auditLogConfigs) {
             return auditLogConfigs(List.of(auditLogConfigs));
         }
 
@@ -202,7 +202,7 @@ public final class IAMAuditConfigState extends com.pulumi.resources.ResourceArgs
             return service(Output.of(service));
         }
 
-        public IAMAuditConfigState build() {
+        public IamAuditConfigState build() {
             return $;
         }
     }

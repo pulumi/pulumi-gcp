@@ -9,13 +9,13 @@ import * as utilities from "../utilities";
 /**
  * Three different resources help you manage your IAM policy for pubsub subscription. Each of these resources serves a different use case:
  *
- * * `gcp.pubsub.SubscriptionIAMPolicy`: Authoritative. Sets the IAM policy for the subscription and replaces any existing policy already attached.
- * * `gcp.pubsub.SubscriptionIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the subscription are preserved.
- * * `gcp.pubsub.SubscriptionIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the subscription are preserved.
+ * * `gcp.pubsub.SubscriptionIamPolicy`: Authoritative. Sets the IAM policy for the subscription and replaces any existing policy already attached.
+ * * `gcp.pubsub.SubscriptionIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the subscription are preserved.
+ * * `gcp.pubsub.SubscriptionIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the subscription are preserved.
  *
- * > **Note:** `gcp.pubsub.SubscriptionIAMPolicy` **cannot** be used in conjunction with `gcp.pubsub.SubscriptionIAMBinding` and `gcp.pubsub.SubscriptionIAMMember` or they will fight over what your policy should be.
+ * > **Note:** `gcp.pubsub.SubscriptionIamPolicy` **cannot** be used in conjunction with `gcp.pubsub.SubscriptionIamBinding` and `gcp.pubsub.SubscriptionIamMember` or they will fight over what your policy should be.
  *
- * > **Note:** `gcp.pubsub.SubscriptionIAMBinding` resources **can be** used in conjunction with `gcp.pubsub.SubscriptionIAMMember` resources **only if** they do not grant privilege to the same role.
+ * > **Note:** `gcp.pubsub.SubscriptionIamBinding` resources **can be** used in conjunction with `gcp.pubsub.SubscriptionIamMember` resources **only if** they do not grant privilege to the same role.
  *
  * ## google\_pubsub\_subscription\_iam\_policy
  *
@@ -23,13 +23,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const admin = gcp.organizations.getIAMPolicy({
+ * const admin = gcp.organizations.getIamPolicy({
  *     bindings: [{
  *         role: "roles/editor",
  *         members: ["user:jane@example.com"],
  *     }],
  * });
- * const editor = new gcp.pubsub.SubscriptionIAMPolicy("editor", {
+ * const editor = new gcp.pubsub.SubscriptionIamPolicy("editor", {
  *     subscription: "your-subscription-name",
  *     policyData: admin.then(admin => admin.policyData),
  * });
@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const editor = new gcp.pubsub.SubscriptionIAMBinding("editor", {
+ * const editor = new gcp.pubsub.SubscriptionIamBinding("editor", {
  *     members: ["user:jane@example.com"],
  *     role: "roles/editor",
  *     subscription: "your-subscription-name",
@@ -54,7 +54,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const editor = new gcp.pubsub.SubscriptionIAMMember("editor", {
+ * const editor = new gcp.pubsub.SubscriptionIamMember("editor", {
  *     member: "user:jane@example.com",
  *     role: "roles/editor",
  *     subscription: "your-subscription-name",
@@ -66,24 +66,24 @@ import * as utilities from "../utilities";
  * Pubsub subscription IAM resources can be imported using the project, subscription name, role and member.
  *
  * ```sh
- *  $ pulumi import gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding editor projects/{your-project-id}/subscriptions/{your-subscription-name}
+ *  $ pulumi import gcp:pubsub/subscriptionIamBinding:SubscriptionIamBinding editor projects/{your-project-id}/subscriptions/{your-subscription-name}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding editor "projects/{your-project-id}/subscriptions/{your-subscription-name} roles/editor"
+ *  $ pulumi import gcp:pubsub/subscriptionIamBinding:SubscriptionIamBinding editor "projects/{your-project-id}/subscriptions/{your-subscription-name} roles/editor"
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding editor "projects/{your-project-id}/subscriptions/{your-subscription-name} roles/editor jane@example.com"
+ *  $ pulumi import gcp:pubsub/subscriptionIamBinding:SubscriptionIamBinding editor "projects/{your-project-id}/subscriptions/{your-subscription-name} roles/editor jane@example.com"
  * ```
  *
  *  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
  *
  * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  */
-export class SubscriptionIAMBinding extends pulumi.CustomResource {
+export class SubscriptionIamBinding extends pulumi.CustomResource {
     /**
-     * Get an existing SubscriptionIAMBinding resource's state with the given name, ID, and optional extra
+     * Get an existing SubscriptionIamBinding resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -91,25 +91,25 @@ export class SubscriptionIAMBinding extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SubscriptionIAMBindingState, opts?: pulumi.CustomResourceOptions): SubscriptionIAMBinding {
-        return new SubscriptionIAMBinding(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SubscriptionIamBindingState, opts?: pulumi.CustomResourceOptions): SubscriptionIamBinding {
+        return new SubscriptionIamBinding(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding';
+    public static readonly __pulumiType = 'gcp:pubsub/subscriptionIamBinding:SubscriptionIamBinding';
 
     /**
-     * Returns true if the given object is an instance of SubscriptionIAMBinding.  This is designed to work even
+     * Returns true if the given object is an instance of SubscriptionIamBinding.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is SubscriptionIAMBinding {
+    public static isInstance(obj: any): obj is SubscriptionIamBinding {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === SubscriptionIAMBinding.__pulumiType;
+        return obj['__pulumiType'] === SubscriptionIamBinding.__pulumiType;
     }
 
-    public readonly condition!: pulumi.Output<outputs.pubsub.SubscriptionIAMBindingCondition | undefined>;
+    public readonly condition!: pulumi.Output<outputs.pubsub.SubscriptionIamBindingCondition | undefined>;
     /**
      * (Computed) The etag of the subscription's IAM policy.
      */
@@ -122,7 +122,7 @@ export class SubscriptionIAMBinding extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
-     * `gcp.pubsub.SubscriptionIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.pubsub.SubscriptionIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     public readonly role!: pulumi.Output<string>;
@@ -141,18 +141,18 @@ export class SubscriptionIAMBinding extends pulumi.CustomResource {
     public readonly subscription!: pulumi.Output<string>;
 
     /**
-     * Create a SubscriptionIAMBinding resource with the given unique name, arguments, and options.
+     * Create a SubscriptionIamBinding resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: SubscriptionIAMBindingArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: SubscriptionIAMBindingArgs | SubscriptionIAMBindingState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: SubscriptionIamBindingArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: SubscriptionIamBindingArgs | SubscriptionIamBindingState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as SubscriptionIAMBindingState | undefined;
+            const state = argsOrState as SubscriptionIamBindingState | undefined;
             resourceInputs["condition"] = state ? state.condition : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["members"] = state ? state.members : undefined;
@@ -160,7 +160,7 @@ export class SubscriptionIAMBinding extends pulumi.CustomResource {
             resourceInputs["role"] = state ? state.role : undefined;
             resourceInputs["subscription"] = state ? state.subscription : undefined;
         } else {
-            const args = argsOrState as SubscriptionIAMBindingArgs | undefined;
+            const args = argsOrState as SubscriptionIamBindingArgs | undefined;
             if ((!args || args.members === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'members'");
             }
@@ -178,15 +178,15 @@ export class SubscriptionIAMBinding extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(SubscriptionIAMBinding.__pulumiType, name, resourceInputs, opts);
+        super(SubscriptionIamBinding.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering SubscriptionIAMBinding resources.
+ * Input properties used for looking up and filtering SubscriptionIamBinding resources.
  */
-export interface SubscriptionIAMBindingState {
-    condition?: pulumi.Input<inputs.pubsub.SubscriptionIAMBindingCondition>;
+export interface SubscriptionIamBindingState {
+    condition?: pulumi.Input<inputs.pubsub.SubscriptionIamBindingCondition>;
     /**
      * (Computed) The etag of the subscription's IAM policy.
      */
@@ -199,7 +199,7 @@ export interface SubscriptionIAMBindingState {
     project?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
-     * `gcp.pubsub.SubscriptionIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.pubsub.SubscriptionIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     role?: pulumi.Input<string>;
@@ -219,10 +219,10 @@ export interface SubscriptionIAMBindingState {
 }
 
 /**
- * The set of arguments for constructing a SubscriptionIAMBinding resource.
+ * The set of arguments for constructing a SubscriptionIamBinding resource.
  */
-export interface SubscriptionIAMBindingArgs {
-    condition?: pulumi.Input<inputs.pubsub.SubscriptionIAMBindingCondition>;
+export interface SubscriptionIamBindingArgs {
+    condition?: pulumi.Input<inputs.pubsub.SubscriptionIamBindingCondition>;
     members: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The project in which the resource belongs. If it
@@ -231,7 +231,7 @@ export interface SubscriptionIAMBindingArgs {
     project?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
-     * `gcp.pubsub.SubscriptionIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.pubsub.SubscriptionIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     role: pulumi.Input<string>;

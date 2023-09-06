@@ -662,7 +662,7 @@ class DataTransferConfig(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        permissions = gcp.projects.IAMMember("permissions",
+        permissions = gcp.projects.IamMember("permissions",
             project=project.project_id,
             role="roles/iam.serviceAccountTokenCreator",
             member=f"serviceAccount:service-{project.number}@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com")
@@ -770,7 +770,7 @@ class DataTransferConfig(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        permissions = gcp.projects.IAMMember("permissions",
+        permissions = gcp.projects.IamMember("permissions",
             project=project.project_id,
             role="roles/iam.serviceAccountTokenCreator",
             member=f"serviceAccount:service-{project.number}@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com")

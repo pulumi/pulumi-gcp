@@ -1064,11 +1064,11 @@ class Trigger(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         cloudbuild_service_account = gcp.service_account.Account("cloudbuildServiceAccount", account_id="cloud-sa")
-        act_as = gcp.projects.IAMMember("actAs",
+        act_as = gcp.projects.IamMember("actAs",
             project=project.project_id,
             role="roles/iam.serviceAccountUser",
             member=cloudbuild_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
-        logs_writer = gcp.projects.IAMMember("logsWriter",
+        logs_writer = gcp.projects.IamMember("logsWriter",
             project=project.project_id,
             role="roles/logging.logWriter",
             member=cloudbuild_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
@@ -1150,7 +1150,7 @@ class Trigger(pulumi.CustomResource):
             secret=webhook_trigger_secret_key.id,
             secret_data="secretkeygoeshere")
         project = gcp.organizations.get_project()
-        secret_accessor = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        secret_accessor = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIamPolicyBindingArgs(
             role="roles/secretmanager.secretAccessor",
             members=[f"serviceAccount:service-{project.number}@gcp-sa-cloudbuild.iam.gserviceaccount.com"],
         )])
@@ -1499,11 +1499,11 @@ class Trigger(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         cloudbuild_service_account = gcp.service_account.Account("cloudbuildServiceAccount", account_id="cloud-sa")
-        act_as = gcp.projects.IAMMember("actAs",
+        act_as = gcp.projects.IamMember("actAs",
             project=project.project_id,
             role="roles/iam.serviceAccountUser",
             member=cloudbuild_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
-        logs_writer = gcp.projects.IAMMember("logsWriter",
+        logs_writer = gcp.projects.IamMember("logsWriter",
             project=project.project_id,
             role="roles/logging.logWriter",
             member=cloudbuild_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
@@ -1585,7 +1585,7 @@ class Trigger(pulumi.CustomResource):
             secret=webhook_trigger_secret_key.id,
             secret_data="secretkeygoeshere")
         project = gcp.organizations.get_project()
-        secret_accessor = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        secret_accessor = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIamPolicyBindingArgs(
             role="roles/secretmanager.secretAccessor",
             members=[f"serviceAccount:service-{project.number}@gcp-sa-cloudbuild.iam.gserviceaccount.com"],
         )])

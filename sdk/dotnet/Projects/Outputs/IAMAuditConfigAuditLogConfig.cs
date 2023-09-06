@@ -11,7 +11,7 @@ namespace Pulumi.Gcp.Projects.Outputs
 {
 
     [OutputType]
-    public sealed class IAMAuditConfigAuditLogConfig
+    public sealed class IamAuditConfigAuditLogConfig
     {
         /// <summary>
         /// Identities that do not cause logging for this type of permission.  The format is the same as that for `members`.
@@ -23,7 +23,7 @@ namespace Pulumi.Gcp.Projects.Outputs
         public readonly string LogType;
 
         [OutputConstructor]
-        private IAMAuditConfigAuditLogConfig(
+        private IamAuditConfigAuditLogConfig(
             ImmutableArray<string> exemptedMembers,
 
             string logType)

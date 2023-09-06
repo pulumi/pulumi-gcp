@@ -50,40 +50,40 @@ export type Subscription = import("./subscription").Subscription;
 export const Subscription: typeof import("./subscription").Subscription = null as any;
 utilities.lazyLoad(exports, ["Subscription"], () => require("./subscription"));
 
-export { SubscriptionIAMBindingArgs, SubscriptionIAMBindingState } from "./subscriptionIAMBinding";
-export type SubscriptionIAMBinding = import("./subscriptionIAMBinding").SubscriptionIAMBinding;
-export const SubscriptionIAMBinding: typeof import("./subscriptionIAMBinding").SubscriptionIAMBinding = null as any;
-utilities.lazyLoad(exports, ["SubscriptionIAMBinding"], () => require("./subscriptionIAMBinding"));
+export { SubscriptionIamBindingArgs, SubscriptionIamBindingState } from "./subscriptionIamBinding";
+export type SubscriptionIamBinding = import("./subscriptionIamBinding").SubscriptionIamBinding;
+export const SubscriptionIamBinding: typeof import("./subscriptionIamBinding").SubscriptionIamBinding = null as any;
+utilities.lazyLoad(exports, ["SubscriptionIamBinding"], () => require("./subscriptionIamBinding"));
 
-export { SubscriptionIAMMemberArgs, SubscriptionIAMMemberState } from "./subscriptionIAMMember";
-export type SubscriptionIAMMember = import("./subscriptionIAMMember").SubscriptionIAMMember;
-export const SubscriptionIAMMember: typeof import("./subscriptionIAMMember").SubscriptionIAMMember = null as any;
-utilities.lazyLoad(exports, ["SubscriptionIAMMember"], () => require("./subscriptionIAMMember"));
+export { SubscriptionIamMemberArgs, SubscriptionIamMemberState } from "./subscriptionIamMember";
+export type SubscriptionIamMember = import("./subscriptionIamMember").SubscriptionIamMember;
+export const SubscriptionIamMember: typeof import("./subscriptionIamMember").SubscriptionIamMember = null as any;
+utilities.lazyLoad(exports, ["SubscriptionIamMember"], () => require("./subscriptionIamMember"));
 
-export { SubscriptionIAMPolicyArgs, SubscriptionIAMPolicyState } from "./subscriptionIAMPolicy";
-export type SubscriptionIAMPolicy = import("./subscriptionIAMPolicy").SubscriptionIAMPolicy;
-export const SubscriptionIAMPolicy: typeof import("./subscriptionIAMPolicy").SubscriptionIAMPolicy = null as any;
-utilities.lazyLoad(exports, ["SubscriptionIAMPolicy"], () => require("./subscriptionIAMPolicy"));
+export { SubscriptionIamPolicyArgs, SubscriptionIamPolicyState } from "./subscriptionIamPolicy";
+export type SubscriptionIamPolicy = import("./subscriptionIamPolicy").SubscriptionIamPolicy;
+export const SubscriptionIamPolicy: typeof import("./subscriptionIamPolicy").SubscriptionIamPolicy = null as any;
+utilities.lazyLoad(exports, ["SubscriptionIamPolicy"], () => require("./subscriptionIamPolicy"));
 
 export { TopicArgs, TopicState } from "./topic";
 export type Topic = import("./topic").Topic;
 export const Topic: typeof import("./topic").Topic = null as any;
 utilities.lazyLoad(exports, ["Topic"], () => require("./topic"));
 
-export { TopicIAMBindingArgs, TopicIAMBindingState } from "./topicIAMBinding";
-export type TopicIAMBinding = import("./topicIAMBinding").TopicIAMBinding;
-export const TopicIAMBinding: typeof import("./topicIAMBinding").TopicIAMBinding = null as any;
-utilities.lazyLoad(exports, ["TopicIAMBinding"], () => require("./topicIAMBinding"));
+export { TopicIamBindingArgs, TopicIamBindingState } from "./topicIamBinding";
+export type TopicIamBinding = import("./topicIamBinding").TopicIamBinding;
+export const TopicIamBinding: typeof import("./topicIamBinding").TopicIamBinding = null as any;
+utilities.lazyLoad(exports, ["TopicIamBinding"], () => require("./topicIamBinding"));
 
-export { TopicIAMMemberArgs, TopicIAMMemberState } from "./topicIAMMember";
-export type TopicIAMMember = import("./topicIAMMember").TopicIAMMember;
-export const TopicIAMMember: typeof import("./topicIAMMember").TopicIAMMember = null as any;
-utilities.lazyLoad(exports, ["TopicIAMMember"], () => require("./topicIAMMember"));
+export { TopicIamMemberArgs, TopicIamMemberState } from "./topicIamMember";
+export type TopicIamMember = import("./topicIamMember").TopicIamMember;
+export const TopicIamMember: typeof import("./topicIamMember").TopicIamMember = null as any;
+utilities.lazyLoad(exports, ["TopicIamMember"], () => require("./topicIamMember"));
 
-export { TopicIAMPolicyArgs, TopicIAMPolicyState } from "./topicIAMPolicy";
-export type TopicIAMPolicy = import("./topicIAMPolicy").TopicIAMPolicy;
-export const TopicIAMPolicy: typeof import("./topicIAMPolicy").TopicIAMPolicy = null as any;
-utilities.lazyLoad(exports, ["TopicIAMPolicy"], () => require("./topicIAMPolicy"));
+export { TopicIamPolicyArgs, TopicIamPolicyState } from "./topicIamPolicy";
+export type TopicIamPolicy = import("./topicIamPolicy").TopicIamPolicy;
+export const TopicIamPolicy: typeof import("./topicIamPolicy").TopicIamPolicy = null as any;
+utilities.lazyLoad(exports, ["TopicIamPolicy"], () => require("./topicIamPolicy"));
 
 export * from "./zMixins";
 
@@ -101,20 +101,20 @@ const _module = {
                 return new Schema(name, <any>undefined, { urn })
             case "gcp:pubsub/subscription:Subscription":
                 return new Subscription(name, <any>undefined, { urn })
-            case "gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding":
-                return new SubscriptionIAMBinding(name, <any>undefined, { urn })
-            case "gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember":
-                return new SubscriptionIAMMember(name, <any>undefined, { urn })
-            case "gcp:pubsub/subscriptionIAMPolicy:SubscriptionIAMPolicy":
-                return new SubscriptionIAMPolicy(name, <any>undefined, { urn })
+            case "gcp:pubsub/subscriptionIamBinding:SubscriptionIamBinding":
+                return new SubscriptionIamBinding(name, <any>undefined, { urn })
+            case "gcp:pubsub/subscriptionIamMember:SubscriptionIamMember":
+                return new SubscriptionIamMember(name, <any>undefined, { urn })
+            case "gcp:pubsub/subscriptionIamPolicy:SubscriptionIamPolicy":
+                return new SubscriptionIamPolicy(name, <any>undefined, { urn })
             case "gcp:pubsub/topic:Topic":
                 return new Topic(name, <any>undefined, { urn })
-            case "gcp:pubsub/topicIAMBinding:TopicIAMBinding":
-                return new TopicIAMBinding(name, <any>undefined, { urn })
-            case "gcp:pubsub/topicIAMMember:TopicIAMMember":
-                return new TopicIAMMember(name, <any>undefined, { urn })
-            case "gcp:pubsub/topicIAMPolicy:TopicIAMPolicy":
-                return new TopicIAMPolicy(name, <any>undefined, { urn })
+            case "gcp:pubsub/topicIamBinding:TopicIamBinding":
+                return new TopicIamBinding(name, <any>undefined, { urn })
+            case "gcp:pubsub/topicIamMember:TopicIamMember":
+                return new TopicIamMember(name, <any>undefined, { urn })
+            case "gcp:pubsub/topicIamPolicy:TopicIamPolicy":
+                return new TopicIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -125,10 +125,10 @@ pulumi.runtime.registerResourceModule("gcp", "pubsub/liteSubscription", _module)
 pulumi.runtime.registerResourceModule("gcp", "pubsub/liteTopic", _module)
 pulumi.runtime.registerResourceModule("gcp", "pubsub/schema", _module)
 pulumi.runtime.registerResourceModule("gcp", "pubsub/subscription", _module)
-pulumi.runtime.registerResourceModule("gcp", "pubsub/subscriptionIAMBinding", _module)
-pulumi.runtime.registerResourceModule("gcp", "pubsub/subscriptionIAMMember", _module)
-pulumi.runtime.registerResourceModule("gcp", "pubsub/subscriptionIAMPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "pubsub/subscriptionIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "pubsub/subscriptionIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "pubsub/subscriptionIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "pubsub/topic", _module)
-pulumi.runtime.registerResourceModule("gcp", "pubsub/topicIAMBinding", _module)
-pulumi.runtime.registerResourceModule("gcp", "pubsub/topicIAMMember", _module)
-pulumi.runtime.registerResourceModule("gcp", "pubsub/topicIAMPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "pubsub/topicIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "pubsub/topicIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "pubsub/topicIamPolicy", _module)

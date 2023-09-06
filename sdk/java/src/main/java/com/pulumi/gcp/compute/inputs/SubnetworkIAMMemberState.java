@@ -5,16 +5,16 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.gcp.compute.inputs.SubnetworkIAMMemberConditionArgs;
+import com.pulumi.gcp.compute.inputs.SubnetworkIamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class SubnetworkIAMMemberState extends com.pulumi.resources.ResourceArgs {
+public final class SubnetworkIamMemberState extends com.pulumi.resources.ResourceArgs {
 
-    public static final SubnetworkIAMMemberState Empty = new SubnetworkIAMMemberState();
+    public static final SubnetworkIamMemberState Empty = new SubnetworkIamMemberState();
 
     /**
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -22,14 +22,14 @@ public final class SubnetworkIAMMemberState extends com.pulumi.resources.Resourc
      * 
      */
     @Import(name="condition")
-    private @Nullable Output<SubnetworkIAMMemberConditionArgs> condition;
+    private @Nullable Output<SubnetworkIamMemberConditionArgs> condition;
 
     /**
      * @return An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      * 
      */
-    public Optional<Output<SubnetworkIAMMemberConditionArgs>> condition() {
+    public Optional<Output<SubnetworkIamMemberConditionArgs>> condition() {
         return Optional.ofNullable(this.condition);
     }
 
@@ -119,7 +119,7 @@ public final class SubnetworkIAMMemberState extends com.pulumi.resources.Resourc
 
     /**
      * The role that should be applied. Only one
-     * `gcp.compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.compute.SubnetworkIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -128,7 +128,7 @@ public final class SubnetworkIAMMemberState extends com.pulumi.resources.Resourc
 
     /**
      * @return The role that should be applied. Only one
-     * `gcp.compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.compute.SubnetworkIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -151,9 +151,9 @@ public final class SubnetworkIAMMemberState extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.subnetwork);
     }
 
-    private SubnetworkIAMMemberState() {}
+    private SubnetworkIamMemberState() {}
 
-    private SubnetworkIAMMemberState(SubnetworkIAMMemberState $) {
+    private SubnetworkIamMemberState(SubnetworkIamMemberState $) {
         this.condition = $.condition;
         this.etag = $.etag;
         this.member = $.member;
@@ -166,19 +166,19 @@ public final class SubnetworkIAMMemberState extends com.pulumi.resources.Resourc
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(SubnetworkIAMMemberState defaults) {
+    public static Builder builder(SubnetworkIamMemberState defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private SubnetworkIAMMemberState $;
+        private SubnetworkIamMemberState $;
 
         public Builder() {
-            $ = new SubnetworkIAMMemberState();
+            $ = new SubnetworkIamMemberState();
         }
 
-        public Builder(SubnetworkIAMMemberState defaults) {
-            $ = new SubnetworkIAMMemberState(Objects.requireNonNull(defaults));
+        public Builder(SubnetworkIamMemberState defaults) {
+            $ = new SubnetworkIamMemberState(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -188,7 +188,7 @@ public final class SubnetworkIAMMemberState extends com.pulumi.resources.Resourc
          * @return builder
          * 
          */
-        public Builder condition(@Nullable Output<SubnetworkIAMMemberConditionArgs> condition) {
+        public Builder condition(@Nullable Output<SubnetworkIamMemberConditionArgs> condition) {
             $.condition = condition;
             return this;
         }
@@ -200,7 +200,7 @@ public final class SubnetworkIAMMemberState extends com.pulumi.resources.Resourc
          * @return builder
          * 
          */
-        public Builder condition(SubnetworkIAMMemberConditionArgs condition) {
+        public Builder condition(SubnetworkIamMemberConditionArgs condition) {
             return condition(Output.of(condition));
         }
 
@@ -310,7 +310,7 @@ public final class SubnetworkIAMMemberState extends com.pulumi.resources.Resourc
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.compute.SubnetworkIamBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder
@@ -323,7 +323,7 @@ public final class SubnetworkIAMMemberState extends com.pulumi.resources.Resourc
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.compute.SubnetworkIamBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder
@@ -354,7 +354,7 @@ public final class SubnetworkIAMMemberState extends com.pulumi.resources.Resourc
             return subnetwork(Output.of(subnetwork));
         }
 
-        public SubnetworkIAMMemberState build() {
+        public SubnetworkIamMemberState build() {
             return $;
         }
     }

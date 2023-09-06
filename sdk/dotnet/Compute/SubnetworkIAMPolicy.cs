@@ -12,17 +12,17 @@ namespace Pulumi.Gcp.Compute
     /// <summary>
     /// Three different resources help you manage your IAM policy for Compute Engine Subnetwork. Each of these resources serves a different use case:
     /// 
-    /// * `gcp.compute.SubnetworkIAMPolicy`: Authoritative. Sets the IAM policy for the subnetwork and replaces any existing policy already attached.
-    /// * `gcp.compute.SubnetworkIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the subnetwork are preserved.
-    /// * `gcp.compute.SubnetworkIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the subnetwork are preserved.
+    /// * `gcp.compute.SubnetworkIamPolicy`: Authoritative. Sets the IAM policy for the subnetwork and replaces any existing policy already attached.
+    /// * `gcp.compute.SubnetworkIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the subnetwork are preserved.
+    /// * `gcp.compute.SubnetworkIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the subnetwork are preserved.
     /// 
     /// A data source can be used to retrieve policy data in advent you do not need creation
     /// 
-    /// * `gcp.compute.SubnetworkIAMPolicy`: Retrieves the IAM policy for the subnetwork
+    /// * `gcp.compute.SubnetworkIamPolicy`: Retrieves the IAM policy for the subnetwork
     /// 
-    /// &gt; **Note:** `gcp.compute.SubnetworkIAMPolicy` **cannot** be used in conjunction with `gcp.compute.SubnetworkIAMBinding` and `gcp.compute.SubnetworkIAMMember` or they will fight over what your policy should be.
+    /// &gt; **Note:** `gcp.compute.SubnetworkIamPolicy` **cannot** be used in conjunction with `gcp.compute.SubnetworkIamBinding` and `gcp.compute.SubnetworkIamMember` or they will fight over what your policy should be.
     /// 
-    /// &gt; **Note:** `gcp.compute.SubnetworkIAMBinding` resources **can be** used in conjunction with `gcp.compute.SubnetworkIAMMember` resources **only if** they do not grant privilege to the same role.
+    /// &gt; **Note:** `gcp.compute.SubnetworkIamBinding` resources **can be** used in conjunction with `gcp.compute.SubnetworkIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
     /// &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
     /// 
@@ -36,11 +36,11 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     var admin = Gcp.Organizations.GetIamPolicy.Invoke(new()
     ///     {
     ///         Bindings = new[]
     ///         {
-    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             new Gcp.Organizations.Inputs.GetIamPolicyBindingInputArgs
     ///             {
     ///                 Role = "roles/compute.networkUser",
     ///                 Members = new[]
@@ -51,12 +51,12 @@ namespace Pulumi.Gcp.Compute
     ///         },
     ///     });
     /// 
-    ///     var policy = new Gcp.Compute.SubnetworkIAMPolicy("policy", new()
+    ///     var policy = new Gcp.Compute.SubnetworkIamPolicy("policy", new()
     ///     {
     ///         Project = google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Project,
     ///         Region = google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Region,
     ///         Subnetwork = google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Name,
-    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///         PolicyData = admin.Apply(getIamPolicyResult =&gt; getIamPolicyResult.PolicyData),
     ///     });
     /// 
     /// });
@@ -72,18 +72,18 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     var admin = Gcp.Organizations.GetIamPolicy.Invoke(new()
     ///     {
     ///         Bindings = new[]
     ///         {
-    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             new Gcp.Organizations.Inputs.GetIamPolicyBindingInputArgs
     ///             {
     ///                 Role = "roles/compute.networkUser",
     ///                 Members = new[]
     ///                 {
     ///                     "user:jane@example.com",
     ///                 },
-    ///                 Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionInputArgs
+    ///                 Condition = new Gcp.Organizations.Inputs.GetIamPolicyBindingConditionInputArgs
     ///                 {
     ///                     Title = "expires_after_2019_12_31",
     ///                     Description = "Expiring at midnight of 2019-12-31",
@@ -93,12 +93,12 @@ namespace Pulumi.Gcp.Compute
     ///         },
     ///     });
     /// 
-    ///     var policy = new Gcp.Compute.SubnetworkIAMPolicy("policy", new()
+    ///     var policy = new Gcp.Compute.SubnetworkIamPolicy("policy", new()
     ///     {
     ///         Project = google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Project,
     ///         Region = google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Region,
     ///         Subnetwork = google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Name,
-    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///         PolicyData = admin.Apply(getIamPolicyResult =&gt; getIamPolicyResult.PolicyData),
     ///     });
     /// 
     /// });
@@ -113,7 +113,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var binding = new Gcp.Compute.SubnetworkIAMBinding("binding", new()
+    ///     var binding = new Gcp.Compute.SubnetworkIamBinding("binding", new()
     ///     {
     ///         Project = google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Project,
     ///         Region = google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Region,
@@ -138,7 +138,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var binding = new Gcp.Compute.SubnetworkIAMBinding("binding", new()
+    ///     var binding = new Gcp.Compute.SubnetworkIamBinding("binding", new()
     ///     {
     ///         Project = google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Project,
     ///         Region = google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Region,
@@ -148,7 +148,7 @@ namespace Pulumi.Gcp.Compute
     ///         {
     ///             "user:jane@example.com",
     ///         },
-    ///         Condition = new Gcp.Compute.Inputs.SubnetworkIAMBindingConditionArgs
+    ///         Condition = new Gcp.Compute.Inputs.SubnetworkIamBindingConditionArgs
     ///         {
     ///             Title = "expires_after_2019_12_31",
     ///             Description = "Expiring at midnight of 2019-12-31",
@@ -168,7 +168,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var member = new Gcp.Compute.SubnetworkIAMMember("member", new()
+    ///     var member = new Gcp.Compute.SubnetworkIamMember("member", new()
     ///     {
     ///         Project = google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Project,
     ///         Region = google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Region,
@@ -190,14 +190,14 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var member = new Gcp.Compute.SubnetworkIAMMember("member", new()
+    ///     var member = new Gcp.Compute.SubnetworkIamMember("member", new()
     ///     {
     ///         Project = google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Project,
     ///         Region = google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Region,
     ///         Subnetwork = google_compute_subnetwork.Network_with_private_secondary_ip_ranges.Name,
     ///         Role = "roles/compute.networkUser",
     ///         Member = "user:jane@example.com",
-    ///         Condition = new Gcp.Compute.Inputs.SubnetworkIAMMemberConditionArgs
+    ///         Condition = new Gcp.Compute.Inputs.SubnetworkIamMemberConditionArgs
     ///         {
     ///             Title = "expires_after_2019_12_31",
     ///             Description = "Expiring at midnight of 2019-12-31",
@@ -213,27 +213,27 @@ namespace Pulumi.Gcp.Compute
     /// For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/regions/{{region}}/subnetworks/{{name}} * {{project}}/{{region}}/{{name}} * {{region}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Compute Engine subnetwork IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:compute/subnetworkIAMPolicy:SubnetworkIAMPolicy editor "projects/{{project}}/regions/{{region}}/subnetworks/{{subnetwork}} roles/compute.networkUser user:jane@example.com"
+    ///  $ pulumi import gcp:compute/subnetworkIamPolicy:SubnetworkIamPolicy editor "projects/{{project}}/regions/{{region}}/subnetworks/{{subnetwork}} roles/compute.networkUser user:jane@example.com"
     /// ```
     /// 
     ///  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:compute/subnetworkIAMPolicy:SubnetworkIAMPolicy editor "projects/{{project}}/regions/{{region}}/subnetworks/{{subnetwork}} roles/compute.networkUser"
+    ///  $ pulumi import gcp:compute/subnetworkIamPolicy:SubnetworkIamPolicy editor "projects/{{project}}/regions/{{region}}/subnetworks/{{subnetwork}} roles/compute.networkUser"
     /// ```
     /// 
     ///  IAM policy imports use the identifier of the resource in question, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:compute/subnetworkIAMPolicy:SubnetworkIAMPolicy editor projects/{{project}}/regions/{{region}}/subnetworks/{{subnetwork}}
+    ///  $ pulumi import gcp:compute/subnetworkIamPolicy:SubnetworkIamPolicy editor projects/{{project}}/regions/{{region}}/subnetworks/{{subnetwork}}
     /// ```
     /// 
     ///  -&gt; **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
     /// 
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
-    [GcpResourceType("gcp:compute/subnetworkIAMPolicy:SubnetworkIAMPolicy")]
-    public partial class SubnetworkIAMPolicy : global::Pulumi.CustomResource
+    [GcpResourceType("gcp:compute/subnetworkIamPolicy:SubnetworkIamPolicy")]
+    public partial class SubnetworkIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// (Computed) The etag of the IAM policy.
@@ -243,7 +243,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The policy data generated by
-        /// a `gcp.organizations.getIAMPolicy` data source.
+        /// a `gcp.organizations.getIamPolicy` data source.
         /// </summary>
         [Output("policyData")]
         public Output<string> PolicyData { get; private set; } = null!;
@@ -284,19 +284,19 @@ namespace Pulumi.Gcp.Compute
 
 
         /// <summary>
-        /// Create a SubnetworkIAMPolicy resource with the given unique name, arguments, and options.
+        /// Create a SubnetworkIamPolicy resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public SubnetworkIAMPolicy(string name, SubnetworkIAMPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp:compute/subnetworkIAMPolicy:SubnetworkIAMPolicy", name, args ?? new SubnetworkIAMPolicyArgs(), MakeResourceOptions(options, ""))
+        public SubnetworkIamPolicy(string name, SubnetworkIamPolicyArgs args, CustomResourceOptions? options = null)
+            : base("gcp:compute/subnetworkIamPolicy:SubnetworkIamPolicy", name, args ?? new SubnetworkIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private SubnetworkIAMPolicy(string name, Input<string> id, SubnetworkIAMPolicyState? state = null, CustomResourceOptions? options = null)
-            : base("gcp:compute/subnetworkIAMPolicy:SubnetworkIAMPolicy", name, state, MakeResourceOptions(options, id))
+        private SubnetworkIamPolicy(string name, Input<string> id, SubnetworkIamPolicyState? state = null, CustomResourceOptions? options = null)
+            : base("gcp:compute/subnetworkIamPolicy:SubnetworkIamPolicy", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -312,7 +312,7 @@ namespace Pulumi.Gcp.Compute
             return merged;
         }
         /// <summary>
-        /// Get an existing SubnetworkIAMPolicy resource's state with the given name, ID, and optional extra
+        /// Get an existing SubnetworkIamPolicy resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -320,17 +320,17 @@ namespace Pulumi.Gcp.Compute
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static SubnetworkIAMPolicy Get(string name, Input<string> id, SubnetworkIAMPolicyState? state = null, CustomResourceOptions? options = null)
+        public static SubnetworkIamPolicy Get(string name, Input<string> id, SubnetworkIamPolicyState? state = null, CustomResourceOptions? options = null)
         {
-            return new SubnetworkIAMPolicy(name, id, state, options);
+            return new SubnetworkIamPolicy(name, id, state, options);
         }
     }
 
-    public sealed class SubnetworkIAMPolicyArgs : global::Pulumi.ResourceArgs
+    public sealed class SubnetworkIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The policy data generated by
-        /// a `gcp.organizations.getIAMPolicy` data source.
+        /// a `gcp.organizations.getIamPolicy` data source.
         /// </summary>
         [Input("policyData", required: true)]
         public Input<string> PolicyData { get; set; } = null!;
@@ -369,13 +369,13 @@ namespace Pulumi.Gcp.Compute
         [Input("subnetwork", required: true)]
         public Input<string> Subnetwork { get; set; } = null!;
 
-        public SubnetworkIAMPolicyArgs()
+        public SubnetworkIamPolicyArgs()
         {
         }
-        public static new SubnetworkIAMPolicyArgs Empty => new SubnetworkIAMPolicyArgs();
+        public static new SubnetworkIamPolicyArgs Empty => new SubnetworkIamPolicyArgs();
     }
 
-    public sealed class SubnetworkIAMPolicyState : global::Pulumi.ResourceArgs
+    public sealed class SubnetworkIamPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (Computed) The etag of the IAM policy.
@@ -385,7 +385,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The policy data generated by
-        /// a `gcp.organizations.getIAMPolicy` data source.
+        /// a `gcp.organizations.getIamPolicy` data source.
         /// </summary>
         [Input("policyData")]
         public Input<string>? PolicyData { get; set; }
@@ -424,9 +424,9 @@ namespace Pulumi.Gcp.Compute
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }
 
-        public SubnetworkIAMPolicyState()
+        public SubnetworkIamPolicyState()
         {
         }
-        public static new SubnetworkIAMPolicyState Empty => new SubnetworkIAMPolicyState();
+        public static new SubnetworkIamPolicyState Empty => new SubnetworkIamPolicyState();
     }
 }

@@ -144,8 +144,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.kms.KeyRingArgs;
  * import com.pulumi.gcp.kms.CryptoKey;
  * import com.pulumi.gcp.kms.CryptoKeyArgs;
- * import com.pulumi.gcp.kms.CryptoKeyIAMBinding;
- * import com.pulumi.gcp.kms.CryptoKeyIAMBindingArgs;
+ * import com.pulumi.gcp.kms.CryptoKeyIamBinding;
+ * import com.pulumi.gcp.kms.CryptoKeyIamBindingArgs;
  * import com.pulumi.gcp.logging.ProjectBucketConfig;
  * import com.pulumi.gcp.logging.ProjectBucketConfigArgs;
  * import com.pulumi.gcp.logging.inputs.ProjectBucketConfigCmekSettingsArgs;
@@ -176,7 +176,7 @@ import javax.annotation.Nullable;
  *             .rotationPeriod(&#34;100000s&#34;)
  *             .build());
  * 
- *         var cryptoKeyBinding = new CryptoKeyIAMBinding(&#34;cryptoKeyBinding&#34;, CryptoKeyIAMBindingArgs.builder()        
+ *         var cryptoKeyBinding = new CryptoKeyIamBinding(&#34;cryptoKeyBinding&#34;, CryptoKeyIamBindingArgs.builder()        
  *             .cryptoKeyId(key.id())
  *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
  *             .members(String.format(&#34;serviceAccount:%s&#34;, cmekSettings.applyValue(getProjectCmekSettingsResult -&gt; getProjectCmekSettingsResult.serviceAccountId())))

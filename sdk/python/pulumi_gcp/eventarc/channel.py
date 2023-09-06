@@ -323,7 +323,7 @@ class Channel(pulumi.CustomResource):
             location="us-west1")
         key = gcp.kms.get_kms_crypto_key(name="key",
             key_ring=test_key_ring.id)
-        key1_member = gcp.kms.CryptoKeyIAMMember("key1Member",
+        key1_member = gcp.kms.CryptoKeyIamMember("key1Member",
             crypto_key_id=data["google_kms_crypto_key"]["key1"]["id"],
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{test_project.number}@gcp-sa-eventarc.iam.gserviceaccount.com")
@@ -383,7 +383,7 @@ class Channel(pulumi.CustomResource):
             location="us-west1")
         key = gcp.kms.get_kms_crypto_key(name="key",
             key_ring=test_key_ring.id)
-        key1_member = gcp.kms.CryptoKeyIAMMember("key1Member",
+        key1_member = gcp.kms.CryptoKeyIamMember("key1Member",
             crypto_key_id=data["google_kms_crypto_key"]["key1"]["id"],
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{test_project.number}@gcp-sa-eventarc.iam.gserviceaccount.com")

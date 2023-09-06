@@ -35,8 +35,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.storage.BucketArgs;
  * import com.pulumi.gcp.logging.OrganizationSink;
  * import com.pulumi.gcp.logging.OrganizationSinkArgs;
- * import com.pulumi.gcp.projects.IAMMember;
- * import com.pulumi.gcp.projects.IAMMemberArgs;
+ * import com.pulumi.gcp.projects.IamMember;
+ * import com.pulumi.gcp.projects.IamMemberArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *             .filter(&#34;resource.type = gce_instance AND severity &gt;= WARNING&#34;)
  *             .build());
  * 
- *         var log_writer = new IAMMember(&#34;log-writer&#34;, IAMMemberArgs.builder()        
+ *         var log_writer = new IamMember(&#34;log-writer&#34;, IamMemberArgs.builder()        
  *             .project(&#34;your-project-id&#34;)
  *             .role(&#34;roles/storage.objectCreator&#34;)
  *             .member(my_sink.writerIdentity())

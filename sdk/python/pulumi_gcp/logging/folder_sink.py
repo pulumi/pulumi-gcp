@@ -417,7 +417,7 @@ class FolderSink(pulumi.CustomResource):
             folder=my_folder.name,
             destination=log_bucket.name.apply(lambda name: f"storage.googleapis.com/{name}"),
             filter="resource.type = gce_instance AND severity >= WARNING")
-        log_writer = gcp.projects.IAMBinding("log-writer",
+        log_writer = gcp.projects.IamBinding("log-writer",
             project="your-project-id",
             role="roles/storage.objectCreator",
             members=[my_sink.writer_identity])
@@ -482,7 +482,7 @@ class FolderSink(pulumi.CustomResource):
             folder=my_folder.name,
             destination=log_bucket.name.apply(lambda name: f"storage.googleapis.com/{name}"),
             filter="resource.type = gce_instance AND severity >= WARNING")
-        log_writer = gcp.projects.IAMBinding("log-writer",
+        log_writer = gcp.projects.IamBinding("log-writer",
             project="your-project-id",
             role="roles/storage.objectCreator",
             members=[my_sink.writer_identity])

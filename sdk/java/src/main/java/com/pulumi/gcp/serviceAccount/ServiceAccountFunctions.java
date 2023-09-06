@@ -198,8 +198,8 @@ public final class ServiceAccountFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.serviceAccount.IAMBinding;
-     * import com.pulumi.gcp.serviceAccount.IAMBindingArgs;
+     * import com.pulumi.gcp.serviceAccount.IamBinding;
+     * import com.pulumi.gcp.serviceAccount.IamBindingArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -213,7 +213,7 @@ public final class ServiceAccountFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var token_creator_iam = new IAMBinding(&#34;token-creator-iam&#34;, IAMBindingArgs.builder()        
+     *         var token_creator_iam = new IamBinding(&#34;token-creator-iam&#34;, IamBindingArgs.builder()        
      *             .members(&#34;serviceAccount:service_A@projectA.iam.gserviceaccount.com&#34;)
      *             .role(&#34;roles/iam.serviceAccountTokenCreator&#34;)
      *             .serviceAccountId(&#34;projects/-/serviceAccounts/service_B@projectB.iam.gserviceaccount.com&#34;)
@@ -294,8 +294,8 @@ public final class ServiceAccountFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.serviceAccount.IAMBinding;
-     * import com.pulumi.gcp.serviceAccount.IAMBindingArgs;
+     * import com.pulumi.gcp.serviceAccount.IamBinding;
+     * import com.pulumi.gcp.serviceAccount.IamBindingArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -309,7 +309,7 @@ public final class ServiceAccountFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var token_creator_iam = new IAMBinding(&#34;token-creator-iam&#34;, IAMBindingArgs.builder()        
+     *         var token_creator_iam = new IamBinding(&#34;token-creator-iam&#34;, IamBindingArgs.builder()        
      *             .members(&#34;serviceAccount:service_A@projectA.iam.gserviceaccount.com&#34;)
      *             .role(&#34;roles/iam.serviceAccountTokenCreator&#34;)
      *             .serviceAccountId(&#34;projects/-/serviceAccounts/service_B@projectB.iam.gserviceaccount.com&#34;)
@@ -390,8 +390,8 @@ public final class ServiceAccountFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.serviceAccount.IAMBinding;
-     * import com.pulumi.gcp.serviceAccount.IAMBindingArgs;
+     * import com.pulumi.gcp.serviceAccount.IamBinding;
+     * import com.pulumi.gcp.serviceAccount.IamBindingArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -405,7 +405,7 @@ public final class ServiceAccountFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var token_creator_iam = new IAMBinding(&#34;token-creator-iam&#34;, IAMBindingArgs.builder()        
+     *         var token_creator_iam = new IamBinding(&#34;token-creator-iam&#34;, IamBindingArgs.builder()        
      *             .members(&#34;serviceAccount:service_A@projectA.iam.gserviceaccount.com&#34;)
      *             .role(&#34;roles/iam.serviceAccountTokenCreator&#34;)
      *             .serviceAccountId(&#34;projects/-/serviceAccounts/service_B@projectB.iam.gserviceaccount.com&#34;)
@@ -486,8 +486,8 @@ public final class ServiceAccountFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.serviceAccount.IAMBinding;
-     * import com.pulumi.gcp.serviceAccount.IAMBindingArgs;
+     * import com.pulumi.gcp.serviceAccount.IamBinding;
+     * import com.pulumi.gcp.serviceAccount.IamBindingArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -501,7 +501,7 @@ public final class ServiceAccountFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var token_creator_iam = new IAMBinding(&#34;token-creator-iam&#34;, IAMBindingArgs.builder()        
+     *         var token_creator_iam = new IamBinding(&#34;token-creator-iam&#34;, IamBindingArgs.builder()        
      *             .members(&#34;serviceAccount:service_A@projectA.iam.gserviceaccount.com&#34;)
      *             .role(&#34;roles/iam.serviceAccountTokenCreator&#34;)
      *             .serviceAccountId(&#34;projects/-/serviceAccounts/service_B@projectB.iam.gserviceaccount.com&#34;)

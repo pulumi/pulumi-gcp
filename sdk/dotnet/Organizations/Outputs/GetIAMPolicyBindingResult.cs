@@ -11,12 +11,12 @@ namespace Pulumi.Gcp.Organizations.Outputs
 {
 
     [OutputType]
-    public sealed class GetIAMPolicyBindingResult
+    public sealed class GetIamPolicyBindingResult
     {
         /// <summary>
         /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
         /// </summary>
-        public readonly Outputs.GetIAMPolicyBindingConditionResult? Condition;
+        public readonly Outputs.GetIamPolicyBindingConditionResult? Condition;
         /// <summary>
         /// An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
         /// Each entry can have one of the following values:
@@ -36,8 +36,8 @@ namespace Pulumi.Gcp.Organizations.Outputs
         public readonly string Role;
 
         [OutputConstructor]
-        private GetIAMPolicyBindingResult(
-            Outputs.GetIAMPolicyBindingConditionResult? condition,
+        private GetIamPolicyBindingResult(
+            Outputs.GetIamPolicyBindingConditionResult? condition,
 
             ImmutableArray<string> members,
 

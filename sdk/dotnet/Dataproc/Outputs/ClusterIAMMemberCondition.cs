@@ -11,14 +11,14 @@ namespace Pulumi.Gcp.Dataproc.Outputs
 {
 
     [OutputType]
-    public sealed class ClusterIAMMemberCondition
+    public sealed class ClusterIamMemberCondition
     {
         public readonly string? Description;
         public readonly string Expression;
         public readonly string Title;
 
         [OutputConstructor]
-        private ClusterIAMMemberCondition(
+        private ClusterIamMemberCondition(
             string? description,
 
             string expression,

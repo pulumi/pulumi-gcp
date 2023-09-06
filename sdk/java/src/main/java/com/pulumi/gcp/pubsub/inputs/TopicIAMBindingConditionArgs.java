@@ -11,9 +11,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class TopicIAMBindingConditionArgs extends com.pulumi.resources.ResourceArgs {
+public final class TopicIamBindingConditionArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final TopicIAMBindingConditionArgs Empty = new TopicIAMBindingConditionArgs();
+    public static final TopicIamBindingConditionArgs Empty = new TopicIamBindingConditionArgs();
 
     @Import(name="description")
     private @Nullable Output<String> description;
@@ -36,9 +36,9 @@ public final class TopicIAMBindingConditionArgs extends com.pulumi.resources.Res
         return this.title;
     }
 
-    private TopicIAMBindingConditionArgs() {}
+    private TopicIamBindingConditionArgs() {}
 
-    private TopicIAMBindingConditionArgs(TopicIAMBindingConditionArgs $) {
+    private TopicIamBindingConditionArgs(TopicIamBindingConditionArgs $) {
         this.description = $.description;
         this.expression = $.expression;
         this.title = $.title;
@@ -47,19 +47,19 @@ public final class TopicIAMBindingConditionArgs extends com.pulumi.resources.Res
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(TopicIAMBindingConditionArgs defaults) {
+    public static Builder builder(TopicIamBindingConditionArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private TopicIAMBindingConditionArgs $;
+        private TopicIamBindingConditionArgs $;
 
         public Builder() {
-            $ = new TopicIAMBindingConditionArgs();
+            $ = new TopicIamBindingConditionArgs();
         }
 
-        public Builder(TopicIAMBindingConditionArgs defaults) {
-            $ = new TopicIAMBindingConditionArgs(Objects.requireNonNull(defaults));
+        public Builder(TopicIamBindingConditionArgs defaults) {
+            $ = new TopicIamBindingConditionArgs(Objects.requireNonNull(defaults));
         }
 
         public Builder description(@Nullable Output<String> description) {
@@ -89,7 +89,7 @@ public final class TopicIAMBindingConditionArgs extends com.pulumi.resources.Res
             return title(Output.of(title));
         }
 
-        public TopicIAMBindingConditionArgs build() {
+        public TopicIamBindingConditionArgs build() {
             $.expression = Objects.requireNonNull($.expression, "expected parameter 'expression' to be non-null");
             $.title = Objects.requireNonNull($.title, "expected parameter 'title' to be non-null");
             return $;

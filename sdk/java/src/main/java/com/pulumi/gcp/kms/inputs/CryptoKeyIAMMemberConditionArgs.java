@@ -11,9 +11,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class CryptoKeyIAMMemberConditionArgs extends com.pulumi.resources.ResourceArgs {
+public final class CryptoKeyIamMemberConditionArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final CryptoKeyIAMMemberConditionArgs Empty = new CryptoKeyIAMMemberConditionArgs();
+    public static final CryptoKeyIamMemberConditionArgs Empty = new CryptoKeyIamMemberConditionArgs();
 
     /**
      * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -68,9 +68,9 @@ public final class CryptoKeyIAMMemberConditionArgs extends com.pulumi.resources.
         return this.title;
     }
 
-    private CryptoKeyIAMMemberConditionArgs() {}
+    private CryptoKeyIamMemberConditionArgs() {}
 
-    private CryptoKeyIAMMemberConditionArgs(CryptoKeyIAMMemberConditionArgs $) {
+    private CryptoKeyIamMemberConditionArgs(CryptoKeyIamMemberConditionArgs $) {
         this.description = $.description;
         this.expression = $.expression;
         this.title = $.title;
@@ -79,19 +79,19 @@ public final class CryptoKeyIAMMemberConditionArgs extends com.pulumi.resources.
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(CryptoKeyIAMMemberConditionArgs defaults) {
+    public static Builder builder(CryptoKeyIamMemberConditionArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private CryptoKeyIAMMemberConditionArgs $;
+        private CryptoKeyIamMemberConditionArgs $;
 
         public Builder() {
-            $ = new CryptoKeyIAMMemberConditionArgs();
+            $ = new CryptoKeyIamMemberConditionArgs();
         }
 
-        public Builder(CryptoKeyIAMMemberConditionArgs defaults) {
-            $ = new CryptoKeyIAMMemberConditionArgs(Objects.requireNonNull(defaults));
+        public Builder(CryptoKeyIamMemberConditionArgs defaults) {
+            $ = new CryptoKeyIamMemberConditionArgs(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -165,7 +165,7 @@ public final class CryptoKeyIAMMemberConditionArgs extends com.pulumi.resources.
             return title(Output.of(title));
         }
 
-        public CryptoKeyIAMMemberConditionArgs build() {
+        public CryptoKeyIamMemberConditionArgs build() {
             $.expression = Objects.requireNonNull($.expression, "expected parameter 'expression' to be non-null");
             $.title = Objects.requireNonNull($.title, "expected parameter 'title' to be non-null");
             return $;

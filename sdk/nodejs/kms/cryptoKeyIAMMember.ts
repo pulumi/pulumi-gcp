@@ -9,13 +9,13 @@ import * as utilities from "../utilities";
 /**
  * Three different resources help you manage your IAM policy for KMS crypto key. Each of these resources serves a different use case:
  *
- * * `gcp.kms.CryptoKeyIAMPolicy`: Authoritative. Sets the IAM policy for the crypto key and replaces any existing policy already attached.
- * * `gcp.kms.CryptoKeyIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the crypto key are preserved.
- * * `gcp.kms.CryptoKeyIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the crypto key are preserved.
+ * * `gcp.kms.CryptoKeyIamPolicy`: Authoritative. Sets the IAM policy for the crypto key and replaces any existing policy already attached.
+ * * `gcp.kms.CryptoKeyIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the crypto key are preserved.
+ * * `gcp.kms.CryptoKeyIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the crypto key are preserved.
  *
- * > **Note:** `gcp.kms.CryptoKeyIAMPolicy` **cannot** be used in conjunction with `gcp.kms.CryptoKeyIAMBinding` and `gcp.kms.CryptoKeyIAMMember` or they will fight over what your policy should be.
+ * > **Note:** `gcp.kms.CryptoKeyIamPolicy` **cannot** be used in conjunction with `gcp.kms.CryptoKeyIamBinding` and `gcp.kms.CryptoKeyIamMember` or they will fight over what your policy should be.
  *
- * > **Note:** `gcp.kms.CryptoKeyIAMBinding` resources **can be** used in conjunction with `gcp.kms.CryptoKeyIAMMember` resources **only if** they do not grant privilege to the same role.
+ * > **Note:** `gcp.kms.CryptoKeyIamBinding` resources **can be** used in conjunction with `gcp.kms.CryptoKeyIamMember` resources **only if** they do not grant privilege to the same role.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -26,13 +26,13 @@ import * as utilities from "../utilities";
  *     keyRing: keyring.id,
  *     rotationPeriod: "100000s",
  * });
- * const admin = gcp.organizations.getIAMPolicy({
+ * const admin = gcp.organizations.getIamPolicy({
  *     bindings: [{
  *         role: "roles/cloudkms.cryptoKeyEncrypter",
  *         members: ["user:jane@example.com"],
  *     }],
  * });
- * const cryptoKey = new gcp.kms.CryptoKeyIAMPolicy("cryptoKey", {
+ * const cryptoKey = new gcp.kms.CryptoKeyIamPolicy("cryptoKey", {
  *     cryptoKeyId: key.id,
  *     policyData: admin.then(admin => admin.policyData),
  * });
@@ -44,7 +44,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const admin = gcp.organizations.getIAMPolicy({
+ * const admin = gcp.organizations.getIamPolicy({
  *     bindings: [{
  *         condition: {
  *             description: "Expiring at midnight of 2019-12-31",
@@ -61,7 +61,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const cryptoKey = new gcp.kms.CryptoKeyIAMBinding("cryptoKey", {
+ * const cryptoKey = new gcp.kms.CryptoKeyIamBinding("cryptoKey", {
  *     cryptoKeyId: google_kms_crypto_key.key.id,
  *     role: "roles/cloudkms.cryptoKeyEncrypter",
  *     members: ["user:jane@example.com"],
@@ -74,7 +74,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const cryptoKey = new gcp.kms.CryptoKeyIAMBinding("cryptoKey", {
+ * const cryptoKey = new gcp.kms.CryptoKeyIamBinding("cryptoKey", {
  *     cryptoKeyId: google_kms_crypto_key.key.id,
  *     role: "roles/cloudkms.cryptoKeyEncrypter",
  *     members: ["user:jane@example.com"],
@@ -90,7 +90,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const cryptoKey = new gcp.kms.CryptoKeyIAMMember("cryptoKey", {
+ * const cryptoKey = new gcp.kms.CryptoKeyIamMember("cryptoKey", {
  *     cryptoKeyId: google_kms_crypto_key.key.id,
  *     role: "roles/cloudkms.cryptoKeyEncrypter",
  *     member: "user:jane@example.com",
@@ -103,7 +103,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const cryptoKey = new gcp.kms.CryptoKeyIAMMember("cryptoKey", {
+ * const cryptoKey = new gcp.kms.CryptoKeyIamMember("cryptoKey", {
  *     cryptoKeyId: google_kms_crypto_key.key.id,
  *     role: "roles/cloudkms.cryptoKeyEncrypter",
  *     member: "user:jane@example.com",
@@ -122,7 +122,7 @@ import * as utilities from "../utilities";
  * This member resource can be imported using the `crypto_key_id`, role, and member identity e.g.
  *
  * ```sh
- *  $ pulumi import gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember crypto_key "your-project-id/location-name/key-ring-name/key-name roles/viewer user:foo@example.com"
+ *  $ pulumi import gcp:kms/cryptoKeyIamMember:CryptoKeyIamMember crypto_key "your-project-id/location-name/key-ring-name/key-name roles/viewer user:foo@example.com"
  * ```
  *
  *  IAM binding imports use space-delimited identifiers; first the resource in question and then the role.
@@ -130,7 +130,7 @@ import * as utilities from "../utilities";
  * These bindings can be imported using the `crypto_key_id` and role, e.g.
  *
  * ```sh
- *  $ pulumi import gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember crypto_key "your-project-id/location-name/key-ring-name/key-name roles/editor"
+ *  $ pulumi import gcp:kms/cryptoKeyIamMember:CryptoKeyIamMember crypto_key "your-project-id/location-name/key-ring-name/key-name roles/editor"
  * ```
  *
  *  IAM policy imports use the identifier of the resource in question.
@@ -138,12 +138,12 @@ import * as utilities from "../utilities";
  * This policy resource can be imported using the `crypto_key_id`, e.g.
  *
  * ```sh
- *  $ pulumi import gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember crypto_key your-project-id/location-name/key-ring-name/key-name
+ *  $ pulumi import gcp:kms/cryptoKeyIamMember:CryptoKeyIamMember crypto_key your-project-id/location-name/key-ring-name/key-name
  * ```
  */
-export class CryptoKeyIAMMember extends pulumi.CustomResource {
+export class CryptoKeyIamMember extends pulumi.CustomResource {
     /**
-     * Get an existing CryptoKeyIAMMember resource's state with the given name, ID, and optional extra
+     * Get an existing CryptoKeyIamMember resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -151,29 +151,29 @@ export class CryptoKeyIAMMember extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: CryptoKeyIAMMemberState, opts?: pulumi.CustomResourceOptions): CryptoKeyIAMMember {
-        return new CryptoKeyIAMMember(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: CryptoKeyIamMemberState, opts?: pulumi.CustomResourceOptions): CryptoKeyIamMember {
+        return new CryptoKeyIamMember(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember';
+    public static readonly __pulumiType = 'gcp:kms/cryptoKeyIamMember:CryptoKeyIamMember';
 
     /**
-     * Returns true if the given object is an instance of CryptoKeyIAMMember.  This is designed to work even
+     * Returns true if the given object is an instance of CryptoKeyIamMember.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is CryptoKeyIAMMember {
+    public static isInstance(obj: any): obj is CryptoKeyIamMember {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === CryptoKeyIAMMember.__pulumiType;
+        return obj['__pulumiType'] === CryptoKeyIamMember.__pulumiType;
     }
 
     /**
      * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    public readonly condition!: pulumi.Output<outputs.kms.CryptoKeyIAMMemberCondition | undefined>;
+    public readonly condition!: pulumi.Output<outputs.kms.CryptoKeyIamMemberCondition | undefined>;
     /**
      * The crypto key ID, in the form
      * `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
@@ -202,25 +202,25 @@ export class CryptoKeyIAMMember extends pulumi.CustomResource {
     public readonly role!: pulumi.Output<string>;
 
     /**
-     * Create a CryptoKeyIAMMember resource with the given unique name, arguments, and options.
+     * Create a CryptoKeyIamMember resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: CryptoKeyIAMMemberArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: CryptoKeyIAMMemberArgs | CryptoKeyIAMMemberState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: CryptoKeyIamMemberArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: CryptoKeyIamMemberArgs | CryptoKeyIamMemberState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as CryptoKeyIAMMemberState | undefined;
+            const state = argsOrState as CryptoKeyIamMemberState | undefined;
             resourceInputs["condition"] = state ? state.condition : undefined;
             resourceInputs["cryptoKeyId"] = state ? state.cryptoKeyId : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["member"] = state ? state.member : undefined;
             resourceInputs["role"] = state ? state.role : undefined;
         } else {
-            const args = argsOrState as CryptoKeyIAMMemberArgs | undefined;
+            const args = argsOrState as CryptoKeyIamMemberArgs | undefined;
             if ((!args || args.cryptoKeyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'cryptoKeyId'");
             }
@@ -237,19 +237,19 @@ export class CryptoKeyIAMMember extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(CryptoKeyIAMMember.__pulumiType, name, resourceInputs, opts);
+        super(CryptoKeyIamMember.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering CryptoKeyIAMMember resources.
+ * Input properties used for looking up and filtering CryptoKeyIamMember resources.
  */
-export interface CryptoKeyIAMMemberState {
+export interface CryptoKeyIamMemberState {
     /**
      * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    condition?: pulumi.Input<inputs.kms.CryptoKeyIAMMemberCondition>;
+    condition?: pulumi.Input<inputs.kms.CryptoKeyIamMemberCondition>;
     /**
      * The crypto key ID, in the form
      * `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
@@ -279,14 +279,14 @@ export interface CryptoKeyIAMMemberState {
 }
 
 /**
- * The set of arguments for constructing a CryptoKeyIAMMember resource.
+ * The set of arguments for constructing a CryptoKeyIamMember resource.
  */
-export interface CryptoKeyIAMMemberArgs {
+export interface CryptoKeyIamMemberArgs {
     /**
      * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    condition?: pulumi.Input<inputs.kms.CryptoKeyIAMMemberCondition>;
+    condition?: pulumi.Input<inputs.kms.CryptoKeyIamMemberCondition>;
     /**
      * The crypto key ID, in the form
      * `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or

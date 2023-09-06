@@ -34,11 +34,11 @@ namespace Pulumi.Gcp.AccessContextManager
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     var admin = Gcp.Organizations.GetIamPolicy.Invoke(new()
     ///     {
     ///         Bindings = new[]
     ///         {
-    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             new Gcp.Organizations.Inputs.GetIamPolicyBindingInputArgs
     ///             {
     ///                 Role = "roles/accesscontextmanager.policyAdmin",
     ///                 Members = new[]
@@ -51,7 +51,7 @@ namespace Pulumi.Gcp.AccessContextManager
     /// 
     ///     var policy = new Gcp.AccessContextManager.AccessPolicyIamPolicy("policy", new()
     ///     {
-    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///         PolicyData = admin.Apply(getIamPolicyResult =&gt; getIamPolicyResult.PolicyData),
     ///     });
     /// 
     /// });

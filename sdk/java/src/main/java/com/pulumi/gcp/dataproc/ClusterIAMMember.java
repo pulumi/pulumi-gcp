@@ -8,9 +8,9 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
-import com.pulumi.gcp.dataproc.ClusterIAMMemberArgs;
-import com.pulumi.gcp.dataproc.inputs.ClusterIAMMemberState;
-import com.pulumi.gcp.dataproc.outputs.ClusterIAMMemberCondition;
+import com.pulumi.gcp.dataproc.ClusterIamMemberArgs;
+import com.pulumi.gcp.dataproc.inputs.ClusterIamMemberState;
+import com.pulumi.gcp.dataproc.outputs.ClusterIamMemberCondition;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,13 +18,13 @@ import javax.annotation.Nullable;
 /**
  * Three different resources help you manage IAM policies on dataproc clusters. Each of these resources serves a different use case:
  * 
- * * `gcp.dataproc.ClusterIAMPolicy`: Authoritative. Sets the IAM policy for the cluster and replaces any existing policy already attached.
- * * `gcp.dataproc.ClusterIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the cluster are preserved.
- * * `gcp.dataproc.ClusterIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the cluster are preserved.
+ * * `gcp.dataproc.ClusterIamPolicy`: Authoritative. Sets the IAM policy for the cluster and replaces any existing policy already attached.
+ * * `gcp.dataproc.ClusterIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the cluster are preserved.
+ * * `gcp.dataproc.ClusterIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the cluster are preserved.
  * 
- * &gt; **Note:** `gcp.dataproc.ClusterIAMPolicy` **cannot** be used in conjunction with `gcp.dataproc.ClusterIAMBinding` and `gcp.dataproc.ClusterIAMMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the cluster as `gcp.dataproc.ClusterIAMPolicy` replaces the entire policy.
+ * &gt; **Note:** `gcp.dataproc.ClusterIamPolicy` **cannot** be used in conjunction with `gcp.dataproc.ClusterIamBinding` and `gcp.dataproc.ClusterIamMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the cluster as `gcp.dataproc.ClusterIamPolicy` replaces the entire policy.
  * 
- * &gt; **Note:** `gcp.dataproc.ClusterIAMBinding` resources **can be** used in conjunction with `gcp.dataproc.ClusterIAMMember` resources **only if** they do not grant privilege to the same role.
+ * &gt; **Note:** `gcp.dataproc.ClusterIamBinding` resources **can be** used in conjunction with `gcp.dataproc.ClusterIamMember` resources **only if** they do not grant privilege to the same role.
  * 
  * ## google\_dataproc\_cluster\_iam\_policy
  * ```java
@@ -34,9 +34,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
- * import com.pulumi.gcp.dataproc.ClusterIAMPolicy;
- * import com.pulumi.gcp.dataproc.ClusterIAMPolicyArgs;
+ * import com.pulumi.gcp.organizations.inputs.GetIamPolicyArgs;
+ * import com.pulumi.gcp.dataproc.ClusterIamPolicy;
+ * import com.pulumi.gcp.dataproc.ClusterIamPolicyArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -50,18 +50,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
- *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *         final var admin = OrganizationsFunctions.getIamPolicy(GetIamPolicyArgs.builder()
+ *             .bindings(GetIamPolicyBindingArgs.builder()
  *                 .role(&#34;roles/editor&#34;)
  *                 .members(&#34;user:jane@example.com&#34;)
  *                 .build())
  *             .build());
  * 
- *         var editor = new ClusterIAMPolicy(&#34;editor&#34;, ClusterIAMPolicyArgs.builder()        
+ *         var editor = new ClusterIamPolicy(&#34;editor&#34;, ClusterIamPolicyArgs.builder()        
  *             .project(&#34;your-project&#34;)
  *             .region(&#34;your-region&#34;)
  *             .cluster(&#34;your-dataproc-cluster&#34;)
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIamPolicyResult -&gt; getIamPolicyResult.policyData()))
  *             .build());
  * 
  *     }
@@ -75,8 +75,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.dataproc.ClusterIAMBinding;
- * import com.pulumi.gcp.dataproc.ClusterIAMBindingArgs;
+ * import com.pulumi.gcp.dataproc.ClusterIamBinding;
+ * import com.pulumi.gcp.dataproc.ClusterIamBindingArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -90,7 +90,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var editor = new ClusterIAMBinding(&#34;editor&#34;, ClusterIAMBindingArgs.builder()        
+ *         var editor = new ClusterIamBinding(&#34;editor&#34;, ClusterIamBindingArgs.builder()        
  *             .cluster(&#34;your-dataproc-cluster&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .role(&#34;roles/editor&#34;)
@@ -107,8 +107,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.dataproc.ClusterIAMMember;
- * import com.pulumi.gcp.dataproc.ClusterIAMMemberArgs;
+ * import com.pulumi.gcp.dataproc.ClusterIamMember;
+ * import com.pulumi.gcp.dataproc.ClusterIamMemberArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -122,7 +122,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var editor = new ClusterIAMMember(&#34;editor&#34;, ClusterIAMMemberArgs.builder()        
+ *         var editor = new ClusterIamMember(&#34;editor&#34;, ClusterIamMemberArgs.builder()        
  *             .cluster(&#34;your-dataproc-cluster&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .role(&#34;roles/editor&#34;)
@@ -137,15 +137,15 @@ import javax.annotation.Nullable;
  * Cluster IAM resources can be imported using the project, region, cluster name, role and/or member.
  * 
  * ```sh
- *  $ pulumi import gcp:dataproc/clusterIAMMember:ClusterIAMMember editor &#34;projects/{project}/regions/{region}/clusters/{cluster}&#34;
+ *  $ pulumi import gcp:dataproc/clusterIamMember:ClusterIamMember editor &#34;projects/{project}/regions/{region}/clusters/{cluster}&#34;
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:dataproc/clusterIAMMember:ClusterIAMMember editor &#34;projects/{project}/regions/{region}/clusters/{cluster} roles/editor&#34;
+ *  $ pulumi import gcp:dataproc/clusterIamMember:ClusterIamMember editor &#34;projects/{project}/regions/{region}/clusters/{cluster} roles/editor&#34;
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:dataproc/clusterIAMMember:ClusterIAMMember editor &#34;projects/{project}/regions/{region}/clusters/{cluster} roles/editor user:jane@example.com&#34;
+ *  $ pulumi import gcp:dataproc/clusterIamMember:ClusterIamMember editor &#34;projects/{project}/regions/{region}/clusters/{cluster} roles/editor user:jane@example.com&#34;
  * ```
  * 
  *  -&gt; **Custom Roles**If you&#39;re importing a IAM resource with a custom role, make sure to use the
@@ -153,12 +153,12 @@ import javax.annotation.Nullable;
  * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * 
  */
-@ResourceType(type="gcp:dataproc/clusterIAMMember:ClusterIAMMember")
-public class ClusterIAMMember extends com.pulumi.resources.CustomResource {
+@ResourceType(type="gcp:dataproc/clusterIamMember:ClusterIamMember")
+public class ClusterIamMember extends com.pulumi.resources.CustomResource {
     /**
      * The name or relative resource id of the cluster to manage IAM policies for.
      * 
-     * For `gcp.dataproc.ClusterIAMMember` or `gcp.dataproc.ClusterIAMBinding`:
+     * For `gcp.dataproc.ClusterIamMember` or `gcp.dataproc.ClusterIamBinding`:
      * 
      * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
      *   Each entry can have one of the following values:
@@ -176,7 +176,7 @@ public class ClusterIAMMember extends com.pulumi.resources.CustomResource {
     /**
      * @return The name or relative resource id of the cluster to manage IAM policies for.
      * 
-     * For `gcp.dataproc.ClusterIAMMember` or `gcp.dataproc.ClusterIAMBinding`:
+     * For `gcp.dataproc.ClusterIamMember` or `gcp.dataproc.ClusterIamBinding`:
      * 
      * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
      *   Each entry can have one of the following values:
@@ -191,10 +191,10 @@ public class ClusterIAMMember extends com.pulumi.resources.CustomResource {
     public Output<String> cluster() {
         return this.cluster;
     }
-    @Export(name="condition", type=ClusterIAMMemberCondition.class, parameters={})
-    private Output</* @Nullable */ ClusterIAMMemberCondition> condition;
+    @Export(name="condition", type=ClusterIamMemberCondition.class, parameters={})
+    private Output</* @Nullable */ ClusterIamMemberCondition> condition;
 
-    public Output<Optional<ClusterIAMMemberCondition>> condition() {
+    public Output<Optional<ClusterIamMemberCondition>> condition() {
         return Codegen.optional(this.condition);
     }
     /**
@@ -251,10 +251,10 @@ public class ClusterIAMMember extends com.pulumi.resources.CustomResource {
     }
     /**
      * The role that should be applied. Only one
-     * `gcp.dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.dataproc.ClusterIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
-     * `gcp.dataproc.ClusterIAMPolicy` only:
+     * `gcp.dataproc.ClusterIamPolicy` only:
      * 
      */
     @Export(name="role", type=String.class, parameters={})
@@ -262,10 +262,10 @@ public class ClusterIAMMember extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The role that should be applied. Only one
-     * `gcp.dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.dataproc.ClusterIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
-     * `gcp.dataproc.ClusterIAMPolicy` only:
+     * `gcp.dataproc.ClusterIamPolicy` only:
      * 
      */
     public Output<String> role() {
@@ -276,15 +276,15 @@ public class ClusterIAMMember extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ClusterIAMMember(String name) {
-        this(name, ClusterIAMMemberArgs.Empty);
+    public ClusterIamMember(String name) {
+        this(name, ClusterIamMemberArgs.Empty);
     }
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ClusterIAMMember(String name, ClusterIAMMemberArgs args) {
+    public ClusterIamMember(String name, ClusterIamMemberArgs args) {
         this(name, args, null);
     }
     /**
@@ -293,12 +293,12 @@ public class ClusterIAMMember extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ClusterIAMMember(String name, ClusterIAMMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataproc/clusterIAMMember:ClusterIAMMember", name, args == null ? ClusterIAMMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ClusterIamMember(String name, ClusterIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:dataproc/clusterIamMember:ClusterIamMember", name, args == null ? ClusterIamMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private ClusterIAMMember(String name, Output<String> id, @Nullable ClusterIAMMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataproc/clusterIAMMember:ClusterIAMMember", name, state, makeResourceOptions(options, id));
+    private ClusterIamMember(String name, Output<String> id, @Nullable ClusterIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:dataproc/clusterIamMember:ClusterIamMember", name, state, makeResourceOptions(options, id));
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
@@ -317,7 +317,7 @@ public class ClusterIAMMember extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ClusterIAMMember get(String name, Output<String> id, @Nullable ClusterIAMMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        return new ClusterIAMMember(name, id, state, options);
+    public static ClusterIamMember get(String name, Output<String> id, @Nullable ClusterIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        return new ClusterIamMember(name, id, state, options);
     }
 }

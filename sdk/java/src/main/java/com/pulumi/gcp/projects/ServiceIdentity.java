@@ -39,8 +39,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.projects.ServiceIdentity;
  * import com.pulumi.gcp.projects.ServiceIdentityArgs;
- * import com.pulumi.gcp.projects.IAMMember;
- * import com.pulumi.gcp.projects.IAMMemberArgs;
+ * import com.pulumi.gcp.projects.IamMember;
+ * import com.pulumi.gcp.projects.IamMemberArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *                 .provider(google_beta)
  *                 .build());
  * 
- *         var hcSaBqJobuser = new IAMMember(&#34;hcSaBqJobuser&#34;, IAMMemberArgs.builder()        
+ *         var hcSaBqJobuser = new IamMember(&#34;hcSaBqJobuser&#34;, IamMemberArgs.builder()        
  *             .project(project.applyValue(getProjectResult -&gt; getProjectResult.projectId()))
  *             .role(&#34;roles/bigquery.jobUser&#34;)
  *             .member(hcSa.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))

@@ -54,10 +54,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.datastream.inputs.ConnectionProfileMysqlProfileArgs;
  * import com.pulumi.gcp.storage.Bucket;
  * import com.pulumi.gcp.storage.BucketArgs;
- * import com.pulumi.gcp.storage.BucketIAMMember;
- * import com.pulumi.gcp.storage.BucketIAMMemberArgs;
- * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
- * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
+ * import com.pulumi.gcp.storage.BucketIamMember;
+ * import com.pulumi.gcp.storage.BucketIamMemberArgs;
+ * import com.pulumi.gcp.kms.CryptoKeyIamMember;
+ * import com.pulumi.gcp.kms.CryptoKeyIamMemberArgs;
  * import com.pulumi.gcp.datastream.inputs.ConnectionProfileGcsProfileArgs;
  * import com.pulumi.gcp.datastream.Stream;
  * import com.pulumi.gcp.datastream.StreamArgs;
@@ -148,25 +148,25 @@ import javax.annotation.Nullable;
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
- *         var viewer = new BucketIAMMember(&#34;viewer&#34;, BucketIAMMemberArgs.builder()        
+ *         var viewer = new BucketIamMember(&#34;viewer&#34;, BucketIamMemberArgs.builder()        
  *             .bucket(bucket.name())
  *             .role(&#34;roles/storage.objectViewer&#34;)
  *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-datastream.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
  *             .build());
  * 
- *         var creator = new BucketIAMMember(&#34;creator&#34;, BucketIAMMemberArgs.builder()        
+ *         var creator = new BucketIamMember(&#34;creator&#34;, BucketIamMemberArgs.builder()        
  *             .bucket(bucket.name())
  *             .role(&#34;roles/storage.objectCreator&#34;)
  *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-datastream.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
  *             .build());
  * 
- *         var reader = new BucketIAMMember(&#34;reader&#34;, BucketIAMMemberArgs.builder()        
+ *         var reader = new BucketIamMember(&#34;reader&#34;, BucketIamMemberArgs.builder()        
  *             .bucket(bucket.name())
  *             .role(&#34;roles/storage.legacyBucketReader&#34;)
  *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-datastream.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
  *             .build());
  * 
- *         var keyUser = new CryptoKeyIAMMember(&#34;keyUser&#34;, CryptoKeyIAMMemberArgs.builder()        
+ *         var keyUser = new CryptoKeyIamMember(&#34;keyUser&#34;, CryptoKeyIamMemberArgs.builder()        
  *             .cryptoKeyId(&#34;kms-name&#34;)
  *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
  *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-datastream.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
@@ -669,8 +669,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.datastream.inputs.ConnectionProfileMysqlProfileArgs;
  * import com.pulumi.gcp.bigquery.BigqueryFunctions;
  * import com.pulumi.gcp.bigquery.inputs.GetDefaultServiceAccountArgs;
- * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
- * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
+ * import com.pulumi.gcp.kms.CryptoKeyIamMember;
+ * import com.pulumi.gcp.kms.CryptoKeyIamMemberArgs;
  * import com.pulumi.gcp.datastream.inputs.ConnectionProfileBigqueryProfileArgs;
  * import com.pulumi.gcp.datastream.Stream;
  * import com.pulumi.gcp.datastream.StreamArgs;
@@ -756,7 +756,7 @@ import javax.annotation.Nullable;
  * 
  *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount();
  * 
- *         var bigqueryKeyUser = new CryptoKeyIAMMember(&#34;bigqueryKeyUser&#34;, CryptoKeyIAMMemberArgs.builder()        
+ *         var bigqueryKeyUser = new CryptoKeyIamMember(&#34;bigqueryKeyUser&#34;, CryptoKeyIamMemberArgs.builder()        
  *             .cryptoKeyId(&#34;bigquery-kms-name&#34;)
  *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
  *             .member(String.format(&#34;serviceAccount:%s&#34;, bqSa.applyValue(getDefaultServiceAccountResult -&gt; getDefaultServiceAccountResult.email())))

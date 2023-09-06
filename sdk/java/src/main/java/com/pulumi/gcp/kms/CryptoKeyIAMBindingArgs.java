@@ -5,7 +5,7 @@ package com.pulumi.gcp.kms;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.gcp.kms.inputs.CryptoKeyIAMBindingConditionArgs;
+import com.pulumi.gcp.kms.inputs.CryptoKeyIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -13,9 +13,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class CryptoKeyIAMBindingArgs extends com.pulumi.resources.ResourceArgs {
+public final class CryptoKeyIamBindingArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final CryptoKeyIAMBindingArgs Empty = new CryptoKeyIAMBindingArgs();
+    public static final CryptoKeyIamBindingArgs Empty = new CryptoKeyIamBindingArgs();
 
     /**
      * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -23,14 +23,14 @@ public final class CryptoKeyIAMBindingArgs extends com.pulumi.resources.Resource
      * 
      */
     @Import(name="condition")
-    private @Nullable Output<CryptoKeyIAMBindingConditionArgs> condition;
+    private @Nullable Output<CryptoKeyIamBindingConditionArgs> condition;
 
     /**
      * @return ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      * 
      */
-    public Optional<Output<CryptoKeyIAMBindingConditionArgs>> condition() {
+    public Optional<Output<CryptoKeyIamBindingConditionArgs>> condition() {
         return Optional.ofNullable(this.condition);
     }
 
@@ -97,9 +97,9 @@ public final class CryptoKeyIAMBindingArgs extends com.pulumi.resources.Resource
         return this.role;
     }
 
-    private CryptoKeyIAMBindingArgs() {}
+    private CryptoKeyIamBindingArgs() {}
 
-    private CryptoKeyIAMBindingArgs(CryptoKeyIAMBindingArgs $) {
+    private CryptoKeyIamBindingArgs(CryptoKeyIamBindingArgs $) {
         this.condition = $.condition;
         this.cryptoKeyId = $.cryptoKeyId;
         this.members = $.members;
@@ -109,19 +109,19 @@ public final class CryptoKeyIAMBindingArgs extends com.pulumi.resources.Resource
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(CryptoKeyIAMBindingArgs defaults) {
+    public static Builder builder(CryptoKeyIamBindingArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private CryptoKeyIAMBindingArgs $;
+        private CryptoKeyIamBindingArgs $;
 
         public Builder() {
-            $ = new CryptoKeyIAMBindingArgs();
+            $ = new CryptoKeyIamBindingArgs();
         }
 
-        public Builder(CryptoKeyIAMBindingArgs defaults) {
-            $ = new CryptoKeyIAMBindingArgs(Objects.requireNonNull(defaults));
+        public Builder(CryptoKeyIamBindingArgs defaults) {
+            $ = new CryptoKeyIamBindingArgs(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -131,7 +131,7 @@ public final class CryptoKeyIAMBindingArgs extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-        public Builder condition(@Nullable Output<CryptoKeyIAMBindingConditionArgs> condition) {
+        public Builder condition(@Nullable Output<CryptoKeyIamBindingConditionArgs> condition) {
             $.condition = condition;
             return this;
         }
@@ -143,7 +143,7 @@ public final class CryptoKeyIAMBindingArgs extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-        public Builder condition(CryptoKeyIAMBindingConditionArgs condition) {
+        public Builder condition(CryptoKeyIamBindingConditionArgs condition) {
             return condition(Output.of(condition));
         }
 
@@ -228,7 +228,7 @@ public final class CryptoKeyIAMBindingArgs extends com.pulumi.resources.Resource
             return role(Output.of(role));
         }
 
-        public CryptoKeyIAMBindingArgs build() {
+        public CryptoKeyIamBindingArgs build() {
             $.cryptoKeyId = Objects.requireNonNull($.cryptoKeyId, "expected parameter 'cryptoKeyId' to be non-null");
             $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
             $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");

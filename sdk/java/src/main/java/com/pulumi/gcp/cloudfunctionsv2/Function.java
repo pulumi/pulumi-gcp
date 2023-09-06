@@ -39,8 +39,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.storage.BucketObjectArgs;
  * import com.pulumi.gcp.storage.StorageFunctions;
  * import com.pulumi.gcp.storage.inputs.GetProjectServiceAccountArgs;
- * import com.pulumi.gcp.projects.IAMMember;
- * import com.pulumi.gcp.projects.IAMMemberArgs;
+ * import com.pulumi.gcp.projects.IamMember;
+ * import com.pulumi.gcp.projects.IamMemberArgs;
  * import com.pulumi.gcp.serviceAccount.Account;
  * import com.pulumi.gcp.serviceAccount.AccountArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.Function;
@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  * 
  *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
  * 
- *         var gcs_pubsub_publishing = new IAMMember(&#34;gcs-pubsub-publishing&#34;, IAMMemberArgs.builder()        
+ *         var gcs_pubsub_publishing = new IamMember(&#34;gcs-pubsub-publishing&#34;, IamMemberArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .role(&#34;roles/pubsub.publisher&#34;)
  *             .member(String.format(&#34;serviceAccount:%s&#34;, gcsAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.emailAddress())))
@@ -93,7 +93,7 @@ import javax.annotation.Nullable;
  *             .displayName(&#34;Test Service Account - used for both the cloud function and eventarc trigger in the test&#34;)
  *             .build());
  * 
- *         var invoking = new IAMMember(&#34;invoking&#34;, IAMMemberArgs.builder()        
+ *         var invoking = new IamMember(&#34;invoking&#34;, IamMemberArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .role(&#34;roles/run.invoker&#34;)
  *             .member(account.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
@@ -101,7 +101,7 @@ import javax.annotation.Nullable;
  *                 .dependsOn(gcs_pubsub_publishing)
  *                 .build());
  * 
- *         var event_receiving = new IAMMember(&#34;event-receiving&#34;, IAMMemberArgs.builder()        
+ *         var event_receiving = new IamMember(&#34;event-receiving&#34;, IamMemberArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .role(&#34;roles/eventarc.eventReceiver&#34;)
  *             .member(account.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
@@ -109,7 +109,7 @@ import javax.annotation.Nullable;
  *                 .dependsOn(invoking)
  *                 .build());
  * 
- *         var artifactregistry_reader = new IAMMember(&#34;artifactregistry-reader&#34;, IAMMemberArgs.builder()        
+ *         var artifactregistry_reader = new IamMember(&#34;artifactregistry-reader&#34;, IamMemberArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .role(&#34;roles/artifactregistry.reader&#34;)
  *             .member(account.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
@@ -173,8 +173,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.storage.BucketObjectArgs;
  * import com.pulumi.gcp.serviceAccount.Account;
  * import com.pulumi.gcp.serviceAccount.AccountArgs;
- * import com.pulumi.gcp.projects.IAMMember;
- * import com.pulumi.gcp.projects.IAMMemberArgs;
+ * import com.pulumi.gcp.projects.IamMember;
+ * import com.pulumi.gcp.projects.IamMemberArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.Function;
  * import com.pulumi.gcp.cloudfunctionsv2.FunctionArgs;
  * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigArgs;
@@ -217,13 +217,13 @@ import javax.annotation.Nullable;
  *             .uniformBucketLevelAccess(true)
  *             .build());
  * 
- *         var invoking = new IAMMember(&#34;invoking&#34;, IAMMemberArgs.builder()        
+ *         var invoking = new IamMember(&#34;invoking&#34;, IamMemberArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .role(&#34;roles/run.invoker&#34;)
  *             .member(account.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
  *             .build());
  * 
- *         var event_receiving = new IAMMember(&#34;event-receiving&#34;, IAMMemberArgs.builder()        
+ *         var event_receiving = new IamMember(&#34;event-receiving&#34;, IamMemberArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .role(&#34;roles/eventarc.eventReceiver&#34;)
  *             .member(account.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
@@ -231,7 +231,7 @@ import javax.annotation.Nullable;
  *                 .dependsOn(invoking)
  *                 .build());
  * 
- *         var artifactregistry_reader = new IAMMember(&#34;artifactregistry-reader&#34;, IAMMemberArgs.builder()        
+ *         var artifactregistry_reader = new IamMember(&#34;artifactregistry-reader&#34;, IamMemberArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .role(&#34;roles/artifactregistry.reader&#34;)
  *             .member(account.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))

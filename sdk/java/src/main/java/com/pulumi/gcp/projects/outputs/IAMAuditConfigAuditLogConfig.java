@@ -10,7 +10,7 @@ import java.util.Objects;
 import javax.annotation.Nullable;
 
 @CustomType
-public final class IAMAuditConfigAuditLogConfig {
+public final class IamAuditConfigAuditLogConfig {
     /**
      * @return Identities that do not cause logging for this type of permission.  The format is the same as that for `members`.
      * 
@@ -22,7 +22,7 @@ public final class IAMAuditConfigAuditLogConfig {
      */
     private String logType;
 
-    private IAMAuditConfigAuditLogConfig() {}
+    private IamAuditConfigAuditLogConfig() {}
     /**
      * @return Identities that do not cause logging for this type of permission.  The format is the same as that for `members`.
      * 
@@ -42,7 +42,7 @@ public final class IAMAuditConfigAuditLogConfig {
         return new Builder();
     }
 
-    public static Builder builder(IAMAuditConfigAuditLogConfig defaults) {
+    public static Builder builder(IamAuditConfigAuditLogConfig defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -50,7 +50,7 @@ public final class IAMAuditConfigAuditLogConfig {
         private @Nullable List<String> exemptedMembers;
         private String logType;
         public Builder() {}
-        public Builder(IAMAuditConfigAuditLogConfig defaults) {
+        public Builder(IamAuditConfigAuditLogConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.exemptedMembers = defaults.exemptedMembers;
     	      this.logType = defaults.logType;
@@ -69,8 +69,8 @@ public final class IAMAuditConfigAuditLogConfig {
             this.logType = Objects.requireNonNull(logType);
             return this;
         }
-        public IAMAuditConfigAuditLogConfig build() {
-            final var o = new IAMAuditConfigAuditLogConfig();
+        public IamAuditConfigAuditLogConfig build() {
+            final var o = new IamAuditConfigAuditLogConfig();
             o.exemptedMembers = exemptedMembers;
             o.logType = logType;
             return o;

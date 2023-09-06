@@ -5,7 +5,7 @@ package com.pulumi.gcp.projects.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.gcp.projects.inputs.IAMBindingConditionArgs;
+import com.pulumi.gcp.projects.inputs.IamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -13,9 +13,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class IAMBindingState extends com.pulumi.resources.ResourceArgs {
+public final class IamBindingState extends com.pulumi.resources.ResourceArgs {
 
-    public static final IAMBindingState Empty = new IAMBindingState();
+    public static final IamBindingState Empty = new IamBindingState();
 
     /**
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -23,14 +23,14 @@ public final class IAMBindingState extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="condition")
-    private @Nullable Output<IAMBindingConditionArgs> condition;
+    private @Nullable Output<IamBindingConditionArgs> condition;
 
     /**
      * @return An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      * 
      */
-    public Optional<Output<IAMBindingConditionArgs>> condition() {
+    public Optional<Output<IamBindingConditionArgs>> condition() {
         return Optional.ofNullable(this.condition);
     }
 
@@ -75,7 +75,7 @@ public final class IAMBindingState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The role that should be applied. Only one
-     * `gcp.projects.IAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.projects.IamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -84,7 +84,7 @@ public final class IAMBindingState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The role that should be applied. Only one
-     * `gcp.projects.IAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.projects.IamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -92,9 +92,9 @@ public final class IAMBindingState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.role);
     }
 
-    private IAMBindingState() {}
+    private IamBindingState() {}
 
-    private IAMBindingState(IAMBindingState $) {
+    private IamBindingState(IamBindingState $) {
         this.condition = $.condition;
         this.etag = $.etag;
         this.members = $.members;
@@ -105,19 +105,19 @@ public final class IAMBindingState extends com.pulumi.resources.ResourceArgs {
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(IAMBindingState defaults) {
+    public static Builder builder(IamBindingState defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private IAMBindingState $;
+        private IamBindingState $;
 
         public Builder() {
-            $ = new IAMBindingState();
+            $ = new IamBindingState();
         }
 
-        public Builder(IAMBindingState defaults) {
-            $ = new IAMBindingState(Objects.requireNonNull(defaults));
+        public Builder(IamBindingState defaults) {
+            $ = new IamBindingState(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -127,7 +127,7 @@ public final class IAMBindingState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder condition(@Nullable Output<IAMBindingConditionArgs> condition) {
+        public Builder condition(@Nullable Output<IamBindingConditionArgs> condition) {
             $.condition = condition;
             return this;
         }
@@ -139,7 +139,7 @@ public final class IAMBindingState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder condition(IAMBindingConditionArgs condition) {
+        public Builder condition(IamBindingConditionArgs condition) {
             return condition(Output.of(condition));
         }
 
@@ -202,7 +202,7 @@ public final class IAMBindingState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.projects.IAMBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.projects.IamBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder
@@ -215,7 +215,7 @@ public final class IAMBindingState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.projects.IAMBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.projects.IamBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder
@@ -225,7 +225,7 @@ public final class IAMBindingState extends com.pulumi.resources.ResourceArgs {
             return role(Output.of(role));
         }
 
-        public IAMBindingState build() {
+        public IamBindingState build() {
             return $;
         }
     }

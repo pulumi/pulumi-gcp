@@ -410,7 +410,7 @@ class OrganizationSink(pulumi.CustomResource):
             org_id="123456789",
             destination=log_bucket.name.apply(lambda name: f"storage.googleapis.com/{name}"),
             filter="resource.type = gce_instance AND severity >= WARNING")
-        log_writer = gcp.projects.IAMMember("log-writer",
+        log_writer = gcp.projects.IamMember("log-writer",
             project="your-project-id",
             role="roles/storage.objectCreator",
             member=my_sink.writer_identity)
@@ -471,7 +471,7 @@ class OrganizationSink(pulumi.CustomResource):
             org_id="123456789",
             destination=log_bucket.name.apply(lambda name: f"storage.googleapis.com/{name}"),
             filter="resource.type = gce_instance AND severity >= WARNING")
-        log_writer = gcp.projects.IAMMember("log-writer",
+        log_writer = gcp.projects.IamMember("log-writer",
             project="your-project-id",
             role="roles/storage.objectCreator",
             member=my_sink.writer_identity)

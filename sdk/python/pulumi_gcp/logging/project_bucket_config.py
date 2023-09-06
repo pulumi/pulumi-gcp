@@ -389,7 +389,7 @@ class ProjectBucketConfig(pulumi.CustomResource):
         key = gcp.kms.CryptoKey("key",
             key_ring=keyring.id,
             rotation_period="100000s")
-        crypto_key_binding = gcp.kms.CryptoKeyIAMBinding("cryptoKeyBinding",
+        crypto_key_binding = gcp.kms.CryptoKeyIamBinding("cryptoKeyBinding",
             crypto_key_id=key.id,
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             members=[f"serviceAccount:{cmek_settings.service_account_id}"])
@@ -490,7 +490,7 @@ class ProjectBucketConfig(pulumi.CustomResource):
         key = gcp.kms.CryptoKey("key",
             key_ring=keyring.id,
             rotation_period="100000s")
-        crypto_key_binding = gcp.kms.CryptoKeyIAMBinding("cryptoKeyBinding",
+        crypto_key_binding = gcp.kms.CryptoKeyIamBinding("cryptoKeyBinding",
             crypto_key_id=key.id,
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             members=[f"serviceAccount:{cmek_settings.service_account_id}"])

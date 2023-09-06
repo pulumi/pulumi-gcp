@@ -7,13 +7,13 @@ import * as utilities from "../utilities";
 /**
  * Three different resources help you manage IAM policies on dataproc clusters. Each of these resources serves a different use case:
  *
- * * `gcp.dataproc.ClusterIAMPolicy`: Authoritative. Sets the IAM policy for the cluster and replaces any existing policy already attached.
- * * `gcp.dataproc.ClusterIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the cluster are preserved.
- * * `gcp.dataproc.ClusterIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the cluster are preserved.
+ * * `gcp.dataproc.ClusterIamPolicy`: Authoritative. Sets the IAM policy for the cluster and replaces any existing policy already attached.
+ * * `gcp.dataproc.ClusterIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the cluster are preserved.
+ * * `gcp.dataproc.ClusterIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the cluster are preserved.
  *
- * > **Note:** `gcp.dataproc.ClusterIAMPolicy` **cannot** be used in conjunction with `gcp.dataproc.ClusterIAMBinding` and `gcp.dataproc.ClusterIAMMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the cluster as `gcp.dataproc.ClusterIAMPolicy` replaces the entire policy.
+ * > **Note:** `gcp.dataproc.ClusterIamPolicy` **cannot** be used in conjunction with `gcp.dataproc.ClusterIamBinding` and `gcp.dataproc.ClusterIamMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the cluster as `gcp.dataproc.ClusterIamPolicy` replaces the entire policy.
  *
- * > **Note:** `gcp.dataproc.ClusterIAMBinding` resources **can be** used in conjunction with `gcp.dataproc.ClusterIAMMember` resources **only if** they do not grant privilege to the same role.
+ * > **Note:** `gcp.dataproc.ClusterIamBinding` resources **can be** used in conjunction with `gcp.dataproc.ClusterIamMember` resources **only if** they do not grant privilege to the same role.
  *
  * ## google\_dataproc\_cluster\_iam\_policy
  *
@@ -21,13 +21,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const admin = gcp.organizations.getIAMPolicy({
+ * const admin = gcp.organizations.getIamPolicy({
  *     bindings: [{
  *         role: "roles/editor",
  *         members: ["user:jane@example.com"],
  *     }],
  * });
- * const editor = new gcp.dataproc.ClusterIAMPolicy("editor", {
+ * const editor = new gcp.dataproc.ClusterIamPolicy("editor", {
  *     project: "your-project",
  *     region: "your-region",
  *     cluster: "your-dataproc-cluster",
@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const editor = new gcp.dataproc.ClusterIAMBinding("editor", {
+ * const editor = new gcp.dataproc.ClusterIamBinding("editor", {
  *     cluster: "your-dataproc-cluster",
  *     members: ["user:jane@example.com"],
  *     role: "roles/editor",
@@ -54,7 +54,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const editor = new gcp.dataproc.ClusterIAMMember("editor", {
+ * const editor = new gcp.dataproc.ClusterIamMember("editor", {
  *     cluster: "your-dataproc-cluster",
  *     member: "user:jane@example.com",
  *     role: "roles/editor",
@@ -66,24 +66,24 @@ import * as utilities from "../utilities";
  * Cluster IAM resources can be imported using the project, region, cluster name, role and/or member.
  *
  * ```sh
- *  $ pulumi import gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy editor "projects/{project}/regions/{region}/clusters/{cluster}"
+ *  $ pulumi import gcp:dataproc/clusterIamPolicy:ClusterIamPolicy editor "projects/{project}/regions/{region}/clusters/{cluster}"
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy editor "projects/{project}/regions/{region}/clusters/{cluster} roles/editor"
+ *  $ pulumi import gcp:dataproc/clusterIamPolicy:ClusterIamPolicy editor "projects/{project}/regions/{region}/clusters/{cluster} roles/editor"
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy editor "projects/{project}/regions/{region}/clusters/{cluster} roles/editor user:jane@example.com"
+ *  $ pulumi import gcp:dataproc/clusterIamPolicy:ClusterIamPolicy editor "projects/{project}/regions/{region}/clusters/{cluster} roles/editor user:jane@example.com"
  * ```
  *
  *  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
  *
  * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  */
-export class ClusterIAMPolicy extends pulumi.CustomResource {
+export class ClusterIamPolicy extends pulumi.CustomResource {
     /**
-     * Get an existing ClusterIAMPolicy resource's state with the given name, ID, and optional extra
+     * Get an existing ClusterIamPolicy resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -91,28 +91,28 @@ export class ClusterIAMPolicy extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ClusterIAMPolicyState, opts?: pulumi.CustomResourceOptions): ClusterIAMPolicy {
-        return new ClusterIAMPolicy(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ClusterIamPolicyState, opts?: pulumi.CustomResourceOptions): ClusterIamPolicy {
+        return new ClusterIamPolicy(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy';
+    public static readonly __pulumiType = 'gcp:dataproc/clusterIamPolicy:ClusterIamPolicy';
 
     /**
-     * Returns true if the given object is an instance of ClusterIAMPolicy.  This is designed to work even
+     * Returns true if the given object is an instance of ClusterIamPolicy.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is ClusterIAMPolicy {
+    public static isInstance(obj: any): obj is ClusterIamPolicy {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === ClusterIAMPolicy.__pulumiType;
+        return obj['__pulumiType'] === ClusterIamPolicy.__pulumiType;
     }
 
     /**
      * The name or relative resource id of the cluster to manage IAM policies for.
      *
-     * For `gcp.dataproc.ClusterIAMMember` or `gcp.dataproc.ClusterIAMBinding`:
+     * For `gcp.dataproc.ClusterIamMember` or `gcp.dataproc.ClusterIamBinding`:
      *
      * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -129,7 +129,7 @@ export class ClusterIAMPolicy extends pulumi.CustomResource {
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
-     * The policy data generated by a `gcp.organizations.getIAMPolicy` data source.
+     * The policy data generated by a `gcp.organizations.getIamPolicy` data source.
      *
      * - - -
      */
@@ -146,25 +146,25 @@ export class ClusterIAMPolicy extends pulumi.CustomResource {
     public readonly region!: pulumi.Output<string>;
 
     /**
-     * Create a ClusterIAMPolicy resource with the given unique name, arguments, and options.
+     * Create a ClusterIamPolicy resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ClusterIAMPolicyArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: ClusterIAMPolicyArgs | ClusterIAMPolicyState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: ClusterIamPolicyArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: ClusterIamPolicyArgs | ClusterIamPolicyState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as ClusterIAMPolicyState | undefined;
+            const state = argsOrState as ClusterIamPolicyState | undefined;
             resourceInputs["cluster"] = state ? state.cluster : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["policyData"] = state ? state.policyData : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
         } else {
-            const args = argsOrState as ClusterIAMPolicyArgs | undefined;
+            const args = argsOrState as ClusterIamPolicyArgs | undefined;
             if ((!args || args.cluster === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'cluster'");
             }
@@ -178,18 +178,18 @@ export class ClusterIAMPolicy extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ClusterIAMPolicy.__pulumiType, name, resourceInputs, opts);
+        super(ClusterIamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering ClusterIAMPolicy resources.
+ * Input properties used for looking up and filtering ClusterIamPolicy resources.
  */
-export interface ClusterIAMPolicyState {
+export interface ClusterIamPolicyState {
     /**
      * The name or relative resource id of the cluster to manage IAM policies for.
      *
-     * For `gcp.dataproc.ClusterIAMMember` or `gcp.dataproc.ClusterIAMBinding`:
+     * For `gcp.dataproc.ClusterIamMember` or `gcp.dataproc.ClusterIamBinding`:
      *
      * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -206,7 +206,7 @@ export interface ClusterIAMPolicyState {
      */
     etag?: pulumi.Input<string>;
     /**
-     * The policy data generated by a `gcp.organizations.getIAMPolicy` data source.
+     * The policy data generated by a `gcp.organizations.getIamPolicy` data source.
      *
      * - - -
      */
@@ -224,13 +224,13 @@ export interface ClusterIAMPolicyState {
 }
 
 /**
- * The set of arguments for constructing a ClusterIAMPolicy resource.
+ * The set of arguments for constructing a ClusterIamPolicy resource.
  */
-export interface ClusterIAMPolicyArgs {
+export interface ClusterIamPolicyArgs {
     /**
      * The name or relative resource id of the cluster to manage IAM policies for.
      *
-     * For `gcp.dataproc.ClusterIAMMember` or `gcp.dataproc.ClusterIAMBinding`:
+     * For `gcp.dataproc.ClusterIamMember` or `gcp.dataproc.ClusterIamBinding`:
      *
      * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -243,7 +243,7 @@ export interface ClusterIAMPolicyArgs {
      */
     cluster: pulumi.Input<string>;
     /**
-     * The policy data generated by a `gcp.organizations.getIAMPolicy` data source.
+     * The policy data generated by a `gcp.organizations.getIamPolicy` data source.
      *
      * - - -
      */

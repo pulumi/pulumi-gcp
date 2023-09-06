@@ -330,13 +330,13 @@ class TransferJob(pulumi.CustomResource):
             storage_class="NEARLINE",
             project=var["project"],
             location="US")
-        s3_backup_bucket_bucket_iam_member = gcp.storage.BucketIAMMember("s3-backup-bucketBucketIAMMember",
+        s3_backup_bucket_bucket_iam_member = gcp.storage.BucketIamMember("s3-backup-bucketBucketIamMember",
             bucket=s3_backup_bucket_bucket.name,
             role="roles/storage.admin",
             member=f"serviceAccount:{default.email}",
             opts=pulumi.ResourceOptions(depends_on=[s3_backup_bucket_bucket]))
         topic = gcp.pubsub.Topic("topic")
-        notification_config = gcp.pubsub.TopicIAMMember("notificationConfig",
+        notification_config = gcp.pubsub.TopicIamMember("notificationConfig",
             topic=topic.id,
             role="roles/pubsub.publisher",
             member=f"serviceAccount:{default.email}")
@@ -445,13 +445,13 @@ class TransferJob(pulumi.CustomResource):
             storage_class="NEARLINE",
             project=var["project"],
             location="US")
-        s3_backup_bucket_bucket_iam_member = gcp.storage.BucketIAMMember("s3-backup-bucketBucketIAMMember",
+        s3_backup_bucket_bucket_iam_member = gcp.storage.BucketIamMember("s3-backup-bucketBucketIamMember",
             bucket=s3_backup_bucket_bucket.name,
             role="roles/storage.admin",
             member=f"serviceAccount:{default.email}",
             opts=pulumi.ResourceOptions(depends_on=[s3_backup_bucket_bucket]))
         topic = gcp.pubsub.Topic("topic")
-        notification_config = gcp.pubsub.TopicIAMMember("notificationConfig",
+        notification_config = gcp.pubsub.TopicIamMember("notificationConfig",
             topic=topic.id,
             role="roles/pubsub.publisher",
             member=f"serviceAccount:{default.email}")

@@ -11,9 +11,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class GetIAMPolicyBindingConditionArgs extends com.pulumi.resources.ResourceArgs {
+public final class GetIamPolicyBindingConditionArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final GetIAMPolicyBindingConditionArgs Empty = new GetIAMPolicyBindingConditionArgs();
+    public static final GetIamPolicyBindingConditionArgs Empty = new GetIamPolicyBindingConditionArgs();
 
     /**
      * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -60,9 +60,9 @@ public final class GetIAMPolicyBindingConditionArgs extends com.pulumi.resources
         return this.title;
     }
 
-    private GetIAMPolicyBindingConditionArgs() {}
+    private GetIamPolicyBindingConditionArgs() {}
 
-    private GetIAMPolicyBindingConditionArgs(GetIAMPolicyBindingConditionArgs $) {
+    private GetIamPolicyBindingConditionArgs(GetIamPolicyBindingConditionArgs $) {
         this.description = $.description;
         this.expression = $.expression;
         this.title = $.title;
@@ -71,19 +71,19 @@ public final class GetIAMPolicyBindingConditionArgs extends com.pulumi.resources
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(GetIAMPolicyBindingConditionArgs defaults) {
+    public static Builder builder(GetIamPolicyBindingConditionArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private GetIAMPolicyBindingConditionArgs $;
+        private GetIamPolicyBindingConditionArgs $;
 
         public Builder() {
-            $ = new GetIAMPolicyBindingConditionArgs();
+            $ = new GetIamPolicyBindingConditionArgs();
         }
 
-        public Builder(GetIAMPolicyBindingConditionArgs defaults) {
-            $ = new GetIAMPolicyBindingConditionArgs(Objects.requireNonNull(defaults));
+        public Builder(GetIamPolicyBindingConditionArgs defaults) {
+            $ = new GetIamPolicyBindingConditionArgs(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -149,7 +149,7 @@ public final class GetIAMPolicyBindingConditionArgs extends com.pulumi.resources
             return title(Output.of(title));
         }
 
-        public GetIAMPolicyBindingConditionArgs build() {
+        public GetIamPolicyBindingConditionArgs build() {
             $.expression = Objects.requireNonNull($.expression, "expected parameter 'expression' to be non-null");
             $.title = Objects.requireNonNull($.title, "expected parameter 'title' to be non-null");
             return $;

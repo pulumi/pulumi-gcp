@@ -11,10 +11,10 @@ from .. import _utilities
 
 __all__ = [
     'DatabaseEncryptionConfig',
-    'DatabaseIAMBindingCondition',
-    'DatabaseIAMMemberCondition',
-    'InstanceIAMBindingCondition',
-    'InstanceIAMMemberCondition',
+    'DatabaseIamBindingCondition',
+    'DatabaseIamMemberCondition',
+    'InstanceIamBindingCondition',
+    'InstanceIamMemberCondition',
 ]
 
 @pulumi.output_type
@@ -55,7 +55,7 @@ class DatabaseEncryptionConfig(dict):
 
 
 @pulumi.output_type
-class DatabaseIAMBindingCondition(dict):
+class DatabaseIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -82,7 +82,7 @@ class DatabaseIAMBindingCondition(dict):
 
 
 @pulumi.output_type
-class DatabaseIAMMemberCondition(dict):
+class DatabaseIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -109,7 +109,7 @@ class DatabaseIAMMemberCondition(dict):
 
 
 @pulumi.output_type
-class InstanceIAMBindingCondition(dict):
+class InstanceIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -136,7 +136,7 @@ class InstanceIAMBindingCondition(dict):
 
 
 @pulumi.output_type
-class InstanceIAMMemberCondition(dict):
+class InstanceIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,

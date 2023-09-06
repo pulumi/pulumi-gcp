@@ -40,7 +40,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.organizations.inputs.GetIamPolicyArgs;
  * import com.pulumi.gcp.iap.WebRegionBackendServiceIamPolicy;
  * import com.pulumi.gcp.iap.WebRegionBackendServiceIamPolicyArgs;
  * import java.util.List;
@@ -56,8 +56,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
- *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *         final var admin = OrganizationsFunctions.getIamPolicy(GetIamPolicyArgs.builder()
+ *             .bindings(GetIamPolicyBindingArgs.builder()
  *                 .role(&#34;roles/iap.httpsResourceAccessor&#34;)
  *                 .members(&#34;user:jane@example.com&#34;)
  *                 .build())
@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *             .project(google_compute_region_backend_service.default().project())
  *             .region(google_compute_region_backend_service.default().region())
  *             .webRegionBackendService(google_compute_region_backend_service.default().name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIamPolicyResult -&gt; getIamPolicyResult.policyData()))
  *             .build());
  * 
  *     }
@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.organizations.inputs.GetIamPolicyArgs;
  * import com.pulumi.gcp.iap.WebRegionBackendServiceIamPolicy;
  * import com.pulumi.gcp.iap.WebRegionBackendServiceIamPolicyArgs;
  * import java.util.List;
@@ -98,11 +98,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
- *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *         final var admin = OrganizationsFunctions.getIamPolicy(GetIamPolicyArgs.builder()
+ *             .bindings(GetIamPolicyBindingArgs.builder()
  *                 .role(&#34;roles/iap.httpsResourceAccessor&#34;)
  *                 .members(&#34;user:jane@example.com&#34;)
- *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
+ *                 .condition(GetIamPolicyBindingConditionArgs.builder()
  *                     .title(&#34;expires_after_2019_12_31&#34;)
  *                     .description(&#34;Expiring at midnight of 2019-12-31&#34;)
  *                     .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
@@ -114,7 +114,7 @@ import javax.annotation.Nullable;
  *             .project(google_compute_region_backend_service.default().project())
  *             .region(google_compute_region_backend_service.default().region())
  *             .webRegionBackendService(google_compute_region_backend_service.default().name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIamPolicyResult -&gt; getIamPolicyResult.policyData()))
  *             .build());
  * 
  *     }

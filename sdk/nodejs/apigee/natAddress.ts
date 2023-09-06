@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  * }, {
  *     provider: google_beta,
  * });
- * const apigeeSaKeyuser = new gcp.kms.CryptoKeyIAMBinding("apigeeSaKeyuser", {
+ * const apigeeSaKeyuser = new gcp.kms.CryptoKeyIamBinding("apigeeSaKeyuser", {
  *     cryptoKeyId: apigeeKey.id,
  *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
  *     members: [pulumi.interpolate`serviceAccount:${apigeeSa.email}`],

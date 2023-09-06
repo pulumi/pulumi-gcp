@@ -91,7 +91,7 @@ export class Account extends pulumi.CustomResource {
     public readonly displayName!: pulumi.Output<string | undefined>;
     /**
      * The e-mail address of the service account. This value
-     * should be referenced from any `gcp.organizations.getIAMPolicy` data sources
+     * should be referenced from any `gcp.organizations.getIamPolicy` data sources
      * that would grant the service account privileges.
      */
     public /*out*/ readonly email!: pulumi.Output<string>;
@@ -183,7 +183,7 @@ export interface AccountState {
     displayName?: pulumi.Input<string>;
     /**
      * The e-mail address of the service account. This value
-     * should be referenced from any `gcp.organizations.getIAMPolicy` data sources
+     * should be referenced from any `gcp.organizations.getIamPolicy` data sources
      * that would grant the service account privileges.
      */
     email?: pulumi.Input<string>;

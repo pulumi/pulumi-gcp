@@ -11,14 +11,14 @@ namespace Pulumi.Gcp.Spanner.Outputs
 {
 
     [OutputType]
-    public sealed class InstanceIAMBindingCondition
+    public sealed class InstanceIamBindingCondition
     {
         public readonly string? Description;
         public readonly string Expression;
         public readonly string Title;
 
         [OutputConstructor]
-        private InstanceIAMBindingCondition(
+        private InstanceIamBindingCondition(
             string? description,
 
             string expression,

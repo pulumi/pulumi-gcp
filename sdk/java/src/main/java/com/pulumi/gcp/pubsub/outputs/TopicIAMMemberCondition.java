@@ -10,12 +10,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
-public final class TopicIAMMemberCondition {
+public final class TopicIamMemberCondition {
     private @Nullable String description;
     private String expression;
     private String title;
 
-    private TopicIAMMemberCondition() {}
+    private TopicIamMemberCondition() {}
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
@@ -30,7 +30,7 @@ public final class TopicIAMMemberCondition {
         return new Builder();
     }
 
-    public static Builder builder(TopicIAMMemberCondition defaults) {
+    public static Builder builder(TopicIamMemberCondition defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -39,7 +39,7 @@ public final class TopicIAMMemberCondition {
         private String expression;
         private String title;
         public Builder() {}
-        public Builder(TopicIAMMemberCondition defaults) {
+        public Builder(TopicIamMemberCondition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
     	      this.expression = defaults.expression;
@@ -61,8 +61,8 @@ public final class TopicIAMMemberCondition {
             this.title = Objects.requireNonNull(title);
             return this;
         }
-        public TopicIAMMemberCondition build() {
-            final var o = new TopicIAMMemberCondition();
+        public TopicIamMemberCondition build() {
+            final var o = new TopicIamMemberCondition();
             o.description = description;
             o.expression = expression;
             o.title = title;

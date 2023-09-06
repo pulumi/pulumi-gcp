@@ -10,7 +10,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
-public final class IAMMemberCondition {
+public final class IamMemberCondition {
     /**
      * @return An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
      * 
@@ -31,7 +31,7 @@ public final class IAMMemberCondition {
      */
     private String title;
 
-    private IAMMemberCondition() {}
+    private IamMemberCondition() {}
     /**
      * @return An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
      * 
@@ -62,7 +62,7 @@ public final class IAMMemberCondition {
         return new Builder();
     }
 
-    public static Builder builder(IAMMemberCondition defaults) {
+    public static Builder builder(IamMemberCondition defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -71,7 +71,7 @@ public final class IAMMemberCondition {
         private String expression;
         private String title;
         public Builder() {}
-        public Builder(IAMMemberCondition defaults) {
+        public Builder(IamMemberCondition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
     	      this.expression = defaults.expression;
@@ -93,8 +93,8 @@ public final class IAMMemberCondition {
             this.title = Objects.requireNonNull(title);
             return this;
         }
-        public IAMMemberCondition build() {
-            final var o = new IAMMemberCondition();
+        public IamMemberCondition build() {
+            final var o = new IamMemberCondition();
             o.description = description;
             o.expression = expression;
             o.title = title;

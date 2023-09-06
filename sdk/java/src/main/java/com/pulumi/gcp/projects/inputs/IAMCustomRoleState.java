@@ -13,9 +13,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class IAMCustomRoleState extends com.pulumi.resources.ResourceArgs {
+public final class IamCustomRoleState extends com.pulumi.resources.ResourceArgs {
 
-    public static final IAMCustomRoleState Empty = new IAMCustomRoleState();
+    public static final IamCustomRoleState Empty = new IamCustomRoleState();
 
     /**
      * (Optional) The current deleted state of the role.
@@ -143,9 +143,9 @@ public final class IAMCustomRoleState extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.title);
     }
 
-    private IAMCustomRoleState() {}
+    private IamCustomRoleState() {}
 
-    private IAMCustomRoleState(IAMCustomRoleState $) {
+    private IamCustomRoleState(IamCustomRoleState $) {
         this.deleted = $.deleted;
         this.description = $.description;
         this.name = $.name;
@@ -159,19 +159,19 @@ public final class IAMCustomRoleState extends com.pulumi.resources.ResourceArgs 
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(IAMCustomRoleState defaults) {
+    public static Builder builder(IamCustomRoleState defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private IAMCustomRoleState $;
+        private IamCustomRoleState $;
 
         public Builder() {
-            $ = new IAMCustomRoleState();
+            $ = new IamCustomRoleState();
         }
 
-        public Builder(IAMCustomRoleState defaults) {
-            $ = new IAMCustomRoleState(Objects.requireNonNull(defaults));
+        public Builder(IamCustomRoleState defaults) {
+            $ = new IamCustomRoleState(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -358,7 +358,7 @@ public final class IAMCustomRoleState extends com.pulumi.resources.ResourceArgs 
             return title(Output.of(title));
         }
 
-        public IAMCustomRoleState build() {
+        public IamCustomRoleState build() {
             return $;
         }
     }

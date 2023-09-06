@@ -4,30 +4,30 @@
 package com.pulumi.gcp.organizations.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.gcp.organizations.inputs.GetIAMPolicyAuditConfig;
-import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBinding;
+import com.pulumi.gcp.organizations.inputs.GetIamPolicyAuditConfig;
+import com.pulumi.gcp.organizations.inputs.GetIamPolicyBinding;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class GetIAMPolicyPlainArgs extends com.pulumi.resources.InvokeArgs {
+public final class GetIamPolicyPlainArgs extends com.pulumi.resources.InvokeArgs {
 
-    public static final GetIAMPolicyPlainArgs Empty = new GetIAMPolicyPlainArgs();
+    public static final GetIamPolicyPlainArgs Empty = new GetIamPolicyPlainArgs();
 
     /**
-     * A nested configuration block that defines logging additional configuration for your project. This field is only supported on `gcp.projects.IAMPolicy`, `gcp.folder.IAMPolicy` and `gcp.organizations.IAMPolicy`.
+     * A nested configuration block that defines logging additional configuration for your project. This field is only supported on `gcp.projects.IamPolicy`, `gcp.folder.IamPolicy` and `gcp.organizations.IamPolicy`.
      * 
      */
     @Import(name="auditConfigs")
-    private @Nullable List<GetIAMPolicyAuditConfig> auditConfigs;
+    private @Nullable List<GetIamPolicyAuditConfig> auditConfigs;
 
     /**
-     * @return A nested configuration block that defines logging additional configuration for your project. This field is only supported on `gcp.projects.IAMPolicy`, `gcp.folder.IAMPolicy` and `gcp.organizations.IAMPolicy`.
+     * @return A nested configuration block that defines logging additional configuration for your project. This field is only supported on `gcp.projects.IamPolicy`, `gcp.folder.IamPolicy` and `gcp.organizations.IamPolicy`.
      * 
      */
-    public Optional<List<GetIAMPolicyAuditConfig>> auditConfigs() {
+    public Optional<List<GetIamPolicyAuditConfig>> auditConfigs() {
         return Optional.ofNullable(this.auditConfigs);
     }
 
@@ -41,7 +41,7 @@ public final class GetIAMPolicyPlainArgs extends com.pulumi.resources.InvokeArgs
      * 
      */
     @Import(name="bindings")
-    private @Nullable List<GetIAMPolicyBinding> bindings;
+    private @Nullable List<GetIamPolicyBinding> bindings;
 
     /**
      * @return A nested configuration block (described below)
@@ -52,13 +52,13 @@ public final class GetIAMPolicyPlainArgs extends com.pulumi.resources.InvokeArgs
      * each accept the following arguments:
      * 
      */
-    public Optional<List<GetIAMPolicyBinding>> bindings() {
+    public Optional<List<GetIamPolicyBinding>> bindings() {
         return Optional.ofNullable(this.bindings);
     }
 
-    private GetIAMPolicyPlainArgs() {}
+    private GetIamPolicyPlainArgs() {}
 
-    private GetIAMPolicyPlainArgs(GetIAMPolicyPlainArgs $) {
+    private GetIamPolicyPlainArgs(GetIamPolicyPlainArgs $) {
         this.auditConfigs = $.auditConfigs;
         this.bindings = $.bindings;
     }
@@ -66,39 +66,39 @@ public final class GetIAMPolicyPlainArgs extends com.pulumi.resources.InvokeArgs
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(GetIAMPolicyPlainArgs defaults) {
+    public static Builder builder(GetIamPolicyPlainArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private GetIAMPolicyPlainArgs $;
+        private GetIamPolicyPlainArgs $;
 
         public Builder() {
-            $ = new GetIAMPolicyPlainArgs();
+            $ = new GetIamPolicyPlainArgs();
         }
 
-        public Builder(GetIAMPolicyPlainArgs defaults) {
-            $ = new GetIAMPolicyPlainArgs(Objects.requireNonNull(defaults));
+        public Builder(GetIamPolicyPlainArgs defaults) {
+            $ = new GetIamPolicyPlainArgs(Objects.requireNonNull(defaults));
         }
 
         /**
-         * @param auditConfigs A nested configuration block that defines logging additional configuration for your project. This field is only supported on `gcp.projects.IAMPolicy`, `gcp.folder.IAMPolicy` and `gcp.organizations.IAMPolicy`.
+         * @param auditConfigs A nested configuration block that defines logging additional configuration for your project. This field is only supported on `gcp.projects.IamPolicy`, `gcp.folder.IamPolicy` and `gcp.organizations.IamPolicy`.
          * 
          * @return builder
          * 
          */
-        public Builder auditConfigs(@Nullable List<GetIAMPolicyAuditConfig> auditConfigs) {
+        public Builder auditConfigs(@Nullable List<GetIamPolicyAuditConfig> auditConfigs) {
             $.auditConfigs = auditConfigs;
             return this;
         }
 
         /**
-         * @param auditConfigs A nested configuration block that defines logging additional configuration for your project. This field is only supported on `gcp.projects.IAMPolicy`, `gcp.folder.IAMPolicy` and `gcp.organizations.IAMPolicy`.
+         * @param auditConfigs A nested configuration block that defines logging additional configuration for your project. This field is only supported on `gcp.projects.IamPolicy`, `gcp.folder.IamPolicy` and `gcp.organizations.IamPolicy`.
          * 
          * @return builder
          * 
          */
-        public Builder auditConfigs(GetIAMPolicyAuditConfig... auditConfigs) {
+        public Builder auditConfigs(GetIamPolicyAuditConfig... auditConfigs) {
             return auditConfigs(List.of(auditConfigs));
         }
 
@@ -113,7 +113,7 @@ public final class GetIAMPolicyPlainArgs extends com.pulumi.resources.InvokeArgs
          * @return builder
          * 
          */
-        public Builder bindings(@Nullable List<GetIAMPolicyBinding> bindings) {
+        public Builder bindings(@Nullable List<GetIamPolicyBinding> bindings) {
             $.bindings = bindings;
             return this;
         }
@@ -129,11 +129,11 @@ public final class GetIAMPolicyPlainArgs extends com.pulumi.resources.InvokeArgs
          * @return builder
          * 
          */
-        public Builder bindings(GetIAMPolicyBinding... bindings) {
+        public Builder bindings(GetIamPolicyBinding... bindings) {
             return bindings(List.of(bindings));
         }
 
-        public GetIAMPolicyPlainArgs build() {
+        public GetIamPolicyPlainArgs build() {
             return $;
         }
     }

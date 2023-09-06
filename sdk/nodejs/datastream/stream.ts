@@ -79,22 +79,22 @@ import * as utilities from "../utilities";
  *     location: "US",
  *     uniformBucketLevelAccess: true,
  * });
- * const viewer = new gcp.storage.BucketIAMMember("viewer", {
+ * const viewer = new gcp.storage.BucketIamMember("viewer", {
  *     bucket: bucket.name,
  *     role: "roles/storage.objectViewer",
  *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-datastream.iam.gserviceaccount.com`),
  * });
- * const creator = new gcp.storage.BucketIAMMember("creator", {
+ * const creator = new gcp.storage.BucketIamMember("creator", {
  *     bucket: bucket.name,
  *     role: "roles/storage.objectCreator",
  *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-datastream.iam.gserviceaccount.com`),
  * });
- * const reader = new gcp.storage.BucketIAMMember("reader", {
+ * const reader = new gcp.storage.BucketIamMember("reader", {
  *     bucket: bucket.name,
  *     role: "roles/storage.legacyBucketReader",
  *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-datastream.iam.gserviceaccount.com`),
  * });
- * const keyUser = new gcp.kms.CryptoKeyIAMMember("keyUser", {
+ * const keyUser = new gcp.kms.CryptoKeyIamMember("keyUser", {
  *     cryptoKeyId: "kms-name",
  *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
  *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-datastream.iam.gserviceaccount.com`),
@@ -509,7 +509,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const bqSa = gcp.bigquery.getDefaultServiceAccount({});
- * const bigqueryKeyUser = new gcp.kms.CryptoKeyIAMMember("bigqueryKeyUser", {
+ * const bigqueryKeyUser = new gcp.kms.CryptoKeyIamMember("bigqueryKeyUser", {
  *     cryptoKeyId: "bigquery-kms-name",
  *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
  *     member: bqSa.then(bqSa => `serviceAccount:${bqSa.email}`),

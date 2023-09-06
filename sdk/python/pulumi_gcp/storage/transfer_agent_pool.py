@@ -248,7 +248,7 @@ class TransferAgentPool(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.storage.get_transfer_project_service_account(project="my-project-name")
-        pubsub_editor_role = gcp.projects.IAMMember("pubsubEditorRole",
+        pubsub_editor_role = gcp.projects.IamMember("pubsubEditorRole",
             project="my-project-name",
             role="roles/pubsub.editor",
             member=f"serviceAccount:{default.email}")
@@ -318,7 +318,7 @@ class TransferAgentPool(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.storage.get_transfer_project_service_account(project="my-project-name")
-        pubsub_editor_role = gcp.projects.IAMMember("pubsubEditorRole",
+        pubsub_editor_role = gcp.projects.IamMember("pubsubEditorRole",
             project="my-project-name",
             role="roles/pubsub.editor",
             member=f"serviceAccount:{default.email}")

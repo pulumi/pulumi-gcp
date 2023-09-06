@@ -153,14 +153,14 @@ namespace Pulumi.Gcp.PubSub
     /// 
     ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
-    ///     var viewer = new Gcp.Projects.IAMMember("viewer", new()
+    ///     var viewer = new Gcp.Projects.IamMember("viewer", new()
     ///     {
     ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
     ///         Role = "roles/bigquery.metadataViewer",
     ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-pubsub.iam.gserviceaccount.com",
     ///     });
     /// 
-    ///     var editor = new Gcp.Projects.IAMMember("editor", new()
+    ///     var editor = new Gcp.Projects.IamMember("editor", new()
     ///     {
     ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
     ///         Role = "roles/bigquery.dataEditor",

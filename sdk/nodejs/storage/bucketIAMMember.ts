@@ -9,17 +9,17 @@ import * as utilities from "../utilities";
 /**
  * Three different resources help you manage your IAM policy for Cloud Storage Bucket. Each of these resources serves a different use case:
  *
- * * `gcp.storage.BucketIAMPolicy`: Authoritative. Sets the IAM policy for the bucket and replaces any existing policy already attached.
- * * `gcp.storage.BucketIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the bucket are preserved.
- * * `gcp.storage.BucketIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the bucket are preserved.
+ * * `gcp.storage.BucketIamPolicy`: Authoritative. Sets the IAM policy for the bucket and replaces any existing policy already attached.
+ * * `gcp.storage.BucketIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the bucket are preserved.
+ * * `gcp.storage.BucketIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the bucket are preserved.
  *
  * A data source can be used to retrieve policy data in advent you do not need creation
  *
- * * `gcp.storage.BucketIAMPolicy`: Retrieves the IAM policy for the bucket
+ * * `gcp.storage.BucketIamPolicy`: Retrieves the IAM policy for the bucket
  *
- * > **Note:** `gcp.storage.BucketIAMPolicy` **cannot** be used in conjunction with `gcp.storage.BucketIAMBinding` and `gcp.storage.BucketIAMMember` or they will fight over what your policy should be.
+ * > **Note:** `gcp.storage.BucketIamPolicy` **cannot** be used in conjunction with `gcp.storage.BucketIamBinding` and `gcp.storage.BucketIamMember` or they will fight over what your policy should be.
  *
- * > **Note:** `gcp.storage.BucketIAMBinding` resources **can be** used in conjunction with `gcp.storage.BucketIAMMember` resources **only if** they do not grant privilege to the same role.
+ * > **Note:** `gcp.storage.BucketIamBinding` resources **can be** used in conjunction with `gcp.storage.BucketIamMember` resources **only if** they do not grant privilege to the same role.
  *
  * > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
  *
@@ -29,13 +29,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const admin = gcp.organizations.getIAMPolicy({
+ * const admin = gcp.organizations.getIamPolicy({
  *     bindings: [{
  *         role: "roles/storage.admin",
  *         members: ["user:jane@example.com"],
  *     }],
  * });
- * const policy = new gcp.storage.BucketIAMPolicy("policy", {
+ * const policy = new gcp.storage.BucketIamPolicy("policy", {
  *     bucket: google_storage_bucket["default"].name,
  *     policyData: admin.then(admin => admin.policyData),
  * });
@@ -47,7 +47,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const admin = gcp.organizations.getIAMPolicy({
+ * const admin = gcp.organizations.getIamPolicy({
  *     bindings: [{
  *         role: "roles/storage.admin",
  *         members: ["user:jane@example.com"],
@@ -58,7 +58,7 @@ import * as utilities from "../utilities";
  *         },
  *     }],
  * });
- * const policy = new gcp.storage.BucketIAMPolicy("policy", {
+ * const policy = new gcp.storage.BucketIamPolicy("policy", {
  *     bucket: google_storage_bucket["default"].name,
  *     policyData: admin.then(admin => admin.policyData),
  * });
@@ -69,7 +69,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const binding = new gcp.storage.BucketIAMBinding("binding", {
+ * const binding = new gcp.storage.BucketIamBinding("binding", {
  *     bucket: google_storage_bucket["default"].name,
  *     role: "roles/storage.admin",
  *     members: ["user:jane@example.com"],
@@ -82,7 +82,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const binding = new gcp.storage.BucketIAMBinding("binding", {
+ * const binding = new gcp.storage.BucketIamBinding("binding", {
  *     bucket: google_storage_bucket["default"].name,
  *     role: "roles/storage.admin",
  *     members: ["user:jane@example.com"],
@@ -99,7 +99,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const member = new gcp.storage.BucketIAMMember("member", {
+ * const member = new gcp.storage.BucketIamMember("member", {
  *     bucket: google_storage_bucket["default"].name,
  *     role: "roles/storage.admin",
  *     member: "user:jane@example.com",
@@ -112,7 +112,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const member = new gcp.storage.BucketIAMMember("member", {
+ * const member = new gcp.storage.BucketIamMember("member", {
  *     bucket: google_storage_bucket["default"].name,
  *     role: "roles/storage.admin",
  *     member: "user:jane@example.com",
@@ -129,28 +129,28 @@ import * as utilities from "../utilities";
  * For all import syntaxes, the "resource in question" can take any of the following forms* b/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Storage bucket IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
  *
  * ```sh
- *  $ pulumi import gcp:storage/bucketIAMMember:BucketIAMMember editor "b/{{bucket}} roles/storage.objectViewer user:jane@example.com"
+ *  $ pulumi import gcp:storage/bucketIamMember:BucketIamMember editor "b/{{bucket}} roles/storage.objectViewer user:jane@example.com"
  * ```
  *
  *  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
  *
  * ```sh
- *  $ pulumi import gcp:storage/bucketIAMMember:BucketIAMMember editor "b/{{bucket}} roles/storage.objectViewer"
+ *  $ pulumi import gcp:storage/bucketIamMember:BucketIamMember editor "b/{{bucket}} roles/storage.objectViewer"
  * ```
  *
  *  IAM policy imports use the identifier of the resource in question, e.g.
  *
  * ```sh
- *  $ pulumi import gcp:storage/bucketIAMMember:BucketIAMMember editor b/{{bucket}}
+ *  $ pulumi import gcp:storage/bucketIamMember:BucketIamMember editor b/{{bucket}}
  * ```
  *
  *  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
  *
  * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  */
-export class BucketIAMMember extends pulumi.CustomResource {
+export class BucketIamMember extends pulumi.CustomResource {
     /**
-     * Get an existing BucketIAMMember resource's state with the given name, ID, and optional extra
+     * Get an existing BucketIamMember resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -158,22 +158,22 @@ export class BucketIAMMember extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: BucketIAMMemberState, opts?: pulumi.CustomResourceOptions): BucketIAMMember {
-        return new BucketIAMMember(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: BucketIamMemberState, opts?: pulumi.CustomResourceOptions): BucketIamMember {
+        return new BucketIamMember(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp:storage/bucketIAMMember:BucketIAMMember';
+    public static readonly __pulumiType = 'gcp:storage/bucketIamMember:BucketIamMember';
 
     /**
-     * Returns true if the given object is an instance of BucketIAMMember.  This is designed to work even
+     * Returns true if the given object is an instance of BucketIamMember.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is BucketIAMMember {
+    public static isInstance(obj: any): obj is BucketIamMember {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === BucketIAMMember.__pulumiType;
+        return obj['__pulumiType'] === BucketIamMember.__pulumiType;
     }
 
     /**
@@ -196,7 +196,7 @@ export class BucketIAMMember extends pulumi.CustomResource {
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    public readonly condition!: pulumi.Output<outputs.storage.BucketIAMMemberCondition | undefined>;
+    public readonly condition!: pulumi.Output<outputs.storage.BucketIamMemberCondition | undefined>;
     /**
      * (Computed) The etag of the IAM policy.
      */
@@ -204,31 +204,31 @@ export class BucketIAMMember extends pulumi.CustomResource {
     public readonly member!: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
-     * `gcp.storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.storage.BucketIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     public readonly role!: pulumi.Output<string>;
 
     /**
-     * Create a BucketIAMMember resource with the given unique name, arguments, and options.
+     * Create a BucketIamMember resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: BucketIAMMemberArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: BucketIAMMemberArgs | BucketIAMMemberState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: BucketIamMemberArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: BucketIamMemberArgs | BucketIamMemberState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as BucketIAMMemberState | undefined;
+            const state = argsOrState as BucketIamMemberState | undefined;
             resourceInputs["bucket"] = state ? state.bucket : undefined;
             resourceInputs["condition"] = state ? state.condition : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["member"] = state ? state.member : undefined;
             resourceInputs["role"] = state ? state.role : undefined;
         } else {
-            const args = argsOrState as BucketIAMMemberArgs | undefined;
+            const args = argsOrState as BucketIamMemberArgs | undefined;
             if ((!args || args.bucket === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
@@ -245,14 +245,14 @@ export class BucketIAMMember extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(BucketIAMMember.__pulumiType, name, resourceInputs, opts);
+        super(BucketIamMember.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering BucketIAMMember resources.
+ * Input properties used for looking up and filtering BucketIamMember resources.
  */
-export interface BucketIAMMemberState {
+export interface BucketIamMemberState {
     /**
      * Used to find the parent resource to bind the IAM policy to
      *
@@ -273,7 +273,7 @@ export interface BucketIAMMemberState {
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    condition?: pulumi.Input<inputs.storage.BucketIAMMemberCondition>;
+    condition?: pulumi.Input<inputs.storage.BucketIamMemberCondition>;
     /**
      * (Computed) The etag of the IAM policy.
      */
@@ -281,16 +281,16 @@ export interface BucketIAMMemberState {
     member?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
-     * `gcp.storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.storage.BucketIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     role?: pulumi.Input<string>;
 }
 
 /**
- * The set of arguments for constructing a BucketIAMMember resource.
+ * The set of arguments for constructing a BucketIamMember resource.
  */
-export interface BucketIAMMemberArgs {
+export interface BucketIamMemberArgs {
     /**
      * Used to find the parent resource to bind the IAM policy to
      *
@@ -311,11 +311,11 @@ export interface BucketIAMMemberArgs {
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    condition?: pulumi.Input<inputs.storage.BucketIAMMemberCondition>;
+    condition?: pulumi.Input<inputs.storage.BucketIamMemberCondition>;
     member: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
-     * `gcp.storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.storage.BucketIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     role: pulumi.Input<string>;

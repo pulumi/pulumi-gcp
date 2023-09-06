@@ -10,7 +10,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
-public final class CryptoKeyIAMBindingCondition {
+public final class CryptoKeyIamBindingCondition {
     /**
      * @return An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
      * 
@@ -31,7 +31,7 @@ public final class CryptoKeyIAMBindingCondition {
      */
     private String title;
 
-    private CryptoKeyIAMBindingCondition() {}
+    private CryptoKeyIamBindingCondition() {}
     /**
      * @return An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
      * 
@@ -62,7 +62,7 @@ public final class CryptoKeyIAMBindingCondition {
         return new Builder();
     }
 
-    public static Builder builder(CryptoKeyIAMBindingCondition defaults) {
+    public static Builder builder(CryptoKeyIamBindingCondition defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -71,7 +71,7 @@ public final class CryptoKeyIAMBindingCondition {
         private String expression;
         private String title;
         public Builder() {}
-        public Builder(CryptoKeyIAMBindingCondition defaults) {
+        public Builder(CryptoKeyIamBindingCondition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
     	      this.expression = defaults.expression;
@@ -93,8 +93,8 @@ public final class CryptoKeyIAMBindingCondition {
             this.title = Objects.requireNonNull(title);
             return this;
         }
-        public CryptoKeyIAMBindingCondition build() {
-            final var o = new CryptoKeyIAMBindingCondition();
+        public CryptoKeyIamBindingCondition build() {
+            final var o = new CryptoKeyIamBindingCondition();
             o.description = description;
             o.expression = expression;
             o.title = title;

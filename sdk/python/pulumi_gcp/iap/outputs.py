@@ -16,8 +16,8 @@ __all__ = [
     'AppEngineVersionIamMemberCondition',
     'TunnelIamBindingCondition',
     'TunnelIamMemberCondition',
-    'TunnelInstanceIAMBindingCondition',
-    'TunnelInstanceIAMMemberCondition',
+    'TunnelInstanceIamBindingCondition',
+    'TunnelInstanceIamMemberCondition',
     'WebBackendServiceIamBindingCondition',
     'WebBackendServiceIamMemberCondition',
     'WebIamBindingCondition',
@@ -309,7 +309,7 @@ class TunnelIamMemberCondition(dict):
 
 
 @pulumi.output_type
-class TunnelInstanceIAMBindingCondition(dict):
+class TunnelInstanceIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -358,7 +358,7 @@ class TunnelInstanceIAMBindingCondition(dict):
 
 
 @pulumi.output_type
-class TunnelInstanceIAMMemberCondition(dict):
+class TunnelInstanceIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,

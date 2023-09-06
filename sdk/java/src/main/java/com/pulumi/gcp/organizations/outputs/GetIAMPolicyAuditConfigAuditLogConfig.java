@@ -10,7 +10,7 @@ import java.util.Objects;
 import javax.annotation.Nullable;
 
 @CustomType
-public final class GetIAMPolicyAuditConfigAuditLogConfig {
+public final class GetIamPolicyAuditConfigAuditLogConfig {
     /**
      * @return Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `members` array for `binding`.
      * 
@@ -22,7 +22,7 @@ public final class GetIAMPolicyAuditConfigAuditLogConfig {
      */
     private String logType;
 
-    private GetIAMPolicyAuditConfigAuditLogConfig() {}
+    private GetIamPolicyAuditConfigAuditLogConfig() {}
     /**
      * @return Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `members` array for `binding`.
      * 
@@ -42,7 +42,7 @@ public final class GetIAMPolicyAuditConfigAuditLogConfig {
         return new Builder();
     }
 
-    public static Builder builder(GetIAMPolicyAuditConfigAuditLogConfig defaults) {
+    public static Builder builder(GetIamPolicyAuditConfigAuditLogConfig defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -50,7 +50,7 @@ public final class GetIAMPolicyAuditConfigAuditLogConfig {
         private @Nullable List<String> exemptedMembers;
         private String logType;
         public Builder() {}
-        public Builder(GetIAMPolicyAuditConfigAuditLogConfig defaults) {
+        public Builder(GetIamPolicyAuditConfigAuditLogConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.exemptedMembers = defaults.exemptedMembers;
     	      this.logType = defaults.logType;
@@ -69,8 +69,8 @@ public final class GetIAMPolicyAuditConfigAuditLogConfig {
             this.logType = Objects.requireNonNull(logType);
             return this;
         }
-        public GetIAMPolicyAuditConfigAuditLogConfig build() {
-            final var o = new GetIAMPolicyAuditConfigAuditLogConfig();
+        public GetIamPolicyAuditConfigAuditLogConfig build() {
+            final var o = new GetIamPolicyAuditConfigAuditLogConfig();
             o.exemptedMembers = exemptedMembers;
             o.logType = logType;
             return o;

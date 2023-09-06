@@ -7,14 +7,14 @@ import * as utilities from "../utilities";
 /**
  * Four different resources help you manage your IAM policy for a folder. Each of these resources serves a different use case:
  *
- * * `gcp.folder.IAMPolicy`: Authoritative. Sets the IAM policy for the folder and replaces any existing policy already attached.
- * * `gcp.folder.IAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the folder are preserved.
- * * `gcp.folder.IAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the folder are preserved.
+ * * `gcp.folder.IamPolicy`: Authoritative. Sets the IAM policy for the folder and replaces any existing policy already attached.
+ * * `gcp.folder.IamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the folder are preserved.
+ * * `gcp.folder.IamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the folder are preserved.
  * * `gcp.folder.IamAuditConfig`: Authoritative for a given service. Updates the IAM policy to enable audit logging for the given service.
  *
- * > **Note:** `gcp.folder.IAMPolicy` **cannot** be used in conjunction with `gcp.folder.IAMBinding`, `gcp.folder.IAMMember`, or `gcp.folder.IamAuditConfig` or they will fight over what your policy should be.
+ * > **Note:** `gcp.folder.IamPolicy` **cannot** be used in conjunction with `gcp.folder.IamBinding`, `gcp.folder.IamMember`, or `gcp.folder.IamAuditConfig` or they will fight over what your policy should be.
  *
- * > **Note:** `gcp.folder.IAMBinding` resources **can be** used in conjunction with `gcp.folder.IAMMember` resources **only if** they do not grant privilege to the same role.
+ * > **Note:** `gcp.folder.IamBinding` resources **can be** used in conjunction with `gcp.folder.IamMember` resources **only if** they do not grant privilege to the same role.
  *
  * > **Note:** The underlying API method `projects.setIamPolicy` has constraints which are documented [here](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
  *    IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning a 400 error code so please review these if you encounter errors with this resource.
@@ -22,9 +22,9 @@ import * as utilities from "../utilities";
  * ## google\_folder\_iam\_policy
  *
  * !> **Be careful!** You can accidentally lock yourself out of your folder
- *    using this resource. Deleting a `gcp.folder.IAMPolicy` removes access
+ *    using this resource. Deleting a `gcp.folder.IamPolicy` removes access
  *    from anyone without permissions on its parent folder/organization. Proceed with caution.
- *    It's not recommended to use `gcp.folder.IAMPolicy` with your provider folder
+ *    It's not recommended to use `gcp.folder.IamPolicy` with your provider folder
  *    to avoid locking yourself out, and it should generally only be used with folders
  *    fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
  *    applying the change.
@@ -33,13 +33,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const admin = gcp.organizations.getIAMPolicy({
+ * const admin = gcp.organizations.getIamPolicy({
  *     bindings: [{
  *         role: "roles/editor",
  *         members: ["user:jane@example.com"],
  *     }],
  * });
- * const folder = new gcp.folder.IAMPolicy("folder", {
+ * const folder = new gcp.folder.IamPolicy("folder", {
  *     folder: "folders/1234567",
  *     policyData: admin.then(admin => admin.policyData),
  * });
@@ -51,7 +51,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const admin = gcp.organizations.getIAMPolicy({
+ * const admin = gcp.organizations.getIamPolicy({
  *     bindings: [{
  *         condition: {
  *             description: "Expiring at midnight of 2019-12-31",
@@ -62,7 +62,7 @@ import * as utilities from "../utilities";
  *         role: "roles/compute.admin",
  *     }],
  * });
- * const folder = new gcp.folder.IAMPolicy("folder", {
+ * const folder = new gcp.folder.IamPolicy("folder", {
  *     folder: "folders/1234567",
  *     policyData: admin.then(admin => admin.policyData),
  * });
@@ -74,7 +74,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const folder = new gcp.folder.IAMBinding("folder", {
+ * const folder = new gcp.folder.IamBinding("folder", {
  *     folder: "folders/1234567",
  *     members: ["user:jane@example.com"],
  *     role: "roles/editor",
@@ -87,7 +87,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const folder = new gcp.folder.IAMBinding("folder", {
+ * const folder = new gcp.folder.IamBinding("folder", {
  *     condition: {
  *         description: "Expiring at midnight of 2019-12-31",
  *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
@@ -105,7 +105,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const folder = new gcp.folder.IAMMember("folder", {
+ * const folder = new gcp.folder.IamMember("folder", {
  *     folder: "folders/1234567",
  *     member: "user:jane@example.com",
  *     role: "roles/editor",
@@ -118,7 +118,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const folder = new gcp.folder.IAMMember("folder", {
+ * const folder = new gcp.folder.IamMember("folder", {
  *     condition: {
  *         description: "Expiring at midnight of 2019-12-31",
  *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
@@ -158,7 +158,7 @@ import * as utilities from "../utilities";
  * This member resource can be imported using the `folder`, role, and member e.g.
  *
  * ```sh
- *  $ pulumi import gcp:folder/iAMPolicy:IAMPolicy my_folder "folder roles/viewer user:foo@example.com"
+ *  $ pulumi import gcp:folder/iamPolicy:IamPolicy my_folder "folder roles/viewer user:foo@example.com"
  * ```
  *
  *  IAM binding imports use space-delimited identifiers; the resource in question and the role.
@@ -166,7 +166,7 @@ import * as utilities from "../utilities";
  * This binding resource can be imported using the `folder` and role, e.g.
  *
  * ```sh
- *  $ pulumi import gcp:folder/iAMPolicy:IAMPolicy my_folder "folder roles/viewer"
+ *  $ pulumi import gcp:folder/iamPolicy:IamPolicy my_folder "folder roles/viewer"
  * ```
  *
  *  IAM policy imports use the identifier of the resource in question.
@@ -174,13 +174,13 @@ import * as utilities from "../utilities";
  * This policy resource can be imported using the `folder`.
  *
  * ```sh
- *  $ pulumi import gcp:folder/iAMPolicy:IAMPolicy my_folder folder
+ *  $ pulumi import gcp:folder/iamPolicy:IamPolicy my_folder folder
  * ```
  *
  *  IAM audit config imports use the identifier of the resource in question and the service, e.g.
  *
  * ```sh
- *  $ pulumi import gcp:folder/iAMPolicy:IAMPolicy my_folder "folder foo.googleapis.com"
+ *  $ pulumi import gcp:folder/iamPolicy:IamPolicy my_folder "folder foo.googleapis.com"
  * ```
  *
  *  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
@@ -188,12 +188,12 @@ import * as utilities from "../utilities";
  * full name of the custom role, e.g. `organizations/{{org_id}}/roles/{{role_id}}`. -> **Conditional IAM Bindings**If you're importing a IAM binding with a condition block, make sure
  *
  * ```sh
- *  $ pulumi import gcp:folder/iAMPolicy:IAMPolicy to include the title of condition, e.g. `google_folder_iam_binding.my_folder "folder roles/{{role_id}} condition-title"`
+ *  $ pulumi import gcp:folder/iamPolicy:IamPolicy to include the title of condition, e.g. `google_folder_iam_binding.my_folder "folder roles/{{role_id}} condition-title"`
  * ```
  */
-export class IAMPolicy extends pulumi.CustomResource {
+export class IamPolicy extends pulumi.CustomResource {
     /**
-     * Get an existing IAMPolicy resource's state with the given name, ID, and optional extra
+     * Get an existing IamPolicy resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -201,22 +201,22 @@ export class IAMPolicy extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: IAMPolicyState, opts?: pulumi.CustomResourceOptions): IAMPolicy {
-        return new IAMPolicy(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: IamPolicyState, opts?: pulumi.CustomResourceOptions): IamPolicy {
+        return new IamPolicy(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp:folder/iAMPolicy:IAMPolicy';
+    public static readonly __pulumiType = 'gcp:folder/iamPolicy:IamPolicy';
 
     /**
-     * Returns true if the given object is an instance of IAMPolicy.  This is designed to work even
+     * Returns true if the given object is an instance of IamPolicy.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is IAMPolicy {
+    public static isInstance(obj: any): obj is IamPolicy {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === IAMPolicy.__pulumiType;
+        return obj['__pulumiType'] === IamPolicy.__pulumiType;
     }
 
     /**
@@ -228,7 +228,7 @@ export class IAMPolicy extends pulumi.CustomResource {
      */
     public readonly folder!: pulumi.Output<string>;
     /**
-     * The `gcp.organizations.getIAMPolicy` data source that represents
+     * The `gcp.organizations.getIamPolicy` data source that represents
      * the IAM policy that will be applied to the folder. The policy will be
      * merged with any existing policy applied to the folder.
      *
@@ -240,23 +240,23 @@ export class IAMPolicy extends pulumi.CustomResource {
     public readonly policyData!: pulumi.Output<string>;
 
     /**
-     * Create a IAMPolicy resource with the given unique name, arguments, and options.
+     * Create a IamPolicy resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: IAMPolicyArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: IAMPolicyArgs | IAMPolicyState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: IamPolicyArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: IamPolicyArgs | IamPolicyState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as IAMPolicyState | undefined;
+            const state = argsOrState as IamPolicyState | undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["folder"] = state ? state.folder : undefined;
             resourceInputs["policyData"] = state ? state.policyData : undefined;
         } else {
-            const args = argsOrState as IAMPolicyArgs | undefined;
+            const args = argsOrState as IamPolicyArgs | undefined;
             if ((!args || args.folder === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'folder'");
             }
@@ -268,14 +268,14 @@ export class IAMPolicy extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(IAMPolicy.__pulumiType, name, resourceInputs, opts);
+        super(IamPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering IAMPolicy resources.
+ * Input properties used for looking up and filtering IamPolicy resources.
  */
-export interface IAMPolicyState {
+export interface IamPolicyState {
     /**
      * (Computed) The etag of the folder's IAM policy.
      */
@@ -285,7 +285,7 @@ export interface IAMPolicyState {
      */
     folder?: pulumi.Input<string>;
     /**
-     * The `gcp.organizations.getIAMPolicy` data source that represents
+     * The `gcp.organizations.getIamPolicy` data source that represents
      * the IAM policy that will be applied to the folder. The policy will be
      * merged with any existing policy applied to the folder.
      *
@@ -298,15 +298,15 @@ export interface IAMPolicyState {
 }
 
 /**
- * The set of arguments for constructing a IAMPolicy resource.
+ * The set of arguments for constructing a IamPolicy resource.
  */
-export interface IAMPolicyArgs {
+export interface IamPolicyArgs {
     /**
      * The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
      */
     folder: pulumi.Input<string>;
     /**
-     * The `gcp.organizations.getIAMPolicy` data source that represents
+     * The `gcp.organizations.getIamPolicy` data source that represents
      * the IAM policy that will be applied to the folder. The policy will be
      * merged with any existing policy applied to the folder.
      *

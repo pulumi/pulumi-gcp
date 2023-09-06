@@ -8,9 +8,9 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
-import com.pulumi.gcp.organizations.IAMBindingArgs;
-import com.pulumi.gcp.organizations.inputs.IAMBindingState;
-import com.pulumi.gcp.organizations.outputs.IAMBindingCondition;
+import com.pulumi.gcp.organizations.IamBindingArgs;
+import com.pulumi.gcp.organizations.inputs.IamBindingState;
+import com.pulumi.gcp.organizations.outputs.IamBindingCondition;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * an existing Google Cloud Platform Organization.
  * 
  * &gt; **Note:** This resource __must not__ be used in conjunction with
- *    `gcp.organizations.IAMMember` for the __same role__ or they will fight over
+ *    `gcp.organizations.IamMember` for the __same role__ or they will fight over
  *    what your policy should be.
  * 
  * &gt; **Note:** On create, this resource will overwrite members of any existing roles.
@@ -35,8 +35,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.organizations.IAMBinding;
- * import com.pulumi.gcp.organizations.IAMBindingArgs;
+ * import com.pulumi.gcp.organizations.IamBinding;
+ * import com.pulumi.gcp.organizations.IamBindingArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new IAMBinding(&#34;binding&#34;, IAMBindingArgs.builder()        
+ *         var binding = new IamBinding(&#34;binding&#34;, IamBindingArgs.builder()        
  *             .members(&#34;user:alice@gmail.com&#34;)
  *             .orgId(&#34;123456789&#34;)
  *             .role(&#34;roles/browser&#34;)
@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  * These bindings can be imported using the `org_id` and role, e.g.
  * 
  * ```sh
- *  $ pulumi import gcp:organizations/iAMBinding:IAMBinding my_org &#34;your-org-id roles/viewer&#34;
+ *  $ pulumi import gcp:organizations/iamBinding:IamBinding my_org &#34;your-org-id roles/viewer&#34;
  * ```
  * 
  *  -&gt; **Custom Roles**If you&#39;re importing a IAM resource with a custom role, make sure to use the
@@ -75,12 +75,12 @@ import javax.annotation.Nullable;
  * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * 
  */
-@ResourceType(type="gcp:organizations/iAMBinding:IAMBinding")
-public class IAMBinding extends com.pulumi.resources.CustomResource {
-    @Export(name="condition", type=IAMBindingCondition.class, parameters={})
-    private Output</* @Nullable */ IAMBindingCondition> condition;
+@ResourceType(type="gcp:organizations/iamBinding:IamBinding")
+public class IamBinding extends com.pulumi.resources.CustomResource {
+    @Export(name="condition", type=IamBindingCondition.class, parameters={})
+    private Output</* @Nullable */ IamBindingCondition> condition;
 
-    public Output<Optional<IAMBindingCondition>> condition() {
+    public Output<Optional<IamBindingCondition>> condition() {
         return Codegen.optional(this.condition);
     }
     /**
@@ -127,7 +127,7 @@ public class IAMBinding extends com.pulumi.resources.CustomResource {
     }
     /**
      * The role that should be applied. Only one
-     * `gcp.organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.organizations.IamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -136,7 +136,7 @@ public class IAMBinding extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The role that should be applied. Only one
-     * `gcp.organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.organizations.IamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -148,15 +148,15 @@ public class IAMBinding extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public IAMBinding(String name) {
-        this(name, IAMBindingArgs.Empty);
+    public IamBinding(String name) {
+        this(name, IamBindingArgs.Empty);
     }
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public IAMBinding(String name, IAMBindingArgs args) {
+    public IamBinding(String name, IamBindingArgs args) {
         this(name, args, null);
     }
     /**
@@ -165,12 +165,12 @@ public class IAMBinding extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public IAMBinding(String name, IAMBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:organizations/iAMBinding:IAMBinding", name, args == null ? IAMBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public IamBinding(String name, IamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:organizations/iamBinding:IamBinding", name, args == null ? IamBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private IAMBinding(String name, Output<String> id, @Nullable IAMBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:organizations/iAMBinding:IAMBinding", name, state, makeResourceOptions(options, id));
+    private IamBinding(String name, Output<String> id, @Nullable IamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:organizations/iamBinding:IamBinding", name, state, makeResourceOptions(options, id));
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
@@ -189,7 +189,7 @@ public class IAMBinding extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static IAMBinding get(String name, Output<String> id, @Nullable IAMBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        return new IAMBinding(name, id, state, options);
+    public static IamBinding get(String name, Output<String> id, @Nullable IamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        return new IamBinding(name, id, state, options);
     }
 }

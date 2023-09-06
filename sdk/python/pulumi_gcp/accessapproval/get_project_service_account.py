@@ -96,7 +96,7 @@ def get_project_service_account(project_id: Optional[str] = None,
     import pulumi_gcp as gcp
 
     service_account = gcp.accessapproval.get_project_service_account(project_id="my-project")
-    iam = gcp.kms.CryptoKeyIAMMember("iam",
+    iam = gcp.kms.CryptoKeyIamMember("iam",
         crypto_key_id=google_kms_crypto_key["crypto_key"]["id"],
         role="roles/cloudkms.signerVerifier",
         member=f"serviceAccount:{service_account.account_email}")
@@ -136,7 +136,7 @@ def get_project_service_account_output(project_id: Optional[pulumi.Input[str]] =
     import pulumi_gcp as gcp
 
     service_account = gcp.accessapproval.get_project_service_account(project_id="my-project")
-    iam = gcp.kms.CryptoKeyIAMMember("iam",
+    iam = gcp.kms.CryptoKeyIamMember("iam",
         crypto_key_id=google_kms_crypto_key["crypto_key"]["id"],
         role="roles/cloudkms.signerVerifier",
         member=f"serviceAccount:{service_account.account_email}")

@@ -39,7 +39,7 @@ namespace Pulumi.Gcp.Eventarc
     ///         KeyRing = testKeyRing.Apply(getKMSKeyRingResult =&gt; getKMSKeyRingResult.Id),
     ///     });
     /// 
-    ///     var key1Member = new Gcp.Kms.CryptoKeyIAMMember("key1Member", new()
+    ///     var key1Member = new Gcp.Kms.CryptoKeyIamMember("key1Member", new()
     ///     {
     ///         CryptoKeyId = data.Google_kms_crypto_key.Key1.Id,
     ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",

@@ -14,13 +14,13 @@ namespace Pulumi.Gcp.ServiceAccount
     /// 
     /// Three different resources help you manage your IAM policy for a service account. Each of these resources serves a different use case:
     /// 
-    /// * `gcp.serviceAccount.IAMPolicy`: Authoritative. Sets the IAM policy for the service account and replaces any existing policy already attached.
-    /// * `gcp.serviceAccount.IAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the service account are preserved.
-    /// * `gcp.serviceAccount.IAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the service account are preserved.
+    /// * `gcp.serviceAccount.IamPolicy`: Authoritative. Sets the IAM policy for the service account and replaces any existing policy already attached.
+    /// * `gcp.serviceAccount.IamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the service account are preserved.
+    /// * `gcp.serviceAccount.IamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the service account are preserved.
     /// 
-    /// &gt; **Note:** `gcp.serviceAccount.IAMPolicy` **cannot** be used in conjunction with `gcp.serviceAccount.IAMBinding` and `gcp.serviceAccount.IAMMember` or they will fight over what your policy should be.
+    /// &gt; **Note:** `gcp.serviceAccount.IamPolicy` **cannot** be used in conjunction with `gcp.serviceAccount.IamBinding` and `gcp.serviceAccount.IamMember` or they will fight over what your policy should be.
     /// 
-    /// &gt; **Note:** `gcp.serviceAccount.IAMBinding` resources **can be** used in conjunction with `gcp.serviceAccount.IAMMember` resources **only if** they do not grant privilege to the same role.
+    /// &gt; **Note:** `gcp.serviceAccount.IamBinding` resources **can be** used in conjunction with `gcp.serviceAccount.IamMember` resources **only if** they do not grant privilege to the same role.
     /// 
     /// ## Example Usage
     /// ### Service Account IAM Policy
@@ -33,11 +33,11 @@ namespace Pulumi.Gcp.ServiceAccount
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     var admin = Gcp.Organizations.GetIamPolicy.Invoke(new()
     ///     {
     ///         Bindings = new[]
     ///         {
-    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             new Gcp.Organizations.Inputs.GetIamPolicyBindingInputArgs
     ///             {
     ///                 Role = "roles/iam.serviceAccountUser",
     ///                 Members = new[]
@@ -54,10 +54,10 @@ namespace Pulumi.Gcp.ServiceAccount
     ///         DisplayName = "A service account that only Jane can interact with",
     ///     });
     /// 
-    ///     var admin_account_iam = new Gcp.ServiceAccount.IAMPolicy("admin-account-iam", new()
+    ///     var admin_account_iam = new Gcp.ServiceAccount.IamPolicy("admin-account-iam", new()
     ///     {
     ///         ServiceAccountId = sa.Name,
-    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///         PolicyData = admin.Apply(getIamPolicyResult =&gt; getIamPolicyResult.PolicyData),
     ///     });
     /// 
     /// });
@@ -78,7 +78,7 @@ namespace Pulumi.Gcp.ServiceAccount
     ///         DisplayName = "A service account that only Jane can use",
     ///     });
     /// 
-    ///     var admin_account_iam = new Gcp.ServiceAccount.IAMBinding("admin-account-iam", new()
+    ///     var admin_account_iam = new Gcp.ServiceAccount.IamBinding("admin-account-iam", new()
     ///     {
     ///         ServiceAccountId = sa.Name,
     ///         Role = "roles/iam.serviceAccountUser",
@@ -106,7 +106,7 @@ namespace Pulumi.Gcp.ServiceAccount
     ///         DisplayName = "A service account that only Jane can use",
     ///     });
     /// 
-    ///     var admin_account_iam = new Gcp.ServiceAccount.IAMBinding("admin-account-iam", new()
+    ///     var admin_account_iam = new Gcp.ServiceAccount.IamBinding("admin-account-iam", new()
     ///     {
     ///         ServiceAccountId = sa.Name,
     ///         Role = "roles/iam.serviceAccountUser",
@@ -114,7 +114,7 @@ namespace Pulumi.Gcp.ServiceAccount
     ///         {
     ///             "user:jane@example.com",
     ///         },
-    ///         Condition = new Gcp.ServiceAccount.Inputs.IAMBindingConditionArgs
+    ///         Condition = new Gcp.ServiceAccount.Inputs.IamBindingConditionArgs
     ///         {
     ///             Title = "expires_after_2019_12_31",
     ///             Description = "Expiring at midnight of 2019-12-31",
@@ -142,7 +142,7 @@ namespace Pulumi.Gcp.ServiceAccount
     ///         DisplayName = "A service account that Jane can use",
     ///     });
     /// 
-    ///     var admin_account_iam = new Gcp.ServiceAccount.IAMMember("admin-account-iam", new()
+    ///     var admin_account_iam = new Gcp.ServiceAccount.IamMember("admin-account-iam", new()
     ///     {
     ///         ServiceAccountId = sa.Name,
     ///         Role = "roles/iam.serviceAccountUser",
@@ -150,7 +150,7 @@ namespace Pulumi.Gcp.ServiceAccount
     ///     });
     /// 
     ///     // Allow SA service account use the default GCE account
-    ///     var gce_default_account_iam = new Gcp.ServiceAccount.IAMMember("gce-default-account-iam", new()
+    ///     var gce_default_account_iam = new Gcp.ServiceAccount.IamMember("gce-default-account-iam", new()
     ///     {
     ///         ServiceAccountId = @default.Apply(@default =&gt; @default.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult.Name)),
     ///         Role = "roles/iam.serviceAccountUser",
@@ -175,12 +175,12 @@ namespace Pulumi.Gcp.ServiceAccount
     ///         DisplayName = "A service account that Jane can use",
     ///     });
     /// 
-    ///     var admin_account_iam = new Gcp.ServiceAccount.IAMMember("admin-account-iam", new()
+    ///     var admin_account_iam = new Gcp.ServiceAccount.IamMember("admin-account-iam", new()
     ///     {
     ///         ServiceAccountId = sa.Name,
     ///         Role = "roles/iam.serviceAccountUser",
     ///         Member = "user:jane@example.com",
-    ///         Condition = new Gcp.ServiceAccount.Inputs.IAMMemberConditionArgs
+    ///         Condition = new Gcp.ServiceAccount.Inputs.IamMemberConditionArgs
     ///         {
     ///             Title = "expires_after_2019_12_31",
     ///             Description = "Expiring at midnight of 2019-12-31",
@@ -196,29 +196,29 @@ namespace Pulumi.Gcp.ServiceAccount
     /// Service account IAM resources can be imported using the project, service account email, role, member identity, and condition (beta).
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:serviceAccount/iAMPolicy:IAMPolicy admin-account-iam projects/{your-project-id}/serviceAccounts/{your-service-account-email}
+    ///  $ pulumi import gcp:serviceAccount/iamPolicy:IamPolicy admin-account-iam projects/{your-project-id}/serviceAccounts/{your-service-account-email}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:serviceAccount/iAMPolicy:IAMPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser"
+    ///  $ pulumi import gcp:serviceAccount/iamPolicy:IamPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser"
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:serviceAccount/iAMPolicy:IAMPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/editor user:foo@example.com"
+    ///  $ pulumi import gcp:serviceAccount/iamPolicy:IamPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/editor user:foo@example.com"
     /// ```
     /// 
     ///  -&gt; **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`. With conditions
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:serviceAccount/iAMPolicy:IAMPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser expires_after_2019_12_31"
+    ///  $ pulumi import gcp:serviceAccount/iamPolicy:IamPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser expires_after_2019_12_31"
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:serviceAccount/iAMPolicy:IAMPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser user:foo@example.com expires_after_2019_12_31"
+    ///  $ pulumi import gcp:serviceAccount/iamPolicy:IamPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser user:foo@example.com expires_after_2019_12_31"
     /// ```
     /// </summary>
-    [GcpResourceType("gcp:serviceAccount/iAMPolicy:IAMPolicy")]
-    public partial class IAMPolicy : global::Pulumi.CustomResource
+    [GcpResourceType("gcp:serviceAccount/iamPolicy:IamPolicy")]
+    public partial class IamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// (Computed) The etag of the service account IAM policy.
@@ -228,7 +228,7 @@ namespace Pulumi.Gcp.ServiceAccount
 
         /// <summary>
         /// The policy data generated by
-        /// a `gcp.organizations.getIAMPolicy` data source.
+        /// a `gcp.organizations.getIamPolicy` data source.
         /// </summary>
         [Output("policyData")]
         public Output<string> PolicyData { get; private set; } = null!;
@@ -250,19 +250,19 @@ namespace Pulumi.Gcp.ServiceAccount
 
 
         /// <summary>
-        /// Create a IAMPolicy resource with the given unique name, arguments, and options.
+        /// Create a IamPolicy resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public IAMPolicy(string name, IAMPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp:serviceAccount/iAMPolicy:IAMPolicy", name, args ?? new IAMPolicyArgs(), MakeResourceOptions(options, ""))
+        public IamPolicy(string name, IamPolicyArgs args, CustomResourceOptions? options = null)
+            : base("gcp:serviceAccount/iamPolicy:IamPolicy", name, args ?? new IamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private IAMPolicy(string name, Input<string> id, IAMPolicyState? state = null, CustomResourceOptions? options = null)
-            : base("gcp:serviceAccount/iAMPolicy:IAMPolicy", name, state, MakeResourceOptions(options, id))
+        private IamPolicy(string name, Input<string> id, IamPolicyState? state = null, CustomResourceOptions? options = null)
+            : base("gcp:serviceAccount/iamPolicy:IamPolicy", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -278,7 +278,7 @@ namespace Pulumi.Gcp.ServiceAccount
             return merged;
         }
         /// <summary>
-        /// Get an existing IAMPolicy resource's state with the given name, ID, and optional extra
+        /// Get an existing IamPolicy resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -286,17 +286,17 @@ namespace Pulumi.Gcp.ServiceAccount
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static IAMPolicy Get(string name, Input<string> id, IAMPolicyState? state = null, CustomResourceOptions? options = null)
+        public static IamPolicy Get(string name, Input<string> id, IamPolicyState? state = null, CustomResourceOptions? options = null)
         {
-            return new IAMPolicy(name, id, state, options);
+            return new IamPolicy(name, id, state, options);
         }
     }
 
-    public sealed class IAMPolicyArgs : global::Pulumi.ResourceArgs
+    public sealed class IamPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The policy data generated by
-        /// a `gcp.organizations.getIAMPolicy` data source.
+        /// a `gcp.organizations.getIamPolicy` data source.
         /// </summary>
         [Input("policyData", required: true)]
         public Input<string> PolicyData { get; set; } = null!;
@@ -316,13 +316,13 @@ namespace Pulumi.Gcp.ServiceAccount
         [Input("serviceAccountId", required: true)]
         public Input<string> ServiceAccountId { get; set; } = null!;
 
-        public IAMPolicyArgs()
+        public IamPolicyArgs()
         {
         }
-        public static new IAMPolicyArgs Empty => new IAMPolicyArgs();
+        public static new IamPolicyArgs Empty => new IamPolicyArgs();
     }
 
-    public sealed class IAMPolicyState : global::Pulumi.ResourceArgs
+    public sealed class IamPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (Computed) The etag of the service account IAM policy.
@@ -332,7 +332,7 @@ namespace Pulumi.Gcp.ServiceAccount
 
         /// <summary>
         /// The policy data generated by
-        /// a `gcp.organizations.getIAMPolicy` data source.
+        /// a `gcp.organizations.getIamPolicy` data source.
         /// </summary>
         [Input("policyData")]
         public Input<string>? PolicyData { get; set; }
@@ -352,9 +352,9 @@ namespace Pulumi.Gcp.ServiceAccount
         [Input("serviceAccountId")]
         public Input<string>? ServiceAccountId { get; set; }
 
-        public IAMPolicyState()
+        public IamPolicyState()
         {
         }
-        public static new IAMPolicyState Empty => new IAMPolicyState();
+        public static new IamPolicyState Empty => new IamPolicyState();
     }
 }

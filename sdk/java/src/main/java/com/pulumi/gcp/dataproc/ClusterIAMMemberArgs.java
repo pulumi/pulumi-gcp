@@ -5,21 +5,21 @@ package com.pulumi.gcp.dataproc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.gcp.dataproc.inputs.ClusterIAMMemberConditionArgs;
+import com.pulumi.gcp.dataproc.inputs.ClusterIamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class ClusterIAMMemberArgs extends com.pulumi.resources.ResourceArgs {
+public final class ClusterIamMemberArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final ClusterIAMMemberArgs Empty = new ClusterIAMMemberArgs();
+    public static final ClusterIamMemberArgs Empty = new ClusterIamMemberArgs();
 
     /**
      * The name or relative resource id of the cluster to manage IAM policies for.
      * 
-     * For `gcp.dataproc.ClusterIAMMember` or `gcp.dataproc.ClusterIAMBinding`:
+     * For `gcp.dataproc.ClusterIamMember` or `gcp.dataproc.ClusterIamBinding`:
      * 
      * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
      *   Each entry can have one of the following values:
@@ -37,7 +37,7 @@ public final class ClusterIAMMemberArgs extends com.pulumi.resources.ResourceArg
     /**
      * @return The name or relative resource id of the cluster to manage IAM policies for.
      * 
-     * For `gcp.dataproc.ClusterIAMMember` or `gcp.dataproc.ClusterIAMBinding`:
+     * For `gcp.dataproc.ClusterIamMember` or `gcp.dataproc.ClusterIamBinding`:
      * 
      * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
      *   Each entry can have one of the following values:
@@ -54,9 +54,9 @@ public final class ClusterIAMMemberArgs extends com.pulumi.resources.ResourceArg
     }
 
     @Import(name="condition")
-    private @Nullable Output<ClusterIAMMemberConditionArgs> condition;
+    private @Nullable Output<ClusterIamMemberConditionArgs> condition;
 
-    public Optional<Output<ClusterIAMMemberConditionArgs>> condition() {
+    public Optional<Output<ClusterIamMemberConditionArgs>> condition() {
         return Optional.ofNullable(this.condition);
     }
 
@@ -103,10 +103,10 @@ public final class ClusterIAMMemberArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * The role that should be applied. Only one
-     * `gcp.dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.dataproc.ClusterIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
-     * `gcp.dataproc.ClusterIAMPolicy` only:
+     * `gcp.dataproc.ClusterIamPolicy` only:
      * 
      */
     @Import(name="role", required=true)
@@ -114,19 +114,19 @@ public final class ClusterIAMMemberArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return The role that should be applied. Only one
-     * `gcp.dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.dataproc.ClusterIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
-     * `gcp.dataproc.ClusterIAMPolicy` only:
+     * `gcp.dataproc.ClusterIamPolicy` only:
      * 
      */
     public Output<String> role() {
         return this.role;
     }
 
-    private ClusterIAMMemberArgs() {}
+    private ClusterIamMemberArgs() {}
 
-    private ClusterIAMMemberArgs(ClusterIAMMemberArgs $) {
+    private ClusterIamMemberArgs(ClusterIamMemberArgs $) {
         this.cluster = $.cluster;
         this.condition = $.condition;
         this.member = $.member;
@@ -138,25 +138,25 @@ public final class ClusterIAMMemberArgs extends com.pulumi.resources.ResourceArg
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(ClusterIAMMemberArgs defaults) {
+    public static Builder builder(ClusterIamMemberArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private ClusterIAMMemberArgs $;
+        private ClusterIamMemberArgs $;
 
         public Builder() {
-            $ = new ClusterIAMMemberArgs();
+            $ = new ClusterIamMemberArgs();
         }
 
-        public Builder(ClusterIAMMemberArgs defaults) {
-            $ = new ClusterIAMMemberArgs(Objects.requireNonNull(defaults));
+        public Builder(ClusterIamMemberArgs defaults) {
+            $ = new ClusterIamMemberArgs(Objects.requireNonNull(defaults));
         }
 
         /**
          * @param cluster The name or relative resource id of the cluster to manage IAM policies for.
          * 
-         * For `gcp.dataproc.ClusterIAMMember` or `gcp.dataproc.ClusterIAMBinding`:
+         * For `gcp.dataproc.ClusterIamMember` or `gcp.dataproc.ClusterIamBinding`:
          * 
          * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
          *   Each entry can have one of the following values:
@@ -178,7 +178,7 @@ public final class ClusterIAMMemberArgs extends com.pulumi.resources.ResourceArg
         /**
          * @param cluster The name or relative resource id of the cluster to manage IAM policies for.
          * 
-         * For `gcp.dataproc.ClusterIAMMember` or `gcp.dataproc.ClusterIAMBinding`:
+         * For `gcp.dataproc.ClusterIamMember` or `gcp.dataproc.ClusterIamBinding`:
          * 
          * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
          *   Each entry can have one of the following values:
@@ -196,12 +196,12 @@ public final class ClusterIAMMemberArgs extends com.pulumi.resources.ResourceArg
             return cluster(Output.of(cluster));
         }
 
-        public Builder condition(@Nullable Output<ClusterIAMMemberConditionArgs> condition) {
+        public Builder condition(@Nullable Output<ClusterIamMemberConditionArgs> condition) {
             $.condition = condition;
             return this;
         }
 
-        public Builder condition(ClusterIAMMemberConditionArgs condition) {
+        public Builder condition(ClusterIamMemberConditionArgs condition) {
             return condition(Output.of(condition));
         }
 
@@ -262,10 +262,10 @@ public final class ClusterIAMMemberArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.dataproc.ClusterIamBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
-         * `gcp.dataproc.ClusterIAMPolicy` only:
+         * `gcp.dataproc.ClusterIamPolicy` only:
          * 
          * @return builder
          * 
@@ -277,10 +277,10 @@ public final class ClusterIAMMemberArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.dataproc.ClusterIamBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
-         * `gcp.dataproc.ClusterIAMPolicy` only:
+         * `gcp.dataproc.ClusterIamPolicy` only:
          * 
          * @return builder
          * 
@@ -289,7 +289,7 @@ public final class ClusterIAMMemberArgs extends com.pulumi.resources.ResourceArg
             return role(Output.of(role));
         }
 
-        public ClusterIAMMemberArgs build() {
+        public ClusterIamMemberArgs build() {
             $.cluster = Objects.requireNonNull($.cluster, "expected parameter 'cluster' to be non-null");
             $.member = Objects.requireNonNull($.member, "expected parameter 'member' to be non-null");
             $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");

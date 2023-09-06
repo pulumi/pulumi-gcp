@@ -12,19 +12,19 @@ from . import outputs
 
 __all__ = [
     'AccessApprovalSettingsEnrolledService',
-    'IAMBindingCondition',
-    'IAMMemberCondition',
     'IamAuditConfigAuditLogConfig',
+    'IamBindingCondition',
+    'IamMemberCondition',
     'PolicyBooleanPolicy',
     'PolicyListPolicy',
     'PolicyListPolicyAllow',
     'PolicyListPolicyDeny',
     'PolicyRestorePolicy',
     'GetFoldersFolderResult',
-    'GetIAMPolicyAuditConfigResult',
-    'GetIAMPolicyAuditConfigAuditLogConfigResult',
-    'GetIAMPolicyBindingResult',
-    'GetIAMPolicyBindingConditionResult',
+    'GetIamPolicyAuditConfigResult',
+    'GetIamPolicyAuditConfigAuditLogConfigResult',
+    'GetIamPolicyBindingResult',
+    'GetIamPolicyBindingConditionResult',
 ]
 
 @pulumi.output_type
@@ -105,82 +105,6 @@ class AccessApprovalSettingsEnrolledService(dict):
 
 
 @pulumi.output_type
-class IAMBindingCondition(dict):
-    def __init__(__self__, *,
-                 expression: str,
-                 title: str,
-                 description: Optional[str] = None):
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-
-    @property
-    @pulumi.getter
-    def expression(self) -> str:
-        return pulumi.get(self, "expression")
-
-    @property
-    @pulumi.getter
-    def title(self) -> str:
-        return pulumi.get(self, "title")
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[str]:
-        return pulumi.get(self, "description")
-
-
-@pulumi.output_type
-class IAMMemberCondition(dict):
-    def __init__(__self__, *,
-                 expression: str,
-                 title: str,
-                 description: Optional[str] = None):
-        """
-        :param str expression: Textual representation of an expression in Common Expression Language syntax.
-        :param str title: A title for the expression, i.e. a short string describing its purpose.
-        :param str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-               
-               > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-               consider it to be an entirely different resource and will treat it as such.
-        """
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "title", title)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-
-    @property
-    @pulumi.getter
-    def expression(self) -> str:
-        """
-        Textual representation of an expression in Common Expression Language syntax.
-        """
-        return pulumi.get(self, "expression")
-
-    @property
-    @pulumi.getter
-    def title(self) -> str:
-        """
-        A title for the expression, i.e. a short string describing its purpose.
-        """
-        return pulumi.get(self, "title")
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[str]:
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-
-        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-        consider it to be an entirely different resource and will treat it as such.
-        """
-        return pulumi.get(self, "description")
-
-
-@pulumi.output_type
 class IamAuditConfigAuditLogConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -237,6 +161,82 @@ class IamAuditConfigAuditLogConfig(dict):
         * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         """
         return pulumi.get(self, "exempted_members")
+
+
+@pulumi.output_type
+class IamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class IamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        """
+        :param str expression: Textual representation of an expression in Common Expression Language syntax.
+        :param str title: A title for the expression, i.e. a short string describing its purpose.
+        :param str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+               consider it to be an entirely different resource and will treat it as such.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        consider it to be an entirely different resource and will treat it as such.
+        """
+        return pulumi.get(self, "description")
 
 
 @pulumi.output_type
@@ -509,12 +509,12 @@ class GetFoldersFolderResult(dict):
 
 
 @pulumi.output_type
-class GetIAMPolicyAuditConfigResult(dict):
+class GetIamPolicyAuditConfigResult(dict):
     def __init__(__self__, *,
-                 audit_log_configs: Sequence['outputs.GetIAMPolicyAuditConfigAuditLogConfigResult'],
+                 audit_log_configs: Sequence['outputs.GetIamPolicyAuditConfigAuditLogConfigResult'],
                  service: str):
         """
-        :param Sequence['GetIAMPolicyAuditConfigAuditLogConfigArgs'] audit_log_configs: A nested block that defines the operations you'd like to log.
+        :param Sequence['GetIamPolicyAuditConfigAuditLogConfigArgs'] audit_log_configs: A nested block that defines the operations you'd like to log.
         :param str service: Defines a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
         """
         pulumi.set(__self__, "audit_log_configs", audit_log_configs)
@@ -522,7 +522,7 @@ class GetIAMPolicyAuditConfigResult(dict):
 
     @property
     @pulumi.getter(name="auditLogConfigs")
-    def audit_log_configs(self) -> Sequence['outputs.GetIAMPolicyAuditConfigAuditLogConfigResult']:
+    def audit_log_configs(self) -> Sequence['outputs.GetIamPolicyAuditConfigAuditLogConfigResult']:
         """
         A nested block that defines the operations you'd like to log.
         """
@@ -538,7 +538,7 @@ class GetIAMPolicyAuditConfigResult(dict):
 
 
 @pulumi.output_type
-class GetIAMPolicyAuditConfigAuditLogConfigResult(dict):
+class GetIamPolicyAuditConfigAuditLogConfigResult(dict):
     def __init__(__self__, *,
                  log_type: str,
                  exempted_members: Optional[Sequence[str]] = None):
@@ -568,11 +568,11 @@ class GetIAMPolicyAuditConfigAuditLogConfigResult(dict):
 
 
 @pulumi.output_type
-class GetIAMPolicyBindingResult(dict):
+class GetIamPolicyBindingResult(dict):
     def __init__(__self__, *,
                  members: Sequence[str],
                  role: str,
-                 condition: Optional['outputs.GetIAMPolicyBindingConditionResult'] = None):
+                 condition: Optional['outputs.GetIamPolicyBindingConditionResult'] = None):
         """
         :param Sequence[str] members: An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
                Each entry can have one of the following values:
@@ -585,7 +585,7 @@ class GetIAMPolicyBindingResult(dict):
         :param str role: The role/permission that will be granted to the members.
                See the [IAM Roles](https://cloud.google.com/compute/docs/access/iam) documentation for a complete list of roles.
                Note that custom roles must be of the format `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        :param 'GetIAMPolicyBindingConditionArgs' condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
+        :param 'GetIamPolicyBindingConditionArgs' condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
         """
         pulumi.set(__self__, "members", members)
         pulumi.set(__self__, "role", role)
@@ -619,7 +619,7 @@ class GetIAMPolicyBindingResult(dict):
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional['outputs.GetIAMPolicyBindingConditionResult']:
+    def condition(self) -> Optional['outputs.GetIamPolicyBindingConditionResult']:
         """
         An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
         """
@@ -627,7 +627,7 @@ class GetIAMPolicyBindingResult(dict):
 
 
 @pulumi.output_type
-class GetIAMPolicyBindingConditionResult(dict):
+class GetIamPolicyBindingConditionResult(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,

@@ -9,17 +9,17 @@ import * as utilities from "../utilities";
 /**
  * Three different resources help you manage your IAM policy for Compute Engine Subnetwork. Each of these resources serves a different use case:
  *
- * * `gcp.compute.SubnetworkIAMPolicy`: Authoritative. Sets the IAM policy for the subnetwork and replaces any existing policy already attached.
- * * `gcp.compute.SubnetworkIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the subnetwork are preserved.
- * * `gcp.compute.SubnetworkIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the subnetwork are preserved.
+ * * `gcp.compute.SubnetworkIamPolicy`: Authoritative. Sets the IAM policy for the subnetwork and replaces any existing policy already attached.
+ * * `gcp.compute.SubnetworkIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the subnetwork are preserved.
+ * * `gcp.compute.SubnetworkIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the subnetwork are preserved.
  *
  * A data source can be used to retrieve policy data in advent you do not need creation
  *
- * * `gcp.compute.SubnetworkIAMPolicy`: Retrieves the IAM policy for the subnetwork
+ * * `gcp.compute.SubnetworkIamPolicy`: Retrieves the IAM policy for the subnetwork
  *
- * > **Note:** `gcp.compute.SubnetworkIAMPolicy` **cannot** be used in conjunction with `gcp.compute.SubnetworkIAMBinding` and `gcp.compute.SubnetworkIAMMember` or they will fight over what your policy should be.
+ * > **Note:** `gcp.compute.SubnetworkIamPolicy` **cannot** be used in conjunction with `gcp.compute.SubnetworkIamBinding` and `gcp.compute.SubnetworkIamMember` or they will fight over what your policy should be.
  *
- * > **Note:** `gcp.compute.SubnetworkIAMBinding` resources **can be** used in conjunction with `gcp.compute.SubnetworkIAMMember` resources **only if** they do not grant privilege to the same role.
+ * > **Note:** `gcp.compute.SubnetworkIamBinding` resources **can be** used in conjunction with `gcp.compute.SubnetworkIamMember` resources **only if** they do not grant privilege to the same role.
  *
  * > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
  *
@@ -29,13 +29,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const admin = gcp.organizations.getIAMPolicy({
+ * const admin = gcp.organizations.getIamPolicy({
  *     bindings: [{
  *         role: "roles/compute.networkUser",
  *         members: ["user:jane@example.com"],
  *     }],
  * });
- * const policy = new gcp.compute.SubnetworkIAMPolicy("policy", {
+ * const policy = new gcp.compute.SubnetworkIamPolicy("policy", {
  *     project: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].project,
  *     region: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].region,
  *     subnetwork: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].name,
@@ -49,7 +49,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const admin = gcp.organizations.getIAMPolicy({
+ * const admin = gcp.organizations.getIamPolicy({
  *     bindings: [{
  *         role: "roles/compute.networkUser",
  *         members: ["user:jane@example.com"],
@@ -60,7 +60,7 @@ import * as utilities from "../utilities";
  *         },
  *     }],
  * });
- * const policy = new gcp.compute.SubnetworkIAMPolicy("policy", {
+ * const policy = new gcp.compute.SubnetworkIamPolicy("policy", {
  *     project: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].project,
  *     region: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].region,
  *     subnetwork: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].name,
@@ -73,7 +73,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const binding = new gcp.compute.SubnetworkIAMBinding("binding", {
+ * const binding = new gcp.compute.SubnetworkIamBinding("binding", {
  *     project: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].project,
  *     region: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].region,
  *     subnetwork: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].name,
@@ -88,7 +88,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const binding = new gcp.compute.SubnetworkIAMBinding("binding", {
+ * const binding = new gcp.compute.SubnetworkIamBinding("binding", {
  *     project: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].project,
  *     region: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].region,
  *     subnetwork: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].name,
@@ -107,7 +107,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const member = new gcp.compute.SubnetworkIAMMember("member", {
+ * const member = new gcp.compute.SubnetworkIamMember("member", {
  *     project: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].project,
  *     region: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].region,
  *     subnetwork: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].name,
@@ -122,7 +122,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const member = new gcp.compute.SubnetworkIAMMember("member", {
+ * const member = new gcp.compute.SubnetworkIamMember("member", {
  *     project: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].project,
  *     region: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].region,
  *     subnetwork: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].name,
@@ -141,28 +141,28 @@ import * as utilities from "../utilities";
  * For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/regions/{{region}}/subnetworks/{{name}} * {{project}}/{{region}}/{{name}} * {{region}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Compute Engine subnetwork IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
  *
  * ```sh
- *  $ pulumi import gcp:compute/subnetworkIAMBinding:SubnetworkIAMBinding editor "projects/{{project}}/regions/{{region}}/subnetworks/{{subnetwork}} roles/compute.networkUser user:jane@example.com"
+ *  $ pulumi import gcp:compute/subnetworkIamBinding:SubnetworkIamBinding editor "projects/{{project}}/regions/{{region}}/subnetworks/{{subnetwork}} roles/compute.networkUser user:jane@example.com"
  * ```
  *
  *  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
  *
  * ```sh
- *  $ pulumi import gcp:compute/subnetworkIAMBinding:SubnetworkIAMBinding editor "projects/{{project}}/regions/{{region}}/subnetworks/{{subnetwork}} roles/compute.networkUser"
+ *  $ pulumi import gcp:compute/subnetworkIamBinding:SubnetworkIamBinding editor "projects/{{project}}/regions/{{region}}/subnetworks/{{subnetwork}} roles/compute.networkUser"
  * ```
  *
  *  IAM policy imports use the identifier of the resource in question, e.g.
  *
  * ```sh
- *  $ pulumi import gcp:compute/subnetworkIAMBinding:SubnetworkIAMBinding editor projects/{{project}}/regions/{{region}}/subnetworks/{{subnetwork}}
+ *  $ pulumi import gcp:compute/subnetworkIamBinding:SubnetworkIamBinding editor projects/{{project}}/regions/{{region}}/subnetworks/{{subnetwork}}
  * ```
  *
  *  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
  *
  * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  */
-export class SubnetworkIAMBinding extends pulumi.CustomResource {
+export class SubnetworkIamBinding extends pulumi.CustomResource {
     /**
-     * Get an existing SubnetworkIAMBinding resource's state with the given name, ID, and optional extra
+     * Get an existing SubnetworkIamBinding resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -170,29 +170,29 @@ export class SubnetworkIAMBinding extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SubnetworkIAMBindingState, opts?: pulumi.CustomResourceOptions): SubnetworkIAMBinding {
-        return new SubnetworkIAMBinding(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: SubnetworkIamBindingState, opts?: pulumi.CustomResourceOptions): SubnetworkIamBinding {
+        return new SubnetworkIamBinding(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp:compute/subnetworkIAMBinding:SubnetworkIAMBinding';
+    public static readonly __pulumiType = 'gcp:compute/subnetworkIamBinding:SubnetworkIamBinding';
 
     /**
-     * Returns true if the given object is an instance of SubnetworkIAMBinding.  This is designed to work even
+     * Returns true if the given object is an instance of SubnetworkIamBinding.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is SubnetworkIAMBinding {
+    public static isInstance(obj: any): obj is SubnetworkIamBinding {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === SubnetworkIAMBinding.__pulumiType;
+        return obj['__pulumiType'] === SubnetworkIamBinding.__pulumiType;
     }
 
     /**
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    public readonly condition!: pulumi.Output<outputs.compute.SubnetworkIAMBindingCondition | undefined>;
+    public readonly condition!: pulumi.Output<outputs.compute.SubnetworkIamBindingCondition | undefined>;
     /**
      * (Computed) The etag of the IAM policy.
      */
@@ -224,7 +224,7 @@ export class SubnetworkIAMBinding extends pulumi.CustomResource {
     public readonly region!: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
-     * `gcp.compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.compute.SubnetworkIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     public readonly role!: pulumi.Output<string>;
@@ -234,18 +234,18 @@ export class SubnetworkIAMBinding extends pulumi.CustomResource {
     public readonly subnetwork!: pulumi.Output<string>;
 
     /**
-     * Create a SubnetworkIAMBinding resource with the given unique name, arguments, and options.
+     * Create a SubnetworkIamBinding resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: SubnetworkIAMBindingArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: SubnetworkIAMBindingArgs | SubnetworkIAMBindingState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: SubnetworkIamBindingArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: SubnetworkIamBindingArgs | SubnetworkIamBindingState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as SubnetworkIAMBindingState | undefined;
+            const state = argsOrState as SubnetworkIamBindingState | undefined;
             resourceInputs["condition"] = state ? state.condition : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["members"] = state ? state.members : undefined;
@@ -254,7 +254,7 @@ export class SubnetworkIAMBinding extends pulumi.CustomResource {
             resourceInputs["role"] = state ? state.role : undefined;
             resourceInputs["subnetwork"] = state ? state.subnetwork : undefined;
         } else {
-            const args = argsOrState as SubnetworkIAMBindingArgs | undefined;
+            const args = argsOrState as SubnetworkIamBindingArgs | undefined;
             if ((!args || args.members === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'members'");
             }
@@ -273,19 +273,19 @@ export class SubnetworkIAMBinding extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(SubnetworkIAMBinding.__pulumiType, name, resourceInputs, opts);
+        super(SubnetworkIamBinding.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering SubnetworkIAMBinding resources.
+ * Input properties used for looking up and filtering SubnetworkIamBinding resources.
  */
-export interface SubnetworkIAMBindingState {
+export interface SubnetworkIamBindingState {
     /**
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    condition?: pulumi.Input<inputs.compute.SubnetworkIAMBindingCondition>;
+    condition?: pulumi.Input<inputs.compute.SubnetworkIamBindingCondition>;
     /**
      * (Computed) The etag of the IAM policy.
      */
@@ -317,7 +317,7 @@ export interface SubnetworkIAMBindingState {
     region?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
-     * `gcp.compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.compute.SubnetworkIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     role?: pulumi.Input<string>;
@@ -328,14 +328,14 @@ export interface SubnetworkIAMBindingState {
 }
 
 /**
- * The set of arguments for constructing a SubnetworkIAMBinding resource.
+ * The set of arguments for constructing a SubnetworkIamBinding resource.
  */
-export interface SubnetworkIAMBindingArgs {
+export interface SubnetworkIamBindingArgs {
     /**
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    condition?: pulumi.Input<inputs.compute.SubnetworkIAMBindingCondition>;
+    condition?: pulumi.Input<inputs.compute.SubnetworkIamBindingCondition>;
     members: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the project in which the resource belongs.
@@ -363,7 +363,7 @@ export interface SubnetworkIAMBindingArgs {
     region?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
-     * `gcp.compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.compute.SubnetworkIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     role: pulumi.Input<string>;

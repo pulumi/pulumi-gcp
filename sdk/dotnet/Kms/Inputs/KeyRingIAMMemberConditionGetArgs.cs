@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Kms.Inputs
 {
 
-    public sealed class KeyRingIAMMemberConditionGetArgs : global::Pulumi.ResourceArgs
+    public sealed class KeyRingIamMemberConditionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -34,9 +34,9 @@ namespace Pulumi.Gcp.Kms.Inputs
         [Input("title", required: true)]
         public Input<string> Title { get; set; } = null!;
 
-        public KeyRingIAMMemberConditionGetArgs()
+        public KeyRingIamMemberConditionGetArgs()
         {
         }
-        public static new KeyRingIAMMemberConditionGetArgs Empty => new KeyRingIAMMemberConditionGetArgs();
+        public static new KeyRingIamMemberConditionGetArgs Empty => new KeyRingIamMemberConditionGetArgs();
     }
 }

@@ -10,12 +10,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
-public final class ConnectionIAMMemberCondition {
+public final class ConnectionIamMemberCondition {
     private @Nullable String description;
     private String expression;
     private String title;
 
-    private ConnectionIAMMemberCondition() {}
+    private ConnectionIamMemberCondition() {}
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
@@ -30,7 +30,7 @@ public final class ConnectionIAMMemberCondition {
         return new Builder();
     }
 
-    public static Builder builder(ConnectionIAMMemberCondition defaults) {
+    public static Builder builder(ConnectionIamMemberCondition defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -39,7 +39,7 @@ public final class ConnectionIAMMemberCondition {
         private String expression;
         private String title;
         public Builder() {}
-        public Builder(ConnectionIAMMemberCondition defaults) {
+        public Builder(ConnectionIamMemberCondition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
     	      this.expression = defaults.expression;
@@ -61,8 +61,8 @@ public final class ConnectionIAMMemberCondition {
             this.title = Objects.requireNonNull(title);
             return this;
         }
-        public ConnectionIAMMemberCondition build() {
-            final var o = new ConnectionIAMMemberCondition();
+        public ConnectionIamMemberCondition build() {
+            final var o = new ConnectionIamMemberCondition();
             o.description = description;
             o.expression = expression;
             o.title = title;

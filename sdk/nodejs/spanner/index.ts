@@ -10,20 +10,20 @@ export type Database = import("./database").Database;
 export const Database: typeof import("./database").Database = null as any;
 utilities.lazyLoad(exports, ["Database"], () => require("./database"));
 
-export { DatabaseIAMBindingArgs, DatabaseIAMBindingState } from "./databaseIAMBinding";
-export type DatabaseIAMBinding = import("./databaseIAMBinding").DatabaseIAMBinding;
-export const DatabaseIAMBinding: typeof import("./databaseIAMBinding").DatabaseIAMBinding = null as any;
-utilities.lazyLoad(exports, ["DatabaseIAMBinding"], () => require("./databaseIAMBinding"));
+export { DatabaseIamBindingArgs, DatabaseIamBindingState } from "./databaseIamBinding";
+export type DatabaseIamBinding = import("./databaseIamBinding").DatabaseIamBinding;
+export const DatabaseIamBinding: typeof import("./databaseIamBinding").DatabaseIamBinding = null as any;
+utilities.lazyLoad(exports, ["DatabaseIamBinding"], () => require("./databaseIamBinding"));
 
-export { DatabaseIAMMemberArgs, DatabaseIAMMemberState } from "./databaseIAMMember";
-export type DatabaseIAMMember = import("./databaseIAMMember").DatabaseIAMMember;
-export const DatabaseIAMMember: typeof import("./databaseIAMMember").DatabaseIAMMember = null as any;
-utilities.lazyLoad(exports, ["DatabaseIAMMember"], () => require("./databaseIAMMember"));
+export { DatabaseIamMemberArgs, DatabaseIamMemberState } from "./databaseIamMember";
+export type DatabaseIamMember = import("./databaseIamMember").DatabaseIamMember;
+export const DatabaseIamMember: typeof import("./databaseIamMember").DatabaseIamMember = null as any;
+utilities.lazyLoad(exports, ["DatabaseIamMember"], () => require("./databaseIamMember"));
 
-export { DatabaseIAMPolicyArgs, DatabaseIAMPolicyState } from "./databaseIAMPolicy";
-export type DatabaseIAMPolicy = import("./databaseIAMPolicy").DatabaseIAMPolicy;
-export const DatabaseIAMPolicy: typeof import("./databaseIAMPolicy").DatabaseIAMPolicy = null as any;
-utilities.lazyLoad(exports, ["DatabaseIAMPolicy"], () => require("./databaseIAMPolicy"));
+export { DatabaseIamPolicyArgs, DatabaseIamPolicyState } from "./databaseIamPolicy";
+export type DatabaseIamPolicy = import("./databaseIamPolicy").DatabaseIamPolicy;
+export const DatabaseIamPolicy: typeof import("./databaseIamPolicy").DatabaseIamPolicy = null as any;
+utilities.lazyLoad(exports, ["DatabaseIamPolicy"], () => require("./databaseIamPolicy"));
 
 export { GetDatabaseIamPolicyArgs, GetDatabaseIamPolicyResult, GetDatabaseIamPolicyOutputArgs } from "./getDatabaseIamPolicy";
 export const getDatabaseIamPolicy: typeof import("./getDatabaseIamPolicy").getDatabaseIamPolicy = null as any;
@@ -45,20 +45,20 @@ export type Instance = import("./instance").Instance;
 export const Instance: typeof import("./instance").Instance = null as any;
 utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
 
-export { InstanceIAMBindingArgs, InstanceIAMBindingState } from "./instanceIAMBinding";
-export type InstanceIAMBinding = import("./instanceIAMBinding").InstanceIAMBinding;
-export const InstanceIAMBinding: typeof import("./instanceIAMBinding").InstanceIAMBinding = null as any;
-utilities.lazyLoad(exports, ["InstanceIAMBinding"], () => require("./instanceIAMBinding"));
+export { InstanceIamBindingArgs, InstanceIamBindingState } from "./instanceIamBinding";
+export type InstanceIamBinding = import("./instanceIamBinding").InstanceIamBinding;
+export const InstanceIamBinding: typeof import("./instanceIamBinding").InstanceIamBinding = null as any;
+utilities.lazyLoad(exports, ["InstanceIamBinding"], () => require("./instanceIamBinding"));
 
-export { InstanceIAMMemberArgs, InstanceIAMMemberState } from "./instanceIAMMember";
-export type InstanceIAMMember = import("./instanceIAMMember").InstanceIAMMember;
-export const InstanceIAMMember: typeof import("./instanceIAMMember").InstanceIAMMember = null as any;
-utilities.lazyLoad(exports, ["InstanceIAMMember"], () => require("./instanceIAMMember"));
+export { InstanceIamMemberArgs, InstanceIamMemberState } from "./instanceIamMember";
+export type InstanceIamMember = import("./instanceIamMember").InstanceIamMember;
+export const InstanceIamMember: typeof import("./instanceIamMember").InstanceIamMember = null as any;
+utilities.lazyLoad(exports, ["InstanceIamMember"], () => require("./instanceIamMember"));
 
-export { InstanceIAMPolicyArgs, InstanceIAMPolicyState } from "./instanceIAMPolicy";
-export type InstanceIAMPolicy = import("./instanceIAMPolicy").InstanceIAMPolicy;
-export const InstanceIAMPolicy: typeof import("./instanceIAMPolicy").InstanceIAMPolicy = null as any;
-utilities.lazyLoad(exports, ["InstanceIAMPolicy"], () => require("./instanceIAMPolicy"));
+export { InstanceIamPolicyArgs, InstanceIamPolicyState } from "./instanceIamPolicy";
+export type InstanceIamPolicy = import("./instanceIamPolicy").InstanceIamPolicy;
+export const InstanceIamPolicy: typeof import("./instanceIamPolicy").InstanceIamPolicy = null as any;
+utilities.lazyLoad(exports, ["InstanceIamPolicy"], () => require("./instanceIamPolicy"));
 
 
 const _module = {
@@ -67,30 +67,30 @@ const _module = {
         switch (type) {
             case "gcp:spanner/database:Database":
                 return new Database(name, <any>undefined, { urn })
-            case "gcp:spanner/databaseIAMBinding:DatabaseIAMBinding":
-                return new DatabaseIAMBinding(name, <any>undefined, { urn })
-            case "gcp:spanner/databaseIAMMember:DatabaseIAMMember":
-                return new DatabaseIAMMember(name, <any>undefined, { urn })
-            case "gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy":
-                return new DatabaseIAMPolicy(name, <any>undefined, { urn })
+            case "gcp:spanner/databaseIamBinding:DatabaseIamBinding":
+                return new DatabaseIamBinding(name, <any>undefined, { urn })
+            case "gcp:spanner/databaseIamMember:DatabaseIamMember":
+                return new DatabaseIamMember(name, <any>undefined, { urn })
+            case "gcp:spanner/databaseIamPolicy:DatabaseIamPolicy":
+                return new DatabaseIamPolicy(name, <any>undefined, { urn })
             case "gcp:spanner/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
-            case "gcp:spanner/instanceIAMBinding:InstanceIAMBinding":
-                return new InstanceIAMBinding(name, <any>undefined, { urn })
-            case "gcp:spanner/instanceIAMMember:InstanceIAMMember":
-                return new InstanceIAMMember(name, <any>undefined, { urn })
-            case "gcp:spanner/instanceIAMPolicy:InstanceIAMPolicy":
-                return new InstanceIAMPolicy(name, <any>undefined, { urn })
+            case "gcp:spanner/instanceIamBinding:InstanceIamBinding":
+                return new InstanceIamBinding(name, <any>undefined, { urn })
+            case "gcp:spanner/instanceIamMember:InstanceIamMember":
+                return new InstanceIamMember(name, <any>undefined, { urn })
+            case "gcp:spanner/instanceIamPolicy:InstanceIamPolicy":
+                return new InstanceIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "spanner/database", _module)
-pulumi.runtime.registerResourceModule("gcp", "spanner/databaseIAMBinding", _module)
-pulumi.runtime.registerResourceModule("gcp", "spanner/databaseIAMMember", _module)
-pulumi.runtime.registerResourceModule("gcp", "spanner/databaseIAMPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "spanner/databaseIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "spanner/databaseIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "spanner/databaseIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "spanner/instance", _module)
-pulumi.runtime.registerResourceModule("gcp", "spanner/instanceIAMBinding", _module)
-pulumi.runtime.registerResourceModule("gcp", "spanner/instanceIAMMember", _module)
-pulumi.runtime.registerResourceModule("gcp", "spanner/instanceIAMPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "spanner/instanceIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "spanner/instanceIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "spanner/instanceIamPolicy", _module)

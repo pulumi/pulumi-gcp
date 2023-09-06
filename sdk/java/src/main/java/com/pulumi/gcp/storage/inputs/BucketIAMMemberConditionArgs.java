@@ -11,9 +11,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class BucketIAMMemberConditionArgs extends com.pulumi.resources.ResourceArgs {
+public final class BucketIamMemberConditionArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final BucketIAMMemberConditionArgs Empty = new BucketIAMMemberConditionArgs();
+    public static final BucketIamMemberConditionArgs Empty = new BucketIamMemberConditionArgs();
 
     /**
      * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -68,9 +68,9 @@ public final class BucketIAMMemberConditionArgs extends com.pulumi.resources.Res
         return this.title;
     }
 
-    private BucketIAMMemberConditionArgs() {}
+    private BucketIamMemberConditionArgs() {}
 
-    private BucketIAMMemberConditionArgs(BucketIAMMemberConditionArgs $) {
+    private BucketIamMemberConditionArgs(BucketIamMemberConditionArgs $) {
         this.description = $.description;
         this.expression = $.expression;
         this.title = $.title;
@@ -79,19 +79,19 @@ public final class BucketIAMMemberConditionArgs extends com.pulumi.resources.Res
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(BucketIAMMemberConditionArgs defaults) {
+    public static Builder builder(BucketIamMemberConditionArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private BucketIAMMemberConditionArgs $;
+        private BucketIamMemberConditionArgs $;
 
         public Builder() {
-            $ = new BucketIAMMemberConditionArgs();
+            $ = new BucketIamMemberConditionArgs();
         }
 
-        public Builder(BucketIAMMemberConditionArgs defaults) {
-            $ = new BucketIAMMemberConditionArgs(Objects.requireNonNull(defaults));
+        public Builder(BucketIamMemberConditionArgs defaults) {
+            $ = new BucketIamMemberConditionArgs(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -165,7 +165,7 @@ public final class BucketIAMMemberConditionArgs extends com.pulumi.resources.Res
             return title(Output.of(title));
         }
 
-        public BucketIAMMemberConditionArgs build() {
+        public BucketIamMemberConditionArgs build() {
             $.expression = Objects.requireNonNull($.expression, "expected parameter 'expression' to be non-null");
             $.title = Objects.requireNonNull($.title, "expected parameter 'title' to be non-null");
             return $;

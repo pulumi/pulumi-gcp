@@ -45,12 +45,12 @@ import * as utilities from "../utilities";
  *
  * const project = gcp.organizations.getProject({});
  * const cloudbuildServiceAccount = new gcp.serviceaccount.Account("cloudbuildServiceAccount", {accountId: "cloud-sa"});
- * const actAs = new gcp.projects.IAMMember("actAs", {
+ * const actAs = new gcp.projects.IamMember("actAs", {
  *     project: project.then(project => project.projectId),
  *     role: "roles/iam.serviceAccountUser",
  *     member: pulumi.interpolate`serviceAccount:${cloudbuildServiceAccount.email}`,
  * });
- * const logsWriter = new gcp.projects.IAMMember("logsWriter", {
+ * const logsWriter = new gcp.projects.IamMember("logsWriter", {
  *     project: project.then(project => project.projectId),
  *     role: "roles/logging.logWriter",
  *     member: pulumi.interpolate`serviceAccount:${cloudbuildServiceAccount.email}`,
@@ -139,7 +139,7 @@ import * as utilities from "../utilities";
  *     secretData: "secretkeygoeshere",
  * });
  * const project = gcp.organizations.getProject({});
- * const secretAccessor = project.then(project => gcp.organizations.getIAMPolicy({
+ * const secretAccessor = project.then(project => gcp.organizations.getIamPolicy({
  *     bindings: [{
  *         role: "roles/secretmanager.secretAccessor",
  *         members: [`serviceAccount:service-${project.number}@gcp-sa-cloudbuild.iam.gserviceaccount.com`],

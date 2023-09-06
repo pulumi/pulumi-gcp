@@ -246,19 +246,19 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:serviceAccount/iAMPolicy:IamPolicy admin-account-iam projects/{your-project-id}/serviceAccounts/{your-service-account-email}
+//	$ pulumi import gcp:serviceAccount/iamPolicy:IamPolicy admin-account-iam projects/{your-project-id}/serviceAccounts/{your-service-account-email}
 //
 // ```
 //
 // ```sh
 //
-//	$ pulumi import gcp:serviceAccount/iAMPolicy:IamPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser"
+//	$ pulumi import gcp:serviceAccount/iamPolicy:IamPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser"
 //
 // ```
 //
 // ```sh
 //
-//	$ pulumi import gcp:serviceAccount/iAMPolicy:IamPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/editor user:foo@example.com"
+//	$ pulumi import gcp:serviceAccount/iamPolicy:IamPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/editor user:foo@example.com"
 //
 // ```
 //
@@ -266,17 +266,15 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:serviceAccount/iAMPolicy:IamPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser expires_after_2019_12_31"
+//	$ pulumi import gcp:serviceAccount/iamPolicy:IamPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser expires_after_2019_12_31"
 //
 // ```
 //
 // ```sh
 //
-//	$ pulumi import gcp:serviceAccount/iAMPolicy:IamPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser user:foo@example.com expires_after_2019_12_31"
+//	$ pulumi import gcp:serviceAccount/iamPolicy:IamPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser user:foo@example.com expires_after_2019_12_31"
 //
 // ```
-//
-// Deprecated: gcp.serviceaccount/iampolicy.IamPolicy has been deprecated in favor of gcp.serviceaccount/iampolicy.IamPolicy
 type IamPolicy struct {
 	pulumi.CustomResourceState
 
@@ -311,15 +309,9 @@ func NewIamPolicy(ctx *pulumi.Context,
 	if args.ServiceAccountId == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceAccountId'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("gcp:serviceAccount/iAMPolicy:IAMPolicy"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource IamPolicy
-	err := ctx.RegisterResource("gcp:serviceAccount/iAMPolicy:IamPolicy", name, args, &resource, opts...)
+	err := ctx.RegisterResource("gcp:serviceAccount/iamPolicy:IamPolicy", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -331,7 +323,7 @@ func NewIamPolicy(ctx *pulumi.Context,
 func GetIamPolicy(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *IamPolicyState, opts ...pulumi.ResourceOption) (*IamPolicy, error) {
 	var resource IamPolicy
-	err := ctx.ReadResource("gcp:serviceAccount/iAMPolicy:IamPolicy", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("gcp:serviceAccount/iamPolicy:IamPolicy", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

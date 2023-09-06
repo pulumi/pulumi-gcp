@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  *     project: _var.project,
  *     location: "US",
  * });
- * const s3_backup_bucketBucketIAMMember = new gcp.storage.BucketIAMMember("s3-backup-bucketBucketIAMMember", {
+ * const s3_backup_bucketBucketIamMember = new gcp.storage.BucketIamMember("s3-backup-bucketBucketIamMember", {
  *     bucket: s3_backup_bucketBucket.name,
  *     role: "roles/storage.admin",
  *     member: _default.then(_default => `serviceAccount:${_default.email}`),
@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [s3_backup_bucketBucket],
  * });
  * const topic = new gcp.pubsub.Topic("topic", {});
- * const notificationConfig = new gcp.pubsub.TopicIAMMember("notificationConfig", {
+ * const notificationConfig = new gcp.pubsub.TopicIamMember("notificationConfig", {
  *     topic: topic.id,
  *     role: "roles/pubsub.publisher",
  *     member: _default.then(_default => `serviceAccount:${_default.email}`),
@@ -97,7 +97,7 @@ import * as utilities from "../utilities";
  *     },
  * }, {
  *     dependsOn: [
- *         s3_backup_bucketBucketIAMMember,
+ *         s3_backup_bucketBucketIamMember,
  *         notificationConfig,
  *     ],
  * });

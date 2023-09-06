@@ -5,7 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.gcp.compute.inputs.InstanceIAMBindingConditionArgs;
+import com.pulumi.gcp.compute.inputs.InstanceIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -13,9 +13,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class InstanceIAMBindingState extends com.pulumi.resources.ResourceArgs {
+public final class InstanceIamBindingState extends com.pulumi.resources.ResourceArgs {
 
-    public static final InstanceIAMBindingState Empty = new InstanceIAMBindingState();
+    public static final InstanceIamBindingState Empty = new InstanceIamBindingState();
 
     /**
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -23,14 +23,14 @@ public final class InstanceIAMBindingState extends com.pulumi.resources.Resource
      * 
      */
     @Import(name="condition")
-    private @Nullable Output<InstanceIAMBindingConditionArgs> condition;
+    private @Nullable Output<InstanceIamBindingConditionArgs> condition;
 
     /**
      * @return An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      * 
      */
-    public Optional<Output<InstanceIAMBindingConditionArgs>> condition() {
+    public Optional<Output<InstanceIamBindingConditionArgs>> condition() {
         return Optional.ofNullable(this.condition);
     }
 
@@ -114,7 +114,7 @@ public final class InstanceIAMBindingState extends com.pulumi.resources.Resource
 
     /**
      * The role that should be applied. Only one
-     * `gcp.compute.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.compute.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -123,7 +123,7 @@ public final class InstanceIAMBindingState extends com.pulumi.resources.Resource
 
     /**
      * @return The role that should be applied. Only one
-     * `gcp.compute.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.compute.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -150,9 +150,9 @@ public final class InstanceIAMBindingState extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.zone);
     }
 
-    private InstanceIAMBindingState() {}
+    private InstanceIamBindingState() {}
 
-    private InstanceIAMBindingState(InstanceIAMBindingState $) {
+    private InstanceIamBindingState(InstanceIamBindingState $) {
         this.condition = $.condition;
         this.etag = $.etag;
         this.instanceName = $.instanceName;
@@ -165,19 +165,19 @@ public final class InstanceIAMBindingState extends com.pulumi.resources.Resource
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(InstanceIAMBindingState defaults) {
+    public static Builder builder(InstanceIamBindingState defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private InstanceIAMBindingState $;
+        private InstanceIamBindingState $;
 
         public Builder() {
-            $ = new InstanceIAMBindingState();
+            $ = new InstanceIamBindingState();
         }
 
-        public Builder(InstanceIAMBindingState defaults) {
-            $ = new InstanceIAMBindingState(Objects.requireNonNull(defaults));
+        public Builder(InstanceIamBindingState defaults) {
+            $ = new InstanceIamBindingState(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -187,7 +187,7 @@ public final class InstanceIAMBindingState extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-        public Builder condition(@Nullable Output<InstanceIAMBindingConditionArgs> condition) {
+        public Builder condition(@Nullable Output<InstanceIamBindingConditionArgs> condition) {
             $.condition = condition;
             return this;
         }
@@ -199,7 +199,7 @@ public final class InstanceIAMBindingState extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-        public Builder condition(InstanceIAMBindingConditionArgs condition) {
+        public Builder condition(InstanceIamBindingConditionArgs condition) {
             return condition(Output.of(condition));
         }
 
@@ -307,7 +307,7 @@ public final class InstanceIAMBindingState extends com.pulumi.resources.Resource
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.compute.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.compute.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder
@@ -320,7 +320,7 @@ public final class InstanceIAMBindingState extends com.pulumi.resources.Resource
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.compute.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.compute.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder
@@ -355,7 +355,7 @@ public final class InstanceIAMBindingState extends com.pulumi.resources.Resource
             return zone(Output.of(zone));
         }
 
-        public InstanceIAMBindingState build() {
+        public InstanceIamBindingState build() {
             return $;
         }
     }

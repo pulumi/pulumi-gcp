@@ -11,9 +11,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class TunnelInstanceIAMMemberConditionArgs extends com.pulumi.resources.ResourceArgs {
+public final class TunnelInstanceIamMemberConditionArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final TunnelInstanceIAMMemberConditionArgs Empty = new TunnelInstanceIAMMemberConditionArgs();
+    public static final TunnelInstanceIamMemberConditionArgs Empty = new TunnelInstanceIamMemberConditionArgs();
 
     /**
      * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -68,9 +68,9 @@ public final class TunnelInstanceIAMMemberConditionArgs extends com.pulumi.resou
         return this.title;
     }
 
-    private TunnelInstanceIAMMemberConditionArgs() {}
+    private TunnelInstanceIamMemberConditionArgs() {}
 
-    private TunnelInstanceIAMMemberConditionArgs(TunnelInstanceIAMMemberConditionArgs $) {
+    private TunnelInstanceIamMemberConditionArgs(TunnelInstanceIamMemberConditionArgs $) {
         this.description = $.description;
         this.expression = $.expression;
         this.title = $.title;
@@ -79,19 +79,19 @@ public final class TunnelInstanceIAMMemberConditionArgs extends com.pulumi.resou
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(TunnelInstanceIAMMemberConditionArgs defaults) {
+    public static Builder builder(TunnelInstanceIamMemberConditionArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private TunnelInstanceIAMMemberConditionArgs $;
+        private TunnelInstanceIamMemberConditionArgs $;
 
         public Builder() {
-            $ = new TunnelInstanceIAMMemberConditionArgs();
+            $ = new TunnelInstanceIamMemberConditionArgs();
         }
 
-        public Builder(TunnelInstanceIAMMemberConditionArgs defaults) {
-            $ = new TunnelInstanceIAMMemberConditionArgs(Objects.requireNonNull(defaults));
+        public Builder(TunnelInstanceIamMemberConditionArgs defaults) {
+            $ = new TunnelInstanceIamMemberConditionArgs(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -165,7 +165,7 @@ public final class TunnelInstanceIAMMemberConditionArgs extends com.pulumi.resou
             return title(Output.of(title));
         }
 
-        public TunnelInstanceIAMMemberConditionArgs build() {
+        public TunnelInstanceIamMemberConditionArgs build() {
             $.expression = Objects.requireNonNull($.expression, "expected parameter 'expression' to be non-null");
             $.title = Objects.requireNonNull($.title, "expected parameter 'title' to be non-null");
             return $;

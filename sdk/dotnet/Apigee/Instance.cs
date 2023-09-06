@@ -231,7 +231,7 @@ namespace Pulumi.Gcp.Apigee
     ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var apigeeSaKeyuser = new Gcp.Kms.CryptoKeyIAMBinding("apigeeSaKeyuser", new()
+    ///     var apigeeSaKeyuser = new Gcp.Kms.CryptoKeyIamBinding("apigeeSaKeyuser", new()
     ///     {
     ///         CryptoKeyId = apigeeKey.Id,
     ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",

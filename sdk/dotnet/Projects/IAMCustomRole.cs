@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.Projects
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var my_custom_role = new Gcp.Projects.IAMCustomRole("my-custom-role", new()
+    ///     var my_custom_role = new Gcp.Projects.IamCustomRole("my-custom-role", new()
     ///     {
     ///         Description = "A description",
     ///         Permissions = new[]
@@ -55,19 +55,19 @@ namespace Pulumi.Gcp.Projects
     /// Custom Roles can be imported using any of these accepted formats
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:projects/iAMCustomRole:IAMCustomRole default projects/{{project}}/roles/{{role_id}}
+    ///  $ pulumi import gcp:projects/iamCustomRole:IamCustomRole default projects/{{project}}/roles/{{role_id}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:projects/iAMCustomRole:IAMCustomRole default {{project}}/{{role_id}}
+    ///  $ pulumi import gcp:projects/iamCustomRole:IamCustomRole default {{project}}/{{role_id}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:projects/iAMCustomRole:IAMCustomRole default {{role_id}}
+    ///  $ pulumi import gcp:projects/iamCustomRole:IamCustomRole default {{role_id}}
     /// ```
     /// </summary>
-    [GcpResourceType("gcp:projects/iAMCustomRole:IAMCustomRole")]
-    public partial class IAMCustomRole : global::Pulumi.CustomResource
+    [GcpResourceType("gcp:projects/iamCustomRole:IamCustomRole")]
+    public partial class IamCustomRole : global::Pulumi.CustomResource
     {
         /// <summary>
         /// (Optional) The current deleted state of the role.
@@ -122,19 +122,19 @@ namespace Pulumi.Gcp.Projects
 
 
         /// <summary>
-        /// Create a IAMCustomRole resource with the given unique name, arguments, and options.
+        /// Create a IamCustomRole resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public IAMCustomRole(string name, IAMCustomRoleArgs args, CustomResourceOptions? options = null)
-            : base("gcp:projects/iAMCustomRole:IAMCustomRole", name, args ?? new IAMCustomRoleArgs(), MakeResourceOptions(options, ""))
+        public IamCustomRole(string name, IamCustomRoleArgs args, CustomResourceOptions? options = null)
+            : base("gcp:projects/iamCustomRole:IamCustomRole", name, args ?? new IamCustomRoleArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private IAMCustomRole(string name, Input<string> id, IAMCustomRoleState? state = null, CustomResourceOptions? options = null)
-            : base("gcp:projects/iAMCustomRole:IAMCustomRole", name, state, MakeResourceOptions(options, id))
+        private IamCustomRole(string name, Input<string> id, IamCustomRoleState? state = null, CustomResourceOptions? options = null)
+            : base("gcp:projects/iamCustomRole:IamCustomRole", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -150,7 +150,7 @@ namespace Pulumi.Gcp.Projects
             return merged;
         }
         /// <summary>
-        /// Get an existing IAMCustomRole resource's state with the given name, ID, and optional extra
+        /// Get an existing IamCustomRole resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -158,13 +158,13 @@ namespace Pulumi.Gcp.Projects
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static IAMCustomRole Get(string name, Input<string> id, IAMCustomRoleState? state = null, CustomResourceOptions? options = null)
+        public static IamCustomRole Get(string name, Input<string> id, IamCustomRoleState? state = null, CustomResourceOptions? options = null)
         {
-            return new IAMCustomRole(name, id, state, options);
+            return new IamCustomRole(name, id, state, options);
         }
     }
 
-    public sealed class IAMCustomRoleArgs : global::Pulumi.ResourceArgs
+    public sealed class IamCustomRoleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A human-readable description for the role.
@@ -211,13 +211,13 @@ namespace Pulumi.Gcp.Projects
         [Input("title", required: true)]
         public Input<string> Title { get; set; } = null!;
 
-        public IAMCustomRoleArgs()
+        public IamCustomRoleArgs()
         {
         }
-        public static new IAMCustomRoleArgs Empty => new IAMCustomRoleArgs();
+        public static new IamCustomRoleArgs Empty => new IamCustomRoleArgs();
     }
 
-    public sealed class IAMCustomRoleState : global::Pulumi.ResourceArgs
+    public sealed class IamCustomRoleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (Optional) The current deleted state of the role.
@@ -276,9 +276,9 @@ namespace Pulumi.Gcp.Projects
         [Input("title")]
         public Input<string>? Title { get; set; }
 
-        public IAMCustomRoleState()
+        public IamCustomRoleState()
         {
         }
-        public static new IAMCustomRoleState Empty => new IAMCustomRoleState();
+        public static new IamCustomRoleState Empty => new IamCustomRoleState();
     }
 }

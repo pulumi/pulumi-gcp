@@ -152,7 +152,7 @@ class ServiceIdentity(pulumi.CustomResource):
             project=project.project_id,
             service="healthcare.googleapis.com",
             opts=pulumi.ResourceOptions(provider=google_beta))
-        hc_sa_bq_jobuser = gcp.projects.IAMMember("hcSaBqJobuser",
+        hc_sa_bq_jobuser = gcp.projects.IamMember("hcSaBqJobuser",
             project=project.project_id,
             role="roles/bigquery.jobUser",
             member=hc_sa.email.apply(lambda email: f"serviceAccount:{email}"))
@@ -202,7 +202,7 @@ class ServiceIdentity(pulumi.CustomResource):
             project=project.project_id,
             service="healthcare.googleapis.com",
             opts=pulumi.ResourceOptions(provider=google_beta))
-        hc_sa_bq_jobuser = gcp.projects.IAMMember("hcSaBqJobuser",
+        hc_sa_bq_jobuser = gcp.projects.IamMember("hcSaBqJobuser",
             project=project.project_id,
             role="roles/bigquery.jobUser",
             member=hc_sa.email.apply(lambda email: f"serviceAccount:{email}"))

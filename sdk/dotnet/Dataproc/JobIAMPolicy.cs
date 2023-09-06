@@ -12,13 +12,13 @@ namespace Pulumi.Gcp.Dataproc
     /// <summary>
     /// Three different resources help you manage IAM policies on dataproc jobs. Each of these resources serves a different use case:
     /// 
-    /// * `gcp.dataproc.JobIAMPolicy`: Authoritative. Sets the IAM policy for the job and replaces any existing policy already attached.
-    /// * `gcp.dataproc.JobIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the job are preserved.
-    /// * `gcp.dataproc.JobIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the job are preserved.
+    /// * `gcp.dataproc.JobIamPolicy`: Authoritative. Sets the IAM policy for the job and replaces any existing policy already attached.
+    /// * `gcp.dataproc.JobIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the job are preserved.
+    /// * `gcp.dataproc.JobIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the job are preserved.
     /// 
-    /// &gt; **Note:** `gcp.dataproc.JobIAMPolicy` **cannot** be used in conjunction with `gcp.dataproc.JobIAMBinding` and `gcp.dataproc.JobIAMMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the job as `gcp.dataproc.JobIAMPolicy` replaces the entire policy.
+    /// &gt; **Note:** `gcp.dataproc.JobIamPolicy` **cannot** be used in conjunction with `gcp.dataproc.JobIamBinding` and `gcp.dataproc.JobIamMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the job as `gcp.dataproc.JobIamPolicy` replaces the entire policy.
     /// 
-    /// &gt; **Note:** `gcp.dataproc.JobIAMBinding` resources **can be** used in conjunction with `gcp.dataproc.JobIAMMember` resources **only if** they do not grant privilege to the same role.
+    /// &gt; **Note:** `gcp.dataproc.JobIamBinding` resources **can be** used in conjunction with `gcp.dataproc.JobIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
     /// ## google\_dataproc\_job\_iam\_policy
     /// 
@@ -30,11 +30,11 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     var admin = Gcp.Organizations.GetIamPolicy.Invoke(new()
     ///     {
     ///         Bindings = new[]
     ///         {
-    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             new Gcp.Organizations.Inputs.GetIamPolicyBindingInputArgs
     ///             {
     ///                 Role = "roles/editor",
     ///                 Members = new[]
@@ -45,12 +45,12 @@ namespace Pulumi.Gcp.Dataproc
     ///         },
     ///     });
     /// 
-    ///     var editor = new Gcp.Dataproc.JobIAMPolicy("editor", new()
+    ///     var editor = new Gcp.Dataproc.JobIamPolicy("editor", new()
     ///     {
     ///         Project = "your-project",
     ///         Region = "your-region",
     ///         JobId = "your-dataproc-job",
-    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///         PolicyData = admin.Apply(getIamPolicyResult =&gt; getIamPolicyResult.PolicyData),
     ///     });
     /// 
     /// });
@@ -66,7 +66,7 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var editor = new Gcp.Dataproc.JobIAMBinding("editor", new()
+    ///     var editor = new Gcp.Dataproc.JobIamBinding("editor", new()
     ///     {
     ///         JobId = "your-dataproc-job",
     ///         Members = new[]
@@ -89,7 +89,7 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var editor = new Gcp.Dataproc.JobIAMMember("editor", new()
+    ///     var editor = new Gcp.Dataproc.JobIamMember("editor", new()
     ///     {
     ///         JobId = "your-dataproc-job",
     ///         Member = "user:jane@example.com",
@@ -104,23 +104,23 @@ namespace Pulumi.Gcp.Dataproc
     /// Job IAM resources can be imported using the project, region, job id, role and/or member.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:dataproc/jobIAMPolicy:JobIAMPolicy editor "projects/{project}/regions/{region}/jobs/{job_id}"
+    ///  $ pulumi import gcp:dataproc/jobIamPolicy:JobIamPolicy editor "projects/{project}/regions/{region}/jobs/{job_id}"
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:dataproc/jobIAMPolicy:JobIAMPolicy editor "projects/{project}/regions/{region}/jobs/{job_id} roles/editor"
+    ///  $ pulumi import gcp:dataproc/jobIamPolicy:JobIamPolicy editor "projects/{project}/regions/{region}/jobs/{job_id} roles/editor"
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:dataproc/jobIAMPolicy:JobIAMPolicy editor "projects/{project}/regions/{region}/jobs/{job_id} roles/editor user:jane@example.com"
+    ///  $ pulumi import gcp:dataproc/jobIamPolicy:JobIamPolicy editor "projects/{project}/regions/{region}/jobs/{job_id} roles/editor user:jane@example.com"
     /// ```
     /// 
     ///  -&gt; **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
     /// 
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
-    [GcpResourceType("gcp:dataproc/jobIAMPolicy:JobIAMPolicy")]
-    public partial class JobIAMPolicy : global::Pulumi.CustomResource
+    [GcpResourceType("gcp:dataproc/jobIamPolicy:JobIamPolicy")]
+    public partial class JobIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// (Computed) The etag of the jobs's IAM policy.
@@ -132,7 +132,7 @@ namespace Pulumi.Gcp.Dataproc
         public Output<string> JobId { get; private set; } = null!;
 
         /// <summary>
-        /// The policy data generated by a `gcp.organizations.getIAMPolicy` data source.
+        /// The policy data generated by a `gcp.organizations.getIamPolicy` data source.
         /// 
         /// - - -
         /// </summary>
@@ -155,19 +155,19 @@ namespace Pulumi.Gcp.Dataproc
 
 
         /// <summary>
-        /// Create a JobIAMPolicy resource with the given unique name, arguments, and options.
+        /// Create a JobIamPolicy resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public JobIAMPolicy(string name, JobIAMPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp:dataproc/jobIAMPolicy:JobIAMPolicy", name, args ?? new JobIAMPolicyArgs(), MakeResourceOptions(options, ""))
+        public JobIamPolicy(string name, JobIamPolicyArgs args, CustomResourceOptions? options = null)
+            : base("gcp:dataproc/jobIamPolicy:JobIamPolicy", name, args ?? new JobIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private JobIAMPolicy(string name, Input<string> id, JobIAMPolicyState? state = null, CustomResourceOptions? options = null)
-            : base("gcp:dataproc/jobIAMPolicy:JobIAMPolicy", name, state, MakeResourceOptions(options, id))
+        private JobIamPolicy(string name, Input<string> id, JobIamPolicyState? state = null, CustomResourceOptions? options = null)
+            : base("gcp:dataproc/jobIamPolicy:JobIamPolicy", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -183,7 +183,7 @@ namespace Pulumi.Gcp.Dataproc
             return merged;
         }
         /// <summary>
-        /// Get an existing JobIAMPolicy resource's state with the given name, ID, and optional extra
+        /// Get an existing JobIamPolicy resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -191,19 +191,19 @@ namespace Pulumi.Gcp.Dataproc
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static JobIAMPolicy Get(string name, Input<string> id, JobIAMPolicyState? state = null, CustomResourceOptions? options = null)
+        public static JobIamPolicy Get(string name, Input<string> id, JobIamPolicyState? state = null, CustomResourceOptions? options = null)
         {
-            return new JobIAMPolicy(name, id, state, options);
+            return new JobIamPolicy(name, id, state, options);
         }
     }
 
-    public sealed class JobIAMPolicyArgs : global::Pulumi.ResourceArgs
+    public sealed class JobIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("jobId", required: true)]
         public Input<string> JobId { get; set; } = null!;
 
         /// <summary>
-        /// The policy data generated by a `gcp.organizations.getIAMPolicy` data source.
+        /// The policy data generated by a `gcp.organizations.getIamPolicy` data source.
         /// 
         /// - - -
         /// </summary>
@@ -224,13 +224,13 @@ namespace Pulumi.Gcp.Dataproc
         [Input("region")]
         public Input<string>? Region { get; set; }
 
-        public JobIAMPolicyArgs()
+        public JobIamPolicyArgs()
         {
         }
-        public static new JobIAMPolicyArgs Empty => new JobIAMPolicyArgs();
+        public static new JobIamPolicyArgs Empty => new JobIamPolicyArgs();
     }
 
-    public sealed class JobIAMPolicyState : global::Pulumi.ResourceArgs
+    public sealed class JobIamPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (Computed) The etag of the jobs's IAM policy.
@@ -242,7 +242,7 @@ namespace Pulumi.Gcp.Dataproc
         public Input<string>? JobId { get; set; }
 
         /// <summary>
-        /// The policy data generated by a `gcp.organizations.getIAMPolicy` data source.
+        /// The policy data generated by a `gcp.organizations.getIamPolicy` data source.
         /// 
         /// - - -
         /// </summary>
@@ -263,9 +263,9 @@ namespace Pulumi.Gcp.Dataproc
         [Input("region")]
         public Input<string>? Region { get; set; }
 
-        public JobIAMPolicyState()
+        public JobIamPolicyState()
         {
         }
-        public static new JobIAMPolicyState Empty => new JobIAMPolicyState();
+        public static new JobIamPolicyState Empty => new JobIamPolicyState();
     }
 }

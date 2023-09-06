@@ -43,10 +43,10 @@ export const getFolders: typeof import("./getFolders").getFolders = null as any;
 export const getFoldersOutput: typeof import("./getFolders").getFoldersOutput = null as any;
 utilities.lazyLoad(exports, ["getFolders","getFoldersOutput"], () => require("./getFolders"));
 
-export { GetIAMPolicyArgs, GetIAMPolicyResult, GetIAMPolicyOutputArgs } from "./getIAMPolicy";
-export const getIAMPolicy: typeof import("./getIAMPolicy").getIAMPolicy = null as any;
-export const getIAMPolicyOutput: typeof import("./getIAMPolicy").getIAMPolicyOutput = null as any;
-utilities.lazyLoad(exports, ["getIAMPolicy","getIAMPolicyOutput"], () => require("./getIAMPolicy"));
+export { GetIamPolicyArgs, GetIamPolicyResult, GetIamPolicyOutputArgs } from "./getIamPolicy";
+export const getIamPolicy: typeof import("./getIamPolicy").getIamPolicy = null as any;
+export const getIamPolicyOutput: typeof import("./getIamPolicy").getIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getIamPolicy","getIamPolicyOutput"], () => require("./getIamPolicy"));
 
 export { GetOrganizationArgs, GetOrganizationResult, GetOrganizationOutputArgs } from "./getOrganization";
 export const getOrganization: typeof import("./getOrganization").getOrganization = null as any;
@@ -63,25 +63,25 @@ export type IamAuditConfig = import("./iamAuditConfig").IamAuditConfig;
 export const IamAuditConfig: typeof import("./iamAuditConfig").IamAuditConfig = null as any;
 utilities.lazyLoad(exports, ["IamAuditConfig"], () => require("./iamAuditConfig"));
 
-export { IAMBindingArgs, IAMBindingState } from "./iambinding";
-export type IAMBinding = import("./iambinding").IAMBinding;
-export const IAMBinding: typeof import("./iambinding").IAMBinding = null as any;
-utilities.lazyLoad(exports, ["IAMBinding"], () => require("./iambinding"));
+export { IamBindingArgs, IamBindingState } from "./iamBinding";
+export type IamBinding = import("./iamBinding").IamBinding;
+export const IamBinding: typeof import("./iamBinding").IamBinding = null as any;
+utilities.lazyLoad(exports, ["IamBinding"], () => require("./iamBinding"));
 
-export { IAMCustomRoleArgs, IAMCustomRoleState } from "./iamcustomRole";
-export type IAMCustomRole = import("./iamcustomRole").IAMCustomRole;
-export const IAMCustomRole: typeof import("./iamcustomRole").IAMCustomRole = null as any;
-utilities.lazyLoad(exports, ["IAMCustomRole"], () => require("./iamcustomRole"));
+export { IamCustomRoleArgs, IamCustomRoleState } from "./iamCustomRole";
+export type IamCustomRole = import("./iamCustomRole").IamCustomRole;
+export const IamCustomRole: typeof import("./iamCustomRole").IamCustomRole = null as any;
+utilities.lazyLoad(exports, ["IamCustomRole"], () => require("./iamCustomRole"));
 
-export { IAMMemberArgs, IAMMemberState } from "./iammember";
-export type IAMMember = import("./iammember").IAMMember;
-export const IAMMember: typeof import("./iammember").IAMMember = null as any;
-utilities.lazyLoad(exports, ["IAMMember"], () => require("./iammember"));
+export { IamMemberArgs, IamMemberState } from "./iamMember";
+export type IamMember = import("./iamMember").IamMember;
+export const IamMember: typeof import("./iamMember").IamMember = null as any;
+utilities.lazyLoad(exports, ["IamMember"], () => require("./iamMember"));
 
-export { IAMPolicyArgs, IAMPolicyState } from "./iampolicy";
-export type IAMPolicy = import("./iampolicy").IAMPolicy;
-export const IAMPolicy: typeof import("./iampolicy").IAMPolicy = null as any;
-utilities.lazyLoad(exports, ["IAMPolicy"], () => require("./iampolicy"));
+export { IamPolicyArgs, IamPolicyState } from "./iamPolicy";
+export type IamPolicy = import("./iamPolicy").IamPolicy;
+export const IamPolicy: typeof import("./iamPolicy").IamPolicy = null as any;
+utilities.lazyLoad(exports, ["IamPolicy"], () => require("./iamPolicy"));
 
 export { PolicyArgs, PolicyState } from "./policy";
 export type Policy = import("./policy").Policy;
@@ -102,16 +102,16 @@ const _module = {
                 return new AccessApprovalSettings(name, <any>undefined, { urn })
             case "gcp:organizations/folder:Folder":
                 return new Folder(name, <any>undefined, { urn })
-            case "gcp:organizations/iAMBinding:IAMBinding":
-                return new IAMBinding(name, <any>undefined, { urn })
-            case "gcp:organizations/iAMCustomRole:IAMCustomRole":
-                return new IAMCustomRole(name, <any>undefined, { urn })
-            case "gcp:organizations/iAMMember:IAMMember":
-                return new IAMMember(name, <any>undefined, { urn })
-            case "gcp:organizations/iAMPolicy:IAMPolicy":
-                return new IAMPolicy(name, <any>undefined, { urn })
             case "gcp:organizations/iamAuditConfig:IamAuditConfig":
                 return new IamAuditConfig(name, <any>undefined, { urn })
+            case "gcp:organizations/iamBinding:IamBinding":
+                return new IamBinding(name, <any>undefined, { urn })
+            case "gcp:organizations/iamCustomRole:IamCustomRole":
+                return new IamCustomRole(name, <any>undefined, { urn })
+            case "gcp:organizations/iamMember:IamMember":
+                return new IamMember(name, <any>undefined, { urn })
+            case "gcp:organizations/iamPolicy:IamPolicy":
+                return new IamPolicy(name, <any>undefined, { urn })
             case "gcp:organizations/policy:Policy":
                 return new Policy(name, <any>undefined, { urn })
             case "gcp:organizations/project:Project":
@@ -123,10 +123,10 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("gcp", "organizations/accessApprovalSettings", _module)
 pulumi.runtime.registerResourceModule("gcp", "organizations/folder", _module)
-pulumi.runtime.registerResourceModule("gcp", "organizations/iAMBinding", _module)
-pulumi.runtime.registerResourceModule("gcp", "organizations/iAMCustomRole", _module)
-pulumi.runtime.registerResourceModule("gcp", "organizations/iAMMember", _module)
-pulumi.runtime.registerResourceModule("gcp", "organizations/iAMPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "organizations/iamAuditConfig", _module)
+pulumi.runtime.registerResourceModule("gcp", "organizations/iamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "organizations/iamCustomRole", _module)
+pulumi.runtime.registerResourceModule("gcp", "organizations/iamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "organizations/iamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "organizations/policy", _module)
 pulumi.runtime.registerResourceModule("gcp", "organizations/project", _module)

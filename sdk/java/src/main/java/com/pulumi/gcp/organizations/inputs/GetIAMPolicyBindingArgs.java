@@ -5,7 +5,7 @@ package com.pulumi.gcp.organizations.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingConditionArgs;
+import com.pulumi.gcp.organizations.inputs.GetIamPolicyBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -13,22 +13,22 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class GetIAMPolicyBindingArgs extends com.pulumi.resources.ResourceArgs {
+public final class GetIamPolicyBindingArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final GetIAMPolicyBindingArgs Empty = new GetIAMPolicyBindingArgs();
+    public static final GetIamPolicyBindingArgs Empty = new GetIamPolicyBindingArgs();
 
     /**
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
      * 
      */
     @Import(name="condition")
-    private @Nullable Output<GetIAMPolicyBindingConditionArgs> condition;
+    private @Nullable Output<GetIamPolicyBindingConditionArgs> condition;
 
     /**
      * @return An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
      * 
      */
-    public Optional<Output<GetIAMPolicyBindingConditionArgs>> condition() {
+    public Optional<Output<GetIamPolicyBindingConditionArgs>> condition() {
         return Optional.ofNullable(this.condition);
     }
 
@@ -80,9 +80,9 @@ public final class GetIAMPolicyBindingArgs extends com.pulumi.resources.Resource
         return this.role;
     }
 
-    private GetIAMPolicyBindingArgs() {}
+    private GetIamPolicyBindingArgs() {}
 
-    private GetIAMPolicyBindingArgs(GetIAMPolicyBindingArgs $) {
+    private GetIamPolicyBindingArgs(GetIamPolicyBindingArgs $) {
         this.condition = $.condition;
         this.members = $.members;
         this.role = $.role;
@@ -91,19 +91,19 @@ public final class GetIAMPolicyBindingArgs extends com.pulumi.resources.Resource
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(GetIAMPolicyBindingArgs defaults) {
+    public static Builder builder(GetIamPolicyBindingArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private GetIAMPolicyBindingArgs $;
+        private GetIamPolicyBindingArgs $;
 
         public Builder() {
-            $ = new GetIAMPolicyBindingArgs();
+            $ = new GetIamPolicyBindingArgs();
         }
 
-        public Builder(GetIAMPolicyBindingArgs defaults) {
-            $ = new GetIAMPolicyBindingArgs(Objects.requireNonNull(defaults));
+        public Builder(GetIamPolicyBindingArgs defaults) {
+            $ = new GetIamPolicyBindingArgs(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -112,7 +112,7 @@ public final class GetIAMPolicyBindingArgs extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-        public Builder condition(@Nullable Output<GetIAMPolicyBindingConditionArgs> condition) {
+        public Builder condition(@Nullable Output<GetIamPolicyBindingConditionArgs> condition) {
             $.condition = condition;
             return this;
         }
@@ -123,7 +123,7 @@ public final class GetIAMPolicyBindingArgs extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-        public Builder condition(GetIAMPolicyBindingConditionArgs condition) {
+        public Builder condition(GetIamPolicyBindingConditionArgs condition) {
             return condition(Output.of(condition));
         }
 
@@ -204,7 +204,7 @@ public final class GetIAMPolicyBindingArgs extends com.pulumi.resources.Resource
             return role(Output.of(role));
         }
 
-        public GetIAMPolicyBindingArgs build() {
+        public GetIamPolicyBindingArgs build() {
             $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
             $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
             return $;

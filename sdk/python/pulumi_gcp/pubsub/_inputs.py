@@ -20,14 +20,14 @@ __all__ = [
     'SubscriptionCloudStorageConfigAvroConfigArgs',
     'SubscriptionDeadLetterPolicyArgs',
     'SubscriptionExpirationPolicyArgs',
-    'SubscriptionIAMBindingConditionArgs',
-    'SubscriptionIAMMemberConditionArgs',
+    'SubscriptionIamBindingConditionArgs',
+    'SubscriptionIamMemberConditionArgs',
     'SubscriptionPushConfigArgs',
     'SubscriptionPushConfigNoWrapperArgs',
     'SubscriptionPushConfigOidcTokenArgs',
     'SubscriptionRetryPolicyArgs',
-    'TopicIAMBindingConditionArgs',
-    'TopicIAMMemberConditionArgs',
+    'TopicIamBindingConditionArgs',
+    'TopicIamMemberConditionArgs',
     'TopicMessageStoragePolicyArgs',
     'TopicSchemaSettingsArgs',
 ]
@@ -529,7 +529,7 @@ class SubscriptionExpirationPolicyArgs:
 
 
 @pulumi.input_type
-class SubscriptionIAMBindingConditionArgs:
+class SubscriptionIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -568,7 +568,7 @@ class SubscriptionIAMBindingConditionArgs:
 
 
 @pulumi.input_type
-class SubscriptionIAMMemberConditionArgs:
+class SubscriptionIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -846,7 +846,7 @@ class SubscriptionRetryPolicyArgs:
 
 
 @pulumi.input_type
-class TopicIAMBindingConditionArgs:
+class TopicIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -885,7 +885,7 @@ class TopicIAMBindingConditionArgs:
 
 
 @pulumi.input_type
-class TopicIAMMemberConditionArgs:
+class TopicIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],

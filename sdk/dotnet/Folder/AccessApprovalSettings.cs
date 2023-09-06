@@ -95,7 +95,7 @@ namespace Pulumi.Gcp.Folder
     ///         FolderId = myFolder.FolderId,
     ///     });
     /// 
-    ///     var iam = new Gcp.Kms.CryptoKeyIAMMember("iam", new()
+    ///     var iam = new Gcp.Kms.CryptoKeyIamMember("iam", new()
     ///     {
     ///         CryptoKeyId = cryptoKey.Id,
     ///         Role = "roles/cloudkms.signerVerifier",

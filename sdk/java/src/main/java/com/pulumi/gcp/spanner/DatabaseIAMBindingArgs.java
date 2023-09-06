@@ -5,7 +5,7 @@ package com.pulumi.gcp.spanner;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.gcp.spanner.inputs.DatabaseIAMBindingConditionArgs;
+import com.pulumi.gcp.spanner.inputs.DatabaseIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -13,14 +13,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class DatabaseIAMBindingArgs extends com.pulumi.resources.ResourceArgs {
+public final class DatabaseIamBindingArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final DatabaseIAMBindingArgs Empty = new DatabaseIAMBindingArgs();
+    public static final DatabaseIamBindingArgs Empty = new DatabaseIamBindingArgs();
 
     @Import(name="condition")
-    private @Nullable Output<DatabaseIAMBindingConditionArgs> condition;
+    private @Nullable Output<DatabaseIamBindingConditionArgs> condition;
 
-    public Optional<Output<DatabaseIAMBindingConditionArgs>> condition() {
+    public Optional<Output<DatabaseIamBindingConditionArgs>> condition() {
         return Optional.ofNullable(this.condition);
     }
 
@@ -98,7 +98,7 @@ public final class DatabaseIAMBindingArgs extends com.pulumi.resources.ResourceA
 
     /**
      * The role that should be applied. Only one
-     * `gcp.spanner.DatabaseIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.spanner.DatabaseIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -107,7 +107,7 @@ public final class DatabaseIAMBindingArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return The role that should be applied. Only one
-     * `gcp.spanner.DatabaseIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.spanner.DatabaseIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -115,9 +115,9 @@ public final class DatabaseIAMBindingArgs extends com.pulumi.resources.ResourceA
         return this.role;
     }
 
-    private DatabaseIAMBindingArgs() {}
+    private DatabaseIamBindingArgs() {}
 
-    private DatabaseIAMBindingArgs(DatabaseIAMBindingArgs $) {
+    private DatabaseIamBindingArgs(DatabaseIamBindingArgs $) {
         this.condition = $.condition;
         this.database = $.database;
         this.instance = $.instance;
@@ -129,27 +129,27 @@ public final class DatabaseIAMBindingArgs extends com.pulumi.resources.ResourceA
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(DatabaseIAMBindingArgs defaults) {
+    public static Builder builder(DatabaseIamBindingArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private DatabaseIAMBindingArgs $;
+        private DatabaseIamBindingArgs $;
 
         public Builder() {
-            $ = new DatabaseIAMBindingArgs();
+            $ = new DatabaseIamBindingArgs();
         }
 
-        public Builder(DatabaseIAMBindingArgs defaults) {
-            $ = new DatabaseIAMBindingArgs(Objects.requireNonNull(defaults));
+        public Builder(DatabaseIamBindingArgs defaults) {
+            $ = new DatabaseIamBindingArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder condition(@Nullable Output<DatabaseIAMBindingConditionArgs> condition) {
+        public Builder condition(@Nullable Output<DatabaseIamBindingConditionArgs> condition) {
             $.condition = condition;
             return this;
         }
 
-        public Builder condition(DatabaseIAMBindingConditionArgs condition) {
+        public Builder condition(DatabaseIamBindingConditionArgs condition) {
             return condition(Output.of(condition));
         }
 
@@ -251,7 +251,7 @@ public final class DatabaseIAMBindingArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.spanner.DatabaseIAMBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.spanner.DatabaseIamBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder
@@ -264,7 +264,7 @@ public final class DatabaseIAMBindingArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.spanner.DatabaseIAMBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.spanner.DatabaseIamBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder
@@ -274,7 +274,7 @@ public final class DatabaseIAMBindingArgs extends com.pulumi.resources.ResourceA
             return role(Output.of(role));
         }
 
-        public DatabaseIAMBindingArgs build() {
+        public DatabaseIamBindingArgs build() {
             $.database = Objects.requireNonNull($.database, "expected parameter 'database' to be non-null");
             $.instance = Objects.requireNonNull($.instance, "expected parameter 'instance' to be non-null");
             $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");

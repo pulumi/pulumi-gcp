@@ -5,28 +5,28 @@ package com.pulumi.gcp.organizations.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.gcp.organizations.inputs.GetIAMPolicyAuditConfigAuditLogConfigArgs;
+import com.pulumi.gcp.organizations.inputs.GetIamPolicyAuditConfigAuditLogConfigArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 
 
-public final class GetIAMPolicyAuditConfigArgs extends com.pulumi.resources.ResourceArgs {
+public final class GetIamPolicyAuditConfigArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final GetIAMPolicyAuditConfigArgs Empty = new GetIAMPolicyAuditConfigArgs();
+    public static final GetIamPolicyAuditConfigArgs Empty = new GetIamPolicyAuditConfigArgs();
 
     /**
      * A nested block that defines the operations you&#39;d like to log.
      * 
      */
     @Import(name="auditLogConfigs", required=true)
-    private Output<List<GetIAMPolicyAuditConfigAuditLogConfigArgs>> auditLogConfigs;
+    private Output<List<GetIamPolicyAuditConfigAuditLogConfigArgs>> auditLogConfigs;
 
     /**
      * @return A nested block that defines the operations you&#39;d like to log.
      * 
      */
-    public Output<List<GetIAMPolicyAuditConfigAuditLogConfigArgs>> auditLogConfigs() {
+    public Output<List<GetIamPolicyAuditConfigAuditLogConfigArgs>> auditLogConfigs() {
         return this.auditLogConfigs;
     }
 
@@ -45,9 +45,9 @@ public final class GetIAMPolicyAuditConfigArgs extends com.pulumi.resources.Reso
         return this.service;
     }
 
-    private GetIAMPolicyAuditConfigArgs() {}
+    private GetIamPolicyAuditConfigArgs() {}
 
-    private GetIAMPolicyAuditConfigArgs(GetIAMPolicyAuditConfigArgs $) {
+    private GetIamPolicyAuditConfigArgs(GetIamPolicyAuditConfigArgs $) {
         this.auditLogConfigs = $.auditLogConfigs;
         this.service = $.service;
     }
@@ -55,19 +55,19 @@ public final class GetIAMPolicyAuditConfigArgs extends com.pulumi.resources.Reso
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(GetIAMPolicyAuditConfigArgs defaults) {
+    public static Builder builder(GetIamPolicyAuditConfigArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private GetIAMPolicyAuditConfigArgs $;
+        private GetIamPolicyAuditConfigArgs $;
 
         public Builder() {
-            $ = new GetIAMPolicyAuditConfigArgs();
+            $ = new GetIamPolicyAuditConfigArgs();
         }
 
-        public Builder(GetIAMPolicyAuditConfigArgs defaults) {
-            $ = new GetIAMPolicyAuditConfigArgs(Objects.requireNonNull(defaults));
+        public Builder(GetIamPolicyAuditConfigArgs defaults) {
+            $ = new GetIamPolicyAuditConfigArgs(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -76,7 +76,7 @@ public final class GetIAMPolicyAuditConfigArgs extends com.pulumi.resources.Reso
          * @return builder
          * 
          */
-        public Builder auditLogConfigs(Output<List<GetIAMPolicyAuditConfigAuditLogConfigArgs>> auditLogConfigs) {
+        public Builder auditLogConfigs(Output<List<GetIamPolicyAuditConfigAuditLogConfigArgs>> auditLogConfigs) {
             $.auditLogConfigs = auditLogConfigs;
             return this;
         }
@@ -87,7 +87,7 @@ public final class GetIAMPolicyAuditConfigArgs extends com.pulumi.resources.Reso
          * @return builder
          * 
          */
-        public Builder auditLogConfigs(List<GetIAMPolicyAuditConfigAuditLogConfigArgs> auditLogConfigs) {
+        public Builder auditLogConfigs(List<GetIamPolicyAuditConfigAuditLogConfigArgs> auditLogConfigs) {
             return auditLogConfigs(Output.of(auditLogConfigs));
         }
 
@@ -97,7 +97,7 @@ public final class GetIAMPolicyAuditConfigArgs extends com.pulumi.resources.Reso
          * @return builder
          * 
          */
-        public Builder auditLogConfigs(GetIAMPolicyAuditConfigAuditLogConfigArgs... auditLogConfigs) {
+        public Builder auditLogConfigs(GetIamPolicyAuditConfigAuditLogConfigArgs... auditLogConfigs) {
             return auditLogConfigs(List.of(auditLogConfigs));
         }
 
@@ -122,7 +122,7 @@ public final class GetIAMPolicyAuditConfigArgs extends com.pulumi.resources.Reso
             return service(Output.of(service));
         }
 
-        public GetIAMPolicyAuditConfigArgs build() {
+        public GetIamPolicyAuditConfigArgs build() {
             $.auditLogConfigs = Objects.requireNonNull($.auditLogConfigs, "expected parameter 'auditLogConfigs' to be non-null");
             $.service = Objects.requireNonNull($.service, "expected parameter 'service' to be non-null");
             return $;

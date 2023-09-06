@@ -19,9 +19,9 @@ __all__ = [
     'ApiKeyRestrictionsBrowserKeyRestrictions',
     'ApiKeyRestrictionsIosKeyRestrictions',
     'ApiKeyRestrictionsServerKeyRestrictions',
-    'IAMAuditConfigAuditLogConfig',
-    'IAMBindingCondition',
-    'IAMMemberCondition',
+    'IamAuditConfigAuditLogConfig',
+    'IamBindingCondition',
+    'IamMemberCondition',
     'OrganizationPolicyBooleanPolicy',
     'OrganizationPolicyListPolicy',
     'OrganizationPolicyListPolicyAllow',
@@ -427,7 +427,7 @@ class ApiKeyRestrictionsServerKeyRestrictions(dict):
 
 
 @pulumi.output_type
-class IAMAuditConfigAuditLogConfig(dict):
+class IamAuditConfigAuditLogConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -437,14 +437,14 @@ class IAMAuditConfigAuditLogConfig(dict):
             suggest = "exempted_members"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in IAMAuditConfigAuditLogConfig. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in IamAuditConfigAuditLogConfig. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        IAMAuditConfigAuditLogConfig.__key_warning(key)
+        IamAuditConfigAuditLogConfig.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        IAMAuditConfigAuditLogConfig.__key_warning(key)
+        IamAuditConfigAuditLogConfig.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -476,7 +476,7 @@ class IAMAuditConfigAuditLogConfig(dict):
 
 
 @pulumi.output_type
-class IAMBindingCondition(dict):
+class IamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -525,7 +525,7 @@ class IAMBindingCondition(dict):
 
 
 @pulumi.output_type
-class IAMMemberCondition(dict):
+class IamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,

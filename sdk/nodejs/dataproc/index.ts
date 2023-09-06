@@ -30,20 +30,20 @@ export type Cluster = import("./cluster").Cluster;
 export const Cluster: typeof import("./cluster").Cluster = null as any;
 utilities.lazyLoad(exports, ["Cluster"], () => require("./cluster"));
 
-export { ClusterIAMBindingArgs, ClusterIAMBindingState } from "./clusterIAMBinding";
-export type ClusterIAMBinding = import("./clusterIAMBinding").ClusterIAMBinding;
-export const ClusterIAMBinding: typeof import("./clusterIAMBinding").ClusterIAMBinding = null as any;
-utilities.lazyLoad(exports, ["ClusterIAMBinding"], () => require("./clusterIAMBinding"));
+export { ClusterIamBindingArgs, ClusterIamBindingState } from "./clusterIamBinding";
+export type ClusterIamBinding = import("./clusterIamBinding").ClusterIamBinding;
+export const ClusterIamBinding: typeof import("./clusterIamBinding").ClusterIamBinding = null as any;
+utilities.lazyLoad(exports, ["ClusterIamBinding"], () => require("./clusterIamBinding"));
 
-export { ClusterIAMMemberArgs, ClusterIAMMemberState } from "./clusterIAMMember";
-export type ClusterIAMMember = import("./clusterIAMMember").ClusterIAMMember;
-export const ClusterIAMMember: typeof import("./clusterIAMMember").ClusterIAMMember = null as any;
-utilities.lazyLoad(exports, ["ClusterIAMMember"], () => require("./clusterIAMMember"));
+export { ClusterIamMemberArgs, ClusterIamMemberState } from "./clusterIamMember";
+export type ClusterIamMember = import("./clusterIamMember").ClusterIamMember;
+export const ClusterIamMember: typeof import("./clusterIamMember").ClusterIamMember = null as any;
+utilities.lazyLoad(exports, ["ClusterIamMember"], () => require("./clusterIamMember"));
 
-export { ClusterIAMPolicyArgs, ClusterIAMPolicyState } from "./clusterIAMPolicy";
-export type ClusterIAMPolicy = import("./clusterIAMPolicy").ClusterIAMPolicy;
-export const ClusterIAMPolicy: typeof import("./clusterIAMPolicy").ClusterIAMPolicy = null as any;
-utilities.lazyLoad(exports, ["ClusterIAMPolicy"], () => require("./clusterIAMPolicy"));
+export { ClusterIamPolicyArgs, ClusterIamPolicyState } from "./clusterIamPolicy";
+export type ClusterIamPolicy = import("./clusterIamPolicy").ClusterIamPolicy;
+export const ClusterIamPolicy: typeof import("./clusterIamPolicy").ClusterIamPolicy = null as any;
+utilities.lazyLoad(exports, ["ClusterIamPolicy"], () => require("./clusterIamPolicy"));
 
 export { GetAutoscalingPolicyIamPolicyArgs, GetAutoscalingPolicyIamPolicyResult, GetAutoscalingPolicyIamPolicyOutputArgs } from "./getAutoscalingPolicyIamPolicy";
 export const getAutoscalingPolicyIamPolicy: typeof import("./getAutoscalingPolicyIamPolicy").getAutoscalingPolicyIamPolicy = null as any;
@@ -75,20 +75,20 @@ export type Job = import("./job").Job;
 export const Job: typeof import("./job").Job = null as any;
 utilities.lazyLoad(exports, ["Job"], () => require("./job"));
 
-export { JobIAMBindingArgs, JobIAMBindingState } from "./jobIAMBinding";
-export type JobIAMBinding = import("./jobIAMBinding").JobIAMBinding;
-export const JobIAMBinding: typeof import("./jobIAMBinding").JobIAMBinding = null as any;
-utilities.lazyLoad(exports, ["JobIAMBinding"], () => require("./jobIAMBinding"));
+export { JobIamBindingArgs, JobIamBindingState } from "./jobIamBinding";
+export type JobIamBinding = import("./jobIamBinding").JobIamBinding;
+export const JobIamBinding: typeof import("./jobIamBinding").JobIamBinding = null as any;
+utilities.lazyLoad(exports, ["JobIamBinding"], () => require("./jobIamBinding"));
 
-export { JobIAMMemberArgs, JobIAMMemberState } from "./jobIAMMember";
-export type JobIAMMember = import("./jobIAMMember").JobIAMMember;
-export const JobIAMMember: typeof import("./jobIAMMember").JobIAMMember = null as any;
-utilities.lazyLoad(exports, ["JobIAMMember"], () => require("./jobIAMMember"));
+export { JobIamMemberArgs, JobIamMemberState } from "./jobIamMember";
+export type JobIamMember = import("./jobIamMember").JobIamMember;
+export const JobIamMember: typeof import("./jobIamMember").JobIamMember = null as any;
+utilities.lazyLoad(exports, ["JobIamMember"], () => require("./jobIamMember"));
 
-export { JobIAMPolicyArgs, JobIAMPolicyState } from "./jobIAMPolicy";
-export type JobIAMPolicy = import("./jobIAMPolicy").JobIAMPolicy;
-export const JobIAMPolicy: typeof import("./jobIAMPolicy").JobIAMPolicy = null as any;
-utilities.lazyLoad(exports, ["JobIAMPolicy"], () => require("./jobIAMPolicy"));
+export { JobIamPolicyArgs, JobIamPolicyState } from "./jobIamPolicy";
+export type JobIamPolicy = import("./jobIamPolicy").JobIamPolicy;
+export const JobIamPolicy: typeof import("./jobIamPolicy").JobIamPolicy = null as any;
+utilities.lazyLoad(exports, ["JobIamPolicy"], () => require("./jobIamPolicy"));
 
 export { MetastoreFederationArgs, MetastoreFederationState } from "./metastoreFederation";
 export type MetastoreFederation = import("./metastoreFederation").MetastoreFederation;
@@ -150,20 +150,20 @@ const _module = {
                 return new AutoscalingPolicyIamPolicy(name, <any>undefined, { urn })
             case "gcp:dataproc/cluster:Cluster":
                 return new Cluster(name, <any>undefined, { urn })
-            case "gcp:dataproc/clusterIAMBinding:ClusterIAMBinding":
-                return new ClusterIAMBinding(name, <any>undefined, { urn })
-            case "gcp:dataproc/clusterIAMMember:ClusterIAMMember":
-                return new ClusterIAMMember(name, <any>undefined, { urn })
-            case "gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy":
-                return new ClusterIAMPolicy(name, <any>undefined, { urn })
+            case "gcp:dataproc/clusterIamBinding:ClusterIamBinding":
+                return new ClusterIamBinding(name, <any>undefined, { urn })
+            case "gcp:dataproc/clusterIamMember:ClusterIamMember":
+                return new ClusterIamMember(name, <any>undefined, { urn })
+            case "gcp:dataproc/clusterIamPolicy:ClusterIamPolicy":
+                return new ClusterIamPolicy(name, <any>undefined, { urn })
             case "gcp:dataproc/job:Job":
                 return new Job(name, <any>undefined, { urn })
-            case "gcp:dataproc/jobIAMBinding:JobIAMBinding":
-                return new JobIAMBinding(name, <any>undefined, { urn })
-            case "gcp:dataproc/jobIAMMember:JobIAMMember":
-                return new JobIAMMember(name, <any>undefined, { urn })
-            case "gcp:dataproc/jobIAMPolicy:JobIAMPolicy":
-                return new JobIAMPolicy(name, <any>undefined, { urn })
+            case "gcp:dataproc/jobIamBinding:JobIamBinding":
+                return new JobIamBinding(name, <any>undefined, { urn })
+            case "gcp:dataproc/jobIamMember:JobIamMember":
+                return new JobIamMember(name, <any>undefined, { urn })
+            case "gcp:dataproc/jobIamPolicy:JobIamPolicy":
+                return new JobIamPolicy(name, <any>undefined, { urn })
             case "gcp:dataproc/metastoreFederation:MetastoreFederation":
                 return new MetastoreFederation(name, <any>undefined, { urn })
             case "gcp:dataproc/metastoreFederationIamBinding:MetastoreFederationIamBinding":
@@ -192,13 +192,13 @@ pulumi.runtime.registerResourceModule("gcp", "dataproc/autoscalingPolicyIamBindi
 pulumi.runtime.registerResourceModule("gcp", "dataproc/autoscalingPolicyIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataproc/autoscalingPolicyIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataproc/cluster", _module)
-pulumi.runtime.registerResourceModule("gcp", "dataproc/clusterIAMBinding", _module)
-pulumi.runtime.registerResourceModule("gcp", "dataproc/clusterIAMMember", _module)
-pulumi.runtime.registerResourceModule("gcp", "dataproc/clusterIAMPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataproc/clusterIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataproc/clusterIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataproc/clusterIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataproc/job", _module)
-pulumi.runtime.registerResourceModule("gcp", "dataproc/jobIAMBinding", _module)
-pulumi.runtime.registerResourceModule("gcp", "dataproc/jobIAMMember", _module)
-pulumi.runtime.registerResourceModule("gcp", "dataproc/jobIAMPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataproc/jobIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataproc/jobIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataproc/jobIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataproc/metastoreFederation", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataproc/metastoreFederationIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataproc/metastoreFederationIamMember", _module)

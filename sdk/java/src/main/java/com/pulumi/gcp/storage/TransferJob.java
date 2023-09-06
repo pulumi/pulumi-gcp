@@ -40,11 +40,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.storage.inputs.GetTransferProjectServiceAccountArgs;
  * import com.pulumi.gcp.storage.Bucket;
  * import com.pulumi.gcp.storage.BucketArgs;
- * import com.pulumi.gcp.storage.BucketIAMMember;
- * import com.pulumi.gcp.storage.BucketIAMMemberArgs;
+ * import com.pulumi.gcp.storage.BucketIamMember;
+ * import com.pulumi.gcp.storage.BucketIamMemberArgs;
  * import com.pulumi.gcp.pubsub.Topic;
- * import com.pulumi.gcp.pubsub.TopicIAMMember;
- * import com.pulumi.gcp.pubsub.TopicIAMMemberArgs;
+ * import com.pulumi.gcp.pubsub.TopicIamMember;
+ * import com.pulumi.gcp.pubsub.TopicIamMemberArgs;
  * import com.pulumi.gcp.storage.TransferJob;
  * import com.pulumi.gcp.storage.TransferJobArgs;
  * import com.pulumi.gcp.storage.inputs.TransferJobTransferSpecArgs;
@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  *             .location(&#34;US&#34;)
  *             .build());
  * 
- *         var s3_backup_bucketBucketIAMMember = new BucketIAMMember(&#34;s3-backup-bucketBucketIAMMember&#34;, BucketIAMMemberArgs.builder()        
+ *         var s3_backup_bucketBucketIamMember = new BucketIamMember(&#34;s3-backup-bucketBucketIamMember&#34;, BucketIamMemberArgs.builder()        
  *             .bucket(s3_backup_bucketBucket.name())
  *             .role(&#34;roles/storage.admin&#34;)
  *             .member(String.format(&#34;serviceAccount:%s&#34;, default_.email()))
@@ -92,7 +92,7 @@ import javax.annotation.Nullable;
  * 
  *         var topic = new Topic(&#34;topic&#34;);
  * 
- *         var notificationConfig = new TopicIAMMember(&#34;notificationConfig&#34;, TopicIAMMemberArgs.builder()        
+ *         var notificationConfig = new TopicIamMember(&#34;notificationConfig&#34;, TopicIamMemberArgs.builder()        
  *             .topic(topic.id())
  *             .role(&#34;roles/pubsub.publisher&#34;)
  *             .member(String.format(&#34;serviceAccount:%s&#34;, default_.email()))
@@ -149,7 +149,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(                
- *                     s3_backup_bucketBucketIAMMember,
+ *                     s3_backup_bucketBucketIamMember,
  *                     notificationConfig)
  *                 .build());
  * 

@@ -11,9 +11,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class IAMPolicyState extends com.pulumi.resources.ResourceArgs {
+public final class IamPolicyState extends com.pulumi.resources.ResourceArgs {
 
-    public static final IAMPolicyState Empty = new IAMPolicyState();
+    public static final IamPolicyState Empty = new IamPolicyState();
 
     /**
      * (Computed) The etag of the project&#39;s IAM policy.
@@ -31,7 +31,7 @@ public final class IAMPolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The `gcp.organizations.getIAMPolicy` data source that represents
+     * The `gcp.organizations.getIamPolicy` data source that represents
      * the IAM policy that will be applied to the project. The policy will be
      * merged with any existing policy applied to the project.
      * 
@@ -45,7 +45,7 @@ public final class IAMPolicyState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> policyData;
 
     /**
-     * @return The `gcp.organizations.getIAMPolicy` data source that represents
+     * @return The `gcp.organizations.getIamPolicy` data source that represents
      * the IAM policy that will be applied to the project. The policy will be
      * merged with any existing policy applied to the project.
      * 
@@ -76,9 +76,9 @@ public final class IAMPolicyState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.project);
     }
 
-    private IAMPolicyState() {}
+    private IamPolicyState() {}
 
-    private IAMPolicyState(IAMPolicyState $) {
+    private IamPolicyState(IamPolicyState $) {
         this.etag = $.etag;
         this.policyData = $.policyData;
         this.project = $.project;
@@ -87,19 +87,19 @@ public final class IAMPolicyState extends com.pulumi.resources.ResourceArgs {
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(IAMPolicyState defaults) {
+    public static Builder builder(IamPolicyState defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private IAMPolicyState $;
+        private IamPolicyState $;
 
         public Builder() {
-            $ = new IAMPolicyState();
+            $ = new IamPolicyState();
         }
 
-        public Builder(IAMPolicyState defaults) {
-            $ = new IAMPolicyState(Objects.requireNonNull(defaults));
+        public Builder(IamPolicyState defaults) {
+            $ = new IamPolicyState(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -124,7 +124,7 @@ public final class IAMPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policyData The `gcp.organizations.getIAMPolicy` data source that represents
+         * @param policyData The `gcp.organizations.getIamPolicy` data source that represents
          * the IAM policy that will be applied to the project. The policy will be
          * merged with any existing policy applied to the project.
          * 
@@ -142,7 +142,7 @@ public final class IAMPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param policyData The `gcp.organizations.getIAMPolicy` data source that represents
+         * @param policyData The `gcp.organizations.getIamPolicy` data source that represents
          * the IAM policy that will be applied to the project. The policy will be
          * merged with any existing policy applied to the project.
          * 
@@ -181,7 +181,7 @@ public final class IAMPolicyState extends com.pulumi.resources.ResourceArgs {
             return project(Output.of(project));
         }
 
-        public IAMPolicyState build() {
+        public IamPolicyState build() {
             return $;
         }
     }

@@ -11,7 +11,7 @@ namespace Pulumi.Gcp.Organizations.Outputs
 {
 
     [OutputType]
-    public sealed class GetIAMPolicyBindingConditionResult
+    public sealed class GetIamPolicyBindingConditionResult
     {
         /// <summary>
         /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.Organizations.Outputs
         public readonly string Title;
 
         [OutputConstructor]
-        private GetIAMPolicyBindingConditionResult(
+        private GetIamPolicyBindingConditionResult(
             string? description,
 
             string expression,

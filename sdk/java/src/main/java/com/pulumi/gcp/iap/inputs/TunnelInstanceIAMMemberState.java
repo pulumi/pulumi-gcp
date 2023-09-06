@@ -5,16 +5,16 @@ package com.pulumi.gcp.iap.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.gcp.iap.inputs.TunnelInstanceIAMMemberConditionArgs;
+import com.pulumi.gcp.iap.inputs.TunnelInstanceIamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class TunnelInstanceIAMMemberState extends com.pulumi.resources.ResourceArgs {
+public final class TunnelInstanceIamMemberState extends com.pulumi.resources.ResourceArgs {
 
-    public static final TunnelInstanceIAMMemberState Empty = new TunnelInstanceIAMMemberState();
+    public static final TunnelInstanceIamMemberState Empty = new TunnelInstanceIamMemberState();
 
     /**
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -22,14 +22,14 @@ public final class TunnelInstanceIAMMemberState extends com.pulumi.resources.Res
      * 
      */
     @Import(name="condition")
-    private @Nullable Output<TunnelInstanceIAMMemberConditionArgs> condition;
+    private @Nullable Output<TunnelInstanceIamMemberConditionArgs> condition;
 
     /**
      * @return An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      * 
      */
-    public Optional<Output<TunnelInstanceIAMMemberConditionArgs>> condition() {
+    public Optional<Output<TunnelInstanceIamMemberConditionArgs>> condition() {
         return Optional.ofNullable(this.condition);
     }
 
@@ -113,7 +113,7 @@ public final class TunnelInstanceIAMMemberState extends com.pulumi.resources.Res
 
     /**
      * The role that should be applied. Only one
-     * `gcp.iap.TunnelInstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.iap.TunnelInstanceIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -122,7 +122,7 @@ public final class TunnelInstanceIAMMemberState extends com.pulumi.resources.Res
 
     /**
      * @return The role that should be applied. Only one
-     * `gcp.iap.TunnelInstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.iap.TunnelInstanceIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -137,9 +137,9 @@ public final class TunnelInstanceIAMMemberState extends com.pulumi.resources.Res
         return Optional.ofNullable(this.zone);
     }
 
-    private TunnelInstanceIAMMemberState() {}
+    private TunnelInstanceIamMemberState() {}
 
-    private TunnelInstanceIAMMemberState(TunnelInstanceIAMMemberState $) {
+    private TunnelInstanceIamMemberState(TunnelInstanceIamMemberState $) {
         this.condition = $.condition;
         this.etag = $.etag;
         this.instance = $.instance;
@@ -152,19 +152,19 @@ public final class TunnelInstanceIAMMemberState extends com.pulumi.resources.Res
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(TunnelInstanceIAMMemberState defaults) {
+    public static Builder builder(TunnelInstanceIamMemberState defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private TunnelInstanceIAMMemberState $;
+        private TunnelInstanceIamMemberState $;
 
         public Builder() {
-            $ = new TunnelInstanceIAMMemberState();
+            $ = new TunnelInstanceIamMemberState();
         }
 
-        public Builder(TunnelInstanceIAMMemberState defaults) {
-            $ = new TunnelInstanceIAMMemberState(Objects.requireNonNull(defaults));
+        public Builder(TunnelInstanceIamMemberState defaults) {
+            $ = new TunnelInstanceIamMemberState(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -174,7 +174,7 @@ public final class TunnelInstanceIAMMemberState extends com.pulumi.resources.Res
          * @return builder
          * 
          */
-        public Builder condition(@Nullable Output<TunnelInstanceIAMMemberConditionArgs> condition) {
+        public Builder condition(@Nullable Output<TunnelInstanceIamMemberConditionArgs> condition) {
             $.condition = condition;
             return this;
         }
@@ -186,7 +186,7 @@ public final class TunnelInstanceIAMMemberState extends com.pulumi.resources.Res
          * @return builder
          * 
          */
-        public Builder condition(TunnelInstanceIAMMemberConditionArgs condition) {
+        public Builder condition(TunnelInstanceIamMemberConditionArgs condition) {
             return condition(Output.of(condition));
         }
 
@@ -290,7 +290,7 @@ public final class TunnelInstanceIAMMemberState extends com.pulumi.resources.Res
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.iap.TunnelInstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.iap.TunnelInstanceIamBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder
@@ -303,7 +303,7 @@ public final class TunnelInstanceIAMMemberState extends com.pulumi.resources.Res
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.iap.TunnelInstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.iap.TunnelInstanceIamBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder
@@ -322,7 +322,7 @@ public final class TunnelInstanceIAMMemberState extends com.pulumi.resources.Res
             return zone(Output.of(zone));
         }
 
-        public TunnelInstanceIAMMemberState build() {
+        public TunnelInstanceIamMemberState build() {
             return $;
         }
     }

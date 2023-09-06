@@ -41,7 +41,7 @@ namespace Pulumi.Gcp.Storage
     /// 
     ///     var topic = new Gcp.PubSub.Topic("topic");
     /// 
-    ///     var binding = new Gcp.PubSub.TopicIAMBinding("binding", new()
+    ///     var binding = new Gcp.PubSub.TopicIamBinding("binding", new()
     ///     {
     ///         Topic = topic.Id,
     ///         Role = "roles/pubsub.publisher",

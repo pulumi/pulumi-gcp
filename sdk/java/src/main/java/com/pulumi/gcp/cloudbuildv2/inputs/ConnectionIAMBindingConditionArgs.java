@@ -11,9 +11,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class ConnectionIAMBindingConditionArgs extends com.pulumi.resources.ResourceArgs {
+public final class ConnectionIamBindingConditionArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final ConnectionIAMBindingConditionArgs Empty = new ConnectionIAMBindingConditionArgs();
+    public static final ConnectionIamBindingConditionArgs Empty = new ConnectionIamBindingConditionArgs();
 
     @Import(name="description")
     private @Nullable Output<String> description;
@@ -36,9 +36,9 @@ public final class ConnectionIAMBindingConditionArgs extends com.pulumi.resource
         return this.title;
     }
 
-    private ConnectionIAMBindingConditionArgs() {}
+    private ConnectionIamBindingConditionArgs() {}
 
-    private ConnectionIAMBindingConditionArgs(ConnectionIAMBindingConditionArgs $) {
+    private ConnectionIamBindingConditionArgs(ConnectionIamBindingConditionArgs $) {
         this.description = $.description;
         this.expression = $.expression;
         this.title = $.title;
@@ -47,19 +47,19 @@ public final class ConnectionIAMBindingConditionArgs extends com.pulumi.resource
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(ConnectionIAMBindingConditionArgs defaults) {
+    public static Builder builder(ConnectionIamBindingConditionArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private ConnectionIAMBindingConditionArgs $;
+        private ConnectionIamBindingConditionArgs $;
 
         public Builder() {
-            $ = new ConnectionIAMBindingConditionArgs();
+            $ = new ConnectionIamBindingConditionArgs();
         }
 
-        public Builder(ConnectionIAMBindingConditionArgs defaults) {
-            $ = new ConnectionIAMBindingConditionArgs(Objects.requireNonNull(defaults));
+        public Builder(ConnectionIamBindingConditionArgs defaults) {
+            $ = new ConnectionIamBindingConditionArgs(Objects.requireNonNull(defaults));
         }
 
         public Builder description(@Nullable Output<String> description) {
@@ -89,7 +89,7 @@ public final class ConnectionIAMBindingConditionArgs extends com.pulumi.resource
             return title(Output.of(title));
         }
 
-        public ConnectionIAMBindingConditionArgs build() {
+        public ConnectionIamBindingConditionArgs build() {
             $.expression = Objects.requireNonNull($.expression, "expected parameter 'expression' to be non-null");
             $.title = Objects.requireNonNull($.title, "expected parameter 'title' to be non-null");
             return $;

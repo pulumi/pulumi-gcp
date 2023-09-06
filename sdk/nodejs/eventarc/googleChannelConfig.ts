@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *     name: "key",
  *     keyRing: testKeyRing.id,
  * }));
- * const key1Member = new gcp.kms.CryptoKeyIAMMember("key1Member", {
+ * const key1Member = new gcp.kms.CryptoKeyIamMember("key1Member", {
  *     cryptoKeyId: data.google_kms_crypto_key.key1.id,
  *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
  *     member: testProject.then(testProject => `serviceAccount:service-${testProject.number}@gcp-sa-eventarc.iam.gserviceaccount.com`),

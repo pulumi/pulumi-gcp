@@ -16,8 +16,8 @@ __all__ = [
     'AppEngineVersionIamMemberConditionArgs',
     'TunnelIamBindingConditionArgs',
     'TunnelIamMemberConditionArgs',
-    'TunnelInstanceIAMBindingConditionArgs',
-    'TunnelInstanceIAMMemberConditionArgs',
+    'TunnelInstanceIamBindingConditionArgs',
+    'TunnelInstanceIamMemberConditionArgs',
     'WebBackendServiceIamBindingConditionArgs',
     'WebBackendServiceIamMemberConditionArgs',
     'WebIamBindingConditionArgs',
@@ -381,7 +381,7 @@ class TunnelIamMemberConditionArgs:
 
 
 @pulumi.input_type
-class TunnelInstanceIAMBindingConditionArgs:
+class TunnelInstanceIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -442,7 +442,7 @@ class TunnelInstanceIAMBindingConditionArgs:
 
 
 @pulumi.input_type
-class TunnelInstanceIAMMemberConditionArgs:
+class TunnelInstanceIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],

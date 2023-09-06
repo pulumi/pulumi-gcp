@@ -8,9 +8,9 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
-import com.pulumi.gcp.cloudbuildv2.ConnectionIAMBindingArgs;
-import com.pulumi.gcp.cloudbuildv2.inputs.ConnectionIAMBindingState;
-import com.pulumi.gcp.cloudbuildv2.outputs.ConnectionIAMBindingCondition;
+import com.pulumi.gcp.cloudbuildv2.ConnectionIamBindingArgs;
+import com.pulumi.gcp.cloudbuildv2.inputs.ConnectionIamBindingState;
+import com.pulumi.gcp.cloudbuildv2.outputs.ConnectionIamBindingCondition;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -19,17 +19,17 @@ import javax.annotation.Nullable;
 /**
  * Three different resources help you manage your IAM policy for Cloud Build v2 Connection. Each of these resources serves a different use case:
  * 
- * * `gcp.cloudbuildv2.ConnectionIAMPolicy`: Authoritative. Sets the IAM policy for the connection and replaces any existing policy already attached.
- * * `gcp.cloudbuildv2.ConnectionIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the connection are preserved.
- * * `gcp.cloudbuildv2.ConnectionIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the connection are preserved.
+ * * `gcp.cloudbuildv2.ConnectionIamPolicy`: Authoritative. Sets the IAM policy for the connection and replaces any existing policy already attached.
+ * * `gcp.cloudbuildv2.ConnectionIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the connection are preserved.
+ * * `gcp.cloudbuildv2.ConnectionIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the connection are preserved.
  * 
  * A data source can be used to retrieve policy data in advent you do not need creation
  * 
- * * `gcp.cloudbuildv2.ConnectionIAMPolicy`: Retrieves the IAM policy for the connection
+ * * `gcp.cloudbuildv2.ConnectionIamPolicy`: Retrieves the IAM policy for the connection
  * 
- * &gt; **Note:** `gcp.cloudbuildv2.ConnectionIAMPolicy` **cannot** be used in conjunction with `gcp.cloudbuildv2.ConnectionIAMBinding` and `gcp.cloudbuildv2.ConnectionIAMMember` or they will fight over what your policy should be.
+ * &gt; **Note:** `gcp.cloudbuildv2.ConnectionIamPolicy` **cannot** be used in conjunction with `gcp.cloudbuildv2.ConnectionIamBinding` and `gcp.cloudbuildv2.ConnectionIamMember` or they will fight over what your policy should be.
  * 
- * &gt; **Note:** `gcp.cloudbuildv2.ConnectionIAMBinding` resources **can be** used in conjunction with `gcp.cloudbuildv2.ConnectionIAMMember` resources **only if** they do not grant privilege to the same role.
+ * &gt; **Note:** `gcp.cloudbuildv2.ConnectionIamBinding` resources **can be** used in conjunction with `gcp.cloudbuildv2.ConnectionIamMember` resources **only if** they do not grant privilege to the same role.
  * 
  * ## google\_cloudbuildv2\_connection\_iam\_policy
  * ```java
@@ -39,9 +39,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
- * import com.pulumi.gcp.cloudbuildv2.ConnectionIAMPolicy;
- * import com.pulumi.gcp.cloudbuildv2.ConnectionIAMPolicyArgs;
+ * import com.pulumi.gcp.organizations.inputs.GetIamPolicyArgs;
+ * import com.pulumi.gcp.cloudbuildv2.ConnectionIamPolicy;
+ * import com.pulumi.gcp.cloudbuildv2.ConnectionIamPolicyArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -55,17 +55,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
- *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *         final var admin = OrganizationsFunctions.getIamPolicy(GetIamPolicyArgs.builder()
+ *             .bindings(GetIamPolicyBindingArgs.builder()
  *                 .role(&#34;roles/cloudbuild.connectionViewer&#34;)
  *                 .members(&#34;user:jane@example.com&#34;)
  *                 .build())
  *             .build());
  * 
- *         var policy = new ConnectionIAMPolicy(&#34;policy&#34;, ConnectionIAMPolicyArgs.builder()        
+ *         var policy = new ConnectionIamPolicy(&#34;policy&#34;, ConnectionIamPolicyArgs.builder()        
  *             .project(google_cloudbuildv2_connection.my-connection().project())
  *             .location(google_cloudbuildv2_connection.my-connection().location())
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIamPolicyResult -&gt; getIamPolicyResult.policyData()))
  *             .build());
  * 
  *     }
@@ -79,8 +79,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.cloudbuildv2.ConnectionIAMBinding;
- * import com.pulumi.gcp.cloudbuildv2.ConnectionIAMBindingArgs;
+ * import com.pulumi.gcp.cloudbuildv2.ConnectionIamBinding;
+ * import com.pulumi.gcp.cloudbuildv2.ConnectionIamBindingArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -94,7 +94,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new ConnectionIAMBinding(&#34;binding&#34;, ConnectionIAMBindingArgs.builder()        
+ *         var binding = new ConnectionIamBinding(&#34;binding&#34;, ConnectionIamBindingArgs.builder()        
  *             .project(google_cloudbuildv2_connection.my-connection().project())
  *             .location(google_cloudbuildv2_connection.my-connection().location())
  *             .role(&#34;roles/cloudbuild.connectionViewer&#34;)
@@ -112,8 +112,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.cloudbuildv2.ConnectionIAMMember;
- * import com.pulumi.gcp.cloudbuildv2.ConnectionIAMMemberArgs;
+ * import com.pulumi.gcp.cloudbuildv2.ConnectionIamMember;
+ * import com.pulumi.gcp.cloudbuildv2.ConnectionIamMemberArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -127,7 +127,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new ConnectionIAMMember(&#34;member&#34;, ConnectionIAMMemberArgs.builder()        
+ *         var member = new ConnectionIamMember(&#34;member&#34;, ConnectionIamMemberArgs.builder()        
  *             .project(google_cloudbuildv2_connection.my-connection().project())
  *             .location(google_cloudbuildv2_connection.my-connection().location())
  *             .role(&#34;roles/cloudbuild.connectionViewer&#34;)
@@ -143,19 +143,19 @@ import javax.annotation.Nullable;
  * For all import syntaxes, the &#34;resource in question&#34; can take any of the following forms* projects/{{project}}/locations/{{location}}/connections/{{name}} * {{project}}/{{location}}/{{name}} * {{location}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Build v2 connection IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
  * 
  * ```sh
- *  $ pulumi import gcp:cloudbuildv2/connectionIAMBinding:ConnectionIAMBinding editor &#34;projects/{{project}}/locations/{{location}}/connections/{{connection}} roles/cloudbuild.connectionViewer user:jane@example.com&#34;
+ *  $ pulumi import gcp:cloudbuildv2/connectionIamBinding:ConnectionIamBinding editor &#34;projects/{{project}}/locations/{{location}}/connections/{{connection}} roles/cloudbuild.connectionViewer user:jane@example.com&#34;
  * ```
  * 
  *  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
  * 
  * ```sh
- *  $ pulumi import gcp:cloudbuildv2/connectionIAMBinding:ConnectionIAMBinding editor &#34;projects/{{project}}/locations/{{location}}/connections/{{connection}} roles/cloudbuild.connectionViewer&#34;
+ *  $ pulumi import gcp:cloudbuildv2/connectionIamBinding:ConnectionIamBinding editor &#34;projects/{{project}}/locations/{{location}}/connections/{{connection}} roles/cloudbuild.connectionViewer&#34;
  * ```
  * 
  *  IAM policy imports use the identifier of the resource in question, e.g.
  * 
  * ```sh
- *  $ pulumi import gcp:cloudbuildv2/connectionIAMBinding:ConnectionIAMBinding editor projects/{{project}}/locations/{{location}}/connections/{{connection}}
+ *  $ pulumi import gcp:cloudbuildv2/connectionIamBinding:ConnectionIamBinding editor projects/{{project}}/locations/{{location}}/connections/{{connection}}
  * ```
  * 
  *  -&gt; **Custom Roles**If you&#39;re importing a IAM resource with a custom role, make sure to use the
@@ -163,12 +163,12 @@ import javax.annotation.Nullable;
  * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * 
  */
-@ResourceType(type="gcp:cloudbuildv2/connectionIAMBinding:ConnectionIAMBinding")
-public class ConnectionIAMBinding extends com.pulumi.resources.CustomResource {
-    @Export(name="condition", type=ConnectionIAMBindingCondition.class, parameters={})
-    private Output</* @Nullable */ ConnectionIAMBindingCondition> condition;
+@ResourceType(type="gcp:cloudbuildv2/connectionIamBinding:ConnectionIamBinding")
+public class ConnectionIamBinding extends com.pulumi.resources.CustomResource {
+    @Export(name="condition", type=ConnectionIamBindingCondition.class, parameters={})
+    private Output</* @Nullable */ ConnectionIamBindingCondition> condition;
 
-    public Output<Optional<ConnectionIAMBindingCondition>> condition() {
+    public Output<Optional<ConnectionIamBindingCondition>> condition() {
         return Codegen.optional(this.condition);
     }
     /**
@@ -253,7 +253,7 @@ public class ConnectionIAMBinding extends com.pulumi.resources.CustomResource {
     }
     /**
      * The role that should be applied. Only one
-     * `gcp.cloudbuildv2.ConnectionIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.cloudbuildv2.ConnectionIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -262,7 +262,7 @@ public class ConnectionIAMBinding extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The role that should be applied. Only one
-     * `gcp.cloudbuildv2.ConnectionIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.cloudbuildv2.ConnectionIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -274,15 +274,15 @@ public class ConnectionIAMBinding extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ConnectionIAMBinding(String name) {
-        this(name, ConnectionIAMBindingArgs.Empty);
+    public ConnectionIamBinding(String name) {
+        this(name, ConnectionIamBindingArgs.Empty);
     }
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ConnectionIAMBinding(String name, ConnectionIAMBindingArgs args) {
+    public ConnectionIamBinding(String name, ConnectionIamBindingArgs args) {
         this(name, args, null);
     }
     /**
@@ -291,12 +291,12 @@ public class ConnectionIAMBinding extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ConnectionIAMBinding(String name, ConnectionIAMBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:cloudbuildv2/connectionIAMBinding:ConnectionIAMBinding", name, args == null ? ConnectionIAMBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ConnectionIamBinding(String name, ConnectionIamBindingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:cloudbuildv2/connectionIamBinding:ConnectionIamBinding", name, args == null ? ConnectionIamBindingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private ConnectionIAMBinding(String name, Output<String> id, @Nullable ConnectionIAMBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:cloudbuildv2/connectionIAMBinding:ConnectionIAMBinding", name, state, makeResourceOptions(options, id));
+    private ConnectionIamBinding(String name, Output<String> id, @Nullable ConnectionIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:cloudbuildv2/connectionIamBinding:ConnectionIamBinding", name, state, makeResourceOptions(options, id));
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
@@ -315,7 +315,7 @@ public class ConnectionIAMBinding extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ConnectionIAMBinding get(String name, Output<String> id, @Nullable ConnectionIAMBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        return new ConnectionIAMBinding(name, id, state, options);
+    public static ConnectionIamBinding get(String name, Output<String> id, @Nullable ConnectionIamBindingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        return new ConnectionIamBinding(name, id, state, options);
     }
 }

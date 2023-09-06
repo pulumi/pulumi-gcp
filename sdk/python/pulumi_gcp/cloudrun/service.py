@@ -435,7 +435,7 @@ class Service(pulumi.CustomResource):
             service=default.name,
             role="roles/run.invoker",
             members=[sa.email.apply(lambda email: f"serviceAccount:{email}")])
-        project = gcp.projects.IAMBinding("project",
+        project = gcp.projects.IamBinding("project",
             role="roles/iam.serviceAccountTokenCreator",
             members=[sa.email.apply(lambda email: f"serviceAccount:{email}")])
         topic = gcp.pubsub.Topic("topic")
@@ -517,11 +517,11 @@ class Service(pulumi.CustomResource):
                     )],
                 ),
             ))
-        noauth_iam_policy = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        noauth_iam_policy = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIamPolicyBindingArgs(
             role="roles/run.invoker",
             members=["allUsers"],
         )])
-        noauth_iam_policy = gcp.cloudrun.IamPolicy("noauthIamPolicy",
+        noauth_cloudrun_iam_policy_iam_policy = gcp.cloudrun.IamPolicy("noauthCloudrun/iamPolicyIamPolicy",
             location=default.location,
             project=default.project,
             service=default.name,
@@ -726,7 +726,7 @@ class Service(pulumi.CustomResource):
             service=default.name,
             role="roles/run.invoker",
             members=[sa.email.apply(lambda email: f"serviceAccount:{email}")])
-        project = gcp.projects.IAMBinding("project",
+        project = gcp.projects.IamBinding("project",
             role="roles/iam.serviceAccountTokenCreator",
             members=[sa.email.apply(lambda email: f"serviceAccount:{email}")])
         topic = gcp.pubsub.Topic("topic")
@@ -808,11 +808,11 @@ class Service(pulumi.CustomResource):
                     )],
                 ),
             ))
-        noauth_iam_policy = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        noauth_iam_policy = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIamPolicyBindingArgs(
             role="roles/run.invoker",
             members=["allUsers"],
         )])
-        noauth_iam_policy = gcp.cloudrun.IamPolicy("noauthIamPolicy",
+        noauth_cloudrun_iam_policy_iam_policy = gcp.cloudrun.IamPolicy("noauthCloudrun/iamPolicyIamPolicy",
             location=default.location,
             project=default.project,
             service=default.name,

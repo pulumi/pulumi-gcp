@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  *     accountId: "my-account",
  *     displayName: "Service Account",
  * });
- * const synchronizer_iam = new gcp.projects.IAMBinding("synchronizer-iam", {
+ * const synchronizer_iam = new gcp.projects.IamBinding("synchronizer-iam", {
  *     project: project.projectId,
  *     role: "roles/apigee.synchronizerManager",
  *     members: [pulumi.interpolate`serviceAccount:${serviceAccount.email}`],

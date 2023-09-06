@@ -75,7 +75,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// {
     ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
-    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIAMMember("cryptoKey", new()
+    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIamMember("cryptoKey", new()
     ///     {
     ///         CryptoKeyId = "kms-key",
     ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",

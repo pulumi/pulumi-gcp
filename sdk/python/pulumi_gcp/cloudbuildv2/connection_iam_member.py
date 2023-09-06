@@ -11,21 +11,21 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ConnectionIAMMemberArgs', 'ConnectionIAMMember']
+__all__ = ['ConnectionIamMemberArgs', 'ConnectionIamMember']
 
 @pulumi.input_type
-class ConnectionIAMMemberArgs:
+class ConnectionIamMemberArgs:
     def __init__(__self__, *,
                  member: pulumi.Input[str],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['ConnectionIAMMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['ConnectionIamMemberConditionArgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
-        The set of arguments for constructing a ConnectionIAMMember resource.
+        The set of arguments for constructing a ConnectionIamMember resource.
         :param pulumi.Input[str] role: The role that should be applied. Only one
-               `cloudbuildv2.ConnectionIAMBinding` can be used per role. Note that custom roles must be of the format
+               `cloudbuildv2.ConnectionIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[str] name: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -68,7 +68,7 @@ class ConnectionIAMMemberArgs:
     def role(self) -> pulumi.Input[str]:
         """
         The role that should be applied. Only one
-        `cloudbuildv2.ConnectionIAMBinding` can be used per role. Note that custom roles must be of the format
+        `cloudbuildv2.ConnectionIamBinding` can be used per role. Note that custom roles must be of the format
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         return pulumi.get(self, "role")
@@ -79,11 +79,11 @@ class ConnectionIAMMemberArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['ConnectionIAMMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['ConnectionIamMemberConditionArgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['ConnectionIAMMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['ConnectionIamMemberConditionArgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -134,9 +134,9 @@ class ConnectionIAMMemberArgs:
 
 
 @pulumi.input_type
-class _ConnectionIAMMemberState:
+class _ConnectionIamMemberState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['ConnectionIAMMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['ConnectionIamMemberConditionArgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
@@ -144,7 +144,7 @@ class _ConnectionIAMMemberState:
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None):
         """
-        Input properties used for looking up and filtering ConnectionIAMMember resources.
+        Input properties used for looking up and filtering ConnectionIamMember resources.
         :param pulumi.Input[str] etag: (Computed) The etag of the IAM policy.
         :param pulumi.Input[str] name: Used to find the parent resource to bind the IAM policy to
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -162,7 +162,7 @@ class _ConnectionIAMMemberState:
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         :param pulumi.Input[str] role: The role that should be applied. Only one
-               `cloudbuildv2.ConnectionIAMBinding` can be used per role. Note that custom roles must be of the format
+               `cloudbuildv2.ConnectionIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         if condition is not None:
@@ -182,11 +182,11 @@ class _ConnectionIAMMemberState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['ConnectionIAMMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['ConnectionIamMemberConditionArgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['ConnectionIAMMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['ConnectionIamMemberConditionArgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -261,7 +261,7 @@ class _ConnectionIAMMemberState:
     def role(self) -> Optional[pulumi.Input[str]]:
         """
         The role that should be applied. Only one
-        `cloudbuildv2.ConnectionIAMBinding` can be used per role. Note that custom roles must be of the format
+        `cloudbuildv2.ConnectionIamBinding` can be used per role. Note that custom roles must be of the format
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         return pulumi.get(self, "role")
@@ -271,12 +271,12 @@ class _ConnectionIAMMemberState:
         pulumi.set(self, "role", value)
 
 
-class ConnectionIAMMember(pulumi.CustomResource):
+class ConnectionIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['ConnectionIAMMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['ConnectionIamMemberConditionArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -286,17 +286,17 @@ class ConnectionIAMMember(pulumi.CustomResource):
         """
         Three different resources help you manage your IAM policy for Cloud Build v2 Connection. Each of these resources serves a different use case:
 
-        * `cloudbuildv2.ConnectionIAMPolicy`: Authoritative. Sets the IAM policy for the connection and replaces any existing policy already attached.
-        * `cloudbuildv2.ConnectionIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the connection are preserved.
-        * `cloudbuildv2.ConnectionIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the connection are preserved.
+        * `cloudbuildv2.ConnectionIamPolicy`: Authoritative. Sets the IAM policy for the connection and replaces any existing policy already attached.
+        * `cloudbuildv2.ConnectionIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the connection are preserved.
+        * `cloudbuildv2.ConnectionIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the connection are preserved.
 
         A data source can be used to retrieve policy data in advent you do not need creation
 
-        * `cloudbuildv2.ConnectionIAMPolicy`: Retrieves the IAM policy for the connection
+        * `cloudbuildv2.ConnectionIamPolicy`: Retrieves the IAM policy for the connection
 
-        > **Note:** `cloudbuildv2.ConnectionIAMPolicy` **cannot** be used in conjunction with `cloudbuildv2.ConnectionIAMBinding` and `cloudbuildv2.ConnectionIAMMember` or they will fight over what your policy should be.
+        > **Note:** `cloudbuildv2.ConnectionIamPolicy` **cannot** be used in conjunction with `cloudbuildv2.ConnectionIamBinding` and `cloudbuildv2.ConnectionIamMember` or they will fight over what your policy should be.
 
-        > **Note:** `cloudbuildv2.ConnectionIAMBinding` resources **can be** used in conjunction with `cloudbuildv2.ConnectionIAMMember` resources **only if** they do not grant privilege to the same role.
+        > **Note:** `cloudbuildv2.ConnectionIamBinding` resources **can be** used in conjunction with `cloudbuildv2.ConnectionIamMember` resources **only if** they do not grant privilege to the same role.
 
         ## google\\_cloudbuildv2\\_connection\\_iam\\_policy
 
@@ -304,11 +304,11 @@ class ConnectionIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIamPolicyBindingArgs(
             role="roles/cloudbuild.connectionViewer",
             members=["user:jane@example.com"],
         )])
-        policy = gcp.cloudbuildv2.ConnectionIAMPolicy("policy",
+        policy = gcp.cloudbuildv2.ConnectionIamPolicy("policy",
             project=google_cloudbuildv2_connection["my-connection"]["project"],
             location=google_cloudbuildv2_connection["my-connection"]["location"],
             policy_data=admin.policy_data)
@@ -320,7 +320,7 @@ class ConnectionIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        binding = gcp.cloudbuildv2.ConnectionIAMBinding("binding",
+        binding = gcp.cloudbuildv2.ConnectionIamBinding("binding",
             project=google_cloudbuildv2_connection["my-connection"]["project"],
             location=google_cloudbuildv2_connection["my-connection"]["location"],
             role="roles/cloudbuild.connectionViewer",
@@ -333,7 +333,7 @@ class ConnectionIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        member = gcp.cloudbuildv2.ConnectionIAMMember("member",
+        member = gcp.cloudbuildv2.ConnectionIamMember("member",
             project=google_cloudbuildv2_connection["my-connection"]["project"],
             location=google_cloudbuildv2_connection["my-connection"]["location"],
             role="roles/cloudbuild.connectionViewer",
@@ -345,19 +345,19 @@ class ConnectionIAMMember(pulumi.CustomResource):
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/connections/{{name}} * {{project}}/{{location}}/{{name}} * {{location}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Build v2 connection IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
 
         ```sh
-         $ pulumi import gcp:cloudbuildv2/connectionIAMMember:ConnectionIAMMember editor "projects/{{project}}/locations/{{location}}/connections/{{connection}} roles/cloudbuild.connectionViewer user:jane@example.com"
+         $ pulumi import gcp:cloudbuildv2/connectionIamMember:ConnectionIamMember editor "projects/{{project}}/locations/{{location}}/connections/{{connection}} roles/cloudbuild.connectionViewer user:jane@example.com"
         ```
 
          IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
 
         ```sh
-         $ pulumi import gcp:cloudbuildv2/connectionIAMMember:ConnectionIAMMember editor "projects/{{project}}/locations/{{location}}/connections/{{connection}} roles/cloudbuild.connectionViewer"
+         $ pulumi import gcp:cloudbuildv2/connectionIamMember:ConnectionIamMember editor "projects/{{project}}/locations/{{location}}/connections/{{connection}} roles/cloudbuild.connectionViewer"
         ```
 
          IAM policy imports use the identifier of the resource in question, e.g.
 
         ```sh
-         $ pulumi import gcp:cloudbuildv2/connectionIAMMember:ConnectionIAMMember editor projects/{{project}}/locations/{{location}}/connections/{{connection}}
+         $ pulumi import gcp:cloudbuildv2/connectionIamMember:ConnectionIamMember editor projects/{{project}}/locations/{{location}}/connections/{{connection}}
         ```
 
          -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
@@ -382,29 +382,29 @@ class ConnectionIAMMember(pulumi.CustomResource):
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         :param pulumi.Input[str] role: The role that should be applied. Only one
-               `cloudbuildv2.ConnectionIAMBinding` can be used per role. Note that custom roles must be of the format
+               `cloudbuildv2.ConnectionIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ConnectionIAMMemberArgs,
+                 args: ConnectionIamMemberArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for Cloud Build v2 Connection. Each of these resources serves a different use case:
 
-        * `cloudbuildv2.ConnectionIAMPolicy`: Authoritative. Sets the IAM policy for the connection and replaces any existing policy already attached.
-        * `cloudbuildv2.ConnectionIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the connection are preserved.
-        * `cloudbuildv2.ConnectionIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the connection are preserved.
+        * `cloudbuildv2.ConnectionIamPolicy`: Authoritative. Sets the IAM policy for the connection and replaces any existing policy already attached.
+        * `cloudbuildv2.ConnectionIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the connection are preserved.
+        * `cloudbuildv2.ConnectionIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the connection are preserved.
 
         A data source can be used to retrieve policy data in advent you do not need creation
 
-        * `cloudbuildv2.ConnectionIAMPolicy`: Retrieves the IAM policy for the connection
+        * `cloudbuildv2.ConnectionIamPolicy`: Retrieves the IAM policy for the connection
 
-        > **Note:** `cloudbuildv2.ConnectionIAMPolicy` **cannot** be used in conjunction with `cloudbuildv2.ConnectionIAMBinding` and `cloudbuildv2.ConnectionIAMMember` or they will fight over what your policy should be.
+        > **Note:** `cloudbuildv2.ConnectionIamPolicy` **cannot** be used in conjunction with `cloudbuildv2.ConnectionIamBinding` and `cloudbuildv2.ConnectionIamMember` or they will fight over what your policy should be.
 
-        > **Note:** `cloudbuildv2.ConnectionIAMBinding` resources **can be** used in conjunction with `cloudbuildv2.ConnectionIAMMember` resources **only if** they do not grant privilege to the same role.
+        > **Note:** `cloudbuildv2.ConnectionIamBinding` resources **can be** used in conjunction with `cloudbuildv2.ConnectionIamMember` resources **only if** they do not grant privilege to the same role.
 
         ## google\\_cloudbuildv2\\_connection\\_iam\\_policy
 
@@ -412,11 +412,11 @@ class ConnectionIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIamPolicyBindingArgs(
             role="roles/cloudbuild.connectionViewer",
             members=["user:jane@example.com"],
         )])
-        policy = gcp.cloudbuildv2.ConnectionIAMPolicy("policy",
+        policy = gcp.cloudbuildv2.ConnectionIamPolicy("policy",
             project=google_cloudbuildv2_connection["my-connection"]["project"],
             location=google_cloudbuildv2_connection["my-connection"]["location"],
             policy_data=admin.policy_data)
@@ -428,7 +428,7 @@ class ConnectionIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        binding = gcp.cloudbuildv2.ConnectionIAMBinding("binding",
+        binding = gcp.cloudbuildv2.ConnectionIamBinding("binding",
             project=google_cloudbuildv2_connection["my-connection"]["project"],
             location=google_cloudbuildv2_connection["my-connection"]["location"],
             role="roles/cloudbuild.connectionViewer",
@@ -441,7 +441,7 @@ class ConnectionIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        member = gcp.cloudbuildv2.ConnectionIAMMember("member",
+        member = gcp.cloudbuildv2.ConnectionIamMember("member",
             project=google_cloudbuildv2_connection["my-connection"]["project"],
             location=google_cloudbuildv2_connection["my-connection"]["location"],
             role="roles/cloudbuild.connectionViewer",
@@ -453,19 +453,19 @@ class ConnectionIAMMember(pulumi.CustomResource):
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/connections/{{name}} * {{project}}/{{location}}/{{name}} * {{location}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Build v2 connection IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
 
         ```sh
-         $ pulumi import gcp:cloudbuildv2/connectionIAMMember:ConnectionIAMMember editor "projects/{{project}}/locations/{{location}}/connections/{{connection}} roles/cloudbuild.connectionViewer user:jane@example.com"
+         $ pulumi import gcp:cloudbuildv2/connectionIamMember:ConnectionIamMember editor "projects/{{project}}/locations/{{location}}/connections/{{connection}} roles/cloudbuild.connectionViewer user:jane@example.com"
         ```
 
          IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
 
         ```sh
-         $ pulumi import gcp:cloudbuildv2/connectionIAMMember:ConnectionIAMMember editor "projects/{{project}}/locations/{{location}}/connections/{{connection}} roles/cloudbuild.connectionViewer"
+         $ pulumi import gcp:cloudbuildv2/connectionIamMember:ConnectionIamMember editor "projects/{{project}}/locations/{{location}}/connections/{{connection}} roles/cloudbuild.connectionViewer"
         ```
 
          IAM policy imports use the identifier of the resource in question, e.g.
 
         ```sh
-         $ pulumi import gcp:cloudbuildv2/connectionIAMMember:ConnectionIAMMember editor projects/{{project}}/locations/{{location}}/connections/{{connection}}
+         $ pulumi import gcp:cloudbuildv2/connectionIamMember:ConnectionIamMember editor projects/{{project}}/locations/{{location}}/connections/{{connection}}
         ```
 
          -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
@@ -473,12 +473,12 @@ class ConnectionIAMMember(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param ConnectionIAMMemberArgs args: The arguments to use to populate this resource's properties.
+        :param ConnectionIamMemberArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ConnectionIAMMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ConnectionIamMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -487,7 +487,7 @@ class ConnectionIAMMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['ConnectionIAMMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['ConnectionIamMemberConditionArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -500,7 +500,7 @@ class ConnectionIAMMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ConnectionIAMMemberArgs.__new__(ConnectionIAMMemberArgs)
+            __props__ = ConnectionIamMemberArgs.__new__(ConnectionIamMemberArgs)
 
             __props__.__dict__["condition"] = condition
             __props__.__dict__["location"] = location
@@ -513,8 +513,8 @@ class ConnectionIAMMember(pulumi.CustomResource):
                 raise TypeError("Missing required property 'role'")
             __props__.__dict__["role"] = role
             __props__.__dict__["etag"] = None
-        super(ConnectionIAMMember, __self__).__init__(
-            'gcp:cloudbuildv2/connectionIAMMember:ConnectionIAMMember',
+        super(ConnectionIamMember, __self__).__init__(
+            'gcp:cloudbuildv2/connectionIamMember:ConnectionIamMember',
             resource_name,
             __props__,
             opts)
@@ -523,15 +523,15 @@ class ConnectionIAMMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['ConnectionIAMMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['ConnectionIamMemberConditionArgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
             member: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            role: Optional[pulumi.Input[str]] = None) -> 'ConnectionIAMMember':
+            role: Optional[pulumi.Input[str]] = None) -> 'ConnectionIamMember':
         """
-        Get an existing ConnectionIAMMember resource's state with the given name, id, and optional extra
+        Get an existing ConnectionIamMember resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -554,12 +554,12 @@ class ConnectionIAMMember(pulumi.CustomResource):
                * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
                * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
         :param pulumi.Input[str] role: The role that should be applied. Only one
-               `cloudbuildv2.ConnectionIAMBinding` can be used per role. Note that custom roles must be of the format
+               `cloudbuildv2.ConnectionIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _ConnectionIAMMemberState.__new__(_ConnectionIAMMemberState)
+        __props__ = _ConnectionIamMemberState.__new__(_ConnectionIamMemberState)
 
         __props__.__dict__["condition"] = condition
         __props__.__dict__["etag"] = etag
@@ -568,11 +568,11 @@ class ConnectionIAMMember(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["role"] = role
-        return ConnectionIAMMember(resource_name, opts=opts, __props__=__props__)
+        return ConnectionIamMember(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
-    def condition(self) -> pulumi.Output[Optional['outputs.ConnectionIAMMemberCondition']]:
+    def condition(self) -> pulumi.Output[Optional['outputs.ConnectionIamMemberCondition']]:
         return pulumi.get(self, "condition")
 
     @property
@@ -627,7 +627,7 @@ class ConnectionIAMMember(pulumi.CustomResource):
     def role(self) -> pulumi.Output[str]:
         """
         The role that should be applied. Only one
-        `cloudbuildv2.ConnectionIAMBinding` can be used per role. Note that custom roles must be of the format
+        `cloudbuildv2.ConnectionIamBinding` can be used per role. Note that custom roles must be of the format
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         return pulumi.get(self, "role")

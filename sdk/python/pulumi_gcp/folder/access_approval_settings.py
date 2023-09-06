@@ -316,7 +316,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
                 algorithm="EC_SIGN_P384_SHA384",
             ))
         service_account = gcp.accessapproval.get_folder_service_account_output(folder_id=my_folder.folder_id)
-        iam = gcp.kms.CryptoKeyIAMMember("iam",
+        iam = gcp.kms.CryptoKeyIamMember("iam",
             crypto_key_id=crypto_key.id,
             role="roles/cloudkms.signerVerifier",
             member=service_account.apply(lambda service_account: f"serviceAccount:{service_account.account_email}"))
@@ -412,7 +412,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
                 algorithm="EC_SIGN_P384_SHA384",
             ))
         service_account = gcp.accessapproval.get_folder_service_account_output(folder_id=my_folder.folder_id)
-        iam = gcp.kms.CryptoKeyIAMMember("iam",
+        iam = gcp.kms.CryptoKeyIamMember("iam",
             crypto_key_id=crypto_key.id,
             role="roles/cloudkms.signerVerifier",
             member=service_account.apply(lambda service_account: f"serviceAccount:{service_account.account_email}"))

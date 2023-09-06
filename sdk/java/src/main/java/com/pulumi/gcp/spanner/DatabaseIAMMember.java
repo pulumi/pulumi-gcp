@@ -8,9 +8,9 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
-import com.pulumi.gcp.spanner.DatabaseIAMMemberArgs;
-import com.pulumi.gcp.spanner.inputs.DatabaseIAMMemberState;
-import com.pulumi.gcp.spanner.outputs.DatabaseIAMMemberCondition;
+import com.pulumi.gcp.spanner.DatabaseIamMemberArgs;
+import com.pulumi.gcp.spanner.inputs.DatabaseIamMemberState;
+import com.pulumi.gcp.spanner.outputs.DatabaseIamMemberCondition;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,16 +18,16 @@ import javax.annotation.Nullable;
 /**
  * Three different resources help you manage your IAM policy for a Spanner database. Each of these resources serves a different use case:
  * 
- * * `gcp.spanner.DatabaseIAMPolicy`: Authoritative. Sets the IAM policy for the database and replaces any existing policy already attached.
+ * * `gcp.spanner.DatabaseIamPolicy`: Authoritative. Sets the IAM policy for the database and replaces any existing policy already attached.
  * 
- * &gt; **Warning:** It&#39;s entirely possibly to lock yourself out of your database using `gcp.spanner.DatabaseIAMPolicy`. Any permissions granted by default will be removed unless you include them in your config.
+ * &gt; **Warning:** It&#39;s entirely possibly to lock yourself out of your database using `gcp.spanner.DatabaseIamPolicy`. Any permissions granted by default will be removed unless you include them in your config.
  * 
- * * `gcp.spanner.DatabaseIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the database are preserved.
- * * `gcp.spanner.DatabaseIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the database are preserved.
+ * * `gcp.spanner.DatabaseIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the database are preserved.
+ * * `gcp.spanner.DatabaseIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the database are preserved.
  * 
- * &gt; **Note:** `gcp.spanner.DatabaseIAMPolicy` **cannot** be used in conjunction with `gcp.spanner.DatabaseIAMBinding` and `gcp.spanner.DatabaseIAMMember` or they will fight over what your policy should be.
+ * &gt; **Note:** `gcp.spanner.DatabaseIamPolicy` **cannot** be used in conjunction with `gcp.spanner.DatabaseIamBinding` and `gcp.spanner.DatabaseIamMember` or they will fight over what your policy should be.
  * 
- * &gt; **Note:** `gcp.spanner.DatabaseIAMBinding` resources **can be** used in conjunction with `gcp.spanner.DatabaseIAMMember` resources **only if** they do not grant privilege to the same role.
+ * &gt; **Note:** `gcp.spanner.DatabaseIamBinding` resources **can be** used in conjunction with `gcp.spanner.DatabaseIamMember` resources **only if** they do not grant privilege to the same role.
  * 
  * ## google\_spanner\_database\_iam\_policy
  * ```java
@@ -37,9 +37,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
- * import com.pulumi.gcp.spanner.DatabaseIAMPolicy;
- * import com.pulumi.gcp.spanner.DatabaseIAMPolicyArgs;
+ * import com.pulumi.gcp.organizations.inputs.GetIamPolicyArgs;
+ * import com.pulumi.gcp.spanner.DatabaseIamPolicy;
+ * import com.pulumi.gcp.spanner.DatabaseIamPolicyArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -53,17 +53,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
- *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *         final var admin = OrganizationsFunctions.getIamPolicy(GetIamPolicyArgs.builder()
+ *             .bindings(GetIamPolicyBindingArgs.builder()
  *                 .role(&#34;roles/editor&#34;)
  *                 .members(&#34;user:jane@example.com&#34;)
  *                 .build())
  *             .build());
  * 
- *         var database = new DatabaseIAMPolicy(&#34;database&#34;, DatabaseIAMPolicyArgs.builder()        
+ *         var database = new DatabaseIamPolicy(&#34;database&#34;, DatabaseIamPolicyArgs.builder()        
  *             .instance(&#34;your-instance-name&#34;)
  *             .database(&#34;your-database-name&#34;)
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIamPolicyResult -&gt; getIamPolicyResult.policyData()))
  *             .build());
  * 
  *     }
@@ -77,8 +77,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.spanner.DatabaseIAMBinding;
- * import com.pulumi.gcp.spanner.DatabaseIAMBindingArgs;
+ * import com.pulumi.gcp.spanner.DatabaseIamBinding;
+ * import com.pulumi.gcp.spanner.DatabaseIamBindingArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -92,7 +92,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var database = new DatabaseIAMBinding(&#34;database&#34;, DatabaseIAMBindingArgs.builder()        
+ *         var database = new DatabaseIamBinding(&#34;database&#34;, DatabaseIamBindingArgs.builder()        
  *             .database(&#34;your-database-name&#34;)
  *             .instance(&#34;your-instance-name&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
@@ -110,8 +110,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.spanner.DatabaseIAMMember;
- * import com.pulumi.gcp.spanner.DatabaseIAMMemberArgs;
+ * import com.pulumi.gcp.spanner.DatabaseIamMember;
+ * import com.pulumi.gcp.spanner.DatabaseIamMemberArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -125,7 +125,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var database = new DatabaseIAMMember(&#34;database&#34;, DatabaseIAMMemberArgs.builder()        
+ *         var database = new DatabaseIamMember(&#34;database&#34;, DatabaseIamMemberArgs.builder()        
  *             .database(&#34;your-database-name&#34;)
  *             .instance(&#34;your-instance-name&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
@@ -141,19 +141,19 @@ import javax.annotation.Nullable;
  * For all import syntaxes, the &#34;resource in question&#34; can take any of the following forms* {{project}}/{{instance}}/{{database}} * {{instance}}/{{database}} (project is taken from provider project) IAM member imports use space-delimited identifiers; the resource in question, the role, and the member identity, e.g.
  * 
  * ```sh
- *  $ pulumi import gcp:spanner/databaseIAMMember:DatabaseIAMMember database &#34;project-name/instance-name/database-name roles/viewer user:foo@example.com&#34;
+ *  $ pulumi import gcp:spanner/databaseIamMember:DatabaseIamMember database &#34;project-name/instance-name/database-name roles/viewer user:foo@example.com&#34;
  * ```
  * 
  *  IAM binding imports use space-delimited identifiers; the resource in question and the role, e.g.
  * 
  * ```sh
- *  $ pulumi import gcp:spanner/databaseIAMMember:DatabaseIAMMember database &#34;project-name/instance-name/database-name roles/viewer&#34;
+ *  $ pulumi import gcp:spanner/databaseIamMember:DatabaseIamMember database &#34;project-name/instance-name/database-name roles/viewer&#34;
  * ```
  * 
  *  IAM policy imports use the identifier of the resource in question, e.g.
  * 
  * ```sh
- *  $ pulumi import gcp:spanner/databaseIAMMember:DatabaseIAMMember database project-name/instance-name/database-name
+ *  $ pulumi import gcp:spanner/databaseIamMember:DatabaseIamMember database project-name/instance-name/database-name
  * ```
  * 
  *  -&gt; **Custom Roles:** If you&#39;re importing a IAM resource with a custom role, make sure to use the
@@ -161,12 +161,12 @@ import javax.annotation.Nullable;
  * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * 
  */
-@ResourceType(type="gcp:spanner/databaseIAMMember:DatabaseIAMMember")
-public class DatabaseIAMMember extends com.pulumi.resources.CustomResource {
-    @Export(name="condition", type=DatabaseIAMMemberCondition.class, parameters={})
-    private Output</* @Nullable */ DatabaseIAMMemberCondition> condition;
+@ResourceType(type="gcp:spanner/databaseIamMember:DatabaseIamMember")
+public class DatabaseIamMember extends com.pulumi.resources.CustomResource {
+    @Export(name="condition", type=DatabaseIamMemberCondition.class, parameters={})
+    private Output</* @Nullable */ DatabaseIamMemberCondition> condition;
 
-    public Output<Optional<DatabaseIAMMemberCondition>> condition() {
+    public Output<Optional<DatabaseIamMemberCondition>> condition() {
         return Codegen.optional(this.condition);
     }
     /**
@@ -253,7 +253,7 @@ public class DatabaseIAMMember extends com.pulumi.resources.CustomResource {
     }
     /**
      * The role that should be applied. Only one
-     * `gcp.spanner.DatabaseIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.spanner.DatabaseIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -262,7 +262,7 @@ public class DatabaseIAMMember extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The role that should be applied. Only one
-     * `gcp.spanner.DatabaseIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.spanner.DatabaseIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -274,15 +274,15 @@ public class DatabaseIAMMember extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DatabaseIAMMember(String name) {
-        this(name, DatabaseIAMMemberArgs.Empty);
+    public DatabaseIamMember(String name) {
+        this(name, DatabaseIamMemberArgs.Empty);
     }
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DatabaseIAMMember(String name, DatabaseIAMMemberArgs args) {
+    public DatabaseIamMember(String name, DatabaseIamMemberArgs args) {
         this(name, args, null);
     }
     /**
@@ -291,12 +291,12 @@ public class DatabaseIAMMember extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DatabaseIAMMember(String name, DatabaseIAMMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:spanner/databaseIAMMember:DatabaseIAMMember", name, args == null ? DatabaseIAMMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public DatabaseIamMember(String name, DatabaseIamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:spanner/databaseIamMember:DatabaseIamMember", name, args == null ? DatabaseIamMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private DatabaseIAMMember(String name, Output<String> id, @Nullable DatabaseIAMMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:spanner/databaseIAMMember:DatabaseIAMMember", name, state, makeResourceOptions(options, id));
+    private DatabaseIamMember(String name, Output<String> id, @Nullable DatabaseIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:spanner/databaseIamMember:DatabaseIamMember", name, state, makeResourceOptions(options, id));
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
@@ -315,7 +315,7 @@ public class DatabaseIAMMember extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DatabaseIAMMember get(String name, Output<String> id, @Nullable DatabaseIAMMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        return new DatabaseIAMMember(name, id, state, options);
+    public static DatabaseIamMember get(String name, Output<String> id, @Nullable DatabaseIamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        return new DatabaseIamMember(name, id, state, options);
     }
 }

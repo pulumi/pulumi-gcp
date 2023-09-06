@@ -62,21 +62,21 @@ namespace Pulumi.Gcp.AppEngine
     ///         DisplayName = "Custom Service Account",
     ///     });
     /// 
-    ///     var gaeApi = new Gcp.Projects.IAMMember("gaeApi", new()
+    ///     var gaeApi = new Gcp.Projects.IamMember("gaeApi", new()
     ///     {
     ///         Project = service.Project,
     ///         Role = "roles/compute.networkUser",
     ///         Member = customServiceAccount.Email.Apply(email =&gt; $"serviceAccount:{email}"),
     ///     });
     /// 
-    ///     var logsWriter = new Gcp.Projects.IAMMember("logsWriter", new()
+    ///     var logsWriter = new Gcp.Projects.IamMember("logsWriter", new()
     ///     {
     ///         Project = service.Project,
     ///         Role = "roles/logging.logWriter",
     ///         Member = customServiceAccount.Email.Apply(email =&gt; $"serviceAccount:{email}"),
     ///     });
     /// 
-    ///     var storageViewer = new Gcp.Projects.IAMMember("storageViewer", new()
+    ///     var storageViewer = new Gcp.Projects.IamMember("storageViewer", new()
     ///     {
     ///         Project = service.Project,
     ///         Role = "roles/storage.objectViewer",

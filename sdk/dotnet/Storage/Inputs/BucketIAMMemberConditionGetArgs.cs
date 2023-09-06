@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Storage.Inputs
 {
 
-    public sealed class BucketIAMMemberConditionGetArgs : global::Pulumi.ResourceArgs
+    public sealed class BucketIamMemberConditionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -34,9 +34,9 @@ namespace Pulumi.Gcp.Storage.Inputs
         [Input("title", required: true)]
         public Input<string> Title { get; set; } = null!;
 
-        public BucketIAMMemberConditionGetArgs()
+        public BucketIamMemberConditionGetArgs()
         {
         }
-        public static new BucketIAMMemberConditionGetArgs Empty => new BucketIAMMemberConditionGetArgs();
+        public static new BucketIamMemberConditionGetArgs Empty => new BucketIamMemberConditionGetArgs();
     }
 }

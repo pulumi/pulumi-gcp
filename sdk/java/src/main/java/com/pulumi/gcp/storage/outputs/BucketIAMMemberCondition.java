@@ -10,7 +10,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
-public final class BucketIAMMemberCondition {
+public final class BucketIamMemberCondition {
     /**
      * @return An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
      * 
@@ -31,7 +31,7 @@ public final class BucketIAMMemberCondition {
      */
     private String title;
 
-    private BucketIAMMemberCondition() {}
+    private BucketIamMemberCondition() {}
     /**
      * @return An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
      * 
@@ -62,7 +62,7 @@ public final class BucketIAMMemberCondition {
         return new Builder();
     }
 
-    public static Builder builder(BucketIAMMemberCondition defaults) {
+    public static Builder builder(BucketIamMemberCondition defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -71,7 +71,7 @@ public final class BucketIAMMemberCondition {
         private String expression;
         private String title;
         public Builder() {}
-        public Builder(BucketIAMMemberCondition defaults) {
+        public Builder(BucketIamMemberCondition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
     	      this.expression = defaults.expression;
@@ -93,8 +93,8 @@ public final class BucketIAMMemberCondition {
             this.title = Objects.requireNonNull(title);
             return this;
         }
-        public BucketIAMMemberCondition build() {
-            final var o = new BucketIAMMemberCondition();
+        public BucketIamMemberCondition build() {
+            final var o = new BucketIamMemberCondition();
             o.description = description;
             o.expression = expression;
             o.title = title;

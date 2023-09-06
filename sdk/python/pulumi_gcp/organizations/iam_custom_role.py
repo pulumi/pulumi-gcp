@@ -9,10 +9,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['IAMCustomRoleArgs', 'IAMCustomRole']
+__all__ = ['IamCustomRoleArgs', 'IamCustomRole']
 
 @pulumi.input_type
-class IAMCustomRoleArgs:
+class IamCustomRoleArgs:
     def __init__(__self__, *,
                  org_id: pulumi.Input[str],
                  permissions: pulumi.Input[Sequence[pulumi.Input[str]]],
@@ -21,7 +21,7 @@ class IAMCustomRoleArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  stage: Optional[pulumi.Input[str]] = None):
         """
-        The set of arguments for constructing a IAMCustomRole resource.
+        The set of arguments for constructing a IamCustomRole resource.
         :param pulumi.Input[str] org_id: The numeric ID of the organization in which you want to create a custom role.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] permissions: The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
         :param pulumi.Input[str] role_id: The role id to use for this role.
@@ -116,7 +116,7 @@ class IAMCustomRoleArgs:
 
 
 @pulumi.input_type
-class _IAMCustomRoleState:
+class _IamCustomRoleState:
     def __init__(__self__, *,
                  deleted: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -127,7 +127,7 @@ class _IAMCustomRoleState:
                  stage: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None):
         """
-        Input properties used for looking up and filtering IAMCustomRole resources.
+        Input properties used for looking up and filtering IamCustomRole resources.
         :param pulumi.Input[bool] deleted: (Optional) The current deleted state of the role.
         :param pulumi.Input[str] description: A human-readable description for the role.
         :param pulumi.Input[str] name: The name of the role in the format `organizations/{{org_id}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
@@ -255,7 +255,7 @@ class _IAMCustomRoleState:
         pulumi.set(self, "title", value)
 
 
-class IAMCustomRole(pulumi.CustomResource):
+class IamCustomRole(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -288,7 +288,7 @@ class IAMCustomRole(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_custom_role = gcp.organizations.IAMCustomRole("my-custom-role",
+        my_custom_role = gcp.organizations.IamCustomRole("my-custom-role",
             description="A description",
             org_id="123456789",
             permissions=[
@@ -305,7 +305,7 @@ class IAMCustomRole(pulumi.CustomResource):
         Customized IAM organization role can be imported using their URI, e.g.
 
         ```sh
-         $ pulumi import gcp:organizations/iAMCustomRole:IAMCustomRole my-custom-role organizations/123456789/roles/myCustomRole
+         $ pulumi import gcp:organizations/iamCustomRole:IamCustomRole my-custom-role organizations/123456789/roles/myCustomRole
         ```
 
         :param str resource_name: The name of the resource.
@@ -323,7 +323,7 @@ class IAMCustomRole(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: IAMCustomRoleArgs,
+                 args: IamCustomRoleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Allows management of a customized Cloud IAM organization role. For more information see
@@ -346,7 +346,7 @@ class IAMCustomRole(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_custom_role = gcp.organizations.IAMCustomRole("my-custom-role",
+        my_custom_role = gcp.organizations.IamCustomRole("my-custom-role",
             description="A description",
             org_id="123456789",
             permissions=[
@@ -363,16 +363,16 @@ class IAMCustomRole(pulumi.CustomResource):
         Customized IAM organization role can be imported using their URI, e.g.
 
         ```sh
-         $ pulumi import gcp:organizations/iAMCustomRole:IAMCustomRole my-custom-role organizations/123456789/roles/myCustomRole
+         $ pulumi import gcp:organizations/iamCustomRole:IamCustomRole my-custom-role organizations/123456789/roles/myCustomRole
         ```
 
         :param str resource_name: The name of the resource.
-        :param IAMCustomRoleArgs args: The arguments to use to populate this resource's properties.
+        :param IamCustomRoleArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(IAMCustomRoleArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(IamCustomRoleArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -394,7 +394,7 @@ class IAMCustomRole(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = IAMCustomRoleArgs.__new__(IAMCustomRoleArgs)
+            __props__ = IamCustomRoleArgs.__new__(IamCustomRoleArgs)
 
             __props__.__dict__["description"] = description
             if org_id is None and not opts.urn:
@@ -412,8 +412,8 @@ class IAMCustomRole(pulumi.CustomResource):
             __props__.__dict__["title"] = title
             __props__.__dict__["deleted"] = None
             __props__.__dict__["name"] = None
-        super(IAMCustomRole, __self__).__init__(
-            'gcp:organizations/iAMCustomRole:IAMCustomRole',
+        super(IamCustomRole, __self__).__init__(
+            'gcp:organizations/iamCustomRole:IamCustomRole',
             resource_name,
             __props__,
             opts)
@@ -429,9 +429,9 @@ class IAMCustomRole(pulumi.CustomResource):
             permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             role_id: Optional[pulumi.Input[str]] = None,
             stage: Optional[pulumi.Input[str]] = None,
-            title: Optional[pulumi.Input[str]] = None) -> 'IAMCustomRole':
+            title: Optional[pulumi.Input[str]] = None) -> 'IamCustomRole':
         """
-        Get an existing IAMCustomRole resource's state with the given name, id, and optional extra
+        Get an existing IamCustomRole resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -450,7 +450,7 @@ class IAMCustomRole(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _IAMCustomRoleState.__new__(_IAMCustomRoleState)
+        __props__ = _IamCustomRoleState.__new__(_IamCustomRoleState)
 
         __props__.__dict__["deleted"] = deleted
         __props__.__dict__["description"] = description
@@ -460,7 +460,7 @@ class IAMCustomRole(pulumi.CustomResource):
         __props__.__dict__["role_id"] = role_id
         __props__.__dict__["stage"] = stage
         __props__.__dict__["title"] = title
-        return IAMCustomRole(resource_name, opts=opts, __props__=__props__)
+        return IamCustomRole(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

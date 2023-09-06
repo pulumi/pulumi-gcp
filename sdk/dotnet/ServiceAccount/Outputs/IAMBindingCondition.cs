@@ -11,7 +11,7 @@ namespace Pulumi.Gcp.ServiceAccount.Outputs
 {
 
     [OutputType]
-    public sealed class IAMBindingCondition
+    public sealed class IamBindingCondition
     {
         /// <summary>
         /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.ServiceAccount.Outputs
         public readonly string Title;
 
         [OutputConstructor]
-        private IAMBindingCondition(
+        private IamBindingCondition(
             string? description,
 
             string expression,

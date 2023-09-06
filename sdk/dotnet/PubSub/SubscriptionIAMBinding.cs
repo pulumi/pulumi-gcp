@@ -12,13 +12,13 @@ namespace Pulumi.Gcp.PubSub
     /// <summary>
     /// Three different resources help you manage your IAM policy for pubsub subscription. Each of these resources serves a different use case:
     /// 
-    /// * `gcp.pubsub.SubscriptionIAMPolicy`: Authoritative. Sets the IAM policy for the subscription and replaces any existing policy already attached.
-    /// * `gcp.pubsub.SubscriptionIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the subscription are preserved.
-    /// * `gcp.pubsub.SubscriptionIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the subscription are preserved.
+    /// * `gcp.pubsub.SubscriptionIamPolicy`: Authoritative. Sets the IAM policy for the subscription and replaces any existing policy already attached.
+    /// * `gcp.pubsub.SubscriptionIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the subscription are preserved.
+    /// * `gcp.pubsub.SubscriptionIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the subscription are preserved.
     /// 
-    /// &gt; **Note:** `gcp.pubsub.SubscriptionIAMPolicy` **cannot** be used in conjunction with `gcp.pubsub.SubscriptionIAMBinding` and `gcp.pubsub.SubscriptionIAMMember` or they will fight over what your policy should be.
+    /// &gt; **Note:** `gcp.pubsub.SubscriptionIamPolicy` **cannot** be used in conjunction with `gcp.pubsub.SubscriptionIamBinding` and `gcp.pubsub.SubscriptionIamMember` or they will fight over what your policy should be.
     /// 
-    /// &gt; **Note:** `gcp.pubsub.SubscriptionIAMBinding` resources **can be** used in conjunction with `gcp.pubsub.SubscriptionIAMMember` resources **only if** they do not grant privilege to the same role.
+    /// &gt; **Note:** `gcp.pubsub.SubscriptionIamBinding` resources **can be** used in conjunction with `gcp.pubsub.SubscriptionIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
     /// ## google\_pubsub\_subscription\_iam\_policy
     /// 
@@ -30,11 +30,11 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     var admin = Gcp.Organizations.GetIamPolicy.Invoke(new()
     ///     {
     ///         Bindings = new[]
     ///         {
-    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             new Gcp.Organizations.Inputs.GetIamPolicyBindingInputArgs
     ///             {
     ///                 Role = "roles/editor",
     ///                 Members = new[]
@@ -45,10 +45,10 @@ namespace Pulumi.Gcp.PubSub
     ///         },
     ///     });
     /// 
-    ///     var editor = new Gcp.PubSub.SubscriptionIAMPolicy("editor", new()
+    ///     var editor = new Gcp.PubSub.SubscriptionIamPolicy("editor", new()
     ///     {
     ///         Subscription = "your-subscription-name",
-    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///         PolicyData = admin.Apply(getIamPolicyResult =&gt; getIamPolicyResult.PolicyData),
     ///     });
     /// 
     /// });
@@ -64,7 +64,7 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var editor = new Gcp.PubSub.SubscriptionIAMBinding("editor", new()
+    ///     var editor = new Gcp.PubSub.SubscriptionIamBinding("editor", new()
     ///     {
     ///         Members = new[]
     ///         {
@@ -87,7 +87,7 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var editor = new Gcp.PubSub.SubscriptionIAMMember("editor", new()
+    ///     var editor = new Gcp.PubSub.SubscriptionIamMember("editor", new()
     ///     {
     ///         Member = "user:jane@example.com",
     ///         Role = "roles/editor",
@@ -102,26 +102,26 @@ namespace Pulumi.Gcp.PubSub
     /// Pubsub subscription IAM resources can be imported using the project, subscription name, role and member.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding editor projects/{your-project-id}/subscriptions/{your-subscription-name}
+    ///  $ pulumi import gcp:pubsub/subscriptionIamBinding:SubscriptionIamBinding editor projects/{your-project-id}/subscriptions/{your-subscription-name}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding editor "projects/{your-project-id}/subscriptions/{your-subscription-name} roles/editor"
+    ///  $ pulumi import gcp:pubsub/subscriptionIamBinding:SubscriptionIamBinding editor "projects/{your-project-id}/subscriptions/{your-subscription-name} roles/editor"
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding editor "projects/{your-project-id}/subscriptions/{your-subscription-name} roles/editor jane@example.com"
+    ///  $ pulumi import gcp:pubsub/subscriptionIamBinding:SubscriptionIamBinding editor "projects/{your-project-id}/subscriptions/{your-subscription-name} roles/editor jane@example.com"
     /// ```
     /// 
     ///  -&gt; **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
     /// 
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
-    [GcpResourceType("gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding")]
-    public partial class SubscriptionIAMBinding : global::Pulumi.CustomResource
+    [GcpResourceType("gcp:pubsub/subscriptionIamBinding:SubscriptionIamBinding")]
+    public partial class SubscriptionIamBinding : global::Pulumi.CustomResource
     {
         [Output("condition")]
-        public Output<Outputs.SubscriptionIAMBindingCondition?> Condition { get; private set; } = null!;
+        public Output<Outputs.SubscriptionIamBindingCondition?> Condition { get; private set; } = null!;
 
         /// <summary>
         /// (Computed) The etag of the subscription's IAM policy.
@@ -141,7 +141,7 @@ namespace Pulumi.Gcp.PubSub
 
         /// <summary>
         /// The role that should be applied. Only one
-        /// `gcp.pubsub.SubscriptionIAMBinding` can be used per role. Note that custom roles must be of the format
+        /// `gcp.pubsub.SubscriptionIamBinding` can be used per role. Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
         /// </summary>
         [Output("role")]
@@ -164,19 +164,19 @@ namespace Pulumi.Gcp.PubSub
 
 
         /// <summary>
-        /// Create a SubscriptionIAMBinding resource with the given unique name, arguments, and options.
+        /// Create a SubscriptionIamBinding resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public SubscriptionIAMBinding(string name, SubscriptionIAMBindingArgs args, CustomResourceOptions? options = null)
-            : base("gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding", name, args ?? new SubscriptionIAMBindingArgs(), MakeResourceOptions(options, ""))
+        public SubscriptionIamBinding(string name, SubscriptionIamBindingArgs args, CustomResourceOptions? options = null)
+            : base("gcp:pubsub/subscriptionIamBinding:SubscriptionIamBinding", name, args ?? new SubscriptionIamBindingArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private SubscriptionIAMBinding(string name, Input<string> id, SubscriptionIAMBindingState? state = null, CustomResourceOptions? options = null)
-            : base("gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding", name, state, MakeResourceOptions(options, id))
+        private SubscriptionIamBinding(string name, Input<string> id, SubscriptionIamBindingState? state = null, CustomResourceOptions? options = null)
+            : base("gcp:pubsub/subscriptionIamBinding:SubscriptionIamBinding", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -192,7 +192,7 @@ namespace Pulumi.Gcp.PubSub
             return merged;
         }
         /// <summary>
-        /// Get an existing SubscriptionIAMBinding resource's state with the given name, ID, and optional extra
+        /// Get an existing SubscriptionIamBinding resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -200,16 +200,16 @@ namespace Pulumi.Gcp.PubSub
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static SubscriptionIAMBinding Get(string name, Input<string> id, SubscriptionIAMBindingState? state = null, CustomResourceOptions? options = null)
+        public static SubscriptionIamBinding Get(string name, Input<string> id, SubscriptionIamBindingState? state = null, CustomResourceOptions? options = null)
         {
-            return new SubscriptionIAMBinding(name, id, state, options);
+            return new SubscriptionIamBinding(name, id, state, options);
         }
     }
 
-    public sealed class SubscriptionIAMBindingArgs : global::Pulumi.ResourceArgs
+    public sealed class SubscriptionIamBindingArgs : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
-        public Input<Inputs.SubscriptionIAMBindingConditionArgs>? Condition { get; set; }
+        public Input<Inputs.SubscriptionIamBindingConditionArgs>? Condition { get; set; }
 
         [Input("members", required: true)]
         private InputList<string>? _members;
@@ -228,7 +228,7 @@ namespace Pulumi.Gcp.PubSub
 
         /// <summary>
         /// The role that should be applied. Only one
-        /// `gcp.pubsub.SubscriptionIAMBinding` can be used per role. Note that custom roles must be of the format
+        /// `gcp.pubsub.SubscriptionIamBinding` can be used per role. Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
         /// </summary>
         [Input("role", required: true)]
@@ -249,16 +249,16 @@ namespace Pulumi.Gcp.PubSub
         [Input("subscription", required: true)]
         public Input<string> Subscription { get; set; } = null!;
 
-        public SubscriptionIAMBindingArgs()
+        public SubscriptionIamBindingArgs()
         {
         }
-        public static new SubscriptionIAMBindingArgs Empty => new SubscriptionIAMBindingArgs();
+        public static new SubscriptionIamBindingArgs Empty => new SubscriptionIamBindingArgs();
     }
 
-    public sealed class SubscriptionIAMBindingState : global::Pulumi.ResourceArgs
+    public sealed class SubscriptionIamBindingState : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
-        public Input<Inputs.SubscriptionIAMBindingConditionGetArgs>? Condition { get; set; }
+        public Input<Inputs.SubscriptionIamBindingConditionGetArgs>? Condition { get; set; }
 
         /// <summary>
         /// (Computed) The etag of the subscription's IAM policy.
@@ -283,7 +283,7 @@ namespace Pulumi.Gcp.PubSub
 
         /// <summary>
         /// The role that should be applied. Only one
-        /// `gcp.pubsub.SubscriptionIAMBinding` can be used per role. Note that custom roles must be of the format
+        /// `gcp.pubsub.SubscriptionIamBinding` can be used per role. Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
         /// </summary>
         [Input("role")]
@@ -304,9 +304,9 @@ namespace Pulumi.Gcp.PubSub
         [Input("subscription")]
         public Input<string>? Subscription { get; set; }
 
-        public SubscriptionIAMBindingState()
+        public SubscriptionIamBindingState()
         {
         }
-        public static new SubscriptionIAMBindingState Empty => new SubscriptionIAMBindingState();
+        public static new SubscriptionIamBindingState Empty => new SubscriptionIamBindingState();
     }
 }

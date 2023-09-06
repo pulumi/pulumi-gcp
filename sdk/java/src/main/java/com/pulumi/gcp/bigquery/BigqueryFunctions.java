@@ -347,8 +347,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetDefaultServiceAccountArgs;
-     * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
-     * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
+     * import com.pulumi.gcp.kms.CryptoKeyIamMember;
+     * import com.pulumi.gcp.kms.CryptoKeyIamMemberArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -364,7 +364,7 @@ public final class BigqueryFunctions {
      *     public static void stack(Context ctx) {
      *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount();
      * 
-     *         var keySaUser = new CryptoKeyIAMMember(&#34;keySaUser&#34;, CryptoKeyIAMMemberArgs.builder()        
+     *         var keySaUser = new CryptoKeyIamMember(&#34;keySaUser&#34;, CryptoKeyIamMemberArgs.builder()        
      *             .cryptoKeyId(google_kms_crypto_key.key().id())
      *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
      *             .member(String.format(&#34;serviceAccount:%s&#34;, bqSa.applyValue(getDefaultServiceAccountResult -&gt; getDefaultServiceAccountResult.email())))
@@ -398,8 +398,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetDefaultServiceAccountArgs;
-     * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
-     * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
+     * import com.pulumi.gcp.kms.CryptoKeyIamMember;
+     * import com.pulumi.gcp.kms.CryptoKeyIamMemberArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -415,7 +415,7 @@ public final class BigqueryFunctions {
      *     public static void stack(Context ctx) {
      *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount();
      * 
-     *         var keySaUser = new CryptoKeyIAMMember(&#34;keySaUser&#34;, CryptoKeyIAMMemberArgs.builder()        
+     *         var keySaUser = new CryptoKeyIamMember(&#34;keySaUser&#34;, CryptoKeyIamMemberArgs.builder()        
      *             .cryptoKeyId(google_kms_crypto_key.key().id())
      *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
      *             .member(String.format(&#34;serviceAccount:%s&#34;, bqSa.applyValue(getDefaultServiceAccountResult -&gt; getDefaultServiceAccountResult.email())))
@@ -449,8 +449,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetDefaultServiceAccountArgs;
-     * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
-     * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
+     * import com.pulumi.gcp.kms.CryptoKeyIamMember;
+     * import com.pulumi.gcp.kms.CryptoKeyIamMemberArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -466,7 +466,7 @@ public final class BigqueryFunctions {
      *     public static void stack(Context ctx) {
      *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount();
      * 
-     *         var keySaUser = new CryptoKeyIAMMember(&#34;keySaUser&#34;, CryptoKeyIAMMemberArgs.builder()        
+     *         var keySaUser = new CryptoKeyIamMember(&#34;keySaUser&#34;, CryptoKeyIamMemberArgs.builder()        
      *             .cryptoKeyId(google_kms_crypto_key.key().id())
      *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
      *             .member(String.format(&#34;serviceAccount:%s&#34;, bqSa.applyValue(getDefaultServiceAccountResult -&gt; getDefaultServiceAccountResult.email())))
@@ -500,8 +500,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetDefaultServiceAccountArgs;
-     * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
-     * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
+     * import com.pulumi.gcp.kms.CryptoKeyIamMember;
+     * import com.pulumi.gcp.kms.CryptoKeyIamMemberArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -517,7 +517,7 @@ public final class BigqueryFunctions {
      *     public static void stack(Context ctx) {
      *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount();
      * 
-     *         var keySaUser = new CryptoKeyIAMMember(&#34;keySaUser&#34;, CryptoKeyIAMMemberArgs.builder()        
+     *         var keySaUser = new CryptoKeyIamMember(&#34;keySaUser&#34;, CryptoKeyIamMemberArgs.builder()        
      *             .cryptoKeyId(google_kms_crypto_key.key().id())
      *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
      *             .member(String.format(&#34;serviceAccount:%s&#34;, bqSa.applyValue(getDefaultServiceAccountResult -&gt; getDefaultServiceAccountResult.email())))
@@ -551,8 +551,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetDefaultServiceAccountArgs;
-     * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
-     * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
+     * import com.pulumi.gcp.kms.CryptoKeyIamMember;
+     * import com.pulumi.gcp.kms.CryptoKeyIamMemberArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -568,7 +568,7 @@ public final class BigqueryFunctions {
      *     public static void stack(Context ctx) {
      *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount();
      * 
-     *         var keySaUser = new CryptoKeyIAMMember(&#34;keySaUser&#34;, CryptoKeyIAMMemberArgs.builder()        
+     *         var keySaUser = new CryptoKeyIamMember(&#34;keySaUser&#34;, CryptoKeyIamMemberArgs.builder()        
      *             .cryptoKeyId(google_kms_crypto_key.key().id())
      *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
      *             .member(String.format(&#34;serviceAccount:%s&#34;, bqSa.applyValue(getDefaultServiceAccountResult -&gt; getDefaultServiceAccountResult.email())))
@@ -602,8 +602,8 @@ public final class BigqueryFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.gcp.bigquery.BigqueryFunctions;
      * import com.pulumi.gcp.bigquery.inputs.GetDefaultServiceAccountArgs;
-     * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
-     * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
+     * import com.pulumi.gcp.kms.CryptoKeyIamMember;
+     * import com.pulumi.gcp.kms.CryptoKeyIamMemberArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -619,7 +619,7 @@ public final class BigqueryFunctions {
      *     public static void stack(Context ctx) {
      *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount();
      * 
-     *         var keySaUser = new CryptoKeyIAMMember(&#34;keySaUser&#34;, CryptoKeyIAMMemberArgs.builder()        
+     *         var keySaUser = new CryptoKeyIamMember(&#34;keySaUser&#34;, CryptoKeyIamMemberArgs.builder()        
      *             .cryptoKeyId(google_kms_crypto_key.key().id())
      *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
      *             .member(String.format(&#34;serviceAccount:%s&#34;, bqSa.applyValue(getDefaultServiceAccountResult -&gt; getDefaultServiceAccountResult.email())))

@@ -295,7 +295,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:organizations/iAMPolicy:IamPolicy my_organization "your-orgid roles/viewer user:foo@example.com"
+//	$ pulumi import gcp:organizations/iamPolicy:IamPolicy my_organization "your-orgid roles/viewer user:foo@example.com"
 //
 // ```
 //
@@ -305,7 +305,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:organizations/iAMPolicy:IamPolicy my_organization "your-org-id roles/viewer"
+//	$ pulumi import gcp:organizations/iamPolicy:IamPolicy my_organization "your-org-id roles/viewer"
 //
 // ```
 //
@@ -315,7 +315,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:organizations/iAMPolicy:IamPolicy my_organization your-org-id
+//	$ pulumi import gcp:organizations/iamPolicy:IamPolicy my_organization your-org-id
 //
 // ```
 //
@@ -323,7 +323,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:organizations/iAMPolicy:IamPolicy my_organization "your-organization-id foo.googleapis.com"
+//	$ pulumi import gcp:organizations/iamPolicy:IamPolicy my_organization "your-organization-id foo.googleapis.com"
 //
 // ```
 //
@@ -333,11 +333,9 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:organizations/iAMPolicy:IamPolicy to include the title of condition, e.g. `google_organization_iam_binding.my_organization "your-org-id roles/{{role_id}} condition-title"`
+//	$ pulumi import gcp:organizations/iamPolicy:IamPolicy to include the title of condition, e.g. `google_organization_iam_binding.my_organization "your-org-id roles/{{role_id}} condition-title"`
 //
 // ```
-//
-// Deprecated: gcp.organizations/iampolicy.IamPolicy has been deprecated in favor of gcp.organizations/iampolicy.IamPolicy
 type IamPolicy struct {
 	pulumi.CustomResourceState
 
@@ -369,15 +367,9 @@ func NewIamPolicy(ctx *pulumi.Context,
 	if args.PolicyData == nil {
 		return nil, errors.New("invalid value for required argument 'PolicyData'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("gcp:organizations/iAMPolicy:IAMPolicy"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource IamPolicy
-	err := ctx.RegisterResource("gcp:organizations/iAMPolicy:IamPolicy", name, args, &resource, opts...)
+	err := ctx.RegisterResource("gcp:organizations/iamPolicy:IamPolicy", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -389,7 +381,7 @@ func NewIamPolicy(ctx *pulumi.Context,
 func GetIamPolicy(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *IamPolicyState, opts ...pulumi.ResourceOption) (*IamPolicy, error) {
 	var resource IamPolicy
-	err := ctx.ReadResource("gcp:organizations/iAMPolicy:IamPolicy", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("gcp:organizations/iamPolicy:IamPolicy", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

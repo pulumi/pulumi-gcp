@@ -11,17 +11,17 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['IAMBindingArgs', 'IAMBinding']
+__all__ = ['IamBindingArgs', 'IamBinding']
 
 @pulumi.input_type
-class IAMBindingArgs:
+class IamBindingArgs:
     def __init__(__self__, *,
                  folder: pulumi.Input[str],
                  members: pulumi.Input[Sequence[pulumi.Input[str]]],
                  role: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['IAMBindingConditionArgs']] = None):
+                 condition: Optional[pulumi.Input['IamBindingConditionArgs']] = None):
         """
-        The set of arguments for constructing a IAMBinding resource.
+        The set of arguments for constructing a IamBinding resource.
         :param pulumi.Input[str] folder: The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: An array of identities that will be granted the privilege in the `role`.
                Each entry can have one of the following values:
@@ -31,7 +31,7 @@ class IAMBindingArgs:
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
                * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
         :param pulumi.Input[str] role: The role that should be applied. Only one
-               `folder.IAMBinding` can be used per role. Note that custom roles must be of the format
+               `folder.IamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         pulumi.set(__self__, "folder", folder)
@@ -75,7 +75,7 @@ class IAMBindingArgs:
     def role(self) -> pulumi.Input[str]:
         """
         The role that should be applied. Only one
-        `folder.IAMBinding` can be used per role. Note that custom roles must be of the format
+        `folder.IamBinding` can be used per role. Note that custom roles must be of the format
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         return pulumi.get(self, "role")
@@ -86,24 +86,24 @@ class IAMBindingArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['IAMBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['IamBindingConditionArgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['IAMBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['IamBindingConditionArgs']]):
         pulumi.set(self, "condition", value)
 
 
 @pulumi.input_type
-class _IAMBindingState:
+class _IamBindingState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['IAMBindingConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['IamBindingConditionArgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  folder: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role: Optional[pulumi.Input[str]] = None):
         """
-        Input properties used for looking up and filtering IAMBinding resources.
+        Input properties used for looking up and filtering IamBinding resources.
         :param pulumi.Input[str] etag: (Computed) The etag of the folder's IAM policy.
         :param pulumi.Input[str] folder: The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: An array of identities that will be granted the privilege in the `role`.
@@ -114,7 +114,7 @@ class _IAMBindingState:
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
                * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
         :param pulumi.Input[str] role: The role that should be applied. Only one
-               `folder.IAMBinding` can be used per role. Note that custom roles must be of the format
+               `folder.IamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         if condition is not None:
@@ -130,11 +130,11 @@ class _IAMBindingState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['IAMBindingConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['IamBindingConditionArgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['IAMBindingConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['IamBindingConditionArgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -184,7 +184,7 @@ class _IAMBindingState:
     def role(self) -> Optional[pulumi.Input[str]]:
         """
         The role that should be applied. Only one
-        `folder.IAMBinding` can be used per role. Note that custom roles must be of the format
+        `folder.IamBinding` can be used per role. Note that custom roles must be of the format
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         return pulumi.get(self, "role")
@@ -194,12 +194,12 @@ class _IAMBindingState:
         pulumi.set(self, "role", value)
 
 
-class IAMBinding(pulumi.CustomResource):
+class IamBinding(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['IAMBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['IamBindingConditionArgs']]] = None,
                  folder: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -209,7 +209,7 @@ class IAMBinding(pulumi.CustomResource):
         an existing Google Cloud Platform folder.
 
         > **Note:** This resource _must not_ be used in conjunction with
-           `folder.IAMPolicy` or they will fight over what your policy
+           `folder.IamPolicy` or they will fight over what your policy
            should be.
 
         > **Note:** On create, this resource will overwrite members of any existing roles.
@@ -225,7 +225,7 @@ class IAMBinding(pulumi.CustomResource):
         department1 = gcp.organizations.Folder("department1",
             display_name="Department 1",
             parent="organizations/1234567")
-        admin = gcp.folder.IAMBinding("admin",
+        admin = gcp.folder.IamBinding("admin",
             folder=department1.name,
             role="roles/editor",
             members=["user:alice@gmail.com"])
@@ -238,7 +238,7 @@ class IAMBinding(pulumi.CustomResource):
         These bindings can be imported using the `folder` and role, e.g.
 
         ```sh
-         $ pulumi import gcp:folder/iAMBinding:IAMBinding viewer "folder-name roles/viewer"
+         $ pulumi import gcp:folder/iamBinding:IamBinding viewer "folder-name roles/viewer"
         ```
 
          -> **Custom Roles**If you're importing a IAM binding with a custom role, make sure to use the
@@ -256,21 +256,21 @@ class IAMBinding(pulumi.CustomResource):
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
                * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
         :param pulumi.Input[str] role: The role that should be applied. Only one
-               `folder.IAMBinding` can be used per role. Note that custom roles must be of the format
+               `folder.IamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: IAMBindingArgs,
+                 args: IamBindingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Allows creation and management of a single binding within IAM policy for
         an existing Google Cloud Platform folder.
 
         > **Note:** This resource _must not_ be used in conjunction with
-           `folder.IAMPolicy` or they will fight over what your policy
+           `folder.IamPolicy` or they will fight over what your policy
            should be.
 
         > **Note:** On create, this resource will overwrite members of any existing roles.
@@ -286,7 +286,7 @@ class IAMBinding(pulumi.CustomResource):
         department1 = gcp.organizations.Folder("department1",
             display_name="Department 1",
             parent="organizations/1234567")
-        admin = gcp.folder.IAMBinding("admin",
+        admin = gcp.folder.IamBinding("admin",
             folder=department1.name,
             role="roles/editor",
             members=["user:alice@gmail.com"])
@@ -299,7 +299,7 @@ class IAMBinding(pulumi.CustomResource):
         These bindings can be imported using the `folder` and role, e.g.
 
         ```sh
-         $ pulumi import gcp:folder/iAMBinding:IAMBinding viewer "folder-name roles/viewer"
+         $ pulumi import gcp:folder/iamBinding:IamBinding viewer "folder-name roles/viewer"
         ```
 
          -> **Custom Roles**If you're importing a IAM binding with a custom role, make sure to use the
@@ -307,12 +307,12 @@ class IAMBinding(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param IAMBindingArgs args: The arguments to use to populate this resource's properties.
+        :param IamBindingArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(IAMBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(IamBindingArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -321,7 +321,7 @@ class IAMBinding(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['IAMBindingConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['IamBindingConditionArgs']]] = None,
                  folder: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -332,7 +332,7 @@ class IAMBinding(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = IAMBindingArgs.__new__(IAMBindingArgs)
+            __props__ = IamBindingArgs.__new__(IamBindingArgs)
 
             __props__.__dict__["condition"] = condition
             if folder is None and not opts.urn:
@@ -345,8 +345,8 @@ class IAMBinding(pulumi.CustomResource):
                 raise TypeError("Missing required property 'role'")
             __props__.__dict__["role"] = role
             __props__.__dict__["etag"] = None
-        super(IAMBinding, __self__).__init__(
-            'gcp:folder/iAMBinding:IAMBinding',
+        super(IamBinding, __self__).__init__(
+            'gcp:folder/iamBinding:IamBinding',
             resource_name,
             __props__,
             opts)
@@ -355,13 +355,13 @@ class IAMBinding(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['IAMBindingConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['IamBindingConditionArgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             folder: Optional[pulumi.Input[str]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            role: Optional[pulumi.Input[str]] = None) -> 'IAMBinding':
+            role: Optional[pulumi.Input[str]] = None) -> 'IamBinding':
         """
-        Get an existing IAMBinding resource's state with the given name, id, and optional extra
+        Get an existing IamBinding resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -377,23 +377,23 @@ class IAMBinding(pulumi.CustomResource):
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
                * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
         :param pulumi.Input[str] role: The role that should be applied. Only one
-               `folder.IAMBinding` can be used per role. Note that custom roles must be of the format
+               `folder.IamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _IAMBindingState.__new__(_IAMBindingState)
+        __props__ = _IamBindingState.__new__(_IamBindingState)
 
         __props__.__dict__["condition"] = condition
         __props__.__dict__["etag"] = etag
         __props__.__dict__["folder"] = folder
         __props__.__dict__["members"] = members
         __props__.__dict__["role"] = role
-        return IAMBinding(resource_name, opts=opts, __props__=__props__)
+        return IamBinding(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
-    def condition(self) -> pulumi.Output[Optional['outputs.IAMBindingCondition']]:
+    def condition(self) -> pulumi.Output[Optional['outputs.IamBindingCondition']]:
         return pulumi.get(self, "condition")
 
     @property
@@ -431,7 +431,7 @@ class IAMBinding(pulumi.CustomResource):
     def role(self) -> pulumi.Output[str]:
         """
         The role that should be applied. Only one
-        `folder.IAMBinding` can be used per role. Note that custom roles must be of the format
+        `folder.IamBinding` can be used per role. Note that custom roles must be of the format
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         return pulumi.get(self, "role")

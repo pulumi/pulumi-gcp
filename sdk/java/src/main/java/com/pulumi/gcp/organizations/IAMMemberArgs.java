@@ -5,16 +5,16 @@ package com.pulumi.gcp.organizations;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.gcp.organizations.inputs.IAMMemberConditionArgs;
+import com.pulumi.gcp.organizations.inputs.IamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class IAMMemberArgs extends com.pulumi.resources.ResourceArgs {
+public final class IamMemberArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final IAMMemberArgs Empty = new IAMMemberArgs();
+    public static final IamMemberArgs Empty = new IamMemberArgs();
 
     /**
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -22,14 +22,14 @@ public final class IAMMemberArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="condition")
-    private @Nullable Output<IAMMemberConditionArgs> condition;
+    private @Nullable Output<IamMemberConditionArgs> condition;
 
     /**
      * @return An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      * 
      */
-    public Optional<Output<IAMMemberConditionArgs>> condition() {
+    public Optional<Output<IamMemberConditionArgs>> condition() {
         return Optional.ofNullable(this.condition);
     }
 
@@ -57,7 +57,7 @@ public final class IAMMemberArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The role that should be applied. Only one
-     * `gcp.organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.organizations.IamBinding` can be used per role. Note that custom roles must be of the format
      * `organizations/{{org_id}}/roles/{{role_id}}`.
      * 
      */
@@ -66,7 +66,7 @@ public final class IAMMemberArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The role that should be applied. Only one
-     * `gcp.organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.organizations.IamBinding` can be used per role. Note that custom roles must be of the format
      * `organizations/{{org_id}}/roles/{{role_id}}`.
      * 
      */
@@ -74,9 +74,9 @@ public final class IAMMemberArgs extends com.pulumi.resources.ResourceArgs {
         return this.role;
     }
 
-    private IAMMemberArgs() {}
+    private IamMemberArgs() {}
 
-    private IAMMemberArgs(IAMMemberArgs $) {
+    private IamMemberArgs(IamMemberArgs $) {
         this.condition = $.condition;
         this.member = $.member;
         this.orgId = $.orgId;
@@ -86,19 +86,19 @@ public final class IAMMemberArgs extends com.pulumi.resources.ResourceArgs {
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(IAMMemberArgs defaults) {
+    public static Builder builder(IamMemberArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private IAMMemberArgs $;
+        private IamMemberArgs $;
 
         public Builder() {
-            $ = new IAMMemberArgs();
+            $ = new IamMemberArgs();
         }
 
-        public Builder(IAMMemberArgs defaults) {
-            $ = new IAMMemberArgs(Objects.requireNonNull(defaults));
+        public Builder(IamMemberArgs defaults) {
+            $ = new IamMemberArgs(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -108,7 +108,7 @@ public final class IAMMemberArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder condition(@Nullable Output<IAMMemberConditionArgs> condition) {
+        public Builder condition(@Nullable Output<IamMemberConditionArgs> condition) {
             $.condition = condition;
             return this;
         }
@@ -120,7 +120,7 @@ public final class IAMMemberArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder condition(IAMMemberConditionArgs condition) {
+        public Builder condition(IamMemberConditionArgs condition) {
             return condition(Output.of(condition));
         }
 
@@ -156,7 +156,7 @@ public final class IAMMemberArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.organizations.IamBinding` can be used per role. Note that custom roles must be of the format
          * `organizations/{{org_id}}/roles/{{role_id}}`.
          * 
          * @return builder
@@ -169,7 +169,7 @@ public final class IAMMemberArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.organizations.IamBinding` can be used per role. Note that custom roles must be of the format
          * `organizations/{{org_id}}/roles/{{role_id}}`.
          * 
          * @return builder
@@ -179,7 +179,7 @@ public final class IAMMemberArgs extends com.pulumi.resources.ResourceArgs {
             return role(Output.of(role));
         }
 
-        public IAMMemberArgs build() {
+        public IamMemberArgs build() {
             $.member = Objects.requireNonNull($.member, "expected parameter 'member' to be non-null");
             $.orgId = Objects.requireNonNull($.orgId, "expected parameter 'orgId' to be non-null");
             $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");

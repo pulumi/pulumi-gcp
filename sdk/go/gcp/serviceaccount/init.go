@@ -23,11 +23,11 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:serviceAccount/account:Account":
 		r = &Account{}
-	case "gcp:serviceAccount/iAMBinding:IamBinding":
+	case "gcp:serviceAccount/iamBinding:IamBinding":
 		r = &IamBinding{}
-	case "gcp:serviceAccount/iAMMember:IamMember":
+	case "gcp:serviceAccount/iamMember:IamMember":
 		r = &IamMember{}
-	case "gcp:serviceAccount/iAMPolicy:IamPolicy":
+	case "gcp:serviceAccount/iamPolicy:IamPolicy":
 		r = &IamPolicy{}
 	case "gcp:serviceAccount/key:Key":
 		r = &Key{}
@@ -51,17 +51,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"serviceAccount/iAMBinding",
+		"serviceAccount/iamBinding",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"serviceAccount/iAMMember",
+		"serviceAccount/iamMember",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"serviceAccount/iAMPolicy",
+		"serviceAccount/iamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

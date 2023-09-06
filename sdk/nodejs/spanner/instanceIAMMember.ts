@@ -9,16 +9,16 @@ import * as utilities from "../utilities";
 /**
  * Three different resources help you manage your IAM policy for a Spanner instance. Each of these resources serves a different use case:
  *
- * * `gcp.spanner.InstanceIAMPolicy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.
+ * * `gcp.spanner.InstanceIamPolicy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.
  *
- * > **Warning:** It's entirely possibly to lock yourself out of your instance using `gcp.spanner.InstanceIAMPolicy`. Any permissions granted by default will be removed unless you include them in your config.
+ * > **Warning:** It's entirely possibly to lock yourself out of your instance using `gcp.spanner.InstanceIamPolicy`. Any permissions granted by default will be removed unless you include them in your config.
  *
- * * `gcp.spanner.InstanceIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved.
- * * `gcp.spanner.InstanceIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved.
+ * * `gcp.spanner.InstanceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved.
+ * * `gcp.spanner.InstanceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved.
  *
- * > **Note:** `gcp.spanner.InstanceIAMPolicy` **cannot** be used in conjunction with `gcp.spanner.InstanceIAMBinding` and `gcp.spanner.InstanceIAMMember` or they will fight over what your policy should be.
+ * > **Note:** `gcp.spanner.InstanceIamPolicy` **cannot** be used in conjunction with `gcp.spanner.InstanceIamBinding` and `gcp.spanner.InstanceIamMember` or they will fight over what your policy should be.
  *
- * > **Note:** `gcp.spanner.InstanceIAMBinding` resources **can be** used in conjunction with `gcp.spanner.InstanceIAMMember` resources **only if** they do not grant privilege to the same role.
+ * > **Note:** `gcp.spanner.InstanceIamBinding` resources **can be** used in conjunction with `gcp.spanner.InstanceIamMember` resources **only if** they do not grant privilege to the same role.
  *
  * ## google\_spanner\_instance\_iam\_policy
  *
@@ -26,13 +26,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const admin = gcp.organizations.getIAMPolicy({
+ * const admin = gcp.organizations.getIamPolicy({
  *     bindings: [{
  *         role: "roles/editor",
  *         members: ["user:jane@example.com"],
  *     }],
  * });
- * const instance = new gcp.spanner.InstanceIAMPolicy("instance", {
+ * const instance = new gcp.spanner.InstanceIamPolicy("instance", {
  *     instance: "your-instance-name",
  *     policyData: admin.then(admin => admin.policyData),
  * });
@@ -44,7 +44,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const instance = new gcp.spanner.InstanceIAMBinding("instance", {
+ * const instance = new gcp.spanner.InstanceIamBinding("instance", {
  *     instance: "your-instance-name",
  *     members: ["user:jane@example.com"],
  *     role: "roles/spanner.databaseAdmin",
@@ -57,7 +57,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const instance = new gcp.spanner.InstanceIAMMember("instance", {
+ * const instance = new gcp.spanner.InstanceIamMember("instance", {
  *     instance: "your-instance-name",
  *     member: "user:jane@example.com",
  *     role: "roles/spanner.databaseAdmin",
@@ -69,28 +69,28 @@ import * as utilities from "../utilities";
  * For all import syntaxes, the "resource in question" can take any of the following forms* {{project}}/{{name}} * {{name}} (project is taken from provider project) IAM member imports use space-delimited identifiers; the resource in question, the role, and the account, e.g.
  *
  * ```sh
- *  $ pulumi import gcp:spanner/instanceIAMMember:InstanceIAMMember instance "project-name/instance-name roles/viewer user:foo@example.com"
+ *  $ pulumi import gcp:spanner/instanceIamMember:InstanceIamMember instance "project-name/instance-name roles/viewer user:foo@example.com"
  * ```
  *
  *  IAM binding imports use space-delimited identifiers; the resource in question and the role, e.g.
  *
  * ```sh
- *  $ pulumi import gcp:spanner/instanceIAMMember:InstanceIAMMember instance "project-name/instance-name roles/viewer"
+ *  $ pulumi import gcp:spanner/instanceIamMember:InstanceIamMember instance "project-name/instance-name roles/viewer"
  * ```
  *
  *  IAM policy imports use the identifier of the resource in question, e.g.
  *
  * ```sh
- *  $ pulumi import gcp:spanner/instanceIAMMember:InstanceIAMMember instance project-name/instance-name
+ *  $ pulumi import gcp:spanner/instanceIamMember:InstanceIamMember instance project-name/instance-name
  * ```
  *
  *  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
  *
  * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  */
-export class InstanceIAMMember extends pulumi.CustomResource {
+export class InstanceIamMember extends pulumi.CustomResource {
     /**
-     * Get an existing InstanceIAMMember resource's state with the given name, ID, and optional extra
+     * Get an existing InstanceIamMember resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -98,25 +98,25 @@ export class InstanceIAMMember extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: InstanceIAMMemberState, opts?: pulumi.CustomResourceOptions): InstanceIAMMember {
-        return new InstanceIAMMember(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: InstanceIamMemberState, opts?: pulumi.CustomResourceOptions): InstanceIamMember {
+        return new InstanceIamMember(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp:spanner/instanceIAMMember:InstanceIAMMember';
+    public static readonly __pulumiType = 'gcp:spanner/instanceIamMember:InstanceIamMember';
 
     /**
-     * Returns true if the given object is an instance of InstanceIAMMember.  This is designed to work even
+     * Returns true if the given object is an instance of InstanceIamMember.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is InstanceIAMMember {
+    public static isInstance(obj: any): obj is InstanceIamMember {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === InstanceIAMMember.__pulumiType;
+        return obj['__pulumiType'] === InstanceIamMember.__pulumiType;
     }
 
-    public readonly condition!: pulumi.Output<outputs.spanner.InstanceIAMMemberCondition | undefined>;
+    public readonly condition!: pulumi.Output<outputs.spanner.InstanceIamMemberCondition | undefined>;
     /**
      * (Computed) The etag of the instance's IAM policy.
      */
@@ -142,24 +142,24 @@ export class InstanceIAMMember extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
-     * `gcp.spanner.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.spanner.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     public readonly role!: pulumi.Output<string>;
 
     /**
-     * Create a InstanceIAMMember resource with the given unique name, arguments, and options.
+     * Create a InstanceIamMember resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: InstanceIAMMemberArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: InstanceIAMMemberArgs | InstanceIAMMemberState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: InstanceIamMemberArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: InstanceIamMemberArgs | InstanceIamMemberState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as InstanceIAMMemberState | undefined;
+            const state = argsOrState as InstanceIamMemberState | undefined;
             resourceInputs["condition"] = state ? state.condition : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["instance"] = state ? state.instance : undefined;
@@ -167,7 +167,7 @@ export class InstanceIAMMember extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["role"] = state ? state.role : undefined;
         } else {
-            const args = argsOrState as InstanceIAMMemberArgs | undefined;
+            const args = argsOrState as InstanceIamMemberArgs | undefined;
             if ((!args || args.instance === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instance'");
             }
@@ -185,15 +185,15 @@ export class InstanceIAMMember extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(InstanceIAMMember.__pulumiType, name, resourceInputs, opts);
+        super(InstanceIamMember.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering InstanceIAMMember resources.
+ * Input properties used for looking up and filtering InstanceIamMember resources.
  */
-export interface InstanceIAMMemberState {
-    condition?: pulumi.Input<inputs.spanner.InstanceIAMMemberCondition>;
+export interface InstanceIamMemberState {
+    condition?: pulumi.Input<inputs.spanner.InstanceIamMemberCondition>;
     /**
      * (Computed) The etag of the instance's IAM policy.
      */
@@ -219,17 +219,17 @@ export interface InstanceIAMMemberState {
     project?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
-     * `gcp.spanner.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.spanner.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     role?: pulumi.Input<string>;
 }
 
 /**
- * The set of arguments for constructing a InstanceIAMMember resource.
+ * The set of arguments for constructing a InstanceIamMember resource.
  */
-export interface InstanceIAMMemberArgs {
-    condition?: pulumi.Input<inputs.spanner.InstanceIAMMemberCondition>;
+export interface InstanceIamMemberArgs {
+    condition?: pulumi.Input<inputs.spanner.InstanceIamMemberCondition>;
     /**
      * The name of the instance.
      *
@@ -251,7 +251,7 @@ export interface InstanceIAMMemberArgs {
     project?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
-     * `gcp.spanner.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.spanner.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     role: pulumi.Input<string>;

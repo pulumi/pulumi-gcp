@@ -306,7 +306,7 @@ class Notification(pulumi.CustomResource):
 
         gcs_account = gcp.storage.get_project_service_account()
         topic = gcp.pubsub.Topic("topic")
-        binding = gcp.pubsub.TopicIAMBinding("binding",
+        binding = gcp.pubsub.TopicIamBinding("binding",
             topic=topic.id,
             role="roles/pubsub.publisher",
             members=[f"serviceAccount:{gcs_account.email_address}"])
@@ -381,7 +381,7 @@ class Notification(pulumi.CustomResource):
 
         gcs_account = gcp.storage.get_project_service_account()
         topic = gcp.pubsub.Topic("topic")
-        binding = gcp.pubsub.TopicIAMBinding("binding",
+        binding = gcp.pubsub.TopicIamBinding("binding",
             topic=topic.id,
             role="roles/pubsub.publisher",
             members=[f"serviceAccount:{gcs_account.email_address}"])

@@ -8,9 +8,9 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
-import com.pulumi.gcp.folder.IAMMemberArgs;
-import com.pulumi.gcp.folder.inputs.IAMMemberState;
-import com.pulumi.gcp.folder.outputs.IAMMemberCondition;
+import com.pulumi.gcp.folder.IamMemberArgs;
+import com.pulumi.gcp.folder.inputs.IamMemberState;
+import com.pulumi.gcp.folder.outputs.IamMemberCondition;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,14 +18,14 @@ import javax.annotation.Nullable;
 /**
  * Four different resources help you manage your IAM policy for a folder. Each of these resources serves a different use case:
  * 
- * * `gcp.folder.IAMPolicy`: Authoritative. Sets the IAM policy for the folder and replaces any existing policy already attached.
- * * `gcp.folder.IAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the folder are preserved.
- * * `gcp.folder.IAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the folder are preserved.
+ * * `gcp.folder.IamPolicy`: Authoritative. Sets the IAM policy for the folder and replaces any existing policy already attached.
+ * * `gcp.folder.IamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the folder are preserved.
+ * * `gcp.folder.IamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the folder are preserved.
  * * `gcp.folder.IamAuditConfig`: Authoritative for a given service. Updates the IAM policy to enable audit logging for the given service.
  * 
- * &gt; **Note:** `gcp.folder.IAMPolicy` **cannot** be used in conjunction with `gcp.folder.IAMBinding`, `gcp.folder.IAMMember`, or `gcp.folder.IamAuditConfig` or they will fight over what your policy should be.
+ * &gt; **Note:** `gcp.folder.IamPolicy` **cannot** be used in conjunction with `gcp.folder.IamBinding`, `gcp.folder.IamMember`, or `gcp.folder.IamAuditConfig` or they will fight over what your policy should be.
  * 
- * &gt; **Note:** `gcp.folder.IAMBinding` resources **can be** used in conjunction with `gcp.folder.IAMMember` resources **only if** they do not grant privilege to the same role.
+ * &gt; **Note:** `gcp.folder.IamBinding` resources **can be** used in conjunction with `gcp.folder.IamMember` resources **only if** they do not grant privilege to the same role.
  * 
  * &gt; **Note:** The underlying API method `projects.setIamPolicy` has constraints which are documented [here](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
  *    IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning a 400 error code so please review these if you encounter errors with this resource.
@@ -33,9 +33,9 @@ import javax.annotation.Nullable;
  * ## google\_folder\_iam\_policy
  * 
  * !&gt; **Be careful!** You can accidentally lock yourself out of your folder
- *    using this resource. Deleting a `gcp.folder.IAMPolicy` removes access
+ *    using this resource. Deleting a `gcp.folder.IamPolicy` removes access
  *    from anyone without permissions on its parent folder/organization. Proceed with caution.
- *    It&#39;s not recommended to use `gcp.folder.IAMPolicy` with your provider folder
+ *    It&#39;s not recommended to use `gcp.folder.IamPolicy` with your provider folder
  *    to avoid locking yourself out, and it should generally only be used with folders
  *    fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
  *    applying the change.
@@ -46,9 +46,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
- * import com.pulumi.gcp.folder.IAMPolicy;
- * import com.pulumi.gcp.folder.IAMPolicyArgs;
+ * import com.pulumi.gcp.organizations.inputs.GetIamPolicyArgs;
+ * import com.pulumi.gcp.folder.IamPolicy;
+ * import com.pulumi.gcp.folder.IamPolicyArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -62,16 +62,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
- *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *         final var admin = OrganizationsFunctions.getIamPolicy(GetIamPolicyArgs.builder()
+ *             .bindings(GetIamPolicyBindingArgs.builder()
  *                 .role(&#34;roles/editor&#34;)
  *                 .members(&#34;user:jane@example.com&#34;)
  *                 .build())
  *             .build());
  * 
- *         var folder = new IAMPolicy(&#34;folder&#34;, IAMPolicyArgs.builder()        
+ *         var folder = new IamPolicy(&#34;folder&#34;, IamPolicyArgs.builder()        
  *             .folder(&#34;folders/1234567&#34;)
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIamPolicyResult -&gt; getIamPolicyResult.policyData()))
  *             .build());
  * 
  *     }
@@ -86,9 +86,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
- * import com.pulumi.gcp.folder.IAMPolicy;
- * import com.pulumi.gcp.folder.IAMPolicyArgs;
+ * import com.pulumi.gcp.organizations.inputs.GetIamPolicyArgs;
+ * import com.pulumi.gcp.folder.IamPolicy;
+ * import com.pulumi.gcp.folder.IamPolicyArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -102,9 +102,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
- *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
+ *         final var admin = OrganizationsFunctions.getIamPolicy(GetIamPolicyArgs.builder()
+ *             .bindings(GetIamPolicyBindingArgs.builder()
+ *                 .condition(GetIamPolicyBindingConditionArgs.builder()
  *                     .description(&#34;Expiring at midnight of 2019-12-31&#34;)
  *                     .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
  *                     .title(&#34;expires_after_2019_12_31&#34;)
@@ -114,9 +114,9 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var folder = new IAMPolicy(&#34;folder&#34;, IAMPolicyArgs.builder()        
+ *         var folder = new IamPolicy(&#34;folder&#34;, IamPolicyArgs.builder()        
  *             .folder(&#34;folders/1234567&#34;)
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIamPolicyResult -&gt; getIamPolicyResult.policyData()))
  *             .build());
  * 
  *     }
@@ -130,8 +130,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.folder.IAMBinding;
- * import com.pulumi.gcp.folder.IAMBindingArgs;
+ * import com.pulumi.gcp.folder.IamBinding;
+ * import com.pulumi.gcp.folder.IamBindingArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -145,7 +145,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var folder = new IAMBinding(&#34;folder&#34;, IAMBindingArgs.builder()        
+ *         var folder = new IamBinding(&#34;folder&#34;, IamBindingArgs.builder()        
  *             .folder(&#34;folders/1234567&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .role(&#34;roles/editor&#34;)
@@ -162,9 +162,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.folder.IAMBinding;
- * import com.pulumi.gcp.folder.IAMBindingArgs;
- * import com.pulumi.gcp.folder.inputs.IAMBindingConditionArgs;
+ * import com.pulumi.gcp.folder.IamBinding;
+ * import com.pulumi.gcp.folder.IamBindingArgs;
+ * import com.pulumi.gcp.folder.inputs.IamBindingConditionArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -178,8 +178,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var folder = new IAMBinding(&#34;folder&#34;, IAMBindingArgs.builder()        
- *             .condition(IAMBindingConditionArgs.builder()
+ *         var folder = new IamBinding(&#34;folder&#34;, IamBindingArgs.builder()        
+ *             .condition(IamBindingConditionArgs.builder()
  *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
  *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
  *                 .title(&#34;expires_after_2019_12_31&#34;)
@@ -200,8 +200,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.folder.IAMMember;
- * import com.pulumi.gcp.folder.IAMMemberArgs;
+ * import com.pulumi.gcp.folder.IamMember;
+ * import com.pulumi.gcp.folder.IamMemberArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -215,7 +215,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var folder = new IAMMember(&#34;folder&#34;, IAMMemberArgs.builder()        
+ *         var folder = new IamMember(&#34;folder&#34;, IamMemberArgs.builder()        
  *             .folder(&#34;folders/1234567&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .role(&#34;roles/editor&#34;)
@@ -232,9 +232,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.folder.IAMMember;
- * import com.pulumi.gcp.folder.IAMMemberArgs;
- * import com.pulumi.gcp.folder.inputs.IAMMemberConditionArgs;
+ * import com.pulumi.gcp.folder.IamMember;
+ * import com.pulumi.gcp.folder.IamMemberArgs;
+ * import com.pulumi.gcp.folder.inputs.IamMemberConditionArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -248,8 +248,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var folder = new IAMMember(&#34;folder&#34;, IAMMemberArgs.builder()        
- *             .condition(IAMMemberConditionArgs.builder()
+ *         var folder = new IamMember(&#34;folder&#34;, IamMemberArgs.builder()        
+ *             .condition(IamMemberConditionArgs.builder()
  *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
  *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
  *                 .title(&#34;expires_after_2019_12_31&#34;)
@@ -310,7 +310,7 @@ import javax.annotation.Nullable;
  * This member resource can be imported using the `folder`, role, and member e.g.
  * 
  * ```sh
- *  $ pulumi import gcp:folder/iAMMember:IAMMember my_folder &#34;folder roles/viewer user:foo@example.com&#34;
+ *  $ pulumi import gcp:folder/iamMember:IamMember my_folder &#34;folder roles/viewer user:foo@example.com&#34;
  * ```
  * 
  *  IAM binding imports use space-delimited identifiers; the resource in question and the role.
@@ -318,7 +318,7 @@ import javax.annotation.Nullable;
  * This binding resource can be imported using the `folder` and role, e.g.
  * 
  * ```sh
- *  $ pulumi import gcp:folder/iAMMember:IAMMember my_folder &#34;folder roles/viewer&#34;
+ *  $ pulumi import gcp:folder/iamMember:IamMember my_folder &#34;folder roles/viewer&#34;
  * ```
  * 
  *  IAM policy imports use the identifier of the resource in question.
@@ -326,13 +326,13 @@ import javax.annotation.Nullable;
  * This policy resource can be imported using the `folder`.
  * 
  * ```sh
- *  $ pulumi import gcp:folder/iAMMember:IAMMember my_folder folder
+ *  $ pulumi import gcp:folder/iamMember:IamMember my_folder folder
  * ```
  * 
  *  IAM audit config imports use the identifier of the resource in question and the service, e.g.
  * 
  * ```sh
- *  $ pulumi import gcp:folder/iAMMember:IAMMember my_folder &#34;folder foo.googleapis.com&#34;
+ *  $ pulumi import gcp:folder/iamMember:IamMember my_folder &#34;folder foo.googleapis.com&#34;
  * ```
  * 
  *  -&gt; **Custom Roles**If you&#39;re importing a IAM resource with a custom role, make sure to use the
@@ -340,26 +340,26 @@ import javax.annotation.Nullable;
  * full name of the custom role, e.g. `organizations/{{org_id}}/roles/{{role_id}}`. -&gt; **Conditional IAM Bindings**If you&#39;re importing a IAM binding with a condition block, make sure
  * 
  * ```sh
- *  $ pulumi import gcp:folder/iAMMember:IAMMember to include the title of condition, e.g. `google_folder_iam_binding.my_folder &#34;folder roles/{{role_id}} condition-title&#34;`
+ *  $ pulumi import gcp:folder/iamMember:IamMember to include the title of condition, e.g. `google_folder_iam_binding.my_folder &#34;folder roles/{{role_id}} condition-title&#34;`
  * ```
  * 
  */
-@ResourceType(type="gcp:folder/iAMMember:IAMMember")
-public class IAMMember extends com.pulumi.resources.CustomResource {
+@ResourceType(type="gcp:folder/iamMember:IamMember")
+public class IamMember extends com.pulumi.resources.CustomResource {
     /**
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      * 
      */
-    @Export(name="condition", type=IAMMemberCondition.class, parameters={})
-    private Output</* @Nullable */ IAMMemberCondition> condition;
+    @Export(name="condition", type=IamMemberCondition.class, parameters={})
+    private Output</* @Nullable */ IamMemberCondition> condition;
 
     /**
      * @return An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      * 
      */
-    public Output<Optional<IAMMemberCondition>> condition() {
+    public Output<Optional<IamMemberCondition>> condition() {
         return Codegen.optional(this.condition);
     }
     /**
@@ -398,7 +398,7 @@ public class IAMMember extends com.pulumi.resources.CustomResource {
     }
     /**
      * The role that should be applied. Only one
-     * `gcp.folder.IAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.folder.IamBinding` can be used per role. Note that custom roles must be of the format
      * `organizations/{{org_id}}/roles/{{role_id}}`.
      * 
      */
@@ -407,7 +407,7 @@ public class IAMMember extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The role that should be applied. Only one
-     * `gcp.folder.IAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.folder.IamBinding` can be used per role. Note that custom roles must be of the format
      * `organizations/{{org_id}}/roles/{{role_id}}`.
      * 
      */
@@ -419,15 +419,15 @@ public class IAMMember extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public IAMMember(String name) {
-        this(name, IAMMemberArgs.Empty);
+    public IamMember(String name) {
+        this(name, IamMemberArgs.Empty);
     }
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public IAMMember(String name, IAMMemberArgs args) {
+    public IamMember(String name, IamMemberArgs args) {
         this(name, args, null);
     }
     /**
@@ -436,12 +436,12 @@ public class IAMMember extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public IAMMember(String name, IAMMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:folder/iAMMember:IAMMember", name, args == null ? IAMMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public IamMember(String name, IamMemberArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:folder/iamMember:IamMember", name, args == null ? IamMemberArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private IAMMember(String name, Output<String> id, @Nullable IAMMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:folder/iAMMember:IAMMember", name, state, makeResourceOptions(options, id));
+    private IamMember(String name, Output<String> id, @Nullable IamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:folder/iamMember:IamMember", name, state, makeResourceOptions(options, id));
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
@@ -460,7 +460,7 @@ public class IAMMember extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static IAMMember get(String name, Output<String> id, @Nullable IAMMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        return new IAMMember(name, id, state, options);
+    public static IamMember get(String name, Output<String> id, @Nullable IamMemberState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        return new IamMember(name, id, state, options);
     }
 }

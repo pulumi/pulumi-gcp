@@ -553,7 +553,7 @@ class Instance(pulumi.CustomResource):
             project=google_project["project"]["project_id"],
             service=google_project_service["apigee"]["service"],
             opts=pulumi.ResourceOptions(provider=google_beta))
-        apigee_sa_keyuser = gcp.kms.CryptoKeyIAMBinding("apigeeSaKeyuser",
+        apigee_sa_keyuser = gcp.kms.CryptoKeyIamBinding("apigeeSaKeyuser",
             crypto_key_id=apigee_key.id,
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             members=[apigee_sa.email.apply(lambda email: f"serviceAccount:{email}")])
@@ -734,7 +734,7 @@ class Instance(pulumi.CustomResource):
             project=google_project["project"]["project_id"],
             service=google_project_service["apigee"]["service"],
             opts=pulumi.ResourceOptions(provider=google_beta))
-        apigee_sa_keyuser = gcp.kms.CryptoKeyIAMBinding("apigeeSaKeyuser",
+        apigee_sa_keyuser = gcp.kms.CryptoKeyIamBinding("apigeeSaKeyuser",
             crypto_key_id=apigee_key.id,
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             members=[apigee_sa.email.apply(lambda email: f"serviceAccount:{email}")])

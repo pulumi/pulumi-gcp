@@ -467,7 +467,7 @@ class Function(pulumi.CustomResource):
         gcs_account = gcp.storage.get_project_service_account()
         # To use GCS CloudEvent triggers, the GCS service account requires the Pub/Sub Publisher(roles/pubsub.publisher) IAM role in the specified project.
         # (See https://cloud.google.com/eventarc/docs/run/quickstart-storage#before-you-begin)
-        gcs_pubsub_publishing = gcp.projects.IAMMember("gcs-pubsub-publishing",
+        gcs_pubsub_publishing = gcp.projects.IamMember("gcs-pubsub-publishing",
             project="my-project-name",
             role="roles/pubsub.publisher",
             member=f"serviceAccount:{gcs_account.email_address}")
@@ -475,17 +475,17 @@ class Function(pulumi.CustomResource):
             account_id="gcf-sa",
             display_name="Test Service Account - used for both the cloud function and eventarc trigger in the test")
         # Permissions on the service account used by the function and Eventarc trigger
-        invoking = gcp.projects.IAMMember("invoking",
+        invoking = gcp.projects.IamMember("invoking",
             project="my-project-name",
             role="roles/run.invoker",
             member=account.email.apply(lambda email: f"serviceAccount:{email}"),
             opts=pulumi.ResourceOptions(depends_on=[gcs_pubsub_publishing]))
-        event_receiving = gcp.projects.IAMMember("event-receiving",
+        event_receiving = gcp.projects.IamMember("event-receiving",
             project="my-project-name",
             role="roles/eventarc.eventReceiver",
             member=account.email.apply(lambda email: f"serviceAccount:{email}"),
             opts=pulumi.ResourceOptions(depends_on=[invoking]))
-        artifactregistry_reader = gcp.projects.IAMMember("artifactregistry-reader",
+        artifactregistry_reader = gcp.projects.IamMember("artifactregistry-reader",
             project="my-project-name",
             role="roles/artifactregistry.reader",
             member=account.email.apply(lambda email: f"serviceAccount:{email}"),
@@ -560,16 +560,16 @@ class Function(pulumi.CustomResource):
             location="us-central1",
             uniform_bucket_level_access=True)
         # Permissions on the service account used by the function and Eventarc trigger
-        invoking = gcp.projects.IAMMember("invoking",
+        invoking = gcp.projects.IamMember("invoking",
             project="my-project-name",
             role="roles/run.invoker",
             member=account.email.apply(lambda email: f"serviceAccount:{email}"))
-        event_receiving = gcp.projects.IAMMember("event-receiving",
+        event_receiving = gcp.projects.IamMember("event-receiving",
             project="my-project-name",
             role="roles/eventarc.eventReceiver",
             member=account.email.apply(lambda email: f"serviceAccount:{email}"),
             opts=pulumi.ResourceOptions(depends_on=[invoking]))
-        artifactregistry_reader = gcp.projects.IAMMember("artifactregistry-reader",
+        artifactregistry_reader = gcp.projects.IamMember("artifactregistry-reader",
             project="my-project-name",
             role="roles/artifactregistry.reader",
             member=account.email.apply(lambda email: f"serviceAccount:{email}"),
@@ -701,7 +701,7 @@ class Function(pulumi.CustomResource):
         gcs_account = gcp.storage.get_project_service_account()
         # To use GCS CloudEvent triggers, the GCS service account requires the Pub/Sub Publisher(roles/pubsub.publisher) IAM role in the specified project.
         # (See https://cloud.google.com/eventarc/docs/run/quickstart-storage#before-you-begin)
-        gcs_pubsub_publishing = gcp.projects.IAMMember("gcs-pubsub-publishing",
+        gcs_pubsub_publishing = gcp.projects.IamMember("gcs-pubsub-publishing",
             project="my-project-name",
             role="roles/pubsub.publisher",
             member=f"serviceAccount:{gcs_account.email_address}")
@@ -709,17 +709,17 @@ class Function(pulumi.CustomResource):
             account_id="gcf-sa",
             display_name="Test Service Account - used for both the cloud function and eventarc trigger in the test")
         # Permissions on the service account used by the function and Eventarc trigger
-        invoking = gcp.projects.IAMMember("invoking",
+        invoking = gcp.projects.IamMember("invoking",
             project="my-project-name",
             role="roles/run.invoker",
             member=account.email.apply(lambda email: f"serviceAccount:{email}"),
             opts=pulumi.ResourceOptions(depends_on=[gcs_pubsub_publishing]))
-        event_receiving = gcp.projects.IAMMember("event-receiving",
+        event_receiving = gcp.projects.IamMember("event-receiving",
             project="my-project-name",
             role="roles/eventarc.eventReceiver",
             member=account.email.apply(lambda email: f"serviceAccount:{email}"),
             opts=pulumi.ResourceOptions(depends_on=[invoking]))
-        artifactregistry_reader = gcp.projects.IAMMember("artifactregistry-reader",
+        artifactregistry_reader = gcp.projects.IamMember("artifactregistry-reader",
             project="my-project-name",
             role="roles/artifactregistry.reader",
             member=account.email.apply(lambda email: f"serviceAccount:{email}"),
@@ -794,16 +794,16 @@ class Function(pulumi.CustomResource):
             location="us-central1",
             uniform_bucket_level_access=True)
         # Permissions on the service account used by the function and Eventarc trigger
-        invoking = gcp.projects.IAMMember("invoking",
+        invoking = gcp.projects.IamMember("invoking",
             project="my-project-name",
             role="roles/run.invoker",
             member=account.email.apply(lambda email: f"serviceAccount:{email}"))
-        event_receiving = gcp.projects.IAMMember("event-receiving",
+        event_receiving = gcp.projects.IamMember("event-receiving",
             project="my-project-name",
             role="roles/eventarc.eventReceiver",
             member=account.email.apply(lambda email: f"serviceAccount:{email}"),
             opts=pulumi.ResourceOptions(depends_on=[invoking]))
-        artifactregistry_reader = gcp.projects.IAMMember("artifactregistry-reader",
+        artifactregistry_reader = gcp.projects.IamMember("artifactregistry-reader",
             project="my-project-name",
             role="roles/artifactregistry.reader",
             member=account.email.apply(lambda email: f"serviceAccount:{email}"),

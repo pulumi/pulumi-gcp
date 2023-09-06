@@ -9,17 +9,17 @@ import * as utilities from "../utilities";
 /**
  * Three different resources help you manage your IAM policy for Cloud Build v2 Connection. Each of these resources serves a different use case:
  *
- * * `gcp.cloudbuildv2.ConnectionIAMPolicy`: Authoritative. Sets the IAM policy for the connection and replaces any existing policy already attached.
- * * `gcp.cloudbuildv2.ConnectionIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the connection are preserved.
- * * `gcp.cloudbuildv2.ConnectionIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the connection are preserved.
+ * * `gcp.cloudbuildv2.ConnectionIamPolicy`: Authoritative. Sets the IAM policy for the connection and replaces any existing policy already attached.
+ * * `gcp.cloudbuildv2.ConnectionIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the connection are preserved.
+ * * `gcp.cloudbuildv2.ConnectionIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the connection are preserved.
  *
  * A data source can be used to retrieve policy data in advent you do not need creation
  *
- * * `gcp.cloudbuildv2.ConnectionIAMPolicy`: Retrieves the IAM policy for the connection
+ * * `gcp.cloudbuildv2.ConnectionIamPolicy`: Retrieves the IAM policy for the connection
  *
- * > **Note:** `gcp.cloudbuildv2.ConnectionIAMPolicy` **cannot** be used in conjunction with `gcp.cloudbuildv2.ConnectionIAMBinding` and `gcp.cloudbuildv2.ConnectionIAMMember` or they will fight over what your policy should be.
+ * > **Note:** `gcp.cloudbuildv2.ConnectionIamPolicy` **cannot** be used in conjunction with `gcp.cloudbuildv2.ConnectionIamBinding` and `gcp.cloudbuildv2.ConnectionIamMember` or they will fight over what your policy should be.
  *
- * > **Note:** `gcp.cloudbuildv2.ConnectionIAMBinding` resources **can be** used in conjunction with `gcp.cloudbuildv2.ConnectionIAMMember` resources **only if** they do not grant privilege to the same role.
+ * > **Note:** `gcp.cloudbuildv2.ConnectionIamBinding` resources **can be** used in conjunction with `gcp.cloudbuildv2.ConnectionIamMember` resources **only if** they do not grant privilege to the same role.
  *
  * ## google\_cloudbuildv2\_connection\_iam\_policy
  *
@@ -27,13 +27,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const admin = gcp.organizations.getIAMPolicy({
+ * const admin = gcp.organizations.getIamPolicy({
  *     bindings: [{
  *         role: "roles/cloudbuild.connectionViewer",
  *         members: ["user:jane@example.com"],
  *     }],
  * });
- * const policy = new gcp.cloudbuildv2.ConnectionIAMPolicy("policy", {
+ * const policy = new gcp.cloudbuildv2.ConnectionIamPolicy("policy", {
  *     project: google_cloudbuildv2_connection["my-connection"].project,
  *     location: google_cloudbuildv2_connection["my-connection"].location,
  *     policyData: admin.then(admin => admin.policyData),
@@ -46,7 +46,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const binding = new gcp.cloudbuildv2.ConnectionIAMBinding("binding", {
+ * const binding = new gcp.cloudbuildv2.ConnectionIamBinding("binding", {
  *     project: google_cloudbuildv2_connection["my-connection"].project,
  *     location: google_cloudbuildv2_connection["my-connection"].location,
  *     role: "roles/cloudbuild.connectionViewer",
@@ -60,7 +60,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const member = new gcp.cloudbuildv2.ConnectionIAMMember("member", {
+ * const member = new gcp.cloudbuildv2.ConnectionIamMember("member", {
  *     project: google_cloudbuildv2_connection["my-connection"].project,
  *     location: google_cloudbuildv2_connection["my-connection"].location,
  *     role: "roles/cloudbuild.connectionViewer",
@@ -73,28 +73,28 @@ import * as utilities from "../utilities";
  * For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/connections/{{name}} * {{project}}/{{location}}/{{name}} * {{location}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Build v2 connection IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
  *
  * ```sh
- *  $ pulumi import gcp:cloudbuildv2/connectionIAMMember:ConnectionIAMMember editor "projects/{{project}}/locations/{{location}}/connections/{{connection}} roles/cloudbuild.connectionViewer user:jane@example.com"
+ *  $ pulumi import gcp:cloudbuildv2/connectionIamMember:ConnectionIamMember editor "projects/{{project}}/locations/{{location}}/connections/{{connection}} roles/cloudbuild.connectionViewer user:jane@example.com"
  * ```
  *
  *  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
  *
  * ```sh
- *  $ pulumi import gcp:cloudbuildv2/connectionIAMMember:ConnectionIAMMember editor "projects/{{project}}/locations/{{location}}/connections/{{connection}} roles/cloudbuild.connectionViewer"
+ *  $ pulumi import gcp:cloudbuildv2/connectionIamMember:ConnectionIamMember editor "projects/{{project}}/locations/{{location}}/connections/{{connection}} roles/cloudbuild.connectionViewer"
  * ```
  *
  *  IAM policy imports use the identifier of the resource in question, e.g.
  *
  * ```sh
- *  $ pulumi import gcp:cloudbuildv2/connectionIAMMember:ConnectionIAMMember editor projects/{{project}}/locations/{{location}}/connections/{{connection}}
+ *  $ pulumi import gcp:cloudbuildv2/connectionIamMember:ConnectionIamMember editor projects/{{project}}/locations/{{location}}/connections/{{connection}}
  * ```
  *
  *  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
  *
  * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  */
-export class ConnectionIAMMember extends pulumi.CustomResource {
+export class ConnectionIamMember extends pulumi.CustomResource {
     /**
-     * Get an existing ConnectionIAMMember resource's state with the given name, ID, and optional extra
+     * Get an existing ConnectionIamMember resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -102,25 +102,25 @@ export class ConnectionIAMMember extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ConnectionIAMMemberState, opts?: pulumi.CustomResourceOptions): ConnectionIAMMember {
-        return new ConnectionIAMMember(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ConnectionIamMemberState, opts?: pulumi.CustomResourceOptions): ConnectionIamMember {
+        return new ConnectionIamMember(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp:cloudbuildv2/connectionIAMMember:ConnectionIAMMember';
+    public static readonly __pulumiType = 'gcp:cloudbuildv2/connectionIamMember:ConnectionIamMember';
 
     /**
-     * Returns true if the given object is an instance of ConnectionIAMMember.  This is designed to work even
+     * Returns true if the given object is an instance of ConnectionIamMember.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is ConnectionIAMMember {
+    public static isInstance(obj: any): obj is ConnectionIamMember {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === ConnectionIAMMember.__pulumiType;
+        return obj['__pulumiType'] === ConnectionIamMember.__pulumiType;
     }
 
-    public readonly condition!: pulumi.Output<outputs.cloudbuildv2.ConnectionIAMMemberCondition | undefined>;
+    public readonly condition!: pulumi.Output<outputs.cloudbuildv2.ConnectionIamMemberCondition | undefined>;
     /**
      * (Computed) The etag of the IAM policy.
      */
@@ -150,24 +150,24 @@ export class ConnectionIAMMember extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
-     * `gcp.cloudbuildv2.ConnectionIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.cloudbuildv2.ConnectionIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     public readonly role!: pulumi.Output<string>;
 
     /**
-     * Create a ConnectionIAMMember resource with the given unique name, arguments, and options.
+     * Create a ConnectionIamMember resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ConnectionIAMMemberArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: ConnectionIAMMemberArgs | ConnectionIAMMemberState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: ConnectionIamMemberArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: ConnectionIamMemberArgs | ConnectionIamMemberState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as ConnectionIAMMemberState | undefined;
+            const state = argsOrState as ConnectionIamMemberState | undefined;
             resourceInputs["condition"] = state ? state.condition : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
@@ -176,7 +176,7 @@ export class ConnectionIAMMember extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["role"] = state ? state.role : undefined;
         } else {
-            const args = argsOrState as ConnectionIAMMemberArgs | undefined;
+            const args = argsOrState as ConnectionIamMemberArgs | undefined;
             if ((!args || args.member === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'member'");
             }
@@ -192,15 +192,15 @@ export class ConnectionIAMMember extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ConnectionIAMMember.__pulumiType, name, resourceInputs, opts);
+        super(ConnectionIamMember.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering ConnectionIAMMember resources.
+ * Input properties used for looking up and filtering ConnectionIamMember resources.
  */
-export interface ConnectionIAMMemberState {
-    condition?: pulumi.Input<inputs.cloudbuildv2.ConnectionIAMMemberCondition>;
+export interface ConnectionIamMemberState {
+    condition?: pulumi.Input<inputs.cloudbuildv2.ConnectionIamMemberCondition>;
     /**
      * (Computed) The etag of the IAM policy.
      */
@@ -230,17 +230,17 @@ export interface ConnectionIAMMemberState {
     project?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
-     * `gcp.cloudbuildv2.ConnectionIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.cloudbuildv2.ConnectionIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     role?: pulumi.Input<string>;
 }
 
 /**
- * The set of arguments for constructing a ConnectionIAMMember resource.
+ * The set of arguments for constructing a ConnectionIamMember resource.
  */
-export interface ConnectionIAMMemberArgs {
-    condition?: pulumi.Input<inputs.cloudbuildv2.ConnectionIAMMemberCondition>;
+export interface ConnectionIamMemberArgs {
+    condition?: pulumi.Input<inputs.cloudbuildv2.ConnectionIamMemberCondition>;
     location?: pulumi.Input<string>;
     member: pulumi.Input<string>;
     /**
@@ -266,7 +266,7 @@ export interface ConnectionIAMMemberArgs {
     project?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
-     * `gcp.cloudbuildv2.ConnectionIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.cloudbuildv2.ConnectionIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     role: pulumi.Input<string>;

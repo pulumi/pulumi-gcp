@@ -60,7 +60,7 @@ namespace Pulumi.Gcp.Storage
         /// {
         ///     var gcsAccount = Gcp.Storage.GetProjectServiceAccount.Invoke();
         /// 
-        ///     var binding = new Gcp.PubSub.TopicIAMBinding("binding", new()
+        ///     var binding = new Gcp.PubSub.TopicIamBinding("binding", new()
         ///     {
         ///         Topic = google_pubsub_topic.Topic.Name,
         ///         Role = "roles/pubsub.publisher",
@@ -87,7 +87,7 @@ namespace Pulumi.Gcp.Storage
         /// {
         ///     var gcsAccount = Gcp.Storage.GetProjectServiceAccount.Invoke();
         /// 
-        ///     var binding = new Gcp.Kms.CryptoKeyIAMBinding("binding", new()
+        ///     var binding = new Gcp.Kms.CryptoKeyIamBinding("binding", new()
         ///     {
         ///         CryptoKeyId = "your-crypto-key-id",
         ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
@@ -169,7 +169,7 @@ namespace Pulumi.Gcp.Storage
         /// {
         ///     var gcsAccount = Gcp.Storage.GetProjectServiceAccount.Invoke();
         /// 
-        ///     var binding = new Gcp.PubSub.TopicIAMBinding("binding", new()
+        ///     var binding = new Gcp.PubSub.TopicIamBinding("binding", new()
         ///     {
         ///         Topic = google_pubsub_topic.Topic.Name,
         ///         Role = "roles/pubsub.publisher",
@@ -196,7 +196,7 @@ namespace Pulumi.Gcp.Storage
         /// {
         ///     var gcsAccount = Gcp.Storage.GetProjectServiceAccount.Invoke();
         /// 
-        ///     var binding = new Gcp.Kms.CryptoKeyIAMBinding("binding", new()
+        ///     var binding = new Gcp.Kms.CryptoKeyIamBinding("binding", new()
         ///     {
         ///         CryptoKeyId = "your-crypto-key-id",
         ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",

@@ -38,7 +38,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.secretmanager.SecretVersion;
  * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.organizations.inputs.GetIamPolicyArgs;
  * import com.pulumi.gcp.secretmanager.SecretIamPolicy;
  * import com.pulumi.gcp.secretmanager.SecretIamPolicyArgs;
  * import com.pulumi.gcp.cloudbuildv2.Connection;
@@ -82,8 +82,8 @@ import javax.annotation.Nullable;
  *             .secretData(&#34;&lt;webhook-secret-data&gt;&#34;)
  *             .build());
  * 
- *         final var p4sa-secretAccessor = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
- *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *         final var p4sa-secretAccessor = OrganizationsFunctions.getIamPolicy(GetIamPolicyArgs.builder()
+ *             .bindings(GetIamPolicyBindingArgs.builder()
  *                 .role(&#34;roles/secretmanager.secretAccessor&#34;)
  *                 .members(&#34;serviceAccount:service-123456789@gcp-sa-cloudbuild.iam.gserviceaccount.com&#34;)
  *                 .build())
@@ -132,7 +132,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.secretmanager.SecretVersion;
  * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.organizations.inputs.GetIamPolicyArgs;
  * import com.pulumi.gcp.secretmanager.SecretIamPolicy;
  * import com.pulumi.gcp.secretmanager.SecretIamPolicyArgs;
  * import com.pulumi.gcp.cloudbuildv2.Connection;
@@ -164,8 +164,8 @@ import javax.annotation.Nullable;
  *             .secretData(Files.readString(Paths.get(&#34;my-github-token.txt&#34;)))
  *             .build());
  * 
- *         final var p4sa-secretAccessor = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
- *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *         final var p4sa-secretAccessor = OrganizationsFunctions.getIamPolicy(GetIamPolicyArgs.builder()
+ *             .bindings(GetIamPolicyBindingArgs.builder()
  *                 .role(&#34;roles/secretmanager.secretAccessor&#34;)
  *                 .members(&#34;serviceAccount:service-123456789@gcp-sa-cloudbuild.iam.gserviceaccount.com&#34;)
  *                 .build())

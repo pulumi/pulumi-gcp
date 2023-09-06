@@ -8,24 +8,24 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
-import com.pulumi.gcp.spanner.InstanceIAMPolicyArgs;
-import com.pulumi.gcp.spanner.inputs.InstanceIAMPolicyState;
+import com.pulumi.gcp.spanner.InstanceIamPolicyArgs;
+import com.pulumi.gcp.spanner.inputs.InstanceIamPolicyState;
 import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
  * Three different resources help you manage your IAM policy for a Spanner instance. Each of these resources serves a different use case:
  * 
- * * `gcp.spanner.InstanceIAMPolicy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.
+ * * `gcp.spanner.InstanceIamPolicy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.
  * 
- * &gt; **Warning:** It&#39;s entirely possibly to lock yourself out of your instance using `gcp.spanner.InstanceIAMPolicy`. Any permissions granted by default will be removed unless you include them in your config.
+ * &gt; **Warning:** It&#39;s entirely possibly to lock yourself out of your instance using `gcp.spanner.InstanceIamPolicy`. Any permissions granted by default will be removed unless you include them in your config.
  * 
- * * `gcp.spanner.InstanceIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved.
- * * `gcp.spanner.InstanceIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved.
+ * * `gcp.spanner.InstanceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved.
+ * * `gcp.spanner.InstanceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved.
  * 
- * &gt; **Note:** `gcp.spanner.InstanceIAMPolicy` **cannot** be used in conjunction with `gcp.spanner.InstanceIAMBinding` and `gcp.spanner.InstanceIAMMember` or they will fight over what your policy should be.
+ * &gt; **Note:** `gcp.spanner.InstanceIamPolicy` **cannot** be used in conjunction with `gcp.spanner.InstanceIamBinding` and `gcp.spanner.InstanceIamMember` or they will fight over what your policy should be.
  * 
- * &gt; **Note:** `gcp.spanner.InstanceIAMBinding` resources **can be** used in conjunction with `gcp.spanner.InstanceIAMMember` resources **only if** they do not grant privilege to the same role.
+ * &gt; **Note:** `gcp.spanner.InstanceIamBinding` resources **can be** used in conjunction with `gcp.spanner.InstanceIamMember` resources **only if** they do not grant privilege to the same role.
  * 
  * ## google\_spanner\_instance\_iam\_policy
  * ```java
@@ -35,9 +35,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
- * import com.pulumi.gcp.spanner.InstanceIAMPolicy;
- * import com.pulumi.gcp.spanner.InstanceIAMPolicyArgs;
+ * import com.pulumi.gcp.organizations.inputs.GetIamPolicyArgs;
+ * import com.pulumi.gcp.spanner.InstanceIamPolicy;
+ * import com.pulumi.gcp.spanner.InstanceIamPolicyArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -51,16 +51,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
- *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *         final var admin = OrganizationsFunctions.getIamPolicy(GetIamPolicyArgs.builder()
+ *             .bindings(GetIamPolicyBindingArgs.builder()
  *                 .role(&#34;roles/editor&#34;)
  *                 .members(&#34;user:jane@example.com&#34;)
  *                 .build())
  *             .build());
  * 
- *         var instance = new InstanceIAMPolicy(&#34;instance&#34;, InstanceIAMPolicyArgs.builder()        
+ *         var instance = new InstanceIamPolicy(&#34;instance&#34;, InstanceIamPolicyArgs.builder()        
  *             .instance(&#34;your-instance-name&#34;)
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIamPolicyResult -&gt; getIamPolicyResult.policyData()))
  *             .build());
  * 
  *     }
@@ -74,8 +74,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.spanner.InstanceIAMBinding;
- * import com.pulumi.gcp.spanner.InstanceIAMBindingArgs;
+ * import com.pulumi.gcp.spanner.InstanceIamBinding;
+ * import com.pulumi.gcp.spanner.InstanceIamBindingArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -89,7 +89,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new InstanceIAMBinding(&#34;instance&#34;, InstanceIAMBindingArgs.builder()        
+ *         var instance = new InstanceIamBinding(&#34;instance&#34;, InstanceIamBindingArgs.builder()        
  *             .instance(&#34;your-instance-name&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .role(&#34;roles/spanner.databaseAdmin&#34;)
@@ -106,8 +106,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.spanner.InstanceIAMMember;
- * import com.pulumi.gcp.spanner.InstanceIAMMemberArgs;
+ * import com.pulumi.gcp.spanner.InstanceIamMember;
+ * import com.pulumi.gcp.spanner.InstanceIamMemberArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -121,7 +121,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var instance = new InstanceIAMMember(&#34;instance&#34;, InstanceIAMMemberArgs.builder()        
+ *         var instance = new InstanceIamMember(&#34;instance&#34;, InstanceIamMemberArgs.builder()        
  *             .instance(&#34;your-instance-name&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .role(&#34;roles/spanner.databaseAdmin&#34;)
@@ -136,19 +136,19 @@ import javax.annotation.Nullable;
  * For all import syntaxes, the &#34;resource in question&#34; can take any of the following forms* {{project}}/{{name}} * {{name}} (project is taken from provider project) IAM member imports use space-delimited identifiers; the resource in question, the role, and the account, e.g.
  * 
  * ```sh
- *  $ pulumi import gcp:spanner/instanceIAMPolicy:InstanceIAMPolicy instance &#34;project-name/instance-name roles/viewer user:foo@example.com&#34;
+ *  $ pulumi import gcp:spanner/instanceIamPolicy:InstanceIamPolicy instance &#34;project-name/instance-name roles/viewer user:foo@example.com&#34;
  * ```
  * 
  *  IAM binding imports use space-delimited identifiers; the resource in question and the role, e.g.
  * 
  * ```sh
- *  $ pulumi import gcp:spanner/instanceIAMPolicy:InstanceIAMPolicy instance &#34;project-name/instance-name roles/viewer&#34;
+ *  $ pulumi import gcp:spanner/instanceIamPolicy:InstanceIamPolicy instance &#34;project-name/instance-name roles/viewer&#34;
  * ```
  * 
  *  IAM policy imports use the identifier of the resource in question, e.g.
  * 
  * ```sh
- *  $ pulumi import gcp:spanner/instanceIAMPolicy:InstanceIAMPolicy instance project-name/instance-name
+ *  $ pulumi import gcp:spanner/instanceIamPolicy:InstanceIamPolicy instance project-name/instance-name
  * ```
  * 
  *  -&gt; **Custom Roles**If you&#39;re importing a IAM resource with a custom role, make sure to use the
@@ -156,8 +156,8 @@ import javax.annotation.Nullable;
  * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * 
  */
-@ResourceType(type="gcp:spanner/instanceIAMPolicy:InstanceIAMPolicy")
-public class InstanceIAMPolicy extends com.pulumi.resources.CustomResource {
+@ResourceType(type="gcp:spanner/instanceIamPolicy:InstanceIamPolicy")
+public class InstanceIamPolicy extends com.pulumi.resources.CustomResource {
     /**
      * (Computed) The etag of the instance&#39;s IAM policy.
      * 
@@ -206,7 +206,7 @@ public class InstanceIAMPolicy extends com.pulumi.resources.CustomResource {
     }
     /**
      * The policy data generated by
-     * a `gcp.organizations.getIAMPolicy` data source.
+     * a `gcp.organizations.getIamPolicy` data source.
      * 
      */
     @Export(name="policyData", type=String.class, parameters={})
@@ -214,7 +214,7 @@ public class InstanceIAMPolicy extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The policy data generated by
-     * a `gcp.organizations.getIAMPolicy` data source.
+     * a `gcp.organizations.getIamPolicy` data source.
      * 
      */
     public Output<String> policyData() {
@@ -241,15 +241,15 @@ public class InstanceIAMPolicy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public InstanceIAMPolicy(String name) {
-        this(name, InstanceIAMPolicyArgs.Empty);
+    public InstanceIamPolicy(String name) {
+        this(name, InstanceIamPolicyArgs.Empty);
     }
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public InstanceIAMPolicy(String name, InstanceIAMPolicyArgs args) {
+    public InstanceIamPolicy(String name, InstanceIamPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -258,12 +258,12 @@ public class InstanceIAMPolicy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public InstanceIAMPolicy(String name, InstanceIAMPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:spanner/instanceIAMPolicy:InstanceIAMPolicy", name, args == null ? InstanceIAMPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public InstanceIamPolicy(String name, InstanceIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:spanner/instanceIamPolicy:InstanceIamPolicy", name, args == null ? InstanceIamPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private InstanceIAMPolicy(String name, Output<String> id, @Nullable InstanceIAMPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:spanner/instanceIAMPolicy:InstanceIAMPolicy", name, state, makeResourceOptions(options, id));
+    private InstanceIamPolicy(String name, Output<String> id, @Nullable InstanceIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:spanner/instanceIamPolicy:InstanceIamPolicy", name, state, makeResourceOptions(options, id));
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
@@ -282,7 +282,7 @@ public class InstanceIAMPolicy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static InstanceIAMPolicy get(String name, Output<String> id, @Nullable InstanceIAMPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        return new InstanceIAMPolicy(name, id, state, options);
+    public static InstanceIamPolicy get(String name, Output<String> id, @Nullable InstanceIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        return new InstanceIamPolicy(name, id, state, options);
     }
 }

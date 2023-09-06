@@ -11,14 +11,14 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
-    'CryptoKeyIAMBindingCondition',
-    'CryptoKeyIAMMemberCondition',
+    'CryptoKeyIamBindingCondition',
+    'CryptoKeyIamMemberCondition',
     'CryptoKeyVersionAttestation',
     'CryptoKeyVersionAttestationCertChains',
     'CryptoKeyVersionAttestationExternalProtectionLevelOptions',
     'CryptoKeyVersionTemplate',
-    'KeyRingIAMBindingCondition',
-    'KeyRingIAMMemberCondition',
+    'KeyRingIamBindingCondition',
+    'KeyRingIamMemberCondition',
     'KeyRingImportJobAttestation',
     'KeyRingImportJobPublicKey',
     'RegistryCredential',
@@ -28,7 +28,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class CryptoKeyIAMBindingCondition(dict):
+class CryptoKeyIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -77,7 +77,7 @@ class CryptoKeyIAMBindingCondition(dict):
 
 
 @pulumi.output_type
-class CryptoKeyIAMMemberCondition(dict):
+class CryptoKeyIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -371,7 +371,7 @@ class CryptoKeyVersionTemplate(dict):
 
 
 @pulumi.output_type
-class KeyRingIAMBindingCondition(dict):
+class KeyRingIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -420,7 +420,7 @@ class KeyRingIAMBindingCondition(dict):
 
 
 @pulumi.output_type
-class KeyRingIAMMemberCondition(dict):
+class KeyRingIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,

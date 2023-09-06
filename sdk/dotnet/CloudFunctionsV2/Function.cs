@@ -50,7 +50,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     /// 
     ///     // To use GCS CloudEvent triggers, the GCS service account requires the Pub/Sub Publisher(roles/pubsub.publisher) IAM role in the specified project.
     ///     // (See https://cloud.google.com/eventarc/docs/run/quickstart-storage#before-you-begin)
-    ///     var gcs_pubsub_publishing = new Gcp.Projects.IAMMember("gcs-pubsub-publishing", new()
+    ///     var gcs_pubsub_publishing = new Gcp.Projects.IamMember("gcs-pubsub-publishing", new()
     ///     {
     ///         Project = "my-project-name",
     ///         Role = "roles/pubsub.publisher",
@@ -64,7 +64,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///     });
     /// 
     ///     // Permissions on the service account used by the function and Eventarc trigger
-    ///     var invoking = new Gcp.Projects.IAMMember("invoking", new()
+    ///     var invoking = new Gcp.Projects.IamMember("invoking", new()
     ///     {
     ///         Project = "my-project-name",
     ///         Role = "roles/run.invoker",
@@ -77,7 +77,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///         },
     ///     });
     /// 
-    ///     var event_receiving = new Gcp.Projects.IAMMember("event-receiving", new()
+    ///     var event_receiving = new Gcp.Projects.IamMember("event-receiving", new()
     ///     {
     ///         Project = "my-project-name",
     ///         Role = "roles/eventarc.eventReceiver",
@@ -90,7 +90,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///         },
     ///     });
     /// 
-    ///     var artifactregistry_reader = new Gcp.Projects.IAMMember("artifactregistry-reader", new()
+    ///     var artifactregistry_reader = new Gcp.Projects.IamMember("artifactregistry-reader", new()
     ///     {
     ///         Project = "my-project-name",
     ///         Role = "roles/artifactregistry.reader",
@@ -207,14 +207,14 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///     });
     /// 
     ///     // Permissions on the service account used by the function and Eventarc trigger
-    ///     var invoking = new Gcp.Projects.IAMMember("invoking", new()
+    ///     var invoking = new Gcp.Projects.IamMember("invoking", new()
     ///     {
     ///         Project = "my-project-name",
     ///         Role = "roles/run.invoker",
     ///         Member = account.Email.Apply(email =&gt; $"serviceAccount:{email}"),
     ///     });
     /// 
-    ///     var event_receiving = new Gcp.Projects.IAMMember("event-receiving", new()
+    ///     var event_receiving = new Gcp.Projects.IamMember("event-receiving", new()
     ///     {
     ///         Project = "my-project-name",
     ///         Role = "roles/eventarc.eventReceiver",
@@ -227,7 +227,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     ///         },
     ///     });
     /// 
-    ///     var artifactregistry_reader = new Gcp.Projects.IAMMember("artifactregistry-reader", new()
+    ///     var artifactregistry_reader = new Gcp.Projects.IamMember("artifactregistry-reader", new()
     ///     {
     ///         Project = "my-project-name",
     ///         Role = "roles/artifactregistry.reader",

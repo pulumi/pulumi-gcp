@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  *     project: "my-project",
  *     location: "EU",
  * });
- * const viewer = new gcp.storage.BucketIAMMember("viewer", {
+ * const viewer = new gcp.storage.BucketIamMember("viewer", {
  *     bucket: registry.id,
  *     role: "roles/storage.objectViewer",
  *     member: "user:jane@example.com",

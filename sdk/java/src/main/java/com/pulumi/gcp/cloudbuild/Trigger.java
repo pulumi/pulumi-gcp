@@ -193,8 +193,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.serviceAccount.Account;
  * import com.pulumi.gcp.serviceAccount.AccountArgs;
- * import com.pulumi.gcp.projects.IAMMember;
- * import com.pulumi.gcp.projects.IAMMemberArgs;
+ * import com.pulumi.gcp.projects.IamMember;
+ * import com.pulumi.gcp.projects.IamMemberArgs;
  * import com.pulumi.gcp.cloudbuild.Trigger;
  * import com.pulumi.gcp.cloudbuild.TriggerArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerTriggerTemplateArgs;
@@ -218,13 +218,13 @@ import javax.annotation.Nullable;
  *             .accountId(&#34;cloud-sa&#34;)
  *             .build());
  * 
- *         var actAs = new IAMMember(&#34;actAs&#34;, IAMMemberArgs.builder()        
+ *         var actAs = new IamMember(&#34;actAs&#34;, IamMemberArgs.builder()        
  *             .project(project.applyValue(getProjectResult -&gt; getProjectResult.projectId()))
  *             .role(&#34;roles/iam.serviceAccountUser&#34;)
  *             .member(cloudbuildServiceAccount.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
  *             .build());
  * 
- *         var logsWriter = new IAMMember(&#34;logsWriter&#34;, IAMMemberArgs.builder()        
+ *         var logsWriter = new IamMember(&#34;logsWriter&#34;, IamMemberArgs.builder()        
  *             .project(project.applyValue(getProjectResult -&gt; getProjectResult.projectId()))
  *             .role(&#34;roles/logging.logWriter&#34;)
  *             .member(cloudbuildServiceAccount.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
@@ -353,7 +353,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
- * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.organizations.inputs.GetIamPolicyArgs;
  * import com.pulumi.gcp.secretmanager.SecretIamPolicy;
  * import com.pulumi.gcp.secretmanager.SecretIamPolicyArgs;
  * import com.pulumi.gcp.cloudbuild.Trigger;
@@ -392,8 +392,8 @@ import javax.annotation.Nullable;
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         final var secretAccessor = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
- *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *         final var secretAccessor = OrganizationsFunctions.getIamPolicy(GetIamPolicyArgs.builder()
+ *             .bindings(GetIamPolicyBindingArgs.builder()
  *                 .role(&#34;roles/secretmanager.secretAccessor&#34;)
  *                 .members(String.format(&#34;serviceAccount:service-%s@gcp-sa-cloudbuild.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
  *                 .build())
@@ -402,7 +402,7 @@ import javax.annotation.Nullable;
  *         var policy = new SecretIamPolicy(&#34;policy&#34;, SecretIamPolicyArgs.builder()        
  *             .project(webhookTriggerSecretKey.project())
  *             .secretId(webhookTriggerSecretKey.secretId())
- *             .policyData(secretAccessor.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(secretAccessor.applyValue(getIamPolicyResult -&gt; getIamPolicyResult.policyData()))
  *             .build());
  * 
  *         var webhook_config_trigger = new Trigger(&#34;webhook-config-trigger&#34;, TriggerArgs.builder()        

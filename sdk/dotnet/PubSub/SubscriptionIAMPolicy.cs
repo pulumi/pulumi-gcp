@@ -12,13 +12,13 @@ namespace Pulumi.Gcp.PubSub
     /// <summary>
     /// Three different resources help you manage your IAM policy for pubsub subscription. Each of these resources serves a different use case:
     /// 
-    /// * `gcp.pubsub.SubscriptionIAMPolicy`: Authoritative. Sets the IAM policy for the subscription and replaces any existing policy already attached.
-    /// * `gcp.pubsub.SubscriptionIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the subscription are preserved.
-    /// * `gcp.pubsub.SubscriptionIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the subscription are preserved.
+    /// * `gcp.pubsub.SubscriptionIamPolicy`: Authoritative. Sets the IAM policy for the subscription and replaces any existing policy already attached.
+    /// * `gcp.pubsub.SubscriptionIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the subscription are preserved.
+    /// * `gcp.pubsub.SubscriptionIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the subscription are preserved.
     /// 
-    /// &gt; **Note:** `gcp.pubsub.SubscriptionIAMPolicy` **cannot** be used in conjunction with `gcp.pubsub.SubscriptionIAMBinding` and `gcp.pubsub.SubscriptionIAMMember` or they will fight over what your policy should be.
+    /// &gt; **Note:** `gcp.pubsub.SubscriptionIamPolicy` **cannot** be used in conjunction with `gcp.pubsub.SubscriptionIamBinding` and `gcp.pubsub.SubscriptionIamMember` or they will fight over what your policy should be.
     /// 
-    /// &gt; **Note:** `gcp.pubsub.SubscriptionIAMBinding` resources **can be** used in conjunction with `gcp.pubsub.SubscriptionIAMMember` resources **only if** they do not grant privilege to the same role.
+    /// &gt; **Note:** `gcp.pubsub.SubscriptionIamBinding` resources **can be** used in conjunction with `gcp.pubsub.SubscriptionIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
     /// ## google\_pubsub\_subscription\_iam\_policy
     /// 
@@ -30,11 +30,11 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     var admin = Gcp.Organizations.GetIamPolicy.Invoke(new()
     ///     {
     ///         Bindings = new[]
     ///         {
-    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             new Gcp.Organizations.Inputs.GetIamPolicyBindingInputArgs
     ///             {
     ///                 Role = "roles/editor",
     ///                 Members = new[]
@@ -45,10 +45,10 @@ namespace Pulumi.Gcp.PubSub
     ///         },
     ///     });
     /// 
-    ///     var editor = new Gcp.PubSub.SubscriptionIAMPolicy("editor", new()
+    ///     var editor = new Gcp.PubSub.SubscriptionIamPolicy("editor", new()
     ///     {
     ///         Subscription = "your-subscription-name",
-    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///         PolicyData = admin.Apply(getIamPolicyResult =&gt; getIamPolicyResult.PolicyData),
     ///     });
     /// 
     /// });
@@ -64,7 +64,7 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var editor = new Gcp.PubSub.SubscriptionIAMBinding("editor", new()
+    ///     var editor = new Gcp.PubSub.SubscriptionIamBinding("editor", new()
     ///     {
     ///         Members = new[]
     ///         {
@@ -87,7 +87,7 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var editor = new Gcp.PubSub.SubscriptionIAMMember("editor", new()
+    ///     var editor = new Gcp.PubSub.SubscriptionIamMember("editor", new()
     ///     {
     ///         Member = "user:jane@example.com",
     ///         Role = "roles/editor",
@@ -102,23 +102,23 @@ namespace Pulumi.Gcp.PubSub
     /// Pubsub subscription IAM resources can be imported using the project, subscription name, role and member.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:pubsub/subscriptionIAMPolicy:SubscriptionIAMPolicy editor projects/{your-project-id}/subscriptions/{your-subscription-name}
+    ///  $ pulumi import gcp:pubsub/subscriptionIamPolicy:SubscriptionIamPolicy editor projects/{your-project-id}/subscriptions/{your-subscription-name}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:pubsub/subscriptionIAMPolicy:SubscriptionIAMPolicy editor "projects/{your-project-id}/subscriptions/{your-subscription-name} roles/editor"
+    ///  $ pulumi import gcp:pubsub/subscriptionIamPolicy:SubscriptionIamPolicy editor "projects/{your-project-id}/subscriptions/{your-subscription-name} roles/editor"
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:pubsub/subscriptionIAMPolicy:SubscriptionIAMPolicy editor "projects/{your-project-id}/subscriptions/{your-subscription-name} roles/editor jane@example.com"
+    ///  $ pulumi import gcp:pubsub/subscriptionIamPolicy:SubscriptionIamPolicy editor "projects/{your-project-id}/subscriptions/{your-subscription-name} roles/editor jane@example.com"
     /// ```
     /// 
     ///  -&gt; **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
     /// 
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
-    [GcpResourceType("gcp:pubsub/subscriptionIAMPolicy:SubscriptionIAMPolicy")]
-    public partial class SubscriptionIAMPolicy : global::Pulumi.CustomResource
+    [GcpResourceType("gcp:pubsub/subscriptionIamPolicy:SubscriptionIamPolicy")]
+    public partial class SubscriptionIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// (Computed) The etag of the subscription's IAM policy.
@@ -128,7 +128,7 @@ namespace Pulumi.Gcp.PubSub
 
         /// <summary>
         /// The policy data generated by
-        /// a `gcp.organizations.getIAMPolicy` data source.
+        /// a `gcp.organizations.getIamPolicy` data source.
         /// 
         /// - - -
         /// </summary>
@@ -159,19 +159,19 @@ namespace Pulumi.Gcp.PubSub
 
 
         /// <summary>
-        /// Create a SubscriptionIAMPolicy resource with the given unique name, arguments, and options.
+        /// Create a SubscriptionIamPolicy resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public SubscriptionIAMPolicy(string name, SubscriptionIAMPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp:pubsub/subscriptionIAMPolicy:SubscriptionIAMPolicy", name, args ?? new SubscriptionIAMPolicyArgs(), MakeResourceOptions(options, ""))
+        public SubscriptionIamPolicy(string name, SubscriptionIamPolicyArgs args, CustomResourceOptions? options = null)
+            : base("gcp:pubsub/subscriptionIamPolicy:SubscriptionIamPolicy", name, args ?? new SubscriptionIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private SubscriptionIAMPolicy(string name, Input<string> id, SubscriptionIAMPolicyState? state = null, CustomResourceOptions? options = null)
-            : base("gcp:pubsub/subscriptionIAMPolicy:SubscriptionIAMPolicy", name, state, MakeResourceOptions(options, id))
+        private SubscriptionIamPolicy(string name, Input<string> id, SubscriptionIamPolicyState? state = null, CustomResourceOptions? options = null)
+            : base("gcp:pubsub/subscriptionIamPolicy:SubscriptionIamPolicy", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -187,7 +187,7 @@ namespace Pulumi.Gcp.PubSub
             return merged;
         }
         /// <summary>
-        /// Get an existing SubscriptionIAMPolicy resource's state with the given name, ID, and optional extra
+        /// Get an existing SubscriptionIamPolicy resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -195,17 +195,17 @@ namespace Pulumi.Gcp.PubSub
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static SubscriptionIAMPolicy Get(string name, Input<string> id, SubscriptionIAMPolicyState? state = null, CustomResourceOptions? options = null)
+        public static SubscriptionIamPolicy Get(string name, Input<string> id, SubscriptionIamPolicyState? state = null, CustomResourceOptions? options = null)
         {
-            return new SubscriptionIAMPolicy(name, id, state, options);
+            return new SubscriptionIamPolicy(name, id, state, options);
         }
     }
 
-    public sealed class SubscriptionIAMPolicyArgs : global::Pulumi.ResourceArgs
+    public sealed class SubscriptionIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The policy data generated by
-        /// a `gcp.organizations.getIAMPolicy` data source.
+        /// a `gcp.organizations.getIamPolicy` data source.
         /// 
         /// - - -
         /// </summary>
@@ -234,13 +234,13 @@ namespace Pulumi.Gcp.PubSub
         [Input("subscription", required: true)]
         public Input<string> Subscription { get; set; } = null!;
 
-        public SubscriptionIAMPolicyArgs()
+        public SubscriptionIamPolicyArgs()
         {
         }
-        public static new SubscriptionIAMPolicyArgs Empty => new SubscriptionIAMPolicyArgs();
+        public static new SubscriptionIamPolicyArgs Empty => new SubscriptionIamPolicyArgs();
     }
 
-    public sealed class SubscriptionIAMPolicyState : global::Pulumi.ResourceArgs
+    public sealed class SubscriptionIamPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (Computed) The etag of the subscription's IAM policy.
@@ -250,7 +250,7 @@ namespace Pulumi.Gcp.PubSub
 
         /// <summary>
         /// The policy data generated by
-        /// a `gcp.organizations.getIAMPolicy` data source.
+        /// a `gcp.organizations.getIamPolicy` data source.
         /// 
         /// - - -
         /// </summary>
@@ -279,9 +279,9 @@ namespace Pulumi.Gcp.PubSub
         [Input("subscription")]
         public Input<string>? Subscription { get; set; }
 
-        public SubscriptionIAMPolicyState()
+        public SubscriptionIamPolicyState()
         {
         }
-        public static new SubscriptionIAMPolicyState Empty => new SubscriptionIAMPolicyState();
+        public static new SubscriptionIamPolicyState Empty => new SubscriptionIamPolicyState();
     }
 }

@@ -11,9 +11,9 @@ from .. import _utilities
 
 __all__ = [
     'AccessApprovalSettingsEnrolledServiceArgs',
-    'IAMBindingConditionArgs',
-    'IAMMemberConditionArgs',
     'IamAuditConfigAuditLogConfigArgs',
+    'IamBindingConditionArgs',
+    'IamMemberConditionArgs',
     'OrganizationPolicyBooleanPolicyArgs',
     'OrganizationPolicyListPolicyArgs',
     'OrganizationPolicyListPolicyAllowArgs',
@@ -112,7 +112,45 @@ class AccessApprovalSettingsEnrolledServiceArgs:
 
 
 @pulumi.input_type
-class IAMBindingConditionArgs:
+class IamAuditConfigAuditLogConfigArgs:
+    def __init__(__self__, *,
+                 log_type: pulumi.Input[str],
+                 exempted_members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] log_type: Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] exempted_members: Identities that do not cause logging for this type of permission.  The format is the same as that for `members`.
+        """
+        pulumi.set(__self__, "log_type", log_type)
+        if exempted_members is not None:
+            pulumi.set(__self__, "exempted_members", exempted_members)
+
+    @property
+    @pulumi.getter(name="logType")
+    def log_type(self) -> pulumi.Input[str]:
+        """
+        Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
+        """
+        return pulumi.get(self, "log_type")
+
+    @log_type.setter
+    def log_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "log_type", value)
+
+    @property
+    @pulumi.getter(name="exemptedMembers")
+    def exempted_members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Identities that do not cause logging for this type of permission.  The format is the same as that for `members`.
+        """
+        return pulumi.get(self, "exempted_members")
+
+    @exempted_members.setter
+    def exempted_members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "exempted_members", value)
+
+
+@pulumi.input_type
+class IamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -151,7 +189,7 @@ class IAMBindingConditionArgs:
 
 
 @pulumi.input_type
-class IAMMemberConditionArgs:
+class IamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -209,44 +247,6 @@ class IAMMemberConditionArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-
-@pulumi.input_type
-class IamAuditConfigAuditLogConfigArgs:
-    def __init__(__self__, *,
-                 log_type: pulumi.Input[str],
-                 exempted_members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] log_type: Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] exempted_members: Identities that do not cause logging for this type of permission.  The format is the same as that for `members`.
-        """
-        pulumi.set(__self__, "log_type", log_type)
-        if exempted_members is not None:
-            pulumi.set(__self__, "exempted_members", exempted_members)
-
-    @property
-    @pulumi.getter(name="logType")
-    def log_type(self) -> pulumi.Input[str]:
-        """
-        Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
-        """
-        return pulumi.get(self, "log_type")
-
-    @log_type.setter
-    def log_type(self, value: pulumi.Input[str]):
-        pulumi.set(self, "log_type", value)
-
-    @property
-    @pulumi.getter(name="exemptedMembers")
-    def exempted_members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Identities that do not cause logging for this type of permission.  The format is the same as that for `members`.
-        """
-        return pulumi.get(self, "exempted_members")
-
-    @exempted_members.setter
-    def exempted_members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "exempted_members", value)
 
 
 @pulumi.input_type

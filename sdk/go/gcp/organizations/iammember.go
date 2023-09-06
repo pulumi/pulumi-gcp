@@ -295,7 +295,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:organizations/iAMMember:IamMember my_organization "your-orgid roles/viewer user:foo@example.com"
+//	$ pulumi import gcp:organizations/iamMember:IamMember my_organization "your-orgid roles/viewer user:foo@example.com"
 //
 // ```
 //
@@ -305,7 +305,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:organizations/iAMMember:IamMember my_organization "your-org-id roles/viewer"
+//	$ pulumi import gcp:organizations/iamMember:IamMember my_organization "your-org-id roles/viewer"
 //
 // ```
 //
@@ -315,7 +315,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:organizations/iAMMember:IamMember my_organization your-org-id
+//	$ pulumi import gcp:organizations/iamMember:IamMember my_organization your-org-id
 //
 // ```
 //
@@ -323,7 +323,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:organizations/iAMMember:IamMember my_organization "your-organization-id foo.googleapis.com"
+//	$ pulumi import gcp:organizations/iamMember:IamMember my_organization "your-organization-id foo.googleapis.com"
 //
 // ```
 //
@@ -333,11 +333,9 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:organizations/iAMMember:IamMember to include the title of condition, e.g. `google_organization_iam_binding.my_organization "your-org-id roles/{{role_id}} condition-title"`
+//	$ pulumi import gcp:organizations/iamMember:IamMember to include the title of condition, e.g. `google_organization_iam_binding.my_organization "your-org-id roles/{{role_id}} condition-title"`
 //
 // ```
-//
-// Deprecated: gcp.organizations/iammember.IamMember has been deprecated in favor of gcp.organizations/iammember.IamMember
 type IamMember struct {
 	pulumi.CustomResourceState
 
@@ -371,15 +369,9 @@ func NewIamMember(ctx *pulumi.Context,
 	if args.Role == nil {
 		return nil, errors.New("invalid value for required argument 'Role'")
 	}
-	aliases := pulumi.Aliases([]pulumi.Alias{
-		{
-			Type: pulumi.String("gcp:organizations/iAMMember:IAMMember"),
-		},
-	})
-	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource IamMember
-	err := ctx.RegisterResource("gcp:organizations/iAMMember:IamMember", name, args, &resource, opts...)
+	err := ctx.RegisterResource("gcp:organizations/iamMember:IamMember", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -391,7 +383,7 @@ func NewIamMember(ctx *pulumi.Context,
 func GetIamMember(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *IamMemberState, opts ...pulumi.ResourceOption) (*IamMember, error) {
 	var resource IamMember
-	err := ctx.ReadResource("gcp:organizations/iAMMember:IamMember", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("gcp:organizations/iamMember:IamMember", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

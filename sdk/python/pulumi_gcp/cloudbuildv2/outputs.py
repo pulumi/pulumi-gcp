@@ -19,8 +19,8 @@ __all__ = [
     'ConnectionGitlabConfigAuthorizerCredential',
     'ConnectionGitlabConfigReadAuthorizerCredential',
     'ConnectionGitlabConfigServiceDirectoryConfig',
-    'ConnectionIAMBindingCondition',
-    'ConnectionIAMMemberCondition',
+    'ConnectionIamBindingCondition',
+    'ConnectionIamMemberCondition',
     'ConnectionInstallationState',
 ]
 
@@ -507,7 +507,7 @@ class ConnectionGitlabConfigServiceDirectoryConfig(dict):
 
 
 @pulumi.output_type
-class ConnectionIAMBindingCondition(dict):
+class ConnectionIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -534,7 +534,7 @@ class ConnectionIAMBindingCondition(dict):
 
 
 @pulumi.output_type
-class ConnectionIAMMemberCondition(dict):
+class ConnectionIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,

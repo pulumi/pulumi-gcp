@@ -12,17 +12,17 @@ namespace Pulumi.Gcp.SourceRepo
     /// <summary>
     /// Three different resources help you manage your IAM policy for Cloud Pub/Sub Topic. Each of these resources serves a different use case:
     /// 
-    /// * `gcp.pubsub.TopicIAMPolicy`: Authoritative. Sets the IAM policy for the topic and replaces any existing policy already attached.
-    /// * `gcp.pubsub.TopicIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the topic are preserved.
-    /// * `gcp.pubsub.TopicIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the topic are preserved.
+    /// * `gcp.pubsub.TopicIamPolicy`: Authoritative. Sets the IAM policy for the topic and replaces any existing policy already attached.
+    /// * `gcp.pubsub.TopicIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the topic are preserved.
+    /// * `gcp.pubsub.TopicIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the topic are preserved.
     /// 
     /// A data source can be used to retrieve policy data in advent you do not need creation
     /// 
-    /// * `gcp.pubsub.TopicIAMPolicy`: Retrieves the IAM policy for the topic
+    /// * `gcp.pubsub.TopicIamPolicy`: Retrieves the IAM policy for the topic
     /// 
-    /// &gt; **Note:** `gcp.pubsub.TopicIAMPolicy` **cannot** be used in conjunction with `gcp.pubsub.TopicIAMBinding` and `gcp.pubsub.TopicIAMMember` or they will fight over what your policy should be.
+    /// &gt; **Note:** `gcp.pubsub.TopicIamPolicy` **cannot** be used in conjunction with `gcp.pubsub.TopicIamBinding` and `gcp.pubsub.TopicIamMember` or they will fight over what your policy should be.
     /// 
-    /// &gt; **Note:** `gcp.pubsub.TopicIAMBinding` resources **can be** used in conjunction with `gcp.pubsub.TopicIAMMember` resources **only if** they do not grant privilege to the same role.
+    /// &gt; **Note:** `gcp.pubsub.TopicIamBinding` resources **can be** used in conjunction with `gcp.pubsub.TopicIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
     /// ## google\_pubsub\_topic\_iam\_policy
     /// 
@@ -34,11 +34,11 @@ namespace Pulumi.Gcp.SourceRepo
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     var admin = Gcp.Organizations.GetIamPolicy.Invoke(new()
     ///     {
     ///         Bindings = new[]
     ///         {
-    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             new Gcp.Organizations.Inputs.GetIamPolicyBindingInputArgs
     ///             {
     ///                 Role = "roles/viewer",
     ///                 Members = new[]
@@ -49,11 +49,11 @@ namespace Pulumi.Gcp.SourceRepo
     ///         },
     ///     });
     /// 
-    ///     var policy = new Gcp.PubSub.TopicIAMPolicy("policy", new()
+    ///     var policy = new Gcp.PubSub.TopicIamPolicy("policy", new()
     ///     {
     ///         Project = google_pubsub_topic.Example.Project,
     ///         Topic = google_pubsub_topic.Example.Name,
-    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///         PolicyData = admin.Apply(getIamPolicyResult =&gt; getIamPolicyResult.PolicyData),
     ///     });
     /// 
     /// });
@@ -69,7 +69,7 @@ namespace Pulumi.Gcp.SourceRepo
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var binding = new Gcp.PubSub.TopicIAMBinding("binding", new()
+    ///     var binding = new Gcp.PubSub.TopicIamBinding("binding", new()
     ///     {
     ///         Project = google_pubsub_topic.Example.Project,
     ///         Topic = google_pubsub_topic.Example.Name,
@@ -93,7 +93,7 @@ namespace Pulumi.Gcp.SourceRepo
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var member = new Gcp.PubSub.TopicIAMMember("member", new()
+    ///     var member = new Gcp.PubSub.TopicIamMember("member", new()
     ///     {
     ///         Project = google_pubsub_topic.Example.Project,
     ///         Topic = google_pubsub_topic.Example.Name,
@@ -167,7 +167,7 @@ namespace Pulumi.Gcp.SourceRepo
 
         /// <summary>
         /// The role that should be applied. Only one
-        /// `gcp.pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
+        /// `gcp.pubsub.TopicIamBinding` can be used per role. Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
         /// </summary>
         [Output("role")]
@@ -254,7 +254,7 @@ namespace Pulumi.Gcp.SourceRepo
 
         /// <summary>
         /// The role that should be applied. Only one
-        /// `gcp.pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
+        /// `gcp.pubsub.TopicIamBinding` can be used per role. Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
         /// </summary>
         [Input("role", required: true)]
@@ -309,7 +309,7 @@ namespace Pulumi.Gcp.SourceRepo
 
         /// <summary>
         /// The role that should be applied. Only one
-        /// `gcp.pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
+        /// `gcp.pubsub.TopicIamBinding` can be used per role. Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
         /// </summary>
         [Input("role")]

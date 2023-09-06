@@ -364,7 +364,7 @@ class AiTensorboard(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        crypto_key = gcp.kms.CryptoKeyIAMMember("cryptoKey",
+        crypto_key = gcp.kms.CryptoKeyIamMember("cryptoKey",
             crypto_key_id="kms-name",
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-aiplatform.iam.gserviceaccount.com")
@@ -454,7 +454,7 @@ class AiTensorboard(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.get_project()
-        crypto_key = gcp.kms.CryptoKeyIAMMember("cryptoKey",
+        crypto_key = gcp.kms.CryptoKeyIamMember("cryptoKey",
             crypto_key_id="kms-name",
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-aiplatform.iam.gserviceaccount.com")

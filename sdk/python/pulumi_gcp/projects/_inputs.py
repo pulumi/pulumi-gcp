@@ -18,9 +18,9 @@ __all__ = [
     'ApiKeyRestrictionsBrowserKeyRestrictionsArgs',
     'ApiKeyRestrictionsIosKeyRestrictionsArgs',
     'ApiKeyRestrictionsServerKeyRestrictionsArgs',
-    'IAMAuditConfigAuditLogConfigArgs',
-    'IAMBindingConditionArgs',
-    'IAMMemberConditionArgs',
+    'IamAuditConfigAuditLogConfigArgs',
+    'IamBindingConditionArgs',
+    'IamMemberConditionArgs',
     'OrganizationPolicyBooleanPolicyArgs',
     'OrganizationPolicyListPolicyArgs',
     'OrganizationPolicyListPolicyAllowArgs',
@@ -349,7 +349,7 @@ class ApiKeyRestrictionsServerKeyRestrictionsArgs:
 
 
 @pulumi.input_type
-class IAMAuditConfigAuditLogConfigArgs:
+class IamAuditConfigAuditLogConfigArgs:
     def __init__(__self__, *,
                  log_type: pulumi.Input[str],
                  exempted_members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -387,7 +387,7 @@ class IAMAuditConfigAuditLogConfigArgs:
 
 
 @pulumi.input_type
-class IAMBindingConditionArgs:
+class IamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -448,7 +448,7 @@ class IAMBindingConditionArgs:
 
 
 @pulumi.input_type
-class IAMMemberConditionArgs:
+class IamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],

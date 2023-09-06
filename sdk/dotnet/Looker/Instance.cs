@@ -213,7 +213,7 @@ namespace Pulumi.Gcp.Looker
     /// 
     ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
-    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIAMMember("cryptoKey", new()
+    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIamMember("cryptoKey", new()
     ///     {
     ///         CryptoKeyId = "looker-kms-key",
     ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",

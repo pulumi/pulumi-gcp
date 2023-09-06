@@ -10,12 +10,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
-public final class SubscriptionIAMMemberCondition {
+public final class SubscriptionIamMemberCondition {
     private @Nullable String description;
     private String expression;
     private String title;
 
-    private SubscriptionIAMMemberCondition() {}
+    private SubscriptionIamMemberCondition() {}
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
@@ -30,7 +30,7 @@ public final class SubscriptionIAMMemberCondition {
         return new Builder();
     }
 
-    public static Builder builder(SubscriptionIAMMemberCondition defaults) {
+    public static Builder builder(SubscriptionIamMemberCondition defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -39,7 +39,7 @@ public final class SubscriptionIAMMemberCondition {
         private String expression;
         private String title;
         public Builder() {}
-        public Builder(SubscriptionIAMMemberCondition defaults) {
+        public Builder(SubscriptionIamMemberCondition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
     	      this.expression = defaults.expression;
@@ -61,8 +61,8 @@ public final class SubscriptionIAMMemberCondition {
             this.title = Objects.requireNonNull(title);
             return this;
         }
-        public SubscriptionIAMMemberCondition build() {
-            final var o = new SubscriptionIAMMemberCondition();
+        public SubscriptionIamMemberCondition build() {
+            final var o = new SubscriptionIamMemberCondition();
             o.description = description;
             o.expression = expression;
             o.title = title;

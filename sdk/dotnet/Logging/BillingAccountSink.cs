@@ -41,7 +41,7 @@ namespace Pulumi.Gcp.Logging
     ///         Destination = log_bucket.Name.Apply(name =&gt; $"storage.googleapis.com/{name}"),
     ///     });
     /// 
-    ///     var log_writer = new Gcp.Projects.IAMBinding("log-writer", new()
+    ///     var log_writer = new Gcp.Projects.IamBinding("log-writer", new()
     ///     {
     ///         Project = "your-project-id",
     ///         Role = "roles/storage.objectCreator",

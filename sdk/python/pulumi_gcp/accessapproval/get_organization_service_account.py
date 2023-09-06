@@ -96,7 +96,7 @@ def get_organization_service_account(organization_id: Optional[str] = None,
     import pulumi_gcp as gcp
 
     service_account = gcp.accessapproval.get_organization_service_account(organization_id="my-organization")
-    iam = gcp.kms.CryptoKeyIAMMember("iam",
+    iam = gcp.kms.CryptoKeyIamMember("iam",
         crypto_key_id=google_kms_crypto_key["crypto_key"]["id"],
         role="roles/cloudkms.signerVerifier",
         member=f"serviceAccount:{service_account.account_email}")
@@ -136,7 +136,7 @@ def get_organization_service_account_output(organization_id: Optional[pulumi.Inp
     import pulumi_gcp as gcp
 
     service_account = gcp.accessapproval.get_organization_service_account(organization_id="my-organization")
-    iam = gcp.kms.CryptoKeyIAMMember("iam",
+    iam = gcp.kms.CryptoKeyIamMember("iam",
         crypto_key_id=google_kms_crypto_key["crypto_key"]["id"],
         role="roles/cloudkms.signerVerifier",
         member=f"serviceAccount:{service_account.account_email}")

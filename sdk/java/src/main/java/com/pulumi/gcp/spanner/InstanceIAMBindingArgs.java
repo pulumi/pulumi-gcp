@@ -5,7 +5,7 @@ package com.pulumi.gcp.spanner;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.gcp.spanner.inputs.InstanceIAMBindingConditionArgs;
+import com.pulumi.gcp.spanner.inputs.InstanceIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -13,14 +13,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class InstanceIAMBindingArgs extends com.pulumi.resources.ResourceArgs {
+public final class InstanceIamBindingArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final InstanceIAMBindingArgs Empty = new InstanceIAMBindingArgs();
+    public static final InstanceIamBindingArgs Empty = new InstanceIamBindingArgs();
 
     @Import(name="condition")
-    private @Nullable Output<InstanceIAMBindingConditionArgs> condition;
+    private @Nullable Output<InstanceIamBindingConditionArgs> condition;
 
-    public Optional<Output<InstanceIAMBindingConditionArgs>> condition() {
+    public Optional<Output<InstanceIamBindingConditionArgs>> condition() {
         return Optional.ofNullable(this.condition);
     }
 
@@ -83,7 +83,7 @@ public final class InstanceIAMBindingArgs extends com.pulumi.resources.ResourceA
 
     /**
      * The role that should be applied. Only one
-     * `gcp.spanner.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.spanner.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -92,7 +92,7 @@ public final class InstanceIAMBindingArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return The role that should be applied. Only one
-     * `gcp.spanner.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.spanner.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -100,9 +100,9 @@ public final class InstanceIAMBindingArgs extends com.pulumi.resources.ResourceA
         return this.role;
     }
 
-    private InstanceIAMBindingArgs() {}
+    private InstanceIamBindingArgs() {}
 
-    private InstanceIAMBindingArgs(InstanceIAMBindingArgs $) {
+    private InstanceIamBindingArgs(InstanceIamBindingArgs $) {
         this.condition = $.condition;
         this.instance = $.instance;
         this.members = $.members;
@@ -113,27 +113,27 @@ public final class InstanceIAMBindingArgs extends com.pulumi.resources.ResourceA
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(InstanceIAMBindingArgs defaults) {
+    public static Builder builder(InstanceIamBindingArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private InstanceIAMBindingArgs $;
+        private InstanceIamBindingArgs $;
 
         public Builder() {
-            $ = new InstanceIAMBindingArgs();
+            $ = new InstanceIamBindingArgs();
         }
 
-        public Builder(InstanceIAMBindingArgs defaults) {
-            $ = new InstanceIAMBindingArgs(Objects.requireNonNull(defaults));
+        public Builder(InstanceIamBindingArgs defaults) {
+            $ = new InstanceIamBindingArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder condition(@Nullable Output<InstanceIAMBindingConditionArgs> condition) {
+        public Builder condition(@Nullable Output<InstanceIamBindingConditionArgs> condition) {
             $.condition = condition;
             return this;
         }
 
-        public Builder condition(InstanceIAMBindingConditionArgs condition) {
+        public Builder condition(InstanceIamBindingConditionArgs condition) {
             return condition(Output.of(condition));
         }
 
@@ -214,7 +214,7 @@ public final class InstanceIAMBindingArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.spanner.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.spanner.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder
@@ -227,7 +227,7 @@ public final class InstanceIAMBindingArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.spanner.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.spanner.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder
@@ -237,7 +237,7 @@ public final class InstanceIAMBindingArgs extends com.pulumi.resources.ResourceA
             return role(Output.of(role));
         }
 
-        public InstanceIAMBindingArgs build() {
+        public InstanceIamBindingArgs build() {
             $.instance = Objects.requireNonNull($.instance, "expected parameter 'instance' to be non-null");
             $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
             $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");

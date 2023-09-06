@@ -1532,26 +1532,26 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
-  "mod": "cloudbuildv2/connectionIAMBinding",
+  "mod": "cloudbuildv2/connectionIamBinding",
   "fqn": "pulumi_gcp.cloudbuildv2",
   "classes": {
-   "gcp:cloudbuildv2/connectionIAMBinding:ConnectionIAMBinding": "ConnectionIAMBinding"
+   "gcp:cloudbuildv2/connectionIamBinding:ConnectionIamBinding": "ConnectionIamBinding"
   }
  },
  {
   "pkg": "gcp",
-  "mod": "cloudbuildv2/connectionIAMMember",
+  "mod": "cloudbuildv2/connectionIamMember",
   "fqn": "pulumi_gcp.cloudbuildv2",
   "classes": {
-   "gcp:cloudbuildv2/connectionIAMMember:ConnectionIAMMember": "ConnectionIAMMember"
+   "gcp:cloudbuildv2/connectionIamMember:ConnectionIamMember": "ConnectionIamMember"
   }
  },
  {
   "pkg": "gcp",
-  "mod": "cloudbuildv2/connectionIAMPolicy",
+  "mod": "cloudbuildv2/connectionIamPolicy",
   "fqn": "pulumi_gcp.cloudbuildv2",
   "classes": {
-   "gcp:cloudbuildv2/connectionIAMPolicy:ConnectionIAMPolicy": "ConnectionIAMPolicy"
+   "gcp:cloudbuildv2/connectionIamPolicy:ConnectionIamPolicy": "ConnectionIamPolicy"
   }
  },
  {
@@ -2180,26 +2180,26 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
-  "mod": "compute/instanceIAMBinding",
+  "mod": "compute/instanceIamBinding",
   "fqn": "pulumi_gcp.compute",
   "classes": {
-   "gcp:compute/instanceIAMBinding:InstanceIAMBinding": "InstanceIAMBinding"
+   "gcp:compute/instanceIamBinding:InstanceIamBinding": "InstanceIamBinding"
   }
  },
  {
   "pkg": "gcp",
-  "mod": "compute/instanceIAMMember",
+  "mod": "compute/instanceIamMember",
   "fqn": "pulumi_gcp.compute",
   "classes": {
-   "gcp:compute/instanceIAMMember:InstanceIAMMember": "InstanceIAMMember"
+   "gcp:compute/instanceIamMember:InstanceIamMember": "InstanceIamMember"
   }
  },
  {
   "pkg": "gcp",
-  "mod": "compute/instanceIAMPolicy",
+  "mod": "compute/instanceIamPolicy",
   "fqn": "pulumi_gcp.compute",
   "classes": {
-   "gcp:compute/instanceIAMPolicy:InstanceIAMPolicy": "InstanceIAMPolicy"
+   "gcp:compute/instanceIamPolicy:InstanceIamPolicy": "InstanceIamPolicy"
   }
  },
  {
@@ -2820,26 +2820,26 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
-  "mod": "compute/subnetworkIAMBinding",
+  "mod": "compute/subnetworkIamBinding",
   "fqn": "pulumi_gcp.compute",
   "classes": {
-   "gcp:compute/subnetworkIAMBinding:SubnetworkIAMBinding": "SubnetworkIAMBinding"
+   "gcp:compute/subnetworkIamBinding:SubnetworkIamBinding": "SubnetworkIamBinding"
   }
  },
  {
   "pkg": "gcp",
-  "mod": "compute/subnetworkIAMMember",
+  "mod": "compute/subnetworkIamMember",
   "fqn": "pulumi_gcp.compute",
   "classes": {
-   "gcp:compute/subnetworkIAMMember:SubnetworkIAMMember": "SubnetworkIAMMember"
+   "gcp:compute/subnetworkIamMember:SubnetworkIamMember": "SubnetworkIamMember"
   }
  },
  {
   "pkg": "gcp",
-  "mod": "compute/subnetworkIAMPolicy",
+  "mod": "compute/subnetworkIamPolicy",
   "fqn": "pulumi_gcp.compute",
   "classes": {
-   "gcp:compute/subnetworkIAMPolicy:SubnetworkIAMPolicy": "SubnetworkIAMPolicy"
+   "gcp:compute/subnetworkIamPolicy:SubnetworkIamPolicy": "SubnetworkIamPolicy"
   }
  },
  {
@@ -3468,26 +3468,26 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
-  "mod": "dataproc/clusterIAMBinding",
+  "mod": "dataproc/clusterIamBinding",
   "fqn": "pulumi_gcp.dataproc",
   "classes": {
-   "gcp:dataproc/clusterIAMBinding:ClusterIAMBinding": "ClusterIAMBinding"
+   "gcp:dataproc/clusterIamBinding:ClusterIamBinding": "ClusterIamBinding"
   }
  },
  {
   "pkg": "gcp",
-  "mod": "dataproc/clusterIAMMember",
+  "mod": "dataproc/clusterIamMember",
   "fqn": "pulumi_gcp.dataproc",
   "classes": {
-   "gcp:dataproc/clusterIAMMember:ClusterIAMMember": "ClusterIAMMember"
+   "gcp:dataproc/clusterIamMember:ClusterIamMember": "ClusterIamMember"
   }
  },
  {
   "pkg": "gcp",
-  "mod": "dataproc/clusterIAMPolicy",
+  "mod": "dataproc/clusterIamPolicy",
   "fqn": "pulumi_gcp.dataproc",
   "classes": {
-   "gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy": "ClusterIAMPolicy"
+   "gcp:dataproc/clusterIamPolicy:ClusterIamPolicy": "ClusterIamPolicy"
   }
  },
  {
@@ -3500,26 +3500,26 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
-  "mod": "dataproc/jobIAMBinding",
+  "mod": "dataproc/jobIamBinding",
   "fqn": "pulumi_gcp.dataproc",
   "classes": {
-   "gcp:dataproc/jobIAMBinding:JobIAMBinding": "JobIAMBinding"
+   "gcp:dataproc/jobIamBinding:JobIamBinding": "JobIamBinding"
   }
  },
  {
   "pkg": "gcp",
-  "mod": "dataproc/jobIAMMember",
+  "mod": "dataproc/jobIamMember",
   "fqn": "pulumi_gcp.dataproc",
   "classes": {
-   "gcp:dataproc/jobIAMMember:JobIAMMember": "JobIAMMember"
+   "gcp:dataproc/jobIamMember:JobIamMember": "JobIamMember"
   }
  },
  {
   "pkg": "gcp",
-  "mod": "dataproc/jobIAMPolicy",
+  "mod": "dataproc/jobIamPolicy",
   "fqn": "pulumi_gcp.dataproc",
   "classes": {
-   "gcp:dataproc/jobIAMPolicy:JobIAMPolicy": "JobIAMPolicy"
+   "gcp:dataproc/jobIamPolicy:JobIamPolicy": "JobIamPolicy"
   }
  },
  {
@@ -4092,34 +4092,34 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
-  "mod": "folder/iAMBinding",
-  "fqn": "pulumi_gcp.folder",
-  "classes": {
-   "gcp:folder/iAMBinding:IAMBinding": "IAMBinding"
-  }
- },
- {
-  "pkg": "gcp",
-  "mod": "folder/iAMMember",
-  "fqn": "pulumi_gcp.folder",
-  "classes": {
-   "gcp:folder/iAMMember:IAMMember": "IAMMember"
-  }
- },
- {
-  "pkg": "gcp",
-  "mod": "folder/iAMPolicy",
-  "fqn": "pulumi_gcp.folder",
-  "classes": {
-   "gcp:folder/iAMPolicy:IAMPolicy": "IAMPolicy"
-  }
- },
- {
-  "pkg": "gcp",
   "mod": "folder/iamAuditConfig",
   "fqn": "pulumi_gcp.folder",
   "classes": {
    "gcp:folder/iamAuditConfig:IamAuditConfig": "IamAuditConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "folder/iamBinding",
+  "fqn": "pulumi_gcp.folder",
+  "classes": {
+   "gcp:folder/iamBinding:IamBinding": "IamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "folder/iamMember",
+  "fqn": "pulumi_gcp.folder",
+  "classes": {
+   "gcp:folder/iamMember:IamMember": "IamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "folder/iamPolicy",
+  "fqn": "pulumi_gcp.folder",
+  "classes": {
+   "gcp:folder/iamPolicy:IamPolicy": "IamPolicy"
   }
  },
  {
@@ -4676,26 +4676,26 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
-  "mod": "iap/tunnelInstanceIAMBinding",
+  "mod": "iap/tunnelInstanceIamBinding",
   "fqn": "pulumi_gcp.iap",
   "classes": {
-   "gcp:iap/tunnelInstanceIAMBinding:TunnelInstanceIAMBinding": "TunnelInstanceIAMBinding"
+   "gcp:iap/tunnelInstanceIamBinding:TunnelInstanceIamBinding": "TunnelInstanceIamBinding"
   }
  },
  {
   "pkg": "gcp",
-  "mod": "iap/tunnelInstanceIAMMember",
+  "mod": "iap/tunnelInstanceIamMember",
   "fqn": "pulumi_gcp.iap",
   "classes": {
-   "gcp:iap/tunnelInstanceIAMMember:TunnelInstanceIAMMember": "TunnelInstanceIAMMember"
+   "gcp:iap/tunnelInstanceIamMember:TunnelInstanceIamMember": "TunnelInstanceIamMember"
   }
  },
  {
   "pkg": "gcp",
-  "mod": "iap/tunnelInstanceIAMPolicy",
+  "mod": "iap/tunnelInstanceIamPolicy",
   "fqn": "pulumi_gcp.iap",
   "classes": {
-   "gcp:iap/tunnelInstanceIAMPolicy:TunnelInstanceIAMPolicy": "TunnelInstanceIAMPolicy"
+   "gcp:iap/tunnelInstanceIamPolicy:TunnelInstanceIamPolicy": "TunnelInstanceIamPolicy"
   }
  },
  {
@@ -4940,26 +4940,26 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
-  "mod": "kms/cryptoKeyIAMBinding",
+  "mod": "kms/cryptoKeyIamBinding",
   "fqn": "pulumi_gcp.kms",
   "classes": {
-   "gcp:kms/cryptoKeyIAMBinding:CryptoKeyIAMBinding": "CryptoKeyIAMBinding"
+   "gcp:kms/cryptoKeyIamBinding:CryptoKeyIamBinding": "CryptoKeyIamBinding"
   }
  },
  {
   "pkg": "gcp",
-  "mod": "kms/cryptoKeyIAMMember",
+  "mod": "kms/cryptoKeyIamMember",
   "fqn": "pulumi_gcp.kms",
   "classes": {
-   "gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember": "CryptoKeyIAMMember"
+   "gcp:kms/cryptoKeyIamMember:CryptoKeyIamMember": "CryptoKeyIamMember"
   }
  },
  {
   "pkg": "gcp",
-  "mod": "kms/cryptoKeyIAMPolicy",
+  "mod": "kms/cryptoKeyIamPolicy",
   "fqn": "pulumi_gcp.kms",
   "classes": {
-   "gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy": "CryptoKeyIAMPolicy"
+   "gcp:kms/cryptoKeyIamPolicy:CryptoKeyIamPolicy": "CryptoKeyIamPolicy"
   }
  },
  {
@@ -4980,26 +4980,26 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
-  "mod": "kms/keyRingIAMBinding",
+  "mod": "kms/keyRingIamBinding",
   "fqn": "pulumi_gcp.kms",
   "classes": {
-   "gcp:kms/keyRingIAMBinding:KeyRingIAMBinding": "KeyRingIAMBinding"
+   "gcp:kms/keyRingIamBinding:KeyRingIamBinding": "KeyRingIamBinding"
   }
  },
  {
   "pkg": "gcp",
-  "mod": "kms/keyRingIAMMember",
+  "mod": "kms/keyRingIamMember",
   "fqn": "pulumi_gcp.kms",
   "classes": {
-   "gcp:kms/keyRingIAMMember:KeyRingIAMMember": "KeyRingIAMMember"
+   "gcp:kms/keyRingIamMember:KeyRingIamMember": "KeyRingIamMember"
   }
  },
  {
   "pkg": "gcp",
-  "mod": "kms/keyRingIAMPolicy",
+  "mod": "kms/keyRingIamPolicy",
   "fqn": "pulumi_gcp.kms",
   "classes": {
-   "gcp:kms/keyRingIAMPolicy:KeyRingIAMPolicy": "KeyRingIAMPolicy"
+   "gcp:kms/keyRingIamPolicy:KeyRingIamPolicy": "KeyRingIamPolicy"
   }
  },
  {
@@ -5532,42 +5532,42 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
-  "mod": "organizations/iAMBinding",
-  "fqn": "pulumi_gcp.organizations",
-  "classes": {
-   "gcp:organizations/iAMBinding:IAMBinding": "IAMBinding"
-  }
- },
- {
-  "pkg": "gcp",
-  "mod": "organizations/iAMCustomRole",
-  "fqn": "pulumi_gcp.organizations",
-  "classes": {
-   "gcp:organizations/iAMCustomRole:IAMCustomRole": "IAMCustomRole"
-  }
- },
- {
-  "pkg": "gcp",
-  "mod": "organizations/iAMMember",
-  "fqn": "pulumi_gcp.organizations",
-  "classes": {
-   "gcp:organizations/iAMMember:IAMMember": "IAMMember"
-  }
- },
- {
-  "pkg": "gcp",
-  "mod": "organizations/iAMPolicy",
-  "fqn": "pulumi_gcp.organizations",
-  "classes": {
-   "gcp:organizations/iAMPolicy:IAMPolicy": "IAMPolicy"
-  }
- },
- {
-  "pkg": "gcp",
   "mod": "organizations/iamAuditConfig",
   "fqn": "pulumi_gcp.organizations",
   "classes": {
    "gcp:organizations/iamAuditConfig:IamAuditConfig": "IamAuditConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "organizations/iamBinding",
+  "fqn": "pulumi_gcp.organizations",
+  "classes": {
+   "gcp:organizations/iamBinding:IamBinding": "IamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "organizations/iamCustomRole",
+  "fqn": "pulumi_gcp.organizations",
+  "classes": {
+   "gcp:organizations/iamCustomRole:IamCustomRole": "IamCustomRole"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "organizations/iamMember",
+  "fqn": "pulumi_gcp.organizations",
+  "classes": {
+   "gcp:organizations/iamMember:IamMember": "IamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "organizations/iamPolicy",
+  "fqn": "pulumi_gcp.organizations",
+  "classes": {
+   "gcp:organizations/iamPolicy:IamPolicy": "IamPolicy"
   }
  },
  {
@@ -5660,42 +5660,42 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
-  "mod": "projects/iAMAuditConfig",
+  "mod": "projects/iamAuditConfig",
   "fqn": "pulumi_gcp.projects",
   "classes": {
-   "gcp:projects/iAMAuditConfig:IAMAuditConfig": "IAMAuditConfig"
+   "gcp:projects/iamAuditConfig:IamAuditConfig": "IamAuditConfig"
   }
  },
  {
   "pkg": "gcp",
-  "mod": "projects/iAMBinding",
+  "mod": "projects/iamBinding",
   "fqn": "pulumi_gcp.projects",
   "classes": {
-   "gcp:projects/iAMBinding:IAMBinding": "IAMBinding"
+   "gcp:projects/iamBinding:IamBinding": "IamBinding"
   }
  },
  {
   "pkg": "gcp",
-  "mod": "projects/iAMCustomRole",
+  "mod": "projects/iamCustomRole",
   "fqn": "pulumi_gcp.projects",
   "classes": {
-   "gcp:projects/iAMCustomRole:IAMCustomRole": "IAMCustomRole"
+   "gcp:projects/iamCustomRole:IamCustomRole": "IamCustomRole"
   }
  },
  {
   "pkg": "gcp",
-  "mod": "projects/iAMMember",
+  "mod": "projects/iamMember",
   "fqn": "pulumi_gcp.projects",
   "classes": {
-   "gcp:projects/iAMMember:IAMMember": "IAMMember"
+   "gcp:projects/iamMember:IamMember": "IamMember"
   }
  },
  {
   "pkg": "gcp",
-  "mod": "projects/iAMPolicy",
+  "mod": "projects/iamPolicy",
   "fqn": "pulumi_gcp.projects",
   "classes": {
-   "gcp:projects/iAMPolicy:IAMPolicy": "IAMPolicy"
+   "gcp:projects/iamPolicy:IamPolicy": "IamPolicy"
   }
  },
  {
@@ -5772,26 +5772,26 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
-  "mod": "pubsub/subscriptionIAMBinding",
+  "mod": "pubsub/subscriptionIamBinding",
   "fqn": "pulumi_gcp.pubsub",
   "classes": {
-   "gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding": "SubscriptionIAMBinding"
+   "gcp:pubsub/subscriptionIamBinding:SubscriptionIamBinding": "SubscriptionIamBinding"
   }
  },
  {
   "pkg": "gcp",
-  "mod": "pubsub/subscriptionIAMMember",
+  "mod": "pubsub/subscriptionIamMember",
   "fqn": "pulumi_gcp.pubsub",
   "classes": {
-   "gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember": "SubscriptionIAMMember"
+   "gcp:pubsub/subscriptionIamMember:SubscriptionIamMember": "SubscriptionIamMember"
   }
  },
  {
   "pkg": "gcp",
-  "mod": "pubsub/subscriptionIAMPolicy",
+  "mod": "pubsub/subscriptionIamPolicy",
   "fqn": "pulumi_gcp.pubsub",
   "classes": {
-   "gcp:pubsub/subscriptionIAMPolicy:SubscriptionIAMPolicy": "SubscriptionIAMPolicy"
+   "gcp:pubsub/subscriptionIamPolicy:SubscriptionIamPolicy": "SubscriptionIamPolicy"
   }
  },
  {
@@ -5804,26 +5804,26 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
-  "mod": "pubsub/topicIAMBinding",
+  "mod": "pubsub/topicIamBinding",
   "fqn": "pulumi_gcp.pubsub",
   "classes": {
-   "gcp:pubsub/topicIAMBinding:TopicIAMBinding": "TopicIAMBinding"
+   "gcp:pubsub/topicIamBinding:TopicIamBinding": "TopicIamBinding"
   }
  },
  {
   "pkg": "gcp",
-  "mod": "pubsub/topicIAMMember",
+  "mod": "pubsub/topicIamMember",
   "fqn": "pulumi_gcp.pubsub",
   "classes": {
-   "gcp:pubsub/topicIAMMember:TopicIAMMember": "TopicIAMMember"
+   "gcp:pubsub/topicIamMember:TopicIamMember": "TopicIamMember"
   }
  },
  {
   "pkg": "gcp",
-  "mod": "pubsub/topicIAMPolicy",
+  "mod": "pubsub/topicIamPolicy",
   "fqn": "pulumi_gcp.pubsub",
   "classes": {
-   "gcp:pubsub/topicIAMPolicy:TopicIAMPolicy": "TopicIAMPolicy"
+   "gcp:pubsub/topicIamPolicy:TopicIamPolicy": "TopicIamPolicy"
   }
  },
  {
@@ -6020,26 +6020,26 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
-  "mod": "serviceAccount/iAMBinding",
+  "mod": "serviceAccount/iamBinding",
   "fqn": "pulumi_gcp.serviceaccount",
   "classes": {
-   "gcp:serviceAccount/iAMBinding:IAMBinding": "IAMBinding"
+   "gcp:serviceAccount/iamBinding:IamBinding": "IamBinding"
   }
  },
  {
   "pkg": "gcp",
-  "mod": "serviceAccount/iAMMember",
+  "mod": "serviceAccount/iamMember",
   "fqn": "pulumi_gcp.serviceaccount",
   "classes": {
-   "gcp:serviceAccount/iAMMember:IAMMember": "IAMMember"
+   "gcp:serviceAccount/iamMember:IamMember": "IamMember"
   }
  },
  {
   "pkg": "gcp",
-  "mod": "serviceAccount/iAMPolicy",
+  "mod": "serviceAccount/iamPolicy",
   "fqn": "pulumi_gcp.serviceaccount",
   "classes": {
-   "gcp:serviceAccount/iAMPolicy:IAMPolicy": "IAMPolicy"
+   "gcp:serviceAccount/iamPolicy:IamPolicy": "IamPolicy"
   }
  },
  {
@@ -6188,26 +6188,26 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
-  "mod": "spanner/databaseIAMBinding",
+  "mod": "spanner/databaseIamBinding",
   "fqn": "pulumi_gcp.spanner",
   "classes": {
-   "gcp:spanner/databaseIAMBinding:DatabaseIAMBinding": "DatabaseIAMBinding"
+   "gcp:spanner/databaseIamBinding:DatabaseIamBinding": "DatabaseIamBinding"
   }
  },
  {
   "pkg": "gcp",
-  "mod": "spanner/databaseIAMMember",
+  "mod": "spanner/databaseIamMember",
   "fqn": "pulumi_gcp.spanner",
   "classes": {
-   "gcp:spanner/databaseIAMMember:DatabaseIAMMember": "DatabaseIAMMember"
+   "gcp:spanner/databaseIamMember:DatabaseIamMember": "DatabaseIamMember"
   }
  },
  {
   "pkg": "gcp",
-  "mod": "spanner/databaseIAMPolicy",
+  "mod": "spanner/databaseIamPolicy",
   "fqn": "pulumi_gcp.spanner",
   "classes": {
-   "gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy": "DatabaseIAMPolicy"
+   "gcp:spanner/databaseIamPolicy:DatabaseIamPolicy": "DatabaseIamPolicy"
   }
  },
  {
@@ -6220,26 +6220,26 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
-  "mod": "spanner/instanceIAMBinding",
+  "mod": "spanner/instanceIamBinding",
   "fqn": "pulumi_gcp.spanner",
   "classes": {
-   "gcp:spanner/instanceIAMBinding:InstanceIAMBinding": "InstanceIAMBinding"
+   "gcp:spanner/instanceIamBinding:InstanceIamBinding": "InstanceIamBinding"
   }
  },
  {
   "pkg": "gcp",
-  "mod": "spanner/instanceIAMMember",
+  "mod": "spanner/instanceIamMember",
   "fqn": "pulumi_gcp.spanner",
   "classes": {
-   "gcp:spanner/instanceIAMMember:InstanceIAMMember": "InstanceIAMMember"
+   "gcp:spanner/instanceIamMember:InstanceIamMember": "InstanceIamMember"
   }
  },
  {
   "pkg": "gcp",
-  "mod": "spanner/instanceIAMPolicy",
+  "mod": "spanner/instanceIamPolicy",
   "fqn": "pulumi_gcp.spanner",
   "classes": {
-   "gcp:spanner/instanceIAMPolicy:InstanceIAMPolicy": "InstanceIAMPolicy"
+   "gcp:spanner/instanceIamPolicy:InstanceIamPolicy": "InstanceIamPolicy"
   }
  },
  {
@@ -6308,26 +6308,26 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
-  "mod": "storage/bucketIAMBinding",
+  "mod": "storage/bucketIamBinding",
   "fqn": "pulumi_gcp.storage",
   "classes": {
-   "gcp:storage/bucketIAMBinding:BucketIAMBinding": "BucketIAMBinding"
+   "gcp:storage/bucketIamBinding:BucketIamBinding": "BucketIamBinding"
   }
  },
  {
   "pkg": "gcp",
-  "mod": "storage/bucketIAMMember",
+  "mod": "storage/bucketIamMember",
   "fqn": "pulumi_gcp.storage",
   "classes": {
-   "gcp:storage/bucketIAMMember:BucketIAMMember": "BucketIAMMember"
+   "gcp:storage/bucketIamMember:BucketIamMember": "BucketIamMember"
   }
  },
  {
   "pkg": "gcp",
-  "mod": "storage/bucketIAMPolicy",
+  "mod": "storage/bucketIamPolicy",
   "fqn": "pulumi_gcp.storage",
   "classes": {
-   "gcp:storage/bucketIAMPolicy:BucketIAMPolicy": "BucketIAMPolicy"
+   "gcp:storage/bucketIamPolicy:BucketIamPolicy": "BucketIamPolicy"
   }
  },
  {

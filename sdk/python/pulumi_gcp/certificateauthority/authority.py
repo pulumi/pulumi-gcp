@@ -937,11 +937,11 @@ class Authority(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         privateca_sa = gcp.projects.ServiceIdentity("privatecaSa", service="privateca.googleapis.com")
-        privateca_sa_keyuser_signerverifier = gcp.kms.CryptoKeyIAMBinding("privatecaSaKeyuserSignerverifier",
+        privateca_sa_keyuser_signerverifier = gcp.kms.CryptoKeyIamBinding("privatecaSaKeyuserSignerverifier",
             crypto_key_id="projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key",
             role="roles/cloudkms.signerVerifier",
             members=[privateca_sa.email.apply(lambda email: f"serviceAccount:{email}")])
-        privateca_sa_keyuser_viewer = gcp.kms.CryptoKeyIAMBinding("privatecaSaKeyuserViewer",
+        privateca_sa_keyuser_viewer = gcp.kms.CryptoKeyIamBinding("privatecaSaKeyuserViewer",
             crypto_key_id="projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key",
             role="roles/viewer",
             members=[privateca_sa.email.apply(lambda email: f"serviceAccount:{email}")])
@@ -1224,11 +1224,11 @@ class Authority(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         privateca_sa = gcp.projects.ServiceIdentity("privatecaSa", service="privateca.googleapis.com")
-        privateca_sa_keyuser_signerverifier = gcp.kms.CryptoKeyIAMBinding("privatecaSaKeyuserSignerverifier",
+        privateca_sa_keyuser_signerverifier = gcp.kms.CryptoKeyIamBinding("privatecaSaKeyuserSignerverifier",
             crypto_key_id="projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key",
             role="roles/cloudkms.signerVerifier",
             members=[privateca_sa.email.apply(lambda email: f"serviceAccount:{email}")])
-        privateca_sa_keyuser_viewer = gcp.kms.CryptoKeyIAMBinding("privatecaSaKeyuserViewer",
+        privateca_sa_keyuser_viewer = gcp.kms.CryptoKeyIamBinding("privatecaSaKeyuserViewer",
             crypto_key_id="projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key",
             role="roles/viewer",
             members=[privateca_sa.email.apply(lambda email: f"serviceAccount:{email}")])

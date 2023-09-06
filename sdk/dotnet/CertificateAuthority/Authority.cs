@@ -241,7 +241,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///         Service = "privateca.googleapis.com",
     ///     });
     /// 
-    ///     var privatecaSaKeyuserSignerverifier = new Gcp.Kms.CryptoKeyIAMBinding("privatecaSaKeyuserSignerverifier", new()
+    ///     var privatecaSaKeyuserSignerverifier = new Gcp.Kms.CryptoKeyIamBinding("privatecaSaKeyuserSignerverifier", new()
     ///     {
     ///         CryptoKeyId = "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key",
     ///         Role = "roles/cloudkms.signerVerifier",
@@ -251,7 +251,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///         },
     ///     });
     /// 
-    ///     var privatecaSaKeyuserViewer = new Gcp.Kms.CryptoKeyIAMBinding("privatecaSaKeyuserViewer", new()
+    ///     var privatecaSaKeyuserViewer = new Gcp.Kms.CryptoKeyIamBinding("privatecaSaKeyuserViewer", new()
     ///     {
     ///         CryptoKeyId = "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key",
     ///         Role = "roles/viewer",

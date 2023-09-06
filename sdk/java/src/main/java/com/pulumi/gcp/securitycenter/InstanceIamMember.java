@@ -135,8 +135,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.kms.CryptoKeyArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
- * import com.pulumi.gcp.kms.CryptoKeyIAMBinding;
- * import com.pulumi.gcp.kms.CryptoKeyIAMBindingArgs;
+ * import com.pulumi.gcp.kms.CryptoKeyIamBinding;
+ * import com.pulumi.gcp.kms.CryptoKeyIamBindingArgs;
  * import com.pulumi.gcp.datafusion.Instance;
  * import com.pulumi.gcp.datafusion.InstanceArgs;
  * import com.pulumi.gcp.datafusion.inputs.InstanceCryptoKeyConfigArgs;
@@ -164,7 +164,7 @@ import javax.annotation.Nullable;
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var cryptoKeyBinding = new CryptoKeyIAMBinding(&#34;cryptoKeyBinding&#34;, CryptoKeyIAMBindingArgs.builder()        
+ *         var cryptoKeyBinding = new CryptoKeyIamBinding(&#34;cryptoKeyBinding&#34;, CryptoKeyIamBindingArgs.builder()        
  *             .cryptoKeyId(cryptoKey.id())
  *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
  *             .members(String.format(&#34;serviceAccount:service-%s@gcp-sa-datafusion.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))

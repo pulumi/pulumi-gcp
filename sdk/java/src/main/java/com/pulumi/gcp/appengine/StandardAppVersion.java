@@ -47,8 +47,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.serviceAccount.Account;
  * import com.pulumi.gcp.serviceAccount.AccountArgs;
- * import com.pulumi.gcp.projects.IAMMember;
- * import com.pulumi.gcp.projects.IAMMemberArgs;
+ * import com.pulumi.gcp.projects.IamMember;
+ * import com.pulumi.gcp.projects.IamMemberArgs;
  * import com.pulumi.gcp.storage.Bucket;
  * import com.pulumi.gcp.storage.BucketArgs;
  * import com.pulumi.gcp.storage.BucketObject;
@@ -80,13 +80,13 @@ import javax.annotation.Nullable;
  *             .displayName(&#34;Custom Service Account&#34;)
  *             .build());
  * 
- *         var gaeApi = new IAMMember(&#34;gaeApi&#34;, IAMMemberArgs.builder()        
+ *         var gaeApi = new IamMember(&#34;gaeApi&#34;, IamMemberArgs.builder()        
  *             .project(customServiceAccount.project())
  *             .role(&#34;roles/compute.networkUser&#34;)
  *             .member(customServiceAccount.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
  *             .build());
  * 
- *         var storageViewer = new IAMMember(&#34;storageViewer&#34;, IAMMemberArgs.builder()        
+ *         var storageViewer = new IamMember(&#34;storageViewer&#34;, IamMemberArgs.builder()        
  *             .project(customServiceAccount.project())
  *             .role(&#34;roles/storage.objectViewer&#34;)
  *             .member(customServiceAccount.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))

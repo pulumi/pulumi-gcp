@@ -8,21 +8,21 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
-import com.pulumi.gcp.dataproc.JobIAMPolicyArgs;
-import com.pulumi.gcp.dataproc.inputs.JobIAMPolicyState;
+import com.pulumi.gcp.dataproc.JobIamPolicyArgs;
+import com.pulumi.gcp.dataproc.inputs.JobIamPolicyState;
 import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
  * Three different resources help you manage IAM policies on dataproc jobs. Each of these resources serves a different use case:
  * 
- * * `gcp.dataproc.JobIAMPolicy`: Authoritative. Sets the IAM policy for the job and replaces any existing policy already attached.
- * * `gcp.dataproc.JobIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the job are preserved.
- * * `gcp.dataproc.JobIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the job are preserved.
+ * * `gcp.dataproc.JobIamPolicy`: Authoritative. Sets the IAM policy for the job and replaces any existing policy already attached.
+ * * `gcp.dataproc.JobIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the job are preserved.
+ * * `gcp.dataproc.JobIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the job are preserved.
  * 
- * &gt; **Note:** `gcp.dataproc.JobIAMPolicy` **cannot** be used in conjunction with `gcp.dataproc.JobIAMBinding` and `gcp.dataproc.JobIAMMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the job as `gcp.dataproc.JobIAMPolicy` replaces the entire policy.
+ * &gt; **Note:** `gcp.dataproc.JobIamPolicy` **cannot** be used in conjunction with `gcp.dataproc.JobIamBinding` and `gcp.dataproc.JobIamMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the job as `gcp.dataproc.JobIamPolicy` replaces the entire policy.
  * 
- * &gt; **Note:** `gcp.dataproc.JobIAMBinding` resources **can be** used in conjunction with `gcp.dataproc.JobIAMMember` resources **only if** they do not grant privilege to the same role.
+ * &gt; **Note:** `gcp.dataproc.JobIamBinding` resources **can be** used in conjunction with `gcp.dataproc.JobIamMember` resources **only if** they do not grant privilege to the same role.
  * 
  * ## google\_dataproc\_job\_iam\_policy
  * ```java
@@ -32,9 +32,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
- * import com.pulumi.gcp.dataproc.JobIAMPolicy;
- * import com.pulumi.gcp.dataproc.JobIAMPolicyArgs;
+ * import com.pulumi.gcp.organizations.inputs.GetIamPolicyArgs;
+ * import com.pulumi.gcp.dataproc.JobIamPolicy;
+ * import com.pulumi.gcp.dataproc.JobIamPolicyArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -48,18 +48,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
- *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *         final var admin = OrganizationsFunctions.getIamPolicy(GetIamPolicyArgs.builder()
+ *             .bindings(GetIamPolicyBindingArgs.builder()
  *                 .role(&#34;roles/editor&#34;)
  *                 .members(&#34;user:jane@example.com&#34;)
  *                 .build())
  *             .build());
  * 
- *         var editor = new JobIAMPolicy(&#34;editor&#34;, JobIAMPolicyArgs.builder()        
+ *         var editor = new JobIamPolicy(&#34;editor&#34;, JobIamPolicyArgs.builder()        
  *             .project(&#34;your-project&#34;)
  *             .region(&#34;your-region&#34;)
  *             .jobId(&#34;your-dataproc-job&#34;)
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIamPolicyResult -&gt; getIamPolicyResult.policyData()))
  *             .build());
  * 
  *     }
@@ -73,8 +73,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.dataproc.JobIAMBinding;
- * import com.pulumi.gcp.dataproc.JobIAMBindingArgs;
+ * import com.pulumi.gcp.dataproc.JobIamBinding;
+ * import com.pulumi.gcp.dataproc.JobIamBindingArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -88,7 +88,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var editor = new JobIAMBinding(&#34;editor&#34;, JobIAMBindingArgs.builder()        
+ *         var editor = new JobIamBinding(&#34;editor&#34;, JobIamBindingArgs.builder()        
  *             .jobId(&#34;your-dataproc-job&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
  *             .role(&#34;roles/editor&#34;)
@@ -105,8 +105,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.dataproc.JobIAMMember;
- * import com.pulumi.gcp.dataproc.JobIAMMemberArgs;
+ * import com.pulumi.gcp.dataproc.JobIamMember;
+ * import com.pulumi.gcp.dataproc.JobIamMemberArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -120,7 +120,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var editor = new JobIAMMember(&#34;editor&#34;, JobIAMMemberArgs.builder()        
+ *         var editor = new JobIamMember(&#34;editor&#34;, JobIamMemberArgs.builder()        
  *             .jobId(&#34;your-dataproc-job&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
  *             .role(&#34;roles/editor&#34;)
@@ -135,15 +135,15 @@ import javax.annotation.Nullable;
  * Job IAM resources can be imported using the project, region, job id, role and/or member.
  * 
  * ```sh
- *  $ pulumi import gcp:dataproc/jobIAMPolicy:JobIAMPolicy editor &#34;projects/{project}/regions/{region}/jobs/{job_id}&#34;
+ *  $ pulumi import gcp:dataproc/jobIamPolicy:JobIamPolicy editor &#34;projects/{project}/regions/{region}/jobs/{job_id}&#34;
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:dataproc/jobIAMPolicy:JobIAMPolicy editor &#34;projects/{project}/regions/{region}/jobs/{job_id} roles/editor&#34;
+ *  $ pulumi import gcp:dataproc/jobIamPolicy:JobIamPolicy editor &#34;projects/{project}/regions/{region}/jobs/{job_id} roles/editor&#34;
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:dataproc/jobIAMPolicy:JobIAMPolicy editor &#34;projects/{project}/regions/{region}/jobs/{job_id} roles/editor user:jane@example.com&#34;
+ *  $ pulumi import gcp:dataproc/jobIamPolicy:JobIamPolicy editor &#34;projects/{project}/regions/{region}/jobs/{job_id} roles/editor user:jane@example.com&#34;
  * ```
  * 
  *  -&gt; **Custom Roles**If you&#39;re importing a IAM resource with a custom role, make sure to use the
@@ -151,8 +151,8 @@ import javax.annotation.Nullable;
  * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * 
  */
-@ResourceType(type="gcp:dataproc/jobIAMPolicy:JobIAMPolicy")
-public class JobIAMPolicy extends com.pulumi.resources.CustomResource {
+@ResourceType(type="gcp:dataproc/jobIamPolicy:JobIamPolicy")
+public class JobIamPolicy extends com.pulumi.resources.CustomResource {
     /**
      * (Computed) The etag of the jobs&#39;s IAM policy.
      * 
@@ -174,7 +174,7 @@ public class JobIAMPolicy extends com.pulumi.resources.CustomResource {
         return this.jobId;
     }
     /**
-     * The policy data generated by a `gcp.organizations.getIAMPolicy` data source.
+     * The policy data generated by a `gcp.organizations.getIamPolicy` data source.
      * 
      * ***
      * 
@@ -183,7 +183,7 @@ public class JobIAMPolicy extends com.pulumi.resources.CustomResource {
     private Output<String> policyData;
 
     /**
-     * @return The policy data generated by a `gcp.organizations.getIAMPolicy` data source.
+     * @return The policy data generated by a `gcp.organizations.getIamPolicy` data source.
      * 
      * ***
      * 
@@ -228,15 +228,15 @@ public class JobIAMPolicy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public JobIAMPolicy(String name) {
-        this(name, JobIAMPolicyArgs.Empty);
+    public JobIamPolicy(String name) {
+        this(name, JobIamPolicyArgs.Empty);
     }
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public JobIAMPolicy(String name, JobIAMPolicyArgs args) {
+    public JobIamPolicy(String name, JobIamPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -245,12 +245,12 @@ public class JobIAMPolicy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public JobIAMPolicy(String name, JobIAMPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataproc/jobIAMPolicy:JobIAMPolicy", name, args == null ? JobIAMPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public JobIamPolicy(String name, JobIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:dataproc/jobIamPolicy:JobIamPolicy", name, args == null ? JobIamPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private JobIAMPolicy(String name, Output<String> id, @Nullable JobIAMPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:dataproc/jobIAMPolicy:JobIAMPolicy", name, state, makeResourceOptions(options, id));
+    private JobIamPolicy(String name, Output<String> id, @Nullable JobIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:dataproc/jobIamPolicy:JobIamPolicy", name, state, makeResourceOptions(options, id));
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
@@ -269,7 +269,7 @@ public class JobIAMPolicy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static JobIAMPolicy get(String name, Output<String> id, @Nullable JobIAMPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        return new JobIAMPolicy(name, id, state, options);
+    public static JobIamPolicy get(String name, Output<String> id, @Nullable JobIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        return new JobIamPolicy(name, id, state, options);
     }
 }

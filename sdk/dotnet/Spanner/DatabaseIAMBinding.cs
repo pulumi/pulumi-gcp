@@ -12,16 +12,16 @@ namespace Pulumi.Gcp.Spanner
     /// <summary>
     /// Three different resources help you manage your IAM policy for a Spanner database. Each of these resources serves a different use case:
     /// 
-    /// * `gcp.spanner.DatabaseIAMPolicy`: Authoritative. Sets the IAM policy for the database and replaces any existing policy already attached.
+    /// * `gcp.spanner.DatabaseIamPolicy`: Authoritative. Sets the IAM policy for the database and replaces any existing policy already attached.
     /// 
-    /// &gt; **Warning:** It's entirely possibly to lock yourself out of your database using `gcp.spanner.DatabaseIAMPolicy`. Any permissions granted by default will be removed unless you include them in your config.
+    /// &gt; **Warning:** It's entirely possibly to lock yourself out of your database using `gcp.spanner.DatabaseIamPolicy`. Any permissions granted by default will be removed unless you include them in your config.
     /// 
-    /// * `gcp.spanner.DatabaseIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the database are preserved.
-    /// * `gcp.spanner.DatabaseIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the database are preserved.
+    /// * `gcp.spanner.DatabaseIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the database are preserved.
+    /// * `gcp.spanner.DatabaseIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the database are preserved.
     /// 
-    /// &gt; **Note:** `gcp.spanner.DatabaseIAMPolicy` **cannot** be used in conjunction with `gcp.spanner.DatabaseIAMBinding` and `gcp.spanner.DatabaseIAMMember` or they will fight over what your policy should be.
+    /// &gt; **Note:** `gcp.spanner.DatabaseIamPolicy` **cannot** be used in conjunction with `gcp.spanner.DatabaseIamBinding` and `gcp.spanner.DatabaseIamMember` or they will fight over what your policy should be.
     /// 
-    /// &gt; **Note:** `gcp.spanner.DatabaseIAMBinding` resources **can be** used in conjunction with `gcp.spanner.DatabaseIAMMember` resources **only if** they do not grant privilege to the same role.
+    /// &gt; **Note:** `gcp.spanner.DatabaseIamBinding` resources **can be** used in conjunction with `gcp.spanner.DatabaseIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
     /// ## google\_spanner\_database\_iam\_policy
     /// 
@@ -33,11 +33,11 @@ namespace Pulumi.Gcp.Spanner
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     var admin = Gcp.Organizations.GetIamPolicy.Invoke(new()
     ///     {
     ///         Bindings = new[]
     ///         {
-    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             new Gcp.Organizations.Inputs.GetIamPolicyBindingInputArgs
     ///             {
     ///                 Role = "roles/editor",
     ///                 Members = new[]
@@ -48,11 +48,11 @@ namespace Pulumi.Gcp.Spanner
     ///         },
     ///     });
     /// 
-    ///     var database = new Gcp.Spanner.DatabaseIAMPolicy("database", new()
+    ///     var database = new Gcp.Spanner.DatabaseIamPolicy("database", new()
     ///     {
     ///         Instance = "your-instance-name",
     ///         Database = "your-database-name",
-    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///         PolicyData = admin.Apply(getIamPolicyResult =&gt; getIamPolicyResult.PolicyData),
     ///     });
     /// 
     /// });
@@ -68,7 +68,7 @@ namespace Pulumi.Gcp.Spanner
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var database = new Gcp.Spanner.DatabaseIAMBinding("database", new()
+    ///     var database = new Gcp.Spanner.DatabaseIamBinding("database", new()
     ///     {
     ///         Database = "your-database-name",
     ///         Instance = "your-instance-name",
@@ -92,7 +92,7 @@ namespace Pulumi.Gcp.Spanner
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var database = new Gcp.Spanner.DatabaseIAMMember("database", new()
+    ///     var database = new Gcp.Spanner.DatabaseIamMember("database", new()
     ///     {
     ///         Database = "your-database-name",
     ///         Instance = "your-instance-name",
@@ -108,30 +108,30 @@ namespace Pulumi.Gcp.Spanner
     /// For all import syntaxes, the "resource in question" can take any of the following forms* {{project}}/{{instance}}/{{database}} * {{instance}}/{{database}} (project is taken from provider project) IAM member imports use space-delimited identifiers; the resource in question, the role, and the member identity, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:spanner/databaseIAMBinding:DatabaseIAMBinding database "project-name/instance-name/database-name roles/viewer user:foo@example.com"
+    ///  $ pulumi import gcp:spanner/databaseIamBinding:DatabaseIamBinding database "project-name/instance-name/database-name roles/viewer user:foo@example.com"
     /// ```
     /// 
     ///  IAM binding imports use space-delimited identifiers; the resource in question and the role, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:spanner/databaseIAMBinding:DatabaseIAMBinding database "project-name/instance-name/database-name roles/viewer"
+    ///  $ pulumi import gcp:spanner/databaseIamBinding:DatabaseIamBinding database "project-name/instance-name/database-name roles/viewer"
     /// ```
     /// 
     ///  IAM policy imports use the identifier of the resource in question, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:spanner/databaseIAMBinding:DatabaseIAMBinding database project-name/instance-name/database-name
+    ///  $ pulumi import gcp:spanner/databaseIamBinding:DatabaseIamBinding database project-name/instance-name/database-name
     /// ```
     /// 
     ///  -&gt; **Custom Roles:** If you're importing a IAM resource with a custom role, make sure to use the
     /// 
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
-    [GcpResourceType("gcp:spanner/databaseIAMBinding:DatabaseIAMBinding")]
-    public partial class DatabaseIAMBinding : global::Pulumi.CustomResource
+    [GcpResourceType("gcp:spanner/databaseIamBinding:DatabaseIamBinding")]
+    public partial class DatabaseIamBinding : global::Pulumi.CustomResource
     {
         [Output("condition")]
-        public Output<Outputs.DatabaseIAMBindingCondition?> Condition { get; private set; } = null!;
+        public Output<Outputs.DatabaseIamBindingCondition?> Condition { get; private set; } = null!;
 
         /// <summary>
         /// The name of the Spanner database.
@@ -172,7 +172,7 @@ namespace Pulumi.Gcp.Spanner
 
         /// <summary>
         /// The role that should be applied. Only one
-        /// `gcp.spanner.DatabaseIAMBinding` can be used per role. Note that custom roles must be of the format
+        /// `gcp.spanner.DatabaseIamBinding` can be used per role. Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
         /// </summary>
         [Output("role")]
@@ -180,19 +180,19 @@ namespace Pulumi.Gcp.Spanner
 
 
         /// <summary>
-        /// Create a DatabaseIAMBinding resource with the given unique name, arguments, and options.
+        /// Create a DatabaseIamBinding resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public DatabaseIAMBinding(string name, DatabaseIAMBindingArgs args, CustomResourceOptions? options = null)
-            : base("gcp:spanner/databaseIAMBinding:DatabaseIAMBinding", name, args ?? new DatabaseIAMBindingArgs(), MakeResourceOptions(options, ""))
+        public DatabaseIamBinding(string name, DatabaseIamBindingArgs args, CustomResourceOptions? options = null)
+            : base("gcp:spanner/databaseIamBinding:DatabaseIamBinding", name, args ?? new DatabaseIamBindingArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private DatabaseIAMBinding(string name, Input<string> id, DatabaseIAMBindingState? state = null, CustomResourceOptions? options = null)
-            : base("gcp:spanner/databaseIAMBinding:DatabaseIAMBinding", name, state, MakeResourceOptions(options, id))
+        private DatabaseIamBinding(string name, Input<string> id, DatabaseIamBindingState? state = null, CustomResourceOptions? options = null)
+            : base("gcp:spanner/databaseIamBinding:DatabaseIamBinding", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -208,7 +208,7 @@ namespace Pulumi.Gcp.Spanner
             return merged;
         }
         /// <summary>
-        /// Get an existing DatabaseIAMBinding resource's state with the given name, ID, and optional extra
+        /// Get an existing DatabaseIamBinding resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -216,16 +216,16 @@ namespace Pulumi.Gcp.Spanner
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static DatabaseIAMBinding Get(string name, Input<string> id, DatabaseIAMBindingState? state = null, CustomResourceOptions? options = null)
+        public static DatabaseIamBinding Get(string name, Input<string> id, DatabaseIamBindingState? state = null, CustomResourceOptions? options = null)
         {
-            return new DatabaseIAMBinding(name, id, state, options);
+            return new DatabaseIamBinding(name, id, state, options);
         }
     }
 
-    public sealed class DatabaseIAMBindingArgs : global::Pulumi.ResourceArgs
+    public sealed class DatabaseIamBindingArgs : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
-        public Input<Inputs.DatabaseIAMBindingConditionArgs>? Condition { get; set; }
+        public Input<Inputs.DatabaseIamBindingConditionArgs>? Condition { get; set; }
 
         /// <summary>
         /// The name of the Spanner database.
@@ -265,22 +265,22 @@ namespace Pulumi.Gcp.Spanner
 
         /// <summary>
         /// The role that should be applied. Only one
-        /// `gcp.spanner.DatabaseIAMBinding` can be used per role. Note that custom roles must be of the format
+        /// `gcp.spanner.DatabaseIamBinding` can be used per role. Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
         /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
 
-        public DatabaseIAMBindingArgs()
+        public DatabaseIamBindingArgs()
         {
         }
-        public static new DatabaseIAMBindingArgs Empty => new DatabaseIAMBindingArgs();
+        public static new DatabaseIamBindingArgs Empty => new DatabaseIamBindingArgs();
     }
 
-    public sealed class DatabaseIAMBindingState : global::Pulumi.ResourceArgs
+    public sealed class DatabaseIamBindingState : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
-        public Input<Inputs.DatabaseIAMBindingConditionGetArgs>? Condition { get; set; }
+        public Input<Inputs.DatabaseIamBindingConditionGetArgs>? Condition { get; set; }
 
         /// <summary>
         /// The name of the Spanner database.
@@ -326,15 +326,15 @@ namespace Pulumi.Gcp.Spanner
 
         /// <summary>
         /// The role that should be applied. Only one
-        /// `gcp.spanner.DatabaseIAMBinding` can be used per role. Note that custom roles must be of the format
+        /// `gcp.spanner.DatabaseIamBinding` can be used per role. Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 
-        public DatabaseIAMBindingState()
+        public DatabaseIamBindingState()
         {
         }
-        public static new DatabaseIAMBindingState Empty => new DatabaseIAMBindingState();
+        public static new DatabaseIamBindingState Empty => new DatabaseIamBindingState();
     }
 }

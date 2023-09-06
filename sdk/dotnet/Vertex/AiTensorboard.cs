@@ -55,7 +55,7 @@ namespace Pulumi.Gcp.Vertex
     /// {
     ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
-    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIAMMember("cryptoKey", new()
+    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIamMember("cryptoKey", new()
     ///     {
     ///         CryptoKeyId = "kms-name",
     ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",

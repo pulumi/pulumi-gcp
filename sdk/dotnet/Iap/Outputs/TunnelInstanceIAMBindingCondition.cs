@@ -11,7 +11,7 @@ namespace Pulumi.Gcp.Iap.Outputs
 {
 
     [OutputType]
-    public sealed class TunnelInstanceIAMBindingCondition
+    public sealed class TunnelInstanceIamBindingCondition
     {
         /// <summary>
         /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.Iap.Outputs
         public readonly string Title;
 
         [OutputConstructor]
-        private TunnelInstanceIAMBindingCondition(
+        private TunnelInstanceIamBindingCondition(
             string? description,
 
             string expression,

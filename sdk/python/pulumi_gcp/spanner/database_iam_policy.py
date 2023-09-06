@@ -9,17 +9,17 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = ['DatabaseIAMPolicyArgs', 'DatabaseIAMPolicy']
+__all__ = ['DatabaseIamPolicyArgs', 'DatabaseIamPolicy']
 
 @pulumi.input_type
-class DatabaseIAMPolicyArgs:
+class DatabaseIamPolicyArgs:
     def __init__(__self__, *,
                  database: pulumi.Input[str],
                  instance: pulumi.Input[str],
                  policy_data: pulumi.Input[str],
                  project: Optional[pulumi.Input[str]] = None):
         """
-        The set of arguments for constructing a DatabaseIAMPolicy resource.
+        The set of arguments for constructing a DatabaseIamPolicy resource.
         :param pulumi.Input[str] database: The name of the Spanner database.
         :param pulumi.Input[str] instance: The name of the Spanner instance the database belongs to.
                
@@ -103,7 +103,7 @@ class DatabaseIAMPolicyArgs:
 
 
 @pulumi.input_type
-class _DatabaseIAMPolicyState:
+class _DatabaseIamPolicyState:
     def __init__(__self__, *,
                  database: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
@@ -111,7 +111,7 @@ class _DatabaseIAMPolicyState:
                  policy_data: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
-        Input properties used for looking up and filtering DatabaseIAMPolicy resources.
+        Input properties used for looking up and filtering DatabaseIamPolicy resources.
         :param pulumi.Input[str] database: The name of the Spanner database.
         :param pulumi.Input[str] etag: (Computed) The etag of the database's IAM policy.
         :param pulumi.Input[str] instance: The name of the Spanner instance the database belongs to.
@@ -212,7 +212,7 @@ class _DatabaseIAMPolicyState:
         pulumi.set(self, "project", value)
 
 
-class DatabaseIAMPolicy(pulumi.CustomResource):
+class DatabaseIamPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -225,16 +225,16 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
         """
         Three different resources help you manage your IAM policy for a Spanner database. Each of these resources serves a different use case:
 
-        * `spanner.DatabaseIAMPolicy`: Authoritative. Sets the IAM policy for the database and replaces any existing policy already attached.
+        * `spanner.DatabaseIamPolicy`: Authoritative. Sets the IAM policy for the database and replaces any existing policy already attached.
 
-        > **Warning:** It's entirely possibly to lock yourself out of your database using `spanner.DatabaseIAMPolicy`. Any permissions granted by default will be removed unless you include them in your config.
+        > **Warning:** It's entirely possibly to lock yourself out of your database using `spanner.DatabaseIamPolicy`. Any permissions granted by default will be removed unless you include them in your config.
 
-        * `spanner.DatabaseIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the database are preserved.
-        * `spanner.DatabaseIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the database are preserved.
+        * `spanner.DatabaseIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the database are preserved.
+        * `spanner.DatabaseIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the database are preserved.
 
-        > **Note:** `spanner.DatabaseIAMPolicy` **cannot** be used in conjunction with `spanner.DatabaseIAMBinding` and `spanner.DatabaseIAMMember` or they will fight over what your policy should be.
+        > **Note:** `spanner.DatabaseIamPolicy` **cannot** be used in conjunction with `spanner.DatabaseIamBinding` and `spanner.DatabaseIamMember` or they will fight over what your policy should be.
 
-        > **Note:** `spanner.DatabaseIAMBinding` resources **can be** used in conjunction with `spanner.DatabaseIAMMember` resources **only if** they do not grant privilege to the same role.
+        > **Note:** `spanner.DatabaseIamBinding` resources **can be** used in conjunction with `spanner.DatabaseIamMember` resources **only if** they do not grant privilege to the same role.
 
         ## google\\_spanner\\_database\\_iam\\_policy
 
@@ -242,11 +242,11 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIamPolicyBindingArgs(
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
-        database = gcp.spanner.DatabaseIAMPolicy("database",
+        database = gcp.spanner.DatabaseIamPolicy("database",
             instance="your-instance-name",
             database="your-database-name",
             policy_data=admin.policy_data)
@@ -258,7 +258,7 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        database = gcp.spanner.DatabaseIAMBinding("database",
+        database = gcp.spanner.DatabaseIamBinding("database",
             database="your-database-name",
             instance="your-instance-name",
             members=["user:jane@example.com"],
@@ -271,7 +271,7 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        database = gcp.spanner.DatabaseIAMMember("database",
+        database = gcp.spanner.DatabaseIamMember("database",
             database="your-database-name",
             instance="your-instance-name",
             member="user:jane@example.com",
@@ -283,19 +283,19 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
         For all import syntaxes, the "resource in question" can take any of the following forms* {{project}}/{{instance}}/{{database}} * {{instance}}/{{database}} (project is taken from provider project) IAM member imports use space-delimited identifiers; the resource in question, the role, and the member identity, e.g.
 
         ```sh
-         $ pulumi import gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy database "project-name/instance-name/database-name roles/viewer user:foo@example.com"
+         $ pulumi import gcp:spanner/databaseIamPolicy:DatabaseIamPolicy database "project-name/instance-name/database-name roles/viewer user:foo@example.com"
         ```
 
          IAM binding imports use space-delimited identifiers; the resource in question and the role, e.g.
 
         ```sh
-         $ pulumi import gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy database "project-name/instance-name/database-name roles/viewer"
+         $ pulumi import gcp:spanner/databaseIamPolicy:DatabaseIamPolicy database "project-name/instance-name/database-name roles/viewer"
         ```
 
          IAM policy imports use the identifier of the resource in question, e.g.
 
         ```sh
-         $ pulumi import gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy database project-name/instance-name/database-name
+         $ pulumi import gcp:spanner/databaseIamPolicy:DatabaseIamPolicy database project-name/instance-name/database-name
         ```
 
          -> **Custom Roles:** If you're importing a IAM resource with a custom role, make sure to use the
@@ -324,21 +324,21 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: DatabaseIAMPolicyArgs,
+                 args: DatabaseIamPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for a Spanner database. Each of these resources serves a different use case:
 
-        * `spanner.DatabaseIAMPolicy`: Authoritative. Sets the IAM policy for the database and replaces any existing policy already attached.
+        * `spanner.DatabaseIamPolicy`: Authoritative. Sets the IAM policy for the database and replaces any existing policy already attached.
 
-        > **Warning:** It's entirely possibly to lock yourself out of your database using `spanner.DatabaseIAMPolicy`. Any permissions granted by default will be removed unless you include them in your config.
+        > **Warning:** It's entirely possibly to lock yourself out of your database using `spanner.DatabaseIamPolicy`. Any permissions granted by default will be removed unless you include them in your config.
 
-        * `spanner.DatabaseIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the database are preserved.
-        * `spanner.DatabaseIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the database are preserved.
+        * `spanner.DatabaseIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the database are preserved.
+        * `spanner.DatabaseIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the database are preserved.
 
-        > **Note:** `spanner.DatabaseIAMPolicy` **cannot** be used in conjunction with `spanner.DatabaseIAMBinding` and `spanner.DatabaseIAMMember` or they will fight over what your policy should be.
+        > **Note:** `spanner.DatabaseIamPolicy` **cannot** be used in conjunction with `spanner.DatabaseIamBinding` and `spanner.DatabaseIamMember` or they will fight over what your policy should be.
 
-        > **Note:** `spanner.DatabaseIAMBinding` resources **can be** used in conjunction with `spanner.DatabaseIAMMember` resources **only if** they do not grant privilege to the same role.
+        > **Note:** `spanner.DatabaseIamBinding` resources **can be** used in conjunction with `spanner.DatabaseIamMember` resources **only if** they do not grant privilege to the same role.
 
         ## google\\_spanner\\_database\\_iam\\_policy
 
@@ -346,11 +346,11 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIamPolicyBindingArgs(
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
-        database = gcp.spanner.DatabaseIAMPolicy("database",
+        database = gcp.spanner.DatabaseIamPolicy("database",
             instance="your-instance-name",
             database="your-database-name",
             policy_data=admin.policy_data)
@@ -362,7 +362,7 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        database = gcp.spanner.DatabaseIAMBinding("database",
+        database = gcp.spanner.DatabaseIamBinding("database",
             database="your-database-name",
             instance="your-instance-name",
             members=["user:jane@example.com"],
@@ -375,7 +375,7 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        database = gcp.spanner.DatabaseIAMMember("database",
+        database = gcp.spanner.DatabaseIamMember("database",
             database="your-database-name",
             instance="your-instance-name",
             member="user:jane@example.com",
@@ -387,19 +387,19 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
         For all import syntaxes, the "resource in question" can take any of the following forms* {{project}}/{{instance}}/{{database}} * {{instance}}/{{database}} (project is taken from provider project) IAM member imports use space-delimited identifiers; the resource in question, the role, and the member identity, e.g.
 
         ```sh
-         $ pulumi import gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy database "project-name/instance-name/database-name roles/viewer user:foo@example.com"
+         $ pulumi import gcp:spanner/databaseIamPolicy:DatabaseIamPolicy database "project-name/instance-name/database-name roles/viewer user:foo@example.com"
         ```
 
          IAM binding imports use space-delimited identifiers; the resource in question and the role, e.g.
 
         ```sh
-         $ pulumi import gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy database "project-name/instance-name/database-name roles/viewer"
+         $ pulumi import gcp:spanner/databaseIamPolicy:DatabaseIamPolicy database "project-name/instance-name/database-name roles/viewer"
         ```
 
          IAM policy imports use the identifier of the resource in question, e.g.
 
         ```sh
-         $ pulumi import gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy database project-name/instance-name/database-name
+         $ pulumi import gcp:spanner/databaseIamPolicy:DatabaseIamPolicy database project-name/instance-name/database-name
         ```
 
          -> **Custom Roles:** If you're importing a IAM resource with a custom role, make sure to use the
@@ -407,12 +407,12 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param DatabaseIAMPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param DatabaseIamPolicyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(DatabaseIAMPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(DatabaseIamPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -432,7 +432,7 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = DatabaseIAMPolicyArgs.__new__(DatabaseIAMPolicyArgs)
+            __props__ = DatabaseIamPolicyArgs.__new__(DatabaseIamPolicyArgs)
 
             if database is None and not opts.urn:
                 raise TypeError("Missing required property 'database'")
@@ -445,8 +445,8 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
             __props__.__dict__["policy_data"] = policy_data
             __props__.__dict__["project"] = project
             __props__.__dict__["etag"] = None
-        super(DatabaseIAMPolicy, __self__).__init__(
-            'gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy',
+        super(DatabaseIamPolicy, __self__).__init__(
+            'gcp:spanner/databaseIamPolicy:DatabaseIamPolicy',
             resource_name,
             __props__,
             opts)
@@ -459,9 +459,9 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
             etag: Optional[pulumi.Input[str]] = None,
             instance: Optional[pulumi.Input[str]] = None,
             policy_data: Optional[pulumi.Input[str]] = None,
-            project: Optional[pulumi.Input[str]] = None) -> 'DatabaseIAMPolicy':
+            project: Optional[pulumi.Input[str]] = None) -> 'DatabaseIamPolicy':
         """
-        Get an existing DatabaseIAMPolicy resource's state with the given name, id, and optional extra
+        Get an existing DatabaseIamPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -486,14 +486,14 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _DatabaseIAMPolicyState.__new__(_DatabaseIAMPolicyState)
+        __props__ = _DatabaseIamPolicyState.__new__(_DatabaseIamPolicyState)
 
         __props__.__dict__["database"] = database
         __props__.__dict__["etag"] = etag
         __props__.__dict__["instance"] = instance
         __props__.__dict__["policy_data"] = policy_data
         __props__.__dict__["project"] = project
-        return DatabaseIAMPolicy(resource_name, opts=opts, __props__=__props__)
+        return DatabaseIamPolicy(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter

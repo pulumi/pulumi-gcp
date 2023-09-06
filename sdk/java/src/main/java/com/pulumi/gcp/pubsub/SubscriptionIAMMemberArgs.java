@@ -5,21 +5,21 @@ package com.pulumi.gcp.pubsub;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.gcp.pubsub.inputs.SubscriptionIAMMemberConditionArgs;
+import com.pulumi.gcp.pubsub.inputs.SubscriptionIamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class SubscriptionIAMMemberArgs extends com.pulumi.resources.ResourceArgs {
+public final class SubscriptionIamMemberArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final SubscriptionIAMMemberArgs Empty = new SubscriptionIAMMemberArgs();
+    public static final SubscriptionIamMemberArgs Empty = new SubscriptionIamMemberArgs();
 
     @Import(name="condition")
-    private @Nullable Output<SubscriptionIAMMemberConditionArgs> condition;
+    private @Nullable Output<SubscriptionIamMemberConditionArgs> condition;
 
-    public Optional<Output<SubscriptionIAMMemberConditionArgs>> condition() {
+    public Optional<Output<SubscriptionIamMemberConditionArgs>> condition() {
         return Optional.ofNullable(this.condition);
     }
 
@@ -49,7 +49,7 @@ public final class SubscriptionIAMMemberArgs extends com.pulumi.resources.Resour
 
     /**
      * The role that should be applied. Only one
-     * `gcp.pubsub.SubscriptionIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.pubsub.SubscriptionIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -58,7 +58,7 @@ public final class SubscriptionIAMMemberArgs extends com.pulumi.resources.Resour
 
     /**
      * @return The role that should be applied. Only one
-     * `gcp.pubsub.SubscriptionIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.pubsub.SubscriptionIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -99,9 +99,9 @@ public final class SubscriptionIAMMemberArgs extends com.pulumi.resources.Resour
         return this.subscription;
     }
 
-    private SubscriptionIAMMemberArgs() {}
+    private SubscriptionIamMemberArgs() {}
 
-    private SubscriptionIAMMemberArgs(SubscriptionIAMMemberArgs $) {
+    private SubscriptionIamMemberArgs(SubscriptionIamMemberArgs $) {
         this.condition = $.condition;
         this.member = $.member;
         this.project = $.project;
@@ -112,27 +112,27 @@ public final class SubscriptionIAMMemberArgs extends com.pulumi.resources.Resour
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(SubscriptionIAMMemberArgs defaults) {
+    public static Builder builder(SubscriptionIamMemberArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private SubscriptionIAMMemberArgs $;
+        private SubscriptionIamMemberArgs $;
 
         public Builder() {
-            $ = new SubscriptionIAMMemberArgs();
+            $ = new SubscriptionIamMemberArgs();
         }
 
-        public Builder(SubscriptionIAMMemberArgs defaults) {
-            $ = new SubscriptionIAMMemberArgs(Objects.requireNonNull(defaults));
+        public Builder(SubscriptionIamMemberArgs defaults) {
+            $ = new SubscriptionIamMemberArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder condition(@Nullable Output<SubscriptionIAMMemberConditionArgs> condition) {
+        public Builder condition(@Nullable Output<SubscriptionIamMemberConditionArgs> condition) {
             $.condition = condition;
             return this;
         }
 
-        public Builder condition(SubscriptionIAMMemberConditionArgs condition) {
+        public Builder condition(SubscriptionIamMemberConditionArgs condition) {
             return condition(Output.of(condition));
         }
 
@@ -170,7 +170,7 @@ public final class SubscriptionIAMMemberArgs extends com.pulumi.resources.Resour
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.pubsub.SubscriptionIAMBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.pubsub.SubscriptionIamBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder
@@ -183,7 +183,7 @@ public final class SubscriptionIAMMemberArgs extends com.pulumi.resources.Resour
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.pubsub.SubscriptionIAMBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.pubsub.SubscriptionIamBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder
@@ -232,7 +232,7 @@ public final class SubscriptionIAMMemberArgs extends com.pulumi.resources.Resour
             return subscription(Output.of(subscription));
         }
 
-        public SubscriptionIAMMemberArgs build() {
+        public SubscriptionIamMemberArgs build() {
             $.member = Objects.requireNonNull($.member, "expected parameter 'member' to be non-null");
             $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
             $.subscription = Objects.requireNonNull($.subscription, "expected parameter 'subscription' to be non-null");

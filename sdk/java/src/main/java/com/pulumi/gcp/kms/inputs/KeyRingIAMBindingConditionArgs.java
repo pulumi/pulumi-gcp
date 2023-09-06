@@ -11,9 +11,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class KeyRingIAMBindingConditionArgs extends com.pulumi.resources.ResourceArgs {
+public final class KeyRingIamBindingConditionArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final KeyRingIAMBindingConditionArgs Empty = new KeyRingIAMBindingConditionArgs();
+    public static final KeyRingIamBindingConditionArgs Empty = new KeyRingIamBindingConditionArgs();
 
     /**
      * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -68,9 +68,9 @@ public final class KeyRingIAMBindingConditionArgs extends com.pulumi.resources.R
         return this.title;
     }
 
-    private KeyRingIAMBindingConditionArgs() {}
+    private KeyRingIamBindingConditionArgs() {}
 
-    private KeyRingIAMBindingConditionArgs(KeyRingIAMBindingConditionArgs $) {
+    private KeyRingIamBindingConditionArgs(KeyRingIamBindingConditionArgs $) {
         this.description = $.description;
         this.expression = $.expression;
         this.title = $.title;
@@ -79,19 +79,19 @@ public final class KeyRingIAMBindingConditionArgs extends com.pulumi.resources.R
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(KeyRingIAMBindingConditionArgs defaults) {
+    public static Builder builder(KeyRingIamBindingConditionArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private KeyRingIAMBindingConditionArgs $;
+        private KeyRingIamBindingConditionArgs $;
 
         public Builder() {
-            $ = new KeyRingIAMBindingConditionArgs();
+            $ = new KeyRingIamBindingConditionArgs();
         }
 
-        public Builder(KeyRingIAMBindingConditionArgs defaults) {
-            $ = new KeyRingIAMBindingConditionArgs(Objects.requireNonNull(defaults));
+        public Builder(KeyRingIamBindingConditionArgs defaults) {
+            $ = new KeyRingIamBindingConditionArgs(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -165,7 +165,7 @@ public final class KeyRingIAMBindingConditionArgs extends com.pulumi.resources.R
             return title(Output.of(title));
         }
 
-        public KeyRingIAMBindingConditionArgs build() {
+        public KeyRingIamBindingConditionArgs build() {
             $.expression = Objects.requireNonNull($.expression, "expected parameter 'expression' to be non-null");
             $.title = Objects.requireNonNull($.title, "expected parameter 'title' to be non-null");
             return $;

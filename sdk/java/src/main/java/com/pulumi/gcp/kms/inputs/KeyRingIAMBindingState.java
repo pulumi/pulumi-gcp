@@ -5,7 +5,7 @@ package com.pulumi.gcp.kms.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.gcp.kms.inputs.KeyRingIAMBindingConditionArgs;
+import com.pulumi.gcp.kms.inputs.KeyRingIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -13,9 +13,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class KeyRingIAMBindingState extends com.pulumi.resources.ResourceArgs {
+public final class KeyRingIamBindingState extends com.pulumi.resources.ResourceArgs {
 
-    public static final KeyRingIAMBindingState Empty = new KeyRingIAMBindingState();
+    public static final KeyRingIamBindingState Empty = new KeyRingIamBindingState();
 
     /**
      * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -23,14 +23,14 @@ public final class KeyRingIAMBindingState extends com.pulumi.resources.ResourceA
      * 
      */
     @Import(name="condition")
-    private @Nullable Output<KeyRingIAMBindingConditionArgs> condition;
+    private @Nullable Output<KeyRingIamBindingConditionArgs> condition;
 
     /**
      * @return ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      * 
      */
-    public Optional<Output<KeyRingIAMBindingConditionArgs>> condition() {
+    public Optional<Output<KeyRingIamBindingConditionArgs>> condition() {
         return Optional.ofNullable(this.condition);
     }
 
@@ -97,7 +97,7 @@ public final class KeyRingIAMBindingState extends com.pulumi.resources.ResourceA
 
     /**
      * The role that should be applied. Only one
-     * `gcp.kms.KeyRingIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.kms.KeyRingIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -106,7 +106,7 @@ public final class KeyRingIAMBindingState extends com.pulumi.resources.ResourceA
 
     /**
      * @return The role that should be applied. Only one
-     * `gcp.kms.KeyRingIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.kms.KeyRingIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -114,9 +114,9 @@ public final class KeyRingIAMBindingState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.role);
     }
 
-    private KeyRingIAMBindingState() {}
+    private KeyRingIamBindingState() {}
 
-    private KeyRingIAMBindingState(KeyRingIAMBindingState $) {
+    private KeyRingIamBindingState(KeyRingIamBindingState $) {
         this.condition = $.condition;
         this.etag = $.etag;
         this.keyRingId = $.keyRingId;
@@ -127,19 +127,19 @@ public final class KeyRingIAMBindingState extends com.pulumi.resources.ResourceA
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(KeyRingIAMBindingState defaults) {
+    public static Builder builder(KeyRingIamBindingState defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private KeyRingIAMBindingState $;
+        private KeyRingIamBindingState $;
 
         public Builder() {
-            $ = new KeyRingIAMBindingState();
+            $ = new KeyRingIamBindingState();
         }
 
-        public Builder(KeyRingIAMBindingState defaults) {
-            $ = new KeyRingIAMBindingState(Objects.requireNonNull(defaults));
+        public Builder(KeyRingIamBindingState defaults) {
+            $ = new KeyRingIamBindingState(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -149,7 +149,7 @@ public final class KeyRingIAMBindingState extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder condition(@Nullable Output<KeyRingIAMBindingConditionArgs> condition) {
+        public Builder condition(@Nullable Output<KeyRingIamBindingConditionArgs> condition) {
             $.condition = condition;
             return this;
         }
@@ -161,7 +161,7 @@ public final class KeyRingIAMBindingState extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder condition(KeyRingIAMBindingConditionArgs condition) {
+        public Builder condition(KeyRingIamBindingConditionArgs condition) {
             return condition(Output.of(condition));
         }
 
@@ -246,7 +246,7 @@ public final class KeyRingIAMBindingState extends com.pulumi.resources.ResourceA
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.kms.KeyRingIAMBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.kms.KeyRingIamBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder
@@ -259,7 +259,7 @@ public final class KeyRingIAMBindingState extends com.pulumi.resources.ResourceA
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.kms.KeyRingIAMBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.kms.KeyRingIamBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder
@@ -269,7 +269,7 @@ public final class KeyRingIAMBindingState extends com.pulumi.resources.ResourceA
             return role(Output.of(role));
         }
 
-        public KeyRingIAMBindingState build() {
+        public KeyRingIamBindingState build() {
             return $;
         }
     }

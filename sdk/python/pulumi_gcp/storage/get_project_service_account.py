@@ -132,7 +132,7 @@ def get_project_service_account(project: Optional[str] = None,
     import pulumi_gcp as gcp
 
     gcs_account = gcp.storage.get_project_service_account()
-    binding = gcp.pubsub.TopicIAMBinding("binding",
+    binding = gcp.pubsub.TopicIamBinding("binding",
         topic=google_pubsub_topic["topic"]["name"],
         role="roles/pubsub.publisher",
         members=[f"serviceAccount:{gcs_account.email_address}"])
@@ -144,7 +144,7 @@ def get_project_service_account(project: Optional[str] = None,
     import pulumi_gcp as gcp
 
     gcs_account = gcp.storage.get_project_service_account()
-    binding = gcp.kms.CryptoKeyIAMBinding("binding",
+    binding = gcp.kms.CryptoKeyIamBinding("binding",
         crypto_key_id="your-crypto-key-id",
         role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
         members=[f"serviceAccount:{gcs_account.email_address}"])
@@ -221,7 +221,7 @@ def get_project_service_account_output(project: Optional[pulumi.Input[Optional[s
     import pulumi_gcp as gcp
 
     gcs_account = gcp.storage.get_project_service_account()
-    binding = gcp.pubsub.TopicIAMBinding("binding",
+    binding = gcp.pubsub.TopicIamBinding("binding",
         topic=google_pubsub_topic["topic"]["name"],
         role="roles/pubsub.publisher",
         members=[f"serviceAccount:{gcs_account.email_address}"])
@@ -233,7 +233,7 @@ def get_project_service_account_output(project: Optional[pulumi.Input[Optional[s
     import pulumi_gcp as gcp
 
     gcs_account = gcp.storage.get_project_service_account()
-    binding = gcp.kms.CryptoKeyIAMBinding("binding",
+    binding = gcp.kms.CryptoKeyIamBinding("binding",
         crypto_key_id="your-crypto-key-id",
         role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
         members=[f"serviceAccount:{gcs_account.email_address}"])

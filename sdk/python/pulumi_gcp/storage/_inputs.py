@@ -14,8 +14,8 @@ __all__ = [
     'BucketCorArgs',
     'BucketCustomPlacementConfigArgs',
     'BucketEncryptionArgs',
-    'BucketIAMBindingConditionArgs',
-    'BucketIAMMemberConditionArgs',
+    'BucketIamBindingConditionArgs',
+    'BucketIamMemberConditionArgs',
     'BucketLifecycleRuleArgs',
     'BucketLifecycleRuleActionArgs',
     'BucketLifecycleRuleConditionArgs',
@@ -210,7 +210,7 @@ class BucketEncryptionArgs:
 
 
 @pulumi.input_type
-class BucketIAMBindingConditionArgs:
+class BucketIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -271,7 +271,7 @@ class BucketIAMBindingConditionArgs:
 
 
 @pulumi.input_type
-class BucketIAMMemberConditionArgs:
+class BucketIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],

@@ -984,7 +984,7 @@ class Instance(pulumi.CustomResource):
         key_ring = gcp.kms.KeyRing("keyRing", location="us-central1")
         crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id)
         project = gcp.organizations.get_project()
-        crypto_key_binding = gcp.kms.CryptoKeyIAMBinding("cryptoKeyBinding",
+        crypto_key_binding = gcp.kms.CryptoKeyIamBinding("cryptoKeyBinding",
             crypto_key_id=crypto_key.id,
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             members=[f"serviceAccount:service-{project.number}@gcp-sa-datafusion.iam.gserviceaccount.com"])
@@ -1168,7 +1168,7 @@ class Instance(pulumi.CustomResource):
         key_ring = gcp.kms.KeyRing("keyRing", location="us-central1")
         crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id)
         project = gcp.organizations.get_project()
-        crypto_key_binding = gcp.kms.CryptoKeyIAMBinding("cryptoKeyBinding",
+        crypto_key_binding = gcp.kms.CryptoKeyIamBinding("cryptoKeyBinding",
             crypto_key_id=crypto_key.id,
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             members=[f"serviceAccount:service-{project.number}@gcp-sa-datafusion.iam.gserviceaccount.com"])

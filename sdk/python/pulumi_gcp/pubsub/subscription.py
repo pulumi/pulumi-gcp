@@ -909,11 +909,11 @@ class Subscription(pulumi.CustomResource):
 
         example_topic = gcp.pubsub.Topic("exampleTopic")
         project = gcp.organizations.get_project()
-        viewer = gcp.projects.IAMMember("viewer",
+        viewer = gcp.projects.IamMember("viewer",
             project=project.project_id,
             role="roles/bigquery.metadataViewer",
             member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
-        editor = gcp.projects.IAMMember("editor",
+        editor = gcp.projects.IamMember("editor",
             project=project.project_id,
             role="roles/bigquery.dataEditor",
             member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
@@ -1138,11 +1138,11 @@ class Subscription(pulumi.CustomResource):
 
         example_topic = gcp.pubsub.Topic("exampleTopic")
         project = gcp.organizations.get_project()
-        viewer = gcp.projects.IAMMember("viewer",
+        viewer = gcp.projects.IamMember("viewer",
             project=project.project_id,
             role="roles/bigquery.metadataViewer",
             member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")
-        editor = gcp.projects.IAMMember("editor",
+        editor = gcp.projects.IamMember("editor",
             project=project.project_id,
             role="roles/bigquery.dataEditor",
             member=f"serviceAccount:service-{project.number}@gcp-sa-pubsub.iam.gserviceaccount.com")

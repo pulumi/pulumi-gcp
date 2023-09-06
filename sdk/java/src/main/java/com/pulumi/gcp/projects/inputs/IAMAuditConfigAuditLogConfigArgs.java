@@ -12,9 +12,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class IAMAuditConfigAuditLogConfigArgs extends com.pulumi.resources.ResourceArgs {
+public final class IamAuditConfigAuditLogConfigArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final IAMAuditConfigAuditLogConfigArgs Empty = new IAMAuditConfigAuditLogConfigArgs();
+    public static final IamAuditConfigAuditLogConfigArgs Empty = new IamAuditConfigAuditLogConfigArgs();
 
     /**
      * Identities that do not cause logging for this type of permission.  The format is the same as that for `members`.
@@ -46,9 +46,9 @@ public final class IAMAuditConfigAuditLogConfigArgs extends com.pulumi.resources
         return this.logType;
     }
 
-    private IAMAuditConfigAuditLogConfigArgs() {}
+    private IamAuditConfigAuditLogConfigArgs() {}
 
-    private IAMAuditConfigAuditLogConfigArgs(IAMAuditConfigAuditLogConfigArgs $) {
+    private IamAuditConfigAuditLogConfigArgs(IamAuditConfigAuditLogConfigArgs $) {
         this.exemptedMembers = $.exemptedMembers;
         this.logType = $.logType;
     }
@@ -56,19 +56,19 @@ public final class IAMAuditConfigAuditLogConfigArgs extends com.pulumi.resources
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(IAMAuditConfigAuditLogConfigArgs defaults) {
+    public static Builder builder(IamAuditConfigAuditLogConfigArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private IAMAuditConfigAuditLogConfigArgs $;
+        private IamAuditConfigAuditLogConfigArgs $;
 
         public Builder() {
-            $ = new IAMAuditConfigAuditLogConfigArgs();
+            $ = new IamAuditConfigAuditLogConfigArgs();
         }
 
-        public Builder(IAMAuditConfigAuditLogConfigArgs defaults) {
-            $ = new IAMAuditConfigAuditLogConfigArgs(Objects.requireNonNull(defaults));
+        public Builder(IamAuditConfigAuditLogConfigArgs defaults) {
+            $ = new IamAuditConfigAuditLogConfigArgs(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -123,7 +123,7 @@ public final class IAMAuditConfigAuditLogConfigArgs extends com.pulumi.resources
             return logType(Output.of(logType));
         }
 
-        public IAMAuditConfigAuditLogConfigArgs build() {
+        public IamAuditConfigAuditLogConfigArgs build() {
             $.logType = Objects.requireNonNull($.logType, "expected parameter 'logType' to be non-null");
             return $;
         }

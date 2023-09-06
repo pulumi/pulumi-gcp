@@ -5,16 +5,16 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.gcp.compute.inputs.InstanceIAMMemberConditionArgs;
+import com.pulumi.gcp.compute.inputs.InstanceIamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class InstanceIAMMemberArgs extends com.pulumi.resources.ResourceArgs {
+public final class InstanceIamMemberArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final InstanceIAMMemberArgs Empty = new InstanceIAMMemberArgs();
+    public static final InstanceIamMemberArgs Empty = new InstanceIamMemberArgs();
 
     /**
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -22,14 +22,14 @@ public final class InstanceIAMMemberArgs extends com.pulumi.resources.ResourceAr
      * 
      */
     @Import(name="condition")
-    private @Nullable Output<InstanceIAMMemberConditionArgs> condition;
+    private @Nullable Output<InstanceIamMemberConditionArgs> condition;
 
     /**
      * @return An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      * 
      */
-    public Optional<Output<InstanceIAMMemberConditionArgs>> condition() {
+    public Optional<Output<InstanceIamMemberConditionArgs>> condition() {
         return Optional.ofNullable(this.condition);
     }
 
@@ -98,7 +98,7 @@ public final class InstanceIAMMemberArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * The role that should be applied. Only one
-     * `gcp.compute.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.compute.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -107,7 +107,7 @@ public final class InstanceIAMMemberArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * @return The role that should be applied. Only one
-     * `gcp.compute.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.compute.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -134,9 +134,9 @@ public final class InstanceIAMMemberArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.zone);
     }
 
-    private InstanceIAMMemberArgs() {}
+    private InstanceIamMemberArgs() {}
 
-    private InstanceIAMMemberArgs(InstanceIAMMemberArgs $) {
+    private InstanceIamMemberArgs(InstanceIamMemberArgs $) {
         this.condition = $.condition;
         this.instanceName = $.instanceName;
         this.member = $.member;
@@ -148,19 +148,19 @@ public final class InstanceIAMMemberArgs extends com.pulumi.resources.ResourceAr
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(InstanceIAMMemberArgs defaults) {
+    public static Builder builder(InstanceIamMemberArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private InstanceIAMMemberArgs $;
+        private InstanceIamMemberArgs $;
 
         public Builder() {
-            $ = new InstanceIAMMemberArgs();
+            $ = new InstanceIamMemberArgs();
         }
 
-        public Builder(InstanceIAMMemberArgs defaults) {
-            $ = new InstanceIAMMemberArgs(Objects.requireNonNull(defaults));
+        public Builder(InstanceIamMemberArgs defaults) {
+            $ = new InstanceIamMemberArgs(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -170,7 +170,7 @@ public final class InstanceIAMMemberArgs extends com.pulumi.resources.ResourceAr
          * @return builder
          * 
          */
-        public Builder condition(@Nullable Output<InstanceIAMMemberConditionArgs> condition) {
+        public Builder condition(@Nullable Output<InstanceIamMemberConditionArgs> condition) {
             $.condition = condition;
             return this;
         }
@@ -182,7 +182,7 @@ public final class InstanceIAMMemberArgs extends com.pulumi.resources.ResourceAr
          * @return builder
          * 
          */
-        public Builder condition(InstanceIAMMemberConditionArgs condition) {
+        public Builder condition(InstanceIamMemberConditionArgs condition) {
             return condition(Output.of(condition));
         }
 
@@ -265,7 +265,7 @@ public final class InstanceIAMMemberArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.compute.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.compute.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder
@@ -278,7 +278,7 @@ public final class InstanceIAMMemberArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.compute.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.compute.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder
@@ -313,7 +313,7 @@ public final class InstanceIAMMemberArgs extends com.pulumi.resources.ResourceAr
             return zone(Output.of(zone));
         }
 
-        public InstanceIAMMemberArgs build() {
+        public InstanceIamMemberArgs build() {
             $.instanceName = Objects.requireNonNull($.instanceName, "expected parameter 'instanceName' to be non-null");
             $.member = Objects.requireNonNull($.member, "expected parameter 'member' to be non-null");
             $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");

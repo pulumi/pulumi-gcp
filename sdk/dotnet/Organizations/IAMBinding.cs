@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Organizations
     /// an existing Google Cloud Platform Organization.
     /// 
     /// &gt; **Note:** This resource __must not__ be used in conjunction with
-    ///    `gcp.organizations.IAMMember` for the __same role__ or they will fight over
+    ///    `gcp.organizations.IamMember` for the __same role__ or they will fight over
     ///    what your policy should be.
     /// 
     /// &gt; **Note:** On create, this resource will overwrite members of any existing roles.
@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.Organizations
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var binding = new Gcp.Organizations.IAMBinding("binding", new()
+    ///     var binding = new Gcp.Organizations.IamBinding("binding", new()
     ///     {
     ///         Members = new[]
     ///         {
@@ -51,18 +51,18 @@ namespace Pulumi.Gcp.Organizations
     /// These bindings can be imported using the `org_id` and role, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:organizations/iAMBinding:IAMBinding my_org "your-org-id roles/viewer"
+    ///  $ pulumi import gcp:organizations/iamBinding:IamBinding my_org "your-org-id roles/viewer"
     /// ```
     /// 
     ///  -&gt; **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
     /// 
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
-    [GcpResourceType("gcp:organizations/iAMBinding:IAMBinding")]
-    public partial class IAMBinding : global::Pulumi.CustomResource
+    [GcpResourceType("gcp:organizations/iamBinding:IamBinding")]
+    public partial class IamBinding : global::Pulumi.CustomResource
     {
         [Output("condition")]
-        public Output<Outputs.IAMBindingCondition?> Condition { get; private set; } = null!;
+        public Output<Outputs.IamBindingCondition?> Condition { get; private set; } = null!;
 
         /// <summary>
         /// (Computed) The etag of the organization's IAM policy.
@@ -84,7 +84,7 @@ namespace Pulumi.Gcp.Organizations
 
         /// <summary>
         /// The role that should be applied. Only one
-        /// `gcp.organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
+        /// `gcp.organizations.IamBinding` can be used per role. Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
         /// </summary>
         [Output("role")]
@@ -92,19 +92,19 @@ namespace Pulumi.Gcp.Organizations
 
 
         /// <summary>
-        /// Create a IAMBinding resource with the given unique name, arguments, and options.
+        /// Create a IamBinding resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public IAMBinding(string name, IAMBindingArgs args, CustomResourceOptions? options = null)
-            : base("gcp:organizations/iAMBinding:IAMBinding", name, args ?? new IAMBindingArgs(), MakeResourceOptions(options, ""))
+        public IamBinding(string name, IamBindingArgs args, CustomResourceOptions? options = null)
+            : base("gcp:organizations/iamBinding:IamBinding", name, args ?? new IamBindingArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private IAMBinding(string name, Input<string> id, IAMBindingState? state = null, CustomResourceOptions? options = null)
-            : base("gcp:organizations/iAMBinding:IAMBinding", name, state, MakeResourceOptions(options, id))
+        private IamBinding(string name, Input<string> id, IamBindingState? state = null, CustomResourceOptions? options = null)
+            : base("gcp:organizations/iamBinding:IamBinding", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -120,7 +120,7 @@ namespace Pulumi.Gcp.Organizations
             return merged;
         }
         /// <summary>
-        /// Get an existing IAMBinding resource's state with the given name, ID, and optional extra
+        /// Get an existing IamBinding resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -128,16 +128,16 @@ namespace Pulumi.Gcp.Organizations
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static IAMBinding Get(string name, Input<string> id, IAMBindingState? state = null, CustomResourceOptions? options = null)
+        public static IamBinding Get(string name, Input<string> id, IamBindingState? state = null, CustomResourceOptions? options = null)
         {
-            return new IAMBinding(name, id, state, options);
+            return new IamBinding(name, id, state, options);
         }
     }
 
-    public sealed class IAMBindingArgs : global::Pulumi.ResourceArgs
+    public sealed class IamBindingArgs : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
-        public Input<Inputs.IAMBindingConditionArgs>? Condition { get; set; }
+        public Input<Inputs.IamBindingConditionArgs>? Condition { get; set; }
 
         [Input("members", required: true)]
         private InputList<string>? _members;
@@ -159,22 +159,22 @@ namespace Pulumi.Gcp.Organizations
 
         /// <summary>
         /// The role that should be applied. Only one
-        /// `gcp.organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
+        /// `gcp.organizations.IamBinding` can be used per role. Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
         /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
 
-        public IAMBindingArgs()
+        public IamBindingArgs()
         {
         }
-        public static new IAMBindingArgs Empty => new IAMBindingArgs();
+        public static new IamBindingArgs Empty => new IamBindingArgs();
     }
 
-    public sealed class IAMBindingState : global::Pulumi.ResourceArgs
+    public sealed class IamBindingState : global::Pulumi.ResourceArgs
     {
         [Input("condition")]
-        public Input<Inputs.IAMBindingConditionGetArgs>? Condition { get; set; }
+        public Input<Inputs.IamBindingConditionGetArgs>? Condition { get; set; }
 
         /// <summary>
         /// (Computed) The etag of the organization's IAM policy.
@@ -202,15 +202,15 @@ namespace Pulumi.Gcp.Organizations
 
         /// <summary>
         /// The role that should be applied. Only one
-        /// `gcp.organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
+        /// `gcp.organizations.IamBinding` can be used per role. Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 
-        public IAMBindingState()
+        public IamBindingState()
         {
         }
-        public static new IAMBindingState Empty => new IAMBindingState();
+        public static new IamBindingState Empty => new IamBindingState();
     }
 }

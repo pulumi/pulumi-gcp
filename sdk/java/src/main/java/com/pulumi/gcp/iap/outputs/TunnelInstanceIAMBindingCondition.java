@@ -10,7 +10,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
-public final class TunnelInstanceIAMBindingCondition {
+public final class TunnelInstanceIamBindingCondition {
     /**
      * @return An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
      * 
@@ -31,7 +31,7 @@ public final class TunnelInstanceIAMBindingCondition {
      */
     private String title;
 
-    private TunnelInstanceIAMBindingCondition() {}
+    private TunnelInstanceIamBindingCondition() {}
     /**
      * @return An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
      * 
@@ -62,7 +62,7 @@ public final class TunnelInstanceIAMBindingCondition {
         return new Builder();
     }
 
-    public static Builder builder(TunnelInstanceIAMBindingCondition defaults) {
+    public static Builder builder(TunnelInstanceIamBindingCondition defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -71,7 +71,7 @@ public final class TunnelInstanceIAMBindingCondition {
         private String expression;
         private String title;
         public Builder() {}
-        public Builder(TunnelInstanceIAMBindingCondition defaults) {
+        public Builder(TunnelInstanceIamBindingCondition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
     	      this.expression = defaults.expression;
@@ -93,8 +93,8 @@ public final class TunnelInstanceIAMBindingCondition {
             this.title = Objects.requireNonNull(title);
             return this;
         }
-        public TunnelInstanceIAMBindingCondition build() {
-            final var o = new TunnelInstanceIAMBindingCondition();
+        public TunnelInstanceIamBindingCondition build() {
+            final var o = new TunnelInstanceIamBindingCondition();
             o.description = description;
             o.expression = expression;
             o.title = title;

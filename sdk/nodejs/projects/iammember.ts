@@ -9,14 +9,14 @@ import * as utilities from "../utilities";
 /**
  * Four different resources help you manage your IAM policy for a project. Each of these resources serves a different use case:
  *
- * * `gcp.projects.IAMPolicy`: Authoritative. Sets the IAM policy for the project and replaces any existing policy already attached.
- * * `gcp.projects.IAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the project are preserved.
- * * `gcp.projects.IAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the project are preserved.
- * * `gcp.projects.IAMAuditConfig`: Authoritative for a given service. Updates the IAM policy to enable audit logging for the given service.
+ * * `gcp.projects.IamPolicy`: Authoritative. Sets the IAM policy for the project and replaces any existing policy already attached.
+ * * `gcp.projects.IamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the project are preserved.
+ * * `gcp.projects.IamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the project are preserved.
+ * * `gcp.projects.IamAuditConfig`: Authoritative for a given service. Updates the IAM policy to enable audit logging for the given service.
  *
- * > **Note:** `gcp.projects.IAMPolicy` **cannot** be used in conjunction with `gcp.projects.IAMBinding`, `gcp.projects.IAMMember`, or `gcp.projects.IAMAuditConfig` or they will fight over what your policy should be.
+ * > **Note:** `gcp.projects.IamPolicy` **cannot** be used in conjunction with `gcp.projects.IamBinding`, `gcp.projects.IamMember`, or `gcp.projects.IamAuditConfig` or they will fight over what your policy should be.
  *
- * > **Note:** `gcp.projects.IAMBinding` resources **can be** used in conjunction with `gcp.projects.IAMMember` resources **only if** they do not grant privilege to the same role.
+ * > **Note:** `gcp.projects.IamBinding` resources **can be** used in conjunction with `gcp.projects.IamMember` resources **only if** they do not grant privilege to the same role.
  *
  * > **Note:** The underlying API method `projects.setIamPolicy` has a lot of constraints which are documented [here](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
  *    IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning 400 error code so please review these if you encounter errors with this resource.
@@ -24,9 +24,9 @@ import * as utilities from "../utilities";
  * ## google\_project\_iam\_policy
  *
  * !> **Be careful!** You can accidentally lock yourself out of your project
- *    using this resource. Deleting a `gcp.projects.IAMPolicy` removes access
+ *    using this resource. Deleting a `gcp.projects.IamPolicy` removes access
  *    from anyone without organization-level access to the project. Proceed with caution.
- *    It's not recommended to use `gcp.projects.IAMPolicy` with your provider project
+ *    It's not recommended to use `gcp.projects.IamPolicy` with your provider project
  *    to avoid locking yourself out, and it should generally only be used with projects
  *    fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
  *    applying the change.
@@ -35,13 +35,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const admin = gcp.organizations.getIAMPolicy({
+ * const admin = gcp.organizations.getIamPolicy({
  *     bindings: [{
  *         role: "roles/editor",
  *         members: ["user:jane@example.com"],
  *     }],
  * });
- * const project = new gcp.projects.IAMPolicy("project", {
+ * const project = new gcp.projects.IamPolicy("project", {
  *     project: "your-project-id",
  *     policyData: admin.then(admin => admin.policyData),
  * });
@@ -53,7 +53,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const admin = gcp.organizations.getIAMPolicy({
+ * const admin = gcp.organizations.getIamPolicy({
  *     bindings: [{
  *         condition: {
  *             description: "Expiring at midnight of 2019-12-31",
@@ -64,7 +64,7 @@ import * as utilities from "../utilities";
  *         role: "roles/compute.admin",
  *     }],
  * });
- * const project = new gcp.projects.IAMPolicy("project", {
+ * const project = new gcp.projects.IamPolicy("project", {
  *     policyData: admin.then(admin => admin.policyData),
  *     project: "your-project-id",
  * });
@@ -76,7 +76,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const project = new gcp.projects.IAMBinding("project", {
+ * const project = new gcp.projects.IamBinding("project", {
  *     members: ["user:jane@example.com"],
  *     project: "your-project-id",
  *     role: "roles/editor",
@@ -89,7 +89,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const project = new gcp.projects.IAMBinding("project", {
+ * const project = new gcp.projects.IamBinding("project", {
  *     condition: {
  *         description: "Expiring at midnight of 2019-12-31",
  *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
@@ -107,7 +107,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const project = new gcp.projects.IAMMember("project", {
+ * const project = new gcp.projects.IamMember("project", {
  *     member: "user:jane@example.com",
  *     project: "your-project-id",
  *     role: "roles/editor",
@@ -120,7 +120,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const project = new gcp.projects.IAMMember("project", {
+ * const project = new gcp.projects.IamMember("project", {
  *     condition: {
  *         description: "Expiring at midnight of 2019-12-31",
  *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
@@ -138,7 +138,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const project = new gcp.projects.IAMAuditConfig("project", {
+ * const project = new gcp.projects.IamAuditConfig("project", {
  *     auditLogConfigs: [
  *         {
  *             logType: "ADMIN_READ",
@@ -160,7 +160,7 @@ import * as utilities from "../utilities";
  * This member resource can be imported using the `project_id`, role, and member e.g.
  *
  * ```sh
- *  $ pulumi import gcp:projects/iAMMember:IAMMember my_project "your-project-id roles/viewer user:foo@example.com"
+ *  $ pulumi import gcp:projects/iamMember:IamMember my_project "your-project-id roles/viewer user:foo@example.com"
  * ```
  *
  *  IAM binding imports use space-delimited identifiers; the resource in question and the role.
@@ -168,7 +168,7 @@ import * as utilities from "../utilities";
  * This binding resource can be imported using the `project_id` and role, e.g.
  *
  * ```sh
- *  $ pulumi import gcp:projects/iAMMember:IAMMember my_project "your-project-id roles/viewer"
+ *  $ pulumi import gcp:projects/iamMember:IamMember my_project "your-project-id roles/viewer"
  * ```
  *
  *  IAM policy imports use the identifier of the resource in question.
@@ -176,13 +176,13 @@ import * as utilities from "../utilities";
  * This policy resource can be imported using the `project_id`.
  *
  * ```sh
- *  $ pulumi import gcp:projects/iAMMember:IAMMember my_project your-project-id
+ *  $ pulumi import gcp:projects/iamMember:IamMember my_project your-project-id
  * ```
  *
  *  IAM audit config imports use the identifier of the resource in question and the service, e.g.
  *
  * ```sh
- *  $ pulumi import gcp:projects/iAMMember:IAMMember my_project "your-project-id foo.googleapis.com"
+ *  $ pulumi import gcp:projects/iamMember:IamMember my_project "your-project-id foo.googleapis.com"
  * ```
  *
  *  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
@@ -190,12 +190,12 @@ import * as utilities from "../utilities";
  * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`. -> **Conditional IAM Bindings**If you're importing a IAM binding with a condition block, make sure
  *
  * ```sh
- *  $ pulumi import gcp:projects/iAMMember:IAMMember to include the title of condition, e.g. `google_project_iam_binding.my_project "{{your-project-id}} roles/{{role_id}} condition-title"`
+ *  $ pulumi import gcp:projects/iamMember:IamMember to include the title of condition, e.g. `google_project_iam_binding.my_project "{{your-project-id}} roles/{{role_id}} condition-title"`
  * ```
  */
-export class IAMMember extends pulumi.CustomResource {
+export class IamMember extends pulumi.CustomResource {
     /**
-     * Get an existing IAMMember resource's state with the given name, ID, and optional extra
+     * Get an existing IamMember resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -203,29 +203,29 @@ export class IAMMember extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: IAMMemberState, opts?: pulumi.CustomResourceOptions): IAMMember {
-        return new IAMMember(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: IamMemberState, opts?: pulumi.CustomResourceOptions): IamMember {
+        return new IamMember(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp:projects/iAMMember:IAMMember';
+    public static readonly __pulumiType = 'gcp:projects/iamMember:IamMember';
 
     /**
-     * Returns true if the given object is an instance of IAMMember.  This is designed to work even
+     * Returns true if the given object is an instance of IamMember.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is IAMMember {
+    public static isInstance(obj: any): obj is IamMember {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === IAMMember.__pulumiType;
+        return obj['__pulumiType'] === IamMember.__pulumiType;
     }
 
     /**
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    public readonly condition!: pulumi.Output<outputs.projects.IAMMemberCondition | undefined>;
+    public readonly condition!: pulumi.Output<outputs.projects.IamMemberCondition | undefined>;
     /**
      * (Computed) The etag of the project's IAM policy.
      */
@@ -238,31 +238,31 @@ export class IAMMember extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
-     * `gcp.projects.IAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.projects.IamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     public readonly role!: pulumi.Output<string>;
 
     /**
-     * Create a IAMMember resource with the given unique name, arguments, and options.
+     * Create a IamMember resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: IAMMemberArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: IAMMemberArgs | IAMMemberState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: IamMemberArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: IamMemberArgs | IamMemberState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as IAMMemberState | undefined;
+            const state = argsOrState as IamMemberState | undefined;
             resourceInputs["condition"] = state ? state.condition : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["member"] = state ? state.member : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["role"] = state ? state.role : undefined;
         } else {
-            const args = argsOrState as IAMMemberArgs | undefined;
+            const args = argsOrState as IamMemberArgs | undefined;
             if ((!args || args.member === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'member'");
             }
@@ -279,19 +279,19 @@ export class IAMMember extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(IAMMember.__pulumiType, name, resourceInputs, opts);
+        super(IamMember.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering IAMMember resources.
+ * Input properties used for looking up and filtering IamMember resources.
  */
-export interface IAMMemberState {
+export interface IamMemberState {
     /**
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    condition?: pulumi.Input<inputs.projects.IAMMemberCondition>;
+    condition?: pulumi.Input<inputs.projects.IamMemberCondition>;
     /**
      * (Computed) The etag of the project's IAM policy.
      */
@@ -304,21 +304,21 @@ export interface IAMMemberState {
     project?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
-     * `gcp.projects.IAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.projects.IamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     role?: pulumi.Input<string>;
 }
 
 /**
- * The set of arguments for constructing a IAMMember resource.
+ * The set of arguments for constructing a IamMember resource.
  */
-export interface IAMMemberArgs {
+export interface IamMemberArgs {
     /**
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      */
-    condition?: pulumi.Input<inputs.projects.IAMMemberCondition>;
+    condition?: pulumi.Input<inputs.projects.IamMemberCondition>;
     member: pulumi.Input<string>;
     /**
      * The project id of the target project. This is not
@@ -327,7 +327,7 @@ export interface IAMMemberArgs {
     project: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
-     * `gcp.projects.IAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.projects.IamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      */
     role: pulumi.Input<string>;

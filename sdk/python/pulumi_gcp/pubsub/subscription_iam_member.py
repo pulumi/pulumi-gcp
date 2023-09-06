@@ -11,20 +11,20 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['SubscriptionIAMMemberArgs', 'SubscriptionIAMMember']
+__all__ = ['SubscriptionIamMemberArgs', 'SubscriptionIamMember']
 
 @pulumi.input_type
-class SubscriptionIAMMemberArgs:
+class SubscriptionIamMemberArgs:
     def __init__(__self__, *,
                  member: pulumi.Input[str],
                  role: pulumi.Input[str],
                  subscription: pulumi.Input[str],
-                 condition: Optional[pulumi.Input['SubscriptionIAMMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['SubscriptionIamMemberConditionArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
-        The set of arguments for constructing a SubscriptionIAMMember resource.
+        The set of arguments for constructing a SubscriptionIamMember resource.
         :param pulumi.Input[str] role: The role that should be applied. Only one
-               `pubsub.SubscriptionIAMBinding` can be used per role. Note that custom roles must be of the format
+               `pubsub.SubscriptionIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[str] subscription: The subscription name or id to bind to attach IAM policy to.
                
@@ -61,7 +61,7 @@ class SubscriptionIAMMemberArgs:
     def role(self) -> pulumi.Input[str]:
         """
         The role that should be applied. Only one
-        `pubsub.SubscriptionIAMBinding` can be used per role. Note that custom roles must be of the format
+        `pubsub.SubscriptionIamBinding` can be used per role. Note that custom roles must be of the format
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         return pulumi.get(self, "role")
@@ -93,11 +93,11 @@ class SubscriptionIAMMemberArgs:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['SubscriptionIAMMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['SubscriptionIamMemberConditionArgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['SubscriptionIAMMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['SubscriptionIamMemberConditionArgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -115,21 +115,21 @@ class SubscriptionIAMMemberArgs:
 
 
 @pulumi.input_type
-class _SubscriptionIAMMemberState:
+class _SubscriptionIamMemberState:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input['SubscriptionIAMMemberConditionArgs']] = None,
+                 condition: Optional[pulumi.Input['SubscriptionIamMemberConditionArgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  subscription: Optional[pulumi.Input[str]] = None):
         """
-        Input properties used for looking up and filtering SubscriptionIAMMember resources.
+        Input properties used for looking up and filtering SubscriptionIamMember resources.
         :param pulumi.Input[str] etag: (Computed) The etag of the subscription's IAM policy.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] role: The role that should be applied. Only one
-               `pubsub.SubscriptionIAMBinding` can be used per role. Note that custom roles must be of the format
+               `pubsub.SubscriptionIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[str] subscription: The subscription name or id to bind to attach IAM policy to.
                
@@ -157,11 +157,11 @@ class _SubscriptionIAMMemberState:
 
     @property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['SubscriptionIAMMemberConditionArgs']]:
+    def condition(self) -> Optional[pulumi.Input['SubscriptionIamMemberConditionArgs']]:
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['SubscriptionIAMMemberConditionArgs']]):
+    def condition(self, value: Optional[pulumi.Input['SubscriptionIamMemberConditionArgs']]):
         pulumi.set(self, "condition", value)
 
     @property
@@ -203,7 +203,7 @@ class _SubscriptionIAMMemberState:
     def role(self) -> Optional[pulumi.Input[str]]:
         """
         The role that should be applied. Only one
-        `pubsub.SubscriptionIAMBinding` can be used per role. Note that custom roles must be of the format
+        `pubsub.SubscriptionIamBinding` can be used per role. Note that custom roles must be of the format
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         return pulumi.get(self, "role")
@@ -234,12 +234,12 @@ class _SubscriptionIAMMemberState:
         pulumi.set(self, "subscription", value)
 
 
-class SubscriptionIAMMember(pulumi.CustomResource):
+class SubscriptionIamMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['SubscriptionIAMMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['SubscriptionIamMemberConditionArgs']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -248,13 +248,13 @@ class SubscriptionIAMMember(pulumi.CustomResource):
         """
         Three different resources help you manage your IAM policy for pubsub subscription. Each of these resources serves a different use case:
 
-        * `pubsub.SubscriptionIAMPolicy`: Authoritative. Sets the IAM policy for the subscription and replaces any existing policy already attached.
-        * `pubsub.SubscriptionIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the subscription are preserved.
-        * `pubsub.SubscriptionIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the subscription are preserved.
+        * `pubsub.SubscriptionIamPolicy`: Authoritative. Sets the IAM policy for the subscription and replaces any existing policy already attached.
+        * `pubsub.SubscriptionIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the subscription are preserved.
+        * `pubsub.SubscriptionIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the subscription are preserved.
 
-        > **Note:** `pubsub.SubscriptionIAMPolicy` **cannot** be used in conjunction with `pubsub.SubscriptionIAMBinding` and `pubsub.SubscriptionIAMMember` or they will fight over what your policy should be.
+        > **Note:** `pubsub.SubscriptionIamPolicy` **cannot** be used in conjunction with `pubsub.SubscriptionIamBinding` and `pubsub.SubscriptionIamMember` or they will fight over what your policy should be.
 
-        > **Note:** `pubsub.SubscriptionIAMBinding` resources **can be** used in conjunction with `pubsub.SubscriptionIAMMember` resources **only if** they do not grant privilege to the same role.
+        > **Note:** `pubsub.SubscriptionIamBinding` resources **can be** used in conjunction with `pubsub.SubscriptionIamMember` resources **only if** they do not grant privilege to the same role.
 
         ## google\\_pubsub\\_subscription\\_iam\\_policy
 
@@ -262,11 +262,11 @@ class SubscriptionIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIamPolicyBindingArgs(
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
-        editor = gcp.pubsub.SubscriptionIAMPolicy("editor",
+        editor = gcp.pubsub.SubscriptionIamPolicy("editor",
             subscription="your-subscription-name",
             policy_data=admin.policy_data)
         ```
@@ -277,7 +277,7 @@ class SubscriptionIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        editor = gcp.pubsub.SubscriptionIAMBinding("editor",
+        editor = gcp.pubsub.SubscriptionIamBinding("editor",
             members=["user:jane@example.com"],
             role="roles/editor",
             subscription="your-subscription-name")
@@ -289,7 +289,7 @@ class SubscriptionIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        editor = gcp.pubsub.SubscriptionIAMMember("editor",
+        editor = gcp.pubsub.SubscriptionIamMember("editor",
             member="user:jane@example.com",
             role="roles/editor",
             subscription="your-subscription-name")
@@ -300,15 +300,15 @@ class SubscriptionIAMMember(pulumi.CustomResource):
         Pubsub subscription IAM resources can be imported using the project, subscription name, role and member.
 
         ```sh
-         $ pulumi import gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember editor projects/{your-project-id}/subscriptions/{your-subscription-name}
+         $ pulumi import gcp:pubsub/subscriptionIamMember:SubscriptionIamMember editor projects/{your-project-id}/subscriptions/{your-subscription-name}
         ```
 
         ```sh
-         $ pulumi import gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember editor "projects/{your-project-id}/subscriptions/{your-subscription-name} roles/editor"
+         $ pulumi import gcp:pubsub/subscriptionIamMember:SubscriptionIamMember editor "projects/{your-project-id}/subscriptions/{your-subscription-name} roles/editor"
         ```
 
         ```sh
-         $ pulumi import gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember editor "projects/{your-project-id}/subscriptions/{your-subscription-name} roles/editor jane@example.com"
+         $ pulumi import gcp:pubsub/subscriptionIamMember:SubscriptionIamMember editor "projects/{your-project-id}/subscriptions/{your-subscription-name} roles/editor jane@example.com"
         ```
 
          -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
@@ -320,7 +320,7 @@ class SubscriptionIAMMember(pulumi.CustomResource):
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] role: The role that should be applied. Only one
-               `pubsub.SubscriptionIAMBinding` can be used per role. Note that custom roles must be of the format
+               `pubsub.SubscriptionIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[str] subscription: The subscription name or id to bind to attach IAM policy to.
                
@@ -337,18 +337,18 @@ class SubscriptionIAMMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: SubscriptionIAMMemberArgs,
+                 args: SubscriptionIamMemberArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Three different resources help you manage your IAM policy for pubsub subscription. Each of these resources serves a different use case:
 
-        * `pubsub.SubscriptionIAMPolicy`: Authoritative. Sets the IAM policy for the subscription and replaces any existing policy already attached.
-        * `pubsub.SubscriptionIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the subscription are preserved.
-        * `pubsub.SubscriptionIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the subscription are preserved.
+        * `pubsub.SubscriptionIamPolicy`: Authoritative. Sets the IAM policy for the subscription and replaces any existing policy already attached.
+        * `pubsub.SubscriptionIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the subscription are preserved.
+        * `pubsub.SubscriptionIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the subscription are preserved.
 
-        > **Note:** `pubsub.SubscriptionIAMPolicy` **cannot** be used in conjunction with `pubsub.SubscriptionIAMBinding` and `pubsub.SubscriptionIAMMember` or they will fight over what your policy should be.
+        > **Note:** `pubsub.SubscriptionIamPolicy` **cannot** be used in conjunction with `pubsub.SubscriptionIamBinding` and `pubsub.SubscriptionIamMember` or they will fight over what your policy should be.
 
-        > **Note:** `pubsub.SubscriptionIAMBinding` resources **can be** used in conjunction with `pubsub.SubscriptionIAMMember` resources **only if** they do not grant privilege to the same role.
+        > **Note:** `pubsub.SubscriptionIamBinding` resources **can be** used in conjunction with `pubsub.SubscriptionIamMember` resources **only if** they do not grant privilege to the same role.
 
         ## google\\_pubsub\\_subscription\\_iam\\_policy
 
@@ -356,11 +356,11 @@ class SubscriptionIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIamPolicyBindingArgs(
             role="roles/editor",
             members=["user:jane@example.com"],
         )])
-        editor = gcp.pubsub.SubscriptionIAMPolicy("editor",
+        editor = gcp.pubsub.SubscriptionIamPolicy("editor",
             subscription="your-subscription-name",
             policy_data=admin.policy_data)
         ```
@@ -371,7 +371,7 @@ class SubscriptionIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        editor = gcp.pubsub.SubscriptionIAMBinding("editor",
+        editor = gcp.pubsub.SubscriptionIamBinding("editor",
             members=["user:jane@example.com"],
             role="roles/editor",
             subscription="your-subscription-name")
@@ -383,7 +383,7 @@ class SubscriptionIAMMember(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        editor = gcp.pubsub.SubscriptionIAMMember("editor",
+        editor = gcp.pubsub.SubscriptionIamMember("editor",
             member="user:jane@example.com",
             role="roles/editor",
             subscription="your-subscription-name")
@@ -394,15 +394,15 @@ class SubscriptionIAMMember(pulumi.CustomResource):
         Pubsub subscription IAM resources can be imported using the project, subscription name, role and member.
 
         ```sh
-         $ pulumi import gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember editor projects/{your-project-id}/subscriptions/{your-subscription-name}
+         $ pulumi import gcp:pubsub/subscriptionIamMember:SubscriptionIamMember editor projects/{your-project-id}/subscriptions/{your-subscription-name}
         ```
 
         ```sh
-         $ pulumi import gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember editor "projects/{your-project-id}/subscriptions/{your-subscription-name} roles/editor"
+         $ pulumi import gcp:pubsub/subscriptionIamMember:SubscriptionIamMember editor "projects/{your-project-id}/subscriptions/{your-subscription-name} roles/editor"
         ```
 
         ```sh
-         $ pulumi import gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember editor "projects/{your-project-id}/subscriptions/{your-subscription-name} roles/editor jane@example.com"
+         $ pulumi import gcp:pubsub/subscriptionIamMember:SubscriptionIamMember editor "projects/{your-project-id}/subscriptions/{your-subscription-name} roles/editor jane@example.com"
         ```
 
          -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
@@ -410,12 +410,12 @@ class SubscriptionIAMMember(pulumi.CustomResource):
         full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 
         :param str resource_name: The name of the resource.
-        :param SubscriptionIAMMemberArgs args: The arguments to use to populate this resource's properties.
+        :param SubscriptionIamMemberArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(SubscriptionIAMMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(SubscriptionIamMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -424,7 +424,7 @@ class SubscriptionIAMMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 condition: Optional[pulumi.Input[pulumi.InputType['SubscriptionIAMMemberConditionArgs']]] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['SubscriptionIamMemberConditionArgs']]] = None,
                  member: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
@@ -436,7 +436,7 @@ class SubscriptionIAMMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = SubscriptionIAMMemberArgs.__new__(SubscriptionIAMMemberArgs)
+            __props__ = SubscriptionIamMemberArgs.__new__(SubscriptionIamMemberArgs)
 
             __props__.__dict__["condition"] = condition
             if member is None and not opts.urn:
@@ -450,8 +450,8 @@ class SubscriptionIAMMember(pulumi.CustomResource):
                 raise TypeError("Missing required property 'subscription'")
             __props__.__dict__["subscription"] = subscription
             __props__.__dict__["etag"] = None
-        super(SubscriptionIAMMember, __self__).__init__(
-            'gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember',
+        super(SubscriptionIamMember, __self__).__init__(
+            'gcp:pubsub/subscriptionIamMember:SubscriptionIamMember',
             resource_name,
             __props__,
             opts)
@@ -460,14 +460,14 @@ class SubscriptionIAMMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            condition: Optional[pulumi.Input[pulumi.InputType['SubscriptionIAMMemberConditionArgs']]] = None,
+            condition: Optional[pulumi.Input[pulumi.InputType['SubscriptionIamMemberConditionArgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             member: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             role: Optional[pulumi.Input[str]] = None,
-            subscription: Optional[pulumi.Input[str]] = None) -> 'SubscriptionIAMMember':
+            subscription: Optional[pulumi.Input[str]] = None) -> 'SubscriptionIamMember':
         """
-        Get an existing SubscriptionIAMMember resource's state with the given name, id, and optional extra
+        Get an existing SubscriptionIamMember resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -477,7 +477,7 @@ class SubscriptionIAMMember(pulumi.CustomResource):
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] role: The role that should be applied. Only one
-               `pubsub.SubscriptionIAMBinding` can be used per role. Note that custom roles must be of the format
+               `pubsub.SubscriptionIamBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         :param pulumi.Input[str] subscription: The subscription name or id to bind to attach IAM policy to.
                
@@ -492,7 +492,7 @@ class SubscriptionIAMMember(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _SubscriptionIAMMemberState.__new__(_SubscriptionIAMMemberState)
+        __props__ = _SubscriptionIamMemberState.__new__(_SubscriptionIamMemberState)
 
         __props__.__dict__["condition"] = condition
         __props__.__dict__["etag"] = etag
@@ -500,11 +500,11 @@ class SubscriptionIAMMember(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["role"] = role
         __props__.__dict__["subscription"] = subscription
-        return SubscriptionIAMMember(resource_name, opts=opts, __props__=__props__)
+        return SubscriptionIamMember(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
-    def condition(self) -> pulumi.Output[Optional['outputs.SubscriptionIAMMemberCondition']]:
+    def condition(self) -> pulumi.Output[Optional['outputs.SubscriptionIamMemberCondition']]:
         return pulumi.get(self, "condition")
 
     @property
@@ -534,7 +534,7 @@ class SubscriptionIAMMember(pulumi.CustomResource):
     def role(self) -> pulumi.Output[str]:
         """
         The role that should be applied. Only one
-        `pubsub.SubscriptionIAMBinding` can be used per role. Note that custom roles must be of the format
+        `pubsub.SubscriptionIamBinding` can be used per role. Note that custom roles must be of the format
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         return pulumi.get(self, "role")

@@ -11,9 +11,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class InstanceIAMMemberConditionArgs extends com.pulumi.resources.ResourceArgs {
+public final class InstanceIamMemberConditionArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final InstanceIAMMemberConditionArgs Empty = new InstanceIAMMemberConditionArgs();
+    public static final InstanceIamMemberConditionArgs Empty = new InstanceIamMemberConditionArgs();
 
     /**
      * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -68,9 +68,9 @@ public final class InstanceIAMMemberConditionArgs extends com.pulumi.resources.R
         return this.title;
     }
 
-    private InstanceIAMMemberConditionArgs() {}
+    private InstanceIamMemberConditionArgs() {}
 
-    private InstanceIAMMemberConditionArgs(InstanceIAMMemberConditionArgs $) {
+    private InstanceIamMemberConditionArgs(InstanceIamMemberConditionArgs $) {
         this.description = $.description;
         this.expression = $.expression;
         this.title = $.title;
@@ -79,19 +79,19 @@ public final class InstanceIAMMemberConditionArgs extends com.pulumi.resources.R
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(InstanceIAMMemberConditionArgs defaults) {
+    public static Builder builder(InstanceIamMemberConditionArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private InstanceIAMMemberConditionArgs $;
+        private InstanceIamMemberConditionArgs $;
 
         public Builder() {
-            $ = new InstanceIAMMemberConditionArgs();
+            $ = new InstanceIamMemberConditionArgs();
         }
 
-        public Builder(InstanceIAMMemberConditionArgs defaults) {
-            $ = new InstanceIAMMemberConditionArgs(Objects.requireNonNull(defaults));
+        public Builder(InstanceIamMemberConditionArgs defaults) {
+            $ = new InstanceIamMemberConditionArgs(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -165,7 +165,7 @@ public final class InstanceIAMMemberConditionArgs extends com.pulumi.resources.R
             return title(Output.of(title));
         }
 
-        public InstanceIAMMemberConditionArgs build() {
+        public InstanceIamMemberConditionArgs build() {
             $.expression = Objects.requireNonNull($.expression, "expected parameter 'expression' to be non-null");
             $.title = Objects.requireNonNull($.title, "expected parameter 'title' to be non-null");
             return $;

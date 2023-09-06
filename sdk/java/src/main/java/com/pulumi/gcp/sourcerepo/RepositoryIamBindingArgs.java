@@ -81,7 +81,7 @@ public final class RepositoryIamBindingArgs extends com.pulumi.resources.Resourc
 
     /**
      * The role that should be applied. Only one
-     * `gcp.pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.pubsub.TopicIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -90,7 +90,7 @@ public final class RepositoryIamBindingArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return The role that should be applied. Only one
-     * `gcp.pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.pubsub.TopicIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -206,7 +206,7 @@ public final class RepositoryIamBindingArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.pubsub.TopicIamBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder
@@ -219,7 +219,7 @@ public final class RepositoryIamBindingArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.pubsub.TopicIamBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder

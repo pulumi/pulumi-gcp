@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Spanner.Inputs
 {
 
-    public sealed class InstanceIAMMemberConditionArgs : global::Pulumi.ResourceArgs
+    public sealed class InstanceIamMemberConditionArgs : global::Pulumi.ResourceArgs
     {
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -21,9 +21,9 @@ namespace Pulumi.Gcp.Spanner.Inputs
         [Input("title", required: true)]
         public Input<string> Title { get; set; } = null!;
 
-        public InstanceIAMMemberConditionArgs()
+        public InstanceIamMemberConditionArgs()
         {
         }
-        public static new InstanceIAMMemberConditionArgs Empty => new InstanceIAMMemberConditionArgs();
+        public static new InstanceIamMemberConditionArgs Empty => new InstanceIamMemberConditionArgs();
     }
 }

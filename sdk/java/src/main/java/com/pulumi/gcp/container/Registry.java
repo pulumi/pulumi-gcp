@@ -59,8 +59,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.container.Registry;
  * import com.pulumi.gcp.container.RegistryArgs;
- * import com.pulumi.gcp.storage.BucketIAMMember;
- * import com.pulumi.gcp.storage.BucketIAMMemberArgs;
+ * import com.pulumi.gcp.storage.BucketIamMember;
+ * import com.pulumi.gcp.storage.BucketIamMemberArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  *             .location(&#34;EU&#34;)
  *             .build());
  * 
- *         var viewer = new BucketIAMMember(&#34;viewer&#34;, BucketIAMMemberArgs.builder()        
+ *         var viewer = new BucketIamMember(&#34;viewer&#34;, BucketIamMemberArgs.builder()        
  *             .bucket(registry.id())
  *             .role(&#34;roles/storage.objectViewer&#34;)
  *             .member(&#34;user:jane@example.com&#34;)

@@ -36,7 +36,7 @@ namespace Pulumi.Gcp.BigQuery
     /// {
     ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
-    ///     var permissions = new Gcp.Projects.IAMMember("permissions", new()
+    ///     var permissions = new Gcp.Projects.IamMember("permissions", new()
     ///     {
     ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
     ///         Role = "roles/iam.serviceAccountTokenCreator",

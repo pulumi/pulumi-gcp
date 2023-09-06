@@ -206,8 +206,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.pubsub.Topic;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
- * import com.pulumi.gcp.projects.IAMMember;
- * import com.pulumi.gcp.projects.IAMMemberArgs;
+ * import com.pulumi.gcp.projects.IamMember;
+ * import com.pulumi.gcp.projects.IamMemberArgs;
  * import com.pulumi.gcp.bigquery.Dataset;
  * import com.pulumi.gcp.bigquery.DatasetArgs;
  * import com.pulumi.gcp.bigquery.Table;
@@ -233,13 +233,13 @@ import javax.annotation.Nullable;
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var viewer = new IAMMember(&#34;viewer&#34;, IAMMemberArgs.builder()        
+ *         var viewer = new IamMember(&#34;viewer&#34;, IamMemberArgs.builder()        
  *             .project(project.applyValue(getProjectResult -&gt; getProjectResult.projectId()))
  *             .role(&#34;roles/bigquery.metadataViewer&#34;)
  *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-pubsub.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
  *             .build());
  * 
- *         var editor = new IAMMember(&#34;editor&#34;, IAMMemberArgs.builder()        
+ *         var editor = new IamMember(&#34;editor&#34;, IamMemberArgs.builder()        
  *             .project(project.applyValue(getProjectResult -&gt; getProjectResult.projectId()))
  *             .role(&#34;roles/bigquery.dataEditor&#34;)
  *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-pubsub.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))

@@ -21,14 +21,14 @@ __all__ = [
     'SubscriptionCloudStorageConfigAvroConfig',
     'SubscriptionDeadLetterPolicy',
     'SubscriptionExpirationPolicy',
-    'SubscriptionIAMBindingCondition',
-    'SubscriptionIAMMemberCondition',
+    'SubscriptionIamBindingCondition',
+    'SubscriptionIamMemberCondition',
     'SubscriptionPushConfig',
     'SubscriptionPushConfigNoWrapper',
     'SubscriptionPushConfigOidcToken',
     'SubscriptionRetryPolicy',
-    'TopicIAMBindingCondition',
-    'TopicIAMMemberCondition',
+    'TopicIamBindingCondition',
+    'TopicIamMemberCondition',
     'TopicMessageStoragePolicy',
     'TopicSchemaSettings',
     'GetSubscriptionBigqueryConfigResult',
@@ -601,7 +601,7 @@ class SubscriptionExpirationPolicy(dict):
 
 
 @pulumi.output_type
-class SubscriptionIAMBindingCondition(dict):
+class SubscriptionIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -628,7 +628,7 @@ class SubscriptionIAMBindingCondition(dict):
 
 
 @pulumi.output_type
-class SubscriptionIAMMemberCondition(dict):
+class SubscriptionIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -932,7 +932,7 @@ class SubscriptionRetryPolicy(dict):
 
 
 @pulumi.output_type
-class TopicIAMBindingCondition(dict):
+class TopicIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -959,7 +959,7 @@ class TopicIAMBindingCondition(dict):
 
 
 @pulumi.output_type
-class TopicIAMMemberCondition(dict):
+class TopicIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,

@@ -23,14 +23,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:folder/accessApprovalSettings:AccessApprovalSettings":
 		r = &AccessApprovalSettings{}
-	case "gcp:folder/iAMBinding:IamBinding":
-		r = &IamBinding{}
-	case "gcp:folder/iAMMember:IamMember":
-		r = &IamMember{}
-	case "gcp:folder/iAMPolicy:IamPolicy":
-		r = &IamPolicy{}
 	case "gcp:folder/iamAuditConfig:IamAuditConfig":
 		r = &IamAuditConfig{}
+	case "gcp:folder/iamBinding:IamBinding":
+		r = &IamBinding{}
+	case "gcp:folder/iamMember:IamMember":
+		r = &IamMember{}
+	case "gcp:folder/iamPolicy:IamPolicy":
+		r = &IamPolicy{}
 	case "gcp:folder/organizationPolicy:OrganizationPolicy":
 		r = &OrganizationPolicy{}
 	default:
@@ -53,22 +53,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"folder/iAMBinding",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"gcp",
-		"folder/iAMMember",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"gcp",
-		"folder/iAMPolicy",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"gcp",
 		"folder/iamAuditConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"folder/iamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"folder/iamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"folder/iamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

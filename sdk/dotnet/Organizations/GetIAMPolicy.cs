@@ -9,13 +9,13 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Organizations
 {
-    public static class GetIAMPolicy
+    public static class GetIamPolicy
     {
         /// <summary>
         /// Generates an IAM policy document that may be referenced by and applied to
-        /// other Google Cloud Platform IAM resources, such as the `gcp.projects.IAMPolicy` resource.
+        /// other Google Cloud Platform IAM resources, such as the `gcp.projects.IamPolicy` resource.
         /// 
-        /// **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `gcp.projects.IAMPolicy` and others have limitations in their API methods which are noted on their respective page.
+        /// **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `gcp.projects.IamPolicy` and others have limitations in their API methods which are noted on their respective page.
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -25,15 +25,15 @@ namespace Pulumi.Gcp.Organizations
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+        ///     var admin = Gcp.Organizations.GetIamPolicy.Invoke(new()
         ///     {
         ///         AuditConfigs = new[]
         ///         {
-        ///             new Gcp.Organizations.Inputs.GetIAMPolicyAuditConfigInputArgs
+        ///             new Gcp.Organizations.Inputs.GetIamPolicyAuditConfigInputArgs
         ///             {
         ///                 AuditLogConfigs = new[]
         ///                 {
-        ///                     new Gcp.Organizations.Inputs.GetIAMPolicyAuditConfigAuditLogConfigInputArgs
+        ///                     new Gcp.Organizations.Inputs.GetIamPolicyAuditConfigAuditLogConfigInputArgs
         ///                     {
         ///                         ExemptedMembers = new[]
         ///                         {
@@ -41,11 +41,11 @@ namespace Pulumi.Gcp.Organizations
         ///                         },
         ///                         LogType = "DATA_READ",
         ///                     },
-        ///                     new Gcp.Organizations.Inputs.GetIAMPolicyAuditConfigAuditLogConfigInputArgs
+        ///                     new Gcp.Organizations.Inputs.GetIamPolicyAuditConfigAuditLogConfigInputArgs
         ///                     {
         ///                         LogType = "DATA_WRITE",
         ///                     },
-        ///                     new Gcp.Organizations.Inputs.GetIAMPolicyAuditConfigAuditLogConfigInputArgs
+        ///                     new Gcp.Organizations.Inputs.GetIamPolicyAuditConfigAuditLogConfigInputArgs
         ///                     {
         ///                         LogType = "ADMIN_READ",
         ///                     },
@@ -55,7 +55,7 @@ namespace Pulumi.Gcp.Organizations
         ///         },
         ///         Bindings = new[]
         ///         {
-        ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+        ///             new Gcp.Organizations.Inputs.GetIamPolicyBindingInputArgs
         ///             {
         ///                 Members = new[]
         ///                 {
@@ -63,7 +63,7 @@ namespace Pulumi.Gcp.Organizations
         ///                 },
         ///                 Role = "roles/compute.instanceAdmin",
         ///             },
-        ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+        ///             new Gcp.Organizations.Inputs.GetIamPolicyBindingInputArgs
         ///             {
         ///                 Members = new[]
         ///                 {
@@ -81,14 +81,14 @@ namespace Pulumi.Gcp.Organizations
         /// Currently, defining a policy through a datasource and referencing that policy
         /// from another resource is the only way to apply an IAM policy to a resource.
         /// </summary>
-        public static Task<GetIAMPolicyResult> InvokeAsync(GetIAMPolicyArgs? args = null, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetIAMPolicyResult>("gcp:organizations/getIAMPolicy:getIAMPolicy", args ?? new GetIAMPolicyArgs(), options.WithDefaults());
+        public static Task<GetIamPolicyResult> InvokeAsync(GetIamPolicyArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetIamPolicyResult>("gcp:organizations/getIamPolicy:getIamPolicy", args ?? new GetIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// Generates an IAM policy document that may be referenced by and applied to
-        /// other Google Cloud Platform IAM resources, such as the `gcp.projects.IAMPolicy` resource.
+        /// other Google Cloud Platform IAM resources, such as the `gcp.projects.IamPolicy` resource.
         /// 
-        /// **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `gcp.projects.IAMPolicy` and others have limitations in their API methods which are noted on their respective page.
+        /// **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `gcp.projects.IamPolicy` and others have limitations in their API methods which are noted on their respective page.
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -98,15 +98,15 @@ namespace Pulumi.Gcp.Organizations
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+        ///     var admin = Gcp.Organizations.GetIamPolicy.Invoke(new()
         ///     {
         ///         AuditConfigs = new[]
         ///         {
-        ///             new Gcp.Organizations.Inputs.GetIAMPolicyAuditConfigInputArgs
+        ///             new Gcp.Organizations.Inputs.GetIamPolicyAuditConfigInputArgs
         ///             {
         ///                 AuditLogConfigs = new[]
         ///                 {
-        ///                     new Gcp.Organizations.Inputs.GetIAMPolicyAuditConfigAuditLogConfigInputArgs
+        ///                     new Gcp.Organizations.Inputs.GetIamPolicyAuditConfigAuditLogConfigInputArgs
         ///                     {
         ///                         ExemptedMembers = new[]
         ///                         {
@@ -114,11 +114,11 @@ namespace Pulumi.Gcp.Organizations
         ///                         },
         ///                         LogType = "DATA_READ",
         ///                     },
-        ///                     new Gcp.Organizations.Inputs.GetIAMPolicyAuditConfigAuditLogConfigInputArgs
+        ///                     new Gcp.Organizations.Inputs.GetIamPolicyAuditConfigAuditLogConfigInputArgs
         ///                     {
         ///                         LogType = "DATA_WRITE",
         ///                     },
-        ///                     new Gcp.Organizations.Inputs.GetIAMPolicyAuditConfigAuditLogConfigInputArgs
+        ///                     new Gcp.Organizations.Inputs.GetIamPolicyAuditConfigAuditLogConfigInputArgs
         ///                     {
         ///                         LogType = "ADMIN_READ",
         ///                     },
@@ -128,7 +128,7 @@ namespace Pulumi.Gcp.Organizations
         ///         },
         ///         Bindings = new[]
         ///         {
-        ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+        ///             new Gcp.Organizations.Inputs.GetIamPolicyBindingInputArgs
         ///             {
         ///                 Members = new[]
         ///                 {
@@ -136,7 +136,7 @@ namespace Pulumi.Gcp.Organizations
         ///                 },
         ///                 Role = "roles/compute.instanceAdmin",
         ///             },
-        ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+        ///             new Gcp.Organizations.Inputs.GetIamPolicyBindingInputArgs
         ///             {
         ///                 Members = new[]
         ///                 {
@@ -154,27 +154,27 @@ namespace Pulumi.Gcp.Organizations
         /// Currently, defining a policy through a datasource and referencing that policy
         /// from another resource is the only way to apply an IAM policy to a resource.
         /// </summary>
-        public static Output<GetIAMPolicyResult> Invoke(GetIAMPolicyInvokeArgs? args = null, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetIAMPolicyResult>("gcp:organizations/getIAMPolicy:getIAMPolicy", args ?? new GetIAMPolicyInvokeArgs(), options.WithDefaults());
+        public static Output<GetIamPolicyResult> Invoke(GetIamPolicyInvokeArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetIamPolicyResult>("gcp:organizations/getIamPolicy:getIamPolicy", args ?? new GetIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetIAMPolicyArgs : global::Pulumi.InvokeArgs
+    public sealed class GetIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("auditConfigs")]
-        private List<Inputs.GetIAMPolicyAuditConfigArgs>? _auditConfigs;
+        private List<Inputs.GetIamPolicyAuditConfigArgs>? _auditConfigs;
 
         /// <summary>
-        /// A nested configuration block that defines logging additional configuration for your project. This field is only supported on `gcp.projects.IAMPolicy`, `gcp.folder.IAMPolicy` and `gcp.organizations.IAMPolicy`.
+        /// A nested configuration block that defines logging additional configuration for your project. This field is only supported on `gcp.projects.IamPolicy`, `gcp.folder.IamPolicy` and `gcp.organizations.IamPolicy`.
         /// </summary>
-        public List<Inputs.GetIAMPolicyAuditConfigArgs> AuditConfigs
+        public List<Inputs.GetIamPolicyAuditConfigArgs> AuditConfigs
         {
-            get => _auditConfigs ?? (_auditConfigs = new List<Inputs.GetIAMPolicyAuditConfigArgs>());
+            get => _auditConfigs ?? (_auditConfigs = new List<Inputs.GetIamPolicyAuditConfigArgs>());
             set => _auditConfigs = value;
         }
 
         [Input("bindings")]
-        private List<Inputs.GetIAMPolicyBindingArgs>? _bindings;
+        private List<Inputs.GetIamPolicyBindingArgs>? _bindings;
 
         /// <summary>
         /// A nested configuration block (described below)
@@ -184,34 +184,34 @@ namespace Pulumi.Gcp.Organizations
         /// Each document configuration must have one or more `binding` blocks, which
         /// each accept the following arguments:
         /// </summary>
-        public List<Inputs.GetIAMPolicyBindingArgs> Bindings
+        public List<Inputs.GetIamPolicyBindingArgs> Bindings
         {
-            get => _bindings ?? (_bindings = new List<Inputs.GetIAMPolicyBindingArgs>());
+            get => _bindings ?? (_bindings = new List<Inputs.GetIamPolicyBindingArgs>());
             set => _bindings = value;
         }
 
-        public GetIAMPolicyArgs()
+        public GetIamPolicyArgs()
         {
         }
-        public static new GetIAMPolicyArgs Empty => new GetIAMPolicyArgs();
+        public static new GetIamPolicyArgs Empty => new GetIamPolicyArgs();
     }
 
-    public sealed class GetIAMPolicyInvokeArgs : global::Pulumi.InvokeArgs
+    public sealed class GetIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("auditConfigs")]
-        private InputList<Inputs.GetIAMPolicyAuditConfigInputArgs>? _auditConfigs;
+        private InputList<Inputs.GetIamPolicyAuditConfigInputArgs>? _auditConfigs;
 
         /// <summary>
-        /// A nested configuration block that defines logging additional configuration for your project. This field is only supported on `gcp.projects.IAMPolicy`, `gcp.folder.IAMPolicy` and `gcp.organizations.IAMPolicy`.
+        /// A nested configuration block that defines logging additional configuration for your project. This field is only supported on `gcp.projects.IamPolicy`, `gcp.folder.IamPolicy` and `gcp.organizations.IamPolicy`.
         /// </summary>
-        public InputList<Inputs.GetIAMPolicyAuditConfigInputArgs> AuditConfigs
+        public InputList<Inputs.GetIamPolicyAuditConfigInputArgs> AuditConfigs
         {
-            get => _auditConfigs ?? (_auditConfigs = new InputList<Inputs.GetIAMPolicyAuditConfigInputArgs>());
+            get => _auditConfigs ?? (_auditConfigs = new InputList<Inputs.GetIamPolicyAuditConfigInputArgs>());
             set => _auditConfigs = value;
         }
 
         [Input("bindings")]
-        private InputList<Inputs.GetIAMPolicyBindingInputArgs>? _bindings;
+        private InputList<Inputs.GetIamPolicyBindingInputArgs>? _bindings;
 
         /// <summary>
         /// A nested configuration block (described below)
@@ -221,24 +221,24 @@ namespace Pulumi.Gcp.Organizations
         /// Each document configuration must have one or more `binding` blocks, which
         /// each accept the following arguments:
         /// </summary>
-        public InputList<Inputs.GetIAMPolicyBindingInputArgs> Bindings
+        public InputList<Inputs.GetIamPolicyBindingInputArgs> Bindings
         {
-            get => _bindings ?? (_bindings = new InputList<Inputs.GetIAMPolicyBindingInputArgs>());
+            get => _bindings ?? (_bindings = new InputList<Inputs.GetIamPolicyBindingInputArgs>());
             set => _bindings = value;
         }
 
-        public GetIAMPolicyInvokeArgs()
+        public GetIamPolicyInvokeArgs()
         {
         }
-        public static new GetIAMPolicyInvokeArgs Empty => new GetIAMPolicyInvokeArgs();
+        public static new GetIamPolicyInvokeArgs Empty => new GetIamPolicyInvokeArgs();
     }
 
 
     [OutputType]
-    public sealed class GetIAMPolicyResult
+    public sealed class GetIamPolicyResult
     {
-        public readonly ImmutableArray<Outputs.GetIAMPolicyAuditConfigResult> AuditConfigs;
-        public readonly ImmutableArray<Outputs.GetIAMPolicyBindingResult> Bindings;
+        public readonly ImmutableArray<Outputs.GetIamPolicyAuditConfigResult> AuditConfigs;
+        public readonly ImmutableArray<Outputs.GetIamPolicyBindingResult> Bindings;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -250,10 +250,10 @@ namespace Pulumi.Gcp.Organizations
         public readonly string PolicyData;
 
         [OutputConstructor]
-        private GetIAMPolicyResult(
-            ImmutableArray<Outputs.GetIAMPolicyAuditConfigResult> auditConfigs,
+        private GetIamPolicyResult(
+            ImmutableArray<Outputs.GetIamPolicyAuditConfigResult> auditConfigs,
 
-            ImmutableArray<Outputs.GetIAMPolicyBindingResult> bindings,
+            ImmutableArray<Outputs.GetIamPolicyBindingResult> bindings,
 
             string id,
 

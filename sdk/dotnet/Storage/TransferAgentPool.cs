@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.Storage
     ///         Project = "my-project-name",
     ///     });
     /// 
-    ///     var pubsubEditorRole = new Gcp.Projects.IAMMember("pubsubEditorRole", new()
+    ///     var pubsubEditorRole = new Gcp.Projects.IamMember("pubsubEditorRole", new()
     ///     {
     ///         Project = "my-project-name",
     ///         Role = "roles/pubsub.editor",

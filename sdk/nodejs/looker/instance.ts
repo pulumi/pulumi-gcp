@@ -151,7 +151,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [lookerVpcConnection],
  * });
  * const project = gcp.organizations.getProject({});
- * const cryptoKey = new gcp.kms.CryptoKeyIAMMember("cryptoKey", {
+ * const cryptoKey = new gcp.kms.CryptoKeyIamMember("cryptoKey", {
  *     cryptoKeyId: "looker-kms-key",
  *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
  *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-looker.iam.gserviceaccount.com`),

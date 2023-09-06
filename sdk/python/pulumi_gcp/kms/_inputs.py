@@ -10,14 +10,14 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
-    'CryptoKeyIAMBindingConditionArgs',
-    'CryptoKeyIAMMemberConditionArgs',
+    'CryptoKeyIamBindingConditionArgs',
+    'CryptoKeyIamMemberConditionArgs',
     'CryptoKeyVersionAttestationArgs',
     'CryptoKeyVersionAttestationCertChainsArgs',
     'CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs',
     'CryptoKeyVersionTemplateArgs',
-    'KeyRingIAMBindingConditionArgs',
-    'KeyRingIAMMemberConditionArgs',
+    'KeyRingIamBindingConditionArgs',
+    'KeyRingIamMemberConditionArgs',
     'KeyRingImportJobAttestationArgs',
     'KeyRingImportJobPublicKeyArgs',
     'RegistryCredentialArgs',
@@ -25,7 +25,7 @@ __all__ = [
 ]
 
 @pulumi.input_type
-class CryptoKeyIAMBindingConditionArgs:
+class CryptoKeyIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -86,7 +86,7 @@ class CryptoKeyIAMBindingConditionArgs:
 
 
 @pulumi.input_type
-class CryptoKeyIAMMemberConditionArgs:
+class CryptoKeyIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -360,7 +360,7 @@ class CryptoKeyVersionTemplateArgs:
 
 
 @pulumi.input_type
-class KeyRingIAMBindingConditionArgs:
+class KeyRingIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -421,7 +421,7 @@ class KeyRingIAMBindingConditionArgs:
 
 
 @pulumi.input_type
-class KeyRingIAMMemberConditionArgs:
+class KeyRingIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],

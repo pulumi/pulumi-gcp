@@ -10,17 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Organizations.Inputs
 {
 
-    public sealed class GetIAMPolicyAuditConfigInputArgs : global::Pulumi.ResourceArgs
+    public sealed class GetIamPolicyAuditConfigInputArgs : global::Pulumi.ResourceArgs
     {
         [Input("auditLogConfigs", required: true)]
-        private InputList<Inputs.GetIAMPolicyAuditConfigAuditLogConfigInputArgs>? _auditLogConfigs;
+        private InputList<Inputs.GetIamPolicyAuditConfigAuditLogConfigInputArgs>? _auditLogConfigs;
 
         /// <summary>
         /// A nested block that defines the operations you'd like to log.
         /// </summary>
-        public InputList<Inputs.GetIAMPolicyAuditConfigAuditLogConfigInputArgs> AuditLogConfigs
+        public InputList<Inputs.GetIamPolicyAuditConfigAuditLogConfigInputArgs> AuditLogConfigs
         {
-            get => _auditLogConfigs ?? (_auditLogConfigs = new InputList<Inputs.GetIAMPolicyAuditConfigAuditLogConfigInputArgs>());
+            get => _auditLogConfigs ?? (_auditLogConfigs = new InputList<Inputs.GetIamPolicyAuditConfigAuditLogConfigInputArgs>());
             set => _auditLogConfigs = value;
         }
 
@@ -30,9 +30,9 @@ namespace Pulumi.Gcp.Organizations.Inputs
         [Input("service", required: true)]
         public Input<string> Service { get; set; } = null!;
 
-        public GetIAMPolicyAuditConfigInputArgs()
+        public GetIamPolicyAuditConfigInputArgs()
         {
         }
-        public static new GetIAMPolicyAuditConfigInputArgs Empty => new GetIAMPolicyAuditConfigInputArgs();
+        public static new GetIamPolicyAuditConfigInputArgs Empty => new GetIamPolicyAuditConfigInputArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.PubSub.Inputs
 {
 
-    public sealed class SubscriptionIAMBindingConditionArgs : global::Pulumi.ResourceArgs
+    public sealed class SubscriptionIamBindingConditionArgs : global::Pulumi.ResourceArgs
     {
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -21,9 +21,9 @@ namespace Pulumi.Gcp.PubSub.Inputs
         [Input("title", required: true)]
         public Input<string> Title { get; set; } = null!;
 
-        public SubscriptionIAMBindingConditionArgs()
+        public SubscriptionIamBindingConditionArgs()
         {
         }
-        public static new SubscriptionIAMBindingConditionArgs Empty => new SubscriptionIAMBindingConditionArgs();
+        public static new SubscriptionIamBindingConditionArgs Empty => new SubscriptionIamBindingConditionArgs();
     }
 }

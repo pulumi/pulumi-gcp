@@ -66,14 +66,14 @@ namespace Pulumi.Gcp.CloudBuild
     ///         AccountId = "cloud-sa",
     ///     });
     /// 
-    ///     var actAs = new Gcp.Projects.IAMMember("actAs", new()
+    ///     var actAs = new Gcp.Projects.IamMember("actAs", new()
     ///     {
     ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
     ///         Role = "roles/iam.serviceAccountUser",
     ///         Member = cloudbuildServiceAccount.Email.Apply(email =&gt; $"serviceAccount:{email}"),
     ///     });
     /// 
-    ///     var logsWriter = new Gcp.Projects.IAMMember("logsWriter", new()
+    ///     var logsWriter = new Gcp.Projects.IamMember("logsWriter", new()
     ///     {
     ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
     ///         Role = "roles/logging.logWriter",
@@ -206,11 +206,11 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
-    ///     var secretAccessor = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     var secretAccessor = Gcp.Organizations.GetIamPolicy.Invoke(new()
     ///     {
     ///         Bindings = new[]
     ///         {
-    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             new Gcp.Organizations.Inputs.GetIamPolicyBindingInputArgs
     ///             {
     ///                 Role = "roles/secretmanager.secretAccessor",
     ///                 Members = new[]
@@ -225,7 +225,7 @@ namespace Pulumi.Gcp.CloudBuild
     ///     {
     ///         Project = webhookTriggerSecretKey.Project,
     ///         SecretId = webhookTriggerSecretKey.SecretId,
-    ///         PolicyData = secretAccessor.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///         PolicyData = secretAccessor.Apply(getIamPolicyResult =&gt; getIamPolicyResult.PolicyData),
     ///     });
     /// 
     ///     var webhook_config_trigger = new Gcp.CloudBuild.Trigger("webhook-config-trigger", new()

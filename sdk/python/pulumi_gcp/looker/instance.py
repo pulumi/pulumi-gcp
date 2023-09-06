@@ -878,7 +878,7 @@ class Instance(pulumi.CustomResource):
             ),
             opts=pulumi.ResourceOptions(depends_on=[looker_vpc_connection]))
         project = gcp.organizations.get_project()
-        crypto_key = gcp.kms.CryptoKeyIAMMember("cryptoKey",
+        crypto_key = gcp.kms.CryptoKeyIamMember("cryptoKey",
             crypto_key_id="looker-kms-key",
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-looker.iam.gserviceaccount.com")
@@ -1096,7 +1096,7 @@ class Instance(pulumi.CustomResource):
             ),
             opts=pulumi.ResourceOptions(depends_on=[looker_vpc_connection]))
         project = gcp.organizations.get_project()
-        crypto_key = gcp.kms.CryptoKeyIAMMember("cryptoKey",
+        crypto_key = gcp.kms.CryptoKeyIamMember("cryptoKey",
             crypto_key_id="looker-kms-key",
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-looker.iam.gserviceaccount.com")

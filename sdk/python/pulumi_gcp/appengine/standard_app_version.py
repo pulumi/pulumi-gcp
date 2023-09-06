@@ -838,11 +838,11 @@ class StandardAppVersion(pulumi.CustomResource):
         custom_service_account = gcp.service_account.Account("customServiceAccount",
             account_id="my-account",
             display_name="Custom Service Account")
-        gae_api = gcp.projects.IAMMember("gaeApi",
+        gae_api = gcp.projects.IamMember("gaeApi",
             project=custom_service_account.project,
             role="roles/compute.networkUser",
             member=custom_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
-        storage_viewer = gcp.projects.IAMMember("storageViewer",
+        storage_viewer = gcp.projects.IamMember("storageViewer",
             project=custom_service_account.project,
             role="roles/storage.objectViewer",
             member=custom_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
@@ -987,11 +987,11 @@ class StandardAppVersion(pulumi.CustomResource):
         custom_service_account = gcp.service_account.Account("customServiceAccount",
             account_id="my-account",
             display_name="Custom Service Account")
-        gae_api = gcp.projects.IAMMember("gaeApi",
+        gae_api = gcp.projects.IamMember("gaeApi",
             project=custom_service_account.project,
             role="roles/compute.networkUser",
             member=custom_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
-        storage_viewer = gcp.projects.IAMMember("storageViewer",
+        storage_viewer = gcp.projects.IamMember("storageViewer",
             project=custom_service_account.project,
             role="roles/storage.objectViewer",
             member=custom_service_account.email.apply(lambda email: f"serviceAccount:{email}"))

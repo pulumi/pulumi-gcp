@@ -8,25 +8,25 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
-import com.pulumi.gcp.compute.InstanceIAMPolicyArgs;
-import com.pulumi.gcp.compute.inputs.InstanceIAMPolicyState;
+import com.pulumi.gcp.compute.InstanceIamPolicyArgs;
+import com.pulumi.gcp.compute.inputs.InstanceIamPolicyState;
 import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
  * Three different resources help you manage your IAM policy for Compute Engine Instance. Each of these resources serves a different use case:
  * 
- * * `gcp.compute.InstanceIAMPolicy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.
- * * `gcp.compute.InstanceIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved.
- * * `gcp.compute.InstanceIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved.
+ * * `gcp.compute.InstanceIamPolicy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.
+ * * `gcp.compute.InstanceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved.
+ * * `gcp.compute.InstanceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved.
  * 
  * A data source can be used to retrieve policy data in advent you do not need creation
  * 
- * * `gcp.compute.InstanceIAMPolicy`: Retrieves the IAM policy for the instance
+ * * `gcp.compute.InstanceIamPolicy`: Retrieves the IAM policy for the instance
  * 
- * &gt; **Note:** `gcp.compute.InstanceIAMPolicy` **cannot** be used in conjunction with `gcp.compute.InstanceIAMBinding` and `gcp.compute.InstanceIAMMember` or they will fight over what your policy should be.
+ * &gt; **Note:** `gcp.compute.InstanceIamPolicy` **cannot** be used in conjunction with `gcp.compute.InstanceIamBinding` and `gcp.compute.InstanceIamMember` or they will fight over what your policy should be.
  * 
- * &gt; **Note:** `gcp.compute.InstanceIAMBinding` resources **can be** used in conjunction with `gcp.compute.InstanceIAMMember` resources **only if** they do not grant privilege to the same role.
+ * &gt; **Note:** `gcp.compute.InstanceIamBinding` resources **can be** used in conjunction with `gcp.compute.InstanceIamMember` resources **only if** they do not grant privilege to the same role.
  * 
  * &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
  * 
@@ -38,9 +38,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
- * import com.pulumi.gcp.compute.InstanceIAMPolicy;
- * import com.pulumi.gcp.compute.InstanceIAMPolicyArgs;
+ * import com.pulumi.gcp.organizations.inputs.GetIamPolicyArgs;
+ * import com.pulumi.gcp.compute.InstanceIamPolicy;
+ * import com.pulumi.gcp.compute.InstanceIamPolicyArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -54,18 +54,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
- *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *         final var admin = OrganizationsFunctions.getIamPolicy(GetIamPolicyArgs.builder()
+ *             .bindings(GetIamPolicyBindingArgs.builder()
  *                 .role(&#34;roles/compute.osLogin&#34;)
  *                 .members(&#34;user:jane@example.com&#34;)
  *                 .build())
  *             .build());
  * 
- *         var policy = new InstanceIAMPolicy(&#34;policy&#34;, InstanceIAMPolicyArgs.builder()        
+ *         var policy = new InstanceIamPolicy(&#34;policy&#34;, InstanceIamPolicyArgs.builder()        
  *             .project(google_compute_instance.default().project())
  *             .zone(google_compute_instance.default().zone())
  *             .instanceName(google_compute_instance.default().name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIamPolicyResult -&gt; getIamPolicyResult.policyData()))
  *             .build());
  * 
  *     }
@@ -80,9 +80,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
- * import com.pulumi.gcp.compute.InstanceIAMPolicy;
- * import com.pulumi.gcp.compute.InstanceIAMPolicyArgs;
+ * import com.pulumi.gcp.organizations.inputs.GetIamPolicyArgs;
+ * import com.pulumi.gcp.compute.InstanceIamPolicy;
+ * import com.pulumi.gcp.compute.InstanceIamPolicyArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -96,11 +96,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
- *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *         final var admin = OrganizationsFunctions.getIamPolicy(GetIamPolicyArgs.builder()
+ *             .bindings(GetIamPolicyBindingArgs.builder()
  *                 .role(&#34;roles/compute.osLogin&#34;)
  *                 .members(&#34;user:jane@example.com&#34;)
- *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
+ *                 .condition(GetIamPolicyBindingConditionArgs.builder()
  *                     .title(&#34;expires_after_2019_12_31&#34;)
  *                     .description(&#34;Expiring at midnight of 2019-12-31&#34;)
  *                     .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
@@ -108,11 +108,11 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var policy = new InstanceIAMPolicy(&#34;policy&#34;, InstanceIAMPolicyArgs.builder()        
+ *         var policy = new InstanceIamPolicy(&#34;policy&#34;, InstanceIamPolicyArgs.builder()        
  *             .project(google_compute_instance.default().project())
  *             .zone(google_compute_instance.default().zone())
  *             .instanceName(google_compute_instance.default().name())
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIamPolicyResult -&gt; getIamPolicyResult.policyData()))
  *             .build());
  * 
  *     }
@@ -125,8 +125,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.InstanceIAMBinding;
- * import com.pulumi.gcp.compute.InstanceIAMBindingArgs;
+ * import com.pulumi.gcp.compute.InstanceIamBinding;
+ * import com.pulumi.gcp.compute.InstanceIamBindingArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -140,7 +140,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new InstanceIAMBinding(&#34;binding&#34;, InstanceIAMBindingArgs.builder()        
+ *         var binding = new InstanceIamBinding(&#34;binding&#34;, InstanceIamBindingArgs.builder()        
  *             .project(google_compute_instance.default().project())
  *             .zone(google_compute_instance.default().zone())
  *             .instanceName(google_compute_instance.default().name())
@@ -159,9 +159,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.InstanceIAMBinding;
- * import com.pulumi.gcp.compute.InstanceIAMBindingArgs;
- * import com.pulumi.gcp.compute.inputs.InstanceIAMBindingConditionArgs;
+ * import com.pulumi.gcp.compute.InstanceIamBinding;
+ * import com.pulumi.gcp.compute.InstanceIamBindingArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceIamBindingConditionArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -175,13 +175,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var binding = new InstanceIAMBinding(&#34;binding&#34;, InstanceIAMBindingArgs.builder()        
+ *         var binding = new InstanceIamBinding(&#34;binding&#34;, InstanceIamBindingArgs.builder()        
  *             .project(google_compute_instance.default().project())
  *             .zone(google_compute_instance.default().zone())
  *             .instanceName(google_compute_instance.default().name())
  *             .role(&#34;roles/compute.osLogin&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
- *             .condition(InstanceIAMBindingConditionArgs.builder()
+ *             .condition(InstanceIamBindingConditionArgs.builder()
  *                 .title(&#34;expires_after_2019_12_31&#34;)
  *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
  *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
@@ -198,8 +198,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.InstanceIAMMember;
- * import com.pulumi.gcp.compute.InstanceIAMMemberArgs;
+ * import com.pulumi.gcp.compute.InstanceIamMember;
+ * import com.pulumi.gcp.compute.InstanceIamMemberArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -213,7 +213,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new InstanceIAMMember(&#34;member&#34;, InstanceIAMMemberArgs.builder()        
+ *         var member = new InstanceIamMember(&#34;member&#34;, InstanceIamMemberArgs.builder()        
  *             .project(google_compute_instance.default().project())
  *             .zone(google_compute_instance.default().zone())
  *             .instanceName(google_compute_instance.default().name())
@@ -232,9 +232,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.compute.InstanceIAMMember;
- * import com.pulumi.gcp.compute.InstanceIAMMemberArgs;
- * import com.pulumi.gcp.compute.inputs.InstanceIAMMemberConditionArgs;
+ * import com.pulumi.gcp.compute.InstanceIamMember;
+ * import com.pulumi.gcp.compute.InstanceIamMemberArgs;
+ * import com.pulumi.gcp.compute.inputs.InstanceIamMemberConditionArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -248,13 +248,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var member = new InstanceIAMMember(&#34;member&#34;, InstanceIAMMemberArgs.builder()        
+ *         var member = new InstanceIamMember(&#34;member&#34;, InstanceIamMemberArgs.builder()        
  *             .project(google_compute_instance.default().project())
  *             .zone(google_compute_instance.default().zone())
  *             .instanceName(google_compute_instance.default().name())
  *             .role(&#34;roles/compute.osLogin&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
- *             .condition(InstanceIAMMemberConditionArgs.builder()
+ *             .condition(InstanceIamMemberConditionArgs.builder()
  *                 .title(&#34;expires_after_2019_12_31&#34;)
  *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
  *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
@@ -270,19 +270,19 @@ import javax.annotation.Nullable;
  * For all import syntaxes, the &#34;resource in question&#34; can take any of the following forms* projects/{{project}}/zones/{{zone}}/instances/{{name}} * {{project}}/{{zone}}/{{name}} * {{zone}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Compute Engine instance IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
  * 
  * ```sh
- *  $ pulumi import gcp:compute/instanceIAMPolicy:InstanceIAMPolicy editor &#34;projects/{{project}}/zones/{{zone}}/instances/{{instance}} roles/compute.osLogin user:jane@example.com&#34;
+ *  $ pulumi import gcp:compute/instanceIamPolicy:InstanceIamPolicy editor &#34;projects/{{project}}/zones/{{zone}}/instances/{{instance}} roles/compute.osLogin user:jane@example.com&#34;
  * ```
  * 
  *  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
  * 
  * ```sh
- *  $ pulumi import gcp:compute/instanceIAMPolicy:InstanceIAMPolicy editor &#34;projects/{{project}}/zones/{{zone}}/instances/{{instance}} roles/compute.osLogin&#34;
+ *  $ pulumi import gcp:compute/instanceIamPolicy:InstanceIamPolicy editor &#34;projects/{{project}}/zones/{{zone}}/instances/{{instance}} roles/compute.osLogin&#34;
  * ```
  * 
  *  IAM policy imports use the identifier of the resource in question, e.g.
  * 
  * ```sh
- *  $ pulumi import gcp:compute/instanceIAMPolicy:InstanceIAMPolicy editor projects/{{project}}/zones/{{zone}}/instances/{{instance}}
+ *  $ pulumi import gcp:compute/instanceIamPolicy:InstanceIamPolicy editor projects/{{project}}/zones/{{zone}}/instances/{{instance}}
  * ```
  * 
  *  -&gt; **Custom Roles**If you&#39;re importing a IAM resource with a custom role, make sure to use the
@@ -290,8 +290,8 @@ import javax.annotation.Nullable;
  * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  * 
  */
-@ResourceType(type="gcp:compute/instanceIAMPolicy:InstanceIAMPolicy")
-public class InstanceIAMPolicy extends com.pulumi.resources.CustomResource {
+@ResourceType(type="gcp:compute/instanceIamPolicy:InstanceIamPolicy")
+public class InstanceIamPolicy extends com.pulumi.resources.CustomResource {
     /**
      * (Computed) The etag of the IAM policy.
      * 
@@ -322,7 +322,7 @@ public class InstanceIAMPolicy extends com.pulumi.resources.CustomResource {
     }
     /**
      * The policy data generated by
-     * a `gcp.organizations.getIAMPolicy` data source.
+     * a `gcp.organizations.getIamPolicy` data source.
      * 
      */
     @Export(name="policyData", type=String.class, parameters={})
@@ -330,7 +330,7 @@ public class InstanceIAMPolicy extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The policy data generated by
-     * a `gcp.organizations.getIAMPolicy` data source.
+     * a `gcp.organizations.getIamPolicy` data source.
      * 
      */
     public Output<String> policyData() {
@@ -399,15 +399,15 @@ public class InstanceIAMPolicy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public InstanceIAMPolicy(String name) {
-        this(name, InstanceIAMPolicyArgs.Empty);
+    public InstanceIamPolicy(String name) {
+        this(name, InstanceIamPolicyArgs.Empty);
     }
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public InstanceIAMPolicy(String name, InstanceIAMPolicyArgs args) {
+    public InstanceIamPolicy(String name, InstanceIamPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -416,12 +416,12 @@ public class InstanceIAMPolicy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public InstanceIAMPolicy(String name, InstanceIAMPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/instanceIAMPolicy:InstanceIAMPolicy", name, args == null ? InstanceIAMPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public InstanceIamPolicy(String name, InstanceIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/instanceIamPolicy:InstanceIamPolicy", name, args == null ? InstanceIamPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private InstanceIAMPolicy(String name, Output<String> id, @Nullable InstanceIAMPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:compute/instanceIAMPolicy:InstanceIAMPolicy", name, state, makeResourceOptions(options, id));
+    private InstanceIamPolicy(String name, Output<String> id, @Nullable InstanceIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:compute/instanceIamPolicy:InstanceIamPolicy", name, state, makeResourceOptions(options, id));
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
@@ -440,7 +440,7 @@ public class InstanceIAMPolicy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static InstanceIAMPolicy get(String name, Output<String> id, @Nullable InstanceIAMPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        return new InstanceIAMPolicy(name, id, state, options);
+    public static InstanceIamPolicy get(String name, Output<String> id, @Nullable InstanceIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        return new InstanceIamPolicy(name, id, state, options);
     }
 }

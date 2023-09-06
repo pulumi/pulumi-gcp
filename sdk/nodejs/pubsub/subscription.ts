@@ -101,12 +101,12 @@ import * as utilities from "../utilities";
  *
  * const exampleTopic = new gcp.pubsub.Topic("exampleTopic", {});
  * const project = gcp.organizations.getProject({});
- * const viewer = new gcp.projects.IAMMember("viewer", {
+ * const viewer = new gcp.projects.IamMember("viewer", {
  *     project: project.then(project => project.projectId),
  *     role: "roles/bigquery.metadataViewer",
  *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-pubsub.iam.gserviceaccount.com`),
  * });
- * const editor = new gcp.projects.IAMMember("editor", {
+ * const editor = new gcp.projects.IamMember("editor", {
  *     project: project.then(project => project.projectId),
  *     role: "roles/bigquery.dataEditor",
  *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-pubsub.iam.gserviceaccount.com`),

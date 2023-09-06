@@ -47,17 +47,17 @@ import * as utilities from "../utilities";
  *     accountId: "my-account",
  *     displayName: "Custom Service Account",
  * });
- * const gaeApi = new gcp.projects.IAMMember("gaeApi", {
+ * const gaeApi = new gcp.projects.IamMember("gaeApi", {
  *     project: service.project,
  *     role: "roles/compute.networkUser",
  *     member: pulumi.interpolate`serviceAccount:${customServiceAccount.email}`,
  * });
- * const logsWriter = new gcp.projects.IAMMember("logsWriter", {
+ * const logsWriter = new gcp.projects.IamMember("logsWriter", {
  *     project: service.project,
  *     role: "roles/logging.logWriter",
  *     member: pulumi.interpolate`serviceAccount:${customServiceAccount.email}`,
  * });
- * const storageViewer = new gcp.projects.IAMMember("storageViewer", {
+ * const storageViewer = new gcp.projects.IamMember("storageViewer", {
  *     project: service.project,
  *     role: "roles/storage.objectViewer",
  *     member: pulumi.interpolate`serviceAccount:${customServiceAccount.email}`,

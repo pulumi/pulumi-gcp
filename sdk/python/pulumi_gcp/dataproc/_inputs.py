@@ -40,8 +40,8 @@ __all__ = [
     'ClusterClusterConfigWorkerConfigArgs',
     'ClusterClusterConfigWorkerConfigAcceleratorArgs',
     'ClusterClusterConfigWorkerConfigDiskConfigArgs',
-    'ClusterIAMBindingConditionArgs',
-    'ClusterIAMMemberConditionArgs',
+    'ClusterIamBindingConditionArgs',
+    'ClusterIamMemberConditionArgs',
     'ClusterVirtualClusterConfigArgs',
     'ClusterVirtualClusterConfigAuxiliaryServicesConfigArgs',
     'ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArgs',
@@ -56,8 +56,8 @@ __all__ = [
     'JobHadoopConfigArgs',
     'JobHadoopConfigLoggingConfigArgs',
     'JobHiveConfigArgs',
-    'JobIAMBindingConditionArgs',
-    'JobIAMMemberConditionArgs',
+    'JobIamBindingConditionArgs',
+    'JobIamMemberConditionArgs',
     'JobPigConfigArgs',
     'JobPigConfigLoggingConfigArgs',
     'JobPlacementArgs',
@@ -2706,7 +2706,7 @@ class ClusterClusterConfigWorkerConfigDiskConfigArgs:
 
 
 @pulumi.input_type
-class ClusterIAMBindingConditionArgs:
+class ClusterIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -2745,7 +2745,7 @@ class ClusterIAMBindingConditionArgs:
 
 
 @pulumi.input_type
-class ClusterIAMMemberConditionArgs:
+class ClusterIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -3643,7 +3643,7 @@ class JobHiveConfigArgs:
 
 
 @pulumi.input_type
-class JobIAMBindingConditionArgs:
+class JobIamBindingConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],
@@ -3682,7 +3682,7 @@ class JobIAMBindingConditionArgs:
 
 
 @pulumi.input_type
-class JobIAMMemberConditionArgs:
+class JobIamMemberConditionArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
                  title: pulumi.Input[str],

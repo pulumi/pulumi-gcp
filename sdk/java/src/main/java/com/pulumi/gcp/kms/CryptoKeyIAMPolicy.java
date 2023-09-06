@@ -8,21 +8,21 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
-import com.pulumi.gcp.kms.CryptoKeyIAMPolicyArgs;
-import com.pulumi.gcp.kms.inputs.CryptoKeyIAMPolicyState;
+import com.pulumi.gcp.kms.CryptoKeyIamPolicyArgs;
+import com.pulumi.gcp.kms.inputs.CryptoKeyIamPolicyState;
 import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
  * Three different resources help you manage your IAM policy for KMS crypto key. Each of these resources serves a different use case:
  * 
- * * `gcp.kms.CryptoKeyIAMPolicy`: Authoritative. Sets the IAM policy for the crypto key and replaces any existing policy already attached.
- * * `gcp.kms.CryptoKeyIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the crypto key are preserved.
- * * `gcp.kms.CryptoKeyIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the crypto key are preserved.
+ * * `gcp.kms.CryptoKeyIamPolicy`: Authoritative. Sets the IAM policy for the crypto key and replaces any existing policy already attached.
+ * * `gcp.kms.CryptoKeyIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the crypto key are preserved.
+ * * `gcp.kms.CryptoKeyIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the crypto key are preserved.
  * 
- * &gt; **Note:** `gcp.kms.CryptoKeyIAMPolicy` **cannot** be used in conjunction with `gcp.kms.CryptoKeyIAMBinding` and `gcp.kms.CryptoKeyIAMMember` or they will fight over what your policy should be.
+ * &gt; **Note:** `gcp.kms.CryptoKeyIamPolicy` **cannot** be used in conjunction with `gcp.kms.CryptoKeyIamBinding` and `gcp.kms.CryptoKeyIamMember` or they will fight over what your policy should be.
  * 
- * &gt; **Note:** `gcp.kms.CryptoKeyIAMBinding` resources **can be** used in conjunction with `gcp.kms.CryptoKeyIAMMember` resources **only if** they do not grant privilege to the same role.
+ * &gt; **Note:** `gcp.kms.CryptoKeyIamBinding` resources **can be** used in conjunction with `gcp.kms.CryptoKeyIamMember` resources **only if** they do not grant privilege to the same role.
  * ```java
  * package generated_program;
  * 
@@ -34,9 +34,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.kms.CryptoKey;
  * import com.pulumi.gcp.kms.CryptoKeyArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
- * import com.pulumi.gcp.kms.CryptoKeyIAMPolicy;
- * import com.pulumi.gcp.kms.CryptoKeyIAMPolicyArgs;
+ * import com.pulumi.gcp.organizations.inputs.GetIamPolicyArgs;
+ * import com.pulumi.gcp.kms.CryptoKeyIamPolicy;
+ * import com.pulumi.gcp.kms.CryptoKeyIamPolicyArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -59,16 +59,16 @@ import javax.annotation.Nullable;
  *             .rotationPeriod(&#34;100000s&#34;)
  *             .build());
  * 
- *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
- *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *         final var admin = OrganizationsFunctions.getIamPolicy(GetIamPolicyArgs.builder()
+ *             .bindings(GetIamPolicyBindingArgs.builder()
  *                 .role(&#34;roles/cloudkms.cryptoKeyEncrypter&#34;)
  *                 .members(&#34;user:jane@example.com&#34;)
  *                 .build())
  *             .build());
  * 
- *         var cryptoKey = new CryptoKeyIAMPolicy(&#34;cryptoKey&#34;, CryptoKeyIAMPolicyArgs.builder()        
+ *         var cryptoKey = new CryptoKeyIamPolicy(&#34;cryptoKey&#34;, CryptoKeyIamPolicyArgs.builder()        
  *             .cryptoKeyId(key.id())
- *             .policyData(admin.applyValue(getIAMPolicyResult -&gt; getIAMPolicyResult.policyData()))
+ *             .policyData(admin.applyValue(getIamPolicyResult -&gt; getIamPolicyResult.policyData()))
  *             .build());
  * 
  *     }
@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.organizations.inputs.GetIamPolicyArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -97,9 +97,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
- *             .bindings(GetIAMPolicyBindingArgs.builder()
- *                 .condition(GetIAMPolicyBindingConditionArgs.builder()
+ *         final var admin = OrganizationsFunctions.getIamPolicy(GetIamPolicyArgs.builder()
+ *             .bindings(GetIamPolicyBindingArgs.builder()
+ *                 .condition(GetIamPolicyBindingConditionArgs.builder()
  *                     .description(&#34;Expiring at midnight of 2019-12-31&#34;)
  *                     .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
  *                     .title(&#34;expires_after_2019_12_31&#34;)
@@ -118,8 +118,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.kms.CryptoKeyIAMBinding;
- * import com.pulumi.gcp.kms.CryptoKeyIAMBindingArgs;
+ * import com.pulumi.gcp.kms.CryptoKeyIamBinding;
+ * import com.pulumi.gcp.kms.CryptoKeyIamBindingArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -133,7 +133,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cryptoKey = new CryptoKeyIAMBinding(&#34;cryptoKey&#34;, CryptoKeyIAMBindingArgs.builder()        
+ *         var cryptoKey = new CryptoKeyIamBinding(&#34;cryptoKey&#34;, CryptoKeyIamBindingArgs.builder()        
  *             .cryptoKeyId(google_kms_crypto_key.key().id())
  *             .role(&#34;roles/cloudkms.cryptoKeyEncrypter&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
@@ -150,9 +150,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.kms.CryptoKeyIAMBinding;
- * import com.pulumi.gcp.kms.CryptoKeyIAMBindingArgs;
- * import com.pulumi.gcp.kms.inputs.CryptoKeyIAMBindingConditionArgs;
+ * import com.pulumi.gcp.kms.CryptoKeyIamBinding;
+ * import com.pulumi.gcp.kms.CryptoKeyIamBindingArgs;
+ * import com.pulumi.gcp.kms.inputs.CryptoKeyIamBindingConditionArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -166,11 +166,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cryptoKey = new CryptoKeyIAMBinding(&#34;cryptoKey&#34;, CryptoKeyIAMBindingArgs.builder()        
+ *         var cryptoKey = new CryptoKeyIamBinding(&#34;cryptoKey&#34;, CryptoKeyIamBindingArgs.builder()        
  *             .cryptoKeyId(google_kms_crypto_key.key().id())
  *             .role(&#34;roles/cloudkms.cryptoKeyEncrypter&#34;)
  *             .members(&#34;user:jane@example.com&#34;)
- *             .condition(CryptoKeyIAMBindingConditionArgs.builder()
+ *             .condition(CryptoKeyIamBindingConditionArgs.builder()
  *                 .title(&#34;expires_after_2019_12_31&#34;)
  *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
  *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
@@ -186,8 +186,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
- * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
+ * import com.pulumi.gcp.kms.CryptoKeyIamMember;
+ * import com.pulumi.gcp.kms.CryptoKeyIamMemberArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -201,7 +201,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cryptoKey = new CryptoKeyIAMMember(&#34;cryptoKey&#34;, CryptoKeyIAMMemberArgs.builder()        
+ *         var cryptoKey = new CryptoKeyIamMember(&#34;cryptoKey&#34;, CryptoKeyIamMemberArgs.builder()        
  *             .cryptoKeyId(google_kms_crypto_key.key().id())
  *             .role(&#34;roles/cloudkms.cryptoKeyEncrypter&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
@@ -218,9 +218,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
- * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
- * import com.pulumi.gcp.kms.inputs.CryptoKeyIAMMemberConditionArgs;
+ * import com.pulumi.gcp.kms.CryptoKeyIamMember;
+ * import com.pulumi.gcp.kms.CryptoKeyIamMemberArgs;
+ * import com.pulumi.gcp.kms.inputs.CryptoKeyIamMemberConditionArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -234,11 +234,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var cryptoKey = new CryptoKeyIAMMember(&#34;cryptoKey&#34;, CryptoKeyIAMMemberArgs.builder()        
+ *         var cryptoKey = new CryptoKeyIamMember(&#34;cryptoKey&#34;, CryptoKeyIamMemberArgs.builder()        
  *             .cryptoKeyId(google_kms_crypto_key.key().id())
  *             .role(&#34;roles/cloudkms.cryptoKeyEncrypter&#34;)
  *             .member(&#34;user:jane@example.com&#34;)
- *             .condition(CryptoKeyIAMMemberConditionArgs.builder()
+ *             .condition(CryptoKeyIamMemberConditionArgs.builder()
  *                 .title(&#34;expires_after_2019_12_31&#34;)
  *                 .description(&#34;Expiring at midnight of 2019-12-31&#34;)
  *                 .expression(&#34;request.time &lt; timestamp(\&#34;2020-01-01T00:00:00Z\&#34;)&#34;)
@@ -256,7 +256,7 @@ import javax.annotation.Nullable;
  * This member resource can be imported using the `crypto_key_id`, role, and member identity e.g.
  * 
  * ```sh
- *  $ pulumi import gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy crypto_key &#34;your-project-id/location-name/key-ring-name/key-name roles/viewer user:foo@example.com&#34;
+ *  $ pulumi import gcp:kms/cryptoKeyIamPolicy:CryptoKeyIamPolicy crypto_key &#34;your-project-id/location-name/key-ring-name/key-name roles/viewer user:foo@example.com&#34;
  * ```
  * 
  *  IAM binding imports use space-delimited identifiers; first the resource in question and then the role.
@@ -264,7 +264,7 @@ import javax.annotation.Nullable;
  * These bindings can be imported using the `crypto_key_id` and role, e.g.
  * 
  * ```sh
- *  $ pulumi import gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy crypto_key &#34;your-project-id/location-name/key-ring-name/key-name roles/editor&#34;
+ *  $ pulumi import gcp:kms/cryptoKeyIamPolicy:CryptoKeyIamPolicy crypto_key &#34;your-project-id/location-name/key-ring-name/key-name roles/editor&#34;
  * ```
  * 
  *  IAM policy imports use the identifier of the resource in question.
@@ -272,12 +272,12 @@ import javax.annotation.Nullable;
  * This policy resource can be imported using the `crypto_key_id`, e.g.
  * 
  * ```sh
- *  $ pulumi import gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy crypto_key your-project-id/location-name/key-ring-name/key-name
+ *  $ pulumi import gcp:kms/cryptoKeyIamPolicy:CryptoKeyIamPolicy crypto_key your-project-id/location-name/key-ring-name/key-name
  * ```
  * 
  */
-@ResourceType(type="gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy")
-public class CryptoKeyIAMPolicy extends com.pulumi.resources.CustomResource {
+@ResourceType(type="gcp:kms/cryptoKeyIamPolicy:CryptoKeyIamPolicy")
+public class CryptoKeyIamPolicy extends com.pulumi.resources.CustomResource {
     /**
      * The crypto key ID, in the form
      * `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
@@ -332,7 +332,7 @@ public class CryptoKeyIAMPolicy extends com.pulumi.resources.CustomResource {
     }
     /**
      * The policy data generated by
-     * a `gcp.organizations.getIAMPolicy` data source.
+     * a `gcp.organizations.getIamPolicy` data source.
      * 
      */
     @Export(name="policyData", type=String.class, parameters={})
@@ -340,7 +340,7 @@ public class CryptoKeyIAMPolicy extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The policy data generated by
-     * a `gcp.organizations.getIAMPolicy` data source.
+     * a `gcp.organizations.getIamPolicy` data source.
      * 
      */
     public Output<String> policyData() {
@@ -351,15 +351,15 @@ public class CryptoKeyIAMPolicy extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public CryptoKeyIAMPolicy(String name) {
-        this(name, CryptoKeyIAMPolicyArgs.Empty);
+    public CryptoKeyIamPolicy(String name) {
+        this(name, CryptoKeyIamPolicyArgs.Empty);
     }
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public CryptoKeyIAMPolicy(String name, CryptoKeyIAMPolicyArgs args) {
+    public CryptoKeyIamPolicy(String name, CryptoKeyIamPolicyArgs args) {
         this(name, args, null);
     }
     /**
@@ -368,12 +368,12 @@ public class CryptoKeyIAMPolicy extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public CryptoKeyIAMPolicy(String name, CryptoKeyIAMPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy", name, args == null ? CryptoKeyIAMPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public CryptoKeyIamPolicy(String name, CryptoKeyIamPolicyArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:kms/cryptoKeyIamPolicy:CryptoKeyIamPolicy", name, args == null ? CryptoKeyIamPolicyArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private CryptoKeyIAMPolicy(String name, Output<String> id, @Nullable CryptoKeyIAMPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy", name, state, makeResourceOptions(options, id));
+    private CryptoKeyIamPolicy(String name, Output<String> id, @Nullable CryptoKeyIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("gcp:kms/cryptoKeyIamPolicy:CryptoKeyIamPolicy", name, state, makeResourceOptions(options, id));
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
@@ -392,7 +392,7 @@ public class CryptoKeyIAMPolicy extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static CryptoKeyIAMPolicy get(String name, Output<String> id, @Nullable CryptoKeyIAMPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        return new CryptoKeyIAMPolicy(name, id, state, options);
+    public static CryptoKeyIamPolicy get(String name, Output<String> id, @Nullable CryptoKeyIamPolicyState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        return new CryptoKeyIamPolicy(name, id, state, options);
     }
 }

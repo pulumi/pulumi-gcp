@@ -37,7 +37,7 @@ namespace Pulumi.Gcp.AccessApproval
         ///         OrganizationId = "my-organization",
         ///     });
         /// 
-        ///     var iam = new Gcp.Kms.CryptoKeyIAMMember("iam", new()
+        ///     var iam = new Gcp.Kms.CryptoKeyIamMember("iam", new()
         ///     {
         ///         CryptoKeyId = google_kms_crypto_key.Crypto_key.Id,
         ///         Role = "roles/cloudkms.signerVerifier",
@@ -78,7 +78,7 @@ namespace Pulumi.Gcp.AccessApproval
         ///         OrganizationId = "my-organization",
         ///     });
         /// 
-        ///     var iam = new Gcp.Kms.CryptoKeyIAMMember("iam", new()
+        ///     var iam = new Gcp.Kms.CryptoKeyIamMember("iam", new()
         ///     {
         ///         CryptoKeyId = google_kms_crypto_key.Crypto_key.Id,
         ///         Role = "roles/cloudkms.signerVerifier",

@@ -30,11 +30,11 @@ namespace Pulumi.Gcp.Billing
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     var admin = Gcp.Organizations.GetIamPolicy.Invoke(new()
     ///     {
     ///         Bindings = new[]
     ///         {
-    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             new Gcp.Organizations.Inputs.GetIamPolicyBindingInputArgs
     ///             {
     ///                 Role = "roles/billing.viewer",
     ///                 Members = new[]
@@ -48,7 +48,7 @@ namespace Pulumi.Gcp.Billing
     ///     var editor = new Gcp.Billing.AccountIamPolicy("editor", new()
     ///     {
     ///         BillingAccountId = "00AA00-000AAA-00AA0A",
-    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///         PolicyData = admin.Apply(getIamPolicyResult =&gt; getIamPolicyResult.PolicyData),
     ///     });
     /// 
     /// });

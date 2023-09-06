@@ -41,8 +41,8 @@ __all__ = [
     'ClusterClusterConfigWorkerConfig',
     'ClusterClusterConfigWorkerConfigAccelerator',
     'ClusterClusterConfigWorkerConfigDiskConfig',
-    'ClusterIAMBindingCondition',
-    'ClusterIAMMemberCondition',
+    'ClusterIamBindingCondition',
+    'ClusterIamMemberCondition',
     'ClusterVirtualClusterConfig',
     'ClusterVirtualClusterConfigAuxiliaryServicesConfig',
     'ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig',
@@ -57,8 +57,8 @@ __all__ = [
     'JobHadoopConfig',
     'JobHadoopConfigLoggingConfig',
     'JobHiveConfig',
-    'JobIAMBindingCondition',
-    'JobIAMMemberCondition',
+    'JobIamBindingCondition',
+    'JobIamMemberCondition',
     'JobPigConfig',
     'JobPigConfigLoggingConfig',
     'JobPlacement',
@@ -2832,7 +2832,7 @@ class ClusterClusterConfigWorkerConfigDiskConfig(dict):
 
 
 @pulumi.output_type
-class ClusterIAMBindingCondition(dict):
+class ClusterIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -2859,7 +2859,7 @@ class ClusterIAMBindingCondition(dict):
 
 
 @pulumi.output_type
-class ClusterIAMMemberCondition(dict):
+class ClusterIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -3836,7 +3836,7 @@ class JobHiveConfig(dict):
 
 
 @pulumi.output_type
-class JobIAMBindingCondition(dict):
+class JobIamBindingCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,
@@ -3863,7 +3863,7 @@ class JobIAMBindingCondition(dict):
 
 
 @pulumi.output_type
-class JobIAMMemberCondition(dict):
+class JobIamMemberCondition(dict):
     def __init__(__self__, *,
                  expression: str,
                  title: str,

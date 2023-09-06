@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  * const gcsAccount = gcp.storage.getProjectServiceAccount({});
  * // To use GCS CloudEvent triggers, the GCS service account requires the Pub/Sub Publisher(roles/pubsub.publisher) IAM role in the specified project.
  * // (See https://cloud.google.com/eventarc/docs/run/quickstart-storage#before-you-begin)
- * const gcs_pubsub_publishing = new gcp.projects.IAMMember("gcs-pubsub-publishing", {
+ * const gcs_pubsub_publishing = new gcp.projects.IamMember("gcs-pubsub-publishing", {
  *     project: "my-project-name",
  *     role: "roles/pubsub.publisher",
  *     member: gcsAccount.then(gcsAccount => `serviceAccount:${gcsAccount.emailAddress}`),
@@ -46,21 +46,21 @@ import * as utilities from "../utilities";
  *     displayName: "Test Service Account - used for both the cloud function and eventarc trigger in the test",
  * });
  * // Permissions on the service account used by the function and Eventarc trigger
- * const invoking = new gcp.projects.IAMMember("invoking", {
+ * const invoking = new gcp.projects.IamMember("invoking", {
  *     project: "my-project-name",
  *     role: "roles/run.invoker",
  *     member: pulumi.interpolate`serviceAccount:${account.email}`,
  * }, {
  *     dependsOn: [gcs_pubsub_publishing],
  * });
- * const event_receiving = new gcp.projects.IAMMember("event-receiving", {
+ * const event_receiving = new gcp.projects.IamMember("event-receiving", {
  *     project: "my-project-name",
  *     role: "roles/eventarc.eventReceiver",
  *     member: pulumi.interpolate`serviceAccount:${account.email}`,
  * }, {
  *     dependsOn: [invoking],
  * });
- * const artifactregistry_reader = new gcp.projects.IAMMember("artifactregistry-reader", {
+ * const artifactregistry_reader = new gcp.projects.IamMember("artifactregistry-reader", {
  *     project: "my-project-name",
  *     role: "roles/artifactregistry.reader",
  *     member: pulumi.interpolate`serviceAccount:${account.email}`,
@@ -143,19 +143,19 @@ import * as utilities from "../utilities";
  *     uniformBucketLevelAccess: true,
  * });
  * // Permissions on the service account used by the function and Eventarc trigger
- * const invoking = new gcp.projects.IAMMember("invoking", {
+ * const invoking = new gcp.projects.IamMember("invoking", {
  *     project: "my-project-name",
  *     role: "roles/run.invoker",
  *     member: pulumi.interpolate`serviceAccount:${account.email}`,
  * });
- * const event_receiving = new gcp.projects.IAMMember("event-receiving", {
+ * const event_receiving = new gcp.projects.IamMember("event-receiving", {
  *     project: "my-project-name",
  *     role: "roles/eventarc.eventReceiver",
  *     member: pulumi.interpolate`serviceAccount:${account.email}`,
  * }, {
  *     dependsOn: [invoking],
  * });
- * const artifactregistry_reader = new gcp.projects.IAMMember("artifactregistry-reader", {
+ * const artifactregistry_reader = new gcp.projects.IamMember("artifactregistry-reader", {
  *     project: "my-project-name",
  *     role: "roles/artifactregistry.reader",
  *     member: pulumi.interpolate`serviceAccount:${account.email}`,

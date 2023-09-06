@@ -11,14 +11,14 @@ namespace Pulumi.Gcp.CloudBuildV2.Outputs
 {
 
     [OutputType]
-    public sealed class ConnectionIAMBindingCondition
+    public sealed class ConnectionIamBindingCondition
     {
         public readonly string? Description;
         public readonly string Expression;
         public readonly string Title;
 
         [OutputConstructor]
-        private ConnectionIAMBindingCondition(
+        private ConnectionIamBindingCondition(
             string? description,
 
             string expression,

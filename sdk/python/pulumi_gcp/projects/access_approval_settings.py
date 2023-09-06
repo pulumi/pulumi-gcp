@@ -365,7 +365,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
                 algorithm="EC_SIGN_P384_SHA384",
             ))
         service_account = gcp.accessapproval.get_project_service_account(project_id="my-project-name")
-        iam = gcp.kms.CryptoKeyIAMMember("iam",
+        iam = gcp.kms.CryptoKeyIamMember("iam",
             crypto_key_id=crypto_key.id,
             role="roles/cloudkms.signerVerifier",
             member=f"serviceAccount:{service_account.account_email}")
@@ -457,7 +457,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
                 algorithm="EC_SIGN_P384_SHA384",
             ))
         service_account = gcp.accessapproval.get_project_service_account(project_id="my-project-name")
-        iam = gcp.kms.CryptoKeyIAMMember("iam",
+        iam = gcp.kms.CryptoKeyIamMember("iam",
             crypto_key_id=crypto_key.id,
             role="roles/cloudkms.signerVerifier",
             member=f"serviceAccount:{service_account.account_email}")

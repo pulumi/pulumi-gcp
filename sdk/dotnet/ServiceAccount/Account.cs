@@ -86,7 +86,7 @@ namespace Pulumi.Gcp.ServiceAccount
 
         /// <summary>
         /// The e-mail address of the service account. This value
-        /// should be referenced from any `gcp.organizations.getIAMPolicy` data sources
+        /// should be referenced from any `gcp.organizations.getIamPolicy` data sources
         /// that would grant the service account privileges.
         /// </summary>
         [Output("email")]
@@ -240,7 +240,7 @@ namespace Pulumi.Gcp.ServiceAccount
 
         /// <summary>
         /// The e-mail address of the service account. This value
-        /// should be referenced from any `gcp.organizations.getIAMPolicy` data sources
+        /// should be referenced from any `gcp.organizations.getIamPolicy` data sources
         /// that would grant the service account privileges.
         /// </summary>
         [Input("email")]

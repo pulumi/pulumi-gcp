@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Projects.Inputs
 {
 
-    public sealed class IAMAuditConfigAuditLogConfigArgs : global::Pulumi.ResourceArgs
+    public sealed class IamAuditConfigAuditLogConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("exemptedMembers")]
         private InputList<string>? _exemptedMembers;
@@ -30,9 +30,9 @@ namespace Pulumi.Gcp.Projects.Inputs
         [Input("logType", required: true)]
         public Input<string> LogType { get; set; } = null!;
 
-        public IAMAuditConfigAuditLogConfigArgs()
+        public IamAuditConfigAuditLogConfigArgs()
         {
         }
-        public static new IAMAuditConfigAuditLogConfigArgs Empty => new IAMAuditConfigAuditLogConfigArgs();
+        public static new IamAuditConfigAuditLogConfigArgs Empty => new IamAuditConfigAuditLogConfigArgs();
     }
 }

@@ -11,7 +11,7 @@ namespace Pulumi.Gcp.Compute.Outputs
 {
 
     [OutputType]
-    public sealed class SubnetworkIAMMemberCondition
+    public sealed class SubnetworkIamMemberCondition
     {
         /// <summary>
         /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly string Title;
 
         [OutputConstructor]
-        private SubnetworkIAMMemberCondition(
+        private SubnetworkIamMemberCondition(
             string? description,
 
             string expression,

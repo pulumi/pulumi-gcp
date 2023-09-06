@@ -109,8 +109,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
- * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
- * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
+ * import com.pulumi.gcp.kms.CryptoKeyIamMember;
+ * import com.pulumi.gcp.kms.CryptoKeyIamMemberArgs;
  * import com.pulumi.gcp.artifactregistry.Repository;
  * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -129,7 +129,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var cryptoKey = new CryptoKeyIAMMember(&#34;cryptoKey&#34;, CryptoKeyIAMMemberArgs.builder()        
+ *         var cryptoKey = new CryptoKeyIamMember(&#34;cryptoKey&#34;, CryptoKeyIamMemberArgs.builder()        
  *             .cryptoKeyId(&#34;kms-key&#34;)
  *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
  *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-artifactregistry.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))

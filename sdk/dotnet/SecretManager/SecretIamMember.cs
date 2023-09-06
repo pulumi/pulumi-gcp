@@ -34,11 +34,11 @@ namespace Pulumi.Gcp.SecretManager
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     var admin = Gcp.Organizations.GetIamPolicy.Invoke(new()
     ///     {
     ///         Bindings = new[]
     ///         {
-    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             new Gcp.Organizations.Inputs.GetIamPolicyBindingInputArgs
     ///             {
     ///                 Role = "roles/secretmanager.secretAccessor",
     ///                 Members = new[]
@@ -53,7 +53,7 @@ namespace Pulumi.Gcp.SecretManager
     ///     {
     ///         Project = google_secret_manager_secret.Secret_basic.Project,
     ///         SecretId = google_secret_manager_secret.Secret_basic.Secret_id,
-    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///         PolicyData = admin.Apply(getIamPolicyResult =&gt; getIamPolicyResult.PolicyData),
     ///     });
     /// 
     /// });

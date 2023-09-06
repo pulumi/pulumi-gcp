@@ -12,13 +12,13 @@ namespace Pulumi.Gcp.Kms
     /// <summary>
     /// Three different resources help you manage your IAM policy for KMS crypto key. Each of these resources serves a different use case:
     /// 
-    /// * `gcp.kms.CryptoKeyIAMPolicy`: Authoritative. Sets the IAM policy for the crypto key and replaces any existing policy already attached.
-    /// * `gcp.kms.CryptoKeyIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the crypto key are preserved.
-    /// * `gcp.kms.CryptoKeyIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the crypto key are preserved.
+    /// * `gcp.kms.CryptoKeyIamPolicy`: Authoritative. Sets the IAM policy for the crypto key and replaces any existing policy already attached.
+    /// * `gcp.kms.CryptoKeyIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the crypto key are preserved.
+    /// * `gcp.kms.CryptoKeyIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the crypto key are preserved.
     /// 
-    /// &gt; **Note:** `gcp.kms.CryptoKeyIAMPolicy` **cannot** be used in conjunction with `gcp.kms.CryptoKeyIAMBinding` and `gcp.kms.CryptoKeyIAMMember` or they will fight over what your policy should be.
+    /// &gt; **Note:** `gcp.kms.CryptoKeyIamPolicy` **cannot** be used in conjunction with `gcp.kms.CryptoKeyIamBinding` and `gcp.kms.CryptoKeyIamMember` or they will fight over what your policy should be.
     /// 
-    /// &gt; **Note:** `gcp.kms.CryptoKeyIAMBinding` resources **can be** used in conjunction with `gcp.kms.CryptoKeyIAMMember` resources **only if** they do not grant privilege to the same role.
+    /// &gt; **Note:** `gcp.kms.CryptoKeyIamBinding` resources **can be** used in conjunction with `gcp.kms.CryptoKeyIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -39,11 +39,11 @@ namespace Pulumi.Gcp.Kms
     ///         RotationPeriod = "100000s",
     ///     });
     /// 
-    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     var admin = Gcp.Organizations.GetIamPolicy.Invoke(new()
     ///     {
     ///         Bindings = new[]
     ///         {
-    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             new Gcp.Organizations.Inputs.GetIamPolicyBindingInputArgs
     ///             {
     ///                 Role = "roles/cloudkms.cryptoKeyEncrypter",
     ///                 Members = new[]
@@ -54,10 +54,10 @@ namespace Pulumi.Gcp.Kms
     ///         },
     ///     });
     /// 
-    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIAMPolicy("cryptoKey", new()
+    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIamPolicy("cryptoKey", new()
     ///     {
     ///         CryptoKeyId = key.Id,
-    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///         PolicyData = admin.Apply(getIamPolicyResult =&gt; getIamPolicyResult.PolicyData),
     ///     });
     /// 
     /// });
@@ -73,13 +73,13 @@ namespace Pulumi.Gcp.Kms
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     var admin = Gcp.Organizations.GetIamPolicy.Invoke(new()
     ///     {
     ///         Bindings = new[]
     ///         {
-    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             new Gcp.Organizations.Inputs.GetIamPolicyBindingInputArgs
     ///             {
-    ///                 Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionInputArgs
+    ///                 Condition = new Gcp.Organizations.Inputs.GetIamPolicyBindingConditionInputArgs
     ///                 {
     ///                     Description = "Expiring at midnight of 2019-12-31",
     ///                     Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
@@ -105,7 +105,7 @@ namespace Pulumi.Gcp.Kms
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIAMBinding("cryptoKey", new()
+    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIamBinding("cryptoKey", new()
     ///     {
     ///         CryptoKeyId = google_kms_crypto_key.Key.Id,
     ///         Role = "roles/cloudkms.cryptoKeyEncrypter",
@@ -128,7 +128,7 @@ namespace Pulumi.Gcp.Kms
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIAMBinding("cryptoKey", new()
+    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIamBinding("cryptoKey", new()
     ///     {
     ///         CryptoKeyId = google_kms_crypto_key.Key.Id,
     ///         Role = "roles/cloudkms.cryptoKeyEncrypter",
@@ -136,7 +136,7 @@ namespace Pulumi.Gcp.Kms
     ///         {
     ///             "user:jane@example.com",
     ///         },
-    ///         Condition = new Gcp.Kms.Inputs.CryptoKeyIAMBindingConditionArgs
+    ///         Condition = new Gcp.Kms.Inputs.CryptoKeyIamBindingConditionArgs
     ///         {
     ///             Title = "expires_after_2019_12_31",
     ///             Description = "Expiring at midnight of 2019-12-31",
@@ -155,7 +155,7 @@ namespace Pulumi.Gcp.Kms
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIAMMember("cryptoKey", new()
+    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIamMember("cryptoKey", new()
     ///     {
     ///         CryptoKeyId = google_kms_crypto_key.Key.Id,
     ///         Role = "roles/cloudkms.cryptoKeyEncrypter",
@@ -175,12 +175,12 @@ namespace Pulumi.Gcp.Kms
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIAMMember("cryptoKey", new()
+    ///     var cryptoKey = new Gcp.Kms.CryptoKeyIamMember("cryptoKey", new()
     ///     {
     ///         CryptoKeyId = google_kms_crypto_key.Key.Id,
     ///         Role = "roles/cloudkms.cryptoKeyEncrypter",
     ///         Member = "user:jane@example.com",
-    ///         Condition = new Gcp.Kms.Inputs.CryptoKeyIAMMemberConditionArgs
+    ///         Condition = new Gcp.Kms.Inputs.CryptoKeyIamMemberConditionArgs
     ///         {
     ///             Title = "expires_after_2019_12_31",
     ///             Description = "Expiring at midnight of 2019-12-31",
@@ -198,7 +198,7 @@ namespace Pulumi.Gcp.Kms
     /// This member resource can be imported using the `crypto_key_id`, role, and member identity e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember crypto_key "your-project-id/location-name/key-ring-name/key-name roles/viewer user:foo@example.com"
+    ///  $ pulumi import gcp:kms/cryptoKeyIamMember:CryptoKeyIamMember crypto_key "your-project-id/location-name/key-ring-name/key-name roles/viewer user:foo@example.com"
     /// ```
     /// 
     ///  IAM binding imports use space-delimited identifiers; first the resource in question and then the role.
@@ -206,7 +206,7 @@ namespace Pulumi.Gcp.Kms
     /// These bindings can be imported using the `crypto_key_id` and role, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember crypto_key "your-project-id/location-name/key-ring-name/key-name roles/editor"
+    ///  $ pulumi import gcp:kms/cryptoKeyIamMember:CryptoKeyIamMember crypto_key "your-project-id/location-name/key-ring-name/key-name roles/editor"
     /// ```
     /// 
     ///  IAM policy imports use the identifier of the resource in question.
@@ -214,18 +214,18 @@ namespace Pulumi.Gcp.Kms
     /// This policy resource can be imported using the `crypto_key_id`, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember crypto_key your-project-id/location-name/key-ring-name/key-name
+    ///  $ pulumi import gcp:kms/cryptoKeyIamMember:CryptoKeyIamMember crypto_key your-project-id/location-name/key-ring-name/key-name
     /// ```
     /// </summary>
-    [GcpResourceType("gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember")]
-    public partial class CryptoKeyIAMMember : global::Pulumi.CustomResource
+    [GcpResourceType("gcp:kms/cryptoKeyIamMember:CryptoKeyIamMember")]
+    public partial class CryptoKeyIamMember : global::Pulumi.CustomResource
     {
         /// <summary>
         /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         /// Structure is documented below.
         /// </summary>
         [Output("condition")]
-        public Output<Outputs.CryptoKeyIAMMemberCondition?> Condition { get; private set; } = null!;
+        public Output<Outputs.CryptoKeyIamMemberCondition?> Condition { get; private set; } = null!;
 
         /// <summary>
         /// The crypto key ID, in the form
@@ -263,19 +263,19 @@ namespace Pulumi.Gcp.Kms
 
 
         /// <summary>
-        /// Create a CryptoKeyIAMMember resource with the given unique name, arguments, and options.
+        /// Create a CryptoKeyIamMember resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public CryptoKeyIAMMember(string name, CryptoKeyIAMMemberArgs args, CustomResourceOptions? options = null)
-            : base("gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember", name, args ?? new CryptoKeyIAMMemberArgs(), MakeResourceOptions(options, ""))
+        public CryptoKeyIamMember(string name, CryptoKeyIamMemberArgs args, CustomResourceOptions? options = null)
+            : base("gcp:kms/cryptoKeyIamMember:CryptoKeyIamMember", name, args ?? new CryptoKeyIamMemberArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private CryptoKeyIAMMember(string name, Input<string> id, CryptoKeyIAMMemberState? state = null, CustomResourceOptions? options = null)
-            : base("gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember", name, state, MakeResourceOptions(options, id))
+        private CryptoKeyIamMember(string name, Input<string> id, CryptoKeyIamMemberState? state = null, CustomResourceOptions? options = null)
+            : base("gcp:kms/cryptoKeyIamMember:CryptoKeyIamMember", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -291,7 +291,7 @@ namespace Pulumi.Gcp.Kms
             return merged;
         }
         /// <summary>
-        /// Get an existing CryptoKeyIAMMember resource's state with the given name, ID, and optional extra
+        /// Get an existing CryptoKeyIamMember resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -299,20 +299,20 @@ namespace Pulumi.Gcp.Kms
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static CryptoKeyIAMMember Get(string name, Input<string> id, CryptoKeyIAMMemberState? state = null, CustomResourceOptions? options = null)
+        public static CryptoKeyIamMember Get(string name, Input<string> id, CryptoKeyIamMemberState? state = null, CustomResourceOptions? options = null)
         {
-            return new CryptoKeyIAMMember(name, id, state, options);
+            return new CryptoKeyIamMember(name, id, state, options);
         }
     }
 
-    public sealed class CryptoKeyIAMMemberArgs : global::Pulumi.ResourceArgs
+    public sealed class CryptoKeyIamMemberArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         /// Structure is documented below.
         /// </summary>
         [Input("condition")]
-        public Input<Inputs.CryptoKeyIAMMemberConditionArgs>? Condition { get; set; }
+        public Input<Inputs.CryptoKeyIamMemberConditionArgs>? Condition { get; set; }
 
         /// <summary>
         /// The crypto key ID, in the form
@@ -342,20 +342,20 @@ namespace Pulumi.Gcp.Kms
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
 
-        public CryptoKeyIAMMemberArgs()
+        public CryptoKeyIamMemberArgs()
         {
         }
-        public static new CryptoKeyIAMMemberArgs Empty => new CryptoKeyIAMMemberArgs();
+        public static new CryptoKeyIamMemberArgs Empty => new CryptoKeyIamMemberArgs();
     }
 
-    public sealed class CryptoKeyIAMMemberState : global::Pulumi.ResourceArgs
+    public sealed class CryptoKeyIamMemberState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         /// Structure is documented below.
         /// </summary>
         [Input("condition")]
-        public Input<Inputs.CryptoKeyIAMMemberConditionGetArgs>? Condition { get; set; }
+        public Input<Inputs.CryptoKeyIamMemberConditionGetArgs>? Condition { get; set; }
 
         /// <summary>
         /// The crypto key ID, in the form
@@ -391,9 +391,9 @@ namespace Pulumi.Gcp.Kms
         [Input("role")]
         public Input<string>? Role { get; set; }
 
-        public CryptoKeyIAMMemberState()
+        public CryptoKeyIamMemberState()
         {
         }
-        public static new CryptoKeyIAMMemberState Empty => new CryptoKeyIAMMemberState();
+        public static new CryptoKeyIamMemberState Empty => new CryptoKeyIamMemberState();
     }
 }

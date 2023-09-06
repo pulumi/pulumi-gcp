@@ -45,7 +45,7 @@ namespace Pulumi.Gcp.Projects
     ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var hcSaBqJobuser = new Gcp.Projects.IAMMember("hcSaBqJobuser", new()
+    ///     var hcSaBqJobuser = new Gcp.Projects.IamMember("hcSaBqJobuser", new()
     ///     {
     ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
     ///         Role = "roles/bigquery.jobUser",

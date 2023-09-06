@@ -5,7 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.gcp.compute.inputs.SubnetworkIAMBindingConditionArgs;
+import com.pulumi.gcp.compute.inputs.SubnetworkIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -13,9 +13,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class SubnetworkIAMBindingState extends com.pulumi.resources.ResourceArgs {
+public final class SubnetworkIamBindingState extends com.pulumi.resources.ResourceArgs {
 
-    public static final SubnetworkIAMBindingState Empty = new SubnetworkIAMBindingState();
+    public static final SubnetworkIamBindingState Empty = new SubnetworkIamBindingState();
 
     /**
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -23,14 +23,14 @@ public final class SubnetworkIAMBindingState extends com.pulumi.resources.Resour
      * 
      */
     @Import(name="condition")
-    private @Nullable Output<SubnetworkIAMBindingConditionArgs> condition;
+    private @Nullable Output<SubnetworkIamBindingConditionArgs> condition;
 
     /**
      * @return An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      * 
      */
-    public Optional<Output<SubnetworkIAMBindingConditionArgs>> condition() {
+    public Optional<Output<SubnetworkIamBindingConditionArgs>> condition() {
         return Optional.ofNullable(this.condition);
     }
 
@@ -120,7 +120,7 @@ public final class SubnetworkIAMBindingState extends com.pulumi.resources.Resour
 
     /**
      * The role that should be applied. Only one
-     * `gcp.compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.compute.SubnetworkIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -129,7 +129,7 @@ public final class SubnetworkIAMBindingState extends com.pulumi.resources.Resour
 
     /**
      * @return The role that should be applied. Only one
-     * `gcp.compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.compute.SubnetworkIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -152,9 +152,9 @@ public final class SubnetworkIAMBindingState extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.subnetwork);
     }
 
-    private SubnetworkIAMBindingState() {}
+    private SubnetworkIamBindingState() {}
 
-    private SubnetworkIAMBindingState(SubnetworkIAMBindingState $) {
+    private SubnetworkIamBindingState(SubnetworkIamBindingState $) {
         this.condition = $.condition;
         this.etag = $.etag;
         this.members = $.members;
@@ -167,19 +167,19 @@ public final class SubnetworkIAMBindingState extends com.pulumi.resources.Resour
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(SubnetworkIAMBindingState defaults) {
+    public static Builder builder(SubnetworkIamBindingState defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private SubnetworkIAMBindingState $;
+        private SubnetworkIamBindingState $;
 
         public Builder() {
-            $ = new SubnetworkIAMBindingState();
+            $ = new SubnetworkIamBindingState();
         }
 
-        public Builder(SubnetworkIAMBindingState defaults) {
-            $ = new SubnetworkIAMBindingState(Objects.requireNonNull(defaults));
+        public Builder(SubnetworkIamBindingState defaults) {
+            $ = new SubnetworkIamBindingState(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -189,7 +189,7 @@ public final class SubnetworkIAMBindingState extends com.pulumi.resources.Resour
          * @return builder
          * 
          */
-        public Builder condition(@Nullable Output<SubnetworkIAMBindingConditionArgs> condition) {
+        public Builder condition(@Nullable Output<SubnetworkIamBindingConditionArgs> condition) {
             $.condition = condition;
             return this;
         }
@@ -201,7 +201,7 @@ public final class SubnetworkIAMBindingState extends com.pulumi.resources.Resour
          * @return builder
          * 
          */
-        public Builder condition(SubnetworkIAMBindingConditionArgs condition) {
+        public Builder condition(SubnetworkIamBindingConditionArgs condition) {
             return condition(Output.of(condition));
         }
 
@@ -315,7 +315,7 @@ public final class SubnetworkIAMBindingState extends com.pulumi.resources.Resour
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.compute.SubnetworkIamBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder
@@ -328,7 +328,7 @@ public final class SubnetworkIAMBindingState extends com.pulumi.resources.Resour
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.compute.SubnetworkIamBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder
@@ -359,7 +359,7 @@ public final class SubnetworkIAMBindingState extends com.pulumi.resources.Resour
             return subnetwork(Output.of(subnetwork));
         }
 
-        public SubnetworkIAMBindingState build() {
+        public SubnetworkIamBindingState build() {
             return $;
         }
     }

@@ -12,17 +12,17 @@ namespace Pulumi.Gcp.Iap
     /// <summary>
     /// Three different resources help you manage your IAM policy for Identity-Aware Proxy TunnelInstance. Each of these resources serves a different use case:
     /// 
-    /// * `gcp.iap.TunnelInstanceIAMPolicy`: Authoritative. Sets the IAM policy for the tunnelinstance and replaces any existing policy already attached.
-    /// * `gcp.iap.TunnelInstanceIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the tunnelinstance are preserved.
-    /// * `gcp.iap.TunnelInstanceIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the tunnelinstance are preserved.
+    /// * `gcp.iap.TunnelInstanceIamPolicy`: Authoritative. Sets the IAM policy for the tunnelinstance and replaces any existing policy already attached.
+    /// * `gcp.iap.TunnelInstanceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the tunnelinstance are preserved.
+    /// * `gcp.iap.TunnelInstanceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the tunnelinstance are preserved.
     /// 
     /// A data source can be used to retrieve policy data in advent you do not need creation
     /// 
-    /// * `gcp.iap.TunnelInstanceIAMPolicy`: Retrieves the IAM policy for the tunnelinstance
+    /// * `gcp.iap.TunnelInstanceIamPolicy`: Retrieves the IAM policy for the tunnelinstance
     /// 
-    /// &gt; **Note:** `gcp.iap.TunnelInstanceIAMPolicy` **cannot** be used in conjunction with `gcp.iap.TunnelInstanceIAMBinding` and `gcp.iap.TunnelInstanceIAMMember` or they will fight over what your policy should be.
+    /// &gt; **Note:** `gcp.iap.TunnelInstanceIamPolicy` **cannot** be used in conjunction with `gcp.iap.TunnelInstanceIamBinding` and `gcp.iap.TunnelInstanceIamMember` or they will fight over what your policy should be.
     /// 
-    /// &gt; **Note:** `gcp.iap.TunnelInstanceIAMBinding` resources **can be** used in conjunction with `gcp.iap.TunnelInstanceIAMMember` resources **only if** they do not grant privilege to the same role.
+    /// &gt; **Note:** `gcp.iap.TunnelInstanceIamBinding` resources **can be** used in conjunction with `gcp.iap.TunnelInstanceIamMember` resources **only if** they do not grant privilege to the same role.
     /// 
     /// &gt; **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
     /// 
@@ -36,11 +36,11 @@ namespace Pulumi.Gcp.Iap
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     var admin = Gcp.Organizations.GetIamPolicy.Invoke(new()
     ///     {
     ///         Bindings = new[]
     ///         {
-    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             new Gcp.Organizations.Inputs.GetIamPolicyBindingInputArgs
     ///             {
     ///                 Role = "roles/iap.tunnelResourceAccessor",
     ///                 Members = new[]
@@ -51,12 +51,12 @@ namespace Pulumi.Gcp.Iap
     ///         },
     ///     });
     /// 
-    ///     var policy = new Gcp.Iap.TunnelInstanceIAMPolicy("policy", new()
+    ///     var policy = new Gcp.Iap.TunnelInstanceIamPolicy("policy", new()
     ///     {
     ///         Project = google_compute_instance.Tunnelvm.Project,
     ///         Zone = google_compute_instance.Tunnelvm.Zone,
     ///         Instance = google_compute_instance.Tunnelvm.Name,
-    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///         PolicyData = admin.Apply(getIamPolicyResult =&gt; getIamPolicyResult.PolicyData),
     ///     });
     /// 
     /// });
@@ -72,18 +72,18 @@ namespace Pulumi.Gcp.Iap
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     var admin = Gcp.Organizations.GetIamPolicy.Invoke(new()
     ///     {
     ///         Bindings = new[]
     ///         {
-    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             new Gcp.Organizations.Inputs.GetIamPolicyBindingInputArgs
     ///             {
     ///                 Role = "roles/iap.tunnelResourceAccessor",
     ///                 Members = new[]
     ///                 {
     ///                     "user:jane@example.com",
     ///                 },
-    ///                 Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionInputArgs
+    ///                 Condition = new Gcp.Organizations.Inputs.GetIamPolicyBindingConditionInputArgs
     ///                 {
     ///                     Title = "expires_after_2019_12_31",
     ///                     Description = "Expiring at midnight of 2019-12-31",
@@ -93,12 +93,12 @@ namespace Pulumi.Gcp.Iap
     ///         },
     ///     });
     /// 
-    ///     var policy = new Gcp.Iap.TunnelInstanceIAMPolicy("policy", new()
+    ///     var policy = new Gcp.Iap.TunnelInstanceIamPolicy("policy", new()
     ///     {
     ///         Project = google_compute_instance.Tunnelvm.Project,
     ///         Zone = google_compute_instance.Tunnelvm.Zone,
     ///         Instance = google_compute_instance.Tunnelvm.Name,
-    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///         PolicyData = admin.Apply(getIamPolicyResult =&gt; getIamPolicyResult.PolicyData),
     ///     });
     /// 
     /// });
@@ -113,7 +113,7 @@ namespace Pulumi.Gcp.Iap
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var binding = new Gcp.Iap.TunnelInstanceIAMBinding("binding", new()
+    ///     var binding = new Gcp.Iap.TunnelInstanceIamBinding("binding", new()
     ///     {
     ///         Project = google_compute_instance.Tunnelvm.Project,
     ///         Zone = google_compute_instance.Tunnelvm.Zone,
@@ -138,7 +138,7 @@ namespace Pulumi.Gcp.Iap
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var binding = new Gcp.Iap.TunnelInstanceIAMBinding("binding", new()
+    ///     var binding = new Gcp.Iap.TunnelInstanceIamBinding("binding", new()
     ///     {
     ///         Project = google_compute_instance.Tunnelvm.Project,
     ///         Zone = google_compute_instance.Tunnelvm.Zone,
@@ -148,7 +148,7 @@ namespace Pulumi.Gcp.Iap
     ///         {
     ///             "user:jane@example.com",
     ///         },
-    ///         Condition = new Gcp.Iap.Inputs.TunnelInstanceIAMBindingConditionArgs
+    ///         Condition = new Gcp.Iap.Inputs.TunnelInstanceIamBindingConditionArgs
     ///         {
     ///             Title = "expires_after_2019_12_31",
     ///             Description = "Expiring at midnight of 2019-12-31",
@@ -168,7 +168,7 @@ namespace Pulumi.Gcp.Iap
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var member = new Gcp.Iap.TunnelInstanceIAMMember("member", new()
+    ///     var member = new Gcp.Iap.TunnelInstanceIamMember("member", new()
     ///     {
     ///         Project = google_compute_instance.Tunnelvm.Project,
     ///         Zone = google_compute_instance.Tunnelvm.Zone,
@@ -190,14 +190,14 @@ namespace Pulumi.Gcp.Iap
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var member = new Gcp.Iap.TunnelInstanceIAMMember("member", new()
+    ///     var member = new Gcp.Iap.TunnelInstanceIamMember("member", new()
     ///     {
     ///         Project = google_compute_instance.Tunnelvm.Project,
     ///         Zone = google_compute_instance.Tunnelvm.Zone,
     ///         Instance = google_compute_instance.Tunnelvm.Name,
     ///         Role = "roles/iap.tunnelResourceAccessor",
     ///         Member = "user:jane@example.com",
-    ///         Condition = new Gcp.Iap.Inputs.TunnelInstanceIAMMemberConditionArgs
+    ///         Condition = new Gcp.Iap.Inputs.TunnelInstanceIamMemberConditionArgs
     ///         {
     ///             Title = "expires_after_2019_12_31",
     ///             Description = "Expiring at midnight of 2019-12-31",
@@ -213,34 +213,34 @@ namespace Pulumi.Gcp.Iap
     /// For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/iap_tunnel/zones/{{zone}}/instances/{{name}} * projects/{{project}}/zones/{{zone}}/instances/{{name}} * {{project}}/{{zone}}/{{name}} * {{zone}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Identity-Aware Proxy tunnelinstance IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:iap/tunnelInstanceIAMMember:TunnelInstanceIAMMember editor "projects/{{project}}/iap_tunnel/zones/{{zone}}/instances/{{tunnel_instance}} roles/iap.tunnelResourceAccessor user:jane@example.com"
+    ///  $ pulumi import gcp:iap/tunnelInstanceIamMember:TunnelInstanceIamMember editor "projects/{{project}}/iap_tunnel/zones/{{zone}}/instances/{{tunnel_instance}} roles/iap.tunnelResourceAccessor user:jane@example.com"
     /// ```
     /// 
     ///  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:iap/tunnelInstanceIAMMember:TunnelInstanceIAMMember editor "projects/{{project}}/iap_tunnel/zones/{{zone}}/instances/{{tunnel_instance}} roles/iap.tunnelResourceAccessor"
+    ///  $ pulumi import gcp:iap/tunnelInstanceIamMember:TunnelInstanceIamMember editor "projects/{{project}}/iap_tunnel/zones/{{zone}}/instances/{{tunnel_instance}} roles/iap.tunnelResourceAccessor"
     /// ```
     /// 
     ///  IAM policy imports use the identifier of the resource in question, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:iap/tunnelInstanceIAMMember:TunnelInstanceIAMMember editor projects/{{project}}/iap_tunnel/zones/{{zone}}/instances/{{tunnel_instance}}
+    ///  $ pulumi import gcp:iap/tunnelInstanceIamMember:TunnelInstanceIamMember editor projects/{{project}}/iap_tunnel/zones/{{zone}}/instances/{{tunnel_instance}}
     /// ```
     /// 
     ///  -&gt; **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
     /// 
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
-    [GcpResourceType("gcp:iap/tunnelInstanceIAMMember:TunnelInstanceIAMMember")]
-    public partial class TunnelInstanceIAMMember : global::Pulumi.CustomResource
+    [GcpResourceType("gcp:iap/tunnelInstanceIamMember:TunnelInstanceIamMember")]
+    public partial class TunnelInstanceIamMember : global::Pulumi.CustomResource
     {
         /// <summary>
         /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         /// Structure is documented below.
         /// </summary>
         [Output("condition")]
-        public Output<Outputs.TunnelInstanceIAMMemberCondition?> Condition { get; private set; } = null!;
+        public Output<Outputs.TunnelInstanceIamMemberCondition?> Condition { get; private set; } = null!;
 
         /// <summary>
         /// (Computed) The etag of the IAM policy.
@@ -278,7 +278,7 @@ namespace Pulumi.Gcp.Iap
 
         /// <summary>
         /// The role that should be applied. Only one
-        /// `gcp.iap.TunnelInstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+        /// `gcp.iap.TunnelInstanceIamBinding` can be used per role. Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
         /// </summary>
         [Output("role")]
@@ -289,19 +289,19 @@ namespace Pulumi.Gcp.Iap
 
 
         /// <summary>
-        /// Create a TunnelInstanceIAMMember resource with the given unique name, arguments, and options.
+        /// Create a TunnelInstanceIamMember resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public TunnelInstanceIAMMember(string name, TunnelInstanceIAMMemberArgs args, CustomResourceOptions? options = null)
-            : base("gcp:iap/tunnelInstanceIAMMember:TunnelInstanceIAMMember", name, args ?? new TunnelInstanceIAMMemberArgs(), MakeResourceOptions(options, ""))
+        public TunnelInstanceIamMember(string name, TunnelInstanceIamMemberArgs args, CustomResourceOptions? options = null)
+            : base("gcp:iap/tunnelInstanceIamMember:TunnelInstanceIamMember", name, args ?? new TunnelInstanceIamMemberArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private TunnelInstanceIAMMember(string name, Input<string> id, TunnelInstanceIAMMemberState? state = null, CustomResourceOptions? options = null)
-            : base("gcp:iap/tunnelInstanceIAMMember:TunnelInstanceIAMMember", name, state, MakeResourceOptions(options, id))
+        private TunnelInstanceIamMember(string name, Input<string> id, TunnelInstanceIamMemberState? state = null, CustomResourceOptions? options = null)
+            : base("gcp:iap/tunnelInstanceIamMember:TunnelInstanceIamMember", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -317,7 +317,7 @@ namespace Pulumi.Gcp.Iap
             return merged;
         }
         /// <summary>
-        /// Get an existing TunnelInstanceIAMMember resource's state with the given name, ID, and optional extra
+        /// Get an existing TunnelInstanceIamMember resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -325,20 +325,20 @@ namespace Pulumi.Gcp.Iap
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static TunnelInstanceIAMMember Get(string name, Input<string> id, TunnelInstanceIAMMemberState? state = null, CustomResourceOptions? options = null)
+        public static TunnelInstanceIamMember Get(string name, Input<string> id, TunnelInstanceIamMemberState? state = null, CustomResourceOptions? options = null)
         {
-            return new TunnelInstanceIAMMember(name, id, state, options);
+            return new TunnelInstanceIamMember(name, id, state, options);
         }
     }
 
-    public sealed class TunnelInstanceIAMMemberArgs : global::Pulumi.ResourceArgs
+    public sealed class TunnelInstanceIamMemberArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         /// Structure is documented below.
         /// </summary>
         [Input("condition")]
-        public Input<Inputs.TunnelInstanceIAMMemberConditionArgs>? Condition { get; set; }
+        public Input<Inputs.TunnelInstanceIamMemberConditionArgs>? Condition { get; set; }
 
         /// <summary>
         /// Used to find the parent resource to bind the IAM policy to
@@ -370,7 +370,7 @@ namespace Pulumi.Gcp.Iap
 
         /// <summary>
         /// The role that should be applied. Only one
-        /// `gcp.iap.TunnelInstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+        /// `gcp.iap.TunnelInstanceIamBinding` can be used per role. Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
         /// </summary>
         [Input("role", required: true)]
@@ -379,20 +379,20 @@ namespace Pulumi.Gcp.Iap
         [Input("zone")]
         public Input<string>? Zone { get; set; }
 
-        public TunnelInstanceIAMMemberArgs()
+        public TunnelInstanceIamMemberArgs()
         {
         }
-        public static new TunnelInstanceIAMMemberArgs Empty => new TunnelInstanceIAMMemberArgs();
+        public static new TunnelInstanceIamMemberArgs Empty => new TunnelInstanceIamMemberArgs();
     }
 
-    public sealed class TunnelInstanceIAMMemberState : global::Pulumi.ResourceArgs
+    public sealed class TunnelInstanceIamMemberState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         /// Structure is documented below.
         /// </summary>
         [Input("condition")]
-        public Input<Inputs.TunnelInstanceIAMMemberConditionGetArgs>? Condition { get; set; }
+        public Input<Inputs.TunnelInstanceIamMemberConditionGetArgs>? Condition { get; set; }
 
         /// <summary>
         /// (Computed) The etag of the IAM policy.
@@ -430,7 +430,7 @@ namespace Pulumi.Gcp.Iap
 
         /// <summary>
         /// The role that should be applied. Only one
-        /// `gcp.iap.TunnelInstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+        /// `gcp.iap.TunnelInstanceIamBinding` can be used per role. Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
         /// </summary>
         [Input("role")]
@@ -439,9 +439,9 @@ namespace Pulumi.Gcp.Iap
         [Input("zone")]
         public Input<string>? Zone { get; set; }
 
-        public TunnelInstanceIAMMemberState()
+        public TunnelInstanceIamMemberState()
         {
         }
-        public static new TunnelInstanceIAMMemberState Empty => new TunnelInstanceIAMMemberState();
+        public static new TunnelInstanceIamMemberState Empty => new TunnelInstanceIamMemberState();
     }
 }

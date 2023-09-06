@@ -110,20 +110,20 @@ export type TunnelIamPolicy = import("./tunnelIamPolicy").TunnelIamPolicy;
 export const TunnelIamPolicy: typeof import("./tunnelIamPolicy").TunnelIamPolicy = null as any;
 utilities.lazyLoad(exports, ["TunnelIamPolicy"], () => require("./tunnelIamPolicy"));
 
-export { TunnelInstanceIAMBindingArgs, TunnelInstanceIAMBindingState } from "./tunnelInstanceIAMBinding";
-export type TunnelInstanceIAMBinding = import("./tunnelInstanceIAMBinding").TunnelInstanceIAMBinding;
-export const TunnelInstanceIAMBinding: typeof import("./tunnelInstanceIAMBinding").TunnelInstanceIAMBinding = null as any;
-utilities.lazyLoad(exports, ["TunnelInstanceIAMBinding"], () => require("./tunnelInstanceIAMBinding"));
+export { TunnelInstanceIamBindingArgs, TunnelInstanceIamBindingState } from "./tunnelInstanceIamBinding";
+export type TunnelInstanceIamBinding = import("./tunnelInstanceIamBinding").TunnelInstanceIamBinding;
+export const TunnelInstanceIamBinding: typeof import("./tunnelInstanceIamBinding").TunnelInstanceIamBinding = null as any;
+utilities.lazyLoad(exports, ["TunnelInstanceIamBinding"], () => require("./tunnelInstanceIamBinding"));
 
-export { TunnelInstanceIAMMemberArgs, TunnelInstanceIAMMemberState } from "./tunnelInstanceIAMMember";
-export type TunnelInstanceIAMMember = import("./tunnelInstanceIAMMember").TunnelInstanceIAMMember;
-export const TunnelInstanceIAMMember: typeof import("./tunnelInstanceIAMMember").TunnelInstanceIAMMember = null as any;
-utilities.lazyLoad(exports, ["TunnelInstanceIAMMember"], () => require("./tunnelInstanceIAMMember"));
+export { TunnelInstanceIamMemberArgs, TunnelInstanceIamMemberState } from "./tunnelInstanceIamMember";
+export type TunnelInstanceIamMember = import("./tunnelInstanceIamMember").TunnelInstanceIamMember;
+export const TunnelInstanceIamMember: typeof import("./tunnelInstanceIamMember").TunnelInstanceIamMember = null as any;
+utilities.lazyLoad(exports, ["TunnelInstanceIamMember"], () => require("./tunnelInstanceIamMember"));
 
-export { TunnelInstanceIAMPolicyArgs, TunnelInstanceIAMPolicyState } from "./tunnelInstanceIAMPolicy";
-export type TunnelInstanceIAMPolicy = import("./tunnelInstanceIAMPolicy").TunnelInstanceIAMPolicy;
-export const TunnelInstanceIAMPolicy: typeof import("./tunnelInstanceIAMPolicy").TunnelInstanceIAMPolicy = null as any;
-utilities.lazyLoad(exports, ["TunnelInstanceIAMPolicy"], () => require("./tunnelInstanceIAMPolicy"));
+export { TunnelInstanceIamPolicyArgs, TunnelInstanceIamPolicyState } from "./tunnelInstanceIamPolicy";
+export type TunnelInstanceIamPolicy = import("./tunnelInstanceIamPolicy").TunnelInstanceIamPolicy;
+export const TunnelInstanceIamPolicy: typeof import("./tunnelInstanceIamPolicy").TunnelInstanceIamPolicy = null as any;
+utilities.lazyLoad(exports, ["TunnelInstanceIamPolicy"], () => require("./tunnelInstanceIamPolicy"));
 
 export { WebBackendServiceIamBindingArgs, WebBackendServiceIamBindingState } from "./webBackendServiceIamBinding";
 export type WebBackendServiceIamBinding = import("./webBackendServiceIamBinding").WebBackendServiceIamBinding;
@@ -227,12 +227,12 @@ const _module = {
                 return new TunnelIamMember(name, <any>undefined, { urn })
             case "gcp:iap/tunnelIamPolicy:TunnelIamPolicy":
                 return new TunnelIamPolicy(name, <any>undefined, { urn })
-            case "gcp:iap/tunnelInstanceIAMBinding:TunnelInstanceIAMBinding":
-                return new TunnelInstanceIAMBinding(name, <any>undefined, { urn })
-            case "gcp:iap/tunnelInstanceIAMMember:TunnelInstanceIAMMember":
-                return new TunnelInstanceIAMMember(name, <any>undefined, { urn })
-            case "gcp:iap/tunnelInstanceIAMPolicy:TunnelInstanceIAMPolicy":
-                return new TunnelInstanceIAMPolicy(name, <any>undefined, { urn })
+            case "gcp:iap/tunnelInstanceIamBinding:TunnelInstanceIamBinding":
+                return new TunnelInstanceIamBinding(name, <any>undefined, { urn })
+            case "gcp:iap/tunnelInstanceIamMember:TunnelInstanceIamMember":
+                return new TunnelInstanceIamMember(name, <any>undefined, { urn })
+            case "gcp:iap/tunnelInstanceIamPolicy:TunnelInstanceIamPolicy":
+                return new TunnelInstanceIamPolicy(name, <any>undefined, { urn })
             case "gcp:iap/webBackendServiceIamBinding:WebBackendServiceIamBinding":
                 return new WebBackendServiceIamBinding(name, <any>undefined, { urn })
             case "gcp:iap/webBackendServiceIamMember:WebBackendServiceIamMember":
@@ -279,9 +279,9 @@ pulumi.runtime.registerResourceModule("gcp", "iap/client", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/tunnelIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/tunnelIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/tunnelIamPolicy", _module)
-pulumi.runtime.registerResourceModule("gcp", "iap/tunnelInstanceIAMBinding", _module)
-pulumi.runtime.registerResourceModule("gcp", "iap/tunnelInstanceIAMMember", _module)
-pulumi.runtime.registerResourceModule("gcp", "iap/tunnelInstanceIAMPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "iap/tunnelInstanceIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "iap/tunnelInstanceIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "iap/tunnelInstanceIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/webBackendServiceIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/webBackendServiceIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "iap/webBackendServiceIamPolicy", _module)

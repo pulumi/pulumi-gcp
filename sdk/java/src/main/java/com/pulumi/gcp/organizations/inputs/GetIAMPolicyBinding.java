@@ -4,7 +4,7 @@
 package com.pulumi.gcp.organizations.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingCondition;
+import com.pulumi.gcp.organizations.inputs.GetIamPolicyBindingCondition;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -12,22 +12,22 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class GetIAMPolicyBinding extends com.pulumi.resources.InvokeArgs {
+public final class GetIamPolicyBinding extends com.pulumi.resources.InvokeArgs {
 
-    public static final GetIAMPolicyBinding Empty = new GetIAMPolicyBinding();
+    public static final GetIamPolicyBinding Empty = new GetIamPolicyBinding();
 
     /**
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
      * 
      */
     @Import(name="condition")
-    private @Nullable GetIAMPolicyBindingCondition condition;
+    private @Nullable GetIamPolicyBindingCondition condition;
 
     /**
      * @return An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
      * 
      */
-    public Optional<GetIAMPolicyBindingCondition> condition() {
+    public Optional<GetIamPolicyBindingCondition> condition() {
         return Optional.ofNullable(this.condition);
     }
 
@@ -79,9 +79,9 @@ public final class GetIAMPolicyBinding extends com.pulumi.resources.InvokeArgs {
         return this.role;
     }
 
-    private GetIAMPolicyBinding() {}
+    private GetIamPolicyBinding() {}
 
-    private GetIAMPolicyBinding(GetIAMPolicyBinding $) {
+    private GetIamPolicyBinding(GetIamPolicyBinding $) {
         this.condition = $.condition;
         this.members = $.members;
         this.role = $.role;
@@ -90,19 +90,19 @@ public final class GetIAMPolicyBinding extends com.pulumi.resources.InvokeArgs {
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(GetIAMPolicyBinding defaults) {
+    public static Builder builder(GetIamPolicyBinding defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private GetIAMPolicyBinding $;
+        private GetIamPolicyBinding $;
 
         public Builder() {
-            $ = new GetIAMPolicyBinding();
+            $ = new GetIamPolicyBinding();
         }
 
-        public Builder(GetIAMPolicyBinding defaults) {
-            $ = new GetIAMPolicyBinding(Objects.requireNonNull(defaults));
+        public Builder(GetIamPolicyBinding defaults) {
+            $ = new GetIamPolicyBinding(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -111,7 +111,7 @@ public final class GetIAMPolicyBinding extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          */
-        public Builder condition(@Nullable GetIAMPolicyBindingCondition condition) {
+        public Builder condition(@Nullable GetIamPolicyBindingCondition condition) {
             $.condition = condition;
             return this;
         }
@@ -164,7 +164,7 @@ public final class GetIAMPolicyBinding extends com.pulumi.resources.InvokeArgs {
             return this;
         }
 
-        public GetIAMPolicyBinding build() {
+        public GetIamPolicyBinding build() {
             $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
             $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
             return $;

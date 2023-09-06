@@ -469,20 +469,20 @@ export type InstanceGroupNamedPort = import("./instanceGroupNamedPort").Instance
 export const InstanceGroupNamedPort: typeof import("./instanceGroupNamedPort").InstanceGroupNamedPort = null as any;
 utilities.lazyLoad(exports, ["InstanceGroupNamedPort"], () => require("./instanceGroupNamedPort"));
 
-export { InstanceIAMBindingArgs, InstanceIAMBindingState } from "./instanceIAMBinding";
-export type InstanceIAMBinding = import("./instanceIAMBinding").InstanceIAMBinding;
-export const InstanceIAMBinding: typeof import("./instanceIAMBinding").InstanceIAMBinding = null as any;
-utilities.lazyLoad(exports, ["InstanceIAMBinding"], () => require("./instanceIAMBinding"));
+export { InstanceIamBindingArgs, InstanceIamBindingState } from "./instanceIamBinding";
+export type InstanceIamBinding = import("./instanceIamBinding").InstanceIamBinding;
+export const InstanceIamBinding: typeof import("./instanceIamBinding").InstanceIamBinding = null as any;
+utilities.lazyLoad(exports, ["InstanceIamBinding"], () => require("./instanceIamBinding"));
 
-export { InstanceIAMMemberArgs, InstanceIAMMemberState } from "./instanceIAMMember";
-export type InstanceIAMMember = import("./instanceIAMMember").InstanceIAMMember;
-export const InstanceIAMMember: typeof import("./instanceIAMMember").InstanceIAMMember = null as any;
-utilities.lazyLoad(exports, ["InstanceIAMMember"], () => require("./instanceIAMMember"));
+export { InstanceIamMemberArgs, InstanceIamMemberState } from "./instanceIamMember";
+export type InstanceIamMember = import("./instanceIamMember").InstanceIamMember;
+export const InstanceIamMember: typeof import("./instanceIamMember").InstanceIamMember = null as any;
+utilities.lazyLoad(exports, ["InstanceIamMember"], () => require("./instanceIamMember"));
 
-export { InstanceIAMPolicyArgs, InstanceIAMPolicyState } from "./instanceIAMPolicy";
-export type InstanceIAMPolicy = import("./instanceIAMPolicy").InstanceIAMPolicy;
-export const InstanceIAMPolicy: typeof import("./instanceIAMPolicy").InstanceIAMPolicy = null as any;
-utilities.lazyLoad(exports, ["InstanceIAMPolicy"], () => require("./instanceIAMPolicy"));
+export { InstanceIamPolicyArgs, InstanceIamPolicyState } from "./instanceIamPolicy";
+export type InstanceIamPolicy = import("./instanceIamPolicy").InstanceIamPolicy;
+export const InstanceIamPolicy: typeof import("./instanceIamPolicy").InstanceIamPolicy = null as any;
+utilities.lazyLoad(exports, ["InstanceIamPolicy"], () => require("./instanceIamPolicy"));
 
 export { InstanceTemplateArgs, InstanceTemplateState } from "./instanceTemplate";
 export type InstanceTemplate = import("./instanceTemplate").InstanceTemplate;
@@ -874,20 +874,20 @@ export type Subnetwork = import("./subnetwork").Subnetwork;
 export const Subnetwork: typeof import("./subnetwork").Subnetwork = null as any;
 utilities.lazyLoad(exports, ["Subnetwork"], () => require("./subnetwork"));
 
-export { SubnetworkIAMBindingArgs, SubnetworkIAMBindingState } from "./subnetworkIAMBinding";
-export type SubnetworkIAMBinding = import("./subnetworkIAMBinding").SubnetworkIAMBinding;
-export const SubnetworkIAMBinding: typeof import("./subnetworkIAMBinding").SubnetworkIAMBinding = null as any;
-utilities.lazyLoad(exports, ["SubnetworkIAMBinding"], () => require("./subnetworkIAMBinding"));
+export { SubnetworkIamBindingArgs, SubnetworkIamBindingState } from "./subnetworkIamBinding";
+export type SubnetworkIamBinding = import("./subnetworkIamBinding").SubnetworkIamBinding;
+export const SubnetworkIamBinding: typeof import("./subnetworkIamBinding").SubnetworkIamBinding = null as any;
+utilities.lazyLoad(exports, ["SubnetworkIamBinding"], () => require("./subnetworkIamBinding"));
 
-export { SubnetworkIAMMemberArgs, SubnetworkIAMMemberState } from "./subnetworkIAMMember";
-export type SubnetworkIAMMember = import("./subnetworkIAMMember").SubnetworkIAMMember;
-export const SubnetworkIAMMember: typeof import("./subnetworkIAMMember").SubnetworkIAMMember = null as any;
-utilities.lazyLoad(exports, ["SubnetworkIAMMember"], () => require("./subnetworkIAMMember"));
+export { SubnetworkIamMemberArgs, SubnetworkIamMemberState } from "./subnetworkIamMember";
+export type SubnetworkIamMember = import("./subnetworkIamMember").SubnetworkIamMember;
+export const SubnetworkIamMember: typeof import("./subnetworkIamMember").SubnetworkIamMember = null as any;
+utilities.lazyLoad(exports, ["SubnetworkIamMember"], () => require("./subnetworkIamMember"));
 
-export { SubnetworkIAMPolicyArgs, SubnetworkIAMPolicyState } from "./subnetworkIAMPolicy";
-export type SubnetworkIAMPolicy = import("./subnetworkIAMPolicy").SubnetworkIAMPolicy;
-export const SubnetworkIAMPolicy: typeof import("./subnetworkIAMPolicy").SubnetworkIAMPolicy = null as any;
-utilities.lazyLoad(exports, ["SubnetworkIAMPolicy"], () => require("./subnetworkIAMPolicy"));
+export { SubnetworkIamPolicyArgs, SubnetworkIamPolicyState } from "./subnetworkIamPolicy";
+export type SubnetworkIamPolicy = import("./subnetworkIamPolicy").SubnetworkIamPolicy;
+export const SubnetworkIamPolicy: typeof import("./subnetworkIamPolicy").SubnetworkIamPolicy = null as any;
+utilities.lazyLoad(exports, ["SubnetworkIamPolicy"], () => require("./subnetworkIamPolicy"));
 
 export { TargetGrpcProxyArgs, TargetGrpcProxyState } from "./targetGrpcProxy";
 export type TargetGrpcProxy = import("./targetGrpcProxy").TargetGrpcProxy;
@@ -1034,12 +1034,12 @@ const _module = {
                 return new InstanceGroupManager(name, <any>undefined, { urn })
             case "gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort":
                 return new InstanceGroupNamedPort(name, <any>undefined, { urn })
-            case "gcp:compute/instanceIAMBinding:InstanceIAMBinding":
-                return new InstanceIAMBinding(name, <any>undefined, { urn })
-            case "gcp:compute/instanceIAMMember:InstanceIAMMember":
-                return new InstanceIAMMember(name, <any>undefined, { urn })
-            case "gcp:compute/instanceIAMPolicy:InstanceIAMPolicy":
-                return new InstanceIAMPolicy(name, <any>undefined, { urn })
+            case "gcp:compute/instanceIamBinding:InstanceIamBinding":
+                return new InstanceIamBinding(name, <any>undefined, { urn })
+            case "gcp:compute/instanceIamMember:InstanceIamMember":
+                return new InstanceIamMember(name, <any>undefined, { urn })
+            case "gcp:compute/instanceIamPolicy:InstanceIamPolicy":
+                return new InstanceIamPolicy(name, <any>undefined, { urn })
             case "gcp:compute/instanceTemplate:InstanceTemplate":
                 return new InstanceTemplate(name, <any>undefined, { urn })
             case "gcp:compute/interconnectAttachment:InterconnectAttachment":
@@ -1194,12 +1194,12 @@ const _module = {
                 return new SnapshotIamPolicy(name, <any>undefined, { urn })
             case "gcp:compute/subnetwork:Subnetwork":
                 return new Subnetwork(name, <any>undefined, { urn })
-            case "gcp:compute/subnetworkIAMBinding:SubnetworkIAMBinding":
-                return new SubnetworkIAMBinding(name, <any>undefined, { urn })
-            case "gcp:compute/subnetworkIAMMember:SubnetworkIAMMember":
-                return new SubnetworkIAMMember(name, <any>undefined, { urn })
-            case "gcp:compute/subnetworkIAMPolicy:SubnetworkIAMPolicy":
-                return new SubnetworkIAMPolicy(name, <any>undefined, { urn })
+            case "gcp:compute/subnetworkIamBinding:SubnetworkIamBinding":
+                return new SubnetworkIamBinding(name, <any>undefined, { urn })
+            case "gcp:compute/subnetworkIamMember:SubnetworkIamMember":
+                return new SubnetworkIamMember(name, <any>undefined, { urn })
+            case "gcp:compute/subnetworkIamPolicy:SubnetworkIamPolicy":
+                return new SubnetworkIamPolicy(name, <any>undefined, { urn })
             case "gcp:compute/targetGrpcProxy:TargetGrpcProxy":
                 return new TargetGrpcProxy(name, <any>undefined, { urn })
             case "gcp:compute/targetHttpProxy:TargetHttpProxy":
@@ -1270,9 +1270,9 @@ pulumi.runtime.registerResourceModule("gcp", "compute/instanceFromTemplate", _mo
 pulumi.runtime.registerResourceModule("gcp", "compute/instanceGroup", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/instanceGroupManager", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/instanceGroupNamedPort", _module)
-pulumi.runtime.registerResourceModule("gcp", "compute/instanceIAMBinding", _module)
-pulumi.runtime.registerResourceModule("gcp", "compute/instanceIAMMember", _module)
-pulumi.runtime.registerResourceModule("gcp", "compute/instanceIAMPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/instanceIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/instanceIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/instanceIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/instanceTemplate", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/interconnectAttachment", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/machineImage", _module)
@@ -1350,9 +1350,9 @@ pulumi.runtime.registerResourceModule("gcp", "compute/snapshotIamBinding", _modu
 pulumi.runtime.registerResourceModule("gcp", "compute/snapshotIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/snapshotIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/subnetwork", _module)
-pulumi.runtime.registerResourceModule("gcp", "compute/subnetworkIAMBinding", _module)
-pulumi.runtime.registerResourceModule("gcp", "compute/subnetworkIAMMember", _module)
-pulumi.runtime.registerResourceModule("gcp", "compute/subnetworkIAMPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/subnetworkIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/subnetworkIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/subnetworkIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/targetGrpcProxy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/targetHttpProxy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/targetHttpsProxy", _module)

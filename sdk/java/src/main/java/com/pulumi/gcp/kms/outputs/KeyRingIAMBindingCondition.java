@@ -10,7 +10,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
-public final class KeyRingIAMBindingCondition {
+public final class KeyRingIamBindingCondition {
     /**
      * @return An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
      * 
@@ -31,7 +31,7 @@ public final class KeyRingIAMBindingCondition {
      */
     private String title;
 
-    private KeyRingIAMBindingCondition() {}
+    private KeyRingIamBindingCondition() {}
     /**
      * @return An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
      * 
@@ -62,7 +62,7 @@ public final class KeyRingIAMBindingCondition {
         return new Builder();
     }
 
-    public static Builder builder(KeyRingIAMBindingCondition defaults) {
+    public static Builder builder(KeyRingIamBindingCondition defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -71,7 +71,7 @@ public final class KeyRingIAMBindingCondition {
         private String expression;
         private String title;
         public Builder() {}
-        public Builder(KeyRingIAMBindingCondition defaults) {
+        public Builder(KeyRingIamBindingCondition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
     	      this.expression = defaults.expression;
@@ -93,8 +93,8 @@ public final class KeyRingIAMBindingCondition {
             this.title = Objects.requireNonNull(title);
             return this;
         }
-        public KeyRingIAMBindingCondition build() {
-            final var o = new KeyRingIAMBindingCondition();
+        public KeyRingIamBindingCondition build() {
+            final var o = new KeyRingIamBindingCondition();
             o.description = description;
             o.expression = expression;
             o.title = title;

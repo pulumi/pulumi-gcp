@@ -5,7 +5,7 @@ package com.pulumi.gcp.cloudbuildv2;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.gcp.cloudbuildv2.inputs.ConnectionIAMBindingConditionArgs;
+import com.pulumi.gcp.cloudbuildv2.inputs.ConnectionIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -13,14 +13,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class ConnectionIAMBindingArgs extends com.pulumi.resources.ResourceArgs {
+public final class ConnectionIamBindingArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final ConnectionIAMBindingArgs Empty = new ConnectionIAMBindingArgs();
+    public static final ConnectionIamBindingArgs Empty = new ConnectionIamBindingArgs();
 
     @Import(name="condition")
-    private @Nullable Output<ConnectionIAMBindingConditionArgs> condition;
+    private @Nullable Output<ConnectionIamBindingConditionArgs> condition;
 
-    public Optional<Output<ConnectionIAMBindingConditionArgs>> condition() {
+    public Optional<Output<ConnectionIamBindingConditionArgs>> condition() {
         return Optional.ofNullable(this.condition);
     }
 
@@ -96,7 +96,7 @@ public final class ConnectionIAMBindingArgs extends com.pulumi.resources.Resourc
 
     /**
      * The role that should be applied. Only one
-     * `gcp.cloudbuildv2.ConnectionIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.cloudbuildv2.ConnectionIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -105,7 +105,7 @@ public final class ConnectionIAMBindingArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return The role that should be applied. Only one
-     * `gcp.cloudbuildv2.ConnectionIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.cloudbuildv2.ConnectionIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -113,9 +113,9 @@ public final class ConnectionIAMBindingArgs extends com.pulumi.resources.Resourc
         return this.role;
     }
 
-    private ConnectionIAMBindingArgs() {}
+    private ConnectionIamBindingArgs() {}
 
-    private ConnectionIAMBindingArgs(ConnectionIAMBindingArgs $) {
+    private ConnectionIamBindingArgs(ConnectionIamBindingArgs $) {
         this.condition = $.condition;
         this.location = $.location;
         this.members = $.members;
@@ -127,27 +127,27 @@ public final class ConnectionIAMBindingArgs extends com.pulumi.resources.Resourc
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(ConnectionIAMBindingArgs defaults) {
+    public static Builder builder(ConnectionIamBindingArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private ConnectionIAMBindingArgs $;
+        private ConnectionIamBindingArgs $;
 
         public Builder() {
-            $ = new ConnectionIAMBindingArgs();
+            $ = new ConnectionIamBindingArgs();
         }
 
-        public Builder(ConnectionIAMBindingArgs defaults) {
-            $ = new ConnectionIAMBindingArgs(Objects.requireNonNull(defaults));
+        public Builder(ConnectionIamBindingArgs defaults) {
+            $ = new ConnectionIamBindingArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder condition(@Nullable Output<ConnectionIAMBindingConditionArgs> condition) {
+        public Builder condition(@Nullable Output<ConnectionIamBindingConditionArgs> condition) {
             $.condition = condition;
             return this;
         }
 
-        public Builder condition(ConnectionIAMBindingConditionArgs condition) {
+        public Builder condition(ConnectionIamBindingConditionArgs condition) {
             return condition(Output.of(condition));
         }
 
@@ -243,7 +243,7 @@ public final class ConnectionIAMBindingArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.cloudbuildv2.ConnectionIAMBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.cloudbuildv2.ConnectionIamBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder
@@ -256,7 +256,7 @@ public final class ConnectionIAMBindingArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.cloudbuildv2.ConnectionIAMBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.cloudbuildv2.ConnectionIamBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder
@@ -266,7 +266,7 @@ public final class ConnectionIAMBindingArgs extends com.pulumi.resources.Resourc
             return role(Output.of(role));
         }
 
-        public ConnectionIAMBindingArgs build() {
+        public ConnectionIamBindingArgs build() {
             $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
             $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
             return $;

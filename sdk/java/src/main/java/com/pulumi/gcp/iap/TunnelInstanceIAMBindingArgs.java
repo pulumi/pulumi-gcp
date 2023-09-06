@@ -5,7 +5,7 @@ package com.pulumi.gcp.iap;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.gcp.iap.inputs.TunnelInstanceIAMBindingConditionArgs;
+import com.pulumi.gcp.iap.inputs.TunnelInstanceIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -13,9 +13,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class TunnelInstanceIAMBindingArgs extends com.pulumi.resources.ResourceArgs {
+public final class TunnelInstanceIamBindingArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final TunnelInstanceIAMBindingArgs Empty = new TunnelInstanceIAMBindingArgs();
+    public static final TunnelInstanceIamBindingArgs Empty = new TunnelInstanceIamBindingArgs();
 
     /**
      * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
@@ -23,14 +23,14 @@ public final class TunnelInstanceIAMBindingArgs extends com.pulumi.resources.Res
      * 
      */
     @Import(name="condition")
-    private @Nullable Output<TunnelInstanceIAMBindingConditionArgs> condition;
+    private @Nullable Output<TunnelInstanceIamBindingConditionArgs> condition;
 
     /**
      * @return An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      * 
      */
-    public Optional<Output<TunnelInstanceIAMBindingConditionArgs>> condition() {
+    public Optional<Output<TunnelInstanceIamBindingConditionArgs>> condition() {
         return Optional.ofNullable(this.condition);
     }
 
@@ -99,7 +99,7 @@ public final class TunnelInstanceIAMBindingArgs extends com.pulumi.resources.Res
 
     /**
      * The role that should be applied. Only one
-     * `gcp.iap.TunnelInstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.iap.TunnelInstanceIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -108,7 +108,7 @@ public final class TunnelInstanceIAMBindingArgs extends com.pulumi.resources.Res
 
     /**
      * @return The role that should be applied. Only one
-     * `gcp.iap.TunnelInstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.iap.TunnelInstanceIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
@@ -123,9 +123,9 @@ public final class TunnelInstanceIAMBindingArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.zone);
     }
 
-    private TunnelInstanceIAMBindingArgs() {}
+    private TunnelInstanceIamBindingArgs() {}
 
-    private TunnelInstanceIAMBindingArgs(TunnelInstanceIAMBindingArgs $) {
+    private TunnelInstanceIamBindingArgs(TunnelInstanceIamBindingArgs $) {
         this.condition = $.condition;
         this.instance = $.instance;
         this.members = $.members;
@@ -137,19 +137,19 @@ public final class TunnelInstanceIAMBindingArgs extends com.pulumi.resources.Res
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(TunnelInstanceIAMBindingArgs defaults) {
+    public static Builder builder(TunnelInstanceIamBindingArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private TunnelInstanceIAMBindingArgs $;
+        private TunnelInstanceIamBindingArgs $;
 
         public Builder() {
-            $ = new TunnelInstanceIAMBindingArgs();
+            $ = new TunnelInstanceIamBindingArgs();
         }
 
-        public Builder(TunnelInstanceIAMBindingArgs defaults) {
-            $ = new TunnelInstanceIAMBindingArgs(Objects.requireNonNull(defaults));
+        public Builder(TunnelInstanceIamBindingArgs defaults) {
+            $ = new TunnelInstanceIamBindingArgs(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -159,7 +159,7 @@ public final class TunnelInstanceIAMBindingArgs extends com.pulumi.resources.Res
          * @return builder
          * 
          */
-        public Builder condition(@Nullable Output<TunnelInstanceIAMBindingConditionArgs> condition) {
+        public Builder condition(@Nullable Output<TunnelInstanceIamBindingConditionArgs> condition) {
             $.condition = condition;
             return this;
         }
@@ -171,7 +171,7 @@ public final class TunnelInstanceIAMBindingArgs extends com.pulumi.resources.Res
          * @return builder
          * 
          */
-        public Builder condition(TunnelInstanceIAMBindingConditionArgs condition) {
+        public Builder condition(TunnelInstanceIamBindingConditionArgs condition) {
             return condition(Output.of(condition));
         }
 
@@ -258,7 +258,7 @@ public final class TunnelInstanceIAMBindingArgs extends com.pulumi.resources.Res
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.iap.TunnelInstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.iap.TunnelInstanceIamBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder
@@ -271,7 +271,7 @@ public final class TunnelInstanceIAMBindingArgs extends com.pulumi.resources.Res
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.iap.TunnelInstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.iap.TunnelInstanceIamBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
          * @return builder
@@ -290,7 +290,7 @@ public final class TunnelInstanceIAMBindingArgs extends com.pulumi.resources.Res
             return zone(Output.of(zone));
         }
 
-        public TunnelInstanceIAMBindingArgs build() {
+        public TunnelInstanceIamBindingArgs build() {
             $.instance = Objects.requireNonNull($.instance, "expected parameter 'instance' to be non-null");
             $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
             $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");

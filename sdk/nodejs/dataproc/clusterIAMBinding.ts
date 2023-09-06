@@ -9,13 +9,13 @@ import * as utilities from "../utilities";
 /**
  * Three different resources help you manage IAM policies on dataproc clusters. Each of these resources serves a different use case:
  *
- * * `gcp.dataproc.ClusterIAMPolicy`: Authoritative. Sets the IAM policy for the cluster and replaces any existing policy already attached.
- * * `gcp.dataproc.ClusterIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the cluster are preserved.
- * * `gcp.dataproc.ClusterIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the cluster are preserved.
+ * * `gcp.dataproc.ClusterIamPolicy`: Authoritative. Sets the IAM policy for the cluster and replaces any existing policy already attached.
+ * * `gcp.dataproc.ClusterIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the cluster are preserved.
+ * * `gcp.dataproc.ClusterIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the cluster are preserved.
  *
- * > **Note:** `gcp.dataproc.ClusterIAMPolicy` **cannot** be used in conjunction with `gcp.dataproc.ClusterIAMBinding` and `gcp.dataproc.ClusterIAMMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the cluster as `gcp.dataproc.ClusterIAMPolicy` replaces the entire policy.
+ * > **Note:** `gcp.dataproc.ClusterIamPolicy` **cannot** be used in conjunction with `gcp.dataproc.ClusterIamBinding` and `gcp.dataproc.ClusterIamMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the cluster as `gcp.dataproc.ClusterIamPolicy` replaces the entire policy.
  *
- * > **Note:** `gcp.dataproc.ClusterIAMBinding` resources **can be** used in conjunction with `gcp.dataproc.ClusterIAMMember` resources **only if** they do not grant privilege to the same role.
+ * > **Note:** `gcp.dataproc.ClusterIamBinding` resources **can be** used in conjunction with `gcp.dataproc.ClusterIamMember` resources **only if** they do not grant privilege to the same role.
  *
  * ## google\_dataproc\_cluster\_iam\_policy
  *
@@ -23,13 +23,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const admin = gcp.organizations.getIAMPolicy({
+ * const admin = gcp.organizations.getIamPolicy({
  *     bindings: [{
  *         role: "roles/editor",
  *         members: ["user:jane@example.com"],
  *     }],
  * });
- * const editor = new gcp.dataproc.ClusterIAMPolicy("editor", {
+ * const editor = new gcp.dataproc.ClusterIamPolicy("editor", {
  *     project: "your-project",
  *     region: "your-region",
  *     cluster: "your-dataproc-cluster",
@@ -43,7 +43,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const editor = new gcp.dataproc.ClusterIAMBinding("editor", {
+ * const editor = new gcp.dataproc.ClusterIamBinding("editor", {
  *     cluster: "your-dataproc-cluster",
  *     members: ["user:jane@example.com"],
  *     role: "roles/editor",
@@ -56,7 +56,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const editor = new gcp.dataproc.ClusterIAMMember("editor", {
+ * const editor = new gcp.dataproc.ClusterIamMember("editor", {
  *     cluster: "your-dataproc-cluster",
  *     member: "user:jane@example.com",
  *     role: "roles/editor",
@@ -68,24 +68,24 @@ import * as utilities from "../utilities";
  * Cluster IAM resources can be imported using the project, region, cluster name, role and/or member.
  *
  * ```sh
- *  $ pulumi import gcp:dataproc/clusterIAMBinding:ClusterIAMBinding editor "projects/{project}/regions/{region}/clusters/{cluster}"
+ *  $ pulumi import gcp:dataproc/clusterIamBinding:ClusterIamBinding editor "projects/{project}/regions/{region}/clusters/{cluster}"
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:dataproc/clusterIAMBinding:ClusterIAMBinding editor "projects/{project}/regions/{region}/clusters/{cluster} roles/editor"
+ *  $ pulumi import gcp:dataproc/clusterIamBinding:ClusterIamBinding editor "projects/{project}/regions/{region}/clusters/{cluster} roles/editor"
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:dataproc/clusterIAMBinding:ClusterIAMBinding editor "projects/{project}/regions/{region}/clusters/{cluster} roles/editor user:jane@example.com"
+ *  $ pulumi import gcp:dataproc/clusterIamBinding:ClusterIamBinding editor "projects/{project}/regions/{region}/clusters/{cluster} roles/editor user:jane@example.com"
  * ```
  *
  *  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
  *
  * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  */
-export class ClusterIAMBinding extends pulumi.CustomResource {
+export class ClusterIamBinding extends pulumi.CustomResource {
     /**
-     * Get an existing ClusterIAMBinding resource's state with the given name, ID, and optional extra
+     * Get an existing ClusterIamBinding resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -93,28 +93,28 @@ export class ClusterIAMBinding extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ClusterIAMBindingState, opts?: pulumi.CustomResourceOptions): ClusterIAMBinding {
-        return new ClusterIAMBinding(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ClusterIamBindingState, opts?: pulumi.CustomResourceOptions): ClusterIamBinding {
+        return new ClusterIamBinding(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp:dataproc/clusterIAMBinding:ClusterIAMBinding';
+    public static readonly __pulumiType = 'gcp:dataproc/clusterIamBinding:ClusterIamBinding';
 
     /**
-     * Returns true if the given object is an instance of ClusterIAMBinding.  This is designed to work even
+     * Returns true if the given object is an instance of ClusterIamBinding.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is ClusterIAMBinding {
+    public static isInstance(obj: any): obj is ClusterIamBinding {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === ClusterIAMBinding.__pulumiType;
+        return obj['__pulumiType'] === ClusterIamBinding.__pulumiType;
     }
 
     /**
      * The name or relative resource id of the cluster to manage IAM policies for.
      *
-     * For `gcp.dataproc.ClusterIAMMember` or `gcp.dataproc.ClusterIAMBinding`:
+     * For `gcp.dataproc.ClusterIamMember` or `gcp.dataproc.ClusterIamBinding`:
      *
      * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -126,7 +126,7 @@ export class ClusterIAMBinding extends pulumi.CustomResource {
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
     public readonly cluster!: pulumi.Output<string>;
-    public readonly condition!: pulumi.Output<outputs.dataproc.ClusterIAMBindingCondition | undefined>;
+    public readonly condition!: pulumi.Output<outputs.dataproc.ClusterIamBindingCondition | undefined>;
     /**
      * (Computed) The etag of the clusters's IAM policy.
      */
@@ -144,26 +144,26 @@ export class ClusterIAMBinding extends pulumi.CustomResource {
     public readonly region!: pulumi.Output<string>;
     /**
      * The role that should be applied. Only one
-     * `gcp.dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.dataproc.ClusterIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      *
-     * `gcp.dataproc.ClusterIAMPolicy` only:
+     * `gcp.dataproc.ClusterIamPolicy` only:
      */
     public readonly role!: pulumi.Output<string>;
 
     /**
-     * Create a ClusterIAMBinding resource with the given unique name, arguments, and options.
+     * Create a ClusterIamBinding resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ClusterIAMBindingArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: ClusterIAMBindingArgs | ClusterIAMBindingState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: ClusterIamBindingArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: ClusterIamBindingArgs | ClusterIamBindingState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as ClusterIAMBindingState | undefined;
+            const state = argsOrState as ClusterIamBindingState | undefined;
             resourceInputs["cluster"] = state ? state.cluster : undefined;
             resourceInputs["condition"] = state ? state.condition : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
@@ -172,7 +172,7 @@ export class ClusterIAMBinding extends pulumi.CustomResource {
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["role"] = state ? state.role : undefined;
         } else {
-            const args = argsOrState as ClusterIAMBindingArgs | undefined;
+            const args = argsOrState as ClusterIamBindingArgs | undefined;
             if ((!args || args.cluster === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'cluster'");
             }
@@ -191,18 +191,18 @@ export class ClusterIAMBinding extends pulumi.CustomResource {
             resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ClusterIAMBinding.__pulumiType, name, resourceInputs, opts);
+        super(ClusterIamBinding.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering ClusterIAMBinding resources.
+ * Input properties used for looking up and filtering ClusterIamBinding resources.
  */
-export interface ClusterIAMBindingState {
+export interface ClusterIamBindingState {
     /**
      * The name or relative resource id of the cluster to manage IAM policies for.
      *
-     * For `gcp.dataproc.ClusterIAMMember` or `gcp.dataproc.ClusterIAMBinding`:
+     * For `gcp.dataproc.ClusterIamMember` or `gcp.dataproc.ClusterIamBinding`:
      *
      * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -214,7 +214,7 @@ export interface ClusterIAMBindingState {
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
     cluster?: pulumi.Input<string>;
-    condition?: pulumi.Input<inputs.dataproc.ClusterIAMBindingCondition>;
+    condition?: pulumi.Input<inputs.dataproc.ClusterIamBindingCondition>;
     /**
      * (Computed) The etag of the clusters's IAM policy.
      */
@@ -232,22 +232,22 @@ export interface ClusterIAMBindingState {
     region?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
-     * `gcp.dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.dataproc.ClusterIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      *
-     * `gcp.dataproc.ClusterIAMPolicy` only:
+     * `gcp.dataproc.ClusterIamPolicy` only:
      */
     role?: pulumi.Input<string>;
 }
 
 /**
- * The set of arguments for constructing a ClusterIAMBinding resource.
+ * The set of arguments for constructing a ClusterIamBinding resource.
  */
-export interface ClusterIAMBindingArgs {
+export interface ClusterIamBindingArgs {
     /**
      * The name or relative resource id of the cluster to manage IAM policies for.
      *
-     * For `gcp.dataproc.ClusterIAMMember` or `gcp.dataproc.ClusterIAMBinding`:
+     * For `gcp.dataproc.ClusterIamMember` or `gcp.dataproc.ClusterIamBinding`:
      *
      * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
      * Each entry can have one of the following values:
@@ -259,7 +259,7 @@ export interface ClusterIAMBindingArgs {
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      */
     cluster: pulumi.Input<string>;
-    condition?: pulumi.Input<inputs.dataproc.ClusterIAMBindingCondition>;
+    condition?: pulumi.Input<inputs.dataproc.ClusterIamBindingCondition>;
     members: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The project in which the cluster belongs. If it
@@ -273,10 +273,10 @@ export interface ClusterIAMBindingArgs {
     region?: pulumi.Input<string>;
     /**
      * The role that should be applied. Only one
-     * `gcp.dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.dataproc.ClusterIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      *
-     * `gcp.dataproc.ClusterIAMPolicy` only:
+     * `gcp.dataproc.ClusterIamPolicy` only:
      */
     role: pulumi.Input<string>;
 }

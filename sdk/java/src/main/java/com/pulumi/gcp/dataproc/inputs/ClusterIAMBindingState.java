@@ -5,7 +5,7 @@ package com.pulumi.gcp.dataproc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.gcp.dataproc.inputs.ClusterIAMBindingConditionArgs;
+import com.pulumi.gcp.dataproc.inputs.ClusterIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -13,14 +13,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class ClusterIAMBindingState extends com.pulumi.resources.ResourceArgs {
+public final class ClusterIamBindingState extends com.pulumi.resources.ResourceArgs {
 
-    public static final ClusterIAMBindingState Empty = new ClusterIAMBindingState();
+    public static final ClusterIamBindingState Empty = new ClusterIamBindingState();
 
     /**
      * The name or relative resource id of the cluster to manage IAM policies for.
      * 
-     * For `gcp.dataproc.ClusterIAMMember` or `gcp.dataproc.ClusterIAMBinding`:
+     * For `gcp.dataproc.ClusterIamMember` or `gcp.dataproc.ClusterIamBinding`:
      * 
      * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
      *   Each entry can have one of the following values:
@@ -38,7 +38,7 @@ public final class ClusterIAMBindingState extends com.pulumi.resources.ResourceA
     /**
      * @return The name or relative resource id of the cluster to manage IAM policies for.
      * 
-     * For `gcp.dataproc.ClusterIAMMember` or `gcp.dataproc.ClusterIAMBinding`:
+     * For `gcp.dataproc.ClusterIamMember` or `gcp.dataproc.ClusterIamBinding`:
      * 
      * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
      *   Each entry can have one of the following values:
@@ -55,9 +55,9 @@ public final class ClusterIAMBindingState extends com.pulumi.resources.ResourceA
     }
 
     @Import(name="condition")
-    private @Nullable Output<ClusterIAMBindingConditionArgs> condition;
+    private @Nullable Output<ClusterIamBindingConditionArgs> condition;
 
-    public Optional<Output<ClusterIAMBindingConditionArgs>> condition() {
+    public Optional<Output<ClusterIamBindingConditionArgs>> condition() {
         return Optional.ofNullable(this.condition);
     }
 
@@ -119,10 +119,10 @@ public final class ClusterIAMBindingState extends com.pulumi.resources.ResourceA
 
     /**
      * The role that should be applied. Only one
-     * `gcp.dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.dataproc.ClusterIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
-     * `gcp.dataproc.ClusterIAMPolicy` only:
+     * `gcp.dataproc.ClusterIamPolicy` only:
      * 
      */
     @Import(name="role")
@@ -130,19 +130,19 @@ public final class ClusterIAMBindingState extends com.pulumi.resources.ResourceA
 
     /**
      * @return The role that should be applied. Only one
-     * `gcp.dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
+     * `gcp.dataproc.ClusterIamBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
-     * `gcp.dataproc.ClusterIAMPolicy` only:
+     * `gcp.dataproc.ClusterIamPolicy` only:
      * 
      */
     public Optional<Output<String>> role() {
         return Optional.ofNullable(this.role);
     }
 
-    private ClusterIAMBindingState() {}
+    private ClusterIamBindingState() {}
 
-    private ClusterIAMBindingState(ClusterIAMBindingState $) {
+    private ClusterIamBindingState(ClusterIamBindingState $) {
         this.cluster = $.cluster;
         this.condition = $.condition;
         this.etag = $.etag;
@@ -155,25 +155,25 @@ public final class ClusterIAMBindingState extends com.pulumi.resources.ResourceA
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(ClusterIAMBindingState defaults) {
+    public static Builder builder(ClusterIamBindingState defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private ClusterIAMBindingState $;
+        private ClusterIamBindingState $;
 
         public Builder() {
-            $ = new ClusterIAMBindingState();
+            $ = new ClusterIamBindingState();
         }
 
-        public Builder(ClusterIAMBindingState defaults) {
-            $ = new ClusterIAMBindingState(Objects.requireNonNull(defaults));
+        public Builder(ClusterIamBindingState defaults) {
+            $ = new ClusterIamBindingState(Objects.requireNonNull(defaults));
         }
 
         /**
          * @param cluster The name or relative resource id of the cluster to manage IAM policies for.
          * 
-         * For `gcp.dataproc.ClusterIAMMember` or `gcp.dataproc.ClusterIAMBinding`:
+         * For `gcp.dataproc.ClusterIamMember` or `gcp.dataproc.ClusterIamBinding`:
          * 
          * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
          *   Each entry can have one of the following values:
@@ -195,7 +195,7 @@ public final class ClusterIAMBindingState extends com.pulumi.resources.ResourceA
         /**
          * @param cluster The name or relative resource id of the cluster to manage IAM policies for.
          * 
-         * For `gcp.dataproc.ClusterIAMMember` or `gcp.dataproc.ClusterIAMBinding`:
+         * For `gcp.dataproc.ClusterIamMember` or `gcp.dataproc.ClusterIamBinding`:
          * 
          * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
          *   Each entry can have one of the following values:
@@ -213,12 +213,12 @@ public final class ClusterIAMBindingState extends com.pulumi.resources.ResourceA
             return cluster(Output.of(cluster));
         }
 
-        public Builder condition(@Nullable Output<ClusterIAMBindingConditionArgs> condition) {
+        public Builder condition(@Nullable Output<ClusterIamBindingConditionArgs> condition) {
             $.condition = condition;
             return this;
         }
 
-        public Builder condition(ClusterIAMBindingConditionArgs condition) {
+        public Builder condition(ClusterIamBindingConditionArgs condition) {
             return condition(Output.of(condition));
         }
 
@@ -304,10 +304,10 @@ public final class ClusterIAMBindingState extends com.pulumi.resources.ResourceA
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.dataproc.ClusterIamBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
-         * `gcp.dataproc.ClusterIAMPolicy` only:
+         * `gcp.dataproc.ClusterIamPolicy` only:
          * 
          * @return builder
          * 
@@ -319,10 +319,10 @@ public final class ClusterIAMBindingState extends com.pulumi.resources.ResourceA
 
         /**
          * @param role The role that should be applied. Only one
-         * `gcp.dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
+         * `gcp.dataproc.ClusterIamBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
-         * `gcp.dataproc.ClusterIAMPolicy` only:
+         * `gcp.dataproc.ClusterIamPolicy` only:
          * 
          * @return builder
          * 
@@ -331,7 +331,7 @@ public final class ClusterIAMBindingState extends com.pulumi.resources.ResourceA
             return role(Output.of(role));
         }
 
-        public ClusterIAMBindingState build() {
+        public ClusterIamBindingState build() {
             return $;
         }
     }

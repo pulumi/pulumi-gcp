@@ -76,8 +76,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.kms.inputs.CryptoKeyVersionTemplateArgs;
  * import com.pulumi.gcp.accessapproval.AccessapprovalFunctions;
  * import com.pulumi.gcp.accessapproval.inputs.GetProjectServiceAccountArgs;
- * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
- * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
+ * import com.pulumi.gcp.kms.CryptoKeyIamMember;
+ * import com.pulumi.gcp.kms.CryptoKeyIamMemberArgs;
  * import com.pulumi.gcp.kms.KmsFunctions;
  * import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyVersionArgs;
  * import com.pulumi.gcp.projects.AccessApprovalSettings;
@@ -114,7 +114,7 @@ import javax.annotation.Nullable;
  *             .projectId(&#34;my-project-name&#34;)
  *             .build());
  * 
- *         var iam = new CryptoKeyIAMMember(&#34;iam&#34;, CryptoKeyIAMMemberArgs.builder()        
+ *         var iam = new CryptoKeyIamMember(&#34;iam&#34;, CryptoKeyIamMemberArgs.builder()        
  *             .cryptoKeyId(cryptoKey.id())
  *             .role(&#34;roles/cloudkms.signerVerifier&#34;)
  *             .member(String.format(&#34;serviceAccount:%s&#34;, serviceAccount.applyValue(getProjectServiceAccountResult -&gt; getProjectServiceAccountResult.accountEmail())))
