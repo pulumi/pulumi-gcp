@@ -14,16 +14,16 @@ import (
 
 // Three different resources help you manage your IAM policy for a Spanner database. Each of these resources serves a different use case:
 //
-// * `spanner.DatabaseIAMPolicy`: Authoritative. Sets the IAM policy for the database and replaces any existing policy already attached.
+// * `spanner.DatabaseIamPolicy`: Authoritative. Sets the IAM policy for the database and replaces any existing policy already attached.
 //
-// > **Warning:** It's entirely possibly to lock yourself out of your database using `spanner.DatabaseIAMPolicy`. Any permissions granted by default will be removed unless you include them in your config.
+// > **Warning:** It's entirely possibly to lock yourself out of your database using `spanner.DatabaseIamPolicy`. Any permissions granted by default will be removed unless you include them in your config.
 //
-// * `spanner.DatabaseIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the database are preserved.
-// * `spanner.DatabaseIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the database are preserved.
+// * `spanner.DatabaseIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the database are preserved.
+// * `spanner.DatabaseIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the database are preserved.
 //
-// > **Note:** `spanner.DatabaseIAMPolicy` **cannot** be used in conjunction with `spanner.DatabaseIAMBinding` and `spanner.DatabaseIAMMember` or they will fight over what your policy should be.
+// > **Note:** `spanner.DatabaseIamPolicy` **cannot** be used in conjunction with `spanner.DatabaseIamBinding` and `spanner.DatabaseIamMember` or they will fight over what your policy should be.
 //
-// > **Note:** `spanner.DatabaseIAMBinding` resources **can be** used in conjunction with `spanner.DatabaseIAMMember` resources **only if** they do not grant privilege to the same role.
+// > **Note:** `spanner.DatabaseIamBinding` resources **can be** used in conjunction with `spanner.DatabaseIamMember` resources **only if** they do not grant privilege to the same role.
 //
 // ## google\_spanner\_database\_iam\_policy
 //
@@ -40,8 +40,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
+//			admin, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
 //					{
 //						Role: "roles/editor",
 //						Members: []string{
@@ -53,7 +53,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = spanner.NewDatabaseIAMPolicy(ctx, "database", &spanner.DatabaseIAMPolicyArgs{
+//			_, err = spanner.NewDatabaseIamPolicy(ctx, "database", &spanner.DatabaseIamPolicyArgs{
 //				Instance:   pulumi.String("your-instance-name"),
 //				Database:   pulumi.String("your-database-name"),
 //				PolicyData: *pulumi.String(admin.PolicyData),
@@ -81,7 +81,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := spanner.NewDatabaseIAMBinding(ctx, "database", &spanner.DatabaseIAMBindingArgs{
+//			_, err := spanner.NewDatabaseIamBinding(ctx, "database", &spanner.DatabaseIamBindingArgs{
 //				Database: pulumi.String("your-database-name"),
 //				Instance: pulumi.String("your-instance-name"),
 //				Members: pulumi.StringArray{
@@ -112,7 +112,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := spanner.NewDatabaseIAMMember(ctx, "database", &spanner.DatabaseIAMMemberArgs{
+//			_, err := spanner.NewDatabaseIamMember(ctx, "database", &spanner.DatabaseIamMemberArgs{
 //				Database: pulumi.String("your-database-name"),
 //				Instance: pulumi.String("your-instance-name"),
 //				Member:   pulumi.String("user:jane@example.com"),
@@ -133,7 +133,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy database "project-name/instance-name/database-name roles/viewer user:foo@example.com"
+//	$ pulumi import gcp:spanner/databaseIamPolicy:DatabaseIamPolicy database "project-name/instance-name/database-name roles/viewer user:foo@example.com"
 //
 // ```
 //
@@ -141,7 +141,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy database "project-name/instance-name/database-name roles/viewer"
+//	$ pulumi import gcp:spanner/databaseIamPolicy:DatabaseIamPolicy database "project-name/instance-name/database-name roles/viewer"
 //
 // ```
 //
@@ -149,14 +149,14 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy database project-name/instance-name/database-name
+//	$ pulumi import gcp:spanner/databaseIamPolicy:DatabaseIamPolicy database project-name/instance-name/database-name
 //
 // ```
 //
 //	-> **Custom Roles:** If you're importing a IAM resource with a custom role, make sure to use the
 //
 // full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
-type DatabaseIAMPolicy struct {
+type DatabaseIamPolicy struct {
 	pulumi.CustomResourceState
 
 	// The name of the Spanner database.
@@ -175,16 +175,16 @@ type DatabaseIAMPolicy struct {
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Instance pulumi.StringOutput `pulumi:"instance"`
 	// The policy data generated by
-	// a `organizations.getIAMPolicy` data source.
+	// a `organizations.getIamPolicy` data source.
 	PolicyData pulumi.StringOutput `pulumi:"policyData"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 }
 
-// NewDatabaseIAMPolicy registers a new resource with the given unique name, arguments, and options.
-func NewDatabaseIAMPolicy(ctx *pulumi.Context,
-	name string, args *DatabaseIAMPolicyArgs, opts ...pulumi.ResourceOption) (*DatabaseIAMPolicy, error) {
+// NewDatabaseIamPolicy registers a new resource with the given unique name, arguments, and options.
+func NewDatabaseIamPolicy(ctx *pulumi.Context,
+	name string, args *DatabaseIamPolicyArgs, opts ...pulumi.ResourceOption) (*DatabaseIamPolicy, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -199,28 +199,28 @@ func NewDatabaseIAMPolicy(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'PolicyData'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
-	var resource DatabaseIAMPolicy
-	err := ctx.RegisterResource("gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy", name, args, &resource, opts...)
+	var resource DatabaseIamPolicy
+	err := ctx.RegisterResource("gcp:spanner/databaseIamPolicy:DatabaseIamPolicy", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// GetDatabaseIAMPolicy gets an existing DatabaseIAMPolicy resource's state with the given name, ID, and optional
+// GetDatabaseIamPolicy gets an existing DatabaseIamPolicy resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetDatabaseIAMPolicy(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *DatabaseIAMPolicyState, opts ...pulumi.ResourceOption) (*DatabaseIAMPolicy, error) {
-	var resource DatabaseIAMPolicy
-	err := ctx.ReadResource("gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy", name, id, state, &resource, opts...)
+func GetDatabaseIamPolicy(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *DatabaseIamPolicyState, opts ...pulumi.ResourceOption) (*DatabaseIamPolicy, error) {
+	var resource DatabaseIamPolicy
+	err := ctx.ReadResource("gcp:spanner/databaseIamPolicy:DatabaseIamPolicy", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering DatabaseIAMPolicy resources.
-type databaseIAMPolicyState struct {
+// Input properties used for looking up and filtering DatabaseIamPolicy resources.
+type databaseIamPolicyState struct {
 	// The name of the Spanner database.
 	Database *string `pulumi:"database"`
 	// (Computed) The etag of the database's IAM policy.
@@ -237,14 +237,14 @@ type databaseIAMPolicyState struct {
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Instance *string `pulumi:"instance"`
 	// The policy data generated by
-	// a `organizations.getIAMPolicy` data source.
+	// a `organizations.getIamPolicy` data source.
 	PolicyData *string `pulumi:"policyData"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 }
 
-type DatabaseIAMPolicyState struct {
+type DatabaseIamPolicyState struct {
 	// The name of the Spanner database.
 	Database pulumi.StringPtrInput
 	// (Computed) The etag of the database's IAM policy.
@@ -261,18 +261,18 @@ type DatabaseIAMPolicyState struct {
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Instance pulumi.StringPtrInput
 	// The policy data generated by
-	// a `organizations.getIAMPolicy` data source.
+	// a `organizations.getIamPolicy` data source.
 	PolicyData pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 }
 
-func (DatabaseIAMPolicyState) ElementType() reflect.Type {
-	return reflect.TypeOf((*databaseIAMPolicyState)(nil)).Elem()
+func (DatabaseIamPolicyState) ElementType() reflect.Type {
+	return reflect.TypeOf((*databaseIamPolicyState)(nil)).Elem()
 }
 
-type databaseIAMPolicyArgs struct {
+type databaseIamPolicyArgs struct {
 	// The name of the Spanner database.
 	Database string `pulumi:"database"`
 	// The name of the Spanner instance the database belongs to.
@@ -287,15 +287,15 @@ type databaseIAMPolicyArgs struct {
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Instance string `pulumi:"instance"`
 	// The policy data generated by
-	// a `organizations.getIAMPolicy` data source.
+	// a `organizations.getIamPolicy` data source.
 	PolicyData string `pulumi:"policyData"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 }
 
-// The set of arguments for constructing a DatabaseIAMPolicy resource.
-type DatabaseIAMPolicyArgs struct {
+// The set of arguments for constructing a DatabaseIamPolicy resource.
+type DatabaseIamPolicyArgs struct {
 	// The name of the Spanner database.
 	Database pulumi.StringInput
 	// The name of the Spanner instance the database belongs to.
@@ -310,108 +310,108 @@ type DatabaseIAMPolicyArgs struct {
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Instance pulumi.StringInput
 	// The policy data generated by
-	// a `organizations.getIAMPolicy` data source.
+	// a `organizations.getIamPolicy` data source.
 	PolicyData pulumi.StringInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 }
 
-func (DatabaseIAMPolicyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*databaseIAMPolicyArgs)(nil)).Elem()
+func (DatabaseIamPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*databaseIamPolicyArgs)(nil)).Elem()
 }
 
-type DatabaseIAMPolicyInput interface {
+type DatabaseIamPolicyInput interface {
 	pulumi.Input
 
-	ToDatabaseIAMPolicyOutput() DatabaseIAMPolicyOutput
-	ToDatabaseIAMPolicyOutputWithContext(ctx context.Context) DatabaseIAMPolicyOutput
+	ToDatabaseIamPolicyOutput() DatabaseIamPolicyOutput
+	ToDatabaseIamPolicyOutputWithContext(ctx context.Context) DatabaseIamPolicyOutput
 }
 
-func (*DatabaseIAMPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatabaseIAMPolicy)(nil)).Elem()
+func (*DatabaseIamPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseIamPolicy)(nil)).Elem()
 }
 
-func (i *DatabaseIAMPolicy) ToDatabaseIAMPolicyOutput() DatabaseIAMPolicyOutput {
-	return i.ToDatabaseIAMPolicyOutputWithContext(context.Background())
+func (i *DatabaseIamPolicy) ToDatabaseIamPolicyOutput() DatabaseIamPolicyOutput {
+	return i.ToDatabaseIamPolicyOutputWithContext(context.Background())
 }
 
-func (i *DatabaseIAMPolicy) ToDatabaseIAMPolicyOutputWithContext(ctx context.Context) DatabaseIAMPolicyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMPolicyOutput)
+func (i *DatabaseIamPolicy) ToDatabaseIamPolicyOutputWithContext(ctx context.Context) DatabaseIamPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIamPolicyOutput)
 }
 
-// DatabaseIAMPolicyArrayInput is an input type that accepts DatabaseIAMPolicyArray and DatabaseIAMPolicyArrayOutput values.
-// You can construct a concrete instance of `DatabaseIAMPolicyArrayInput` via:
+// DatabaseIamPolicyArrayInput is an input type that accepts DatabaseIamPolicyArray and DatabaseIamPolicyArrayOutput values.
+// You can construct a concrete instance of `DatabaseIamPolicyArrayInput` via:
 //
-//	DatabaseIAMPolicyArray{ DatabaseIAMPolicyArgs{...} }
-type DatabaseIAMPolicyArrayInput interface {
+//	DatabaseIamPolicyArray{ DatabaseIamPolicyArgs{...} }
+type DatabaseIamPolicyArrayInput interface {
 	pulumi.Input
 
-	ToDatabaseIAMPolicyArrayOutput() DatabaseIAMPolicyArrayOutput
-	ToDatabaseIAMPolicyArrayOutputWithContext(context.Context) DatabaseIAMPolicyArrayOutput
+	ToDatabaseIamPolicyArrayOutput() DatabaseIamPolicyArrayOutput
+	ToDatabaseIamPolicyArrayOutputWithContext(context.Context) DatabaseIamPolicyArrayOutput
 }
 
-type DatabaseIAMPolicyArray []DatabaseIAMPolicyInput
+type DatabaseIamPolicyArray []DatabaseIamPolicyInput
 
-func (DatabaseIAMPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*DatabaseIAMPolicy)(nil)).Elem()
+func (DatabaseIamPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*DatabaseIamPolicy)(nil)).Elem()
 }
 
-func (i DatabaseIAMPolicyArray) ToDatabaseIAMPolicyArrayOutput() DatabaseIAMPolicyArrayOutput {
-	return i.ToDatabaseIAMPolicyArrayOutputWithContext(context.Background())
+func (i DatabaseIamPolicyArray) ToDatabaseIamPolicyArrayOutput() DatabaseIamPolicyArrayOutput {
+	return i.ToDatabaseIamPolicyArrayOutputWithContext(context.Background())
 }
 
-func (i DatabaseIAMPolicyArray) ToDatabaseIAMPolicyArrayOutputWithContext(ctx context.Context) DatabaseIAMPolicyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMPolicyArrayOutput)
+func (i DatabaseIamPolicyArray) ToDatabaseIamPolicyArrayOutputWithContext(ctx context.Context) DatabaseIamPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIamPolicyArrayOutput)
 }
 
-// DatabaseIAMPolicyMapInput is an input type that accepts DatabaseIAMPolicyMap and DatabaseIAMPolicyMapOutput values.
-// You can construct a concrete instance of `DatabaseIAMPolicyMapInput` via:
+// DatabaseIamPolicyMapInput is an input type that accepts DatabaseIamPolicyMap and DatabaseIamPolicyMapOutput values.
+// You can construct a concrete instance of `DatabaseIamPolicyMapInput` via:
 //
-//	DatabaseIAMPolicyMap{ "key": DatabaseIAMPolicyArgs{...} }
-type DatabaseIAMPolicyMapInput interface {
+//	DatabaseIamPolicyMap{ "key": DatabaseIamPolicyArgs{...} }
+type DatabaseIamPolicyMapInput interface {
 	pulumi.Input
 
-	ToDatabaseIAMPolicyMapOutput() DatabaseIAMPolicyMapOutput
-	ToDatabaseIAMPolicyMapOutputWithContext(context.Context) DatabaseIAMPolicyMapOutput
+	ToDatabaseIamPolicyMapOutput() DatabaseIamPolicyMapOutput
+	ToDatabaseIamPolicyMapOutputWithContext(context.Context) DatabaseIamPolicyMapOutput
 }
 
-type DatabaseIAMPolicyMap map[string]DatabaseIAMPolicyInput
+type DatabaseIamPolicyMap map[string]DatabaseIamPolicyInput
 
-func (DatabaseIAMPolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*DatabaseIAMPolicy)(nil)).Elem()
+func (DatabaseIamPolicyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*DatabaseIamPolicy)(nil)).Elem()
 }
 
-func (i DatabaseIAMPolicyMap) ToDatabaseIAMPolicyMapOutput() DatabaseIAMPolicyMapOutput {
-	return i.ToDatabaseIAMPolicyMapOutputWithContext(context.Background())
+func (i DatabaseIamPolicyMap) ToDatabaseIamPolicyMapOutput() DatabaseIamPolicyMapOutput {
+	return i.ToDatabaseIamPolicyMapOutputWithContext(context.Background())
 }
 
-func (i DatabaseIAMPolicyMap) ToDatabaseIAMPolicyMapOutputWithContext(ctx context.Context) DatabaseIAMPolicyMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMPolicyMapOutput)
+func (i DatabaseIamPolicyMap) ToDatabaseIamPolicyMapOutputWithContext(ctx context.Context) DatabaseIamPolicyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIamPolicyMapOutput)
 }
 
-type DatabaseIAMPolicyOutput struct{ *pulumi.OutputState }
+type DatabaseIamPolicyOutput struct{ *pulumi.OutputState }
 
-func (DatabaseIAMPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatabaseIAMPolicy)(nil)).Elem()
+func (DatabaseIamPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseIamPolicy)(nil)).Elem()
 }
 
-func (o DatabaseIAMPolicyOutput) ToDatabaseIAMPolicyOutput() DatabaseIAMPolicyOutput {
+func (o DatabaseIamPolicyOutput) ToDatabaseIamPolicyOutput() DatabaseIamPolicyOutput {
 	return o
 }
 
-func (o DatabaseIAMPolicyOutput) ToDatabaseIAMPolicyOutputWithContext(ctx context.Context) DatabaseIAMPolicyOutput {
+func (o DatabaseIamPolicyOutput) ToDatabaseIamPolicyOutputWithContext(ctx context.Context) DatabaseIamPolicyOutput {
 	return o
 }
 
 // The name of the Spanner database.
-func (o DatabaseIAMPolicyOutput) Database() pulumi.StringOutput {
-	return o.ApplyT(func(v *DatabaseIAMPolicy) pulumi.StringOutput { return v.Database }).(pulumi.StringOutput)
+func (o DatabaseIamPolicyOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseIamPolicy) pulumi.StringOutput { return v.Database }).(pulumi.StringOutput)
 }
 
 // (Computed) The etag of the database's IAM policy.
-func (o DatabaseIAMPolicyOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v *DatabaseIAMPolicy) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+func (o DatabaseIamPolicyOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseIamPolicy) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The name of the Spanner instance the database belongs to.
@@ -424,67 +424,67 @@ func (o DatabaseIAMPolicyOutput) Etag() pulumi.StringOutput {
 //   - **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
 //   - **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
 //   - **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-func (o DatabaseIAMPolicyOutput) Instance() pulumi.StringOutput {
-	return o.ApplyT(func(v *DatabaseIAMPolicy) pulumi.StringOutput { return v.Instance }).(pulumi.StringOutput)
+func (o DatabaseIamPolicyOutput) Instance() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseIamPolicy) pulumi.StringOutput { return v.Instance }).(pulumi.StringOutput)
 }
 
 // The policy data generated by
-// a `organizations.getIAMPolicy` data source.
-func (o DatabaseIAMPolicyOutput) PolicyData() pulumi.StringOutput {
-	return o.ApplyT(func(v *DatabaseIAMPolicy) pulumi.StringOutput { return v.PolicyData }).(pulumi.StringOutput)
+// a `organizations.getIamPolicy` data source.
+func (o DatabaseIamPolicyOutput) PolicyData() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseIamPolicy) pulumi.StringOutput { return v.PolicyData }).(pulumi.StringOutput)
 }
 
 // The ID of the project in which the resource belongs. If it
 // is not provided, the provider project is used.
-func (o DatabaseIAMPolicyOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func(v *DatabaseIAMPolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+func (o DatabaseIamPolicyOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseIamPolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-type DatabaseIAMPolicyArrayOutput struct{ *pulumi.OutputState }
+type DatabaseIamPolicyArrayOutput struct{ *pulumi.OutputState }
 
-func (DatabaseIAMPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*DatabaseIAMPolicy)(nil)).Elem()
+func (DatabaseIamPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*DatabaseIamPolicy)(nil)).Elem()
 }
 
-func (o DatabaseIAMPolicyArrayOutput) ToDatabaseIAMPolicyArrayOutput() DatabaseIAMPolicyArrayOutput {
+func (o DatabaseIamPolicyArrayOutput) ToDatabaseIamPolicyArrayOutput() DatabaseIamPolicyArrayOutput {
 	return o
 }
 
-func (o DatabaseIAMPolicyArrayOutput) ToDatabaseIAMPolicyArrayOutputWithContext(ctx context.Context) DatabaseIAMPolicyArrayOutput {
+func (o DatabaseIamPolicyArrayOutput) ToDatabaseIamPolicyArrayOutputWithContext(ctx context.Context) DatabaseIamPolicyArrayOutput {
 	return o
 }
 
-func (o DatabaseIAMPolicyArrayOutput) Index(i pulumi.IntInput) DatabaseIAMPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DatabaseIAMPolicy {
-		return vs[0].([]*DatabaseIAMPolicy)[vs[1].(int)]
-	}).(DatabaseIAMPolicyOutput)
+func (o DatabaseIamPolicyArrayOutput) Index(i pulumi.IntInput) DatabaseIamPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DatabaseIamPolicy {
+		return vs[0].([]*DatabaseIamPolicy)[vs[1].(int)]
+	}).(DatabaseIamPolicyOutput)
 }
 
-type DatabaseIAMPolicyMapOutput struct{ *pulumi.OutputState }
+type DatabaseIamPolicyMapOutput struct{ *pulumi.OutputState }
 
-func (DatabaseIAMPolicyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*DatabaseIAMPolicy)(nil)).Elem()
+func (DatabaseIamPolicyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*DatabaseIamPolicy)(nil)).Elem()
 }
 
-func (o DatabaseIAMPolicyMapOutput) ToDatabaseIAMPolicyMapOutput() DatabaseIAMPolicyMapOutput {
+func (o DatabaseIamPolicyMapOutput) ToDatabaseIamPolicyMapOutput() DatabaseIamPolicyMapOutput {
 	return o
 }
 
-func (o DatabaseIAMPolicyMapOutput) ToDatabaseIAMPolicyMapOutputWithContext(ctx context.Context) DatabaseIAMPolicyMapOutput {
+func (o DatabaseIamPolicyMapOutput) ToDatabaseIamPolicyMapOutputWithContext(ctx context.Context) DatabaseIamPolicyMapOutput {
 	return o
 }
 
-func (o DatabaseIAMPolicyMapOutput) MapIndex(k pulumi.StringInput) DatabaseIAMPolicyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DatabaseIAMPolicy {
-		return vs[0].(map[string]*DatabaseIAMPolicy)[vs[1].(string)]
-	}).(DatabaseIAMPolicyOutput)
+func (o DatabaseIamPolicyMapOutput) MapIndex(k pulumi.StringInput) DatabaseIamPolicyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DatabaseIamPolicy {
+		return vs[0].(map[string]*DatabaseIamPolicy)[vs[1].(string)]
+	}).(DatabaseIamPolicyOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseIAMPolicyInput)(nil)).Elem(), &DatabaseIAMPolicy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseIAMPolicyArrayInput)(nil)).Elem(), DatabaseIAMPolicyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseIAMPolicyMapInput)(nil)).Elem(), DatabaseIAMPolicyMap{})
-	pulumi.RegisterOutputType(DatabaseIAMPolicyOutput{})
-	pulumi.RegisterOutputType(DatabaseIAMPolicyArrayOutput{})
-	pulumi.RegisterOutputType(DatabaseIAMPolicyMapOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseIamPolicyInput)(nil)).Elem(), &DatabaseIamPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseIamPolicyArrayInput)(nil)).Elem(), DatabaseIamPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseIamPolicyMapInput)(nil)).Elem(), DatabaseIamPolicyMap{})
+	pulumi.RegisterOutputType(DatabaseIamPolicyOutput{})
+	pulumi.RegisterOutputType(DatabaseIamPolicyArrayOutput{})
+	pulumi.RegisterOutputType(DatabaseIamPolicyMapOutput{})
 }

@@ -23,12 +23,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:cloudbuildv2/connection:Connection":
 		r = &Connection{}
-	case "gcp:cloudbuildv2/connectionIAMBinding:ConnectionIAMBinding":
-		r = &ConnectionIAMBinding{}
-	case "gcp:cloudbuildv2/connectionIAMMember:ConnectionIAMMember":
-		r = &ConnectionIAMMember{}
-	case "gcp:cloudbuildv2/connectionIAMPolicy:ConnectionIAMPolicy":
-		r = &ConnectionIAMPolicy{}
+	case "gcp:cloudbuildv2/connectionIamBinding:ConnectionIamBinding":
+		r = &ConnectionIamBinding{}
+	case "gcp:cloudbuildv2/connectionIamMember:ConnectionIamMember":
+		r = &ConnectionIamMember{}
+	case "gcp:cloudbuildv2/connectionIamPolicy:ConnectionIamPolicy":
+		r = &ConnectionIamPolicy{}
 	case "gcp:cloudbuildv2/repository:Repository":
 		r = &Repository{}
 	default:
@@ -51,17 +51,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"cloudbuildv2/connectionIAMBinding",
+		"cloudbuildv2/connectionIamBinding",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"cloudbuildv2/connectionIAMMember",
+		"cloudbuildv2/connectionIamMember",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"cloudbuildv2/connectionIAMPolicy",
+		"cloudbuildv2/connectionIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := spanner.GetInstanceIamPolicy(ctx, &spanner.GetInstanceIamPolicyArgs{
+//			_, err := spanner.LookupInstanceIamPolicy(ctx, &spanner.LookupInstanceIamPolicyArgs{
 //				Project:  pulumi.StringRef(google_spanner_instance.Instance.Project),
 //				Instance: google_spanner_instance.Instance.Name,
 //			}, nil)
@@ -39,9 +39,9 @@ import (
 //	}
 //
 // ```
-func GetInstanceIamPolicy(ctx *pulumi.Context, args *GetInstanceIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetInstanceIamPolicyResult, error) {
+func LookupInstanceIamPolicy(ctx *pulumi.Context, args *LookupInstanceIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupInstanceIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
-	var rv GetInstanceIamPolicyResult
+	var rv LookupInstanceIamPolicyResult
 	err := ctx.Invoke("gcp:spanner/getInstanceIamPolicy:getInstanceIamPolicy", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -50,7 +50,7 @@ func GetInstanceIamPolicy(ctx *pulumi.Context, args *GetInstanceIamPolicyArgs, o
 }
 
 // A collection of arguments for invoking getInstanceIamPolicy.
-type GetInstanceIamPolicyArgs struct {
+type LookupInstanceIamPolicyArgs struct {
 	// The name of the instance.
 	Instance string `pulumi:"instance"`
 	// The ID of the project in which the resource belongs. If it
@@ -59,7 +59,7 @@ type GetInstanceIamPolicyArgs struct {
 }
 
 // A collection of values returned by getInstanceIamPolicy.
-type GetInstanceIamPolicyResult struct {
+type LookupInstanceIamPolicyResult struct {
 	// (Computed) The etag of the IAM policy.
 	Etag string `pulumi:"etag"`
 	// The provider-assigned unique ID for this managed resource.
@@ -70,21 +70,21 @@ type GetInstanceIamPolicyResult struct {
 	Project    string `pulumi:"project"`
 }
 
-func GetInstanceIamPolicyOutput(ctx *pulumi.Context, args GetInstanceIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetInstanceIamPolicyResultOutput {
+func LookupInstanceIamPolicyOutput(ctx *pulumi.Context, args LookupInstanceIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupInstanceIamPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetInstanceIamPolicyResult, error) {
-			args := v.(GetInstanceIamPolicyArgs)
-			r, err := GetInstanceIamPolicy(ctx, &args, opts...)
-			var s GetInstanceIamPolicyResult
+		ApplyT(func(v interface{}) (LookupInstanceIamPolicyResult, error) {
+			args := v.(LookupInstanceIamPolicyArgs)
+			r, err := LookupInstanceIamPolicy(ctx, &args, opts...)
+			var s LookupInstanceIamPolicyResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(GetInstanceIamPolicyResultOutput)
+		}).(LookupInstanceIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getInstanceIamPolicy.
-type GetInstanceIamPolicyOutputArgs struct {
+type LookupInstanceIamPolicyOutputArgs struct {
 	// The name of the instance.
 	Instance pulumi.StringInput `pulumi:"instance"`
 	// The ID of the project in which the resource belongs. If it
@@ -92,48 +92,48 @@ type GetInstanceIamPolicyOutputArgs struct {
 	Project pulumi.StringPtrInput `pulumi:"project"`
 }
 
-func (GetInstanceIamPolicyOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstanceIamPolicyArgs)(nil)).Elem()
+func (LookupInstanceIamPolicyOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupInstanceIamPolicyArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getInstanceIamPolicy.
-type GetInstanceIamPolicyResultOutput struct{ *pulumi.OutputState }
+type LookupInstanceIamPolicyResultOutput struct{ *pulumi.OutputState }
 
-func (GetInstanceIamPolicyResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetInstanceIamPolicyResult)(nil)).Elem()
+func (LookupInstanceIamPolicyResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupInstanceIamPolicyResult)(nil)).Elem()
 }
 
-func (o GetInstanceIamPolicyResultOutput) ToGetInstanceIamPolicyResultOutput() GetInstanceIamPolicyResultOutput {
+func (o LookupInstanceIamPolicyResultOutput) ToLookupInstanceIamPolicyResultOutput() LookupInstanceIamPolicyResultOutput {
 	return o
 }
 
-func (o GetInstanceIamPolicyResultOutput) ToGetInstanceIamPolicyResultOutputWithContext(ctx context.Context) GetInstanceIamPolicyResultOutput {
+func (o LookupInstanceIamPolicyResultOutput) ToLookupInstanceIamPolicyResultOutputWithContext(ctx context.Context) LookupInstanceIamPolicyResultOutput {
 	return o
 }
 
 // (Computed) The etag of the IAM policy.
-func (o GetInstanceIamPolicyResultOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstanceIamPolicyResult) string { return v.Etag }).(pulumi.StringOutput)
+func (o LookupInstanceIamPolicyResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceIamPolicyResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
-func (o GetInstanceIamPolicyResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstanceIamPolicyResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupInstanceIamPolicyResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceIamPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o GetInstanceIamPolicyResultOutput) Instance() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstanceIamPolicyResult) string { return v.Instance }).(pulumi.StringOutput)
+func (o LookupInstanceIamPolicyResultOutput) Instance() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceIamPolicyResult) string { return v.Instance }).(pulumi.StringOutput)
 }
 
 // (Computed) The policy data
-func (o GetInstanceIamPolicyResultOutput) PolicyData() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstanceIamPolicyResult) string { return v.PolicyData }).(pulumi.StringOutput)
+func (o LookupInstanceIamPolicyResultOutput) PolicyData() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceIamPolicyResult) string { return v.PolicyData }).(pulumi.StringOutput)
 }
 
-func (o GetInstanceIamPolicyResultOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstanceIamPolicyResult) string { return v.Project }).(pulumi.StringOutput)
+func (o LookupInstanceIamPolicyResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceIamPolicyResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(GetInstanceIamPolicyResultOutput{})
+	pulumi.RegisterOutputType(LookupInstanceIamPolicyResultOutput{})
 }

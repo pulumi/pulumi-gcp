@@ -54,7 +54,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = storage.NewBucketIAMMember(ctx, "s3-backup-bucketBucketIAMMember", &storage.BucketIAMMemberArgs{
+//			_, err = storage.NewBucketIamMember(ctx, "s3-backup-bucketBucketIamMember", &storage.BucketIamMemberArgs{
 //				Bucket: s3_backup_bucketBucket.Name,
 //				Role:   pulumi.String("roles/storage.admin"),
 //				Member: pulumi.String(fmt.Sprintf("serviceAccount:%v", _default.Email)),
@@ -68,7 +68,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			notificationConfig, err := pubsub.NewTopicIAMMember(ctx, "notificationConfig", &pubsub.TopicIAMMemberArgs{
+//			notificationConfig, err := pubsub.NewTopicIamMember(ctx, "notificationConfig", &pubsub.TopicIamMemberArgs{
 //				Topic:  topic.ID(),
 //				Role:   pulumi.String("roles/pubsub.publisher"),
 //				Member: pulumi.String(fmt.Sprintf("serviceAccount:%v", _default.Email)),
@@ -129,7 +129,7 @@ import (
 //					PayloadFormat: pulumi.String("JSON"),
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
-//				s3_backup_bucketBucketIAMMember,
+//				s3_backup_bucketBucketIamMember,
 //				notificationConfig,
 //			}))
 //			if err != nil {

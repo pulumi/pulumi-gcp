@@ -72,8 +72,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			p4sa_secretAccessor, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
+//			p4sa_secretAccessor, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
 //					{
 //						Role: "roles/secretmanager.secretAccessor",
 //						Members: []string{
@@ -171,8 +171,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			p4sa_secretAccessor, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
+//			p4sa_secretAccessor, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
 //					{
 //						Role: "roles/secretmanager.secretAccessor",
 //						Members: []string{

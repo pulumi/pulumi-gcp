@@ -16,13 +16,13 @@ import (
 //
 // Three different resources help you manage your IAM policy for a service account. Each of these resources serves a different use case:
 //
-// * `serviceAccount.IAMPolicy`: Authoritative. Sets the IAM policy for the service account and replaces any existing policy already attached.
-// * `serviceAccount.IAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the service account are preserved.
-// * `serviceAccount.IAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the service account are preserved.
+// * `serviceAccount.IamPolicy`: Authoritative. Sets the IAM policy for the service account and replaces any existing policy already attached.
+// * `serviceAccount.IamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the service account are preserved.
+// * `serviceAccount.IamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the service account are preserved.
 //
-// > **Note:** `serviceAccount.IAMPolicy` **cannot** be used in conjunction with `serviceAccount.IAMBinding` and `serviceAccount.IAMMember` or they will fight over what your policy should be.
+// > **Note:** `serviceAccount.IamPolicy` **cannot** be used in conjunction with `serviceAccount.IamBinding` and `serviceAccount.IamMember` or they will fight over what your policy should be.
 //
-// > **Note:** `serviceAccount.IAMBinding` resources **can be** used in conjunction with `serviceAccount.IAMMember` resources **only if** they do not grant privilege to the same role.
+// > **Note:** `serviceAccount.IamBinding` resources **can be** used in conjunction with `serviceAccount.IamMember` resources **only if** they do not grant privilege to the same role.
 //
 // ## Example Usage
 // ### Service Account IAM Policy
@@ -40,8 +40,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
+//			admin, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
 //					{
 //						Role: "roles/iam.serviceAccountUser",
 //						Members: []string{
@@ -60,7 +60,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = serviceAccount.NewIAMPolicy(ctx, "admin-account-iam", &serviceAccount.IAMPolicyArgs{
+//			_, err = serviceAccount.NewIamPolicy(ctx, "admin-account-iam", &serviceAccount.IamPolicyArgs{
 //				ServiceAccountId: sa.Name,
 //				PolicyData:       *pulumi.String(admin.PolicyData),
 //			})
@@ -93,7 +93,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = serviceAccount.NewIAMBinding(ctx, "admin-account-iam", &serviceAccount.IAMBindingArgs{
+//			_, err = serviceAccount.NewIamBinding(ctx, "admin-account-iam", &serviceAccount.IamBindingArgs{
 //				ServiceAccountId: sa.Name,
 //				Role:             pulumi.String("roles/iam.serviceAccountUser"),
 //				Members: pulumi.StringArray{
@@ -129,13 +129,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = serviceAccount.NewIAMBinding(ctx, "admin-account-iam", &serviceAccount.IAMBindingArgs{
+//			_, err = serviceAccount.NewIamBinding(ctx, "admin-account-iam", &serviceAccount.IamBindingArgs{
 //				ServiceAccountId: sa.Name,
 //				Role:             pulumi.String("roles/iam.serviceAccountUser"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
 //				},
-//				Condition: &serviceaccount.IAMBindingConditionArgs{
+//				Condition: &serviceaccount.IamBindingConditionArgs{
 //					Title:       pulumi.String("expires_after_2019_12_31"),
 //					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
 //					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
@@ -177,7 +177,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = serviceAccount.NewIAMMember(ctx, "admin-account-iam", &serviceAccount.IAMMemberArgs{
+//			_, err = serviceAccount.NewIamMember(ctx, "admin-account-iam", &serviceAccount.IamMemberArgs{
 //				ServiceAccountId: sa.Name,
 //				Role:             pulumi.String("roles/iam.serviceAccountUser"),
 //				Member:           pulumi.String("user:jane@example.com"),
@@ -185,7 +185,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = serviceAccount.NewIAMMember(ctx, "gce-default-account-iam", &serviceAccount.IAMMemberArgs{
+//			_, err = serviceAccount.NewIamMember(ctx, "gce-default-account-iam", &serviceAccount.IamMemberArgs{
 //				ServiceAccountId: *pulumi.String(_default.Name),
 //				Role:             pulumi.String("roles/iam.serviceAccountUser"),
 //				Member: sa.Email.ApplyT(func(email string) (string, error) {
@@ -221,11 +221,11 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = serviceAccount.NewIAMMember(ctx, "admin-account-iam", &serviceAccount.IAMMemberArgs{
+//			_, err = serviceAccount.NewIamMember(ctx, "admin-account-iam", &serviceAccount.IamMemberArgs{
 //				ServiceAccountId: sa.Name,
 //				Role:             pulumi.String("roles/iam.serviceAccountUser"),
 //				Member:           pulumi.String("user:jane@example.com"),
-//				Condition: &serviceaccount.IAMMemberConditionArgs{
+//				Condition: &serviceaccount.IamMemberConditionArgs{
 //					Title:       pulumi.String("expires_after_2019_12_31"),
 //					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
 //					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
@@ -246,19 +246,19 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:serviceAccount/iAMPolicy:IAMPolicy admin-account-iam projects/{your-project-id}/serviceAccounts/{your-service-account-email}
+//	$ pulumi import gcp:serviceAccount/iAMPolicy:IamPolicy admin-account-iam projects/{your-project-id}/serviceAccounts/{your-service-account-email}
 //
 // ```
 //
 // ```sh
 //
-//	$ pulumi import gcp:serviceAccount/iAMPolicy:IAMPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser"
+//	$ pulumi import gcp:serviceAccount/iAMPolicy:IamPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser"
 //
 // ```
 //
 // ```sh
 //
-//	$ pulumi import gcp:serviceAccount/iAMPolicy:IAMPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/editor user:foo@example.com"
+//	$ pulumi import gcp:serviceAccount/iAMPolicy:IamPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/editor user:foo@example.com"
 //
 // ```
 //
@@ -266,22 +266,24 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:serviceAccount/iAMPolicy:IAMPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser expires_after_2019_12_31"
+//	$ pulumi import gcp:serviceAccount/iAMPolicy:IamPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser expires_after_2019_12_31"
 //
 // ```
 //
 // ```sh
 //
-//	$ pulumi import gcp:serviceAccount/iAMPolicy:IAMPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser user:foo@example.com expires_after_2019_12_31"
+//	$ pulumi import gcp:serviceAccount/iAMPolicy:IamPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser user:foo@example.com expires_after_2019_12_31"
 //
 // ```
-type IAMPolicy struct {
+//
+// Deprecated: gcp.serviceaccount/iampolicy.IamPolicy has been deprecated in favor of gcp.serviceaccount/iampolicy.IamPolicy
+type IamPolicy struct {
 	pulumi.CustomResourceState
 
 	// (Computed) The etag of the service account IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The policy data generated by
-	// a `organizations.getIAMPolicy` data source.
+	// a `organizations.getIamPolicy` data source.
 	PolicyData pulumi.StringOutput `pulumi:"policyData"`
 	// The fully-qualified name of the service account to apply policy to.
 	//
@@ -296,9 +298,9 @@ type IAMPolicy struct {
 	ServiceAccountId pulumi.StringOutput `pulumi:"serviceAccountId"`
 }
 
-// NewIAMPolicy registers a new resource with the given unique name, arguments, and options.
-func NewIAMPolicy(ctx *pulumi.Context,
-	name string, args *IAMPolicyArgs, opts ...pulumi.ResourceOption) (*IAMPolicy, error) {
+// NewIamPolicy registers a new resource with the given unique name, arguments, and options.
+func NewIamPolicy(ctx *pulumi.Context,
+	name string, args *IamPolicyArgs, opts ...pulumi.ResourceOption) (*IamPolicy, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -309,33 +311,39 @@ func NewIAMPolicy(ctx *pulumi.Context,
 	if args.ServiceAccountId == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceAccountId'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("gcp:serviceAccount/iAMPolicy:IAMPolicy"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
-	var resource IAMPolicy
-	err := ctx.RegisterResource("gcp:serviceAccount/iAMPolicy:IAMPolicy", name, args, &resource, opts...)
+	var resource IamPolicy
+	err := ctx.RegisterResource("gcp:serviceAccount/iAMPolicy:IamPolicy", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// GetIAMPolicy gets an existing IAMPolicy resource's state with the given name, ID, and optional
+// GetIamPolicy gets an existing IamPolicy resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetIAMPolicy(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *IAMPolicyState, opts ...pulumi.ResourceOption) (*IAMPolicy, error) {
-	var resource IAMPolicy
-	err := ctx.ReadResource("gcp:serviceAccount/iAMPolicy:IAMPolicy", name, id, state, &resource, opts...)
+func GetIamPolicy(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *IamPolicyState, opts ...pulumi.ResourceOption) (*IamPolicy, error) {
+	var resource IamPolicy
+	err := ctx.ReadResource("gcp:serviceAccount/iAMPolicy:IamPolicy", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering IAMPolicy resources.
-type iampolicyState struct {
+// Input properties used for looking up and filtering IamPolicy resources.
+type iamPolicyState struct {
 	// (Computed) The etag of the service account IAM policy.
 	Etag *string `pulumi:"etag"`
 	// The policy data generated by
-	// a `organizations.getIAMPolicy` data source.
+	// a `organizations.getIamPolicy` data source.
 	PolicyData *string `pulumi:"policyData"`
 	// The fully-qualified name of the service account to apply policy to.
 	//
@@ -350,11 +358,11 @@ type iampolicyState struct {
 	ServiceAccountId *string `pulumi:"serviceAccountId"`
 }
 
-type IAMPolicyState struct {
+type IamPolicyState struct {
 	// (Computed) The etag of the service account IAM policy.
 	Etag pulumi.StringPtrInput
 	// The policy data generated by
-	// a `organizations.getIAMPolicy` data source.
+	// a `organizations.getIamPolicy` data source.
 	PolicyData pulumi.StringPtrInput
 	// The fully-qualified name of the service account to apply policy to.
 	//
@@ -369,13 +377,13 @@ type IAMPolicyState struct {
 	ServiceAccountId pulumi.StringPtrInput
 }
 
-func (IAMPolicyState) ElementType() reflect.Type {
-	return reflect.TypeOf((*iampolicyState)(nil)).Elem()
+func (IamPolicyState) ElementType() reflect.Type {
+	return reflect.TypeOf((*iamPolicyState)(nil)).Elem()
 }
 
-type iampolicyArgs struct {
+type iamPolicyArgs struct {
 	// The policy data generated by
-	// a `organizations.getIAMPolicy` data source.
+	// a `organizations.getIamPolicy` data source.
 	PolicyData string `pulumi:"policyData"`
 	// The fully-qualified name of the service account to apply policy to.
 	//
@@ -390,10 +398,10 @@ type iampolicyArgs struct {
 	ServiceAccountId string `pulumi:"serviceAccountId"`
 }
 
-// The set of arguments for constructing a IAMPolicy resource.
-type IAMPolicyArgs struct {
+// The set of arguments for constructing a IamPolicy resource.
+type IamPolicyArgs struct {
 	// The policy data generated by
-	// a `organizations.getIAMPolicy` data source.
+	// a `organizations.getIamPolicy` data source.
 	PolicyData pulumi.StringInput
 	// The fully-qualified name of the service account to apply policy to.
 	//
@@ -408,102 +416,102 @@ type IAMPolicyArgs struct {
 	ServiceAccountId pulumi.StringInput
 }
 
-func (IAMPolicyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*iampolicyArgs)(nil)).Elem()
+func (IamPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*iamPolicyArgs)(nil)).Elem()
 }
 
-type IAMPolicyInput interface {
+type IamPolicyInput interface {
 	pulumi.Input
 
-	ToIAMPolicyOutput() IAMPolicyOutput
-	ToIAMPolicyOutputWithContext(ctx context.Context) IAMPolicyOutput
+	ToIamPolicyOutput() IamPolicyOutput
+	ToIamPolicyOutputWithContext(ctx context.Context) IamPolicyOutput
 }
 
-func (*IAMPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((**IAMPolicy)(nil)).Elem()
+func (*IamPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((**IamPolicy)(nil)).Elem()
 }
 
-func (i *IAMPolicy) ToIAMPolicyOutput() IAMPolicyOutput {
-	return i.ToIAMPolicyOutputWithContext(context.Background())
+func (i *IamPolicy) ToIamPolicyOutput() IamPolicyOutput {
+	return i.ToIamPolicyOutputWithContext(context.Background())
 }
 
-func (i *IAMPolicy) ToIAMPolicyOutputWithContext(ctx context.Context) IAMPolicyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMPolicyOutput)
+func (i *IamPolicy) ToIamPolicyOutputWithContext(ctx context.Context) IamPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamPolicyOutput)
 }
 
-// IAMPolicyArrayInput is an input type that accepts IAMPolicyArray and IAMPolicyArrayOutput values.
-// You can construct a concrete instance of `IAMPolicyArrayInput` via:
+// IamPolicyArrayInput is an input type that accepts IamPolicyArray and IamPolicyArrayOutput values.
+// You can construct a concrete instance of `IamPolicyArrayInput` via:
 //
-//	IAMPolicyArray{ IAMPolicyArgs{...} }
-type IAMPolicyArrayInput interface {
+//	IamPolicyArray{ IamPolicyArgs{...} }
+type IamPolicyArrayInput interface {
 	pulumi.Input
 
-	ToIAMPolicyArrayOutput() IAMPolicyArrayOutput
-	ToIAMPolicyArrayOutputWithContext(context.Context) IAMPolicyArrayOutput
+	ToIamPolicyArrayOutput() IamPolicyArrayOutput
+	ToIamPolicyArrayOutputWithContext(context.Context) IamPolicyArrayOutput
 }
 
-type IAMPolicyArray []IAMPolicyInput
+type IamPolicyArray []IamPolicyInput
 
-func (IAMPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*IAMPolicy)(nil)).Elem()
+func (IamPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*IamPolicy)(nil)).Elem()
 }
 
-func (i IAMPolicyArray) ToIAMPolicyArrayOutput() IAMPolicyArrayOutput {
-	return i.ToIAMPolicyArrayOutputWithContext(context.Background())
+func (i IamPolicyArray) ToIamPolicyArrayOutput() IamPolicyArrayOutput {
+	return i.ToIamPolicyArrayOutputWithContext(context.Background())
 }
 
-func (i IAMPolicyArray) ToIAMPolicyArrayOutputWithContext(ctx context.Context) IAMPolicyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMPolicyArrayOutput)
+func (i IamPolicyArray) ToIamPolicyArrayOutputWithContext(ctx context.Context) IamPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamPolicyArrayOutput)
 }
 
-// IAMPolicyMapInput is an input type that accepts IAMPolicyMap and IAMPolicyMapOutput values.
-// You can construct a concrete instance of `IAMPolicyMapInput` via:
+// IamPolicyMapInput is an input type that accepts IamPolicyMap and IamPolicyMapOutput values.
+// You can construct a concrete instance of `IamPolicyMapInput` via:
 //
-//	IAMPolicyMap{ "key": IAMPolicyArgs{...} }
-type IAMPolicyMapInput interface {
+//	IamPolicyMap{ "key": IamPolicyArgs{...} }
+type IamPolicyMapInput interface {
 	pulumi.Input
 
-	ToIAMPolicyMapOutput() IAMPolicyMapOutput
-	ToIAMPolicyMapOutputWithContext(context.Context) IAMPolicyMapOutput
+	ToIamPolicyMapOutput() IamPolicyMapOutput
+	ToIamPolicyMapOutputWithContext(context.Context) IamPolicyMapOutput
 }
 
-type IAMPolicyMap map[string]IAMPolicyInput
+type IamPolicyMap map[string]IamPolicyInput
 
-func (IAMPolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*IAMPolicy)(nil)).Elem()
+func (IamPolicyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*IamPolicy)(nil)).Elem()
 }
 
-func (i IAMPolicyMap) ToIAMPolicyMapOutput() IAMPolicyMapOutput {
-	return i.ToIAMPolicyMapOutputWithContext(context.Background())
+func (i IamPolicyMap) ToIamPolicyMapOutput() IamPolicyMapOutput {
+	return i.ToIamPolicyMapOutputWithContext(context.Background())
 }
 
-func (i IAMPolicyMap) ToIAMPolicyMapOutputWithContext(ctx context.Context) IAMPolicyMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMPolicyMapOutput)
+func (i IamPolicyMap) ToIamPolicyMapOutputWithContext(ctx context.Context) IamPolicyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamPolicyMapOutput)
 }
 
-type IAMPolicyOutput struct{ *pulumi.OutputState }
+type IamPolicyOutput struct{ *pulumi.OutputState }
 
-func (IAMPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IAMPolicy)(nil)).Elem()
+func (IamPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IamPolicy)(nil)).Elem()
 }
 
-func (o IAMPolicyOutput) ToIAMPolicyOutput() IAMPolicyOutput {
+func (o IamPolicyOutput) ToIamPolicyOutput() IamPolicyOutput {
 	return o
 }
 
-func (o IAMPolicyOutput) ToIAMPolicyOutputWithContext(ctx context.Context) IAMPolicyOutput {
+func (o IamPolicyOutput) ToIamPolicyOutputWithContext(ctx context.Context) IamPolicyOutput {
 	return o
 }
 
 // (Computed) The etag of the service account IAM policy.
-func (o IAMPolicyOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v *IAMPolicy) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+func (o IamPolicyOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *IamPolicy) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The policy data generated by
-// a `organizations.getIAMPolicy` data source.
-func (o IAMPolicyOutput) PolicyData() pulumi.StringOutput {
-	return o.ApplyT(func(v *IAMPolicy) pulumi.StringOutput { return v.PolicyData }).(pulumi.StringOutput)
+// a `organizations.getIamPolicy` data source.
+func (o IamPolicyOutput) PolicyData() pulumi.StringOutput {
+	return o.ApplyT(func(v *IamPolicy) pulumi.StringOutput { return v.PolicyData }).(pulumi.StringOutput)
 }
 
 // The fully-qualified name of the service account to apply policy to.
@@ -516,55 +524,55 @@ func (o IAMPolicyOutput) PolicyData() pulumi.StringOutput {
 //   - **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
 //   - **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
 //   - **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-func (o IAMPolicyOutput) ServiceAccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v *IAMPolicy) pulumi.StringOutput { return v.ServiceAccountId }).(pulumi.StringOutput)
+func (o IamPolicyOutput) ServiceAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *IamPolicy) pulumi.StringOutput { return v.ServiceAccountId }).(pulumi.StringOutput)
 }
 
-type IAMPolicyArrayOutput struct{ *pulumi.OutputState }
+type IamPolicyArrayOutput struct{ *pulumi.OutputState }
 
-func (IAMPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*IAMPolicy)(nil)).Elem()
+func (IamPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*IamPolicy)(nil)).Elem()
 }
 
-func (o IAMPolicyArrayOutput) ToIAMPolicyArrayOutput() IAMPolicyArrayOutput {
+func (o IamPolicyArrayOutput) ToIamPolicyArrayOutput() IamPolicyArrayOutput {
 	return o
 }
 
-func (o IAMPolicyArrayOutput) ToIAMPolicyArrayOutputWithContext(ctx context.Context) IAMPolicyArrayOutput {
+func (o IamPolicyArrayOutput) ToIamPolicyArrayOutputWithContext(ctx context.Context) IamPolicyArrayOutput {
 	return o
 }
 
-func (o IAMPolicyArrayOutput) Index(i pulumi.IntInput) IAMPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IAMPolicy {
-		return vs[0].([]*IAMPolicy)[vs[1].(int)]
-	}).(IAMPolicyOutput)
+func (o IamPolicyArrayOutput) Index(i pulumi.IntInput) IamPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IamPolicy {
+		return vs[0].([]*IamPolicy)[vs[1].(int)]
+	}).(IamPolicyOutput)
 }
 
-type IAMPolicyMapOutput struct{ *pulumi.OutputState }
+type IamPolicyMapOutput struct{ *pulumi.OutputState }
 
-func (IAMPolicyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*IAMPolicy)(nil)).Elem()
+func (IamPolicyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*IamPolicy)(nil)).Elem()
 }
 
-func (o IAMPolicyMapOutput) ToIAMPolicyMapOutput() IAMPolicyMapOutput {
+func (o IamPolicyMapOutput) ToIamPolicyMapOutput() IamPolicyMapOutput {
 	return o
 }
 
-func (o IAMPolicyMapOutput) ToIAMPolicyMapOutputWithContext(ctx context.Context) IAMPolicyMapOutput {
+func (o IamPolicyMapOutput) ToIamPolicyMapOutputWithContext(ctx context.Context) IamPolicyMapOutput {
 	return o
 }
 
-func (o IAMPolicyMapOutput) MapIndex(k pulumi.StringInput) IAMPolicyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *IAMPolicy {
-		return vs[0].(map[string]*IAMPolicy)[vs[1].(string)]
-	}).(IAMPolicyOutput)
+func (o IamPolicyMapOutput) MapIndex(k pulumi.StringInput) IamPolicyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *IamPolicy {
+		return vs[0].(map[string]*IamPolicy)[vs[1].(string)]
+	}).(IamPolicyOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*IAMPolicyInput)(nil)).Elem(), &IAMPolicy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IAMPolicyArrayInput)(nil)).Elem(), IAMPolicyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IAMPolicyMapInput)(nil)).Elem(), IAMPolicyMap{})
-	pulumi.RegisterOutputType(IAMPolicyOutput{})
-	pulumi.RegisterOutputType(IAMPolicyArrayOutput{})
-	pulumi.RegisterOutputType(IAMPolicyMapOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamPolicyInput)(nil)).Elem(), &IamPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamPolicyArrayInput)(nil)).Elem(), IamPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamPolicyMapInput)(nil)).Elem(), IamPolicyMap{})
+	pulumi.RegisterOutputType(IamPolicyOutput{})
+	pulumi.RegisterOutputType(IamPolicyArrayOutput{})
+	pulumi.RegisterOutputType(IamPolicyMapOutput{})
 }

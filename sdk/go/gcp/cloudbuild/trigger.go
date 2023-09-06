@@ -85,7 +85,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			actAs, err := projects.NewIAMMember(ctx, "actAs", &projects.IAMMemberArgs{
+//			actAs, err := projects.NewIamMember(ctx, "actAs", &projects.IamMemberArgs{
 //				Project: *pulumi.String(project.ProjectId),
 //				Role:    pulumi.String("roles/iam.serviceAccountUser"),
 //				Member: cloudbuildServiceAccount.Email.ApplyT(func(email string) (string, error) {
@@ -95,7 +95,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			logsWriter, err := projects.NewIAMMember(ctx, "logsWriter", &projects.IAMMemberArgs{
+//			logsWriter, err := projects.NewIamMember(ctx, "logsWriter", &projects.IamMemberArgs{
 //				Project: *pulumi.String(project.ProjectId),
 //				Role:    pulumi.String("roles/logging.logWriter"),
 //				Member: cloudbuildServiceAccount.Email.ApplyT(func(email string) (string, error) {
@@ -251,8 +251,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			secretAccessor, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
+//			secretAccessor, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
 //					{
 //						Role: "roles/secretmanager.secretAccessor",
 //						Members: []string{

@@ -56,7 +56,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			binding, err := pubsub.NewTopicIAMBinding(ctx, "binding", &pubsub.TopicIAMBindingArgs{
+//			binding, err := pubsub.NewTopicIamBinding(ctx, "binding", &pubsub.TopicIamBindingArgs{
 //				Topic: topic.ID(),
 //				Role:  pulumi.String("roles/pubsub.publisher"),
 //				Members: pulumi.StringArray{

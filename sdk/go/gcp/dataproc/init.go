@@ -31,20 +31,20 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AutoscalingPolicyIamPolicy{}
 	case "gcp:dataproc/cluster:Cluster":
 		r = &Cluster{}
-	case "gcp:dataproc/clusterIAMBinding:ClusterIAMBinding":
-		r = &ClusterIAMBinding{}
-	case "gcp:dataproc/clusterIAMMember:ClusterIAMMember":
-		r = &ClusterIAMMember{}
-	case "gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy":
-		r = &ClusterIAMPolicy{}
+	case "gcp:dataproc/clusterIamBinding:ClusterIamBinding":
+		r = &ClusterIamBinding{}
+	case "gcp:dataproc/clusterIamMember:ClusterIamMember":
+		r = &ClusterIamMember{}
+	case "gcp:dataproc/clusterIamPolicy:ClusterIamPolicy":
+		r = &ClusterIamPolicy{}
 	case "gcp:dataproc/job:Job":
 		r = &Job{}
-	case "gcp:dataproc/jobIAMBinding:JobIAMBinding":
-		r = &JobIAMBinding{}
-	case "gcp:dataproc/jobIAMMember:JobIAMMember":
-		r = &JobIAMMember{}
-	case "gcp:dataproc/jobIAMPolicy:JobIAMPolicy":
-		r = &JobIAMPolicy{}
+	case "gcp:dataproc/jobIamBinding:JobIamBinding":
+		r = &JobIamBinding{}
+	case "gcp:dataproc/jobIamMember:JobIamMember":
+		r = &JobIamMember{}
+	case "gcp:dataproc/jobIamPolicy:JobIamPolicy":
+		r = &JobIamPolicy{}
 	case "gcp:dataproc/metastoreFederation:MetastoreFederation":
 		r = &MetastoreFederation{}
 	case "gcp:dataproc/metastoreFederationIamBinding:MetastoreFederationIamBinding":
@@ -103,17 +103,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"dataproc/clusterIAMBinding",
+		"dataproc/clusterIamBinding",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"dataproc/clusterIAMMember",
+		"dataproc/clusterIamMember",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"dataproc/clusterIAMPolicy",
+		"dataproc/clusterIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -123,17 +123,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"dataproc/jobIAMBinding",
+		"dataproc/jobIamBinding",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"dataproc/jobIAMMember",
+		"dataproc/jobIamMember",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"dataproc/jobIAMPolicy",
+		"dataproc/jobIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

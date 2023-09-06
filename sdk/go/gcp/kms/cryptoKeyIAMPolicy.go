@@ -14,13 +14,13 @@ import (
 
 // Three different resources help you manage your IAM policy for KMS crypto key. Each of these resources serves a different use case:
 //
-// * `kms.CryptoKeyIAMPolicy`: Authoritative. Sets the IAM policy for the crypto key and replaces any existing policy already attached.
-// * `kms.CryptoKeyIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the crypto key are preserved.
-// * `kms.CryptoKeyIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the crypto key are preserved.
+// * `kms.CryptoKeyIamPolicy`: Authoritative. Sets the IAM policy for the crypto key and replaces any existing policy already attached.
+// * `kms.CryptoKeyIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the crypto key are preserved.
+// * `kms.CryptoKeyIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the crypto key are preserved.
 //
-// > **Note:** `kms.CryptoKeyIAMPolicy` **cannot** be used in conjunction with `kms.CryptoKeyIAMBinding` and `kms.CryptoKeyIAMMember` or they will fight over what your policy should be.
+// > **Note:** `kms.CryptoKeyIamPolicy` **cannot** be used in conjunction with `kms.CryptoKeyIamBinding` and `kms.CryptoKeyIamMember` or they will fight over what your policy should be.
 //
-// > **Note:** `kms.CryptoKeyIAMBinding` resources **can be** used in conjunction with `kms.CryptoKeyIAMMember` resources **only if** they do not grant privilege to the same role.
+// > **Note:** `kms.CryptoKeyIamBinding` resources **can be** used in conjunction with `kms.CryptoKeyIamMember` resources **only if** they do not grant privilege to the same role.
 //
 // ```go
 // package main
@@ -48,8 +48,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
+//			admin, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
 //					{
 //						Role: "roles/cloudkms.cryptoKeyEncrypter",
 //						Members: []string{
@@ -61,7 +61,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = kms.NewCryptoKeyIAMPolicy(ctx, "cryptoKey", &kms.CryptoKeyIAMPolicyArgs{
+//			_, err = kms.NewCryptoKeyIamPolicy(ctx, "cryptoKey", &kms.CryptoKeyIamPolicyArgs{
 //				CryptoKeyId: key.ID(),
 //				PolicyData:  *pulumi.String(admin.PolicyData),
 //			})
@@ -88,8 +88,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
+//			_, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
 //					{
 //						Condition: {
 //							Description: pulumi.StringRef("Expiring at midnight of 2019-12-31"),
@@ -124,7 +124,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := kms.NewCryptoKeyIAMBinding(ctx, "cryptoKey", &kms.CryptoKeyIAMBindingArgs{
+//			_, err := kms.NewCryptoKeyIamBinding(ctx, "cryptoKey", &kms.CryptoKeyIamBindingArgs{
 //				CryptoKeyId: pulumi.Any(google_kms_crypto_key.Key.Id),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypter"),
 //				Members: pulumi.StringArray{
@@ -154,13 +154,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := kms.NewCryptoKeyIAMBinding(ctx, "cryptoKey", &kms.CryptoKeyIAMBindingArgs{
+//			_, err := kms.NewCryptoKeyIamBinding(ctx, "cryptoKey", &kms.CryptoKeyIamBindingArgs{
 //				CryptoKeyId: pulumi.Any(google_kms_crypto_key.Key.Id),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypter"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
 //				},
-//				Condition: &kms.CryptoKeyIAMBindingConditionArgs{
+//				Condition: &kms.CryptoKeyIamBindingConditionArgs{
 //					Title:       pulumi.String("expires_after_2019_12_31"),
 //					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
 //					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
@@ -187,7 +187,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := kms.NewCryptoKeyIAMMember(ctx, "cryptoKey", &kms.CryptoKeyIAMMemberArgs{
+//			_, err := kms.NewCryptoKeyIamMember(ctx, "cryptoKey", &kms.CryptoKeyIamMemberArgs{
 //				CryptoKeyId: pulumi.Any(google_kms_crypto_key.Key.Id),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypter"),
 //				Member:      pulumi.String("user:jane@example.com"),
@@ -215,11 +215,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := kms.NewCryptoKeyIAMMember(ctx, "cryptoKey", &kms.CryptoKeyIAMMemberArgs{
+//			_, err := kms.NewCryptoKeyIamMember(ctx, "cryptoKey", &kms.CryptoKeyIamMemberArgs{
 //				CryptoKeyId: pulumi.Any(google_kms_crypto_key.Key.Id),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypter"),
 //				Member:      pulumi.String("user:jane@example.com"),
-//				Condition: &kms.CryptoKeyIAMMemberConditionArgs{
+//				Condition: &kms.CryptoKeyIamMemberConditionArgs{
 //					Title:       pulumi.String("expires_after_2019_12_31"),
 //					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
 //					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
@@ -242,7 +242,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy crypto_key "your-project-id/location-name/key-ring-name/key-name roles/viewer user:foo@example.com"
+//	$ pulumi import gcp:kms/cryptoKeyIamPolicy:CryptoKeyIamPolicy crypto_key "your-project-id/location-name/key-ring-name/key-name roles/viewer user:foo@example.com"
 //
 // ```
 //
@@ -252,7 +252,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy crypto_key "your-project-id/location-name/key-ring-name/key-name roles/editor"
+//	$ pulumi import gcp:kms/cryptoKeyIamPolicy:CryptoKeyIamPolicy crypto_key "your-project-id/location-name/key-ring-name/key-name roles/editor"
 //
 // ```
 //
@@ -262,10 +262,10 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy crypto_key your-project-id/location-name/key-ring-name/key-name
+//	$ pulumi import gcp:kms/cryptoKeyIamPolicy:CryptoKeyIamPolicy crypto_key your-project-id/location-name/key-ring-name/key-name
 //
 // ```
-type CryptoKeyIAMPolicy struct {
+type CryptoKeyIamPolicy struct {
 	pulumi.CustomResourceState
 
 	// The crypto key ID, in the form
@@ -285,13 +285,13 @@ type CryptoKeyIAMPolicy struct {
 	// (Computed) The etag of the project's IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The policy data generated by
-	// a `organizations.getIAMPolicy` data source.
+	// a `organizations.getIamPolicy` data source.
 	PolicyData pulumi.StringOutput `pulumi:"policyData"`
 }
 
-// NewCryptoKeyIAMPolicy registers a new resource with the given unique name, arguments, and options.
-func NewCryptoKeyIAMPolicy(ctx *pulumi.Context,
-	name string, args *CryptoKeyIAMPolicyArgs, opts ...pulumi.ResourceOption) (*CryptoKeyIAMPolicy, error) {
+// NewCryptoKeyIamPolicy registers a new resource with the given unique name, arguments, and options.
+func NewCryptoKeyIamPolicy(ctx *pulumi.Context,
+	name string, args *CryptoKeyIamPolicyArgs, opts ...pulumi.ResourceOption) (*CryptoKeyIamPolicy, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -303,28 +303,28 @@ func NewCryptoKeyIAMPolicy(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'PolicyData'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
-	var resource CryptoKeyIAMPolicy
-	err := ctx.RegisterResource("gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy", name, args, &resource, opts...)
+	var resource CryptoKeyIamPolicy
+	err := ctx.RegisterResource("gcp:kms/cryptoKeyIamPolicy:CryptoKeyIamPolicy", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// GetCryptoKeyIAMPolicy gets an existing CryptoKeyIAMPolicy resource's state with the given name, ID, and optional
+// GetCryptoKeyIamPolicy gets an existing CryptoKeyIamPolicy resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetCryptoKeyIAMPolicy(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *CryptoKeyIAMPolicyState, opts ...pulumi.ResourceOption) (*CryptoKeyIAMPolicy, error) {
-	var resource CryptoKeyIAMPolicy
-	err := ctx.ReadResource("gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy", name, id, state, &resource, opts...)
+func GetCryptoKeyIamPolicy(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *CryptoKeyIamPolicyState, opts ...pulumi.ResourceOption) (*CryptoKeyIamPolicy, error) {
+	var resource CryptoKeyIamPolicy
+	err := ctx.ReadResource("gcp:kms/cryptoKeyIamPolicy:CryptoKeyIamPolicy", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering CryptoKeyIAMPolicy resources.
-type cryptoKeyIAMPolicyState struct {
+// Input properties used for looking up and filtering CryptoKeyIamPolicy resources.
+type cryptoKeyIamPolicyState struct {
 	// The crypto key ID, in the form
 	// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
 	// `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
@@ -342,11 +342,11 @@ type cryptoKeyIAMPolicyState struct {
 	// (Computed) The etag of the project's IAM policy.
 	Etag *string `pulumi:"etag"`
 	// The policy data generated by
-	// a `organizations.getIAMPolicy` data source.
+	// a `organizations.getIamPolicy` data source.
 	PolicyData *string `pulumi:"policyData"`
 }
 
-type CryptoKeyIAMPolicyState struct {
+type CryptoKeyIamPolicyState struct {
 	// The crypto key ID, in the form
 	// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
 	// `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
@@ -364,15 +364,15 @@ type CryptoKeyIAMPolicyState struct {
 	// (Computed) The etag of the project's IAM policy.
 	Etag pulumi.StringPtrInput
 	// The policy data generated by
-	// a `organizations.getIAMPolicy` data source.
+	// a `organizations.getIamPolicy` data source.
 	PolicyData pulumi.StringPtrInput
 }
 
-func (CryptoKeyIAMPolicyState) ElementType() reflect.Type {
-	return reflect.TypeOf((*cryptoKeyIAMPolicyState)(nil)).Elem()
+func (CryptoKeyIamPolicyState) ElementType() reflect.Type {
+	return reflect.TypeOf((*cryptoKeyIamPolicyState)(nil)).Elem()
 }
 
-type cryptoKeyIAMPolicyArgs struct {
+type cryptoKeyIamPolicyArgs struct {
 	// The crypto key ID, in the form
 	// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
 	// `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
@@ -388,12 +388,12 @@ type cryptoKeyIAMPolicyArgs struct {
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	CryptoKeyId string `pulumi:"cryptoKeyId"`
 	// The policy data generated by
-	// a `organizations.getIAMPolicy` data source.
+	// a `organizations.getIamPolicy` data source.
 	PolicyData string `pulumi:"policyData"`
 }
 
-// The set of arguments for constructing a CryptoKeyIAMPolicy resource.
-type CryptoKeyIAMPolicyArgs struct {
+// The set of arguments for constructing a CryptoKeyIamPolicy resource.
+type CryptoKeyIamPolicyArgs struct {
 	// The crypto key ID, in the form
 	// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
 	// `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
@@ -409,94 +409,94 @@ type CryptoKeyIAMPolicyArgs struct {
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	CryptoKeyId pulumi.StringInput
 	// The policy data generated by
-	// a `organizations.getIAMPolicy` data source.
+	// a `organizations.getIamPolicy` data source.
 	PolicyData pulumi.StringInput
 }
 
-func (CryptoKeyIAMPolicyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*cryptoKeyIAMPolicyArgs)(nil)).Elem()
+func (CryptoKeyIamPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*cryptoKeyIamPolicyArgs)(nil)).Elem()
 }
 
-type CryptoKeyIAMPolicyInput interface {
+type CryptoKeyIamPolicyInput interface {
 	pulumi.Input
 
-	ToCryptoKeyIAMPolicyOutput() CryptoKeyIAMPolicyOutput
-	ToCryptoKeyIAMPolicyOutputWithContext(ctx context.Context) CryptoKeyIAMPolicyOutput
+	ToCryptoKeyIamPolicyOutput() CryptoKeyIamPolicyOutput
+	ToCryptoKeyIamPolicyOutputWithContext(ctx context.Context) CryptoKeyIamPolicyOutput
 }
 
-func (*CryptoKeyIAMPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((**CryptoKeyIAMPolicy)(nil)).Elem()
+func (*CryptoKeyIamPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((**CryptoKeyIamPolicy)(nil)).Elem()
 }
 
-func (i *CryptoKeyIAMPolicy) ToCryptoKeyIAMPolicyOutput() CryptoKeyIAMPolicyOutput {
-	return i.ToCryptoKeyIAMPolicyOutputWithContext(context.Background())
+func (i *CryptoKeyIamPolicy) ToCryptoKeyIamPolicyOutput() CryptoKeyIamPolicyOutput {
+	return i.ToCryptoKeyIamPolicyOutputWithContext(context.Background())
 }
 
-func (i *CryptoKeyIAMPolicy) ToCryptoKeyIAMPolicyOutputWithContext(ctx context.Context) CryptoKeyIAMPolicyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIAMPolicyOutput)
+func (i *CryptoKeyIamPolicy) ToCryptoKeyIamPolicyOutputWithContext(ctx context.Context) CryptoKeyIamPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIamPolicyOutput)
 }
 
-// CryptoKeyIAMPolicyArrayInput is an input type that accepts CryptoKeyIAMPolicyArray and CryptoKeyIAMPolicyArrayOutput values.
-// You can construct a concrete instance of `CryptoKeyIAMPolicyArrayInput` via:
+// CryptoKeyIamPolicyArrayInput is an input type that accepts CryptoKeyIamPolicyArray and CryptoKeyIamPolicyArrayOutput values.
+// You can construct a concrete instance of `CryptoKeyIamPolicyArrayInput` via:
 //
-//	CryptoKeyIAMPolicyArray{ CryptoKeyIAMPolicyArgs{...} }
-type CryptoKeyIAMPolicyArrayInput interface {
+//	CryptoKeyIamPolicyArray{ CryptoKeyIamPolicyArgs{...} }
+type CryptoKeyIamPolicyArrayInput interface {
 	pulumi.Input
 
-	ToCryptoKeyIAMPolicyArrayOutput() CryptoKeyIAMPolicyArrayOutput
-	ToCryptoKeyIAMPolicyArrayOutputWithContext(context.Context) CryptoKeyIAMPolicyArrayOutput
+	ToCryptoKeyIamPolicyArrayOutput() CryptoKeyIamPolicyArrayOutput
+	ToCryptoKeyIamPolicyArrayOutputWithContext(context.Context) CryptoKeyIamPolicyArrayOutput
 }
 
-type CryptoKeyIAMPolicyArray []CryptoKeyIAMPolicyInput
+type CryptoKeyIamPolicyArray []CryptoKeyIamPolicyInput
 
-func (CryptoKeyIAMPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*CryptoKeyIAMPolicy)(nil)).Elem()
+func (CryptoKeyIamPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*CryptoKeyIamPolicy)(nil)).Elem()
 }
 
-func (i CryptoKeyIAMPolicyArray) ToCryptoKeyIAMPolicyArrayOutput() CryptoKeyIAMPolicyArrayOutput {
-	return i.ToCryptoKeyIAMPolicyArrayOutputWithContext(context.Background())
+func (i CryptoKeyIamPolicyArray) ToCryptoKeyIamPolicyArrayOutput() CryptoKeyIamPolicyArrayOutput {
+	return i.ToCryptoKeyIamPolicyArrayOutputWithContext(context.Background())
 }
 
-func (i CryptoKeyIAMPolicyArray) ToCryptoKeyIAMPolicyArrayOutputWithContext(ctx context.Context) CryptoKeyIAMPolicyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIAMPolicyArrayOutput)
+func (i CryptoKeyIamPolicyArray) ToCryptoKeyIamPolicyArrayOutputWithContext(ctx context.Context) CryptoKeyIamPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIamPolicyArrayOutput)
 }
 
-// CryptoKeyIAMPolicyMapInput is an input type that accepts CryptoKeyIAMPolicyMap and CryptoKeyIAMPolicyMapOutput values.
-// You can construct a concrete instance of `CryptoKeyIAMPolicyMapInput` via:
+// CryptoKeyIamPolicyMapInput is an input type that accepts CryptoKeyIamPolicyMap and CryptoKeyIamPolicyMapOutput values.
+// You can construct a concrete instance of `CryptoKeyIamPolicyMapInput` via:
 //
-//	CryptoKeyIAMPolicyMap{ "key": CryptoKeyIAMPolicyArgs{...} }
-type CryptoKeyIAMPolicyMapInput interface {
+//	CryptoKeyIamPolicyMap{ "key": CryptoKeyIamPolicyArgs{...} }
+type CryptoKeyIamPolicyMapInput interface {
 	pulumi.Input
 
-	ToCryptoKeyIAMPolicyMapOutput() CryptoKeyIAMPolicyMapOutput
-	ToCryptoKeyIAMPolicyMapOutputWithContext(context.Context) CryptoKeyIAMPolicyMapOutput
+	ToCryptoKeyIamPolicyMapOutput() CryptoKeyIamPolicyMapOutput
+	ToCryptoKeyIamPolicyMapOutputWithContext(context.Context) CryptoKeyIamPolicyMapOutput
 }
 
-type CryptoKeyIAMPolicyMap map[string]CryptoKeyIAMPolicyInput
+type CryptoKeyIamPolicyMap map[string]CryptoKeyIamPolicyInput
 
-func (CryptoKeyIAMPolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*CryptoKeyIAMPolicy)(nil)).Elem()
+func (CryptoKeyIamPolicyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*CryptoKeyIamPolicy)(nil)).Elem()
 }
 
-func (i CryptoKeyIAMPolicyMap) ToCryptoKeyIAMPolicyMapOutput() CryptoKeyIAMPolicyMapOutput {
-	return i.ToCryptoKeyIAMPolicyMapOutputWithContext(context.Background())
+func (i CryptoKeyIamPolicyMap) ToCryptoKeyIamPolicyMapOutput() CryptoKeyIamPolicyMapOutput {
+	return i.ToCryptoKeyIamPolicyMapOutputWithContext(context.Background())
 }
 
-func (i CryptoKeyIAMPolicyMap) ToCryptoKeyIAMPolicyMapOutputWithContext(ctx context.Context) CryptoKeyIAMPolicyMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIAMPolicyMapOutput)
+func (i CryptoKeyIamPolicyMap) ToCryptoKeyIamPolicyMapOutputWithContext(ctx context.Context) CryptoKeyIamPolicyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIamPolicyMapOutput)
 }
 
-type CryptoKeyIAMPolicyOutput struct{ *pulumi.OutputState }
+type CryptoKeyIamPolicyOutput struct{ *pulumi.OutputState }
 
-func (CryptoKeyIAMPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CryptoKeyIAMPolicy)(nil)).Elem()
+func (CryptoKeyIamPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CryptoKeyIamPolicy)(nil)).Elem()
 }
 
-func (o CryptoKeyIAMPolicyOutput) ToCryptoKeyIAMPolicyOutput() CryptoKeyIAMPolicyOutput {
+func (o CryptoKeyIamPolicyOutput) ToCryptoKeyIamPolicyOutput() CryptoKeyIamPolicyOutput {
 	return o
 }
 
-func (o CryptoKeyIAMPolicyOutput) ToCryptoKeyIAMPolicyOutputWithContext(ctx context.Context) CryptoKeyIAMPolicyOutput {
+func (o CryptoKeyIamPolicyOutput) ToCryptoKeyIamPolicyOutputWithContext(ctx context.Context) CryptoKeyIamPolicyOutput {
 	return o
 }
 
@@ -513,66 +513,66 @@ func (o CryptoKeyIAMPolicyOutput) ToCryptoKeyIAMPolicyOutputWithContext(ctx cont
 //   - **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
 //   - **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
 //   - **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-func (o CryptoKeyIAMPolicyOutput) CryptoKeyId() pulumi.StringOutput {
-	return o.ApplyT(func(v *CryptoKeyIAMPolicy) pulumi.StringOutput { return v.CryptoKeyId }).(pulumi.StringOutput)
+func (o CryptoKeyIamPolicyOutput) CryptoKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CryptoKeyIamPolicy) pulumi.StringOutput { return v.CryptoKeyId }).(pulumi.StringOutput)
 }
 
 // (Computed) The etag of the project's IAM policy.
-func (o CryptoKeyIAMPolicyOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v *CryptoKeyIAMPolicy) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+func (o CryptoKeyIamPolicyOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *CryptoKeyIamPolicy) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The policy data generated by
-// a `organizations.getIAMPolicy` data source.
-func (o CryptoKeyIAMPolicyOutput) PolicyData() pulumi.StringOutput {
-	return o.ApplyT(func(v *CryptoKeyIAMPolicy) pulumi.StringOutput { return v.PolicyData }).(pulumi.StringOutput)
+// a `organizations.getIamPolicy` data source.
+func (o CryptoKeyIamPolicyOutput) PolicyData() pulumi.StringOutput {
+	return o.ApplyT(func(v *CryptoKeyIamPolicy) pulumi.StringOutput { return v.PolicyData }).(pulumi.StringOutput)
 }
 
-type CryptoKeyIAMPolicyArrayOutput struct{ *pulumi.OutputState }
+type CryptoKeyIamPolicyArrayOutput struct{ *pulumi.OutputState }
 
-func (CryptoKeyIAMPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*CryptoKeyIAMPolicy)(nil)).Elem()
+func (CryptoKeyIamPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*CryptoKeyIamPolicy)(nil)).Elem()
 }
 
-func (o CryptoKeyIAMPolicyArrayOutput) ToCryptoKeyIAMPolicyArrayOutput() CryptoKeyIAMPolicyArrayOutput {
+func (o CryptoKeyIamPolicyArrayOutput) ToCryptoKeyIamPolicyArrayOutput() CryptoKeyIamPolicyArrayOutput {
 	return o
 }
 
-func (o CryptoKeyIAMPolicyArrayOutput) ToCryptoKeyIAMPolicyArrayOutputWithContext(ctx context.Context) CryptoKeyIAMPolicyArrayOutput {
+func (o CryptoKeyIamPolicyArrayOutput) ToCryptoKeyIamPolicyArrayOutputWithContext(ctx context.Context) CryptoKeyIamPolicyArrayOutput {
 	return o
 }
 
-func (o CryptoKeyIAMPolicyArrayOutput) Index(i pulumi.IntInput) CryptoKeyIAMPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CryptoKeyIAMPolicy {
-		return vs[0].([]*CryptoKeyIAMPolicy)[vs[1].(int)]
-	}).(CryptoKeyIAMPolicyOutput)
+func (o CryptoKeyIamPolicyArrayOutput) Index(i pulumi.IntInput) CryptoKeyIamPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CryptoKeyIamPolicy {
+		return vs[0].([]*CryptoKeyIamPolicy)[vs[1].(int)]
+	}).(CryptoKeyIamPolicyOutput)
 }
 
-type CryptoKeyIAMPolicyMapOutput struct{ *pulumi.OutputState }
+type CryptoKeyIamPolicyMapOutput struct{ *pulumi.OutputState }
 
-func (CryptoKeyIAMPolicyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*CryptoKeyIAMPolicy)(nil)).Elem()
+func (CryptoKeyIamPolicyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*CryptoKeyIamPolicy)(nil)).Elem()
 }
 
-func (o CryptoKeyIAMPolicyMapOutput) ToCryptoKeyIAMPolicyMapOutput() CryptoKeyIAMPolicyMapOutput {
+func (o CryptoKeyIamPolicyMapOutput) ToCryptoKeyIamPolicyMapOutput() CryptoKeyIamPolicyMapOutput {
 	return o
 }
 
-func (o CryptoKeyIAMPolicyMapOutput) ToCryptoKeyIAMPolicyMapOutputWithContext(ctx context.Context) CryptoKeyIAMPolicyMapOutput {
+func (o CryptoKeyIamPolicyMapOutput) ToCryptoKeyIamPolicyMapOutputWithContext(ctx context.Context) CryptoKeyIamPolicyMapOutput {
 	return o
 }
 
-func (o CryptoKeyIAMPolicyMapOutput) MapIndex(k pulumi.StringInput) CryptoKeyIAMPolicyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *CryptoKeyIAMPolicy {
-		return vs[0].(map[string]*CryptoKeyIAMPolicy)[vs[1].(string)]
-	}).(CryptoKeyIAMPolicyOutput)
+func (o CryptoKeyIamPolicyMapOutput) MapIndex(k pulumi.StringInput) CryptoKeyIamPolicyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *CryptoKeyIamPolicy {
+		return vs[0].(map[string]*CryptoKeyIamPolicy)[vs[1].(string)]
+	}).(CryptoKeyIamPolicyOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyIAMPolicyInput)(nil)).Elem(), &CryptoKeyIAMPolicy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyIAMPolicyArrayInput)(nil)).Elem(), CryptoKeyIAMPolicyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyIAMPolicyMapInput)(nil)).Elem(), CryptoKeyIAMPolicyMap{})
-	pulumi.RegisterOutputType(CryptoKeyIAMPolicyOutput{})
-	pulumi.RegisterOutputType(CryptoKeyIAMPolicyArrayOutput{})
-	pulumi.RegisterOutputType(CryptoKeyIAMPolicyMapOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyIamPolicyInput)(nil)).Elem(), &CryptoKeyIamPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyIamPolicyArrayInput)(nil)).Elem(), CryptoKeyIamPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyIamPolicyMapInput)(nil)).Elem(), CryptoKeyIamPolicyMap{})
+	pulumi.RegisterOutputType(CryptoKeyIamPolicyOutput{})
+	pulumi.RegisterOutputType(CryptoKeyIamPolicyArrayOutput{})
+	pulumi.RegisterOutputType(CryptoKeyIamPolicyMapOutput{})
 }

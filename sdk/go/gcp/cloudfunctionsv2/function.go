@@ -62,7 +62,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewIAMMember(ctx, "gcs-pubsub-publishing", &projects.IAMMemberArgs{
+//			_, err = projects.NewIamMember(ctx, "gcs-pubsub-publishing", &projects.IamMemberArgs{
 //				Project: pulumi.String("my-project-name"),
 //				Role:    pulumi.String("roles/pubsub.publisher"),
 //				Member:  pulumi.String(fmt.Sprintf("serviceAccount:%v", gcsAccount.EmailAddress)),
@@ -77,7 +77,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			invoking, err := projects.NewIAMMember(ctx, "invoking", &projects.IAMMemberArgs{
+//			invoking, err := projects.NewIamMember(ctx, "invoking", &projects.IamMemberArgs{
 //				Project: pulumi.String("my-project-name"),
 //				Role:    pulumi.String("roles/run.invoker"),
 //				Member: account.Email.ApplyT(func(email string) (string, error) {
@@ -89,7 +89,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewIAMMember(ctx, "event-receiving", &projects.IAMMemberArgs{
+//			_, err = projects.NewIamMember(ctx, "event-receiving", &projects.IamMemberArgs{
 //				Project: pulumi.String("my-project-name"),
 //				Role:    pulumi.String("roles/eventarc.eventReceiver"),
 //				Member: account.Email.ApplyT(func(email string) (string, error) {
@@ -101,7 +101,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewIAMMember(ctx, "artifactregistry-reader", &projects.IAMMemberArgs{
+//			_, err = projects.NewIamMember(ctx, "artifactregistry-reader", &projects.IamMemberArgs{
 //				Project: pulumi.String("my-project-name"),
 //				Role:    pulumi.String("roles/artifactregistry.reader"),
 //				Member: account.Email.ApplyT(func(email string) (string, error) {
@@ -212,7 +212,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			invoking, err := projects.NewIAMMember(ctx, "invoking", &projects.IAMMemberArgs{
+//			invoking, err := projects.NewIamMember(ctx, "invoking", &projects.IamMemberArgs{
 //				Project: pulumi.String("my-project-name"),
 //				Role:    pulumi.String("roles/run.invoker"),
 //				Member: account.Email.ApplyT(func(email string) (string, error) {
@@ -222,7 +222,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewIAMMember(ctx, "event-receiving", &projects.IAMMemberArgs{
+//			_, err = projects.NewIamMember(ctx, "event-receiving", &projects.IamMemberArgs{
 //				Project: pulumi.String("my-project-name"),
 //				Role:    pulumi.String("roles/eventarc.eventReceiver"),
 //				Member: account.Email.ApplyT(func(email string) (string, error) {
@@ -234,7 +234,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewIAMMember(ctx, "artifactregistry-reader", &projects.IAMMemberArgs{
+//			_, err = projects.NewIamMember(ctx, "artifactregistry-reader", &projects.IamMemberArgs{
 //				Project: pulumi.String("my-project-name"),
 //				Role:    pulumi.String("roles/artifactregistry.reader"),
 //				Member: account.Email.ApplyT(func(email string) (string, error) {

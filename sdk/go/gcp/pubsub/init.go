@@ -31,20 +31,20 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Schema{}
 	case "gcp:pubsub/subscription:Subscription":
 		r = &Subscription{}
-	case "gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding":
-		r = &SubscriptionIAMBinding{}
-	case "gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember":
-		r = &SubscriptionIAMMember{}
-	case "gcp:pubsub/subscriptionIAMPolicy:SubscriptionIAMPolicy":
-		r = &SubscriptionIAMPolicy{}
+	case "gcp:pubsub/subscriptionIamBinding:SubscriptionIamBinding":
+		r = &SubscriptionIamBinding{}
+	case "gcp:pubsub/subscriptionIamMember:SubscriptionIamMember":
+		r = &SubscriptionIamMember{}
+	case "gcp:pubsub/subscriptionIamPolicy:SubscriptionIamPolicy":
+		r = &SubscriptionIamPolicy{}
 	case "gcp:pubsub/topic:Topic":
 		r = &Topic{}
-	case "gcp:pubsub/topicIAMBinding:TopicIAMBinding":
-		r = &TopicIAMBinding{}
-	case "gcp:pubsub/topicIAMMember:TopicIAMMember":
-		r = &TopicIAMMember{}
-	case "gcp:pubsub/topicIAMPolicy:TopicIAMPolicy":
-		r = &TopicIAMPolicy{}
+	case "gcp:pubsub/topicIamBinding:TopicIamBinding":
+		r = &TopicIamBinding{}
+	case "gcp:pubsub/topicIamMember:TopicIamMember":
+		r = &TopicIamMember{}
+	case "gcp:pubsub/topicIamPolicy:TopicIamPolicy":
+		r = &TopicIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -85,17 +85,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"pubsub/subscriptionIAMBinding",
+		"pubsub/subscriptionIamBinding",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"pubsub/subscriptionIAMMember",
+		"pubsub/subscriptionIamMember",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"pubsub/subscriptionIAMPolicy",
+		"pubsub/subscriptionIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -105,17 +105,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"pubsub/topicIAMBinding",
+		"pubsub/topicIamBinding",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"pubsub/topicIAMMember",
+		"pubsub/topicIamMember",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"pubsub/topicIAMPolicy",
+		"pubsub/topicIamPolicy",
 		&module{version},
 	)
 }

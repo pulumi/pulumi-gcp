@@ -72,7 +72,7 @@ type LookupAccountResult struct {
 	// The display name for the service account.
 	DisplayName string `pulumi:"displayName"`
 	// The e-mail address of the service account. This value
-	// should be referenced from any `organizations.getIAMPolicy` data sources
+	// should be referenced from any `organizations.getIamPolicy` data sources
 	// that would grant the service account privileges.
 	Email string `pulumi:"email"`
 	// The provider-assigned unique ID for this managed resource.
@@ -145,7 +145,7 @@ func (o LookupAccountResultOutput) DisplayName() pulumi.StringOutput {
 }
 
 // The e-mail address of the service account. This value
-// should be referenced from any `organizations.getIAMPolicy` data sources
+// should be referenced from any `organizations.getIamPolicy` data sources
 // that would grant the service account privileges.
 func (o LookupAccountResultOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.Email }).(pulumi.StringOutput)

@@ -14,13 +14,13 @@ import (
 
 // Three different resources help you manage IAM policies on dataproc jobs. Each of these resources serves a different use case:
 //
-// * `dataproc.JobIAMPolicy`: Authoritative. Sets the IAM policy for the job and replaces any existing policy already attached.
-// * `dataproc.JobIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the job are preserved.
-// * `dataproc.JobIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the job are preserved.
+// * `dataproc.JobIamPolicy`: Authoritative. Sets the IAM policy for the job and replaces any existing policy already attached.
+// * `dataproc.JobIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the job are preserved.
+// * `dataproc.JobIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the job are preserved.
 //
-// > **Note:** `dataproc.JobIAMPolicy` **cannot** be used in conjunction with `dataproc.JobIAMBinding` and `dataproc.JobIAMMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the job as `dataproc.JobIAMPolicy` replaces the entire policy.
+// > **Note:** `dataproc.JobIamPolicy` **cannot** be used in conjunction with `dataproc.JobIamBinding` and `dataproc.JobIamMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the job as `dataproc.JobIamPolicy` replaces the entire policy.
 //
-// > **Note:** `dataproc.JobIAMBinding` resources **can be** used in conjunction with `dataproc.JobIAMMember` resources **only if** they do not grant privilege to the same role.
+// > **Note:** `dataproc.JobIamBinding` resources **can be** used in conjunction with `dataproc.JobIamMember` resources **only if** they do not grant privilege to the same role.
 //
 // ## google\_dataproc\_job\_iam\_policy
 //
@@ -37,8 +37,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
+//			admin, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
 //					{
 //						Role: "roles/editor",
 //						Members: []string{
@@ -50,7 +50,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = dataproc.NewJobIAMPolicy(ctx, "editor", &dataproc.JobIAMPolicyArgs{
+//			_, err = dataproc.NewJobIamPolicy(ctx, "editor", &dataproc.JobIamPolicyArgs{
 //				Project:    pulumi.String("your-project"),
 //				Region:     pulumi.String("your-region"),
 //				JobId:      pulumi.String("your-dataproc-job"),
@@ -79,7 +79,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dataproc.NewJobIAMBinding(ctx, "editor", &dataproc.JobIAMBindingArgs{
+//			_, err := dataproc.NewJobIamBinding(ctx, "editor", &dataproc.JobIamBindingArgs{
 //				JobId: pulumi.String("your-dataproc-job"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -109,7 +109,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dataproc.NewJobIAMMember(ctx, "editor", &dataproc.JobIAMMemberArgs{
+//			_, err := dataproc.NewJobIamMember(ctx, "editor", &dataproc.JobIamMemberArgs{
 //				JobId:  pulumi.String("your-dataproc-job"),
 //				Member: pulumi.String("user:jane@example.com"),
 //				Role:   pulumi.String("roles/editor"),
@@ -129,29 +129,29 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:dataproc/jobIAMMember:JobIAMMember editor "projects/{project}/regions/{region}/jobs/{job_id}"
+//	$ pulumi import gcp:dataproc/jobIamMember:JobIamMember editor "projects/{project}/regions/{region}/jobs/{job_id}"
 //
 // ```
 //
 // ```sh
 //
-//	$ pulumi import gcp:dataproc/jobIAMMember:JobIAMMember editor "projects/{project}/regions/{region}/jobs/{job_id} roles/editor"
+//	$ pulumi import gcp:dataproc/jobIamMember:JobIamMember editor "projects/{project}/regions/{region}/jobs/{job_id} roles/editor"
 //
 // ```
 //
 // ```sh
 //
-//	$ pulumi import gcp:dataproc/jobIAMMember:JobIAMMember editor "projects/{project}/regions/{region}/jobs/{job_id} roles/editor user:jane@example.com"
+//	$ pulumi import gcp:dataproc/jobIamMember:JobIamMember editor "projects/{project}/regions/{region}/jobs/{job_id} roles/editor user:jane@example.com"
 //
 // ```
 //
 //	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 //
 // full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
-type JobIAMMember struct {
+type JobIamMember struct {
 	pulumi.CustomResourceState
 
-	Condition JobIAMMemberConditionPtrOutput `pulumi:"condition"`
+	Condition JobIamMemberConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the jobs's IAM policy.
 	Etag   pulumi.StringOutput `pulumi:"etag"`
 	JobId  pulumi.StringOutput `pulumi:"jobId"`
@@ -163,16 +163,16 @@ type JobIAMMember struct {
 	// is not provided, the provider will use a default.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The role that should be applied. Only one
-	// `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `dataproc.JobIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	//
-	// `dataproc.JobIAMPolicy` only:
+	// `dataproc.JobIamPolicy` only:
 	Role pulumi.StringOutput `pulumi:"role"`
 }
 
-// NewJobIAMMember registers a new resource with the given unique name, arguments, and options.
-func NewJobIAMMember(ctx *pulumi.Context,
-	name string, args *JobIAMMemberArgs, opts ...pulumi.ResourceOption) (*JobIAMMember, error) {
+// NewJobIamMember registers a new resource with the given unique name, arguments, and options.
+func NewJobIamMember(ctx *pulumi.Context,
+	name string, args *JobIamMemberArgs, opts ...pulumi.ResourceOption) (*JobIamMember, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -187,29 +187,29 @@ func NewJobIAMMember(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Role'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
-	var resource JobIAMMember
-	err := ctx.RegisterResource("gcp:dataproc/jobIAMMember:JobIAMMember", name, args, &resource, opts...)
+	var resource JobIamMember
+	err := ctx.RegisterResource("gcp:dataproc/jobIamMember:JobIamMember", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// GetJobIAMMember gets an existing JobIAMMember resource's state with the given name, ID, and optional
+// GetJobIamMember gets an existing JobIamMember resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetJobIAMMember(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *JobIAMMemberState, opts ...pulumi.ResourceOption) (*JobIAMMember, error) {
-	var resource JobIAMMember
-	err := ctx.ReadResource("gcp:dataproc/jobIAMMember:JobIAMMember", name, id, state, &resource, opts...)
+func GetJobIamMember(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *JobIamMemberState, opts ...pulumi.ResourceOption) (*JobIamMember, error) {
+	var resource JobIamMember
+	err := ctx.ReadResource("gcp:dataproc/jobIamMember:JobIamMember", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering JobIAMMember resources.
-type jobIAMMemberState struct {
-	Condition *JobIAMMemberCondition `pulumi:"condition"`
+// Input properties used for looking up and filtering JobIamMember resources.
+type jobIamMemberState struct {
+	Condition *JobIamMemberCondition `pulumi:"condition"`
 	// (Computed) The etag of the jobs's IAM policy.
 	Etag   *string `pulumi:"etag"`
 	JobId  *string `pulumi:"jobId"`
@@ -221,15 +221,15 @@ type jobIAMMemberState struct {
 	// is not provided, the provider will use a default.
 	Region *string `pulumi:"region"`
 	// The role that should be applied. Only one
-	// `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `dataproc.JobIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	//
-	// `dataproc.JobIAMPolicy` only:
+	// `dataproc.JobIamPolicy` only:
 	Role *string `pulumi:"role"`
 }
 
-type JobIAMMemberState struct {
-	Condition JobIAMMemberConditionPtrInput
+type JobIamMemberState struct {
+	Condition JobIamMemberConditionPtrInput
 	// (Computed) The etag of the jobs's IAM policy.
 	Etag   pulumi.StringPtrInput
 	JobId  pulumi.StringPtrInput
@@ -241,19 +241,19 @@ type JobIAMMemberState struct {
 	// is not provided, the provider will use a default.
 	Region pulumi.StringPtrInput
 	// The role that should be applied. Only one
-	// `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `dataproc.JobIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	//
-	// `dataproc.JobIAMPolicy` only:
+	// `dataproc.JobIamPolicy` only:
 	Role pulumi.StringPtrInput
 }
 
-func (JobIAMMemberState) ElementType() reflect.Type {
-	return reflect.TypeOf((*jobIAMMemberState)(nil)).Elem()
+func (JobIamMemberState) ElementType() reflect.Type {
+	return reflect.TypeOf((*jobIamMemberState)(nil)).Elem()
 }
 
-type jobIAMMemberArgs struct {
-	Condition *JobIAMMemberCondition `pulumi:"condition"`
+type jobIamMemberArgs struct {
+	Condition *JobIamMemberCondition `pulumi:"condition"`
 	JobId     string                 `pulumi:"jobId"`
 	Member    string                 `pulumi:"member"`
 	// The project in which the job belongs. If it
@@ -263,16 +263,16 @@ type jobIAMMemberArgs struct {
 	// is not provided, the provider will use a default.
 	Region *string `pulumi:"region"`
 	// The role that should be applied. Only one
-	// `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `dataproc.JobIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	//
-	// `dataproc.JobIAMPolicy` only:
+	// `dataproc.JobIamPolicy` only:
 	Role string `pulumi:"role"`
 }
 
-// The set of arguments for constructing a JobIAMMember resource.
-type JobIAMMemberArgs struct {
-	Condition JobIAMMemberConditionPtrInput
+// The set of arguments for constructing a JobIamMember resource.
+type JobIamMemberArgs struct {
+	Condition JobIamMemberConditionPtrInput
 	JobId     pulumi.StringInput
 	Member    pulumi.StringInput
 	// The project in which the job belongs. If it
@@ -282,183 +282,183 @@ type JobIAMMemberArgs struct {
 	// is not provided, the provider will use a default.
 	Region pulumi.StringPtrInput
 	// The role that should be applied. Only one
-	// `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `dataproc.JobIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	//
-	// `dataproc.JobIAMPolicy` only:
+	// `dataproc.JobIamPolicy` only:
 	Role pulumi.StringInput
 }
 
-func (JobIAMMemberArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*jobIAMMemberArgs)(nil)).Elem()
+func (JobIamMemberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*jobIamMemberArgs)(nil)).Elem()
 }
 
-type JobIAMMemberInput interface {
+type JobIamMemberInput interface {
 	pulumi.Input
 
-	ToJobIAMMemberOutput() JobIAMMemberOutput
-	ToJobIAMMemberOutputWithContext(ctx context.Context) JobIAMMemberOutput
+	ToJobIamMemberOutput() JobIamMemberOutput
+	ToJobIamMemberOutputWithContext(ctx context.Context) JobIamMemberOutput
 }
 
-func (*JobIAMMember) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobIAMMember)(nil)).Elem()
+func (*JobIamMember) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobIamMember)(nil)).Elem()
 }
 
-func (i *JobIAMMember) ToJobIAMMemberOutput() JobIAMMemberOutput {
-	return i.ToJobIAMMemberOutputWithContext(context.Background())
+func (i *JobIamMember) ToJobIamMemberOutput() JobIamMemberOutput {
+	return i.ToJobIamMemberOutputWithContext(context.Background())
 }
 
-func (i *JobIAMMember) ToJobIAMMemberOutputWithContext(ctx context.Context) JobIAMMemberOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobIAMMemberOutput)
+func (i *JobIamMember) ToJobIamMemberOutputWithContext(ctx context.Context) JobIamMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobIamMemberOutput)
 }
 
-// JobIAMMemberArrayInput is an input type that accepts JobIAMMemberArray and JobIAMMemberArrayOutput values.
-// You can construct a concrete instance of `JobIAMMemberArrayInput` via:
+// JobIamMemberArrayInput is an input type that accepts JobIamMemberArray and JobIamMemberArrayOutput values.
+// You can construct a concrete instance of `JobIamMemberArrayInput` via:
 //
-//	JobIAMMemberArray{ JobIAMMemberArgs{...} }
-type JobIAMMemberArrayInput interface {
+//	JobIamMemberArray{ JobIamMemberArgs{...} }
+type JobIamMemberArrayInput interface {
 	pulumi.Input
 
-	ToJobIAMMemberArrayOutput() JobIAMMemberArrayOutput
-	ToJobIAMMemberArrayOutputWithContext(context.Context) JobIAMMemberArrayOutput
+	ToJobIamMemberArrayOutput() JobIamMemberArrayOutput
+	ToJobIamMemberArrayOutputWithContext(context.Context) JobIamMemberArrayOutput
 }
 
-type JobIAMMemberArray []JobIAMMemberInput
+type JobIamMemberArray []JobIamMemberInput
 
-func (JobIAMMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*JobIAMMember)(nil)).Elem()
+func (JobIamMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*JobIamMember)(nil)).Elem()
 }
 
-func (i JobIAMMemberArray) ToJobIAMMemberArrayOutput() JobIAMMemberArrayOutput {
-	return i.ToJobIAMMemberArrayOutputWithContext(context.Background())
+func (i JobIamMemberArray) ToJobIamMemberArrayOutput() JobIamMemberArrayOutput {
+	return i.ToJobIamMemberArrayOutputWithContext(context.Background())
 }
 
-func (i JobIAMMemberArray) ToJobIAMMemberArrayOutputWithContext(ctx context.Context) JobIAMMemberArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobIAMMemberArrayOutput)
+func (i JobIamMemberArray) ToJobIamMemberArrayOutputWithContext(ctx context.Context) JobIamMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobIamMemberArrayOutput)
 }
 
-// JobIAMMemberMapInput is an input type that accepts JobIAMMemberMap and JobIAMMemberMapOutput values.
-// You can construct a concrete instance of `JobIAMMemberMapInput` via:
+// JobIamMemberMapInput is an input type that accepts JobIamMemberMap and JobIamMemberMapOutput values.
+// You can construct a concrete instance of `JobIamMemberMapInput` via:
 //
-//	JobIAMMemberMap{ "key": JobIAMMemberArgs{...} }
-type JobIAMMemberMapInput interface {
+//	JobIamMemberMap{ "key": JobIamMemberArgs{...} }
+type JobIamMemberMapInput interface {
 	pulumi.Input
 
-	ToJobIAMMemberMapOutput() JobIAMMemberMapOutput
-	ToJobIAMMemberMapOutputWithContext(context.Context) JobIAMMemberMapOutput
+	ToJobIamMemberMapOutput() JobIamMemberMapOutput
+	ToJobIamMemberMapOutputWithContext(context.Context) JobIamMemberMapOutput
 }
 
-type JobIAMMemberMap map[string]JobIAMMemberInput
+type JobIamMemberMap map[string]JobIamMemberInput
 
-func (JobIAMMemberMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*JobIAMMember)(nil)).Elem()
+func (JobIamMemberMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*JobIamMember)(nil)).Elem()
 }
 
-func (i JobIAMMemberMap) ToJobIAMMemberMapOutput() JobIAMMemberMapOutput {
-	return i.ToJobIAMMemberMapOutputWithContext(context.Background())
+func (i JobIamMemberMap) ToJobIamMemberMapOutput() JobIamMemberMapOutput {
+	return i.ToJobIamMemberMapOutputWithContext(context.Background())
 }
 
-func (i JobIAMMemberMap) ToJobIAMMemberMapOutputWithContext(ctx context.Context) JobIAMMemberMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobIAMMemberMapOutput)
+func (i JobIamMemberMap) ToJobIamMemberMapOutputWithContext(ctx context.Context) JobIamMemberMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobIamMemberMapOutput)
 }
 
-type JobIAMMemberOutput struct{ *pulumi.OutputState }
+type JobIamMemberOutput struct{ *pulumi.OutputState }
 
-func (JobIAMMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobIAMMember)(nil)).Elem()
+func (JobIamMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobIamMember)(nil)).Elem()
 }
 
-func (o JobIAMMemberOutput) ToJobIAMMemberOutput() JobIAMMemberOutput {
+func (o JobIamMemberOutput) ToJobIamMemberOutput() JobIamMemberOutput {
 	return o
 }
 
-func (o JobIAMMemberOutput) ToJobIAMMemberOutputWithContext(ctx context.Context) JobIAMMemberOutput {
+func (o JobIamMemberOutput) ToJobIamMemberOutputWithContext(ctx context.Context) JobIamMemberOutput {
 	return o
 }
 
-func (o JobIAMMemberOutput) Condition() JobIAMMemberConditionPtrOutput {
-	return o.ApplyT(func(v *JobIAMMember) JobIAMMemberConditionPtrOutput { return v.Condition }).(JobIAMMemberConditionPtrOutput)
+func (o JobIamMemberOutput) Condition() JobIamMemberConditionPtrOutput {
+	return o.ApplyT(func(v *JobIamMember) JobIamMemberConditionPtrOutput { return v.Condition }).(JobIamMemberConditionPtrOutput)
 }
 
 // (Computed) The etag of the jobs's IAM policy.
-func (o JobIAMMemberOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v *JobIAMMember) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+func (o JobIamMemberOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *JobIamMember) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-func (o JobIAMMemberOutput) JobId() pulumi.StringOutput {
-	return o.ApplyT(func(v *JobIAMMember) pulumi.StringOutput { return v.JobId }).(pulumi.StringOutput)
+func (o JobIamMemberOutput) JobId() pulumi.StringOutput {
+	return o.ApplyT(func(v *JobIamMember) pulumi.StringOutput { return v.JobId }).(pulumi.StringOutput)
 }
 
-func (o JobIAMMemberOutput) Member() pulumi.StringOutput {
-	return o.ApplyT(func(v *JobIAMMember) pulumi.StringOutput { return v.Member }).(pulumi.StringOutput)
+func (o JobIamMemberOutput) Member() pulumi.StringOutput {
+	return o.ApplyT(func(v *JobIamMember) pulumi.StringOutput { return v.Member }).(pulumi.StringOutput)
 }
 
 // The project in which the job belongs. If it
 // is not provided, the provider will use a default.
-func (o JobIAMMemberOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func(v *JobIAMMember) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+func (o JobIamMemberOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *JobIamMember) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The region in which the job belongs. If it
 // is not provided, the provider will use a default.
-func (o JobIAMMemberOutput) Region() pulumi.StringOutput {
-	return o.ApplyT(func(v *JobIAMMember) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+func (o JobIamMemberOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *JobIamMember) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 // The role that should be applied. Only one
-// `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
+// `dataproc.JobIamBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
 //
-// `dataproc.JobIAMPolicy` only:
-func (o JobIAMMemberOutput) Role() pulumi.StringOutput {
-	return o.ApplyT(func(v *JobIAMMember) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
+// `dataproc.JobIamPolicy` only:
+func (o JobIamMemberOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v *JobIamMember) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }
 
-type JobIAMMemberArrayOutput struct{ *pulumi.OutputState }
+type JobIamMemberArrayOutput struct{ *pulumi.OutputState }
 
-func (JobIAMMemberArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*JobIAMMember)(nil)).Elem()
+func (JobIamMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*JobIamMember)(nil)).Elem()
 }
 
-func (o JobIAMMemberArrayOutput) ToJobIAMMemberArrayOutput() JobIAMMemberArrayOutput {
+func (o JobIamMemberArrayOutput) ToJobIamMemberArrayOutput() JobIamMemberArrayOutput {
 	return o
 }
 
-func (o JobIAMMemberArrayOutput) ToJobIAMMemberArrayOutputWithContext(ctx context.Context) JobIAMMemberArrayOutput {
+func (o JobIamMemberArrayOutput) ToJobIamMemberArrayOutputWithContext(ctx context.Context) JobIamMemberArrayOutput {
 	return o
 }
 
-func (o JobIAMMemberArrayOutput) Index(i pulumi.IntInput) JobIAMMemberOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *JobIAMMember {
-		return vs[0].([]*JobIAMMember)[vs[1].(int)]
-	}).(JobIAMMemberOutput)
+func (o JobIamMemberArrayOutput) Index(i pulumi.IntInput) JobIamMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *JobIamMember {
+		return vs[0].([]*JobIamMember)[vs[1].(int)]
+	}).(JobIamMemberOutput)
 }
 
-type JobIAMMemberMapOutput struct{ *pulumi.OutputState }
+type JobIamMemberMapOutput struct{ *pulumi.OutputState }
 
-func (JobIAMMemberMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*JobIAMMember)(nil)).Elem()
+func (JobIamMemberMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*JobIamMember)(nil)).Elem()
 }
 
-func (o JobIAMMemberMapOutput) ToJobIAMMemberMapOutput() JobIAMMemberMapOutput {
+func (o JobIamMemberMapOutput) ToJobIamMemberMapOutput() JobIamMemberMapOutput {
 	return o
 }
 
-func (o JobIAMMemberMapOutput) ToJobIAMMemberMapOutputWithContext(ctx context.Context) JobIAMMemberMapOutput {
+func (o JobIamMemberMapOutput) ToJobIamMemberMapOutputWithContext(ctx context.Context) JobIamMemberMapOutput {
 	return o
 }
 
-func (o JobIAMMemberMapOutput) MapIndex(k pulumi.StringInput) JobIAMMemberOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *JobIAMMember {
-		return vs[0].(map[string]*JobIAMMember)[vs[1].(string)]
-	}).(JobIAMMemberOutput)
+func (o JobIamMemberMapOutput) MapIndex(k pulumi.StringInput) JobIamMemberOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *JobIamMember {
+		return vs[0].(map[string]*JobIamMember)[vs[1].(string)]
+	}).(JobIamMemberOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*JobIAMMemberInput)(nil)).Elem(), &JobIAMMember{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobIAMMemberArrayInput)(nil)).Elem(), JobIAMMemberArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobIAMMemberMapInput)(nil)).Elem(), JobIAMMemberMap{})
-	pulumi.RegisterOutputType(JobIAMMemberOutput{})
-	pulumi.RegisterOutputType(JobIAMMemberArrayOutput{})
-	pulumi.RegisterOutputType(JobIAMMemberMapOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobIamMemberInput)(nil)).Elem(), &JobIamMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobIamMemberArrayInput)(nil)).Elem(), JobIamMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobIamMemberMapInput)(nil)).Elem(), JobIamMemberMap{})
+	pulumi.RegisterOutputType(JobIamMemberOutput{})
+	pulumi.RegisterOutputType(JobIamMemberArrayOutput{})
+	pulumi.RegisterOutputType(JobIamMemberMapOutput{})
 }

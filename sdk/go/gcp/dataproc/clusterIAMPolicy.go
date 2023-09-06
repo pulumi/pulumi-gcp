@@ -14,13 +14,13 @@ import (
 
 // Three different resources help you manage IAM policies on dataproc clusters. Each of these resources serves a different use case:
 //
-// * `dataproc.ClusterIAMPolicy`: Authoritative. Sets the IAM policy for the cluster and replaces any existing policy already attached.
-// * `dataproc.ClusterIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the cluster are preserved.
-// * `dataproc.ClusterIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the cluster are preserved.
+// * `dataproc.ClusterIamPolicy`: Authoritative. Sets the IAM policy for the cluster and replaces any existing policy already attached.
+// * `dataproc.ClusterIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the cluster are preserved.
+// * `dataproc.ClusterIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the cluster are preserved.
 //
-// > **Note:** `dataproc.ClusterIAMPolicy` **cannot** be used in conjunction with `dataproc.ClusterIAMBinding` and `dataproc.ClusterIAMMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the cluster as `dataproc.ClusterIAMPolicy` replaces the entire policy.
+// > **Note:** `dataproc.ClusterIamPolicy` **cannot** be used in conjunction with `dataproc.ClusterIamBinding` and `dataproc.ClusterIamMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the cluster as `dataproc.ClusterIamPolicy` replaces the entire policy.
 //
-// > **Note:** `dataproc.ClusterIAMBinding` resources **can be** used in conjunction with `dataproc.ClusterIAMMember` resources **only if** they do not grant privilege to the same role.
+// > **Note:** `dataproc.ClusterIamBinding` resources **can be** used in conjunction with `dataproc.ClusterIamMember` resources **only if** they do not grant privilege to the same role.
 //
 // ## google\_dataproc\_cluster\_iam\_policy
 //
@@ -37,8 +37,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
+//			admin, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
 //					{
 //						Role: "roles/editor",
 //						Members: []string{
@@ -50,7 +50,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = dataproc.NewClusterIAMPolicy(ctx, "editor", &dataproc.ClusterIAMPolicyArgs{
+//			_, err = dataproc.NewClusterIamPolicy(ctx, "editor", &dataproc.ClusterIamPolicyArgs{
 //				Project:    pulumi.String("your-project"),
 //				Region:     pulumi.String("your-region"),
 //				Cluster:    pulumi.String("your-dataproc-cluster"),
@@ -79,7 +79,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dataproc.NewClusterIAMBinding(ctx, "editor", &dataproc.ClusterIAMBindingArgs{
+//			_, err := dataproc.NewClusterIamBinding(ctx, "editor", &dataproc.ClusterIamBindingArgs{
 //				Cluster: pulumi.String("your-dataproc-cluster"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -109,7 +109,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dataproc.NewClusterIAMMember(ctx, "editor", &dataproc.ClusterIAMMemberArgs{
+//			_, err := dataproc.NewClusterIamMember(ctx, "editor", &dataproc.ClusterIamMemberArgs{
 //				Cluster: pulumi.String("your-dataproc-cluster"),
 //				Member:  pulumi.String("user:jane@example.com"),
 //				Role:    pulumi.String("roles/editor"),
@@ -129,31 +129,31 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy editor "projects/{project}/regions/{region}/clusters/{cluster}"
+//	$ pulumi import gcp:dataproc/clusterIamPolicy:ClusterIamPolicy editor "projects/{project}/regions/{region}/clusters/{cluster}"
 //
 // ```
 //
 // ```sh
 //
-//	$ pulumi import gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy editor "projects/{project}/regions/{region}/clusters/{cluster} roles/editor"
+//	$ pulumi import gcp:dataproc/clusterIamPolicy:ClusterIamPolicy editor "projects/{project}/regions/{region}/clusters/{cluster} roles/editor"
 //
 // ```
 //
 // ```sh
 //
-//	$ pulumi import gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy editor "projects/{project}/regions/{region}/clusters/{cluster} roles/editor user:jane@example.com"
+//	$ pulumi import gcp:dataproc/clusterIamPolicy:ClusterIamPolicy editor "projects/{project}/regions/{region}/clusters/{cluster} roles/editor user:jane@example.com"
 //
 // ```
 //
 //	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 //
 // full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
-type ClusterIAMPolicy struct {
+type ClusterIamPolicy struct {
 	pulumi.CustomResourceState
 
 	// The name or relative resource id of the cluster to manage IAM policies for.
 	//
-	// For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
+	// For `dataproc.ClusterIamMember` or `dataproc.ClusterIamBinding`:
 	//
 	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
 	//   Each entry can have one of the following values:
@@ -166,7 +166,7 @@ type ClusterIAMPolicy struct {
 	Cluster pulumi.StringOutput `pulumi:"cluster"`
 	// (Computed) The etag of the clusters's IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// The policy data generated by a `organizations.getIAMPolicy` data source.
+	// The policy data generated by a `organizations.getIamPolicy` data source.
 	//
 	// ***
 	PolicyData pulumi.StringOutput `pulumi:"policyData"`
@@ -178,9 +178,9 @@ type ClusterIAMPolicy struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 }
 
-// NewClusterIAMPolicy registers a new resource with the given unique name, arguments, and options.
-func NewClusterIAMPolicy(ctx *pulumi.Context,
-	name string, args *ClusterIAMPolicyArgs, opts ...pulumi.ResourceOption) (*ClusterIAMPolicy, error) {
+// NewClusterIamPolicy registers a new resource with the given unique name, arguments, and options.
+func NewClusterIamPolicy(ctx *pulumi.Context,
+	name string, args *ClusterIamPolicyArgs, opts ...pulumi.ResourceOption) (*ClusterIamPolicy, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -192,31 +192,31 @@ func NewClusterIAMPolicy(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'PolicyData'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
-	var resource ClusterIAMPolicy
-	err := ctx.RegisterResource("gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy", name, args, &resource, opts...)
+	var resource ClusterIamPolicy
+	err := ctx.RegisterResource("gcp:dataproc/clusterIamPolicy:ClusterIamPolicy", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// GetClusterIAMPolicy gets an existing ClusterIAMPolicy resource's state with the given name, ID, and optional
+// GetClusterIamPolicy gets an existing ClusterIamPolicy resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetClusterIAMPolicy(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *ClusterIAMPolicyState, opts ...pulumi.ResourceOption) (*ClusterIAMPolicy, error) {
-	var resource ClusterIAMPolicy
-	err := ctx.ReadResource("gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy", name, id, state, &resource, opts...)
+func GetClusterIamPolicy(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *ClusterIamPolicyState, opts ...pulumi.ResourceOption) (*ClusterIamPolicy, error) {
+	var resource ClusterIamPolicy
+	err := ctx.ReadResource("gcp:dataproc/clusterIamPolicy:ClusterIamPolicy", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering ClusterIAMPolicy resources.
-type clusterIAMPolicyState struct {
+// Input properties used for looking up and filtering ClusterIamPolicy resources.
+type clusterIamPolicyState struct {
 	// The name or relative resource id of the cluster to manage IAM policies for.
 	//
-	// For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
+	// For `dataproc.ClusterIamMember` or `dataproc.ClusterIamBinding`:
 	//
 	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
 	//   Each entry can have one of the following values:
@@ -229,7 +229,7 @@ type clusterIAMPolicyState struct {
 	Cluster *string `pulumi:"cluster"`
 	// (Computed) The etag of the clusters's IAM policy.
 	Etag *string `pulumi:"etag"`
-	// The policy data generated by a `organizations.getIAMPolicy` data source.
+	// The policy data generated by a `organizations.getIamPolicy` data source.
 	//
 	// ***
 	PolicyData *string `pulumi:"policyData"`
@@ -241,10 +241,10 @@ type clusterIAMPolicyState struct {
 	Region *string `pulumi:"region"`
 }
 
-type ClusterIAMPolicyState struct {
+type ClusterIamPolicyState struct {
 	// The name or relative resource id of the cluster to manage IAM policies for.
 	//
-	// For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
+	// For `dataproc.ClusterIamMember` or `dataproc.ClusterIamBinding`:
 	//
 	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
 	//   Each entry can have one of the following values:
@@ -257,7 +257,7 @@ type ClusterIAMPolicyState struct {
 	Cluster pulumi.StringPtrInput
 	// (Computed) The etag of the clusters's IAM policy.
 	Etag pulumi.StringPtrInput
-	// The policy data generated by a `organizations.getIAMPolicy` data source.
+	// The policy data generated by a `organizations.getIamPolicy` data source.
 	//
 	// ***
 	PolicyData pulumi.StringPtrInput
@@ -269,14 +269,14 @@ type ClusterIAMPolicyState struct {
 	Region pulumi.StringPtrInput
 }
 
-func (ClusterIAMPolicyState) ElementType() reflect.Type {
-	return reflect.TypeOf((*clusterIAMPolicyState)(nil)).Elem()
+func (ClusterIamPolicyState) ElementType() reflect.Type {
+	return reflect.TypeOf((*clusterIamPolicyState)(nil)).Elem()
 }
 
-type clusterIAMPolicyArgs struct {
+type clusterIamPolicyArgs struct {
 	// The name or relative resource id of the cluster to manage IAM policies for.
 	//
-	// For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
+	// For `dataproc.ClusterIamMember` or `dataproc.ClusterIamBinding`:
 	//
 	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
 	//   Each entry can have one of the following values:
@@ -287,7 +287,7 @@ type clusterIAMPolicyArgs struct {
 	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Cluster string `pulumi:"cluster"`
-	// The policy data generated by a `organizations.getIAMPolicy` data source.
+	// The policy data generated by a `organizations.getIamPolicy` data source.
 	//
 	// ***
 	PolicyData string `pulumi:"policyData"`
@@ -299,11 +299,11 @@ type clusterIAMPolicyArgs struct {
 	Region *string `pulumi:"region"`
 }
 
-// The set of arguments for constructing a ClusterIAMPolicy resource.
-type ClusterIAMPolicyArgs struct {
+// The set of arguments for constructing a ClusterIamPolicy resource.
+type ClusterIamPolicyArgs struct {
 	// The name or relative resource id of the cluster to manage IAM policies for.
 	//
-	// For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
+	// For `dataproc.ClusterIamMember` or `dataproc.ClusterIamBinding`:
 	//
 	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
 	//   Each entry can have one of the following values:
@@ -314,7 +314,7 @@ type ClusterIAMPolicyArgs struct {
 	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Cluster pulumi.StringInput
-	// The policy data generated by a `organizations.getIAMPolicy` data source.
+	// The policy data generated by a `organizations.getIamPolicy` data source.
 	//
 	// ***
 	PolicyData pulumi.StringInput
@@ -326,96 +326,96 @@ type ClusterIAMPolicyArgs struct {
 	Region pulumi.StringPtrInput
 }
 
-func (ClusterIAMPolicyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*clusterIAMPolicyArgs)(nil)).Elem()
+func (ClusterIamPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*clusterIamPolicyArgs)(nil)).Elem()
 }
 
-type ClusterIAMPolicyInput interface {
+type ClusterIamPolicyInput interface {
 	pulumi.Input
 
-	ToClusterIAMPolicyOutput() ClusterIAMPolicyOutput
-	ToClusterIAMPolicyOutputWithContext(ctx context.Context) ClusterIAMPolicyOutput
+	ToClusterIamPolicyOutput() ClusterIamPolicyOutput
+	ToClusterIamPolicyOutputWithContext(ctx context.Context) ClusterIamPolicyOutput
 }
 
-func (*ClusterIAMPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterIAMPolicy)(nil)).Elem()
+func (*ClusterIamPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterIamPolicy)(nil)).Elem()
 }
 
-func (i *ClusterIAMPolicy) ToClusterIAMPolicyOutput() ClusterIAMPolicyOutput {
-	return i.ToClusterIAMPolicyOutputWithContext(context.Background())
+func (i *ClusterIamPolicy) ToClusterIamPolicyOutput() ClusterIamPolicyOutput {
+	return i.ToClusterIamPolicyOutputWithContext(context.Background())
 }
 
-func (i *ClusterIAMPolicy) ToClusterIAMPolicyOutputWithContext(ctx context.Context) ClusterIAMPolicyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMPolicyOutput)
+func (i *ClusterIamPolicy) ToClusterIamPolicyOutputWithContext(ctx context.Context) ClusterIamPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterIamPolicyOutput)
 }
 
-// ClusterIAMPolicyArrayInput is an input type that accepts ClusterIAMPolicyArray and ClusterIAMPolicyArrayOutput values.
-// You can construct a concrete instance of `ClusterIAMPolicyArrayInput` via:
+// ClusterIamPolicyArrayInput is an input type that accepts ClusterIamPolicyArray and ClusterIamPolicyArrayOutput values.
+// You can construct a concrete instance of `ClusterIamPolicyArrayInput` via:
 //
-//	ClusterIAMPolicyArray{ ClusterIAMPolicyArgs{...} }
-type ClusterIAMPolicyArrayInput interface {
+//	ClusterIamPolicyArray{ ClusterIamPolicyArgs{...} }
+type ClusterIamPolicyArrayInput interface {
 	pulumi.Input
 
-	ToClusterIAMPolicyArrayOutput() ClusterIAMPolicyArrayOutput
-	ToClusterIAMPolicyArrayOutputWithContext(context.Context) ClusterIAMPolicyArrayOutput
+	ToClusterIamPolicyArrayOutput() ClusterIamPolicyArrayOutput
+	ToClusterIamPolicyArrayOutputWithContext(context.Context) ClusterIamPolicyArrayOutput
 }
 
-type ClusterIAMPolicyArray []ClusterIAMPolicyInput
+type ClusterIamPolicyArray []ClusterIamPolicyInput
 
-func (ClusterIAMPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*ClusterIAMPolicy)(nil)).Elem()
+func (ClusterIamPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*ClusterIamPolicy)(nil)).Elem()
 }
 
-func (i ClusterIAMPolicyArray) ToClusterIAMPolicyArrayOutput() ClusterIAMPolicyArrayOutput {
-	return i.ToClusterIAMPolicyArrayOutputWithContext(context.Background())
+func (i ClusterIamPolicyArray) ToClusterIamPolicyArrayOutput() ClusterIamPolicyArrayOutput {
+	return i.ToClusterIamPolicyArrayOutputWithContext(context.Background())
 }
 
-func (i ClusterIAMPolicyArray) ToClusterIAMPolicyArrayOutputWithContext(ctx context.Context) ClusterIAMPolicyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMPolicyArrayOutput)
+func (i ClusterIamPolicyArray) ToClusterIamPolicyArrayOutputWithContext(ctx context.Context) ClusterIamPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterIamPolicyArrayOutput)
 }
 
-// ClusterIAMPolicyMapInput is an input type that accepts ClusterIAMPolicyMap and ClusterIAMPolicyMapOutput values.
-// You can construct a concrete instance of `ClusterIAMPolicyMapInput` via:
+// ClusterIamPolicyMapInput is an input type that accepts ClusterIamPolicyMap and ClusterIamPolicyMapOutput values.
+// You can construct a concrete instance of `ClusterIamPolicyMapInput` via:
 //
-//	ClusterIAMPolicyMap{ "key": ClusterIAMPolicyArgs{...} }
-type ClusterIAMPolicyMapInput interface {
+//	ClusterIamPolicyMap{ "key": ClusterIamPolicyArgs{...} }
+type ClusterIamPolicyMapInput interface {
 	pulumi.Input
 
-	ToClusterIAMPolicyMapOutput() ClusterIAMPolicyMapOutput
-	ToClusterIAMPolicyMapOutputWithContext(context.Context) ClusterIAMPolicyMapOutput
+	ToClusterIamPolicyMapOutput() ClusterIamPolicyMapOutput
+	ToClusterIamPolicyMapOutputWithContext(context.Context) ClusterIamPolicyMapOutput
 }
 
-type ClusterIAMPolicyMap map[string]ClusterIAMPolicyInput
+type ClusterIamPolicyMap map[string]ClusterIamPolicyInput
 
-func (ClusterIAMPolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*ClusterIAMPolicy)(nil)).Elem()
+func (ClusterIamPolicyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*ClusterIamPolicy)(nil)).Elem()
 }
 
-func (i ClusterIAMPolicyMap) ToClusterIAMPolicyMapOutput() ClusterIAMPolicyMapOutput {
-	return i.ToClusterIAMPolicyMapOutputWithContext(context.Background())
+func (i ClusterIamPolicyMap) ToClusterIamPolicyMapOutput() ClusterIamPolicyMapOutput {
+	return i.ToClusterIamPolicyMapOutputWithContext(context.Background())
 }
 
-func (i ClusterIAMPolicyMap) ToClusterIAMPolicyMapOutputWithContext(ctx context.Context) ClusterIAMPolicyMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMPolicyMapOutput)
+func (i ClusterIamPolicyMap) ToClusterIamPolicyMapOutputWithContext(ctx context.Context) ClusterIamPolicyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterIamPolicyMapOutput)
 }
 
-type ClusterIAMPolicyOutput struct{ *pulumi.OutputState }
+type ClusterIamPolicyOutput struct{ *pulumi.OutputState }
 
-func (ClusterIAMPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterIAMPolicy)(nil)).Elem()
+func (ClusterIamPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterIamPolicy)(nil)).Elem()
 }
 
-func (o ClusterIAMPolicyOutput) ToClusterIAMPolicyOutput() ClusterIAMPolicyOutput {
+func (o ClusterIamPolicyOutput) ToClusterIamPolicyOutput() ClusterIamPolicyOutput {
 	return o
 }
 
-func (o ClusterIAMPolicyOutput) ToClusterIAMPolicyOutputWithContext(ctx context.Context) ClusterIAMPolicyOutput {
+func (o ClusterIamPolicyOutput) ToClusterIamPolicyOutputWithContext(ctx context.Context) ClusterIamPolicyOutput {
 	return o
 }
 
 // The name or relative resource id of the cluster to manage IAM policies for.
 //
-// For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
+// For `dataproc.ClusterIamMember` or `dataproc.ClusterIamBinding`:
 //
 //   - `member/members` - (Required) Identities that will be granted the privilege in `role`.
 //     Each entry can have one of the following values:
@@ -425,79 +425,79 @@ func (o ClusterIAMPolicyOutput) ToClusterIAMPolicyOutputWithContext(ctx context.
 //   - **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
 //   - **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
 //   - **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-func (o ClusterIAMPolicyOutput) Cluster() pulumi.StringOutput {
-	return o.ApplyT(func(v *ClusterIAMPolicy) pulumi.StringOutput { return v.Cluster }).(pulumi.StringOutput)
+func (o ClusterIamPolicyOutput) Cluster() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterIamPolicy) pulumi.StringOutput { return v.Cluster }).(pulumi.StringOutput)
 }
 
 // (Computed) The etag of the clusters's IAM policy.
-func (o ClusterIAMPolicyOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v *ClusterIAMPolicy) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+func (o ClusterIamPolicyOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterIamPolicy) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// The policy data generated by a `organizations.getIAMPolicy` data source.
+// The policy data generated by a `organizations.getIamPolicy` data source.
 //
 // ***
-func (o ClusterIAMPolicyOutput) PolicyData() pulumi.StringOutput {
-	return o.ApplyT(func(v *ClusterIAMPolicy) pulumi.StringOutput { return v.PolicyData }).(pulumi.StringOutput)
+func (o ClusterIamPolicyOutput) PolicyData() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterIamPolicy) pulumi.StringOutput { return v.PolicyData }).(pulumi.StringOutput)
 }
 
 // The project in which the cluster belongs. If it
 // is not provided, the provider will use a default.
-func (o ClusterIAMPolicyOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func(v *ClusterIAMPolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+func (o ClusterIamPolicyOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterIamPolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The region in which the cluster belongs. If it
 // is not provided, the provider will use a default.
-func (o ClusterIAMPolicyOutput) Region() pulumi.StringOutput {
-	return o.ApplyT(func(v *ClusterIAMPolicy) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+func (o ClusterIamPolicyOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterIamPolicy) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-type ClusterIAMPolicyArrayOutput struct{ *pulumi.OutputState }
+type ClusterIamPolicyArrayOutput struct{ *pulumi.OutputState }
 
-func (ClusterIAMPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*ClusterIAMPolicy)(nil)).Elem()
+func (ClusterIamPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*ClusterIamPolicy)(nil)).Elem()
 }
 
-func (o ClusterIAMPolicyArrayOutput) ToClusterIAMPolicyArrayOutput() ClusterIAMPolicyArrayOutput {
+func (o ClusterIamPolicyArrayOutput) ToClusterIamPolicyArrayOutput() ClusterIamPolicyArrayOutput {
 	return o
 }
 
-func (o ClusterIAMPolicyArrayOutput) ToClusterIAMPolicyArrayOutputWithContext(ctx context.Context) ClusterIAMPolicyArrayOutput {
+func (o ClusterIamPolicyArrayOutput) ToClusterIamPolicyArrayOutputWithContext(ctx context.Context) ClusterIamPolicyArrayOutput {
 	return o
 }
 
-func (o ClusterIAMPolicyArrayOutput) Index(i pulumi.IntInput) ClusterIAMPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ClusterIAMPolicy {
-		return vs[0].([]*ClusterIAMPolicy)[vs[1].(int)]
-	}).(ClusterIAMPolicyOutput)
+func (o ClusterIamPolicyArrayOutput) Index(i pulumi.IntInput) ClusterIamPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ClusterIamPolicy {
+		return vs[0].([]*ClusterIamPolicy)[vs[1].(int)]
+	}).(ClusterIamPolicyOutput)
 }
 
-type ClusterIAMPolicyMapOutput struct{ *pulumi.OutputState }
+type ClusterIamPolicyMapOutput struct{ *pulumi.OutputState }
 
-func (ClusterIAMPolicyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*ClusterIAMPolicy)(nil)).Elem()
+func (ClusterIamPolicyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*ClusterIamPolicy)(nil)).Elem()
 }
 
-func (o ClusterIAMPolicyMapOutput) ToClusterIAMPolicyMapOutput() ClusterIAMPolicyMapOutput {
+func (o ClusterIamPolicyMapOutput) ToClusterIamPolicyMapOutput() ClusterIamPolicyMapOutput {
 	return o
 }
 
-func (o ClusterIAMPolicyMapOutput) ToClusterIAMPolicyMapOutputWithContext(ctx context.Context) ClusterIAMPolicyMapOutput {
+func (o ClusterIamPolicyMapOutput) ToClusterIamPolicyMapOutputWithContext(ctx context.Context) ClusterIamPolicyMapOutput {
 	return o
 }
 
-func (o ClusterIAMPolicyMapOutput) MapIndex(k pulumi.StringInput) ClusterIAMPolicyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ClusterIAMPolicy {
-		return vs[0].(map[string]*ClusterIAMPolicy)[vs[1].(string)]
-	}).(ClusterIAMPolicyOutput)
+func (o ClusterIamPolicyMapOutput) MapIndex(k pulumi.StringInput) ClusterIamPolicyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ClusterIamPolicy {
+		return vs[0].(map[string]*ClusterIamPolicy)[vs[1].(string)]
+	}).(ClusterIamPolicyOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIAMPolicyInput)(nil)).Elem(), &ClusterIAMPolicy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIAMPolicyArrayInput)(nil)).Elem(), ClusterIAMPolicyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIAMPolicyMapInput)(nil)).Elem(), ClusterIAMPolicyMap{})
-	pulumi.RegisterOutputType(ClusterIAMPolicyOutput{})
-	pulumi.RegisterOutputType(ClusterIAMPolicyArrayOutput{})
-	pulumi.RegisterOutputType(ClusterIAMPolicyMapOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIamPolicyInput)(nil)).Elem(), &ClusterIamPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIamPolicyArrayInput)(nil)).Elem(), ClusterIamPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIamPolicyMapInput)(nil)).Elem(), ClusterIamPolicyMap{})
+	pulumi.RegisterOutputType(ClusterIamPolicyOutput{})
+	pulumi.RegisterOutputType(ClusterIamPolicyArrayOutput{})
+	pulumi.RegisterOutputType(ClusterIamPolicyMapOutput{})
 }

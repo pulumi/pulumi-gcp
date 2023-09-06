@@ -23,12 +23,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:folder/accessApprovalSettings:AccessApprovalSettings":
 		r = &AccessApprovalSettings{}
-	case "gcp:folder/iAMBinding:IAMBinding":
-		r = &IAMBinding{}
-	case "gcp:folder/iAMMember:IAMMember":
-		r = &IAMMember{}
-	case "gcp:folder/iAMPolicy:IAMPolicy":
-		r = &IAMPolicy{}
+	case "gcp:folder/iAMBinding:IamBinding":
+		r = &IamBinding{}
+	case "gcp:folder/iAMMember:IamMember":
+		r = &IamMember{}
+	case "gcp:folder/iAMPolicy:IamPolicy":
+		r = &IamPolicy{}
 	case "gcp:folder/iamAuditConfig:IamAuditConfig":
 		r = &IamAuditConfig{}
 	case "gcp:folder/organizationPolicy:OrganizationPolicy":

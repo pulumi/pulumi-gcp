@@ -14,17 +14,17 @@ import (
 
 // Three different resources help you manage your IAM policy for Compute Engine Instance. Each of these resources serves a different use case:
 //
-// * `compute.InstanceIAMPolicy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.
-// * `compute.InstanceIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved.
-// * `compute.InstanceIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved.
+// * `compute.InstanceIamPolicy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.
+// * `compute.InstanceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved.
+// * `compute.InstanceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved.
 //
 // # A data source can be used to retrieve policy data in advent you do not need creation
 //
-// * `compute.InstanceIAMPolicy`: Retrieves the IAM policy for the instance
+// * `compute.InstanceIamPolicy`: Retrieves the IAM policy for the instance
 //
-// > **Note:** `compute.InstanceIAMPolicy` **cannot** be used in conjunction with `compute.InstanceIAMBinding` and `compute.InstanceIAMMember` or they will fight over what your policy should be.
+// > **Note:** `compute.InstanceIamPolicy` **cannot** be used in conjunction with `compute.InstanceIamBinding` and `compute.InstanceIamMember` or they will fight over what your policy should be.
 //
-// > **Note:** `compute.InstanceIAMBinding` resources **can be** used in conjunction with `compute.InstanceIAMMember` resources **only if** they do not grant privilege to the same role.
+// > **Note:** `compute.InstanceIamBinding` resources **can be** used in conjunction with `compute.InstanceIamMember` resources **only if** they do not grant privilege to the same role.
 //
 // > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 //
@@ -43,8 +43,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
+//			admin, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
 //					{
 //						Role: "roles/compute.osLogin",
 //						Members: []string{
@@ -56,7 +56,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewInstanceIAMPolicy(ctx, "policy", &compute.InstanceIAMPolicyArgs{
+//			_, err = compute.NewInstanceIamPolicy(ctx, "policy", &compute.InstanceIamPolicyArgs{
 //				Project:      pulumi.Any(google_compute_instance.Default.Project),
 //				Zone:         pulumi.Any(google_compute_instance.Default.Zone),
 //				InstanceName: pulumi.Any(google_compute_instance.Default.Name),
@@ -86,8 +86,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
+//			admin, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
 //					{
 //						Role: "roles/compute.osLogin",
 //						Members: []string{
@@ -104,7 +104,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewInstanceIAMPolicy(ctx, "policy", &compute.InstanceIAMPolicyArgs{
+//			_, err = compute.NewInstanceIamPolicy(ctx, "policy", &compute.InstanceIamPolicyArgs{
 //				Project:      pulumi.Any(google_compute_instance.Default.Project),
 //				Zone:         pulumi.Any(google_compute_instance.Default.Zone),
 //				InstanceName: pulumi.Any(google_compute_instance.Default.Name),
@@ -132,7 +132,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewInstanceIAMBinding(ctx, "binding", &compute.InstanceIAMBindingArgs{
+//			_, err := compute.NewInstanceIamBinding(ctx, "binding", &compute.InstanceIamBindingArgs{
 //				Project:      pulumi.Any(google_compute_instance.Default.Project),
 //				Zone:         pulumi.Any(google_compute_instance.Default.Zone),
 //				InstanceName: pulumi.Any(google_compute_instance.Default.Name),
@@ -164,7 +164,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewInstanceIAMBinding(ctx, "binding", &compute.InstanceIAMBindingArgs{
+//			_, err := compute.NewInstanceIamBinding(ctx, "binding", &compute.InstanceIamBindingArgs{
 //				Project:      pulumi.Any(google_compute_instance.Default.Project),
 //				Zone:         pulumi.Any(google_compute_instance.Default.Zone),
 //				InstanceName: pulumi.Any(google_compute_instance.Default.Name),
@@ -172,7 +172,7 @@ import (
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
 //				},
-//				Condition: &compute.InstanceIAMBindingConditionArgs{
+//				Condition: &compute.InstanceIamBindingConditionArgs{
 //					Title:       pulumi.String("expires_after_2019_12_31"),
 //					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
 //					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
@@ -200,7 +200,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewInstanceIAMMember(ctx, "member", &compute.InstanceIAMMemberArgs{
+//			_, err := compute.NewInstanceIamMember(ctx, "member", &compute.InstanceIamMemberArgs{
 //				Project:      pulumi.Any(google_compute_instance.Default.Project),
 //				Zone:         pulumi.Any(google_compute_instance.Default.Zone),
 //				InstanceName: pulumi.Any(google_compute_instance.Default.Name),
@@ -230,13 +230,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewInstanceIAMMember(ctx, "member", &compute.InstanceIAMMemberArgs{
+//			_, err := compute.NewInstanceIamMember(ctx, "member", &compute.InstanceIamMemberArgs{
 //				Project:      pulumi.Any(google_compute_instance.Default.Project),
 //				Zone:         pulumi.Any(google_compute_instance.Default.Zone),
 //				InstanceName: pulumi.Any(google_compute_instance.Default.Name),
 //				Role:         pulumi.String("roles/compute.osLogin"),
 //				Member:       pulumi.String("user:jane@example.com"),
-//				Condition: &compute.InstanceIAMMemberConditionArgs{
+//				Condition: &compute.InstanceIamMemberConditionArgs{
 //					Title:       pulumi.String("expires_after_2019_12_31"),
 //					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
 //					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
@@ -257,7 +257,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:compute/instanceIAMBinding:InstanceIAMBinding editor "projects/{{project}}/zones/{{zone}}/instances/{{instance}} roles/compute.osLogin user:jane@example.com"
+//	$ pulumi import gcp:compute/instanceIamBinding:InstanceIamBinding editor "projects/{{project}}/zones/{{zone}}/instances/{{instance}} roles/compute.osLogin user:jane@example.com"
 //
 // ```
 //
@@ -265,7 +265,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:compute/instanceIAMBinding:InstanceIAMBinding editor "projects/{{project}}/zones/{{zone}}/instances/{{instance}} roles/compute.osLogin"
+//	$ pulumi import gcp:compute/instanceIamBinding:InstanceIamBinding editor "projects/{{project}}/zones/{{zone}}/instances/{{instance}} roles/compute.osLogin"
 //
 // ```
 //
@@ -273,19 +273,19 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:compute/instanceIAMBinding:InstanceIAMBinding editor projects/{{project}}/zones/{{zone}}/instances/{{instance}}
+//	$ pulumi import gcp:compute/instanceIamBinding:InstanceIamBinding editor projects/{{project}}/zones/{{zone}}/instances/{{instance}}
 //
 // ```
 //
 //	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 //
 // full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
-type InstanceIAMBinding struct {
+type InstanceIamBinding struct {
 	pulumi.CustomResourceState
 
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
-	Condition InstanceIAMBindingConditionPtrOutput `pulumi:"condition"`
+	Condition InstanceIamBindingConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Used to find the parent resource to bind the IAM policy to
@@ -307,7 +307,7 @@ type InstanceIAMBinding struct {
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The role that should be applied. Only one
-	// `compute.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `compute.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringOutput `pulumi:"role"`
 	// A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -316,9 +316,9 @@ type InstanceIAMBinding struct {
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
-// NewInstanceIAMBinding registers a new resource with the given unique name, arguments, and options.
-func NewInstanceIAMBinding(ctx *pulumi.Context,
-	name string, args *InstanceIAMBindingArgs, opts ...pulumi.ResourceOption) (*InstanceIAMBinding, error) {
+// NewInstanceIamBinding registers a new resource with the given unique name, arguments, and options.
+func NewInstanceIamBinding(ctx *pulumi.Context,
+	name string, args *InstanceIamBindingArgs, opts ...pulumi.ResourceOption) (*InstanceIamBinding, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -333,31 +333,31 @@ func NewInstanceIAMBinding(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Role'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
-	var resource InstanceIAMBinding
-	err := ctx.RegisterResource("gcp:compute/instanceIAMBinding:InstanceIAMBinding", name, args, &resource, opts...)
+	var resource InstanceIamBinding
+	err := ctx.RegisterResource("gcp:compute/instanceIamBinding:InstanceIamBinding", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// GetInstanceIAMBinding gets an existing InstanceIAMBinding resource's state with the given name, ID, and optional
+// GetInstanceIamBinding gets an existing InstanceIamBinding resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetInstanceIAMBinding(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *InstanceIAMBindingState, opts ...pulumi.ResourceOption) (*InstanceIAMBinding, error) {
-	var resource InstanceIAMBinding
-	err := ctx.ReadResource("gcp:compute/instanceIAMBinding:InstanceIAMBinding", name, id, state, &resource, opts...)
+func GetInstanceIamBinding(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *InstanceIamBindingState, opts ...pulumi.ResourceOption) (*InstanceIamBinding, error) {
+	var resource InstanceIamBinding
+	err := ctx.ReadResource("gcp:compute/instanceIamBinding:InstanceIamBinding", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering InstanceIAMBinding resources.
-type instanceIAMBindingState struct {
+// Input properties used for looking up and filtering InstanceIamBinding resources.
+type instanceIamBindingState struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
-	Condition *InstanceIAMBindingCondition `pulumi:"condition"`
+	Condition *InstanceIamBindingCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
 	Etag *string `pulumi:"etag"`
 	// Used to find the parent resource to bind the IAM policy to
@@ -379,7 +379,7 @@ type instanceIAMBindingState struct {
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	Project *string `pulumi:"project"`
 	// The role that should be applied. Only one
-	// `compute.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `compute.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role *string `pulumi:"role"`
 	// A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -388,10 +388,10 @@ type instanceIAMBindingState struct {
 	Zone *string `pulumi:"zone"`
 }
 
-type InstanceIAMBindingState struct {
+type InstanceIamBindingState struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
-	Condition InstanceIAMBindingConditionPtrInput
+	Condition InstanceIamBindingConditionPtrInput
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringPtrInput
 	// Used to find the parent resource to bind the IAM policy to
@@ -413,7 +413,7 @@ type InstanceIAMBindingState struct {
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	Project pulumi.StringPtrInput
 	// The role that should be applied. Only one
-	// `compute.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `compute.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringPtrInput
 	// A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -422,14 +422,14 @@ type InstanceIAMBindingState struct {
 	Zone pulumi.StringPtrInput
 }
 
-func (InstanceIAMBindingState) ElementType() reflect.Type {
-	return reflect.TypeOf((*instanceIAMBindingState)(nil)).Elem()
+func (InstanceIamBindingState) ElementType() reflect.Type {
+	return reflect.TypeOf((*instanceIamBindingState)(nil)).Elem()
 }
 
-type instanceIAMBindingArgs struct {
+type instanceIamBindingArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
-	Condition *InstanceIAMBindingCondition `pulumi:"condition"`
+	Condition *InstanceIamBindingCondition `pulumi:"condition"`
 	// Used to find the parent resource to bind the IAM policy to
 	InstanceName string   `pulumi:"instanceName"`
 	Members      []string `pulumi:"members"`
@@ -449,7 +449,7 @@ type instanceIAMBindingArgs struct {
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	Project *string `pulumi:"project"`
 	// The role that should be applied. Only one
-	// `compute.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `compute.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role string `pulumi:"role"`
 	// A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -458,11 +458,11 @@ type instanceIAMBindingArgs struct {
 	Zone *string `pulumi:"zone"`
 }
 
-// The set of arguments for constructing a InstanceIAMBinding resource.
-type InstanceIAMBindingArgs struct {
+// The set of arguments for constructing a InstanceIamBinding resource.
+type InstanceIamBindingArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
-	Condition InstanceIAMBindingConditionPtrInput
+	Condition InstanceIamBindingConditionPtrInput
 	// Used to find the parent resource to bind the IAM policy to
 	InstanceName pulumi.StringInput
 	Members      pulumi.StringArrayInput
@@ -482,7 +482,7 @@ type InstanceIAMBindingArgs struct {
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	Project pulumi.StringPtrInput
 	// The role that should be applied. Only one
-	// `compute.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `compute.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringInput
 	// A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
@@ -491,111 +491,111 @@ type InstanceIAMBindingArgs struct {
 	Zone pulumi.StringPtrInput
 }
 
-func (InstanceIAMBindingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*instanceIAMBindingArgs)(nil)).Elem()
+func (InstanceIamBindingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*instanceIamBindingArgs)(nil)).Elem()
 }
 
-type InstanceIAMBindingInput interface {
+type InstanceIamBindingInput interface {
 	pulumi.Input
 
-	ToInstanceIAMBindingOutput() InstanceIAMBindingOutput
-	ToInstanceIAMBindingOutputWithContext(ctx context.Context) InstanceIAMBindingOutput
+	ToInstanceIamBindingOutput() InstanceIamBindingOutput
+	ToInstanceIamBindingOutputWithContext(ctx context.Context) InstanceIamBindingOutput
 }
 
-func (*InstanceIAMBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceIAMBinding)(nil)).Elem()
+func (*InstanceIamBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceIamBinding)(nil)).Elem()
 }
 
-func (i *InstanceIAMBinding) ToInstanceIAMBindingOutput() InstanceIAMBindingOutput {
-	return i.ToInstanceIAMBindingOutputWithContext(context.Background())
+func (i *InstanceIamBinding) ToInstanceIamBindingOutput() InstanceIamBindingOutput {
+	return i.ToInstanceIamBindingOutputWithContext(context.Background())
 }
 
-func (i *InstanceIAMBinding) ToInstanceIAMBindingOutputWithContext(ctx context.Context) InstanceIAMBindingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceIAMBindingOutput)
+func (i *InstanceIamBinding) ToInstanceIamBindingOutputWithContext(ctx context.Context) InstanceIamBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamBindingOutput)
 }
 
-// InstanceIAMBindingArrayInput is an input type that accepts InstanceIAMBindingArray and InstanceIAMBindingArrayOutput values.
-// You can construct a concrete instance of `InstanceIAMBindingArrayInput` via:
+// InstanceIamBindingArrayInput is an input type that accepts InstanceIamBindingArray and InstanceIamBindingArrayOutput values.
+// You can construct a concrete instance of `InstanceIamBindingArrayInput` via:
 //
-//	InstanceIAMBindingArray{ InstanceIAMBindingArgs{...} }
-type InstanceIAMBindingArrayInput interface {
+//	InstanceIamBindingArray{ InstanceIamBindingArgs{...} }
+type InstanceIamBindingArrayInput interface {
 	pulumi.Input
 
-	ToInstanceIAMBindingArrayOutput() InstanceIAMBindingArrayOutput
-	ToInstanceIAMBindingArrayOutputWithContext(context.Context) InstanceIAMBindingArrayOutput
+	ToInstanceIamBindingArrayOutput() InstanceIamBindingArrayOutput
+	ToInstanceIamBindingArrayOutputWithContext(context.Context) InstanceIamBindingArrayOutput
 }
 
-type InstanceIAMBindingArray []InstanceIAMBindingInput
+type InstanceIamBindingArray []InstanceIamBindingInput
 
-func (InstanceIAMBindingArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*InstanceIAMBinding)(nil)).Elem()
+func (InstanceIamBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*InstanceIamBinding)(nil)).Elem()
 }
 
-func (i InstanceIAMBindingArray) ToInstanceIAMBindingArrayOutput() InstanceIAMBindingArrayOutput {
-	return i.ToInstanceIAMBindingArrayOutputWithContext(context.Background())
+func (i InstanceIamBindingArray) ToInstanceIamBindingArrayOutput() InstanceIamBindingArrayOutput {
+	return i.ToInstanceIamBindingArrayOutputWithContext(context.Background())
 }
 
-func (i InstanceIAMBindingArray) ToInstanceIAMBindingArrayOutputWithContext(ctx context.Context) InstanceIAMBindingArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceIAMBindingArrayOutput)
+func (i InstanceIamBindingArray) ToInstanceIamBindingArrayOutputWithContext(ctx context.Context) InstanceIamBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamBindingArrayOutput)
 }
 
-// InstanceIAMBindingMapInput is an input type that accepts InstanceIAMBindingMap and InstanceIAMBindingMapOutput values.
-// You can construct a concrete instance of `InstanceIAMBindingMapInput` via:
+// InstanceIamBindingMapInput is an input type that accepts InstanceIamBindingMap and InstanceIamBindingMapOutput values.
+// You can construct a concrete instance of `InstanceIamBindingMapInput` via:
 //
-//	InstanceIAMBindingMap{ "key": InstanceIAMBindingArgs{...} }
-type InstanceIAMBindingMapInput interface {
+//	InstanceIamBindingMap{ "key": InstanceIamBindingArgs{...} }
+type InstanceIamBindingMapInput interface {
 	pulumi.Input
 
-	ToInstanceIAMBindingMapOutput() InstanceIAMBindingMapOutput
-	ToInstanceIAMBindingMapOutputWithContext(context.Context) InstanceIAMBindingMapOutput
+	ToInstanceIamBindingMapOutput() InstanceIamBindingMapOutput
+	ToInstanceIamBindingMapOutputWithContext(context.Context) InstanceIamBindingMapOutput
 }
 
-type InstanceIAMBindingMap map[string]InstanceIAMBindingInput
+type InstanceIamBindingMap map[string]InstanceIamBindingInput
 
-func (InstanceIAMBindingMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*InstanceIAMBinding)(nil)).Elem()
+func (InstanceIamBindingMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*InstanceIamBinding)(nil)).Elem()
 }
 
-func (i InstanceIAMBindingMap) ToInstanceIAMBindingMapOutput() InstanceIAMBindingMapOutput {
-	return i.ToInstanceIAMBindingMapOutputWithContext(context.Background())
+func (i InstanceIamBindingMap) ToInstanceIamBindingMapOutput() InstanceIamBindingMapOutput {
+	return i.ToInstanceIamBindingMapOutputWithContext(context.Background())
 }
 
-func (i InstanceIAMBindingMap) ToInstanceIAMBindingMapOutputWithContext(ctx context.Context) InstanceIAMBindingMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceIAMBindingMapOutput)
+func (i InstanceIamBindingMap) ToInstanceIamBindingMapOutputWithContext(ctx context.Context) InstanceIamBindingMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamBindingMapOutput)
 }
 
-type InstanceIAMBindingOutput struct{ *pulumi.OutputState }
+type InstanceIamBindingOutput struct{ *pulumi.OutputState }
 
-func (InstanceIAMBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceIAMBinding)(nil)).Elem()
+func (InstanceIamBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceIamBinding)(nil)).Elem()
 }
 
-func (o InstanceIAMBindingOutput) ToInstanceIAMBindingOutput() InstanceIAMBindingOutput {
+func (o InstanceIamBindingOutput) ToInstanceIamBindingOutput() InstanceIamBindingOutput {
 	return o
 }
 
-func (o InstanceIAMBindingOutput) ToInstanceIAMBindingOutputWithContext(ctx context.Context) InstanceIAMBindingOutput {
+func (o InstanceIamBindingOutput) ToInstanceIamBindingOutputWithContext(ctx context.Context) InstanceIamBindingOutput {
 	return o
 }
 
 // An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 // Structure is documented below.
-func (o InstanceIAMBindingOutput) Condition() InstanceIAMBindingConditionPtrOutput {
-	return o.ApplyT(func(v *InstanceIAMBinding) InstanceIAMBindingConditionPtrOutput { return v.Condition }).(InstanceIAMBindingConditionPtrOutput)
+func (o InstanceIamBindingOutput) Condition() InstanceIamBindingConditionPtrOutput {
+	return o.ApplyT(func(v *InstanceIamBinding) InstanceIamBindingConditionPtrOutput { return v.Condition }).(InstanceIamBindingConditionPtrOutput)
 }
 
 // (Computed) The etag of the IAM policy.
-func (o InstanceIAMBindingOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v *InstanceIAMBinding) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+func (o InstanceIamBindingOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceIamBinding) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
 // Used to find the parent resource to bind the IAM policy to
-func (o InstanceIAMBindingOutput) InstanceName() pulumi.StringOutput {
-	return o.ApplyT(func(v *InstanceIAMBinding) pulumi.StringOutput { return v.InstanceName }).(pulumi.StringOutput)
+func (o InstanceIamBindingOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceIamBinding) pulumi.StringOutput { return v.InstanceName }).(pulumi.StringOutput)
 }
 
-func (o InstanceIAMBindingOutput) Members() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *InstanceIAMBinding) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
+func (o InstanceIamBindingOutput) Members() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *InstanceIamBinding) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
 }
 
 // The ID of the project in which the resource belongs.
@@ -612,69 +612,69 @@ func (o InstanceIAMBindingOutput) Members() pulumi.StringArrayOutput {
 //   - **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 //   - **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 //   - **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
-func (o InstanceIAMBindingOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func(v *InstanceIAMBinding) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+func (o InstanceIamBindingOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceIamBinding) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The role that should be applied. Only one
-// `compute.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+// `compute.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
-func (o InstanceIAMBindingOutput) Role() pulumi.StringOutput {
-	return o.ApplyT(func(v *InstanceIAMBinding) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
+func (o InstanceIamBindingOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceIamBinding) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }
 
 // A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
 // the value will be parsed from the identifier of the parent resource. If no zone is provided in the parent identifier and no
 // zone is specified, it is taken from the provider configuration.
-func (o InstanceIAMBindingOutput) Zone() pulumi.StringOutput {
-	return o.ApplyT(func(v *InstanceIAMBinding) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
+func (o InstanceIamBindingOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceIamBinding) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }
 
-type InstanceIAMBindingArrayOutput struct{ *pulumi.OutputState }
+type InstanceIamBindingArrayOutput struct{ *pulumi.OutputState }
 
-func (InstanceIAMBindingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*InstanceIAMBinding)(nil)).Elem()
+func (InstanceIamBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*InstanceIamBinding)(nil)).Elem()
 }
 
-func (o InstanceIAMBindingArrayOutput) ToInstanceIAMBindingArrayOutput() InstanceIAMBindingArrayOutput {
+func (o InstanceIamBindingArrayOutput) ToInstanceIamBindingArrayOutput() InstanceIamBindingArrayOutput {
 	return o
 }
 
-func (o InstanceIAMBindingArrayOutput) ToInstanceIAMBindingArrayOutputWithContext(ctx context.Context) InstanceIAMBindingArrayOutput {
+func (o InstanceIamBindingArrayOutput) ToInstanceIamBindingArrayOutputWithContext(ctx context.Context) InstanceIamBindingArrayOutput {
 	return o
 }
 
-func (o InstanceIAMBindingArrayOutput) Index(i pulumi.IntInput) InstanceIAMBindingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InstanceIAMBinding {
-		return vs[0].([]*InstanceIAMBinding)[vs[1].(int)]
-	}).(InstanceIAMBindingOutput)
+func (o InstanceIamBindingArrayOutput) Index(i pulumi.IntInput) InstanceIamBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InstanceIamBinding {
+		return vs[0].([]*InstanceIamBinding)[vs[1].(int)]
+	}).(InstanceIamBindingOutput)
 }
 
-type InstanceIAMBindingMapOutput struct{ *pulumi.OutputState }
+type InstanceIamBindingMapOutput struct{ *pulumi.OutputState }
 
-func (InstanceIAMBindingMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*InstanceIAMBinding)(nil)).Elem()
+func (InstanceIamBindingMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*InstanceIamBinding)(nil)).Elem()
 }
 
-func (o InstanceIAMBindingMapOutput) ToInstanceIAMBindingMapOutput() InstanceIAMBindingMapOutput {
+func (o InstanceIamBindingMapOutput) ToInstanceIamBindingMapOutput() InstanceIamBindingMapOutput {
 	return o
 }
 
-func (o InstanceIAMBindingMapOutput) ToInstanceIAMBindingMapOutputWithContext(ctx context.Context) InstanceIAMBindingMapOutput {
+func (o InstanceIamBindingMapOutput) ToInstanceIamBindingMapOutputWithContext(ctx context.Context) InstanceIamBindingMapOutput {
 	return o
 }
 
-func (o InstanceIAMBindingMapOutput) MapIndex(k pulumi.StringInput) InstanceIAMBindingOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *InstanceIAMBinding {
-		return vs[0].(map[string]*InstanceIAMBinding)[vs[1].(string)]
-	}).(InstanceIAMBindingOutput)
+func (o InstanceIamBindingMapOutput) MapIndex(k pulumi.StringInput) InstanceIamBindingOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *InstanceIamBinding {
+		return vs[0].(map[string]*InstanceIamBinding)[vs[1].(string)]
+	}).(InstanceIamBindingOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIAMBindingInput)(nil)).Elem(), &InstanceIAMBinding{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIAMBindingArrayInput)(nil)).Elem(), InstanceIAMBindingArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIAMBindingMapInput)(nil)).Elem(), InstanceIAMBindingMap{})
-	pulumi.RegisterOutputType(InstanceIAMBindingOutput{})
-	pulumi.RegisterOutputType(InstanceIAMBindingArrayOutput{})
-	pulumi.RegisterOutputType(InstanceIAMBindingMapOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIamBindingInput)(nil)).Elem(), &InstanceIamBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIamBindingArrayInput)(nil)).Elem(), InstanceIamBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIamBindingMapInput)(nil)).Elem(), InstanceIamBindingMap{})
+	pulumi.RegisterOutputType(InstanceIamBindingOutput{})
+	pulumi.RegisterOutputType(InstanceIamBindingArrayOutput{})
+	pulumi.RegisterOutputType(InstanceIamBindingMapOutput{})
 }

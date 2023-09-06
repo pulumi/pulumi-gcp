@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dataproc.GetClusterIamPolicy(ctx, &dataproc.GetClusterIamPolicyArgs{
+//			_, err := dataproc.LookupClusterIamPolicy(ctx, &dataproc.LookupClusterIamPolicyArgs{
 //				Cluster: google_dataproc_cluster.Cluster.Name,
 //				Region:  pulumi.StringRef("us-central1"),
 //			}, nil)
@@ -39,9 +39,9 @@ import (
 //	}
 //
 // ```
-func GetClusterIamPolicy(ctx *pulumi.Context, args *GetClusterIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetClusterIamPolicyResult, error) {
+func LookupClusterIamPolicy(ctx *pulumi.Context, args *LookupClusterIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupClusterIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
-	var rv GetClusterIamPolicyResult
+	var rv LookupClusterIamPolicyResult
 	err := ctx.Invoke("gcp:dataproc/getClusterIamPolicy:getClusterIamPolicy", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -50,7 +50,7 @@ func GetClusterIamPolicy(ctx *pulumi.Context, args *GetClusterIamPolicyArgs, opt
 }
 
 // A collection of arguments for invoking getClusterIamPolicy.
-type GetClusterIamPolicyArgs struct {
+type LookupClusterIamPolicyArgs struct {
 	// The name or relative resource id of the cluster to manage IAM policies for.
 	Cluster string  `pulumi:"cluster"`
 	Project *string `pulumi:"project"`
@@ -58,7 +58,7 @@ type GetClusterIamPolicyArgs struct {
 }
 
 // A collection of values returned by getClusterIamPolicy.
-type GetClusterIamPolicyResult struct {
+type LookupClusterIamPolicyResult struct {
 	Cluster string `pulumi:"cluster"`
 	// (Computed) The etag of the IAM policy.
 	Etag string `pulumi:"etag"`
@@ -70,73 +70,73 @@ type GetClusterIamPolicyResult struct {
 	Region     string `pulumi:"region"`
 }
 
-func GetClusterIamPolicyOutput(ctx *pulumi.Context, args GetClusterIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetClusterIamPolicyResultOutput {
+func LookupClusterIamPolicyOutput(ctx *pulumi.Context, args LookupClusterIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupClusterIamPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetClusterIamPolicyResult, error) {
-			args := v.(GetClusterIamPolicyArgs)
-			r, err := GetClusterIamPolicy(ctx, &args, opts...)
-			var s GetClusterIamPolicyResult
+		ApplyT(func(v interface{}) (LookupClusterIamPolicyResult, error) {
+			args := v.(LookupClusterIamPolicyArgs)
+			r, err := LookupClusterIamPolicy(ctx, &args, opts...)
+			var s LookupClusterIamPolicyResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(GetClusterIamPolicyResultOutput)
+		}).(LookupClusterIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getClusterIamPolicy.
-type GetClusterIamPolicyOutputArgs struct {
+type LookupClusterIamPolicyOutputArgs struct {
 	// The name or relative resource id of the cluster to manage IAM policies for.
 	Cluster pulumi.StringInput    `pulumi:"cluster"`
 	Project pulumi.StringPtrInput `pulumi:"project"`
 	Region  pulumi.StringPtrInput `pulumi:"region"`
 }
 
-func (GetClusterIamPolicyOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetClusterIamPolicyArgs)(nil)).Elem()
+func (LookupClusterIamPolicyOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupClusterIamPolicyArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getClusterIamPolicy.
-type GetClusterIamPolicyResultOutput struct{ *pulumi.OutputState }
+type LookupClusterIamPolicyResultOutput struct{ *pulumi.OutputState }
 
-func (GetClusterIamPolicyResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetClusterIamPolicyResult)(nil)).Elem()
+func (LookupClusterIamPolicyResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupClusterIamPolicyResult)(nil)).Elem()
 }
 
-func (o GetClusterIamPolicyResultOutput) ToGetClusterIamPolicyResultOutput() GetClusterIamPolicyResultOutput {
+func (o LookupClusterIamPolicyResultOutput) ToLookupClusterIamPolicyResultOutput() LookupClusterIamPolicyResultOutput {
 	return o
 }
 
-func (o GetClusterIamPolicyResultOutput) ToGetClusterIamPolicyResultOutputWithContext(ctx context.Context) GetClusterIamPolicyResultOutput {
+func (o LookupClusterIamPolicyResultOutput) ToLookupClusterIamPolicyResultOutputWithContext(ctx context.Context) LookupClusterIamPolicyResultOutput {
 	return o
 }
 
-func (o GetClusterIamPolicyResultOutput) Cluster() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClusterIamPolicyResult) string { return v.Cluster }).(pulumi.StringOutput)
+func (o LookupClusterIamPolicyResultOutput) Cluster() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterIamPolicyResult) string { return v.Cluster }).(pulumi.StringOutput)
 }
 
 // (Computed) The etag of the IAM policy.
-func (o GetClusterIamPolicyResultOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClusterIamPolicyResult) string { return v.Etag }).(pulumi.StringOutput)
+func (o LookupClusterIamPolicyResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterIamPolicyResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
-func (o GetClusterIamPolicyResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClusterIamPolicyResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupClusterIamPolicyResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterIamPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // (Computed) The policy data
-func (o GetClusterIamPolicyResultOutput) PolicyData() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClusterIamPolicyResult) string { return v.PolicyData }).(pulumi.StringOutput)
+func (o LookupClusterIamPolicyResultOutput) PolicyData() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterIamPolicyResult) string { return v.PolicyData }).(pulumi.StringOutput)
 }
 
-func (o GetClusterIamPolicyResultOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClusterIamPolicyResult) string { return v.Project }).(pulumi.StringOutput)
+func (o LookupClusterIamPolicyResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterIamPolicyResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-func (o GetClusterIamPolicyResultOutput) Region() pulumi.StringOutput {
-	return o.ApplyT(func(v GetClusterIamPolicyResult) string { return v.Region }).(pulumi.StringOutput)
+func (o LookupClusterIamPolicyResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterIamPolicyResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(GetClusterIamPolicyResultOutput{})
+	pulumi.RegisterOutputType(LookupClusterIamPolicyResultOutput{})
 }

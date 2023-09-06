@@ -114,7 +114,7 @@ import (
 //			serviceAccount := accessapproval.GetFolderServiceAccountOutput(ctx, accessapproval.GetFolderServiceAccountOutputArgs{
 //				FolderId: myFolder.FolderId,
 //			}, nil)
-//			iam, err := kms.NewCryptoKeyIAMMember(ctx, "iam", &kms.CryptoKeyIAMMemberArgs{
+//			iam, err := kms.NewCryptoKeyIamMember(ctx, "iam", &kms.CryptoKeyIamMemberArgs{
 //				CryptoKeyId: cryptoKey.ID(),
 //				Role:        pulumi.String("roles/cloudkms.signerVerifier"),
 //				Member: serviceAccount.ApplyT(func(serviceAccount accessapproval.GetFolderServiceAccountResult) (string, error) {

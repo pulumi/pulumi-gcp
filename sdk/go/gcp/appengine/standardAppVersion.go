@@ -50,7 +50,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewIAMMember(ctx, "gaeApi", &projects.IAMMemberArgs{
+//			_, err = projects.NewIamMember(ctx, "gaeApi", &projects.IamMemberArgs{
 //				Project: customServiceAccount.Project,
 //				Role:    pulumi.String("roles/compute.networkUser"),
 //				Member: customServiceAccount.Email.ApplyT(func(email string) (string, error) {
@@ -60,7 +60,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewIAMMember(ctx, "storageViewer", &projects.IAMMemberArgs{
+//			_, err = projects.NewIamMember(ctx, "storageViewer", &projects.IamMemberArgs{
 //				Project: customServiceAccount.Project,
 //				Role:    pulumi.String("roles/storage.objectViewer"),
 //				Member: customServiceAccount.Email.ApplyT(func(email string) (string, error) {

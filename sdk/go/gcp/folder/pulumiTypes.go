@@ -197,360 +197,6 @@ func (o AccessApprovalSettingsEnrolledServiceArrayOutput) Index(i pulumi.IntInpu
 	}).(AccessApprovalSettingsEnrolledServiceOutput)
 }
 
-type IAMBindingCondition struct {
-	Description *string `pulumi:"description"`
-	Expression  string  `pulumi:"expression"`
-	Title       string  `pulumi:"title"`
-}
-
-// IAMBindingConditionInput is an input type that accepts IAMBindingConditionArgs and IAMBindingConditionOutput values.
-// You can construct a concrete instance of `IAMBindingConditionInput` via:
-//
-//	IAMBindingConditionArgs{...}
-type IAMBindingConditionInput interface {
-	pulumi.Input
-
-	ToIAMBindingConditionOutput() IAMBindingConditionOutput
-	ToIAMBindingConditionOutputWithContext(context.Context) IAMBindingConditionOutput
-}
-
-type IAMBindingConditionArgs struct {
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression  pulumi.StringInput    `pulumi:"expression"`
-	Title       pulumi.StringInput    `pulumi:"title"`
-}
-
-func (IAMBindingConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IAMBindingCondition)(nil)).Elem()
-}
-
-func (i IAMBindingConditionArgs) ToIAMBindingConditionOutput() IAMBindingConditionOutput {
-	return i.ToIAMBindingConditionOutputWithContext(context.Background())
-}
-
-func (i IAMBindingConditionArgs) ToIAMBindingConditionOutputWithContext(ctx context.Context) IAMBindingConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMBindingConditionOutput)
-}
-
-func (i IAMBindingConditionArgs) ToIAMBindingConditionPtrOutput() IAMBindingConditionPtrOutput {
-	return i.ToIAMBindingConditionPtrOutputWithContext(context.Background())
-}
-
-func (i IAMBindingConditionArgs) ToIAMBindingConditionPtrOutputWithContext(ctx context.Context) IAMBindingConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMBindingConditionOutput).ToIAMBindingConditionPtrOutputWithContext(ctx)
-}
-
-// IAMBindingConditionPtrInput is an input type that accepts IAMBindingConditionArgs, IAMBindingConditionPtr and IAMBindingConditionPtrOutput values.
-// You can construct a concrete instance of `IAMBindingConditionPtrInput` via:
-//
-//	        IAMBindingConditionArgs{...}
-//
-//	or:
-//
-//	        nil
-type IAMBindingConditionPtrInput interface {
-	pulumi.Input
-
-	ToIAMBindingConditionPtrOutput() IAMBindingConditionPtrOutput
-	ToIAMBindingConditionPtrOutputWithContext(context.Context) IAMBindingConditionPtrOutput
-}
-
-type iambindingConditionPtrType IAMBindingConditionArgs
-
-func IAMBindingConditionPtr(v *IAMBindingConditionArgs) IAMBindingConditionPtrInput {
-	return (*iambindingConditionPtrType)(v)
-}
-
-func (*iambindingConditionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**IAMBindingCondition)(nil)).Elem()
-}
-
-func (i *iambindingConditionPtrType) ToIAMBindingConditionPtrOutput() IAMBindingConditionPtrOutput {
-	return i.ToIAMBindingConditionPtrOutputWithContext(context.Background())
-}
-
-func (i *iambindingConditionPtrType) ToIAMBindingConditionPtrOutputWithContext(ctx context.Context) IAMBindingConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMBindingConditionPtrOutput)
-}
-
-type IAMBindingConditionOutput struct{ *pulumi.OutputState }
-
-func (IAMBindingConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IAMBindingCondition)(nil)).Elem()
-}
-
-func (o IAMBindingConditionOutput) ToIAMBindingConditionOutput() IAMBindingConditionOutput {
-	return o
-}
-
-func (o IAMBindingConditionOutput) ToIAMBindingConditionOutputWithContext(ctx context.Context) IAMBindingConditionOutput {
-	return o
-}
-
-func (o IAMBindingConditionOutput) ToIAMBindingConditionPtrOutput() IAMBindingConditionPtrOutput {
-	return o.ToIAMBindingConditionPtrOutputWithContext(context.Background())
-}
-
-func (o IAMBindingConditionOutput) ToIAMBindingConditionPtrOutputWithContext(ctx context.Context) IAMBindingConditionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v IAMBindingCondition) *IAMBindingCondition {
-		return &v
-	}).(IAMBindingConditionPtrOutput)
-}
-
-func (o IAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-func (o IAMBindingConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v IAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
-}
-
-func (o IAMBindingConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v IAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
-}
-
-type IAMBindingConditionPtrOutput struct{ *pulumi.OutputState }
-
-func (IAMBindingConditionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IAMBindingCondition)(nil)).Elem()
-}
-
-func (o IAMBindingConditionPtrOutput) ToIAMBindingConditionPtrOutput() IAMBindingConditionPtrOutput {
-	return o
-}
-
-func (o IAMBindingConditionPtrOutput) ToIAMBindingConditionPtrOutputWithContext(ctx context.Context) IAMBindingConditionPtrOutput {
-	return o
-}
-
-func (o IAMBindingConditionPtrOutput) Elem() IAMBindingConditionOutput {
-	return o.ApplyT(func(v *IAMBindingCondition) IAMBindingCondition {
-		if v != nil {
-			return *v
-		}
-		var ret IAMBindingCondition
-		return ret
-	}).(IAMBindingConditionOutput)
-}
-
-func (o IAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IAMBindingCondition) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o IAMBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IAMBindingCondition) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Expression
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o IAMBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IAMBindingCondition) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Title
-	}).(pulumi.StringPtrOutput)
-}
-
-type IAMMemberCondition struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-	// consider it to be an entirely different resource and will treat it as such.
-	Description *string `pulumi:"description"`
-	// Textual representation of an expression in Common Expression Language syntax.
-	Expression string `pulumi:"expression"`
-	// A title for the expression, i.e. a short string describing its purpose.
-	Title string `pulumi:"title"`
-}
-
-// IAMMemberConditionInput is an input type that accepts IAMMemberConditionArgs and IAMMemberConditionOutput values.
-// You can construct a concrete instance of `IAMMemberConditionInput` via:
-//
-//	IAMMemberConditionArgs{...}
-type IAMMemberConditionInput interface {
-	pulumi.Input
-
-	ToIAMMemberConditionOutput() IAMMemberConditionOutput
-	ToIAMMemberConditionOutputWithContext(context.Context) IAMMemberConditionOutput
-}
-
-type IAMMemberConditionArgs struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-	// consider it to be an entirely different resource and will treat it as such.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Textual representation of an expression in Common Expression Language syntax.
-	Expression pulumi.StringInput `pulumi:"expression"`
-	// A title for the expression, i.e. a short string describing its purpose.
-	Title pulumi.StringInput `pulumi:"title"`
-}
-
-func (IAMMemberConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IAMMemberCondition)(nil)).Elem()
-}
-
-func (i IAMMemberConditionArgs) ToIAMMemberConditionOutput() IAMMemberConditionOutput {
-	return i.ToIAMMemberConditionOutputWithContext(context.Background())
-}
-
-func (i IAMMemberConditionArgs) ToIAMMemberConditionOutputWithContext(ctx context.Context) IAMMemberConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMMemberConditionOutput)
-}
-
-func (i IAMMemberConditionArgs) ToIAMMemberConditionPtrOutput() IAMMemberConditionPtrOutput {
-	return i.ToIAMMemberConditionPtrOutputWithContext(context.Background())
-}
-
-func (i IAMMemberConditionArgs) ToIAMMemberConditionPtrOutputWithContext(ctx context.Context) IAMMemberConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMMemberConditionOutput).ToIAMMemberConditionPtrOutputWithContext(ctx)
-}
-
-// IAMMemberConditionPtrInput is an input type that accepts IAMMemberConditionArgs, IAMMemberConditionPtr and IAMMemberConditionPtrOutput values.
-// You can construct a concrete instance of `IAMMemberConditionPtrInput` via:
-//
-//	        IAMMemberConditionArgs{...}
-//
-//	or:
-//
-//	        nil
-type IAMMemberConditionPtrInput interface {
-	pulumi.Input
-
-	ToIAMMemberConditionPtrOutput() IAMMemberConditionPtrOutput
-	ToIAMMemberConditionPtrOutputWithContext(context.Context) IAMMemberConditionPtrOutput
-}
-
-type iammemberConditionPtrType IAMMemberConditionArgs
-
-func IAMMemberConditionPtr(v *IAMMemberConditionArgs) IAMMemberConditionPtrInput {
-	return (*iammemberConditionPtrType)(v)
-}
-
-func (*iammemberConditionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**IAMMemberCondition)(nil)).Elem()
-}
-
-func (i *iammemberConditionPtrType) ToIAMMemberConditionPtrOutput() IAMMemberConditionPtrOutput {
-	return i.ToIAMMemberConditionPtrOutputWithContext(context.Background())
-}
-
-func (i *iammemberConditionPtrType) ToIAMMemberConditionPtrOutputWithContext(ctx context.Context) IAMMemberConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMMemberConditionPtrOutput)
-}
-
-type IAMMemberConditionOutput struct{ *pulumi.OutputState }
-
-func (IAMMemberConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IAMMemberCondition)(nil)).Elem()
-}
-
-func (o IAMMemberConditionOutput) ToIAMMemberConditionOutput() IAMMemberConditionOutput {
-	return o
-}
-
-func (o IAMMemberConditionOutput) ToIAMMemberConditionOutputWithContext(ctx context.Context) IAMMemberConditionOutput {
-	return o
-}
-
-func (o IAMMemberConditionOutput) ToIAMMemberConditionPtrOutput() IAMMemberConditionPtrOutput {
-	return o.ToIAMMemberConditionPtrOutputWithContext(context.Background())
-}
-
-func (o IAMMemberConditionOutput) ToIAMMemberConditionPtrOutputWithContext(ctx context.Context) IAMMemberConditionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v IAMMemberCondition) *IAMMemberCondition {
-		return &v
-	}).(IAMMemberConditionPtrOutput)
-}
-
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-// consider it to be an entirely different resource and will treat it as such.
-func (o IAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Textual representation of an expression in Common Expression Language syntax.
-func (o IAMMemberConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v IAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
-}
-
-// A title for the expression, i.e. a short string describing its purpose.
-func (o IAMMemberConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v IAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
-}
-
-type IAMMemberConditionPtrOutput struct{ *pulumi.OutputState }
-
-func (IAMMemberConditionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IAMMemberCondition)(nil)).Elem()
-}
-
-func (o IAMMemberConditionPtrOutput) ToIAMMemberConditionPtrOutput() IAMMemberConditionPtrOutput {
-	return o
-}
-
-func (o IAMMemberConditionPtrOutput) ToIAMMemberConditionPtrOutputWithContext(ctx context.Context) IAMMemberConditionPtrOutput {
-	return o
-}
-
-func (o IAMMemberConditionPtrOutput) Elem() IAMMemberConditionOutput {
-	return o.ApplyT(func(v *IAMMemberCondition) IAMMemberCondition {
-		if v != nil {
-			return *v
-		}
-		var ret IAMMemberCondition
-		return ret
-	}).(IAMMemberConditionOutput)
-}
-
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-// consider it to be an entirely different resource and will treat it as such.
-func (o IAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IAMMemberCondition) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-// Textual representation of an expression in Common Expression Language syntax.
-func (o IAMMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IAMMemberCondition) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Expression
-	}).(pulumi.StringPtrOutput)
-}
-
-// A title for the expression, i.e. a short string describing its purpose.
-func (o IAMMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IAMMemberCondition) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Title
-	}).(pulumi.StringPtrOutput)
-}
-
 type IamAuditConfigAuditLogConfig struct {
 	// Identities that do not cause logging for this type of permission.  The format is the same as that for `members`.
 	ExemptedMembers []string `pulumi:"exemptedMembers"`
@@ -655,6 +301,360 @@ func (o IamAuditConfigAuditLogConfigArrayOutput) Index(i pulumi.IntInput) IamAud
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IamAuditConfigAuditLogConfig {
 		return vs[0].([]IamAuditConfigAuditLogConfig)[vs[1].(int)]
 	}).(IamAuditConfigAuditLogConfigOutput)
+}
+
+type IamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// IamBindingConditionInput is an input type that accepts IamBindingConditionArgs and IamBindingConditionOutput values.
+// You can construct a concrete instance of `IamBindingConditionInput` via:
+//
+//	IamBindingConditionArgs{...}
+type IamBindingConditionInput interface {
+	pulumi.Input
+
+	ToIamBindingConditionOutput() IamBindingConditionOutput
+	ToIamBindingConditionOutputWithContext(context.Context) IamBindingConditionOutput
+}
+
+type IamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (IamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IamBindingCondition)(nil)).Elem()
+}
+
+func (i IamBindingConditionArgs) ToIamBindingConditionOutput() IamBindingConditionOutput {
+	return i.ToIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i IamBindingConditionArgs) ToIamBindingConditionOutputWithContext(ctx context.Context) IamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamBindingConditionOutput)
+}
+
+func (i IamBindingConditionArgs) ToIamBindingConditionPtrOutput() IamBindingConditionPtrOutput {
+	return i.ToIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i IamBindingConditionArgs) ToIamBindingConditionPtrOutputWithContext(ctx context.Context) IamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamBindingConditionOutput).ToIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// IamBindingConditionPtrInput is an input type that accepts IamBindingConditionArgs, IamBindingConditionPtr and IamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `IamBindingConditionPtrInput` via:
+//
+//	        IamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type IamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToIamBindingConditionPtrOutput() IamBindingConditionPtrOutput
+	ToIamBindingConditionPtrOutputWithContext(context.Context) IamBindingConditionPtrOutput
+}
+
+type iamBindingConditionPtrType IamBindingConditionArgs
+
+func IamBindingConditionPtr(v *IamBindingConditionArgs) IamBindingConditionPtrInput {
+	return (*iamBindingConditionPtrType)(v)
+}
+
+func (*iamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IamBindingCondition)(nil)).Elem()
+}
+
+func (i *iamBindingConditionPtrType) ToIamBindingConditionPtrOutput() IamBindingConditionPtrOutput {
+	return i.ToIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *iamBindingConditionPtrType) ToIamBindingConditionPtrOutputWithContext(ctx context.Context) IamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamBindingConditionPtrOutput)
+}
+
+type IamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (IamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IamBindingCondition)(nil)).Elem()
+}
+
+func (o IamBindingConditionOutput) ToIamBindingConditionOutput() IamBindingConditionOutput {
+	return o
+}
+
+func (o IamBindingConditionOutput) ToIamBindingConditionOutputWithContext(ctx context.Context) IamBindingConditionOutput {
+	return o
+}
+
+func (o IamBindingConditionOutput) ToIamBindingConditionPtrOutput() IamBindingConditionPtrOutput {
+	return o.ToIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o IamBindingConditionOutput) ToIamBindingConditionPtrOutputWithContext(ctx context.Context) IamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IamBindingCondition) *IamBindingCondition {
+		return &v
+	}).(IamBindingConditionPtrOutput)
+}
+
+func (o IamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o IamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v IamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o IamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v IamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type IamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (IamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IamBindingCondition)(nil)).Elem()
+}
+
+func (o IamBindingConditionPtrOutput) ToIamBindingConditionPtrOutput() IamBindingConditionPtrOutput {
+	return o
+}
+
+func (o IamBindingConditionPtrOutput) ToIamBindingConditionPtrOutputWithContext(ctx context.Context) IamBindingConditionPtrOutput {
+	return o
+}
+
+func (o IamBindingConditionPtrOutput) Elem() IamBindingConditionOutput {
+	return o.ApplyT(func(v *IamBindingCondition) IamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret IamBindingCondition
+		return ret
+	}).(IamBindingConditionOutput)
+}
+
+func (o IamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o IamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o IamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type IamMemberCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+	// consider it to be an entirely different resource and will treat it as such.
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
+}
+
+// IamMemberConditionInput is an input type that accepts IamMemberConditionArgs and IamMemberConditionOutput values.
+// You can construct a concrete instance of `IamMemberConditionInput` via:
+//
+//	IamMemberConditionArgs{...}
+type IamMemberConditionInput interface {
+	pulumi.Input
+
+	ToIamMemberConditionOutput() IamMemberConditionOutput
+	ToIamMemberConditionOutputWithContext(context.Context) IamMemberConditionOutput
+}
+
+type IamMemberConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+	// consider it to be an entirely different resource and will treat it as such.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (IamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IamMemberCondition)(nil)).Elem()
+}
+
+func (i IamMemberConditionArgs) ToIamMemberConditionOutput() IamMemberConditionOutput {
+	return i.ToIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i IamMemberConditionArgs) ToIamMemberConditionOutputWithContext(ctx context.Context) IamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamMemberConditionOutput)
+}
+
+func (i IamMemberConditionArgs) ToIamMemberConditionPtrOutput() IamMemberConditionPtrOutput {
+	return i.ToIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i IamMemberConditionArgs) ToIamMemberConditionPtrOutputWithContext(ctx context.Context) IamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamMemberConditionOutput).ToIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// IamMemberConditionPtrInput is an input type that accepts IamMemberConditionArgs, IamMemberConditionPtr and IamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `IamMemberConditionPtrInput` via:
+//
+//	        IamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type IamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToIamMemberConditionPtrOutput() IamMemberConditionPtrOutput
+	ToIamMemberConditionPtrOutputWithContext(context.Context) IamMemberConditionPtrOutput
+}
+
+type iamMemberConditionPtrType IamMemberConditionArgs
+
+func IamMemberConditionPtr(v *IamMemberConditionArgs) IamMemberConditionPtrInput {
+	return (*iamMemberConditionPtrType)(v)
+}
+
+func (*iamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IamMemberCondition)(nil)).Elem()
+}
+
+func (i *iamMemberConditionPtrType) ToIamMemberConditionPtrOutput() IamMemberConditionPtrOutput {
+	return i.ToIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *iamMemberConditionPtrType) ToIamMemberConditionPtrOutputWithContext(ctx context.Context) IamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamMemberConditionPtrOutput)
+}
+
+type IamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (IamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IamMemberCondition)(nil)).Elem()
+}
+
+func (o IamMemberConditionOutput) ToIamMemberConditionOutput() IamMemberConditionOutput {
+	return o
+}
+
+func (o IamMemberConditionOutput) ToIamMemberConditionOutputWithContext(ctx context.Context) IamMemberConditionOutput {
+	return o
+}
+
+func (o IamMemberConditionOutput) ToIamMemberConditionPtrOutput() IamMemberConditionPtrOutput {
+	return o.ToIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o IamMemberConditionOutput) ToIamMemberConditionPtrOutputWithContext(ctx context.Context) IamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IamMemberCondition) *IamMemberCondition {
+		return &v
+	}).(IamMemberConditionPtrOutput)
+}
+
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+// consider it to be an entirely different resource and will treat it as such.
+func (o IamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o IamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v IamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o IamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v IamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type IamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (IamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IamMemberCondition)(nil)).Elem()
+}
+
+func (o IamMemberConditionPtrOutput) ToIamMemberConditionPtrOutput() IamMemberConditionPtrOutput {
+	return o
+}
+
+func (o IamMemberConditionPtrOutput) ToIamMemberConditionPtrOutputWithContext(ctx context.Context) IamMemberConditionPtrOutput {
+	return o
+}
+
+func (o IamMemberConditionPtrOutput) Elem() IamMemberConditionOutput {
+	return o.ApplyT(func(v *IamMemberCondition) IamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret IamMemberCondition
+		return ret
+	}).(IamMemberConditionOutput)
+}
+
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+// consider it to be an entirely different resource and will treat it as such.
+func (o IamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o IamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o IamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
 }
 
 type OrganizationPolicyBooleanPolicy struct {
@@ -1948,12 +1948,12 @@ func (o GetOrganizationPolicyRestorePolicyArrayOutput) Index(i pulumi.IntInput) 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApprovalSettingsEnrolledServiceInput)(nil)).Elem(), AccessApprovalSettingsEnrolledServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApprovalSettingsEnrolledServiceArrayInput)(nil)).Elem(), AccessApprovalSettingsEnrolledServiceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IAMBindingConditionInput)(nil)).Elem(), IAMBindingConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IAMBindingConditionPtrInput)(nil)).Elem(), IAMBindingConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IAMMemberConditionInput)(nil)).Elem(), IAMMemberConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IAMMemberConditionPtrInput)(nil)).Elem(), IAMMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IamAuditConfigAuditLogConfigInput)(nil)).Elem(), IamAuditConfigAuditLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IamAuditConfigAuditLogConfigArrayInput)(nil)).Elem(), IamAuditConfigAuditLogConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamBindingConditionInput)(nil)).Elem(), IamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamBindingConditionPtrInput)(nil)).Elem(), IamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamMemberConditionInput)(nil)).Elem(), IamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamMemberConditionPtrInput)(nil)).Elem(), IamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationPolicyBooleanPolicyInput)(nil)).Elem(), OrganizationPolicyBooleanPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationPolicyBooleanPolicyPtrInput)(nil)).Elem(), OrganizationPolicyBooleanPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationPolicyListPolicyInput)(nil)).Elem(), OrganizationPolicyListPolicyArgs{})
@@ -1976,12 +1976,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOrganizationPolicyRestorePolicyArrayInput)(nil)).Elem(), GetOrganizationPolicyRestorePolicyArray{})
 	pulumi.RegisterOutputType(AccessApprovalSettingsEnrolledServiceOutput{})
 	pulumi.RegisterOutputType(AccessApprovalSettingsEnrolledServiceArrayOutput{})
-	pulumi.RegisterOutputType(IAMBindingConditionOutput{})
-	pulumi.RegisterOutputType(IAMBindingConditionPtrOutput{})
-	pulumi.RegisterOutputType(IAMMemberConditionOutput{})
-	pulumi.RegisterOutputType(IAMMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(IamAuditConfigAuditLogConfigOutput{})
 	pulumi.RegisterOutputType(IamAuditConfigAuditLogConfigArrayOutput{})
+	pulumi.RegisterOutputType(IamBindingConditionOutput{})
+	pulumi.RegisterOutputType(IamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(IamMemberConditionOutput{})
+	pulumi.RegisterOutputType(IamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(OrganizationPolicyBooleanPolicyOutput{})
 	pulumi.RegisterOutputType(OrganizationPolicyBooleanPolicyPtrOutput{})
 	pulumi.RegisterOutputType(OrganizationPolicyListPolicyOutput{})

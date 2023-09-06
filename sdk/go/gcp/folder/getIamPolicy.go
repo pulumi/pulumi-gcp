@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := folder.GetIamPolicy(ctx, &folder.GetIamPolicyArgs{
+//			_, err := folder.LookupIamPolicy(ctx, &folder.LookupIamPolicyArgs{
 //				Folder: google_folder.Permissiontest.Name,
 //			}, nil)
 //			if err != nil {
@@ -38,9 +38,9 @@ import (
 //	}
 //
 // ```
-func GetIamPolicy(ctx *pulumi.Context, args *GetIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetIamPolicyResult, error) {
+func LookupIamPolicy(ctx *pulumi.Context, args *LookupIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
-	var rv GetIamPolicyResult
+	var rv LookupIamPolicyResult
 	err := ctx.Invoke("gcp:folder/getIamPolicy:getIamPolicy", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -49,13 +49,13 @@ func GetIamPolicy(ctx *pulumi.Context, args *GetIamPolicyArgs, opts ...pulumi.In
 }
 
 // A collection of arguments for invoking getIamPolicy.
-type GetIamPolicyArgs struct {
+type LookupIamPolicyArgs struct {
 	// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
 	Folder string `pulumi:"folder"`
 }
 
 // A collection of values returned by getIamPolicy.
-type GetIamPolicyResult struct {
+type LookupIamPolicyResult struct {
 	// (Computed) The etag of the IAM policy.
 	Etag   string `pulumi:"etag"`
 	Folder string `pulumi:"folder"`
@@ -65,63 +65,63 @@ type GetIamPolicyResult struct {
 	PolicyData string `pulumi:"policyData"`
 }
 
-func GetIamPolicyOutput(ctx *pulumi.Context, args GetIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetIamPolicyResultOutput {
+func LookupIamPolicyOutput(ctx *pulumi.Context, args LookupIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupIamPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetIamPolicyResult, error) {
-			args := v.(GetIamPolicyArgs)
-			r, err := GetIamPolicy(ctx, &args, opts...)
-			var s GetIamPolicyResult
+		ApplyT(func(v interface{}) (LookupIamPolicyResult, error) {
+			args := v.(LookupIamPolicyArgs)
+			r, err := LookupIamPolicy(ctx, &args, opts...)
+			var s LookupIamPolicyResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(GetIamPolicyResultOutput)
+		}).(LookupIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getIamPolicy.
-type GetIamPolicyOutputArgs struct {
+type LookupIamPolicyOutputArgs struct {
 	// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
 	Folder pulumi.StringInput `pulumi:"folder"`
 }
 
-func (GetIamPolicyOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetIamPolicyArgs)(nil)).Elem()
+func (LookupIamPolicyOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupIamPolicyArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getIamPolicy.
-type GetIamPolicyResultOutput struct{ *pulumi.OutputState }
+type LookupIamPolicyResultOutput struct{ *pulumi.OutputState }
 
-func (GetIamPolicyResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetIamPolicyResult)(nil)).Elem()
+func (LookupIamPolicyResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupIamPolicyResult)(nil)).Elem()
 }
 
-func (o GetIamPolicyResultOutput) ToGetIamPolicyResultOutput() GetIamPolicyResultOutput {
+func (o LookupIamPolicyResultOutput) ToLookupIamPolicyResultOutput() LookupIamPolicyResultOutput {
 	return o
 }
 
-func (o GetIamPolicyResultOutput) ToGetIamPolicyResultOutputWithContext(ctx context.Context) GetIamPolicyResultOutput {
+func (o LookupIamPolicyResultOutput) ToLookupIamPolicyResultOutputWithContext(ctx context.Context) LookupIamPolicyResultOutput {
 	return o
 }
 
 // (Computed) The etag of the IAM policy.
-func (o GetIamPolicyResultOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v GetIamPolicyResult) string { return v.Etag }).(pulumi.StringOutput)
+func (o LookupIamPolicyResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIamPolicyResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
-func (o GetIamPolicyResultOutput) Folder() pulumi.StringOutput {
-	return o.ApplyT(func(v GetIamPolicyResult) string { return v.Folder }).(pulumi.StringOutput)
+func (o LookupIamPolicyResultOutput) Folder() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIamPolicyResult) string { return v.Folder }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
-func (o GetIamPolicyResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetIamPolicyResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupIamPolicyResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIamPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // (Computed) The policy data
-func (o GetIamPolicyResultOutput) PolicyData() pulumi.StringOutput {
-	return o.ApplyT(func(v GetIamPolicyResult) string { return v.PolicyData }).(pulumi.StringOutput)
+func (o LookupIamPolicyResultOutput) PolicyData() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIamPolicyResult) string { return v.PolicyData }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(GetIamPolicyResultOutput{})
+	pulumi.RegisterOutputType(LookupIamPolicyResultOutput{})
 }

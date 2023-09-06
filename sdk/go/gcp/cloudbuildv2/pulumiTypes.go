@@ -1450,144 +1450,144 @@ func (o ConnectionGitlabConfigServiceDirectoryConfigPtrOutput) Service() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-type ConnectionIAMBindingCondition struct {
+type ConnectionIamBindingCondition struct {
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
 	Title       string  `pulumi:"title"`
 }
 
-// ConnectionIAMBindingConditionInput is an input type that accepts ConnectionIAMBindingConditionArgs and ConnectionIAMBindingConditionOutput values.
-// You can construct a concrete instance of `ConnectionIAMBindingConditionInput` via:
+// ConnectionIamBindingConditionInput is an input type that accepts ConnectionIamBindingConditionArgs and ConnectionIamBindingConditionOutput values.
+// You can construct a concrete instance of `ConnectionIamBindingConditionInput` via:
 //
-//	ConnectionIAMBindingConditionArgs{...}
-type ConnectionIAMBindingConditionInput interface {
+//	ConnectionIamBindingConditionArgs{...}
+type ConnectionIamBindingConditionInput interface {
 	pulumi.Input
 
-	ToConnectionIAMBindingConditionOutput() ConnectionIAMBindingConditionOutput
-	ToConnectionIAMBindingConditionOutputWithContext(context.Context) ConnectionIAMBindingConditionOutput
+	ToConnectionIamBindingConditionOutput() ConnectionIamBindingConditionOutput
+	ToConnectionIamBindingConditionOutputWithContext(context.Context) ConnectionIamBindingConditionOutput
 }
 
-type ConnectionIAMBindingConditionArgs struct {
+type ConnectionIamBindingConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	Expression  pulumi.StringInput    `pulumi:"expression"`
 	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
-func (ConnectionIAMBindingConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConnectionIAMBindingCondition)(nil)).Elem()
+func (ConnectionIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionIamBindingCondition)(nil)).Elem()
 }
 
-func (i ConnectionIAMBindingConditionArgs) ToConnectionIAMBindingConditionOutput() ConnectionIAMBindingConditionOutput {
-	return i.ToConnectionIAMBindingConditionOutputWithContext(context.Background())
+func (i ConnectionIamBindingConditionArgs) ToConnectionIamBindingConditionOutput() ConnectionIamBindingConditionOutput {
+	return i.ToConnectionIamBindingConditionOutputWithContext(context.Background())
 }
 
-func (i ConnectionIAMBindingConditionArgs) ToConnectionIAMBindingConditionOutputWithContext(ctx context.Context) ConnectionIAMBindingConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIAMBindingConditionOutput)
+func (i ConnectionIamBindingConditionArgs) ToConnectionIamBindingConditionOutputWithContext(ctx context.Context) ConnectionIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIamBindingConditionOutput)
 }
 
-func (i ConnectionIAMBindingConditionArgs) ToConnectionIAMBindingConditionPtrOutput() ConnectionIAMBindingConditionPtrOutput {
-	return i.ToConnectionIAMBindingConditionPtrOutputWithContext(context.Background())
+func (i ConnectionIamBindingConditionArgs) ToConnectionIamBindingConditionPtrOutput() ConnectionIamBindingConditionPtrOutput {
+	return i.ToConnectionIamBindingConditionPtrOutputWithContext(context.Background())
 }
 
-func (i ConnectionIAMBindingConditionArgs) ToConnectionIAMBindingConditionPtrOutputWithContext(ctx context.Context) ConnectionIAMBindingConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIAMBindingConditionOutput).ToConnectionIAMBindingConditionPtrOutputWithContext(ctx)
+func (i ConnectionIamBindingConditionArgs) ToConnectionIamBindingConditionPtrOutputWithContext(ctx context.Context) ConnectionIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIamBindingConditionOutput).ToConnectionIamBindingConditionPtrOutputWithContext(ctx)
 }
 
-// ConnectionIAMBindingConditionPtrInput is an input type that accepts ConnectionIAMBindingConditionArgs, ConnectionIAMBindingConditionPtr and ConnectionIAMBindingConditionPtrOutput values.
-// You can construct a concrete instance of `ConnectionIAMBindingConditionPtrInput` via:
+// ConnectionIamBindingConditionPtrInput is an input type that accepts ConnectionIamBindingConditionArgs, ConnectionIamBindingConditionPtr and ConnectionIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `ConnectionIamBindingConditionPtrInput` via:
 //
-//	        ConnectionIAMBindingConditionArgs{...}
+//	        ConnectionIamBindingConditionArgs{...}
 //
 //	or:
 //
 //	        nil
-type ConnectionIAMBindingConditionPtrInput interface {
+type ConnectionIamBindingConditionPtrInput interface {
 	pulumi.Input
 
-	ToConnectionIAMBindingConditionPtrOutput() ConnectionIAMBindingConditionPtrOutput
-	ToConnectionIAMBindingConditionPtrOutputWithContext(context.Context) ConnectionIAMBindingConditionPtrOutput
+	ToConnectionIamBindingConditionPtrOutput() ConnectionIamBindingConditionPtrOutput
+	ToConnectionIamBindingConditionPtrOutputWithContext(context.Context) ConnectionIamBindingConditionPtrOutput
 }
 
-type connectionIAMBindingConditionPtrType ConnectionIAMBindingConditionArgs
+type connectionIamBindingConditionPtrType ConnectionIamBindingConditionArgs
 
-func ConnectionIAMBindingConditionPtr(v *ConnectionIAMBindingConditionArgs) ConnectionIAMBindingConditionPtrInput {
-	return (*connectionIAMBindingConditionPtrType)(v)
+func ConnectionIamBindingConditionPtr(v *ConnectionIamBindingConditionArgs) ConnectionIamBindingConditionPtrInput {
+	return (*connectionIamBindingConditionPtrType)(v)
 }
 
-func (*connectionIAMBindingConditionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConnectionIAMBindingCondition)(nil)).Elem()
+func (*connectionIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionIamBindingCondition)(nil)).Elem()
 }
 
-func (i *connectionIAMBindingConditionPtrType) ToConnectionIAMBindingConditionPtrOutput() ConnectionIAMBindingConditionPtrOutput {
-	return i.ToConnectionIAMBindingConditionPtrOutputWithContext(context.Background())
+func (i *connectionIamBindingConditionPtrType) ToConnectionIamBindingConditionPtrOutput() ConnectionIamBindingConditionPtrOutput {
+	return i.ToConnectionIamBindingConditionPtrOutputWithContext(context.Background())
 }
 
-func (i *connectionIAMBindingConditionPtrType) ToConnectionIAMBindingConditionPtrOutputWithContext(ctx context.Context) ConnectionIAMBindingConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIAMBindingConditionPtrOutput)
+func (i *connectionIamBindingConditionPtrType) ToConnectionIamBindingConditionPtrOutputWithContext(ctx context.Context) ConnectionIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIamBindingConditionPtrOutput)
 }
 
-type ConnectionIAMBindingConditionOutput struct{ *pulumi.OutputState }
+type ConnectionIamBindingConditionOutput struct{ *pulumi.OutputState }
 
-func (ConnectionIAMBindingConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConnectionIAMBindingCondition)(nil)).Elem()
+func (ConnectionIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionIamBindingCondition)(nil)).Elem()
 }
 
-func (o ConnectionIAMBindingConditionOutput) ToConnectionIAMBindingConditionOutput() ConnectionIAMBindingConditionOutput {
+func (o ConnectionIamBindingConditionOutput) ToConnectionIamBindingConditionOutput() ConnectionIamBindingConditionOutput {
 	return o
 }
 
-func (o ConnectionIAMBindingConditionOutput) ToConnectionIAMBindingConditionOutputWithContext(ctx context.Context) ConnectionIAMBindingConditionOutput {
+func (o ConnectionIamBindingConditionOutput) ToConnectionIamBindingConditionOutputWithContext(ctx context.Context) ConnectionIamBindingConditionOutput {
 	return o
 }
 
-func (o ConnectionIAMBindingConditionOutput) ToConnectionIAMBindingConditionPtrOutput() ConnectionIAMBindingConditionPtrOutput {
-	return o.ToConnectionIAMBindingConditionPtrOutputWithContext(context.Background())
+func (o ConnectionIamBindingConditionOutput) ToConnectionIamBindingConditionPtrOutput() ConnectionIamBindingConditionPtrOutput {
+	return o.ToConnectionIamBindingConditionPtrOutputWithContext(context.Background())
 }
 
-func (o ConnectionIAMBindingConditionOutput) ToConnectionIAMBindingConditionPtrOutputWithContext(ctx context.Context) ConnectionIAMBindingConditionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionIAMBindingCondition) *ConnectionIAMBindingCondition {
+func (o ConnectionIamBindingConditionOutput) ToConnectionIamBindingConditionPtrOutputWithContext(ctx context.Context) ConnectionIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionIamBindingCondition) *ConnectionIamBindingCondition {
 		return &v
-	}).(ConnectionIAMBindingConditionPtrOutput)
+	}).(ConnectionIamBindingConditionPtrOutput)
 }
 
-func (o ConnectionIAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o ConnectionIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-func (o ConnectionIAMBindingConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v ConnectionIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o ConnectionIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
-func (o ConnectionIAMBindingConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v ConnectionIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o ConnectionIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type ConnectionIAMBindingConditionPtrOutput struct{ *pulumi.OutputState }
+type ConnectionIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
 
-func (ConnectionIAMBindingConditionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConnectionIAMBindingCondition)(nil)).Elem()
+func (ConnectionIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionIamBindingCondition)(nil)).Elem()
 }
 
-func (o ConnectionIAMBindingConditionPtrOutput) ToConnectionIAMBindingConditionPtrOutput() ConnectionIAMBindingConditionPtrOutput {
+func (o ConnectionIamBindingConditionPtrOutput) ToConnectionIamBindingConditionPtrOutput() ConnectionIamBindingConditionPtrOutput {
 	return o
 }
 
-func (o ConnectionIAMBindingConditionPtrOutput) ToConnectionIAMBindingConditionPtrOutputWithContext(ctx context.Context) ConnectionIAMBindingConditionPtrOutput {
+func (o ConnectionIamBindingConditionPtrOutput) ToConnectionIamBindingConditionPtrOutputWithContext(ctx context.Context) ConnectionIamBindingConditionPtrOutput {
 	return o
 }
 
-func (o ConnectionIAMBindingConditionPtrOutput) Elem() ConnectionIAMBindingConditionOutput {
-	return o.ApplyT(func(v *ConnectionIAMBindingCondition) ConnectionIAMBindingCondition {
+func (o ConnectionIamBindingConditionPtrOutput) Elem() ConnectionIamBindingConditionOutput {
+	return o.ApplyT(func(v *ConnectionIamBindingCondition) ConnectionIamBindingCondition {
 		if v != nil {
 			return *v
 		}
-		var ret ConnectionIAMBindingCondition
+		var ret ConnectionIamBindingCondition
 		return ret
-	}).(ConnectionIAMBindingConditionOutput)
+	}).(ConnectionIamBindingConditionOutput)
 }
 
-func (o ConnectionIAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectionIAMBindingCondition) *string {
+func (o ConnectionIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionIamBindingCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -1595,8 +1595,8 @@ func (o ConnectionIAMBindingConditionPtrOutput) Description() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ConnectionIAMBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectionIAMBindingCondition) *string {
+func (o ConnectionIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionIamBindingCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -1604,8 +1604,8 @@ func (o ConnectionIAMBindingConditionPtrOutput) Expression() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ConnectionIAMBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectionIAMBindingCondition) *string {
+func (o ConnectionIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionIamBindingCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -1613,144 +1613,144 @@ func (o ConnectionIAMBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type ConnectionIAMMemberCondition struct {
+type ConnectionIamMemberCondition struct {
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
 	Title       string  `pulumi:"title"`
 }
 
-// ConnectionIAMMemberConditionInput is an input type that accepts ConnectionIAMMemberConditionArgs and ConnectionIAMMemberConditionOutput values.
-// You can construct a concrete instance of `ConnectionIAMMemberConditionInput` via:
+// ConnectionIamMemberConditionInput is an input type that accepts ConnectionIamMemberConditionArgs and ConnectionIamMemberConditionOutput values.
+// You can construct a concrete instance of `ConnectionIamMemberConditionInput` via:
 //
-//	ConnectionIAMMemberConditionArgs{...}
-type ConnectionIAMMemberConditionInput interface {
+//	ConnectionIamMemberConditionArgs{...}
+type ConnectionIamMemberConditionInput interface {
 	pulumi.Input
 
-	ToConnectionIAMMemberConditionOutput() ConnectionIAMMemberConditionOutput
-	ToConnectionIAMMemberConditionOutputWithContext(context.Context) ConnectionIAMMemberConditionOutput
+	ToConnectionIamMemberConditionOutput() ConnectionIamMemberConditionOutput
+	ToConnectionIamMemberConditionOutputWithContext(context.Context) ConnectionIamMemberConditionOutput
 }
 
-type ConnectionIAMMemberConditionArgs struct {
+type ConnectionIamMemberConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	Expression  pulumi.StringInput    `pulumi:"expression"`
 	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
-func (ConnectionIAMMemberConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConnectionIAMMemberCondition)(nil)).Elem()
+func (ConnectionIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionIamMemberCondition)(nil)).Elem()
 }
 
-func (i ConnectionIAMMemberConditionArgs) ToConnectionIAMMemberConditionOutput() ConnectionIAMMemberConditionOutput {
-	return i.ToConnectionIAMMemberConditionOutputWithContext(context.Background())
+func (i ConnectionIamMemberConditionArgs) ToConnectionIamMemberConditionOutput() ConnectionIamMemberConditionOutput {
+	return i.ToConnectionIamMemberConditionOutputWithContext(context.Background())
 }
 
-func (i ConnectionIAMMemberConditionArgs) ToConnectionIAMMemberConditionOutputWithContext(ctx context.Context) ConnectionIAMMemberConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIAMMemberConditionOutput)
+func (i ConnectionIamMemberConditionArgs) ToConnectionIamMemberConditionOutputWithContext(ctx context.Context) ConnectionIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIamMemberConditionOutput)
 }
 
-func (i ConnectionIAMMemberConditionArgs) ToConnectionIAMMemberConditionPtrOutput() ConnectionIAMMemberConditionPtrOutput {
-	return i.ToConnectionIAMMemberConditionPtrOutputWithContext(context.Background())
+func (i ConnectionIamMemberConditionArgs) ToConnectionIamMemberConditionPtrOutput() ConnectionIamMemberConditionPtrOutput {
+	return i.ToConnectionIamMemberConditionPtrOutputWithContext(context.Background())
 }
 
-func (i ConnectionIAMMemberConditionArgs) ToConnectionIAMMemberConditionPtrOutputWithContext(ctx context.Context) ConnectionIAMMemberConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIAMMemberConditionOutput).ToConnectionIAMMemberConditionPtrOutputWithContext(ctx)
+func (i ConnectionIamMemberConditionArgs) ToConnectionIamMemberConditionPtrOutputWithContext(ctx context.Context) ConnectionIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIamMemberConditionOutput).ToConnectionIamMemberConditionPtrOutputWithContext(ctx)
 }
 
-// ConnectionIAMMemberConditionPtrInput is an input type that accepts ConnectionIAMMemberConditionArgs, ConnectionIAMMemberConditionPtr and ConnectionIAMMemberConditionPtrOutput values.
-// You can construct a concrete instance of `ConnectionIAMMemberConditionPtrInput` via:
+// ConnectionIamMemberConditionPtrInput is an input type that accepts ConnectionIamMemberConditionArgs, ConnectionIamMemberConditionPtr and ConnectionIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `ConnectionIamMemberConditionPtrInput` via:
 //
-//	        ConnectionIAMMemberConditionArgs{...}
+//	        ConnectionIamMemberConditionArgs{...}
 //
 //	or:
 //
 //	        nil
-type ConnectionIAMMemberConditionPtrInput interface {
+type ConnectionIamMemberConditionPtrInput interface {
 	pulumi.Input
 
-	ToConnectionIAMMemberConditionPtrOutput() ConnectionIAMMemberConditionPtrOutput
-	ToConnectionIAMMemberConditionPtrOutputWithContext(context.Context) ConnectionIAMMemberConditionPtrOutput
+	ToConnectionIamMemberConditionPtrOutput() ConnectionIamMemberConditionPtrOutput
+	ToConnectionIamMemberConditionPtrOutputWithContext(context.Context) ConnectionIamMemberConditionPtrOutput
 }
 
-type connectionIAMMemberConditionPtrType ConnectionIAMMemberConditionArgs
+type connectionIamMemberConditionPtrType ConnectionIamMemberConditionArgs
 
-func ConnectionIAMMemberConditionPtr(v *ConnectionIAMMemberConditionArgs) ConnectionIAMMemberConditionPtrInput {
-	return (*connectionIAMMemberConditionPtrType)(v)
+func ConnectionIamMemberConditionPtr(v *ConnectionIamMemberConditionArgs) ConnectionIamMemberConditionPtrInput {
+	return (*connectionIamMemberConditionPtrType)(v)
 }
 
-func (*connectionIAMMemberConditionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConnectionIAMMemberCondition)(nil)).Elem()
+func (*connectionIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionIamMemberCondition)(nil)).Elem()
 }
 
-func (i *connectionIAMMemberConditionPtrType) ToConnectionIAMMemberConditionPtrOutput() ConnectionIAMMemberConditionPtrOutput {
-	return i.ToConnectionIAMMemberConditionPtrOutputWithContext(context.Background())
+func (i *connectionIamMemberConditionPtrType) ToConnectionIamMemberConditionPtrOutput() ConnectionIamMemberConditionPtrOutput {
+	return i.ToConnectionIamMemberConditionPtrOutputWithContext(context.Background())
 }
 
-func (i *connectionIAMMemberConditionPtrType) ToConnectionIAMMemberConditionPtrOutputWithContext(ctx context.Context) ConnectionIAMMemberConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIAMMemberConditionPtrOutput)
+func (i *connectionIamMemberConditionPtrType) ToConnectionIamMemberConditionPtrOutputWithContext(ctx context.Context) ConnectionIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIamMemberConditionPtrOutput)
 }
 
-type ConnectionIAMMemberConditionOutput struct{ *pulumi.OutputState }
+type ConnectionIamMemberConditionOutput struct{ *pulumi.OutputState }
 
-func (ConnectionIAMMemberConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConnectionIAMMemberCondition)(nil)).Elem()
+func (ConnectionIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionIamMemberCondition)(nil)).Elem()
 }
 
-func (o ConnectionIAMMemberConditionOutput) ToConnectionIAMMemberConditionOutput() ConnectionIAMMemberConditionOutput {
+func (o ConnectionIamMemberConditionOutput) ToConnectionIamMemberConditionOutput() ConnectionIamMemberConditionOutput {
 	return o
 }
 
-func (o ConnectionIAMMemberConditionOutput) ToConnectionIAMMemberConditionOutputWithContext(ctx context.Context) ConnectionIAMMemberConditionOutput {
+func (o ConnectionIamMemberConditionOutput) ToConnectionIamMemberConditionOutputWithContext(ctx context.Context) ConnectionIamMemberConditionOutput {
 	return o
 }
 
-func (o ConnectionIAMMemberConditionOutput) ToConnectionIAMMemberConditionPtrOutput() ConnectionIAMMemberConditionPtrOutput {
-	return o.ToConnectionIAMMemberConditionPtrOutputWithContext(context.Background())
+func (o ConnectionIamMemberConditionOutput) ToConnectionIamMemberConditionPtrOutput() ConnectionIamMemberConditionPtrOutput {
+	return o.ToConnectionIamMemberConditionPtrOutputWithContext(context.Background())
 }
 
-func (o ConnectionIAMMemberConditionOutput) ToConnectionIAMMemberConditionPtrOutputWithContext(ctx context.Context) ConnectionIAMMemberConditionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionIAMMemberCondition) *ConnectionIAMMemberCondition {
+func (o ConnectionIamMemberConditionOutput) ToConnectionIamMemberConditionPtrOutputWithContext(ctx context.Context) ConnectionIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionIamMemberCondition) *ConnectionIamMemberCondition {
 		return &v
-	}).(ConnectionIAMMemberConditionPtrOutput)
+	}).(ConnectionIamMemberConditionPtrOutput)
 }
 
-func (o ConnectionIAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectionIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o ConnectionIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-func (o ConnectionIAMMemberConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v ConnectionIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o ConnectionIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
-func (o ConnectionIAMMemberConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v ConnectionIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o ConnectionIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type ConnectionIAMMemberConditionPtrOutput struct{ *pulumi.OutputState }
+type ConnectionIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
 
-func (ConnectionIAMMemberConditionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConnectionIAMMemberCondition)(nil)).Elem()
+func (ConnectionIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionIamMemberCondition)(nil)).Elem()
 }
 
-func (o ConnectionIAMMemberConditionPtrOutput) ToConnectionIAMMemberConditionPtrOutput() ConnectionIAMMemberConditionPtrOutput {
+func (o ConnectionIamMemberConditionPtrOutput) ToConnectionIamMemberConditionPtrOutput() ConnectionIamMemberConditionPtrOutput {
 	return o
 }
 
-func (o ConnectionIAMMemberConditionPtrOutput) ToConnectionIAMMemberConditionPtrOutputWithContext(ctx context.Context) ConnectionIAMMemberConditionPtrOutput {
+func (o ConnectionIamMemberConditionPtrOutput) ToConnectionIamMemberConditionPtrOutputWithContext(ctx context.Context) ConnectionIamMemberConditionPtrOutput {
 	return o
 }
 
-func (o ConnectionIAMMemberConditionPtrOutput) Elem() ConnectionIAMMemberConditionOutput {
-	return o.ApplyT(func(v *ConnectionIAMMemberCondition) ConnectionIAMMemberCondition {
+func (o ConnectionIamMemberConditionPtrOutput) Elem() ConnectionIamMemberConditionOutput {
+	return o.ApplyT(func(v *ConnectionIamMemberCondition) ConnectionIamMemberCondition {
 		if v != nil {
 			return *v
 		}
-		var ret ConnectionIAMMemberCondition
+		var ret ConnectionIamMemberCondition
 		return ret
-	}).(ConnectionIAMMemberConditionOutput)
+	}).(ConnectionIamMemberConditionOutput)
 }
 
-func (o ConnectionIAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectionIAMMemberCondition) *string {
+func (o ConnectionIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionIamMemberCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -1758,8 +1758,8 @@ func (o ConnectionIAMMemberConditionPtrOutput) Description() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ConnectionIAMMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectionIAMMemberCondition) *string {
+func (o ConnectionIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionIamMemberCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -1767,8 +1767,8 @@ func (o ConnectionIAMMemberConditionPtrOutput) Expression() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ConnectionIAMMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectionIAMMemberCondition) *string {
+func (o ConnectionIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionIamMemberCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -1899,10 +1899,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionGitlabConfigReadAuthorizerCredentialPtrInput)(nil)).Elem(), ConnectionGitlabConfigReadAuthorizerCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionGitlabConfigServiceDirectoryConfigInput)(nil)).Elem(), ConnectionGitlabConfigServiceDirectoryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionGitlabConfigServiceDirectoryConfigPtrInput)(nil)).Elem(), ConnectionGitlabConfigServiceDirectoryConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionIAMBindingConditionInput)(nil)).Elem(), ConnectionIAMBindingConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionIAMBindingConditionPtrInput)(nil)).Elem(), ConnectionIAMBindingConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionIAMMemberConditionInput)(nil)).Elem(), ConnectionIAMMemberConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionIAMMemberConditionPtrInput)(nil)).Elem(), ConnectionIAMMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionIamBindingConditionInput)(nil)).Elem(), ConnectionIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionIamBindingConditionPtrInput)(nil)).Elem(), ConnectionIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionIamMemberConditionInput)(nil)).Elem(), ConnectionIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionIamMemberConditionPtrInput)(nil)).Elem(), ConnectionIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionInstallationStateInput)(nil)).Elem(), ConnectionInstallationStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionInstallationStateArrayInput)(nil)).Elem(), ConnectionInstallationStateArray{})
 	pulumi.RegisterOutputType(ConnectionGithubConfigOutput{})
@@ -1921,10 +1921,10 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionGitlabConfigReadAuthorizerCredentialPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionGitlabConfigServiceDirectoryConfigOutput{})
 	pulumi.RegisterOutputType(ConnectionGitlabConfigServiceDirectoryConfigPtrOutput{})
-	pulumi.RegisterOutputType(ConnectionIAMBindingConditionOutput{})
-	pulumi.RegisterOutputType(ConnectionIAMBindingConditionPtrOutput{})
-	pulumi.RegisterOutputType(ConnectionIAMMemberConditionOutput{})
-	pulumi.RegisterOutputType(ConnectionIAMMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(ConnectionIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(ConnectionIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionInstallationStateOutput{})
 	pulumi.RegisterOutputType(ConnectionInstallationStateArrayOutput{})
 }

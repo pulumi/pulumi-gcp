@@ -6623,144 +6623,144 @@ func (o ClusterClusterConfigWorkerConfigDiskConfigPtrOutput) NumLocalSsds() pulu
 	}).(pulumi.IntPtrOutput)
 }
 
-type ClusterIAMBindingCondition struct {
+type ClusterIamBindingCondition struct {
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
 	Title       string  `pulumi:"title"`
 }
 
-// ClusterIAMBindingConditionInput is an input type that accepts ClusterIAMBindingConditionArgs and ClusterIAMBindingConditionOutput values.
-// You can construct a concrete instance of `ClusterIAMBindingConditionInput` via:
+// ClusterIamBindingConditionInput is an input type that accepts ClusterIamBindingConditionArgs and ClusterIamBindingConditionOutput values.
+// You can construct a concrete instance of `ClusterIamBindingConditionInput` via:
 //
-//	ClusterIAMBindingConditionArgs{...}
-type ClusterIAMBindingConditionInput interface {
+//	ClusterIamBindingConditionArgs{...}
+type ClusterIamBindingConditionInput interface {
 	pulumi.Input
 
-	ToClusterIAMBindingConditionOutput() ClusterIAMBindingConditionOutput
-	ToClusterIAMBindingConditionOutputWithContext(context.Context) ClusterIAMBindingConditionOutput
+	ToClusterIamBindingConditionOutput() ClusterIamBindingConditionOutput
+	ToClusterIamBindingConditionOutputWithContext(context.Context) ClusterIamBindingConditionOutput
 }
 
-type ClusterIAMBindingConditionArgs struct {
+type ClusterIamBindingConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	Expression  pulumi.StringInput    `pulumi:"expression"`
 	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
-func (ClusterIAMBindingConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterIAMBindingCondition)(nil)).Elem()
+func (ClusterIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterIamBindingCondition)(nil)).Elem()
 }
 
-func (i ClusterIAMBindingConditionArgs) ToClusterIAMBindingConditionOutput() ClusterIAMBindingConditionOutput {
-	return i.ToClusterIAMBindingConditionOutputWithContext(context.Background())
+func (i ClusterIamBindingConditionArgs) ToClusterIamBindingConditionOutput() ClusterIamBindingConditionOutput {
+	return i.ToClusterIamBindingConditionOutputWithContext(context.Background())
 }
 
-func (i ClusterIAMBindingConditionArgs) ToClusterIAMBindingConditionOutputWithContext(ctx context.Context) ClusterIAMBindingConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMBindingConditionOutput)
+func (i ClusterIamBindingConditionArgs) ToClusterIamBindingConditionOutputWithContext(ctx context.Context) ClusterIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterIamBindingConditionOutput)
 }
 
-func (i ClusterIAMBindingConditionArgs) ToClusterIAMBindingConditionPtrOutput() ClusterIAMBindingConditionPtrOutput {
-	return i.ToClusterIAMBindingConditionPtrOutputWithContext(context.Background())
+func (i ClusterIamBindingConditionArgs) ToClusterIamBindingConditionPtrOutput() ClusterIamBindingConditionPtrOutput {
+	return i.ToClusterIamBindingConditionPtrOutputWithContext(context.Background())
 }
 
-func (i ClusterIAMBindingConditionArgs) ToClusterIAMBindingConditionPtrOutputWithContext(ctx context.Context) ClusterIAMBindingConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMBindingConditionOutput).ToClusterIAMBindingConditionPtrOutputWithContext(ctx)
+func (i ClusterIamBindingConditionArgs) ToClusterIamBindingConditionPtrOutputWithContext(ctx context.Context) ClusterIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterIamBindingConditionOutput).ToClusterIamBindingConditionPtrOutputWithContext(ctx)
 }
 
-// ClusterIAMBindingConditionPtrInput is an input type that accepts ClusterIAMBindingConditionArgs, ClusterIAMBindingConditionPtr and ClusterIAMBindingConditionPtrOutput values.
-// You can construct a concrete instance of `ClusterIAMBindingConditionPtrInput` via:
+// ClusterIamBindingConditionPtrInput is an input type that accepts ClusterIamBindingConditionArgs, ClusterIamBindingConditionPtr and ClusterIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `ClusterIamBindingConditionPtrInput` via:
 //
-//	        ClusterIAMBindingConditionArgs{...}
+//	        ClusterIamBindingConditionArgs{...}
 //
 //	or:
 //
 //	        nil
-type ClusterIAMBindingConditionPtrInput interface {
+type ClusterIamBindingConditionPtrInput interface {
 	pulumi.Input
 
-	ToClusterIAMBindingConditionPtrOutput() ClusterIAMBindingConditionPtrOutput
-	ToClusterIAMBindingConditionPtrOutputWithContext(context.Context) ClusterIAMBindingConditionPtrOutput
+	ToClusterIamBindingConditionPtrOutput() ClusterIamBindingConditionPtrOutput
+	ToClusterIamBindingConditionPtrOutputWithContext(context.Context) ClusterIamBindingConditionPtrOutput
 }
 
-type clusterIAMBindingConditionPtrType ClusterIAMBindingConditionArgs
+type clusterIamBindingConditionPtrType ClusterIamBindingConditionArgs
 
-func ClusterIAMBindingConditionPtr(v *ClusterIAMBindingConditionArgs) ClusterIAMBindingConditionPtrInput {
-	return (*clusterIAMBindingConditionPtrType)(v)
+func ClusterIamBindingConditionPtr(v *ClusterIamBindingConditionArgs) ClusterIamBindingConditionPtrInput {
+	return (*clusterIamBindingConditionPtrType)(v)
 }
 
-func (*clusterIAMBindingConditionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterIAMBindingCondition)(nil)).Elem()
+func (*clusterIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterIamBindingCondition)(nil)).Elem()
 }
 
-func (i *clusterIAMBindingConditionPtrType) ToClusterIAMBindingConditionPtrOutput() ClusterIAMBindingConditionPtrOutput {
-	return i.ToClusterIAMBindingConditionPtrOutputWithContext(context.Background())
+func (i *clusterIamBindingConditionPtrType) ToClusterIamBindingConditionPtrOutput() ClusterIamBindingConditionPtrOutput {
+	return i.ToClusterIamBindingConditionPtrOutputWithContext(context.Background())
 }
 
-func (i *clusterIAMBindingConditionPtrType) ToClusterIAMBindingConditionPtrOutputWithContext(ctx context.Context) ClusterIAMBindingConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMBindingConditionPtrOutput)
+func (i *clusterIamBindingConditionPtrType) ToClusterIamBindingConditionPtrOutputWithContext(ctx context.Context) ClusterIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterIamBindingConditionPtrOutput)
 }
 
-type ClusterIAMBindingConditionOutput struct{ *pulumi.OutputState }
+type ClusterIamBindingConditionOutput struct{ *pulumi.OutputState }
 
-func (ClusterIAMBindingConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterIAMBindingCondition)(nil)).Elem()
+func (ClusterIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterIamBindingCondition)(nil)).Elem()
 }
 
-func (o ClusterIAMBindingConditionOutput) ToClusterIAMBindingConditionOutput() ClusterIAMBindingConditionOutput {
+func (o ClusterIamBindingConditionOutput) ToClusterIamBindingConditionOutput() ClusterIamBindingConditionOutput {
 	return o
 }
 
-func (o ClusterIAMBindingConditionOutput) ToClusterIAMBindingConditionOutputWithContext(ctx context.Context) ClusterIAMBindingConditionOutput {
+func (o ClusterIamBindingConditionOutput) ToClusterIamBindingConditionOutputWithContext(ctx context.Context) ClusterIamBindingConditionOutput {
 	return o
 }
 
-func (o ClusterIAMBindingConditionOutput) ToClusterIAMBindingConditionPtrOutput() ClusterIAMBindingConditionPtrOutput {
-	return o.ToClusterIAMBindingConditionPtrOutputWithContext(context.Background())
+func (o ClusterIamBindingConditionOutput) ToClusterIamBindingConditionPtrOutput() ClusterIamBindingConditionPtrOutput {
+	return o.ToClusterIamBindingConditionPtrOutputWithContext(context.Background())
 }
 
-func (o ClusterIAMBindingConditionOutput) ToClusterIAMBindingConditionPtrOutputWithContext(ctx context.Context) ClusterIAMBindingConditionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterIAMBindingCondition) *ClusterIAMBindingCondition {
+func (o ClusterIamBindingConditionOutput) ToClusterIamBindingConditionPtrOutputWithContext(ctx context.Context) ClusterIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterIamBindingCondition) *ClusterIamBindingCondition {
 		return &v
-	}).(ClusterIAMBindingConditionPtrOutput)
+	}).(ClusterIamBindingConditionPtrOutput)
 }
 
-func (o ClusterIAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o ClusterIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-func (o ClusterIAMBindingConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v ClusterIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o ClusterIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
-func (o ClusterIAMBindingConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v ClusterIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o ClusterIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type ClusterIAMBindingConditionPtrOutput struct{ *pulumi.OutputState }
+type ClusterIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
 
-func (ClusterIAMBindingConditionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterIAMBindingCondition)(nil)).Elem()
+func (ClusterIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterIamBindingCondition)(nil)).Elem()
 }
 
-func (o ClusterIAMBindingConditionPtrOutput) ToClusterIAMBindingConditionPtrOutput() ClusterIAMBindingConditionPtrOutput {
+func (o ClusterIamBindingConditionPtrOutput) ToClusterIamBindingConditionPtrOutput() ClusterIamBindingConditionPtrOutput {
 	return o
 }
 
-func (o ClusterIAMBindingConditionPtrOutput) ToClusterIAMBindingConditionPtrOutputWithContext(ctx context.Context) ClusterIAMBindingConditionPtrOutput {
+func (o ClusterIamBindingConditionPtrOutput) ToClusterIamBindingConditionPtrOutputWithContext(ctx context.Context) ClusterIamBindingConditionPtrOutput {
 	return o
 }
 
-func (o ClusterIAMBindingConditionPtrOutput) Elem() ClusterIAMBindingConditionOutput {
-	return o.ApplyT(func(v *ClusterIAMBindingCondition) ClusterIAMBindingCondition {
+func (o ClusterIamBindingConditionPtrOutput) Elem() ClusterIamBindingConditionOutput {
+	return o.ApplyT(func(v *ClusterIamBindingCondition) ClusterIamBindingCondition {
 		if v != nil {
 			return *v
 		}
-		var ret ClusterIAMBindingCondition
+		var ret ClusterIamBindingCondition
 		return ret
-	}).(ClusterIAMBindingConditionOutput)
+	}).(ClusterIamBindingConditionOutput)
 }
 
-func (o ClusterIAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClusterIAMBindingCondition) *string {
+func (o ClusterIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterIamBindingCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -6768,8 +6768,8 @@ func (o ClusterIAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ClusterIAMBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClusterIAMBindingCondition) *string {
+func (o ClusterIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterIamBindingCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -6777,8 +6777,8 @@ func (o ClusterIAMBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ClusterIAMBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClusterIAMBindingCondition) *string {
+func (o ClusterIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterIamBindingCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -6786,144 +6786,144 @@ func (o ClusterIAMBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type ClusterIAMMemberCondition struct {
+type ClusterIamMemberCondition struct {
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
 	Title       string  `pulumi:"title"`
 }
 
-// ClusterIAMMemberConditionInput is an input type that accepts ClusterIAMMemberConditionArgs and ClusterIAMMemberConditionOutput values.
-// You can construct a concrete instance of `ClusterIAMMemberConditionInput` via:
+// ClusterIamMemberConditionInput is an input type that accepts ClusterIamMemberConditionArgs and ClusterIamMemberConditionOutput values.
+// You can construct a concrete instance of `ClusterIamMemberConditionInput` via:
 //
-//	ClusterIAMMemberConditionArgs{...}
-type ClusterIAMMemberConditionInput interface {
+//	ClusterIamMemberConditionArgs{...}
+type ClusterIamMemberConditionInput interface {
 	pulumi.Input
 
-	ToClusterIAMMemberConditionOutput() ClusterIAMMemberConditionOutput
-	ToClusterIAMMemberConditionOutputWithContext(context.Context) ClusterIAMMemberConditionOutput
+	ToClusterIamMemberConditionOutput() ClusterIamMemberConditionOutput
+	ToClusterIamMemberConditionOutputWithContext(context.Context) ClusterIamMemberConditionOutput
 }
 
-type ClusterIAMMemberConditionArgs struct {
+type ClusterIamMemberConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	Expression  pulumi.StringInput    `pulumi:"expression"`
 	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
-func (ClusterIAMMemberConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterIAMMemberCondition)(nil)).Elem()
+func (ClusterIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterIamMemberCondition)(nil)).Elem()
 }
 
-func (i ClusterIAMMemberConditionArgs) ToClusterIAMMemberConditionOutput() ClusterIAMMemberConditionOutput {
-	return i.ToClusterIAMMemberConditionOutputWithContext(context.Background())
+func (i ClusterIamMemberConditionArgs) ToClusterIamMemberConditionOutput() ClusterIamMemberConditionOutput {
+	return i.ToClusterIamMemberConditionOutputWithContext(context.Background())
 }
 
-func (i ClusterIAMMemberConditionArgs) ToClusterIAMMemberConditionOutputWithContext(ctx context.Context) ClusterIAMMemberConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMMemberConditionOutput)
+func (i ClusterIamMemberConditionArgs) ToClusterIamMemberConditionOutputWithContext(ctx context.Context) ClusterIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterIamMemberConditionOutput)
 }
 
-func (i ClusterIAMMemberConditionArgs) ToClusterIAMMemberConditionPtrOutput() ClusterIAMMemberConditionPtrOutput {
-	return i.ToClusterIAMMemberConditionPtrOutputWithContext(context.Background())
+func (i ClusterIamMemberConditionArgs) ToClusterIamMemberConditionPtrOutput() ClusterIamMemberConditionPtrOutput {
+	return i.ToClusterIamMemberConditionPtrOutputWithContext(context.Background())
 }
 
-func (i ClusterIAMMemberConditionArgs) ToClusterIAMMemberConditionPtrOutputWithContext(ctx context.Context) ClusterIAMMemberConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMMemberConditionOutput).ToClusterIAMMemberConditionPtrOutputWithContext(ctx)
+func (i ClusterIamMemberConditionArgs) ToClusterIamMemberConditionPtrOutputWithContext(ctx context.Context) ClusterIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterIamMemberConditionOutput).ToClusterIamMemberConditionPtrOutputWithContext(ctx)
 }
 
-// ClusterIAMMemberConditionPtrInput is an input type that accepts ClusterIAMMemberConditionArgs, ClusterIAMMemberConditionPtr and ClusterIAMMemberConditionPtrOutput values.
-// You can construct a concrete instance of `ClusterIAMMemberConditionPtrInput` via:
+// ClusterIamMemberConditionPtrInput is an input type that accepts ClusterIamMemberConditionArgs, ClusterIamMemberConditionPtr and ClusterIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `ClusterIamMemberConditionPtrInput` via:
 //
-//	        ClusterIAMMemberConditionArgs{...}
+//	        ClusterIamMemberConditionArgs{...}
 //
 //	or:
 //
 //	        nil
-type ClusterIAMMemberConditionPtrInput interface {
+type ClusterIamMemberConditionPtrInput interface {
 	pulumi.Input
 
-	ToClusterIAMMemberConditionPtrOutput() ClusterIAMMemberConditionPtrOutput
-	ToClusterIAMMemberConditionPtrOutputWithContext(context.Context) ClusterIAMMemberConditionPtrOutput
+	ToClusterIamMemberConditionPtrOutput() ClusterIamMemberConditionPtrOutput
+	ToClusterIamMemberConditionPtrOutputWithContext(context.Context) ClusterIamMemberConditionPtrOutput
 }
 
-type clusterIAMMemberConditionPtrType ClusterIAMMemberConditionArgs
+type clusterIamMemberConditionPtrType ClusterIamMemberConditionArgs
 
-func ClusterIAMMemberConditionPtr(v *ClusterIAMMemberConditionArgs) ClusterIAMMemberConditionPtrInput {
-	return (*clusterIAMMemberConditionPtrType)(v)
+func ClusterIamMemberConditionPtr(v *ClusterIamMemberConditionArgs) ClusterIamMemberConditionPtrInput {
+	return (*clusterIamMemberConditionPtrType)(v)
 }
 
-func (*clusterIAMMemberConditionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterIAMMemberCondition)(nil)).Elem()
+func (*clusterIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterIamMemberCondition)(nil)).Elem()
 }
 
-func (i *clusterIAMMemberConditionPtrType) ToClusterIAMMemberConditionPtrOutput() ClusterIAMMemberConditionPtrOutput {
-	return i.ToClusterIAMMemberConditionPtrOutputWithContext(context.Background())
+func (i *clusterIamMemberConditionPtrType) ToClusterIamMemberConditionPtrOutput() ClusterIamMemberConditionPtrOutput {
+	return i.ToClusterIamMemberConditionPtrOutputWithContext(context.Background())
 }
 
-func (i *clusterIAMMemberConditionPtrType) ToClusterIAMMemberConditionPtrOutputWithContext(ctx context.Context) ClusterIAMMemberConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMMemberConditionPtrOutput)
+func (i *clusterIamMemberConditionPtrType) ToClusterIamMemberConditionPtrOutputWithContext(ctx context.Context) ClusterIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterIamMemberConditionPtrOutput)
 }
 
-type ClusterIAMMemberConditionOutput struct{ *pulumi.OutputState }
+type ClusterIamMemberConditionOutput struct{ *pulumi.OutputState }
 
-func (ClusterIAMMemberConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterIAMMemberCondition)(nil)).Elem()
+func (ClusterIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterIamMemberCondition)(nil)).Elem()
 }
 
-func (o ClusterIAMMemberConditionOutput) ToClusterIAMMemberConditionOutput() ClusterIAMMemberConditionOutput {
+func (o ClusterIamMemberConditionOutput) ToClusterIamMemberConditionOutput() ClusterIamMemberConditionOutput {
 	return o
 }
 
-func (o ClusterIAMMemberConditionOutput) ToClusterIAMMemberConditionOutputWithContext(ctx context.Context) ClusterIAMMemberConditionOutput {
+func (o ClusterIamMemberConditionOutput) ToClusterIamMemberConditionOutputWithContext(ctx context.Context) ClusterIamMemberConditionOutput {
 	return o
 }
 
-func (o ClusterIAMMemberConditionOutput) ToClusterIAMMemberConditionPtrOutput() ClusterIAMMemberConditionPtrOutput {
-	return o.ToClusterIAMMemberConditionPtrOutputWithContext(context.Background())
+func (o ClusterIamMemberConditionOutput) ToClusterIamMemberConditionPtrOutput() ClusterIamMemberConditionPtrOutput {
+	return o.ToClusterIamMemberConditionPtrOutputWithContext(context.Background())
 }
 
-func (o ClusterIAMMemberConditionOutput) ToClusterIAMMemberConditionPtrOutputWithContext(ctx context.Context) ClusterIAMMemberConditionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterIAMMemberCondition) *ClusterIAMMemberCondition {
+func (o ClusterIamMemberConditionOutput) ToClusterIamMemberConditionPtrOutputWithContext(ctx context.Context) ClusterIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterIamMemberCondition) *ClusterIamMemberCondition {
 		return &v
-	}).(ClusterIAMMemberConditionPtrOutput)
+	}).(ClusterIamMemberConditionPtrOutput)
 }
 
-func (o ClusterIAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o ClusterIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-func (o ClusterIAMMemberConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v ClusterIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o ClusterIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
-func (o ClusterIAMMemberConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v ClusterIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o ClusterIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type ClusterIAMMemberConditionPtrOutput struct{ *pulumi.OutputState }
+type ClusterIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
 
-func (ClusterIAMMemberConditionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterIAMMemberCondition)(nil)).Elem()
+func (ClusterIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterIamMemberCondition)(nil)).Elem()
 }
 
-func (o ClusterIAMMemberConditionPtrOutput) ToClusterIAMMemberConditionPtrOutput() ClusterIAMMemberConditionPtrOutput {
+func (o ClusterIamMemberConditionPtrOutput) ToClusterIamMemberConditionPtrOutput() ClusterIamMemberConditionPtrOutput {
 	return o
 }
 
-func (o ClusterIAMMemberConditionPtrOutput) ToClusterIAMMemberConditionPtrOutputWithContext(ctx context.Context) ClusterIAMMemberConditionPtrOutput {
+func (o ClusterIamMemberConditionPtrOutput) ToClusterIamMemberConditionPtrOutputWithContext(ctx context.Context) ClusterIamMemberConditionPtrOutput {
 	return o
 }
 
-func (o ClusterIAMMemberConditionPtrOutput) Elem() ClusterIAMMemberConditionOutput {
-	return o.ApplyT(func(v *ClusterIAMMemberCondition) ClusterIAMMemberCondition {
+func (o ClusterIamMemberConditionPtrOutput) Elem() ClusterIamMemberConditionOutput {
+	return o.ApplyT(func(v *ClusterIamMemberCondition) ClusterIamMemberCondition {
 		if v != nil {
 			return *v
 		}
-		var ret ClusterIAMMemberCondition
+		var ret ClusterIamMemberCondition
 		return ret
-	}).(ClusterIAMMemberConditionOutput)
+	}).(ClusterIamMemberConditionOutput)
 }
 
-func (o ClusterIAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClusterIAMMemberCondition) *string {
+func (o ClusterIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterIamMemberCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -6931,8 +6931,8 @@ func (o ClusterIAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ClusterIAMMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClusterIAMMemberCondition) *string {
+func (o ClusterIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterIamMemberCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -6940,8 +6940,8 @@ func (o ClusterIAMMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o ClusterIAMMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClusterIAMMemberCondition) *string {
+func (o ClusterIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterIamMemberCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -9589,144 +9589,144 @@ func (o JobHiveConfigPtrOutput) ScriptVariables() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-type JobIAMBindingCondition struct {
+type JobIamBindingCondition struct {
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
 	Title       string  `pulumi:"title"`
 }
 
-// JobIAMBindingConditionInput is an input type that accepts JobIAMBindingConditionArgs and JobIAMBindingConditionOutput values.
-// You can construct a concrete instance of `JobIAMBindingConditionInput` via:
+// JobIamBindingConditionInput is an input type that accepts JobIamBindingConditionArgs and JobIamBindingConditionOutput values.
+// You can construct a concrete instance of `JobIamBindingConditionInput` via:
 //
-//	JobIAMBindingConditionArgs{...}
-type JobIAMBindingConditionInput interface {
+//	JobIamBindingConditionArgs{...}
+type JobIamBindingConditionInput interface {
 	pulumi.Input
 
-	ToJobIAMBindingConditionOutput() JobIAMBindingConditionOutput
-	ToJobIAMBindingConditionOutputWithContext(context.Context) JobIAMBindingConditionOutput
+	ToJobIamBindingConditionOutput() JobIamBindingConditionOutput
+	ToJobIamBindingConditionOutputWithContext(context.Context) JobIamBindingConditionOutput
 }
 
-type JobIAMBindingConditionArgs struct {
+type JobIamBindingConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	Expression  pulumi.StringInput    `pulumi:"expression"`
 	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
-func (JobIAMBindingConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobIAMBindingCondition)(nil)).Elem()
+func (JobIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobIamBindingCondition)(nil)).Elem()
 }
 
-func (i JobIAMBindingConditionArgs) ToJobIAMBindingConditionOutput() JobIAMBindingConditionOutput {
-	return i.ToJobIAMBindingConditionOutputWithContext(context.Background())
+func (i JobIamBindingConditionArgs) ToJobIamBindingConditionOutput() JobIamBindingConditionOutput {
+	return i.ToJobIamBindingConditionOutputWithContext(context.Background())
 }
 
-func (i JobIAMBindingConditionArgs) ToJobIAMBindingConditionOutputWithContext(ctx context.Context) JobIAMBindingConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobIAMBindingConditionOutput)
+func (i JobIamBindingConditionArgs) ToJobIamBindingConditionOutputWithContext(ctx context.Context) JobIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobIamBindingConditionOutput)
 }
 
-func (i JobIAMBindingConditionArgs) ToJobIAMBindingConditionPtrOutput() JobIAMBindingConditionPtrOutput {
-	return i.ToJobIAMBindingConditionPtrOutputWithContext(context.Background())
+func (i JobIamBindingConditionArgs) ToJobIamBindingConditionPtrOutput() JobIamBindingConditionPtrOutput {
+	return i.ToJobIamBindingConditionPtrOutputWithContext(context.Background())
 }
 
-func (i JobIAMBindingConditionArgs) ToJobIAMBindingConditionPtrOutputWithContext(ctx context.Context) JobIAMBindingConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobIAMBindingConditionOutput).ToJobIAMBindingConditionPtrOutputWithContext(ctx)
+func (i JobIamBindingConditionArgs) ToJobIamBindingConditionPtrOutputWithContext(ctx context.Context) JobIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobIamBindingConditionOutput).ToJobIamBindingConditionPtrOutputWithContext(ctx)
 }
 
-// JobIAMBindingConditionPtrInput is an input type that accepts JobIAMBindingConditionArgs, JobIAMBindingConditionPtr and JobIAMBindingConditionPtrOutput values.
-// You can construct a concrete instance of `JobIAMBindingConditionPtrInput` via:
+// JobIamBindingConditionPtrInput is an input type that accepts JobIamBindingConditionArgs, JobIamBindingConditionPtr and JobIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `JobIamBindingConditionPtrInput` via:
 //
-//	        JobIAMBindingConditionArgs{...}
+//	        JobIamBindingConditionArgs{...}
 //
 //	or:
 //
 //	        nil
-type JobIAMBindingConditionPtrInput interface {
+type JobIamBindingConditionPtrInput interface {
 	pulumi.Input
 
-	ToJobIAMBindingConditionPtrOutput() JobIAMBindingConditionPtrOutput
-	ToJobIAMBindingConditionPtrOutputWithContext(context.Context) JobIAMBindingConditionPtrOutput
+	ToJobIamBindingConditionPtrOutput() JobIamBindingConditionPtrOutput
+	ToJobIamBindingConditionPtrOutputWithContext(context.Context) JobIamBindingConditionPtrOutput
 }
 
-type jobIAMBindingConditionPtrType JobIAMBindingConditionArgs
+type jobIamBindingConditionPtrType JobIamBindingConditionArgs
 
-func JobIAMBindingConditionPtr(v *JobIAMBindingConditionArgs) JobIAMBindingConditionPtrInput {
-	return (*jobIAMBindingConditionPtrType)(v)
+func JobIamBindingConditionPtr(v *JobIamBindingConditionArgs) JobIamBindingConditionPtrInput {
+	return (*jobIamBindingConditionPtrType)(v)
 }
 
-func (*jobIAMBindingConditionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobIAMBindingCondition)(nil)).Elem()
+func (*jobIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobIamBindingCondition)(nil)).Elem()
 }
 
-func (i *jobIAMBindingConditionPtrType) ToJobIAMBindingConditionPtrOutput() JobIAMBindingConditionPtrOutput {
-	return i.ToJobIAMBindingConditionPtrOutputWithContext(context.Background())
+func (i *jobIamBindingConditionPtrType) ToJobIamBindingConditionPtrOutput() JobIamBindingConditionPtrOutput {
+	return i.ToJobIamBindingConditionPtrOutputWithContext(context.Background())
 }
 
-func (i *jobIAMBindingConditionPtrType) ToJobIAMBindingConditionPtrOutputWithContext(ctx context.Context) JobIAMBindingConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobIAMBindingConditionPtrOutput)
+func (i *jobIamBindingConditionPtrType) ToJobIamBindingConditionPtrOutputWithContext(ctx context.Context) JobIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobIamBindingConditionPtrOutput)
 }
 
-type JobIAMBindingConditionOutput struct{ *pulumi.OutputState }
+type JobIamBindingConditionOutput struct{ *pulumi.OutputState }
 
-func (JobIAMBindingConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobIAMBindingCondition)(nil)).Elem()
+func (JobIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobIamBindingCondition)(nil)).Elem()
 }
 
-func (o JobIAMBindingConditionOutput) ToJobIAMBindingConditionOutput() JobIAMBindingConditionOutput {
+func (o JobIamBindingConditionOutput) ToJobIamBindingConditionOutput() JobIamBindingConditionOutput {
 	return o
 }
 
-func (o JobIAMBindingConditionOutput) ToJobIAMBindingConditionOutputWithContext(ctx context.Context) JobIAMBindingConditionOutput {
+func (o JobIamBindingConditionOutput) ToJobIamBindingConditionOutputWithContext(ctx context.Context) JobIamBindingConditionOutput {
 	return o
 }
 
-func (o JobIAMBindingConditionOutput) ToJobIAMBindingConditionPtrOutput() JobIAMBindingConditionPtrOutput {
-	return o.ToJobIAMBindingConditionPtrOutputWithContext(context.Background())
+func (o JobIamBindingConditionOutput) ToJobIamBindingConditionPtrOutput() JobIamBindingConditionPtrOutput {
+	return o.ToJobIamBindingConditionPtrOutputWithContext(context.Background())
 }
 
-func (o JobIAMBindingConditionOutput) ToJobIAMBindingConditionPtrOutputWithContext(ctx context.Context) JobIAMBindingConditionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobIAMBindingCondition) *JobIAMBindingCondition {
+func (o JobIamBindingConditionOutput) ToJobIamBindingConditionPtrOutputWithContext(ctx context.Context) JobIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobIamBindingCondition) *JobIamBindingCondition {
 		return &v
-	}).(JobIAMBindingConditionPtrOutput)
+	}).(JobIamBindingConditionPtrOutput)
 }
 
-func (o JobIAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o JobIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-func (o JobIAMBindingConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v JobIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o JobIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v JobIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
-func (o JobIAMBindingConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v JobIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o JobIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v JobIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type JobIAMBindingConditionPtrOutput struct{ *pulumi.OutputState }
+type JobIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
 
-func (JobIAMBindingConditionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobIAMBindingCondition)(nil)).Elem()
+func (JobIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobIamBindingCondition)(nil)).Elem()
 }
 
-func (o JobIAMBindingConditionPtrOutput) ToJobIAMBindingConditionPtrOutput() JobIAMBindingConditionPtrOutput {
+func (o JobIamBindingConditionPtrOutput) ToJobIamBindingConditionPtrOutput() JobIamBindingConditionPtrOutput {
 	return o
 }
 
-func (o JobIAMBindingConditionPtrOutput) ToJobIAMBindingConditionPtrOutputWithContext(ctx context.Context) JobIAMBindingConditionPtrOutput {
+func (o JobIamBindingConditionPtrOutput) ToJobIamBindingConditionPtrOutputWithContext(ctx context.Context) JobIamBindingConditionPtrOutput {
 	return o
 }
 
-func (o JobIAMBindingConditionPtrOutput) Elem() JobIAMBindingConditionOutput {
-	return o.ApplyT(func(v *JobIAMBindingCondition) JobIAMBindingCondition {
+func (o JobIamBindingConditionPtrOutput) Elem() JobIamBindingConditionOutput {
+	return o.ApplyT(func(v *JobIamBindingCondition) JobIamBindingCondition {
 		if v != nil {
 			return *v
 		}
-		var ret JobIAMBindingCondition
+		var ret JobIamBindingCondition
 		return ret
-	}).(JobIAMBindingConditionOutput)
+	}).(JobIamBindingConditionOutput)
 }
 
-func (o JobIAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobIAMBindingCondition) *string {
+func (o JobIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobIamBindingCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -9734,8 +9734,8 @@ func (o JobIAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o JobIAMBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobIAMBindingCondition) *string {
+func (o JobIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobIamBindingCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -9743,8 +9743,8 @@ func (o JobIAMBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o JobIAMBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobIAMBindingCondition) *string {
+func (o JobIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobIamBindingCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -9752,144 +9752,144 @@ func (o JobIAMBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type JobIAMMemberCondition struct {
+type JobIamMemberCondition struct {
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
 	Title       string  `pulumi:"title"`
 }
 
-// JobIAMMemberConditionInput is an input type that accepts JobIAMMemberConditionArgs and JobIAMMemberConditionOutput values.
-// You can construct a concrete instance of `JobIAMMemberConditionInput` via:
+// JobIamMemberConditionInput is an input type that accepts JobIamMemberConditionArgs and JobIamMemberConditionOutput values.
+// You can construct a concrete instance of `JobIamMemberConditionInput` via:
 //
-//	JobIAMMemberConditionArgs{...}
-type JobIAMMemberConditionInput interface {
+//	JobIamMemberConditionArgs{...}
+type JobIamMemberConditionInput interface {
 	pulumi.Input
 
-	ToJobIAMMemberConditionOutput() JobIAMMemberConditionOutput
-	ToJobIAMMemberConditionOutputWithContext(context.Context) JobIAMMemberConditionOutput
+	ToJobIamMemberConditionOutput() JobIamMemberConditionOutput
+	ToJobIamMemberConditionOutputWithContext(context.Context) JobIamMemberConditionOutput
 }
 
-type JobIAMMemberConditionArgs struct {
+type JobIamMemberConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	Expression  pulumi.StringInput    `pulumi:"expression"`
 	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
-func (JobIAMMemberConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobIAMMemberCondition)(nil)).Elem()
+func (JobIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobIamMemberCondition)(nil)).Elem()
 }
 
-func (i JobIAMMemberConditionArgs) ToJobIAMMemberConditionOutput() JobIAMMemberConditionOutput {
-	return i.ToJobIAMMemberConditionOutputWithContext(context.Background())
+func (i JobIamMemberConditionArgs) ToJobIamMemberConditionOutput() JobIamMemberConditionOutput {
+	return i.ToJobIamMemberConditionOutputWithContext(context.Background())
 }
 
-func (i JobIAMMemberConditionArgs) ToJobIAMMemberConditionOutputWithContext(ctx context.Context) JobIAMMemberConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobIAMMemberConditionOutput)
+func (i JobIamMemberConditionArgs) ToJobIamMemberConditionOutputWithContext(ctx context.Context) JobIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobIamMemberConditionOutput)
 }
 
-func (i JobIAMMemberConditionArgs) ToJobIAMMemberConditionPtrOutput() JobIAMMemberConditionPtrOutput {
-	return i.ToJobIAMMemberConditionPtrOutputWithContext(context.Background())
+func (i JobIamMemberConditionArgs) ToJobIamMemberConditionPtrOutput() JobIamMemberConditionPtrOutput {
+	return i.ToJobIamMemberConditionPtrOutputWithContext(context.Background())
 }
 
-func (i JobIAMMemberConditionArgs) ToJobIAMMemberConditionPtrOutputWithContext(ctx context.Context) JobIAMMemberConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobIAMMemberConditionOutput).ToJobIAMMemberConditionPtrOutputWithContext(ctx)
+func (i JobIamMemberConditionArgs) ToJobIamMemberConditionPtrOutputWithContext(ctx context.Context) JobIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobIamMemberConditionOutput).ToJobIamMemberConditionPtrOutputWithContext(ctx)
 }
 
-// JobIAMMemberConditionPtrInput is an input type that accepts JobIAMMemberConditionArgs, JobIAMMemberConditionPtr and JobIAMMemberConditionPtrOutput values.
-// You can construct a concrete instance of `JobIAMMemberConditionPtrInput` via:
+// JobIamMemberConditionPtrInput is an input type that accepts JobIamMemberConditionArgs, JobIamMemberConditionPtr and JobIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `JobIamMemberConditionPtrInput` via:
 //
-//	        JobIAMMemberConditionArgs{...}
+//	        JobIamMemberConditionArgs{...}
 //
 //	or:
 //
 //	        nil
-type JobIAMMemberConditionPtrInput interface {
+type JobIamMemberConditionPtrInput interface {
 	pulumi.Input
 
-	ToJobIAMMemberConditionPtrOutput() JobIAMMemberConditionPtrOutput
-	ToJobIAMMemberConditionPtrOutputWithContext(context.Context) JobIAMMemberConditionPtrOutput
+	ToJobIamMemberConditionPtrOutput() JobIamMemberConditionPtrOutput
+	ToJobIamMemberConditionPtrOutputWithContext(context.Context) JobIamMemberConditionPtrOutput
 }
 
-type jobIAMMemberConditionPtrType JobIAMMemberConditionArgs
+type jobIamMemberConditionPtrType JobIamMemberConditionArgs
 
-func JobIAMMemberConditionPtr(v *JobIAMMemberConditionArgs) JobIAMMemberConditionPtrInput {
-	return (*jobIAMMemberConditionPtrType)(v)
+func JobIamMemberConditionPtr(v *JobIamMemberConditionArgs) JobIamMemberConditionPtrInput {
+	return (*jobIamMemberConditionPtrType)(v)
 }
 
-func (*jobIAMMemberConditionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobIAMMemberCondition)(nil)).Elem()
+func (*jobIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobIamMemberCondition)(nil)).Elem()
 }
 
-func (i *jobIAMMemberConditionPtrType) ToJobIAMMemberConditionPtrOutput() JobIAMMemberConditionPtrOutput {
-	return i.ToJobIAMMemberConditionPtrOutputWithContext(context.Background())
+func (i *jobIamMemberConditionPtrType) ToJobIamMemberConditionPtrOutput() JobIamMemberConditionPtrOutput {
+	return i.ToJobIamMemberConditionPtrOutputWithContext(context.Background())
 }
 
-func (i *jobIAMMemberConditionPtrType) ToJobIAMMemberConditionPtrOutputWithContext(ctx context.Context) JobIAMMemberConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JobIAMMemberConditionPtrOutput)
+func (i *jobIamMemberConditionPtrType) ToJobIamMemberConditionPtrOutputWithContext(ctx context.Context) JobIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobIamMemberConditionPtrOutput)
 }
 
-type JobIAMMemberConditionOutput struct{ *pulumi.OutputState }
+type JobIamMemberConditionOutput struct{ *pulumi.OutputState }
 
-func (JobIAMMemberConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobIAMMemberCondition)(nil)).Elem()
+func (JobIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobIamMemberCondition)(nil)).Elem()
 }
 
-func (o JobIAMMemberConditionOutput) ToJobIAMMemberConditionOutput() JobIAMMemberConditionOutput {
+func (o JobIamMemberConditionOutput) ToJobIamMemberConditionOutput() JobIamMemberConditionOutput {
 	return o
 }
 
-func (o JobIAMMemberConditionOutput) ToJobIAMMemberConditionOutputWithContext(ctx context.Context) JobIAMMemberConditionOutput {
+func (o JobIamMemberConditionOutput) ToJobIamMemberConditionOutputWithContext(ctx context.Context) JobIamMemberConditionOutput {
 	return o
 }
 
-func (o JobIAMMemberConditionOutput) ToJobIAMMemberConditionPtrOutput() JobIAMMemberConditionPtrOutput {
-	return o.ToJobIAMMemberConditionPtrOutputWithContext(context.Background())
+func (o JobIamMemberConditionOutput) ToJobIamMemberConditionPtrOutput() JobIamMemberConditionPtrOutput {
+	return o.ToJobIamMemberConditionPtrOutputWithContext(context.Background())
 }
 
-func (o JobIAMMemberConditionOutput) ToJobIAMMemberConditionPtrOutputWithContext(ctx context.Context) JobIAMMemberConditionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobIAMMemberCondition) *JobIAMMemberCondition {
+func (o JobIamMemberConditionOutput) ToJobIamMemberConditionPtrOutputWithContext(ctx context.Context) JobIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobIamMemberCondition) *JobIamMemberCondition {
 		return &v
-	}).(JobIAMMemberConditionPtrOutput)
+	}).(JobIamMemberConditionPtrOutput)
 }
 
-func (o JobIAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o JobIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-func (o JobIAMMemberConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v JobIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o JobIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v JobIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
-func (o JobIAMMemberConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v JobIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o JobIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v JobIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type JobIAMMemberConditionPtrOutput struct{ *pulumi.OutputState }
+type JobIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
 
-func (JobIAMMemberConditionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**JobIAMMemberCondition)(nil)).Elem()
+func (JobIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobIamMemberCondition)(nil)).Elem()
 }
 
-func (o JobIAMMemberConditionPtrOutput) ToJobIAMMemberConditionPtrOutput() JobIAMMemberConditionPtrOutput {
+func (o JobIamMemberConditionPtrOutput) ToJobIamMemberConditionPtrOutput() JobIamMemberConditionPtrOutput {
 	return o
 }
 
-func (o JobIAMMemberConditionPtrOutput) ToJobIAMMemberConditionPtrOutputWithContext(ctx context.Context) JobIAMMemberConditionPtrOutput {
+func (o JobIamMemberConditionPtrOutput) ToJobIamMemberConditionPtrOutputWithContext(ctx context.Context) JobIamMemberConditionPtrOutput {
 	return o
 }
 
-func (o JobIAMMemberConditionPtrOutput) Elem() JobIAMMemberConditionOutput {
-	return o.ApplyT(func(v *JobIAMMemberCondition) JobIAMMemberCondition {
+func (o JobIamMemberConditionPtrOutput) Elem() JobIamMemberConditionOutput {
+	return o.ApplyT(func(v *JobIamMemberCondition) JobIamMemberCondition {
 		if v != nil {
 			return *v
 		}
-		var ret JobIAMMemberCondition
+		var ret JobIamMemberCondition
 		return ret
-	}).(JobIAMMemberConditionOutput)
+	}).(JobIamMemberConditionOutput)
 }
 
-func (o JobIAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobIAMMemberCondition) *string {
+func (o JobIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobIamMemberCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -9897,8 +9897,8 @@ func (o JobIAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o JobIAMMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobIAMMemberCondition) *string {
+func (o JobIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobIamMemberCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -9906,8 +9906,8 @@ func (o JobIAMMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o JobIAMMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobIAMMemberCondition) *string {
+func (o JobIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobIamMemberCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -25428,10 +25428,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigWorkerConfigAcceleratorArrayInput)(nil)).Elem(), ClusterClusterConfigWorkerConfigAcceleratorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigWorkerConfigDiskConfigInput)(nil)).Elem(), ClusterClusterConfigWorkerConfigDiskConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigWorkerConfigDiskConfigPtrInput)(nil)).Elem(), ClusterClusterConfigWorkerConfigDiskConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIAMBindingConditionInput)(nil)).Elem(), ClusterIAMBindingConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIAMBindingConditionPtrInput)(nil)).Elem(), ClusterIAMBindingConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIAMMemberConditionInput)(nil)).Elem(), ClusterIAMMemberConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIAMMemberConditionPtrInput)(nil)).Elem(), ClusterIAMMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIamBindingConditionInput)(nil)).Elem(), ClusterIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIamBindingConditionPtrInput)(nil)).Elem(), ClusterIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIamMemberConditionInput)(nil)).Elem(), ClusterIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIamMemberConditionPtrInput)(nil)).Elem(), ClusterIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterVirtualClusterConfigInput)(nil)).Elem(), ClusterVirtualClusterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterVirtualClusterConfigPtrInput)(nil)).Elem(), ClusterVirtualClusterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterVirtualClusterConfigAuxiliaryServicesConfigInput)(nil)).Elem(), ClusterVirtualClusterConfigAuxiliaryServicesConfigArgs{})
@@ -25460,10 +25460,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobHadoopConfigLoggingConfigPtrInput)(nil)).Elem(), JobHadoopConfigLoggingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobHiveConfigInput)(nil)).Elem(), JobHiveConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobHiveConfigPtrInput)(nil)).Elem(), JobHiveConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobIAMBindingConditionInput)(nil)).Elem(), JobIAMBindingConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobIAMBindingConditionPtrInput)(nil)).Elem(), JobIAMBindingConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobIAMMemberConditionInput)(nil)).Elem(), JobIAMMemberConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*JobIAMMemberConditionPtrInput)(nil)).Elem(), JobIAMMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobIamBindingConditionInput)(nil)).Elem(), JobIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobIamBindingConditionPtrInput)(nil)).Elem(), JobIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobIamMemberConditionInput)(nil)).Elem(), JobIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JobIamMemberConditionPtrInput)(nil)).Elem(), JobIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobPigConfigInput)(nil)).Elem(), JobPigConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobPigConfigPtrInput)(nil)).Elem(), JobPigConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobPigConfigLoggingConfigInput)(nil)).Elem(), JobPigConfigLoggingConfigArgs{})
@@ -25698,10 +25698,10 @@ func init() {
 	pulumi.RegisterOutputType(ClusterClusterConfigWorkerConfigAcceleratorArrayOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigWorkerConfigDiskConfigOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigWorkerConfigDiskConfigPtrOutput{})
-	pulumi.RegisterOutputType(ClusterIAMBindingConditionOutput{})
-	pulumi.RegisterOutputType(ClusterIAMBindingConditionPtrOutput{})
-	pulumi.RegisterOutputType(ClusterIAMMemberConditionOutput{})
-	pulumi.RegisterOutputType(ClusterIAMMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(ClusterIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(ClusterIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(ClusterIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(ClusterIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(ClusterVirtualClusterConfigOutput{})
 	pulumi.RegisterOutputType(ClusterVirtualClusterConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterVirtualClusterConfigAuxiliaryServicesConfigOutput{})
@@ -25730,10 +25730,10 @@ func init() {
 	pulumi.RegisterOutputType(JobHadoopConfigLoggingConfigPtrOutput{})
 	pulumi.RegisterOutputType(JobHiveConfigOutput{})
 	pulumi.RegisterOutputType(JobHiveConfigPtrOutput{})
-	pulumi.RegisterOutputType(JobIAMBindingConditionOutput{})
-	pulumi.RegisterOutputType(JobIAMBindingConditionPtrOutput{})
-	pulumi.RegisterOutputType(JobIAMMemberConditionOutput{})
-	pulumi.RegisterOutputType(JobIAMMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(JobIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(JobIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(JobIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(JobIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(JobPigConfigOutput{})
 	pulumi.RegisterOutputType(JobPigConfigPtrOutput{})
 	pulumi.RegisterOutputType(JobPigConfigLoggingConfigOutput{})

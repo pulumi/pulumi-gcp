@@ -72,7 +72,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewIAMBinding(ctx, "synchronizer-iam", &projects.IAMBindingArgs{
+//			_, err = projects.NewIamBinding(ctx, "synchronizer-iam", &projects.IamBindingArgs{
 //				Project: project.ProjectId,
 //				Role:    pulumi.String("roles/apigee.synchronizerManager"),
 //				Members: pulumi.StringArray{

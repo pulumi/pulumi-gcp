@@ -67,7 +67,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = pubsub.NewTopicIAMBinding(ctx, "binding", &pubsub.TopicIAMBindingArgs{
+//			_, err = pubsub.NewTopicIamBinding(ctx, "binding", &pubsub.TopicIamBindingArgs{
 //				Topic: pulumi.Any(google_pubsub_topic.Topic.Name),
 //				Role:  pulumi.String("roles/pubsub.publisher"),
 //				Members: pulumi.StringArray{
@@ -103,7 +103,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			binding, err := kms.NewCryptoKeyIAMBinding(ctx, "binding", &kms.CryptoKeyIAMBindingArgs{
+//			binding, err := kms.NewCryptoKeyIamBinding(ctx, "binding", &kms.CryptoKeyIamBindingArgs{
 //				CryptoKeyId: pulumi.String("your-crypto-key-id"),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Members: pulumi.StringArray{

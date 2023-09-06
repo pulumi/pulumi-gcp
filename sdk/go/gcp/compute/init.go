@@ -111,12 +111,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &InstanceGroupManager{}
 	case "gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort":
 		r = &InstanceGroupNamedPort{}
-	case "gcp:compute/instanceIAMBinding:InstanceIAMBinding":
-		r = &InstanceIAMBinding{}
-	case "gcp:compute/instanceIAMMember:InstanceIAMMember":
-		r = &InstanceIAMMember{}
-	case "gcp:compute/instanceIAMPolicy:InstanceIAMPolicy":
-		r = &InstanceIAMPolicy{}
+	case "gcp:compute/instanceIamBinding:InstanceIamBinding":
+		r = &InstanceIamBinding{}
+	case "gcp:compute/instanceIamMember:InstanceIamMember":
+		r = &InstanceIamMember{}
+	case "gcp:compute/instanceIamPolicy:InstanceIamPolicy":
+		r = &InstanceIamPolicy{}
 	case "gcp:compute/instanceTemplate:InstanceTemplate":
 		r = &InstanceTemplate{}
 	case "gcp:compute/interconnectAttachment:InterconnectAttachment":
@@ -271,12 +271,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SnapshotIamPolicy{}
 	case "gcp:compute/subnetwork:Subnetwork":
 		r = &Subnetwork{}
-	case "gcp:compute/subnetworkIAMBinding:SubnetworkIAMBinding":
-		r = &SubnetworkIAMBinding{}
-	case "gcp:compute/subnetworkIAMMember:SubnetworkIAMMember":
-		r = &SubnetworkIAMMember{}
-	case "gcp:compute/subnetworkIAMPolicy:SubnetworkIAMPolicy":
-		r = &SubnetworkIAMPolicy{}
+	case "gcp:compute/subnetworkIamBinding:SubnetworkIamBinding":
+		r = &SubnetworkIamBinding{}
+	case "gcp:compute/subnetworkIamMember:SubnetworkIamMember":
+		r = &SubnetworkIamMember{}
+	case "gcp:compute/subnetworkIamPolicy:SubnetworkIamPolicy":
+		r = &SubnetworkIamPolicy{}
 	case "gcp:compute/targetGrpcProxy:TargetGrpcProxy":
 		r = &TargetGrpcProxy{}
 	case "gcp:compute/targetHttpProxy:TargetHttpProxy":
@@ -537,17 +537,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"compute/instanceIAMBinding",
+		"compute/instanceIamBinding",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"compute/instanceIAMMember",
+		"compute/instanceIamMember",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"compute/instanceIAMPolicy",
+		"compute/instanceIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -937,17 +937,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"compute/subnetworkIAMBinding",
+		"compute/subnetworkIamBinding",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"compute/subnetworkIAMMember",
+		"compute/subnetworkIamMember",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"compute/subnetworkIAMPolicy",
+		"compute/subnetworkIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

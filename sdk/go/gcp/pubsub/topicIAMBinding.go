@@ -14,17 +14,17 @@ import (
 
 // Three different resources help you manage your IAM policy for Cloud Pub/Sub Topic. Each of these resources serves a different use case:
 //
-// * `pubsub.TopicIAMPolicy`: Authoritative. Sets the IAM policy for the topic and replaces any existing policy already attached.
-// * `pubsub.TopicIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the topic are preserved.
-// * `pubsub.TopicIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the topic are preserved.
+// * `pubsub.TopicIamPolicy`: Authoritative. Sets the IAM policy for the topic and replaces any existing policy already attached.
+// * `pubsub.TopicIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the topic are preserved.
+// * `pubsub.TopicIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the topic are preserved.
 //
 // # A data source can be used to retrieve policy data in advent you do not need creation
 //
-// * `pubsub.TopicIAMPolicy`: Retrieves the IAM policy for the topic
+// * `pubsub.TopicIamPolicy`: Retrieves the IAM policy for the topic
 //
-// > **Note:** `pubsub.TopicIAMPolicy` **cannot** be used in conjunction with `pubsub.TopicIAMBinding` and `pubsub.TopicIAMMember` or they will fight over what your policy should be.
+// > **Note:** `pubsub.TopicIamPolicy` **cannot** be used in conjunction with `pubsub.TopicIamBinding` and `pubsub.TopicIamMember` or they will fight over what your policy should be.
 //
-// > **Note:** `pubsub.TopicIAMBinding` resources **can be** used in conjunction with `pubsub.TopicIAMMember` resources **only if** they do not grant privilege to the same role.
+// > **Note:** `pubsub.TopicIamBinding` resources **can be** used in conjunction with `pubsub.TopicIamMember` resources **only if** they do not grant privilege to the same role.
 //
 // ## google\_pubsub\_topic\_iam\_policy
 //
@@ -41,8 +41,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
+//			admin, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
 //					{
 //						Role: "roles/viewer",
 //						Members: []string{
@@ -54,7 +54,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = pubsub.NewTopicIAMPolicy(ctx, "policy", &pubsub.TopicIAMPolicyArgs{
+//			_, err = pubsub.NewTopicIamPolicy(ctx, "policy", &pubsub.TopicIamPolicyArgs{
 //				Project:    pulumi.Any(google_pubsub_topic.Example.Project),
 //				Topic:      pulumi.Any(google_pubsub_topic.Example.Name),
 //				PolicyData: *pulumi.String(admin.PolicyData),
@@ -82,7 +82,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := pubsub.NewTopicIAMBinding(ctx, "binding", &pubsub.TopicIAMBindingArgs{
+//			_, err := pubsub.NewTopicIamBinding(ctx, "binding", &pubsub.TopicIamBindingArgs{
 //				Project: pulumi.Any(google_pubsub_topic.Example.Project),
 //				Topic:   pulumi.Any(google_pubsub_topic.Example.Name),
 //				Role:    pulumi.String("roles/viewer"),
@@ -113,7 +113,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := pubsub.NewTopicIAMMember(ctx, "member", &pubsub.TopicIAMMemberArgs{
+//			_, err := pubsub.NewTopicIamMember(ctx, "member", &pubsub.TopicIamMemberArgs{
 //				Project: pulumi.Any(google_pubsub_topic.Example.Project),
 //				Topic:   pulumi.Any(google_pubsub_topic.Example.Name),
 //				Role:    pulumi.String("roles/viewer"),
@@ -134,7 +134,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:pubsub/topicIAMBinding:TopicIAMBinding editor "projects/{{project}}/topics/{{topic}} roles/viewer user:jane@example.com"
+//	$ pulumi import gcp:pubsub/topicIamBinding:TopicIamBinding editor "projects/{{project}}/topics/{{topic}} roles/viewer user:jane@example.com"
 //
 // ```
 //
@@ -142,7 +142,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:pubsub/topicIAMBinding:TopicIAMBinding editor "projects/{{project}}/topics/{{topic}} roles/viewer"
+//	$ pulumi import gcp:pubsub/topicIamBinding:TopicIamBinding editor "projects/{{project}}/topics/{{topic}} roles/viewer"
 //
 // ```
 //
@@ -150,17 +150,17 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:pubsub/topicIAMBinding:TopicIAMBinding editor projects/{{project}}/topics/{{topic}}
+//	$ pulumi import gcp:pubsub/topicIamBinding:TopicIamBinding editor projects/{{project}}/topics/{{topic}}
 //
 // ```
 //
 //	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 //
 // full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
-type TopicIAMBinding struct {
+type TopicIamBinding struct {
 	pulumi.CustomResourceState
 
-	Condition TopicIAMBindingConditionPtrOutput `pulumi:"condition"`
+	Condition TopicIamBindingConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
 	Etag    pulumi.StringOutput      `pulumi:"etag"`
 	Members pulumi.StringArrayOutput `pulumi:"members"`
@@ -180,16 +180,16 @@ type TopicIAMBinding struct {
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The role that should be applied. Only one
-	// `pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `pubsub.TopicIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringOutput `pulumi:"role"`
 	// Used to find the parent resource to bind the IAM policy to
 	Topic pulumi.StringOutput `pulumi:"topic"`
 }
 
-// NewTopicIAMBinding registers a new resource with the given unique name, arguments, and options.
-func NewTopicIAMBinding(ctx *pulumi.Context,
-	name string, args *TopicIAMBindingArgs, opts ...pulumi.ResourceOption) (*TopicIAMBinding, error) {
+// NewTopicIamBinding registers a new resource with the given unique name, arguments, and options.
+func NewTopicIamBinding(ctx *pulumi.Context,
+	name string, args *TopicIamBindingArgs, opts ...pulumi.ResourceOption) (*TopicIamBinding, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -204,29 +204,29 @@ func NewTopicIAMBinding(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Topic'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
-	var resource TopicIAMBinding
-	err := ctx.RegisterResource("gcp:pubsub/topicIAMBinding:TopicIAMBinding", name, args, &resource, opts...)
+	var resource TopicIamBinding
+	err := ctx.RegisterResource("gcp:pubsub/topicIamBinding:TopicIamBinding", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// GetTopicIAMBinding gets an existing TopicIAMBinding resource's state with the given name, ID, and optional
+// GetTopicIamBinding gets an existing TopicIamBinding resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetTopicIAMBinding(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *TopicIAMBindingState, opts ...pulumi.ResourceOption) (*TopicIAMBinding, error) {
-	var resource TopicIAMBinding
-	err := ctx.ReadResource("gcp:pubsub/topicIAMBinding:TopicIAMBinding", name, id, state, &resource, opts...)
+func GetTopicIamBinding(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *TopicIamBindingState, opts ...pulumi.ResourceOption) (*TopicIamBinding, error) {
+	var resource TopicIamBinding
+	err := ctx.ReadResource("gcp:pubsub/topicIamBinding:TopicIamBinding", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering TopicIAMBinding resources.
-type topicIAMBindingState struct {
-	Condition *TopicIAMBindingCondition `pulumi:"condition"`
+// Input properties used for looking up and filtering TopicIamBinding resources.
+type topicIamBindingState struct {
+	Condition *TopicIamBindingCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
 	Etag    *string  `pulumi:"etag"`
 	Members []string `pulumi:"members"`
@@ -246,15 +246,15 @@ type topicIAMBindingState struct {
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	Project *string `pulumi:"project"`
 	// The role that should be applied. Only one
-	// `pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `pubsub.TopicIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role *string `pulumi:"role"`
 	// Used to find the parent resource to bind the IAM policy to
 	Topic *string `pulumi:"topic"`
 }
 
-type TopicIAMBindingState struct {
-	Condition TopicIAMBindingConditionPtrInput
+type TopicIamBindingState struct {
+	Condition TopicIamBindingConditionPtrInput
 	// (Computed) The etag of the IAM policy.
 	Etag    pulumi.StringPtrInput
 	Members pulumi.StringArrayInput
@@ -274,19 +274,19 @@ type TopicIAMBindingState struct {
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	Project pulumi.StringPtrInput
 	// The role that should be applied. Only one
-	// `pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `pubsub.TopicIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringPtrInput
 	// Used to find the parent resource to bind the IAM policy to
 	Topic pulumi.StringPtrInput
 }
 
-func (TopicIAMBindingState) ElementType() reflect.Type {
-	return reflect.TypeOf((*topicIAMBindingState)(nil)).Elem()
+func (TopicIamBindingState) ElementType() reflect.Type {
+	return reflect.TypeOf((*topicIamBindingState)(nil)).Elem()
 }
 
-type topicIAMBindingArgs struct {
-	Condition *TopicIAMBindingCondition `pulumi:"condition"`
+type topicIamBindingArgs struct {
+	Condition *TopicIamBindingCondition `pulumi:"condition"`
 	Members   []string                  `pulumi:"members"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -304,16 +304,16 @@ type topicIAMBindingArgs struct {
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	Project *string `pulumi:"project"`
 	// The role that should be applied. Only one
-	// `pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `pubsub.TopicIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role string `pulumi:"role"`
 	// Used to find the parent resource to bind the IAM policy to
 	Topic string `pulumi:"topic"`
 }
 
-// The set of arguments for constructing a TopicIAMBinding resource.
-type TopicIAMBindingArgs struct {
-	Condition TopicIAMBindingConditionPtrInput
+// The set of arguments for constructing a TopicIamBinding resource.
+type TopicIamBindingArgs struct {
+	Condition TopicIamBindingConditionPtrInput
 	Members   pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -331,111 +331,111 @@ type TopicIAMBindingArgs struct {
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	Project pulumi.StringPtrInput
 	// The role that should be applied. Only one
-	// `pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `pubsub.TopicIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringInput
 	// Used to find the parent resource to bind the IAM policy to
 	Topic pulumi.StringInput
 }
 
-func (TopicIAMBindingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*topicIAMBindingArgs)(nil)).Elem()
+func (TopicIamBindingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*topicIamBindingArgs)(nil)).Elem()
 }
 
-type TopicIAMBindingInput interface {
+type TopicIamBindingInput interface {
 	pulumi.Input
 
-	ToTopicIAMBindingOutput() TopicIAMBindingOutput
-	ToTopicIAMBindingOutputWithContext(ctx context.Context) TopicIAMBindingOutput
+	ToTopicIamBindingOutput() TopicIamBindingOutput
+	ToTopicIamBindingOutputWithContext(ctx context.Context) TopicIamBindingOutput
 }
 
-func (*TopicIAMBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((**TopicIAMBinding)(nil)).Elem()
+func (*TopicIamBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicIamBinding)(nil)).Elem()
 }
 
-func (i *TopicIAMBinding) ToTopicIAMBindingOutput() TopicIAMBindingOutput {
-	return i.ToTopicIAMBindingOutputWithContext(context.Background())
+func (i *TopicIamBinding) ToTopicIamBindingOutput() TopicIamBindingOutput {
+	return i.ToTopicIamBindingOutputWithContext(context.Background())
 }
 
-func (i *TopicIAMBinding) ToTopicIAMBindingOutputWithContext(ctx context.Context) TopicIAMBindingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicIAMBindingOutput)
+func (i *TopicIamBinding) ToTopicIamBindingOutputWithContext(ctx context.Context) TopicIamBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIamBindingOutput)
 }
 
-// TopicIAMBindingArrayInput is an input type that accepts TopicIAMBindingArray and TopicIAMBindingArrayOutput values.
-// You can construct a concrete instance of `TopicIAMBindingArrayInput` via:
+// TopicIamBindingArrayInput is an input type that accepts TopicIamBindingArray and TopicIamBindingArrayOutput values.
+// You can construct a concrete instance of `TopicIamBindingArrayInput` via:
 //
-//	TopicIAMBindingArray{ TopicIAMBindingArgs{...} }
-type TopicIAMBindingArrayInput interface {
+//	TopicIamBindingArray{ TopicIamBindingArgs{...} }
+type TopicIamBindingArrayInput interface {
 	pulumi.Input
 
-	ToTopicIAMBindingArrayOutput() TopicIAMBindingArrayOutput
-	ToTopicIAMBindingArrayOutputWithContext(context.Context) TopicIAMBindingArrayOutput
+	ToTopicIamBindingArrayOutput() TopicIamBindingArrayOutput
+	ToTopicIamBindingArrayOutputWithContext(context.Context) TopicIamBindingArrayOutput
 }
 
-type TopicIAMBindingArray []TopicIAMBindingInput
+type TopicIamBindingArray []TopicIamBindingInput
 
-func (TopicIAMBindingArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*TopicIAMBinding)(nil)).Elem()
+func (TopicIamBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*TopicIamBinding)(nil)).Elem()
 }
 
-func (i TopicIAMBindingArray) ToTopicIAMBindingArrayOutput() TopicIAMBindingArrayOutput {
-	return i.ToTopicIAMBindingArrayOutputWithContext(context.Background())
+func (i TopicIamBindingArray) ToTopicIamBindingArrayOutput() TopicIamBindingArrayOutput {
+	return i.ToTopicIamBindingArrayOutputWithContext(context.Background())
 }
 
-func (i TopicIAMBindingArray) ToTopicIAMBindingArrayOutputWithContext(ctx context.Context) TopicIAMBindingArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicIAMBindingArrayOutput)
+func (i TopicIamBindingArray) ToTopicIamBindingArrayOutputWithContext(ctx context.Context) TopicIamBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIamBindingArrayOutput)
 }
 
-// TopicIAMBindingMapInput is an input type that accepts TopicIAMBindingMap and TopicIAMBindingMapOutput values.
-// You can construct a concrete instance of `TopicIAMBindingMapInput` via:
+// TopicIamBindingMapInput is an input type that accepts TopicIamBindingMap and TopicIamBindingMapOutput values.
+// You can construct a concrete instance of `TopicIamBindingMapInput` via:
 //
-//	TopicIAMBindingMap{ "key": TopicIAMBindingArgs{...} }
-type TopicIAMBindingMapInput interface {
+//	TopicIamBindingMap{ "key": TopicIamBindingArgs{...} }
+type TopicIamBindingMapInput interface {
 	pulumi.Input
 
-	ToTopicIAMBindingMapOutput() TopicIAMBindingMapOutput
-	ToTopicIAMBindingMapOutputWithContext(context.Context) TopicIAMBindingMapOutput
+	ToTopicIamBindingMapOutput() TopicIamBindingMapOutput
+	ToTopicIamBindingMapOutputWithContext(context.Context) TopicIamBindingMapOutput
 }
 
-type TopicIAMBindingMap map[string]TopicIAMBindingInput
+type TopicIamBindingMap map[string]TopicIamBindingInput
 
-func (TopicIAMBindingMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*TopicIAMBinding)(nil)).Elem()
+func (TopicIamBindingMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*TopicIamBinding)(nil)).Elem()
 }
 
-func (i TopicIAMBindingMap) ToTopicIAMBindingMapOutput() TopicIAMBindingMapOutput {
-	return i.ToTopicIAMBindingMapOutputWithContext(context.Background())
+func (i TopicIamBindingMap) ToTopicIamBindingMapOutput() TopicIamBindingMapOutput {
+	return i.ToTopicIamBindingMapOutputWithContext(context.Background())
 }
 
-func (i TopicIAMBindingMap) ToTopicIAMBindingMapOutputWithContext(ctx context.Context) TopicIAMBindingMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicIAMBindingMapOutput)
+func (i TopicIamBindingMap) ToTopicIamBindingMapOutputWithContext(ctx context.Context) TopicIamBindingMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIamBindingMapOutput)
 }
 
-type TopicIAMBindingOutput struct{ *pulumi.OutputState }
+type TopicIamBindingOutput struct{ *pulumi.OutputState }
 
-func (TopicIAMBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TopicIAMBinding)(nil)).Elem()
+func (TopicIamBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicIamBinding)(nil)).Elem()
 }
 
-func (o TopicIAMBindingOutput) ToTopicIAMBindingOutput() TopicIAMBindingOutput {
+func (o TopicIamBindingOutput) ToTopicIamBindingOutput() TopicIamBindingOutput {
 	return o
 }
 
-func (o TopicIAMBindingOutput) ToTopicIAMBindingOutputWithContext(ctx context.Context) TopicIAMBindingOutput {
+func (o TopicIamBindingOutput) ToTopicIamBindingOutputWithContext(ctx context.Context) TopicIamBindingOutput {
 	return o
 }
 
-func (o TopicIAMBindingOutput) Condition() TopicIAMBindingConditionPtrOutput {
-	return o.ApplyT(func(v *TopicIAMBinding) TopicIAMBindingConditionPtrOutput { return v.Condition }).(TopicIAMBindingConditionPtrOutput)
+func (o TopicIamBindingOutput) Condition() TopicIamBindingConditionPtrOutput {
+	return o.ApplyT(func(v *TopicIamBinding) TopicIamBindingConditionPtrOutput { return v.Condition }).(TopicIamBindingConditionPtrOutput)
 }
 
 // (Computed) The etag of the IAM policy.
-func (o TopicIAMBindingOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v *TopicIAMBinding) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+func (o TopicIamBindingOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *TopicIamBinding) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-func (o TopicIAMBindingOutput) Members() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *TopicIAMBinding) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
+func (o TopicIamBindingOutput) Members() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TopicIamBinding) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
 }
 
 // The ID of the project in which the resource belongs.
@@ -452,67 +452,67 @@ func (o TopicIAMBindingOutput) Members() pulumi.StringArrayOutput {
 //   - **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 //   - **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 //   - **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
-func (o TopicIAMBindingOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func(v *TopicIAMBinding) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+func (o TopicIamBindingOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *TopicIamBinding) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The role that should be applied. Only one
-// `pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
+// `pubsub.TopicIamBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
-func (o TopicIAMBindingOutput) Role() pulumi.StringOutput {
-	return o.ApplyT(func(v *TopicIAMBinding) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
+func (o TopicIamBindingOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v *TopicIamBinding) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }
 
 // Used to find the parent resource to bind the IAM policy to
-func (o TopicIAMBindingOutput) Topic() pulumi.StringOutput {
-	return o.ApplyT(func(v *TopicIAMBinding) pulumi.StringOutput { return v.Topic }).(pulumi.StringOutput)
+func (o TopicIamBindingOutput) Topic() pulumi.StringOutput {
+	return o.ApplyT(func(v *TopicIamBinding) pulumi.StringOutput { return v.Topic }).(pulumi.StringOutput)
 }
 
-type TopicIAMBindingArrayOutput struct{ *pulumi.OutputState }
+type TopicIamBindingArrayOutput struct{ *pulumi.OutputState }
 
-func (TopicIAMBindingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*TopicIAMBinding)(nil)).Elem()
+func (TopicIamBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*TopicIamBinding)(nil)).Elem()
 }
 
-func (o TopicIAMBindingArrayOutput) ToTopicIAMBindingArrayOutput() TopicIAMBindingArrayOutput {
+func (o TopicIamBindingArrayOutput) ToTopicIamBindingArrayOutput() TopicIamBindingArrayOutput {
 	return o
 }
 
-func (o TopicIAMBindingArrayOutput) ToTopicIAMBindingArrayOutputWithContext(ctx context.Context) TopicIAMBindingArrayOutput {
+func (o TopicIamBindingArrayOutput) ToTopicIamBindingArrayOutputWithContext(ctx context.Context) TopicIamBindingArrayOutput {
 	return o
 }
 
-func (o TopicIAMBindingArrayOutput) Index(i pulumi.IntInput) TopicIAMBindingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TopicIAMBinding {
-		return vs[0].([]*TopicIAMBinding)[vs[1].(int)]
-	}).(TopicIAMBindingOutput)
+func (o TopicIamBindingArrayOutput) Index(i pulumi.IntInput) TopicIamBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TopicIamBinding {
+		return vs[0].([]*TopicIamBinding)[vs[1].(int)]
+	}).(TopicIamBindingOutput)
 }
 
-type TopicIAMBindingMapOutput struct{ *pulumi.OutputState }
+type TopicIamBindingMapOutput struct{ *pulumi.OutputState }
 
-func (TopicIAMBindingMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*TopicIAMBinding)(nil)).Elem()
+func (TopicIamBindingMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*TopicIamBinding)(nil)).Elem()
 }
 
-func (o TopicIAMBindingMapOutput) ToTopicIAMBindingMapOutput() TopicIAMBindingMapOutput {
+func (o TopicIamBindingMapOutput) ToTopicIamBindingMapOutput() TopicIamBindingMapOutput {
 	return o
 }
 
-func (o TopicIAMBindingMapOutput) ToTopicIAMBindingMapOutputWithContext(ctx context.Context) TopicIAMBindingMapOutput {
+func (o TopicIamBindingMapOutput) ToTopicIamBindingMapOutputWithContext(ctx context.Context) TopicIamBindingMapOutput {
 	return o
 }
 
-func (o TopicIAMBindingMapOutput) MapIndex(k pulumi.StringInput) TopicIAMBindingOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *TopicIAMBinding {
-		return vs[0].(map[string]*TopicIAMBinding)[vs[1].(string)]
-	}).(TopicIAMBindingOutput)
+func (o TopicIamBindingMapOutput) MapIndex(k pulumi.StringInput) TopicIamBindingOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *TopicIamBinding {
+		return vs[0].(map[string]*TopicIamBinding)[vs[1].(string)]
+	}).(TopicIamBindingOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*TopicIAMBindingInput)(nil)).Elem(), &TopicIAMBinding{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TopicIAMBindingArrayInput)(nil)).Elem(), TopicIAMBindingArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TopicIAMBindingMapInput)(nil)).Elem(), TopicIAMBindingMap{})
-	pulumi.RegisterOutputType(TopicIAMBindingOutput{})
-	pulumi.RegisterOutputType(TopicIAMBindingArrayOutput{})
-	pulumi.RegisterOutputType(TopicIAMBindingMapOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicIamBindingInput)(nil)).Elem(), &TopicIamBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicIamBindingArrayInput)(nil)).Elem(), TopicIamBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicIamBindingMapInput)(nil)).Elem(), TopicIamBindingMap{})
+	pulumi.RegisterOutputType(TopicIamBindingOutput{})
+	pulumi.RegisterOutputType(TopicIamBindingArrayOutput{})
+	pulumi.RegisterOutputType(TopicIamBindingMapOutput{})
 }

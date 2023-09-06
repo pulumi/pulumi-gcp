@@ -102,7 +102,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			cryptoKey, err := kms.NewCryptoKeyIAMMember(ctx, "cryptoKey", &kms.CryptoKeyIAMMemberArgs{
+//			cryptoKey, err := kms.NewCryptoKeyIamMember(ctx, "cryptoKey", &kms.CryptoKeyIamMemberArgs{
 //				CryptoKeyId: pulumi.String("kms-key"),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Member:      pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-artifactregistry.iam.gserviceaccount.com", project.Number)),

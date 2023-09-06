@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := spanner.GetDatabaseIamPolicy(ctx, &spanner.GetDatabaseIamPolicyArgs{
+//			_, err := spanner.LookupDatabaseIamPolicy(ctx, &spanner.LookupDatabaseIamPolicyArgs{
 //				Project:  pulumi.StringRef(google_spanner_database.Database.Project),
 //				Database: google_spanner_database.Database.Name,
 //				Instance: google_spanner_database.Database.Instance,
@@ -40,9 +40,9 @@ import (
 //	}
 //
 // ```
-func GetDatabaseIamPolicy(ctx *pulumi.Context, args *GetDatabaseIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetDatabaseIamPolicyResult, error) {
+func LookupDatabaseIamPolicy(ctx *pulumi.Context, args *LookupDatabaseIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
-	var rv GetDatabaseIamPolicyResult
+	var rv LookupDatabaseIamPolicyResult
 	err := ctx.Invoke("gcp:spanner/getDatabaseIamPolicy:getDatabaseIamPolicy", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -51,7 +51,7 @@ func GetDatabaseIamPolicy(ctx *pulumi.Context, args *GetDatabaseIamPolicyArgs, o
 }
 
 // A collection of arguments for invoking getDatabaseIamPolicy.
-type GetDatabaseIamPolicyArgs struct {
+type LookupDatabaseIamPolicyArgs struct {
 	// The name of the Spanner database.
 	Database string `pulumi:"database"`
 	// The name of the Spanner instance the database belongs to.
@@ -62,7 +62,7 @@ type GetDatabaseIamPolicyArgs struct {
 }
 
 // A collection of values returned by getDatabaseIamPolicy.
-type GetDatabaseIamPolicyResult struct {
+type LookupDatabaseIamPolicyResult struct {
 	Database string `pulumi:"database"`
 	// (Computed) The etag of the IAM policy.
 	Etag string `pulumi:"etag"`
@@ -74,21 +74,21 @@ type GetDatabaseIamPolicyResult struct {
 	Project    string `pulumi:"project"`
 }
 
-func GetDatabaseIamPolicyOutput(ctx *pulumi.Context, args GetDatabaseIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetDatabaseIamPolicyResultOutput {
+func LookupDatabaseIamPolicyOutput(ctx *pulumi.Context, args LookupDatabaseIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseIamPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetDatabaseIamPolicyResult, error) {
-			args := v.(GetDatabaseIamPolicyArgs)
-			r, err := GetDatabaseIamPolicy(ctx, &args, opts...)
-			var s GetDatabaseIamPolicyResult
+		ApplyT(func(v interface{}) (LookupDatabaseIamPolicyResult, error) {
+			args := v.(LookupDatabaseIamPolicyArgs)
+			r, err := LookupDatabaseIamPolicy(ctx, &args, opts...)
+			var s LookupDatabaseIamPolicyResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(GetDatabaseIamPolicyResultOutput)
+		}).(LookupDatabaseIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getDatabaseIamPolicy.
-type GetDatabaseIamPolicyOutputArgs struct {
+type LookupDatabaseIamPolicyOutputArgs struct {
 	// The name of the Spanner database.
 	Database pulumi.StringInput `pulumi:"database"`
 	// The name of the Spanner instance the database belongs to.
@@ -98,52 +98,52 @@ type GetDatabaseIamPolicyOutputArgs struct {
 	Project pulumi.StringPtrInput `pulumi:"project"`
 }
 
-func (GetDatabaseIamPolicyOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDatabaseIamPolicyArgs)(nil)).Elem()
+func (LookupDatabaseIamPolicyOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDatabaseIamPolicyArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getDatabaseIamPolicy.
-type GetDatabaseIamPolicyResultOutput struct{ *pulumi.OutputState }
+type LookupDatabaseIamPolicyResultOutput struct{ *pulumi.OutputState }
 
-func (GetDatabaseIamPolicyResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDatabaseIamPolicyResult)(nil)).Elem()
+func (LookupDatabaseIamPolicyResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDatabaseIamPolicyResult)(nil)).Elem()
 }
 
-func (o GetDatabaseIamPolicyResultOutput) ToGetDatabaseIamPolicyResultOutput() GetDatabaseIamPolicyResultOutput {
+func (o LookupDatabaseIamPolicyResultOutput) ToLookupDatabaseIamPolicyResultOutput() LookupDatabaseIamPolicyResultOutput {
 	return o
 }
 
-func (o GetDatabaseIamPolicyResultOutput) ToGetDatabaseIamPolicyResultOutputWithContext(ctx context.Context) GetDatabaseIamPolicyResultOutput {
+func (o LookupDatabaseIamPolicyResultOutput) ToLookupDatabaseIamPolicyResultOutputWithContext(ctx context.Context) LookupDatabaseIamPolicyResultOutput {
 	return o
 }
 
-func (o GetDatabaseIamPolicyResultOutput) Database() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDatabaseIamPolicyResult) string { return v.Database }).(pulumi.StringOutput)
+func (o LookupDatabaseIamPolicyResultOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseIamPolicyResult) string { return v.Database }).(pulumi.StringOutput)
 }
 
 // (Computed) The etag of the IAM policy.
-func (o GetDatabaseIamPolicyResultOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDatabaseIamPolicyResult) string { return v.Etag }).(pulumi.StringOutput)
+func (o LookupDatabaseIamPolicyResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseIamPolicyResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
-func (o GetDatabaseIamPolicyResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDatabaseIamPolicyResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupDatabaseIamPolicyResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseIamPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o GetDatabaseIamPolicyResultOutput) Instance() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDatabaseIamPolicyResult) string { return v.Instance }).(pulumi.StringOutput)
+func (o LookupDatabaseIamPolicyResultOutput) Instance() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseIamPolicyResult) string { return v.Instance }).(pulumi.StringOutput)
 }
 
 // (Computed) The policy data
-func (o GetDatabaseIamPolicyResultOutput) PolicyData() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDatabaseIamPolicyResult) string { return v.PolicyData }).(pulumi.StringOutput)
+func (o LookupDatabaseIamPolicyResultOutput) PolicyData() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseIamPolicyResult) string { return v.PolicyData }).(pulumi.StringOutput)
 }
 
-func (o GetDatabaseIamPolicyResultOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDatabaseIamPolicyResult) string { return v.Project }).(pulumi.StringOutput)
+func (o LookupDatabaseIamPolicyResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseIamPolicyResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(GetDatabaseIamPolicyResultOutput{})
+	pulumi.RegisterOutputType(LookupDatabaseIamPolicyResultOutput{})
 }

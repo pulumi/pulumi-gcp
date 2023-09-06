@@ -27,16 +27,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ApiKey{}
 	case "gcp:projects/defaultServiceAccounts:DefaultServiceAccounts":
 		r = &DefaultServiceAccounts{}
-	case "gcp:projects/iAMAuditConfig:IAMAuditConfig":
-		r = &IAMAuditConfig{}
-	case "gcp:projects/iAMBinding:IAMBinding":
-		r = &IAMBinding{}
-	case "gcp:projects/iAMCustomRole:IAMCustomRole":
-		r = &IAMCustomRole{}
-	case "gcp:projects/iAMMember:IAMMember":
-		r = &IAMMember{}
-	case "gcp:projects/iAMPolicy:IAMPolicy":
-		r = &IAMPolicy{}
+	case "gcp:projects/iAMAuditConfig:IamAuditConfig":
+		r = &IamAuditConfig{}
+	case "gcp:projects/iAMBinding:IamBinding":
+		r = &IamBinding{}
+	case "gcp:projects/iAMCustomRole:IamCustomRole":
+		r = &IamCustomRole{}
+	case "gcp:projects/iAMMember:IamMember":
+		r = &IamMember{}
+	case "gcp:projects/iAMPolicy:IamPolicy":
+		r = &IamPolicy{}
 	case "gcp:projects/organizationPolicy:OrganizationPolicy":
 		r = &OrganizationPolicy{}
 	case "gcp:projects/service:Service":

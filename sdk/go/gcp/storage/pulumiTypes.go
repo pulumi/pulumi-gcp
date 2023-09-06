@@ -600,7 +600,7 @@ func (o BucketEncryptionPtrOutput) DefaultKmsKeyName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type BucketIAMBindingCondition struct {
+type BucketIamBindingCondition struct {
 	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	//
 	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
@@ -613,18 +613,18 @@ type BucketIAMBindingCondition struct {
 	Title string `pulumi:"title"`
 }
 
-// BucketIAMBindingConditionInput is an input type that accepts BucketIAMBindingConditionArgs and BucketIAMBindingConditionOutput values.
-// You can construct a concrete instance of `BucketIAMBindingConditionInput` via:
+// BucketIamBindingConditionInput is an input type that accepts BucketIamBindingConditionArgs and BucketIamBindingConditionOutput values.
+// You can construct a concrete instance of `BucketIamBindingConditionInput` via:
 //
-//	BucketIAMBindingConditionArgs{...}
-type BucketIAMBindingConditionInput interface {
+//	BucketIamBindingConditionArgs{...}
+type BucketIamBindingConditionInput interface {
 	pulumi.Input
 
-	ToBucketIAMBindingConditionOutput() BucketIAMBindingConditionOutput
-	ToBucketIAMBindingConditionOutputWithContext(context.Context) BucketIAMBindingConditionOutput
+	ToBucketIamBindingConditionOutput() BucketIamBindingConditionOutput
+	ToBucketIamBindingConditionOutputWithContext(context.Context) BucketIamBindingConditionOutput
 }
 
-type BucketIAMBindingConditionArgs struct {
+type BucketIamBindingConditionArgs struct {
 	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	//
 	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
@@ -637,81 +637,81 @@ type BucketIAMBindingConditionArgs struct {
 	Title pulumi.StringInput `pulumi:"title"`
 }
 
-func (BucketIAMBindingConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketIAMBindingCondition)(nil)).Elem()
+func (BucketIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketIamBindingCondition)(nil)).Elem()
 }
 
-func (i BucketIAMBindingConditionArgs) ToBucketIAMBindingConditionOutput() BucketIAMBindingConditionOutput {
-	return i.ToBucketIAMBindingConditionOutputWithContext(context.Background())
+func (i BucketIamBindingConditionArgs) ToBucketIamBindingConditionOutput() BucketIamBindingConditionOutput {
+	return i.ToBucketIamBindingConditionOutputWithContext(context.Background())
 }
 
-func (i BucketIAMBindingConditionArgs) ToBucketIAMBindingConditionOutputWithContext(ctx context.Context) BucketIAMBindingConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketIAMBindingConditionOutput)
+func (i BucketIamBindingConditionArgs) ToBucketIamBindingConditionOutputWithContext(ctx context.Context) BucketIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketIamBindingConditionOutput)
 }
 
-func (i BucketIAMBindingConditionArgs) ToBucketIAMBindingConditionPtrOutput() BucketIAMBindingConditionPtrOutput {
-	return i.ToBucketIAMBindingConditionPtrOutputWithContext(context.Background())
+func (i BucketIamBindingConditionArgs) ToBucketIamBindingConditionPtrOutput() BucketIamBindingConditionPtrOutput {
+	return i.ToBucketIamBindingConditionPtrOutputWithContext(context.Background())
 }
 
-func (i BucketIAMBindingConditionArgs) ToBucketIAMBindingConditionPtrOutputWithContext(ctx context.Context) BucketIAMBindingConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketIAMBindingConditionOutput).ToBucketIAMBindingConditionPtrOutputWithContext(ctx)
+func (i BucketIamBindingConditionArgs) ToBucketIamBindingConditionPtrOutputWithContext(ctx context.Context) BucketIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketIamBindingConditionOutput).ToBucketIamBindingConditionPtrOutputWithContext(ctx)
 }
 
-// BucketIAMBindingConditionPtrInput is an input type that accepts BucketIAMBindingConditionArgs, BucketIAMBindingConditionPtr and BucketIAMBindingConditionPtrOutput values.
-// You can construct a concrete instance of `BucketIAMBindingConditionPtrInput` via:
+// BucketIamBindingConditionPtrInput is an input type that accepts BucketIamBindingConditionArgs, BucketIamBindingConditionPtr and BucketIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `BucketIamBindingConditionPtrInput` via:
 //
-//	        BucketIAMBindingConditionArgs{...}
+//	        BucketIamBindingConditionArgs{...}
 //
 //	or:
 //
 //	        nil
-type BucketIAMBindingConditionPtrInput interface {
+type BucketIamBindingConditionPtrInput interface {
 	pulumi.Input
 
-	ToBucketIAMBindingConditionPtrOutput() BucketIAMBindingConditionPtrOutput
-	ToBucketIAMBindingConditionPtrOutputWithContext(context.Context) BucketIAMBindingConditionPtrOutput
+	ToBucketIamBindingConditionPtrOutput() BucketIamBindingConditionPtrOutput
+	ToBucketIamBindingConditionPtrOutputWithContext(context.Context) BucketIamBindingConditionPtrOutput
 }
 
-type bucketIAMBindingConditionPtrType BucketIAMBindingConditionArgs
+type bucketIamBindingConditionPtrType BucketIamBindingConditionArgs
 
-func BucketIAMBindingConditionPtr(v *BucketIAMBindingConditionArgs) BucketIAMBindingConditionPtrInput {
-	return (*bucketIAMBindingConditionPtrType)(v)
+func BucketIamBindingConditionPtr(v *BucketIamBindingConditionArgs) BucketIamBindingConditionPtrInput {
+	return (*bucketIamBindingConditionPtrType)(v)
 }
 
-func (*bucketIAMBindingConditionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketIAMBindingCondition)(nil)).Elem()
+func (*bucketIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketIamBindingCondition)(nil)).Elem()
 }
 
-func (i *bucketIAMBindingConditionPtrType) ToBucketIAMBindingConditionPtrOutput() BucketIAMBindingConditionPtrOutput {
-	return i.ToBucketIAMBindingConditionPtrOutputWithContext(context.Background())
+func (i *bucketIamBindingConditionPtrType) ToBucketIamBindingConditionPtrOutput() BucketIamBindingConditionPtrOutput {
+	return i.ToBucketIamBindingConditionPtrOutputWithContext(context.Background())
 }
 
-func (i *bucketIAMBindingConditionPtrType) ToBucketIAMBindingConditionPtrOutputWithContext(ctx context.Context) BucketIAMBindingConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketIAMBindingConditionPtrOutput)
+func (i *bucketIamBindingConditionPtrType) ToBucketIamBindingConditionPtrOutputWithContext(ctx context.Context) BucketIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketIamBindingConditionPtrOutput)
 }
 
-type BucketIAMBindingConditionOutput struct{ *pulumi.OutputState }
+type BucketIamBindingConditionOutput struct{ *pulumi.OutputState }
 
-func (BucketIAMBindingConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketIAMBindingCondition)(nil)).Elem()
+func (BucketIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketIamBindingCondition)(nil)).Elem()
 }
 
-func (o BucketIAMBindingConditionOutput) ToBucketIAMBindingConditionOutput() BucketIAMBindingConditionOutput {
+func (o BucketIamBindingConditionOutput) ToBucketIamBindingConditionOutput() BucketIamBindingConditionOutput {
 	return o
 }
 
-func (o BucketIAMBindingConditionOutput) ToBucketIAMBindingConditionOutputWithContext(ctx context.Context) BucketIAMBindingConditionOutput {
+func (o BucketIamBindingConditionOutput) ToBucketIamBindingConditionOutputWithContext(ctx context.Context) BucketIamBindingConditionOutput {
 	return o
 }
 
-func (o BucketIAMBindingConditionOutput) ToBucketIAMBindingConditionPtrOutput() BucketIAMBindingConditionPtrOutput {
-	return o.ToBucketIAMBindingConditionPtrOutputWithContext(context.Background())
+func (o BucketIamBindingConditionOutput) ToBucketIamBindingConditionPtrOutput() BucketIamBindingConditionPtrOutput {
+	return o.ToBucketIamBindingConditionPtrOutputWithContext(context.Background())
 }
 
-func (o BucketIAMBindingConditionOutput) ToBucketIAMBindingConditionPtrOutputWithContext(ctx context.Context) BucketIAMBindingConditionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketIAMBindingCondition) *BucketIAMBindingCondition {
+func (o BucketIamBindingConditionOutput) ToBucketIamBindingConditionPtrOutputWithContext(ctx context.Context) BucketIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketIamBindingCondition) *BucketIamBindingCondition {
 		return &v
-	}).(BucketIAMBindingConditionPtrOutput)
+	}).(BucketIamBindingConditionPtrOutput)
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -719,42 +719,42 @@ func (o BucketIAMBindingConditionOutput) ToBucketIAMBindingConditionPtrOutputWit
 // > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
 // identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
 // consider it to be an entirely different resource and will treat it as such.
-func (o BucketIAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BucketIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o BucketIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // Textual representation of an expression in Common Expression Language syntax.
-func (o BucketIAMBindingConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v BucketIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o BucketIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v BucketIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 // A title for the expression, i.e. a short string describing its purpose.
-func (o BucketIAMBindingConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v BucketIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o BucketIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v BucketIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type BucketIAMBindingConditionPtrOutput struct{ *pulumi.OutputState }
+type BucketIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
 
-func (BucketIAMBindingConditionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketIAMBindingCondition)(nil)).Elem()
+func (BucketIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketIamBindingCondition)(nil)).Elem()
 }
 
-func (o BucketIAMBindingConditionPtrOutput) ToBucketIAMBindingConditionPtrOutput() BucketIAMBindingConditionPtrOutput {
+func (o BucketIamBindingConditionPtrOutput) ToBucketIamBindingConditionPtrOutput() BucketIamBindingConditionPtrOutput {
 	return o
 }
 
-func (o BucketIAMBindingConditionPtrOutput) ToBucketIAMBindingConditionPtrOutputWithContext(ctx context.Context) BucketIAMBindingConditionPtrOutput {
+func (o BucketIamBindingConditionPtrOutput) ToBucketIamBindingConditionPtrOutputWithContext(ctx context.Context) BucketIamBindingConditionPtrOutput {
 	return o
 }
 
-func (o BucketIAMBindingConditionPtrOutput) Elem() BucketIAMBindingConditionOutput {
-	return o.ApplyT(func(v *BucketIAMBindingCondition) BucketIAMBindingCondition {
+func (o BucketIamBindingConditionPtrOutput) Elem() BucketIamBindingConditionOutput {
+	return o.ApplyT(func(v *BucketIamBindingCondition) BucketIamBindingCondition {
 		if v != nil {
 			return *v
 		}
-		var ret BucketIAMBindingCondition
+		var ret BucketIamBindingCondition
 		return ret
-	}).(BucketIAMBindingConditionOutput)
+	}).(BucketIamBindingConditionOutput)
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -762,8 +762,8 @@ func (o BucketIAMBindingConditionPtrOutput) Elem() BucketIAMBindingConditionOutp
 // > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
 // identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
 // consider it to be an entirely different resource and will treat it as such.
-func (o BucketIAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BucketIAMBindingCondition) *string {
+func (o BucketIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketIamBindingCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -772,8 +772,8 @@ func (o BucketIAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput
 }
 
 // Textual representation of an expression in Common Expression Language syntax.
-func (o BucketIAMBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BucketIAMBindingCondition) *string {
+func (o BucketIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketIamBindingCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -782,8 +782,8 @@ func (o BucketIAMBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput 
 }
 
 // A title for the expression, i.e. a short string describing its purpose.
-func (o BucketIAMBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BucketIAMBindingCondition) *string {
+func (o BucketIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketIamBindingCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -791,7 +791,7 @@ func (o BucketIAMBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type BucketIAMMemberCondition struct {
+type BucketIamMemberCondition struct {
 	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	//
 	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
@@ -804,18 +804,18 @@ type BucketIAMMemberCondition struct {
 	Title string `pulumi:"title"`
 }
 
-// BucketIAMMemberConditionInput is an input type that accepts BucketIAMMemberConditionArgs and BucketIAMMemberConditionOutput values.
-// You can construct a concrete instance of `BucketIAMMemberConditionInput` via:
+// BucketIamMemberConditionInput is an input type that accepts BucketIamMemberConditionArgs and BucketIamMemberConditionOutput values.
+// You can construct a concrete instance of `BucketIamMemberConditionInput` via:
 //
-//	BucketIAMMemberConditionArgs{...}
-type BucketIAMMemberConditionInput interface {
+//	BucketIamMemberConditionArgs{...}
+type BucketIamMemberConditionInput interface {
 	pulumi.Input
 
-	ToBucketIAMMemberConditionOutput() BucketIAMMemberConditionOutput
-	ToBucketIAMMemberConditionOutputWithContext(context.Context) BucketIAMMemberConditionOutput
+	ToBucketIamMemberConditionOutput() BucketIamMemberConditionOutput
+	ToBucketIamMemberConditionOutputWithContext(context.Context) BucketIamMemberConditionOutput
 }
 
-type BucketIAMMemberConditionArgs struct {
+type BucketIamMemberConditionArgs struct {
 	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	//
 	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
@@ -828,81 +828,81 @@ type BucketIAMMemberConditionArgs struct {
 	Title pulumi.StringInput `pulumi:"title"`
 }
 
-func (BucketIAMMemberConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketIAMMemberCondition)(nil)).Elem()
+func (BucketIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketIamMemberCondition)(nil)).Elem()
 }
 
-func (i BucketIAMMemberConditionArgs) ToBucketIAMMemberConditionOutput() BucketIAMMemberConditionOutput {
-	return i.ToBucketIAMMemberConditionOutputWithContext(context.Background())
+func (i BucketIamMemberConditionArgs) ToBucketIamMemberConditionOutput() BucketIamMemberConditionOutput {
+	return i.ToBucketIamMemberConditionOutputWithContext(context.Background())
 }
 
-func (i BucketIAMMemberConditionArgs) ToBucketIAMMemberConditionOutputWithContext(ctx context.Context) BucketIAMMemberConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketIAMMemberConditionOutput)
+func (i BucketIamMemberConditionArgs) ToBucketIamMemberConditionOutputWithContext(ctx context.Context) BucketIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketIamMemberConditionOutput)
 }
 
-func (i BucketIAMMemberConditionArgs) ToBucketIAMMemberConditionPtrOutput() BucketIAMMemberConditionPtrOutput {
-	return i.ToBucketIAMMemberConditionPtrOutputWithContext(context.Background())
+func (i BucketIamMemberConditionArgs) ToBucketIamMemberConditionPtrOutput() BucketIamMemberConditionPtrOutput {
+	return i.ToBucketIamMemberConditionPtrOutputWithContext(context.Background())
 }
 
-func (i BucketIAMMemberConditionArgs) ToBucketIAMMemberConditionPtrOutputWithContext(ctx context.Context) BucketIAMMemberConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketIAMMemberConditionOutput).ToBucketIAMMemberConditionPtrOutputWithContext(ctx)
+func (i BucketIamMemberConditionArgs) ToBucketIamMemberConditionPtrOutputWithContext(ctx context.Context) BucketIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketIamMemberConditionOutput).ToBucketIamMemberConditionPtrOutputWithContext(ctx)
 }
 
-// BucketIAMMemberConditionPtrInput is an input type that accepts BucketIAMMemberConditionArgs, BucketIAMMemberConditionPtr and BucketIAMMemberConditionPtrOutput values.
-// You can construct a concrete instance of `BucketIAMMemberConditionPtrInput` via:
+// BucketIamMemberConditionPtrInput is an input type that accepts BucketIamMemberConditionArgs, BucketIamMemberConditionPtr and BucketIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `BucketIamMemberConditionPtrInput` via:
 //
-//	        BucketIAMMemberConditionArgs{...}
+//	        BucketIamMemberConditionArgs{...}
 //
 //	or:
 //
 //	        nil
-type BucketIAMMemberConditionPtrInput interface {
+type BucketIamMemberConditionPtrInput interface {
 	pulumi.Input
 
-	ToBucketIAMMemberConditionPtrOutput() BucketIAMMemberConditionPtrOutput
-	ToBucketIAMMemberConditionPtrOutputWithContext(context.Context) BucketIAMMemberConditionPtrOutput
+	ToBucketIamMemberConditionPtrOutput() BucketIamMemberConditionPtrOutput
+	ToBucketIamMemberConditionPtrOutputWithContext(context.Context) BucketIamMemberConditionPtrOutput
 }
 
-type bucketIAMMemberConditionPtrType BucketIAMMemberConditionArgs
+type bucketIamMemberConditionPtrType BucketIamMemberConditionArgs
 
-func BucketIAMMemberConditionPtr(v *BucketIAMMemberConditionArgs) BucketIAMMemberConditionPtrInput {
-	return (*bucketIAMMemberConditionPtrType)(v)
+func BucketIamMemberConditionPtr(v *BucketIamMemberConditionArgs) BucketIamMemberConditionPtrInput {
+	return (*bucketIamMemberConditionPtrType)(v)
 }
 
-func (*bucketIAMMemberConditionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketIAMMemberCondition)(nil)).Elem()
+func (*bucketIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketIamMemberCondition)(nil)).Elem()
 }
 
-func (i *bucketIAMMemberConditionPtrType) ToBucketIAMMemberConditionPtrOutput() BucketIAMMemberConditionPtrOutput {
-	return i.ToBucketIAMMemberConditionPtrOutputWithContext(context.Background())
+func (i *bucketIamMemberConditionPtrType) ToBucketIamMemberConditionPtrOutput() BucketIamMemberConditionPtrOutput {
+	return i.ToBucketIamMemberConditionPtrOutputWithContext(context.Background())
 }
 
-func (i *bucketIAMMemberConditionPtrType) ToBucketIAMMemberConditionPtrOutputWithContext(ctx context.Context) BucketIAMMemberConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketIAMMemberConditionPtrOutput)
+func (i *bucketIamMemberConditionPtrType) ToBucketIamMemberConditionPtrOutputWithContext(ctx context.Context) BucketIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketIamMemberConditionPtrOutput)
 }
 
-type BucketIAMMemberConditionOutput struct{ *pulumi.OutputState }
+type BucketIamMemberConditionOutput struct{ *pulumi.OutputState }
 
-func (BucketIAMMemberConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketIAMMemberCondition)(nil)).Elem()
+func (BucketIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketIamMemberCondition)(nil)).Elem()
 }
 
-func (o BucketIAMMemberConditionOutput) ToBucketIAMMemberConditionOutput() BucketIAMMemberConditionOutput {
+func (o BucketIamMemberConditionOutput) ToBucketIamMemberConditionOutput() BucketIamMemberConditionOutput {
 	return o
 }
 
-func (o BucketIAMMemberConditionOutput) ToBucketIAMMemberConditionOutputWithContext(ctx context.Context) BucketIAMMemberConditionOutput {
+func (o BucketIamMemberConditionOutput) ToBucketIamMemberConditionOutputWithContext(ctx context.Context) BucketIamMemberConditionOutput {
 	return o
 }
 
-func (o BucketIAMMemberConditionOutput) ToBucketIAMMemberConditionPtrOutput() BucketIAMMemberConditionPtrOutput {
-	return o.ToBucketIAMMemberConditionPtrOutputWithContext(context.Background())
+func (o BucketIamMemberConditionOutput) ToBucketIamMemberConditionPtrOutput() BucketIamMemberConditionPtrOutput {
+	return o.ToBucketIamMemberConditionPtrOutputWithContext(context.Background())
 }
 
-func (o BucketIAMMemberConditionOutput) ToBucketIAMMemberConditionPtrOutputWithContext(ctx context.Context) BucketIAMMemberConditionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketIAMMemberCondition) *BucketIAMMemberCondition {
+func (o BucketIamMemberConditionOutput) ToBucketIamMemberConditionPtrOutputWithContext(ctx context.Context) BucketIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketIamMemberCondition) *BucketIamMemberCondition {
 		return &v
-	}).(BucketIAMMemberConditionPtrOutput)
+	}).(BucketIamMemberConditionPtrOutput)
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -910,42 +910,42 @@ func (o BucketIAMMemberConditionOutput) ToBucketIAMMemberConditionPtrOutputWithC
 // > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
 // identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
 // consider it to be an entirely different resource and will treat it as such.
-func (o BucketIAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BucketIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o BucketIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // Textual representation of an expression in Common Expression Language syntax.
-func (o BucketIAMMemberConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v BucketIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o BucketIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v BucketIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 // A title for the expression, i.e. a short string describing its purpose.
-func (o BucketIAMMemberConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v BucketIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o BucketIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v BucketIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type BucketIAMMemberConditionPtrOutput struct{ *pulumi.OutputState }
+type BucketIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
 
-func (BucketIAMMemberConditionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketIAMMemberCondition)(nil)).Elem()
+func (BucketIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketIamMemberCondition)(nil)).Elem()
 }
 
-func (o BucketIAMMemberConditionPtrOutput) ToBucketIAMMemberConditionPtrOutput() BucketIAMMemberConditionPtrOutput {
+func (o BucketIamMemberConditionPtrOutput) ToBucketIamMemberConditionPtrOutput() BucketIamMemberConditionPtrOutput {
 	return o
 }
 
-func (o BucketIAMMemberConditionPtrOutput) ToBucketIAMMemberConditionPtrOutputWithContext(ctx context.Context) BucketIAMMemberConditionPtrOutput {
+func (o BucketIamMemberConditionPtrOutput) ToBucketIamMemberConditionPtrOutputWithContext(ctx context.Context) BucketIamMemberConditionPtrOutput {
 	return o
 }
 
-func (o BucketIAMMemberConditionPtrOutput) Elem() BucketIAMMemberConditionOutput {
-	return o.ApplyT(func(v *BucketIAMMemberCondition) BucketIAMMemberCondition {
+func (o BucketIamMemberConditionPtrOutput) Elem() BucketIamMemberConditionOutput {
+	return o.ApplyT(func(v *BucketIamMemberCondition) BucketIamMemberCondition {
 		if v != nil {
 			return *v
 		}
-		var ret BucketIAMMemberCondition
+		var ret BucketIamMemberCondition
 		return ret
-	}).(BucketIAMMemberConditionOutput)
+	}).(BucketIamMemberConditionOutput)
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -953,8 +953,8 @@ func (o BucketIAMMemberConditionPtrOutput) Elem() BucketIAMMemberConditionOutput
 // > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
 // identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
 // consider it to be an entirely different resource and will treat it as such.
-func (o BucketIAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BucketIAMMemberCondition) *string {
+func (o BucketIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketIamMemberCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -963,8 +963,8 @@ func (o BucketIAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput 
 }
 
 // Textual representation of an expression in Common Expression Language syntax.
-func (o BucketIAMMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BucketIAMMemberCondition) *string {
+func (o BucketIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketIamMemberCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -973,8 +973,8 @@ func (o BucketIAMMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
 }
 
 // A title for the expression, i.e. a short string describing its purpose.
-func (o BucketIAMMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BucketIAMMemberCondition) *string {
+func (o BucketIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketIamMemberCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -6882,10 +6882,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketCustomPlacementConfigPtrInput)(nil)).Elem(), BucketCustomPlacementConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketEncryptionInput)(nil)).Elem(), BucketEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketEncryptionPtrInput)(nil)).Elem(), BucketEncryptionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketIAMBindingConditionInput)(nil)).Elem(), BucketIAMBindingConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketIAMBindingConditionPtrInput)(nil)).Elem(), BucketIAMBindingConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketIAMMemberConditionInput)(nil)).Elem(), BucketIAMMemberConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketIAMMemberConditionPtrInput)(nil)).Elem(), BucketIAMMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketIamBindingConditionInput)(nil)).Elem(), BucketIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketIamBindingConditionPtrInput)(nil)).Elem(), BucketIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketIamMemberConditionInput)(nil)).Elem(), BucketIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketIamMemberConditionPtrInput)(nil)).Elem(), BucketIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleInput)(nil)).Elem(), BucketLifecycleRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleArrayInput)(nil)).Elem(), BucketLifecycleRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleActionInput)(nil)).Elem(), BucketLifecycleRuleActionArgs{})
@@ -6974,10 +6974,10 @@ func init() {
 	pulumi.RegisterOutputType(BucketCustomPlacementConfigPtrOutput{})
 	pulumi.RegisterOutputType(BucketEncryptionOutput{})
 	pulumi.RegisterOutputType(BucketEncryptionPtrOutput{})
-	pulumi.RegisterOutputType(BucketIAMBindingConditionOutput{})
-	pulumi.RegisterOutputType(BucketIAMBindingConditionPtrOutput{})
-	pulumi.RegisterOutputType(BucketIAMMemberConditionOutput{})
-	pulumi.RegisterOutputType(BucketIAMMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(BucketIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(BucketIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(BucketIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(BucketIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(BucketLifecycleRuleOutput{})
 	pulumi.RegisterOutputType(BucketLifecycleRuleArrayOutput{})
 	pulumi.RegisterOutputType(BucketLifecycleRuleActionOutput{})

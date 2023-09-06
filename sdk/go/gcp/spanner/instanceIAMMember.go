@@ -14,16 +14,16 @@ import (
 
 // Three different resources help you manage your IAM policy for a Spanner instance. Each of these resources serves a different use case:
 //
-// * `spanner.InstanceIAMPolicy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.
+// * `spanner.InstanceIamPolicy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.
 //
-// > **Warning:** It's entirely possibly to lock yourself out of your instance using `spanner.InstanceIAMPolicy`. Any permissions granted by default will be removed unless you include them in your config.
+// > **Warning:** It's entirely possibly to lock yourself out of your instance using `spanner.InstanceIamPolicy`. Any permissions granted by default will be removed unless you include them in your config.
 //
-// * `spanner.InstanceIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved.
-// * `spanner.InstanceIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved.
+// * `spanner.InstanceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved.
+// * `spanner.InstanceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved.
 //
-// > **Note:** `spanner.InstanceIAMPolicy` **cannot** be used in conjunction with `spanner.InstanceIAMBinding` and `spanner.InstanceIAMMember` or they will fight over what your policy should be.
+// > **Note:** `spanner.InstanceIamPolicy` **cannot** be used in conjunction with `spanner.InstanceIamBinding` and `spanner.InstanceIamMember` or they will fight over what your policy should be.
 //
-// > **Note:** `spanner.InstanceIAMBinding` resources **can be** used in conjunction with `spanner.InstanceIAMMember` resources **only if** they do not grant privilege to the same role.
+// > **Note:** `spanner.InstanceIamBinding` resources **can be** used in conjunction with `spanner.InstanceIamMember` resources **only if** they do not grant privilege to the same role.
 //
 // ## google\_spanner\_instance\_iam\_policy
 //
@@ -40,8 +40,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
+//			admin, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
 //					{
 //						Role: "roles/editor",
 //						Members: []string{
@@ -53,7 +53,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = spanner.NewInstanceIAMPolicy(ctx, "instance", &spanner.InstanceIAMPolicyArgs{
+//			_, err = spanner.NewInstanceIamPolicy(ctx, "instance", &spanner.InstanceIamPolicyArgs{
 //				Instance:   pulumi.String("your-instance-name"),
 //				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
@@ -80,7 +80,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := spanner.NewInstanceIAMBinding(ctx, "instance", &spanner.InstanceIAMBindingArgs{
+//			_, err := spanner.NewInstanceIamBinding(ctx, "instance", &spanner.InstanceIamBindingArgs{
 //				Instance: pulumi.String("your-instance-name"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -110,7 +110,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := spanner.NewInstanceIAMMember(ctx, "instance", &spanner.InstanceIAMMemberArgs{
+//			_, err := spanner.NewInstanceIamMember(ctx, "instance", &spanner.InstanceIamMemberArgs{
 //				Instance: pulumi.String("your-instance-name"),
 //				Member:   pulumi.String("user:jane@example.com"),
 //				Role:     pulumi.String("roles/spanner.databaseAdmin"),
@@ -130,7 +130,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:spanner/instanceIAMMember:InstanceIAMMember instance "project-name/instance-name roles/viewer user:foo@example.com"
+//	$ pulumi import gcp:spanner/instanceIamMember:InstanceIamMember instance "project-name/instance-name roles/viewer user:foo@example.com"
 //
 // ```
 //
@@ -138,7 +138,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:spanner/instanceIAMMember:InstanceIAMMember instance "project-name/instance-name roles/viewer"
+//	$ pulumi import gcp:spanner/instanceIamMember:InstanceIamMember instance "project-name/instance-name roles/viewer"
 //
 // ```
 //
@@ -146,17 +146,17 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:spanner/instanceIAMMember:InstanceIAMMember instance project-name/instance-name
+//	$ pulumi import gcp:spanner/instanceIamMember:InstanceIamMember instance project-name/instance-name
 //
 // ```
 //
 //	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 //
 // full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
-type InstanceIAMMember struct {
+type InstanceIamMember struct {
 	pulumi.CustomResourceState
 
-	Condition InstanceIAMMemberConditionPtrOutput `pulumi:"condition"`
+	Condition InstanceIamMemberConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the instance's IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The name of the instance.
@@ -175,14 +175,14 @@ type InstanceIAMMember struct {
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The role that should be applied. Only one
-	// `spanner.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `spanner.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringOutput `pulumi:"role"`
 }
 
-// NewInstanceIAMMember registers a new resource with the given unique name, arguments, and options.
-func NewInstanceIAMMember(ctx *pulumi.Context,
-	name string, args *InstanceIAMMemberArgs, opts ...pulumi.ResourceOption) (*InstanceIAMMember, error) {
+// NewInstanceIamMember registers a new resource with the given unique name, arguments, and options.
+func NewInstanceIamMember(ctx *pulumi.Context,
+	name string, args *InstanceIamMemberArgs, opts ...pulumi.ResourceOption) (*InstanceIamMember, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -197,29 +197,29 @@ func NewInstanceIAMMember(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Role'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
-	var resource InstanceIAMMember
-	err := ctx.RegisterResource("gcp:spanner/instanceIAMMember:InstanceIAMMember", name, args, &resource, opts...)
+	var resource InstanceIamMember
+	err := ctx.RegisterResource("gcp:spanner/instanceIamMember:InstanceIamMember", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// GetInstanceIAMMember gets an existing InstanceIAMMember resource's state with the given name, ID, and optional
+// GetInstanceIamMember gets an existing InstanceIamMember resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetInstanceIAMMember(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *InstanceIAMMemberState, opts ...pulumi.ResourceOption) (*InstanceIAMMember, error) {
-	var resource InstanceIAMMember
-	err := ctx.ReadResource("gcp:spanner/instanceIAMMember:InstanceIAMMember", name, id, state, &resource, opts...)
+func GetInstanceIamMember(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *InstanceIamMemberState, opts ...pulumi.ResourceOption) (*InstanceIamMember, error) {
+	var resource InstanceIamMember
+	err := ctx.ReadResource("gcp:spanner/instanceIamMember:InstanceIamMember", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering InstanceIAMMember resources.
-type instanceIAMMemberState struct {
-	Condition *InstanceIAMMemberCondition `pulumi:"condition"`
+// Input properties used for looking up and filtering InstanceIamMember resources.
+type instanceIamMemberState struct {
+	Condition *InstanceIamMemberCondition `pulumi:"condition"`
 	// (Computed) The etag of the instance's IAM policy.
 	Etag *string `pulumi:"etag"`
 	// The name of the instance.
@@ -238,13 +238,13 @@ type instanceIAMMemberState struct {
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The role that should be applied. Only one
-	// `spanner.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `spanner.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role *string `pulumi:"role"`
 }
 
-type InstanceIAMMemberState struct {
-	Condition InstanceIAMMemberConditionPtrInput
+type InstanceIamMemberState struct {
+	Condition InstanceIamMemberConditionPtrInput
 	// (Computed) The etag of the instance's IAM policy.
 	Etag pulumi.StringPtrInput
 	// The name of the instance.
@@ -263,17 +263,17 @@ type InstanceIAMMemberState struct {
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The role that should be applied. Only one
-	// `spanner.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `spanner.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringPtrInput
 }
 
-func (InstanceIAMMemberState) ElementType() reflect.Type {
-	return reflect.TypeOf((*instanceIAMMemberState)(nil)).Elem()
+func (InstanceIamMemberState) ElementType() reflect.Type {
+	return reflect.TypeOf((*instanceIamMemberState)(nil)).Elem()
 }
 
-type instanceIAMMemberArgs struct {
-	Condition *InstanceIAMMemberCondition `pulumi:"condition"`
+type instanceIamMemberArgs struct {
+	Condition *InstanceIamMemberCondition `pulumi:"condition"`
 	// The name of the instance.
 	//
 	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
@@ -290,14 +290,14 @@ type instanceIAMMemberArgs struct {
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The role that should be applied. Only one
-	// `spanner.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `spanner.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role string `pulumi:"role"`
 }
 
-// The set of arguments for constructing a InstanceIAMMember resource.
-type InstanceIAMMemberArgs struct {
-	Condition InstanceIAMMemberConditionPtrInput
+// The set of arguments for constructing a InstanceIamMember resource.
+type InstanceIamMemberArgs struct {
+	Condition InstanceIamMemberConditionPtrInput
 	// The name of the instance.
 	//
 	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
@@ -314,105 +314,105 @@ type InstanceIAMMemberArgs struct {
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The role that should be applied. Only one
-	// `spanner.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `spanner.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringInput
 }
 
-func (InstanceIAMMemberArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*instanceIAMMemberArgs)(nil)).Elem()
+func (InstanceIamMemberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*instanceIamMemberArgs)(nil)).Elem()
 }
 
-type InstanceIAMMemberInput interface {
+type InstanceIamMemberInput interface {
 	pulumi.Input
 
-	ToInstanceIAMMemberOutput() InstanceIAMMemberOutput
-	ToInstanceIAMMemberOutputWithContext(ctx context.Context) InstanceIAMMemberOutput
+	ToInstanceIamMemberOutput() InstanceIamMemberOutput
+	ToInstanceIamMemberOutputWithContext(ctx context.Context) InstanceIamMemberOutput
 }
 
-func (*InstanceIAMMember) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceIAMMember)(nil)).Elem()
+func (*InstanceIamMember) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceIamMember)(nil)).Elem()
 }
 
-func (i *InstanceIAMMember) ToInstanceIAMMemberOutput() InstanceIAMMemberOutput {
-	return i.ToInstanceIAMMemberOutputWithContext(context.Background())
+func (i *InstanceIamMember) ToInstanceIamMemberOutput() InstanceIamMemberOutput {
+	return i.ToInstanceIamMemberOutputWithContext(context.Background())
 }
 
-func (i *InstanceIAMMember) ToInstanceIAMMemberOutputWithContext(ctx context.Context) InstanceIAMMemberOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceIAMMemberOutput)
+func (i *InstanceIamMember) ToInstanceIamMemberOutputWithContext(ctx context.Context) InstanceIamMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamMemberOutput)
 }
 
-// InstanceIAMMemberArrayInput is an input type that accepts InstanceIAMMemberArray and InstanceIAMMemberArrayOutput values.
-// You can construct a concrete instance of `InstanceIAMMemberArrayInput` via:
+// InstanceIamMemberArrayInput is an input type that accepts InstanceIamMemberArray and InstanceIamMemberArrayOutput values.
+// You can construct a concrete instance of `InstanceIamMemberArrayInput` via:
 //
-//	InstanceIAMMemberArray{ InstanceIAMMemberArgs{...} }
-type InstanceIAMMemberArrayInput interface {
+//	InstanceIamMemberArray{ InstanceIamMemberArgs{...} }
+type InstanceIamMemberArrayInput interface {
 	pulumi.Input
 
-	ToInstanceIAMMemberArrayOutput() InstanceIAMMemberArrayOutput
-	ToInstanceIAMMemberArrayOutputWithContext(context.Context) InstanceIAMMemberArrayOutput
+	ToInstanceIamMemberArrayOutput() InstanceIamMemberArrayOutput
+	ToInstanceIamMemberArrayOutputWithContext(context.Context) InstanceIamMemberArrayOutput
 }
 
-type InstanceIAMMemberArray []InstanceIAMMemberInput
+type InstanceIamMemberArray []InstanceIamMemberInput
 
-func (InstanceIAMMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*InstanceIAMMember)(nil)).Elem()
+func (InstanceIamMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*InstanceIamMember)(nil)).Elem()
 }
 
-func (i InstanceIAMMemberArray) ToInstanceIAMMemberArrayOutput() InstanceIAMMemberArrayOutput {
-	return i.ToInstanceIAMMemberArrayOutputWithContext(context.Background())
+func (i InstanceIamMemberArray) ToInstanceIamMemberArrayOutput() InstanceIamMemberArrayOutput {
+	return i.ToInstanceIamMemberArrayOutputWithContext(context.Background())
 }
 
-func (i InstanceIAMMemberArray) ToInstanceIAMMemberArrayOutputWithContext(ctx context.Context) InstanceIAMMemberArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceIAMMemberArrayOutput)
+func (i InstanceIamMemberArray) ToInstanceIamMemberArrayOutputWithContext(ctx context.Context) InstanceIamMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamMemberArrayOutput)
 }
 
-// InstanceIAMMemberMapInput is an input type that accepts InstanceIAMMemberMap and InstanceIAMMemberMapOutput values.
-// You can construct a concrete instance of `InstanceIAMMemberMapInput` via:
+// InstanceIamMemberMapInput is an input type that accepts InstanceIamMemberMap and InstanceIamMemberMapOutput values.
+// You can construct a concrete instance of `InstanceIamMemberMapInput` via:
 //
-//	InstanceIAMMemberMap{ "key": InstanceIAMMemberArgs{...} }
-type InstanceIAMMemberMapInput interface {
+//	InstanceIamMemberMap{ "key": InstanceIamMemberArgs{...} }
+type InstanceIamMemberMapInput interface {
 	pulumi.Input
 
-	ToInstanceIAMMemberMapOutput() InstanceIAMMemberMapOutput
-	ToInstanceIAMMemberMapOutputWithContext(context.Context) InstanceIAMMemberMapOutput
+	ToInstanceIamMemberMapOutput() InstanceIamMemberMapOutput
+	ToInstanceIamMemberMapOutputWithContext(context.Context) InstanceIamMemberMapOutput
 }
 
-type InstanceIAMMemberMap map[string]InstanceIAMMemberInput
+type InstanceIamMemberMap map[string]InstanceIamMemberInput
 
-func (InstanceIAMMemberMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*InstanceIAMMember)(nil)).Elem()
+func (InstanceIamMemberMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*InstanceIamMember)(nil)).Elem()
 }
 
-func (i InstanceIAMMemberMap) ToInstanceIAMMemberMapOutput() InstanceIAMMemberMapOutput {
-	return i.ToInstanceIAMMemberMapOutputWithContext(context.Background())
+func (i InstanceIamMemberMap) ToInstanceIamMemberMapOutput() InstanceIamMemberMapOutput {
+	return i.ToInstanceIamMemberMapOutputWithContext(context.Background())
 }
 
-func (i InstanceIAMMemberMap) ToInstanceIAMMemberMapOutputWithContext(ctx context.Context) InstanceIAMMemberMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceIAMMemberMapOutput)
+func (i InstanceIamMemberMap) ToInstanceIamMemberMapOutputWithContext(ctx context.Context) InstanceIamMemberMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamMemberMapOutput)
 }
 
-type InstanceIAMMemberOutput struct{ *pulumi.OutputState }
+type InstanceIamMemberOutput struct{ *pulumi.OutputState }
 
-func (InstanceIAMMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceIAMMember)(nil)).Elem()
+func (InstanceIamMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceIamMember)(nil)).Elem()
 }
 
-func (o InstanceIAMMemberOutput) ToInstanceIAMMemberOutput() InstanceIAMMemberOutput {
+func (o InstanceIamMemberOutput) ToInstanceIamMemberOutput() InstanceIamMemberOutput {
 	return o
 }
 
-func (o InstanceIAMMemberOutput) ToInstanceIAMMemberOutputWithContext(ctx context.Context) InstanceIAMMemberOutput {
+func (o InstanceIamMemberOutput) ToInstanceIamMemberOutputWithContext(ctx context.Context) InstanceIamMemberOutput {
 	return o
 }
 
-func (o InstanceIAMMemberOutput) Condition() InstanceIAMMemberConditionPtrOutput {
-	return o.ApplyT(func(v *InstanceIAMMember) InstanceIAMMemberConditionPtrOutput { return v.Condition }).(InstanceIAMMemberConditionPtrOutput)
+func (o InstanceIamMemberOutput) Condition() InstanceIamMemberConditionPtrOutput {
+	return o.ApplyT(func(v *InstanceIamMember) InstanceIamMemberConditionPtrOutput { return v.Condition }).(InstanceIamMemberConditionPtrOutput)
 }
 
 // (Computed) The etag of the instance's IAM policy.
-func (o InstanceIAMMemberOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v *InstanceIAMMember) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+func (o InstanceIamMemberOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceIamMember) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The name of the instance.
@@ -425,72 +425,72 @@ func (o InstanceIAMMemberOutput) Etag() pulumi.StringOutput {
 //   - **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
 //   - **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
 //   - **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-func (o InstanceIAMMemberOutput) Instance() pulumi.StringOutput {
-	return o.ApplyT(func(v *InstanceIAMMember) pulumi.StringOutput { return v.Instance }).(pulumi.StringOutput)
+func (o InstanceIamMemberOutput) Instance() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceIamMember) pulumi.StringOutput { return v.Instance }).(pulumi.StringOutput)
 }
 
-func (o InstanceIAMMemberOutput) Member() pulumi.StringOutput {
-	return o.ApplyT(func(v *InstanceIAMMember) pulumi.StringOutput { return v.Member }).(pulumi.StringOutput)
+func (o InstanceIamMemberOutput) Member() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceIamMember) pulumi.StringOutput { return v.Member }).(pulumi.StringOutput)
 }
 
 // The ID of the project in which the resource belongs. If it
 // is not provided, the provider project is used.
-func (o InstanceIAMMemberOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func(v *InstanceIAMMember) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+func (o InstanceIamMemberOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceIamMember) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The role that should be applied. Only one
-// `spanner.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+// `spanner.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
-func (o InstanceIAMMemberOutput) Role() pulumi.StringOutput {
-	return o.ApplyT(func(v *InstanceIAMMember) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
+func (o InstanceIamMemberOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceIamMember) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }
 
-type InstanceIAMMemberArrayOutput struct{ *pulumi.OutputState }
+type InstanceIamMemberArrayOutput struct{ *pulumi.OutputState }
 
-func (InstanceIAMMemberArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*InstanceIAMMember)(nil)).Elem()
+func (InstanceIamMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*InstanceIamMember)(nil)).Elem()
 }
 
-func (o InstanceIAMMemberArrayOutput) ToInstanceIAMMemberArrayOutput() InstanceIAMMemberArrayOutput {
+func (o InstanceIamMemberArrayOutput) ToInstanceIamMemberArrayOutput() InstanceIamMemberArrayOutput {
 	return o
 }
 
-func (o InstanceIAMMemberArrayOutput) ToInstanceIAMMemberArrayOutputWithContext(ctx context.Context) InstanceIAMMemberArrayOutput {
+func (o InstanceIamMemberArrayOutput) ToInstanceIamMemberArrayOutputWithContext(ctx context.Context) InstanceIamMemberArrayOutput {
 	return o
 }
 
-func (o InstanceIAMMemberArrayOutput) Index(i pulumi.IntInput) InstanceIAMMemberOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InstanceIAMMember {
-		return vs[0].([]*InstanceIAMMember)[vs[1].(int)]
-	}).(InstanceIAMMemberOutput)
+func (o InstanceIamMemberArrayOutput) Index(i pulumi.IntInput) InstanceIamMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InstanceIamMember {
+		return vs[0].([]*InstanceIamMember)[vs[1].(int)]
+	}).(InstanceIamMemberOutput)
 }
 
-type InstanceIAMMemberMapOutput struct{ *pulumi.OutputState }
+type InstanceIamMemberMapOutput struct{ *pulumi.OutputState }
 
-func (InstanceIAMMemberMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*InstanceIAMMember)(nil)).Elem()
+func (InstanceIamMemberMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*InstanceIamMember)(nil)).Elem()
 }
 
-func (o InstanceIAMMemberMapOutput) ToInstanceIAMMemberMapOutput() InstanceIAMMemberMapOutput {
+func (o InstanceIamMemberMapOutput) ToInstanceIamMemberMapOutput() InstanceIamMemberMapOutput {
 	return o
 }
 
-func (o InstanceIAMMemberMapOutput) ToInstanceIAMMemberMapOutputWithContext(ctx context.Context) InstanceIAMMemberMapOutput {
+func (o InstanceIamMemberMapOutput) ToInstanceIamMemberMapOutputWithContext(ctx context.Context) InstanceIamMemberMapOutput {
 	return o
 }
 
-func (o InstanceIAMMemberMapOutput) MapIndex(k pulumi.StringInput) InstanceIAMMemberOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *InstanceIAMMember {
-		return vs[0].(map[string]*InstanceIAMMember)[vs[1].(string)]
-	}).(InstanceIAMMemberOutput)
+func (o InstanceIamMemberMapOutput) MapIndex(k pulumi.StringInput) InstanceIamMemberOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *InstanceIamMember {
+		return vs[0].(map[string]*InstanceIamMember)[vs[1].(string)]
+	}).(InstanceIamMemberOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIAMMemberInput)(nil)).Elem(), &InstanceIAMMember{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIAMMemberArrayInput)(nil)).Elem(), InstanceIAMMemberArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIAMMemberMapInput)(nil)).Elem(), InstanceIAMMemberMap{})
-	pulumi.RegisterOutputType(InstanceIAMMemberOutput{})
-	pulumi.RegisterOutputType(InstanceIAMMemberArrayOutput{})
-	pulumi.RegisterOutputType(InstanceIAMMemberMapOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIamMemberInput)(nil)).Elem(), &InstanceIamMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIamMemberArrayInput)(nil)).Elem(), InstanceIamMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIamMemberMapInput)(nil)).Elem(), InstanceIamMemberMap{})
+	pulumi.RegisterOutputType(InstanceIamMemberOutput{})
+	pulumi.RegisterOutputType(InstanceIamMemberArrayOutput{})
+	pulumi.RegisterOutputType(InstanceIamMemberMapOutput{})
 }

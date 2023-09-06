@@ -14,16 +14,16 @@ import (
 
 // Three different resources help you manage your IAM policy for a Spanner instance. Each of these resources serves a different use case:
 //
-// * `spanner.InstanceIAMPolicy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.
+// * `spanner.InstanceIamPolicy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.
 //
-// > **Warning:** It's entirely possibly to lock yourself out of your instance using `spanner.InstanceIAMPolicy`. Any permissions granted by default will be removed unless you include them in your config.
+// > **Warning:** It's entirely possibly to lock yourself out of your instance using `spanner.InstanceIamPolicy`. Any permissions granted by default will be removed unless you include them in your config.
 //
-// * `spanner.InstanceIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved.
-// * `spanner.InstanceIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved.
+// * `spanner.InstanceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved.
+// * `spanner.InstanceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved.
 //
-// > **Note:** `spanner.InstanceIAMPolicy` **cannot** be used in conjunction with `spanner.InstanceIAMBinding` and `spanner.InstanceIAMMember` or they will fight over what your policy should be.
+// > **Note:** `spanner.InstanceIamPolicy` **cannot** be used in conjunction with `spanner.InstanceIamBinding` and `spanner.InstanceIamMember` or they will fight over what your policy should be.
 //
-// > **Note:** `spanner.InstanceIAMBinding` resources **can be** used in conjunction with `spanner.InstanceIAMMember` resources **only if** they do not grant privilege to the same role.
+// > **Note:** `spanner.InstanceIamBinding` resources **can be** used in conjunction with `spanner.InstanceIamMember` resources **only if** they do not grant privilege to the same role.
 //
 // ## google\_spanner\_instance\_iam\_policy
 //
@@ -40,8 +40,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
+//			admin, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
 //					{
 //						Role: "roles/editor",
 //						Members: []string{
@@ -53,7 +53,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = spanner.NewInstanceIAMPolicy(ctx, "instance", &spanner.InstanceIAMPolicyArgs{
+//			_, err = spanner.NewInstanceIamPolicy(ctx, "instance", &spanner.InstanceIamPolicyArgs{
 //				Instance:   pulumi.String("your-instance-name"),
 //				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
@@ -80,7 +80,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := spanner.NewInstanceIAMBinding(ctx, "instance", &spanner.InstanceIAMBindingArgs{
+//			_, err := spanner.NewInstanceIamBinding(ctx, "instance", &spanner.InstanceIamBindingArgs{
 //				Instance: pulumi.String("your-instance-name"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -110,7 +110,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := spanner.NewInstanceIAMMember(ctx, "instance", &spanner.InstanceIAMMemberArgs{
+//			_, err := spanner.NewInstanceIamMember(ctx, "instance", &spanner.InstanceIamMemberArgs{
 //				Instance: pulumi.String("your-instance-name"),
 //				Member:   pulumi.String("user:jane@example.com"),
 //				Role:     pulumi.String("roles/spanner.databaseAdmin"),
@@ -130,7 +130,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:spanner/instanceIAMBinding:InstanceIAMBinding instance "project-name/instance-name roles/viewer user:foo@example.com"
+//	$ pulumi import gcp:spanner/instanceIamBinding:InstanceIamBinding instance "project-name/instance-name roles/viewer user:foo@example.com"
 //
 // ```
 //
@@ -138,7 +138,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:spanner/instanceIAMBinding:InstanceIAMBinding instance "project-name/instance-name roles/viewer"
+//	$ pulumi import gcp:spanner/instanceIamBinding:InstanceIamBinding instance "project-name/instance-name roles/viewer"
 //
 // ```
 //
@@ -146,17 +146,17 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:spanner/instanceIAMBinding:InstanceIAMBinding instance project-name/instance-name
+//	$ pulumi import gcp:spanner/instanceIamBinding:InstanceIamBinding instance project-name/instance-name
 //
 // ```
 //
 //	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 //
 // full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
-type InstanceIAMBinding struct {
+type InstanceIamBinding struct {
 	pulumi.CustomResourceState
 
-	Condition InstanceIAMBindingConditionPtrOutput `pulumi:"condition"`
+	Condition InstanceIamBindingConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the instance's IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The name of the instance.
@@ -175,14 +175,14 @@ type InstanceIAMBinding struct {
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The role that should be applied. Only one
-	// `spanner.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `spanner.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringOutput `pulumi:"role"`
 }
 
-// NewInstanceIAMBinding registers a new resource with the given unique name, arguments, and options.
-func NewInstanceIAMBinding(ctx *pulumi.Context,
-	name string, args *InstanceIAMBindingArgs, opts ...pulumi.ResourceOption) (*InstanceIAMBinding, error) {
+// NewInstanceIamBinding registers a new resource with the given unique name, arguments, and options.
+func NewInstanceIamBinding(ctx *pulumi.Context,
+	name string, args *InstanceIamBindingArgs, opts ...pulumi.ResourceOption) (*InstanceIamBinding, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -197,29 +197,29 @@ func NewInstanceIAMBinding(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Role'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
-	var resource InstanceIAMBinding
-	err := ctx.RegisterResource("gcp:spanner/instanceIAMBinding:InstanceIAMBinding", name, args, &resource, opts...)
+	var resource InstanceIamBinding
+	err := ctx.RegisterResource("gcp:spanner/instanceIamBinding:InstanceIamBinding", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// GetInstanceIAMBinding gets an existing InstanceIAMBinding resource's state with the given name, ID, and optional
+// GetInstanceIamBinding gets an existing InstanceIamBinding resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetInstanceIAMBinding(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *InstanceIAMBindingState, opts ...pulumi.ResourceOption) (*InstanceIAMBinding, error) {
-	var resource InstanceIAMBinding
-	err := ctx.ReadResource("gcp:spanner/instanceIAMBinding:InstanceIAMBinding", name, id, state, &resource, opts...)
+func GetInstanceIamBinding(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *InstanceIamBindingState, opts ...pulumi.ResourceOption) (*InstanceIamBinding, error) {
+	var resource InstanceIamBinding
+	err := ctx.ReadResource("gcp:spanner/instanceIamBinding:InstanceIamBinding", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering InstanceIAMBinding resources.
-type instanceIAMBindingState struct {
-	Condition *InstanceIAMBindingCondition `pulumi:"condition"`
+// Input properties used for looking up and filtering InstanceIamBinding resources.
+type instanceIamBindingState struct {
+	Condition *InstanceIamBindingCondition `pulumi:"condition"`
 	// (Computed) The etag of the instance's IAM policy.
 	Etag *string `pulumi:"etag"`
 	// The name of the instance.
@@ -238,13 +238,13 @@ type instanceIAMBindingState struct {
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The role that should be applied. Only one
-	// `spanner.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `spanner.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role *string `pulumi:"role"`
 }
 
-type InstanceIAMBindingState struct {
-	Condition InstanceIAMBindingConditionPtrInput
+type InstanceIamBindingState struct {
+	Condition InstanceIamBindingConditionPtrInput
 	// (Computed) The etag of the instance's IAM policy.
 	Etag pulumi.StringPtrInput
 	// The name of the instance.
@@ -263,17 +263,17 @@ type InstanceIAMBindingState struct {
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The role that should be applied. Only one
-	// `spanner.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `spanner.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringPtrInput
 }
 
-func (InstanceIAMBindingState) ElementType() reflect.Type {
-	return reflect.TypeOf((*instanceIAMBindingState)(nil)).Elem()
+func (InstanceIamBindingState) ElementType() reflect.Type {
+	return reflect.TypeOf((*instanceIamBindingState)(nil)).Elem()
 }
 
-type instanceIAMBindingArgs struct {
-	Condition *InstanceIAMBindingCondition `pulumi:"condition"`
+type instanceIamBindingArgs struct {
+	Condition *InstanceIamBindingCondition `pulumi:"condition"`
 	// The name of the instance.
 	//
 	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
@@ -290,14 +290,14 @@ type instanceIAMBindingArgs struct {
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The role that should be applied. Only one
-	// `spanner.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `spanner.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role string `pulumi:"role"`
 }
 
-// The set of arguments for constructing a InstanceIAMBinding resource.
-type InstanceIAMBindingArgs struct {
-	Condition InstanceIAMBindingConditionPtrInput
+// The set of arguments for constructing a InstanceIamBinding resource.
+type InstanceIamBindingArgs struct {
+	Condition InstanceIamBindingConditionPtrInput
 	// The name of the instance.
 	//
 	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
@@ -314,105 +314,105 @@ type InstanceIAMBindingArgs struct {
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The role that should be applied. Only one
-	// `spanner.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `spanner.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringInput
 }
 
-func (InstanceIAMBindingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*instanceIAMBindingArgs)(nil)).Elem()
+func (InstanceIamBindingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*instanceIamBindingArgs)(nil)).Elem()
 }
 
-type InstanceIAMBindingInput interface {
+type InstanceIamBindingInput interface {
 	pulumi.Input
 
-	ToInstanceIAMBindingOutput() InstanceIAMBindingOutput
-	ToInstanceIAMBindingOutputWithContext(ctx context.Context) InstanceIAMBindingOutput
+	ToInstanceIamBindingOutput() InstanceIamBindingOutput
+	ToInstanceIamBindingOutputWithContext(ctx context.Context) InstanceIamBindingOutput
 }
 
-func (*InstanceIAMBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceIAMBinding)(nil)).Elem()
+func (*InstanceIamBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceIamBinding)(nil)).Elem()
 }
 
-func (i *InstanceIAMBinding) ToInstanceIAMBindingOutput() InstanceIAMBindingOutput {
-	return i.ToInstanceIAMBindingOutputWithContext(context.Background())
+func (i *InstanceIamBinding) ToInstanceIamBindingOutput() InstanceIamBindingOutput {
+	return i.ToInstanceIamBindingOutputWithContext(context.Background())
 }
 
-func (i *InstanceIAMBinding) ToInstanceIAMBindingOutputWithContext(ctx context.Context) InstanceIAMBindingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceIAMBindingOutput)
+func (i *InstanceIamBinding) ToInstanceIamBindingOutputWithContext(ctx context.Context) InstanceIamBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamBindingOutput)
 }
 
-// InstanceIAMBindingArrayInput is an input type that accepts InstanceIAMBindingArray and InstanceIAMBindingArrayOutput values.
-// You can construct a concrete instance of `InstanceIAMBindingArrayInput` via:
+// InstanceIamBindingArrayInput is an input type that accepts InstanceIamBindingArray and InstanceIamBindingArrayOutput values.
+// You can construct a concrete instance of `InstanceIamBindingArrayInput` via:
 //
-//	InstanceIAMBindingArray{ InstanceIAMBindingArgs{...} }
-type InstanceIAMBindingArrayInput interface {
+//	InstanceIamBindingArray{ InstanceIamBindingArgs{...} }
+type InstanceIamBindingArrayInput interface {
 	pulumi.Input
 
-	ToInstanceIAMBindingArrayOutput() InstanceIAMBindingArrayOutput
-	ToInstanceIAMBindingArrayOutputWithContext(context.Context) InstanceIAMBindingArrayOutput
+	ToInstanceIamBindingArrayOutput() InstanceIamBindingArrayOutput
+	ToInstanceIamBindingArrayOutputWithContext(context.Context) InstanceIamBindingArrayOutput
 }
 
-type InstanceIAMBindingArray []InstanceIAMBindingInput
+type InstanceIamBindingArray []InstanceIamBindingInput
 
-func (InstanceIAMBindingArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*InstanceIAMBinding)(nil)).Elem()
+func (InstanceIamBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*InstanceIamBinding)(nil)).Elem()
 }
 
-func (i InstanceIAMBindingArray) ToInstanceIAMBindingArrayOutput() InstanceIAMBindingArrayOutput {
-	return i.ToInstanceIAMBindingArrayOutputWithContext(context.Background())
+func (i InstanceIamBindingArray) ToInstanceIamBindingArrayOutput() InstanceIamBindingArrayOutput {
+	return i.ToInstanceIamBindingArrayOutputWithContext(context.Background())
 }
 
-func (i InstanceIAMBindingArray) ToInstanceIAMBindingArrayOutputWithContext(ctx context.Context) InstanceIAMBindingArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceIAMBindingArrayOutput)
+func (i InstanceIamBindingArray) ToInstanceIamBindingArrayOutputWithContext(ctx context.Context) InstanceIamBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamBindingArrayOutput)
 }
 
-// InstanceIAMBindingMapInput is an input type that accepts InstanceIAMBindingMap and InstanceIAMBindingMapOutput values.
-// You can construct a concrete instance of `InstanceIAMBindingMapInput` via:
+// InstanceIamBindingMapInput is an input type that accepts InstanceIamBindingMap and InstanceIamBindingMapOutput values.
+// You can construct a concrete instance of `InstanceIamBindingMapInput` via:
 //
-//	InstanceIAMBindingMap{ "key": InstanceIAMBindingArgs{...} }
-type InstanceIAMBindingMapInput interface {
+//	InstanceIamBindingMap{ "key": InstanceIamBindingArgs{...} }
+type InstanceIamBindingMapInput interface {
 	pulumi.Input
 
-	ToInstanceIAMBindingMapOutput() InstanceIAMBindingMapOutput
-	ToInstanceIAMBindingMapOutputWithContext(context.Context) InstanceIAMBindingMapOutput
+	ToInstanceIamBindingMapOutput() InstanceIamBindingMapOutput
+	ToInstanceIamBindingMapOutputWithContext(context.Context) InstanceIamBindingMapOutput
 }
 
-type InstanceIAMBindingMap map[string]InstanceIAMBindingInput
+type InstanceIamBindingMap map[string]InstanceIamBindingInput
 
-func (InstanceIAMBindingMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*InstanceIAMBinding)(nil)).Elem()
+func (InstanceIamBindingMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*InstanceIamBinding)(nil)).Elem()
 }
 
-func (i InstanceIAMBindingMap) ToInstanceIAMBindingMapOutput() InstanceIAMBindingMapOutput {
-	return i.ToInstanceIAMBindingMapOutputWithContext(context.Background())
+func (i InstanceIamBindingMap) ToInstanceIamBindingMapOutput() InstanceIamBindingMapOutput {
+	return i.ToInstanceIamBindingMapOutputWithContext(context.Background())
 }
 
-func (i InstanceIAMBindingMap) ToInstanceIAMBindingMapOutputWithContext(ctx context.Context) InstanceIAMBindingMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(InstanceIAMBindingMapOutput)
+func (i InstanceIamBindingMap) ToInstanceIamBindingMapOutputWithContext(ctx context.Context) InstanceIamBindingMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamBindingMapOutput)
 }
 
-type InstanceIAMBindingOutput struct{ *pulumi.OutputState }
+type InstanceIamBindingOutput struct{ *pulumi.OutputState }
 
-func (InstanceIAMBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**InstanceIAMBinding)(nil)).Elem()
+func (InstanceIamBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceIamBinding)(nil)).Elem()
 }
 
-func (o InstanceIAMBindingOutput) ToInstanceIAMBindingOutput() InstanceIAMBindingOutput {
+func (o InstanceIamBindingOutput) ToInstanceIamBindingOutput() InstanceIamBindingOutput {
 	return o
 }
 
-func (o InstanceIAMBindingOutput) ToInstanceIAMBindingOutputWithContext(ctx context.Context) InstanceIAMBindingOutput {
+func (o InstanceIamBindingOutput) ToInstanceIamBindingOutputWithContext(ctx context.Context) InstanceIamBindingOutput {
 	return o
 }
 
-func (o InstanceIAMBindingOutput) Condition() InstanceIAMBindingConditionPtrOutput {
-	return o.ApplyT(func(v *InstanceIAMBinding) InstanceIAMBindingConditionPtrOutput { return v.Condition }).(InstanceIAMBindingConditionPtrOutput)
+func (o InstanceIamBindingOutput) Condition() InstanceIamBindingConditionPtrOutput {
+	return o.ApplyT(func(v *InstanceIamBinding) InstanceIamBindingConditionPtrOutput { return v.Condition }).(InstanceIamBindingConditionPtrOutput)
 }
 
 // (Computed) The etag of the instance's IAM policy.
-func (o InstanceIAMBindingOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v *InstanceIAMBinding) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+func (o InstanceIamBindingOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceIamBinding) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The name of the instance.
@@ -425,72 +425,72 @@ func (o InstanceIAMBindingOutput) Etag() pulumi.StringOutput {
 //   - **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
 //   - **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
 //   - **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-func (o InstanceIAMBindingOutput) Instance() pulumi.StringOutput {
-	return o.ApplyT(func(v *InstanceIAMBinding) pulumi.StringOutput { return v.Instance }).(pulumi.StringOutput)
+func (o InstanceIamBindingOutput) Instance() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceIamBinding) pulumi.StringOutput { return v.Instance }).(pulumi.StringOutput)
 }
 
-func (o InstanceIAMBindingOutput) Members() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *InstanceIAMBinding) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
+func (o InstanceIamBindingOutput) Members() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *InstanceIamBinding) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
 }
 
 // The ID of the project in which the resource belongs. If it
 // is not provided, the provider project is used.
-func (o InstanceIAMBindingOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func(v *InstanceIAMBinding) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+func (o InstanceIamBindingOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceIamBinding) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The role that should be applied. Only one
-// `spanner.InstanceIAMBinding` can be used per role. Note that custom roles must be of the format
+// `spanner.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
-func (o InstanceIAMBindingOutput) Role() pulumi.StringOutput {
-	return o.ApplyT(func(v *InstanceIAMBinding) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
+func (o InstanceIamBindingOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceIamBinding) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }
 
-type InstanceIAMBindingArrayOutput struct{ *pulumi.OutputState }
+type InstanceIamBindingArrayOutput struct{ *pulumi.OutputState }
 
-func (InstanceIAMBindingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*InstanceIAMBinding)(nil)).Elem()
+func (InstanceIamBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*InstanceIamBinding)(nil)).Elem()
 }
 
-func (o InstanceIAMBindingArrayOutput) ToInstanceIAMBindingArrayOutput() InstanceIAMBindingArrayOutput {
+func (o InstanceIamBindingArrayOutput) ToInstanceIamBindingArrayOutput() InstanceIamBindingArrayOutput {
 	return o
 }
 
-func (o InstanceIAMBindingArrayOutput) ToInstanceIAMBindingArrayOutputWithContext(ctx context.Context) InstanceIAMBindingArrayOutput {
+func (o InstanceIamBindingArrayOutput) ToInstanceIamBindingArrayOutputWithContext(ctx context.Context) InstanceIamBindingArrayOutput {
 	return o
 }
 
-func (o InstanceIAMBindingArrayOutput) Index(i pulumi.IntInput) InstanceIAMBindingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InstanceIAMBinding {
-		return vs[0].([]*InstanceIAMBinding)[vs[1].(int)]
-	}).(InstanceIAMBindingOutput)
+func (o InstanceIamBindingArrayOutput) Index(i pulumi.IntInput) InstanceIamBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *InstanceIamBinding {
+		return vs[0].([]*InstanceIamBinding)[vs[1].(int)]
+	}).(InstanceIamBindingOutput)
 }
 
-type InstanceIAMBindingMapOutput struct{ *pulumi.OutputState }
+type InstanceIamBindingMapOutput struct{ *pulumi.OutputState }
 
-func (InstanceIAMBindingMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*InstanceIAMBinding)(nil)).Elem()
+func (InstanceIamBindingMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*InstanceIamBinding)(nil)).Elem()
 }
 
-func (o InstanceIAMBindingMapOutput) ToInstanceIAMBindingMapOutput() InstanceIAMBindingMapOutput {
+func (o InstanceIamBindingMapOutput) ToInstanceIamBindingMapOutput() InstanceIamBindingMapOutput {
 	return o
 }
 
-func (o InstanceIAMBindingMapOutput) ToInstanceIAMBindingMapOutputWithContext(ctx context.Context) InstanceIAMBindingMapOutput {
+func (o InstanceIamBindingMapOutput) ToInstanceIamBindingMapOutputWithContext(ctx context.Context) InstanceIamBindingMapOutput {
 	return o
 }
 
-func (o InstanceIAMBindingMapOutput) MapIndex(k pulumi.StringInput) InstanceIAMBindingOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *InstanceIAMBinding {
-		return vs[0].(map[string]*InstanceIAMBinding)[vs[1].(string)]
-	}).(InstanceIAMBindingOutput)
+func (o InstanceIamBindingMapOutput) MapIndex(k pulumi.StringInput) InstanceIamBindingOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *InstanceIamBinding {
+		return vs[0].(map[string]*InstanceIamBinding)[vs[1].(string)]
+	}).(InstanceIamBindingOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIAMBindingInput)(nil)).Elem(), &InstanceIAMBinding{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIAMBindingArrayInput)(nil)).Elem(), InstanceIAMBindingArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIAMBindingMapInput)(nil)).Elem(), InstanceIAMBindingMap{})
-	pulumi.RegisterOutputType(InstanceIAMBindingOutput{})
-	pulumi.RegisterOutputType(InstanceIAMBindingArrayOutput{})
-	pulumi.RegisterOutputType(InstanceIAMBindingMapOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIamBindingInput)(nil)).Elem(), &InstanceIamBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIamBindingArrayInput)(nil)).Elem(), InstanceIamBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIamBindingMapInput)(nil)).Elem(), InstanceIamBindingMap{})
+	pulumi.RegisterOutputType(InstanceIamBindingOutput{})
+	pulumi.RegisterOutputType(InstanceIamBindingArrayOutput{})
+	pulumi.RegisterOutputType(InstanceIamBindingMapOutput{})
 }

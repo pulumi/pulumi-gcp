@@ -27,12 +27,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BucketACL{}
 	case "gcp:storage/bucketAccessControl:BucketAccessControl":
 		r = &BucketAccessControl{}
-	case "gcp:storage/bucketIAMBinding:BucketIAMBinding":
-		r = &BucketIAMBinding{}
-	case "gcp:storage/bucketIAMMember:BucketIAMMember":
-		r = &BucketIAMMember{}
-	case "gcp:storage/bucketIAMPolicy:BucketIAMPolicy":
-		r = &BucketIAMPolicy{}
+	case "gcp:storage/bucketIamBinding:BucketIamBinding":
+		r = &BucketIamBinding{}
+	case "gcp:storage/bucketIamMember:BucketIamMember":
+		r = &BucketIamMember{}
+	case "gcp:storage/bucketIamPolicy:BucketIamPolicy":
+		r = &BucketIamPolicy{}
 	case "gcp:storage/bucketObject:BucketObject":
 		r = &BucketObject{}
 	case "gcp:storage/defaultObjectACL:DefaultObjectACL":
@@ -81,17 +81,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"storage/bucketIAMBinding",
+		"storage/bucketIamBinding",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"storage/bucketIAMMember",
+		"storage/bucketIamMember",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"storage/bucketIAMPolicy",
+		"storage/bucketIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

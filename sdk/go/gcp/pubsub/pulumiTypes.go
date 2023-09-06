@@ -1762,144 +1762,144 @@ func (o SubscriptionExpirationPolicyPtrOutput) Ttl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type SubscriptionIAMBindingCondition struct {
+type SubscriptionIamBindingCondition struct {
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
 	Title       string  `pulumi:"title"`
 }
 
-// SubscriptionIAMBindingConditionInput is an input type that accepts SubscriptionIAMBindingConditionArgs and SubscriptionIAMBindingConditionOutput values.
-// You can construct a concrete instance of `SubscriptionIAMBindingConditionInput` via:
+// SubscriptionIamBindingConditionInput is an input type that accepts SubscriptionIamBindingConditionArgs and SubscriptionIamBindingConditionOutput values.
+// You can construct a concrete instance of `SubscriptionIamBindingConditionInput` via:
 //
-//	SubscriptionIAMBindingConditionArgs{...}
-type SubscriptionIAMBindingConditionInput interface {
+//	SubscriptionIamBindingConditionArgs{...}
+type SubscriptionIamBindingConditionInput interface {
 	pulumi.Input
 
-	ToSubscriptionIAMBindingConditionOutput() SubscriptionIAMBindingConditionOutput
-	ToSubscriptionIAMBindingConditionOutputWithContext(context.Context) SubscriptionIAMBindingConditionOutput
+	ToSubscriptionIamBindingConditionOutput() SubscriptionIamBindingConditionOutput
+	ToSubscriptionIamBindingConditionOutputWithContext(context.Context) SubscriptionIamBindingConditionOutput
 }
 
-type SubscriptionIAMBindingConditionArgs struct {
+type SubscriptionIamBindingConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	Expression  pulumi.StringInput    `pulumi:"expression"`
 	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
-func (SubscriptionIAMBindingConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubscriptionIAMBindingCondition)(nil)).Elem()
+func (SubscriptionIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionIamBindingCondition)(nil)).Elem()
 }
 
-func (i SubscriptionIAMBindingConditionArgs) ToSubscriptionIAMBindingConditionOutput() SubscriptionIAMBindingConditionOutput {
-	return i.ToSubscriptionIAMBindingConditionOutputWithContext(context.Background())
+func (i SubscriptionIamBindingConditionArgs) ToSubscriptionIamBindingConditionOutput() SubscriptionIamBindingConditionOutput {
+	return i.ToSubscriptionIamBindingConditionOutputWithContext(context.Background())
 }
 
-func (i SubscriptionIAMBindingConditionArgs) ToSubscriptionIAMBindingConditionOutputWithContext(ctx context.Context) SubscriptionIAMBindingConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIAMBindingConditionOutput)
+func (i SubscriptionIamBindingConditionArgs) ToSubscriptionIamBindingConditionOutputWithContext(ctx context.Context) SubscriptionIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIamBindingConditionOutput)
 }
 
-func (i SubscriptionIAMBindingConditionArgs) ToSubscriptionIAMBindingConditionPtrOutput() SubscriptionIAMBindingConditionPtrOutput {
-	return i.ToSubscriptionIAMBindingConditionPtrOutputWithContext(context.Background())
+func (i SubscriptionIamBindingConditionArgs) ToSubscriptionIamBindingConditionPtrOutput() SubscriptionIamBindingConditionPtrOutput {
+	return i.ToSubscriptionIamBindingConditionPtrOutputWithContext(context.Background())
 }
 
-func (i SubscriptionIAMBindingConditionArgs) ToSubscriptionIAMBindingConditionPtrOutputWithContext(ctx context.Context) SubscriptionIAMBindingConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIAMBindingConditionOutput).ToSubscriptionIAMBindingConditionPtrOutputWithContext(ctx)
+func (i SubscriptionIamBindingConditionArgs) ToSubscriptionIamBindingConditionPtrOutputWithContext(ctx context.Context) SubscriptionIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIamBindingConditionOutput).ToSubscriptionIamBindingConditionPtrOutputWithContext(ctx)
 }
 
-// SubscriptionIAMBindingConditionPtrInput is an input type that accepts SubscriptionIAMBindingConditionArgs, SubscriptionIAMBindingConditionPtr and SubscriptionIAMBindingConditionPtrOutput values.
-// You can construct a concrete instance of `SubscriptionIAMBindingConditionPtrInput` via:
+// SubscriptionIamBindingConditionPtrInput is an input type that accepts SubscriptionIamBindingConditionArgs, SubscriptionIamBindingConditionPtr and SubscriptionIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `SubscriptionIamBindingConditionPtrInput` via:
 //
-//	        SubscriptionIAMBindingConditionArgs{...}
+//	        SubscriptionIamBindingConditionArgs{...}
 //
 //	or:
 //
 //	        nil
-type SubscriptionIAMBindingConditionPtrInput interface {
+type SubscriptionIamBindingConditionPtrInput interface {
 	pulumi.Input
 
-	ToSubscriptionIAMBindingConditionPtrOutput() SubscriptionIAMBindingConditionPtrOutput
-	ToSubscriptionIAMBindingConditionPtrOutputWithContext(context.Context) SubscriptionIAMBindingConditionPtrOutput
+	ToSubscriptionIamBindingConditionPtrOutput() SubscriptionIamBindingConditionPtrOutput
+	ToSubscriptionIamBindingConditionPtrOutputWithContext(context.Context) SubscriptionIamBindingConditionPtrOutput
 }
 
-type subscriptionIAMBindingConditionPtrType SubscriptionIAMBindingConditionArgs
+type subscriptionIamBindingConditionPtrType SubscriptionIamBindingConditionArgs
 
-func SubscriptionIAMBindingConditionPtr(v *SubscriptionIAMBindingConditionArgs) SubscriptionIAMBindingConditionPtrInput {
-	return (*subscriptionIAMBindingConditionPtrType)(v)
+func SubscriptionIamBindingConditionPtr(v *SubscriptionIamBindingConditionArgs) SubscriptionIamBindingConditionPtrInput {
+	return (*subscriptionIamBindingConditionPtrType)(v)
 }
 
-func (*subscriptionIAMBindingConditionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SubscriptionIAMBindingCondition)(nil)).Elem()
+func (*subscriptionIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionIamBindingCondition)(nil)).Elem()
 }
 
-func (i *subscriptionIAMBindingConditionPtrType) ToSubscriptionIAMBindingConditionPtrOutput() SubscriptionIAMBindingConditionPtrOutput {
-	return i.ToSubscriptionIAMBindingConditionPtrOutputWithContext(context.Background())
+func (i *subscriptionIamBindingConditionPtrType) ToSubscriptionIamBindingConditionPtrOutput() SubscriptionIamBindingConditionPtrOutput {
+	return i.ToSubscriptionIamBindingConditionPtrOutputWithContext(context.Background())
 }
 
-func (i *subscriptionIAMBindingConditionPtrType) ToSubscriptionIAMBindingConditionPtrOutputWithContext(ctx context.Context) SubscriptionIAMBindingConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIAMBindingConditionPtrOutput)
+func (i *subscriptionIamBindingConditionPtrType) ToSubscriptionIamBindingConditionPtrOutputWithContext(ctx context.Context) SubscriptionIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIamBindingConditionPtrOutput)
 }
 
-type SubscriptionIAMBindingConditionOutput struct{ *pulumi.OutputState }
+type SubscriptionIamBindingConditionOutput struct{ *pulumi.OutputState }
 
-func (SubscriptionIAMBindingConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubscriptionIAMBindingCondition)(nil)).Elem()
+func (SubscriptionIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionIamBindingCondition)(nil)).Elem()
 }
 
-func (o SubscriptionIAMBindingConditionOutput) ToSubscriptionIAMBindingConditionOutput() SubscriptionIAMBindingConditionOutput {
+func (o SubscriptionIamBindingConditionOutput) ToSubscriptionIamBindingConditionOutput() SubscriptionIamBindingConditionOutput {
 	return o
 }
 
-func (o SubscriptionIAMBindingConditionOutput) ToSubscriptionIAMBindingConditionOutputWithContext(ctx context.Context) SubscriptionIAMBindingConditionOutput {
+func (o SubscriptionIamBindingConditionOutput) ToSubscriptionIamBindingConditionOutputWithContext(ctx context.Context) SubscriptionIamBindingConditionOutput {
 	return o
 }
 
-func (o SubscriptionIAMBindingConditionOutput) ToSubscriptionIAMBindingConditionPtrOutput() SubscriptionIAMBindingConditionPtrOutput {
-	return o.ToSubscriptionIAMBindingConditionPtrOutputWithContext(context.Background())
+func (o SubscriptionIamBindingConditionOutput) ToSubscriptionIamBindingConditionPtrOutput() SubscriptionIamBindingConditionPtrOutput {
+	return o.ToSubscriptionIamBindingConditionPtrOutputWithContext(context.Background())
 }
 
-func (o SubscriptionIAMBindingConditionOutput) ToSubscriptionIAMBindingConditionPtrOutputWithContext(ctx context.Context) SubscriptionIAMBindingConditionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubscriptionIAMBindingCondition) *SubscriptionIAMBindingCondition {
+func (o SubscriptionIamBindingConditionOutput) ToSubscriptionIamBindingConditionPtrOutputWithContext(ctx context.Context) SubscriptionIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubscriptionIamBindingCondition) *SubscriptionIamBindingCondition {
 		return &v
-	}).(SubscriptionIAMBindingConditionPtrOutput)
+	}).(SubscriptionIamBindingConditionPtrOutput)
 }
 
-func (o SubscriptionIAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SubscriptionIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o SubscriptionIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubscriptionIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-func (o SubscriptionIAMBindingConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v SubscriptionIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o SubscriptionIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v SubscriptionIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
-func (o SubscriptionIAMBindingConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v SubscriptionIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o SubscriptionIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v SubscriptionIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type SubscriptionIAMBindingConditionPtrOutput struct{ *pulumi.OutputState }
+type SubscriptionIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
 
-func (SubscriptionIAMBindingConditionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SubscriptionIAMBindingCondition)(nil)).Elem()
+func (SubscriptionIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionIamBindingCondition)(nil)).Elem()
 }
 
-func (o SubscriptionIAMBindingConditionPtrOutput) ToSubscriptionIAMBindingConditionPtrOutput() SubscriptionIAMBindingConditionPtrOutput {
+func (o SubscriptionIamBindingConditionPtrOutput) ToSubscriptionIamBindingConditionPtrOutput() SubscriptionIamBindingConditionPtrOutput {
 	return o
 }
 
-func (o SubscriptionIAMBindingConditionPtrOutput) ToSubscriptionIAMBindingConditionPtrOutputWithContext(ctx context.Context) SubscriptionIAMBindingConditionPtrOutput {
+func (o SubscriptionIamBindingConditionPtrOutput) ToSubscriptionIamBindingConditionPtrOutputWithContext(ctx context.Context) SubscriptionIamBindingConditionPtrOutput {
 	return o
 }
 
-func (o SubscriptionIAMBindingConditionPtrOutput) Elem() SubscriptionIAMBindingConditionOutput {
-	return o.ApplyT(func(v *SubscriptionIAMBindingCondition) SubscriptionIAMBindingCondition {
+func (o SubscriptionIamBindingConditionPtrOutput) Elem() SubscriptionIamBindingConditionOutput {
+	return o.ApplyT(func(v *SubscriptionIamBindingCondition) SubscriptionIamBindingCondition {
 		if v != nil {
 			return *v
 		}
-		var ret SubscriptionIAMBindingCondition
+		var ret SubscriptionIamBindingCondition
 		return ret
-	}).(SubscriptionIAMBindingConditionOutput)
+	}).(SubscriptionIamBindingConditionOutput)
 }
 
-func (o SubscriptionIAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SubscriptionIAMBindingCondition) *string {
+func (o SubscriptionIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionIamBindingCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -1907,8 +1907,8 @@ func (o SubscriptionIAMBindingConditionPtrOutput) Description() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o SubscriptionIAMBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SubscriptionIAMBindingCondition) *string {
+func (o SubscriptionIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionIamBindingCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -1916,8 +1916,8 @@ func (o SubscriptionIAMBindingConditionPtrOutput) Expression() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o SubscriptionIAMBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SubscriptionIAMBindingCondition) *string {
+func (o SubscriptionIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionIamBindingCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -1925,144 +1925,144 @@ func (o SubscriptionIAMBindingConditionPtrOutput) Title() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-type SubscriptionIAMMemberCondition struct {
+type SubscriptionIamMemberCondition struct {
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
 	Title       string  `pulumi:"title"`
 }
 
-// SubscriptionIAMMemberConditionInput is an input type that accepts SubscriptionIAMMemberConditionArgs and SubscriptionIAMMemberConditionOutput values.
-// You can construct a concrete instance of `SubscriptionIAMMemberConditionInput` via:
+// SubscriptionIamMemberConditionInput is an input type that accepts SubscriptionIamMemberConditionArgs and SubscriptionIamMemberConditionOutput values.
+// You can construct a concrete instance of `SubscriptionIamMemberConditionInput` via:
 //
-//	SubscriptionIAMMemberConditionArgs{...}
-type SubscriptionIAMMemberConditionInput interface {
+//	SubscriptionIamMemberConditionArgs{...}
+type SubscriptionIamMemberConditionInput interface {
 	pulumi.Input
 
-	ToSubscriptionIAMMemberConditionOutput() SubscriptionIAMMemberConditionOutput
-	ToSubscriptionIAMMemberConditionOutputWithContext(context.Context) SubscriptionIAMMemberConditionOutput
+	ToSubscriptionIamMemberConditionOutput() SubscriptionIamMemberConditionOutput
+	ToSubscriptionIamMemberConditionOutputWithContext(context.Context) SubscriptionIamMemberConditionOutput
 }
 
-type SubscriptionIAMMemberConditionArgs struct {
+type SubscriptionIamMemberConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	Expression  pulumi.StringInput    `pulumi:"expression"`
 	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
-func (SubscriptionIAMMemberConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubscriptionIAMMemberCondition)(nil)).Elem()
+func (SubscriptionIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionIamMemberCondition)(nil)).Elem()
 }
 
-func (i SubscriptionIAMMemberConditionArgs) ToSubscriptionIAMMemberConditionOutput() SubscriptionIAMMemberConditionOutput {
-	return i.ToSubscriptionIAMMemberConditionOutputWithContext(context.Background())
+func (i SubscriptionIamMemberConditionArgs) ToSubscriptionIamMemberConditionOutput() SubscriptionIamMemberConditionOutput {
+	return i.ToSubscriptionIamMemberConditionOutputWithContext(context.Background())
 }
 
-func (i SubscriptionIAMMemberConditionArgs) ToSubscriptionIAMMemberConditionOutputWithContext(ctx context.Context) SubscriptionIAMMemberConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIAMMemberConditionOutput)
+func (i SubscriptionIamMemberConditionArgs) ToSubscriptionIamMemberConditionOutputWithContext(ctx context.Context) SubscriptionIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIamMemberConditionOutput)
 }
 
-func (i SubscriptionIAMMemberConditionArgs) ToSubscriptionIAMMemberConditionPtrOutput() SubscriptionIAMMemberConditionPtrOutput {
-	return i.ToSubscriptionIAMMemberConditionPtrOutputWithContext(context.Background())
+func (i SubscriptionIamMemberConditionArgs) ToSubscriptionIamMemberConditionPtrOutput() SubscriptionIamMemberConditionPtrOutput {
+	return i.ToSubscriptionIamMemberConditionPtrOutputWithContext(context.Background())
 }
 
-func (i SubscriptionIAMMemberConditionArgs) ToSubscriptionIAMMemberConditionPtrOutputWithContext(ctx context.Context) SubscriptionIAMMemberConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIAMMemberConditionOutput).ToSubscriptionIAMMemberConditionPtrOutputWithContext(ctx)
+func (i SubscriptionIamMemberConditionArgs) ToSubscriptionIamMemberConditionPtrOutputWithContext(ctx context.Context) SubscriptionIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIamMemberConditionOutput).ToSubscriptionIamMemberConditionPtrOutputWithContext(ctx)
 }
 
-// SubscriptionIAMMemberConditionPtrInput is an input type that accepts SubscriptionIAMMemberConditionArgs, SubscriptionIAMMemberConditionPtr and SubscriptionIAMMemberConditionPtrOutput values.
-// You can construct a concrete instance of `SubscriptionIAMMemberConditionPtrInput` via:
+// SubscriptionIamMemberConditionPtrInput is an input type that accepts SubscriptionIamMemberConditionArgs, SubscriptionIamMemberConditionPtr and SubscriptionIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `SubscriptionIamMemberConditionPtrInput` via:
 //
-//	        SubscriptionIAMMemberConditionArgs{...}
+//	        SubscriptionIamMemberConditionArgs{...}
 //
 //	or:
 //
 //	        nil
-type SubscriptionIAMMemberConditionPtrInput interface {
+type SubscriptionIamMemberConditionPtrInput interface {
 	pulumi.Input
 
-	ToSubscriptionIAMMemberConditionPtrOutput() SubscriptionIAMMemberConditionPtrOutput
-	ToSubscriptionIAMMemberConditionPtrOutputWithContext(context.Context) SubscriptionIAMMemberConditionPtrOutput
+	ToSubscriptionIamMemberConditionPtrOutput() SubscriptionIamMemberConditionPtrOutput
+	ToSubscriptionIamMemberConditionPtrOutputWithContext(context.Context) SubscriptionIamMemberConditionPtrOutput
 }
 
-type subscriptionIAMMemberConditionPtrType SubscriptionIAMMemberConditionArgs
+type subscriptionIamMemberConditionPtrType SubscriptionIamMemberConditionArgs
 
-func SubscriptionIAMMemberConditionPtr(v *SubscriptionIAMMemberConditionArgs) SubscriptionIAMMemberConditionPtrInput {
-	return (*subscriptionIAMMemberConditionPtrType)(v)
+func SubscriptionIamMemberConditionPtr(v *SubscriptionIamMemberConditionArgs) SubscriptionIamMemberConditionPtrInput {
+	return (*subscriptionIamMemberConditionPtrType)(v)
 }
 
-func (*subscriptionIAMMemberConditionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SubscriptionIAMMemberCondition)(nil)).Elem()
+func (*subscriptionIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionIamMemberCondition)(nil)).Elem()
 }
 
-func (i *subscriptionIAMMemberConditionPtrType) ToSubscriptionIAMMemberConditionPtrOutput() SubscriptionIAMMemberConditionPtrOutput {
-	return i.ToSubscriptionIAMMemberConditionPtrOutputWithContext(context.Background())
+func (i *subscriptionIamMemberConditionPtrType) ToSubscriptionIamMemberConditionPtrOutput() SubscriptionIamMemberConditionPtrOutput {
+	return i.ToSubscriptionIamMemberConditionPtrOutputWithContext(context.Background())
 }
 
-func (i *subscriptionIAMMemberConditionPtrType) ToSubscriptionIAMMemberConditionPtrOutputWithContext(ctx context.Context) SubscriptionIAMMemberConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIAMMemberConditionPtrOutput)
+func (i *subscriptionIamMemberConditionPtrType) ToSubscriptionIamMemberConditionPtrOutputWithContext(ctx context.Context) SubscriptionIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIamMemberConditionPtrOutput)
 }
 
-type SubscriptionIAMMemberConditionOutput struct{ *pulumi.OutputState }
+type SubscriptionIamMemberConditionOutput struct{ *pulumi.OutputState }
 
-func (SubscriptionIAMMemberConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubscriptionIAMMemberCondition)(nil)).Elem()
+func (SubscriptionIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionIamMemberCondition)(nil)).Elem()
 }
 
-func (o SubscriptionIAMMemberConditionOutput) ToSubscriptionIAMMemberConditionOutput() SubscriptionIAMMemberConditionOutput {
+func (o SubscriptionIamMemberConditionOutput) ToSubscriptionIamMemberConditionOutput() SubscriptionIamMemberConditionOutput {
 	return o
 }
 
-func (o SubscriptionIAMMemberConditionOutput) ToSubscriptionIAMMemberConditionOutputWithContext(ctx context.Context) SubscriptionIAMMemberConditionOutput {
+func (o SubscriptionIamMemberConditionOutput) ToSubscriptionIamMemberConditionOutputWithContext(ctx context.Context) SubscriptionIamMemberConditionOutput {
 	return o
 }
 
-func (o SubscriptionIAMMemberConditionOutput) ToSubscriptionIAMMemberConditionPtrOutput() SubscriptionIAMMemberConditionPtrOutput {
-	return o.ToSubscriptionIAMMemberConditionPtrOutputWithContext(context.Background())
+func (o SubscriptionIamMemberConditionOutput) ToSubscriptionIamMemberConditionPtrOutput() SubscriptionIamMemberConditionPtrOutput {
+	return o.ToSubscriptionIamMemberConditionPtrOutputWithContext(context.Background())
 }
 
-func (o SubscriptionIAMMemberConditionOutput) ToSubscriptionIAMMemberConditionPtrOutputWithContext(ctx context.Context) SubscriptionIAMMemberConditionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubscriptionIAMMemberCondition) *SubscriptionIAMMemberCondition {
+func (o SubscriptionIamMemberConditionOutput) ToSubscriptionIamMemberConditionPtrOutputWithContext(ctx context.Context) SubscriptionIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubscriptionIamMemberCondition) *SubscriptionIamMemberCondition {
 		return &v
-	}).(SubscriptionIAMMemberConditionPtrOutput)
+	}).(SubscriptionIamMemberConditionPtrOutput)
 }
 
-func (o SubscriptionIAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SubscriptionIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o SubscriptionIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubscriptionIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-func (o SubscriptionIAMMemberConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v SubscriptionIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o SubscriptionIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v SubscriptionIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
-func (o SubscriptionIAMMemberConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v SubscriptionIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o SubscriptionIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v SubscriptionIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type SubscriptionIAMMemberConditionPtrOutput struct{ *pulumi.OutputState }
+type SubscriptionIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
 
-func (SubscriptionIAMMemberConditionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SubscriptionIAMMemberCondition)(nil)).Elem()
+func (SubscriptionIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionIamMemberCondition)(nil)).Elem()
 }
 
-func (o SubscriptionIAMMemberConditionPtrOutput) ToSubscriptionIAMMemberConditionPtrOutput() SubscriptionIAMMemberConditionPtrOutput {
+func (o SubscriptionIamMemberConditionPtrOutput) ToSubscriptionIamMemberConditionPtrOutput() SubscriptionIamMemberConditionPtrOutput {
 	return o
 }
 
-func (o SubscriptionIAMMemberConditionPtrOutput) ToSubscriptionIAMMemberConditionPtrOutputWithContext(ctx context.Context) SubscriptionIAMMemberConditionPtrOutput {
+func (o SubscriptionIamMemberConditionPtrOutput) ToSubscriptionIamMemberConditionPtrOutputWithContext(ctx context.Context) SubscriptionIamMemberConditionPtrOutput {
 	return o
 }
 
-func (o SubscriptionIAMMemberConditionPtrOutput) Elem() SubscriptionIAMMemberConditionOutput {
-	return o.ApplyT(func(v *SubscriptionIAMMemberCondition) SubscriptionIAMMemberCondition {
+func (o SubscriptionIamMemberConditionPtrOutput) Elem() SubscriptionIamMemberConditionOutput {
+	return o.ApplyT(func(v *SubscriptionIamMemberCondition) SubscriptionIamMemberCondition {
 		if v != nil {
 			return *v
 		}
-		var ret SubscriptionIAMMemberCondition
+		var ret SubscriptionIamMemberCondition
 		return ret
-	}).(SubscriptionIAMMemberConditionOutput)
+	}).(SubscriptionIamMemberConditionOutput)
 }
 
-func (o SubscriptionIAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SubscriptionIAMMemberCondition) *string {
+func (o SubscriptionIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionIamMemberCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -2070,8 +2070,8 @@ func (o SubscriptionIAMMemberConditionPtrOutput) Description() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o SubscriptionIAMMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SubscriptionIAMMemberCondition) *string {
+func (o SubscriptionIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionIamMemberCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -2079,8 +2079,8 @@ func (o SubscriptionIAMMemberConditionPtrOutput) Expression() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o SubscriptionIAMMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SubscriptionIAMMemberCondition) *string {
+func (o SubscriptionIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionIamMemberCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -2871,144 +2871,144 @@ func (o SubscriptionRetryPolicyPtrOutput) MinimumBackoff() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-type TopicIAMBindingCondition struct {
+type TopicIamBindingCondition struct {
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
 	Title       string  `pulumi:"title"`
 }
 
-// TopicIAMBindingConditionInput is an input type that accepts TopicIAMBindingConditionArgs and TopicIAMBindingConditionOutput values.
-// You can construct a concrete instance of `TopicIAMBindingConditionInput` via:
+// TopicIamBindingConditionInput is an input type that accepts TopicIamBindingConditionArgs and TopicIamBindingConditionOutput values.
+// You can construct a concrete instance of `TopicIamBindingConditionInput` via:
 //
-//	TopicIAMBindingConditionArgs{...}
-type TopicIAMBindingConditionInput interface {
+//	TopicIamBindingConditionArgs{...}
+type TopicIamBindingConditionInput interface {
 	pulumi.Input
 
-	ToTopicIAMBindingConditionOutput() TopicIAMBindingConditionOutput
-	ToTopicIAMBindingConditionOutputWithContext(context.Context) TopicIAMBindingConditionOutput
+	ToTopicIamBindingConditionOutput() TopicIamBindingConditionOutput
+	ToTopicIamBindingConditionOutputWithContext(context.Context) TopicIamBindingConditionOutput
 }
 
-type TopicIAMBindingConditionArgs struct {
+type TopicIamBindingConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	Expression  pulumi.StringInput    `pulumi:"expression"`
 	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
-func (TopicIAMBindingConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TopicIAMBindingCondition)(nil)).Elem()
+func (TopicIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicIamBindingCondition)(nil)).Elem()
 }
 
-func (i TopicIAMBindingConditionArgs) ToTopicIAMBindingConditionOutput() TopicIAMBindingConditionOutput {
-	return i.ToTopicIAMBindingConditionOutputWithContext(context.Background())
+func (i TopicIamBindingConditionArgs) ToTopicIamBindingConditionOutput() TopicIamBindingConditionOutput {
+	return i.ToTopicIamBindingConditionOutputWithContext(context.Background())
 }
 
-func (i TopicIAMBindingConditionArgs) ToTopicIAMBindingConditionOutputWithContext(ctx context.Context) TopicIAMBindingConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicIAMBindingConditionOutput)
+func (i TopicIamBindingConditionArgs) ToTopicIamBindingConditionOutputWithContext(ctx context.Context) TopicIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIamBindingConditionOutput)
 }
 
-func (i TopicIAMBindingConditionArgs) ToTopicIAMBindingConditionPtrOutput() TopicIAMBindingConditionPtrOutput {
-	return i.ToTopicIAMBindingConditionPtrOutputWithContext(context.Background())
+func (i TopicIamBindingConditionArgs) ToTopicIamBindingConditionPtrOutput() TopicIamBindingConditionPtrOutput {
+	return i.ToTopicIamBindingConditionPtrOutputWithContext(context.Background())
 }
 
-func (i TopicIAMBindingConditionArgs) ToTopicIAMBindingConditionPtrOutputWithContext(ctx context.Context) TopicIAMBindingConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicIAMBindingConditionOutput).ToTopicIAMBindingConditionPtrOutputWithContext(ctx)
+func (i TopicIamBindingConditionArgs) ToTopicIamBindingConditionPtrOutputWithContext(ctx context.Context) TopicIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIamBindingConditionOutput).ToTopicIamBindingConditionPtrOutputWithContext(ctx)
 }
 
-// TopicIAMBindingConditionPtrInput is an input type that accepts TopicIAMBindingConditionArgs, TopicIAMBindingConditionPtr and TopicIAMBindingConditionPtrOutput values.
-// You can construct a concrete instance of `TopicIAMBindingConditionPtrInput` via:
+// TopicIamBindingConditionPtrInput is an input type that accepts TopicIamBindingConditionArgs, TopicIamBindingConditionPtr and TopicIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `TopicIamBindingConditionPtrInput` via:
 //
-//	        TopicIAMBindingConditionArgs{...}
+//	        TopicIamBindingConditionArgs{...}
 //
 //	or:
 //
 //	        nil
-type TopicIAMBindingConditionPtrInput interface {
+type TopicIamBindingConditionPtrInput interface {
 	pulumi.Input
 
-	ToTopicIAMBindingConditionPtrOutput() TopicIAMBindingConditionPtrOutput
-	ToTopicIAMBindingConditionPtrOutputWithContext(context.Context) TopicIAMBindingConditionPtrOutput
+	ToTopicIamBindingConditionPtrOutput() TopicIamBindingConditionPtrOutput
+	ToTopicIamBindingConditionPtrOutputWithContext(context.Context) TopicIamBindingConditionPtrOutput
 }
 
-type topicIAMBindingConditionPtrType TopicIAMBindingConditionArgs
+type topicIamBindingConditionPtrType TopicIamBindingConditionArgs
 
-func TopicIAMBindingConditionPtr(v *TopicIAMBindingConditionArgs) TopicIAMBindingConditionPtrInput {
-	return (*topicIAMBindingConditionPtrType)(v)
+func TopicIamBindingConditionPtr(v *TopicIamBindingConditionArgs) TopicIamBindingConditionPtrInput {
+	return (*topicIamBindingConditionPtrType)(v)
 }
 
-func (*topicIAMBindingConditionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TopicIAMBindingCondition)(nil)).Elem()
+func (*topicIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicIamBindingCondition)(nil)).Elem()
 }
 
-func (i *topicIAMBindingConditionPtrType) ToTopicIAMBindingConditionPtrOutput() TopicIAMBindingConditionPtrOutput {
-	return i.ToTopicIAMBindingConditionPtrOutputWithContext(context.Background())
+func (i *topicIamBindingConditionPtrType) ToTopicIamBindingConditionPtrOutput() TopicIamBindingConditionPtrOutput {
+	return i.ToTopicIamBindingConditionPtrOutputWithContext(context.Background())
 }
 
-func (i *topicIAMBindingConditionPtrType) ToTopicIAMBindingConditionPtrOutputWithContext(ctx context.Context) TopicIAMBindingConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicIAMBindingConditionPtrOutput)
+func (i *topicIamBindingConditionPtrType) ToTopicIamBindingConditionPtrOutputWithContext(ctx context.Context) TopicIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIamBindingConditionPtrOutput)
 }
 
-type TopicIAMBindingConditionOutput struct{ *pulumi.OutputState }
+type TopicIamBindingConditionOutput struct{ *pulumi.OutputState }
 
-func (TopicIAMBindingConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TopicIAMBindingCondition)(nil)).Elem()
+func (TopicIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicIamBindingCondition)(nil)).Elem()
 }
 
-func (o TopicIAMBindingConditionOutput) ToTopicIAMBindingConditionOutput() TopicIAMBindingConditionOutput {
+func (o TopicIamBindingConditionOutput) ToTopicIamBindingConditionOutput() TopicIamBindingConditionOutput {
 	return o
 }
 
-func (o TopicIAMBindingConditionOutput) ToTopicIAMBindingConditionOutputWithContext(ctx context.Context) TopicIAMBindingConditionOutput {
+func (o TopicIamBindingConditionOutput) ToTopicIamBindingConditionOutputWithContext(ctx context.Context) TopicIamBindingConditionOutput {
 	return o
 }
 
-func (o TopicIAMBindingConditionOutput) ToTopicIAMBindingConditionPtrOutput() TopicIAMBindingConditionPtrOutput {
-	return o.ToTopicIAMBindingConditionPtrOutputWithContext(context.Background())
+func (o TopicIamBindingConditionOutput) ToTopicIamBindingConditionPtrOutput() TopicIamBindingConditionPtrOutput {
+	return o.ToTopicIamBindingConditionPtrOutputWithContext(context.Background())
 }
 
-func (o TopicIAMBindingConditionOutput) ToTopicIAMBindingConditionPtrOutputWithContext(ctx context.Context) TopicIAMBindingConditionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TopicIAMBindingCondition) *TopicIAMBindingCondition {
+func (o TopicIamBindingConditionOutput) ToTopicIamBindingConditionPtrOutputWithContext(ctx context.Context) TopicIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TopicIamBindingCondition) *TopicIamBindingCondition {
 		return &v
-	}).(TopicIAMBindingConditionPtrOutput)
+	}).(TopicIamBindingConditionPtrOutput)
 }
 
-func (o TopicIAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TopicIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o TopicIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TopicIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-func (o TopicIAMBindingConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v TopicIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o TopicIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v TopicIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
-func (o TopicIAMBindingConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v TopicIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o TopicIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v TopicIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type TopicIAMBindingConditionPtrOutput struct{ *pulumi.OutputState }
+type TopicIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
 
-func (TopicIAMBindingConditionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TopicIAMBindingCondition)(nil)).Elem()
+func (TopicIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicIamBindingCondition)(nil)).Elem()
 }
 
-func (o TopicIAMBindingConditionPtrOutput) ToTopicIAMBindingConditionPtrOutput() TopicIAMBindingConditionPtrOutput {
+func (o TopicIamBindingConditionPtrOutput) ToTopicIamBindingConditionPtrOutput() TopicIamBindingConditionPtrOutput {
 	return o
 }
 
-func (o TopicIAMBindingConditionPtrOutput) ToTopicIAMBindingConditionPtrOutputWithContext(ctx context.Context) TopicIAMBindingConditionPtrOutput {
+func (o TopicIamBindingConditionPtrOutput) ToTopicIamBindingConditionPtrOutputWithContext(ctx context.Context) TopicIamBindingConditionPtrOutput {
 	return o
 }
 
-func (o TopicIAMBindingConditionPtrOutput) Elem() TopicIAMBindingConditionOutput {
-	return o.ApplyT(func(v *TopicIAMBindingCondition) TopicIAMBindingCondition {
+func (o TopicIamBindingConditionPtrOutput) Elem() TopicIamBindingConditionOutput {
+	return o.ApplyT(func(v *TopicIamBindingCondition) TopicIamBindingCondition {
 		if v != nil {
 			return *v
 		}
-		var ret TopicIAMBindingCondition
+		var ret TopicIamBindingCondition
 		return ret
-	}).(TopicIAMBindingConditionOutput)
+	}).(TopicIamBindingConditionOutput)
 }
 
-func (o TopicIAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TopicIAMBindingCondition) *string {
+func (o TopicIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicIamBindingCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -3016,8 +3016,8 @@ func (o TopicIAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o TopicIAMBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TopicIAMBindingCondition) *string {
+func (o TopicIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicIamBindingCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -3025,8 +3025,8 @@ func (o TopicIAMBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o TopicIAMBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TopicIAMBindingCondition) *string {
+func (o TopicIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicIamBindingCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -3034,144 +3034,144 @@ func (o TopicIAMBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type TopicIAMMemberCondition struct {
+type TopicIamMemberCondition struct {
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
 	Title       string  `pulumi:"title"`
 }
 
-// TopicIAMMemberConditionInput is an input type that accepts TopicIAMMemberConditionArgs and TopicIAMMemberConditionOutput values.
-// You can construct a concrete instance of `TopicIAMMemberConditionInput` via:
+// TopicIamMemberConditionInput is an input type that accepts TopicIamMemberConditionArgs and TopicIamMemberConditionOutput values.
+// You can construct a concrete instance of `TopicIamMemberConditionInput` via:
 //
-//	TopicIAMMemberConditionArgs{...}
-type TopicIAMMemberConditionInput interface {
+//	TopicIamMemberConditionArgs{...}
+type TopicIamMemberConditionInput interface {
 	pulumi.Input
 
-	ToTopicIAMMemberConditionOutput() TopicIAMMemberConditionOutput
-	ToTopicIAMMemberConditionOutputWithContext(context.Context) TopicIAMMemberConditionOutput
+	ToTopicIamMemberConditionOutput() TopicIamMemberConditionOutput
+	ToTopicIamMemberConditionOutputWithContext(context.Context) TopicIamMemberConditionOutput
 }
 
-type TopicIAMMemberConditionArgs struct {
+type TopicIamMemberConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	Expression  pulumi.StringInput    `pulumi:"expression"`
 	Title       pulumi.StringInput    `pulumi:"title"`
 }
 
-func (TopicIAMMemberConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TopicIAMMemberCondition)(nil)).Elem()
+func (TopicIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicIamMemberCondition)(nil)).Elem()
 }
 
-func (i TopicIAMMemberConditionArgs) ToTopicIAMMemberConditionOutput() TopicIAMMemberConditionOutput {
-	return i.ToTopicIAMMemberConditionOutputWithContext(context.Background())
+func (i TopicIamMemberConditionArgs) ToTopicIamMemberConditionOutput() TopicIamMemberConditionOutput {
+	return i.ToTopicIamMemberConditionOutputWithContext(context.Background())
 }
 
-func (i TopicIAMMemberConditionArgs) ToTopicIAMMemberConditionOutputWithContext(ctx context.Context) TopicIAMMemberConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicIAMMemberConditionOutput)
+func (i TopicIamMemberConditionArgs) ToTopicIamMemberConditionOutputWithContext(ctx context.Context) TopicIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIamMemberConditionOutput)
 }
 
-func (i TopicIAMMemberConditionArgs) ToTopicIAMMemberConditionPtrOutput() TopicIAMMemberConditionPtrOutput {
-	return i.ToTopicIAMMemberConditionPtrOutputWithContext(context.Background())
+func (i TopicIamMemberConditionArgs) ToTopicIamMemberConditionPtrOutput() TopicIamMemberConditionPtrOutput {
+	return i.ToTopicIamMemberConditionPtrOutputWithContext(context.Background())
 }
 
-func (i TopicIAMMemberConditionArgs) ToTopicIAMMemberConditionPtrOutputWithContext(ctx context.Context) TopicIAMMemberConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicIAMMemberConditionOutput).ToTopicIAMMemberConditionPtrOutputWithContext(ctx)
+func (i TopicIamMemberConditionArgs) ToTopicIamMemberConditionPtrOutputWithContext(ctx context.Context) TopicIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIamMemberConditionOutput).ToTopicIamMemberConditionPtrOutputWithContext(ctx)
 }
 
-// TopicIAMMemberConditionPtrInput is an input type that accepts TopicIAMMemberConditionArgs, TopicIAMMemberConditionPtr and TopicIAMMemberConditionPtrOutput values.
-// You can construct a concrete instance of `TopicIAMMemberConditionPtrInput` via:
+// TopicIamMemberConditionPtrInput is an input type that accepts TopicIamMemberConditionArgs, TopicIamMemberConditionPtr and TopicIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `TopicIamMemberConditionPtrInput` via:
 //
-//	        TopicIAMMemberConditionArgs{...}
+//	        TopicIamMemberConditionArgs{...}
 //
 //	or:
 //
 //	        nil
-type TopicIAMMemberConditionPtrInput interface {
+type TopicIamMemberConditionPtrInput interface {
 	pulumi.Input
 
-	ToTopicIAMMemberConditionPtrOutput() TopicIAMMemberConditionPtrOutput
-	ToTopicIAMMemberConditionPtrOutputWithContext(context.Context) TopicIAMMemberConditionPtrOutput
+	ToTopicIamMemberConditionPtrOutput() TopicIamMemberConditionPtrOutput
+	ToTopicIamMemberConditionPtrOutputWithContext(context.Context) TopicIamMemberConditionPtrOutput
 }
 
-type topicIAMMemberConditionPtrType TopicIAMMemberConditionArgs
+type topicIamMemberConditionPtrType TopicIamMemberConditionArgs
 
-func TopicIAMMemberConditionPtr(v *TopicIAMMemberConditionArgs) TopicIAMMemberConditionPtrInput {
-	return (*topicIAMMemberConditionPtrType)(v)
+func TopicIamMemberConditionPtr(v *TopicIamMemberConditionArgs) TopicIamMemberConditionPtrInput {
+	return (*topicIamMemberConditionPtrType)(v)
 }
 
-func (*topicIAMMemberConditionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TopicIAMMemberCondition)(nil)).Elem()
+func (*topicIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicIamMemberCondition)(nil)).Elem()
 }
 
-func (i *topicIAMMemberConditionPtrType) ToTopicIAMMemberConditionPtrOutput() TopicIAMMemberConditionPtrOutput {
-	return i.ToTopicIAMMemberConditionPtrOutputWithContext(context.Background())
+func (i *topicIamMemberConditionPtrType) ToTopicIamMemberConditionPtrOutput() TopicIamMemberConditionPtrOutput {
+	return i.ToTopicIamMemberConditionPtrOutputWithContext(context.Background())
 }
 
-func (i *topicIAMMemberConditionPtrType) ToTopicIAMMemberConditionPtrOutputWithContext(ctx context.Context) TopicIAMMemberConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicIAMMemberConditionPtrOutput)
+func (i *topicIamMemberConditionPtrType) ToTopicIamMemberConditionPtrOutputWithContext(ctx context.Context) TopicIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIamMemberConditionPtrOutput)
 }
 
-type TopicIAMMemberConditionOutput struct{ *pulumi.OutputState }
+type TopicIamMemberConditionOutput struct{ *pulumi.OutputState }
 
-func (TopicIAMMemberConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TopicIAMMemberCondition)(nil)).Elem()
+func (TopicIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicIamMemberCondition)(nil)).Elem()
 }
 
-func (o TopicIAMMemberConditionOutput) ToTopicIAMMemberConditionOutput() TopicIAMMemberConditionOutput {
+func (o TopicIamMemberConditionOutput) ToTopicIamMemberConditionOutput() TopicIamMemberConditionOutput {
 	return o
 }
 
-func (o TopicIAMMemberConditionOutput) ToTopicIAMMemberConditionOutputWithContext(ctx context.Context) TopicIAMMemberConditionOutput {
+func (o TopicIamMemberConditionOutput) ToTopicIamMemberConditionOutputWithContext(ctx context.Context) TopicIamMemberConditionOutput {
 	return o
 }
 
-func (o TopicIAMMemberConditionOutput) ToTopicIAMMemberConditionPtrOutput() TopicIAMMemberConditionPtrOutput {
-	return o.ToTopicIAMMemberConditionPtrOutputWithContext(context.Background())
+func (o TopicIamMemberConditionOutput) ToTopicIamMemberConditionPtrOutput() TopicIamMemberConditionPtrOutput {
+	return o.ToTopicIamMemberConditionPtrOutputWithContext(context.Background())
 }
 
-func (o TopicIAMMemberConditionOutput) ToTopicIAMMemberConditionPtrOutputWithContext(ctx context.Context) TopicIAMMemberConditionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TopicIAMMemberCondition) *TopicIAMMemberCondition {
+func (o TopicIamMemberConditionOutput) ToTopicIamMemberConditionPtrOutputWithContext(ctx context.Context) TopicIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TopicIamMemberCondition) *TopicIamMemberCondition {
 		return &v
-	}).(TopicIAMMemberConditionPtrOutput)
+	}).(TopicIamMemberConditionPtrOutput)
 }
 
-func (o TopicIAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TopicIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o TopicIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TopicIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-func (o TopicIAMMemberConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v TopicIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o TopicIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v TopicIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
-func (o TopicIAMMemberConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v TopicIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o TopicIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v TopicIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type TopicIAMMemberConditionPtrOutput struct{ *pulumi.OutputState }
+type TopicIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
 
-func (TopicIAMMemberConditionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TopicIAMMemberCondition)(nil)).Elem()
+func (TopicIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicIamMemberCondition)(nil)).Elem()
 }
 
-func (o TopicIAMMemberConditionPtrOutput) ToTopicIAMMemberConditionPtrOutput() TopicIAMMemberConditionPtrOutput {
+func (o TopicIamMemberConditionPtrOutput) ToTopicIamMemberConditionPtrOutput() TopicIamMemberConditionPtrOutput {
 	return o
 }
 
-func (o TopicIAMMemberConditionPtrOutput) ToTopicIAMMemberConditionPtrOutputWithContext(ctx context.Context) TopicIAMMemberConditionPtrOutput {
+func (o TopicIamMemberConditionPtrOutput) ToTopicIamMemberConditionPtrOutputWithContext(ctx context.Context) TopicIamMemberConditionPtrOutput {
 	return o
 }
 
-func (o TopicIAMMemberConditionPtrOutput) Elem() TopicIAMMemberConditionOutput {
-	return o.ApplyT(func(v *TopicIAMMemberCondition) TopicIAMMemberCondition {
+func (o TopicIamMemberConditionPtrOutput) Elem() TopicIamMemberConditionOutput {
+	return o.ApplyT(func(v *TopicIamMemberCondition) TopicIamMemberCondition {
 		if v != nil {
 			return *v
 		}
-		var ret TopicIAMMemberCondition
+		var ret TopicIamMemberCondition
 		return ret
-	}).(TopicIAMMemberConditionOutput)
+	}).(TopicIamMemberConditionOutput)
 }
 
-func (o TopicIAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TopicIAMMemberCondition) *string {
+func (o TopicIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicIamMemberCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -3179,8 +3179,8 @@ func (o TopicIAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o TopicIAMMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TopicIAMMemberCondition) *string {
+func (o TopicIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicIamMemberCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -3188,8 +3188,8 @@ func (o TopicIAMMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-func (o TopicIAMMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TopicIAMMemberCondition) *string {
+func (o TopicIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicIamMemberCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -4683,10 +4683,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionDeadLetterPolicyPtrInput)(nil)).Elem(), SubscriptionDeadLetterPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionExpirationPolicyInput)(nil)).Elem(), SubscriptionExpirationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionExpirationPolicyPtrInput)(nil)).Elem(), SubscriptionExpirationPolicyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionIAMBindingConditionInput)(nil)).Elem(), SubscriptionIAMBindingConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionIAMBindingConditionPtrInput)(nil)).Elem(), SubscriptionIAMBindingConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionIAMMemberConditionInput)(nil)).Elem(), SubscriptionIAMMemberConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionIAMMemberConditionPtrInput)(nil)).Elem(), SubscriptionIAMMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionIamBindingConditionInput)(nil)).Elem(), SubscriptionIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionIamBindingConditionPtrInput)(nil)).Elem(), SubscriptionIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionIamMemberConditionInput)(nil)).Elem(), SubscriptionIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionIamMemberConditionPtrInput)(nil)).Elem(), SubscriptionIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionPushConfigInput)(nil)).Elem(), SubscriptionPushConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionPushConfigPtrInput)(nil)).Elem(), SubscriptionPushConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionPushConfigNoWrapperInput)(nil)).Elem(), SubscriptionPushConfigNoWrapperArgs{})
@@ -4695,10 +4695,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionPushConfigOidcTokenPtrInput)(nil)).Elem(), SubscriptionPushConfigOidcTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionRetryPolicyInput)(nil)).Elem(), SubscriptionRetryPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionRetryPolicyPtrInput)(nil)).Elem(), SubscriptionRetryPolicyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TopicIAMBindingConditionInput)(nil)).Elem(), TopicIAMBindingConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TopicIAMBindingConditionPtrInput)(nil)).Elem(), TopicIAMBindingConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TopicIAMMemberConditionInput)(nil)).Elem(), TopicIAMMemberConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TopicIAMMemberConditionPtrInput)(nil)).Elem(), TopicIAMMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicIamBindingConditionInput)(nil)).Elem(), TopicIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicIamBindingConditionPtrInput)(nil)).Elem(), TopicIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicIamMemberConditionInput)(nil)).Elem(), TopicIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicIamMemberConditionPtrInput)(nil)).Elem(), TopicIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicMessageStoragePolicyInput)(nil)).Elem(), TopicMessageStoragePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicMessageStoragePolicyPtrInput)(nil)).Elem(), TopicMessageStoragePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicSchemaSettingsInput)(nil)).Elem(), TopicSchemaSettingsArgs{})
@@ -4745,10 +4745,10 @@ func init() {
 	pulumi.RegisterOutputType(SubscriptionDeadLetterPolicyPtrOutput{})
 	pulumi.RegisterOutputType(SubscriptionExpirationPolicyOutput{})
 	pulumi.RegisterOutputType(SubscriptionExpirationPolicyPtrOutput{})
-	pulumi.RegisterOutputType(SubscriptionIAMBindingConditionOutput{})
-	pulumi.RegisterOutputType(SubscriptionIAMBindingConditionPtrOutput{})
-	pulumi.RegisterOutputType(SubscriptionIAMMemberConditionOutput{})
-	pulumi.RegisterOutputType(SubscriptionIAMMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(SubscriptionIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(SubscriptionIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(SubscriptionIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(SubscriptionIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(SubscriptionPushConfigOutput{})
 	pulumi.RegisterOutputType(SubscriptionPushConfigPtrOutput{})
 	pulumi.RegisterOutputType(SubscriptionPushConfigNoWrapperOutput{})
@@ -4757,10 +4757,10 @@ func init() {
 	pulumi.RegisterOutputType(SubscriptionPushConfigOidcTokenPtrOutput{})
 	pulumi.RegisterOutputType(SubscriptionRetryPolicyOutput{})
 	pulumi.RegisterOutputType(SubscriptionRetryPolicyPtrOutput{})
-	pulumi.RegisterOutputType(TopicIAMBindingConditionOutput{})
-	pulumi.RegisterOutputType(TopicIAMBindingConditionPtrOutput{})
-	pulumi.RegisterOutputType(TopicIAMMemberConditionOutput{})
-	pulumi.RegisterOutputType(TopicIAMMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(TopicIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(TopicIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(TopicIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(TopicIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(TopicMessageStoragePolicyOutput{})
 	pulumi.RegisterOutputType(TopicMessageStoragePolicyPtrOutput{})
 	pulumi.RegisterOutputType(TopicSchemaSettingsOutput{})

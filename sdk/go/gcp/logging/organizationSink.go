@@ -52,7 +52,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewIAMMember(ctx, "log-writer", &projects.IAMMemberArgs{
+//			_, err = projects.NewIamMember(ctx, "log-writer", &projects.IamMemberArgs{
 //				Project: pulumi.String("your-project-id"),
 //				Role:    pulumi.String("roles/storage.objectCreator"),
 //				Member:  my_sink.WriterIdentity,

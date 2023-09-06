@@ -161,360 +161,6 @@ func (o AccessApprovalSettingsEnrolledServiceArrayOutput) Index(i pulumi.IntInpu
 	}).(AccessApprovalSettingsEnrolledServiceOutput)
 }
 
-type IAMBindingCondition struct {
-	Description *string `pulumi:"description"`
-	Expression  string  `pulumi:"expression"`
-	Title       string  `pulumi:"title"`
-}
-
-// IAMBindingConditionInput is an input type that accepts IAMBindingConditionArgs and IAMBindingConditionOutput values.
-// You can construct a concrete instance of `IAMBindingConditionInput` via:
-//
-//	IAMBindingConditionArgs{...}
-type IAMBindingConditionInput interface {
-	pulumi.Input
-
-	ToIAMBindingConditionOutput() IAMBindingConditionOutput
-	ToIAMBindingConditionOutputWithContext(context.Context) IAMBindingConditionOutput
-}
-
-type IAMBindingConditionArgs struct {
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression  pulumi.StringInput    `pulumi:"expression"`
-	Title       pulumi.StringInput    `pulumi:"title"`
-}
-
-func (IAMBindingConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IAMBindingCondition)(nil)).Elem()
-}
-
-func (i IAMBindingConditionArgs) ToIAMBindingConditionOutput() IAMBindingConditionOutput {
-	return i.ToIAMBindingConditionOutputWithContext(context.Background())
-}
-
-func (i IAMBindingConditionArgs) ToIAMBindingConditionOutputWithContext(ctx context.Context) IAMBindingConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMBindingConditionOutput)
-}
-
-func (i IAMBindingConditionArgs) ToIAMBindingConditionPtrOutput() IAMBindingConditionPtrOutput {
-	return i.ToIAMBindingConditionPtrOutputWithContext(context.Background())
-}
-
-func (i IAMBindingConditionArgs) ToIAMBindingConditionPtrOutputWithContext(ctx context.Context) IAMBindingConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMBindingConditionOutput).ToIAMBindingConditionPtrOutputWithContext(ctx)
-}
-
-// IAMBindingConditionPtrInput is an input type that accepts IAMBindingConditionArgs, IAMBindingConditionPtr and IAMBindingConditionPtrOutput values.
-// You can construct a concrete instance of `IAMBindingConditionPtrInput` via:
-//
-//	        IAMBindingConditionArgs{...}
-//
-//	or:
-//
-//	        nil
-type IAMBindingConditionPtrInput interface {
-	pulumi.Input
-
-	ToIAMBindingConditionPtrOutput() IAMBindingConditionPtrOutput
-	ToIAMBindingConditionPtrOutputWithContext(context.Context) IAMBindingConditionPtrOutput
-}
-
-type iambindingConditionPtrType IAMBindingConditionArgs
-
-func IAMBindingConditionPtr(v *IAMBindingConditionArgs) IAMBindingConditionPtrInput {
-	return (*iambindingConditionPtrType)(v)
-}
-
-func (*iambindingConditionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**IAMBindingCondition)(nil)).Elem()
-}
-
-func (i *iambindingConditionPtrType) ToIAMBindingConditionPtrOutput() IAMBindingConditionPtrOutput {
-	return i.ToIAMBindingConditionPtrOutputWithContext(context.Background())
-}
-
-func (i *iambindingConditionPtrType) ToIAMBindingConditionPtrOutputWithContext(ctx context.Context) IAMBindingConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMBindingConditionPtrOutput)
-}
-
-type IAMBindingConditionOutput struct{ *pulumi.OutputState }
-
-func (IAMBindingConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IAMBindingCondition)(nil)).Elem()
-}
-
-func (o IAMBindingConditionOutput) ToIAMBindingConditionOutput() IAMBindingConditionOutput {
-	return o
-}
-
-func (o IAMBindingConditionOutput) ToIAMBindingConditionOutputWithContext(ctx context.Context) IAMBindingConditionOutput {
-	return o
-}
-
-func (o IAMBindingConditionOutput) ToIAMBindingConditionPtrOutput() IAMBindingConditionPtrOutput {
-	return o.ToIAMBindingConditionPtrOutputWithContext(context.Background())
-}
-
-func (o IAMBindingConditionOutput) ToIAMBindingConditionPtrOutputWithContext(ctx context.Context) IAMBindingConditionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v IAMBindingCondition) *IAMBindingCondition {
-		return &v
-	}).(IAMBindingConditionPtrOutput)
-}
-
-func (o IAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-func (o IAMBindingConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v IAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
-}
-
-func (o IAMBindingConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v IAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
-}
-
-type IAMBindingConditionPtrOutput struct{ *pulumi.OutputState }
-
-func (IAMBindingConditionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IAMBindingCondition)(nil)).Elem()
-}
-
-func (o IAMBindingConditionPtrOutput) ToIAMBindingConditionPtrOutput() IAMBindingConditionPtrOutput {
-	return o
-}
-
-func (o IAMBindingConditionPtrOutput) ToIAMBindingConditionPtrOutputWithContext(ctx context.Context) IAMBindingConditionPtrOutput {
-	return o
-}
-
-func (o IAMBindingConditionPtrOutput) Elem() IAMBindingConditionOutput {
-	return o.ApplyT(func(v *IAMBindingCondition) IAMBindingCondition {
-		if v != nil {
-			return *v
-		}
-		var ret IAMBindingCondition
-		return ret
-	}).(IAMBindingConditionOutput)
-}
-
-func (o IAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IAMBindingCondition) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o IAMBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IAMBindingCondition) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Expression
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o IAMBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IAMBindingCondition) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Title
-	}).(pulumi.StringPtrOutput)
-}
-
-type IAMMemberCondition struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-	// consider it to be an entirely different resource and will treat it as such.
-	Description *string `pulumi:"description"`
-	// Textual representation of an expression in Common Expression Language syntax.
-	Expression string `pulumi:"expression"`
-	// A title for the expression, i.e. a short string describing its purpose.
-	Title string `pulumi:"title"`
-}
-
-// IAMMemberConditionInput is an input type that accepts IAMMemberConditionArgs and IAMMemberConditionOutput values.
-// You can construct a concrete instance of `IAMMemberConditionInput` via:
-//
-//	IAMMemberConditionArgs{...}
-type IAMMemberConditionInput interface {
-	pulumi.Input
-
-	ToIAMMemberConditionOutput() IAMMemberConditionOutput
-	ToIAMMemberConditionOutputWithContext(context.Context) IAMMemberConditionOutput
-}
-
-type IAMMemberConditionArgs struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	//
-	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-	// consider it to be an entirely different resource and will treat it as such.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Textual representation of an expression in Common Expression Language syntax.
-	Expression pulumi.StringInput `pulumi:"expression"`
-	// A title for the expression, i.e. a short string describing its purpose.
-	Title pulumi.StringInput `pulumi:"title"`
-}
-
-func (IAMMemberConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*IAMMemberCondition)(nil)).Elem()
-}
-
-func (i IAMMemberConditionArgs) ToIAMMemberConditionOutput() IAMMemberConditionOutput {
-	return i.ToIAMMemberConditionOutputWithContext(context.Background())
-}
-
-func (i IAMMemberConditionArgs) ToIAMMemberConditionOutputWithContext(ctx context.Context) IAMMemberConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMMemberConditionOutput)
-}
-
-func (i IAMMemberConditionArgs) ToIAMMemberConditionPtrOutput() IAMMemberConditionPtrOutput {
-	return i.ToIAMMemberConditionPtrOutputWithContext(context.Background())
-}
-
-func (i IAMMemberConditionArgs) ToIAMMemberConditionPtrOutputWithContext(ctx context.Context) IAMMemberConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMMemberConditionOutput).ToIAMMemberConditionPtrOutputWithContext(ctx)
-}
-
-// IAMMemberConditionPtrInput is an input type that accepts IAMMemberConditionArgs, IAMMemberConditionPtr and IAMMemberConditionPtrOutput values.
-// You can construct a concrete instance of `IAMMemberConditionPtrInput` via:
-//
-//	        IAMMemberConditionArgs{...}
-//
-//	or:
-//
-//	        nil
-type IAMMemberConditionPtrInput interface {
-	pulumi.Input
-
-	ToIAMMemberConditionPtrOutput() IAMMemberConditionPtrOutput
-	ToIAMMemberConditionPtrOutputWithContext(context.Context) IAMMemberConditionPtrOutput
-}
-
-type iammemberConditionPtrType IAMMemberConditionArgs
-
-func IAMMemberConditionPtr(v *IAMMemberConditionArgs) IAMMemberConditionPtrInput {
-	return (*iammemberConditionPtrType)(v)
-}
-
-func (*iammemberConditionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**IAMMemberCondition)(nil)).Elem()
-}
-
-func (i *iammemberConditionPtrType) ToIAMMemberConditionPtrOutput() IAMMemberConditionPtrOutput {
-	return i.ToIAMMemberConditionPtrOutputWithContext(context.Background())
-}
-
-func (i *iammemberConditionPtrType) ToIAMMemberConditionPtrOutputWithContext(ctx context.Context) IAMMemberConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMMemberConditionPtrOutput)
-}
-
-type IAMMemberConditionOutput struct{ *pulumi.OutputState }
-
-func (IAMMemberConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IAMMemberCondition)(nil)).Elem()
-}
-
-func (o IAMMemberConditionOutput) ToIAMMemberConditionOutput() IAMMemberConditionOutput {
-	return o
-}
-
-func (o IAMMemberConditionOutput) ToIAMMemberConditionOutputWithContext(ctx context.Context) IAMMemberConditionOutput {
-	return o
-}
-
-func (o IAMMemberConditionOutput) ToIAMMemberConditionPtrOutput() IAMMemberConditionPtrOutput {
-	return o.ToIAMMemberConditionPtrOutputWithContext(context.Background())
-}
-
-func (o IAMMemberConditionOutput) ToIAMMemberConditionPtrOutputWithContext(ctx context.Context) IAMMemberConditionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v IAMMemberCondition) *IAMMemberCondition {
-		return &v
-	}).(IAMMemberConditionPtrOutput)
-}
-
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-// consider it to be an entirely different resource and will treat it as such.
-func (o IAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Textual representation of an expression in Common Expression Language syntax.
-func (o IAMMemberConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v IAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
-}
-
-// A title for the expression, i.e. a short string describing its purpose.
-func (o IAMMemberConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v IAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
-}
-
-type IAMMemberConditionPtrOutput struct{ *pulumi.OutputState }
-
-func (IAMMemberConditionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IAMMemberCondition)(nil)).Elem()
-}
-
-func (o IAMMemberConditionPtrOutput) ToIAMMemberConditionPtrOutput() IAMMemberConditionPtrOutput {
-	return o
-}
-
-func (o IAMMemberConditionPtrOutput) ToIAMMemberConditionPtrOutputWithContext(ctx context.Context) IAMMemberConditionPtrOutput {
-	return o
-}
-
-func (o IAMMemberConditionPtrOutput) Elem() IAMMemberConditionOutput {
-	return o.ApplyT(func(v *IAMMemberCondition) IAMMemberCondition {
-		if v != nil {
-			return *v
-		}
-		var ret IAMMemberCondition
-		return ret
-	}).(IAMMemberConditionOutput)
-}
-
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-//
-// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
-// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
-// consider it to be an entirely different resource and will treat it as such.
-func (o IAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IAMMemberCondition) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-// Textual representation of an expression in Common Expression Language syntax.
-func (o IAMMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IAMMemberCondition) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Expression
-	}).(pulumi.StringPtrOutput)
-}
-
-// A title for the expression, i.e. a short string describing its purpose.
-func (o IAMMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IAMMemberCondition) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Title
-	}).(pulumi.StringPtrOutput)
-}
-
 type IamAuditConfigAuditLogConfig struct {
 	// Identities that do not cause logging for this type of permission.
 	// Each entry can have one of the following values:
@@ -634,6 +280,360 @@ func (o IamAuditConfigAuditLogConfigArrayOutput) Index(i pulumi.IntInput) IamAud
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IamAuditConfigAuditLogConfig {
 		return vs[0].([]IamAuditConfigAuditLogConfig)[vs[1].(int)]
 	}).(IamAuditConfigAuditLogConfigOutput)
+}
+
+type IamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// IamBindingConditionInput is an input type that accepts IamBindingConditionArgs and IamBindingConditionOutput values.
+// You can construct a concrete instance of `IamBindingConditionInput` via:
+//
+//	IamBindingConditionArgs{...}
+type IamBindingConditionInput interface {
+	pulumi.Input
+
+	ToIamBindingConditionOutput() IamBindingConditionOutput
+	ToIamBindingConditionOutputWithContext(context.Context) IamBindingConditionOutput
+}
+
+type IamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (IamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IamBindingCondition)(nil)).Elem()
+}
+
+func (i IamBindingConditionArgs) ToIamBindingConditionOutput() IamBindingConditionOutput {
+	return i.ToIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i IamBindingConditionArgs) ToIamBindingConditionOutputWithContext(ctx context.Context) IamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamBindingConditionOutput)
+}
+
+func (i IamBindingConditionArgs) ToIamBindingConditionPtrOutput() IamBindingConditionPtrOutput {
+	return i.ToIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i IamBindingConditionArgs) ToIamBindingConditionPtrOutputWithContext(ctx context.Context) IamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamBindingConditionOutput).ToIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// IamBindingConditionPtrInput is an input type that accepts IamBindingConditionArgs, IamBindingConditionPtr and IamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `IamBindingConditionPtrInput` via:
+//
+//	        IamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type IamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToIamBindingConditionPtrOutput() IamBindingConditionPtrOutput
+	ToIamBindingConditionPtrOutputWithContext(context.Context) IamBindingConditionPtrOutput
+}
+
+type iamBindingConditionPtrType IamBindingConditionArgs
+
+func IamBindingConditionPtr(v *IamBindingConditionArgs) IamBindingConditionPtrInput {
+	return (*iamBindingConditionPtrType)(v)
+}
+
+func (*iamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IamBindingCondition)(nil)).Elem()
+}
+
+func (i *iamBindingConditionPtrType) ToIamBindingConditionPtrOutput() IamBindingConditionPtrOutput {
+	return i.ToIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *iamBindingConditionPtrType) ToIamBindingConditionPtrOutputWithContext(ctx context.Context) IamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamBindingConditionPtrOutput)
+}
+
+type IamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (IamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IamBindingCondition)(nil)).Elem()
+}
+
+func (o IamBindingConditionOutput) ToIamBindingConditionOutput() IamBindingConditionOutput {
+	return o
+}
+
+func (o IamBindingConditionOutput) ToIamBindingConditionOutputWithContext(ctx context.Context) IamBindingConditionOutput {
+	return o
+}
+
+func (o IamBindingConditionOutput) ToIamBindingConditionPtrOutput() IamBindingConditionPtrOutput {
+	return o.ToIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o IamBindingConditionOutput) ToIamBindingConditionPtrOutputWithContext(ctx context.Context) IamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IamBindingCondition) *IamBindingCondition {
+		return &v
+	}).(IamBindingConditionPtrOutput)
+}
+
+func (o IamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o IamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v IamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o IamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v IamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type IamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (IamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IamBindingCondition)(nil)).Elem()
+}
+
+func (o IamBindingConditionPtrOutput) ToIamBindingConditionPtrOutput() IamBindingConditionPtrOutput {
+	return o
+}
+
+func (o IamBindingConditionPtrOutput) ToIamBindingConditionPtrOutputWithContext(ctx context.Context) IamBindingConditionPtrOutput {
+	return o
+}
+
+func (o IamBindingConditionPtrOutput) Elem() IamBindingConditionOutput {
+	return o.ApplyT(func(v *IamBindingCondition) IamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret IamBindingCondition
+		return ret
+	}).(IamBindingConditionOutput)
+}
+
+func (o IamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o IamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o IamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type IamMemberCondition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+	// consider it to be an entirely different resource and will treat it as such.
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
+}
+
+// IamMemberConditionInput is an input type that accepts IamMemberConditionArgs and IamMemberConditionOutput values.
+// You can construct a concrete instance of `IamMemberConditionInput` via:
+//
+//	IamMemberConditionArgs{...}
+type IamMemberConditionInput interface {
+	pulumi.Input
+
+	ToIamMemberConditionOutput() IamMemberConditionOutput
+	ToIamMemberConditionOutputWithContext(context.Context) IamMemberConditionOutput
+}
+
+type IamMemberConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+	// consider it to be an entirely different resource and will treat it as such.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (IamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IamMemberCondition)(nil)).Elem()
+}
+
+func (i IamMemberConditionArgs) ToIamMemberConditionOutput() IamMemberConditionOutput {
+	return i.ToIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i IamMemberConditionArgs) ToIamMemberConditionOutputWithContext(ctx context.Context) IamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamMemberConditionOutput)
+}
+
+func (i IamMemberConditionArgs) ToIamMemberConditionPtrOutput() IamMemberConditionPtrOutput {
+	return i.ToIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i IamMemberConditionArgs) ToIamMemberConditionPtrOutputWithContext(ctx context.Context) IamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamMemberConditionOutput).ToIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// IamMemberConditionPtrInput is an input type that accepts IamMemberConditionArgs, IamMemberConditionPtr and IamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `IamMemberConditionPtrInput` via:
+//
+//	        IamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type IamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToIamMemberConditionPtrOutput() IamMemberConditionPtrOutput
+	ToIamMemberConditionPtrOutputWithContext(context.Context) IamMemberConditionPtrOutput
+}
+
+type iamMemberConditionPtrType IamMemberConditionArgs
+
+func IamMemberConditionPtr(v *IamMemberConditionArgs) IamMemberConditionPtrInput {
+	return (*iamMemberConditionPtrType)(v)
+}
+
+func (*iamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IamMemberCondition)(nil)).Elem()
+}
+
+func (i *iamMemberConditionPtrType) ToIamMemberConditionPtrOutput() IamMemberConditionPtrOutput {
+	return i.ToIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *iamMemberConditionPtrType) ToIamMemberConditionPtrOutputWithContext(ctx context.Context) IamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamMemberConditionPtrOutput)
+}
+
+type IamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (IamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IamMemberCondition)(nil)).Elem()
+}
+
+func (o IamMemberConditionOutput) ToIamMemberConditionOutput() IamMemberConditionOutput {
+	return o
+}
+
+func (o IamMemberConditionOutput) ToIamMemberConditionOutputWithContext(ctx context.Context) IamMemberConditionOutput {
+	return o
+}
+
+func (o IamMemberConditionOutput) ToIamMemberConditionPtrOutput() IamMemberConditionPtrOutput {
+	return o.ToIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o IamMemberConditionOutput) ToIamMemberConditionPtrOutputWithContext(ctx context.Context) IamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IamMemberCondition) *IamMemberCondition {
+		return &v
+	}).(IamMemberConditionPtrOutput)
+}
+
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+// consider it to be an entirely different resource and will treat it as such.
+func (o IamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o IamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v IamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o IamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v IamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type IamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (IamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IamMemberCondition)(nil)).Elem()
+}
+
+func (o IamMemberConditionPtrOutput) ToIamMemberConditionPtrOutput() IamMemberConditionPtrOutput {
+	return o
+}
+
+func (o IamMemberConditionPtrOutput) ToIamMemberConditionPtrOutputWithContext(ctx context.Context) IamMemberConditionPtrOutput {
+	return o
+}
+
+func (o IamMemberConditionPtrOutput) Elem() IamMemberConditionOutput {
+	return o.ApplyT(func(v *IamMemberCondition) IamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret IamMemberCondition
+		return ret
+	}).(IamMemberConditionOutput)
+}
+
+// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+// consider it to be an entirely different resource and will treat it as such.
+func (o IamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o IamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o IamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
 }
 
 type PolicyBooleanPolicy struct {
@@ -1584,221 +1584,221 @@ func (o GetFoldersFolderArrayOutput) Index(i pulumi.IntInput) GetFoldersFolderOu
 	}).(GetFoldersFolderOutput)
 }
 
-type GetIAMPolicyAuditConfig struct {
+type GetIamPolicyAuditConfig struct {
 	// A nested block that defines the operations you'd like to log.
-	AuditLogConfigs []GetIAMPolicyAuditConfigAuditLogConfig `pulumi:"auditLogConfigs"`
+	AuditLogConfigs []GetIamPolicyAuditConfigAuditLogConfig `pulumi:"auditLogConfigs"`
 	// Defines a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
 	Service string `pulumi:"service"`
 }
 
-// GetIAMPolicyAuditConfigInput is an input type that accepts GetIAMPolicyAuditConfigArgs and GetIAMPolicyAuditConfigOutput values.
-// You can construct a concrete instance of `GetIAMPolicyAuditConfigInput` via:
+// GetIamPolicyAuditConfigInput is an input type that accepts GetIamPolicyAuditConfigArgs and GetIamPolicyAuditConfigOutput values.
+// You can construct a concrete instance of `GetIamPolicyAuditConfigInput` via:
 //
-//	GetIAMPolicyAuditConfigArgs{...}
-type GetIAMPolicyAuditConfigInput interface {
+//	GetIamPolicyAuditConfigArgs{...}
+type GetIamPolicyAuditConfigInput interface {
 	pulumi.Input
 
-	ToGetIAMPolicyAuditConfigOutput() GetIAMPolicyAuditConfigOutput
-	ToGetIAMPolicyAuditConfigOutputWithContext(context.Context) GetIAMPolicyAuditConfigOutput
+	ToGetIamPolicyAuditConfigOutput() GetIamPolicyAuditConfigOutput
+	ToGetIamPolicyAuditConfigOutputWithContext(context.Context) GetIamPolicyAuditConfigOutput
 }
 
-type GetIAMPolicyAuditConfigArgs struct {
+type GetIamPolicyAuditConfigArgs struct {
 	// A nested block that defines the operations you'd like to log.
-	AuditLogConfigs GetIAMPolicyAuditConfigAuditLogConfigArrayInput `pulumi:"auditLogConfigs"`
+	AuditLogConfigs GetIamPolicyAuditConfigAuditLogConfigArrayInput `pulumi:"auditLogConfigs"`
 	// Defines a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
 	Service pulumi.StringInput `pulumi:"service"`
 }
 
-func (GetIAMPolicyAuditConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetIAMPolicyAuditConfig)(nil)).Elem()
+func (GetIamPolicyAuditConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIamPolicyAuditConfig)(nil)).Elem()
 }
 
-func (i GetIAMPolicyAuditConfigArgs) ToGetIAMPolicyAuditConfigOutput() GetIAMPolicyAuditConfigOutput {
-	return i.ToGetIAMPolicyAuditConfigOutputWithContext(context.Background())
+func (i GetIamPolicyAuditConfigArgs) ToGetIamPolicyAuditConfigOutput() GetIamPolicyAuditConfigOutput {
+	return i.ToGetIamPolicyAuditConfigOutputWithContext(context.Background())
 }
 
-func (i GetIAMPolicyAuditConfigArgs) ToGetIAMPolicyAuditConfigOutputWithContext(ctx context.Context) GetIAMPolicyAuditConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetIAMPolicyAuditConfigOutput)
+func (i GetIamPolicyAuditConfigArgs) ToGetIamPolicyAuditConfigOutputWithContext(ctx context.Context) GetIamPolicyAuditConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIamPolicyAuditConfigOutput)
 }
 
-// GetIAMPolicyAuditConfigArrayInput is an input type that accepts GetIAMPolicyAuditConfigArray and GetIAMPolicyAuditConfigArrayOutput values.
-// You can construct a concrete instance of `GetIAMPolicyAuditConfigArrayInput` via:
+// GetIamPolicyAuditConfigArrayInput is an input type that accepts GetIamPolicyAuditConfigArray and GetIamPolicyAuditConfigArrayOutput values.
+// You can construct a concrete instance of `GetIamPolicyAuditConfigArrayInput` via:
 //
-//	GetIAMPolicyAuditConfigArray{ GetIAMPolicyAuditConfigArgs{...} }
-type GetIAMPolicyAuditConfigArrayInput interface {
+//	GetIamPolicyAuditConfigArray{ GetIamPolicyAuditConfigArgs{...} }
+type GetIamPolicyAuditConfigArrayInput interface {
 	pulumi.Input
 
-	ToGetIAMPolicyAuditConfigArrayOutput() GetIAMPolicyAuditConfigArrayOutput
-	ToGetIAMPolicyAuditConfigArrayOutputWithContext(context.Context) GetIAMPolicyAuditConfigArrayOutput
+	ToGetIamPolicyAuditConfigArrayOutput() GetIamPolicyAuditConfigArrayOutput
+	ToGetIamPolicyAuditConfigArrayOutputWithContext(context.Context) GetIamPolicyAuditConfigArrayOutput
 }
 
-type GetIAMPolicyAuditConfigArray []GetIAMPolicyAuditConfigInput
+type GetIamPolicyAuditConfigArray []GetIamPolicyAuditConfigInput
 
-func (GetIAMPolicyAuditConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetIAMPolicyAuditConfig)(nil)).Elem()
+func (GetIamPolicyAuditConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIamPolicyAuditConfig)(nil)).Elem()
 }
 
-func (i GetIAMPolicyAuditConfigArray) ToGetIAMPolicyAuditConfigArrayOutput() GetIAMPolicyAuditConfigArrayOutput {
-	return i.ToGetIAMPolicyAuditConfigArrayOutputWithContext(context.Background())
+func (i GetIamPolicyAuditConfigArray) ToGetIamPolicyAuditConfigArrayOutput() GetIamPolicyAuditConfigArrayOutput {
+	return i.ToGetIamPolicyAuditConfigArrayOutputWithContext(context.Background())
 }
 
-func (i GetIAMPolicyAuditConfigArray) ToGetIAMPolicyAuditConfigArrayOutputWithContext(ctx context.Context) GetIAMPolicyAuditConfigArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetIAMPolicyAuditConfigArrayOutput)
+func (i GetIamPolicyAuditConfigArray) ToGetIamPolicyAuditConfigArrayOutputWithContext(ctx context.Context) GetIamPolicyAuditConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIamPolicyAuditConfigArrayOutput)
 }
 
-type GetIAMPolicyAuditConfigOutput struct{ *pulumi.OutputState }
+type GetIamPolicyAuditConfigOutput struct{ *pulumi.OutputState }
 
-func (GetIAMPolicyAuditConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetIAMPolicyAuditConfig)(nil)).Elem()
+func (GetIamPolicyAuditConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIamPolicyAuditConfig)(nil)).Elem()
 }
 
-func (o GetIAMPolicyAuditConfigOutput) ToGetIAMPolicyAuditConfigOutput() GetIAMPolicyAuditConfigOutput {
+func (o GetIamPolicyAuditConfigOutput) ToGetIamPolicyAuditConfigOutput() GetIamPolicyAuditConfigOutput {
 	return o
 }
 
-func (o GetIAMPolicyAuditConfigOutput) ToGetIAMPolicyAuditConfigOutputWithContext(ctx context.Context) GetIAMPolicyAuditConfigOutput {
+func (o GetIamPolicyAuditConfigOutput) ToGetIamPolicyAuditConfigOutputWithContext(ctx context.Context) GetIamPolicyAuditConfigOutput {
 	return o
 }
 
 // A nested block that defines the operations you'd like to log.
-func (o GetIAMPolicyAuditConfigOutput) AuditLogConfigs() GetIAMPolicyAuditConfigAuditLogConfigArrayOutput {
-	return o.ApplyT(func(v GetIAMPolicyAuditConfig) []GetIAMPolicyAuditConfigAuditLogConfig { return v.AuditLogConfigs }).(GetIAMPolicyAuditConfigAuditLogConfigArrayOutput)
+func (o GetIamPolicyAuditConfigOutput) AuditLogConfigs() GetIamPolicyAuditConfigAuditLogConfigArrayOutput {
+	return o.ApplyT(func(v GetIamPolicyAuditConfig) []GetIamPolicyAuditConfigAuditLogConfig { return v.AuditLogConfigs }).(GetIamPolicyAuditConfigAuditLogConfigArrayOutput)
 }
 
 // Defines a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-func (o GetIAMPolicyAuditConfigOutput) Service() pulumi.StringOutput {
-	return o.ApplyT(func(v GetIAMPolicyAuditConfig) string { return v.Service }).(pulumi.StringOutput)
+func (o GetIamPolicyAuditConfigOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIamPolicyAuditConfig) string { return v.Service }).(pulumi.StringOutput)
 }
 
-type GetIAMPolicyAuditConfigArrayOutput struct{ *pulumi.OutputState }
+type GetIamPolicyAuditConfigArrayOutput struct{ *pulumi.OutputState }
 
-func (GetIAMPolicyAuditConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetIAMPolicyAuditConfig)(nil)).Elem()
+func (GetIamPolicyAuditConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIamPolicyAuditConfig)(nil)).Elem()
 }
 
-func (o GetIAMPolicyAuditConfigArrayOutput) ToGetIAMPolicyAuditConfigArrayOutput() GetIAMPolicyAuditConfigArrayOutput {
+func (o GetIamPolicyAuditConfigArrayOutput) ToGetIamPolicyAuditConfigArrayOutput() GetIamPolicyAuditConfigArrayOutput {
 	return o
 }
 
-func (o GetIAMPolicyAuditConfigArrayOutput) ToGetIAMPolicyAuditConfigArrayOutputWithContext(ctx context.Context) GetIAMPolicyAuditConfigArrayOutput {
+func (o GetIamPolicyAuditConfigArrayOutput) ToGetIamPolicyAuditConfigArrayOutputWithContext(ctx context.Context) GetIamPolicyAuditConfigArrayOutput {
 	return o
 }
 
-func (o GetIAMPolicyAuditConfigArrayOutput) Index(i pulumi.IntInput) GetIAMPolicyAuditConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIAMPolicyAuditConfig {
-		return vs[0].([]GetIAMPolicyAuditConfig)[vs[1].(int)]
-	}).(GetIAMPolicyAuditConfigOutput)
+func (o GetIamPolicyAuditConfigArrayOutput) Index(i pulumi.IntInput) GetIamPolicyAuditConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIamPolicyAuditConfig {
+		return vs[0].([]GetIamPolicyAuditConfig)[vs[1].(int)]
+	}).(GetIamPolicyAuditConfigOutput)
 }
 
-type GetIAMPolicyAuditConfigAuditLogConfig struct {
+type GetIamPolicyAuditConfigAuditLogConfig struct {
 	// Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `members` array for `binding`.
 	ExemptedMembers []string `pulumi:"exemptedMembers"`
 	// Defines the logging level. `DATA_READ`, `DATA_WRITE` and `ADMIN_READ` capture different types of events. See [the audit configuration documentation](https://cloud.google.com/resource-manager/reference/rest/Shared.Types/AuditConfig) for more details.
 	LogType string `pulumi:"logType"`
 }
 
-// GetIAMPolicyAuditConfigAuditLogConfigInput is an input type that accepts GetIAMPolicyAuditConfigAuditLogConfigArgs and GetIAMPolicyAuditConfigAuditLogConfigOutput values.
-// You can construct a concrete instance of `GetIAMPolicyAuditConfigAuditLogConfigInput` via:
+// GetIamPolicyAuditConfigAuditLogConfigInput is an input type that accepts GetIamPolicyAuditConfigAuditLogConfigArgs and GetIamPolicyAuditConfigAuditLogConfigOutput values.
+// You can construct a concrete instance of `GetIamPolicyAuditConfigAuditLogConfigInput` via:
 //
-//	GetIAMPolicyAuditConfigAuditLogConfigArgs{...}
-type GetIAMPolicyAuditConfigAuditLogConfigInput interface {
+//	GetIamPolicyAuditConfigAuditLogConfigArgs{...}
+type GetIamPolicyAuditConfigAuditLogConfigInput interface {
 	pulumi.Input
 
-	ToGetIAMPolicyAuditConfigAuditLogConfigOutput() GetIAMPolicyAuditConfigAuditLogConfigOutput
-	ToGetIAMPolicyAuditConfigAuditLogConfigOutputWithContext(context.Context) GetIAMPolicyAuditConfigAuditLogConfigOutput
+	ToGetIamPolicyAuditConfigAuditLogConfigOutput() GetIamPolicyAuditConfigAuditLogConfigOutput
+	ToGetIamPolicyAuditConfigAuditLogConfigOutputWithContext(context.Context) GetIamPolicyAuditConfigAuditLogConfigOutput
 }
 
-type GetIAMPolicyAuditConfigAuditLogConfigArgs struct {
+type GetIamPolicyAuditConfigAuditLogConfigArgs struct {
 	// Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `members` array for `binding`.
 	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
 	// Defines the logging level. `DATA_READ`, `DATA_WRITE` and `ADMIN_READ` capture different types of events. See [the audit configuration documentation](https://cloud.google.com/resource-manager/reference/rest/Shared.Types/AuditConfig) for more details.
 	LogType pulumi.StringInput `pulumi:"logType"`
 }
 
-func (GetIAMPolicyAuditConfigAuditLogConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetIAMPolicyAuditConfigAuditLogConfig)(nil)).Elem()
+func (GetIamPolicyAuditConfigAuditLogConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIamPolicyAuditConfigAuditLogConfig)(nil)).Elem()
 }
 
-func (i GetIAMPolicyAuditConfigAuditLogConfigArgs) ToGetIAMPolicyAuditConfigAuditLogConfigOutput() GetIAMPolicyAuditConfigAuditLogConfigOutput {
-	return i.ToGetIAMPolicyAuditConfigAuditLogConfigOutputWithContext(context.Background())
+func (i GetIamPolicyAuditConfigAuditLogConfigArgs) ToGetIamPolicyAuditConfigAuditLogConfigOutput() GetIamPolicyAuditConfigAuditLogConfigOutput {
+	return i.ToGetIamPolicyAuditConfigAuditLogConfigOutputWithContext(context.Background())
 }
 
-func (i GetIAMPolicyAuditConfigAuditLogConfigArgs) ToGetIAMPolicyAuditConfigAuditLogConfigOutputWithContext(ctx context.Context) GetIAMPolicyAuditConfigAuditLogConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetIAMPolicyAuditConfigAuditLogConfigOutput)
+func (i GetIamPolicyAuditConfigAuditLogConfigArgs) ToGetIamPolicyAuditConfigAuditLogConfigOutputWithContext(ctx context.Context) GetIamPolicyAuditConfigAuditLogConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIamPolicyAuditConfigAuditLogConfigOutput)
 }
 
-// GetIAMPolicyAuditConfigAuditLogConfigArrayInput is an input type that accepts GetIAMPolicyAuditConfigAuditLogConfigArray and GetIAMPolicyAuditConfigAuditLogConfigArrayOutput values.
-// You can construct a concrete instance of `GetIAMPolicyAuditConfigAuditLogConfigArrayInput` via:
+// GetIamPolicyAuditConfigAuditLogConfigArrayInput is an input type that accepts GetIamPolicyAuditConfigAuditLogConfigArray and GetIamPolicyAuditConfigAuditLogConfigArrayOutput values.
+// You can construct a concrete instance of `GetIamPolicyAuditConfigAuditLogConfigArrayInput` via:
 //
-//	GetIAMPolicyAuditConfigAuditLogConfigArray{ GetIAMPolicyAuditConfigAuditLogConfigArgs{...} }
-type GetIAMPolicyAuditConfigAuditLogConfigArrayInput interface {
+//	GetIamPolicyAuditConfigAuditLogConfigArray{ GetIamPolicyAuditConfigAuditLogConfigArgs{...} }
+type GetIamPolicyAuditConfigAuditLogConfigArrayInput interface {
 	pulumi.Input
 
-	ToGetIAMPolicyAuditConfigAuditLogConfigArrayOutput() GetIAMPolicyAuditConfigAuditLogConfigArrayOutput
-	ToGetIAMPolicyAuditConfigAuditLogConfigArrayOutputWithContext(context.Context) GetIAMPolicyAuditConfigAuditLogConfigArrayOutput
+	ToGetIamPolicyAuditConfigAuditLogConfigArrayOutput() GetIamPolicyAuditConfigAuditLogConfigArrayOutput
+	ToGetIamPolicyAuditConfigAuditLogConfigArrayOutputWithContext(context.Context) GetIamPolicyAuditConfigAuditLogConfigArrayOutput
 }
 
-type GetIAMPolicyAuditConfigAuditLogConfigArray []GetIAMPolicyAuditConfigAuditLogConfigInput
+type GetIamPolicyAuditConfigAuditLogConfigArray []GetIamPolicyAuditConfigAuditLogConfigInput
 
-func (GetIAMPolicyAuditConfigAuditLogConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetIAMPolicyAuditConfigAuditLogConfig)(nil)).Elem()
+func (GetIamPolicyAuditConfigAuditLogConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIamPolicyAuditConfigAuditLogConfig)(nil)).Elem()
 }
 
-func (i GetIAMPolicyAuditConfigAuditLogConfigArray) ToGetIAMPolicyAuditConfigAuditLogConfigArrayOutput() GetIAMPolicyAuditConfigAuditLogConfigArrayOutput {
-	return i.ToGetIAMPolicyAuditConfigAuditLogConfigArrayOutputWithContext(context.Background())
+func (i GetIamPolicyAuditConfigAuditLogConfigArray) ToGetIamPolicyAuditConfigAuditLogConfigArrayOutput() GetIamPolicyAuditConfigAuditLogConfigArrayOutput {
+	return i.ToGetIamPolicyAuditConfigAuditLogConfigArrayOutputWithContext(context.Background())
 }
 
-func (i GetIAMPolicyAuditConfigAuditLogConfigArray) ToGetIAMPolicyAuditConfigAuditLogConfigArrayOutputWithContext(ctx context.Context) GetIAMPolicyAuditConfigAuditLogConfigArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetIAMPolicyAuditConfigAuditLogConfigArrayOutput)
+func (i GetIamPolicyAuditConfigAuditLogConfigArray) ToGetIamPolicyAuditConfigAuditLogConfigArrayOutputWithContext(ctx context.Context) GetIamPolicyAuditConfigAuditLogConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIamPolicyAuditConfigAuditLogConfigArrayOutput)
 }
 
-type GetIAMPolicyAuditConfigAuditLogConfigOutput struct{ *pulumi.OutputState }
+type GetIamPolicyAuditConfigAuditLogConfigOutput struct{ *pulumi.OutputState }
 
-func (GetIAMPolicyAuditConfigAuditLogConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetIAMPolicyAuditConfigAuditLogConfig)(nil)).Elem()
+func (GetIamPolicyAuditConfigAuditLogConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIamPolicyAuditConfigAuditLogConfig)(nil)).Elem()
 }
 
-func (o GetIAMPolicyAuditConfigAuditLogConfigOutput) ToGetIAMPolicyAuditConfigAuditLogConfigOutput() GetIAMPolicyAuditConfigAuditLogConfigOutput {
+func (o GetIamPolicyAuditConfigAuditLogConfigOutput) ToGetIamPolicyAuditConfigAuditLogConfigOutput() GetIamPolicyAuditConfigAuditLogConfigOutput {
 	return o
 }
 
-func (o GetIAMPolicyAuditConfigAuditLogConfigOutput) ToGetIAMPolicyAuditConfigAuditLogConfigOutputWithContext(ctx context.Context) GetIAMPolicyAuditConfigAuditLogConfigOutput {
+func (o GetIamPolicyAuditConfigAuditLogConfigOutput) ToGetIamPolicyAuditConfigAuditLogConfigOutputWithContext(ctx context.Context) GetIamPolicyAuditConfigAuditLogConfigOutput {
 	return o
 }
 
 // Specifies the identities that are exempt from these types of logging operations. Follows the same format of the `members` array for `binding`.
-func (o GetIAMPolicyAuditConfigAuditLogConfigOutput) ExemptedMembers() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetIAMPolicyAuditConfigAuditLogConfig) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
+func (o GetIamPolicyAuditConfigAuditLogConfigOutput) ExemptedMembers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIamPolicyAuditConfigAuditLogConfig) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
 }
 
 // Defines the logging level. `DATA_READ`, `DATA_WRITE` and `ADMIN_READ` capture different types of events. See [the audit configuration documentation](https://cloud.google.com/resource-manager/reference/rest/Shared.Types/AuditConfig) for more details.
-func (o GetIAMPolicyAuditConfigAuditLogConfigOutput) LogType() pulumi.StringOutput {
-	return o.ApplyT(func(v GetIAMPolicyAuditConfigAuditLogConfig) string { return v.LogType }).(pulumi.StringOutput)
+func (o GetIamPolicyAuditConfigAuditLogConfigOutput) LogType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIamPolicyAuditConfigAuditLogConfig) string { return v.LogType }).(pulumi.StringOutput)
 }
 
-type GetIAMPolicyAuditConfigAuditLogConfigArrayOutput struct{ *pulumi.OutputState }
+type GetIamPolicyAuditConfigAuditLogConfigArrayOutput struct{ *pulumi.OutputState }
 
-func (GetIAMPolicyAuditConfigAuditLogConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetIAMPolicyAuditConfigAuditLogConfig)(nil)).Elem()
+func (GetIamPolicyAuditConfigAuditLogConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIamPolicyAuditConfigAuditLogConfig)(nil)).Elem()
 }
 
-func (o GetIAMPolicyAuditConfigAuditLogConfigArrayOutput) ToGetIAMPolicyAuditConfigAuditLogConfigArrayOutput() GetIAMPolicyAuditConfigAuditLogConfigArrayOutput {
+func (o GetIamPolicyAuditConfigAuditLogConfigArrayOutput) ToGetIamPolicyAuditConfigAuditLogConfigArrayOutput() GetIamPolicyAuditConfigAuditLogConfigArrayOutput {
 	return o
 }
 
-func (o GetIAMPolicyAuditConfigAuditLogConfigArrayOutput) ToGetIAMPolicyAuditConfigAuditLogConfigArrayOutputWithContext(ctx context.Context) GetIAMPolicyAuditConfigAuditLogConfigArrayOutput {
+func (o GetIamPolicyAuditConfigAuditLogConfigArrayOutput) ToGetIamPolicyAuditConfigAuditLogConfigArrayOutputWithContext(ctx context.Context) GetIamPolicyAuditConfigAuditLogConfigArrayOutput {
 	return o
 }
 
-func (o GetIAMPolicyAuditConfigAuditLogConfigArrayOutput) Index(i pulumi.IntInput) GetIAMPolicyAuditConfigAuditLogConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIAMPolicyAuditConfigAuditLogConfig {
-		return vs[0].([]GetIAMPolicyAuditConfigAuditLogConfig)[vs[1].(int)]
-	}).(GetIAMPolicyAuditConfigAuditLogConfigOutput)
+func (o GetIamPolicyAuditConfigAuditLogConfigArrayOutput) Index(i pulumi.IntInput) GetIamPolicyAuditConfigAuditLogConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIamPolicyAuditConfigAuditLogConfig {
+		return vs[0].([]GetIamPolicyAuditConfigAuditLogConfig)[vs[1].(int)]
+	}).(GetIamPolicyAuditConfigAuditLogConfigOutput)
 }
 
-type GetIAMPolicyBinding struct {
+type GetIamPolicyBinding struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
-	Condition *GetIAMPolicyBindingCondition `pulumi:"condition"`
+	Condition *GetIamPolicyBindingCondition `pulumi:"condition"`
 	// An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
 	// Each entry can have one of the following values:
 	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account. Some resources **don't** support this identity.
@@ -1814,20 +1814,20 @@ type GetIAMPolicyBinding struct {
 	Role string `pulumi:"role"`
 }
 
-// GetIAMPolicyBindingInput is an input type that accepts GetIAMPolicyBindingArgs and GetIAMPolicyBindingOutput values.
-// You can construct a concrete instance of `GetIAMPolicyBindingInput` via:
+// GetIamPolicyBindingInput is an input type that accepts GetIamPolicyBindingArgs and GetIamPolicyBindingOutput values.
+// You can construct a concrete instance of `GetIamPolicyBindingInput` via:
 //
-//	GetIAMPolicyBindingArgs{...}
-type GetIAMPolicyBindingInput interface {
+//	GetIamPolicyBindingArgs{...}
+type GetIamPolicyBindingInput interface {
 	pulumi.Input
 
-	ToGetIAMPolicyBindingOutput() GetIAMPolicyBindingOutput
-	ToGetIAMPolicyBindingOutputWithContext(context.Context) GetIAMPolicyBindingOutput
+	ToGetIamPolicyBindingOutput() GetIamPolicyBindingOutput
+	ToGetIamPolicyBindingOutputWithContext(context.Context) GetIamPolicyBindingOutput
 }
 
-type GetIAMPolicyBindingArgs struct {
+type GetIamPolicyBindingArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
-	Condition GetIAMPolicyBindingConditionPtrInput `pulumi:"condition"`
+	Condition GetIamPolicyBindingConditionPtrInput `pulumi:"condition"`
 	// An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
 	// Each entry can have one of the following values:
 	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account. Some resources **don't** support this identity.
@@ -1843,60 +1843,60 @@ type GetIAMPolicyBindingArgs struct {
 	Role pulumi.StringInput `pulumi:"role"`
 }
 
-func (GetIAMPolicyBindingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetIAMPolicyBinding)(nil)).Elem()
+func (GetIamPolicyBindingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIamPolicyBinding)(nil)).Elem()
 }
 
-func (i GetIAMPolicyBindingArgs) ToGetIAMPolicyBindingOutput() GetIAMPolicyBindingOutput {
-	return i.ToGetIAMPolicyBindingOutputWithContext(context.Background())
+func (i GetIamPolicyBindingArgs) ToGetIamPolicyBindingOutput() GetIamPolicyBindingOutput {
+	return i.ToGetIamPolicyBindingOutputWithContext(context.Background())
 }
 
-func (i GetIAMPolicyBindingArgs) ToGetIAMPolicyBindingOutputWithContext(ctx context.Context) GetIAMPolicyBindingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetIAMPolicyBindingOutput)
+func (i GetIamPolicyBindingArgs) ToGetIamPolicyBindingOutputWithContext(ctx context.Context) GetIamPolicyBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIamPolicyBindingOutput)
 }
 
-// GetIAMPolicyBindingArrayInput is an input type that accepts GetIAMPolicyBindingArray and GetIAMPolicyBindingArrayOutput values.
-// You can construct a concrete instance of `GetIAMPolicyBindingArrayInput` via:
+// GetIamPolicyBindingArrayInput is an input type that accepts GetIamPolicyBindingArray and GetIamPolicyBindingArrayOutput values.
+// You can construct a concrete instance of `GetIamPolicyBindingArrayInput` via:
 //
-//	GetIAMPolicyBindingArray{ GetIAMPolicyBindingArgs{...} }
-type GetIAMPolicyBindingArrayInput interface {
+//	GetIamPolicyBindingArray{ GetIamPolicyBindingArgs{...} }
+type GetIamPolicyBindingArrayInput interface {
 	pulumi.Input
 
-	ToGetIAMPolicyBindingArrayOutput() GetIAMPolicyBindingArrayOutput
-	ToGetIAMPolicyBindingArrayOutputWithContext(context.Context) GetIAMPolicyBindingArrayOutput
+	ToGetIamPolicyBindingArrayOutput() GetIamPolicyBindingArrayOutput
+	ToGetIamPolicyBindingArrayOutputWithContext(context.Context) GetIamPolicyBindingArrayOutput
 }
 
-type GetIAMPolicyBindingArray []GetIAMPolicyBindingInput
+type GetIamPolicyBindingArray []GetIamPolicyBindingInput
 
-func (GetIAMPolicyBindingArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetIAMPolicyBinding)(nil)).Elem()
+func (GetIamPolicyBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIamPolicyBinding)(nil)).Elem()
 }
 
-func (i GetIAMPolicyBindingArray) ToGetIAMPolicyBindingArrayOutput() GetIAMPolicyBindingArrayOutput {
-	return i.ToGetIAMPolicyBindingArrayOutputWithContext(context.Background())
+func (i GetIamPolicyBindingArray) ToGetIamPolicyBindingArrayOutput() GetIamPolicyBindingArrayOutput {
+	return i.ToGetIamPolicyBindingArrayOutputWithContext(context.Background())
 }
 
-func (i GetIAMPolicyBindingArray) ToGetIAMPolicyBindingArrayOutputWithContext(ctx context.Context) GetIAMPolicyBindingArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetIAMPolicyBindingArrayOutput)
+func (i GetIamPolicyBindingArray) ToGetIamPolicyBindingArrayOutputWithContext(ctx context.Context) GetIamPolicyBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIamPolicyBindingArrayOutput)
 }
 
-type GetIAMPolicyBindingOutput struct{ *pulumi.OutputState }
+type GetIamPolicyBindingOutput struct{ *pulumi.OutputState }
 
-func (GetIAMPolicyBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetIAMPolicyBinding)(nil)).Elem()
+func (GetIamPolicyBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIamPolicyBinding)(nil)).Elem()
 }
 
-func (o GetIAMPolicyBindingOutput) ToGetIAMPolicyBindingOutput() GetIAMPolicyBindingOutput {
+func (o GetIamPolicyBindingOutput) ToGetIamPolicyBindingOutput() GetIamPolicyBindingOutput {
 	return o
 }
 
-func (o GetIAMPolicyBindingOutput) ToGetIAMPolicyBindingOutputWithContext(ctx context.Context) GetIAMPolicyBindingOutput {
+func (o GetIamPolicyBindingOutput) ToGetIamPolicyBindingOutputWithContext(ctx context.Context) GetIamPolicyBindingOutput {
 	return o
 }
 
 // An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
-func (o GetIAMPolicyBindingOutput) Condition() GetIAMPolicyBindingConditionPtrOutput {
-	return o.ApplyT(func(v GetIAMPolicyBinding) *GetIAMPolicyBindingCondition { return v.Condition }).(GetIAMPolicyBindingConditionPtrOutput)
+func (o GetIamPolicyBindingOutput) Condition() GetIamPolicyBindingConditionPtrOutput {
+	return o.ApplyT(func(v GetIamPolicyBinding) *GetIamPolicyBindingCondition { return v.Condition }).(GetIamPolicyBindingConditionPtrOutput)
 }
 
 // An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
@@ -1907,38 +1907,38 @@ func (o GetIAMPolicyBindingOutput) Condition() GetIAMPolicyBindingConditionPtrOu
 // * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
 // * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
 // * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-func (o GetIAMPolicyBindingOutput) Members() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetIAMPolicyBinding) []string { return v.Members }).(pulumi.StringArrayOutput)
+func (o GetIamPolicyBindingOutput) Members() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIamPolicyBinding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
 // The role/permission that will be granted to the members.
 // See the [IAM Roles](https://cloud.google.com/compute/docs/access/iam) documentation for a complete list of roles.
 // Note that custom roles must be of the format `[projects|organizations]/{parent-name}/roles/{role-name}`.
-func (o GetIAMPolicyBindingOutput) Role() pulumi.StringOutput {
-	return o.ApplyT(func(v GetIAMPolicyBinding) string { return v.Role }).(pulumi.StringOutput)
+func (o GetIamPolicyBindingOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIamPolicyBinding) string { return v.Role }).(pulumi.StringOutput)
 }
 
-type GetIAMPolicyBindingArrayOutput struct{ *pulumi.OutputState }
+type GetIamPolicyBindingArrayOutput struct{ *pulumi.OutputState }
 
-func (GetIAMPolicyBindingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetIAMPolicyBinding)(nil)).Elem()
+func (GetIamPolicyBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetIamPolicyBinding)(nil)).Elem()
 }
 
-func (o GetIAMPolicyBindingArrayOutput) ToGetIAMPolicyBindingArrayOutput() GetIAMPolicyBindingArrayOutput {
+func (o GetIamPolicyBindingArrayOutput) ToGetIamPolicyBindingArrayOutput() GetIamPolicyBindingArrayOutput {
 	return o
 }
 
-func (o GetIAMPolicyBindingArrayOutput) ToGetIAMPolicyBindingArrayOutputWithContext(ctx context.Context) GetIAMPolicyBindingArrayOutput {
+func (o GetIamPolicyBindingArrayOutput) ToGetIamPolicyBindingArrayOutputWithContext(ctx context.Context) GetIamPolicyBindingArrayOutput {
 	return o
 }
 
-func (o GetIAMPolicyBindingArrayOutput) Index(i pulumi.IntInput) GetIAMPolicyBindingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIAMPolicyBinding {
-		return vs[0].([]GetIAMPolicyBinding)[vs[1].(int)]
-	}).(GetIAMPolicyBindingOutput)
+func (o GetIamPolicyBindingArrayOutput) Index(i pulumi.IntInput) GetIamPolicyBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetIamPolicyBinding {
+		return vs[0].([]GetIamPolicyBinding)[vs[1].(int)]
+	}).(GetIamPolicyBindingOutput)
 }
 
-type GetIAMPolicyBindingCondition struct {
+type GetIamPolicyBindingCondition struct {
 	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
@@ -1947,18 +1947,18 @@ type GetIAMPolicyBindingCondition struct {
 	Title string `pulumi:"title"`
 }
 
-// GetIAMPolicyBindingConditionInput is an input type that accepts GetIAMPolicyBindingConditionArgs and GetIAMPolicyBindingConditionOutput values.
-// You can construct a concrete instance of `GetIAMPolicyBindingConditionInput` via:
+// GetIamPolicyBindingConditionInput is an input type that accepts GetIamPolicyBindingConditionArgs and GetIamPolicyBindingConditionOutput values.
+// You can construct a concrete instance of `GetIamPolicyBindingConditionInput` via:
 //
-//	GetIAMPolicyBindingConditionArgs{...}
-type GetIAMPolicyBindingConditionInput interface {
+//	GetIamPolicyBindingConditionArgs{...}
+type GetIamPolicyBindingConditionInput interface {
 	pulumi.Input
 
-	ToGetIAMPolicyBindingConditionOutput() GetIAMPolicyBindingConditionOutput
-	ToGetIAMPolicyBindingConditionOutputWithContext(context.Context) GetIAMPolicyBindingConditionOutput
+	ToGetIamPolicyBindingConditionOutput() GetIamPolicyBindingConditionOutput
+	ToGetIamPolicyBindingConditionOutputWithContext(context.Context) GetIamPolicyBindingConditionOutput
 }
 
-type GetIAMPolicyBindingConditionArgs struct {
+type GetIamPolicyBindingConditionArgs struct {
 	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
@@ -1967,125 +1967,125 @@ type GetIAMPolicyBindingConditionArgs struct {
 	Title pulumi.StringInput `pulumi:"title"`
 }
 
-func (GetIAMPolicyBindingConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetIAMPolicyBindingCondition)(nil)).Elem()
+func (GetIamPolicyBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIamPolicyBindingCondition)(nil)).Elem()
 }
 
-func (i GetIAMPolicyBindingConditionArgs) ToGetIAMPolicyBindingConditionOutput() GetIAMPolicyBindingConditionOutput {
-	return i.ToGetIAMPolicyBindingConditionOutputWithContext(context.Background())
+func (i GetIamPolicyBindingConditionArgs) ToGetIamPolicyBindingConditionOutput() GetIamPolicyBindingConditionOutput {
+	return i.ToGetIamPolicyBindingConditionOutputWithContext(context.Background())
 }
 
-func (i GetIAMPolicyBindingConditionArgs) ToGetIAMPolicyBindingConditionOutputWithContext(ctx context.Context) GetIAMPolicyBindingConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetIAMPolicyBindingConditionOutput)
+func (i GetIamPolicyBindingConditionArgs) ToGetIamPolicyBindingConditionOutputWithContext(ctx context.Context) GetIamPolicyBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIamPolicyBindingConditionOutput)
 }
 
-func (i GetIAMPolicyBindingConditionArgs) ToGetIAMPolicyBindingConditionPtrOutput() GetIAMPolicyBindingConditionPtrOutput {
-	return i.ToGetIAMPolicyBindingConditionPtrOutputWithContext(context.Background())
+func (i GetIamPolicyBindingConditionArgs) ToGetIamPolicyBindingConditionPtrOutput() GetIamPolicyBindingConditionPtrOutput {
+	return i.ToGetIamPolicyBindingConditionPtrOutputWithContext(context.Background())
 }
 
-func (i GetIAMPolicyBindingConditionArgs) ToGetIAMPolicyBindingConditionPtrOutputWithContext(ctx context.Context) GetIAMPolicyBindingConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetIAMPolicyBindingConditionOutput).ToGetIAMPolicyBindingConditionPtrOutputWithContext(ctx)
+func (i GetIamPolicyBindingConditionArgs) ToGetIamPolicyBindingConditionPtrOutputWithContext(ctx context.Context) GetIamPolicyBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIamPolicyBindingConditionOutput).ToGetIamPolicyBindingConditionPtrOutputWithContext(ctx)
 }
 
-// GetIAMPolicyBindingConditionPtrInput is an input type that accepts GetIAMPolicyBindingConditionArgs, GetIAMPolicyBindingConditionPtr and GetIAMPolicyBindingConditionPtrOutput values.
-// You can construct a concrete instance of `GetIAMPolicyBindingConditionPtrInput` via:
+// GetIamPolicyBindingConditionPtrInput is an input type that accepts GetIamPolicyBindingConditionArgs, GetIamPolicyBindingConditionPtr and GetIamPolicyBindingConditionPtrOutput values.
+// You can construct a concrete instance of `GetIamPolicyBindingConditionPtrInput` via:
 //
-//	        GetIAMPolicyBindingConditionArgs{...}
+//	        GetIamPolicyBindingConditionArgs{...}
 //
 //	or:
 //
 //	        nil
-type GetIAMPolicyBindingConditionPtrInput interface {
+type GetIamPolicyBindingConditionPtrInput interface {
 	pulumi.Input
 
-	ToGetIAMPolicyBindingConditionPtrOutput() GetIAMPolicyBindingConditionPtrOutput
-	ToGetIAMPolicyBindingConditionPtrOutputWithContext(context.Context) GetIAMPolicyBindingConditionPtrOutput
+	ToGetIamPolicyBindingConditionPtrOutput() GetIamPolicyBindingConditionPtrOutput
+	ToGetIamPolicyBindingConditionPtrOutputWithContext(context.Context) GetIamPolicyBindingConditionPtrOutput
 }
 
-type getIAMPolicyBindingConditionPtrType GetIAMPolicyBindingConditionArgs
+type getIamPolicyBindingConditionPtrType GetIamPolicyBindingConditionArgs
 
-func GetIAMPolicyBindingConditionPtr(v *GetIAMPolicyBindingConditionArgs) GetIAMPolicyBindingConditionPtrInput {
-	return (*getIAMPolicyBindingConditionPtrType)(v)
+func GetIamPolicyBindingConditionPtr(v *GetIamPolicyBindingConditionArgs) GetIamPolicyBindingConditionPtrInput {
+	return (*getIamPolicyBindingConditionPtrType)(v)
 }
 
-func (*getIAMPolicyBindingConditionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetIAMPolicyBindingCondition)(nil)).Elem()
+func (*getIamPolicyBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetIamPolicyBindingCondition)(nil)).Elem()
 }
 
-func (i *getIAMPolicyBindingConditionPtrType) ToGetIAMPolicyBindingConditionPtrOutput() GetIAMPolicyBindingConditionPtrOutput {
-	return i.ToGetIAMPolicyBindingConditionPtrOutputWithContext(context.Background())
+func (i *getIamPolicyBindingConditionPtrType) ToGetIamPolicyBindingConditionPtrOutput() GetIamPolicyBindingConditionPtrOutput {
+	return i.ToGetIamPolicyBindingConditionPtrOutputWithContext(context.Background())
 }
 
-func (i *getIAMPolicyBindingConditionPtrType) ToGetIAMPolicyBindingConditionPtrOutputWithContext(ctx context.Context) GetIAMPolicyBindingConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetIAMPolicyBindingConditionPtrOutput)
+func (i *getIamPolicyBindingConditionPtrType) ToGetIamPolicyBindingConditionPtrOutputWithContext(ctx context.Context) GetIamPolicyBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetIamPolicyBindingConditionPtrOutput)
 }
 
-type GetIAMPolicyBindingConditionOutput struct{ *pulumi.OutputState }
+type GetIamPolicyBindingConditionOutput struct{ *pulumi.OutputState }
 
-func (GetIAMPolicyBindingConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetIAMPolicyBindingCondition)(nil)).Elem()
+func (GetIamPolicyBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIamPolicyBindingCondition)(nil)).Elem()
 }
 
-func (o GetIAMPolicyBindingConditionOutput) ToGetIAMPolicyBindingConditionOutput() GetIAMPolicyBindingConditionOutput {
+func (o GetIamPolicyBindingConditionOutput) ToGetIamPolicyBindingConditionOutput() GetIamPolicyBindingConditionOutput {
 	return o
 }
 
-func (o GetIAMPolicyBindingConditionOutput) ToGetIAMPolicyBindingConditionOutputWithContext(ctx context.Context) GetIAMPolicyBindingConditionOutput {
+func (o GetIamPolicyBindingConditionOutput) ToGetIamPolicyBindingConditionOutputWithContext(ctx context.Context) GetIamPolicyBindingConditionOutput {
 	return o
 }
 
-func (o GetIAMPolicyBindingConditionOutput) ToGetIAMPolicyBindingConditionPtrOutput() GetIAMPolicyBindingConditionPtrOutput {
-	return o.ToGetIAMPolicyBindingConditionPtrOutputWithContext(context.Background())
+func (o GetIamPolicyBindingConditionOutput) ToGetIamPolicyBindingConditionPtrOutput() GetIamPolicyBindingConditionPtrOutput {
+	return o.ToGetIamPolicyBindingConditionPtrOutputWithContext(context.Background())
 }
 
-func (o GetIAMPolicyBindingConditionOutput) ToGetIAMPolicyBindingConditionPtrOutputWithContext(ctx context.Context) GetIAMPolicyBindingConditionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetIAMPolicyBindingCondition) *GetIAMPolicyBindingCondition {
+func (o GetIamPolicyBindingConditionOutput) ToGetIamPolicyBindingConditionPtrOutputWithContext(ctx context.Context) GetIamPolicyBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetIamPolicyBindingCondition) *GetIamPolicyBindingCondition {
 		return &v
-	}).(GetIAMPolicyBindingConditionPtrOutput)
+	}).(GetIamPolicyBindingConditionPtrOutput)
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-func (o GetIAMPolicyBindingConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetIAMPolicyBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o GetIamPolicyBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetIamPolicyBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // Textual representation of an expression in Common Expression Language syntax.
-func (o GetIAMPolicyBindingConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v GetIAMPolicyBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o GetIamPolicyBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIamPolicyBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 // A title for the expression, i.e. a short string describing its purpose.
-func (o GetIAMPolicyBindingConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v GetIAMPolicyBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o GetIamPolicyBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIamPolicyBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type GetIAMPolicyBindingConditionPtrOutput struct{ *pulumi.OutputState }
+type GetIamPolicyBindingConditionPtrOutput struct{ *pulumi.OutputState }
 
-func (GetIAMPolicyBindingConditionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetIAMPolicyBindingCondition)(nil)).Elem()
+func (GetIamPolicyBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetIamPolicyBindingCondition)(nil)).Elem()
 }
 
-func (o GetIAMPolicyBindingConditionPtrOutput) ToGetIAMPolicyBindingConditionPtrOutput() GetIAMPolicyBindingConditionPtrOutput {
+func (o GetIamPolicyBindingConditionPtrOutput) ToGetIamPolicyBindingConditionPtrOutput() GetIamPolicyBindingConditionPtrOutput {
 	return o
 }
 
-func (o GetIAMPolicyBindingConditionPtrOutput) ToGetIAMPolicyBindingConditionPtrOutputWithContext(ctx context.Context) GetIAMPolicyBindingConditionPtrOutput {
+func (o GetIamPolicyBindingConditionPtrOutput) ToGetIamPolicyBindingConditionPtrOutputWithContext(ctx context.Context) GetIamPolicyBindingConditionPtrOutput {
 	return o
 }
 
-func (o GetIAMPolicyBindingConditionPtrOutput) Elem() GetIAMPolicyBindingConditionOutput {
-	return o.ApplyT(func(v *GetIAMPolicyBindingCondition) GetIAMPolicyBindingCondition {
+func (o GetIamPolicyBindingConditionPtrOutput) Elem() GetIamPolicyBindingConditionOutput {
+	return o.ApplyT(func(v *GetIamPolicyBindingCondition) GetIamPolicyBindingCondition {
 		if v != nil {
 			return *v
 		}
-		var ret GetIAMPolicyBindingCondition
+		var ret GetIamPolicyBindingCondition
 		return ret
-	}).(GetIAMPolicyBindingConditionOutput)
+	}).(GetIamPolicyBindingConditionOutput)
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-func (o GetIAMPolicyBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetIAMPolicyBindingCondition) *string {
+func (o GetIamPolicyBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetIamPolicyBindingCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -2094,8 +2094,8 @@ func (o GetIAMPolicyBindingConditionPtrOutput) Description() pulumi.StringPtrOut
 }
 
 // Textual representation of an expression in Common Expression Language syntax.
-func (o GetIAMPolicyBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetIAMPolicyBindingCondition) *string {
+func (o GetIamPolicyBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetIamPolicyBindingCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -2104,8 +2104,8 @@ func (o GetIAMPolicyBindingConditionPtrOutput) Expression() pulumi.StringPtrOutp
 }
 
 // A title for the expression, i.e. a short string describing its purpose.
-func (o GetIAMPolicyBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetIAMPolicyBindingCondition) *string {
+func (o GetIamPolicyBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetIamPolicyBindingCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -2116,12 +2116,12 @@ func (o GetIAMPolicyBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApprovalSettingsEnrolledServiceInput)(nil)).Elem(), AccessApprovalSettingsEnrolledServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApprovalSettingsEnrolledServiceArrayInput)(nil)).Elem(), AccessApprovalSettingsEnrolledServiceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IAMBindingConditionInput)(nil)).Elem(), IAMBindingConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IAMBindingConditionPtrInput)(nil)).Elem(), IAMBindingConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IAMMemberConditionInput)(nil)).Elem(), IAMMemberConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IAMMemberConditionPtrInput)(nil)).Elem(), IAMMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IamAuditConfigAuditLogConfigInput)(nil)).Elem(), IamAuditConfigAuditLogConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IamAuditConfigAuditLogConfigArrayInput)(nil)).Elem(), IamAuditConfigAuditLogConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamBindingConditionInput)(nil)).Elem(), IamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamBindingConditionPtrInput)(nil)).Elem(), IamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamMemberConditionInput)(nil)).Elem(), IamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamMemberConditionPtrInput)(nil)).Elem(), IamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyBooleanPolicyInput)(nil)).Elem(), PolicyBooleanPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyBooleanPolicyPtrInput)(nil)).Elem(), PolicyBooleanPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyListPolicyInput)(nil)).Elem(), PolicyListPolicyArgs{})
@@ -2134,22 +2134,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyRestorePolicyPtrInput)(nil)).Elem(), PolicyRestorePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFoldersFolderInput)(nil)).Elem(), GetFoldersFolderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFoldersFolderArrayInput)(nil)).Elem(), GetFoldersFolderArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMPolicyAuditConfigInput)(nil)).Elem(), GetIAMPolicyAuditConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMPolicyAuditConfigArrayInput)(nil)).Elem(), GetIAMPolicyAuditConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMPolicyAuditConfigAuditLogConfigInput)(nil)).Elem(), GetIAMPolicyAuditConfigAuditLogConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMPolicyAuditConfigAuditLogConfigArrayInput)(nil)).Elem(), GetIAMPolicyAuditConfigAuditLogConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMPolicyBindingInput)(nil)).Elem(), GetIAMPolicyBindingArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMPolicyBindingArrayInput)(nil)).Elem(), GetIAMPolicyBindingArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMPolicyBindingConditionInput)(nil)).Elem(), GetIAMPolicyBindingConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMPolicyBindingConditionPtrInput)(nil)).Elem(), GetIAMPolicyBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIamPolicyAuditConfigInput)(nil)).Elem(), GetIamPolicyAuditConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIamPolicyAuditConfigArrayInput)(nil)).Elem(), GetIamPolicyAuditConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIamPolicyAuditConfigAuditLogConfigInput)(nil)).Elem(), GetIamPolicyAuditConfigAuditLogConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIamPolicyAuditConfigAuditLogConfigArrayInput)(nil)).Elem(), GetIamPolicyAuditConfigAuditLogConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIamPolicyBindingInput)(nil)).Elem(), GetIamPolicyBindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIamPolicyBindingArrayInput)(nil)).Elem(), GetIamPolicyBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIamPolicyBindingConditionInput)(nil)).Elem(), GetIamPolicyBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetIamPolicyBindingConditionPtrInput)(nil)).Elem(), GetIamPolicyBindingConditionArgs{})
 	pulumi.RegisterOutputType(AccessApprovalSettingsEnrolledServiceOutput{})
 	pulumi.RegisterOutputType(AccessApprovalSettingsEnrolledServiceArrayOutput{})
-	pulumi.RegisterOutputType(IAMBindingConditionOutput{})
-	pulumi.RegisterOutputType(IAMBindingConditionPtrOutput{})
-	pulumi.RegisterOutputType(IAMMemberConditionOutput{})
-	pulumi.RegisterOutputType(IAMMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(IamAuditConfigAuditLogConfigOutput{})
 	pulumi.RegisterOutputType(IamAuditConfigAuditLogConfigArrayOutput{})
+	pulumi.RegisterOutputType(IamBindingConditionOutput{})
+	pulumi.RegisterOutputType(IamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(IamMemberConditionOutput{})
+	pulumi.RegisterOutputType(IamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(PolicyBooleanPolicyOutput{})
 	pulumi.RegisterOutputType(PolicyBooleanPolicyPtrOutput{})
 	pulumi.RegisterOutputType(PolicyListPolicyOutput{})
@@ -2162,12 +2162,12 @@ func init() {
 	pulumi.RegisterOutputType(PolicyRestorePolicyPtrOutput{})
 	pulumi.RegisterOutputType(GetFoldersFolderOutput{})
 	pulumi.RegisterOutputType(GetFoldersFolderArrayOutput{})
-	pulumi.RegisterOutputType(GetIAMPolicyAuditConfigOutput{})
-	pulumi.RegisterOutputType(GetIAMPolicyAuditConfigArrayOutput{})
-	pulumi.RegisterOutputType(GetIAMPolicyAuditConfigAuditLogConfigOutput{})
-	pulumi.RegisterOutputType(GetIAMPolicyAuditConfigAuditLogConfigArrayOutput{})
-	pulumi.RegisterOutputType(GetIAMPolicyBindingOutput{})
-	pulumi.RegisterOutputType(GetIAMPolicyBindingArrayOutput{})
-	pulumi.RegisterOutputType(GetIAMPolicyBindingConditionOutput{})
-	pulumi.RegisterOutputType(GetIAMPolicyBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(GetIamPolicyAuditConfigOutput{})
+	pulumi.RegisterOutputType(GetIamPolicyAuditConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetIamPolicyAuditConfigAuditLogConfigOutput{})
+	pulumi.RegisterOutputType(GetIamPolicyAuditConfigAuditLogConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetIamPolicyBindingOutput{})
+	pulumi.RegisterOutputType(GetIamPolicyBindingArrayOutput{})
+	pulumi.RegisterOutputType(GetIamPolicyBindingConditionOutput{})
+	pulumi.RegisterOutputType(GetIamPolicyBindingConditionPtrOutput{})
 }

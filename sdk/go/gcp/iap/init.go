@@ -43,12 +43,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &TunnelIamMember{}
 	case "gcp:iap/tunnelIamPolicy:TunnelIamPolicy":
 		r = &TunnelIamPolicy{}
-	case "gcp:iap/tunnelInstanceIAMBinding:TunnelInstanceIAMBinding":
-		r = &TunnelInstanceIAMBinding{}
-	case "gcp:iap/tunnelInstanceIAMMember:TunnelInstanceIAMMember":
-		r = &TunnelInstanceIAMMember{}
-	case "gcp:iap/tunnelInstanceIAMPolicy:TunnelInstanceIAMPolicy":
-		r = &TunnelInstanceIAMPolicy{}
+	case "gcp:iap/tunnelInstanceIamBinding:TunnelInstanceIamBinding":
+		r = &TunnelInstanceIamBinding{}
+	case "gcp:iap/tunnelInstanceIamMember:TunnelInstanceIamMember":
+		r = &TunnelInstanceIamMember{}
+	case "gcp:iap/tunnelInstanceIamPolicy:TunnelInstanceIamPolicy":
+		r = &TunnelInstanceIamPolicy{}
 	case "gcp:iap/webBackendServiceIamBinding:WebBackendServiceIamBinding":
 		r = &WebBackendServiceIamBinding{}
 	case "gcp:iap/webBackendServiceIamMember:WebBackendServiceIamMember":
@@ -149,17 +149,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"iap/tunnelInstanceIAMBinding",
+		"iap/tunnelInstanceIamBinding",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"iap/tunnelInstanceIAMMember",
+		"iap/tunnelInstanceIamMember",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"iap/tunnelInstanceIAMPolicy",
+		"iap/tunnelInstanceIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

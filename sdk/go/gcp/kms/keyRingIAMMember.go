@@ -14,13 +14,13 @@ import (
 
 // Three different resources help you manage your IAM policy for KMS key ring. Each of these resources serves a different use case:
 //
-// * `kms.KeyRingIAMPolicy`: Authoritative. Sets the IAM policy for the key ring and replaces any existing policy already attached.
-// * `kms.KeyRingIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the key ring are preserved.
-// * `kms.KeyRingIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the key ring are preserved.
+// * `kms.KeyRingIamPolicy`: Authoritative. Sets the IAM policy for the key ring and replaces any existing policy already attached.
+// * `kms.KeyRingIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the key ring are preserved.
+// * `kms.KeyRingIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the key ring are preserved.
 //
-// > **Note:** `kms.KeyRingIAMPolicy` **cannot** be used in conjunction with `kms.KeyRingIAMBinding` and `kms.KeyRingIAMMember` or they will fight over what your policy should be.
+// > **Note:** `kms.KeyRingIamPolicy` **cannot** be used in conjunction with `kms.KeyRingIamBinding` and `kms.KeyRingIamMember` or they will fight over what your policy should be.
 //
-// > **Note:** `kms.KeyRingIAMBinding` resources **can be** used in conjunction with `kms.KeyRingIAMMember` resources **only if** they do not grant privilege to the same role.
+// > **Note:** `kms.KeyRingIamBinding` resources **can be** used in conjunction with `kms.KeyRingIamMember` resources **only if** they do not grant privilege to the same role.
 //
 // ## google\_kms\_key\_ring\_iam\_policy
 //
@@ -43,8 +43,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
+//			admin, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
 //					{
 //						Role: "roles/editor",
 //						Members: []string{
@@ -56,7 +56,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = kms.NewKeyRingIAMPolicy(ctx, "keyRing", &kms.KeyRingIAMPolicyArgs{
+//			_, err = kms.NewKeyRingIamPolicy(ctx, "keyRing", &kms.KeyRingIamPolicyArgs{
 //				KeyRingId:  keyring.ID(),
 //				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
@@ -90,8 +90,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
+//			admin, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
 //					{
 //						Role: "roles/editor",
 //						Members: []string{
@@ -108,7 +108,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = kms.NewKeyRingIAMPolicy(ctx, "keyRing", &kms.KeyRingIAMPolicyArgs{
+//			_, err = kms.NewKeyRingIamPolicy(ctx, "keyRing", &kms.KeyRingIamPolicyArgs{
 //				KeyRingId:  keyring.ID(),
 //				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
@@ -135,7 +135,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := kms.NewKeyRingIAMBinding(ctx, "keyRing", &kms.KeyRingIAMBindingArgs{
+//			_, err := kms.NewKeyRingIamBinding(ctx, "keyRing", &kms.KeyRingIamBindingArgs{
 //				KeyRingId: pulumi.String("your-key-ring-id"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -165,8 +165,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := kms.NewKeyRingIAMBinding(ctx, "keyRing", &kms.KeyRingIAMBindingArgs{
-//				Condition: &kms.KeyRingIAMBindingConditionArgs{
+//			_, err := kms.NewKeyRingIamBinding(ctx, "keyRing", &kms.KeyRingIamBindingArgs{
+//				Condition: &kms.KeyRingIamBindingConditionArgs{
 //					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
 //					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
 //					Title:       pulumi.String("expires_after_2019_12_31"),
@@ -200,7 +200,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := kms.NewKeyRingIAMMember(ctx, "keyRing", &kms.KeyRingIAMMemberArgs{
+//			_, err := kms.NewKeyRingIamMember(ctx, "keyRing", &kms.KeyRingIamMemberArgs{
 //				KeyRingId: pulumi.String("your-key-ring-id"),
 //				Member:    pulumi.String("user:jane@example.com"),
 //				Role:      pulumi.String("roles/cloudkms.admin"),
@@ -228,8 +228,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := kms.NewKeyRingIAMMember(ctx, "keyRing", &kms.KeyRingIAMMemberArgs{
-//				Condition: &kms.KeyRingIAMMemberConditionArgs{
+//			_, err := kms.NewKeyRingIamMember(ctx, "keyRing", &kms.KeyRingIamMemberArgs{
+//				Condition: &kms.KeyRingIamMemberConditionArgs{
 //					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
 //					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
 //					Title:       pulumi.String("expires_after_2019_12_31"),
@@ -255,7 +255,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:kms/keyRingIAMMember:KeyRingIAMMember key_ring_iam "your-project-id/location-name/key-ring-name roles/viewer user:foo@example.com"
+//	$ pulumi import gcp:kms/keyRingIamMember:KeyRingIamMember key_ring_iam "your-project-id/location-name/key-ring-name roles/viewer user:foo@example.com"
 //
 // ```
 //
@@ -265,7 +265,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:kms/keyRingIAMMember:KeyRingIAMMember key_ring_iam "your-project-id/location-name/key-ring-name roles/cloudkms.admin"
+//	$ pulumi import gcp:kms/keyRingIamMember:KeyRingIamMember key_ring_iam "your-project-id/location-name/key-ring-name roles/cloudkms.admin"
 //
 // ```
 //
@@ -275,15 +275,15 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:kms/keyRingIAMMember:KeyRingIAMMember key_ring_iam your-project-id/location-name/key-ring-name
+//	$ pulumi import gcp:kms/keyRingIamMember:KeyRingIamMember key_ring_iam your-project-id/location-name/key-ring-name
 //
 // ```
-type KeyRingIAMMember struct {
+type KeyRingIamMember struct {
 	pulumi.CustomResourceState
 
 	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
-	Condition KeyRingIAMMemberConditionPtrOutput `pulumi:"condition"`
+	Condition KeyRingIamMemberConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the key ring's IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The key ring ID, in the form
@@ -302,14 +302,14 @@ type KeyRingIAMMember struct {
 	KeyRingId pulumi.StringOutput `pulumi:"keyRingId"`
 	Member    pulumi.StringOutput `pulumi:"member"`
 	// The role that should be applied. Only one
-	// `kms.KeyRingIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `kms.KeyRingIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringOutput `pulumi:"role"`
 }
 
-// NewKeyRingIAMMember registers a new resource with the given unique name, arguments, and options.
-func NewKeyRingIAMMember(ctx *pulumi.Context,
-	name string, args *KeyRingIAMMemberArgs, opts ...pulumi.ResourceOption) (*KeyRingIAMMember, error) {
+// NewKeyRingIamMember registers a new resource with the given unique name, arguments, and options.
+func NewKeyRingIamMember(ctx *pulumi.Context,
+	name string, args *KeyRingIamMemberArgs, opts ...pulumi.ResourceOption) (*KeyRingIamMember, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -324,31 +324,31 @@ func NewKeyRingIAMMember(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Role'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
-	var resource KeyRingIAMMember
-	err := ctx.RegisterResource("gcp:kms/keyRingIAMMember:KeyRingIAMMember", name, args, &resource, opts...)
+	var resource KeyRingIamMember
+	err := ctx.RegisterResource("gcp:kms/keyRingIamMember:KeyRingIamMember", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// GetKeyRingIAMMember gets an existing KeyRingIAMMember resource's state with the given name, ID, and optional
+// GetKeyRingIamMember gets an existing KeyRingIamMember resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetKeyRingIAMMember(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *KeyRingIAMMemberState, opts ...pulumi.ResourceOption) (*KeyRingIAMMember, error) {
-	var resource KeyRingIAMMember
-	err := ctx.ReadResource("gcp:kms/keyRingIAMMember:KeyRingIAMMember", name, id, state, &resource, opts...)
+func GetKeyRingIamMember(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *KeyRingIamMemberState, opts ...pulumi.ResourceOption) (*KeyRingIamMember, error) {
+	var resource KeyRingIamMember
+	err := ctx.ReadResource("gcp:kms/keyRingIamMember:KeyRingIamMember", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering KeyRingIAMMember resources.
-type keyRingIAMMemberState struct {
+// Input properties used for looking up and filtering KeyRingIamMember resources.
+type keyRingIamMemberState struct {
 	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
-	Condition *KeyRingIAMMemberCondition `pulumi:"condition"`
+	Condition *KeyRingIamMemberCondition `pulumi:"condition"`
 	// (Computed) The etag of the key ring's IAM policy.
 	Etag *string `pulumi:"etag"`
 	// The key ring ID, in the form
@@ -367,15 +367,15 @@ type keyRingIAMMemberState struct {
 	KeyRingId *string `pulumi:"keyRingId"`
 	Member    *string `pulumi:"member"`
 	// The role that should be applied. Only one
-	// `kms.KeyRingIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `kms.KeyRingIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role *string `pulumi:"role"`
 }
 
-type KeyRingIAMMemberState struct {
+type KeyRingIamMemberState struct {
 	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
-	Condition KeyRingIAMMemberConditionPtrInput
+	Condition KeyRingIamMemberConditionPtrInput
 	// (Computed) The etag of the key ring's IAM policy.
 	Etag pulumi.StringPtrInput
 	// The key ring ID, in the form
@@ -394,19 +394,19 @@ type KeyRingIAMMemberState struct {
 	KeyRingId pulumi.StringPtrInput
 	Member    pulumi.StringPtrInput
 	// The role that should be applied. Only one
-	// `kms.KeyRingIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `kms.KeyRingIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringPtrInput
 }
 
-func (KeyRingIAMMemberState) ElementType() reflect.Type {
-	return reflect.TypeOf((*keyRingIAMMemberState)(nil)).Elem()
+func (KeyRingIamMemberState) ElementType() reflect.Type {
+	return reflect.TypeOf((*keyRingIamMemberState)(nil)).Elem()
 }
 
-type keyRingIAMMemberArgs struct {
+type keyRingIamMemberArgs struct {
 	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
-	Condition *KeyRingIAMMemberCondition `pulumi:"condition"`
+	Condition *KeyRingIamMemberCondition `pulumi:"condition"`
 	// The key ring ID, in the form
 	// `{project_id}/{location_name}/{key_ring_name}` or
 	// `{location_name}/{key_ring_name}`. In the second form, the provider's
@@ -423,16 +423,16 @@ type keyRingIAMMemberArgs struct {
 	KeyRingId string `pulumi:"keyRingId"`
 	Member    string `pulumi:"member"`
 	// The role that should be applied. Only one
-	// `kms.KeyRingIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `kms.KeyRingIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role string `pulumi:"role"`
 }
 
-// The set of arguments for constructing a KeyRingIAMMember resource.
-type KeyRingIAMMemberArgs struct {
+// The set of arguments for constructing a KeyRingIamMember resource.
+type KeyRingIamMemberArgs struct {
 	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
-	Condition KeyRingIAMMemberConditionPtrInput
+	Condition KeyRingIamMemberConditionPtrInput
 	// The key ring ID, in the form
 	// `{project_id}/{location_name}/{key_ring_name}` or
 	// `{location_name}/{key_ring_name}`. In the second form, the provider's
@@ -449,107 +449,107 @@ type KeyRingIAMMemberArgs struct {
 	KeyRingId pulumi.StringInput
 	Member    pulumi.StringInput
 	// The role that should be applied. Only one
-	// `kms.KeyRingIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `kms.KeyRingIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringInput
 }
 
-func (KeyRingIAMMemberArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*keyRingIAMMemberArgs)(nil)).Elem()
+func (KeyRingIamMemberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*keyRingIamMemberArgs)(nil)).Elem()
 }
 
-type KeyRingIAMMemberInput interface {
+type KeyRingIamMemberInput interface {
 	pulumi.Input
 
-	ToKeyRingIAMMemberOutput() KeyRingIAMMemberOutput
-	ToKeyRingIAMMemberOutputWithContext(ctx context.Context) KeyRingIAMMemberOutput
+	ToKeyRingIamMemberOutput() KeyRingIamMemberOutput
+	ToKeyRingIamMemberOutputWithContext(ctx context.Context) KeyRingIamMemberOutput
 }
 
-func (*KeyRingIAMMember) ElementType() reflect.Type {
-	return reflect.TypeOf((**KeyRingIAMMember)(nil)).Elem()
+func (*KeyRingIamMember) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyRingIamMember)(nil)).Elem()
 }
 
-func (i *KeyRingIAMMember) ToKeyRingIAMMemberOutput() KeyRingIAMMemberOutput {
-	return i.ToKeyRingIAMMemberOutputWithContext(context.Background())
+func (i *KeyRingIamMember) ToKeyRingIamMemberOutput() KeyRingIamMemberOutput {
+	return i.ToKeyRingIamMemberOutputWithContext(context.Background())
 }
 
-func (i *KeyRingIAMMember) ToKeyRingIAMMemberOutputWithContext(ctx context.Context) KeyRingIAMMemberOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIAMMemberOutput)
+func (i *KeyRingIamMember) ToKeyRingIamMemberOutputWithContext(ctx context.Context) KeyRingIamMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIamMemberOutput)
 }
 
-// KeyRingIAMMemberArrayInput is an input type that accepts KeyRingIAMMemberArray and KeyRingIAMMemberArrayOutput values.
-// You can construct a concrete instance of `KeyRingIAMMemberArrayInput` via:
+// KeyRingIamMemberArrayInput is an input type that accepts KeyRingIamMemberArray and KeyRingIamMemberArrayOutput values.
+// You can construct a concrete instance of `KeyRingIamMemberArrayInput` via:
 //
-//	KeyRingIAMMemberArray{ KeyRingIAMMemberArgs{...} }
-type KeyRingIAMMemberArrayInput interface {
+//	KeyRingIamMemberArray{ KeyRingIamMemberArgs{...} }
+type KeyRingIamMemberArrayInput interface {
 	pulumi.Input
 
-	ToKeyRingIAMMemberArrayOutput() KeyRingIAMMemberArrayOutput
-	ToKeyRingIAMMemberArrayOutputWithContext(context.Context) KeyRingIAMMemberArrayOutput
+	ToKeyRingIamMemberArrayOutput() KeyRingIamMemberArrayOutput
+	ToKeyRingIamMemberArrayOutputWithContext(context.Context) KeyRingIamMemberArrayOutput
 }
 
-type KeyRingIAMMemberArray []KeyRingIAMMemberInput
+type KeyRingIamMemberArray []KeyRingIamMemberInput
 
-func (KeyRingIAMMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*KeyRingIAMMember)(nil)).Elem()
+func (KeyRingIamMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*KeyRingIamMember)(nil)).Elem()
 }
 
-func (i KeyRingIAMMemberArray) ToKeyRingIAMMemberArrayOutput() KeyRingIAMMemberArrayOutput {
-	return i.ToKeyRingIAMMemberArrayOutputWithContext(context.Background())
+func (i KeyRingIamMemberArray) ToKeyRingIamMemberArrayOutput() KeyRingIamMemberArrayOutput {
+	return i.ToKeyRingIamMemberArrayOutputWithContext(context.Background())
 }
 
-func (i KeyRingIAMMemberArray) ToKeyRingIAMMemberArrayOutputWithContext(ctx context.Context) KeyRingIAMMemberArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIAMMemberArrayOutput)
+func (i KeyRingIamMemberArray) ToKeyRingIamMemberArrayOutputWithContext(ctx context.Context) KeyRingIamMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIamMemberArrayOutput)
 }
 
-// KeyRingIAMMemberMapInput is an input type that accepts KeyRingIAMMemberMap and KeyRingIAMMemberMapOutput values.
-// You can construct a concrete instance of `KeyRingIAMMemberMapInput` via:
+// KeyRingIamMemberMapInput is an input type that accepts KeyRingIamMemberMap and KeyRingIamMemberMapOutput values.
+// You can construct a concrete instance of `KeyRingIamMemberMapInput` via:
 //
-//	KeyRingIAMMemberMap{ "key": KeyRingIAMMemberArgs{...} }
-type KeyRingIAMMemberMapInput interface {
+//	KeyRingIamMemberMap{ "key": KeyRingIamMemberArgs{...} }
+type KeyRingIamMemberMapInput interface {
 	pulumi.Input
 
-	ToKeyRingIAMMemberMapOutput() KeyRingIAMMemberMapOutput
-	ToKeyRingIAMMemberMapOutputWithContext(context.Context) KeyRingIAMMemberMapOutput
+	ToKeyRingIamMemberMapOutput() KeyRingIamMemberMapOutput
+	ToKeyRingIamMemberMapOutputWithContext(context.Context) KeyRingIamMemberMapOutput
 }
 
-type KeyRingIAMMemberMap map[string]KeyRingIAMMemberInput
+type KeyRingIamMemberMap map[string]KeyRingIamMemberInput
 
-func (KeyRingIAMMemberMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*KeyRingIAMMember)(nil)).Elem()
+func (KeyRingIamMemberMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*KeyRingIamMember)(nil)).Elem()
 }
 
-func (i KeyRingIAMMemberMap) ToKeyRingIAMMemberMapOutput() KeyRingIAMMemberMapOutput {
-	return i.ToKeyRingIAMMemberMapOutputWithContext(context.Background())
+func (i KeyRingIamMemberMap) ToKeyRingIamMemberMapOutput() KeyRingIamMemberMapOutput {
+	return i.ToKeyRingIamMemberMapOutputWithContext(context.Background())
 }
 
-func (i KeyRingIAMMemberMap) ToKeyRingIAMMemberMapOutputWithContext(ctx context.Context) KeyRingIAMMemberMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIAMMemberMapOutput)
+func (i KeyRingIamMemberMap) ToKeyRingIamMemberMapOutputWithContext(ctx context.Context) KeyRingIamMemberMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIamMemberMapOutput)
 }
 
-type KeyRingIAMMemberOutput struct{ *pulumi.OutputState }
+type KeyRingIamMemberOutput struct{ *pulumi.OutputState }
 
-func (KeyRingIAMMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**KeyRingIAMMember)(nil)).Elem()
+func (KeyRingIamMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyRingIamMember)(nil)).Elem()
 }
 
-func (o KeyRingIAMMemberOutput) ToKeyRingIAMMemberOutput() KeyRingIAMMemberOutput {
+func (o KeyRingIamMemberOutput) ToKeyRingIamMemberOutput() KeyRingIamMemberOutput {
 	return o
 }
 
-func (o KeyRingIAMMemberOutput) ToKeyRingIAMMemberOutputWithContext(ctx context.Context) KeyRingIAMMemberOutput {
+func (o KeyRingIamMemberOutput) ToKeyRingIamMemberOutputWithContext(ctx context.Context) KeyRingIamMemberOutput {
 	return o
 }
 
 // ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 // Structure is documented below.
-func (o KeyRingIAMMemberOutput) Condition() KeyRingIAMMemberConditionPtrOutput {
-	return o.ApplyT(func(v *KeyRingIAMMember) KeyRingIAMMemberConditionPtrOutput { return v.Condition }).(KeyRingIAMMemberConditionPtrOutput)
+func (o KeyRingIamMemberOutput) Condition() KeyRingIamMemberConditionPtrOutput {
+	return o.ApplyT(func(v *KeyRingIamMember) KeyRingIamMemberConditionPtrOutput { return v.Condition }).(KeyRingIamMemberConditionPtrOutput)
 }
 
 // (Computed) The etag of the key ring's IAM policy.
-func (o KeyRingIAMMemberOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v *KeyRingIAMMember) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+func (o KeyRingIamMemberOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *KeyRingIamMember) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The key ring ID, in the form
@@ -565,66 +565,66 @@ func (o KeyRingIAMMemberOutput) Etag() pulumi.StringOutput {
 //   - **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
 //   - **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
 //   - **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-func (o KeyRingIAMMemberOutput) KeyRingId() pulumi.StringOutput {
-	return o.ApplyT(func(v *KeyRingIAMMember) pulumi.StringOutput { return v.KeyRingId }).(pulumi.StringOutput)
+func (o KeyRingIamMemberOutput) KeyRingId() pulumi.StringOutput {
+	return o.ApplyT(func(v *KeyRingIamMember) pulumi.StringOutput { return v.KeyRingId }).(pulumi.StringOutput)
 }
 
-func (o KeyRingIAMMemberOutput) Member() pulumi.StringOutput {
-	return o.ApplyT(func(v *KeyRingIAMMember) pulumi.StringOutput { return v.Member }).(pulumi.StringOutput)
+func (o KeyRingIamMemberOutput) Member() pulumi.StringOutput {
+	return o.ApplyT(func(v *KeyRingIamMember) pulumi.StringOutput { return v.Member }).(pulumi.StringOutput)
 }
 
 // The role that should be applied. Only one
-// `kms.KeyRingIAMBinding` can be used per role. Note that custom roles must be of the format
+// `kms.KeyRingIamBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
-func (o KeyRingIAMMemberOutput) Role() pulumi.StringOutput {
-	return o.ApplyT(func(v *KeyRingIAMMember) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
+func (o KeyRingIamMemberOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v *KeyRingIamMember) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }
 
-type KeyRingIAMMemberArrayOutput struct{ *pulumi.OutputState }
+type KeyRingIamMemberArrayOutput struct{ *pulumi.OutputState }
 
-func (KeyRingIAMMemberArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*KeyRingIAMMember)(nil)).Elem()
+func (KeyRingIamMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*KeyRingIamMember)(nil)).Elem()
 }
 
-func (o KeyRingIAMMemberArrayOutput) ToKeyRingIAMMemberArrayOutput() KeyRingIAMMemberArrayOutput {
+func (o KeyRingIamMemberArrayOutput) ToKeyRingIamMemberArrayOutput() KeyRingIamMemberArrayOutput {
 	return o
 }
 
-func (o KeyRingIAMMemberArrayOutput) ToKeyRingIAMMemberArrayOutputWithContext(ctx context.Context) KeyRingIAMMemberArrayOutput {
+func (o KeyRingIamMemberArrayOutput) ToKeyRingIamMemberArrayOutputWithContext(ctx context.Context) KeyRingIamMemberArrayOutput {
 	return o
 }
 
-func (o KeyRingIAMMemberArrayOutput) Index(i pulumi.IntInput) KeyRingIAMMemberOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KeyRingIAMMember {
-		return vs[0].([]*KeyRingIAMMember)[vs[1].(int)]
-	}).(KeyRingIAMMemberOutput)
+func (o KeyRingIamMemberArrayOutput) Index(i pulumi.IntInput) KeyRingIamMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KeyRingIamMember {
+		return vs[0].([]*KeyRingIamMember)[vs[1].(int)]
+	}).(KeyRingIamMemberOutput)
 }
 
-type KeyRingIAMMemberMapOutput struct{ *pulumi.OutputState }
+type KeyRingIamMemberMapOutput struct{ *pulumi.OutputState }
 
-func (KeyRingIAMMemberMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*KeyRingIAMMember)(nil)).Elem()
+func (KeyRingIamMemberMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*KeyRingIamMember)(nil)).Elem()
 }
 
-func (o KeyRingIAMMemberMapOutput) ToKeyRingIAMMemberMapOutput() KeyRingIAMMemberMapOutput {
+func (o KeyRingIamMemberMapOutput) ToKeyRingIamMemberMapOutput() KeyRingIamMemberMapOutput {
 	return o
 }
 
-func (o KeyRingIAMMemberMapOutput) ToKeyRingIAMMemberMapOutputWithContext(ctx context.Context) KeyRingIAMMemberMapOutput {
+func (o KeyRingIamMemberMapOutput) ToKeyRingIamMemberMapOutputWithContext(ctx context.Context) KeyRingIamMemberMapOutput {
 	return o
 }
 
-func (o KeyRingIAMMemberMapOutput) MapIndex(k pulumi.StringInput) KeyRingIAMMemberOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *KeyRingIAMMember {
-		return vs[0].(map[string]*KeyRingIAMMember)[vs[1].(string)]
-	}).(KeyRingIAMMemberOutput)
+func (o KeyRingIamMemberMapOutput) MapIndex(k pulumi.StringInput) KeyRingIamMemberOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *KeyRingIamMember {
+		return vs[0].(map[string]*KeyRingIamMember)[vs[1].(string)]
+	}).(KeyRingIamMemberOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingIAMMemberInput)(nil)).Elem(), &KeyRingIAMMember{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingIAMMemberArrayInput)(nil)).Elem(), KeyRingIAMMemberArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingIAMMemberMapInput)(nil)).Elem(), KeyRingIAMMemberMap{})
-	pulumi.RegisterOutputType(KeyRingIAMMemberOutput{})
-	pulumi.RegisterOutputType(KeyRingIAMMemberArrayOutput{})
-	pulumi.RegisterOutputType(KeyRingIAMMemberMapOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingIamMemberInput)(nil)).Elem(), &KeyRingIamMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingIamMemberArrayInput)(nil)).Elem(), KeyRingIamMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingIamMemberMapInput)(nil)).Elem(), KeyRingIamMemberMap{})
+	pulumi.RegisterOutputType(KeyRingIamMemberOutput{})
+	pulumi.RegisterOutputType(KeyRingIamMemberArrayOutput{})
+	pulumi.RegisterOutputType(KeyRingIamMemberMapOutput{})
 }

@@ -121,7 +121,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = storage.NewBucketIAMMember(ctx, "viewer", &storage.BucketIAMMemberArgs{
+//			_, err = storage.NewBucketIamMember(ctx, "viewer", &storage.BucketIamMemberArgs{
 //				Bucket: bucket.Name,
 //				Role:   pulumi.String("roles/storage.objectViewer"),
 //				Member: pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-datastream.iam.gserviceaccount.com", project.Number)),
@@ -129,7 +129,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = storage.NewBucketIAMMember(ctx, "creator", &storage.BucketIAMMemberArgs{
+//			_, err = storage.NewBucketIamMember(ctx, "creator", &storage.BucketIamMemberArgs{
 //				Bucket: bucket.Name,
 //				Role:   pulumi.String("roles/storage.objectCreator"),
 //				Member: pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-datastream.iam.gserviceaccount.com", project.Number)),
@@ -137,7 +137,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = storage.NewBucketIAMMember(ctx, "reader", &storage.BucketIAMMemberArgs{
+//			_, err = storage.NewBucketIamMember(ctx, "reader", &storage.BucketIamMemberArgs{
 //				Bucket: bucket.Name,
 //				Role:   pulumi.String("roles/storage.legacyBucketReader"),
 //				Member: pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-datastream.iam.gserviceaccount.com", project.Number)),
@@ -145,7 +145,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			keyUser, err := kms.NewCryptoKeyIAMMember(ctx, "keyUser", &kms.CryptoKeyIAMMemberArgs{
+//			keyUser, err := kms.NewCryptoKeyIamMember(ctx, "keyUser", &kms.CryptoKeyIamMemberArgs{
 //				CryptoKeyId: pulumi.String("kms-name"),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Member:      pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-datastream.iam.gserviceaccount.com", project.Number)),
@@ -746,7 +746,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			bigqueryKeyUser, err := kms.NewCryptoKeyIAMMember(ctx, "bigqueryKeyUser", &kms.CryptoKeyIAMMemberArgs{
+//			bigqueryKeyUser, err := kms.NewCryptoKeyIamMember(ctx, "bigqueryKeyUser", &kms.CryptoKeyIamMemberArgs{
 //				CryptoKeyId: pulumi.String("bigquery-kms-name"),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Member:      pulumi.String(fmt.Sprintf("serviceAccount:%v", bqSa.Email)),

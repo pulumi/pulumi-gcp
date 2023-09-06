@@ -14,16 +14,16 @@ import (
 
 // Three different resources help you manage your IAM policy for a Spanner database. Each of these resources serves a different use case:
 //
-// * `spanner.DatabaseIAMPolicy`: Authoritative. Sets the IAM policy for the database and replaces any existing policy already attached.
+// * `spanner.DatabaseIamPolicy`: Authoritative. Sets the IAM policy for the database and replaces any existing policy already attached.
 //
-// > **Warning:** It's entirely possibly to lock yourself out of your database using `spanner.DatabaseIAMPolicy`. Any permissions granted by default will be removed unless you include them in your config.
+// > **Warning:** It's entirely possibly to lock yourself out of your database using `spanner.DatabaseIamPolicy`. Any permissions granted by default will be removed unless you include them in your config.
 //
-// * `spanner.DatabaseIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the database are preserved.
-// * `spanner.DatabaseIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the database are preserved.
+// * `spanner.DatabaseIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the database are preserved.
+// * `spanner.DatabaseIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the database are preserved.
 //
-// > **Note:** `spanner.DatabaseIAMPolicy` **cannot** be used in conjunction with `spanner.DatabaseIAMBinding` and `spanner.DatabaseIAMMember` or they will fight over what your policy should be.
+// > **Note:** `spanner.DatabaseIamPolicy` **cannot** be used in conjunction with `spanner.DatabaseIamBinding` and `spanner.DatabaseIamMember` or they will fight over what your policy should be.
 //
-// > **Note:** `spanner.DatabaseIAMBinding` resources **can be** used in conjunction with `spanner.DatabaseIAMMember` resources **only if** they do not grant privilege to the same role.
+// > **Note:** `spanner.DatabaseIamBinding` resources **can be** used in conjunction with `spanner.DatabaseIamMember` resources **only if** they do not grant privilege to the same role.
 //
 // ## google\_spanner\_database\_iam\_policy
 //
@@ -40,8 +40,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
+//			admin, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
 //					{
 //						Role: "roles/editor",
 //						Members: []string{
@@ -53,7 +53,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = spanner.NewDatabaseIAMPolicy(ctx, "database", &spanner.DatabaseIAMPolicyArgs{
+//			_, err = spanner.NewDatabaseIamPolicy(ctx, "database", &spanner.DatabaseIamPolicyArgs{
 //				Instance:   pulumi.String("your-instance-name"),
 //				Database:   pulumi.String("your-database-name"),
 //				PolicyData: *pulumi.String(admin.PolicyData),
@@ -81,7 +81,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := spanner.NewDatabaseIAMBinding(ctx, "database", &spanner.DatabaseIAMBindingArgs{
+//			_, err := spanner.NewDatabaseIamBinding(ctx, "database", &spanner.DatabaseIamBindingArgs{
 //				Database: pulumi.String("your-database-name"),
 //				Instance: pulumi.String("your-instance-name"),
 //				Members: pulumi.StringArray{
@@ -112,7 +112,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := spanner.NewDatabaseIAMMember(ctx, "database", &spanner.DatabaseIAMMemberArgs{
+//			_, err := spanner.NewDatabaseIamMember(ctx, "database", &spanner.DatabaseIamMemberArgs{
 //				Database: pulumi.String("your-database-name"),
 //				Instance: pulumi.String("your-instance-name"),
 //				Member:   pulumi.String("user:jane@example.com"),
@@ -133,7 +133,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:spanner/databaseIAMBinding:DatabaseIAMBinding database "project-name/instance-name/database-name roles/viewer user:foo@example.com"
+//	$ pulumi import gcp:spanner/databaseIamBinding:DatabaseIamBinding database "project-name/instance-name/database-name roles/viewer user:foo@example.com"
 //
 // ```
 //
@@ -141,7 +141,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:spanner/databaseIAMBinding:DatabaseIAMBinding database "project-name/instance-name/database-name roles/viewer"
+//	$ pulumi import gcp:spanner/databaseIamBinding:DatabaseIamBinding database "project-name/instance-name/database-name roles/viewer"
 //
 // ```
 //
@@ -149,17 +149,17 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:spanner/databaseIAMBinding:DatabaseIAMBinding database project-name/instance-name/database-name
+//	$ pulumi import gcp:spanner/databaseIamBinding:DatabaseIamBinding database project-name/instance-name/database-name
 //
 // ```
 //
 //	-> **Custom Roles:** If you're importing a IAM resource with a custom role, make sure to use the
 //
 // full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
-type DatabaseIAMBinding struct {
+type DatabaseIamBinding struct {
 	pulumi.CustomResourceState
 
-	Condition DatabaseIAMBindingConditionPtrOutput `pulumi:"condition"`
+	Condition DatabaseIamBindingConditionPtrOutput `pulumi:"condition"`
 	// The name of the Spanner database.
 	Database pulumi.StringOutput `pulumi:"database"`
 	// (Computed) The etag of the database's IAM policy.
@@ -180,14 +180,14 @@ type DatabaseIAMBinding struct {
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The role that should be applied. Only one
-	// `spanner.DatabaseIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `spanner.DatabaseIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringOutput `pulumi:"role"`
 }
 
-// NewDatabaseIAMBinding registers a new resource with the given unique name, arguments, and options.
-func NewDatabaseIAMBinding(ctx *pulumi.Context,
-	name string, args *DatabaseIAMBindingArgs, opts ...pulumi.ResourceOption) (*DatabaseIAMBinding, error) {
+// NewDatabaseIamBinding registers a new resource with the given unique name, arguments, and options.
+func NewDatabaseIamBinding(ctx *pulumi.Context,
+	name string, args *DatabaseIamBindingArgs, opts ...pulumi.ResourceOption) (*DatabaseIamBinding, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -205,29 +205,29 @@ func NewDatabaseIAMBinding(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Role'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
-	var resource DatabaseIAMBinding
-	err := ctx.RegisterResource("gcp:spanner/databaseIAMBinding:DatabaseIAMBinding", name, args, &resource, opts...)
+	var resource DatabaseIamBinding
+	err := ctx.RegisterResource("gcp:spanner/databaseIamBinding:DatabaseIamBinding", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// GetDatabaseIAMBinding gets an existing DatabaseIAMBinding resource's state with the given name, ID, and optional
+// GetDatabaseIamBinding gets an existing DatabaseIamBinding resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetDatabaseIAMBinding(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *DatabaseIAMBindingState, opts ...pulumi.ResourceOption) (*DatabaseIAMBinding, error) {
-	var resource DatabaseIAMBinding
-	err := ctx.ReadResource("gcp:spanner/databaseIAMBinding:DatabaseIAMBinding", name, id, state, &resource, opts...)
+func GetDatabaseIamBinding(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *DatabaseIamBindingState, opts ...pulumi.ResourceOption) (*DatabaseIamBinding, error) {
+	var resource DatabaseIamBinding
+	err := ctx.ReadResource("gcp:spanner/databaseIamBinding:DatabaseIamBinding", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering DatabaseIAMBinding resources.
-type databaseIAMBindingState struct {
-	Condition *DatabaseIAMBindingCondition `pulumi:"condition"`
+// Input properties used for looking up and filtering DatabaseIamBinding resources.
+type databaseIamBindingState struct {
+	Condition *DatabaseIamBindingCondition `pulumi:"condition"`
 	// The name of the Spanner database.
 	Database *string `pulumi:"database"`
 	// (Computed) The etag of the database's IAM policy.
@@ -248,13 +248,13 @@ type databaseIAMBindingState struct {
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The role that should be applied. Only one
-	// `spanner.DatabaseIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `spanner.DatabaseIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role *string `pulumi:"role"`
 }
 
-type DatabaseIAMBindingState struct {
-	Condition DatabaseIAMBindingConditionPtrInput
+type DatabaseIamBindingState struct {
+	Condition DatabaseIamBindingConditionPtrInput
 	// The name of the Spanner database.
 	Database pulumi.StringPtrInput
 	// (Computed) The etag of the database's IAM policy.
@@ -275,17 +275,17 @@ type DatabaseIAMBindingState struct {
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The role that should be applied. Only one
-	// `spanner.DatabaseIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `spanner.DatabaseIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringPtrInput
 }
 
-func (DatabaseIAMBindingState) ElementType() reflect.Type {
-	return reflect.TypeOf((*databaseIAMBindingState)(nil)).Elem()
+func (DatabaseIamBindingState) ElementType() reflect.Type {
+	return reflect.TypeOf((*databaseIamBindingState)(nil)).Elem()
 }
 
-type databaseIAMBindingArgs struct {
-	Condition *DatabaseIAMBindingCondition `pulumi:"condition"`
+type databaseIamBindingArgs struct {
+	Condition *DatabaseIamBindingCondition `pulumi:"condition"`
 	// The name of the Spanner database.
 	Database string `pulumi:"database"`
 	// The name of the Spanner instance the database belongs to.
@@ -304,14 +304,14 @@ type databaseIAMBindingArgs struct {
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The role that should be applied. Only one
-	// `spanner.DatabaseIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `spanner.DatabaseIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role string `pulumi:"role"`
 }
 
-// The set of arguments for constructing a DatabaseIAMBinding resource.
-type DatabaseIAMBindingArgs struct {
-	Condition DatabaseIAMBindingConditionPtrInput
+// The set of arguments for constructing a DatabaseIamBinding resource.
+type DatabaseIamBindingArgs struct {
+	Condition DatabaseIamBindingConditionPtrInput
 	// The name of the Spanner database.
 	Database pulumi.StringInput
 	// The name of the Spanner instance the database belongs to.
@@ -330,110 +330,110 @@ type DatabaseIAMBindingArgs struct {
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The role that should be applied. Only one
-	// `spanner.DatabaseIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `spanner.DatabaseIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringInput
 }
 
-func (DatabaseIAMBindingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*databaseIAMBindingArgs)(nil)).Elem()
+func (DatabaseIamBindingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*databaseIamBindingArgs)(nil)).Elem()
 }
 
-type DatabaseIAMBindingInput interface {
+type DatabaseIamBindingInput interface {
 	pulumi.Input
 
-	ToDatabaseIAMBindingOutput() DatabaseIAMBindingOutput
-	ToDatabaseIAMBindingOutputWithContext(ctx context.Context) DatabaseIAMBindingOutput
+	ToDatabaseIamBindingOutput() DatabaseIamBindingOutput
+	ToDatabaseIamBindingOutputWithContext(ctx context.Context) DatabaseIamBindingOutput
 }
 
-func (*DatabaseIAMBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatabaseIAMBinding)(nil)).Elem()
+func (*DatabaseIamBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseIamBinding)(nil)).Elem()
 }
 
-func (i *DatabaseIAMBinding) ToDatabaseIAMBindingOutput() DatabaseIAMBindingOutput {
-	return i.ToDatabaseIAMBindingOutputWithContext(context.Background())
+func (i *DatabaseIamBinding) ToDatabaseIamBindingOutput() DatabaseIamBindingOutput {
+	return i.ToDatabaseIamBindingOutputWithContext(context.Background())
 }
 
-func (i *DatabaseIAMBinding) ToDatabaseIAMBindingOutputWithContext(ctx context.Context) DatabaseIAMBindingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMBindingOutput)
+func (i *DatabaseIamBinding) ToDatabaseIamBindingOutputWithContext(ctx context.Context) DatabaseIamBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIamBindingOutput)
 }
 
-// DatabaseIAMBindingArrayInput is an input type that accepts DatabaseIAMBindingArray and DatabaseIAMBindingArrayOutput values.
-// You can construct a concrete instance of `DatabaseIAMBindingArrayInput` via:
+// DatabaseIamBindingArrayInput is an input type that accepts DatabaseIamBindingArray and DatabaseIamBindingArrayOutput values.
+// You can construct a concrete instance of `DatabaseIamBindingArrayInput` via:
 //
-//	DatabaseIAMBindingArray{ DatabaseIAMBindingArgs{...} }
-type DatabaseIAMBindingArrayInput interface {
+//	DatabaseIamBindingArray{ DatabaseIamBindingArgs{...} }
+type DatabaseIamBindingArrayInput interface {
 	pulumi.Input
 
-	ToDatabaseIAMBindingArrayOutput() DatabaseIAMBindingArrayOutput
-	ToDatabaseIAMBindingArrayOutputWithContext(context.Context) DatabaseIAMBindingArrayOutput
+	ToDatabaseIamBindingArrayOutput() DatabaseIamBindingArrayOutput
+	ToDatabaseIamBindingArrayOutputWithContext(context.Context) DatabaseIamBindingArrayOutput
 }
 
-type DatabaseIAMBindingArray []DatabaseIAMBindingInput
+type DatabaseIamBindingArray []DatabaseIamBindingInput
 
-func (DatabaseIAMBindingArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*DatabaseIAMBinding)(nil)).Elem()
+func (DatabaseIamBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*DatabaseIamBinding)(nil)).Elem()
 }
 
-func (i DatabaseIAMBindingArray) ToDatabaseIAMBindingArrayOutput() DatabaseIAMBindingArrayOutput {
-	return i.ToDatabaseIAMBindingArrayOutputWithContext(context.Background())
+func (i DatabaseIamBindingArray) ToDatabaseIamBindingArrayOutput() DatabaseIamBindingArrayOutput {
+	return i.ToDatabaseIamBindingArrayOutputWithContext(context.Background())
 }
 
-func (i DatabaseIAMBindingArray) ToDatabaseIAMBindingArrayOutputWithContext(ctx context.Context) DatabaseIAMBindingArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMBindingArrayOutput)
+func (i DatabaseIamBindingArray) ToDatabaseIamBindingArrayOutputWithContext(ctx context.Context) DatabaseIamBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIamBindingArrayOutput)
 }
 
-// DatabaseIAMBindingMapInput is an input type that accepts DatabaseIAMBindingMap and DatabaseIAMBindingMapOutput values.
-// You can construct a concrete instance of `DatabaseIAMBindingMapInput` via:
+// DatabaseIamBindingMapInput is an input type that accepts DatabaseIamBindingMap and DatabaseIamBindingMapOutput values.
+// You can construct a concrete instance of `DatabaseIamBindingMapInput` via:
 //
-//	DatabaseIAMBindingMap{ "key": DatabaseIAMBindingArgs{...} }
-type DatabaseIAMBindingMapInput interface {
+//	DatabaseIamBindingMap{ "key": DatabaseIamBindingArgs{...} }
+type DatabaseIamBindingMapInput interface {
 	pulumi.Input
 
-	ToDatabaseIAMBindingMapOutput() DatabaseIAMBindingMapOutput
-	ToDatabaseIAMBindingMapOutputWithContext(context.Context) DatabaseIAMBindingMapOutput
+	ToDatabaseIamBindingMapOutput() DatabaseIamBindingMapOutput
+	ToDatabaseIamBindingMapOutputWithContext(context.Context) DatabaseIamBindingMapOutput
 }
 
-type DatabaseIAMBindingMap map[string]DatabaseIAMBindingInput
+type DatabaseIamBindingMap map[string]DatabaseIamBindingInput
 
-func (DatabaseIAMBindingMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*DatabaseIAMBinding)(nil)).Elem()
+func (DatabaseIamBindingMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*DatabaseIamBinding)(nil)).Elem()
 }
 
-func (i DatabaseIAMBindingMap) ToDatabaseIAMBindingMapOutput() DatabaseIAMBindingMapOutput {
-	return i.ToDatabaseIAMBindingMapOutputWithContext(context.Background())
+func (i DatabaseIamBindingMap) ToDatabaseIamBindingMapOutput() DatabaseIamBindingMapOutput {
+	return i.ToDatabaseIamBindingMapOutputWithContext(context.Background())
 }
 
-func (i DatabaseIAMBindingMap) ToDatabaseIAMBindingMapOutputWithContext(ctx context.Context) DatabaseIAMBindingMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMBindingMapOutput)
+func (i DatabaseIamBindingMap) ToDatabaseIamBindingMapOutputWithContext(ctx context.Context) DatabaseIamBindingMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIamBindingMapOutput)
 }
 
-type DatabaseIAMBindingOutput struct{ *pulumi.OutputState }
+type DatabaseIamBindingOutput struct{ *pulumi.OutputState }
 
-func (DatabaseIAMBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatabaseIAMBinding)(nil)).Elem()
+func (DatabaseIamBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseIamBinding)(nil)).Elem()
 }
 
-func (o DatabaseIAMBindingOutput) ToDatabaseIAMBindingOutput() DatabaseIAMBindingOutput {
+func (o DatabaseIamBindingOutput) ToDatabaseIamBindingOutput() DatabaseIamBindingOutput {
 	return o
 }
 
-func (o DatabaseIAMBindingOutput) ToDatabaseIAMBindingOutputWithContext(ctx context.Context) DatabaseIAMBindingOutput {
+func (o DatabaseIamBindingOutput) ToDatabaseIamBindingOutputWithContext(ctx context.Context) DatabaseIamBindingOutput {
 	return o
 }
 
-func (o DatabaseIAMBindingOutput) Condition() DatabaseIAMBindingConditionPtrOutput {
-	return o.ApplyT(func(v *DatabaseIAMBinding) DatabaseIAMBindingConditionPtrOutput { return v.Condition }).(DatabaseIAMBindingConditionPtrOutput)
+func (o DatabaseIamBindingOutput) Condition() DatabaseIamBindingConditionPtrOutput {
+	return o.ApplyT(func(v *DatabaseIamBinding) DatabaseIamBindingConditionPtrOutput { return v.Condition }).(DatabaseIamBindingConditionPtrOutput)
 }
 
 // The name of the Spanner database.
-func (o DatabaseIAMBindingOutput) Database() pulumi.StringOutput {
-	return o.ApplyT(func(v *DatabaseIAMBinding) pulumi.StringOutput { return v.Database }).(pulumi.StringOutput)
+func (o DatabaseIamBindingOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseIamBinding) pulumi.StringOutput { return v.Database }).(pulumi.StringOutput)
 }
 
 // (Computed) The etag of the database's IAM policy.
-func (o DatabaseIAMBindingOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v *DatabaseIAMBinding) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+func (o DatabaseIamBindingOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseIamBinding) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The name of the Spanner instance the database belongs to.
@@ -446,72 +446,72 @@ func (o DatabaseIAMBindingOutput) Etag() pulumi.StringOutput {
 //   - **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
 //   - **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
 //   - **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-func (o DatabaseIAMBindingOutput) Instance() pulumi.StringOutput {
-	return o.ApplyT(func(v *DatabaseIAMBinding) pulumi.StringOutput { return v.Instance }).(pulumi.StringOutput)
+func (o DatabaseIamBindingOutput) Instance() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseIamBinding) pulumi.StringOutput { return v.Instance }).(pulumi.StringOutput)
 }
 
-func (o DatabaseIAMBindingOutput) Members() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *DatabaseIAMBinding) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
+func (o DatabaseIamBindingOutput) Members() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DatabaseIamBinding) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
 }
 
 // The ID of the project in which the resource belongs. If it
 // is not provided, the provider project is used.
-func (o DatabaseIAMBindingOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func(v *DatabaseIAMBinding) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+func (o DatabaseIamBindingOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseIamBinding) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The role that should be applied. Only one
-// `spanner.DatabaseIAMBinding` can be used per role. Note that custom roles must be of the format
+// `spanner.DatabaseIamBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
-func (o DatabaseIAMBindingOutput) Role() pulumi.StringOutput {
-	return o.ApplyT(func(v *DatabaseIAMBinding) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
+func (o DatabaseIamBindingOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseIamBinding) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }
 
-type DatabaseIAMBindingArrayOutput struct{ *pulumi.OutputState }
+type DatabaseIamBindingArrayOutput struct{ *pulumi.OutputState }
 
-func (DatabaseIAMBindingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*DatabaseIAMBinding)(nil)).Elem()
+func (DatabaseIamBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*DatabaseIamBinding)(nil)).Elem()
 }
 
-func (o DatabaseIAMBindingArrayOutput) ToDatabaseIAMBindingArrayOutput() DatabaseIAMBindingArrayOutput {
+func (o DatabaseIamBindingArrayOutput) ToDatabaseIamBindingArrayOutput() DatabaseIamBindingArrayOutput {
 	return o
 }
 
-func (o DatabaseIAMBindingArrayOutput) ToDatabaseIAMBindingArrayOutputWithContext(ctx context.Context) DatabaseIAMBindingArrayOutput {
+func (o DatabaseIamBindingArrayOutput) ToDatabaseIamBindingArrayOutputWithContext(ctx context.Context) DatabaseIamBindingArrayOutput {
 	return o
 }
 
-func (o DatabaseIAMBindingArrayOutput) Index(i pulumi.IntInput) DatabaseIAMBindingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DatabaseIAMBinding {
-		return vs[0].([]*DatabaseIAMBinding)[vs[1].(int)]
-	}).(DatabaseIAMBindingOutput)
+func (o DatabaseIamBindingArrayOutput) Index(i pulumi.IntInput) DatabaseIamBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DatabaseIamBinding {
+		return vs[0].([]*DatabaseIamBinding)[vs[1].(int)]
+	}).(DatabaseIamBindingOutput)
 }
 
-type DatabaseIAMBindingMapOutput struct{ *pulumi.OutputState }
+type DatabaseIamBindingMapOutput struct{ *pulumi.OutputState }
 
-func (DatabaseIAMBindingMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*DatabaseIAMBinding)(nil)).Elem()
+func (DatabaseIamBindingMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*DatabaseIamBinding)(nil)).Elem()
 }
 
-func (o DatabaseIAMBindingMapOutput) ToDatabaseIAMBindingMapOutput() DatabaseIAMBindingMapOutput {
+func (o DatabaseIamBindingMapOutput) ToDatabaseIamBindingMapOutput() DatabaseIamBindingMapOutput {
 	return o
 }
 
-func (o DatabaseIAMBindingMapOutput) ToDatabaseIAMBindingMapOutputWithContext(ctx context.Context) DatabaseIAMBindingMapOutput {
+func (o DatabaseIamBindingMapOutput) ToDatabaseIamBindingMapOutputWithContext(ctx context.Context) DatabaseIamBindingMapOutput {
 	return o
 }
 
-func (o DatabaseIAMBindingMapOutput) MapIndex(k pulumi.StringInput) DatabaseIAMBindingOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DatabaseIAMBinding {
-		return vs[0].(map[string]*DatabaseIAMBinding)[vs[1].(string)]
-	}).(DatabaseIAMBindingOutput)
+func (o DatabaseIamBindingMapOutput) MapIndex(k pulumi.StringInput) DatabaseIamBindingOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DatabaseIamBinding {
+		return vs[0].(map[string]*DatabaseIamBinding)[vs[1].(string)]
+	}).(DatabaseIamBindingOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseIAMBindingInput)(nil)).Elem(), &DatabaseIAMBinding{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseIAMBindingArrayInput)(nil)).Elem(), DatabaseIAMBindingArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseIAMBindingMapInput)(nil)).Elem(), DatabaseIAMBindingMap{})
-	pulumi.RegisterOutputType(DatabaseIAMBindingOutput{})
-	pulumi.RegisterOutputType(DatabaseIAMBindingArrayOutput{})
-	pulumi.RegisterOutputType(DatabaseIAMBindingMapOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseIamBindingInput)(nil)).Elem(), &DatabaseIamBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseIamBindingArrayInput)(nil)).Elem(), DatabaseIamBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseIamBindingMapInput)(nil)).Elem(), DatabaseIamBindingMap{})
+	pulumi.RegisterOutputType(DatabaseIamBindingOutput{})
+	pulumi.RegisterOutputType(DatabaseIamBindingArrayOutput{})
+	pulumi.RegisterOutputType(DatabaseIamBindingMapOutput{})
 }

@@ -202,7 +202,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			viewer, err := projects.NewIAMMember(ctx, "viewer", &projects.IAMMemberArgs{
+//			viewer, err := projects.NewIamMember(ctx, "viewer", &projects.IamMemberArgs{
 //				Project: *pulumi.String(project.ProjectId),
 //				Role:    pulumi.String("roles/bigquery.metadataViewer"),
 //				Member:  pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-pubsub.iam.gserviceaccount.com", project.Number)),
@@ -210,7 +210,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			editor, err := projects.NewIAMMember(ctx, "editor", &projects.IAMMemberArgs{
+//			editor, err := projects.NewIamMember(ctx, "editor", &projects.IamMemberArgs{
 //				Project: *pulumi.String(project.ProjectId),
 //				Role:    pulumi.String("roles/bigquery.dataEditor"),
 //				Member:  pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-pubsub.iam.gserviceaccount.com", project.Number)),

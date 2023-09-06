@@ -84,7 +84,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewIAMBinding(ctx, "project", &projects.IAMBindingArgs{
+//			_, err = projects.NewIamBinding(ctx, "project", &projects.IamBindingArgs{
 //				Role: pulumi.String("roles/iam.serviceAccountTokenCreator"),
 //				Members: pulumi.StringArray{
 //					sa.Email.ApplyT(func(email string) (string, error) {
@@ -245,8 +245,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			noauthIAMPolicy, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
+//			noauthIamPolicy, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
 //					{
 //						Role: "roles/run.invoker",
 //						Members: []string{
@@ -258,11 +258,11 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cloudrun.NewIamPolicy(ctx, "noauthIamPolicy", &cloudrun.IamPolicyArgs{
+//			_, err = cloudrun.NewIamPolicy(ctx, "noauthCloudrun/iamPolicyIamPolicy", &cloudrun.IamPolicyArgs{
 //				Location:   _default.Location,
 //				Project:    _default.Project,
 //				Service:    _default.Name,
-//				PolicyData: *pulumi.String(noauthIAMPolicy.PolicyData),
+//				PolicyData: *pulumi.String(noauthIamPolicy.PolicyData),
 //			})
 //			if err != nil {
 //				return err

@@ -14,13 +14,13 @@ import (
 
 // Three different resources help you manage your IAM policy for KMS key ring. Each of these resources serves a different use case:
 //
-// * `kms.KeyRingIAMPolicy`: Authoritative. Sets the IAM policy for the key ring and replaces any existing policy already attached.
-// * `kms.KeyRingIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the key ring are preserved.
-// * `kms.KeyRingIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the key ring are preserved.
+// * `kms.KeyRingIamPolicy`: Authoritative. Sets the IAM policy for the key ring and replaces any existing policy already attached.
+// * `kms.KeyRingIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the key ring are preserved.
+// * `kms.KeyRingIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the key ring are preserved.
 //
-// > **Note:** `kms.KeyRingIAMPolicy` **cannot** be used in conjunction with `kms.KeyRingIAMBinding` and `kms.KeyRingIAMMember` or they will fight over what your policy should be.
+// > **Note:** `kms.KeyRingIamPolicy` **cannot** be used in conjunction with `kms.KeyRingIamBinding` and `kms.KeyRingIamMember` or they will fight over what your policy should be.
 //
-// > **Note:** `kms.KeyRingIAMBinding` resources **can be** used in conjunction with `kms.KeyRingIAMMember` resources **only if** they do not grant privilege to the same role.
+// > **Note:** `kms.KeyRingIamBinding` resources **can be** used in conjunction with `kms.KeyRingIamMember` resources **only if** they do not grant privilege to the same role.
 //
 // ## google\_kms\_key\_ring\_iam\_policy
 //
@@ -43,8 +43,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
+//			admin, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
 //					{
 //						Role: "roles/editor",
 //						Members: []string{
@@ -56,7 +56,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = kms.NewKeyRingIAMPolicy(ctx, "keyRing", &kms.KeyRingIAMPolicyArgs{
+//			_, err = kms.NewKeyRingIamPolicy(ctx, "keyRing", &kms.KeyRingIamPolicyArgs{
 //				KeyRingId:  keyring.ID(),
 //				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
@@ -90,8 +90,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
+//			admin, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
 //					{
 //						Role: "roles/editor",
 //						Members: []string{
@@ -108,7 +108,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = kms.NewKeyRingIAMPolicy(ctx, "keyRing", &kms.KeyRingIAMPolicyArgs{
+//			_, err = kms.NewKeyRingIamPolicy(ctx, "keyRing", &kms.KeyRingIamPolicyArgs{
 //				KeyRingId:  keyring.ID(),
 //				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
@@ -135,7 +135,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := kms.NewKeyRingIAMBinding(ctx, "keyRing", &kms.KeyRingIAMBindingArgs{
+//			_, err := kms.NewKeyRingIamBinding(ctx, "keyRing", &kms.KeyRingIamBindingArgs{
 //				KeyRingId: pulumi.String("your-key-ring-id"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -165,8 +165,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := kms.NewKeyRingIAMBinding(ctx, "keyRing", &kms.KeyRingIAMBindingArgs{
-//				Condition: &kms.KeyRingIAMBindingConditionArgs{
+//			_, err := kms.NewKeyRingIamBinding(ctx, "keyRing", &kms.KeyRingIamBindingArgs{
+//				Condition: &kms.KeyRingIamBindingConditionArgs{
 //					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
 //					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
 //					Title:       pulumi.String("expires_after_2019_12_31"),
@@ -200,7 +200,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := kms.NewKeyRingIAMMember(ctx, "keyRing", &kms.KeyRingIAMMemberArgs{
+//			_, err := kms.NewKeyRingIamMember(ctx, "keyRing", &kms.KeyRingIamMemberArgs{
 //				KeyRingId: pulumi.String("your-key-ring-id"),
 //				Member:    pulumi.String("user:jane@example.com"),
 //				Role:      pulumi.String("roles/cloudkms.admin"),
@@ -228,8 +228,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := kms.NewKeyRingIAMMember(ctx, "keyRing", &kms.KeyRingIAMMemberArgs{
-//				Condition: &kms.KeyRingIAMMemberConditionArgs{
+//			_, err := kms.NewKeyRingIamMember(ctx, "keyRing", &kms.KeyRingIamMemberArgs{
+//				Condition: &kms.KeyRingIamMemberConditionArgs{
 //					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
 //					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
 //					Title:       pulumi.String("expires_after_2019_12_31"),
@@ -255,7 +255,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:kms/keyRingIAMPolicy:KeyRingIAMPolicy key_ring_iam "your-project-id/location-name/key-ring-name roles/viewer user:foo@example.com"
+//	$ pulumi import gcp:kms/keyRingIamPolicy:KeyRingIamPolicy key_ring_iam "your-project-id/location-name/key-ring-name roles/viewer user:foo@example.com"
 //
 // ```
 //
@@ -265,7 +265,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:kms/keyRingIAMPolicy:KeyRingIAMPolicy key_ring_iam "your-project-id/location-name/key-ring-name roles/cloudkms.admin"
+//	$ pulumi import gcp:kms/keyRingIamPolicy:KeyRingIamPolicy key_ring_iam "your-project-id/location-name/key-ring-name roles/cloudkms.admin"
 //
 // ```
 //
@@ -275,10 +275,10 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:kms/keyRingIAMPolicy:KeyRingIAMPolicy key_ring_iam your-project-id/location-name/key-ring-name
+//	$ pulumi import gcp:kms/keyRingIamPolicy:KeyRingIamPolicy key_ring_iam your-project-id/location-name/key-ring-name
 //
 // ```
-type KeyRingIAMPolicy struct {
+type KeyRingIamPolicy struct {
 	pulumi.CustomResourceState
 
 	// (Computed) The etag of the key ring's IAM policy.
@@ -298,13 +298,13 @@ type KeyRingIAMPolicy struct {
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	KeyRingId pulumi.StringOutput `pulumi:"keyRingId"`
 	// The policy data generated by
-	// a `organizations.getIAMPolicy` data source.
+	// a `organizations.getIamPolicy` data source.
 	PolicyData pulumi.StringOutput `pulumi:"policyData"`
 }
 
-// NewKeyRingIAMPolicy registers a new resource with the given unique name, arguments, and options.
-func NewKeyRingIAMPolicy(ctx *pulumi.Context,
-	name string, args *KeyRingIAMPolicyArgs, opts ...pulumi.ResourceOption) (*KeyRingIAMPolicy, error) {
+// NewKeyRingIamPolicy registers a new resource with the given unique name, arguments, and options.
+func NewKeyRingIamPolicy(ctx *pulumi.Context,
+	name string, args *KeyRingIamPolicyArgs, opts ...pulumi.ResourceOption) (*KeyRingIamPolicy, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -316,28 +316,28 @@ func NewKeyRingIAMPolicy(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'PolicyData'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
-	var resource KeyRingIAMPolicy
-	err := ctx.RegisterResource("gcp:kms/keyRingIAMPolicy:KeyRingIAMPolicy", name, args, &resource, opts...)
+	var resource KeyRingIamPolicy
+	err := ctx.RegisterResource("gcp:kms/keyRingIamPolicy:KeyRingIamPolicy", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// GetKeyRingIAMPolicy gets an existing KeyRingIAMPolicy resource's state with the given name, ID, and optional
+// GetKeyRingIamPolicy gets an existing KeyRingIamPolicy resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetKeyRingIAMPolicy(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *KeyRingIAMPolicyState, opts ...pulumi.ResourceOption) (*KeyRingIAMPolicy, error) {
-	var resource KeyRingIAMPolicy
-	err := ctx.ReadResource("gcp:kms/keyRingIAMPolicy:KeyRingIAMPolicy", name, id, state, &resource, opts...)
+func GetKeyRingIamPolicy(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *KeyRingIamPolicyState, opts ...pulumi.ResourceOption) (*KeyRingIamPolicy, error) {
+	var resource KeyRingIamPolicy
+	err := ctx.ReadResource("gcp:kms/keyRingIamPolicy:KeyRingIamPolicy", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering KeyRingIAMPolicy resources.
-type keyRingIAMPolicyState struct {
+// Input properties used for looking up and filtering KeyRingIamPolicy resources.
+type keyRingIamPolicyState struct {
 	// (Computed) The etag of the key ring's IAM policy.
 	Etag *string `pulumi:"etag"`
 	// The key ring ID, in the form
@@ -355,11 +355,11 @@ type keyRingIAMPolicyState struct {
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	KeyRingId *string `pulumi:"keyRingId"`
 	// The policy data generated by
-	// a `organizations.getIAMPolicy` data source.
+	// a `organizations.getIamPolicy` data source.
 	PolicyData *string `pulumi:"policyData"`
 }
 
-type KeyRingIAMPolicyState struct {
+type KeyRingIamPolicyState struct {
 	// (Computed) The etag of the key ring's IAM policy.
 	Etag pulumi.StringPtrInput
 	// The key ring ID, in the form
@@ -377,15 +377,15 @@ type KeyRingIAMPolicyState struct {
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	KeyRingId pulumi.StringPtrInput
 	// The policy data generated by
-	// a `organizations.getIAMPolicy` data source.
+	// a `organizations.getIamPolicy` data source.
 	PolicyData pulumi.StringPtrInput
 }
 
-func (KeyRingIAMPolicyState) ElementType() reflect.Type {
-	return reflect.TypeOf((*keyRingIAMPolicyState)(nil)).Elem()
+func (KeyRingIamPolicyState) ElementType() reflect.Type {
+	return reflect.TypeOf((*keyRingIamPolicyState)(nil)).Elem()
 }
 
-type keyRingIAMPolicyArgs struct {
+type keyRingIamPolicyArgs struct {
 	// The key ring ID, in the form
 	// `{project_id}/{location_name}/{key_ring_name}` or
 	// `{location_name}/{key_ring_name}`. In the second form, the provider's
@@ -401,12 +401,12 @@ type keyRingIAMPolicyArgs struct {
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	KeyRingId string `pulumi:"keyRingId"`
 	// The policy data generated by
-	// a `organizations.getIAMPolicy` data source.
+	// a `organizations.getIamPolicy` data source.
 	PolicyData string `pulumi:"policyData"`
 }
 
-// The set of arguments for constructing a KeyRingIAMPolicy resource.
-type KeyRingIAMPolicyArgs struct {
+// The set of arguments for constructing a KeyRingIamPolicy resource.
+type KeyRingIamPolicyArgs struct {
 	// The key ring ID, in the form
 	// `{project_id}/{location_name}/{key_ring_name}` or
 	// `{location_name}/{key_ring_name}`. In the second form, the provider's
@@ -422,100 +422,100 @@ type KeyRingIAMPolicyArgs struct {
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	KeyRingId pulumi.StringInput
 	// The policy data generated by
-	// a `organizations.getIAMPolicy` data source.
+	// a `organizations.getIamPolicy` data source.
 	PolicyData pulumi.StringInput
 }
 
-func (KeyRingIAMPolicyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*keyRingIAMPolicyArgs)(nil)).Elem()
+func (KeyRingIamPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*keyRingIamPolicyArgs)(nil)).Elem()
 }
 
-type KeyRingIAMPolicyInput interface {
+type KeyRingIamPolicyInput interface {
 	pulumi.Input
 
-	ToKeyRingIAMPolicyOutput() KeyRingIAMPolicyOutput
-	ToKeyRingIAMPolicyOutputWithContext(ctx context.Context) KeyRingIAMPolicyOutput
+	ToKeyRingIamPolicyOutput() KeyRingIamPolicyOutput
+	ToKeyRingIamPolicyOutputWithContext(ctx context.Context) KeyRingIamPolicyOutput
 }
 
-func (*KeyRingIAMPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((**KeyRingIAMPolicy)(nil)).Elem()
+func (*KeyRingIamPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyRingIamPolicy)(nil)).Elem()
 }
 
-func (i *KeyRingIAMPolicy) ToKeyRingIAMPolicyOutput() KeyRingIAMPolicyOutput {
-	return i.ToKeyRingIAMPolicyOutputWithContext(context.Background())
+func (i *KeyRingIamPolicy) ToKeyRingIamPolicyOutput() KeyRingIamPolicyOutput {
+	return i.ToKeyRingIamPolicyOutputWithContext(context.Background())
 }
 
-func (i *KeyRingIAMPolicy) ToKeyRingIAMPolicyOutputWithContext(ctx context.Context) KeyRingIAMPolicyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIAMPolicyOutput)
+func (i *KeyRingIamPolicy) ToKeyRingIamPolicyOutputWithContext(ctx context.Context) KeyRingIamPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIamPolicyOutput)
 }
 
-// KeyRingIAMPolicyArrayInput is an input type that accepts KeyRingIAMPolicyArray and KeyRingIAMPolicyArrayOutput values.
-// You can construct a concrete instance of `KeyRingIAMPolicyArrayInput` via:
+// KeyRingIamPolicyArrayInput is an input type that accepts KeyRingIamPolicyArray and KeyRingIamPolicyArrayOutput values.
+// You can construct a concrete instance of `KeyRingIamPolicyArrayInput` via:
 //
-//	KeyRingIAMPolicyArray{ KeyRingIAMPolicyArgs{...} }
-type KeyRingIAMPolicyArrayInput interface {
+//	KeyRingIamPolicyArray{ KeyRingIamPolicyArgs{...} }
+type KeyRingIamPolicyArrayInput interface {
 	pulumi.Input
 
-	ToKeyRingIAMPolicyArrayOutput() KeyRingIAMPolicyArrayOutput
-	ToKeyRingIAMPolicyArrayOutputWithContext(context.Context) KeyRingIAMPolicyArrayOutput
+	ToKeyRingIamPolicyArrayOutput() KeyRingIamPolicyArrayOutput
+	ToKeyRingIamPolicyArrayOutputWithContext(context.Context) KeyRingIamPolicyArrayOutput
 }
 
-type KeyRingIAMPolicyArray []KeyRingIAMPolicyInput
+type KeyRingIamPolicyArray []KeyRingIamPolicyInput
 
-func (KeyRingIAMPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*KeyRingIAMPolicy)(nil)).Elem()
+func (KeyRingIamPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*KeyRingIamPolicy)(nil)).Elem()
 }
 
-func (i KeyRingIAMPolicyArray) ToKeyRingIAMPolicyArrayOutput() KeyRingIAMPolicyArrayOutput {
-	return i.ToKeyRingIAMPolicyArrayOutputWithContext(context.Background())
+func (i KeyRingIamPolicyArray) ToKeyRingIamPolicyArrayOutput() KeyRingIamPolicyArrayOutput {
+	return i.ToKeyRingIamPolicyArrayOutputWithContext(context.Background())
 }
 
-func (i KeyRingIAMPolicyArray) ToKeyRingIAMPolicyArrayOutputWithContext(ctx context.Context) KeyRingIAMPolicyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIAMPolicyArrayOutput)
+func (i KeyRingIamPolicyArray) ToKeyRingIamPolicyArrayOutputWithContext(ctx context.Context) KeyRingIamPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIamPolicyArrayOutput)
 }
 
-// KeyRingIAMPolicyMapInput is an input type that accepts KeyRingIAMPolicyMap and KeyRingIAMPolicyMapOutput values.
-// You can construct a concrete instance of `KeyRingIAMPolicyMapInput` via:
+// KeyRingIamPolicyMapInput is an input type that accepts KeyRingIamPolicyMap and KeyRingIamPolicyMapOutput values.
+// You can construct a concrete instance of `KeyRingIamPolicyMapInput` via:
 //
-//	KeyRingIAMPolicyMap{ "key": KeyRingIAMPolicyArgs{...} }
-type KeyRingIAMPolicyMapInput interface {
+//	KeyRingIamPolicyMap{ "key": KeyRingIamPolicyArgs{...} }
+type KeyRingIamPolicyMapInput interface {
 	pulumi.Input
 
-	ToKeyRingIAMPolicyMapOutput() KeyRingIAMPolicyMapOutput
-	ToKeyRingIAMPolicyMapOutputWithContext(context.Context) KeyRingIAMPolicyMapOutput
+	ToKeyRingIamPolicyMapOutput() KeyRingIamPolicyMapOutput
+	ToKeyRingIamPolicyMapOutputWithContext(context.Context) KeyRingIamPolicyMapOutput
 }
 
-type KeyRingIAMPolicyMap map[string]KeyRingIAMPolicyInput
+type KeyRingIamPolicyMap map[string]KeyRingIamPolicyInput
 
-func (KeyRingIAMPolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*KeyRingIAMPolicy)(nil)).Elem()
+func (KeyRingIamPolicyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*KeyRingIamPolicy)(nil)).Elem()
 }
 
-func (i KeyRingIAMPolicyMap) ToKeyRingIAMPolicyMapOutput() KeyRingIAMPolicyMapOutput {
-	return i.ToKeyRingIAMPolicyMapOutputWithContext(context.Background())
+func (i KeyRingIamPolicyMap) ToKeyRingIamPolicyMapOutput() KeyRingIamPolicyMapOutput {
+	return i.ToKeyRingIamPolicyMapOutputWithContext(context.Background())
 }
 
-func (i KeyRingIAMPolicyMap) ToKeyRingIAMPolicyMapOutputWithContext(ctx context.Context) KeyRingIAMPolicyMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIAMPolicyMapOutput)
+func (i KeyRingIamPolicyMap) ToKeyRingIamPolicyMapOutputWithContext(ctx context.Context) KeyRingIamPolicyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIamPolicyMapOutput)
 }
 
-type KeyRingIAMPolicyOutput struct{ *pulumi.OutputState }
+type KeyRingIamPolicyOutput struct{ *pulumi.OutputState }
 
-func (KeyRingIAMPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**KeyRingIAMPolicy)(nil)).Elem()
+func (KeyRingIamPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyRingIamPolicy)(nil)).Elem()
 }
 
-func (o KeyRingIAMPolicyOutput) ToKeyRingIAMPolicyOutput() KeyRingIAMPolicyOutput {
+func (o KeyRingIamPolicyOutput) ToKeyRingIamPolicyOutput() KeyRingIamPolicyOutput {
 	return o
 }
 
-func (o KeyRingIAMPolicyOutput) ToKeyRingIAMPolicyOutputWithContext(ctx context.Context) KeyRingIAMPolicyOutput {
+func (o KeyRingIamPolicyOutput) ToKeyRingIamPolicyOutputWithContext(ctx context.Context) KeyRingIamPolicyOutput {
 	return o
 }
 
 // (Computed) The etag of the key ring's IAM policy.
-func (o KeyRingIAMPolicyOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v *KeyRingIAMPolicy) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+func (o KeyRingIamPolicyOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *KeyRingIamPolicy) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The key ring ID, in the form
@@ -531,61 +531,61 @@ func (o KeyRingIAMPolicyOutput) Etag() pulumi.StringOutput {
 //   - **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
 //   - **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
 //   - **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-func (o KeyRingIAMPolicyOutput) KeyRingId() pulumi.StringOutput {
-	return o.ApplyT(func(v *KeyRingIAMPolicy) pulumi.StringOutput { return v.KeyRingId }).(pulumi.StringOutput)
+func (o KeyRingIamPolicyOutput) KeyRingId() pulumi.StringOutput {
+	return o.ApplyT(func(v *KeyRingIamPolicy) pulumi.StringOutput { return v.KeyRingId }).(pulumi.StringOutput)
 }
 
 // The policy data generated by
-// a `organizations.getIAMPolicy` data source.
-func (o KeyRingIAMPolicyOutput) PolicyData() pulumi.StringOutput {
-	return o.ApplyT(func(v *KeyRingIAMPolicy) pulumi.StringOutput { return v.PolicyData }).(pulumi.StringOutput)
+// a `organizations.getIamPolicy` data source.
+func (o KeyRingIamPolicyOutput) PolicyData() pulumi.StringOutput {
+	return o.ApplyT(func(v *KeyRingIamPolicy) pulumi.StringOutput { return v.PolicyData }).(pulumi.StringOutput)
 }
 
-type KeyRingIAMPolicyArrayOutput struct{ *pulumi.OutputState }
+type KeyRingIamPolicyArrayOutput struct{ *pulumi.OutputState }
 
-func (KeyRingIAMPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*KeyRingIAMPolicy)(nil)).Elem()
+func (KeyRingIamPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*KeyRingIamPolicy)(nil)).Elem()
 }
 
-func (o KeyRingIAMPolicyArrayOutput) ToKeyRingIAMPolicyArrayOutput() KeyRingIAMPolicyArrayOutput {
+func (o KeyRingIamPolicyArrayOutput) ToKeyRingIamPolicyArrayOutput() KeyRingIamPolicyArrayOutput {
 	return o
 }
 
-func (o KeyRingIAMPolicyArrayOutput) ToKeyRingIAMPolicyArrayOutputWithContext(ctx context.Context) KeyRingIAMPolicyArrayOutput {
+func (o KeyRingIamPolicyArrayOutput) ToKeyRingIamPolicyArrayOutputWithContext(ctx context.Context) KeyRingIamPolicyArrayOutput {
 	return o
 }
 
-func (o KeyRingIAMPolicyArrayOutput) Index(i pulumi.IntInput) KeyRingIAMPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KeyRingIAMPolicy {
-		return vs[0].([]*KeyRingIAMPolicy)[vs[1].(int)]
-	}).(KeyRingIAMPolicyOutput)
+func (o KeyRingIamPolicyArrayOutput) Index(i pulumi.IntInput) KeyRingIamPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KeyRingIamPolicy {
+		return vs[0].([]*KeyRingIamPolicy)[vs[1].(int)]
+	}).(KeyRingIamPolicyOutput)
 }
 
-type KeyRingIAMPolicyMapOutput struct{ *pulumi.OutputState }
+type KeyRingIamPolicyMapOutput struct{ *pulumi.OutputState }
 
-func (KeyRingIAMPolicyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*KeyRingIAMPolicy)(nil)).Elem()
+func (KeyRingIamPolicyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*KeyRingIamPolicy)(nil)).Elem()
 }
 
-func (o KeyRingIAMPolicyMapOutput) ToKeyRingIAMPolicyMapOutput() KeyRingIAMPolicyMapOutput {
+func (o KeyRingIamPolicyMapOutput) ToKeyRingIamPolicyMapOutput() KeyRingIamPolicyMapOutput {
 	return o
 }
 
-func (o KeyRingIAMPolicyMapOutput) ToKeyRingIAMPolicyMapOutputWithContext(ctx context.Context) KeyRingIAMPolicyMapOutput {
+func (o KeyRingIamPolicyMapOutput) ToKeyRingIamPolicyMapOutputWithContext(ctx context.Context) KeyRingIamPolicyMapOutput {
 	return o
 }
 
-func (o KeyRingIAMPolicyMapOutput) MapIndex(k pulumi.StringInput) KeyRingIAMPolicyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *KeyRingIAMPolicy {
-		return vs[0].(map[string]*KeyRingIAMPolicy)[vs[1].(string)]
-	}).(KeyRingIAMPolicyOutput)
+func (o KeyRingIamPolicyMapOutput) MapIndex(k pulumi.StringInput) KeyRingIamPolicyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *KeyRingIamPolicy {
+		return vs[0].(map[string]*KeyRingIamPolicy)[vs[1].(string)]
+	}).(KeyRingIamPolicyOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingIAMPolicyInput)(nil)).Elem(), &KeyRingIAMPolicy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingIAMPolicyArrayInput)(nil)).Elem(), KeyRingIAMPolicyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingIAMPolicyMapInput)(nil)).Elem(), KeyRingIAMPolicyMap{})
-	pulumi.RegisterOutputType(KeyRingIAMPolicyOutput{})
-	pulumi.RegisterOutputType(KeyRingIAMPolicyArrayOutput{})
-	pulumi.RegisterOutputType(KeyRingIAMPolicyMapOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingIamPolicyInput)(nil)).Elem(), &KeyRingIamPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingIamPolicyArrayInput)(nil)).Elem(), KeyRingIamPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingIamPolicyMapInput)(nil)).Elem(), KeyRingIamPolicyMap{})
+	pulumi.RegisterOutputType(KeyRingIamPolicyOutput{})
+	pulumi.RegisterOutputType(KeyRingIamPolicyArrayOutput{})
+	pulumi.RegisterOutputType(KeyRingIamPolicyMapOutput{})
 }

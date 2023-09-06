@@ -14,13 +14,13 @@ import (
 
 // Three different resources help you manage IAM policies on dataproc clusters. Each of these resources serves a different use case:
 //
-// * `dataproc.ClusterIAMPolicy`: Authoritative. Sets the IAM policy for the cluster and replaces any existing policy already attached.
-// * `dataproc.ClusterIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the cluster are preserved.
-// * `dataproc.ClusterIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the cluster are preserved.
+// * `dataproc.ClusterIamPolicy`: Authoritative. Sets the IAM policy for the cluster and replaces any existing policy already attached.
+// * `dataproc.ClusterIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the cluster are preserved.
+// * `dataproc.ClusterIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the cluster are preserved.
 //
-// > **Note:** `dataproc.ClusterIAMPolicy` **cannot** be used in conjunction with `dataproc.ClusterIAMBinding` and `dataproc.ClusterIAMMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the cluster as `dataproc.ClusterIAMPolicy` replaces the entire policy.
+// > **Note:** `dataproc.ClusterIamPolicy` **cannot** be used in conjunction with `dataproc.ClusterIamBinding` and `dataproc.ClusterIamMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the cluster as `dataproc.ClusterIamPolicy` replaces the entire policy.
 //
-// > **Note:** `dataproc.ClusterIAMBinding` resources **can be** used in conjunction with `dataproc.ClusterIAMMember` resources **only if** they do not grant privilege to the same role.
+// > **Note:** `dataproc.ClusterIamBinding` resources **can be** used in conjunction with `dataproc.ClusterIamMember` resources **only if** they do not grant privilege to the same role.
 //
 // ## google\_dataproc\_cluster\_iam\_policy
 //
@@ -37,8 +37,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
+//			admin, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
 //					{
 //						Role: "roles/editor",
 //						Members: []string{
@@ -50,7 +50,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = dataproc.NewClusterIAMPolicy(ctx, "editor", &dataproc.ClusterIAMPolicyArgs{
+//			_, err = dataproc.NewClusterIamPolicy(ctx, "editor", &dataproc.ClusterIamPolicyArgs{
 //				Project:    pulumi.String("your-project"),
 //				Region:     pulumi.String("your-region"),
 //				Cluster:    pulumi.String("your-dataproc-cluster"),
@@ -79,7 +79,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dataproc.NewClusterIAMBinding(ctx, "editor", &dataproc.ClusterIAMBindingArgs{
+//			_, err := dataproc.NewClusterIamBinding(ctx, "editor", &dataproc.ClusterIamBindingArgs{
 //				Cluster: pulumi.String("your-dataproc-cluster"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -109,7 +109,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dataproc.NewClusterIAMMember(ctx, "editor", &dataproc.ClusterIAMMemberArgs{
+//			_, err := dataproc.NewClusterIamMember(ctx, "editor", &dataproc.ClusterIamMemberArgs{
 //				Cluster: pulumi.String("your-dataproc-cluster"),
 //				Member:  pulumi.String("user:jane@example.com"),
 //				Role:    pulumi.String("roles/editor"),
@@ -129,31 +129,31 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:dataproc/clusterIAMMember:ClusterIAMMember editor "projects/{project}/regions/{region}/clusters/{cluster}"
+//	$ pulumi import gcp:dataproc/clusterIamMember:ClusterIamMember editor "projects/{project}/regions/{region}/clusters/{cluster}"
 //
 // ```
 //
 // ```sh
 //
-//	$ pulumi import gcp:dataproc/clusterIAMMember:ClusterIAMMember editor "projects/{project}/regions/{region}/clusters/{cluster} roles/editor"
+//	$ pulumi import gcp:dataproc/clusterIamMember:ClusterIamMember editor "projects/{project}/regions/{region}/clusters/{cluster} roles/editor"
 //
 // ```
 //
 // ```sh
 //
-//	$ pulumi import gcp:dataproc/clusterIAMMember:ClusterIAMMember editor "projects/{project}/regions/{region}/clusters/{cluster} roles/editor user:jane@example.com"
+//	$ pulumi import gcp:dataproc/clusterIamMember:ClusterIamMember editor "projects/{project}/regions/{region}/clusters/{cluster} roles/editor user:jane@example.com"
 //
 // ```
 //
 //	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 //
 // full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
-type ClusterIAMMember struct {
+type ClusterIamMember struct {
 	pulumi.CustomResourceState
 
 	// The name or relative resource id of the cluster to manage IAM policies for.
 	//
-	// For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
+	// For `dataproc.ClusterIamMember` or `dataproc.ClusterIamBinding`:
 	//
 	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
 	//   Each entry can have one of the following values:
@@ -164,7 +164,7 @@ type ClusterIAMMember struct {
 	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Cluster   pulumi.StringOutput                `pulumi:"cluster"`
-	Condition ClusterIAMMemberConditionPtrOutput `pulumi:"condition"`
+	Condition ClusterIamMemberConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the clusters's IAM policy.
 	Etag   pulumi.StringOutput `pulumi:"etag"`
 	Member pulumi.StringOutput `pulumi:"member"`
@@ -175,16 +175,16 @@ type ClusterIAMMember struct {
 	// is not provided, the provider will use a default.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The role that should be applied. Only one
-	// `dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `dataproc.ClusterIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	//
-	// `dataproc.ClusterIAMPolicy` only:
+	// `dataproc.ClusterIamPolicy` only:
 	Role pulumi.StringOutput `pulumi:"role"`
 }
 
-// NewClusterIAMMember registers a new resource with the given unique name, arguments, and options.
-func NewClusterIAMMember(ctx *pulumi.Context,
-	name string, args *ClusterIAMMemberArgs, opts ...pulumi.ResourceOption) (*ClusterIAMMember, error) {
+// NewClusterIamMember registers a new resource with the given unique name, arguments, and options.
+func NewClusterIamMember(ctx *pulumi.Context,
+	name string, args *ClusterIamMemberArgs, opts ...pulumi.ResourceOption) (*ClusterIamMember, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -199,31 +199,31 @@ func NewClusterIAMMember(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Role'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
-	var resource ClusterIAMMember
-	err := ctx.RegisterResource("gcp:dataproc/clusterIAMMember:ClusterIAMMember", name, args, &resource, opts...)
+	var resource ClusterIamMember
+	err := ctx.RegisterResource("gcp:dataproc/clusterIamMember:ClusterIamMember", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// GetClusterIAMMember gets an existing ClusterIAMMember resource's state with the given name, ID, and optional
+// GetClusterIamMember gets an existing ClusterIamMember resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetClusterIAMMember(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *ClusterIAMMemberState, opts ...pulumi.ResourceOption) (*ClusterIAMMember, error) {
-	var resource ClusterIAMMember
-	err := ctx.ReadResource("gcp:dataproc/clusterIAMMember:ClusterIAMMember", name, id, state, &resource, opts...)
+func GetClusterIamMember(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *ClusterIamMemberState, opts ...pulumi.ResourceOption) (*ClusterIamMember, error) {
+	var resource ClusterIamMember
+	err := ctx.ReadResource("gcp:dataproc/clusterIamMember:ClusterIamMember", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering ClusterIAMMember resources.
-type clusterIAMMemberState struct {
+// Input properties used for looking up and filtering ClusterIamMember resources.
+type clusterIamMemberState struct {
 	// The name or relative resource id of the cluster to manage IAM policies for.
 	//
-	// For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
+	// For `dataproc.ClusterIamMember` or `dataproc.ClusterIamBinding`:
 	//
 	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
 	//   Each entry can have one of the following values:
@@ -234,7 +234,7 @@ type clusterIAMMemberState struct {
 	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Cluster   *string                    `pulumi:"cluster"`
-	Condition *ClusterIAMMemberCondition `pulumi:"condition"`
+	Condition *ClusterIamMemberCondition `pulumi:"condition"`
 	// (Computed) The etag of the clusters's IAM policy.
 	Etag   *string `pulumi:"etag"`
 	Member *string `pulumi:"member"`
@@ -245,17 +245,17 @@ type clusterIAMMemberState struct {
 	// is not provided, the provider will use a default.
 	Region *string `pulumi:"region"`
 	// The role that should be applied. Only one
-	// `dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `dataproc.ClusterIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	//
-	// `dataproc.ClusterIAMPolicy` only:
+	// `dataproc.ClusterIamPolicy` only:
 	Role *string `pulumi:"role"`
 }
 
-type ClusterIAMMemberState struct {
+type ClusterIamMemberState struct {
 	// The name or relative resource id of the cluster to manage IAM policies for.
 	//
-	// For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
+	// For `dataproc.ClusterIamMember` or `dataproc.ClusterIamBinding`:
 	//
 	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
 	//   Each entry can have one of the following values:
@@ -266,7 +266,7 @@ type ClusterIAMMemberState struct {
 	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Cluster   pulumi.StringPtrInput
-	Condition ClusterIAMMemberConditionPtrInput
+	Condition ClusterIamMemberConditionPtrInput
 	// (Computed) The etag of the clusters's IAM policy.
 	Etag   pulumi.StringPtrInput
 	Member pulumi.StringPtrInput
@@ -277,21 +277,21 @@ type ClusterIAMMemberState struct {
 	// is not provided, the provider will use a default.
 	Region pulumi.StringPtrInput
 	// The role that should be applied. Only one
-	// `dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `dataproc.ClusterIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	//
-	// `dataproc.ClusterIAMPolicy` only:
+	// `dataproc.ClusterIamPolicy` only:
 	Role pulumi.StringPtrInput
 }
 
-func (ClusterIAMMemberState) ElementType() reflect.Type {
-	return reflect.TypeOf((*clusterIAMMemberState)(nil)).Elem()
+func (ClusterIamMemberState) ElementType() reflect.Type {
+	return reflect.TypeOf((*clusterIamMemberState)(nil)).Elem()
 }
 
-type clusterIAMMemberArgs struct {
+type clusterIamMemberArgs struct {
 	// The name or relative resource id of the cluster to manage IAM policies for.
 	//
-	// For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
+	// For `dataproc.ClusterIamMember` or `dataproc.ClusterIamBinding`:
 	//
 	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
 	//   Each entry can have one of the following values:
@@ -302,7 +302,7 @@ type clusterIAMMemberArgs struct {
 	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Cluster   string                     `pulumi:"cluster"`
-	Condition *ClusterIAMMemberCondition `pulumi:"condition"`
+	Condition *ClusterIamMemberCondition `pulumi:"condition"`
 	Member    string                     `pulumi:"member"`
 	// The project in which the cluster belongs. If it
 	// is not provided, the provider will use a default.
@@ -311,18 +311,18 @@ type clusterIAMMemberArgs struct {
 	// is not provided, the provider will use a default.
 	Region *string `pulumi:"region"`
 	// The role that should be applied. Only one
-	// `dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `dataproc.ClusterIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	//
-	// `dataproc.ClusterIAMPolicy` only:
+	// `dataproc.ClusterIamPolicy` only:
 	Role string `pulumi:"role"`
 }
 
-// The set of arguments for constructing a ClusterIAMMember resource.
-type ClusterIAMMemberArgs struct {
+// The set of arguments for constructing a ClusterIamMember resource.
+type ClusterIamMemberArgs struct {
 	// The name or relative resource id of the cluster to manage IAM policies for.
 	//
-	// For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
+	// For `dataproc.ClusterIamMember` or `dataproc.ClusterIamBinding`:
 	//
 	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
 	//   Each entry can have one of the following values:
@@ -333,7 +333,7 @@ type ClusterIAMMemberArgs struct {
 	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
 	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Cluster   pulumi.StringInput
-	Condition ClusterIAMMemberConditionPtrInput
+	Condition ClusterIamMemberConditionPtrInput
 	Member    pulumi.StringInput
 	// The project in which the cluster belongs. If it
 	// is not provided, the provider will use a default.
@@ -342,103 +342,103 @@ type ClusterIAMMemberArgs struct {
 	// is not provided, the provider will use a default.
 	Region pulumi.StringPtrInput
 	// The role that should be applied. Only one
-	// `dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `dataproc.ClusterIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	//
-	// `dataproc.ClusterIAMPolicy` only:
+	// `dataproc.ClusterIamPolicy` only:
 	Role pulumi.StringInput
 }
 
-func (ClusterIAMMemberArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*clusterIAMMemberArgs)(nil)).Elem()
+func (ClusterIamMemberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*clusterIamMemberArgs)(nil)).Elem()
 }
 
-type ClusterIAMMemberInput interface {
+type ClusterIamMemberInput interface {
 	pulumi.Input
 
-	ToClusterIAMMemberOutput() ClusterIAMMemberOutput
-	ToClusterIAMMemberOutputWithContext(ctx context.Context) ClusterIAMMemberOutput
+	ToClusterIamMemberOutput() ClusterIamMemberOutput
+	ToClusterIamMemberOutputWithContext(ctx context.Context) ClusterIamMemberOutput
 }
 
-func (*ClusterIAMMember) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterIAMMember)(nil)).Elem()
+func (*ClusterIamMember) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterIamMember)(nil)).Elem()
 }
 
-func (i *ClusterIAMMember) ToClusterIAMMemberOutput() ClusterIAMMemberOutput {
-	return i.ToClusterIAMMemberOutputWithContext(context.Background())
+func (i *ClusterIamMember) ToClusterIamMemberOutput() ClusterIamMemberOutput {
+	return i.ToClusterIamMemberOutputWithContext(context.Background())
 }
 
-func (i *ClusterIAMMember) ToClusterIAMMemberOutputWithContext(ctx context.Context) ClusterIAMMemberOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMMemberOutput)
+func (i *ClusterIamMember) ToClusterIamMemberOutputWithContext(ctx context.Context) ClusterIamMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterIamMemberOutput)
 }
 
-// ClusterIAMMemberArrayInput is an input type that accepts ClusterIAMMemberArray and ClusterIAMMemberArrayOutput values.
-// You can construct a concrete instance of `ClusterIAMMemberArrayInput` via:
+// ClusterIamMemberArrayInput is an input type that accepts ClusterIamMemberArray and ClusterIamMemberArrayOutput values.
+// You can construct a concrete instance of `ClusterIamMemberArrayInput` via:
 //
-//	ClusterIAMMemberArray{ ClusterIAMMemberArgs{...} }
-type ClusterIAMMemberArrayInput interface {
+//	ClusterIamMemberArray{ ClusterIamMemberArgs{...} }
+type ClusterIamMemberArrayInput interface {
 	pulumi.Input
 
-	ToClusterIAMMemberArrayOutput() ClusterIAMMemberArrayOutput
-	ToClusterIAMMemberArrayOutputWithContext(context.Context) ClusterIAMMemberArrayOutput
+	ToClusterIamMemberArrayOutput() ClusterIamMemberArrayOutput
+	ToClusterIamMemberArrayOutputWithContext(context.Context) ClusterIamMemberArrayOutput
 }
 
-type ClusterIAMMemberArray []ClusterIAMMemberInput
+type ClusterIamMemberArray []ClusterIamMemberInput
 
-func (ClusterIAMMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*ClusterIAMMember)(nil)).Elem()
+func (ClusterIamMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*ClusterIamMember)(nil)).Elem()
 }
 
-func (i ClusterIAMMemberArray) ToClusterIAMMemberArrayOutput() ClusterIAMMemberArrayOutput {
-	return i.ToClusterIAMMemberArrayOutputWithContext(context.Background())
+func (i ClusterIamMemberArray) ToClusterIamMemberArrayOutput() ClusterIamMemberArrayOutput {
+	return i.ToClusterIamMemberArrayOutputWithContext(context.Background())
 }
 
-func (i ClusterIAMMemberArray) ToClusterIAMMemberArrayOutputWithContext(ctx context.Context) ClusterIAMMemberArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMMemberArrayOutput)
+func (i ClusterIamMemberArray) ToClusterIamMemberArrayOutputWithContext(ctx context.Context) ClusterIamMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterIamMemberArrayOutput)
 }
 
-// ClusterIAMMemberMapInput is an input type that accepts ClusterIAMMemberMap and ClusterIAMMemberMapOutput values.
-// You can construct a concrete instance of `ClusterIAMMemberMapInput` via:
+// ClusterIamMemberMapInput is an input type that accepts ClusterIamMemberMap and ClusterIamMemberMapOutput values.
+// You can construct a concrete instance of `ClusterIamMemberMapInput` via:
 //
-//	ClusterIAMMemberMap{ "key": ClusterIAMMemberArgs{...} }
-type ClusterIAMMemberMapInput interface {
+//	ClusterIamMemberMap{ "key": ClusterIamMemberArgs{...} }
+type ClusterIamMemberMapInput interface {
 	pulumi.Input
 
-	ToClusterIAMMemberMapOutput() ClusterIAMMemberMapOutput
-	ToClusterIAMMemberMapOutputWithContext(context.Context) ClusterIAMMemberMapOutput
+	ToClusterIamMemberMapOutput() ClusterIamMemberMapOutput
+	ToClusterIamMemberMapOutputWithContext(context.Context) ClusterIamMemberMapOutput
 }
 
-type ClusterIAMMemberMap map[string]ClusterIAMMemberInput
+type ClusterIamMemberMap map[string]ClusterIamMemberInput
 
-func (ClusterIAMMemberMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*ClusterIAMMember)(nil)).Elem()
+func (ClusterIamMemberMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*ClusterIamMember)(nil)).Elem()
 }
 
-func (i ClusterIAMMemberMap) ToClusterIAMMemberMapOutput() ClusterIAMMemberMapOutput {
-	return i.ToClusterIAMMemberMapOutputWithContext(context.Background())
+func (i ClusterIamMemberMap) ToClusterIamMemberMapOutput() ClusterIamMemberMapOutput {
+	return i.ToClusterIamMemberMapOutputWithContext(context.Background())
 }
 
-func (i ClusterIAMMemberMap) ToClusterIAMMemberMapOutputWithContext(ctx context.Context) ClusterIAMMemberMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMMemberMapOutput)
+func (i ClusterIamMemberMap) ToClusterIamMemberMapOutputWithContext(ctx context.Context) ClusterIamMemberMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterIamMemberMapOutput)
 }
 
-type ClusterIAMMemberOutput struct{ *pulumi.OutputState }
+type ClusterIamMemberOutput struct{ *pulumi.OutputState }
 
-func (ClusterIAMMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ClusterIAMMember)(nil)).Elem()
+func (ClusterIamMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterIamMember)(nil)).Elem()
 }
 
-func (o ClusterIAMMemberOutput) ToClusterIAMMemberOutput() ClusterIAMMemberOutput {
+func (o ClusterIamMemberOutput) ToClusterIamMemberOutput() ClusterIamMemberOutput {
 	return o
 }
 
-func (o ClusterIAMMemberOutput) ToClusterIAMMemberOutputWithContext(ctx context.Context) ClusterIAMMemberOutput {
+func (o ClusterIamMemberOutput) ToClusterIamMemberOutputWithContext(ctx context.Context) ClusterIamMemberOutput {
 	return o
 }
 
 // The name or relative resource id of the cluster to manage IAM policies for.
 //
-// For `dataproc.ClusterIAMMember` or `dataproc.ClusterIAMBinding`:
+// For `dataproc.ClusterIamMember` or `dataproc.ClusterIamBinding`:
 //
 //   - `member/members` - (Required) Identities that will be granted the privilege in `role`.
 //     Each entry can have one of the following values:
@@ -448,89 +448,89 @@ func (o ClusterIAMMemberOutput) ToClusterIAMMemberOutputWithContext(ctx context.
 //   - **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
 //   - **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
 //   - **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-func (o ClusterIAMMemberOutput) Cluster() pulumi.StringOutput {
-	return o.ApplyT(func(v *ClusterIAMMember) pulumi.StringOutput { return v.Cluster }).(pulumi.StringOutput)
+func (o ClusterIamMemberOutput) Cluster() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterIamMember) pulumi.StringOutput { return v.Cluster }).(pulumi.StringOutput)
 }
 
-func (o ClusterIAMMemberOutput) Condition() ClusterIAMMemberConditionPtrOutput {
-	return o.ApplyT(func(v *ClusterIAMMember) ClusterIAMMemberConditionPtrOutput { return v.Condition }).(ClusterIAMMemberConditionPtrOutput)
+func (o ClusterIamMemberOutput) Condition() ClusterIamMemberConditionPtrOutput {
+	return o.ApplyT(func(v *ClusterIamMember) ClusterIamMemberConditionPtrOutput { return v.Condition }).(ClusterIamMemberConditionPtrOutput)
 }
 
 // (Computed) The etag of the clusters's IAM policy.
-func (o ClusterIAMMemberOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v *ClusterIAMMember) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+func (o ClusterIamMemberOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterIamMember) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-func (o ClusterIAMMemberOutput) Member() pulumi.StringOutput {
-	return o.ApplyT(func(v *ClusterIAMMember) pulumi.StringOutput { return v.Member }).(pulumi.StringOutput)
+func (o ClusterIamMemberOutput) Member() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterIamMember) pulumi.StringOutput { return v.Member }).(pulumi.StringOutput)
 }
 
 // The project in which the cluster belongs. If it
 // is not provided, the provider will use a default.
-func (o ClusterIAMMemberOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func(v *ClusterIAMMember) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+func (o ClusterIamMemberOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterIamMember) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The region in which the cluster belongs. If it
 // is not provided, the provider will use a default.
-func (o ClusterIAMMemberOutput) Region() pulumi.StringOutput {
-	return o.ApplyT(func(v *ClusterIAMMember) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+func (o ClusterIamMemberOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterIamMember) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 // The role that should be applied. Only one
-// `dataproc.ClusterIAMBinding` can be used per role. Note that custom roles must be of the format
+// `dataproc.ClusterIamBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
 //
-// `dataproc.ClusterIAMPolicy` only:
-func (o ClusterIAMMemberOutput) Role() pulumi.StringOutput {
-	return o.ApplyT(func(v *ClusterIAMMember) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
+// `dataproc.ClusterIamPolicy` only:
+func (o ClusterIamMemberOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterIamMember) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }
 
-type ClusterIAMMemberArrayOutput struct{ *pulumi.OutputState }
+type ClusterIamMemberArrayOutput struct{ *pulumi.OutputState }
 
-func (ClusterIAMMemberArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*ClusterIAMMember)(nil)).Elem()
+func (ClusterIamMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*ClusterIamMember)(nil)).Elem()
 }
 
-func (o ClusterIAMMemberArrayOutput) ToClusterIAMMemberArrayOutput() ClusterIAMMemberArrayOutput {
+func (o ClusterIamMemberArrayOutput) ToClusterIamMemberArrayOutput() ClusterIamMemberArrayOutput {
 	return o
 }
 
-func (o ClusterIAMMemberArrayOutput) ToClusterIAMMemberArrayOutputWithContext(ctx context.Context) ClusterIAMMemberArrayOutput {
+func (o ClusterIamMemberArrayOutput) ToClusterIamMemberArrayOutputWithContext(ctx context.Context) ClusterIamMemberArrayOutput {
 	return o
 }
 
-func (o ClusterIAMMemberArrayOutput) Index(i pulumi.IntInput) ClusterIAMMemberOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ClusterIAMMember {
-		return vs[0].([]*ClusterIAMMember)[vs[1].(int)]
-	}).(ClusterIAMMemberOutput)
+func (o ClusterIamMemberArrayOutput) Index(i pulumi.IntInput) ClusterIamMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ClusterIamMember {
+		return vs[0].([]*ClusterIamMember)[vs[1].(int)]
+	}).(ClusterIamMemberOutput)
 }
 
-type ClusterIAMMemberMapOutput struct{ *pulumi.OutputState }
+type ClusterIamMemberMapOutput struct{ *pulumi.OutputState }
 
-func (ClusterIAMMemberMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*ClusterIAMMember)(nil)).Elem()
+func (ClusterIamMemberMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*ClusterIamMember)(nil)).Elem()
 }
 
-func (o ClusterIAMMemberMapOutput) ToClusterIAMMemberMapOutput() ClusterIAMMemberMapOutput {
+func (o ClusterIamMemberMapOutput) ToClusterIamMemberMapOutput() ClusterIamMemberMapOutput {
 	return o
 }
 
-func (o ClusterIAMMemberMapOutput) ToClusterIAMMemberMapOutputWithContext(ctx context.Context) ClusterIAMMemberMapOutput {
+func (o ClusterIamMemberMapOutput) ToClusterIamMemberMapOutputWithContext(ctx context.Context) ClusterIamMemberMapOutput {
 	return o
 }
 
-func (o ClusterIAMMemberMapOutput) MapIndex(k pulumi.StringInput) ClusterIAMMemberOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ClusterIAMMember {
-		return vs[0].(map[string]*ClusterIAMMember)[vs[1].(string)]
-	}).(ClusterIAMMemberOutput)
+func (o ClusterIamMemberMapOutput) MapIndex(k pulumi.StringInput) ClusterIamMemberOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ClusterIamMember {
+		return vs[0].(map[string]*ClusterIamMember)[vs[1].(string)]
+	}).(ClusterIamMemberOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIAMMemberInput)(nil)).Elem(), &ClusterIAMMember{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIAMMemberArrayInput)(nil)).Elem(), ClusterIAMMemberArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIAMMemberMapInput)(nil)).Elem(), ClusterIAMMemberMap{})
-	pulumi.RegisterOutputType(ClusterIAMMemberOutput{})
-	pulumi.RegisterOutputType(ClusterIAMMemberArrayOutput{})
-	pulumi.RegisterOutputType(ClusterIAMMemberMapOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIamMemberInput)(nil)).Elem(), &ClusterIamMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIamMemberArrayInput)(nil)).Elem(), ClusterIamMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIamMemberMapInput)(nil)).Elem(), ClusterIamMemberMap{})
+	pulumi.RegisterOutputType(ClusterIamMemberOutput{})
+	pulumi.RegisterOutputType(ClusterIamMemberArrayOutput{})
+	pulumi.RegisterOutputType(ClusterIamMemberMapOutput{})
 }

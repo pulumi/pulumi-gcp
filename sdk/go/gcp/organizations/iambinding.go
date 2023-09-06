@@ -12,20 +12,31 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Allows creation and management of a single binding within IAM policy for
-// an existing Google Cloud Platform Organization.
+// Four different resources help you manage your IAM policy for a organization. Each of these resources serves a different use case:
 //
-// > **Note:** This resource __must not__ be used in conjunction with
+// * `organizations.IamPolicy`: Authoritative. Sets the IAM policy for the organization and replaces any existing policy already attached.
+// * `organizations.IamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the organization are preserved.
+// * `organizations.IamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the organization are preserved.
+// * `organizations.IamAuditConfig`: Authoritative for a given service. Updates the IAM policy to enable audit logging for the given service.
 //
-//	`organizations.IAMMember` for the __same role__ or they will fight over
-//	what your policy should be.
+// > **Note:** `organizations.IamPolicy` **cannot** be used in conjunction with `organizations.IamBinding`, `organizations.IamMember`, or `organizations.IamAuditConfig` or they will fight over what your policy should be.
 //
-// > **Note:** On create, this resource will overwrite members of any existing roles.
+// > **Note:** `organizations.IamBinding` resources **can be** used in conjunction with `organizations.IamMember` resources **only if** they do not grant privilege to the same role.
 //
-//	Use `pulumi import` and inspect the `output to ensure
-//	your existing members are preserved.
+// ## google\_organization\_iam\_policy
 //
-// ## Example Usage
+// !> **Warning:** New organizations have several default policies which will,
+//
+//	without extreme caution, be **overwritten** by use of this resource.
+//	The safest alternative is to use multiple `organizations.IamBinding`
+//	resources. This resource makes it easy to remove your own access to
+//	an organization, which will require a call to Google Support to have
+//	fixed, and can take multiple days to resolve.
+//
+//	In general, this resource should only be used with organizations
+//	fully managed by this provider.I f you do use this resource,
+//	the best way to be sure that you are not making dangerous changes is to start
+//	by **importing** your existing policy, and examining the diff very closely.
 //
 // ```go
 // package main
@@ -39,12 +50,233 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := organizations.NewIAMBinding(ctx, "binding", &organizations.IAMBindingArgs{
-//				Members: pulumi.StringArray{
-//					pulumi.String("user:alice@gmail.com"),
+//			admin, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
+//					{
+//						Role: "roles/editor",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
 //				},
-//				OrgId: pulumi.String("123456789"),
-//				Role:  pulumi.String("roles/browser"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = organizations.NewIamPolicy(ctx, "organization", &organizations.IamPolicyArgs{
+//				OrgId:      pulumi.String("1234567890"),
+//				PolicyData: *pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
+//					{
+//						Condition: {
+//							Description: pulumi.StringRef("Expiring at midnight of 2019-12-31"),
+//							Expression:  "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+//							Title:       "expires_after_2019_12_31",
+//						},
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//						Role: "roles/editor",
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = organizations.NewIamPolicy(ctx, "organization", &organizations.IamPolicyArgs{
+//				OrgId:      pulumi.String("1234567890"),
+//				PolicyData: *pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## google\_organization\_iam\_binding
+//
+// > **Note:** If `role` is set to `roles/owner` and you don't specify a user or service account you have access to in `members`, you can lock yourself out of your organization.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.NewIamBinding(ctx, "organization", &organizations.IamBindingArgs{
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//				OrgId: pulumi.String("1234567890"),
+//				Role:  pulumi.String("roles/editor"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.NewIamBinding(ctx, "organization", &organizations.IamBindingArgs{
+//				Condition: &organizations.IamBindingConditionArgs{
+//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+//					Title:       pulumi.String("expires_after_2019_12_31"),
+//				},
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//				OrgId: pulumi.String("1234567890"),
+//				Role:  pulumi.String("roles/editor"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## google\_organization\_iam\_member
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.NewIamMember(ctx, "organization", &organizations.IamMemberArgs{
+//				Member: pulumi.String("user:jane@example.com"),
+//				OrgId:  pulumi.String("1234567890"),
+//				Role:   pulumi.String("roles/editor"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.NewIamMember(ctx, "organization", &organizations.IamMemberArgs{
+//				Condition: &organizations.IamMemberConditionArgs{
+//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+//					Title:       pulumi.String("expires_after_2019_12_31"),
+//				},
+//				Member: pulumi.String("user:jane@example.com"),
+//				OrgId:  pulumi.String("1234567890"),
+//				Role:   pulumi.String("roles/editor"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## google\_organization\_iam\_audit\_config
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.NewIamAuditConfig(ctx, "organization", &organizations.IamAuditConfigArgs{
+//				AuditLogConfigs: organizations.IamAuditConfigAuditLogConfigArray{
+//					&organizations.IamAuditConfigAuditLogConfigArgs{
+//						LogType: pulumi.String("ADMIN_READ"),
+//					},
+//					&organizations.IamAuditConfigAuditLogConfigArgs{
+//						ExemptedMembers: pulumi.StringArray{
+//							pulumi.String("user:joebloggs@hashicorp.com"),
+//						},
+//						LogType: pulumi.String("DATA_READ"),
+//					},
+//				},
+//				OrgId:   pulumi.String("1234567890"),
+//				Service: pulumi.String("allServices"),
 //			})
 //			if err != nil {
 //				return err
@@ -57,38 +289,75 @@ import (
 //
 // ## Import
 //
-// IAM binding imports use space-delimited identifiers; first the resource in question and then the role.
+// IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
 //
-// These bindings can be imported using the `org_id` and role, e.g.
+// This member resource can be imported using the `org_id`, role, and member e.g.
 //
 // ```sh
 //
-//	$ pulumi import gcp:organizations/iAMBinding:IAMBinding my_org "your-org-id roles/viewer"
+//	$ pulumi import gcp:organizations/iAMBinding:IamBinding my_organization "your-orgid roles/viewer user:foo@example.com"
+//
+// ```
+//
+//	IAM binding imports use space-delimited identifiers; the resource in question and the role.
+//
+// This binding resource can be imported using the `org_id` and role, e.g.
+//
+// ```sh
+//
+//	$ pulumi import gcp:organizations/iAMBinding:IamBinding my_organization "your-org-id roles/viewer"
+//
+// ```
+//
+//	IAM policy imports use the identifier of the resource in question.
+//
+// This policy resource can be imported using the `org_id`.
+//
+// ```sh
+//
+//	$ pulumi import gcp:organizations/iAMBinding:IamBinding my_organization your-org-id
+//
+// ```
+//
+//	IAM audit config imports use the identifier of the resource in question and the service, e.g.
+//
+// ```sh
+//
+//	$ pulumi import gcp:organizations/iAMBinding:IamBinding my_organization "your-organization-id foo.googleapis.com"
 //
 // ```
 //
 //	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 //
-// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
-type IAMBinding struct {
+// full name of the custom role, e.g. `organizations/{{org_id}}/roles/{{role_id}}`. -> **Conditional IAM Bindings**If you're importing a IAM binding with a condition block, make sure
+//
+// ```sh
+//
+//	$ pulumi import gcp:organizations/iAMBinding:IamBinding to include the title of condition, e.g. `google_organization_iam_binding.my_organization "your-org-id roles/{{role_id}} condition-title"`
+//
+// ```
+//
+// Deprecated: gcp.organizations/iambinding.IamBinding has been deprecated in favor of gcp.organizations/iambinding.IamBinding
+type IamBinding struct {
 	pulumi.CustomResourceState
 
-	Condition IAMBindingConditionPtrOutput `pulumi:"condition"`
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
+	Condition IamBindingConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the organization's IAM policy.
-	Etag pulumi.StringOutput `pulumi:"etag"`
-	// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+	Etag    pulumi.StringOutput      `pulumi:"etag"`
 	Members pulumi.StringArrayOutput `pulumi:"members"`
-	// The numeric ID of the organization in which you want to create a custom role.
+	// The organization id of the target organization.
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
 	// The role that should be applied. Only one
-	// `organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
-	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	// `organizations.IamBinding` can be used per role. Note that custom roles must be of the format
+	// `organizations/{{org_id}}/roles/{{role_id}}`.
 	Role pulumi.StringOutput `pulumi:"role"`
 }
 
-// NewIAMBinding registers a new resource with the given unique name, arguments, and options.
-func NewIAMBinding(ctx *pulumi.Context,
-	name string, args *IAMBindingArgs, opts ...pulumi.ResourceOption) (*IAMBinding, error) {
+// NewIamBinding registers a new resource with the given unique name, arguments, and options.
+func NewIamBinding(ctx *pulumi.Context,
+	name string, args *IamBindingArgs, opts ...pulumi.ResourceOption) (*IamBinding, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -102,243 +371,254 @@ func NewIAMBinding(ctx *pulumi.Context,
 	if args.Role == nil {
 		return nil, errors.New("invalid value for required argument 'Role'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("gcp:organizations/iAMBinding:IAMBinding"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
-	var resource IAMBinding
-	err := ctx.RegisterResource("gcp:organizations/iAMBinding:IAMBinding", name, args, &resource, opts...)
+	var resource IamBinding
+	err := ctx.RegisterResource("gcp:organizations/iAMBinding:IamBinding", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// GetIAMBinding gets an existing IAMBinding resource's state with the given name, ID, and optional
+// GetIamBinding gets an existing IamBinding resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetIAMBinding(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *IAMBindingState, opts ...pulumi.ResourceOption) (*IAMBinding, error) {
-	var resource IAMBinding
-	err := ctx.ReadResource("gcp:organizations/iAMBinding:IAMBinding", name, id, state, &resource, opts...)
+func GetIamBinding(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *IamBindingState, opts ...pulumi.ResourceOption) (*IamBinding, error) {
+	var resource IamBinding
+	err := ctx.ReadResource("gcp:organizations/iAMBinding:IamBinding", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering IAMBinding resources.
-type iambindingState struct {
-	Condition *IAMBindingCondition `pulumi:"condition"`
+// Input properties used for looking up and filtering IamBinding resources.
+type iamBindingState struct {
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
+	Condition *IamBindingCondition `pulumi:"condition"`
 	// (Computed) The etag of the organization's IAM policy.
-	Etag *string `pulumi:"etag"`
-	// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+	Etag    *string  `pulumi:"etag"`
 	Members []string `pulumi:"members"`
-	// The numeric ID of the organization in which you want to create a custom role.
+	// The organization id of the target organization.
 	OrgId *string `pulumi:"orgId"`
 	// The role that should be applied. Only one
-	// `organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
-	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	// `organizations.IamBinding` can be used per role. Note that custom roles must be of the format
+	// `organizations/{{org_id}}/roles/{{role_id}}`.
 	Role *string `pulumi:"role"`
 }
 
-type IAMBindingState struct {
-	Condition IAMBindingConditionPtrInput
+type IamBindingState struct {
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
+	Condition IamBindingConditionPtrInput
 	// (Computed) The etag of the organization's IAM policy.
-	Etag pulumi.StringPtrInput
-	// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+	Etag    pulumi.StringPtrInput
 	Members pulumi.StringArrayInput
-	// The numeric ID of the organization in which you want to create a custom role.
+	// The organization id of the target organization.
 	OrgId pulumi.StringPtrInput
 	// The role that should be applied. Only one
-	// `organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
-	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	// `organizations.IamBinding` can be used per role. Note that custom roles must be of the format
+	// `organizations/{{org_id}}/roles/{{role_id}}`.
 	Role pulumi.StringPtrInput
 }
 
-func (IAMBindingState) ElementType() reflect.Type {
-	return reflect.TypeOf((*iambindingState)(nil)).Elem()
+func (IamBindingState) ElementType() reflect.Type {
+	return reflect.TypeOf((*iamBindingState)(nil)).Elem()
 }
 
-type iambindingArgs struct {
-	Condition *IAMBindingCondition `pulumi:"condition"`
-	// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-	Members []string `pulumi:"members"`
-	// The numeric ID of the organization in which you want to create a custom role.
+type iamBindingArgs struct {
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
+	Condition *IamBindingCondition `pulumi:"condition"`
+	Members   []string             `pulumi:"members"`
+	// The organization id of the target organization.
 	OrgId string `pulumi:"orgId"`
 	// The role that should be applied. Only one
-	// `organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
-	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	// `organizations.IamBinding` can be used per role. Note that custom roles must be of the format
+	// `organizations/{{org_id}}/roles/{{role_id}}`.
 	Role string `pulumi:"role"`
 }
 
-// The set of arguments for constructing a IAMBinding resource.
-type IAMBindingArgs struct {
-	Condition IAMBindingConditionPtrInput
-	// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-	Members pulumi.StringArrayInput
-	// The numeric ID of the organization in which you want to create a custom role.
+// The set of arguments for constructing a IamBinding resource.
+type IamBindingArgs struct {
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
+	Condition IamBindingConditionPtrInput
+	Members   pulumi.StringArrayInput
+	// The organization id of the target organization.
 	OrgId pulumi.StringInput
 	// The role that should be applied. Only one
-	// `organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
-	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	// `organizations.IamBinding` can be used per role. Note that custom roles must be of the format
+	// `organizations/{{org_id}}/roles/{{role_id}}`.
 	Role pulumi.StringInput
 }
 
-func (IAMBindingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*iambindingArgs)(nil)).Elem()
+func (IamBindingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*iamBindingArgs)(nil)).Elem()
 }
 
-type IAMBindingInput interface {
+type IamBindingInput interface {
 	pulumi.Input
 
-	ToIAMBindingOutput() IAMBindingOutput
-	ToIAMBindingOutputWithContext(ctx context.Context) IAMBindingOutput
+	ToIamBindingOutput() IamBindingOutput
+	ToIamBindingOutputWithContext(ctx context.Context) IamBindingOutput
 }
 
-func (*IAMBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((**IAMBinding)(nil)).Elem()
+func (*IamBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((**IamBinding)(nil)).Elem()
 }
 
-func (i *IAMBinding) ToIAMBindingOutput() IAMBindingOutput {
-	return i.ToIAMBindingOutputWithContext(context.Background())
+func (i *IamBinding) ToIamBindingOutput() IamBindingOutput {
+	return i.ToIamBindingOutputWithContext(context.Background())
 }
 
-func (i *IAMBinding) ToIAMBindingOutputWithContext(ctx context.Context) IAMBindingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMBindingOutput)
+func (i *IamBinding) ToIamBindingOutputWithContext(ctx context.Context) IamBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamBindingOutput)
 }
 
-// IAMBindingArrayInput is an input type that accepts IAMBindingArray and IAMBindingArrayOutput values.
-// You can construct a concrete instance of `IAMBindingArrayInput` via:
+// IamBindingArrayInput is an input type that accepts IamBindingArray and IamBindingArrayOutput values.
+// You can construct a concrete instance of `IamBindingArrayInput` via:
 //
-//	IAMBindingArray{ IAMBindingArgs{...} }
-type IAMBindingArrayInput interface {
+//	IamBindingArray{ IamBindingArgs{...} }
+type IamBindingArrayInput interface {
 	pulumi.Input
 
-	ToIAMBindingArrayOutput() IAMBindingArrayOutput
-	ToIAMBindingArrayOutputWithContext(context.Context) IAMBindingArrayOutput
+	ToIamBindingArrayOutput() IamBindingArrayOutput
+	ToIamBindingArrayOutputWithContext(context.Context) IamBindingArrayOutput
 }
 
-type IAMBindingArray []IAMBindingInput
+type IamBindingArray []IamBindingInput
 
-func (IAMBindingArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*IAMBinding)(nil)).Elem()
+func (IamBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*IamBinding)(nil)).Elem()
 }
 
-func (i IAMBindingArray) ToIAMBindingArrayOutput() IAMBindingArrayOutput {
-	return i.ToIAMBindingArrayOutputWithContext(context.Background())
+func (i IamBindingArray) ToIamBindingArrayOutput() IamBindingArrayOutput {
+	return i.ToIamBindingArrayOutputWithContext(context.Background())
 }
 
-func (i IAMBindingArray) ToIAMBindingArrayOutputWithContext(ctx context.Context) IAMBindingArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMBindingArrayOutput)
+func (i IamBindingArray) ToIamBindingArrayOutputWithContext(ctx context.Context) IamBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamBindingArrayOutput)
 }
 
-// IAMBindingMapInput is an input type that accepts IAMBindingMap and IAMBindingMapOutput values.
-// You can construct a concrete instance of `IAMBindingMapInput` via:
+// IamBindingMapInput is an input type that accepts IamBindingMap and IamBindingMapOutput values.
+// You can construct a concrete instance of `IamBindingMapInput` via:
 //
-//	IAMBindingMap{ "key": IAMBindingArgs{...} }
-type IAMBindingMapInput interface {
+//	IamBindingMap{ "key": IamBindingArgs{...} }
+type IamBindingMapInput interface {
 	pulumi.Input
 
-	ToIAMBindingMapOutput() IAMBindingMapOutput
-	ToIAMBindingMapOutputWithContext(context.Context) IAMBindingMapOutput
+	ToIamBindingMapOutput() IamBindingMapOutput
+	ToIamBindingMapOutputWithContext(context.Context) IamBindingMapOutput
 }
 
-type IAMBindingMap map[string]IAMBindingInput
+type IamBindingMap map[string]IamBindingInput
 
-func (IAMBindingMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*IAMBinding)(nil)).Elem()
+func (IamBindingMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*IamBinding)(nil)).Elem()
 }
 
-func (i IAMBindingMap) ToIAMBindingMapOutput() IAMBindingMapOutput {
-	return i.ToIAMBindingMapOutputWithContext(context.Background())
+func (i IamBindingMap) ToIamBindingMapOutput() IamBindingMapOutput {
+	return i.ToIamBindingMapOutputWithContext(context.Background())
 }
 
-func (i IAMBindingMap) ToIAMBindingMapOutputWithContext(ctx context.Context) IAMBindingMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMBindingMapOutput)
+func (i IamBindingMap) ToIamBindingMapOutputWithContext(ctx context.Context) IamBindingMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamBindingMapOutput)
 }
 
-type IAMBindingOutput struct{ *pulumi.OutputState }
+type IamBindingOutput struct{ *pulumi.OutputState }
 
-func (IAMBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IAMBinding)(nil)).Elem()
+func (IamBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IamBinding)(nil)).Elem()
 }
 
-func (o IAMBindingOutput) ToIAMBindingOutput() IAMBindingOutput {
+func (o IamBindingOutput) ToIamBindingOutput() IamBindingOutput {
 	return o
 }
 
-func (o IAMBindingOutput) ToIAMBindingOutputWithContext(ctx context.Context) IAMBindingOutput {
+func (o IamBindingOutput) ToIamBindingOutputWithContext(ctx context.Context) IamBindingOutput {
 	return o
 }
 
-func (o IAMBindingOutput) Condition() IAMBindingConditionPtrOutput {
-	return o.ApplyT(func(v *IAMBinding) IAMBindingConditionPtrOutput { return v.Condition }).(IAMBindingConditionPtrOutput)
+// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+// Structure is documented below.
+func (o IamBindingOutput) Condition() IamBindingConditionPtrOutput {
+	return o.ApplyT(func(v *IamBinding) IamBindingConditionPtrOutput { return v.Condition }).(IamBindingConditionPtrOutput)
 }
 
 // (Computed) The etag of the organization's IAM policy.
-func (o IAMBindingOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v *IAMBinding) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+func (o IamBindingOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *IamBinding) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-func (o IAMBindingOutput) Members() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *IAMBinding) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
+func (o IamBindingOutput) Members() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *IamBinding) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// The numeric ID of the organization in which you want to create a custom role.
-func (o IAMBindingOutput) OrgId() pulumi.StringOutput {
-	return o.ApplyT(func(v *IAMBinding) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
+// The organization id of the target organization.
+func (o IamBindingOutput) OrgId() pulumi.StringOutput {
+	return o.ApplyT(func(v *IamBinding) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
 }
 
 // The role that should be applied. Only one
-// `organizations.IAMBinding` can be used per role. Note that custom roles must be of the format
-// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-func (o IAMBindingOutput) Role() pulumi.StringOutput {
-	return o.ApplyT(func(v *IAMBinding) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
+// `organizations.IamBinding` can be used per role. Note that custom roles must be of the format
+// `organizations/{{org_id}}/roles/{{role_id}}`.
+func (o IamBindingOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v *IamBinding) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }
 
-type IAMBindingArrayOutput struct{ *pulumi.OutputState }
+type IamBindingArrayOutput struct{ *pulumi.OutputState }
 
-func (IAMBindingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*IAMBinding)(nil)).Elem()
+func (IamBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*IamBinding)(nil)).Elem()
 }
 
-func (o IAMBindingArrayOutput) ToIAMBindingArrayOutput() IAMBindingArrayOutput {
+func (o IamBindingArrayOutput) ToIamBindingArrayOutput() IamBindingArrayOutput {
 	return o
 }
 
-func (o IAMBindingArrayOutput) ToIAMBindingArrayOutputWithContext(ctx context.Context) IAMBindingArrayOutput {
+func (o IamBindingArrayOutput) ToIamBindingArrayOutputWithContext(ctx context.Context) IamBindingArrayOutput {
 	return o
 }
 
-func (o IAMBindingArrayOutput) Index(i pulumi.IntInput) IAMBindingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IAMBinding {
-		return vs[0].([]*IAMBinding)[vs[1].(int)]
-	}).(IAMBindingOutput)
+func (o IamBindingArrayOutput) Index(i pulumi.IntInput) IamBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IamBinding {
+		return vs[0].([]*IamBinding)[vs[1].(int)]
+	}).(IamBindingOutput)
 }
 
-type IAMBindingMapOutput struct{ *pulumi.OutputState }
+type IamBindingMapOutput struct{ *pulumi.OutputState }
 
-func (IAMBindingMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*IAMBinding)(nil)).Elem()
+func (IamBindingMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*IamBinding)(nil)).Elem()
 }
 
-func (o IAMBindingMapOutput) ToIAMBindingMapOutput() IAMBindingMapOutput {
+func (o IamBindingMapOutput) ToIamBindingMapOutput() IamBindingMapOutput {
 	return o
 }
 
-func (o IAMBindingMapOutput) ToIAMBindingMapOutputWithContext(ctx context.Context) IAMBindingMapOutput {
+func (o IamBindingMapOutput) ToIamBindingMapOutputWithContext(ctx context.Context) IamBindingMapOutput {
 	return o
 }
 
-func (o IAMBindingMapOutput) MapIndex(k pulumi.StringInput) IAMBindingOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *IAMBinding {
-		return vs[0].(map[string]*IAMBinding)[vs[1].(string)]
-	}).(IAMBindingOutput)
+func (o IamBindingMapOutput) MapIndex(k pulumi.StringInput) IamBindingOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *IamBinding {
+		return vs[0].(map[string]*IamBinding)[vs[1].(string)]
+	}).(IamBindingOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*IAMBindingInput)(nil)).Elem(), &IAMBinding{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IAMBindingArrayInput)(nil)).Elem(), IAMBindingArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IAMBindingMapInput)(nil)).Elem(), IAMBindingMap{})
-	pulumi.RegisterOutputType(IAMBindingOutput{})
-	pulumi.RegisterOutputType(IAMBindingArrayOutput{})
-	pulumi.RegisterOutputType(IAMBindingMapOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamBindingInput)(nil)).Elem(), &IamBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamBindingArrayInput)(nil)).Elem(), IamBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamBindingMapInput)(nil)).Elem(), IamBindingMap{})
+	pulumi.RegisterOutputType(IamBindingOutput{})
+	pulumi.RegisterOutputType(IamBindingArrayOutput{})
+	pulumi.RegisterOutputType(IamBindingMapOutput{})
 }

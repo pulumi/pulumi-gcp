@@ -48,7 +48,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			permissions, err := projects.NewIAMMember(ctx, "permissions", &projects.IAMMemberArgs{
+//			permissions, err := projects.NewIamMember(ctx, "permissions", &projects.IamMemberArgs{
 //				Project: *pulumi.String(project.ProjectId),
 //				Role:    pulumi.String("roles/iam.serviceAccountTokenCreator"),
 //				Member:  pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com", project.Number)),

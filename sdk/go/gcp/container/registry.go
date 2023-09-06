@@ -64,7 +64,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = storage.NewBucketIAMMember(ctx, "viewer", &storage.BucketIAMMemberArgs{
+//			_, err = storage.NewBucketIamMember(ctx, "viewer", &storage.BucketIamMemberArgs{
 //				Bucket: registry.ID(),
 //				Role:   pulumi.String("roles/storage.objectViewer"),
 //				Member: pulumi.String("user:jane@example.com"),

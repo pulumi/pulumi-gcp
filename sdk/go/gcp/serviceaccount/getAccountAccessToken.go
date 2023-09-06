@@ -34,7 +34,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := serviceAccount.NewIAMBinding(ctx, "token-creator-iam", &serviceAccount.IAMBindingArgs{
+//			_, err := serviceAccount.NewIamBinding(ctx, "token-creator-iam", &serviceAccount.IamBindingArgs{
 //				Members: pulumi.StringArray{
 //					pulumi.String("serviceAccount:service_A@projectA.iam.gserviceaccount.com"),
 //				},

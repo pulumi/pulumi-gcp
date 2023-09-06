@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := kms.GetCryptoKeyIamPolicy(ctx, &kms.GetCryptoKeyIamPolicyArgs{
+//			_, err := kms.LookupCryptoKeyIamPolicy(ctx, &kms.LookupCryptoKeyIamPolicyArgs{
 //				CryptoKeyId: google_kms_crypto_key.Crypto_key.Id,
 //			}, nil)
 //			if err != nil {
@@ -38,9 +38,9 @@ import (
 //	}
 //
 // ```
-func GetCryptoKeyIamPolicy(ctx *pulumi.Context, args *GetCryptoKeyIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetCryptoKeyIamPolicyResult, error) {
+func LookupCryptoKeyIamPolicy(ctx *pulumi.Context, args *LookupCryptoKeyIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupCryptoKeyIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
-	var rv GetCryptoKeyIamPolicyResult
+	var rv LookupCryptoKeyIamPolicyResult
 	err := ctx.Invoke("gcp:kms/getCryptoKeyIamPolicy:getCryptoKeyIamPolicy", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -49,13 +49,13 @@ func GetCryptoKeyIamPolicy(ctx *pulumi.Context, args *GetCryptoKeyIamPolicyArgs,
 }
 
 // A collection of arguments for invoking getCryptoKeyIamPolicy.
-type GetCryptoKeyIamPolicyArgs struct {
+type LookupCryptoKeyIamPolicyArgs struct {
 	// The crypto key ID, in the form
 	CryptoKeyId string `pulumi:"cryptoKeyId"`
 }
 
 // A collection of values returned by getCryptoKeyIamPolicy.
-type GetCryptoKeyIamPolicyResult struct {
+type LookupCryptoKeyIamPolicyResult struct {
 	CryptoKeyId string `pulumi:"cryptoKeyId"`
 	// (Computed) The etag of the IAM policy.
 	Etag string `pulumi:"etag"`
@@ -65,63 +65,63 @@ type GetCryptoKeyIamPolicyResult struct {
 	PolicyData string `pulumi:"policyData"`
 }
 
-func GetCryptoKeyIamPolicyOutput(ctx *pulumi.Context, args GetCryptoKeyIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetCryptoKeyIamPolicyResultOutput {
+func LookupCryptoKeyIamPolicyOutput(ctx *pulumi.Context, args LookupCryptoKeyIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupCryptoKeyIamPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetCryptoKeyIamPolicyResult, error) {
-			args := v.(GetCryptoKeyIamPolicyArgs)
-			r, err := GetCryptoKeyIamPolicy(ctx, &args, opts...)
-			var s GetCryptoKeyIamPolicyResult
+		ApplyT(func(v interface{}) (LookupCryptoKeyIamPolicyResult, error) {
+			args := v.(LookupCryptoKeyIamPolicyArgs)
+			r, err := LookupCryptoKeyIamPolicy(ctx, &args, opts...)
+			var s LookupCryptoKeyIamPolicyResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(GetCryptoKeyIamPolicyResultOutput)
+		}).(LookupCryptoKeyIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getCryptoKeyIamPolicy.
-type GetCryptoKeyIamPolicyOutputArgs struct {
+type LookupCryptoKeyIamPolicyOutputArgs struct {
 	// The crypto key ID, in the form
 	CryptoKeyId pulumi.StringInput `pulumi:"cryptoKeyId"`
 }
 
-func (GetCryptoKeyIamPolicyOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetCryptoKeyIamPolicyArgs)(nil)).Elem()
+func (LookupCryptoKeyIamPolicyOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupCryptoKeyIamPolicyArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getCryptoKeyIamPolicy.
-type GetCryptoKeyIamPolicyResultOutput struct{ *pulumi.OutputState }
+type LookupCryptoKeyIamPolicyResultOutput struct{ *pulumi.OutputState }
 
-func (GetCryptoKeyIamPolicyResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetCryptoKeyIamPolicyResult)(nil)).Elem()
+func (LookupCryptoKeyIamPolicyResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupCryptoKeyIamPolicyResult)(nil)).Elem()
 }
 
-func (o GetCryptoKeyIamPolicyResultOutput) ToGetCryptoKeyIamPolicyResultOutput() GetCryptoKeyIamPolicyResultOutput {
+func (o LookupCryptoKeyIamPolicyResultOutput) ToLookupCryptoKeyIamPolicyResultOutput() LookupCryptoKeyIamPolicyResultOutput {
 	return o
 }
 
-func (o GetCryptoKeyIamPolicyResultOutput) ToGetCryptoKeyIamPolicyResultOutputWithContext(ctx context.Context) GetCryptoKeyIamPolicyResultOutput {
+func (o LookupCryptoKeyIamPolicyResultOutput) ToLookupCryptoKeyIamPolicyResultOutputWithContext(ctx context.Context) LookupCryptoKeyIamPolicyResultOutput {
 	return o
 }
 
-func (o GetCryptoKeyIamPolicyResultOutput) CryptoKeyId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetCryptoKeyIamPolicyResult) string { return v.CryptoKeyId }).(pulumi.StringOutput)
+func (o LookupCryptoKeyIamPolicyResultOutput) CryptoKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCryptoKeyIamPolicyResult) string { return v.CryptoKeyId }).(pulumi.StringOutput)
 }
 
 // (Computed) The etag of the IAM policy.
-func (o GetCryptoKeyIamPolicyResultOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v GetCryptoKeyIamPolicyResult) string { return v.Etag }).(pulumi.StringOutput)
+func (o LookupCryptoKeyIamPolicyResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCryptoKeyIamPolicyResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
-func (o GetCryptoKeyIamPolicyResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetCryptoKeyIamPolicyResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupCryptoKeyIamPolicyResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCryptoKeyIamPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // (Computed) The policy data
-func (o GetCryptoKeyIamPolicyResultOutput) PolicyData() pulumi.StringOutput {
-	return o.ApplyT(func(v GetCryptoKeyIamPolicyResult) string { return v.PolicyData }).(pulumi.StringOutput)
+func (o LookupCryptoKeyIamPolicyResultOutput) PolicyData() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCryptoKeyIamPolicyResult) string { return v.PolicyData }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(GetCryptoKeyIamPolicyResultOutput{})
+	pulumi.RegisterOutputType(LookupCryptoKeyIamPolicyResultOutput{})
 }

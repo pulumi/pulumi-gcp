@@ -14,17 +14,17 @@ import (
 
 // Three different resources help you manage your IAM policy for Cloud Pub/Sub Topic. Each of these resources serves a different use case:
 //
-// * `pubsub.TopicIAMPolicy`: Authoritative. Sets the IAM policy for the topic and replaces any existing policy already attached.
-// * `pubsub.TopicIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the topic are preserved.
-// * `pubsub.TopicIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the topic are preserved.
+// * `pubsub.TopicIamPolicy`: Authoritative. Sets the IAM policy for the topic and replaces any existing policy already attached.
+// * `pubsub.TopicIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the topic are preserved.
+// * `pubsub.TopicIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the topic are preserved.
 //
 // # A data source can be used to retrieve policy data in advent you do not need creation
 //
-// * `pubsub.TopicIAMPolicy`: Retrieves the IAM policy for the topic
+// * `pubsub.TopicIamPolicy`: Retrieves the IAM policy for the topic
 //
-// > **Note:** `pubsub.TopicIAMPolicy` **cannot** be used in conjunction with `pubsub.TopicIAMBinding` and `pubsub.TopicIAMMember` or they will fight over what your policy should be.
+// > **Note:** `pubsub.TopicIamPolicy` **cannot** be used in conjunction with `pubsub.TopicIamBinding` and `pubsub.TopicIamMember` or they will fight over what your policy should be.
 //
-// > **Note:** `pubsub.TopicIAMBinding` resources **can be** used in conjunction with `pubsub.TopicIAMMember` resources **only if** they do not grant privilege to the same role.
+// > **Note:** `pubsub.TopicIamBinding` resources **can be** used in conjunction with `pubsub.TopicIamMember` resources **only if** they do not grant privilege to the same role.
 //
 // ## google\_pubsub\_topic\_iam\_policy
 //
@@ -41,8 +41,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
+//			admin, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
 //					{
 //						Role: "roles/viewer",
 //						Members: []string{
@@ -54,7 +54,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = pubsub.NewTopicIAMPolicy(ctx, "policy", &pubsub.TopicIAMPolicyArgs{
+//			_, err = pubsub.NewTopicIamPolicy(ctx, "policy", &pubsub.TopicIamPolicyArgs{
 //				Project:    pulumi.Any(google_pubsub_topic.Example.Project),
 //				Topic:      pulumi.Any(google_pubsub_topic.Example.Name),
 //				PolicyData: *pulumi.String(admin.PolicyData),
@@ -82,7 +82,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := pubsub.NewTopicIAMBinding(ctx, "binding", &pubsub.TopicIAMBindingArgs{
+//			_, err := pubsub.NewTopicIamBinding(ctx, "binding", &pubsub.TopicIamBindingArgs{
 //				Project: pulumi.Any(google_pubsub_topic.Example.Project),
 //				Topic:   pulumi.Any(google_pubsub_topic.Example.Name),
 //				Role:    pulumi.String("roles/viewer"),
@@ -113,7 +113,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := pubsub.NewTopicIAMMember(ctx, "member", &pubsub.TopicIAMMemberArgs{
+//			_, err := pubsub.NewTopicIamMember(ctx, "member", &pubsub.TopicIamMemberArgs{
 //				Project: pulumi.Any(google_pubsub_topic.Example.Project),
 //				Topic:   pulumi.Any(google_pubsub_topic.Example.Name),
 //				Role:    pulumi.String("roles/viewer"),
@@ -181,7 +181,7 @@ type RepositoryIamMember struct {
 	Project    pulumi.StringOutput `pulumi:"project"`
 	Repository pulumi.StringOutput `pulumi:"repository"`
 	// The role that should be applied. Only one
-	// `pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `pubsub.TopicIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringOutput `pulumi:"role"`
 }
@@ -246,7 +246,7 @@ type repositoryIamMemberState struct {
 	Project    *string `pulumi:"project"`
 	Repository *string `pulumi:"repository"`
 	// The role that should be applied. Only one
-	// `pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `pubsub.TopicIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role *string `pulumi:"role"`
 }
@@ -273,7 +273,7 @@ type RepositoryIamMemberState struct {
 	Project    pulumi.StringPtrInput
 	Repository pulumi.StringPtrInput
 	// The role that should be applied. Only one
-	// `pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `pubsub.TopicIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringPtrInput
 }
@@ -302,7 +302,7 @@ type repositoryIamMemberArgs struct {
 	Project    *string `pulumi:"project"`
 	Repository string  `pulumi:"repository"`
 	// The role that should be applied. Only one
-	// `pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `pubsub.TopicIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role string `pulumi:"role"`
 }
@@ -328,7 +328,7 @@ type RepositoryIamMemberArgs struct {
 	Project    pulumi.StringPtrInput
 	Repository pulumi.StringInput
 	// The role that should be applied. Only one
-	// `pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `pubsub.TopicIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringInput
 }
@@ -456,7 +456,7 @@ func (o RepositoryIamMemberOutput) Repository() pulumi.StringOutput {
 }
 
 // The role that should be applied. Only one
-// `pubsub.TopicIAMBinding` can be used per role. Note that custom roles must be of the format
+// `pubsub.TopicIamBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
 func (o RepositoryIamMemberOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *RepositoryIamMember) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)

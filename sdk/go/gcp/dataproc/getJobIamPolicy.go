@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dataproc.GetJobIamPolicy(ctx, &dataproc.GetJobIamPolicyArgs{
+//			_, err := dataproc.LookupJobIamPolicy(ctx, &dataproc.LookupJobIamPolicyArgs{
 //				JobId:  google_dataproc_job.Pyspark.Reference[0].Job_id,
 //				Region: pulumi.StringRef("us-central1"),
 //			}, nil)
@@ -39,9 +39,9 @@ import (
 //	}
 //
 // ```
-func GetJobIamPolicy(ctx *pulumi.Context, args *GetJobIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetJobIamPolicyResult, error) {
+func LookupJobIamPolicy(ctx *pulumi.Context, args *LookupJobIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupJobIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
-	var rv GetJobIamPolicyResult
+	var rv LookupJobIamPolicyResult
 	err := ctx.Invoke("gcp:dataproc/getJobIamPolicy:getJobIamPolicy", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -50,7 +50,7 @@ func GetJobIamPolicy(ctx *pulumi.Context, args *GetJobIamPolicyArgs, opts ...pul
 }
 
 // A collection of arguments for invoking getJobIamPolicy.
-type GetJobIamPolicyArgs struct {
+type LookupJobIamPolicyArgs struct {
 	// The name or relative resource id of the job to manage IAM policies for.
 	JobId   string  `pulumi:"jobId"`
 	Project *string `pulumi:"project"`
@@ -58,7 +58,7 @@ type GetJobIamPolicyArgs struct {
 }
 
 // A collection of values returned by getJobIamPolicy.
-type GetJobIamPolicyResult struct {
+type LookupJobIamPolicyResult struct {
 	// (Computed) The etag of the IAM policy.
 	Etag string `pulumi:"etag"`
 	// The provider-assigned unique ID for this managed resource.
@@ -70,73 +70,73 @@ type GetJobIamPolicyResult struct {
 	Region     string `pulumi:"region"`
 }
 
-func GetJobIamPolicyOutput(ctx *pulumi.Context, args GetJobIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetJobIamPolicyResultOutput {
+func LookupJobIamPolicyOutput(ctx *pulumi.Context, args LookupJobIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupJobIamPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetJobIamPolicyResult, error) {
-			args := v.(GetJobIamPolicyArgs)
-			r, err := GetJobIamPolicy(ctx, &args, opts...)
-			var s GetJobIamPolicyResult
+		ApplyT(func(v interface{}) (LookupJobIamPolicyResult, error) {
+			args := v.(LookupJobIamPolicyArgs)
+			r, err := LookupJobIamPolicy(ctx, &args, opts...)
+			var s LookupJobIamPolicyResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(GetJobIamPolicyResultOutput)
+		}).(LookupJobIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getJobIamPolicy.
-type GetJobIamPolicyOutputArgs struct {
+type LookupJobIamPolicyOutputArgs struct {
 	// The name or relative resource id of the job to manage IAM policies for.
 	JobId   pulumi.StringInput    `pulumi:"jobId"`
 	Project pulumi.StringPtrInput `pulumi:"project"`
 	Region  pulumi.StringPtrInput `pulumi:"region"`
 }
 
-func (GetJobIamPolicyOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobIamPolicyArgs)(nil)).Elem()
+func (LookupJobIamPolicyOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupJobIamPolicyArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getJobIamPolicy.
-type GetJobIamPolicyResultOutput struct{ *pulumi.OutputState }
+type LookupJobIamPolicyResultOutput struct{ *pulumi.OutputState }
 
-func (GetJobIamPolicyResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetJobIamPolicyResult)(nil)).Elem()
+func (LookupJobIamPolicyResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupJobIamPolicyResult)(nil)).Elem()
 }
 
-func (o GetJobIamPolicyResultOutput) ToGetJobIamPolicyResultOutput() GetJobIamPolicyResultOutput {
+func (o LookupJobIamPolicyResultOutput) ToLookupJobIamPolicyResultOutput() LookupJobIamPolicyResultOutput {
 	return o
 }
 
-func (o GetJobIamPolicyResultOutput) ToGetJobIamPolicyResultOutputWithContext(ctx context.Context) GetJobIamPolicyResultOutput {
+func (o LookupJobIamPolicyResultOutput) ToLookupJobIamPolicyResultOutputWithContext(ctx context.Context) LookupJobIamPolicyResultOutput {
 	return o
 }
 
 // (Computed) The etag of the IAM policy.
-func (o GetJobIamPolicyResultOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v GetJobIamPolicyResult) string { return v.Etag }).(pulumi.StringOutput)
+func (o LookupJobIamPolicyResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupJobIamPolicyResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
-func (o GetJobIamPolicyResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetJobIamPolicyResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupJobIamPolicyResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupJobIamPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o GetJobIamPolicyResultOutput) JobId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetJobIamPolicyResult) string { return v.JobId }).(pulumi.StringOutput)
+func (o LookupJobIamPolicyResultOutput) JobId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupJobIamPolicyResult) string { return v.JobId }).(pulumi.StringOutput)
 }
 
 // (Computed) The policy data
-func (o GetJobIamPolicyResultOutput) PolicyData() pulumi.StringOutput {
-	return o.ApplyT(func(v GetJobIamPolicyResult) string { return v.PolicyData }).(pulumi.StringOutput)
+func (o LookupJobIamPolicyResultOutput) PolicyData() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupJobIamPolicyResult) string { return v.PolicyData }).(pulumi.StringOutput)
 }
 
-func (o GetJobIamPolicyResultOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func(v GetJobIamPolicyResult) string { return v.Project }).(pulumi.StringOutput)
+func (o LookupJobIamPolicyResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupJobIamPolicyResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-func (o GetJobIamPolicyResultOutput) Region() pulumi.StringOutput {
-	return o.ApplyT(func(v GetJobIamPolicyResult) string { return v.Region }).(pulumi.StringOutput)
+func (o LookupJobIamPolicyResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupJobIamPolicyResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(GetJobIamPolicyResultOutput{})
+	pulumi.RegisterOutputType(LookupJobIamPolicyResultOutput{})
 }

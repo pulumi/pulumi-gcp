@@ -14,17 +14,17 @@ import (
 
 // Three different resources help you manage your IAM policy for Cloud Pub/Sub Topic. Each of these resources serves a different use case:
 //
-// * `pubsub.TopicIAMPolicy`: Authoritative. Sets the IAM policy for the topic and replaces any existing policy already attached.
-// * `pubsub.TopicIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the topic are preserved.
-// * `pubsub.TopicIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the topic are preserved.
+// * `pubsub.TopicIamPolicy`: Authoritative. Sets the IAM policy for the topic and replaces any existing policy already attached.
+// * `pubsub.TopicIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the topic are preserved.
+// * `pubsub.TopicIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the topic are preserved.
 //
 // # A data source can be used to retrieve policy data in advent you do not need creation
 //
-// * `pubsub.TopicIAMPolicy`: Retrieves the IAM policy for the topic
+// * `pubsub.TopicIamPolicy`: Retrieves the IAM policy for the topic
 //
-// > **Note:** `pubsub.TopicIAMPolicy` **cannot** be used in conjunction with `pubsub.TopicIAMBinding` and `pubsub.TopicIAMMember` or they will fight over what your policy should be.
+// > **Note:** `pubsub.TopicIamPolicy` **cannot** be used in conjunction with `pubsub.TopicIamBinding` and `pubsub.TopicIamMember` or they will fight over what your policy should be.
 //
-// > **Note:** `pubsub.TopicIAMBinding` resources **can be** used in conjunction with `pubsub.TopicIAMMember` resources **only if** they do not grant privilege to the same role.
+// > **Note:** `pubsub.TopicIamBinding` resources **can be** used in conjunction with `pubsub.TopicIamMember` resources **only if** they do not grant privilege to the same role.
 //
 // ## google\_pubsub\_topic\_iam\_policy
 //
@@ -41,8 +41,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
+//			admin, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
 //					{
 //						Role: "roles/viewer",
 //						Members: []string{
@@ -54,7 +54,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = pubsub.NewTopicIAMPolicy(ctx, "policy", &pubsub.TopicIAMPolicyArgs{
+//			_, err = pubsub.NewTopicIamPolicy(ctx, "policy", &pubsub.TopicIamPolicyArgs{
 //				Project:    pulumi.Any(google_pubsub_topic.Example.Project),
 //				Topic:      pulumi.Any(google_pubsub_topic.Example.Name),
 //				PolicyData: *pulumi.String(admin.PolicyData),
@@ -82,7 +82,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := pubsub.NewTopicIAMBinding(ctx, "binding", &pubsub.TopicIAMBindingArgs{
+//			_, err := pubsub.NewTopicIamBinding(ctx, "binding", &pubsub.TopicIamBindingArgs{
 //				Project: pulumi.Any(google_pubsub_topic.Example.Project),
 //				Topic:   pulumi.Any(google_pubsub_topic.Example.Name),
 //				Role:    pulumi.String("roles/viewer"),
@@ -113,7 +113,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := pubsub.NewTopicIAMMember(ctx, "member", &pubsub.TopicIAMMemberArgs{
+//			_, err := pubsub.NewTopicIamMember(ctx, "member", &pubsub.TopicIamMemberArgs{
 //				Project: pulumi.Any(google_pubsub_topic.Example.Project),
 //				Topic:   pulumi.Any(google_pubsub_topic.Example.Name),
 //				Role:    pulumi.String("roles/viewer"),
@@ -134,7 +134,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:pubsub/topicIAMPolicy:TopicIAMPolicy editor "projects/{{project}}/topics/{{topic}} roles/viewer user:jane@example.com"
+//	$ pulumi import gcp:pubsub/topicIamPolicy:TopicIamPolicy editor "projects/{{project}}/topics/{{topic}} roles/viewer user:jane@example.com"
 //
 // ```
 //
@@ -142,7 +142,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:pubsub/topicIAMPolicy:TopicIAMPolicy editor "projects/{{project}}/topics/{{topic}} roles/viewer"
+//	$ pulumi import gcp:pubsub/topicIamPolicy:TopicIamPolicy editor "projects/{{project}}/topics/{{topic}} roles/viewer"
 //
 // ```
 //
@@ -150,20 +150,20 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:pubsub/topicIAMPolicy:TopicIAMPolicy editor projects/{{project}}/topics/{{topic}}
+//	$ pulumi import gcp:pubsub/topicIamPolicy:TopicIamPolicy editor projects/{{project}}/topics/{{topic}}
 //
 // ```
 //
 //	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 //
 // full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
-type TopicIAMPolicy struct {
+type TopicIamPolicy struct {
 	pulumi.CustomResourceState
 
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The policy data generated by
-	// a `organizations.getIAMPolicy` data source.
+	// a `organizations.getIamPolicy` data source.
 	PolicyData pulumi.StringOutput `pulumi:"policyData"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -184,9 +184,9 @@ type TopicIAMPolicy struct {
 	Topic pulumi.StringOutput `pulumi:"topic"`
 }
 
-// NewTopicIAMPolicy registers a new resource with the given unique name, arguments, and options.
-func NewTopicIAMPolicy(ctx *pulumi.Context,
-	name string, args *TopicIAMPolicyArgs, opts ...pulumi.ResourceOption) (*TopicIAMPolicy, error) {
+// NewTopicIamPolicy registers a new resource with the given unique name, arguments, and options.
+func NewTopicIamPolicy(ctx *pulumi.Context,
+	name string, args *TopicIamPolicyArgs, opts ...pulumi.ResourceOption) (*TopicIamPolicy, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -198,32 +198,32 @@ func NewTopicIAMPolicy(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Topic'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
-	var resource TopicIAMPolicy
-	err := ctx.RegisterResource("gcp:pubsub/topicIAMPolicy:TopicIAMPolicy", name, args, &resource, opts...)
+	var resource TopicIamPolicy
+	err := ctx.RegisterResource("gcp:pubsub/topicIamPolicy:TopicIamPolicy", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// GetTopicIAMPolicy gets an existing TopicIAMPolicy resource's state with the given name, ID, and optional
+// GetTopicIamPolicy gets an existing TopicIamPolicy resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetTopicIAMPolicy(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *TopicIAMPolicyState, opts ...pulumi.ResourceOption) (*TopicIAMPolicy, error) {
-	var resource TopicIAMPolicy
-	err := ctx.ReadResource("gcp:pubsub/topicIAMPolicy:TopicIAMPolicy", name, id, state, &resource, opts...)
+func GetTopicIamPolicy(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *TopicIamPolicyState, opts ...pulumi.ResourceOption) (*TopicIamPolicy, error) {
+	var resource TopicIamPolicy
+	err := ctx.ReadResource("gcp:pubsub/topicIamPolicy:TopicIamPolicy", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering TopicIAMPolicy resources.
-type topicIAMPolicyState struct {
+// Input properties used for looking up and filtering TopicIamPolicy resources.
+type topicIamPolicyState struct {
 	// (Computed) The etag of the IAM policy.
 	Etag *string `pulumi:"etag"`
 	// The policy data generated by
-	// a `organizations.getIAMPolicy` data source.
+	// a `organizations.getIamPolicy` data source.
 	PolicyData *string `pulumi:"policyData"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -244,11 +244,11 @@ type topicIAMPolicyState struct {
 	Topic *string `pulumi:"topic"`
 }
 
-type TopicIAMPolicyState struct {
+type TopicIamPolicyState struct {
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringPtrInput
 	// The policy data generated by
-	// a `organizations.getIAMPolicy` data source.
+	// a `organizations.getIamPolicy` data source.
 	PolicyData pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -269,13 +269,13 @@ type TopicIAMPolicyState struct {
 	Topic pulumi.StringPtrInput
 }
 
-func (TopicIAMPolicyState) ElementType() reflect.Type {
-	return reflect.TypeOf((*topicIAMPolicyState)(nil)).Elem()
+func (TopicIamPolicyState) ElementType() reflect.Type {
+	return reflect.TypeOf((*topicIamPolicyState)(nil)).Elem()
 }
 
-type topicIAMPolicyArgs struct {
+type topicIamPolicyArgs struct {
 	// The policy data generated by
-	// a `organizations.getIAMPolicy` data source.
+	// a `organizations.getIamPolicy` data source.
 	PolicyData string `pulumi:"policyData"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -296,10 +296,10 @@ type topicIAMPolicyArgs struct {
 	Topic string `pulumi:"topic"`
 }
 
-// The set of arguments for constructing a TopicIAMPolicy resource.
-type TopicIAMPolicyArgs struct {
+// The set of arguments for constructing a TopicIamPolicy resource.
+type TopicIamPolicyArgs struct {
 	// The policy data generated by
-	// a `organizations.getIAMPolicy` data source.
+	// a `organizations.getIamPolicy` data source.
 	PolicyData pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -320,102 +320,102 @@ type TopicIAMPolicyArgs struct {
 	Topic pulumi.StringInput
 }
 
-func (TopicIAMPolicyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*topicIAMPolicyArgs)(nil)).Elem()
+func (TopicIamPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*topicIamPolicyArgs)(nil)).Elem()
 }
 
-type TopicIAMPolicyInput interface {
+type TopicIamPolicyInput interface {
 	pulumi.Input
 
-	ToTopicIAMPolicyOutput() TopicIAMPolicyOutput
-	ToTopicIAMPolicyOutputWithContext(ctx context.Context) TopicIAMPolicyOutput
+	ToTopicIamPolicyOutput() TopicIamPolicyOutput
+	ToTopicIamPolicyOutputWithContext(ctx context.Context) TopicIamPolicyOutput
 }
 
-func (*TopicIAMPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((**TopicIAMPolicy)(nil)).Elem()
+func (*TopicIamPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicIamPolicy)(nil)).Elem()
 }
 
-func (i *TopicIAMPolicy) ToTopicIAMPolicyOutput() TopicIAMPolicyOutput {
-	return i.ToTopicIAMPolicyOutputWithContext(context.Background())
+func (i *TopicIamPolicy) ToTopicIamPolicyOutput() TopicIamPolicyOutput {
+	return i.ToTopicIamPolicyOutputWithContext(context.Background())
 }
 
-func (i *TopicIAMPolicy) ToTopicIAMPolicyOutputWithContext(ctx context.Context) TopicIAMPolicyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicIAMPolicyOutput)
+func (i *TopicIamPolicy) ToTopicIamPolicyOutputWithContext(ctx context.Context) TopicIamPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIamPolicyOutput)
 }
 
-// TopicIAMPolicyArrayInput is an input type that accepts TopicIAMPolicyArray and TopicIAMPolicyArrayOutput values.
-// You can construct a concrete instance of `TopicIAMPolicyArrayInput` via:
+// TopicIamPolicyArrayInput is an input type that accepts TopicIamPolicyArray and TopicIamPolicyArrayOutput values.
+// You can construct a concrete instance of `TopicIamPolicyArrayInput` via:
 //
-//	TopicIAMPolicyArray{ TopicIAMPolicyArgs{...} }
-type TopicIAMPolicyArrayInput interface {
+//	TopicIamPolicyArray{ TopicIamPolicyArgs{...} }
+type TopicIamPolicyArrayInput interface {
 	pulumi.Input
 
-	ToTopicIAMPolicyArrayOutput() TopicIAMPolicyArrayOutput
-	ToTopicIAMPolicyArrayOutputWithContext(context.Context) TopicIAMPolicyArrayOutput
+	ToTopicIamPolicyArrayOutput() TopicIamPolicyArrayOutput
+	ToTopicIamPolicyArrayOutputWithContext(context.Context) TopicIamPolicyArrayOutput
 }
 
-type TopicIAMPolicyArray []TopicIAMPolicyInput
+type TopicIamPolicyArray []TopicIamPolicyInput
 
-func (TopicIAMPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*TopicIAMPolicy)(nil)).Elem()
+func (TopicIamPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*TopicIamPolicy)(nil)).Elem()
 }
 
-func (i TopicIAMPolicyArray) ToTopicIAMPolicyArrayOutput() TopicIAMPolicyArrayOutput {
-	return i.ToTopicIAMPolicyArrayOutputWithContext(context.Background())
+func (i TopicIamPolicyArray) ToTopicIamPolicyArrayOutput() TopicIamPolicyArrayOutput {
+	return i.ToTopicIamPolicyArrayOutputWithContext(context.Background())
 }
 
-func (i TopicIAMPolicyArray) ToTopicIAMPolicyArrayOutputWithContext(ctx context.Context) TopicIAMPolicyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicIAMPolicyArrayOutput)
+func (i TopicIamPolicyArray) ToTopicIamPolicyArrayOutputWithContext(ctx context.Context) TopicIamPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIamPolicyArrayOutput)
 }
 
-// TopicIAMPolicyMapInput is an input type that accepts TopicIAMPolicyMap and TopicIAMPolicyMapOutput values.
-// You can construct a concrete instance of `TopicIAMPolicyMapInput` via:
+// TopicIamPolicyMapInput is an input type that accepts TopicIamPolicyMap and TopicIamPolicyMapOutput values.
+// You can construct a concrete instance of `TopicIamPolicyMapInput` via:
 //
-//	TopicIAMPolicyMap{ "key": TopicIAMPolicyArgs{...} }
-type TopicIAMPolicyMapInput interface {
+//	TopicIamPolicyMap{ "key": TopicIamPolicyArgs{...} }
+type TopicIamPolicyMapInput interface {
 	pulumi.Input
 
-	ToTopicIAMPolicyMapOutput() TopicIAMPolicyMapOutput
-	ToTopicIAMPolicyMapOutputWithContext(context.Context) TopicIAMPolicyMapOutput
+	ToTopicIamPolicyMapOutput() TopicIamPolicyMapOutput
+	ToTopicIamPolicyMapOutputWithContext(context.Context) TopicIamPolicyMapOutput
 }
 
-type TopicIAMPolicyMap map[string]TopicIAMPolicyInput
+type TopicIamPolicyMap map[string]TopicIamPolicyInput
 
-func (TopicIAMPolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*TopicIAMPolicy)(nil)).Elem()
+func (TopicIamPolicyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*TopicIamPolicy)(nil)).Elem()
 }
 
-func (i TopicIAMPolicyMap) ToTopicIAMPolicyMapOutput() TopicIAMPolicyMapOutput {
-	return i.ToTopicIAMPolicyMapOutputWithContext(context.Background())
+func (i TopicIamPolicyMap) ToTopicIamPolicyMapOutput() TopicIamPolicyMapOutput {
+	return i.ToTopicIamPolicyMapOutputWithContext(context.Background())
 }
 
-func (i TopicIAMPolicyMap) ToTopicIAMPolicyMapOutputWithContext(ctx context.Context) TopicIAMPolicyMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TopicIAMPolicyMapOutput)
+func (i TopicIamPolicyMap) ToTopicIamPolicyMapOutputWithContext(ctx context.Context) TopicIamPolicyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIamPolicyMapOutput)
 }
 
-type TopicIAMPolicyOutput struct{ *pulumi.OutputState }
+type TopicIamPolicyOutput struct{ *pulumi.OutputState }
 
-func (TopicIAMPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TopicIAMPolicy)(nil)).Elem()
+func (TopicIamPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicIamPolicy)(nil)).Elem()
 }
 
-func (o TopicIAMPolicyOutput) ToTopicIAMPolicyOutput() TopicIAMPolicyOutput {
+func (o TopicIamPolicyOutput) ToTopicIamPolicyOutput() TopicIamPolicyOutput {
 	return o
 }
 
-func (o TopicIAMPolicyOutput) ToTopicIAMPolicyOutputWithContext(ctx context.Context) TopicIAMPolicyOutput {
+func (o TopicIamPolicyOutput) ToTopicIamPolicyOutputWithContext(ctx context.Context) TopicIamPolicyOutput {
 	return o
 }
 
 // (Computed) The etag of the IAM policy.
-func (o TopicIAMPolicyOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v *TopicIAMPolicy) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+func (o TopicIamPolicyOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *TopicIamPolicy) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The policy data generated by
-// a `organizations.getIAMPolicy` data source.
-func (o TopicIAMPolicyOutput) PolicyData() pulumi.StringOutput {
-	return o.ApplyT(func(v *TopicIAMPolicy) pulumi.StringOutput { return v.PolicyData }).(pulumi.StringOutput)
+// a `organizations.getIamPolicy` data source.
+func (o TopicIamPolicyOutput) PolicyData() pulumi.StringOutput {
+	return o.ApplyT(func(v *TopicIamPolicy) pulumi.StringOutput { return v.PolicyData }).(pulumi.StringOutput)
 }
 
 // The ID of the project in which the resource belongs.
@@ -432,60 +432,60 @@ func (o TopicIAMPolicyOutput) PolicyData() pulumi.StringOutput {
 //   - **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 //   - **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 //   - **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
-func (o TopicIAMPolicyOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func(v *TopicIAMPolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+func (o TopicIamPolicyOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *TopicIamPolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Used to find the parent resource to bind the IAM policy to
-func (o TopicIAMPolicyOutput) Topic() pulumi.StringOutput {
-	return o.ApplyT(func(v *TopicIAMPolicy) pulumi.StringOutput { return v.Topic }).(pulumi.StringOutput)
+func (o TopicIamPolicyOutput) Topic() pulumi.StringOutput {
+	return o.ApplyT(func(v *TopicIamPolicy) pulumi.StringOutput { return v.Topic }).(pulumi.StringOutput)
 }
 
-type TopicIAMPolicyArrayOutput struct{ *pulumi.OutputState }
+type TopicIamPolicyArrayOutput struct{ *pulumi.OutputState }
 
-func (TopicIAMPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*TopicIAMPolicy)(nil)).Elem()
+func (TopicIamPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*TopicIamPolicy)(nil)).Elem()
 }
 
-func (o TopicIAMPolicyArrayOutput) ToTopicIAMPolicyArrayOutput() TopicIAMPolicyArrayOutput {
+func (o TopicIamPolicyArrayOutput) ToTopicIamPolicyArrayOutput() TopicIamPolicyArrayOutput {
 	return o
 }
 
-func (o TopicIAMPolicyArrayOutput) ToTopicIAMPolicyArrayOutputWithContext(ctx context.Context) TopicIAMPolicyArrayOutput {
+func (o TopicIamPolicyArrayOutput) ToTopicIamPolicyArrayOutputWithContext(ctx context.Context) TopicIamPolicyArrayOutput {
 	return o
 }
 
-func (o TopicIAMPolicyArrayOutput) Index(i pulumi.IntInput) TopicIAMPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TopicIAMPolicy {
-		return vs[0].([]*TopicIAMPolicy)[vs[1].(int)]
-	}).(TopicIAMPolicyOutput)
+func (o TopicIamPolicyArrayOutput) Index(i pulumi.IntInput) TopicIamPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TopicIamPolicy {
+		return vs[0].([]*TopicIamPolicy)[vs[1].(int)]
+	}).(TopicIamPolicyOutput)
 }
 
-type TopicIAMPolicyMapOutput struct{ *pulumi.OutputState }
+type TopicIamPolicyMapOutput struct{ *pulumi.OutputState }
 
-func (TopicIAMPolicyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*TopicIAMPolicy)(nil)).Elem()
+func (TopicIamPolicyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*TopicIamPolicy)(nil)).Elem()
 }
 
-func (o TopicIAMPolicyMapOutput) ToTopicIAMPolicyMapOutput() TopicIAMPolicyMapOutput {
+func (o TopicIamPolicyMapOutput) ToTopicIamPolicyMapOutput() TopicIamPolicyMapOutput {
 	return o
 }
 
-func (o TopicIAMPolicyMapOutput) ToTopicIAMPolicyMapOutputWithContext(ctx context.Context) TopicIAMPolicyMapOutput {
+func (o TopicIamPolicyMapOutput) ToTopicIamPolicyMapOutputWithContext(ctx context.Context) TopicIamPolicyMapOutput {
 	return o
 }
 
-func (o TopicIAMPolicyMapOutput) MapIndex(k pulumi.StringInput) TopicIAMPolicyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *TopicIAMPolicy {
-		return vs[0].(map[string]*TopicIAMPolicy)[vs[1].(string)]
-	}).(TopicIAMPolicyOutput)
+func (o TopicIamPolicyMapOutput) MapIndex(k pulumi.StringInput) TopicIamPolicyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *TopicIamPolicy {
+		return vs[0].(map[string]*TopicIamPolicy)[vs[1].(string)]
+	}).(TopicIamPolicyOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*TopicIAMPolicyInput)(nil)).Elem(), &TopicIAMPolicy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TopicIAMPolicyArrayInput)(nil)).Elem(), TopicIAMPolicyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TopicIAMPolicyMapInput)(nil)).Elem(), TopicIAMPolicyMap{})
-	pulumi.RegisterOutputType(TopicIAMPolicyOutput{})
-	pulumi.RegisterOutputType(TopicIAMPolicyArrayOutput{})
-	pulumi.RegisterOutputType(TopicIAMPolicyMapOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicIamPolicyInput)(nil)).Elem(), &TopicIamPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicIamPolicyArrayInput)(nil)).Elem(), TopicIamPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicIamPolicyMapInput)(nil)).Elem(), TopicIamPolicyMap{})
+	pulumi.RegisterOutputType(TopicIamPolicyOutput{})
+	pulumi.RegisterOutputType(TopicIamPolicyArrayOutput{})
+	pulumi.RegisterOutputType(TopicIamPolicyMapOutput{})
 }

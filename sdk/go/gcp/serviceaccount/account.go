@@ -80,7 +80,7 @@ type Account struct {
 	// Can be updated without creating a new resource.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// The e-mail address of the service account. This value
-	// should be referenced from any `organizations.getIAMPolicy` data sources
+	// should be referenced from any `organizations.getIamPolicy` data sources
 	// that would grant the service account privileges.
 	Email pulumi.StringOutput `pulumi:"email"`
 	// The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
@@ -142,7 +142,7 @@ type accountState struct {
 	// Can be updated without creating a new resource.
 	DisplayName *string `pulumi:"displayName"`
 	// The e-mail address of the service account. This value
-	// should be referenced from any `organizations.getIAMPolicy` data sources
+	// should be referenced from any `organizations.getIamPolicy` data sources
 	// that would grant the service account privileges.
 	Email *string `pulumi:"email"`
 	// The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
@@ -172,7 +172,7 @@ type AccountState struct {
 	// Can be updated without creating a new resource.
 	DisplayName pulumi.StringPtrInput
 	// The e-mail address of the service account. This value
-	// should be referenced from any `organizations.getIAMPolicy` data sources
+	// should be referenced from any `organizations.getIamPolicy` data sources
 	// that would grant the service account privileges.
 	Email pulumi.StringPtrInput
 	// The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
@@ -345,7 +345,7 @@ func (o AccountOutput) DisplayName() pulumi.StringPtrOutput {
 }
 
 // The e-mail address of the service account. This value
-// should be referenced from any `organizations.getIAMPolicy` data sources
+// should be referenced from any `organizations.getIamPolicy` data sources
 // that would grant the service account privileges.
 func (o AccountOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.Email }).(pulumi.StringOutput)

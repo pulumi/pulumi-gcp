@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := pubsub.GetSubscriptionIamPolicy(ctx, &pubsub.GetSubscriptionIamPolicyArgs{
+//			_, err := pubsub.LookupSubscriptionIamPolicy(ctx, &pubsub.LookupSubscriptionIamPolicyArgs{
 //				Subscription: google_pubsub_subscription.Subscription.Id,
 //			}, nil)
 //			if err != nil {
@@ -38,9 +38,9 @@ import (
 //	}
 //
 // ```
-func GetSubscriptionIamPolicy(ctx *pulumi.Context, args *GetSubscriptionIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetSubscriptionIamPolicyResult, error) {
+func LookupSubscriptionIamPolicy(ctx *pulumi.Context, args *LookupSubscriptionIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupSubscriptionIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
-	var rv GetSubscriptionIamPolicyResult
+	var rv LookupSubscriptionIamPolicyResult
 	err := ctx.Invoke("gcp:pubsub/getSubscriptionIamPolicy:getSubscriptionIamPolicy", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -49,7 +49,7 @@ func GetSubscriptionIamPolicy(ctx *pulumi.Context, args *GetSubscriptionIamPolic
 }
 
 // A collection of arguments for invoking getSubscriptionIamPolicy.
-type GetSubscriptionIamPolicyArgs struct {
+type LookupSubscriptionIamPolicyArgs struct {
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -58,7 +58,7 @@ type GetSubscriptionIamPolicyArgs struct {
 }
 
 // A collection of values returned by getSubscriptionIamPolicy.
-type GetSubscriptionIamPolicyResult struct {
+type LookupSubscriptionIamPolicyResult struct {
 	// (Computed) The etag of the IAM policy.
 	Etag string `pulumi:"etag"`
 	// The provider-assigned unique ID for this managed resource.
@@ -69,21 +69,21 @@ type GetSubscriptionIamPolicyResult struct {
 	Subscription string `pulumi:"subscription"`
 }
 
-func GetSubscriptionIamPolicyOutput(ctx *pulumi.Context, args GetSubscriptionIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetSubscriptionIamPolicyResultOutput {
+func LookupSubscriptionIamPolicyOutput(ctx *pulumi.Context, args LookupSubscriptionIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupSubscriptionIamPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetSubscriptionIamPolicyResult, error) {
-			args := v.(GetSubscriptionIamPolicyArgs)
-			r, err := GetSubscriptionIamPolicy(ctx, &args, opts...)
-			var s GetSubscriptionIamPolicyResult
+		ApplyT(func(v interface{}) (LookupSubscriptionIamPolicyResult, error) {
+			args := v.(LookupSubscriptionIamPolicyArgs)
+			r, err := LookupSubscriptionIamPolicy(ctx, &args, opts...)
+			var s LookupSubscriptionIamPolicyResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(GetSubscriptionIamPolicyResultOutput)
+		}).(LookupSubscriptionIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getSubscriptionIamPolicy.
-type GetSubscriptionIamPolicyOutputArgs struct {
+type LookupSubscriptionIamPolicyOutputArgs struct {
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput `pulumi:"project"`
@@ -91,48 +91,48 @@ type GetSubscriptionIamPolicyOutputArgs struct {
 	Subscription pulumi.StringInput `pulumi:"subscription"`
 }
 
-func (GetSubscriptionIamPolicyOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSubscriptionIamPolicyArgs)(nil)).Elem()
+func (LookupSubscriptionIamPolicyOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSubscriptionIamPolicyArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getSubscriptionIamPolicy.
-type GetSubscriptionIamPolicyResultOutput struct{ *pulumi.OutputState }
+type LookupSubscriptionIamPolicyResultOutput struct{ *pulumi.OutputState }
 
-func (GetSubscriptionIamPolicyResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSubscriptionIamPolicyResult)(nil)).Elem()
+func (LookupSubscriptionIamPolicyResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupSubscriptionIamPolicyResult)(nil)).Elem()
 }
 
-func (o GetSubscriptionIamPolicyResultOutput) ToGetSubscriptionIamPolicyResultOutput() GetSubscriptionIamPolicyResultOutput {
+func (o LookupSubscriptionIamPolicyResultOutput) ToLookupSubscriptionIamPolicyResultOutput() LookupSubscriptionIamPolicyResultOutput {
 	return o
 }
 
-func (o GetSubscriptionIamPolicyResultOutput) ToGetSubscriptionIamPolicyResultOutputWithContext(ctx context.Context) GetSubscriptionIamPolicyResultOutput {
+func (o LookupSubscriptionIamPolicyResultOutput) ToLookupSubscriptionIamPolicyResultOutputWithContext(ctx context.Context) LookupSubscriptionIamPolicyResultOutput {
 	return o
 }
 
 // (Computed) The etag of the IAM policy.
-func (o GetSubscriptionIamPolicyResultOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSubscriptionIamPolicyResult) string { return v.Etag }).(pulumi.StringOutput)
+func (o LookupSubscriptionIamPolicyResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubscriptionIamPolicyResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
-func (o GetSubscriptionIamPolicyResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSubscriptionIamPolicyResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupSubscriptionIamPolicyResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubscriptionIamPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // (Computed) The policy data
-func (o GetSubscriptionIamPolicyResultOutput) PolicyData() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSubscriptionIamPolicyResult) string { return v.PolicyData }).(pulumi.StringOutput)
+func (o LookupSubscriptionIamPolicyResultOutput) PolicyData() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubscriptionIamPolicyResult) string { return v.PolicyData }).(pulumi.StringOutput)
 }
 
-func (o GetSubscriptionIamPolicyResultOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSubscriptionIamPolicyResult) string { return v.Project }).(pulumi.StringOutput)
+func (o LookupSubscriptionIamPolicyResultOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubscriptionIamPolicyResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-func (o GetSubscriptionIamPolicyResultOutput) Subscription() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSubscriptionIamPolicyResult) string { return v.Subscription }).(pulumi.StringOutput)
+func (o LookupSubscriptionIamPolicyResultOutput) Subscription() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubscriptionIamPolicyResult) string { return v.Subscription }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(GetSubscriptionIamPolicyResultOutput{})
+	pulumi.RegisterOutputType(LookupSubscriptionIamPolicyResultOutput{})
 }

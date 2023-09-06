@@ -14,13 +14,13 @@ import (
 
 // Three different resources help you manage your IAM policy for pubsub subscription. Each of these resources serves a different use case:
 //
-// * `pubsub.SubscriptionIAMPolicy`: Authoritative. Sets the IAM policy for the subscription and replaces any existing policy already attached.
-// * `pubsub.SubscriptionIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the subscription are preserved.
-// * `pubsub.SubscriptionIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the subscription are preserved.
+// * `pubsub.SubscriptionIamPolicy`: Authoritative. Sets the IAM policy for the subscription and replaces any existing policy already attached.
+// * `pubsub.SubscriptionIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the subscription are preserved.
+// * `pubsub.SubscriptionIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the subscription are preserved.
 //
-// > **Note:** `pubsub.SubscriptionIAMPolicy` **cannot** be used in conjunction with `pubsub.SubscriptionIAMBinding` and `pubsub.SubscriptionIAMMember` or they will fight over what your policy should be.
+// > **Note:** `pubsub.SubscriptionIamPolicy` **cannot** be used in conjunction with `pubsub.SubscriptionIamBinding` and `pubsub.SubscriptionIamMember` or they will fight over what your policy should be.
 //
-// > **Note:** `pubsub.SubscriptionIAMBinding` resources **can be** used in conjunction with `pubsub.SubscriptionIAMMember` resources **only if** they do not grant privilege to the same role.
+// > **Note:** `pubsub.SubscriptionIamBinding` resources **can be** used in conjunction with `pubsub.SubscriptionIamMember` resources **only if** they do not grant privilege to the same role.
 //
 // ## google\_pubsub\_subscription\_iam\_policy
 //
@@ -37,8 +37,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
+//			admin, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
 //					{
 //						Role: "roles/editor",
 //						Members: []string{
@@ -50,7 +50,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = pubsub.NewSubscriptionIAMPolicy(ctx, "editor", &pubsub.SubscriptionIAMPolicyArgs{
+//			_, err = pubsub.NewSubscriptionIamPolicy(ctx, "editor", &pubsub.SubscriptionIamPolicyArgs{
 //				Subscription: pulumi.String("your-subscription-name"),
 //				PolicyData:   *pulumi.String(admin.PolicyData),
 //			})
@@ -77,7 +77,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := pubsub.NewSubscriptionIAMBinding(ctx, "editor", &pubsub.SubscriptionIAMBindingArgs{
+//			_, err := pubsub.NewSubscriptionIamBinding(ctx, "editor", &pubsub.SubscriptionIamBindingArgs{
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
 //				},
@@ -107,7 +107,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := pubsub.NewSubscriptionIAMMember(ctx, "editor", &pubsub.SubscriptionIAMMemberArgs{
+//			_, err := pubsub.NewSubscriptionIamMember(ctx, "editor", &pubsub.SubscriptionIamMemberArgs{
 //				Member:       pulumi.String("user:jane@example.com"),
 //				Role:         pulumi.String("roles/editor"),
 //				Subscription: pulumi.String("your-subscription-name"),
@@ -127,29 +127,29 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding editor projects/{your-project-id}/subscriptions/{your-subscription-name}
+//	$ pulumi import gcp:pubsub/subscriptionIamBinding:SubscriptionIamBinding editor projects/{your-project-id}/subscriptions/{your-subscription-name}
 //
 // ```
 //
 // ```sh
 //
-//	$ pulumi import gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding editor "projects/{your-project-id}/subscriptions/{your-subscription-name} roles/editor"
+//	$ pulumi import gcp:pubsub/subscriptionIamBinding:SubscriptionIamBinding editor "projects/{your-project-id}/subscriptions/{your-subscription-name} roles/editor"
 //
 // ```
 //
 // ```sh
 //
-//	$ pulumi import gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding editor "projects/{your-project-id}/subscriptions/{your-subscription-name} roles/editor jane@example.com"
+//	$ pulumi import gcp:pubsub/subscriptionIamBinding:SubscriptionIamBinding editor "projects/{your-project-id}/subscriptions/{your-subscription-name} roles/editor jane@example.com"
 //
 // ```
 //
 //	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 //
 // full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
-type SubscriptionIAMBinding struct {
+type SubscriptionIamBinding struct {
 	pulumi.CustomResourceState
 
-	Condition SubscriptionIAMBindingConditionPtrOutput `pulumi:"condition"`
+	Condition SubscriptionIamBindingConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the subscription's IAM policy.
 	Etag    pulumi.StringOutput      `pulumi:"etag"`
 	Members pulumi.StringArrayOutput `pulumi:"members"`
@@ -157,7 +157,7 @@ type SubscriptionIAMBinding struct {
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The role that should be applied. Only one
-	// `pubsub.SubscriptionIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `pubsub.SubscriptionIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringOutput `pulumi:"role"`
 	// The subscription name or id to bind to attach IAM policy to.
@@ -173,9 +173,9 @@ type SubscriptionIAMBinding struct {
 	Subscription pulumi.StringOutput `pulumi:"subscription"`
 }
 
-// NewSubscriptionIAMBinding registers a new resource with the given unique name, arguments, and options.
-func NewSubscriptionIAMBinding(ctx *pulumi.Context,
-	name string, args *SubscriptionIAMBindingArgs, opts ...pulumi.ResourceOption) (*SubscriptionIAMBinding, error) {
+// NewSubscriptionIamBinding registers a new resource with the given unique name, arguments, and options.
+func NewSubscriptionIamBinding(ctx *pulumi.Context,
+	name string, args *SubscriptionIamBindingArgs, opts ...pulumi.ResourceOption) (*SubscriptionIamBinding, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -190,29 +190,29 @@ func NewSubscriptionIAMBinding(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Subscription'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
-	var resource SubscriptionIAMBinding
-	err := ctx.RegisterResource("gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding", name, args, &resource, opts...)
+	var resource SubscriptionIamBinding
+	err := ctx.RegisterResource("gcp:pubsub/subscriptionIamBinding:SubscriptionIamBinding", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// GetSubscriptionIAMBinding gets an existing SubscriptionIAMBinding resource's state with the given name, ID, and optional
+// GetSubscriptionIamBinding gets an existing SubscriptionIamBinding resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetSubscriptionIAMBinding(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *SubscriptionIAMBindingState, opts ...pulumi.ResourceOption) (*SubscriptionIAMBinding, error) {
-	var resource SubscriptionIAMBinding
-	err := ctx.ReadResource("gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding", name, id, state, &resource, opts...)
+func GetSubscriptionIamBinding(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *SubscriptionIamBindingState, opts ...pulumi.ResourceOption) (*SubscriptionIamBinding, error) {
+	var resource SubscriptionIamBinding
+	err := ctx.ReadResource("gcp:pubsub/subscriptionIamBinding:SubscriptionIamBinding", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering SubscriptionIAMBinding resources.
-type subscriptionIAMBindingState struct {
-	Condition *SubscriptionIAMBindingCondition `pulumi:"condition"`
+// Input properties used for looking up and filtering SubscriptionIamBinding resources.
+type subscriptionIamBindingState struct {
+	Condition *SubscriptionIamBindingCondition `pulumi:"condition"`
 	// (Computed) The etag of the subscription's IAM policy.
 	Etag    *string  `pulumi:"etag"`
 	Members []string `pulumi:"members"`
@@ -220,7 +220,7 @@ type subscriptionIAMBindingState struct {
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The role that should be applied. Only one
-	// `pubsub.SubscriptionIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `pubsub.SubscriptionIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role *string `pulumi:"role"`
 	// The subscription name or id to bind to attach IAM policy to.
@@ -236,8 +236,8 @@ type subscriptionIAMBindingState struct {
 	Subscription *string `pulumi:"subscription"`
 }
 
-type SubscriptionIAMBindingState struct {
-	Condition SubscriptionIAMBindingConditionPtrInput
+type SubscriptionIamBindingState struct {
+	Condition SubscriptionIamBindingConditionPtrInput
 	// (Computed) The etag of the subscription's IAM policy.
 	Etag    pulumi.StringPtrInput
 	Members pulumi.StringArrayInput
@@ -245,7 +245,7 @@ type SubscriptionIAMBindingState struct {
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The role that should be applied. Only one
-	// `pubsub.SubscriptionIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `pubsub.SubscriptionIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringPtrInput
 	// The subscription name or id to bind to attach IAM policy to.
@@ -261,18 +261,18 @@ type SubscriptionIAMBindingState struct {
 	Subscription pulumi.StringPtrInput
 }
 
-func (SubscriptionIAMBindingState) ElementType() reflect.Type {
-	return reflect.TypeOf((*subscriptionIAMBindingState)(nil)).Elem()
+func (SubscriptionIamBindingState) ElementType() reflect.Type {
+	return reflect.TypeOf((*subscriptionIamBindingState)(nil)).Elem()
 }
 
-type subscriptionIAMBindingArgs struct {
-	Condition *SubscriptionIAMBindingCondition `pulumi:"condition"`
+type subscriptionIamBindingArgs struct {
+	Condition *SubscriptionIamBindingCondition `pulumi:"condition"`
 	Members   []string                         `pulumi:"members"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The role that should be applied. Only one
-	// `pubsub.SubscriptionIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `pubsub.SubscriptionIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role string `pulumi:"role"`
 	// The subscription name or id to bind to attach IAM policy to.
@@ -288,15 +288,15 @@ type subscriptionIAMBindingArgs struct {
 	Subscription string `pulumi:"subscription"`
 }
 
-// The set of arguments for constructing a SubscriptionIAMBinding resource.
-type SubscriptionIAMBindingArgs struct {
-	Condition SubscriptionIAMBindingConditionPtrInput
+// The set of arguments for constructing a SubscriptionIamBinding resource.
+type SubscriptionIamBindingArgs struct {
+	Condition SubscriptionIamBindingConditionPtrInput
 	Members   pulumi.StringArrayInput
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The role that should be applied. Only one
-	// `pubsub.SubscriptionIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `pubsub.SubscriptionIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringInput
 	// The subscription name or id to bind to attach IAM policy to.
@@ -312,117 +312,117 @@ type SubscriptionIAMBindingArgs struct {
 	Subscription pulumi.StringInput
 }
 
-func (SubscriptionIAMBindingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*subscriptionIAMBindingArgs)(nil)).Elem()
+func (SubscriptionIamBindingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*subscriptionIamBindingArgs)(nil)).Elem()
 }
 
-type SubscriptionIAMBindingInput interface {
+type SubscriptionIamBindingInput interface {
 	pulumi.Input
 
-	ToSubscriptionIAMBindingOutput() SubscriptionIAMBindingOutput
-	ToSubscriptionIAMBindingOutputWithContext(ctx context.Context) SubscriptionIAMBindingOutput
+	ToSubscriptionIamBindingOutput() SubscriptionIamBindingOutput
+	ToSubscriptionIamBindingOutputWithContext(ctx context.Context) SubscriptionIamBindingOutput
 }
 
-func (*SubscriptionIAMBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((**SubscriptionIAMBinding)(nil)).Elem()
+func (*SubscriptionIamBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionIamBinding)(nil)).Elem()
 }
 
-func (i *SubscriptionIAMBinding) ToSubscriptionIAMBindingOutput() SubscriptionIAMBindingOutput {
-	return i.ToSubscriptionIAMBindingOutputWithContext(context.Background())
+func (i *SubscriptionIamBinding) ToSubscriptionIamBindingOutput() SubscriptionIamBindingOutput {
+	return i.ToSubscriptionIamBindingOutputWithContext(context.Background())
 }
 
-func (i *SubscriptionIAMBinding) ToSubscriptionIAMBindingOutputWithContext(ctx context.Context) SubscriptionIAMBindingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIAMBindingOutput)
+func (i *SubscriptionIamBinding) ToSubscriptionIamBindingOutputWithContext(ctx context.Context) SubscriptionIamBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIamBindingOutput)
 }
 
-// SubscriptionIAMBindingArrayInput is an input type that accepts SubscriptionIAMBindingArray and SubscriptionIAMBindingArrayOutput values.
-// You can construct a concrete instance of `SubscriptionIAMBindingArrayInput` via:
+// SubscriptionIamBindingArrayInput is an input type that accepts SubscriptionIamBindingArray and SubscriptionIamBindingArrayOutput values.
+// You can construct a concrete instance of `SubscriptionIamBindingArrayInput` via:
 //
-//	SubscriptionIAMBindingArray{ SubscriptionIAMBindingArgs{...} }
-type SubscriptionIAMBindingArrayInput interface {
+//	SubscriptionIamBindingArray{ SubscriptionIamBindingArgs{...} }
+type SubscriptionIamBindingArrayInput interface {
 	pulumi.Input
 
-	ToSubscriptionIAMBindingArrayOutput() SubscriptionIAMBindingArrayOutput
-	ToSubscriptionIAMBindingArrayOutputWithContext(context.Context) SubscriptionIAMBindingArrayOutput
+	ToSubscriptionIamBindingArrayOutput() SubscriptionIamBindingArrayOutput
+	ToSubscriptionIamBindingArrayOutputWithContext(context.Context) SubscriptionIamBindingArrayOutput
 }
 
-type SubscriptionIAMBindingArray []SubscriptionIAMBindingInput
+type SubscriptionIamBindingArray []SubscriptionIamBindingInput
 
-func (SubscriptionIAMBindingArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*SubscriptionIAMBinding)(nil)).Elem()
+func (SubscriptionIamBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*SubscriptionIamBinding)(nil)).Elem()
 }
 
-func (i SubscriptionIAMBindingArray) ToSubscriptionIAMBindingArrayOutput() SubscriptionIAMBindingArrayOutput {
-	return i.ToSubscriptionIAMBindingArrayOutputWithContext(context.Background())
+func (i SubscriptionIamBindingArray) ToSubscriptionIamBindingArrayOutput() SubscriptionIamBindingArrayOutput {
+	return i.ToSubscriptionIamBindingArrayOutputWithContext(context.Background())
 }
 
-func (i SubscriptionIAMBindingArray) ToSubscriptionIAMBindingArrayOutputWithContext(ctx context.Context) SubscriptionIAMBindingArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIAMBindingArrayOutput)
+func (i SubscriptionIamBindingArray) ToSubscriptionIamBindingArrayOutputWithContext(ctx context.Context) SubscriptionIamBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIamBindingArrayOutput)
 }
 
-// SubscriptionIAMBindingMapInput is an input type that accepts SubscriptionIAMBindingMap and SubscriptionIAMBindingMapOutput values.
-// You can construct a concrete instance of `SubscriptionIAMBindingMapInput` via:
+// SubscriptionIamBindingMapInput is an input type that accepts SubscriptionIamBindingMap and SubscriptionIamBindingMapOutput values.
+// You can construct a concrete instance of `SubscriptionIamBindingMapInput` via:
 //
-//	SubscriptionIAMBindingMap{ "key": SubscriptionIAMBindingArgs{...} }
-type SubscriptionIAMBindingMapInput interface {
+//	SubscriptionIamBindingMap{ "key": SubscriptionIamBindingArgs{...} }
+type SubscriptionIamBindingMapInput interface {
 	pulumi.Input
 
-	ToSubscriptionIAMBindingMapOutput() SubscriptionIAMBindingMapOutput
-	ToSubscriptionIAMBindingMapOutputWithContext(context.Context) SubscriptionIAMBindingMapOutput
+	ToSubscriptionIamBindingMapOutput() SubscriptionIamBindingMapOutput
+	ToSubscriptionIamBindingMapOutputWithContext(context.Context) SubscriptionIamBindingMapOutput
 }
 
-type SubscriptionIAMBindingMap map[string]SubscriptionIAMBindingInput
+type SubscriptionIamBindingMap map[string]SubscriptionIamBindingInput
 
-func (SubscriptionIAMBindingMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*SubscriptionIAMBinding)(nil)).Elem()
+func (SubscriptionIamBindingMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*SubscriptionIamBinding)(nil)).Elem()
 }
 
-func (i SubscriptionIAMBindingMap) ToSubscriptionIAMBindingMapOutput() SubscriptionIAMBindingMapOutput {
-	return i.ToSubscriptionIAMBindingMapOutputWithContext(context.Background())
+func (i SubscriptionIamBindingMap) ToSubscriptionIamBindingMapOutput() SubscriptionIamBindingMapOutput {
+	return i.ToSubscriptionIamBindingMapOutputWithContext(context.Background())
 }
 
-func (i SubscriptionIAMBindingMap) ToSubscriptionIAMBindingMapOutputWithContext(ctx context.Context) SubscriptionIAMBindingMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIAMBindingMapOutput)
+func (i SubscriptionIamBindingMap) ToSubscriptionIamBindingMapOutputWithContext(ctx context.Context) SubscriptionIamBindingMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIamBindingMapOutput)
 }
 
-type SubscriptionIAMBindingOutput struct{ *pulumi.OutputState }
+type SubscriptionIamBindingOutput struct{ *pulumi.OutputState }
 
-func (SubscriptionIAMBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SubscriptionIAMBinding)(nil)).Elem()
+func (SubscriptionIamBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionIamBinding)(nil)).Elem()
 }
 
-func (o SubscriptionIAMBindingOutput) ToSubscriptionIAMBindingOutput() SubscriptionIAMBindingOutput {
+func (o SubscriptionIamBindingOutput) ToSubscriptionIamBindingOutput() SubscriptionIamBindingOutput {
 	return o
 }
 
-func (o SubscriptionIAMBindingOutput) ToSubscriptionIAMBindingOutputWithContext(ctx context.Context) SubscriptionIAMBindingOutput {
+func (o SubscriptionIamBindingOutput) ToSubscriptionIamBindingOutputWithContext(ctx context.Context) SubscriptionIamBindingOutput {
 	return o
 }
 
-func (o SubscriptionIAMBindingOutput) Condition() SubscriptionIAMBindingConditionPtrOutput {
-	return o.ApplyT(func(v *SubscriptionIAMBinding) SubscriptionIAMBindingConditionPtrOutput { return v.Condition }).(SubscriptionIAMBindingConditionPtrOutput)
+func (o SubscriptionIamBindingOutput) Condition() SubscriptionIamBindingConditionPtrOutput {
+	return o.ApplyT(func(v *SubscriptionIamBinding) SubscriptionIamBindingConditionPtrOutput { return v.Condition }).(SubscriptionIamBindingConditionPtrOutput)
 }
 
 // (Computed) The etag of the subscription's IAM policy.
-func (o SubscriptionIAMBindingOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v *SubscriptionIAMBinding) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+func (o SubscriptionIamBindingOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *SubscriptionIamBinding) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-func (o SubscriptionIAMBindingOutput) Members() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *SubscriptionIAMBinding) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
+func (o SubscriptionIamBindingOutput) Members() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SubscriptionIamBinding) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
 }
 
 // The project in which the resource belongs. If it
 // is not provided, the provider project is used.
-func (o SubscriptionIAMBindingOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func(v *SubscriptionIAMBinding) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+func (o SubscriptionIamBindingOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *SubscriptionIamBinding) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The role that should be applied. Only one
-// `pubsub.SubscriptionIAMBinding` can be used per role. Note that custom roles must be of the format
+// `pubsub.SubscriptionIamBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
-func (o SubscriptionIAMBindingOutput) Role() pulumi.StringOutput {
-	return o.ApplyT(func(v *SubscriptionIAMBinding) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
+func (o SubscriptionIamBindingOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v *SubscriptionIamBinding) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }
 
 // The subscription name or id to bind to attach IAM policy to.
@@ -435,55 +435,55 @@ func (o SubscriptionIAMBindingOutput) Role() pulumi.StringOutput {
 //   - **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
 //   - **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
 //   - **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-func (o SubscriptionIAMBindingOutput) Subscription() pulumi.StringOutput {
-	return o.ApplyT(func(v *SubscriptionIAMBinding) pulumi.StringOutput { return v.Subscription }).(pulumi.StringOutput)
+func (o SubscriptionIamBindingOutput) Subscription() pulumi.StringOutput {
+	return o.ApplyT(func(v *SubscriptionIamBinding) pulumi.StringOutput { return v.Subscription }).(pulumi.StringOutput)
 }
 
-type SubscriptionIAMBindingArrayOutput struct{ *pulumi.OutputState }
+type SubscriptionIamBindingArrayOutput struct{ *pulumi.OutputState }
 
-func (SubscriptionIAMBindingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*SubscriptionIAMBinding)(nil)).Elem()
+func (SubscriptionIamBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*SubscriptionIamBinding)(nil)).Elem()
 }
 
-func (o SubscriptionIAMBindingArrayOutput) ToSubscriptionIAMBindingArrayOutput() SubscriptionIAMBindingArrayOutput {
+func (o SubscriptionIamBindingArrayOutput) ToSubscriptionIamBindingArrayOutput() SubscriptionIamBindingArrayOutput {
 	return o
 }
 
-func (o SubscriptionIAMBindingArrayOutput) ToSubscriptionIAMBindingArrayOutputWithContext(ctx context.Context) SubscriptionIAMBindingArrayOutput {
+func (o SubscriptionIamBindingArrayOutput) ToSubscriptionIamBindingArrayOutputWithContext(ctx context.Context) SubscriptionIamBindingArrayOutput {
 	return o
 }
 
-func (o SubscriptionIAMBindingArrayOutput) Index(i pulumi.IntInput) SubscriptionIAMBindingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SubscriptionIAMBinding {
-		return vs[0].([]*SubscriptionIAMBinding)[vs[1].(int)]
-	}).(SubscriptionIAMBindingOutput)
+func (o SubscriptionIamBindingArrayOutput) Index(i pulumi.IntInput) SubscriptionIamBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SubscriptionIamBinding {
+		return vs[0].([]*SubscriptionIamBinding)[vs[1].(int)]
+	}).(SubscriptionIamBindingOutput)
 }
 
-type SubscriptionIAMBindingMapOutput struct{ *pulumi.OutputState }
+type SubscriptionIamBindingMapOutput struct{ *pulumi.OutputState }
 
-func (SubscriptionIAMBindingMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*SubscriptionIAMBinding)(nil)).Elem()
+func (SubscriptionIamBindingMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*SubscriptionIamBinding)(nil)).Elem()
 }
 
-func (o SubscriptionIAMBindingMapOutput) ToSubscriptionIAMBindingMapOutput() SubscriptionIAMBindingMapOutput {
+func (o SubscriptionIamBindingMapOutput) ToSubscriptionIamBindingMapOutput() SubscriptionIamBindingMapOutput {
 	return o
 }
 
-func (o SubscriptionIAMBindingMapOutput) ToSubscriptionIAMBindingMapOutputWithContext(ctx context.Context) SubscriptionIAMBindingMapOutput {
+func (o SubscriptionIamBindingMapOutput) ToSubscriptionIamBindingMapOutputWithContext(ctx context.Context) SubscriptionIamBindingMapOutput {
 	return o
 }
 
-func (o SubscriptionIAMBindingMapOutput) MapIndex(k pulumi.StringInput) SubscriptionIAMBindingOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *SubscriptionIAMBinding {
-		return vs[0].(map[string]*SubscriptionIAMBinding)[vs[1].(string)]
-	}).(SubscriptionIAMBindingOutput)
+func (o SubscriptionIamBindingMapOutput) MapIndex(k pulumi.StringInput) SubscriptionIamBindingOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *SubscriptionIamBinding {
+		return vs[0].(map[string]*SubscriptionIamBinding)[vs[1].(string)]
+	}).(SubscriptionIamBindingOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionIAMBindingInput)(nil)).Elem(), &SubscriptionIAMBinding{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionIAMBindingArrayInput)(nil)).Elem(), SubscriptionIAMBindingArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionIAMBindingMapInput)(nil)).Elem(), SubscriptionIAMBindingMap{})
-	pulumi.RegisterOutputType(SubscriptionIAMBindingOutput{})
-	pulumi.RegisterOutputType(SubscriptionIAMBindingArrayOutput{})
-	pulumi.RegisterOutputType(SubscriptionIAMBindingMapOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionIamBindingInput)(nil)).Elem(), &SubscriptionIamBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionIamBindingArrayInput)(nil)).Elem(), SubscriptionIamBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionIamBindingMapInput)(nil)).Elem(), SubscriptionIamBindingMap{})
+	pulumi.RegisterOutputType(SubscriptionIamBindingOutput{})
+	pulumi.RegisterOutputType(SubscriptionIamBindingArrayOutput{})
+	pulumi.RegisterOutputType(SubscriptionIamBindingMapOutput{})
 }

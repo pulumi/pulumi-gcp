@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := kms.GetKeyRingIamPolicy(ctx, &kms.GetKeyRingIamPolicyArgs{
+//			_, err := kms.LookupKeyRingIamPolicy(ctx, &kms.LookupKeyRingIamPolicyArgs{
 //				KeyRingId: "{project_id}/{location_name}/{key_ring_name}",
 //			}, nil)
 //			if err != nil {
@@ -38,9 +38,9 @@ import (
 //	}
 //
 // ```
-func GetKeyRingIamPolicy(ctx *pulumi.Context, args *GetKeyRingIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetKeyRingIamPolicyResult, error) {
+func LookupKeyRingIamPolicy(ctx *pulumi.Context, args *LookupKeyRingIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupKeyRingIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
-	var rv GetKeyRingIamPolicyResult
+	var rv LookupKeyRingIamPolicyResult
 	err := ctx.Invoke("gcp:kms/getKeyRingIamPolicy:getKeyRingIamPolicy", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -49,7 +49,7 @@ func GetKeyRingIamPolicy(ctx *pulumi.Context, args *GetKeyRingIamPolicyArgs, opt
 }
 
 // A collection of arguments for invoking getKeyRingIamPolicy.
-type GetKeyRingIamPolicyArgs struct {
+type LookupKeyRingIamPolicyArgs struct {
 	// The key ring ID, in the form
 	// `{project_id}/{location_name}/{key_ring_name}` or
 	// `{location_name}/{key_ring_name}`. In the second form, the provider's
@@ -58,7 +58,7 @@ type GetKeyRingIamPolicyArgs struct {
 }
 
 // A collection of values returned by getKeyRingIamPolicy.
-type GetKeyRingIamPolicyResult struct {
+type LookupKeyRingIamPolicyResult struct {
 	// (Computed) The etag of the IAM policy.
 	Etag string `pulumi:"etag"`
 	// The provider-assigned unique ID for this managed resource.
@@ -68,21 +68,21 @@ type GetKeyRingIamPolicyResult struct {
 	PolicyData string `pulumi:"policyData"`
 }
 
-func GetKeyRingIamPolicyOutput(ctx *pulumi.Context, args GetKeyRingIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetKeyRingIamPolicyResultOutput {
+func LookupKeyRingIamPolicyOutput(ctx *pulumi.Context, args LookupKeyRingIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupKeyRingIamPolicyResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetKeyRingIamPolicyResult, error) {
-			args := v.(GetKeyRingIamPolicyArgs)
-			r, err := GetKeyRingIamPolicy(ctx, &args, opts...)
-			var s GetKeyRingIamPolicyResult
+		ApplyT(func(v interface{}) (LookupKeyRingIamPolicyResult, error) {
+			args := v.(LookupKeyRingIamPolicyArgs)
+			r, err := LookupKeyRingIamPolicy(ctx, &args, opts...)
+			var s LookupKeyRingIamPolicyResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(GetKeyRingIamPolicyResultOutput)
+		}).(LookupKeyRingIamPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getKeyRingIamPolicy.
-type GetKeyRingIamPolicyOutputArgs struct {
+type LookupKeyRingIamPolicyOutputArgs struct {
 	// The key ring ID, in the form
 	// `{project_id}/{location_name}/{key_ring_name}` or
 	// `{location_name}/{key_ring_name}`. In the second form, the provider's
@@ -90,44 +90,44 @@ type GetKeyRingIamPolicyOutputArgs struct {
 	KeyRingId pulumi.StringInput `pulumi:"keyRingId"`
 }
 
-func (GetKeyRingIamPolicyOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetKeyRingIamPolicyArgs)(nil)).Elem()
+func (LookupKeyRingIamPolicyOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupKeyRingIamPolicyArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getKeyRingIamPolicy.
-type GetKeyRingIamPolicyResultOutput struct{ *pulumi.OutputState }
+type LookupKeyRingIamPolicyResultOutput struct{ *pulumi.OutputState }
 
-func (GetKeyRingIamPolicyResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetKeyRingIamPolicyResult)(nil)).Elem()
+func (LookupKeyRingIamPolicyResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupKeyRingIamPolicyResult)(nil)).Elem()
 }
 
-func (o GetKeyRingIamPolicyResultOutput) ToGetKeyRingIamPolicyResultOutput() GetKeyRingIamPolicyResultOutput {
+func (o LookupKeyRingIamPolicyResultOutput) ToLookupKeyRingIamPolicyResultOutput() LookupKeyRingIamPolicyResultOutput {
 	return o
 }
 
-func (o GetKeyRingIamPolicyResultOutput) ToGetKeyRingIamPolicyResultOutputWithContext(ctx context.Context) GetKeyRingIamPolicyResultOutput {
+func (o LookupKeyRingIamPolicyResultOutput) ToLookupKeyRingIamPolicyResultOutputWithContext(ctx context.Context) LookupKeyRingIamPolicyResultOutput {
 	return o
 }
 
 // (Computed) The etag of the IAM policy.
-func (o GetKeyRingIamPolicyResultOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v GetKeyRingIamPolicyResult) string { return v.Etag }).(pulumi.StringOutput)
+func (o LookupKeyRingIamPolicyResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKeyRingIamPolicyResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
-func (o GetKeyRingIamPolicyResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetKeyRingIamPolicyResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupKeyRingIamPolicyResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKeyRingIamPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o GetKeyRingIamPolicyResultOutput) KeyRingId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetKeyRingIamPolicyResult) string { return v.KeyRingId }).(pulumi.StringOutput)
+func (o LookupKeyRingIamPolicyResultOutput) KeyRingId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKeyRingIamPolicyResult) string { return v.KeyRingId }).(pulumi.StringOutput)
 }
 
 // (Computed) The policy data
-func (o GetKeyRingIamPolicyResultOutput) PolicyData() pulumi.StringOutput {
-	return o.ApplyT(func(v GetKeyRingIamPolicyResult) string { return v.PolicyData }).(pulumi.StringOutput)
+func (o LookupKeyRingIamPolicyResultOutput) PolicyData() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKeyRingIamPolicyResult) string { return v.PolicyData }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(GetKeyRingIamPolicyResultOutput{})
+	pulumi.RegisterOutputType(LookupKeyRingIamPolicyResultOutput{})
 }

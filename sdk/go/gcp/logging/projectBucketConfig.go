@@ -150,7 +150,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			cryptoKeyBinding, err := kms.NewCryptoKeyIAMBinding(ctx, "cryptoKeyBinding", &kms.CryptoKeyIAMBindingArgs{
+//			cryptoKeyBinding, err := kms.NewCryptoKeyIamBinding(ctx, "cryptoKeyBinding", &kms.CryptoKeyIamBindingArgs{
 //				CryptoKeyId: key.ID(),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Members: pulumi.StringArray{

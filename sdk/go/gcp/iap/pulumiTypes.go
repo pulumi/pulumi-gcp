@@ -1127,7 +1127,7 @@ func (o TunnelIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type TunnelInstanceIAMBindingCondition struct {
+type TunnelInstanceIamBindingCondition struct {
 	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	//
 	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
@@ -1140,18 +1140,18 @@ type TunnelInstanceIAMBindingCondition struct {
 	Title string `pulumi:"title"`
 }
 
-// TunnelInstanceIAMBindingConditionInput is an input type that accepts TunnelInstanceIAMBindingConditionArgs and TunnelInstanceIAMBindingConditionOutput values.
-// You can construct a concrete instance of `TunnelInstanceIAMBindingConditionInput` via:
+// TunnelInstanceIamBindingConditionInput is an input type that accepts TunnelInstanceIamBindingConditionArgs and TunnelInstanceIamBindingConditionOutput values.
+// You can construct a concrete instance of `TunnelInstanceIamBindingConditionInput` via:
 //
-//	TunnelInstanceIAMBindingConditionArgs{...}
-type TunnelInstanceIAMBindingConditionInput interface {
+//	TunnelInstanceIamBindingConditionArgs{...}
+type TunnelInstanceIamBindingConditionInput interface {
 	pulumi.Input
 
-	ToTunnelInstanceIAMBindingConditionOutput() TunnelInstanceIAMBindingConditionOutput
-	ToTunnelInstanceIAMBindingConditionOutputWithContext(context.Context) TunnelInstanceIAMBindingConditionOutput
+	ToTunnelInstanceIamBindingConditionOutput() TunnelInstanceIamBindingConditionOutput
+	ToTunnelInstanceIamBindingConditionOutputWithContext(context.Context) TunnelInstanceIamBindingConditionOutput
 }
 
-type TunnelInstanceIAMBindingConditionArgs struct {
+type TunnelInstanceIamBindingConditionArgs struct {
 	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	//
 	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
@@ -1164,81 +1164,81 @@ type TunnelInstanceIAMBindingConditionArgs struct {
 	Title pulumi.StringInput `pulumi:"title"`
 }
 
-func (TunnelInstanceIAMBindingConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TunnelInstanceIAMBindingCondition)(nil)).Elem()
+func (TunnelInstanceIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TunnelInstanceIamBindingCondition)(nil)).Elem()
 }
 
-func (i TunnelInstanceIAMBindingConditionArgs) ToTunnelInstanceIAMBindingConditionOutput() TunnelInstanceIAMBindingConditionOutput {
-	return i.ToTunnelInstanceIAMBindingConditionOutputWithContext(context.Background())
+func (i TunnelInstanceIamBindingConditionArgs) ToTunnelInstanceIamBindingConditionOutput() TunnelInstanceIamBindingConditionOutput {
+	return i.ToTunnelInstanceIamBindingConditionOutputWithContext(context.Background())
 }
 
-func (i TunnelInstanceIAMBindingConditionArgs) ToTunnelInstanceIAMBindingConditionOutputWithContext(ctx context.Context) TunnelInstanceIAMBindingConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TunnelInstanceIAMBindingConditionOutput)
+func (i TunnelInstanceIamBindingConditionArgs) ToTunnelInstanceIamBindingConditionOutputWithContext(ctx context.Context) TunnelInstanceIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelInstanceIamBindingConditionOutput)
 }
 
-func (i TunnelInstanceIAMBindingConditionArgs) ToTunnelInstanceIAMBindingConditionPtrOutput() TunnelInstanceIAMBindingConditionPtrOutput {
-	return i.ToTunnelInstanceIAMBindingConditionPtrOutputWithContext(context.Background())
+func (i TunnelInstanceIamBindingConditionArgs) ToTunnelInstanceIamBindingConditionPtrOutput() TunnelInstanceIamBindingConditionPtrOutput {
+	return i.ToTunnelInstanceIamBindingConditionPtrOutputWithContext(context.Background())
 }
 
-func (i TunnelInstanceIAMBindingConditionArgs) ToTunnelInstanceIAMBindingConditionPtrOutputWithContext(ctx context.Context) TunnelInstanceIAMBindingConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TunnelInstanceIAMBindingConditionOutput).ToTunnelInstanceIAMBindingConditionPtrOutputWithContext(ctx)
+func (i TunnelInstanceIamBindingConditionArgs) ToTunnelInstanceIamBindingConditionPtrOutputWithContext(ctx context.Context) TunnelInstanceIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelInstanceIamBindingConditionOutput).ToTunnelInstanceIamBindingConditionPtrOutputWithContext(ctx)
 }
 
-// TunnelInstanceIAMBindingConditionPtrInput is an input type that accepts TunnelInstanceIAMBindingConditionArgs, TunnelInstanceIAMBindingConditionPtr and TunnelInstanceIAMBindingConditionPtrOutput values.
-// You can construct a concrete instance of `TunnelInstanceIAMBindingConditionPtrInput` via:
+// TunnelInstanceIamBindingConditionPtrInput is an input type that accepts TunnelInstanceIamBindingConditionArgs, TunnelInstanceIamBindingConditionPtr and TunnelInstanceIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `TunnelInstanceIamBindingConditionPtrInput` via:
 //
-//	        TunnelInstanceIAMBindingConditionArgs{...}
+//	        TunnelInstanceIamBindingConditionArgs{...}
 //
 //	or:
 //
 //	        nil
-type TunnelInstanceIAMBindingConditionPtrInput interface {
+type TunnelInstanceIamBindingConditionPtrInput interface {
 	pulumi.Input
 
-	ToTunnelInstanceIAMBindingConditionPtrOutput() TunnelInstanceIAMBindingConditionPtrOutput
-	ToTunnelInstanceIAMBindingConditionPtrOutputWithContext(context.Context) TunnelInstanceIAMBindingConditionPtrOutput
+	ToTunnelInstanceIamBindingConditionPtrOutput() TunnelInstanceIamBindingConditionPtrOutput
+	ToTunnelInstanceIamBindingConditionPtrOutputWithContext(context.Context) TunnelInstanceIamBindingConditionPtrOutput
 }
 
-type tunnelInstanceIAMBindingConditionPtrType TunnelInstanceIAMBindingConditionArgs
+type tunnelInstanceIamBindingConditionPtrType TunnelInstanceIamBindingConditionArgs
 
-func TunnelInstanceIAMBindingConditionPtr(v *TunnelInstanceIAMBindingConditionArgs) TunnelInstanceIAMBindingConditionPtrInput {
-	return (*tunnelInstanceIAMBindingConditionPtrType)(v)
+func TunnelInstanceIamBindingConditionPtr(v *TunnelInstanceIamBindingConditionArgs) TunnelInstanceIamBindingConditionPtrInput {
+	return (*tunnelInstanceIamBindingConditionPtrType)(v)
 }
 
-func (*tunnelInstanceIAMBindingConditionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TunnelInstanceIAMBindingCondition)(nil)).Elem()
+func (*tunnelInstanceIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TunnelInstanceIamBindingCondition)(nil)).Elem()
 }
 
-func (i *tunnelInstanceIAMBindingConditionPtrType) ToTunnelInstanceIAMBindingConditionPtrOutput() TunnelInstanceIAMBindingConditionPtrOutput {
-	return i.ToTunnelInstanceIAMBindingConditionPtrOutputWithContext(context.Background())
+func (i *tunnelInstanceIamBindingConditionPtrType) ToTunnelInstanceIamBindingConditionPtrOutput() TunnelInstanceIamBindingConditionPtrOutput {
+	return i.ToTunnelInstanceIamBindingConditionPtrOutputWithContext(context.Background())
 }
 
-func (i *tunnelInstanceIAMBindingConditionPtrType) ToTunnelInstanceIAMBindingConditionPtrOutputWithContext(ctx context.Context) TunnelInstanceIAMBindingConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TunnelInstanceIAMBindingConditionPtrOutput)
+func (i *tunnelInstanceIamBindingConditionPtrType) ToTunnelInstanceIamBindingConditionPtrOutputWithContext(ctx context.Context) TunnelInstanceIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelInstanceIamBindingConditionPtrOutput)
 }
 
-type TunnelInstanceIAMBindingConditionOutput struct{ *pulumi.OutputState }
+type TunnelInstanceIamBindingConditionOutput struct{ *pulumi.OutputState }
 
-func (TunnelInstanceIAMBindingConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TunnelInstanceIAMBindingCondition)(nil)).Elem()
+func (TunnelInstanceIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TunnelInstanceIamBindingCondition)(nil)).Elem()
 }
 
-func (o TunnelInstanceIAMBindingConditionOutput) ToTunnelInstanceIAMBindingConditionOutput() TunnelInstanceIAMBindingConditionOutput {
+func (o TunnelInstanceIamBindingConditionOutput) ToTunnelInstanceIamBindingConditionOutput() TunnelInstanceIamBindingConditionOutput {
 	return o
 }
 
-func (o TunnelInstanceIAMBindingConditionOutput) ToTunnelInstanceIAMBindingConditionOutputWithContext(ctx context.Context) TunnelInstanceIAMBindingConditionOutput {
+func (o TunnelInstanceIamBindingConditionOutput) ToTunnelInstanceIamBindingConditionOutputWithContext(ctx context.Context) TunnelInstanceIamBindingConditionOutput {
 	return o
 }
 
-func (o TunnelInstanceIAMBindingConditionOutput) ToTunnelInstanceIAMBindingConditionPtrOutput() TunnelInstanceIAMBindingConditionPtrOutput {
-	return o.ToTunnelInstanceIAMBindingConditionPtrOutputWithContext(context.Background())
+func (o TunnelInstanceIamBindingConditionOutput) ToTunnelInstanceIamBindingConditionPtrOutput() TunnelInstanceIamBindingConditionPtrOutput {
+	return o.ToTunnelInstanceIamBindingConditionPtrOutputWithContext(context.Background())
 }
 
-func (o TunnelInstanceIAMBindingConditionOutput) ToTunnelInstanceIAMBindingConditionPtrOutputWithContext(ctx context.Context) TunnelInstanceIAMBindingConditionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TunnelInstanceIAMBindingCondition) *TunnelInstanceIAMBindingCondition {
+func (o TunnelInstanceIamBindingConditionOutput) ToTunnelInstanceIamBindingConditionPtrOutputWithContext(ctx context.Context) TunnelInstanceIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TunnelInstanceIamBindingCondition) *TunnelInstanceIamBindingCondition {
 		return &v
-	}).(TunnelInstanceIAMBindingConditionPtrOutput)
+	}).(TunnelInstanceIamBindingConditionPtrOutput)
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1246,42 +1246,42 @@ func (o TunnelInstanceIAMBindingConditionOutput) ToTunnelInstanceIAMBindingCondi
 // > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
 // identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
 // consider it to be an entirely different resource and will treat it as such.
-func (o TunnelInstanceIAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TunnelInstanceIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o TunnelInstanceIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TunnelInstanceIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // Textual representation of an expression in Common Expression Language syntax.
-func (o TunnelInstanceIAMBindingConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v TunnelInstanceIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o TunnelInstanceIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v TunnelInstanceIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 // A title for the expression, i.e. a short string describing its purpose.
-func (o TunnelInstanceIAMBindingConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v TunnelInstanceIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o TunnelInstanceIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v TunnelInstanceIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type TunnelInstanceIAMBindingConditionPtrOutput struct{ *pulumi.OutputState }
+type TunnelInstanceIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
 
-func (TunnelInstanceIAMBindingConditionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TunnelInstanceIAMBindingCondition)(nil)).Elem()
+func (TunnelInstanceIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TunnelInstanceIamBindingCondition)(nil)).Elem()
 }
 
-func (o TunnelInstanceIAMBindingConditionPtrOutput) ToTunnelInstanceIAMBindingConditionPtrOutput() TunnelInstanceIAMBindingConditionPtrOutput {
+func (o TunnelInstanceIamBindingConditionPtrOutput) ToTunnelInstanceIamBindingConditionPtrOutput() TunnelInstanceIamBindingConditionPtrOutput {
 	return o
 }
 
-func (o TunnelInstanceIAMBindingConditionPtrOutput) ToTunnelInstanceIAMBindingConditionPtrOutputWithContext(ctx context.Context) TunnelInstanceIAMBindingConditionPtrOutput {
+func (o TunnelInstanceIamBindingConditionPtrOutput) ToTunnelInstanceIamBindingConditionPtrOutputWithContext(ctx context.Context) TunnelInstanceIamBindingConditionPtrOutput {
 	return o
 }
 
-func (o TunnelInstanceIAMBindingConditionPtrOutput) Elem() TunnelInstanceIAMBindingConditionOutput {
-	return o.ApplyT(func(v *TunnelInstanceIAMBindingCondition) TunnelInstanceIAMBindingCondition {
+func (o TunnelInstanceIamBindingConditionPtrOutput) Elem() TunnelInstanceIamBindingConditionOutput {
+	return o.ApplyT(func(v *TunnelInstanceIamBindingCondition) TunnelInstanceIamBindingCondition {
 		if v != nil {
 			return *v
 		}
-		var ret TunnelInstanceIAMBindingCondition
+		var ret TunnelInstanceIamBindingCondition
 		return ret
-	}).(TunnelInstanceIAMBindingConditionOutput)
+	}).(TunnelInstanceIamBindingConditionOutput)
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1289,8 +1289,8 @@ func (o TunnelInstanceIAMBindingConditionPtrOutput) Elem() TunnelInstanceIAMBind
 // > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
 // identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
 // consider it to be an entirely different resource and will treat it as such.
-func (o TunnelInstanceIAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TunnelInstanceIAMBindingCondition) *string {
+func (o TunnelInstanceIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TunnelInstanceIamBindingCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -1299,8 +1299,8 @@ func (o TunnelInstanceIAMBindingConditionPtrOutput) Description() pulumi.StringP
 }
 
 // Textual representation of an expression in Common Expression Language syntax.
-func (o TunnelInstanceIAMBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TunnelInstanceIAMBindingCondition) *string {
+func (o TunnelInstanceIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TunnelInstanceIamBindingCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -1309,8 +1309,8 @@ func (o TunnelInstanceIAMBindingConditionPtrOutput) Expression() pulumi.StringPt
 }
 
 // A title for the expression, i.e. a short string describing its purpose.
-func (o TunnelInstanceIAMBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TunnelInstanceIAMBindingCondition) *string {
+func (o TunnelInstanceIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TunnelInstanceIamBindingCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -1318,7 +1318,7 @@ func (o TunnelInstanceIAMBindingConditionPtrOutput) Title() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-type TunnelInstanceIAMMemberCondition struct {
+type TunnelInstanceIamMemberCondition struct {
 	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	//
 	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
@@ -1331,18 +1331,18 @@ type TunnelInstanceIAMMemberCondition struct {
 	Title string `pulumi:"title"`
 }
 
-// TunnelInstanceIAMMemberConditionInput is an input type that accepts TunnelInstanceIAMMemberConditionArgs and TunnelInstanceIAMMemberConditionOutput values.
-// You can construct a concrete instance of `TunnelInstanceIAMMemberConditionInput` via:
+// TunnelInstanceIamMemberConditionInput is an input type that accepts TunnelInstanceIamMemberConditionArgs and TunnelInstanceIamMemberConditionOutput values.
+// You can construct a concrete instance of `TunnelInstanceIamMemberConditionInput` via:
 //
-//	TunnelInstanceIAMMemberConditionArgs{...}
-type TunnelInstanceIAMMemberConditionInput interface {
+//	TunnelInstanceIamMemberConditionArgs{...}
+type TunnelInstanceIamMemberConditionInput interface {
 	pulumi.Input
 
-	ToTunnelInstanceIAMMemberConditionOutput() TunnelInstanceIAMMemberConditionOutput
-	ToTunnelInstanceIAMMemberConditionOutputWithContext(context.Context) TunnelInstanceIAMMemberConditionOutput
+	ToTunnelInstanceIamMemberConditionOutput() TunnelInstanceIamMemberConditionOutput
+	ToTunnelInstanceIamMemberConditionOutputWithContext(context.Context) TunnelInstanceIamMemberConditionOutput
 }
 
-type TunnelInstanceIAMMemberConditionArgs struct {
+type TunnelInstanceIamMemberConditionArgs struct {
 	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	//
 	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
@@ -1355,81 +1355,81 @@ type TunnelInstanceIAMMemberConditionArgs struct {
 	Title pulumi.StringInput `pulumi:"title"`
 }
 
-func (TunnelInstanceIAMMemberConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TunnelInstanceIAMMemberCondition)(nil)).Elem()
+func (TunnelInstanceIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TunnelInstanceIamMemberCondition)(nil)).Elem()
 }
 
-func (i TunnelInstanceIAMMemberConditionArgs) ToTunnelInstanceIAMMemberConditionOutput() TunnelInstanceIAMMemberConditionOutput {
-	return i.ToTunnelInstanceIAMMemberConditionOutputWithContext(context.Background())
+func (i TunnelInstanceIamMemberConditionArgs) ToTunnelInstanceIamMemberConditionOutput() TunnelInstanceIamMemberConditionOutput {
+	return i.ToTunnelInstanceIamMemberConditionOutputWithContext(context.Background())
 }
 
-func (i TunnelInstanceIAMMemberConditionArgs) ToTunnelInstanceIAMMemberConditionOutputWithContext(ctx context.Context) TunnelInstanceIAMMemberConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TunnelInstanceIAMMemberConditionOutput)
+func (i TunnelInstanceIamMemberConditionArgs) ToTunnelInstanceIamMemberConditionOutputWithContext(ctx context.Context) TunnelInstanceIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelInstanceIamMemberConditionOutput)
 }
 
-func (i TunnelInstanceIAMMemberConditionArgs) ToTunnelInstanceIAMMemberConditionPtrOutput() TunnelInstanceIAMMemberConditionPtrOutput {
-	return i.ToTunnelInstanceIAMMemberConditionPtrOutputWithContext(context.Background())
+func (i TunnelInstanceIamMemberConditionArgs) ToTunnelInstanceIamMemberConditionPtrOutput() TunnelInstanceIamMemberConditionPtrOutput {
+	return i.ToTunnelInstanceIamMemberConditionPtrOutputWithContext(context.Background())
 }
 
-func (i TunnelInstanceIAMMemberConditionArgs) ToTunnelInstanceIAMMemberConditionPtrOutputWithContext(ctx context.Context) TunnelInstanceIAMMemberConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TunnelInstanceIAMMemberConditionOutput).ToTunnelInstanceIAMMemberConditionPtrOutputWithContext(ctx)
+func (i TunnelInstanceIamMemberConditionArgs) ToTunnelInstanceIamMemberConditionPtrOutputWithContext(ctx context.Context) TunnelInstanceIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelInstanceIamMemberConditionOutput).ToTunnelInstanceIamMemberConditionPtrOutputWithContext(ctx)
 }
 
-// TunnelInstanceIAMMemberConditionPtrInput is an input type that accepts TunnelInstanceIAMMemberConditionArgs, TunnelInstanceIAMMemberConditionPtr and TunnelInstanceIAMMemberConditionPtrOutput values.
-// You can construct a concrete instance of `TunnelInstanceIAMMemberConditionPtrInput` via:
+// TunnelInstanceIamMemberConditionPtrInput is an input type that accepts TunnelInstanceIamMemberConditionArgs, TunnelInstanceIamMemberConditionPtr and TunnelInstanceIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `TunnelInstanceIamMemberConditionPtrInput` via:
 //
-//	        TunnelInstanceIAMMemberConditionArgs{...}
+//	        TunnelInstanceIamMemberConditionArgs{...}
 //
 //	or:
 //
 //	        nil
-type TunnelInstanceIAMMemberConditionPtrInput interface {
+type TunnelInstanceIamMemberConditionPtrInput interface {
 	pulumi.Input
 
-	ToTunnelInstanceIAMMemberConditionPtrOutput() TunnelInstanceIAMMemberConditionPtrOutput
-	ToTunnelInstanceIAMMemberConditionPtrOutputWithContext(context.Context) TunnelInstanceIAMMemberConditionPtrOutput
+	ToTunnelInstanceIamMemberConditionPtrOutput() TunnelInstanceIamMemberConditionPtrOutput
+	ToTunnelInstanceIamMemberConditionPtrOutputWithContext(context.Context) TunnelInstanceIamMemberConditionPtrOutput
 }
 
-type tunnelInstanceIAMMemberConditionPtrType TunnelInstanceIAMMemberConditionArgs
+type tunnelInstanceIamMemberConditionPtrType TunnelInstanceIamMemberConditionArgs
 
-func TunnelInstanceIAMMemberConditionPtr(v *TunnelInstanceIAMMemberConditionArgs) TunnelInstanceIAMMemberConditionPtrInput {
-	return (*tunnelInstanceIAMMemberConditionPtrType)(v)
+func TunnelInstanceIamMemberConditionPtr(v *TunnelInstanceIamMemberConditionArgs) TunnelInstanceIamMemberConditionPtrInput {
+	return (*tunnelInstanceIamMemberConditionPtrType)(v)
 }
 
-func (*tunnelInstanceIAMMemberConditionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TunnelInstanceIAMMemberCondition)(nil)).Elem()
+func (*tunnelInstanceIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TunnelInstanceIamMemberCondition)(nil)).Elem()
 }
 
-func (i *tunnelInstanceIAMMemberConditionPtrType) ToTunnelInstanceIAMMemberConditionPtrOutput() TunnelInstanceIAMMemberConditionPtrOutput {
-	return i.ToTunnelInstanceIAMMemberConditionPtrOutputWithContext(context.Background())
+func (i *tunnelInstanceIamMemberConditionPtrType) ToTunnelInstanceIamMemberConditionPtrOutput() TunnelInstanceIamMemberConditionPtrOutput {
+	return i.ToTunnelInstanceIamMemberConditionPtrOutputWithContext(context.Background())
 }
 
-func (i *tunnelInstanceIAMMemberConditionPtrType) ToTunnelInstanceIAMMemberConditionPtrOutputWithContext(ctx context.Context) TunnelInstanceIAMMemberConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TunnelInstanceIAMMemberConditionPtrOutput)
+func (i *tunnelInstanceIamMemberConditionPtrType) ToTunnelInstanceIamMemberConditionPtrOutputWithContext(ctx context.Context) TunnelInstanceIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelInstanceIamMemberConditionPtrOutput)
 }
 
-type TunnelInstanceIAMMemberConditionOutput struct{ *pulumi.OutputState }
+type TunnelInstanceIamMemberConditionOutput struct{ *pulumi.OutputState }
 
-func (TunnelInstanceIAMMemberConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TunnelInstanceIAMMemberCondition)(nil)).Elem()
+func (TunnelInstanceIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TunnelInstanceIamMemberCondition)(nil)).Elem()
 }
 
-func (o TunnelInstanceIAMMemberConditionOutput) ToTunnelInstanceIAMMemberConditionOutput() TunnelInstanceIAMMemberConditionOutput {
+func (o TunnelInstanceIamMemberConditionOutput) ToTunnelInstanceIamMemberConditionOutput() TunnelInstanceIamMemberConditionOutput {
 	return o
 }
 
-func (o TunnelInstanceIAMMemberConditionOutput) ToTunnelInstanceIAMMemberConditionOutputWithContext(ctx context.Context) TunnelInstanceIAMMemberConditionOutput {
+func (o TunnelInstanceIamMemberConditionOutput) ToTunnelInstanceIamMemberConditionOutputWithContext(ctx context.Context) TunnelInstanceIamMemberConditionOutput {
 	return o
 }
 
-func (o TunnelInstanceIAMMemberConditionOutput) ToTunnelInstanceIAMMemberConditionPtrOutput() TunnelInstanceIAMMemberConditionPtrOutput {
-	return o.ToTunnelInstanceIAMMemberConditionPtrOutputWithContext(context.Background())
+func (o TunnelInstanceIamMemberConditionOutput) ToTunnelInstanceIamMemberConditionPtrOutput() TunnelInstanceIamMemberConditionPtrOutput {
+	return o.ToTunnelInstanceIamMemberConditionPtrOutputWithContext(context.Background())
 }
 
-func (o TunnelInstanceIAMMemberConditionOutput) ToTunnelInstanceIAMMemberConditionPtrOutputWithContext(ctx context.Context) TunnelInstanceIAMMemberConditionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TunnelInstanceIAMMemberCondition) *TunnelInstanceIAMMemberCondition {
+func (o TunnelInstanceIamMemberConditionOutput) ToTunnelInstanceIamMemberConditionPtrOutputWithContext(ctx context.Context) TunnelInstanceIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TunnelInstanceIamMemberCondition) *TunnelInstanceIamMemberCondition {
 		return &v
-	}).(TunnelInstanceIAMMemberConditionPtrOutput)
+	}).(TunnelInstanceIamMemberConditionPtrOutput)
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1437,42 +1437,42 @@ func (o TunnelInstanceIAMMemberConditionOutput) ToTunnelInstanceIAMMemberConditi
 // > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
 // identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
 // consider it to be an entirely different resource and will treat it as such.
-func (o TunnelInstanceIAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TunnelInstanceIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o TunnelInstanceIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TunnelInstanceIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // Textual representation of an expression in Common Expression Language syntax.
-func (o TunnelInstanceIAMMemberConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v TunnelInstanceIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o TunnelInstanceIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v TunnelInstanceIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 // A title for the expression, i.e. a short string describing its purpose.
-func (o TunnelInstanceIAMMemberConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v TunnelInstanceIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o TunnelInstanceIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v TunnelInstanceIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type TunnelInstanceIAMMemberConditionPtrOutput struct{ *pulumi.OutputState }
+type TunnelInstanceIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
 
-func (TunnelInstanceIAMMemberConditionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TunnelInstanceIAMMemberCondition)(nil)).Elem()
+func (TunnelInstanceIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TunnelInstanceIamMemberCondition)(nil)).Elem()
 }
 
-func (o TunnelInstanceIAMMemberConditionPtrOutput) ToTunnelInstanceIAMMemberConditionPtrOutput() TunnelInstanceIAMMemberConditionPtrOutput {
+func (o TunnelInstanceIamMemberConditionPtrOutput) ToTunnelInstanceIamMemberConditionPtrOutput() TunnelInstanceIamMemberConditionPtrOutput {
 	return o
 }
 
-func (o TunnelInstanceIAMMemberConditionPtrOutput) ToTunnelInstanceIAMMemberConditionPtrOutputWithContext(ctx context.Context) TunnelInstanceIAMMemberConditionPtrOutput {
+func (o TunnelInstanceIamMemberConditionPtrOutput) ToTunnelInstanceIamMemberConditionPtrOutputWithContext(ctx context.Context) TunnelInstanceIamMemberConditionPtrOutput {
 	return o
 }
 
-func (o TunnelInstanceIAMMemberConditionPtrOutput) Elem() TunnelInstanceIAMMemberConditionOutput {
-	return o.ApplyT(func(v *TunnelInstanceIAMMemberCondition) TunnelInstanceIAMMemberCondition {
+func (o TunnelInstanceIamMemberConditionPtrOutput) Elem() TunnelInstanceIamMemberConditionOutput {
+	return o.ApplyT(func(v *TunnelInstanceIamMemberCondition) TunnelInstanceIamMemberCondition {
 		if v != nil {
 			return *v
 		}
-		var ret TunnelInstanceIAMMemberCondition
+		var ret TunnelInstanceIamMemberCondition
 		return ret
-	}).(TunnelInstanceIAMMemberConditionOutput)
+	}).(TunnelInstanceIamMemberConditionOutput)
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1480,8 +1480,8 @@ func (o TunnelInstanceIAMMemberConditionPtrOutput) Elem() TunnelInstanceIAMMembe
 // > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
 // identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
 // consider it to be an entirely different resource and will treat it as such.
-func (o TunnelInstanceIAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TunnelInstanceIAMMemberCondition) *string {
+func (o TunnelInstanceIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TunnelInstanceIamMemberCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -1490,8 +1490,8 @@ func (o TunnelInstanceIAMMemberConditionPtrOutput) Description() pulumi.StringPt
 }
 
 // Textual representation of an expression in Common Expression Language syntax.
-func (o TunnelInstanceIAMMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TunnelInstanceIAMMemberCondition) *string {
+func (o TunnelInstanceIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TunnelInstanceIamMemberCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -1500,8 +1500,8 @@ func (o TunnelInstanceIAMMemberConditionPtrOutput) Expression() pulumi.StringPtr
 }
 
 // A title for the expression, i.e. a short string describing its purpose.
-func (o TunnelInstanceIAMMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TunnelInstanceIAMMemberCondition) *string {
+func (o TunnelInstanceIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TunnelInstanceIamMemberCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -3392,10 +3392,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TunnelIamBindingConditionPtrInput)(nil)).Elem(), TunnelIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TunnelIamMemberConditionInput)(nil)).Elem(), TunnelIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TunnelIamMemberConditionPtrInput)(nil)).Elem(), TunnelIamMemberConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TunnelInstanceIAMBindingConditionInput)(nil)).Elem(), TunnelInstanceIAMBindingConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TunnelInstanceIAMBindingConditionPtrInput)(nil)).Elem(), TunnelInstanceIAMBindingConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TunnelInstanceIAMMemberConditionInput)(nil)).Elem(), TunnelInstanceIAMMemberConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TunnelInstanceIAMMemberConditionPtrInput)(nil)).Elem(), TunnelInstanceIAMMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelInstanceIamBindingConditionInput)(nil)).Elem(), TunnelInstanceIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelInstanceIamBindingConditionPtrInput)(nil)).Elem(), TunnelInstanceIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelInstanceIamMemberConditionInput)(nil)).Elem(), TunnelInstanceIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelInstanceIamMemberConditionPtrInput)(nil)).Elem(), TunnelInstanceIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebBackendServiceIamBindingConditionInput)(nil)).Elem(), WebBackendServiceIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebBackendServiceIamBindingConditionPtrInput)(nil)).Elem(), WebBackendServiceIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebBackendServiceIamMemberConditionInput)(nil)).Elem(), WebBackendServiceIamMemberConditionArgs{})
@@ -3428,10 +3428,10 @@ func init() {
 	pulumi.RegisterOutputType(TunnelIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(TunnelIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(TunnelIamMemberConditionPtrOutput{})
-	pulumi.RegisterOutputType(TunnelInstanceIAMBindingConditionOutput{})
-	pulumi.RegisterOutputType(TunnelInstanceIAMBindingConditionPtrOutput{})
-	pulumi.RegisterOutputType(TunnelInstanceIAMMemberConditionOutput{})
-	pulumi.RegisterOutputType(TunnelInstanceIAMMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(TunnelInstanceIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(TunnelInstanceIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(TunnelInstanceIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(TunnelInstanceIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(WebBackendServiceIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(WebBackendServiceIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(WebBackendServiceIamMemberConditionOutput{})

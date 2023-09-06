@@ -14,14 +14,14 @@ import (
 
 // Four different resources help you manage your IAM policy for a folder. Each of these resources serves a different use case:
 //
-// * `folder.IAMPolicy`: Authoritative. Sets the IAM policy for the folder and replaces any existing policy already attached.
-// * `folder.IAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the folder are preserved.
-// * `folder.IAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the folder are preserved.
+// * `folder.IamPolicy`: Authoritative. Sets the IAM policy for the folder and replaces any existing policy already attached.
+// * `folder.IamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the folder are preserved.
+// * `folder.IamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the folder are preserved.
 // * `folder.IamAuditConfig`: Authoritative for a given service. Updates the IAM policy to enable audit logging for the given service.
 //
-// > **Note:** `folder.IAMPolicy` **cannot** be used in conjunction with `folder.IAMBinding`, `folder.IAMMember`, or `folder.IamAuditConfig` or they will fight over what your policy should be.
+// > **Note:** `folder.IamPolicy` **cannot** be used in conjunction with `folder.IamBinding`, `folder.IamMember`, or `folder.IamAuditConfig` or they will fight over what your policy should be.
 //
-// > **Note:** `folder.IAMBinding` resources **can be** used in conjunction with `folder.IAMMember` resources **only if** they do not grant privilege to the same role.
+// > **Note:** `folder.IamBinding` resources **can be** used in conjunction with `folder.IamMember` resources **only if** they do not grant privilege to the same role.
 //
 // > **Note:** The underlying API method `projects.setIamPolicy` has constraints which are documented [here](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
 //
@@ -31,9 +31,9 @@ import (
 //
 // !> **Be careful!** You can accidentally lock yourself out of your folder
 //
-//	using this resource. Deleting a `folder.IAMPolicy` removes access
+//	using this resource. Deleting a `folder.IamPolicy` removes access
 //	from anyone without permissions on its parent folder/organization. Proceed with caution.
-//	It's not recommended to use `folder.IAMPolicy` with your provider folder
+//	It's not recommended to use `folder.IamPolicy` with your provider folder
 //	to avoid locking yourself out, and it should generally only be used with folders
 //	fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
 //	applying the change.
@@ -51,8 +51,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
+//			admin, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
 //					{
 //						Role: "roles/editor",
 //						Members: []string{
@@ -64,7 +64,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = folder.NewIAMPolicy(ctx, "folder", &folder.IAMPolicyArgs{
+//			_, err = folder.NewIamPolicy(ctx, "folder", &folder.IamPolicyArgs{
 //				Folder:     pulumi.String("folders/1234567"),
 //				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
@@ -92,8 +92,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
+//			admin, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
 //					{
 //						Condition: {
 //							Description: pulumi.StringRef("Expiring at midnight of 2019-12-31"),
@@ -110,7 +110,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = folder.NewIAMPolicy(ctx, "folder", &folder.IAMPolicyArgs{
+//			_, err = folder.NewIamPolicy(ctx, "folder", &folder.IamPolicyArgs{
 //				Folder:     pulumi.String("folders/1234567"),
 //				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
@@ -137,7 +137,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := folder.NewIAMBinding(ctx, "folder", &folder.IAMBindingArgs{
+//			_, err := folder.NewIamBinding(ctx, "folder", &folder.IamBindingArgs{
 //				Folder: pulumi.String("folders/1234567"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
@@ -167,8 +167,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := folder.NewIAMBinding(ctx, "folder", &folder.IAMBindingArgs{
-//				Condition: &folder.IAMBindingConditionArgs{
+//			_, err := folder.NewIamBinding(ctx, "folder", &folder.IamBindingArgs{
+//				Condition: &folder.IamBindingConditionArgs{
 //					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
 //					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
 //					Title:       pulumi.String("expires_after_2019_12_31"),
@@ -202,7 +202,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := folder.NewIAMMember(ctx, "folder", &folder.IAMMemberArgs{
+//			_, err := folder.NewIamMember(ctx, "folder", &folder.IamMemberArgs{
 //				Folder: pulumi.String("folders/1234567"),
 //				Member: pulumi.String("user:jane@example.com"),
 //				Role:   pulumi.String("roles/editor"),
@@ -230,8 +230,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := folder.NewIAMMember(ctx, "folder", &folder.IAMMemberArgs{
-//				Condition: &folder.IAMMemberConditionArgs{
+//			_, err := folder.NewIamMember(ctx, "folder", &folder.IamMemberArgs{
+//				Condition: &folder.IamMemberConditionArgs{
 //					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
 //					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
 //					Title:       pulumi.String("expires_after_2019_12_31"),

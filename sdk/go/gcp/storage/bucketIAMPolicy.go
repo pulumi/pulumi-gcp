@@ -14,17 +14,17 @@ import (
 
 // Three different resources help you manage your IAM policy for Cloud Storage Bucket. Each of these resources serves a different use case:
 //
-// * `storage.BucketIAMPolicy`: Authoritative. Sets the IAM policy for the bucket and replaces any existing policy already attached.
-// * `storage.BucketIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the bucket are preserved.
-// * `storage.BucketIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the bucket are preserved.
+// * `storage.BucketIamPolicy`: Authoritative. Sets the IAM policy for the bucket and replaces any existing policy already attached.
+// * `storage.BucketIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the bucket are preserved.
+// * `storage.BucketIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the bucket are preserved.
 //
 // # A data source can be used to retrieve policy data in advent you do not need creation
 //
-// * `storage.BucketIAMPolicy`: Retrieves the IAM policy for the bucket
+// * `storage.BucketIamPolicy`: Retrieves the IAM policy for the bucket
 //
-// > **Note:** `storage.BucketIAMPolicy` **cannot** be used in conjunction with `storage.BucketIAMBinding` and `storage.BucketIAMMember` or they will fight over what your policy should be.
+// > **Note:** `storage.BucketIamPolicy` **cannot** be used in conjunction with `storage.BucketIamBinding` and `storage.BucketIamMember` or they will fight over what your policy should be.
 //
-// > **Note:** `storage.BucketIAMBinding` resources **can be** used in conjunction with `storage.BucketIAMMember` resources **only if** they do not grant privilege to the same role.
+// > **Note:** `storage.BucketIamBinding` resources **can be** used in conjunction with `storage.BucketIamMember` resources **only if** they do not grant privilege to the same role.
 //
 // > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 //
@@ -43,8 +43,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
+//			admin, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
 //					{
 //						Role: "roles/storage.admin",
 //						Members: []string{
@@ -56,7 +56,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = storage.NewBucketIAMPolicy(ctx, "policy", &storage.BucketIAMPolicyArgs{
+//			_, err = storage.NewBucketIamPolicy(ctx, "policy", &storage.BucketIamPolicyArgs{
 //				Bucket:     pulumi.Any(google_storage_bucket.Default.Name),
 //				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
@@ -84,8 +84,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
+//			admin, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
 //					{
 //						Role: "roles/storage.admin",
 //						Members: []string{
@@ -102,7 +102,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = storage.NewBucketIAMPolicy(ctx, "policy", &storage.BucketIAMPolicyArgs{
+//			_, err = storage.NewBucketIamPolicy(ctx, "policy", &storage.BucketIamPolicyArgs{
 //				Bucket:     pulumi.Any(google_storage_bucket.Default.Name),
 //				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
@@ -128,7 +128,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := storage.NewBucketIAMBinding(ctx, "binding", &storage.BucketIAMBindingArgs{
+//			_, err := storage.NewBucketIamBinding(ctx, "binding", &storage.BucketIamBindingArgs{
 //				Bucket: pulumi.Any(google_storage_bucket.Default.Name),
 //				Role:   pulumi.String("roles/storage.admin"),
 //				Members: pulumi.StringArray{
@@ -158,13 +158,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := storage.NewBucketIAMBinding(ctx, "binding", &storage.BucketIAMBindingArgs{
+//			_, err := storage.NewBucketIamBinding(ctx, "binding", &storage.BucketIamBindingArgs{
 //				Bucket: pulumi.Any(google_storage_bucket.Default.Name),
 //				Role:   pulumi.String("roles/storage.admin"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
 //				},
-//				Condition: &storage.BucketIAMBindingConditionArgs{
+//				Condition: &storage.BucketIamBindingConditionArgs{
 //					Title:       pulumi.String("expires_after_2019_12_31"),
 //					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
 //					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
@@ -192,7 +192,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := storage.NewBucketIAMMember(ctx, "member", &storage.BucketIAMMemberArgs{
+//			_, err := storage.NewBucketIamMember(ctx, "member", &storage.BucketIamMemberArgs{
 //				Bucket: pulumi.Any(google_storage_bucket.Default.Name),
 //				Role:   pulumi.String("roles/storage.admin"),
 //				Member: pulumi.String("user:jane@example.com"),
@@ -220,11 +220,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := storage.NewBucketIAMMember(ctx, "member", &storage.BucketIAMMemberArgs{
+//			_, err := storage.NewBucketIamMember(ctx, "member", &storage.BucketIamMemberArgs{
 //				Bucket: pulumi.Any(google_storage_bucket.Default.Name),
 //				Role:   pulumi.String("roles/storage.admin"),
 //				Member: pulumi.String("user:jane@example.com"),
-//				Condition: &storage.BucketIAMMemberConditionArgs{
+//				Condition: &storage.BucketIamMemberConditionArgs{
 //					Title:       pulumi.String("expires_after_2019_12_31"),
 //					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
 //					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
@@ -245,7 +245,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:storage/bucketIAMPolicy:BucketIAMPolicy editor "b/{{bucket}} roles/storage.objectViewer user:jane@example.com"
+//	$ pulumi import gcp:storage/bucketIamPolicy:BucketIamPolicy editor "b/{{bucket}} roles/storage.objectViewer user:jane@example.com"
 //
 // ```
 //
@@ -253,7 +253,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:storage/bucketIAMPolicy:BucketIAMPolicy editor "b/{{bucket}} roles/storage.objectViewer"
+//	$ pulumi import gcp:storage/bucketIamPolicy:BucketIamPolicy editor "b/{{bucket}} roles/storage.objectViewer"
 //
 // ```
 //
@@ -261,14 +261,14 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:storage/bucketIAMPolicy:BucketIAMPolicy editor b/{{bucket}}
+//	$ pulumi import gcp:storage/bucketIamPolicy:BucketIamPolicy editor b/{{bucket}}
 //
 // ```
 //
 //	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 //
 // full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
-type BucketIAMPolicy struct {
+type BucketIamPolicy struct {
 	pulumi.CustomResourceState
 
 	// Used to find the parent resource to bind the IAM policy to
@@ -288,13 +288,13 @@ type BucketIAMPolicy struct {
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The policy data generated by
-	// a `organizations.getIAMPolicy` data source.
+	// a `organizations.getIamPolicy` data source.
 	PolicyData pulumi.StringOutput `pulumi:"policyData"`
 }
 
-// NewBucketIAMPolicy registers a new resource with the given unique name, arguments, and options.
-func NewBucketIAMPolicy(ctx *pulumi.Context,
-	name string, args *BucketIAMPolicyArgs, opts ...pulumi.ResourceOption) (*BucketIAMPolicy, error) {
+// NewBucketIamPolicy registers a new resource with the given unique name, arguments, and options.
+func NewBucketIamPolicy(ctx *pulumi.Context,
+	name string, args *BucketIamPolicyArgs, opts ...pulumi.ResourceOption) (*BucketIamPolicy, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -306,28 +306,28 @@ func NewBucketIAMPolicy(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'PolicyData'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
-	var resource BucketIAMPolicy
-	err := ctx.RegisterResource("gcp:storage/bucketIAMPolicy:BucketIAMPolicy", name, args, &resource, opts...)
+	var resource BucketIamPolicy
+	err := ctx.RegisterResource("gcp:storage/bucketIamPolicy:BucketIamPolicy", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// GetBucketIAMPolicy gets an existing BucketIAMPolicy resource's state with the given name, ID, and optional
+// GetBucketIamPolicy gets an existing BucketIamPolicy resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetBucketIAMPolicy(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *BucketIAMPolicyState, opts ...pulumi.ResourceOption) (*BucketIAMPolicy, error) {
-	var resource BucketIAMPolicy
-	err := ctx.ReadResource("gcp:storage/bucketIAMPolicy:BucketIAMPolicy", name, id, state, &resource, opts...)
+func GetBucketIamPolicy(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *BucketIamPolicyState, opts ...pulumi.ResourceOption) (*BucketIamPolicy, error) {
+	var resource BucketIamPolicy
+	err := ctx.ReadResource("gcp:storage/bucketIamPolicy:BucketIamPolicy", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering BucketIAMPolicy resources.
-type bucketIAMPolicyState struct {
+// Input properties used for looking up and filtering BucketIamPolicy resources.
+type bucketIamPolicyState struct {
 	// Used to find the parent resource to bind the IAM policy to
 	//
 	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
@@ -345,11 +345,11 @@ type bucketIAMPolicyState struct {
 	// (Computed) The etag of the IAM policy.
 	Etag *string `pulumi:"etag"`
 	// The policy data generated by
-	// a `organizations.getIAMPolicy` data source.
+	// a `organizations.getIamPolicy` data source.
 	PolicyData *string `pulumi:"policyData"`
 }
 
-type BucketIAMPolicyState struct {
+type BucketIamPolicyState struct {
 	// Used to find the parent resource to bind the IAM policy to
 	//
 	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
@@ -367,15 +367,15 @@ type BucketIAMPolicyState struct {
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringPtrInput
 	// The policy data generated by
-	// a `organizations.getIAMPolicy` data source.
+	// a `organizations.getIamPolicy` data source.
 	PolicyData pulumi.StringPtrInput
 }
 
-func (BucketIAMPolicyState) ElementType() reflect.Type {
-	return reflect.TypeOf((*bucketIAMPolicyState)(nil)).Elem()
+func (BucketIamPolicyState) ElementType() reflect.Type {
+	return reflect.TypeOf((*bucketIamPolicyState)(nil)).Elem()
 }
 
-type bucketIAMPolicyArgs struct {
+type bucketIamPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	//
 	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
@@ -391,12 +391,12 @@ type bucketIAMPolicyArgs struct {
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	Bucket string `pulumi:"bucket"`
 	// The policy data generated by
-	// a `organizations.getIAMPolicy` data source.
+	// a `organizations.getIamPolicy` data source.
 	PolicyData string `pulumi:"policyData"`
 }
 
-// The set of arguments for constructing a BucketIAMPolicy resource.
-type BucketIAMPolicyArgs struct {
+// The set of arguments for constructing a BucketIamPolicy resource.
+type BucketIamPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	//
 	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
@@ -412,94 +412,94 @@ type BucketIAMPolicyArgs struct {
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	Bucket pulumi.StringInput
 	// The policy data generated by
-	// a `organizations.getIAMPolicy` data source.
+	// a `organizations.getIamPolicy` data source.
 	PolicyData pulumi.StringInput
 }
 
-func (BucketIAMPolicyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*bucketIAMPolicyArgs)(nil)).Elem()
+func (BucketIamPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*bucketIamPolicyArgs)(nil)).Elem()
 }
 
-type BucketIAMPolicyInput interface {
+type BucketIamPolicyInput interface {
 	pulumi.Input
 
-	ToBucketIAMPolicyOutput() BucketIAMPolicyOutput
-	ToBucketIAMPolicyOutputWithContext(ctx context.Context) BucketIAMPolicyOutput
+	ToBucketIamPolicyOutput() BucketIamPolicyOutput
+	ToBucketIamPolicyOutputWithContext(ctx context.Context) BucketIamPolicyOutput
 }
 
-func (*BucketIAMPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketIAMPolicy)(nil)).Elem()
+func (*BucketIamPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketIamPolicy)(nil)).Elem()
 }
 
-func (i *BucketIAMPolicy) ToBucketIAMPolicyOutput() BucketIAMPolicyOutput {
-	return i.ToBucketIAMPolicyOutputWithContext(context.Background())
+func (i *BucketIamPolicy) ToBucketIamPolicyOutput() BucketIamPolicyOutput {
+	return i.ToBucketIamPolicyOutputWithContext(context.Background())
 }
 
-func (i *BucketIAMPolicy) ToBucketIAMPolicyOutputWithContext(ctx context.Context) BucketIAMPolicyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketIAMPolicyOutput)
+func (i *BucketIamPolicy) ToBucketIamPolicyOutputWithContext(ctx context.Context) BucketIamPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketIamPolicyOutput)
 }
 
-// BucketIAMPolicyArrayInput is an input type that accepts BucketIAMPolicyArray and BucketIAMPolicyArrayOutput values.
-// You can construct a concrete instance of `BucketIAMPolicyArrayInput` via:
+// BucketIamPolicyArrayInput is an input type that accepts BucketIamPolicyArray and BucketIamPolicyArrayOutput values.
+// You can construct a concrete instance of `BucketIamPolicyArrayInput` via:
 //
-//	BucketIAMPolicyArray{ BucketIAMPolicyArgs{...} }
-type BucketIAMPolicyArrayInput interface {
+//	BucketIamPolicyArray{ BucketIamPolicyArgs{...} }
+type BucketIamPolicyArrayInput interface {
 	pulumi.Input
 
-	ToBucketIAMPolicyArrayOutput() BucketIAMPolicyArrayOutput
-	ToBucketIAMPolicyArrayOutputWithContext(context.Context) BucketIAMPolicyArrayOutput
+	ToBucketIamPolicyArrayOutput() BucketIamPolicyArrayOutput
+	ToBucketIamPolicyArrayOutputWithContext(context.Context) BucketIamPolicyArrayOutput
 }
 
-type BucketIAMPolicyArray []BucketIAMPolicyInput
+type BucketIamPolicyArray []BucketIamPolicyInput
 
-func (BucketIAMPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*BucketIAMPolicy)(nil)).Elem()
+func (BucketIamPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*BucketIamPolicy)(nil)).Elem()
 }
 
-func (i BucketIAMPolicyArray) ToBucketIAMPolicyArrayOutput() BucketIAMPolicyArrayOutput {
-	return i.ToBucketIAMPolicyArrayOutputWithContext(context.Background())
+func (i BucketIamPolicyArray) ToBucketIamPolicyArrayOutput() BucketIamPolicyArrayOutput {
+	return i.ToBucketIamPolicyArrayOutputWithContext(context.Background())
 }
 
-func (i BucketIAMPolicyArray) ToBucketIAMPolicyArrayOutputWithContext(ctx context.Context) BucketIAMPolicyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketIAMPolicyArrayOutput)
+func (i BucketIamPolicyArray) ToBucketIamPolicyArrayOutputWithContext(ctx context.Context) BucketIamPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketIamPolicyArrayOutput)
 }
 
-// BucketIAMPolicyMapInput is an input type that accepts BucketIAMPolicyMap and BucketIAMPolicyMapOutput values.
-// You can construct a concrete instance of `BucketIAMPolicyMapInput` via:
+// BucketIamPolicyMapInput is an input type that accepts BucketIamPolicyMap and BucketIamPolicyMapOutput values.
+// You can construct a concrete instance of `BucketIamPolicyMapInput` via:
 //
-//	BucketIAMPolicyMap{ "key": BucketIAMPolicyArgs{...} }
-type BucketIAMPolicyMapInput interface {
+//	BucketIamPolicyMap{ "key": BucketIamPolicyArgs{...} }
+type BucketIamPolicyMapInput interface {
 	pulumi.Input
 
-	ToBucketIAMPolicyMapOutput() BucketIAMPolicyMapOutput
-	ToBucketIAMPolicyMapOutputWithContext(context.Context) BucketIAMPolicyMapOutput
+	ToBucketIamPolicyMapOutput() BucketIamPolicyMapOutput
+	ToBucketIamPolicyMapOutputWithContext(context.Context) BucketIamPolicyMapOutput
 }
 
-type BucketIAMPolicyMap map[string]BucketIAMPolicyInput
+type BucketIamPolicyMap map[string]BucketIamPolicyInput
 
-func (BucketIAMPolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*BucketIAMPolicy)(nil)).Elem()
+func (BucketIamPolicyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*BucketIamPolicy)(nil)).Elem()
 }
 
-func (i BucketIAMPolicyMap) ToBucketIAMPolicyMapOutput() BucketIAMPolicyMapOutput {
-	return i.ToBucketIAMPolicyMapOutputWithContext(context.Background())
+func (i BucketIamPolicyMap) ToBucketIamPolicyMapOutput() BucketIamPolicyMapOutput {
+	return i.ToBucketIamPolicyMapOutputWithContext(context.Background())
 }
 
-func (i BucketIAMPolicyMap) ToBucketIAMPolicyMapOutputWithContext(ctx context.Context) BucketIAMPolicyMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketIAMPolicyMapOutput)
+func (i BucketIamPolicyMap) ToBucketIamPolicyMapOutputWithContext(ctx context.Context) BucketIamPolicyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketIamPolicyMapOutput)
 }
 
-type BucketIAMPolicyOutput struct{ *pulumi.OutputState }
+type BucketIamPolicyOutput struct{ *pulumi.OutputState }
 
-func (BucketIAMPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketIAMPolicy)(nil)).Elem()
+func (BucketIamPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketIamPolicy)(nil)).Elem()
 }
 
-func (o BucketIAMPolicyOutput) ToBucketIAMPolicyOutput() BucketIAMPolicyOutput {
+func (o BucketIamPolicyOutput) ToBucketIamPolicyOutput() BucketIamPolicyOutput {
 	return o
 }
 
-func (o BucketIAMPolicyOutput) ToBucketIAMPolicyOutputWithContext(ctx context.Context) BucketIAMPolicyOutput {
+func (o BucketIamPolicyOutput) ToBucketIamPolicyOutputWithContext(ctx context.Context) BucketIamPolicyOutput {
 	return o
 }
 
@@ -516,66 +516,66 @@ func (o BucketIAMPolicyOutput) ToBucketIAMPolicyOutputWithContext(ctx context.Co
 //   - **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 //   - **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 //   - **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
-func (o BucketIAMPolicyOutput) Bucket() pulumi.StringOutput {
-	return o.ApplyT(func(v *BucketIAMPolicy) pulumi.StringOutput { return v.Bucket }).(pulumi.StringOutput)
+func (o BucketIamPolicyOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketIamPolicy) pulumi.StringOutput { return v.Bucket }).(pulumi.StringOutput)
 }
 
 // (Computed) The etag of the IAM policy.
-func (o BucketIAMPolicyOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v *BucketIAMPolicy) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+func (o BucketIamPolicyOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketIamPolicy) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The policy data generated by
-// a `organizations.getIAMPolicy` data source.
-func (o BucketIAMPolicyOutput) PolicyData() pulumi.StringOutput {
-	return o.ApplyT(func(v *BucketIAMPolicy) pulumi.StringOutput { return v.PolicyData }).(pulumi.StringOutput)
+// a `organizations.getIamPolicy` data source.
+func (o BucketIamPolicyOutput) PolicyData() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketIamPolicy) pulumi.StringOutput { return v.PolicyData }).(pulumi.StringOutput)
 }
 
-type BucketIAMPolicyArrayOutput struct{ *pulumi.OutputState }
+type BucketIamPolicyArrayOutput struct{ *pulumi.OutputState }
 
-func (BucketIAMPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*BucketIAMPolicy)(nil)).Elem()
+func (BucketIamPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*BucketIamPolicy)(nil)).Elem()
 }
 
-func (o BucketIAMPolicyArrayOutput) ToBucketIAMPolicyArrayOutput() BucketIAMPolicyArrayOutput {
+func (o BucketIamPolicyArrayOutput) ToBucketIamPolicyArrayOutput() BucketIamPolicyArrayOutput {
 	return o
 }
 
-func (o BucketIAMPolicyArrayOutput) ToBucketIAMPolicyArrayOutputWithContext(ctx context.Context) BucketIAMPolicyArrayOutput {
+func (o BucketIamPolicyArrayOutput) ToBucketIamPolicyArrayOutputWithContext(ctx context.Context) BucketIamPolicyArrayOutput {
 	return o
 }
 
-func (o BucketIAMPolicyArrayOutput) Index(i pulumi.IntInput) BucketIAMPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BucketIAMPolicy {
-		return vs[0].([]*BucketIAMPolicy)[vs[1].(int)]
-	}).(BucketIAMPolicyOutput)
+func (o BucketIamPolicyArrayOutput) Index(i pulumi.IntInput) BucketIamPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BucketIamPolicy {
+		return vs[0].([]*BucketIamPolicy)[vs[1].(int)]
+	}).(BucketIamPolicyOutput)
 }
 
-type BucketIAMPolicyMapOutput struct{ *pulumi.OutputState }
+type BucketIamPolicyMapOutput struct{ *pulumi.OutputState }
 
-func (BucketIAMPolicyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*BucketIAMPolicy)(nil)).Elem()
+func (BucketIamPolicyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*BucketIamPolicy)(nil)).Elem()
 }
 
-func (o BucketIAMPolicyMapOutput) ToBucketIAMPolicyMapOutput() BucketIAMPolicyMapOutput {
+func (o BucketIamPolicyMapOutput) ToBucketIamPolicyMapOutput() BucketIamPolicyMapOutput {
 	return o
 }
 
-func (o BucketIAMPolicyMapOutput) ToBucketIAMPolicyMapOutputWithContext(ctx context.Context) BucketIAMPolicyMapOutput {
+func (o BucketIamPolicyMapOutput) ToBucketIamPolicyMapOutputWithContext(ctx context.Context) BucketIamPolicyMapOutput {
 	return o
 }
 
-func (o BucketIAMPolicyMapOutput) MapIndex(k pulumi.StringInput) BucketIAMPolicyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *BucketIAMPolicy {
-		return vs[0].(map[string]*BucketIAMPolicy)[vs[1].(string)]
-	}).(BucketIAMPolicyOutput)
+func (o BucketIamPolicyMapOutput) MapIndex(k pulumi.StringInput) BucketIamPolicyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *BucketIamPolicy {
+		return vs[0].(map[string]*BucketIamPolicy)[vs[1].(string)]
+	}).(BucketIamPolicyOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketIAMPolicyInput)(nil)).Elem(), &BucketIAMPolicy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketIAMPolicyArrayInput)(nil)).Elem(), BucketIAMPolicyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketIAMPolicyMapInput)(nil)).Elem(), BucketIAMPolicyMap{})
-	pulumi.RegisterOutputType(BucketIAMPolicyOutput{})
-	pulumi.RegisterOutputType(BucketIAMPolicyArrayOutput{})
-	pulumi.RegisterOutputType(BucketIAMPolicyMapOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketIamPolicyInput)(nil)).Elem(), &BucketIamPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketIamPolicyArrayInput)(nil)).Elem(), BucketIamPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketIamPolicyMapInput)(nil)).Elem(), BucketIamPolicyMap{})
+	pulumi.RegisterOutputType(BucketIamPolicyOutput{})
+	pulumi.RegisterOutputType(BucketIamPolicyArrayOutput{})
+	pulumi.RegisterOutputType(BucketIamPolicyMapOutput{})
 }

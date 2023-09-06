@@ -14,14 +14,14 @@ import (
 
 // Four different resources help you manage your IAM policy for a project. Each of these resources serves a different use case:
 //
-// * `projects.IAMPolicy`: Authoritative. Sets the IAM policy for the project and replaces any existing policy already attached.
-// * `projects.IAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the project are preserved.
-// * `projects.IAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the project are preserved.
-// * `projects.IAMAuditConfig`: Authoritative for a given service. Updates the IAM policy to enable audit logging for the given service.
+// * `projects.IamPolicy`: Authoritative. Sets the IAM policy for the project and replaces any existing policy already attached.
+// * `projects.IamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the project are preserved.
+// * `projects.IamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the project are preserved.
+// * `projects.IamAuditConfig`: Authoritative for a given service. Updates the IAM policy to enable audit logging for the given service.
 //
-// > **Note:** `projects.IAMPolicy` **cannot** be used in conjunction with `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig` or they will fight over what your policy should be.
+// > **Note:** `projects.IamPolicy` **cannot** be used in conjunction with `projects.IamBinding`, `projects.IamMember`, or `projects.IamAuditConfig` or they will fight over what your policy should be.
 //
-// > **Note:** `projects.IAMBinding` resources **can be** used in conjunction with `projects.IAMMember` resources **only if** they do not grant privilege to the same role.
+// > **Note:** `projects.IamBinding` resources **can be** used in conjunction with `projects.IamMember` resources **only if** they do not grant privilege to the same role.
 //
 // > **Note:** The underlying API method `projects.setIamPolicy` has a lot of constraints which are documented [here](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
 //
@@ -31,9 +31,9 @@ import (
 //
 // !> **Be careful!** You can accidentally lock yourself out of your project
 //
-//	using this resource. Deleting a `projects.IAMPolicy` removes access
+//	using this resource. Deleting a `projects.IamPolicy` removes access
 //	from anyone without organization-level access to the project. Proceed with caution.
-//	It's not recommended to use `projects.IAMPolicy` with your provider project
+//	It's not recommended to use `projects.IamPolicy` with your provider project
 //	to avoid locking yourself out, and it should generally only be used with projects
 //	fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
 //	applying the change.
@@ -51,8 +51,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
+//			admin, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
 //					{
 //						Role: "roles/editor",
 //						Members: []string{
@@ -64,7 +64,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewIAMPolicy(ctx, "project", &projects.IAMPolicyArgs{
+//			_, err = projects.NewIamPolicy(ctx, "project", &projects.IamPolicyArgs{
 //				Project:    pulumi.String("your-project-id"),
 //				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
@@ -92,8 +92,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
+//			admin, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
 //					{
 //						Condition: {
 //							Description: pulumi.StringRef("Expiring at midnight of 2019-12-31"),
@@ -110,7 +110,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewIAMPolicy(ctx, "project", &projects.IAMPolicyArgs{
+//			_, err = projects.NewIamPolicy(ctx, "project", &projects.IamPolicyArgs{
 //				PolicyData: *pulumi.String(admin.PolicyData),
 //				Project:    pulumi.String("your-project-id"),
 //			})
@@ -137,7 +137,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := projects.NewIAMBinding(ctx, "project", &projects.IAMBindingArgs{
+//			_, err := projects.NewIamBinding(ctx, "project", &projects.IamBindingArgs{
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
 //				},
@@ -167,8 +167,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := projects.NewIAMBinding(ctx, "project", &projects.IAMBindingArgs{
-//				Condition: &projects.IAMBindingConditionArgs{
+//			_, err := projects.NewIamBinding(ctx, "project", &projects.IamBindingArgs{
+//				Condition: &projects.IamBindingConditionArgs{
 //					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
 //					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
 //					Title:       pulumi.String("expires_after_2019_12_31"),
@@ -202,7 +202,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := projects.NewIAMMember(ctx, "project", &projects.IAMMemberArgs{
+//			_, err := projects.NewIamMember(ctx, "project", &projects.IamMemberArgs{
 //				Member:  pulumi.String("user:jane@example.com"),
 //				Project: pulumi.String("your-project-id"),
 //				Role:    pulumi.String("roles/editor"),
@@ -230,8 +230,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := projects.NewIAMMember(ctx, "project", &projects.IAMMemberArgs{
-//				Condition: &projects.IAMMemberConditionArgs{
+//			_, err := projects.NewIamMember(ctx, "project", &projects.IamMemberArgs{
+//				Condition: &projects.IamMemberConditionArgs{
 //					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
 //					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
 //					Title:       pulumi.String("expires_after_2019_12_31"),
@@ -263,12 +263,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := projects.NewIAMAuditConfig(ctx, "project", &projects.IAMAuditConfigArgs{
-//				AuditLogConfigs: projects.IAMAuditConfigAuditLogConfigArray{
-//					&projects.IAMAuditConfigAuditLogConfigArgs{
+//			_, err := projects.NewIamAuditConfig(ctx, "project", &projects.IamAuditConfigArgs{
+//				AuditLogConfigs: projects.IamAuditConfigAuditLogConfigArray{
+//					&projects.IamAuditConfigAuditLogConfigArgs{
 //						LogType: pulumi.String("ADMIN_READ"),
 //					},
-//					&projects.IAMAuditConfigAuditLogConfigArgs{
+//					&projects.IamAuditConfigAuditLogConfigArgs{
 //						ExemptedMembers: pulumi.StringArray{
 //							pulumi.String("user:joebloggs@hashicorp.com"),
 //						},
@@ -295,7 +295,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:projects/iAMMember:IAMMember my_project "your-project-id roles/viewer user:foo@example.com"
+//	$ pulumi import gcp:projects/iAMMember:IamMember my_project "your-project-id roles/viewer user:foo@example.com"
 //
 // ```
 //
@@ -305,7 +305,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:projects/iAMMember:IAMMember my_project "your-project-id roles/viewer"
+//	$ pulumi import gcp:projects/iAMMember:IamMember my_project "your-project-id roles/viewer"
 //
 // ```
 //
@@ -315,7 +315,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:projects/iAMMember:IAMMember my_project your-project-id
+//	$ pulumi import gcp:projects/iAMMember:IamMember my_project your-project-id
 //
 // ```
 //
@@ -323,7 +323,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:projects/iAMMember:IAMMember my_project "your-project-id foo.googleapis.com"
+//	$ pulumi import gcp:projects/iAMMember:IamMember my_project "your-project-id foo.googleapis.com"
 //
 // ```
 //
@@ -333,15 +333,17 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:projects/iAMMember:IAMMember to include the title of condition, e.g. `google_project_iam_binding.my_project "{{your-project-id}} roles/{{role_id}} condition-title"`
+//	$ pulumi import gcp:projects/iAMMember:IamMember to include the title of condition, e.g. `google_project_iam_binding.my_project "{{your-project-id}} roles/{{role_id}} condition-title"`
 //
 // ```
-type IAMMember struct {
+//
+// Deprecated: gcp.projects/iammember.IamMember has been deprecated in favor of gcp.projects/iammember.IamMember
+type IamMember struct {
 	pulumi.CustomResourceState
 
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
-	Condition IAMMemberConditionPtrOutput `pulumi:"condition"`
+	Condition IamMemberConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the project's IAM policy.
 	Etag   pulumi.StringOutput `pulumi:"etag"`
 	Member pulumi.StringOutput `pulumi:"member"`
@@ -349,14 +351,14 @@ type IAMMember struct {
 	// inferred from the provider.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The role that should be applied. Only one
-	// `projects.IAMBinding` can be used per role. Note that custom roles must be of the format
+	// `projects.IamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringOutput `pulumi:"role"`
 }
 
-// NewIAMMember registers a new resource with the given unique name, arguments, and options.
-func NewIAMMember(ctx *pulumi.Context,
-	name string, args *IAMMemberArgs, opts ...pulumi.ResourceOption) (*IAMMember, error) {
+// NewIamMember registers a new resource with the given unique name, arguments, and options.
+func NewIamMember(ctx *pulumi.Context,
+	name string, args *IamMemberArgs, opts ...pulumi.ResourceOption) (*IamMember, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -370,32 +372,38 @@ func NewIAMMember(ctx *pulumi.Context,
 	if args.Role == nil {
 		return nil, errors.New("invalid value for required argument 'Role'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("gcp:projects/iAMMember:IAMMember"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
-	var resource IAMMember
-	err := ctx.RegisterResource("gcp:projects/iAMMember:IAMMember", name, args, &resource, opts...)
+	var resource IamMember
+	err := ctx.RegisterResource("gcp:projects/iAMMember:IamMember", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// GetIAMMember gets an existing IAMMember resource's state with the given name, ID, and optional
+// GetIamMember gets an existing IamMember resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetIAMMember(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *IAMMemberState, opts ...pulumi.ResourceOption) (*IAMMember, error) {
-	var resource IAMMember
-	err := ctx.ReadResource("gcp:projects/iAMMember:IAMMember", name, id, state, &resource, opts...)
+func GetIamMember(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *IamMemberState, opts ...pulumi.ResourceOption) (*IamMember, error) {
+	var resource IamMember
+	err := ctx.ReadResource("gcp:projects/iAMMember:IamMember", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering IAMMember resources.
-type iammemberState struct {
+// Input properties used for looking up and filtering IamMember resources.
+type iamMemberState struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
-	Condition *IAMMemberCondition `pulumi:"condition"`
+	Condition *IamMemberCondition `pulumi:"condition"`
 	// (Computed) The etag of the project's IAM policy.
 	Etag   *string `pulumi:"etag"`
 	Member *string `pulumi:"member"`
@@ -403,15 +411,15 @@ type iammemberState struct {
 	// inferred from the provider.
 	Project *string `pulumi:"project"`
 	// The role that should be applied. Only one
-	// `projects.IAMBinding` can be used per role. Note that custom roles must be of the format
+	// `projects.IamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role *string `pulumi:"role"`
 }
 
-type IAMMemberState struct {
+type IamMemberState struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
-	Condition IAMMemberConditionPtrInput
+	Condition IamMemberConditionPtrInput
 	// (Computed) The etag of the project's IAM policy.
 	Etag   pulumi.StringPtrInput
 	Member pulumi.StringPtrInput
@@ -419,204 +427,204 @@ type IAMMemberState struct {
 	// inferred from the provider.
 	Project pulumi.StringPtrInput
 	// The role that should be applied. Only one
-	// `projects.IAMBinding` can be used per role. Note that custom roles must be of the format
+	// `projects.IamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringPtrInput
 }
 
-func (IAMMemberState) ElementType() reflect.Type {
-	return reflect.TypeOf((*iammemberState)(nil)).Elem()
+func (IamMemberState) ElementType() reflect.Type {
+	return reflect.TypeOf((*iamMemberState)(nil)).Elem()
 }
 
-type iammemberArgs struct {
+type iamMemberArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
-	Condition *IAMMemberCondition `pulumi:"condition"`
+	Condition *IamMemberCondition `pulumi:"condition"`
 	Member    string              `pulumi:"member"`
 	// The project id of the target project. This is not
 	// inferred from the provider.
 	Project string `pulumi:"project"`
 	// The role that should be applied. Only one
-	// `projects.IAMBinding` can be used per role. Note that custom roles must be of the format
+	// `projects.IamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role string `pulumi:"role"`
 }
 
-// The set of arguments for constructing a IAMMember resource.
-type IAMMemberArgs struct {
+// The set of arguments for constructing a IamMember resource.
+type IamMemberArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
-	Condition IAMMemberConditionPtrInput
+	Condition IamMemberConditionPtrInput
 	Member    pulumi.StringInput
 	// The project id of the target project. This is not
 	// inferred from the provider.
 	Project pulumi.StringInput
 	// The role that should be applied. Only one
-	// `projects.IAMBinding` can be used per role. Note that custom roles must be of the format
+	// `projects.IamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringInput
 }
 
-func (IAMMemberArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*iammemberArgs)(nil)).Elem()
+func (IamMemberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*iamMemberArgs)(nil)).Elem()
 }
 
-type IAMMemberInput interface {
+type IamMemberInput interface {
 	pulumi.Input
 
-	ToIAMMemberOutput() IAMMemberOutput
-	ToIAMMemberOutputWithContext(ctx context.Context) IAMMemberOutput
+	ToIamMemberOutput() IamMemberOutput
+	ToIamMemberOutputWithContext(ctx context.Context) IamMemberOutput
 }
 
-func (*IAMMember) ElementType() reflect.Type {
-	return reflect.TypeOf((**IAMMember)(nil)).Elem()
+func (*IamMember) ElementType() reflect.Type {
+	return reflect.TypeOf((**IamMember)(nil)).Elem()
 }
 
-func (i *IAMMember) ToIAMMemberOutput() IAMMemberOutput {
-	return i.ToIAMMemberOutputWithContext(context.Background())
+func (i *IamMember) ToIamMemberOutput() IamMemberOutput {
+	return i.ToIamMemberOutputWithContext(context.Background())
 }
 
-func (i *IAMMember) ToIAMMemberOutputWithContext(ctx context.Context) IAMMemberOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMMemberOutput)
+func (i *IamMember) ToIamMemberOutputWithContext(ctx context.Context) IamMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamMemberOutput)
 }
 
-// IAMMemberArrayInput is an input type that accepts IAMMemberArray and IAMMemberArrayOutput values.
-// You can construct a concrete instance of `IAMMemberArrayInput` via:
+// IamMemberArrayInput is an input type that accepts IamMemberArray and IamMemberArrayOutput values.
+// You can construct a concrete instance of `IamMemberArrayInput` via:
 //
-//	IAMMemberArray{ IAMMemberArgs{...} }
-type IAMMemberArrayInput interface {
+//	IamMemberArray{ IamMemberArgs{...} }
+type IamMemberArrayInput interface {
 	pulumi.Input
 
-	ToIAMMemberArrayOutput() IAMMemberArrayOutput
-	ToIAMMemberArrayOutputWithContext(context.Context) IAMMemberArrayOutput
+	ToIamMemberArrayOutput() IamMemberArrayOutput
+	ToIamMemberArrayOutputWithContext(context.Context) IamMemberArrayOutput
 }
 
-type IAMMemberArray []IAMMemberInput
+type IamMemberArray []IamMemberInput
 
-func (IAMMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*IAMMember)(nil)).Elem()
+func (IamMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*IamMember)(nil)).Elem()
 }
 
-func (i IAMMemberArray) ToIAMMemberArrayOutput() IAMMemberArrayOutput {
-	return i.ToIAMMemberArrayOutputWithContext(context.Background())
+func (i IamMemberArray) ToIamMemberArrayOutput() IamMemberArrayOutput {
+	return i.ToIamMemberArrayOutputWithContext(context.Background())
 }
 
-func (i IAMMemberArray) ToIAMMemberArrayOutputWithContext(ctx context.Context) IAMMemberArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMMemberArrayOutput)
+func (i IamMemberArray) ToIamMemberArrayOutputWithContext(ctx context.Context) IamMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamMemberArrayOutput)
 }
 
-// IAMMemberMapInput is an input type that accepts IAMMemberMap and IAMMemberMapOutput values.
-// You can construct a concrete instance of `IAMMemberMapInput` via:
+// IamMemberMapInput is an input type that accepts IamMemberMap and IamMemberMapOutput values.
+// You can construct a concrete instance of `IamMemberMapInput` via:
 //
-//	IAMMemberMap{ "key": IAMMemberArgs{...} }
-type IAMMemberMapInput interface {
+//	IamMemberMap{ "key": IamMemberArgs{...} }
+type IamMemberMapInput interface {
 	pulumi.Input
 
-	ToIAMMemberMapOutput() IAMMemberMapOutput
-	ToIAMMemberMapOutputWithContext(context.Context) IAMMemberMapOutput
+	ToIamMemberMapOutput() IamMemberMapOutput
+	ToIamMemberMapOutputWithContext(context.Context) IamMemberMapOutput
 }
 
-type IAMMemberMap map[string]IAMMemberInput
+type IamMemberMap map[string]IamMemberInput
 
-func (IAMMemberMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*IAMMember)(nil)).Elem()
+func (IamMemberMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*IamMember)(nil)).Elem()
 }
 
-func (i IAMMemberMap) ToIAMMemberMapOutput() IAMMemberMapOutput {
-	return i.ToIAMMemberMapOutputWithContext(context.Background())
+func (i IamMemberMap) ToIamMemberMapOutput() IamMemberMapOutput {
+	return i.ToIamMemberMapOutputWithContext(context.Background())
 }
 
-func (i IAMMemberMap) ToIAMMemberMapOutputWithContext(ctx context.Context) IAMMemberMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMMemberMapOutput)
+func (i IamMemberMap) ToIamMemberMapOutputWithContext(ctx context.Context) IamMemberMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamMemberMapOutput)
 }
 
-type IAMMemberOutput struct{ *pulumi.OutputState }
+type IamMemberOutput struct{ *pulumi.OutputState }
 
-func (IAMMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IAMMember)(nil)).Elem()
+func (IamMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IamMember)(nil)).Elem()
 }
 
-func (o IAMMemberOutput) ToIAMMemberOutput() IAMMemberOutput {
+func (o IamMemberOutput) ToIamMemberOutput() IamMemberOutput {
 	return o
 }
 
-func (o IAMMemberOutput) ToIAMMemberOutputWithContext(ctx context.Context) IAMMemberOutput {
+func (o IamMemberOutput) ToIamMemberOutputWithContext(ctx context.Context) IamMemberOutput {
 	return o
 }
 
 // An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 // Structure is documented below.
-func (o IAMMemberOutput) Condition() IAMMemberConditionPtrOutput {
-	return o.ApplyT(func(v *IAMMember) IAMMemberConditionPtrOutput { return v.Condition }).(IAMMemberConditionPtrOutput)
+func (o IamMemberOutput) Condition() IamMemberConditionPtrOutput {
+	return o.ApplyT(func(v *IamMember) IamMemberConditionPtrOutput { return v.Condition }).(IamMemberConditionPtrOutput)
 }
 
 // (Computed) The etag of the project's IAM policy.
-func (o IAMMemberOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v *IAMMember) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+func (o IamMemberOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *IamMember) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-func (o IAMMemberOutput) Member() pulumi.StringOutput {
-	return o.ApplyT(func(v *IAMMember) pulumi.StringOutput { return v.Member }).(pulumi.StringOutput)
+func (o IamMemberOutput) Member() pulumi.StringOutput {
+	return o.ApplyT(func(v *IamMember) pulumi.StringOutput { return v.Member }).(pulumi.StringOutput)
 }
 
 // The project id of the target project. This is not
 // inferred from the provider.
-func (o IAMMemberOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func(v *IAMMember) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+func (o IamMemberOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *IamMember) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The role that should be applied. Only one
-// `projects.IAMBinding` can be used per role. Note that custom roles must be of the format
+// `projects.IamBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
-func (o IAMMemberOutput) Role() pulumi.StringOutput {
-	return o.ApplyT(func(v *IAMMember) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
+func (o IamMemberOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v *IamMember) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }
 
-type IAMMemberArrayOutput struct{ *pulumi.OutputState }
+type IamMemberArrayOutput struct{ *pulumi.OutputState }
 
-func (IAMMemberArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*IAMMember)(nil)).Elem()
+func (IamMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*IamMember)(nil)).Elem()
 }
 
-func (o IAMMemberArrayOutput) ToIAMMemberArrayOutput() IAMMemberArrayOutput {
+func (o IamMemberArrayOutput) ToIamMemberArrayOutput() IamMemberArrayOutput {
 	return o
 }
 
-func (o IAMMemberArrayOutput) ToIAMMemberArrayOutputWithContext(ctx context.Context) IAMMemberArrayOutput {
+func (o IamMemberArrayOutput) ToIamMemberArrayOutputWithContext(ctx context.Context) IamMemberArrayOutput {
 	return o
 }
 
-func (o IAMMemberArrayOutput) Index(i pulumi.IntInput) IAMMemberOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IAMMember {
-		return vs[0].([]*IAMMember)[vs[1].(int)]
-	}).(IAMMemberOutput)
+func (o IamMemberArrayOutput) Index(i pulumi.IntInput) IamMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IamMember {
+		return vs[0].([]*IamMember)[vs[1].(int)]
+	}).(IamMemberOutput)
 }
 
-type IAMMemberMapOutput struct{ *pulumi.OutputState }
+type IamMemberMapOutput struct{ *pulumi.OutputState }
 
-func (IAMMemberMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*IAMMember)(nil)).Elem()
+func (IamMemberMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*IamMember)(nil)).Elem()
 }
 
-func (o IAMMemberMapOutput) ToIAMMemberMapOutput() IAMMemberMapOutput {
+func (o IamMemberMapOutput) ToIamMemberMapOutput() IamMemberMapOutput {
 	return o
 }
 
-func (o IAMMemberMapOutput) ToIAMMemberMapOutputWithContext(ctx context.Context) IAMMemberMapOutput {
+func (o IamMemberMapOutput) ToIamMemberMapOutputWithContext(ctx context.Context) IamMemberMapOutput {
 	return o
 }
 
-func (o IAMMemberMapOutput) MapIndex(k pulumi.StringInput) IAMMemberOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *IAMMember {
-		return vs[0].(map[string]*IAMMember)[vs[1].(string)]
-	}).(IAMMemberOutput)
+func (o IamMemberMapOutput) MapIndex(k pulumi.StringInput) IamMemberOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *IamMember {
+		return vs[0].(map[string]*IamMember)[vs[1].(string)]
+	}).(IamMemberOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*IAMMemberInput)(nil)).Elem(), &IAMMember{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IAMMemberArrayInput)(nil)).Elem(), IAMMemberArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IAMMemberMapInput)(nil)).Elem(), IAMMemberMap{})
-	pulumi.RegisterOutputType(IAMMemberOutput{})
-	pulumi.RegisterOutputType(IAMMemberArrayOutput{})
-	pulumi.RegisterOutputType(IAMMemberMapOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamMemberInput)(nil)).Elem(), &IamMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamMemberArrayInput)(nil)).Elem(), IamMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamMemberMapInput)(nil)).Elem(), IamMemberMap{})
+	pulumi.RegisterOutputType(IamMemberOutput{})
+	pulumi.RegisterOutputType(IamMemberArrayOutput{})
+	pulumi.RegisterOutputType(IamMemberMapOutput{})
 }

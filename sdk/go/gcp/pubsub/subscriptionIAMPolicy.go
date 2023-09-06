@@ -14,13 +14,13 @@ import (
 
 // Three different resources help you manage your IAM policy for pubsub subscription. Each of these resources serves a different use case:
 //
-// * `pubsub.SubscriptionIAMPolicy`: Authoritative. Sets the IAM policy for the subscription and replaces any existing policy already attached.
-// * `pubsub.SubscriptionIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the subscription are preserved.
-// * `pubsub.SubscriptionIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the subscription are preserved.
+// * `pubsub.SubscriptionIamPolicy`: Authoritative. Sets the IAM policy for the subscription and replaces any existing policy already attached.
+// * `pubsub.SubscriptionIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the subscription are preserved.
+// * `pubsub.SubscriptionIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the subscription are preserved.
 //
-// > **Note:** `pubsub.SubscriptionIAMPolicy` **cannot** be used in conjunction with `pubsub.SubscriptionIAMBinding` and `pubsub.SubscriptionIAMMember` or they will fight over what your policy should be.
+// > **Note:** `pubsub.SubscriptionIamPolicy` **cannot** be used in conjunction with `pubsub.SubscriptionIamBinding` and `pubsub.SubscriptionIamMember` or they will fight over what your policy should be.
 //
-// > **Note:** `pubsub.SubscriptionIAMBinding` resources **can be** used in conjunction with `pubsub.SubscriptionIAMMember` resources **only if** they do not grant privilege to the same role.
+// > **Note:** `pubsub.SubscriptionIamBinding` resources **can be** used in conjunction with `pubsub.SubscriptionIamMember` resources **only if** they do not grant privilege to the same role.
 //
 // ## google\_pubsub\_subscription\_iam\_policy
 //
@@ -37,8 +37,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
+//			admin, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
 //					{
 //						Role: "roles/editor",
 //						Members: []string{
@@ -50,7 +50,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = pubsub.NewSubscriptionIAMPolicy(ctx, "editor", &pubsub.SubscriptionIAMPolicyArgs{
+//			_, err = pubsub.NewSubscriptionIamPolicy(ctx, "editor", &pubsub.SubscriptionIamPolicyArgs{
 //				Subscription: pulumi.String("your-subscription-name"),
 //				PolicyData:   *pulumi.String(admin.PolicyData),
 //			})
@@ -77,7 +77,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := pubsub.NewSubscriptionIAMBinding(ctx, "editor", &pubsub.SubscriptionIAMBindingArgs{
+//			_, err := pubsub.NewSubscriptionIamBinding(ctx, "editor", &pubsub.SubscriptionIamBindingArgs{
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
 //				},
@@ -107,7 +107,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := pubsub.NewSubscriptionIAMMember(ctx, "editor", &pubsub.SubscriptionIAMMemberArgs{
+//			_, err := pubsub.NewSubscriptionIamMember(ctx, "editor", &pubsub.SubscriptionIamMemberArgs{
 //				Member:       pulumi.String("user:jane@example.com"),
 //				Role:         pulumi.String("roles/editor"),
 //				Subscription: pulumi.String("your-subscription-name"),
@@ -127,32 +127,32 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:pubsub/subscriptionIAMPolicy:SubscriptionIAMPolicy editor projects/{your-project-id}/subscriptions/{your-subscription-name}
+//	$ pulumi import gcp:pubsub/subscriptionIamPolicy:SubscriptionIamPolicy editor projects/{your-project-id}/subscriptions/{your-subscription-name}
 //
 // ```
 //
 // ```sh
 //
-//	$ pulumi import gcp:pubsub/subscriptionIAMPolicy:SubscriptionIAMPolicy editor "projects/{your-project-id}/subscriptions/{your-subscription-name} roles/editor"
+//	$ pulumi import gcp:pubsub/subscriptionIamPolicy:SubscriptionIamPolicy editor "projects/{your-project-id}/subscriptions/{your-subscription-name} roles/editor"
 //
 // ```
 //
 // ```sh
 //
-//	$ pulumi import gcp:pubsub/subscriptionIAMPolicy:SubscriptionIAMPolicy editor "projects/{your-project-id}/subscriptions/{your-subscription-name} roles/editor jane@example.com"
+//	$ pulumi import gcp:pubsub/subscriptionIamPolicy:SubscriptionIamPolicy editor "projects/{your-project-id}/subscriptions/{your-subscription-name} roles/editor jane@example.com"
 //
 // ```
 //
 //	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 //
 // full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
-type SubscriptionIAMPolicy struct {
+type SubscriptionIamPolicy struct {
 	pulumi.CustomResourceState
 
 	// (Computed) The etag of the subscription's IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The policy data generated by
-	// a `organizations.getIAMPolicy` data source.
+	// a `organizations.getIamPolicy` data source.
 	//
 	// ***
 	PolicyData pulumi.StringOutput `pulumi:"policyData"`
@@ -172,9 +172,9 @@ type SubscriptionIAMPolicy struct {
 	Subscription pulumi.StringOutput `pulumi:"subscription"`
 }
 
-// NewSubscriptionIAMPolicy registers a new resource with the given unique name, arguments, and options.
-func NewSubscriptionIAMPolicy(ctx *pulumi.Context,
-	name string, args *SubscriptionIAMPolicyArgs, opts ...pulumi.ResourceOption) (*SubscriptionIAMPolicy, error) {
+// NewSubscriptionIamPolicy registers a new resource with the given unique name, arguments, and options.
+func NewSubscriptionIamPolicy(ctx *pulumi.Context,
+	name string, args *SubscriptionIamPolicyArgs, opts ...pulumi.ResourceOption) (*SubscriptionIamPolicy, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -186,32 +186,32 @@ func NewSubscriptionIAMPolicy(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Subscription'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
-	var resource SubscriptionIAMPolicy
-	err := ctx.RegisterResource("gcp:pubsub/subscriptionIAMPolicy:SubscriptionIAMPolicy", name, args, &resource, opts...)
+	var resource SubscriptionIamPolicy
+	err := ctx.RegisterResource("gcp:pubsub/subscriptionIamPolicy:SubscriptionIamPolicy", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// GetSubscriptionIAMPolicy gets an existing SubscriptionIAMPolicy resource's state with the given name, ID, and optional
+// GetSubscriptionIamPolicy gets an existing SubscriptionIamPolicy resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetSubscriptionIAMPolicy(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *SubscriptionIAMPolicyState, opts ...pulumi.ResourceOption) (*SubscriptionIAMPolicy, error) {
-	var resource SubscriptionIAMPolicy
-	err := ctx.ReadResource("gcp:pubsub/subscriptionIAMPolicy:SubscriptionIAMPolicy", name, id, state, &resource, opts...)
+func GetSubscriptionIamPolicy(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *SubscriptionIamPolicyState, opts ...pulumi.ResourceOption) (*SubscriptionIamPolicy, error) {
+	var resource SubscriptionIamPolicy
+	err := ctx.ReadResource("gcp:pubsub/subscriptionIamPolicy:SubscriptionIamPolicy", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering SubscriptionIAMPolicy resources.
-type subscriptionIAMPolicyState struct {
+// Input properties used for looking up and filtering SubscriptionIamPolicy resources.
+type subscriptionIamPolicyState struct {
 	// (Computed) The etag of the subscription's IAM policy.
 	Etag *string `pulumi:"etag"`
 	// The policy data generated by
-	// a `organizations.getIAMPolicy` data source.
+	// a `organizations.getIamPolicy` data source.
 	//
 	// ***
 	PolicyData *string `pulumi:"policyData"`
@@ -231,11 +231,11 @@ type subscriptionIAMPolicyState struct {
 	Subscription *string `pulumi:"subscription"`
 }
 
-type SubscriptionIAMPolicyState struct {
+type SubscriptionIamPolicyState struct {
 	// (Computed) The etag of the subscription's IAM policy.
 	Etag pulumi.StringPtrInput
 	// The policy data generated by
-	// a `organizations.getIAMPolicy` data source.
+	// a `organizations.getIamPolicy` data source.
 	//
 	// ***
 	PolicyData pulumi.StringPtrInput
@@ -255,13 +255,13 @@ type SubscriptionIAMPolicyState struct {
 	Subscription pulumi.StringPtrInput
 }
 
-func (SubscriptionIAMPolicyState) ElementType() reflect.Type {
-	return reflect.TypeOf((*subscriptionIAMPolicyState)(nil)).Elem()
+func (SubscriptionIamPolicyState) ElementType() reflect.Type {
+	return reflect.TypeOf((*subscriptionIamPolicyState)(nil)).Elem()
 }
 
-type subscriptionIAMPolicyArgs struct {
+type subscriptionIamPolicyArgs struct {
 	// The policy data generated by
-	// a `organizations.getIAMPolicy` data source.
+	// a `organizations.getIamPolicy` data source.
 	//
 	// ***
 	PolicyData string `pulumi:"policyData"`
@@ -281,10 +281,10 @@ type subscriptionIAMPolicyArgs struct {
 	Subscription string `pulumi:"subscription"`
 }
 
-// The set of arguments for constructing a SubscriptionIAMPolicy resource.
-type SubscriptionIAMPolicyArgs struct {
+// The set of arguments for constructing a SubscriptionIamPolicy resource.
+type SubscriptionIamPolicyArgs struct {
 	// The policy data generated by
-	// a `organizations.getIAMPolicy` data source.
+	// a `organizations.getIamPolicy` data source.
 	//
 	// ***
 	PolicyData pulumi.StringInput
@@ -304,110 +304,110 @@ type SubscriptionIAMPolicyArgs struct {
 	Subscription pulumi.StringInput
 }
 
-func (SubscriptionIAMPolicyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*subscriptionIAMPolicyArgs)(nil)).Elem()
+func (SubscriptionIamPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*subscriptionIamPolicyArgs)(nil)).Elem()
 }
 
-type SubscriptionIAMPolicyInput interface {
+type SubscriptionIamPolicyInput interface {
 	pulumi.Input
 
-	ToSubscriptionIAMPolicyOutput() SubscriptionIAMPolicyOutput
-	ToSubscriptionIAMPolicyOutputWithContext(ctx context.Context) SubscriptionIAMPolicyOutput
+	ToSubscriptionIamPolicyOutput() SubscriptionIamPolicyOutput
+	ToSubscriptionIamPolicyOutputWithContext(ctx context.Context) SubscriptionIamPolicyOutput
 }
 
-func (*SubscriptionIAMPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((**SubscriptionIAMPolicy)(nil)).Elem()
+func (*SubscriptionIamPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionIamPolicy)(nil)).Elem()
 }
 
-func (i *SubscriptionIAMPolicy) ToSubscriptionIAMPolicyOutput() SubscriptionIAMPolicyOutput {
-	return i.ToSubscriptionIAMPolicyOutputWithContext(context.Background())
+func (i *SubscriptionIamPolicy) ToSubscriptionIamPolicyOutput() SubscriptionIamPolicyOutput {
+	return i.ToSubscriptionIamPolicyOutputWithContext(context.Background())
 }
 
-func (i *SubscriptionIAMPolicy) ToSubscriptionIAMPolicyOutputWithContext(ctx context.Context) SubscriptionIAMPolicyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIAMPolicyOutput)
+func (i *SubscriptionIamPolicy) ToSubscriptionIamPolicyOutputWithContext(ctx context.Context) SubscriptionIamPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIamPolicyOutput)
 }
 
-// SubscriptionIAMPolicyArrayInput is an input type that accepts SubscriptionIAMPolicyArray and SubscriptionIAMPolicyArrayOutput values.
-// You can construct a concrete instance of `SubscriptionIAMPolicyArrayInput` via:
+// SubscriptionIamPolicyArrayInput is an input type that accepts SubscriptionIamPolicyArray and SubscriptionIamPolicyArrayOutput values.
+// You can construct a concrete instance of `SubscriptionIamPolicyArrayInput` via:
 //
-//	SubscriptionIAMPolicyArray{ SubscriptionIAMPolicyArgs{...} }
-type SubscriptionIAMPolicyArrayInput interface {
+//	SubscriptionIamPolicyArray{ SubscriptionIamPolicyArgs{...} }
+type SubscriptionIamPolicyArrayInput interface {
 	pulumi.Input
 
-	ToSubscriptionIAMPolicyArrayOutput() SubscriptionIAMPolicyArrayOutput
-	ToSubscriptionIAMPolicyArrayOutputWithContext(context.Context) SubscriptionIAMPolicyArrayOutput
+	ToSubscriptionIamPolicyArrayOutput() SubscriptionIamPolicyArrayOutput
+	ToSubscriptionIamPolicyArrayOutputWithContext(context.Context) SubscriptionIamPolicyArrayOutput
 }
 
-type SubscriptionIAMPolicyArray []SubscriptionIAMPolicyInput
+type SubscriptionIamPolicyArray []SubscriptionIamPolicyInput
 
-func (SubscriptionIAMPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*SubscriptionIAMPolicy)(nil)).Elem()
+func (SubscriptionIamPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*SubscriptionIamPolicy)(nil)).Elem()
 }
 
-func (i SubscriptionIAMPolicyArray) ToSubscriptionIAMPolicyArrayOutput() SubscriptionIAMPolicyArrayOutput {
-	return i.ToSubscriptionIAMPolicyArrayOutputWithContext(context.Background())
+func (i SubscriptionIamPolicyArray) ToSubscriptionIamPolicyArrayOutput() SubscriptionIamPolicyArrayOutput {
+	return i.ToSubscriptionIamPolicyArrayOutputWithContext(context.Background())
 }
 
-func (i SubscriptionIAMPolicyArray) ToSubscriptionIAMPolicyArrayOutputWithContext(ctx context.Context) SubscriptionIAMPolicyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIAMPolicyArrayOutput)
+func (i SubscriptionIamPolicyArray) ToSubscriptionIamPolicyArrayOutputWithContext(ctx context.Context) SubscriptionIamPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIamPolicyArrayOutput)
 }
 
-// SubscriptionIAMPolicyMapInput is an input type that accepts SubscriptionIAMPolicyMap and SubscriptionIAMPolicyMapOutput values.
-// You can construct a concrete instance of `SubscriptionIAMPolicyMapInput` via:
+// SubscriptionIamPolicyMapInput is an input type that accepts SubscriptionIamPolicyMap and SubscriptionIamPolicyMapOutput values.
+// You can construct a concrete instance of `SubscriptionIamPolicyMapInput` via:
 //
-//	SubscriptionIAMPolicyMap{ "key": SubscriptionIAMPolicyArgs{...} }
-type SubscriptionIAMPolicyMapInput interface {
+//	SubscriptionIamPolicyMap{ "key": SubscriptionIamPolicyArgs{...} }
+type SubscriptionIamPolicyMapInput interface {
 	pulumi.Input
 
-	ToSubscriptionIAMPolicyMapOutput() SubscriptionIAMPolicyMapOutput
-	ToSubscriptionIAMPolicyMapOutputWithContext(context.Context) SubscriptionIAMPolicyMapOutput
+	ToSubscriptionIamPolicyMapOutput() SubscriptionIamPolicyMapOutput
+	ToSubscriptionIamPolicyMapOutputWithContext(context.Context) SubscriptionIamPolicyMapOutput
 }
 
-type SubscriptionIAMPolicyMap map[string]SubscriptionIAMPolicyInput
+type SubscriptionIamPolicyMap map[string]SubscriptionIamPolicyInput
 
-func (SubscriptionIAMPolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*SubscriptionIAMPolicy)(nil)).Elem()
+func (SubscriptionIamPolicyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*SubscriptionIamPolicy)(nil)).Elem()
 }
 
-func (i SubscriptionIAMPolicyMap) ToSubscriptionIAMPolicyMapOutput() SubscriptionIAMPolicyMapOutput {
-	return i.ToSubscriptionIAMPolicyMapOutputWithContext(context.Background())
+func (i SubscriptionIamPolicyMap) ToSubscriptionIamPolicyMapOutput() SubscriptionIamPolicyMapOutput {
+	return i.ToSubscriptionIamPolicyMapOutputWithContext(context.Background())
 }
 
-func (i SubscriptionIAMPolicyMap) ToSubscriptionIAMPolicyMapOutputWithContext(ctx context.Context) SubscriptionIAMPolicyMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIAMPolicyMapOutput)
+func (i SubscriptionIamPolicyMap) ToSubscriptionIamPolicyMapOutputWithContext(ctx context.Context) SubscriptionIamPolicyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIamPolicyMapOutput)
 }
 
-type SubscriptionIAMPolicyOutput struct{ *pulumi.OutputState }
+type SubscriptionIamPolicyOutput struct{ *pulumi.OutputState }
 
-func (SubscriptionIAMPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SubscriptionIAMPolicy)(nil)).Elem()
+func (SubscriptionIamPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionIamPolicy)(nil)).Elem()
 }
 
-func (o SubscriptionIAMPolicyOutput) ToSubscriptionIAMPolicyOutput() SubscriptionIAMPolicyOutput {
+func (o SubscriptionIamPolicyOutput) ToSubscriptionIamPolicyOutput() SubscriptionIamPolicyOutput {
 	return o
 }
 
-func (o SubscriptionIAMPolicyOutput) ToSubscriptionIAMPolicyOutputWithContext(ctx context.Context) SubscriptionIAMPolicyOutput {
+func (o SubscriptionIamPolicyOutput) ToSubscriptionIamPolicyOutputWithContext(ctx context.Context) SubscriptionIamPolicyOutput {
 	return o
 }
 
 // (Computed) The etag of the subscription's IAM policy.
-func (o SubscriptionIAMPolicyOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v *SubscriptionIAMPolicy) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+func (o SubscriptionIamPolicyOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *SubscriptionIamPolicy) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The policy data generated by
-// a `organizations.getIAMPolicy` data source.
+// a `organizations.getIamPolicy` data source.
 //
 // ***
-func (o SubscriptionIAMPolicyOutput) PolicyData() pulumi.StringOutput {
-	return o.ApplyT(func(v *SubscriptionIAMPolicy) pulumi.StringOutput { return v.PolicyData }).(pulumi.StringOutput)
+func (o SubscriptionIamPolicyOutput) PolicyData() pulumi.StringOutput {
+	return o.ApplyT(func(v *SubscriptionIamPolicy) pulumi.StringOutput { return v.PolicyData }).(pulumi.StringOutput)
 }
 
 // The project in which the resource belongs. If it
 // is not provided, the provider project is used.
-func (o SubscriptionIAMPolicyOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func(v *SubscriptionIAMPolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+func (o SubscriptionIamPolicyOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *SubscriptionIamPolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The subscription name or id to bind to attach IAM policy to.
@@ -420,55 +420,55 @@ func (o SubscriptionIAMPolicyOutput) Project() pulumi.StringOutput {
 //   - **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
 //   - **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
 //   - **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-func (o SubscriptionIAMPolicyOutput) Subscription() pulumi.StringOutput {
-	return o.ApplyT(func(v *SubscriptionIAMPolicy) pulumi.StringOutput { return v.Subscription }).(pulumi.StringOutput)
+func (o SubscriptionIamPolicyOutput) Subscription() pulumi.StringOutput {
+	return o.ApplyT(func(v *SubscriptionIamPolicy) pulumi.StringOutput { return v.Subscription }).(pulumi.StringOutput)
 }
 
-type SubscriptionIAMPolicyArrayOutput struct{ *pulumi.OutputState }
+type SubscriptionIamPolicyArrayOutput struct{ *pulumi.OutputState }
 
-func (SubscriptionIAMPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*SubscriptionIAMPolicy)(nil)).Elem()
+func (SubscriptionIamPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*SubscriptionIamPolicy)(nil)).Elem()
 }
 
-func (o SubscriptionIAMPolicyArrayOutput) ToSubscriptionIAMPolicyArrayOutput() SubscriptionIAMPolicyArrayOutput {
+func (o SubscriptionIamPolicyArrayOutput) ToSubscriptionIamPolicyArrayOutput() SubscriptionIamPolicyArrayOutput {
 	return o
 }
 
-func (o SubscriptionIAMPolicyArrayOutput) ToSubscriptionIAMPolicyArrayOutputWithContext(ctx context.Context) SubscriptionIAMPolicyArrayOutput {
+func (o SubscriptionIamPolicyArrayOutput) ToSubscriptionIamPolicyArrayOutputWithContext(ctx context.Context) SubscriptionIamPolicyArrayOutput {
 	return o
 }
 
-func (o SubscriptionIAMPolicyArrayOutput) Index(i pulumi.IntInput) SubscriptionIAMPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SubscriptionIAMPolicy {
-		return vs[0].([]*SubscriptionIAMPolicy)[vs[1].(int)]
-	}).(SubscriptionIAMPolicyOutput)
+func (o SubscriptionIamPolicyArrayOutput) Index(i pulumi.IntInput) SubscriptionIamPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SubscriptionIamPolicy {
+		return vs[0].([]*SubscriptionIamPolicy)[vs[1].(int)]
+	}).(SubscriptionIamPolicyOutput)
 }
 
-type SubscriptionIAMPolicyMapOutput struct{ *pulumi.OutputState }
+type SubscriptionIamPolicyMapOutput struct{ *pulumi.OutputState }
 
-func (SubscriptionIAMPolicyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*SubscriptionIAMPolicy)(nil)).Elem()
+func (SubscriptionIamPolicyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*SubscriptionIamPolicy)(nil)).Elem()
 }
 
-func (o SubscriptionIAMPolicyMapOutput) ToSubscriptionIAMPolicyMapOutput() SubscriptionIAMPolicyMapOutput {
+func (o SubscriptionIamPolicyMapOutput) ToSubscriptionIamPolicyMapOutput() SubscriptionIamPolicyMapOutput {
 	return o
 }
 
-func (o SubscriptionIAMPolicyMapOutput) ToSubscriptionIAMPolicyMapOutputWithContext(ctx context.Context) SubscriptionIAMPolicyMapOutput {
+func (o SubscriptionIamPolicyMapOutput) ToSubscriptionIamPolicyMapOutputWithContext(ctx context.Context) SubscriptionIamPolicyMapOutput {
 	return o
 }
 
-func (o SubscriptionIAMPolicyMapOutput) MapIndex(k pulumi.StringInput) SubscriptionIAMPolicyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *SubscriptionIAMPolicy {
-		return vs[0].(map[string]*SubscriptionIAMPolicy)[vs[1].(string)]
-	}).(SubscriptionIAMPolicyOutput)
+func (o SubscriptionIamPolicyMapOutput) MapIndex(k pulumi.StringInput) SubscriptionIamPolicyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *SubscriptionIamPolicy {
+		return vs[0].(map[string]*SubscriptionIamPolicy)[vs[1].(string)]
+	}).(SubscriptionIamPolicyOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionIAMPolicyInput)(nil)).Elem(), &SubscriptionIAMPolicy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionIAMPolicyArrayInput)(nil)).Elem(), SubscriptionIAMPolicyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionIAMPolicyMapInput)(nil)).Elem(), SubscriptionIAMPolicyMap{})
-	pulumi.RegisterOutputType(SubscriptionIAMPolicyOutput{})
-	pulumi.RegisterOutputType(SubscriptionIAMPolicyArrayOutput{})
-	pulumi.RegisterOutputType(SubscriptionIAMPolicyMapOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionIamPolicyInput)(nil)).Elem(), &SubscriptionIamPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionIamPolicyArrayInput)(nil)).Elem(), SubscriptionIamPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubscriptionIamPolicyMapInput)(nil)).Elem(), SubscriptionIamPolicyMap{})
+	pulumi.RegisterOutputType(SubscriptionIamPolicyOutput{})
+	pulumi.RegisterOutputType(SubscriptionIamPolicyArrayOutput{})
+	pulumi.RegisterOutputType(SubscriptionIamPolicyMapOutput{})
 }

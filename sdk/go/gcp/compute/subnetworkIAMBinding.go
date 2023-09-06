@@ -14,17 +14,17 @@ import (
 
 // Three different resources help you manage your IAM policy for Compute Engine Subnetwork. Each of these resources serves a different use case:
 //
-// * `compute.SubnetworkIAMPolicy`: Authoritative. Sets the IAM policy for the subnetwork and replaces any existing policy already attached.
-// * `compute.SubnetworkIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the subnetwork are preserved.
-// * `compute.SubnetworkIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the subnetwork are preserved.
+// * `compute.SubnetworkIamPolicy`: Authoritative. Sets the IAM policy for the subnetwork and replaces any existing policy already attached.
+// * `compute.SubnetworkIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the subnetwork are preserved.
+// * `compute.SubnetworkIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the subnetwork are preserved.
 //
 // # A data source can be used to retrieve policy data in advent you do not need creation
 //
-// * `compute.SubnetworkIAMPolicy`: Retrieves the IAM policy for the subnetwork
+// * `compute.SubnetworkIamPolicy`: Retrieves the IAM policy for the subnetwork
 //
-// > **Note:** `compute.SubnetworkIAMPolicy` **cannot** be used in conjunction with `compute.SubnetworkIAMBinding` and `compute.SubnetworkIAMMember` or they will fight over what your policy should be.
+// > **Note:** `compute.SubnetworkIamPolicy` **cannot** be used in conjunction with `compute.SubnetworkIamBinding` and `compute.SubnetworkIamMember` or they will fight over what your policy should be.
 //
-// > **Note:** `compute.SubnetworkIAMBinding` resources **can be** used in conjunction with `compute.SubnetworkIAMMember` resources **only if** they do not grant privilege to the same role.
+// > **Note:** `compute.SubnetworkIamBinding` resources **can be** used in conjunction with `compute.SubnetworkIamMember` resources **only if** they do not grant privilege to the same role.
 //
 // > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 //
@@ -43,8 +43,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
+//			admin, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
 //					{
 //						Role: "roles/compute.networkUser",
 //						Members: []string{
@@ -56,7 +56,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewSubnetworkIAMPolicy(ctx, "policy", &compute.SubnetworkIAMPolicyArgs{
+//			_, err = compute.NewSubnetworkIamPolicy(ctx, "policy", &compute.SubnetworkIamPolicyArgs{
 //				Project:    pulumi.Any(google_compute_subnetwork.NetworkWithPrivateSecondaryIpRanges.Project),
 //				Region:     pulumi.Any(google_compute_subnetwork.NetworkWithPrivateSecondaryIpRanges.Region),
 //				Subnetwork: pulumi.Any(google_compute_subnetwork.NetworkWithPrivateSecondaryIpRanges.Name),
@@ -86,8 +86,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
+//			admin, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
 //					{
 //						Role: "roles/compute.networkUser",
 //						Members: []string{
@@ -104,7 +104,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewSubnetworkIAMPolicy(ctx, "policy", &compute.SubnetworkIAMPolicyArgs{
+//			_, err = compute.NewSubnetworkIamPolicy(ctx, "policy", &compute.SubnetworkIamPolicyArgs{
 //				Project:    pulumi.Any(google_compute_subnetwork.NetworkWithPrivateSecondaryIpRanges.Project),
 //				Region:     pulumi.Any(google_compute_subnetwork.NetworkWithPrivateSecondaryIpRanges.Region),
 //				Subnetwork: pulumi.Any(google_compute_subnetwork.NetworkWithPrivateSecondaryIpRanges.Name),
@@ -132,7 +132,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewSubnetworkIAMBinding(ctx, "binding", &compute.SubnetworkIAMBindingArgs{
+//			_, err := compute.NewSubnetworkIamBinding(ctx, "binding", &compute.SubnetworkIamBindingArgs{
 //				Project:    pulumi.Any(google_compute_subnetwork.NetworkWithPrivateSecondaryIpRanges.Project),
 //				Region:     pulumi.Any(google_compute_subnetwork.NetworkWithPrivateSecondaryIpRanges.Region),
 //				Subnetwork: pulumi.Any(google_compute_subnetwork.NetworkWithPrivateSecondaryIpRanges.Name),
@@ -164,7 +164,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewSubnetworkIAMBinding(ctx, "binding", &compute.SubnetworkIAMBindingArgs{
+//			_, err := compute.NewSubnetworkIamBinding(ctx, "binding", &compute.SubnetworkIamBindingArgs{
 //				Project:    pulumi.Any(google_compute_subnetwork.NetworkWithPrivateSecondaryIpRanges.Project),
 //				Region:     pulumi.Any(google_compute_subnetwork.NetworkWithPrivateSecondaryIpRanges.Region),
 //				Subnetwork: pulumi.Any(google_compute_subnetwork.NetworkWithPrivateSecondaryIpRanges.Name),
@@ -172,7 +172,7 @@ import (
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
 //				},
-//				Condition: &compute.SubnetworkIAMBindingConditionArgs{
+//				Condition: &compute.SubnetworkIamBindingConditionArgs{
 //					Title:       pulumi.String("expires_after_2019_12_31"),
 //					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
 //					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
@@ -200,7 +200,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewSubnetworkIAMMember(ctx, "member", &compute.SubnetworkIAMMemberArgs{
+//			_, err := compute.NewSubnetworkIamMember(ctx, "member", &compute.SubnetworkIamMemberArgs{
 //				Project:    pulumi.Any(google_compute_subnetwork.NetworkWithPrivateSecondaryIpRanges.Project),
 //				Region:     pulumi.Any(google_compute_subnetwork.NetworkWithPrivateSecondaryIpRanges.Region),
 //				Subnetwork: pulumi.Any(google_compute_subnetwork.NetworkWithPrivateSecondaryIpRanges.Name),
@@ -230,13 +230,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewSubnetworkIAMMember(ctx, "member", &compute.SubnetworkIAMMemberArgs{
+//			_, err := compute.NewSubnetworkIamMember(ctx, "member", &compute.SubnetworkIamMemberArgs{
 //				Project:    pulumi.Any(google_compute_subnetwork.NetworkWithPrivateSecondaryIpRanges.Project),
 //				Region:     pulumi.Any(google_compute_subnetwork.NetworkWithPrivateSecondaryIpRanges.Region),
 //				Subnetwork: pulumi.Any(google_compute_subnetwork.NetworkWithPrivateSecondaryIpRanges.Name),
 //				Role:       pulumi.String("roles/compute.networkUser"),
 //				Member:     pulumi.String("user:jane@example.com"),
-//				Condition: &compute.SubnetworkIAMMemberConditionArgs{
+//				Condition: &compute.SubnetworkIamMemberConditionArgs{
 //					Title:       pulumi.String("expires_after_2019_12_31"),
 //					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
 //					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
@@ -257,7 +257,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:compute/subnetworkIAMBinding:SubnetworkIAMBinding editor "projects/{{project}}/regions/{{region}}/subnetworks/{{subnetwork}} roles/compute.networkUser user:jane@example.com"
+//	$ pulumi import gcp:compute/subnetworkIamBinding:SubnetworkIamBinding editor "projects/{{project}}/regions/{{region}}/subnetworks/{{subnetwork}} roles/compute.networkUser user:jane@example.com"
 //
 // ```
 //
@@ -265,7 +265,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:compute/subnetworkIAMBinding:SubnetworkIAMBinding editor "projects/{{project}}/regions/{{region}}/subnetworks/{{subnetwork}} roles/compute.networkUser"
+//	$ pulumi import gcp:compute/subnetworkIamBinding:SubnetworkIamBinding editor "projects/{{project}}/regions/{{region}}/subnetworks/{{subnetwork}} roles/compute.networkUser"
 //
 // ```
 //
@@ -273,19 +273,19 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:compute/subnetworkIAMBinding:SubnetworkIAMBinding editor projects/{{project}}/regions/{{region}}/subnetworks/{{subnetwork}}
+//	$ pulumi import gcp:compute/subnetworkIamBinding:SubnetworkIamBinding editor projects/{{project}}/regions/{{region}}/subnetworks/{{subnetwork}}
 //
 // ```
 //
 //	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 //
 // full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
-type SubnetworkIAMBinding struct {
+type SubnetworkIamBinding struct {
 	pulumi.CustomResourceState
 
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
-	Condition SubnetworkIAMBindingConditionPtrOutput `pulumi:"condition"`
+	Condition SubnetworkIamBindingConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
 	Etag    pulumi.StringOutput      `pulumi:"etag"`
 	Members pulumi.StringArrayOutput `pulumi:"members"`
@@ -310,16 +310,16 @@ type SubnetworkIAMBinding struct {
 	// region is specified, it is taken from the provider configuration.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The role that should be applied. Only one
-	// `compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `compute.SubnetworkIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringOutput `pulumi:"role"`
 	// Used to find the parent resource to bind the IAM policy to
 	Subnetwork pulumi.StringOutput `pulumi:"subnetwork"`
 }
 
-// NewSubnetworkIAMBinding registers a new resource with the given unique name, arguments, and options.
-func NewSubnetworkIAMBinding(ctx *pulumi.Context,
-	name string, args *SubnetworkIAMBindingArgs, opts ...pulumi.ResourceOption) (*SubnetworkIAMBinding, error) {
+// NewSubnetworkIamBinding registers a new resource with the given unique name, arguments, and options.
+func NewSubnetworkIamBinding(ctx *pulumi.Context,
+	name string, args *SubnetworkIamBindingArgs, opts ...pulumi.ResourceOption) (*SubnetworkIamBinding, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -334,31 +334,31 @@ func NewSubnetworkIAMBinding(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Subnetwork'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
-	var resource SubnetworkIAMBinding
-	err := ctx.RegisterResource("gcp:compute/subnetworkIAMBinding:SubnetworkIAMBinding", name, args, &resource, opts...)
+	var resource SubnetworkIamBinding
+	err := ctx.RegisterResource("gcp:compute/subnetworkIamBinding:SubnetworkIamBinding", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// GetSubnetworkIAMBinding gets an existing SubnetworkIAMBinding resource's state with the given name, ID, and optional
+// GetSubnetworkIamBinding gets an existing SubnetworkIamBinding resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetSubnetworkIAMBinding(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *SubnetworkIAMBindingState, opts ...pulumi.ResourceOption) (*SubnetworkIAMBinding, error) {
-	var resource SubnetworkIAMBinding
-	err := ctx.ReadResource("gcp:compute/subnetworkIAMBinding:SubnetworkIAMBinding", name, id, state, &resource, opts...)
+func GetSubnetworkIamBinding(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *SubnetworkIamBindingState, opts ...pulumi.ResourceOption) (*SubnetworkIamBinding, error) {
+	var resource SubnetworkIamBinding
+	err := ctx.ReadResource("gcp:compute/subnetworkIamBinding:SubnetworkIamBinding", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering SubnetworkIAMBinding resources.
-type subnetworkIAMBindingState struct {
+// Input properties used for looking up and filtering SubnetworkIamBinding resources.
+type subnetworkIamBindingState struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
-	Condition *SubnetworkIAMBindingCondition `pulumi:"condition"`
+	Condition *SubnetworkIamBindingCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
 	Etag    *string  `pulumi:"etag"`
 	Members []string `pulumi:"members"`
@@ -383,17 +383,17 @@ type subnetworkIAMBindingState struct {
 	// region is specified, it is taken from the provider configuration.
 	Region *string `pulumi:"region"`
 	// The role that should be applied. Only one
-	// `compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `compute.SubnetworkIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role *string `pulumi:"role"`
 	// Used to find the parent resource to bind the IAM policy to
 	Subnetwork *string `pulumi:"subnetwork"`
 }
 
-type SubnetworkIAMBindingState struct {
+type SubnetworkIamBindingState struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
-	Condition SubnetworkIAMBindingConditionPtrInput
+	Condition SubnetworkIamBindingConditionPtrInput
 	// (Computed) The etag of the IAM policy.
 	Etag    pulumi.StringPtrInput
 	Members pulumi.StringArrayInput
@@ -418,21 +418,21 @@ type SubnetworkIAMBindingState struct {
 	// region is specified, it is taken from the provider configuration.
 	Region pulumi.StringPtrInput
 	// The role that should be applied. Only one
-	// `compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `compute.SubnetworkIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringPtrInput
 	// Used to find the parent resource to bind the IAM policy to
 	Subnetwork pulumi.StringPtrInput
 }
 
-func (SubnetworkIAMBindingState) ElementType() reflect.Type {
-	return reflect.TypeOf((*subnetworkIAMBindingState)(nil)).Elem()
+func (SubnetworkIamBindingState) ElementType() reflect.Type {
+	return reflect.TypeOf((*subnetworkIamBindingState)(nil)).Elem()
 }
 
-type subnetworkIAMBindingArgs struct {
+type subnetworkIamBindingArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
-	Condition *SubnetworkIAMBindingCondition `pulumi:"condition"`
+	Condition *SubnetworkIamBindingCondition `pulumi:"condition"`
 	Members   []string                       `pulumi:"members"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -455,18 +455,18 @@ type subnetworkIAMBindingArgs struct {
 	// region is specified, it is taken from the provider configuration.
 	Region *string `pulumi:"region"`
 	// The role that should be applied. Only one
-	// `compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `compute.SubnetworkIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role string `pulumi:"role"`
 	// Used to find the parent resource to bind the IAM policy to
 	Subnetwork string `pulumi:"subnetwork"`
 }
 
-// The set of arguments for constructing a SubnetworkIAMBinding resource.
-type SubnetworkIAMBindingArgs struct {
+// The set of arguments for constructing a SubnetworkIamBinding resource.
+type SubnetworkIamBindingArgs struct {
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
-	Condition SubnetworkIAMBindingConditionPtrInput
+	Condition SubnetworkIamBindingConditionPtrInput
 	Members   pulumi.StringArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -489,113 +489,113 @@ type SubnetworkIAMBindingArgs struct {
 	// region is specified, it is taken from the provider configuration.
 	Region pulumi.StringPtrInput
 	// The role that should be applied. Only one
-	// `compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `compute.SubnetworkIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringInput
 	// Used to find the parent resource to bind the IAM policy to
 	Subnetwork pulumi.StringInput
 }
 
-func (SubnetworkIAMBindingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*subnetworkIAMBindingArgs)(nil)).Elem()
+func (SubnetworkIamBindingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*subnetworkIamBindingArgs)(nil)).Elem()
 }
 
-type SubnetworkIAMBindingInput interface {
+type SubnetworkIamBindingInput interface {
 	pulumi.Input
 
-	ToSubnetworkIAMBindingOutput() SubnetworkIAMBindingOutput
-	ToSubnetworkIAMBindingOutputWithContext(ctx context.Context) SubnetworkIAMBindingOutput
+	ToSubnetworkIamBindingOutput() SubnetworkIamBindingOutput
+	ToSubnetworkIamBindingOutputWithContext(ctx context.Context) SubnetworkIamBindingOutput
 }
 
-func (*SubnetworkIAMBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((**SubnetworkIAMBinding)(nil)).Elem()
+func (*SubnetworkIamBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubnetworkIamBinding)(nil)).Elem()
 }
 
-func (i *SubnetworkIAMBinding) ToSubnetworkIAMBindingOutput() SubnetworkIAMBindingOutput {
-	return i.ToSubnetworkIAMBindingOutputWithContext(context.Background())
+func (i *SubnetworkIamBinding) ToSubnetworkIamBindingOutput() SubnetworkIamBindingOutput {
+	return i.ToSubnetworkIamBindingOutputWithContext(context.Background())
 }
 
-func (i *SubnetworkIAMBinding) ToSubnetworkIAMBindingOutputWithContext(ctx context.Context) SubnetworkIAMBindingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkIAMBindingOutput)
+func (i *SubnetworkIamBinding) ToSubnetworkIamBindingOutputWithContext(ctx context.Context) SubnetworkIamBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkIamBindingOutput)
 }
 
-// SubnetworkIAMBindingArrayInput is an input type that accepts SubnetworkIAMBindingArray and SubnetworkIAMBindingArrayOutput values.
-// You can construct a concrete instance of `SubnetworkIAMBindingArrayInput` via:
+// SubnetworkIamBindingArrayInput is an input type that accepts SubnetworkIamBindingArray and SubnetworkIamBindingArrayOutput values.
+// You can construct a concrete instance of `SubnetworkIamBindingArrayInput` via:
 //
-//	SubnetworkIAMBindingArray{ SubnetworkIAMBindingArgs{...} }
-type SubnetworkIAMBindingArrayInput interface {
+//	SubnetworkIamBindingArray{ SubnetworkIamBindingArgs{...} }
+type SubnetworkIamBindingArrayInput interface {
 	pulumi.Input
 
-	ToSubnetworkIAMBindingArrayOutput() SubnetworkIAMBindingArrayOutput
-	ToSubnetworkIAMBindingArrayOutputWithContext(context.Context) SubnetworkIAMBindingArrayOutput
+	ToSubnetworkIamBindingArrayOutput() SubnetworkIamBindingArrayOutput
+	ToSubnetworkIamBindingArrayOutputWithContext(context.Context) SubnetworkIamBindingArrayOutput
 }
 
-type SubnetworkIAMBindingArray []SubnetworkIAMBindingInput
+type SubnetworkIamBindingArray []SubnetworkIamBindingInput
 
-func (SubnetworkIAMBindingArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*SubnetworkIAMBinding)(nil)).Elem()
+func (SubnetworkIamBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*SubnetworkIamBinding)(nil)).Elem()
 }
 
-func (i SubnetworkIAMBindingArray) ToSubnetworkIAMBindingArrayOutput() SubnetworkIAMBindingArrayOutput {
-	return i.ToSubnetworkIAMBindingArrayOutputWithContext(context.Background())
+func (i SubnetworkIamBindingArray) ToSubnetworkIamBindingArrayOutput() SubnetworkIamBindingArrayOutput {
+	return i.ToSubnetworkIamBindingArrayOutputWithContext(context.Background())
 }
 
-func (i SubnetworkIAMBindingArray) ToSubnetworkIAMBindingArrayOutputWithContext(ctx context.Context) SubnetworkIAMBindingArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkIAMBindingArrayOutput)
+func (i SubnetworkIamBindingArray) ToSubnetworkIamBindingArrayOutputWithContext(ctx context.Context) SubnetworkIamBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkIamBindingArrayOutput)
 }
 
-// SubnetworkIAMBindingMapInput is an input type that accepts SubnetworkIAMBindingMap and SubnetworkIAMBindingMapOutput values.
-// You can construct a concrete instance of `SubnetworkIAMBindingMapInput` via:
+// SubnetworkIamBindingMapInput is an input type that accepts SubnetworkIamBindingMap and SubnetworkIamBindingMapOutput values.
+// You can construct a concrete instance of `SubnetworkIamBindingMapInput` via:
 //
-//	SubnetworkIAMBindingMap{ "key": SubnetworkIAMBindingArgs{...} }
-type SubnetworkIAMBindingMapInput interface {
+//	SubnetworkIamBindingMap{ "key": SubnetworkIamBindingArgs{...} }
+type SubnetworkIamBindingMapInput interface {
 	pulumi.Input
 
-	ToSubnetworkIAMBindingMapOutput() SubnetworkIAMBindingMapOutput
-	ToSubnetworkIAMBindingMapOutputWithContext(context.Context) SubnetworkIAMBindingMapOutput
+	ToSubnetworkIamBindingMapOutput() SubnetworkIamBindingMapOutput
+	ToSubnetworkIamBindingMapOutputWithContext(context.Context) SubnetworkIamBindingMapOutput
 }
 
-type SubnetworkIAMBindingMap map[string]SubnetworkIAMBindingInput
+type SubnetworkIamBindingMap map[string]SubnetworkIamBindingInput
 
-func (SubnetworkIAMBindingMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*SubnetworkIAMBinding)(nil)).Elem()
+func (SubnetworkIamBindingMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*SubnetworkIamBinding)(nil)).Elem()
 }
 
-func (i SubnetworkIAMBindingMap) ToSubnetworkIAMBindingMapOutput() SubnetworkIAMBindingMapOutput {
-	return i.ToSubnetworkIAMBindingMapOutputWithContext(context.Background())
+func (i SubnetworkIamBindingMap) ToSubnetworkIamBindingMapOutput() SubnetworkIamBindingMapOutput {
+	return i.ToSubnetworkIamBindingMapOutputWithContext(context.Background())
 }
 
-func (i SubnetworkIAMBindingMap) ToSubnetworkIAMBindingMapOutputWithContext(ctx context.Context) SubnetworkIAMBindingMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkIAMBindingMapOutput)
+func (i SubnetworkIamBindingMap) ToSubnetworkIamBindingMapOutputWithContext(ctx context.Context) SubnetworkIamBindingMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkIamBindingMapOutput)
 }
 
-type SubnetworkIAMBindingOutput struct{ *pulumi.OutputState }
+type SubnetworkIamBindingOutput struct{ *pulumi.OutputState }
 
-func (SubnetworkIAMBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SubnetworkIAMBinding)(nil)).Elem()
+func (SubnetworkIamBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubnetworkIamBinding)(nil)).Elem()
 }
 
-func (o SubnetworkIAMBindingOutput) ToSubnetworkIAMBindingOutput() SubnetworkIAMBindingOutput {
+func (o SubnetworkIamBindingOutput) ToSubnetworkIamBindingOutput() SubnetworkIamBindingOutput {
 	return o
 }
 
-func (o SubnetworkIAMBindingOutput) ToSubnetworkIAMBindingOutputWithContext(ctx context.Context) SubnetworkIAMBindingOutput {
+func (o SubnetworkIamBindingOutput) ToSubnetworkIamBindingOutputWithContext(ctx context.Context) SubnetworkIamBindingOutput {
 	return o
 }
 
 // An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 // Structure is documented below.
-func (o SubnetworkIAMBindingOutput) Condition() SubnetworkIAMBindingConditionPtrOutput {
-	return o.ApplyT(func(v *SubnetworkIAMBinding) SubnetworkIAMBindingConditionPtrOutput { return v.Condition }).(SubnetworkIAMBindingConditionPtrOutput)
+func (o SubnetworkIamBindingOutput) Condition() SubnetworkIamBindingConditionPtrOutput {
+	return o.ApplyT(func(v *SubnetworkIamBinding) SubnetworkIamBindingConditionPtrOutput { return v.Condition }).(SubnetworkIamBindingConditionPtrOutput)
 }
 
 // (Computed) The etag of the IAM policy.
-func (o SubnetworkIAMBindingOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v *SubnetworkIAMBinding) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+func (o SubnetworkIamBindingOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *SubnetworkIamBinding) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-func (o SubnetworkIAMBindingOutput) Members() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *SubnetworkIAMBinding) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
+func (o SubnetworkIamBindingOutput) Members() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SubnetworkIamBinding) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
 }
 
 // The ID of the project in which the resource belongs.
@@ -612,75 +612,75 @@ func (o SubnetworkIAMBindingOutput) Members() pulumi.StringArrayOutput {
 //   - **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 //   - **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 //   - **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
-func (o SubnetworkIAMBindingOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func(v *SubnetworkIAMBinding) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+func (o SubnetworkIamBindingOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *SubnetworkIamBinding) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The GCP region for this subnetwork.
 // Used to find the parent resource to bind the IAM policy to. If not specified,
 // the value will be parsed from the identifier of the parent resource. If no region is provided in the parent identifier and no
 // region is specified, it is taken from the provider configuration.
-func (o SubnetworkIAMBindingOutput) Region() pulumi.StringOutput {
-	return o.ApplyT(func(v *SubnetworkIAMBinding) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+func (o SubnetworkIamBindingOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *SubnetworkIamBinding) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 // The role that should be applied. Only one
-// `compute.SubnetworkIAMBinding` can be used per role. Note that custom roles must be of the format
+// `compute.SubnetworkIamBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
-func (o SubnetworkIAMBindingOutput) Role() pulumi.StringOutput {
-	return o.ApplyT(func(v *SubnetworkIAMBinding) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
+func (o SubnetworkIamBindingOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v *SubnetworkIamBinding) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }
 
 // Used to find the parent resource to bind the IAM policy to
-func (o SubnetworkIAMBindingOutput) Subnetwork() pulumi.StringOutput {
-	return o.ApplyT(func(v *SubnetworkIAMBinding) pulumi.StringOutput { return v.Subnetwork }).(pulumi.StringOutput)
+func (o SubnetworkIamBindingOutput) Subnetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v *SubnetworkIamBinding) pulumi.StringOutput { return v.Subnetwork }).(pulumi.StringOutput)
 }
 
-type SubnetworkIAMBindingArrayOutput struct{ *pulumi.OutputState }
+type SubnetworkIamBindingArrayOutput struct{ *pulumi.OutputState }
 
-func (SubnetworkIAMBindingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*SubnetworkIAMBinding)(nil)).Elem()
+func (SubnetworkIamBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*SubnetworkIamBinding)(nil)).Elem()
 }
 
-func (o SubnetworkIAMBindingArrayOutput) ToSubnetworkIAMBindingArrayOutput() SubnetworkIAMBindingArrayOutput {
+func (o SubnetworkIamBindingArrayOutput) ToSubnetworkIamBindingArrayOutput() SubnetworkIamBindingArrayOutput {
 	return o
 }
 
-func (o SubnetworkIAMBindingArrayOutput) ToSubnetworkIAMBindingArrayOutputWithContext(ctx context.Context) SubnetworkIAMBindingArrayOutput {
+func (o SubnetworkIamBindingArrayOutput) ToSubnetworkIamBindingArrayOutputWithContext(ctx context.Context) SubnetworkIamBindingArrayOutput {
 	return o
 }
 
-func (o SubnetworkIAMBindingArrayOutput) Index(i pulumi.IntInput) SubnetworkIAMBindingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SubnetworkIAMBinding {
-		return vs[0].([]*SubnetworkIAMBinding)[vs[1].(int)]
-	}).(SubnetworkIAMBindingOutput)
+func (o SubnetworkIamBindingArrayOutput) Index(i pulumi.IntInput) SubnetworkIamBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SubnetworkIamBinding {
+		return vs[0].([]*SubnetworkIamBinding)[vs[1].(int)]
+	}).(SubnetworkIamBindingOutput)
 }
 
-type SubnetworkIAMBindingMapOutput struct{ *pulumi.OutputState }
+type SubnetworkIamBindingMapOutput struct{ *pulumi.OutputState }
 
-func (SubnetworkIAMBindingMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*SubnetworkIAMBinding)(nil)).Elem()
+func (SubnetworkIamBindingMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*SubnetworkIamBinding)(nil)).Elem()
 }
 
-func (o SubnetworkIAMBindingMapOutput) ToSubnetworkIAMBindingMapOutput() SubnetworkIAMBindingMapOutput {
+func (o SubnetworkIamBindingMapOutput) ToSubnetworkIamBindingMapOutput() SubnetworkIamBindingMapOutput {
 	return o
 }
 
-func (o SubnetworkIAMBindingMapOutput) ToSubnetworkIAMBindingMapOutputWithContext(ctx context.Context) SubnetworkIAMBindingMapOutput {
+func (o SubnetworkIamBindingMapOutput) ToSubnetworkIamBindingMapOutputWithContext(ctx context.Context) SubnetworkIamBindingMapOutput {
 	return o
 }
 
-func (o SubnetworkIAMBindingMapOutput) MapIndex(k pulumi.StringInput) SubnetworkIAMBindingOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *SubnetworkIAMBinding {
-		return vs[0].(map[string]*SubnetworkIAMBinding)[vs[1].(string)]
-	}).(SubnetworkIAMBindingOutput)
+func (o SubnetworkIamBindingMapOutput) MapIndex(k pulumi.StringInput) SubnetworkIamBindingOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *SubnetworkIamBinding {
+		return vs[0].(map[string]*SubnetworkIamBinding)[vs[1].(string)]
+	}).(SubnetworkIamBindingOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkIAMBindingInput)(nil)).Elem(), &SubnetworkIAMBinding{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkIAMBindingArrayInput)(nil)).Elem(), SubnetworkIAMBindingArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkIAMBindingMapInput)(nil)).Elem(), SubnetworkIAMBindingMap{})
-	pulumi.RegisterOutputType(SubnetworkIAMBindingOutput{})
-	pulumi.RegisterOutputType(SubnetworkIAMBindingArrayOutput{})
-	pulumi.RegisterOutputType(SubnetworkIAMBindingMapOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkIamBindingInput)(nil)).Elem(), &SubnetworkIamBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkIamBindingArrayInput)(nil)).Elem(), SubnetworkIamBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetworkIamBindingMapInput)(nil)).Elem(), SubnetworkIamBindingMap{})
+	pulumi.RegisterOutputType(SubnetworkIamBindingOutput{})
+	pulumi.RegisterOutputType(SubnetworkIamBindingArrayOutput{})
+	pulumi.RegisterOutputType(SubnetworkIamBindingMapOutput{})
 }

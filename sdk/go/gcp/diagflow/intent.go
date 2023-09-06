@@ -97,7 +97,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewIAMMember(ctx, "agentCreate", &projects.IAMMemberArgs{
+//			_, err = projects.NewIamMember(ctx, "agentCreate", &projects.IamMemberArgs{
 //				Project: agentProjectService.Project,
 //				Role:    pulumi.String("roles/dialogflow.admin"),
 //				Member: dialogflowServiceAccount.Email.ApplyT(func(email string) (string, error) {

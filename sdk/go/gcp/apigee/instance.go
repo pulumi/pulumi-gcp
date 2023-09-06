@@ -288,7 +288,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			apigeeSaKeyuser, err := kms.NewCryptoKeyIAMBinding(ctx, "apigeeSaKeyuser", &kms.CryptoKeyIAMBindingArgs{
+//			apigeeSaKeyuser, err := kms.NewCryptoKeyIamBinding(ctx, "apigeeSaKeyuser", &kms.CryptoKeyIamBindingArgs{
 //				CryptoKeyId: apigeeKey.ID(),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Members: pulumi.StringArray{

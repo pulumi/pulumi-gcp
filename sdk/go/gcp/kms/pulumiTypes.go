@@ -13,7 +13,7 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
-type CryptoKeyIAMBindingCondition struct {
+type CryptoKeyIamBindingCondition struct {
 	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	//
 	// > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
@@ -26,18 +26,18 @@ type CryptoKeyIAMBindingCondition struct {
 	Title string `pulumi:"title"`
 }
 
-// CryptoKeyIAMBindingConditionInput is an input type that accepts CryptoKeyIAMBindingConditionArgs and CryptoKeyIAMBindingConditionOutput values.
-// You can construct a concrete instance of `CryptoKeyIAMBindingConditionInput` via:
+// CryptoKeyIamBindingConditionInput is an input type that accepts CryptoKeyIamBindingConditionArgs and CryptoKeyIamBindingConditionOutput values.
+// You can construct a concrete instance of `CryptoKeyIamBindingConditionInput` via:
 //
-//	CryptoKeyIAMBindingConditionArgs{...}
-type CryptoKeyIAMBindingConditionInput interface {
+//	CryptoKeyIamBindingConditionArgs{...}
+type CryptoKeyIamBindingConditionInput interface {
 	pulumi.Input
 
-	ToCryptoKeyIAMBindingConditionOutput() CryptoKeyIAMBindingConditionOutput
-	ToCryptoKeyIAMBindingConditionOutputWithContext(context.Context) CryptoKeyIAMBindingConditionOutput
+	ToCryptoKeyIamBindingConditionOutput() CryptoKeyIamBindingConditionOutput
+	ToCryptoKeyIamBindingConditionOutputWithContext(context.Context) CryptoKeyIamBindingConditionOutput
 }
 
-type CryptoKeyIAMBindingConditionArgs struct {
+type CryptoKeyIamBindingConditionArgs struct {
 	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	//
 	// > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
@@ -50,81 +50,81 @@ type CryptoKeyIAMBindingConditionArgs struct {
 	Title pulumi.StringInput `pulumi:"title"`
 }
 
-func (CryptoKeyIAMBindingConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CryptoKeyIAMBindingCondition)(nil)).Elem()
+func (CryptoKeyIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CryptoKeyIamBindingCondition)(nil)).Elem()
 }
 
-func (i CryptoKeyIAMBindingConditionArgs) ToCryptoKeyIAMBindingConditionOutput() CryptoKeyIAMBindingConditionOutput {
-	return i.ToCryptoKeyIAMBindingConditionOutputWithContext(context.Background())
+func (i CryptoKeyIamBindingConditionArgs) ToCryptoKeyIamBindingConditionOutput() CryptoKeyIamBindingConditionOutput {
+	return i.ToCryptoKeyIamBindingConditionOutputWithContext(context.Background())
 }
 
-func (i CryptoKeyIAMBindingConditionArgs) ToCryptoKeyIAMBindingConditionOutputWithContext(ctx context.Context) CryptoKeyIAMBindingConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIAMBindingConditionOutput)
+func (i CryptoKeyIamBindingConditionArgs) ToCryptoKeyIamBindingConditionOutputWithContext(ctx context.Context) CryptoKeyIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIamBindingConditionOutput)
 }
 
-func (i CryptoKeyIAMBindingConditionArgs) ToCryptoKeyIAMBindingConditionPtrOutput() CryptoKeyIAMBindingConditionPtrOutput {
-	return i.ToCryptoKeyIAMBindingConditionPtrOutputWithContext(context.Background())
+func (i CryptoKeyIamBindingConditionArgs) ToCryptoKeyIamBindingConditionPtrOutput() CryptoKeyIamBindingConditionPtrOutput {
+	return i.ToCryptoKeyIamBindingConditionPtrOutputWithContext(context.Background())
 }
 
-func (i CryptoKeyIAMBindingConditionArgs) ToCryptoKeyIAMBindingConditionPtrOutputWithContext(ctx context.Context) CryptoKeyIAMBindingConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIAMBindingConditionOutput).ToCryptoKeyIAMBindingConditionPtrOutputWithContext(ctx)
+func (i CryptoKeyIamBindingConditionArgs) ToCryptoKeyIamBindingConditionPtrOutputWithContext(ctx context.Context) CryptoKeyIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIamBindingConditionOutput).ToCryptoKeyIamBindingConditionPtrOutputWithContext(ctx)
 }
 
-// CryptoKeyIAMBindingConditionPtrInput is an input type that accepts CryptoKeyIAMBindingConditionArgs, CryptoKeyIAMBindingConditionPtr and CryptoKeyIAMBindingConditionPtrOutput values.
-// You can construct a concrete instance of `CryptoKeyIAMBindingConditionPtrInput` via:
+// CryptoKeyIamBindingConditionPtrInput is an input type that accepts CryptoKeyIamBindingConditionArgs, CryptoKeyIamBindingConditionPtr and CryptoKeyIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `CryptoKeyIamBindingConditionPtrInput` via:
 //
-//	        CryptoKeyIAMBindingConditionArgs{...}
+//	        CryptoKeyIamBindingConditionArgs{...}
 //
 //	or:
 //
 //	        nil
-type CryptoKeyIAMBindingConditionPtrInput interface {
+type CryptoKeyIamBindingConditionPtrInput interface {
 	pulumi.Input
 
-	ToCryptoKeyIAMBindingConditionPtrOutput() CryptoKeyIAMBindingConditionPtrOutput
-	ToCryptoKeyIAMBindingConditionPtrOutputWithContext(context.Context) CryptoKeyIAMBindingConditionPtrOutput
+	ToCryptoKeyIamBindingConditionPtrOutput() CryptoKeyIamBindingConditionPtrOutput
+	ToCryptoKeyIamBindingConditionPtrOutputWithContext(context.Context) CryptoKeyIamBindingConditionPtrOutput
 }
 
-type cryptoKeyIAMBindingConditionPtrType CryptoKeyIAMBindingConditionArgs
+type cryptoKeyIamBindingConditionPtrType CryptoKeyIamBindingConditionArgs
 
-func CryptoKeyIAMBindingConditionPtr(v *CryptoKeyIAMBindingConditionArgs) CryptoKeyIAMBindingConditionPtrInput {
-	return (*cryptoKeyIAMBindingConditionPtrType)(v)
+func CryptoKeyIamBindingConditionPtr(v *CryptoKeyIamBindingConditionArgs) CryptoKeyIamBindingConditionPtrInput {
+	return (*cryptoKeyIamBindingConditionPtrType)(v)
 }
 
-func (*cryptoKeyIAMBindingConditionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CryptoKeyIAMBindingCondition)(nil)).Elem()
+func (*cryptoKeyIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CryptoKeyIamBindingCondition)(nil)).Elem()
 }
 
-func (i *cryptoKeyIAMBindingConditionPtrType) ToCryptoKeyIAMBindingConditionPtrOutput() CryptoKeyIAMBindingConditionPtrOutput {
-	return i.ToCryptoKeyIAMBindingConditionPtrOutputWithContext(context.Background())
+func (i *cryptoKeyIamBindingConditionPtrType) ToCryptoKeyIamBindingConditionPtrOutput() CryptoKeyIamBindingConditionPtrOutput {
+	return i.ToCryptoKeyIamBindingConditionPtrOutputWithContext(context.Background())
 }
 
-func (i *cryptoKeyIAMBindingConditionPtrType) ToCryptoKeyIAMBindingConditionPtrOutputWithContext(ctx context.Context) CryptoKeyIAMBindingConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIAMBindingConditionPtrOutput)
+func (i *cryptoKeyIamBindingConditionPtrType) ToCryptoKeyIamBindingConditionPtrOutputWithContext(ctx context.Context) CryptoKeyIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIamBindingConditionPtrOutput)
 }
 
-type CryptoKeyIAMBindingConditionOutput struct{ *pulumi.OutputState }
+type CryptoKeyIamBindingConditionOutput struct{ *pulumi.OutputState }
 
-func (CryptoKeyIAMBindingConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CryptoKeyIAMBindingCondition)(nil)).Elem()
+func (CryptoKeyIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CryptoKeyIamBindingCondition)(nil)).Elem()
 }
 
-func (o CryptoKeyIAMBindingConditionOutput) ToCryptoKeyIAMBindingConditionOutput() CryptoKeyIAMBindingConditionOutput {
+func (o CryptoKeyIamBindingConditionOutput) ToCryptoKeyIamBindingConditionOutput() CryptoKeyIamBindingConditionOutput {
 	return o
 }
 
-func (o CryptoKeyIAMBindingConditionOutput) ToCryptoKeyIAMBindingConditionOutputWithContext(ctx context.Context) CryptoKeyIAMBindingConditionOutput {
+func (o CryptoKeyIamBindingConditionOutput) ToCryptoKeyIamBindingConditionOutputWithContext(ctx context.Context) CryptoKeyIamBindingConditionOutput {
 	return o
 }
 
-func (o CryptoKeyIAMBindingConditionOutput) ToCryptoKeyIAMBindingConditionPtrOutput() CryptoKeyIAMBindingConditionPtrOutput {
-	return o.ToCryptoKeyIAMBindingConditionPtrOutputWithContext(context.Background())
+func (o CryptoKeyIamBindingConditionOutput) ToCryptoKeyIamBindingConditionPtrOutput() CryptoKeyIamBindingConditionPtrOutput {
+	return o.ToCryptoKeyIamBindingConditionPtrOutputWithContext(context.Background())
 }
 
-func (o CryptoKeyIAMBindingConditionOutput) ToCryptoKeyIAMBindingConditionPtrOutputWithContext(ctx context.Context) CryptoKeyIAMBindingConditionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CryptoKeyIAMBindingCondition) *CryptoKeyIAMBindingCondition {
+func (o CryptoKeyIamBindingConditionOutput) ToCryptoKeyIamBindingConditionPtrOutputWithContext(ctx context.Context) CryptoKeyIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CryptoKeyIamBindingCondition) *CryptoKeyIamBindingCondition {
 		return &v
-	}).(CryptoKeyIAMBindingConditionPtrOutput)
+	}).(CryptoKeyIamBindingConditionPtrOutput)
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -132,42 +132,42 @@ func (o CryptoKeyIAMBindingConditionOutput) ToCryptoKeyIAMBindingConditionPtrOut
 // > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
 // identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
 // consider it to be an entirely different resource and will treat it as such.
-func (o CryptoKeyIAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CryptoKeyIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o CryptoKeyIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CryptoKeyIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // Textual representation of an expression in Common Expression Language syntax.
-func (o CryptoKeyIAMBindingConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v CryptoKeyIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o CryptoKeyIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v CryptoKeyIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 // A title for the expression, i.e. a short string describing its purpose.
-func (o CryptoKeyIAMBindingConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v CryptoKeyIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o CryptoKeyIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v CryptoKeyIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type CryptoKeyIAMBindingConditionPtrOutput struct{ *pulumi.OutputState }
+type CryptoKeyIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
 
-func (CryptoKeyIAMBindingConditionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CryptoKeyIAMBindingCondition)(nil)).Elem()
+func (CryptoKeyIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CryptoKeyIamBindingCondition)(nil)).Elem()
 }
 
-func (o CryptoKeyIAMBindingConditionPtrOutput) ToCryptoKeyIAMBindingConditionPtrOutput() CryptoKeyIAMBindingConditionPtrOutput {
+func (o CryptoKeyIamBindingConditionPtrOutput) ToCryptoKeyIamBindingConditionPtrOutput() CryptoKeyIamBindingConditionPtrOutput {
 	return o
 }
 
-func (o CryptoKeyIAMBindingConditionPtrOutput) ToCryptoKeyIAMBindingConditionPtrOutputWithContext(ctx context.Context) CryptoKeyIAMBindingConditionPtrOutput {
+func (o CryptoKeyIamBindingConditionPtrOutput) ToCryptoKeyIamBindingConditionPtrOutputWithContext(ctx context.Context) CryptoKeyIamBindingConditionPtrOutput {
 	return o
 }
 
-func (o CryptoKeyIAMBindingConditionPtrOutput) Elem() CryptoKeyIAMBindingConditionOutput {
-	return o.ApplyT(func(v *CryptoKeyIAMBindingCondition) CryptoKeyIAMBindingCondition {
+func (o CryptoKeyIamBindingConditionPtrOutput) Elem() CryptoKeyIamBindingConditionOutput {
+	return o.ApplyT(func(v *CryptoKeyIamBindingCondition) CryptoKeyIamBindingCondition {
 		if v != nil {
 			return *v
 		}
-		var ret CryptoKeyIAMBindingCondition
+		var ret CryptoKeyIamBindingCondition
 		return ret
-	}).(CryptoKeyIAMBindingConditionOutput)
+	}).(CryptoKeyIamBindingConditionOutput)
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -175,8 +175,8 @@ func (o CryptoKeyIAMBindingConditionPtrOutput) Elem() CryptoKeyIAMBindingConditi
 // > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
 // identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
 // consider it to be an entirely different resource and will treat it as such.
-func (o CryptoKeyIAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CryptoKeyIAMBindingCondition) *string {
+func (o CryptoKeyIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CryptoKeyIamBindingCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -185,8 +185,8 @@ func (o CryptoKeyIAMBindingConditionPtrOutput) Description() pulumi.StringPtrOut
 }
 
 // Textual representation of an expression in Common Expression Language syntax.
-func (o CryptoKeyIAMBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CryptoKeyIAMBindingCondition) *string {
+func (o CryptoKeyIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CryptoKeyIamBindingCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -195,8 +195,8 @@ func (o CryptoKeyIAMBindingConditionPtrOutput) Expression() pulumi.StringPtrOutp
 }
 
 // A title for the expression, i.e. a short string describing its purpose.
-func (o CryptoKeyIAMBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CryptoKeyIAMBindingCondition) *string {
+func (o CryptoKeyIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CryptoKeyIamBindingCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -204,7 +204,7 @@ func (o CryptoKeyIAMBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type CryptoKeyIAMMemberCondition struct {
+type CryptoKeyIamMemberCondition struct {
 	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	//
 	// > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
@@ -217,18 +217,18 @@ type CryptoKeyIAMMemberCondition struct {
 	Title string `pulumi:"title"`
 }
 
-// CryptoKeyIAMMemberConditionInput is an input type that accepts CryptoKeyIAMMemberConditionArgs and CryptoKeyIAMMemberConditionOutput values.
-// You can construct a concrete instance of `CryptoKeyIAMMemberConditionInput` via:
+// CryptoKeyIamMemberConditionInput is an input type that accepts CryptoKeyIamMemberConditionArgs and CryptoKeyIamMemberConditionOutput values.
+// You can construct a concrete instance of `CryptoKeyIamMemberConditionInput` via:
 //
-//	CryptoKeyIAMMemberConditionArgs{...}
-type CryptoKeyIAMMemberConditionInput interface {
+//	CryptoKeyIamMemberConditionArgs{...}
+type CryptoKeyIamMemberConditionInput interface {
 	pulumi.Input
 
-	ToCryptoKeyIAMMemberConditionOutput() CryptoKeyIAMMemberConditionOutput
-	ToCryptoKeyIAMMemberConditionOutputWithContext(context.Context) CryptoKeyIAMMemberConditionOutput
+	ToCryptoKeyIamMemberConditionOutput() CryptoKeyIamMemberConditionOutput
+	ToCryptoKeyIamMemberConditionOutputWithContext(context.Context) CryptoKeyIamMemberConditionOutput
 }
 
-type CryptoKeyIAMMemberConditionArgs struct {
+type CryptoKeyIamMemberConditionArgs struct {
 	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	//
 	// > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
@@ -241,81 +241,81 @@ type CryptoKeyIAMMemberConditionArgs struct {
 	Title pulumi.StringInput `pulumi:"title"`
 }
 
-func (CryptoKeyIAMMemberConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CryptoKeyIAMMemberCondition)(nil)).Elem()
+func (CryptoKeyIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CryptoKeyIamMemberCondition)(nil)).Elem()
 }
 
-func (i CryptoKeyIAMMemberConditionArgs) ToCryptoKeyIAMMemberConditionOutput() CryptoKeyIAMMemberConditionOutput {
-	return i.ToCryptoKeyIAMMemberConditionOutputWithContext(context.Background())
+func (i CryptoKeyIamMemberConditionArgs) ToCryptoKeyIamMemberConditionOutput() CryptoKeyIamMemberConditionOutput {
+	return i.ToCryptoKeyIamMemberConditionOutputWithContext(context.Background())
 }
 
-func (i CryptoKeyIAMMemberConditionArgs) ToCryptoKeyIAMMemberConditionOutputWithContext(ctx context.Context) CryptoKeyIAMMemberConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIAMMemberConditionOutput)
+func (i CryptoKeyIamMemberConditionArgs) ToCryptoKeyIamMemberConditionOutputWithContext(ctx context.Context) CryptoKeyIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIamMemberConditionOutput)
 }
 
-func (i CryptoKeyIAMMemberConditionArgs) ToCryptoKeyIAMMemberConditionPtrOutput() CryptoKeyIAMMemberConditionPtrOutput {
-	return i.ToCryptoKeyIAMMemberConditionPtrOutputWithContext(context.Background())
+func (i CryptoKeyIamMemberConditionArgs) ToCryptoKeyIamMemberConditionPtrOutput() CryptoKeyIamMemberConditionPtrOutput {
+	return i.ToCryptoKeyIamMemberConditionPtrOutputWithContext(context.Background())
 }
 
-func (i CryptoKeyIAMMemberConditionArgs) ToCryptoKeyIAMMemberConditionPtrOutputWithContext(ctx context.Context) CryptoKeyIAMMemberConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIAMMemberConditionOutput).ToCryptoKeyIAMMemberConditionPtrOutputWithContext(ctx)
+func (i CryptoKeyIamMemberConditionArgs) ToCryptoKeyIamMemberConditionPtrOutputWithContext(ctx context.Context) CryptoKeyIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIamMemberConditionOutput).ToCryptoKeyIamMemberConditionPtrOutputWithContext(ctx)
 }
 
-// CryptoKeyIAMMemberConditionPtrInput is an input type that accepts CryptoKeyIAMMemberConditionArgs, CryptoKeyIAMMemberConditionPtr and CryptoKeyIAMMemberConditionPtrOutput values.
-// You can construct a concrete instance of `CryptoKeyIAMMemberConditionPtrInput` via:
+// CryptoKeyIamMemberConditionPtrInput is an input type that accepts CryptoKeyIamMemberConditionArgs, CryptoKeyIamMemberConditionPtr and CryptoKeyIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `CryptoKeyIamMemberConditionPtrInput` via:
 //
-//	        CryptoKeyIAMMemberConditionArgs{...}
+//	        CryptoKeyIamMemberConditionArgs{...}
 //
 //	or:
 //
 //	        nil
-type CryptoKeyIAMMemberConditionPtrInput interface {
+type CryptoKeyIamMemberConditionPtrInput interface {
 	pulumi.Input
 
-	ToCryptoKeyIAMMemberConditionPtrOutput() CryptoKeyIAMMemberConditionPtrOutput
-	ToCryptoKeyIAMMemberConditionPtrOutputWithContext(context.Context) CryptoKeyIAMMemberConditionPtrOutput
+	ToCryptoKeyIamMemberConditionPtrOutput() CryptoKeyIamMemberConditionPtrOutput
+	ToCryptoKeyIamMemberConditionPtrOutputWithContext(context.Context) CryptoKeyIamMemberConditionPtrOutput
 }
 
-type cryptoKeyIAMMemberConditionPtrType CryptoKeyIAMMemberConditionArgs
+type cryptoKeyIamMemberConditionPtrType CryptoKeyIamMemberConditionArgs
 
-func CryptoKeyIAMMemberConditionPtr(v *CryptoKeyIAMMemberConditionArgs) CryptoKeyIAMMemberConditionPtrInput {
-	return (*cryptoKeyIAMMemberConditionPtrType)(v)
+func CryptoKeyIamMemberConditionPtr(v *CryptoKeyIamMemberConditionArgs) CryptoKeyIamMemberConditionPtrInput {
+	return (*cryptoKeyIamMemberConditionPtrType)(v)
 }
 
-func (*cryptoKeyIAMMemberConditionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CryptoKeyIAMMemberCondition)(nil)).Elem()
+func (*cryptoKeyIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CryptoKeyIamMemberCondition)(nil)).Elem()
 }
 
-func (i *cryptoKeyIAMMemberConditionPtrType) ToCryptoKeyIAMMemberConditionPtrOutput() CryptoKeyIAMMemberConditionPtrOutput {
-	return i.ToCryptoKeyIAMMemberConditionPtrOutputWithContext(context.Background())
+func (i *cryptoKeyIamMemberConditionPtrType) ToCryptoKeyIamMemberConditionPtrOutput() CryptoKeyIamMemberConditionPtrOutput {
+	return i.ToCryptoKeyIamMemberConditionPtrOutputWithContext(context.Background())
 }
 
-func (i *cryptoKeyIAMMemberConditionPtrType) ToCryptoKeyIAMMemberConditionPtrOutputWithContext(ctx context.Context) CryptoKeyIAMMemberConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIAMMemberConditionPtrOutput)
+func (i *cryptoKeyIamMemberConditionPtrType) ToCryptoKeyIamMemberConditionPtrOutputWithContext(ctx context.Context) CryptoKeyIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIamMemberConditionPtrOutput)
 }
 
-type CryptoKeyIAMMemberConditionOutput struct{ *pulumi.OutputState }
+type CryptoKeyIamMemberConditionOutput struct{ *pulumi.OutputState }
 
-func (CryptoKeyIAMMemberConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CryptoKeyIAMMemberCondition)(nil)).Elem()
+func (CryptoKeyIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CryptoKeyIamMemberCondition)(nil)).Elem()
 }
 
-func (o CryptoKeyIAMMemberConditionOutput) ToCryptoKeyIAMMemberConditionOutput() CryptoKeyIAMMemberConditionOutput {
+func (o CryptoKeyIamMemberConditionOutput) ToCryptoKeyIamMemberConditionOutput() CryptoKeyIamMemberConditionOutput {
 	return o
 }
 
-func (o CryptoKeyIAMMemberConditionOutput) ToCryptoKeyIAMMemberConditionOutputWithContext(ctx context.Context) CryptoKeyIAMMemberConditionOutput {
+func (o CryptoKeyIamMemberConditionOutput) ToCryptoKeyIamMemberConditionOutputWithContext(ctx context.Context) CryptoKeyIamMemberConditionOutput {
 	return o
 }
 
-func (o CryptoKeyIAMMemberConditionOutput) ToCryptoKeyIAMMemberConditionPtrOutput() CryptoKeyIAMMemberConditionPtrOutput {
-	return o.ToCryptoKeyIAMMemberConditionPtrOutputWithContext(context.Background())
+func (o CryptoKeyIamMemberConditionOutput) ToCryptoKeyIamMemberConditionPtrOutput() CryptoKeyIamMemberConditionPtrOutput {
+	return o.ToCryptoKeyIamMemberConditionPtrOutputWithContext(context.Background())
 }
 
-func (o CryptoKeyIAMMemberConditionOutput) ToCryptoKeyIAMMemberConditionPtrOutputWithContext(ctx context.Context) CryptoKeyIAMMemberConditionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CryptoKeyIAMMemberCondition) *CryptoKeyIAMMemberCondition {
+func (o CryptoKeyIamMemberConditionOutput) ToCryptoKeyIamMemberConditionPtrOutputWithContext(ctx context.Context) CryptoKeyIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CryptoKeyIamMemberCondition) *CryptoKeyIamMemberCondition {
 		return &v
-	}).(CryptoKeyIAMMemberConditionPtrOutput)
+	}).(CryptoKeyIamMemberConditionPtrOutput)
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -323,42 +323,42 @@ func (o CryptoKeyIAMMemberConditionOutput) ToCryptoKeyIAMMemberConditionPtrOutpu
 // > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
 // identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
 // consider it to be an entirely different resource and will treat it as such.
-func (o CryptoKeyIAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CryptoKeyIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o CryptoKeyIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CryptoKeyIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // Textual representation of an expression in Common Expression Language syntax.
-func (o CryptoKeyIAMMemberConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v CryptoKeyIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o CryptoKeyIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v CryptoKeyIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 // A title for the expression, i.e. a short string describing its purpose.
-func (o CryptoKeyIAMMemberConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v CryptoKeyIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o CryptoKeyIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v CryptoKeyIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type CryptoKeyIAMMemberConditionPtrOutput struct{ *pulumi.OutputState }
+type CryptoKeyIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
 
-func (CryptoKeyIAMMemberConditionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CryptoKeyIAMMemberCondition)(nil)).Elem()
+func (CryptoKeyIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CryptoKeyIamMemberCondition)(nil)).Elem()
 }
 
-func (o CryptoKeyIAMMemberConditionPtrOutput) ToCryptoKeyIAMMemberConditionPtrOutput() CryptoKeyIAMMemberConditionPtrOutput {
+func (o CryptoKeyIamMemberConditionPtrOutput) ToCryptoKeyIamMemberConditionPtrOutput() CryptoKeyIamMemberConditionPtrOutput {
 	return o
 }
 
-func (o CryptoKeyIAMMemberConditionPtrOutput) ToCryptoKeyIAMMemberConditionPtrOutputWithContext(ctx context.Context) CryptoKeyIAMMemberConditionPtrOutput {
+func (o CryptoKeyIamMemberConditionPtrOutput) ToCryptoKeyIamMemberConditionPtrOutputWithContext(ctx context.Context) CryptoKeyIamMemberConditionPtrOutput {
 	return o
 }
 
-func (o CryptoKeyIAMMemberConditionPtrOutput) Elem() CryptoKeyIAMMemberConditionOutput {
-	return o.ApplyT(func(v *CryptoKeyIAMMemberCondition) CryptoKeyIAMMemberCondition {
+func (o CryptoKeyIamMemberConditionPtrOutput) Elem() CryptoKeyIamMemberConditionOutput {
+	return o.ApplyT(func(v *CryptoKeyIamMemberCondition) CryptoKeyIamMemberCondition {
 		if v != nil {
 			return *v
 		}
-		var ret CryptoKeyIAMMemberCondition
+		var ret CryptoKeyIamMemberCondition
 		return ret
-	}).(CryptoKeyIAMMemberConditionOutput)
+	}).(CryptoKeyIamMemberConditionOutput)
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -366,8 +366,8 @@ func (o CryptoKeyIAMMemberConditionPtrOutput) Elem() CryptoKeyIAMMemberCondition
 // > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
 // identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
 // consider it to be an entirely different resource and will treat it as such.
-func (o CryptoKeyIAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CryptoKeyIAMMemberCondition) *string {
+func (o CryptoKeyIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CryptoKeyIamMemberCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -376,8 +376,8 @@ func (o CryptoKeyIAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutp
 }
 
 // Textual representation of an expression in Common Expression Language syntax.
-func (o CryptoKeyIAMMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CryptoKeyIAMMemberCondition) *string {
+func (o CryptoKeyIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CryptoKeyIamMemberCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -386,8 +386,8 @@ func (o CryptoKeyIAMMemberConditionPtrOutput) Expression() pulumi.StringPtrOutpu
 }
 
 // A title for the expression, i.e. a short string describing its purpose.
-func (o CryptoKeyIAMMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CryptoKeyIAMMemberCondition) *string {
+func (o CryptoKeyIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CryptoKeyIamMemberCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -1026,7 +1026,7 @@ func (o CryptoKeyVersionTemplatePtrOutput) ProtectionLevel() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-type KeyRingIAMBindingCondition struct {
+type KeyRingIamBindingCondition struct {
 	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	//
 	// > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
@@ -1039,18 +1039,18 @@ type KeyRingIAMBindingCondition struct {
 	Title string `pulumi:"title"`
 }
 
-// KeyRingIAMBindingConditionInput is an input type that accepts KeyRingIAMBindingConditionArgs and KeyRingIAMBindingConditionOutput values.
-// You can construct a concrete instance of `KeyRingIAMBindingConditionInput` via:
+// KeyRingIamBindingConditionInput is an input type that accepts KeyRingIamBindingConditionArgs and KeyRingIamBindingConditionOutput values.
+// You can construct a concrete instance of `KeyRingIamBindingConditionInput` via:
 //
-//	KeyRingIAMBindingConditionArgs{...}
-type KeyRingIAMBindingConditionInput interface {
+//	KeyRingIamBindingConditionArgs{...}
+type KeyRingIamBindingConditionInput interface {
 	pulumi.Input
 
-	ToKeyRingIAMBindingConditionOutput() KeyRingIAMBindingConditionOutput
-	ToKeyRingIAMBindingConditionOutputWithContext(context.Context) KeyRingIAMBindingConditionOutput
+	ToKeyRingIamBindingConditionOutput() KeyRingIamBindingConditionOutput
+	ToKeyRingIamBindingConditionOutputWithContext(context.Context) KeyRingIamBindingConditionOutput
 }
 
-type KeyRingIAMBindingConditionArgs struct {
+type KeyRingIamBindingConditionArgs struct {
 	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	//
 	// > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
@@ -1063,81 +1063,81 @@ type KeyRingIAMBindingConditionArgs struct {
 	Title pulumi.StringInput `pulumi:"title"`
 }
 
-func (KeyRingIAMBindingConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeyRingIAMBindingCondition)(nil)).Elem()
+func (KeyRingIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyRingIamBindingCondition)(nil)).Elem()
 }
 
-func (i KeyRingIAMBindingConditionArgs) ToKeyRingIAMBindingConditionOutput() KeyRingIAMBindingConditionOutput {
-	return i.ToKeyRingIAMBindingConditionOutputWithContext(context.Background())
+func (i KeyRingIamBindingConditionArgs) ToKeyRingIamBindingConditionOutput() KeyRingIamBindingConditionOutput {
+	return i.ToKeyRingIamBindingConditionOutputWithContext(context.Background())
 }
 
-func (i KeyRingIAMBindingConditionArgs) ToKeyRingIAMBindingConditionOutputWithContext(ctx context.Context) KeyRingIAMBindingConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIAMBindingConditionOutput)
+func (i KeyRingIamBindingConditionArgs) ToKeyRingIamBindingConditionOutputWithContext(ctx context.Context) KeyRingIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIamBindingConditionOutput)
 }
 
-func (i KeyRingIAMBindingConditionArgs) ToKeyRingIAMBindingConditionPtrOutput() KeyRingIAMBindingConditionPtrOutput {
-	return i.ToKeyRingIAMBindingConditionPtrOutputWithContext(context.Background())
+func (i KeyRingIamBindingConditionArgs) ToKeyRingIamBindingConditionPtrOutput() KeyRingIamBindingConditionPtrOutput {
+	return i.ToKeyRingIamBindingConditionPtrOutputWithContext(context.Background())
 }
 
-func (i KeyRingIAMBindingConditionArgs) ToKeyRingIAMBindingConditionPtrOutputWithContext(ctx context.Context) KeyRingIAMBindingConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIAMBindingConditionOutput).ToKeyRingIAMBindingConditionPtrOutputWithContext(ctx)
+func (i KeyRingIamBindingConditionArgs) ToKeyRingIamBindingConditionPtrOutputWithContext(ctx context.Context) KeyRingIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIamBindingConditionOutput).ToKeyRingIamBindingConditionPtrOutputWithContext(ctx)
 }
 
-// KeyRingIAMBindingConditionPtrInput is an input type that accepts KeyRingIAMBindingConditionArgs, KeyRingIAMBindingConditionPtr and KeyRingIAMBindingConditionPtrOutput values.
-// You can construct a concrete instance of `KeyRingIAMBindingConditionPtrInput` via:
+// KeyRingIamBindingConditionPtrInput is an input type that accepts KeyRingIamBindingConditionArgs, KeyRingIamBindingConditionPtr and KeyRingIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `KeyRingIamBindingConditionPtrInput` via:
 //
-//	        KeyRingIAMBindingConditionArgs{...}
+//	        KeyRingIamBindingConditionArgs{...}
 //
 //	or:
 //
 //	        nil
-type KeyRingIAMBindingConditionPtrInput interface {
+type KeyRingIamBindingConditionPtrInput interface {
 	pulumi.Input
 
-	ToKeyRingIAMBindingConditionPtrOutput() KeyRingIAMBindingConditionPtrOutput
-	ToKeyRingIAMBindingConditionPtrOutputWithContext(context.Context) KeyRingIAMBindingConditionPtrOutput
+	ToKeyRingIamBindingConditionPtrOutput() KeyRingIamBindingConditionPtrOutput
+	ToKeyRingIamBindingConditionPtrOutputWithContext(context.Context) KeyRingIamBindingConditionPtrOutput
 }
 
-type keyRingIAMBindingConditionPtrType KeyRingIAMBindingConditionArgs
+type keyRingIamBindingConditionPtrType KeyRingIamBindingConditionArgs
 
-func KeyRingIAMBindingConditionPtr(v *KeyRingIAMBindingConditionArgs) KeyRingIAMBindingConditionPtrInput {
-	return (*keyRingIAMBindingConditionPtrType)(v)
+func KeyRingIamBindingConditionPtr(v *KeyRingIamBindingConditionArgs) KeyRingIamBindingConditionPtrInput {
+	return (*keyRingIamBindingConditionPtrType)(v)
 }
 
-func (*keyRingIAMBindingConditionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**KeyRingIAMBindingCondition)(nil)).Elem()
+func (*keyRingIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyRingIamBindingCondition)(nil)).Elem()
 }
 
-func (i *keyRingIAMBindingConditionPtrType) ToKeyRingIAMBindingConditionPtrOutput() KeyRingIAMBindingConditionPtrOutput {
-	return i.ToKeyRingIAMBindingConditionPtrOutputWithContext(context.Background())
+func (i *keyRingIamBindingConditionPtrType) ToKeyRingIamBindingConditionPtrOutput() KeyRingIamBindingConditionPtrOutput {
+	return i.ToKeyRingIamBindingConditionPtrOutputWithContext(context.Background())
 }
 
-func (i *keyRingIAMBindingConditionPtrType) ToKeyRingIAMBindingConditionPtrOutputWithContext(ctx context.Context) KeyRingIAMBindingConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIAMBindingConditionPtrOutput)
+func (i *keyRingIamBindingConditionPtrType) ToKeyRingIamBindingConditionPtrOutputWithContext(ctx context.Context) KeyRingIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIamBindingConditionPtrOutput)
 }
 
-type KeyRingIAMBindingConditionOutput struct{ *pulumi.OutputState }
+type KeyRingIamBindingConditionOutput struct{ *pulumi.OutputState }
 
-func (KeyRingIAMBindingConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeyRingIAMBindingCondition)(nil)).Elem()
+func (KeyRingIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyRingIamBindingCondition)(nil)).Elem()
 }
 
-func (o KeyRingIAMBindingConditionOutput) ToKeyRingIAMBindingConditionOutput() KeyRingIAMBindingConditionOutput {
+func (o KeyRingIamBindingConditionOutput) ToKeyRingIamBindingConditionOutput() KeyRingIamBindingConditionOutput {
 	return o
 }
 
-func (o KeyRingIAMBindingConditionOutput) ToKeyRingIAMBindingConditionOutputWithContext(ctx context.Context) KeyRingIAMBindingConditionOutput {
+func (o KeyRingIamBindingConditionOutput) ToKeyRingIamBindingConditionOutputWithContext(ctx context.Context) KeyRingIamBindingConditionOutput {
 	return o
 }
 
-func (o KeyRingIAMBindingConditionOutput) ToKeyRingIAMBindingConditionPtrOutput() KeyRingIAMBindingConditionPtrOutput {
-	return o.ToKeyRingIAMBindingConditionPtrOutputWithContext(context.Background())
+func (o KeyRingIamBindingConditionOutput) ToKeyRingIamBindingConditionPtrOutput() KeyRingIamBindingConditionPtrOutput {
+	return o.ToKeyRingIamBindingConditionPtrOutputWithContext(context.Background())
 }
 
-func (o KeyRingIAMBindingConditionOutput) ToKeyRingIAMBindingConditionPtrOutputWithContext(ctx context.Context) KeyRingIAMBindingConditionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyRingIAMBindingCondition) *KeyRingIAMBindingCondition {
+func (o KeyRingIamBindingConditionOutput) ToKeyRingIamBindingConditionPtrOutputWithContext(ctx context.Context) KeyRingIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyRingIamBindingCondition) *KeyRingIamBindingCondition {
 		return &v
-	}).(KeyRingIAMBindingConditionPtrOutput)
+	}).(KeyRingIamBindingConditionPtrOutput)
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1145,42 +1145,42 @@ func (o KeyRingIAMBindingConditionOutput) ToKeyRingIAMBindingConditionPtrOutputW
 // > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
 // identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
 // consider it to be an entirely different resource and will treat it as such.
-func (o KeyRingIAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KeyRingIAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o KeyRingIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeyRingIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // Textual representation of an expression in Common Expression Language syntax.
-func (o KeyRingIAMBindingConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v KeyRingIAMBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o KeyRingIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyRingIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 // A title for the expression, i.e. a short string describing its purpose.
-func (o KeyRingIAMBindingConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v KeyRingIAMBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o KeyRingIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyRingIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type KeyRingIAMBindingConditionPtrOutput struct{ *pulumi.OutputState }
+type KeyRingIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
 
-func (KeyRingIAMBindingConditionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**KeyRingIAMBindingCondition)(nil)).Elem()
+func (KeyRingIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyRingIamBindingCondition)(nil)).Elem()
 }
 
-func (o KeyRingIAMBindingConditionPtrOutput) ToKeyRingIAMBindingConditionPtrOutput() KeyRingIAMBindingConditionPtrOutput {
+func (o KeyRingIamBindingConditionPtrOutput) ToKeyRingIamBindingConditionPtrOutput() KeyRingIamBindingConditionPtrOutput {
 	return o
 }
 
-func (o KeyRingIAMBindingConditionPtrOutput) ToKeyRingIAMBindingConditionPtrOutputWithContext(ctx context.Context) KeyRingIAMBindingConditionPtrOutput {
+func (o KeyRingIamBindingConditionPtrOutput) ToKeyRingIamBindingConditionPtrOutputWithContext(ctx context.Context) KeyRingIamBindingConditionPtrOutput {
 	return o
 }
 
-func (o KeyRingIAMBindingConditionPtrOutput) Elem() KeyRingIAMBindingConditionOutput {
-	return o.ApplyT(func(v *KeyRingIAMBindingCondition) KeyRingIAMBindingCondition {
+func (o KeyRingIamBindingConditionPtrOutput) Elem() KeyRingIamBindingConditionOutput {
+	return o.ApplyT(func(v *KeyRingIamBindingCondition) KeyRingIamBindingCondition {
 		if v != nil {
 			return *v
 		}
-		var ret KeyRingIAMBindingCondition
+		var ret KeyRingIamBindingCondition
 		return ret
-	}).(KeyRingIAMBindingConditionOutput)
+	}).(KeyRingIamBindingConditionOutput)
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1188,8 +1188,8 @@ func (o KeyRingIAMBindingConditionPtrOutput) Elem() KeyRingIAMBindingConditionOu
 // > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
 // identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
 // consider it to be an entirely different resource and will treat it as such.
-func (o KeyRingIAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KeyRingIAMBindingCondition) *string {
+func (o KeyRingIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyRingIamBindingCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -1198,8 +1198,8 @@ func (o KeyRingIAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutpu
 }
 
 // Textual representation of an expression in Common Expression Language syntax.
-func (o KeyRingIAMBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KeyRingIAMBindingCondition) *string {
+func (o KeyRingIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyRingIamBindingCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -1208,8 +1208,8 @@ func (o KeyRingIAMBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput
 }
 
 // A title for the expression, i.e. a short string describing its purpose.
-func (o KeyRingIAMBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KeyRingIAMBindingCondition) *string {
+func (o KeyRingIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyRingIamBindingCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -1217,7 +1217,7 @@ func (o KeyRingIAMBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type KeyRingIAMMemberCondition struct {
+type KeyRingIamMemberCondition struct {
 	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	//
 	// > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
@@ -1230,18 +1230,18 @@ type KeyRingIAMMemberCondition struct {
 	Title string `pulumi:"title"`
 }
 
-// KeyRingIAMMemberConditionInput is an input type that accepts KeyRingIAMMemberConditionArgs and KeyRingIAMMemberConditionOutput values.
-// You can construct a concrete instance of `KeyRingIAMMemberConditionInput` via:
+// KeyRingIamMemberConditionInput is an input type that accepts KeyRingIamMemberConditionArgs and KeyRingIamMemberConditionOutput values.
+// You can construct a concrete instance of `KeyRingIamMemberConditionInput` via:
 //
-//	KeyRingIAMMemberConditionArgs{...}
-type KeyRingIAMMemberConditionInput interface {
+//	KeyRingIamMemberConditionArgs{...}
+type KeyRingIamMemberConditionInput interface {
 	pulumi.Input
 
-	ToKeyRingIAMMemberConditionOutput() KeyRingIAMMemberConditionOutput
-	ToKeyRingIAMMemberConditionOutputWithContext(context.Context) KeyRingIAMMemberConditionOutput
+	ToKeyRingIamMemberConditionOutput() KeyRingIamMemberConditionOutput
+	ToKeyRingIamMemberConditionOutputWithContext(context.Context) KeyRingIamMemberConditionOutput
 }
 
-type KeyRingIAMMemberConditionArgs struct {
+type KeyRingIamMemberConditionArgs struct {
 	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	//
 	// > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
@@ -1254,81 +1254,81 @@ type KeyRingIAMMemberConditionArgs struct {
 	Title pulumi.StringInput `pulumi:"title"`
 }
 
-func (KeyRingIAMMemberConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeyRingIAMMemberCondition)(nil)).Elem()
+func (KeyRingIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyRingIamMemberCondition)(nil)).Elem()
 }
 
-func (i KeyRingIAMMemberConditionArgs) ToKeyRingIAMMemberConditionOutput() KeyRingIAMMemberConditionOutput {
-	return i.ToKeyRingIAMMemberConditionOutputWithContext(context.Background())
+func (i KeyRingIamMemberConditionArgs) ToKeyRingIamMemberConditionOutput() KeyRingIamMemberConditionOutput {
+	return i.ToKeyRingIamMemberConditionOutputWithContext(context.Background())
 }
 
-func (i KeyRingIAMMemberConditionArgs) ToKeyRingIAMMemberConditionOutputWithContext(ctx context.Context) KeyRingIAMMemberConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIAMMemberConditionOutput)
+func (i KeyRingIamMemberConditionArgs) ToKeyRingIamMemberConditionOutputWithContext(ctx context.Context) KeyRingIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIamMemberConditionOutput)
 }
 
-func (i KeyRingIAMMemberConditionArgs) ToKeyRingIAMMemberConditionPtrOutput() KeyRingIAMMemberConditionPtrOutput {
-	return i.ToKeyRingIAMMemberConditionPtrOutputWithContext(context.Background())
+func (i KeyRingIamMemberConditionArgs) ToKeyRingIamMemberConditionPtrOutput() KeyRingIamMemberConditionPtrOutput {
+	return i.ToKeyRingIamMemberConditionPtrOutputWithContext(context.Background())
 }
 
-func (i KeyRingIAMMemberConditionArgs) ToKeyRingIAMMemberConditionPtrOutputWithContext(ctx context.Context) KeyRingIAMMemberConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIAMMemberConditionOutput).ToKeyRingIAMMemberConditionPtrOutputWithContext(ctx)
+func (i KeyRingIamMemberConditionArgs) ToKeyRingIamMemberConditionPtrOutputWithContext(ctx context.Context) KeyRingIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIamMemberConditionOutput).ToKeyRingIamMemberConditionPtrOutputWithContext(ctx)
 }
 
-// KeyRingIAMMemberConditionPtrInput is an input type that accepts KeyRingIAMMemberConditionArgs, KeyRingIAMMemberConditionPtr and KeyRingIAMMemberConditionPtrOutput values.
-// You can construct a concrete instance of `KeyRingIAMMemberConditionPtrInput` via:
+// KeyRingIamMemberConditionPtrInput is an input type that accepts KeyRingIamMemberConditionArgs, KeyRingIamMemberConditionPtr and KeyRingIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `KeyRingIamMemberConditionPtrInput` via:
 //
-//	        KeyRingIAMMemberConditionArgs{...}
+//	        KeyRingIamMemberConditionArgs{...}
 //
 //	or:
 //
 //	        nil
-type KeyRingIAMMemberConditionPtrInput interface {
+type KeyRingIamMemberConditionPtrInput interface {
 	pulumi.Input
 
-	ToKeyRingIAMMemberConditionPtrOutput() KeyRingIAMMemberConditionPtrOutput
-	ToKeyRingIAMMemberConditionPtrOutputWithContext(context.Context) KeyRingIAMMemberConditionPtrOutput
+	ToKeyRingIamMemberConditionPtrOutput() KeyRingIamMemberConditionPtrOutput
+	ToKeyRingIamMemberConditionPtrOutputWithContext(context.Context) KeyRingIamMemberConditionPtrOutput
 }
 
-type keyRingIAMMemberConditionPtrType KeyRingIAMMemberConditionArgs
+type keyRingIamMemberConditionPtrType KeyRingIamMemberConditionArgs
 
-func KeyRingIAMMemberConditionPtr(v *KeyRingIAMMemberConditionArgs) KeyRingIAMMemberConditionPtrInput {
-	return (*keyRingIAMMemberConditionPtrType)(v)
+func KeyRingIamMemberConditionPtr(v *KeyRingIamMemberConditionArgs) KeyRingIamMemberConditionPtrInput {
+	return (*keyRingIamMemberConditionPtrType)(v)
 }
 
-func (*keyRingIAMMemberConditionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**KeyRingIAMMemberCondition)(nil)).Elem()
+func (*keyRingIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyRingIamMemberCondition)(nil)).Elem()
 }
 
-func (i *keyRingIAMMemberConditionPtrType) ToKeyRingIAMMemberConditionPtrOutput() KeyRingIAMMemberConditionPtrOutput {
-	return i.ToKeyRingIAMMemberConditionPtrOutputWithContext(context.Background())
+func (i *keyRingIamMemberConditionPtrType) ToKeyRingIamMemberConditionPtrOutput() KeyRingIamMemberConditionPtrOutput {
+	return i.ToKeyRingIamMemberConditionPtrOutputWithContext(context.Background())
 }
 
-func (i *keyRingIAMMemberConditionPtrType) ToKeyRingIAMMemberConditionPtrOutputWithContext(ctx context.Context) KeyRingIAMMemberConditionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIAMMemberConditionPtrOutput)
+func (i *keyRingIamMemberConditionPtrType) ToKeyRingIamMemberConditionPtrOutputWithContext(ctx context.Context) KeyRingIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIamMemberConditionPtrOutput)
 }
 
-type KeyRingIAMMemberConditionOutput struct{ *pulumi.OutputState }
+type KeyRingIamMemberConditionOutput struct{ *pulumi.OutputState }
 
-func (KeyRingIAMMemberConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeyRingIAMMemberCondition)(nil)).Elem()
+func (KeyRingIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyRingIamMemberCondition)(nil)).Elem()
 }
 
-func (o KeyRingIAMMemberConditionOutput) ToKeyRingIAMMemberConditionOutput() KeyRingIAMMemberConditionOutput {
+func (o KeyRingIamMemberConditionOutput) ToKeyRingIamMemberConditionOutput() KeyRingIamMemberConditionOutput {
 	return o
 }
 
-func (o KeyRingIAMMemberConditionOutput) ToKeyRingIAMMemberConditionOutputWithContext(ctx context.Context) KeyRingIAMMemberConditionOutput {
+func (o KeyRingIamMemberConditionOutput) ToKeyRingIamMemberConditionOutputWithContext(ctx context.Context) KeyRingIamMemberConditionOutput {
 	return o
 }
 
-func (o KeyRingIAMMemberConditionOutput) ToKeyRingIAMMemberConditionPtrOutput() KeyRingIAMMemberConditionPtrOutput {
-	return o.ToKeyRingIAMMemberConditionPtrOutputWithContext(context.Background())
+func (o KeyRingIamMemberConditionOutput) ToKeyRingIamMemberConditionPtrOutput() KeyRingIamMemberConditionPtrOutput {
+	return o.ToKeyRingIamMemberConditionPtrOutputWithContext(context.Background())
 }
 
-func (o KeyRingIAMMemberConditionOutput) ToKeyRingIAMMemberConditionPtrOutputWithContext(ctx context.Context) KeyRingIAMMemberConditionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyRingIAMMemberCondition) *KeyRingIAMMemberCondition {
+func (o KeyRingIamMemberConditionOutput) ToKeyRingIamMemberConditionPtrOutputWithContext(ctx context.Context) KeyRingIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyRingIamMemberCondition) *KeyRingIamMemberCondition {
 		return &v
-	}).(KeyRingIAMMemberConditionPtrOutput)
+	}).(KeyRingIamMemberConditionPtrOutput)
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1336,42 +1336,42 @@ func (o KeyRingIAMMemberConditionOutput) ToKeyRingIAMMemberConditionPtrOutputWit
 // > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
 // identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
 // consider it to be an entirely different resource and will treat it as such.
-func (o KeyRingIAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KeyRingIAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o KeyRingIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeyRingIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // Textual representation of an expression in Common Expression Language syntax.
-func (o KeyRingIAMMemberConditionOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v KeyRingIAMMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+func (o KeyRingIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyRingIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
 // A title for the expression, i.e. a short string describing its purpose.
-func (o KeyRingIAMMemberConditionOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v KeyRingIAMMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+func (o KeyRingIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyRingIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
 
-type KeyRingIAMMemberConditionPtrOutput struct{ *pulumi.OutputState }
+type KeyRingIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
 
-func (KeyRingIAMMemberConditionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**KeyRingIAMMemberCondition)(nil)).Elem()
+func (KeyRingIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyRingIamMemberCondition)(nil)).Elem()
 }
 
-func (o KeyRingIAMMemberConditionPtrOutput) ToKeyRingIAMMemberConditionPtrOutput() KeyRingIAMMemberConditionPtrOutput {
+func (o KeyRingIamMemberConditionPtrOutput) ToKeyRingIamMemberConditionPtrOutput() KeyRingIamMemberConditionPtrOutput {
 	return o
 }
 
-func (o KeyRingIAMMemberConditionPtrOutput) ToKeyRingIAMMemberConditionPtrOutputWithContext(ctx context.Context) KeyRingIAMMemberConditionPtrOutput {
+func (o KeyRingIamMemberConditionPtrOutput) ToKeyRingIamMemberConditionPtrOutputWithContext(ctx context.Context) KeyRingIamMemberConditionPtrOutput {
 	return o
 }
 
-func (o KeyRingIAMMemberConditionPtrOutput) Elem() KeyRingIAMMemberConditionOutput {
-	return o.ApplyT(func(v *KeyRingIAMMemberCondition) KeyRingIAMMemberCondition {
+func (o KeyRingIamMemberConditionPtrOutput) Elem() KeyRingIamMemberConditionOutput {
+	return o.ApplyT(func(v *KeyRingIamMemberCondition) KeyRingIamMemberCondition {
 		if v != nil {
 			return *v
 		}
-		var ret KeyRingIAMMemberCondition
+		var ret KeyRingIamMemberCondition
 		return ret
-	}).(KeyRingIAMMemberConditionOutput)
+	}).(KeyRingIamMemberConditionOutput)
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1379,8 +1379,8 @@ func (o KeyRingIAMMemberConditionPtrOutput) Elem() KeyRingIAMMemberConditionOutp
 // > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
 // identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
 // consider it to be an entirely different resource and will treat it as such.
-func (o KeyRingIAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KeyRingIAMMemberCondition) *string {
+func (o KeyRingIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyRingIamMemberCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -1389,8 +1389,8 @@ func (o KeyRingIAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput
 }
 
 // Textual representation of an expression in Common Expression Language syntax.
-func (o KeyRingIAMMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KeyRingIAMMemberCondition) *string {
+func (o KeyRingIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyRingIamMemberCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -1399,8 +1399,8 @@ func (o KeyRingIAMMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput 
 }
 
 // A title for the expression, i.e. a short string describing its purpose.
-func (o KeyRingIAMMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KeyRingIAMMemberCondition) *string {
+func (o KeyRingIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyRingIamMemberCondition) *string {
 		if v == nil {
 			return nil
 		}
@@ -2048,10 +2048,10 @@ func (o GetKMSCryptoKeyVersionTemplateArrayOutput) Index(i pulumi.IntInput) GetK
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyIAMBindingConditionInput)(nil)).Elem(), CryptoKeyIAMBindingConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyIAMBindingConditionPtrInput)(nil)).Elem(), CryptoKeyIAMBindingConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyIAMMemberConditionInput)(nil)).Elem(), CryptoKeyIAMMemberConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyIAMMemberConditionPtrInput)(nil)).Elem(), CryptoKeyIAMMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyIamBindingConditionInput)(nil)).Elem(), CryptoKeyIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyIamBindingConditionPtrInput)(nil)).Elem(), CryptoKeyIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyIamMemberConditionInput)(nil)).Elem(), CryptoKeyIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyIamMemberConditionPtrInput)(nil)).Elem(), CryptoKeyIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionAttestationInput)(nil)).Elem(), CryptoKeyVersionAttestationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionAttestationArrayInput)(nil)).Elem(), CryptoKeyVersionAttestationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionAttestationCertChainsInput)(nil)).Elem(), CryptoKeyVersionAttestationCertChainsArgs{})
@@ -2060,10 +2060,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrInput)(nil)).Elem(), CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionTemplateInput)(nil)).Elem(), CryptoKeyVersionTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionTemplatePtrInput)(nil)).Elem(), CryptoKeyVersionTemplateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingIAMBindingConditionInput)(nil)).Elem(), KeyRingIAMBindingConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingIAMBindingConditionPtrInput)(nil)).Elem(), KeyRingIAMBindingConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingIAMMemberConditionInput)(nil)).Elem(), KeyRingIAMMemberConditionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingIAMMemberConditionPtrInput)(nil)).Elem(), KeyRingIAMMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingIamBindingConditionInput)(nil)).Elem(), KeyRingIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingIamBindingConditionPtrInput)(nil)).Elem(), KeyRingIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingIamMemberConditionInput)(nil)).Elem(), KeyRingIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingIamMemberConditionPtrInput)(nil)).Elem(), KeyRingIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingImportJobAttestationInput)(nil)).Elem(), KeyRingImportJobAttestationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingImportJobAttestationArrayInput)(nil)).Elem(), KeyRingImportJobAttestationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingImportJobPublicKeyInput)(nil)).Elem(), KeyRingImportJobPublicKeyArgs{})
@@ -2076,10 +2076,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKMSCryptoKeyVersionPublicKeyArrayInput)(nil)).Elem(), GetKMSCryptoKeyVersionPublicKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKMSCryptoKeyVersionTemplateInput)(nil)).Elem(), GetKMSCryptoKeyVersionTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKMSCryptoKeyVersionTemplateArrayInput)(nil)).Elem(), GetKMSCryptoKeyVersionTemplateArray{})
-	pulumi.RegisterOutputType(CryptoKeyIAMBindingConditionOutput{})
-	pulumi.RegisterOutputType(CryptoKeyIAMBindingConditionPtrOutput{})
-	pulumi.RegisterOutputType(CryptoKeyIAMMemberConditionOutput{})
-	pulumi.RegisterOutputType(CryptoKeyIAMMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(CryptoKeyIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(CryptoKeyIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(CryptoKeyIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(CryptoKeyIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(CryptoKeyVersionAttestationOutput{})
 	pulumi.RegisterOutputType(CryptoKeyVersionAttestationArrayOutput{})
 	pulumi.RegisterOutputType(CryptoKeyVersionAttestationCertChainsOutput{})
@@ -2088,10 +2088,10 @@ func init() {
 	pulumi.RegisterOutputType(CryptoKeyVersionAttestationExternalProtectionLevelOptionsPtrOutput{})
 	pulumi.RegisterOutputType(CryptoKeyVersionTemplateOutput{})
 	pulumi.RegisterOutputType(CryptoKeyVersionTemplatePtrOutput{})
-	pulumi.RegisterOutputType(KeyRingIAMBindingConditionOutput{})
-	pulumi.RegisterOutputType(KeyRingIAMBindingConditionPtrOutput{})
-	pulumi.RegisterOutputType(KeyRingIAMMemberConditionOutput{})
-	pulumi.RegisterOutputType(KeyRingIAMMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(KeyRingIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(KeyRingIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(KeyRingIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(KeyRingIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(KeyRingImportJobAttestationOutput{})
 	pulumi.RegisterOutputType(KeyRingImportJobAttestationArrayOutput{})
 	pulumi.RegisterOutputType(KeyRingImportJobPublicKeyOutput{})

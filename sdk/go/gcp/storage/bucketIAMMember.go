@@ -14,17 +14,17 @@ import (
 
 // Three different resources help you manage your IAM policy for Cloud Storage Bucket. Each of these resources serves a different use case:
 //
-// * `storage.BucketIAMPolicy`: Authoritative. Sets the IAM policy for the bucket and replaces any existing policy already attached.
-// * `storage.BucketIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the bucket are preserved.
-// * `storage.BucketIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the bucket are preserved.
+// * `storage.BucketIamPolicy`: Authoritative. Sets the IAM policy for the bucket and replaces any existing policy already attached.
+// * `storage.BucketIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the bucket are preserved.
+// * `storage.BucketIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the bucket are preserved.
 //
 // # A data source can be used to retrieve policy data in advent you do not need creation
 //
-// * `storage.BucketIAMPolicy`: Retrieves the IAM policy for the bucket
+// * `storage.BucketIamPolicy`: Retrieves the IAM policy for the bucket
 //
-// > **Note:** `storage.BucketIAMPolicy` **cannot** be used in conjunction with `storage.BucketIAMBinding` and `storage.BucketIAMMember` or they will fight over what your policy should be.
+// > **Note:** `storage.BucketIamPolicy` **cannot** be used in conjunction with `storage.BucketIamBinding` and `storage.BucketIamMember` or they will fight over what your policy should be.
 //
-// > **Note:** `storage.BucketIAMBinding` resources **can be** used in conjunction with `storage.BucketIAMMember` resources **only if** they do not grant privilege to the same role.
+// > **Note:** `storage.BucketIamBinding` resources **can be** used in conjunction with `storage.BucketIamMember` resources **only if** they do not grant privilege to the same role.
 //
 // > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 //
@@ -43,8 +43,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
+//			admin, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
 //					{
 //						Role: "roles/storage.admin",
 //						Members: []string{
@@ -56,7 +56,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = storage.NewBucketIAMPolicy(ctx, "policy", &storage.BucketIAMPolicyArgs{
+//			_, err = storage.NewBucketIamPolicy(ctx, "policy", &storage.BucketIamPolicyArgs{
 //				Bucket:     pulumi.Any(google_storage_bucket.Default.Name),
 //				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
@@ -84,8 +84,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
+//			admin, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
 //					{
 //						Role: "roles/storage.admin",
 //						Members: []string{
@@ -102,7 +102,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = storage.NewBucketIAMPolicy(ctx, "policy", &storage.BucketIAMPolicyArgs{
+//			_, err = storage.NewBucketIamPolicy(ctx, "policy", &storage.BucketIamPolicyArgs{
 //				Bucket:     pulumi.Any(google_storage_bucket.Default.Name),
 //				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
@@ -128,7 +128,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := storage.NewBucketIAMBinding(ctx, "binding", &storage.BucketIAMBindingArgs{
+//			_, err := storage.NewBucketIamBinding(ctx, "binding", &storage.BucketIamBindingArgs{
 //				Bucket: pulumi.Any(google_storage_bucket.Default.Name),
 //				Role:   pulumi.String("roles/storage.admin"),
 //				Members: pulumi.StringArray{
@@ -158,13 +158,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := storage.NewBucketIAMBinding(ctx, "binding", &storage.BucketIAMBindingArgs{
+//			_, err := storage.NewBucketIamBinding(ctx, "binding", &storage.BucketIamBindingArgs{
 //				Bucket: pulumi.Any(google_storage_bucket.Default.Name),
 //				Role:   pulumi.String("roles/storage.admin"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
 //				},
-//				Condition: &storage.BucketIAMBindingConditionArgs{
+//				Condition: &storage.BucketIamBindingConditionArgs{
 //					Title:       pulumi.String("expires_after_2019_12_31"),
 //					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
 //					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
@@ -192,7 +192,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := storage.NewBucketIAMMember(ctx, "member", &storage.BucketIAMMemberArgs{
+//			_, err := storage.NewBucketIamMember(ctx, "member", &storage.BucketIamMemberArgs{
 //				Bucket: pulumi.Any(google_storage_bucket.Default.Name),
 //				Role:   pulumi.String("roles/storage.admin"),
 //				Member: pulumi.String("user:jane@example.com"),
@@ -220,11 +220,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := storage.NewBucketIAMMember(ctx, "member", &storage.BucketIAMMemberArgs{
+//			_, err := storage.NewBucketIamMember(ctx, "member", &storage.BucketIamMemberArgs{
 //				Bucket: pulumi.Any(google_storage_bucket.Default.Name),
 //				Role:   pulumi.String("roles/storage.admin"),
 //				Member: pulumi.String("user:jane@example.com"),
-//				Condition: &storage.BucketIAMMemberConditionArgs{
+//				Condition: &storage.BucketIamMemberConditionArgs{
 //					Title:       pulumi.String("expires_after_2019_12_31"),
 //					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
 //					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
@@ -245,7 +245,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:storage/bucketIAMMember:BucketIAMMember editor "b/{{bucket}} roles/storage.objectViewer user:jane@example.com"
+//	$ pulumi import gcp:storage/bucketIamMember:BucketIamMember editor "b/{{bucket}} roles/storage.objectViewer user:jane@example.com"
 //
 // ```
 //
@@ -253,7 +253,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:storage/bucketIAMMember:BucketIAMMember editor "b/{{bucket}} roles/storage.objectViewer"
+//	$ pulumi import gcp:storage/bucketIamMember:BucketIamMember editor "b/{{bucket}} roles/storage.objectViewer"
 //
 // ```
 //
@@ -261,14 +261,14 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:storage/bucketIAMMember:BucketIAMMember editor b/{{bucket}}
+//	$ pulumi import gcp:storage/bucketIamMember:BucketIamMember editor b/{{bucket}}
 //
 // ```
 //
 //	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 //
 // full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
-type BucketIAMMember struct {
+type BucketIamMember struct {
 	pulumi.CustomResourceState
 
 	// Used to find the parent resource to bind the IAM policy to
@@ -287,19 +287,19 @@ type BucketIAMMember struct {
 	Bucket pulumi.StringOutput `pulumi:"bucket"`
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
-	Condition BucketIAMMemberConditionPtrOutput `pulumi:"condition"`
+	Condition BucketIamMemberConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
 	Etag   pulumi.StringOutput `pulumi:"etag"`
 	Member pulumi.StringOutput `pulumi:"member"`
 	// The role that should be applied. Only one
-	// `storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `storage.BucketIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringOutput `pulumi:"role"`
 }
 
-// NewBucketIAMMember registers a new resource with the given unique name, arguments, and options.
-func NewBucketIAMMember(ctx *pulumi.Context,
-	name string, args *BucketIAMMemberArgs, opts ...pulumi.ResourceOption) (*BucketIAMMember, error) {
+// NewBucketIamMember registers a new resource with the given unique name, arguments, and options.
+func NewBucketIamMember(ctx *pulumi.Context,
+	name string, args *BucketIamMemberArgs, opts ...pulumi.ResourceOption) (*BucketIamMember, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -314,28 +314,28 @@ func NewBucketIAMMember(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Role'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
-	var resource BucketIAMMember
-	err := ctx.RegisterResource("gcp:storage/bucketIAMMember:BucketIAMMember", name, args, &resource, opts...)
+	var resource BucketIamMember
+	err := ctx.RegisterResource("gcp:storage/bucketIamMember:BucketIamMember", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// GetBucketIAMMember gets an existing BucketIAMMember resource's state with the given name, ID, and optional
+// GetBucketIamMember gets an existing BucketIamMember resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetBucketIAMMember(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *BucketIAMMemberState, opts ...pulumi.ResourceOption) (*BucketIAMMember, error) {
-	var resource BucketIAMMember
-	err := ctx.ReadResource("gcp:storage/bucketIAMMember:BucketIAMMember", name, id, state, &resource, opts...)
+func GetBucketIamMember(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *BucketIamMemberState, opts ...pulumi.ResourceOption) (*BucketIamMember, error) {
+	var resource BucketIamMember
+	err := ctx.ReadResource("gcp:storage/bucketIamMember:BucketIamMember", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering BucketIAMMember resources.
-type bucketIAMMemberState struct {
+// Input properties used for looking up and filtering BucketIamMember resources.
+type bucketIamMemberState struct {
 	// Used to find the parent resource to bind the IAM policy to
 	//
 	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
@@ -352,17 +352,17 @@ type bucketIAMMemberState struct {
 	Bucket *string `pulumi:"bucket"`
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
-	Condition *BucketIAMMemberCondition `pulumi:"condition"`
+	Condition *BucketIamMemberCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
 	Etag   *string `pulumi:"etag"`
 	Member *string `pulumi:"member"`
 	// The role that should be applied. Only one
-	// `storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `storage.BucketIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role *string `pulumi:"role"`
 }
 
-type BucketIAMMemberState struct {
+type BucketIamMemberState struct {
 	// Used to find the parent resource to bind the IAM policy to
 	//
 	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
@@ -379,21 +379,21 @@ type BucketIAMMemberState struct {
 	Bucket pulumi.StringPtrInput
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
-	Condition BucketIAMMemberConditionPtrInput
+	Condition BucketIamMemberConditionPtrInput
 	// (Computed) The etag of the IAM policy.
 	Etag   pulumi.StringPtrInput
 	Member pulumi.StringPtrInput
 	// The role that should be applied. Only one
-	// `storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `storage.BucketIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringPtrInput
 }
 
-func (BucketIAMMemberState) ElementType() reflect.Type {
-	return reflect.TypeOf((*bucketIAMMemberState)(nil)).Elem()
+func (BucketIamMemberState) ElementType() reflect.Type {
+	return reflect.TypeOf((*bucketIamMemberState)(nil)).Elem()
 }
 
-type bucketIAMMemberArgs struct {
+type bucketIamMemberArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	//
 	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
@@ -410,16 +410,16 @@ type bucketIAMMemberArgs struct {
 	Bucket string `pulumi:"bucket"`
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
-	Condition *BucketIAMMemberCondition `pulumi:"condition"`
+	Condition *BucketIamMemberCondition `pulumi:"condition"`
 	Member    string                    `pulumi:"member"`
 	// The role that should be applied. Only one
-	// `storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `storage.BucketIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role string `pulumi:"role"`
 }
 
-// The set of arguments for constructing a BucketIAMMember resource.
-type BucketIAMMemberArgs struct {
+// The set of arguments for constructing a BucketIamMember resource.
+type BucketIamMemberArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	//
 	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
@@ -436,98 +436,98 @@ type BucketIAMMemberArgs struct {
 	Bucket pulumi.StringInput
 	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
-	Condition BucketIAMMemberConditionPtrInput
+	Condition BucketIamMemberConditionPtrInput
 	Member    pulumi.StringInput
 	// The role that should be applied. Only one
-	// `storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `storage.BucketIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringInput
 }
 
-func (BucketIAMMemberArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*bucketIAMMemberArgs)(nil)).Elem()
+func (BucketIamMemberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*bucketIamMemberArgs)(nil)).Elem()
 }
 
-type BucketIAMMemberInput interface {
+type BucketIamMemberInput interface {
 	pulumi.Input
 
-	ToBucketIAMMemberOutput() BucketIAMMemberOutput
-	ToBucketIAMMemberOutputWithContext(ctx context.Context) BucketIAMMemberOutput
+	ToBucketIamMemberOutput() BucketIamMemberOutput
+	ToBucketIamMemberOutputWithContext(ctx context.Context) BucketIamMemberOutput
 }
 
-func (*BucketIAMMember) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketIAMMember)(nil)).Elem()
+func (*BucketIamMember) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketIamMember)(nil)).Elem()
 }
 
-func (i *BucketIAMMember) ToBucketIAMMemberOutput() BucketIAMMemberOutput {
-	return i.ToBucketIAMMemberOutputWithContext(context.Background())
+func (i *BucketIamMember) ToBucketIamMemberOutput() BucketIamMemberOutput {
+	return i.ToBucketIamMemberOutputWithContext(context.Background())
 }
 
-func (i *BucketIAMMember) ToBucketIAMMemberOutputWithContext(ctx context.Context) BucketIAMMemberOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketIAMMemberOutput)
+func (i *BucketIamMember) ToBucketIamMemberOutputWithContext(ctx context.Context) BucketIamMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketIamMemberOutput)
 }
 
-// BucketIAMMemberArrayInput is an input type that accepts BucketIAMMemberArray and BucketIAMMemberArrayOutput values.
-// You can construct a concrete instance of `BucketIAMMemberArrayInput` via:
+// BucketIamMemberArrayInput is an input type that accepts BucketIamMemberArray and BucketIamMemberArrayOutput values.
+// You can construct a concrete instance of `BucketIamMemberArrayInput` via:
 //
-//	BucketIAMMemberArray{ BucketIAMMemberArgs{...} }
-type BucketIAMMemberArrayInput interface {
+//	BucketIamMemberArray{ BucketIamMemberArgs{...} }
+type BucketIamMemberArrayInput interface {
 	pulumi.Input
 
-	ToBucketIAMMemberArrayOutput() BucketIAMMemberArrayOutput
-	ToBucketIAMMemberArrayOutputWithContext(context.Context) BucketIAMMemberArrayOutput
+	ToBucketIamMemberArrayOutput() BucketIamMemberArrayOutput
+	ToBucketIamMemberArrayOutputWithContext(context.Context) BucketIamMemberArrayOutput
 }
 
-type BucketIAMMemberArray []BucketIAMMemberInput
+type BucketIamMemberArray []BucketIamMemberInput
 
-func (BucketIAMMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*BucketIAMMember)(nil)).Elem()
+func (BucketIamMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*BucketIamMember)(nil)).Elem()
 }
 
-func (i BucketIAMMemberArray) ToBucketIAMMemberArrayOutput() BucketIAMMemberArrayOutput {
-	return i.ToBucketIAMMemberArrayOutputWithContext(context.Background())
+func (i BucketIamMemberArray) ToBucketIamMemberArrayOutput() BucketIamMemberArrayOutput {
+	return i.ToBucketIamMemberArrayOutputWithContext(context.Background())
 }
 
-func (i BucketIAMMemberArray) ToBucketIAMMemberArrayOutputWithContext(ctx context.Context) BucketIAMMemberArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketIAMMemberArrayOutput)
+func (i BucketIamMemberArray) ToBucketIamMemberArrayOutputWithContext(ctx context.Context) BucketIamMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketIamMemberArrayOutput)
 }
 
-// BucketIAMMemberMapInput is an input type that accepts BucketIAMMemberMap and BucketIAMMemberMapOutput values.
-// You can construct a concrete instance of `BucketIAMMemberMapInput` via:
+// BucketIamMemberMapInput is an input type that accepts BucketIamMemberMap and BucketIamMemberMapOutput values.
+// You can construct a concrete instance of `BucketIamMemberMapInput` via:
 //
-//	BucketIAMMemberMap{ "key": BucketIAMMemberArgs{...} }
-type BucketIAMMemberMapInput interface {
+//	BucketIamMemberMap{ "key": BucketIamMemberArgs{...} }
+type BucketIamMemberMapInput interface {
 	pulumi.Input
 
-	ToBucketIAMMemberMapOutput() BucketIAMMemberMapOutput
-	ToBucketIAMMemberMapOutputWithContext(context.Context) BucketIAMMemberMapOutput
+	ToBucketIamMemberMapOutput() BucketIamMemberMapOutput
+	ToBucketIamMemberMapOutputWithContext(context.Context) BucketIamMemberMapOutput
 }
 
-type BucketIAMMemberMap map[string]BucketIAMMemberInput
+type BucketIamMemberMap map[string]BucketIamMemberInput
 
-func (BucketIAMMemberMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*BucketIAMMember)(nil)).Elem()
+func (BucketIamMemberMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*BucketIamMember)(nil)).Elem()
 }
 
-func (i BucketIAMMemberMap) ToBucketIAMMemberMapOutput() BucketIAMMemberMapOutput {
-	return i.ToBucketIAMMemberMapOutputWithContext(context.Background())
+func (i BucketIamMemberMap) ToBucketIamMemberMapOutput() BucketIamMemberMapOutput {
+	return i.ToBucketIamMemberMapOutputWithContext(context.Background())
 }
 
-func (i BucketIAMMemberMap) ToBucketIAMMemberMapOutputWithContext(ctx context.Context) BucketIAMMemberMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketIAMMemberMapOutput)
+func (i BucketIamMemberMap) ToBucketIamMemberMapOutputWithContext(ctx context.Context) BucketIamMemberMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketIamMemberMapOutput)
 }
 
-type BucketIAMMemberOutput struct{ *pulumi.OutputState }
+type BucketIamMemberOutput struct{ *pulumi.OutputState }
 
-func (BucketIAMMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketIAMMember)(nil)).Elem()
+func (BucketIamMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketIamMember)(nil)).Elem()
 }
 
-func (o BucketIAMMemberOutput) ToBucketIAMMemberOutput() BucketIAMMemberOutput {
+func (o BucketIamMemberOutput) ToBucketIamMemberOutput() BucketIamMemberOutput {
 	return o
 }
 
-func (o BucketIAMMemberOutput) ToBucketIAMMemberOutputWithContext(ctx context.Context) BucketIAMMemberOutput {
+func (o BucketIamMemberOutput) ToBucketIamMemberOutputWithContext(ctx context.Context) BucketIamMemberOutput {
 	return o
 }
 
@@ -544,77 +544,77 @@ func (o BucketIAMMemberOutput) ToBucketIAMMemberOutputWithContext(ctx context.Co
 //   - **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 //   - **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 //   - **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
-func (o BucketIAMMemberOutput) Bucket() pulumi.StringOutput {
-	return o.ApplyT(func(v *BucketIAMMember) pulumi.StringOutput { return v.Bucket }).(pulumi.StringOutput)
+func (o BucketIamMemberOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketIamMember) pulumi.StringOutput { return v.Bucket }).(pulumi.StringOutput)
 }
 
 // An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 // Structure is documented below.
-func (o BucketIAMMemberOutput) Condition() BucketIAMMemberConditionPtrOutput {
-	return o.ApplyT(func(v *BucketIAMMember) BucketIAMMemberConditionPtrOutput { return v.Condition }).(BucketIAMMemberConditionPtrOutput)
+func (o BucketIamMemberOutput) Condition() BucketIamMemberConditionPtrOutput {
+	return o.ApplyT(func(v *BucketIamMember) BucketIamMemberConditionPtrOutput { return v.Condition }).(BucketIamMemberConditionPtrOutput)
 }
 
 // (Computed) The etag of the IAM policy.
-func (o BucketIAMMemberOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v *BucketIAMMember) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+func (o BucketIamMemberOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketIamMember) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-func (o BucketIAMMemberOutput) Member() pulumi.StringOutput {
-	return o.ApplyT(func(v *BucketIAMMember) pulumi.StringOutput { return v.Member }).(pulumi.StringOutput)
+func (o BucketIamMemberOutput) Member() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketIamMember) pulumi.StringOutput { return v.Member }).(pulumi.StringOutput)
 }
 
 // The role that should be applied. Only one
-// `storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
+// `storage.BucketIamBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
-func (o BucketIAMMemberOutput) Role() pulumi.StringOutput {
-	return o.ApplyT(func(v *BucketIAMMember) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
+func (o BucketIamMemberOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v *BucketIamMember) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }
 
-type BucketIAMMemberArrayOutput struct{ *pulumi.OutputState }
+type BucketIamMemberArrayOutput struct{ *pulumi.OutputState }
 
-func (BucketIAMMemberArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*BucketIAMMember)(nil)).Elem()
+func (BucketIamMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*BucketIamMember)(nil)).Elem()
 }
 
-func (o BucketIAMMemberArrayOutput) ToBucketIAMMemberArrayOutput() BucketIAMMemberArrayOutput {
+func (o BucketIamMemberArrayOutput) ToBucketIamMemberArrayOutput() BucketIamMemberArrayOutput {
 	return o
 }
 
-func (o BucketIAMMemberArrayOutput) ToBucketIAMMemberArrayOutputWithContext(ctx context.Context) BucketIAMMemberArrayOutput {
+func (o BucketIamMemberArrayOutput) ToBucketIamMemberArrayOutputWithContext(ctx context.Context) BucketIamMemberArrayOutput {
 	return o
 }
 
-func (o BucketIAMMemberArrayOutput) Index(i pulumi.IntInput) BucketIAMMemberOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BucketIAMMember {
-		return vs[0].([]*BucketIAMMember)[vs[1].(int)]
-	}).(BucketIAMMemberOutput)
+func (o BucketIamMemberArrayOutput) Index(i pulumi.IntInput) BucketIamMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BucketIamMember {
+		return vs[0].([]*BucketIamMember)[vs[1].(int)]
+	}).(BucketIamMemberOutput)
 }
 
-type BucketIAMMemberMapOutput struct{ *pulumi.OutputState }
+type BucketIamMemberMapOutput struct{ *pulumi.OutputState }
 
-func (BucketIAMMemberMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*BucketIAMMember)(nil)).Elem()
+func (BucketIamMemberMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*BucketIamMember)(nil)).Elem()
 }
 
-func (o BucketIAMMemberMapOutput) ToBucketIAMMemberMapOutput() BucketIAMMemberMapOutput {
+func (o BucketIamMemberMapOutput) ToBucketIamMemberMapOutput() BucketIamMemberMapOutput {
 	return o
 }
 
-func (o BucketIAMMemberMapOutput) ToBucketIAMMemberMapOutputWithContext(ctx context.Context) BucketIAMMemberMapOutput {
+func (o BucketIamMemberMapOutput) ToBucketIamMemberMapOutputWithContext(ctx context.Context) BucketIamMemberMapOutput {
 	return o
 }
 
-func (o BucketIAMMemberMapOutput) MapIndex(k pulumi.StringInput) BucketIAMMemberOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *BucketIAMMember {
-		return vs[0].(map[string]*BucketIAMMember)[vs[1].(string)]
-	}).(BucketIAMMemberOutput)
+func (o BucketIamMemberMapOutput) MapIndex(k pulumi.StringInput) BucketIamMemberOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *BucketIamMember {
+		return vs[0].(map[string]*BucketIamMember)[vs[1].(string)]
+	}).(BucketIamMemberOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketIAMMemberInput)(nil)).Elem(), &BucketIAMMember{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketIAMMemberArrayInput)(nil)).Elem(), BucketIAMMemberArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketIAMMemberMapInput)(nil)).Elem(), BucketIAMMemberMap{})
-	pulumi.RegisterOutputType(BucketIAMMemberOutput{})
-	pulumi.RegisterOutputType(BucketIAMMemberArrayOutput{})
-	pulumi.RegisterOutputType(BucketIAMMemberMapOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketIamMemberInput)(nil)).Elem(), &BucketIamMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketIamMemberArrayInput)(nil)).Elem(), BucketIamMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketIamMemberMapInput)(nil)).Elem(), BucketIamMemberMap{})
+	pulumi.RegisterOutputType(BucketIamMemberOutput{})
+	pulumi.RegisterOutputType(BucketIamMemberArrayOutput{})
+	pulumi.RegisterOutputType(BucketIamMemberMapOutput{})
 }

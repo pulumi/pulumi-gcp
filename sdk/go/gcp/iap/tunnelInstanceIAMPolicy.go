@@ -14,17 +14,17 @@ import (
 
 // Three different resources help you manage your IAM policy for Identity-Aware Proxy TunnelInstance. Each of these resources serves a different use case:
 //
-// * `iap.TunnelInstanceIAMPolicy`: Authoritative. Sets the IAM policy for the tunnelinstance and replaces any existing policy already attached.
-// * `iap.TunnelInstanceIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the tunnelinstance are preserved.
-// * `iap.TunnelInstanceIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the tunnelinstance are preserved.
+// * `iap.TunnelInstanceIamPolicy`: Authoritative. Sets the IAM policy for the tunnelinstance and replaces any existing policy already attached.
+// * `iap.TunnelInstanceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the tunnelinstance are preserved.
+// * `iap.TunnelInstanceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the tunnelinstance are preserved.
 //
 // # A data source can be used to retrieve policy data in advent you do not need creation
 //
-// * `iap.TunnelInstanceIAMPolicy`: Retrieves the IAM policy for the tunnelinstance
+// * `iap.TunnelInstanceIamPolicy`: Retrieves the IAM policy for the tunnelinstance
 //
-// > **Note:** `iap.TunnelInstanceIAMPolicy` **cannot** be used in conjunction with `iap.TunnelInstanceIAMBinding` and `iap.TunnelInstanceIAMMember` or they will fight over what your policy should be.
+// > **Note:** `iap.TunnelInstanceIamPolicy` **cannot** be used in conjunction with `iap.TunnelInstanceIamBinding` and `iap.TunnelInstanceIamMember` or they will fight over what your policy should be.
 //
-// > **Note:** `iap.TunnelInstanceIAMBinding` resources **can be** used in conjunction with `iap.TunnelInstanceIAMMember` resources **only if** they do not grant privilege to the same role.
+// > **Note:** `iap.TunnelInstanceIamBinding` resources **can be** used in conjunction with `iap.TunnelInstanceIamMember` resources **only if** they do not grant privilege to the same role.
 //
 // > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
 //
@@ -43,8 +43,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
+//			admin, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
 //					{
 //						Role: "roles/iap.tunnelResourceAccessor",
 //						Members: []string{
@@ -56,7 +56,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = iap.NewTunnelInstanceIAMPolicy(ctx, "policy", &iap.TunnelInstanceIAMPolicyArgs{
+//			_, err = iap.NewTunnelInstanceIamPolicy(ctx, "policy", &iap.TunnelInstanceIamPolicyArgs{
 //				Project:    pulumi.Any(google_compute_instance.Tunnelvm.Project),
 //				Zone:       pulumi.Any(google_compute_instance.Tunnelvm.Zone),
 //				Instance:   pulumi.Any(google_compute_instance.Tunnelvm.Name),
@@ -86,8 +86,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
+//			admin, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
 //					{
 //						Role: "roles/iap.tunnelResourceAccessor",
 //						Members: []string{
@@ -104,7 +104,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = iap.NewTunnelInstanceIAMPolicy(ctx, "policy", &iap.TunnelInstanceIAMPolicyArgs{
+//			_, err = iap.NewTunnelInstanceIamPolicy(ctx, "policy", &iap.TunnelInstanceIamPolicyArgs{
 //				Project:    pulumi.Any(google_compute_instance.Tunnelvm.Project),
 //				Zone:       pulumi.Any(google_compute_instance.Tunnelvm.Zone),
 //				Instance:   pulumi.Any(google_compute_instance.Tunnelvm.Name),
@@ -132,7 +132,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := iap.NewTunnelInstanceIAMBinding(ctx, "binding", &iap.TunnelInstanceIAMBindingArgs{
+//			_, err := iap.NewTunnelInstanceIamBinding(ctx, "binding", &iap.TunnelInstanceIamBindingArgs{
 //				Project:  pulumi.Any(google_compute_instance.Tunnelvm.Project),
 //				Zone:     pulumi.Any(google_compute_instance.Tunnelvm.Zone),
 //				Instance: pulumi.Any(google_compute_instance.Tunnelvm.Name),
@@ -164,7 +164,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := iap.NewTunnelInstanceIAMBinding(ctx, "binding", &iap.TunnelInstanceIAMBindingArgs{
+//			_, err := iap.NewTunnelInstanceIamBinding(ctx, "binding", &iap.TunnelInstanceIamBindingArgs{
 //				Project:  pulumi.Any(google_compute_instance.Tunnelvm.Project),
 //				Zone:     pulumi.Any(google_compute_instance.Tunnelvm.Zone),
 //				Instance: pulumi.Any(google_compute_instance.Tunnelvm.Name),
@@ -172,7 +172,7 @@ import (
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
 //				},
-//				Condition: &iap.TunnelInstanceIAMBindingConditionArgs{
+//				Condition: &iap.TunnelInstanceIamBindingConditionArgs{
 //					Title:       pulumi.String("expires_after_2019_12_31"),
 //					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
 //					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
@@ -200,7 +200,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := iap.NewTunnelInstanceIAMMember(ctx, "member", &iap.TunnelInstanceIAMMemberArgs{
+//			_, err := iap.NewTunnelInstanceIamMember(ctx, "member", &iap.TunnelInstanceIamMemberArgs{
 //				Project:  pulumi.Any(google_compute_instance.Tunnelvm.Project),
 //				Zone:     pulumi.Any(google_compute_instance.Tunnelvm.Zone),
 //				Instance: pulumi.Any(google_compute_instance.Tunnelvm.Name),
@@ -230,13 +230,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := iap.NewTunnelInstanceIAMMember(ctx, "member", &iap.TunnelInstanceIAMMemberArgs{
+//			_, err := iap.NewTunnelInstanceIamMember(ctx, "member", &iap.TunnelInstanceIamMemberArgs{
 //				Project:  pulumi.Any(google_compute_instance.Tunnelvm.Project),
 //				Zone:     pulumi.Any(google_compute_instance.Tunnelvm.Zone),
 //				Instance: pulumi.Any(google_compute_instance.Tunnelvm.Name),
 //				Role:     pulumi.String("roles/iap.tunnelResourceAccessor"),
 //				Member:   pulumi.String("user:jane@example.com"),
-//				Condition: &iap.TunnelInstanceIAMMemberConditionArgs{
+//				Condition: &iap.TunnelInstanceIamMemberConditionArgs{
 //					Title:       pulumi.String("expires_after_2019_12_31"),
 //					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
 //					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
@@ -257,7 +257,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:iap/tunnelInstanceIAMPolicy:TunnelInstanceIAMPolicy editor "projects/{{project}}/iap_tunnel/zones/{{zone}}/instances/{{tunnel_instance}} roles/iap.tunnelResourceAccessor user:jane@example.com"
+//	$ pulumi import gcp:iap/tunnelInstanceIamPolicy:TunnelInstanceIamPolicy editor "projects/{{project}}/iap_tunnel/zones/{{zone}}/instances/{{tunnel_instance}} roles/iap.tunnelResourceAccessor user:jane@example.com"
 //
 // ```
 //
@@ -265,7 +265,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:iap/tunnelInstanceIAMPolicy:TunnelInstanceIAMPolicy editor "projects/{{project}}/iap_tunnel/zones/{{zone}}/instances/{{tunnel_instance}} roles/iap.tunnelResourceAccessor"
+//	$ pulumi import gcp:iap/tunnelInstanceIamPolicy:TunnelInstanceIamPolicy editor "projects/{{project}}/iap_tunnel/zones/{{zone}}/instances/{{tunnel_instance}} roles/iap.tunnelResourceAccessor"
 //
 // ```
 //
@@ -273,14 +273,14 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:iap/tunnelInstanceIAMPolicy:TunnelInstanceIAMPolicy editor projects/{{project}}/iap_tunnel/zones/{{zone}}/instances/{{tunnel_instance}}
+//	$ pulumi import gcp:iap/tunnelInstanceIamPolicy:TunnelInstanceIamPolicy editor projects/{{project}}/iap_tunnel/zones/{{zone}}/instances/{{tunnel_instance}}
 //
 // ```
 //
 //	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 //
 // full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
-type TunnelInstanceIAMPolicy struct {
+type TunnelInstanceIamPolicy struct {
 	pulumi.CustomResourceState
 
 	// (Computed) The etag of the IAM policy.
@@ -288,7 +288,7 @@ type TunnelInstanceIAMPolicy struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Instance pulumi.StringOutput `pulumi:"instance"`
 	// The policy data generated by
-	// a `organizations.getIAMPolicy` data source.
+	// a `organizations.getIamPolicy` data source.
 	PolicyData pulumi.StringOutput `pulumi:"policyData"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -308,9 +308,9 @@ type TunnelInstanceIAMPolicy struct {
 	Zone    pulumi.StringOutput `pulumi:"zone"`
 }
 
-// NewTunnelInstanceIAMPolicy registers a new resource with the given unique name, arguments, and options.
-func NewTunnelInstanceIAMPolicy(ctx *pulumi.Context,
-	name string, args *TunnelInstanceIAMPolicyArgs, opts ...pulumi.ResourceOption) (*TunnelInstanceIAMPolicy, error) {
+// NewTunnelInstanceIamPolicy registers a new resource with the given unique name, arguments, and options.
+func NewTunnelInstanceIamPolicy(ctx *pulumi.Context,
+	name string, args *TunnelInstanceIamPolicyArgs, opts ...pulumi.ResourceOption) (*TunnelInstanceIamPolicy, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -322,34 +322,34 @@ func NewTunnelInstanceIAMPolicy(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'PolicyData'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
-	var resource TunnelInstanceIAMPolicy
-	err := ctx.RegisterResource("gcp:iap/tunnelInstanceIAMPolicy:TunnelInstanceIAMPolicy", name, args, &resource, opts...)
+	var resource TunnelInstanceIamPolicy
+	err := ctx.RegisterResource("gcp:iap/tunnelInstanceIamPolicy:TunnelInstanceIamPolicy", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// GetTunnelInstanceIAMPolicy gets an existing TunnelInstanceIAMPolicy resource's state with the given name, ID, and optional
+// GetTunnelInstanceIamPolicy gets an existing TunnelInstanceIamPolicy resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetTunnelInstanceIAMPolicy(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *TunnelInstanceIAMPolicyState, opts ...pulumi.ResourceOption) (*TunnelInstanceIAMPolicy, error) {
-	var resource TunnelInstanceIAMPolicy
-	err := ctx.ReadResource("gcp:iap/tunnelInstanceIAMPolicy:TunnelInstanceIAMPolicy", name, id, state, &resource, opts...)
+func GetTunnelInstanceIamPolicy(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *TunnelInstanceIamPolicyState, opts ...pulumi.ResourceOption) (*TunnelInstanceIamPolicy, error) {
+	var resource TunnelInstanceIamPolicy
+	err := ctx.ReadResource("gcp:iap/tunnelInstanceIamPolicy:TunnelInstanceIamPolicy", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering TunnelInstanceIAMPolicy resources.
-type tunnelInstanceIAMPolicyState struct {
+// Input properties used for looking up and filtering TunnelInstanceIamPolicy resources.
+type tunnelInstanceIamPolicyState struct {
 	// (Computed) The etag of the IAM policy.
 	Etag *string `pulumi:"etag"`
 	// Used to find the parent resource to bind the IAM policy to
 	Instance *string `pulumi:"instance"`
 	// The policy data generated by
-	// a `organizations.getIAMPolicy` data source.
+	// a `organizations.getIamPolicy` data source.
 	PolicyData *string `pulumi:"policyData"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -369,13 +369,13 @@ type tunnelInstanceIAMPolicyState struct {
 	Zone    *string `pulumi:"zone"`
 }
 
-type TunnelInstanceIAMPolicyState struct {
+type TunnelInstanceIamPolicyState struct {
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringPtrInput
 	// Used to find the parent resource to bind the IAM policy to
 	Instance pulumi.StringPtrInput
 	// The policy data generated by
-	// a `organizations.getIAMPolicy` data source.
+	// a `organizations.getIamPolicy` data source.
 	PolicyData pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -395,15 +395,15 @@ type TunnelInstanceIAMPolicyState struct {
 	Zone    pulumi.StringPtrInput
 }
 
-func (TunnelInstanceIAMPolicyState) ElementType() reflect.Type {
-	return reflect.TypeOf((*tunnelInstanceIAMPolicyState)(nil)).Elem()
+func (TunnelInstanceIamPolicyState) ElementType() reflect.Type {
+	return reflect.TypeOf((*tunnelInstanceIamPolicyState)(nil)).Elem()
 }
 
-type tunnelInstanceIAMPolicyArgs struct {
+type tunnelInstanceIamPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Instance string `pulumi:"instance"`
 	// The policy data generated by
-	// a `organizations.getIAMPolicy` data source.
+	// a `organizations.getIamPolicy` data source.
 	PolicyData string `pulumi:"policyData"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -423,12 +423,12 @@ type tunnelInstanceIAMPolicyArgs struct {
 	Zone    *string `pulumi:"zone"`
 }
 
-// The set of arguments for constructing a TunnelInstanceIAMPolicy resource.
-type TunnelInstanceIAMPolicyArgs struct {
+// The set of arguments for constructing a TunnelInstanceIamPolicy resource.
+type TunnelInstanceIamPolicyArgs struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Instance pulumi.StringInput
 	// The policy data generated by
-	// a `organizations.getIAMPolicy` data source.
+	// a `organizations.getIamPolicy` data source.
 	PolicyData pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -448,107 +448,107 @@ type TunnelInstanceIAMPolicyArgs struct {
 	Zone    pulumi.StringPtrInput
 }
 
-func (TunnelInstanceIAMPolicyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*tunnelInstanceIAMPolicyArgs)(nil)).Elem()
+func (TunnelInstanceIamPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*tunnelInstanceIamPolicyArgs)(nil)).Elem()
 }
 
-type TunnelInstanceIAMPolicyInput interface {
+type TunnelInstanceIamPolicyInput interface {
 	pulumi.Input
 
-	ToTunnelInstanceIAMPolicyOutput() TunnelInstanceIAMPolicyOutput
-	ToTunnelInstanceIAMPolicyOutputWithContext(ctx context.Context) TunnelInstanceIAMPolicyOutput
+	ToTunnelInstanceIamPolicyOutput() TunnelInstanceIamPolicyOutput
+	ToTunnelInstanceIamPolicyOutputWithContext(ctx context.Context) TunnelInstanceIamPolicyOutput
 }
 
-func (*TunnelInstanceIAMPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((**TunnelInstanceIAMPolicy)(nil)).Elem()
+func (*TunnelInstanceIamPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((**TunnelInstanceIamPolicy)(nil)).Elem()
 }
 
-func (i *TunnelInstanceIAMPolicy) ToTunnelInstanceIAMPolicyOutput() TunnelInstanceIAMPolicyOutput {
-	return i.ToTunnelInstanceIAMPolicyOutputWithContext(context.Background())
+func (i *TunnelInstanceIamPolicy) ToTunnelInstanceIamPolicyOutput() TunnelInstanceIamPolicyOutput {
+	return i.ToTunnelInstanceIamPolicyOutputWithContext(context.Background())
 }
 
-func (i *TunnelInstanceIAMPolicy) ToTunnelInstanceIAMPolicyOutputWithContext(ctx context.Context) TunnelInstanceIAMPolicyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TunnelInstanceIAMPolicyOutput)
+func (i *TunnelInstanceIamPolicy) ToTunnelInstanceIamPolicyOutputWithContext(ctx context.Context) TunnelInstanceIamPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelInstanceIamPolicyOutput)
 }
 
-// TunnelInstanceIAMPolicyArrayInput is an input type that accepts TunnelInstanceIAMPolicyArray and TunnelInstanceIAMPolicyArrayOutput values.
-// You can construct a concrete instance of `TunnelInstanceIAMPolicyArrayInput` via:
+// TunnelInstanceIamPolicyArrayInput is an input type that accepts TunnelInstanceIamPolicyArray and TunnelInstanceIamPolicyArrayOutput values.
+// You can construct a concrete instance of `TunnelInstanceIamPolicyArrayInput` via:
 //
-//	TunnelInstanceIAMPolicyArray{ TunnelInstanceIAMPolicyArgs{...} }
-type TunnelInstanceIAMPolicyArrayInput interface {
+//	TunnelInstanceIamPolicyArray{ TunnelInstanceIamPolicyArgs{...} }
+type TunnelInstanceIamPolicyArrayInput interface {
 	pulumi.Input
 
-	ToTunnelInstanceIAMPolicyArrayOutput() TunnelInstanceIAMPolicyArrayOutput
-	ToTunnelInstanceIAMPolicyArrayOutputWithContext(context.Context) TunnelInstanceIAMPolicyArrayOutput
+	ToTunnelInstanceIamPolicyArrayOutput() TunnelInstanceIamPolicyArrayOutput
+	ToTunnelInstanceIamPolicyArrayOutputWithContext(context.Context) TunnelInstanceIamPolicyArrayOutput
 }
 
-type TunnelInstanceIAMPolicyArray []TunnelInstanceIAMPolicyInput
+type TunnelInstanceIamPolicyArray []TunnelInstanceIamPolicyInput
 
-func (TunnelInstanceIAMPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*TunnelInstanceIAMPolicy)(nil)).Elem()
+func (TunnelInstanceIamPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*TunnelInstanceIamPolicy)(nil)).Elem()
 }
 
-func (i TunnelInstanceIAMPolicyArray) ToTunnelInstanceIAMPolicyArrayOutput() TunnelInstanceIAMPolicyArrayOutput {
-	return i.ToTunnelInstanceIAMPolicyArrayOutputWithContext(context.Background())
+func (i TunnelInstanceIamPolicyArray) ToTunnelInstanceIamPolicyArrayOutput() TunnelInstanceIamPolicyArrayOutput {
+	return i.ToTunnelInstanceIamPolicyArrayOutputWithContext(context.Background())
 }
 
-func (i TunnelInstanceIAMPolicyArray) ToTunnelInstanceIAMPolicyArrayOutputWithContext(ctx context.Context) TunnelInstanceIAMPolicyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TunnelInstanceIAMPolicyArrayOutput)
+func (i TunnelInstanceIamPolicyArray) ToTunnelInstanceIamPolicyArrayOutputWithContext(ctx context.Context) TunnelInstanceIamPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelInstanceIamPolicyArrayOutput)
 }
 
-// TunnelInstanceIAMPolicyMapInput is an input type that accepts TunnelInstanceIAMPolicyMap and TunnelInstanceIAMPolicyMapOutput values.
-// You can construct a concrete instance of `TunnelInstanceIAMPolicyMapInput` via:
+// TunnelInstanceIamPolicyMapInput is an input type that accepts TunnelInstanceIamPolicyMap and TunnelInstanceIamPolicyMapOutput values.
+// You can construct a concrete instance of `TunnelInstanceIamPolicyMapInput` via:
 //
-//	TunnelInstanceIAMPolicyMap{ "key": TunnelInstanceIAMPolicyArgs{...} }
-type TunnelInstanceIAMPolicyMapInput interface {
+//	TunnelInstanceIamPolicyMap{ "key": TunnelInstanceIamPolicyArgs{...} }
+type TunnelInstanceIamPolicyMapInput interface {
 	pulumi.Input
 
-	ToTunnelInstanceIAMPolicyMapOutput() TunnelInstanceIAMPolicyMapOutput
-	ToTunnelInstanceIAMPolicyMapOutputWithContext(context.Context) TunnelInstanceIAMPolicyMapOutput
+	ToTunnelInstanceIamPolicyMapOutput() TunnelInstanceIamPolicyMapOutput
+	ToTunnelInstanceIamPolicyMapOutputWithContext(context.Context) TunnelInstanceIamPolicyMapOutput
 }
 
-type TunnelInstanceIAMPolicyMap map[string]TunnelInstanceIAMPolicyInput
+type TunnelInstanceIamPolicyMap map[string]TunnelInstanceIamPolicyInput
 
-func (TunnelInstanceIAMPolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*TunnelInstanceIAMPolicy)(nil)).Elem()
+func (TunnelInstanceIamPolicyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*TunnelInstanceIamPolicy)(nil)).Elem()
 }
 
-func (i TunnelInstanceIAMPolicyMap) ToTunnelInstanceIAMPolicyMapOutput() TunnelInstanceIAMPolicyMapOutput {
-	return i.ToTunnelInstanceIAMPolicyMapOutputWithContext(context.Background())
+func (i TunnelInstanceIamPolicyMap) ToTunnelInstanceIamPolicyMapOutput() TunnelInstanceIamPolicyMapOutput {
+	return i.ToTunnelInstanceIamPolicyMapOutputWithContext(context.Background())
 }
 
-func (i TunnelInstanceIAMPolicyMap) ToTunnelInstanceIAMPolicyMapOutputWithContext(ctx context.Context) TunnelInstanceIAMPolicyMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TunnelInstanceIAMPolicyMapOutput)
+func (i TunnelInstanceIamPolicyMap) ToTunnelInstanceIamPolicyMapOutputWithContext(ctx context.Context) TunnelInstanceIamPolicyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelInstanceIamPolicyMapOutput)
 }
 
-type TunnelInstanceIAMPolicyOutput struct{ *pulumi.OutputState }
+type TunnelInstanceIamPolicyOutput struct{ *pulumi.OutputState }
 
-func (TunnelInstanceIAMPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TunnelInstanceIAMPolicy)(nil)).Elem()
+func (TunnelInstanceIamPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TunnelInstanceIamPolicy)(nil)).Elem()
 }
 
-func (o TunnelInstanceIAMPolicyOutput) ToTunnelInstanceIAMPolicyOutput() TunnelInstanceIAMPolicyOutput {
+func (o TunnelInstanceIamPolicyOutput) ToTunnelInstanceIamPolicyOutput() TunnelInstanceIamPolicyOutput {
 	return o
 }
 
-func (o TunnelInstanceIAMPolicyOutput) ToTunnelInstanceIAMPolicyOutputWithContext(ctx context.Context) TunnelInstanceIAMPolicyOutput {
+func (o TunnelInstanceIamPolicyOutput) ToTunnelInstanceIamPolicyOutputWithContext(ctx context.Context) TunnelInstanceIamPolicyOutput {
 	return o
 }
 
 // (Computed) The etag of the IAM policy.
-func (o TunnelInstanceIAMPolicyOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v *TunnelInstanceIAMPolicy) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+func (o TunnelInstanceIamPolicyOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *TunnelInstanceIamPolicy) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
 // Used to find the parent resource to bind the IAM policy to
-func (o TunnelInstanceIAMPolicyOutput) Instance() pulumi.StringOutput {
-	return o.ApplyT(func(v *TunnelInstanceIAMPolicy) pulumi.StringOutput { return v.Instance }).(pulumi.StringOutput)
+func (o TunnelInstanceIamPolicyOutput) Instance() pulumi.StringOutput {
+	return o.ApplyT(func(v *TunnelInstanceIamPolicy) pulumi.StringOutput { return v.Instance }).(pulumi.StringOutput)
 }
 
 // The policy data generated by
-// a `organizations.getIAMPolicy` data source.
-func (o TunnelInstanceIAMPolicyOutput) PolicyData() pulumi.StringOutput {
-	return o.ApplyT(func(v *TunnelInstanceIAMPolicy) pulumi.StringOutput { return v.PolicyData }).(pulumi.StringOutput)
+// a `organizations.getIamPolicy` data source.
+func (o TunnelInstanceIamPolicyOutput) PolicyData() pulumi.StringOutput {
+	return o.ApplyT(func(v *TunnelInstanceIamPolicy) pulumi.StringOutput { return v.PolicyData }).(pulumi.StringOutput)
 }
 
 // The ID of the project in which the resource belongs.
@@ -565,59 +565,59 @@ func (o TunnelInstanceIAMPolicyOutput) PolicyData() pulumi.StringOutput {
 //   - **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 //   - **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 //   - **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
-func (o TunnelInstanceIAMPolicyOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func(v *TunnelInstanceIAMPolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+func (o TunnelInstanceIamPolicyOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *TunnelInstanceIamPolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-func (o TunnelInstanceIAMPolicyOutput) Zone() pulumi.StringOutput {
-	return o.ApplyT(func(v *TunnelInstanceIAMPolicy) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
+func (o TunnelInstanceIamPolicyOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v *TunnelInstanceIamPolicy) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }
 
-type TunnelInstanceIAMPolicyArrayOutput struct{ *pulumi.OutputState }
+type TunnelInstanceIamPolicyArrayOutput struct{ *pulumi.OutputState }
 
-func (TunnelInstanceIAMPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*TunnelInstanceIAMPolicy)(nil)).Elem()
+func (TunnelInstanceIamPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*TunnelInstanceIamPolicy)(nil)).Elem()
 }
 
-func (o TunnelInstanceIAMPolicyArrayOutput) ToTunnelInstanceIAMPolicyArrayOutput() TunnelInstanceIAMPolicyArrayOutput {
+func (o TunnelInstanceIamPolicyArrayOutput) ToTunnelInstanceIamPolicyArrayOutput() TunnelInstanceIamPolicyArrayOutput {
 	return o
 }
 
-func (o TunnelInstanceIAMPolicyArrayOutput) ToTunnelInstanceIAMPolicyArrayOutputWithContext(ctx context.Context) TunnelInstanceIAMPolicyArrayOutput {
+func (o TunnelInstanceIamPolicyArrayOutput) ToTunnelInstanceIamPolicyArrayOutputWithContext(ctx context.Context) TunnelInstanceIamPolicyArrayOutput {
 	return o
 }
 
-func (o TunnelInstanceIAMPolicyArrayOutput) Index(i pulumi.IntInput) TunnelInstanceIAMPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TunnelInstanceIAMPolicy {
-		return vs[0].([]*TunnelInstanceIAMPolicy)[vs[1].(int)]
-	}).(TunnelInstanceIAMPolicyOutput)
+func (o TunnelInstanceIamPolicyArrayOutput) Index(i pulumi.IntInput) TunnelInstanceIamPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TunnelInstanceIamPolicy {
+		return vs[0].([]*TunnelInstanceIamPolicy)[vs[1].(int)]
+	}).(TunnelInstanceIamPolicyOutput)
 }
 
-type TunnelInstanceIAMPolicyMapOutput struct{ *pulumi.OutputState }
+type TunnelInstanceIamPolicyMapOutput struct{ *pulumi.OutputState }
 
-func (TunnelInstanceIAMPolicyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*TunnelInstanceIAMPolicy)(nil)).Elem()
+func (TunnelInstanceIamPolicyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*TunnelInstanceIamPolicy)(nil)).Elem()
 }
 
-func (o TunnelInstanceIAMPolicyMapOutput) ToTunnelInstanceIAMPolicyMapOutput() TunnelInstanceIAMPolicyMapOutput {
+func (o TunnelInstanceIamPolicyMapOutput) ToTunnelInstanceIamPolicyMapOutput() TunnelInstanceIamPolicyMapOutput {
 	return o
 }
 
-func (o TunnelInstanceIAMPolicyMapOutput) ToTunnelInstanceIAMPolicyMapOutputWithContext(ctx context.Context) TunnelInstanceIAMPolicyMapOutput {
+func (o TunnelInstanceIamPolicyMapOutput) ToTunnelInstanceIamPolicyMapOutputWithContext(ctx context.Context) TunnelInstanceIamPolicyMapOutput {
 	return o
 }
 
-func (o TunnelInstanceIAMPolicyMapOutput) MapIndex(k pulumi.StringInput) TunnelInstanceIAMPolicyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *TunnelInstanceIAMPolicy {
-		return vs[0].(map[string]*TunnelInstanceIAMPolicy)[vs[1].(string)]
-	}).(TunnelInstanceIAMPolicyOutput)
+func (o TunnelInstanceIamPolicyMapOutput) MapIndex(k pulumi.StringInput) TunnelInstanceIamPolicyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *TunnelInstanceIamPolicy {
+		return vs[0].(map[string]*TunnelInstanceIamPolicy)[vs[1].(string)]
+	}).(TunnelInstanceIamPolicyOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*TunnelInstanceIAMPolicyInput)(nil)).Elem(), &TunnelInstanceIAMPolicy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TunnelInstanceIAMPolicyArrayInput)(nil)).Elem(), TunnelInstanceIAMPolicyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TunnelInstanceIAMPolicyMapInput)(nil)).Elem(), TunnelInstanceIAMPolicyMap{})
-	pulumi.RegisterOutputType(TunnelInstanceIAMPolicyOutput{})
-	pulumi.RegisterOutputType(TunnelInstanceIAMPolicyArrayOutput{})
-	pulumi.RegisterOutputType(TunnelInstanceIAMPolicyMapOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelInstanceIamPolicyInput)(nil)).Elem(), &TunnelInstanceIamPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelInstanceIamPolicyArrayInput)(nil)).Elem(), TunnelInstanceIamPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TunnelInstanceIamPolicyMapInput)(nil)).Elem(), TunnelInstanceIamPolicyMap{})
+	pulumi.RegisterOutputType(TunnelInstanceIamPolicyOutput{})
+	pulumi.RegisterOutputType(TunnelInstanceIamPolicyArrayOutput{})
+	pulumi.RegisterOutputType(TunnelInstanceIamPolicyMapOutput{})
 }

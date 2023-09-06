@@ -12,20 +12,31 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Allows creation and management of a single binding within IAM policy for
-// an existing Google Cloud Platform folder.
+// Four different resources help you manage your IAM policy for a folder. Each of these resources serves a different use case:
 //
-// > **Note:** This resource _must not_ be used in conjunction with
+// * `folder.IamPolicy`: Authoritative. Sets the IAM policy for the folder and replaces any existing policy already attached.
+// * `folder.IamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the folder are preserved.
+// * `folder.IamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the folder are preserved.
+// * `folder.IamAuditConfig`: Authoritative for a given service. Updates the IAM policy to enable audit logging for the given service.
 //
-//	`folder.IAMPolicy` or they will fight over what your policy
-//	should be.
+// > **Note:** `folder.IamPolicy` **cannot** be used in conjunction with `folder.IamBinding`, `folder.IamMember`, or `folder.IamAuditConfig` or they will fight over what your policy should be.
 //
-// > **Note:** On create, this resource will overwrite members of any existing roles.
+// > **Note:** `folder.IamBinding` resources **can be** used in conjunction with `folder.IamMember` resources **only if** they do not grant privilege to the same role.
 //
-//	Use `pulumi import` and inspect the output to ensure
-//	your existing members are preserved.
+// > **Note:** The underlying API method `projects.setIamPolicy` has constraints which are documented [here](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
 //
-// ## Example Usage
+//	IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning a 400 error code so please review these if you encounter errors with this resource.
+//
+// ## google\_folder\_iam\_policy
+//
+// !> **Be careful!** You can accidentally lock yourself out of your folder
+//
+//	using this resource. Deleting a `folder.IamPolicy` removes access
+//	from anyone without permissions on its parent folder/organization. Proceed with caution.
+//	It's not recommended to use `folder.IamPolicy` with your provider folder
+//	to avoid locking yourself out, and it should generally only be used with folders
+//	fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
+//	applying the change.
 //
 // ```go
 // package main
@@ -40,19 +51,232 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			department1, err := organizations.NewFolder(ctx, "department1", &organizations.FolderArgs{
-//				DisplayName: pulumi.String("Department 1"),
-//				Parent:      pulumi.String("organizations/1234567"),
+//			admin, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
+//					{
+//						Role: "roles/editor",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = folder.NewIamPolicy(ctx, "folder", &folder.IamPolicyArgs{
+//				Folder:     pulumi.String("folders/1234567"),
+//				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = folder.NewIAMBinding(ctx, "admin", &folder.IAMBindingArgs{
-//				Folder: department1.Name,
-//				Role:   pulumi.String("roles/editor"),
-//				Members: pulumi.StringArray{
-//					pulumi.String("user:alice@gmail.com"),
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/folder"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
+//					{
+//						Condition: {
+//							Description: pulumi.StringRef("Expiring at midnight of 2019-12-31"),
+//							Expression:  "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+//							Title:       "expires_after_2019_12_31",
+//						},
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//						Role: "roles/compute.admin",
+//					},
 //				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = folder.NewIamPolicy(ctx, "folder", &folder.IamPolicyArgs{
+//				Folder:     pulumi.String("folders/1234567"),
+//				PolicyData: *pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## google\_folder\_iam\_binding
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/folder"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := folder.NewIamBinding(ctx, "folder", &folder.IamBindingArgs{
+//				Folder: pulumi.String("folders/1234567"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//				Role: pulumi.String("roles/editor"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/folder"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := folder.NewIamBinding(ctx, "folder", &folder.IamBindingArgs{
+//				Condition: &folder.IamBindingConditionArgs{
+//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+//					Title:       pulumi.String("expires_after_2019_12_31"),
+//				},
+//				Folder: pulumi.String("folders/1234567"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//				Role: pulumi.String("roles/container.admin"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## google\_folder\_iam\_member
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/folder"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := folder.NewIamMember(ctx, "folder", &folder.IamMemberArgs{
+//				Folder: pulumi.String("folders/1234567"),
+//				Member: pulumi.String("user:jane@example.com"),
+//				Role:   pulumi.String("roles/editor"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/folder"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := folder.NewIamMember(ctx, "folder", &folder.IamMemberArgs{
+//				Condition: &folder.IamMemberConditionArgs{
+//					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+//					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+//					Title:       pulumi.String("expires_after_2019_12_31"),
+//				},
+//				Folder: pulumi.String("folders/1234567"),
+//				Member: pulumi.String("user:jane@example.com"),
+//				Role:   pulumi.String("roles/firebase.admin"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## google\_folder\_iam\_audit\_config
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/folder"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := folder.NewIamAuditConfig(ctx, "folder", &folder.IamAuditConfigArgs{
+//				AuditLogConfigs: folder.IamAuditConfigAuditLogConfigArray{
+//					&folder.IamAuditConfigAuditLogConfigArgs{
+//						LogType: pulumi.String("ADMIN_READ"),
+//					},
+//					&folder.IamAuditConfigAuditLogConfigArgs{
+//						ExemptedMembers: pulumi.StringArray{
+//							pulumi.String("user:joebloggs@hashicorp.com"),
+//						},
+//						LogType: pulumi.String("DATA_READ"),
+//					},
+//				},
+//				Folder:  pulumi.String("folders/1234567"),
+//				Service: pulumi.String("allServices"),
 //			})
 //			if err != nil {
 //				return err
@@ -65,44 +289,75 @@ import (
 //
 // ## Import
 //
-// IAM binding imports use space-delimited identifiers; first the resource in question and then the role.
+// IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
 //
-// These bindings can be imported using the `folder` and role, e.g.
+// This member resource can be imported using the `folder`, role, and member e.g.
 //
 // ```sh
 //
-//	$ pulumi import gcp:folder/iAMBinding:IAMBinding viewer "folder-name roles/viewer"
+//	$ pulumi import gcp:folder/iAMBinding:IamBinding my_folder "folder roles/viewer user:foo@example.com"
 //
 // ```
 //
-//	-> **Custom Roles**If you're importing a IAM binding with a custom role, make sure to use the
+//	IAM binding imports use space-delimited identifiers; the resource in question and the role.
 //
-// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
-type IAMBinding struct {
+// This binding resource can be imported using the `folder` and role, e.g.
+//
+// ```sh
+//
+//	$ pulumi import gcp:folder/iAMBinding:IamBinding my_folder "folder roles/viewer"
+//
+// ```
+//
+//	IAM policy imports use the identifier of the resource in question.
+//
+// This policy resource can be imported using the `folder`.
+//
+// ```sh
+//
+//	$ pulumi import gcp:folder/iAMBinding:IamBinding my_folder folder
+//
+// ```
+//
+//	IAM audit config imports use the identifier of the resource in question and the service, e.g.
+//
+// ```sh
+//
+//	$ pulumi import gcp:folder/iAMBinding:IamBinding my_folder "folder foo.googleapis.com"
+//
+// ```
+//
+//	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//
+// full name of the custom role, e.g. `organizations/{{org_id}}/roles/{{role_id}}`. -> **Conditional IAM Bindings**If you're importing a IAM binding with a condition block, make sure
+//
+// ```sh
+//
+//	$ pulumi import gcp:folder/iAMBinding:IamBinding to include the title of condition, e.g. `google_folder_iam_binding.my_folder "folder roles/{{role_id}} condition-title"`
+//
+// ```
+//
+// Deprecated: gcp.folder/iambinding.IamBinding has been deprecated in favor of gcp.folder/iambinding.IamBinding
+type IamBinding struct {
 	pulumi.CustomResourceState
 
-	Condition IAMBindingConditionPtrOutput `pulumi:"condition"`
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
+	Condition IamBindingConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the folder's IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
-	Folder pulumi.StringOutput `pulumi:"folder"`
-	// An array of identities that will be granted the privilege in the `role`.
-	// Each entry can have one of the following values:
-	// * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice@gmail.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-	// * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+	Folder  pulumi.StringOutput      `pulumi:"folder"`
 	Members pulumi.StringArrayOutput `pulumi:"members"`
 	// The role that should be applied. Only one
-	// `folder.IAMBinding` can be used per role. Note that custom roles must be of the format
-	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	// `folder.IamBinding` can be used per role. Note that custom roles must be of the format
+	// `organizations/{{org_id}}/roles/{{role_id}}`.
 	Role pulumi.StringOutput `pulumi:"role"`
 }
 
-// NewIAMBinding registers a new resource with the given unique name, arguments, and options.
-func NewIAMBinding(ctx *pulumi.Context,
-	name string, args *IAMBindingArgs, opts ...pulumi.ResourceOption) (*IAMBinding, error) {
+// NewIamBinding registers a new resource with the given unique name, arguments, and options.
+func NewIamBinding(ctx *pulumi.Context,
+	name string, args *IamBindingArgs, opts ...pulumi.ResourceOption) (*IamBinding, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -116,273 +371,254 @@ func NewIAMBinding(ctx *pulumi.Context,
 	if args.Role == nil {
 		return nil, errors.New("invalid value for required argument 'Role'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("gcp:folder/iAMBinding:IAMBinding"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
-	var resource IAMBinding
-	err := ctx.RegisterResource("gcp:folder/iAMBinding:IAMBinding", name, args, &resource, opts...)
+	var resource IamBinding
+	err := ctx.RegisterResource("gcp:folder/iAMBinding:IamBinding", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// GetIAMBinding gets an existing IAMBinding resource's state with the given name, ID, and optional
+// GetIamBinding gets an existing IamBinding resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetIAMBinding(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *IAMBindingState, opts ...pulumi.ResourceOption) (*IAMBinding, error) {
-	var resource IAMBinding
-	err := ctx.ReadResource("gcp:folder/iAMBinding:IAMBinding", name, id, state, &resource, opts...)
+func GetIamBinding(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *IamBindingState, opts ...pulumi.ResourceOption) (*IamBinding, error) {
+	var resource IamBinding
+	err := ctx.ReadResource("gcp:folder/iAMBinding:IamBinding", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering IAMBinding resources.
-type iambindingState struct {
-	Condition *IAMBindingCondition `pulumi:"condition"`
+// Input properties used for looking up and filtering IamBinding resources.
+type iamBindingState struct {
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
+	Condition *IamBindingCondition `pulumi:"condition"`
 	// (Computed) The etag of the folder's IAM policy.
 	Etag *string `pulumi:"etag"`
 	// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
-	Folder *string `pulumi:"folder"`
-	// An array of identities that will be granted the privilege in the `role`.
-	// Each entry can have one of the following values:
-	// * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice@gmail.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-	// * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+	Folder  *string  `pulumi:"folder"`
 	Members []string `pulumi:"members"`
 	// The role that should be applied. Only one
-	// `folder.IAMBinding` can be used per role. Note that custom roles must be of the format
-	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	// `folder.IamBinding` can be used per role. Note that custom roles must be of the format
+	// `organizations/{{org_id}}/roles/{{role_id}}`.
 	Role *string `pulumi:"role"`
 }
 
-type IAMBindingState struct {
-	Condition IAMBindingConditionPtrInput
+type IamBindingState struct {
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
+	Condition IamBindingConditionPtrInput
 	// (Computed) The etag of the folder's IAM policy.
 	Etag pulumi.StringPtrInput
 	// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
-	Folder pulumi.StringPtrInput
-	// An array of identities that will be granted the privilege in the `role`.
-	// Each entry can have one of the following values:
-	// * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice@gmail.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-	// * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+	Folder  pulumi.StringPtrInput
 	Members pulumi.StringArrayInput
 	// The role that should be applied. Only one
-	// `folder.IAMBinding` can be used per role. Note that custom roles must be of the format
-	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	// `folder.IamBinding` can be used per role. Note that custom roles must be of the format
+	// `organizations/{{org_id}}/roles/{{role_id}}`.
 	Role pulumi.StringPtrInput
 }
 
-func (IAMBindingState) ElementType() reflect.Type {
-	return reflect.TypeOf((*iambindingState)(nil)).Elem()
+func (IamBindingState) ElementType() reflect.Type {
+	return reflect.TypeOf((*iamBindingState)(nil)).Elem()
 }
 
-type iambindingArgs struct {
-	Condition *IAMBindingCondition `pulumi:"condition"`
+type iamBindingArgs struct {
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
+	Condition *IamBindingCondition `pulumi:"condition"`
 	// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
-	Folder string `pulumi:"folder"`
-	// An array of identities that will be granted the privilege in the `role`.
-	// Each entry can have one of the following values:
-	// * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice@gmail.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-	// * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+	Folder  string   `pulumi:"folder"`
 	Members []string `pulumi:"members"`
 	// The role that should be applied. Only one
-	// `folder.IAMBinding` can be used per role. Note that custom roles must be of the format
-	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	// `folder.IamBinding` can be used per role. Note that custom roles must be of the format
+	// `organizations/{{org_id}}/roles/{{role_id}}`.
 	Role string `pulumi:"role"`
 }
 
-// The set of arguments for constructing a IAMBinding resource.
-type IAMBindingArgs struct {
-	Condition IAMBindingConditionPtrInput
+// The set of arguments for constructing a IamBinding resource.
+type IamBindingArgs struct {
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// Structure is documented below.
+	Condition IamBindingConditionPtrInput
 	// The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
-	Folder pulumi.StringInput
-	// An array of identities that will be granted the privilege in the `role`.
-	// Each entry can have one of the following values:
-	// * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice@gmail.com.
-	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-	// * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
+	Folder  pulumi.StringInput
 	Members pulumi.StringArrayInput
 	// The role that should be applied. Only one
-	// `folder.IAMBinding` can be used per role. Note that custom roles must be of the format
-	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	// `folder.IamBinding` can be used per role. Note that custom roles must be of the format
+	// `organizations/{{org_id}}/roles/{{role_id}}`.
 	Role pulumi.StringInput
 }
 
-func (IAMBindingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*iambindingArgs)(nil)).Elem()
+func (IamBindingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*iamBindingArgs)(nil)).Elem()
 }
 
-type IAMBindingInput interface {
+type IamBindingInput interface {
 	pulumi.Input
 
-	ToIAMBindingOutput() IAMBindingOutput
-	ToIAMBindingOutputWithContext(ctx context.Context) IAMBindingOutput
+	ToIamBindingOutput() IamBindingOutput
+	ToIamBindingOutputWithContext(ctx context.Context) IamBindingOutput
 }
 
-func (*IAMBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((**IAMBinding)(nil)).Elem()
+func (*IamBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((**IamBinding)(nil)).Elem()
 }
 
-func (i *IAMBinding) ToIAMBindingOutput() IAMBindingOutput {
-	return i.ToIAMBindingOutputWithContext(context.Background())
+func (i *IamBinding) ToIamBindingOutput() IamBindingOutput {
+	return i.ToIamBindingOutputWithContext(context.Background())
 }
 
-func (i *IAMBinding) ToIAMBindingOutputWithContext(ctx context.Context) IAMBindingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMBindingOutput)
+func (i *IamBinding) ToIamBindingOutputWithContext(ctx context.Context) IamBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamBindingOutput)
 }
 
-// IAMBindingArrayInput is an input type that accepts IAMBindingArray and IAMBindingArrayOutput values.
-// You can construct a concrete instance of `IAMBindingArrayInput` via:
+// IamBindingArrayInput is an input type that accepts IamBindingArray and IamBindingArrayOutput values.
+// You can construct a concrete instance of `IamBindingArrayInput` via:
 //
-//	IAMBindingArray{ IAMBindingArgs{...} }
-type IAMBindingArrayInput interface {
+//	IamBindingArray{ IamBindingArgs{...} }
+type IamBindingArrayInput interface {
 	pulumi.Input
 
-	ToIAMBindingArrayOutput() IAMBindingArrayOutput
-	ToIAMBindingArrayOutputWithContext(context.Context) IAMBindingArrayOutput
+	ToIamBindingArrayOutput() IamBindingArrayOutput
+	ToIamBindingArrayOutputWithContext(context.Context) IamBindingArrayOutput
 }
 
-type IAMBindingArray []IAMBindingInput
+type IamBindingArray []IamBindingInput
 
-func (IAMBindingArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*IAMBinding)(nil)).Elem()
+func (IamBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*IamBinding)(nil)).Elem()
 }
 
-func (i IAMBindingArray) ToIAMBindingArrayOutput() IAMBindingArrayOutput {
-	return i.ToIAMBindingArrayOutputWithContext(context.Background())
+func (i IamBindingArray) ToIamBindingArrayOutput() IamBindingArrayOutput {
+	return i.ToIamBindingArrayOutputWithContext(context.Background())
 }
 
-func (i IAMBindingArray) ToIAMBindingArrayOutputWithContext(ctx context.Context) IAMBindingArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMBindingArrayOutput)
+func (i IamBindingArray) ToIamBindingArrayOutputWithContext(ctx context.Context) IamBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamBindingArrayOutput)
 }
 
-// IAMBindingMapInput is an input type that accepts IAMBindingMap and IAMBindingMapOutput values.
-// You can construct a concrete instance of `IAMBindingMapInput` via:
+// IamBindingMapInput is an input type that accepts IamBindingMap and IamBindingMapOutput values.
+// You can construct a concrete instance of `IamBindingMapInput` via:
 //
-//	IAMBindingMap{ "key": IAMBindingArgs{...} }
-type IAMBindingMapInput interface {
+//	IamBindingMap{ "key": IamBindingArgs{...} }
+type IamBindingMapInput interface {
 	pulumi.Input
 
-	ToIAMBindingMapOutput() IAMBindingMapOutput
-	ToIAMBindingMapOutputWithContext(context.Context) IAMBindingMapOutput
+	ToIamBindingMapOutput() IamBindingMapOutput
+	ToIamBindingMapOutputWithContext(context.Context) IamBindingMapOutput
 }
 
-type IAMBindingMap map[string]IAMBindingInput
+type IamBindingMap map[string]IamBindingInput
 
-func (IAMBindingMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*IAMBinding)(nil)).Elem()
+func (IamBindingMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*IamBinding)(nil)).Elem()
 }
 
-func (i IAMBindingMap) ToIAMBindingMapOutput() IAMBindingMapOutput {
-	return i.ToIAMBindingMapOutputWithContext(context.Background())
+func (i IamBindingMap) ToIamBindingMapOutput() IamBindingMapOutput {
+	return i.ToIamBindingMapOutputWithContext(context.Background())
 }
 
-func (i IAMBindingMap) ToIAMBindingMapOutputWithContext(ctx context.Context) IAMBindingMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMBindingMapOutput)
+func (i IamBindingMap) ToIamBindingMapOutputWithContext(ctx context.Context) IamBindingMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamBindingMapOutput)
 }
 
-type IAMBindingOutput struct{ *pulumi.OutputState }
+type IamBindingOutput struct{ *pulumi.OutputState }
 
-func (IAMBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IAMBinding)(nil)).Elem()
+func (IamBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IamBinding)(nil)).Elem()
 }
 
-func (o IAMBindingOutput) ToIAMBindingOutput() IAMBindingOutput {
+func (o IamBindingOutput) ToIamBindingOutput() IamBindingOutput {
 	return o
 }
 
-func (o IAMBindingOutput) ToIAMBindingOutputWithContext(ctx context.Context) IAMBindingOutput {
+func (o IamBindingOutput) ToIamBindingOutputWithContext(ctx context.Context) IamBindingOutput {
 	return o
 }
 
-func (o IAMBindingOutput) Condition() IAMBindingConditionPtrOutput {
-	return o.ApplyT(func(v *IAMBinding) IAMBindingConditionPtrOutput { return v.Condition }).(IAMBindingConditionPtrOutput)
+// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+// Structure is documented below.
+func (o IamBindingOutput) Condition() IamBindingConditionPtrOutput {
+	return o.ApplyT(func(v *IamBinding) IamBindingConditionPtrOutput { return v.Condition }).(IamBindingConditionPtrOutput)
 }
 
 // (Computed) The etag of the folder's IAM policy.
-func (o IAMBindingOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v *IAMBinding) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+func (o IamBindingOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *IamBinding) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
-func (o IAMBindingOutput) Folder() pulumi.StringOutput {
-	return o.ApplyT(func(v *IAMBinding) pulumi.StringOutput { return v.Folder }).(pulumi.StringOutput)
+func (o IamBindingOutput) Folder() pulumi.StringOutput {
+	return o.ApplyT(func(v *IamBinding) pulumi.StringOutput { return v.Folder }).(pulumi.StringOutput)
 }
 
-// An array of identities that will be granted the privilege in the `role`.
-// Each entry can have one of the following values:
-// * **user:{emailid}**: An email address that is associated with a specific Google account. For example, alice@gmail.com.
-// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
-// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
-// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-// * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
-func (o IAMBindingOutput) Members() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *IAMBinding) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
+func (o IamBindingOutput) Members() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *IamBinding) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
 }
 
 // The role that should be applied. Only one
-// `folder.IAMBinding` can be used per role. Note that custom roles must be of the format
-// `[projects|organizations]/{parent-name}/roles/{role-name}`.
-func (o IAMBindingOutput) Role() pulumi.StringOutput {
-	return o.ApplyT(func(v *IAMBinding) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
+// `folder.IamBinding` can be used per role. Note that custom roles must be of the format
+// `organizations/{{org_id}}/roles/{{role_id}}`.
+func (o IamBindingOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v *IamBinding) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }
 
-type IAMBindingArrayOutput struct{ *pulumi.OutputState }
+type IamBindingArrayOutput struct{ *pulumi.OutputState }
 
-func (IAMBindingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*IAMBinding)(nil)).Elem()
+func (IamBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*IamBinding)(nil)).Elem()
 }
 
-func (o IAMBindingArrayOutput) ToIAMBindingArrayOutput() IAMBindingArrayOutput {
+func (o IamBindingArrayOutput) ToIamBindingArrayOutput() IamBindingArrayOutput {
 	return o
 }
 
-func (o IAMBindingArrayOutput) ToIAMBindingArrayOutputWithContext(ctx context.Context) IAMBindingArrayOutput {
+func (o IamBindingArrayOutput) ToIamBindingArrayOutputWithContext(ctx context.Context) IamBindingArrayOutput {
 	return o
 }
 
-func (o IAMBindingArrayOutput) Index(i pulumi.IntInput) IAMBindingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IAMBinding {
-		return vs[0].([]*IAMBinding)[vs[1].(int)]
-	}).(IAMBindingOutput)
+func (o IamBindingArrayOutput) Index(i pulumi.IntInput) IamBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IamBinding {
+		return vs[0].([]*IamBinding)[vs[1].(int)]
+	}).(IamBindingOutput)
 }
 
-type IAMBindingMapOutput struct{ *pulumi.OutputState }
+type IamBindingMapOutput struct{ *pulumi.OutputState }
 
-func (IAMBindingMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*IAMBinding)(nil)).Elem()
+func (IamBindingMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*IamBinding)(nil)).Elem()
 }
 
-func (o IAMBindingMapOutput) ToIAMBindingMapOutput() IAMBindingMapOutput {
+func (o IamBindingMapOutput) ToIamBindingMapOutput() IamBindingMapOutput {
 	return o
 }
 
-func (o IAMBindingMapOutput) ToIAMBindingMapOutputWithContext(ctx context.Context) IAMBindingMapOutput {
+func (o IamBindingMapOutput) ToIamBindingMapOutputWithContext(ctx context.Context) IamBindingMapOutput {
 	return o
 }
 
-func (o IAMBindingMapOutput) MapIndex(k pulumi.StringInput) IAMBindingOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *IAMBinding {
-		return vs[0].(map[string]*IAMBinding)[vs[1].(string)]
-	}).(IAMBindingOutput)
+func (o IamBindingMapOutput) MapIndex(k pulumi.StringInput) IamBindingOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *IamBinding {
+		return vs[0].(map[string]*IamBinding)[vs[1].(string)]
+	}).(IamBindingOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*IAMBindingInput)(nil)).Elem(), &IAMBinding{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IAMBindingArrayInput)(nil)).Elem(), IAMBindingArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IAMBindingMapInput)(nil)).Elem(), IAMBindingMap{})
-	pulumi.RegisterOutputType(IAMBindingOutput{})
-	pulumi.RegisterOutputType(IAMBindingArrayOutput{})
-	pulumi.RegisterOutputType(IAMBindingMapOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamBindingInput)(nil)).Elem(), &IamBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamBindingArrayInput)(nil)).Elem(), IamBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamBindingMapInput)(nil)).Elem(), IamBindingMap{})
+	pulumi.RegisterOutputType(IamBindingOutput{})
+	pulumi.RegisterOutputType(IamBindingArrayOutput{})
+	pulumi.RegisterOutputType(IamBindingMapOutput{})
 }

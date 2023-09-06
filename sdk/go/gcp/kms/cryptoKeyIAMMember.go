@@ -14,13 +14,13 @@ import (
 
 // Three different resources help you manage your IAM policy for KMS crypto key. Each of these resources serves a different use case:
 //
-// * `kms.CryptoKeyIAMPolicy`: Authoritative. Sets the IAM policy for the crypto key and replaces any existing policy already attached.
-// * `kms.CryptoKeyIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the crypto key are preserved.
-// * `kms.CryptoKeyIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the crypto key are preserved.
+// * `kms.CryptoKeyIamPolicy`: Authoritative. Sets the IAM policy for the crypto key and replaces any existing policy already attached.
+// * `kms.CryptoKeyIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the crypto key are preserved.
+// * `kms.CryptoKeyIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the crypto key are preserved.
 //
-// > **Note:** `kms.CryptoKeyIAMPolicy` **cannot** be used in conjunction with `kms.CryptoKeyIAMBinding` and `kms.CryptoKeyIAMMember` or they will fight over what your policy should be.
+// > **Note:** `kms.CryptoKeyIamPolicy` **cannot** be used in conjunction with `kms.CryptoKeyIamBinding` and `kms.CryptoKeyIamMember` or they will fight over what your policy should be.
 //
-// > **Note:** `kms.CryptoKeyIAMBinding` resources **can be** used in conjunction with `kms.CryptoKeyIAMMember` resources **only if** they do not grant privilege to the same role.
+// > **Note:** `kms.CryptoKeyIamBinding` resources **can be** used in conjunction with `kms.CryptoKeyIamMember` resources **only if** they do not grant privilege to the same role.
 //
 // ```go
 // package main
@@ -48,8 +48,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
+//			admin, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
 //					{
 //						Role: "roles/cloudkms.cryptoKeyEncrypter",
 //						Members: []string{
@@ -61,7 +61,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = kms.NewCryptoKeyIAMPolicy(ctx, "cryptoKey", &kms.CryptoKeyIAMPolicyArgs{
+//			_, err = kms.NewCryptoKeyIamPolicy(ctx, "cryptoKey", &kms.CryptoKeyIamPolicyArgs{
 //				CryptoKeyId: key.ID(),
 //				PolicyData:  *pulumi.String(admin.PolicyData),
 //			})
@@ -88,8 +88,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
+//			_, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
 //					{
 //						Condition: {
 //							Description: pulumi.StringRef("Expiring at midnight of 2019-12-31"),
@@ -124,7 +124,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := kms.NewCryptoKeyIAMBinding(ctx, "cryptoKey", &kms.CryptoKeyIAMBindingArgs{
+//			_, err := kms.NewCryptoKeyIamBinding(ctx, "cryptoKey", &kms.CryptoKeyIamBindingArgs{
 //				CryptoKeyId: pulumi.Any(google_kms_crypto_key.Key.Id),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypter"),
 //				Members: pulumi.StringArray{
@@ -154,13 +154,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := kms.NewCryptoKeyIAMBinding(ctx, "cryptoKey", &kms.CryptoKeyIAMBindingArgs{
+//			_, err := kms.NewCryptoKeyIamBinding(ctx, "cryptoKey", &kms.CryptoKeyIamBindingArgs{
 //				CryptoKeyId: pulumi.Any(google_kms_crypto_key.Key.Id),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypter"),
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
 //				},
-//				Condition: &kms.CryptoKeyIAMBindingConditionArgs{
+//				Condition: &kms.CryptoKeyIamBindingConditionArgs{
 //					Title:       pulumi.String("expires_after_2019_12_31"),
 //					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
 //					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
@@ -187,7 +187,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := kms.NewCryptoKeyIAMMember(ctx, "cryptoKey", &kms.CryptoKeyIAMMemberArgs{
+//			_, err := kms.NewCryptoKeyIamMember(ctx, "cryptoKey", &kms.CryptoKeyIamMemberArgs{
 //				CryptoKeyId: pulumi.Any(google_kms_crypto_key.Key.Id),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypter"),
 //				Member:      pulumi.String("user:jane@example.com"),
@@ -215,11 +215,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := kms.NewCryptoKeyIAMMember(ctx, "cryptoKey", &kms.CryptoKeyIAMMemberArgs{
+//			_, err := kms.NewCryptoKeyIamMember(ctx, "cryptoKey", &kms.CryptoKeyIamMemberArgs{
 //				CryptoKeyId: pulumi.Any(google_kms_crypto_key.Key.Id),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypter"),
 //				Member:      pulumi.String("user:jane@example.com"),
-//				Condition: &kms.CryptoKeyIAMMemberConditionArgs{
+//				Condition: &kms.CryptoKeyIamMemberConditionArgs{
 //					Title:       pulumi.String("expires_after_2019_12_31"),
 //					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
 //					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
@@ -242,7 +242,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember crypto_key "your-project-id/location-name/key-ring-name/key-name roles/viewer user:foo@example.com"
+//	$ pulumi import gcp:kms/cryptoKeyIamMember:CryptoKeyIamMember crypto_key "your-project-id/location-name/key-ring-name/key-name roles/viewer user:foo@example.com"
 //
 // ```
 //
@@ -252,7 +252,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember crypto_key "your-project-id/location-name/key-ring-name/key-name roles/editor"
+//	$ pulumi import gcp:kms/cryptoKeyIamMember:CryptoKeyIamMember crypto_key "your-project-id/location-name/key-ring-name/key-name roles/editor"
 //
 // ```
 //
@@ -262,15 +262,15 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember crypto_key your-project-id/location-name/key-ring-name/key-name
+//	$ pulumi import gcp:kms/cryptoKeyIamMember:CryptoKeyIamMember crypto_key your-project-id/location-name/key-ring-name/key-name
 //
 // ```
-type CryptoKeyIAMMember struct {
+type CryptoKeyIamMember struct {
 	pulumi.CustomResourceState
 
 	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
-	Condition CryptoKeyIAMMemberConditionPtrOutput `pulumi:"condition"`
+	Condition CryptoKeyIamMemberConditionPtrOutput `pulumi:"condition"`
 	// The crypto key ID, in the form
 	// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
 	// `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
@@ -293,9 +293,9 @@ type CryptoKeyIAMMember struct {
 	Role pulumi.StringOutput `pulumi:"role"`
 }
 
-// NewCryptoKeyIAMMember registers a new resource with the given unique name, arguments, and options.
-func NewCryptoKeyIAMMember(ctx *pulumi.Context,
-	name string, args *CryptoKeyIAMMemberArgs, opts ...pulumi.ResourceOption) (*CryptoKeyIAMMember, error) {
+// NewCryptoKeyIamMember registers a new resource with the given unique name, arguments, and options.
+func NewCryptoKeyIamMember(ctx *pulumi.Context,
+	name string, args *CryptoKeyIamMemberArgs, opts ...pulumi.ResourceOption) (*CryptoKeyIamMember, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -310,31 +310,31 @@ func NewCryptoKeyIAMMember(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Role'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
-	var resource CryptoKeyIAMMember
-	err := ctx.RegisterResource("gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember", name, args, &resource, opts...)
+	var resource CryptoKeyIamMember
+	err := ctx.RegisterResource("gcp:kms/cryptoKeyIamMember:CryptoKeyIamMember", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// GetCryptoKeyIAMMember gets an existing CryptoKeyIAMMember resource's state with the given name, ID, and optional
+// GetCryptoKeyIamMember gets an existing CryptoKeyIamMember resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetCryptoKeyIAMMember(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *CryptoKeyIAMMemberState, opts ...pulumi.ResourceOption) (*CryptoKeyIAMMember, error) {
-	var resource CryptoKeyIAMMember
-	err := ctx.ReadResource("gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember", name, id, state, &resource, opts...)
+func GetCryptoKeyIamMember(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *CryptoKeyIamMemberState, opts ...pulumi.ResourceOption) (*CryptoKeyIamMember, error) {
+	var resource CryptoKeyIamMember
+	err := ctx.ReadResource("gcp:kms/cryptoKeyIamMember:CryptoKeyIamMember", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering CryptoKeyIAMMember resources.
-type cryptoKeyIAMMemberState struct {
+// Input properties used for looking up and filtering CryptoKeyIamMember resources.
+type cryptoKeyIamMemberState struct {
 	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
-	Condition *CryptoKeyIAMMemberCondition `pulumi:"condition"`
+	Condition *CryptoKeyIamMemberCondition `pulumi:"condition"`
 	// The crypto key ID, in the form
 	// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
 	// `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
@@ -357,10 +357,10 @@ type cryptoKeyIAMMemberState struct {
 	Role *string `pulumi:"role"`
 }
 
-type CryptoKeyIAMMemberState struct {
+type CryptoKeyIamMemberState struct {
 	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
-	Condition CryptoKeyIAMMemberConditionPtrInput
+	Condition CryptoKeyIamMemberConditionPtrInput
 	// The crypto key ID, in the form
 	// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
 	// `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
@@ -383,14 +383,14 @@ type CryptoKeyIAMMemberState struct {
 	Role pulumi.StringPtrInput
 }
 
-func (CryptoKeyIAMMemberState) ElementType() reflect.Type {
-	return reflect.TypeOf((*cryptoKeyIAMMemberState)(nil)).Elem()
+func (CryptoKeyIamMemberState) ElementType() reflect.Type {
+	return reflect.TypeOf((*cryptoKeyIamMemberState)(nil)).Elem()
 }
 
-type cryptoKeyIAMMemberArgs struct {
+type cryptoKeyIamMemberArgs struct {
 	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
-	Condition *CryptoKeyIAMMemberCondition `pulumi:"condition"`
+	Condition *CryptoKeyIamMemberCondition `pulumi:"condition"`
 	// The crypto key ID, in the form
 	// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
 	// `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
@@ -411,11 +411,11 @@ type cryptoKeyIAMMemberArgs struct {
 	Role string `pulumi:"role"`
 }
 
-// The set of arguments for constructing a CryptoKeyIAMMember resource.
-type CryptoKeyIAMMemberArgs struct {
+// The set of arguments for constructing a CryptoKeyIamMember resource.
+type CryptoKeyIamMemberArgs struct {
 	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
-	Condition CryptoKeyIAMMemberConditionPtrInput
+	Condition CryptoKeyIamMemberConditionPtrInput
 	// The crypto key ID, in the form
 	// `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
 	// `{location_name}/{key_ring_name}/{crypto_key_name}`. In the second form,
@@ -436,97 +436,97 @@ type CryptoKeyIAMMemberArgs struct {
 	Role pulumi.StringInput
 }
 
-func (CryptoKeyIAMMemberArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*cryptoKeyIAMMemberArgs)(nil)).Elem()
+func (CryptoKeyIamMemberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*cryptoKeyIamMemberArgs)(nil)).Elem()
 }
 
-type CryptoKeyIAMMemberInput interface {
+type CryptoKeyIamMemberInput interface {
 	pulumi.Input
 
-	ToCryptoKeyIAMMemberOutput() CryptoKeyIAMMemberOutput
-	ToCryptoKeyIAMMemberOutputWithContext(ctx context.Context) CryptoKeyIAMMemberOutput
+	ToCryptoKeyIamMemberOutput() CryptoKeyIamMemberOutput
+	ToCryptoKeyIamMemberOutputWithContext(ctx context.Context) CryptoKeyIamMemberOutput
 }
 
-func (*CryptoKeyIAMMember) ElementType() reflect.Type {
-	return reflect.TypeOf((**CryptoKeyIAMMember)(nil)).Elem()
+func (*CryptoKeyIamMember) ElementType() reflect.Type {
+	return reflect.TypeOf((**CryptoKeyIamMember)(nil)).Elem()
 }
 
-func (i *CryptoKeyIAMMember) ToCryptoKeyIAMMemberOutput() CryptoKeyIAMMemberOutput {
-	return i.ToCryptoKeyIAMMemberOutputWithContext(context.Background())
+func (i *CryptoKeyIamMember) ToCryptoKeyIamMemberOutput() CryptoKeyIamMemberOutput {
+	return i.ToCryptoKeyIamMemberOutputWithContext(context.Background())
 }
 
-func (i *CryptoKeyIAMMember) ToCryptoKeyIAMMemberOutputWithContext(ctx context.Context) CryptoKeyIAMMemberOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIAMMemberOutput)
+func (i *CryptoKeyIamMember) ToCryptoKeyIamMemberOutputWithContext(ctx context.Context) CryptoKeyIamMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIamMemberOutput)
 }
 
-// CryptoKeyIAMMemberArrayInput is an input type that accepts CryptoKeyIAMMemberArray and CryptoKeyIAMMemberArrayOutput values.
-// You can construct a concrete instance of `CryptoKeyIAMMemberArrayInput` via:
+// CryptoKeyIamMemberArrayInput is an input type that accepts CryptoKeyIamMemberArray and CryptoKeyIamMemberArrayOutput values.
+// You can construct a concrete instance of `CryptoKeyIamMemberArrayInput` via:
 //
-//	CryptoKeyIAMMemberArray{ CryptoKeyIAMMemberArgs{...} }
-type CryptoKeyIAMMemberArrayInput interface {
+//	CryptoKeyIamMemberArray{ CryptoKeyIamMemberArgs{...} }
+type CryptoKeyIamMemberArrayInput interface {
 	pulumi.Input
 
-	ToCryptoKeyIAMMemberArrayOutput() CryptoKeyIAMMemberArrayOutput
-	ToCryptoKeyIAMMemberArrayOutputWithContext(context.Context) CryptoKeyIAMMemberArrayOutput
+	ToCryptoKeyIamMemberArrayOutput() CryptoKeyIamMemberArrayOutput
+	ToCryptoKeyIamMemberArrayOutputWithContext(context.Context) CryptoKeyIamMemberArrayOutput
 }
 
-type CryptoKeyIAMMemberArray []CryptoKeyIAMMemberInput
+type CryptoKeyIamMemberArray []CryptoKeyIamMemberInput
 
-func (CryptoKeyIAMMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*CryptoKeyIAMMember)(nil)).Elem()
+func (CryptoKeyIamMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*CryptoKeyIamMember)(nil)).Elem()
 }
 
-func (i CryptoKeyIAMMemberArray) ToCryptoKeyIAMMemberArrayOutput() CryptoKeyIAMMemberArrayOutput {
-	return i.ToCryptoKeyIAMMemberArrayOutputWithContext(context.Background())
+func (i CryptoKeyIamMemberArray) ToCryptoKeyIamMemberArrayOutput() CryptoKeyIamMemberArrayOutput {
+	return i.ToCryptoKeyIamMemberArrayOutputWithContext(context.Background())
 }
 
-func (i CryptoKeyIAMMemberArray) ToCryptoKeyIAMMemberArrayOutputWithContext(ctx context.Context) CryptoKeyIAMMemberArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIAMMemberArrayOutput)
+func (i CryptoKeyIamMemberArray) ToCryptoKeyIamMemberArrayOutputWithContext(ctx context.Context) CryptoKeyIamMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIamMemberArrayOutput)
 }
 
-// CryptoKeyIAMMemberMapInput is an input type that accepts CryptoKeyIAMMemberMap and CryptoKeyIAMMemberMapOutput values.
-// You can construct a concrete instance of `CryptoKeyIAMMemberMapInput` via:
+// CryptoKeyIamMemberMapInput is an input type that accepts CryptoKeyIamMemberMap and CryptoKeyIamMemberMapOutput values.
+// You can construct a concrete instance of `CryptoKeyIamMemberMapInput` via:
 //
-//	CryptoKeyIAMMemberMap{ "key": CryptoKeyIAMMemberArgs{...} }
-type CryptoKeyIAMMemberMapInput interface {
+//	CryptoKeyIamMemberMap{ "key": CryptoKeyIamMemberArgs{...} }
+type CryptoKeyIamMemberMapInput interface {
 	pulumi.Input
 
-	ToCryptoKeyIAMMemberMapOutput() CryptoKeyIAMMemberMapOutput
-	ToCryptoKeyIAMMemberMapOutputWithContext(context.Context) CryptoKeyIAMMemberMapOutput
+	ToCryptoKeyIamMemberMapOutput() CryptoKeyIamMemberMapOutput
+	ToCryptoKeyIamMemberMapOutputWithContext(context.Context) CryptoKeyIamMemberMapOutput
 }
 
-type CryptoKeyIAMMemberMap map[string]CryptoKeyIAMMemberInput
+type CryptoKeyIamMemberMap map[string]CryptoKeyIamMemberInput
 
-func (CryptoKeyIAMMemberMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*CryptoKeyIAMMember)(nil)).Elem()
+func (CryptoKeyIamMemberMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*CryptoKeyIamMember)(nil)).Elem()
 }
 
-func (i CryptoKeyIAMMemberMap) ToCryptoKeyIAMMemberMapOutput() CryptoKeyIAMMemberMapOutput {
-	return i.ToCryptoKeyIAMMemberMapOutputWithContext(context.Background())
+func (i CryptoKeyIamMemberMap) ToCryptoKeyIamMemberMapOutput() CryptoKeyIamMemberMapOutput {
+	return i.ToCryptoKeyIamMemberMapOutputWithContext(context.Background())
 }
 
-func (i CryptoKeyIAMMemberMap) ToCryptoKeyIAMMemberMapOutputWithContext(ctx context.Context) CryptoKeyIAMMemberMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIAMMemberMapOutput)
+func (i CryptoKeyIamMemberMap) ToCryptoKeyIamMemberMapOutputWithContext(ctx context.Context) CryptoKeyIamMemberMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIamMemberMapOutput)
 }
 
-type CryptoKeyIAMMemberOutput struct{ *pulumi.OutputState }
+type CryptoKeyIamMemberOutput struct{ *pulumi.OutputState }
 
-func (CryptoKeyIAMMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CryptoKeyIAMMember)(nil)).Elem()
+func (CryptoKeyIamMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CryptoKeyIamMember)(nil)).Elem()
 }
 
-func (o CryptoKeyIAMMemberOutput) ToCryptoKeyIAMMemberOutput() CryptoKeyIAMMemberOutput {
+func (o CryptoKeyIamMemberOutput) ToCryptoKeyIamMemberOutput() CryptoKeyIamMemberOutput {
 	return o
 }
 
-func (o CryptoKeyIAMMemberOutput) ToCryptoKeyIAMMemberOutputWithContext(ctx context.Context) CryptoKeyIAMMemberOutput {
+func (o CryptoKeyIamMemberOutput) ToCryptoKeyIamMemberOutputWithContext(ctx context.Context) CryptoKeyIamMemberOutput {
 	return o
 }
 
 // ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 // Structure is documented below.
-func (o CryptoKeyIAMMemberOutput) Condition() CryptoKeyIAMMemberConditionPtrOutput {
-	return o.ApplyT(func(v *CryptoKeyIAMMember) CryptoKeyIAMMemberConditionPtrOutput { return v.Condition }).(CryptoKeyIAMMemberConditionPtrOutput)
+func (o CryptoKeyIamMemberOutput) Condition() CryptoKeyIamMemberConditionPtrOutput {
+	return o.ApplyT(func(v *CryptoKeyIamMember) CryptoKeyIamMemberConditionPtrOutput { return v.Condition }).(CryptoKeyIamMemberConditionPtrOutput)
 }
 
 // The crypto key ID, in the form
@@ -542,70 +542,70 @@ func (o CryptoKeyIAMMemberOutput) Condition() CryptoKeyIAMMemberConditionPtrOutp
 //   - **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
 //   - **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
 //   - **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
-func (o CryptoKeyIAMMemberOutput) CryptoKeyId() pulumi.StringOutput {
-	return o.ApplyT(func(v *CryptoKeyIAMMember) pulumi.StringOutput { return v.CryptoKeyId }).(pulumi.StringOutput)
+func (o CryptoKeyIamMemberOutput) CryptoKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CryptoKeyIamMember) pulumi.StringOutput { return v.CryptoKeyId }).(pulumi.StringOutput)
 }
 
 // (Computed) The etag of the project's IAM policy.
-func (o CryptoKeyIAMMemberOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v *CryptoKeyIAMMember) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+func (o CryptoKeyIamMemberOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *CryptoKeyIamMember) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-func (o CryptoKeyIAMMemberOutput) Member() pulumi.StringOutput {
-	return o.ApplyT(func(v *CryptoKeyIAMMember) pulumi.StringOutput { return v.Member }).(pulumi.StringOutput)
+func (o CryptoKeyIamMemberOutput) Member() pulumi.StringOutput {
+	return o.ApplyT(func(v *CryptoKeyIamMember) pulumi.StringOutput { return v.Member }).(pulumi.StringOutput)
 }
 
 // The role that should be applied. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
-func (o CryptoKeyIAMMemberOutput) Role() pulumi.StringOutput {
-	return o.ApplyT(func(v *CryptoKeyIAMMember) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
+func (o CryptoKeyIamMemberOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v *CryptoKeyIamMember) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }
 
-type CryptoKeyIAMMemberArrayOutput struct{ *pulumi.OutputState }
+type CryptoKeyIamMemberArrayOutput struct{ *pulumi.OutputState }
 
-func (CryptoKeyIAMMemberArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*CryptoKeyIAMMember)(nil)).Elem()
+func (CryptoKeyIamMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*CryptoKeyIamMember)(nil)).Elem()
 }
 
-func (o CryptoKeyIAMMemberArrayOutput) ToCryptoKeyIAMMemberArrayOutput() CryptoKeyIAMMemberArrayOutput {
+func (o CryptoKeyIamMemberArrayOutput) ToCryptoKeyIamMemberArrayOutput() CryptoKeyIamMemberArrayOutput {
 	return o
 }
 
-func (o CryptoKeyIAMMemberArrayOutput) ToCryptoKeyIAMMemberArrayOutputWithContext(ctx context.Context) CryptoKeyIAMMemberArrayOutput {
+func (o CryptoKeyIamMemberArrayOutput) ToCryptoKeyIamMemberArrayOutputWithContext(ctx context.Context) CryptoKeyIamMemberArrayOutput {
 	return o
 }
 
-func (o CryptoKeyIAMMemberArrayOutput) Index(i pulumi.IntInput) CryptoKeyIAMMemberOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CryptoKeyIAMMember {
-		return vs[0].([]*CryptoKeyIAMMember)[vs[1].(int)]
-	}).(CryptoKeyIAMMemberOutput)
+func (o CryptoKeyIamMemberArrayOutput) Index(i pulumi.IntInput) CryptoKeyIamMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CryptoKeyIamMember {
+		return vs[0].([]*CryptoKeyIamMember)[vs[1].(int)]
+	}).(CryptoKeyIamMemberOutput)
 }
 
-type CryptoKeyIAMMemberMapOutput struct{ *pulumi.OutputState }
+type CryptoKeyIamMemberMapOutput struct{ *pulumi.OutputState }
 
-func (CryptoKeyIAMMemberMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*CryptoKeyIAMMember)(nil)).Elem()
+func (CryptoKeyIamMemberMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*CryptoKeyIamMember)(nil)).Elem()
 }
 
-func (o CryptoKeyIAMMemberMapOutput) ToCryptoKeyIAMMemberMapOutput() CryptoKeyIAMMemberMapOutput {
+func (o CryptoKeyIamMemberMapOutput) ToCryptoKeyIamMemberMapOutput() CryptoKeyIamMemberMapOutput {
 	return o
 }
 
-func (o CryptoKeyIAMMemberMapOutput) ToCryptoKeyIAMMemberMapOutputWithContext(ctx context.Context) CryptoKeyIAMMemberMapOutput {
+func (o CryptoKeyIamMemberMapOutput) ToCryptoKeyIamMemberMapOutputWithContext(ctx context.Context) CryptoKeyIamMemberMapOutput {
 	return o
 }
 
-func (o CryptoKeyIAMMemberMapOutput) MapIndex(k pulumi.StringInput) CryptoKeyIAMMemberOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *CryptoKeyIAMMember {
-		return vs[0].(map[string]*CryptoKeyIAMMember)[vs[1].(string)]
-	}).(CryptoKeyIAMMemberOutput)
+func (o CryptoKeyIamMemberMapOutput) MapIndex(k pulumi.StringInput) CryptoKeyIamMemberOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *CryptoKeyIamMember {
+		return vs[0].(map[string]*CryptoKeyIamMember)[vs[1].(string)]
+	}).(CryptoKeyIamMemberOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyIAMMemberInput)(nil)).Elem(), &CryptoKeyIAMMember{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyIAMMemberArrayInput)(nil)).Elem(), CryptoKeyIAMMemberArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyIAMMemberMapInput)(nil)).Elem(), CryptoKeyIAMMemberMap{})
-	pulumi.RegisterOutputType(CryptoKeyIAMMemberOutput{})
-	pulumi.RegisterOutputType(CryptoKeyIAMMemberArrayOutput{})
-	pulumi.RegisterOutputType(CryptoKeyIAMMemberMapOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyIamMemberInput)(nil)).Elem(), &CryptoKeyIamMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyIamMemberArrayInput)(nil)).Elem(), CryptoKeyIamMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyIamMemberMapInput)(nil)).Elem(), CryptoKeyIamMemberMap{})
+	pulumi.RegisterOutputType(CryptoKeyIamMemberOutput{})
+	pulumi.RegisterOutputType(CryptoKeyIamMemberArrayOutput{})
+	pulumi.RegisterOutputType(CryptoKeyIamMemberMapOutput{})
 }

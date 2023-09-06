@@ -14,17 +14,17 @@ import (
 
 // Three different resources help you manage your IAM policy for Cloud Build v2 Connection. Each of these resources serves a different use case:
 //
-// * `cloudbuildv2.ConnectionIAMPolicy`: Authoritative. Sets the IAM policy for the connection and replaces any existing policy already attached.
-// * `cloudbuildv2.ConnectionIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the connection are preserved.
-// * `cloudbuildv2.ConnectionIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the connection are preserved.
+// * `cloudbuildv2.ConnectionIamPolicy`: Authoritative. Sets the IAM policy for the connection and replaces any existing policy already attached.
+// * `cloudbuildv2.ConnectionIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the connection are preserved.
+// * `cloudbuildv2.ConnectionIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the connection are preserved.
 //
 // # A data source can be used to retrieve policy data in advent you do not need creation
 //
-// * `cloudbuildv2.ConnectionIAMPolicy`: Retrieves the IAM policy for the connection
+// * `cloudbuildv2.ConnectionIamPolicy`: Retrieves the IAM policy for the connection
 //
-// > **Note:** `cloudbuildv2.ConnectionIAMPolicy` **cannot** be used in conjunction with `cloudbuildv2.ConnectionIAMBinding` and `cloudbuildv2.ConnectionIAMMember` or they will fight over what your policy should be.
+// > **Note:** `cloudbuildv2.ConnectionIamPolicy` **cannot** be used in conjunction with `cloudbuildv2.ConnectionIamBinding` and `cloudbuildv2.ConnectionIamMember` or they will fight over what your policy should be.
 //
-// > **Note:** `cloudbuildv2.ConnectionIAMBinding` resources **can be** used in conjunction with `cloudbuildv2.ConnectionIAMMember` resources **only if** they do not grant privilege to the same role.
+// > **Note:** `cloudbuildv2.ConnectionIamBinding` resources **can be** used in conjunction with `cloudbuildv2.ConnectionIamMember` resources **only if** they do not grant privilege to the same role.
 //
 // ## google\_cloudbuildv2\_connection\_iam\_policy
 //
@@ -41,8 +41,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
+//			admin, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
 //					{
 //						Role: "roles/cloudbuild.connectionViewer",
 //						Members: []string{
@@ -54,7 +54,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cloudbuildv2.NewConnectionIAMPolicy(ctx, "policy", &cloudbuildv2.ConnectionIAMPolicyArgs{
+//			_, err = cloudbuildv2.NewConnectionIamPolicy(ctx, "policy", &cloudbuildv2.ConnectionIamPolicyArgs{
 //				Project:    pulumi.Any(google_cloudbuildv2_connection.MyConnection.Project),
 //				Location:   pulumi.Any(google_cloudbuildv2_connection.MyConnection.Location),
 //				PolicyData: *pulumi.String(admin.PolicyData),
@@ -82,7 +82,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudbuildv2.NewConnectionIAMBinding(ctx, "binding", &cloudbuildv2.ConnectionIAMBindingArgs{
+//			_, err := cloudbuildv2.NewConnectionIamBinding(ctx, "binding", &cloudbuildv2.ConnectionIamBindingArgs{
 //				Project:  pulumi.Any(google_cloudbuildv2_connection.MyConnection.Project),
 //				Location: pulumi.Any(google_cloudbuildv2_connection.MyConnection.Location),
 //				Role:     pulumi.String("roles/cloudbuild.connectionViewer"),
@@ -113,7 +113,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudbuildv2.NewConnectionIAMMember(ctx, "member", &cloudbuildv2.ConnectionIAMMemberArgs{
+//			_, err := cloudbuildv2.NewConnectionIamMember(ctx, "member", &cloudbuildv2.ConnectionIamMemberArgs{
 //				Project:  pulumi.Any(google_cloudbuildv2_connection.MyConnection.Project),
 //				Location: pulumi.Any(google_cloudbuildv2_connection.MyConnection.Location),
 //				Role:     pulumi.String("roles/cloudbuild.connectionViewer"),
@@ -134,7 +134,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:cloudbuildv2/connectionIAMBinding:ConnectionIAMBinding editor "projects/{{project}}/locations/{{location}}/connections/{{connection}} roles/cloudbuild.connectionViewer user:jane@example.com"
+//	$ pulumi import gcp:cloudbuildv2/connectionIamBinding:ConnectionIamBinding editor "projects/{{project}}/locations/{{location}}/connections/{{connection}} roles/cloudbuild.connectionViewer user:jane@example.com"
 //
 // ```
 //
@@ -142,7 +142,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:cloudbuildv2/connectionIAMBinding:ConnectionIAMBinding editor "projects/{{project}}/locations/{{location}}/connections/{{connection}} roles/cloudbuild.connectionViewer"
+//	$ pulumi import gcp:cloudbuildv2/connectionIamBinding:ConnectionIamBinding editor "projects/{{project}}/locations/{{location}}/connections/{{connection}} roles/cloudbuild.connectionViewer"
 //
 // ```
 //
@@ -150,17 +150,17 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:cloudbuildv2/connectionIAMBinding:ConnectionIAMBinding editor projects/{{project}}/locations/{{location}}/connections/{{connection}}
+//	$ pulumi import gcp:cloudbuildv2/connectionIamBinding:ConnectionIamBinding editor projects/{{project}}/locations/{{location}}/connections/{{connection}}
 //
 // ```
 //
 //	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 //
 // full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
-type ConnectionIAMBinding struct {
+type ConnectionIamBinding struct {
 	pulumi.CustomResourceState
 
-	Condition ConnectionIAMBindingConditionPtrOutput `pulumi:"condition"`
+	Condition ConnectionIamBindingConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
 	Etag     pulumi.StringOutput      `pulumi:"etag"`
 	Location pulumi.StringOutput      `pulumi:"location"`
@@ -183,14 +183,14 @@ type ConnectionIAMBinding struct {
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The role that should be applied. Only one
-	// `cloudbuildv2.ConnectionIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `cloudbuildv2.ConnectionIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringOutput `pulumi:"role"`
 }
 
-// NewConnectionIAMBinding registers a new resource with the given unique name, arguments, and options.
-func NewConnectionIAMBinding(ctx *pulumi.Context,
-	name string, args *ConnectionIAMBindingArgs, opts ...pulumi.ResourceOption) (*ConnectionIAMBinding, error) {
+// NewConnectionIamBinding registers a new resource with the given unique name, arguments, and options.
+func NewConnectionIamBinding(ctx *pulumi.Context,
+	name string, args *ConnectionIamBindingArgs, opts ...pulumi.ResourceOption) (*ConnectionIamBinding, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -202,29 +202,29 @@ func NewConnectionIAMBinding(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Role'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
-	var resource ConnectionIAMBinding
-	err := ctx.RegisterResource("gcp:cloudbuildv2/connectionIAMBinding:ConnectionIAMBinding", name, args, &resource, opts...)
+	var resource ConnectionIamBinding
+	err := ctx.RegisterResource("gcp:cloudbuildv2/connectionIamBinding:ConnectionIamBinding", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// GetConnectionIAMBinding gets an existing ConnectionIAMBinding resource's state with the given name, ID, and optional
+// GetConnectionIamBinding gets an existing ConnectionIamBinding resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetConnectionIAMBinding(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *ConnectionIAMBindingState, opts ...pulumi.ResourceOption) (*ConnectionIAMBinding, error) {
-	var resource ConnectionIAMBinding
-	err := ctx.ReadResource("gcp:cloudbuildv2/connectionIAMBinding:ConnectionIAMBinding", name, id, state, &resource, opts...)
+func GetConnectionIamBinding(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *ConnectionIamBindingState, opts ...pulumi.ResourceOption) (*ConnectionIamBinding, error) {
+	var resource ConnectionIamBinding
+	err := ctx.ReadResource("gcp:cloudbuildv2/connectionIamBinding:ConnectionIamBinding", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering ConnectionIAMBinding resources.
-type connectionIAMBindingState struct {
-	Condition *ConnectionIAMBindingCondition `pulumi:"condition"`
+// Input properties used for looking up and filtering ConnectionIamBinding resources.
+type connectionIamBindingState struct {
+	Condition *ConnectionIamBindingCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
 	Etag     *string  `pulumi:"etag"`
 	Location *string  `pulumi:"location"`
@@ -247,13 +247,13 @@ type connectionIAMBindingState struct {
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	Project *string `pulumi:"project"`
 	// The role that should be applied. Only one
-	// `cloudbuildv2.ConnectionIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `cloudbuildv2.ConnectionIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role *string `pulumi:"role"`
 }
 
-type ConnectionIAMBindingState struct {
-	Condition ConnectionIAMBindingConditionPtrInput
+type ConnectionIamBindingState struct {
+	Condition ConnectionIamBindingConditionPtrInput
 	// (Computed) The etag of the IAM policy.
 	Etag     pulumi.StringPtrInput
 	Location pulumi.StringPtrInput
@@ -276,17 +276,17 @@ type ConnectionIAMBindingState struct {
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	Project pulumi.StringPtrInput
 	// The role that should be applied. Only one
-	// `cloudbuildv2.ConnectionIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `cloudbuildv2.ConnectionIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringPtrInput
 }
 
-func (ConnectionIAMBindingState) ElementType() reflect.Type {
-	return reflect.TypeOf((*connectionIAMBindingState)(nil)).Elem()
+func (ConnectionIamBindingState) ElementType() reflect.Type {
+	return reflect.TypeOf((*connectionIamBindingState)(nil)).Elem()
 }
 
-type connectionIAMBindingArgs struct {
-	Condition *ConnectionIAMBindingCondition `pulumi:"condition"`
+type connectionIamBindingArgs struct {
+	Condition *ConnectionIamBindingCondition `pulumi:"condition"`
 	Location  *string                        `pulumi:"location"`
 	Members   []string                       `pulumi:"members"`
 	// Used to find the parent resource to bind the IAM policy to
@@ -307,14 +307,14 @@ type connectionIAMBindingArgs struct {
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	Project *string `pulumi:"project"`
 	// The role that should be applied. Only one
-	// `cloudbuildv2.ConnectionIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `cloudbuildv2.ConnectionIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role string `pulumi:"role"`
 }
 
-// The set of arguments for constructing a ConnectionIAMBinding resource.
-type ConnectionIAMBindingArgs struct {
-	Condition ConnectionIAMBindingConditionPtrInput
+// The set of arguments for constructing a ConnectionIamBinding resource.
+type ConnectionIamBindingArgs struct {
+	Condition ConnectionIamBindingConditionPtrInput
 	Location  pulumi.StringPtrInput
 	Members   pulumi.StringArrayInput
 	// Used to find the parent resource to bind the IAM policy to
@@ -335,118 +335,118 @@ type ConnectionIAMBindingArgs struct {
 	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	Project pulumi.StringPtrInput
 	// The role that should be applied. Only one
-	// `cloudbuildv2.ConnectionIAMBinding` can be used per role. Note that custom roles must be of the format
+	// `cloudbuildv2.ConnectionIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 	Role pulumi.StringInput
 }
 
-func (ConnectionIAMBindingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*connectionIAMBindingArgs)(nil)).Elem()
+func (ConnectionIamBindingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*connectionIamBindingArgs)(nil)).Elem()
 }
 
-type ConnectionIAMBindingInput interface {
+type ConnectionIamBindingInput interface {
 	pulumi.Input
 
-	ToConnectionIAMBindingOutput() ConnectionIAMBindingOutput
-	ToConnectionIAMBindingOutputWithContext(ctx context.Context) ConnectionIAMBindingOutput
+	ToConnectionIamBindingOutput() ConnectionIamBindingOutput
+	ToConnectionIamBindingOutputWithContext(ctx context.Context) ConnectionIamBindingOutput
 }
 
-func (*ConnectionIAMBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConnectionIAMBinding)(nil)).Elem()
+func (*ConnectionIamBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionIamBinding)(nil)).Elem()
 }
 
-func (i *ConnectionIAMBinding) ToConnectionIAMBindingOutput() ConnectionIAMBindingOutput {
-	return i.ToConnectionIAMBindingOutputWithContext(context.Background())
+func (i *ConnectionIamBinding) ToConnectionIamBindingOutput() ConnectionIamBindingOutput {
+	return i.ToConnectionIamBindingOutputWithContext(context.Background())
 }
 
-func (i *ConnectionIAMBinding) ToConnectionIAMBindingOutputWithContext(ctx context.Context) ConnectionIAMBindingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIAMBindingOutput)
+func (i *ConnectionIamBinding) ToConnectionIamBindingOutputWithContext(ctx context.Context) ConnectionIamBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIamBindingOutput)
 }
 
-// ConnectionIAMBindingArrayInput is an input type that accepts ConnectionIAMBindingArray and ConnectionIAMBindingArrayOutput values.
-// You can construct a concrete instance of `ConnectionIAMBindingArrayInput` via:
+// ConnectionIamBindingArrayInput is an input type that accepts ConnectionIamBindingArray and ConnectionIamBindingArrayOutput values.
+// You can construct a concrete instance of `ConnectionIamBindingArrayInput` via:
 //
-//	ConnectionIAMBindingArray{ ConnectionIAMBindingArgs{...} }
-type ConnectionIAMBindingArrayInput interface {
+//	ConnectionIamBindingArray{ ConnectionIamBindingArgs{...} }
+type ConnectionIamBindingArrayInput interface {
 	pulumi.Input
 
-	ToConnectionIAMBindingArrayOutput() ConnectionIAMBindingArrayOutput
-	ToConnectionIAMBindingArrayOutputWithContext(context.Context) ConnectionIAMBindingArrayOutput
+	ToConnectionIamBindingArrayOutput() ConnectionIamBindingArrayOutput
+	ToConnectionIamBindingArrayOutputWithContext(context.Context) ConnectionIamBindingArrayOutput
 }
 
-type ConnectionIAMBindingArray []ConnectionIAMBindingInput
+type ConnectionIamBindingArray []ConnectionIamBindingInput
 
-func (ConnectionIAMBindingArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*ConnectionIAMBinding)(nil)).Elem()
+func (ConnectionIamBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*ConnectionIamBinding)(nil)).Elem()
 }
 
-func (i ConnectionIAMBindingArray) ToConnectionIAMBindingArrayOutput() ConnectionIAMBindingArrayOutput {
-	return i.ToConnectionIAMBindingArrayOutputWithContext(context.Background())
+func (i ConnectionIamBindingArray) ToConnectionIamBindingArrayOutput() ConnectionIamBindingArrayOutput {
+	return i.ToConnectionIamBindingArrayOutputWithContext(context.Background())
 }
 
-func (i ConnectionIAMBindingArray) ToConnectionIAMBindingArrayOutputWithContext(ctx context.Context) ConnectionIAMBindingArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIAMBindingArrayOutput)
+func (i ConnectionIamBindingArray) ToConnectionIamBindingArrayOutputWithContext(ctx context.Context) ConnectionIamBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIamBindingArrayOutput)
 }
 
-// ConnectionIAMBindingMapInput is an input type that accepts ConnectionIAMBindingMap and ConnectionIAMBindingMapOutput values.
-// You can construct a concrete instance of `ConnectionIAMBindingMapInput` via:
+// ConnectionIamBindingMapInput is an input type that accepts ConnectionIamBindingMap and ConnectionIamBindingMapOutput values.
+// You can construct a concrete instance of `ConnectionIamBindingMapInput` via:
 //
-//	ConnectionIAMBindingMap{ "key": ConnectionIAMBindingArgs{...} }
-type ConnectionIAMBindingMapInput interface {
+//	ConnectionIamBindingMap{ "key": ConnectionIamBindingArgs{...} }
+type ConnectionIamBindingMapInput interface {
 	pulumi.Input
 
-	ToConnectionIAMBindingMapOutput() ConnectionIAMBindingMapOutput
-	ToConnectionIAMBindingMapOutputWithContext(context.Context) ConnectionIAMBindingMapOutput
+	ToConnectionIamBindingMapOutput() ConnectionIamBindingMapOutput
+	ToConnectionIamBindingMapOutputWithContext(context.Context) ConnectionIamBindingMapOutput
 }
 
-type ConnectionIAMBindingMap map[string]ConnectionIAMBindingInput
+type ConnectionIamBindingMap map[string]ConnectionIamBindingInput
 
-func (ConnectionIAMBindingMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*ConnectionIAMBinding)(nil)).Elem()
+func (ConnectionIamBindingMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*ConnectionIamBinding)(nil)).Elem()
 }
 
-func (i ConnectionIAMBindingMap) ToConnectionIAMBindingMapOutput() ConnectionIAMBindingMapOutput {
-	return i.ToConnectionIAMBindingMapOutputWithContext(context.Background())
+func (i ConnectionIamBindingMap) ToConnectionIamBindingMapOutput() ConnectionIamBindingMapOutput {
+	return i.ToConnectionIamBindingMapOutputWithContext(context.Background())
 }
 
-func (i ConnectionIAMBindingMap) ToConnectionIAMBindingMapOutputWithContext(ctx context.Context) ConnectionIAMBindingMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIAMBindingMapOutput)
+func (i ConnectionIamBindingMap) ToConnectionIamBindingMapOutputWithContext(ctx context.Context) ConnectionIamBindingMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIamBindingMapOutput)
 }
 
-type ConnectionIAMBindingOutput struct{ *pulumi.OutputState }
+type ConnectionIamBindingOutput struct{ *pulumi.OutputState }
 
-func (ConnectionIAMBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConnectionIAMBinding)(nil)).Elem()
+func (ConnectionIamBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionIamBinding)(nil)).Elem()
 }
 
-func (o ConnectionIAMBindingOutput) ToConnectionIAMBindingOutput() ConnectionIAMBindingOutput {
+func (o ConnectionIamBindingOutput) ToConnectionIamBindingOutput() ConnectionIamBindingOutput {
 	return o
 }
 
-func (o ConnectionIAMBindingOutput) ToConnectionIAMBindingOutputWithContext(ctx context.Context) ConnectionIAMBindingOutput {
+func (o ConnectionIamBindingOutput) ToConnectionIamBindingOutputWithContext(ctx context.Context) ConnectionIamBindingOutput {
 	return o
 }
 
-func (o ConnectionIAMBindingOutput) Condition() ConnectionIAMBindingConditionPtrOutput {
-	return o.ApplyT(func(v *ConnectionIAMBinding) ConnectionIAMBindingConditionPtrOutput { return v.Condition }).(ConnectionIAMBindingConditionPtrOutput)
+func (o ConnectionIamBindingOutput) Condition() ConnectionIamBindingConditionPtrOutput {
+	return o.ApplyT(func(v *ConnectionIamBinding) ConnectionIamBindingConditionPtrOutput { return v.Condition }).(ConnectionIamBindingConditionPtrOutput)
 }
 
 // (Computed) The etag of the IAM policy.
-func (o ConnectionIAMBindingOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v *ConnectionIAMBinding) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+func (o ConnectionIamBindingOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectionIamBinding) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-func (o ConnectionIAMBindingOutput) Location() pulumi.StringOutput {
-	return o.ApplyT(func(v *ConnectionIAMBinding) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+func (o ConnectionIamBindingOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectionIamBinding) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-func (o ConnectionIAMBindingOutput) Members() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ConnectionIAMBinding) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
+func (o ConnectionIamBindingOutput) Members() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConnectionIamBinding) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
 }
 
 // Used to find the parent resource to bind the IAM policy to
-func (o ConnectionIAMBindingOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v *ConnectionIAMBinding) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+func (o ConnectionIamBindingOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectionIamBinding) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 // The ID of the project in which the resource belongs.
@@ -463,62 +463,62 @@ func (o ConnectionIAMBindingOutput) Name() pulumi.StringOutput {
 //   - **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 //   - **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 //   - **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
-func (o ConnectionIAMBindingOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func(v *ConnectionIAMBinding) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+func (o ConnectionIamBindingOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectionIamBinding) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // The role that should be applied. Only one
-// `cloudbuildv2.ConnectionIAMBinding` can be used per role. Note that custom roles must be of the format
+// `cloudbuildv2.ConnectionIamBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
-func (o ConnectionIAMBindingOutput) Role() pulumi.StringOutput {
-	return o.ApplyT(func(v *ConnectionIAMBinding) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
+func (o ConnectionIamBindingOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectionIamBinding) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }
 
-type ConnectionIAMBindingArrayOutput struct{ *pulumi.OutputState }
+type ConnectionIamBindingArrayOutput struct{ *pulumi.OutputState }
 
-func (ConnectionIAMBindingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*ConnectionIAMBinding)(nil)).Elem()
+func (ConnectionIamBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*ConnectionIamBinding)(nil)).Elem()
 }
 
-func (o ConnectionIAMBindingArrayOutput) ToConnectionIAMBindingArrayOutput() ConnectionIAMBindingArrayOutput {
+func (o ConnectionIamBindingArrayOutput) ToConnectionIamBindingArrayOutput() ConnectionIamBindingArrayOutput {
 	return o
 }
 
-func (o ConnectionIAMBindingArrayOutput) ToConnectionIAMBindingArrayOutputWithContext(ctx context.Context) ConnectionIAMBindingArrayOutput {
+func (o ConnectionIamBindingArrayOutput) ToConnectionIamBindingArrayOutputWithContext(ctx context.Context) ConnectionIamBindingArrayOutput {
 	return o
 }
 
-func (o ConnectionIAMBindingArrayOutput) Index(i pulumi.IntInput) ConnectionIAMBindingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ConnectionIAMBinding {
-		return vs[0].([]*ConnectionIAMBinding)[vs[1].(int)]
-	}).(ConnectionIAMBindingOutput)
+func (o ConnectionIamBindingArrayOutput) Index(i pulumi.IntInput) ConnectionIamBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ConnectionIamBinding {
+		return vs[0].([]*ConnectionIamBinding)[vs[1].(int)]
+	}).(ConnectionIamBindingOutput)
 }
 
-type ConnectionIAMBindingMapOutput struct{ *pulumi.OutputState }
+type ConnectionIamBindingMapOutput struct{ *pulumi.OutputState }
 
-func (ConnectionIAMBindingMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*ConnectionIAMBinding)(nil)).Elem()
+func (ConnectionIamBindingMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*ConnectionIamBinding)(nil)).Elem()
 }
 
-func (o ConnectionIAMBindingMapOutput) ToConnectionIAMBindingMapOutput() ConnectionIAMBindingMapOutput {
+func (o ConnectionIamBindingMapOutput) ToConnectionIamBindingMapOutput() ConnectionIamBindingMapOutput {
 	return o
 }
 
-func (o ConnectionIAMBindingMapOutput) ToConnectionIAMBindingMapOutputWithContext(ctx context.Context) ConnectionIAMBindingMapOutput {
+func (o ConnectionIamBindingMapOutput) ToConnectionIamBindingMapOutputWithContext(ctx context.Context) ConnectionIamBindingMapOutput {
 	return o
 }
 
-func (o ConnectionIAMBindingMapOutput) MapIndex(k pulumi.StringInput) ConnectionIAMBindingOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ConnectionIAMBinding {
-		return vs[0].(map[string]*ConnectionIAMBinding)[vs[1].(string)]
-	}).(ConnectionIAMBindingOutput)
+func (o ConnectionIamBindingMapOutput) MapIndex(k pulumi.StringInput) ConnectionIamBindingOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ConnectionIamBinding {
+		return vs[0].(map[string]*ConnectionIamBinding)[vs[1].(string)]
+	}).(ConnectionIamBindingOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionIAMBindingInput)(nil)).Elem(), &ConnectionIAMBinding{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionIAMBindingArrayInput)(nil)).Elem(), ConnectionIAMBindingArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionIAMBindingMapInput)(nil)).Elem(), ConnectionIAMBindingMap{})
-	pulumi.RegisterOutputType(ConnectionIAMBindingOutput{})
-	pulumi.RegisterOutputType(ConnectionIAMBindingArrayOutput{})
-	pulumi.RegisterOutputType(ConnectionIAMBindingMapOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionIamBindingInput)(nil)).Elem(), &ConnectionIamBinding{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionIamBindingArrayInput)(nil)).Elem(), ConnectionIamBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionIamBindingMapInput)(nil)).Elem(), ConnectionIamBindingMap{})
+	pulumi.RegisterOutputType(ConnectionIamBindingOutput{})
+	pulumi.RegisterOutputType(ConnectionIamBindingArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionIamBindingMapOutput{})
 }

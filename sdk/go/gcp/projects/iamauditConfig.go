@@ -14,14 +14,14 @@ import (
 
 // Four different resources help you manage your IAM policy for a project. Each of these resources serves a different use case:
 //
-// * `projects.IAMPolicy`: Authoritative. Sets the IAM policy for the project and replaces any existing policy already attached.
-// * `projects.IAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the project are preserved.
-// * `projects.IAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the project are preserved.
-// * `projects.IAMAuditConfig`: Authoritative for a given service. Updates the IAM policy to enable audit logging for the given service.
+// * `projects.IamPolicy`: Authoritative. Sets the IAM policy for the project and replaces any existing policy already attached.
+// * `projects.IamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the project are preserved.
+// * `projects.IamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the project are preserved.
+// * `projects.IamAuditConfig`: Authoritative for a given service. Updates the IAM policy to enable audit logging for the given service.
 //
-// > **Note:** `projects.IAMPolicy` **cannot** be used in conjunction with `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig` or they will fight over what your policy should be.
+// > **Note:** `projects.IamPolicy` **cannot** be used in conjunction with `projects.IamBinding`, `projects.IamMember`, or `projects.IamAuditConfig` or they will fight over what your policy should be.
 //
-// > **Note:** `projects.IAMBinding` resources **can be** used in conjunction with `projects.IAMMember` resources **only if** they do not grant privilege to the same role.
+// > **Note:** `projects.IamBinding` resources **can be** used in conjunction with `projects.IamMember` resources **only if** they do not grant privilege to the same role.
 //
 // > **Note:** The underlying API method `projects.setIamPolicy` has a lot of constraints which are documented [here](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
 //
@@ -31,9 +31,9 @@ import (
 //
 // !> **Be careful!** You can accidentally lock yourself out of your project
 //
-//	using this resource. Deleting a `projects.IAMPolicy` removes access
+//	using this resource. Deleting a `projects.IamPolicy` removes access
 //	from anyone without organization-level access to the project. Proceed with caution.
-//	It's not recommended to use `projects.IAMPolicy` with your provider project
+//	It's not recommended to use `projects.IamPolicy` with your provider project
 //	to avoid locking yourself out, and it should generally only be used with projects
 //	fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
 //	applying the change.
@@ -51,8 +51,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
+//			admin, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
 //					{
 //						Role: "roles/editor",
 //						Members: []string{
@@ -64,7 +64,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewIAMPolicy(ctx, "project", &projects.IAMPolicyArgs{
+//			_, err = projects.NewIamPolicy(ctx, "project", &projects.IamPolicyArgs{
 //				Project:    pulumi.String("your-project-id"),
 //				PolicyData: *pulumi.String(admin.PolicyData),
 //			})
@@ -92,8 +92,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
+//			admin, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
 //					{
 //						Condition: {
 //							Description: pulumi.StringRef("Expiring at midnight of 2019-12-31"),
@@ -110,7 +110,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewIAMPolicy(ctx, "project", &projects.IAMPolicyArgs{
+//			_, err = projects.NewIamPolicy(ctx, "project", &projects.IamPolicyArgs{
 //				PolicyData: *pulumi.String(admin.PolicyData),
 //				Project:    pulumi.String("your-project-id"),
 //			})
@@ -137,7 +137,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := projects.NewIAMBinding(ctx, "project", &projects.IAMBindingArgs{
+//			_, err := projects.NewIamBinding(ctx, "project", &projects.IamBindingArgs{
 //				Members: pulumi.StringArray{
 //					pulumi.String("user:jane@example.com"),
 //				},
@@ -167,8 +167,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := projects.NewIAMBinding(ctx, "project", &projects.IAMBindingArgs{
-//				Condition: &projects.IAMBindingConditionArgs{
+//			_, err := projects.NewIamBinding(ctx, "project", &projects.IamBindingArgs{
+//				Condition: &projects.IamBindingConditionArgs{
 //					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
 //					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
 //					Title:       pulumi.String("expires_after_2019_12_31"),
@@ -202,7 +202,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := projects.NewIAMMember(ctx, "project", &projects.IAMMemberArgs{
+//			_, err := projects.NewIamMember(ctx, "project", &projects.IamMemberArgs{
 //				Member:  pulumi.String("user:jane@example.com"),
 //				Project: pulumi.String("your-project-id"),
 //				Role:    pulumi.String("roles/editor"),
@@ -230,8 +230,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := projects.NewIAMMember(ctx, "project", &projects.IAMMemberArgs{
-//				Condition: &projects.IAMMemberConditionArgs{
+//			_, err := projects.NewIamMember(ctx, "project", &projects.IamMemberArgs{
+//				Condition: &projects.IamMemberConditionArgs{
 //					Description: pulumi.String("Expiring at midnight of 2019-12-31"),
 //					Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
 //					Title:       pulumi.String("expires_after_2019_12_31"),
@@ -263,12 +263,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := projects.NewIAMAuditConfig(ctx, "project", &projects.IAMAuditConfigArgs{
-//				AuditLogConfigs: projects.IAMAuditConfigAuditLogConfigArray{
-//					&projects.IAMAuditConfigAuditLogConfigArgs{
+//			_, err := projects.NewIamAuditConfig(ctx, "project", &projects.IamAuditConfigArgs{
+//				AuditLogConfigs: projects.IamAuditConfigAuditLogConfigArray{
+//					&projects.IamAuditConfigAuditLogConfigArgs{
 //						LogType: pulumi.String("ADMIN_READ"),
 //					},
-//					&projects.IAMAuditConfigAuditLogConfigArgs{
+//					&projects.IamAuditConfigAuditLogConfigArgs{
 //						ExemptedMembers: pulumi.StringArray{
 //							pulumi.String("user:joebloggs@hashicorp.com"),
 //						},
@@ -295,7 +295,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:projects/iAMAuditConfig:IAMAuditConfig my_project "your-project-id roles/viewer user:foo@example.com"
+//	$ pulumi import gcp:projects/iAMAuditConfig:IamAuditConfig my_project "your-project-id roles/viewer user:foo@example.com"
 //
 // ```
 //
@@ -305,7 +305,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:projects/iAMAuditConfig:IAMAuditConfig my_project "your-project-id roles/viewer"
+//	$ pulumi import gcp:projects/iAMAuditConfig:IamAuditConfig my_project "your-project-id roles/viewer"
 //
 // ```
 //
@@ -315,7 +315,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:projects/iAMAuditConfig:IAMAuditConfig my_project your-project-id
+//	$ pulumi import gcp:projects/iAMAuditConfig:IamAuditConfig my_project your-project-id
 //
 // ```
 //
@@ -323,7 +323,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:projects/iAMAuditConfig:IAMAuditConfig my_project "your-project-id foo.googleapis.com"
+//	$ pulumi import gcp:projects/iAMAuditConfig:IamAuditConfig my_project "your-project-id foo.googleapis.com"
 //
 // ```
 //
@@ -333,14 +333,16 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:projects/iAMAuditConfig:IAMAuditConfig to include the title of condition, e.g. `google_project_iam_binding.my_project "{{your-project-id}} roles/{{role_id}} condition-title"`
+//	$ pulumi import gcp:projects/iAMAuditConfig:IamAuditConfig to include the title of condition, e.g. `google_project_iam_binding.my_project "{{your-project-id}} roles/{{role_id}} condition-title"`
 //
 // ```
-type IAMAuditConfig struct {
+//
+// Deprecated: gcp.projects/iamauditconfig.IamAuditConfig has been deprecated in favor of gcp.projects/iamauditconfig.IamAuditConfig
+type IamAuditConfig struct {
 	pulumi.CustomResourceState
 
 	// The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
-	AuditLogConfigs IAMAuditConfigAuditLogConfigArrayOutput `pulumi:"auditLogConfigs"`
+	AuditLogConfigs IamAuditConfigAuditLogConfigArrayOutput `pulumi:"auditLogConfigs"`
 	// (Computed) The etag of the project's IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The project id of the target project. This is not
@@ -350,9 +352,9 @@ type IAMAuditConfig struct {
 	Service pulumi.StringOutput `pulumi:"service"`
 }
 
-// NewIAMAuditConfig registers a new resource with the given unique name, arguments, and options.
-func NewIAMAuditConfig(ctx *pulumi.Context,
-	name string, args *IAMAuditConfigArgs, opts ...pulumi.ResourceOption) (*IAMAuditConfig, error) {
+// NewIamAuditConfig registers a new resource with the given unique name, arguments, and options.
+func NewIamAuditConfig(ctx *pulumi.Context,
+	name string, args *IamAuditConfigArgs, opts ...pulumi.ResourceOption) (*IamAuditConfig, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -366,31 +368,37 @@ func NewIAMAuditConfig(ctx *pulumi.Context,
 	if args.Service == nil {
 		return nil, errors.New("invalid value for required argument 'Service'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("gcp:projects/iAMAuditConfig:IAMAuditConfig"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
-	var resource IAMAuditConfig
-	err := ctx.RegisterResource("gcp:projects/iAMAuditConfig:IAMAuditConfig", name, args, &resource, opts...)
+	var resource IamAuditConfig
+	err := ctx.RegisterResource("gcp:projects/iAMAuditConfig:IamAuditConfig", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// GetIAMAuditConfig gets an existing IAMAuditConfig resource's state with the given name, ID, and optional
+// GetIamAuditConfig gets an existing IamAuditConfig resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetIAMAuditConfig(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *IAMAuditConfigState, opts ...pulumi.ResourceOption) (*IAMAuditConfig, error) {
-	var resource IAMAuditConfig
-	err := ctx.ReadResource("gcp:projects/iAMAuditConfig:IAMAuditConfig", name, id, state, &resource, opts...)
+func GetIamAuditConfig(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *IamAuditConfigState, opts ...pulumi.ResourceOption) (*IamAuditConfig, error) {
+	var resource IamAuditConfig
+	err := ctx.ReadResource("gcp:projects/iAMAuditConfig:IamAuditConfig", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering IAMAuditConfig resources.
-type iamauditConfigState struct {
+// Input properties used for looking up and filtering IamAuditConfig resources.
+type iamAuditConfigState struct {
 	// The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
-	AuditLogConfigs []IAMAuditConfigAuditLogConfig `pulumi:"auditLogConfigs"`
+	AuditLogConfigs []IamAuditConfigAuditLogConfig `pulumi:"auditLogConfigs"`
 	// (Computed) The etag of the project's IAM policy.
 	Etag *string `pulumi:"etag"`
 	// The project id of the target project. This is not
@@ -400,9 +408,9 @@ type iamauditConfigState struct {
 	Service *string `pulumi:"service"`
 }
 
-type IAMAuditConfigState struct {
+type IamAuditConfigState struct {
 	// The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
-	AuditLogConfigs IAMAuditConfigAuditLogConfigArrayInput
+	AuditLogConfigs IamAuditConfigAuditLogConfigArrayInput
 	// (Computed) The etag of the project's IAM policy.
 	Etag pulumi.StringPtrInput
 	// The project id of the target project. This is not
@@ -412,13 +420,13 @@ type IAMAuditConfigState struct {
 	Service pulumi.StringPtrInput
 }
 
-func (IAMAuditConfigState) ElementType() reflect.Type {
-	return reflect.TypeOf((*iamauditConfigState)(nil)).Elem()
+func (IamAuditConfigState) ElementType() reflect.Type {
+	return reflect.TypeOf((*iamAuditConfigState)(nil)).Elem()
 }
 
-type iamauditConfigArgs struct {
+type iamAuditConfigArgs struct {
 	// The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
-	AuditLogConfigs []IAMAuditConfigAuditLogConfig `pulumi:"auditLogConfigs"`
+	AuditLogConfigs []IamAuditConfigAuditLogConfig `pulumi:"auditLogConfigs"`
 	// The project id of the target project. This is not
 	// inferred from the provider.
 	Project string `pulumi:"project"`
@@ -426,10 +434,10 @@ type iamauditConfigArgs struct {
 	Service string `pulumi:"service"`
 }
 
-// The set of arguments for constructing a IAMAuditConfig resource.
-type IAMAuditConfigArgs struct {
+// The set of arguments for constructing a IamAuditConfig resource.
+type IamAuditConfigArgs struct {
 	// The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
-	AuditLogConfigs IAMAuditConfigAuditLogConfigArrayInput
+	AuditLogConfigs IamAuditConfigAuditLogConfigArrayInput
 	// The project id of the target project. This is not
 	// inferred from the provider.
 	Project pulumi.StringInput
@@ -437,159 +445,159 @@ type IAMAuditConfigArgs struct {
 	Service pulumi.StringInput
 }
 
-func (IAMAuditConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*iamauditConfigArgs)(nil)).Elem()
+func (IamAuditConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*iamAuditConfigArgs)(nil)).Elem()
 }
 
-type IAMAuditConfigInput interface {
+type IamAuditConfigInput interface {
 	pulumi.Input
 
-	ToIAMAuditConfigOutput() IAMAuditConfigOutput
-	ToIAMAuditConfigOutputWithContext(ctx context.Context) IAMAuditConfigOutput
+	ToIamAuditConfigOutput() IamAuditConfigOutput
+	ToIamAuditConfigOutputWithContext(ctx context.Context) IamAuditConfigOutput
 }
 
-func (*IAMAuditConfig) ElementType() reflect.Type {
-	return reflect.TypeOf((**IAMAuditConfig)(nil)).Elem()
+func (*IamAuditConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((**IamAuditConfig)(nil)).Elem()
 }
 
-func (i *IAMAuditConfig) ToIAMAuditConfigOutput() IAMAuditConfigOutput {
-	return i.ToIAMAuditConfigOutputWithContext(context.Background())
+func (i *IamAuditConfig) ToIamAuditConfigOutput() IamAuditConfigOutput {
+	return i.ToIamAuditConfigOutputWithContext(context.Background())
 }
 
-func (i *IAMAuditConfig) ToIAMAuditConfigOutputWithContext(ctx context.Context) IAMAuditConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMAuditConfigOutput)
+func (i *IamAuditConfig) ToIamAuditConfigOutputWithContext(ctx context.Context) IamAuditConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamAuditConfigOutput)
 }
 
-// IAMAuditConfigArrayInput is an input type that accepts IAMAuditConfigArray and IAMAuditConfigArrayOutput values.
-// You can construct a concrete instance of `IAMAuditConfigArrayInput` via:
+// IamAuditConfigArrayInput is an input type that accepts IamAuditConfigArray and IamAuditConfigArrayOutput values.
+// You can construct a concrete instance of `IamAuditConfigArrayInput` via:
 //
-//	IAMAuditConfigArray{ IAMAuditConfigArgs{...} }
-type IAMAuditConfigArrayInput interface {
+//	IamAuditConfigArray{ IamAuditConfigArgs{...} }
+type IamAuditConfigArrayInput interface {
 	pulumi.Input
 
-	ToIAMAuditConfigArrayOutput() IAMAuditConfigArrayOutput
-	ToIAMAuditConfigArrayOutputWithContext(context.Context) IAMAuditConfigArrayOutput
+	ToIamAuditConfigArrayOutput() IamAuditConfigArrayOutput
+	ToIamAuditConfigArrayOutputWithContext(context.Context) IamAuditConfigArrayOutput
 }
 
-type IAMAuditConfigArray []IAMAuditConfigInput
+type IamAuditConfigArray []IamAuditConfigInput
 
-func (IAMAuditConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*IAMAuditConfig)(nil)).Elem()
+func (IamAuditConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*IamAuditConfig)(nil)).Elem()
 }
 
-func (i IAMAuditConfigArray) ToIAMAuditConfigArrayOutput() IAMAuditConfigArrayOutput {
-	return i.ToIAMAuditConfigArrayOutputWithContext(context.Background())
+func (i IamAuditConfigArray) ToIamAuditConfigArrayOutput() IamAuditConfigArrayOutput {
+	return i.ToIamAuditConfigArrayOutputWithContext(context.Background())
 }
 
-func (i IAMAuditConfigArray) ToIAMAuditConfigArrayOutputWithContext(ctx context.Context) IAMAuditConfigArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMAuditConfigArrayOutput)
+func (i IamAuditConfigArray) ToIamAuditConfigArrayOutputWithContext(ctx context.Context) IamAuditConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamAuditConfigArrayOutput)
 }
 
-// IAMAuditConfigMapInput is an input type that accepts IAMAuditConfigMap and IAMAuditConfigMapOutput values.
-// You can construct a concrete instance of `IAMAuditConfigMapInput` via:
+// IamAuditConfigMapInput is an input type that accepts IamAuditConfigMap and IamAuditConfigMapOutput values.
+// You can construct a concrete instance of `IamAuditConfigMapInput` via:
 //
-//	IAMAuditConfigMap{ "key": IAMAuditConfigArgs{...} }
-type IAMAuditConfigMapInput interface {
+//	IamAuditConfigMap{ "key": IamAuditConfigArgs{...} }
+type IamAuditConfigMapInput interface {
 	pulumi.Input
 
-	ToIAMAuditConfigMapOutput() IAMAuditConfigMapOutput
-	ToIAMAuditConfigMapOutputWithContext(context.Context) IAMAuditConfigMapOutput
+	ToIamAuditConfigMapOutput() IamAuditConfigMapOutput
+	ToIamAuditConfigMapOutputWithContext(context.Context) IamAuditConfigMapOutput
 }
 
-type IAMAuditConfigMap map[string]IAMAuditConfigInput
+type IamAuditConfigMap map[string]IamAuditConfigInput
 
-func (IAMAuditConfigMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*IAMAuditConfig)(nil)).Elem()
+func (IamAuditConfigMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*IamAuditConfig)(nil)).Elem()
 }
 
-func (i IAMAuditConfigMap) ToIAMAuditConfigMapOutput() IAMAuditConfigMapOutput {
-	return i.ToIAMAuditConfigMapOutputWithContext(context.Background())
+func (i IamAuditConfigMap) ToIamAuditConfigMapOutput() IamAuditConfigMapOutput {
+	return i.ToIamAuditConfigMapOutputWithContext(context.Background())
 }
 
-func (i IAMAuditConfigMap) ToIAMAuditConfigMapOutputWithContext(ctx context.Context) IAMAuditConfigMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(IAMAuditConfigMapOutput)
+func (i IamAuditConfigMap) ToIamAuditConfigMapOutputWithContext(ctx context.Context) IamAuditConfigMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamAuditConfigMapOutput)
 }
 
-type IAMAuditConfigOutput struct{ *pulumi.OutputState }
+type IamAuditConfigOutput struct{ *pulumi.OutputState }
 
-func (IAMAuditConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**IAMAuditConfig)(nil)).Elem()
+func (IamAuditConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IamAuditConfig)(nil)).Elem()
 }
 
-func (o IAMAuditConfigOutput) ToIAMAuditConfigOutput() IAMAuditConfigOutput {
+func (o IamAuditConfigOutput) ToIamAuditConfigOutput() IamAuditConfigOutput {
 	return o
 }
 
-func (o IAMAuditConfigOutput) ToIAMAuditConfigOutputWithContext(ctx context.Context) IAMAuditConfigOutput {
+func (o IamAuditConfigOutput) ToIamAuditConfigOutputWithContext(ctx context.Context) IamAuditConfigOutput {
 	return o
 }
 
 // The configuration for logging of each type of permission.  This can be specified multiple times.  Structure is documented below.
-func (o IAMAuditConfigOutput) AuditLogConfigs() IAMAuditConfigAuditLogConfigArrayOutput {
-	return o.ApplyT(func(v *IAMAuditConfig) IAMAuditConfigAuditLogConfigArrayOutput { return v.AuditLogConfigs }).(IAMAuditConfigAuditLogConfigArrayOutput)
+func (o IamAuditConfigOutput) AuditLogConfigs() IamAuditConfigAuditLogConfigArrayOutput {
+	return o.ApplyT(func(v *IamAuditConfig) IamAuditConfigAuditLogConfigArrayOutput { return v.AuditLogConfigs }).(IamAuditConfigAuditLogConfigArrayOutput)
 }
 
 // (Computed) The etag of the project's IAM policy.
-func (o IAMAuditConfigOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v *IAMAuditConfig) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+func (o IamAuditConfigOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *IamAuditConfig) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The project id of the target project. This is not
 // inferred from the provider.
-func (o IAMAuditConfigOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func(v *IAMAuditConfig) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+func (o IamAuditConfigOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *IamAuditConfig) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Service which will be enabled for audit logging.  The special value `allServices` covers all services.  Note that if there are google\_project\_iam\_audit\_config resources covering both `allServices` and a specific service then the union of the two AuditConfigs is used for that service: the `logTypes` specified in each `auditLogConfig` are enabled, and the `exemptedMembers` in each `auditLogConfig` are exempted.
-func (o IAMAuditConfigOutput) Service() pulumi.StringOutput {
-	return o.ApplyT(func(v *IAMAuditConfig) pulumi.StringOutput { return v.Service }).(pulumi.StringOutput)
+func (o IamAuditConfigOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v *IamAuditConfig) pulumi.StringOutput { return v.Service }).(pulumi.StringOutput)
 }
 
-type IAMAuditConfigArrayOutput struct{ *pulumi.OutputState }
+type IamAuditConfigArrayOutput struct{ *pulumi.OutputState }
 
-func (IAMAuditConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*IAMAuditConfig)(nil)).Elem()
+func (IamAuditConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*IamAuditConfig)(nil)).Elem()
 }
 
-func (o IAMAuditConfigArrayOutput) ToIAMAuditConfigArrayOutput() IAMAuditConfigArrayOutput {
+func (o IamAuditConfigArrayOutput) ToIamAuditConfigArrayOutput() IamAuditConfigArrayOutput {
 	return o
 }
 
-func (o IAMAuditConfigArrayOutput) ToIAMAuditConfigArrayOutputWithContext(ctx context.Context) IAMAuditConfigArrayOutput {
+func (o IamAuditConfigArrayOutput) ToIamAuditConfigArrayOutputWithContext(ctx context.Context) IamAuditConfigArrayOutput {
 	return o
 }
 
-func (o IAMAuditConfigArrayOutput) Index(i pulumi.IntInput) IAMAuditConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IAMAuditConfig {
-		return vs[0].([]*IAMAuditConfig)[vs[1].(int)]
-	}).(IAMAuditConfigOutput)
+func (o IamAuditConfigArrayOutput) Index(i pulumi.IntInput) IamAuditConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IamAuditConfig {
+		return vs[0].([]*IamAuditConfig)[vs[1].(int)]
+	}).(IamAuditConfigOutput)
 }
 
-type IAMAuditConfigMapOutput struct{ *pulumi.OutputState }
+type IamAuditConfigMapOutput struct{ *pulumi.OutputState }
 
-func (IAMAuditConfigMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*IAMAuditConfig)(nil)).Elem()
+func (IamAuditConfigMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*IamAuditConfig)(nil)).Elem()
 }
 
-func (o IAMAuditConfigMapOutput) ToIAMAuditConfigMapOutput() IAMAuditConfigMapOutput {
+func (o IamAuditConfigMapOutput) ToIamAuditConfigMapOutput() IamAuditConfigMapOutput {
 	return o
 }
 
-func (o IAMAuditConfigMapOutput) ToIAMAuditConfigMapOutputWithContext(ctx context.Context) IAMAuditConfigMapOutput {
+func (o IamAuditConfigMapOutput) ToIamAuditConfigMapOutputWithContext(ctx context.Context) IamAuditConfigMapOutput {
 	return o
 }
 
-func (o IAMAuditConfigMapOutput) MapIndex(k pulumi.StringInput) IAMAuditConfigOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *IAMAuditConfig {
-		return vs[0].(map[string]*IAMAuditConfig)[vs[1].(string)]
-	}).(IAMAuditConfigOutput)
+func (o IamAuditConfigMapOutput) MapIndex(k pulumi.StringInput) IamAuditConfigOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *IamAuditConfig {
+		return vs[0].(map[string]*IamAuditConfig)[vs[1].(string)]
+	}).(IamAuditConfigOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*IAMAuditConfigInput)(nil)).Elem(), &IAMAuditConfig{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IAMAuditConfigArrayInput)(nil)).Elem(), IAMAuditConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*IAMAuditConfigMapInput)(nil)).Elem(), IAMAuditConfigMap{})
-	pulumi.RegisterOutputType(IAMAuditConfigOutput{})
-	pulumi.RegisterOutputType(IAMAuditConfigArrayOutput{})
-	pulumi.RegisterOutputType(IAMAuditConfigMapOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamAuditConfigInput)(nil)).Elem(), &IamAuditConfig{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamAuditConfigArrayInput)(nil)).Elem(), IamAuditConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IamAuditConfigMapInput)(nil)).Elem(), IamAuditConfigMap{})
+	pulumi.RegisterOutputType(IamAuditConfigOutput{})
+	pulumi.RegisterOutputType(IamAuditConfigArrayOutput{})
+	pulumi.RegisterOutputType(IamAuditConfigMapOutput{})
 }

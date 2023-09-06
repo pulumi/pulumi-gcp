@@ -235,7 +235,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			privatecaSaKeyuserSignerverifier, err := kms.NewCryptoKeyIAMBinding(ctx, "privatecaSaKeyuserSignerverifier", &kms.CryptoKeyIAMBindingArgs{
+//			privatecaSaKeyuserSignerverifier, err := kms.NewCryptoKeyIamBinding(ctx, "privatecaSaKeyuserSignerverifier", &kms.CryptoKeyIamBindingArgs{
 //				CryptoKeyId: pulumi.String("projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key"),
 //				Role:        pulumi.String("roles/cloudkms.signerVerifier"),
 //				Members: pulumi.StringArray{
@@ -247,7 +247,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			privatecaSaKeyuserViewer, err := kms.NewCryptoKeyIAMBinding(ctx, "privatecaSaKeyuserViewer", &kms.CryptoKeyIAMBindingArgs{
+//			privatecaSaKeyuserViewer, err := kms.NewCryptoKeyIamBinding(ctx, "privatecaSaKeyuserViewer", &kms.CryptoKeyIamBindingArgs{
 //				CryptoKeyId: pulumi.String("projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key"),
 //				Role:        pulumi.String("roles/viewer"),
 //				Members: pulumi.StringArray{

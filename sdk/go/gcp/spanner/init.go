@@ -23,20 +23,20 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:spanner/database:Database":
 		r = &Database{}
-	case "gcp:spanner/databaseIAMBinding:DatabaseIAMBinding":
-		r = &DatabaseIAMBinding{}
-	case "gcp:spanner/databaseIAMMember:DatabaseIAMMember":
-		r = &DatabaseIAMMember{}
-	case "gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy":
-		r = &DatabaseIAMPolicy{}
+	case "gcp:spanner/databaseIamBinding:DatabaseIamBinding":
+		r = &DatabaseIamBinding{}
+	case "gcp:spanner/databaseIamMember:DatabaseIamMember":
+		r = &DatabaseIamMember{}
+	case "gcp:spanner/databaseIamPolicy:DatabaseIamPolicy":
+		r = &DatabaseIamPolicy{}
 	case "gcp:spanner/instance:Instance":
 		r = &Instance{}
-	case "gcp:spanner/instanceIAMBinding:InstanceIAMBinding":
-		r = &InstanceIAMBinding{}
-	case "gcp:spanner/instanceIAMMember:InstanceIAMMember":
-		r = &InstanceIAMMember{}
-	case "gcp:spanner/instanceIAMPolicy:InstanceIAMPolicy":
-		r = &InstanceIAMPolicy{}
+	case "gcp:spanner/instanceIamBinding:InstanceIamBinding":
+		r = &InstanceIamBinding{}
+	case "gcp:spanner/instanceIamMember:InstanceIamMember":
+		r = &InstanceIamMember{}
+	case "gcp:spanner/instanceIamPolicy:InstanceIamPolicy":
+		r = &InstanceIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -57,17 +57,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"spanner/databaseIAMBinding",
+		"spanner/databaseIamBinding",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"spanner/databaseIAMMember",
+		"spanner/databaseIamMember",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"spanner/databaseIAMPolicy",
+		"spanner/databaseIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -77,17 +77,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"spanner/instanceIAMBinding",
+		"spanner/instanceIamBinding",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"spanner/instanceIAMMember",
+		"spanner/instanceIamMember",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"spanner/instanceIAMPolicy",
+		"spanner/instanceIamPolicy",
 		&module{version},
 	)
 }

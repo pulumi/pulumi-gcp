@@ -55,7 +55,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewIAMBinding(ctx, "log-writer", &projects.IAMBindingArgs{
+//			_, err = projects.NewIamBinding(ctx, "log-writer", &projects.IamBindingArgs{
 //				Project: pulumi.String("your-project-id"),
 //				Role:    pulumi.String("roles/storage.objectCreator"),
 //				Members: pulumi.StringArray{

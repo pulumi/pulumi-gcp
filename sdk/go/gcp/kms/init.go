@@ -23,22 +23,22 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:kms/cryptoKey:CryptoKey":
 		r = &CryptoKey{}
-	case "gcp:kms/cryptoKeyIAMBinding:CryptoKeyIAMBinding":
-		r = &CryptoKeyIAMBinding{}
-	case "gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember":
-		r = &CryptoKeyIAMMember{}
-	case "gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy":
-		r = &CryptoKeyIAMPolicy{}
+	case "gcp:kms/cryptoKeyIamBinding:CryptoKeyIamBinding":
+		r = &CryptoKeyIamBinding{}
+	case "gcp:kms/cryptoKeyIamMember:CryptoKeyIamMember":
+		r = &CryptoKeyIamMember{}
+	case "gcp:kms/cryptoKeyIamPolicy:CryptoKeyIamPolicy":
+		r = &CryptoKeyIamPolicy{}
 	case "gcp:kms/cryptoKeyVersion:CryptoKeyVersion":
 		r = &CryptoKeyVersion{}
 	case "gcp:kms/keyRing:KeyRing":
 		r = &KeyRing{}
-	case "gcp:kms/keyRingIAMBinding:KeyRingIAMBinding":
-		r = &KeyRingIAMBinding{}
-	case "gcp:kms/keyRingIAMMember:KeyRingIAMMember":
-		r = &KeyRingIAMMember{}
-	case "gcp:kms/keyRingIAMPolicy:KeyRingIAMPolicy":
-		r = &KeyRingIAMPolicy{}
+	case "gcp:kms/keyRingIamBinding:KeyRingIamBinding":
+		r = &KeyRingIamBinding{}
+	case "gcp:kms/keyRingIamMember:KeyRingIamMember":
+		r = &KeyRingIamMember{}
+	case "gcp:kms/keyRingIamPolicy:KeyRingIamPolicy":
+		r = &KeyRingIamPolicy{}
 	case "gcp:kms/keyRingImportJob:KeyRingImportJob":
 		r = &KeyRingImportJob{}
 	case "gcp:kms/registry:Registry":
@@ -65,17 +65,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"kms/cryptoKeyIAMBinding",
+		"kms/cryptoKeyIamBinding",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"kms/cryptoKeyIAMMember",
+		"kms/cryptoKeyIamMember",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"kms/cryptoKeyIAMPolicy",
+		"kms/cryptoKeyIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -90,17 +90,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"kms/keyRingIAMBinding",
+		"kms/keyRingIamBinding",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"kms/keyRingIAMMember",
+		"kms/keyRingIamMember",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"kms/keyRingIAMPolicy",
+		"kms/keyRingIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

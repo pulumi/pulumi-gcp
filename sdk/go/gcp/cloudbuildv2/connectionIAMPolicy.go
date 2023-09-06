@@ -14,17 +14,17 @@ import (
 
 // Three different resources help you manage your IAM policy for Cloud Build v2 Connection. Each of these resources serves a different use case:
 //
-// * `cloudbuildv2.ConnectionIAMPolicy`: Authoritative. Sets the IAM policy for the connection and replaces any existing policy already attached.
-// * `cloudbuildv2.ConnectionIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the connection are preserved.
-// * `cloudbuildv2.ConnectionIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the connection are preserved.
+// * `cloudbuildv2.ConnectionIamPolicy`: Authoritative. Sets the IAM policy for the connection and replaces any existing policy already attached.
+// * `cloudbuildv2.ConnectionIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the connection are preserved.
+// * `cloudbuildv2.ConnectionIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the connection are preserved.
 //
 // # A data source can be used to retrieve policy data in advent you do not need creation
 //
-// * `cloudbuildv2.ConnectionIAMPolicy`: Retrieves the IAM policy for the connection
+// * `cloudbuildv2.ConnectionIamPolicy`: Retrieves the IAM policy for the connection
 //
-// > **Note:** `cloudbuildv2.ConnectionIAMPolicy` **cannot** be used in conjunction with `cloudbuildv2.ConnectionIAMBinding` and `cloudbuildv2.ConnectionIAMMember` or they will fight over what your policy should be.
+// > **Note:** `cloudbuildv2.ConnectionIamPolicy` **cannot** be used in conjunction with `cloudbuildv2.ConnectionIamBinding` and `cloudbuildv2.ConnectionIamMember` or they will fight over what your policy should be.
 //
-// > **Note:** `cloudbuildv2.ConnectionIAMBinding` resources **can be** used in conjunction with `cloudbuildv2.ConnectionIAMMember` resources **only if** they do not grant privilege to the same role.
+// > **Note:** `cloudbuildv2.ConnectionIamBinding` resources **can be** used in conjunction with `cloudbuildv2.ConnectionIamMember` resources **only if** they do not grant privilege to the same role.
 //
 // ## google\_cloudbuildv2\_connection\_iam\_policy
 //
@@ -41,8 +41,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
+//			admin, err := organizations.LookupIamPolicy(ctx, &organizations.LookupIamPolicyArgs{
+//				Bindings: []organizations.GetIamPolicyBinding{
 //					{
 //						Role: "roles/cloudbuild.connectionViewer",
 //						Members: []string{
@@ -54,7 +54,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cloudbuildv2.NewConnectionIAMPolicy(ctx, "policy", &cloudbuildv2.ConnectionIAMPolicyArgs{
+//			_, err = cloudbuildv2.NewConnectionIamPolicy(ctx, "policy", &cloudbuildv2.ConnectionIamPolicyArgs{
 //				Project:    pulumi.Any(google_cloudbuildv2_connection.MyConnection.Project),
 //				Location:   pulumi.Any(google_cloudbuildv2_connection.MyConnection.Location),
 //				PolicyData: *pulumi.String(admin.PolicyData),
@@ -82,7 +82,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudbuildv2.NewConnectionIAMBinding(ctx, "binding", &cloudbuildv2.ConnectionIAMBindingArgs{
+//			_, err := cloudbuildv2.NewConnectionIamBinding(ctx, "binding", &cloudbuildv2.ConnectionIamBindingArgs{
 //				Project:  pulumi.Any(google_cloudbuildv2_connection.MyConnection.Project),
 //				Location: pulumi.Any(google_cloudbuildv2_connection.MyConnection.Location),
 //				Role:     pulumi.String("roles/cloudbuild.connectionViewer"),
@@ -113,7 +113,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudbuildv2.NewConnectionIAMMember(ctx, "member", &cloudbuildv2.ConnectionIAMMemberArgs{
+//			_, err := cloudbuildv2.NewConnectionIamMember(ctx, "member", &cloudbuildv2.ConnectionIamMemberArgs{
 //				Project:  pulumi.Any(google_cloudbuildv2_connection.MyConnection.Project),
 //				Location: pulumi.Any(google_cloudbuildv2_connection.MyConnection.Location),
 //				Role:     pulumi.String("roles/cloudbuild.connectionViewer"),
@@ -134,7 +134,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:cloudbuildv2/connectionIAMPolicy:ConnectionIAMPolicy editor "projects/{{project}}/locations/{{location}}/connections/{{connection}} roles/cloudbuild.connectionViewer user:jane@example.com"
+//	$ pulumi import gcp:cloudbuildv2/connectionIamPolicy:ConnectionIamPolicy editor "projects/{{project}}/locations/{{location}}/connections/{{connection}} roles/cloudbuild.connectionViewer user:jane@example.com"
 //
 // ```
 //
@@ -142,7 +142,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:cloudbuildv2/connectionIAMPolicy:ConnectionIAMPolicy editor "projects/{{project}}/locations/{{location}}/connections/{{connection}} roles/cloudbuild.connectionViewer"
+//	$ pulumi import gcp:cloudbuildv2/connectionIamPolicy:ConnectionIamPolicy editor "projects/{{project}}/locations/{{location}}/connections/{{connection}} roles/cloudbuild.connectionViewer"
 //
 // ```
 //
@@ -150,14 +150,14 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:cloudbuildv2/connectionIAMPolicy:ConnectionIAMPolicy editor projects/{{project}}/locations/{{location}}/connections/{{connection}}
+//	$ pulumi import gcp:cloudbuildv2/connectionIamPolicy:ConnectionIamPolicy editor projects/{{project}}/locations/{{location}}/connections/{{connection}}
 //
 // ```
 //
 //	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
 //
 // full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
-type ConnectionIAMPolicy struct {
+type ConnectionIamPolicy struct {
 	pulumi.CustomResourceState
 
 	// (Computed) The etag of the IAM policy.
@@ -166,7 +166,7 @@ type ConnectionIAMPolicy struct {
 	// Used to find the parent resource to bind the IAM policy to
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The policy data generated by
-	// a `organizations.getIAMPolicy` data source.
+	// a `organizations.getIamPolicy` data source.
 	PolicyData pulumi.StringOutput `pulumi:"policyData"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -185,9 +185,9 @@ type ConnectionIAMPolicy struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 }
 
-// NewConnectionIAMPolicy registers a new resource with the given unique name, arguments, and options.
-func NewConnectionIAMPolicy(ctx *pulumi.Context,
-	name string, args *ConnectionIAMPolicyArgs, opts ...pulumi.ResourceOption) (*ConnectionIAMPolicy, error) {
+// NewConnectionIamPolicy registers a new resource with the given unique name, arguments, and options.
+func NewConnectionIamPolicy(ctx *pulumi.Context,
+	name string, args *ConnectionIamPolicyArgs, opts ...pulumi.ResourceOption) (*ConnectionIamPolicy, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -196,35 +196,35 @@ func NewConnectionIAMPolicy(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'PolicyData'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
-	var resource ConnectionIAMPolicy
-	err := ctx.RegisterResource("gcp:cloudbuildv2/connectionIAMPolicy:ConnectionIAMPolicy", name, args, &resource, opts...)
+	var resource ConnectionIamPolicy
+	err := ctx.RegisterResource("gcp:cloudbuildv2/connectionIamPolicy:ConnectionIamPolicy", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// GetConnectionIAMPolicy gets an existing ConnectionIAMPolicy resource's state with the given name, ID, and optional
+// GetConnectionIamPolicy gets an existing ConnectionIamPolicy resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetConnectionIAMPolicy(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *ConnectionIAMPolicyState, opts ...pulumi.ResourceOption) (*ConnectionIAMPolicy, error) {
-	var resource ConnectionIAMPolicy
-	err := ctx.ReadResource("gcp:cloudbuildv2/connectionIAMPolicy:ConnectionIAMPolicy", name, id, state, &resource, opts...)
+func GetConnectionIamPolicy(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *ConnectionIamPolicyState, opts ...pulumi.ResourceOption) (*ConnectionIamPolicy, error) {
+	var resource ConnectionIamPolicy
+	err := ctx.ReadResource("gcp:cloudbuildv2/connectionIamPolicy:ConnectionIamPolicy", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering ConnectionIAMPolicy resources.
-type connectionIAMPolicyState struct {
+// Input properties used for looking up and filtering ConnectionIamPolicy resources.
+type connectionIamPolicyState struct {
 	// (Computed) The etag of the IAM policy.
 	Etag     *string `pulumi:"etag"`
 	Location *string `pulumi:"location"`
 	// Used to find the parent resource to bind the IAM policy to
 	Name *string `pulumi:"name"`
 	// The policy data generated by
-	// a `organizations.getIAMPolicy` data source.
+	// a `organizations.getIamPolicy` data source.
 	PolicyData *string `pulumi:"policyData"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -243,14 +243,14 @@ type connectionIAMPolicyState struct {
 	Project *string `pulumi:"project"`
 }
 
-type ConnectionIAMPolicyState struct {
+type ConnectionIamPolicyState struct {
 	// (Computed) The etag of the IAM policy.
 	Etag     pulumi.StringPtrInput
 	Location pulumi.StringPtrInput
 	// Used to find the parent resource to bind the IAM policy to
 	Name pulumi.StringPtrInput
 	// The policy data generated by
-	// a `organizations.getIAMPolicy` data source.
+	// a `organizations.getIamPolicy` data source.
 	PolicyData pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -269,16 +269,16 @@ type ConnectionIAMPolicyState struct {
 	Project pulumi.StringPtrInput
 }
 
-func (ConnectionIAMPolicyState) ElementType() reflect.Type {
-	return reflect.TypeOf((*connectionIAMPolicyState)(nil)).Elem()
+func (ConnectionIamPolicyState) ElementType() reflect.Type {
+	return reflect.TypeOf((*connectionIamPolicyState)(nil)).Elem()
 }
 
-type connectionIAMPolicyArgs struct {
+type connectionIamPolicyArgs struct {
 	Location *string `pulumi:"location"`
 	// Used to find the parent resource to bind the IAM policy to
 	Name *string `pulumi:"name"`
 	// The policy data generated by
-	// a `organizations.getIAMPolicy` data source.
+	// a `organizations.getIamPolicy` data source.
 	PolicyData string `pulumi:"policyData"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -297,13 +297,13 @@ type connectionIAMPolicyArgs struct {
 	Project *string `pulumi:"project"`
 }
 
-// The set of arguments for constructing a ConnectionIAMPolicy resource.
-type ConnectionIAMPolicyArgs struct {
+// The set of arguments for constructing a ConnectionIamPolicy resource.
+type ConnectionIamPolicyArgs struct {
 	Location pulumi.StringPtrInput
 	// Used to find the parent resource to bind the IAM policy to
 	Name pulumi.StringPtrInput
 	// The policy data generated by
-	// a `organizations.getIAMPolicy` data source.
+	// a `organizations.getIamPolicy` data source.
 	PolicyData pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
@@ -322,111 +322,111 @@ type ConnectionIAMPolicyArgs struct {
 	Project pulumi.StringPtrInput
 }
 
-func (ConnectionIAMPolicyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*connectionIAMPolicyArgs)(nil)).Elem()
+func (ConnectionIamPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*connectionIamPolicyArgs)(nil)).Elem()
 }
 
-type ConnectionIAMPolicyInput interface {
+type ConnectionIamPolicyInput interface {
 	pulumi.Input
 
-	ToConnectionIAMPolicyOutput() ConnectionIAMPolicyOutput
-	ToConnectionIAMPolicyOutputWithContext(ctx context.Context) ConnectionIAMPolicyOutput
+	ToConnectionIamPolicyOutput() ConnectionIamPolicyOutput
+	ToConnectionIamPolicyOutputWithContext(ctx context.Context) ConnectionIamPolicyOutput
 }
 
-func (*ConnectionIAMPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConnectionIAMPolicy)(nil)).Elem()
+func (*ConnectionIamPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionIamPolicy)(nil)).Elem()
 }
 
-func (i *ConnectionIAMPolicy) ToConnectionIAMPolicyOutput() ConnectionIAMPolicyOutput {
-	return i.ToConnectionIAMPolicyOutputWithContext(context.Background())
+func (i *ConnectionIamPolicy) ToConnectionIamPolicyOutput() ConnectionIamPolicyOutput {
+	return i.ToConnectionIamPolicyOutputWithContext(context.Background())
 }
 
-func (i *ConnectionIAMPolicy) ToConnectionIAMPolicyOutputWithContext(ctx context.Context) ConnectionIAMPolicyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIAMPolicyOutput)
+func (i *ConnectionIamPolicy) ToConnectionIamPolicyOutputWithContext(ctx context.Context) ConnectionIamPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIamPolicyOutput)
 }
 
-// ConnectionIAMPolicyArrayInput is an input type that accepts ConnectionIAMPolicyArray and ConnectionIAMPolicyArrayOutput values.
-// You can construct a concrete instance of `ConnectionIAMPolicyArrayInput` via:
+// ConnectionIamPolicyArrayInput is an input type that accepts ConnectionIamPolicyArray and ConnectionIamPolicyArrayOutput values.
+// You can construct a concrete instance of `ConnectionIamPolicyArrayInput` via:
 //
-//	ConnectionIAMPolicyArray{ ConnectionIAMPolicyArgs{...} }
-type ConnectionIAMPolicyArrayInput interface {
+//	ConnectionIamPolicyArray{ ConnectionIamPolicyArgs{...} }
+type ConnectionIamPolicyArrayInput interface {
 	pulumi.Input
 
-	ToConnectionIAMPolicyArrayOutput() ConnectionIAMPolicyArrayOutput
-	ToConnectionIAMPolicyArrayOutputWithContext(context.Context) ConnectionIAMPolicyArrayOutput
+	ToConnectionIamPolicyArrayOutput() ConnectionIamPolicyArrayOutput
+	ToConnectionIamPolicyArrayOutputWithContext(context.Context) ConnectionIamPolicyArrayOutput
 }
 
-type ConnectionIAMPolicyArray []ConnectionIAMPolicyInput
+type ConnectionIamPolicyArray []ConnectionIamPolicyInput
 
-func (ConnectionIAMPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*ConnectionIAMPolicy)(nil)).Elem()
+func (ConnectionIamPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*ConnectionIamPolicy)(nil)).Elem()
 }
 
-func (i ConnectionIAMPolicyArray) ToConnectionIAMPolicyArrayOutput() ConnectionIAMPolicyArrayOutput {
-	return i.ToConnectionIAMPolicyArrayOutputWithContext(context.Background())
+func (i ConnectionIamPolicyArray) ToConnectionIamPolicyArrayOutput() ConnectionIamPolicyArrayOutput {
+	return i.ToConnectionIamPolicyArrayOutputWithContext(context.Background())
 }
 
-func (i ConnectionIAMPolicyArray) ToConnectionIAMPolicyArrayOutputWithContext(ctx context.Context) ConnectionIAMPolicyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIAMPolicyArrayOutput)
+func (i ConnectionIamPolicyArray) ToConnectionIamPolicyArrayOutputWithContext(ctx context.Context) ConnectionIamPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIamPolicyArrayOutput)
 }
 
-// ConnectionIAMPolicyMapInput is an input type that accepts ConnectionIAMPolicyMap and ConnectionIAMPolicyMapOutput values.
-// You can construct a concrete instance of `ConnectionIAMPolicyMapInput` via:
+// ConnectionIamPolicyMapInput is an input type that accepts ConnectionIamPolicyMap and ConnectionIamPolicyMapOutput values.
+// You can construct a concrete instance of `ConnectionIamPolicyMapInput` via:
 //
-//	ConnectionIAMPolicyMap{ "key": ConnectionIAMPolicyArgs{...} }
-type ConnectionIAMPolicyMapInput interface {
+//	ConnectionIamPolicyMap{ "key": ConnectionIamPolicyArgs{...} }
+type ConnectionIamPolicyMapInput interface {
 	pulumi.Input
 
-	ToConnectionIAMPolicyMapOutput() ConnectionIAMPolicyMapOutput
-	ToConnectionIAMPolicyMapOutputWithContext(context.Context) ConnectionIAMPolicyMapOutput
+	ToConnectionIamPolicyMapOutput() ConnectionIamPolicyMapOutput
+	ToConnectionIamPolicyMapOutputWithContext(context.Context) ConnectionIamPolicyMapOutput
 }
 
-type ConnectionIAMPolicyMap map[string]ConnectionIAMPolicyInput
+type ConnectionIamPolicyMap map[string]ConnectionIamPolicyInput
 
-func (ConnectionIAMPolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*ConnectionIAMPolicy)(nil)).Elem()
+func (ConnectionIamPolicyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*ConnectionIamPolicy)(nil)).Elem()
 }
 
-func (i ConnectionIAMPolicyMap) ToConnectionIAMPolicyMapOutput() ConnectionIAMPolicyMapOutput {
-	return i.ToConnectionIAMPolicyMapOutputWithContext(context.Background())
+func (i ConnectionIamPolicyMap) ToConnectionIamPolicyMapOutput() ConnectionIamPolicyMapOutput {
+	return i.ToConnectionIamPolicyMapOutputWithContext(context.Background())
 }
 
-func (i ConnectionIAMPolicyMap) ToConnectionIAMPolicyMapOutputWithContext(ctx context.Context) ConnectionIAMPolicyMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIAMPolicyMapOutput)
+func (i ConnectionIamPolicyMap) ToConnectionIamPolicyMapOutputWithContext(ctx context.Context) ConnectionIamPolicyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionIamPolicyMapOutput)
 }
 
-type ConnectionIAMPolicyOutput struct{ *pulumi.OutputState }
+type ConnectionIamPolicyOutput struct{ *pulumi.OutputState }
 
-func (ConnectionIAMPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConnectionIAMPolicy)(nil)).Elem()
+func (ConnectionIamPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionIamPolicy)(nil)).Elem()
 }
 
-func (o ConnectionIAMPolicyOutput) ToConnectionIAMPolicyOutput() ConnectionIAMPolicyOutput {
+func (o ConnectionIamPolicyOutput) ToConnectionIamPolicyOutput() ConnectionIamPolicyOutput {
 	return o
 }
 
-func (o ConnectionIAMPolicyOutput) ToConnectionIAMPolicyOutputWithContext(ctx context.Context) ConnectionIAMPolicyOutput {
+func (o ConnectionIamPolicyOutput) ToConnectionIamPolicyOutputWithContext(ctx context.Context) ConnectionIamPolicyOutput {
 	return o
 }
 
 // (Computed) The etag of the IAM policy.
-func (o ConnectionIAMPolicyOutput) Etag() pulumi.StringOutput {
-	return o.ApplyT(func(v *ConnectionIAMPolicy) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+func (o ConnectionIamPolicyOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectionIamPolicy) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-func (o ConnectionIAMPolicyOutput) Location() pulumi.StringOutput {
-	return o.ApplyT(func(v *ConnectionIAMPolicy) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+func (o ConnectionIamPolicyOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectionIamPolicy) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
 // Used to find the parent resource to bind the IAM policy to
-func (o ConnectionIAMPolicyOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v *ConnectionIAMPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+func (o ConnectionIamPolicyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectionIamPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 // The policy data generated by
-// a `organizations.getIAMPolicy` data source.
-func (o ConnectionIAMPolicyOutput) PolicyData() pulumi.StringOutput {
-	return o.ApplyT(func(v *ConnectionIAMPolicy) pulumi.StringOutput { return v.PolicyData }).(pulumi.StringOutput)
+// a `organizations.getIamPolicy` data source.
+func (o ConnectionIamPolicyOutput) PolicyData() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectionIamPolicy) pulumi.StringOutput { return v.PolicyData }).(pulumi.StringOutput)
 }
 
 // The ID of the project in which the resource belongs.
@@ -443,55 +443,55 @@ func (o ConnectionIAMPolicyOutput) PolicyData() pulumi.StringOutput {
 //   - **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
 //   - **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
 //   - **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
-func (o ConnectionIAMPolicyOutput) Project() pulumi.StringOutput {
-	return o.ApplyT(func(v *ConnectionIAMPolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+func (o ConnectionIamPolicyOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectionIamPolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-type ConnectionIAMPolicyArrayOutput struct{ *pulumi.OutputState }
+type ConnectionIamPolicyArrayOutput struct{ *pulumi.OutputState }
 
-func (ConnectionIAMPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*ConnectionIAMPolicy)(nil)).Elem()
+func (ConnectionIamPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*ConnectionIamPolicy)(nil)).Elem()
 }
 
-func (o ConnectionIAMPolicyArrayOutput) ToConnectionIAMPolicyArrayOutput() ConnectionIAMPolicyArrayOutput {
+func (o ConnectionIamPolicyArrayOutput) ToConnectionIamPolicyArrayOutput() ConnectionIamPolicyArrayOutput {
 	return o
 }
 
-func (o ConnectionIAMPolicyArrayOutput) ToConnectionIAMPolicyArrayOutputWithContext(ctx context.Context) ConnectionIAMPolicyArrayOutput {
+func (o ConnectionIamPolicyArrayOutput) ToConnectionIamPolicyArrayOutputWithContext(ctx context.Context) ConnectionIamPolicyArrayOutput {
 	return o
 }
 
-func (o ConnectionIAMPolicyArrayOutput) Index(i pulumi.IntInput) ConnectionIAMPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ConnectionIAMPolicy {
-		return vs[0].([]*ConnectionIAMPolicy)[vs[1].(int)]
-	}).(ConnectionIAMPolicyOutput)
+func (o ConnectionIamPolicyArrayOutput) Index(i pulumi.IntInput) ConnectionIamPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ConnectionIamPolicy {
+		return vs[0].([]*ConnectionIamPolicy)[vs[1].(int)]
+	}).(ConnectionIamPolicyOutput)
 }
 
-type ConnectionIAMPolicyMapOutput struct{ *pulumi.OutputState }
+type ConnectionIamPolicyMapOutput struct{ *pulumi.OutputState }
 
-func (ConnectionIAMPolicyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*ConnectionIAMPolicy)(nil)).Elem()
+func (ConnectionIamPolicyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*ConnectionIamPolicy)(nil)).Elem()
 }
 
-func (o ConnectionIAMPolicyMapOutput) ToConnectionIAMPolicyMapOutput() ConnectionIAMPolicyMapOutput {
+func (o ConnectionIamPolicyMapOutput) ToConnectionIamPolicyMapOutput() ConnectionIamPolicyMapOutput {
 	return o
 }
 
-func (o ConnectionIAMPolicyMapOutput) ToConnectionIAMPolicyMapOutputWithContext(ctx context.Context) ConnectionIAMPolicyMapOutput {
+func (o ConnectionIamPolicyMapOutput) ToConnectionIamPolicyMapOutputWithContext(ctx context.Context) ConnectionIamPolicyMapOutput {
 	return o
 }
 
-func (o ConnectionIAMPolicyMapOutput) MapIndex(k pulumi.StringInput) ConnectionIAMPolicyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ConnectionIAMPolicy {
-		return vs[0].(map[string]*ConnectionIAMPolicy)[vs[1].(string)]
-	}).(ConnectionIAMPolicyOutput)
+func (o ConnectionIamPolicyMapOutput) MapIndex(k pulumi.StringInput) ConnectionIamPolicyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ConnectionIamPolicy {
+		return vs[0].(map[string]*ConnectionIamPolicy)[vs[1].(string)]
+	}).(ConnectionIamPolicyOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionIAMPolicyInput)(nil)).Elem(), &ConnectionIAMPolicy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionIAMPolicyArrayInput)(nil)).Elem(), ConnectionIAMPolicyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionIAMPolicyMapInput)(nil)).Elem(), ConnectionIAMPolicyMap{})
-	pulumi.RegisterOutputType(ConnectionIAMPolicyOutput{})
-	pulumi.RegisterOutputType(ConnectionIAMPolicyArrayOutput{})
-	pulumi.RegisterOutputType(ConnectionIAMPolicyMapOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionIamPolicyInput)(nil)).Elem(), &ConnectionIamPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionIamPolicyArrayInput)(nil)).Elem(), ConnectionIamPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionIamPolicyMapInput)(nil)).Elem(), ConnectionIamPolicyMap{})
+	pulumi.RegisterOutputType(ConnectionIamPolicyOutput{})
+	pulumi.RegisterOutputType(ConnectionIamPolicyArrayOutput{})
+	pulumi.RegisterOutputType(ConnectionIamPolicyMapOutput{})
 }

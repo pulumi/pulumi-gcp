@@ -25,14 +25,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AccessApprovalSettings{}
 	case "gcp:organizations/folder:Folder":
 		r = &Folder{}
-	case "gcp:organizations/iAMBinding:IAMBinding":
-		r = &IAMBinding{}
-	case "gcp:organizations/iAMCustomRole:IAMCustomRole":
-		r = &IAMCustomRole{}
-	case "gcp:organizations/iAMMember:IAMMember":
-		r = &IAMMember{}
-	case "gcp:organizations/iAMPolicy:IAMPolicy":
-		r = &IAMPolicy{}
+	case "gcp:organizations/iAMBinding:IamBinding":
+		r = &IamBinding{}
+	case "gcp:organizations/iAMCustomRole:IamCustomRole":
+		r = &IamCustomRole{}
+	case "gcp:organizations/iAMMember:IamMember":
+		r = &IamMember{}
+	case "gcp:organizations/iAMPolicy:IamPolicy":
+		r = &IamPolicy{}
 	case "gcp:organizations/iamAuditConfig:IamAuditConfig":
 		r = &IamAuditConfig{}
 	case "gcp:organizations/policy:Policy":
