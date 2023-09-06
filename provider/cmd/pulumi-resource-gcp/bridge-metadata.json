@@ -26056,9 +26056,6 @@
             "gcp:firestore/field:Field": 0,
             "gcp:firestore/index:Index": 0,
             "gcp:folder/accessApprovalSettings:AccessApprovalSettings": 0,
-            "gcp:folder/iAMBinding:IamBinding": 0,
-            "gcp:folder/iAMMember:IamMember": 0,
-            "gcp:folder/iAMPolicy:IamPolicy": 0,
             "gcp:folder/iamAuditConfig:IamAuditConfig": 0,
             "gcp:folder/iamBinding:IamBinding": 0,
             "gcp:folder/iamMember:IamMember": 0,
@@ -26239,10 +26236,6 @@
             "gcp:notebooks/runtimeIamPolicy:RuntimeIamPolicy": 0,
             "gcp:organizations/accessApprovalSettings:AccessApprovalSettings": 0,
             "gcp:organizations/folder:Folder": 0,
-            "gcp:organizations/iAMBinding:IamBinding": 0,
-            "gcp:organizations/iAMCustomRole:IamCustomRole": 0,
-            "gcp:organizations/iAMMember:IamMember": 0,
-            "gcp:organizations/iAMPolicy:IamPolicy": 0,
             "gcp:organizations/iamAuditConfig:IamAuditConfig": 0,
             "gcp:organizations/iamBinding:IamBinding": 0,
             "gcp:organizations/iamCustomRole:IamCustomRole": 0,
@@ -26259,11 +26252,6 @@
             "gcp:projects/accessApprovalSettings:AccessApprovalSettings": 0,
             "gcp:projects/apiKey:ApiKey": 0,
             "gcp:projects/defaultServiceAccounts:DefaultServiceAccounts": 0,
-            "gcp:projects/iAMAuditConfig:IamAuditConfig": 0,
-            "gcp:projects/iAMBinding:IamBinding": 0,
-            "gcp:projects/iAMCustomRole:IamCustomRole": 0,
-            "gcp:projects/iAMMember:IamMember": 0,
-            "gcp:projects/iAMPolicy:IamPolicy": 0,
             "gcp:projects/iamAuditConfig:IamAuditConfig": 0,
             "gcp:projects/iamBinding:IamBinding": 0,
             "gcp:projects/iamCustomRole:IamCustomRole": 0,
@@ -26309,9 +26297,6 @@
             "gcp:securitycenter/sourceIamMember:SourceIamMember": 0,
             "gcp:securitycenter/sourceIamPolicy:SourceIamPolicy": 0,
             "gcp:serviceAccount/account:Account": 0,
-            "gcp:serviceAccount/iAMBinding:IamBinding": 0,
-            "gcp:serviceAccount/iAMMember:IamMember": 0,
-            "gcp:serviceAccount/iAMPolicy:IamPolicy": 0,
             "gcp:serviceAccount/iamBinding:IamBinding": 0,
             "gcp:serviceAccount/iamMember:IamMember": 0,
             "gcp:serviceAccount/iamPolicy:IamPolicy": 0,
@@ -27126,9 +27111,6 @@
             "gcp:firestore/field:Field": "google_firestore_field",
             "gcp:firestore/index:Index": "google_firestore_index",
             "gcp:folder/accessApprovalSettings:AccessApprovalSettings": "google_folder_access_approval_settings",
-            "gcp:folder/iAMBinding:IamBinding": "google_folder_iam_binding_legacy",
-            "gcp:folder/iAMMember:IamMember": "google_folder_iam_member_legacy",
-            "gcp:folder/iAMPolicy:IamPolicy": "google_folder_iam_policy_legacy",
             "gcp:folder/iamAuditConfig:IamAuditConfig": "google_folder_iam_audit_config",
             "gcp:folder/iamBinding:IamBinding": "google_folder_iam_binding",
             "gcp:folder/iamMember:IamMember": "google_folder_iam_member",
@@ -27309,10 +27291,6 @@
             "gcp:notebooks/runtimeIamPolicy:RuntimeIamPolicy": "google_notebooks_runtime_iam_policy",
             "gcp:organizations/accessApprovalSettings:AccessApprovalSettings": "google_organization_access_approval_settings",
             "gcp:organizations/folder:Folder": "google_folder",
-            "gcp:organizations/iAMBinding:IamBinding": "google_organization_iam_binding_legacy",
-            "gcp:organizations/iAMCustomRole:IamCustomRole": "google_organization_iam_custom_role_legacy",
-            "gcp:organizations/iAMMember:IamMember": "google_organization_iam_member_legacy",
-            "gcp:organizations/iAMPolicy:IamPolicy": "google_organization_iam_policy_legacy",
             "gcp:organizations/iamAuditConfig:IamAuditConfig": "google_organization_iam_audit_config",
             "gcp:organizations/iamBinding:IamBinding": "google_organization_iam_binding",
             "gcp:organizations/iamCustomRole:IamCustomRole": "google_organization_iam_custom_role",
@@ -27329,11 +27307,6 @@
             "gcp:projects/accessApprovalSettings:AccessApprovalSettings": "google_project_access_approval_settings",
             "gcp:projects/apiKey:ApiKey": "google_apikeys_key",
             "gcp:projects/defaultServiceAccounts:DefaultServiceAccounts": "google_project_default_service_accounts",
-            "gcp:projects/iAMAuditConfig:IamAuditConfig": "google_project_iam_audit_config_legacy",
-            "gcp:projects/iAMBinding:IamBinding": "google_project_iam_binding_legacy",
-            "gcp:projects/iAMCustomRole:IamCustomRole": "google_project_iam_custom_role_legacy",
-            "gcp:projects/iAMMember:IamMember": "google_project_iam_member_legacy",
-            "gcp:projects/iAMPolicy:IamPolicy": "google_project_iam_policy_legacy",
             "gcp:projects/iamAuditConfig:IamAuditConfig": "google_project_iam_audit_config",
             "gcp:projects/iamBinding:IamBinding": "google_project_iam_binding",
             "gcp:projects/iamCustomRole:IamCustomRole": "google_project_iam_custom_role",
@@ -27379,9 +27352,6 @@
             "gcp:securitycenter/sourceIamMember:SourceIamMember": "google_scc_source_iam_member",
             "gcp:securitycenter/sourceIamPolicy:SourceIamPolicy": "google_scc_source_iam_policy",
             "gcp:serviceAccount/account:Account": "google_service_account",
-            "gcp:serviceAccount/iAMBinding:IamBinding": "google_service_account_iam_binding_legacy",
-            "gcp:serviceAccount/iAMMember:IamMember": "google_service_account_iam_member_legacy",
-            "gcp:serviceAccount/iAMPolicy:IamPolicy": "google_service_account_iam_policy_legacy",
             "gcp:serviceAccount/iamBinding:IamBinding": "google_service_account_iam_binding",
             "gcp:serviceAccount/iamMember:IamMember": "google_service_account_iam_member",
             "gcp:serviceAccount/iamPolicy:IamPolicy": "google_service_account_iam_policy",
@@ -40278,9 +40248,6 @@
                 "inheritFromParent": "inherit_from_parent",
                 "suggestedValue": "suggested_value"
             },
-            "gcp:folder/iAMPolicy:IamPolicy": {
-                "policyData": "policy_data"
-            },
             "gcp:folder/iamAuditConfig:IamAuditConfig": {
                 "auditLogConfigs": "audit_log_config"
             },
@@ -42958,20 +42925,6 @@
                 "projectId": "project_id",
                 "skipDelete": "skip_delete"
             },
-            "gcp:organizations/iAMBinding:IamBinding": {
-                "orgId": "org_id"
-            },
-            "gcp:organizations/iAMCustomRole:IamCustomRole": {
-                "orgId": "org_id",
-                "roleId": "role_id"
-            },
-            "gcp:organizations/iAMMember:IamMember": {
-                "orgId": "org_id"
-            },
-            "gcp:organizations/iAMPolicy:IamPolicy": {
-                "orgId": "org_id",
-                "policyData": "policy_data"
-            },
             "gcp:organizations/iamAuditConfig:IamAuditConfig": {
                 "auditLogConfigs": "audit_log_config",
                 "orgId": "org_id"
@@ -43414,15 +43367,6 @@
             "gcp:projects/getProjectService:getProjectService": {
                 "disableDependentServices": "disable_dependent_services",
                 "disableOnDestroy": "disable_on_destroy"
-            },
-            "gcp:projects/iAMAuditConfig:IamAuditConfig": {
-                "auditLogConfigs": "audit_log_config"
-            },
-            "gcp:projects/iAMCustomRole:IamCustomRole": {
-                "roleId": "role_id"
-            },
-            "gcp:projects/iAMPolicy:IamPolicy": {
-                "policyData": "policy_data"
             },
             "gcp:projects/iamAuditConfig:IamAuditConfig": {
                 "auditLogConfigs": "audit_log_config"
@@ -43888,16 +43832,6 @@
                 "publicKeyType": "public_key_type"
             },
             "gcp:serviceAccount/getIamPolicy:getIamPolicy": {
-                "policyData": "policy_data",
-                "serviceAccountId": "service_account_id"
-            },
-            "gcp:serviceAccount/iAMBinding:IamBinding": {
-                "serviceAccountId": "service_account_id"
-            },
-            "gcp:serviceAccount/iAMMember:IamMember": {
-                "serviceAccountId": "service_account_id"
-            },
-            "gcp:serviceAccount/iAMPolicy:IamPolicy": {
                 "policyData": "policy_data",
                 "serviceAccountId": "service_account_id"
             },
