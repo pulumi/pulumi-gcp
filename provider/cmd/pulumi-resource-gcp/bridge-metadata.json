@@ -14302,7 +14302,7 @@
                 }
             },
             "google_folder_iam_binding": {
-                "current": "gcp:folder/iAMBinding:IamBinding",
+                "current": "gcp:folder/iamBinding:IamBinding",
                 "past": [
                     {
                         "name": "gcp:folder/iAMBinding:IAMBinding",
@@ -14311,7 +14311,7 @@
                     },
                     {
                         "name": "gcp:folder/iAMBinding:IamBinding",
-                        "inCodegen": true,
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -14326,7 +14326,7 @@
                 }
             },
             "google_folder_iam_member": {
-                "current": "gcp:folder/iAMMember:IamMember",
+                "current": "gcp:folder/iamMember:IamMember",
                 "past": [
                     {
                         "name": "gcp:folder/iAMMember:IAMMember",
@@ -14335,7 +14335,7 @@
                     },
                     {
                         "name": "gcp:folder/iAMMember:IamMember",
-                        "inCodegen": true,
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -14347,7 +14347,7 @@
                 }
             },
             "google_folder_iam_policy": {
-                "current": "gcp:folder/iAMPolicy:IamPolicy",
+                "current": "gcp:folder/iamPolicy:IamPolicy",
                 "past": [
                     {
                         "name": "gcp:folder/iAMPolicy:IAMPolicy",
@@ -14356,7 +14356,7 @@
                     },
                     {
                         "name": "gcp:folder/iAMPolicy:IamPolicy",
-                        "inCodegen": true,
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -17940,7 +17940,7 @@
                 }
             },
             "google_organization_iam_binding": {
-                "current": "gcp:organizations/iAMBinding:IamBinding",
+                "current": "gcp:organizations/iamBinding:IamBinding",
                 "past": [
                     {
                         "name": "gcp:organizations/iAMBinding:IAMBinding",
@@ -17949,7 +17949,7 @@
                     },
                     {
                         "name": "gcp:organizations/iAMBinding:IamBinding",
-                        "inCodegen": true,
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -17964,7 +17964,7 @@
                 }
             },
             "google_organization_iam_custom_role": {
-                "current": "gcp:organizations/iAMCustomRole:IamCustomRole",
+                "current": "gcp:organizations/iamCustomRole:IamCustomRole",
                 "past": [
                     {
                         "name": "gcp:organizations/iAMCustomRole:IAMCustomRole",
@@ -17973,7 +17973,7 @@
                     },
                     {
                         "name": "gcp:organizations/iAMCustomRole:IamCustomRole",
-                        "inCodegen": true,
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -17985,7 +17985,7 @@
                 }
             },
             "google_organization_iam_member": {
-                "current": "gcp:organizations/iAMMember:IamMember",
+                "current": "gcp:organizations/iamMember:IamMember",
                 "past": [
                     {
                         "name": "gcp:organizations/iAMMember:IAMMember",
@@ -17994,7 +17994,7 @@
                     },
                     {
                         "name": "gcp:organizations/iAMMember:IamMember",
-                        "inCodegen": true,
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -18006,7 +18006,7 @@
                 }
             },
             "google_organization_iam_policy": {
-                "current": "gcp:organizations/iAMPolicy:IamPolicy",
+                "current": "gcp:organizations/iamPolicy:IamPolicy",
                 "past": [
                     {
                         "name": "gcp:organizations/iAMPolicy:IAMPolicy",
@@ -18015,7 +18015,7 @@
                     },
                     {
                         "name": "gcp:organizations/iAMPolicy:IamPolicy",
-                        "inCodegen": true,
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -19546,7 +19546,7 @@
                 "majorVersion": 6
             },
             "google_project_iam_audit_config": {
-                "current": "gcp:projects/iAMAuditConfig:IamAuditConfig",
+                "current": "gcp:projects/iamAuditConfig:IamAuditConfig",
                 "past": [
                     {
                         "name": "gcp:projects/iAMAuditConfig:IAMAuditConfig",
@@ -19555,7 +19555,7 @@
                     },
                     {
                         "name": "gcp:projects/iAMAuditConfig:IamAuditConfig",
-                        "inCodegen": true,
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -19574,7 +19574,7 @@
                 }
             },
             "google_project_iam_binding": {
-                "current": "gcp:projects/iAMBinding:IamBinding",
+                "current": "gcp:projects/iamBinding:IamBinding",
                 "past": [
                     {
                         "name": "gcp:projects/iAMBinding:IAMBinding",
@@ -19583,7 +19583,7 @@
                     },
                     {
                         "name": "gcp:projects/iAMBinding:IamBinding",
-                        "inCodegen": true,
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -19598,7 +19598,7 @@
                 }
             },
             "google_project_iam_custom_role": {
-                "current": "gcp:projects/iAMCustomRole:IamCustomRole",
+                "current": "gcp:projects/iamCustomRole:IamCustomRole",
                 "past": [
                     {
                         "name": "gcp:projects/iAMCustomRole:IAMCustomRole",
@@ -19607,7 +19607,7 @@
                     },
                     {
                         "name": "gcp:projects/iAMCustomRole:IamCustomRole",
-                        "inCodegen": true,
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -19619,7 +19619,7 @@
                 }
             },
             "google_project_iam_member": {
-                "current": "gcp:projects/iAMMember:IamMember",
+                "current": "gcp:projects/iamMember:IamMember",
                 "past": [
                     {
                         "name": "gcp:projects/iAMMember:IAMMember",
@@ -19628,7 +19628,7 @@
                     },
                     {
                         "name": "gcp:projects/iAMMember:IamMember",
-                        "inCodegen": true,
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -19640,7 +19640,7 @@
                 }
             },
             "google_project_iam_policy": {
-                "current": "gcp:projects/iAMPolicy:IamPolicy",
+                "current": "gcp:projects/iamPolicy:IamPolicy",
                 "past": [
                     {
                         "name": "gcp:projects/iAMPolicy:IAMPolicy",
@@ -19649,7 +19649,7 @@
                     },
                     {
                         "name": "gcp:projects/iAMPolicy:IamPolicy",
-                        "inCodegen": true,
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -20192,7 +20192,7 @@
                 "majorVersion": 6
             },
             "google_service_account_iam_binding": {
-                "current": "gcp:serviceAccount/iAMBinding:IamBinding",
+                "current": "gcp:serviceAccount/iamBinding:IamBinding",
                 "past": [
                     {
                         "name": "gcp:serviceAccount/iAMBinding:IAMBinding",
@@ -20201,7 +20201,7 @@
                     },
                     {
                         "name": "gcp:serviceAccount/iAMBinding:IamBinding",
-                        "inCodegen": true,
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -20216,7 +20216,7 @@
                 }
             },
             "google_service_account_iam_member": {
-                "current": "gcp:serviceAccount/iAMMember:IamMember",
+                "current": "gcp:serviceAccount/iamMember:IamMember",
                 "past": [
                     {
                         "name": "gcp:serviceAccount/iAMMember:IAMMember",
@@ -20225,7 +20225,7 @@
                     },
                     {
                         "name": "gcp:serviceAccount/iAMMember:IamMember",
-                        "inCodegen": true,
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -20237,7 +20237,7 @@
                 }
             },
             "google_service_account_iam_policy": {
-                "current": "gcp:serviceAccount/iAMPolicy:IamPolicy",
+                "current": "gcp:serviceAccount/iamPolicy:IamPolicy",
                 "past": [
                     {
                         "name": "gcp:serviceAccount/iAMPolicy:IAMPolicy",
@@ -20246,7 +20246,7 @@
                     },
                     {
                         "name": "gcp:serviceAccount/iAMPolicy:IamPolicy",
-                        "inCodegen": true,
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
