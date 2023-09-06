@@ -3583,7 +3583,13 @@
                 }
             },
             "google_cloudbuildv2_connection_iam_binding": {
-                "current": "gcp:cloudbuildv2/connectionIAMBinding:ConnectionIAMBinding",
+                "current": "gcp:cloudbuildv2/connectionIamBinding:ConnectionIamBinding",
+                "past": [
+                    {
+                        "name": "gcp:cloudbuildv2/connectionIAMBinding:ConnectionIAMBinding",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6,
                 "fields": {
                     "condition": {
@@ -3595,7 +3601,13 @@
                 }
             },
             "google_cloudbuildv2_connection_iam_member": {
-                "current": "gcp:cloudbuildv2/connectionIAMMember:ConnectionIAMMember",
+                "current": "gcp:cloudbuildv2/connectionIamMember:ConnectionIamMember",
+                "past": [
+                    {
+                        "name": "gcp:cloudbuildv2/connectionIAMMember:ConnectionIAMMember",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6,
                 "fields": {
                     "condition": {
@@ -3604,7 +3616,13 @@
                 }
             },
             "google_cloudbuildv2_connection_iam_policy": {
-                "current": "gcp:cloudbuildv2/connectionIAMPolicy:ConnectionIAMPolicy",
+                "current": "gcp:cloudbuildv2/connectionIamPolicy:ConnectionIamPolicy",
+                "past": [
+                    {
+                        "name": "gcp:cloudbuildv2/connectionIAMPolicy:ConnectionIAMPolicy",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6
             },
             "google_cloudbuildv2_repository": {
@@ -5174,7 +5192,13 @@
                 "majorVersion": 6
             },
             "google_compute_instance_iam_binding": {
-                "current": "gcp:compute/instanceIAMBinding:InstanceIAMBinding",
+                "current": "gcp:compute/instanceIamBinding:InstanceIamBinding",
+                "past": [
+                    {
+                        "name": "gcp:compute/instanceIAMBinding:InstanceIAMBinding",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6,
                 "fields": {
                     "condition": {
@@ -5186,7 +5210,13 @@
                 }
             },
             "google_compute_instance_iam_member": {
-                "current": "gcp:compute/instanceIAMMember:InstanceIAMMember",
+                "current": "gcp:compute/instanceIamMember:InstanceIamMember",
+                "past": [
+                    {
+                        "name": "gcp:compute/instanceIAMMember:InstanceIAMMember",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6,
                 "fields": {
                     "condition": {
@@ -5195,7 +5225,13 @@
                 }
             },
             "google_compute_instance_iam_policy": {
-                "current": "gcp:compute/instanceIAMPolicy:InstanceIAMPolicy",
+                "current": "gcp:compute/instanceIamPolicy:InstanceIamPolicy",
+                "past": [
+                    {
+                        "name": "gcp:compute/instanceIAMPolicy:InstanceIAMPolicy",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6
             },
             "google_compute_instance_template": {
@@ -7203,7 +7239,13 @@
                 }
             },
             "google_compute_subnetwork_iam_binding": {
-                "current": "gcp:compute/subnetworkIAMBinding:SubnetworkIAMBinding",
+                "current": "gcp:compute/subnetworkIamBinding:SubnetworkIamBinding",
+                "past": [
+                    {
+                        "name": "gcp:compute/subnetworkIAMBinding:SubnetworkIAMBinding",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6,
                 "fields": {
                     "condition": {
@@ -7215,7 +7257,13 @@
                 }
             },
             "google_compute_subnetwork_iam_member": {
-                "current": "gcp:compute/subnetworkIAMMember:SubnetworkIAMMember",
+                "current": "gcp:compute/subnetworkIamMember:SubnetworkIamMember",
+                "past": [
+                    {
+                        "name": "gcp:compute/subnetworkIAMMember:SubnetworkIAMMember",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6,
                 "fields": {
                     "condition": {
@@ -7224,7 +7272,13 @@
                 }
             },
             "google_compute_subnetwork_iam_policy": {
-                "current": "gcp:compute/subnetworkIAMPolicy:SubnetworkIAMPolicy",
+                "current": "gcp:compute/subnetworkIamPolicy:SubnetworkIamPolicy",
+                "past": [
+                    {
+                        "name": "gcp:compute/subnetworkIAMPolicy:SubnetworkIAMPolicy",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6
             },
             "google_compute_target_grpc_proxy": {
@@ -11844,7 +11898,13 @@
                 }
             },
             "google_dataproc_cluster_iam_binding": {
-                "current": "gcp:dataproc/clusterIAMBinding:ClusterIAMBinding",
+                "current": "gcp:dataproc/clusterIamBinding:ClusterIamBinding",
+                "past": [
+                    {
+                        "name": "gcp:dataproc/clusterIAMBinding:ClusterIAMBinding",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6,
                 "fields": {
                     "condition": {
@@ -11856,7 +11916,13 @@
                 }
             },
             "google_dataproc_cluster_iam_member": {
-                "current": "gcp:dataproc/clusterIAMMember:ClusterIAMMember",
+                "current": "gcp:dataproc/clusterIamMember:ClusterIamMember",
+                "past": [
+                    {
+                        "name": "gcp:dataproc/clusterIAMMember:ClusterIAMMember",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6,
                 "fields": {
                     "condition": {
@@ -11865,7 +11931,13 @@
                 }
             },
             "google_dataproc_cluster_iam_policy": {
-                "current": "gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy",
+                "current": "gcp:dataproc/clusterIamPolicy:ClusterIamPolicy",
+                "past": [
+                    {
+                        "name": "gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6
             },
             "google_dataproc_job": {
@@ -12017,7 +12089,13 @@
                 }
             },
             "google_dataproc_job_iam_binding": {
-                "current": "gcp:dataproc/jobIAMBinding:JobIAMBinding",
+                "current": "gcp:dataproc/jobIamBinding:JobIamBinding",
+                "past": [
+                    {
+                        "name": "gcp:dataproc/jobIAMBinding:JobIAMBinding",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6,
                 "fields": {
                     "condition": {
@@ -12029,7 +12107,13 @@
                 }
             },
             "google_dataproc_job_iam_member": {
-                "current": "gcp:dataproc/jobIAMMember:JobIAMMember",
+                "current": "gcp:dataproc/jobIamMember:JobIamMember",
+                "past": [
+                    {
+                        "name": "gcp:dataproc/jobIAMMember:JobIAMMember",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6,
                 "fields": {
                     "condition": {
@@ -12038,7 +12122,13 @@
                 }
             },
             "google_dataproc_job_iam_policy": {
-                "current": "gcp:dataproc/jobIAMPolicy:JobIAMPolicy",
+                "current": "gcp:dataproc/jobIamPolicy:JobIamPolicy",
+                "past": [
+                    {
+                        "name": "gcp:dataproc/jobIAMPolicy:JobIAMPolicy",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6
             },
             "google_dataproc_metastore_federation": {
@@ -14197,7 +14287,13 @@
                 }
             },
             "google_folder_iam_binding": {
-                "current": "gcp:folder/iAMBinding:IAMBinding",
+                "current": "gcp:folder/iAMBinding:IamBinding",
+                "past": [
+                    {
+                        "name": "gcp:folder/iAMBinding:IAMBinding",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6,
                 "fields": {
                     "condition": {
@@ -14209,7 +14305,13 @@
                 }
             },
             "google_folder_iam_member": {
-                "current": "gcp:folder/iAMMember:IAMMember",
+                "current": "gcp:folder/iAMMember:IamMember",
+                "past": [
+                    {
+                        "name": "gcp:folder/iAMMember:IAMMember",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6,
                 "fields": {
                     "condition": {
@@ -14218,7 +14320,13 @@
                 }
             },
             "google_folder_iam_policy": {
-                "current": "gcp:folder/iAMPolicy:IAMPolicy",
+                "current": "gcp:folder/iAMPolicy:IamPolicy",
+                "past": [
+                    {
+                        "name": "gcp:folder/iAMPolicy:IAMPolicy",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6
             },
             "google_folder_organization_policy": {
@@ -15732,7 +15840,13 @@
                 "majorVersion": 6
             },
             "google_iap_tunnel_instance_iam_binding": {
-                "current": "gcp:iap/tunnelInstanceIAMBinding:TunnelInstanceIAMBinding",
+                "current": "gcp:iap/tunnelInstanceIamBinding:TunnelInstanceIamBinding",
+                "past": [
+                    {
+                        "name": "gcp:iap/tunnelInstanceIAMBinding:TunnelInstanceIAMBinding",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6,
                 "fields": {
                     "condition": {
@@ -15744,7 +15858,13 @@
                 }
             },
             "google_iap_tunnel_instance_iam_member": {
-                "current": "gcp:iap/tunnelInstanceIAMMember:TunnelInstanceIAMMember",
+                "current": "gcp:iap/tunnelInstanceIamMember:TunnelInstanceIamMember",
+                "past": [
+                    {
+                        "name": "gcp:iap/tunnelInstanceIAMMember:TunnelInstanceIAMMember",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6,
                 "fields": {
                     "condition": {
@@ -15753,7 +15873,13 @@
                 }
             },
             "google_iap_tunnel_instance_iam_policy": {
-                "current": "gcp:iap/tunnelInstanceIAMPolicy:TunnelInstanceIAMPolicy",
+                "current": "gcp:iap/tunnelInstanceIamPolicy:TunnelInstanceIamPolicy",
+                "past": [
+                    {
+                        "name": "gcp:iap/tunnelInstanceIAMPolicy:TunnelInstanceIAMPolicy",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6
             },
             "google_iap_web_backend_service_iam_binding": {
@@ -16020,7 +16146,13 @@
                 }
             },
             "google_kms_crypto_key_iam_binding": {
-                "current": "gcp:kms/cryptoKeyIAMBinding:CryptoKeyIAMBinding",
+                "current": "gcp:kms/cryptoKeyIamBinding:CryptoKeyIamBinding",
+                "past": [
+                    {
+                        "name": "gcp:kms/cryptoKeyIAMBinding:CryptoKeyIAMBinding",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6,
                 "fields": {
                     "condition": {
@@ -16032,7 +16164,13 @@
                 }
             },
             "google_kms_crypto_key_iam_member": {
-                "current": "gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember",
+                "current": "gcp:kms/cryptoKeyIamMember:CryptoKeyIamMember",
+                "past": [
+                    {
+                        "name": "gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6,
                 "fields": {
                     "condition": {
@@ -16041,7 +16179,13 @@
                 }
             },
             "google_kms_crypto_key_iam_policy": {
-                "current": "gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy",
+                "current": "gcp:kms/cryptoKeyIamPolicy:CryptoKeyIamPolicy",
+                "past": [
+                    {
+                        "name": "gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6
             },
             "google_kms_crypto_key_version": {
@@ -16068,7 +16212,13 @@
                 "majorVersion": 6
             },
             "google_kms_key_ring_iam_binding": {
-                "current": "gcp:kms/keyRingIAMBinding:KeyRingIAMBinding",
+                "current": "gcp:kms/keyRingIamBinding:KeyRingIamBinding",
+                "past": [
+                    {
+                        "name": "gcp:kms/keyRingIAMBinding:KeyRingIAMBinding",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6,
                 "fields": {
                     "condition": {
@@ -16080,7 +16230,13 @@
                 }
             },
             "google_kms_key_ring_iam_member": {
-                "current": "gcp:kms/keyRingIAMMember:KeyRingIAMMember",
+                "current": "gcp:kms/keyRingIamMember:KeyRingIamMember",
+                "past": [
+                    {
+                        "name": "gcp:kms/keyRingIAMMember:KeyRingIAMMember",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6,
                 "fields": {
                     "condition": {
@@ -16089,7 +16245,13 @@
                 }
             },
             "google_kms_key_ring_iam_policy": {
-                "current": "gcp:kms/keyRingIAMPolicy:KeyRingIAMPolicy",
+                "current": "gcp:kms/keyRingIamPolicy:KeyRingIamPolicy",
+                "past": [
+                    {
+                        "name": "gcp:kms/keyRingIAMPolicy:KeyRingIAMPolicy",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6
             },
             "google_kms_key_ring_import_job": {
@@ -17736,7 +17898,13 @@
                 }
             },
             "google_organization_iam_binding": {
-                "current": "gcp:organizations/iAMBinding:IAMBinding",
+                "current": "gcp:organizations/iAMBinding:IamBinding",
+                "past": [
+                    {
+                        "name": "gcp:organizations/iAMBinding:IAMBinding",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6,
                 "fields": {
                     "condition": {
@@ -17748,7 +17916,13 @@
                 }
             },
             "google_organization_iam_custom_role": {
-                "current": "gcp:organizations/iAMCustomRole:IAMCustomRole",
+                "current": "gcp:organizations/iAMCustomRole:IamCustomRole",
+                "past": [
+                    {
+                        "name": "gcp:organizations/iAMCustomRole:IAMCustomRole",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6,
                 "fields": {
                     "permissions": {
@@ -17757,7 +17931,13 @@
                 }
             },
             "google_organization_iam_member": {
-                "current": "gcp:organizations/iAMMember:IAMMember",
+                "current": "gcp:organizations/iAMMember:IamMember",
+                "past": [
+                    {
+                        "name": "gcp:organizations/iAMMember:IAMMember",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6,
                 "fields": {
                     "condition": {
@@ -17766,7 +17946,13 @@
                 }
             },
             "google_organization_iam_policy": {
-                "current": "gcp:organizations/iAMPolicy:IAMPolicy",
+                "current": "gcp:organizations/iAMPolicy:IamPolicy",
+                "past": [
+                    {
+                        "name": "gcp:organizations/iAMPolicy:IAMPolicy",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6
             },
             "google_organization_policy": {
@@ -19294,7 +19480,13 @@
                 "majorVersion": 6
             },
             "google_project_iam_audit_config": {
-                "current": "gcp:projects/iAMAuditConfig:IAMAuditConfig",
+                "current": "gcp:projects/iAMAuditConfig:IamAuditConfig",
+                "past": [
+                    {
+                        "name": "gcp:projects/iAMAuditConfig:IAMAuditConfig",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6,
                 "fields": {
                     "audit_log_config": {
@@ -19310,7 +19502,13 @@
                 }
             },
             "google_project_iam_binding": {
-                "current": "gcp:projects/iAMBinding:IAMBinding",
+                "current": "gcp:projects/iAMBinding:IamBinding",
+                "past": [
+                    {
+                        "name": "gcp:projects/iAMBinding:IAMBinding",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6,
                 "fields": {
                     "condition": {
@@ -19322,7 +19520,13 @@
                 }
             },
             "google_project_iam_custom_role": {
-                "current": "gcp:projects/iAMCustomRole:IAMCustomRole",
+                "current": "gcp:projects/iAMCustomRole:IamCustomRole",
+                "past": [
+                    {
+                        "name": "gcp:projects/iAMCustomRole:IAMCustomRole",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6,
                 "fields": {
                     "permissions": {
@@ -19331,7 +19535,13 @@
                 }
             },
             "google_project_iam_member": {
-                "current": "gcp:projects/iAMMember:IAMMember",
+                "current": "gcp:projects/iAMMember:IamMember",
+                "past": [
+                    {
+                        "name": "gcp:projects/iAMMember:IAMMember",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6,
                 "fields": {
                     "condition": {
@@ -19340,7 +19550,13 @@
                 }
             },
             "google_project_iam_policy": {
-                "current": "gcp:projects/iAMPolicy:IAMPolicy",
+                "current": "gcp:projects/iAMPolicy:IamPolicy",
+                "past": [
+                    {
+                        "name": "gcp:projects/iAMPolicy:IAMPolicy",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6
             },
             "google_project_organization_policy": {
@@ -19479,7 +19695,13 @@
                 }
             },
             "google_pubsub_subscription_iam_binding": {
-                "current": "gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding",
+                "current": "gcp:pubsub/subscriptionIamBinding:SubscriptionIamBinding",
+                "past": [
+                    {
+                        "name": "gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6,
                 "fields": {
                     "condition": {
@@ -19491,7 +19713,13 @@
                 }
             },
             "google_pubsub_subscription_iam_member": {
-                "current": "gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember",
+                "current": "gcp:pubsub/subscriptionIamMember:SubscriptionIamMember",
+                "past": [
+                    {
+                        "name": "gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6,
                 "fields": {
                     "condition": {
@@ -19500,7 +19728,13 @@
                 }
             },
             "google_pubsub_subscription_iam_policy": {
-                "current": "gcp:pubsub/subscriptionIAMPolicy:SubscriptionIAMPolicy",
+                "current": "gcp:pubsub/subscriptionIamPolicy:SubscriptionIamPolicy",
+                "past": [
+                    {
+                        "name": "gcp:pubsub/subscriptionIAMPolicy:SubscriptionIAMPolicy",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6
             },
             "google_pubsub_topic": {
@@ -19523,7 +19757,13 @@
                 }
             },
             "google_pubsub_topic_iam_binding": {
-                "current": "gcp:pubsub/topicIAMBinding:TopicIAMBinding",
+                "current": "gcp:pubsub/topicIamBinding:TopicIamBinding",
+                "past": [
+                    {
+                        "name": "gcp:pubsub/topicIAMBinding:TopicIAMBinding",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6,
                 "fields": {
                     "condition": {
@@ -19535,7 +19775,13 @@
                 }
             },
             "google_pubsub_topic_iam_member": {
-                "current": "gcp:pubsub/topicIAMMember:TopicIAMMember",
+                "current": "gcp:pubsub/topicIamMember:TopicIamMember",
+                "past": [
+                    {
+                        "name": "gcp:pubsub/topicIAMMember:TopicIAMMember",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6,
                 "fields": {
                     "condition": {
@@ -19544,7 +19790,13 @@
                 }
             },
             "google_pubsub_topic_iam_policy": {
-                "current": "gcp:pubsub/topicIAMPolicy:TopicIAMPolicy",
+                "current": "gcp:pubsub/topicIamPolicy:TopicIamPolicy",
+                "past": [
+                    {
+                        "name": "gcp:pubsub/topicIAMPolicy:TopicIAMPolicy",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6
             },
             "google_recaptcha_enterprise_key": {
@@ -19838,7 +20090,13 @@
                 "majorVersion": 6
             },
             "google_service_account_iam_binding": {
-                "current": "gcp:serviceAccount/iAMBinding:IAMBinding",
+                "current": "gcp:serviceAccount/iAMBinding:IamBinding",
+                "past": [
+                    {
+                        "name": "gcp:serviceAccount/iAMBinding:IAMBinding",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6,
                 "fields": {
                     "condition": {
@@ -19850,7 +20108,13 @@
                 }
             },
             "google_service_account_iam_member": {
-                "current": "gcp:serviceAccount/iAMMember:IAMMember",
+                "current": "gcp:serviceAccount/iAMMember:IamMember",
+                "past": [
+                    {
+                        "name": "gcp:serviceAccount/iAMMember:IAMMember",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6,
                 "fields": {
                     "condition": {
@@ -19859,7 +20123,13 @@
                 }
             },
             "google_service_account_iam_policy": {
-                "current": "gcp:serviceAccount/iAMPolicy:IAMPolicy",
+                "current": "gcp:serviceAccount/iAMPolicy:IamPolicy",
+                "past": [
+                    {
+                        "name": "gcp:serviceAccount/iAMPolicy:IAMPolicy",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6
             },
             "google_service_account_key": {
@@ -19992,7 +20262,13 @@
                 }
             },
             "google_spanner_database_iam_binding": {
-                "current": "gcp:spanner/databaseIAMBinding:DatabaseIAMBinding",
+                "current": "gcp:spanner/databaseIamBinding:DatabaseIamBinding",
+                "past": [
+                    {
+                        "name": "gcp:spanner/databaseIAMBinding:DatabaseIAMBinding",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6,
                 "fields": {
                     "condition": {
@@ -20004,7 +20280,13 @@
                 }
             },
             "google_spanner_database_iam_member": {
-                "current": "gcp:spanner/databaseIAMMember:DatabaseIAMMember",
+                "current": "gcp:spanner/databaseIamMember:DatabaseIamMember",
+                "past": [
+                    {
+                        "name": "gcp:spanner/databaseIAMMember:DatabaseIAMMember",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6,
                 "fields": {
                     "condition": {
@@ -20013,7 +20295,13 @@
                 }
             },
             "google_spanner_database_iam_policy": {
-                "current": "gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy",
+                "current": "gcp:spanner/databaseIamPolicy:DatabaseIamPolicy",
+                "past": [
+                    {
+                        "name": "gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6
             },
             "google_spanner_instance": {
@@ -20021,7 +20309,13 @@
                 "majorVersion": 6
             },
             "google_spanner_instance_iam_binding": {
-                "current": "gcp:spanner/instanceIAMBinding:InstanceIAMBinding",
+                "current": "gcp:spanner/instanceIamBinding:InstanceIamBinding",
+                "past": [
+                    {
+                        "name": "gcp:spanner/instanceIAMBinding:InstanceIAMBinding",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6,
                 "fields": {
                     "condition": {
@@ -20033,7 +20327,13 @@
                 }
             },
             "google_spanner_instance_iam_member": {
-                "current": "gcp:spanner/instanceIAMMember:InstanceIAMMember",
+                "current": "gcp:spanner/instanceIamMember:InstanceIamMember",
+                "past": [
+                    {
+                        "name": "gcp:spanner/instanceIAMMember:InstanceIAMMember",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6,
                 "fields": {
                     "condition": {
@@ -20042,7 +20342,13 @@
                 }
             },
             "google_spanner_instance_iam_policy": {
-                "current": "gcp:spanner/instanceIAMPolicy:InstanceIAMPolicy",
+                "current": "gcp:spanner/instanceIamPolicy:InstanceIamPolicy",
+                "past": [
+                    {
+                        "name": "gcp:spanner/instanceIAMPolicy:InstanceIAMPolicy",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6
             },
             "google_sql_database": {
@@ -20271,7 +20577,13 @@
                 }
             },
             "google_storage_bucket_iam_binding": {
-                "current": "gcp:storage/bucketIAMBinding:BucketIAMBinding",
+                "current": "gcp:storage/bucketIamBinding:BucketIamBinding",
+                "past": [
+                    {
+                        "name": "gcp:storage/bucketIAMBinding:BucketIAMBinding",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6,
                 "fields": {
                     "condition": {
@@ -20283,7 +20595,13 @@
                 }
             },
             "google_storage_bucket_iam_member": {
-                "current": "gcp:storage/bucketIAMMember:BucketIAMMember",
+                "current": "gcp:storage/bucketIamMember:BucketIamMember",
+                "past": [
+                    {
+                        "name": "gcp:storage/bucketIAMMember:BucketIAMMember",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6,
                 "fields": {
                     "condition": {
@@ -20292,7 +20610,13 @@
                 }
             },
             "google_storage_bucket_iam_policy": {
-                "current": "gcp:storage/bucketIAMPolicy:BucketIAMPolicy",
+                "current": "gcp:storage/bucketIamPolicy:BucketIamPolicy",
+                "past": [
+                    {
+                        "name": "gcp:storage/bucketIAMPolicy:BucketIAMPolicy",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6
             },
             "google_storage_bucket_object": {
@@ -23873,7 +24197,13 @@
                 "majorVersion": 6
             },
             "google_iam_policy": {
-                "current": "gcp:organizations/getIAMPolicy:getIAMPolicy",
+                "current": "gcp:organizations/getIamPolicy:getIamPolicy",
+                "past": [
+                    {
+                        "name": "gcp:organizations/getIAMPolicy:getIAMPolicy",
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6,
                 "fields": {
                     "audit_config": {
