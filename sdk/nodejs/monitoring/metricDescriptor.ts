@@ -71,7 +71,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * MetricDescriptor can be imported using any of these accepted formats
+ * MetricDescriptor can be imported using any of these accepted formats:
  *
  * ```sh
  *  $ pulumi import gcp:monitoring/metricDescriptor:MetricDescriptor default {{name}}

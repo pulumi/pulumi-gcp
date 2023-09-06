@@ -204,6 +204,8 @@ type DatabaseInstance struct {
 	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 	// in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
+	// The dns name of the instance.
+	DnsName pulumi.StringOutput `pulumi:"dnsName"`
 	// The full path to the encryption key used for the CMEK disk encryption.  Setting
 	// up disk encryption currently requires manual steps outside of this provider.
 	// The provided key must be in the same region as the SQL instance.  In order
@@ -234,6 +236,8 @@ type DatabaseInstance struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The link to service attachment of PSC instance.
+	PscServiceAttachmentLink pulumi.StringOutput `pulumi:"pscServiceAttachmentLink"`
 	// The first public (`PRIMARY`) IPv4 address assigned.
 	PublicIpAddress pulumi.StringOutput `pulumi:"publicIpAddress"`
 	// The region the instance will sit in. If a region is not provided in the resource definition,
@@ -324,6 +328,8 @@ type databaseInstanceState struct {
 	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 	// in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
+	// The dns name of the instance.
+	DnsName *string `pulumi:"dnsName"`
 	// The full path to the encryption key used for the CMEK disk encryption.  Setting
 	// up disk encryption currently requires manual steps outside of this provider.
 	// The provided key must be in the same region as the SQL instance.  In order
@@ -354,6 +360,8 @@ type databaseInstanceState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The link to service attachment of PSC instance.
+	PscServiceAttachmentLink *string `pulumi:"pscServiceAttachmentLink"`
 	// The first public (`PRIMARY`) IPv4 address assigned.
 	PublicIpAddress *string `pulumi:"publicIpAddress"`
 	// The region the instance will sit in. If a region is not provided in the resource definition,
@@ -405,6 +413,8 @@ type DatabaseInstanceState struct {
 	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 	// in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
 	DeletionProtection pulumi.BoolPtrInput
+	// The dns name of the instance.
+	DnsName pulumi.StringPtrInput
 	// The full path to the encryption key used for the CMEK disk encryption.  Setting
 	// up disk encryption currently requires manual steps outside of this provider.
 	// The provided key must be in the same region as the SQL instance.  In order
@@ -435,6 +445,8 @@ type DatabaseInstanceState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The link to service attachment of PSC instance.
+	PscServiceAttachmentLink pulumi.StringPtrInput
 	// The first public (`PRIMARY`) IPv4 address assigned.
 	PublicIpAddress pulumi.StringPtrInput
 	// The region the instance will sit in. If a region is not provided in the resource definition,
@@ -718,6 +730,11 @@ func (o DatabaseInstanceOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
 
+// The dns name of the instance.
+func (o DatabaseInstanceOutput) DnsName() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.DnsName }).(pulumi.StringOutput)
+}
+
 // The full path to the encryption key used for the CMEK disk encryption.  Setting
 // up disk encryption currently requires manual steps outside of this provider.
 // The provided key must be in the same region as the SQL instance.  In order
@@ -773,6 +790,11 @@ func (o DatabaseInstanceOutput) PrivateIpAddress() pulumi.StringOutput {
 // is not provided, the provider project is used.
 func (o DatabaseInstanceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The link to service attachment of PSC instance.
+func (o DatabaseInstanceOutput) PscServiceAttachmentLink() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.PscServiceAttachmentLink }).(pulumi.StringOutput)
 }
 
 // The first public (`PRIMARY`) IPv4 address assigned.

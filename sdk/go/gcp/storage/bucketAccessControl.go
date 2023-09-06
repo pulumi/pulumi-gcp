@@ -72,7 +72,7 @@ import (
 //
 // ## Import
 //
-// # BucketAccessControl can be imported using any of these accepted formats
+// BucketAccessControl can be imported using any of these accepted formats:
 //
 // ```sh
 //

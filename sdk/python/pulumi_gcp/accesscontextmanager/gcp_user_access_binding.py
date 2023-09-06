@@ -168,7 +168,7 @@ class GcpUserAccessBinding(pulumi.CustomResource):
 
         ## Import
 
-        GcpUserAccessBinding can be imported using any of these accepted formats
+        GcpUserAccessBinding can be imported using any of these accepted formats:
 
         ```sh
          $ pulumi import gcp:accesscontextmanager/gcpUserAccessBinding:GcpUserAccessBinding default {{name}}
@@ -200,7 +200,7 @@ class GcpUserAccessBinding(pulumi.CustomResource):
 
         ## Import
 
-        GcpUserAccessBinding can be imported using any of these accepted formats
+        GcpUserAccessBinding can be imported using any of these accepted formats:
 
         ```sh
          $ pulumi import gcp:accesscontextmanager/gcpUserAccessBinding:GcpUserAccessBinding default {{name}}

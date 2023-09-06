@@ -65,7 +65,7 @@ import (
 //
 // ## Import
 //
-// # Contact can be imported using any of these accepted formats
+// Contact can be imported using any of these accepted formats:
 //
 // ```sh
 //

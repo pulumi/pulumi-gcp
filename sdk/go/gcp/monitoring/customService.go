@@ -60,7 +60,7 @@ import (
 //
 // ## Import
 //
-// # Service can be imported using any of these accepted formats
+// Service can be imported using any of these accepted formats:
 //
 // ```sh
 //

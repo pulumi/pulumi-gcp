@@ -29,6 +29,7 @@ public final class WorkforcePoolProviderOidc {
      * 
      */
     private String issuerUri;
+    private @Nullable String jwksJson;
     /**
      * @return Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.
      * Structure is documented below.
@@ -59,6 +60,9 @@ public final class WorkforcePoolProviderOidc {
     public String issuerUri() {
         return this.issuerUri;
     }
+    public Optional<String> jwksJson() {
+        return Optional.ofNullable(this.jwksJson);
+    }
     /**
      * @return Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.
      * Structure is documented below.
@@ -80,6 +84,7 @@ public final class WorkforcePoolProviderOidc {
         private String clientId;
         private @Nullable WorkforcePoolProviderOidcClientSecret clientSecret;
         private String issuerUri;
+        private @Nullable String jwksJson;
         private @Nullable WorkforcePoolProviderOidcWebSsoConfig webSsoConfig;
         public Builder() {}
         public Builder(WorkforcePoolProviderOidc defaults) {
@@ -87,6 +92,7 @@ public final class WorkforcePoolProviderOidc {
     	      this.clientId = defaults.clientId;
     	      this.clientSecret = defaults.clientSecret;
     	      this.issuerUri = defaults.issuerUri;
+    	      this.jwksJson = defaults.jwksJson;
     	      this.webSsoConfig = defaults.webSsoConfig;
         }
 
@@ -106,6 +112,11 @@ public final class WorkforcePoolProviderOidc {
             return this;
         }
         @CustomType.Setter
+        public Builder jwksJson(@Nullable String jwksJson) {
+            this.jwksJson = jwksJson;
+            return this;
+        }
+        @CustomType.Setter
         public Builder webSsoConfig(@Nullable WorkforcePoolProviderOidcWebSsoConfig webSsoConfig) {
             this.webSsoConfig = webSsoConfig;
             return this;
@@ -115,6 +126,7 @@ public final class WorkforcePoolProviderOidc {
             o.clientId = clientId;
             o.clientSecret = clientSecret;
             o.issuerUri = issuerUri;
+            o.jwksJson = jwksJson;
             o.webSsoConfig = webSsoConfig;
             return o;
         }

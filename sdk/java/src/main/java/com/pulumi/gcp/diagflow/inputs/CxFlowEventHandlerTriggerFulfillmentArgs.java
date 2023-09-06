@@ -5,7 +5,9 @@ package com.pulumi.gcp.diagflow.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.diagflow.inputs.CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs;
 import com.pulumi.gcp.diagflow.inputs.CxFlowEventHandlerTriggerFulfillmentMessageArgs;
+import com.pulumi.gcp.diagflow.inputs.CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -17,6 +19,23 @@ import javax.annotation.Nullable;
 public final class CxFlowEventHandlerTriggerFulfillmentArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final CxFlowEventHandlerTriggerFulfillmentArgs Empty = new CxFlowEventHandlerTriggerFulfillmentArgs();
+
+    /**
+     * Conditional cases for this fulfillment.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="conditionalCases")
+    private @Nullable Output<List<CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs>> conditionalCases;
+
+    /**
+     * @return Conditional cases for this fulfillment.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs>>> conditionalCases() {
+        return Optional.ofNullable(this.conditionalCases);
+    }
 
     /**
      * The list of rich message responses to present to the user.
@@ -48,6 +67,23 @@ public final class CxFlowEventHandlerTriggerFulfillmentArgs extends com.pulumi.r
      */
     public Optional<Output<Boolean>> returnPartialResponses() {
         return Optional.ofNullable(this.returnPartialResponses);
+    }
+
+    /**
+     * Set parameter values before executing the webhook.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="setParameterActions")
+    private @Nullable Output<List<CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs>> setParameterActions;
+
+    /**
+     * @return Set parameter values before executing the webhook.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs>>> setParameterActions() {
+        return Optional.ofNullable(this.setParameterActions);
     }
 
     /**
@@ -83,8 +119,10 @@ public final class CxFlowEventHandlerTriggerFulfillmentArgs extends com.pulumi.r
     private CxFlowEventHandlerTriggerFulfillmentArgs() {}
 
     private CxFlowEventHandlerTriggerFulfillmentArgs(CxFlowEventHandlerTriggerFulfillmentArgs $) {
+        this.conditionalCases = $.conditionalCases;
         this.messages = $.messages;
         this.returnPartialResponses = $.returnPartialResponses;
+        this.setParameterActions = $.setParameterActions;
         this.tag = $.tag;
         this.webhook = $.webhook;
     }
@@ -105,6 +143,40 @@ public final class CxFlowEventHandlerTriggerFulfillmentArgs extends com.pulumi.r
 
         public Builder(CxFlowEventHandlerTriggerFulfillmentArgs defaults) {
             $ = new CxFlowEventHandlerTriggerFulfillmentArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param conditionalCases Conditional cases for this fulfillment.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder conditionalCases(@Nullable Output<List<CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs>> conditionalCases) {
+            $.conditionalCases = conditionalCases;
+            return this;
+        }
+
+        /**
+         * @param conditionalCases Conditional cases for this fulfillment.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder conditionalCases(List<CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs> conditionalCases) {
+            return conditionalCases(Output.of(conditionalCases));
+        }
+
+        /**
+         * @param conditionalCases Conditional cases for this fulfillment.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder conditionalCases(CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs... conditionalCases) {
+            return conditionalCases(List.of(conditionalCases));
         }
 
         /**
@@ -160,6 +232,40 @@ public final class CxFlowEventHandlerTriggerFulfillmentArgs extends com.pulumi.r
          */
         public Builder returnPartialResponses(Boolean returnPartialResponses) {
             return returnPartialResponses(Output.of(returnPartialResponses));
+        }
+
+        /**
+         * @param setParameterActions Set parameter values before executing the webhook.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder setParameterActions(@Nullable Output<List<CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs>> setParameterActions) {
+            $.setParameterActions = setParameterActions;
+            return this;
+        }
+
+        /**
+         * @param setParameterActions Set parameter values before executing the webhook.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder setParameterActions(List<CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs> setParameterActions) {
+            return setParameterActions(Output.of(setParameterActions));
+        }
+
+        /**
+         * @param setParameterActions Set parameter values before executing the webhook.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder setParameterActions(CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs... setParameterActions) {
+            return setParameterActions(List.of(setParameterActions));
         }
 
         /**

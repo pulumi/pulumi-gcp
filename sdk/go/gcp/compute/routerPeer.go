@@ -292,7 +292,7 @@ type RouterPeer struct {
 	// Possible values are: `DEFAULT`, `CUSTOM`.
 	AdvertiseMode pulumi.StringPtrOutput `pulumi:"advertiseMode"`
 	// User-specified list of prefix groups to advertise in custom
-	// mode, which can take one of the following options:
+	// mode, which currently supports the following option:
 	AdvertisedGroups pulumi.StringArrayOutput `pulumi:"advertisedGroups"`
 	// User-specified list of individual IP ranges to advertise in
 	// custom mode. This field can only be populated if advertiseMode
@@ -407,7 +407,7 @@ type routerPeerState struct {
 	// Possible values are: `DEFAULT`, `CUSTOM`.
 	AdvertiseMode *string `pulumi:"advertiseMode"`
 	// User-specified list of prefix groups to advertise in custom
-	// mode, which can take one of the following options:
+	// mode, which currently supports the following option:
 	AdvertisedGroups []string `pulumi:"advertisedGroups"`
 	// User-specified list of individual IP ranges to advertise in
 	// custom mode. This field can only be populated if advertiseMode
@@ -484,7 +484,7 @@ type RouterPeerState struct {
 	// Possible values are: `DEFAULT`, `CUSTOM`.
 	AdvertiseMode pulumi.StringPtrInput
 	// User-specified list of prefix groups to advertise in custom
-	// mode, which can take one of the following options:
+	// mode, which currently supports the following option:
 	AdvertisedGroups pulumi.StringArrayInput
 	// User-specified list of individual IP ranges to advertise in
 	// custom mode. This field can only be populated if advertiseMode
@@ -565,7 +565,7 @@ type routerPeerArgs struct {
 	// Possible values are: `DEFAULT`, `CUSTOM`.
 	AdvertiseMode *string `pulumi:"advertiseMode"`
 	// User-specified list of prefix groups to advertise in custom
-	// mode, which can take one of the following options:
+	// mode, which currently supports the following option:
 	AdvertisedGroups []string `pulumi:"advertisedGroups"`
 	// User-specified list of individual IP ranges to advertise in
 	// custom mode. This field can only be populated if advertiseMode
@@ -641,7 +641,7 @@ type RouterPeerArgs struct {
 	// Possible values are: `DEFAULT`, `CUSTOM`.
 	AdvertiseMode pulumi.StringPtrInput
 	// User-specified list of prefix groups to advertise in custom
-	// mode, which can take one of the following options:
+	// mode, which currently supports the following option:
 	AdvertisedGroups pulumi.StringArrayInput
 	// User-specified list of individual IP ranges to advertise in
 	// custom mode. This field can only be populated if advertiseMode
@@ -805,7 +805,7 @@ func (o RouterPeerOutput) AdvertiseMode() pulumi.StringPtrOutput {
 }
 
 // User-specified list of prefix groups to advertise in custom
-// mode, which can take one of the following options:
+// mode, which currently supports the following option:
 func (o RouterPeerOutput) AdvertisedGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RouterPeer) pulumi.StringArrayOutput { return v.AdvertisedGroups }).(pulumi.StringArrayOutput)
 }

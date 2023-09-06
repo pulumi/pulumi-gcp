@@ -53,7 +53,7 @@ import (
 //
 // ## Import
 //
-// # MuteConfig can be imported using any of these accepted formats
+// MuteConfig can be imported using any of these accepted formats:
 //
 // ```sh
 //

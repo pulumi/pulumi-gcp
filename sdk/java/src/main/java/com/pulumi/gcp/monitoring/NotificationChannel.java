@@ -116,7 +116,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * NotificationChannel can be imported using any of these accepted formats
+ * NotificationChannel can be imported using any of these accepted formats:
  * 
  * ```sh
  *  $ pulumi import gcp:monitoring/notificationChannel:NotificationChannel default {{name}}

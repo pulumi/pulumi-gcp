@@ -6,6 +6,7 @@ package com.pulumi.gcp.container.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigAdvancedMachineFeaturesArgs;
+import com.pulumi.gcp.container.inputs.ClusterNodeConfigConfidentialNodesArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigEphemeralStorageConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigEphemeralStorageLocalSsdConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigGcfsConfigArgs;
@@ -65,6 +66,21 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<String>> bootDiskKmsKey() {
         return Optional.ofNullable(this.bootDiskKmsKey);
+    }
+
+    /**
+     * Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+     * 
+     */
+    @Import(name="confidentialNodes")
+    private @Nullable Output<ClusterNodeConfigConfidentialNodesArgs> confidentialNodes;
+
+    /**
+     * @return Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+     * 
+     */
+    public Optional<Output<ClusterNodeConfigConfidentialNodesArgs>> confidentialNodes() {
+        return Optional.ofNullable(this.confidentialNodes);
     }
 
     /**
@@ -923,6 +939,7 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
     private ClusterNodeConfigArgs(ClusterNodeConfigArgs $) {
         this.advancedMachineFeatures = $.advancedMachineFeatures;
         this.bootDiskKmsKey = $.bootDiskKmsKey;
+        this.confidentialNodes = $.confidentialNodes;
         this.diskSizeGb = $.diskSizeGb;
         this.diskType = $.diskType;
         this.ephemeralStorageConfig = $.ephemeralStorageConfig;
@@ -1016,6 +1033,27 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder bootDiskKmsKey(String bootDiskKmsKey) {
             return bootDiskKmsKey(Output.of(bootDiskKmsKey));
+        }
+
+        /**
+         * @param confidentialNodes Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder confidentialNodes(@Nullable Output<ClusterNodeConfigConfidentialNodesArgs> confidentialNodes) {
+            $.confidentialNodes = confidentialNodes;
+            return this;
+        }
+
+        /**
+         * @param confidentialNodes Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder confidentialNodes(ClusterNodeConfigConfidentialNodesArgs confidentialNodes) {
+            return confidentialNodes(Output.of(confidentialNodes));
         }
 
         /**

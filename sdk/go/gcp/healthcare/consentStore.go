@@ -143,7 +143,7 @@ import (
 //
 // ## Import
 //
-// # ConsentStore can be imported using any of these accepted formats
+// ConsentStore can be imported using any of these accepted formats:
 //
 // ```sh
 //

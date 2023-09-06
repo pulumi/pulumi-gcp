@@ -137,6 +137,8 @@ namespace Pulumi.Gcp.ArtifactRegistry
     [OutputType]
     public sealed class GetRepositoryResult
     {
+        public readonly ImmutableArray<Outputs.GetRepositoryCleanupPolicyResult> CleanupPolicies;
+        public readonly bool CleanupPolicyDryRun;
         public readonly string CreateTime;
         public readonly string Description;
         public readonly ImmutableArray<Outputs.GetRepositoryDockerConfigResult> DockerConfigs;
@@ -159,6 +161,10 @@ namespace Pulumi.Gcp.ArtifactRegistry
 
         [OutputConstructor]
         private GetRepositoryResult(
+            ImmutableArray<Outputs.GetRepositoryCleanupPolicyResult> cleanupPolicies,
+
+            bool cleanupPolicyDryRun,
+
             string createTime,
 
             string description,
@@ -191,6 +197,8 @@ namespace Pulumi.Gcp.ArtifactRegistry
 
             ImmutableArray<Outputs.GetRepositoryVirtualRepositoryConfigResult> virtualRepositoryConfigs)
         {
+            CleanupPolicies = cleanupPolicies;
+            CleanupPolicyDryRun = cleanupPolicyDryRun;
             CreateTime = createTime;
             Description = description;
             DockerConfigs = dockerConfigs;

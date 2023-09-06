@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.networkconnectivity.ServiceConnectionPolicyArgs;
 import com.pulumi.gcp.networkconnectivity.inputs.ServiceConnectionPolicyState;
 import com.pulumi.gcp.networkconnectivity.outputs.ServiceConnectionPolicyPscConfig;
+import com.pulumi.gcp.networkconnectivity.outputs.ServiceConnectionPolicyPscConnection;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -248,16 +249,18 @@ public class ServiceConnectionPolicy extends com.pulumi.resources.CustomResource
     }
     /**
      * Information about each Private Service Connect connection.
+     * Structure is documented below.
      * 
      */
-    @Export(name="pscConnections", type=List.class, parameters={String.class})
-    private Output<List<String>> pscConnections;
+    @Export(name="pscConnections", type=List.class, parameters={ServiceConnectionPolicyPscConnection.class})
+    private Output<List<ServiceConnectionPolicyPscConnection>> pscConnections;
 
     /**
      * @return Information about each Private Service Connect connection.
+     * Structure is documented below.
      * 
      */
-    public Output<List<String>> pscConnections() {
+    public Output<List<ServiceConnectionPolicyPscConnection>> pscConnections() {
         return this.pscConnections;
     }
     /**

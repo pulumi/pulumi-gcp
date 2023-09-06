@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.container.outputs.GetClusterIpAllocationPolicyAdditionalPodRangesConfig;
 import com.pulumi.gcp.container.outputs.GetClusterIpAllocationPolicyPodCidrOverprovisionConfig;
 import java.lang.String;
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterIpAllocationPolicy {
+    private List<GetClusterIpAllocationPolicyAdditionalPodRangesConfig> additionalPodRangesConfigs;
     private String clusterIpv4CidrBlock;
     private String clusterSecondaryRangeName;
     private List<GetClusterIpAllocationPolicyPodCidrOverprovisionConfig> podCidrOverprovisionConfigs;
@@ -19,6 +21,9 @@ public final class GetClusterIpAllocationPolicy {
     private String stackType;
 
     private GetClusterIpAllocationPolicy() {}
+    public List<GetClusterIpAllocationPolicyAdditionalPodRangesConfig> additionalPodRangesConfigs() {
+        return this.additionalPodRangesConfigs;
+    }
     public String clusterIpv4CidrBlock() {
         return this.clusterIpv4CidrBlock;
     }
@@ -47,6 +52,7 @@ public final class GetClusterIpAllocationPolicy {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetClusterIpAllocationPolicyAdditionalPodRangesConfig> additionalPodRangesConfigs;
         private String clusterIpv4CidrBlock;
         private String clusterSecondaryRangeName;
         private List<GetClusterIpAllocationPolicyPodCidrOverprovisionConfig> podCidrOverprovisionConfigs;
@@ -56,6 +62,7 @@ public final class GetClusterIpAllocationPolicy {
         public Builder() {}
         public Builder(GetClusterIpAllocationPolicy defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.additionalPodRangesConfigs = defaults.additionalPodRangesConfigs;
     	      this.clusterIpv4CidrBlock = defaults.clusterIpv4CidrBlock;
     	      this.clusterSecondaryRangeName = defaults.clusterSecondaryRangeName;
     	      this.podCidrOverprovisionConfigs = defaults.podCidrOverprovisionConfigs;
@@ -64,6 +71,14 @@ public final class GetClusterIpAllocationPolicy {
     	      this.stackType = defaults.stackType;
         }
 
+        @CustomType.Setter
+        public Builder additionalPodRangesConfigs(List<GetClusterIpAllocationPolicyAdditionalPodRangesConfig> additionalPodRangesConfigs) {
+            this.additionalPodRangesConfigs = Objects.requireNonNull(additionalPodRangesConfigs);
+            return this;
+        }
+        public Builder additionalPodRangesConfigs(GetClusterIpAllocationPolicyAdditionalPodRangesConfig... additionalPodRangesConfigs) {
+            return additionalPodRangesConfigs(List.of(additionalPodRangesConfigs));
+        }
         @CustomType.Setter
         public Builder clusterIpv4CidrBlock(String clusterIpv4CidrBlock) {
             this.clusterIpv4CidrBlock = Objects.requireNonNull(clusterIpv4CidrBlock);
@@ -99,6 +114,7 @@ public final class GetClusterIpAllocationPolicy {
         }
         public GetClusterIpAllocationPolicy build() {
             final var o = new GetClusterIpAllocationPolicy();
+            o.additionalPodRangesConfigs = additionalPodRangesConfigs;
             o.clusterIpv4CidrBlock = clusterIpv4CidrBlock;
             o.clusterSecondaryRangeName = clusterSecondaryRangeName;
             o.podCidrOverprovisionConfigs = podCidrOverprovisionConfigs;

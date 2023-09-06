@@ -34,6 +34,7 @@ type LookupAndroidAppArgs struct {
 
 // A collection of values returned by getAndroidApp.
 type LookupAndroidAppResult struct {
+	ApiKeyId string `pulumi:"apiKeyId"`
 	// Immutable. The globally unique, Firebase-assigned identifier of the AndroidApp.
 	// This identifier should be treated as an opaque token, as the data format is not specified.
 	AppId          string `pulumi:"appId"`
@@ -98,6 +99,10 @@ func (o LookupAndroidAppResultOutput) ToLookupAndroidAppResultOutput() LookupAnd
 
 func (o LookupAndroidAppResultOutput) ToLookupAndroidAppResultOutputWithContext(ctx context.Context) LookupAndroidAppResultOutput {
 	return o
+}
+
+func (o LookupAndroidAppResultOutput) ApiKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAndroidAppResult) string { return v.ApiKeyId }).(pulumi.StringOutput)
 }
 
 // Immutable. The globally unique, Firebase-assigned identifier of the AndroidApp.

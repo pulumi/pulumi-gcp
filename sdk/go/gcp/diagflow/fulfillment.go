@@ -68,7 +68,7 @@ import (
 //
 // ## Import
 //
-// # Fulfillment can be imported using any of these accepted formats
+// Fulfillment can be imported using any of these accepted formats:
 //
 // ```sh
 //

@@ -22,7 +22,7 @@ import (
 //
 // ## Import
 //
-// # GcpUserAccessBinding can be imported using any of these accepted formats
+// GcpUserAccessBinding can be imported using any of these accepted formats:
 //
 // ```sh
 //

@@ -26,6 +26,12 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<string>? BootDiskKmsKey { get; set; }
 
         /// <summary>
+        /// Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+        /// </summary>
+        [Input("confidentialNodes")]
+        public Input<Inputs.ClusterNodeConfigConfidentialNodesGetArgs>? ConfidentialNodes { get; set; }
+
+        /// <summary>
         /// Size of the disk attached to each node, specified
         /// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
         /// </summary>

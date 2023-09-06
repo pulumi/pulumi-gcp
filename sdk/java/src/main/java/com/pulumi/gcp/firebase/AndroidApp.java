@@ -43,9 +43,65 @@ import javax.annotation.Nullable;
  *         var basic = new AndroidApp(&#34;basic&#34;, AndroidAppArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .displayName(&#34;Display Name Basic&#34;)
- *             .packageName(&#34;&#34;)
+ *             .packageName(&#34;android.package.app&#34;)
  *             .sha1Hashes(&#34;2145bdf698b8715039bd0e83f2069bed435ac21c&#34;)
  *             .sha256Hashes(&#34;2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Firebase Android App Custom Api Key
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.projects.ApiKey;
+ * import com.pulumi.gcp.projects.ApiKeyArgs;
+ * import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsArgs;
+ * import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsAndroidKeyRestrictionsArgs;
+ * import com.pulumi.gcp.firebase.AndroidApp;
+ * import com.pulumi.gcp.firebase.AndroidAppArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var android = new ApiKey(&#34;android&#34;, ApiKeyArgs.builder()        
+ *             .displayName(&#34;Display Name&#34;)
+ *             .project(&#34;my-project-name&#34;)
+ *             .restrictions(ApiKeyRestrictionsArgs.builder()
+ *                 .androidKeyRestrictions(ApiKeyRestrictionsAndroidKeyRestrictionsArgs.builder()
+ *                     .allowedApplications(ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs.builder()
+ *                         .packageName(&#34;android.package.app&#34;)
+ *                         .sha1Fingerprint(&#34;2145bdf698b8715039bd0e83f2069bed435ac21c&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var default_ = new AndroidApp(&#34;default&#34;, AndroidAppArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .displayName(&#34;Display Name&#34;)
+ *             .packageName(&#34;android.package.app&#34;)
+ *             .sha1Hashes(&#34;2145bdf698b8715039bd0e83f2069bed435ac21c&#34;)
+ *             .sha256Hashes(&#34;2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc&#34;)
+ *             .apiKeyId(android.uid())
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)
  *                 .build());
@@ -81,6 +137,24 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:firebase/androidApp:AndroidApp")
 public class AndroidApp extends com.pulumi.resources.CustomResource {
+    /**
+     * The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AndroidApp.
+     * If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AndroidApp.
+     * This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+     * 
+     */
+    @Export(name="apiKeyId", type=String.class, parameters={})
+    private Output<String> apiKeyId;
+
+    /**
+     * @return The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AndroidApp.
+     * If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AndroidApp.
+     * This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+     * 
+     */
+    public Output<String> apiKeyId() {
+        return this.apiKeyId;
+    }
     /**
      * The globally unique, Firebase-assigned identifier of the AndroidApp.
      * This identifier should be treated as an opaque token, as the data format is not specified.

@@ -48,7 +48,7 @@ class RouterPeerArgs:
                Default value is `DEFAULT`.
                Possible values are: `DEFAULT`, `CUSTOM`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] advertised_groups: User-specified list of prefix groups to advertise in custom
-               mode, which can take one of the following options:
+               mode, which currently supports the following option:
         :param pulumi.Input[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArgs']]] advertised_ip_ranges: User-specified list of individual IP ranges to advertise in
                custom mode. This field can only be populated if advertiseMode
                is `CUSTOM` and is advertised to all peers of the router. These IP
@@ -186,7 +186,7 @@ class RouterPeerArgs:
     def advertised_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         User-specified list of prefix groups to advertise in custom
-        mode, which can take one of the following options:
+        mode, which currently supports the following option:
         """
         return pulumi.get(self, "advertised_groups")
 
@@ -409,7 +409,7 @@ class _RouterPeerState:
                Default value is `DEFAULT`.
                Possible values are: `DEFAULT`, `CUSTOM`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] advertised_groups: User-specified list of prefix groups to advertise in custom
-               mode, which can take one of the following options:
+               mode, which currently supports the following option:
         :param pulumi.Input[Sequence[pulumi.Input['RouterPeerAdvertisedIpRangeArgs']]] advertised_ip_ranges: User-specified list of individual IP ranges to advertise in
                custom mode. This field can only be populated if advertiseMode
                is `CUSTOM` and is advertised to all peers of the router. These IP
@@ -520,7 +520,7 @@ class _RouterPeerState:
     def advertised_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         User-specified list of prefix groups to advertise in custom
-        mode, which can take one of the following options:
+        mode, which currently supports the following option:
         """
         return pulumi.get(self, "advertised_groups")
 
@@ -951,7 +951,7 @@ class RouterPeer(pulumi.CustomResource):
                Default value is `DEFAULT`.
                Possible values are: `DEFAULT`, `CUSTOM`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] advertised_groups: User-specified list of prefix groups to advertise in custom
-               mode, which can take one of the following options:
+               mode, which currently supports the following option:
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterPeerAdvertisedIpRangeArgs']]]] advertised_ip_ranges: User-specified list of individual IP ranges to advertise in
                custom mode. This field can only be populated if advertiseMode
                is `CUSTOM` and is advertised to all peers of the router. These IP
@@ -1270,7 +1270,7 @@ class RouterPeer(pulumi.CustomResource):
                Default value is `DEFAULT`.
                Possible values are: `DEFAULT`, `CUSTOM`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] advertised_groups: User-specified list of prefix groups to advertise in custom
-               mode, which can take one of the following options:
+               mode, which currently supports the following option:
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterPeerAdvertisedIpRangeArgs']]]] advertised_ip_ranges: User-specified list of individual IP ranges to advertise in
                custom mode. This field can only be populated if advertiseMode
                is `CUSTOM` and is advertised to all peers of the router. These IP
@@ -1363,7 +1363,7 @@ class RouterPeer(pulumi.CustomResource):
     def advertised_groups(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         User-specified list of prefix groups to advertise in custom
-        mode, which can take one of the following options:
+        mode, which currently supports the following option:
         """
         return pulumi.get(self, "advertised_groups")
 

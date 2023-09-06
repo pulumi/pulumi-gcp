@@ -20,6 +20,9 @@ __all__ = [
     'CertificateMapGclbTargetIpConfig',
     'CertificateSelfManaged',
     'DnsAuthorizationDnsResourceRecord',
+    'TrustConfigTrustStore',
+    'TrustConfigTrustStoreIntermediateCa',
+    'TrustConfigTrustStoreTrustAnchor',
 ]
 
 @pulumi.output_type
@@ -540,17 +543,21 @@ class CertificateSelfManaged(dict):
                  private_key_pem: Optional[str] = None):
         """
         :param str certificate_pem: (Optional, Deprecated)
-               **Deprecated** The certificate chain in PEM-encoded form.
+               The certificate chain in PEM-encoded form.
                Leaf certificate comes first, followed by intermediate ones if any.
                **Note**: This property is sensitive and will not be displayed in the plan.
+               
+               > **Warning:** `certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead.
         :param str pem_certificate: The certificate chain in PEM-encoded form.
                Leaf certificate comes first, followed by intermediate ones if any.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param str pem_private_key: The private key of the leaf certificate in PEM-encoded form.
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param str private_key_pem: (Optional, Deprecated)
-               **Deprecated** The private key of the leaf certificate in PEM-encoded form.
+               The private key of the leaf certificate in PEM-encoded form.
                **Note**: This property is sensitive and will not be displayed in the plan.
+               
+               > **Warning:** `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead.
         """
         if certificate_pem is not None:
             pulumi.set(__self__, "certificate_pem", certificate_pem)
@@ -566,12 +573,14 @@ class CertificateSelfManaged(dict):
     def certificate_pem(self) -> Optional[str]:
         """
         (Optional, Deprecated)
-        **Deprecated** The certificate chain in PEM-encoded form.
+        The certificate chain in PEM-encoded form.
         Leaf certificate comes first, followed by intermediate ones if any.
         **Note**: This property is sensitive and will not be displayed in the plan.
+
+        > **Warning:** `certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead.
         """
-        warnings.warn("""Deprecated in favor of `pem_certificate`""", DeprecationWarning)
-        pulumi.log.warn("""certificate_pem is deprecated: Deprecated in favor of `pem_certificate`""")
+        warnings.warn("""`certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead.""", DeprecationWarning)
+        pulumi.log.warn("""certificate_pem is deprecated: `certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead.""")
 
         return pulumi.get(self, "certificate_pem")
 
@@ -599,11 +608,13 @@ class CertificateSelfManaged(dict):
     def private_key_pem(self) -> Optional[str]:
         """
         (Optional, Deprecated)
-        **Deprecated** The private key of the leaf certificate in PEM-encoded form.
+        The private key of the leaf certificate in PEM-encoded form.
         **Note**: This property is sensitive and will not be displayed in the plan.
+
+        > **Warning:** `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead.
         """
-        warnings.warn("""Deprecated in favor of `pem_private_key`""", DeprecationWarning)
-        pulumi.log.warn("""private_key_pem is deprecated: Deprecated in favor of `pem_private_key`""")
+        warnings.warn("""`private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead.""", DeprecationWarning)
+        pulumi.log.warn("""private_key_pem is deprecated: `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead.""")
 
         return pulumi.get(self, "private_key_pem")
 
@@ -663,5 +674,141 @@ class DnsAuthorizationDnsResourceRecord(dict):
         Type of the DNS Resource Record.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class TrustConfigTrustStore(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "intermediateCas":
+            suggest = "intermediate_cas"
+        elif key == "trustAnchors":
+            suggest = "trust_anchors"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TrustConfigTrustStore. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TrustConfigTrustStore.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TrustConfigTrustStore.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 intermediate_cas: Optional[Sequence['outputs.TrustConfigTrustStoreIntermediateCa']] = None,
+                 trust_anchors: Optional[Sequence['outputs.TrustConfigTrustStoreTrustAnchor']] = None):
+        """
+        :param Sequence['TrustConfigTrustStoreIntermediateCaArgs'] intermediate_cas: Set of intermediate CA certificates used for the path building phase of chain validation.
+               The field is currently not supported if trust config is used for the workload certificate feature.
+               Structure is documented below.
+        :param Sequence['TrustConfigTrustStoreTrustAnchorArgs'] trust_anchors: List of Trust Anchors to be used while performing validation against a given TrustStore.
+               Structure is documented below.
+        """
+        if intermediate_cas is not None:
+            pulumi.set(__self__, "intermediate_cas", intermediate_cas)
+        if trust_anchors is not None:
+            pulumi.set(__self__, "trust_anchors", trust_anchors)
+
+    @property
+    @pulumi.getter(name="intermediateCas")
+    def intermediate_cas(self) -> Optional[Sequence['outputs.TrustConfigTrustStoreIntermediateCa']]:
+        """
+        Set of intermediate CA certificates used for the path building phase of chain validation.
+        The field is currently not supported if trust config is used for the workload certificate feature.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "intermediate_cas")
+
+    @property
+    @pulumi.getter(name="trustAnchors")
+    def trust_anchors(self) -> Optional[Sequence['outputs.TrustConfigTrustStoreTrustAnchor']]:
+        """
+        List of Trust Anchors to be used while performing validation against a given TrustStore.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "trust_anchors")
+
+
+@pulumi.output_type
+class TrustConfigTrustStoreIntermediateCa(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pemCertificate":
+            suggest = "pem_certificate"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TrustConfigTrustStoreIntermediateCa. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TrustConfigTrustStoreIntermediateCa.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TrustConfigTrustStoreIntermediateCa.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 pem_certificate: Optional[str] = None):
+        """
+        :param str pem_certificate: PEM intermediate certificate used for building up paths for validation.
+               Each certificate provided in PEM format may occupy up to 5kB.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        if pem_certificate is not None:
+            pulumi.set(__self__, "pem_certificate", pem_certificate)
+
+    @property
+    @pulumi.getter(name="pemCertificate")
+    def pem_certificate(self) -> Optional[str]:
+        """
+        PEM intermediate certificate used for building up paths for validation.
+        Each certificate provided in PEM format may occupy up to 5kB.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "pem_certificate")
+
+
+@pulumi.output_type
+class TrustConfigTrustStoreTrustAnchor(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pemCertificate":
+            suggest = "pem_certificate"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TrustConfigTrustStoreTrustAnchor. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TrustConfigTrustStoreTrustAnchor.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TrustConfigTrustStoreTrustAnchor.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 pem_certificate: Optional[str] = None):
+        """
+        :param str pem_certificate: PEM root certificate of the PKI used for validation.
+               Each certificate provided in PEM format may occupy up to 5kB.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        if pem_certificate is not None:
+            pulumi.set(__self__, "pem_certificate", pem_certificate)
+
+    @property
+    @pulumi.getter(name="pemCertificate")
+    def pem_certificate(self) -> Optional[str]:
+        """
+        PEM root certificate of the PKI used for validation.
+        Each certificate provided in PEM format may occupy up to 5kB.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "pem_certificate")
 
 

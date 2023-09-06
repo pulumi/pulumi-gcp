@@ -30,6 +30,7 @@ class ProviderArgs:
                  batching: Optional[pulumi.Input['ProviderBatchingArgs']] = None,
                  beyondcorp_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  big_query_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 biglake_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  bigquery_analytics_hub_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  bigquery_connection_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  bigquery_data_transfer_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -194,6 +195,8 @@ class ProviderArgs:
             pulumi.set(__self__, "beyondcorp_custom_endpoint", beyondcorp_custom_endpoint)
         if big_query_custom_endpoint is not None:
             pulumi.set(__self__, "big_query_custom_endpoint", big_query_custom_endpoint)
+        if biglake_custom_endpoint is not None:
+            pulumi.set(__self__, "biglake_custom_endpoint", biglake_custom_endpoint)
         if bigquery_analytics_hub_custom_endpoint is not None:
             pulumi.set(__self__, "bigquery_analytics_hub_custom_endpoint", bigquery_analytics_hub_custom_endpoint)
         if bigquery_connection_custom_endpoint is not None:
@@ -597,6 +600,15 @@ class ProviderArgs:
     @big_query_custom_endpoint.setter
     def big_query_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "big_query_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="biglakeCustomEndpoint")
+    def biglake_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "biglake_custom_endpoint")
+
+    @biglake_custom_endpoint.setter
+    def biglake_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "biglake_custom_endpoint", value)
 
     @property
     @pulumi.getter(name="bigqueryAnalyticsHubCustomEndpoint")
@@ -1798,6 +1810,7 @@ class Provider(pulumi.ProviderResource):
                  batching: Optional[pulumi.Input[pulumi.InputType['ProviderBatchingArgs']]] = None,
                  beyondcorp_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  big_query_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 biglake_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  bigquery_analytics_hub_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  bigquery_connection_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  bigquery_data_transfer_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1981,6 +1994,7 @@ class Provider(pulumi.ProviderResource):
                  batching: Optional[pulumi.Input[pulumi.InputType['ProviderBatchingArgs']]] = None,
                  beyondcorp_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  big_query_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 biglake_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  bigquery_analytics_hub_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  bigquery_connection_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  bigquery_data_transfer_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2136,6 +2150,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["batching"] = pulumi.Output.from_input(batching).apply(pulumi.runtime.to_json) if batching is not None else None
             __props__.__dict__["beyondcorp_custom_endpoint"] = beyondcorp_custom_endpoint
             __props__.__dict__["big_query_custom_endpoint"] = big_query_custom_endpoint
+            __props__.__dict__["biglake_custom_endpoint"] = biglake_custom_endpoint
             __props__.__dict__["bigquery_analytics_hub_custom_endpoint"] = bigquery_analytics_hub_custom_endpoint
             __props__.__dict__["bigquery_connection_custom_endpoint"] = bigquery_connection_custom_endpoint
             __props__.__dict__["bigquery_data_transfer_custom_endpoint"] = bigquery_data_transfer_custom_endpoint
@@ -2348,6 +2363,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="bigQueryCustomEndpoint")
     def big_query_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "big_query_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="biglakeCustomEndpoint")
+    def biglake_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "biglake_custom_endpoint")
 
     @property
     @pulumi.getter(name="bigqueryAnalyticsHubCustomEndpoint")

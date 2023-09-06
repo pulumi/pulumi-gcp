@@ -86,7 +86,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ObjectAccessControl can be imported using any of these accepted formats
+ * ObjectAccessControl can be imported using any of these accepted formats:
  * 
  * ```sh
  *  $ pulumi import gcp:storage/objectAccessControl:ObjectAccessControl default {{bucket}}/{{object}}/{{entity}}

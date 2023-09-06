@@ -20,7 +20,7 @@ import (
 //
 // ## Import
 //
-// # AccessBoundaryPolicy can be imported using any of these accepted formats
+// AccessBoundaryPolicy can be imported using any of these accepted formats:
 //
 // ```sh
 //

@@ -54,11 +54,9 @@ import javax.annotation.Nullable;
  * ```sh
  *  $ pulumi import gcp:runtimeconfig/config:Config myconfig myconfig
  * ```
- * 
  * ```sh
- *  $ pulumi import gcp:runtimeconfig/config:Config myconfig projects/my-gcp-project/configs/myconfig
+ * $ pulumi import gcp:runtimeconfig/config:Config myconfig projects/my-gcp-project/configs/myconfig
  * ```
- * 
  *  When importing using only the name, the provider project must be set.
  * 
  */

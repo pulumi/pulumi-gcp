@@ -35,6 +35,7 @@ export interface GetAndroidAppArgs {
  * A collection of values returned by getAndroidApp.
  */
 export interface GetAndroidAppResult {
+    readonly apiKeyId: string;
     /**
      * Immutable. The globally unique, Firebase-assigned identifier of the AndroidApp.
      * This identifier should be treated as an opaque token, as the data format is not specified.

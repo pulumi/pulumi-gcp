@@ -117,7 +117,7 @@ import (
 //
 // ## Import
 //
-// # MetricDescriptor can be imported using any of these accepted formats
+// MetricDescriptor can be imported using any of these accepted formats:
 //
 // ```sh
 //

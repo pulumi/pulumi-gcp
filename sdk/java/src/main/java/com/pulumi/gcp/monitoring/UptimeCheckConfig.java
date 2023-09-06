@@ -14,6 +14,7 @@ import com.pulumi.gcp.monitoring.outputs.UptimeCheckConfigContentMatcher;
 import com.pulumi.gcp.monitoring.outputs.UptimeCheckConfigHttpCheck;
 import com.pulumi.gcp.monitoring.outputs.UptimeCheckConfigMonitoredResource;
 import com.pulumi.gcp.monitoring.outputs.UptimeCheckConfigResourceGroup;
+import com.pulumi.gcp.monitoring.outputs.UptimeCheckConfigSyntheticMonitor;
 import com.pulumi.gcp.monitoring.outputs.UptimeCheckConfigTcpCheck;
 import java.lang.String;
 import java.util.List;
@@ -258,10 +259,87 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Uptime Check Config Synthetic Monitor
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.storage.BucketObject;
+ * import com.pulumi.gcp.storage.BucketObjectArgs;
+ * import com.pulumi.gcp.cloudfunctionsv2.Function;
+ * import com.pulumi.gcp.cloudfunctionsv2.FunctionArgs;
+ * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigArgs;
+ * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceArgs;
+ * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionBuildConfigSourceStorageSourceArgs;
+ * import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigArgs;
+ * import com.pulumi.gcp.monitoring.UptimeCheckConfig;
+ * import com.pulumi.gcp.monitoring.UptimeCheckConfigArgs;
+ * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigSyntheticMonitorArgs;
+ * import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args;
+ * import com.pulumi.asset.FileAsset;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var bucket = new Bucket(&#34;bucket&#34;, BucketArgs.builder()        
+ *             .location(&#34;US&#34;)
+ *             .uniformBucketLevelAccess(true)
+ *             .build());
+ * 
+ *         var object = new BucketObject(&#34;object&#34;, BucketObjectArgs.builder()        
+ *             .bucket(bucket.name())
+ *             .source(new FileAsset(&#34;synthetic-fn-source.zip&#34;))
+ *             .build());
+ * 
+ *         var function = new Function(&#34;function&#34;, FunctionArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .buildConfig(FunctionBuildConfigArgs.builder()
+ *                 .runtime(&#34;nodejs16&#34;)
+ *                 .entryPoint(&#34;SyntheticFunction&#34;)
+ *                 .source(FunctionBuildConfigSourceArgs.builder()
+ *                     .storageSource(FunctionBuildConfigSourceStorageSourceArgs.builder()
+ *                         .bucket(bucket.name())
+ *                         .object(object.name())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .serviceConfig(FunctionServiceConfigArgs.builder()
+ *                 .maxInstanceCount(1)
+ *                 .availableMemory(&#34;256M&#34;)
+ *                 .timeoutSeconds(60)
+ *                 .build())
+ *             .build());
+ * 
+ *         var syntheticMonitor = new UptimeCheckConfig(&#34;syntheticMonitor&#34;, UptimeCheckConfigArgs.builder()        
+ *             .displayName(&#34;synthetic_monitor&#34;)
+ *             .timeout(&#34;60s&#34;)
+ *             .syntheticMonitor(UptimeCheckConfigSyntheticMonitorArgs.builder()
+ *                 .cloudFunctionV2(UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args.builder()
+ *                     .name(function.id())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
- * UptimeCheckConfig can be imported using any of these accepted formats
+ * UptimeCheckConfig can be imported using any of these accepted formats:
  * 
  * ```sh
  *  $ pulumi import gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig default {{name}}
@@ -349,14 +427,14 @@ public class UptimeCheckConfig extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.monitoredResource);
     }
     /**
-     * A unique resource name for this UptimeCheckConfig. The format is projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
+     * The fully qualified name of the cloud function resource.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return A unique resource name for this UptimeCheckConfig. The format is projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
+     * @return The fully qualified name of the cloud function resource.
      * 
      */
     public Output<String> name() {
@@ -421,6 +499,22 @@ public class UptimeCheckConfig extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<String>>> selectedRegions() {
         return Codegen.optional(this.selectedRegions);
+    }
+    /**
+     * A Synthetic Monitor deployed to a Cloud Functions V2 instance.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="syntheticMonitor", type=UptimeCheckConfigSyntheticMonitor.class, parameters={})
+    private Output</* @Nullable */ UptimeCheckConfigSyntheticMonitor> syntheticMonitor;
+
+    /**
+     * @return A Synthetic Monitor deployed to a Cloud Functions V2 instance.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<UptimeCheckConfigSyntheticMonitor>> syntheticMonitor() {
+        return Codegen.optional(this.syntheticMonitor);
     }
     /**
      * Contains information needed to make a TCP check.

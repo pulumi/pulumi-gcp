@@ -193,7 +193,9 @@ export class Instance extends pulumi.CustomResource {
      * (Optional, Deprecated)
      * The name of the Filestore zone of the instance.
      *
-     * @deprecated Deprecated in favor of location.
+     * > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
+     *
+     * @deprecated `zone` is deprecated and will be removed in a future major release. Use `location` instead.
      */
     public readonly zone!: pulumi.Output<string>;
 
@@ -310,7 +312,9 @@ export interface InstanceState {
      * (Optional, Deprecated)
      * The name of the Filestore zone of the instance.
      *
-     * @deprecated Deprecated in favor of location.
+     * > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
+     *
+     * @deprecated `zone` is deprecated and will be removed in a future major release. Use `location` instead.
      */
     zone?: pulumi.Input<string>;
 }
@@ -365,7 +369,9 @@ export interface InstanceArgs {
      * (Optional, Deprecated)
      * The name of the Filestore zone of the instance.
      *
-     * @deprecated Deprecated in favor of location.
+     * > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
+     *
+     * @deprecated `zone` is deprecated and will be removed in a future major release. Use `location` instead.
      */
     zone?: pulumi.Input<string>;
 }

@@ -11,6 +11,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAppleAppResult {
+    private String apiKeyId;
     /**
      * @return Immutable. The globally unique, Firebase-assigned identifier of the App.
      * This identifier should be treated as an opaque token, as the data format is not specified.
@@ -52,6 +53,9 @@ public final class GetAppleAppResult {
     private String teamId;
 
     private GetAppleAppResult() {}
+    public String apiKeyId() {
+        return this.apiKeyId;
+    }
     /**
      * @return Immutable. The globally unique, Firebase-assigned identifier of the App.
      * This identifier should be treated as an opaque token, as the data format is not specified.
@@ -119,6 +123,7 @@ public final class GetAppleAppResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String apiKeyId;
         private String appId;
         private String appStoreId;
         private String bundleId;
@@ -131,6 +136,7 @@ public final class GetAppleAppResult {
         public Builder() {}
         public Builder(GetAppleAppResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.apiKeyId = defaults.apiKeyId;
     	      this.appId = defaults.appId;
     	      this.appStoreId = defaults.appStoreId;
     	      this.bundleId = defaults.bundleId;
@@ -142,6 +148,11 @@ public final class GetAppleAppResult {
     	      this.teamId = defaults.teamId;
         }
 
+        @CustomType.Setter
+        public Builder apiKeyId(String apiKeyId) {
+            this.apiKeyId = Objects.requireNonNull(apiKeyId);
+            return this;
+        }
         @CustomType.Setter
         public Builder appId(String appId) {
             this.appId = Objects.requireNonNull(appId);
@@ -189,6 +200,7 @@ public final class GetAppleAppResult {
         }
         public GetAppleAppResult build() {
             final var o = new GetAppleAppResult();
+            o.apiKeyId = apiKeyId;
             o.appId = appId;
             o.appStoreId = appStoreId;
             o.bundleId = bundleId;

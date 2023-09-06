@@ -205,6 +205,10 @@ import (
 //					WebSsoConfig: &iam.WorkforcePoolProviderOidcWebSsoConfigArgs{
 //						ResponseType:            pulumi.String("CODE"),
 //						AssertionClaimsBehavior: pulumi.String("MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS"),
+//						AdditionalScopes: pulumi.StringArray{
+//							pulumi.String("groups"),
+//							pulumi.String("roles"),
+//						},
 //					},
 //				},
 //				DisplayName:        pulumi.String("Display name"),

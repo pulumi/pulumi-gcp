@@ -40,7 +40,7 @@ import (
 //					Resource: pulumi.String("//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare"),
 //				},
 //				DataProfileSpec: nil,
-//				DataScanId:      pulumi.String("tf-test-datascan%{random_suffix}"),
+//				DataScanId:      pulumi.String("dataprofile-basic"),
 //				ExecutionSpec: &dataplex.DatascanExecutionSpecArgs{
 //					Trigger: &dataplex.DatascanExecutionSpecTriggerArgs{
 //						OnDemand: nil,
@@ -64,6 +64,7 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/bigquery"
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataplex"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -71,17 +72,27 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dataplex.NewDatascan(ctx, "fullProfile", &dataplex.DatascanArgs{
+//			source, err := bigquery.NewDataset(ctx, "source", &bigquery.DatasetArgs{
+//				DatasetId:               pulumi.String("dataplex_dataset"),
+//				FriendlyName:            pulumi.String("test"),
+//				Description:             pulumi.String("This is a test description"),
+//				Location:                pulumi.String("US"),
+//				DeleteContentsOnDestroy: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dataplex.NewDatascan(ctx, "fullProfile", &dataplex.DatascanArgs{
+//				Location:    pulumi.String("us-central1"),
+//				DisplayName: pulumi.String("Full Datascan Profile"),
+//				DataScanId:  pulumi.String("dataprofile-full"),
+//				Description: pulumi.String("Example resource - Full Datascan Profile"),
+//				Labels: pulumi.StringMap{
+//					"author": pulumi.String("billing"),
+//				},
 //				Data: &dataplex.DatascanDataArgs{
 //					Resource: pulumi.String("//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare"),
 //				},
-//				DataProfileSpec: &dataplex.DatascanDataProfileSpecArgs{
-//					RowFilter:       pulumi.String("word_count > 10"),
-//					SamplingPercent: pulumi.Float64(80),
-//				},
-//				DataScanId:  pulumi.String("tf-test-datascan%{random_suffix}"),
-//				Description: pulumi.String("Example resource - Full Datascan Profile"),
-//				DisplayName: pulumi.String("Full Datascan Profile"),
 //				ExecutionSpec: &dataplex.DatascanExecutionSpecArgs{
 //					Trigger: &dataplex.DatascanExecutionSpecTriggerArgs{
 //						Schedule: &dataplex.DatascanExecutionSpecTriggerScheduleArgs{
@@ -89,12 +100,29 @@ import (
 //						},
 //					},
 //				},
-//				Labels: pulumi.StringMap{
-//					"author": pulumi.String("billing"),
+//				DataProfileSpec: &dataplex.DatascanDataProfileSpecArgs{
+//					SamplingPercent: pulumi.Float64(80),
+//					RowFilter:       pulumi.String("word_count > 10"),
+//					IncludeFields: &dataplex.DatascanDataProfileSpecIncludeFieldsArgs{
+//						FieldNames: pulumi.StringArray{
+//							pulumi.String("word_count"),
+//						},
+//					},
+//					ExcludeFields: &dataplex.DatascanDataProfileSpecExcludeFieldsArgs{
+//						FieldNames: pulumi.StringArray{
+//							pulumi.String("property_type"),
+//						},
+//					},
+//					PostScanActions: &dataplex.DatascanDataProfileSpecPostScanActionsArgs{
+//						BigqueryExport: &dataplex.DatascanDataProfileSpecPostScanActionsBigqueryExportArgs{
+//							ResultsTable: pulumi.String("//bigquery.googleapis.com/projects/my-project-name/datasets/dataplex_dataset/tables/profile_export"),
+//						},
+//					},
 //				},
-//				Location: pulumi.String("us-central1"),
-//				Project:  pulumi.String("my-project-name"),
-//			})
+//				Project: pulumi.String("my-project-name"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				source,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -124,14 +152,16 @@ import (
 //				DataQualitySpec: &dataplex.DatascanDataQualitySpecArgs{
 //					Rules: dataplex.DatascanDataQualitySpecRuleArray{
 //						&dataplex.DatascanDataQualitySpecRuleArgs{
-//							Dimension: pulumi.String("VALIDITY"),
+//							Description: pulumi.String("rule 1 for validity dimension"),
+//							Dimension:   pulumi.String("VALIDITY"),
+//							Name:        pulumi.String("rule1"),
 //							TableConditionExpectation: &dataplex.DatascanDataQualitySpecRuleTableConditionExpectationArgs{
 //								SqlExpression: pulumi.String("COUNT(*) > 0"),
 //							},
 //						},
 //					},
 //				},
-//				DataScanId: pulumi.String("tf-test-datascan%{random_suffix}"),
+//				DataScanId: pulumi.String("dataquality-basic"),
 //				ExecutionSpec: &dataplex.DatascanExecutionSpecArgs{
 //					Trigger: &dataplex.DatascanExecutionSpecTriggerArgs{
 //						OnDemand: nil,
@@ -238,7 +268,7 @@ import (
 //					},
 //					SamplingPercent: pulumi.Float64(5),
 //				},
-//				DataScanId:  pulumi.String("tf-test-datascan%{random_suffix}"),
+//				DataScanId:  pulumi.String("dataquality-full"),
 //				Description: pulumi.String("Example resource - Full Datascan Quality"),
 //				DisplayName: pulumi.String("Full Datascan Quality"),
 //				ExecutionSpec: &dataplex.DatascanExecutionSpecArgs{
@@ -299,14 +329,20 @@ type Datascan struct {
 	// The data source for DataScan.
 	// Structure is documented below.
 	Data DatascanDataOutput `pulumi:"data"`
+	// (Deprecated)
 	// The result of the data profile scan.
 	// Structure is documented below.
+	//
+	// Deprecated: `data_profile_result` is deprecated and will be removed in a future major release.
 	DataProfileResults DatascanDataProfileResultArrayOutput `pulumi:"dataProfileResults"`
 	// DataProfileScan related setting.
 	// Structure is documented below.
 	DataProfileSpec DatascanDataProfileSpecPtrOutput `pulumi:"dataProfileSpec"`
+	// (Deprecated)
 	// The result of the data quality scan.
 	// Structure is documented below.
+	//
+	// Deprecated: `data_quality_result` is deprecated and will be removed in a future major release.
 	DataQualityResults DatascanDataQualityResultArrayOutput `pulumi:"dataQualityResults"`
 	// DataQualityScan related setting.
 	// Structure is documented below.
@@ -314,6 +350,10 @@ type Datascan struct {
 	// DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
 	DataScanId pulumi.StringOutput `pulumi:"dataScanId"`
 	// Description of the scan.
+	//
+	// (Optional)
+	// Description of the rule.
+	// The maximum length is 1,024 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// User friendly display name.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
@@ -327,7 +367,11 @@ type Datascan struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location where the data scan should reside.
 	Location pulumi.StringOutput `pulumi:"location"`
-	// The name of the field.
+	// A mutable name for the rule.
+	// The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+	// The maximum length is 63 characters.
+	// Must start with a letter.
+	// Must end with a number or a letter.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -389,14 +433,20 @@ type datascanState struct {
 	// The data source for DataScan.
 	// Structure is documented below.
 	Data *DatascanData `pulumi:"data"`
+	// (Deprecated)
 	// The result of the data profile scan.
 	// Structure is documented below.
+	//
+	// Deprecated: `data_profile_result` is deprecated and will be removed in a future major release.
 	DataProfileResults []DatascanDataProfileResult `pulumi:"dataProfileResults"`
 	// DataProfileScan related setting.
 	// Structure is documented below.
 	DataProfileSpec *DatascanDataProfileSpec `pulumi:"dataProfileSpec"`
+	// (Deprecated)
 	// The result of the data quality scan.
 	// Structure is documented below.
+	//
+	// Deprecated: `data_quality_result` is deprecated and will be removed in a future major release.
 	DataQualityResults []DatascanDataQualityResult `pulumi:"dataQualityResults"`
 	// DataQualityScan related setting.
 	// Structure is documented below.
@@ -404,6 +454,10 @@ type datascanState struct {
 	// DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
 	DataScanId *string `pulumi:"dataScanId"`
 	// Description of the scan.
+	//
+	// (Optional)
+	// Description of the rule.
+	// The maximum length is 1,024 characters.
 	Description *string `pulumi:"description"`
 	// User friendly display name.
 	DisplayName *string `pulumi:"displayName"`
@@ -417,7 +471,11 @@ type datascanState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the data scan should reside.
 	Location *string `pulumi:"location"`
-	// The name of the field.
+	// A mutable name for the rule.
+	// The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+	// The maximum length is 63 characters.
+	// Must start with a letter.
+	// Must end with a number or a letter.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -438,14 +496,20 @@ type DatascanState struct {
 	// The data source for DataScan.
 	// Structure is documented below.
 	Data DatascanDataPtrInput
+	// (Deprecated)
 	// The result of the data profile scan.
 	// Structure is documented below.
+	//
+	// Deprecated: `data_profile_result` is deprecated and will be removed in a future major release.
 	DataProfileResults DatascanDataProfileResultArrayInput
 	// DataProfileScan related setting.
 	// Structure is documented below.
 	DataProfileSpec DatascanDataProfileSpecPtrInput
+	// (Deprecated)
 	// The result of the data quality scan.
 	// Structure is documented below.
+	//
+	// Deprecated: `data_quality_result` is deprecated and will be removed in a future major release.
 	DataQualityResults DatascanDataQualityResultArrayInput
 	// DataQualityScan related setting.
 	// Structure is documented below.
@@ -453,6 +517,10 @@ type DatascanState struct {
 	// DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
 	DataScanId pulumi.StringPtrInput
 	// Description of the scan.
+	//
+	// (Optional)
+	// Description of the rule.
+	// The maximum length is 1,024 characters.
 	Description pulumi.StringPtrInput
 	// User friendly display name.
 	DisplayName pulumi.StringPtrInput
@@ -466,7 +534,11 @@ type DatascanState struct {
 	Labels pulumi.StringMapInput
 	// The location where the data scan should reside.
 	Location pulumi.StringPtrInput
-	// The name of the field.
+	// A mutable name for the rule.
+	// The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+	// The maximum length is 63 characters.
+	// Must start with a letter.
+	// Must end with a number or a letter.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -498,6 +570,10 @@ type datascanArgs struct {
 	// DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
 	DataScanId string `pulumi:"dataScanId"`
 	// Description of the scan.
+	//
+	// (Optional)
+	// Description of the rule.
+	// The maximum length is 1,024 characters.
 	Description *string `pulumi:"description"`
 	// User friendly display name.
 	DisplayName *string `pulumi:"displayName"`
@@ -527,6 +603,10 @@ type DatascanArgs struct {
 	// DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
 	DataScanId pulumi.StringInput
 	// Description of the scan.
+	//
+	// (Optional)
+	// Description of the rule.
+	// The maximum length is 1,024 characters.
 	Description pulumi.StringPtrInput
 	// User friendly display name.
 	DisplayName pulumi.StringPtrInput
@@ -640,8 +720,11 @@ func (o DatascanOutput) Data() DatascanDataOutput {
 	return o.ApplyT(func(v *Datascan) DatascanDataOutput { return v.Data }).(DatascanDataOutput)
 }
 
+// (Deprecated)
 // The result of the data profile scan.
 // Structure is documented below.
+//
+// Deprecated: `data_profile_result` is deprecated and will be removed in a future major release.
 func (o DatascanOutput) DataProfileResults() DatascanDataProfileResultArrayOutput {
 	return o.ApplyT(func(v *Datascan) DatascanDataProfileResultArrayOutput { return v.DataProfileResults }).(DatascanDataProfileResultArrayOutput)
 }
@@ -652,8 +735,11 @@ func (o DatascanOutput) DataProfileSpec() DatascanDataProfileSpecPtrOutput {
 	return o.ApplyT(func(v *Datascan) DatascanDataProfileSpecPtrOutput { return v.DataProfileSpec }).(DatascanDataProfileSpecPtrOutput)
 }
 
+// (Deprecated)
 // The result of the data quality scan.
 // Structure is documented below.
+//
+// Deprecated: `data_quality_result` is deprecated and will be removed in a future major release.
 func (o DatascanOutput) DataQualityResults() DatascanDataQualityResultArrayOutput {
 	return o.ApplyT(func(v *Datascan) DatascanDataQualityResultArrayOutput { return v.DataQualityResults }).(DatascanDataQualityResultArrayOutput)
 }
@@ -670,6 +756,10 @@ func (o DatascanOutput) DataScanId() pulumi.StringOutput {
 }
 
 // Description of the scan.
+//
+// (Optional)
+// Description of the rule.
+// The maximum length is 1,024 characters.
 func (o DatascanOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Datascan) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -701,7 +791,11 @@ func (o DatascanOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Datascan) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// The name of the field.
+// A mutable name for the rule.
+// The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+// The maximum length is 63 characters.
+// Must start with a letter.
+// Must end with a number or a letter.
 func (o DatascanOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Datascan) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

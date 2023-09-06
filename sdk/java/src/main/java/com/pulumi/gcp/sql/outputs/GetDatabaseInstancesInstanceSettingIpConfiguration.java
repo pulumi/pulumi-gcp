@@ -5,6 +5,7 @@ package com.pulumi.gcp.sql.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork;
+import com.pulumi.gcp.sql.outputs.GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -17,6 +18,7 @@ public final class GetDatabaseInstancesInstanceSettingIpConfiguration {
     private Boolean enablePrivatePathForGoogleCloudServices;
     private Boolean ipv4Enabled;
     private String privateNetwork;
+    private List<GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig> pscConfigs;
     private Boolean requireSsl;
 
     private GetDatabaseInstancesInstanceSettingIpConfiguration() {}
@@ -34,6 +36,9 @@ public final class GetDatabaseInstancesInstanceSettingIpConfiguration {
     }
     public String privateNetwork() {
         return this.privateNetwork;
+    }
+    public List<GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig> pscConfigs() {
+        return this.pscConfigs;
     }
     public Boolean requireSsl() {
         return this.requireSsl;
@@ -53,6 +58,7 @@ public final class GetDatabaseInstancesInstanceSettingIpConfiguration {
         private Boolean enablePrivatePathForGoogleCloudServices;
         private Boolean ipv4Enabled;
         private String privateNetwork;
+        private List<GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig> pscConfigs;
         private Boolean requireSsl;
         public Builder() {}
         public Builder(GetDatabaseInstancesInstanceSettingIpConfiguration defaults) {
@@ -62,6 +68,7 @@ public final class GetDatabaseInstancesInstanceSettingIpConfiguration {
     	      this.enablePrivatePathForGoogleCloudServices = defaults.enablePrivatePathForGoogleCloudServices;
     	      this.ipv4Enabled = defaults.ipv4Enabled;
     	      this.privateNetwork = defaults.privateNetwork;
+    	      this.pscConfigs = defaults.pscConfigs;
     	      this.requireSsl = defaults.requireSsl;
         }
 
@@ -94,6 +101,14 @@ public final class GetDatabaseInstancesInstanceSettingIpConfiguration {
             return this;
         }
         @CustomType.Setter
+        public Builder pscConfigs(List<GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig> pscConfigs) {
+            this.pscConfigs = Objects.requireNonNull(pscConfigs);
+            return this;
+        }
+        public Builder pscConfigs(GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig... pscConfigs) {
+            return pscConfigs(List.of(pscConfigs));
+        }
+        @CustomType.Setter
         public Builder requireSsl(Boolean requireSsl) {
             this.requireSsl = Objects.requireNonNull(requireSsl);
             return this;
@@ -105,6 +120,7 @@ public final class GetDatabaseInstancesInstanceSettingIpConfiguration {
             o.enablePrivatePathForGoogleCloudServices = enablePrivatePathForGoogleCloudServices;
             o.ipv4Enabled = ipv4Enabled;
             o.privateNetwork = privateNetwork;
+            o.pscConfigs = pscConfigs;
             o.requireSsl = requireSsl;
             return o;
         }

@@ -6,6 +6,7 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .app_profile import *
+from .bi_reservation import *
 from .capacity_commitment import *
 from .connection import *
 from .connection_iam_binding import *

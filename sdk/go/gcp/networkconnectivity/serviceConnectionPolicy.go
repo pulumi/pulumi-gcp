@@ -120,7 +120,8 @@ type ServiceConnectionPolicy struct {
 	// Structure is documented below.
 	PscConfig ServiceConnectionPolicyPscConfigPtrOutput `pulumi:"pscConfig"`
 	// Information about each Private Service Connect connection.
-	PscConnections pulumi.StringArrayOutput `pulumi:"pscConnections"`
+	// Structure is documented below.
+	PscConnections ServiceConnectionPolicyPscConnectionArrayOutput `pulumi:"pscConnections"`
 	// The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass.
 	// It is provided by the Service Producer. Google services have a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
 	ServiceClass pulumi.StringOutput `pulumi:"serviceClass"`
@@ -192,7 +193,8 @@ type serviceConnectionPolicyState struct {
 	// Structure is documented below.
 	PscConfig *ServiceConnectionPolicyPscConfig `pulumi:"pscConfig"`
 	// Information about each Private Service Connect connection.
-	PscConnections []string `pulumi:"pscConnections"`
+	// Structure is documented below.
+	PscConnections []ServiceConnectionPolicyPscConnection `pulumi:"pscConnections"`
 	// The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass.
 	// It is provided by the Service Producer. Google services have a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
 	ServiceClass *string `pulumi:"serviceClass"`
@@ -226,7 +228,8 @@ type ServiceConnectionPolicyState struct {
 	// Structure is documented below.
 	PscConfig ServiceConnectionPolicyPscConfigPtrInput
 	// Information about each Private Service Connect connection.
-	PscConnections pulumi.StringArrayInput
+	// Structure is documented below.
+	PscConnections ServiceConnectionPolicyPscConnectionArrayInput
 	// The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass.
 	// It is provided by the Service Producer. Google services have a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
 	ServiceClass pulumi.StringPtrInput
@@ -429,8 +432,11 @@ func (o ServiceConnectionPolicyOutput) PscConfig() ServiceConnectionPolicyPscCon
 }
 
 // Information about each Private Service Connect connection.
-func (o ServiceConnectionPolicyOutput) PscConnections() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ServiceConnectionPolicy) pulumi.StringArrayOutput { return v.PscConnections }).(pulumi.StringArrayOutput)
+// Structure is documented below.
+func (o ServiceConnectionPolicyOutput) PscConnections() ServiceConnectionPolicyPscConnectionArrayOutput {
+	return o.ApplyT(func(v *ServiceConnectionPolicy) ServiceConnectionPolicyPscConnectionArrayOutput {
+		return v.PscConnections
+	}).(ServiceConnectionPolicyPscConnectionArrayOutput)
 }
 
 // The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass.

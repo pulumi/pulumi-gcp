@@ -226,10 +226,78 @@ import (
 //	}
 //
 // ```
+// ### Uptime Check Config Synthetic Monitor
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudfunctionsv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/monitoring"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Location:                 pulumi.String("US"),
+//				UniformBucketLevelAccess: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			object, err := storage.NewBucketObject(ctx, "object", &storage.BucketObjectArgs{
+//				Bucket: bucket.Name,
+//				Source: pulumi.NewFileAsset("synthetic-fn-source.zip"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			function, err := cloudfunctionsv2.NewFunction(ctx, "function", &cloudfunctionsv2.FunctionArgs{
+//				Location: pulumi.String("us-central1"),
+//				BuildConfig: &cloudfunctionsv2.FunctionBuildConfigArgs{
+//					Runtime:    pulumi.String("nodejs16"),
+//					EntryPoint: pulumi.String("SyntheticFunction"),
+//					Source: &cloudfunctionsv2.FunctionBuildConfigSourceArgs{
+//						StorageSource: &cloudfunctionsv2.FunctionBuildConfigSourceStorageSourceArgs{
+//							Bucket: bucket.Name,
+//							Object: object.Name,
+//						},
+//					},
+//				},
+//				ServiceConfig: &cloudfunctionsv2.FunctionServiceConfigArgs{
+//					MaxInstanceCount: pulumi.Int(1),
+//					AvailableMemory:  pulumi.String("256M"),
+//					TimeoutSeconds:   pulumi.Int(60),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = monitoring.NewUptimeCheckConfig(ctx, "syntheticMonitor", &monitoring.UptimeCheckConfigArgs{
+//				DisplayName: pulumi.String("synthetic_monitor"),
+//				Timeout:     pulumi.String("60s"),
+//				SyntheticMonitor: &monitoring.UptimeCheckConfigSyntheticMonitorArgs{
+//					CloudFunctionV2: &monitoring.UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args{
+//						Name: function.ID(),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
-// # UptimeCheckConfig can be imported using any of these accepted formats
+// UptimeCheckConfig can be imported using any of these accepted formats:
 //
 // ```sh
 //
@@ -253,7 +321,7 @@ type UptimeCheckConfig struct {
 	// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptimeUrl  gceInstance  gaeApp  awsEc2Instance aws_elb_load_balancer  k8sService  servicedirectoryService
 	// Structure is documented below.
 	MonitoredResource UptimeCheckConfigMonitoredResourcePtrOutput `pulumi:"monitoredResource"`
-	// A unique resource name for this UptimeCheckConfig. The format is projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
+	// The fully qualified name of the cloud function resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// How often, in seconds, the uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 300s.
 	Period pulumi.StringPtrOutput `pulumi:"period"`
@@ -265,6 +333,9 @@ type UptimeCheckConfig struct {
 	ResourceGroup UptimeCheckConfigResourceGroupPtrOutput `pulumi:"resourceGroup"`
 	// The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions to include a minimum of 3 locations must be provided, or an error message is returned. Not specifying this field will result in uptime checks running from all regions.
 	SelectedRegions pulumi.StringArrayOutput `pulumi:"selectedRegions"`
+	// A Synthetic Monitor deployed to a Cloud Functions V2 instance.
+	// Structure is documented below.
+	SyntheticMonitor UptimeCheckConfigSyntheticMonitorPtrOutput `pulumi:"syntheticMonitor"`
 	// Contains information needed to make a TCP check.
 	// Structure is documented below.
 	TcpCheck UptimeCheckConfigTcpCheckPtrOutput `pulumi:"tcpCheck"`
@@ -326,7 +397,7 @@ type uptimeCheckConfigState struct {
 	// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptimeUrl  gceInstance  gaeApp  awsEc2Instance aws_elb_load_balancer  k8sService  servicedirectoryService
 	// Structure is documented below.
 	MonitoredResource *UptimeCheckConfigMonitoredResource `pulumi:"monitoredResource"`
-	// A unique resource name for this UptimeCheckConfig. The format is projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
+	// The fully qualified name of the cloud function resource.
 	Name *string `pulumi:"name"`
 	// How often, in seconds, the uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 300s.
 	Period *string `pulumi:"period"`
@@ -338,6 +409,9 @@ type uptimeCheckConfigState struct {
 	ResourceGroup *UptimeCheckConfigResourceGroup `pulumi:"resourceGroup"`
 	// The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions to include a minimum of 3 locations must be provided, or an error message is returned. Not specifying this field will result in uptime checks running from all regions.
 	SelectedRegions []string `pulumi:"selectedRegions"`
+	// A Synthetic Monitor deployed to a Cloud Functions V2 instance.
+	// Structure is documented below.
+	SyntheticMonitor *UptimeCheckConfigSyntheticMonitor `pulumi:"syntheticMonitor"`
 	// Contains information needed to make a TCP check.
 	// Structure is documented below.
 	TcpCheck *UptimeCheckConfigTcpCheck `pulumi:"tcpCheck"`
@@ -364,7 +438,7 @@ type UptimeCheckConfigState struct {
 	// The monitored resource (https://cloud.google.com/monitoring/api/resources) associated with the configuration. The following monitored resource types are supported for uptime checks:  uptimeUrl  gceInstance  gaeApp  awsEc2Instance aws_elb_load_balancer  k8sService  servicedirectoryService
 	// Structure is documented below.
 	MonitoredResource UptimeCheckConfigMonitoredResourcePtrInput
-	// A unique resource name for this UptimeCheckConfig. The format is projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
+	// The fully qualified name of the cloud function resource.
 	Name pulumi.StringPtrInput
 	// How often, in seconds, the uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 300s.
 	Period pulumi.StringPtrInput
@@ -376,6 +450,9 @@ type UptimeCheckConfigState struct {
 	ResourceGroup UptimeCheckConfigResourceGroupPtrInput
 	// The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions to include a minimum of 3 locations must be provided, or an error message is returned. Not specifying this field will result in uptime checks running from all regions.
 	SelectedRegions pulumi.StringArrayInput
+	// A Synthetic Monitor deployed to a Cloud Functions V2 instance.
+	// Structure is documented below.
+	SyntheticMonitor UptimeCheckConfigSyntheticMonitorPtrInput
 	// Contains information needed to make a TCP check.
 	// Structure is documented below.
 	TcpCheck UptimeCheckConfigTcpCheckPtrInput
@@ -416,6 +493,9 @@ type uptimeCheckConfigArgs struct {
 	ResourceGroup *UptimeCheckConfigResourceGroup `pulumi:"resourceGroup"`
 	// The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions to include a minimum of 3 locations must be provided, or an error message is returned. Not specifying this field will result in uptime checks running from all regions.
 	SelectedRegions []string `pulumi:"selectedRegions"`
+	// A Synthetic Monitor deployed to a Cloud Functions V2 instance.
+	// Structure is documented below.
+	SyntheticMonitor *UptimeCheckConfigSyntheticMonitor `pulumi:"syntheticMonitor"`
 	// Contains information needed to make a TCP check.
 	// Structure is documented below.
 	TcpCheck *UptimeCheckConfigTcpCheck `pulumi:"tcpCheck"`
@@ -451,6 +531,9 @@ type UptimeCheckConfigArgs struct {
 	ResourceGroup UptimeCheckConfigResourceGroupPtrInput
 	// The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions to include a minimum of 3 locations must be provided, or an error message is returned. Not specifying this field will result in uptime checks running from all regions.
 	SelectedRegions pulumi.StringArrayInput
+	// A Synthetic Monitor deployed to a Cloud Functions V2 instance.
+	// Structure is documented below.
+	SyntheticMonitor UptimeCheckConfigSyntheticMonitorPtrInput
 	// Contains information needed to make a TCP check.
 	// Structure is documented below.
 	TcpCheck UptimeCheckConfigTcpCheckPtrInput
@@ -576,7 +659,7 @@ func (o UptimeCheckConfigOutput) MonitoredResource() UptimeCheckConfigMonitoredR
 	return o.ApplyT(func(v *UptimeCheckConfig) UptimeCheckConfigMonitoredResourcePtrOutput { return v.MonitoredResource }).(UptimeCheckConfigMonitoredResourcePtrOutput)
 }
 
-// A unique resource name for this UptimeCheckConfig. The format is projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
+// The fully qualified name of the cloud function resource.
 func (o UptimeCheckConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *UptimeCheckConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -601,6 +684,12 @@ func (o UptimeCheckConfigOutput) ResourceGroup() UptimeCheckConfigResourceGroupP
 // The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions to include a minimum of 3 locations must be provided, or an error message is returned. Not specifying this field will result in uptime checks running from all regions.
 func (o UptimeCheckConfigOutput) SelectedRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *UptimeCheckConfig) pulumi.StringArrayOutput { return v.SelectedRegions }).(pulumi.StringArrayOutput)
+}
+
+// A Synthetic Monitor deployed to a Cloud Functions V2 instance.
+// Structure is documented below.
+func (o UptimeCheckConfigOutput) SyntheticMonitor() UptimeCheckConfigSyntheticMonitorPtrOutput {
+	return o.ApplyT(func(v *UptimeCheckConfig) UptimeCheckConfigSyntheticMonitorPtrOutput { return v.SyntheticMonitor }).(UptimeCheckConfigSyntheticMonitorPtrOutput)
 }
 
 // Contains information needed to make a TCP check.

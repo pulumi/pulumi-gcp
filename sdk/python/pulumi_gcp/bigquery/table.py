@@ -58,14 +58,8 @@ class TableArgs:
                if it were a standard BigQuery table. Structure is documented below.
         :param pulumi.Input[str] friendly_name: A descriptive name for the table.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A mapping of labels to assign to the resource.
-        :param pulumi.Input['TableMaterializedViewArgs'] materialized_view: If specified, configures this table as a materialized view.
-               Structure is documented below.
-        :param pulumi.Input[str] max_staleness: The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
-               is not provided, the provider project is used.
-        :param pulumi.Input['TableRangePartitioningArgs'] range_partitioning: If specified, configures range-based
-               partitioning for this table. Structure is documented below.
-        :param pulumi.Input[str] schema: A JSON schema for the table.
+               
+               * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
                
                ~>**NOTE:** Because this field expects a JSON string, any changes to the
                string will create a diff, even if the JSON itself hasn't changed.
@@ -74,8 +68,33 @@ class TableArgs:
                field type, we currently cannot suppress the recurring diff this causes.
                As a workaround, we recommend using the schema as returned by the API.
                
-               ~>**NOTE:**  When setting `schema` for `external_data_configuration`, please use
-               `external_data_configuration.schema` documented below.
+               ~>**NOTE:**  If you use `external_data_configuration`
+               documented below and do **not** set
+               `external_data_configuration.connection_id`, schemas must be specified
+               with `external_data_configuration.schema`. Otherwise, schemas must be
+               specified with this top-level field.
+        :param pulumi.Input['TableMaterializedViewArgs'] materialized_view: If specified, configures this table as a materialized view.
+               Structure is documented below.
+        :param pulumi.Input[str] max_staleness: The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
+        :param pulumi.Input['TableRangePartitioningArgs'] range_partitioning: If specified, configures range-based
+               partitioning for this table. Structure is documented below.
+        :param pulumi.Input[str] schema: A JSON schema for the external table. Schema is required
+               for CSV and JSON formats if autodetect is not on. Schema is disallowed
+               for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
+               ~>**NOTE:** Because this field expects a JSON string, any changes to the
+               string will create a diff, even if the JSON itself hasn't changed.
+               Furthermore drift for this field cannot not be detected because BigQuery
+               only uses this schema to compute the effective schema for the table, therefore
+               any changes on the configured value will force the table to be recreated.
+               This schema is effectively only applied when creating a table from an external
+               datasource, after creation the computed schema will be stored in
+               `google_bigquery_table.schema`
+               
+               ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
+               table schema must be specified using the top-level `schema` field
+               documented above.
         :param pulumi.Input['TableTimePartitioningArgs'] time_partitioning: If specified, configures time-based
                partitioning for this table. Structure is documented below.
         :param pulumi.Input['TableViewArgs'] view: If specified, configures this table as a view.
@@ -240,6 +259,21 @@ class TableArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of labels to assign to the resource.
+
+        * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
+
+        ~>**NOTE:** Because this field expects a JSON string, any changes to the
+        string will create a diff, even if the JSON itself hasn't changed.
+        If the API returns a different value for the same schema, e.g. it
+        switched the order of values or replaced `STRUCT` field type with `RECORD`
+        field type, we currently cannot suppress the recurring diff this causes.
+        As a workaround, we recommend using the schema as returned by the API.
+
+        ~>**NOTE:**  If you use `external_data_configuration`
+        documented below and do **not** set
+        `external_data_configuration.connection_id`, schemas must be specified
+        with `external_data_configuration.schema`. Otherwise, schemas must be
+        specified with this top-level field.
         """
         return pulumi.get(self, "labels")
 
@@ -302,17 +336,21 @@ class TableArgs:
     @pulumi.getter
     def schema(self) -> Optional[pulumi.Input[str]]:
         """
-        A JSON schema for the table.
-
+        A JSON schema for the external table. Schema is required
+        for CSV and JSON formats if autodetect is not on. Schema is disallowed
+        for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
         ~>**NOTE:** Because this field expects a JSON string, any changes to the
         string will create a diff, even if the JSON itself hasn't changed.
-        If the API returns a different value for the same schema, e.g. it
-        switched the order of values or replaced `STRUCT` field type with `RECORD`
-        field type, we currently cannot suppress the recurring diff this causes.
-        As a workaround, we recommend using the schema as returned by the API.
+        Furthermore drift for this field cannot not be detected because BigQuery
+        only uses this schema to compute the effective schema for the table, therefore
+        any changes on the configured value will force the table to be recreated.
+        This schema is effectively only applied when creating a table from an external
+        datasource, after creation the computed schema will be stored in
+        `google_bigquery_table.schema`
 
-        ~>**NOTE:**  When setting `schema` for `external_data_configuration`, please use
-        `external_data_configuration.schema` documented below.
+        ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
+        table schema must be specified using the top-level `schema` field
+        documented above.
         """
         return pulumi.get(self, "schema")
 
@@ -401,6 +439,21 @@ class _TableState:
                if it were a standard BigQuery table. Structure is documented below.
         :param pulumi.Input[str] friendly_name: A descriptive name for the table.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A mapping of labels to assign to the resource.
+               
+               * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
+               
+               ~>**NOTE:** Because this field expects a JSON string, any changes to the
+               string will create a diff, even if the JSON itself hasn't changed.
+               If the API returns a different value for the same schema, e.g. it
+               switched the order of values or replaced `STRUCT` field type with `RECORD`
+               field type, we currently cannot suppress the recurring diff this causes.
+               As a workaround, we recommend using the schema as returned by the API.
+               
+               ~>**NOTE:**  If you use `external_data_configuration`
+               documented below and do **not** set
+               `external_data_configuration.connection_id`, schemas must be specified
+               with `external_data_configuration.schema`. Otherwise, schemas must be
+               specified with this top-level field.
         :param pulumi.Input[int] last_modified_time: The time when this table was last modified, in milliseconds since the epoch.
         :param pulumi.Input[str] location: The geographic location where the table resides. This value is inherited from the dataset.
         :param pulumi.Input['TableMaterializedViewArgs'] materialized_view: If specified, configures this table as a materialized view.
@@ -413,17 +466,21 @@ class _TableState:
                is not provided, the provider project is used.
         :param pulumi.Input['TableRangePartitioningArgs'] range_partitioning: If specified, configures range-based
                partitioning for this table. Structure is documented below.
-        :param pulumi.Input[str] schema: A JSON schema for the table.
-               
+        :param pulumi.Input[str] schema: A JSON schema for the external table. Schema is required
+               for CSV and JSON formats if autodetect is not on. Schema is disallowed
+               for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
                ~>**NOTE:** Because this field expects a JSON string, any changes to the
                string will create a diff, even if the JSON itself hasn't changed.
-               If the API returns a different value for the same schema, e.g. it
-               switched the order of values or replaced `STRUCT` field type with `RECORD`
-               field type, we currently cannot suppress the recurring diff this causes.
-               As a workaround, we recommend using the schema as returned by the API.
+               Furthermore drift for this field cannot not be detected because BigQuery
+               only uses this schema to compute the effective schema for the table, therefore
+               any changes on the configured value will force the table to be recreated.
+               This schema is effectively only applied when creating a table from an external
+               datasource, after creation the computed schema will be stored in
+               `google_bigquery_table.schema`
                
-               ~>**NOTE:**  When setting `schema` for `external_data_configuration`, please use
-               `external_data_configuration.schema` documented below.
+               ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
+               table schema must be specified using the top-level `schema` field
+               documented above.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] table_id: A unique ID for the resource.
                Changing this forces a new resource to be created.
@@ -624,6 +681,21 @@ class _TableState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of labels to assign to the resource.
+
+        * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
+
+        ~>**NOTE:** Because this field expects a JSON string, any changes to the
+        string will create a diff, even if the JSON itself hasn't changed.
+        If the API returns a different value for the same schema, e.g. it
+        switched the order of values or replaced `STRUCT` field type with `RECORD`
+        field type, we currently cannot suppress the recurring diff this causes.
+        As a workaround, we recommend using the schema as returned by the API.
+
+        ~>**NOTE:**  If you use `external_data_configuration`
+        documented below and do **not** set
+        `external_data_configuration.connection_id`, schemas must be specified
+        with `external_data_configuration.schema`. Otherwise, schemas must be
+        specified with this top-level field.
         """
         return pulumi.get(self, "labels")
 
@@ -746,17 +818,21 @@ class _TableState:
     @pulumi.getter
     def schema(self) -> Optional[pulumi.Input[str]]:
         """
-        A JSON schema for the table.
-
+        A JSON schema for the external table. Schema is required
+        for CSV and JSON formats if autodetect is not on. Schema is disallowed
+        for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
         ~>**NOTE:** Because this field expects a JSON string, any changes to the
         string will create a diff, even if the JSON itself hasn't changed.
-        If the API returns a different value for the same schema, e.g. it
-        switched the order of values or replaced `STRUCT` field type with `RECORD`
-        field type, we currently cannot suppress the recurring diff this causes.
-        As a workaround, we recommend using the schema as returned by the API.
+        Furthermore drift for this field cannot not be detected because BigQuery
+        only uses this schema to compute the effective schema for the table, therefore
+        any changes on the configured value will force the table to be recreated.
+        This schema is effectively only applied when creating a table from an external
+        datasource, after creation the computed schema will be stored in
+        `google_bigquery_table.schema`
 
-        ~>**NOTE:**  When setting `schema` for `external_data_configuration`, please use
-        `external_data_configuration.schema` documented below.
+        ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
+        table schema must be specified using the top-level `schema` field
+        documented above.
         """
         return pulumi.get(self, "schema")
 
@@ -952,14 +1028,8 @@ class Table(pulumi.CustomResource):
                if it were a standard BigQuery table. Structure is documented below.
         :param pulumi.Input[str] friendly_name: A descriptive name for the table.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A mapping of labels to assign to the resource.
-        :param pulumi.Input[pulumi.InputType['TableMaterializedViewArgs']] materialized_view: If specified, configures this table as a materialized view.
-               Structure is documented below.
-        :param pulumi.Input[str] max_staleness: The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
-               is not provided, the provider project is used.
-        :param pulumi.Input[pulumi.InputType['TableRangePartitioningArgs']] range_partitioning: If specified, configures range-based
-               partitioning for this table. Structure is documented below.
-        :param pulumi.Input[str] schema: A JSON schema for the table.
+               
+               * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
                
                ~>**NOTE:** Because this field expects a JSON string, any changes to the
                string will create a diff, even if the JSON itself hasn't changed.
@@ -968,8 +1038,33 @@ class Table(pulumi.CustomResource):
                field type, we currently cannot suppress the recurring diff this causes.
                As a workaround, we recommend using the schema as returned by the API.
                
-               ~>**NOTE:**  When setting `schema` for `external_data_configuration`, please use
-               `external_data_configuration.schema` documented below.
+               ~>**NOTE:**  If you use `external_data_configuration`
+               documented below and do **not** set
+               `external_data_configuration.connection_id`, schemas must be specified
+               with `external_data_configuration.schema`. Otherwise, schemas must be
+               specified with this top-level field.
+        :param pulumi.Input[pulumi.InputType['TableMaterializedViewArgs']] materialized_view: If specified, configures this table as a materialized view.
+               Structure is documented below.
+        :param pulumi.Input[str] max_staleness: The maximum staleness of data that could be returned when the table (or stale MV) is queried. Staleness encoded as a string encoding of sql IntervalValue type.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
+               is not provided, the provider project is used.
+        :param pulumi.Input[pulumi.InputType['TableRangePartitioningArgs']] range_partitioning: If specified, configures range-based
+               partitioning for this table. Structure is documented below.
+        :param pulumi.Input[str] schema: A JSON schema for the external table. Schema is required
+               for CSV and JSON formats if autodetect is not on. Schema is disallowed
+               for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
+               ~>**NOTE:** Because this field expects a JSON string, any changes to the
+               string will create a diff, even if the JSON itself hasn't changed.
+               Furthermore drift for this field cannot not be detected because BigQuery
+               only uses this schema to compute the effective schema for the table, therefore
+               any changes on the configured value will force the table to be recreated.
+               This schema is effectively only applied when creating a table from an external
+               datasource, after creation the computed schema will be stored in
+               `google_bigquery_table.schema`
+               
+               ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
+               table schema must be specified using the top-level `schema` field
+               documented above.
         :param pulumi.Input[str] table_id: A unique ID for the resource.
                Changing this forces a new resource to be created.
         :param pulumi.Input[pulumi.InputType['TableTimePartitioningArgs']] time_partitioning: If specified, configures time-based
@@ -1197,6 +1292,21 @@ class Table(pulumi.CustomResource):
                if it were a standard BigQuery table. Structure is documented below.
         :param pulumi.Input[str] friendly_name: A descriptive name for the table.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A mapping of labels to assign to the resource.
+               
+               * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
+               
+               ~>**NOTE:** Because this field expects a JSON string, any changes to the
+               string will create a diff, even if the JSON itself hasn't changed.
+               If the API returns a different value for the same schema, e.g. it
+               switched the order of values or replaced `STRUCT` field type with `RECORD`
+               field type, we currently cannot suppress the recurring diff this causes.
+               As a workaround, we recommend using the schema as returned by the API.
+               
+               ~>**NOTE:**  If you use `external_data_configuration`
+               documented below and do **not** set
+               `external_data_configuration.connection_id`, schemas must be specified
+               with `external_data_configuration.schema`. Otherwise, schemas must be
+               specified with this top-level field.
         :param pulumi.Input[int] last_modified_time: The time when this table was last modified, in milliseconds since the epoch.
         :param pulumi.Input[str] location: The geographic location where the table resides. This value is inherited from the dataset.
         :param pulumi.Input[pulumi.InputType['TableMaterializedViewArgs']] materialized_view: If specified, configures this table as a materialized view.
@@ -1209,17 +1319,21 @@ class Table(pulumi.CustomResource):
                is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['TableRangePartitioningArgs']] range_partitioning: If specified, configures range-based
                partitioning for this table. Structure is documented below.
-        :param pulumi.Input[str] schema: A JSON schema for the table.
-               
+        :param pulumi.Input[str] schema: A JSON schema for the external table. Schema is required
+               for CSV and JSON formats if autodetect is not on. Schema is disallowed
+               for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
                ~>**NOTE:** Because this field expects a JSON string, any changes to the
                string will create a diff, even if the JSON itself hasn't changed.
-               If the API returns a different value for the same schema, e.g. it
-               switched the order of values or replaced `STRUCT` field type with `RECORD`
-               field type, we currently cannot suppress the recurring diff this causes.
-               As a workaround, we recommend using the schema as returned by the API.
+               Furthermore drift for this field cannot not be detected because BigQuery
+               only uses this schema to compute the effective schema for the table, therefore
+               any changes on the configured value will force the table to be recreated.
+               This schema is effectively only applied when creating a table from an external
+               datasource, after creation the computed schema will be stored in
+               `google_bigquery_table.schema`
                
-               ~>**NOTE:**  When setting `schema` for `external_data_configuration`, please use
-               `external_data_configuration.schema` documented below.
+               ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
+               table schema must be specified using the top-level `schema` field
+               documented above.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] table_id: A unique ID for the resource.
                Changing this forces a new resource to be created.
@@ -1359,6 +1473,21 @@ class Table(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A mapping of labels to assign to the resource.
+
+        * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
+
+        ~>**NOTE:** Because this field expects a JSON string, any changes to the
+        string will create a diff, even if the JSON itself hasn't changed.
+        If the API returns a different value for the same schema, e.g. it
+        switched the order of values or replaced `STRUCT` field type with `RECORD`
+        field type, we currently cannot suppress the recurring diff this causes.
+        As a workaround, we recommend using the schema as returned by the API.
+
+        ~>**NOTE:**  If you use `external_data_configuration`
+        documented below and do **not** set
+        `external_data_configuration.connection_id`, schemas must be specified
+        with `external_data_configuration.schema`. Otherwise, schemas must be
+        specified with this top-level field.
         """
         return pulumi.get(self, "labels")
 
@@ -1441,17 +1570,21 @@ class Table(pulumi.CustomResource):
     @pulumi.getter
     def schema(self) -> pulumi.Output[str]:
         """
-        A JSON schema for the table.
-
+        A JSON schema for the external table. Schema is required
+        for CSV and JSON formats if autodetect is not on. Schema is disallowed
+        for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
         ~>**NOTE:** Because this field expects a JSON string, any changes to the
         string will create a diff, even if the JSON itself hasn't changed.
-        If the API returns a different value for the same schema, e.g. it
-        switched the order of values or replaced `STRUCT` field type with `RECORD`
-        field type, we currently cannot suppress the recurring diff this causes.
-        As a workaround, we recommend using the schema as returned by the API.
+        Furthermore drift for this field cannot not be detected because BigQuery
+        only uses this schema to compute the effective schema for the table, therefore
+        any changes on the configured value will force the table to be recreated.
+        This schema is effectively only applied when creating a table from an external
+        datasource, after creation the computed schema will be stored in
+        `google_bigquery_table.schema`
 
-        ~>**NOTE:**  When setting `schema` for `external_data_configuration`, please use
-        `external_data_configuration.schema` documented below.
+        ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
+        table schema must be specified using the top-level `schema` field
+        documented above.
         """
         return pulumi.get(self, "schema")
 

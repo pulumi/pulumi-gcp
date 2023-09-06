@@ -12,8 +12,11 @@ import com.pulumi.gcp.gkehub.inputs.GetFeatureIamPolicyArgs;
 import com.pulumi.gcp.gkehub.inputs.GetFeatureIamPolicyPlainArgs;
 import com.pulumi.gcp.gkehub.inputs.GetMembershipIamPolicyArgs;
 import com.pulumi.gcp.gkehub.inputs.GetMembershipIamPolicyPlainArgs;
+import com.pulumi.gcp.gkehub.inputs.GetScopeIamPolicyArgs;
+import com.pulumi.gcp.gkehub.inputs.GetScopeIamPolicyPlainArgs;
 import com.pulumi.gcp.gkehub.outputs.GetFeatureIamPolicyResult;
 import com.pulumi.gcp.gkehub.outputs.GetMembershipIamPolicyResult;
+import com.pulumi.gcp.gkehub.outputs.GetScopeIamPolicyResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class GkehubFunctions {
@@ -324,5 +327,157 @@ public final class GkehubFunctions {
      */
     public static CompletableFuture<GetMembershipIamPolicyResult> getMembershipIamPolicyPlain(GetMembershipIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:gkehub/getMembershipIamPolicy:getMembershipIamPolicy", TypeShape.of(GetMembershipIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for scope
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.gkehub.GkehubFunctions;
+     * import com.pulumi.gcp.gkehub.inputs.GetScopeIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = GkehubFunctions.getScopeIamPolicy(GetScopeIamPolicyArgs.builder()
+     *             .project(google_gke_hub_scope.scope().project())
+     *             .scopeId(google_gke_hub_scope.scope().scope_id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetScopeIamPolicyResult> getScopeIamPolicy(GetScopeIamPolicyArgs args) {
+        return getScopeIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for scope
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.gkehub.GkehubFunctions;
+     * import com.pulumi.gcp.gkehub.inputs.GetScopeIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = GkehubFunctions.getScopeIamPolicy(GetScopeIamPolicyArgs.builder()
+     *             .project(google_gke_hub_scope.scope().project())
+     *             .scopeId(google_gke_hub_scope.scope().scope_id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetScopeIamPolicyResult> getScopeIamPolicyPlain(GetScopeIamPolicyPlainArgs args) {
+        return getScopeIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for scope
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.gkehub.GkehubFunctions;
+     * import com.pulumi.gcp.gkehub.inputs.GetScopeIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = GkehubFunctions.getScopeIamPolicy(GetScopeIamPolicyArgs.builder()
+     *             .project(google_gke_hub_scope.scope().project())
+     *             .scopeId(google_gke_hub_scope.scope().scope_id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetScopeIamPolicyResult> getScopeIamPolicy(GetScopeIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:gkehub/getScopeIamPolicy:getScopeIamPolicy", TypeShape.of(GetScopeIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for scope
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.gkehub.GkehubFunctions;
+     * import com.pulumi.gcp.gkehub.inputs.GetScopeIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = GkehubFunctions.getScopeIamPolicy(GetScopeIamPolicyArgs.builder()
+     *             .project(google_gke_hub_scope.scope().project())
+     *             .scopeId(google_gke_hub_scope.scope().scope_id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetScopeIamPolicyResult> getScopeIamPolicyPlain(GetScopeIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:gkehub/getScopeIamPolicy:getScopeIamPolicy", TypeShape.of(GetScopeIamPolicyResult.class), args, Utilities.withVersion(options));
     }
 }

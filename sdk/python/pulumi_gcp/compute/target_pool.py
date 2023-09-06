@@ -22,6 +22,7 @@ class TargetPoolArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 security_policy: Optional[pulumi.Input[str]] = None,
                  session_affinity: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TargetPool resource.
@@ -45,6 +46,7 @@ class TargetPoolArgs:
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: Where the target pool resides. Defaults to project
                region.
+        :param pulumi.Input[str] security_policy: ) The resource URL for the security policy associated with this target pool.
         :param pulumi.Input[str] session_affinity: How to distribute load. Options are "NONE" (no
                affinity). "CLIENT\\_IP" (hash of the source/dest addresses / ports), and
                "CLIENT\\_IP\\_PROTO" also includes the protocol (default "NONE").
@@ -65,6 +67,8 @@ class TargetPoolArgs:
             pulumi.set(__self__, "project", project)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if security_policy is not None:
+            pulumi.set(__self__, "security_policy", security_policy)
         if session_affinity is not None:
             pulumi.set(__self__, "session_affinity", session_affinity)
 
@@ -177,6 +181,18 @@ class TargetPoolArgs:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter(name="securityPolicy")
+    def security_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        ) The resource URL for the security policy associated with this target pool.
+        """
+        return pulumi.get(self, "security_policy")
+
+    @security_policy.setter
+    def security_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_policy", value)
+
+    @property
     @pulumi.getter(name="sessionAffinity")
     def session_affinity(self) -> Optional[pulumi.Input[str]]:
         """
@@ -202,6 +218,7 @@ class _TargetPoolState:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 security_policy: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  session_affinity: Optional[pulumi.Input[str]] = None):
         """
@@ -226,6 +243,7 @@ class _TargetPoolState:
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: Where the target pool resides. Defaults to project
                region.
+        :param pulumi.Input[str] security_policy: ) The resource URL for the security policy associated with this target pool.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] session_affinity: How to distribute load. Options are "NONE" (no
                affinity). "CLIENT\\_IP" (hash of the source/dest addresses / ports), and
@@ -247,6 +265,8 @@ class _TargetPoolState:
             pulumi.set(__self__, "project", project)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if security_policy is not None:
+            pulumi.set(__self__, "security_policy", security_policy)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
         if session_affinity is not None:
@@ -361,6 +381,18 @@ class _TargetPoolState:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter(name="securityPolicy")
+    def security_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        ) The resource URL for the security policy associated with this target pool.
+        """
+        return pulumi.get(self, "security_policy")
+
+    @security_policy.setter
+    def security_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_policy", value)
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> Optional[pulumi.Input[str]]:
         """
@@ -400,6 +432,7 @@ class TargetPool(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 security_policy: Optional[pulumi.Input[str]] = None,
                  session_affinity: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -451,6 +484,7 @@ class TargetPool(pulumi.CustomResource):
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: Where the target pool resides. Defaults to project
                region.
+        :param pulumi.Input[str] security_policy: ) The resource URL for the security policy associated with this target pool.
         :param pulumi.Input[str] session_affinity: How to distribute load. Options are "NONE" (no
                affinity). "CLIENT\\_IP" (hash of the source/dest addresses / ports), and
                "CLIENT\\_IP\\_PROTO" also includes the protocol (default "NONE").
@@ -511,6 +545,7 @@ class TargetPool(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 security_policy: Optional[pulumi.Input[str]] = None,
                  session_affinity: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -529,6 +564,7 @@ class TargetPool(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
+            __props__.__dict__["security_policy"] = security_policy
             __props__.__dict__["session_affinity"] = session_affinity
             __props__.__dict__["self_link"] = None
         super(TargetPool, __self__).__init__(
@@ -549,6 +585,7 @@ class TargetPool(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
+            security_policy: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             session_affinity: Optional[pulumi.Input[str]] = None) -> 'TargetPool':
         """
@@ -578,6 +615,7 @@ class TargetPool(pulumi.CustomResource):
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: Where the target pool resides. Defaults to project
                region.
+        :param pulumi.Input[str] security_policy: ) The resource URL for the security policy associated with this target pool.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] session_affinity: How to distribute load. Options are "NONE" (no
                affinity). "CLIENT\\_IP" (hash of the source/dest addresses / ports), and
@@ -595,6 +633,7 @@ class TargetPool(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["region"] = region
+        __props__.__dict__["security_policy"] = security_policy
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["session_affinity"] = session_affinity
         return TargetPool(resource_name, opts=opts, __props__=__props__)
@@ -674,6 +713,14 @@ class TargetPool(pulumi.CustomResource):
         region.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="securityPolicy")
+    def security_policy(self) -> pulumi.Output[Optional[str]]:
+        """
+        ) The resource URL for the security policy associated with this target pool.
+        """
+        return pulumi.get(self, "security_policy")
 
     @property
     @pulumi.getter(name="selfLink")

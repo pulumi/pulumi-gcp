@@ -465,7 +465,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
 
         ## Import
 
-        OrganizationSecurityPolicyRule can be imported using any of these accepted formats
+        OrganizationSecurityPolicyRule can be imported using any of these accepted formats:
 
         ```sh
          $ pulumi import gcp:compute/organizationSecurityPolicyRule:OrganizationSecurityPolicyRule default {{policy_id}}/priority/{{priority}}
@@ -552,7 +552,7 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
 
         ## Import
 
-        OrganizationSecurityPolicyRule can be imported using any of these accepted formats
+        OrganizationSecurityPolicyRule can be imported using any of these accepted formats:
 
         ```sh
          $ pulumi import gcp:compute/organizationSecurityPolicyRule:OrganizationSecurityPolicyRule default {{policy_id}}/priority/{{priority}}

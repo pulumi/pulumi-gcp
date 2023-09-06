@@ -640,10 +640,10 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * Required. Expected to be in leaf-to-root order according to RFC 5246.
      * 
      * @deprecated
-     * Deprecated in favor of `pem_certificate_chain`.
+     * `pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead.
      * 
      */
-    @Deprecated /* Deprecated in favor of `pem_certificate_chain`. */
+    @Deprecated /* `pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead. */
     @Export(name="pemCertificates", type=List.class, parameters={String.class})
     private Output<List<String>> pemCertificates;
 

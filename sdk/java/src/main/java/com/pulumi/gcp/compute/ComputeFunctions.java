@@ -376,7 +376,53 @@ public final class ComputeFunctions {
     /**
      * List IP addresses in a project. For more information see
      * the official API [list](https://cloud.google.com/compute/docs/reference/latest/addresses/list) and
-     * [aggregated lsit](https://cloud.google.com/compute/docs/reference/rest/v1/addresses/aggregatedList) documentation.
+     * [aggregated list](https://cloud.google.com/compute/docs/reference/rest/v1/addresses/aggregatedList) documentation.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetAddressesArgs;
+     * import com.pulumi.gcp.dns.ManagedZone;
+     * import com.pulumi.gcp.dns.ManagedZoneArgs;
+     * import com.pulumi.gcp.dns.RecordSet;
+     * import com.pulumi.gcp.dns.RecordSetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = ComputeFunctions.getAddresses(GetAddressesArgs.builder()
+     *             .filter(&#34;name:test-*&#34;)
+     *             .build());
+     * 
+     *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
+     *             .dnsName(&#34;prod.mydomain.com.&#34;)
+     *             .build());
+     * 
+     *         var frontend = new RecordSet(&#34;frontend&#34;, RecordSetArgs.builder()        
+     *             .name(prod.dnsName().applyValue(dnsName -&gt; String.format(&#34;frontend.%s&#34;, dnsName)))
+     *             .type(&#34;A&#34;)
+     *             .ttl(300)
+     *             .managedZone(prod.name())
+     *             .rrdatas(test.applyValue(getAddressesResult -&gt; getAddressesResult.addresses()).stream().map(element -&gt; element.address()).collect(toList()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAddressesResult> getAddresses() {
@@ -385,7 +431,53 @@ public final class ComputeFunctions {
     /**
      * List IP addresses in a project. For more information see
      * the official API [list](https://cloud.google.com/compute/docs/reference/latest/addresses/list) and
-     * [aggregated lsit](https://cloud.google.com/compute/docs/reference/rest/v1/addresses/aggregatedList) documentation.
+     * [aggregated list](https://cloud.google.com/compute/docs/reference/rest/v1/addresses/aggregatedList) documentation.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetAddressesArgs;
+     * import com.pulumi.gcp.dns.ManagedZone;
+     * import com.pulumi.gcp.dns.ManagedZoneArgs;
+     * import com.pulumi.gcp.dns.RecordSet;
+     * import com.pulumi.gcp.dns.RecordSetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = ComputeFunctions.getAddresses(GetAddressesArgs.builder()
+     *             .filter(&#34;name:test-*&#34;)
+     *             .build());
+     * 
+     *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
+     *             .dnsName(&#34;prod.mydomain.com.&#34;)
+     *             .build());
+     * 
+     *         var frontend = new RecordSet(&#34;frontend&#34;, RecordSetArgs.builder()        
+     *             .name(prod.dnsName().applyValue(dnsName -&gt; String.format(&#34;frontend.%s&#34;, dnsName)))
+     *             .type(&#34;A&#34;)
+     *             .ttl(300)
+     *             .managedZone(prod.name())
+     *             .rrdatas(test.applyValue(getAddressesResult -&gt; getAddressesResult.addresses()).stream().map(element -&gt; element.address()).collect(toList()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAddressesResult> getAddressesPlain() {
@@ -394,7 +486,53 @@ public final class ComputeFunctions {
     /**
      * List IP addresses in a project. For more information see
      * the official API [list](https://cloud.google.com/compute/docs/reference/latest/addresses/list) and
-     * [aggregated lsit](https://cloud.google.com/compute/docs/reference/rest/v1/addresses/aggregatedList) documentation.
+     * [aggregated list](https://cloud.google.com/compute/docs/reference/rest/v1/addresses/aggregatedList) documentation.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetAddressesArgs;
+     * import com.pulumi.gcp.dns.ManagedZone;
+     * import com.pulumi.gcp.dns.ManagedZoneArgs;
+     * import com.pulumi.gcp.dns.RecordSet;
+     * import com.pulumi.gcp.dns.RecordSetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = ComputeFunctions.getAddresses(GetAddressesArgs.builder()
+     *             .filter(&#34;name:test-*&#34;)
+     *             .build());
+     * 
+     *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
+     *             .dnsName(&#34;prod.mydomain.com.&#34;)
+     *             .build());
+     * 
+     *         var frontend = new RecordSet(&#34;frontend&#34;, RecordSetArgs.builder()        
+     *             .name(prod.dnsName().applyValue(dnsName -&gt; String.format(&#34;frontend.%s&#34;, dnsName)))
+     *             .type(&#34;A&#34;)
+     *             .ttl(300)
+     *             .managedZone(prod.name())
+     *             .rrdatas(test.applyValue(getAddressesResult -&gt; getAddressesResult.addresses()).stream().map(element -&gt; element.address()).collect(toList()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAddressesResult> getAddresses(GetAddressesArgs args) {
@@ -403,7 +541,53 @@ public final class ComputeFunctions {
     /**
      * List IP addresses in a project. For more information see
      * the official API [list](https://cloud.google.com/compute/docs/reference/latest/addresses/list) and
-     * [aggregated lsit](https://cloud.google.com/compute/docs/reference/rest/v1/addresses/aggregatedList) documentation.
+     * [aggregated list](https://cloud.google.com/compute/docs/reference/rest/v1/addresses/aggregatedList) documentation.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetAddressesArgs;
+     * import com.pulumi.gcp.dns.ManagedZone;
+     * import com.pulumi.gcp.dns.ManagedZoneArgs;
+     * import com.pulumi.gcp.dns.RecordSet;
+     * import com.pulumi.gcp.dns.RecordSetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = ComputeFunctions.getAddresses(GetAddressesArgs.builder()
+     *             .filter(&#34;name:test-*&#34;)
+     *             .build());
+     * 
+     *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
+     *             .dnsName(&#34;prod.mydomain.com.&#34;)
+     *             .build());
+     * 
+     *         var frontend = new RecordSet(&#34;frontend&#34;, RecordSetArgs.builder()        
+     *             .name(prod.dnsName().applyValue(dnsName -&gt; String.format(&#34;frontend.%s&#34;, dnsName)))
+     *             .type(&#34;A&#34;)
+     *             .ttl(300)
+     *             .managedZone(prod.name())
+     *             .rrdatas(test.applyValue(getAddressesResult -&gt; getAddressesResult.addresses()).stream().map(element -&gt; element.address()).collect(toList()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAddressesResult> getAddressesPlain(GetAddressesPlainArgs args) {
@@ -412,7 +596,53 @@ public final class ComputeFunctions {
     /**
      * List IP addresses in a project. For more information see
      * the official API [list](https://cloud.google.com/compute/docs/reference/latest/addresses/list) and
-     * [aggregated lsit](https://cloud.google.com/compute/docs/reference/rest/v1/addresses/aggregatedList) documentation.
+     * [aggregated list](https://cloud.google.com/compute/docs/reference/rest/v1/addresses/aggregatedList) documentation.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetAddressesArgs;
+     * import com.pulumi.gcp.dns.ManagedZone;
+     * import com.pulumi.gcp.dns.ManagedZoneArgs;
+     * import com.pulumi.gcp.dns.RecordSet;
+     * import com.pulumi.gcp.dns.RecordSetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = ComputeFunctions.getAddresses(GetAddressesArgs.builder()
+     *             .filter(&#34;name:test-*&#34;)
+     *             .build());
+     * 
+     *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
+     *             .dnsName(&#34;prod.mydomain.com.&#34;)
+     *             .build());
+     * 
+     *         var frontend = new RecordSet(&#34;frontend&#34;, RecordSetArgs.builder()        
+     *             .name(prod.dnsName().applyValue(dnsName -&gt; String.format(&#34;frontend.%s&#34;, dnsName)))
+     *             .type(&#34;A&#34;)
+     *             .ttl(300)
+     *             .managedZone(prod.name())
+     *             .rrdatas(test.applyValue(getAddressesResult -&gt; getAddressesResult.addresses()).stream().map(element -&gt; element.address()).collect(toList()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAddressesResult> getAddresses(GetAddressesArgs args, InvokeOptions options) {
@@ -421,7 +651,53 @@ public final class ComputeFunctions {
     /**
      * List IP addresses in a project. For more information see
      * the official API [list](https://cloud.google.com/compute/docs/reference/latest/addresses/list) and
-     * [aggregated lsit](https://cloud.google.com/compute/docs/reference/rest/v1/addresses/aggregatedList) documentation.
+     * [aggregated list](https://cloud.google.com/compute/docs/reference/rest/v1/addresses/aggregatedList) documentation.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetAddressesArgs;
+     * import com.pulumi.gcp.dns.ManagedZone;
+     * import com.pulumi.gcp.dns.ManagedZoneArgs;
+     * import com.pulumi.gcp.dns.RecordSet;
+     * import com.pulumi.gcp.dns.RecordSetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = ComputeFunctions.getAddresses(GetAddressesArgs.builder()
+     *             .filter(&#34;name:test-*&#34;)
+     *             .build());
+     * 
+     *         var prod = new ManagedZone(&#34;prod&#34;, ManagedZoneArgs.builder()        
+     *             .dnsName(&#34;prod.mydomain.com.&#34;)
+     *             .build());
+     * 
+     *         var frontend = new RecordSet(&#34;frontend&#34;, RecordSetArgs.builder()        
+     *             .name(prod.dnsName().applyValue(dnsName -&gt; String.format(&#34;frontend.%s&#34;, dnsName)))
+     *             .type(&#34;A&#34;)
+     *             .ttl(300)
+     *             .managedZone(prod.name())
+     *             .rrdatas(test.applyValue(getAddressesResult -&gt; getAddressesResult.addresses()).stream().map(element -&gt; element.address()).collect(toList()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAddressesResult> getAddressesPlain(GetAddressesPlainArgs args, InvokeOptions options) {

@@ -15,6 +15,7 @@ __all__ = ['AndroidAppArgs', 'AndroidApp']
 class AndroidAppArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
+                 api_key_id: Optional[pulumi.Input[str]] = None,
                  deletion_policy: Optional[pulumi.Input[str]] = None,
                  package_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -26,6 +27,9 @@ class AndroidAppArgs:
                
                
                - - -
+        :param pulumi.Input[str] api_key_id: The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AndroidApp.
+               If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AndroidApp.
+               This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
         :param pulumi.Input[str] deletion_policy: (Optional) Set to 'ABANDON' to allow the AndroidApp to be untracked from terraform state rather than deleted upon
                'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
                AndroidApp. Defaults to 'DELETE'.
@@ -37,6 +41,8 @@ class AndroidAppArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] sha256_hashes: The SHA256 certificate hashes for the AndroidApp.
         """
         pulumi.set(__self__, "display_name", display_name)
+        if api_key_id is not None:
+            pulumi.set(__self__, "api_key_id", api_key_id)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if package_name is not None:
@@ -62,6 +68,20 @@ class AndroidAppArgs:
     @display_name.setter
     def display_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="apiKeyId")
+    def api_key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AndroidApp.
+        If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AndroidApp.
+        This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+        """
+        return pulumi.get(self, "api_key_id")
+
+    @api_key_id.setter
+    def api_key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_key_id", value)
 
     @property
     @pulumi.getter(name="deletionPolicy")
@@ -131,6 +151,7 @@ class AndroidAppArgs:
 @pulumi.input_type
 class _AndroidAppState:
     def __init__(__self__, *,
+                 api_key_id: Optional[pulumi.Input[str]] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
                  deletion_policy: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -142,6 +163,9 @@ class _AndroidAppState:
                  sha256_hashes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering AndroidApp resources.
+        :param pulumi.Input[str] api_key_id: The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AndroidApp.
+               If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AndroidApp.
+               This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
         :param pulumi.Input[str] app_id: The globally unique, Firebase-assigned identifier of the AndroidApp.
                This identifier should be treated as an opaque token, as the data format is not specified.
         :param pulumi.Input[str] deletion_policy: (Optional) Set to 'ABANDON' to allow the AndroidApp to be untracked from terraform state rather than deleted upon
@@ -162,6 +186,8 @@ class _AndroidAppState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] sha1_hashes: The SHA1 certificate hashes for the AndroidApp.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] sha256_hashes: The SHA256 certificate hashes for the AndroidApp.
         """
+        if api_key_id is not None:
+            pulumi.set(__self__, "api_key_id", api_key_id)
         if app_id is not None:
             pulumi.set(__self__, "app_id", app_id)
         if deletion_policy is not None:
@@ -180,6 +206,20 @@ class _AndroidAppState:
             pulumi.set(__self__, "sha1_hashes", sha1_hashes)
         if sha256_hashes is not None:
             pulumi.set(__self__, "sha256_hashes", sha256_hashes)
+
+    @property
+    @pulumi.getter(name="apiKeyId")
+    def api_key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AndroidApp.
+        If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AndroidApp.
+        This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+        """
+        return pulumi.get(self, "api_key_id")
+
+    @api_key_id.setter
+    def api_key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_key_id", value)
 
     @property
     @pulumi.getter(name="appId")
@@ -305,6 +345,7 @@ class AndroidApp(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api_key_id: Optional[pulumi.Input[str]] = None,
                  deletion_policy: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  package_name: Optional[pulumi.Input[str]] = None,
@@ -323,9 +364,36 @@ class AndroidApp(pulumi.CustomResource):
         basic = gcp.firebase.AndroidApp("basic",
             project="my-project-name",
             display_name="Display Name Basic",
-            package_name="",
+            package_name="android.package.app",
             sha1_hashes=["2145bdf698b8715039bd0e83f2069bed435ac21c"],
             sha256_hashes=["2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc"],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Firebase Android App Custom Api Key
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        android = gcp.projects.ApiKey("android",
+            display_name="Display Name",
+            project="my-project-name",
+            restrictions=gcp.projects.ApiKeyRestrictionsArgs(
+                android_key_restrictions=gcp.projects.ApiKeyRestrictionsAndroidKeyRestrictionsArgs(
+                    allowed_applications=[gcp.projects.ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs(
+                        package_name="android.package.app",
+                        sha1_fingerprint="2145bdf698b8715039bd0e83f2069bed435ac21c",
+                    )],
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default = gcp.firebase.AndroidApp("default",
+            project="my-project-name",
+            display_name="Display Name",
+            package_name="android.package.app",
+            sha1_hashes=["2145bdf698b8715039bd0e83f2069bed435ac21c"],
+            sha256_hashes=["2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc"],
+            api_key_id=android.uid,
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
@@ -355,6 +423,9 @@ class AndroidApp(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] api_key_id: The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AndroidApp.
+               If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AndroidApp.
+               This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
         :param pulumi.Input[str] deletion_policy: (Optional) Set to 'ABANDON' to allow the AndroidApp to be untracked from terraform state rather than deleted upon
                'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
                AndroidApp. Defaults to 'DELETE'.
@@ -386,9 +457,36 @@ class AndroidApp(pulumi.CustomResource):
         basic = gcp.firebase.AndroidApp("basic",
             project="my-project-name",
             display_name="Display Name Basic",
-            package_name="",
+            package_name="android.package.app",
             sha1_hashes=["2145bdf698b8715039bd0e83f2069bed435ac21c"],
             sha256_hashes=["2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc"],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Firebase Android App Custom Api Key
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        android = gcp.projects.ApiKey("android",
+            display_name="Display Name",
+            project="my-project-name",
+            restrictions=gcp.projects.ApiKeyRestrictionsArgs(
+                android_key_restrictions=gcp.projects.ApiKeyRestrictionsAndroidKeyRestrictionsArgs(
+                    allowed_applications=[gcp.projects.ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs(
+                        package_name="android.package.app",
+                        sha1_fingerprint="2145bdf698b8715039bd0e83f2069bed435ac21c",
+                    )],
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default = gcp.firebase.AndroidApp("default",
+            project="my-project-name",
+            display_name="Display Name",
+            package_name="android.package.app",
+            sha1_hashes=["2145bdf698b8715039bd0e83f2069bed435ac21c"],
+            sha256_hashes=["2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc"],
+            api_key_id=android.uid,
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
@@ -431,6 +529,7 @@ class AndroidApp(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api_key_id: Optional[pulumi.Input[str]] = None,
                  deletion_policy: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  package_name: Optional[pulumi.Input[str]] = None,
@@ -446,6 +545,7 @@ class AndroidApp(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AndroidAppArgs.__new__(AndroidAppArgs)
 
+            __props__.__dict__["api_key_id"] = api_key_id
             __props__.__dict__["deletion_policy"] = deletion_policy
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
@@ -467,6 +567,7 @@ class AndroidApp(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            api_key_id: Optional[pulumi.Input[str]] = None,
             app_id: Optional[pulumi.Input[str]] = None,
             deletion_policy: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
@@ -483,6 +584,9 @@ class AndroidApp(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] api_key_id: The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AndroidApp.
+               If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AndroidApp.
+               This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
         :param pulumi.Input[str] app_id: The globally unique, Firebase-assigned identifier of the AndroidApp.
                This identifier should be treated as an opaque token, as the data format is not specified.
         :param pulumi.Input[str] deletion_policy: (Optional) Set to 'ABANDON' to allow the AndroidApp to be untracked from terraform state rather than deleted upon
@@ -507,6 +611,7 @@ class AndroidApp(pulumi.CustomResource):
 
         __props__ = _AndroidAppState.__new__(_AndroidAppState)
 
+        __props__.__dict__["api_key_id"] = api_key_id
         __props__.__dict__["app_id"] = app_id
         __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["display_name"] = display_name
@@ -517,6 +622,16 @@ class AndroidApp(pulumi.CustomResource):
         __props__.__dict__["sha1_hashes"] = sha1_hashes
         __props__.__dict__["sha256_hashes"] = sha256_hashes
         return AndroidApp(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="apiKeyId")
+    def api_key_id(self) -> pulumi.Output[str]:
+        """
+        The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AndroidApp.
+        If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AndroidApp.
+        This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+        """
+        return pulumi.get(self, "api_key_id")
 
     @property
     @pulumi.getter(name="appId")

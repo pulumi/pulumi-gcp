@@ -52,7 +52,7 @@ namespace Pulumi.Gcp.Kms
     /// 
     /// ## Import
     /// 
-    /// CryptoKeyVersion can be imported using any of these accepted formats
+    /// CryptoKeyVersion can be imported using any of these accepted formats:
     /// 
     /// ```sh
     ///  $ pulumi import gcp:kms/cryptoKeyVersion:CryptoKeyVersion default {{name}}

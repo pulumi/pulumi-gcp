@@ -43,7 +43,7 @@ import (
 //
 // ## Import
 //
-// # Billing Subaccounts can be imported using any of these accepted formats
+// Billing Subaccounts can be imported using any of these accepted formats:
 //
 // ```sh
 //

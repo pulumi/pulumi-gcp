@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public Input<bool> Autodetect { get; set; } = null!;
 
         /// <summary>
-        /// Additional options if `source_format` is set to  
+        /// Additional options if `source_format` is set to
         /// "AVRO".  Structure is documented below.
         /// </summary>
         [Input("avroOptions")]
@@ -38,6 +38,10 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         /// external storage, such as Azure Blob, Cloud Storage, or S3. The `connection_id` can have
         /// the form `{{project}}.{{location}}.{{connection_id}}`
         /// or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
+        /// 
+        /// ~&gt;**NOTE:** If you set `external_data_configuration.connection_id`, the
+        /// table schema must be specified using the top-level `schema` field
+        /// documented above.
         /// </summary>
         [Input("connectionId")]
         public Input<string>? ConnectionId { get; set; }
@@ -136,6 +140,10 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         /// This schema is effectively only applied when creating a table from an external
         /// datasource, after creation the computed schema will be stored in
         /// `google_bigquery_table.schema`
+        /// 
+        /// ~&gt;**NOTE:** If you set `external_data_configuration.connection_id`, the
+        /// table schema must be specified using the top-level `schema` field
+        /// documented above.
         /// </summary>
         [Input("schema")]
         public Input<string>? Schema { get; set; }

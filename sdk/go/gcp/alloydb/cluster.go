@@ -134,6 +134,114 @@ import (
 //	}
 //
 // ```
+// ### Alloydb Cluster Restore
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/alloydb"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
+//				Name: "alloydb-network",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			sourceCluster, err := alloydb.NewCluster(ctx, "sourceCluster", &alloydb.ClusterArgs{
+//				ClusterId: pulumi.String("alloydb-source-cluster"),
+//				Location:  pulumi.String("us-central1"),
+//				Network:   *pulumi.String(_default.Id),
+//				InitialUser: &alloydb.ClusterInitialUserArgs{
+//					Password: pulumi.String("alloydb-source-cluster"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			privateIpAlloc, err := compute.NewGlobalAddress(ctx, "privateIpAlloc", &compute.GlobalAddressArgs{
+//				AddressType:  pulumi.String("INTERNAL"),
+//				Purpose:      pulumi.String("VPC_PEERING"),
+//				PrefixLength: pulumi.Int(16),
+//				Network:      *pulumi.String(_default.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vpcConnection, err := servicenetworking.NewConnection(ctx, "vpcConnection", &servicenetworking.ConnectionArgs{
+//				Network: *pulumi.String(_default.Id),
+//				Service: pulumi.String("servicenetworking.googleapis.com"),
+//				ReservedPeeringRanges: pulumi.StringArray{
+//					privateIpAlloc.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			sourceInstance, err := alloydb.NewInstance(ctx, "sourceInstance", &alloydb.InstanceArgs{
+//				Cluster:      sourceCluster.Name,
+//				InstanceId:   pulumi.String("alloydb-instance"),
+//				InstanceType: pulumi.String("PRIMARY"),
+//				MachineConfig: &alloydb.InstanceMachineConfigArgs{
+//					CpuCount: pulumi.Int(2),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				vpcConnection,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			sourceBackup, err := alloydb.NewBackup(ctx, "sourceBackup", &alloydb.BackupArgs{
+//				BackupId:    pulumi.String("alloydb-backup"),
+//				Location:    pulumi.String("us-central1"),
+//				ClusterName: sourceCluster.Name,
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				sourceInstance,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = alloydb.NewCluster(ctx, "restoredFromBackup", &alloydb.ClusterArgs{
+//				ClusterId: pulumi.String("alloydb-backup-restored"),
+//				Location:  pulumi.String("us-central1"),
+//				Network:   *pulumi.String(_default.Id),
+//				RestoreBackupSource: &alloydb.ClusterRestoreBackupSourceArgs{
+//					BackupName: sourceBackup.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = alloydb.NewCluster(ctx, "restoredViaPitr", &alloydb.ClusterArgs{
+//				ClusterId: pulumi.String("alloydb-pitr-restored"),
+//				Location:  pulumi.String("us-central1"),
+//				Network:   *pulumi.String(_default.Id),
+//				RestoreContinuousBackupSource: &alloydb.ClusterRestoreContinuousBackupSourceArgs{
+//					Cluster:     sourceCluster.Name,
+//					PointInTime: pulumi.String("2023-08-03T19:19:00.094Z"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -211,6 +319,12 @@ type Cluster struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
+	// Structure is documented below.
+	RestoreBackupSource ClusterRestoreBackupSourcePtrOutput `pulumi:"restoreBackupSource"`
+	// The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
+	// Structure is documented below.
+	RestoreContinuousBackupSource ClusterRestoreContinuousBackupSourcePtrOutput `pulumi:"restoreContinuousBackupSource"`
 	// The system-generated UID of the resource.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 }
@@ -300,6 +414,12 @@ type clusterState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
+	// Structure is documented below.
+	RestoreBackupSource *ClusterRestoreBackupSource `pulumi:"restoreBackupSource"`
+	// The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
+	// Structure is documented below.
+	RestoreContinuousBackupSource *ClusterRestoreContinuousBackupSource `pulumi:"restoreContinuousBackupSource"`
 	// The system-generated UID of the resource.
 	Uid *string `pulumi:"uid"`
 }
@@ -351,6 +471,12 @@ type ClusterState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
+	// Structure is documented below.
+	RestoreBackupSource ClusterRestoreBackupSourcePtrInput
+	// The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
+	// Structure is documented below.
+	RestoreContinuousBackupSource ClusterRestoreContinuousBackupSourcePtrInput
 	// The system-generated UID of the resource.
 	Uid pulumi.StringPtrInput
 }
@@ -389,6 +515,12 @@ type clusterArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
+	// Structure is documented below.
+	RestoreBackupSource *ClusterRestoreBackupSource `pulumi:"restoreBackupSource"`
+	// The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
+	// Structure is documented below.
+	RestoreContinuousBackupSource *ClusterRestoreContinuousBackupSource `pulumi:"restoreContinuousBackupSource"`
 }
 
 // The set of arguments for constructing a Cluster resource.
@@ -422,6 +554,12 @@ type ClusterArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
+	// Structure is documented below.
+	RestoreBackupSource ClusterRestoreBackupSourcePtrInput
+	// The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
+	// Structure is documented below.
+	RestoreContinuousBackupSource ClusterRestoreContinuousBackupSourcePtrInput
 }
 
 func (ClusterArgs) ElementType() reflect.Type {
@@ -603,6 +741,18 @@ func (o ClusterOutput) Network() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o ClusterOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
+// Structure is documented below.
+func (o ClusterOutput) RestoreBackupSource() ClusterRestoreBackupSourcePtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterRestoreBackupSourcePtrOutput { return v.RestoreBackupSource }).(ClusterRestoreBackupSourcePtrOutput)
+}
+
+// The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
+// Structure is documented below.
+func (o ClusterOutput) RestoreContinuousBackupSource() ClusterRestoreContinuousBackupSourcePtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterRestoreContinuousBackupSourcePtrOutput { return v.RestoreContinuousBackupSource }).(ClusterRestoreContinuousBackupSourcePtrOutput)
 }
 
 // The system-generated UID of the resource.

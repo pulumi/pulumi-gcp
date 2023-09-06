@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.container.inputs.ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -15,6 +16,25 @@ import javax.annotation.Nullable;
 public final class ClusterIpAllocationPolicyArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ClusterIpAllocationPolicyArgs Empty = new ClusterIpAllocationPolicyArgs();
+
+    /**
+     * The configuration for additional pod secondary ranges at
+     * the cluster level. Used for Autopilot clusters and Standard clusters with which control of the
+     * secondary Pod IP address assignment to node pools isn&#39;t needed. Structure is documented below.
+     * 
+     */
+    @Import(name="additionalPodRangesConfig")
+    private @Nullable Output<ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs> additionalPodRangesConfig;
+
+    /**
+     * @return The configuration for additional pod secondary ranges at
+     * the cluster level. Used for Autopilot clusters and Standard clusters with which control of the
+     * secondary Pod IP address assignment to node pools isn&#39;t needed. Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs>> additionalPodRangesConfig() {
+        return Optional.ofNullable(this.additionalPodRangesConfig);
+    }
 
     /**
      * The IP address range for the cluster pod IPs.
@@ -131,6 +151,7 @@ public final class ClusterIpAllocationPolicyArgs extends com.pulumi.resources.Re
     private ClusterIpAllocationPolicyArgs() {}
 
     private ClusterIpAllocationPolicyArgs(ClusterIpAllocationPolicyArgs $) {
+        this.additionalPodRangesConfig = $.additionalPodRangesConfig;
         this.clusterIpv4CidrBlock = $.clusterIpv4CidrBlock;
         this.clusterSecondaryRangeName = $.clusterSecondaryRangeName;
         this.podCidrOverprovisionConfig = $.podCidrOverprovisionConfig;
@@ -155,6 +176,31 @@ public final class ClusterIpAllocationPolicyArgs extends com.pulumi.resources.Re
 
         public Builder(ClusterIpAllocationPolicyArgs defaults) {
             $ = new ClusterIpAllocationPolicyArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param additionalPodRangesConfig The configuration for additional pod secondary ranges at
+         * the cluster level. Used for Autopilot clusters and Standard clusters with which control of the
+         * secondary Pod IP address assignment to node pools isn&#39;t needed. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalPodRangesConfig(@Nullable Output<ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs> additionalPodRangesConfig) {
+            $.additionalPodRangesConfig = additionalPodRangesConfig;
+            return this;
+        }
+
+        /**
+         * @param additionalPodRangesConfig The configuration for additional pod secondary ranges at
+         * the cluster level. Used for Autopilot clusters and Standard clusters with which control of the
+         * secondary Pod IP address assignment to node pools isn&#39;t needed. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalPodRangesConfig(ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs additionalPodRangesConfig) {
+            return additionalPodRangesConfig(Output.of(additionalPodRangesConfig));
         }
 
         /**

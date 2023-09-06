@@ -13,7 +13,58 @@ import (
 
 // List IP addresses in a project. For more information see
 // the official API [list](https://cloud.google.com/compute/docs/reference/latest/addresses/list) and
-// [aggregated lsit](https://cloud.google.com/compute/docs/reference/rest/v1/addresses/aggregatedList) documentation.
+// [aggregated list](https://cloud.google.com/compute/docs/reference/rest/v1/addresses/aggregatedList) documentation.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dns"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			test, err := compute.GetAddresses(ctx, &compute.GetAddressesArgs{
+//				Filter: pulumi.StringRef("name:test-*"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			prod, err := dns.NewManagedZone(ctx, "prod", &dns.ManagedZoneArgs{
+//				DnsName: pulumi.String("prod.mydomain.com."),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			var splat0 []*string
+//			for _, val0 := range test.Addresses {
+//				splat0 = append(splat0, val0.Address)
+//			}
+//			_, err = dns.NewRecordSet(ctx, "frontend", &dns.RecordSetArgs{
+//				Name: prod.DnsName.ApplyT(func(dnsName string) (string, error) {
+//					return fmt.Sprintf("frontend.%v", dnsName), nil
+//				}).(pulumi.StringOutput),
+//				Type:        pulumi.String("A"),
+//				Ttl:         pulumi.Int(300),
+//				ManagedZone: prod.Name,
+//				Rrdatas:     []*pulumi.String(splat0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetAddresses(ctx *pulumi.Context, args *GetAddressesArgs, opts ...pulumi.InvokeOption) (*GetAddressesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAddressesResult

@@ -100,6 +100,12 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
+        /// ) The resource URL for the security policy associated with this target pool.
+        /// </summary>
+        [Output("securityPolicy")]
+        public Output<string?> SecurityPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// The URI of the created resource.
         /// </summary>
         [Output("selfLink")]
@@ -226,6 +232,12 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Region { get; set; }
 
         /// <summary>
+        /// ) The resource URL for the security policy associated with this target pool.
+        /// </summary>
+        [Input("securityPolicy")]
+        public Input<string>? SecurityPolicy { get; set; }
+
+        /// <summary>
         /// How to distribute load. Options are "NONE" (no
         /// affinity). "CLIENT\_IP" (hash of the source/dest addresses / ports), and
         /// "CLIENT\_IP\_PROTO" also includes the protocol (default "NONE").
@@ -306,6 +318,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// ) The resource URL for the security policy associated with this target pool.
+        /// </summary>
+        [Input("securityPolicy")]
+        public Input<string>? SecurityPolicy { get; set; }
 
         /// <summary>
         /// The URI of the created resource.

@@ -90,11 +90,15 @@ namespace Pulumi.Gcp.Alloydb
     /// Instance can be imported using any of these accepted formats
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:alloydb/instance:Instance default {{cluster}}/instances/{{instance_id}}
+    ///  $ pulumi import gcp:alloydb/instance:Instance default projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/instances/{{instance_id}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:alloydb/instance:Instance default {{cluster}}/{{instance_id}}
+    ///  $ pulumi import gcp:alloydb/instance:Instance default {{project}}/{{location}}/{{cluster}}/{{instance_id}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:alloydb/instance:Instance default {{location}}/{{cluster}}/{{instance_id}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:alloydb/instance:Instance")]
@@ -191,7 +195,7 @@ namespace Pulumi.Gcp.Alloydb
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Read pool specific config.
+        /// Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
         /// Structure is documented below.
         /// </summary>
         [Output("readPoolConfig")]
@@ -358,7 +362,7 @@ namespace Pulumi.Gcp.Alloydb
         public Input<Inputs.InstanceMachineConfigArgs>? MachineConfig { get; set; }
 
         /// <summary>
-        /// Read pool specific config.
+        /// Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
         /// Structure is documented below.
         /// </summary>
         [Input("readPoolConfig")]
@@ -481,7 +485,7 @@ namespace Pulumi.Gcp.Alloydb
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Read pool specific config.
+        /// Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
         /// Structure is documented below.
         /// </summary>
         [Input("readPoolConfig")]

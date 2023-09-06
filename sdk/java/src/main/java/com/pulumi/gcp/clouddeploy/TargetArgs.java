@@ -144,14 +144,14 @@ public final class TargetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Beta only) Information specifying a multiTarget.
+     * Information specifying a multiTarget.
      * 
      */
     @Import(name="multiTarget")
     private @Nullable Output<TargetMultiTargetArgs> multiTarget;
 
     /**
-     * @return (Beta only) Information specifying a multiTarget.
+     * @return Information specifying a multiTarget.
      * 
      */
     public Optional<Output<TargetMultiTargetArgs>> multiTarget() {
@@ -437,7 +437,7 @@ public final class TargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param multiTarget (Beta only) Information specifying a multiTarget.
+         * @param multiTarget Information specifying a multiTarget.
          * 
          * @return builder
          * 
@@ -448,7 +448,7 @@ public final class TargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param multiTarget (Beta only) Information specifying a multiTarget.
+         * @param multiTarget Information specifying a multiTarget.
          * 
          * @return builder
          * 

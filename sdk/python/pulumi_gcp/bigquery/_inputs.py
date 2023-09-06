@@ -11,6 +11,7 @@ from .. import _utilities
 
 __all__ = [
     'AppProfileSingleClusterRoutingArgs',
+    'BiReservationPreferredTableArgs',
     'ConnectionAwsArgs',
     'ConnectionAwsAccessRoleArgs',
     'ConnectionAzureArgs',
@@ -111,6 +112,61 @@ class AppProfileSingleClusterRoutingArgs:
     @allow_transactional_writes.setter
     def allow_transactional_writes(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "allow_transactional_writes", value)
+
+
+@pulumi.input_type
+class BiReservationPreferredTableArgs:
+    def __init__(__self__, *,
+                 dataset_id: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
+                 table_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] dataset_id: The ID of the dataset in the above project.
+        :param pulumi.Input[str] project_id: The assigned project ID of the project.
+        :param pulumi.Input[str] table_id: The ID of the table in the above dataset.
+        """
+        if dataset_id is not None:
+            pulumi.set(__self__, "dataset_id", dataset_id)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+        if table_id is not None:
+            pulumi.set(__self__, "table_id", table_id)
+
+    @property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the dataset in the above project.
+        """
+        return pulumi.get(self, "dataset_id")
+
+    @dataset_id.setter
+    def dataset_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dataset_id", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The assigned project ID of the project.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter(name="tableId")
+    def table_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the table in the above dataset.
+        """
+        return pulumi.get(self, "table_id")
+
+    @table_id.setter
+    def table_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "table_id", value)
 
 
 @pulumi.input_type
@@ -3535,7 +3591,7 @@ class TableExternalDataConfigurationArgs:
                and format of the table.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_uris: A list of the fully-qualified URIs that point to
                your data in Google Cloud.
-        :param pulumi.Input['TableExternalDataConfigurationAvroOptionsArgs'] avro_options: Additional options if `source_format` is set to  
+        :param pulumi.Input['TableExternalDataConfigurationAvroOptionsArgs'] avro_options: Additional options if `source_format` is set to
                "AVRO".  Structure is documented below.
         :param pulumi.Input[str] compression: The compression type of the data source.
                Valid values are "NONE" or "GZIP".
@@ -3543,6 +3599,10 @@ class TableExternalDataConfigurationArgs:
                external storage, such as Azure Blob, Cloud Storage, or S3. The `connection_id` can have
                the form `{{project}}.{{location}}.{{connection_id}}`
                or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
+               
+               ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
+               table schema must be specified using the top-level `schema` field
+               documented above.
         :param pulumi.Input['TableExternalDataConfigurationCsvOptionsArgs'] csv_options: Additional properties to set if
                `source_format` is set to "CSV". Structure is documented below.
         :param pulumi.Input[str] file_set_spec_type: Specifies how source URIs are interpreted for constructing the file set to load.
@@ -3581,6 +3641,10 @@ class TableExternalDataConfigurationArgs:
                This schema is effectively only applied when creating a table from an external
                datasource, after creation the computed schema will be stored in
                `google_bigquery_table.schema`
+               
+               ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
+               table schema must be specified using the top-level `schema` field
+               documented above.
         :param pulumi.Input[str] source_format: The data format. Please see sourceFormat under
                [ExternalDataConfiguration](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#externaldataconfiguration)
                in Bigquery's public API documentation for supported formats. To use "GOOGLE_SHEETS"
@@ -3651,7 +3715,7 @@ class TableExternalDataConfigurationArgs:
     @pulumi.getter(name="avroOptions")
     def avro_options(self) -> Optional[pulumi.Input['TableExternalDataConfigurationAvroOptionsArgs']]:
         """
-        Additional options if `source_format` is set to  
+        Additional options if `source_format` is set to
         "AVRO".  Structure is documented below.
         """
         return pulumi.get(self, "avro_options")
@@ -3681,6 +3745,10 @@ class TableExternalDataConfigurationArgs:
         external storage, such as Azure Blob, Cloud Storage, or S3. The `connection_id` can have
         the form `{{project}}.{{location}}.{{connection_id}}`
         or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
+
+        ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
+        table schema must be specified using the top-level `schema` field
+        documented above.
         """
         return pulumi.get(self, "connection_id")
 
@@ -3851,6 +3919,10 @@ class TableExternalDataConfigurationArgs:
         This schema is effectively only applied when creating a table from an external
         datasource, after creation the computed schema will be stored in
         `google_bigquery_table.schema`
+
+        ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
+        table schema must be specified using the top-level `schema` field
+        documented above.
         """
         return pulumi.get(self, "schema")
 
@@ -3879,7 +3951,7 @@ class TableExternalDataConfigurationAvroOptionsArgs:
     def __init__(__self__, *,
                  use_avro_logical_types: pulumi.Input[bool]):
         """
-        :param pulumi.Input[bool] use_avro_logical_types: If is set to true, indicates whether  
+        :param pulumi.Input[bool] use_avro_logical_types: If is set to true, indicates whether
                to interpret logical types as the corresponding BigQuery data type
                (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
         """
@@ -3889,7 +3961,7 @@ class TableExternalDataConfigurationAvroOptionsArgs:
     @pulumi.getter(name="useAvroLogicalTypes")
     def use_avro_logical_types(self) -> pulumi.Input[bool]:
         """
-        If is set to true, indicates whether  
+        If is set to true, indicates whether
         to interpret logical types as the corresponding BigQuery data type
         (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
         """

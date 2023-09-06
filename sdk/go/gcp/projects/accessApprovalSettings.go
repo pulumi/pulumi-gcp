@@ -172,9 +172,11 @@ type AccessApprovalSettings struct {
 	// resources of that resource. A maximum of 50 email addresses are allowed.
 	NotificationEmails pulumi.StringArrayOutput `pulumi:"notificationEmails"`
 	// (Optional, Deprecated)
-	// Deprecated in favor of `projectId`
+	// Project id.
 	//
-	// Deprecated: Deprecated in favor of `project_id`
+	// > **Warning:** `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
+	//
+	// Deprecated: `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
 	Project pulumi.StringPtrOutput `pulumi:"project"`
 	// ID of the project of the access approval settings.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
@@ -242,9 +244,11 @@ type accessApprovalSettingsState struct {
 	// resources of that resource. A maximum of 50 email addresses are allowed.
 	NotificationEmails []string `pulumi:"notificationEmails"`
 	// (Optional, Deprecated)
-	// Deprecated in favor of `projectId`
+	// Project id.
 	//
-	// Deprecated: Deprecated in favor of `project_id`
+	// > **Warning:** `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
+	//
+	// Deprecated: `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
 	Project *string `pulumi:"project"`
 	// ID of the project of the access approval settings.
 	ProjectId *string `pulumi:"projectId"`
@@ -277,9 +281,11 @@ type AccessApprovalSettingsState struct {
 	// resources of that resource. A maximum of 50 email addresses are allowed.
 	NotificationEmails pulumi.StringArrayInput
 	// (Optional, Deprecated)
-	// Deprecated in favor of `projectId`
+	// Project id.
 	//
-	// Deprecated: Deprecated in favor of `project_id`
+	// > **Warning:** `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
+	//
+	// Deprecated: `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
 	Project pulumi.StringPtrInput
 	// ID of the project of the access approval settings.
 	ProjectId pulumi.StringPtrInput
@@ -305,9 +311,11 @@ type accessApprovalSettingsArgs struct {
 	// resources of that resource. A maximum of 50 email addresses are allowed.
 	NotificationEmails []string `pulumi:"notificationEmails"`
 	// (Optional, Deprecated)
-	// Deprecated in favor of `projectId`
+	// Project id.
 	//
-	// Deprecated: Deprecated in favor of `project_id`
+	// > **Warning:** `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
+	//
+	// Deprecated: `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
 	Project *string `pulumi:"project"`
 	// ID of the project of the access approval settings.
 	ProjectId string `pulumi:"projectId"`
@@ -330,9 +338,11 @@ type AccessApprovalSettingsArgs struct {
 	// resources of that resource. A maximum of 50 email addresses are allowed.
 	NotificationEmails pulumi.StringArrayInput
 	// (Optional, Deprecated)
-	// Deprecated in favor of `projectId`
+	// Project id.
 	//
-	// Deprecated: Deprecated in favor of `project_id`
+	// > **Warning:** `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
+	//
+	// Deprecated: `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
 	Project pulumi.StringPtrInput
 	// ID of the project of the access approval settings.
 	ProjectId pulumi.StringInput
@@ -474,9 +484,11 @@ func (o AccessApprovalSettingsOutput) NotificationEmails() pulumi.StringArrayOut
 }
 
 // (Optional, Deprecated)
-// Deprecated in favor of `projectId`
+// Project id.
 //
-// Deprecated: Deprecated in favor of `project_id`
+// > **Warning:** `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
+//
+// Deprecated: `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
 func (o AccessApprovalSettingsOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApprovalSettings) pulumi.StringPtrOutput { return v.Project }).(pulumi.StringPtrOutput)
 }

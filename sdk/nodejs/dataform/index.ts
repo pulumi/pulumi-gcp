@@ -15,6 +15,11 @@ export type RepositoryReleaseConfig = import("./repositoryReleaseConfig").Reposi
 export const RepositoryReleaseConfig: typeof import("./repositoryReleaseConfig").RepositoryReleaseConfig = null as any;
 utilities.lazyLoad(exports, ["RepositoryReleaseConfig"], () => require("./repositoryReleaseConfig"));
 
+export { RepositoryWorkflowConfigArgs, RepositoryWorkflowConfigState } from "./repositoryWorkflowConfig";
+export type RepositoryWorkflowConfig = import("./repositoryWorkflowConfig").RepositoryWorkflowConfig;
+export const RepositoryWorkflowConfig: typeof import("./repositoryWorkflowConfig").RepositoryWorkflowConfig = null as any;
+utilities.lazyLoad(exports, ["RepositoryWorkflowConfig"], () => require("./repositoryWorkflowConfig"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -24,6 +29,8 @@ const _module = {
                 return new Repository(name, <any>undefined, { urn })
             case "gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig":
                 return new RepositoryReleaseConfig(name, <any>undefined, { urn })
+            case "gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig":
+                return new RepositoryWorkflowConfig(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -31,3 +38,4 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("gcp", "dataform/repository", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataform/repositoryReleaseConfig", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataform/repositoryWorkflowConfig", _module)

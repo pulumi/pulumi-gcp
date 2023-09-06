@@ -79,7 +79,7 @@ namespace Pulumi.Gcp.AccessContextManager
     /// 
     /// ## Import
     /// 
-    /// AccessLevel can be imported using any of these accepted formats
+    /// AccessLevel can be imported using any of these accepted formats:
     /// 
     /// ```sh
     ///  $ pulumi import gcp:accesscontextmanager/accessLevel:AccessLevel default {{name}}

@@ -7092,7 +7092,7 @@ type CertificateCertificateDescription struct {
 	// Describes some of the technical fields in a certificate.
 	// Structure is documented below.
 	//
-	// Deprecated: Deprecated in favor of `x509_description`.
+	// Deprecated: `config_values` is deprecated and will be removed in a future release. Use `x509_description` instead.
 	ConfigValues []CertificateCertificateDescriptionConfigValue `pulumi:"configValues"`
 	// (Output)
 	// Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
@@ -7143,7 +7143,7 @@ type CertificateCertificateDescriptionArgs struct {
 	// Describes some of the technical fields in a certificate.
 	// Structure is documented below.
 	//
-	// Deprecated: Deprecated in favor of `x509_description`.
+	// Deprecated: `config_values` is deprecated and will be removed in a future release. Use `x509_description` instead.
 	ConfigValues CertificateCertificateDescriptionConfigValueArrayInput `pulumi:"configValues"`
 	// (Output)
 	// Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
@@ -7246,7 +7246,7 @@ func (o CertificateCertificateDescriptionOutput) CertFingerprints() CertificateC
 // Describes some of the technical fields in a certificate.
 // Structure is documented below.
 //
-// Deprecated: Deprecated in favor of `x509_description`.
+// Deprecated: `config_values` is deprecated and will be removed in a future release. Use `x509_description` instead.
 func (o CertificateCertificateDescriptionOutput) ConfigValues() CertificateCertificateDescriptionConfigValueArrayOutput {
 	return o.ApplyT(func(v CertificateCertificateDescription) []CertificateCertificateDescriptionConfigValue {
 		return v.ConfigValues

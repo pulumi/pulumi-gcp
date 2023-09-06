@@ -91,7 +91,6 @@ import * as utilities from "../utilities";
  * ```sh
  *  $ pulumi import gcp:organizations/policy:Policy services_policy 123456789/constraints/serviceuser.services
  * ```
- *
  *  It is all right if the constraint contains a slash, as in the example above.
  */
 export class Policy extends pulumi.CustomResource {

@@ -303,7 +303,7 @@ class LogView(pulumi.CustomResource):
 
         ## Import
 
-        LogView can be imported using any of these accepted formats
+        LogView can be imported using any of these accepted formats:
 
         ```sh
          $ pulumi import gcp:logging/logView:LogView default {{parent}}/locations/{{location}}/buckets/{{bucket}}/views/{{name}}
@@ -356,7 +356,7 @@ class LogView(pulumi.CustomResource):
 
         ## Import
 
-        LogView can be imported using any of these accepted formats
+        LogView can be imported using any of these accepted formats:
 
         ```sh
          $ pulumi import gcp:logging/logView:LogView default {{parent}}/locations/{{location}}/buckets/{{bucket}}/views/{{name}}

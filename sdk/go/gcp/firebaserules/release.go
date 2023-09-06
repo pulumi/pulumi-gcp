@@ -124,7 +124,7 @@ import (
 //
 // ## Import
 //
-// # Release can be imported using any of these accepted formats
+// Release can be imported using any of these accepted formats:
 //
 // ```sh
 //

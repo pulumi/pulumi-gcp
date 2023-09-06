@@ -42,7 +42,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
     }
 
     /**
-     * Additional options if `source_format` is set to\
+     * Additional options if `source_format` is set to
      * &#34;AVRO&#34;.  Structure is documented below.
      * 
      */
@@ -50,7 +50,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
     private @Nullable Output<TableExternalDataConfigurationAvroOptionsArgs> avroOptions;
 
     /**
-     * @return Additional options if `source_format` is set to\
+     * @return Additional options if `source_format` is set to
      * &#34;AVRO&#34;.  Structure is documented below.
      * 
      */
@@ -81,6 +81,10 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
      * the form `{{project}}.{{location}}.{{connection_id}}`
      * or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
      * 
+     * ~&gt;**NOTE:** If you set `external_data_configuration.connection_id`, the
+     * table schema must be specified using the top-level `schema` field
+     * documented above.
+     * 
      */
     @Import(name="connectionId")
     private @Nullable Output<String> connectionId;
@@ -90,6 +94,10 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
      * external storage, such as Azure Blob, Cloud Storage, or S3. The `connection_id` can have
      * the form `{{project}}.{{location}}.{{connection_id}}`
      * or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
+     * 
+     * ~&gt;**NOTE:** If you set `external_data_configuration.connection_id`, the
+     * table schema must be specified using the top-level `schema` field
+     * documented above.
      * 
      */
     public Optional<Output<String>> connectionId() {
@@ -306,6 +314,10 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
      * datasource, after creation the computed schema will be stored in
      * `google_bigquery_table.schema`
      * 
+     * ~&gt;**NOTE:** If you set `external_data_configuration.connection_id`, the
+     * table schema must be specified using the top-level `schema` field
+     * documented above.
+     * 
      */
     @Import(name="schema")
     private @Nullable Output<String> schema;
@@ -322,6 +334,10 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
      * This schema is effectively only applied when creating a table from an external
      * datasource, after creation the computed schema will be stored in
      * `google_bigquery_table.schema`
+     * 
+     * ~&gt;**NOTE:** If you set `external_data_configuration.connection_id`, the
+     * table schema must be specified using the top-level `schema` field
+     * documented above.
      * 
      */
     public Optional<Output<String>> schema() {
@@ -431,7 +447,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param avroOptions Additional options if `source_format` is set to\
+         * @param avroOptions Additional options if `source_format` is set to
          * &#34;AVRO&#34;.  Structure is documented below.
          * 
          * @return builder
@@ -443,7 +459,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param avroOptions Additional options if `source_format` is set to\
+         * @param avroOptions Additional options if `source_format` is set to
          * &#34;AVRO&#34;.  Structure is documented below.
          * 
          * @return builder
@@ -482,6 +498,10 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
          * the form `{{project}}.{{location}}.{{connection_id}}`
          * or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
          * 
+         * ~&gt;**NOTE:** If you set `external_data_configuration.connection_id`, the
+         * table schema must be specified using the top-level `schema` field
+         * documented above.
+         * 
          * @return builder
          * 
          */
@@ -495,6 +515,10 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
          * external storage, such as Azure Blob, Cloud Storage, or S3. The `connection_id` can have
          * the form `{{project}}.{{location}}.{{connection_id}}`
          * or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
+         * 
+         * ~&gt;**NOTE:** If you set `external_data_configuration.connection_id`, the
+         * table schema must be specified using the top-level `schema` field
+         * documented above.
          * 
          * @return builder
          * 
@@ -779,6 +803,10 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
          * datasource, after creation the computed schema will be stored in
          * `google_bigquery_table.schema`
          * 
+         * ~&gt;**NOTE:** If you set `external_data_configuration.connection_id`, the
+         * table schema must be specified using the top-level `schema` field
+         * documented above.
+         * 
          * @return builder
          * 
          */
@@ -799,6 +827,10 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
          * This schema is effectively only applied when creating a table from an external
          * datasource, after creation the computed schema will be stored in
          * `google_bigquery_table.schema`
+         * 
+         * ~&gt;**NOTE:** If you set `external_data_configuration.connection_id`, the
+         * table schema must be specified using the top-level `schema` field
+         * documented above.
          * 
          * @return builder
          * 

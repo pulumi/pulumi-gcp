@@ -118,7 +118,7 @@ import (
 //
 // ## Import
 //
-// # AddressGroup can be imported using any of these accepted formats
+// AddressGroup can be imported using any of these accepted formats:
 //
 // ```sh
 //

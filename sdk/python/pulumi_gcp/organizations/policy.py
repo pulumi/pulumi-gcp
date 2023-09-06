@@ -376,7 +376,6 @@ class Policy(pulumi.CustomResource):
         ```sh
          $ pulumi import gcp:organizations/policy:Policy services_policy 123456789/constraints/serviceuser.services
         ```
-
          It is all right if the constraint contains a slash, as in the example above.
 
         :param str resource_name: The name of the resource.
@@ -483,7 +482,6 @@ class Policy(pulumi.CustomResource):
         ```sh
          $ pulumi import gcp:organizations/policy:Policy services_policy 123456789/constraints/serviceuser.services
         ```
-
          It is all right if the constraint contains a slash, as in the example above.
 
         :param str resource_name: The name of the resource.

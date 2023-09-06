@@ -63,7 +63,7 @@ import (
 //
 // ## Import
 //
-// # Group can be imported using any of these accepted formats
+// Group can be imported using any of these accepted formats:
 //
 // ```sh
 //

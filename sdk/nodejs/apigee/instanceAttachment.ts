@@ -125,7 +125,7 @@ export class InstanceAttachment extends pulumi.CustomResource {
     public readonly environment!: pulumi.Output<string>;
     /**
      * The Apigee instance associated with the Apigee environment,
-     * in the format `organisations/{{org_name}}/instances/{{instance_name}}`.
+     * in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
      *
      *
      * - - -
@@ -179,7 +179,7 @@ export interface InstanceAttachmentState {
     environment?: pulumi.Input<string>;
     /**
      * The Apigee instance associated with the Apigee environment,
-     * in the format `organisations/{{org_name}}/instances/{{instance_name}}`.
+     * in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
      *
      *
      * - - -
@@ -201,7 +201,7 @@ export interface InstanceAttachmentArgs {
     environment: pulumi.Input<string>;
     /**
      * The Apigee instance associated with the Apigee environment,
-     * in the format `organisations/{{org_name}}/instances/{{instance_name}}`.
+     * in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
      *
      *
      * - - -

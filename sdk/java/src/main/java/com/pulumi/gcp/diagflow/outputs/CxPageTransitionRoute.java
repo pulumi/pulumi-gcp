@@ -43,7 +43,7 @@ public final class CxPageTransitionRoute {
      */
     private @Nullable String targetPage;
     /**
-     * @return The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+     * @return The fulfillment to call when the condition is satisfied. At least one of triggerFulfillment and target must be specified. When both are defined, triggerFulfillment is executed first.
      * Structure is documented below.
      * 
      */
@@ -91,7 +91,7 @@ public final class CxPageTransitionRoute {
         return Optional.ofNullable(this.targetPage);
     }
     /**
-     * @return The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+     * @return The fulfillment to call when the condition is satisfied. At least one of triggerFulfillment and target must be specified. When both are defined, triggerFulfillment is executed first.
      * Structure is documented below.
      * 
      */

@@ -130,7 +130,7 @@ namespace Pulumi.Gcp.DataPlex.Inputs
         private InputList<Inputs.DatascanDataQualityResultRuleRuleUniquenessExpectationArgs>? _uniquenessExpectations;
 
         /// <summary>
-        /// ColumnAggregate rule which evaluates whether the column has duplicates.
+        /// Row-level rule which evaluates whether each column value is unique.
         /// </summary>
         public InputList<Inputs.DatascanDataQualityResultRuleRuleUniquenessExpectationArgs> UniquenessExpectations
         {

@@ -73,7 +73,7 @@ import (
 //
 // ## Import
 //
-// # Billing account logging sinks can be imported using this format
+// Billing account logging sinks can be imported using this format:
 //
 // ```sh
 //

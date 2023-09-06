@@ -76,7 +76,7 @@ import (
 //
 // ## Import
 //
-// # EntryGroup can be imported using any of these accepted formats
+// EntryGroup can be imported using any of these accepted formats:
 //
 // ```sh
 //

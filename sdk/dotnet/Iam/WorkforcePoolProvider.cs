@@ -186,6 +186,11 @@ namespace Pulumi.Gcp.Iam
     ///             {
     ///                 ResponseType = "CODE",
     ///                 AssertionClaimsBehavior = "MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS",
+    ///                 AdditionalScopes = new[]
+    ///                 {
+    ///                     "groups",
+    ///                     "roles",
+    ///                 },
     ///             },
     ///         },
     ///         DisplayName = "Display name",

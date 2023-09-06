@@ -171,7 +171,7 @@ class _ServiceConnectionPolicyState:
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  psc_config: Optional[pulumi.Input['ServiceConnectionPolicyPscConfigArgs']] = None,
-                 psc_connections: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 psc_connections: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceConnectionPolicyPscConnectionArgs']]]] = None,
                  service_class: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
@@ -191,7 +191,8 @@ class _ServiceConnectionPolicyState:
                If it is not provided, the provider project is used.
         :param pulumi.Input['ServiceConnectionPolicyPscConfigArgs'] psc_config: Configuration used for Private Service Connect connections. Used when Infrastructure is PSC.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] psc_connections: Information about each Private Service Connect connection.
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceConnectionPolicyPscConnectionArgs']]] psc_connections: Information about each Private Service Connect connection.
+               Structure is documented below.
         :param pulumi.Input[str] service_class: The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass.
                It is provided by the Service Producer. Google services have a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
         :param pulumi.Input[str] update_time: The timestamp when the resource was updated.
@@ -350,14 +351,15 @@ class _ServiceConnectionPolicyState:
 
     @property
     @pulumi.getter(name="pscConnections")
-    def psc_connections(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def psc_connections(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceConnectionPolicyPscConnectionArgs']]]]:
         """
         Information about each Private Service Connect connection.
+        Structure is documented below.
         """
         return pulumi.get(self, "psc_connections")
 
     @psc_connections.setter
-    def psc_connections(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def psc_connections(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceConnectionPolicyPscConnectionArgs']]]]):
         pulumi.set(self, "psc_connections", value)
 
     @property
@@ -590,7 +592,7 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
             network: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             psc_config: Optional[pulumi.Input[pulumi.InputType['ServiceConnectionPolicyPscConfigArgs']]] = None,
-            psc_connections: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            psc_connections: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceConnectionPolicyPscConnectionArgs']]]]] = None,
             service_class: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'ServiceConnectionPolicy':
         """
@@ -615,7 +617,8 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['ServiceConnectionPolicyPscConfigArgs']] psc_config: Configuration used for Private Service Connect connections. Used when Infrastructure is PSC.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] psc_connections: Information about each Private Service Connect connection.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceConnectionPolicyPscConnectionArgs']]]] psc_connections: Information about each Private Service Connect connection.
+               Structure is documented below.
         :param pulumi.Input[str] service_class: The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass.
                It is provided by the Service Producer. Google services have a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
         :param pulumi.Input[str] update_time: The timestamp when the resource was updated.
@@ -726,9 +729,10 @@ class ServiceConnectionPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pscConnections")
-    def psc_connections(self) -> pulumi.Output[Sequence[str]]:
+    def psc_connections(self) -> pulumi.Output[Sequence['outputs.ServiceConnectionPolicyPscConnection']]:
         """
         Information about each Private Service Connect connection.
+        Structure is documented below.
         """
         return pulumi.get(self, "psc_connections")
 

@@ -17,6 +17,25 @@ public final class AndroidAppState extends com.pulumi.resources.ResourceArgs {
     public static final AndroidAppState Empty = new AndroidAppState();
 
     /**
+     * The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AndroidApp.
+     * If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AndroidApp.
+     * This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+     * 
+     */
+    @Import(name="apiKeyId")
+    private @Nullable Output<String> apiKeyId;
+
+    /**
+     * @return The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AndroidApp.
+     * If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AndroidApp.
+     * This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+     * 
+     */
+    public Optional<Output<String>> apiKeyId() {
+        return Optional.ofNullable(this.apiKeyId);
+    }
+
+    /**
      * The globally unique, Firebase-assigned identifier of the AndroidApp.
      * This identifier should be treated as an opaque token, as the data format is not specified.
      * 
@@ -172,6 +191,7 @@ public final class AndroidAppState extends com.pulumi.resources.ResourceArgs {
     private AndroidAppState() {}
 
     private AndroidAppState(AndroidAppState $) {
+        this.apiKeyId = $.apiKeyId;
         this.appId = $.appId;
         this.deletionPolicy = $.deletionPolicy;
         this.displayName = $.displayName;
@@ -199,6 +219,31 @@ public final class AndroidAppState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(AndroidAppState defaults) {
             $ = new AndroidAppState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param apiKeyId The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AndroidApp.
+         * If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AndroidApp.
+         * This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apiKeyId(@Nullable Output<String> apiKeyId) {
+            $.apiKeyId = apiKeyId;
+            return this;
+        }
+
+        /**
+         * @param apiKeyId The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AndroidApp.
+         * If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AndroidApp.
+         * This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apiKeyId(String apiKeyId) {
+            return apiKeyId(Output.of(apiKeyId));
         }
 
         /**

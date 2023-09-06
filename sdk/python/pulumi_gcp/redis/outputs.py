@@ -11,6 +11,12 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'ClusterDiscoveryEndpoint',
+    'ClusterDiscoveryEndpointPscConfig',
+    'ClusterPscConfig',
+    'ClusterPscConnection',
+    'ClusterStateInfo',
+    'ClusterStateInfoUpdateInfo',
     'InstanceMaintenancePolicy',
     'InstanceMaintenancePolicyWeeklyMaintenanceWindow',
     'InstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime',
@@ -26,6 +32,307 @@ __all__ = [
     'GetInstancePersistenceConfigResult',
     'GetInstanceServerCaCertResult',
 ]
+
+@pulumi.output_type
+class ClusterDiscoveryEndpoint(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pscConfig":
+            suggest = "psc_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterDiscoveryEndpoint. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterDiscoveryEndpoint.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterDiscoveryEndpoint.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 address: Optional[str] = None,
+                 port: Optional[int] = None,
+                 psc_config: Optional['outputs.ClusterDiscoveryEndpointPscConfig'] = None):
+        """
+        :param str address: Output only. The IP allocated on the consumer network for the PSC forwarding rule.
+        :param int port: Output only. The port number of the exposed Redis endpoint.
+        :param 'ClusterDiscoveryEndpointPscConfigArgs' psc_config: Output only. Customer configuration for where the endpoint
+               is created and accessed from.
+               Structure is documented below.
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if psc_config is not None:
+            pulumi.set(__self__, "psc_config", psc_config)
+
+    @property
+    @pulumi.getter
+    def address(self) -> Optional[str]:
+        """
+        Output only. The IP allocated on the consumer network for the PSC forwarding rule.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        Output only. The port number of the exposed Redis endpoint.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="pscConfig")
+    def psc_config(self) -> Optional['outputs.ClusterDiscoveryEndpointPscConfig']:
+        """
+        Output only. Customer configuration for where the endpoint
+        is created and accessed from.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_config")
+
+
+@pulumi.output_type
+class ClusterDiscoveryEndpointPscConfig(dict):
+    def __init__(__self__, *,
+                 network: Optional[str] = None):
+        """
+        :param str network: Required. The consumer network where the network address of
+               the discovery endpoint will be reserved, in the form of
+               projects/{network_project_id_or_number}/global/networks/{network_id}.
+               
+               - - -
+        """
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[str]:
+        """
+        Required. The consumer network where the network address of
+        the discovery endpoint will be reserved, in the form of
+        projects/{network_project_id_or_number}/global/networks/{network_id}.
+
+        - - -
+        """
+        return pulumi.get(self, "network")
+
+
+@pulumi.output_type
+class ClusterPscConfig(dict):
+    def __init__(__self__, *,
+                 network: str):
+        """
+        :param str network: Required. The consumer network where the network address of
+               the discovery endpoint will be reserved, in the form of
+               projects/{network_project_id_or_number}/global/networks/{network_id}.
+               
+               - - -
+        """
+        pulumi.set(__self__, "network", network)
+
+    @property
+    @pulumi.getter
+    def network(self) -> str:
+        """
+        Required. The consumer network where the network address of
+        the discovery endpoint will be reserved, in the form of
+        projects/{network_project_id_or_number}/global/networks/{network_id}.
+
+        - - -
+        """
+        return pulumi.get(self, "network")
+
+
+@pulumi.output_type
+class ClusterPscConnection(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "forwardingRule":
+            suggest = "forwarding_rule"
+        elif key == "projectId":
+            suggest = "project_id"
+        elif key == "pscConnectionId":
+            suggest = "psc_connection_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterPscConnection. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterPscConnection.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterPscConnection.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 address: Optional[str] = None,
+                 forwarding_rule: Optional[str] = None,
+                 network: Optional[str] = None,
+                 project_id: Optional[str] = None,
+                 psc_connection_id: Optional[str] = None):
+        """
+        :param str address: Output only. The IP allocated on the consumer network for the PSC forwarding rule.
+        :param str forwarding_rule: Output only. The URI of the consumer side forwarding rule. Example: projects/{projectNumOrId}/regions/us-east1/forwardingRules/{resourceId}.
+        :param str network: Required. The consumer network where the network address of
+               the discovery endpoint will be reserved, in the form of
+               projects/{network_project_id_or_number}/global/networks/{network_id}.
+               
+               - - -
+        :param str project_id: Output only. The consumer projectId where the forwarding rule is created from.
+        :param str psc_connection_id: Output only. The PSC connection id of the forwarding rule connected to the service attachment.
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if forwarding_rule is not None:
+            pulumi.set(__self__, "forwarding_rule", forwarding_rule)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+        if psc_connection_id is not None:
+            pulumi.set(__self__, "psc_connection_id", psc_connection_id)
+
+    @property
+    @pulumi.getter
+    def address(self) -> Optional[str]:
+        """
+        Output only. The IP allocated on the consumer network for the PSC forwarding rule.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter(name="forwardingRule")
+    def forwarding_rule(self) -> Optional[str]:
+        """
+        Output only. The URI of the consumer side forwarding rule. Example: projects/{projectNumOrId}/regions/us-east1/forwardingRules/{resourceId}.
+        """
+        return pulumi.get(self, "forwarding_rule")
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[str]:
+        """
+        Required. The consumer network where the network address of
+        the discovery endpoint will be reserved, in the form of
+        projects/{network_project_id_or_number}/global/networks/{network_id}.
+
+        - - -
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[str]:
+        """
+        Output only. The consumer projectId where the forwarding rule is created from.
+        """
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter(name="pscConnectionId")
+    def psc_connection_id(self) -> Optional[str]:
+        """
+        Output only. The PSC connection id of the forwarding rule connected to the service attachment.
+        """
+        return pulumi.get(self, "psc_connection_id")
+
+
+@pulumi.output_type
+class ClusterStateInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "updateInfo":
+            suggest = "update_info"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterStateInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterStateInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterStateInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 update_info: Optional['outputs.ClusterStateInfoUpdateInfo'] = None):
+        """
+        :param 'ClusterStateInfoUpdateInfoArgs' update_info: A nested object resource
+               Structure is documented below.
+        """
+        if update_info is not None:
+            pulumi.set(__self__, "update_info", update_info)
+
+    @property
+    @pulumi.getter(name="updateInfo")
+    def update_info(self) -> Optional['outputs.ClusterStateInfoUpdateInfo']:
+        """
+        A nested object resource
+        Structure is documented below.
+        """
+        return pulumi.get(self, "update_info")
+
+
+@pulumi.output_type
+class ClusterStateInfoUpdateInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetReplicaCount":
+            suggest = "target_replica_count"
+        elif key == "targetShardCount":
+            suggest = "target_shard_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterStateInfoUpdateInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterStateInfoUpdateInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterStateInfoUpdateInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 target_replica_count: Optional[int] = None,
+                 target_shard_count: Optional[int] = None):
+        """
+        :param int target_replica_count: Target number of replica nodes per shard.
+        :param int target_shard_count: Target number of shards for redis cluster.
+        """
+        if target_replica_count is not None:
+            pulumi.set(__self__, "target_replica_count", target_replica_count)
+        if target_shard_count is not None:
+            pulumi.set(__self__, "target_shard_count", target_shard_count)
+
+    @property
+    @pulumi.getter(name="targetReplicaCount")
+    def target_replica_count(self) -> Optional[int]:
+        """
+        Target number of replica nodes per shard.
+        """
+        return pulumi.get(self, "target_replica_count")
+
+    @property
+    @pulumi.getter(name="targetShardCount")
+    def target_shard_count(self) -> Optional[int]:
+        """
+        Target number of shards for redis cluster.
+        """
+        return pulumi.get(self, "target_shard_count")
+
 
 @pulumi.output_type
 class InstanceMaintenancePolicy(dict):

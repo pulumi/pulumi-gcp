@@ -13,6 +13,8 @@ import com.pulumi.gcp.alloydb.inputs.ClusterEncryptionConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterEncryptionInfoArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterInitialUserArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterMigrationSourceArgs;
+import com.pulumi.gcp.alloydb.inputs.ClusterRestoreBackupSourceArgs;
+import com.pulumi.gcp.alloydb.inputs.ClusterRestoreContinuousBackupSourceArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -294,6 +296,40 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The source when restoring from a backup. Conflicts with &#39;restore_continuous_backup_source&#39;, both can&#39;t be set together.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="restoreBackupSource")
+    private @Nullable Output<ClusterRestoreBackupSourceArgs> restoreBackupSource;
+
+    /**
+     * @return The source when restoring from a backup. Conflicts with &#39;restore_continuous_backup_source&#39;, both can&#39;t be set together.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterRestoreBackupSourceArgs>> restoreBackupSource() {
+        return Optional.ofNullable(this.restoreBackupSource);
+    }
+
+    /**
+     * The source when restoring via point in time recovery (PITR). Conflicts with &#39;restore_backup_source&#39;, both can&#39;t be set together.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="restoreContinuousBackupSource")
+    private @Nullable Output<ClusterRestoreContinuousBackupSourceArgs> restoreContinuousBackupSource;
+
+    /**
+     * @return The source when restoring via point in time recovery (PITR). Conflicts with &#39;restore_backup_source&#39;, both can&#39;t be set together.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterRestoreContinuousBackupSourceArgs>> restoreContinuousBackupSource() {
+        return Optional.ofNullable(this.restoreContinuousBackupSource);
+    }
+
+    /**
      * The system-generated UID of the resource.
      * 
      */
@@ -327,6 +363,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.network = $.network;
         this.project = $.project;
+        this.restoreBackupSource = $.restoreBackupSource;
+        this.restoreContinuousBackupSource = $.restoreContinuousBackupSource;
         this.uid = $.uid;
     }
 
@@ -755,6 +793,52 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param restoreBackupSource The source when restoring from a backup. Conflicts with &#39;restore_continuous_backup_source&#39;, both can&#39;t be set together.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restoreBackupSource(@Nullable Output<ClusterRestoreBackupSourceArgs> restoreBackupSource) {
+            $.restoreBackupSource = restoreBackupSource;
+            return this;
+        }
+
+        /**
+         * @param restoreBackupSource The source when restoring from a backup. Conflicts with &#39;restore_continuous_backup_source&#39;, both can&#39;t be set together.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restoreBackupSource(ClusterRestoreBackupSourceArgs restoreBackupSource) {
+            return restoreBackupSource(Output.of(restoreBackupSource));
+        }
+
+        /**
+         * @param restoreContinuousBackupSource The source when restoring via point in time recovery (PITR). Conflicts with &#39;restore_backup_source&#39;, both can&#39;t be set together.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restoreContinuousBackupSource(@Nullable Output<ClusterRestoreContinuousBackupSourceArgs> restoreContinuousBackupSource) {
+            $.restoreContinuousBackupSource = restoreContinuousBackupSource;
+            return this;
+        }
+
+        /**
+         * @param restoreContinuousBackupSource The source when restoring via point in time recovery (PITR). Conflicts with &#39;restore_backup_source&#39;, both can&#39;t be set together.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restoreContinuousBackupSource(ClusterRestoreContinuousBackupSourceArgs restoreContinuousBackupSource) {
+            return restoreContinuousBackupSource(Output.of(restoreContinuousBackupSource));
         }
 
         /**

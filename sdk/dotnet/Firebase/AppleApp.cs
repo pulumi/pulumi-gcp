@@ -43,6 +43,25 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var apple = new Gcp.Projects.ApiKey("apple", new()
+    ///     {
+    ///         DisplayName = "Display Name Full",
+    ///         Project = "my-project-name",
+    ///         Restrictions = new Gcp.Projects.Inputs.ApiKeyRestrictionsArgs
+    ///         {
+    ///             IosKeyRestrictions = new Gcp.Projects.Inputs.ApiKeyRestrictionsIosKeyRestrictionsArgs
+    ///             {
+    ///                 AllowedBundleIds = new[]
+    ///                 {
+    ///                     "apple.app.12345",
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
     ///     var full = new Gcp.Firebase.AppleApp("full", new()
     ///     {
     ///         Project = "my-project-name",
@@ -50,6 +69,7 @@ namespace Pulumi.Gcp.Firebase
     ///         BundleId = "apple.app.12345",
     ///         AppStoreId = "12345",
     ///         TeamId = "9987654321",
+    ///         ApiKeyId = apple.Uid,
     ///     }, new CustomResourceOptions
     ///     {
     ///         Provider = google_beta,
@@ -85,6 +105,14 @@ namespace Pulumi.Gcp.Firebase
     [GcpResourceType("gcp:firebase/appleApp:AppleApp")]
     public partial class AppleApp : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AppleApp.
+        /// If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AppleApp.
+        /// This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+        /// </summary>
+        [Output("apiKeyId")]
+        public Output<string> ApiKeyId { get; private set; } = null!;
+
         /// <summary>
         /// The globally unique, Firebase-assigned identifier of the App.
         /// This identifier should be treated as an opaque token, as the data format is not specified.
@@ -188,6 +216,14 @@ namespace Pulumi.Gcp.Firebase
     public sealed class AppleAppArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AppleApp.
+        /// If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AppleApp.
+        /// This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+        /// </summary>
+        [Input("apiKeyId")]
+        public Input<string>? ApiKeyId { get; set; }
+
+        /// <summary>
         /// The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
         /// </summary>
         [Input("appStoreId")]
@@ -237,6 +273,14 @@ namespace Pulumi.Gcp.Firebase
 
     public sealed class AppleAppState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AppleApp.
+        /// If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AppleApp.
+        /// This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+        /// </summary>
+        [Input("apiKeyId")]
+        public Input<string>? ApiKeyId { get; set; }
+
         /// <summary>
         /// The globally unique, Firebase-assigned identifier of the App.
         /// This identifier should be treated as an opaque token, as the data format is not specified.

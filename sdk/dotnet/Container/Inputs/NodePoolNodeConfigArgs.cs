@@ -18,6 +18,9 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("bootDiskKmsKey")]
         public Input<string>? BootDiskKmsKey { get; set; }
 
+        [Input("confidentialNodes")]
+        public Input<Inputs.NodePoolNodeConfigConfidentialNodesArgs>? ConfidentialNodes { get; set; }
+
         [Input("diskSizeGb")]
         public Input<int>? DiskSizeGb { get; set; }
 

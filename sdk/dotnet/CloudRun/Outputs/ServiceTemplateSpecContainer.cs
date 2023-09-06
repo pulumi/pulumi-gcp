@@ -31,6 +31,8 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// take precedence. Values defined by an Env with a duplicate key will take
         /// precedence.
         /// Structure is documented below.
+        /// 
+        /// &gt; **Warning:** `env_from` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
         /// </summary>
         public readonly ImmutableArray<Outputs.ServiceTemplateSpecContainerEnvFrom> EnvFroms;
         /// <summary>
@@ -81,6 +83,8 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// Container's working directory.
         /// If not specified, the container runtime's default will be used, which
         /// might be configured in the container image.
+        /// 
+        /// &gt; **Warning:** `working_dir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
         /// </summary>
         public readonly string? WorkingDir;
 

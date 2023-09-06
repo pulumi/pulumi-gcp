@@ -91,9 +91,10 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     host: {
  *         gceInstance: {
- *             machineType: "e2-standard-4",
+ *             machineType: "n1-standard-4",
  *             bootDiskSizeGb: 35,
  *             disablePublicIpAddresses: true,
+ *             enableNestedVirtualization: true,
  *         },
  *     },
  *     container: {

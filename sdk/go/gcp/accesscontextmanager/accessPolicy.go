@@ -99,7 +99,7 @@ import (
 //
 // ## Import
 //
-// # AccessPolicy can be imported using any of these accepted formats
+// AccessPolicy can be imported using any of these accepted formats:
 //
 // ```sh
 //

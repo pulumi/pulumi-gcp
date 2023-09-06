@@ -199,7 +199,6 @@ import * as utilities from "../utilities";
  *                 items: [{
  *                     version: "1",
  *                     path: "my-secret",
- *                     mode: 256,
  *                 }],
  *             },
  *         }],

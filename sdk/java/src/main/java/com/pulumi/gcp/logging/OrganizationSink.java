@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Organization-level logging sinks can be imported using this format
+ * Organization-level logging sinks can be imported using this format:
  * 
  * ```sh
  *  $ pulumi import gcp:logging/organizationSink:OrganizationSink my_sink organizations/{{organization_id}}/sinks/{{sink_id}}

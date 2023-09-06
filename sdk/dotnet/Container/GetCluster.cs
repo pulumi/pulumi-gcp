@@ -164,6 +164,7 @@ namespace Pulumi.Gcp.Container
         public readonly ImmutableArray<Outputs.GetClusterDnsConfigResult> DnsConfigs;
         public readonly bool EnableAutopilot;
         public readonly bool EnableBinaryAuthorization;
+        public readonly bool EnableFqdnNetworkPolicy;
         public readonly bool EnableIntranodeVisibility;
         public readonly ImmutableArray<Outputs.GetClusterEnableK8sBetaApiResult> EnableK8sBetaApis;
         public readonly bool EnableKubernetesAlpha;
@@ -259,6 +260,8 @@ namespace Pulumi.Gcp.Container
             bool enableAutopilot,
 
             bool enableBinaryAuthorization,
+
+            bool enableFqdnNetworkPolicy,
 
             bool enableIntranodeVisibility,
 
@@ -389,6 +392,7 @@ namespace Pulumi.Gcp.Container
             DnsConfigs = dnsConfigs;
             EnableAutopilot = enableAutopilot;
             EnableBinaryAuthorization = enableBinaryAuthorization;
+            EnableFqdnNetworkPolicy = enableFqdnNetworkPolicy;
             EnableIntranodeVisibility = enableIntranodeVisibility;
             EnableK8sBetaApis = enableK8sBetaApis;
             EnableKubernetesAlpha = enableKubernetesAlpha;

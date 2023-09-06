@@ -305,6 +305,20 @@ public class TargetInstance extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
+     * The resource URL for the security policy associated with this target instance.
+     * 
+     */
+    @Export(name="securityPolicy", type=String.class, parameters={})
+    private Output</* @Nullable */ String> securityPolicy;
+
+    /**
+     * @return The resource URL for the security policy associated with this target instance.
+     * 
+     */
+    public Output<Optional<String>> securityPolicy() {
+        return Codegen.optional(this.securityPolicy);
+    }
+    /**
      * The URI of the created resource.
      * 
      */

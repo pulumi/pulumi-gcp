@@ -106,7 +106,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * OrganizationSecurityPolicyAssociation can be imported using any of these accepted formats
+ * OrganizationSecurityPolicyAssociation can be imported using any of these accepted formats:
  * 
  * ```sh
  *  $ pulumi import gcp:compute/organizationSecurityPolicyAssociation:OrganizationSecurityPolicyAssociation default {{policy_id}}/association/{{name}}

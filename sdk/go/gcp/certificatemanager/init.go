@@ -31,6 +31,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CertificateMapEntry{}
 	case "gcp:certificatemanager/dnsAuthorization:DnsAuthorization":
 		r = &DnsAuthorization{}
+	case "gcp:certificatemanager/trustConfig:TrustConfig":
+		r = &TrustConfig{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -67,6 +69,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"certificatemanager/dnsAuthorization",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"certificatemanager/trustConfig",
 		&module{version},
 	)
 }

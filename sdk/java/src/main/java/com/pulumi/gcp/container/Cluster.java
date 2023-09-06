@@ -521,6 +521,22 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enableBinaryAuthorization);
     }
     /**
+     * )
+     * Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
+     * 
+     */
+    @Export(name="enableFqdnNetworkPolicy", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> enableFqdnNetworkPolicy;
+
+    /**
+     * @return )
+     * Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
+     * 
+     */
+    public Output<Optional<Boolean>> enableFqdnNetworkPolicy() {
+        return Codegen.optional(this.enableFqdnNetworkPolicy);
+    }
+    /**
      * Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
      * 
      */

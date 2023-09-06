@@ -2822,8 +2822,8 @@ class CertificateCertificateDescriptionArgs:
         if cert_fingerprints is not None:
             pulumi.set(__self__, "cert_fingerprints", cert_fingerprints)
         if config_values is not None:
-            warnings.warn("""Deprecated in favor of `x509_description`.""", DeprecationWarning)
-            pulumi.log.warn("""config_values is deprecated: Deprecated in favor of `x509_description`.""")
+            warnings.warn("""`config_values` is deprecated and will be removed in a future release. Use `x509_description` instead.""", DeprecationWarning)
+            pulumi.log.warn("""config_values is deprecated: `config_values` is deprecated and will be removed in a future release. Use `x509_description` instead.""")
         if config_values is not None:
             pulumi.set(__self__, "config_values", config_values)
         if crl_distribution_points is not None:
@@ -2886,8 +2886,8 @@ class CertificateCertificateDescriptionArgs:
         Describes some of the technical fields in a certificate.
         Structure is documented below.
         """
-        warnings.warn("""Deprecated in favor of `x509_description`.""", DeprecationWarning)
-        pulumi.log.warn("""config_values is deprecated: Deprecated in favor of `x509_description`.""")
+        warnings.warn("""`config_values` is deprecated and will be removed in a future release. Use `x509_description` instead.""", DeprecationWarning)
+        pulumi.log.warn("""config_values is deprecated: `config_values` is deprecated and will be removed in a future release. Use `x509_description` instead.""")
 
         return pulumi.get(self, "config_values")
 

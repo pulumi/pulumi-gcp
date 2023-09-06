@@ -71,7 +71,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Release can be imported using any of these accepted formats
+ * Release can be imported using any of these accepted formats:
  *
  * ```sh
  *  $ pulumi import gcp:firebaserules/release:Release default projects/{{project}}/releases/{{name}}

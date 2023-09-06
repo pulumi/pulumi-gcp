@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Agent can be imported using any of these accepted formats
+ * Agent can be imported using any of these accepted formats:
  * 
  * ```sh
  *  $ pulumi import gcp:diagflow/agent:Agent default {{project}}

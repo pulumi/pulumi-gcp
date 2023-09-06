@@ -14724,6 +14724,10 @@ func (o ClusterIdentityServiceConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type ClusterIpAllocationPolicy struct {
+	// The configuration for additional pod secondary ranges at
+	// the cluster level. Used for Autopilot clusters and Standard clusters with which control of the
+	// secondary Pod IP address assignment to node pools isn't needed. Structure is documented below.
+	AdditionalPodRangesConfig *ClusterIpAllocationPolicyAdditionalPodRangesConfig `pulumi:"additionalPodRangesConfig"`
 	// The IP address range for the cluster pod IPs.
 	// Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
 	// to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14)
@@ -14764,6 +14768,10 @@ type ClusterIpAllocationPolicyInput interface {
 }
 
 type ClusterIpAllocationPolicyArgs struct {
+	// The configuration for additional pod secondary ranges at
+	// the cluster level. Used for Autopilot clusters and Standard clusters with which control of the
+	// secondary Pod IP address assignment to node pools isn't needed. Structure is documented below.
+	AdditionalPodRangesConfig ClusterIpAllocationPolicyAdditionalPodRangesConfigPtrInput `pulumi:"additionalPodRangesConfig"`
 	// The IP address range for the cluster pod IPs.
 	// Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
 	// to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14)
@@ -14869,6 +14877,15 @@ func (o ClusterIpAllocationPolicyOutput) ToClusterIpAllocationPolicyPtrOutputWit
 	}).(ClusterIpAllocationPolicyPtrOutput)
 }
 
+// The configuration for additional pod secondary ranges at
+// the cluster level. Used for Autopilot clusters and Standard clusters with which control of the
+// secondary Pod IP address assignment to node pools isn't needed. Structure is documented below.
+func (o ClusterIpAllocationPolicyOutput) AdditionalPodRangesConfig() ClusterIpAllocationPolicyAdditionalPodRangesConfigPtrOutput {
+	return o.ApplyT(func(v ClusterIpAllocationPolicy) *ClusterIpAllocationPolicyAdditionalPodRangesConfig {
+		return v.AdditionalPodRangesConfig
+	}).(ClusterIpAllocationPolicyAdditionalPodRangesConfigPtrOutput)
+}
+
 // The IP address range for the cluster pod IPs.
 // Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
 // to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14)
@@ -14937,6 +14954,18 @@ func (o ClusterIpAllocationPolicyPtrOutput) Elem() ClusterIpAllocationPolicyOutp
 		var ret ClusterIpAllocationPolicy
 		return ret
 	}).(ClusterIpAllocationPolicyOutput)
+}
+
+// The configuration for additional pod secondary ranges at
+// the cluster level. Used for Autopilot clusters and Standard clusters with which control of the
+// secondary Pod IP address assignment to node pools isn't needed. Structure is documented below.
+func (o ClusterIpAllocationPolicyPtrOutput) AdditionalPodRangesConfig() ClusterIpAllocationPolicyAdditionalPodRangesConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterIpAllocationPolicy) *ClusterIpAllocationPolicyAdditionalPodRangesConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalPodRangesConfig
+	}).(ClusterIpAllocationPolicyAdditionalPodRangesConfigPtrOutput)
 }
 
 // The IP address range for the cluster pod IPs.
@@ -15011,6 +15040,143 @@ func (o ClusterIpAllocationPolicyPtrOutput) StackType() pulumi.StringPtrOutput {
 		}
 		return v.StackType
 	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterIpAllocationPolicyAdditionalPodRangesConfig struct {
+	// The names of the Pod ranges to add to the cluster.
+	PodRangeNames []string `pulumi:"podRangeNames"`
+}
+
+// ClusterIpAllocationPolicyAdditionalPodRangesConfigInput is an input type that accepts ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs and ClusterIpAllocationPolicyAdditionalPodRangesConfigOutput values.
+// You can construct a concrete instance of `ClusterIpAllocationPolicyAdditionalPodRangesConfigInput` via:
+//
+//	ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs{...}
+type ClusterIpAllocationPolicyAdditionalPodRangesConfigInput interface {
+	pulumi.Input
+
+	ToClusterIpAllocationPolicyAdditionalPodRangesConfigOutput() ClusterIpAllocationPolicyAdditionalPodRangesConfigOutput
+	ToClusterIpAllocationPolicyAdditionalPodRangesConfigOutputWithContext(context.Context) ClusterIpAllocationPolicyAdditionalPodRangesConfigOutput
+}
+
+type ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs struct {
+	// The names of the Pod ranges to add to the cluster.
+	PodRangeNames pulumi.StringArrayInput `pulumi:"podRangeNames"`
+}
+
+func (ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterIpAllocationPolicyAdditionalPodRangesConfig)(nil)).Elem()
+}
+
+func (i ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs) ToClusterIpAllocationPolicyAdditionalPodRangesConfigOutput() ClusterIpAllocationPolicyAdditionalPodRangesConfigOutput {
+	return i.ToClusterIpAllocationPolicyAdditionalPodRangesConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs) ToClusterIpAllocationPolicyAdditionalPodRangesConfigOutputWithContext(ctx context.Context) ClusterIpAllocationPolicyAdditionalPodRangesConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterIpAllocationPolicyAdditionalPodRangesConfigOutput)
+}
+
+func (i ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs) ToClusterIpAllocationPolicyAdditionalPodRangesConfigPtrOutput() ClusterIpAllocationPolicyAdditionalPodRangesConfigPtrOutput {
+	return i.ToClusterIpAllocationPolicyAdditionalPodRangesConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs) ToClusterIpAllocationPolicyAdditionalPodRangesConfigPtrOutputWithContext(ctx context.Context) ClusterIpAllocationPolicyAdditionalPodRangesConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterIpAllocationPolicyAdditionalPodRangesConfigOutput).ToClusterIpAllocationPolicyAdditionalPodRangesConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterIpAllocationPolicyAdditionalPodRangesConfigPtrInput is an input type that accepts ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs, ClusterIpAllocationPolicyAdditionalPodRangesConfigPtr and ClusterIpAllocationPolicyAdditionalPodRangesConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterIpAllocationPolicyAdditionalPodRangesConfigPtrInput` via:
+//
+//	        ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterIpAllocationPolicyAdditionalPodRangesConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterIpAllocationPolicyAdditionalPodRangesConfigPtrOutput() ClusterIpAllocationPolicyAdditionalPodRangesConfigPtrOutput
+	ToClusterIpAllocationPolicyAdditionalPodRangesConfigPtrOutputWithContext(context.Context) ClusterIpAllocationPolicyAdditionalPodRangesConfigPtrOutput
+}
+
+type clusterIpAllocationPolicyAdditionalPodRangesConfigPtrType ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs
+
+func ClusterIpAllocationPolicyAdditionalPodRangesConfigPtr(v *ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs) ClusterIpAllocationPolicyAdditionalPodRangesConfigPtrInput {
+	return (*clusterIpAllocationPolicyAdditionalPodRangesConfigPtrType)(v)
+}
+
+func (*clusterIpAllocationPolicyAdditionalPodRangesConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterIpAllocationPolicyAdditionalPodRangesConfig)(nil)).Elem()
+}
+
+func (i *clusterIpAllocationPolicyAdditionalPodRangesConfigPtrType) ToClusterIpAllocationPolicyAdditionalPodRangesConfigPtrOutput() ClusterIpAllocationPolicyAdditionalPodRangesConfigPtrOutput {
+	return i.ToClusterIpAllocationPolicyAdditionalPodRangesConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterIpAllocationPolicyAdditionalPodRangesConfigPtrType) ToClusterIpAllocationPolicyAdditionalPodRangesConfigPtrOutputWithContext(ctx context.Context) ClusterIpAllocationPolicyAdditionalPodRangesConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterIpAllocationPolicyAdditionalPodRangesConfigPtrOutput)
+}
+
+type ClusterIpAllocationPolicyAdditionalPodRangesConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterIpAllocationPolicyAdditionalPodRangesConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterIpAllocationPolicyAdditionalPodRangesConfig)(nil)).Elem()
+}
+
+func (o ClusterIpAllocationPolicyAdditionalPodRangesConfigOutput) ToClusterIpAllocationPolicyAdditionalPodRangesConfigOutput() ClusterIpAllocationPolicyAdditionalPodRangesConfigOutput {
+	return o
+}
+
+func (o ClusterIpAllocationPolicyAdditionalPodRangesConfigOutput) ToClusterIpAllocationPolicyAdditionalPodRangesConfigOutputWithContext(ctx context.Context) ClusterIpAllocationPolicyAdditionalPodRangesConfigOutput {
+	return o
+}
+
+func (o ClusterIpAllocationPolicyAdditionalPodRangesConfigOutput) ToClusterIpAllocationPolicyAdditionalPodRangesConfigPtrOutput() ClusterIpAllocationPolicyAdditionalPodRangesConfigPtrOutput {
+	return o.ToClusterIpAllocationPolicyAdditionalPodRangesConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterIpAllocationPolicyAdditionalPodRangesConfigOutput) ToClusterIpAllocationPolicyAdditionalPodRangesConfigPtrOutputWithContext(ctx context.Context) ClusterIpAllocationPolicyAdditionalPodRangesConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterIpAllocationPolicyAdditionalPodRangesConfig) *ClusterIpAllocationPolicyAdditionalPodRangesConfig {
+		return &v
+	}).(ClusterIpAllocationPolicyAdditionalPodRangesConfigPtrOutput)
+}
+
+// The names of the Pod ranges to add to the cluster.
+func (o ClusterIpAllocationPolicyAdditionalPodRangesConfigOutput) PodRangeNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterIpAllocationPolicyAdditionalPodRangesConfig) []string { return v.PodRangeNames }).(pulumi.StringArrayOutput)
+}
+
+type ClusterIpAllocationPolicyAdditionalPodRangesConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterIpAllocationPolicyAdditionalPodRangesConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterIpAllocationPolicyAdditionalPodRangesConfig)(nil)).Elem()
+}
+
+func (o ClusterIpAllocationPolicyAdditionalPodRangesConfigPtrOutput) ToClusterIpAllocationPolicyAdditionalPodRangesConfigPtrOutput() ClusterIpAllocationPolicyAdditionalPodRangesConfigPtrOutput {
+	return o
+}
+
+func (o ClusterIpAllocationPolicyAdditionalPodRangesConfigPtrOutput) ToClusterIpAllocationPolicyAdditionalPodRangesConfigPtrOutputWithContext(ctx context.Context) ClusterIpAllocationPolicyAdditionalPodRangesConfigPtrOutput {
+	return o
+}
+
+func (o ClusterIpAllocationPolicyAdditionalPodRangesConfigPtrOutput) Elem() ClusterIpAllocationPolicyAdditionalPodRangesConfigOutput {
+	return o.ApplyT(func(v *ClusterIpAllocationPolicyAdditionalPodRangesConfig) ClusterIpAllocationPolicyAdditionalPodRangesConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterIpAllocationPolicyAdditionalPodRangesConfig
+		return ret
+	}).(ClusterIpAllocationPolicyAdditionalPodRangesConfigOutput)
+}
+
+// The names of the Pod ranges to add to the cluster.
+func (o ClusterIpAllocationPolicyAdditionalPodRangesConfigPtrOutput) PodRangeNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClusterIpAllocationPolicyAdditionalPodRangesConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PodRangeNames
+	}).(pulumi.StringArrayOutput)
 }
 
 type ClusterIpAllocationPolicyPodCidrOverprovisionConfig struct {
@@ -17731,6 +17897,8 @@ type ClusterNodeConfig struct {
 	AdvancedMachineFeatures *ClusterNodeConfigAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
 	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
 	BootDiskKmsKey *string `pulumi:"bootDiskKmsKey"`
+	// Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+	ConfidentialNodes *ClusterNodeConfigConfidentialNodes `pulumi:"confidentialNodes"`
 	// Size of the disk attached to each node, specified
 	// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
@@ -17955,6 +18123,8 @@ type ClusterNodeConfigArgs struct {
 	AdvancedMachineFeatures ClusterNodeConfigAdvancedMachineFeaturesPtrInput `pulumi:"advancedMachineFeatures"`
 	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
 	BootDiskKmsKey pulumi.StringPtrInput `pulumi:"bootDiskKmsKey"`
+	// Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+	ConfidentialNodes ClusterNodeConfigConfidentialNodesPtrInput `pulumi:"confidentialNodes"`
 	// Size of the disk attached to each node, specified
 	// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
 	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
@@ -18248,6 +18418,11 @@ func (o ClusterNodeConfigOutput) AdvancedMachineFeatures() ClusterNodeConfigAdva
 // The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
 func (o ClusterNodeConfigOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.BootDiskKmsKey }).(pulumi.StringPtrOutput)
+}
+
+// Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+func (o ClusterNodeConfigOutput) ConfidentialNodes() ClusterNodeConfigConfidentialNodesPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigConfidentialNodes { return v.ConfidentialNodes }).(ClusterNodeConfigConfidentialNodesPtrOutput)
 }
 
 // Size of the disk attached to each node, specified
@@ -18614,6 +18789,16 @@ func (o ClusterNodeConfigPtrOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 		}
 		return v.BootDiskKmsKey
 	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+func (o ClusterNodeConfigPtrOutput) ConfidentialNodes() ClusterNodeConfigConfidentialNodesPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfig) *ClusterNodeConfigConfidentialNodes {
+		if v == nil {
+			return nil
+		}
+		return v.ConfidentialNodes
+	}).(ClusterNodeConfigConfidentialNodesPtrOutput)
 }
 
 // Size of the disk attached to each node, specified
@@ -19225,6 +19410,143 @@ func (o ClusterNodeConfigAdvancedMachineFeaturesPtrOutput) ThreadsPerCore() pulu
 		}
 		return &v.ThreadsPerCore
 	}).(pulumi.IntPtrOutput)
+}
+
+type ClusterNodeConfigConfidentialNodes struct {
+	// Enable Confidential Nodes for this cluster.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// ClusterNodeConfigConfidentialNodesInput is an input type that accepts ClusterNodeConfigConfidentialNodesArgs and ClusterNodeConfigConfidentialNodesOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigConfidentialNodesInput` via:
+//
+//	ClusterNodeConfigConfidentialNodesArgs{...}
+type ClusterNodeConfigConfidentialNodesInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigConfidentialNodesOutput() ClusterNodeConfigConfidentialNodesOutput
+	ToClusterNodeConfigConfidentialNodesOutputWithContext(context.Context) ClusterNodeConfigConfidentialNodesOutput
+}
+
+type ClusterNodeConfigConfidentialNodesArgs struct {
+	// Enable Confidential Nodes for this cluster.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (ClusterNodeConfigConfidentialNodesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigConfidentialNodes)(nil)).Elem()
+}
+
+func (i ClusterNodeConfigConfidentialNodesArgs) ToClusterNodeConfigConfidentialNodesOutput() ClusterNodeConfigConfidentialNodesOutput {
+	return i.ToClusterNodeConfigConfidentialNodesOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigConfidentialNodesArgs) ToClusterNodeConfigConfidentialNodesOutputWithContext(ctx context.Context) ClusterNodeConfigConfidentialNodesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigConfidentialNodesOutput)
+}
+
+func (i ClusterNodeConfigConfidentialNodesArgs) ToClusterNodeConfigConfidentialNodesPtrOutput() ClusterNodeConfigConfidentialNodesPtrOutput {
+	return i.ToClusterNodeConfigConfidentialNodesPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigConfidentialNodesArgs) ToClusterNodeConfigConfidentialNodesPtrOutputWithContext(ctx context.Context) ClusterNodeConfigConfidentialNodesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigConfidentialNodesOutput).ToClusterNodeConfigConfidentialNodesPtrOutputWithContext(ctx)
+}
+
+// ClusterNodeConfigConfidentialNodesPtrInput is an input type that accepts ClusterNodeConfigConfidentialNodesArgs, ClusterNodeConfigConfidentialNodesPtr and ClusterNodeConfigConfidentialNodesPtrOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigConfidentialNodesPtrInput` via:
+//
+//	        ClusterNodeConfigConfidentialNodesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodeConfigConfidentialNodesPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigConfidentialNodesPtrOutput() ClusterNodeConfigConfidentialNodesPtrOutput
+	ToClusterNodeConfigConfidentialNodesPtrOutputWithContext(context.Context) ClusterNodeConfigConfidentialNodesPtrOutput
+}
+
+type clusterNodeConfigConfidentialNodesPtrType ClusterNodeConfigConfidentialNodesArgs
+
+func ClusterNodeConfigConfidentialNodesPtr(v *ClusterNodeConfigConfidentialNodesArgs) ClusterNodeConfigConfidentialNodesPtrInput {
+	return (*clusterNodeConfigConfidentialNodesPtrType)(v)
+}
+
+func (*clusterNodeConfigConfidentialNodesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeConfigConfidentialNodes)(nil)).Elem()
+}
+
+func (i *clusterNodeConfigConfidentialNodesPtrType) ToClusterNodeConfigConfidentialNodesPtrOutput() ClusterNodeConfigConfidentialNodesPtrOutput {
+	return i.ToClusterNodeConfigConfidentialNodesPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodeConfigConfidentialNodesPtrType) ToClusterNodeConfigConfidentialNodesPtrOutputWithContext(ctx context.Context) ClusterNodeConfigConfidentialNodesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigConfidentialNodesPtrOutput)
+}
+
+type ClusterNodeConfigConfidentialNodesOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigConfidentialNodesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigConfidentialNodes)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigConfidentialNodesOutput) ToClusterNodeConfigConfidentialNodesOutput() ClusterNodeConfigConfidentialNodesOutput {
+	return o
+}
+
+func (o ClusterNodeConfigConfidentialNodesOutput) ToClusterNodeConfigConfidentialNodesOutputWithContext(ctx context.Context) ClusterNodeConfigConfidentialNodesOutput {
+	return o
+}
+
+func (o ClusterNodeConfigConfidentialNodesOutput) ToClusterNodeConfigConfidentialNodesPtrOutput() ClusterNodeConfigConfidentialNodesPtrOutput {
+	return o.ToClusterNodeConfigConfidentialNodesPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodeConfigConfidentialNodesOutput) ToClusterNodeConfigConfidentialNodesPtrOutputWithContext(ctx context.Context) ClusterNodeConfigConfidentialNodesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodeConfigConfidentialNodes) *ClusterNodeConfigConfidentialNodes {
+		return &v
+	}).(ClusterNodeConfigConfidentialNodesPtrOutput)
+}
+
+// Enable Confidential Nodes for this cluster.
+func (o ClusterNodeConfigConfidentialNodesOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterNodeConfigConfidentialNodes) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type ClusterNodeConfigConfidentialNodesPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigConfidentialNodesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeConfigConfidentialNodes)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigConfidentialNodesPtrOutput) ToClusterNodeConfigConfidentialNodesPtrOutput() ClusterNodeConfigConfidentialNodesPtrOutput {
+	return o
+}
+
+func (o ClusterNodeConfigConfidentialNodesPtrOutput) ToClusterNodeConfigConfidentialNodesPtrOutputWithContext(ctx context.Context) ClusterNodeConfigConfidentialNodesPtrOutput {
+	return o
+}
+
+func (o ClusterNodeConfigConfidentialNodesPtrOutput) Elem() ClusterNodeConfigConfidentialNodesOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigConfidentialNodes) ClusterNodeConfigConfidentialNodes {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodeConfigConfidentialNodes
+		return ret
+	}).(ClusterNodeConfigConfidentialNodesOutput)
+}
+
+// Enable Confidential Nodes for this cluster.
+func (o ClusterNodeConfigConfidentialNodesPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigConfidentialNodes) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ClusterNodeConfigEphemeralStorageConfig struct {
@@ -23958,6 +24280,8 @@ type ClusterNodePoolNodeConfig struct {
 	AdvancedMachineFeatures *ClusterNodePoolNodeConfigAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
 	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
 	BootDiskKmsKey *string `pulumi:"bootDiskKmsKey"`
+	// Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+	ConfidentialNodes *ClusterNodePoolNodeConfigConfidentialNodes `pulumi:"confidentialNodes"`
 	// Size of the disk attached to each node, specified
 	// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
@@ -24182,6 +24506,8 @@ type ClusterNodePoolNodeConfigArgs struct {
 	AdvancedMachineFeatures ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrInput `pulumi:"advancedMachineFeatures"`
 	// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
 	BootDiskKmsKey pulumi.StringPtrInput `pulumi:"bootDiskKmsKey"`
+	// Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+	ConfidentialNodes ClusterNodePoolNodeConfigConfidentialNodesPtrInput `pulumi:"confidentialNodes"`
 	// Size of the disk attached to each node, specified
 	// in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
 	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
@@ -24477,6 +24803,13 @@ func (o ClusterNodePoolNodeConfigOutput) AdvancedMachineFeatures() ClusterNodePo
 // The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
 func (o ClusterNodePoolNodeConfigOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.BootDiskKmsKey }).(pulumi.StringPtrOutput)
+}
+
+// Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+func (o ClusterNodePoolNodeConfigOutput) ConfidentialNodes() ClusterNodePoolNodeConfigConfidentialNodesPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigConfidentialNodes {
+		return v.ConfidentialNodes
+	}).(ClusterNodePoolNodeConfigConfidentialNodesPtrOutput)
 }
 
 // Size of the disk attached to each node, specified
@@ -24859,6 +25192,16 @@ func (o ClusterNodePoolNodeConfigPtrOutput) BootDiskKmsKey() pulumi.StringPtrOut
 		}
 		return v.BootDiskKmsKey
 	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+func (o ClusterNodePoolNodeConfigPtrOutput) ConfidentialNodes() ClusterNodePoolNodeConfigConfidentialNodesPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigConfidentialNodes {
+		if v == nil {
+			return nil
+		}
+		return v.ConfidentialNodes
+	}).(ClusterNodePoolNodeConfigConfidentialNodesPtrOutput)
 }
 
 // Size of the disk attached to each node, specified
@@ -25470,6 +25813,143 @@ func (o ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput) ThreadsPerCor
 		}
 		return &v.ThreadsPerCore
 	}).(pulumi.IntPtrOutput)
+}
+
+type ClusterNodePoolNodeConfigConfidentialNodes struct {
+	// Enable Confidential Nodes for this cluster.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// ClusterNodePoolNodeConfigConfidentialNodesInput is an input type that accepts ClusterNodePoolNodeConfigConfidentialNodesArgs and ClusterNodePoolNodeConfigConfidentialNodesOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigConfidentialNodesInput` via:
+//
+//	ClusterNodePoolNodeConfigConfidentialNodesArgs{...}
+type ClusterNodePoolNodeConfigConfidentialNodesInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigConfidentialNodesOutput() ClusterNodePoolNodeConfigConfidentialNodesOutput
+	ToClusterNodePoolNodeConfigConfidentialNodesOutputWithContext(context.Context) ClusterNodePoolNodeConfigConfidentialNodesOutput
+}
+
+type ClusterNodePoolNodeConfigConfidentialNodesArgs struct {
+	// Enable Confidential Nodes for this cluster.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (ClusterNodePoolNodeConfigConfidentialNodesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigConfidentialNodes)(nil)).Elem()
+}
+
+func (i ClusterNodePoolNodeConfigConfidentialNodesArgs) ToClusterNodePoolNodeConfigConfidentialNodesOutput() ClusterNodePoolNodeConfigConfidentialNodesOutput {
+	return i.ToClusterNodePoolNodeConfigConfidentialNodesOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigConfidentialNodesArgs) ToClusterNodePoolNodeConfigConfidentialNodesOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigConfidentialNodesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigConfidentialNodesOutput)
+}
+
+func (i ClusterNodePoolNodeConfigConfidentialNodesArgs) ToClusterNodePoolNodeConfigConfidentialNodesPtrOutput() ClusterNodePoolNodeConfigConfidentialNodesPtrOutput {
+	return i.ToClusterNodePoolNodeConfigConfidentialNodesPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigConfidentialNodesArgs) ToClusterNodePoolNodeConfigConfidentialNodesPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigConfidentialNodesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigConfidentialNodesOutput).ToClusterNodePoolNodeConfigConfidentialNodesPtrOutputWithContext(ctx)
+}
+
+// ClusterNodePoolNodeConfigConfidentialNodesPtrInput is an input type that accepts ClusterNodePoolNodeConfigConfidentialNodesArgs, ClusterNodePoolNodeConfigConfidentialNodesPtr and ClusterNodePoolNodeConfigConfidentialNodesPtrOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigConfidentialNodesPtrInput` via:
+//
+//	        ClusterNodePoolNodeConfigConfidentialNodesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodePoolNodeConfigConfidentialNodesPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigConfidentialNodesPtrOutput() ClusterNodePoolNodeConfigConfidentialNodesPtrOutput
+	ToClusterNodePoolNodeConfigConfidentialNodesPtrOutputWithContext(context.Context) ClusterNodePoolNodeConfigConfidentialNodesPtrOutput
+}
+
+type clusterNodePoolNodeConfigConfidentialNodesPtrType ClusterNodePoolNodeConfigConfidentialNodesArgs
+
+func ClusterNodePoolNodeConfigConfidentialNodesPtr(v *ClusterNodePoolNodeConfigConfidentialNodesArgs) ClusterNodePoolNodeConfigConfidentialNodesPtrInput {
+	return (*clusterNodePoolNodeConfigConfidentialNodesPtrType)(v)
+}
+
+func (*clusterNodePoolNodeConfigConfidentialNodesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolNodeConfigConfidentialNodes)(nil)).Elem()
+}
+
+func (i *clusterNodePoolNodeConfigConfidentialNodesPtrType) ToClusterNodePoolNodeConfigConfidentialNodesPtrOutput() ClusterNodePoolNodeConfigConfidentialNodesPtrOutput {
+	return i.ToClusterNodePoolNodeConfigConfidentialNodesPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodePoolNodeConfigConfidentialNodesPtrType) ToClusterNodePoolNodeConfigConfidentialNodesPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigConfidentialNodesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigConfidentialNodesPtrOutput)
+}
+
+type ClusterNodePoolNodeConfigConfidentialNodesOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigConfidentialNodesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigConfidentialNodes)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigConfidentialNodesOutput) ToClusterNodePoolNodeConfigConfidentialNodesOutput() ClusterNodePoolNodeConfigConfidentialNodesOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigConfidentialNodesOutput) ToClusterNodePoolNodeConfigConfidentialNodesOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigConfidentialNodesOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigConfidentialNodesOutput) ToClusterNodePoolNodeConfigConfidentialNodesPtrOutput() ClusterNodePoolNodeConfigConfidentialNodesPtrOutput {
+	return o.ToClusterNodePoolNodeConfigConfidentialNodesPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodePoolNodeConfigConfidentialNodesOutput) ToClusterNodePoolNodeConfigConfidentialNodesPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigConfidentialNodesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodePoolNodeConfigConfidentialNodes) *ClusterNodePoolNodeConfigConfidentialNodes {
+		return &v
+	}).(ClusterNodePoolNodeConfigConfidentialNodesPtrOutput)
+}
+
+// Enable Confidential Nodes for this cluster.
+func (o ClusterNodePoolNodeConfigConfidentialNodesOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigConfidentialNodes) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type ClusterNodePoolNodeConfigConfidentialNodesPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigConfidentialNodesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolNodeConfigConfidentialNodes)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigConfidentialNodesPtrOutput) ToClusterNodePoolNodeConfigConfidentialNodesPtrOutput() ClusterNodePoolNodeConfigConfidentialNodesPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigConfidentialNodesPtrOutput) ToClusterNodePoolNodeConfigConfidentialNodesPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigConfidentialNodesPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigConfidentialNodesPtrOutput) Elem() ClusterNodePoolNodeConfigConfidentialNodesOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigConfidentialNodes) ClusterNodePoolNodeConfigConfidentialNodes {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodePoolNodeConfigConfidentialNodes
+		return ret
+	}).(ClusterNodePoolNodeConfigConfidentialNodesOutput)
+}
+
+// Enable Confidential Nodes for this cluster.
+func (o ClusterNodePoolNodeConfigConfidentialNodesPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigConfidentialNodes) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ClusterNodePoolNodeConfigEphemeralStorageConfig struct {
@@ -32715,6 +33195,7 @@ func (o NodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput) Disabled() pul
 type NodePoolNodeConfig struct {
 	AdvancedMachineFeatures        *NodePoolNodeConfigAdvancedMachineFeatures        `pulumi:"advancedMachineFeatures"`
 	BootDiskKmsKey                 *string                                           `pulumi:"bootDiskKmsKey"`
+	ConfidentialNodes              *NodePoolNodeConfigConfidentialNodes              `pulumi:"confidentialNodes"`
 	DiskSizeGb                     *int                                              `pulumi:"diskSizeGb"`
 	DiskType                       *string                                           `pulumi:"diskType"`
 	EphemeralStorageConfig         *NodePoolNodeConfigEphemeralStorageConfig         `pulumi:"ephemeralStorageConfig"`
@@ -32762,6 +33243,7 @@ type NodePoolNodeConfigInput interface {
 type NodePoolNodeConfigArgs struct {
 	AdvancedMachineFeatures        NodePoolNodeConfigAdvancedMachineFeaturesPtrInput        `pulumi:"advancedMachineFeatures"`
 	BootDiskKmsKey                 pulumi.StringPtrInput                                    `pulumi:"bootDiskKmsKey"`
+	ConfidentialNodes              NodePoolNodeConfigConfidentialNodesPtrInput              `pulumi:"confidentialNodes"`
 	DiskSizeGb                     pulumi.IntPtrInput                                       `pulumi:"diskSizeGb"`
 	DiskType                       pulumi.StringPtrInput                                    `pulumi:"diskType"`
 	EphemeralStorageConfig         NodePoolNodeConfigEphemeralStorageConfigPtrInput         `pulumi:"ephemeralStorageConfig"`
@@ -32880,6 +33362,10 @@ func (o NodePoolNodeConfigOutput) AdvancedMachineFeatures() NodePoolNodeConfigAd
 
 func (o NodePoolNodeConfigOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolNodeConfig) *string { return v.BootDiskKmsKey }).(pulumi.StringPtrOutput)
+}
+
+func (o NodePoolNodeConfigOutput) ConfidentialNodes() NodePoolNodeConfigConfidentialNodesPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfig) *NodePoolNodeConfigConfidentialNodes { return v.ConfidentialNodes }).(NodePoolNodeConfigConfidentialNodesPtrOutput)
 }
 
 func (o NodePoolNodeConfigOutput) DiskSizeGb() pulumi.IntPtrOutput {
@@ -33050,6 +33536,15 @@ func (o NodePoolNodeConfigPtrOutput) BootDiskKmsKey() pulumi.StringPtrOutput {
 		}
 		return v.BootDiskKmsKey
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o NodePoolNodeConfigPtrOutput) ConfidentialNodes() NodePoolNodeConfigConfidentialNodesPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfig) *NodePoolNodeConfigConfidentialNodes {
+		if v == nil {
+			return nil
+		}
+		return v.ConfidentialNodes
+	}).(NodePoolNodeConfigConfidentialNodesPtrOutput)
 }
 
 func (o NodePoolNodeConfigPtrOutput) DiskSizeGb() pulumi.IntPtrOutput {
@@ -33462,6 +33957,139 @@ func (o NodePoolNodeConfigAdvancedMachineFeaturesPtrOutput) ThreadsPerCore() pul
 		}
 		return &v.ThreadsPerCore
 	}).(pulumi.IntPtrOutput)
+}
+
+type NodePoolNodeConfigConfidentialNodes struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// NodePoolNodeConfigConfidentialNodesInput is an input type that accepts NodePoolNodeConfigConfidentialNodesArgs and NodePoolNodeConfigConfidentialNodesOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigConfidentialNodesInput` via:
+//
+//	NodePoolNodeConfigConfidentialNodesArgs{...}
+type NodePoolNodeConfigConfidentialNodesInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigConfidentialNodesOutput() NodePoolNodeConfigConfidentialNodesOutput
+	ToNodePoolNodeConfigConfidentialNodesOutputWithContext(context.Context) NodePoolNodeConfigConfidentialNodesOutput
+}
+
+type NodePoolNodeConfigConfidentialNodesArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (NodePoolNodeConfigConfidentialNodesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigConfidentialNodes)(nil)).Elem()
+}
+
+func (i NodePoolNodeConfigConfidentialNodesArgs) ToNodePoolNodeConfigConfidentialNodesOutput() NodePoolNodeConfigConfidentialNodesOutput {
+	return i.ToNodePoolNodeConfigConfidentialNodesOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigConfidentialNodesArgs) ToNodePoolNodeConfigConfidentialNodesOutputWithContext(ctx context.Context) NodePoolNodeConfigConfidentialNodesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigConfidentialNodesOutput)
+}
+
+func (i NodePoolNodeConfigConfidentialNodesArgs) ToNodePoolNodeConfigConfidentialNodesPtrOutput() NodePoolNodeConfigConfidentialNodesPtrOutput {
+	return i.ToNodePoolNodeConfigConfidentialNodesPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigConfidentialNodesArgs) ToNodePoolNodeConfigConfidentialNodesPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigConfidentialNodesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigConfidentialNodesOutput).ToNodePoolNodeConfigConfidentialNodesPtrOutputWithContext(ctx)
+}
+
+// NodePoolNodeConfigConfidentialNodesPtrInput is an input type that accepts NodePoolNodeConfigConfidentialNodesArgs, NodePoolNodeConfigConfidentialNodesPtr and NodePoolNodeConfigConfidentialNodesPtrOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigConfidentialNodesPtrInput` via:
+//
+//	        NodePoolNodeConfigConfidentialNodesArgs{...}
+//
+//	or:
+//
+//	        nil
+type NodePoolNodeConfigConfidentialNodesPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigConfidentialNodesPtrOutput() NodePoolNodeConfigConfidentialNodesPtrOutput
+	ToNodePoolNodeConfigConfidentialNodesPtrOutputWithContext(context.Context) NodePoolNodeConfigConfidentialNodesPtrOutput
+}
+
+type nodePoolNodeConfigConfidentialNodesPtrType NodePoolNodeConfigConfidentialNodesArgs
+
+func NodePoolNodeConfigConfidentialNodesPtr(v *NodePoolNodeConfigConfidentialNodesArgs) NodePoolNodeConfigConfidentialNodesPtrInput {
+	return (*nodePoolNodeConfigConfidentialNodesPtrType)(v)
+}
+
+func (*nodePoolNodeConfigConfidentialNodesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolNodeConfigConfidentialNodes)(nil)).Elem()
+}
+
+func (i *nodePoolNodeConfigConfidentialNodesPtrType) ToNodePoolNodeConfigConfidentialNodesPtrOutput() NodePoolNodeConfigConfidentialNodesPtrOutput {
+	return i.ToNodePoolNodeConfigConfidentialNodesPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolNodeConfigConfidentialNodesPtrType) ToNodePoolNodeConfigConfidentialNodesPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigConfidentialNodesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigConfidentialNodesPtrOutput)
+}
+
+type NodePoolNodeConfigConfidentialNodesOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigConfidentialNodesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigConfidentialNodes)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigConfidentialNodesOutput) ToNodePoolNodeConfigConfidentialNodesOutput() NodePoolNodeConfigConfidentialNodesOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigConfidentialNodesOutput) ToNodePoolNodeConfigConfidentialNodesOutputWithContext(ctx context.Context) NodePoolNodeConfigConfidentialNodesOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigConfidentialNodesOutput) ToNodePoolNodeConfigConfidentialNodesPtrOutput() NodePoolNodeConfigConfidentialNodesPtrOutput {
+	return o.ToNodePoolNodeConfigConfidentialNodesPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolNodeConfigConfidentialNodesOutput) ToNodePoolNodeConfigConfidentialNodesPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigConfidentialNodesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolNodeConfigConfidentialNodes) *NodePoolNodeConfigConfidentialNodes {
+		return &v
+	}).(NodePoolNodeConfigConfidentialNodesPtrOutput)
+}
+
+func (o NodePoolNodeConfigConfidentialNodesOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigConfidentialNodes) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type NodePoolNodeConfigConfidentialNodesPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigConfidentialNodesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolNodeConfigConfidentialNodes)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigConfidentialNodesPtrOutput) ToNodePoolNodeConfigConfidentialNodesPtrOutput() NodePoolNodeConfigConfidentialNodesPtrOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigConfidentialNodesPtrOutput) ToNodePoolNodeConfigConfidentialNodesPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigConfidentialNodesPtrOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigConfidentialNodesPtrOutput) Elem() NodePoolNodeConfigConfidentialNodesOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigConfidentialNodes) NodePoolNodeConfigConfidentialNodes {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolNodeConfigConfidentialNodes
+		return ret
+	}).(NodePoolNodeConfigConfidentialNodesOutput)
+}
+
+func (o NodePoolNodeConfigConfidentialNodesPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigConfidentialNodes) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type NodePoolNodeConfigEphemeralStorageConfig struct {
@@ -40060,6 +40688,7 @@ func (o GetClusterIdentityServiceConfigArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetClusterIpAllocationPolicy struct {
+	AdditionalPodRangesConfigs  []GetClusterIpAllocationPolicyAdditionalPodRangesConfig  `pulumi:"additionalPodRangesConfigs"`
 	ClusterIpv4CidrBlock        string                                                   `pulumi:"clusterIpv4CidrBlock"`
 	ClusterSecondaryRangeName   string                                                   `pulumi:"clusterSecondaryRangeName"`
 	PodCidrOverprovisionConfigs []GetClusterIpAllocationPolicyPodCidrOverprovisionConfig `pulumi:"podCidrOverprovisionConfigs"`
@@ -40080,6 +40709,7 @@ type GetClusterIpAllocationPolicyInput interface {
 }
 
 type GetClusterIpAllocationPolicyArgs struct {
+	AdditionalPodRangesConfigs  GetClusterIpAllocationPolicyAdditionalPodRangesConfigArrayInput  `pulumi:"additionalPodRangesConfigs"`
 	ClusterIpv4CidrBlock        pulumi.StringInput                                               `pulumi:"clusterIpv4CidrBlock"`
 	ClusterSecondaryRangeName   pulumi.StringInput                                               `pulumi:"clusterSecondaryRangeName"`
 	PodCidrOverprovisionConfigs GetClusterIpAllocationPolicyPodCidrOverprovisionConfigArrayInput `pulumi:"podCidrOverprovisionConfigs"`
@@ -40139,6 +40769,12 @@ func (o GetClusterIpAllocationPolicyOutput) ToGetClusterIpAllocationPolicyOutput
 	return o
 }
 
+func (o GetClusterIpAllocationPolicyOutput) AdditionalPodRangesConfigs() GetClusterIpAllocationPolicyAdditionalPodRangesConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterIpAllocationPolicy) []GetClusterIpAllocationPolicyAdditionalPodRangesConfig {
+		return v.AdditionalPodRangesConfigs
+	}).(GetClusterIpAllocationPolicyAdditionalPodRangesConfigArrayOutput)
+}
+
 func (o GetClusterIpAllocationPolicyOutput) ClusterIpv4CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterIpAllocationPolicy) string { return v.ClusterIpv4CidrBlock }).(pulumi.StringOutput)
 }
@@ -40183,6 +40819,100 @@ func (o GetClusterIpAllocationPolicyArrayOutput) Index(i pulumi.IntInput) GetClu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterIpAllocationPolicy {
 		return vs[0].([]GetClusterIpAllocationPolicy)[vs[1].(int)]
 	}).(GetClusterIpAllocationPolicyOutput)
+}
+
+type GetClusterIpAllocationPolicyAdditionalPodRangesConfig struct {
+	PodRangeNames []string `pulumi:"podRangeNames"`
+}
+
+// GetClusterIpAllocationPolicyAdditionalPodRangesConfigInput is an input type that accepts GetClusterIpAllocationPolicyAdditionalPodRangesConfigArgs and GetClusterIpAllocationPolicyAdditionalPodRangesConfigOutput values.
+// You can construct a concrete instance of `GetClusterIpAllocationPolicyAdditionalPodRangesConfigInput` via:
+//
+//	GetClusterIpAllocationPolicyAdditionalPodRangesConfigArgs{...}
+type GetClusterIpAllocationPolicyAdditionalPodRangesConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterIpAllocationPolicyAdditionalPodRangesConfigOutput() GetClusterIpAllocationPolicyAdditionalPodRangesConfigOutput
+	ToGetClusterIpAllocationPolicyAdditionalPodRangesConfigOutputWithContext(context.Context) GetClusterIpAllocationPolicyAdditionalPodRangesConfigOutput
+}
+
+type GetClusterIpAllocationPolicyAdditionalPodRangesConfigArgs struct {
+	PodRangeNames pulumi.StringArrayInput `pulumi:"podRangeNames"`
+}
+
+func (GetClusterIpAllocationPolicyAdditionalPodRangesConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterIpAllocationPolicyAdditionalPodRangesConfig)(nil)).Elem()
+}
+
+func (i GetClusterIpAllocationPolicyAdditionalPodRangesConfigArgs) ToGetClusterIpAllocationPolicyAdditionalPodRangesConfigOutput() GetClusterIpAllocationPolicyAdditionalPodRangesConfigOutput {
+	return i.ToGetClusterIpAllocationPolicyAdditionalPodRangesConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterIpAllocationPolicyAdditionalPodRangesConfigArgs) ToGetClusterIpAllocationPolicyAdditionalPodRangesConfigOutputWithContext(ctx context.Context) GetClusterIpAllocationPolicyAdditionalPodRangesConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterIpAllocationPolicyAdditionalPodRangesConfigOutput)
+}
+
+// GetClusterIpAllocationPolicyAdditionalPodRangesConfigArrayInput is an input type that accepts GetClusterIpAllocationPolicyAdditionalPodRangesConfigArray and GetClusterIpAllocationPolicyAdditionalPodRangesConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterIpAllocationPolicyAdditionalPodRangesConfigArrayInput` via:
+//
+//	GetClusterIpAllocationPolicyAdditionalPodRangesConfigArray{ GetClusterIpAllocationPolicyAdditionalPodRangesConfigArgs{...} }
+type GetClusterIpAllocationPolicyAdditionalPodRangesConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterIpAllocationPolicyAdditionalPodRangesConfigArrayOutput() GetClusterIpAllocationPolicyAdditionalPodRangesConfigArrayOutput
+	ToGetClusterIpAllocationPolicyAdditionalPodRangesConfigArrayOutputWithContext(context.Context) GetClusterIpAllocationPolicyAdditionalPodRangesConfigArrayOutput
+}
+
+type GetClusterIpAllocationPolicyAdditionalPodRangesConfigArray []GetClusterIpAllocationPolicyAdditionalPodRangesConfigInput
+
+func (GetClusterIpAllocationPolicyAdditionalPodRangesConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterIpAllocationPolicyAdditionalPodRangesConfig)(nil)).Elem()
+}
+
+func (i GetClusterIpAllocationPolicyAdditionalPodRangesConfigArray) ToGetClusterIpAllocationPolicyAdditionalPodRangesConfigArrayOutput() GetClusterIpAllocationPolicyAdditionalPodRangesConfigArrayOutput {
+	return i.ToGetClusterIpAllocationPolicyAdditionalPodRangesConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterIpAllocationPolicyAdditionalPodRangesConfigArray) ToGetClusterIpAllocationPolicyAdditionalPodRangesConfigArrayOutputWithContext(ctx context.Context) GetClusterIpAllocationPolicyAdditionalPodRangesConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterIpAllocationPolicyAdditionalPodRangesConfigArrayOutput)
+}
+
+type GetClusterIpAllocationPolicyAdditionalPodRangesConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterIpAllocationPolicyAdditionalPodRangesConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterIpAllocationPolicyAdditionalPodRangesConfig)(nil)).Elem()
+}
+
+func (o GetClusterIpAllocationPolicyAdditionalPodRangesConfigOutput) ToGetClusterIpAllocationPolicyAdditionalPodRangesConfigOutput() GetClusterIpAllocationPolicyAdditionalPodRangesConfigOutput {
+	return o
+}
+
+func (o GetClusterIpAllocationPolicyAdditionalPodRangesConfigOutput) ToGetClusterIpAllocationPolicyAdditionalPodRangesConfigOutputWithContext(ctx context.Context) GetClusterIpAllocationPolicyAdditionalPodRangesConfigOutput {
+	return o
+}
+
+func (o GetClusterIpAllocationPolicyAdditionalPodRangesConfigOutput) PodRangeNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterIpAllocationPolicyAdditionalPodRangesConfig) []string { return v.PodRangeNames }).(pulumi.StringArrayOutput)
+}
+
+type GetClusterIpAllocationPolicyAdditionalPodRangesConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterIpAllocationPolicyAdditionalPodRangesConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterIpAllocationPolicyAdditionalPodRangesConfig)(nil)).Elem()
+}
+
+func (o GetClusterIpAllocationPolicyAdditionalPodRangesConfigArrayOutput) ToGetClusterIpAllocationPolicyAdditionalPodRangesConfigArrayOutput() GetClusterIpAllocationPolicyAdditionalPodRangesConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterIpAllocationPolicyAdditionalPodRangesConfigArrayOutput) ToGetClusterIpAllocationPolicyAdditionalPodRangesConfigArrayOutputWithContext(ctx context.Context) GetClusterIpAllocationPolicyAdditionalPodRangesConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterIpAllocationPolicyAdditionalPodRangesConfigArrayOutput) Index(i pulumi.IntInput) GetClusterIpAllocationPolicyAdditionalPodRangesConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterIpAllocationPolicyAdditionalPodRangesConfig {
+		return vs[0].([]GetClusterIpAllocationPolicyAdditionalPodRangesConfig)[vs[1].(int)]
+	}).(GetClusterIpAllocationPolicyAdditionalPodRangesConfigOutput)
 }
 
 type GetClusterIpAllocationPolicyPodCidrOverprovisionConfig struct {
@@ -41810,6 +42540,7 @@ func (o GetClusterNetworkPolicyArrayOutput) Index(i pulumi.IntInput) GetClusterN
 type GetClusterNodeConfig struct {
 	AdvancedMachineFeatures         []GetClusterNodeConfigAdvancedMachineFeature         `pulumi:"advancedMachineFeatures"`
 	BootDiskKmsKey                  string                                               `pulumi:"bootDiskKmsKey"`
+	ConfidentialNodes               []GetClusterNodeConfigConfidentialNode               `pulumi:"confidentialNodes"`
 	DiskSizeGb                      int                                                  `pulumi:"diskSizeGb"`
 	DiskType                        string                                               `pulumi:"diskType"`
 	EphemeralStorageConfigs         []GetClusterNodeConfigEphemeralStorageConfig         `pulumi:"ephemeralStorageConfigs"`
@@ -41857,6 +42588,7 @@ type GetClusterNodeConfigInput interface {
 type GetClusterNodeConfigArgs struct {
 	AdvancedMachineFeatures         GetClusterNodeConfigAdvancedMachineFeatureArrayInput         `pulumi:"advancedMachineFeatures"`
 	BootDiskKmsKey                  pulumi.StringInput                                           `pulumi:"bootDiskKmsKey"`
+	ConfidentialNodes               GetClusterNodeConfigConfidentialNodeArrayInput               `pulumi:"confidentialNodes"`
 	DiskSizeGb                      pulumi.IntInput                                              `pulumi:"diskSizeGb"`
 	DiskType                        pulumi.StringInput                                           `pulumi:"diskType"`
 	EphemeralStorageConfigs         GetClusterNodeConfigEphemeralStorageConfigArrayInput         `pulumi:"ephemeralStorageConfigs"`
@@ -41949,6 +42681,10 @@ func (o GetClusterNodeConfigOutput) AdvancedMachineFeatures() GetClusterNodeConf
 
 func (o GetClusterNodeConfigOutput) BootDiskKmsKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodeConfig) string { return v.BootDiskKmsKey }).(pulumi.StringOutput)
+}
+
+func (o GetClusterNodeConfigOutput) ConfidentialNodes() GetClusterNodeConfigConfidentialNodeArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfig) []GetClusterNodeConfigConfidentialNode { return v.ConfidentialNodes }).(GetClusterNodeConfigConfidentialNodeArrayOutput)
 }
 
 func (o GetClusterNodeConfigOutput) DiskSizeGb() pulumi.IntOutput {
@@ -42199,6 +42935,100 @@ func (o GetClusterNodeConfigAdvancedMachineFeatureArrayOutput) Index(i pulumi.In
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigAdvancedMachineFeature {
 		return vs[0].([]GetClusterNodeConfigAdvancedMachineFeature)[vs[1].(int)]
 	}).(GetClusterNodeConfigAdvancedMachineFeatureOutput)
+}
+
+type GetClusterNodeConfigConfidentialNode struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClusterNodeConfigConfidentialNodeInput is an input type that accepts GetClusterNodeConfigConfidentialNodeArgs and GetClusterNodeConfigConfidentialNodeOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigConfidentialNodeInput` via:
+//
+//	GetClusterNodeConfigConfidentialNodeArgs{...}
+type GetClusterNodeConfigConfidentialNodeInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigConfidentialNodeOutput() GetClusterNodeConfigConfidentialNodeOutput
+	ToGetClusterNodeConfigConfidentialNodeOutputWithContext(context.Context) GetClusterNodeConfigConfidentialNodeOutput
+}
+
+type GetClusterNodeConfigConfidentialNodeArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClusterNodeConfigConfidentialNodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigConfidentialNode)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigConfidentialNodeArgs) ToGetClusterNodeConfigConfidentialNodeOutput() GetClusterNodeConfigConfidentialNodeOutput {
+	return i.ToGetClusterNodeConfigConfidentialNodeOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigConfidentialNodeArgs) ToGetClusterNodeConfigConfidentialNodeOutputWithContext(ctx context.Context) GetClusterNodeConfigConfidentialNodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigConfidentialNodeOutput)
+}
+
+// GetClusterNodeConfigConfidentialNodeArrayInput is an input type that accepts GetClusterNodeConfigConfidentialNodeArray and GetClusterNodeConfigConfidentialNodeArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigConfidentialNodeArrayInput` via:
+//
+//	GetClusterNodeConfigConfidentialNodeArray{ GetClusterNodeConfigConfidentialNodeArgs{...} }
+type GetClusterNodeConfigConfidentialNodeArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigConfidentialNodeArrayOutput() GetClusterNodeConfigConfidentialNodeArrayOutput
+	ToGetClusterNodeConfigConfidentialNodeArrayOutputWithContext(context.Context) GetClusterNodeConfigConfidentialNodeArrayOutput
+}
+
+type GetClusterNodeConfigConfidentialNodeArray []GetClusterNodeConfigConfidentialNodeInput
+
+func (GetClusterNodeConfigConfidentialNodeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigConfidentialNode)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigConfidentialNodeArray) ToGetClusterNodeConfigConfidentialNodeArrayOutput() GetClusterNodeConfigConfidentialNodeArrayOutput {
+	return i.ToGetClusterNodeConfigConfidentialNodeArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigConfidentialNodeArray) ToGetClusterNodeConfigConfidentialNodeArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigConfidentialNodeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigConfidentialNodeArrayOutput)
+}
+
+type GetClusterNodeConfigConfidentialNodeOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigConfidentialNodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigConfidentialNode)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigConfidentialNodeOutput) ToGetClusterNodeConfigConfidentialNodeOutput() GetClusterNodeConfigConfidentialNodeOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigConfidentialNodeOutput) ToGetClusterNodeConfigConfidentialNodeOutputWithContext(ctx context.Context) GetClusterNodeConfigConfidentialNodeOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigConfidentialNodeOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigConfidentialNode) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterNodeConfigConfidentialNodeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigConfidentialNodeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigConfidentialNode)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigConfidentialNodeArrayOutput) ToGetClusterNodeConfigConfidentialNodeArrayOutput() GetClusterNodeConfigConfidentialNodeArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigConfidentialNodeArrayOutput) ToGetClusterNodeConfigConfidentialNodeArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigConfidentialNodeArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigConfidentialNodeArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigConfidentialNodeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigConfidentialNode {
+		return vs[0].([]GetClusterNodeConfigConfidentialNode)[vs[1].(int)]
+	}).(GetClusterNodeConfigConfidentialNodeOutput)
 }
 
 type GetClusterNodeConfigEphemeralStorageConfig struct {
@@ -45309,6 +46139,7 @@ func (o GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutput) In
 type GetClusterNodePoolNodeConfig struct {
 	AdvancedMachineFeatures         []GetClusterNodePoolNodeConfigAdvancedMachineFeature         `pulumi:"advancedMachineFeatures"`
 	BootDiskKmsKey                  string                                                       `pulumi:"bootDiskKmsKey"`
+	ConfidentialNodes               []GetClusterNodePoolNodeConfigConfidentialNode               `pulumi:"confidentialNodes"`
 	DiskSizeGb                      int                                                          `pulumi:"diskSizeGb"`
 	DiskType                        string                                                       `pulumi:"diskType"`
 	EphemeralStorageConfigs         []GetClusterNodePoolNodeConfigEphemeralStorageConfig         `pulumi:"ephemeralStorageConfigs"`
@@ -45356,6 +46187,7 @@ type GetClusterNodePoolNodeConfigInput interface {
 type GetClusterNodePoolNodeConfigArgs struct {
 	AdvancedMachineFeatures         GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayInput         `pulumi:"advancedMachineFeatures"`
 	BootDiskKmsKey                  pulumi.StringInput                                                   `pulumi:"bootDiskKmsKey"`
+	ConfidentialNodes               GetClusterNodePoolNodeConfigConfidentialNodeArrayInput               `pulumi:"confidentialNodes"`
 	DiskSizeGb                      pulumi.IntInput                                                      `pulumi:"diskSizeGb"`
 	DiskType                        pulumi.StringInput                                                   `pulumi:"diskType"`
 	EphemeralStorageConfigs         GetClusterNodePoolNodeConfigEphemeralStorageConfigArrayInput         `pulumi:"ephemeralStorageConfigs"`
@@ -45448,6 +46280,12 @@ func (o GetClusterNodePoolNodeConfigOutput) AdvancedMachineFeatures() GetCluster
 
 func (o GetClusterNodePoolNodeConfigOutput) BootDiskKmsKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) string { return v.BootDiskKmsKey }).(pulumi.StringOutput)
+}
+
+func (o GetClusterNodePoolNodeConfigOutput) ConfidentialNodes() GetClusterNodePoolNodeConfigConfidentialNodeArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigConfidentialNode {
+		return v.ConfidentialNodes
+	}).(GetClusterNodePoolNodeConfigConfidentialNodeArrayOutput)
 }
 
 func (o GetClusterNodePoolNodeConfigOutput) DiskSizeGb() pulumi.IntOutput {
@@ -45710,6 +46548,100 @@ func (o GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutput) Index(i p
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigAdvancedMachineFeature {
 		return vs[0].([]GetClusterNodePoolNodeConfigAdvancedMachineFeature)[vs[1].(int)]
 	}).(GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput)
+}
+
+type GetClusterNodePoolNodeConfigConfidentialNode struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClusterNodePoolNodeConfigConfidentialNodeInput is an input type that accepts GetClusterNodePoolNodeConfigConfidentialNodeArgs and GetClusterNodePoolNodeConfigConfidentialNodeOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigConfidentialNodeInput` via:
+//
+//	GetClusterNodePoolNodeConfigConfidentialNodeArgs{...}
+type GetClusterNodePoolNodeConfigConfidentialNodeInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigConfidentialNodeOutput() GetClusterNodePoolNodeConfigConfidentialNodeOutput
+	ToGetClusterNodePoolNodeConfigConfidentialNodeOutputWithContext(context.Context) GetClusterNodePoolNodeConfigConfidentialNodeOutput
+}
+
+type GetClusterNodePoolNodeConfigConfidentialNodeArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClusterNodePoolNodeConfigConfidentialNodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigConfidentialNode)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigConfidentialNodeArgs) ToGetClusterNodePoolNodeConfigConfidentialNodeOutput() GetClusterNodePoolNodeConfigConfidentialNodeOutput {
+	return i.ToGetClusterNodePoolNodeConfigConfidentialNodeOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigConfidentialNodeArgs) ToGetClusterNodePoolNodeConfigConfidentialNodeOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigConfidentialNodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigConfidentialNodeOutput)
+}
+
+// GetClusterNodePoolNodeConfigConfidentialNodeArrayInput is an input type that accepts GetClusterNodePoolNodeConfigConfidentialNodeArray and GetClusterNodePoolNodeConfigConfidentialNodeArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigConfidentialNodeArrayInput` via:
+//
+//	GetClusterNodePoolNodeConfigConfidentialNodeArray{ GetClusterNodePoolNodeConfigConfidentialNodeArgs{...} }
+type GetClusterNodePoolNodeConfigConfidentialNodeArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigConfidentialNodeArrayOutput() GetClusterNodePoolNodeConfigConfidentialNodeArrayOutput
+	ToGetClusterNodePoolNodeConfigConfidentialNodeArrayOutputWithContext(context.Context) GetClusterNodePoolNodeConfigConfidentialNodeArrayOutput
+}
+
+type GetClusterNodePoolNodeConfigConfidentialNodeArray []GetClusterNodePoolNodeConfigConfidentialNodeInput
+
+func (GetClusterNodePoolNodeConfigConfidentialNodeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigConfidentialNode)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigConfidentialNodeArray) ToGetClusterNodePoolNodeConfigConfidentialNodeArrayOutput() GetClusterNodePoolNodeConfigConfidentialNodeArrayOutput {
+	return i.ToGetClusterNodePoolNodeConfigConfidentialNodeArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigConfidentialNodeArray) ToGetClusterNodePoolNodeConfigConfidentialNodeArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigConfidentialNodeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigConfidentialNodeArrayOutput)
+}
+
+type GetClusterNodePoolNodeConfigConfidentialNodeOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigConfidentialNodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigConfidentialNode)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigConfidentialNodeOutput) ToGetClusterNodePoolNodeConfigConfidentialNodeOutput() GetClusterNodePoolNodeConfigConfidentialNodeOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigConfidentialNodeOutput) ToGetClusterNodePoolNodeConfigConfidentialNodeOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigConfidentialNodeOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigConfidentialNodeOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigConfidentialNode) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterNodePoolNodeConfigConfidentialNodeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigConfidentialNodeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigConfidentialNode)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigConfidentialNodeArrayOutput) ToGetClusterNodePoolNodeConfigConfidentialNodeArrayOutput() GetClusterNodePoolNodeConfigConfidentialNodeArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigConfidentialNodeArrayOutput) ToGetClusterNodePoolNodeConfigConfidentialNodeArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigConfidentialNodeArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigConfidentialNodeArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNodeConfigConfidentialNodeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigConfidentialNode {
+		return vs[0].([]GetClusterNodePoolNodeConfigConfidentialNode)[vs[1].(int)]
+	}).(GetClusterNodePoolNodeConfigConfidentialNodeOutput)
 }
 
 type GetClusterNodePoolNodeConfigEphemeralStorageConfig struct {
@@ -49723,6 +50655,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIdentityServiceConfigPtrInput)(nil)).Elem(), ClusterIdentityServiceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIpAllocationPolicyInput)(nil)).Elem(), ClusterIpAllocationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIpAllocationPolicyPtrInput)(nil)).Elem(), ClusterIpAllocationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIpAllocationPolicyAdditionalPodRangesConfigInput)(nil)).Elem(), ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIpAllocationPolicyAdditionalPodRangesConfigPtrInput)(nil)).Elem(), ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIpAllocationPolicyPodCidrOverprovisionConfigInput)(nil)).Elem(), ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrInput)(nil)).Elem(), ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterLoggingConfigInput)(nil)).Elem(), ClusterLoggingConfigArgs{})
@@ -49759,6 +50693,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigPtrInput)(nil)).Elem(), ClusterNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigAdvancedMachineFeaturesInput)(nil)).Elem(), ClusterNodeConfigAdvancedMachineFeaturesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigAdvancedMachineFeaturesPtrInput)(nil)).Elem(), ClusterNodeConfigAdvancedMachineFeaturesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigConfidentialNodesInput)(nil)).Elem(), ClusterNodeConfigConfidentialNodesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigConfidentialNodesPtrInput)(nil)).Elem(), ClusterNodeConfigConfidentialNodesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigEphemeralStorageConfigInput)(nil)).Elem(), ClusterNodeConfigEphemeralStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigEphemeralStorageConfigPtrInput)(nil)).Elem(), ClusterNodeConfigEphemeralStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigEphemeralStorageLocalSsdConfigInput)(nil)).Elem(), ClusterNodeConfigEphemeralStorageLocalSsdConfigArgs{})
@@ -49823,6 +50759,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigAdvancedMachineFeaturesInput)(nil)).Elem(), ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigConfidentialNodesInput)(nil)).Elem(), ClusterNodePoolNodeConfigConfidentialNodesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigConfidentialNodesPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigConfidentialNodesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigEphemeralStorageConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigEphemeralStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigEphemeralStorageConfigPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigEphemeralStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs{})
@@ -49915,6 +50853,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigPtrInput)(nil)).Elem(), NodePoolNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigAdvancedMachineFeaturesInput)(nil)).Elem(), NodePoolNodeConfigAdvancedMachineFeaturesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigAdvancedMachineFeaturesPtrInput)(nil)).Elem(), NodePoolNodeConfigAdvancedMachineFeaturesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigConfidentialNodesInput)(nil)).Elem(), NodePoolNodeConfigConfidentialNodesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigConfidentialNodesPtrInput)(nil)).Elem(), NodePoolNodeConfigConfidentialNodesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigEphemeralStorageConfigInput)(nil)).Elem(), NodePoolNodeConfigEphemeralStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigEphemeralStorageConfigPtrInput)(nil)).Elem(), NodePoolNodeConfigEphemeralStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigEphemeralStorageLocalSsdConfigInput)(nil)).Elem(), NodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs{})
@@ -50027,6 +50967,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterIdentityServiceConfigArrayInput)(nil)).Elem(), GetClusterIdentityServiceConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterIpAllocationPolicyInput)(nil)).Elem(), GetClusterIpAllocationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterIpAllocationPolicyArrayInput)(nil)).Elem(), GetClusterIpAllocationPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterIpAllocationPolicyAdditionalPodRangesConfigInput)(nil)).Elem(), GetClusterIpAllocationPolicyAdditionalPodRangesConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterIpAllocationPolicyAdditionalPodRangesConfigArrayInput)(nil)).Elem(), GetClusterIpAllocationPolicyAdditionalPodRangesConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterIpAllocationPolicyPodCidrOverprovisionConfigInput)(nil)).Elem(), GetClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterIpAllocationPolicyPodCidrOverprovisionConfigArrayInput)(nil)).Elem(), GetClusterIpAllocationPolicyPodCidrOverprovisionConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterLoggingConfigInput)(nil)).Elem(), GetClusterLoggingConfigArgs{})
@@ -50063,6 +51005,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigAdvancedMachineFeatureInput)(nil)).Elem(), GetClusterNodeConfigAdvancedMachineFeatureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigAdvancedMachineFeatureArrayInput)(nil)).Elem(), GetClusterNodeConfigAdvancedMachineFeatureArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigConfidentialNodeInput)(nil)).Elem(), GetClusterNodeConfigConfidentialNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigConfidentialNodeArrayInput)(nil)).Elem(), GetClusterNodeConfigConfidentialNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigEphemeralStorageConfigInput)(nil)).Elem(), GetClusterNodeConfigEphemeralStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigEphemeralStorageConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigEphemeralStorageConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigEphemeralStorageLocalSsdConfigInput)(nil)).Elem(), GetClusterNodeConfigEphemeralStorageLocalSsdConfigArgs{})
@@ -50127,6 +51071,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigAdvancedMachineFeatureInput)(nil)).Elem(), GetClusterNodePoolNodeConfigAdvancedMachineFeatureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigAdvancedMachineFeatureArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigConfidentialNodeInput)(nil)).Elem(), GetClusterNodePoolNodeConfigConfidentialNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigConfidentialNodeArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigConfidentialNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigEphemeralStorageConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigEphemeralStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigEphemeralStorageConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigEphemeralStorageConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs{})
@@ -50385,6 +51331,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterIdentityServiceConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterIpAllocationPolicyOutput{})
 	pulumi.RegisterOutputType(ClusterIpAllocationPolicyPtrOutput{})
+	pulumi.RegisterOutputType(ClusterIpAllocationPolicyAdditionalPodRangesConfigOutput{})
+	pulumi.RegisterOutputType(ClusterIpAllocationPolicyAdditionalPodRangesConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput{})
 	pulumi.RegisterOutputType(ClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterLoggingConfigOutput{})
@@ -50421,6 +51369,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigAdvancedMachineFeaturesOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigAdvancedMachineFeaturesPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigConfidentialNodesOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigConfidentialNodesPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigEphemeralStorageConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigEphemeralStorageConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigEphemeralStorageLocalSsdConfigOutput{})
@@ -50485,6 +51435,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigAdvancedMachineFeaturesOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigAdvancedMachineFeaturesPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigConfidentialNodesOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigConfidentialNodesPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigEphemeralStorageConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigOutput{})
@@ -50577,6 +51529,8 @@ func init() {
 	pulumi.RegisterOutputType(NodePoolNodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigAdvancedMachineFeaturesOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigAdvancedMachineFeaturesPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigConfidentialNodesOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigConfidentialNodesPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigEphemeralStorageConfigOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigEphemeralStorageConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigEphemeralStorageLocalSsdConfigOutput{})
@@ -50689,6 +51643,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterIdentityServiceConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterIpAllocationPolicyOutput{})
 	pulumi.RegisterOutputType(GetClusterIpAllocationPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterIpAllocationPolicyAdditionalPodRangesConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterIpAllocationPolicyAdditionalPodRangesConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterIpAllocationPolicyPodCidrOverprovisionConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterLoggingConfigOutput{})
@@ -50725,6 +51681,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodeConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigAdvancedMachineFeatureOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigAdvancedMachineFeatureArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigConfidentialNodeOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigConfidentialNodeArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigEphemeralStorageConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigEphemeralStorageConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigEphemeralStorageLocalSsdConfigOutput{})
@@ -50789,6 +51747,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigAdvancedMachineFeatureOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigAdvancedMachineFeatureArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigConfidentialNodeOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigConfidentialNodeArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigEphemeralStorageConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigEphemeralStorageConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigOutput{})

@@ -110,6 +110,7 @@ from .machine_image_iam_policy import *
 from .managed_ssl_certificate import *
 from .manged_ssl_certificate import *
 from .network import *
+from .network_attachment import *
 from .network_edge_security_service import *
 from .network_endpoint import *
 from .network_endpoint_group import *

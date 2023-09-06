@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigAdvancedMachineFeature;
+import com.pulumi.gcp.container.outputs.GetClusterNodeConfigConfidentialNode;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigEphemeralStorageConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigEphemeralStorageLocalSsdConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigGcfsConfig;
@@ -31,6 +32,7 @@ import java.util.Objects;
 public final class GetClusterNodeConfig {
     private List<GetClusterNodeConfigAdvancedMachineFeature> advancedMachineFeatures;
     private String bootDiskKmsKey;
+    private List<GetClusterNodeConfigConfidentialNode> confidentialNodes;
     private Integer diskSizeGb;
     private String diskType;
     private List<GetClusterNodeConfigEphemeralStorageConfig> ephemeralStorageConfigs;
@@ -69,6 +71,9 @@ public final class GetClusterNodeConfig {
     }
     public String bootDiskKmsKey() {
         return this.bootDiskKmsKey;
+    }
+    public List<GetClusterNodeConfigConfidentialNode> confidentialNodes() {
+        return this.confidentialNodes;
     }
     public Integer diskSizeGb() {
         return this.diskSizeGb;
@@ -175,6 +180,7 @@ public final class GetClusterNodeConfig {
     public static final class Builder {
         private List<GetClusterNodeConfigAdvancedMachineFeature> advancedMachineFeatures;
         private String bootDiskKmsKey;
+        private List<GetClusterNodeConfigConfidentialNode> confidentialNodes;
         private Integer diskSizeGb;
         private String diskType;
         private List<GetClusterNodeConfigEphemeralStorageConfig> ephemeralStorageConfigs;
@@ -211,6 +217,7 @@ public final class GetClusterNodeConfig {
     	      Objects.requireNonNull(defaults);
     	      this.advancedMachineFeatures = defaults.advancedMachineFeatures;
     	      this.bootDiskKmsKey = defaults.bootDiskKmsKey;
+    	      this.confidentialNodes = defaults.confidentialNodes;
     	      this.diskSizeGb = defaults.diskSizeGb;
     	      this.diskType = defaults.diskType;
     	      this.ephemeralStorageConfigs = defaults.ephemeralStorageConfigs;
@@ -256,6 +263,14 @@ public final class GetClusterNodeConfig {
         public Builder bootDiskKmsKey(String bootDiskKmsKey) {
             this.bootDiskKmsKey = Objects.requireNonNull(bootDiskKmsKey);
             return this;
+        }
+        @CustomType.Setter
+        public Builder confidentialNodes(List<GetClusterNodeConfigConfidentialNode> confidentialNodes) {
+            this.confidentialNodes = Objects.requireNonNull(confidentialNodes);
+            return this;
+        }
+        public Builder confidentialNodes(GetClusterNodeConfigConfidentialNode... confidentialNodes) {
+            return confidentialNodes(List.of(confidentialNodes));
         }
         @CustomType.Setter
         public Builder diskSizeGb(Integer diskSizeGb) {
@@ -467,6 +482,7 @@ public final class GetClusterNodeConfig {
             final var o = new GetClusterNodeConfig();
             o.advancedMachineFeatures = advancedMachineFeatures;
             o.bootDiskKmsKey = bootDiskKmsKey;
+            o.confidentialNodes = confidentialNodes;
             o.diskSizeGb = diskSizeGb;
             o.diskType = diskType;
             o.ephemeralStorageConfigs = ephemeralStorageConfigs;

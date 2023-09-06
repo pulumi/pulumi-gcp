@@ -398,7 +398,7 @@ export class Certificate extends pulumi.CustomResource {
      * (Deprecated)
      * Required. Expected to be in leaf-to-root order according to RFC 5246.
      *
-     * @deprecated Deprecated in favor of `pem_certificate_chain`.
+     * @deprecated `pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead.
      */
     public /*out*/ readonly pemCertificates!: pulumi.Output<string[]>;
     /**
@@ -561,7 +561,7 @@ export interface CertificateState {
      * (Deprecated)
      * Required. Expected to be in leaf-to-root order according to RFC 5246.
      *
-     * @deprecated Deprecated in favor of `pem_certificate_chain`.
+     * @deprecated `pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead.
      */
     pemCertificates?: pulumi.Input<pulumi.Input<string>[]>;
     /**

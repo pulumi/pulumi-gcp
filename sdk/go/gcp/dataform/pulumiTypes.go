@@ -734,6 +734,600 @@ func (o RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayOutpu
 	}).(RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusOutput)
 }
 
+type RepositoryWorkflowConfigInvocationConfig struct {
+	// Optional. When set to true, any incremental tables will be fully refreshed.
+	FullyRefreshIncrementalTablesEnabled *bool `pulumi:"fullyRefreshIncrementalTablesEnabled"`
+	// Optional. The set of tags to include.
+	IncludedTags []string `pulumi:"includedTags"`
+	// Optional. The set of action identifiers to include.
+	// Structure is documented below.
+	IncludedTargets []RepositoryWorkflowConfigInvocationConfigIncludedTarget `pulumi:"includedTargets"`
+	// Optional. The service account to run workflow invocations under.
+	ServiceAccount *string `pulumi:"serviceAccount"`
+	// Optional. When set to true, transitive dependencies of included actions will be executed.
+	TransitiveDependenciesIncluded *bool `pulumi:"transitiveDependenciesIncluded"`
+	// Optional. When set to true, transitive dependents of included actions will be executed.
+	TransitiveDependentsIncluded *bool `pulumi:"transitiveDependentsIncluded"`
+}
+
+// RepositoryWorkflowConfigInvocationConfigInput is an input type that accepts RepositoryWorkflowConfigInvocationConfigArgs and RepositoryWorkflowConfigInvocationConfigOutput values.
+// You can construct a concrete instance of `RepositoryWorkflowConfigInvocationConfigInput` via:
+//
+//	RepositoryWorkflowConfigInvocationConfigArgs{...}
+type RepositoryWorkflowConfigInvocationConfigInput interface {
+	pulumi.Input
+
+	ToRepositoryWorkflowConfigInvocationConfigOutput() RepositoryWorkflowConfigInvocationConfigOutput
+	ToRepositoryWorkflowConfigInvocationConfigOutputWithContext(context.Context) RepositoryWorkflowConfigInvocationConfigOutput
+}
+
+type RepositoryWorkflowConfigInvocationConfigArgs struct {
+	// Optional. When set to true, any incremental tables will be fully refreshed.
+	FullyRefreshIncrementalTablesEnabled pulumi.BoolPtrInput `pulumi:"fullyRefreshIncrementalTablesEnabled"`
+	// Optional. The set of tags to include.
+	IncludedTags pulumi.StringArrayInput `pulumi:"includedTags"`
+	// Optional. The set of action identifiers to include.
+	// Structure is documented below.
+	IncludedTargets RepositoryWorkflowConfigInvocationConfigIncludedTargetArrayInput `pulumi:"includedTargets"`
+	// Optional. The service account to run workflow invocations under.
+	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
+	// Optional. When set to true, transitive dependencies of included actions will be executed.
+	TransitiveDependenciesIncluded pulumi.BoolPtrInput `pulumi:"transitiveDependenciesIncluded"`
+	// Optional. When set to true, transitive dependents of included actions will be executed.
+	TransitiveDependentsIncluded pulumi.BoolPtrInput `pulumi:"transitiveDependentsIncluded"`
+}
+
+func (RepositoryWorkflowConfigInvocationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryWorkflowConfigInvocationConfig)(nil)).Elem()
+}
+
+func (i RepositoryWorkflowConfigInvocationConfigArgs) ToRepositoryWorkflowConfigInvocationConfigOutput() RepositoryWorkflowConfigInvocationConfigOutput {
+	return i.ToRepositoryWorkflowConfigInvocationConfigOutputWithContext(context.Background())
+}
+
+func (i RepositoryWorkflowConfigInvocationConfigArgs) ToRepositoryWorkflowConfigInvocationConfigOutputWithContext(ctx context.Context) RepositoryWorkflowConfigInvocationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryWorkflowConfigInvocationConfigOutput)
+}
+
+func (i RepositoryWorkflowConfigInvocationConfigArgs) ToRepositoryWorkflowConfigInvocationConfigPtrOutput() RepositoryWorkflowConfigInvocationConfigPtrOutput {
+	return i.ToRepositoryWorkflowConfigInvocationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RepositoryWorkflowConfigInvocationConfigArgs) ToRepositoryWorkflowConfigInvocationConfigPtrOutputWithContext(ctx context.Context) RepositoryWorkflowConfigInvocationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryWorkflowConfigInvocationConfigOutput).ToRepositoryWorkflowConfigInvocationConfigPtrOutputWithContext(ctx)
+}
+
+// RepositoryWorkflowConfigInvocationConfigPtrInput is an input type that accepts RepositoryWorkflowConfigInvocationConfigArgs, RepositoryWorkflowConfigInvocationConfigPtr and RepositoryWorkflowConfigInvocationConfigPtrOutput values.
+// You can construct a concrete instance of `RepositoryWorkflowConfigInvocationConfigPtrInput` via:
+//
+//	        RepositoryWorkflowConfigInvocationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type RepositoryWorkflowConfigInvocationConfigPtrInput interface {
+	pulumi.Input
+
+	ToRepositoryWorkflowConfigInvocationConfigPtrOutput() RepositoryWorkflowConfigInvocationConfigPtrOutput
+	ToRepositoryWorkflowConfigInvocationConfigPtrOutputWithContext(context.Context) RepositoryWorkflowConfigInvocationConfigPtrOutput
+}
+
+type repositoryWorkflowConfigInvocationConfigPtrType RepositoryWorkflowConfigInvocationConfigArgs
+
+func RepositoryWorkflowConfigInvocationConfigPtr(v *RepositoryWorkflowConfigInvocationConfigArgs) RepositoryWorkflowConfigInvocationConfigPtrInput {
+	return (*repositoryWorkflowConfigInvocationConfigPtrType)(v)
+}
+
+func (*repositoryWorkflowConfigInvocationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryWorkflowConfigInvocationConfig)(nil)).Elem()
+}
+
+func (i *repositoryWorkflowConfigInvocationConfigPtrType) ToRepositoryWorkflowConfigInvocationConfigPtrOutput() RepositoryWorkflowConfigInvocationConfigPtrOutput {
+	return i.ToRepositoryWorkflowConfigInvocationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *repositoryWorkflowConfigInvocationConfigPtrType) ToRepositoryWorkflowConfigInvocationConfigPtrOutputWithContext(ctx context.Context) RepositoryWorkflowConfigInvocationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryWorkflowConfigInvocationConfigPtrOutput)
+}
+
+type RepositoryWorkflowConfigInvocationConfigOutput struct{ *pulumi.OutputState }
+
+func (RepositoryWorkflowConfigInvocationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryWorkflowConfigInvocationConfig)(nil)).Elem()
+}
+
+func (o RepositoryWorkflowConfigInvocationConfigOutput) ToRepositoryWorkflowConfigInvocationConfigOutput() RepositoryWorkflowConfigInvocationConfigOutput {
+	return o
+}
+
+func (o RepositoryWorkflowConfigInvocationConfigOutput) ToRepositoryWorkflowConfigInvocationConfigOutputWithContext(ctx context.Context) RepositoryWorkflowConfigInvocationConfigOutput {
+	return o
+}
+
+func (o RepositoryWorkflowConfigInvocationConfigOutput) ToRepositoryWorkflowConfigInvocationConfigPtrOutput() RepositoryWorkflowConfigInvocationConfigPtrOutput {
+	return o.ToRepositoryWorkflowConfigInvocationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RepositoryWorkflowConfigInvocationConfigOutput) ToRepositoryWorkflowConfigInvocationConfigPtrOutputWithContext(ctx context.Context) RepositoryWorkflowConfigInvocationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryWorkflowConfigInvocationConfig) *RepositoryWorkflowConfigInvocationConfig {
+		return &v
+	}).(RepositoryWorkflowConfigInvocationConfigPtrOutput)
+}
+
+// Optional. When set to true, any incremental tables will be fully refreshed.
+func (o RepositoryWorkflowConfigInvocationConfigOutput) FullyRefreshIncrementalTablesEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RepositoryWorkflowConfigInvocationConfig) *bool { return v.FullyRefreshIncrementalTablesEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The set of tags to include.
+func (o RepositoryWorkflowConfigInvocationConfigOutput) IncludedTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RepositoryWorkflowConfigInvocationConfig) []string { return v.IncludedTags }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The set of action identifiers to include.
+// Structure is documented below.
+func (o RepositoryWorkflowConfigInvocationConfigOutput) IncludedTargets() RepositoryWorkflowConfigInvocationConfigIncludedTargetArrayOutput {
+	return o.ApplyT(func(v RepositoryWorkflowConfigInvocationConfig) []RepositoryWorkflowConfigInvocationConfigIncludedTarget {
+		return v.IncludedTargets
+	}).(RepositoryWorkflowConfigInvocationConfigIncludedTargetArrayOutput)
+}
+
+// Optional. The service account to run workflow invocations under.
+func (o RepositoryWorkflowConfigInvocationConfigOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryWorkflowConfigInvocationConfig) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+// Optional. When set to true, transitive dependencies of included actions will be executed.
+func (o RepositoryWorkflowConfigInvocationConfigOutput) TransitiveDependenciesIncluded() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RepositoryWorkflowConfigInvocationConfig) *bool { return v.TransitiveDependenciesIncluded }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. When set to true, transitive dependents of included actions will be executed.
+func (o RepositoryWorkflowConfigInvocationConfigOutput) TransitiveDependentsIncluded() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RepositoryWorkflowConfigInvocationConfig) *bool { return v.TransitiveDependentsIncluded }).(pulumi.BoolPtrOutput)
+}
+
+type RepositoryWorkflowConfigInvocationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RepositoryWorkflowConfigInvocationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryWorkflowConfigInvocationConfig)(nil)).Elem()
+}
+
+func (o RepositoryWorkflowConfigInvocationConfigPtrOutput) ToRepositoryWorkflowConfigInvocationConfigPtrOutput() RepositoryWorkflowConfigInvocationConfigPtrOutput {
+	return o
+}
+
+func (o RepositoryWorkflowConfigInvocationConfigPtrOutput) ToRepositoryWorkflowConfigInvocationConfigPtrOutputWithContext(ctx context.Context) RepositoryWorkflowConfigInvocationConfigPtrOutput {
+	return o
+}
+
+func (o RepositoryWorkflowConfigInvocationConfigPtrOutput) Elem() RepositoryWorkflowConfigInvocationConfigOutput {
+	return o.ApplyT(func(v *RepositoryWorkflowConfigInvocationConfig) RepositoryWorkflowConfigInvocationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RepositoryWorkflowConfigInvocationConfig
+		return ret
+	}).(RepositoryWorkflowConfigInvocationConfigOutput)
+}
+
+// Optional. When set to true, any incremental tables will be fully refreshed.
+func (o RepositoryWorkflowConfigInvocationConfigPtrOutput) FullyRefreshIncrementalTablesEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RepositoryWorkflowConfigInvocationConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.FullyRefreshIncrementalTablesEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The set of tags to include.
+func (o RepositoryWorkflowConfigInvocationConfigPtrOutput) IncludedTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RepositoryWorkflowConfigInvocationConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncludedTags
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. The set of action identifiers to include.
+// Structure is documented below.
+func (o RepositoryWorkflowConfigInvocationConfigPtrOutput) IncludedTargets() RepositoryWorkflowConfigInvocationConfigIncludedTargetArrayOutput {
+	return o.ApplyT(func(v *RepositoryWorkflowConfigInvocationConfig) []RepositoryWorkflowConfigInvocationConfigIncludedTarget {
+		if v == nil {
+			return nil
+		}
+		return v.IncludedTargets
+	}).(RepositoryWorkflowConfigInvocationConfigIncludedTargetArrayOutput)
+}
+
+// Optional. The service account to run workflow invocations under.
+func (o RepositoryWorkflowConfigInvocationConfigPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryWorkflowConfigInvocationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. When set to true, transitive dependencies of included actions will be executed.
+func (o RepositoryWorkflowConfigInvocationConfigPtrOutput) TransitiveDependenciesIncluded() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RepositoryWorkflowConfigInvocationConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TransitiveDependenciesIncluded
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. When set to true, transitive dependents of included actions will be executed.
+func (o RepositoryWorkflowConfigInvocationConfigPtrOutput) TransitiveDependentsIncluded() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RepositoryWorkflowConfigInvocationConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TransitiveDependentsIncluded
+	}).(pulumi.BoolPtrOutput)
+}
+
+type RepositoryWorkflowConfigInvocationConfigIncludedTarget struct {
+	// The action's database (Google Cloud project ID).
+	Database *string `pulumi:"database"`
+	// The action's name, within database and schema.
+	Name *string `pulumi:"name"`
+	// The action's schema (BigQuery dataset ID), within database.
+	Schema *string `pulumi:"schema"`
+}
+
+// RepositoryWorkflowConfigInvocationConfigIncludedTargetInput is an input type that accepts RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs and RepositoryWorkflowConfigInvocationConfigIncludedTargetOutput values.
+// You can construct a concrete instance of `RepositoryWorkflowConfigInvocationConfigIncludedTargetInput` via:
+//
+//	RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs{...}
+type RepositoryWorkflowConfigInvocationConfigIncludedTargetInput interface {
+	pulumi.Input
+
+	ToRepositoryWorkflowConfigInvocationConfigIncludedTargetOutput() RepositoryWorkflowConfigInvocationConfigIncludedTargetOutput
+	ToRepositoryWorkflowConfigInvocationConfigIncludedTargetOutputWithContext(context.Context) RepositoryWorkflowConfigInvocationConfigIncludedTargetOutput
+}
+
+type RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs struct {
+	// The action's database (Google Cloud project ID).
+	Database pulumi.StringPtrInput `pulumi:"database"`
+	// The action's name, within database and schema.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The action's schema (BigQuery dataset ID), within database.
+	Schema pulumi.StringPtrInput `pulumi:"schema"`
+}
+
+func (RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryWorkflowConfigInvocationConfigIncludedTarget)(nil)).Elem()
+}
+
+func (i RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs) ToRepositoryWorkflowConfigInvocationConfigIncludedTargetOutput() RepositoryWorkflowConfigInvocationConfigIncludedTargetOutput {
+	return i.ToRepositoryWorkflowConfigInvocationConfigIncludedTargetOutputWithContext(context.Background())
+}
+
+func (i RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs) ToRepositoryWorkflowConfigInvocationConfigIncludedTargetOutputWithContext(ctx context.Context) RepositoryWorkflowConfigInvocationConfigIncludedTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryWorkflowConfigInvocationConfigIncludedTargetOutput)
+}
+
+// RepositoryWorkflowConfigInvocationConfigIncludedTargetArrayInput is an input type that accepts RepositoryWorkflowConfigInvocationConfigIncludedTargetArray and RepositoryWorkflowConfigInvocationConfigIncludedTargetArrayOutput values.
+// You can construct a concrete instance of `RepositoryWorkflowConfigInvocationConfigIncludedTargetArrayInput` via:
+//
+//	RepositoryWorkflowConfigInvocationConfigIncludedTargetArray{ RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs{...} }
+type RepositoryWorkflowConfigInvocationConfigIncludedTargetArrayInput interface {
+	pulumi.Input
+
+	ToRepositoryWorkflowConfigInvocationConfigIncludedTargetArrayOutput() RepositoryWorkflowConfigInvocationConfigIncludedTargetArrayOutput
+	ToRepositoryWorkflowConfigInvocationConfigIncludedTargetArrayOutputWithContext(context.Context) RepositoryWorkflowConfigInvocationConfigIncludedTargetArrayOutput
+}
+
+type RepositoryWorkflowConfigInvocationConfigIncludedTargetArray []RepositoryWorkflowConfigInvocationConfigIncludedTargetInput
+
+func (RepositoryWorkflowConfigInvocationConfigIncludedTargetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RepositoryWorkflowConfigInvocationConfigIncludedTarget)(nil)).Elem()
+}
+
+func (i RepositoryWorkflowConfigInvocationConfigIncludedTargetArray) ToRepositoryWorkflowConfigInvocationConfigIncludedTargetArrayOutput() RepositoryWorkflowConfigInvocationConfigIncludedTargetArrayOutput {
+	return i.ToRepositoryWorkflowConfigInvocationConfigIncludedTargetArrayOutputWithContext(context.Background())
+}
+
+func (i RepositoryWorkflowConfigInvocationConfigIncludedTargetArray) ToRepositoryWorkflowConfigInvocationConfigIncludedTargetArrayOutputWithContext(ctx context.Context) RepositoryWorkflowConfigInvocationConfigIncludedTargetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryWorkflowConfigInvocationConfigIncludedTargetArrayOutput)
+}
+
+type RepositoryWorkflowConfigInvocationConfigIncludedTargetOutput struct{ *pulumi.OutputState }
+
+func (RepositoryWorkflowConfigInvocationConfigIncludedTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryWorkflowConfigInvocationConfigIncludedTarget)(nil)).Elem()
+}
+
+func (o RepositoryWorkflowConfigInvocationConfigIncludedTargetOutput) ToRepositoryWorkflowConfigInvocationConfigIncludedTargetOutput() RepositoryWorkflowConfigInvocationConfigIncludedTargetOutput {
+	return o
+}
+
+func (o RepositoryWorkflowConfigInvocationConfigIncludedTargetOutput) ToRepositoryWorkflowConfigInvocationConfigIncludedTargetOutputWithContext(ctx context.Context) RepositoryWorkflowConfigInvocationConfigIncludedTargetOutput {
+	return o
+}
+
+// The action's database (Google Cloud project ID).
+func (o RepositoryWorkflowConfigInvocationConfigIncludedTargetOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryWorkflowConfigInvocationConfigIncludedTarget) *string { return v.Database }).(pulumi.StringPtrOutput)
+}
+
+// The action's name, within database and schema.
+func (o RepositoryWorkflowConfigInvocationConfigIncludedTargetOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryWorkflowConfigInvocationConfigIncludedTarget) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The action's schema (BigQuery dataset ID), within database.
+func (o RepositoryWorkflowConfigInvocationConfigIncludedTargetOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryWorkflowConfigInvocationConfigIncludedTarget) *string { return v.Schema }).(pulumi.StringPtrOutput)
+}
+
+type RepositoryWorkflowConfigInvocationConfigIncludedTargetArrayOutput struct{ *pulumi.OutputState }
+
+func (RepositoryWorkflowConfigInvocationConfigIncludedTargetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RepositoryWorkflowConfigInvocationConfigIncludedTarget)(nil)).Elem()
+}
+
+func (o RepositoryWorkflowConfigInvocationConfigIncludedTargetArrayOutput) ToRepositoryWorkflowConfigInvocationConfigIncludedTargetArrayOutput() RepositoryWorkflowConfigInvocationConfigIncludedTargetArrayOutput {
+	return o
+}
+
+func (o RepositoryWorkflowConfigInvocationConfigIncludedTargetArrayOutput) ToRepositoryWorkflowConfigInvocationConfigIncludedTargetArrayOutputWithContext(ctx context.Context) RepositoryWorkflowConfigInvocationConfigIncludedTargetArrayOutput {
+	return o
+}
+
+func (o RepositoryWorkflowConfigInvocationConfigIncludedTargetArrayOutput) Index(i pulumi.IntInput) RepositoryWorkflowConfigInvocationConfigIncludedTargetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RepositoryWorkflowConfigInvocationConfigIncludedTarget {
+		return vs[0].([]RepositoryWorkflowConfigInvocationConfigIncludedTarget)[vs[1].(int)]
+	}).(RepositoryWorkflowConfigInvocationConfigIncludedTargetOutput)
+}
+
+type RepositoryWorkflowConfigRecentScheduledExecutionRecord struct {
+	// (Output)
+	// The error status encountered upon this attempt to create the workflow invocation, if the attempt was unsuccessful.
+	// Structure is documented below.
+	ErrorStatuses []RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus `pulumi:"errorStatuses"`
+	// (Output)
+	// The timestamp of this workflow attempt.
+	ExecutionTime *string `pulumi:"executionTime"`
+	// (Output)
+	// The name of the created workflow invocation, if one was successfully created. In the format projects/*/locations/*/repositories/*/workflowInvocations/*.
+	WorkflowInvocation *string `pulumi:"workflowInvocation"`
+}
+
+// RepositoryWorkflowConfigRecentScheduledExecutionRecordInput is an input type that accepts RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs and RepositoryWorkflowConfigRecentScheduledExecutionRecordOutput values.
+// You can construct a concrete instance of `RepositoryWorkflowConfigRecentScheduledExecutionRecordInput` via:
+//
+//	RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs{...}
+type RepositoryWorkflowConfigRecentScheduledExecutionRecordInput interface {
+	pulumi.Input
+
+	ToRepositoryWorkflowConfigRecentScheduledExecutionRecordOutput() RepositoryWorkflowConfigRecentScheduledExecutionRecordOutput
+	ToRepositoryWorkflowConfigRecentScheduledExecutionRecordOutputWithContext(context.Context) RepositoryWorkflowConfigRecentScheduledExecutionRecordOutput
+}
+
+type RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs struct {
+	// (Output)
+	// The error status encountered upon this attempt to create the workflow invocation, if the attempt was unsuccessful.
+	// Structure is documented below.
+	ErrorStatuses RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayInput `pulumi:"errorStatuses"`
+	// (Output)
+	// The timestamp of this workflow attempt.
+	ExecutionTime pulumi.StringPtrInput `pulumi:"executionTime"`
+	// (Output)
+	// The name of the created workflow invocation, if one was successfully created. In the format projects/*/locations/*/repositories/*/workflowInvocations/*.
+	WorkflowInvocation pulumi.StringPtrInput `pulumi:"workflowInvocation"`
+}
+
+func (RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryWorkflowConfigRecentScheduledExecutionRecord)(nil)).Elem()
+}
+
+func (i RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs) ToRepositoryWorkflowConfigRecentScheduledExecutionRecordOutput() RepositoryWorkflowConfigRecentScheduledExecutionRecordOutput {
+	return i.ToRepositoryWorkflowConfigRecentScheduledExecutionRecordOutputWithContext(context.Background())
+}
+
+func (i RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs) ToRepositoryWorkflowConfigRecentScheduledExecutionRecordOutputWithContext(ctx context.Context) RepositoryWorkflowConfigRecentScheduledExecutionRecordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryWorkflowConfigRecentScheduledExecutionRecordOutput)
+}
+
+// RepositoryWorkflowConfigRecentScheduledExecutionRecordArrayInput is an input type that accepts RepositoryWorkflowConfigRecentScheduledExecutionRecordArray and RepositoryWorkflowConfigRecentScheduledExecutionRecordArrayOutput values.
+// You can construct a concrete instance of `RepositoryWorkflowConfigRecentScheduledExecutionRecordArrayInput` via:
+//
+//	RepositoryWorkflowConfigRecentScheduledExecutionRecordArray{ RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs{...} }
+type RepositoryWorkflowConfigRecentScheduledExecutionRecordArrayInput interface {
+	pulumi.Input
+
+	ToRepositoryWorkflowConfigRecentScheduledExecutionRecordArrayOutput() RepositoryWorkflowConfigRecentScheduledExecutionRecordArrayOutput
+	ToRepositoryWorkflowConfigRecentScheduledExecutionRecordArrayOutputWithContext(context.Context) RepositoryWorkflowConfigRecentScheduledExecutionRecordArrayOutput
+}
+
+type RepositoryWorkflowConfigRecentScheduledExecutionRecordArray []RepositoryWorkflowConfigRecentScheduledExecutionRecordInput
+
+func (RepositoryWorkflowConfigRecentScheduledExecutionRecordArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RepositoryWorkflowConfigRecentScheduledExecutionRecord)(nil)).Elem()
+}
+
+func (i RepositoryWorkflowConfigRecentScheduledExecutionRecordArray) ToRepositoryWorkflowConfigRecentScheduledExecutionRecordArrayOutput() RepositoryWorkflowConfigRecentScheduledExecutionRecordArrayOutput {
+	return i.ToRepositoryWorkflowConfigRecentScheduledExecutionRecordArrayOutputWithContext(context.Background())
+}
+
+func (i RepositoryWorkflowConfigRecentScheduledExecutionRecordArray) ToRepositoryWorkflowConfigRecentScheduledExecutionRecordArrayOutputWithContext(ctx context.Context) RepositoryWorkflowConfigRecentScheduledExecutionRecordArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryWorkflowConfigRecentScheduledExecutionRecordArrayOutput)
+}
+
+type RepositoryWorkflowConfigRecentScheduledExecutionRecordOutput struct{ *pulumi.OutputState }
+
+func (RepositoryWorkflowConfigRecentScheduledExecutionRecordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryWorkflowConfigRecentScheduledExecutionRecord)(nil)).Elem()
+}
+
+func (o RepositoryWorkflowConfigRecentScheduledExecutionRecordOutput) ToRepositoryWorkflowConfigRecentScheduledExecutionRecordOutput() RepositoryWorkflowConfigRecentScheduledExecutionRecordOutput {
+	return o
+}
+
+func (o RepositoryWorkflowConfigRecentScheduledExecutionRecordOutput) ToRepositoryWorkflowConfigRecentScheduledExecutionRecordOutputWithContext(ctx context.Context) RepositoryWorkflowConfigRecentScheduledExecutionRecordOutput {
+	return o
+}
+
+// (Output)
+// The error status encountered upon this attempt to create the workflow invocation, if the attempt was unsuccessful.
+// Structure is documented below.
+func (o RepositoryWorkflowConfigRecentScheduledExecutionRecordOutput) ErrorStatuses() RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayOutput {
+	return o.ApplyT(func(v RepositoryWorkflowConfigRecentScheduledExecutionRecord) []RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus {
+		return v.ErrorStatuses
+	}).(RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayOutput)
+}
+
+// (Output)
+// The timestamp of this workflow attempt.
+func (o RepositoryWorkflowConfigRecentScheduledExecutionRecordOutput) ExecutionTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryWorkflowConfigRecentScheduledExecutionRecord) *string { return v.ExecutionTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The name of the created workflow invocation, if one was successfully created. In the format projects/*/locations/*/repositories/*/workflowInvocations/*.
+func (o RepositoryWorkflowConfigRecentScheduledExecutionRecordOutput) WorkflowInvocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryWorkflowConfigRecentScheduledExecutionRecord) *string { return v.WorkflowInvocation }).(pulumi.StringPtrOutput)
+}
+
+type RepositoryWorkflowConfigRecentScheduledExecutionRecordArrayOutput struct{ *pulumi.OutputState }
+
+func (RepositoryWorkflowConfigRecentScheduledExecutionRecordArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RepositoryWorkflowConfigRecentScheduledExecutionRecord)(nil)).Elem()
+}
+
+func (o RepositoryWorkflowConfigRecentScheduledExecutionRecordArrayOutput) ToRepositoryWorkflowConfigRecentScheduledExecutionRecordArrayOutput() RepositoryWorkflowConfigRecentScheduledExecutionRecordArrayOutput {
+	return o
+}
+
+func (o RepositoryWorkflowConfigRecentScheduledExecutionRecordArrayOutput) ToRepositoryWorkflowConfigRecentScheduledExecutionRecordArrayOutputWithContext(ctx context.Context) RepositoryWorkflowConfigRecentScheduledExecutionRecordArrayOutput {
+	return o
+}
+
+func (o RepositoryWorkflowConfigRecentScheduledExecutionRecordArrayOutput) Index(i pulumi.IntInput) RepositoryWorkflowConfigRecentScheduledExecutionRecordOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RepositoryWorkflowConfigRecentScheduledExecutionRecord {
+		return vs[0].([]RepositoryWorkflowConfigRecentScheduledExecutionRecord)[vs[1].(int)]
+	}).(RepositoryWorkflowConfigRecentScheduledExecutionRecordOutput)
+}
+
+type RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code *int `pulumi:"code"`
+	// (Output)
+	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+	Message *string `pulumi:"message"`
+}
+
+// RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusInput is an input type that accepts RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgs and RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusOutput values.
+// You can construct a concrete instance of `RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusInput` via:
+//
+//	RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgs{...}
+type RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusInput interface {
+	pulumi.Input
+
+	ToRepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusOutput() RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusOutput
+	ToRepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusOutputWithContext(context.Context) RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusOutput
+}
+
+type RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgs struct {
+	// (Output)
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// (Output)
+	// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus)(nil)).Elem()
+}
+
+func (i RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgs) ToRepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusOutput() RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusOutput {
+	return i.ToRepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusOutputWithContext(context.Background())
+}
+
+func (i RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgs) ToRepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusOutputWithContext(ctx context.Context) RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusOutput)
+}
+
+// RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayInput is an input type that accepts RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArray and RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayOutput values.
+// You can construct a concrete instance of `RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayInput` via:
+//
+//	RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArray{ RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgs{...} }
+type RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayInput interface {
+	pulumi.Input
+
+	ToRepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayOutput() RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayOutput
+	ToRepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayOutputWithContext(context.Context) RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayOutput
+}
+
+type RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArray []RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusInput
+
+func (RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus)(nil)).Elem()
+}
+
+func (i RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArray) ToRepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayOutput() RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayOutput {
+	return i.ToRepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayOutputWithContext(context.Background())
+}
+
+func (i RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArray) ToRepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayOutputWithContext(ctx context.Context) RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayOutput)
+}
+
+type RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusOutput struct{ *pulumi.OutputState }
+
+func (RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus)(nil)).Elem()
+}
+
+func (o RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusOutput) ToRepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusOutput() RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusOutput {
+	return o
+}
+
+func (o RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusOutput) ToRepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusOutputWithContext(ctx context.Context) RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusOutput {
+	return o
+}
+
+// (Output)
+// The status code, which should be an enum value of google.rpc.Code.
+func (o RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+func (o RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus)(nil)).Elem()
+}
+
+func (o RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayOutput) ToRepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayOutput() RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayOutput {
+	return o
+}
+
+func (o RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayOutput) ToRepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayOutputWithContext(ctx context.Context) RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayOutput {
+	return o
+}
+
+func (o RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayOutput) Index(i pulumi.IntInput) RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus {
+		return vs[0].([]RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus)[vs[1].(int)]
+	}).(RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusOutput)
+}
+
 type RepositoryWorkspaceCompilationOverrides struct {
 	// Optional. The default database (Google Cloud project ID).
 	DefaultDatabase *string `pulumi:"defaultDatabase"`
@@ -918,6 +1512,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryReleaseConfigRecentScheduledReleaseRecordArrayInput)(nil)).Elem(), RepositoryReleaseConfigRecentScheduledReleaseRecordArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusInput)(nil)).Elem(), RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayInput)(nil)).Elem(), RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryWorkflowConfigInvocationConfigInput)(nil)).Elem(), RepositoryWorkflowConfigInvocationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryWorkflowConfigInvocationConfigPtrInput)(nil)).Elem(), RepositoryWorkflowConfigInvocationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryWorkflowConfigInvocationConfigIncludedTargetInput)(nil)).Elem(), RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryWorkflowConfigInvocationConfigIncludedTargetArrayInput)(nil)).Elem(), RepositoryWorkflowConfigInvocationConfigIncludedTargetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryWorkflowConfigRecentScheduledExecutionRecordInput)(nil)).Elem(), RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryWorkflowConfigRecentScheduledExecutionRecordArrayInput)(nil)).Elem(), RepositoryWorkflowConfigRecentScheduledExecutionRecordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusInput)(nil)).Elem(), RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayInput)(nil)).Elem(), RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryWorkspaceCompilationOverridesInput)(nil)).Elem(), RepositoryWorkspaceCompilationOverridesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryWorkspaceCompilationOverridesPtrInput)(nil)).Elem(), RepositoryWorkspaceCompilationOverridesArgs{})
 	pulumi.RegisterOutputType(RepositoryGitRemoteSettingsOutput{})
@@ -928,6 +1530,14 @@ func init() {
 	pulumi.RegisterOutputType(RepositoryReleaseConfigRecentScheduledReleaseRecordArrayOutput{})
 	pulumi.RegisterOutputType(RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusOutput{})
 	pulumi.RegisterOutputType(RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArrayOutput{})
+	pulumi.RegisterOutputType(RepositoryWorkflowConfigInvocationConfigOutput{})
+	pulumi.RegisterOutputType(RepositoryWorkflowConfigInvocationConfigPtrOutput{})
+	pulumi.RegisterOutputType(RepositoryWorkflowConfigInvocationConfigIncludedTargetOutput{})
+	pulumi.RegisterOutputType(RepositoryWorkflowConfigInvocationConfigIncludedTargetArrayOutput{})
+	pulumi.RegisterOutputType(RepositoryWorkflowConfigRecentScheduledExecutionRecordOutput{})
+	pulumi.RegisterOutputType(RepositoryWorkflowConfigRecentScheduledExecutionRecordArrayOutput{})
+	pulumi.RegisterOutputType(RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusOutput{})
+	pulumi.RegisterOutputType(RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArrayOutput{})
 	pulumi.RegisterOutputType(RepositoryWorkspaceCompilationOverridesOutput{})
 	pulumi.RegisterOutputType(RepositoryWorkspaceCompilationOverridesPtrOutput{})
 }

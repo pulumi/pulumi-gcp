@@ -1960,7 +1960,11 @@ type DatascanDataProfileResultProfileField struct {
 	// 2. NULLABLE, if it is an optional field.
 	// 3. REPEATED, if it is a repeated field.
 	Mode *string `pulumi:"mode"`
-	// The name of the field.
+	// A mutable name for the rule.
+	// The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+	// The maximum length is 63 characters.
+	// Must start with a letter.
+	// Must end with a number or a letter.
 	Name *string `pulumi:"name"`
 	// Profile information for the corresponding field.
 	// Structure is documented below.
@@ -1986,7 +1990,11 @@ type DatascanDataProfileResultProfileFieldArgs struct {
 	// 2. NULLABLE, if it is an optional field.
 	// 3. REPEATED, if it is a repeated field.
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
-	// The name of the field.
+	// A mutable name for the rule.
+	// The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+	// The maximum length is 63 characters.
+	// Must start with a letter.
+	// Must end with a number or a letter.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Profile information for the corresponding field.
 	// Structure is documented below.
@@ -2054,7 +2062,11 @@ func (o DatascanDataProfileResultProfileFieldOutput) Mode() pulumi.StringPtrOutp
 	return o.ApplyT(func(v DatascanDataProfileResultProfileField) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
 
-// The name of the field.
+// A mutable name for the rule.
+// The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+// The maximum length is 63 characters.
+// Must start with a letter.
+// Must end with a number or a letter.
 func (o DatascanDataProfileResultProfileFieldOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatascanDataProfileResultProfileField) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -3179,9 +3191,22 @@ func (o DatascanDataProfileResultScannedDataIncrementalFieldPtrOutput) Start() p
 }
 
 type DatascanDataProfileSpec struct {
+	// The fields to exclude from data profile.
+	// If specified, the fields will be excluded from data profile, regardless of `includeFields` value.
+	// Structure is documented below.
+	ExcludeFields *DatascanDataProfileSpecExcludeFields `pulumi:"excludeFields"`
+	// The fields to include in data profile.
+	// If not specified, all fields at the time of profile scan job execution are included, except for ones listed in `excludeFields`.
+	// Structure is documented below.
+	IncludeFields *DatascanDataProfileSpecIncludeFields `pulumi:"includeFields"`
+	// Actions to take upon job completion.
+	// Structure is documented below.
+	PostScanActions *DatascanDataProfileSpecPostScanActions `pulumi:"postScanActions"`
 	// A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
 	RowFilter *string `pulumi:"rowFilter"`
 	// The percentage of the records to be selected from the dataset for DataScan.
+	// Value can range between 0.0 and 100.0 with up to 3 significant decimal digits.
+	// Sampling is not applied if `samplingPercent` is not specified, 0 or 100.
 	SamplingPercent *float64 `pulumi:"samplingPercent"`
 }
 
@@ -3197,9 +3222,22 @@ type DatascanDataProfileSpecInput interface {
 }
 
 type DatascanDataProfileSpecArgs struct {
+	// The fields to exclude from data profile.
+	// If specified, the fields will be excluded from data profile, regardless of `includeFields` value.
+	// Structure is documented below.
+	ExcludeFields DatascanDataProfileSpecExcludeFieldsPtrInput `pulumi:"excludeFields"`
+	// The fields to include in data profile.
+	// If not specified, all fields at the time of profile scan job execution are included, except for ones listed in `excludeFields`.
+	// Structure is documented below.
+	IncludeFields DatascanDataProfileSpecIncludeFieldsPtrInput `pulumi:"includeFields"`
+	// Actions to take upon job completion.
+	// Structure is documented below.
+	PostScanActions DatascanDataProfileSpecPostScanActionsPtrInput `pulumi:"postScanActions"`
 	// A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
 	RowFilter pulumi.StringPtrInput `pulumi:"rowFilter"`
 	// The percentage of the records to be selected from the dataset for DataScan.
+	// Value can range between 0.0 and 100.0 with up to 3 significant decimal digits.
+	// Sampling is not applied if `samplingPercent` is not specified, 0 or 100.
 	SamplingPercent pulumi.Float64PtrInput `pulumi:"samplingPercent"`
 }
 
@@ -3280,12 +3318,34 @@ func (o DatascanDataProfileSpecOutput) ToDatascanDataProfileSpecPtrOutputWithCon
 	}).(DatascanDataProfileSpecPtrOutput)
 }
 
+// The fields to exclude from data profile.
+// If specified, the fields will be excluded from data profile, regardless of `includeFields` value.
+// Structure is documented below.
+func (o DatascanDataProfileSpecOutput) ExcludeFields() DatascanDataProfileSpecExcludeFieldsPtrOutput {
+	return o.ApplyT(func(v DatascanDataProfileSpec) *DatascanDataProfileSpecExcludeFields { return v.ExcludeFields }).(DatascanDataProfileSpecExcludeFieldsPtrOutput)
+}
+
+// The fields to include in data profile.
+// If not specified, all fields at the time of profile scan job execution are included, except for ones listed in `excludeFields`.
+// Structure is documented below.
+func (o DatascanDataProfileSpecOutput) IncludeFields() DatascanDataProfileSpecIncludeFieldsPtrOutput {
+	return o.ApplyT(func(v DatascanDataProfileSpec) *DatascanDataProfileSpecIncludeFields { return v.IncludeFields }).(DatascanDataProfileSpecIncludeFieldsPtrOutput)
+}
+
+// Actions to take upon job completion.
+// Structure is documented below.
+func (o DatascanDataProfileSpecOutput) PostScanActions() DatascanDataProfileSpecPostScanActionsPtrOutput {
+	return o.ApplyT(func(v DatascanDataProfileSpec) *DatascanDataProfileSpecPostScanActions { return v.PostScanActions }).(DatascanDataProfileSpecPostScanActionsPtrOutput)
+}
+
 // A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
 func (o DatascanDataProfileSpecOutput) RowFilter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatascanDataProfileSpec) *string { return v.RowFilter }).(pulumi.StringPtrOutput)
 }
 
 // The percentage of the records to be selected from the dataset for DataScan.
+// Value can range between 0.0 and 100.0 with up to 3 significant decimal digits.
+// Sampling is not applied if `samplingPercent` is not specified, 0 or 100.
 func (o DatascanDataProfileSpecOutput) SamplingPercent() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v DatascanDataProfileSpec) *float64 { return v.SamplingPercent }).(pulumi.Float64PtrOutput)
 }
@@ -3314,6 +3374,41 @@ func (o DatascanDataProfileSpecPtrOutput) Elem() DatascanDataProfileSpecOutput {
 	}).(DatascanDataProfileSpecOutput)
 }
 
+// The fields to exclude from data profile.
+// If specified, the fields will be excluded from data profile, regardless of `includeFields` value.
+// Structure is documented below.
+func (o DatascanDataProfileSpecPtrOutput) ExcludeFields() DatascanDataProfileSpecExcludeFieldsPtrOutput {
+	return o.ApplyT(func(v *DatascanDataProfileSpec) *DatascanDataProfileSpecExcludeFields {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeFields
+	}).(DatascanDataProfileSpecExcludeFieldsPtrOutput)
+}
+
+// The fields to include in data profile.
+// If not specified, all fields at the time of profile scan job execution are included, except for ones listed in `excludeFields`.
+// Structure is documented below.
+func (o DatascanDataProfileSpecPtrOutput) IncludeFields() DatascanDataProfileSpecIncludeFieldsPtrOutput {
+	return o.ApplyT(func(v *DatascanDataProfileSpec) *DatascanDataProfileSpecIncludeFields {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeFields
+	}).(DatascanDataProfileSpecIncludeFieldsPtrOutput)
+}
+
+// Actions to take upon job completion.
+// Structure is documented below.
+func (o DatascanDataProfileSpecPtrOutput) PostScanActions() DatascanDataProfileSpecPostScanActionsPtrOutput {
+	return o.ApplyT(func(v *DatascanDataProfileSpec) *DatascanDataProfileSpecPostScanActions {
+		if v == nil {
+			return nil
+		}
+		return v.PostScanActions
+	}).(DatascanDataProfileSpecPostScanActionsPtrOutput)
+}
+
 // A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
 func (o DatascanDataProfileSpecPtrOutput) RowFilter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatascanDataProfileSpec) *string {
@@ -3325,6 +3420,8 @@ func (o DatascanDataProfileSpecPtrOutput) RowFilter() pulumi.StringPtrOutput {
 }
 
 // The percentage of the records to be selected from the dataset for DataScan.
+// Value can range between 0.0 and 100.0 with up to 3 significant decimal digits.
+// Sampling is not applied if `samplingPercent` is not specified, 0 or 100.
 func (o DatascanDataProfileSpecPtrOutput) SamplingPercent() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *DatascanDataProfileSpec) *float64 {
 		if v == nil {
@@ -3332,6 +3429,580 @@ func (o DatascanDataProfileSpecPtrOutput) SamplingPercent() pulumi.Float64PtrOut
 		}
 		return v.SamplingPercent
 	}).(pulumi.Float64PtrOutput)
+}
+
+type DatascanDataProfileSpecExcludeFields struct {
+	// Expected input is a list of fully qualified names of fields as in the schema.
+	// Only top-level field names for nested fields are supported.
+	// For instance, if 'x' is of nested field type, listing 'x' is supported but 'x.y.z' is not supported. Here 'y' and 'y.z' are nested fields of 'x'.
+	FieldNames []string `pulumi:"fieldNames"`
+}
+
+// DatascanDataProfileSpecExcludeFieldsInput is an input type that accepts DatascanDataProfileSpecExcludeFieldsArgs and DatascanDataProfileSpecExcludeFieldsOutput values.
+// You can construct a concrete instance of `DatascanDataProfileSpecExcludeFieldsInput` via:
+//
+//	DatascanDataProfileSpecExcludeFieldsArgs{...}
+type DatascanDataProfileSpecExcludeFieldsInput interface {
+	pulumi.Input
+
+	ToDatascanDataProfileSpecExcludeFieldsOutput() DatascanDataProfileSpecExcludeFieldsOutput
+	ToDatascanDataProfileSpecExcludeFieldsOutputWithContext(context.Context) DatascanDataProfileSpecExcludeFieldsOutput
+}
+
+type DatascanDataProfileSpecExcludeFieldsArgs struct {
+	// Expected input is a list of fully qualified names of fields as in the schema.
+	// Only top-level field names for nested fields are supported.
+	// For instance, if 'x' is of nested field type, listing 'x' is supported but 'x.y.z' is not supported. Here 'y' and 'y.z' are nested fields of 'x'.
+	FieldNames pulumi.StringArrayInput `pulumi:"fieldNames"`
+}
+
+func (DatascanDataProfileSpecExcludeFieldsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataProfileSpecExcludeFields)(nil)).Elem()
+}
+
+func (i DatascanDataProfileSpecExcludeFieldsArgs) ToDatascanDataProfileSpecExcludeFieldsOutput() DatascanDataProfileSpecExcludeFieldsOutput {
+	return i.ToDatascanDataProfileSpecExcludeFieldsOutputWithContext(context.Background())
+}
+
+func (i DatascanDataProfileSpecExcludeFieldsArgs) ToDatascanDataProfileSpecExcludeFieldsOutputWithContext(ctx context.Context) DatascanDataProfileSpecExcludeFieldsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataProfileSpecExcludeFieldsOutput)
+}
+
+func (i DatascanDataProfileSpecExcludeFieldsArgs) ToDatascanDataProfileSpecExcludeFieldsPtrOutput() DatascanDataProfileSpecExcludeFieldsPtrOutput {
+	return i.ToDatascanDataProfileSpecExcludeFieldsPtrOutputWithContext(context.Background())
+}
+
+func (i DatascanDataProfileSpecExcludeFieldsArgs) ToDatascanDataProfileSpecExcludeFieldsPtrOutputWithContext(ctx context.Context) DatascanDataProfileSpecExcludeFieldsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataProfileSpecExcludeFieldsOutput).ToDatascanDataProfileSpecExcludeFieldsPtrOutputWithContext(ctx)
+}
+
+// DatascanDataProfileSpecExcludeFieldsPtrInput is an input type that accepts DatascanDataProfileSpecExcludeFieldsArgs, DatascanDataProfileSpecExcludeFieldsPtr and DatascanDataProfileSpecExcludeFieldsPtrOutput values.
+// You can construct a concrete instance of `DatascanDataProfileSpecExcludeFieldsPtrInput` via:
+//
+//	        DatascanDataProfileSpecExcludeFieldsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatascanDataProfileSpecExcludeFieldsPtrInput interface {
+	pulumi.Input
+
+	ToDatascanDataProfileSpecExcludeFieldsPtrOutput() DatascanDataProfileSpecExcludeFieldsPtrOutput
+	ToDatascanDataProfileSpecExcludeFieldsPtrOutputWithContext(context.Context) DatascanDataProfileSpecExcludeFieldsPtrOutput
+}
+
+type datascanDataProfileSpecExcludeFieldsPtrType DatascanDataProfileSpecExcludeFieldsArgs
+
+func DatascanDataProfileSpecExcludeFieldsPtr(v *DatascanDataProfileSpecExcludeFieldsArgs) DatascanDataProfileSpecExcludeFieldsPtrInput {
+	return (*datascanDataProfileSpecExcludeFieldsPtrType)(v)
+}
+
+func (*datascanDataProfileSpecExcludeFieldsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataProfileSpecExcludeFields)(nil)).Elem()
+}
+
+func (i *datascanDataProfileSpecExcludeFieldsPtrType) ToDatascanDataProfileSpecExcludeFieldsPtrOutput() DatascanDataProfileSpecExcludeFieldsPtrOutput {
+	return i.ToDatascanDataProfileSpecExcludeFieldsPtrOutputWithContext(context.Background())
+}
+
+func (i *datascanDataProfileSpecExcludeFieldsPtrType) ToDatascanDataProfileSpecExcludeFieldsPtrOutputWithContext(ctx context.Context) DatascanDataProfileSpecExcludeFieldsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataProfileSpecExcludeFieldsPtrOutput)
+}
+
+type DatascanDataProfileSpecExcludeFieldsOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataProfileSpecExcludeFieldsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataProfileSpecExcludeFields)(nil)).Elem()
+}
+
+func (o DatascanDataProfileSpecExcludeFieldsOutput) ToDatascanDataProfileSpecExcludeFieldsOutput() DatascanDataProfileSpecExcludeFieldsOutput {
+	return o
+}
+
+func (o DatascanDataProfileSpecExcludeFieldsOutput) ToDatascanDataProfileSpecExcludeFieldsOutputWithContext(ctx context.Context) DatascanDataProfileSpecExcludeFieldsOutput {
+	return o
+}
+
+func (o DatascanDataProfileSpecExcludeFieldsOutput) ToDatascanDataProfileSpecExcludeFieldsPtrOutput() DatascanDataProfileSpecExcludeFieldsPtrOutput {
+	return o.ToDatascanDataProfileSpecExcludeFieldsPtrOutputWithContext(context.Background())
+}
+
+func (o DatascanDataProfileSpecExcludeFieldsOutput) ToDatascanDataProfileSpecExcludeFieldsPtrOutputWithContext(ctx context.Context) DatascanDataProfileSpecExcludeFieldsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatascanDataProfileSpecExcludeFields) *DatascanDataProfileSpecExcludeFields {
+		return &v
+	}).(DatascanDataProfileSpecExcludeFieldsPtrOutput)
+}
+
+// Expected input is a list of fully qualified names of fields as in the schema.
+// Only top-level field names for nested fields are supported.
+// For instance, if 'x' is of nested field type, listing 'x' is supported but 'x.y.z' is not supported. Here 'y' and 'y.z' are nested fields of 'x'.
+func (o DatascanDataProfileSpecExcludeFieldsOutput) FieldNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DatascanDataProfileSpecExcludeFields) []string { return v.FieldNames }).(pulumi.StringArrayOutput)
+}
+
+type DatascanDataProfileSpecExcludeFieldsPtrOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataProfileSpecExcludeFieldsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataProfileSpecExcludeFields)(nil)).Elem()
+}
+
+func (o DatascanDataProfileSpecExcludeFieldsPtrOutput) ToDatascanDataProfileSpecExcludeFieldsPtrOutput() DatascanDataProfileSpecExcludeFieldsPtrOutput {
+	return o
+}
+
+func (o DatascanDataProfileSpecExcludeFieldsPtrOutput) ToDatascanDataProfileSpecExcludeFieldsPtrOutputWithContext(ctx context.Context) DatascanDataProfileSpecExcludeFieldsPtrOutput {
+	return o
+}
+
+func (o DatascanDataProfileSpecExcludeFieldsPtrOutput) Elem() DatascanDataProfileSpecExcludeFieldsOutput {
+	return o.ApplyT(func(v *DatascanDataProfileSpecExcludeFields) DatascanDataProfileSpecExcludeFields {
+		if v != nil {
+			return *v
+		}
+		var ret DatascanDataProfileSpecExcludeFields
+		return ret
+	}).(DatascanDataProfileSpecExcludeFieldsOutput)
+}
+
+// Expected input is a list of fully qualified names of fields as in the schema.
+// Only top-level field names for nested fields are supported.
+// For instance, if 'x' is of nested field type, listing 'x' is supported but 'x.y.z' is not supported. Here 'y' and 'y.z' are nested fields of 'x'.
+func (o DatascanDataProfileSpecExcludeFieldsPtrOutput) FieldNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DatascanDataProfileSpecExcludeFields) []string {
+		if v == nil {
+			return nil
+		}
+		return v.FieldNames
+	}).(pulumi.StringArrayOutput)
+}
+
+type DatascanDataProfileSpecIncludeFields struct {
+	// Expected input is a list of fully qualified names of fields as in the schema.
+	// Only top-level field names for nested fields are supported.
+	// For instance, if 'x' is of nested field type, listing 'x' is supported but 'x.y.z' is not supported. Here 'y' and 'y.z' are nested fields of 'x'.
+	FieldNames []string `pulumi:"fieldNames"`
+}
+
+// DatascanDataProfileSpecIncludeFieldsInput is an input type that accepts DatascanDataProfileSpecIncludeFieldsArgs and DatascanDataProfileSpecIncludeFieldsOutput values.
+// You can construct a concrete instance of `DatascanDataProfileSpecIncludeFieldsInput` via:
+//
+//	DatascanDataProfileSpecIncludeFieldsArgs{...}
+type DatascanDataProfileSpecIncludeFieldsInput interface {
+	pulumi.Input
+
+	ToDatascanDataProfileSpecIncludeFieldsOutput() DatascanDataProfileSpecIncludeFieldsOutput
+	ToDatascanDataProfileSpecIncludeFieldsOutputWithContext(context.Context) DatascanDataProfileSpecIncludeFieldsOutput
+}
+
+type DatascanDataProfileSpecIncludeFieldsArgs struct {
+	// Expected input is a list of fully qualified names of fields as in the schema.
+	// Only top-level field names for nested fields are supported.
+	// For instance, if 'x' is of nested field type, listing 'x' is supported but 'x.y.z' is not supported. Here 'y' and 'y.z' are nested fields of 'x'.
+	FieldNames pulumi.StringArrayInput `pulumi:"fieldNames"`
+}
+
+func (DatascanDataProfileSpecIncludeFieldsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataProfileSpecIncludeFields)(nil)).Elem()
+}
+
+func (i DatascanDataProfileSpecIncludeFieldsArgs) ToDatascanDataProfileSpecIncludeFieldsOutput() DatascanDataProfileSpecIncludeFieldsOutput {
+	return i.ToDatascanDataProfileSpecIncludeFieldsOutputWithContext(context.Background())
+}
+
+func (i DatascanDataProfileSpecIncludeFieldsArgs) ToDatascanDataProfileSpecIncludeFieldsOutputWithContext(ctx context.Context) DatascanDataProfileSpecIncludeFieldsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataProfileSpecIncludeFieldsOutput)
+}
+
+func (i DatascanDataProfileSpecIncludeFieldsArgs) ToDatascanDataProfileSpecIncludeFieldsPtrOutput() DatascanDataProfileSpecIncludeFieldsPtrOutput {
+	return i.ToDatascanDataProfileSpecIncludeFieldsPtrOutputWithContext(context.Background())
+}
+
+func (i DatascanDataProfileSpecIncludeFieldsArgs) ToDatascanDataProfileSpecIncludeFieldsPtrOutputWithContext(ctx context.Context) DatascanDataProfileSpecIncludeFieldsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataProfileSpecIncludeFieldsOutput).ToDatascanDataProfileSpecIncludeFieldsPtrOutputWithContext(ctx)
+}
+
+// DatascanDataProfileSpecIncludeFieldsPtrInput is an input type that accepts DatascanDataProfileSpecIncludeFieldsArgs, DatascanDataProfileSpecIncludeFieldsPtr and DatascanDataProfileSpecIncludeFieldsPtrOutput values.
+// You can construct a concrete instance of `DatascanDataProfileSpecIncludeFieldsPtrInput` via:
+//
+//	        DatascanDataProfileSpecIncludeFieldsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatascanDataProfileSpecIncludeFieldsPtrInput interface {
+	pulumi.Input
+
+	ToDatascanDataProfileSpecIncludeFieldsPtrOutput() DatascanDataProfileSpecIncludeFieldsPtrOutput
+	ToDatascanDataProfileSpecIncludeFieldsPtrOutputWithContext(context.Context) DatascanDataProfileSpecIncludeFieldsPtrOutput
+}
+
+type datascanDataProfileSpecIncludeFieldsPtrType DatascanDataProfileSpecIncludeFieldsArgs
+
+func DatascanDataProfileSpecIncludeFieldsPtr(v *DatascanDataProfileSpecIncludeFieldsArgs) DatascanDataProfileSpecIncludeFieldsPtrInput {
+	return (*datascanDataProfileSpecIncludeFieldsPtrType)(v)
+}
+
+func (*datascanDataProfileSpecIncludeFieldsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataProfileSpecIncludeFields)(nil)).Elem()
+}
+
+func (i *datascanDataProfileSpecIncludeFieldsPtrType) ToDatascanDataProfileSpecIncludeFieldsPtrOutput() DatascanDataProfileSpecIncludeFieldsPtrOutput {
+	return i.ToDatascanDataProfileSpecIncludeFieldsPtrOutputWithContext(context.Background())
+}
+
+func (i *datascanDataProfileSpecIncludeFieldsPtrType) ToDatascanDataProfileSpecIncludeFieldsPtrOutputWithContext(ctx context.Context) DatascanDataProfileSpecIncludeFieldsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataProfileSpecIncludeFieldsPtrOutput)
+}
+
+type DatascanDataProfileSpecIncludeFieldsOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataProfileSpecIncludeFieldsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataProfileSpecIncludeFields)(nil)).Elem()
+}
+
+func (o DatascanDataProfileSpecIncludeFieldsOutput) ToDatascanDataProfileSpecIncludeFieldsOutput() DatascanDataProfileSpecIncludeFieldsOutput {
+	return o
+}
+
+func (o DatascanDataProfileSpecIncludeFieldsOutput) ToDatascanDataProfileSpecIncludeFieldsOutputWithContext(ctx context.Context) DatascanDataProfileSpecIncludeFieldsOutput {
+	return o
+}
+
+func (o DatascanDataProfileSpecIncludeFieldsOutput) ToDatascanDataProfileSpecIncludeFieldsPtrOutput() DatascanDataProfileSpecIncludeFieldsPtrOutput {
+	return o.ToDatascanDataProfileSpecIncludeFieldsPtrOutputWithContext(context.Background())
+}
+
+func (o DatascanDataProfileSpecIncludeFieldsOutput) ToDatascanDataProfileSpecIncludeFieldsPtrOutputWithContext(ctx context.Context) DatascanDataProfileSpecIncludeFieldsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatascanDataProfileSpecIncludeFields) *DatascanDataProfileSpecIncludeFields {
+		return &v
+	}).(DatascanDataProfileSpecIncludeFieldsPtrOutput)
+}
+
+// Expected input is a list of fully qualified names of fields as in the schema.
+// Only top-level field names for nested fields are supported.
+// For instance, if 'x' is of nested field type, listing 'x' is supported but 'x.y.z' is not supported. Here 'y' and 'y.z' are nested fields of 'x'.
+func (o DatascanDataProfileSpecIncludeFieldsOutput) FieldNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DatascanDataProfileSpecIncludeFields) []string { return v.FieldNames }).(pulumi.StringArrayOutput)
+}
+
+type DatascanDataProfileSpecIncludeFieldsPtrOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataProfileSpecIncludeFieldsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataProfileSpecIncludeFields)(nil)).Elem()
+}
+
+func (o DatascanDataProfileSpecIncludeFieldsPtrOutput) ToDatascanDataProfileSpecIncludeFieldsPtrOutput() DatascanDataProfileSpecIncludeFieldsPtrOutput {
+	return o
+}
+
+func (o DatascanDataProfileSpecIncludeFieldsPtrOutput) ToDatascanDataProfileSpecIncludeFieldsPtrOutputWithContext(ctx context.Context) DatascanDataProfileSpecIncludeFieldsPtrOutput {
+	return o
+}
+
+func (o DatascanDataProfileSpecIncludeFieldsPtrOutput) Elem() DatascanDataProfileSpecIncludeFieldsOutput {
+	return o.ApplyT(func(v *DatascanDataProfileSpecIncludeFields) DatascanDataProfileSpecIncludeFields {
+		if v != nil {
+			return *v
+		}
+		var ret DatascanDataProfileSpecIncludeFields
+		return ret
+	}).(DatascanDataProfileSpecIncludeFieldsOutput)
+}
+
+// Expected input is a list of fully qualified names of fields as in the schema.
+// Only top-level field names for nested fields are supported.
+// For instance, if 'x' is of nested field type, listing 'x' is supported but 'x.y.z' is not supported. Here 'y' and 'y.z' are nested fields of 'x'.
+func (o DatascanDataProfileSpecIncludeFieldsPtrOutput) FieldNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DatascanDataProfileSpecIncludeFields) []string {
+		if v == nil {
+			return nil
+		}
+		return v.FieldNames
+	}).(pulumi.StringArrayOutput)
+}
+
+type DatascanDataProfileSpecPostScanActions struct {
+	// If set, results will be exported to the provided BigQuery table.
+	// Structure is documented below.
+	BigqueryExport *DatascanDataProfileSpecPostScanActionsBigqueryExport `pulumi:"bigqueryExport"`
+}
+
+// DatascanDataProfileSpecPostScanActionsInput is an input type that accepts DatascanDataProfileSpecPostScanActionsArgs and DatascanDataProfileSpecPostScanActionsOutput values.
+// You can construct a concrete instance of `DatascanDataProfileSpecPostScanActionsInput` via:
+//
+//	DatascanDataProfileSpecPostScanActionsArgs{...}
+type DatascanDataProfileSpecPostScanActionsInput interface {
+	pulumi.Input
+
+	ToDatascanDataProfileSpecPostScanActionsOutput() DatascanDataProfileSpecPostScanActionsOutput
+	ToDatascanDataProfileSpecPostScanActionsOutputWithContext(context.Context) DatascanDataProfileSpecPostScanActionsOutput
+}
+
+type DatascanDataProfileSpecPostScanActionsArgs struct {
+	// If set, results will be exported to the provided BigQuery table.
+	// Structure is documented below.
+	BigqueryExport DatascanDataProfileSpecPostScanActionsBigqueryExportPtrInput `pulumi:"bigqueryExport"`
+}
+
+func (DatascanDataProfileSpecPostScanActionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataProfileSpecPostScanActions)(nil)).Elem()
+}
+
+func (i DatascanDataProfileSpecPostScanActionsArgs) ToDatascanDataProfileSpecPostScanActionsOutput() DatascanDataProfileSpecPostScanActionsOutput {
+	return i.ToDatascanDataProfileSpecPostScanActionsOutputWithContext(context.Background())
+}
+
+func (i DatascanDataProfileSpecPostScanActionsArgs) ToDatascanDataProfileSpecPostScanActionsOutputWithContext(ctx context.Context) DatascanDataProfileSpecPostScanActionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataProfileSpecPostScanActionsOutput)
+}
+
+func (i DatascanDataProfileSpecPostScanActionsArgs) ToDatascanDataProfileSpecPostScanActionsPtrOutput() DatascanDataProfileSpecPostScanActionsPtrOutput {
+	return i.ToDatascanDataProfileSpecPostScanActionsPtrOutputWithContext(context.Background())
+}
+
+func (i DatascanDataProfileSpecPostScanActionsArgs) ToDatascanDataProfileSpecPostScanActionsPtrOutputWithContext(ctx context.Context) DatascanDataProfileSpecPostScanActionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataProfileSpecPostScanActionsOutput).ToDatascanDataProfileSpecPostScanActionsPtrOutputWithContext(ctx)
+}
+
+// DatascanDataProfileSpecPostScanActionsPtrInput is an input type that accepts DatascanDataProfileSpecPostScanActionsArgs, DatascanDataProfileSpecPostScanActionsPtr and DatascanDataProfileSpecPostScanActionsPtrOutput values.
+// You can construct a concrete instance of `DatascanDataProfileSpecPostScanActionsPtrInput` via:
+//
+//	        DatascanDataProfileSpecPostScanActionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatascanDataProfileSpecPostScanActionsPtrInput interface {
+	pulumi.Input
+
+	ToDatascanDataProfileSpecPostScanActionsPtrOutput() DatascanDataProfileSpecPostScanActionsPtrOutput
+	ToDatascanDataProfileSpecPostScanActionsPtrOutputWithContext(context.Context) DatascanDataProfileSpecPostScanActionsPtrOutput
+}
+
+type datascanDataProfileSpecPostScanActionsPtrType DatascanDataProfileSpecPostScanActionsArgs
+
+func DatascanDataProfileSpecPostScanActionsPtr(v *DatascanDataProfileSpecPostScanActionsArgs) DatascanDataProfileSpecPostScanActionsPtrInput {
+	return (*datascanDataProfileSpecPostScanActionsPtrType)(v)
+}
+
+func (*datascanDataProfileSpecPostScanActionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataProfileSpecPostScanActions)(nil)).Elem()
+}
+
+func (i *datascanDataProfileSpecPostScanActionsPtrType) ToDatascanDataProfileSpecPostScanActionsPtrOutput() DatascanDataProfileSpecPostScanActionsPtrOutput {
+	return i.ToDatascanDataProfileSpecPostScanActionsPtrOutputWithContext(context.Background())
+}
+
+func (i *datascanDataProfileSpecPostScanActionsPtrType) ToDatascanDataProfileSpecPostScanActionsPtrOutputWithContext(ctx context.Context) DatascanDataProfileSpecPostScanActionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataProfileSpecPostScanActionsPtrOutput)
+}
+
+type DatascanDataProfileSpecPostScanActionsOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataProfileSpecPostScanActionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataProfileSpecPostScanActions)(nil)).Elem()
+}
+
+func (o DatascanDataProfileSpecPostScanActionsOutput) ToDatascanDataProfileSpecPostScanActionsOutput() DatascanDataProfileSpecPostScanActionsOutput {
+	return o
+}
+
+func (o DatascanDataProfileSpecPostScanActionsOutput) ToDatascanDataProfileSpecPostScanActionsOutputWithContext(ctx context.Context) DatascanDataProfileSpecPostScanActionsOutput {
+	return o
+}
+
+func (o DatascanDataProfileSpecPostScanActionsOutput) ToDatascanDataProfileSpecPostScanActionsPtrOutput() DatascanDataProfileSpecPostScanActionsPtrOutput {
+	return o.ToDatascanDataProfileSpecPostScanActionsPtrOutputWithContext(context.Background())
+}
+
+func (o DatascanDataProfileSpecPostScanActionsOutput) ToDatascanDataProfileSpecPostScanActionsPtrOutputWithContext(ctx context.Context) DatascanDataProfileSpecPostScanActionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatascanDataProfileSpecPostScanActions) *DatascanDataProfileSpecPostScanActions {
+		return &v
+	}).(DatascanDataProfileSpecPostScanActionsPtrOutput)
+}
+
+// If set, results will be exported to the provided BigQuery table.
+// Structure is documented below.
+func (o DatascanDataProfileSpecPostScanActionsOutput) BigqueryExport() DatascanDataProfileSpecPostScanActionsBigqueryExportPtrOutput {
+	return o.ApplyT(func(v DatascanDataProfileSpecPostScanActions) *DatascanDataProfileSpecPostScanActionsBigqueryExport {
+		return v.BigqueryExport
+	}).(DatascanDataProfileSpecPostScanActionsBigqueryExportPtrOutput)
+}
+
+type DatascanDataProfileSpecPostScanActionsPtrOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataProfileSpecPostScanActionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataProfileSpecPostScanActions)(nil)).Elem()
+}
+
+func (o DatascanDataProfileSpecPostScanActionsPtrOutput) ToDatascanDataProfileSpecPostScanActionsPtrOutput() DatascanDataProfileSpecPostScanActionsPtrOutput {
+	return o
+}
+
+func (o DatascanDataProfileSpecPostScanActionsPtrOutput) ToDatascanDataProfileSpecPostScanActionsPtrOutputWithContext(ctx context.Context) DatascanDataProfileSpecPostScanActionsPtrOutput {
+	return o
+}
+
+func (o DatascanDataProfileSpecPostScanActionsPtrOutput) Elem() DatascanDataProfileSpecPostScanActionsOutput {
+	return o.ApplyT(func(v *DatascanDataProfileSpecPostScanActions) DatascanDataProfileSpecPostScanActions {
+		if v != nil {
+			return *v
+		}
+		var ret DatascanDataProfileSpecPostScanActions
+		return ret
+	}).(DatascanDataProfileSpecPostScanActionsOutput)
+}
+
+// If set, results will be exported to the provided BigQuery table.
+// Structure is documented below.
+func (o DatascanDataProfileSpecPostScanActionsPtrOutput) BigqueryExport() DatascanDataProfileSpecPostScanActionsBigqueryExportPtrOutput {
+	return o.ApplyT(func(v *DatascanDataProfileSpecPostScanActions) *DatascanDataProfileSpecPostScanActionsBigqueryExport {
+		if v == nil {
+			return nil
+		}
+		return v.BigqueryExport
+	}).(DatascanDataProfileSpecPostScanActionsBigqueryExportPtrOutput)
+}
+
+type DatascanDataProfileSpecPostScanActionsBigqueryExport struct {
+	// The BigQuery table to export DataProfileScan results to.
+	// Format://bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+	ResultsTable *string `pulumi:"resultsTable"`
+}
+
+// DatascanDataProfileSpecPostScanActionsBigqueryExportInput is an input type that accepts DatascanDataProfileSpecPostScanActionsBigqueryExportArgs and DatascanDataProfileSpecPostScanActionsBigqueryExportOutput values.
+// You can construct a concrete instance of `DatascanDataProfileSpecPostScanActionsBigqueryExportInput` via:
+//
+//	DatascanDataProfileSpecPostScanActionsBigqueryExportArgs{...}
+type DatascanDataProfileSpecPostScanActionsBigqueryExportInput interface {
+	pulumi.Input
+
+	ToDatascanDataProfileSpecPostScanActionsBigqueryExportOutput() DatascanDataProfileSpecPostScanActionsBigqueryExportOutput
+	ToDatascanDataProfileSpecPostScanActionsBigqueryExportOutputWithContext(context.Context) DatascanDataProfileSpecPostScanActionsBigqueryExportOutput
+}
+
+type DatascanDataProfileSpecPostScanActionsBigqueryExportArgs struct {
+	// The BigQuery table to export DataProfileScan results to.
+	// Format://bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+	ResultsTable pulumi.StringPtrInput `pulumi:"resultsTable"`
+}
+
+func (DatascanDataProfileSpecPostScanActionsBigqueryExportArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataProfileSpecPostScanActionsBigqueryExport)(nil)).Elem()
+}
+
+func (i DatascanDataProfileSpecPostScanActionsBigqueryExportArgs) ToDatascanDataProfileSpecPostScanActionsBigqueryExportOutput() DatascanDataProfileSpecPostScanActionsBigqueryExportOutput {
+	return i.ToDatascanDataProfileSpecPostScanActionsBigqueryExportOutputWithContext(context.Background())
+}
+
+func (i DatascanDataProfileSpecPostScanActionsBigqueryExportArgs) ToDatascanDataProfileSpecPostScanActionsBigqueryExportOutputWithContext(ctx context.Context) DatascanDataProfileSpecPostScanActionsBigqueryExportOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataProfileSpecPostScanActionsBigqueryExportOutput)
+}
+
+func (i DatascanDataProfileSpecPostScanActionsBigqueryExportArgs) ToDatascanDataProfileSpecPostScanActionsBigqueryExportPtrOutput() DatascanDataProfileSpecPostScanActionsBigqueryExportPtrOutput {
+	return i.ToDatascanDataProfileSpecPostScanActionsBigqueryExportPtrOutputWithContext(context.Background())
+}
+
+func (i DatascanDataProfileSpecPostScanActionsBigqueryExportArgs) ToDatascanDataProfileSpecPostScanActionsBigqueryExportPtrOutputWithContext(ctx context.Context) DatascanDataProfileSpecPostScanActionsBigqueryExportPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataProfileSpecPostScanActionsBigqueryExportOutput).ToDatascanDataProfileSpecPostScanActionsBigqueryExportPtrOutputWithContext(ctx)
+}
+
+// DatascanDataProfileSpecPostScanActionsBigqueryExportPtrInput is an input type that accepts DatascanDataProfileSpecPostScanActionsBigqueryExportArgs, DatascanDataProfileSpecPostScanActionsBigqueryExportPtr and DatascanDataProfileSpecPostScanActionsBigqueryExportPtrOutput values.
+// You can construct a concrete instance of `DatascanDataProfileSpecPostScanActionsBigqueryExportPtrInput` via:
+//
+//	        DatascanDataProfileSpecPostScanActionsBigqueryExportArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatascanDataProfileSpecPostScanActionsBigqueryExportPtrInput interface {
+	pulumi.Input
+
+	ToDatascanDataProfileSpecPostScanActionsBigqueryExportPtrOutput() DatascanDataProfileSpecPostScanActionsBigqueryExportPtrOutput
+	ToDatascanDataProfileSpecPostScanActionsBigqueryExportPtrOutputWithContext(context.Context) DatascanDataProfileSpecPostScanActionsBigqueryExportPtrOutput
+}
+
+type datascanDataProfileSpecPostScanActionsBigqueryExportPtrType DatascanDataProfileSpecPostScanActionsBigqueryExportArgs
+
+func DatascanDataProfileSpecPostScanActionsBigqueryExportPtr(v *DatascanDataProfileSpecPostScanActionsBigqueryExportArgs) DatascanDataProfileSpecPostScanActionsBigqueryExportPtrInput {
+	return (*datascanDataProfileSpecPostScanActionsBigqueryExportPtrType)(v)
+}
+
+func (*datascanDataProfileSpecPostScanActionsBigqueryExportPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataProfileSpecPostScanActionsBigqueryExport)(nil)).Elem()
+}
+
+func (i *datascanDataProfileSpecPostScanActionsBigqueryExportPtrType) ToDatascanDataProfileSpecPostScanActionsBigqueryExportPtrOutput() DatascanDataProfileSpecPostScanActionsBigqueryExportPtrOutput {
+	return i.ToDatascanDataProfileSpecPostScanActionsBigqueryExportPtrOutputWithContext(context.Background())
+}
+
+func (i *datascanDataProfileSpecPostScanActionsBigqueryExportPtrType) ToDatascanDataProfileSpecPostScanActionsBigqueryExportPtrOutputWithContext(ctx context.Context) DatascanDataProfileSpecPostScanActionsBigqueryExportPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataProfileSpecPostScanActionsBigqueryExportPtrOutput)
+}
+
+type DatascanDataProfileSpecPostScanActionsBigqueryExportOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataProfileSpecPostScanActionsBigqueryExportOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataProfileSpecPostScanActionsBigqueryExport)(nil)).Elem()
+}
+
+func (o DatascanDataProfileSpecPostScanActionsBigqueryExportOutput) ToDatascanDataProfileSpecPostScanActionsBigqueryExportOutput() DatascanDataProfileSpecPostScanActionsBigqueryExportOutput {
+	return o
+}
+
+func (o DatascanDataProfileSpecPostScanActionsBigqueryExportOutput) ToDatascanDataProfileSpecPostScanActionsBigqueryExportOutputWithContext(ctx context.Context) DatascanDataProfileSpecPostScanActionsBigqueryExportOutput {
+	return o
+}
+
+func (o DatascanDataProfileSpecPostScanActionsBigqueryExportOutput) ToDatascanDataProfileSpecPostScanActionsBigqueryExportPtrOutput() DatascanDataProfileSpecPostScanActionsBigqueryExportPtrOutput {
+	return o.ToDatascanDataProfileSpecPostScanActionsBigqueryExportPtrOutputWithContext(context.Background())
+}
+
+func (o DatascanDataProfileSpecPostScanActionsBigqueryExportOutput) ToDatascanDataProfileSpecPostScanActionsBigqueryExportPtrOutputWithContext(ctx context.Context) DatascanDataProfileSpecPostScanActionsBigqueryExportPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatascanDataProfileSpecPostScanActionsBigqueryExport) *DatascanDataProfileSpecPostScanActionsBigqueryExport {
+		return &v
+	}).(DatascanDataProfileSpecPostScanActionsBigqueryExportPtrOutput)
+}
+
+// The BigQuery table to export DataProfileScan results to.
+// Format://bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+func (o DatascanDataProfileSpecPostScanActionsBigqueryExportOutput) ResultsTable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataProfileSpecPostScanActionsBigqueryExport) *string { return v.ResultsTable }).(pulumi.StringPtrOutput)
+}
+
+type DatascanDataProfileSpecPostScanActionsBigqueryExportPtrOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataProfileSpecPostScanActionsBigqueryExportPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataProfileSpecPostScanActionsBigqueryExport)(nil)).Elem()
+}
+
+func (o DatascanDataProfileSpecPostScanActionsBigqueryExportPtrOutput) ToDatascanDataProfileSpecPostScanActionsBigqueryExportPtrOutput() DatascanDataProfileSpecPostScanActionsBigqueryExportPtrOutput {
+	return o
+}
+
+func (o DatascanDataProfileSpecPostScanActionsBigqueryExportPtrOutput) ToDatascanDataProfileSpecPostScanActionsBigqueryExportPtrOutputWithContext(ctx context.Context) DatascanDataProfileSpecPostScanActionsBigqueryExportPtrOutput {
+	return o
+}
+
+func (o DatascanDataProfileSpecPostScanActionsBigqueryExportPtrOutput) Elem() DatascanDataProfileSpecPostScanActionsBigqueryExportOutput {
+	return o.ApplyT(func(v *DatascanDataProfileSpecPostScanActionsBigqueryExport) DatascanDataProfileSpecPostScanActionsBigqueryExport {
+		if v != nil {
+			return *v
+		}
+		var ret DatascanDataProfileSpecPostScanActionsBigqueryExport
+		return ret
+	}).(DatascanDataProfileSpecPostScanActionsBigqueryExportOutput)
+}
+
+// The BigQuery table to export DataProfileScan results to.
+// Format://bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+func (o DatascanDataProfileSpecPostScanActionsBigqueryExportPtrOutput) ResultsTable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatascanDataProfileSpecPostScanActionsBigqueryExport) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResultsTable
+	}).(pulumi.StringPtrOutput)
 }
 
 type DatascanDataQualityResult struct {
@@ -3795,7 +4466,7 @@ type DatascanDataQualityResultRuleRule struct {
 	TableConditionExpectations []DatascanDataQualityResultRuleRuleTableConditionExpectation `pulumi:"tableConditionExpectations"`
 	// The minimum ratio of passingRows / totalRows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
 	Threshold *int `pulumi:"threshold"`
-	// ColumnAggregate rule which evaluates whether the column has duplicates.
+	// Row-level rule which evaluates whether each column value is unique.
 	UniquenessExpectations []DatascanDataQualityResultRuleRuleUniquenessExpectation `pulumi:"uniquenessExpectations"`
 }
 
@@ -3839,7 +4510,7 @@ type DatascanDataQualityResultRuleRuleArgs struct {
 	TableConditionExpectations DatascanDataQualityResultRuleRuleTableConditionExpectationArrayInput `pulumi:"tableConditionExpectations"`
 	// The minimum ratio of passingRows / totalRows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
 	Threshold pulumi.IntPtrInput `pulumi:"threshold"`
-	// ColumnAggregate rule which evaluates whether the column has duplicates.
+	// Row-level rule which evaluates whether each column value is unique.
 	UniquenessExpectations DatascanDataQualityResultRuleRuleUniquenessExpectationArrayInput `pulumi:"uniquenessExpectations"`
 }
 
@@ -3969,7 +4640,7 @@ func (o DatascanDataQualityResultRuleRuleOutput) Threshold() pulumi.IntPtrOutput
 	return o.ApplyT(func(v DatascanDataQualityResultRuleRule) *int { return v.Threshold }).(pulumi.IntPtrOutput)
 }
 
-// ColumnAggregate rule which evaluates whether the column has duplicates.
+// Row-level rule which evaluates whether each column value is unique.
 func (o DatascanDataQualityResultRuleRuleOutput) UniquenessExpectations() DatascanDataQualityResultRuleRuleUniquenessExpectationArrayOutput {
 	return o.ApplyT(func(v DatascanDataQualityResultRuleRule) []DatascanDataQualityResultRuleRuleUniquenessExpectation {
 		return v.UniquenessExpectations
@@ -5116,12 +5787,17 @@ func (o DatascanDataQualityResultScannedDataIncrementalFieldPtrOutput) Start() p
 }
 
 type DatascanDataQualitySpec struct {
+	// Actions to take upon job completion.
+	// Structure is documented below.
+	PostScanActions *DatascanDataQualitySpecPostScanActions `pulumi:"postScanActions"`
 	// A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
 	RowFilter *string `pulumi:"rowFilter"`
 	// The list of rules to evaluate against a data source. At least one rule is required.
 	// Structure is documented below.
 	Rules []DatascanDataQualitySpecRule `pulumi:"rules"`
 	// The percentage of the records to be selected from the dataset for DataScan.
+	// Value can range between 0.0 and 100.0 with up to 3 significant decimal digits.
+	// Sampling is not applied if `samplingPercent` is not specified, 0 or 100.
 	SamplingPercent *float64 `pulumi:"samplingPercent"`
 }
 
@@ -5137,12 +5813,17 @@ type DatascanDataQualitySpecInput interface {
 }
 
 type DatascanDataQualitySpecArgs struct {
+	// Actions to take upon job completion.
+	// Structure is documented below.
+	PostScanActions DatascanDataQualitySpecPostScanActionsPtrInput `pulumi:"postScanActions"`
 	// A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
 	RowFilter pulumi.StringPtrInput `pulumi:"rowFilter"`
 	// The list of rules to evaluate against a data source. At least one rule is required.
 	// Structure is documented below.
 	Rules DatascanDataQualitySpecRuleArrayInput `pulumi:"rules"`
 	// The percentage of the records to be selected from the dataset for DataScan.
+	// Value can range between 0.0 and 100.0 with up to 3 significant decimal digits.
+	// Sampling is not applied if `samplingPercent` is not specified, 0 or 100.
 	SamplingPercent pulumi.Float64PtrInput `pulumi:"samplingPercent"`
 }
 
@@ -5223,6 +5904,12 @@ func (o DatascanDataQualitySpecOutput) ToDatascanDataQualitySpecPtrOutputWithCon
 	}).(DatascanDataQualitySpecPtrOutput)
 }
 
+// Actions to take upon job completion.
+// Structure is documented below.
+func (o DatascanDataQualitySpecOutput) PostScanActions() DatascanDataQualitySpecPostScanActionsPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpec) *DatascanDataQualitySpecPostScanActions { return v.PostScanActions }).(DatascanDataQualitySpecPostScanActionsPtrOutput)
+}
+
 // A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
 func (o DatascanDataQualitySpecOutput) RowFilter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatascanDataQualitySpec) *string { return v.RowFilter }).(pulumi.StringPtrOutput)
@@ -5235,6 +5922,8 @@ func (o DatascanDataQualitySpecOutput) Rules() DatascanDataQualitySpecRuleArrayO
 }
 
 // The percentage of the records to be selected from the dataset for DataScan.
+// Value can range between 0.0 and 100.0 with up to 3 significant decimal digits.
+// Sampling is not applied if `samplingPercent` is not specified, 0 or 100.
 func (o DatascanDataQualitySpecOutput) SamplingPercent() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v DatascanDataQualitySpec) *float64 { return v.SamplingPercent }).(pulumi.Float64PtrOutput)
 }
@@ -5263,6 +5952,17 @@ func (o DatascanDataQualitySpecPtrOutput) Elem() DatascanDataQualitySpecOutput {
 	}).(DatascanDataQualitySpecOutput)
 }
 
+// Actions to take upon job completion.
+// Structure is documented below.
+func (o DatascanDataQualitySpecPtrOutput) PostScanActions() DatascanDataQualitySpecPostScanActionsPtrOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpec) *DatascanDataQualitySpecPostScanActions {
+		if v == nil {
+			return nil
+		}
+		return v.PostScanActions
+	}).(DatascanDataQualitySpecPostScanActionsPtrOutput)
+}
+
 // A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
 func (o DatascanDataQualitySpecPtrOutput) RowFilter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatascanDataQualitySpec) *string {
@@ -5285,6 +5985,8 @@ func (o DatascanDataQualitySpecPtrOutput) Rules() DatascanDataQualitySpecRuleArr
 }
 
 // The percentage of the records to be selected from the dataset for DataScan.
+// Value can range between 0.0 and 100.0 with up to 3 significant decimal digits.
+// Sampling is not applied if `samplingPercent` is not specified, 0 or 100.
 func (o DatascanDataQualitySpecPtrOutput) SamplingPercent() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *DatascanDataQualitySpec) *float64 {
 		if v == nil {
@@ -5294,13 +5996,306 @@ func (o DatascanDataQualitySpecPtrOutput) SamplingPercent() pulumi.Float64PtrOut
 	}).(pulumi.Float64PtrOutput)
 }
 
+type DatascanDataQualitySpecPostScanActions struct {
+	// If set, results will be exported to the provided BigQuery table.
+	// Structure is documented below.
+	BigqueryExport *DatascanDataQualitySpecPostScanActionsBigqueryExport `pulumi:"bigqueryExport"`
+}
+
+// DatascanDataQualitySpecPostScanActionsInput is an input type that accepts DatascanDataQualitySpecPostScanActionsArgs and DatascanDataQualitySpecPostScanActionsOutput values.
+// You can construct a concrete instance of `DatascanDataQualitySpecPostScanActionsInput` via:
+//
+//	DatascanDataQualitySpecPostScanActionsArgs{...}
+type DatascanDataQualitySpecPostScanActionsInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualitySpecPostScanActionsOutput() DatascanDataQualitySpecPostScanActionsOutput
+	ToDatascanDataQualitySpecPostScanActionsOutputWithContext(context.Context) DatascanDataQualitySpecPostScanActionsOutput
+}
+
+type DatascanDataQualitySpecPostScanActionsArgs struct {
+	// If set, results will be exported to the provided BigQuery table.
+	// Structure is documented below.
+	BigqueryExport DatascanDataQualitySpecPostScanActionsBigqueryExportPtrInput `pulumi:"bigqueryExport"`
+}
+
+func (DatascanDataQualitySpecPostScanActionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualitySpecPostScanActions)(nil)).Elem()
+}
+
+func (i DatascanDataQualitySpecPostScanActionsArgs) ToDatascanDataQualitySpecPostScanActionsOutput() DatascanDataQualitySpecPostScanActionsOutput {
+	return i.ToDatascanDataQualitySpecPostScanActionsOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualitySpecPostScanActionsArgs) ToDatascanDataQualitySpecPostScanActionsOutputWithContext(ctx context.Context) DatascanDataQualitySpecPostScanActionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecPostScanActionsOutput)
+}
+
+func (i DatascanDataQualitySpecPostScanActionsArgs) ToDatascanDataQualitySpecPostScanActionsPtrOutput() DatascanDataQualitySpecPostScanActionsPtrOutput {
+	return i.ToDatascanDataQualitySpecPostScanActionsPtrOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualitySpecPostScanActionsArgs) ToDatascanDataQualitySpecPostScanActionsPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecPostScanActionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecPostScanActionsOutput).ToDatascanDataQualitySpecPostScanActionsPtrOutputWithContext(ctx)
+}
+
+// DatascanDataQualitySpecPostScanActionsPtrInput is an input type that accepts DatascanDataQualitySpecPostScanActionsArgs, DatascanDataQualitySpecPostScanActionsPtr and DatascanDataQualitySpecPostScanActionsPtrOutput values.
+// You can construct a concrete instance of `DatascanDataQualitySpecPostScanActionsPtrInput` via:
+//
+//	        DatascanDataQualitySpecPostScanActionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatascanDataQualitySpecPostScanActionsPtrInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualitySpecPostScanActionsPtrOutput() DatascanDataQualitySpecPostScanActionsPtrOutput
+	ToDatascanDataQualitySpecPostScanActionsPtrOutputWithContext(context.Context) DatascanDataQualitySpecPostScanActionsPtrOutput
+}
+
+type datascanDataQualitySpecPostScanActionsPtrType DatascanDataQualitySpecPostScanActionsArgs
+
+func DatascanDataQualitySpecPostScanActionsPtr(v *DatascanDataQualitySpecPostScanActionsArgs) DatascanDataQualitySpecPostScanActionsPtrInput {
+	return (*datascanDataQualitySpecPostScanActionsPtrType)(v)
+}
+
+func (*datascanDataQualitySpecPostScanActionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataQualitySpecPostScanActions)(nil)).Elem()
+}
+
+func (i *datascanDataQualitySpecPostScanActionsPtrType) ToDatascanDataQualitySpecPostScanActionsPtrOutput() DatascanDataQualitySpecPostScanActionsPtrOutput {
+	return i.ToDatascanDataQualitySpecPostScanActionsPtrOutputWithContext(context.Background())
+}
+
+func (i *datascanDataQualitySpecPostScanActionsPtrType) ToDatascanDataQualitySpecPostScanActionsPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecPostScanActionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecPostScanActionsPtrOutput)
+}
+
+type DatascanDataQualitySpecPostScanActionsOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualitySpecPostScanActionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualitySpecPostScanActions)(nil)).Elem()
+}
+
+func (o DatascanDataQualitySpecPostScanActionsOutput) ToDatascanDataQualitySpecPostScanActionsOutput() DatascanDataQualitySpecPostScanActionsOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecPostScanActionsOutput) ToDatascanDataQualitySpecPostScanActionsOutputWithContext(ctx context.Context) DatascanDataQualitySpecPostScanActionsOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecPostScanActionsOutput) ToDatascanDataQualitySpecPostScanActionsPtrOutput() DatascanDataQualitySpecPostScanActionsPtrOutput {
+	return o.ToDatascanDataQualitySpecPostScanActionsPtrOutputWithContext(context.Background())
+}
+
+func (o DatascanDataQualitySpecPostScanActionsOutput) ToDatascanDataQualitySpecPostScanActionsPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecPostScanActionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatascanDataQualitySpecPostScanActions) *DatascanDataQualitySpecPostScanActions {
+		return &v
+	}).(DatascanDataQualitySpecPostScanActionsPtrOutput)
+}
+
+// If set, results will be exported to the provided BigQuery table.
+// Structure is documented below.
+func (o DatascanDataQualitySpecPostScanActionsOutput) BigqueryExport() DatascanDataQualitySpecPostScanActionsBigqueryExportPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecPostScanActions) *DatascanDataQualitySpecPostScanActionsBigqueryExport {
+		return v.BigqueryExport
+	}).(DatascanDataQualitySpecPostScanActionsBigqueryExportPtrOutput)
+}
+
+type DatascanDataQualitySpecPostScanActionsPtrOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualitySpecPostScanActionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataQualitySpecPostScanActions)(nil)).Elem()
+}
+
+func (o DatascanDataQualitySpecPostScanActionsPtrOutput) ToDatascanDataQualitySpecPostScanActionsPtrOutput() DatascanDataQualitySpecPostScanActionsPtrOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecPostScanActionsPtrOutput) ToDatascanDataQualitySpecPostScanActionsPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecPostScanActionsPtrOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecPostScanActionsPtrOutput) Elem() DatascanDataQualitySpecPostScanActionsOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpecPostScanActions) DatascanDataQualitySpecPostScanActions {
+		if v != nil {
+			return *v
+		}
+		var ret DatascanDataQualitySpecPostScanActions
+		return ret
+	}).(DatascanDataQualitySpecPostScanActionsOutput)
+}
+
+// If set, results will be exported to the provided BigQuery table.
+// Structure is documented below.
+func (o DatascanDataQualitySpecPostScanActionsPtrOutput) BigqueryExport() DatascanDataQualitySpecPostScanActionsBigqueryExportPtrOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpecPostScanActions) *DatascanDataQualitySpecPostScanActionsBigqueryExport {
+		if v == nil {
+			return nil
+		}
+		return v.BigqueryExport
+	}).(DatascanDataQualitySpecPostScanActionsBigqueryExportPtrOutput)
+}
+
+type DatascanDataQualitySpecPostScanActionsBigqueryExport struct {
+	// The BigQuery table to export DataProfileScan results to.
+	// Format://bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+	ResultsTable *string `pulumi:"resultsTable"`
+}
+
+// DatascanDataQualitySpecPostScanActionsBigqueryExportInput is an input type that accepts DatascanDataQualitySpecPostScanActionsBigqueryExportArgs and DatascanDataQualitySpecPostScanActionsBigqueryExportOutput values.
+// You can construct a concrete instance of `DatascanDataQualitySpecPostScanActionsBigqueryExportInput` via:
+//
+//	DatascanDataQualitySpecPostScanActionsBigqueryExportArgs{...}
+type DatascanDataQualitySpecPostScanActionsBigqueryExportInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualitySpecPostScanActionsBigqueryExportOutput() DatascanDataQualitySpecPostScanActionsBigqueryExportOutput
+	ToDatascanDataQualitySpecPostScanActionsBigqueryExportOutputWithContext(context.Context) DatascanDataQualitySpecPostScanActionsBigqueryExportOutput
+}
+
+type DatascanDataQualitySpecPostScanActionsBigqueryExportArgs struct {
+	// The BigQuery table to export DataProfileScan results to.
+	// Format://bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+	ResultsTable pulumi.StringPtrInput `pulumi:"resultsTable"`
+}
+
+func (DatascanDataQualitySpecPostScanActionsBigqueryExportArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualitySpecPostScanActionsBigqueryExport)(nil)).Elem()
+}
+
+func (i DatascanDataQualitySpecPostScanActionsBigqueryExportArgs) ToDatascanDataQualitySpecPostScanActionsBigqueryExportOutput() DatascanDataQualitySpecPostScanActionsBigqueryExportOutput {
+	return i.ToDatascanDataQualitySpecPostScanActionsBigqueryExportOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualitySpecPostScanActionsBigqueryExportArgs) ToDatascanDataQualitySpecPostScanActionsBigqueryExportOutputWithContext(ctx context.Context) DatascanDataQualitySpecPostScanActionsBigqueryExportOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecPostScanActionsBigqueryExportOutput)
+}
+
+func (i DatascanDataQualitySpecPostScanActionsBigqueryExportArgs) ToDatascanDataQualitySpecPostScanActionsBigqueryExportPtrOutput() DatascanDataQualitySpecPostScanActionsBigqueryExportPtrOutput {
+	return i.ToDatascanDataQualitySpecPostScanActionsBigqueryExportPtrOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualitySpecPostScanActionsBigqueryExportArgs) ToDatascanDataQualitySpecPostScanActionsBigqueryExportPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecPostScanActionsBigqueryExportPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecPostScanActionsBigqueryExportOutput).ToDatascanDataQualitySpecPostScanActionsBigqueryExportPtrOutputWithContext(ctx)
+}
+
+// DatascanDataQualitySpecPostScanActionsBigqueryExportPtrInput is an input type that accepts DatascanDataQualitySpecPostScanActionsBigqueryExportArgs, DatascanDataQualitySpecPostScanActionsBigqueryExportPtr and DatascanDataQualitySpecPostScanActionsBigqueryExportPtrOutput values.
+// You can construct a concrete instance of `DatascanDataQualitySpecPostScanActionsBigqueryExportPtrInput` via:
+//
+//	        DatascanDataQualitySpecPostScanActionsBigqueryExportArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatascanDataQualitySpecPostScanActionsBigqueryExportPtrInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualitySpecPostScanActionsBigqueryExportPtrOutput() DatascanDataQualitySpecPostScanActionsBigqueryExportPtrOutput
+	ToDatascanDataQualitySpecPostScanActionsBigqueryExportPtrOutputWithContext(context.Context) DatascanDataQualitySpecPostScanActionsBigqueryExportPtrOutput
+}
+
+type datascanDataQualitySpecPostScanActionsBigqueryExportPtrType DatascanDataQualitySpecPostScanActionsBigqueryExportArgs
+
+func DatascanDataQualitySpecPostScanActionsBigqueryExportPtr(v *DatascanDataQualitySpecPostScanActionsBigqueryExportArgs) DatascanDataQualitySpecPostScanActionsBigqueryExportPtrInput {
+	return (*datascanDataQualitySpecPostScanActionsBigqueryExportPtrType)(v)
+}
+
+func (*datascanDataQualitySpecPostScanActionsBigqueryExportPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataQualitySpecPostScanActionsBigqueryExport)(nil)).Elem()
+}
+
+func (i *datascanDataQualitySpecPostScanActionsBigqueryExportPtrType) ToDatascanDataQualitySpecPostScanActionsBigqueryExportPtrOutput() DatascanDataQualitySpecPostScanActionsBigqueryExportPtrOutput {
+	return i.ToDatascanDataQualitySpecPostScanActionsBigqueryExportPtrOutputWithContext(context.Background())
+}
+
+func (i *datascanDataQualitySpecPostScanActionsBigqueryExportPtrType) ToDatascanDataQualitySpecPostScanActionsBigqueryExportPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecPostScanActionsBigqueryExportPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecPostScanActionsBigqueryExportPtrOutput)
+}
+
+type DatascanDataQualitySpecPostScanActionsBigqueryExportOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualitySpecPostScanActionsBigqueryExportOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualitySpecPostScanActionsBigqueryExport)(nil)).Elem()
+}
+
+func (o DatascanDataQualitySpecPostScanActionsBigqueryExportOutput) ToDatascanDataQualitySpecPostScanActionsBigqueryExportOutput() DatascanDataQualitySpecPostScanActionsBigqueryExportOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecPostScanActionsBigqueryExportOutput) ToDatascanDataQualitySpecPostScanActionsBigqueryExportOutputWithContext(ctx context.Context) DatascanDataQualitySpecPostScanActionsBigqueryExportOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecPostScanActionsBigqueryExportOutput) ToDatascanDataQualitySpecPostScanActionsBigqueryExportPtrOutput() DatascanDataQualitySpecPostScanActionsBigqueryExportPtrOutput {
+	return o.ToDatascanDataQualitySpecPostScanActionsBigqueryExportPtrOutputWithContext(context.Background())
+}
+
+func (o DatascanDataQualitySpecPostScanActionsBigqueryExportOutput) ToDatascanDataQualitySpecPostScanActionsBigqueryExportPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecPostScanActionsBigqueryExportPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatascanDataQualitySpecPostScanActionsBigqueryExport) *DatascanDataQualitySpecPostScanActionsBigqueryExport {
+		return &v
+	}).(DatascanDataQualitySpecPostScanActionsBigqueryExportPtrOutput)
+}
+
+// The BigQuery table to export DataProfileScan results to.
+// Format://bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+func (o DatascanDataQualitySpecPostScanActionsBigqueryExportOutput) ResultsTable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecPostScanActionsBigqueryExport) *string { return v.ResultsTable }).(pulumi.StringPtrOutput)
+}
+
+type DatascanDataQualitySpecPostScanActionsBigqueryExportPtrOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualitySpecPostScanActionsBigqueryExportPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataQualitySpecPostScanActionsBigqueryExport)(nil)).Elem()
+}
+
+func (o DatascanDataQualitySpecPostScanActionsBigqueryExportPtrOutput) ToDatascanDataQualitySpecPostScanActionsBigqueryExportPtrOutput() DatascanDataQualitySpecPostScanActionsBigqueryExportPtrOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecPostScanActionsBigqueryExportPtrOutput) ToDatascanDataQualitySpecPostScanActionsBigqueryExportPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecPostScanActionsBigqueryExportPtrOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecPostScanActionsBigqueryExportPtrOutput) Elem() DatascanDataQualitySpecPostScanActionsBigqueryExportOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpecPostScanActionsBigqueryExport) DatascanDataQualitySpecPostScanActionsBigqueryExport {
+		if v != nil {
+			return *v
+		}
+		var ret DatascanDataQualitySpecPostScanActionsBigqueryExport
+		return ret
+	}).(DatascanDataQualitySpecPostScanActionsBigqueryExportOutput)
+}
+
+// The BigQuery table to export DataProfileScan results to.
+// Format://bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+func (o DatascanDataQualitySpecPostScanActionsBigqueryExportPtrOutput) ResultsTable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpecPostScanActionsBigqueryExport) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResultsTable
+	}).(pulumi.StringPtrOutput)
+}
+
 type DatascanDataQualitySpecRule struct {
 	// The unnested column which this rule is evaluated against.
 	Column *string `pulumi:"column"`
+	// Description of the rule.
+	// The maximum length is 1,024 characters.
+	Description *string `pulumi:"description"`
 	// The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are ["COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"]
 	Dimension string `pulumi:"dimension"`
 	// Rows with null values will automatically fail a rule, unless ignoreNull is true. In that case, such null rows are trivially considered passing. Only applicable to ColumnMap rules.
 	IgnoreNull *bool `pulumi:"ignoreNull"`
+	// A mutable name for the rule.
+	// The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+	// The maximum length is 63 characters.
+	// Must start with a letter.
+	// Must end with a number or a letter.
+	Name *string `pulumi:"name"`
 	// ColumnMap rule which evaluates whether each column value is null.
 	NonNullExpectation *DatascanDataQualitySpecRuleNonNullExpectation `pulumi:"nonNullExpectation"`
 	// ColumnMap rule which evaluates whether each column value lies between a specified range.
@@ -5323,7 +6318,7 @@ type DatascanDataQualitySpecRule struct {
 	TableConditionExpectation *DatascanDataQualitySpecRuleTableConditionExpectation `pulumi:"tableConditionExpectation"`
 	// The minimum ratio of passingRows / totalRows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
 	Threshold *float64 `pulumi:"threshold"`
-	// ColumnAggregate rule which evaluates whether the column has duplicates.
+	// Row-level rule which evaluates whether each column value is unique.
 	UniquenessExpectation *DatascanDataQualitySpecRuleUniquenessExpectation `pulumi:"uniquenessExpectation"`
 }
 
@@ -5341,10 +6336,19 @@ type DatascanDataQualitySpecRuleInput interface {
 type DatascanDataQualitySpecRuleArgs struct {
 	// The unnested column which this rule is evaluated against.
 	Column pulumi.StringPtrInput `pulumi:"column"`
+	// Description of the rule.
+	// The maximum length is 1,024 characters.
+	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are ["COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"]
 	Dimension pulumi.StringInput `pulumi:"dimension"`
 	// Rows with null values will automatically fail a rule, unless ignoreNull is true. In that case, such null rows are trivially considered passing. Only applicable to ColumnMap rules.
 	IgnoreNull pulumi.BoolPtrInput `pulumi:"ignoreNull"`
+	// A mutable name for the rule.
+	// The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+	// The maximum length is 63 characters.
+	// Must start with a letter.
+	// Must end with a number or a letter.
+	Name pulumi.StringPtrInput `pulumi:"name"`
 	// ColumnMap rule which evaluates whether each column value is null.
 	NonNullExpectation DatascanDataQualitySpecRuleNonNullExpectationPtrInput `pulumi:"nonNullExpectation"`
 	// ColumnMap rule which evaluates whether each column value lies between a specified range.
@@ -5367,7 +6371,7 @@ type DatascanDataQualitySpecRuleArgs struct {
 	TableConditionExpectation DatascanDataQualitySpecRuleTableConditionExpectationPtrInput `pulumi:"tableConditionExpectation"`
 	// The minimum ratio of passingRows / totalRows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
 	Threshold pulumi.Float64PtrInput `pulumi:"threshold"`
-	// ColumnAggregate rule which evaluates whether the column has duplicates.
+	// Row-level rule which evaluates whether each column value is unique.
 	UniquenessExpectation DatascanDataQualitySpecRuleUniquenessExpectationPtrInput `pulumi:"uniquenessExpectation"`
 }
 
@@ -5427,6 +6431,12 @@ func (o DatascanDataQualitySpecRuleOutput) Column() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatascanDataQualitySpecRule) *string { return v.Column }).(pulumi.StringPtrOutput)
 }
 
+// Description of the rule.
+// The maximum length is 1,024 characters.
+func (o DatascanDataQualitySpecRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecRule) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
 // The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are ["COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"]
 func (o DatascanDataQualitySpecRuleOutput) Dimension() pulumi.StringOutput {
 	return o.ApplyT(func(v DatascanDataQualitySpecRule) string { return v.Dimension }).(pulumi.StringOutput)
@@ -5435,6 +6445,15 @@ func (o DatascanDataQualitySpecRuleOutput) Dimension() pulumi.StringOutput {
 // Rows with null values will automatically fail a rule, unless ignoreNull is true. In that case, such null rows are trivially considered passing. Only applicable to ColumnMap rules.
 func (o DatascanDataQualitySpecRuleOutput) IgnoreNull() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DatascanDataQualitySpecRule) *bool { return v.IgnoreNull }).(pulumi.BoolPtrOutput)
+}
+
+// A mutable name for the rule.
+// The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+// The maximum length is 63 characters.
+// Must start with a letter.
+// Must end with a number or a letter.
+func (o DatascanDataQualitySpecRuleOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecRule) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // ColumnMap rule which evaluates whether each column value is null.
@@ -5497,7 +6516,7 @@ func (o DatascanDataQualitySpecRuleOutput) Threshold() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v DatascanDataQualitySpecRule) *float64 { return v.Threshold }).(pulumi.Float64PtrOutput)
 }
 
-// ColumnAggregate rule which evaluates whether the column has duplicates.
+// Row-level rule which evaluates whether each column value is unique.
 func (o DatascanDataQualitySpecRuleOutput) UniquenessExpectation() DatascanDataQualitySpecRuleUniquenessExpectationPtrOutput {
 	return o.ApplyT(func(v DatascanDataQualitySpecRule) *DatascanDataQualitySpecRuleUniquenessExpectation {
 		return v.UniquenessExpectation
@@ -12637,6 +13656,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataProfileResultScannedDataIncrementalFieldPtrInput)(nil)).Elem(), DatascanDataProfileResultScannedDataIncrementalFieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataProfileSpecInput)(nil)).Elem(), DatascanDataProfileSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataProfileSpecPtrInput)(nil)).Elem(), DatascanDataProfileSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataProfileSpecExcludeFieldsInput)(nil)).Elem(), DatascanDataProfileSpecExcludeFieldsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataProfileSpecExcludeFieldsPtrInput)(nil)).Elem(), DatascanDataProfileSpecExcludeFieldsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataProfileSpecIncludeFieldsInput)(nil)).Elem(), DatascanDataProfileSpecIncludeFieldsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataProfileSpecIncludeFieldsPtrInput)(nil)).Elem(), DatascanDataProfileSpecIncludeFieldsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataProfileSpecPostScanActionsInput)(nil)).Elem(), DatascanDataProfileSpecPostScanActionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataProfileSpecPostScanActionsPtrInput)(nil)).Elem(), DatascanDataProfileSpecPostScanActionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataProfileSpecPostScanActionsBigqueryExportInput)(nil)).Elem(), DatascanDataProfileSpecPostScanActionsBigqueryExportArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataProfileSpecPostScanActionsBigqueryExportPtrInput)(nil)).Elem(), DatascanDataProfileSpecPostScanActionsBigqueryExportArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualityResultInput)(nil)).Elem(), DatascanDataQualityResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualityResultArrayInput)(nil)).Elem(), DatascanDataQualityResultArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualityResultDimensionInput)(nil)).Elem(), DatascanDataQualityResultDimensionArgs{})
@@ -12667,6 +13694,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualityResultScannedDataIncrementalFieldPtrInput)(nil)).Elem(), DatascanDataQualityResultScannedDataIncrementalFieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecInput)(nil)).Elem(), DatascanDataQualitySpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecPtrInput)(nil)).Elem(), DatascanDataQualitySpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecPostScanActionsInput)(nil)).Elem(), DatascanDataQualitySpecPostScanActionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecPostScanActionsPtrInput)(nil)).Elem(), DatascanDataQualitySpecPostScanActionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecPostScanActionsBigqueryExportInput)(nil)).Elem(), DatascanDataQualitySpecPostScanActionsBigqueryExportArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecPostScanActionsBigqueryExportPtrInput)(nil)).Elem(), DatascanDataQualitySpecPostScanActionsBigqueryExportArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleInput)(nil)).Elem(), DatascanDataQualitySpecRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleArrayInput)(nil)).Elem(), DatascanDataQualitySpecRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleNonNullExpectationInput)(nil)).Elem(), DatascanDataQualitySpecRuleNonNullExpectationArgs{})
@@ -12799,6 +13830,14 @@ func init() {
 	pulumi.RegisterOutputType(DatascanDataProfileResultScannedDataIncrementalFieldPtrOutput{})
 	pulumi.RegisterOutputType(DatascanDataProfileSpecOutput{})
 	pulumi.RegisterOutputType(DatascanDataProfileSpecPtrOutput{})
+	pulumi.RegisterOutputType(DatascanDataProfileSpecExcludeFieldsOutput{})
+	pulumi.RegisterOutputType(DatascanDataProfileSpecExcludeFieldsPtrOutput{})
+	pulumi.RegisterOutputType(DatascanDataProfileSpecIncludeFieldsOutput{})
+	pulumi.RegisterOutputType(DatascanDataProfileSpecIncludeFieldsPtrOutput{})
+	pulumi.RegisterOutputType(DatascanDataProfileSpecPostScanActionsOutput{})
+	pulumi.RegisterOutputType(DatascanDataProfileSpecPostScanActionsPtrOutput{})
+	pulumi.RegisterOutputType(DatascanDataProfileSpecPostScanActionsBigqueryExportOutput{})
+	pulumi.RegisterOutputType(DatascanDataProfileSpecPostScanActionsBigqueryExportPtrOutput{})
 	pulumi.RegisterOutputType(DatascanDataQualityResultOutput{})
 	pulumi.RegisterOutputType(DatascanDataQualityResultArrayOutput{})
 	pulumi.RegisterOutputType(DatascanDataQualityResultDimensionOutput{})
@@ -12829,6 +13868,10 @@ func init() {
 	pulumi.RegisterOutputType(DatascanDataQualityResultScannedDataIncrementalFieldPtrOutput{})
 	pulumi.RegisterOutputType(DatascanDataQualitySpecOutput{})
 	pulumi.RegisterOutputType(DatascanDataQualitySpecPtrOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualitySpecPostScanActionsOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualitySpecPostScanActionsPtrOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualitySpecPostScanActionsBigqueryExportOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualitySpecPostScanActionsBigqueryExportPtrOutput{})
 	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleOutput{})
 	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleArrayOutput{})
 	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleNonNullExpectationOutput{})

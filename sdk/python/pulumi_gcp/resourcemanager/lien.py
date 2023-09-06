@@ -265,7 +265,7 @@ class Lien(pulumi.CustomResource):
 
         ## Import
 
-        Lien can be imported using any of these accepted formats
+        Lien can be imported using any of these accepted formats:
 
         ```sh
          $ pulumi import gcp:resourcemanager/lien:Lien default {{parent}}/{{name}}
@@ -317,7 +317,7 @@ class Lien(pulumi.CustomResource):
 
         ## Import
 
-        Lien can be imported using any of these accepted formats
+        Lien can be imported using any of these accepted formats:
 
         ```sh
          $ pulumi import gcp:resourcemanager/lien:Lien default {{parent}}/{{name}}

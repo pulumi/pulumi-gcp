@@ -129,9 +129,10 @@ import (
 //				Location:             pulumi.String("us-central1"),
 //				Host: &workstations.WorkstationConfigHostArgs{
 //					GceInstance: &workstations.WorkstationConfigHostGceInstanceArgs{
-//						MachineType:              pulumi.String("e2-standard-4"),
-//						BootDiskSizeGb:           pulumi.Int(35),
-//						DisablePublicIpAddresses: pulumi.Bool(true),
+//						MachineType:                pulumi.String("n1-standard-4"),
+//						BootDiskSizeGb:             pulumi.Int(35),
+//						DisablePublicIpAddresses:   pulumi.Bool(true),
+//						EnableNestedVirtualization: pulumi.Bool(true),
 //					},
 //				},
 //				Container: &workstations.WorkstationConfigContainerArgs{

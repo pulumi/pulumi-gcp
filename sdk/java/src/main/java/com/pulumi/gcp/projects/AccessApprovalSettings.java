@@ -275,19 +275,23 @@ public class AccessApprovalSettings extends com.pulumi.resources.CustomResource 
     }
     /**
      * (Optional, Deprecated)
-     * Deprecated in favor of `project_id`
+     * Project id.
+     * 
+     * &gt; **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
      * 
      * @deprecated
-     * Deprecated in favor of `project_id`
+     * `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
      * 
      */
-    @Deprecated /* Deprecated in favor of `project_id` */
+    @Deprecated /* `project` is deprecated and will be removed in a future major release. Use `project_id` instead. */
     @Export(name="project", type=String.class, parameters={})
     private Output</* @Nullable */ String> project;
 
     /**
      * @return (Optional, Deprecated)
-     * Deprecated in favor of `project_id`
+     * Project id.
+     * 
+     * &gt; **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
      * 
      */
     public Output<Optional<String>> project() {

@@ -297,8 +297,8 @@ class _CertificateState:
         if pem_certificate_chains is not None:
             pulumi.set(__self__, "pem_certificate_chains", pem_certificate_chains)
         if pem_certificates is not None:
-            warnings.warn("""Deprecated in favor of `pem_certificate_chain`.""", DeprecationWarning)
-            pulumi.log.warn("""pem_certificates is deprecated: Deprecated in favor of `pem_certificate_chain`.""")
+            warnings.warn("""`pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead.""", DeprecationWarning)
+            pulumi.log.warn("""pem_certificates is deprecated: `pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead.""")
         if pem_certificates is not None:
             pulumi.set(__self__, "pem_certificates", pem_certificates)
         if pem_csr is not None:
@@ -479,8 +479,8 @@ class _CertificateState:
         (Deprecated)
         Required. Expected to be in leaf-to-root order according to RFC 5246.
         """
-        warnings.warn("""Deprecated in favor of `pem_certificate_chain`.""", DeprecationWarning)
-        pulumi.log.warn("""pem_certificates is deprecated: Deprecated in favor of `pem_certificate_chain`.""")
+        warnings.warn("""`pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead.""", DeprecationWarning)
+        pulumi.log.warn("""pem_certificates is deprecated: `pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead.""")
 
         return pulumi.get(self, "pem_certificates")
 
@@ -1443,8 +1443,8 @@ class Certificate(pulumi.CustomResource):
         (Deprecated)
         Required. Expected to be in leaf-to-root order according to RFC 5246.
         """
-        warnings.warn("""Deprecated in favor of `pem_certificate_chain`.""", DeprecationWarning)
-        pulumi.log.warn("""pem_certificates is deprecated: Deprecated in favor of `pem_certificate_chain`.""")
+        warnings.warn("""`pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead.""", DeprecationWarning)
+        pulumi.log.warn("""pem_certificates is deprecated: `pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead.""")
 
         return pulumi.get(self, "pem_certificates")
 

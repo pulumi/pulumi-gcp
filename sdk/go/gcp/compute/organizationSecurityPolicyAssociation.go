@@ -94,7 +94,7 @@ import (
 //
 // ## Import
 //
-// # OrganizationSecurityPolicyAssociation can be imported using any of these accepted formats
+// OrganizationSecurityPolicyAssociation can be imported using any of these accepted formats:
 //
 // ```sh
 //

@@ -137,6 +137,13 @@ namespace Pulumi.Gcp
             set => _bigQueryCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _biglakeCustomEndpoint = new __Value<string?>(() => __config.Get("biglakeCustomEndpoint"));
+        public static string? BiglakeCustomEndpoint
+        {
+            get => _biglakeCustomEndpoint.Get();
+            set => _biglakeCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _bigqueryAnalyticsHubCustomEndpoint = new __Value<string?>(() => __config.Get("bigqueryAnalyticsHubCustomEndpoint"));
         public static string? BigqueryAnalyticsHubCustomEndpoint
         {

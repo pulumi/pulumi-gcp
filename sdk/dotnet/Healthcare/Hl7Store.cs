@@ -251,6 +251,8 @@ namespace Pulumi.Gcp.Healthcare
         /// (Optional, Deprecated)
         /// A nested object resource
         /// Structure is documented below.
+        /// 
+        /// &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
         /// </summary>
         [Output("notificationConfig")]
         public Output<Outputs.Hl7StoreNotificationConfig?> NotificationConfig { get; private set; } = null!;
@@ -363,6 +365,8 @@ namespace Pulumi.Gcp.Healthcare
         /// (Optional, Deprecated)
         /// A nested object resource
         /// Structure is documented below.
+        /// 
+        /// &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
         /// </summary>
         [Input("notificationConfig")]
         public Input<Inputs.Hl7StoreNotificationConfigArgs>? NotificationConfig { get; set; }
@@ -437,6 +441,8 @@ namespace Pulumi.Gcp.Healthcare
         /// (Optional, Deprecated)
         /// A nested object resource
         /// Structure is documented below.
+        /// 
+        /// &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
         /// </summary>
         [Input("notificationConfig")]
         public Input<Inputs.Hl7StoreNotificationConfigGetArgs>? NotificationConfig { get; set; }

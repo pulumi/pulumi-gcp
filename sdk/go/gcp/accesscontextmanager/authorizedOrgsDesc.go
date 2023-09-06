@@ -77,7 +77,7 @@ import (
 //
 // ## Import
 //
-// # AuthorizedOrgsDesc can be imported using any of these accepted formats
+// AuthorizedOrgsDesc can be imported using any of these accepted formats:
 //
 // ```sh
 //

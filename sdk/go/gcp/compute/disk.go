@@ -214,9 +214,12 @@ type Disk struct {
 	// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
 	// These images can be referred by family name here.
 	Image pulumi.StringPtrOutput `pulumi:"image"`
+	// (Optional, Deprecated)
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 	//
-	// Deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.
+	// > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
+	//
+	// Deprecated: `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
 	Interface pulumi.StringPtrOutput `pulumi:"interface"`
 	// The fingerprint used for optimistic locking of this resource.  Used
 	// internally during updates.
@@ -395,9 +398,12 @@ type diskState struct {
 	// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
 	// These images can be referred by family name here.
 	Image *string `pulumi:"image"`
+	// (Optional, Deprecated)
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 	//
-	// Deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.
+	// > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
+	//
+	// Deprecated: `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
 	Interface *string `pulumi:"interface"`
 	// The fingerprint used for optimistic locking of this resource.  Used
 	// internally during updates.
@@ -547,9 +553,12 @@ type DiskState struct {
 	// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
 	// These images can be referred by family name here.
 	Image pulumi.StringPtrInput
+	// (Optional, Deprecated)
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 	//
-	// Deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.
+	// > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
+	//
+	// Deprecated: `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
 	Interface pulumi.StringPtrInput
 	// The fingerprint used for optimistic locking of this resource.  Used
 	// internally during updates.
@@ -701,9 +710,12 @@ type diskArgs struct {
 	// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
 	// These images can be referred by family name here.
 	Image *string `pulumi:"image"`
+	// (Optional, Deprecated)
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 	//
-	// Deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.
+	// > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
+	//
+	// Deprecated: `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
 	Interface *string `pulumi:"interface"`
 	// Labels to apply to this disk.  A list of key->value pairs.
 	Labels map[string]string `pulumi:"labels"`
@@ -823,9 +835,12 @@ type DiskArgs struct {
 	// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
 	// These images can be referred by family name here.
 	Image pulumi.StringPtrInput
+	// (Optional, Deprecated)
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 	//
-	// Deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.
+	// > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
+	//
+	// Deprecated: `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
 	Interface pulumi.StringPtrInput
 	// Labels to apply to this disk.  A list of key->value pairs.
 	Labels pulumi.StringMapInput
@@ -1053,9 +1068,12 @@ func (o DiskOutput) Image() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.Image }).(pulumi.StringPtrOutput)
 }
 
+// (Optional, Deprecated)
 // Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 //
-// Deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.
+// > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
+//
+// Deprecated: `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
 func (o DiskOutput) Interface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.Interface }).(pulumi.StringPtrOutput)
 }

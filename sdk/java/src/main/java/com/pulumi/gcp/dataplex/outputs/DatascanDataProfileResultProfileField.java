@@ -21,7 +21,11 @@ public final class DatascanDataProfileResultProfileField {
      */
     private @Nullable String mode;
     /**
-     * @return The name of the field.
+     * @return A mutable name for the rule.
+     * The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+     * The maximum length is 63 characters.
+     * Must start with a letter.
+     * Must end with a number or a letter.
      * 
      */
     private @Nullable String name;
@@ -49,7 +53,11 @@ public final class DatascanDataProfileResultProfileField {
         return Optional.ofNullable(this.mode);
     }
     /**
-     * @return The name of the field.
+     * @return A mutable name for the rule.
+     * The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+     * The maximum length is 63 characters.
+     * Must start with a letter.
+     * Must end with a number or a letter.
      * 
      */
     public Optional<String> name() {

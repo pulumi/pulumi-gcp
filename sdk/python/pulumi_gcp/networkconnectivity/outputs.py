@@ -13,6 +13,9 @@ from . import outputs
 __all__ = [
     'HubRoutingVpc',
     'ServiceConnectionPolicyPscConfig',
+    'ServiceConnectionPolicyPscConnection',
+    'ServiceConnectionPolicyPscConnectionError',
+    'ServiceConnectionPolicyPscConnectionErrorInfo',
     'SpokeLinkedInterconnectAttachments',
     'SpokeLinkedRouterApplianceInstances',
     'SpokeLinkedRouterApplianceInstancesInstance',
@@ -60,6 +63,234 @@ class ServiceConnectionPolicyPscConfig(dict):
         Max number of PSC connections for this policy.
         """
         return pulumi.get(self, "limit")
+
+
+@pulumi.output_type
+class ServiceConnectionPolicyPscConnection(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "consumerAddress":
+            suggest = "consumer_address"
+        elif key == "consumerForwardingRule":
+            suggest = "consumer_forwarding_rule"
+        elif key == "consumerTargetProject":
+            suggest = "consumer_target_project"
+        elif key == "errorInfo":
+            suggest = "error_info"
+        elif key == "errorType":
+            suggest = "error_type"
+        elif key == "gceOperation":
+            suggest = "gce_operation"
+        elif key == "pscConnectionId":
+            suggest = "psc_connection_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceConnectionPolicyPscConnection. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceConnectionPolicyPscConnection.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceConnectionPolicyPscConnection.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 consumer_address: Optional[str] = None,
+                 consumer_forwarding_rule: Optional[str] = None,
+                 consumer_target_project: Optional[str] = None,
+                 error: Optional['outputs.ServiceConnectionPolicyPscConnectionError'] = None,
+                 error_info: Optional['outputs.ServiceConnectionPolicyPscConnectionErrorInfo'] = None,
+                 error_type: Optional[str] = None,
+                 gce_operation: Optional[str] = None,
+                 psc_connection_id: Optional[str] = None,
+                 state: Optional[str] = None):
+        """
+        :param str consumer_address: The resource reference of the consumer address.
+        :param str consumer_forwarding_rule: The resource reference of the PSC Forwarding Rule within the consumer VPC.
+        :param str consumer_target_project: The project where the PSC connection is created.
+        :param 'ServiceConnectionPolicyPscConnectionErrorArgs' error: The most recent error during operating this connection.
+               Structure is documented below.
+        :param 'ServiceConnectionPolicyPscConnectionErrorInfoArgs' error_info: The error info for the latest error during operating this connection.
+               Structure is documented below.
+        :param str error_type: The error type indicates whether the error is consumer facing, producer
+               facing or system internal.
+               Possible values are: `CONNECTION_ERROR_TYPE_UNSPECIFIED`, `ERROR_INTERNAL`, `ERROR_CONSUMER_SIDE`, `ERROR_PRODUCER_SIDE`.
+        :param str gce_operation: The last Compute Engine operation to setup PSC connection.
+        :param str psc_connection_id: The PSC connection id of the PSC forwarding rule.
+        :param str state: The state of the PSC connection.
+               Possible values are: `STATE_UNSPECIFIED`, `ACTIVE`, `CREATING`, `DELETING`, `FAILED`.
+        """
+        if consumer_address is not None:
+            pulumi.set(__self__, "consumer_address", consumer_address)
+        if consumer_forwarding_rule is not None:
+            pulumi.set(__self__, "consumer_forwarding_rule", consumer_forwarding_rule)
+        if consumer_target_project is not None:
+            pulumi.set(__self__, "consumer_target_project", consumer_target_project)
+        if error is not None:
+            pulumi.set(__self__, "error", error)
+        if error_info is not None:
+            pulumi.set(__self__, "error_info", error_info)
+        if error_type is not None:
+            pulumi.set(__self__, "error_type", error_type)
+        if gce_operation is not None:
+            pulumi.set(__self__, "gce_operation", gce_operation)
+        if psc_connection_id is not None:
+            pulumi.set(__self__, "psc_connection_id", psc_connection_id)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="consumerAddress")
+    def consumer_address(self) -> Optional[str]:
+        """
+        The resource reference of the consumer address.
+        """
+        return pulumi.get(self, "consumer_address")
+
+    @property
+    @pulumi.getter(name="consumerForwardingRule")
+    def consumer_forwarding_rule(self) -> Optional[str]:
+        """
+        The resource reference of the PSC Forwarding Rule within the consumer VPC.
+        """
+        return pulumi.get(self, "consumer_forwarding_rule")
+
+    @property
+    @pulumi.getter(name="consumerTargetProject")
+    def consumer_target_project(self) -> Optional[str]:
+        """
+        The project where the PSC connection is created.
+        """
+        return pulumi.get(self, "consumer_target_project")
+
+    @property
+    @pulumi.getter
+    def error(self) -> Optional['outputs.ServiceConnectionPolicyPscConnectionError']:
+        """
+        The most recent error during operating this connection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "error")
+
+    @property
+    @pulumi.getter(name="errorInfo")
+    def error_info(self) -> Optional['outputs.ServiceConnectionPolicyPscConnectionErrorInfo']:
+        """
+        The error info for the latest error during operating this connection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "error_info")
+
+    @property
+    @pulumi.getter(name="errorType")
+    def error_type(self) -> Optional[str]:
+        """
+        The error type indicates whether the error is consumer facing, producer
+        facing or system internal.
+        Possible values are: `CONNECTION_ERROR_TYPE_UNSPECIFIED`, `ERROR_INTERNAL`, `ERROR_CONSUMER_SIDE`, `ERROR_PRODUCER_SIDE`.
+        """
+        return pulumi.get(self, "error_type")
+
+    @property
+    @pulumi.getter(name="gceOperation")
+    def gce_operation(self) -> Optional[str]:
+        """
+        The last Compute Engine operation to setup PSC connection.
+        """
+        return pulumi.get(self, "gce_operation")
+
+    @property
+    @pulumi.getter(name="pscConnectionId")
+    def psc_connection_id(self) -> Optional[str]:
+        """
+        The PSC connection id of the PSC forwarding rule.
+        """
+        return pulumi.get(self, "psc_connection_id")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        """
+        The state of the PSC connection.
+        Possible values are: `STATE_UNSPECIFIED`, `ACTIVE`, `CREATING`, `DELETING`, `FAILED`.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class ServiceConnectionPolicyPscConnectionError(dict):
+    def __init__(__self__, *,
+                 code: Optional[int] = None,
+                 message: Optional[str] = None):
+        """
+        :param int code: The status code, which should be an enum value of [google.rpc.Code][].
+        :param str message: A developer-facing error message.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[int]:
+        """
+        The status code, which should be an enum value of [google.rpc.Code][].
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[str]:
+        """
+        A developer-facing error message.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class ServiceConnectionPolicyPscConnectionErrorInfo(dict):
+    def __init__(__self__, *,
+                 domain: Optional[str] = None,
+                 metadata: Optional[Mapping[str, str]] = None,
+                 reason: Optional[str] = None):
+        """
+        :param str domain: The logical grouping to which the "reason" belongs.
+        :param Mapping[str, str] metadata: Additional structured details about this error.
+        :param str reason: The reason of the error.
+        """
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+        if reason is not None:
+            pulumi.set(__self__, "reason", reason)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> Optional[str]:
+        """
+        The logical grouping to which the "reason" belongs.
+        """
+        return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[Mapping[str, str]]:
+        """
+        Additional structured details about this error.
+        """
+        return pulumi.get(self, "metadata")
+
+    @property
+    @pulumi.getter
+    def reason(self) -> Optional[str]:
+        """
+        The reason of the error.
+        """
+        return pulumi.get(self, "reason")
 
 
 @pulumi.output_type

@@ -469,7 +469,7 @@ type Certificate struct {
 	// (Deprecated)
 	// Required. Expected to be in leaf-to-root order according to RFC 5246.
 	//
-	// Deprecated: Deprecated in favor of `pem_certificate_chain`.
+	// Deprecated: `pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead.
 	PemCertificates pulumi.StringArrayOutput `pulumi:"pemCertificates"`
 	// Immutable. A pem-encoded X.509 certificate signing request (CSR).
 	PemCsr pulumi.StringPtrOutput `pulumi:"pemCsr"`
@@ -565,7 +565,7 @@ type certificateState struct {
 	// (Deprecated)
 	// Required. Expected to be in leaf-to-root order according to RFC 5246.
 	//
-	// Deprecated: Deprecated in favor of `pem_certificate_chain`.
+	// Deprecated: `pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead.
 	PemCertificates []string `pulumi:"pemCertificates"`
 	// Immutable. A pem-encoded X.509 certificate signing request (CSR).
 	PemCsr *string `pulumi:"pemCsr"`
@@ -626,7 +626,7 @@ type CertificateState struct {
 	// (Deprecated)
 	// Required. Expected to be in leaf-to-root order according to RFC 5246.
 	//
-	// Deprecated: Deprecated in favor of `pem_certificate_chain`.
+	// Deprecated: `pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead.
 	PemCertificates pulumi.StringArrayInput
 	// Immutable. A pem-encoded X.509 certificate signing request (CSR).
 	PemCsr pulumi.StringPtrInput
@@ -888,7 +888,7 @@ func (o CertificateOutput) PemCertificateChains() pulumi.StringArrayOutput {
 // (Deprecated)
 // Required. Expected to be in leaf-to-root order according to RFC 5246.
 //
-// Deprecated: Deprecated in favor of `pem_certificate_chain`.
+// Deprecated: `pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead.
 func (o CertificateOutput) PemCertificates() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringArrayOutput { return v.PemCertificates }).(pulumi.StringArrayOutput)
 }

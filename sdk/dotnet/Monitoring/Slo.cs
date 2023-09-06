@@ -105,7 +105,7 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// ## Import
     /// 
-    /// Slo can be imported using any of these accepted formats
+    /// Slo can be imported using any of these accepted formats:
     /// 
     /// ```sh
     ///  $ pulumi import gcp:monitoring/slo:Slo default {{name}}

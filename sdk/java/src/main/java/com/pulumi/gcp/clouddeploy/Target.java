@@ -347,14 +347,14 @@ public class Target extends com.pulumi.resources.CustomResource {
         return this.location;
     }
     /**
-     * (Beta only) Information specifying a multiTarget.
+     * Information specifying a multiTarget.
      * 
      */
     @Export(name="multiTarget", type=TargetMultiTarget.class, parameters={})
     private Output</* @Nullable */ TargetMultiTarget> multiTarget;
 
     /**
-     * @return (Beta only) Information specifying a multiTarget.
+     * @return Information specifying a multiTarget.
      * 
      */
     public Output<Optional<TargetMultiTarget>> multiTarget() {

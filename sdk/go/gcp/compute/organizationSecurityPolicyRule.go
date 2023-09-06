@@ -79,7 +79,7 @@ import (
 //
 // ## Import
 //
-// # OrganizationSecurityPolicyRule can be imported using any of these accepted formats
+// OrganizationSecurityPolicyRule can be imported using any of these accepted formats:
 //
 // ```sh
 //

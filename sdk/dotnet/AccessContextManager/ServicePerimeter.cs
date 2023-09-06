@@ -323,7 +323,7 @@ namespace Pulumi.Gcp.AccessContextManager
     /// 
     /// ## Import
     /// 
-    /// ServicePerimeter can be imported using any of these accepted formats
+    /// ServicePerimeter can be imported using any of these accepted formats:
     /// 
     /// ```sh
     ///  $ pulumi import gcp:accesscontextmanager/servicePerimeter:ServicePerimeter default {{name}}

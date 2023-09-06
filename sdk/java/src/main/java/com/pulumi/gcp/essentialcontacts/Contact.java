@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Contact can be imported using any of these accepted formats
+ * Contact can be imported using any of these accepted formats:
  * 
  * ```sh
  *  $ pulumi import gcp:essentialcontacts/contact:Contact default {{name}}

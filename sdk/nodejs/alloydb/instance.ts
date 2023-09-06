@@ -62,11 +62,15 @@ import * as utilities from "../utilities";
  * Instance can be imported using any of these accepted formats
  *
  * ```sh
- *  $ pulumi import gcp:alloydb/instance:Instance default {{cluster}}/instances/{{instance_id}}
+ *  $ pulumi import gcp:alloydb/instance:Instance default projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/instances/{{instance_id}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:alloydb/instance:Instance default {{cluster}}/{{instance_id}}
+ *  $ pulumi import gcp:alloydb/instance:Instance default {{project}}/{{location}}/{{cluster}}/{{instance_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:alloydb/instance:Instance default {{location}}/{{cluster}}/{{instance_id}}
  * ```
  */
 export class Instance extends pulumi.CustomResource {
@@ -162,7 +166,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Read pool specific config.
+     * Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
      * Structure is documented below.
      */
     public readonly readPoolConfig!: pulumi.Output<outputs.alloydb.InstanceReadPoolConfig | undefined>;
@@ -318,7 +322,7 @@ export interface InstanceState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Read pool specific config.
+     * Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
      * Structure is documented below.
      */
     readPoolConfig?: pulumi.Input<inputs.alloydb.InstanceReadPoolConfig>;
@@ -397,7 +401,7 @@ export interface InstanceArgs {
      */
     machineConfig?: pulumi.Input<inputs.alloydb.InstanceMachineConfig>;
     /**
-     * Read pool specific config.
+     * Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
      * Structure is documented below.
      */
     readPoolConfig?: pulumi.Input<inputs.alloydb.InstanceReadPoolConfig>;

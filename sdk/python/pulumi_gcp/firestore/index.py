@@ -296,7 +296,7 @@ class Index(pulumi.CustomResource):
 
         ## Import
 
-        Index can be imported using any of these accepted formats
+        Index can be imported using any of these accepted formats:
 
         ```sh
          $ pulumi import gcp:firestore/index:Index default {{name}}
@@ -369,7 +369,7 @@ class Index(pulumi.CustomResource):
 
         ## Import
 
-        Index can be imported using any of these accepted formats
+        Index can be imported using any of these accepted formats:
 
         ```sh
          $ pulumi import gcp:firestore/index:Index default {{name}}

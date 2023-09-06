@@ -329,11 +329,13 @@ public class Hl7Store extends com.pulumi.resources.CustomResource {
      * A nested object resource
      * Structure is documented below.
      * 
+     * &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
+     * 
      * @deprecated
-     * This field has been replaced by notificationConfigs
+     * `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
      * 
      */
-    @Deprecated /* This field has been replaced by notificationConfigs */
+    @Deprecated /* `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead. */
     @Export(name="notificationConfig", type=Hl7StoreNotificationConfig.class, parameters={})
     private Output</* @Nullable */ Hl7StoreNotificationConfig> notificationConfig;
 
@@ -341,6 +343,8 @@ public class Hl7Store extends com.pulumi.resources.CustomResource {
      * @return (Optional, Deprecated)
      * A nested object resource
      * Structure is documented below.
+     * 
+     * &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
      * 
      */
     public Output<Optional<Hl7StoreNotificationConfig>> notificationConfig() {

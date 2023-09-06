@@ -77,6 +77,7 @@ export interface GetClusterResult {
     readonly dnsConfigs: outputs.container.GetClusterDnsConfig[];
     readonly enableAutopilot: boolean;
     readonly enableBinaryAuthorization: boolean;
+    readonly enableFqdnNetworkPolicy: boolean;
     readonly enableIntranodeVisibility: boolean;
     readonly enableK8sBetaApis: outputs.container.GetClusterEnableK8sBetaApi[];
     readonly enableKubernetesAlpha: boolean;

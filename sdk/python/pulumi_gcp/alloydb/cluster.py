@@ -25,7 +25,9 @@ class ClusterArgs:
                  encryption_config: Optional[pulumi.Input['ClusterEncryptionConfigArgs']] = None,
                  initial_user: Optional[pulumi.Input['ClusterInitialUserArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 restore_backup_source: Optional[pulumi.Input['ClusterRestoreBackupSourceArgs']] = None,
+                 restore_continuous_backup_source: Optional[pulumi.Input['ClusterRestoreContinuousBackupSourceArgs']] = None):
         """
         The set of arguments for constructing a Cluster resource.
         :param pulumi.Input[str] cluster_id: The ID of the alloydb cluster.
@@ -48,6 +50,10 @@ class ClusterArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb cluster.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['ClusterRestoreBackupSourceArgs'] restore_backup_source: The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
+               Structure is documented below.
+        :param pulumi.Input['ClusterRestoreContinuousBackupSourceArgs'] restore_continuous_backup_source: The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
+               Structure is documented below.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "location", location)
@@ -66,6 +72,10 @@ class ClusterArgs:
             pulumi.set(__self__, "labels", labels)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if restore_backup_source is not None:
+            pulumi.set(__self__, "restore_backup_source", restore_backup_source)
+        if restore_continuous_backup_source is not None:
+            pulumi.set(__self__, "restore_continuous_backup_source", restore_continuous_backup_source)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -197,6 +207,32 @@ class ClusterArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter(name="restoreBackupSource")
+    def restore_backup_source(self) -> Optional[pulumi.Input['ClusterRestoreBackupSourceArgs']]:
+        """
+        The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "restore_backup_source")
+
+    @restore_backup_source.setter
+    def restore_backup_source(self, value: Optional[pulumi.Input['ClusterRestoreBackupSourceArgs']]):
+        pulumi.set(self, "restore_backup_source", value)
+
+    @property
+    @pulumi.getter(name="restoreContinuousBackupSource")
+    def restore_continuous_backup_source(self) -> Optional[pulumi.Input['ClusterRestoreContinuousBackupSourceArgs']]:
+        """
+        The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "restore_continuous_backup_source")
+
+    @restore_continuous_backup_source.setter
+    def restore_continuous_backup_source(self, value: Optional[pulumi.Input['ClusterRestoreContinuousBackupSourceArgs']]):
+        pulumi.set(self, "restore_continuous_backup_source", value)
+
 
 @pulumi.input_type
 class _ClusterState:
@@ -217,6 +253,8 @@ class _ClusterState:
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 restore_backup_source: Optional[pulumi.Input['ClusterRestoreBackupSourceArgs']] = None,
+                 restore_continuous_backup_source: Optional[pulumi.Input['ClusterRestoreContinuousBackupSourceArgs']] = None,
                  uid: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
@@ -251,6 +289,10 @@ class _ClusterState:
                "projects/{projectNumber}/global/networks/{network_id}".
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['ClusterRestoreBackupSourceArgs'] restore_backup_source: The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
+               Structure is documented below.
+        :param pulumi.Input['ClusterRestoreContinuousBackupSourceArgs'] restore_continuous_backup_source: The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
+               Structure is documented below.
         :param pulumi.Input[str] uid: The system-generated UID of the resource.
         """
         if automated_backup_policy is not None:
@@ -285,6 +327,10 @@ class _ClusterState:
             pulumi.set(__self__, "network", network)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if restore_backup_source is not None:
+            pulumi.set(__self__, "restore_backup_source", restore_backup_source)
+        if restore_continuous_backup_source is not None:
+            pulumi.set(__self__, "restore_continuous_backup_source", restore_continuous_backup_source)
         if uid is not None:
             pulumi.set(__self__, "uid", uid)
 
@@ -496,6 +542,32 @@ class _ClusterState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="restoreBackupSource")
+    def restore_backup_source(self) -> Optional[pulumi.Input['ClusterRestoreBackupSourceArgs']]:
+        """
+        The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "restore_backup_source")
+
+    @restore_backup_source.setter
+    def restore_backup_source(self, value: Optional[pulumi.Input['ClusterRestoreBackupSourceArgs']]):
+        pulumi.set(self, "restore_backup_source", value)
+
+    @property
+    @pulumi.getter(name="restoreContinuousBackupSource")
+    def restore_continuous_backup_source(self) -> Optional[pulumi.Input['ClusterRestoreContinuousBackupSourceArgs']]:
+        """
+        The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "restore_continuous_backup_source")
+
+    @restore_continuous_backup_source.setter
+    def restore_continuous_backup_source(self, value: Optional[pulumi.Input['ClusterRestoreContinuousBackupSourceArgs']]):
+        pulumi.set(self, "restore_continuous_backup_source", value)
+
+    @property
     @pulumi.getter
     def uid(self) -> Optional[pulumi.Input[str]]:
         """
@@ -523,6 +595,8 @@ class Cluster(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 restore_backup_source: Optional[pulumi.Input[pulumi.InputType['ClusterRestoreBackupSourceArgs']]] = None,
+                 restore_continuous_backup_source: Optional[pulumi.Input[pulumi.InputType['ClusterRestoreContinuousBackupSourceArgs']]] = None,
                  __props__=None):
         """
         A managed alloydb cluster.
@@ -595,6 +669,59 @@ class Cluster(pulumi.CustomResource):
             })
         project = gcp.organizations.get_project()
         ```
+        ### Alloydb Cluster Restore
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.get_network(name="alloydb-network")
+        source_cluster = gcp.alloydb.Cluster("sourceCluster",
+            cluster_id="alloydb-source-cluster",
+            location="us-central1",
+            network=default.id,
+            initial_user=gcp.alloydb.ClusterInitialUserArgs(
+                password="alloydb-source-cluster",
+            ))
+        private_ip_alloc = gcp.compute.GlobalAddress("privateIpAlloc",
+            address_type="INTERNAL",
+            purpose="VPC_PEERING",
+            prefix_length=16,
+            network=default.id)
+        vpc_connection = gcp.servicenetworking.Connection("vpcConnection",
+            network=default.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[private_ip_alloc.name])
+        source_instance = gcp.alloydb.Instance("sourceInstance",
+            cluster=source_cluster.name,
+            instance_id="alloydb-instance",
+            instance_type="PRIMARY",
+            machine_config=gcp.alloydb.InstanceMachineConfigArgs(
+                cpu_count=2,
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[vpc_connection]))
+        source_backup = gcp.alloydb.Backup("sourceBackup",
+            backup_id="alloydb-backup",
+            location="us-central1",
+            cluster_name=source_cluster.name,
+            opts=pulumi.ResourceOptions(depends_on=[source_instance]))
+        restored_from_backup = gcp.alloydb.Cluster("restoredFromBackup",
+            cluster_id="alloydb-backup-restored",
+            location="us-central1",
+            network=default.id,
+            restore_backup_source=gcp.alloydb.ClusterRestoreBackupSourceArgs(
+                backup_name=source_backup.name,
+            ))
+        restored_via_pitr = gcp.alloydb.Cluster("restoredViaPitr",
+            cluster_id="alloydb-pitr-restored",
+            location="us-central1",
+            network=default.id,
+            restore_continuous_backup_source=gcp.alloydb.ClusterRestoreContinuousBackupSourceArgs(
+                cluster=source_cluster.name,
+                point_in_time="2023-08-03T19:19:00.094Z",
+            ))
+        project = gcp.organizations.get_project()
+        ```
 
         ## Import
 
@@ -638,6 +765,10 @@ class Cluster(pulumi.CustomResource):
                "projects/{projectNumber}/global/networks/{network_id}".
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[pulumi.InputType['ClusterRestoreBackupSourceArgs']] restore_backup_source: The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
+               Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ClusterRestoreContinuousBackupSourceArgs']] restore_continuous_backup_source: The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
+               Structure is documented below.
         """
         ...
     @overload
@@ -716,6 +847,59 @@ class Cluster(pulumi.CustomResource):
             })
         project = gcp.organizations.get_project()
         ```
+        ### Alloydb Cluster Restore
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.get_network(name="alloydb-network")
+        source_cluster = gcp.alloydb.Cluster("sourceCluster",
+            cluster_id="alloydb-source-cluster",
+            location="us-central1",
+            network=default.id,
+            initial_user=gcp.alloydb.ClusterInitialUserArgs(
+                password="alloydb-source-cluster",
+            ))
+        private_ip_alloc = gcp.compute.GlobalAddress("privateIpAlloc",
+            address_type="INTERNAL",
+            purpose="VPC_PEERING",
+            prefix_length=16,
+            network=default.id)
+        vpc_connection = gcp.servicenetworking.Connection("vpcConnection",
+            network=default.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[private_ip_alloc.name])
+        source_instance = gcp.alloydb.Instance("sourceInstance",
+            cluster=source_cluster.name,
+            instance_id="alloydb-instance",
+            instance_type="PRIMARY",
+            machine_config=gcp.alloydb.InstanceMachineConfigArgs(
+                cpu_count=2,
+            ),
+            opts=pulumi.ResourceOptions(depends_on=[vpc_connection]))
+        source_backup = gcp.alloydb.Backup("sourceBackup",
+            backup_id="alloydb-backup",
+            location="us-central1",
+            cluster_name=source_cluster.name,
+            opts=pulumi.ResourceOptions(depends_on=[source_instance]))
+        restored_from_backup = gcp.alloydb.Cluster("restoredFromBackup",
+            cluster_id="alloydb-backup-restored",
+            location="us-central1",
+            network=default.id,
+            restore_backup_source=gcp.alloydb.ClusterRestoreBackupSourceArgs(
+                backup_name=source_backup.name,
+            ))
+        restored_via_pitr = gcp.alloydb.Cluster("restoredViaPitr",
+            cluster_id="alloydb-pitr-restored",
+            location="us-central1",
+            network=default.id,
+            restore_continuous_backup_source=gcp.alloydb.ClusterRestoreContinuousBackupSourceArgs(
+                cluster=source_cluster.name,
+                point_in_time="2023-08-03T19:19:00.094Z",
+            ))
+        project = gcp.organizations.get_project()
+        ```
 
         ## Import
 
@@ -762,6 +946,8 @@ class Cluster(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 restore_backup_source: Optional[pulumi.Input[pulumi.InputType['ClusterRestoreBackupSourceArgs']]] = None,
+                 restore_continuous_backup_source: Optional[pulumi.Input[pulumi.InputType['ClusterRestoreContinuousBackupSourceArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -787,6 +973,8 @@ class Cluster(pulumi.CustomResource):
                 raise TypeError("Missing required property 'network'")
             __props__.__dict__["network"] = network
             __props__.__dict__["project"] = project
+            __props__.__dict__["restore_backup_source"] = restore_backup_source
+            __props__.__dict__["restore_continuous_backup_source"] = restore_continuous_backup_source
             __props__.__dict__["backup_sources"] = None
             __props__.__dict__["continuous_backup_infos"] = None
             __props__.__dict__["database_version"] = None
@@ -820,6 +1008,8 @@ class Cluster(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            restore_backup_source: Optional[pulumi.Input[pulumi.InputType['ClusterRestoreBackupSourceArgs']]] = None,
+            restore_continuous_backup_source: Optional[pulumi.Input[pulumi.InputType['ClusterRestoreContinuousBackupSourceArgs']]] = None,
             uid: Optional[pulumi.Input[str]] = None) -> 'Cluster':
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
@@ -859,6 +1049,10 @@ class Cluster(pulumi.CustomResource):
                "projects/{projectNumber}/global/networks/{network_id}".
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[pulumi.InputType['ClusterRestoreBackupSourceArgs']] restore_backup_source: The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
+               Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ClusterRestoreContinuousBackupSourceArgs']] restore_continuous_backup_source: The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
+               Structure is documented below.
         :param pulumi.Input[str] uid: The system-generated UID of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -881,6 +1075,8 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["network"] = network
         __props__.__dict__["project"] = project
+        __props__.__dict__["restore_backup_source"] = restore_backup_source
+        __props__.__dict__["restore_continuous_backup_source"] = restore_continuous_backup_source
         __props__.__dict__["uid"] = uid
         return Cluster(resource_name, opts=opts, __props__=__props__)
 
@@ -1026,6 +1222,24 @@ class Cluster(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="restoreBackupSource")
+    def restore_backup_source(self) -> pulumi.Output[Optional['outputs.ClusterRestoreBackupSource']]:
+        """
+        The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "restore_backup_source")
+
+    @property
+    @pulumi.getter(name="restoreContinuousBackupSource")
+    def restore_continuous_backup_source(self) -> pulumi.Output[Optional['outputs.ClusterRestoreContinuousBackupSource']]:
+        """
+        The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "restore_continuous_backup_source")
 
     @property
     @pulumi.getter

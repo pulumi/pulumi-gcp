@@ -205,6 +205,11 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly enableBinaryAuthorization!: pulumi.Output<boolean | undefined>;
     /**
+     * )
+     * Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
+     */
+    public readonly enableFqdnNetworkPolicy!: pulumi.Output<boolean | undefined>;
+    /**
      * Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
      */
     public readonly enableIntranodeVisibility!: pulumi.Output<boolean>;
@@ -573,6 +578,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["dnsConfig"] = state ? state.dnsConfig : undefined;
             resourceInputs["enableAutopilot"] = state ? state.enableAutopilot : undefined;
             resourceInputs["enableBinaryAuthorization"] = state ? state.enableBinaryAuthorization : undefined;
+            resourceInputs["enableFqdnNetworkPolicy"] = state ? state.enableFqdnNetworkPolicy : undefined;
             resourceInputs["enableIntranodeVisibility"] = state ? state.enableIntranodeVisibility : undefined;
             resourceInputs["enableK8sBetaApis"] = state ? state.enableK8sBetaApis : undefined;
             resourceInputs["enableKubernetesAlpha"] = state ? state.enableKubernetesAlpha : undefined;
@@ -647,6 +653,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["dnsConfig"] = args ? args.dnsConfig : undefined;
             resourceInputs["enableAutopilot"] = args ? args.enableAutopilot : undefined;
             resourceInputs["enableBinaryAuthorization"] = args ? args.enableBinaryAuthorization : undefined;
+            resourceInputs["enableFqdnNetworkPolicy"] = args ? args.enableFqdnNetworkPolicy : undefined;
             resourceInputs["enableIntranodeVisibility"] = args ? args.enableIntranodeVisibility : undefined;
             resourceInputs["enableK8sBetaApis"] = args ? args.enableK8sBetaApis : undefined;
             resourceInputs["enableKubernetesAlpha"] = args ? args.enableKubernetesAlpha : undefined;
@@ -807,6 +814,11 @@ export interface ClusterState {
      * @deprecated Deprecated in favor of binary_authorization.
      */
     enableBinaryAuthorization?: pulumi.Input<boolean>;
+    /**
+     * )
+     * Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
+     */
+    enableFqdnNetworkPolicy?: pulumi.Input<boolean>;
     /**
      * Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
      */
@@ -1246,6 +1258,11 @@ export interface ClusterArgs {
      * @deprecated Deprecated in favor of binary_authorization.
      */
     enableBinaryAuthorization?: pulumi.Input<boolean>;
+    /**
+     * )
+     * Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
+     */
+    enableFqdnNetworkPolicy?: pulumi.Input<boolean>;
     /**
      * Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
      */

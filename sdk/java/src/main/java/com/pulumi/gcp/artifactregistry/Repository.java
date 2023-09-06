@@ -10,11 +10,14 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.artifactregistry.RepositoryArgs;
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryState;
+import com.pulumi.gcp.artifactregistry.outputs.RepositoryCleanupPolicy;
 import com.pulumi.gcp.artifactregistry.outputs.RepositoryDockerConfig;
 import com.pulumi.gcp.artifactregistry.outputs.RepositoryMavenConfig;
 import com.pulumi.gcp.artifactregistry.outputs.RepositoryRemoteRepositoryConfig;
 import com.pulumi.gcp.artifactregistry.outputs.RepositoryVirtualRepositoryConfig;
+import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -237,6 +240,79 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Artifact Registry Repository Cleanup
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.artifactregistry.Repository;
+ * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
+ * import com.pulumi.gcp.artifactregistry.inputs.RepositoryCleanupPolicyArgs;
+ * import com.pulumi.gcp.artifactregistry.inputs.RepositoryCleanupPolicyConditionArgs;
+ * import com.pulumi.gcp.artifactregistry.inputs.RepositoryCleanupPolicyMostRecentVersionsArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var my_repo = new Repository(&#34;my-repo&#34;, RepositoryArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .repositoryId(&#34;my-repository&#34;)
+ *             .description(&#34;example docker repository with cleanup policies&#34;)
+ *             .format(&#34;DOCKER&#34;)
+ *             .cleanupPolicyDryRun(false)
+ *             .cleanupPolicies(            
+ *                 RepositoryCleanupPolicyArgs.builder()
+ *                     .id(&#34;delete-prerelease&#34;)
+ *                     .action(&#34;DELETE&#34;)
+ *                     .condition(RepositoryCleanupPolicyConditionArgs.builder()
+ *                         .tagState(&#34;TAGGED&#34;)
+ *                         .tagPrefixes(                        
+ *                             &#34;alpha&#34;,
+ *                             &#34;v0&#34;)
+ *                         .olderThan(&#34;2592000s&#34;)
+ *                         .build())
+ *                     .build(),
+ *                 RepositoryCleanupPolicyArgs.builder()
+ *                     .id(&#34;keep-tagged-release&#34;)
+ *                     .action(&#34;KEEP&#34;)
+ *                     .condition(RepositoryCleanupPolicyConditionArgs.builder()
+ *                         .tagState(&#34;TAGGED&#34;)
+ *                         .tagPrefixes(&#34;release&#34;)
+ *                         .packageNamePrefixes(                        
+ *                             &#34;webapp&#34;,
+ *                             &#34;mobile&#34;)
+ *                         .build())
+ *                     .build(),
+ *                 RepositoryCleanupPolicyArgs.builder()
+ *                     .id(&#34;keep-minimum-versions&#34;)
+ *                     .action(&#34;KEEP&#34;)
+ *                     .mostRecentVersions(RepositoryCleanupPolicyMostRecentVersionsArgs.builder()
+ *                         .packageNamePrefixes(                        
+ *                             &#34;webapp&#34;,
+ *                             &#34;mobile&#34;,
+ *                             &#34;sandbox&#34;)
+ *                         .keepCount(5)
+ *                         .build())
+ *                     .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -261,6 +337,38 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:artifactregistry/repository:Repository")
 public class Repository extends com.pulumi.resources.CustomResource {
+    /**
+     * Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
+     * deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
+     * under 128 characters in length.
+     * 
+     */
+    @Export(name="cleanupPolicies", type=List.class, parameters={RepositoryCleanupPolicy.class})
+    private Output</* @Nullable */ List<RepositoryCleanupPolicy>> cleanupPolicies;
+
+    /**
+     * @return Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
+     * deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
+     * under 128 characters in length.
+     * 
+     */
+    public Output<Optional<List<RepositoryCleanupPolicy>>> cleanupPolicies() {
+        return Codegen.optional(this.cleanupPolicies);
+    }
+    /**
+     * If true, the cleanup pipeline is prevented from deleting versions in this repository.
+     * 
+     */
+    @Export(name="cleanupPolicyDryRun", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> cleanupPolicyDryRun;
+
+    /**
+     * @return If true, the cleanup pipeline is prevented from deleting versions in this repository.
+     * 
+     */
+    public Output<Optional<Boolean>> cleanupPolicyDryRun() {
+        return Codegen.optional(this.cleanupPolicyDryRun);
+    }
     /**
      * The time when the repository was created.
      * 

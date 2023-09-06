@@ -61,6 +61,32 @@ import * as utilities from "../utilities";
  *     provider: google_beta,
  * });
  * ```
+ * ### Firebase Web App Custom Api Key
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const web = new gcp.projects.ApiKey("web", {
+ *     project: "my-project-name",
+ *     displayName: "Display Name",
+ *     restrictions: {
+ *         browserKeyRestrictions: {
+ *             allowedReferrers: ["*"],
+ *         },
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const _default = new gcp.firebase.WebApp("default", {
+ *     project: "my-project-name",
+ *     displayName: "Display Name",
+ *     apiKeyId: web.uid,
+ *     deletionPolicy: "DELETE",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -115,6 +141,12 @@ export class WebApp extends pulumi.CustomResource {
     }
 
     /**
+     * The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the WebApp.
+     * If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the WebApp.
+     * This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+     */
+    public readonly apiKeyId!: pulumi.Output<string>;
+    /**
      * The globally unique, Firebase-assigned identifier of the App.
      * This identifier should be treated as an opaque token, as the data format is not specified.
      */
@@ -159,6 +191,7 @@ export class WebApp extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WebAppState | undefined;
+            resourceInputs["apiKeyId"] = state ? state.apiKeyId : undefined;
             resourceInputs["appId"] = state ? state.appId : undefined;
             resourceInputs["appUrls"] = state ? state.appUrls : undefined;
             resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
@@ -170,6 +203,7 @@ export class WebApp extends pulumi.CustomResource {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
+            resourceInputs["apiKeyId"] = args ? args.apiKeyId : undefined;
             resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -186,6 +220,12 @@ export class WebApp extends pulumi.CustomResource {
  * Input properties used for looking up and filtering WebApp resources.
  */
 export interface WebAppState {
+    /**
+     * The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the WebApp.
+     * If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the WebApp.
+     * This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+     */
+    apiKeyId?: pulumi.Input<string>;
     /**
      * The globally unique, Firebase-assigned identifier of the App.
      * This identifier should be treated as an opaque token, as the data format is not specified.
@@ -223,6 +263,12 @@ export interface WebAppState {
  * The set of arguments for constructing a WebApp resource.
  */
 export interface WebAppArgs {
+    /**
+     * The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the WebApp.
+     * If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the WebApp.
+     * This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+     */
+    apiKeyId?: pulumi.Input<string>;
     /**
      * Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
      * This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'ABANDON'

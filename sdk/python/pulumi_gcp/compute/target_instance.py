@@ -20,6 +20,7 @@ class TargetInstanceArgs:
                  nat_policy: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 security_policy: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TargetInstance resource.
@@ -47,6 +48,7 @@ class TargetInstanceArgs:
         :param pulumi.Input[str] network: The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] security_policy: The resource URL for the security policy associated with this target instance.
         :param pulumi.Input[str] zone: URL of the zone where the target instance resides.
         """
         pulumi.set(__self__, "instance", instance)
@@ -60,6 +62,8 @@ class TargetInstanceArgs:
             pulumi.set(__self__, "network", network)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if security_policy is not None:
+            pulumi.set(__self__, "security_policy", security_policy)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
 
@@ -154,6 +158,18 @@ class TargetInstanceArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="securityPolicy")
+    def security_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource URL for the security policy associated with this target instance.
+        """
+        return pulumi.get(self, "security_policy")
+
+    @security_policy.setter
+    def security_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_policy", value)
+
+    @property
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
@@ -176,6 +192,7 @@ class _TargetInstanceState:
                  nat_policy: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 security_policy: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
@@ -205,6 +222,7 @@ class _TargetInstanceState:
         :param pulumi.Input[str] network: The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] security_policy: The resource URL for the security policy associated with this target instance.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] zone: URL of the zone where the target instance resides.
         """
@@ -222,6 +240,8 @@ class _TargetInstanceState:
             pulumi.set(__self__, "network", network)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if security_policy is not None:
+            pulumi.set(__self__, "security_policy", security_policy)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
         if zone is not None:
@@ -330,6 +350,18 @@ class _TargetInstanceState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="securityPolicy")
+    def security_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource URL for the security policy associated with this target instance.
+        """
+        return pulumi.get(self, "security_policy")
+
+    @security_policy.setter
+    def security_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_policy", value)
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> Optional[pulumi.Input[str]]:
         """
@@ -365,6 +397,7 @@ class TargetInstance(pulumi.CustomResource):
                  nat_policy: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 security_policy: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -476,6 +509,7 @@ class TargetInstance(pulumi.CustomResource):
         :param pulumi.Input[str] network: The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] security_policy: The resource URL for the security policy associated with this target instance.
         :param pulumi.Input[str] zone: URL of the zone where the target instance resides.
         """
         ...
@@ -588,6 +622,7 @@ class TargetInstance(pulumi.CustomResource):
                  nat_policy: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 security_policy: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -606,6 +641,7 @@ class TargetInstance(pulumi.CustomResource):
             __props__.__dict__["nat_policy"] = nat_policy
             __props__.__dict__["network"] = network
             __props__.__dict__["project"] = project
+            __props__.__dict__["security_policy"] = security_policy
             __props__.__dict__["zone"] = zone
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["self_link"] = None
@@ -626,6 +662,7 @@ class TargetInstance(pulumi.CustomResource):
             nat_policy: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            security_policy: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'TargetInstance':
         """
@@ -660,6 +697,7 @@ class TargetInstance(pulumi.CustomResource):
         :param pulumi.Input[str] network: The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] security_policy: The resource URL for the security policy associated with this target instance.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] zone: URL of the zone where the target instance resides.
         """
@@ -674,6 +712,7 @@ class TargetInstance(pulumi.CustomResource):
         __props__.__dict__["nat_policy"] = nat_policy
         __props__.__dict__["network"] = network
         __props__.__dict__["project"] = project
+        __props__.__dict__["security_policy"] = security_policy
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["zone"] = zone
         return TargetInstance(resource_name, opts=opts, __props__=__props__)
@@ -751,6 +790,14 @@ class TargetInstance(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="securityPolicy")
+    def security_policy(self) -> pulumi.Output[Optional[str]]:
+        """
+        The resource URL for the security policy associated with this target instance.
+        """
+        return pulumi.get(self, "security_policy")
 
     @property
     @pulumi.getter(name="selfLink")

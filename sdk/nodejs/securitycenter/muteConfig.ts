@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * MuteConfig can be imported using any of these accepted formats
+ * MuteConfig can be imported using any of these accepted formats:
  *
  * ```sh
  *  $ pulumi import gcp:securitycenter/muteConfig:MuteConfig default {{name}}

@@ -1788,7 +1788,7 @@ export namespace alloydb {
 
     export interface ClusterBackupSource {
         /**
-         * The name of the backup resource.
+         * The name of the backup that this cluster is restored from.
          */
         backupName?: pulumi.Input<string>;
     }
@@ -1899,6 +1899,24 @@ export namespace alloydb {
          * Type of migration source.
          */
         sourceType?: pulumi.Input<string>;
+    }
+
+    export interface ClusterRestoreBackupSource {
+        /**
+         * The name of the backup that this cluster is restored from.
+         */
+        backupName: pulumi.Input<string>;
+    }
+
+    export interface ClusterRestoreContinuousBackupSource {
+        /**
+         * The name of the source cluster that this cluster is restored from.
+         */
+        cluster: pulumi.Input<string>;
+        /**
+         * The point in time that this cluster is restored to, in RFC 3339 format.
+         */
+        pointInTime: pulumi.Input<string>;
     }
 
     export interface InstanceMachineConfig {
@@ -3251,6 +3269,30 @@ export namespace appengine {
 }
 
 export namespace artifactregistry {
+    export interface RepositoryCleanupPolicy {
+        action?: pulumi.Input<string>;
+        condition?: pulumi.Input<inputs.artifactregistry.RepositoryCleanupPolicyCondition>;
+        /**
+         * The identifier for this object. Format specified above.
+         */
+        id: pulumi.Input<string>;
+        mostRecentVersions?: pulumi.Input<inputs.artifactregistry.RepositoryCleanupPolicyMostRecentVersions>;
+    }
+
+    export interface RepositoryCleanupPolicyCondition {
+        newerThan?: pulumi.Input<string>;
+        olderThan?: pulumi.Input<string>;
+        packageNamePrefixes?: pulumi.Input<pulumi.Input<string>[]>;
+        tagPrefixes?: pulumi.Input<pulumi.Input<string>[]>;
+        tagState?: pulumi.Input<string>;
+        versionNamePrefixes?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface RepositoryCleanupPolicyMostRecentVersions {
+        keepCount?: pulumi.Input<number>;
+        packageNamePrefixes?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface RepositoryDockerConfig {
         /**
          * The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.
@@ -3505,6 +3547,23 @@ export namespace beyondcorp {
 
 }
 
+export namespace biglake {
+    export interface DatabaseHiveOptions {
+        /**
+         * Cloud Storage folder URI where the database data is stored, starting with "gs://".
+         */
+        locationUri?: pulumi.Input<string>;
+        /**
+         * Stores user supplied Hive database parameters. An object containing a
+         * list of"key": value pairs.
+         * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+         *
+         * - - -
+         */
+        parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    }
+}
+
 export namespace bigquery {
     export interface AppProfileSingleClusterRouting {
         /**
@@ -3516,6 +3575,21 @@ export namespace bigquery {
          * The cluster to which read/write requests should be routed.
          */
         clusterId: pulumi.Input<string>;
+    }
+
+    export interface BiReservationPreferredTable {
+        /**
+         * The ID of the dataset in the above project.
+         */
+        datasetId?: pulumi.Input<string>;
+        /**
+         * The assigned project ID of the project.
+         */
+        projectId?: pulumi.Input<string>;
+        /**
+         * The ID of the table in the above dataset.
+         */
+        tableId?: pulumi.Input<string>;
     }
 
     export interface ConnectionAws {
@@ -4536,7 +4610,7 @@ export namespace bigquery {
          */
         autodetect: pulumi.Input<boolean>;
         /**
-         * Additional options if `sourceFormat` is set to  
+         * Additional options if `sourceFormat` is set to
          * "AVRO".  Structure is documented below.
          */
         avroOptions?: pulumi.Input<inputs.bigquery.TableExternalDataConfigurationAvroOptions>;
@@ -4550,6 +4624,10 @@ export namespace bigquery {
          * external storage, such as Azure Blob, Cloud Storage, or S3. The `connectionId` can have
          * the form `{{project}}.{{location}}.{{connection_id}}`
          * or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
+         *
+         * ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
+         * table schema must be specified using the top-level `schema` field
+         * documented above.
          */
         connectionId?: pulumi.Input<string>;
         /**
@@ -4624,6 +4702,10 @@ export namespace bigquery {
          * This schema is effectively only applied when creating a table from an external
          * datasource, after creation the computed schema will be stored in
          * `google_bigquery_table.schema`
+         *
+         * ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
+         * table schema must be specified using the top-level `schema` field
+         * documented above.
          */
         schema?: pulumi.Input<string>;
         /**
@@ -4642,7 +4724,7 @@ export namespace bigquery {
 
     export interface TableExternalDataConfigurationAvroOptions {
         /**
-         * If is set to true, indicates whether  
+         * If is set to true, indicates whether
          * to interpret logical types as the corresponding BigQuery data type
          * (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
          */
@@ -6226,7 +6308,7 @@ export namespace certificateauthority {
          * Describes some of the technical fields in a certificate.
          * Structure is documented below.
          *
-         * @deprecated Deprecated in favor of `x509_description`.
+         * @deprecated `config_values` is deprecated and will be removed in a future release. Use `x509_description` instead.
          */
         configValues?: pulumi.Input<pulumi.Input<inputs.certificateauthority.CertificateCertificateDescriptionConfigValue>[]>;
         /**
@@ -7514,11 +7596,13 @@ export namespace certificatemanager {
     export interface CertificateSelfManaged {
         /**
          * (Optional, Deprecated)
-         * **Deprecated** The certificate chain in PEM-encoded form.
+         * The certificate chain in PEM-encoded form.
          * Leaf certificate comes first, followed by intermediate ones if any.
          * **Note**: This property is sensitive and will not be displayed in the plan.
          *
-         * @deprecated Deprecated in favor of `pem_certificate`
+         * > **Warning:** `certificatePem` is deprecated and will be removed in a future major release. Use `pemCertificate` instead.
+         *
+         * @deprecated `certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead.
          */
         certificatePem?: pulumi.Input<string>;
         /**
@@ -7534,10 +7618,12 @@ export namespace certificatemanager {
         pemPrivateKey?: pulumi.Input<string>;
         /**
          * (Optional, Deprecated)
-         * **Deprecated** The private key of the leaf certificate in PEM-encoded form.
+         * The private key of the leaf certificate in PEM-encoded form.
          * **Note**: This property is sensitive and will not be displayed in the plan.
          *
-         * @deprecated Deprecated in favor of `pem_private_key`
+         * > **Warning:** `privateKeyPem` is deprecated and will be removed in a future major release. Use `pemPrivateKey` instead.
+         *
+         * @deprecated `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead.
          */
         privateKeyPem?: pulumi.Input<string>;
     }
@@ -7562,6 +7648,38 @@ export namespace certificatemanager {
          * Type of the DNS Resource Record.
          */
         type?: pulumi.Input<string>;
+    }
+
+    export interface TrustConfigTrustStore {
+        /**
+         * Set of intermediate CA certificates used for the path building phase of chain validation.
+         * The field is currently not supported if trust config is used for the workload certificate feature.
+         * Structure is documented below.
+         */
+        intermediateCas?: pulumi.Input<pulumi.Input<inputs.certificatemanager.TrustConfigTrustStoreIntermediateCa>[]>;
+        /**
+         * List of Trust Anchors to be used while performing validation against a given TrustStore.
+         * Structure is documented below.
+         */
+        trustAnchors?: pulumi.Input<pulumi.Input<inputs.certificatemanager.TrustConfigTrustStoreTrustAnchor>[]>;
+    }
+
+    export interface TrustConfigTrustStoreIntermediateCa {
+        /**
+         * PEM intermediate certificate used for building up paths for validation.
+         * Each certificate provided in PEM format may occupy up to 5kB.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        pemCertificate?: pulumi.Input<string>;
+    }
+
+    export interface TrustConfigTrustStoreTrustAnchor {
+        /**
+         * PEM root certificate of the PKI used for validation.
+         * Each certificate provided in PEM format may occupy up to 5kB.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        pemCertificate?: pulumi.Input<string>;
     }
 }
 
@@ -9891,7 +10009,9 @@ export namespace cloudrun {
          * It is expected
          * that the system will manipulate this based on routability and load.
          *
-         * @deprecated Not supported by Cloud Run fully managed
+         * > **Warning:** `servingState` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+         *
+         * @deprecated `serving_state` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
          */
         servingState?: pulumi.Input<string>;
         /**
@@ -9925,7 +10045,9 @@ export namespace cloudrun {
          * precedence.
          * Structure is documented below.
          *
-         * @deprecated Not supported by Cloud Run fully managed
+         * > **Warning:** `envFrom` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+         *
+         * @deprecated `env_from` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
          */
         envFroms?: pulumi.Input<pulumi.Input<inputs.cloudrun.ServiceTemplateSpecContainerEnvFrom>[]>;
         /**
@@ -9977,7 +10099,9 @@ export namespace cloudrun {
          * If not specified, the container runtime's default will be used, which
          * might be configured in the container image.
          *
-         * @deprecated Not supported by Cloud Run fully managed
+         * > **Warning:** `workingDir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+         *
+         * @deprecated `working_dir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
          */
         workingDir?: pulumi.Input<string>;
     }
@@ -10581,7 +10705,9 @@ export namespace cloudrunv2 {
          * This field is not supported in Cloud Run Job currently.
          * Structure is documented below.
          *
-         * @deprecated Cloud Run Job does not support liveness probe and `liveness_probe` field will be removed in a future major release.
+         * > **Warning:** `livenessProbe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+         *
+         * @deprecated `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
          */
         livenessProbe?: pulumi.Input<inputs.cloudrunv2.JobTemplateTemplateContainerLivenessProbe>;
         /**
@@ -10605,7 +10731,9 @@ export namespace cloudrunv2 {
          * This field is not supported in Cloud Run Job currently.
          * Structure is documented below.
          *
-         * @deprecated Cloud Run Job does not support startup probe and `startup_probe` field will be removed in a future major release.
+         * > **Warning:** `startupProbe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+         *
+         * @deprecated `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
          */
         startupProbe?: pulumi.Input<inputs.cloudrunv2.JobTemplateTemplateContainerStartupProbe>;
         /**
@@ -10859,7 +10987,7 @@ export namespace cloudrunv2 {
         /**
          * Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
          */
-        mode: pulumi.Input<number>;
+        mode?: pulumi.Input<number>;
         /**
          * The relative path of the secret in the container.
          */
@@ -11180,7 +11308,9 @@ export namespace cloudrunv2 {
          * TCPSocket specifies an action involving a TCP port. This field is not supported in liveness probe currently.
          * Structure is documented below.
          *
-         * @deprecated Cloud Run does not support tcp socket in liveness probe and `liveness_probe.tcp_socket` field will be removed in a future major release.
+         * > **Warning:** `tcpSocket` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+         *
+         * @deprecated `tcp_socket` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
          */
         tcpSocket?: pulumi.Input<inputs.cloudrunv2.ServiceTemplateContainerLivenessProbeTcpSocket>;
         /**
@@ -11431,7 +11561,7 @@ export namespace cloudrunv2 {
         /**
          * Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
          */
-        mode: pulumi.Input<number>;
+        mode?: pulumi.Input<number>;
         /**
          * The relative path of the secret in the container.
          */
@@ -15465,6 +15595,34 @@ export namespace compute {
          * there can be up to 100 domains in this list.
          */
         domains: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface NetworkAttachmentConnectionEndpoint {
+        /**
+         * (Output)
+         * The IPv4 address assigned to the producer instance network interface. This value will be a range in case of Serverless.
+         */
+        ipAddress?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The project id or number of the interface to which the IP was assigned.
+         */
+        projectIdOrNum?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Alias IP ranges from the same subnetwork.
+         */
+        secondaryIpCidrRanges?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The status of a connected endpoint to this network attachment.
+         */
+        status?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The subnetwork used to assign the IP to the producer instance network interface.
+         */
+        subnetwork?: pulumi.Input<string>;
     }
 
     export interface NetworkEndpointListNetworkEndpoint {
@@ -24096,6 +24254,12 @@ export namespace container {
 
     export interface ClusterIpAllocationPolicy {
         /**
+         * The configuration for additional pod secondary ranges at
+         * the cluster level. Used for Autopilot clusters and Standard clusters with which control of the
+         * secondary Pod IP address assignment to node pools isn't needed. Structure is documented below.
+         */
+        additionalPodRangesConfig?: pulumi.Input<inputs.container.ClusterIpAllocationPolicyAdditionalPodRangesConfig>;
+        /**
          * The IP address range for the cluster pod IPs.
          * Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
          * to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14)
@@ -24131,6 +24295,13 @@ export namespace container {
          * Possible values are `IPV4` and `IPV4_IPV6`.
          */
         stackType?: pulumi.Input<string>;
+    }
+
+    export interface ClusterIpAllocationPolicyAdditionalPodRangesConfig {
+        /**
+         * The names of the Pod ranges to add to the cluster.
+         */
+        podRangeNames: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface ClusterIpAllocationPolicyPodCidrOverprovisionConfig {
@@ -24328,6 +24499,10 @@ export namespace container {
          * The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
          */
         bootDiskKmsKey?: pulumi.Input<string>;
+        /**
+         * Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+         */
+        confidentialNodes?: pulumi.Input<inputs.container.ClusterNodeConfigConfidentialNodes>;
         /**
          * Size of the disk attached to each node, specified
          * in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
@@ -24529,6 +24704,13 @@ export namespace container {
          * The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
          */
         threadsPerCore: pulumi.Input<number>;
+    }
+
+    export interface ClusterNodeConfigConfidentialNodes {
+        /**
+         * Enable Confidential Nodes for this cluster.
+         */
+        enabled: pulumi.Input<boolean>;
     }
 
     export interface ClusterNodeConfigEphemeralStorageConfig {
@@ -24944,6 +25126,10 @@ export namespace container {
          */
         bootDiskKmsKey?: pulumi.Input<string>;
         /**
+         * Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+         */
+        confidentialNodes?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfigConfidentialNodes>;
+        /**
          * Size of the disk attached to each node, specified
          * in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
          */
@@ -25144,6 +25330,13 @@ export namespace container {
          * The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
          */
         threadsPerCore: pulumi.Input<number>;
+    }
+
+    export interface ClusterNodePoolNodeConfigConfidentialNodes {
+        /**
+         * Enable Confidential Nodes for this cluster.
+         */
+        enabled: pulumi.Input<boolean>;
     }
 
     export interface ClusterNodePoolNodeConfigEphemeralStorageConfig {
@@ -25747,6 +25940,7 @@ export namespace container {
     export interface NodePoolNodeConfig {
         advancedMachineFeatures?: pulumi.Input<inputs.container.NodePoolNodeConfigAdvancedMachineFeatures>;
         bootDiskKmsKey?: pulumi.Input<string>;
+        confidentialNodes?: pulumi.Input<inputs.container.NodePoolNodeConfigConfidentialNodes>;
         diskSizeGb?: pulumi.Input<number>;
         diskType?: pulumi.Input<string>;
         ephemeralStorageConfig?: pulumi.Input<inputs.container.NodePoolNodeConfigEphemeralStorageConfig>;
@@ -25782,6 +25976,10 @@ export namespace container {
 
     export interface NodePoolNodeConfigAdvancedMachineFeatures {
         threadsPerCore: pulumi.Input<number>;
+    }
+
+    export interface NodePoolNodeConfigConfidentialNodes {
+        enabled: pulumi.Input<boolean>;
     }
 
     export interface NodePoolNodeConfigEphemeralStorageConfig {
@@ -26754,6 +26952,81 @@ export namespace dataform {
     }
 
     export interface RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus {
+        /**
+         * (Output)
+         * The status code, which should be an enum value of google.rpc.Code.
+         */
+        code?: pulumi.Input<number>;
+        /**
+         * (Output)
+         * A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+         */
+        message?: pulumi.Input<string>;
+    }
+
+    export interface RepositoryWorkflowConfigInvocationConfig {
+        /**
+         * Optional. When set to true, any incremental tables will be fully refreshed.
+         */
+        fullyRefreshIncrementalTablesEnabled?: pulumi.Input<boolean>;
+        /**
+         * Optional. The set of tags to include.
+         */
+        includedTags?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Optional. The set of action identifiers to include.
+         * Structure is documented below.
+         */
+        includedTargets?: pulumi.Input<pulumi.Input<inputs.dataform.RepositoryWorkflowConfigInvocationConfigIncludedTarget>[]>;
+        /**
+         * Optional. The service account to run workflow invocations under.
+         */
+        serviceAccount?: pulumi.Input<string>;
+        /**
+         * Optional. When set to true, transitive dependencies of included actions will be executed.
+         */
+        transitiveDependenciesIncluded?: pulumi.Input<boolean>;
+        /**
+         * Optional. When set to true, transitive dependents of included actions will be executed.
+         */
+        transitiveDependentsIncluded?: pulumi.Input<boolean>;
+    }
+
+    export interface RepositoryWorkflowConfigInvocationConfigIncludedTarget {
+        /**
+         * The action's database (Google Cloud project ID).
+         */
+        database?: pulumi.Input<string>;
+        /**
+         * The action's name, within database and schema.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The action's schema (BigQuery dataset ID), within database.
+         */
+        schema?: pulumi.Input<string>;
+    }
+
+    export interface RepositoryWorkflowConfigRecentScheduledExecutionRecord {
+        /**
+         * (Output)
+         * The error status encountered upon this attempt to create the workflow invocation, if the attempt was unsuccessful.
+         * Structure is documented below.
+         */
+        errorStatuses?: pulumi.Input<pulumi.Input<inputs.dataform.RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus>[]>;
+        /**
+         * (Output)
+         * The timestamp of this workflow attempt.
+         */
+        executionTime?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The name of the created workflow invocation, if one was successfully created. In the format projects/*&#47;locations/*&#47;repositories/*&#47;workflowInvocations/*.
+         */
+        workflowInvocation?: pulumi.Input<string>;
+    }
+
+    export interface RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus {
         /**
          * (Output)
          * The status code, which should be an enum value of google.rpc.Code.
@@ -31906,7 +32179,11 @@ export namespace dataplex {
          */
         mode?: pulumi.Input<string>;
         /**
-         * The name of the field.
+         * A mutable name for the rule.
+         * The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+         * The maximum length is 63 characters.
+         * Must start with a letter.
+         * Must end with a number or a letter.
          */
         name?: pulumi.Input<string>;
         /**
@@ -32052,13 +32329,66 @@ export namespace dataplex {
 
     export interface DatascanDataProfileSpec {
         /**
+         * The fields to exclude from data profile.
+         * If specified, the fields will be excluded from data profile, regardless of `includeFields` value.
+         * Structure is documented below.
+         */
+        excludeFields?: pulumi.Input<inputs.dataplex.DatascanDataProfileSpecExcludeFields>;
+        /**
+         * The fields to include in data profile.
+         * If not specified, all fields at the time of profile scan job execution are included, except for ones listed in `excludeFields`.
+         * Structure is documented below.
+         */
+        includeFields?: pulumi.Input<inputs.dataplex.DatascanDataProfileSpecIncludeFields>;
+        /**
+         * Actions to take upon job completion.
+         * Structure is documented below.
+         */
+        postScanActions?: pulumi.Input<inputs.dataplex.DatascanDataProfileSpecPostScanActions>;
+        /**
          * A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
          */
         rowFilter?: pulumi.Input<string>;
         /**
          * The percentage of the records to be selected from the dataset for DataScan.
+         * Value can range between 0.0 and 100.0 with up to 3 significant decimal digits.
+         * Sampling is not applied if `samplingPercent` is not specified, 0 or 100.
          */
         samplingPercent?: pulumi.Input<number>;
+    }
+
+    export interface DatascanDataProfileSpecExcludeFields {
+        /**
+         * Expected input is a list of fully qualified names of fields as in the schema.
+         * Only top-level field names for nested fields are supported.
+         * For instance, if 'x' is of nested field type, listing 'x' is supported but 'x.y.z' is not supported. Here 'y' and 'y.z' are nested fields of 'x'.
+         */
+        fieldNames?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface DatascanDataProfileSpecIncludeFields {
+        /**
+         * Expected input is a list of fully qualified names of fields as in the schema.
+         * Only top-level field names for nested fields are supported.
+         * For instance, if 'x' is of nested field type, listing 'x' is supported but 'x.y.z' is not supported. Here 'y' and 'y.z' are nested fields of 'x'.
+         */
+        fieldNames?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface DatascanDataProfileSpecPostScanActions {
+        /**
+         * If set, results will be exported to the provided BigQuery table.
+         * Structure is documented below.
+         */
+        bigqueryExport?: pulumi.Input<inputs.dataplex.DatascanDataProfileSpecPostScanActionsBigqueryExport>;
+    }
+
+    export interface DatascanDataProfileSpecPostScanActionsBigqueryExport {
+        /**
+         * The BigQuery table to export DataProfileScan results to.
+         * Format://bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+         */
+        resultsTable?: pulumi.Input<string>;
     }
 
     export interface DatascanDataQualityResult {
@@ -32191,7 +32521,7 @@ export namespace dataplex {
          */
         threshold?: pulumi.Input<number>;
         /**
-         * ColumnAggregate rule which evaluates whether the column has duplicates.
+         * Row-level rule which evaluates whether each column value is unique.
          */
         uniquenessExpectations?: pulumi.Input<pulumi.Input<inputs.dataplex.DatascanDataQualityResultRuleRuleUniquenessExpectation>[]>;
     }
@@ -32304,6 +32634,11 @@ export namespace dataplex {
 
     export interface DatascanDataQualitySpec {
         /**
+         * Actions to take upon job completion.
+         * Structure is documented below.
+         */
+        postScanActions?: pulumi.Input<inputs.dataplex.DatascanDataQualitySpecPostScanActions>;
+        /**
          * A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
          */
         rowFilter?: pulumi.Input<string>;
@@ -32314,8 +32649,26 @@ export namespace dataplex {
         rules?: pulumi.Input<pulumi.Input<inputs.dataplex.DatascanDataQualitySpecRule>[]>;
         /**
          * The percentage of the records to be selected from the dataset for DataScan.
+         * Value can range between 0.0 and 100.0 with up to 3 significant decimal digits.
+         * Sampling is not applied if `samplingPercent` is not specified, 0 or 100.
          */
         samplingPercent?: pulumi.Input<number>;
+    }
+
+    export interface DatascanDataQualitySpecPostScanActions {
+        /**
+         * If set, results will be exported to the provided BigQuery table.
+         * Structure is documented below.
+         */
+        bigqueryExport?: pulumi.Input<inputs.dataplex.DatascanDataQualitySpecPostScanActionsBigqueryExport>;
+    }
+
+    export interface DatascanDataQualitySpecPostScanActionsBigqueryExport {
+        /**
+         * The BigQuery table to export DataProfileScan results to.
+         * Format://bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+         */
+        resultsTable?: pulumi.Input<string>;
     }
 
     export interface DatascanDataQualitySpecRule {
@@ -32324,6 +32677,11 @@ export namespace dataplex {
          */
         column?: pulumi.Input<string>;
         /**
+         * Description of the rule.
+         * The maximum length is 1,024 characters.
+         */
+        description?: pulumi.Input<string>;
+        /**
          * The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are ["COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"]
          */
         dimension: pulumi.Input<string>;
@@ -32331,6 +32689,14 @@ export namespace dataplex {
          * Rows with null values will automatically fail a rule, unless ignoreNull is true. In that case, such null rows are trivially considered passing. Only applicable to ColumnMap rules.
          */
         ignoreNull?: pulumi.Input<boolean>;
+        /**
+         * A mutable name for the rule.
+         * The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+         * The maximum length is 63 characters.
+         * Must start with a letter.
+         * Must end with a number or a letter.
+         */
+        name?: pulumi.Input<string>;
         /**
          * ColumnMap rule which evaluates whether each column value is null.
          */
@@ -32370,7 +32736,7 @@ export namespace dataplex {
          */
         threshold?: pulumi.Input<number>;
         /**
-         * ColumnAggregate rule which evaluates whether the column has duplicates.
+         * Row-level rule which evaluates whether each column value is unique.
          */
         uniquenessExpectation?: pulumi.Input<inputs.dataplex.DatascanDataQualitySpecRuleUniquenessExpectation>;
     }
@@ -36653,6 +37019,11 @@ export namespace diagflow {
 
     export interface CxFlowEventHandlerTriggerFulfillment {
         /**
+         * Conditional cases for this fulfillment.
+         * Structure is documented below.
+         */
+        conditionalCases?: pulumi.Input<pulumi.Input<inputs.diagflow.CxFlowEventHandlerTriggerFulfillmentConditionalCase>[]>;
+        /**
          * The list of rich message responses to present to the user.
          * Structure is documented below.
          */
@@ -36661,6 +37032,11 @@ export namespace diagflow {
          * Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
          */
         returnPartialResponses?: pulumi.Input<boolean>;
+        /**
+         * Set parameter values before executing the webhook.
+         * Structure is documented below.
+         */
+        setParameterActions?: pulumi.Input<pulumi.Input<inputs.diagflow.CxFlowEventHandlerTriggerFulfillmentSetParameterAction>[]>;
         /**
          * The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
          */
@@ -36671,12 +37047,110 @@ export namespace diagflow {
         webhook?: pulumi.Input<string>;
     }
 
+    export interface CxFlowEventHandlerTriggerFulfillmentConditionalCase {
+        /**
+         * A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+         * See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+         */
+        cases?: pulumi.Input<string>;
+    }
+
     export interface CxFlowEventHandlerTriggerFulfillmentMessage {
+        /**
+         * The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+         */
+        channel?: pulumi.Input<string>;
+        /**
+         * Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+         * Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+         * You may set this, for example:
+         * * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+         * * In a webhook response when you determine that you handled the customer issue.
+         * Structure is documented below.
+         */
+        conversationSuccess?: pulumi.Input<inputs.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess>;
+        /**
+         * Indicates that the conversation should be handed off to a live agent.
+         * Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+         * You may set this, for example:
+         * * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+         * * In a webhook response when you determine that the customer issue can only be handled by a human.
+         * Structure is documented below.
+         */
+        liveAgentHandoff?: pulumi.Input<inputs.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff>;
+        /**
+         * A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+         * Structure is documented below.
+         */
+        outputAudioText?: pulumi.Input<inputs.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText>;
+        /**
+         * A custom, platform-specific payload.
+         */
+        payload?: pulumi.Input<string>;
+        /**
+         * Specifies an audio clip to be played by the client as part of the response.
+         * Structure is documented below.
+         */
+        playAudio?: pulumi.Input<inputs.diagflow.CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio>;
+        /**
+         * Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+         * Structure is documented below.
+         */
+        telephonyTransferCall?: pulumi.Input<inputs.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall>;
         /**
          * The text response message.
          * Structure is documented below.
          */
         text?: pulumi.Input<inputs.diagflow.CxFlowEventHandlerTriggerFulfillmentMessageText>;
+    }
+
+    export interface CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess {
+        /**
+         * Custom metadata. Dialogflow doesn't impose any structure on this.
+         */
+        metadata?: pulumi.Input<string>;
+    }
+
+    export interface CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff {
+        /**
+         * Custom metadata. Dialogflow doesn't impose any structure on this.
+         */
+        metadata?: pulumi.Input<string>;
+    }
+
+    export interface CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText {
+        /**
+         * (Output)
+         * Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+         */
+        allowPlaybackInterruption?: pulumi.Input<boolean>;
+        /**
+         * The SSML text to be synthesized. For more information, see SSML.
+         */
+        ssml?: pulumi.Input<string>;
+        /**
+         * The raw text to be synthesized.
+         */
+        text?: pulumi.Input<string>;
+    }
+
+    export interface CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio {
+        /**
+         * (Output)
+         * Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+         */
+        allowPlaybackInterruption?: pulumi.Input<boolean>;
+        /**
+         * URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+         */
+        audioUri: pulumi.Input<string>;
+    }
+
+    export interface CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall {
+        /**
+         * Transfer the call to a phone number in E.164 format.
+         */
+        phoneNumber: pulumi.Input<string>;
     }
 
     export interface CxFlowEventHandlerTriggerFulfillmentMessageText {
@@ -36689,6 +37163,17 @@ export namespace diagflow {
          * A collection of text responses.
          */
         texts?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface CxFlowEventHandlerTriggerFulfillmentSetParameterAction {
+        /**
+         * Display name of the parameter.
+         */
+        parameter?: pulumi.Input<string>;
+        /**
+         * The new JSON-encoded value of the parameter. A null value clears the parameter.
+         */
+        value?: pulumi.Input<string>;
     }
 
     export interface CxFlowNluSettings {
@@ -36748,6 +37233,11 @@ export namespace diagflow {
 
     export interface CxFlowTransitionRouteTriggerFulfillment {
         /**
+         * Conditional cases for this fulfillment.
+         * Structure is documented below.
+         */
+        conditionalCases?: pulumi.Input<pulumi.Input<inputs.diagflow.CxFlowTransitionRouteTriggerFulfillmentConditionalCase>[]>;
+        /**
          * The list of rich message responses to present to the user.
          * Structure is documented below.
          */
@@ -36756,6 +37246,11 @@ export namespace diagflow {
          * Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
          */
         returnPartialResponses?: pulumi.Input<boolean>;
+        /**
+         * Set parameter values before executing the webhook.
+         * Structure is documented below.
+         */
+        setParameterActions?: pulumi.Input<pulumi.Input<inputs.diagflow.CxFlowTransitionRouteTriggerFulfillmentSetParameterAction>[]>;
         /**
          * The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
          */
@@ -36766,12 +37261,110 @@ export namespace diagflow {
         webhook?: pulumi.Input<string>;
     }
 
+    export interface CxFlowTransitionRouteTriggerFulfillmentConditionalCase {
+        /**
+         * A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+         * See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+         */
+        cases?: pulumi.Input<string>;
+    }
+
     export interface CxFlowTransitionRouteTriggerFulfillmentMessage {
+        /**
+         * The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+         */
+        channel?: pulumi.Input<string>;
+        /**
+         * Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+         * Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+         * You may set this, for example:
+         * * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+         * * In a webhook response when you determine that you handled the customer issue.
+         * Structure is documented below.
+         */
+        conversationSuccess?: pulumi.Input<inputs.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccess>;
+        /**
+         * Indicates that the conversation should be handed off to a live agent.
+         * Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+         * You may set this, for example:
+         * * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+         * * In a webhook response when you determine that the customer issue can only be handled by a human.
+         * Structure is documented below.
+         */
+        liveAgentHandoff?: pulumi.Input<inputs.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff>;
+        /**
+         * A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+         * Structure is documented below.
+         */
+        outputAudioText?: pulumi.Input<inputs.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText>;
+        /**
+         * A custom, platform-specific payload.
+         */
+        payload?: pulumi.Input<string>;
+        /**
+         * Specifies an audio clip to be played by the client as part of the response.
+         * Structure is documented below.
+         */
+        playAudio?: pulumi.Input<inputs.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio>;
+        /**
+         * Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+         * Structure is documented below.
+         */
+        telephonyTransferCall?: pulumi.Input<inputs.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall>;
         /**
          * The text response message.
          * Structure is documented below.
          */
         text?: pulumi.Input<inputs.diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageText>;
+    }
+
+    export interface CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccess {
+        /**
+         * Custom metadata. Dialogflow doesn't impose any structure on this.
+         */
+        metadata?: pulumi.Input<string>;
+    }
+
+    export interface CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff {
+        /**
+         * Custom metadata. Dialogflow doesn't impose any structure on this.
+         */
+        metadata?: pulumi.Input<string>;
+    }
+
+    export interface CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText {
+        /**
+         * (Output)
+         * Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+         */
+        allowPlaybackInterruption?: pulumi.Input<boolean>;
+        /**
+         * The SSML text to be synthesized. For more information, see SSML.
+         */
+        ssml?: pulumi.Input<string>;
+        /**
+         * The raw text to be synthesized.
+         */
+        text?: pulumi.Input<string>;
+    }
+
+    export interface CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio {
+        /**
+         * (Output)
+         * Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+         */
+        allowPlaybackInterruption?: pulumi.Input<boolean>;
+        /**
+         * URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+         */
+        audioUri: pulumi.Input<string>;
+    }
+
+    export interface CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall {
+        /**
+         * Transfer the call to a phone number in E.164 format.
+         */
+        phoneNumber: pulumi.Input<string>;
     }
 
     export interface CxFlowTransitionRouteTriggerFulfillmentMessageText {
@@ -36784,6 +37377,17 @@ export namespace diagflow {
          * A collection of text responses.
          */
         texts?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface CxFlowTransitionRouteTriggerFulfillmentSetParameterAction {
+        /**
+         * Display name of the parameter.
+         */
+        parameter?: pulumi.Input<string>;
+        /**
+         * The new JSON-encoded value of the parameter. A null value clears the parameter.
+         */
+        value?: pulumi.Input<string>;
     }
 
     export interface CxIntentParameter {
@@ -36843,6 +37447,11 @@ export namespace diagflow {
 
     export interface CxPageEntryFulfillment {
         /**
+         * Conditional cases for this fulfillment.
+         * Structure is documented below.
+         */
+        conditionalCases?: pulumi.Input<pulumi.Input<inputs.diagflow.CxPageEntryFulfillmentConditionalCase>[]>;
+        /**
          * The list of rich message responses to present to the user.
          * Structure is documented below.
          */
@@ -36851,6 +37460,11 @@ export namespace diagflow {
          * Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
          */
         returnPartialResponses?: pulumi.Input<boolean>;
+        /**
+         * Set parameter values before executing the webhook.
+         * Structure is documented below.
+         */
+        setParameterActions?: pulumi.Input<pulumi.Input<inputs.diagflow.CxPageEntryFulfillmentSetParameterAction>[]>;
         /**
          * The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
          */
@@ -36861,12 +37475,110 @@ export namespace diagflow {
         webhook?: pulumi.Input<string>;
     }
 
+    export interface CxPageEntryFulfillmentConditionalCase {
+        /**
+         * A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+         * See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+         */
+        cases?: pulumi.Input<string>;
+    }
+
     export interface CxPageEntryFulfillmentMessage {
+        /**
+         * The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+         */
+        channel?: pulumi.Input<string>;
+        /**
+         * Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+         * Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+         * You may set this, for example:
+         * * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+         * * In a webhook response when you determine that you handled the customer issue.
+         * Structure is documented below.
+         */
+        conversationSuccess?: pulumi.Input<inputs.diagflow.CxPageEntryFulfillmentMessageConversationSuccess>;
+        /**
+         * Indicates that the conversation should be handed off to a live agent.
+         * Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+         * You may set this, for example:
+         * * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+         * * In a webhook response when you determine that the customer issue can only be handled by a human.
+         * Structure is documented below.
+         */
+        liveAgentHandoff?: pulumi.Input<inputs.diagflow.CxPageEntryFulfillmentMessageLiveAgentHandoff>;
+        /**
+         * A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+         * Structure is documented below.
+         */
+        outputAudioText?: pulumi.Input<inputs.diagflow.CxPageEntryFulfillmentMessageOutputAudioText>;
+        /**
+         * A custom, platform-specific payload.
+         */
+        payload?: pulumi.Input<string>;
+        /**
+         * Specifies an audio clip to be played by the client as part of the response.
+         * Structure is documented below.
+         */
+        playAudio?: pulumi.Input<inputs.diagflow.CxPageEntryFulfillmentMessagePlayAudio>;
+        /**
+         * Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+         * Structure is documented below.
+         */
+        telephonyTransferCall?: pulumi.Input<inputs.diagflow.CxPageEntryFulfillmentMessageTelephonyTransferCall>;
         /**
          * The text response message.
          * Structure is documented below.
          */
         text?: pulumi.Input<inputs.diagflow.CxPageEntryFulfillmentMessageText>;
+    }
+
+    export interface CxPageEntryFulfillmentMessageConversationSuccess {
+        /**
+         * Custom metadata. Dialogflow doesn't impose any structure on this.
+         */
+        metadata?: pulumi.Input<string>;
+    }
+
+    export interface CxPageEntryFulfillmentMessageLiveAgentHandoff {
+        /**
+         * Custom metadata. Dialogflow doesn't impose any structure on this.
+         */
+        metadata?: pulumi.Input<string>;
+    }
+
+    export interface CxPageEntryFulfillmentMessageOutputAudioText {
+        /**
+         * (Output)
+         * Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+         */
+        allowPlaybackInterruption?: pulumi.Input<boolean>;
+        /**
+         * The SSML text to be synthesized. For more information, see SSML.
+         */
+        ssml?: pulumi.Input<string>;
+        /**
+         * The raw text to be synthesized.
+         */
+        text?: pulumi.Input<string>;
+    }
+
+    export interface CxPageEntryFulfillmentMessagePlayAudio {
+        /**
+         * (Output)
+         * Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+         */
+        allowPlaybackInterruption?: pulumi.Input<boolean>;
+        /**
+         * URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+         */
+        audioUri: pulumi.Input<string>;
+    }
+
+    export interface CxPageEntryFulfillmentMessageTelephonyTransferCall {
+        /**
+         * Transfer the call to a phone number in E.164 format.
+         */
+        phoneNumber: pulumi.Input<string>;
     }
 
     export interface CxPageEntryFulfillmentMessageText {
@@ -36879,6 +37591,17 @@ export namespace diagflow {
          * A collection of text responses.
          */
         texts?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface CxPageEntryFulfillmentSetParameterAction {
+        /**
+         * Display name of the parameter.
+         */
+        parameter?: pulumi.Input<string>;
+        /**
+         * The new JSON-encoded value of the parameter. A null value clears the parameter.
+         */
+        value?: pulumi.Input<string>;
     }
 
     export interface CxPageEventHandler {
@@ -36910,6 +37633,11 @@ export namespace diagflow {
 
     export interface CxPageEventHandlerTriggerFulfillment {
         /**
+         * Conditional cases for this fulfillment.
+         * Structure is documented below.
+         */
+        conditionalCases?: pulumi.Input<pulumi.Input<inputs.diagflow.CxPageEventHandlerTriggerFulfillmentConditionalCase>[]>;
+        /**
          * The list of rich message responses to present to the user.
          * Structure is documented below.
          */
@@ -36918,6 +37646,11 @@ export namespace diagflow {
          * Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
          */
         returnPartialResponses?: pulumi.Input<boolean>;
+        /**
+         * Set parameter values before executing the webhook.
+         * Structure is documented below.
+         */
+        setParameterActions?: pulumi.Input<pulumi.Input<inputs.diagflow.CxPageEventHandlerTriggerFulfillmentSetParameterAction>[]>;
         /**
          * The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
          */
@@ -36928,12 +37661,110 @@ export namespace diagflow {
         webhook?: pulumi.Input<string>;
     }
 
+    export interface CxPageEventHandlerTriggerFulfillmentConditionalCase {
+        /**
+         * A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+         * See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+         */
+        cases?: pulumi.Input<string>;
+    }
+
     export interface CxPageEventHandlerTriggerFulfillmentMessage {
+        /**
+         * The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+         */
+        channel?: pulumi.Input<string>;
+        /**
+         * Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+         * Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+         * You may set this, for example:
+         * * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+         * * In a webhook response when you determine that you handled the customer issue.
+         * Structure is documented below.
+         */
+        conversationSuccess?: pulumi.Input<inputs.diagflow.CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess>;
+        /**
+         * Indicates that the conversation should be handed off to a live agent.
+         * Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+         * You may set this, for example:
+         * * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+         * * In a webhook response when you determine that the customer issue can only be handled by a human.
+         * Structure is documented below.
+         */
+        liveAgentHandoff?: pulumi.Input<inputs.diagflow.CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff>;
+        /**
+         * A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+         * Structure is documented below.
+         */
+        outputAudioText?: pulumi.Input<inputs.diagflow.CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText>;
+        /**
+         * A custom, platform-specific payload.
+         */
+        payload?: pulumi.Input<string>;
+        /**
+         * Specifies an audio clip to be played by the client as part of the response.
+         * Structure is documented below.
+         */
+        playAudio?: pulumi.Input<inputs.diagflow.CxPageEventHandlerTriggerFulfillmentMessagePlayAudio>;
+        /**
+         * Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+         * Structure is documented below.
+         */
+        telephonyTransferCall?: pulumi.Input<inputs.diagflow.CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall>;
         /**
          * The text response message.
          * Structure is documented below.
          */
         text?: pulumi.Input<inputs.diagflow.CxPageEventHandlerTriggerFulfillmentMessageText>;
+    }
+
+    export interface CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess {
+        /**
+         * Custom metadata. Dialogflow doesn't impose any structure on this.
+         */
+        metadata?: pulumi.Input<string>;
+    }
+
+    export interface CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff {
+        /**
+         * Custom metadata. Dialogflow doesn't impose any structure on this.
+         */
+        metadata?: pulumi.Input<string>;
+    }
+
+    export interface CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText {
+        /**
+         * (Output)
+         * Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+         */
+        allowPlaybackInterruption?: pulumi.Input<boolean>;
+        /**
+         * The SSML text to be synthesized. For more information, see SSML.
+         */
+        ssml?: pulumi.Input<string>;
+        /**
+         * The raw text to be synthesized.
+         */
+        text?: pulumi.Input<string>;
+    }
+
+    export interface CxPageEventHandlerTriggerFulfillmentMessagePlayAudio {
+        /**
+         * (Output)
+         * Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+         */
+        allowPlaybackInterruption?: pulumi.Input<boolean>;
+        /**
+         * URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+         */
+        audioUri: pulumi.Input<string>;
+    }
+
+    export interface CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall {
+        /**
+         * Transfer the call to a phone number in E.164 format.
+         */
+        phoneNumber: pulumi.Input<string>;
     }
 
     export interface CxPageEventHandlerTriggerFulfillmentMessageText {
@@ -36948,6 +37779,17 @@ export namespace diagflow {
         texts?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
+    export interface CxPageEventHandlerTriggerFulfillmentSetParameterAction {
+        /**
+         * Display name of the parameter.
+         */
+        parameter?: pulumi.Input<string>;
+        /**
+         * The new JSON-encoded value of the parameter. A null value clears the parameter.
+         */
+        value?: pulumi.Input<string>;
+    }
+
     export interface CxPageForm {
         /**
          * Parameters to collect from the user.
@@ -36957,6 +37799,10 @@ export namespace diagflow {
     }
 
     export interface CxPageFormParameter {
+        /**
+         * The default value of an optional parameter. If the parameter is required, the default value will be ignored.
+         */
+        defaultValue?: pulumi.Input<string>;
         /**
          * The human-readable name of the parameter, unique within the form.
          */
@@ -36993,9 +37839,29 @@ export namespace diagflow {
          * Structure is documented below.
          */
         initialPromptFulfillment?: pulumi.Input<inputs.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillment>;
+        /**
+         * The handlers for parameter-level events, used to provide reprompt for the parameter or transition to a different page/flow. The supported events are:
+         * * sys.no-match-<N>, where N can be from 1 to 6
+         * * sys.no-match-default
+         * * sys.no-input-<N>, where N can be from 1 to 6
+         * * sys.no-input-default
+         * * sys.invalid-parameter
+         * [initialPromptFulfillment][initialPromptFulfillment] provides the first prompt for the parameter.
+         * If the user's response does not fill the parameter, a no-match/no-input event will be triggered, and the fulfillment associated with the sys.no-match-1/sys.no-input-1 handler (if defined) will be called to provide a prompt. The sys.no-match-2/sys.no-input-2 handler (if defined) will respond to the next no-match/no-input event, and so on.
+         * A sys.no-match-default or sys.no-input-default handler will be used to handle all following no-match/no-input events after all numbered no-match/no-input handlers for the parameter are consumed.
+         * A sys.invalid-parameter handler can be defined to handle the case where the parameter values have been invalidated by webhook. For example, if the user's response fill the parameter, however the parameter was invalidated by webhook, the fulfillment associated with the sys.invalid-parameter handler (if defined) will be called to provide a prompt.
+         * If the event handler for the corresponding event can't be found on the parameter, initialPromptFulfillment will be re-prompted.
+         * Structure is documented below.
+         */
+        repromptEventHandlers?: pulumi.Input<pulumi.Input<inputs.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandler>[]>;
     }
 
     export interface CxPageFormParameterFillBehaviorInitialPromptFulfillment {
+        /**
+         * Conditional cases for this fulfillment.
+         * Structure is documented below.
+         */
+        conditionalCases?: pulumi.Input<pulumi.Input<inputs.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase>[]>;
         /**
          * The list of rich message responses to present to the user.
          * Structure is documented below.
@@ -37006,6 +37872,11 @@ export namespace diagflow {
          */
         returnPartialResponses?: pulumi.Input<boolean>;
         /**
+         * Set parameter values before executing the webhook.
+         * Structure is documented below.
+         */
+        setParameterActions?: pulumi.Input<pulumi.Input<inputs.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction>[]>;
+        /**
          * The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
          */
         tag?: pulumi.Input<string>;
@@ -37015,12 +37886,110 @@ export namespace diagflow {
         webhook?: pulumi.Input<string>;
     }
 
+    export interface CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase {
+        /**
+         * A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+         * See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+         */
+        cases?: pulumi.Input<string>;
+    }
+
     export interface CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage {
+        /**
+         * The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+         */
+        channel?: pulumi.Input<string>;
+        /**
+         * Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+         * Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+         * You may set this, for example:
+         * * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+         * * In a webhook response when you determine that you handled the customer issue.
+         * Structure is documented below.
+         */
+        conversationSuccess?: pulumi.Input<inputs.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess>;
+        /**
+         * Indicates that the conversation should be handed off to a live agent.
+         * Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+         * You may set this, for example:
+         * * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+         * * In a webhook response when you determine that the customer issue can only be handled by a human.
+         * Structure is documented below.
+         */
+        liveAgentHandoff?: pulumi.Input<inputs.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff>;
+        /**
+         * A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+         * Structure is documented below.
+         */
+        outputAudioText?: pulumi.Input<inputs.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText>;
+        /**
+         * A custom, platform-specific payload.
+         */
+        payload?: pulumi.Input<string>;
+        /**
+         * Specifies an audio clip to be played by the client as part of the response.
+         * Structure is documented below.
+         */
+        playAudio?: pulumi.Input<inputs.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio>;
+        /**
+         * Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+         * Structure is documented below.
+         */
+        telephonyTransferCall?: pulumi.Input<inputs.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall>;
         /**
          * The text response message.
          * Structure is documented below.
          */
         text?: pulumi.Input<inputs.diagflow.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText>;
+    }
+
+    export interface CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess {
+        /**
+         * Custom metadata. Dialogflow doesn't impose any structure on this.
+         */
+        metadata?: pulumi.Input<string>;
+    }
+
+    export interface CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff {
+        /**
+         * Custom metadata. Dialogflow doesn't impose any structure on this.
+         */
+        metadata?: pulumi.Input<string>;
+    }
+
+    export interface CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText {
+        /**
+         * (Output)
+         * Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+         */
+        allowPlaybackInterruption?: pulumi.Input<boolean>;
+        /**
+         * The SSML text to be synthesized. For more information, see SSML.
+         */
+        ssml?: pulumi.Input<string>;
+        /**
+         * The raw text to be synthesized.
+         */
+        text?: pulumi.Input<string>;
+    }
+
+    export interface CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio {
+        /**
+         * (Output)
+         * Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+         */
+        allowPlaybackInterruption?: pulumi.Input<boolean>;
+        /**
+         * URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+         */
+        audioUri: pulumi.Input<string>;
+    }
+
+    export interface CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall {
+        /**
+         * Transfer the call to a phone number in E.164 format.
+         */
+        phoneNumber: pulumi.Input<string>;
     }
 
     export interface CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText {
@@ -37033,6 +38002,203 @@ export namespace diagflow {
          * A collection of text responses.
          */
         texts?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction {
+        /**
+         * Display name of the parameter.
+         */
+        parameter?: pulumi.Input<string>;
+        /**
+         * The new JSON-encoded value of the parameter. A null value clears the parameter.
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface CxPageFormParameterFillBehaviorRepromptEventHandler {
+        /**
+         * The name of the event to handle.
+         */
+        event?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The unique identifier of this event handler.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The target flow to transition to.
+         * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+         */
+        targetFlow?: pulumi.Input<string>;
+        /**
+         * The target page to transition to.
+         * Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+         */
+        targetPage?: pulumi.Input<string>;
+        /**
+         * The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+         * Structure is documented below.
+         */
+        triggerFulfillment?: pulumi.Input<inputs.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment>;
+    }
+
+    export interface CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment {
+        /**
+         * Conditional cases for this fulfillment.
+         * Structure is documented below.
+         */
+        conditionalCases?: pulumi.Input<pulumi.Input<inputs.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCase>[]>;
+        /**
+         * The list of rich message responses to present to the user.
+         * Structure is documented below.
+         */
+        messages?: pulumi.Input<pulumi.Input<inputs.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage>[]>;
+        /**
+         * Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+         */
+        returnPartialResponses?: pulumi.Input<boolean>;
+        /**
+         * Set parameter values before executing the webhook.
+         * Structure is documented below.
+         */
+        setParameterActions?: pulumi.Input<pulumi.Input<inputs.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction>[]>;
+        /**
+         * The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+         */
+        tag?: pulumi.Input<string>;
+        /**
+         * The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+         */
+        webhook?: pulumi.Input<string>;
+    }
+
+    export interface CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCase {
+        /**
+         * A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+         * See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+         */
+        cases?: pulumi.Input<string>;
+    }
+
+    export interface CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage {
+        /**
+         * The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+         */
+        channel?: pulumi.Input<string>;
+        /**
+         * Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+         * Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+         * You may set this, for example:
+         * * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+         * * In a webhook response when you determine that you handled the customer issue.
+         * Structure is documented below.
+         */
+        conversationSuccess?: pulumi.Input<inputs.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess>;
+        /**
+         * Indicates that the conversation should be handed off to a live agent.
+         * Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+         * You may set this, for example:
+         * * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+         * * In a webhook response when you determine that the customer issue can only be handled by a human.
+         * Structure is documented below.
+         */
+        liveAgentHandoff?: pulumi.Input<inputs.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff>;
+        /**
+         * A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+         * Structure is documented below.
+         */
+        outputAudioText?: pulumi.Input<inputs.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText>;
+        /**
+         * A custom, platform-specific payload.
+         */
+        payload?: pulumi.Input<string>;
+        /**
+         * Specifies an audio clip to be played by the client as part of the response.
+         * Structure is documented below.
+         */
+        playAudio?: pulumi.Input<inputs.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio>;
+        /**
+         * Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+         * Structure is documented below.
+         */
+        telephonyTransferCall?: pulumi.Input<inputs.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall>;
+        /**
+         * The text response message.
+         * Structure is documented below.
+         */
+        text?: pulumi.Input<inputs.diagflow.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText>;
+    }
+
+    export interface CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess {
+        /**
+         * Custom metadata. Dialogflow doesn't impose any structure on this.
+         */
+        metadata?: pulumi.Input<string>;
+    }
+
+    export interface CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff {
+        /**
+         * Custom metadata. Dialogflow doesn't impose any structure on this.
+         */
+        metadata?: pulumi.Input<string>;
+    }
+
+    export interface CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText {
+        /**
+         * (Output)
+         * Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+         */
+        allowPlaybackInterruption?: pulumi.Input<boolean>;
+        /**
+         * The SSML text to be synthesized. For more information, see SSML.
+         */
+        ssml?: pulumi.Input<string>;
+        /**
+         * The raw text to be synthesized.
+         */
+        text?: pulumi.Input<string>;
+    }
+
+    export interface CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio {
+        /**
+         * (Output)
+         * Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+         */
+        allowPlaybackInterruption?: pulumi.Input<boolean>;
+        /**
+         * URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+         */
+        audioUri: pulumi.Input<string>;
+    }
+
+    export interface CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall {
+        /**
+         * Transfer the call to a phone number in E.164 format.
+         */
+        phoneNumber: pulumi.Input<string>;
+    }
+
+    export interface CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText {
+        /**
+         * (Output)
+         * Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+         */
+        allowPlaybackInterruption?: pulumi.Input<boolean>;
+        /**
+         * A collection of text responses.
+         */
+        texts?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction {
+        /**
+         * Display name of the parameter.
+         */
+        parameter?: pulumi.Input<string>;
+        /**
+         * The new JSON-encoded value of the parameter. A null value clears the parameter.
+         */
+        value?: pulumi.Input<string>;
     }
 
     export interface CxPageTransitionRoute {
@@ -37062,13 +38228,18 @@ export namespace diagflow {
          */
         targetPage?: pulumi.Input<string>;
         /**
-         * The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+         * The fulfillment to call when the condition is satisfied. At least one of triggerFulfillment and target must be specified. When both are defined, triggerFulfillment is executed first.
          * Structure is documented below.
          */
         triggerFulfillment?: pulumi.Input<inputs.diagflow.CxPageTransitionRouteTriggerFulfillment>;
     }
 
     export interface CxPageTransitionRouteTriggerFulfillment {
+        /**
+         * Conditional cases for this fulfillment.
+         * Structure is documented below.
+         */
+        conditionalCases?: pulumi.Input<pulumi.Input<inputs.diagflow.CxPageTransitionRouteTriggerFulfillmentConditionalCase>[]>;
         /**
          * The list of rich message responses to present to the user.
          * Structure is documented below.
@@ -37079,6 +38250,11 @@ export namespace diagflow {
          */
         returnPartialResponses?: pulumi.Input<boolean>;
         /**
+         * Set parameter values before executing the webhook.
+         * Structure is documented below.
+         */
+        setParameterActions?: pulumi.Input<pulumi.Input<inputs.diagflow.CxPageTransitionRouteTriggerFulfillmentSetParameterAction>[]>;
+        /**
          * The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
          */
         tag?: pulumi.Input<string>;
@@ -37088,12 +38264,110 @@ export namespace diagflow {
         webhook?: pulumi.Input<string>;
     }
 
+    export interface CxPageTransitionRouteTriggerFulfillmentConditionalCase {
+        /**
+         * A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+         * See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+         */
+        cases?: pulumi.Input<string>;
+    }
+
     export interface CxPageTransitionRouteTriggerFulfillmentMessage {
+        /**
+         * The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+         */
+        channel?: pulumi.Input<string>;
+        /**
+         * Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+         * Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+         * You may set this, for example:
+         * * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+         * * In a webhook response when you determine that you handled the customer issue.
+         * Structure is documented below.
+         */
+        conversationSuccess?: pulumi.Input<inputs.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess>;
+        /**
+         * Indicates that the conversation should be handed off to a live agent.
+         * Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+         * You may set this, for example:
+         * * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+         * * In a webhook response when you determine that the customer issue can only be handled by a human.
+         * Structure is documented below.
+         */
+        liveAgentHandoff?: pulumi.Input<inputs.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff>;
+        /**
+         * A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+         * Structure is documented below.
+         */
+        outputAudioText?: pulumi.Input<inputs.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText>;
+        /**
+         * A custom, platform-specific payload.
+         */
+        payload?: pulumi.Input<string>;
+        /**
+         * Specifies an audio clip to be played by the client as part of the response.
+         * Structure is documented below.
+         */
+        playAudio?: pulumi.Input<inputs.diagflow.CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio>;
+        /**
+         * Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+         * Structure is documented below.
+         */
+        telephonyTransferCall?: pulumi.Input<inputs.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall>;
         /**
          * The text response message.
          * Structure is documented below.
          */
         text?: pulumi.Input<inputs.diagflow.CxPageTransitionRouteTriggerFulfillmentMessageText>;
+    }
+
+    export interface CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess {
+        /**
+         * Custom metadata. Dialogflow doesn't impose any structure on this.
+         */
+        metadata?: pulumi.Input<string>;
+    }
+
+    export interface CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff {
+        /**
+         * Custom metadata. Dialogflow doesn't impose any structure on this.
+         */
+        metadata?: pulumi.Input<string>;
+    }
+
+    export interface CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText {
+        /**
+         * (Output)
+         * Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+         */
+        allowPlaybackInterruption?: pulumi.Input<boolean>;
+        /**
+         * The SSML text to be synthesized. For more information, see SSML.
+         */
+        ssml?: pulumi.Input<string>;
+        /**
+         * The raw text to be synthesized.
+         */
+        text?: pulumi.Input<string>;
+    }
+
+    export interface CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio {
+        /**
+         * (Output)
+         * Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+         */
+        allowPlaybackInterruption?: pulumi.Input<boolean>;
+        /**
+         * URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+         */
+        audioUri: pulumi.Input<string>;
+    }
+
+    export interface CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall {
+        /**
+         * Transfer the call to a phone number in E.164 format.
+         */
+        phoneNumber: pulumi.Input<string>;
     }
 
     export interface CxPageTransitionRouteTriggerFulfillmentMessageText {
@@ -37106,6 +38380,17 @@ export namespace diagflow {
          * A collection of text responses.
          */
         texts?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface CxPageTransitionRouteTriggerFulfillmentSetParameterAction {
+        /**
+         * Display name of the parameter.
+         */
+        parameter?: pulumi.Input<string>;
+        /**
+         * The new JSON-encoded value of the parameter. A null value clears the parameter.
+         */
+        value?: pulumi.Input<string>;
     }
 
     export interface CxVersionNluSetting {
@@ -39167,6 +40452,14 @@ export namespace gkehub {
         issuer: pulumi.Input<string>;
     }
 
+    export interface MembershipBindingState {
+        /**
+         * (Output)
+         * Code describes the state of a MembershipBinding resource.
+         */
+        code?: pulumi.Input<string>;
+    }
+
     export interface MembershipEndpoint {
         /**
          * If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
@@ -39189,6 +40482,70 @@ export namespace gkehub {
         description?: pulumi.Input<string>;
         expression: pulumi.Input<string>;
         title: pulumi.Input<string>;
+    }
+
+    export interface MembershipRbacRoleBindingRole {
+        /**
+         * PredefinedRole is an ENUM representation of the default Kubernetes Roles
+         * Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`, `ANTHOS_SUPPORT`.
+         *
+         * - - -
+         */
+        predefinedRole: pulumi.Input<string>;
+    }
+
+    export interface MembershipRbacRoleBindingState {
+        /**
+         * (Output)
+         * Code describes the state of a RBAC Role Binding resource.
+         */
+        code?: pulumi.Input<string>;
+    }
+
+    export interface NamespaceState {
+        /**
+         * (Output)
+         * Code describes the state of a Namespace resource.
+         */
+        code?: pulumi.Input<string>;
+    }
+
+    export interface ScopeIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface ScopeIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface ScopeRbacRoleBindingRole {
+        /**
+         * PredefinedRole is an ENUM representation of the default Kubernetes Roles
+         * Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
+         *
+         * - - -
+         */
+        predefinedRole?: pulumi.Input<string>;
+    }
+
+    export interface ScopeRbacRoleBindingState {
+        /**
+         * (Output)
+         * Code describes the state of a RBAC Role Binding resource.
+         */
+        code?: pulumi.Input<string>;
+    }
+
+    export interface ScopeState {
+        /**
+         * (Output)
+         * Code describes the state of a Scope resource.
+         */
+        code?: pulumi.Input<string>;
     }
 }
 
@@ -41487,6 +42844,7 @@ export namespace iam {
          * The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
          */
         issuerUri: pulumi.Input<string>;
+        jwksJson?: pulumi.Input<string>;
         /**
          * Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.
          * Structure is documented below.
@@ -41516,6 +42874,11 @@ export namespace iam {
     }
 
     export interface WorkforcePoolProviderOidcWebSsoConfig {
+        /**
+         * Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested.
+         * Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be configured.
+         */
+        additionalScopes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
          * * MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS: Merge the UserInfo Endpoint Claims with ID Token Claims, preferring UserInfo Claim Values for the same Claim Name. This option is available only for the Authorization Code Flow.
@@ -44529,6 +45892,24 @@ export namespace monitoring {
         resourceType?: pulumi.Input<string>;
     }
 
+    export interface UptimeCheckConfigSyntheticMonitor {
+        /**
+         * Target a Synthetic Monitor GCFv2 Instance
+         * Structure is documented below.
+         *
+         *
+         * <a name="nestedCloudFunctionV2"></a>The `cloudFunctionV2` block supports:
+         */
+        cloudFunctionV2: pulumi.Input<inputs.monitoring.UptimeCheckConfigSyntheticMonitorCloudFunctionV2>;
+    }
+
+    export interface UptimeCheckConfigSyntheticMonitorCloudFunctionV2 {
+        /**
+         * The fully qualified name of the cloud function resource.
+         */
+        name: pulumi.Input<string>;
+    }
+
     export interface UptimeCheckConfigTcpCheck {
         /**
          * The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
@@ -44551,6 +45932,76 @@ export namespace networkconnectivity {
          * IDs of the subnetworks or fully qualified identifiers for the subnetworks
          */
         subnetworks: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface ServiceConnectionPolicyPscConnection {
+        /**
+         * The resource reference of the consumer address.
+         */
+        consumerAddress?: pulumi.Input<string>;
+        /**
+         * The resource reference of the PSC Forwarding Rule within the consumer VPC.
+         */
+        consumerForwardingRule?: pulumi.Input<string>;
+        /**
+         * The project where the PSC connection is created.
+         */
+        consumerTargetProject?: pulumi.Input<string>;
+        /**
+         * The most recent error during operating this connection.
+         * Structure is documented below.
+         */
+        error?: pulumi.Input<inputs.networkconnectivity.ServiceConnectionPolicyPscConnectionError>;
+        /**
+         * The error info for the latest error during operating this connection.
+         * Structure is documented below.
+         */
+        errorInfo?: pulumi.Input<inputs.networkconnectivity.ServiceConnectionPolicyPscConnectionErrorInfo>;
+        /**
+         * The error type indicates whether the error is consumer facing, producer
+         * facing or system internal.
+         * Possible values are: `CONNECTION_ERROR_TYPE_UNSPECIFIED`, `ERROR_INTERNAL`, `ERROR_CONSUMER_SIDE`, `ERROR_PRODUCER_SIDE`.
+         */
+        errorType?: pulumi.Input<string>;
+        /**
+         * The last Compute Engine operation to setup PSC connection.
+         */
+        gceOperation?: pulumi.Input<string>;
+        /**
+         * The PSC connection id of the PSC forwarding rule.
+         */
+        pscConnectionId?: pulumi.Input<string>;
+        /**
+         * The state of the PSC connection.
+         * Possible values are: `STATE_UNSPECIFIED`, `ACTIVE`, `CREATING`, `DELETING`, `FAILED`.
+         */
+        state?: pulumi.Input<string>;
+    }
+
+    export interface ServiceConnectionPolicyPscConnectionError {
+        /**
+         * The status code, which should be an enum value of [google.rpc.Code][].
+         */
+        code?: pulumi.Input<number>;
+        /**
+         * A developer-facing error message.
+         */
+        message?: pulumi.Input<string>;
+    }
+
+    export interface ServiceConnectionPolicyPscConnectionErrorInfo {
+        /**
+         * The logical grouping to which the "reason" belongs.
+         */
+        domain?: pulumi.Input<string>;
+        /**
+         * Additional structured details about this error.
+         */
+        metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * The reason of the error.
+         */
+        reason?: pulumi.Input<string>;
     }
 
     export interface SpokeLinkedInterconnectAttachments {
@@ -49529,6 +50980,91 @@ export namespace recaptcha {
 }
 
 export namespace redis {
+    export interface ClusterDiscoveryEndpoint {
+        /**
+         * Output only. The IP allocated on the consumer network for the PSC forwarding rule.
+         */
+        address?: pulumi.Input<string>;
+        /**
+         * Output only. The port number of the exposed Redis endpoint.
+         */
+        port?: pulumi.Input<number>;
+        /**
+         * Output only. Customer configuration for where the endpoint
+         * is created and accessed from.
+         * Structure is documented below.
+         */
+        pscConfig?: pulumi.Input<inputs.redis.ClusterDiscoveryEndpointPscConfig>;
+    }
+
+    export interface ClusterDiscoveryEndpointPscConfig {
+        /**
+         * Required. The consumer network where the network address of
+         * the discovery endpoint will be reserved, in the form of
+         * projects/{network_project_id_or_number}/global/networks/{network_id}.
+         *
+         * - - -
+         */
+        network?: pulumi.Input<string>;
+    }
+
+    export interface ClusterPscConfig {
+        /**
+         * Required. The consumer network where the network address of
+         * the discovery endpoint will be reserved, in the form of
+         * projects/{network_project_id_or_number}/global/networks/{network_id}.
+         *
+         * - - -
+         */
+        network: pulumi.Input<string>;
+    }
+
+    export interface ClusterPscConnection {
+        /**
+         * Output only. The IP allocated on the consumer network for the PSC forwarding rule.
+         */
+        address?: pulumi.Input<string>;
+        /**
+         * Output only. The URI of the consumer side forwarding rule. Example: projects/{projectNumOrId}/regions/us-east1/forwardingRules/{resourceId}.
+         */
+        forwardingRule?: pulumi.Input<string>;
+        /**
+         * Required. The consumer network where the network address of
+         * the discovery endpoint will be reserved, in the form of
+         * projects/{network_project_id_or_number}/global/networks/{network_id}.
+         *
+         * - - -
+         */
+        network?: pulumi.Input<string>;
+        /**
+         * Output only. The consumer projectId where the forwarding rule is created from.
+         */
+        projectId?: pulumi.Input<string>;
+        /**
+         * Output only. The PSC connection id of the forwarding rule connected to the service attachment.
+         */
+        pscConnectionId?: pulumi.Input<string>;
+    }
+
+    export interface ClusterStateInfo {
+        /**
+         * A nested object resource
+         * Structure is documented below.
+         */
+        updateInfo?: pulumi.Input<inputs.redis.ClusterStateInfoUpdateInfo>;
+    }
+
+    export interface ClusterStateInfoUpdateInfo {
+        /**
+         * Target number of replica nodes per shard.
+         */
+        targetReplicaCount?: pulumi.Input<number>;
+        /**
+         * Target number of shards for redis cluster.
+         */
+        targetShardCount?: pulumi.Input<number>;
+    }
+
     export interface InstanceMaintenancePolicy {
         /**
          * (Output)
@@ -50333,6 +51869,7 @@ export namespace sql {
          * This setting can be updated, but it cannot be removed after it is set.
          */
         privateNetwork?: pulumi.Input<string>;
+        pscConfigs?: pulumi.Input<pulumi.Input<inputs.sql.DatabaseInstanceSettingsIpConfigurationPscConfig>[]>;
         /**
          * Whether SSL connections over IP are enforced or not.
          */
@@ -50355,6 +51892,17 @@ export namespace sql {
          * the whitelist to become active.
          */
         value: pulumi.Input<string>;
+    }
+
+    export interface DatabaseInstanceSettingsIpConfigurationPscConfig {
+        /**
+         * List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
+         */
+        allowedConsumerProjects?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Whether PSC connectivity is enabled for this instance.
+         */
+        pscEnabled?: pulumi.Input<boolean>;
     }
 
     export interface DatabaseInstanceSettingsLocationPreference {
@@ -51309,7 +52857,7 @@ export namespace vertex {
          */
         disabled?: pulumi.Input<boolean>;
         /**
-         * @deprecated This field is unavailable in the GA provider and will be removed from the beta provider in a future release.
+         * @deprecated `monitoring_interval` is deprecated and will be removed in a future release.
          */
         monitoringInterval?: pulumi.Input<string>;
         /**
@@ -51807,6 +53355,11 @@ export namespace workstations {
          * Whether instances have no public IP address.
          */
         disablePublicIpAddresses?: pulumi.Input<boolean>;
+        /**
+         * Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
+         * See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+         */
+        enableNestedVirtualization?: pulumi.Input<boolean>;
         /**
          * The name of a Compute Engine machine type.
          */

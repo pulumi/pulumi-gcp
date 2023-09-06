@@ -92,7 +92,7 @@ import (
 //
 // ## Import
 //
-// # Config can be imported using any of these accepted formats
+// Config can be imported using any of these accepted formats:
 //
 // ```sh
 //

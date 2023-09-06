@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.AccessContextManager
     /// 
     /// ## Import
     /// 
-    /// ServicePerimeterIngressPolicy can be imported using any of these accepted formats
+    /// ServicePerimeterIngressPolicy can be imported using any of these accepted formats:
     /// 
     /// ```sh
     ///  $ pulumi import gcp:accesscontextmanager/servicePerimeterIngressPolicy:ServicePerimeterIngressPolicy default {{perimeter}}

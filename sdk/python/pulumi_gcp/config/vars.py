@@ -77,6 +77,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('bigQueryCustomEndpoint')
 
     @property
+    def biglake_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('biglakeCustomEndpoint')
+
+    @property
     def bigquery_analytics_hub_custom_endpoint(self) -> Optional[str]:
         return __config__.get('bigqueryAnalyticsHubCustomEndpoint')
 

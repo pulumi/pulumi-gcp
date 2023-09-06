@@ -500,7 +500,7 @@ class Tag(pulumi.CustomResource):
 
         ## Import
 
-        Tag can be imported using any of these accepted formats
+        Tag can be imported using any of these accepted formats:
 
         ```sh
          $ pulumi import gcp:datacatalog/tag:Tag default {{name}}
@@ -792,7 +792,7 @@ class Tag(pulumi.CustomResource):
 
         ## Import
 
-        Tag can be imported using any of these accepted formats
+        Tag can be imported using any of these accepted formats:
 
         ```sh
          $ pulumi import gcp:datacatalog/tag:Tag default {{name}}

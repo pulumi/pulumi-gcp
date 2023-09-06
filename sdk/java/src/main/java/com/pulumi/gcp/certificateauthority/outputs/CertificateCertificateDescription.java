@@ -44,10 +44,10 @@ public final class CertificateCertificateDescription {
      * Structure is documented below.
      * 
      * @deprecated
-     * Deprecated in favor of `x509_description`.
+     * `config_values` is deprecated and will be removed in a future release. Use `x509_description` instead.
      * 
      */
-    @Deprecated /* Deprecated in favor of `x509_description`. */
+    @Deprecated /* `config_values` is deprecated and will be removed in a future release. Use `x509_description` instead. */
     private @Nullable List<CertificateCertificateDescriptionConfigValue> configValues;
     /**
      * @return (Output)
@@ -118,10 +118,10 @@ public final class CertificateCertificateDescription {
      * Structure is documented below.
      * 
      * @deprecated
-     * Deprecated in favor of `x509_description`.
+     * `config_values` is deprecated and will be removed in a future release. Use `x509_description` instead.
      * 
      */
-    @Deprecated /* Deprecated in favor of `x509_description`. */
+    @Deprecated /* `config_values` is deprecated and will be removed in a future release. Use `x509_description` instead. */
     public List<CertificateCertificateDescriptionConfigValue> configValues() {
         return this.configValues == null ? List.of() : this.configValues;
     }

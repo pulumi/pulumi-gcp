@@ -333,7 +333,6 @@ import (
 //									&cloudrunv2.ServiceTemplateVolumeSecretItemArgs{
 //										Version: pulumi.String("1"),
 //										Path:    pulumi.String("my-secret"),
-//										Mode:    pulumi.Int(256),
 //									},
 //								},
 //							},

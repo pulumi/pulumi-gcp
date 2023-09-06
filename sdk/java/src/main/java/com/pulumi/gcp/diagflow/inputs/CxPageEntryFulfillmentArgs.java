@@ -5,7 +5,9 @@ package com.pulumi.gcp.diagflow.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.diagflow.inputs.CxPageEntryFulfillmentConditionalCaseArgs;
 import com.pulumi.gcp.diagflow.inputs.CxPageEntryFulfillmentMessageArgs;
+import com.pulumi.gcp.diagflow.inputs.CxPageEntryFulfillmentSetParameterActionArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -17,6 +19,23 @@ import javax.annotation.Nullable;
 public final class CxPageEntryFulfillmentArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final CxPageEntryFulfillmentArgs Empty = new CxPageEntryFulfillmentArgs();
+
+    /**
+     * Conditional cases for this fulfillment.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="conditionalCases")
+    private @Nullable Output<List<CxPageEntryFulfillmentConditionalCaseArgs>> conditionalCases;
+
+    /**
+     * @return Conditional cases for this fulfillment.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<CxPageEntryFulfillmentConditionalCaseArgs>>> conditionalCases() {
+        return Optional.ofNullable(this.conditionalCases);
+    }
 
     /**
      * The list of rich message responses to present to the user.
@@ -48,6 +67,23 @@ public final class CxPageEntryFulfillmentArgs extends com.pulumi.resources.Resou
      */
     public Optional<Output<Boolean>> returnPartialResponses() {
         return Optional.ofNullable(this.returnPartialResponses);
+    }
+
+    /**
+     * Set parameter values before executing the webhook.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="setParameterActions")
+    private @Nullable Output<List<CxPageEntryFulfillmentSetParameterActionArgs>> setParameterActions;
+
+    /**
+     * @return Set parameter values before executing the webhook.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<CxPageEntryFulfillmentSetParameterActionArgs>>> setParameterActions() {
+        return Optional.ofNullable(this.setParameterActions);
     }
 
     /**
@@ -83,8 +119,10 @@ public final class CxPageEntryFulfillmentArgs extends com.pulumi.resources.Resou
     private CxPageEntryFulfillmentArgs() {}
 
     private CxPageEntryFulfillmentArgs(CxPageEntryFulfillmentArgs $) {
+        this.conditionalCases = $.conditionalCases;
         this.messages = $.messages;
         this.returnPartialResponses = $.returnPartialResponses;
+        this.setParameterActions = $.setParameterActions;
         this.tag = $.tag;
         this.webhook = $.webhook;
     }
@@ -105,6 +143,40 @@ public final class CxPageEntryFulfillmentArgs extends com.pulumi.resources.Resou
 
         public Builder(CxPageEntryFulfillmentArgs defaults) {
             $ = new CxPageEntryFulfillmentArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param conditionalCases Conditional cases for this fulfillment.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder conditionalCases(@Nullable Output<List<CxPageEntryFulfillmentConditionalCaseArgs>> conditionalCases) {
+            $.conditionalCases = conditionalCases;
+            return this;
+        }
+
+        /**
+         * @param conditionalCases Conditional cases for this fulfillment.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder conditionalCases(List<CxPageEntryFulfillmentConditionalCaseArgs> conditionalCases) {
+            return conditionalCases(Output.of(conditionalCases));
+        }
+
+        /**
+         * @param conditionalCases Conditional cases for this fulfillment.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder conditionalCases(CxPageEntryFulfillmentConditionalCaseArgs... conditionalCases) {
+            return conditionalCases(List.of(conditionalCases));
         }
 
         /**
@@ -160,6 +232,40 @@ public final class CxPageEntryFulfillmentArgs extends com.pulumi.resources.Resou
          */
         public Builder returnPartialResponses(Boolean returnPartialResponses) {
             return returnPartialResponses(Output.of(returnPartialResponses));
+        }
+
+        /**
+         * @param setParameterActions Set parameter values before executing the webhook.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder setParameterActions(@Nullable Output<List<CxPageEntryFulfillmentSetParameterActionArgs>> setParameterActions) {
+            $.setParameterActions = setParameterActions;
+            return this;
+        }
+
+        /**
+         * @param setParameterActions Set parameter values before executing the webhook.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder setParameterActions(List<CxPageEntryFulfillmentSetParameterActionArgs> setParameterActions) {
+            return setParameterActions(Output.of(setParameterActions));
+        }
+
+        /**
+         * @param setParameterActions Set parameter values before executing the webhook.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder setParameterActions(CxPageEntryFulfillmentSetParameterActionArgs... setParameterActions) {
+            return setParameterActions(List.of(setParameterActions));
         }
 
         /**

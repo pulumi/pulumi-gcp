@@ -357,7 +357,6 @@ import javax.annotation.Nullable;
  *                         .items(ServiceTemplateVolumeSecretItemArgs.builder()
  *                             .version(&#34;1&#34;)
  *                             .path(&#34;my-secret&#34;)
- *                             .mode(256)
  *                             .build())
  *                         .build())
  *                     .build())

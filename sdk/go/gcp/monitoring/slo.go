@@ -119,7 +119,7 @@ import (
 //
 // ## Import
 //
-// # Slo can be imported using any of these accepted formats
+// Slo can be imported using any of these accepted formats:
 //
 // ```sh
 //

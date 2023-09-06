@@ -26,6 +26,7 @@ public final class GetDatabaseInstancesInstance {
      */
     private String databaseVersion;
     private Boolean deletionProtection;
+    private String dnsName;
     private String encryptionKeyName;
     private String firstIpAddress;
     private String instanceType;
@@ -39,6 +40,7 @@ public final class GetDatabaseInstancesInstance {
      * 
      */
     private String project;
+    private String pscServiceAttachmentLink;
     private String publicIpAddress;
     /**
      * @return To filter out the Cloud SQL instances which are located in the specified region.
@@ -73,6 +75,9 @@ public final class GetDatabaseInstancesInstance {
     public Boolean deletionProtection() {
         return this.deletionProtection;
     }
+    public String dnsName() {
+        return this.dnsName;
+    }
     public String encryptionKeyName() {
         return this.encryptionKeyName;
     }
@@ -103,6 +108,9 @@ public final class GetDatabaseInstancesInstance {
      */
     public String project() {
         return this.project;
+    }
+    public String pscServiceAttachmentLink() {
+        return this.pscServiceAttachmentLink;
     }
     public String publicIpAddress() {
         return this.publicIpAddress;
@@ -150,6 +158,7 @@ public final class GetDatabaseInstancesInstance {
         private String connectionName;
         private String databaseVersion;
         private Boolean deletionProtection;
+        private String dnsName;
         private String encryptionKeyName;
         private String firstIpAddress;
         private String instanceType;
@@ -159,6 +168,7 @@ public final class GetDatabaseInstancesInstance {
         private String name;
         private String privateIpAddress;
         private String project;
+        private String pscServiceAttachmentLink;
         private String publicIpAddress;
         private String region;
         private List<GetDatabaseInstancesInstanceReplicaConfiguration> replicaConfigurations;
@@ -176,6 +186,7 @@ public final class GetDatabaseInstancesInstance {
     	      this.connectionName = defaults.connectionName;
     	      this.databaseVersion = defaults.databaseVersion;
     	      this.deletionProtection = defaults.deletionProtection;
+    	      this.dnsName = defaults.dnsName;
     	      this.encryptionKeyName = defaults.encryptionKeyName;
     	      this.firstIpAddress = defaults.firstIpAddress;
     	      this.instanceType = defaults.instanceType;
@@ -185,6 +196,7 @@ public final class GetDatabaseInstancesInstance {
     	      this.name = defaults.name;
     	      this.privateIpAddress = defaults.privateIpAddress;
     	      this.project = defaults.project;
+    	      this.pscServiceAttachmentLink = defaults.pscServiceAttachmentLink;
     	      this.publicIpAddress = defaults.publicIpAddress;
     	      this.region = defaults.region;
     	      this.replicaConfigurations = defaults.replicaConfigurations;
@@ -225,6 +237,11 @@ public final class GetDatabaseInstancesInstance {
         @CustomType.Setter
         public Builder deletionProtection(Boolean deletionProtection) {
             this.deletionProtection = Objects.requireNonNull(deletionProtection);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dnsName(String dnsName) {
+            this.dnsName = Objects.requireNonNull(dnsName);
             return this;
         }
         @CustomType.Setter
@@ -273,6 +290,11 @@ public final class GetDatabaseInstancesInstance {
         @CustomType.Setter
         public Builder project(String project) {
             this.project = Objects.requireNonNull(project);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder pscServiceAttachmentLink(String pscServiceAttachmentLink) {
+            this.pscServiceAttachmentLink = Objects.requireNonNull(pscServiceAttachmentLink);
             return this;
         }
         @CustomType.Setter
@@ -339,6 +361,7 @@ public final class GetDatabaseInstancesInstance {
             o.connectionName = connectionName;
             o.databaseVersion = databaseVersion;
             o.deletionProtection = deletionProtection;
+            o.dnsName = dnsName;
             o.encryptionKeyName = encryptionKeyName;
             o.firstIpAddress = firstIpAddress;
             o.instanceType = instanceType;
@@ -348,6 +371,7 @@ public final class GetDatabaseInstancesInstance {
             o.name = name;
             o.privateIpAddress = privateIpAddress;
             o.project = project;
+            o.pscServiceAttachmentLink = pscServiceAttachmentLink;
             o.publicIpAddress = publicIpAddress;
             o.region = region;
             o.replicaConfigurations = replicaConfigurations;

@@ -64,7 +64,7 @@ namespace Pulumi.Gcp.DataPlex.Outputs
         /// </summary>
         public readonly int? Threshold;
         /// <summary>
-        /// ColumnAggregate rule which evaluates whether the column has duplicates.
+        /// Row-level rule which evaluates whether each column value is unique.
         /// </summary>
         public readonly ImmutableArray<Outputs.DatascanDataQualityResultRuleRuleUniquenessExpectation> UniquenessExpectations;
 

@@ -162,6 +162,21 @@ public final class TargetPoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * ) The resource URL for the security policy associated with this target pool.
+     * 
+     */
+    @Import(name="securityPolicy")
+    private @Nullable Output<String> securityPolicy;
+
+    /**
+     * @return ) The resource URL for the security policy associated with this target pool.
+     * 
+     */
+    public Optional<Output<String>> securityPolicy() {
+        return Optional.ofNullable(this.securityPolicy);
+    }
+
+    /**
      * How to distribute load. Options are &#34;NONE&#34; (no
      * affinity). &#34;CLIENT\_IP&#34; (hash of the source/dest addresses / ports), and
      * &#34;CLIENT\_IP\_PROTO&#34; also includes the protocol (default &#34;NONE&#34;).
@@ -191,6 +206,7 @@ public final class TargetPoolArgs extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.project = $.project;
         this.region = $.region;
+        this.securityPolicy = $.securityPolicy;
         this.sessionAffinity = $.sessionAffinity;
     }
 
@@ -416,6 +432,27 @@ public final class TargetPoolArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder region(String region) {
             return region(Output.of(region));
+        }
+
+        /**
+         * @param securityPolicy ) The resource URL for the security policy associated with this target pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityPolicy(@Nullable Output<String> securityPolicy) {
+            $.securityPolicy = securityPolicy;
+            return this;
+        }
+
+        /**
+         * @param securityPolicy ) The resource URL for the security policy associated with this target pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityPolicy(String securityPolicy) {
+            return securityPolicy(Output.of(securityPolicy));
         }
 
         /**

@@ -5,6 +5,8 @@ package com.pulumi.gcp.diagflow.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.diagflow.outputs.CxPageFormParameterFillBehaviorInitialPromptFulfillment;
+import com.pulumi.gcp.diagflow.outputs.CxPageFormParameterFillBehaviorRepromptEventHandler;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,6 +19,22 @@ public final class CxPageFormParameterFillBehavior {
      * 
      */
     private @Nullable CxPageFormParameterFillBehaviorInitialPromptFulfillment initialPromptFulfillment;
+    /**
+     * @return The handlers for parameter-level events, used to provide reprompt for the parameter or transition to a different page/flow. The supported events are:
+     * * sys.no-match-&lt;N&gt;, where N can be from 1 to 6
+     * * sys.no-match-default
+     * * sys.no-input-&lt;N&gt;, where N can be from 1 to 6
+     * * sys.no-input-default
+     * * sys.invalid-parameter
+     *   [initialPromptFulfillment][initialPromptFulfillment] provides the first prompt for the parameter.
+     *   If the user&#39;s response does not fill the parameter, a no-match/no-input event will be triggered, and the fulfillment associated with the sys.no-match-1/sys.no-input-1 handler (if defined) will be called to provide a prompt. The sys.no-match-2/sys.no-input-2 handler (if defined) will respond to the next no-match/no-input event, and so on.
+     *   A sys.no-match-default or sys.no-input-default handler will be used to handle all following no-match/no-input events after all numbered no-match/no-input handlers for the parameter are consumed.
+     *   A sys.invalid-parameter handler can be defined to handle the case where the parameter values have been invalidated by webhook. For example, if the user&#39;s response fill the parameter, however the parameter was invalidated by webhook, the fulfillment associated with the sys.invalid-parameter handler (if defined) will be called to provide a prompt.
+     *   If the event handler for the corresponding event can&#39;t be found on the parameter, initialPromptFulfillment will be re-prompted.
+     *   Structure is documented below.
+     * 
+     */
+    private @Nullable List<CxPageFormParameterFillBehaviorRepromptEventHandler> repromptEventHandlers;
 
     private CxPageFormParameterFillBehavior() {}
     /**
@@ -26,6 +44,24 @@ public final class CxPageFormParameterFillBehavior {
      */
     public Optional<CxPageFormParameterFillBehaviorInitialPromptFulfillment> initialPromptFulfillment() {
         return Optional.ofNullable(this.initialPromptFulfillment);
+    }
+    /**
+     * @return The handlers for parameter-level events, used to provide reprompt for the parameter or transition to a different page/flow. The supported events are:
+     * * sys.no-match-&lt;N&gt;, where N can be from 1 to 6
+     * * sys.no-match-default
+     * * sys.no-input-&lt;N&gt;, where N can be from 1 to 6
+     * * sys.no-input-default
+     * * sys.invalid-parameter
+     *   [initialPromptFulfillment][initialPromptFulfillment] provides the first prompt for the parameter.
+     *   If the user&#39;s response does not fill the parameter, a no-match/no-input event will be triggered, and the fulfillment associated with the sys.no-match-1/sys.no-input-1 handler (if defined) will be called to provide a prompt. The sys.no-match-2/sys.no-input-2 handler (if defined) will respond to the next no-match/no-input event, and so on.
+     *   A sys.no-match-default or sys.no-input-default handler will be used to handle all following no-match/no-input events after all numbered no-match/no-input handlers for the parameter are consumed.
+     *   A sys.invalid-parameter handler can be defined to handle the case where the parameter values have been invalidated by webhook. For example, if the user&#39;s response fill the parameter, however the parameter was invalidated by webhook, the fulfillment associated with the sys.invalid-parameter handler (if defined) will be called to provide a prompt.
+     *   If the event handler for the corresponding event can&#39;t be found on the parameter, initialPromptFulfillment will be re-prompted.
+     *   Structure is documented below.
+     * 
+     */
+    public List<CxPageFormParameterFillBehaviorRepromptEventHandler> repromptEventHandlers() {
+        return this.repromptEventHandlers == null ? List.of() : this.repromptEventHandlers;
     }
 
     public static Builder builder() {
@@ -38,10 +74,12 @@ public final class CxPageFormParameterFillBehavior {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable CxPageFormParameterFillBehaviorInitialPromptFulfillment initialPromptFulfillment;
+        private @Nullable List<CxPageFormParameterFillBehaviorRepromptEventHandler> repromptEventHandlers;
         public Builder() {}
         public Builder(CxPageFormParameterFillBehavior defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.initialPromptFulfillment = defaults.initialPromptFulfillment;
+    	      this.repromptEventHandlers = defaults.repromptEventHandlers;
         }
 
         @CustomType.Setter
@@ -49,9 +87,18 @@ public final class CxPageFormParameterFillBehavior {
             this.initialPromptFulfillment = initialPromptFulfillment;
             return this;
         }
+        @CustomType.Setter
+        public Builder repromptEventHandlers(@Nullable List<CxPageFormParameterFillBehaviorRepromptEventHandler> repromptEventHandlers) {
+            this.repromptEventHandlers = repromptEventHandlers;
+            return this;
+        }
+        public Builder repromptEventHandlers(CxPageFormParameterFillBehaviorRepromptEventHandler... repromptEventHandlers) {
+            return repromptEventHandlers(List.of(repromptEventHandlers));
+        }
         public CxPageFormParameterFillBehavior build() {
             final var o = new CxPageFormParameterFillBehavior();
             o.initialPromptFulfillment = initialPromptFulfillment;
+            o.repromptEventHandlers = repromptEventHandlers;
             return o;
         }
     }

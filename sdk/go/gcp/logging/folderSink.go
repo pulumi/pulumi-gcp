@@ -78,7 +78,7 @@ import (
 //
 // ## Import
 //
-// # Folder-level logging sinks can be imported using this format
+// Folder-level logging sinks can be imported using this format:
 //
 // ```sh
 //

@@ -118,7 +118,7 @@ import (
 //
 // ## Import
 //
-// # PolicyTag can be imported using any of these accepted formats
+// PolicyTag can be imported using any of these accepted formats:
 //
 // ```sh
 //

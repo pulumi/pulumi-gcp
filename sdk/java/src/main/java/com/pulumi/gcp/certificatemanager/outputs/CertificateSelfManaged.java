@@ -13,15 +13,17 @@ import javax.annotation.Nullable;
 public final class CertificateSelfManaged {
     /**
      * @return (Optional, Deprecated)
-     * **Deprecated** The certificate chain in PEM-encoded form.
+     * The certificate chain in PEM-encoded form.
      * Leaf certificate comes first, followed by intermediate ones if any.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
+     * &gt; **Warning:** `certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead.
+     * 
      * @deprecated
-     * Deprecated in favor of `pem_certificate`
+     * `certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead.
      * 
      */
-    @Deprecated /* Deprecated in favor of `pem_certificate` */
+    @Deprecated /* `certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead. */
     private @Nullable String certificatePem;
     /**
      * @return The certificate chain in PEM-encoded form.
@@ -38,28 +40,32 @@ public final class CertificateSelfManaged {
     private @Nullable String pemPrivateKey;
     /**
      * @return (Optional, Deprecated)
-     * **Deprecated** The private key of the leaf certificate in PEM-encoded form.
+     * The private key of the leaf certificate in PEM-encoded form.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
+     * &gt; **Warning:** `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead.
+     * 
      * @deprecated
-     * Deprecated in favor of `pem_private_key`
+     * `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead.
      * 
      */
-    @Deprecated /* Deprecated in favor of `pem_private_key` */
+    @Deprecated /* `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead. */
     private @Nullable String privateKeyPem;
 
     private CertificateSelfManaged() {}
     /**
      * @return (Optional, Deprecated)
-     * **Deprecated** The certificate chain in PEM-encoded form.
+     * The certificate chain in PEM-encoded form.
      * Leaf certificate comes first, followed by intermediate ones if any.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
+     * &gt; **Warning:** `certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead.
+     * 
      * @deprecated
-     * Deprecated in favor of `pem_certificate`
+     * `certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead.
      * 
      */
-    @Deprecated /* Deprecated in favor of `pem_certificate` */
+    @Deprecated /* `certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead. */
     public Optional<String> certificatePem() {
         return Optional.ofNullable(this.certificatePem);
     }
@@ -82,14 +88,16 @@ public final class CertificateSelfManaged {
     }
     /**
      * @return (Optional, Deprecated)
-     * **Deprecated** The private key of the leaf certificate in PEM-encoded form.
+     * The private key of the leaf certificate in PEM-encoded form.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
+     * &gt; **Warning:** `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead.
+     * 
      * @deprecated
-     * Deprecated in favor of `pem_private_key`
+     * `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead.
      * 
      */
-    @Deprecated /* Deprecated in favor of `pem_private_key` */
+    @Deprecated /* `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead. */
     public Optional<String> privateKeyPem() {
         return Optional.ofNullable(this.privateKeyPem);
     }

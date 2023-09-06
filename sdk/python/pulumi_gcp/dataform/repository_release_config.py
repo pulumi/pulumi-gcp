@@ -346,7 +346,7 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
 
         git_repository = gcp.sourcerepo.Repository("gitRepository", opts=pulumi.ResourceOptions(provider=google_beta))
         secret = gcp.secretmanager.Secret("secret",
-            secret_id="secret",
+            secret_id="my_secret",
             replication=gcp.secretmanager.SecretReplicationArgs(
                 automatic=True,
             ),
@@ -442,7 +442,7 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
 
         git_repository = gcp.sourcerepo.Repository("gitRepository", opts=pulumi.ResourceOptions(provider=google_beta))
         secret = gcp.secretmanager.Secret("secret",
-            secret_id="secret",
+            secret_id="my_secret",
             replication=gcp.secretmanager.SecretReplicationArgs(
                 automatic=True,
             ),

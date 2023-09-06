@@ -44,7 +44,7 @@ namespace Pulumi.Gcp.ActiveDirectory
     /// 
     /// ## Import
     /// 
-    /// Domain can be imported using any of these accepted formats
+    /// Domain can be imported using any of these accepted formats:
     /// 
     /// ```sh
     ///  $ pulumi import gcp:activedirectory/domain:Domain default {{name}}

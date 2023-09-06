@@ -12,6 +12,19 @@ namespace Pulumi.Gcp.Diagflow.Inputs
 
     public sealed class CxPageFormParameterFillBehaviorInitialPromptFulfillmentGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("conditionalCases")]
+        private InputList<Inputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseGetArgs>? _conditionalCases;
+
+        /// <summary>
+        /// Conditional cases for this fulfillment.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseGetArgs> ConditionalCases
+        {
+            get => _conditionalCases ?? (_conditionalCases = new InputList<Inputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseGetArgs>());
+            set => _conditionalCases = value;
+        }
+
         [Input("messages")]
         private InputList<Inputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageGetArgs>? _messages;
 
@@ -30,6 +43,19 @@ namespace Pulumi.Gcp.Diagflow.Inputs
         /// </summary>
         [Input("returnPartialResponses")]
         public Input<bool>? ReturnPartialResponses { get; set; }
+
+        [Input("setParameterActions")]
+        private InputList<Inputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionGetArgs>? _setParameterActions;
+
+        /// <summary>
+        /// Set parameter values before executing the webhook.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionGetArgs> SetParameterActions
+        {
+            get => _setParameterActions ?? (_setParameterActions = new InputList<Inputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionGetArgs>());
+            set => _setParameterActions = value;
+        }
 
         /// <summary>
         /// The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.

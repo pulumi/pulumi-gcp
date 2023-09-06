@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Warning:** `firebase.ProjectLocation` is deprecated in favor of explicitly configuring `appengine.Application` and `firestore.Database`. This resource will be removed in the next major release of the provider.
+//
 // Sets the default Google Cloud Platform (GCP) resource location for the specified FirebaseProject.
 // This method creates an App Engine application with a default Cloud Storage bucket, located in the specified
 // locationId. This location must be one of the available GCP resource locations.

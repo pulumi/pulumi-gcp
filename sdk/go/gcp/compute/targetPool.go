@@ -75,6 +75,8 @@ type TargetPool struct {
 	// Where the target pool resides. Defaults to project
 	// region.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// ) The resource URL for the security policy associated with this target pool.
+	SecurityPolicy pulumi.StringPtrOutput `pulumi:"securityPolicy"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// How to distribute load. Options are "NONE" (no
@@ -141,6 +143,8 @@ type targetPoolState struct {
 	// Where the target pool resides. Defaults to project
 	// region.
 	Region *string `pulumi:"region"`
+	// ) The resource URL for the security policy associated with this target pool.
+	SecurityPolicy *string `pulumi:"securityPolicy"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// How to distribute load. Options are "NONE" (no
@@ -178,6 +182,8 @@ type TargetPoolState struct {
 	// Where the target pool resides. Defaults to project
 	// region.
 	Region pulumi.StringPtrInput
+	// ) The resource URL for the security policy associated with this target pool.
+	SecurityPolicy pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
 	// How to distribute load. Options are "NONE" (no
@@ -219,6 +225,8 @@ type targetPoolArgs struct {
 	// Where the target pool resides. Defaults to project
 	// region.
 	Region *string `pulumi:"region"`
+	// ) The resource URL for the security policy associated with this target pool.
+	SecurityPolicy *string `pulumi:"securityPolicy"`
 	// How to distribute load. Options are "NONE" (no
 	// affinity). "CLIENT\_IP" (hash of the source/dest addresses / ports), and
 	// "CLIENT\_IP\_PROTO" also includes the protocol (default "NONE").
@@ -255,6 +263,8 @@ type TargetPoolArgs struct {
 	// Where the target pool resides. Defaults to project
 	// region.
 	Region pulumi.StringPtrInput
+	// ) The resource URL for the security policy associated with this target pool.
+	SecurityPolicy pulumi.StringPtrInput
 	// How to distribute load. Options are "NONE" (no
 	// affinity). "CLIENT\_IP" (hash of the source/dest addresses / ports), and
 	// "CLIENT\_IP\_PROTO" also includes the protocol (default "NONE").
@@ -398,6 +408,11 @@ func (o TargetPoolOutput) Project() pulumi.StringOutput {
 // region.
 func (o TargetPoolOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *TargetPool) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// ) The resource URL for the security policy associated with this target pool.
+func (o TargetPoolOutput) SecurityPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TargetPool) pulumi.StringPtrOutput { return v.SecurityPolicy }).(pulumi.StringPtrOutput)
 }
 
 // The URI of the created resource.

@@ -1073,7 +1073,6 @@ class Service(pulumi.CustomResource):
                         items=[gcp.cloudrunv2.ServiceTemplateVolumeSecretItemArgs(
                             version="1",
                             path="my-secret",
-                            mode=256,
                         )],
                     ),
                 )],
@@ -1379,7 +1378,6 @@ class Service(pulumi.CustomResource):
                         items=[gcp.cloudrunv2.ServiceTemplateVolumeSecretItemArgs(
                             version="1",
                             path="my-secret",
-                            mode=256,
                         )],
                     ),
                 )],

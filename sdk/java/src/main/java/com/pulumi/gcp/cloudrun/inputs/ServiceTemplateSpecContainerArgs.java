@@ -66,11 +66,13 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
      * precedence.
      * Structure is documented below.
      * 
+     * &gt; **Warning:** `env_from` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+     * 
      * @deprecated
-     * Not supported by Cloud Run fully managed
+     * `env_from` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
      * 
      */
-    @Deprecated /* Not supported by Cloud Run fully managed */
+    @Deprecated /* `env_from` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
     @Import(name="envFroms")
     private @Nullable Output<List<ServiceTemplateSpecContainerEnvFromArgs>> envFroms;
 
@@ -83,11 +85,13 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
      * precedence.
      * Structure is documented below.
      * 
+     * &gt; **Warning:** `env_from` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+     * 
      * @deprecated
-     * Not supported by Cloud Run fully managed
+     * `env_from` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
      * 
      */
-    @Deprecated /* Not supported by Cloud Run fully managed */
+    @Deprecated /* `env_from` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
     public Optional<Output<List<ServiceTemplateSpecContainerEnvFromArgs>>> envFroms() {
         return Optional.ofNullable(this.envFroms);
     }
@@ -240,11 +244,13 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
      * If not specified, the container runtime&#39;s default will be used, which
      * might be configured in the container image.
      * 
+     * &gt; **Warning:** `working_dir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+     * 
      * @deprecated
-     * Not supported by Cloud Run fully managed
+     * `working_dir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
      * 
      */
-    @Deprecated /* Not supported by Cloud Run fully managed */
+    @Deprecated /* `working_dir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
     @Import(name="workingDir")
     private @Nullable Output<String> workingDir;
 
@@ -254,11 +260,13 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
      * If not specified, the container runtime&#39;s default will be used, which
      * might be configured in the container image.
      * 
+     * &gt; **Warning:** `working_dir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+     * 
      * @deprecated
-     * Not supported by Cloud Run fully managed
+     * `working_dir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
      * 
      */
-    @Deprecated /* Not supported by Cloud Run fully managed */
+    @Deprecated /* `working_dir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
     public Optional<Output<String>> workingDir() {
         return Optional.ofNullable(this.workingDir);
     }
@@ -375,13 +383,15 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
          * precedence.
          * Structure is documented below.
          * 
+         * &gt; **Warning:** `env_from` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+         * 
          * @return builder
          * 
          * @deprecated
-         * Not supported by Cloud Run fully managed
+         * `env_from` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
          * 
          */
-        @Deprecated /* Not supported by Cloud Run fully managed */
+        @Deprecated /* `env_from` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
         public Builder envFroms(@Nullable Output<List<ServiceTemplateSpecContainerEnvFromArgs>> envFroms) {
             $.envFroms = envFroms;
             return this;
@@ -396,13 +406,15 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
          * precedence.
          * Structure is documented below.
          * 
+         * &gt; **Warning:** `env_from` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+         * 
          * @return builder
          * 
          * @deprecated
-         * Not supported by Cloud Run fully managed
+         * `env_from` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
          * 
          */
-        @Deprecated /* Not supported by Cloud Run fully managed */
+        @Deprecated /* `env_from` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
         public Builder envFroms(List<ServiceTemplateSpecContainerEnvFromArgs> envFroms) {
             return envFroms(Output.of(envFroms));
         }
@@ -416,13 +428,15 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
          * precedence.
          * Structure is documented below.
          * 
+         * &gt; **Warning:** `env_from` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+         * 
          * @return builder
          * 
          * @deprecated
-         * Not supported by Cloud Run fully managed
+         * `env_from` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
          * 
          */
-        @Deprecated /* Not supported by Cloud Run fully managed */
+        @Deprecated /* `env_from` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
         public Builder envFroms(ServiceTemplateSpecContainerEnvFromArgs... envFroms) {
             return envFroms(List.of(envFroms));
         }
@@ -657,13 +671,15 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
          * If not specified, the container runtime&#39;s default will be used, which
          * might be configured in the container image.
          * 
+         * &gt; **Warning:** `working_dir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+         * 
          * @return builder
          * 
          * @deprecated
-         * Not supported by Cloud Run fully managed
+         * `working_dir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
          * 
          */
-        @Deprecated /* Not supported by Cloud Run fully managed */
+        @Deprecated /* `working_dir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
         public Builder workingDir(@Nullable Output<String> workingDir) {
             $.workingDir = workingDir;
             return this;
@@ -675,13 +691,15 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
          * If not specified, the container runtime&#39;s default will be used, which
          * might be configured in the container image.
          * 
+         * &gt; **Warning:** `working_dir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+         * 
          * @return builder
          * 
          * @deprecated
-         * Not supported by Cloud Run fully managed
+         * `working_dir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
          * 
          */
-        @Deprecated /* Not supported by Cloud Run fully managed */
+        @Deprecated /* `working_dir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
         public Builder workingDir(String workingDir) {
             return workingDir(Output.of(workingDir));
         }

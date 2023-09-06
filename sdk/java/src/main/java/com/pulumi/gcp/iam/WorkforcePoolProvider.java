@@ -234,6 +234,9 @@ import javax.annotation.Nullable;
  *                 .webSsoConfig(WorkforcePoolProviderOidcWebSsoConfigArgs.builder()
  *                     .responseType(&#34;CODE&#34;)
  *                     .assertionClaimsBehavior(&#34;MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS&#34;)
+ *                     .additionalScopes(                    
+ *                         &#34;groups&#34;,
+ *                         &#34;roles&#34;)
  *                     .build())
  *                 .build())
  *             .displayName(&#34;Display name&#34;)

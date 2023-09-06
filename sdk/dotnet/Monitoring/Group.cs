@@ -68,7 +68,7 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// ## Import
     /// 
-    /// Group can be imported using any of these accepted formats
+    /// Group can be imported using any of these accepted formats:
     /// 
     /// ```sh
     ///  $ pulumi import gcp:monitoring/group:Group default {{name}}

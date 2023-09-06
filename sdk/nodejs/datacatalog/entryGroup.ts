@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * EntryGroup can be imported using any of these accepted formats
+ * EntryGroup can be imported using any of these accepted formats:
  *
  * ```sh
  *  $ pulumi import gcp:datacatalog/entryGroup:EntryGroup default {{name}}

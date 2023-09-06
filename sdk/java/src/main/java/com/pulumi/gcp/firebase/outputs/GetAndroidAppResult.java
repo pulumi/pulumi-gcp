@@ -12,6 +12,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAndroidAppResult {
+    private String apiKeyId;
     /**
      * @return Immutable. The globally unique, Firebase-assigned identifier of the AndroidApp.
      * This identifier should be treated as an opaque token, as the data format is not specified.
@@ -59,6 +60,9 @@ public final class GetAndroidAppResult {
     private List<String> sha256Hashes;
 
     private GetAndroidAppResult() {}
+    public String apiKeyId() {
+        return this.apiKeyId;
+    }
     /**
      * @return Immutable. The globally unique, Firebase-assigned identifier of the AndroidApp.
      * This identifier should be treated as an opaque token, as the data format is not specified.
@@ -134,6 +138,7 @@ public final class GetAndroidAppResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String apiKeyId;
         private String appId;
         private String deletionPolicy;
         private String displayName;
@@ -147,6 +152,7 @@ public final class GetAndroidAppResult {
         public Builder() {}
         public Builder(GetAndroidAppResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.apiKeyId = defaults.apiKeyId;
     	      this.appId = defaults.appId;
     	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.displayName = defaults.displayName;
@@ -159,6 +165,11 @@ public final class GetAndroidAppResult {
     	      this.sha256Hashes = defaults.sha256Hashes;
         }
 
+        @CustomType.Setter
+        public Builder apiKeyId(String apiKeyId) {
+            this.apiKeyId = Objects.requireNonNull(apiKeyId);
+            return this;
+        }
         @CustomType.Setter
         public Builder appId(String appId) {
             this.appId = Objects.requireNonNull(appId);
@@ -217,6 +228,7 @@ public final class GetAndroidAppResult {
         }
         public GetAndroidAppResult build() {
             final var o = new GetAndroidAppResult();
+            o.apiKeyId = apiKeyId;
             o.appId = appId;
             o.deletionPolicy = deletionPolicy;
             o.displayName = displayName;

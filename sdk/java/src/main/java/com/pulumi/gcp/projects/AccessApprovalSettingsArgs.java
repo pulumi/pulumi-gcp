@@ -80,25 +80,29 @@ public final class AccessApprovalSettingsArgs extends com.pulumi.resources.Resou
 
     /**
      * (Optional, Deprecated)
-     * Deprecated in favor of `project_id`
+     * Project id.
+     * 
+     * &gt; **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
      * 
      * @deprecated
-     * Deprecated in favor of `project_id`
+     * `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
      * 
      */
-    @Deprecated /* Deprecated in favor of `project_id` */
+    @Deprecated /* `project` is deprecated and will be removed in a future major release. Use `project_id` instead. */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
      * @return (Optional, Deprecated)
-     * Deprecated in favor of `project_id`
+     * Project id.
+     * 
+     * &gt; **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
      * 
      * @deprecated
-     * Deprecated in favor of `project_id`
+     * `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
      * 
      */
-    @Deprecated /* Deprecated in favor of `project_id` */
+    @Deprecated /* `project` is deprecated and will be removed in a future major release. Use `project_id` instead. */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -253,15 +257,17 @@ public final class AccessApprovalSettingsArgs extends com.pulumi.resources.Resou
 
         /**
          * @param project (Optional, Deprecated)
-         * Deprecated in favor of `project_id`
+         * Project id.
+         * 
+         * &gt; **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Deprecated in favor of `project_id`
+         * `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
          * 
          */
-        @Deprecated /* Deprecated in favor of `project_id` */
+        @Deprecated /* `project` is deprecated and will be removed in a future major release. Use `project_id` instead. */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
@@ -269,15 +275,17 @@ public final class AccessApprovalSettingsArgs extends com.pulumi.resources.Resou
 
         /**
          * @param project (Optional, Deprecated)
-         * Deprecated in favor of `project_id`
+         * Project id.
+         * 
+         * &gt; **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Deprecated in favor of `project_id`
+         * `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
          * 
          */
-        @Deprecated /* Deprecated in favor of `project_id` */
+        @Deprecated /* `project` is deprecated and will be removed in a future major release. Use `project_id` instead. */
         public Builder project(String project) {
             return project(Output.of(project));
         }

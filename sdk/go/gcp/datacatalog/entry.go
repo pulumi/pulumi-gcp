@@ -177,7 +177,7 @@ import (
 //
 // ## Import
 //
-// # Entry can be imported using any of these accepted formats
+// Entry can be imported using any of these accepted formats:
 //
 // ```sh
 //

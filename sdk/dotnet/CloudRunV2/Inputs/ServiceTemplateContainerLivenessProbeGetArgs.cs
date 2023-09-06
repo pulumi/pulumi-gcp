@@ -48,6 +48,8 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         /// (Optional, Deprecated)
         /// TCPSocket specifies an action involving a TCP port. This field is not supported in liveness probe currently.
         /// Structure is documented below.
+        /// 
+        /// &gt; **Warning:** `tcp_socket` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
         /// </summary>
         [Input("tcpSocket")]
         public Input<Inputs.ServiceTemplateContainerLivenessProbeTcpSocketGetArgs>? TcpSocket { get; set; }

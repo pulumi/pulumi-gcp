@@ -64,6 +64,13 @@ public final class WorkforcePoolProviderOidcArgs extends com.pulumi.resources.Re
         return this.issuerUri;
     }
 
+    @Import(name="jwksJson")
+    private @Nullable Output<String> jwksJson;
+
+    public Optional<Output<String>> jwksJson() {
+        return Optional.ofNullable(this.jwksJson);
+    }
+
     /**
      * Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.
      * Structure is documented below.
@@ -87,6 +94,7 @@ public final class WorkforcePoolProviderOidcArgs extends com.pulumi.resources.Re
         this.clientId = $.clientId;
         this.clientSecret = $.clientSecret;
         this.issuerUri = $.issuerUri;
+        this.jwksJson = $.jwksJson;
         this.webSsoConfig = $.webSsoConfig;
     }
 
@@ -171,6 +179,15 @@ public final class WorkforcePoolProviderOidcArgs extends com.pulumi.resources.Re
          */
         public Builder issuerUri(String issuerUri) {
             return issuerUri(Output.of(issuerUri));
+        }
+
+        public Builder jwksJson(@Nullable Output<String> jwksJson) {
+            $.jwksJson = jwksJson;
+            return this;
+        }
+
+        public Builder jwksJson(String jwksJson) {
+            return jwksJson(Output.of(jwksJson));
         }
 
         /**

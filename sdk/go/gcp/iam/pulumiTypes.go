@@ -1082,7 +1082,8 @@ type WorkforcePoolProviderOidc struct {
 	// Structure is documented below.
 	ClientSecret *WorkforcePoolProviderOidcClientSecret `pulumi:"clientSecret"`
 	// The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
-	IssuerUri string `pulumi:"issuerUri"`
+	IssuerUri string  `pulumi:"issuerUri"`
+	JwksJson  *string `pulumi:"jwksJson"`
 	// Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.
 	// Structure is documented below.
 	WebSsoConfig *WorkforcePoolProviderOidcWebSsoConfig `pulumi:"webSsoConfig"`
@@ -1106,7 +1107,8 @@ type WorkforcePoolProviderOidcArgs struct {
 	// Structure is documented below.
 	ClientSecret WorkforcePoolProviderOidcClientSecretPtrInput `pulumi:"clientSecret"`
 	// The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
-	IssuerUri pulumi.StringInput `pulumi:"issuerUri"`
+	IssuerUri pulumi.StringInput    `pulumi:"issuerUri"`
+	JwksJson  pulumi.StringPtrInput `pulumi:"jwksJson"`
 	// Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.
 	// Structure is documented below.
 	WebSsoConfig WorkforcePoolProviderOidcWebSsoConfigPtrInput `pulumi:"webSsoConfig"`
@@ -1205,6 +1207,10 @@ func (o WorkforcePoolProviderOidcOutput) IssuerUri() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkforcePoolProviderOidc) string { return v.IssuerUri }).(pulumi.StringOutput)
 }
 
+func (o WorkforcePoolProviderOidcOutput) JwksJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkforcePoolProviderOidc) *string { return v.JwksJson }).(pulumi.StringPtrOutput)
+}
+
 // Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.
 // Structure is documented below.
 func (o WorkforcePoolProviderOidcOutput) WebSsoConfig() WorkforcePoolProviderOidcWebSsoConfigPtrOutput {
@@ -1263,6 +1269,15 @@ func (o WorkforcePoolProviderOidcPtrOutput) IssuerUri() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.IssuerUri
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkforcePoolProviderOidcPtrOutput) JwksJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderOidc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.JwksJson
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1585,6 +1600,9 @@ func (o WorkforcePoolProviderOidcClientSecretValuePtrOutput) Thumbprint() pulumi
 }
 
 type WorkforcePoolProviderOidcWebSsoConfig struct {
+	// Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested.
+	// Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be configured.
+	AdditionalScopes []string `pulumi:"additionalScopes"`
 	// The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
 	// * MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS: Merge the UserInfo Endpoint Claims with ID Token Claims, preferring UserInfo Claim Values for the same Claim Name. This option is available only for the Authorization Code Flow.
 	// * ONLY_ID_TOKEN_CLAIMS: Only include ID Token Claims.
@@ -1610,6 +1628,9 @@ type WorkforcePoolProviderOidcWebSsoConfigInput interface {
 }
 
 type WorkforcePoolProviderOidcWebSsoConfigArgs struct {
+	// Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested.
+	// Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be configured.
+	AdditionalScopes pulumi.StringArrayInput `pulumi:"additionalScopes"`
 	// The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
 	// * MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS: Merge the UserInfo Endpoint Claims with ID Token Claims, preferring UserInfo Claim Values for the same Claim Name. This option is available only for the Authorization Code Flow.
 	// * ONLY_ID_TOKEN_CLAIMS: Only include ID Token Claims.
@@ -1700,6 +1721,12 @@ func (o WorkforcePoolProviderOidcWebSsoConfigOutput) ToWorkforcePoolProviderOidc
 	}).(WorkforcePoolProviderOidcWebSsoConfigPtrOutput)
 }
 
+// Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested.
+// Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be configured.
+func (o WorkforcePoolProviderOidcWebSsoConfigOutput) AdditionalScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v WorkforcePoolProviderOidcWebSsoConfig) []string { return v.AdditionalScopes }).(pulumi.StringArrayOutput)
+}
+
 // The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
 //   - MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS: Merge the UserInfo Endpoint Claims with ID Token Claims, preferring UserInfo Claim Values for the same Claim Name. This option is available only for the Authorization Code Flow.
 //   - ONLY_ID_TOKEN_CLAIMS: Only include ID Token Claims.
@@ -1739,6 +1766,17 @@ func (o WorkforcePoolProviderOidcWebSsoConfigPtrOutput) Elem() WorkforcePoolProv
 		var ret WorkforcePoolProviderOidcWebSsoConfig
 		return ret
 	}).(WorkforcePoolProviderOidcWebSsoConfigOutput)
+}
+
+// Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested.
+// Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be configured.
+func (o WorkforcePoolProviderOidcWebSsoConfigPtrOutput) AdditionalScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderOidcWebSsoConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalScopes
+	}).(pulumi.StringArrayOutput)
 }
 
 // The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.

@@ -32,6 +32,10 @@ __all__ = [
     'DatascanDataProfileResultScannedDataArgs',
     'DatascanDataProfileResultScannedDataIncrementalFieldArgs',
     'DatascanDataProfileSpecArgs',
+    'DatascanDataProfileSpecExcludeFieldsArgs',
+    'DatascanDataProfileSpecIncludeFieldsArgs',
+    'DatascanDataProfileSpecPostScanActionsArgs',
+    'DatascanDataProfileSpecPostScanActionsBigqueryExportArgs',
     'DatascanDataQualityResultArgs',
     'DatascanDataQualityResultDimensionArgs',
     'DatascanDataQualityResultRuleArgs',
@@ -47,6 +51,8 @@ __all__ = [
     'DatascanDataQualityResultScannedDataArgs',
     'DatascanDataQualityResultScannedDataIncrementalFieldArgs',
     'DatascanDataQualitySpecArgs',
+    'DatascanDataQualitySpecPostScanActionsArgs',
+    'DatascanDataQualitySpecPostScanActionsBigqueryExportArgs',
     'DatascanDataQualitySpecRuleArgs',
     'DatascanDataQualitySpecRuleNonNullExpectationArgs',
     'DatascanDataQualitySpecRuleRangeExpectationArgs',
@@ -822,7 +828,11 @@ class DatascanDataProfileResultProfileFieldArgs:
                1. REQUIRED, if it is a required field.
                2. NULLABLE, if it is an optional field.
                3. REPEATED, if it is a repeated field.
-        :param pulumi.Input[str] name: The name of the field.
+        :param pulumi.Input[str] name: A mutable name for the rule.
+               The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+               The maximum length is 63 characters.
+               Must start with a letter.
+               Must end with a number or a letter.
         :param pulumi.Input['DatascanDataProfileResultProfileFieldProfileArgs'] profile: Profile information for the corresponding field.
                Structure is documented below.
         :param pulumi.Input[str] type: The field data type.
@@ -855,7 +865,11 @@ class DatascanDataProfileResultProfileFieldArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the field.
+        A mutable name for the rule.
+        The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+        The maximum length is 63 characters.
+        Must start with a letter.
+        Must end with a number or a letter.
         """
         return pulumi.get(self, "name")
 
@@ -1359,16 +1373,76 @@ class DatascanDataProfileResultScannedDataIncrementalFieldArgs:
 @pulumi.input_type
 class DatascanDataProfileSpecArgs:
     def __init__(__self__, *,
+                 exclude_fields: Optional[pulumi.Input['DatascanDataProfileSpecExcludeFieldsArgs']] = None,
+                 include_fields: Optional[pulumi.Input['DatascanDataProfileSpecIncludeFieldsArgs']] = None,
+                 post_scan_actions: Optional[pulumi.Input['DatascanDataProfileSpecPostScanActionsArgs']] = None,
                  row_filter: Optional[pulumi.Input[str]] = None,
                  sampling_percent: Optional[pulumi.Input[float]] = None):
         """
+        :param pulumi.Input['DatascanDataProfileSpecExcludeFieldsArgs'] exclude_fields: The fields to exclude from data profile.
+               If specified, the fields will be excluded from data profile, regardless of `include_fields` value.
+               Structure is documented below.
+        :param pulumi.Input['DatascanDataProfileSpecIncludeFieldsArgs'] include_fields: The fields to include in data profile.
+               If not specified, all fields at the time of profile scan job execution are included, except for ones listed in `exclude_fields`.
+               Structure is documented below.
+        :param pulumi.Input['DatascanDataProfileSpecPostScanActionsArgs'] post_scan_actions: Actions to take upon job completion.
+               Structure is documented below.
         :param pulumi.Input[str] row_filter: A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
         :param pulumi.Input[float] sampling_percent: The percentage of the records to be selected from the dataset for DataScan.
+               Value can range between 0.0 and 100.0 with up to 3 significant decimal digits.
+               Sampling is not applied if `sampling_percent` is not specified, 0 or 100.
         """
+        if exclude_fields is not None:
+            pulumi.set(__self__, "exclude_fields", exclude_fields)
+        if include_fields is not None:
+            pulumi.set(__self__, "include_fields", include_fields)
+        if post_scan_actions is not None:
+            pulumi.set(__self__, "post_scan_actions", post_scan_actions)
         if row_filter is not None:
             pulumi.set(__self__, "row_filter", row_filter)
         if sampling_percent is not None:
             pulumi.set(__self__, "sampling_percent", sampling_percent)
+
+    @property
+    @pulumi.getter(name="excludeFields")
+    def exclude_fields(self) -> Optional[pulumi.Input['DatascanDataProfileSpecExcludeFieldsArgs']]:
+        """
+        The fields to exclude from data profile.
+        If specified, the fields will be excluded from data profile, regardless of `include_fields` value.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "exclude_fields")
+
+    @exclude_fields.setter
+    def exclude_fields(self, value: Optional[pulumi.Input['DatascanDataProfileSpecExcludeFieldsArgs']]):
+        pulumi.set(self, "exclude_fields", value)
+
+    @property
+    @pulumi.getter(name="includeFields")
+    def include_fields(self) -> Optional[pulumi.Input['DatascanDataProfileSpecIncludeFieldsArgs']]:
+        """
+        The fields to include in data profile.
+        If not specified, all fields at the time of profile scan job execution are included, except for ones listed in `exclude_fields`.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "include_fields")
+
+    @include_fields.setter
+    def include_fields(self, value: Optional[pulumi.Input['DatascanDataProfileSpecIncludeFieldsArgs']]):
+        pulumi.set(self, "include_fields", value)
+
+    @property
+    @pulumi.getter(name="postScanActions")
+    def post_scan_actions(self) -> Optional[pulumi.Input['DatascanDataProfileSpecPostScanActionsArgs']]:
+        """
+        Actions to take upon job completion.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "post_scan_actions")
+
+    @post_scan_actions.setter
+    def post_scan_actions(self, value: Optional[pulumi.Input['DatascanDataProfileSpecPostScanActionsArgs']]):
+        pulumi.set(self, "post_scan_actions", value)
 
     @property
     @pulumi.getter(name="rowFilter")
@@ -1387,12 +1461,118 @@ class DatascanDataProfileSpecArgs:
     def sampling_percent(self) -> Optional[pulumi.Input[float]]:
         """
         The percentage of the records to be selected from the dataset for DataScan.
+        Value can range between 0.0 and 100.0 with up to 3 significant decimal digits.
+        Sampling is not applied if `sampling_percent` is not specified, 0 or 100.
         """
         return pulumi.get(self, "sampling_percent")
 
     @sampling_percent.setter
     def sampling_percent(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "sampling_percent", value)
+
+
+@pulumi.input_type
+class DatascanDataProfileSpecExcludeFieldsArgs:
+    def __init__(__self__, *,
+                 field_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] field_names: Expected input is a list of fully qualified names of fields as in the schema.
+               Only top-level field names for nested fields are supported.
+               For instance, if 'x' is of nested field type, listing 'x' is supported but 'x.y.z' is not supported. Here 'y' and 'y.z' are nested fields of 'x'.
+        """
+        if field_names is not None:
+            pulumi.set(__self__, "field_names", field_names)
+
+    @property
+    @pulumi.getter(name="fieldNames")
+    def field_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Expected input is a list of fully qualified names of fields as in the schema.
+        Only top-level field names for nested fields are supported.
+        For instance, if 'x' is of nested field type, listing 'x' is supported but 'x.y.z' is not supported. Here 'y' and 'y.z' are nested fields of 'x'.
+        """
+        return pulumi.get(self, "field_names")
+
+    @field_names.setter
+    def field_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "field_names", value)
+
+
+@pulumi.input_type
+class DatascanDataProfileSpecIncludeFieldsArgs:
+    def __init__(__self__, *,
+                 field_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] field_names: Expected input is a list of fully qualified names of fields as in the schema.
+               Only top-level field names for nested fields are supported.
+               For instance, if 'x' is of nested field type, listing 'x' is supported but 'x.y.z' is not supported. Here 'y' and 'y.z' are nested fields of 'x'.
+        """
+        if field_names is not None:
+            pulumi.set(__self__, "field_names", field_names)
+
+    @property
+    @pulumi.getter(name="fieldNames")
+    def field_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Expected input is a list of fully qualified names of fields as in the schema.
+        Only top-level field names for nested fields are supported.
+        For instance, if 'x' is of nested field type, listing 'x' is supported but 'x.y.z' is not supported. Here 'y' and 'y.z' are nested fields of 'x'.
+        """
+        return pulumi.get(self, "field_names")
+
+    @field_names.setter
+    def field_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "field_names", value)
+
+
+@pulumi.input_type
+class DatascanDataProfileSpecPostScanActionsArgs:
+    def __init__(__self__, *,
+                 bigquery_export: Optional[pulumi.Input['DatascanDataProfileSpecPostScanActionsBigqueryExportArgs']] = None):
+        """
+        :param pulumi.Input['DatascanDataProfileSpecPostScanActionsBigqueryExportArgs'] bigquery_export: If set, results will be exported to the provided BigQuery table.
+               Structure is documented below.
+        """
+        if bigquery_export is not None:
+            pulumi.set(__self__, "bigquery_export", bigquery_export)
+
+    @property
+    @pulumi.getter(name="bigqueryExport")
+    def bigquery_export(self) -> Optional[pulumi.Input['DatascanDataProfileSpecPostScanActionsBigqueryExportArgs']]:
+        """
+        If set, results will be exported to the provided BigQuery table.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bigquery_export")
+
+    @bigquery_export.setter
+    def bigquery_export(self, value: Optional[pulumi.Input['DatascanDataProfileSpecPostScanActionsBigqueryExportArgs']]):
+        pulumi.set(self, "bigquery_export", value)
+
+
+@pulumi.input_type
+class DatascanDataProfileSpecPostScanActionsBigqueryExportArgs:
+    def __init__(__self__, *,
+                 results_table: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] results_table: The BigQuery table to export DataProfileScan results to.
+               Format://bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+        """
+        if results_table is not None:
+            pulumi.set(__self__, "results_table", results_table)
+
+    @property
+    @pulumi.getter(name="resultsTable")
+    def results_table(self) -> Optional[pulumi.Input[str]]:
+        """
+        The BigQuery table to export DataProfileScan results to.
+        Format://bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+        """
+        return pulumi.get(self, "results_table")
+
+    @results_table.setter
+    def results_table(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "results_table", value)
 
 
 @pulumi.input_type
@@ -1691,7 +1871,7 @@ class DatascanDataQualityResultRuleRuleArgs:
         :param pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultRuleRuleTableConditionExpectationArgs']]] table_condition_expectations: Table rule which evaluates whether the provided expression is true.
                Structure is documented below.
         :param pulumi.Input[int] threshold: The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
-        :param pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultRuleRuleUniquenessExpectationArgs']]] uniqueness_expectations: ColumnAggregate rule which evaluates whether the column has duplicates.
+        :param pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultRuleRuleUniquenessExpectationArgs']]] uniqueness_expectations: Row-level rule which evaluates whether each column value is unique.
         """
         if column is not None:
             pulumi.set(__self__, "column", column)
@@ -1860,7 +2040,7 @@ class DatascanDataQualityResultRuleRuleArgs:
     @pulumi.getter(name="uniquenessExpectations")
     def uniqueness_expectations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultRuleRuleUniquenessExpectationArgs']]]]:
         """
-        ColumnAggregate rule which evaluates whether the column has duplicates.
+        Row-level rule which evaluates whether each column value is unique.
         """
         return pulumi.get(self, "uniqueness_expectations")
 
@@ -2228,21 +2408,41 @@ class DatascanDataQualityResultScannedDataIncrementalFieldArgs:
 @pulumi.input_type
 class DatascanDataQualitySpecArgs:
     def __init__(__self__, *,
+                 post_scan_actions: Optional[pulumi.Input['DatascanDataQualitySpecPostScanActionsArgs']] = None,
                  row_filter: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualitySpecRuleArgs']]]] = None,
                  sampling_percent: Optional[pulumi.Input[float]] = None):
         """
+        :param pulumi.Input['DatascanDataQualitySpecPostScanActionsArgs'] post_scan_actions: Actions to take upon job completion.
+               Structure is documented below.
         :param pulumi.Input[str] row_filter: A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
         :param pulumi.Input[Sequence[pulumi.Input['DatascanDataQualitySpecRuleArgs']]] rules: The list of rules to evaluate against a data source. At least one rule is required.
                Structure is documented below.
         :param pulumi.Input[float] sampling_percent: The percentage of the records to be selected from the dataset for DataScan.
+               Value can range between 0.0 and 100.0 with up to 3 significant decimal digits.
+               Sampling is not applied if `sampling_percent` is not specified, 0 or 100.
         """
+        if post_scan_actions is not None:
+            pulumi.set(__self__, "post_scan_actions", post_scan_actions)
         if row_filter is not None:
             pulumi.set(__self__, "row_filter", row_filter)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if sampling_percent is not None:
             pulumi.set(__self__, "sampling_percent", sampling_percent)
+
+    @property
+    @pulumi.getter(name="postScanActions")
+    def post_scan_actions(self) -> Optional[pulumi.Input['DatascanDataQualitySpecPostScanActionsArgs']]:
+        """
+        Actions to take upon job completion.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "post_scan_actions")
+
+    @post_scan_actions.setter
+    def post_scan_actions(self, value: Optional[pulumi.Input['DatascanDataQualitySpecPostScanActionsArgs']]):
+        pulumi.set(self, "post_scan_actions", value)
 
     @property
     @pulumi.getter(name="rowFilter")
@@ -2274,6 +2474,8 @@ class DatascanDataQualitySpecArgs:
     def sampling_percent(self) -> Optional[pulumi.Input[float]]:
         """
         The percentage of the records to be selected from the dataset for DataScan.
+        Value can range between 0.0 and 100.0 with up to 3 significant decimal digits.
+        Sampling is not applied if `sampling_percent` is not specified, 0 or 100.
         """
         return pulumi.get(self, "sampling_percent")
 
@@ -2283,11 +2485,63 @@ class DatascanDataQualitySpecArgs:
 
 
 @pulumi.input_type
+class DatascanDataQualitySpecPostScanActionsArgs:
+    def __init__(__self__, *,
+                 bigquery_export: Optional[pulumi.Input['DatascanDataQualitySpecPostScanActionsBigqueryExportArgs']] = None):
+        """
+        :param pulumi.Input['DatascanDataQualitySpecPostScanActionsBigqueryExportArgs'] bigquery_export: If set, results will be exported to the provided BigQuery table.
+               Structure is documented below.
+        """
+        if bigquery_export is not None:
+            pulumi.set(__self__, "bigquery_export", bigquery_export)
+
+    @property
+    @pulumi.getter(name="bigqueryExport")
+    def bigquery_export(self) -> Optional[pulumi.Input['DatascanDataQualitySpecPostScanActionsBigqueryExportArgs']]:
+        """
+        If set, results will be exported to the provided BigQuery table.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bigquery_export")
+
+    @bigquery_export.setter
+    def bigquery_export(self, value: Optional[pulumi.Input['DatascanDataQualitySpecPostScanActionsBigqueryExportArgs']]):
+        pulumi.set(self, "bigquery_export", value)
+
+
+@pulumi.input_type
+class DatascanDataQualitySpecPostScanActionsBigqueryExportArgs:
+    def __init__(__self__, *,
+                 results_table: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] results_table: The BigQuery table to export DataProfileScan results to.
+               Format://bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+        """
+        if results_table is not None:
+            pulumi.set(__self__, "results_table", results_table)
+
+    @property
+    @pulumi.getter(name="resultsTable")
+    def results_table(self) -> Optional[pulumi.Input[str]]:
+        """
+        The BigQuery table to export DataProfileScan results to.
+        Format://bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+        """
+        return pulumi.get(self, "results_table")
+
+    @results_table.setter
+    def results_table(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "results_table", value)
+
+
+@pulumi.input_type
 class DatascanDataQualitySpecRuleArgs:
     def __init__(__self__, *,
                  dimension: pulumi.Input[str],
                  column: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  ignore_null: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  non_null_expectation: Optional[pulumi.Input['DatascanDataQualitySpecRuleNonNullExpectationArgs']] = None,
                  range_expectation: Optional[pulumi.Input['DatascanDataQualitySpecRuleRangeExpectationArgs']] = None,
                  regex_expectation: Optional[pulumi.Input['DatascanDataQualitySpecRuleRegexExpectationArgs']] = None,
@@ -2300,7 +2554,14 @@ class DatascanDataQualitySpecRuleArgs:
         """
         :param pulumi.Input[str] dimension: The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are ["COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"]
         :param pulumi.Input[str] column: The unnested column which this rule is evaluated against.
+        :param pulumi.Input[str] description: Description of the rule.
+               The maximum length is 1,024 characters.
         :param pulumi.Input[bool] ignore_null: Rows with null values will automatically fail a rule, unless ignoreNull is true. In that case, such null rows are trivially considered passing. Only applicable to ColumnMap rules.
+        :param pulumi.Input[str] name: A mutable name for the rule.
+               The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+               The maximum length is 63 characters.
+               Must start with a letter.
+               Must end with a number or a letter.
         :param pulumi.Input['DatascanDataQualitySpecRuleNonNullExpectationArgs'] non_null_expectation: ColumnMap rule which evaluates whether each column value is null.
         :param pulumi.Input['DatascanDataQualitySpecRuleRangeExpectationArgs'] range_expectation: ColumnMap rule which evaluates whether each column value lies between a specified range.
                Structure is documented below.
@@ -2315,13 +2576,17 @@ class DatascanDataQualitySpecRuleArgs:
         :param pulumi.Input['DatascanDataQualitySpecRuleTableConditionExpectationArgs'] table_condition_expectation: Table rule which evaluates whether the provided expression is true.
                Structure is documented below.
         :param pulumi.Input[float] threshold: The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
-        :param pulumi.Input['DatascanDataQualitySpecRuleUniquenessExpectationArgs'] uniqueness_expectation: ColumnAggregate rule which evaluates whether the column has duplicates.
+        :param pulumi.Input['DatascanDataQualitySpecRuleUniquenessExpectationArgs'] uniqueness_expectation: Row-level rule which evaluates whether each column value is unique.
         """
         pulumi.set(__self__, "dimension", dimension)
         if column is not None:
             pulumi.set(__self__, "column", column)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if ignore_null is not None:
             pulumi.set(__self__, "ignore_null", ignore_null)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if non_null_expectation is not None:
             pulumi.set(__self__, "non_null_expectation", non_null_expectation)
         if range_expectation is not None:
@@ -2366,6 +2631,19 @@ class DatascanDataQualitySpecRuleArgs:
         pulumi.set(self, "column", value)
 
     @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the rule.
+        The maximum length is 1,024 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
     @pulumi.getter(name="ignoreNull")
     def ignore_null(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -2376,6 +2654,22 @@ class DatascanDataQualitySpecRuleArgs:
     @ignore_null.setter
     def ignore_null(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "ignore_null", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A mutable name for the rule.
+        The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+        The maximum length is 63 characters.
+        Must start with a letter.
+        Must end with a number or a letter.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="nonNullExpectation")
@@ -2483,7 +2777,7 @@ class DatascanDataQualitySpecRuleArgs:
     @pulumi.getter(name="uniquenessExpectation")
     def uniqueness_expectation(self) -> Optional[pulumi.Input['DatascanDataQualitySpecRuleUniquenessExpectationArgs']]:
         """
-        ColumnAggregate rule which evaluates whether the column has duplicates.
+        Row-level rule which evaluates whether each column value is unique.
         """
         return pulumi.get(self, "uniqueness_expectation")
 

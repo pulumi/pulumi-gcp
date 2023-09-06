@@ -43,6 +43,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.diagflow.inputs.CxFlowNluSettingsArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxFlowEventHandlerArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxFlowEventHandlerTriggerFulfillmentArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxFlowTransitionRouteArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxFlowTransitionRouteTriggerFulfillmentArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -115,7 +118,226 @@ import javax.annotation.Nullable;
  *                                 .build())
  *                             .build())
  *                         .build())
+ *                     .build(),
+ *                 CxFlowEventHandlerArgs.builder()
+ *                     .event(&#34;another-event&#34;)
+ *                     .triggerFulfillment(CxFlowEventHandlerTriggerFulfillmentArgs.builder()
+ *                         .returnPartialResponses(true)
+ *                         .messages(                        
+ *                             CxFlowEventHandlerTriggerFulfillmentMessageArgs.builder()
+ *                                 .channel(&#34;some-channel&#34;)
+ *                                 .text(CxFlowEventHandlerTriggerFulfillmentMessageTextArgs.builder()
+ *                                     .texts(&#34;Some text&#34;)
+ *                                     .build())
+ *                                 .build(),
+ *                             CxFlowEventHandlerTriggerFulfillmentMessageArgs.builder()
+ *                                 .payload(&#34;&#34;&#34;
+ *           {&#34;some-key&#34;: &#34;some-value&#34;, &#34;other-key&#34;: [&#34;other-value&#34;]}
+ *                                 &#34;&#34;&#34;)
+ *                                 .build(),
+ *                             CxFlowEventHandlerTriggerFulfillmentMessageArgs.builder()
+ *                                 .conversationSuccess(CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs.builder()
+ *                                     .metadata(&#34;&#34;&#34;
+ *             {&#34;some-metadata-key&#34;: &#34;some-value&#34;, &#34;other-metadata-key&#34;: 1234}
+ *                                     &#34;&#34;&#34;)
+ *                                     .build())
+ *                                 .build(),
+ *                             CxFlowEventHandlerTriggerFulfillmentMessageArgs.builder()
+ *                                 .outputAudioText(CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs.builder()
+ *                                     .text(&#34;some output text&#34;)
+ *                                     .build())
+ *                                 .build(),
+ *                             CxFlowEventHandlerTriggerFulfillmentMessageArgs.builder()
+ *                                 .outputAudioText(CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs.builder()
+ *                                     .ssml(&#34;&#34;&#34;
+ *             &lt;speak&gt;Some example &lt;say-as interpret-as=&#34;characters&#34;&gt;SSML XML&lt;/say-as&gt;&lt;/speak&gt;
+ *                                     &#34;&#34;&#34;)
+ *                                     .build())
+ *                                 .build(),
+ *                             CxFlowEventHandlerTriggerFulfillmentMessageArgs.builder()
+ *                                 .liveAgentHandoff(CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs.builder()
+ *                                     .metadata(&#34;&#34;&#34;
+ *             {&#34;some-metadata-key&#34;: &#34;some-value&#34;, &#34;other-metadata-key&#34;: 1234}
+ *                                     &#34;&#34;&#34;)
+ *                                     .build())
+ *                                 .build(),
+ *                             CxFlowEventHandlerTriggerFulfillmentMessageArgs.builder()
+ *                                 .playAudio(CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs.builder()
+ *                                     .audioUri(&#34;http://example.com/some-audio-file.mp3&#34;)
+ *                                     .build())
+ *                                 .build(),
+ *                             CxFlowEventHandlerTriggerFulfillmentMessageArgs.builder()
+ *                                 .telephonyTransferCall(CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs.builder()
+ *                                     .phoneNumber(&#34;1-234-567-8901&#34;)
+ *                                     .build())
+ *                                 .build())
+ *                         .setParameterActions(                        
+ *                             CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs.builder()
+ *                                 .parameter(&#34;some-param&#34;)
+ *                                 .value(&#34;123.45&#34;)
+ *                                 .build(),
+ *                             CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs.builder()
+ *                                 .parameter(&#34;another-param&#34;)
+ *                                 .value(serializeJson(
+ *                                     &#34;abc&#34;))
+ *                                 .build(),
+ *                             CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs.builder()
+ *                                 .parameter(&#34;other-param&#34;)
+ *                                 .value(serializeJson(
+ *                                     jsonArray(&#34;foo&#34;)))
+ *                                 .build())
+ *                         .conditionalCases(CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs.builder()
+ *                             .cases(serializeJson(
+ *                                 jsonArray(
+ *                                     jsonObject(
+ *                                         jsonProperty(&#34;condition&#34;, &#34;$sys.func.RAND() &lt; 0.5&#34;),
+ *                                         jsonProperty(&#34;caseContent&#34;, jsonArray(
+ *                                             jsonObject(
+ *                                                 jsonProperty(&#34;message&#34;, jsonObject(
+ *                                                     jsonProperty(&#34;text&#34;, jsonObject(
+ *                                                         jsonProperty(&#34;text&#34;, jsonArray(&#34;First case&#34;))
+ *                                                     ))
+ *                                                 ))
+ *                                             ), 
+ *                                             jsonObject(
+ *                                                 jsonProperty(&#34;additionalCases&#34;, jsonObject(
+ *                                                     jsonProperty(&#34;cases&#34;, jsonArray(jsonObject(
+ *                                                         jsonProperty(&#34;condition&#34;, &#34;$sys.func.RAND() &lt; 0.2&#34;),
+ *                                                         jsonProperty(&#34;caseContent&#34;, jsonArray(jsonObject(
+ *                                                             jsonProperty(&#34;message&#34;, jsonObject(
+ *                                                                 jsonProperty(&#34;text&#34;, jsonObject(
+ *                                                                     jsonProperty(&#34;text&#34;, jsonArray(&#34;Nested case&#34;))
+ *                                                                 ))
+ *                                                             ))
+ *                                                         )))
+ *                                                     )))
+ *                                                 ))
+ *                                             )
+ *                                         ))
+ *                                     ), 
+ *                                     jsonObject(
+ *                                         jsonProperty(&#34;caseContent&#34;, jsonArray(jsonObject(
+ *                                             jsonProperty(&#34;message&#34;, jsonObject(
+ *                                                 jsonProperty(&#34;text&#34;, jsonObject(
+ *                                                     jsonProperty(&#34;text&#34;, jsonArray(&#34;Final case&#34;))
+ *                                                 ))
+ *                                             ))
+ *                                         )))
+ *                                     )
+ *                                 )))
+ *                             .build())
+ *                         .build())
  *                     .build())
+ *             .transitionRoutes(CxFlowTransitionRouteArgs.builder()
+ *                 .condition(&#34;true&#34;)
+ *                 .triggerFulfillment(CxFlowTransitionRouteTriggerFulfillmentArgs.builder()
+ *                     .returnPartialResponses(true)
+ *                     .messages(                    
+ *                         CxFlowTransitionRouteTriggerFulfillmentMessageArgs.builder()
+ *                             .channel(&#34;some-channel&#34;)
+ *                             .text(CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs.builder()
+ *                                 .texts(&#34;Some text&#34;)
+ *                                 .build())
+ *                             .build(),
+ *                         CxFlowTransitionRouteTriggerFulfillmentMessageArgs.builder()
+ *                             .payload(&#34;&#34;&#34;
+ *           {&#34;some-key&#34;: &#34;some-value&#34;, &#34;other-key&#34;: [&#34;other-value&#34;]}
+ *                             &#34;&#34;&#34;)
+ *                             .build(),
+ *                         CxFlowTransitionRouteTriggerFulfillmentMessageArgs.builder()
+ *                             .conversationSuccess(CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs.builder()
+ *                                 .metadata(&#34;&#34;&#34;
+ *             {&#34;some-metadata-key&#34;: &#34;some-value&#34;, &#34;other-metadata-key&#34;: 1234}
+ *                                 &#34;&#34;&#34;)
+ *                                 .build())
+ *                             .build(),
+ *                         CxFlowTransitionRouteTriggerFulfillmentMessageArgs.builder()
+ *                             .outputAudioText(CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs.builder()
+ *                                 .text(&#34;some output text&#34;)
+ *                                 .build())
+ *                             .build(),
+ *                         CxFlowTransitionRouteTriggerFulfillmentMessageArgs.builder()
+ *                             .outputAudioText(CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs.builder()
+ *                                 .ssml(&#34;&#34;&#34;
+ *             &lt;speak&gt;Some example &lt;say-as interpret-as=&#34;characters&#34;&gt;SSML XML&lt;/say-as&gt;&lt;/speak&gt;
+ *                                 &#34;&#34;&#34;)
+ *                                 .build())
+ *                             .build(),
+ *                         CxFlowTransitionRouteTriggerFulfillmentMessageArgs.builder()
+ *                             .liveAgentHandoff(CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs.builder()
+ *                                 .metadata(&#34;&#34;&#34;
+ *             {&#34;some-metadata-key&#34;: &#34;some-value&#34;, &#34;other-metadata-key&#34;: 1234}
+ *                                 &#34;&#34;&#34;)
+ *                                 .build())
+ *                             .build(),
+ *                         CxFlowTransitionRouteTriggerFulfillmentMessageArgs.builder()
+ *                             .playAudio(CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs.builder()
+ *                                 .audioUri(&#34;http://example.com/some-audio-file.mp3&#34;)
+ *                                 .build())
+ *                             .build(),
+ *                         CxFlowTransitionRouteTriggerFulfillmentMessageArgs.builder()
+ *                             .telephonyTransferCall(CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs.builder()
+ *                                 .phoneNumber(&#34;1-234-567-8901&#34;)
+ *                                 .build())
+ *                             .build())
+ *                     .setParameterActions(                    
+ *                         CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs.builder()
+ *                             .parameter(&#34;some-param&#34;)
+ *                             .value(&#34;123.45&#34;)
+ *                             .build(),
+ *                         CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs.builder()
+ *                             .parameter(&#34;another-param&#34;)
+ *                             .value(serializeJson(
+ *                                 &#34;abc&#34;))
+ *                             .build(),
+ *                         CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs.builder()
+ *                             .parameter(&#34;other-param&#34;)
+ *                             .value(serializeJson(
+ *                                 jsonArray(&#34;foo&#34;)))
+ *                             .build())
+ *                     .conditionalCases(CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs.builder()
+ *                         .cases(serializeJson(
+ *                             jsonArray(
+ *                                 jsonObject(
+ *                                     jsonProperty(&#34;condition&#34;, &#34;$sys.func.RAND() &lt; 0.5&#34;),
+ *                                     jsonProperty(&#34;caseContent&#34;, jsonArray(
+ *                                         jsonObject(
+ *                                             jsonProperty(&#34;message&#34;, jsonObject(
+ *                                                 jsonProperty(&#34;text&#34;, jsonObject(
+ *                                                     jsonProperty(&#34;text&#34;, jsonArray(&#34;First case&#34;))
+ *                                                 ))
+ *                                             ))
+ *                                         ), 
+ *                                         jsonObject(
+ *                                             jsonProperty(&#34;additionalCases&#34;, jsonObject(
+ *                                                 jsonProperty(&#34;cases&#34;, jsonArray(jsonObject(
+ *                                                     jsonProperty(&#34;condition&#34;, &#34;$sys.func.RAND() &lt; 0.2&#34;),
+ *                                                     jsonProperty(&#34;caseContent&#34;, jsonArray(jsonObject(
+ *                                                         jsonProperty(&#34;message&#34;, jsonObject(
+ *                                                             jsonProperty(&#34;text&#34;, jsonObject(
+ *                                                                 jsonProperty(&#34;text&#34;, jsonArray(&#34;Nested case&#34;))
+ *                                                             ))
+ *                                                         ))
+ *                                                     )))
+ *                                                 )))
+ *                                             ))
+ *                                         )
+ *                                     ))
+ *                                 ), 
+ *                                 jsonObject(
+ *                                     jsonProperty(&#34;caseContent&#34;, jsonArray(jsonObject(
+ *                                         jsonProperty(&#34;message&#34;, jsonObject(
+ *                                             jsonProperty(&#34;text&#34;, jsonObject(
+ *                                                 jsonProperty(&#34;text&#34;, jsonArray(&#34;Final case&#34;))
+ *                                             ))
+ *                                         ))
+ *                                     )))
+ *                                 )
+ *                             )))
+ *                         .build())
+ *                     .build())
+ *                 .targetFlow(agent.startFlow())
+ *                 .build())
  *             .build());
  * 
  *     }

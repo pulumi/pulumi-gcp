@@ -51,7 +51,6 @@ namespace Pulumi.Gcp.Projects
     /// ```sh
     ///  $ pulumi import gcp:projects/service:Service my_project your-project-id/iam.googleapis.com
     /// ```
-    /// 
     ///  Note that unlike other resources that fail if they already exist, `pulumi up` can be successfully used to verify already enabled services. This means that when importing existing resources into Terraform, you can either import the `google_project_service` resources or treat them as new infrastructure and run `pulumi up` to add them to state.
     /// </summary>
     [GcpResourceType("gcp:projects/service:Service")]

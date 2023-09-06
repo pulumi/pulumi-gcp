@@ -315,7 +315,7 @@ class AccessLevel(pulumi.CustomResource):
 
         ## Import
 
-        AccessLevel can be imported using any of these accepted formats
+        AccessLevel can be imported using any of these accepted formats:
 
         ```sh
          $ pulumi import gcp:accesscontextmanager/accessLevel:AccessLevel default {{name}}
@@ -393,7 +393,7 @@ class AccessLevel(pulumi.CustomResource):
 
         ## Import
 
-        AccessLevel can be imported using any of these accepted formats
+        AccessLevel can be imported using any of these accepted formats:
 
         ```sh
          $ pulumi import gcp:accesscontextmanager/accessLevel:AccessLevel default {{name}}

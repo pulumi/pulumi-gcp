@@ -135,6 +135,10 @@ import * as utilities from "../utilities";
  *         webSsoConfig: {
  *             responseType: "CODE",
  *             assertionClaimsBehavior: "MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS",
+ *             additionalScopes: [
+ *                 "groups",
+ *                 "roles",
+ *             ],
  *         },
  *     },
  *     displayName: "Display name",

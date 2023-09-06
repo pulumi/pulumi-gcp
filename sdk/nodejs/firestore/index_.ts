@@ -51,7 +51,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Index can be imported using any of these accepted formats
+ * Index can be imported using any of these accepted formats:
  *
  * ```sh
  *  $ pulumi import gcp:firestore/index:Index default {{name}}

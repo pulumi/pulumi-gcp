@@ -86,7 +86,7 @@ import (
 //
 // ## Import
 //
-// # ServicePerimeterResource can be imported using any of these accepted formats
+// ServicePerimeterResource can be imported using any of these accepted formats:
 //
 // ```sh
 //

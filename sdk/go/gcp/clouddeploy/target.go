@@ -203,7 +203,7 @@ type Target struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location for the resource
 	Location pulumi.StringOutput `pulumi:"location"`
-	// (Beta only) Information specifying a multiTarget.
+	// Information specifying a multiTarget.
 	MultiTarget TargetMultiTargetPtrOutput `pulumi:"multiTarget"`
 	// Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
 	//
@@ -276,7 +276,7 @@ type targetState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
 	Location *string `pulumi:"location"`
-	// (Beta only) Information specifying a multiTarget.
+	// Information specifying a multiTarget.
 	MultiTarget *TargetMultiTarget `pulumi:"multiTarget"`
 	// Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
 	//
@@ -317,7 +317,7 @@ type TargetState struct {
 	Labels pulumi.StringMapInput
 	// The location for the resource
 	Location pulumi.StringPtrInput
-	// (Beta only) Information specifying a multiTarget.
+	// Information specifying a multiTarget.
 	MultiTarget TargetMultiTargetPtrInput
 	// Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
 	//
@@ -358,7 +358,7 @@ type targetArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the resource
 	Location string `pulumi:"location"`
-	// (Beta only) Information specifying a multiTarget.
+	// Information specifying a multiTarget.
 	MultiTarget *TargetMultiTarget `pulumi:"multiTarget"`
 	// Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
 	//
@@ -390,7 +390,7 @@ type TargetArgs struct {
 	Labels pulumi.StringMapInput
 	// The location for the resource
 	Location pulumi.StringInput
-	// (Beta only) Information specifying a multiTarget.
+	// Information specifying a multiTarget.
 	MultiTarget TargetMultiTargetPtrInput
 	// Name of the `Target`. Format is [a-z][a-z0-9\-]{0,62}.
 	//
@@ -541,7 +541,7 @@ func (o TargetOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Target) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// (Beta only) Information specifying a multiTarget.
+// Information specifying a multiTarget.
 func (o TargetOutput) MultiTarget() TargetMultiTargetPtrOutput {
 	return o.ApplyT(func(v *Target) TargetMultiTargetPtrOutput { return v.MultiTarget }).(TargetMultiTargetPtrOutput)
 }

@@ -84,10 +84,10 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
      * Structure is documented below.
      * 
      * @deprecated
-     * Deprecated in favor of `x509_description`.
+     * `config_values` is deprecated and will be removed in a future release. Use `x509_description` instead.
      * 
      */
-    @Deprecated /* Deprecated in favor of `x509_description`. */
+    @Deprecated /* `config_values` is deprecated and will be removed in a future release. Use `x509_description` instead. */
     @Import(name="configValues")
     private @Nullable Output<List<CertificateCertificateDescriptionConfigValueArgs>> configValues;
 
@@ -97,10 +97,10 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
      * Structure is documented below.
      * 
      * @deprecated
-     * Deprecated in favor of `x509_description`.
+     * `config_values` is deprecated and will be removed in a future release. Use `x509_description` instead.
      * 
      */
-    @Deprecated /* Deprecated in favor of `x509_description`. */
+    @Deprecated /* `config_values` is deprecated and will be removed in a future release. Use `x509_description` instead. */
     public Optional<Output<List<CertificateCertificateDescriptionConfigValueArgs>>> configValues() {
         return Optional.ofNullable(this.configValues);
     }
@@ -348,10 +348,10 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
          * @return builder
          * 
          * @deprecated
-         * Deprecated in favor of `x509_description`.
+         * `config_values` is deprecated and will be removed in a future release. Use `x509_description` instead.
          * 
          */
-        @Deprecated /* Deprecated in favor of `x509_description`. */
+        @Deprecated /* `config_values` is deprecated and will be removed in a future release. Use `x509_description` instead. */
         public Builder configValues(@Nullable Output<List<CertificateCertificateDescriptionConfigValueArgs>> configValues) {
             $.configValues = configValues;
             return this;
@@ -365,10 +365,10 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
          * @return builder
          * 
          * @deprecated
-         * Deprecated in favor of `x509_description`.
+         * `config_values` is deprecated and will be removed in a future release. Use `x509_description` instead.
          * 
          */
-        @Deprecated /* Deprecated in favor of `x509_description`. */
+        @Deprecated /* `config_values` is deprecated and will be removed in a future release. Use `x509_description` instead. */
         public Builder configValues(List<CertificateCertificateDescriptionConfigValueArgs> configValues) {
             return configValues(Output.of(configValues));
         }
@@ -381,10 +381,10 @@ public final class CertificateCertificateDescriptionArgs extends com.pulumi.reso
          * @return builder
          * 
          * @deprecated
-         * Deprecated in favor of `x509_description`.
+         * `config_values` is deprecated and will be removed in a future release. Use `x509_description` instead.
          * 
          */
-        @Deprecated /* Deprecated in favor of `x509_description`. */
+        @Deprecated /* `config_values` is deprecated and will be removed in a future release. Use `x509_description` instead. */
         public Builder configValues(CertificateCertificateDescriptionConfigValueArgs... configValues) {
             return configValues(List.of(configValues));
         }

@@ -12,6 +12,19 @@ namespace Pulumi.Gcp.Diagflow.Inputs
 
     public sealed class CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs : global::Pulumi.ResourceArgs
     {
+        [Input("conditionalCases")]
+        private InputList<Inputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArgs>? _conditionalCases;
+
+        /// <summary>
+        /// Conditional cases for this fulfillment.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArgs> ConditionalCases
+        {
+            get => _conditionalCases ?? (_conditionalCases = new InputList<Inputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArgs>());
+            set => _conditionalCases = value;
+        }
+
         [Input("messages")]
         private InputList<Inputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs>? _messages;
 
@@ -30,6 +43,19 @@ namespace Pulumi.Gcp.Diagflow.Inputs
         /// </summary>
         [Input("returnPartialResponses")]
         public Input<bool>? ReturnPartialResponses { get; set; }
+
+        [Input("setParameterActions")]
+        private InputList<Inputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgs>? _setParameterActions;
+
+        /// <summary>
+        /// Set parameter values before executing the webhook.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgs> SetParameterActions
+        {
+            get => _setParameterActions ?? (_setParameterActions = new InputList<Inputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgs>());
+            set => _setParameterActions = value;
+        }
 
         /// <summary>
         /// The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.

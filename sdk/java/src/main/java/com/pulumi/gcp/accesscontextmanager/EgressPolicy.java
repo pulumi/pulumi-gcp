@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * EgressPolicy can be imported using any of these accepted formats
+ * EgressPolicy can be imported using any of these accepted formats:
  * 
  * ```sh
  *  $ pulumi import gcp:accesscontextmanager/egressPolicy:EgressPolicy default {{egress_policy_name}}/{{resource}}

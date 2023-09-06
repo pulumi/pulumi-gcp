@@ -39,6 +39,10 @@ class DatascanArgs:
         :param pulumi.Input['DatascanDataQualitySpecArgs'] data_quality_spec: DataQualityScan related setting.
                Structure is documented below.
         :param pulumi.Input[str] description: Description of the scan.
+               
+               (Optional)
+               Description of the rule.
+               The maximum length is 1,024 characters.
         :param pulumi.Input[str] display_name: User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the scan. A list of key->value pairs.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -142,6 +146,10 @@ class DatascanArgs:
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         Description of the scan.
+
+        (Optional)
+        Description of the rule.
+        The maximum length is 1,024 characters.
         """
         return pulumi.get(self, "description")
 
@@ -214,16 +222,22 @@ class _DatascanState:
         :param pulumi.Input[str] create_time: The time when the scan was created.
         :param pulumi.Input['DatascanDataArgs'] data: The data source for DataScan.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['DatascanDataProfileResultArgs']]] data_profile_results: The result of the data profile scan.
+        :param pulumi.Input[Sequence[pulumi.Input['DatascanDataProfileResultArgs']]] data_profile_results: (Deprecated)
+               The result of the data profile scan.
                Structure is documented below.
         :param pulumi.Input['DatascanDataProfileSpecArgs'] data_profile_spec: DataProfileScan related setting.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultArgs']]] data_quality_results: The result of the data quality scan.
+        :param pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultArgs']]] data_quality_results: (Deprecated)
+               The result of the data quality scan.
                Structure is documented below.
         :param pulumi.Input['DatascanDataQualitySpecArgs'] data_quality_spec: DataQualityScan related setting.
                Structure is documented below.
         :param pulumi.Input[str] data_scan_id: DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
         :param pulumi.Input[str] description: Description of the scan.
+               
+               (Optional)
+               Description of the rule.
+               The maximum length is 1,024 characters.
         :param pulumi.Input[str] display_name: User friendly display name.
         :param pulumi.Input['DatascanExecutionSpecArgs'] execution_spec: DataScan execution settings.
                Structure is documented below.
@@ -231,7 +245,11 @@ class _DatascanState:
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the scan. A list of key->value pairs.
         :param pulumi.Input[str] location: The location where the data scan should reside.
-        :param pulumi.Input[str] name: The name of the field.
+        :param pulumi.Input[str] name: A mutable name for the rule.
+               The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+               The maximum length is 63 characters.
+               Must start with a letter.
+               Must end with a number or a letter.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] state: Current state of the DataScan.
@@ -244,9 +262,15 @@ class _DatascanState:
         if data is not None:
             pulumi.set(__self__, "data", data)
         if data_profile_results is not None:
+            warnings.warn("""`data_profile_result` is deprecated and will be removed in a future major release.""", DeprecationWarning)
+            pulumi.log.warn("""data_profile_results is deprecated: `data_profile_result` is deprecated and will be removed in a future major release.""")
+        if data_profile_results is not None:
             pulumi.set(__self__, "data_profile_results", data_profile_results)
         if data_profile_spec is not None:
             pulumi.set(__self__, "data_profile_spec", data_profile_spec)
+        if data_quality_results is not None:
+            warnings.warn("""`data_quality_result` is deprecated and will be removed in a future major release.""", DeprecationWarning)
+            pulumi.log.warn("""data_quality_results is deprecated: `data_quality_result` is deprecated and will be removed in a future major release.""")
         if data_quality_results is not None:
             pulumi.set(__self__, "data_quality_results", data_quality_results)
         if data_quality_spec is not None:
@@ -307,9 +331,13 @@ class _DatascanState:
     @pulumi.getter(name="dataProfileResults")
     def data_profile_results(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataProfileResultArgs']]]]:
         """
+        (Deprecated)
         The result of the data profile scan.
         Structure is documented below.
         """
+        warnings.warn("""`data_profile_result` is deprecated and will be removed in a future major release.""", DeprecationWarning)
+        pulumi.log.warn("""data_profile_results is deprecated: `data_profile_result` is deprecated and will be removed in a future major release.""")
+
         return pulumi.get(self, "data_profile_results")
 
     @data_profile_results.setter
@@ -333,9 +361,13 @@ class _DatascanState:
     @pulumi.getter(name="dataQualityResults")
     def data_quality_results(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultArgs']]]]:
         """
+        (Deprecated)
         The result of the data quality scan.
         Structure is documented below.
         """
+        warnings.warn("""`data_quality_result` is deprecated and will be removed in a future major release.""", DeprecationWarning)
+        pulumi.log.warn("""data_quality_results is deprecated: `data_quality_result` is deprecated and will be removed in a future major release.""")
+
         return pulumi.get(self, "data_quality_results")
 
     @data_quality_results.setter
@@ -372,6 +404,10 @@ class _DatascanState:
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         Description of the scan.
+
+        (Optional)
+        Description of the rule.
+        The maximum length is 1,024 characters.
         """
         return pulumi.get(self, "description")
 
@@ -445,7 +481,11 @@ class _DatascanState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the field.
+        A mutable name for the rule.
+        The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+        The maximum length is 63 characters.
+        Must start with a letter.
+        Must end with a number or a letter.
         """
         return pulumi.get(self, "name")
 
@@ -552,7 +592,7 @@ class Datascan(pulumi.CustomResource):
                 resource="//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare",
             ),
             data_profile_spec=gcp.dataplex.DatascanDataProfileSpecArgs(),
-            data_scan_id="tf-test-datascan%{random_suffix}",
+            data_scan_id="dataprofile-basic",
             execution_spec=gcp.dataplex.DatascanExecutionSpecArgs(
                 trigger=gcp.dataplex.DatascanExecutionSpecTriggerArgs(
                     on_demand=gcp.dataplex.DatascanExecutionSpecTriggerOnDemandArgs(),
@@ -567,17 +607,23 @@ class Datascan(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        source = gcp.bigquery.Dataset("source",
+            dataset_id="dataplex_dataset",
+            friendly_name="test",
+            description="This is a test description",
+            location="US",
+            delete_contents_on_destroy=True)
         full_profile = gcp.dataplex.Datascan("fullProfile",
+            location="us-central1",
+            display_name="Full Datascan Profile",
+            data_scan_id="dataprofile-full",
+            description="Example resource - Full Datascan Profile",
+            labels={
+                "author": "billing",
+            },
             data=gcp.dataplex.DatascanDataArgs(
                 resource="//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare",
             ),
-            data_profile_spec=gcp.dataplex.DatascanDataProfileSpecArgs(
-                row_filter="word_count > 10",
-                sampling_percent=80,
-            ),
-            data_scan_id="tf-test-datascan%{random_suffix}",
-            description="Example resource - Full Datascan Profile",
-            display_name="Full Datascan Profile",
             execution_spec=gcp.dataplex.DatascanExecutionSpecArgs(
                 trigger=gcp.dataplex.DatascanExecutionSpecTriggerArgs(
                     schedule=gcp.dataplex.DatascanExecutionSpecTriggerScheduleArgs(
@@ -585,11 +631,23 @@ class Datascan(pulumi.CustomResource):
                     ),
                 ),
             ),
-            labels={
-                "author": "billing",
-            },
-            location="us-central1",
-            project="my-project-name")
+            data_profile_spec=gcp.dataplex.DatascanDataProfileSpecArgs(
+                sampling_percent=80,
+                row_filter="word_count > 10",
+                include_fields=gcp.dataplex.DatascanDataProfileSpecIncludeFieldsArgs(
+                    field_names=["word_count"],
+                ),
+                exclude_fields=gcp.dataplex.DatascanDataProfileSpecExcludeFieldsArgs(
+                    field_names=["property_type"],
+                ),
+                post_scan_actions=gcp.dataplex.DatascanDataProfileSpecPostScanActionsArgs(
+                    bigquery_export=gcp.dataplex.DatascanDataProfileSpecPostScanActionsBigqueryExportArgs(
+                        results_table="//bigquery.googleapis.com/projects/my-project-name/datasets/dataplex_dataset/tables/profile_export",
+                    ),
+                ),
+            ),
+            project="my-project-name",
+            opts=pulumi.ResourceOptions(depends_on=[source]))
         ```
         ### Dataplex Datascan Basic Quality
 
@@ -603,13 +661,15 @@ class Datascan(pulumi.CustomResource):
             ),
             data_quality_spec=gcp.dataplex.DatascanDataQualitySpecArgs(
                 rules=[gcp.dataplex.DatascanDataQualitySpecRuleArgs(
+                    description="rule 1 for validity dimension",
                     dimension="VALIDITY",
+                    name="rule1",
                     table_condition_expectation=gcp.dataplex.DatascanDataQualitySpecRuleTableConditionExpectationArgs(
                         sql_expression="COUNT(*) > 0",
                     ),
                 )],
             ),
-            data_scan_id="tf-test-datascan%{random_suffix}",
+            data_scan_id="dataquality-basic",
             execution_spec=gcp.dataplex.DatascanExecutionSpecArgs(
                 trigger=gcp.dataplex.DatascanExecutionSpecTriggerArgs(
                     on_demand=gcp.dataplex.DatascanExecutionSpecTriggerOnDemandArgs(),
@@ -700,7 +760,7 @@ class Datascan(pulumi.CustomResource):
                 ],
                 sampling_percent=5,
             ),
-            data_scan_id="tf-test-datascan%{random_suffix}",
+            data_scan_id="dataquality-full",
             description="Example resource - Full Datascan Quality",
             display_name="Full Datascan Quality",
             execution_spec=gcp.dataplex.DatascanExecutionSpecArgs(
@@ -748,6 +808,10 @@ class Datascan(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] data_scan_id: DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
         :param pulumi.Input[str] description: Description of the scan.
+               
+               (Optional)
+               Description of the rule.
+               The maximum length is 1,024 characters.
         :param pulumi.Input[str] display_name: User friendly display name.
         :param pulumi.Input[pulumi.InputType['DatascanExecutionSpecArgs']] execution_spec: DataScan execution settings.
                Structure is documented below.
@@ -783,7 +847,7 @@ class Datascan(pulumi.CustomResource):
                 resource="//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare",
             ),
             data_profile_spec=gcp.dataplex.DatascanDataProfileSpecArgs(),
-            data_scan_id="tf-test-datascan%{random_suffix}",
+            data_scan_id="dataprofile-basic",
             execution_spec=gcp.dataplex.DatascanExecutionSpecArgs(
                 trigger=gcp.dataplex.DatascanExecutionSpecTriggerArgs(
                     on_demand=gcp.dataplex.DatascanExecutionSpecTriggerOnDemandArgs(),
@@ -798,17 +862,23 @@ class Datascan(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        source = gcp.bigquery.Dataset("source",
+            dataset_id="dataplex_dataset",
+            friendly_name="test",
+            description="This is a test description",
+            location="US",
+            delete_contents_on_destroy=True)
         full_profile = gcp.dataplex.Datascan("fullProfile",
+            location="us-central1",
+            display_name="Full Datascan Profile",
+            data_scan_id="dataprofile-full",
+            description="Example resource - Full Datascan Profile",
+            labels={
+                "author": "billing",
+            },
             data=gcp.dataplex.DatascanDataArgs(
                 resource="//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare",
             ),
-            data_profile_spec=gcp.dataplex.DatascanDataProfileSpecArgs(
-                row_filter="word_count > 10",
-                sampling_percent=80,
-            ),
-            data_scan_id="tf-test-datascan%{random_suffix}",
-            description="Example resource - Full Datascan Profile",
-            display_name="Full Datascan Profile",
             execution_spec=gcp.dataplex.DatascanExecutionSpecArgs(
                 trigger=gcp.dataplex.DatascanExecutionSpecTriggerArgs(
                     schedule=gcp.dataplex.DatascanExecutionSpecTriggerScheduleArgs(
@@ -816,11 +886,23 @@ class Datascan(pulumi.CustomResource):
                     ),
                 ),
             ),
-            labels={
-                "author": "billing",
-            },
-            location="us-central1",
-            project="my-project-name")
+            data_profile_spec=gcp.dataplex.DatascanDataProfileSpecArgs(
+                sampling_percent=80,
+                row_filter="word_count > 10",
+                include_fields=gcp.dataplex.DatascanDataProfileSpecIncludeFieldsArgs(
+                    field_names=["word_count"],
+                ),
+                exclude_fields=gcp.dataplex.DatascanDataProfileSpecExcludeFieldsArgs(
+                    field_names=["property_type"],
+                ),
+                post_scan_actions=gcp.dataplex.DatascanDataProfileSpecPostScanActionsArgs(
+                    bigquery_export=gcp.dataplex.DatascanDataProfileSpecPostScanActionsBigqueryExportArgs(
+                        results_table="//bigquery.googleapis.com/projects/my-project-name/datasets/dataplex_dataset/tables/profile_export",
+                    ),
+                ),
+            ),
+            project="my-project-name",
+            opts=pulumi.ResourceOptions(depends_on=[source]))
         ```
         ### Dataplex Datascan Basic Quality
 
@@ -834,13 +916,15 @@ class Datascan(pulumi.CustomResource):
             ),
             data_quality_spec=gcp.dataplex.DatascanDataQualitySpecArgs(
                 rules=[gcp.dataplex.DatascanDataQualitySpecRuleArgs(
+                    description="rule 1 for validity dimension",
                     dimension="VALIDITY",
+                    name="rule1",
                     table_condition_expectation=gcp.dataplex.DatascanDataQualitySpecRuleTableConditionExpectationArgs(
                         sql_expression="COUNT(*) > 0",
                     ),
                 )],
             ),
-            data_scan_id="tf-test-datascan%{random_suffix}",
+            data_scan_id="dataquality-basic",
             execution_spec=gcp.dataplex.DatascanExecutionSpecArgs(
                 trigger=gcp.dataplex.DatascanExecutionSpecTriggerArgs(
                     on_demand=gcp.dataplex.DatascanExecutionSpecTriggerOnDemandArgs(),
@@ -931,7 +1015,7 @@ class Datascan(pulumi.CustomResource):
                 ],
                 sampling_percent=5,
             ),
-            data_scan_id="tf-test-datascan%{random_suffix}",
+            data_scan_id="dataquality-full",
             description="Example resource - Full Datascan Quality",
             display_name="Full Datascan Quality",
             execution_spec=gcp.dataplex.DatascanExecutionSpecArgs(
@@ -1069,16 +1153,22 @@ class Datascan(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: The time when the scan was created.
         :param pulumi.Input[pulumi.InputType['DatascanDataArgs']] data: The data source for DataScan.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatascanDataProfileResultArgs']]]] data_profile_results: The result of the data profile scan.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatascanDataProfileResultArgs']]]] data_profile_results: (Deprecated)
+               The result of the data profile scan.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['DatascanDataProfileSpecArgs']] data_profile_spec: DataProfileScan related setting.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatascanDataQualityResultArgs']]]] data_quality_results: The result of the data quality scan.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatascanDataQualityResultArgs']]]] data_quality_results: (Deprecated)
+               The result of the data quality scan.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['DatascanDataQualitySpecArgs']] data_quality_spec: DataQualityScan related setting.
                Structure is documented below.
         :param pulumi.Input[str] data_scan_id: DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
         :param pulumi.Input[str] description: Description of the scan.
+               
+               (Optional)
+               Description of the rule.
+               The maximum length is 1,024 characters.
         :param pulumi.Input[str] display_name: User friendly display name.
         :param pulumi.Input[pulumi.InputType['DatascanExecutionSpecArgs']] execution_spec: DataScan execution settings.
                Structure is documented below.
@@ -1086,7 +1176,11 @@ class Datascan(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the scan. A list of key->value pairs.
         :param pulumi.Input[str] location: The location where the data scan should reside.
-        :param pulumi.Input[str] name: The name of the field.
+        :param pulumi.Input[str] name: A mutable name for the rule.
+               The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+               The maximum length is 63 characters.
+               Must start with a letter.
+               Must end with a number or a letter.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] state: Current state of the DataScan.
@@ -1140,9 +1234,13 @@ class Datascan(pulumi.CustomResource):
     @pulumi.getter(name="dataProfileResults")
     def data_profile_results(self) -> pulumi.Output[Sequence['outputs.DatascanDataProfileResult']]:
         """
+        (Deprecated)
         The result of the data profile scan.
         Structure is documented below.
         """
+        warnings.warn("""`data_profile_result` is deprecated and will be removed in a future major release.""", DeprecationWarning)
+        pulumi.log.warn("""data_profile_results is deprecated: `data_profile_result` is deprecated and will be removed in a future major release.""")
+
         return pulumi.get(self, "data_profile_results")
 
     @property
@@ -1158,9 +1256,13 @@ class Datascan(pulumi.CustomResource):
     @pulumi.getter(name="dataQualityResults")
     def data_quality_results(self) -> pulumi.Output[Sequence['outputs.DatascanDataQualityResult']]:
         """
+        (Deprecated)
         The result of the data quality scan.
         Structure is documented below.
         """
+        warnings.warn("""`data_quality_result` is deprecated and will be removed in a future major release.""", DeprecationWarning)
+        pulumi.log.warn("""data_quality_results is deprecated: `data_quality_result` is deprecated and will be removed in a future major release.""")
+
         return pulumi.get(self, "data_quality_results")
 
     @property
@@ -1185,6 +1287,10 @@ class Datascan(pulumi.CustomResource):
     def description(self) -> pulumi.Output[Optional[str]]:
         """
         Description of the scan.
+
+        (Optional)
+        Description of the rule.
+        The maximum length is 1,024 characters.
         """
         return pulumi.get(self, "description")
 
@@ -1234,7 +1340,11 @@ class Datascan(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the field.
+        A mutable name for the rule.
+        The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+        The maximum length is 63 characters.
+        Must start with a letter.
+        Must end with a number or a letter.
         """
         return pulumi.get(self, "name")
 

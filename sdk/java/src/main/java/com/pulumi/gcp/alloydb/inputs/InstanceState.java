@@ -237,7 +237,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Read pool specific config.
+     * Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
      * Structure is documented below.
      * 
      */
@@ -245,7 +245,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<InstanceReadPoolConfigArgs> readPoolConfig;
 
     /**
-     * @return Read pool specific config.
+     * @return Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
      * Structure is documented below.
      * 
      */
@@ -650,7 +650,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param readPoolConfig Read pool specific config.
+         * @param readPoolConfig Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
          * Structure is documented below.
          * 
          * @return builder
@@ -662,7 +662,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param readPoolConfig Read pool specific config.
+         * @param readPoolConfig Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
          * Structure is documented below.
          * 
          * @return builder

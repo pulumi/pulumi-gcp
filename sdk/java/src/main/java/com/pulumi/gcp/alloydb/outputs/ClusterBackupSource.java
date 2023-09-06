@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterBackupSource {
     /**
-     * @return The name of the backup resource.
+     * @return The name of the backup that this cluster is restored from.
      * 
      */
     private @Nullable String backupName;
 
     private ClusterBackupSource() {}
     /**
-     * @return The name of the backup resource.
+     * @return The name of the backup that this cluster is restored from.
      * 
      */
     public Optional<String> backupName() {

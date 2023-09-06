@@ -131,14 +131,14 @@ public class Config extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="authorizedDomains", type=List.class, parameters={String.class})
-    private Output</* @Nullable */ List<String>> authorizedDomains;
+    private Output<List<String>> authorizedDomains;
 
     /**
      * @return List of domains authorized for OAuth redirects.
      * 
      */
-    public Output<Optional<List<String>>> authorizedDomains() {
-        return Codegen.optional(this.authorizedDomains);
+    public Output<List<String>> authorizedDomains() {
+        return this.authorizedDomains;
     }
     /**
      * Whether anonymous users will be auto-deleted after a period of 30 days

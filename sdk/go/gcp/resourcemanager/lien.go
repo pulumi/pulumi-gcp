@@ -59,7 +59,7 @@ import (
 //
 // ## Import
 //
-// # Lien can be imported using any of these accepted formats
+// Lien can be imported using any of these accepted formats:
 //
 // ```sh
 //

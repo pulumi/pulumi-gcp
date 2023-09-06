@@ -373,7 +373,7 @@ class CustomConstraint(pulumi.CustomResource):
 
         ## Import
 
-        CustomConstraint can be imported using any of these accepted formats
+        CustomConstraint can be imported using any of these accepted formats:
 
         ```sh
          $ pulumi import gcp:orgpolicy/customConstraint:CustomConstraint default {{parent}}/customConstraints/{{name}}
@@ -449,7 +449,7 @@ class CustomConstraint(pulumi.CustomResource):
 
         ## Import
 
-        CustomConstraint can be imported using any of these accepted formats
+        CustomConstraint can be imported using any of these accepted formats:
 
         ```sh
          $ pulumi import gcp:orgpolicy/customConstraint:CustomConstraint default {{parent}}/customConstraints/{{name}}

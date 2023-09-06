@@ -79,8 +79,9 @@ type RegionTargetHttpsProxy struct {
 	// connections between users and the load balancer. Currently, exactly
 	// one SSL certificate must be specified.
 	SslCertificates pulumi.StringArrayOutput `pulumi:"sslCertificates"`
-	// A reference to the Region SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the
-	// TargetHttpsProxy resource will not have any SSL policy configured.
+	// A reference to the Region SslPolicy resource that will be associated with
+	// the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
+	// resource will not have any SSL policy configured.
 	SslPolicy pulumi.StringPtrOutput `pulumi:"sslPolicy"`
 	// A reference to the RegionUrlMap resource that defines the mapping from URL
 	// to the RegionBackendService.
@@ -151,8 +152,9 @@ type regionTargetHttpsProxyState struct {
 	// connections between users and the load balancer. Currently, exactly
 	// one SSL certificate must be specified.
 	SslCertificates []string `pulumi:"sslCertificates"`
-	// A reference to the Region SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the
-	// TargetHttpsProxy resource will not have any SSL policy configured.
+	// A reference to the Region SslPolicy resource that will be associated with
+	// the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
+	// resource will not have any SSL policy configured.
 	SslPolicy *string `pulumi:"sslPolicy"`
 	// A reference to the RegionUrlMap resource that defines the mapping from URL
 	// to the RegionBackendService.
@@ -188,8 +190,9 @@ type RegionTargetHttpsProxyState struct {
 	// connections between users and the load balancer. Currently, exactly
 	// one SSL certificate must be specified.
 	SslCertificates pulumi.StringArrayInput
-	// A reference to the Region SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the
-	// TargetHttpsProxy resource will not have any SSL policy configured.
+	// A reference to the Region SslPolicy resource that will be associated with
+	// the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
+	// resource will not have any SSL policy configured.
 	SslPolicy pulumi.StringPtrInput
 	// A reference to the RegionUrlMap resource that defines the mapping from URL
 	// to the RegionBackendService.
@@ -223,8 +226,9 @@ type regionTargetHttpsProxyArgs struct {
 	// connections between users and the load balancer. Currently, exactly
 	// one SSL certificate must be specified.
 	SslCertificates []string `pulumi:"sslCertificates"`
-	// A reference to the Region SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the
-	// TargetHttpsProxy resource will not have any SSL policy configured.
+	// A reference to the Region SslPolicy resource that will be associated with
+	// the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
+	// resource will not have any SSL policy configured.
 	SslPolicy *string `pulumi:"sslPolicy"`
 	// A reference to the RegionUrlMap resource that defines the mapping from URL
 	// to the RegionBackendService.
@@ -255,8 +259,9 @@ type RegionTargetHttpsProxyArgs struct {
 	// connections between users and the load balancer. Currently, exactly
 	// one SSL certificate must be specified.
 	SslCertificates pulumi.StringArrayInput
-	// A reference to the Region SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the
-	// TargetHttpsProxy resource will not have any SSL policy configured.
+	// A reference to the Region SslPolicy resource that will be associated with
+	// the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
+	// resource will not have any SSL policy configured.
 	SslPolicy pulumi.StringPtrInput
 	// A reference to the RegionUrlMap resource that defines the mapping from URL
 	// to the RegionBackendService.
@@ -402,8 +407,9 @@ func (o RegionTargetHttpsProxyOutput) SslCertificates() pulumi.StringArrayOutput
 	return o.ApplyT(func(v *RegionTargetHttpsProxy) pulumi.StringArrayOutput { return v.SslCertificates }).(pulumi.StringArrayOutput)
 }
 
-// A reference to the Region SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the
-// TargetHttpsProxy resource will not have any SSL policy configured.
+// A reference to the Region SslPolicy resource that will be associated with
+// the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
+// resource will not have any SSL policy configured.
 func (o RegionTargetHttpsProxyOutput) SslPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionTargetHttpsProxy) pulumi.StringPtrOutput { return v.SslPolicy }).(pulumi.StringPtrOutput)
 }

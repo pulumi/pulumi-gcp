@@ -36,6 +36,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// This setting can be updated, but it cannot be removed after it is set.
         /// </summary>
         public readonly string? PrivateNetwork;
+        public readonly ImmutableArray<Outputs.DatabaseInstanceSettingsIpConfigurationPscConfig> PscConfigs;
         /// <summary>
         /// Whether SSL connections over IP are enforced or not.
         /// </summary>
@@ -53,6 +54,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             string? privateNetwork,
 
+            ImmutableArray<Outputs.DatabaseInstanceSettingsIpConfigurationPscConfig> pscConfigs,
+
             bool? requireSsl)
         {
             AllocatedIpRange = allocatedIpRange;
@@ -60,6 +63,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             EnablePrivatePathForGoogleCloudServices = enablePrivatePathForGoogleCloudServices;
             Ipv4Enabled = ipv4Enabled;
             PrivateNetwork = privateNetwork;
+            PscConfigs = pscConfigs;
             RequireSsl = requireSsl;
         }
     }

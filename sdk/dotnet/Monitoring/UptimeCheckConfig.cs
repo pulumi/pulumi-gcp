@@ -215,10 +215,72 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// });
     /// ```
+    /// ### Uptime Check Config Synthetic Monitor
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
+    ///     {
+    ///         Location = "US",
+    ///         UniformBucketLevelAccess = true,
+    ///     });
+    /// 
+    ///     var @object = new Gcp.Storage.BucketObject("object", new()
+    ///     {
+    ///         Bucket = bucket.Name,
+    ///         Source = new FileAsset("synthetic-fn-source.zip"),
+    ///     });
+    /// 
+    ///     // Add path to the zipped function source code
+    ///     var function = new Gcp.CloudFunctionsV2.Function("function", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         BuildConfig = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigArgs
+    ///         {
+    ///             Runtime = "nodejs16",
+    ///             EntryPoint = "SyntheticFunction",
+    ///             Source = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigSourceArgs
+    ///             {
+    ///                 StorageSource = new Gcp.CloudFunctionsV2.Inputs.FunctionBuildConfigSourceStorageSourceArgs
+    ///                 {
+    ///                     Bucket = bucket.Name,
+    ///                     Object = @object.Name,
+    ///                 },
+    ///             },
+    ///         },
+    ///         ServiceConfig = new Gcp.CloudFunctionsV2.Inputs.FunctionServiceConfigArgs
+    ///         {
+    ///             MaxInstanceCount = 1,
+    ///             AvailableMemory = "256M",
+    ///             TimeoutSeconds = 60,
+    ///         },
+    ///     });
+    /// 
+    ///     var syntheticMonitor = new Gcp.Monitoring.UptimeCheckConfig("syntheticMonitor", new()
+    ///     {
+    ///         DisplayName = "synthetic_monitor",
+    ///         Timeout = "60s",
+    ///         SyntheticMonitor = new Gcp.Monitoring.Inputs.UptimeCheckConfigSyntheticMonitorArgs
+    ///         {
+    ///             CloudFunctionV2 = new Gcp.Monitoring.Inputs.UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args
+    ///             {
+    ///                 Name = function.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
-    /// UptimeCheckConfig can be imported using any of these accepted formats
+    /// UptimeCheckConfig can be imported using any of these accepted formats:
     /// 
     /// ```sh
     ///  $ pulumi import gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig default {{name}}
@@ -262,7 +324,7 @@ namespace Pulumi.Gcp.Monitoring
         public Output<Outputs.UptimeCheckConfigMonitoredResource?> MonitoredResource { get; private set; } = null!;
 
         /// <summary>
-        /// A unique resource name for this UptimeCheckConfig. The format is projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
+        /// The fully qualified name of the cloud function resource.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -292,6 +354,13 @@ namespace Pulumi.Gcp.Monitoring
         /// </summary>
         [Output("selectedRegions")]
         public Output<ImmutableArray<string>> SelectedRegions { get; private set; } = null!;
+
+        /// <summary>
+        /// A Synthetic Monitor deployed to a Cloud Functions V2 instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("syntheticMonitor")]
+        public Output<Outputs.UptimeCheckConfigSyntheticMonitor?> SyntheticMonitor { get; private set; } = null!;
 
         /// <summary>
         /// Contains information needed to make a TCP check.
@@ -434,6 +503,13 @@ namespace Pulumi.Gcp.Monitoring
         }
 
         /// <summary>
+        /// A Synthetic Monitor deployed to a Cloud Functions V2 instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("syntheticMonitor")]
+        public Input<Inputs.UptimeCheckConfigSyntheticMonitorArgs>? SyntheticMonitor { get; set; }
+
+        /// <summary>
         /// Contains information needed to make a TCP check.
         /// Structure is documented below.
         /// </summary>
@@ -498,7 +574,7 @@ namespace Pulumi.Gcp.Monitoring
         public Input<Inputs.UptimeCheckConfigMonitoredResourceGetArgs>? MonitoredResource { get; set; }
 
         /// <summary>
-        /// A unique resource name for this UptimeCheckConfig. The format is projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
+        /// The fully qualified name of the cloud function resource.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -534,6 +610,13 @@ namespace Pulumi.Gcp.Monitoring
             get => _selectedRegions ?? (_selectedRegions = new InputList<string>());
             set => _selectedRegions = value;
         }
+
+        /// <summary>
+        /// A Synthetic Monitor deployed to a Cloud Functions V2 instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("syntheticMonitor")]
+        public Input<Inputs.UptimeCheckConfigSyntheticMonitorGetArgs>? SyntheticMonitor { get; set; }
 
         /// <summary>
         /// Contains information needed to make a TCP check.

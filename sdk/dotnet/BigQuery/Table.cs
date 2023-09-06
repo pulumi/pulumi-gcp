@@ -185,6 +185,21 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// A mapping of labels to assign to the resource.
+        /// 
+        /// * &lt;a name="schema"&gt;&lt;/a&gt;`schema` - (Optional) A JSON schema for the table.
+        /// 
+        /// ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
+        /// string will create a diff, even if the JSON itself hasn't changed.
+        /// If the API returns a different value for the same schema, e.g. it
+        /// switched the order of values or replaced `STRUCT` field type with `RECORD`
+        /// field type, we currently cannot suppress the recurring diff this causes.
+        /// As a workaround, we recommend using the schema as returned by the API.
+        /// 
+        /// ~&gt;**NOTE:**  If you use `external_data_configuration`
+        /// documented below and do **not** set
+        /// `external_data_configuration.connection_id`, schemas must be specified
+        /// with `external_data_configuration.schema`. Otherwise, schemas must be
+        /// specified with this top-level field.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -247,17 +262,21 @@ namespace Pulumi.Gcp.BigQuery
         public Output<Outputs.TableRangePartitioning?> RangePartitioning { get; private set; } = null!;
 
         /// <summary>
-        /// A JSON schema for the table.
-        /// 
+        /// A JSON schema for the external table. Schema is required
+        /// for CSV and JSON formats if autodetect is not on. Schema is disallowed
+        /// for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
         /// ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
         /// string will create a diff, even if the JSON itself hasn't changed.
-        /// If the API returns a different value for the same schema, e.g. it
-        /// switched the order of values or replaced `STRUCT` field type with `RECORD`
-        /// field type, we currently cannot suppress the recurring diff this causes.
-        /// As a workaround, we recommend using the schema as returned by the API.
+        /// Furthermore drift for this field cannot not be detected because BigQuery
+        /// only uses this schema to compute the effective schema for the table, therefore
+        /// any changes on the configured value will force the table to be recreated.
+        /// This schema is effectively only applied when creating a table from an external
+        /// datasource, after creation the computed schema will be stored in
+        /// `google_bigquery_table.schema`
         /// 
-        /// ~&gt;**NOTE:**  When setting `schema` for `external_data_configuration`, please use
-        /// `external_data_configuration.schema` documented below.
+        /// ~&gt;**NOTE:** If you set `external_data_configuration.connection_id`, the
+        /// table schema must be specified using the top-level `schema` field
+        /// documented above.
         /// </summary>
         [Output("schema")]
         public Output<string> Schema { get; private set; } = null!;
@@ -413,6 +432,21 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// A mapping of labels to assign to the resource.
+        /// 
+        /// * &lt;a name="schema"&gt;&lt;/a&gt;`schema` - (Optional) A JSON schema for the table.
+        /// 
+        /// ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
+        /// string will create a diff, even if the JSON itself hasn't changed.
+        /// If the API returns a different value for the same schema, e.g. it
+        /// switched the order of values or replaced `STRUCT` field type with `RECORD`
+        /// field type, we currently cannot suppress the recurring diff this causes.
+        /// As a workaround, we recommend using the schema as returned by the API.
+        /// 
+        /// ~&gt;**NOTE:**  If you use `external_data_configuration`
+        /// documented below and do **not** set
+        /// `external_data_configuration.connection_id`, schemas must be specified
+        /// with `external_data_configuration.schema`. Otherwise, schemas must be
+        /// specified with this top-level field.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -448,17 +482,21 @@ namespace Pulumi.Gcp.BigQuery
         public Input<Inputs.TableRangePartitioningArgs>? RangePartitioning { get; set; }
 
         /// <summary>
-        /// A JSON schema for the table.
-        /// 
+        /// A JSON schema for the external table. Schema is required
+        /// for CSV and JSON formats if autodetect is not on. Schema is disallowed
+        /// for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
         /// ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
         /// string will create a diff, even if the JSON itself hasn't changed.
-        /// If the API returns a different value for the same schema, e.g. it
-        /// switched the order of values or replaced `STRUCT` field type with `RECORD`
-        /// field type, we currently cannot suppress the recurring diff this causes.
-        /// As a workaround, we recommend using the schema as returned by the API.
+        /// Furthermore drift for this field cannot not be detected because BigQuery
+        /// only uses this schema to compute the effective schema for the table, therefore
+        /// any changes on the configured value will force the table to be recreated.
+        /// This schema is effectively only applied when creating a table from an external
+        /// datasource, after creation the computed schema will be stored in
+        /// `google_bigquery_table.schema`
         /// 
-        /// ~&gt;**NOTE:**  When setting `schema` for `external_data_configuration`, please use
-        /// `external_data_configuration.schema` documented below.
+        /// ~&gt;**NOTE:** If you set `external_data_configuration.connection_id`, the
+        /// table schema must be specified using the top-level `schema` field
+        /// documented above.
         /// </summary>
         [Input("schema")]
         public Input<string>? Schema { get; set; }
@@ -575,6 +613,21 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// A mapping of labels to assign to the resource.
+        /// 
+        /// * &lt;a name="schema"&gt;&lt;/a&gt;`schema` - (Optional) A JSON schema for the table.
+        /// 
+        /// ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
+        /// string will create a diff, even if the JSON itself hasn't changed.
+        /// If the API returns a different value for the same schema, e.g. it
+        /// switched the order of values or replaced `STRUCT` field type with `RECORD`
+        /// field type, we currently cannot suppress the recurring diff this causes.
+        /// As a workaround, we recommend using the schema as returned by the API.
+        /// 
+        /// ~&gt;**NOTE:**  If you use `external_data_configuration`
+        /// documented below and do **not** set
+        /// `external_data_configuration.connection_id`, schemas must be specified
+        /// with `external_data_configuration.schema`. Otherwise, schemas must be
+        /// specified with this top-level field.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -640,17 +693,21 @@ namespace Pulumi.Gcp.BigQuery
         public Input<Inputs.TableRangePartitioningGetArgs>? RangePartitioning { get; set; }
 
         /// <summary>
-        /// A JSON schema for the table.
-        /// 
+        /// A JSON schema for the external table. Schema is required
+        /// for CSV and JSON formats if autodetect is not on. Schema is disallowed
+        /// for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
         /// ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
         /// string will create a diff, even if the JSON itself hasn't changed.
-        /// If the API returns a different value for the same schema, e.g. it
-        /// switched the order of values or replaced `STRUCT` field type with `RECORD`
-        /// field type, we currently cannot suppress the recurring diff this causes.
-        /// As a workaround, we recommend using the schema as returned by the API.
+        /// Furthermore drift for this field cannot not be detected because BigQuery
+        /// only uses this schema to compute the effective schema for the table, therefore
+        /// any changes on the configured value will force the table to be recreated.
+        /// This schema is effectively only applied when creating a table from an external
+        /// datasource, after creation the computed schema will be stored in
+        /// `google_bigquery_table.schema`
         /// 
-        /// ~&gt;**NOTE:**  When setting `schema` for `external_data_configuration`, please use
-        /// `external_data_configuration.schema` documented below.
+        /// ~&gt;**NOTE:** If you set `external_data_configuration.connection_id`, the
+        /// table schema must be specified using the top-level `schema` field
+        /// documented above.
         /// </summary>
         [Input("schema")]
         public Input<string>? Schema { get; set; }

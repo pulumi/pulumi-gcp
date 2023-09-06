@@ -226,7 +226,10 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<Outputs.RegionDiskGuestOsFeature>> GuestOsFeatures { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+        /// 
+        /// &gt; **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
         /// </summary>
         [Output("interface")]
         public Output<string?> Interface { get; private set; } = null!;
@@ -478,7 +481,10 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+        /// 
+        /// &gt; **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
         /// </summary>
         [Input("interface")]
         public Input<string>? Interface { get; set; }
@@ -665,7 +671,10 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
+        /// (Optional, Deprecated)
         /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+        /// 
+        /// &gt; **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
         /// </summary>
         [Input("interface")]
         public Input<string>? Interface { get; set; }

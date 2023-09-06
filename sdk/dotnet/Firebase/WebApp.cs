@@ -108,6 +108,48 @@ namespace Pulumi.Gcp.Firebase
     /// 
     /// });
     /// ```
+    /// ### Firebase Web App Custom Api Key
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var web = new Gcp.Projects.ApiKey("web", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         DisplayName = "Display Name",
+    ///         Restrictions = new Gcp.Projects.Inputs.ApiKeyRestrictionsArgs
+    ///         {
+    ///             BrowserKeyRestrictions = new Gcp.Projects.Inputs.ApiKeyRestrictionsBrowserKeyRestrictionsArgs
+    ///             {
+    ///                 AllowedReferrers = new[]
+    ///                 {
+    ///                     "*",
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Firebase.WebApp("default", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         DisplayName = "Display Name",
+    ///         ApiKeyId = web.Uid,
+    ///         DeletionPolicy = "DELETE",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -136,6 +178,14 @@ namespace Pulumi.Gcp.Firebase
     [GcpResourceType("gcp:firebase/webApp:WebApp")]
     public partial class WebApp : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the WebApp.
+        /// If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the WebApp.
+        /// This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+        /// </summary>
+        [Output("apiKeyId")]
+        public Output<string> ApiKeyId { get; private set; } = null!;
+
         /// <summary>
         /// The globally unique, Firebase-assigned identifier of the App.
         /// This identifier should be treated as an opaque token, as the data format is not specified.
@@ -226,6 +276,14 @@ namespace Pulumi.Gcp.Firebase
     public sealed class WebAppArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the WebApp.
+        /// If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the WebApp.
+        /// This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+        /// </summary>
+        [Input("apiKeyId")]
+        public Input<string>? ApiKeyId { get; set; }
+
+        /// <summary>
         /// Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
         /// This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'ABANDON'
         /// </summary>
@@ -256,6 +314,14 @@ namespace Pulumi.Gcp.Firebase
 
     public sealed class WebAppState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the WebApp.
+        /// If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the WebApp.
+        /// This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+        /// </summary>
+        [Input("apiKeyId")]
+        public Input<string>? ApiKeyId { get; set; }
+
         /// <summary>
         /// The globally unique, Firebase-assigned identifier of the App.
         /// This identifier should be treated as an opaque token, as the data format is not specified.

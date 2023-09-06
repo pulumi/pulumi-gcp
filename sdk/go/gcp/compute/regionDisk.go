@@ -231,9 +231,12 @@ type RegionDisk struct {
 	// Applicable only for bootable disks.
 	// Structure is documented below.
 	GuestOsFeatures RegionDiskGuestOsFeatureArrayOutput `pulumi:"guestOsFeatures"`
+	// (Optional, Deprecated)
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 	//
-	// Deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.
+	// > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
+	//
+	// Deprecated: `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
 	Interface pulumi.StringPtrOutput `pulumi:"interface"`
 	// The fingerprint used for optimistic locking of this resource.  Used
 	// internally during updates.
@@ -373,9 +376,12 @@ type regionDiskState struct {
 	// Applicable only for bootable disks.
 	// Structure is documented below.
 	GuestOsFeatures []RegionDiskGuestOsFeature `pulumi:"guestOsFeatures"`
+	// (Optional, Deprecated)
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 	//
-	// Deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.
+	// > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
+	//
+	// Deprecated: `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
 	Interface *string `pulumi:"interface"`
 	// The fingerprint used for optimistic locking of this resource.  Used
 	// internally during updates.
@@ -483,9 +489,12 @@ type RegionDiskState struct {
 	// Applicable only for bootable disks.
 	// Structure is documented below.
 	GuestOsFeatures RegionDiskGuestOsFeatureArrayInput
+	// (Optional, Deprecated)
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 	//
-	// Deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.
+	// > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
+	//
+	// Deprecated: `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
 	Interface pulumi.StringPtrInput
 	// The fingerprint used for optimistic locking of this resource.  Used
 	// internally during updates.
@@ -595,9 +604,12 @@ type regionDiskArgs struct {
 	// Applicable only for bootable disks.
 	// Structure is documented below.
 	GuestOsFeatures []RegionDiskGuestOsFeature `pulumi:"guestOsFeatures"`
+	// (Optional, Deprecated)
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 	//
-	// Deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.
+	// > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
+	//
+	// Deprecated: `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
 	Interface *string `pulumi:"interface"`
 	// Labels to apply to this disk.  A list of key->value pairs.
 	Labels map[string]string `pulumi:"labels"`
@@ -681,9 +693,12 @@ type RegionDiskArgs struct {
 	// Applicable only for bootable disks.
 	// Structure is documented below.
 	GuestOsFeatures RegionDiskGuestOsFeatureArrayInput
+	// (Optional, Deprecated)
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 	//
-	// Deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.
+	// > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
+	//
+	// Deprecated: `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
 	Interface pulumi.StringPtrInput
 	// Labels to apply to this disk.  A list of key->value pairs.
 	Labels pulumi.StringMapInput
@@ -869,9 +884,12 @@ func (o RegionDiskOutput) GuestOsFeatures() RegionDiskGuestOsFeatureArrayOutput 
 	return o.ApplyT(func(v *RegionDisk) RegionDiskGuestOsFeatureArrayOutput { return v.GuestOsFeatures }).(RegionDiskGuestOsFeatureArrayOutput)
 }
 
+// (Optional, Deprecated)
 // Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 //
-// Deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.
+// > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
+//
+// Deprecated: `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
 func (o RegionDiskOutput) Interface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionDisk) pulumi.StringPtrOutput { return v.Interface }).(pulumi.StringPtrOutput)
 }

@@ -69,7 +69,10 @@ class DiskArgs:
                [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
                For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
                These images can be referred by family name here.
-        :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+        :param pulumi.Input[str] interface: (Optional, Deprecated)
+               Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+               
+               > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: Any applicable license URI.
         :param pulumi.Input[bool] multi_writer: Indicates whether or not the disk can be read/write attached to more than one instance.
@@ -149,8 +152,8 @@ class DiskArgs:
         if image is not None:
             pulumi.set(__self__, "image", image)
         if interface is not None:
-            warnings.warn("""This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.""", DeprecationWarning)
-            pulumi.log.warn("""interface is deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.""")
+            warnings.warn("""`interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.""", DeprecationWarning)
+            pulumi.log.warn("""interface is deprecated: `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.""")
         if interface is not None:
             pulumi.set(__self__, "interface", interface)
         if labels is not None:
@@ -284,10 +287,13 @@ class DiskArgs:
     @pulumi.getter
     def interface(self) -> Optional[pulumi.Input[str]]:
         """
+        (Optional, Deprecated)
         Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+
+        > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
         """
-        warnings.warn("""This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.""", DeprecationWarning)
-        pulumi.log.warn("""interface is deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.""")
+        warnings.warn("""`interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.""", DeprecationWarning)
+        pulumi.log.warn("""interface is deprecated: `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.""")
 
         return pulumi.get(self, "interface")
 
@@ -603,7 +609,10 @@ class _DiskState:
                [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
                For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
                These images can be referred by family name here.
-        :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+        :param pulumi.Input[str] interface: (Optional, Deprecated)
+               Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+               
+               > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource.  Used
                internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
@@ -706,8 +715,8 @@ class _DiskState:
         if image is not None:
             pulumi.set(__self__, "image", image)
         if interface is not None:
-            warnings.warn("""This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.""", DeprecationWarning)
-            pulumi.log.warn("""interface is deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.""")
+            warnings.warn("""`interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.""", DeprecationWarning)
+            pulumi.log.warn("""interface is deprecated: `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.""")
         if interface is not None:
             pulumi.set(__self__, "interface", interface)
         if label_fingerprint is not None:
@@ -869,10 +878,13 @@ class _DiskState:
     @pulumi.getter
     def interface(self) -> Optional[pulumi.Input[str]]:
         """
+        (Optional, Deprecated)
         Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+
+        > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
         """
-        warnings.warn("""This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.""", DeprecationWarning)
-        pulumi.log.warn("""interface is deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.""")
+        warnings.warn("""`interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.""", DeprecationWarning)
+        pulumi.log.warn("""interface is deprecated: `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.""")
 
         return pulumi.get(self, "interface")
 
@@ -1394,7 +1406,10 @@ class Disk(pulumi.CustomResource):
                [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
                For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
                These images can be referred by family name here.
-        :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+        :param pulumi.Input[str] interface: (Optional, Deprecated)
+               Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+               
+               > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: Any applicable license URI.
         :param pulumi.Input[bool] multi_writer: Indicates whether or not the disk can be read/write attached to more than one instance.
@@ -1625,8 +1640,8 @@ class Disk(pulumi.CustomResource):
             __props__.__dict__["guest_os_features"] = guest_os_features
             __props__.__dict__["image"] = image
             if interface is not None and not opts.urn:
-                warnings.warn("""This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.""", DeprecationWarning)
-                pulumi.log.warn("""interface is deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.""")
+                warnings.warn("""`interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.""", DeprecationWarning)
+                pulumi.log.warn("""interface is deprecated: `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.""")
             __props__.__dict__["interface"] = interface
             __props__.__dict__["labels"] = labels
             __props__.__dict__["licenses"] = licenses
@@ -1731,7 +1746,10 @@ class Disk(pulumi.CustomResource):
                [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
                For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
                These images can be referred by family name here.
-        :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+        :param pulumi.Input[str] interface: (Optional, Deprecated)
+               Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+               
+               > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource.  Used
                internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
@@ -1939,10 +1957,13 @@ class Disk(pulumi.CustomResource):
     @pulumi.getter
     def interface(self) -> pulumi.Output[Optional[str]]:
         """
+        (Optional, Deprecated)
         Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+
+        > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
         """
-        warnings.warn("""This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.""", DeprecationWarning)
-        pulumi.log.warn("""interface is deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.""")
+        warnings.warn("""`interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.""", DeprecationWarning)
+        pulumi.log.warn("""interface is deprecated: `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.""")
 
         return pulumi.get(self, "interface")
 

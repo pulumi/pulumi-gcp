@@ -199,9 +199,12 @@ export class RegionDisk extends pulumi.CustomResource {
      */
     public readonly guestOsFeatures!: pulumi.Output<outputs.compute.RegionDiskGuestOsFeature[]>;
     /**
+     * (Optional, Deprecated)
      * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
      *
-     * @deprecated This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.
+     * > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
+     *
+     * @deprecated `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
      */
     public readonly interface!: pulumi.Output<string | undefined>;
     /**
@@ -436,9 +439,12 @@ export interface RegionDiskState {
      */
     guestOsFeatures?: pulumi.Input<pulumi.Input<inputs.compute.RegionDiskGuestOsFeature>[]>;
     /**
+     * (Optional, Deprecated)
      * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
      *
-     * @deprecated This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.
+     * > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
+     *
+     * @deprecated `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
      */
     interface?: pulumi.Input<string>;
     /**
@@ -596,9 +602,12 @@ export interface RegionDiskArgs {
      */
     guestOsFeatures?: pulumi.Input<pulumi.Input<inputs.compute.RegionDiskGuestOsFeature>[]>;
     /**
+     * (Optional, Deprecated)
      * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
      *
-     * @deprecated This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.
+     * > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
+     *
+     * @deprecated `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
      */
     interface?: pulumi.Input<string>;
     /**

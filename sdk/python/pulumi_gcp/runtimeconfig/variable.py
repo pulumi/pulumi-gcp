@@ -279,11 +279,9 @@ class Variable(pulumi.CustomResource):
         ```sh
          $ pulumi import gcp:runtimeconfig/variable:Variable myvariable myconfig/myvariable
         ```
-
         ```sh
-         $ pulumi import gcp:runtimeconfig/variable:Variable myvariable projects/my-gcp-project/configs/myconfig/variables/myvariable
+        $ pulumi import gcp:runtimeconfig/variable:Variable myvariable projects/my-gcp-project/configs/myconfig/variables/myvariable
         ```
-
          When importing using only the name, the provider project must be set.
 
         :param str resource_name: The name of the resource.
@@ -345,11 +343,9 @@ class Variable(pulumi.CustomResource):
         ```sh
          $ pulumi import gcp:runtimeconfig/variable:Variable myvariable myconfig/myvariable
         ```
-
         ```sh
-         $ pulumi import gcp:runtimeconfig/variable:Variable myvariable projects/my-gcp-project/configs/myconfig/variables/myvariable
+        $ pulumi import gcp:runtimeconfig/variable:Variable myvariable projects/my-gcp-project/configs/myconfig/variables/myvariable
         ```
-
          When importing using only the name, the provider project must be set.
 
         :param str resource_name: The name of the resource.

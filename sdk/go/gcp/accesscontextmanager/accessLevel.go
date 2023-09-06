@@ -87,7 +87,7 @@ import (
 //
 // ## Import
 //
-// # AccessLevel can be imported using any of these accepted formats
+// AccessLevel can be imported using any of these accepted formats:
 //
 // ```sh
 //

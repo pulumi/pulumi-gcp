@@ -369,17 +369,21 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * (Optional, Deprecated)
      * The name of the Filestore zone of the instance.
      * 
+     * &gt; **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
+     * 
      * @deprecated
-     * Deprecated in favor of location.
+     * `zone` is deprecated and will be removed in a future major release. Use `location` instead.
      * 
      */
-    @Deprecated /* Deprecated in favor of location. */
+    @Deprecated /* `zone` is deprecated and will be removed in a future major release. Use `location` instead. */
     @Export(name="zone", type=String.class, parameters={})
     private Output<String> zone;
 
     /**
      * @return (Optional, Deprecated)
      * The name of the Filestore zone of the instance.
+     * 
+     * &gt; **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
      * 
      */
     public Output<String> zone() {

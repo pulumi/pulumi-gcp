@@ -5,11 +5,14 @@ package com.pulumi.gcp.artifactregistry.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.artifactregistry.inputs.RepositoryCleanupPolicyArgs;
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryDockerConfigArgs;
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryMavenConfigArgs;
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigArgs;
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryVirtualRepositoryConfigArgs;
+import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -19,6 +22,40 @@ import javax.annotation.Nullable;
 public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
 
     public static final RepositoryState Empty = new RepositoryState();
+
+    /**
+     * Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
+     * deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
+     * under 128 characters in length.
+     * 
+     */
+    @Import(name="cleanupPolicies")
+    private @Nullable Output<List<RepositoryCleanupPolicyArgs>> cleanupPolicies;
+
+    /**
+     * @return Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
+     * deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
+     * under 128 characters in length.
+     * 
+     */
+    public Optional<Output<List<RepositoryCleanupPolicyArgs>>> cleanupPolicies() {
+        return Optional.ofNullable(this.cleanupPolicies);
+    }
+
+    /**
+     * If true, the cleanup pipeline is prevented from deleting versions in this repository.
+     * 
+     */
+    @Import(name="cleanupPolicyDryRun")
+    private @Nullable Output<Boolean> cleanupPolicyDryRun;
+
+    /**
+     * @return If true, the cleanup pipeline is prevented from deleting versions in this repository.
+     * 
+     */
+    public Optional<Output<Boolean>> cleanupPolicyDryRun() {
+        return Optional.ofNullable(this.cleanupPolicyDryRun);
+    }
 
     /**
      * The time when the repository was created.
@@ -294,6 +331,8 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
     private RepositoryState() {}
 
     private RepositoryState(RepositoryState $) {
+        this.cleanupPolicies = $.cleanupPolicies;
+        this.cleanupPolicyDryRun = $.cleanupPolicyDryRun;
         this.createTime = $.createTime;
         this.description = $.description;
         this.dockerConfig = $.dockerConfig;
@@ -327,6 +366,64 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(RepositoryState defaults) {
             $ = new RepositoryState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param cleanupPolicies Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
+         * deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
+         * under 128 characters in length.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cleanupPolicies(@Nullable Output<List<RepositoryCleanupPolicyArgs>> cleanupPolicies) {
+            $.cleanupPolicies = cleanupPolicies;
+            return this;
+        }
+
+        /**
+         * @param cleanupPolicies Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
+         * deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
+         * under 128 characters in length.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cleanupPolicies(List<RepositoryCleanupPolicyArgs> cleanupPolicies) {
+            return cleanupPolicies(Output.of(cleanupPolicies));
+        }
+
+        /**
+         * @param cleanupPolicies Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
+         * deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
+         * under 128 characters in length.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cleanupPolicies(RepositoryCleanupPolicyArgs... cleanupPolicies) {
+            return cleanupPolicies(List.of(cleanupPolicies));
+        }
+
+        /**
+         * @param cleanupPolicyDryRun If true, the cleanup pipeline is prevented from deleting versions in this repository.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cleanupPolicyDryRun(@Nullable Output<Boolean> cleanupPolicyDryRun) {
+            $.cleanupPolicyDryRun = cleanupPolicyDryRun;
+            return this;
+        }
+
+        /**
+         * @param cleanupPolicyDryRun If true, the cleanup pipeline is prevented from deleting versions in this repository.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cleanupPolicyDryRun(Boolean cleanupPolicyDryRun) {
+            return cleanupPolicyDryRun(Output.of(cleanupPolicyDryRun));
         }
 
         /**

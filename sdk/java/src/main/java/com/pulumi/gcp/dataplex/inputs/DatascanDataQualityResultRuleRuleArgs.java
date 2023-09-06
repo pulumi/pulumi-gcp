@@ -204,14 +204,14 @@ public final class DatascanDataQualityResultRuleRuleArgs extends com.pulumi.reso
     }
 
     /**
-     * ColumnAggregate rule which evaluates whether the column has duplicates.
+     * Row-level rule which evaluates whether each column value is unique.
      * 
      */
     @Import(name="uniquenessExpectations")
     private @Nullable Output<List<DatascanDataQualityResultRuleRuleUniquenessExpectationArgs>> uniquenessExpectations;
 
     /**
-     * @return ColumnAggregate rule which evaluates whether the column has duplicates.
+     * @return Row-level rule which evaluates whether each column value is unique.
      * 
      */
     public Optional<Output<List<DatascanDataQualityResultRuleRuleUniquenessExpectationArgs>>> uniquenessExpectations() {
@@ -573,7 +573,7 @@ public final class DatascanDataQualityResultRuleRuleArgs extends com.pulumi.reso
         }
 
         /**
-         * @param uniquenessExpectations ColumnAggregate rule which evaluates whether the column has duplicates.
+         * @param uniquenessExpectations Row-level rule which evaluates whether each column value is unique.
          * 
          * @return builder
          * 
@@ -584,7 +584,7 @@ public final class DatascanDataQualityResultRuleRuleArgs extends com.pulumi.reso
         }
 
         /**
-         * @param uniquenessExpectations ColumnAggregate rule which evaluates whether the column has duplicates.
+         * @param uniquenessExpectations Row-level rule which evaluates whether each column value is unique.
          * 
          * @return builder
          * 
@@ -594,7 +594,7 @@ public final class DatascanDataQualityResultRuleRuleArgs extends com.pulumi.reso
         }
 
         /**
-         * @param uniquenessExpectations ColumnAggregate rule which evaluates whether the column has duplicates.
+         * @param uniquenessExpectations Row-level rule which evaluates whether each column value is unique.
          * 
          * @return builder
          * 

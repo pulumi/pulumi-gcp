@@ -14,6 +14,10 @@ __all__ = [
     'RepositoryReleaseConfigCodeCompilationConfigArgs',
     'RepositoryReleaseConfigRecentScheduledReleaseRecordArgs',
     'RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgs',
+    'RepositoryWorkflowConfigInvocationConfigArgs',
+    'RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs',
+    'RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs',
+    'RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgs',
     'RepositoryWorkspaceCompilationOverridesArgs',
 ]
 
@@ -293,6 +297,272 @@ class RepositoryReleaseConfigRecentScheduledReleaseRecordArgs:
 
 @pulumi.input_type
 class RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgs:
+    def __init__(__self__, *,
+                 code: Optional[pulumi.Input[int]] = None,
+                 message: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] code: (Output)
+               The status code, which should be an enum value of google.rpc.Code.
+        :param pulumi.Input[str] message: (Output)
+               A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Output)
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "code", value)
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "message", value)
+
+
+@pulumi.input_type
+class RepositoryWorkflowConfigInvocationConfigArgs:
+    def __init__(__self__, *,
+                 fully_refresh_incremental_tables_enabled: Optional[pulumi.Input[bool]] = None,
+                 included_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 included_targets: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs']]]] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
+                 transitive_dependencies_included: Optional[pulumi.Input[bool]] = None,
+                 transitive_dependents_included: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] fully_refresh_incremental_tables_enabled: Optional. When set to true, any incremental tables will be fully refreshed.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] included_tags: Optional. The set of tags to include.
+        :param pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs']]] included_targets: Optional. The set of action identifiers to include.
+               Structure is documented below.
+        :param pulumi.Input[str] service_account: Optional. The service account to run workflow invocations under.
+        :param pulumi.Input[bool] transitive_dependencies_included: Optional. When set to true, transitive dependencies of included actions will be executed.
+        :param pulumi.Input[bool] transitive_dependents_included: Optional. When set to true, transitive dependents of included actions will be executed.
+        """
+        if fully_refresh_incremental_tables_enabled is not None:
+            pulumi.set(__self__, "fully_refresh_incremental_tables_enabled", fully_refresh_incremental_tables_enabled)
+        if included_tags is not None:
+            pulumi.set(__self__, "included_tags", included_tags)
+        if included_targets is not None:
+            pulumi.set(__self__, "included_targets", included_targets)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
+        if transitive_dependencies_included is not None:
+            pulumi.set(__self__, "transitive_dependencies_included", transitive_dependencies_included)
+        if transitive_dependents_included is not None:
+            pulumi.set(__self__, "transitive_dependents_included", transitive_dependents_included)
+
+    @property
+    @pulumi.getter(name="fullyRefreshIncrementalTablesEnabled")
+    def fully_refresh_incremental_tables_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. When set to true, any incremental tables will be fully refreshed.
+        """
+        return pulumi.get(self, "fully_refresh_incremental_tables_enabled")
+
+    @fully_refresh_incremental_tables_enabled.setter
+    def fully_refresh_incremental_tables_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "fully_refresh_incremental_tables_enabled", value)
+
+    @property
+    @pulumi.getter(name="includedTags")
+    def included_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. The set of tags to include.
+        """
+        return pulumi.get(self, "included_tags")
+
+    @included_tags.setter
+    def included_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "included_tags", value)
+
+    @property
+    @pulumi.getter(name="includedTargets")
+    def included_targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs']]]]:
+        """
+        Optional. The set of action identifiers to include.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "included_targets")
+
+    @included_targets.setter
+    def included_targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs']]]]):
+        pulumi.set(self, "included_targets", value)
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The service account to run workflow invocations under.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account", value)
+
+    @property
+    @pulumi.getter(name="transitiveDependenciesIncluded")
+    def transitive_dependencies_included(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. When set to true, transitive dependencies of included actions will be executed.
+        """
+        return pulumi.get(self, "transitive_dependencies_included")
+
+    @transitive_dependencies_included.setter
+    def transitive_dependencies_included(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "transitive_dependencies_included", value)
+
+    @property
+    @pulumi.getter(name="transitiveDependentsIncluded")
+    def transitive_dependents_included(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. When set to true, transitive dependents of included actions will be executed.
+        """
+        return pulumi.get(self, "transitive_dependents_included")
+
+    @transitive_dependents_included.setter
+    def transitive_dependents_included(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "transitive_dependents_included", value)
+
+
+@pulumi.input_type
+class RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs:
+    def __init__(__self__, *,
+                 database: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 schema: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] database: The action's database (Google Cloud project ID).
+        :param pulumi.Input[str] name: The action's name, within database and schema.
+        :param pulumi.Input[str] schema: The action's schema (BigQuery dataset ID), within database.
+        """
+        if database is not None:
+            pulumi.set(__self__, "database", database)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
+
+    @property
+    @pulumi.getter
+    def database(self) -> Optional[pulumi.Input[str]]:
+        """
+        The action's database (Google Cloud project ID).
+        """
+        return pulumi.get(self, "database")
+
+    @database.setter
+    def database(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "database", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The action's name, within database and schema.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def schema(self) -> Optional[pulumi.Input[str]]:
+        """
+        The action's schema (BigQuery dataset ID), within database.
+        """
+        return pulumi.get(self, "schema")
+
+    @schema.setter
+    def schema(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schema", value)
+
+
+@pulumi.input_type
+class RepositoryWorkflowConfigRecentScheduledExecutionRecordArgs:
+    def __init__(__self__, *,
+                 error_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgs']]]] = None,
+                 execution_time: Optional[pulumi.Input[str]] = None,
+                 workflow_invocation: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgs']]] error_statuses: (Output)
+               The error status encountered upon this attempt to create the workflow invocation, if the attempt was unsuccessful.
+               Structure is documented below.
+        :param pulumi.Input[str] execution_time: (Output)
+               The timestamp of this workflow attempt.
+        :param pulumi.Input[str] workflow_invocation: (Output)
+               The name of the created workflow invocation, if one was successfully created. In the format projects/*/locations/*/repositories/*/workflowInvocations/*.
+        """
+        if error_statuses is not None:
+            pulumi.set(__self__, "error_statuses", error_statuses)
+        if execution_time is not None:
+            pulumi.set(__self__, "execution_time", execution_time)
+        if workflow_invocation is not None:
+            pulumi.set(__self__, "workflow_invocation", workflow_invocation)
+
+    @property
+    @pulumi.getter(name="errorStatuses")
+    def error_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgs']]]]:
+        """
+        (Output)
+        The error status encountered upon this attempt to create the workflow invocation, if the attempt was unsuccessful.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "error_statuses")
+
+    @error_statuses.setter
+    def error_statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgs']]]]):
+        pulumi.set(self, "error_statuses", value)
+
+    @property
+    @pulumi.getter(name="executionTime")
+    def execution_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The timestamp of this workflow attempt.
+        """
+        return pulumi.get(self, "execution_time")
+
+    @execution_time.setter
+    def execution_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "execution_time", value)
+
+    @property
+    @pulumi.getter(name="workflowInvocation")
+    def workflow_invocation(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The name of the created workflow invocation, if one was successfully created. In the format projects/*/locations/*/repositories/*/workflowInvocations/*.
+        """
+        return pulumi.get(self, "workflow_invocation")
+
+    @workflow_invocation.setter
+    def workflow_invocation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "workflow_invocation", value)
+
+
+@pulumi.input_type
+class RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgs:
     def __init__(__self__, *,
                  code: Optional[pulumi.Input[int]] = None,
                  message: Optional[pulumi.Input[str]] = None):

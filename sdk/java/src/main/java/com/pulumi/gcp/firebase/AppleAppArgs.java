@@ -16,6 +16,25 @@ public final class AppleAppArgs extends com.pulumi.resources.ResourceArgs {
     public static final AppleAppArgs Empty = new AppleAppArgs();
 
     /**
+     * The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AppleApp.
+     * If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AppleApp.
+     * This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+     * 
+     */
+    @Import(name="apiKeyId")
+    private @Nullable Output<String> apiKeyId;
+
+    /**
+     * @return The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AppleApp.
+     * If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AppleApp.
+     * This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+     * 
+     */
+    public Optional<Output<String>> apiKeyId() {
+        return Optional.ofNullable(this.apiKeyId);
+    }
+
+    /**
      * The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
      * 
      */
@@ -118,6 +137,7 @@ public final class AppleAppArgs extends com.pulumi.resources.ResourceArgs {
     private AppleAppArgs() {}
 
     private AppleAppArgs(AppleAppArgs $) {
+        this.apiKeyId = $.apiKeyId;
         this.appStoreId = $.appStoreId;
         this.bundleId = $.bundleId;
         this.deletionPolicy = $.deletionPolicy;
@@ -142,6 +162,31 @@ public final class AppleAppArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(AppleAppArgs defaults) {
             $ = new AppleAppArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param apiKeyId The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AppleApp.
+         * If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AppleApp.
+         * This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apiKeyId(@Nullable Output<String> apiKeyId) {
+            $.apiKeyId = apiKeyId;
+            return this;
+        }
+
+        /**
+         * @param apiKeyId The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AppleApp.
+         * If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AppleApp.
+         * This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apiKeyId(String apiKeyId) {
+            return apiKeyId(Output.of(apiKeyId));
         }
 
         /**

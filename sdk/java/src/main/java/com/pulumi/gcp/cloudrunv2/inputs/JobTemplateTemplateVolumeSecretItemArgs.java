@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class JobTemplateTemplateVolumeSecretItemArgs extends com.pulumi.resources.ResourceArgs {
@@ -18,15 +20,15 @@ public final class JobTemplateTemplateVolumeSecretItemArgs extends com.pulumi.re
      * Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume&#39;s default mode will be used.
      * 
      */
-    @Import(name="mode", required=true)
-    private Output<Integer> mode;
+    @Import(name="mode")
+    private @Nullable Output<Integer> mode;
 
     /**
      * @return Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume&#39;s default mode will be used.
      * 
      */
-    public Output<Integer> mode() {
-        return this.mode;
+    public Optional<Output<Integer>> mode() {
+        return Optional.ofNullable(this.mode);
     }
 
     /**
@@ -91,7 +93,7 @@ public final class JobTemplateTemplateVolumeSecretItemArgs extends com.pulumi.re
          * @return builder
          * 
          */
-        public Builder mode(Output<Integer> mode) {
+        public Builder mode(@Nullable Output<Integer> mode) {
             $.mode = mode;
             return this;
         }
@@ -149,7 +151,6 @@ public final class JobTemplateTemplateVolumeSecretItemArgs extends com.pulumi.re
         }
 
         public JobTemplateTemplateVolumeSecretItemArgs build() {
-            $.mode = Objects.requireNonNull($.mode, "expected parameter 'mode' to be non-null");
             $.path = Objects.requireNonNull($.path, "expected parameter 'path' to be non-null");
             $.version = Objects.requireNonNull($.version, "expected parameter 'version' to be non-null");
             return $;

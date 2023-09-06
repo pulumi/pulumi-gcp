@@ -21,7 +21,10 @@ class GetAppleAppResult:
     """
     A collection of values returned by getAppleApp.
     """
-    def __init__(__self__, app_id=None, app_store_id=None, bundle_id=None, deletion_policy=None, display_name=None, id=None, name=None, project=None, team_id=None):
+    def __init__(__self__, api_key_id=None, app_id=None, app_store_id=None, bundle_id=None, deletion_policy=None, display_name=None, id=None, name=None, project=None, team_id=None):
+        if api_key_id and not isinstance(api_key_id, str):
+            raise TypeError("Expected argument 'api_key_id' to be a str")
+        pulumi.set(__self__, "api_key_id", api_key_id)
         if app_id and not isinstance(app_id, str):
             raise TypeError("Expected argument 'app_id' to be a str")
         pulumi.set(__self__, "app_id", app_id)
@@ -49,6 +52,11 @@ class GetAppleAppResult:
         if team_id and not isinstance(team_id, str):
             raise TypeError("Expected argument 'team_id' to be a str")
         pulumi.set(__self__, "team_id", team_id)
+
+    @property
+    @pulumi.getter(name="apiKeyId")
+    def api_key_id(self) -> str:
+        return pulumi.get(self, "api_key_id")
 
     @property
     @pulumi.getter(name="appId")
@@ -125,6 +133,7 @@ class AwaitableGetAppleAppResult(GetAppleAppResult):
         if False:
             yield self
         return GetAppleAppResult(
+            api_key_id=self.api_key_id,
             app_id=self.app_id,
             app_store_id=self.app_store_id,
             bundle_id=self.bundle_id,
@@ -156,6 +165,7 @@ def get_apple_app(app_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:firebase/getAppleApp:getAppleApp', __args__, opts=opts, typ=GetAppleAppResult).value
 
     return AwaitableGetAppleAppResult(
+        api_key_id=pulumi.get(__ret__, 'api_key_id'),
         app_id=pulumi.get(__ret__, 'app_id'),
         app_store_id=pulumi.get(__ret__, 'app_store_id'),
         bundle_id=pulumi.get(__ret__, 'bundle_id'),

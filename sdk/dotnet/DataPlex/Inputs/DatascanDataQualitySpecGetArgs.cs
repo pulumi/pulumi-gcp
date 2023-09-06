@@ -13,6 +13,13 @@ namespace Pulumi.Gcp.DataPlex.Inputs
     public sealed class DatascanDataQualitySpecGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Actions to take upon job completion.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("postScanActions")]
+        public Input<Inputs.DatascanDataQualitySpecPostScanActionsGetArgs>? PostScanActions { get; set; }
+
+        /// <summary>
         /// A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 &gt;= 0 AND col2 &lt; 10
         /// </summary>
         [Input("rowFilter")]
@@ -33,6 +40,8 @@ namespace Pulumi.Gcp.DataPlex.Inputs
 
         /// <summary>
         /// The percentage of the records to be selected from the dataset for DataScan.
+        /// Value can range between 0.0 and 100.0 with up to 3 significant decimal digits.
+        /// Sampling is not applied if `sampling_percent` is not specified, 0 or 100.
         /// </summary>
         [Input("samplingPercent")]
         public Input<double>? SamplingPercent { get; set; }

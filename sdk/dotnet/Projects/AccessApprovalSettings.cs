@@ -182,7 +182,9 @@ namespace Pulumi.Gcp.Projects
 
         /// <summary>
         /// (Optional, Deprecated)
-        /// Deprecated in favor of `project_id`
+        /// Project id.
+        /// 
+        /// &gt; **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
         /// </summary>
         [Output("project")]
         public Output<string?> Project { get; private set; } = null!;
@@ -279,7 +281,9 @@ namespace Pulumi.Gcp.Projects
 
         /// <summary>
         /// (Optional, Deprecated)
-        /// Deprecated in favor of `project_id`
+        /// Project id.
+        /// 
+        /// &gt; **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -365,7 +369,9 @@ namespace Pulumi.Gcp.Projects
 
         /// <summary>
         /// (Optional, Deprecated)
-        /// Deprecated in favor of `project_id`
+        /// Project id.
+        /// 
+        /// &gt; **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }

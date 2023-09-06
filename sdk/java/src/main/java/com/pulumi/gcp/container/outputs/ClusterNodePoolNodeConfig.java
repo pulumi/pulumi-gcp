@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigAdvancedMachineFeatures;
+import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigConfidentialNodes;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigEphemeralStorageConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigGcfsConfig;
@@ -42,6 +43,11 @@ public final class ClusterNodePoolNodeConfig {
      * 
      */
     private @Nullable String bootDiskKmsKey;
+    /**
+     * @return Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+     * 
+     */
+    private @Nullable ClusterNodePoolNodeConfigConfidentialNodes confidentialNodes;
     /**
      * @return Size of the disk attached to each node, specified
      * in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
@@ -406,6 +412,13 @@ public final class ClusterNodePoolNodeConfig {
      */
     public Optional<String> bootDiskKmsKey() {
         return Optional.ofNullable(this.bootDiskKmsKey);
+    }
+    /**
+     * @return Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+     * 
+     */
+    public Optional<ClusterNodePoolNodeConfigConfidentialNodes> confidentialNodes() {
+        return Optional.ofNullable(this.confidentialNodes);
     }
     /**
      * @return Size of the disk attached to each node, specified
@@ -829,6 +842,7 @@ public final class ClusterNodePoolNodeConfig {
     public static final class Builder {
         private @Nullable ClusterNodePoolNodeConfigAdvancedMachineFeatures advancedMachineFeatures;
         private @Nullable String bootDiskKmsKey;
+        private @Nullable ClusterNodePoolNodeConfigConfidentialNodes confidentialNodes;
         private @Nullable Integer diskSizeGb;
         private @Nullable String diskType;
         private @Nullable ClusterNodePoolNodeConfigEphemeralStorageConfig ephemeralStorageConfig;
@@ -865,6 +879,7 @@ public final class ClusterNodePoolNodeConfig {
     	      Objects.requireNonNull(defaults);
     	      this.advancedMachineFeatures = defaults.advancedMachineFeatures;
     	      this.bootDiskKmsKey = defaults.bootDiskKmsKey;
+    	      this.confidentialNodes = defaults.confidentialNodes;
     	      this.diskSizeGb = defaults.diskSizeGb;
     	      this.diskType = defaults.diskType;
     	      this.ephemeralStorageConfig = defaults.ephemeralStorageConfig;
@@ -906,6 +921,11 @@ public final class ClusterNodePoolNodeConfig {
         @CustomType.Setter
         public Builder bootDiskKmsKey(@Nullable String bootDiskKmsKey) {
             this.bootDiskKmsKey = bootDiskKmsKey;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder confidentialNodes(@Nullable ClusterNodePoolNodeConfigConfidentialNodes confidentialNodes) {
+            this.confidentialNodes = confidentialNodes;
             return this;
         }
         @CustomType.Setter
@@ -1079,6 +1099,7 @@ public final class ClusterNodePoolNodeConfig {
             final var o = new ClusterNodePoolNodeConfig();
             o.advancedMachineFeatures = advancedMachineFeatures;
             o.bootDiskKmsKey = bootDiskKmsKey;
+            o.confidentialNodes = confidentialNodes;
             o.diskSizeGb = diskSizeGb;
             o.diskType = diskType;
             o.ephemeralStorageConfig = ephemeralStorageConfig;

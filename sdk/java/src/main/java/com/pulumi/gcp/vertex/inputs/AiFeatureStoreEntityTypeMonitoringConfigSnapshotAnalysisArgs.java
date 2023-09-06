@@ -34,19 +34,19 @@ public final class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs 
 
     /**
      * @deprecated
-     * This field is unavailable in the GA provider and will be removed from the beta provider in a future release.
+     * `monitoring_interval` is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* This field is unavailable in the GA provider and will be removed from the beta provider in a future release. */
+    @Deprecated /* `monitoring_interval` is deprecated and will be removed in a future release. */
     @Import(name="monitoringInterval")
     private @Nullable Output<String> monitoringInterval;
 
     /**
      * @deprecated
-     * This field is unavailable in the GA provider and will be removed from the beta provider in a future release.
+     * `monitoring_interval` is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* This field is unavailable in the GA provider and will be removed from the beta provider in a future release. */
+    @Deprecated /* `monitoring_interval` is deprecated and will be removed in a future release. */
     public Optional<Output<String>> monitoringInterval() {
         return Optional.ofNullable(this.monitoringInterval);
     }
@@ -135,10 +135,10 @@ public final class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs 
          * @return builder
          * 
          * @deprecated
-         * This field is unavailable in the GA provider and will be removed from the beta provider in a future release.
+         * `monitoring_interval` is deprecated and will be removed in a future release.
          * 
          */
-        @Deprecated /* This field is unavailable in the GA provider and will be removed from the beta provider in a future release. */
+        @Deprecated /* `monitoring_interval` is deprecated and will be removed in a future release. */
         public Builder monitoringInterval(@Nullable Output<String> monitoringInterval) {
             $.monitoringInterval = monitoringInterval;
             return this;
@@ -148,10 +148,10 @@ public final class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs 
          * @return builder
          * 
          * @deprecated
-         * This field is unavailable in the GA provider and will be removed from the beta provider in a future release.
+         * `monitoring_interval` is deprecated and will be removed in a future release.
          * 
          */
-        @Deprecated /* This field is unavailable in the GA provider and will be removed from the beta provider in a future release. */
+        @Deprecated /* `monitoring_interval` is deprecated and will be removed in a future release. */
         public Builder monitoringInterval(String monitoringInterval) {
             return monitoringInterval(Output.of(monitoringInterval));
         }

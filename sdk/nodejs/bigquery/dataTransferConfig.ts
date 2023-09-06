@@ -59,7 +59,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Config can be imported using any of these accepted formats
+ * Config can be imported using any of these accepted formats:
  *
  * ```sh
  *  $ pulumi import gcp:bigquery/dataTransferConfig:DataTransferConfig default {{name}}

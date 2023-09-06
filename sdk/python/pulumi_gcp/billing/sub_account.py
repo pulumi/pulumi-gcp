@@ -206,7 +206,7 @@ class SubAccount(pulumi.CustomResource):
 
         ## Import
 
-        Billing Subaccounts can be imported using any of these accepted formats
+        Billing Subaccounts can be imported using any of these accepted formats:
 
         ```sh
          $ pulumi import gcp:billing/subAccount:SubAccount default billingAccounts/{billing_account_id}
@@ -243,7 +243,7 @@ class SubAccount(pulumi.CustomResource):
 
         ## Import
 
-        Billing Subaccounts can be imported using any of these accepted formats
+        Billing Subaccounts can be imported using any of these accepted formats:
 
         ```sh
          $ pulumi import gcp:billing/subAccount:SubAccount default billingAccounts/{billing_account_id}

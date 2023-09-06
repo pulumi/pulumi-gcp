@@ -12,11 +12,19 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Represents a collection of denial policies to apply to a given resource.
+//
+// To get more information about DenyPolicy, see:
+//
+// * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v2/policies)
+// * How-to Guides
+//   - [Permissions supported in deny policies](https://cloud.google.com/iam/docs/deny-permissions-support)
+//
 // ## Example Usage
 //
 // ## Import
 //
-// # DenyPolicy can be imported using any of these accepted formats
+// DenyPolicy can be imported using any of these accepted formats:
 //
 // ```sh
 //

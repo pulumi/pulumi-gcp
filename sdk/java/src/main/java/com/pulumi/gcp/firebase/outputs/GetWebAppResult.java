@@ -12,6 +12,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetWebAppResult {
+    private String apiKeyId;
     /**
      * @return Immutable. The globally unique, Firebase-assigned identifier of the App.
      * This identifier should be treated as an opaque token, as the data format is not specified.
@@ -35,6 +36,9 @@ public final class GetWebAppResult {
     private @Nullable String project;
 
     private GetWebAppResult() {}
+    public String apiKeyId() {
+        return this.apiKeyId;
+    }
     /**
      * @return Immutable. The globally unique, Firebase-assigned identifier of the App.
      * This identifier should be treated as an opaque token, as the data format is not specified.
@@ -80,6 +84,7 @@ public final class GetWebAppResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String apiKeyId;
         private String appId;
         private List<String> appUrls;
         private String deletionPolicy;
@@ -90,6 +95,7 @@ public final class GetWebAppResult {
         public Builder() {}
         public Builder(GetWebAppResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.apiKeyId = defaults.apiKeyId;
     	      this.appId = defaults.appId;
     	      this.appUrls = defaults.appUrls;
     	      this.deletionPolicy = defaults.deletionPolicy;
@@ -99,6 +105,11 @@ public final class GetWebAppResult {
     	      this.project = defaults.project;
         }
 
+        @CustomType.Setter
+        public Builder apiKeyId(String apiKeyId) {
+            this.apiKeyId = Objects.requireNonNull(apiKeyId);
+            return this;
+        }
         @CustomType.Setter
         public Builder appId(String appId) {
             this.appId = Objects.requireNonNull(appId);
@@ -139,6 +150,7 @@ public final class GetWebAppResult {
         }
         public GetWebAppResult build() {
             final var o = new GetWebAppResult();
+            o.apiKeyId = apiKeyId;
             o.appId = appId;
             o.appUrls = appUrls;
             o.deletionPolicy = deletionPolicy;

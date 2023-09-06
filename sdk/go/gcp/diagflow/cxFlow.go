@@ -28,6 +28,8 @@ import (
 //
 // import (
 //
+//	"encoding/json"
+//
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/diagflow"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -56,6 +58,136 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			tmpJSON0, err := json.Marshal("abc")
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			tmpJSON1, err := json.Marshal([]string{
+//				"foo",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json1 := string(tmpJSON1)
+//			tmpJSON2, err := json.Marshal([]interface{}{
+//				map[string]interface{}{
+//					"condition": "$sys.func.RAND() < 0.5",
+//					"caseContent": []interface{}{
+//						map[string]interface{}{
+//							"message": map[string]interface{}{
+//								"text": map[string]interface{}{
+//									"text": []string{
+//										"First case",
+//									},
+//								},
+//							},
+//						},
+//						map[string]interface{}{
+//							"additionalCases": map[string]interface{}{
+//								"cases": []map[string]interface{}{
+//									map[string]interface{}{
+//										"condition": "$sys.func.RAND() < 0.2",
+//										"caseContent": []map[string]interface{}{
+//											map[string]interface{}{
+//												"message": map[string]interface{}{
+//													"text": map[string]interface{}{
+//														"text": []string{
+//															"Nested case",
+//														},
+//													},
+//												},
+//											},
+//										},
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//				map[string]interface{}{
+//					"caseContent": []map[string]interface{}{
+//						map[string]interface{}{
+//							"message": map[string]interface{}{
+//								"text": map[string]interface{}{
+//									"text": []string{
+//										"Final case",
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json2 := string(tmpJSON2)
+//			tmpJSON3, err := json.Marshal("abc")
+//			if err != nil {
+//				return err
+//			}
+//			json3 := string(tmpJSON3)
+//			tmpJSON4, err := json.Marshal([]string{
+//				"foo",
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json4 := string(tmpJSON4)
+//			tmpJSON5, err := json.Marshal([]interface{}{
+//				map[string]interface{}{
+//					"condition": "$sys.func.RAND() < 0.5",
+//					"caseContent": []interface{}{
+//						map[string]interface{}{
+//							"message": map[string]interface{}{
+//								"text": map[string]interface{}{
+//									"text": []string{
+//										"First case",
+//									},
+//								},
+//							},
+//						},
+//						map[string]interface{}{
+//							"additionalCases": map[string]interface{}{
+//								"cases": []map[string]interface{}{
+//									map[string]interface{}{
+//										"condition": "$sys.func.RAND() < 0.2",
+//										"caseContent": []map[string]interface{}{
+//											map[string]interface{}{
+//												"message": map[string]interface{}{
+//													"text": map[string]interface{}{
+//														"text": []string{
+//															"Nested case",
+//														},
+//													},
+//												},
+//											},
+//										},
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//				map[string]interface{}{
+//					"caseContent": []map[string]interface{}{
+//						map[string]interface{}{
+//							"message": map[string]interface{}{
+//								"text": map[string]interface{}{
+//									"text": []string{
+//										"Final case",
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json5 := string(tmpJSON5)
 //			_, err = diagflow.NewCxFlow(ctx, "basicFlow", &diagflow.CxFlowArgs{
 //				Parent:      agent.ID(),
 //				DisplayName: pulumi.String("MyFlow"),
@@ -109,6 +241,145 @@ import (
 //								},
 //							},
 //						},
+//					},
+//					&diagflow.CxFlowEventHandlerArgs{
+//						Event: pulumi.String("another-event"),
+//						TriggerFulfillment: &diagflow.CxFlowEventHandlerTriggerFulfillmentArgs{
+//							ReturnPartialResponses: pulumi.Bool(true),
+//							Messages: diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArray{
+//								&diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs{
+//									Channel: pulumi.String("some-channel"),
+//									Text: &diagflow.CxFlowEventHandlerTriggerFulfillmentMessageTextArgs{
+//										Texts: pulumi.StringArray{
+//											pulumi.String("Some text"),
+//										},
+//									},
+//								},
+//								&diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs{
+//									Payload: pulumi.String("          {\"some-key\": \"some-value\", \"other-key\": [\"other-value\"]}\n"),
+//								},
+//								&diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs{
+//									ConversationSuccess: &diagflow.CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs{
+//										Metadata: pulumi.String("            {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}\n"),
+//									},
+//								},
+//								&diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs{
+//									OutputAudioText: &diagflow.CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs{
+//										Text: pulumi.String("some output text"),
+//									},
+//								},
+//								&diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs{
+//									OutputAudioText: &diagflow.CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs{
+//										Ssml: pulumi.String("            <speak>Some example <say-as interpret-as=\"characters\">SSML XML</say-as></speak>\n"),
+//									},
+//								},
+//								&diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs{
+//									LiveAgentHandoff: &diagflow.CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs{
+//										Metadata: pulumi.String("            {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}\n"),
+//									},
+//								},
+//								&diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs{
+//									PlayAudio: &diagflow.CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs{
+//										AudioUri: pulumi.String("http://example.com/some-audio-file.mp3"),
+//									},
+//								},
+//								&diagflow.CxFlowEventHandlerTriggerFulfillmentMessageArgs{
+//									TelephonyTransferCall: &diagflow.CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs{
+//										PhoneNumber: pulumi.String("1-234-567-8901"),
+//									},
+//								},
+//							},
+//							SetParameterActions: diagflow.CxFlowEventHandlerTriggerFulfillmentSetParameterActionArray{
+//								&diagflow.CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs{
+//									Parameter: pulumi.String("some-param"),
+//									Value:     pulumi.String("123.45"),
+//								},
+//								&diagflow.CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs{
+//									Parameter: pulumi.String("another-param"),
+//									Value:     pulumi.String(json0),
+//								},
+//								&diagflow.CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs{
+//									Parameter: pulumi.String("other-param"),
+//									Value:     pulumi.String(json1),
+//								},
+//							},
+//							ConditionalCases: diagflow.CxFlowEventHandlerTriggerFulfillmentConditionalCaseArray{
+//								&diagflow.CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs{
+//									Cases: pulumi.String(json2),
+//								},
+//							},
+//						},
+//					},
+//				},
+//				TransitionRoutes: diagflow.CxFlowTransitionRouteArray{
+//					&diagflow.CxFlowTransitionRouteArgs{
+//						Condition: pulumi.String("true"),
+//						TriggerFulfillment: &diagflow.CxFlowTransitionRouteTriggerFulfillmentArgs{
+//							ReturnPartialResponses: pulumi.Bool(true),
+//							Messages: diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArray{
+//								&diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArgs{
+//									Channel: pulumi.String("some-channel"),
+//									Text: &diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs{
+//										Texts: pulumi.StringArray{
+//											pulumi.String("Some text"),
+//										},
+//									},
+//								},
+//								&diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArgs{
+//									Payload: pulumi.String("          {\"some-key\": \"some-value\", \"other-key\": [\"other-value\"]}\n"),
+//								},
+//								&diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArgs{
+//									ConversationSuccess: &diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs{
+//										Metadata: pulumi.String("            {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}\n"),
+//									},
+//								},
+//								&diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArgs{
+//									OutputAudioText: &diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs{
+//										Text: pulumi.String("some output text"),
+//									},
+//								},
+//								&diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArgs{
+//									OutputAudioText: &diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs{
+//										Ssml: pulumi.String("            <speak>Some example <say-as interpret-as=\"characters\">SSML XML</say-as></speak>\n"),
+//									},
+//								},
+//								&diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArgs{
+//									LiveAgentHandoff: &diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs{
+//										Metadata: pulumi.String("            {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}\n"),
+//									},
+//								},
+//								&diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArgs{
+//									PlayAudio: &diagflow.CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs{
+//										AudioUri: pulumi.String("http://example.com/some-audio-file.mp3"),
+//									},
+//								},
+//								&diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageArgs{
+//									TelephonyTransferCall: &diagflow.CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs{
+//										PhoneNumber: pulumi.String("1-234-567-8901"),
+//									},
+//								},
+//							},
+//							SetParameterActions: diagflow.CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArray{
+//								&diagflow.CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs{
+//									Parameter: pulumi.String("some-param"),
+//									Value:     pulumi.String("123.45"),
+//								},
+//								&diagflow.CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs{
+//									Parameter: pulumi.String("another-param"),
+//									Value:     pulumi.String(json3),
+//								},
+//								&diagflow.CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs{
+//									Parameter: pulumi.String("other-param"),
+//									Value:     pulumi.String(json4),
+//								},
+//							},
+//							ConditionalCases: diagflow.CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArray{
+//								&diagflow.CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs{
+//									Cases: pulumi.String(json5),
+//								},
+//							},
+//						},
+//						TargetFlow: agent.StartFlow,
 //					},
 //				},
 //			})

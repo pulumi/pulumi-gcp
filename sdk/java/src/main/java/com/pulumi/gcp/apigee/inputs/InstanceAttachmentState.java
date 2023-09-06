@@ -32,7 +32,7 @@ public final class InstanceAttachmentState extends com.pulumi.resources.Resource
 
     /**
      * The Apigee instance associated with the Apigee environment,
-     * in the format `organisations/{{org_name}}/instances/{{instance_name}}`.
+     * in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
      * 
      * ***
      * 
@@ -42,7 +42,7 @@ public final class InstanceAttachmentState extends com.pulumi.resources.Resource
 
     /**
      * @return The Apigee instance associated with the Apigee environment,
-     * in the format `organisations/{{org_name}}/instances/{{instance_name}}`.
+     * in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
      * 
      * ***
      * 
@@ -115,7 +115,7 @@ public final class InstanceAttachmentState extends com.pulumi.resources.Resource
 
         /**
          * @param instanceId The Apigee instance associated with the Apigee environment,
-         * in the format `organisations/{{org_name}}/instances/{{instance_name}}`.
+         * in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
          * 
          * ***
          * 
@@ -129,7 +129,7 @@ public final class InstanceAttachmentState extends com.pulumi.resources.Resource
 
         /**
          * @param instanceId The Apigee instance associated with the Apigee environment,
-         * in the format `organisations/{{org_name}}/instances/{{instance_name}}`.
+         * in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
          * 
          * ***
          * 

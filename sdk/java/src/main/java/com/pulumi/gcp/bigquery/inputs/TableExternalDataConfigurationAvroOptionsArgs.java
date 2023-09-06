@@ -14,7 +14,7 @@ public final class TableExternalDataConfigurationAvroOptionsArgs extends com.pul
     public static final TableExternalDataConfigurationAvroOptionsArgs Empty = new TableExternalDataConfigurationAvroOptionsArgs();
 
     /**
-     * If is set to true, indicates whether\
+     * If is set to true, indicates whether
      * to interpret logical types as the corresponding BigQuery data type
      * (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
      * 
@@ -23,7 +23,7 @@ public final class TableExternalDataConfigurationAvroOptionsArgs extends com.pul
     private Output<Boolean> useAvroLogicalTypes;
 
     /**
-     * @return If is set to true, indicates whether\
+     * @return If is set to true, indicates whether
      * to interpret logical types as the corresponding BigQuery data type
      * (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
      * 
@@ -57,7 +57,7 @@ public final class TableExternalDataConfigurationAvroOptionsArgs extends com.pul
         }
 
         /**
-         * @param useAvroLogicalTypes If is set to true, indicates whether\
+         * @param useAvroLogicalTypes If is set to true, indicates whether
          * to interpret logical types as the corresponding BigQuery data type
          * (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
          * 
@@ -70,7 +70,7 @@ public final class TableExternalDataConfigurationAvroOptionsArgs extends com.pul
         }
 
         /**
-         * @param useAvroLogicalTypes If is set to true, indicates whether\
+         * @param useAvroLogicalTypes If is set to true, indicates whether
          * to interpret logical types as the corresponding BigQuery data type
          * (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
          * 

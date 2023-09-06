@@ -321,7 +321,7 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
     }
     /**
      * User-specified list of prefix groups to advertise in custom
-     * mode, which can take one of the following options:
+     * mode, which currently supports the following option:
      * 
      */
     @Export(name="advertisedGroups", type=List.class, parameters={String.class})
@@ -329,7 +329,7 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
 
     /**
      * @return User-specified list of prefix groups to advertise in custom
-     * mode, which can take one of the following options:
+     * mode, which currently supports the following option:
      * 
      */
     public Output<Optional<List<String>>> advertisedGroups() {

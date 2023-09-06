@@ -170,11 +170,13 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * (Optional, Deprecated)
      * The name of the Filestore zone of the instance.
      * 
+     * &gt; **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
+     * 
      * @deprecated
-     * Deprecated in favor of location.
+     * `zone` is deprecated and will be removed in a future major release. Use `location` instead.
      * 
      */
-    @Deprecated /* Deprecated in favor of location. */
+    @Deprecated /* `zone` is deprecated and will be removed in a future major release. Use `location` instead. */
     @Import(name="zone")
     private @Nullable Output<String> zone;
 
@@ -182,11 +184,13 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * @return (Optional, Deprecated)
      * The name of the Filestore zone of the instance.
      * 
+     * &gt; **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
+     * 
      * @deprecated
-     * Deprecated in favor of location.
+     * `zone` is deprecated and will be removed in a future major release. Use `location` instead.
      * 
      */
-    @Deprecated /* Deprecated in favor of location. */
+    @Deprecated /* `zone` is deprecated and will be removed in a future major release. Use `location` instead. */
     public Optional<Output<String>> zone() {
         return Optional.ofNullable(this.zone);
     }
@@ -441,13 +445,15 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * @param zone (Optional, Deprecated)
          * The name of the Filestore zone of the instance.
          * 
+         * &gt; **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
+         * 
          * @return builder
          * 
          * @deprecated
-         * Deprecated in favor of location.
+         * `zone` is deprecated and will be removed in a future major release. Use `location` instead.
          * 
          */
-        @Deprecated /* Deprecated in favor of location. */
+        @Deprecated /* `zone` is deprecated and will be removed in a future major release. Use `location` instead. */
         public Builder zone(@Nullable Output<String> zone) {
             $.zone = zone;
             return this;
@@ -457,13 +463,15 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * @param zone (Optional, Deprecated)
          * The name of the Filestore zone of the instance.
          * 
+         * &gt; **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
+         * 
          * @return builder
          * 
          * @deprecated
-         * Deprecated in favor of location.
+         * `zone` is deprecated and will be removed in a future major release. Use `location` instead.
          * 
          */
-        @Deprecated /* Deprecated in favor of location. */
+        @Deprecated /* `zone` is deprecated and will be removed in a future major release. Use `location` instead. */
         public Builder zone(String zone) {
             return zone(Output.of(zone));
         }

@@ -57,7 +57,7 @@ import (
 //
 // ## Import
 //
-// # This resource can be imported using the following format
+// This resource can be imported using the following format:
 //
 // ```sh
 //

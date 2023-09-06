@@ -31,6 +31,9 @@ namespace Pulumi.Gcp.Iam.Inputs
         [Input("issuerUri", required: true)]
         public Input<string> IssuerUri { get; set; } = null!;
 
+        [Input("jwksJson")]
+        public Input<string>? JwksJson { get; set; }
+
         /// <summary>
         /// Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.
         /// Structure is documented below.

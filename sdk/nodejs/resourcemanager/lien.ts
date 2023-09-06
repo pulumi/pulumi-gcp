@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Lien can be imported using any of these accepted formats
+ * Lien can be imported using any of these accepted formats:
  *
  * ```sh
  *  $ pulumi import gcp:resourcemanager/lien:Lien default {{parent}}/{{name}}

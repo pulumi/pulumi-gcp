@@ -406,7 +406,7 @@ class ProjectBucketConfig(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using the following format
+        This resource can be imported using the following format:
 
         ```sh
          $ pulumi import gcp:logging/projectBucketConfig:ProjectBucketConfig default projects/{{project}}/locations/{{location}}/buckets/{{bucket_id}}
@@ -507,7 +507,7 @@ class ProjectBucketConfig(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using the following format
+        This resource can be imported using the following format:
 
         ```sh
          $ pulumi import gcp:logging/projectBucketConfig:ProjectBucketConfig default projects/{{project}}/locations/{{location}}/buckets/{{bucket_id}}

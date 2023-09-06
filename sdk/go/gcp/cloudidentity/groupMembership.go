@@ -140,7 +140,7 @@ import (
 //
 // ## Import
 //
-// # GroupMembership can be imported using any of these accepted formats
+// GroupMembership can be imported using any of these accepted formats:
 //
 // ```sh
 //

@@ -18,6 +18,21 @@ public final class CxPageFormParameterArgs extends com.pulumi.resources.Resource
     public static final CxPageFormParameterArgs Empty = new CxPageFormParameterArgs();
 
     /**
+     * The default value of an optional parameter. If the parameter is required, the default value will be ignored.
+     * 
+     */
+    @Import(name="defaultValue")
+    private @Nullable Output<String> defaultValue;
+
+    /**
+     * @return The default value of an optional parameter. If the parameter is required, the default value will be ignored.
+     * 
+     */
+    public Optional<Output<String>> defaultValue() {
+        return Optional.ofNullable(this.defaultValue);
+    }
+
+    /**
      * The human-readable name of the parameter, unique within the form.
      * 
      */
@@ -118,6 +133,7 @@ public final class CxPageFormParameterArgs extends com.pulumi.resources.Resource
     private CxPageFormParameterArgs() {}
 
     private CxPageFormParameterArgs(CxPageFormParameterArgs $) {
+        this.defaultValue = $.defaultValue;
         this.displayName = $.displayName;
         this.entityType = $.entityType;
         this.fillBehavior = $.fillBehavior;
@@ -142,6 +158,27 @@ public final class CxPageFormParameterArgs extends com.pulumi.resources.Resource
 
         public Builder(CxPageFormParameterArgs defaults) {
             $ = new CxPageFormParameterArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param defaultValue The default value of an optional parameter. If the parameter is required, the default value will be ignored.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultValue(@Nullable Output<String> defaultValue) {
+            $.defaultValue = defaultValue;
+            return this;
+        }
+
+        /**
+         * @param defaultValue The default value of an optional parameter. If the parameter is required, the default value will be ignored.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultValue(String defaultValue) {
+            return defaultValue(Output.of(defaultValue));
         }
 
         /**

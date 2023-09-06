@@ -84,7 +84,7 @@ public final class DatascanDataQualityResultRuleRule {
      */
     private @Nullable Integer threshold;
     /**
-     * @return ColumnAggregate rule which evaluates whether the column has duplicates.
+     * @return Row-level rule which evaluates whether each column value is unique.
      * 
      */
     private @Nullable List<DatascanDataQualityResultRuleRuleUniquenessExpectation> uniquenessExpectations;
@@ -174,7 +174,7 @@ public final class DatascanDataQualityResultRuleRule {
         return Optional.ofNullable(this.threshold);
     }
     /**
-     * @return ColumnAggregate rule which evaluates whether the column has duplicates.
+     * @return Row-level rule which evaluates whether each column value is unique.
      * 
      */
     public List<DatascanDataQualityResultRuleRuleUniquenessExpectation> uniquenessExpectations() {

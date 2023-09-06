@@ -100,7 +100,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * TagTemplate can be imported using any of these accepted formats
+ * TagTemplate can be imported using any of these accepted formats:
  * 
  * ```sh
  *  $ pulumi import gcp:datacatalog/tagTemplate:TagTemplate default {{name}}

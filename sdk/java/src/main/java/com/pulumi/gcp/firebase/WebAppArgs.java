@@ -16,6 +16,25 @@ public final class WebAppArgs extends com.pulumi.resources.ResourceArgs {
     public static final WebAppArgs Empty = new WebAppArgs();
 
     /**
+     * The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the WebApp.
+     * If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the WebApp.
+     * This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+     * 
+     */
+    @Import(name="apiKeyId")
+    private @Nullable Output<String> apiKeyId;
+
+    /**
+     * @return The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the WebApp.
+     * If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the WebApp.
+     * This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+     * 
+     */
+    public Optional<Output<String>> apiKeyId() {
+        return Optional.ofNullable(this.apiKeyId);
+    }
+
+    /**
      * Set to &#39;ABANDON&#39; to allow the WebApp to be untracked from terraform state rather than deleted upon &#39;terraform destroy&#39;.
      * This is useful becaue the WebApp may be serving traffic. Set to &#39;DELETE&#39; to delete the WebApp. Default to &#39;ABANDON&#39;
      * 
@@ -71,6 +90,7 @@ public final class WebAppArgs extends com.pulumi.resources.ResourceArgs {
     private WebAppArgs() {}
 
     private WebAppArgs(WebAppArgs $) {
+        this.apiKeyId = $.apiKeyId;
         this.deletionPolicy = $.deletionPolicy;
         this.displayName = $.displayName;
         this.project = $.project;
@@ -92,6 +112,31 @@ public final class WebAppArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(WebAppArgs defaults) {
             $ = new WebAppArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param apiKeyId The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the WebApp.
+         * If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the WebApp.
+         * This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apiKeyId(@Nullable Output<String> apiKeyId) {
+            $.apiKeyId = apiKeyId;
+            return this;
+        }
+
+        /**
+         * @param apiKeyId The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the WebApp.
+         * If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the WebApp.
+         * This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apiKeyId(String apiKeyId) {
+            return apiKeyId(Output.of(apiKeyId));
         }
 
         /**

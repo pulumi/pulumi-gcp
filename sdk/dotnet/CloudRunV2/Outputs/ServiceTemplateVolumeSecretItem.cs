@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         /// <summary>
         /// Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
         /// </summary>
-        public readonly int Mode;
+        public readonly int? Mode;
         /// <summary>
         /// The relative path of the secret in the container.
         /// </summary>
@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
 
         [OutputConstructor]
         private ServiceTemplateVolumeSecretItem(
-            int mode,
+            int? mode,
 
             string path,
 

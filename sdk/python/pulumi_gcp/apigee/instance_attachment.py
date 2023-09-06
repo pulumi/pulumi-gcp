@@ -20,7 +20,7 @@ class InstanceAttachmentArgs:
         The set of arguments for constructing a InstanceAttachment resource.
         :param pulumi.Input[str] environment: The resource ID of the environment.
         :param pulumi.Input[str] instance_id: The Apigee instance associated with the Apigee environment,
-               in the format `organisations/{{org_name}}/instances/{{instance_name}}`.
+               in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
                
                
                - - -
@@ -45,7 +45,7 @@ class InstanceAttachmentArgs:
     def instance_id(self) -> pulumi.Input[str]:
         """
         The Apigee instance associated with the Apigee environment,
-        in the format `organisations/{{org_name}}/instances/{{instance_name}}`.
+        in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
 
 
         - - -
@@ -67,7 +67,7 @@ class _InstanceAttachmentState:
         Input properties used for looking up and filtering InstanceAttachment resources.
         :param pulumi.Input[str] environment: The resource ID of the environment.
         :param pulumi.Input[str] instance_id: The Apigee instance associated with the Apigee environment,
-               in the format `organisations/{{org_name}}/instances/{{instance_name}}`.
+               in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
                
                
                - - -
@@ -97,7 +97,7 @@ class _InstanceAttachmentState:
     def instance_id(self) -> Optional[pulumi.Input[str]]:
         """
         The Apigee instance associated with the Apigee environment,
-        in the format `organisations/{{org_name}}/instances/{{instance_name}}`.
+        in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
 
 
         - - -
@@ -207,7 +207,7 @@ class InstanceAttachment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] environment: The resource ID of the environment.
         :param pulumi.Input[str] instance_id: The Apigee instance associated with the Apigee environment,
-               in the format `organisations/{{org_name}}/instances/{{instance_name}}`.
+               in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
                
                
                - - -
@@ -347,7 +347,7 @@ class InstanceAttachment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] environment: The resource ID of the environment.
         :param pulumi.Input[str] instance_id: The Apigee instance associated with the Apigee environment,
-               in the format `organisations/{{org_name}}/instances/{{instance_name}}`.
+               in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
                
                
                - - -
@@ -375,7 +375,7 @@ class InstanceAttachment(pulumi.CustomResource):
     def instance_id(self) -> pulumi.Output[str]:
         """
         The Apigee instance associated with the Apigee environment,
-        in the format `organisations/{{org_name}}/instances/{{instance_name}}`.
+        in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
 
 
         - - -

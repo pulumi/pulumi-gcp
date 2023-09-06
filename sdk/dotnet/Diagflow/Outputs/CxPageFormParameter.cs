@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Diagflow.Outputs
     public sealed class CxPageFormParameter
     {
         /// <summary>
+        /// The default value of an optional parameter. If the parameter is required, the default value will be ignored.
+        /// </summary>
+        public readonly string? DefaultValue;
+        /// <summary>
         /// The human-readable name of the parameter, unique within the form.
         /// </summary>
         public readonly string? DisplayName;
@@ -44,6 +48,8 @@ namespace Pulumi.Gcp.Diagflow.Outputs
 
         [OutputConstructor]
         private CxPageFormParameter(
+            string? defaultValue,
+
             string? displayName,
 
             string? entityType,
@@ -56,6 +62,7 @@ namespace Pulumi.Gcp.Diagflow.Outputs
 
             bool? required)
         {
+            DefaultValue = defaultValue;
             DisplayName = displayName;
             EntityType = entityType;
             FillBehavior = fillBehavior;
