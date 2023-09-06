@@ -137,7 +137,7 @@ public class AppleApp extends com.pulumi.resources.CustomResource {
      * This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
      * 
      */
-    @Export(name="apiKeyId", type=String.class, parameters={})
+    @Export(name="apiKeyId", refs={String.class}, tree="[0]")
     private Output<String> apiKeyId;
 
     /**
@@ -154,7 +154,7 @@ public class AppleApp extends com.pulumi.resources.CustomResource {
      * This identifier should be treated as an opaque token, as the data format is not specified.
      * 
      */
-    @Export(name="appId", type=String.class, parameters={})
+    @Export(name="appId", refs={String.class}, tree="[0]")
     private Output<String> appId;
 
     /**
@@ -169,7 +169,7 @@ public class AppleApp extends com.pulumi.resources.CustomResource {
      * The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
      * 
      */
-    @Export(name="appStoreId", type=String.class, parameters={})
+    @Export(name="appStoreId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> appStoreId;
 
     /**
@@ -185,7 +185,7 @@ public class AppleApp extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="bundleId", type=String.class, parameters={})
+    @Export(name="bundleId", refs={String.class}, tree="[0]")
     private Output<String> bundleId;
 
     /**
@@ -203,7 +203,7 @@ public class AppleApp extends com.pulumi.resources.CustomResource {
      * &#39;DELETE&#39;.
      * 
      */
-    @Export(name="deletionPolicy", type=String.class, parameters={})
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deletionPolicy;
 
     /**
@@ -219,7 +219,7 @@ public class AppleApp extends com.pulumi.resources.CustomResource {
      * The user-assigned display name of the App.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -234,7 +234,7 @@ public class AppleApp extends com.pulumi.resources.CustomResource {
      * projects/projectId/iosApps/appId
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -250,7 +250,7 @@ public class AppleApp extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -265,7 +265,7 @@ public class AppleApp extends com.pulumi.resources.CustomResource {
      * The Apple Developer Team ID associated with the App in the App Store.
      * 
      */
-    @Export(name="teamId", type=String.class, parameters={})
+    @Export(name="teamId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> teamId;
 
     /**

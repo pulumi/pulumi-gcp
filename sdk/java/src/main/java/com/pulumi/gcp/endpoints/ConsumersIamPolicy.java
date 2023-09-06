@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:endpoints/consumersIamPolicy:ConsumersIamPolicy")
 public class ConsumersIamPolicy extends com.pulumi.resources.CustomResource {
-    @Export(name="consumerProject", type=String.class, parameters={})
+    @Export(name="consumerProject", refs={String.class}, tree="[0]")
     private Output<String> consumerProject;
 
     public Output<String> consumerProject() {
@@ -65,7 +65,7 @@ public class ConsumersIamPolicy extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the IAM policy.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -80,7 +80,7 @@ public class ConsumersIamPolicy extends com.pulumi.resources.CustomResource {
      * a `gcp.organizations.getIamPolicy` data source.
      * 
      */
-    @Export(name="policyData", type=String.class, parameters={})
+    @Export(name="policyData", refs={String.class}, tree="[0]")
     private Output<String> policyData;
 
     /**
@@ -91,7 +91,7 @@ public class ConsumersIamPolicy extends com.pulumi.resources.CustomResource {
     public Output<String> policyData() {
         return this.policyData;
     }
-    @Export(name="serviceName", type=String.class, parameters={})
+    @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     public Output<String> serviceName() {

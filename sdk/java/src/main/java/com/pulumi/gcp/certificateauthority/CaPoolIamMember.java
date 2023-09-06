@@ -286,7 +286,7 @@ public class CaPoolIamMember extends com.pulumi.resources.CustomResource {
      * Used to find the parent resource to bind the IAM policy to
      * 
      */
-    @Export(name="caPool", type=String.class, parameters={})
+    @Export(name="caPool", refs={String.class}, tree="[0]")
     private Output<String> caPool;
 
     /**
@@ -301,7 +301,7 @@ public class CaPoolIamMember extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="condition", type=CaPoolIamMemberCondition.class, parameters={})
+    @Export(name="condition", refs={CaPoolIamMemberCondition.class}, tree="[0]")
     private Output</* @Nullable */ CaPoolIamMemberCondition> condition;
 
     /**
@@ -316,7 +316,7 @@ public class CaPoolIamMember extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the IAM policy.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -332,7 +332,7 @@ public class CaPoolIamMember extends com.pulumi.resources.CustomResource {
      * Used to find the parent resource to bind the IAM policy to
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -344,7 +344,7 @@ public class CaPoolIamMember extends com.pulumi.resources.CustomResource {
     public Output<String> location() {
         return this.location;
     }
-    @Export(name="member", type=String.class, parameters={})
+    @Export(name="member", refs={String.class}, tree="[0]")
     private Output<String> member;
 
     public Output<String> member() {
@@ -367,7 +367,7 @@ public class CaPoolIamMember extends com.pulumi.resources.CustomResource {
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -396,7 +396,7 @@ public class CaPoolIamMember extends com.pulumi.resources.CustomResource {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     /**

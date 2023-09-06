@@ -158,7 +158,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:bigtable/tableIamBinding:TableIamBinding")
 public class TableIamBinding extends com.pulumi.resources.CustomResource {
-    @Export(name="condition", type=TableIamBindingCondition.class, parameters={})
+    @Export(name="condition", refs={TableIamBindingCondition.class}, tree="[0]")
     private Output</* @Nullable */ TableIamBindingCondition> condition;
 
     public Output<Optional<TableIamBindingCondition>> condition() {
@@ -168,7 +168,7 @@ public class TableIamBinding extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the tables&#39;s IAM policy.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -182,7 +182,7 @@ public class TableIamBinding extends com.pulumi.resources.CustomResource {
      * The name or relative resource id of the instance that owns the table.
      * 
      */
-    @Export(name="instance", type=String.class, parameters={})
+    @Export(name="instance", refs={String.class}, tree="[0]")
     private Output<String> instance;
 
     /**
@@ -192,7 +192,7 @@ public class TableIamBinding extends com.pulumi.resources.CustomResource {
     public Output<String> instance() {
         return this.instance;
     }
-    @Export(name="members", type=List.class, parameters={String.class})
+    @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> members;
 
     public Output<List<String>> members() {
@@ -203,7 +203,7 @@ public class TableIamBinding extends com.pulumi.resources.CustomResource {
      * is not provided, this provider will use the provider default.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -222,7 +222,7 @@ public class TableIamBinding extends com.pulumi.resources.CustomResource {
      * `gcp.bigtable.TableIamPolicy` only:
      * 
      */
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     /**
@@ -251,7 +251,7 @@ public class TableIamBinding extends com.pulumi.resources.CustomResource {
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * 
      */
-    @Export(name="table", type=String.class, parameters={})
+    @Export(name="table", refs={String.class}, tree="[0]")
     private Output<String> table;
 
     /**

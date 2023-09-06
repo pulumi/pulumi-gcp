@@ -276,7 +276,7 @@ public class GuestPolicies extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="assignment", type=GuestPoliciesAssignment.class, parameters={})
+    @Export(name="assignment", refs={GuestPoliciesAssignment.class}, tree="[0]")
     private Output<GuestPoliciesAssignment> assignment;
 
     /**
@@ -298,7 +298,7 @@ public class GuestPolicies extends com.pulumi.resources.CustomResource {
      * Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -313,7 +313,7 @@ public class GuestPolicies extends com.pulumi.resources.CustomResource {
      * Description of the guest policy. Length of the description is limited to 1024 characters.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -327,7 +327,7 @@ public class GuestPolicies extends com.pulumi.resources.CustomResource {
      * The etag for this guest policy. If this is provided on update, it must match the server&#39;s etag.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -346,7 +346,7 @@ public class GuestPolicies extends com.pulumi.resources.CustomResource {
      * * Must be unique within the project.
      * 
      */
-    @Export(name="guestPolicyId", type=String.class, parameters={})
+    @Export(name="guestPolicyId", refs={String.class}, tree="[0]")
     private Output<String> guestPolicyId;
 
     /**
@@ -375,7 +375,7 @@ public class GuestPolicies extends com.pulumi.resources.CustomResource {
      * could potentially have conflicting assignments.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -402,7 +402,7 @@ public class GuestPolicies extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="packageRepositories", type=List.class, parameters={GuestPoliciesPackageRepository.class})
+    @Export(name="packageRepositories", refs={List.class,GuestPoliciesPackageRepository.class}, tree="[0,1]")
     private Output</* @Nullable */ List<GuestPoliciesPackageRepository>> packageRepositories;
 
     /**
@@ -420,7 +420,7 @@ public class GuestPolicies extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="packages", type=List.class, parameters={GuestPoliciesPackage.class})
+    @Export(name="packages", refs={List.class,GuestPoliciesPackage.class}, tree="[0,1]")
     private Output</* @Nullable */ List<GuestPoliciesPackage>> packages;
 
     /**
@@ -436,7 +436,7 @@ public class GuestPolicies extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -452,7 +452,7 @@ public class GuestPolicies extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="recipes", type=List.class, parameters={GuestPoliciesRecipe.class})
+    @Export(name="recipes", refs={List.class,GuestPoliciesRecipe.class}, tree="[0,1]")
     private Output</* @Nullable */ List<GuestPoliciesRecipe>> recipes;
 
     /**
@@ -468,7 +468,7 @@ public class GuestPolicies extends com.pulumi.resources.CustomResource {
      * Example: &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

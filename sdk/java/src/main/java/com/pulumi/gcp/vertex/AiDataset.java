@@ -69,7 +69,7 @@ public class AiDataset extends com.pulumi.resources.CustomResource {
      * The timestamp of when the dataset was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -83,7 +83,7 @@ public class AiDataset extends com.pulumi.resources.CustomResource {
      * The user-defined name of the Dataset. The name can be up to 128 characters long and can be consist of any UTF-8 characters.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -98,7 +98,7 @@ public class AiDataset extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="encryptionSpec", type=AiDatasetEncryptionSpec.class, parameters={})
+    @Export(name="encryptionSpec", refs={AiDatasetEncryptionSpec.class}, tree="[0]")
     private Output</* @Nullable */ AiDatasetEncryptionSpec> encryptionSpec;
 
     /**
@@ -113,7 +113,7 @@ public class AiDataset extends com.pulumi.resources.CustomResource {
      * A set of key/value label pairs to assign to this Workflow.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> labels;
 
     /**
@@ -129,7 +129,7 @@ public class AiDataset extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="metadataSchemaUri", type=String.class, parameters={})
+    @Export(name="metadataSchemaUri", refs={String.class}, tree="[0]")
     private Output<String> metadataSchemaUri;
 
     /**
@@ -145,7 +145,7 @@ public class AiDataset extends com.pulumi.resources.CustomResource {
      * The resource name of the Dataset. This value is set by Google.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -160,7 +160,7 @@ public class AiDataset extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -175,7 +175,7 @@ public class AiDataset extends com.pulumi.resources.CustomResource {
      * The region of the dataset. eg us-central1
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -189,7 +189,7 @@ public class AiDataset extends com.pulumi.resources.CustomResource {
      * The timestamp of when the dataset was last updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

@@ -52,7 +52,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * Possible values are: `ENABLED`, `DISABLED`.
      * 
      */
-    @Export(name="appEngineIntegrationMode", type=String.class, parameters={})
+    @Export(name="appEngineIntegrationMode", refs={String.class}, tree="[0]")
     private Output<String> appEngineIntegrationMode;
 
     /**
@@ -68,7 +68,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
      * 
      */
-    @Export(name="concurrencyMode", type=String.class, parameters={})
+    @Export(name="concurrencyMode", refs={String.class}, tree="[0]")
     private Output<String> concurrencyMode;
 
     /**
@@ -83,7 +83,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * The timestamp at which this database was created.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -99,7 +99,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * up-to-date value before proceeding.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -118,7 +118,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * This value may be empty in which case the appid to use for URL-encoded keys is the project_id (eg: foo instead of v~foo).
      * 
      */
-    @Export(name="keyPrefix", type=String.class, parameters={})
+    @Export(name="keyPrefix", refs={String.class}, tree="[0]")
     private Output<String> keyPrefix;
 
     /**
@@ -136,7 +136,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * https://cloud.google.com/firestore/docs/locations.
      * 
      */
-    @Export(name="locationId", type=String.class, parameters={})
+    @Export(name="locationId", refs={String.class}, tree="[0]")
     private Output<String> locationId;
 
     /**
@@ -156,7 +156,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * &#34;(default)&#34; database id is also valid.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -176,7 +176,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -196,7 +196,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**

@@ -264,7 +264,7 @@ public class SecurityPolicy extends com.pulumi.resources.CustomResource {
      * Configuration for [Google Cloud Armor Adaptive Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
      * 
      */
-    @Export(name="adaptiveProtectionConfig", type=SecurityPolicyAdaptiveProtectionConfig.class, parameters={})
+    @Export(name="adaptiveProtectionConfig", refs={SecurityPolicyAdaptiveProtectionConfig.class}, tree="[0]")
     private Output</* @Nullable */ SecurityPolicyAdaptiveProtectionConfig> adaptiveProtectionConfig;
 
     /**
@@ -279,7 +279,7 @@ public class SecurityPolicy extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="advancedOptionsConfig", type=SecurityPolicyAdvancedOptionsConfig.class, parameters={})
+    @Export(name="advancedOptionsConfig", refs={SecurityPolicyAdvancedOptionsConfig.class}, tree="[0]")
     private Output<SecurityPolicyAdvancedOptionsConfig> advancedOptionsConfig;
 
     /**
@@ -294,7 +294,7 @@ public class SecurityPolicy extends com.pulumi.resources.CustomResource {
      * An optional description of this security policy. Max size is 2048.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -308,7 +308,7 @@ public class SecurityPolicy extends com.pulumi.resources.CustomResource {
      * Fingerprint of this resource.
      * 
      */
-    @Export(name="fingerprint", type=String.class, parameters={})
+    @Export(name="fingerprint", refs={String.class}, tree="[0]")
     private Output<String> fingerprint;
 
     /**
@@ -324,7 +324,7 @@ public class SecurityPolicy extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -341,7 +341,7 @@ public class SecurityPolicy extends com.pulumi.resources.CustomResource {
      * is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -356,7 +356,7 @@ public class SecurityPolicy extends com.pulumi.resources.CustomResource {
      * [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
      * 
      */
-    @Export(name="recaptchaOptionsConfig", type=SecurityPolicyRecaptchaOptionsConfig.class, parameters={})
+    @Export(name="recaptchaOptionsConfig", refs={SecurityPolicyRecaptchaOptionsConfig.class}, tree="[0]")
     private Output</* @Nullable */ SecurityPolicyRecaptchaOptionsConfig> recaptchaOptionsConfig;
 
     /**
@@ -372,7 +372,7 @@ public class SecurityPolicy extends com.pulumi.resources.CustomResource {
      * security policy, a default rule with action &#34;allow&#34; will be added. Structure is documented below.
      * 
      */
-    @Export(name="rules", type=List.class, parameters={SecurityPolicyRule.class})
+    @Export(name="rules", refs={List.class,SecurityPolicyRule.class}, tree="[0,1]")
     private Output<List<SecurityPolicyRule>> rules;
 
     /**
@@ -388,7 +388,7 @@ public class SecurityPolicy extends com.pulumi.resources.CustomResource {
      * The URI of the created resourc
      * 
      */
-    @Export(name="selfLink", type=String.class, parameters={})
+    @Export(name="selfLink", refs={String.class}, tree="[0]")
     private Output<String> selfLink;
 
     /**
@@ -409,7 +409,7 @@ public class SecurityPolicy extends com.pulumi.resources.CustomResource {
      *   managed by Traffic Director in a service mesh. They filter requests before the request is served from the application.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**

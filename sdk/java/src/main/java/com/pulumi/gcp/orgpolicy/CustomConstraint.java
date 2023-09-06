@@ -126,7 +126,7 @@ public class CustomConstraint extends com.pulumi.resources.CustomResource {
      * Possible values are: `ALLOW`, `DENY`.
      * 
      */
-    @Export(name="actionType", type=String.class, parameters={})
+    @Export(name="actionType", refs={String.class}, tree="[0]")
     private Output<String> actionType;
 
     /**
@@ -141,7 +141,7 @@ public class CustomConstraint extends com.pulumi.resources.CustomResource {
      * A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
      * 
      */
-    @Export(name="condition", type=String.class, parameters={})
+    @Export(name="condition", refs={String.class}, tree="[0]")
     private Output<String> condition;
 
     /**
@@ -155,7 +155,7 @@ public class CustomConstraint extends com.pulumi.resources.CustomResource {
      * A human-friendly description of the constraint to display as an error message when the policy is violated.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -169,7 +169,7 @@ public class CustomConstraint extends com.pulumi.resources.CustomResource {
      * A human-friendly name for the constraint.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> displayName;
 
     /**
@@ -183,7 +183,7 @@ public class CustomConstraint extends com.pulumi.resources.CustomResource {
      * A list of RESTful methods for which to enforce the constraint. Can be `CREATE`, `UPDATE`, or both. Not all Google Cloud services support both methods. To see supported methods for each service, find the service in [Supported services](https://cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services).
      * 
      */
-    @Export(name="methodTypes", type=List.class, parameters={String.class})
+    @Export(name="methodTypes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> methodTypes;
 
     /**
@@ -197,7 +197,7 @@ public class CustomConstraint extends com.pulumi.resources.CustomResource {
      * Immutable. The name of the custom constraint. This is unique within the organization.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -213,7 +213,7 @@ public class CustomConstraint extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="parent", type=String.class, parameters={})
+    @Export(name="parent", refs={String.class}, tree="[0]")
     private Output<String> parent;
 
     /**
@@ -229,7 +229,7 @@ public class CustomConstraint extends com.pulumi.resources.CustomResource {
      * Immutable. The fully qualified name of the Google Cloud REST resource containing the object and field you want to restrict. For example, `container.googleapis.com/NodePool`.
      * 
      */
-    @Export(name="resourceTypes", type=List.class, parameters={String.class})
+    @Export(name="resourceTypes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> resourceTypes;
 
     /**
@@ -243,7 +243,7 @@ public class CustomConstraint extends com.pulumi.resources.CustomResource {
      * Output only. The timestamp representing when the constraint was last updated.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

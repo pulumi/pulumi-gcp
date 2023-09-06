@@ -120,7 +120,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -138,7 +138,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -155,7 +155,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="pubsubConfigs", type=List.class, parameters={RepositoryPubsubConfig.class})
+    @Export(name="pubsubConfigs", refs={List.class,RepositoryPubsubConfig.class}, tree="[0,1]")
     private Output</* @Nullable */ List<RepositoryPubsubConfig>> pubsubConfigs;
 
     /**
@@ -171,7 +171,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * The disk usage of the repo, in bytes.
      * 
      */
-    @Export(name="size", type=Integer.class, parameters={})
+    @Export(name="size", refs={Integer.class}, tree="[0]")
     private Output<Integer> size;
 
     /**
@@ -185,7 +185,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * URL to clone the repository from Google Cloud Source Repositories.
      * 
      */
-    @Export(name="url", type=String.class, parameters={})
+    @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**

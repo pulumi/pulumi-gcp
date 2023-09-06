@@ -162,7 +162,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:datacatalog/policyTagIamBinding:PolicyTagIamBinding")
 public class PolicyTagIamBinding extends com.pulumi.resources.CustomResource {
-    @Export(name="condition", type=PolicyTagIamBindingCondition.class, parameters={})
+    @Export(name="condition", refs={PolicyTagIamBindingCondition.class}, tree="[0]")
     private Output</* @Nullable */ PolicyTagIamBindingCondition> condition;
 
     public Output<Optional<PolicyTagIamBindingCondition>> condition() {
@@ -172,7 +172,7 @@ public class PolicyTagIamBinding extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the IAM policy.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -182,7 +182,7 @@ public class PolicyTagIamBinding extends com.pulumi.resources.CustomResource {
     public Output<String> etag() {
         return this.etag;
     }
-    @Export(name="members", type=List.class, parameters={String.class})
+    @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> members;
 
     public Output<List<String>> members() {
@@ -204,7 +204,7 @@ public class PolicyTagIamBinding extends com.pulumi.resources.CustomResource {
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
      * 
      */
-    @Export(name="policyTag", type=String.class, parameters={})
+    @Export(name="policyTag", refs={String.class}, tree="[0]")
     private Output<String> policyTag;
 
     /**
@@ -232,7 +232,7 @@ public class PolicyTagIamBinding extends com.pulumi.resources.CustomResource {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     /**

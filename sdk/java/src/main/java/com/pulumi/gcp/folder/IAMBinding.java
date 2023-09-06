@@ -84,7 +84,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:folder/iamBinding:IamBinding")
 public class IamBinding extends com.pulumi.resources.CustomResource {
-    @Export(name="condition", type=IamBindingCondition.class, parameters={})
+    @Export(name="condition", refs={IamBindingCondition.class}, tree="[0]")
     private Output</* @Nullable */ IamBindingCondition> condition;
 
     public Output<Optional<IamBindingCondition>> condition() {
@@ -94,7 +94,7 @@ public class IamBinding extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the folder&#39;s IAM policy.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -108,7 +108,7 @@ public class IamBinding extends com.pulumi.resources.CustomResource {
      * The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
      * 
      */
-    @Export(name="folder", type=String.class, parameters={})
+    @Export(name="folder", refs={String.class}, tree="[0]")
     private Output<String> folder;
 
     /**
@@ -128,7 +128,7 @@ public class IamBinding extends com.pulumi.resources.CustomResource {
      * * For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
      * 
      */
-    @Export(name="members", type=List.class, parameters={String.class})
+    @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> members;
 
     /**
@@ -150,7 +150,7 @@ public class IamBinding extends com.pulumi.resources.CustomResource {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     /**

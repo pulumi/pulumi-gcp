@@ -103,7 +103,7 @@ public class ServiceConnectionPolicy extends com.pulumi.resources.CustomResource
      * The timestamp when the resource was created.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -117,7 +117,7 @@ public class ServiceConnectionPolicy extends com.pulumi.resources.CustomResource
      * Free-text description of the resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -131,7 +131,7 @@ public class ServiceConnectionPolicy extends com.pulumi.resources.CustomResource
      * The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -145,7 +145,7 @@ public class ServiceConnectionPolicy extends com.pulumi.resources.CustomResource
      * The type of underlying resources used to create the connection.
      * 
      */
-    @Export(name="infrastructure", type=String.class, parameters={})
+    @Export(name="infrastructure", refs={String.class}, tree="[0]")
     private Output<String> infrastructure;
 
     /**
@@ -159,7 +159,7 @@ public class ServiceConnectionPolicy extends com.pulumi.resources.CustomResource
      * User-defined labels.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -175,7 +175,7 @@ public class ServiceConnectionPolicy extends com.pulumi.resources.CustomResource
      * ***
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -191,7 +191,7 @@ public class ServiceConnectionPolicy extends com.pulumi.resources.CustomResource
      * The name of a ServiceConnectionPolicy. Format: projects/{project}/locations/{location}/serviceConnectionPolicies/{service_connection_policy} See: https://google.aip.dev/122#fields-representing-resource-names
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -205,7 +205,7 @@ public class ServiceConnectionPolicy extends com.pulumi.resources.CustomResource
      * The resource path of the consumer network. Example: - projects/{projectNumOrId}/global/networks/{resourceId}.
      * 
      */
-    @Export(name="network", type=String.class, parameters={})
+    @Export(name="network", refs={String.class}, tree="[0]")
     private Output<String> network;
 
     /**
@@ -220,7 +220,7 @@ public class ServiceConnectionPolicy extends com.pulumi.resources.CustomResource
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -236,7 +236,7 @@ public class ServiceConnectionPolicy extends com.pulumi.resources.CustomResource
      * Structure is documented below.
      * 
      */
-    @Export(name="pscConfig", type=ServiceConnectionPolicyPscConfig.class, parameters={})
+    @Export(name="pscConfig", refs={ServiceConnectionPolicyPscConfig.class}, tree="[0]")
     private Output</* @Nullable */ ServiceConnectionPolicyPscConfig> pscConfig;
 
     /**
@@ -252,7 +252,7 @@ public class ServiceConnectionPolicy extends com.pulumi.resources.CustomResource
      * Structure is documented below.
      * 
      */
-    @Export(name="pscConnections", type=List.class, parameters={ServiceConnectionPolicyPscConnection.class})
+    @Export(name="pscConnections", refs={List.class,ServiceConnectionPolicyPscConnection.class}, tree="[0,1]")
     private Output<List<ServiceConnectionPolicyPscConnection>> pscConnections;
 
     /**
@@ -268,7 +268,7 @@ public class ServiceConnectionPolicy extends com.pulumi.resources.CustomResource
      * It is provided by the Service Producer. Google services have a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
      * 
      */
-    @Export(name="serviceClass", type=String.class, parameters={})
+    @Export(name="serviceClass", refs={String.class}, tree="[0]")
     private Output<String> serviceClass;
 
     /**
@@ -283,7 +283,7 @@ public class ServiceConnectionPolicy extends com.pulumi.resources.CustomResource
      * The timestamp when the resource was updated.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

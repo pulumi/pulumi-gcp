@@ -176,7 +176,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:apigateway/gatewayIamMember:GatewayIamMember")
 public class GatewayIamMember extends com.pulumi.resources.CustomResource {
-    @Export(name="condition", type=GatewayIamMemberCondition.class, parameters={})
+    @Export(name="condition", refs={GatewayIamMemberCondition.class}, tree="[0]")
     private Output</* @Nullable */ GatewayIamMemberCondition> condition;
 
     public Output<Optional<GatewayIamMemberCondition>> condition() {
@@ -186,7 +186,7 @@ public class GatewayIamMember extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the IAM policy.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -196,13 +196,13 @@ public class GatewayIamMember extends com.pulumi.resources.CustomResource {
     public Output<String> etag() {
         return this.etag;
     }
-    @Export(name="gateway", type=String.class, parameters={})
+    @Export(name="gateway", refs={String.class}, tree="[0]")
     private Output<String> gateway;
 
     public Output<String> gateway() {
         return this.gateway;
     }
-    @Export(name="member", type=String.class, parameters={})
+    @Export(name="member", refs={String.class}, tree="[0]")
     private Output<String> member;
 
     public Output<String> member() {
@@ -225,7 +225,7 @@ public class GatewayIamMember extends com.pulumi.resources.CustomResource {
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -255,7 +255,7 @@ public class GatewayIamMember extends com.pulumi.resources.CustomResource {
      * region is specified, it is taken from the provider configuration.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -274,7 +274,7 @@ public class GatewayIamMember extends com.pulumi.resources.CustomResource {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     /**

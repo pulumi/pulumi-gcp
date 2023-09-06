@@ -164,7 +164,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:gkebackup/backupPlanIamMember:BackupPlanIamMember")
 public class BackupPlanIamMember extends com.pulumi.resources.CustomResource {
-    @Export(name="condition", type=BackupPlanIamMemberCondition.class, parameters={})
+    @Export(name="condition", refs={BackupPlanIamMemberCondition.class}, tree="[0]")
     private Output</* @Nullable */ BackupPlanIamMemberCondition> condition;
 
     public Output<Optional<BackupPlanIamMemberCondition>> condition() {
@@ -174,7 +174,7 @@ public class BackupPlanIamMember extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the IAM policy.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -189,7 +189,7 @@ public class BackupPlanIamMember extends com.pulumi.resources.CustomResource {
      * Used to find the parent resource to bind the IAM policy to
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -200,7 +200,7 @@ public class BackupPlanIamMember extends com.pulumi.resources.CustomResource {
     public Output<String> location() {
         return this.location;
     }
-    @Export(name="member", type=String.class, parameters={})
+    @Export(name="member", refs={String.class}, tree="[0]")
     private Output<String> member;
 
     public Output<String> member() {
@@ -210,7 +210,7 @@ public class BackupPlanIamMember extends com.pulumi.resources.CustomResource {
      * Used to find the parent resource to bind the IAM policy to
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -237,7 +237,7 @@ public class BackupPlanIamMember extends com.pulumi.resources.CustomResource {
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -266,7 +266,7 @@ public class BackupPlanIamMember extends com.pulumi.resources.CustomResource {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     /**

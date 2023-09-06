@@ -74,7 +74,7 @@ public class Taxonomy extends com.pulumi.resources.CustomResource {
      * Each value may be one of: `POLICY_TYPE_UNSPECIFIED`, `FINE_GRAINED_ACCESS_CONTROL`.
      * 
      */
-    @Export(name="activatedPolicyTypes", type=List.class, parameters={String.class})
+    @Export(name="activatedPolicyTypes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> activatedPolicyTypes;
 
     /**
@@ -92,7 +92,7 @@ public class Taxonomy extends com.pulumi.resources.CustomResource {
      * long when encoded in UTF-8. If not set, defaults to an empty description.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -113,7 +113,7 @@ public class Taxonomy extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -133,7 +133,7 @@ public class Taxonomy extends com.pulumi.resources.CustomResource {
      * &#34;projects/{project}/locations/{region}/taxonomies/{taxonomy}&#34;.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -149,7 +149,7 @@ public class Taxonomy extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -164,7 +164,7 @@ public class Taxonomy extends com.pulumi.resources.CustomResource {
      * Taxonomy location region.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**

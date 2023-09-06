@@ -343,7 +343,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * project associated with the Apigee organization will be included to the list.
      * 
      */
-    @Export(name="consumerAcceptLists", type=List.class, parameters={String.class})
+    @Export(name="consumerAcceptLists", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> consumerAcceptLists;
 
     /**
@@ -360,7 +360,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Description of the instance.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -375,7 +375,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Use the following format: `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`
      * 
      */
-    @Export(name="diskEncryptionKeyName", type=String.class, parameters={})
+    @Export(name="diskEncryptionKeyName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> diskEncryptionKeyName;
 
     /**
@@ -390,7 +390,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Display name of the instance.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> displayName;
 
     /**
@@ -404,7 +404,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Output only. Hostname or IP address of the exposed Apigee endpoint used by clients to connect to the service.
      * 
      */
-    @Export(name="host", type=String.class, parameters={})
+    @Export(name="host", refs={String.class}, tree="[0]")
     private Output<String> host;
 
     /**
@@ -424,7 +424,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Input format: &#34;a.b.c.d/22&#34;
      * 
      */
-    @Export(name="ipRange", type=String.class, parameters={})
+    @Export(name="ipRange", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ipRange;
 
     /**
@@ -444,7 +444,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Required. Compute Engine location where the instance resides.
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -458,7 +458,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Resource ID of the instance.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -475,7 +475,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="orgId", type=String.class, parameters={})
+    @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
     /**
@@ -493,7 +493,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * see [CidrRange](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.instances#CidrRange) on the documentation.
      * 
      */
-    @Export(name="peeringCidrRange", type=String.class, parameters={})
+    @Export(name="peeringCidrRange", refs={String.class}, tree="[0]")
     private Output<String> peeringCidrRange;
 
     /**
@@ -508,7 +508,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Output only. Port number of the exposed Apigee endpoint.
      * 
      */
-    @Export(name="port", type=String.class, parameters={})
+    @Export(name="port", refs={String.class}, tree="[0]")
     private Output<String> port;
 
     /**
@@ -524,7 +524,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * forward traffic to this service attachment using the PSC endpoints.
      * 
      */
-    @Export(name="serviceAttachment", type=String.class, parameters={})
+    @Export(name="serviceAttachment", refs={String.class}, tree="[0]")
     private Output<String> serviceAttachment;
 
     /**

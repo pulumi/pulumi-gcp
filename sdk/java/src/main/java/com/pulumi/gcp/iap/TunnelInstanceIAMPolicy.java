@@ -296,7 +296,7 @@ public class TunnelInstanceIamPolicy extends com.pulumi.resources.CustomResource
      * (Computed) The etag of the IAM policy.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -310,7 +310,7 @@ public class TunnelInstanceIamPolicy extends com.pulumi.resources.CustomResource
      * Used to find the parent resource to bind the IAM policy to
      * 
      */
-    @Export(name="instance", type=String.class, parameters={})
+    @Export(name="instance", refs={String.class}, tree="[0]")
     private Output<String> instance;
 
     /**
@@ -325,7 +325,7 @@ public class TunnelInstanceIamPolicy extends com.pulumi.resources.CustomResource
      * a `gcp.organizations.getIamPolicy` data source.
      * 
      */
-    @Export(name="policyData", type=String.class, parameters={})
+    @Export(name="policyData", refs={String.class}, tree="[0]")
     private Output<String> policyData;
 
     /**
@@ -353,7 +353,7 @@ public class TunnelInstanceIamPolicy extends com.pulumi.resources.CustomResource
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -376,7 +376,7 @@ public class TunnelInstanceIamPolicy extends com.pulumi.resources.CustomResource
     public Output<String> project() {
         return this.project;
     }
-    @Export(name="zone", type=String.class, parameters={})
+    @Export(name="zone", refs={String.class}, tree="[0]")
     private Output<String> zone;
 
     public Output<String> zone() {

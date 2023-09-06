@@ -154,7 +154,7 @@ public class NatAddress extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -171,7 +171,7 @@ public class NatAddress extends com.pulumi.resources.CustomResource {
      * The allocated NAT IP address.
      * 
      */
-    @Export(name="ipAddress", type=String.class, parameters={})
+    @Export(name="ipAddress", refs={String.class}, tree="[0]")
     private Output<String> ipAddress;
 
     /**
@@ -185,7 +185,7 @@ public class NatAddress extends com.pulumi.resources.CustomResource {
      * Resource ID of the NAT address.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -199,7 +199,7 @@ public class NatAddress extends com.pulumi.resources.CustomResource {
      * State of the NAT IP address.
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**

@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:organizations/iamBinding:IamBinding")
 public class IamBinding extends com.pulumi.resources.CustomResource {
-    @Export(name="condition", type=IamBindingCondition.class, parameters={})
+    @Export(name="condition", refs={IamBindingCondition.class}, tree="[0]")
     private Output</* @Nullable */ IamBindingCondition> condition;
 
     public Output<Optional<IamBindingCondition>> condition() {
@@ -87,7 +87,7 @@ public class IamBinding extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the organization&#39;s IAM policy.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -101,7 +101,7 @@ public class IamBinding extends com.pulumi.resources.CustomResource {
      * A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
      * 
      */
-    @Export(name="members", type=List.class, parameters={String.class})
+    @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> members;
 
     /**
@@ -115,7 +115,7 @@ public class IamBinding extends com.pulumi.resources.CustomResource {
      * The numeric ID of the organization in which you want to create a custom role.
      * 
      */
-    @Export(name="orgId", type=String.class, parameters={})
+    @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
     /**
@@ -131,7 +131,7 @@ public class IamBinding extends com.pulumi.resources.CustomResource {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     /**

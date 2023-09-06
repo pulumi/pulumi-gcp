@@ -160,7 +160,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:healthcare/dicomStoreIamBinding:DicomStoreIamBinding")
 public class DicomStoreIamBinding extends com.pulumi.resources.CustomResource {
-    @Export(name="condition", type=DicomStoreIamBindingCondition.class, parameters={})
+    @Export(name="condition", refs={DicomStoreIamBindingCondition.class}, tree="[0]")
     private Output</* @Nullable */ DicomStoreIamBindingCondition> condition;
 
     public Output<Optional<DicomStoreIamBindingCondition>> condition() {
@@ -182,7 +182,7 @@ public class DicomStoreIamBinding extends com.pulumi.resources.CustomResource {
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * 
      */
-    @Export(name="dicomStoreId", type=String.class, parameters={})
+    @Export(name="dicomStoreId", refs={String.class}, tree="[0]")
     private Output<String> dicomStoreId;
 
     /**
@@ -208,7 +208,7 @@ public class DicomStoreIamBinding extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the DICOM store&#39;s IAM policy.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -218,7 +218,7 @@ public class DicomStoreIamBinding extends com.pulumi.resources.CustomResource {
     public Output<String> etag() {
         return this.etag;
     }
-    @Export(name="members", type=List.class, parameters={String.class})
+    @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> members;
 
     public Output<List<String>> members() {
@@ -230,7 +230,7 @@ public class DicomStoreIamBinding extends com.pulumi.resources.CustomResource {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     /**

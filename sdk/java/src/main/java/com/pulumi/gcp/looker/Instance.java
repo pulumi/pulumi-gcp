@@ -293,7 +293,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="adminSettings", type=InstanceAdminSettings.class, parameters={})
+    @Export(name="adminSettings", refs={InstanceAdminSettings.class}, tree="[0]")
     private Output</* @Nullable */ InstanceAdminSettings> adminSettings;
 
     /**
@@ -310,7 +310,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * project that is hosting the Looker Instance.
      * 
      */
-    @Export(name="consumerNetwork", type=String.class, parameters={})
+    @Export(name="consumerNetwork", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> consumerNetwork;
 
     /**
@@ -327,7 +327,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * accurate to nanoseconds.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -345,7 +345,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="denyMaintenancePeriod", type=InstanceDenyMaintenancePeriod.class, parameters={})
+    @Export(name="denyMaintenancePeriod", refs={InstanceDenyMaintenancePeriod.class}, tree="[0]")
     private Output</* @Nullable */ InstanceDenyMaintenancePeriod> denyMaintenancePeriod;
 
     /**
@@ -362,7 +362,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Public Egress IP (IPv4).
      * 
      */
-    @Export(name="egressPublicIp", type=String.class, parameters={})
+    @Export(name="egressPublicIp", refs={String.class}, tree="[0]")
     private Output<String> egressPublicIp;
 
     /**
@@ -377,7 +377,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="encryptionConfig", type=InstanceEncryptionConfig.class, parameters={})
+    @Export(name="encryptionConfig", refs={InstanceEncryptionConfig.class}, tree="[0]")
     private Output<InstanceEncryptionConfig> encryptionConfig;
 
     /**
@@ -392,7 +392,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Private Ingress IP (IPv4).
      * 
      */
-    @Export(name="ingressPrivateIp", type=String.class, parameters={})
+    @Export(name="ingressPrivateIp", refs={String.class}, tree="[0]")
     private Output<String> ingressPrivateIp;
 
     /**
@@ -406,7 +406,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Public Ingress IP (IPv4).
      * 
      */
-    @Export(name="ingressPublicIp", type=String.class, parameters={})
+    @Export(name="ingressPublicIp", refs={String.class}, tree="[0]")
     private Output<String> ingressPublicIp;
 
     /**
@@ -420,7 +420,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Looker instance URI which can be used to access the Looker Instance UI.
      * 
      */
-    @Export(name="lookerUri", type=String.class, parameters={})
+    @Export(name="lookerUri", refs={String.class}, tree="[0]")
     private Output<String> lookerUri;
 
     /**
@@ -434,7 +434,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The Looker version that the instance is using.
      * 
      */
-    @Export(name="lookerVersion", type=String.class, parameters={})
+    @Export(name="lookerVersion", refs={String.class}, tree="[0]")
     private Output<String> lookerVersion;
 
     /**
@@ -452,7 +452,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="maintenanceWindow", type=InstanceMaintenanceWindow.class, parameters={})
+    @Export(name="maintenanceWindow", refs={InstanceMaintenanceWindow.class}, tree="[0]")
     private Output</* @Nullable */ InstanceMaintenanceWindow> maintenanceWindow;
 
     /**
@@ -472,7 +472,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -489,7 +489,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="oauthConfig", type=InstanceOauthConfig.class, parameters={})
+    @Export(name="oauthConfig", refs={InstanceOauthConfig.class}, tree="[0]")
     private Output</* @Nullable */ InstanceOauthConfig> oauthConfig;
 
     /**
@@ -512,7 +512,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      *   Possible values are: `LOOKER_CORE_TRIAL`, `LOOKER_CORE_STANDARD`, `LOOKER_CORE_STANDARD_ANNUAL`, `LOOKER_CORE_ENTERPRISE_ANNUAL`, `LOOKER_CORE_EMBED_ANNUAL`, `LOOKER_MODELER`.
      * 
      */
-    @Export(name="platformEdition", type=String.class, parameters={})
+    @Export(name="platformEdition", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> platformEdition;
 
     /**
@@ -534,7 +534,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Whether private IP is enabled on the Looker instance.
      * 
      */
-    @Export(name="privateIpEnabled", type=Boolean.class, parameters={})
+    @Export(name="privateIpEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> privateIpEnabled;
 
     /**
@@ -549,7 +549,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -564,7 +564,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Whether public IP is enabled on the Looker instance.
      * 
      */
-    @Export(name="publicIpEnabled", type=Boolean.class, parameters={})
+    @Export(name="publicIpEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> publicIpEnabled;
 
     /**
@@ -578,7 +578,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The name of the Looker region of the instance.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -593,7 +593,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * private service access connection. User may or may not specify this in a request.
      * 
      */
-    @Export(name="reservedRange", type=String.class, parameters={})
+    @Export(name="reservedRange", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> reservedRange;
 
     /**
@@ -609,7 +609,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * accurate to nanoseconds.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**
@@ -631,7 +631,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="userMetadata", type=InstanceUserMetadata.class, parameters={})
+    @Export(name="userMetadata", refs={InstanceUserMetadata.class}, tree="[0]")
     private Output</* @Nullable */ InstanceUserMetadata> userMetadata;
 
     /**

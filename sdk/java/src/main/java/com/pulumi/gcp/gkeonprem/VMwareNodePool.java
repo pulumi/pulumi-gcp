@@ -248,7 +248,7 @@ public class VMwareNodePool extends com.pulumi.resources.CustomResource {
      * with dashes (-), underscores (_), dots (.), and alphanumerics between.
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, String.class})
+    @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> annotations;
 
     /**
@@ -270,7 +270,7 @@ public class VMwareNodePool extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="config", type=VMwareNodePoolConfig.class, parameters={})
+    @Export(name="config", refs={VMwareNodePoolConfig.class}, tree="[0]")
     private Output<VMwareNodePoolConfig> config;
 
     /**
@@ -285,7 +285,7 @@ public class VMwareNodePool extends com.pulumi.resources.CustomResource {
      * The time the cluster was created, in RFC3339 text format.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -299,7 +299,7 @@ public class VMwareNodePool extends com.pulumi.resources.CustomResource {
      * The time the cluster was deleted, in RFC3339 text format.
      * 
      */
-    @Export(name="deleteTime", type=String.class, parameters={})
+    @Export(name="deleteTime", refs={String.class}, tree="[0]")
     private Output<String> deleteTime;
 
     /**
@@ -313,7 +313,7 @@ public class VMwareNodePool extends com.pulumi.resources.CustomResource {
      * The display name for the node pool.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> displayName;
 
     /**
@@ -331,7 +331,7 @@ public class VMwareNodePool extends com.pulumi.resources.CustomResource {
      * through optimistic concurrency control.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -349,7 +349,7 @@ public class VMwareNodePool extends com.pulumi.resources.CustomResource {
      * The location of the resource.
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -363,7 +363,7 @@ public class VMwareNodePool extends com.pulumi.resources.CustomResource {
      * The vmware node pool name.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -378,7 +378,7 @@ public class VMwareNodePool extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="nodePoolAutoscaling", type=VMwareNodePoolNodePoolAutoscaling.class, parameters={})
+    @Export(name="nodePoolAutoscaling", refs={VMwareNodePoolNodePoolAutoscaling.class}, tree="[0]")
     private Output</* @Nullable */ VMwareNodePoolNodePoolAutoscaling> nodePoolAutoscaling;
 
     /**
@@ -393,7 +393,7 @@ public class VMwareNodePool extends com.pulumi.resources.CustomResource {
      * Anthos version for the node pool. Defaults to the user cluster version.
      * 
      */
-    @Export(name="onPremVersion", type=String.class, parameters={})
+    @Export(name="onPremVersion", refs={String.class}, tree="[0]")
     private Output<String> onPremVersion;
 
     /**
@@ -408,7 +408,7 @@ public class VMwareNodePool extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -423,7 +423,7 @@ public class VMwareNodePool extends com.pulumi.resources.CustomResource {
      * If set, there are currently changes in flight to the node pool.
      * 
      */
-    @Export(name="reconciling", type=Boolean.class, parameters={})
+    @Export(name="reconciling", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> reconciling;
 
     /**
@@ -438,7 +438,7 @@ public class VMwareNodePool extends com.pulumi.resources.CustomResource {
      * The lifecycle state of the condition.
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
@@ -454,7 +454,7 @@ public class VMwareNodePool extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="statuses", type=List.class, parameters={VMwareNodePoolStatus.class})
+    @Export(name="statuses", refs={List.class,VMwareNodePoolStatus.class}, tree="[0,1]")
     private Output<List<VMwareNodePoolStatus>> statuses;
 
     /**
@@ -469,7 +469,7 @@ public class VMwareNodePool extends com.pulumi.resources.CustomResource {
      * The unique identifier of the node pool.
      * 
      */
-    @Export(name="uid", type=String.class, parameters={})
+    @Export(name="uid", refs={String.class}, tree="[0]")
     private Output<String> uid;
 
     /**
@@ -483,7 +483,7 @@ public class VMwareNodePool extends com.pulumi.resources.CustomResource {
      * The time the cluster was last updated, in RFC3339 text format.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**
@@ -497,7 +497,7 @@ public class VMwareNodePool extends com.pulumi.resources.CustomResource {
      * The cluster this node pool belongs to.
      * 
      */
-    @Export(name="vmwareCluster", type=String.class, parameters={})
+    @Export(name="vmwareCluster", refs={String.class}, tree="[0]")
     private Output<String> vmwareCluster;
 
     /**

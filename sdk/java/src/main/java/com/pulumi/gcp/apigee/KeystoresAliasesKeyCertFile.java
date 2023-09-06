@@ -44,7 +44,7 @@ public class KeystoresAliasesKeyCertFile extends com.pulumi.resources.CustomReso
      * Alias Name
      * 
      */
-    @Export(name="alias", type=String.class, parameters={})
+    @Export(name="alias", refs={String.class}, tree="[0]")
     private Output<String> alias;
 
     /**
@@ -60,7 +60,7 @@ public class KeystoresAliasesKeyCertFile extends com.pulumi.resources.CustomReso
      * ***
      * 
      */
-    @Export(name="cert", type=String.class, parameters={})
+    @Export(name="cert", refs={String.class}, tree="[0]")
     private Output<String> cert;
 
     /**
@@ -77,7 +77,7 @@ public class KeystoresAliasesKeyCertFile extends com.pulumi.resources.CustomReso
      * Structure is documented below.
      * 
      */
-    @Export(name="certsInfo", type=KeystoresAliasesKeyCertFileCertsInfo.class, parameters={})
+    @Export(name="certsInfo", refs={KeystoresAliasesKeyCertFileCertsInfo.class}, tree="[0]")
     private Output<KeystoresAliasesKeyCertFileCertsInfo> certsInfo;
 
     /**
@@ -92,7 +92,7 @@ public class KeystoresAliasesKeyCertFile extends com.pulumi.resources.CustomReso
      * Environment associated with the alias
      * 
      */
-    @Export(name="environment", type=String.class, parameters={})
+    @Export(name="environment", refs={String.class}, tree="[0]")
     private Output<String> environment;
 
     /**
@@ -106,7 +106,7 @@ public class KeystoresAliasesKeyCertFile extends com.pulumi.resources.CustomReso
      * Private Key content, omit if uploading to truststore
      * 
      */
-    @Export(name="key", type=String.class, parameters={})
+    @Export(name="key", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> key;
 
     /**
@@ -120,7 +120,7 @@ public class KeystoresAliasesKeyCertFile extends com.pulumi.resources.CustomReso
      * Keystore Name
      * 
      */
-    @Export(name="keystore", type=String.class, parameters={})
+    @Export(name="keystore", refs={String.class}, tree="[0]")
     private Output<String> keystore;
 
     /**
@@ -134,7 +134,7 @@ public class KeystoresAliasesKeyCertFile extends com.pulumi.resources.CustomReso
      * Organization ID associated with the alias, without organization/ prefix
      * 
      */
-    @Export(name="orgId", type=String.class, parameters={})
+    @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
     /**
@@ -148,7 +148,7 @@ public class KeystoresAliasesKeyCertFile extends com.pulumi.resources.CustomReso
      * Password for the Private Key if it&#39;s encrypted
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
@@ -162,7 +162,7 @@ public class KeystoresAliasesKeyCertFile extends com.pulumi.resources.CustomReso
      * Optional.Type of Alias
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**

@@ -296,7 +296,7 @@ public class AppEngineServiceIamPolicy extends com.pulumi.resources.CustomResour
      * Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
      * 
      */
-    @Export(name="appId", type=String.class, parameters={})
+    @Export(name="appId", refs={String.class}, tree="[0]")
     private Output<String> appId;
 
     /**
@@ -310,7 +310,7 @@ public class AppEngineServiceIamPolicy extends com.pulumi.resources.CustomResour
      * (Computed) The etag of the IAM policy.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -325,7 +325,7 @@ public class AppEngineServiceIamPolicy extends com.pulumi.resources.CustomResour
      * a `gcp.organizations.getIamPolicy` data source.
      * 
      */
-    @Export(name="policyData", type=String.class, parameters={})
+    @Export(name="policyData", refs={String.class}, tree="[0]")
     private Output<String> policyData;
 
     /**
@@ -353,7 +353,7 @@ public class AppEngineServiceIamPolicy extends com.pulumi.resources.CustomResour
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -380,7 +380,7 @@ public class AppEngineServiceIamPolicy extends com.pulumi.resources.CustomResour
      * Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
      * 
      */
-    @Export(name="service", type=String.class, parameters={})
+    @Export(name="service", refs={String.class}, tree="[0]")
     private Output<String> service;
 
     /**

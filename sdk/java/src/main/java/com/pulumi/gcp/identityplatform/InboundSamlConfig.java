@@ -92,7 +92,7 @@ public class InboundSamlConfig extends com.pulumi.resources.CustomResource {
      * Human friendly display name.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -106,7 +106,7 @@ public class InboundSamlConfig extends com.pulumi.resources.CustomResource {
      * If this config allows users to sign in with the provider.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -121,7 +121,7 @@ public class InboundSamlConfig extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="idpConfig", type=InboundSamlConfigIdpConfig.class, parameters={})
+    @Export(name="idpConfig", refs={InboundSamlConfigIdpConfig.class}, tree="[0]")
     private Output<InboundSamlConfigIdpConfig> idpConfig;
 
     /**
@@ -138,7 +138,7 @@ public class InboundSamlConfig extends com.pulumi.resources.CustomResource {
      * alphanumeric character, and have at least 2 characters.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -155,7 +155,7 @@ public class InboundSamlConfig extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -172,7 +172,7 @@ public class InboundSamlConfig extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="spConfig", type=InboundSamlConfigSpConfig.class, parameters={})
+    @Export(name="spConfig", refs={InboundSamlConfigSpConfig.class}, tree="[0]")
     private Output<InboundSamlConfigSpConfig> spConfig;
 
     /**

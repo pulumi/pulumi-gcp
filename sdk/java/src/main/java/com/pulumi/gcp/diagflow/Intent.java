@@ -168,7 +168,7 @@ public class Intent extends com.pulumi.resources.CustomResource {
      * Note: The action name must not contain whitespaces.
      * 
      */
-    @Export(name="action", type=String.class, parameters={})
+    @Export(name="action", refs={String.class}, tree="[0]")
     private Output<String> action;
 
     /**
@@ -185,7 +185,7 @@ public class Intent extends com.pulumi.resources.CustomResource {
      * Each value may be one of: `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, `GOOGLE_HANGOUTS`.
      * 
      */
-    @Export(name="defaultResponsePlatforms", type=List.class, parameters={String.class})
+    @Export(name="defaultResponsePlatforms", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> defaultResponsePlatforms;
 
     /**
@@ -203,7 +203,7 @@ public class Intent extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -221,7 +221,7 @@ public class Intent extends com.pulumi.resources.CustomResource {
      * [events reference](https://cloud.google.com/dialogflow/docs/events-overview) for more details.
      * 
      */
-    @Export(name="events", type=List.class, parameters={String.class})
+    @Export(name="events", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> events;
 
     /**
@@ -239,7 +239,7 @@ public class Intent extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="followupIntentInfos", type=List.class, parameters={IntentFollowupIntentInfo.class})
+    @Export(name="followupIntentInfos", refs={List.class,IntentFollowupIntentInfo.class}, tree="[0,1]")
     private Output<List<IntentFollowupIntentInfo>> followupIntentInfos;
 
     /**
@@ -256,7 +256,7 @@ public class Intent extends com.pulumi.resources.CustomResource {
      * Format: projects/&lt;Project ID&gt;/agent/sessions/-/contexts/&lt;Context ID&gt;.
      * 
      */
-    @Export(name="inputContextNames", type=List.class, parameters={String.class})
+    @Export(name="inputContextNames", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> inputContextNames;
 
     /**
@@ -271,7 +271,7 @@ public class Intent extends com.pulumi.resources.CustomResource {
      * Indicates whether this is a fallback intent.
      * 
      */
-    @Export(name="isFallback", type=Boolean.class, parameters={})
+    @Export(name="isFallback", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isFallback;
 
     /**
@@ -287,7 +287,7 @@ public class Intent extends com.pulumi.resources.CustomResource {
      * ONLY match mode. Also, auto-markup in the UI is turned off.
      * 
      */
-    @Export(name="mlDisabled", type=Boolean.class, parameters={})
+    @Export(name="mlDisabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> mlDisabled;
 
     /**
@@ -304,7 +304,7 @@ public class Intent extends com.pulumi.resources.CustomResource {
      * Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -320,7 +320,7 @@ public class Intent extends com.pulumi.resources.CustomResource {
      * Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
      * 
      */
-    @Export(name="parentFollowupIntentName", type=String.class, parameters={})
+    @Export(name="parentFollowupIntentName", refs={String.class}, tree="[0]")
     private Output<String> parentFollowupIntentName;
 
     /**
@@ -338,7 +338,7 @@ public class Intent extends com.pulumi.resources.CustomResource {
      * - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
      * 
      */
-    @Export(name="priority", type=Integer.class, parameters={})
+    @Export(name="priority", refs={Integer.class}, tree="[0]")
     private Output<Integer> priority;
 
     /**
@@ -356,7 +356,7 @@ public class Intent extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -371,7 +371,7 @@ public class Intent extends com.pulumi.resources.CustomResource {
      * Indicates whether to delete all contexts in the current session when this intent is matched.
      * 
      */
-    @Export(name="resetContexts", type=Boolean.class, parameters={})
+    @Export(name="resetContexts", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> resetContexts;
 
     /**
@@ -387,7 +387,7 @@ public class Intent extends com.pulumi.resources.CustomResource {
      * Format: projects/&lt;Project ID&gt;/agent/intents/&lt;Intent ID&gt;.
      * 
      */
-    @Export(name="rootFollowupIntentName", type=String.class, parameters={})
+    @Export(name="rootFollowupIntentName", refs={String.class}, tree="[0]")
     private Output<String> rootFollowupIntentName;
 
     /**
@@ -407,7 +407,7 @@ public class Intent extends com.pulumi.resources.CustomResource {
      *   Possible values are: `WEBHOOK_STATE_ENABLED`, `WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING`.
      * 
      */
-    @Export(name="webhookState", type=String.class, parameters={})
+    @Export(name="webhookState", refs={String.class}, tree="[0]")
     private Output<String> webhookState;
 
     /**

@@ -42,7 +42,7 @@ public class SharedflowDeployment extends com.pulumi.resources.CustomResource {
      * The resource ID of the environment.
      * 
      */
-    @Export(name="environment", type=String.class, parameters={})
+    @Export(name="environment", refs={String.class}, tree="[0]")
     private Output<String> environment;
 
     /**
@@ -56,7 +56,7 @@ public class SharedflowDeployment extends com.pulumi.resources.CustomResource {
      * The Apigee Organization associated with the Sharedflow
      * 
      */
-    @Export(name="orgId", type=String.class, parameters={})
+    @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
     /**
@@ -72,7 +72,7 @@ public class SharedflowDeployment extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="revision", type=String.class, parameters={})
+    @Export(name="revision", refs={String.class}, tree="[0]")
     private Output<String> revision;
 
     /**
@@ -88,7 +88,7 @@ public class SharedflowDeployment extends com.pulumi.resources.CustomResource {
      * The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com.
      * 
      */
-    @Export(name="serviceAccount", type=String.class, parameters={})
+    @Export(name="serviceAccount", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serviceAccount;
 
     /**
@@ -102,7 +102,7 @@ public class SharedflowDeployment extends com.pulumi.resources.CustomResource {
      * Id of the Sharedflow to be deployed.
      * 
      */
-    @Export(name="sharedflowId", type=String.class, parameters={})
+    @Export(name="sharedflowId", refs={String.class}, tree="[0]")
     private Output<String> sharedflowId;
 
     /**

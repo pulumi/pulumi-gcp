@@ -165,7 +165,7 @@ public class DatabaseIamPolicy extends com.pulumi.resources.CustomResource {
      * The name of the Spanner database.
      * 
      */
-    @Export(name="database", type=String.class, parameters={})
+    @Export(name="database", refs={String.class}, tree="[0]")
     private Output<String> database;
 
     /**
@@ -179,7 +179,7 @@ public class DatabaseIamPolicy extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the database&#39;s IAM policy.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -202,7 +202,7 @@ public class DatabaseIamPolicy extends com.pulumi.resources.CustomResource {
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * 
      */
-    @Export(name="instance", type=String.class, parameters={})
+    @Export(name="instance", refs={String.class}, tree="[0]")
     private Output<String> instance;
 
     /**
@@ -226,7 +226,7 @@ public class DatabaseIamPolicy extends com.pulumi.resources.CustomResource {
      * a `gcp.organizations.getIamPolicy` data source.
      * 
      */
-    @Export(name="policyData", type=String.class, parameters={})
+    @Export(name="policyData", refs={String.class}, tree="[0]")
     private Output<String> policyData;
 
     /**
@@ -242,7 +242,7 @@ public class DatabaseIamPolicy extends com.pulumi.resources.CustomResource {
      * is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**

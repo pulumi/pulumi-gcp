@@ -128,7 +128,7 @@ public class Workstation extends com.pulumi.resources.CustomResource {
      * Client-specified annotations. This is distinct from labels.
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, String.class})
+    @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> annotations;
 
     /**
@@ -142,7 +142,7 @@ public class Workstation extends com.pulumi.resources.CustomResource {
      * Time when this resource was created.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -156,7 +156,7 @@ public class Workstation extends com.pulumi.resources.CustomResource {
      * Human-readable name for this resource.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> displayName;
 
     /**
@@ -172,7 +172,7 @@ public class Workstation extends com.pulumi.resources.CustomResource {
      * To send traffic to a different port, clients may prefix the host with the destination port in the format &#34;{port}-{host}&#34;.
      * 
      */
-    @Export(name="host", type=String.class, parameters={})
+    @Export(name="host", refs={String.class}, tree="[0]")
     private Output<String> host;
 
     /**
@@ -188,7 +188,7 @@ public class Workstation extends com.pulumi.resources.CustomResource {
      * Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -204,7 +204,7 @@ public class Workstation extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -220,7 +220,7 @@ public class Workstation extends com.pulumi.resources.CustomResource {
      * Full name of this resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -235,7 +235,7 @@ public class Workstation extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -250,7 +250,7 @@ public class Workstation extends com.pulumi.resources.CustomResource {
      * Current state of the workstation.
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
@@ -264,7 +264,7 @@ public class Workstation extends com.pulumi.resources.CustomResource {
      * A system-assigned unique identified for this resource.
      * 
      */
-    @Export(name="uid", type=String.class, parameters={})
+    @Export(name="uid", refs={String.class}, tree="[0]")
     private Output<String> uid;
 
     /**
@@ -278,7 +278,7 @@ public class Workstation extends com.pulumi.resources.CustomResource {
      * The ID of the parent workstation cluster.
      * 
      */
-    @Export(name="workstationClusterId", type=String.class, parameters={})
+    @Export(name="workstationClusterId", refs={String.class}, tree="[0]")
     private Output<String> workstationClusterId;
 
     /**
@@ -292,7 +292,7 @@ public class Workstation extends com.pulumi.resources.CustomResource {
      * The ID of the parent workstation cluster config.
      * 
      */
-    @Export(name="workstationConfigId", type=String.class, parameters={})
+    @Export(name="workstationConfigId", refs={String.class}, tree="[0]")
     private Output<String> workstationConfigId;
 
     /**
@@ -306,7 +306,7 @@ public class Workstation extends com.pulumi.resources.CustomResource {
      * ID to use for the workstation.
      * 
      */
-    @Export(name="workstationId", type=String.class, parameters={})
+    @Export(name="workstationId", refs={String.class}, tree="[0]")
     private Output<String> workstationId;
 
     /**

@@ -821,7 +821,7 @@ public class Stream extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="backfillAll", type=StreamBackfillAll.class, parameters={})
+    @Export(name="backfillAll", refs={StreamBackfillAll.class}, tree="[0]")
     private Output</* @Nullable */ StreamBackfillAll> backfillAll;
 
     /**
@@ -836,7 +836,7 @@ public class Stream extends com.pulumi.resources.CustomResource {
      * Backfill strategy to disable automatic backfill for the Stream&#39;s objects.
      * 
      */
-    @Export(name="backfillNone", type=StreamBackfillNone.class, parameters={})
+    @Export(name="backfillNone", refs={StreamBackfillNone.class}, tree="[0]")
     private Output</* @Nullable */ StreamBackfillNone> backfillNone;
 
     /**
@@ -851,7 +851,7 @@ public class Stream extends com.pulumi.resources.CustomResource {
      * will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
      * 
      */
-    @Export(name="customerManagedEncryptionKey", type=String.class, parameters={})
+    @Export(name="customerManagedEncryptionKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customerManagedEncryptionKey;
 
     /**
@@ -866,7 +866,7 @@ public class Stream extends com.pulumi.resources.CustomResource {
      * Desired state of the Stream. Set this field to `RUNNING` to start the stream, and `PAUSED` to pause the stream.
      * 
      */
-    @Export(name="desiredState", type=String.class, parameters={})
+    @Export(name="desiredState", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> desiredState;
 
     /**
@@ -881,7 +881,7 @@ public class Stream extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="destinationConfig", type=StreamDestinationConfig.class, parameters={})
+    @Export(name="destinationConfig", refs={StreamDestinationConfig.class}, tree="[0]")
     private Output<StreamDestinationConfig> destinationConfig;
 
     /**
@@ -896,7 +896,7 @@ public class Stream extends com.pulumi.resources.CustomResource {
      * Display name.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -910,7 +910,7 @@ public class Stream extends com.pulumi.resources.CustomResource {
      * Labels.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -924,7 +924,7 @@ public class Stream extends com.pulumi.resources.CustomResource {
      * The name of the location this stream is located in.
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -938,7 +938,7 @@ public class Stream extends com.pulumi.resources.CustomResource {
      * The stream&#39;s name.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -953,7 +953,7 @@ public class Stream extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -969,7 +969,7 @@ public class Stream extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="sourceConfig", type=StreamSourceConfig.class, parameters={})
+    @Export(name="sourceConfig", refs={StreamSourceConfig.class}, tree="[0]")
     private Output<StreamSourceConfig> sourceConfig;
 
     /**
@@ -984,7 +984,7 @@ public class Stream extends com.pulumi.resources.CustomResource {
      * The state of the stream.
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
@@ -998,7 +998,7 @@ public class Stream extends com.pulumi.resources.CustomResource {
      * The stream identifier.
      * 
      */
-    @Export(name="streamId", type=String.class, parameters={})
+    @Export(name="streamId", refs={String.class}, tree="[0]")
     private Output<String> streamId;
 
     /**

@@ -267,7 +267,7 @@ public class HostingVersion extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="config", type=HostingVersionConfig.class, parameters={})
+    @Export(name="config", refs={HostingVersionConfig.class}, tree="[0]")
     private Output</* @Nullable */ HostingVersionConfig> config;
 
     /**
@@ -283,7 +283,7 @@ public class HostingVersion extends com.pulumi.resources.CustomResource {
      * sites/SITE_ID/versions/VERSION_ID
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -300,7 +300,7 @@ public class HostingVersion extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="siteId", type=String.class, parameters={})
+    @Export(name="siteId", refs={String.class}, tree="[0]")
     private Output<String> siteId;
 
     /**
@@ -316,7 +316,7 @@ public class HostingVersion extends com.pulumi.resources.CustomResource {
      * The ID for the version as in sites/SITE_ID/versions/VERSION_ID
      * 
      */
-    @Export(name="versionId", type=String.class, parameters={})
+    @Export(name="versionId", refs={String.class}, tree="[0]")
     private Output<String> versionId;
 
     /**

@@ -85,7 +85,7 @@ public class DataExchange extends com.pulumi.resources.CustomResource {
      * The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
      * 
      */
-    @Export(name="dataExchangeId", type=String.class, parameters={})
+    @Export(name="dataExchangeId", refs={String.class}, tree="[0]")
     private Output<String> dataExchangeId;
 
     /**
@@ -99,7 +99,7 @@ public class DataExchange extends com.pulumi.resources.CustomResource {
      * Description of the data exchange.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -115,7 +115,7 @@ public class DataExchange extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -131,7 +131,7 @@ public class DataExchange extends com.pulumi.resources.CustomResource {
      * Documentation describing the data exchange.
      * 
      */
-    @Export(name="documentation", type=String.class, parameters={})
+    @Export(name="documentation", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> documentation;
 
     /**
@@ -145,7 +145,7 @@ public class DataExchange extends com.pulumi.resources.CustomResource {
      * Base64 encoded image representing the data exchange.
      * 
      */
-    @Export(name="icon", type=String.class, parameters={})
+    @Export(name="icon", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> icon;
 
     /**
@@ -159,7 +159,7 @@ public class DataExchange extends com.pulumi.resources.CustomResource {
      * Number of listings contained in the data exchange.
      * 
      */
-    @Export(name="listingCount", type=Integer.class, parameters={})
+    @Export(name="listingCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> listingCount;
 
     /**
@@ -173,7 +173,7 @@ public class DataExchange extends com.pulumi.resources.CustomResource {
      * The name of the location this data exchange.
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -188,7 +188,7 @@ public class DataExchange extends com.pulumi.resources.CustomResource {
      * &#34;projects/myproject/locations/US/dataExchanges/123&#34;
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -203,7 +203,7 @@ public class DataExchange extends com.pulumi.resources.CustomResource {
      * Email or URL of the primary point of contact of the data exchange.
      * 
      */
-    @Export(name="primaryContact", type=String.class, parameters={})
+    @Export(name="primaryContact", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> primaryContact;
 
     /**
@@ -218,7 +218,7 @@ public class DataExchange extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**

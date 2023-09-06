@@ -161,7 +161,7 @@ public class FhirStoreIamPolicy extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the FHIR store&#39;s IAM policy.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -187,7 +187,7 @@ public class FhirStoreIamPolicy extends com.pulumi.resources.CustomResource {
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * 
      */
-    @Export(name="fhirStoreId", type=String.class, parameters={})
+    @Export(name="fhirStoreId", refs={String.class}, tree="[0]")
     private Output<String> fhirStoreId;
 
     /**
@@ -214,7 +214,7 @@ public class FhirStoreIamPolicy extends com.pulumi.resources.CustomResource {
      * a `gcp.organizations.getIamPolicy` data source.
      * 
      */
-    @Export(name="policyData", type=String.class, parameters={})
+    @Export(name="policyData", refs={String.class}, tree="[0]")
     private Output<String> policyData;
 
     /**

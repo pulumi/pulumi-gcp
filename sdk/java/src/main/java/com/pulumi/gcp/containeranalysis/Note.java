@@ -144,7 +144,7 @@ public class Note extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="attestationAuthority", type=NoteAttestationAuthority.class, parameters={})
+    @Export(name="attestationAuthority", refs={NoteAttestationAuthority.class}, tree="[0]")
     private Output<NoteAttestationAuthority> attestationAuthority;
 
     /**
@@ -167,7 +167,7 @@ public class Note extends com.pulumi.resources.CustomResource {
      * The time this note was created.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -181,7 +181,7 @@ public class Note extends com.pulumi.resources.CustomResource {
      * Time of expiration for this note. Leave empty if note does not expire.
      * 
      */
-    @Export(name="expirationTime", type=String.class, parameters={})
+    @Export(name="expirationTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> expirationTime;
 
     /**
@@ -195,7 +195,7 @@ public class Note extends com.pulumi.resources.CustomResource {
      * The type of analysis this note describes
      * 
      */
-    @Export(name="kind", type=String.class, parameters={})
+    @Export(name="kind", refs={String.class}, tree="[0]")
     private Output<String> kind;
 
     /**
@@ -209,7 +209,7 @@ public class Note extends com.pulumi.resources.CustomResource {
      * A detailed description of the note
      * 
      */
-    @Export(name="longDescription", type=String.class, parameters={})
+    @Export(name="longDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> longDescription;
 
     /**
@@ -223,7 +223,7 @@ public class Note extends com.pulumi.resources.CustomResource {
      * The name of the note.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -238,7 +238,7 @@ public class Note extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -253,7 +253,7 @@ public class Note extends com.pulumi.resources.CustomResource {
      * Names of other notes related to this note.
      * 
      */
-    @Export(name="relatedNoteNames", type=List.class, parameters={String.class})
+    @Export(name="relatedNoteNames", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> relatedNoteNames;
 
     /**
@@ -268,7 +268,7 @@ public class Note extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="relatedUrls", type=List.class, parameters={NoteRelatedUrl.class})
+    @Export(name="relatedUrls", refs={List.class,NoteRelatedUrl.class}, tree="[0,1]")
     private Output</* @Nullable */ List<NoteRelatedUrl>> relatedUrls;
 
     /**
@@ -283,7 +283,7 @@ public class Note extends com.pulumi.resources.CustomResource {
      * A one sentence description of the note.
      * 
      */
-    @Export(name="shortDescription", type=String.class, parameters={})
+    @Export(name="shortDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> shortDescription;
 
     /**
@@ -297,7 +297,7 @@ public class Note extends com.pulumi.resources.CustomResource {
      * The time this note was last updated.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

@@ -318,7 +318,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="buildConfig", type=FunctionBuildConfig.class, parameters={})
+    @Export(name="buildConfig", refs={FunctionBuildConfig.class}, tree="[0]")
     private Output</* @Nullable */ FunctionBuildConfig> buildConfig;
 
     /**
@@ -334,7 +334,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * User-provided description of a function.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -348,7 +348,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * The environment the function is hosted on.
      * 
      */
-    @Export(name="environment", type=String.class, parameters={})
+    @Export(name="environment", refs={String.class}, tree="[0]")
     private Output<String> environment;
 
     /**
@@ -364,7 +364,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="eventTrigger", type=FunctionEventTrigger.class, parameters={})
+    @Export(name="eventTrigger", refs={FunctionEventTrigger.class}, tree="[0]")
     private Output</* @Nullable */ FunctionEventTrigger> eventTrigger;
 
     /**
@@ -381,7 +381,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * It must match the pattern projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}.
      * 
      */
-    @Export(name="kmsKeyName", type=String.class, parameters={})
+    @Export(name="kmsKeyName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsKeyName;
 
     /**
@@ -396,7 +396,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * A set of key/value label pairs associated with this Cloud Function.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -410,7 +410,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * The location of this cloud function.
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> location;
 
     /**
@@ -427,7 +427,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -445,7 +445,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -461,7 +461,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="serviceConfig", type=FunctionServiceConfig.class, parameters={})
+    @Export(name="serviceConfig", refs={FunctionServiceConfig.class}, tree="[0]")
     private Output</* @Nullable */ FunctionServiceConfig> serviceConfig;
 
     /**
@@ -476,7 +476,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * Describes the current state of the function.
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
@@ -490,7 +490,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * The last update timestamp of a Cloud Function.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**
@@ -504,7 +504,7 @@ public class Function extends com.pulumi.resources.CustomResource {
      * Output only. The deployed url for the function.
      * 
      */
-    @Export(name="url", type=String.class, parameters={})
+    @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**

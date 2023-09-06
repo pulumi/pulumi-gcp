@@ -305,7 +305,7 @@ public class FeatureMembership extends com.pulumi.resources.CustomResource {
      * Config Management-specific spec. Structure is documented below.
      * 
      */
-    @Export(name="configmanagement", type=FeatureMembershipConfigmanagement.class, parameters={})
+    @Export(name="configmanagement", refs={FeatureMembershipConfigmanagement.class}, tree="[0]")
     private Output</* @Nullable */ FeatureMembershipConfigmanagement> configmanagement;
 
     /**
@@ -319,7 +319,7 @@ public class FeatureMembership extends com.pulumi.resources.CustomResource {
      * The name of the feature
      * 
      */
-    @Export(name="feature", type=String.class, parameters={})
+    @Export(name="feature", refs={String.class}, tree="[0]")
     private Output<String> feature;
 
     /**
@@ -333,7 +333,7 @@ public class FeatureMembership extends com.pulumi.resources.CustomResource {
      * The location of the feature
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -347,7 +347,7 @@ public class FeatureMembership extends com.pulumi.resources.CustomResource {
      * The name of the membership
      * 
      */
-    @Export(name="membership", type=String.class, parameters={})
+    @Export(name="membership", refs={String.class}, tree="[0]")
     private Output<String> membership;
 
     /**
@@ -361,7 +361,7 @@ public class FeatureMembership extends com.pulumi.resources.CustomResource {
      * Service mesh specific spec. Structure is documented below.
      * 
      */
-    @Export(name="mesh", type=FeatureMembershipMesh.class, parameters={})
+    @Export(name="mesh", refs={FeatureMembershipMesh.class}, tree="[0]")
     private Output</* @Nullable */ FeatureMembershipMesh> mesh;
 
     /**
@@ -375,7 +375,7 @@ public class FeatureMembership extends com.pulumi.resources.CustomResource {
      * The project of the feature
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**

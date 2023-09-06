@@ -446,7 +446,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * this field is set to false, the revision name will still autogenerate.)
      * 
      */
-    @Export(name="autogenerateRevisionName", type=Boolean.class, parameters={})
+    @Export(name="autogenerateRevisionName", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autogenerateRevisionName;
 
     /**
@@ -464,7 +464,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * The location of the cloud run instance. eg us-central1
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -490,7 +490,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="metadata", type=ServiceMetadata.class, parameters={})
+    @Export(name="metadata", refs={ServiceMetadata.class}, tree="[0]")
     private Output<ServiceMetadata> metadata;
 
     /**
@@ -519,7 +519,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -537,7 +537,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -553,7 +553,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * Status of the condition, one of True, False, Unknown.
      * 
      */
-    @Export(name="statuses", type=List.class, parameters={ServiceStatus.class})
+    @Export(name="statuses", refs={List.class,ServiceStatus.class}, tree="[0,1]")
     private Output<List<ServiceStatus>> statuses;
 
     /**
@@ -573,7 +573,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * does not currently support referencing a build that is responsible for materializing the container image from source.
      * 
      */
-    @Export(name="template", type=ServiceTemplate.class, parameters={})
+    @Export(name="template", refs={ServiceTemplate.class}, tree="[0]")
     private Output</* @Nullable */ ServiceTemplate> template;
 
     /**
@@ -595,7 +595,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="traffics", type=List.class, parameters={ServiceTraffic.class})
+    @Export(name="traffics", refs={List.class,ServiceTraffic.class}, tree="[0,1]")
     private Output<List<ServiceTraffic>> traffics;
 
     /**

@@ -45,7 +45,7 @@ public class ServicePerimeterEgressPolicy extends com.pulumi.resources.CustomRes
      * Structure is documented below.
      * 
      */
-    @Export(name="egressFrom", type=ServicePerimeterEgressPolicyEgressFrom.class, parameters={})
+    @Export(name="egressFrom", refs={ServicePerimeterEgressPolicyEgressFrom.class}, tree="[0]")
     private Output</* @Nullable */ ServicePerimeterEgressPolicyEgressFrom> egressFrom;
 
     /**
@@ -62,7 +62,7 @@ public class ServicePerimeterEgressPolicy extends com.pulumi.resources.CustomRes
      * Structure is documented below.
      * 
      */
-    @Export(name="egressTo", type=ServicePerimeterEgressPolicyEgressTo.class, parameters={})
+    @Export(name="egressTo", refs={ServicePerimeterEgressPolicyEgressTo.class}, tree="[0]")
     private Output</* @Nullable */ ServicePerimeterEgressPolicyEgressTo> egressTo;
 
     /**
@@ -80,7 +80,7 @@ public class ServicePerimeterEgressPolicy extends com.pulumi.resources.CustomRes
      * ***
      * 
      */
-    @Export(name="perimeter", type=String.class, parameters={})
+    @Export(name="perimeter", refs={String.class}, tree="[0]")
     private Output<String> perimeter;
 
     /**

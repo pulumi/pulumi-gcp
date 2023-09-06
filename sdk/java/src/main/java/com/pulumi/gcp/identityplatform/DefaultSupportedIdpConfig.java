@@ -79,7 +79,7 @@ public class DefaultSupportedIdpConfig extends com.pulumi.resources.CustomResour
      * OAuth client ID
      * 
      */
-    @Export(name="clientId", type=String.class, parameters={})
+    @Export(name="clientId", refs={String.class}, tree="[0]")
     private Output<String> clientId;
 
     /**
@@ -95,7 +95,7 @@ public class DefaultSupportedIdpConfig extends com.pulumi.resources.CustomResour
      * ***
      * 
      */
-    @Export(name="clientSecret", type=String.class, parameters={})
+    @Export(name="clientSecret", refs={String.class}, tree="[0]")
     private Output<String> clientSecret;
 
     /**
@@ -111,7 +111,7 @@ public class DefaultSupportedIdpConfig extends com.pulumi.resources.CustomResour
      * If this IDP allows the user to sign in
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -135,7 +135,7 @@ public class DefaultSupportedIdpConfig extends com.pulumi.resources.CustomResour
      * * `yahoo.com`
      * 
      */
-    @Export(name="idpId", type=String.class, parameters={})
+    @Export(name="idpId", refs={String.class}, tree="[0]")
     private Output<String> idpId;
 
     /**
@@ -159,7 +159,7 @@ public class DefaultSupportedIdpConfig extends com.pulumi.resources.CustomResour
      * The name of the DefaultSupportedIdpConfig resource
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -174,7 +174,7 @@ public class DefaultSupportedIdpConfig extends com.pulumi.resources.CustomResour
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**

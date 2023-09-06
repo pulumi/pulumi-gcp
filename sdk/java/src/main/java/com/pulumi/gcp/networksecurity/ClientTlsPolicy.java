@@ -132,7 +132,7 @@ public class ClientTlsPolicy extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="clientCertificate", type=ClientTlsPolicyClientCertificate.class, parameters={})
+    @Export(name="clientCertificate", refs={ClientTlsPolicyClientCertificate.class}, tree="[0]")
     private Output</* @Nullable */ ClientTlsPolicyClientCertificate> clientCertificate;
 
     /**
@@ -147,7 +147,7 @@ public class ClientTlsPolicy extends com.pulumi.resources.CustomResource {
      * Time the ClientTlsPolicy was created in UTC.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -161,7 +161,7 @@ public class ClientTlsPolicy extends com.pulumi.resources.CustomResource {
      * A free-text description of the resource. Max length 1024 characters.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -175,7 +175,7 @@ public class ClientTlsPolicy extends com.pulumi.resources.CustomResource {
      * Set of label tags associated with the ClientTlsPolicy resource.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -190,7 +190,7 @@ public class ClientTlsPolicy extends com.pulumi.resources.CustomResource {
      * The default value is `global`.
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> location;
 
     /**
@@ -207,7 +207,7 @@ public class ClientTlsPolicy extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -224,7 +224,7 @@ public class ClientTlsPolicy extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -240,7 +240,7 @@ public class ClientTlsPolicy extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="serverValidationCas", type=List.class, parameters={ClientTlsPolicyServerValidationCa.class})
+    @Export(name="serverValidationCas", refs={List.class,ClientTlsPolicyServerValidationCa.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ClientTlsPolicyServerValidationCa>> serverValidationCas;
 
     /**
@@ -255,7 +255,7 @@ public class ClientTlsPolicy extends com.pulumi.resources.CustomResource {
      * Server Name Indication string to present to the server during TLS handshake. E.g: &#34;secure.example.com&#34;.
      * 
      */
-    @Export(name="sni", type=String.class, parameters={})
+    @Export(name="sni", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sni;
 
     /**
@@ -269,7 +269,7 @@ public class ClientTlsPolicy extends com.pulumi.resources.CustomResource {
      * Time the ClientTlsPolicy was updated in UTC.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

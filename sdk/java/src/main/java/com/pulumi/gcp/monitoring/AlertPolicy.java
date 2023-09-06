@@ -190,7 +190,7 @@ public class AlertPolicy extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="alertStrategy", type=AlertPolicyAlertStrategy.class, parameters={})
+    @Export(name="alertStrategy", refs={AlertPolicyAlertStrategy.class}, tree="[0]")
     private Output</* @Nullable */ AlertPolicyAlertStrategy> alertStrategy;
 
     /**
@@ -207,7 +207,7 @@ public class AlertPolicy extends com.pulumi.resources.CustomResource {
      * Possible values are: `AND`, `OR`, `AND_WITH_MATCHING_RESOURCE`.
      * 
      */
-    @Export(name="combiner", type=String.class, parameters={})
+    @Export(name="combiner", refs={String.class}, tree="[0]")
     private Output<String> combiner;
 
     /**
@@ -227,7 +227,7 @@ public class AlertPolicy extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="conditions", type=List.class, parameters={AlertPolicyCondition.class})
+    @Export(name="conditions", refs={List.class,AlertPolicyCondition.class}, tree="[0,1]")
     private Output<List<AlertPolicyCondition>> conditions;
 
     /**
@@ -248,7 +248,7 @@ public class AlertPolicy extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="creationRecords", type=List.class, parameters={AlertPolicyCreationRecord.class})
+    @Export(name="creationRecords", refs={List.class,AlertPolicyCreationRecord.class}, tree="[0,1]")
     private Output<List<AlertPolicyCreationRecord>> creationRecords;
 
     /**
@@ -268,7 +268,7 @@ public class AlertPolicy extends com.pulumi.resources.CustomResource {
      * name is limited to 512 Unicode characters.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -290,7 +290,7 @@ public class AlertPolicy extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="documentation", type=AlertPolicyDocumentation.class, parameters={})
+    @Export(name="documentation", refs={AlertPolicyDocumentation.class}, tree="[0]")
     private Output</* @Nullable */ AlertPolicyDocumentation> documentation;
 
     /**
@@ -309,7 +309,7 @@ public class AlertPolicy extends com.pulumi.resources.CustomResource {
      * Whether or not the policy is enabled. The default is true.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -329,7 +329,7 @@ public class AlertPolicy extends com.pulumi.resources.CustomResource {
      * policy.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -355,7 +355,7 @@ public class AlertPolicy extends com.pulumi.resources.CustomResource {
      * `projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]`
      * 
      */
-    @Export(name="notificationChannels", type=List.class, parameters={String.class})
+    @Export(name="notificationChannels", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> notificationChannels;
 
     /**
@@ -376,7 +376,7 @@ public class AlertPolicy extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -395,7 +395,7 @@ public class AlertPolicy extends com.pulumi.resources.CustomResource {
      * must begin with a letter.
      * 
      */
-    @Export(name="userLabels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="userLabels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> userLabels;
 
     /**

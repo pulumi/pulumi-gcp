@@ -104,7 +104,7 @@ public class Deployment extends com.pulumi.resources.CustomResource {
      * Possible values are: `ACQUIRE`, `CREATE_OR_ACQUIRE`.
      * 
      */
-    @Export(name="createPolicy", type=String.class, parameters={})
+    @Export(name="createPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> createPolicy;
 
     /**
@@ -131,7 +131,7 @@ public class Deployment extends com.pulumi.resources.CustomResource {
      * Possible values are: `ABANDON`, `DELETE`.
      * 
      */
-    @Export(name="deletePolicy", type=String.class, parameters={})
+    @Export(name="deletePolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deletePolicy;
 
     /**
@@ -152,7 +152,7 @@ public class Deployment extends com.pulumi.resources.CustomResource {
      * Unique identifier for deployment. Output only.
      * 
      */
-    @Export(name="deploymentId", type=String.class, parameters={})
+    @Export(name="deploymentId", refs={String.class}, tree="[0]")
     private Output<String> deploymentId;
 
     /**
@@ -166,7 +166,7 @@ public class Deployment extends com.pulumi.resources.CustomResource {
      * Optional user-provided description of deployment.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -181,7 +181,7 @@ public class Deployment extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="labels", type=List.class, parameters={DeploymentLabel.class})
+    @Export(name="labels", refs={List.class,DeploymentLabel.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DeploymentLabel>> labels;
 
     /**
@@ -197,7 +197,7 @@ public class Deployment extends com.pulumi.resources.CustomResource {
      * was successfully deployed.
      * 
      */
-    @Export(name="manifest", type=String.class, parameters={})
+    @Export(name="manifest", refs={String.class}, tree="[0]")
     private Output<String> manifest;
 
     /**
@@ -212,7 +212,7 @@ public class Deployment extends com.pulumi.resources.CustomResource {
      * Unique name for the deployment
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -233,7 +233,7 @@ public class Deployment extends com.pulumi.resources.CustomResource {
      * to true or if other fields are updated while preview is true.
      * 
      */
-    @Export(name="preview", type=Boolean.class, parameters={})
+    @Export(name="preview", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> preview;
 
     /**
@@ -255,7 +255,7 @@ public class Deployment extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -270,7 +270,7 @@ public class Deployment extends com.pulumi.resources.CustomResource {
      * Output only. Server defined URL for the resource.
      * 
      */
-    @Export(name="selfLink", type=String.class, parameters={})
+    @Export(name="selfLink", refs={String.class}, tree="[0]")
     private Output<String> selfLink;
 
     /**
@@ -286,7 +286,7 @@ public class Deployment extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="target", type=DeploymentTarget.class, parameters={})
+    @Export(name="target", refs={DeploymentTarget.class}, tree="[0]")
     private Output<DeploymentTarget> target;
 
     /**

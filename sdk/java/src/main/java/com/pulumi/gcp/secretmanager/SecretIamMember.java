@@ -164,7 +164,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:secretmanager/secretIamMember:SecretIamMember")
 public class SecretIamMember extends com.pulumi.resources.CustomResource {
-    @Export(name="condition", type=SecretIamMemberCondition.class, parameters={})
+    @Export(name="condition", refs={SecretIamMemberCondition.class}, tree="[0]")
     private Output</* @Nullable */ SecretIamMemberCondition> condition;
 
     public Output<Optional<SecretIamMemberCondition>> condition() {
@@ -174,7 +174,7 @@ public class SecretIamMember extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the IAM policy.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -184,7 +184,7 @@ public class SecretIamMember extends com.pulumi.resources.CustomResource {
     public Output<String> etag() {
         return this.etag;
     }
-    @Export(name="member", type=String.class, parameters={})
+    @Export(name="member", refs={String.class}, tree="[0]")
     private Output<String> member;
 
     public Output<String> member() {
@@ -207,7 +207,7 @@ public class SecretIamMember extends com.pulumi.resources.CustomResource {
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -236,7 +236,7 @@ public class SecretIamMember extends com.pulumi.resources.CustomResource {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     /**
@@ -248,7 +248,7 @@ public class SecretIamMember extends com.pulumi.resources.CustomResource {
     public Output<String> role() {
         return this.role;
     }
-    @Export(name="secretId", type=String.class, parameters={})
+    @Export(name="secretId", refs={String.class}, tree="[0]")
     private Output<String> secretId;
 
     public Output<String> secretId() {

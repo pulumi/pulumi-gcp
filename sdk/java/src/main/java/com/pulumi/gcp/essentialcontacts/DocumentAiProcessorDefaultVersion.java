@@ -73,7 +73,7 @@ public class DocumentAiProcessorDefaultVersion extends com.pulumi.resources.Cust
      * ***
      * 
      */
-    @Export(name="processor", type=String.class, parameters={})
+    @Export(name="processor", refs={String.class}, tree="[0]")
     private Output<String> processor;
 
     /**
@@ -90,7 +90,7 @@ public class DocumentAiProcessorDefaultVersion extends com.pulumi.resources.Cust
      * Apply `lifecycle.ignore_changes` to the `version` field to suppress this diff.
      * 
      */
-    @Export(name="version", type=String.class, parameters={})
+    @Export(name="version", refs={String.class}, tree="[0]")
     private Output<String> version;
 
     /**

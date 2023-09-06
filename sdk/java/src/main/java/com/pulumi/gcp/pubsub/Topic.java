@@ -219,7 +219,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * The expected format is `projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*`
      * 
      */
-    @Export(name="kmsKeyName", type=String.class, parameters={})
+    @Export(name="kmsKeyName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsKeyName;
 
     /**
@@ -237,7 +237,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * A set of key/value label pairs to assign to this Topic.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -257,7 +257,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * Cannot be more than 31 days or less than 10 minutes.
      * 
      */
-    @Export(name="messageRetentionDuration", type=String.class, parameters={})
+    @Export(name="messageRetentionDuration", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> messageRetentionDuration;
 
     /**
@@ -280,7 +280,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="messageStoragePolicy", type=TopicMessageStoragePolicy.class, parameters={})
+    @Export(name="messageStoragePolicy", refs={TopicMessageStoragePolicy.class}, tree="[0]")
     private Output<TopicMessageStoragePolicy> messageStoragePolicy;
 
     /**
@@ -299,7 +299,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -316,7 +316,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -332,7 +332,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="schemaSettings", type=TopicSchemaSettings.class, parameters={})
+    @Export(name="schemaSettings", refs={TopicSchemaSettings.class}, tree="[0]")
     private Output<TopicSchemaSettings> schemaSettings;
 
     /**

@@ -524,7 +524,7 @@ public class AwsNodePool extends com.pulumi.resources.CustomResource {
      * Optional. Annotations on the node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, String.class})
+    @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> annotations;
 
     /**
@@ -538,7 +538,7 @@ public class AwsNodePool extends com.pulumi.resources.CustomResource {
      * Autoscaler configuration for this node pool.
      * 
      */
-    @Export(name="autoscaling", type=AwsNodePoolAutoscaling.class, parameters={})
+    @Export(name="autoscaling", refs={AwsNodePoolAutoscaling.class}, tree="[0]")
     private Output<AwsNodePoolAutoscaling> autoscaling;
 
     /**
@@ -552,7 +552,7 @@ public class AwsNodePool extends com.pulumi.resources.CustomResource {
      * The awsCluster for the resource
      * 
      */
-    @Export(name="cluster", type=String.class, parameters={})
+    @Export(name="cluster", refs={String.class}, tree="[0]")
     private Output<String> cluster;
 
     /**
@@ -566,7 +566,7 @@ public class AwsNodePool extends com.pulumi.resources.CustomResource {
      * The configuration of the node pool.
      * 
      */
-    @Export(name="config", type=AwsNodePoolConfig.class, parameters={})
+    @Export(name="config", refs={AwsNodePoolConfig.class}, tree="[0]")
     private Output<AwsNodePoolConfig> config;
 
     /**
@@ -580,7 +580,7 @@ public class AwsNodePool extends com.pulumi.resources.CustomResource {
      * Output only. The time at which this node pool was created.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -594,7 +594,7 @@ public class AwsNodePool extends com.pulumi.resources.CustomResource {
      * Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -608,7 +608,7 @@ public class AwsNodePool extends com.pulumi.resources.CustomResource {
      * The location for the resource
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -622,7 +622,7 @@ public class AwsNodePool extends com.pulumi.resources.CustomResource {
      * The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
      * 
      */
-    @Export(name="maxPodsConstraint", type=AwsNodePoolMaxPodsConstraint.class, parameters={})
+    @Export(name="maxPodsConstraint", refs={AwsNodePoolMaxPodsConstraint.class}, tree="[0]")
     private Output<AwsNodePoolMaxPodsConstraint> maxPodsConstraint;
 
     /**
@@ -636,7 +636,7 @@ public class AwsNodePool extends com.pulumi.resources.CustomResource {
      * The name of this resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -650,7 +650,7 @@ public class AwsNodePool extends com.pulumi.resources.CustomResource {
      * The project for the resource
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -664,7 +664,7 @@ public class AwsNodePool extends com.pulumi.resources.CustomResource {
      * Output only. If set, there are currently changes in flight to the node pool.
      * 
      */
-    @Export(name="reconciling", type=Boolean.class, parameters={})
+    @Export(name="reconciling", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> reconciling;
 
     /**
@@ -678,7 +678,7 @@ public class AwsNodePool extends com.pulumi.resources.CustomResource {
      * Output only. The lifecycle state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
@@ -692,7 +692,7 @@ public class AwsNodePool extends com.pulumi.resources.CustomResource {
      * The subnet where the node pool node run.
      * 
      */
-    @Export(name="subnetId", type=String.class, parameters={})
+    @Export(name="subnetId", refs={String.class}, tree="[0]")
     private Output<String> subnetId;
 
     /**
@@ -706,7 +706,7 @@ public class AwsNodePool extends com.pulumi.resources.CustomResource {
      * Output only. A globally unique identifier for the node pool.
      * 
      */
-    @Export(name="uid", type=String.class, parameters={})
+    @Export(name="uid", refs={String.class}, tree="[0]")
     private Output<String> uid;
 
     /**
@@ -720,7 +720,7 @@ public class AwsNodePool extends com.pulumi.resources.CustomResource {
      * Output only. The time at which this node pool was last updated.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**
@@ -734,7 +734,7 @@ public class AwsNodePool extends com.pulumi.resources.CustomResource {
      * The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
      * 
      */
-    @Export(name="version", type=String.class, parameters={})
+    @Export(name="version", refs={String.class}, tree="[0]")
     private Output<String> version;
 
     /**

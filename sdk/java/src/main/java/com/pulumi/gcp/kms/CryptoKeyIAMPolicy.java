@@ -294,7 +294,7 @@ public class CryptoKeyIamPolicy extends com.pulumi.resources.CustomResource {
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * 
      */
-    @Export(name="cryptoKeyId", type=String.class, parameters={})
+    @Export(name="cryptoKeyId", refs={String.class}, tree="[0]")
     private Output<String> cryptoKeyId;
 
     /**
@@ -320,7 +320,7 @@ public class CryptoKeyIamPolicy extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the project&#39;s IAM policy.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -335,7 +335,7 @@ public class CryptoKeyIamPolicy extends com.pulumi.resources.CustomResource {
      * a `gcp.organizations.getIamPolicy` data source.
      * 
      */
-    @Export(name="policyData", type=String.class, parameters={})
+    @Export(name="policyData", refs={String.class}, tree="[0]")
     private Output<String> policyData;
 
     /**

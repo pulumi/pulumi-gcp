@@ -142,7 +142,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * the user can explicitly connect subnetwork resources.
      * 
      */
-    @Export(name="autoCreateSubnetworks", type=Boolean.class, parameters={})
+    @Export(name="autoCreateSubnetworks", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoCreateSubnetworks;
 
     /**
@@ -161,7 +161,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * immediately after network creation. Defaults to `false`.
      * 
      */
-    @Export(name="deleteDefaultRoutesOnCreate", type=Boolean.class, parameters={})
+    @Export(name="deleteDefaultRoutesOnCreate", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deleteDefaultRoutesOnCreate;
 
     /**
@@ -177,7 +177,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * recreated to modify this field.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -193,7 +193,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * a /48 from google defined ULA prefix fd20::/20.
      * 
      */
-    @Export(name="enableUlaInternalIpv6", type=Boolean.class, parameters={})
+    @Export(name="enableUlaInternalIpv6", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableUlaInternalIpv6;
 
     /**
@@ -209,7 +209,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * is selected by GCP.
      * 
      */
-    @Export(name="gatewayIpv4", type=String.class, parameters={})
+    @Export(name="gatewayIpv4", refs={String.class}, tree="[0]")
     private Output<String> gatewayIpv4;
 
     /**
@@ -228,7 +228,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * If the field is not speficied, then a /48 range will be randomly allocated from fd20::/20 and returned via this field.
      * 
      */
-    @Export(name="internalIpv6Range", type=String.class, parameters={})
+    @Export(name="internalIpv6Range", refs={String.class}, tree="[0]")
     private Output<String> internalIpv6Range;
 
     /**
@@ -250,7 +250,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * with varying MTUs.
      * 
      */
-    @Export(name="mtu", type=Integer.class, parameters={})
+    @Export(name="mtu", refs={Integer.class}, tree="[0]")
     private Output<Integer> mtu;
 
     /**
@@ -276,7 +276,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -300,7 +300,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
      * 
      */
-    @Export(name="networkFirewallPolicyEnforcementOrder", type=String.class, parameters={})
+    @Export(name="networkFirewallPolicyEnforcementOrder", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> networkFirewallPolicyEnforcementOrder;
 
     /**
@@ -317,7 +317,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -337,7 +337,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * Possible values are: `REGIONAL`, `GLOBAL`.
      * 
      */
-    @Export(name="routingMode", type=String.class, parameters={})
+    @Export(name="routingMode", refs={String.class}, tree="[0]")
     private Output<String> routingMode;
 
     /**
@@ -356,7 +356,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * The URI of the created resource.
      * 
      */
-    @Export(name="selfLink", type=String.class, parameters={})
+    @Export(name="selfLink", refs={String.class}, tree="[0]")
     private Output<String> selfLink;
 
     /**

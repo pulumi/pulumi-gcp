@@ -101,7 +101,7 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
      * Creation timestamp in RFC 3339 text format.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -115,7 +115,7 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
      * An optional description of the endpoint.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -129,7 +129,7 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
      * URL of the endpoint&#39;s network address to which traffic is to be sent by Packet Mirroring.
      * 
      */
-    @Export(name="endpointForwardingRule", type=String.class, parameters={})
+    @Export(name="endpointForwardingRule", refs={String.class}, tree="[0]")
     private Output<String> endpointForwardingRule;
 
     /**
@@ -143,7 +143,7 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
      * Internal IP address of the endpoint&#39;s network entry point.
      * 
      */
-    @Export(name="endpointIp", type=String.class, parameters={})
+    @Export(name="endpointIp", refs={String.class}, tree="[0]")
     private Output<String> endpointIp;
 
     /**
@@ -159,7 +159,7 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -175,7 +175,7 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
      * Name of the endpoint in the format projects/{project_id}/locations/{locationId}/endpoints/{endpointId}.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -189,7 +189,7 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
      * Name of the VPC network that is connected to the IDS endpoint. This can either contain the VPC network name itself (like &#34;src-net&#34;) or the full URL to the network (like &#34;projects/{project_id}/global/networks/src-net&#34;).
      * 
      */
-    @Export(name="network", type=String.class, parameters={})
+    @Export(name="network", refs={String.class}, tree="[0]")
     private Output<String> network;
 
     /**
@@ -204,7 +204,7 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -220,7 +220,7 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
      * Possible values are: `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH`, `CRITICAL`.
      * 
      */
-    @Export(name="severity", type=String.class, parameters={})
+    @Export(name="severity", refs={String.class}, tree="[0]")
     private Output<String> severity;
 
     /**
@@ -235,7 +235,7 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
      * Configuration for threat IDs excluded from generating alerts. Limit: 99 IDs.
      * 
      */
-    @Export(name="threatExceptions", type=List.class, parameters={String.class})
+    @Export(name="threatExceptions", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> threatExceptions;
 
     /**
@@ -249,7 +249,7 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
      * Last update timestamp in RFC 3339 text format.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

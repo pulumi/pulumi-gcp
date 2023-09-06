@@ -553,7 +553,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * When the load balancing scheme is INTERNAL, this field is not used.
      * 
      */
-    @Export(name="affinityCookieTtlSec", type=Integer.class, parameters={})
+    @Export(name="affinityCookieTtlSec", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> affinityCookieTtlSec;
 
     /**
@@ -572,7 +572,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="backends", type=List.class, parameters={BackendServiceBackend.class})
+    @Export(name="backends", refs={List.class,BackendServiceBackend.class}, tree="[0,1]")
     private Output</* @Nullable */ List<BackendServiceBackend>> backends;
 
     /**
@@ -588,7 +588,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="cdnPolicy", type=BackendServiceCdnPolicy.class, parameters={})
+    @Export(name="cdnPolicy", refs={BackendServiceCdnPolicy.class}, tree="[0]")
     private Output<BackendServiceCdnPolicy> cdnPolicy;
 
     /**
@@ -605,7 +605,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="circuitBreakers", type=BackendServiceCircuitBreakers.class, parameters={})
+    @Export(name="circuitBreakers", refs={BackendServiceCircuitBreakers.class}, tree="[0]")
     private Output</* @Nullable */ BackendServiceCircuitBreakers> circuitBreakers;
 
     /**
@@ -622,7 +622,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * Possible values are: `AUTOMATIC`, `DISABLED`.
      * 
      */
-    @Export(name="compressionMode", type=String.class, parameters={})
+    @Export(name="compressionMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> compressionMode;
 
     /**
@@ -638,7 +638,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * connections, but still work to finish started).
      * 
      */
-    @Export(name="connectionDrainingTimeoutSec", type=Integer.class, parameters={})
+    @Export(name="connectionDrainingTimeoutSec", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> connectionDrainingTimeoutSec;
 
     /**
@@ -661,7 +661,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="consistentHash", type=BackendServiceConsistentHash.class, parameters={})
+    @Export(name="consistentHash", refs={BackendServiceConsistentHash.class}, tree="[0]")
     private Output</* @Nullable */ BackendServiceConsistentHash> consistentHash;
 
     /**
@@ -683,7 +683,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * Creation timestamp in RFC3339 text format.
      * 
      */
-    @Export(name="creationTimestamp", type=String.class, parameters={})
+    @Export(name="creationTimestamp", refs={String.class}, tree="[0]")
     private Output<String> creationTimestamp;
 
     /**
@@ -698,7 +698,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * requests.
      * 
      */
-    @Export(name="customRequestHeaders", type=List.class, parameters={String.class})
+    @Export(name="customRequestHeaders", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> customRequestHeaders;
 
     /**
@@ -714,7 +714,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * responses.
      * 
      */
-    @Export(name="customResponseHeaders", type=List.class, parameters={String.class})
+    @Export(name="customResponseHeaders", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> customResponseHeaders;
 
     /**
@@ -729,7 +729,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * An optional description of this resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -743,7 +743,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * The resource URL for the edge security policy associated with this backend service.
      * 
      */
-    @Export(name="edgeSecurityPolicy", type=String.class, parameters={})
+    @Export(name="edgeSecurityPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> edgeSecurityPolicy;
 
     /**
@@ -757,7 +757,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * If true, enable Cloud CDN for this BackendService.
      * 
      */
-    @Export(name="enableCdn", type=Boolean.class, parameters={})
+    @Export(name="enableCdn", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableCdn;
 
     /**
@@ -772,7 +772,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * object. This field is used in optimistic locking.
      * 
      */
-    @Export(name="fingerprint", type=String.class, parameters={})
+    @Export(name="fingerprint", refs={String.class}, tree="[0]")
     private Output<String> fingerprint;
 
     /**
@@ -787,7 +787,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * The unique identifier for the resource. This identifier is defined by the server.
      * 
      */
-    @Export(name="generatedId", type=Integer.class, parameters={})
+    @Export(name="generatedId", refs={Integer.class}, tree="[0]")
     private Output<Integer> generatedId;
 
     /**
@@ -806,7 +806,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * For internal load balancing, a URL to a HealthCheck resource must be specified instead.
      * 
      */
-    @Export(name="healthChecks", type=String.class, parameters={})
+    @Export(name="healthChecks", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> healthChecks;
 
     /**
@@ -826,7 +826,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="iap", type=BackendServiceIap.class, parameters={})
+    @Export(name="iap", refs={BackendServiceIap.class}, tree="[0]")
     private Output</* @Nullable */ BackendServiceIap> iap;
 
     /**
@@ -846,7 +846,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * Possible values are: `EXTERNAL`, `INTERNAL_SELF_MANAGED`, `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
      * 
      */
-    @Export(name="loadBalancingScheme", type=String.class, parameters={})
+    @Export(name="loadBalancingScheme", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> loadBalancingScheme;
 
     /**
@@ -871,7 +871,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="localityLbPolicies", type=List.class, parameters={BackendServiceLocalityLbPolicy.class})
+    @Export(name="localityLbPolicies", refs={List.class,BackendServiceLocalityLbPolicy.class}, tree="[0,1]")
     private Output</* @Nullable */ List<BackendServiceLocalityLbPolicy>> localityLbPolicies;
 
     /**
@@ -892,7 +892,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * The possible values are:
      * 
      */
-    @Export(name="localityLbPolicy", type=String.class, parameters={})
+    @Export(name="localityLbPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> localityLbPolicy;
 
     /**
@@ -909,7 +909,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="logConfig", type=BackendServiceLogConfig.class, parameters={})
+    @Export(name="logConfig", refs={BackendServiceLogConfig.class}, tree="[0]")
     private Output<BackendServiceLogConfig> logConfig;
 
     /**
@@ -933,7 +933,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -958,7 +958,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="outlierDetection", type=BackendServiceOutlierDetection.class, parameters={})
+    @Export(name="outlierDetection", refs={BackendServiceOutlierDetection.class}, tree="[0]")
     private Output</* @Nullable */ BackendServiceOutlierDetection> outlierDetection;
 
     /**
@@ -977,7 +977,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * scheme is EXTERNAL.
      * 
      */
-    @Export(name="portName", type=String.class, parameters={})
+    @Export(name="portName", refs={String.class}, tree="[0]")
     private Output<String> portName;
 
     /**
@@ -994,7 +994,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -1014,7 +1014,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `TCP`, `SSL`, `GRPC`, `UNSPECIFIED`.
      * 
      */
-    @Export(name="protocol", type=String.class, parameters={})
+    @Export(name="protocol", refs={String.class}, tree="[0]")
     private Output<String> protocol;
 
     /**
@@ -1033,7 +1033,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * The security policy associated with this backend service.
      * 
      */
-    @Export(name="securityPolicy", type=String.class, parameters={})
+    @Export(name="securityPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> securityPolicy;
 
     /**
@@ -1051,7 +1051,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="securitySettings", type=BackendServiceSecuritySettings.class, parameters={})
+    @Export(name="securitySettings", refs={BackendServiceSecuritySettings.class}, tree="[0]")
     private Output</* @Nullable */ BackendServiceSecuritySettings> securitySettings;
 
     /**
@@ -1069,7 +1069,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * The URI of the created resource.
      * 
      */
-    @Export(name="selfLink", type=String.class, parameters={})
+    @Export(name="selfLink", refs={String.class}, tree="[0]")
     private Output<String> selfLink;
 
     /**
@@ -1085,7 +1085,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`.
      * 
      */
-    @Export(name="sessionAffinity", type=String.class, parameters={})
+    @Export(name="sessionAffinity", refs={String.class}, tree="[0]")
     private Output<String> sessionAffinity;
 
     /**
@@ -1102,7 +1102,7 @@ public class BackendService extends com.pulumi.resources.CustomResource {
      * failed request. Default is 30 seconds. Valid range is [1, 86400].
      * 
      */
-    @Export(name="timeoutSec", type=Integer.class, parameters={})
+    @Export(name="timeoutSec", refs={Integer.class}, tree="[0]")
     private Output<Integer> timeoutSec;
 
     /**

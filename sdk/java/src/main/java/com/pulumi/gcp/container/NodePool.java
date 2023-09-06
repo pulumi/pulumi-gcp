@@ -162,7 +162,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * the size of the node pool to the current cluster usage. Structure is documented below.
      * 
      */
-    @Export(name="autoscaling", type=NodePoolAutoscaling.class, parameters={})
+    @Export(name="autoscaling", refs={NodePoolAutoscaling.class}, tree="[0]")
     private Output</* @Nullable */ NodePoolAutoscaling> autoscaling;
 
     /**
@@ -179,7 +179,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="cluster", type=String.class, parameters={})
+    @Export(name="cluster", refs={String.class}, tree="[0]")
     private Output<String> cluster;
 
     /**
@@ -201,7 +201,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * ignore subsqeuent changes to this field.
      * 
      */
-    @Export(name="initialNodeCount", type=Integer.class, parameters={})
+    @Export(name="initialNodeCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> initialNodeCount;
 
     /**
@@ -221,7 +221,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * The resource URLs of the managed instance groups associated with this node pool.
      * 
      */
-    @Export(name="instanceGroupUrls", type=List.class, parameters={String.class})
+    @Export(name="instanceGroupUrls", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> instanceGroupUrls;
 
     /**
@@ -237,7 +237,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -253,7 +253,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * List of instance group URLs which have been assigned to this node pool.
      * 
      */
-    @Export(name="managedInstanceGroupUrls", type=List.class, parameters={String.class})
+    @Export(name="managedInstanceGroupUrls", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> managedInstanceGroupUrls;
 
     /**
@@ -268,7 +268,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * auto-upgrade is configured. Structure is documented below.
      * 
      */
-    @Export(name="management", type=NodePoolManagement.class, parameters={})
+    @Export(name="management", refs={NodePoolManagement.class}, tree="[0]")
     private Output<NodePoolManagement> management;
 
     /**
@@ -287,7 +287,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * for more information.
      * 
      */
-    @Export(name="maxPodsPerNode", type=Integer.class, parameters={})
+    @Export(name="maxPodsPerNode", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxPodsPerNode;
 
     /**
@@ -306,7 +306,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * auto-generate a unique name.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -322,7 +322,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * with the specified prefix. Conflicts with `name`.
      * 
      */
-    @Export(name="namePrefix", type=String.class, parameters={})
+    @Export(name="namePrefix", refs={String.class}, tree="[0]")
     private Output<String> namePrefix;
 
     /**
@@ -339,7 +339,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * documented below
      * 
      */
-    @Export(name="networkConfig", type=NodePoolNetworkConfig.class, parameters={})
+    @Export(name="networkConfig", refs={NodePoolNetworkConfig.class}, tree="[0]")
     private Output<NodePoolNetworkConfig> networkConfig;
 
     /**
@@ -356,7 +356,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * gcp.container.Cluster for schema.
      * 
      */
-    @Export(name="nodeConfig", type=NodePoolNodeConfig.class, parameters={})
+    @Export(name="nodeConfig", refs={NodePoolNodeConfig.class}, tree="[0]")
     private Output<NodePoolNodeConfig> nodeConfig;
 
     /**
@@ -372,7 +372,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * update the number of nodes per instance group but should not be used alongside `autoscaling`.
      * 
      */
-    @Export(name="nodeCount", type=Integer.class, parameters={})
+    @Export(name="nodeCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> nodeCount;
 
     /**
@@ -394,7 +394,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * cluster.
      * 
      */
-    @Export(name="nodeLocations", type=List.class, parameters={String.class})
+    @Export(name="nodeLocations", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> nodeLocations;
 
     /**
@@ -411,7 +411,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
     public Output<List<String>> nodeLocations() {
         return this.nodeLocations;
     }
-    @Export(name="operation", type=String.class, parameters={})
+    @Export(name="operation", refs={String.class}, tree="[0]")
     private Output<String> operation;
 
     public Output<String> operation() {
@@ -424,7 +424,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * &lt;a name=&#34;nested_autoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
      * 
      */
-    @Export(name="placementPolicy", type=NodePoolPlacementPolicy.class, parameters={})
+    @Export(name="placementPolicy", refs={NodePoolPlacementPolicy.class}, tree="[0]")
     private Output</* @Nullable */ NodePoolPlacementPolicy> placementPolicy;
 
     /**
@@ -442,7 +442,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * the provider-configured project will be used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -458,7 +458,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
      * 
      */
-    @Export(name="upgradeSettings", type=NodePoolUpgradeSettings.class, parameters={})
+    @Export(name="upgradeSettings", refs={NodePoolUpgradeSettings.class}, tree="[0]")
     private Output<NodePoolUpgradeSettings> upgradeSettings;
 
     /**
@@ -478,7 +478,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * `version_prefix` field to approximate fuzzy versions in a provider-compatible way.
      * 
      */
-    @Export(name="version", type=String.class, parameters={})
+    @Export(name="version", refs={String.class}, tree="[0]")
     private Output<String> version;
 
     /**

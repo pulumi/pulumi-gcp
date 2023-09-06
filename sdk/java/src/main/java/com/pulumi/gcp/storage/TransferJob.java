@@ -172,7 +172,7 @@ public class TransferJob extends com.pulumi.resources.CustomResource {
      * When the Transfer Job was created.
      * 
      */
-    @Export(name="creationTime", type=String.class, parameters={})
+    @Export(name="creationTime", refs={String.class}, tree="[0]")
     private Output<String> creationTime;
 
     /**
@@ -186,7 +186,7 @@ public class TransferJob extends com.pulumi.resources.CustomResource {
      * When the Transfer Job was deleted.
      * 
      */
-    @Export(name="deletionTime", type=String.class, parameters={})
+    @Export(name="deletionTime", refs={String.class}, tree="[0]")
     private Output<String> deletionTime;
 
     /**
@@ -200,7 +200,7 @@ public class TransferJob extends com.pulumi.resources.CustomResource {
      * Unique description to identify the Transfer Job.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -214,7 +214,7 @@ public class TransferJob extends com.pulumi.resources.CustomResource {
      * When the Transfer Job was last modified.
      * 
      */
-    @Export(name="lastModificationTime", type=String.class, parameters={})
+    @Export(name="lastModificationTime", refs={String.class}, tree="[0]")
     private Output<String> lastModificationTime;
 
     /**
@@ -228,7 +228,7 @@ public class TransferJob extends com.pulumi.resources.CustomResource {
      * The name of the Transfer Job.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -242,7 +242,7 @@ public class TransferJob extends com.pulumi.resources.CustomResource {
      * Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
      * 
      */
-    @Export(name="notificationConfig", type=TransferJobNotificationConfig.class, parameters={})
+    @Export(name="notificationConfig", refs={TransferJobNotificationConfig.class}, tree="[0]")
     private Output</* @Nullable */ TransferJobNotificationConfig> notificationConfig;
 
     /**
@@ -257,7 +257,7 @@ public class TransferJob extends com.pulumi.resources.CustomResource {
      * is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -274,7 +274,7 @@ public class TransferJob extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="schedule", type=TransferJobSchedule.class, parameters={})
+    @Export(name="schedule", refs={TransferJobSchedule.class}, tree="[0]")
     private Output</* @Nullable */ TransferJobSchedule> schedule;
 
     /**
@@ -290,7 +290,7 @@ public class TransferJob extends com.pulumi.resources.CustomResource {
      * Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> status;
 
     /**
@@ -304,7 +304,7 @@ public class TransferJob extends com.pulumi.resources.CustomResource {
      * Transfer specification. Structure documented below.
      * 
      */
-    @Export(name="transferSpec", type=TransferJobTransferSpec.class, parameters={})
+    @Export(name="transferSpec", refs={TransferJobTransferSpec.class}, tree="[0]")
     private Output<TransferJobTransferSpec> transferSpec;
 
     /**

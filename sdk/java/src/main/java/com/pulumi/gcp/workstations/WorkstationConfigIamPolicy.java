@@ -45,7 +45,7 @@ public class WorkstationConfigIamPolicy extends com.pulumi.resources.CustomResou
      * (Computed) The etag of the IAM policy.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -60,7 +60,7 @@ public class WorkstationConfigIamPolicy extends com.pulumi.resources.CustomResou
      * Used to find the parent resource to bind the IAM policy to
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -76,7 +76,7 @@ public class WorkstationConfigIamPolicy extends com.pulumi.resources.CustomResou
      * a `gcp.organizations.getIamPolicy` data source.
      * 
      */
-    @Export(name="policyData", type=String.class, parameters={})
+    @Export(name="policyData", refs={String.class}, tree="[0]")
     private Output<String> policyData;
 
     /**
@@ -104,7 +104,7 @@ public class WorkstationConfigIamPolicy extends com.pulumi.resources.CustomResou
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -127,13 +127,13 @@ public class WorkstationConfigIamPolicy extends com.pulumi.resources.CustomResou
     public Output<String> project() {
         return this.project;
     }
-    @Export(name="workstationClusterId", type=String.class, parameters={})
+    @Export(name="workstationClusterId", refs={String.class}, tree="[0]")
     private Output<String> workstationClusterId;
 
     public Output<String> workstationClusterId() {
         return this.workstationClusterId;
     }
-    @Export(name="workstationConfigId", type=String.class, parameters={})
+    @Export(name="workstationConfigId", refs={String.class}, tree="[0]")
     private Output<String> workstationConfigId;
 
     public Output<String> workstationConfigId() {

@@ -92,7 +92,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Name of VPC network connected with service producers using VPC peering.
      * 
      */
-    @Export(name="network", type=String.class, parameters={})
+    @Export(name="network", refs={String.class}, tree="[0]")
     private Output<String> network;
 
     /**
@@ -106,7 +106,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * (Computed) The name of the VPC Network Peering connection that was created by the service producer.
      * 
      */
-    @Export(name="peering", type=String.class, parameters={})
+    @Export(name="peering", refs={String.class}, tree="[0]")
     private Output<String> peering;
 
     /**
@@ -122,7 +122,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * is already established will not reallocate already provisioned service producer subnetworks.
      * 
      */
-    @Export(name="reservedPeeringRanges", type=List.class, parameters={String.class})
+    @Export(name="reservedPeeringRanges", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> reservedPeeringRanges;
 
     /**
@@ -140,7 +140,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * &#39;servicenetworking.googleapis.com&#39;.
      * 
      */
-    @Export(name="service", type=String.class, parameters={})
+    @Export(name="service", refs={String.class}, tree="[0]")
     private Output<String> service;
 
     /**

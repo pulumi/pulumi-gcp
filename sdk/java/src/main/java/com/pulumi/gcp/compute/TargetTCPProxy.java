@@ -103,7 +103,7 @@ public class TargetTCPProxy extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="backendService", type=String.class, parameters={})
+    @Export(name="backendService", refs={String.class}, tree="[0]")
     private Output<String> backendService;
 
     /**
@@ -119,7 +119,7 @@ public class TargetTCPProxy extends com.pulumi.resources.CustomResource {
      * Creation timestamp in RFC3339 text format.
      * 
      */
-    @Export(name="creationTimestamp", type=String.class, parameters={})
+    @Export(name="creationTimestamp", refs={String.class}, tree="[0]")
     private Output<String> creationTimestamp;
 
     /**
@@ -133,7 +133,7 @@ public class TargetTCPProxy extends com.pulumi.resources.CustomResource {
      * An optional description of this resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -153,7 +153,7 @@ public class TargetTCPProxy extends com.pulumi.resources.CustomResource {
      * character, which cannot be a dash.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -174,7 +174,7 @@ public class TargetTCPProxy extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -190,7 +190,7 @@ public class TargetTCPProxy extends com.pulumi.resources.CustomResource {
      * this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
      * 
      */
-    @Export(name="proxyBind", type=Boolean.class, parameters={})
+    @Export(name="proxyBind", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> proxyBind;
 
     /**
@@ -208,7 +208,7 @@ public class TargetTCPProxy extends com.pulumi.resources.CustomResource {
      * Possible values are: `NONE`, `PROXY_V1`.
      * 
      */
-    @Export(name="proxyHeader", type=String.class, parameters={})
+    @Export(name="proxyHeader", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> proxyHeader;
 
     /**
@@ -225,7 +225,7 @@ public class TargetTCPProxy extends com.pulumi.resources.CustomResource {
      * The unique identifier for the resource.
      * 
      */
-    @Export(name="proxyId", type=Integer.class, parameters={})
+    @Export(name="proxyId", refs={Integer.class}, tree="[0]")
     private Output<Integer> proxyId;
 
     /**
@@ -239,7 +239,7 @@ public class TargetTCPProxy extends com.pulumi.resources.CustomResource {
      * The URI of the created resource.
      * 
      */
-    @Export(name="selfLink", type=String.class, parameters={})
+    @Export(name="selfLink", refs={String.class}, tree="[0]")
     private Output<String> selfLink;
 
     /**

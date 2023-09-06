@@ -159,7 +159,7 @@ public class PrivateCloud extends com.pulumi.resources.CustomResource {
      * User-provided description for this private cloud.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -174,7 +174,7 @@ public class PrivateCloud extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="hcxes", type=List.class, parameters={PrivateCloudHcx.class})
+    @Export(name="hcxes", refs={List.class,PrivateCloudHcx.class}, tree="[0,1]")
     private Output<List<PrivateCloudHcx>> hcxes;
 
     /**
@@ -189,7 +189,7 @@ public class PrivateCloud extends com.pulumi.resources.CustomResource {
      * The location where the PrivateCloud should reside.
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -204,7 +204,7 @@ public class PrivateCloud extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="managementCluster", type=PrivateCloudManagementCluster.class, parameters={})
+    @Export(name="managementCluster", refs={PrivateCloudManagementCluster.class}, tree="[0]")
     private Output<PrivateCloudManagementCluster> managementCluster;
 
     /**
@@ -219,7 +219,7 @@ public class PrivateCloud extends com.pulumi.resources.CustomResource {
      * The ID of the PrivateCloud.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -234,7 +234,7 @@ public class PrivateCloud extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="networkConfig", type=PrivateCloudNetworkConfig.class, parameters={})
+    @Export(name="networkConfig", refs={PrivateCloudNetworkConfig.class}, tree="[0]")
     private Output<PrivateCloudNetworkConfig> networkConfig;
 
     /**
@@ -250,7 +250,7 @@ public class PrivateCloud extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="nsxes", type=List.class, parameters={PrivateCloudNsx.class})
+    @Export(name="nsxes", refs={List.class,PrivateCloudNsx.class}, tree="[0,1]")
     private Output<List<PrivateCloudNsx>> nsxes;
 
     /**
@@ -266,7 +266,7 @@ public class PrivateCloud extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -282,7 +282,7 @@ public class PrivateCloud extends com.pulumi.resources.CustomResource {
      * Possible values are: `ACTIVE`, `CREATING`.
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
@@ -297,7 +297,7 @@ public class PrivateCloud extends com.pulumi.resources.CustomResource {
      * System-generated unique identifier for the resource.
      * 
      */
-    @Export(name="uid", type=String.class, parameters={})
+    @Export(name="uid", refs={String.class}, tree="[0]")
     private Output<String> uid;
 
     /**
@@ -312,7 +312,7 @@ public class PrivateCloud extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="vcenters", type=List.class, parameters={PrivateCloudVcenter.class})
+    @Export(name="vcenters", refs={List.class,PrivateCloudVcenter.class}, tree="[0,1]")
     private Output<List<PrivateCloudVcenter>> vcenters;
 
     /**

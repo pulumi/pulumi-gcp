@@ -137,7 +137,7 @@ public class NetworkFirewallPolicyRule extends com.pulumi.resources.CustomResour
      * The Action to perform when the client connection triggers the rule. Valid actions are &#34;allow&#34;, &#34;deny&#34; and &#34;goto_next&#34;.
      * 
      */
-    @Export(name="action", type=String.class, parameters={})
+    @Export(name="action", refs={String.class}, tree="[0]")
     private Output<String> action;
 
     /**
@@ -151,7 +151,7 @@ public class NetworkFirewallPolicyRule extends com.pulumi.resources.CustomResour
      * An optional description for this resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -165,7 +165,7 @@ public class NetworkFirewallPolicyRule extends com.pulumi.resources.CustomResour
      * The direction in which this rule applies. Possible values: INGRESS, EGRESS
      * 
      */
-    @Export(name="direction", type=String.class, parameters={})
+    @Export(name="direction", refs={String.class}, tree="[0]")
     private Output<String> direction;
 
     /**
@@ -179,7 +179,7 @@ public class NetworkFirewallPolicyRule extends com.pulumi.resources.CustomResour
      * Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
      * 
      */
-    @Export(name="disabled", type=Boolean.class, parameters={})
+    @Export(name="disabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disabled;
 
     /**
@@ -193,7 +193,7 @@ public class NetworkFirewallPolicyRule extends com.pulumi.resources.CustomResour
      * Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on &#34;goto_next&#34; rules.
      * 
      */
-    @Export(name="enableLogging", type=Boolean.class, parameters={})
+    @Export(name="enableLogging", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableLogging;
 
     /**
@@ -207,7 +207,7 @@ public class NetworkFirewallPolicyRule extends com.pulumi.resources.CustomResour
      * The firewall policy of the resource.
      * 
      */
-    @Export(name="firewallPolicy", type=String.class, parameters={})
+    @Export(name="firewallPolicy", refs={String.class}, tree="[0]")
     private Output<String> firewallPolicy;
 
     /**
@@ -221,7 +221,7 @@ public class NetworkFirewallPolicyRule extends com.pulumi.resources.CustomResour
      * Type of the resource. Always `compute#firewallPolicyRule` for firewall policy rules
      * 
      */
-    @Export(name="kind", type=String.class, parameters={})
+    @Export(name="kind", refs={String.class}, tree="[0]")
     private Output<String> kind;
 
     /**
@@ -235,7 +235,7 @@ public class NetworkFirewallPolicyRule extends com.pulumi.resources.CustomResour
      * A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding &#39;action&#39; is enforced.
      * 
      */
-    @Export(name="match", type=NetworkFirewallPolicyRuleMatch.class, parameters={})
+    @Export(name="match", refs={NetworkFirewallPolicyRuleMatch.class}, tree="[0]")
     private Output<NetworkFirewallPolicyRuleMatch> match;
 
     /**
@@ -249,7 +249,7 @@ public class NetworkFirewallPolicyRule extends com.pulumi.resources.CustomResour
      * An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
      * 
      */
-    @Export(name="priority", type=Integer.class, parameters={})
+    @Export(name="priority", refs={Integer.class}, tree="[0]")
     private Output<Integer> priority;
 
     /**
@@ -263,7 +263,7 @@ public class NetworkFirewallPolicyRule extends com.pulumi.resources.CustomResour
      * The project for the resource
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -277,7 +277,7 @@ public class NetworkFirewallPolicyRule extends com.pulumi.resources.CustomResour
      * An optional name for the rule. This field is not a unique identifier and can be updated.
      * 
      */
-    @Export(name="ruleName", type=String.class, parameters={})
+    @Export(name="ruleName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ruleName;
 
     /**
@@ -291,7 +291,7 @@ public class NetworkFirewallPolicyRule extends com.pulumi.resources.CustomResour
      * Calculation of the complexity of a single firewall policy rule.
      * 
      */
-    @Export(name="ruleTupleCount", type=Integer.class, parameters={})
+    @Export(name="ruleTupleCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> ruleTupleCount;
 
     /**
@@ -305,7 +305,7 @@ public class NetworkFirewallPolicyRule extends com.pulumi.resources.CustomResour
      * A list of secure tags that controls which instances the firewall rule applies to. If &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. &lt;code&gt;targetSecureTag&lt;/code&gt; may not be set at the same time as &lt;code&gt;targetServiceAccounts&lt;/code&gt;. If neither &lt;code&gt;targetServiceAccounts&lt;/code&gt; nor &lt;code&gt;targetSecureTag&lt;/code&gt; are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
      * 
      */
-    @Export(name="targetSecureTags", type=List.class, parameters={NetworkFirewallPolicyRuleTargetSecureTag.class})
+    @Export(name="targetSecureTags", refs={List.class,NetworkFirewallPolicyRuleTargetSecureTag.class}, tree="[0,1]")
     private Output</* @Nullable */ List<NetworkFirewallPolicyRuleTargetSecureTag>> targetSecureTags;
 
     /**
@@ -319,7 +319,7 @@ public class NetworkFirewallPolicyRule extends com.pulumi.resources.CustomResour
      * A list of service accounts indicating the sets of instances that are applied with this rule.
      * 
      */
-    @Export(name="targetServiceAccounts", type=List.class, parameters={String.class})
+    @Export(name="targetServiceAccounts", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> targetServiceAccounts;
 
     /**

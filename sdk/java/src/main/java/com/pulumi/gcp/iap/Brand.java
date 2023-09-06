@@ -87,7 +87,7 @@ public class Brand extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="applicationTitle", type=String.class, parameters={})
+    @Export(name="applicationTitle", refs={String.class}, tree="[0]")
     private Output<String> applicationTitle;
 
     /**
@@ -106,7 +106,7 @@ public class Brand extends com.pulumi.resources.CustomResource {
      * brand can be created per project.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -123,7 +123,7 @@ public class Brand extends com.pulumi.resources.CustomResource {
      * Whether the brand is only intended for usage inside the GSuite organization only.
      * 
      */
-    @Export(name="orgInternalOnly", type=Boolean.class, parameters={})
+    @Export(name="orgInternalOnly", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> orgInternalOnly;
 
     /**
@@ -138,7 +138,7 @@ public class Brand extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -157,7 +157,7 @@ public class Brand extends com.pulumi.resources.CustomResource {
      * is an owner of the specified group in Cloud Identity.
      * 
      */
-    @Export(name="supportEmail", type=String.class, parameters={})
+    @Export(name="supportEmail", refs={String.class}, tree="[0]")
     private Output<String> supportEmail;
 
     /**

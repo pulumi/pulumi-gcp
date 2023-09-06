@@ -308,19 +308,19 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:securitycenter/instanceIamBinding:InstanceIamBinding")
 public class InstanceIamBinding extends com.pulumi.resources.CustomResource {
-    @Export(name="condition", type=InstanceIamBindingCondition.class, parameters={})
+    @Export(name="condition", refs={InstanceIamBindingCondition.class}, tree="[0]")
     private Output</* @Nullable */ InstanceIamBindingCondition> condition;
 
     public Output<Optional<InstanceIamBindingCondition>> condition() {
         return Codegen.optional(this.condition);
     }
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     public Output<String> etag() {
         return this.etag;
     }
-    @Export(name="members", type=List.class, parameters={String.class})
+    @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> members;
 
     public Output<List<String>> members() {
@@ -330,7 +330,7 @@ public class InstanceIamBinding extends com.pulumi.resources.CustomResource {
      * The ID of the instance or a fully qualified identifier for the instance.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -345,7 +345,7 @@ public class InstanceIamBinding extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -360,7 +360,7 @@ public class InstanceIamBinding extends com.pulumi.resources.CustomResource {
      * The region of the Data Fusion instance.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -370,7 +370,7 @@ public class InstanceIamBinding extends com.pulumi.resources.CustomResource {
     public Output<String> region() {
         return this.region;
     }
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     public Output<String> role() {

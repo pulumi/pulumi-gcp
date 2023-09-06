@@ -162,7 +162,7 @@ public class AiFeatureStoreEntityTypeFeature extends com.pulumi.resources.Custom
      * The timestamp of when the entity type was created in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -176,7 +176,7 @@ public class AiFeatureStoreEntityTypeFeature extends com.pulumi.resources.Custom
      * Description of the feature.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -192,7 +192,7 @@ public class AiFeatureStoreEntityTypeFeature extends com.pulumi.resources.Custom
      * ***
      * 
      */
-    @Export(name="entitytype", type=String.class, parameters={})
+    @Export(name="entitytype", refs={String.class}, tree="[0]")
     private Output<String> entitytype;
 
     /**
@@ -208,7 +208,7 @@ public class AiFeatureStoreEntityTypeFeature extends com.pulumi.resources.Custom
      * Used to perform consistent read-modify-write updates.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -222,7 +222,7 @@ public class AiFeatureStoreEntityTypeFeature extends com.pulumi.resources.Custom
      * A set of key/value label pairs to assign to the feature.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -236,7 +236,7 @@ public class AiFeatureStoreEntityTypeFeature extends com.pulumi.resources.Custom
      * The name of the feature. The feature can be up to 64 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscore(_), and ASCII digits 0-9 starting with a letter. The value will be unique given an entity type.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -250,7 +250,7 @@ public class AiFeatureStoreEntityTypeFeature extends com.pulumi.resources.Custom
      * The region of the feature
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -264,7 +264,7 @@ public class AiFeatureStoreEntityTypeFeature extends com.pulumi.resources.Custom
      * The timestamp when the entity type was most recently updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**
@@ -278,7 +278,7 @@ public class AiFeatureStoreEntityTypeFeature extends com.pulumi.resources.Custom
      * Type of Feature value. Immutable. https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType
      * 
      */
-    @Export(name="valueType", type=String.class, parameters={})
+    @Export(name="valueType", refs={String.class}, tree="[0]")
     private Output<String> valueType;
 
     /**

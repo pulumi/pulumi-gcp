@@ -175,7 +175,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * bytes).
      * 
      */
-    @Export(name="archiveSizeBytes", type=Integer.class, parameters={})
+    @Export(name="archiveSizeBytes", refs={Integer.class}, tree="[0]")
     private Output<Integer> archiveSizeBytes;
 
     /**
@@ -190,7 +190,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * Creation timestamp in RFC3339 text format.
      * 
      */
-    @Export(name="creationTimestamp", type=String.class, parameters={})
+    @Export(name="creationTimestamp", refs={String.class}, tree="[0]")
     private Output<String> creationTimestamp;
 
     /**
@@ -205,7 +205,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * you create the resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -220,7 +220,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * Size of the image when restored onto a persistent disk (in GB).
      * 
      */
-    @Export(name="diskSizeGb", type=Integer.class, parameters={})
+    @Export(name="diskSizeGb", refs={Integer.class}, tree="[0]")
     private Output<Integer> diskSizeGb;
 
     /**
@@ -238,7 +238,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * RFC1035.
      * 
      */
-    @Export(name="family", type=String.class, parameters={})
+    @Export(name="family", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> family;
 
     /**
@@ -258,7 +258,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="guestOsFeatures", type=List.class, parameters={ImageGuestOsFeature.class})
+    @Export(name="guestOsFeatures", refs={List.class,ImageGuestOsFeature.class}, tree="[0,1]")
     private Output<List<ImageGuestOsFeature>> guestOsFeatures;
 
     /**
@@ -278,7 +278,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="imageEncryptionKey", type=ImageImageEncryptionKey.class, parameters={})
+    @Export(name="imageEncryptionKey", refs={ImageImageEncryptionKey.class}, tree="[0]")
     private Output</* @Nullable */ ImageImageEncryptionKey> imageEncryptionKey;
 
     /**
@@ -297,7 +297,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * internally during updates.
      * 
      */
-    @Export(name="labelFingerprint", type=String.class, parameters={})
+    @Export(name="labelFingerprint", refs={String.class}, tree="[0]")
     private Output<String> labelFingerprint;
 
     /**
@@ -312,7 +312,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * Labels to apply to this Image.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -326,7 +326,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * Any applicable license URI.
      * 
      */
-    @Export(name="licenses", type=List.class, parameters={String.class})
+    @Export(name="licenses", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> licenses;
 
     /**
@@ -348,7 +348,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -371,7 +371,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -387,7 +387,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="rawDisk", type=ImageRawDisk.class, parameters={})
+    @Export(name="rawDisk", refs={ImageRawDisk.class}, tree="[0]")
     private Output</* @Nullable */ ImageRawDisk> rawDisk;
 
     /**
@@ -402,7 +402,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The URI of the created resource.
      * 
      */
-    @Export(name="selfLink", type=String.class, parameters={})
+    @Export(name="selfLink", refs={String.class}, tree="[0]")
     private Output<String> selfLink;
 
     /**
@@ -418,7 +418,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * rawDisk.source property but not both to create an image.
      * 
      */
-    @Export(name="sourceDisk", type=String.class, parameters={})
+    @Export(name="sourceDisk", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceDisk;
 
     /**
@@ -439,7 +439,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * * The sourceDisk URL
      * 
      */
-    @Export(name="sourceImage", type=String.class, parameters={})
+    @Export(name="sourceImage", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceImage;
 
     /**
@@ -464,7 +464,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * * The sourceDisk URL
      * 
      */
-    @Export(name="sourceSnapshot", type=String.class, parameters={})
+    @Export(name="sourceSnapshot", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceSnapshot;
 
     /**
@@ -486,7 +486,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
      * 
      */
-    @Export(name="storageLocations", type=List.class, parameters={String.class})
+    @Export(name="storageLocations", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> storageLocations;
 
     /**

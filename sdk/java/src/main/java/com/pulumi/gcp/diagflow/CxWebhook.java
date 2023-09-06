@@ -102,7 +102,7 @@ public class CxWebhook extends com.pulumi.resources.CustomResource {
      * Indicates whether the webhook is disabled.
      * 
      */
-    @Export(name="disabled", type=Boolean.class, parameters={})
+    @Export(name="disabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disabled;
 
     /**
@@ -118,7 +118,7 @@ public class CxWebhook extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -134,7 +134,7 @@ public class CxWebhook extends com.pulumi.resources.CustomResource {
      * Indicates if automatic spell correction is enabled in detect intent requests.
      * 
      */
-    @Export(name="enableSpellCorrection", type=Boolean.class, parameters={})
+    @Export(name="enableSpellCorrection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableSpellCorrection;
 
     /**
@@ -148,7 +148,7 @@ public class CxWebhook extends com.pulumi.resources.CustomResource {
      * Determines whether this agent should log conversation queries.
      * 
      */
-    @Export(name="enableStackdriverLogging", type=Boolean.class, parameters={})
+    @Export(name="enableStackdriverLogging", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableStackdriverLogging;
 
     /**
@@ -163,7 +163,7 @@ public class CxWebhook extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="genericWebService", type=CxWebhookGenericWebService.class, parameters={})
+    @Export(name="genericWebService", refs={CxWebhookGenericWebService.class}, tree="[0]")
     private Output</* @Nullable */ CxWebhookGenericWebService> genericWebService;
 
     /**
@@ -179,7 +179,7 @@ public class CxWebhook extends com.pulumi.resources.CustomResource {
      * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/webhooks/&lt;Webhook ID&gt;.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -195,7 +195,7 @@ public class CxWebhook extends com.pulumi.resources.CustomResource {
      * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
      * 
      */
-    @Export(name="parent", type=String.class, parameters={})
+    @Export(name="parent", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> parent;
 
     /**
@@ -210,7 +210,7 @@ public class CxWebhook extends com.pulumi.resources.CustomResource {
      * Name of the SecuritySettings reference for the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/securitySettings/&lt;Security Settings ID&gt;.
      * 
      */
-    @Export(name="securitySettings", type=String.class, parameters={})
+    @Export(name="securitySettings", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> securitySettings;
 
     /**
@@ -225,7 +225,7 @@ public class CxWebhook extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="serviceDirectory", type=CxWebhookServiceDirectory.class, parameters={})
+    @Export(name="serviceDirectory", refs={CxWebhookServiceDirectory.class}, tree="[0]")
     private Output</* @Nullable */ CxWebhookServiceDirectory> serviceDirectory;
 
     /**
@@ -240,7 +240,7 @@ public class CxWebhook extends com.pulumi.resources.CustomResource {
      * Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;.
      * 
      */
-    @Export(name="startFlow", type=String.class, parameters={})
+    @Export(name="startFlow", refs={String.class}, tree="[0]")
     private Output<String> startFlow;
 
     /**
@@ -254,7 +254,7 @@ public class CxWebhook extends com.pulumi.resources.CustomResource {
      * Webhook execution timeout.
      * 
      */
-    @Export(name="timeout", type=String.class, parameters={})
+    @Export(name="timeout", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> timeout;
 
     /**

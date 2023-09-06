@@ -154,7 +154,7 @@ public class CertificateIssuanceConfig extends com.pulumi.resources.CustomResour
      * Structure is documented below.
      * 
      */
-    @Export(name="certificateAuthorityConfig", type=CertificateIssuanceConfigCertificateAuthorityConfig.class, parameters={})
+    @Export(name="certificateAuthorityConfig", refs={CertificateIssuanceConfigCertificateAuthorityConfig.class}, tree="[0]")
     private Output<CertificateIssuanceConfigCertificateAuthorityConfig> certificateAuthorityConfig;
 
     /**
@@ -171,7 +171,7 @@ public class CertificateIssuanceConfig extends com.pulumi.resources.CustomResour
      * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -187,7 +187,7 @@ public class CertificateIssuanceConfig extends com.pulumi.resources.CustomResour
      * One or more paragraphs of text description of a CertificateIssuanceConfig.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -202,7 +202,7 @@ public class CertificateIssuanceConfig extends com.pulumi.resources.CustomResour
      * Possible values are: `RSA_2048`, `ECDSA_P256`.
      * 
      */
-    @Export(name="keyAlgorithm", type=String.class, parameters={})
+    @Export(name="keyAlgorithm", refs={String.class}, tree="[0]")
     private Output<String> keyAlgorithm;
 
     /**
@@ -218,7 +218,7 @@ public class CertificateIssuanceConfig extends com.pulumi.resources.CustomResour
      * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -234,7 +234,7 @@ public class CertificateIssuanceConfig extends com.pulumi.resources.CustomResour
      * Example: &#34;1814400s&#34;. Valid values are from 21 days (1814400s) to 30 days (2592000s)
      * 
      */
-    @Export(name="lifetime", type=String.class, parameters={})
+    @Export(name="lifetime", refs={String.class}, tree="[0]")
     private Output<String> lifetime;
 
     /**
@@ -249,7 +249,7 @@ public class CertificateIssuanceConfig extends com.pulumi.resources.CustomResour
      * The Certificate Manager location. If not specified, &#34;global&#34; is used.
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> location;
 
     /**
@@ -264,7 +264,7 @@ public class CertificateIssuanceConfig extends com.pulumi.resources.CustomResour
      * CertificateIssuanceConfig names must be unique globally.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -280,7 +280,7 @@ public class CertificateIssuanceConfig extends com.pulumi.resources.CustomResour
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -298,7 +298,7 @@ public class CertificateIssuanceConfig extends com.pulumi.resources.CustomResour
      * the certificate has been issued and at least 7 days before it expires.
      * 
      */
-    @Export(name="rotationWindowPercentage", type=Integer.class, parameters={})
+    @Export(name="rotationWindowPercentage", refs={Integer.class}, tree="[0]")
     private Output<Integer> rotationWindowPercentage;
 
     /**
@@ -317,7 +317,7 @@ public class CertificateIssuanceConfig extends com.pulumi.resources.CustomResour
      * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

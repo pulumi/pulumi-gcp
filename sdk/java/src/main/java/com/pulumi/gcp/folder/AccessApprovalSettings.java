@@ -179,7 +179,7 @@ public class AccessApprovalSettings extends com.pulumi.resources.CustomResource 
      * This property will be ignored if set by an ancestor of the resource, and new non-empty values may not be set.
      * 
      */
-    @Export(name="activeKeyVersion", type=String.class, parameters={})
+    @Export(name="activeKeyVersion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> activeKeyVersion;
 
     /**
@@ -195,7 +195,7 @@ public class AccessApprovalSettings extends com.pulumi.resources.CustomResource 
      * If the field is true, that indicates that an ancestor of this Folder has set active_key_version.
      * 
      */
-    @Export(name="ancestorHasActiveKeyVersion", type=Boolean.class, parameters={})
+    @Export(name="ancestorHasActiveKeyVersion", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> ancestorHasActiveKeyVersion;
 
     /**
@@ -209,7 +209,7 @@ public class AccessApprovalSettings extends com.pulumi.resources.CustomResource 
      * If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Folder.
      * 
      */
-    @Export(name="enrolledAncestor", type=Boolean.class, parameters={})
+    @Export(name="enrolledAncestor", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enrolledAncestor;
 
     /**
@@ -227,7 +227,7 @@ public class AccessApprovalSettings extends com.pulumi.resources.CustomResource 
      * Structure is documented below.
      * 
      */
-    @Export(name="enrolledServices", type=List.class, parameters={AccessApprovalSettingsEnrolledService.class})
+    @Export(name="enrolledServices", refs={List.class,AccessApprovalSettingsEnrolledService.class}, tree="[0,1]")
     private Output<List<AccessApprovalSettingsEnrolledService>> enrolledServices;
 
     /**
@@ -245,7 +245,7 @@ public class AccessApprovalSettings extends com.pulumi.resources.CustomResource 
      * ID of the folder of the access approval settings.
      * 
      */
-    @Export(name="folderId", type=String.class, parameters={})
+    @Export(name="folderId", refs={String.class}, tree="[0]")
     private Output<String> folderId;
 
     /**
@@ -262,7 +262,7 @@ public class AccessApprovalSettings extends com.pulumi.resources.CustomResource 
      * as key versions are inherited top-down.
      * 
      */
-    @Export(name="invalidKeyVersion", type=Boolean.class, parameters={})
+    @Export(name="invalidKeyVersion", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> invalidKeyVersion;
 
     /**
@@ -279,7 +279,7 @@ public class AccessApprovalSettings extends com.pulumi.resources.CustomResource 
      * The resource name of the settings. Format is &#34;folders/{folder_id}/accessApprovalSettings&#34;
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -295,7 +295,7 @@ public class AccessApprovalSettings extends com.pulumi.resources.CustomResource 
      * resources of that resource. A maximum of 50 email addresses are allowed.
      * 
      */
-    @Export(name="notificationEmails", type=List.class, parameters={String.class})
+    @Export(name="notificationEmails", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> notificationEmails;
 
     /**

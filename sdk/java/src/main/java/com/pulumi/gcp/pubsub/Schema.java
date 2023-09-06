@@ -147,7 +147,7 @@ public class Schema extends com.pulumi.resources.CustomResource {
      * that is a valid schema definition of the type specified in type.
      * 
      */
-    @Export(name="definition", type=String.class, parameters={})
+    @Export(name="definition", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> definition;
 
     /**
@@ -165,7 +165,7 @@ public class Schema extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -182,7 +182,7 @@ public class Schema extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -199,7 +199,7 @@ public class Schema extends com.pulumi.resources.CustomResource {
      * Possible values are: `TYPE_UNSPECIFIED`, `PROTOCOL_BUFFER`, `AVRO`.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**

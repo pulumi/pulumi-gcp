@@ -115,7 +115,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="alternativeNameServerConfig", type=PolicyAlternativeNameServerConfig.class, parameters={})
+    @Export(name="alternativeNameServerConfig", refs={PolicyAlternativeNameServerConfig.class}, tree="[0]")
     private Output</* @Nullable */ PolicyAlternativeNameServerConfig> alternativeNameServerConfig;
 
     /**
@@ -132,7 +132,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
      * A textual description field. Defaults to &#39;Managed by Pulumi&#39;.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -149,7 +149,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
      * that are bound to this policy.
      * 
      */
-    @Export(name="enableInboundForwarding", type=Boolean.class, parameters={})
+    @Export(name="enableInboundForwarding", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableInboundForwarding;
 
     /**
@@ -167,7 +167,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
      * Defaults to no logging if not set.
      * 
      */
-    @Export(name="enableLogging", type=Boolean.class, parameters={})
+    @Export(name="enableLogging", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableLogging;
 
     /**
@@ -184,7 +184,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -201,7 +201,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="networks", type=List.class, parameters={PolicyNetwork.class})
+    @Export(name="networks", refs={List.class,PolicyNetwork.class}, tree="[0,1]")
     private Output</* @Nullable */ List<PolicyNetwork>> networks;
 
     /**
@@ -217,7 +217,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**

@@ -294,7 +294,7 @@ public class KeyRingIamPolicy extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the key ring&#39;s IAM policy.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -320,7 +320,7 @@ public class KeyRingIamPolicy extends com.pulumi.resources.CustomResource {
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * 
      */
-    @Export(name="keyRingId", type=String.class, parameters={})
+    @Export(name="keyRingId", refs={String.class}, tree="[0]")
     private Output<String> keyRingId;
 
     /**
@@ -347,7 +347,7 @@ public class KeyRingIamPolicy extends com.pulumi.resources.CustomResource {
      * a `gcp.organizations.getIamPolicy` data source.
      * 
      */
-    @Export(name="policyData", type=String.class, parameters={})
+    @Export(name="policyData", refs={String.class}, tree="[0]")
     private Output<String> policyData;
 
     /**

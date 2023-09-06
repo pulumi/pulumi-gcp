@@ -349,7 +349,7 @@ public class DeliveryPipeline extends com.pulumi.resources.CustomResource {
      * User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, String.class})
+    @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> annotations;
 
     /**
@@ -363,7 +363,7 @@ public class DeliveryPipeline extends com.pulumi.resources.CustomResource {
      * Output only. Information around the state of the Delivery Pipeline.
      * 
      */
-    @Export(name="conditions", type=List.class, parameters={DeliveryPipelineCondition.class})
+    @Export(name="conditions", refs={List.class,DeliveryPipelineCondition.class}, tree="[0,1]")
     private Output<List<DeliveryPipelineCondition>> conditions;
 
     /**
@@ -377,7 +377,7 @@ public class DeliveryPipeline extends com.pulumi.resources.CustomResource {
      * Output only. Time at which the pipeline was created.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -391,7 +391,7 @@ public class DeliveryPipeline extends com.pulumi.resources.CustomResource {
      * Description of the `DeliveryPipeline`. Max length is 255 characters.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -405,7 +405,7 @@ public class DeliveryPipeline extends com.pulumi.resources.CustomResource {
      * This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -419,7 +419,7 @@ public class DeliveryPipeline extends com.pulumi.resources.CustomResource {
      * Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &lt;= 128 bytes.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -433,7 +433,7 @@ public class DeliveryPipeline extends com.pulumi.resources.CustomResource {
      * The location for the resource
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -447,7 +447,7 @@ public class DeliveryPipeline extends com.pulumi.resources.CustomResource {
      * Name of the `DeliveryPipeline`. Format is [a-z][a-z0-9\-]{0,62}.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -461,7 +461,7 @@ public class DeliveryPipeline extends com.pulumi.resources.CustomResource {
      * The project for the resource
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -475,7 +475,7 @@ public class DeliveryPipeline extends com.pulumi.resources.CustomResource {
      * SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
      * 
      */
-    @Export(name="serialPipeline", type=DeliveryPipelineSerialPipeline.class, parameters={})
+    @Export(name="serialPipeline", refs={DeliveryPipelineSerialPipeline.class}, tree="[0]")
     private Output</* @Nullable */ DeliveryPipelineSerialPipeline> serialPipeline;
 
     /**
@@ -489,7 +489,7 @@ public class DeliveryPipeline extends com.pulumi.resources.CustomResource {
      * When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
      * 
      */
-    @Export(name="suspended", type=Boolean.class, parameters={})
+    @Export(name="suspended", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> suspended;
 
     /**
@@ -503,7 +503,7 @@ public class DeliveryPipeline extends com.pulumi.resources.CustomResource {
      * Output only. Unique identifier of the `DeliveryPipeline`.
      * 
      */
-    @Export(name="uid", type=String.class, parameters={})
+    @Export(name="uid", refs={String.class}, tree="[0]")
     private Output<String> uid;
 
     /**
@@ -517,7 +517,7 @@ public class DeliveryPipeline extends com.pulumi.resources.CustomResource {
      * Output only. Most recent time at which the pipeline was updated.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

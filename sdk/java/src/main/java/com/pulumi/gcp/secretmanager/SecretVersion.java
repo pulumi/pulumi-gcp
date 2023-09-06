@@ -80,7 +80,7 @@ public class SecretVersion extends com.pulumi.resources.CustomResource {
      * The time at which the Secret was created.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -94,7 +94,7 @@ public class SecretVersion extends com.pulumi.resources.CustomResource {
      * The time at which the Secret was destroyed. Only present if state is DESTROYED.
      * 
      */
-    @Export(name="destroyTime", type=String.class, parameters={})
+    @Export(name="destroyTime", refs={String.class}, tree="[0]")
     private Output<String> destroyTime;
 
     /**
@@ -108,7 +108,7 @@ public class SecretVersion extends com.pulumi.resources.CustomResource {
      * The current state of the SecretVersion.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -123,7 +123,7 @@ public class SecretVersion extends com.pulumi.resources.CustomResource {
      * `projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}`
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -140,7 +140,7 @@ public class SecretVersion extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="secret", type=String.class, parameters={})
+    @Export(name="secret", refs={String.class}, tree="[0]")
     private Output<String> secret;
 
     /**
@@ -157,7 +157,7 @@ public class SecretVersion extends com.pulumi.resources.CustomResource {
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    @Export(name="secretData", type=String.class, parameters={})
+    @Export(name="secretData", refs={String.class}, tree="[0]")
     private Output<String> secretData;
 
     /**
@@ -172,7 +172,7 @@ public class SecretVersion extends com.pulumi.resources.CustomResource {
      * The version of the Secret.
      * 
      */
-    @Export(name="version", type=String.class, parameters={})
+    @Export(name="version", refs={String.class}, tree="[0]")
     private Output<String> version;
 
     /**

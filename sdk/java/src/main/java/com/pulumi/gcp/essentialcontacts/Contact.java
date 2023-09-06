@@ -82,7 +82,7 @@ public class Contact extends com.pulumi.resources.CustomResource {
      * The email address to send notifications to. This does not need to be a Google account.
      * 
      */
-    @Export(name="email", type=String.class, parameters={})
+    @Export(name="email", refs={String.class}, tree="[0]")
     private Output<String> email;
 
     /**
@@ -96,7 +96,7 @@ public class Contact extends com.pulumi.resources.CustomResource {
      * The preferred language for notifications, as a ISO 639-1 language code. See Supported languages for a list of supported languages.
      * 
      */
-    @Export(name="languageTag", type=String.class, parameters={})
+    @Export(name="languageTag", refs={String.class}, tree="[0]")
     private Output<String> languageTag;
 
     /**
@@ -110,7 +110,7 @@ public class Contact extends com.pulumi.resources.CustomResource {
      * The identifier for the contact. Format: {resourceType}/{resource_id}/contacts/{contact_id}
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -124,7 +124,7 @@ public class Contact extends com.pulumi.resources.CustomResource {
      * The categories of notifications that the contact will receive communications for.
      * 
      */
-    @Export(name="notificationCategorySubscriptions", type=List.class, parameters={String.class})
+    @Export(name="notificationCategorySubscriptions", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> notificationCategorySubscriptions;
 
     /**
@@ -140,7 +140,7 @@ public class Contact extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="parent", type=String.class, parameters={})
+    @Export(name="parent", refs={String.class}, tree="[0]")
     private Output<String> parent;
 
     /**

@@ -298,7 +298,7 @@ public class KeyRingIamBinding extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="condition", type=KeyRingIamBindingCondition.class, parameters={})
+    @Export(name="condition", refs={KeyRingIamBindingCondition.class}, tree="[0]")
     private Output</* @Nullable */ KeyRingIamBindingCondition> condition;
 
     /**
@@ -313,7 +313,7 @@ public class KeyRingIamBinding extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the key ring&#39;s IAM policy.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -339,7 +339,7 @@ public class KeyRingIamBinding extends com.pulumi.resources.CustomResource {
      * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
      * 
      */
-    @Export(name="keyRingId", type=String.class, parameters={})
+    @Export(name="keyRingId", refs={String.class}, tree="[0]")
     private Output<String> keyRingId;
 
     /**
@@ -361,7 +361,7 @@ public class KeyRingIamBinding extends com.pulumi.resources.CustomResource {
     public Output<String> keyRingId() {
         return this.keyRingId;
     }
-    @Export(name="members", type=List.class, parameters={String.class})
+    @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> members;
 
     public Output<List<String>> members() {
@@ -373,7 +373,7 @@ public class KeyRingIamBinding extends com.pulumi.resources.CustomResource {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     /**

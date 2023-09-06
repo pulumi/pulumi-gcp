@@ -42,7 +42,7 @@ public class EnvReferences extends com.pulumi.resources.CustomResource {
      * Optional. A human-readable description of this reference.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -59,7 +59,7 @@ public class EnvReferences extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="envId", type=String.class, parameters={})
+    @Export(name="envId", refs={String.class}, tree="[0]")
     private Output<String> envId;
 
     /**
@@ -76,7 +76,7 @@ public class EnvReferences extends com.pulumi.resources.CustomResource {
      * Required. The resource id of this reference. Values must match the regular expression [\w\s-.]+.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -90,7 +90,7 @@ public class EnvReferences extends com.pulumi.resources.CustomResource {
      * Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resourceType.
      * 
      */
-    @Export(name="refers", type=String.class, parameters={})
+    @Export(name="refers", refs={String.class}, tree="[0]")
     private Output<String> refers;
 
     /**
@@ -104,7 +104,7 @@ public class EnvReferences extends com.pulumi.resources.CustomResource {
      * The type of resource referred to by this reference. Valid values are &#39;KeyStore&#39; or &#39;TrustStore&#39;.
      * 
      */
-    @Export(name="resourceType", type=String.class, parameters={})
+    @Export(name="resourceType", refs={String.class}, tree="[0]")
     private Output<String> resourceType;
 
     /**

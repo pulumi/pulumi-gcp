@@ -160,7 +160,7 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
      * The time when the Membership was created.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -174,7 +174,7 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
      * The name of the Group to create this membership in.
      * 
      */
-    @Export(name="group", type=String.class, parameters={})
+    @Export(name="group", refs={String.class}, tree="[0]")
     private Output<String> group;
 
     /**
@@ -189,7 +189,7 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="memberKey", type=GroupMembershipMemberKey.class, parameters={})
+    @Export(name="memberKey", refs={GroupMembershipMemberKey.class}, tree="[0]")
     private Output<GroupMembershipMemberKey> memberKey;
 
     /**
@@ -207,7 +207,7 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -225,7 +225,7 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="preferredMemberKey", type=GroupMembershipPreferredMemberKey.class, parameters={})
+    @Export(name="preferredMemberKey", refs={GroupMembershipPreferredMemberKey.class}, tree="[0]")
     private Output<GroupMembershipPreferredMemberKey> preferredMemberKey;
 
     /**
@@ -242,7 +242,7 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="roles", type=List.class, parameters={GroupMembershipRole.class})
+    @Export(name="roles", refs={List.class,GroupMembershipRole.class}, tree="[0,1]")
     private Output<List<GroupMembershipRole>> roles;
 
     /**
@@ -258,7 +258,7 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
      * The type of the membership.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -272,7 +272,7 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
      * The time when the Membership was last updated.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

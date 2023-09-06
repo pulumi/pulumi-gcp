@@ -173,13 +173,13 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:apigateway/apiIamMember:ApiIamMember")
 public class ApiIamMember extends com.pulumi.resources.CustomResource {
-    @Export(name="api", type=String.class, parameters={})
+    @Export(name="api", refs={String.class}, tree="[0]")
     private Output<String> api;
 
     public Output<String> api() {
         return this.api;
     }
-    @Export(name="condition", type=ApiIamMemberCondition.class, parameters={})
+    @Export(name="condition", refs={ApiIamMemberCondition.class}, tree="[0]")
     private Output</* @Nullable */ ApiIamMemberCondition> condition;
 
     public Output<Optional<ApiIamMemberCondition>> condition() {
@@ -189,7 +189,7 @@ public class ApiIamMember extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the IAM policy.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -199,7 +199,7 @@ public class ApiIamMember extends com.pulumi.resources.CustomResource {
     public Output<String> etag() {
         return this.etag;
     }
-    @Export(name="member", type=String.class, parameters={})
+    @Export(name="member", refs={String.class}, tree="[0]")
     private Output<String> member;
 
     public Output<String> member() {
@@ -222,7 +222,7 @@ public class ApiIamMember extends com.pulumi.resources.CustomResource {
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -251,7 +251,7 @@ public class ApiIamMember extends com.pulumi.resources.CustomResource {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     /**

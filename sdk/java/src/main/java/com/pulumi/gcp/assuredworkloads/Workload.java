@@ -96,7 +96,7 @@ public class Workload extends com.pulumi.resources.CustomResource {
      * Required. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, &#39;billingAccounts/012345-567890-ABCDEF`.
      * 
      */
-    @Export(name="billingAccount", type=String.class, parameters={})
+    @Export(name="billingAccount", refs={String.class}, tree="[0]")
     private Output<String> billingAccount;
 
     /**
@@ -110,7 +110,7 @@ public class Workload extends com.pulumi.resources.CustomResource {
      * Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS, HIPAA, EU_REGIONS_AND_SUPPORT, CA_REGIONS_AND_SUPPORT, ITAR, AU_REGIONS_AND_US_SUPPORT, ASSURED_WORKLOADS_FOR_PARTNERS
      * 
      */
-    @Export(name="complianceRegime", type=String.class, parameters={})
+    @Export(name="complianceRegime", refs={String.class}, tree="[0]")
     private Output<String> complianceRegime;
 
     /**
@@ -124,7 +124,7 @@ public class Workload extends com.pulumi.resources.CustomResource {
      * Output only. Immutable. The Workload creation timestamp.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -138,7 +138,7 @@ public class Workload extends com.pulumi.resources.CustomResource {
      * Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -152,7 +152,7 @@ public class Workload extends com.pulumi.resources.CustomResource {
      * Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
      * 
      */
-    @Export(name="kmsSettings", type=WorkloadKmsSettings.class, parameters={})
+    @Export(name="kmsSettings", refs={WorkloadKmsSettings.class}, tree="[0]")
     private Output</* @Nullable */ WorkloadKmsSettings> kmsSettings;
 
     /**
@@ -166,7 +166,7 @@ public class Workload extends com.pulumi.resources.CustomResource {
      * Optional. Labels applied to the workload.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -180,7 +180,7 @@ public class Workload extends com.pulumi.resources.CustomResource {
      * The location for the resource
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -194,7 +194,7 @@ public class Workload extends com.pulumi.resources.CustomResource {
      * Output only. The resource name of the workload.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -210,7 +210,7 @@ public class Workload extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="organization", type=String.class, parameters={})
+    @Export(name="organization", refs={String.class}, tree="[0]")
     private Output<String> organization;
 
     /**
@@ -226,7 +226,7 @@ public class Workload extends com.pulumi.resources.CustomResource {
      * Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id}, organizations/{organization_id}
      * 
      */
-    @Export(name="provisionedResourcesParent", type=String.class, parameters={})
+    @Export(name="provisionedResourcesParent", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> provisionedResourcesParent;
 
     /**
@@ -240,7 +240,7 @@ public class Workload extends com.pulumi.resources.CustomResource {
      * Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
      * 
      */
-    @Export(name="resourceSettings", type=List.class, parameters={WorkloadResourceSetting.class})
+    @Export(name="resourceSettings", refs={List.class,WorkloadResourceSetting.class}, tree="[0,1]")
     private Output</* @Nullable */ List<WorkloadResourceSetting>> resourceSettings;
 
     /**
@@ -254,7 +254,7 @@ public class Workload extends com.pulumi.resources.CustomResource {
      * Output only. The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
      * 
      */
-    @Export(name="resources", type=List.class, parameters={WorkloadResource.class})
+    @Export(name="resources", refs={List.class,WorkloadResource.class}, tree="[0,1]")
     private Output<List<WorkloadResource>> resources;
 
     /**

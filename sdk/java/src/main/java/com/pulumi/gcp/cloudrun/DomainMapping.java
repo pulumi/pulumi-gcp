@@ -107,7 +107,7 @@ public class DomainMapping extends com.pulumi.resources.CustomResource {
      * The location of the cloud run instance. eg us-central1
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -122,7 +122,7 @@ public class DomainMapping extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="metadata", type=DomainMappingMetadata.class, parameters={})
+    @Export(name="metadata", refs={DomainMappingMetadata.class}, tree="[0]")
     private Output<DomainMappingMetadata> metadata;
 
     /**
@@ -137,7 +137,7 @@ public class DomainMapping extends com.pulumi.resources.CustomResource {
      * Name should be a [verified](https://support.google.com/webmasters/answer/9008080) domain
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -152,7 +152,7 @@ public class DomainMapping extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -168,7 +168,7 @@ public class DomainMapping extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="spec", type=DomainMappingSpec.class, parameters={})
+    @Export(name="spec", refs={DomainMappingSpec.class}, tree="[0]")
     private Output<DomainMappingSpec> spec;
 
     /**
@@ -184,7 +184,7 @@ public class DomainMapping extends com.pulumi.resources.CustomResource {
      * Status of the condition, one of True, False, Unknown.
      * 
      */
-    @Export(name="statuses", type=List.class, parameters={DomainMappingStatus.class})
+    @Export(name="statuses", refs={List.class,DomainMappingStatus.class}, tree="[0,1]")
     private Output<List<DomainMappingStatus>> statuses;
 
     /**

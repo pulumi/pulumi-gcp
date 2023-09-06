@@ -115,7 +115,7 @@ public class WorkforcePool extends com.pulumi.resources.CustomResource {
      * A user-specified description of the pool. Cannot exceed 256 characters.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -130,7 +130,7 @@ public class WorkforcePool extends com.pulumi.resources.CustomResource {
      * or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
      * 
      */
-    @Export(name="disabled", type=Boolean.class, parameters={})
+    @Export(name="disabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disabled;
 
     /**
@@ -145,7 +145,7 @@ public class WorkforcePool extends com.pulumi.resources.CustomResource {
      * A user-specified display name of the pool in Google Cloud Console. Cannot exceed 32 characters.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> displayName;
 
     /**
@@ -159,7 +159,7 @@ public class WorkforcePool extends com.pulumi.resources.CustomResource {
      * The location for the resource.
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -174,7 +174,7 @@ public class WorkforcePool extends com.pulumi.resources.CustomResource {
      * Format: `locations/{location}/workforcePools/{workforcePoolId}`
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -191,7 +191,7 @@ public class WorkforcePool extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="parent", type=String.class, parameters={})
+    @Export(name="parent", refs={String.class}, tree="[0]")
     private Output<String> parent;
 
     /**
@@ -211,7 +211,7 @@ public class WorkforcePool extends com.pulumi.resources.CustomResource {
      * A duration in seconds with up to nine fractional digits, ending with &#39;`s`&#39;. Example: &#34;`3.5s`&#34;.
      * 
      */
-    @Export(name="sessionDuration", type=String.class, parameters={})
+    @Export(name="sessionDuration", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sessionDuration;
 
     /**
@@ -238,7 +238,7 @@ public class WorkforcePool extends com.pulumi.resources.CustomResource {
      *   tokens grant access again.
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
@@ -263,7 +263,7 @@ public class WorkforcePool extends com.pulumi.resources.CustomResource {
      * The prefix `gcp-` is reserved for use by Google, and may not be specified.
      * 
      */
-    @Export(name="workforcePoolId", type=String.class, parameters={})
+    @Export(name="workforcePoolId", refs={String.class}, tree="[0]")
     private Output<String> workforcePoolId;
 
     /**

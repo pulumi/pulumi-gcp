@@ -479,7 +479,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * This field follows Kubernetes annotations&#39; namespacing, limits, and rules.
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, String.class})
+    @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> annotations;
 
     /**
@@ -503,7 +503,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="binaryAuthorization", type=ServiceBinaryAuthorization.class, parameters={})
+    @Export(name="binaryAuthorization", refs={ServiceBinaryAuthorization.class}, tree="[0]")
     private Output</* @Nullable */ ServiceBinaryAuthorization> binaryAuthorization;
 
     /**
@@ -518,7 +518,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * Arbitrary identifier for the API client.
      * 
      */
-    @Export(name="client", type=String.class, parameters={})
+    @Export(name="client", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> client;
 
     /**
@@ -532,7 +532,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * Arbitrary version identifier for the API client.
      * 
      */
-    @Export(name="clientVersion", type=String.class, parameters={})
+    @Export(name="clientVersion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientVersion;
 
     /**
@@ -547,7 +547,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="conditions", type=List.class, parameters={ServiceCondition.class})
+    @Export(name="conditions", refs={List.class,ServiceCondition.class}, tree="[0,1]")
     private Output<List<ServiceCondition>> conditions;
 
     /**
@@ -562,7 +562,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * The creation time.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -576,7 +576,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * Email address of the authenticated creator.
      * 
      */
-    @Export(name="creator", type=String.class, parameters={})
+    @Export(name="creator", refs={String.class}, tree="[0]")
     private Output<String> creator;
 
     /**
@@ -592,7 +592,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * https://cloud.google.com/run/docs/configuring/custom-audiences.
      * 
      */
-    @Export(name="customAudiences", type=List.class, parameters={String.class})
+    @Export(name="customAudiences", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> customAudiences;
 
     /**
@@ -608,7 +608,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * The deletion time.
      * 
      */
-    @Export(name="deleteTime", type=String.class, parameters={})
+    @Export(name="deleteTime", refs={String.class}, tree="[0]")
     private Output<String> deleteTime;
 
     /**
@@ -622,7 +622,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * User-provided description of the Service. This field currently has a 512-character limit.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -636,7 +636,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -650,7 +650,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * For a deleted resource, the time after which it will be permamently deleted.
      * 
      */
-    @Export(name="expireTime", type=String.class, parameters={})
+    @Export(name="expireTime", refs={String.class}, tree="[0]")
     private Output<String> expireTime;
 
     /**
@@ -664,7 +664,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
      * 
      */
-    @Export(name="generation", type=String.class, parameters={})
+    @Export(name="generation", refs={String.class}, tree="[0]")
     private Output<String> generation;
 
     /**
@@ -679,7 +679,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * Possible values are: `INGRESS_TRAFFIC_ALL`, `INGRESS_TRAFFIC_INTERNAL_ONLY`, `INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER`.
      * 
      */
-    @Export(name="ingress", type=String.class, parameters={})
+    @Export(name="ingress", refs={String.class}, tree="[0]")
     private Output<String> ingress;
 
     /**
@@ -703,7 +703,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * All system labels in v1 now have a corresponding field in v2 Service.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -726,7 +726,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * Email address of the last authenticated modifier.
      * 
      */
-    @Export(name="lastModifier", type=String.class, parameters={})
+    @Export(name="lastModifier", refs={String.class}, tree="[0]")
     private Output<String> lastModifier;
 
     /**
@@ -740,7 +740,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * Name of the last created revision. See comments in reconciling for additional information on reconciliation process in Cloud Run.
      * 
      */
-    @Export(name="latestCreatedRevision", type=String.class, parameters={})
+    @Export(name="latestCreatedRevision", refs={String.class}, tree="[0]")
     private Output<String> latestCreatedRevision;
 
     /**
@@ -754,7 +754,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * Name of the latest revision that is serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run.
      * 
      */
-    @Export(name="latestReadyRevision", type=String.class, parameters={})
+    @Export(name="latestReadyRevision", refs={String.class}, tree="[0]")
     private Output<String> latestReadyRevision;
 
     /**
@@ -771,7 +771,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * Possible values are: `UNIMPLEMENTED`, `PRELAUNCH`, `EARLY_ACCESS`, `ALPHA`, `BETA`, `GA`, `DEPRECATED`.
      * 
      */
-    @Export(name="launchStage", type=String.class, parameters={})
+    @Export(name="launchStage", refs={String.class}, tree="[0]")
     private Output<String> launchStage;
 
     /**
@@ -788,7 +788,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * The location of the cloud run service
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> location;
 
     /**
@@ -802,7 +802,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * Name of the Service.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -816,7 +816,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * The generation of this Service currently serving traffic. See comments in reconciling for additional information on reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
      * 
      */
-    @Export(name="observedGeneration", type=String.class, parameters={})
+    @Export(name="observedGeneration", refs={String.class}, tree="[0]")
     private Output<String> observedGeneration;
 
     /**
@@ -831,7 +831,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -849,7 +849,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * If reconciliation failed, trafficStatuses, observedGeneration, and latestReadyRevision will have the state of the last serving revision, or empty for newly created Services. Additional information on the failure can be found in terminalCondition and conditions.
      * 
      */
-    @Export(name="reconciling", type=Boolean.class, parameters={})
+    @Export(name="reconciling", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> reconciling;
 
     /**
@@ -867,7 +867,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="template", type=ServiceTemplate.class, parameters={})
+    @Export(name="template", refs={ServiceTemplate.class}, tree="[0]")
     private Output<ServiceTemplate> template;
 
     /**
@@ -883,7 +883,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="terminalConditions", type=List.class, parameters={ServiceTerminalCondition.class})
+    @Export(name="terminalConditions", refs={List.class,ServiceTerminalCondition.class}, tree="[0,1]")
     private Output<List<ServiceTerminalCondition>> terminalConditions;
 
     /**
@@ -899,7 +899,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="trafficStatuses", type=List.class, parameters={ServiceTrafficStatus.class})
+    @Export(name="trafficStatuses", refs={List.class,ServiceTrafficStatus.class}, tree="[0,1]")
     private Output<List<ServiceTrafficStatus>> trafficStatuses;
 
     /**
@@ -915,7 +915,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="traffics", type=List.class, parameters={ServiceTraffic.class})
+    @Export(name="traffics", refs={List.class,ServiceTraffic.class}, tree="[0,1]")
     private Output<List<ServiceTraffic>> traffics;
 
     /**
@@ -930,7 +930,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
      * 
      */
-    @Export(name="uid", type=String.class, parameters={})
+    @Export(name="uid", refs={String.class}, tree="[0]")
     private Output<String> uid;
 
     /**
@@ -944,7 +944,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * The last-modified time.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**
@@ -959,7 +959,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * Displays the target URI.
      * 
      */
-    @Export(name="uri", type=String.class, parameters={})
+    @Export(name="uri", refs={String.class}, tree="[0]")
     private Output<String> uri;
 
     /**

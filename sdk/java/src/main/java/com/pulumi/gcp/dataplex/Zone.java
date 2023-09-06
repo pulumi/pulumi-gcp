@@ -101,7 +101,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * Output only. Aggregated status of the underlying assets of the zone.
      * 
      */
-    @Export(name="assetStatuses", type=List.class, parameters={ZoneAssetStatus.class})
+    @Export(name="assetStatuses", refs={List.class,ZoneAssetStatus.class}, tree="[0,1]")
     private Output<List<ZoneAssetStatus>> assetStatuses;
 
     /**
@@ -115,7 +115,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * Output only. The time when the zone was created.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -129,7 +129,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * Optional. Description of the zone.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -143,7 +143,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * Required. Specification of the discovery feature applied to data in this zone.
      * 
      */
-    @Export(name="discoverySpec", type=ZoneDiscoverySpec.class, parameters={})
+    @Export(name="discoverySpec", refs={ZoneDiscoverySpec.class}, tree="[0]")
     private Output<ZoneDiscoverySpec> discoverySpec;
 
     /**
@@ -157,7 +157,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * Optional. User friendly display name.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> displayName;
 
     /**
@@ -171,7 +171,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * Optional. User defined labels for the zone.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -185,7 +185,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * The lake for the resource
      * 
      */
-    @Export(name="lake", type=String.class, parameters={})
+    @Export(name="lake", refs={String.class}, tree="[0]")
     private Output<String> lake;
 
     /**
@@ -199,7 +199,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * The location for the resource
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -213,7 +213,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * The name of the zone.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -227,7 +227,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * The project for the resource
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -241,7 +241,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * Required. Immutable. Specification of the resources that are referenced by the assets within this zone.
      * 
      */
-    @Export(name="resourceSpec", type=ZoneResourceSpec.class, parameters={})
+    @Export(name="resourceSpec", refs={ZoneResourceSpec.class}, tree="[0]")
     private Output<ZoneResourceSpec> resourceSpec;
 
     /**
@@ -255,7 +255,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * Output only. Current state of the zone. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
@@ -269,7 +269,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * Required. Immutable. The type of the zone. Possible values: TYPE_UNSPECIFIED, RAW, CURATED
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -283,7 +283,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * Output only. System generated globally unique ID for the zone. This ID will be different if the zone is deleted and re-created with the same name.
      * 
      */
-    @Export(name="uid", type=String.class, parameters={})
+    @Export(name="uid", refs={String.class}, tree="[0]")
     private Output<String> uid;
 
     /**
@@ -297,7 +297,7 @@ public class Zone extends com.pulumi.resources.CustomResource {
      * Output only. The time when the zone was last updated.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

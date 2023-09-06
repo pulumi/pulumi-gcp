@@ -136,7 +136,7 @@ public class PolicyTag extends com.pulumi.resources.CustomResource {
      * Resource names of child policy tags of this policy tag.
      * 
      */
-    @Export(name="childPolicyTags", type=List.class, parameters={String.class})
+    @Export(name="childPolicyTags", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> childPolicyTags;
 
     /**
@@ -153,7 +153,7 @@ public class PolicyTag extends com.pulumi.resources.CustomResource {
      * If not set, defaults to an empty description.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -172,7 +172,7 @@ public class PolicyTag extends com.pulumi.resources.CustomResource {
      * not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -189,7 +189,7 @@ public class PolicyTag extends com.pulumi.resources.CustomResource {
      * &#34;projects/{project}/locations/{region}/taxonomies/{taxonomy}/policyTags/{policytag}&#34;
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -206,7 +206,7 @@ public class PolicyTag extends com.pulumi.resources.CustomResource {
      * If not set, defaults to an empty string.
      * 
      */
-    @Export(name="parentPolicyTag", type=String.class, parameters={})
+    @Export(name="parentPolicyTag", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> parentPolicyTag;
 
     /**
@@ -224,7 +224,7 @@ public class PolicyTag extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="taxonomy", type=String.class, parameters={})
+    @Export(name="taxonomy", refs={String.class}, tree="[0]")
     private Output<String> taxonomy;
 
     /**

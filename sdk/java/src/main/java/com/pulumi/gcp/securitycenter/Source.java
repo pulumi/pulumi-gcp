@@ -78,7 +78,7 @@ public class Source extends com.pulumi.resources.CustomResource {
      * The description of the source (max of 1024 characters).
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -96,7 +96,7 @@ public class Source extends com.pulumi.resources.CustomResource {
      * and underscores, and can be no longer than 32 characters.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -115,7 +115,7 @@ public class Source extends com.pulumi.resources.CustomResource {
      * `organizations/{{organization}}/sources/{{source}}`.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -133,7 +133,7 @@ public class Source extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="organization", type=String.class, parameters={})
+    @Export(name="organization", refs={String.class}, tree="[0]")
     private Output<String> organization;
 
     /**

@@ -100,7 +100,7 @@ public class FirewallRule extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="action", type=String.class, parameters={})
+    @Export(name="action", refs={String.class}, tree="[0]")
     private Output<String> action;
 
     /**
@@ -117,7 +117,7 @@ public class FirewallRule extends com.pulumi.resources.CustomResource {
      * An optional string description of this rule.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -135,7 +135,7 @@ public class FirewallRule extends com.pulumi.resources.CustomResource {
      * this rule can be modified by the user.
      * 
      */
-    @Export(name="priority", type=Integer.class, parameters={})
+    @Export(name="priority", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> priority;
 
     /**
@@ -154,7 +154,7 @@ public class FirewallRule extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -169,7 +169,7 @@ public class FirewallRule extends com.pulumi.resources.CustomResource {
      * IP address or range, defined using CIDR notation, of requests that this rule applies to.
      * 
      */
-    @Export(name="sourceRange", type=String.class, parameters={})
+    @Export(name="sourceRange", refs={String.class}, tree="[0]")
     private Output<String> sourceRange;
 
     /**

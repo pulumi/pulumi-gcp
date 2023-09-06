@@ -46,7 +46,7 @@ public class Sharedflow extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="configBundle", type=String.class, parameters={})
+    @Export(name="configBundle", refs={String.class}, tree="[0]")
     private Output<String> configBundle;
 
     /**
@@ -63,7 +63,7 @@ public class Sharedflow extends com.pulumi.resources.CustomResource {
      * will trigger an update.
      * 
      */
-    @Export(name="detectMd5hash", type=String.class, parameters={})
+    @Export(name="detectMd5hash", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> detectMd5hash;
 
     /**
@@ -78,7 +78,7 @@ public class Sharedflow extends com.pulumi.resources.CustomResource {
      * The id of the most recently created revision for this shared flow.
      * 
      */
-    @Export(name="latestRevisionId", type=String.class, parameters={})
+    @Export(name="latestRevisionId", refs={String.class}, tree="[0]")
     private Output<String> latestRevisionId;
 
     /**
@@ -92,7 +92,7 @@ public class Sharedflow extends com.pulumi.resources.CustomResource {
      * (Computed) Base 64 MD5 hash of the uploaded data. It is speculative as remote does not return hash of the bundle. Remote changes are detected using returned last_modified timestamp.
      * 
      */
-    @Export(name="md5hash", type=String.class, parameters={})
+    @Export(name="md5hash", refs={String.class}, tree="[0]")
     private Output<String> md5hash;
 
     /**
@@ -107,7 +107,7 @@ public class Sharedflow extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="metaDatas", type=List.class, parameters={SharedflowMetaData.class})
+    @Export(name="metaDatas", refs={List.class,SharedflowMetaData.class}, tree="[0,1]")
     private Output<List<SharedflowMetaData>> metaDatas;
 
     /**
@@ -122,7 +122,7 @@ public class Sharedflow extends com.pulumi.resources.CustomResource {
      * The ID of the shared flow.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -136,7 +136,7 @@ public class Sharedflow extends com.pulumi.resources.CustomResource {
      * The Apigee Organization name associated with the Apigee instance.
      * 
      */
-    @Export(name="orgId", type=String.class, parameters={})
+    @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
     /**
@@ -150,7 +150,7 @@ public class Sharedflow extends com.pulumi.resources.CustomResource {
      * A list of revisions of this shared flow.
      * 
      */
-    @Export(name="revisions", type=List.class, parameters={String.class})
+    @Export(name="revisions", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> revisions;
 
     /**

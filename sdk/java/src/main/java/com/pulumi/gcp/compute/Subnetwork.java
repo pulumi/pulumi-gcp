@@ -286,7 +286,7 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
      * Creation timestamp in RFC3339 text format.
      * 
      */
-    @Export(name="creationTimestamp", type=String.class, parameters={})
+    @Export(name="creationTimestamp", refs={String.class}, tree="[0]")
     private Output<String> creationTimestamp;
 
     /**
@@ -302,7 +302,7 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
      * creation time.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -318,7 +318,7 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
      * The range of external IPv6 addresses that are owned by this subnetwork.
      * 
      */
-    @Export(name="externalIpv6Prefix", type=String.class, parameters={})
+    @Export(name="externalIpv6Prefix", refs={String.class}, tree="[0]")
     private Output<String> externalIpv6Prefix;
 
     /**
@@ -336,7 +336,7 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* This field is not useful for users, and has been removed as an output. */
-    @Export(name="fingerprint", type=String.class, parameters={})
+    @Export(name="fingerprint", refs={String.class}, tree="[0]")
     private Output<String> fingerprint;
 
     /**
@@ -351,7 +351,7 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
      * outside this subnetwork.
      * 
      */
-    @Export(name="gatewayAddress", type=String.class, parameters={})
+    @Export(name="gatewayAddress", refs={String.class}, tree="[0]")
     private Output<String> gatewayAddress;
 
     /**
@@ -369,7 +369,7 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
      * non-overlapping within a network. Only IPv4 is supported.
      * 
      */
-    @Export(name="ipCidrRange", type=String.class, parameters={})
+    @Export(name="ipCidrRange", refs={String.class}, tree="[0]")
     private Output<String> ipCidrRange;
 
     /**
@@ -389,7 +389,7 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
      * Possible values are: `EXTERNAL`, `INTERNAL`.
      * 
      */
-    @Export(name="ipv6AccessType", type=String.class, parameters={})
+    @Export(name="ipv6AccessType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ipv6AccessType;
 
     /**
@@ -406,7 +406,7 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
      * The range of internal IPv6 addresses that are owned by this subnetwork.
      * 
      */
-    @Export(name="ipv6CidrRange", type=String.class, parameters={})
+    @Export(name="ipv6CidrRange", refs={String.class}, tree="[0]")
     private Output<String> ipv6CidrRange;
 
     /**
@@ -424,7 +424,7 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="logConfig", type=SubnetworkLogConfig.class, parameters={})
+    @Export(name="logConfig", refs={SubnetworkLogConfig.class}, tree="[0]")
     private Output</* @Nullable */ SubnetworkLogConfig> logConfig;
 
     /**
@@ -448,7 +448,7 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
      * except the last character, which cannot be a dash.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -471,7 +471,7 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="network", type=String.class, parameters={})
+    @Export(name="network", refs={String.class}, tree="[0]")
     private Output<String> network;
 
     /**
@@ -489,7 +489,7 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
      * access Google APIs and services by using Private Google Access.
      * 
      */
-    @Export(name="privateIpGoogleAccess", type=Boolean.class, parameters={})
+    @Export(name="privateIpGoogleAccess", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> privateIpGoogleAccess;
 
     /**
@@ -504,7 +504,7 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
      * The private IPv6 google access type for the VMs in this subnet.
      * 
      */
-    @Export(name="privateIpv6GoogleAccess", type=String.class, parameters={})
+    @Export(name="privateIpv6GoogleAccess", refs={String.class}, tree="[0]")
     private Output<String> privateIpv6GoogleAccess;
 
     /**
@@ -519,7 +519,7 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -539,7 +539,7 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
      * If unspecified, the purpose defaults to `PRIVATE_RFC_1918`.
      * 
      */
-    @Export(name="purpose", type=String.class, parameters={})
+    @Export(name="purpose", refs={String.class}, tree="[0]")
     private Output<String> purpose;
 
     /**
@@ -558,7 +558,7 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
      * The GCP region for this subnetwork.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -577,7 +577,7 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
      * Possible values are: `ACTIVE`, `BACKUP`.
      * 
      */
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> role;
 
     /**
@@ -600,7 +600,7 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="secondaryIpRanges", type=List.class, parameters={SubnetworkSecondaryIpRange.class})
+    @Export(name="secondaryIpRanges", refs={List.class,SubnetworkSecondaryIpRange.class}, tree="[0,1]")
     private Output<List<SubnetworkSecondaryIpRange>> secondaryIpRanges;
 
     /**
@@ -618,7 +618,7 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
      * The URI of the created resource.
      * 
      */
-    @Export(name="selfLink", type=String.class, parameters={})
+    @Export(name="selfLink", refs={String.class}, tree="[0]")
     private Output<String> selfLink;
 
     /**
@@ -634,7 +634,7 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
      * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
      * 
      */
-    @Export(name="stackType", type=String.class, parameters={})
+    @Export(name="stackType", refs={String.class}, tree="[0]")
     private Output<String> stackType;
 
     /**
