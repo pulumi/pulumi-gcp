@@ -3587,6 +3587,7 @@
                 "past": [
                     {
                         "name": "gcp:cloudbuildv2/connectionIAMBinding:ConnectionIAMBinding",
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -3605,6 +3606,7 @@
                 "past": [
                     {
                         "name": "gcp:cloudbuildv2/connectionIAMMember:ConnectionIAMMember",
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -3620,6 +3622,7 @@
                 "past": [
                     {
                         "name": "gcp:cloudbuildv2/connectionIAMPolicy:ConnectionIAMPolicy",
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -5196,6 +5199,7 @@
                 "past": [
                     {
                         "name": "gcp:compute/instanceIAMBinding:InstanceIAMBinding",
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -5214,6 +5218,7 @@
                 "past": [
                     {
                         "name": "gcp:compute/instanceIAMMember:InstanceIAMMember",
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -5229,6 +5234,7 @@
                 "past": [
                     {
                         "name": "gcp:compute/instanceIAMPolicy:InstanceIAMPolicy",
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -7243,6 +7249,7 @@
                 "past": [
                     {
                         "name": "gcp:compute/subnetworkIAMBinding:SubnetworkIAMBinding",
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -7261,6 +7268,7 @@
                 "past": [
                     {
                         "name": "gcp:compute/subnetworkIAMMember:SubnetworkIAMMember",
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -7276,6 +7284,7 @@
                 "past": [
                     {
                         "name": "gcp:compute/subnetworkIAMPolicy:SubnetworkIAMPolicy",
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -11902,6 +11911,7 @@
                 "past": [
                     {
                         "name": "gcp:dataproc/clusterIAMBinding:ClusterIAMBinding",
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -11920,6 +11930,7 @@
                 "past": [
                     {
                         "name": "gcp:dataproc/clusterIAMMember:ClusterIAMMember",
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -11935,6 +11946,7 @@
                 "past": [
                     {
                         "name": "gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy",
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -12093,6 +12105,7 @@
                 "past": [
                     {
                         "name": "gcp:dataproc/jobIAMBinding:JobIAMBinding",
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -12111,6 +12124,7 @@
                 "past": [
                     {
                         "name": "gcp:dataproc/jobIAMMember:JobIAMMember",
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -12126,6 +12140,7 @@
                 "past": [
                     {
                         "name": "gcp:dataproc/jobIAMPolicy:JobIAMPolicy",
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -14291,6 +14306,12 @@
                 "past": [
                     {
                         "name": "gcp:folder/iAMBinding:IAMBinding",
+                        "inCodegen": false,
+                        "majorVersion": 6
+                    },
+                    {
+                        "name": "gcp:folder/iAMBinding:IamBinding",
+                        "inCodegen": true,
                         "majorVersion": 6
                     }
                 ],
@@ -14309,6 +14330,12 @@
                 "past": [
                     {
                         "name": "gcp:folder/iAMMember:IAMMember",
+                        "inCodegen": false,
+                        "majorVersion": 6
+                    },
+                    {
+                        "name": "gcp:folder/iAMMember:IamMember",
+                        "inCodegen": true,
                         "majorVersion": 6
                     }
                 ],
@@ -14324,6 +14351,12 @@
                 "past": [
                     {
                         "name": "gcp:folder/iAMPolicy:IAMPolicy",
+                        "inCodegen": false,
+                        "majorVersion": 6
+                    },
+                    {
+                        "name": "gcp:folder/iAMPolicy:IamPolicy",
+                        "inCodegen": true,
                         "majorVersion": 6
                     }
                 ],
@@ -15844,6 +15877,7 @@
                 "past": [
                     {
                         "name": "gcp:iap/tunnelInstanceIAMBinding:TunnelInstanceIAMBinding",
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -15862,6 +15896,7 @@
                 "past": [
                     {
                         "name": "gcp:iap/tunnelInstanceIAMMember:TunnelInstanceIAMMember",
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -15877,6 +15912,7 @@
                 "past": [
                     {
                         "name": "gcp:iap/tunnelInstanceIAMPolicy:TunnelInstanceIAMPolicy",
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -16150,6 +16186,7 @@
                 "past": [
                     {
                         "name": "gcp:kms/cryptoKeyIAMBinding:CryptoKeyIAMBinding",
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -16168,6 +16205,7 @@
                 "past": [
                     {
                         "name": "gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember",
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -16183,6 +16221,7 @@
                 "past": [
                     {
                         "name": "gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy",
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -16216,6 +16255,7 @@
                 "past": [
                     {
                         "name": "gcp:kms/keyRingIAMBinding:KeyRingIAMBinding",
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -16234,6 +16274,7 @@
                 "past": [
                     {
                         "name": "gcp:kms/keyRingIAMMember:KeyRingIAMMember",
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -16249,6 +16290,7 @@
                 "past": [
                     {
                         "name": "gcp:kms/keyRingIAMPolicy:KeyRingIAMPolicy",
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -17902,6 +17944,12 @@
                 "past": [
                     {
                         "name": "gcp:organizations/iAMBinding:IAMBinding",
+                        "inCodegen": false,
+                        "majorVersion": 6
+                    },
+                    {
+                        "name": "gcp:organizations/iAMBinding:IamBinding",
+                        "inCodegen": true,
                         "majorVersion": 6
                     }
                 ],
@@ -17920,6 +17968,12 @@
                 "past": [
                     {
                         "name": "gcp:organizations/iAMCustomRole:IAMCustomRole",
+                        "inCodegen": false,
+                        "majorVersion": 6
+                    },
+                    {
+                        "name": "gcp:organizations/iAMCustomRole:IamCustomRole",
+                        "inCodegen": true,
                         "majorVersion": 6
                     }
                 ],
@@ -17935,6 +17989,12 @@
                 "past": [
                     {
                         "name": "gcp:organizations/iAMMember:IAMMember",
+                        "inCodegen": false,
+                        "majorVersion": 6
+                    },
+                    {
+                        "name": "gcp:organizations/iAMMember:IamMember",
+                        "inCodegen": true,
                         "majorVersion": 6
                     }
                 ],
@@ -17950,6 +18010,12 @@
                 "past": [
                     {
                         "name": "gcp:organizations/iAMPolicy:IAMPolicy",
+                        "inCodegen": false,
+                        "majorVersion": 6
+                    },
+                    {
+                        "name": "gcp:organizations/iAMPolicy:IamPolicy",
+                        "inCodegen": true,
                         "majorVersion": 6
                     }
                 ],
@@ -19484,6 +19550,12 @@
                 "past": [
                     {
                         "name": "gcp:projects/iAMAuditConfig:IAMAuditConfig",
+                        "inCodegen": false,
+                        "majorVersion": 6
+                    },
+                    {
+                        "name": "gcp:projects/iAMAuditConfig:IamAuditConfig",
+                        "inCodegen": true,
                         "majorVersion": 6
                     }
                 ],
@@ -19506,6 +19578,12 @@
                 "past": [
                     {
                         "name": "gcp:projects/iAMBinding:IAMBinding",
+                        "inCodegen": false,
+                        "majorVersion": 6
+                    },
+                    {
+                        "name": "gcp:projects/iAMBinding:IamBinding",
+                        "inCodegen": true,
                         "majorVersion": 6
                     }
                 ],
@@ -19524,6 +19602,12 @@
                 "past": [
                     {
                         "name": "gcp:projects/iAMCustomRole:IAMCustomRole",
+                        "inCodegen": false,
+                        "majorVersion": 6
+                    },
+                    {
+                        "name": "gcp:projects/iAMCustomRole:IamCustomRole",
+                        "inCodegen": true,
                         "majorVersion": 6
                     }
                 ],
@@ -19539,6 +19623,12 @@
                 "past": [
                     {
                         "name": "gcp:projects/iAMMember:IAMMember",
+                        "inCodegen": false,
+                        "majorVersion": 6
+                    },
+                    {
+                        "name": "gcp:projects/iAMMember:IamMember",
+                        "inCodegen": true,
                         "majorVersion": 6
                     }
                 ],
@@ -19554,6 +19644,12 @@
                 "past": [
                     {
                         "name": "gcp:projects/iAMPolicy:IAMPolicy",
+                        "inCodegen": false,
+                        "majorVersion": 6
+                    },
+                    {
+                        "name": "gcp:projects/iAMPolicy:IamPolicy",
+                        "inCodegen": true,
                         "majorVersion": 6
                     }
                 ],
@@ -19699,6 +19795,7 @@
                 "past": [
                     {
                         "name": "gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding",
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -19717,6 +19814,7 @@
                 "past": [
                     {
                         "name": "gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember",
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -19732,6 +19830,7 @@
                 "past": [
                     {
                         "name": "gcp:pubsub/subscriptionIAMPolicy:SubscriptionIAMPolicy",
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -19761,6 +19860,7 @@
                 "past": [
                     {
                         "name": "gcp:pubsub/topicIAMBinding:TopicIAMBinding",
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -19779,6 +19879,7 @@
                 "past": [
                     {
                         "name": "gcp:pubsub/topicIAMMember:TopicIAMMember",
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -19794,6 +19895,7 @@
                 "past": [
                     {
                         "name": "gcp:pubsub/topicIAMPolicy:TopicIAMPolicy",
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -20094,6 +20196,12 @@
                 "past": [
                     {
                         "name": "gcp:serviceAccount/iAMBinding:IAMBinding",
+                        "inCodegen": false,
+                        "majorVersion": 6
+                    },
+                    {
+                        "name": "gcp:serviceAccount/iAMBinding:IamBinding",
+                        "inCodegen": true,
                         "majorVersion": 6
                     }
                 ],
@@ -20112,6 +20220,12 @@
                 "past": [
                     {
                         "name": "gcp:serviceAccount/iAMMember:IAMMember",
+                        "inCodegen": false,
+                        "majorVersion": 6
+                    },
+                    {
+                        "name": "gcp:serviceAccount/iAMMember:IamMember",
+                        "inCodegen": true,
                         "majorVersion": 6
                     }
                 ],
@@ -20127,6 +20241,12 @@
                 "past": [
                     {
                         "name": "gcp:serviceAccount/iAMPolicy:IAMPolicy",
+                        "inCodegen": false,
+                        "majorVersion": 6
+                    },
+                    {
+                        "name": "gcp:serviceAccount/iAMPolicy:IamPolicy",
+                        "inCodegen": true,
                         "majorVersion": 6
                     }
                 ],
@@ -20266,6 +20386,7 @@
                 "past": [
                     {
                         "name": "gcp:spanner/databaseIAMBinding:DatabaseIAMBinding",
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -20284,6 +20405,7 @@
                 "past": [
                     {
                         "name": "gcp:spanner/databaseIAMMember:DatabaseIAMMember",
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -20299,6 +20421,7 @@
                 "past": [
                     {
                         "name": "gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy",
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -20313,6 +20436,7 @@
                 "past": [
                     {
                         "name": "gcp:spanner/instanceIAMBinding:InstanceIAMBinding",
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -20331,6 +20455,7 @@
                 "past": [
                     {
                         "name": "gcp:spanner/instanceIAMMember:InstanceIAMMember",
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -20346,6 +20471,7 @@
                 "past": [
                     {
                         "name": "gcp:spanner/instanceIAMPolicy:InstanceIAMPolicy",
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -20581,6 +20707,7 @@
                 "past": [
                     {
                         "name": "gcp:storage/bucketIAMBinding:BucketIAMBinding",
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -20599,6 +20726,7 @@
                 "past": [
                     {
                         "name": "gcp:storage/bucketIAMMember:BucketIAMMember",
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -20614,6 +20742,7 @@
                 "past": [
                     {
                         "name": "gcp:storage/bucketIAMPolicy:BucketIAMPolicy",
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -24201,6 +24330,7 @@
                 "past": [
                     {
                         "name": "gcp:organizations/getIAMPolicy:getIAMPolicy",
+                        "inCodegen": false,
                         "majorVersion": 6
                     }
                 ],
@@ -25606,9 +25736,9 @@
             "gcp:cloudbuild/trigger:Trigger": 0,
             "gcp:cloudbuild/workerPool:WorkerPool": 0,
             "gcp:cloudbuildv2/connection:Connection": 0,
-            "gcp:cloudbuildv2/connectionIAMBinding:ConnectionIAMBinding": 0,
-            "gcp:cloudbuildv2/connectionIAMMember:ConnectionIAMMember": 0,
-            "gcp:cloudbuildv2/connectionIAMPolicy:ConnectionIAMPolicy": 0,
+            "gcp:cloudbuildv2/connectionIamBinding:ConnectionIamBinding": 0,
+            "gcp:cloudbuildv2/connectionIamMember:ConnectionIamMember": 0,
+            "gcp:cloudbuildv2/connectionIamPolicy:ConnectionIamPolicy": 0,
             "gcp:cloudbuildv2/repository:Repository": 0,
             "gcp:clouddeploy/deliveryPipeline:DeliveryPipeline": 0,
             "gcp:clouddeploy/target:Target": 0,
@@ -25687,9 +25817,9 @@
             "gcp:compute/instanceGroup:InstanceGroup": 0,
             "gcp:compute/instanceGroupManager:InstanceGroupManager": 0,
             "gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort": 0,
-            "gcp:compute/instanceIAMBinding:InstanceIAMBinding": 0,
-            "gcp:compute/instanceIAMMember:InstanceIAMMember": 0,
-            "gcp:compute/instanceIAMPolicy:InstanceIAMPolicy": 0,
+            "gcp:compute/instanceIamBinding:InstanceIamBinding": 0,
+            "gcp:compute/instanceIamMember:InstanceIamMember": 0,
+            "gcp:compute/instanceIamPolicy:InstanceIamPolicy": 0,
             "gcp:compute/instanceTemplate:InstanceTemplate": 0,
             "gcp:compute/interconnectAttachment:InterconnectAttachment": 0,
             "gcp:compute/machineImage:MachineImage": 0,
@@ -25767,9 +25897,9 @@
             "gcp:compute/snapshotIamMember:SnapshotIamMember": 0,
             "gcp:compute/snapshotIamPolicy:SnapshotIamPolicy": 0,
             "gcp:compute/subnetwork:Subnetwork": 0,
-            "gcp:compute/subnetworkIAMBinding:SubnetworkIAMBinding": 0,
-            "gcp:compute/subnetworkIAMMember:SubnetworkIAMMember": 0,
-            "gcp:compute/subnetworkIAMPolicy:SubnetworkIAMPolicy": 0,
+            "gcp:compute/subnetworkIamBinding:SubnetworkIamBinding": 0,
+            "gcp:compute/subnetworkIamMember:SubnetworkIamMember": 0,
+            "gcp:compute/subnetworkIamPolicy:SubnetworkIamPolicy": 0,
             "gcp:compute/targetGrpcProxy:TargetGrpcProxy": 0,
             "gcp:compute/targetHttpProxy:TargetHttpProxy": 0,
             "gcp:compute/targetHttpsProxy:TargetHttpsProxy": 0,
@@ -25848,13 +25978,13 @@
             "gcp:dataproc/autoscalingPolicyIamMember:AutoscalingPolicyIamMember": 0,
             "gcp:dataproc/autoscalingPolicyIamPolicy:AutoscalingPolicyIamPolicy": 0,
             "gcp:dataproc/cluster:Cluster": 0,
-            "gcp:dataproc/clusterIAMBinding:ClusterIAMBinding": 0,
-            "gcp:dataproc/clusterIAMMember:ClusterIAMMember": 0,
-            "gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy": 0,
+            "gcp:dataproc/clusterIamBinding:ClusterIamBinding": 0,
+            "gcp:dataproc/clusterIamMember:ClusterIamMember": 0,
+            "gcp:dataproc/clusterIamPolicy:ClusterIamPolicy": 0,
             "gcp:dataproc/job:Job": 0,
-            "gcp:dataproc/jobIAMBinding:JobIAMBinding": 0,
-            "gcp:dataproc/jobIAMMember:JobIAMMember": 0,
-            "gcp:dataproc/jobIAMPolicy:JobIAMPolicy": 0,
+            "gcp:dataproc/jobIamBinding:JobIamBinding": 0,
+            "gcp:dataproc/jobIamMember:JobIamMember": 0,
+            "gcp:dataproc/jobIamPolicy:JobIamPolicy": 0,
             "gcp:dataproc/metastoreFederation:MetastoreFederation": 0,
             "gcp:dataproc/metastoreFederationIamBinding:MetastoreFederationIamBinding": 0,
             "gcp:dataproc/metastoreFederationIamMember:MetastoreFederationIamMember": 0,
@@ -25926,10 +26056,13 @@
             "gcp:firestore/field:Field": 0,
             "gcp:firestore/index:Index": 0,
             "gcp:folder/accessApprovalSettings:AccessApprovalSettings": 0,
-            "gcp:folder/iAMBinding:IAMBinding": 0,
-            "gcp:folder/iAMMember:IAMMember": 0,
-            "gcp:folder/iAMPolicy:IAMPolicy": 0,
+            "gcp:folder/iAMBinding:IamBinding": 0,
+            "gcp:folder/iAMMember:IamMember": 0,
+            "gcp:folder/iAMPolicy:IamPolicy": 0,
             "gcp:folder/iamAuditConfig:IamAuditConfig": 0,
+            "gcp:folder/iamBinding:IamBinding": 0,
+            "gcp:folder/iamMember:IamMember": 0,
+            "gcp:folder/iamPolicy:IamPolicy": 0,
             "gcp:folder/organizationPolicy:OrganizationPolicy": 0,
             "gcp:gameservices/gameServerCluster:GameServerCluster": 0,
             "gcp:gameservices/gameServerConfig:GameServerConfig": 0,
@@ -25999,9 +26132,9 @@
             "gcp:iap/tunnelIamBinding:TunnelIamBinding": 0,
             "gcp:iap/tunnelIamMember:TunnelIamMember": 0,
             "gcp:iap/tunnelIamPolicy:TunnelIamPolicy": 0,
-            "gcp:iap/tunnelInstanceIAMBinding:TunnelInstanceIAMBinding": 0,
-            "gcp:iap/tunnelInstanceIAMMember:TunnelInstanceIAMMember": 0,
-            "gcp:iap/tunnelInstanceIAMPolicy:TunnelInstanceIAMPolicy": 0,
+            "gcp:iap/tunnelInstanceIamBinding:TunnelInstanceIamBinding": 0,
+            "gcp:iap/tunnelInstanceIamMember:TunnelInstanceIamMember": 0,
+            "gcp:iap/tunnelInstanceIamPolicy:TunnelInstanceIamPolicy": 0,
             "gcp:iap/webBackendServiceIamBinding:WebBackendServiceIamBinding": 0,
             "gcp:iap/webBackendServiceIamMember:WebBackendServiceIamMember": 0,
             "gcp:iap/webBackendServiceIamPolicy:WebBackendServiceIamPolicy": 0,
@@ -26032,14 +26165,14 @@
             "gcp:iot/registryIamMember:RegistryIamMember": 0,
             "gcp:iot/registryIamPolicy:RegistryIamPolicy": 0,
             "gcp:kms/cryptoKey:CryptoKey": 0,
-            "gcp:kms/cryptoKeyIAMBinding:CryptoKeyIAMBinding": 0,
-            "gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember": 0,
-            "gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy": 0,
+            "gcp:kms/cryptoKeyIamBinding:CryptoKeyIamBinding": 0,
+            "gcp:kms/cryptoKeyIamMember:CryptoKeyIamMember": 0,
+            "gcp:kms/cryptoKeyIamPolicy:CryptoKeyIamPolicy": 0,
             "gcp:kms/cryptoKeyVersion:CryptoKeyVersion": 0,
             "gcp:kms/keyRing:KeyRing": 0,
-            "gcp:kms/keyRingIAMBinding:KeyRingIAMBinding": 0,
-            "gcp:kms/keyRingIAMMember:KeyRingIAMMember": 0,
-            "gcp:kms/keyRingIAMPolicy:KeyRingIAMPolicy": 0,
+            "gcp:kms/keyRingIamBinding:KeyRingIamBinding": 0,
+            "gcp:kms/keyRingIamMember:KeyRingIamMember": 0,
+            "gcp:kms/keyRingIamPolicy:KeyRingIamPolicy": 0,
             "gcp:kms/keyRingImportJob:KeyRingImportJob": 0,
             "gcp:kms/registry:Registry": 0,
             "gcp:kms/secretCiphertext:SecretCiphertext": 0,
@@ -26106,11 +26239,15 @@
             "gcp:notebooks/runtimeIamPolicy:RuntimeIamPolicy": 0,
             "gcp:organizations/accessApprovalSettings:AccessApprovalSettings": 0,
             "gcp:organizations/folder:Folder": 0,
-            "gcp:organizations/iAMBinding:IAMBinding": 0,
-            "gcp:organizations/iAMCustomRole:IAMCustomRole": 0,
-            "gcp:organizations/iAMMember:IAMMember": 0,
-            "gcp:organizations/iAMPolicy:IAMPolicy": 0,
+            "gcp:organizations/iAMBinding:IamBinding": 0,
+            "gcp:organizations/iAMCustomRole:IamCustomRole": 0,
+            "gcp:organizations/iAMMember:IamMember": 0,
+            "gcp:organizations/iAMPolicy:IamPolicy": 0,
             "gcp:organizations/iamAuditConfig:IamAuditConfig": 0,
+            "gcp:organizations/iamBinding:IamBinding": 0,
+            "gcp:organizations/iamCustomRole:IamCustomRole": 0,
+            "gcp:organizations/iamMember:IamMember": 0,
+            "gcp:organizations/iamPolicy:IamPolicy": 0,
             "gcp:organizations/policy:Policy": 0,
             "gcp:organizations/project:Project": 0,
             "gcp:orgpolicy/customConstraint:CustomConstraint": 0,
@@ -26122,11 +26259,16 @@
             "gcp:projects/accessApprovalSettings:AccessApprovalSettings": 0,
             "gcp:projects/apiKey:ApiKey": 0,
             "gcp:projects/defaultServiceAccounts:DefaultServiceAccounts": 0,
-            "gcp:projects/iAMAuditConfig:IAMAuditConfig": 0,
-            "gcp:projects/iAMBinding:IAMBinding": 0,
-            "gcp:projects/iAMCustomRole:IAMCustomRole": 0,
-            "gcp:projects/iAMMember:IAMMember": 0,
-            "gcp:projects/iAMPolicy:IAMPolicy": 0,
+            "gcp:projects/iAMAuditConfig:IamAuditConfig": 0,
+            "gcp:projects/iAMBinding:IamBinding": 0,
+            "gcp:projects/iAMCustomRole:IamCustomRole": 0,
+            "gcp:projects/iAMMember:IamMember": 0,
+            "gcp:projects/iAMPolicy:IamPolicy": 0,
+            "gcp:projects/iamAuditConfig:IamAuditConfig": 0,
+            "gcp:projects/iamBinding:IamBinding": 0,
+            "gcp:projects/iamCustomRole:IamCustomRole": 0,
+            "gcp:projects/iamMember:IamMember": 0,
+            "gcp:projects/iamPolicy:IamPolicy": 0,
             "gcp:projects/organizationPolicy:OrganizationPolicy": 0,
             "gcp:projects/service:Service": 0,
             "gcp:projects/serviceIdentity:ServiceIdentity": 0,
@@ -26136,13 +26278,13 @@
             "gcp:pubsub/liteTopic:LiteTopic": 0,
             "gcp:pubsub/schema:Schema": 0,
             "gcp:pubsub/subscription:Subscription": 0,
-            "gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding": 0,
-            "gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember": 0,
-            "gcp:pubsub/subscriptionIAMPolicy:SubscriptionIAMPolicy": 0,
+            "gcp:pubsub/subscriptionIamBinding:SubscriptionIamBinding": 0,
+            "gcp:pubsub/subscriptionIamMember:SubscriptionIamMember": 0,
+            "gcp:pubsub/subscriptionIamPolicy:SubscriptionIamPolicy": 0,
             "gcp:pubsub/topic:Topic": 0,
-            "gcp:pubsub/topicIAMBinding:TopicIAMBinding": 0,
-            "gcp:pubsub/topicIAMMember:TopicIAMMember": 0,
-            "gcp:pubsub/topicIAMPolicy:TopicIAMPolicy": 0,
+            "gcp:pubsub/topicIamBinding:TopicIamBinding": 0,
+            "gcp:pubsub/topicIamMember:TopicIamMember": 0,
+            "gcp:pubsub/topicIamPolicy:TopicIamPolicy": 0,
             "gcp:recaptcha/enterpriseKey:EnterpriseKey": 0,
             "gcp:redis/cluster:Cluster": 0,
             "gcp:redis/instance:Instance": 0,
@@ -26167,9 +26309,12 @@
             "gcp:securitycenter/sourceIamMember:SourceIamMember": 0,
             "gcp:securitycenter/sourceIamPolicy:SourceIamPolicy": 0,
             "gcp:serviceAccount/account:Account": 0,
-            "gcp:serviceAccount/iAMBinding:IAMBinding": 0,
-            "gcp:serviceAccount/iAMMember:IAMMember": 0,
-            "gcp:serviceAccount/iAMPolicy:IAMPolicy": 0,
+            "gcp:serviceAccount/iAMBinding:IamBinding": 0,
+            "gcp:serviceAccount/iAMMember:IamMember": 0,
+            "gcp:serviceAccount/iAMPolicy:IamPolicy": 0,
+            "gcp:serviceAccount/iamBinding:IamBinding": 0,
+            "gcp:serviceAccount/iamMember:IamMember": 0,
+            "gcp:serviceAccount/iamPolicy:IamPolicy": 0,
             "gcp:serviceAccount/key:Key": 0,
             "gcp:servicedirectory/endpoint:Endpoint": 0,
             "gcp:servicedirectory/namespace:Namespace": 0,
@@ -26188,13 +26333,13 @@
             "gcp:sourcerepo/repositoryIamMember:RepositoryIamMember": 0,
             "gcp:sourcerepo/repositoryIamPolicy:RepositoryIamPolicy": 0,
             "gcp:spanner/database:Database": 0,
-            "gcp:spanner/databaseIAMBinding:DatabaseIAMBinding": 0,
-            "gcp:spanner/databaseIAMMember:DatabaseIAMMember": 0,
-            "gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy": 0,
+            "gcp:spanner/databaseIamBinding:DatabaseIamBinding": 0,
+            "gcp:spanner/databaseIamMember:DatabaseIamMember": 0,
+            "gcp:spanner/databaseIamPolicy:DatabaseIamPolicy": 0,
             "gcp:spanner/instance:Instance": 0,
-            "gcp:spanner/instanceIAMBinding:InstanceIAMBinding": 0,
-            "gcp:spanner/instanceIAMMember:InstanceIAMMember": 0,
-            "gcp:spanner/instanceIAMPolicy:InstanceIAMPolicy": 0,
+            "gcp:spanner/instanceIamBinding:InstanceIamBinding": 0,
+            "gcp:spanner/instanceIamMember:InstanceIamMember": 0,
+            "gcp:spanner/instanceIamPolicy:InstanceIamPolicy": 0,
             "gcp:sql/database:Database": 0,
             "gcp:sql/databaseInstance:DatabaseInstance": 0,
             "gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance": 0,
@@ -26203,9 +26348,9 @@
             "gcp:storage/bucket:Bucket": 0,
             "gcp:storage/bucketACL:BucketACL": 0,
             "gcp:storage/bucketAccessControl:BucketAccessControl": 0,
-            "gcp:storage/bucketIAMBinding:BucketIAMBinding": 0,
-            "gcp:storage/bucketIAMMember:BucketIAMMember": 0,
-            "gcp:storage/bucketIAMPolicy:BucketIAMPolicy": 0,
+            "gcp:storage/bucketIamBinding:BucketIamBinding": 0,
+            "gcp:storage/bucketIamMember:BucketIamMember": 0,
+            "gcp:storage/bucketIamPolicy:BucketIamPolicy": 0,
             "gcp:storage/bucketObject:BucketObject": 0,
             "gcp:storage/defaultObjectACL:DefaultObjectACL": 0,
             "gcp:storage/defaultObjectAccessControl:DefaultObjectAccessControl": 0,
@@ -26443,7 +26588,7 @@
             "gcp:organizations/getClientOpenIdUserInfo:getClientOpenIdUserInfo": 1,
             "gcp:organizations/getFolder:getFolder": 0,
             "gcp:organizations/getFolders:getFolders": 0,
-            "gcp:organizations/getIAMPolicy:getIAMPolicy": 0,
+            "gcp:organizations/getIamPolicy:getIamPolicy": 0,
             "gcp:organizations/getOrganization:getOrganization": 0,
             "gcp:organizations/getProject:getProject": 0,
             "gcp:projects/getIamPolicy:getIamPolicy": 0,
@@ -26661,9 +26806,9 @@
             "gcp:cloudbuild/trigger:Trigger": "google_cloudbuild_trigger",
             "gcp:cloudbuild/workerPool:WorkerPool": "google_cloudbuild_worker_pool",
             "gcp:cloudbuildv2/connection:Connection": "google_cloudbuildv2_connection",
-            "gcp:cloudbuildv2/connectionIAMBinding:ConnectionIAMBinding": "google_cloudbuildv2_connection_iam_binding",
-            "gcp:cloudbuildv2/connectionIAMMember:ConnectionIAMMember": "google_cloudbuildv2_connection_iam_member",
-            "gcp:cloudbuildv2/connectionIAMPolicy:ConnectionIAMPolicy": "google_cloudbuildv2_connection_iam_policy",
+            "gcp:cloudbuildv2/connectionIamBinding:ConnectionIamBinding": "google_cloudbuildv2_connection_iam_binding",
+            "gcp:cloudbuildv2/connectionIamMember:ConnectionIamMember": "google_cloudbuildv2_connection_iam_member",
+            "gcp:cloudbuildv2/connectionIamPolicy:ConnectionIamPolicy": "google_cloudbuildv2_connection_iam_policy",
             "gcp:cloudbuildv2/repository:Repository": "google_cloudbuildv2_repository",
             "gcp:clouddeploy/deliveryPipeline:DeliveryPipeline": "google_clouddeploy_delivery_pipeline",
             "gcp:clouddeploy/target:Target": "google_clouddeploy_target",
@@ -26742,9 +26887,9 @@
             "gcp:compute/instanceGroup:InstanceGroup": "google_compute_instance_group",
             "gcp:compute/instanceGroupManager:InstanceGroupManager": "google_compute_instance_group_manager",
             "gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort": "google_compute_instance_group_named_port",
-            "gcp:compute/instanceIAMBinding:InstanceIAMBinding": "google_compute_instance_iam_binding",
-            "gcp:compute/instanceIAMMember:InstanceIAMMember": "google_compute_instance_iam_member",
-            "gcp:compute/instanceIAMPolicy:InstanceIAMPolicy": "google_compute_instance_iam_policy",
+            "gcp:compute/instanceIamBinding:InstanceIamBinding": "google_compute_instance_iam_binding",
+            "gcp:compute/instanceIamMember:InstanceIamMember": "google_compute_instance_iam_member",
+            "gcp:compute/instanceIamPolicy:InstanceIamPolicy": "google_compute_instance_iam_policy",
             "gcp:compute/instanceTemplate:InstanceTemplate": "google_compute_instance_template",
             "gcp:compute/interconnectAttachment:InterconnectAttachment": "google_compute_interconnect_attachment",
             "gcp:compute/machineImage:MachineImage": "google_compute_machine_image",
@@ -26822,9 +26967,9 @@
             "gcp:compute/snapshotIamMember:SnapshotIamMember": "google_compute_snapshot_iam_member",
             "gcp:compute/snapshotIamPolicy:SnapshotIamPolicy": "google_compute_snapshot_iam_policy",
             "gcp:compute/subnetwork:Subnetwork": "google_compute_subnetwork",
-            "gcp:compute/subnetworkIAMBinding:SubnetworkIAMBinding": "google_compute_subnetwork_iam_binding",
-            "gcp:compute/subnetworkIAMMember:SubnetworkIAMMember": "google_compute_subnetwork_iam_member",
-            "gcp:compute/subnetworkIAMPolicy:SubnetworkIAMPolicy": "google_compute_subnetwork_iam_policy",
+            "gcp:compute/subnetworkIamBinding:SubnetworkIamBinding": "google_compute_subnetwork_iam_binding",
+            "gcp:compute/subnetworkIamMember:SubnetworkIamMember": "google_compute_subnetwork_iam_member",
+            "gcp:compute/subnetworkIamPolicy:SubnetworkIamPolicy": "google_compute_subnetwork_iam_policy",
             "gcp:compute/targetGrpcProxy:TargetGrpcProxy": "google_compute_target_grpc_proxy",
             "gcp:compute/targetHttpProxy:TargetHttpProxy": "google_compute_target_http_proxy",
             "gcp:compute/targetHttpsProxy:TargetHttpsProxy": "google_compute_target_https_proxy",
@@ -26903,13 +27048,13 @@
             "gcp:dataproc/autoscalingPolicyIamMember:AutoscalingPolicyIamMember": "google_dataproc_autoscaling_policy_iam_member",
             "gcp:dataproc/autoscalingPolicyIamPolicy:AutoscalingPolicyIamPolicy": "google_dataproc_autoscaling_policy_iam_policy",
             "gcp:dataproc/cluster:Cluster": "google_dataproc_cluster",
-            "gcp:dataproc/clusterIAMBinding:ClusterIAMBinding": "google_dataproc_cluster_iam_binding",
-            "gcp:dataproc/clusterIAMMember:ClusterIAMMember": "google_dataproc_cluster_iam_member",
-            "gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy": "google_dataproc_cluster_iam_policy",
+            "gcp:dataproc/clusterIamBinding:ClusterIamBinding": "google_dataproc_cluster_iam_binding",
+            "gcp:dataproc/clusterIamMember:ClusterIamMember": "google_dataproc_cluster_iam_member",
+            "gcp:dataproc/clusterIamPolicy:ClusterIamPolicy": "google_dataproc_cluster_iam_policy",
             "gcp:dataproc/job:Job": "google_dataproc_job",
-            "gcp:dataproc/jobIAMBinding:JobIAMBinding": "google_dataproc_job_iam_binding",
-            "gcp:dataproc/jobIAMMember:JobIAMMember": "google_dataproc_job_iam_member",
-            "gcp:dataproc/jobIAMPolicy:JobIAMPolicy": "google_dataproc_job_iam_policy",
+            "gcp:dataproc/jobIamBinding:JobIamBinding": "google_dataproc_job_iam_binding",
+            "gcp:dataproc/jobIamMember:JobIamMember": "google_dataproc_job_iam_member",
+            "gcp:dataproc/jobIamPolicy:JobIamPolicy": "google_dataproc_job_iam_policy",
             "gcp:dataproc/metastoreFederation:MetastoreFederation": "google_dataproc_metastore_federation",
             "gcp:dataproc/metastoreFederationIamBinding:MetastoreFederationIamBinding": "google_dataproc_metastore_federation_iam_binding",
             "gcp:dataproc/metastoreFederationIamMember:MetastoreFederationIamMember": "google_dataproc_metastore_federation_iam_member",
@@ -26981,10 +27126,13 @@
             "gcp:firestore/field:Field": "google_firestore_field",
             "gcp:firestore/index:Index": "google_firestore_index",
             "gcp:folder/accessApprovalSettings:AccessApprovalSettings": "google_folder_access_approval_settings",
-            "gcp:folder/iAMBinding:IAMBinding": "google_folder_iam_binding",
-            "gcp:folder/iAMMember:IAMMember": "google_folder_iam_member",
-            "gcp:folder/iAMPolicy:IAMPolicy": "google_folder_iam_policy",
+            "gcp:folder/iAMBinding:IamBinding": "google_folder_iam_binding_legacy",
+            "gcp:folder/iAMMember:IamMember": "google_folder_iam_member_legacy",
+            "gcp:folder/iAMPolicy:IamPolicy": "google_folder_iam_policy_legacy",
             "gcp:folder/iamAuditConfig:IamAuditConfig": "google_folder_iam_audit_config",
+            "gcp:folder/iamBinding:IamBinding": "google_folder_iam_binding",
+            "gcp:folder/iamMember:IamMember": "google_folder_iam_member",
+            "gcp:folder/iamPolicy:IamPolicy": "google_folder_iam_policy",
             "gcp:folder/organizationPolicy:OrganizationPolicy": "google_folder_organization_policy",
             "gcp:gameservices/gameServerCluster:GameServerCluster": "google_game_services_game_server_cluster",
             "gcp:gameservices/gameServerConfig:GameServerConfig": "google_game_services_game_server_config",
@@ -27054,9 +27202,9 @@
             "gcp:iap/tunnelIamBinding:TunnelIamBinding": "google_iap_tunnel_iam_binding",
             "gcp:iap/tunnelIamMember:TunnelIamMember": "google_iap_tunnel_iam_member",
             "gcp:iap/tunnelIamPolicy:TunnelIamPolicy": "google_iap_tunnel_iam_policy",
-            "gcp:iap/tunnelInstanceIAMBinding:TunnelInstanceIAMBinding": "google_iap_tunnel_instance_iam_binding",
-            "gcp:iap/tunnelInstanceIAMMember:TunnelInstanceIAMMember": "google_iap_tunnel_instance_iam_member",
-            "gcp:iap/tunnelInstanceIAMPolicy:TunnelInstanceIAMPolicy": "google_iap_tunnel_instance_iam_policy",
+            "gcp:iap/tunnelInstanceIamBinding:TunnelInstanceIamBinding": "google_iap_tunnel_instance_iam_binding",
+            "gcp:iap/tunnelInstanceIamMember:TunnelInstanceIamMember": "google_iap_tunnel_instance_iam_member",
+            "gcp:iap/tunnelInstanceIamPolicy:TunnelInstanceIamPolicy": "google_iap_tunnel_instance_iam_policy",
             "gcp:iap/webBackendServiceIamBinding:WebBackendServiceIamBinding": "google_iap_web_backend_service_iam_binding",
             "gcp:iap/webBackendServiceIamMember:WebBackendServiceIamMember": "google_iap_web_backend_service_iam_member",
             "gcp:iap/webBackendServiceIamPolicy:WebBackendServiceIamPolicy": "google_iap_web_backend_service_iam_policy",
@@ -27087,14 +27235,14 @@
             "gcp:iot/registryIamMember:RegistryIamMember": "google_cloudiot_registry_iam_member",
             "gcp:iot/registryIamPolicy:RegistryIamPolicy": "google_cloudiot_registry_iam_policy",
             "gcp:kms/cryptoKey:CryptoKey": "google_kms_crypto_key",
-            "gcp:kms/cryptoKeyIAMBinding:CryptoKeyIAMBinding": "google_kms_crypto_key_iam_binding",
-            "gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember": "google_kms_crypto_key_iam_member",
-            "gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy": "google_kms_crypto_key_iam_policy",
+            "gcp:kms/cryptoKeyIamBinding:CryptoKeyIamBinding": "google_kms_crypto_key_iam_binding",
+            "gcp:kms/cryptoKeyIamMember:CryptoKeyIamMember": "google_kms_crypto_key_iam_member",
+            "gcp:kms/cryptoKeyIamPolicy:CryptoKeyIamPolicy": "google_kms_crypto_key_iam_policy",
             "gcp:kms/cryptoKeyVersion:CryptoKeyVersion": "google_kms_crypto_key_version",
             "gcp:kms/keyRing:KeyRing": "google_kms_key_ring",
-            "gcp:kms/keyRingIAMBinding:KeyRingIAMBinding": "google_kms_key_ring_iam_binding",
-            "gcp:kms/keyRingIAMMember:KeyRingIAMMember": "google_kms_key_ring_iam_member",
-            "gcp:kms/keyRingIAMPolicy:KeyRingIAMPolicy": "google_kms_key_ring_iam_policy",
+            "gcp:kms/keyRingIamBinding:KeyRingIamBinding": "google_kms_key_ring_iam_binding",
+            "gcp:kms/keyRingIamMember:KeyRingIamMember": "google_kms_key_ring_iam_member",
+            "gcp:kms/keyRingIamPolicy:KeyRingIamPolicy": "google_kms_key_ring_iam_policy",
             "gcp:kms/keyRingImportJob:KeyRingImportJob": "google_kms_key_ring_import_job",
             "gcp:kms/registry:Registry": "google_cloudiot_registry_legacy",
             "gcp:kms/secretCiphertext:SecretCiphertext": "google_kms_secret_ciphertext",
@@ -27161,11 +27309,15 @@
             "gcp:notebooks/runtimeIamPolicy:RuntimeIamPolicy": "google_notebooks_runtime_iam_policy",
             "gcp:organizations/accessApprovalSettings:AccessApprovalSettings": "google_organization_access_approval_settings",
             "gcp:organizations/folder:Folder": "google_folder",
-            "gcp:organizations/iAMBinding:IAMBinding": "google_organization_iam_binding",
-            "gcp:organizations/iAMCustomRole:IAMCustomRole": "google_organization_iam_custom_role",
-            "gcp:organizations/iAMMember:IAMMember": "google_organization_iam_member",
-            "gcp:organizations/iAMPolicy:IAMPolicy": "google_organization_iam_policy",
+            "gcp:organizations/iAMBinding:IamBinding": "google_organization_iam_binding_legacy",
+            "gcp:organizations/iAMCustomRole:IamCustomRole": "google_organization_iam_custom_role_legacy",
+            "gcp:organizations/iAMMember:IamMember": "google_organization_iam_member_legacy",
+            "gcp:organizations/iAMPolicy:IamPolicy": "google_organization_iam_policy_legacy",
             "gcp:organizations/iamAuditConfig:IamAuditConfig": "google_organization_iam_audit_config",
+            "gcp:organizations/iamBinding:IamBinding": "google_organization_iam_binding",
+            "gcp:organizations/iamCustomRole:IamCustomRole": "google_organization_iam_custom_role",
+            "gcp:organizations/iamMember:IamMember": "google_organization_iam_member",
+            "gcp:organizations/iamPolicy:IamPolicy": "google_organization_iam_policy",
             "gcp:organizations/policy:Policy": "google_organization_policy",
             "gcp:organizations/project:Project": "google_project",
             "gcp:orgpolicy/customConstraint:CustomConstraint": "google_org_policy_custom_constraint",
@@ -27177,11 +27329,16 @@
             "gcp:projects/accessApprovalSettings:AccessApprovalSettings": "google_project_access_approval_settings",
             "gcp:projects/apiKey:ApiKey": "google_apikeys_key",
             "gcp:projects/defaultServiceAccounts:DefaultServiceAccounts": "google_project_default_service_accounts",
-            "gcp:projects/iAMAuditConfig:IAMAuditConfig": "google_project_iam_audit_config",
-            "gcp:projects/iAMBinding:IAMBinding": "google_project_iam_binding",
-            "gcp:projects/iAMCustomRole:IAMCustomRole": "google_project_iam_custom_role",
-            "gcp:projects/iAMMember:IAMMember": "google_project_iam_member",
-            "gcp:projects/iAMPolicy:IAMPolicy": "google_project_iam_policy",
+            "gcp:projects/iAMAuditConfig:IamAuditConfig": "google_project_iam_audit_config_legacy",
+            "gcp:projects/iAMBinding:IamBinding": "google_project_iam_binding_legacy",
+            "gcp:projects/iAMCustomRole:IamCustomRole": "google_project_iam_custom_role_legacy",
+            "gcp:projects/iAMMember:IamMember": "google_project_iam_member_legacy",
+            "gcp:projects/iAMPolicy:IamPolicy": "google_project_iam_policy_legacy",
+            "gcp:projects/iamAuditConfig:IamAuditConfig": "google_project_iam_audit_config",
+            "gcp:projects/iamBinding:IamBinding": "google_project_iam_binding",
+            "gcp:projects/iamCustomRole:IamCustomRole": "google_project_iam_custom_role",
+            "gcp:projects/iamMember:IamMember": "google_project_iam_member",
+            "gcp:projects/iamPolicy:IamPolicy": "google_project_iam_policy",
             "gcp:projects/organizationPolicy:OrganizationPolicy": "google_project_organization_policy",
             "gcp:projects/service:Service": "google_project_service",
             "gcp:projects/serviceIdentity:ServiceIdentity": "google_project_service_identity",
@@ -27191,13 +27348,13 @@
             "gcp:pubsub/liteTopic:LiteTopic": "google_pubsub_lite_topic",
             "gcp:pubsub/schema:Schema": "google_pubsub_schema",
             "gcp:pubsub/subscription:Subscription": "google_pubsub_subscription",
-            "gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding": "google_pubsub_subscription_iam_binding",
-            "gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember": "google_pubsub_subscription_iam_member",
-            "gcp:pubsub/subscriptionIAMPolicy:SubscriptionIAMPolicy": "google_pubsub_subscription_iam_policy",
+            "gcp:pubsub/subscriptionIamBinding:SubscriptionIamBinding": "google_pubsub_subscription_iam_binding",
+            "gcp:pubsub/subscriptionIamMember:SubscriptionIamMember": "google_pubsub_subscription_iam_member",
+            "gcp:pubsub/subscriptionIamPolicy:SubscriptionIamPolicy": "google_pubsub_subscription_iam_policy",
             "gcp:pubsub/topic:Topic": "google_pubsub_topic",
-            "gcp:pubsub/topicIAMBinding:TopicIAMBinding": "google_pubsub_topic_iam_binding",
-            "gcp:pubsub/topicIAMMember:TopicIAMMember": "google_pubsub_topic_iam_member",
-            "gcp:pubsub/topicIAMPolicy:TopicIAMPolicy": "google_pubsub_topic_iam_policy",
+            "gcp:pubsub/topicIamBinding:TopicIamBinding": "google_pubsub_topic_iam_binding",
+            "gcp:pubsub/topicIamMember:TopicIamMember": "google_pubsub_topic_iam_member",
+            "gcp:pubsub/topicIamPolicy:TopicIamPolicy": "google_pubsub_topic_iam_policy",
             "gcp:recaptcha/enterpriseKey:EnterpriseKey": "google_recaptcha_enterprise_key",
             "gcp:redis/cluster:Cluster": "google_redis_cluster",
             "gcp:redis/instance:Instance": "google_redis_instance",
@@ -27222,9 +27379,12 @@
             "gcp:securitycenter/sourceIamMember:SourceIamMember": "google_scc_source_iam_member",
             "gcp:securitycenter/sourceIamPolicy:SourceIamPolicy": "google_scc_source_iam_policy",
             "gcp:serviceAccount/account:Account": "google_service_account",
-            "gcp:serviceAccount/iAMBinding:IAMBinding": "google_service_account_iam_binding",
-            "gcp:serviceAccount/iAMMember:IAMMember": "google_service_account_iam_member",
-            "gcp:serviceAccount/iAMPolicy:IAMPolicy": "google_service_account_iam_policy",
+            "gcp:serviceAccount/iAMBinding:IamBinding": "google_service_account_iam_binding_legacy",
+            "gcp:serviceAccount/iAMMember:IamMember": "google_service_account_iam_member_legacy",
+            "gcp:serviceAccount/iAMPolicy:IamPolicy": "google_service_account_iam_policy_legacy",
+            "gcp:serviceAccount/iamBinding:IamBinding": "google_service_account_iam_binding",
+            "gcp:serviceAccount/iamMember:IamMember": "google_service_account_iam_member",
+            "gcp:serviceAccount/iamPolicy:IamPolicy": "google_service_account_iam_policy",
             "gcp:serviceAccount/key:Key": "google_service_account_key",
             "gcp:servicedirectory/endpoint:Endpoint": "google_service_directory_endpoint",
             "gcp:servicedirectory/namespace:Namespace": "google_service_directory_namespace",
@@ -27243,13 +27403,13 @@
             "gcp:sourcerepo/repositoryIamMember:RepositoryIamMember": "google_sourcerepo_repository_iam_member",
             "gcp:sourcerepo/repositoryIamPolicy:RepositoryIamPolicy": "google_sourcerepo_repository_iam_policy",
             "gcp:spanner/database:Database": "google_spanner_database",
-            "gcp:spanner/databaseIAMBinding:DatabaseIAMBinding": "google_spanner_database_iam_binding",
-            "gcp:spanner/databaseIAMMember:DatabaseIAMMember": "google_spanner_database_iam_member",
-            "gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy": "google_spanner_database_iam_policy",
+            "gcp:spanner/databaseIamBinding:DatabaseIamBinding": "google_spanner_database_iam_binding",
+            "gcp:spanner/databaseIamMember:DatabaseIamMember": "google_spanner_database_iam_member",
+            "gcp:spanner/databaseIamPolicy:DatabaseIamPolicy": "google_spanner_database_iam_policy",
             "gcp:spanner/instance:Instance": "google_spanner_instance",
-            "gcp:spanner/instanceIAMBinding:InstanceIAMBinding": "google_spanner_instance_iam_binding",
-            "gcp:spanner/instanceIAMMember:InstanceIAMMember": "google_spanner_instance_iam_member",
-            "gcp:spanner/instanceIAMPolicy:InstanceIAMPolicy": "google_spanner_instance_iam_policy",
+            "gcp:spanner/instanceIamBinding:InstanceIamBinding": "google_spanner_instance_iam_binding",
+            "gcp:spanner/instanceIamMember:InstanceIamMember": "google_spanner_instance_iam_member",
+            "gcp:spanner/instanceIamPolicy:InstanceIamPolicy": "google_spanner_instance_iam_policy",
             "gcp:sql/database:Database": "google_sql_database",
             "gcp:sql/databaseInstance:DatabaseInstance": "google_sql_database_instance",
             "gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance": "google_sql_source_representation_instance",
@@ -27258,9 +27418,9 @@
             "gcp:storage/bucket:Bucket": "google_storage_bucket",
             "gcp:storage/bucketACL:BucketACL": "google_storage_bucket_acl",
             "gcp:storage/bucketAccessControl:BucketAccessControl": "google_storage_bucket_access_control",
-            "gcp:storage/bucketIAMBinding:BucketIAMBinding": "google_storage_bucket_iam_binding",
-            "gcp:storage/bucketIAMMember:BucketIAMMember": "google_storage_bucket_iam_member",
-            "gcp:storage/bucketIAMPolicy:BucketIAMPolicy": "google_storage_bucket_iam_policy",
+            "gcp:storage/bucketIamBinding:BucketIamBinding": "google_storage_bucket_iam_binding",
+            "gcp:storage/bucketIamMember:BucketIamMember": "google_storage_bucket_iam_member",
+            "gcp:storage/bucketIamPolicy:BucketIamPolicy": "google_storage_bucket_iam_policy",
             "gcp:storage/bucketObject:BucketObject": "google_storage_bucket_object",
             "gcp:storage/defaultObjectACL:DefaultObjectACL": "google_storage_default_object_acl",
             "gcp:storage/defaultObjectAccessControl:DefaultObjectAccessControl": "google_storage_default_object_access_control",
@@ -27498,7 +27658,7 @@
             "gcp:organizations/getClientOpenIdUserInfo:getClientOpenIdUserInfo": "google_client_openid_userinfo",
             "gcp:organizations/getFolder:getFolder": "google_folder",
             "gcp:organizations/getFolders:getFolders": "google_folders",
-            "gcp:organizations/getIAMPolicy:getIAMPolicy": "google_iam_policy",
+            "gcp:organizations/getIamPolicy:getIamPolicy": "google_iam_policy",
             "gcp:organizations/getOrganization:getOrganization": "google_organization",
             "gcp:organizations/getProject:getProject": "google_project",
             "gcp:projects/getIamPolicy:getIamPolicy": "google_project_iam_policy",
@@ -30434,7 +30594,7 @@
                 "installationStates": "installation_state",
                 "updateTime": "update_time"
             },
-            "gcp:cloudbuildv2/connectionIAMPolicy:ConnectionIAMPolicy": {
+            "gcp:cloudbuildv2/connectionIamPolicy:ConnectionIamPolicy": {
                 "policyData": "policy_data"
             },
             "gcp:cloudbuildv2/getConnectionIamPolicy:getConnectionIamPolicy": {
@@ -34677,13 +34837,13 @@
                 "waitForInstances": "wait_for_instances",
                 "waitForInstancesStatus": "wait_for_instances_status"
             },
-            "gcp:compute/instanceIAMBinding:InstanceIAMBinding": {
+            "gcp:compute/instanceIamBinding:InstanceIamBinding": {
                 "instanceName": "instance_name"
             },
-            "gcp:compute/instanceIAMMember:InstanceIAMMember": {
+            "gcp:compute/instanceIamMember:InstanceIamMember": {
                 "instanceName": "instance_name"
             },
-            "gcp:compute/instanceIAMPolicy:InstanceIAMPolicy": {
+            "gcp:compute/instanceIamPolicy:InstanceIamPolicy": {
                 "instanceName": "instance_name",
                 "policyData": "policy_data"
             },
@@ -35250,7 +35410,7 @@
                 "selfLink": "self_link",
                 "stackType": "stack_type"
             },
-            "gcp:compute/subnetworkIAMPolicy:SubnetworkIAMPolicy": {
+            "gcp:compute/subnetworkIamPolicy:SubnetworkIamPolicy": {
                 "policyData": "policy_data"
             },
             "gcp:compute/targetGrpcProxy:TargetGrpcProxy": {
@@ -38841,7 +39001,7 @@
                 "gracefulDecommissionTimeout": "graceful_decommission_timeout",
                 "virtualClusterConfig": "virtual_cluster_config"
             },
-            "gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy": {
+            "gcp:dataproc/clusterIamPolicy:ClusterIamPolicy": {
                 "policyData": "policy_data"
             },
             "gcp:dataproc/getAutoscalingPolicyIamPolicy:getAutoscalingPolicyIamPolicy": {
@@ -38876,13 +39036,13 @@
                 "sparksqlConfig": "sparksql_config",
                 "statuses": "status"
             },
-            "gcp:dataproc/jobIAMBinding:JobIAMBinding": {
+            "gcp:dataproc/jobIamBinding:JobIamBinding": {
                 "jobId": "job_id"
             },
-            "gcp:dataproc/jobIAMMember:JobIAMMember": {
+            "gcp:dataproc/jobIamMember:JobIamMember": {
                 "jobId": "job_id"
             },
-            "gcp:dataproc/jobIAMPolicy:JobIAMPolicy": {
+            "gcp:dataproc/jobIamPolicy:JobIamPolicy": {
                 "jobId": "job_id",
                 "policyData": "policy_data"
             },
@@ -40118,11 +40278,14 @@
                 "inheritFromParent": "inherit_from_parent",
                 "suggestedValue": "suggested_value"
             },
-            "gcp:folder/iAMPolicy:IAMPolicy": {
+            "gcp:folder/iAMPolicy:IamPolicy": {
                 "policyData": "policy_data"
             },
             "gcp:folder/iamAuditConfig:IamAuditConfig": {
                 "auditLogConfigs": "audit_log_config"
+            },
+            "gcp:folder/iamPolicy:IamPolicy": {
+                "policyData": "policy_data"
             },
             "gcp:folder/organizationPolicy:OrganizationPolicy": {
                 "booleanPolicy": "boolean_policy",
@@ -41087,7 +41250,7 @@
             "gcp:iap/tunnelIamPolicy:TunnelIamPolicy": {
                 "policyData": "policy_data"
             },
-            "gcp:iap/tunnelInstanceIAMPolicy:TunnelInstanceIAMPolicy": {
+            "gcp:iap/tunnelInstanceIamPolicy:TunnelInstanceIamPolicy": {
                 "policyData": "policy_data"
             },
             "gcp:iap/webBackendServiceIamBinding:WebBackendServiceIamBinding": {
@@ -41471,13 +41634,13 @@
                 "skipInitialVersionCreation": "skip_initial_version_creation",
                 "versionTemplate": "version_template"
             },
-            "gcp:kms/cryptoKeyIAMBinding:CryptoKeyIAMBinding": {
+            "gcp:kms/cryptoKeyIamBinding:CryptoKeyIamBinding": {
                 "cryptoKeyId": "crypto_key_id"
             },
-            "gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember": {
+            "gcp:kms/cryptoKeyIamMember:CryptoKeyIamMember": {
                 "cryptoKeyId": "crypto_key_id"
             },
-            "gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy": {
+            "gcp:kms/cryptoKeyIamPolicy:CryptoKeyIamPolicy": {
                 "cryptoKeyId": "crypto_key_id",
                 "policyData": "policy_data"
             },
@@ -41521,13 +41684,13 @@
                 "keyRingId": "key_ring_id",
                 "policyData": "policy_data"
             },
-            "gcp:kms/keyRingIAMBinding:KeyRingIAMBinding": {
+            "gcp:kms/keyRingIamBinding:KeyRingIamBinding": {
                 "keyRingId": "key_ring_id"
             },
-            "gcp:kms/keyRingIAMMember:KeyRingIAMMember": {
+            "gcp:kms/keyRingIamMember:KeyRingIamMember": {
                 "keyRingId": "key_ring_id"
             },
-            "gcp:kms/keyRingIAMPolicy:KeyRingIAMPolicy": {
+            "gcp:kms/keyRingIamPolicy:KeyRingIamPolicy": {
                 "keyRingId": "key_ring_id",
                 "policyData": "policy_data"
             },
@@ -42769,15 +42932,15 @@
                 "displayName": "display_name",
                 "updateTime": "update_time"
             },
-            "gcp:organizations/getIAMPolicy:getIAMPolicy": {
+            "gcp:organizations/getIamPolicy:getIamPolicy": {
                 "auditConfigs": "audit_config",
                 "bindings": "binding",
                 "policyData": "policy_data"
             },
-            "gcp:organizations/getIAMPolicyAuditConfig:getIAMPolicyAuditConfig": {
+            "gcp:organizations/getIamPolicyAuditConfig:getIamPolicyAuditConfig": {
                 "auditLogConfigs": "audit_log_configs"
             },
-            "gcp:organizations/getIAMPolicyAuditConfigAuditLogConfig:getIAMPolicyAuditConfigAuditLogConfig": {
+            "gcp:organizations/getIamPolicyAuditConfigAuditLogConfig:getIamPolicyAuditConfigAuditLogConfig": {
                 "exemptedMembers": "exempted_members",
                 "logType": "log_type"
             },
@@ -42795,23 +42958,37 @@
                 "projectId": "project_id",
                 "skipDelete": "skip_delete"
             },
-            "gcp:organizations/iAMBinding:IAMBinding": {
+            "gcp:organizations/iAMBinding:IamBinding": {
                 "orgId": "org_id"
             },
-            "gcp:organizations/iAMCustomRole:IAMCustomRole": {
+            "gcp:organizations/iAMCustomRole:IamCustomRole": {
                 "orgId": "org_id",
                 "roleId": "role_id"
             },
-            "gcp:organizations/iAMMember:IAMMember": {
+            "gcp:organizations/iAMMember:IamMember": {
                 "orgId": "org_id"
             },
-            "gcp:organizations/iAMPolicy:IAMPolicy": {
+            "gcp:organizations/iAMPolicy:IamPolicy": {
                 "orgId": "org_id",
                 "policyData": "policy_data"
             },
             "gcp:organizations/iamAuditConfig:IamAuditConfig": {
                 "auditLogConfigs": "audit_log_config",
                 "orgId": "org_id"
+            },
+            "gcp:organizations/iamBinding:IamBinding": {
+                "orgId": "org_id"
+            },
+            "gcp:organizations/iamCustomRole:IamCustomRole": {
+                "orgId": "org_id",
+                "roleId": "role_id"
+            },
+            "gcp:organizations/iamMember:IamMember": {
+                "orgId": "org_id"
+            },
+            "gcp:organizations/iamPolicy:IamPolicy": {
+                "orgId": "org_id",
+                "policyData": "policy_data"
             },
             "gcp:organizations/policy:Policy": {
                 "booleanPolicy": "boolean_policy",
@@ -43189,7 +43366,7 @@
             "gcp:projects/ApiKeyRestrictionsServerKeyRestrictions:ApiKeyRestrictionsServerKeyRestrictions": {
                 "allowedIps": "allowed_ips"
             },
-            "gcp:projects/IAMAuditConfigAuditLogConfig:IAMAuditConfigAuditLogConfig": {
+            "gcp:projects/IamAuditConfigAuditLogConfig:IamAuditConfigAuditLogConfig": {
                 "exemptedMembers": "exempted_members",
                 "logType": "log_type"
             },
@@ -43238,13 +43415,22 @@
                 "disableDependentServices": "disable_dependent_services",
                 "disableOnDestroy": "disable_on_destroy"
             },
-            "gcp:projects/iAMAuditConfig:IAMAuditConfig": {
+            "gcp:projects/iAMAuditConfig:IamAuditConfig": {
                 "auditLogConfigs": "audit_log_config"
             },
-            "gcp:projects/iAMCustomRole:IAMCustomRole": {
+            "gcp:projects/iAMCustomRole:IamCustomRole": {
                 "roleId": "role_id"
             },
-            "gcp:projects/iAMPolicy:IAMPolicy": {
+            "gcp:projects/iAMPolicy:IamPolicy": {
+                "policyData": "policy_data"
+            },
+            "gcp:projects/iamAuditConfig:IamAuditConfig": {
+                "auditLogConfigs": "audit_log_config"
+            },
+            "gcp:projects/iamCustomRole:IamCustomRole": {
+                "roleId": "role_id"
+            },
+            "gcp:projects/iamPolicy:IamPolicy": {
                 "policyData": "policy_data"
             },
             "gcp:projects/organizationPolicy:OrganizationPolicy": {
@@ -43396,7 +43582,7 @@
                 "retainAckedMessages": "retain_acked_messages",
                 "retryPolicy": "retry_policy"
             },
-            "gcp:pubsub/subscriptionIAMPolicy:SubscriptionIAMPolicy": {
+            "gcp:pubsub/subscriptionIamPolicy:SubscriptionIamPolicy": {
                 "policyData": "policy_data"
             },
             "gcp:pubsub/topic:Topic": {
@@ -43405,7 +43591,7 @@
                 "messageStoragePolicy": "message_storage_policy",
                 "schemaSettings": "schema_settings"
             },
-            "gcp:pubsub/topicIAMPolicy:TopicIAMPolicy": {
+            "gcp:pubsub/topicIamPolicy:TopicIamPolicy": {
                 "policyData": "policy_data"
             },
             "gcp:recaptcha/EnterpriseKeyAndroidSettings:EnterpriseKeyAndroidSettings": {
@@ -43705,13 +43891,23 @@
                 "policyData": "policy_data",
                 "serviceAccountId": "service_account_id"
             },
-            "gcp:serviceAccount/iAMBinding:IAMBinding": {
+            "gcp:serviceAccount/iAMBinding:IamBinding": {
                 "serviceAccountId": "service_account_id"
             },
-            "gcp:serviceAccount/iAMMember:IAMMember": {
+            "gcp:serviceAccount/iAMMember:IamMember": {
                 "serviceAccountId": "service_account_id"
             },
-            "gcp:serviceAccount/iAMPolicy:IAMPolicy": {
+            "gcp:serviceAccount/iAMPolicy:IamPolicy": {
+                "policyData": "policy_data",
+                "serviceAccountId": "service_account_id"
+            },
+            "gcp:serviceAccount/iamBinding:IamBinding": {
+                "serviceAccountId": "service_account_id"
+            },
+            "gcp:serviceAccount/iamMember:IamMember": {
+                "serviceAccountId": "service_account_id"
+            },
+            "gcp:serviceAccount/iamPolicy:IamPolicy": {
                 "policyData": "policy_data",
                 "serviceAccountId": "service_account_id"
             },
@@ -43790,7 +43986,7 @@
                 "encryptionConfig": "encryption_config",
                 "versionRetentionPeriod": "version_retention_period"
             },
-            "gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy": {
+            "gcp:spanner/databaseIamPolicy:DatabaseIamPolicy": {
                 "policyData": "policy_data"
             },
             "gcp:spanner/getDatabaseIamPolicy:getDatabaseIamPolicy": {
@@ -43811,7 +44007,7 @@
                 "numNodes": "num_nodes",
                 "processingUnits": "processing_units"
             },
-            "gcp:spanner/instanceIAMPolicy:InstanceIAMPolicy": {
+            "gcp:spanner/instanceIamPolicy:InstanceIamPolicy": {
                 "policyData": "policy_data"
             },
             "gcp:sql/DatabaseInstanceClone:DatabaseInstanceClone": {
@@ -44444,7 +44640,7 @@
                 "predefinedAcl": "predefined_acl",
                 "roleEntities": "role_entity"
             },
-            "gcp:storage/bucketIAMPolicy:BucketIAMPolicy": {
+            "gcp:storage/bucketIamPolicy:BucketIamPolicy": {
                 "policyData": "policy_data"
             },
             "gcp:storage/bucketObject:BucketObject": {
