@@ -6,8 +6,7 @@ Subject: [PATCH 1/9] Allow disabling the partner name
 Add options to set or disable partner name.
 ---
  google-beta/provider/provider.go | 28 ++++++++++++++++++++++++++++
- google-beta/utils.go             |  6 +++---
- 2 files changed, 31 insertions(+), 3 deletions(-)
+ 1 file changed, 25 insertions(+), 3 deletions(-)
 
 diff --git a/google-beta/provider/provider.go b/google-beta/provider/provider.go
 index 2b894c5fb..6944d78b0 100644
@@ -55,24 +54,6 @@ index 2b894c5fb..6944d78b0 100644
  	// opt in extension for adding to the User-Agent header
  	if ext := os.Getenv("GOOGLE_TERRAFORM_USERAGENT_EXTENSION"); ext != "" {
  		ua := config.UserAgent
-diff --git a/google-beta/utils.go b/google-beta/utils.go
-index d0f4777ca..dc0f460e4 100644
---- a/google-beta/utils.go
-+++ b/google-beta/utils.go
-@@ -284,10 +284,10 @@ func changeFieldSchemaToForceNew(sch *schema.Schema) {
- 	tpgresource.ChangeFieldSchemaToForceNew(sch)
- }
- 
--// Deprecated: For backward compatibility generateUserAgentString is still working,
--// but all new code should use GenerateUserAgentString in the tpgresource package instead.
- func generateUserAgentString(d tpgresource.TerraformResourceData, currentUserAgent string) (string, error) {
--	return tpgresource.GenerateUserAgentString(d, currentUserAgent)
-+	// we don't want to append the name of the module here as it doesn't make any sense to
-+	// do this with the pulumi provider
-+	return currentUserAgent, nil
- }
- 
- // Deprecated: For backward compatibility snakeToPascalCase is still working,
 -- 
 2.39.2 (Apple Git-143)
 

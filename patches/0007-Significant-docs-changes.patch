@@ -322,7 +322,7 @@ index 248c1f266..a0ad38aee 100644
    (Optional)
 -  Specifies a string that represents a null value in a CSV file. For example, if you specify "\N", BigQuery interprets "\N" as a null value
 -  when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an
-+  Specifies a string that represents a null value in a CSV file. The default value is the empty string. If you set this 
++  Specifies a string that represents a null value in a CSV file. The default value is the empty string. If you set this
 +  property to a custom value, BigQuery throws an error if an
    empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as
    an empty value.
@@ -336,7 +336,7 @@ index f8642bacf..3257bf784 100644
      * [Introduction to Reservations](https://cloud.google.com/bigquery/docs/reservations-intro)
  
 -<div class = "oics-button" style="float: right; margin: 0 0 -15px">
--  <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=bigquery_reservation_basic&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
+-  <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=bigquery_reservation_basic&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
 -    <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
 -  </a>
 -</div>
@@ -702,9 +702,9 @@ index 853eacea5..ec14d5f65 100644
 -  The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project.
 -  If the secret is in another project, you must define an alias.
 -  An alias definition has the form: :projects/{project-id|project-number}/secrets/.
-+  The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. 
-+  If the secret is in another project, you must define an alias. 
-+  An alias definition has the form: :projects/{project-id|project-number}/secrets/. 
++  The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project.
++  If the secret is in another project, you must define an alias.
++  An alias definition has the form: :projects/{project-id|project-number}/secrets/.
    If multiple alias definitions are needed, they must be separated by commas.
    The alias definitions must be set on the run.googleapis.com/secrets annotation.
  
@@ -940,7 +940,7 @@ index aded32b4f..3571dd027 100644
 -[Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data).
  
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
-   <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=disk_basic&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
+   <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=disk_basic&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
 @@ -168,7 +165,7 @@ The following arguments are supported:
    If you specify this field along with `image` or `snapshot`,
    the value must not be less than the size of the image
@@ -954,11 +954,11 @@ index aded32b4f..3571dd027 100644
    the supported values for the caller's project.
  
  * `interface` -
--  (Optional, [Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html))
-+  (Optional)
+-  (Optional, [Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html), Deprecated)
++  (Optional, Deprecated)
    Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
  
- * `source_disk` -
+   ~> **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
 @@ -214,12 +211,12 @@ The following arguments are supported:
    These images can be referred by family name here.
  
@@ -1003,7 +1003,7 @@ index a6e6a6f3e..163b7542f 100644
  </div>
 -## Example Usage - Disk Resource Policy Attachment Basic
 +
-+## Example Usage 
++## Example Usage
 +
 +### Disk Resource Policy Attachment Basic
  
@@ -1515,7 +1515,7 @@ index 971eed9ad..eb456c2f0 100644
  }
  ```
 -<div class = "oics-button" style="float: right; margin: 0 0 -15px">
--  <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=region_backend_service_connection_tracking&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
+-  <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=region_backend_service_connection_tracking&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
 -    <img alt="Open in Cloud Shell" src="//gstatic.com/cloudssh/images/open-btn.svg" style="max-height: 44px; margin: 32px auto; max-width: 100%;">
 -  </a>
 -</div>
@@ -1565,16 +1565,16 @@ index 98f0054c2..eac7e2a85 100644
 +state as plain-text.
  
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
-   <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=region_disk_basic&cloudshell_image=gcr.io%2Fgraphite-cloud-shell-images%2Fterraform%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
+   <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=region_disk_basic&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
 @@ -200,7 +199,7 @@ The following arguments are supported:
    create the disk. Provide this when creating the disk.
  
  * `interface` -
--  (Optional, [Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html))
-+  (Optional)
+-  (Optional, [Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html), Deprecated)
++  (Optional, Deprecated)
    Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
  
- * `source_disk` -
+   ~> **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
 @@ -305,7 +304,7 @@ The following arguments are supported:
    RFC 4648 base64 to either encrypt or decrypt this resource.
  
@@ -2493,11 +2493,11 @@ index 08fccbc5f..c2602add9 100644
  
  
  * `description` -
--  (Optional, [Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html))
-+  (Optional)
+-  (Optional, [Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html), Deprecated)
++  (Optional, Deprecated)
    The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
  
- * `labels` -
+   ~> **Warning:** `description` is deprecated and will be removed in a future major release.
 diff --git a/website/docs/r/google_billing_subaccount.html.markdown b/website/docs/r/google_billing_subaccount.html.markdown
 index c28d3d3ed..91c8f661f 100644
 --- a/website/docs/r/google_billing_subaccount.html.markdown
