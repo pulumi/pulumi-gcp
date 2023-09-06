@@ -108,7 +108,7 @@ import (
 //
 // ## Import
 //
-// # Device can be imported using any of these accepted formats
+// Device can be imported using any of these accepted formats:
 //
 // ```sh
 //

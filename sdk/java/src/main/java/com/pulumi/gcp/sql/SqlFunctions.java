@@ -14,6 +14,8 @@ import com.pulumi.gcp.sql.inputs.GetCaCertsArgs;
 import com.pulumi.gcp.sql.inputs.GetCaCertsPlainArgs;
 import com.pulumi.gcp.sql.inputs.GetDatabaseArgs;
 import com.pulumi.gcp.sql.inputs.GetDatabaseInstanceArgs;
+import com.pulumi.gcp.sql.inputs.GetDatabaseInstanceLatestRecoveryTimeArgs;
+import com.pulumi.gcp.sql.inputs.GetDatabaseInstanceLatestRecoveryTimePlainArgs;
 import com.pulumi.gcp.sql.inputs.GetDatabaseInstancePlainArgs;
 import com.pulumi.gcp.sql.inputs.GetDatabaseInstancesArgs;
 import com.pulumi.gcp.sql.inputs.GetDatabaseInstancesPlainArgs;
@@ -24,6 +26,7 @@ import com.pulumi.gcp.sql.inputs.GetTiersArgs;
 import com.pulumi.gcp.sql.inputs.GetTiersPlainArgs;
 import com.pulumi.gcp.sql.outputs.GetBackupRunResult;
 import com.pulumi.gcp.sql.outputs.GetCaCertsResult;
+import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceLatestRecoveryTimeResult;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceResult;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstancesResult;
 import com.pulumi.gcp.sql.outputs.GetDatabaseResult;
@@ -523,6 +526,170 @@ public final class SqlFunctions {
      */
     public static CompletableFuture<GetDatabaseInstanceResult> getDatabaseInstancePlain(GetDatabaseInstancePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:sql/getDatabaseInstance:getDatabaseInstance", TypeShape.of(GetDatabaseInstanceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get Latest Recovery Time for a given instance. For more information see the
+     * [official documentation](https://cloud.google.com/sql/)
+     * and
+     * [API](https://cloud.google.com/sql/docs/postgres/backup-recovery/pitr#get-the-latest-recovery-time).
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.sql.SqlFunctions;
+     * import com.pulumi.gcp.sql.inputs.GetDatabaseInstanceLatestRecoveryTimeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = SqlFunctions.getDatabaseInstanceLatestRecoveryTime(GetDatabaseInstanceLatestRecoveryTimeArgs.builder()
+     *             .instance(&#34;sample-instance&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;latestRecoveryTime&#34;, default_);
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetDatabaseInstanceLatestRecoveryTimeResult> getDatabaseInstanceLatestRecoveryTime(GetDatabaseInstanceLatestRecoveryTimeArgs args) {
+        return getDatabaseInstanceLatestRecoveryTime(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get Latest Recovery Time for a given instance. For more information see the
+     * [official documentation](https://cloud.google.com/sql/)
+     * and
+     * [API](https://cloud.google.com/sql/docs/postgres/backup-recovery/pitr#get-the-latest-recovery-time).
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.sql.SqlFunctions;
+     * import com.pulumi.gcp.sql.inputs.GetDatabaseInstanceLatestRecoveryTimeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = SqlFunctions.getDatabaseInstanceLatestRecoveryTime(GetDatabaseInstanceLatestRecoveryTimeArgs.builder()
+     *             .instance(&#34;sample-instance&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;latestRecoveryTime&#34;, default_);
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetDatabaseInstanceLatestRecoveryTimeResult> getDatabaseInstanceLatestRecoveryTimePlain(GetDatabaseInstanceLatestRecoveryTimePlainArgs args) {
+        return getDatabaseInstanceLatestRecoveryTimePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get Latest Recovery Time for a given instance. For more information see the
+     * [official documentation](https://cloud.google.com/sql/)
+     * and
+     * [API](https://cloud.google.com/sql/docs/postgres/backup-recovery/pitr#get-the-latest-recovery-time).
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.sql.SqlFunctions;
+     * import com.pulumi.gcp.sql.inputs.GetDatabaseInstanceLatestRecoveryTimeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = SqlFunctions.getDatabaseInstanceLatestRecoveryTime(GetDatabaseInstanceLatestRecoveryTimeArgs.builder()
+     *             .instance(&#34;sample-instance&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;latestRecoveryTime&#34;, default_);
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetDatabaseInstanceLatestRecoveryTimeResult> getDatabaseInstanceLatestRecoveryTime(GetDatabaseInstanceLatestRecoveryTimeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:sql/getDatabaseInstanceLatestRecoveryTime:getDatabaseInstanceLatestRecoveryTime", TypeShape.of(GetDatabaseInstanceLatestRecoveryTimeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get Latest Recovery Time for a given instance. For more information see the
+     * [official documentation](https://cloud.google.com/sql/)
+     * and
+     * [API](https://cloud.google.com/sql/docs/postgres/backup-recovery/pitr#get-the-latest-recovery-time).
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.sql.SqlFunctions;
+     * import com.pulumi.gcp.sql.inputs.GetDatabaseInstanceLatestRecoveryTimeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = SqlFunctions.getDatabaseInstanceLatestRecoveryTime(GetDatabaseInstanceLatestRecoveryTimeArgs.builder()
+     *             .instance(&#34;sample-instance&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;latestRecoveryTime&#34;, default_);
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetDatabaseInstanceLatestRecoveryTimeResult> getDatabaseInstanceLatestRecoveryTimePlain(GetDatabaseInstanceLatestRecoveryTimePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:sql/getDatabaseInstanceLatestRecoveryTime:getDatabaseInstanceLatestRecoveryTime", TypeShape.of(GetDatabaseInstanceLatestRecoveryTimeResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to get information about a list of Cloud SQL instances in a project. You can also apply some filters over this list to get a more filtered list of Cloud SQL instances.

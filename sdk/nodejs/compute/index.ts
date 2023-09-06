@@ -529,6 +529,11 @@ export type Network = import("./network").Network;
 export const Network: typeof import("./network").Network = null as any;
 utilities.lazyLoad(exports, ["Network"], () => require("./network"));
 
+export { NetworkAttachmentArgs, NetworkAttachmentState } from "./networkAttachment";
+export type NetworkAttachment = import("./networkAttachment").NetworkAttachment;
+export const NetworkAttachment: typeof import("./networkAttachment").NetworkAttachment = null as any;
+utilities.lazyLoad(exports, ["NetworkAttachment"], () => require("./networkAttachment"));
+
 export { NetworkEdgeSecurityServiceArgs, NetworkEdgeSecurityServiceState } from "./networkEdgeSecurityService";
 export type NetworkEdgeSecurityService = import("./networkEdgeSecurityService").NetworkEdgeSecurityService;
 export const NetworkEdgeSecurityService: typeof import("./networkEdgeSecurityService").NetworkEdgeSecurityService = null as any;
@@ -1053,6 +1058,8 @@ const _module = {
                 return new MangedSslCertificate(name, <any>undefined, { urn })
             case "gcp:compute/network:Network":
                 return new Network(name, <any>undefined, { urn })
+            case "gcp:compute/networkAttachment:NetworkAttachment":
+                return new NetworkAttachment(name, <any>undefined, { urn })
             case "gcp:compute/networkEdgeSecurityService:NetworkEdgeSecurityService":
                 return new NetworkEdgeSecurityService(name, <any>undefined, { urn })
             case "gcp:compute/networkEndpoint:NetworkEndpoint":
@@ -1275,6 +1282,7 @@ pulumi.runtime.registerResourceModule("gcp", "compute/machineImageIamPolicy", _m
 pulumi.runtime.registerResourceModule("gcp", "compute/managedSslCertificate", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/mangedSslCertificate", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/network", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/networkAttachment", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/networkEdgeSecurityService", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/networkEndpoint", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/networkEndpointGroup", _module)

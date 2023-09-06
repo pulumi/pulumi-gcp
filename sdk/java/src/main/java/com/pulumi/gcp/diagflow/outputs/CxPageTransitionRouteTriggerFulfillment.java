@@ -4,7 +4,9 @@
 package com.pulumi.gcp.diagflow.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.diagflow.outputs.CxPageTransitionRouteTriggerFulfillmentConditionalCase;
 import com.pulumi.gcp.diagflow.outputs.CxPageTransitionRouteTriggerFulfillmentMessage;
+import com.pulumi.gcp.diagflow.outputs.CxPageTransitionRouteTriggerFulfillmentSetParameterAction;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -14,6 +16,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class CxPageTransitionRouteTriggerFulfillment {
+    /**
+     * @return Conditional cases for this fulfillment.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<CxPageTransitionRouteTriggerFulfillmentConditionalCase> conditionalCases;
     /**
      * @return The list of rich message responses to present to the user.
      * Structure is documented below.
@@ -26,6 +34,12 @@ public final class CxPageTransitionRouteTriggerFulfillment {
      */
     private @Nullable Boolean returnPartialResponses;
     /**
+     * @return Set parameter values before executing the webhook.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<CxPageTransitionRouteTriggerFulfillmentSetParameterAction> setParameterActions;
+    /**
      * @return The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
      * 
      */
@@ -37,6 +51,14 @@ public final class CxPageTransitionRouteTriggerFulfillment {
     private @Nullable String webhook;
 
     private CxPageTransitionRouteTriggerFulfillment() {}
+    /**
+     * @return Conditional cases for this fulfillment.
+     * Structure is documented below.
+     * 
+     */
+    public List<CxPageTransitionRouteTriggerFulfillmentConditionalCase> conditionalCases() {
+        return this.conditionalCases == null ? List.of() : this.conditionalCases;
+    }
     /**
      * @return The list of rich message responses to present to the user.
      * Structure is documented below.
@@ -51,6 +73,14 @@ public final class CxPageTransitionRouteTriggerFulfillment {
      */
     public Optional<Boolean> returnPartialResponses() {
         return Optional.ofNullable(this.returnPartialResponses);
+    }
+    /**
+     * @return Set parameter values before executing the webhook.
+     * Structure is documented below.
+     * 
+     */
+    public List<CxPageTransitionRouteTriggerFulfillmentSetParameterAction> setParameterActions() {
+        return this.setParameterActions == null ? List.of() : this.setParameterActions;
     }
     /**
      * @return The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
@@ -76,19 +106,31 @@ public final class CxPageTransitionRouteTriggerFulfillment {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<CxPageTransitionRouteTriggerFulfillmentConditionalCase> conditionalCases;
         private @Nullable List<CxPageTransitionRouteTriggerFulfillmentMessage> messages;
         private @Nullable Boolean returnPartialResponses;
+        private @Nullable List<CxPageTransitionRouteTriggerFulfillmentSetParameterAction> setParameterActions;
         private @Nullable String tag;
         private @Nullable String webhook;
         public Builder() {}
         public Builder(CxPageTransitionRouteTriggerFulfillment defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.conditionalCases = defaults.conditionalCases;
     	      this.messages = defaults.messages;
     	      this.returnPartialResponses = defaults.returnPartialResponses;
+    	      this.setParameterActions = defaults.setParameterActions;
     	      this.tag = defaults.tag;
     	      this.webhook = defaults.webhook;
         }
 
+        @CustomType.Setter
+        public Builder conditionalCases(@Nullable List<CxPageTransitionRouteTriggerFulfillmentConditionalCase> conditionalCases) {
+            this.conditionalCases = conditionalCases;
+            return this;
+        }
+        public Builder conditionalCases(CxPageTransitionRouteTriggerFulfillmentConditionalCase... conditionalCases) {
+            return conditionalCases(List.of(conditionalCases));
+        }
         @CustomType.Setter
         public Builder messages(@Nullable List<CxPageTransitionRouteTriggerFulfillmentMessage> messages) {
             this.messages = messages;
@@ -103,6 +145,14 @@ public final class CxPageTransitionRouteTriggerFulfillment {
             return this;
         }
         @CustomType.Setter
+        public Builder setParameterActions(@Nullable List<CxPageTransitionRouteTriggerFulfillmentSetParameterAction> setParameterActions) {
+            this.setParameterActions = setParameterActions;
+            return this;
+        }
+        public Builder setParameterActions(CxPageTransitionRouteTriggerFulfillmentSetParameterAction... setParameterActions) {
+            return setParameterActions(List.of(setParameterActions));
+        }
+        @CustomType.Setter
         public Builder tag(@Nullable String tag) {
             this.tag = tag;
             return this;
@@ -114,8 +164,10 @@ public final class CxPageTransitionRouteTriggerFulfillment {
         }
         public CxPageTransitionRouteTriggerFulfillment build() {
             final var o = new CxPageTransitionRouteTriggerFulfillment();
+            o.conditionalCases = conditionalCases;
             o.messages = messages;
             o.returnPartialResponses = returnPartialResponses;
+            o.setParameterActions = setParameterActions;
             o.tag = tag;
             o.webhook = webhook;
             return o;

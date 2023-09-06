@@ -155,6 +155,21 @@ public final class TargetInstanceState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * The resource URL for the security policy associated with this target instance.
+     * 
+     */
+    @Import(name="securityPolicy")
+    private @Nullable Output<String> securityPolicy;
+
+    /**
+     * @return The resource URL for the security policy associated with this target instance.
+     * 
+     */
+    public Optional<Output<String>> securityPolicy() {
+        return Optional.ofNullable(this.securityPolicy);
+    }
+
+    /**
      * The URI of the created resource.
      * 
      */
@@ -194,6 +209,7 @@ public final class TargetInstanceState extends com.pulumi.resources.ResourceArgs
         this.natPolicy = $.natPolicy;
         this.network = $.network;
         this.project = $.project;
+        this.securityPolicy = $.securityPolicy;
         this.selfLink = $.selfLink;
         this.zone = $.zone;
     }
@@ -395,6 +411,27 @@ public final class TargetInstanceState extends com.pulumi.resources.ResourceArgs
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param securityPolicy The resource URL for the security policy associated with this target instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityPolicy(@Nullable Output<String> securityPolicy) {
+            $.securityPolicy = securityPolicy;
+            return this;
+        }
+
+        /**
+         * @param securityPolicy The resource URL for the security policy associated with this target instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityPolicy(String securityPolicy) {
+            return securityPolicy(Output.of(securityPolicy));
         }
 
         /**

@@ -254,7 +254,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// User-specified list of prefix groups to advertise in custom
-        /// mode, which can take one of the following options:
+        /// mode, which currently supports the following option:
         /// </summary>
         [Output("advertisedGroups")]
         public Output<ImmutableArray<string>> AdvertisedGroups { get; private set; } = null!;
@@ -454,7 +454,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// User-specified list of prefix groups to advertise in custom
-        /// mode, which can take one of the following options:
+        /// mode, which currently supports the following option:
         /// </summary>
         public InputList<string> AdvertisedGroups
         {
@@ -619,7 +619,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// User-specified list of prefix groups to advertise in custom
-        /// mode, which can take one of the following options:
+        /// mode, which currently supports the following option:
         /// </summary>
         public InputList<string> AdvertisedGroups
         {

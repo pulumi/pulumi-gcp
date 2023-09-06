@@ -436,6 +436,8 @@ class WorkforcePoolProviderOidc(dict):
             suggest = "issuer_uri"
         elif key == "clientSecret":
             suggest = "client_secret"
+        elif key == "jwksJson":
+            suggest = "jwks_json"
         elif key == "webSsoConfig":
             suggest = "web_sso_config"
 
@@ -454,6 +456,7 @@ class WorkforcePoolProviderOidc(dict):
                  client_id: str,
                  issuer_uri: str,
                  client_secret: Optional['outputs.WorkforcePoolProviderOidcClientSecret'] = None,
+                 jwks_json: Optional[str] = None,
                  web_sso_config: Optional['outputs.WorkforcePoolProviderOidcWebSsoConfig'] = None):
         """
         :param str client_id: The client ID. Must match the audience claim of the JWT issued by the identity provider.
@@ -467,6 +470,8 @@ class WorkforcePoolProviderOidc(dict):
         pulumi.set(__self__, "issuer_uri", issuer_uri)
         if client_secret is not None:
             pulumi.set(__self__, "client_secret", client_secret)
+        if jwks_json is not None:
+            pulumi.set(__self__, "jwks_json", jwks_json)
         if web_sso_config is not None:
             pulumi.set(__self__, "web_sso_config", web_sso_config)
 
@@ -494,6 +499,11 @@ class WorkforcePoolProviderOidc(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "client_secret")
+
+    @property
+    @pulumi.getter(name="jwksJson")
+    def jwks_json(self) -> Optional[str]:
+        return pulumi.get(self, "jwks_json")
 
     @property
     @pulumi.getter(name="webSsoConfig")
@@ -586,6 +596,8 @@ class WorkforcePoolProviderOidcWebSsoConfig(dict):
             suggest = "assertion_claims_behavior"
         elif key == "responseType":
             suggest = "response_type"
+        elif key == "additionalScopes":
+            suggest = "additional_scopes"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in WorkforcePoolProviderOidcWebSsoConfig. Access the value via the '{suggest}' property getter instead.")
@@ -600,7 +612,8 @@ class WorkforcePoolProviderOidcWebSsoConfig(dict):
 
     def __init__(__self__, *,
                  assertion_claims_behavior: str,
-                 response_type: str):
+                 response_type: str,
+                 additional_scopes: Optional[Sequence[str]] = None):
         """
         :param str assertion_claims_behavior: The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
                * MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS: Merge the UserInfo Endpoint Claims with ID Token Claims, preferring UserInfo Claim Values for the same Claim Name. This option is available only for the Authorization Code Flow.
@@ -611,9 +624,13 @@ class WorkforcePoolProviderOidcWebSsoConfig(dict):
                * CODE: The `response_type=code` selection uses the Authorization Code Flow for web sign-in. Requires a configured client secret.
                * ID_TOKEN: The `response_type=id_token` selection uses the Implicit Flow for web sign-in.
                Possible values are: `CODE`, `ID_TOKEN`.
+        :param Sequence[str] additional_scopes: Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested.
+               Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be configured.
         """
         pulumi.set(__self__, "assertion_claims_behavior", assertion_claims_behavior)
         pulumi.set(__self__, "response_type", response_type)
+        if additional_scopes is not None:
+            pulumi.set(__self__, "additional_scopes", additional_scopes)
 
     @property
     @pulumi.getter(name="assertionClaimsBehavior")
@@ -637,6 +654,15 @@ class WorkforcePoolProviderOidcWebSsoConfig(dict):
         Possible values are: `CODE`, `ID_TOKEN`.
         """
         return pulumi.get(self, "response_type")
+
+    @property
+    @pulumi.getter(name="additionalScopes")
+    def additional_scopes(self) -> Optional[Sequence[str]]:
+        """
+        Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested.
+        Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be configured.
+        """
+        return pulumi.get(self, "additional_scopes")
 
 
 @pulumi.output_type

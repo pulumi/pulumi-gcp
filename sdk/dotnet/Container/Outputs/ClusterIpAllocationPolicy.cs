@@ -14,6 +14,12 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterIpAllocationPolicy
     {
         /// <summary>
+        /// The configuration for additional pod secondary ranges at
+        /// the cluster level. Used for Autopilot clusters and Standard clusters with which control of the
+        /// secondary Pod IP address assignment to node pools isn't needed. Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ClusterIpAllocationPolicyAdditionalPodRangesConfig? AdditionalPodRangesConfig;
+        /// <summary>
         /// The IP address range for the cluster pod IPs.
         /// Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
         /// to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14)
@@ -52,6 +58,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
         [OutputConstructor]
         private ClusterIpAllocationPolicy(
+            Outputs.ClusterIpAllocationPolicyAdditionalPodRangesConfig? additionalPodRangesConfig,
+
             string? clusterIpv4CidrBlock,
 
             string? clusterSecondaryRangeName,
@@ -64,6 +72,7 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string? stackType)
         {
+            AdditionalPodRangesConfig = additionalPodRangesConfig;
             ClusterIpv4CidrBlock = clusterIpv4CidrBlock;
             ClusterSecondaryRangeName = clusterSecondaryRangeName;
             PodCidrOverprovisionConfig = podCidrOverprovisionConfig;

@@ -812,7 +812,7 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// (Deprecated)
         /// Required. Expected to be in leaf-to-root order according to RFC 5246.
         /// </summary>
-        [Obsolete(@"Deprecated in favor of `pem_certificate_chain`.")]
+        [Obsolete(@"`pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead.")]
         public InputList<string> PemCertificates
         {
             get => _pemCertificates ?? (_pemCertificates = new InputList<string>());

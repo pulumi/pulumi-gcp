@@ -118,7 +118,7 @@ class IngressPolicy(pulumi.CustomResource):
 
         ## Import
 
-        IngressPolicy can be imported using any of these accepted formats
+        IngressPolicy can be imported using any of these accepted formats:
 
         ```sh
          $ pulumi import gcp:accesscontextmanager/ingressPolicy:IngressPolicy default {{ingress_policy_name}}/{{resource}}
@@ -147,7 +147,7 @@ class IngressPolicy(pulumi.CustomResource):
 
         ## Import
 
-        IngressPolicy can be imported using any of these accepted formats
+        IngressPolicy can be imported using any of these accepted formats:
 
         ```sh
          $ pulumi import gcp:accesscontextmanager/ingressPolicy:IngressPolicy default {{ingress_policy_name}}/{{resource}}

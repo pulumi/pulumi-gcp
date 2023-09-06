@@ -66,10 +66,12 @@ type LookupRepositoryArgs struct {
 
 // A collection of values returned by getRepository.
 type LookupRepositoryResult struct {
-	CreateTime    string                      `pulumi:"createTime"`
-	Description   string                      `pulumi:"description"`
-	DockerConfigs []GetRepositoryDockerConfig `pulumi:"dockerConfigs"`
-	Format        string                      `pulumi:"format"`
+	CleanupPolicies     []GetRepositoryCleanupPolicy `pulumi:"cleanupPolicies"`
+	CleanupPolicyDryRun bool                         `pulumi:"cleanupPolicyDryRun"`
+	CreateTime          string                       `pulumi:"createTime"`
+	Description         string                       `pulumi:"description"`
+	DockerConfigs       []GetRepositoryDockerConfig  `pulumi:"dockerConfigs"`
+	Format              string                       `pulumi:"format"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                       string                                 `pulumi:"id"`
 	KmsKeyName               string                                 `pulumi:"kmsKeyName"`
@@ -128,6 +130,14 @@ func (o LookupRepositoryResultOutput) ToLookupRepositoryResultOutput() LookupRep
 
 func (o LookupRepositoryResultOutput) ToLookupRepositoryResultOutputWithContext(ctx context.Context) LookupRepositoryResultOutput {
 	return o
+}
+
+func (o LookupRepositoryResultOutput) CleanupPolicies() GetRepositoryCleanupPolicyArrayOutput {
+	return o.ApplyT(func(v LookupRepositoryResult) []GetRepositoryCleanupPolicy { return v.CleanupPolicies }).(GetRepositoryCleanupPolicyArrayOutput)
+}
+
+func (o LookupRepositoryResultOutput) CleanupPolicyDryRun() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupRepositoryResult) bool { return v.CleanupPolicyDryRun }).(pulumi.BoolOutput)
 }
 
 func (o LookupRepositoryResultOutput) CreateTime() pulumi.StringOutput {

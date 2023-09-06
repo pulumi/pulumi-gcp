@@ -209,6 +209,12 @@ namespace Pulumi.Gcp.Sql
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
+        /// The dns name of the instance.
+        /// </summary>
+        [Output("dnsName")]
+        public Output<string> DnsName { get; private set; } = null!;
+
+        /// <summary>
         /// The full path to the encryption key used for the CMEK disk encryption.  Setting
         /// up disk encryption currently requires manual steps outside of this provider.
         /// The provided key must be in the same region as the SQL instance.  In order
@@ -271,6 +277,12 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// The link to service attachment of PSC instance.
+        /// </summary>
+        [Output("pscServiceAttachmentLink")]
+        public Output<string> PscServiceAttachmentLink { get; private set; } = null!;
 
         /// <summary>
         /// The first public (`PRIMARY`) IPv4 address assigned.
@@ -565,6 +577,12 @@ namespace Pulumi.Gcp.Sql
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
+        /// The dns name of the instance.
+        /// </summary>
+        [Input("dnsName")]
+        public Input<string>? DnsName { get; set; }
+
+        /// <summary>
         /// The full path to the encryption key used for the CMEK disk encryption.  Setting
         /// up disk encryption currently requires manual steps outside of this provider.
         /// The provided key must be in the same region as the SQL instance.  In order
@@ -632,6 +650,12 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The link to service attachment of PSC instance.
+        /// </summary>
+        [Input("pscServiceAttachmentLink")]
+        public Input<string>? PscServiceAttachmentLink { get; set; }
 
         /// <summary>
         /// The first public (`PRIMARY`) IPv4 address assigned.

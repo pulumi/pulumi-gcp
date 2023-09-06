@@ -79,6 +79,70 @@ import * as utilities from "../utilities";
  * });
  * const project = gcp.organizations.getProject({});
  * ```
+ * ### Alloydb Cluster Restore
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const default = gcp.compute.getNetwork({
+ *     name: "alloydb-network",
+ * });
+ * const sourceCluster = new gcp.alloydb.Cluster("sourceCluster", {
+ *     clusterId: "alloydb-source-cluster",
+ *     location: "us-central1",
+ *     network: _default.then(_default => _default.id),
+ *     initialUser: {
+ *         password: "alloydb-source-cluster",
+ *     },
+ * });
+ * const privateIpAlloc = new gcp.compute.GlobalAddress("privateIpAlloc", {
+ *     addressType: "INTERNAL",
+ *     purpose: "VPC_PEERING",
+ *     prefixLength: 16,
+ *     network: _default.then(_default => _default.id),
+ * });
+ * const vpcConnection = new gcp.servicenetworking.Connection("vpcConnection", {
+ *     network: _default.then(_default => _default.id),
+ *     service: "servicenetworking.googleapis.com",
+ *     reservedPeeringRanges: [privateIpAlloc.name],
+ * });
+ * const sourceInstance = new gcp.alloydb.Instance("sourceInstance", {
+ *     cluster: sourceCluster.name,
+ *     instanceId: "alloydb-instance",
+ *     instanceType: "PRIMARY",
+ *     machineConfig: {
+ *         cpuCount: 2,
+ *     },
+ * }, {
+ *     dependsOn: [vpcConnection],
+ * });
+ * const sourceBackup = new gcp.alloydb.Backup("sourceBackup", {
+ *     backupId: "alloydb-backup",
+ *     location: "us-central1",
+ *     clusterName: sourceCluster.name,
+ * }, {
+ *     dependsOn: [sourceInstance],
+ * });
+ * const restoredFromBackup = new gcp.alloydb.Cluster("restoredFromBackup", {
+ *     clusterId: "alloydb-backup-restored",
+ *     location: "us-central1",
+ *     network: _default.then(_default => _default.id),
+ *     restoreBackupSource: {
+ *         backupName: sourceBackup.name,
+ *     },
+ * });
+ * const restoredViaPitr = new gcp.alloydb.Cluster("restoredViaPitr", {
+ *     clusterId: "alloydb-pitr-restored",
+ *     location: "us-central1",
+ *     network: _default.then(_default => _default.id),
+ *     restoreContinuousBackupSource: {
+ *         cluster: sourceCluster.name,
+ *         pointInTime: "2023-08-03T19:19:00.094Z",
+ *     },
+ * });
+ * const project = gcp.organizations.getProject({});
+ * ```
  *
  * ## Import
  *
@@ -208,6 +272,16 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
+     * Structure is documented below.
+     */
+    public readonly restoreBackupSource!: pulumi.Output<outputs.alloydb.ClusterRestoreBackupSource | undefined>;
+    /**
+     * The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
+     * Structure is documented below.
+     */
+    public readonly restoreContinuousBackupSource!: pulumi.Output<outputs.alloydb.ClusterRestoreContinuousBackupSource | undefined>;
+    /**
      * The system-generated UID of the resource.
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
@@ -241,6 +315,8 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["network"] = state ? state.network : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["restoreBackupSource"] = state ? state.restoreBackupSource : undefined;
+            resourceInputs["restoreContinuousBackupSource"] = state ? state.restoreContinuousBackupSource : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
@@ -263,6 +339,8 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["restoreBackupSource"] = args ? args.restoreBackupSource : undefined;
+            resourceInputs["restoreContinuousBackupSource"] = args ? args.restoreContinuousBackupSource : undefined;
             resourceInputs["backupSources"] = undefined /*out*/;
             resourceInputs["continuousBackupInfos"] = undefined /*out*/;
             resourceInputs["databaseVersion"] = undefined /*out*/;
@@ -360,6 +438,16 @@ export interface ClusterState {
      */
     project?: pulumi.Input<string>;
     /**
+     * The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
+     * Structure is documented below.
+     */
+    restoreBackupSource?: pulumi.Input<inputs.alloydb.ClusterRestoreBackupSource>;
+    /**
+     * The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
+     * Structure is documented below.
+     */
+    restoreContinuousBackupSource?: pulumi.Input<inputs.alloydb.ClusterRestoreContinuousBackupSource>;
+    /**
      * The system-generated UID of the resource.
      */
     uid?: pulumi.Input<string>;
@@ -419,4 +507,14 @@ export interface ClusterArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
+     * Structure is documented below.
+     */
+    restoreBackupSource?: pulumi.Input<inputs.alloydb.ClusterRestoreBackupSource>;
+    /**
+     * The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
+     * Structure is documented below.
+     */
+    restoreContinuousBackupSource?: pulumi.Input<inputs.alloydb.ClusterRestoreContinuousBackupSource>;
 }

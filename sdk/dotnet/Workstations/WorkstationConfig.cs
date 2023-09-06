@@ -137,9 +137,10 @@ namespace Pulumi.Gcp.Workstations
     ///         {
     ///             GceInstance = new Gcp.Workstations.Inputs.WorkstationConfigHostGceInstanceArgs
     ///             {
-    ///                 MachineType = "e2-standard-4",
+    ///                 MachineType = "n1-standard-4",
     ///                 BootDiskSizeGb = 35,
     ///                 DisablePublicIpAddresses = true,
+    ///                 EnableNestedVirtualization = true,
     ///             },
     ///         },
     ///         Container = new Gcp.Workstations.Inputs.WorkstationConfigContainerArgs

@@ -6,6 +6,7 @@ package com.pulumi.gcp.networkconnectivity.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.networkconnectivity.inputs.ServiceConnectionPolicyPscConfigArgs;
+import com.pulumi.gcp.networkconnectivity.inputs.ServiceConnectionPolicyPscConnectionArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -178,16 +179,18 @@ public final class ServiceConnectionPolicyState extends com.pulumi.resources.Res
 
     /**
      * Information about each Private Service Connect connection.
+     * Structure is documented below.
      * 
      */
     @Import(name="pscConnections")
-    private @Nullable Output<List<String>> pscConnections;
+    private @Nullable Output<List<ServiceConnectionPolicyPscConnectionArgs>> pscConnections;
 
     /**
      * @return Information about each Private Service Connect connection.
+     * Structure is documented below.
      * 
      */
-    public Optional<Output<List<String>>> pscConnections() {
+    public Optional<Output<List<ServiceConnectionPolicyPscConnectionArgs>>> pscConnections() {
         return Optional.ofNullable(this.pscConnections);
     }
 
@@ -479,32 +482,35 @@ public final class ServiceConnectionPolicyState extends com.pulumi.resources.Res
 
         /**
          * @param pscConnections Information about each Private Service Connect connection.
+         * Structure is documented below.
          * 
          * @return builder
          * 
          */
-        public Builder pscConnections(@Nullable Output<List<String>> pscConnections) {
+        public Builder pscConnections(@Nullable Output<List<ServiceConnectionPolicyPscConnectionArgs>> pscConnections) {
             $.pscConnections = pscConnections;
             return this;
         }
 
         /**
          * @param pscConnections Information about each Private Service Connect connection.
+         * Structure is documented below.
          * 
          * @return builder
          * 
          */
-        public Builder pscConnections(List<String> pscConnections) {
+        public Builder pscConnections(List<ServiceConnectionPolicyPscConnectionArgs> pscConnections) {
             return pscConnections(Output.of(pscConnections));
         }
 
         /**
          * @param pscConnections Information about each Private Service Connect connection.
+         * Structure is documented below.
          * 
          * @return builder
          * 
          */
-        public Builder pscConnections(String... pscConnections) {
+        public Builder pscConnections(ServiceConnectionPolicyPscConnectionArgs... pscConnections) {
             return pscConnections(List.of(pscConnections));
         }
 

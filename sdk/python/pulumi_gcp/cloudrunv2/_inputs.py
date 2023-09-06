@@ -677,6 +677,8 @@ class JobTemplateTemplateContainerArgs:
                Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
                This field is not supported in Cloud Run Job currently.
                Structure is documented below.
+               
+               > **Warning:** `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
         :param pulumi.Input[str] name: Name of the container specified as a DNS_LABEL.
         :param pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerPortArgs']]] ports: List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
                If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
@@ -687,6 +689,8 @@ class JobTemplateTemplateContainerArgs:
                Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
                This field is not supported in Cloud Run Job currently.
                Structure is documented below.
+               
+               > **Warning:** `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
         :param pulumi.Input[Sequence[pulumi.Input['JobTemplateTemplateContainerVolumeMountArgs']]] volume_mounts: Volume to mount into the container's filesystem.
                Structure is documented below.
         :param pulumi.Input[str] working_dir: Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
@@ -699,8 +703,8 @@ class JobTemplateTemplateContainerArgs:
         if envs is not None:
             pulumi.set(__self__, "envs", envs)
         if liveness_probe is not None:
-            warnings.warn("""Cloud Run Job does not support liveness probe and `liveness_probe` field will be removed in a future major release.""", DeprecationWarning)
-            pulumi.log.warn("""liveness_probe is deprecated: Cloud Run Job does not support liveness probe and `liveness_probe` field will be removed in a future major release.""")
+            warnings.warn("""`liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.""", DeprecationWarning)
+            pulumi.log.warn("""liveness_probe is deprecated: `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.""")
         if liveness_probe is not None:
             pulumi.set(__self__, "liveness_probe", liveness_probe)
         if name is not None:
@@ -710,8 +714,8 @@ class JobTemplateTemplateContainerArgs:
         if resources is not None:
             pulumi.set(__self__, "resources", resources)
         if startup_probe is not None:
-            warnings.warn("""Cloud Run Job does not support startup probe and `startup_probe` field will be removed in a future major release.""", DeprecationWarning)
-            pulumi.log.warn("""startup_probe is deprecated: Cloud Run Job does not support startup probe and `startup_probe` field will be removed in a future major release.""")
+            warnings.warn("""`startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.""", DeprecationWarning)
+            pulumi.log.warn("""startup_probe is deprecated: `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.""")
         if startup_probe is not None:
             pulumi.set(__self__, "startup_probe", startup_probe)
         if volume_mounts is not None:
@@ -776,9 +780,11 @@ class JobTemplateTemplateContainerArgs:
         Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         This field is not supported in Cloud Run Job currently.
         Structure is documented below.
+
+        > **Warning:** `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
         """
-        warnings.warn("""Cloud Run Job does not support liveness probe and `liveness_probe` field will be removed in a future major release.""", DeprecationWarning)
-        pulumi.log.warn("""liveness_probe is deprecated: Cloud Run Job does not support liveness probe and `liveness_probe` field will be removed in a future major release.""")
+        warnings.warn("""`liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.""", DeprecationWarning)
+        pulumi.log.warn("""liveness_probe is deprecated: `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.""")
 
         return pulumi.get(self, "liveness_probe")
 
@@ -833,9 +839,11 @@ class JobTemplateTemplateContainerArgs:
         Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         This field is not supported in Cloud Run Job currently.
         Structure is documented below.
+
+        > **Warning:** `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
         """
-        warnings.warn("""Cloud Run Job does not support startup probe and `startup_probe` field will be removed in a future major release.""", DeprecationWarning)
-        pulumi.log.warn("""startup_probe is deprecated: Cloud Run Job does not support startup probe and `startup_probe` field will be removed in a future major release.""")
+        warnings.warn("""`startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.""", DeprecationWarning)
+        pulumi.log.warn("""startup_probe is deprecated: `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.""")
 
         return pulumi.get(self, "startup_probe")
 
@@ -1699,29 +1707,18 @@ class JobTemplateTemplateVolumeSecretArgs:
 @pulumi.input_type
 class JobTemplateTemplateVolumeSecretItemArgs:
     def __init__(__self__, *,
-                 mode: pulumi.Input[int],
                  path: pulumi.Input[str],
-                 version: pulumi.Input[str]):
+                 version: pulumi.Input[str],
+                 mode: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[int] mode: Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
         :param pulumi.Input[str] path: The relative path of the secret in the container.
         :param pulumi.Input[str] version: The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
+        :param pulumi.Input[int] mode: Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
         """
-        pulumi.set(__self__, "mode", mode)
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "version", version)
-
-    @property
-    @pulumi.getter
-    def mode(self) -> pulumi.Input[int]:
-        """
-        Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
-        """
-        return pulumi.get(self, "mode")
-
-    @mode.setter
-    def mode(self, value: pulumi.Input[int]):
-        pulumi.set(self, "mode", value)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
 
     @property
     @pulumi.getter
@@ -1746,6 +1743,18 @@ class JobTemplateTemplateVolumeSecretItemArgs:
     @version.setter
     def version(self, value: pulumi.Input[str]):
         pulumi.set(self, "version", value)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[int]]:
+        """
+        Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "mode", value)
 
 
 @pulumi.input_type
@@ -2803,6 +2812,8 @@ class ServiceTemplateContainerLivenessProbeArgs:
         :param pulumi.Input['ServiceTemplateContainerLivenessProbeTcpSocketArgs'] tcp_socket: (Optional, Deprecated)
                TCPSocket specifies an action involving a TCP port. This field is not supported in liveness probe currently.
                Structure is documented below.
+               
+               > **Warning:** `tcp_socket` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
         :param pulumi.Input[int] timeout_seconds: Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         """
         if failure_threshold is not None:
@@ -2816,8 +2827,8 @@ class ServiceTemplateContainerLivenessProbeArgs:
         if period_seconds is not None:
             pulumi.set(__self__, "period_seconds", period_seconds)
         if tcp_socket is not None:
-            warnings.warn("""Cloud Run does not support tcp socket in liveness probe and `liveness_probe.tcp_socket` field will be removed in a future major release.""", DeprecationWarning)
-            pulumi.log.warn("""tcp_socket is deprecated: Cloud Run does not support tcp socket in liveness probe and `liveness_probe.tcp_socket` field will be removed in a future major release.""")
+            warnings.warn("""`tcp_socket` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.""", DeprecationWarning)
+            pulumi.log.warn("""tcp_socket is deprecated: `tcp_socket` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.""")
         if tcp_socket is not None:
             pulumi.set(__self__, "tcp_socket", tcp_socket)
         if timeout_seconds is not None:
@@ -2892,9 +2903,11 @@ class ServiceTemplateContainerLivenessProbeArgs:
         (Optional, Deprecated)
         TCPSocket specifies an action involving a TCP port. This field is not supported in liveness probe currently.
         Structure is documented below.
+
+        > **Warning:** `tcp_socket` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
         """
-        warnings.warn("""Cloud Run does not support tcp socket in liveness probe and `liveness_probe.tcp_socket` field will be removed in a future major release.""", DeprecationWarning)
-        pulumi.log.warn("""tcp_socket is deprecated: Cloud Run does not support tcp socket in liveness probe and `liveness_probe.tcp_socket` field will be removed in a future major release.""")
+        warnings.warn("""`tcp_socket` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.""", DeprecationWarning)
+        pulumi.log.warn("""tcp_socket is deprecated: `tcp_socket` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.""")
 
         return pulumi.get(self, "tcp_socket")
 
@@ -3743,30 +3756,19 @@ class ServiceTemplateVolumeSecretArgs:
 @pulumi.input_type
 class ServiceTemplateVolumeSecretItemArgs:
     def __init__(__self__, *,
-                 mode: pulumi.Input[int],
                  path: pulumi.Input[str],
+                 mode: Optional[pulumi.Input[int]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[int] mode: Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
         :param pulumi.Input[str] path: The relative path of the secret in the container.
+        :param pulumi.Input[int] mode: Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
         :param pulumi.Input[str] version: The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
         """
-        pulumi.set(__self__, "mode", mode)
         pulumi.set(__self__, "path", path)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
         if version is not None:
             pulumi.set(__self__, "version", version)
-
-    @property
-    @pulumi.getter
-    def mode(self) -> pulumi.Input[int]:
-        """
-        Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
-        """
-        return pulumi.get(self, "mode")
-
-    @mode.setter
-    def mode(self, value: pulumi.Input[int]):
-        pulumi.set(self, "mode", value)
 
     @property
     @pulumi.getter
@@ -3779,6 +3781,18 @@ class ServiceTemplateVolumeSecretItemArgs:
     @path.setter
     def path(self, value: pulumi.Input[str]):
         pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[int]]:
+        """
+        Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "mode", value)
 
     @property
     @pulumi.getter

@@ -162,18 +162,24 @@ public class Membership extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.authority);
     }
     /**
+     * (Optional, Deprecated)
      * The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
      * 
+     * &gt; **Warning:** `description` is deprecated and will be removed in a future major release.
+     * 
      * @deprecated
-     * This field is unavailable in the GA provider and will be removed from the beta provider in a future release.
+     * `description` is deprecated and will be removed in a future major release.
      * 
      */
-    @Deprecated /* This field is unavailable in the GA provider and will be removed from the beta provider in a future release. */
+    @Deprecated /* `description` is deprecated and will be removed in a future major release. */
     @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
+     * @return (Optional, Deprecated)
+     * The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
+     * 
+     * &gt; **Warning:** `description` is deprecated and will be removed in a future major release.
      * 
      */
     public Output<Optional<String>> description() {

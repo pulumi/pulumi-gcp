@@ -66,7 +66,7 @@ import (
 //
 // ## Import
 //
-// # Agent can be imported using any of these accepted formats
+// Agent can be imported using any of these accepted formats:
 //
 // ```sh
 //

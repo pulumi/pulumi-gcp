@@ -146,9 +146,10 @@ namespace Pulumi.Gcp.NetworkConnectivity
 
         /// <summary>
         /// Information about each Private Service Connect connection.
+        /// Structure is documented below.
         /// </summary>
         [Output("pscConnections")]
-        public Output<ImmutableArray<string>> PscConnections { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ServiceConnectionPolicyPscConnection>> PscConnections { get; private set; } = null!;
 
         /// <summary>
         /// The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass.
@@ -349,14 +350,15 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public Input<Inputs.ServiceConnectionPolicyPscConfigGetArgs>? PscConfig { get; set; }
 
         [Input("pscConnections")]
-        private InputList<string>? _pscConnections;
+        private InputList<Inputs.ServiceConnectionPolicyPscConnectionGetArgs>? _pscConnections;
 
         /// <summary>
         /// Information about each Private Service Connect connection.
+        /// Structure is documented below.
         /// </summary>
-        public InputList<string> PscConnections
+        public InputList<Inputs.ServiceConnectionPolicyPscConnectionGetArgs> PscConnections
         {
-            get => _pscConnections ?? (_pscConnections = new InputList<string>());
+            get => _pscConnections ?? (_pscConnections = new InputList<Inputs.ServiceConnectionPolicyPscConnectionGetArgs>());
             set => _pscConnections = value;
         }
 

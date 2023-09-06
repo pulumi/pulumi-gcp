@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Alloydb.Outputs
     public sealed class ClusterBackupSource
     {
         /// <summary>
-        /// The name of the backup resource.
+        /// The name of the backup that this cluster is restored from.
         /// </summary>
         public readonly string? BackupName;
 

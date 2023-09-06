@@ -21,6 +21,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly string DatabaseVersion;
         public readonly bool DeletionProtection;
+        public readonly string DnsName;
         public readonly string EncryptionKeyName;
         public readonly string FirstIpAddress;
         public readonly string InstanceType;
@@ -33,6 +34,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// The ID of the project in which the resources belong. If it is not provided, the provider project is used.
         /// </summary>
         public readonly string Project;
+        public readonly string PscServiceAttachmentLink;
         public readonly string PublicIpAddress;
         /// <summary>
         /// To filter out the Cloud SQL instances which are located in the specified region.
@@ -58,6 +60,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             bool deletionProtection,
 
+            string dnsName,
+
             string encryptionKeyName,
 
             string firstIpAddress,
@@ -75,6 +79,8 @@ namespace Pulumi.Gcp.Sql.Outputs
             string privateIpAddress,
 
             string project,
+
+            string pscServiceAttachmentLink,
 
             string publicIpAddress,
 
@@ -99,6 +105,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             ConnectionName = connectionName;
             DatabaseVersion = databaseVersion;
             DeletionProtection = deletionProtection;
+            DnsName = dnsName;
             EncryptionKeyName = encryptionKeyName;
             FirstIpAddress = firstIpAddress;
             InstanceType = instanceType;
@@ -108,6 +115,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             Name = name;
             PrivateIpAddress = privateIpAddress;
             Project = project;
+            PscServiceAttachmentLink = pscServiceAttachmentLink;
             PublicIpAddress = publicIpAddress;
             Region = region;
             ReplicaConfigurations = replicaConfigurations;

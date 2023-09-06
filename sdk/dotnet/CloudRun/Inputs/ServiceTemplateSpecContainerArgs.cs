@@ -49,8 +49,10 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         /// take precedence. Values defined by an Env with a duplicate key will take
         /// precedence.
         /// Structure is documented below.
+        /// 
+        /// &gt; **Warning:** `env_from` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
         /// </summary>
-        [Obsolete(@"Not supported by Cloud Run fully managed")]
+        [Obsolete(@"`env_from` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.")]
         public InputList<Inputs.ServiceTemplateSpecContainerEnvFromArgs> EnvFroms
         {
             get => _envFroms ?? (_envFroms = new InputList<Inputs.ServiceTemplateSpecContainerEnvFromArgs>());
@@ -139,6 +141,8 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         /// Container's working directory.
         /// If not specified, the container runtime's default will be used, which
         /// might be configured in the container image.
+        /// 
+        /// &gt; **Warning:** `working_dir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
         /// </summary>
         [Input("workingDir")]
         public Input<string>? WorkingDir { get; set; }

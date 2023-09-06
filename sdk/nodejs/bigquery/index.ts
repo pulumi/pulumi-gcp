@@ -10,6 +10,11 @@ export type AppProfile = import("./appProfile").AppProfile;
 export const AppProfile: typeof import("./appProfile").AppProfile = null as any;
 utilities.lazyLoad(exports, ["AppProfile"], () => require("./appProfile"));
 
+export { BiReservationArgs, BiReservationState } from "./biReservation";
+export type BiReservation = import("./biReservation").BiReservation;
+export const BiReservation: typeof import("./biReservation").BiReservation = null as any;
+utilities.lazyLoad(exports, ["BiReservation"], () => require("./biReservation"));
+
 export { CapacityCommitmentArgs, CapacityCommitmentState } from "./capacityCommitment";
 export type CapacityCommitment = import("./capacityCommitment").CapacityCommitment;
 export const CapacityCommitment: typeof import("./capacityCommitment").CapacityCommitment = null as any;
@@ -132,6 +137,8 @@ const _module = {
         switch (type) {
             case "gcp:bigquery/appProfile:AppProfile":
                 return new AppProfile(name, <any>undefined, { urn })
+            case "gcp:bigquery/biReservation:BiReservation":
+                return new BiReservation(name, <any>undefined, { urn })
             case "gcp:bigquery/capacityCommitment:CapacityCommitment":
                 return new CapacityCommitment(name, <any>undefined, { urn })
             case "gcp:bigquery/connection:Connection":
@@ -176,6 +183,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "bigquery/appProfile", _module)
+pulumi.runtime.registerResourceModule("gcp", "bigquery/biReservation", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigquery/capacityCommitment", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigquery/connection", _module)
 pulumi.runtime.registerResourceModule("gcp", "bigquery/connectionIamBinding", _module)

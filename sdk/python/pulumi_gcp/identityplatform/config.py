@@ -479,7 +479,7 @@ class Config(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="authorizedDomains")
-    def authorized_domains(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def authorized_domains(self) -> pulumi.Output[Sequence[str]]:
         """
         List of domains authorized for OAuth redirects.
         """

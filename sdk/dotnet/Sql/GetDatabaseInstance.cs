@@ -118,6 +118,7 @@ namespace Pulumi.Gcp.Sql
         public readonly string ConnectionName;
         public readonly string DatabaseVersion;
         public readonly bool DeletionProtection;
+        public readonly string DnsName;
         public readonly string EncryptionKeyName;
         public readonly string FirstIpAddress;
         /// <summary>
@@ -131,6 +132,7 @@ namespace Pulumi.Gcp.Sql
         public readonly string Name;
         public readonly string PrivateIpAddress;
         public readonly string? Project;
+        public readonly string PscServiceAttachmentLink;
         public readonly string PublicIpAddress;
         public readonly string Region;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceReplicaConfigurationResult> ReplicaConfigurations;
@@ -153,6 +155,8 @@ namespace Pulumi.Gcp.Sql
 
             bool deletionProtection,
 
+            string dnsName,
+
             string encryptionKeyName,
 
             string firstIpAddress,
@@ -172,6 +176,8 @@ namespace Pulumi.Gcp.Sql
             string privateIpAddress,
 
             string? project,
+
+            string pscServiceAttachmentLink,
 
             string publicIpAddress,
 
@@ -196,6 +202,7 @@ namespace Pulumi.Gcp.Sql
             ConnectionName = connectionName;
             DatabaseVersion = databaseVersion;
             DeletionProtection = deletionProtection;
+            DnsName = dnsName;
             EncryptionKeyName = encryptionKeyName;
             FirstIpAddress = firstIpAddress;
             Id = id;
@@ -206,6 +213,7 @@ namespace Pulumi.Gcp.Sql
             Name = name;
             PrivateIpAddress = privateIpAddress;
             Project = project;
+            PscServiceAttachmentLink = pscServiceAttachmentLink;
             PublicIpAddress = publicIpAddress;
             Region = region;
             ReplicaConfigurations = replicaConfigurations;

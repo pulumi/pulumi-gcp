@@ -16,33 +16,86 @@ __all__ = [
     'CxEnvironmentVersionConfigArgs',
     'CxFlowEventHandlerArgs',
     'CxFlowEventHandlerTriggerFulfillmentArgs',
+    'CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs',
     'CxFlowEventHandlerTriggerFulfillmentMessageArgs',
+    'CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs',
+    'CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs',
+    'CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs',
+    'CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs',
+    'CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs',
     'CxFlowEventHandlerTriggerFulfillmentMessageTextArgs',
+    'CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs',
     'CxFlowNluSettingsArgs',
     'CxFlowTransitionRouteArgs',
     'CxFlowTransitionRouteTriggerFulfillmentArgs',
+    'CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs',
     'CxFlowTransitionRouteTriggerFulfillmentMessageArgs',
+    'CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs',
+    'CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs',
+    'CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs',
+    'CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs',
+    'CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs',
     'CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs',
+    'CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs',
     'CxIntentParameterArgs',
     'CxIntentTrainingPhraseArgs',
     'CxIntentTrainingPhrasePartArgs',
     'CxPageEntryFulfillmentArgs',
+    'CxPageEntryFulfillmentConditionalCaseArgs',
     'CxPageEntryFulfillmentMessageArgs',
+    'CxPageEntryFulfillmentMessageConversationSuccessArgs',
+    'CxPageEntryFulfillmentMessageLiveAgentHandoffArgs',
+    'CxPageEntryFulfillmentMessageOutputAudioTextArgs',
+    'CxPageEntryFulfillmentMessagePlayAudioArgs',
+    'CxPageEntryFulfillmentMessageTelephonyTransferCallArgs',
     'CxPageEntryFulfillmentMessageTextArgs',
+    'CxPageEntryFulfillmentSetParameterActionArgs',
     'CxPageEventHandlerArgs',
     'CxPageEventHandlerTriggerFulfillmentArgs',
+    'CxPageEventHandlerTriggerFulfillmentConditionalCaseArgs',
     'CxPageEventHandlerTriggerFulfillmentMessageArgs',
+    'CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgs',
+    'CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs',
+    'CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs',
+    'CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgs',
+    'CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs',
     'CxPageEventHandlerTriggerFulfillmentMessageTextArgs',
+    'CxPageEventHandlerTriggerFulfillmentSetParameterActionArgs',
     'CxPageFormArgs',
     'CxPageFormParameterArgs',
     'CxPageFormParameterFillBehaviorArgs',
     'CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs',
+    'CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArgs',
     'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs',
+    'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgs',
+    'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgs',
+    'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgs',
+    'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgs',
+    'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgs',
     'CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgs',
+    'CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgs',
+    'CxPageFormParameterFillBehaviorRepromptEventHandlerArgs',
+    'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs',
+    'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArgs',
+    'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs',
+    'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgs',
+    'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs',
+    'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs',
+    'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgs',
+    'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs',
+    'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgs',
+    'CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgs',
     'CxPageTransitionRouteArgs',
     'CxPageTransitionRouteTriggerFulfillmentArgs',
+    'CxPageTransitionRouteTriggerFulfillmentConditionalCaseArgs',
     'CxPageTransitionRouteTriggerFulfillmentMessageArgs',
+    'CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs',
+    'CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs',
+    'CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs',
+    'CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgs',
+    'CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs',
     'CxPageTransitionRouteTriggerFulfillmentMessageTextArgs',
+    'CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs',
     'CxVersionNluSettingArgs',
     'CxWebhookGenericWebServiceArgs',
     'CxWebhookServiceDirectoryArgs',
@@ -272,25 +325,48 @@ class CxFlowEventHandlerArgs:
 @pulumi.input_type
 class CxFlowEventHandlerTriggerFulfillmentArgs:
     def __init__(__self__, *,
+                 conditional_cases: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs']]]] = None,
                  messages: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageArgs']]]] = None,
                  return_partial_responses: Optional[pulumi.Input[bool]] = None,
+                 set_parameter_actions: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs']]]] = None,
                  tag: Optional[pulumi.Input[str]] = None,
                  webhook: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs']]] conditional_cases: Conditional cases for this fulfillment.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageArgs']]] messages: The list of rich message responses to present to the user.
                Structure is documented below.
         :param pulumi.Input[bool] return_partial_responses: Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+        :param pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs']]] set_parameter_actions: Set parameter values before executing the webhook.
+               Structure is documented below.
         :param pulumi.Input[str] tag: The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
         :param pulumi.Input[str] webhook: The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
         """
+        if conditional_cases is not None:
+            pulumi.set(__self__, "conditional_cases", conditional_cases)
         if messages is not None:
             pulumi.set(__self__, "messages", messages)
         if return_partial_responses is not None:
             pulumi.set(__self__, "return_partial_responses", return_partial_responses)
+        if set_parameter_actions is not None:
+            pulumi.set(__self__, "set_parameter_actions", set_parameter_actions)
         if tag is not None:
             pulumi.set(__self__, "tag", tag)
         if webhook is not None:
             pulumi.set(__self__, "webhook", webhook)
+
+    @property
+    @pulumi.getter(name="conditionalCases")
+    def conditional_cases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs']]]]:
+        """
+        Conditional cases for this fulfillment.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conditional_cases")
+
+    @conditional_cases.setter
+    def conditional_cases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs']]]]):
+        pulumi.set(self, "conditional_cases", value)
 
     @property
     @pulumi.getter
@@ -318,6 +394,19 @@ class CxFlowEventHandlerTriggerFulfillmentArgs:
         pulumi.set(self, "return_partial_responses", value)
 
     @property
+    @pulumi.getter(name="setParameterActions")
+    def set_parameter_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs']]]]:
+        """
+        Set parameter values before executing the webhook.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "set_parameter_actions")
+
+    @set_parameter_actions.setter
+    def set_parameter_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs']]]]):
+        pulumi.set(self, "set_parameter_actions", value)
+
+    @property
     @pulumi.getter
     def tag(self) -> Optional[pulumi.Input[str]]:
         """
@@ -343,15 +432,178 @@ class CxFlowEventHandlerTriggerFulfillmentArgs:
 
 
 @pulumi.input_type
+class CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs:
+    def __init__(__self__, *,
+                 cases: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] cases: A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+               See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+        """
+        if cases is not None:
+            pulumi.set(__self__, "cases", cases)
+
+    @property
+    @pulumi.getter
+    def cases(self) -> Optional[pulumi.Input[str]]:
+        """
+        A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+        See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+        """
+        return pulumi.get(self, "cases")
+
+    @cases.setter
+    def cases(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cases", value)
+
+
+@pulumi.input_type
 class CxFlowEventHandlerTriggerFulfillmentMessageArgs:
     def __init__(__self__, *,
+                 channel: Optional[pulumi.Input[str]] = None,
+                 conversation_success: Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs']] = None,
+                 live_agent_handoff: Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs']] = None,
+                 output_audio_text: Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs']] = None,
+                 payload: Optional[pulumi.Input[str]] = None,
+                 play_audio: Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs']] = None,
+                 telephony_transfer_call: Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs']] = None,
                  text: Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageTextArgs']] = None):
         """
+        :param pulumi.Input[str] channel: The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+        :param pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs'] conversation_success: Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+               Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+               You may set this, for example:
+               * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+               * In a webhook response when you determine that you handled the customer issue.
+               Structure is documented below.
+        :param pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs'] live_agent_handoff: Indicates that the conversation should be handed off to a live agent.
+               Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+               You may set this, for example:
+               * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+               * In a webhook response when you determine that the customer issue can only be handled by a human.
+               Structure is documented below.
+        :param pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs'] output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+               Structure is documented below.
+        :param pulumi.Input[str] payload: A custom, platform-specific payload.
+        :param pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs'] play_audio: Specifies an audio clip to be played by the client as part of the response.
+               Structure is documented below.
+        :param pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs'] telephony_transfer_call: Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+               Structure is documented below.
         :param pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageTextArgs'] text: The text response message.
                Structure is documented below.
         """
+        if channel is not None:
+            pulumi.set(__self__, "channel", channel)
+        if conversation_success is not None:
+            pulumi.set(__self__, "conversation_success", conversation_success)
+        if live_agent_handoff is not None:
+            pulumi.set(__self__, "live_agent_handoff", live_agent_handoff)
+        if output_audio_text is not None:
+            pulumi.set(__self__, "output_audio_text", output_audio_text)
+        if payload is not None:
+            pulumi.set(__self__, "payload", payload)
+        if play_audio is not None:
+            pulumi.set(__self__, "play_audio", play_audio)
+        if telephony_transfer_call is not None:
+            pulumi.set(__self__, "telephony_transfer_call", telephony_transfer_call)
         if text is not None:
             pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter
+    def channel(self) -> Optional[pulumi.Input[str]]:
+        """
+        The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+        """
+        return pulumi.get(self, "channel")
+
+    @channel.setter
+    def channel(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "channel", value)
+
+    @property
+    @pulumi.getter(name="conversationSuccess")
+    def conversation_success(self) -> Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs']]:
+        """
+        Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+        Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+        You may set this, for example:
+        * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+        * In a webhook response when you determine that you handled the customer issue.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conversation_success")
+
+    @conversation_success.setter
+    def conversation_success(self, value: Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs']]):
+        pulumi.set(self, "conversation_success", value)
+
+    @property
+    @pulumi.getter(name="liveAgentHandoff")
+    def live_agent_handoff(self) -> Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs']]:
+        """
+        Indicates that the conversation should be handed off to a live agent.
+        Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+        You may set this, for example:
+        * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+        * In a webhook response when you determine that the customer issue can only be handled by a human.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "live_agent_handoff")
+
+    @live_agent_handoff.setter
+    def live_agent_handoff(self, value: Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs']]):
+        pulumi.set(self, "live_agent_handoff", value)
+
+    @property
+    @pulumi.getter(name="outputAudioText")
+    def output_audio_text(self) -> Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs']]:
+        """
+        A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "output_audio_text")
+
+    @output_audio_text.setter
+    def output_audio_text(self, value: Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs']]):
+        pulumi.set(self, "output_audio_text", value)
+
+    @property
+    @pulumi.getter
+    def payload(self) -> Optional[pulumi.Input[str]]:
+        """
+        A custom, platform-specific payload.
+        """
+        return pulumi.get(self, "payload")
+
+    @payload.setter
+    def payload(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payload", value)
+
+    @property
+    @pulumi.getter(name="playAudio")
+    def play_audio(self) -> Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs']]:
+        """
+        Specifies an audio clip to be played by the client as part of the response.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "play_audio")
+
+    @play_audio.setter
+    def play_audio(self, value: Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs']]):
+        pulumi.set(self, "play_audio", value)
+
+    @property
+    @pulumi.getter(name="telephonyTransferCall")
+    def telephony_transfer_call(self) -> Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs']]:
+        """
+        Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "telephony_transfer_call")
+
+    @telephony_transfer_call.setter
+    def telephony_transfer_call(self, value: Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs']]):
+        pulumi.set(self, "telephony_transfer_call", value)
 
     @property
     @pulumi.getter
@@ -365,6 +617,171 @@ class CxFlowEventHandlerTriggerFulfillmentMessageArgs:
     @text.setter
     def text(self, value: Optional[pulumi.Input['CxFlowEventHandlerTriggerFulfillmentMessageTextArgs']]):
         pulumi.set(self, "text", value)
+
+
+@pulumi.input_type
+class CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs:
+    def __init__(__self__, *,
+                 metadata: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] metadata: Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[pulumi.Input[str]]:
+        """
+        Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metadata", value)
+
+
+@pulumi.input_type
+class CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs:
+    def __init__(__self__, *,
+                 metadata: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] metadata: Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[pulumi.Input[str]]:
+        """
+        Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metadata", value)
+
+
+@pulumi.input_type
+class CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs:
+    def __init__(__self__, *,
+                 allow_playback_interruption: Optional[pulumi.Input[bool]] = None,
+                 ssml: Optional[pulumi.Input[str]] = None,
+                 text: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] allow_playback_interruption: (Output)
+               Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        :param pulumi.Input[str] ssml: The SSML text to be synthesized. For more information, see SSML.
+        :param pulumi.Input[str] text: The raw text to be synthesized.
+        """
+        if allow_playback_interruption is not None:
+            pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
+        if ssml is not None:
+            pulumi.set(__self__, "ssml", ssml)
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter(name="allowPlaybackInterruption")
+    def allow_playback_interruption(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Output)
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+        return pulumi.get(self, "allow_playback_interruption")
+
+    @allow_playback_interruption.setter
+    def allow_playback_interruption(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_playback_interruption", value)
+
+    @property
+    @pulumi.getter
+    def ssml(self) -> Optional[pulumi.Input[str]]:
+        """
+        The SSML text to be synthesized. For more information, see SSML.
+        """
+        return pulumi.get(self, "ssml")
+
+    @ssml.setter
+    def ssml(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ssml", value)
+
+    @property
+    @pulumi.getter
+    def text(self) -> Optional[pulumi.Input[str]]:
+        """
+        The raw text to be synthesized.
+        """
+        return pulumi.get(self, "text")
+
+    @text.setter
+    def text(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "text", value)
+
+
+@pulumi.input_type
+class CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs:
+    def __init__(__self__, *,
+                 audio_uri: pulumi.Input[str],
+                 allow_playback_interruption: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] audio_uri: URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+        :param pulumi.Input[bool] allow_playback_interruption: (Output)
+               Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+        pulumi.set(__self__, "audio_uri", audio_uri)
+        if allow_playback_interruption is not None:
+            pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
+
+    @property
+    @pulumi.getter(name="audioUri")
+    def audio_uri(self) -> pulumi.Input[str]:
+        """
+        URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+        """
+        return pulumi.get(self, "audio_uri")
+
+    @audio_uri.setter
+    def audio_uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "audio_uri", value)
+
+    @property
+    @pulumi.getter(name="allowPlaybackInterruption")
+    def allow_playback_interruption(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Output)
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+        return pulumi.get(self, "allow_playback_interruption")
+
+    @allow_playback_interruption.setter
+    def allow_playback_interruption(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_playback_interruption", value)
+
+
+@pulumi.input_type
+class CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs:
+    def __init__(__self__, *,
+                 phone_number: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] phone_number: Transfer the call to a phone number in E.164 format.
+        """
+        pulumi.set(__self__, "phone_number", phone_number)
+
+    @property
+    @pulumi.getter(name="phoneNumber")
+    def phone_number(self) -> pulumi.Input[str]:
+        """
+        Transfer the call to a phone number in E.164 format.
+        """
+        return pulumi.get(self, "phone_number")
+
+    @phone_number.setter
+    def phone_number(self, value: pulumi.Input[str]):
+        pulumi.set(self, "phone_number", value)
 
 
 @pulumi.input_type
@@ -406,6 +823,45 @@ class CxFlowEventHandlerTriggerFulfillmentMessageTextArgs:
     @texts.setter
     def texts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "texts", value)
+
+
+@pulumi.input_type
+class CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs:
+    def __init__(__self__, *,
+                 parameter: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] parameter: Display name of the parameter.
+        :param pulumi.Input[str] value: The new JSON-encoded value of the parameter. A null value clears the parameter.
+        """
+        if parameter is not None:
+            pulumi.set(__self__, "parameter", parameter)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def parameter(self) -> Optional[pulumi.Input[str]]:
+        """
+        Display name of the parameter.
+        """
+        return pulumi.get(self, "parameter")
+
+    @parameter.setter
+    def parameter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parameter", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The new JSON-encoded value of the parameter. A null value clears the parameter.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
 
 
 @pulumi.input_type
@@ -595,25 +1051,48 @@ class CxFlowTransitionRouteArgs:
 @pulumi.input_type
 class CxFlowTransitionRouteTriggerFulfillmentArgs:
     def __init__(__self__, *,
+                 conditional_cases: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs']]]] = None,
                  messages: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageArgs']]]] = None,
                  return_partial_responses: Optional[pulumi.Input[bool]] = None,
+                 set_parameter_actions: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs']]]] = None,
                  tag: Optional[pulumi.Input[str]] = None,
                  webhook: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs']]] conditional_cases: Conditional cases for this fulfillment.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageArgs']]] messages: The list of rich message responses to present to the user.
                Structure is documented below.
         :param pulumi.Input[bool] return_partial_responses: Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+        :param pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs']]] set_parameter_actions: Set parameter values before executing the webhook.
+               Structure is documented below.
         :param pulumi.Input[str] tag: The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
         :param pulumi.Input[str] webhook: The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
         """
+        if conditional_cases is not None:
+            pulumi.set(__self__, "conditional_cases", conditional_cases)
         if messages is not None:
             pulumi.set(__self__, "messages", messages)
         if return_partial_responses is not None:
             pulumi.set(__self__, "return_partial_responses", return_partial_responses)
+        if set_parameter_actions is not None:
+            pulumi.set(__self__, "set_parameter_actions", set_parameter_actions)
         if tag is not None:
             pulumi.set(__self__, "tag", tag)
         if webhook is not None:
             pulumi.set(__self__, "webhook", webhook)
+
+    @property
+    @pulumi.getter(name="conditionalCases")
+    def conditional_cases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs']]]]:
+        """
+        Conditional cases for this fulfillment.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conditional_cases")
+
+    @conditional_cases.setter
+    def conditional_cases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs']]]]):
+        pulumi.set(self, "conditional_cases", value)
 
     @property
     @pulumi.getter
@@ -641,6 +1120,19 @@ class CxFlowTransitionRouteTriggerFulfillmentArgs:
         pulumi.set(self, "return_partial_responses", value)
 
     @property
+    @pulumi.getter(name="setParameterActions")
+    def set_parameter_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs']]]]:
+        """
+        Set parameter values before executing the webhook.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "set_parameter_actions")
+
+    @set_parameter_actions.setter
+    def set_parameter_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs']]]]):
+        pulumi.set(self, "set_parameter_actions", value)
+
+    @property
     @pulumi.getter
     def tag(self) -> Optional[pulumi.Input[str]]:
         """
@@ -666,15 +1158,178 @@ class CxFlowTransitionRouteTriggerFulfillmentArgs:
 
 
 @pulumi.input_type
+class CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs:
+    def __init__(__self__, *,
+                 cases: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] cases: A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+               See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+        """
+        if cases is not None:
+            pulumi.set(__self__, "cases", cases)
+
+    @property
+    @pulumi.getter
+    def cases(self) -> Optional[pulumi.Input[str]]:
+        """
+        A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+        See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+        """
+        return pulumi.get(self, "cases")
+
+    @cases.setter
+    def cases(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cases", value)
+
+
+@pulumi.input_type
 class CxFlowTransitionRouteTriggerFulfillmentMessageArgs:
     def __init__(__self__, *,
+                 channel: Optional[pulumi.Input[str]] = None,
+                 conversation_success: Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs']] = None,
+                 live_agent_handoff: Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs']] = None,
+                 output_audio_text: Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs']] = None,
+                 payload: Optional[pulumi.Input[str]] = None,
+                 play_audio: Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs']] = None,
+                 telephony_transfer_call: Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs']] = None,
                  text: Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs']] = None):
         """
+        :param pulumi.Input[str] channel: The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+        :param pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs'] conversation_success: Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+               Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+               You may set this, for example:
+               * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+               * In a webhook response when you determine that you handled the customer issue.
+               Structure is documented below.
+        :param pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs'] live_agent_handoff: Indicates that the conversation should be handed off to a live agent.
+               Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+               You may set this, for example:
+               * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+               * In a webhook response when you determine that the customer issue can only be handled by a human.
+               Structure is documented below.
+        :param pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs'] output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+               Structure is documented below.
+        :param pulumi.Input[str] payload: A custom, platform-specific payload.
+        :param pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs'] play_audio: Specifies an audio clip to be played by the client as part of the response.
+               Structure is documented below.
+        :param pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs'] telephony_transfer_call: Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+               Structure is documented below.
         :param pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs'] text: The text response message.
                Structure is documented below.
         """
+        if channel is not None:
+            pulumi.set(__self__, "channel", channel)
+        if conversation_success is not None:
+            pulumi.set(__self__, "conversation_success", conversation_success)
+        if live_agent_handoff is not None:
+            pulumi.set(__self__, "live_agent_handoff", live_agent_handoff)
+        if output_audio_text is not None:
+            pulumi.set(__self__, "output_audio_text", output_audio_text)
+        if payload is not None:
+            pulumi.set(__self__, "payload", payload)
+        if play_audio is not None:
+            pulumi.set(__self__, "play_audio", play_audio)
+        if telephony_transfer_call is not None:
+            pulumi.set(__self__, "telephony_transfer_call", telephony_transfer_call)
         if text is not None:
             pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter
+    def channel(self) -> Optional[pulumi.Input[str]]:
+        """
+        The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+        """
+        return pulumi.get(self, "channel")
+
+    @channel.setter
+    def channel(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "channel", value)
+
+    @property
+    @pulumi.getter(name="conversationSuccess")
+    def conversation_success(self) -> Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs']]:
+        """
+        Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+        Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+        You may set this, for example:
+        * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+        * In a webhook response when you determine that you handled the customer issue.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conversation_success")
+
+    @conversation_success.setter
+    def conversation_success(self, value: Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs']]):
+        pulumi.set(self, "conversation_success", value)
+
+    @property
+    @pulumi.getter(name="liveAgentHandoff")
+    def live_agent_handoff(self) -> Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs']]:
+        """
+        Indicates that the conversation should be handed off to a live agent.
+        Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+        You may set this, for example:
+        * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+        * In a webhook response when you determine that the customer issue can only be handled by a human.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "live_agent_handoff")
+
+    @live_agent_handoff.setter
+    def live_agent_handoff(self, value: Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs']]):
+        pulumi.set(self, "live_agent_handoff", value)
+
+    @property
+    @pulumi.getter(name="outputAudioText")
+    def output_audio_text(self) -> Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs']]:
+        """
+        A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "output_audio_text")
+
+    @output_audio_text.setter
+    def output_audio_text(self, value: Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs']]):
+        pulumi.set(self, "output_audio_text", value)
+
+    @property
+    @pulumi.getter
+    def payload(self) -> Optional[pulumi.Input[str]]:
+        """
+        A custom, platform-specific payload.
+        """
+        return pulumi.get(self, "payload")
+
+    @payload.setter
+    def payload(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payload", value)
+
+    @property
+    @pulumi.getter(name="playAudio")
+    def play_audio(self) -> Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs']]:
+        """
+        Specifies an audio clip to be played by the client as part of the response.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "play_audio")
+
+    @play_audio.setter
+    def play_audio(self, value: Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs']]):
+        pulumi.set(self, "play_audio", value)
+
+    @property
+    @pulumi.getter(name="telephonyTransferCall")
+    def telephony_transfer_call(self) -> Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs']]:
+        """
+        Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "telephony_transfer_call")
+
+    @telephony_transfer_call.setter
+    def telephony_transfer_call(self, value: Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs']]):
+        pulumi.set(self, "telephony_transfer_call", value)
 
     @property
     @pulumi.getter
@@ -688,6 +1343,171 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageArgs:
     @text.setter
     def text(self, value: Optional[pulumi.Input['CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs']]):
         pulumi.set(self, "text", value)
+
+
+@pulumi.input_type
+class CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs:
+    def __init__(__self__, *,
+                 metadata: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] metadata: Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[pulumi.Input[str]]:
+        """
+        Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metadata", value)
+
+
+@pulumi.input_type
+class CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs:
+    def __init__(__self__, *,
+                 metadata: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] metadata: Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[pulumi.Input[str]]:
+        """
+        Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metadata", value)
+
+
+@pulumi.input_type
+class CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs:
+    def __init__(__self__, *,
+                 allow_playback_interruption: Optional[pulumi.Input[bool]] = None,
+                 ssml: Optional[pulumi.Input[str]] = None,
+                 text: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] allow_playback_interruption: (Output)
+               Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        :param pulumi.Input[str] ssml: The SSML text to be synthesized. For more information, see SSML.
+        :param pulumi.Input[str] text: The raw text to be synthesized.
+        """
+        if allow_playback_interruption is not None:
+            pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
+        if ssml is not None:
+            pulumi.set(__self__, "ssml", ssml)
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter(name="allowPlaybackInterruption")
+    def allow_playback_interruption(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Output)
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+        return pulumi.get(self, "allow_playback_interruption")
+
+    @allow_playback_interruption.setter
+    def allow_playback_interruption(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_playback_interruption", value)
+
+    @property
+    @pulumi.getter
+    def ssml(self) -> Optional[pulumi.Input[str]]:
+        """
+        The SSML text to be synthesized. For more information, see SSML.
+        """
+        return pulumi.get(self, "ssml")
+
+    @ssml.setter
+    def ssml(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ssml", value)
+
+    @property
+    @pulumi.getter
+    def text(self) -> Optional[pulumi.Input[str]]:
+        """
+        The raw text to be synthesized.
+        """
+        return pulumi.get(self, "text")
+
+    @text.setter
+    def text(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "text", value)
+
+
+@pulumi.input_type
+class CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs:
+    def __init__(__self__, *,
+                 audio_uri: pulumi.Input[str],
+                 allow_playback_interruption: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] audio_uri: URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+        :param pulumi.Input[bool] allow_playback_interruption: (Output)
+               Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+        pulumi.set(__self__, "audio_uri", audio_uri)
+        if allow_playback_interruption is not None:
+            pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
+
+    @property
+    @pulumi.getter(name="audioUri")
+    def audio_uri(self) -> pulumi.Input[str]:
+        """
+        URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+        """
+        return pulumi.get(self, "audio_uri")
+
+    @audio_uri.setter
+    def audio_uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "audio_uri", value)
+
+    @property
+    @pulumi.getter(name="allowPlaybackInterruption")
+    def allow_playback_interruption(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Output)
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+        return pulumi.get(self, "allow_playback_interruption")
+
+    @allow_playback_interruption.setter
+    def allow_playback_interruption(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_playback_interruption", value)
+
+
+@pulumi.input_type
+class CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs:
+    def __init__(__self__, *,
+                 phone_number: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] phone_number: Transfer the call to a phone number in E.164 format.
+        """
+        pulumi.set(__self__, "phone_number", phone_number)
+
+    @property
+    @pulumi.getter(name="phoneNumber")
+    def phone_number(self) -> pulumi.Input[str]:
+        """
+        Transfer the call to a phone number in E.164 format.
+        """
+        return pulumi.get(self, "phone_number")
+
+    @phone_number.setter
+    def phone_number(self, value: pulumi.Input[str]):
+        pulumi.set(self, "phone_number", value)
 
 
 @pulumi.input_type
@@ -729,6 +1549,45 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs:
     @texts.setter
     def texts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "texts", value)
+
+
+@pulumi.input_type
+class CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs:
+    def __init__(__self__, *,
+                 parameter: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] parameter: Display name of the parameter.
+        :param pulumi.Input[str] value: The new JSON-encoded value of the parameter. A null value clears the parameter.
+        """
+        if parameter is not None:
+            pulumi.set(__self__, "parameter", parameter)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def parameter(self) -> Optional[pulumi.Input[str]]:
+        """
+        Display name of the parameter.
+        """
+        return pulumi.get(self, "parameter")
+
+    @parameter.setter
+    def parameter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parameter", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The new JSON-encoded value of the parameter. A null value clears the parameter.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
 
 
 @pulumi.input_type
@@ -915,25 +1774,48 @@ class CxIntentTrainingPhrasePartArgs:
 @pulumi.input_type
 class CxPageEntryFulfillmentArgs:
     def __init__(__self__, *,
+                 conditional_cases: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEntryFulfillmentConditionalCaseArgs']]]] = None,
                  messages: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEntryFulfillmentMessageArgs']]]] = None,
                  return_partial_responses: Optional[pulumi.Input[bool]] = None,
+                 set_parameter_actions: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEntryFulfillmentSetParameterActionArgs']]]] = None,
                  tag: Optional[pulumi.Input[str]] = None,
                  webhook: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input['CxPageEntryFulfillmentConditionalCaseArgs']]] conditional_cases: Conditional cases for this fulfillment.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['CxPageEntryFulfillmentMessageArgs']]] messages: The list of rich message responses to present to the user.
                Structure is documented below.
         :param pulumi.Input[bool] return_partial_responses: Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+        :param pulumi.Input[Sequence[pulumi.Input['CxPageEntryFulfillmentSetParameterActionArgs']]] set_parameter_actions: Set parameter values before executing the webhook.
+               Structure is documented below.
         :param pulumi.Input[str] tag: The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
         :param pulumi.Input[str] webhook: The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
         """
+        if conditional_cases is not None:
+            pulumi.set(__self__, "conditional_cases", conditional_cases)
         if messages is not None:
             pulumi.set(__self__, "messages", messages)
         if return_partial_responses is not None:
             pulumi.set(__self__, "return_partial_responses", return_partial_responses)
+        if set_parameter_actions is not None:
+            pulumi.set(__self__, "set_parameter_actions", set_parameter_actions)
         if tag is not None:
             pulumi.set(__self__, "tag", tag)
         if webhook is not None:
             pulumi.set(__self__, "webhook", webhook)
+
+    @property
+    @pulumi.getter(name="conditionalCases")
+    def conditional_cases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEntryFulfillmentConditionalCaseArgs']]]]:
+        """
+        Conditional cases for this fulfillment.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conditional_cases")
+
+    @conditional_cases.setter
+    def conditional_cases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEntryFulfillmentConditionalCaseArgs']]]]):
+        pulumi.set(self, "conditional_cases", value)
 
     @property
     @pulumi.getter
@@ -961,6 +1843,19 @@ class CxPageEntryFulfillmentArgs:
         pulumi.set(self, "return_partial_responses", value)
 
     @property
+    @pulumi.getter(name="setParameterActions")
+    def set_parameter_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEntryFulfillmentSetParameterActionArgs']]]]:
+        """
+        Set parameter values before executing the webhook.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "set_parameter_actions")
+
+    @set_parameter_actions.setter
+    def set_parameter_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEntryFulfillmentSetParameterActionArgs']]]]):
+        pulumi.set(self, "set_parameter_actions", value)
+
+    @property
     @pulumi.getter
     def tag(self) -> Optional[pulumi.Input[str]]:
         """
@@ -986,15 +1881,178 @@ class CxPageEntryFulfillmentArgs:
 
 
 @pulumi.input_type
+class CxPageEntryFulfillmentConditionalCaseArgs:
+    def __init__(__self__, *,
+                 cases: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] cases: A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+               See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+        """
+        if cases is not None:
+            pulumi.set(__self__, "cases", cases)
+
+    @property
+    @pulumi.getter
+    def cases(self) -> Optional[pulumi.Input[str]]:
+        """
+        A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+        See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+        """
+        return pulumi.get(self, "cases")
+
+    @cases.setter
+    def cases(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cases", value)
+
+
+@pulumi.input_type
 class CxPageEntryFulfillmentMessageArgs:
     def __init__(__self__, *,
+                 channel: Optional[pulumi.Input[str]] = None,
+                 conversation_success: Optional[pulumi.Input['CxPageEntryFulfillmentMessageConversationSuccessArgs']] = None,
+                 live_agent_handoff: Optional[pulumi.Input['CxPageEntryFulfillmentMessageLiveAgentHandoffArgs']] = None,
+                 output_audio_text: Optional[pulumi.Input['CxPageEntryFulfillmentMessageOutputAudioTextArgs']] = None,
+                 payload: Optional[pulumi.Input[str]] = None,
+                 play_audio: Optional[pulumi.Input['CxPageEntryFulfillmentMessagePlayAudioArgs']] = None,
+                 telephony_transfer_call: Optional[pulumi.Input['CxPageEntryFulfillmentMessageTelephonyTransferCallArgs']] = None,
                  text: Optional[pulumi.Input['CxPageEntryFulfillmentMessageTextArgs']] = None):
         """
+        :param pulumi.Input[str] channel: The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+        :param pulumi.Input['CxPageEntryFulfillmentMessageConversationSuccessArgs'] conversation_success: Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+               Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+               You may set this, for example:
+               * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+               * In a webhook response when you determine that you handled the customer issue.
+               Structure is documented below.
+        :param pulumi.Input['CxPageEntryFulfillmentMessageLiveAgentHandoffArgs'] live_agent_handoff: Indicates that the conversation should be handed off to a live agent.
+               Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+               You may set this, for example:
+               * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+               * In a webhook response when you determine that the customer issue can only be handled by a human.
+               Structure is documented below.
+        :param pulumi.Input['CxPageEntryFulfillmentMessageOutputAudioTextArgs'] output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+               Structure is documented below.
+        :param pulumi.Input[str] payload: A custom, platform-specific payload.
+        :param pulumi.Input['CxPageEntryFulfillmentMessagePlayAudioArgs'] play_audio: Specifies an audio clip to be played by the client as part of the response.
+               Structure is documented below.
+        :param pulumi.Input['CxPageEntryFulfillmentMessageTelephonyTransferCallArgs'] telephony_transfer_call: Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+               Structure is documented below.
         :param pulumi.Input['CxPageEntryFulfillmentMessageTextArgs'] text: The text response message.
                Structure is documented below.
         """
+        if channel is not None:
+            pulumi.set(__self__, "channel", channel)
+        if conversation_success is not None:
+            pulumi.set(__self__, "conversation_success", conversation_success)
+        if live_agent_handoff is not None:
+            pulumi.set(__self__, "live_agent_handoff", live_agent_handoff)
+        if output_audio_text is not None:
+            pulumi.set(__self__, "output_audio_text", output_audio_text)
+        if payload is not None:
+            pulumi.set(__self__, "payload", payload)
+        if play_audio is not None:
+            pulumi.set(__self__, "play_audio", play_audio)
+        if telephony_transfer_call is not None:
+            pulumi.set(__self__, "telephony_transfer_call", telephony_transfer_call)
         if text is not None:
             pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter
+    def channel(self) -> Optional[pulumi.Input[str]]:
+        """
+        The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+        """
+        return pulumi.get(self, "channel")
+
+    @channel.setter
+    def channel(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "channel", value)
+
+    @property
+    @pulumi.getter(name="conversationSuccess")
+    def conversation_success(self) -> Optional[pulumi.Input['CxPageEntryFulfillmentMessageConversationSuccessArgs']]:
+        """
+        Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+        Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+        You may set this, for example:
+        * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+        * In a webhook response when you determine that you handled the customer issue.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conversation_success")
+
+    @conversation_success.setter
+    def conversation_success(self, value: Optional[pulumi.Input['CxPageEntryFulfillmentMessageConversationSuccessArgs']]):
+        pulumi.set(self, "conversation_success", value)
+
+    @property
+    @pulumi.getter(name="liveAgentHandoff")
+    def live_agent_handoff(self) -> Optional[pulumi.Input['CxPageEntryFulfillmentMessageLiveAgentHandoffArgs']]:
+        """
+        Indicates that the conversation should be handed off to a live agent.
+        Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+        You may set this, for example:
+        * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+        * In a webhook response when you determine that the customer issue can only be handled by a human.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "live_agent_handoff")
+
+    @live_agent_handoff.setter
+    def live_agent_handoff(self, value: Optional[pulumi.Input['CxPageEntryFulfillmentMessageLiveAgentHandoffArgs']]):
+        pulumi.set(self, "live_agent_handoff", value)
+
+    @property
+    @pulumi.getter(name="outputAudioText")
+    def output_audio_text(self) -> Optional[pulumi.Input['CxPageEntryFulfillmentMessageOutputAudioTextArgs']]:
+        """
+        A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "output_audio_text")
+
+    @output_audio_text.setter
+    def output_audio_text(self, value: Optional[pulumi.Input['CxPageEntryFulfillmentMessageOutputAudioTextArgs']]):
+        pulumi.set(self, "output_audio_text", value)
+
+    @property
+    @pulumi.getter
+    def payload(self) -> Optional[pulumi.Input[str]]:
+        """
+        A custom, platform-specific payload.
+        """
+        return pulumi.get(self, "payload")
+
+    @payload.setter
+    def payload(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payload", value)
+
+    @property
+    @pulumi.getter(name="playAudio")
+    def play_audio(self) -> Optional[pulumi.Input['CxPageEntryFulfillmentMessagePlayAudioArgs']]:
+        """
+        Specifies an audio clip to be played by the client as part of the response.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "play_audio")
+
+    @play_audio.setter
+    def play_audio(self, value: Optional[pulumi.Input['CxPageEntryFulfillmentMessagePlayAudioArgs']]):
+        pulumi.set(self, "play_audio", value)
+
+    @property
+    @pulumi.getter(name="telephonyTransferCall")
+    def telephony_transfer_call(self) -> Optional[pulumi.Input['CxPageEntryFulfillmentMessageTelephonyTransferCallArgs']]:
+        """
+        Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "telephony_transfer_call")
+
+    @telephony_transfer_call.setter
+    def telephony_transfer_call(self, value: Optional[pulumi.Input['CxPageEntryFulfillmentMessageTelephonyTransferCallArgs']]):
+        pulumi.set(self, "telephony_transfer_call", value)
 
     @property
     @pulumi.getter
@@ -1008,6 +2066,171 @@ class CxPageEntryFulfillmentMessageArgs:
     @text.setter
     def text(self, value: Optional[pulumi.Input['CxPageEntryFulfillmentMessageTextArgs']]):
         pulumi.set(self, "text", value)
+
+
+@pulumi.input_type
+class CxPageEntryFulfillmentMessageConversationSuccessArgs:
+    def __init__(__self__, *,
+                 metadata: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] metadata: Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[pulumi.Input[str]]:
+        """
+        Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metadata", value)
+
+
+@pulumi.input_type
+class CxPageEntryFulfillmentMessageLiveAgentHandoffArgs:
+    def __init__(__self__, *,
+                 metadata: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] metadata: Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[pulumi.Input[str]]:
+        """
+        Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metadata", value)
+
+
+@pulumi.input_type
+class CxPageEntryFulfillmentMessageOutputAudioTextArgs:
+    def __init__(__self__, *,
+                 allow_playback_interruption: Optional[pulumi.Input[bool]] = None,
+                 ssml: Optional[pulumi.Input[str]] = None,
+                 text: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] allow_playback_interruption: (Output)
+               Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        :param pulumi.Input[str] ssml: The SSML text to be synthesized. For more information, see SSML.
+        :param pulumi.Input[str] text: The raw text to be synthesized.
+        """
+        if allow_playback_interruption is not None:
+            pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
+        if ssml is not None:
+            pulumi.set(__self__, "ssml", ssml)
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter(name="allowPlaybackInterruption")
+    def allow_playback_interruption(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Output)
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+        return pulumi.get(self, "allow_playback_interruption")
+
+    @allow_playback_interruption.setter
+    def allow_playback_interruption(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_playback_interruption", value)
+
+    @property
+    @pulumi.getter
+    def ssml(self) -> Optional[pulumi.Input[str]]:
+        """
+        The SSML text to be synthesized. For more information, see SSML.
+        """
+        return pulumi.get(self, "ssml")
+
+    @ssml.setter
+    def ssml(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ssml", value)
+
+    @property
+    @pulumi.getter
+    def text(self) -> Optional[pulumi.Input[str]]:
+        """
+        The raw text to be synthesized.
+        """
+        return pulumi.get(self, "text")
+
+    @text.setter
+    def text(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "text", value)
+
+
+@pulumi.input_type
+class CxPageEntryFulfillmentMessagePlayAudioArgs:
+    def __init__(__self__, *,
+                 audio_uri: pulumi.Input[str],
+                 allow_playback_interruption: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] audio_uri: URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+        :param pulumi.Input[bool] allow_playback_interruption: (Output)
+               Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+        pulumi.set(__self__, "audio_uri", audio_uri)
+        if allow_playback_interruption is not None:
+            pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
+
+    @property
+    @pulumi.getter(name="audioUri")
+    def audio_uri(self) -> pulumi.Input[str]:
+        """
+        URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+        """
+        return pulumi.get(self, "audio_uri")
+
+    @audio_uri.setter
+    def audio_uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "audio_uri", value)
+
+    @property
+    @pulumi.getter(name="allowPlaybackInterruption")
+    def allow_playback_interruption(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Output)
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+        return pulumi.get(self, "allow_playback_interruption")
+
+    @allow_playback_interruption.setter
+    def allow_playback_interruption(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_playback_interruption", value)
+
+
+@pulumi.input_type
+class CxPageEntryFulfillmentMessageTelephonyTransferCallArgs:
+    def __init__(__self__, *,
+                 phone_number: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] phone_number: Transfer the call to a phone number in E.164 format.
+        """
+        pulumi.set(__self__, "phone_number", phone_number)
+
+    @property
+    @pulumi.getter(name="phoneNumber")
+    def phone_number(self) -> pulumi.Input[str]:
+        """
+        Transfer the call to a phone number in E.164 format.
+        """
+        return pulumi.get(self, "phone_number")
+
+    @phone_number.setter
+    def phone_number(self, value: pulumi.Input[str]):
+        pulumi.set(self, "phone_number", value)
 
 
 @pulumi.input_type
@@ -1049,6 +2272,45 @@ class CxPageEntryFulfillmentMessageTextArgs:
     @texts.setter
     def texts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "texts", value)
+
+
+@pulumi.input_type
+class CxPageEntryFulfillmentSetParameterActionArgs:
+    def __init__(__self__, *,
+                 parameter: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] parameter: Display name of the parameter.
+        :param pulumi.Input[str] value: The new JSON-encoded value of the parameter. A null value clears the parameter.
+        """
+        if parameter is not None:
+            pulumi.set(__self__, "parameter", parameter)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def parameter(self) -> Optional[pulumi.Input[str]]:
+        """
+        Display name of the parameter.
+        """
+        return pulumi.get(self, "parameter")
+
+    @parameter.setter
+    def parameter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parameter", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The new JSON-encoded value of the parameter. A null value clears the parameter.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
 
 
 @pulumi.input_type
@@ -1149,25 +2411,48 @@ class CxPageEventHandlerArgs:
 @pulumi.input_type
 class CxPageEventHandlerTriggerFulfillmentArgs:
     def __init__(__self__, *,
+                 conditional_cases: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerTriggerFulfillmentConditionalCaseArgs']]]] = None,
                  messages: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageArgs']]]] = None,
                  return_partial_responses: Optional[pulumi.Input[bool]] = None,
+                 set_parameter_actions: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerTriggerFulfillmentSetParameterActionArgs']]]] = None,
                  tag: Optional[pulumi.Input[str]] = None,
                  webhook: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerTriggerFulfillmentConditionalCaseArgs']]] conditional_cases: Conditional cases for this fulfillment.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageArgs']]] messages: The list of rich message responses to present to the user.
                Structure is documented below.
         :param pulumi.Input[bool] return_partial_responses: Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+        :param pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerTriggerFulfillmentSetParameterActionArgs']]] set_parameter_actions: Set parameter values before executing the webhook.
+               Structure is documented below.
         :param pulumi.Input[str] tag: The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
         :param pulumi.Input[str] webhook: The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
         """
+        if conditional_cases is not None:
+            pulumi.set(__self__, "conditional_cases", conditional_cases)
         if messages is not None:
             pulumi.set(__self__, "messages", messages)
         if return_partial_responses is not None:
             pulumi.set(__self__, "return_partial_responses", return_partial_responses)
+        if set_parameter_actions is not None:
+            pulumi.set(__self__, "set_parameter_actions", set_parameter_actions)
         if tag is not None:
             pulumi.set(__self__, "tag", tag)
         if webhook is not None:
             pulumi.set(__self__, "webhook", webhook)
+
+    @property
+    @pulumi.getter(name="conditionalCases")
+    def conditional_cases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerTriggerFulfillmentConditionalCaseArgs']]]]:
+        """
+        Conditional cases for this fulfillment.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conditional_cases")
+
+    @conditional_cases.setter
+    def conditional_cases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerTriggerFulfillmentConditionalCaseArgs']]]]):
+        pulumi.set(self, "conditional_cases", value)
 
     @property
     @pulumi.getter
@@ -1195,6 +2480,19 @@ class CxPageEventHandlerTriggerFulfillmentArgs:
         pulumi.set(self, "return_partial_responses", value)
 
     @property
+    @pulumi.getter(name="setParameterActions")
+    def set_parameter_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerTriggerFulfillmentSetParameterActionArgs']]]]:
+        """
+        Set parameter values before executing the webhook.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "set_parameter_actions")
+
+    @set_parameter_actions.setter
+    def set_parameter_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerTriggerFulfillmentSetParameterActionArgs']]]]):
+        pulumi.set(self, "set_parameter_actions", value)
+
+    @property
     @pulumi.getter
     def tag(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1220,15 +2518,178 @@ class CxPageEventHandlerTriggerFulfillmentArgs:
 
 
 @pulumi.input_type
+class CxPageEventHandlerTriggerFulfillmentConditionalCaseArgs:
+    def __init__(__self__, *,
+                 cases: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] cases: A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+               See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+        """
+        if cases is not None:
+            pulumi.set(__self__, "cases", cases)
+
+    @property
+    @pulumi.getter
+    def cases(self) -> Optional[pulumi.Input[str]]:
+        """
+        A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+        See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+        """
+        return pulumi.get(self, "cases")
+
+    @cases.setter
+    def cases(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cases", value)
+
+
+@pulumi.input_type
 class CxPageEventHandlerTriggerFulfillmentMessageArgs:
     def __init__(__self__, *,
+                 channel: Optional[pulumi.Input[str]] = None,
+                 conversation_success: Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgs']] = None,
+                 live_agent_handoff: Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs']] = None,
+                 output_audio_text: Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs']] = None,
+                 payload: Optional[pulumi.Input[str]] = None,
+                 play_audio: Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgs']] = None,
+                 telephony_transfer_call: Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs']] = None,
                  text: Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageTextArgs']] = None):
         """
+        :param pulumi.Input[str] channel: The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+        :param pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgs'] conversation_success: Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+               Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+               You may set this, for example:
+               * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+               * In a webhook response when you determine that you handled the customer issue.
+               Structure is documented below.
+        :param pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs'] live_agent_handoff: Indicates that the conversation should be handed off to a live agent.
+               Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+               You may set this, for example:
+               * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+               * In a webhook response when you determine that the customer issue can only be handled by a human.
+               Structure is documented below.
+        :param pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs'] output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+               Structure is documented below.
+        :param pulumi.Input[str] payload: A custom, platform-specific payload.
+        :param pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgs'] play_audio: Specifies an audio clip to be played by the client as part of the response.
+               Structure is documented below.
+        :param pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs'] telephony_transfer_call: Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+               Structure is documented below.
         :param pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageTextArgs'] text: The text response message.
                Structure is documented below.
         """
+        if channel is not None:
+            pulumi.set(__self__, "channel", channel)
+        if conversation_success is not None:
+            pulumi.set(__self__, "conversation_success", conversation_success)
+        if live_agent_handoff is not None:
+            pulumi.set(__self__, "live_agent_handoff", live_agent_handoff)
+        if output_audio_text is not None:
+            pulumi.set(__self__, "output_audio_text", output_audio_text)
+        if payload is not None:
+            pulumi.set(__self__, "payload", payload)
+        if play_audio is not None:
+            pulumi.set(__self__, "play_audio", play_audio)
+        if telephony_transfer_call is not None:
+            pulumi.set(__self__, "telephony_transfer_call", telephony_transfer_call)
         if text is not None:
             pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter
+    def channel(self) -> Optional[pulumi.Input[str]]:
+        """
+        The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+        """
+        return pulumi.get(self, "channel")
+
+    @channel.setter
+    def channel(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "channel", value)
+
+    @property
+    @pulumi.getter(name="conversationSuccess")
+    def conversation_success(self) -> Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgs']]:
+        """
+        Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+        Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+        You may set this, for example:
+        * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+        * In a webhook response when you determine that you handled the customer issue.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conversation_success")
+
+    @conversation_success.setter
+    def conversation_success(self, value: Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgs']]):
+        pulumi.set(self, "conversation_success", value)
+
+    @property
+    @pulumi.getter(name="liveAgentHandoff")
+    def live_agent_handoff(self) -> Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs']]:
+        """
+        Indicates that the conversation should be handed off to a live agent.
+        Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+        You may set this, for example:
+        * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+        * In a webhook response when you determine that the customer issue can only be handled by a human.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "live_agent_handoff")
+
+    @live_agent_handoff.setter
+    def live_agent_handoff(self, value: Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs']]):
+        pulumi.set(self, "live_agent_handoff", value)
+
+    @property
+    @pulumi.getter(name="outputAudioText")
+    def output_audio_text(self) -> Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs']]:
+        """
+        A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "output_audio_text")
+
+    @output_audio_text.setter
+    def output_audio_text(self, value: Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs']]):
+        pulumi.set(self, "output_audio_text", value)
+
+    @property
+    @pulumi.getter
+    def payload(self) -> Optional[pulumi.Input[str]]:
+        """
+        A custom, platform-specific payload.
+        """
+        return pulumi.get(self, "payload")
+
+    @payload.setter
+    def payload(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payload", value)
+
+    @property
+    @pulumi.getter(name="playAudio")
+    def play_audio(self) -> Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgs']]:
+        """
+        Specifies an audio clip to be played by the client as part of the response.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "play_audio")
+
+    @play_audio.setter
+    def play_audio(self, value: Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgs']]):
+        pulumi.set(self, "play_audio", value)
+
+    @property
+    @pulumi.getter(name="telephonyTransferCall")
+    def telephony_transfer_call(self) -> Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs']]:
+        """
+        Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "telephony_transfer_call")
+
+    @telephony_transfer_call.setter
+    def telephony_transfer_call(self, value: Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs']]):
+        pulumi.set(self, "telephony_transfer_call", value)
 
     @property
     @pulumi.getter
@@ -1242,6 +2703,171 @@ class CxPageEventHandlerTriggerFulfillmentMessageArgs:
     @text.setter
     def text(self, value: Optional[pulumi.Input['CxPageEventHandlerTriggerFulfillmentMessageTextArgs']]):
         pulumi.set(self, "text", value)
+
+
+@pulumi.input_type
+class CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgs:
+    def __init__(__self__, *,
+                 metadata: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] metadata: Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[pulumi.Input[str]]:
+        """
+        Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metadata", value)
+
+
+@pulumi.input_type
+class CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs:
+    def __init__(__self__, *,
+                 metadata: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] metadata: Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[pulumi.Input[str]]:
+        """
+        Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metadata", value)
+
+
+@pulumi.input_type
+class CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs:
+    def __init__(__self__, *,
+                 allow_playback_interruption: Optional[pulumi.Input[bool]] = None,
+                 ssml: Optional[pulumi.Input[str]] = None,
+                 text: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] allow_playback_interruption: (Output)
+               Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        :param pulumi.Input[str] ssml: The SSML text to be synthesized. For more information, see SSML.
+        :param pulumi.Input[str] text: The raw text to be synthesized.
+        """
+        if allow_playback_interruption is not None:
+            pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
+        if ssml is not None:
+            pulumi.set(__self__, "ssml", ssml)
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter(name="allowPlaybackInterruption")
+    def allow_playback_interruption(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Output)
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+        return pulumi.get(self, "allow_playback_interruption")
+
+    @allow_playback_interruption.setter
+    def allow_playback_interruption(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_playback_interruption", value)
+
+    @property
+    @pulumi.getter
+    def ssml(self) -> Optional[pulumi.Input[str]]:
+        """
+        The SSML text to be synthesized. For more information, see SSML.
+        """
+        return pulumi.get(self, "ssml")
+
+    @ssml.setter
+    def ssml(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ssml", value)
+
+    @property
+    @pulumi.getter
+    def text(self) -> Optional[pulumi.Input[str]]:
+        """
+        The raw text to be synthesized.
+        """
+        return pulumi.get(self, "text")
+
+    @text.setter
+    def text(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "text", value)
+
+
+@pulumi.input_type
+class CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgs:
+    def __init__(__self__, *,
+                 audio_uri: pulumi.Input[str],
+                 allow_playback_interruption: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] audio_uri: URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+        :param pulumi.Input[bool] allow_playback_interruption: (Output)
+               Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+        pulumi.set(__self__, "audio_uri", audio_uri)
+        if allow_playback_interruption is not None:
+            pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
+
+    @property
+    @pulumi.getter(name="audioUri")
+    def audio_uri(self) -> pulumi.Input[str]:
+        """
+        URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+        """
+        return pulumi.get(self, "audio_uri")
+
+    @audio_uri.setter
+    def audio_uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "audio_uri", value)
+
+    @property
+    @pulumi.getter(name="allowPlaybackInterruption")
+    def allow_playback_interruption(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Output)
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+        return pulumi.get(self, "allow_playback_interruption")
+
+    @allow_playback_interruption.setter
+    def allow_playback_interruption(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_playback_interruption", value)
+
+
+@pulumi.input_type
+class CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs:
+    def __init__(__self__, *,
+                 phone_number: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] phone_number: Transfer the call to a phone number in E.164 format.
+        """
+        pulumi.set(__self__, "phone_number", phone_number)
+
+    @property
+    @pulumi.getter(name="phoneNumber")
+    def phone_number(self) -> pulumi.Input[str]:
+        """
+        Transfer the call to a phone number in E.164 format.
+        """
+        return pulumi.get(self, "phone_number")
+
+    @phone_number.setter
+    def phone_number(self, value: pulumi.Input[str]):
+        pulumi.set(self, "phone_number", value)
 
 
 @pulumi.input_type
@@ -1286,6 +2912,45 @@ class CxPageEventHandlerTriggerFulfillmentMessageTextArgs:
 
 
 @pulumi.input_type
+class CxPageEventHandlerTriggerFulfillmentSetParameterActionArgs:
+    def __init__(__self__, *,
+                 parameter: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] parameter: Display name of the parameter.
+        :param pulumi.Input[str] value: The new JSON-encoded value of the parameter. A null value clears the parameter.
+        """
+        if parameter is not None:
+            pulumi.set(__self__, "parameter", parameter)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def parameter(self) -> Optional[pulumi.Input[str]]:
+        """
+        Display name of the parameter.
+        """
+        return pulumi.get(self, "parameter")
+
+    @parameter.setter
+    def parameter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parameter", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The new JSON-encoded value of the parameter. A null value clears the parameter.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
 class CxPageFormArgs:
     def __init__(__self__, *,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterArgs']]]] = None):
@@ -1313,6 +2978,7 @@ class CxPageFormArgs:
 @pulumi.input_type
 class CxPageFormParameterArgs:
     def __init__(__self__, *,
+                 default_value: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  entity_type: Optional[pulumi.Input[str]] = None,
                  fill_behavior: Optional[pulumi.Input['CxPageFormParameterFillBehaviorArgs']] = None,
@@ -1320,6 +2986,7 @@ class CxPageFormParameterArgs:
                  redact: Optional[pulumi.Input[bool]] = None,
                  required: Optional[pulumi.Input[bool]] = None):
         """
+        :param pulumi.Input[str] default_value: The default value of an optional parameter. If the parameter is required, the default value will be ignored.
         :param pulumi.Input[str] display_name: The human-readable name of the parameter, unique within the form.
         :param pulumi.Input[str] entity_type: The entity type of the parameter.
                Format: projects/-/locations/-/agents/-/entityTypes/<System Entity Type ID> for system entity types (for example, projects/-/locations/-/agents/-/entityTypes/sys.date), or projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/entityTypes/<Entity Type ID> for developer entity types.
@@ -1331,6 +2998,8 @@ class CxPageFormParameterArgs:
         :param pulumi.Input[bool] required: Indicates whether the parameter is required. Optional parameters will not trigger prompts; however, they are filled if the user specifies them.
                Required parameters must be filled before form filling concludes.
         """
+        if default_value is not None:
+            pulumi.set(__self__, "default_value", default_value)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if entity_type is not None:
@@ -1343,6 +3012,18 @@ class CxPageFormParameterArgs:
             pulumi.set(__self__, "redact", redact)
         if required is not None:
             pulumi.set(__self__, "required", required)
+
+    @property
+    @pulumi.getter(name="defaultValue")
+    def default_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The default value of an optional parameter. If the parameter is required, the default value will be ignored.
+        """
+        return pulumi.get(self, "default_value")
+
+    @default_value.setter
+    def default_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_value", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -1424,13 +3105,28 @@ class CxPageFormParameterArgs:
 @pulumi.input_type
 class CxPageFormParameterFillBehaviorArgs:
     def __init__(__self__, *,
-                 initial_prompt_fulfillment: Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs']] = None):
+                 initial_prompt_fulfillment: Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs']] = None,
+                 reprompt_event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerArgs']]]] = None):
         """
         :param pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs'] initial_prompt_fulfillment: The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerArgs']]] reprompt_event_handlers: The handlers for parameter-level events, used to provide reprompt for the parameter or transition to a different page/flow. The supported events are:
+               * sys.no-match-<N>, where N can be from 1 to 6
+               * sys.no-match-default
+               * sys.no-input-<N>, where N can be from 1 to 6
+               * sys.no-input-default
+               * sys.invalid-parameter
+               [initialPromptFulfillment][initialPromptFulfillment] provides the first prompt for the parameter.
+               If the user's response does not fill the parameter, a no-match/no-input event will be triggered, and the fulfillment associated with the sys.no-match-1/sys.no-input-1 handler (if defined) will be called to provide a prompt. The sys.no-match-2/sys.no-input-2 handler (if defined) will respond to the next no-match/no-input event, and so on.
+               A sys.no-match-default or sys.no-input-default handler will be used to handle all following no-match/no-input events after all numbered no-match/no-input handlers for the parameter are consumed.
+               A sys.invalid-parameter handler can be defined to handle the case where the parameter values have been invalidated by webhook. For example, if the user's response fill the parameter, however the parameter was invalidated by webhook, the fulfillment associated with the sys.invalid-parameter handler (if defined) will be called to provide a prompt.
+               If the event handler for the corresponding event can't be found on the parameter, initialPromptFulfillment will be re-prompted.
                Structure is documented below.
         """
         if initial_prompt_fulfillment is not None:
             pulumi.set(__self__, "initial_prompt_fulfillment", initial_prompt_fulfillment)
+        if reprompt_event_handlers is not None:
+            pulumi.set(__self__, "reprompt_event_handlers", reprompt_event_handlers)
 
     @property
     @pulumi.getter(name="initialPromptFulfillment")
@@ -1445,29 +3141,75 @@ class CxPageFormParameterFillBehaviorArgs:
     def initial_prompt_fulfillment(self, value: Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs']]):
         pulumi.set(self, "initial_prompt_fulfillment", value)
 
+    @property
+    @pulumi.getter(name="repromptEventHandlers")
+    def reprompt_event_handlers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerArgs']]]]:
+        """
+        The handlers for parameter-level events, used to provide reprompt for the parameter or transition to a different page/flow. The supported events are:
+        * sys.no-match-<N>, where N can be from 1 to 6
+        * sys.no-match-default
+        * sys.no-input-<N>, where N can be from 1 to 6
+        * sys.no-input-default
+        * sys.invalid-parameter
+        [initialPromptFulfillment][initialPromptFulfillment] provides the first prompt for the parameter.
+        If the user's response does not fill the parameter, a no-match/no-input event will be triggered, and the fulfillment associated with the sys.no-match-1/sys.no-input-1 handler (if defined) will be called to provide a prompt. The sys.no-match-2/sys.no-input-2 handler (if defined) will respond to the next no-match/no-input event, and so on.
+        A sys.no-match-default or sys.no-input-default handler will be used to handle all following no-match/no-input events after all numbered no-match/no-input handlers for the parameter are consumed.
+        A sys.invalid-parameter handler can be defined to handle the case where the parameter values have been invalidated by webhook. For example, if the user's response fill the parameter, however the parameter was invalidated by webhook, the fulfillment associated with the sys.invalid-parameter handler (if defined) will be called to provide a prompt.
+        If the event handler for the corresponding event can't be found on the parameter, initialPromptFulfillment will be re-prompted.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "reprompt_event_handlers")
+
+    @reprompt_event_handlers.setter
+    def reprompt_event_handlers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerArgs']]]]):
+        pulumi.set(self, "reprompt_event_handlers", value)
+
 
 @pulumi.input_type
 class CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs:
     def __init__(__self__, *,
+                 conditional_cases: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArgs']]]] = None,
                  messages: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs']]]] = None,
                  return_partial_responses: Optional[pulumi.Input[bool]] = None,
+                 set_parameter_actions: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgs']]]] = None,
                  tag: Optional[pulumi.Input[str]] = None,
                  webhook: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArgs']]] conditional_cases: Conditional cases for this fulfillment.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs']]] messages: The list of rich message responses to present to the user.
                Structure is documented below.
         :param pulumi.Input[bool] return_partial_responses: Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+        :param pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgs']]] set_parameter_actions: Set parameter values before executing the webhook.
+               Structure is documented below.
         :param pulumi.Input[str] tag: The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
         :param pulumi.Input[str] webhook: The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
         """
+        if conditional_cases is not None:
+            pulumi.set(__self__, "conditional_cases", conditional_cases)
         if messages is not None:
             pulumi.set(__self__, "messages", messages)
         if return_partial_responses is not None:
             pulumi.set(__self__, "return_partial_responses", return_partial_responses)
+        if set_parameter_actions is not None:
+            pulumi.set(__self__, "set_parameter_actions", set_parameter_actions)
         if tag is not None:
             pulumi.set(__self__, "tag", tag)
         if webhook is not None:
             pulumi.set(__self__, "webhook", webhook)
+
+    @property
+    @pulumi.getter(name="conditionalCases")
+    def conditional_cases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArgs']]]]:
+        """
+        Conditional cases for this fulfillment.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conditional_cases")
+
+    @conditional_cases.setter
+    def conditional_cases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArgs']]]]):
+        pulumi.set(self, "conditional_cases", value)
 
     @property
     @pulumi.getter
@@ -1495,6 +3237,19 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs:
         pulumi.set(self, "return_partial_responses", value)
 
     @property
+    @pulumi.getter(name="setParameterActions")
+    def set_parameter_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgs']]]]:
+        """
+        Set parameter values before executing the webhook.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "set_parameter_actions")
+
+    @set_parameter_actions.setter
+    def set_parameter_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgs']]]]):
+        pulumi.set(self, "set_parameter_actions", value)
+
+    @property
     @pulumi.getter
     def tag(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1520,15 +3275,178 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs:
 
 
 @pulumi.input_type
+class CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArgs:
+    def __init__(__self__, *,
+                 cases: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] cases: A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+               See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+        """
+        if cases is not None:
+            pulumi.set(__self__, "cases", cases)
+
+    @property
+    @pulumi.getter
+    def cases(self) -> Optional[pulumi.Input[str]]:
+        """
+        A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+        See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+        """
+        return pulumi.get(self, "cases")
+
+    @cases.setter
+    def cases(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cases", value)
+
+
+@pulumi.input_type
 class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs:
     def __init__(__self__, *,
+                 channel: Optional[pulumi.Input[str]] = None,
+                 conversation_success: Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgs']] = None,
+                 live_agent_handoff: Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgs']] = None,
+                 output_audio_text: Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgs']] = None,
+                 payload: Optional[pulumi.Input[str]] = None,
+                 play_audio: Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgs']] = None,
+                 telephony_transfer_call: Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgs']] = None,
                  text: Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgs']] = None):
         """
+        :param pulumi.Input[str] channel: The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+        :param pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgs'] conversation_success: Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+               Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+               You may set this, for example:
+               * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+               * In a webhook response when you determine that you handled the customer issue.
+               Structure is documented below.
+        :param pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgs'] live_agent_handoff: Indicates that the conversation should be handed off to a live agent.
+               Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+               You may set this, for example:
+               * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+               * In a webhook response when you determine that the customer issue can only be handled by a human.
+               Structure is documented below.
+        :param pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgs'] output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+               Structure is documented below.
+        :param pulumi.Input[str] payload: A custom, platform-specific payload.
+        :param pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgs'] play_audio: Specifies an audio clip to be played by the client as part of the response.
+               Structure is documented below.
+        :param pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgs'] telephony_transfer_call: Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+               Structure is documented below.
         :param pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgs'] text: The text response message.
                Structure is documented below.
         """
+        if channel is not None:
+            pulumi.set(__self__, "channel", channel)
+        if conversation_success is not None:
+            pulumi.set(__self__, "conversation_success", conversation_success)
+        if live_agent_handoff is not None:
+            pulumi.set(__self__, "live_agent_handoff", live_agent_handoff)
+        if output_audio_text is not None:
+            pulumi.set(__self__, "output_audio_text", output_audio_text)
+        if payload is not None:
+            pulumi.set(__self__, "payload", payload)
+        if play_audio is not None:
+            pulumi.set(__self__, "play_audio", play_audio)
+        if telephony_transfer_call is not None:
+            pulumi.set(__self__, "telephony_transfer_call", telephony_transfer_call)
         if text is not None:
             pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter
+    def channel(self) -> Optional[pulumi.Input[str]]:
+        """
+        The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+        """
+        return pulumi.get(self, "channel")
+
+    @channel.setter
+    def channel(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "channel", value)
+
+    @property
+    @pulumi.getter(name="conversationSuccess")
+    def conversation_success(self) -> Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgs']]:
+        """
+        Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+        Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+        You may set this, for example:
+        * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+        * In a webhook response when you determine that you handled the customer issue.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conversation_success")
+
+    @conversation_success.setter
+    def conversation_success(self, value: Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgs']]):
+        pulumi.set(self, "conversation_success", value)
+
+    @property
+    @pulumi.getter(name="liveAgentHandoff")
+    def live_agent_handoff(self) -> Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgs']]:
+        """
+        Indicates that the conversation should be handed off to a live agent.
+        Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+        You may set this, for example:
+        * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+        * In a webhook response when you determine that the customer issue can only be handled by a human.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "live_agent_handoff")
+
+    @live_agent_handoff.setter
+    def live_agent_handoff(self, value: Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgs']]):
+        pulumi.set(self, "live_agent_handoff", value)
+
+    @property
+    @pulumi.getter(name="outputAudioText")
+    def output_audio_text(self) -> Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgs']]:
+        """
+        A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "output_audio_text")
+
+    @output_audio_text.setter
+    def output_audio_text(self, value: Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgs']]):
+        pulumi.set(self, "output_audio_text", value)
+
+    @property
+    @pulumi.getter
+    def payload(self) -> Optional[pulumi.Input[str]]:
+        """
+        A custom, platform-specific payload.
+        """
+        return pulumi.get(self, "payload")
+
+    @payload.setter
+    def payload(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payload", value)
+
+    @property
+    @pulumi.getter(name="playAudio")
+    def play_audio(self) -> Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgs']]:
+        """
+        Specifies an audio clip to be played by the client as part of the response.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "play_audio")
+
+    @play_audio.setter
+    def play_audio(self, value: Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgs']]):
+        pulumi.set(self, "play_audio", value)
+
+    @property
+    @pulumi.getter(name="telephonyTransferCall")
+    def telephony_transfer_call(self) -> Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgs']]:
+        """
+        Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "telephony_transfer_call")
+
+    @telephony_transfer_call.setter
+    def telephony_transfer_call(self, value: Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgs']]):
+        pulumi.set(self, "telephony_transfer_call", value)
 
     @property
     @pulumi.getter
@@ -1542,6 +3460,171 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs:
     @text.setter
     def text(self, value: Optional[pulumi.Input['CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgs']]):
         pulumi.set(self, "text", value)
+
+
+@pulumi.input_type
+class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgs:
+    def __init__(__self__, *,
+                 metadata: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] metadata: Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[pulumi.Input[str]]:
+        """
+        Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metadata", value)
+
+
+@pulumi.input_type
+class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgs:
+    def __init__(__self__, *,
+                 metadata: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] metadata: Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[pulumi.Input[str]]:
+        """
+        Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metadata", value)
+
+
+@pulumi.input_type
+class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgs:
+    def __init__(__self__, *,
+                 allow_playback_interruption: Optional[pulumi.Input[bool]] = None,
+                 ssml: Optional[pulumi.Input[str]] = None,
+                 text: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] allow_playback_interruption: (Output)
+               Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        :param pulumi.Input[str] ssml: The SSML text to be synthesized. For more information, see SSML.
+        :param pulumi.Input[str] text: The raw text to be synthesized.
+        """
+        if allow_playback_interruption is not None:
+            pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
+        if ssml is not None:
+            pulumi.set(__self__, "ssml", ssml)
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter(name="allowPlaybackInterruption")
+    def allow_playback_interruption(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Output)
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+        return pulumi.get(self, "allow_playback_interruption")
+
+    @allow_playback_interruption.setter
+    def allow_playback_interruption(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_playback_interruption", value)
+
+    @property
+    @pulumi.getter
+    def ssml(self) -> Optional[pulumi.Input[str]]:
+        """
+        The SSML text to be synthesized. For more information, see SSML.
+        """
+        return pulumi.get(self, "ssml")
+
+    @ssml.setter
+    def ssml(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ssml", value)
+
+    @property
+    @pulumi.getter
+    def text(self) -> Optional[pulumi.Input[str]]:
+        """
+        The raw text to be synthesized.
+        """
+        return pulumi.get(self, "text")
+
+    @text.setter
+    def text(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "text", value)
+
+
+@pulumi.input_type
+class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgs:
+    def __init__(__self__, *,
+                 audio_uri: pulumi.Input[str],
+                 allow_playback_interruption: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] audio_uri: URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+        :param pulumi.Input[bool] allow_playback_interruption: (Output)
+               Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+        pulumi.set(__self__, "audio_uri", audio_uri)
+        if allow_playback_interruption is not None:
+            pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
+
+    @property
+    @pulumi.getter(name="audioUri")
+    def audio_uri(self) -> pulumi.Input[str]:
+        """
+        URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+        """
+        return pulumi.get(self, "audio_uri")
+
+    @audio_uri.setter
+    def audio_uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "audio_uri", value)
+
+    @property
+    @pulumi.getter(name="allowPlaybackInterruption")
+    def allow_playback_interruption(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Output)
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+        return pulumi.get(self, "allow_playback_interruption")
+
+    @allow_playback_interruption.setter
+    def allow_playback_interruption(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_playback_interruption", value)
+
+
+@pulumi.input_type
+class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgs:
+    def __init__(__self__, *,
+                 phone_number: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] phone_number: Transfer the call to a phone number in E.164 format.
+        """
+        pulumi.set(__self__, "phone_number", phone_number)
+
+    @property
+    @pulumi.getter(name="phoneNumber")
+    def phone_number(self) -> pulumi.Input[str]:
+        """
+        Transfer the call to a phone number in E.164 format.
+        """
+        return pulumi.get(self, "phone_number")
+
+    @phone_number.setter
+    def phone_number(self, value: pulumi.Input[str]):
+        pulumi.set(self, "phone_number", value)
 
 
 @pulumi.input_type
@@ -1586,6 +3669,682 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgs:
 
 
 @pulumi.input_type
+class CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgs:
+    def __init__(__self__, *,
+                 parameter: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] parameter: Display name of the parameter.
+        :param pulumi.Input[str] value: The new JSON-encoded value of the parameter. A null value clears the parameter.
+        """
+        if parameter is not None:
+            pulumi.set(__self__, "parameter", parameter)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def parameter(self) -> Optional[pulumi.Input[str]]:
+        """
+        Display name of the parameter.
+        """
+        return pulumi.get(self, "parameter")
+
+    @parameter.setter
+    def parameter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parameter", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The new JSON-encoded value of the parameter. A null value clears the parameter.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class CxPageFormParameterFillBehaviorRepromptEventHandlerArgs:
+    def __init__(__self__, *,
+                 event: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 target_flow: Optional[pulumi.Input[str]] = None,
+                 target_page: Optional[pulumi.Input[str]] = None,
+                 trigger_fulfillment: Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs']] = None):
+        """
+        :param pulumi.Input[str] event: The name of the event to handle.
+        :param pulumi.Input[str] name: (Output)
+               The unique identifier of this event handler.
+        :param pulumi.Input[str] target_flow: The target flow to transition to.
+               Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+        :param pulumi.Input[str] target_page: The target page to transition to.
+               Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+        :param pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs'] trigger_fulfillment: The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+               Structure is documented below.
+        """
+        if event is not None:
+            pulumi.set(__self__, "event", event)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if target_flow is not None:
+            pulumi.set(__self__, "target_flow", target_flow)
+        if target_page is not None:
+            pulumi.set(__self__, "target_page", target_page)
+        if trigger_fulfillment is not None:
+            pulumi.set(__self__, "trigger_fulfillment", trigger_fulfillment)
+
+    @property
+    @pulumi.getter
+    def event(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the event to handle.
+        """
+        return pulumi.get(self, "event")
+
+    @event.setter
+    def event(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "event", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The unique identifier of this event handler.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="targetFlow")
+    def target_flow(self) -> Optional[pulumi.Input[str]]:
+        """
+        The target flow to transition to.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+        """
+        return pulumi.get(self, "target_flow")
+
+    @target_flow.setter
+    def target_flow(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_flow", value)
+
+    @property
+    @pulumi.getter(name="targetPage")
+    def target_page(self) -> Optional[pulumi.Input[str]]:
+        """
+        The target page to transition to.
+        Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+        """
+        return pulumi.get(self, "target_page")
+
+    @target_page.setter
+    def target_page(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_page", value)
+
+    @property
+    @pulumi.getter(name="triggerFulfillment")
+    def trigger_fulfillment(self) -> Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs']]:
+        """
+        The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "trigger_fulfillment")
+
+    @trigger_fulfillment.setter
+    def trigger_fulfillment(self, value: Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs']]):
+        pulumi.set(self, "trigger_fulfillment", value)
+
+
+@pulumi.input_type
+class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs:
+    def __init__(__self__, *,
+                 conditional_cases: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArgs']]]] = None,
+                 messages: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs']]]] = None,
+                 return_partial_responses: Optional[pulumi.Input[bool]] = None,
+                 set_parameter_actions: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgs']]]] = None,
+                 tag: Optional[pulumi.Input[str]] = None,
+                 webhook: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArgs']]] conditional_cases: Conditional cases for this fulfillment.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs']]] messages: The list of rich message responses to present to the user.
+               Structure is documented below.
+        :param pulumi.Input[bool] return_partial_responses: Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+        :param pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgs']]] set_parameter_actions: Set parameter values before executing the webhook.
+               Structure is documented below.
+        :param pulumi.Input[str] tag: The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+        :param pulumi.Input[str] webhook: The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+        """
+        if conditional_cases is not None:
+            pulumi.set(__self__, "conditional_cases", conditional_cases)
+        if messages is not None:
+            pulumi.set(__self__, "messages", messages)
+        if return_partial_responses is not None:
+            pulumi.set(__self__, "return_partial_responses", return_partial_responses)
+        if set_parameter_actions is not None:
+            pulumi.set(__self__, "set_parameter_actions", set_parameter_actions)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
+        if webhook is not None:
+            pulumi.set(__self__, "webhook", webhook)
+
+    @property
+    @pulumi.getter(name="conditionalCases")
+    def conditional_cases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArgs']]]]:
+        """
+        Conditional cases for this fulfillment.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conditional_cases")
+
+    @conditional_cases.setter
+    def conditional_cases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArgs']]]]):
+        pulumi.set(self, "conditional_cases", value)
+
+    @property
+    @pulumi.getter
+    def messages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs']]]]:
+        """
+        The list of rich message responses to present to the user.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "messages")
+
+    @messages.setter
+    def messages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs']]]]):
+        pulumi.set(self, "messages", value)
+
+    @property
+    @pulumi.getter(name="returnPartialResponses")
+    def return_partial_responses(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+        """
+        return pulumi.get(self, "return_partial_responses")
+
+    @return_partial_responses.setter
+    def return_partial_responses(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "return_partial_responses", value)
+
+    @property
+    @pulumi.getter(name="setParameterActions")
+    def set_parameter_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgs']]]]:
+        """
+        Set parameter values before executing the webhook.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "set_parameter_actions")
+
+    @set_parameter_actions.setter
+    def set_parameter_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgs']]]]):
+        pulumi.set(self, "set_parameter_actions", value)
+
+    @property
+    @pulumi.getter
+    def tag(self) -> Optional[pulumi.Input[str]]:
+        """
+        The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+        """
+        return pulumi.get(self, "tag")
+
+    @tag.setter
+    def tag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tag", value)
+
+    @property
+    @pulumi.getter
+    def webhook(self) -> Optional[pulumi.Input[str]]:
+        """
+        The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+        """
+        return pulumi.get(self, "webhook")
+
+    @webhook.setter
+    def webhook(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "webhook", value)
+
+
+@pulumi.input_type
+class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArgs:
+    def __init__(__self__, *,
+                 cases: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] cases: A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+               See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+        """
+        if cases is not None:
+            pulumi.set(__self__, "cases", cases)
+
+    @property
+    @pulumi.getter
+    def cases(self) -> Optional[pulumi.Input[str]]:
+        """
+        A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+        See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+        """
+        return pulumi.get(self, "cases")
+
+    @cases.setter
+    def cases(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cases", value)
+
+
+@pulumi.input_type
+class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs:
+    def __init__(__self__, *,
+                 channel: Optional[pulumi.Input[str]] = None,
+                 conversation_success: Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgs']] = None,
+                 live_agent_handoff: Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs']] = None,
+                 output_audio_text: Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs']] = None,
+                 payload: Optional[pulumi.Input[str]] = None,
+                 play_audio: Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgs']] = None,
+                 telephony_transfer_call: Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs']] = None,
+                 text: Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgs']] = None):
+        """
+        :param pulumi.Input[str] channel: The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+        :param pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgs'] conversation_success: Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+               Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+               You may set this, for example:
+               * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+               * In a webhook response when you determine that you handled the customer issue.
+               Structure is documented below.
+        :param pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs'] live_agent_handoff: Indicates that the conversation should be handed off to a live agent.
+               Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+               You may set this, for example:
+               * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+               * In a webhook response when you determine that the customer issue can only be handled by a human.
+               Structure is documented below.
+        :param pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs'] output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+               Structure is documented below.
+        :param pulumi.Input[str] payload: A custom, platform-specific payload.
+        :param pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgs'] play_audio: Specifies an audio clip to be played by the client as part of the response.
+               Structure is documented below.
+        :param pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs'] telephony_transfer_call: Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+               Structure is documented below.
+        :param pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgs'] text: The text response message.
+               Structure is documented below.
+        """
+        if channel is not None:
+            pulumi.set(__self__, "channel", channel)
+        if conversation_success is not None:
+            pulumi.set(__self__, "conversation_success", conversation_success)
+        if live_agent_handoff is not None:
+            pulumi.set(__self__, "live_agent_handoff", live_agent_handoff)
+        if output_audio_text is not None:
+            pulumi.set(__self__, "output_audio_text", output_audio_text)
+        if payload is not None:
+            pulumi.set(__self__, "payload", payload)
+        if play_audio is not None:
+            pulumi.set(__self__, "play_audio", play_audio)
+        if telephony_transfer_call is not None:
+            pulumi.set(__self__, "telephony_transfer_call", telephony_transfer_call)
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter
+    def channel(self) -> Optional[pulumi.Input[str]]:
+        """
+        The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+        """
+        return pulumi.get(self, "channel")
+
+    @channel.setter
+    def channel(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "channel", value)
+
+    @property
+    @pulumi.getter(name="conversationSuccess")
+    def conversation_success(self) -> Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgs']]:
+        """
+        Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+        Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+        You may set this, for example:
+        * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+        * In a webhook response when you determine that you handled the customer issue.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conversation_success")
+
+    @conversation_success.setter
+    def conversation_success(self, value: Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgs']]):
+        pulumi.set(self, "conversation_success", value)
+
+    @property
+    @pulumi.getter(name="liveAgentHandoff")
+    def live_agent_handoff(self) -> Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs']]:
+        """
+        Indicates that the conversation should be handed off to a live agent.
+        Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+        You may set this, for example:
+        * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+        * In a webhook response when you determine that the customer issue can only be handled by a human.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "live_agent_handoff")
+
+    @live_agent_handoff.setter
+    def live_agent_handoff(self, value: Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs']]):
+        pulumi.set(self, "live_agent_handoff", value)
+
+    @property
+    @pulumi.getter(name="outputAudioText")
+    def output_audio_text(self) -> Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs']]:
+        """
+        A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "output_audio_text")
+
+    @output_audio_text.setter
+    def output_audio_text(self, value: Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs']]):
+        pulumi.set(self, "output_audio_text", value)
+
+    @property
+    @pulumi.getter
+    def payload(self) -> Optional[pulumi.Input[str]]:
+        """
+        A custom, platform-specific payload.
+        """
+        return pulumi.get(self, "payload")
+
+    @payload.setter
+    def payload(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payload", value)
+
+    @property
+    @pulumi.getter(name="playAudio")
+    def play_audio(self) -> Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgs']]:
+        """
+        Specifies an audio clip to be played by the client as part of the response.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "play_audio")
+
+    @play_audio.setter
+    def play_audio(self, value: Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgs']]):
+        pulumi.set(self, "play_audio", value)
+
+    @property
+    @pulumi.getter(name="telephonyTransferCall")
+    def telephony_transfer_call(self) -> Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs']]:
+        """
+        Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "telephony_transfer_call")
+
+    @telephony_transfer_call.setter
+    def telephony_transfer_call(self, value: Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs']]):
+        pulumi.set(self, "telephony_transfer_call", value)
+
+    @property
+    @pulumi.getter
+    def text(self) -> Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgs']]:
+        """
+        The text response message.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "text")
+
+    @text.setter
+    def text(self, value: Optional[pulumi.Input['CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgs']]):
+        pulumi.set(self, "text", value)
+
+
+@pulumi.input_type
+class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgs:
+    def __init__(__self__, *,
+                 metadata: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] metadata: Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[pulumi.Input[str]]:
+        """
+        Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metadata", value)
+
+
+@pulumi.input_type
+class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs:
+    def __init__(__self__, *,
+                 metadata: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] metadata: Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[pulumi.Input[str]]:
+        """
+        Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metadata", value)
+
+
+@pulumi.input_type
+class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs:
+    def __init__(__self__, *,
+                 allow_playback_interruption: Optional[pulumi.Input[bool]] = None,
+                 ssml: Optional[pulumi.Input[str]] = None,
+                 text: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] allow_playback_interruption: (Output)
+               Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        :param pulumi.Input[str] ssml: The SSML text to be synthesized. For more information, see SSML.
+        :param pulumi.Input[str] text: The raw text to be synthesized.
+        """
+        if allow_playback_interruption is not None:
+            pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
+        if ssml is not None:
+            pulumi.set(__self__, "ssml", ssml)
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter(name="allowPlaybackInterruption")
+    def allow_playback_interruption(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Output)
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+        return pulumi.get(self, "allow_playback_interruption")
+
+    @allow_playback_interruption.setter
+    def allow_playback_interruption(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_playback_interruption", value)
+
+    @property
+    @pulumi.getter
+    def ssml(self) -> Optional[pulumi.Input[str]]:
+        """
+        The SSML text to be synthesized. For more information, see SSML.
+        """
+        return pulumi.get(self, "ssml")
+
+    @ssml.setter
+    def ssml(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ssml", value)
+
+    @property
+    @pulumi.getter
+    def text(self) -> Optional[pulumi.Input[str]]:
+        """
+        The raw text to be synthesized.
+        """
+        return pulumi.get(self, "text")
+
+    @text.setter
+    def text(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "text", value)
+
+
+@pulumi.input_type
+class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgs:
+    def __init__(__self__, *,
+                 audio_uri: pulumi.Input[str],
+                 allow_playback_interruption: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] audio_uri: URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+        :param pulumi.Input[bool] allow_playback_interruption: (Output)
+               Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+        pulumi.set(__self__, "audio_uri", audio_uri)
+        if allow_playback_interruption is not None:
+            pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
+
+    @property
+    @pulumi.getter(name="audioUri")
+    def audio_uri(self) -> pulumi.Input[str]:
+        """
+        URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+        """
+        return pulumi.get(self, "audio_uri")
+
+    @audio_uri.setter
+    def audio_uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "audio_uri", value)
+
+    @property
+    @pulumi.getter(name="allowPlaybackInterruption")
+    def allow_playback_interruption(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Output)
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+        return pulumi.get(self, "allow_playback_interruption")
+
+    @allow_playback_interruption.setter
+    def allow_playback_interruption(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_playback_interruption", value)
+
+
+@pulumi.input_type
+class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs:
+    def __init__(__self__, *,
+                 phone_number: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] phone_number: Transfer the call to a phone number in E.164 format.
+        """
+        pulumi.set(__self__, "phone_number", phone_number)
+
+    @property
+    @pulumi.getter(name="phoneNumber")
+    def phone_number(self) -> pulumi.Input[str]:
+        """
+        Transfer the call to a phone number in E.164 format.
+        """
+        return pulumi.get(self, "phone_number")
+
+    @phone_number.setter
+    def phone_number(self, value: pulumi.Input[str]):
+        pulumi.set(self, "phone_number", value)
+
+
+@pulumi.input_type
+class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgs:
+    def __init__(__self__, *,
+                 allow_playback_interruption: Optional[pulumi.Input[bool]] = None,
+                 texts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[bool] allow_playback_interruption: (Output)
+               Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] texts: A collection of text responses.
+        """
+        if allow_playback_interruption is not None:
+            pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
+        if texts is not None:
+            pulumi.set(__self__, "texts", texts)
+
+    @property
+    @pulumi.getter(name="allowPlaybackInterruption")
+    def allow_playback_interruption(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Output)
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+        return pulumi.get(self, "allow_playback_interruption")
+
+    @allow_playback_interruption.setter
+    def allow_playback_interruption(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_playback_interruption", value)
+
+    @property
+    @pulumi.getter
+    def texts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A collection of text responses.
+        """
+        return pulumi.get(self, "texts")
+
+    @texts.setter
+    def texts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "texts", value)
+
+
+@pulumi.input_type
+class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgs:
+    def __init__(__self__, *,
+                 parameter: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] parameter: Display name of the parameter.
+        :param pulumi.Input[str] value: The new JSON-encoded value of the parameter. A null value clears the parameter.
+        """
+        if parameter is not None:
+            pulumi.set(__self__, "parameter", parameter)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def parameter(self) -> Optional[pulumi.Input[str]]:
+        """
+        Display name of the parameter.
+        """
+        return pulumi.get(self, "parameter")
+
+    @parameter.setter
+    def parameter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parameter", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The new JSON-encoded value of the parameter. A null value clears the parameter.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
 class CxPageTransitionRouteArgs:
     def __init__(__self__, *,
                  condition: Optional[pulumi.Input[str]] = None,
@@ -1605,7 +4364,7 @@ class CxPageTransitionRouteArgs:
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
         :param pulumi.Input[str] target_page: The target page to transition to.
                Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
-        :param pulumi.Input['CxPageTransitionRouteTriggerFulfillmentArgs'] trigger_fulfillment: The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+        :param pulumi.Input['CxPageTransitionRouteTriggerFulfillmentArgs'] trigger_fulfillment: The fulfillment to call when the condition is satisfied. At least one of triggerFulfillment and target must be specified. When both are defined, triggerFulfillment is executed first.
                Structure is documented below.
         """
         if condition is not None:
@@ -1690,7 +4449,7 @@ class CxPageTransitionRouteArgs:
     @pulumi.getter(name="triggerFulfillment")
     def trigger_fulfillment(self) -> Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentArgs']]:
         """
-        The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+        The fulfillment to call when the condition is satisfied. At least one of triggerFulfillment and target must be specified. When both are defined, triggerFulfillment is executed first.
         Structure is documented below.
         """
         return pulumi.get(self, "trigger_fulfillment")
@@ -1703,25 +4462,48 @@ class CxPageTransitionRouteArgs:
 @pulumi.input_type
 class CxPageTransitionRouteTriggerFulfillmentArgs:
     def __init__(__self__, *,
+                 conditional_cases: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentConditionalCaseArgs']]]] = None,
                  messages: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageArgs']]]] = None,
                  return_partial_responses: Optional[pulumi.Input[bool]] = None,
+                 set_parameter_actions: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs']]]] = None,
                  tag: Optional[pulumi.Input[str]] = None,
                  webhook: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentConditionalCaseArgs']]] conditional_cases: Conditional cases for this fulfillment.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageArgs']]] messages: The list of rich message responses to present to the user.
                Structure is documented below.
         :param pulumi.Input[bool] return_partial_responses: Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+        :param pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs']]] set_parameter_actions: Set parameter values before executing the webhook.
+               Structure is documented below.
         :param pulumi.Input[str] tag: The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
         :param pulumi.Input[str] webhook: The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
         """
+        if conditional_cases is not None:
+            pulumi.set(__self__, "conditional_cases", conditional_cases)
         if messages is not None:
             pulumi.set(__self__, "messages", messages)
         if return_partial_responses is not None:
             pulumi.set(__self__, "return_partial_responses", return_partial_responses)
+        if set_parameter_actions is not None:
+            pulumi.set(__self__, "set_parameter_actions", set_parameter_actions)
         if tag is not None:
             pulumi.set(__self__, "tag", tag)
         if webhook is not None:
             pulumi.set(__self__, "webhook", webhook)
+
+    @property
+    @pulumi.getter(name="conditionalCases")
+    def conditional_cases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentConditionalCaseArgs']]]]:
+        """
+        Conditional cases for this fulfillment.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conditional_cases")
+
+    @conditional_cases.setter
+    def conditional_cases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentConditionalCaseArgs']]]]):
+        pulumi.set(self, "conditional_cases", value)
 
     @property
     @pulumi.getter
@@ -1749,6 +4531,19 @@ class CxPageTransitionRouteTriggerFulfillmentArgs:
         pulumi.set(self, "return_partial_responses", value)
 
     @property
+    @pulumi.getter(name="setParameterActions")
+    def set_parameter_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs']]]]:
+        """
+        Set parameter values before executing the webhook.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "set_parameter_actions")
+
+    @set_parameter_actions.setter
+    def set_parameter_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs']]]]):
+        pulumi.set(self, "set_parameter_actions", value)
+
+    @property
     @pulumi.getter
     def tag(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1774,15 +4569,178 @@ class CxPageTransitionRouteTriggerFulfillmentArgs:
 
 
 @pulumi.input_type
+class CxPageTransitionRouteTriggerFulfillmentConditionalCaseArgs:
+    def __init__(__self__, *,
+                 cases: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] cases: A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+               See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+        """
+        if cases is not None:
+            pulumi.set(__self__, "cases", cases)
+
+    @property
+    @pulumi.getter
+    def cases(self) -> Optional[pulumi.Input[str]]:
+        """
+        A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+        See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+        """
+        return pulumi.get(self, "cases")
+
+    @cases.setter
+    def cases(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cases", value)
+
+
+@pulumi.input_type
 class CxPageTransitionRouteTriggerFulfillmentMessageArgs:
     def __init__(__self__, *,
+                 channel: Optional[pulumi.Input[str]] = None,
+                 conversation_success: Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs']] = None,
+                 live_agent_handoff: Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs']] = None,
+                 output_audio_text: Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs']] = None,
+                 payload: Optional[pulumi.Input[str]] = None,
+                 play_audio: Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgs']] = None,
+                 telephony_transfer_call: Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs']] = None,
                  text: Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageTextArgs']] = None):
         """
+        :param pulumi.Input[str] channel: The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+        :param pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs'] conversation_success: Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+               Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+               You may set this, for example:
+               * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+               * In a webhook response when you determine that you handled the customer issue.
+               Structure is documented below.
+        :param pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs'] live_agent_handoff: Indicates that the conversation should be handed off to a live agent.
+               Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+               You may set this, for example:
+               * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+               * In a webhook response when you determine that the customer issue can only be handled by a human.
+               Structure is documented below.
+        :param pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs'] output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+               Structure is documented below.
+        :param pulumi.Input[str] payload: A custom, platform-specific payload.
+        :param pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgs'] play_audio: Specifies an audio clip to be played by the client as part of the response.
+               Structure is documented below.
+        :param pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs'] telephony_transfer_call: Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+               Structure is documented below.
         :param pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageTextArgs'] text: The text response message.
                Structure is documented below.
         """
+        if channel is not None:
+            pulumi.set(__self__, "channel", channel)
+        if conversation_success is not None:
+            pulumi.set(__self__, "conversation_success", conversation_success)
+        if live_agent_handoff is not None:
+            pulumi.set(__self__, "live_agent_handoff", live_agent_handoff)
+        if output_audio_text is not None:
+            pulumi.set(__self__, "output_audio_text", output_audio_text)
+        if payload is not None:
+            pulumi.set(__self__, "payload", payload)
+        if play_audio is not None:
+            pulumi.set(__self__, "play_audio", play_audio)
+        if telephony_transfer_call is not None:
+            pulumi.set(__self__, "telephony_transfer_call", telephony_transfer_call)
         if text is not None:
             pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter
+    def channel(self) -> Optional[pulumi.Input[str]]:
+        """
+        The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+        """
+        return pulumi.get(self, "channel")
+
+    @channel.setter
+    def channel(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "channel", value)
+
+    @property
+    @pulumi.getter(name="conversationSuccess")
+    def conversation_success(self) -> Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs']]:
+        """
+        Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+        Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+        You may set this, for example:
+        * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+        * In a webhook response when you determine that you handled the customer issue.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conversation_success")
+
+    @conversation_success.setter
+    def conversation_success(self, value: Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs']]):
+        pulumi.set(self, "conversation_success", value)
+
+    @property
+    @pulumi.getter(name="liveAgentHandoff")
+    def live_agent_handoff(self) -> Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs']]:
+        """
+        Indicates that the conversation should be handed off to a live agent.
+        Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+        You may set this, for example:
+        * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+        * In a webhook response when you determine that the customer issue can only be handled by a human.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "live_agent_handoff")
+
+    @live_agent_handoff.setter
+    def live_agent_handoff(self, value: Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs']]):
+        pulumi.set(self, "live_agent_handoff", value)
+
+    @property
+    @pulumi.getter(name="outputAudioText")
+    def output_audio_text(self) -> Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs']]:
+        """
+        A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "output_audio_text")
+
+    @output_audio_text.setter
+    def output_audio_text(self, value: Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs']]):
+        pulumi.set(self, "output_audio_text", value)
+
+    @property
+    @pulumi.getter
+    def payload(self) -> Optional[pulumi.Input[str]]:
+        """
+        A custom, platform-specific payload.
+        """
+        return pulumi.get(self, "payload")
+
+    @payload.setter
+    def payload(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "payload", value)
+
+    @property
+    @pulumi.getter(name="playAudio")
+    def play_audio(self) -> Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgs']]:
+        """
+        Specifies an audio clip to be played by the client as part of the response.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "play_audio")
+
+    @play_audio.setter
+    def play_audio(self, value: Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgs']]):
+        pulumi.set(self, "play_audio", value)
+
+    @property
+    @pulumi.getter(name="telephonyTransferCall")
+    def telephony_transfer_call(self) -> Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs']]:
+        """
+        Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "telephony_transfer_call")
+
+    @telephony_transfer_call.setter
+    def telephony_transfer_call(self, value: Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs']]):
+        pulumi.set(self, "telephony_transfer_call", value)
 
     @property
     @pulumi.getter
@@ -1796,6 +4754,171 @@ class CxPageTransitionRouteTriggerFulfillmentMessageArgs:
     @text.setter
     def text(self, value: Optional[pulumi.Input['CxPageTransitionRouteTriggerFulfillmentMessageTextArgs']]):
         pulumi.set(self, "text", value)
+
+
+@pulumi.input_type
+class CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs:
+    def __init__(__self__, *,
+                 metadata: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] metadata: Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[pulumi.Input[str]]:
+        """
+        Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metadata", value)
+
+
+@pulumi.input_type
+class CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs:
+    def __init__(__self__, *,
+                 metadata: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] metadata: Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[pulumi.Input[str]]:
+        """
+        Custom metadata. Dialogflow doesn't impose any structure on this.
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metadata", value)
+
+
+@pulumi.input_type
+class CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs:
+    def __init__(__self__, *,
+                 allow_playback_interruption: Optional[pulumi.Input[bool]] = None,
+                 ssml: Optional[pulumi.Input[str]] = None,
+                 text: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] allow_playback_interruption: (Output)
+               Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        :param pulumi.Input[str] ssml: The SSML text to be synthesized. For more information, see SSML.
+        :param pulumi.Input[str] text: The raw text to be synthesized.
+        """
+        if allow_playback_interruption is not None:
+            pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
+        if ssml is not None:
+            pulumi.set(__self__, "ssml", ssml)
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter(name="allowPlaybackInterruption")
+    def allow_playback_interruption(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Output)
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+        return pulumi.get(self, "allow_playback_interruption")
+
+    @allow_playback_interruption.setter
+    def allow_playback_interruption(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_playback_interruption", value)
+
+    @property
+    @pulumi.getter
+    def ssml(self) -> Optional[pulumi.Input[str]]:
+        """
+        The SSML text to be synthesized. For more information, see SSML.
+        """
+        return pulumi.get(self, "ssml")
+
+    @ssml.setter
+    def ssml(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ssml", value)
+
+    @property
+    @pulumi.getter
+    def text(self) -> Optional[pulumi.Input[str]]:
+        """
+        The raw text to be synthesized.
+        """
+        return pulumi.get(self, "text")
+
+    @text.setter
+    def text(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "text", value)
+
+
+@pulumi.input_type
+class CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgs:
+    def __init__(__self__, *,
+                 audio_uri: pulumi.Input[str],
+                 allow_playback_interruption: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] audio_uri: URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+        :param pulumi.Input[bool] allow_playback_interruption: (Output)
+               Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+        pulumi.set(__self__, "audio_uri", audio_uri)
+        if allow_playback_interruption is not None:
+            pulumi.set(__self__, "allow_playback_interruption", allow_playback_interruption)
+
+    @property
+    @pulumi.getter(name="audioUri")
+    def audio_uri(self) -> pulumi.Input[str]:
+        """
+        URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+        """
+        return pulumi.get(self, "audio_uri")
+
+    @audio_uri.setter
+    def audio_uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "audio_uri", value)
+
+    @property
+    @pulumi.getter(name="allowPlaybackInterruption")
+    def allow_playback_interruption(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Output)
+        Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+        """
+        return pulumi.get(self, "allow_playback_interruption")
+
+    @allow_playback_interruption.setter
+    def allow_playback_interruption(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_playback_interruption", value)
+
+
+@pulumi.input_type
+class CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs:
+    def __init__(__self__, *,
+                 phone_number: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] phone_number: Transfer the call to a phone number in E.164 format.
+        """
+        pulumi.set(__self__, "phone_number", phone_number)
+
+    @property
+    @pulumi.getter(name="phoneNumber")
+    def phone_number(self) -> pulumi.Input[str]:
+        """
+        Transfer the call to a phone number in E.164 format.
+        """
+        return pulumi.get(self, "phone_number")
+
+    @phone_number.setter
+    def phone_number(self, value: pulumi.Input[str]):
+        pulumi.set(self, "phone_number", value)
 
 
 @pulumi.input_type
@@ -1837,6 +4960,45 @@ class CxPageTransitionRouteTriggerFulfillmentMessageTextArgs:
     @texts.setter
     def texts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "texts", value)
+
+
+@pulumi.input_type
+class CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs:
+    def __init__(__self__, *,
+                 parameter: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] parameter: Display name of the parameter.
+        :param pulumi.Input[str] value: The new JSON-encoded value of the parameter. A null value clears the parameter.
+        """
+        if parameter is not None:
+            pulumi.set(__self__, "parameter", parameter)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def parameter(self) -> Optional[pulumi.Input[str]]:
+        """
+        Display name of the parameter.
+        """
+        return pulumi.get(self, "parameter")
+
+    @parameter.setter
+    def parameter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parameter", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The new JSON-encoded value of the parameter. A null value clears the parameter.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
 
 
 @pulumi.input_type

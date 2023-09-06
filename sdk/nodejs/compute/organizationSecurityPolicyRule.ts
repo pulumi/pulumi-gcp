@@ -58,7 +58,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * OrganizationSecurityPolicyRule can be imported using any of these accepted formats
+ * OrganizationSecurityPolicyRule can be imported using any of these accepted formats:
  *
  * ```sh
  *  $ pulumi import gcp:compute/organizationSecurityPolicyRule:OrganizationSecurityPolicyRule default {{policy_id}}/priority/{{priority}}

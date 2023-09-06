@@ -136,7 +136,7 @@ import (
 //
 // ## Import
 //
-// # FeaturestoreEntitytypeFeature can be imported using any of these accepted formats
+// FeaturestoreEntitytypeFeature can be imported using any of these accepted formats:
 //
 // ```sh
 //

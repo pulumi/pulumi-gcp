@@ -120,6 +120,57 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Firebase Web App Custom Api Key
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.projects.ApiKey;
+ * import com.pulumi.gcp.projects.ApiKeyArgs;
+ * import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsArgs;
+ * import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsBrowserKeyRestrictionsArgs;
+ * import com.pulumi.gcp.firebase.WebApp;
+ * import com.pulumi.gcp.firebase.WebAppArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var web = new ApiKey(&#34;web&#34;, ApiKeyArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .displayName(&#34;Display Name&#34;)
+ *             .restrictions(ApiKeyRestrictionsArgs.builder()
+ *                 .browserKeyRestrictions(ApiKeyRestrictionsBrowserKeyRestrictionsArgs.builder()
+ *                     .allowedReferrers(&#34;*&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var default_ = new WebApp(&#34;default&#34;, WebAppArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .displayName(&#34;Display Name&#34;)
+ *             .apiKeyId(web.uid())
+ *             .deletionPolicy(&#34;DELETE&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -148,6 +199,24 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:firebase/webApp:WebApp")
 public class WebApp extends com.pulumi.resources.CustomResource {
+    /**
+     * The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the WebApp.
+     * If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the WebApp.
+     * This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+     * 
+     */
+    @Export(name="apiKeyId", type=String.class, parameters={})
+    private Output<String> apiKeyId;
+
+    /**
+     * @return The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the WebApp.
+     * If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the WebApp.
+     * This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+     * 
+     */
+    public Output<String> apiKeyId() {
+        return this.apiKeyId;
+    }
     /**
      * The globally unique, Firebase-assigned identifier of the App.
      * This identifier should be treated as an opaque token, as the data format is not specified.

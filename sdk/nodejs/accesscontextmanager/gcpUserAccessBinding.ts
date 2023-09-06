@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * GcpUserAccessBinding can be imported using any of these accepted formats
+ * GcpUserAccessBinding can be imported using any of these accepted formats:
  *
  * ```sh
  *  $ pulumi import gcp:accesscontextmanager/gcpUserAccessBinding:GcpUserAccessBinding default {{name}}

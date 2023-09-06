@@ -15,8 +15,8 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         /// <summary>
         /// Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
         /// </summary>
-        [Input("mode", required: true)]
-        public Input<int> Mode { get; set; } = null!;
+        [Input("mode")]
+        public Input<int>? Mode { get; set; }
 
         /// <summary>
         /// The relative path of the secret in the container.

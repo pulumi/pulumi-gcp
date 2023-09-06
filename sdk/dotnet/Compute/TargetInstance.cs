@@ -207,6 +207,12 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The resource URL for the security policy associated with this target instance.
+        /// </summary>
+        [Output("securityPolicy")]
+        public Output<string?> SecurityPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// The URI of the created resource.
         /// </summary>
         [Output("selfLink")]
@@ -319,6 +325,12 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// The resource URL for the security policy associated with this target instance.
+        /// </summary>
+        [Input("securityPolicy")]
+        public Input<string>? SecurityPolicy { get; set; }
+
+        /// <summary>
         /// URL of the zone where the target instance resides.
         /// </summary>
         [Input("zone")]
@@ -391,6 +403,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The resource URL for the security policy associated with this target instance.
+        /// </summary>
+        [Input("securityPolicy")]
+        public Input<string>? SecurityPolicy { get; set; }
 
         /// <summary>
         /// The URI of the created resource.

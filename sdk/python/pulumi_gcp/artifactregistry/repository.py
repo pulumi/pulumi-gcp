@@ -18,6 +18,8 @@ class RepositoryArgs:
     def __init__(__self__, *,
                  format: pulumi.Input[str],
                  repository_id: pulumi.Input[str],
+                 cleanup_policies: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryCleanupPolicyArgs']]]] = None,
+                 cleanup_policy_dry_run: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  docker_config: Optional[pulumi.Input['RepositoryDockerConfigArgs']] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
@@ -39,6 +41,10 @@ class RepositoryArgs:
                - - -
         :param pulumi.Input[str] repository_id: The last part of the repository name, for example:
                "repo1"
+        :param pulumi.Input[Sequence[pulumi.Input['RepositoryCleanupPolicyArgs']]] cleanup_policies: Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
+               deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
+               under 128 characters in length.
+        :param pulumi.Input[bool] cleanup_policy_dry_run: If true, the cleanup pipeline is prevented from deleting versions in this repository.
         :param pulumi.Input[str] description: The user-provided description of the repository.
         :param pulumi.Input['RepositoryDockerConfigArgs'] docker_config: Docker repository config contains repository level configuration for the repositories of docker type.
                Structure is documented below.
@@ -68,6 +74,10 @@ class RepositoryArgs:
         """
         pulumi.set(__self__, "format", format)
         pulumi.set(__self__, "repository_id", repository_id)
+        if cleanup_policies is not None:
+            pulumi.set(__self__, "cleanup_policies", cleanup_policies)
+        if cleanup_policy_dry_run is not None:
+            pulumi.set(__self__, "cleanup_policy_dry_run", cleanup_policy_dry_run)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if docker_config is not None:
@@ -119,6 +129,32 @@ class RepositoryArgs:
     @repository_id.setter
     def repository_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "repository_id", value)
+
+    @property
+    @pulumi.getter(name="cleanupPolicies")
+    def cleanup_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryCleanupPolicyArgs']]]]:
+        """
+        Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
+        deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
+        under 128 characters in length.
+        """
+        return pulumi.get(self, "cleanup_policies")
+
+    @cleanup_policies.setter
+    def cleanup_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryCleanupPolicyArgs']]]]):
+        pulumi.set(self, "cleanup_policies", value)
+
+    @property
+    @pulumi.getter(name="cleanupPolicyDryRun")
+    def cleanup_policy_dry_run(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the cleanup pipeline is prevented from deleting versions in this repository.
+        """
+        return pulumi.get(self, "cleanup_policy_dry_run")
+
+    @cleanup_policy_dry_run.setter
+    def cleanup_policy_dry_run(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "cleanup_policy_dry_run", value)
 
     @property
     @pulumi.getter
@@ -260,6 +296,8 @@ class RepositoryArgs:
 @pulumi.input_type
 class _RepositoryState:
     def __init__(__self__, *,
+                 cleanup_policies: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryCleanupPolicyArgs']]]] = None,
+                 cleanup_policy_dry_run: Optional[pulumi.Input[bool]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  docker_config: Optional[pulumi.Input['RepositoryDockerConfigArgs']] = None,
@@ -277,6 +315,10 @@ class _RepositoryState:
                  virtual_repository_config: Optional[pulumi.Input['RepositoryVirtualRepositoryConfigArgs']] = None):
         """
         Input properties used for looking up and filtering Repository resources.
+        :param pulumi.Input[Sequence[pulumi.Input['RepositoryCleanupPolicyArgs']]] cleanup_policies: Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
+               deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
+               under 128 characters in length.
+        :param pulumi.Input[bool] cleanup_policy_dry_run: If true, the cleanup pipeline is prevented from deleting versions in this repository.
         :param pulumi.Input[str] create_time: The time when the repository was created.
         :param pulumi.Input[str] description: The user-provided description of the repository.
         :param pulumi.Input['RepositoryDockerConfigArgs'] docker_config: Docker repository config contains repository level configuration for the repositories of docker type.
@@ -317,6 +359,10 @@ class _RepositoryState:
         :param pulumi.Input['RepositoryVirtualRepositoryConfigArgs'] virtual_repository_config: Configuration specific for a Virtual Repository.
                Structure is documented below.
         """
+        if cleanup_policies is not None:
+            pulumi.set(__self__, "cleanup_policies", cleanup_policies)
+        if cleanup_policy_dry_run is not None:
+            pulumi.set(__self__, "cleanup_policy_dry_run", cleanup_policy_dry_run)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if description is not None:
@@ -347,6 +393,32 @@ class _RepositoryState:
             pulumi.set(__self__, "update_time", update_time)
         if virtual_repository_config is not None:
             pulumi.set(__self__, "virtual_repository_config", virtual_repository_config)
+
+    @property
+    @pulumi.getter(name="cleanupPolicies")
+    def cleanup_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryCleanupPolicyArgs']]]]:
+        """
+        Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
+        deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
+        under 128 characters in length.
+        """
+        return pulumi.get(self, "cleanup_policies")
+
+    @cleanup_policies.setter
+    def cleanup_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryCleanupPolicyArgs']]]]):
+        pulumi.set(self, "cleanup_policies", value)
+
+    @property
+    @pulumi.getter(name="cleanupPolicyDryRun")
+    def cleanup_policy_dry_run(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the cleanup pipeline is prevented from deleting versions in this repository.
+        """
+        return pulumi.get(self, "cleanup_policy_dry_run")
+
+    @cleanup_policy_dry_run.setter
+    def cleanup_policy_dry_run(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "cleanup_policy_dry_run", value)
 
     @property
     @pulumi.getter(name="createTime")
@@ -558,6 +630,8 @@ class Repository(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 cleanup_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepositoryCleanupPolicyArgs']]]]] = None,
+                 cleanup_policy_dry_run: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  docker_config: Optional[pulumi.Input[pulumi.InputType['RepositoryDockerConfigArgs']]] = None,
                  format: Optional[pulumi.Input[str]] = None,
@@ -672,6 +746,58 @@ class Repository(pulumi.CustomResource):
             ),
             repository_id="my-repository")
         ```
+        ### Artifact Registry Repository Cleanup
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_repo = gcp.artifactregistry.Repository("my-repo",
+            location="us-central1",
+            repository_id="my-repository",
+            description="example docker repository with cleanup policies",
+            format="DOCKER",
+            cleanup_policy_dry_run=False,
+            cleanup_policies=[
+                gcp.artifactregistry.RepositoryCleanupPolicyArgs(
+                    id="delete-prerelease",
+                    action="DELETE",
+                    condition=gcp.artifactregistry.RepositoryCleanupPolicyConditionArgs(
+                        tag_state="TAGGED",
+                        tag_prefixes=[
+                            "alpha",
+                            "v0",
+                        ],
+                        older_than="2592000s",
+                    ),
+                ),
+                gcp.artifactregistry.RepositoryCleanupPolicyArgs(
+                    id="keep-tagged-release",
+                    action="KEEP",
+                    condition=gcp.artifactregistry.RepositoryCleanupPolicyConditionArgs(
+                        tag_state="TAGGED",
+                        tag_prefixes=["release"],
+                        package_name_prefixes=[
+                            "webapp",
+                            "mobile",
+                        ],
+                    ),
+                ),
+                gcp.artifactregistry.RepositoryCleanupPolicyArgs(
+                    id="keep-minimum-versions",
+                    action="KEEP",
+                    most_recent_versions=gcp.artifactregistry.RepositoryCleanupPolicyMostRecentVersionsArgs(
+                        package_name_prefixes=[
+                            "webapp",
+                            "mobile",
+                            "sandbox",
+                        ],
+                        keep_count=5,
+                    ),
+                ),
+            ],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -695,6 +821,10 @@ class Repository(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepositoryCleanupPolicyArgs']]]] cleanup_policies: Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
+               deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
+               under 128 characters in length.
+        :param pulumi.Input[bool] cleanup_policy_dry_run: If true, the cleanup pipeline is prevented from deleting versions in this repository.
         :param pulumi.Input[str] description: The user-provided description of the repository.
         :param pulumi.Input[pulumi.InputType['RepositoryDockerConfigArgs']] docker_config: Docker repository config contains repository level configuration for the repositories of docker type.
                Structure is documented below.
@@ -838,6 +968,58 @@ class Repository(pulumi.CustomResource):
             ),
             repository_id="my-repository")
         ```
+        ### Artifact Registry Repository Cleanup
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_repo = gcp.artifactregistry.Repository("my-repo",
+            location="us-central1",
+            repository_id="my-repository",
+            description="example docker repository with cleanup policies",
+            format="DOCKER",
+            cleanup_policy_dry_run=False,
+            cleanup_policies=[
+                gcp.artifactregistry.RepositoryCleanupPolicyArgs(
+                    id="delete-prerelease",
+                    action="DELETE",
+                    condition=gcp.artifactregistry.RepositoryCleanupPolicyConditionArgs(
+                        tag_state="TAGGED",
+                        tag_prefixes=[
+                            "alpha",
+                            "v0",
+                        ],
+                        older_than="2592000s",
+                    ),
+                ),
+                gcp.artifactregistry.RepositoryCleanupPolicyArgs(
+                    id="keep-tagged-release",
+                    action="KEEP",
+                    condition=gcp.artifactregistry.RepositoryCleanupPolicyConditionArgs(
+                        tag_state="TAGGED",
+                        tag_prefixes=["release"],
+                        package_name_prefixes=[
+                            "webapp",
+                            "mobile",
+                        ],
+                    ),
+                ),
+                gcp.artifactregistry.RepositoryCleanupPolicyArgs(
+                    id="keep-minimum-versions",
+                    action="KEEP",
+                    most_recent_versions=gcp.artifactregistry.RepositoryCleanupPolicyMostRecentVersionsArgs(
+                        package_name_prefixes=[
+                            "webapp",
+                            "mobile",
+                            "sandbox",
+                        ],
+                        keep_count=5,
+                    ),
+                ),
+            ],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -874,6 +1056,8 @@ class Repository(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 cleanup_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepositoryCleanupPolicyArgs']]]]] = None,
+                 cleanup_policy_dry_run: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  docker_config: Optional[pulumi.Input[pulumi.InputType['RepositoryDockerConfigArgs']]] = None,
                  format: Optional[pulumi.Input[str]] = None,
@@ -895,6 +1079,8 @@ class Repository(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RepositoryArgs.__new__(RepositoryArgs)
 
+            __props__.__dict__["cleanup_policies"] = cleanup_policies
+            __props__.__dict__["cleanup_policy_dry_run"] = cleanup_policy_dry_run
             __props__.__dict__["description"] = description
             __props__.__dict__["docker_config"] = docker_config
             if format is None and not opts.urn:
@@ -924,6 +1110,8 @@ class Repository(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            cleanup_policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepositoryCleanupPolicyArgs']]]]] = None,
+            cleanup_policy_dry_run: Optional[pulumi.Input[bool]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             docker_config: Optional[pulumi.Input[pulumi.InputType['RepositoryDockerConfigArgs']]] = None,
@@ -946,6 +1134,10 @@ class Repository(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepositoryCleanupPolicyArgs']]]] cleanup_policies: Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
+               deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
+               under 128 characters in length.
+        :param pulumi.Input[bool] cleanup_policy_dry_run: If true, the cleanup pipeline is prevented from deleting versions in this repository.
         :param pulumi.Input[str] create_time: The time when the repository was created.
         :param pulumi.Input[str] description: The user-provided description of the repository.
         :param pulumi.Input[pulumi.InputType['RepositoryDockerConfigArgs']] docker_config: Docker repository config contains repository level configuration for the repositories of docker type.
@@ -990,6 +1182,8 @@ class Repository(pulumi.CustomResource):
 
         __props__ = _RepositoryState.__new__(_RepositoryState)
 
+        __props__.__dict__["cleanup_policies"] = cleanup_policies
+        __props__.__dict__["cleanup_policy_dry_run"] = cleanup_policy_dry_run
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["docker_config"] = docker_config
@@ -1006,6 +1200,24 @@ class Repository(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         __props__.__dict__["virtual_repository_config"] = virtual_repository_config
         return Repository(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="cleanupPolicies")
+    def cleanup_policies(self) -> pulumi.Output[Optional[Sequence['outputs.RepositoryCleanupPolicy']]]:
+        """
+        Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
+        deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
+        under 128 characters in length.
+        """
+        return pulumi.get(self, "cleanup_policies")
+
+    @property
+    @pulumi.getter(name="cleanupPolicyDryRun")
+    def cleanup_policy_dry_run(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If true, the cleanup pipeline is prevented from deleting versions in this repository.
+        """
+        return pulumi.get(self, "cleanup_policy_dry_run")
 
     @property
     @pulumi.getter(name="createTime")

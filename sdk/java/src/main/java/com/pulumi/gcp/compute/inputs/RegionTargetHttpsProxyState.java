@@ -158,16 +158,18 @@ public final class RegionTargetHttpsProxyState extends com.pulumi.resources.Reso
     }
 
     /**
-     * A reference to the Region SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the
-     * TargetHttpsProxy resource will not have any SSL policy configured.
+     * A reference to the Region SslPolicy resource that will be associated with
+     * the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
+     * resource will not have any SSL policy configured.
      * 
      */
     @Import(name="sslPolicy")
     private @Nullable Output<String> sslPolicy;
 
     /**
-     * @return A reference to the Region SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the
-     * TargetHttpsProxy resource will not have any SSL policy configured.
+     * @return A reference to the Region SslPolicy resource that will be associated with
+     * the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
+     * resource will not have any SSL policy configured.
      * 
      */
     public Optional<Output<String>> sslPolicy() {
@@ -429,8 +431,9 @@ public final class RegionTargetHttpsProxyState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param sslPolicy A reference to the Region SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the
-         * TargetHttpsProxy resource will not have any SSL policy configured.
+         * @param sslPolicy A reference to the Region SslPolicy resource that will be associated with
+         * the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
+         * resource will not have any SSL policy configured.
          * 
          * @return builder
          * 
@@ -441,8 +444,9 @@ public final class RegionTargetHttpsProxyState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param sslPolicy A reference to the Region SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the
-         * TargetHttpsProxy resource will not have any SSL policy configured.
+         * @param sslPolicy A reference to the Region SslPolicy resource that will be associated with
+         * the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
+         * resource will not have any SSL policy configured.
          * 
          * @return builder
          * 

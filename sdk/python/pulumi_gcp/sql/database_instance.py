@@ -316,6 +316,7 @@ class _DatabaseInstanceState:
                  connection_name: Optional[pulumi.Input[str]] = None,
                  database_version: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 dns_name: Optional[pulumi.Input[str]] = None,
                  encryption_key_name: Optional[pulumi.Input[str]] = None,
                  first_ip_address: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
@@ -325,6 +326,7 @@ class _DatabaseInstanceState:
                  name: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 psc_service_attachment_link: Optional[pulumi.Input[str]] = None,
                  public_ip_address: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  replica_configuration: Optional[pulumi.Input['DatabaseInstanceReplicaConfigurationArgs']] = None,
@@ -353,6 +355,7 @@ class _DatabaseInstanceState:
                includes an up-to-date reference of supported versions.
         :param pulumi.Input[bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
                in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
+        :param pulumi.Input[str] dns_name: The dns name of the instance.
         :param pulumi.Input[str] encryption_key_name: The full path to the encryption key used for the CMEK disk encryption.  Setting
                up disk encryption currently requires manual steps outside of this provider.
                The provided key must be in the same region as the SQL instance.  In order
@@ -374,6 +377,7 @@ class _DatabaseInstanceState:
         :param pulumi.Input[str] private_ip_address: The first private (`PRIVATE`) IPv4 address assigned.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
+        :param pulumi.Input[str] psc_service_attachment_link: The link to service attachment of PSC instance.
         :param pulumi.Input[str] public_ip_address: The first public (`PRIMARY`) IPv4 address assigned.
         :param pulumi.Input[str] region: The region the instance will sit in. If a region is not provided in the resource definition,
                the provider region will be used instead.
@@ -402,6 +406,8 @@ class _DatabaseInstanceState:
             pulumi.set(__self__, "database_version", database_version)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
+        if dns_name is not None:
+            pulumi.set(__self__, "dns_name", dns_name)
         if encryption_key_name is not None:
             pulumi.set(__self__, "encryption_key_name", encryption_key_name)
         if first_ip_address is not None:
@@ -420,6 +426,8 @@ class _DatabaseInstanceState:
             pulumi.set(__self__, "private_ip_address", private_ip_address)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if psc_service_attachment_link is not None:
+            pulumi.set(__self__, "psc_service_attachment_link", psc_service_attachment_link)
         if public_ip_address is not None:
             pulumi.set(__self__, "public_ip_address", public_ip_address)
         if region is not None:
@@ -510,6 +518,18 @@ class _DatabaseInstanceState:
     @deletion_protection.setter
     def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "deletion_protection", value)
+
+    @property
+    @pulumi.getter(name="dnsName")
+    def dns_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The dns name of the instance.
+        """
+        return pulumi.get(self, "dns_name")
+
+    @dns_name.setter
+    def dns_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dns_name", value)
 
     @property
     @pulumi.getter(name="encryptionKeyName")
@@ -628,6 +648,18 @@ class _DatabaseInstanceState:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="pscServiceAttachmentLink")
+    def psc_service_attachment_link(self) -> Optional[pulumi.Input[str]]:
+        """
+        The link to service attachment of PSC instance.
+        """
+        return pulumi.get(self, "psc_service_attachment_link")
+
+    @psc_service_attachment_link.setter
+    def psc_service_attachment_link(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "psc_service_attachment_link", value)
 
     @property
     @pulumi.getter(name="publicIpAddress")
@@ -1069,9 +1101,11 @@ class DatabaseInstance(pulumi.CustomResource):
             __props__.__dict__["settings"] = settings
             __props__.__dict__["available_maintenance_versions"] = None
             __props__.__dict__["connection_name"] = None
+            __props__.__dict__["dns_name"] = None
             __props__.__dict__["first_ip_address"] = None
             __props__.__dict__["ip_addresses"] = None
             __props__.__dict__["private_ip_address"] = None
+            __props__.__dict__["psc_service_attachment_link"] = None
             __props__.__dict__["public_ip_address"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["server_ca_certs"] = None
@@ -1093,6 +1127,7 @@ class DatabaseInstance(pulumi.CustomResource):
             connection_name: Optional[pulumi.Input[str]] = None,
             database_version: Optional[pulumi.Input[str]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
+            dns_name: Optional[pulumi.Input[str]] = None,
             encryption_key_name: Optional[pulumi.Input[str]] = None,
             first_ip_address: Optional[pulumi.Input[str]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
@@ -1102,6 +1137,7 @@ class DatabaseInstance(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             private_ip_address: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            psc_service_attachment_link: Optional[pulumi.Input[str]] = None,
             public_ip_address: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             replica_configuration: Optional[pulumi.Input[pulumi.InputType['DatabaseInstanceReplicaConfigurationArgs']]] = None,
@@ -1135,6 +1171,7 @@ class DatabaseInstance(pulumi.CustomResource):
                includes an up-to-date reference of supported versions.
         :param pulumi.Input[bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
                in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
+        :param pulumi.Input[str] dns_name: The dns name of the instance.
         :param pulumi.Input[str] encryption_key_name: The full path to the encryption key used for the CMEK disk encryption.  Setting
                up disk encryption currently requires manual steps outside of this provider.
                The provided key must be in the same region as the SQL instance.  In order
@@ -1156,6 +1193,7 @@ class DatabaseInstance(pulumi.CustomResource):
         :param pulumi.Input[str] private_ip_address: The first private (`PRIVATE`) IPv4 address assigned.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
+        :param pulumi.Input[str] psc_service_attachment_link: The link to service attachment of PSC instance.
         :param pulumi.Input[str] public_ip_address: The first public (`PRIMARY`) IPv4 address assigned.
         :param pulumi.Input[str] region: The region the instance will sit in. If a region is not provided in the resource definition,
                the provider region will be used instead.
@@ -1183,6 +1221,7 @@ class DatabaseInstance(pulumi.CustomResource):
         __props__.__dict__["connection_name"] = connection_name
         __props__.__dict__["database_version"] = database_version
         __props__.__dict__["deletion_protection"] = deletion_protection
+        __props__.__dict__["dns_name"] = dns_name
         __props__.__dict__["encryption_key_name"] = encryption_key_name
         __props__.__dict__["first_ip_address"] = first_ip_address
         __props__.__dict__["instance_type"] = instance_type
@@ -1192,6 +1231,7 @@ class DatabaseInstance(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["private_ip_address"] = private_ip_address
         __props__.__dict__["project"] = project
+        __props__.__dict__["psc_service_attachment_link"] = psc_service_attachment_link
         __props__.__dict__["public_ip_address"] = public_ip_address
         __props__.__dict__["region"] = region
         __props__.__dict__["replica_configuration"] = replica_configuration
@@ -1254,6 +1294,14 @@ class DatabaseInstance(pulumi.CustomResource):
         in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
         """
         return pulumi.get(self, "deletion_protection")
+
+    @property
+    @pulumi.getter(name="dnsName")
+    def dns_name(self) -> pulumi.Output[str]:
+        """
+        The dns name of the instance.
+        """
+        return pulumi.get(self, "dns_name")
 
     @property
     @pulumi.getter(name="encryptionKeyName")
@@ -1336,6 +1384,14 @@ class DatabaseInstance(pulumi.CustomResource):
         is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="pscServiceAttachmentLink")
+    def psc_service_attachment_link(self) -> pulumi.Output[str]:
+        """
+        The link to service attachment of PSC instance.
+        """
+        return pulumi.get(self, "psc_service_attachment_link")
 
     @property
     @pulumi.getter(name="publicIpAddress")

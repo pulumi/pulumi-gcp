@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataplex.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecPostScanActionsArgs;
 import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecRuleArgs;
 import java.lang.Double;
 import java.lang.String;
@@ -17,6 +18,23 @@ import javax.annotation.Nullable;
 public final class DatascanDataQualitySpecArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final DatascanDataQualitySpecArgs Empty = new DatascanDataQualitySpecArgs();
+
+    /**
+     * Actions to take upon job completion.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="postScanActions")
+    private @Nullable Output<DatascanDataQualitySpecPostScanActionsArgs> postScanActions;
+
+    /**
+     * @return Actions to take upon job completion.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<DatascanDataQualitySpecPostScanActionsArgs>> postScanActions() {
+        return Optional.ofNullable(this.postScanActions);
+    }
 
     /**
      * A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 &gt;= 0 AND col2 &lt; 10
@@ -52,6 +70,8 @@ public final class DatascanDataQualitySpecArgs extends com.pulumi.resources.Reso
 
     /**
      * The percentage of the records to be selected from the dataset for DataScan.
+     * Value can range between 0.0 and 100.0 with up to 3 significant decimal digits.
+     * Sampling is not applied if `sampling_percent` is not specified, 0 or 100.
      * 
      */
     @Import(name="samplingPercent")
@@ -59,6 +79,8 @@ public final class DatascanDataQualitySpecArgs extends com.pulumi.resources.Reso
 
     /**
      * @return The percentage of the records to be selected from the dataset for DataScan.
+     * Value can range between 0.0 and 100.0 with up to 3 significant decimal digits.
+     * Sampling is not applied if `sampling_percent` is not specified, 0 or 100.
      * 
      */
     public Optional<Output<Double>> samplingPercent() {
@@ -68,6 +90,7 @@ public final class DatascanDataQualitySpecArgs extends com.pulumi.resources.Reso
     private DatascanDataQualitySpecArgs() {}
 
     private DatascanDataQualitySpecArgs(DatascanDataQualitySpecArgs $) {
+        this.postScanActions = $.postScanActions;
         this.rowFilter = $.rowFilter;
         this.rules = $.rules;
         this.samplingPercent = $.samplingPercent;
@@ -89,6 +112,29 @@ public final class DatascanDataQualitySpecArgs extends com.pulumi.resources.Reso
 
         public Builder(DatascanDataQualitySpecArgs defaults) {
             $ = new DatascanDataQualitySpecArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param postScanActions Actions to take upon job completion.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder postScanActions(@Nullable Output<DatascanDataQualitySpecPostScanActionsArgs> postScanActions) {
+            $.postScanActions = postScanActions;
+            return this;
+        }
+
+        /**
+         * @param postScanActions Actions to take upon job completion.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder postScanActions(DatascanDataQualitySpecPostScanActionsArgs postScanActions) {
+            return postScanActions(Output.of(postScanActions));
         }
 
         /**
@@ -148,6 +194,8 @@ public final class DatascanDataQualitySpecArgs extends com.pulumi.resources.Reso
 
         /**
          * @param samplingPercent The percentage of the records to be selected from the dataset for DataScan.
+         * Value can range between 0.0 and 100.0 with up to 3 significant decimal digits.
+         * Sampling is not applied if `sampling_percent` is not specified, 0 or 100.
          * 
          * @return builder
          * 
@@ -159,6 +207,8 @@ public final class DatascanDataQualitySpecArgs extends com.pulumi.resources.Reso
 
         /**
          * @param samplingPercent The percentage of the records to be selected from the dataset for DataScan.
+         * Value can range between 0.0 and 100.0 with up to 3 significant decimal digits.
+         * Sampling is not applied if `sampling_percent` is not specified, 0 or 100.
          * 
          * @return builder
          * 

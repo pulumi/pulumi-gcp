@@ -4,7 +4,9 @@
 package com.pulumi.gcp.diagflow.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.diagflow.outputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase;
 import com.pulumi.gcp.diagflow.outputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage;
+import com.pulumi.gcp.diagflow.outputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -14,6 +16,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class CxPageFormParameterFillBehaviorInitialPromptFulfillment {
+    /**
+     * @return Conditional cases for this fulfillment.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase> conditionalCases;
     /**
      * @return The list of rich message responses to present to the user.
      * Structure is documented below.
@@ -26,6 +34,12 @@ public final class CxPageFormParameterFillBehaviorInitialPromptFulfillment {
      */
     private @Nullable Boolean returnPartialResponses;
     /**
+     * @return Set parameter values before executing the webhook.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction> setParameterActions;
+    /**
      * @return The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
      * 
      */
@@ -37,6 +51,14 @@ public final class CxPageFormParameterFillBehaviorInitialPromptFulfillment {
     private @Nullable String webhook;
 
     private CxPageFormParameterFillBehaviorInitialPromptFulfillment() {}
+    /**
+     * @return Conditional cases for this fulfillment.
+     * Structure is documented below.
+     * 
+     */
+    public List<CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase> conditionalCases() {
+        return this.conditionalCases == null ? List.of() : this.conditionalCases;
+    }
     /**
      * @return The list of rich message responses to present to the user.
      * Structure is documented below.
@@ -51,6 +73,14 @@ public final class CxPageFormParameterFillBehaviorInitialPromptFulfillment {
      */
     public Optional<Boolean> returnPartialResponses() {
         return Optional.ofNullable(this.returnPartialResponses);
+    }
+    /**
+     * @return Set parameter values before executing the webhook.
+     * Structure is documented below.
+     * 
+     */
+    public List<CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction> setParameterActions() {
+        return this.setParameterActions == null ? List.of() : this.setParameterActions;
     }
     /**
      * @return The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
@@ -76,19 +106,31 @@ public final class CxPageFormParameterFillBehaviorInitialPromptFulfillment {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase> conditionalCases;
         private @Nullable List<CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage> messages;
         private @Nullable Boolean returnPartialResponses;
+        private @Nullable List<CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction> setParameterActions;
         private @Nullable String tag;
         private @Nullable String webhook;
         public Builder() {}
         public Builder(CxPageFormParameterFillBehaviorInitialPromptFulfillment defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.conditionalCases = defaults.conditionalCases;
     	      this.messages = defaults.messages;
     	      this.returnPartialResponses = defaults.returnPartialResponses;
+    	      this.setParameterActions = defaults.setParameterActions;
     	      this.tag = defaults.tag;
     	      this.webhook = defaults.webhook;
         }
 
+        @CustomType.Setter
+        public Builder conditionalCases(@Nullable List<CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase> conditionalCases) {
+            this.conditionalCases = conditionalCases;
+            return this;
+        }
+        public Builder conditionalCases(CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase... conditionalCases) {
+            return conditionalCases(List.of(conditionalCases));
+        }
         @CustomType.Setter
         public Builder messages(@Nullable List<CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage> messages) {
             this.messages = messages;
@@ -103,6 +145,14 @@ public final class CxPageFormParameterFillBehaviorInitialPromptFulfillment {
             return this;
         }
         @CustomType.Setter
+        public Builder setParameterActions(@Nullable List<CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction> setParameterActions) {
+            this.setParameterActions = setParameterActions;
+            return this;
+        }
+        public Builder setParameterActions(CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction... setParameterActions) {
+            return setParameterActions(List.of(setParameterActions));
+        }
+        @CustomType.Setter
         public Builder tag(@Nullable String tag) {
             this.tag = tag;
             return this;
@@ -114,8 +164,10 @@ public final class CxPageFormParameterFillBehaviorInitialPromptFulfillment {
         }
         public CxPageFormParameterFillBehaviorInitialPromptFulfillment build() {
             final var o = new CxPageFormParameterFillBehaviorInitialPromptFulfillment();
+            o.conditionalCases = conditionalCases;
             o.messages = messages;
             o.returnPartialResponses = returnPartialResponses;
+            o.setParameterActions = setParameterActions;
             o.tag = tag;
             o.webhook = webhook;
             return o;

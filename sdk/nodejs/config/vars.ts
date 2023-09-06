@@ -129,6 +129,14 @@ Object.defineProperty(exports, "bigQueryCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const biglakeCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "biglakeCustomEndpoint", {
+    get() {
+        return __config.get("biglakeCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const bigqueryAnalyticsHubCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "bigqueryAnalyticsHubCustomEndpoint", {
     get() {

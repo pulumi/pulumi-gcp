@@ -109,6 +109,49 @@ import (
 //	}
 //
 // ```
+// ### Firebase Web App Custom Api Key
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/firebase"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			web, err := projects.NewApiKey(ctx, "web", &projects.ApiKeyArgs{
+//				Project:     pulumi.String("my-project-name"),
+//				DisplayName: pulumi.String("Display Name"),
+//				Restrictions: &projects.ApiKeyRestrictionsArgs{
+//					BrowserKeyRestrictions: &projects.ApiKeyRestrictionsBrowserKeyRestrictionsArgs{
+//						AllowedReferrers: pulumi.StringArray{
+//							pulumi.String("*"),
+//						},
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firebase.NewWebApp(ctx, "default", &firebase.WebAppArgs{
+//				Project:        pulumi.String("my-project-name"),
+//				DisplayName:    pulumi.String("Display Name"),
+//				ApiKeyId:       web.Uid,
+//				DeletionPolicy: pulumi.String("DELETE"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -146,6 +189,10 @@ import (
 type WebApp struct {
 	pulumi.CustomResourceState
 
+	// The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the WebApp.
+	// If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the WebApp.
+	// This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+	ApiKeyId pulumi.StringOutput `pulumi:"apiKeyId"`
 	// The globally unique, Firebase-assigned identifier of the App.
 	// This identifier should be treated as an opaque token, as the data format is not specified.
 	AppId pulumi.StringOutput `pulumi:"appId"`
@@ -199,6 +246,10 @@ func GetWebApp(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WebApp resources.
 type webAppState struct {
+	// The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the WebApp.
+	// If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the WebApp.
+	// This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+	ApiKeyId *string `pulumi:"apiKeyId"`
 	// The globally unique, Firebase-assigned identifier of the App.
 	// This identifier should be treated as an opaque token, as the data format is not specified.
 	AppId *string `pulumi:"appId"`
@@ -220,6 +271,10 @@ type webAppState struct {
 }
 
 type WebAppState struct {
+	// The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the WebApp.
+	// If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the WebApp.
+	// This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+	ApiKeyId pulumi.StringPtrInput
 	// The globally unique, Firebase-assigned identifier of the App.
 	// This identifier should be treated as an opaque token, as the data format is not specified.
 	AppId pulumi.StringPtrInput
@@ -245,6 +300,10 @@ func (WebAppState) ElementType() reflect.Type {
 }
 
 type webAppArgs struct {
+	// The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the WebApp.
+	// If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the WebApp.
+	// This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+	ApiKeyId *string `pulumi:"apiKeyId"`
 	// Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
 	// This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'ABANDON'
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
@@ -259,6 +318,10 @@ type webAppArgs struct {
 
 // The set of arguments for constructing a WebApp resource.
 type WebAppArgs struct {
+	// The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the WebApp.
+	// If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the WebApp.
+	// This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+	ApiKeyId pulumi.StringPtrInput
 	// Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
 	// This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'ABANDON'
 	DeletionPolicy pulumi.StringPtrInput
@@ -356,6 +419,13 @@ func (o WebAppOutput) ToWebAppOutput() WebAppOutput {
 
 func (o WebAppOutput) ToWebAppOutputWithContext(ctx context.Context) WebAppOutput {
 	return o
+}
+
+// The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the WebApp.
+// If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the WebApp.
+// This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+func (o WebAppOutput) ApiKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WebApp) pulumi.StringOutput { return v.ApiKeyId }).(pulumi.StringOutput)
 }
 
 // The globally unique, Firebase-assigned identifier of the App.

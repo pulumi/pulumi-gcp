@@ -111,11 +111,15 @@ import javax.annotation.Nullable;
  * Instance can be imported using any of these accepted formats
  * 
  * ```sh
- *  $ pulumi import gcp:alloydb/instance:Instance default {{cluster}}/instances/{{instance_id}}
+ *  $ pulumi import gcp:alloydb/instance:Instance default projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/instances/{{instance_id}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:alloydb/instance:Instance default {{cluster}}/{{instance_id}}
+ *  $ pulumi import gcp:alloydb/instance:Instance default {{project}}/{{location}}/{{cluster}}/{{instance_id}}
+ * ```
+ * 
+ * ```sh
+ *  $ pulumi import gcp:alloydb/instance:Instance default {{location}}/{{cluster}}/{{instance_id}}
  * ```
  * 
  */
@@ -326,7 +330,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Read pool specific config.
+     * Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
      * Structure is documented below.
      * 
      */
@@ -334,7 +338,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ InstanceReadPoolConfig> readPoolConfig;
 
     /**
-     * @return Read pool specific config.
+     * @return Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
      * Structure is documented below.
      * 
      */

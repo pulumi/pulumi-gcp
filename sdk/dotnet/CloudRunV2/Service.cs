@@ -323,7 +323,6 @@ namespace Pulumi.Gcp.CloudRunV2
     ///                             {
     ///                                 Version = "1",
     ///                                 Path = "my-secret",
-    ///                                 Mode = 256,
     ///                             },
     ///                         },
     ///                     },

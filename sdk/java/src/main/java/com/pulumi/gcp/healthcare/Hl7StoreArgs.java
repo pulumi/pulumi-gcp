@@ -92,11 +92,13 @@ public final class Hl7StoreArgs extends com.pulumi.resources.ResourceArgs {
      * A nested object resource
      * Structure is documented below.
      * 
+     * &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
+     * 
      * @deprecated
-     * This field has been replaced by notificationConfigs
+     * `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
      * 
      */
-    @Deprecated /* This field has been replaced by notificationConfigs */
+    @Deprecated /* `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead. */
     @Import(name="notificationConfig")
     private @Nullable Output<Hl7StoreNotificationConfigArgs> notificationConfig;
 
@@ -105,11 +107,13 @@ public final class Hl7StoreArgs extends com.pulumi.resources.ResourceArgs {
      * A nested object resource
      * Structure is documented below.
      * 
+     * &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
+     * 
      * @deprecated
-     * This field has been replaced by notificationConfigs
+     * `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
      * 
      */
-    @Deprecated /* This field has been replaced by notificationConfigs */
+    @Deprecated /* `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead. */
     public Optional<Output<Hl7StoreNotificationConfigArgs>> notificationConfig() {
         return Optional.ofNullable(this.notificationConfig);
     }
@@ -271,13 +275,15 @@ public final class Hl7StoreArgs extends com.pulumi.resources.ResourceArgs {
          * A nested object resource
          * Structure is documented below.
          * 
+         * &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
+         * 
          * @return builder
          * 
          * @deprecated
-         * This field has been replaced by notificationConfigs
+         * `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
          * 
          */
-        @Deprecated /* This field has been replaced by notificationConfigs */
+        @Deprecated /* `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead. */
         public Builder notificationConfig(@Nullable Output<Hl7StoreNotificationConfigArgs> notificationConfig) {
             $.notificationConfig = notificationConfig;
             return this;
@@ -288,13 +294,15 @@ public final class Hl7StoreArgs extends com.pulumi.resources.ResourceArgs {
          * A nested object resource
          * Structure is documented below.
          * 
+         * &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
+         * 
          * @return builder
          * 
          * @deprecated
-         * This field has been replaced by notificationConfigs
+         * `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
          * 
          */
-        @Deprecated /* This field has been replaced by notificationConfigs */
+        @Deprecated /* `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead. */
         public Builder notificationConfig(Hl7StoreNotificationConfigArgs notificationConfig) {
             return notificationConfig(Output.of(notificationConfig));
         }

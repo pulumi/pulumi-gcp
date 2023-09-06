@@ -57,18 +57,28 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Deprecated)
      * The result of the data profile scan.
      * Structure is documented below.
      * 
+     * @deprecated
+     * `data_profile_result` is deprecated and will be removed in a future major release.
+     * 
      */
+    @Deprecated /* `data_profile_result` is deprecated and will be removed in a future major release. */
     @Import(name="dataProfileResults")
     private @Nullable Output<List<DatascanDataProfileResultArgs>> dataProfileResults;
 
     /**
-     * @return The result of the data profile scan.
+     * @return (Deprecated)
+     * The result of the data profile scan.
      * Structure is documented below.
      * 
+     * @deprecated
+     * `data_profile_result` is deprecated and will be removed in a future major release.
+     * 
      */
+    @Deprecated /* `data_profile_result` is deprecated and will be removed in a future major release. */
     public Optional<Output<List<DatascanDataProfileResultArgs>>> dataProfileResults() {
         return Optional.ofNullable(this.dataProfileResults);
     }
@@ -91,18 +101,28 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Deprecated)
      * The result of the data quality scan.
      * Structure is documented below.
      * 
+     * @deprecated
+     * `data_quality_result` is deprecated and will be removed in a future major release.
+     * 
      */
+    @Deprecated /* `data_quality_result` is deprecated and will be removed in a future major release. */
     @Import(name="dataQualityResults")
     private @Nullable Output<List<DatascanDataQualityResultArgs>> dataQualityResults;
 
     /**
-     * @return The result of the data quality scan.
+     * @return (Deprecated)
+     * The result of the data quality scan.
      * Structure is documented below.
      * 
+     * @deprecated
+     * `data_quality_result` is deprecated and will be removed in a future major release.
+     * 
      */
+    @Deprecated /* `data_quality_result` is deprecated and will be removed in a future major release. */
     public Optional<Output<List<DatascanDataQualityResultArgs>>> dataQualityResults() {
         return Optional.ofNullable(this.dataQualityResults);
     }
@@ -142,12 +162,20 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
     /**
      * Description of the scan.
      * 
+     * (Optional)
+     * Description of the rule.
+     * The maximum length is 1,024 characters.
+     * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
      * @return Description of the scan.
+     * 
+     * (Optional)
+     * Description of the rule.
+     * The maximum length is 1,024 characters.
      * 
      */
     public Optional<Output<String>> description() {
@@ -234,14 +262,22 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the field.
+     * A mutable name for the rule.
+     * The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+     * The maximum length is 63 characters.
+     * Must start with a letter.
+     * Must end with a number or a letter.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the field.
+     * @return A mutable name for the rule.
+     * The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+     * The maximum length is 63 characters.
+     * Must start with a letter.
+     * Must end with a number or a letter.
      * 
      */
     public Optional<Output<String>> name() {
@@ -412,35 +448,50 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataProfileResults The result of the data profile scan.
+         * @param dataProfileResults (Deprecated)
+         * The result of the data profile scan.
          * Structure is documented below.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `data_profile_result` is deprecated and will be removed in a future major release.
+         * 
          */
+        @Deprecated /* `data_profile_result` is deprecated and will be removed in a future major release. */
         public Builder dataProfileResults(@Nullable Output<List<DatascanDataProfileResultArgs>> dataProfileResults) {
             $.dataProfileResults = dataProfileResults;
             return this;
         }
 
         /**
-         * @param dataProfileResults The result of the data profile scan.
+         * @param dataProfileResults (Deprecated)
+         * The result of the data profile scan.
          * Structure is documented below.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `data_profile_result` is deprecated and will be removed in a future major release.
+         * 
          */
+        @Deprecated /* `data_profile_result` is deprecated and will be removed in a future major release. */
         public Builder dataProfileResults(List<DatascanDataProfileResultArgs> dataProfileResults) {
             return dataProfileResults(Output.of(dataProfileResults));
         }
 
         /**
-         * @param dataProfileResults The result of the data profile scan.
+         * @param dataProfileResults (Deprecated)
+         * The result of the data profile scan.
          * Structure is documented below.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `data_profile_result` is deprecated and will be removed in a future major release.
+         * 
          */
+        @Deprecated /* `data_profile_result` is deprecated and will be removed in a future major release. */
         public Builder dataProfileResults(DatascanDataProfileResultArgs... dataProfileResults) {
             return dataProfileResults(List.of(dataProfileResults));
         }
@@ -469,35 +520,50 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dataQualityResults The result of the data quality scan.
+         * @param dataQualityResults (Deprecated)
+         * The result of the data quality scan.
          * Structure is documented below.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `data_quality_result` is deprecated and will be removed in a future major release.
+         * 
          */
+        @Deprecated /* `data_quality_result` is deprecated and will be removed in a future major release. */
         public Builder dataQualityResults(@Nullable Output<List<DatascanDataQualityResultArgs>> dataQualityResults) {
             $.dataQualityResults = dataQualityResults;
             return this;
         }
 
         /**
-         * @param dataQualityResults The result of the data quality scan.
+         * @param dataQualityResults (Deprecated)
+         * The result of the data quality scan.
          * Structure is documented below.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `data_quality_result` is deprecated and will be removed in a future major release.
+         * 
          */
+        @Deprecated /* `data_quality_result` is deprecated and will be removed in a future major release. */
         public Builder dataQualityResults(List<DatascanDataQualityResultArgs> dataQualityResults) {
             return dataQualityResults(Output.of(dataQualityResults));
         }
 
         /**
-         * @param dataQualityResults The result of the data quality scan.
+         * @param dataQualityResults (Deprecated)
+         * The result of the data quality scan.
          * Structure is documented below.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `data_quality_result` is deprecated and will be removed in a future major release.
+         * 
          */
+        @Deprecated /* `data_quality_result` is deprecated and will be removed in a future major release. */
         public Builder dataQualityResults(DatascanDataQualityResultArgs... dataQualityResults) {
             return dataQualityResults(List.of(dataQualityResults));
         }
@@ -549,6 +615,10 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param description Description of the scan.
          * 
+         * (Optional)
+         * Description of the rule.
+         * The maximum length is 1,024 characters.
+         * 
          * @return builder
          * 
          */
@@ -559,6 +629,10 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param description Description of the scan.
+         * 
+         * (Optional)
+         * Description of the rule.
+         * The maximum length is 1,024 characters.
          * 
          * @return builder
          * 
@@ -688,7 +762,11 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the field.
+         * @param name A mutable name for the rule.
+         * The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+         * The maximum length is 63 characters.
+         * Must start with a letter.
+         * Must end with a number or a letter.
          * 
          * @return builder
          * 
@@ -699,7 +777,11 @@ public final class DatascanState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the field.
+         * @param name A mutable name for the rule.
+         * The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+         * The maximum length is 63 characters.
+         * Must start with a letter.
+         * Must end with a number or a letter.
          * 
          * @return builder
          * 

@@ -58,7 +58,7 @@ namespace Pulumi.Gcp.DataCatalog
     /// 
     /// ## Import
     /// 
-    /// EntryGroup can be imported using any of these accepted formats
+    /// EntryGroup can be imported using any of these accepted formats:
     /// 
     /// ```sh
     ///  $ pulumi import gcp:datacatalog/entryGroup:EntryGroup default {{name}}

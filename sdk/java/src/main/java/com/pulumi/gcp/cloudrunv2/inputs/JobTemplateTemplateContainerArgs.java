@@ -90,11 +90,13 @@ public final class JobTemplateTemplateContainerArgs extends com.pulumi.resources
      * This field is not supported in Cloud Run Job currently.
      * Structure is documented below.
      * 
+     * &gt; **Warning:** `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+     * 
      * @deprecated
-     * Cloud Run Job does not support liveness probe and `liveness_probe` field will be removed in a future major release.
+     * `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
      * 
      */
-    @Deprecated /* Cloud Run Job does not support liveness probe and `liveness_probe` field will be removed in a future major release. */
+    @Deprecated /* `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
     @Import(name="livenessProbe")
     private @Nullable Output<JobTemplateTemplateContainerLivenessProbeArgs> livenessProbe;
 
@@ -104,11 +106,13 @@ public final class JobTemplateTemplateContainerArgs extends com.pulumi.resources
      * This field is not supported in Cloud Run Job currently.
      * Structure is documented below.
      * 
+     * &gt; **Warning:** `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+     * 
      * @deprecated
-     * Cloud Run Job does not support liveness probe and `liveness_probe` field will be removed in a future major release.
+     * `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
      * 
      */
-    @Deprecated /* Cloud Run Job does not support liveness probe and `liveness_probe` field will be removed in a future major release. */
+    @Deprecated /* `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
     public Optional<Output<JobTemplateTemplateContainerLivenessProbeArgs>> livenessProbe() {
         return Optional.ofNullable(this.livenessProbe);
     }
@@ -170,11 +174,13 @@ public final class JobTemplateTemplateContainerArgs extends com.pulumi.resources
      * This field is not supported in Cloud Run Job currently.
      * Structure is documented below.
      * 
+     * &gt; **Warning:** `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+     * 
      * @deprecated
-     * Cloud Run Job does not support startup probe and `startup_probe` field will be removed in a future major release.
+     * `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
      * 
      */
-    @Deprecated /* Cloud Run Job does not support startup probe and `startup_probe` field will be removed in a future major release. */
+    @Deprecated /* `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
     @Import(name="startupProbe")
     private @Nullable Output<JobTemplateTemplateContainerStartupProbeArgs> startupProbe;
 
@@ -184,11 +190,13 @@ public final class JobTemplateTemplateContainerArgs extends com.pulumi.resources
      * This field is not supported in Cloud Run Job currently.
      * Structure is documented below.
      * 
+     * &gt; **Warning:** `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+     * 
      * @deprecated
-     * Cloud Run Job does not support startup probe and `startup_probe` field will be removed in a future major release.
+     * `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
      * 
      */
-    @Deprecated /* Cloud Run Job does not support startup probe and `startup_probe` field will be removed in a future major release. */
+    @Deprecated /* `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
     public Optional<Output<JobTemplateTemplateContainerStartupProbeArgs>> startupProbe() {
         return Optional.ofNullable(this.startupProbe);
     }
@@ -382,13 +390,15 @@ public final class JobTemplateTemplateContainerArgs extends com.pulumi.resources
          * This field is not supported in Cloud Run Job currently.
          * Structure is documented below.
          * 
+         * &gt; **Warning:** `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+         * 
          * @return builder
          * 
          * @deprecated
-         * Cloud Run Job does not support liveness probe and `liveness_probe` field will be removed in a future major release.
+         * `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
          * 
          */
-        @Deprecated /* Cloud Run Job does not support liveness probe and `liveness_probe` field will be removed in a future major release. */
+        @Deprecated /* `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
         public Builder livenessProbe(@Nullable Output<JobTemplateTemplateContainerLivenessProbeArgs> livenessProbe) {
             $.livenessProbe = livenessProbe;
             return this;
@@ -400,13 +410,15 @@ public final class JobTemplateTemplateContainerArgs extends com.pulumi.resources
          * This field is not supported in Cloud Run Job currently.
          * Structure is documented below.
          * 
+         * &gt; **Warning:** `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+         * 
          * @return builder
          * 
          * @deprecated
-         * Cloud Run Job does not support liveness probe and `liveness_probe` field will be removed in a future major release.
+         * `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
          * 
          */
-        @Deprecated /* Cloud Run Job does not support liveness probe and `liveness_probe` field will be removed in a future major release. */
+        @Deprecated /* `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
         public Builder livenessProbe(JobTemplateTemplateContainerLivenessProbeArgs livenessProbe) {
             return livenessProbe(Output.of(livenessProbe));
         }
@@ -498,13 +510,15 @@ public final class JobTemplateTemplateContainerArgs extends com.pulumi.resources
          * This field is not supported in Cloud Run Job currently.
          * Structure is documented below.
          * 
+         * &gt; **Warning:** `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+         * 
          * @return builder
          * 
          * @deprecated
-         * Cloud Run Job does not support startup probe and `startup_probe` field will be removed in a future major release.
+         * `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
          * 
          */
-        @Deprecated /* Cloud Run Job does not support startup probe and `startup_probe` field will be removed in a future major release. */
+        @Deprecated /* `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
         public Builder startupProbe(@Nullable Output<JobTemplateTemplateContainerStartupProbeArgs> startupProbe) {
             $.startupProbe = startupProbe;
             return this;
@@ -516,13 +530,15 @@ public final class JobTemplateTemplateContainerArgs extends com.pulumi.resources
          * This field is not supported in Cloud Run Job currently.
          * Structure is documented below.
          * 
+         * &gt; **Warning:** `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+         * 
          * @return builder
          * 
          * @deprecated
-         * Cloud Run Job does not support startup probe and `startup_probe` field will be removed in a future major release.
+         * `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
          * 
          */
-        @Deprecated /* Cloud Run Job does not support startup probe and `startup_probe` field will be removed in a future major release. */
+        @Deprecated /* `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
         public Builder startupProbe(JobTemplateTemplateContainerStartupProbeArgs startupProbe) {
             return startupProbe(Output.of(startupProbe));
         }

@@ -363,7 +363,7 @@ namespace Pulumi.Gcp.DataFusion
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// Deprecated. Use 'tenant_project_id' instead to extract the tenant project ID.
+        /// Service account which will be used to access resources in the customer project.
         /// </summary>
         [Output("serviceAccount")]
         public Output<string> ServiceAccount { get; private set; } = null!;
@@ -788,7 +788,7 @@ namespace Pulumi.Gcp.DataFusion
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// Deprecated. Use 'tenant_project_id' instead to extract the tenant project ID.
+        /// Service account which will be used to access resources in the customer project.
         /// </summary>
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }

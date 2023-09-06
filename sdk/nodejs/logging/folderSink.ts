@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Folder-level logging sinks can be imported using this format
+ * Folder-level logging sinks can be imported using this format:
  *
  * ```sh
  *  $ pulumi import gcp:logging/folderSink:FolderSink my_sink folders/{{folder_id}}/sinks/{{name}}

@@ -40,6 +40,8 @@ beyondcorpCustomEndpoint: Optional[str]
 
 bigQueryCustomEndpoint: Optional[str]
 
+biglakeCustomEndpoint: Optional[str]
+
 bigqueryAnalyticsHubCustomEndpoint: Optional[str]
 
 bigqueryConnectionCustomEndpoint: Optional[str]

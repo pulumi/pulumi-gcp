@@ -55,7 +55,7 @@ namespace Pulumi.Gcp.CloudIdentity
     /// 
     /// ## Import
     /// 
-    /// Group can be imported using any of these accepted formats
+    /// Group can be imported using any of these accepted formats:
     /// 
     /// ```sh
     ///  $ pulumi import gcp:cloudidentity/group:Group default {{name}}

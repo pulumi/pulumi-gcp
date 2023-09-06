@@ -56,6 +56,9 @@ func GetBeyondcorpCustomEndpoint(ctx *pulumi.Context) string {
 func GetBigQueryCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:bigQueryCustomEndpoint")
 }
+func GetBiglakeCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:biglakeCustomEndpoint")
+}
 func GetBigqueryAnalyticsHubCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:bigqueryAnalyticsHubCustomEndpoint")
 }

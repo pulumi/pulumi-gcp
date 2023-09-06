@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.Iam.Outputs
     public sealed class WorkforcePoolProviderOidcWebSsoConfig
     {
         /// <summary>
+        /// Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested.
+        /// Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be configured.
+        /// </summary>
+        public readonly ImmutableArray<string> AdditionalScopes;
+        /// <summary>
         /// The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
         /// * MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS: Merge the UserInfo Endpoint Claims with ID Token Claims, preferring UserInfo Claim Values for the same Claim Name. This option is available only for the Authorization Code Flow.
         /// * ONLY_ID_TOKEN_CLAIMS: Only include ID Token Claims.
@@ -31,10 +36,13 @@ namespace Pulumi.Gcp.Iam.Outputs
 
         [OutputConstructor]
         private WorkforcePoolProviderOidcWebSsoConfig(
+            ImmutableArray<string> additionalScopes,
+
             string assertionClaimsBehavior,
 
             string responseType)
         {
+            AdditionalScopes = additionalScopes;
             AssertionClaimsBehavior = assertionClaimsBehavior;
             ResponseType = responseType;
         }

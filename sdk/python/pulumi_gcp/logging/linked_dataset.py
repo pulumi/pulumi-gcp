@@ -357,7 +357,7 @@ class LinkedDataset(pulumi.CustomResource):
 
         ## Import
 
-        LinkedDataset can be imported using any of these accepted formats
+        LinkedDataset can be imported using any of these accepted formats:
 
         ```sh
          $ pulumi import gcp:logging/linkedDataset:LinkedDataset default {{parent}}/locations/{{location}}/buckets/{{bucket}}/links/{{link_id}}
@@ -432,7 +432,7 @@ class LinkedDataset(pulumi.CustomResource):
 
         ## Import
 
-        LinkedDataset can be imported using any of these accepted formats
+        LinkedDataset can be imported using any of these accepted formats:
 
         ```sh
          $ pulumi import gcp:logging/linkedDataset:LinkedDataset default {{parent}}/locations/{{location}}/buckets/{{bucket}}/links/{{link_id}}

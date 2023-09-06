@@ -102,7 +102,7 @@ public final class CxPageTransitionRouteArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+     * The fulfillment to call when the condition is satisfied. At least one of triggerFulfillment and target must be specified. When both are defined, triggerFulfillment is executed first.
      * Structure is documented below.
      * 
      */
@@ -110,7 +110,7 @@ public final class CxPageTransitionRouteArgs extends com.pulumi.resources.Resour
     private @Nullable Output<CxPageTransitionRouteTriggerFulfillmentArgs> triggerFulfillment;
 
     /**
-     * @return The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+     * @return The fulfillment to call when the condition is satisfied. At least one of triggerFulfillment and target must be specified. When both are defined, triggerFulfillment is executed first.
      * Structure is documented below.
      * 
      */
@@ -263,7 +263,7 @@ public final class CxPageTransitionRouteArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param triggerFulfillment The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+         * @param triggerFulfillment The fulfillment to call when the condition is satisfied. At least one of triggerFulfillment and target must be specified. When both are defined, triggerFulfillment is executed first.
          * Structure is documented below.
          * 
          * @return builder
@@ -275,7 +275,7 @@ public final class CxPageTransitionRouteArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param triggerFulfillment The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+         * @param triggerFulfillment The fulfillment to call when the condition is satisfied. At least one of triggerFulfillment and target must be specified. When both are defined, triggerFulfillment is executed first.
          * Structure is documented below.
          * 
          * @return builder

@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class JobTemplateTemplateVolumeSecretItem {
@@ -14,7 +16,7 @@ public final class JobTemplateTemplateVolumeSecretItem {
      * @return Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume&#39;s default mode will be used.
      * 
      */
-    private Integer mode;
+    private @Nullable Integer mode;
     /**
      * @return The relative path of the secret in the container.
      * 
@@ -31,8 +33,8 @@ public final class JobTemplateTemplateVolumeSecretItem {
      * @return Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume&#39;s default mode will be used.
      * 
      */
-    public Integer mode() {
-        return this.mode;
+    public Optional<Integer> mode() {
+        return Optional.ofNullable(this.mode);
     }
     /**
      * @return The relative path of the secret in the container.
@@ -58,7 +60,7 @@ public final class JobTemplateTemplateVolumeSecretItem {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Integer mode;
+        private @Nullable Integer mode;
         private String path;
         private String version;
         public Builder() {}
@@ -70,8 +72,8 @@ public final class JobTemplateTemplateVolumeSecretItem {
         }
 
         @CustomType.Setter
-        public Builder mode(Integer mode) {
-            this.mode = Objects.requireNonNull(mode);
+        public Builder mode(@Nullable Integer mode) {
+            this.mode = mode;
             return this;
         }
         @CustomType.Setter

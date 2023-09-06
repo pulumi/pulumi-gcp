@@ -93,7 +93,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * FeaturestoreEntitytypeFeature can be imported using any of these accepted formats
+ * FeaturestoreEntitytypeFeature can be imported using any of these accepted formats:
  *
  * ```sh
  *  $ pulumi import gcp:vertex/aiFeatureStoreEntityTypeFeature:AiFeatureStoreEntityTypeFeature default {{entitytype}}/features/{{name}}

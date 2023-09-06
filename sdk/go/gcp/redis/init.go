@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:redis/cluster:Cluster":
+		r = &Cluster{}
 	case "gcp:redis/instance:Instance":
 		r = &Instance{}
 	default:
@@ -36,6 +38,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"redis/cluster",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"redis/instance",

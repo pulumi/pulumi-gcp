@@ -300,7 +300,7 @@ class EntityType(pulumi.CustomResource):
 
         ## Import
 
-        EntityType can be imported using any of these accepted formats
+        EntityType can be imported using any of these accepted formats:
 
         ```sh
          $ pulumi import gcp:diagflow/entityType:EntityType default {{name}}
@@ -374,7 +374,7 @@ class EntityType(pulumi.CustomResource):
 
         ## Import
 
-        EntityType can be imported using any of these accepted formats
+        EntityType can be imported using any of these accepted formats:
 
         ```sh
          $ pulumi import gcp:diagflow/entityType:EntityType default {{name}}

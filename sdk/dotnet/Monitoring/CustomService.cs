@@ -53,7 +53,7 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// ## Import
     /// 
-    /// Service can be imported using any of these accepted formats
+    /// Service can be imported using any of these accepted formats:
     /// 
     /// ```sh
     ///  $ pulumi import gcp:monitoring/customService:CustomService default {{name}}

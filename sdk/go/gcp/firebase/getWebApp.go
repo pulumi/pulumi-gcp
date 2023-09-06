@@ -35,6 +35,7 @@ type LookupWebAppArgs struct {
 
 // A collection of values returned by getWebApp.
 type LookupWebAppResult struct {
+	ApiKeyId string `pulumi:"apiKeyId"`
 	// Immutable. The globally unique, Firebase-assigned identifier of the App.
 	// This identifier should be treated as an opaque token, as the data format is not specified.
 	AppId          string   `pulumi:"appId"`
@@ -90,6 +91,10 @@ func (o LookupWebAppResultOutput) ToLookupWebAppResultOutput() LookupWebAppResul
 
 func (o LookupWebAppResultOutput) ToLookupWebAppResultOutputWithContext(ctx context.Context) LookupWebAppResultOutput {
 	return o
+}
+
+func (o LookupWebAppResultOutput) ApiKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebAppResult) string { return v.ApiKeyId }).(pulumi.StringOutput)
 }
 
 // Immutable. The globally unique, Firebase-assigned identifier of the App.

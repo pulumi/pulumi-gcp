@@ -103,13 +103,19 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:alloydb/instance:Instance default {{cluster}}/instances/{{instance_id}}
+//	$ pulumi import gcp:alloydb/instance:Instance default projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/instances/{{instance_id}}
 //
 // ```
 //
 // ```sh
 //
-//	$ pulumi import gcp:alloydb/instance:Instance default {{cluster}}/{{instance_id}}
+//	$ pulumi import gcp:alloydb/instance:Instance default {{project}}/{{location}}/{{cluster}}/{{instance_id}}
+//
+// ```
+//
+// ```sh
+//
+//	$ pulumi import gcp:alloydb/instance:Instance default {{location}}/{{cluster}}/{{instance_id}}
 //
 // ```
 type Instance struct {
@@ -152,7 +158,7 @@ type Instance struct {
 	MachineConfig InstanceMachineConfigOutput `pulumi:"machineConfig"`
 	// The name of the instance resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Read pool specific config.
+	// Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
 	// Structure is documented below.
 	ReadPoolConfig InstanceReadPoolConfigPtrOutput `pulumi:"readPoolConfig"`
 	// Set to true if the current state of Instance does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
@@ -241,7 +247,7 @@ type instanceState struct {
 	MachineConfig *InstanceMachineConfig `pulumi:"machineConfig"`
 	// The name of the instance resource.
 	Name *string `pulumi:"name"`
-	// Read pool specific config.
+	// Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
 	// Structure is documented below.
 	ReadPoolConfig *InstanceReadPoolConfig `pulumi:"readPoolConfig"`
 	// Set to true if the current state of Instance does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
@@ -292,7 +298,7 @@ type InstanceState struct {
 	MachineConfig InstanceMachineConfigPtrInput
 	// The name of the instance resource.
 	Name pulumi.StringPtrInput
-	// Read pool specific config.
+	// Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
 	// Structure is documented below.
 	ReadPoolConfig InstanceReadPoolConfigPtrInput
 	// Set to true if the current state of Instance does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
@@ -341,7 +347,7 @@ type instanceArgs struct {
 	// Configurations for the machines that host the underlying database engine.
 	// Structure is documented below.
 	MachineConfig *InstanceMachineConfig `pulumi:"machineConfig"`
-	// Read pool specific config.
+	// Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
 	// Structure is documented below.
 	ReadPoolConfig *InstanceReadPoolConfig `pulumi:"readPoolConfig"`
 }
@@ -379,7 +385,7 @@ type InstanceArgs struct {
 	// Configurations for the machines that host the underlying database engine.
 	// Structure is documented below.
 	MachineConfig InstanceMachineConfigPtrInput
-	// Read pool specific config.
+	// Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
 	// Structure is documented below.
 	ReadPoolConfig InstanceReadPoolConfigPtrInput
 }
@@ -547,7 +553,7 @@ func (o InstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Read pool specific config.
+// Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
 // Structure is documented below.
 func (o InstanceOutput) ReadPoolConfig() InstanceReadPoolConfigPtrOutput {
 	return o.ApplyT(func(v *Instance) InstanceReadPoolConfigPtrOutput { return v.ReadPoolConfig }).(InstanceReadPoolConfigPtrOutput)

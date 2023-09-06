@@ -333,7 +333,7 @@ class ObjectAccessControl(pulumi.CustomResource):
 
         ## Import
 
-        ObjectAccessControl can be imported using any of these accepted formats
+        ObjectAccessControl can be imported using any of these accepted formats:
 
         ```sh
          $ pulumi import gcp:storage/objectAccessControl:ObjectAccessControl default {{bucket}}/{{object}}/{{entity}}
@@ -404,7 +404,7 @@ class ObjectAccessControl(pulumi.CustomResource):
 
         ## Import
 
-        ObjectAccessControl can be imported using any of these accepted formats
+        ObjectAccessControl can be imported using any of these accepted formats:
 
         ```sh
          $ pulumi import gcp:storage/objectAccessControl:ObjectAccessControl default {{bucket}}/{{object}}/{{entity}}

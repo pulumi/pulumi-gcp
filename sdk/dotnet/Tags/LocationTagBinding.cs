@@ -102,7 +102,7 @@ namespace Pulumi.Gcp.Tags
     /// 
     /// ## Import
     /// 
-    /// TagBinding can be imported using any of these accepted formats
+    /// TagBinding can be imported using any of these accepted formats:
     /// 
     /// ```sh
     ///  $ pulumi import gcp:tags/locationTagBinding:LocationTagBinding default {{location}}/{{name}}

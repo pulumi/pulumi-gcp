@@ -343,24 +343,24 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Deprecated. Use &#39;tenant_project_id&#39; instead to extract the tenant project ID.
+     * Service account which will be used to access resources in the customer project.
      * 
      * @deprecated
-     * Use `tenant_project_id` instead to extract the tenant project ID.
+     * `service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID.
      * 
      */
-    @Deprecated /* Use `tenant_project_id` instead to extract the tenant project ID. */
+    @Deprecated /* `service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID. */
     @Import(name="serviceAccount")
     private @Nullable Output<String> serviceAccount;
 
     /**
-     * @return Deprecated. Use &#39;tenant_project_id&#39; instead to extract the tenant project ID.
+     * @return Service account which will be used to access resources in the customer project.
      * 
      * @deprecated
-     * Use `tenant_project_id` instead to extract the tenant project ID.
+     * `service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID.
      * 
      */
-    @Deprecated /* Use `tenant_project_id` instead to extract the tenant project ID. */
+    @Deprecated /* `service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID. */
     public Optional<Output<String>> serviceAccount() {
         return Optional.ofNullable(this.serviceAccount);
     }
@@ -1017,30 +1017,30 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceAccount Deprecated. Use &#39;tenant_project_id&#39; instead to extract the tenant project ID.
+         * @param serviceAccount Service account which will be used to access resources in the customer project.
          * 
          * @return builder
          * 
          * @deprecated
-         * Use `tenant_project_id` instead to extract the tenant project ID.
+         * `service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID.
          * 
          */
-        @Deprecated /* Use `tenant_project_id` instead to extract the tenant project ID. */
+        @Deprecated /* `service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID. */
         public Builder serviceAccount(@Nullable Output<String> serviceAccount) {
             $.serviceAccount = serviceAccount;
             return this;
         }
 
         /**
-         * @param serviceAccount Deprecated. Use &#39;tenant_project_id&#39; instead to extract the tenant project ID.
+         * @param serviceAccount Service account which will be used to access resources in the customer project.
          * 
          * @return builder
          * 
          * @deprecated
-         * Use `tenant_project_id` instead to extract the tenant project ID.
+         * `service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID.
          * 
          */
-        @Deprecated /* Use `tenant_project_id` instead to extract the tenant project ID. */
+        @Deprecated /* `service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID. */
         public Builder serviceAccount(String serviceAccount) {
             return serviceAccount(Output.of(serviceAccount));
         }

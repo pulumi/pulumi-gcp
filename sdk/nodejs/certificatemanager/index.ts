@@ -30,6 +30,11 @@ export type DnsAuthorization = import("./dnsAuthorization").DnsAuthorization;
 export const DnsAuthorization: typeof import("./dnsAuthorization").DnsAuthorization = null as any;
 utilities.lazyLoad(exports, ["DnsAuthorization"], () => require("./dnsAuthorization"));
 
+export { TrustConfigArgs, TrustConfigState } from "./trustConfig";
+export type TrustConfig = import("./trustConfig").TrustConfig;
+export const TrustConfig: typeof import("./trustConfig").TrustConfig = null as any;
+utilities.lazyLoad(exports, ["TrustConfig"], () => require("./trustConfig"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -45,6 +50,8 @@ const _module = {
                 return new CertificateMapEntry(name, <any>undefined, { urn })
             case "gcp:certificatemanager/dnsAuthorization:DnsAuthorization":
                 return new DnsAuthorization(name, <any>undefined, { urn })
+            case "gcp:certificatemanager/trustConfig:TrustConfig":
+                return new TrustConfig(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -55,3 +62,4 @@ pulumi.runtime.registerResourceModule("gcp", "certificatemanager/certificateIssu
 pulumi.runtime.registerResourceModule("gcp", "certificatemanager/certificateMap", _module)
 pulumi.runtime.registerResourceModule("gcp", "certificatemanager/certificateMapEntry", _module)
 pulumi.runtime.registerResourceModule("gcp", "certificatemanager/dnsAuthorization", _module)
+pulumi.runtime.registerResourceModule("gcp", "certificatemanager/trustConfig", _module)

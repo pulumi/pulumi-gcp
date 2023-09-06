@@ -116,7 +116,7 @@ export class Config extends pulumi.CustomResource {
     /**
      * List of domains authorized for OAuth redirects.
      */
-    public readonly authorizedDomains!: pulumi.Output<string[] | undefined>;
+    public readonly authorizedDomains!: pulumi.Output<string[]>;
     /**
      * Whether anonymous users will be auto-deleted after a period of 30 days
      */

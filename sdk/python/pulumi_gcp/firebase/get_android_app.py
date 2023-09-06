@@ -21,7 +21,10 @@ class GetAndroidAppResult:
     """
     A collection of values returned by getAndroidApp.
     """
-    def __init__(__self__, app_id=None, deletion_policy=None, display_name=None, etag=None, id=None, name=None, package_name=None, project=None, sha1_hashes=None, sha256_hashes=None):
+    def __init__(__self__, api_key_id=None, app_id=None, deletion_policy=None, display_name=None, etag=None, id=None, name=None, package_name=None, project=None, sha1_hashes=None, sha256_hashes=None):
+        if api_key_id and not isinstance(api_key_id, str):
+            raise TypeError("Expected argument 'api_key_id' to be a str")
+        pulumi.set(__self__, "api_key_id", api_key_id)
         if app_id and not isinstance(app_id, str):
             raise TypeError("Expected argument 'app_id' to be a str")
         pulumi.set(__self__, "app_id", app_id)
@@ -52,6 +55,11 @@ class GetAndroidAppResult:
         if sha256_hashes and not isinstance(sha256_hashes, list):
             raise TypeError("Expected argument 'sha256_hashes' to be a list")
         pulumi.set(__self__, "sha256_hashes", sha256_hashes)
+
+    @property
+    @pulumi.getter(name="apiKeyId")
+    def api_key_id(self) -> str:
+        return pulumi.get(self, "api_key_id")
 
     @property
     @pulumi.getter(name="appId")
@@ -137,6 +145,7 @@ class AwaitableGetAndroidAppResult(GetAndroidAppResult):
         if False:
             yield self
         return GetAndroidAppResult(
+            api_key_id=self.api_key_id,
             app_id=self.app_id,
             deletion_policy=self.deletion_policy,
             display_name=self.display_name,
@@ -169,6 +178,7 @@ def get_android_app(app_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:firebase/getAndroidApp:getAndroidApp', __args__, opts=opts, typ=GetAndroidAppResult).value
 
     return AwaitableGetAndroidAppResult(
+        api_key_id=pulumi.get(__ret__, 'api_key_id'),
         app_id=pulumi.get(__ret__, 'app_id'),
         deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         display_name=pulumi.get(__ret__, 'display_name'),

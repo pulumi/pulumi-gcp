@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Alloydb.Inputs
     public sealed class ClusterBackupSourceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the backup resource.
+        /// The name of the backup that this cluster is restored from.
         /// </summary>
         [Input("backupName")]
         public Input<string>? BackupName { get; set; }

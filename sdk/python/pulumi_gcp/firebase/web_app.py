@@ -15,6 +15,7 @@ __all__ = ['WebAppArgs', 'WebApp']
 class WebAppArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
+                 api_key_id: Optional[pulumi.Input[str]] = None,
                  deletion_policy: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -23,12 +24,17 @@ class WebAppArgs:
                
                
                - - -
+        :param pulumi.Input[str] api_key_id: The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the WebApp.
+               If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the WebApp.
+               This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
         :param pulumi.Input[str] deletion_policy: Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
                This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'ABANDON'
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "display_name", display_name)
+        if api_key_id is not None:
+            pulumi.set(__self__, "api_key_id", api_key_id)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if project is not None:
@@ -48,6 +54,20 @@ class WebAppArgs:
     @display_name.setter
     def display_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="apiKeyId")
+    def api_key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the WebApp.
+        If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the WebApp.
+        This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+        """
+        return pulumi.get(self, "api_key_id")
+
+    @api_key_id.setter
+    def api_key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_key_id", value)
 
     @property
     @pulumi.getter(name="deletionPolicy")
@@ -79,6 +99,7 @@ class WebAppArgs:
 @pulumi.input_type
 class _WebAppState:
     def __init__(__self__, *,
+                 api_key_id: Optional[pulumi.Input[str]] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
                  app_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  deletion_policy: Optional[pulumi.Input[str]] = None,
@@ -87,6 +108,9 @@ class _WebAppState:
                  project: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering WebApp resources.
+        :param pulumi.Input[str] api_key_id: The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the WebApp.
+               If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the WebApp.
+               This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
         :param pulumi.Input[str] app_id: The globally unique, Firebase-assigned identifier of the App.
                This identifier should be treated as an opaque token, as the data format is not specified.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] app_urls: The URLs where the `WebApp` is hosted.
@@ -101,6 +125,8 @@ class _WebAppState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
+        if api_key_id is not None:
+            pulumi.set(__self__, "api_key_id", api_key_id)
         if app_id is not None:
             pulumi.set(__self__, "app_id", app_id)
         if app_urls is not None:
@@ -113,6 +139,20 @@ class _WebAppState:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="apiKeyId")
+    def api_key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the WebApp.
+        If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the WebApp.
+        This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+        """
+        return pulumi.get(self, "api_key_id")
+
+    @api_key_id.setter
+    def api_key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_key_id", value)
 
     @property
     @pulumi.getter(name="appId")
@@ -199,6 +239,7 @@ class WebApp(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api_key_id: Optional[pulumi.Input[str]] = None,
                  deletion_policy: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -251,6 +292,28 @@ class WebApp(pulumi.CustomResource):
             })),
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
+        ### Firebase Web App Custom Api Key
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        web = gcp.projects.ApiKey("web",
+            project="my-project-name",
+            display_name="Display Name",
+            restrictions=gcp.projects.ApiKeyRestrictionsArgs(
+                browser_key_restrictions=gcp.projects.ApiKeyRestrictionsBrowserKeyRestrictionsArgs(
+                    allowed_referrers=["*"],
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default = gcp.firebase.WebApp("default",
+            project="my-project-name",
+            display_name="Display Name",
+            api_key_id=web.uid,
+            deletion_policy="DELETE",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -278,6 +341,9 @@ class WebApp(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] api_key_id: The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the WebApp.
+               If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the WebApp.
+               This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
         :param pulumi.Input[str] deletion_policy: Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
                This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'ABANDON'
         :param pulumi.Input[str] display_name: The user-assigned display name of the App.
@@ -341,6 +407,28 @@ class WebApp(pulumi.CustomResource):
             })),
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
+        ### Firebase Web App Custom Api Key
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        web = gcp.projects.ApiKey("web",
+            project="my-project-name",
+            display_name="Display Name",
+            restrictions=gcp.projects.ApiKeyRestrictionsArgs(
+                browser_key_restrictions=gcp.projects.ApiKeyRestrictionsBrowserKeyRestrictionsArgs(
+                    allowed_referrers=["*"],
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default = gcp.firebase.WebApp("default",
+            project="my-project-name",
+            display_name="Display Name",
+            api_key_id=web.uid,
+            deletion_policy="DELETE",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -381,6 +469,7 @@ class WebApp(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api_key_id: Optional[pulumi.Input[str]] = None,
                  deletion_policy: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -393,6 +482,7 @@ class WebApp(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = WebAppArgs.__new__(WebAppArgs)
 
+            __props__.__dict__["api_key_id"] = api_key_id
             __props__.__dict__["deletion_policy"] = deletion_policy
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
@@ -411,6 +501,7 @@ class WebApp(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            api_key_id: Optional[pulumi.Input[str]] = None,
             app_id: Optional[pulumi.Input[str]] = None,
             app_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             deletion_policy: Optional[pulumi.Input[str]] = None,
@@ -424,6 +515,9 @@ class WebApp(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] api_key_id: The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the WebApp.
+               If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the WebApp.
+               This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
         :param pulumi.Input[str] app_id: The globally unique, Firebase-assigned identifier of the App.
                This identifier should be treated as an opaque token, as the data format is not specified.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] app_urls: The URLs where the `WebApp` is hosted.
@@ -442,6 +536,7 @@ class WebApp(pulumi.CustomResource):
 
         __props__ = _WebAppState.__new__(_WebAppState)
 
+        __props__.__dict__["api_key_id"] = api_key_id
         __props__.__dict__["app_id"] = app_id
         __props__.__dict__["app_urls"] = app_urls
         __props__.__dict__["deletion_policy"] = deletion_policy
@@ -449,6 +544,16 @@ class WebApp(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         return WebApp(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="apiKeyId")
+    def api_key_id(self) -> pulumi.Output[str]:
+        """
+        The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the WebApp.
+        If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the WebApp.
+        This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+        """
+        return pulumi.get(self, "api_key_id")
 
     @property
     @pulumi.getter(name="appId")

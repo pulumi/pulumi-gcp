@@ -68,7 +68,7 @@ import (
 //
 // ## Import
 //
-// # Organization-level logging sinks can be imported using this format
+// Organization-level logging sinks can be imported using this format:
 //
 // ```sh
 //

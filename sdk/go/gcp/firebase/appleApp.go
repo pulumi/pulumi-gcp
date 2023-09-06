@@ -48,18 +48,34 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/firebase"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := firebase.NewAppleApp(ctx, "full", &firebase.AppleAppArgs{
+//			apple, err := projects.NewApiKey(ctx, "apple", &projects.ApiKeyArgs{
+//				DisplayName: pulumi.String("Display Name Full"),
+//				Project:     pulumi.String("my-project-name"),
+//				Restrictions: &projects.ApiKeyRestrictionsArgs{
+//					IosKeyRestrictions: &projects.ApiKeyRestrictionsIosKeyRestrictionsArgs{
+//						AllowedBundleIds: pulumi.StringArray{
+//							pulumi.String("apple.app.12345"),
+//						},
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firebase.NewAppleApp(ctx, "full", &firebase.AppleAppArgs{
 //				Project:     pulumi.String("my-project-name"),
 //				DisplayName: pulumi.String("Display Name Full"),
 //				BundleId:    pulumi.String("apple.app.12345"),
 //				AppStoreId:  pulumi.String("12345"),
 //				TeamId:      pulumi.String("9987654321"),
+//				ApiKeyId:    apple.Uid,
 //			}, pulumi.Provider(google_beta))
 //			if err != nil {
 //				return err
@@ -106,6 +122,10 @@ import (
 type AppleApp struct {
 	pulumi.CustomResourceState
 
+	// The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AppleApp.
+	// If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AppleApp.
+	// This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+	ApiKeyId pulumi.StringOutput `pulumi:"apiKeyId"`
 	// The globally unique, Firebase-assigned identifier of the App.
 	// This identifier should be treated as an opaque token, as the data format is not specified.
 	AppId pulumi.StringOutput `pulumi:"appId"`
@@ -167,6 +187,10 @@ func GetAppleApp(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AppleApp resources.
 type appleAppState struct {
+	// The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AppleApp.
+	// If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AppleApp.
+	// This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+	ApiKeyId *string `pulumi:"apiKeyId"`
 	// The globally unique, Firebase-assigned identifier of the App.
 	// This identifier should be treated as an opaque token, as the data format is not specified.
 	AppId *string `pulumi:"appId"`
@@ -193,6 +217,10 @@ type appleAppState struct {
 }
 
 type AppleAppState struct {
+	// The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AppleApp.
+	// If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AppleApp.
+	// This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+	ApiKeyId pulumi.StringPtrInput
 	// The globally unique, Firebase-assigned identifier of the App.
 	// This identifier should be treated as an opaque token, as the data format is not specified.
 	AppId pulumi.StringPtrInput
@@ -223,6 +251,10 @@ func (AppleAppState) ElementType() reflect.Type {
 }
 
 type appleAppArgs struct {
+	// The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AppleApp.
+	// If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AppleApp.
+	// This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+	ApiKeyId *string `pulumi:"apiKeyId"`
 	// The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
 	AppStoreId *string `pulumi:"appStoreId"`
 	// The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
@@ -244,6 +276,10 @@ type appleAppArgs struct {
 
 // The set of arguments for constructing a AppleApp resource.
 type AppleAppArgs struct {
+	// The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AppleApp.
+	// If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AppleApp.
+	// This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+	ApiKeyId pulumi.StringPtrInput
 	// The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
 	AppStoreId pulumi.StringPtrInput
 	// The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
@@ -348,6 +384,13 @@ func (o AppleAppOutput) ToAppleAppOutput() AppleAppOutput {
 
 func (o AppleAppOutput) ToAppleAppOutputWithContext(ctx context.Context) AppleAppOutput {
 	return o
+}
+
+// The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AppleApp.
+// If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AppleApp.
+// This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+func (o AppleAppOutput) ApiKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppleApp) pulumi.StringOutput { return v.ApiKeyId }).(pulumi.StringOutput)
 }
 
 // The globally unique, Firebase-assigned identifier of the App.

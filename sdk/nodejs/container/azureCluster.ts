@@ -56,6 +56,62 @@ import * as utilities from "../utilities";
  *     resourceGroupId: "/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster",
  * });
  * ```
+ * ### Beta_basic_enum_azure_cluster
+ * A basic example of a containerazure azure cluster with lowercase enums (beta)
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const versions = gcp.container.getAzureVersions({
+ *     project: "my-project-name",
+ *     location: "us-west1",
+ * });
+ * const basic = new gcp.container.AzureClient("basic", {
+ *     applicationId: "12345678-1234-1234-1234-123456789111",
+ *     location: "us-west1",
+ *     tenantId: "12345678-1234-1234-1234-123456789111",
+ *     project: "my-project-name",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const primary = new gcp.container.AzureCluster("primary", {
+ *     authorization: {
+ *         adminUsers: [{
+ *             username: "mmv2@google.com",
+ *         }],
+ *     },
+ *     azureRegion: "westus2",
+ *     client: pulumi.interpolate`projects/my-project-number/locations/us-west1/azureClients/${basic.name}`,
+ *     controlPlane: {
+ *         sshConfig: {
+ *             authorizedKey: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers",
+ *         },
+ *         subnetId: "/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default",
+ *         version: versions.then(versions => versions.validVersions?.[0]),
+ *     },
+ *     fleet: {
+ *         project: "my-project-number",
+ *     },
+ *     location: "us-west1",
+ *     networking: {
+ *         podAddressCidrBlocks: ["10.200.0.0/16"],
+ *         serviceAddressCidrBlocks: ["10.32.0.0/24"],
+ *         virtualNetworkId: "/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet",
+ *     },
+ *     resourceGroupId: "/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster",
+ *     project: "my-project-name",
+ *     loggingConfig: {
+ *         componentConfig: {
+ *             enableComponents: [
+ *                 "system_components",
+ *                 "workloads",
+ *             ],
+ *         },
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *

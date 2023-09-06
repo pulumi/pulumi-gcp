@@ -53,7 +53,7 @@ import (
 //
 // ## Import
 //
-// # Domain can be imported using any of these accepted formats
+// Domain can be imported using any of these accepted formats:
 //
 // ```sh
 //

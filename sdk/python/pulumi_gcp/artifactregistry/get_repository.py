@@ -22,7 +22,13 @@ class GetRepositoryResult:
     """
     A collection of values returned by getRepository.
     """
-    def __init__(__self__, create_time=None, description=None, docker_configs=None, format=None, id=None, kms_key_name=None, labels=None, location=None, maven_configs=None, mode=None, name=None, project=None, remote_repository_configs=None, repository_id=None, update_time=None, virtual_repository_configs=None):
+    def __init__(__self__, cleanup_policies=None, cleanup_policy_dry_run=None, create_time=None, description=None, docker_configs=None, format=None, id=None, kms_key_name=None, labels=None, location=None, maven_configs=None, mode=None, name=None, project=None, remote_repository_configs=None, repository_id=None, update_time=None, virtual_repository_configs=None):
+        if cleanup_policies and not isinstance(cleanup_policies, list):
+            raise TypeError("Expected argument 'cleanup_policies' to be a list")
+        pulumi.set(__self__, "cleanup_policies", cleanup_policies)
+        if cleanup_policy_dry_run and not isinstance(cleanup_policy_dry_run, bool):
+            raise TypeError("Expected argument 'cleanup_policy_dry_run' to be a bool")
+        pulumi.set(__self__, "cleanup_policy_dry_run", cleanup_policy_dry_run)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -71,6 +77,16 @@ class GetRepositoryResult:
         if virtual_repository_configs and not isinstance(virtual_repository_configs, list):
             raise TypeError("Expected argument 'virtual_repository_configs' to be a list")
         pulumi.set(__self__, "virtual_repository_configs", virtual_repository_configs)
+
+    @property
+    @pulumi.getter(name="cleanupPolicies")
+    def cleanup_policies(self) -> Sequence['outputs.GetRepositoryCleanupPolicyResult']:
+        return pulumi.get(self, "cleanup_policies")
+
+    @property
+    @pulumi.getter(name="cleanupPolicyDryRun")
+    def cleanup_policy_dry_run(self) -> bool:
+        return pulumi.get(self, "cleanup_policy_dry_run")
 
     @property
     @pulumi.getter(name="createTime")
@@ -162,6 +178,8 @@ class AwaitableGetRepositoryResult(GetRepositoryResult):
         if False:
             yield self
         return GetRepositoryResult(
+            cleanup_policies=self.cleanup_policies,
+            cleanup_policy_dry_run=self.cleanup_policy_dry_run,
             create_time=self.create_time,
             description=self.description,
             docker_configs=self.docker_configs,
@@ -215,6 +233,8 @@ def get_repository(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:artifactregistry/getRepository:getRepository', __args__, opts=opts, typ=GetRepositoryResult).value
 
     return AwaitableGetRepositoryResult(
+        cleanup_policies=pulumi.get(__ret__, 'cleanup_policies'),
+        cleanup_policy_dry_run=pulumi.get(__ret__, 'cleanup_policy_dry_run'),
         create_time=pulumi.get(__ret__, 'create_time'),
         description=pulumi.get(__ret__, 'description'),
         docker_configs=pulumi.get(__ret__, 'docker_configs'),

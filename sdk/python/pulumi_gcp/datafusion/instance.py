@@ -434,7 +434,7 @@ class _InstanceState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the Data Fusion instance.
-        :param pulumi.Input[str] service_account: Deprecated. Use 'tenant_project_id' instead to extract the tenant project ID.
+        :param pulumi.Input[str] service_account: Service account which will be used to access resources in the customer project.
         :param pulumi.Input[str] service_endpoint: Endpoint on which the Data Fusion UI and REST APIs are accessible.
         :param pulumi.Input[str] state: The type of an accelator for a CDF instance.
                Possible values are: `ENABLED`, `DISABLED`.
@@ -499,8 +499,8 @@ class _InstanceState:
         if region is not None:
             pulumi.set(__self__, "region", region)
         if service_account is not None:
-            warnings.warn("""Use `tenant_project_id` instead to extract the tenant project ID.""", DeprecationWarning)
-            pulumi.log.warn("""service_account is deprecated: Use `tenant_project_id` instead to extract the tenant project ID.""")
+            warnings.warn("""`service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID.""", DeprecationWarning)
+            pulumi.log.warn("""service_account is deprecated: `service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID.""")
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
         if service_endpoint is not None:
@@ -774,10 +774,10 @@ class _InstanceState:
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> Optional[pulumi.Input[str]]:
         """
-        Deprecated. Use 'tenant_project_id' instead to extract the tenant project ID.
+        Service account which will be used to access resources in the customer project.
         """
-        warnings.warn("""Use `tenant_project_id` instead to extract the tenant project ID.""", DeprecationWarning)
-        pulumi.log.warn("""service_account is deprecated: Use `tenant_project_id` instead to extract the tenant project ID.""")
+        warnings.warn("""`service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID.""", DeprecationWarning)
+        pulumi.log.warn("""service_account is deprecated: `service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID.""")
 
         return pulumi.get(self, "service_account")
 
@@ -1388,7 +1388,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the Data Fusion instance.
-        :param pulumi.Input[str] service_account: Deprecated. Use 'tenant_project_id' instead to extract the tenant project ID.
+        :param pulumi.Input[str] service_account: Service account which will be used to access resources in the customer project.
         :param pulumi.Input[str] service_endpoint: Endpoint on which the Data Fusion UI and REST APIs are accessible.
         :param pulumi.Input[str] state: The type of an accelator for a CDF instance.
                Possible values are: `ENABLED`, `DISABLED`.
@@ -1621,10 +1621,10 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> pulumi.Output[str]:
         """
-        Deprecated. Use 'tenant_project_id' instead to extract the tenant project ID.
+        Service account which will be used to access resources in the customer project.
         """
-        warnings.warn("""Use `tenant_project_id` instead to extract the tenant project ID.""", DeprecationWarning)
-        pulumi.log.warn("""service_account is deprecated: Use `tenant_project_id` instead to extract the tenant project ID.""")
+        warnings.warn("""`service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID.""", DeprecationWarning)
+        pulumi.log.warn("""service_account is deprecated: `service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID.""")
 
         return pulumi.get(self, "service_account")
 

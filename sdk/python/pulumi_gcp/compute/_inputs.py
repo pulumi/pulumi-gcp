@@ -192,6 +192,7 @@ __all__ = [
     'MachineImageMachineImageEncryptionKeyArgs',
     'ManagedSslCertificateManagedArgs',
     'MangedSslCertificateManagedArgs',
+    'NetworkAttachmentConnectionEndpointArgs',
     'NetworkEndpointListNetworkEndpointArgs',
     'NetworkFirewallPolicyRuleMatchArgs',
     'NetworkFirewallPolicyRuleMatchLayer4ConfigArgs',
@@ -12913,6 +12914,103 @@ class MangedSslCertificateManagedArgs:
     @domains.setter
     def domains(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "domains", value)
+
+
+@pulumi.input_type
+class NetworkAttachmentConnectionEndpointArgs:
+    def __init__(__self__, *,
+                 ip_address: Optional[pulumi.Input[str]] = None,
+                 project_id_or_num: Optional[pulumi.Input[str]] = None,
+                 secondary_ip_cidr_ranges: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 subnetwork: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] ip_address: (Output)
+               The IPv4 address assigned to the producer instance network interface. This value will be a range in case of Serverless.
+        :param pulumi.Input[str] project_id_or_num: (Output)
+               The project id or number of the interface to which the IP was assigned.
+        :param pulumi.Input[str] secondary_ip_cidr_ranges: (Output)
+               Alias IP ranges from the same subnetwork.
+        :param pulumi.Input[str] status: (Output)
+               The status of a connected endpoint to this network attachment.
+        :param pulumi.Input[str] subnetwork: (Output)
+               The subnetwork used to assign the IP to the producer instance network interface.
+        """
+        if ip_address is not None:
+            pulumi.set(__self__, "ip_address", ip_address)
+        if project_id_or_num is not None:
+            pulumi.set(__self__, "project_id_or_num", project_id_or_num)
+        if secondary_ip_cidr_ranges is not None:
+            pulumi.set(__self__, "secondary_ip_cidr_ranges", secondary_ip_cidr_ranges)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if subnetwork is not None:
+            pulumi.set(__self__, "subnetwork", subnetwork)
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The IPv4 address assigned to the producer instance network interface. This value will be a range in case of Serverless.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @ip_address.setter
+    def ip_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_address", value)
+
+    @property
+    @pulumi.getter(name="projectIdOrNum")
+    def project_id_or_num(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The project id or number of the interface to which the IP was assigned.
+        """
+        return pulumi.get(self, "project_id_or_num")
+
+    @project_id_or_num.setter
+    def project_id_or_num(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id_or_num", value)
+
+    @property
+    @pulumi.getter(name="secondaryIpCidrRanges")
+    def secondary_ip_cidr_ranges(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Alias IP ranges from the same subnetwork.
+        """
+        return pulumi.get(self, "secondary_ip_cidr_ranges")
+
+    @secondary_ip_cidr_ranges.setter
+    def secondary_ip_cidr_ranges(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secondary_ip_cidr_ranges", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The status of a connected endpoint to this network attachment.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def subnetwork(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The subnetwork used to assign the IP to the producer instance network interface.
+        """
+        return pulumi.get(self, "subnetwork")
+
+    @subnetwork.setter
+    def subnetwork(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subnetwork", value)
 
 
 @pulumi.input_type

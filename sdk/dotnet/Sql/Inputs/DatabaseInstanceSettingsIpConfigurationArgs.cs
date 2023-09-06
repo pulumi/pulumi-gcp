@@ -50,6 +50,14 @@ namespace Pulumi.Gcp.Sql.Inputs
         [Input("privateNetwork")]
         public Input<string>? PrivateNetwork { get; set; }
 
+        [Input("pscConfigs")]
+        private InputList<Inputs.DatabaseInstanceSettingsIpConfigurationPscConfigArgs>? _pscConfigs;
+        public InputList<Inputs.DatabaseInstanceSettingsIpConfigurationPscConfigArgs> PscConfigs
+        {
+            get => _pscConfigs ?? (_pscConfigs = new InputList<Inputs.DatabaseInstanceSettingsIpConfigurationPscConfigArgs>());
+            set => _pscConfigs = value;
+        }
+
         /// <summary>
         /// Whether SSL connections over IP are enforced or not.
         /// </summary>

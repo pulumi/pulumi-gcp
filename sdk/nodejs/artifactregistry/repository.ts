@@ -116,6 +116,60 @@ import * as utilities from "../utilities";
  *     repositoryId: "my-repository",
  * });
  * ```
+ * ### Artifact Registry Repository Cleanup
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_repo = new gcp.artifactregistry.Repository("my-repo", {
+ *     location: "us-central1",
+ *     repositoryId: "my-repository",
+ *     description: "example docker repository with cleanup policies",
+ *     format: "DOCKER",
+ *     cleanupPolicyDryRun: false,
+ *     cleanupPolicies: [
+ *         {
+ *             id: "delete-prerelease",
+ *             action: "DELETE",
+ *             condition: {
+ *                 tagState: "TAGGED",
+ *                 tagPrefixes: [
+ *                     "alpha",
+ *                     "v0",
+ *                 ],
+ *                 olderThan: "2592000s",
+ *             },
+ *         },
+ *         {
+ *             id: "keep-tagged-release",
+ *             action: "KEEP",
+ *             condition: {
+ *                 tagState: "TAGGED",
+ *                 tagPrefixes: ["release"],
+ *                 packageNamePrefixes: [
+ *                     "webapp",
+ *                     "mobile",
+ *                 ],
+ *             },
+ *         },
+ *         {
+ *             id: "keep-minimum-versions",
+ *             action: "KEEP",
+ *             mostRecentVersions: {
+ *                 packageNamePrefixes: [
+ *                     "webapp",
+ *                     "mobile",
+ *                     "sandbox",
+ *                 ],
+ *                 keepCount: 5,
+ *             },
+ *         },
+ *     ],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -165,6 +219,16 @@ export class Repository extends pulumi.CustomResource {
         return obj['__pulumiType'] === Repository.__pulumiType;
     }
 
+    /**
+     * Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
+     * deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
+     * under 128 characters in length.
+     */
+    public readonly cleanupPolicies!: pulumi.Output<outputs.artifactregistry.RepositoryCleanupPolicy[] | undefined>;
+    /**
+     * If true, the cleanup pipeline is prevented from deleting versions in this repository.
+     */
+    public readonly cleanupPolicyDryRun!: pulumi.Output<boolean | undefined>;
     /**
      * The time when the repository was created.
      */
@@ -263,6 +327,8 @@ export class Repository extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RepositoryState | undefined;
+            resourceInputs["cleanupPolicies"] = state ? state.cleanupPolicies : undefined;
+            resourceInputs["cleanupPolicyDryRun"] = state ? state.cleanupPolicyDryRun : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["dockerConfig"] = state ? state.dockerConfig : undefined;
@@ -286,6 +352,8 @@ export class Repository extends pulumi.CustomResource {
             if ((!args || args.repositoryId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'repositoryId'");
             }
+            resourceInputs["cleanupPolicies"] = args ? args.cleanupPolicies : undefined;
+            resourceInputs["cleanupPolicyDryRun"] = args ? args.cleanupPolicyDryRun : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["dockerConfig"] = args ? args.dockerConfig : undefined;
             resourceInputs["format"] = args ? args.format : undefined;
@@ -311,6 +379,16 @@ export class Repository extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Repository resources.
  */
 export interface RepositoryState {
+    /**
+     * Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
+     * deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
+     * under 128 characters in length.
+     */
+    cleanupPolicies?: pulumi.Input<pulumi.Input<inputs.artifactregistry.RepositoryCleanupPolicy>[]>;
+    /**
+     * If true, the cleanup pipeline is prevented from deleting versions in this repository.
+     */
+    cleanupPolicyDryRun?: pulumi.Input<boolean>;
     /**
      * The time when the repository was created.
      */
@@ -401,6 +479,16 @@ export interface RepositoryState {
  * The set of arguments for constructing a Repository resource.
  */
 export interface RepositoryArgs {
+    /**
+     * Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
+     * deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
+     * under 128 characters in length.
+     */
+    cleanupPolicies?: pulumi.Input<pulumi.Input<inputs.artifactregistry.RepositoryCleanupPolicy>[]>;
+    /**
+     * If true, the cleanup pipeline is prevented from deleting versions in this repository.
+     */
+    cleanupPolicyDryRun?: pulumi.Input<boolean>;
     /**
      * The user-provided description of the repository.
      */

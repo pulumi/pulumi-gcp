@@ -76,7 +76,7 @@ import (
 //
 // ## Import
 //
-// # EntityType can be imported using any of these accepted formats
+// EntityType can be imported using any of these accepted formats:
 //
 // ```sh
 //

@@ -277,7 +277,7 @@ class Fulfillment(pulumi.CustomResource):
 
         ## Import
 
-        Fulfillment can be imported using any of these accepted formats
+        Fulfillment can be imported using any of these accepted formats:
 
         ```sh
          $ pulumi import gcp:diagflow/fulfillment:Fulfillment default {{name}}
@@ -339,7 +339,7 @@ class Fulfillment(pulumi.CustomResource):
 
         ## Import
 
-        Fulfillment can be imported using any of these accepted formats
+        Fulfillment can be imported using any of these accepted formats:
 
         ```sh
          $ pulumi import gcp:diagflow/fulfillment:Fulfillment default {{name}}

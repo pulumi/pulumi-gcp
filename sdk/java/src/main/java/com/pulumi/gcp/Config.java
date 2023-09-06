@@ -59,6 +59,9 @@ public final class Config {
     public Optional<String> bigQueryCustomEndpoint() {
         return Codegen.stringProp("bigQueryCustomEndpoint").config(config).get();
     }
+    public Optional<String> biglakeCustomEndpoint() {
+        return Codegen.stringProp("biglakeCustomEndpoint").config(config).get();
+    }
     public Optional<String> bigqueryAnalyticsHubCustomEndpoint() {
         return Codegen.stringProp("bigqueryAnalyticsHubCustomEndpoint").config(config).get();
     }

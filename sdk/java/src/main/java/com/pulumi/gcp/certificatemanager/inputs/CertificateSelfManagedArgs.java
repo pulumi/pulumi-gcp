@@ -17,29 +17,33 @@ public final class CertificateSelfManagedArgs extends com.pulumi.resources.Resou
 
     /**
      * (Optional, Deprecated)
-     * **Deprecated** The certificate chain in PEM-encoded form.
+     * The certificate chain in PEM-encoded form.
      * Leaf certificate comes first, followed by intermediate ones if any.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
+     * &gt; **Warning:** `certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead.
+     * 
      * @deprecated
-     * Deprecated in favor of `pem_certificate`
+     * `certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead.
      * 
      */
-    @Deprecated /* Deprecated in favor of `pem_certificate` */
+    @Deprecated /* `certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead. */
     @Import(name="certificatePem")
     private @Nullable Output<String> certificatePem;
 
     /**
      * @return (Optional, Deprecated)
-     * **Deprecated** The certificate chain in PEM-encoded form.
+     * The certificate chain in PEM-encoded form.
      * Leaf certificate comes first, followed by intermediate ones if any.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
+     * &gt; **Warning:** `certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead.
+     * 
      * @deprecated
-     * Deprecated in favor of `pem_certificate`
+     * `certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead.
      * 
      */
-    @Deprecated /* Deprecated in favor of `pem_certificate` */
+    @Deprecated /* `certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead. */
     public Optional<Output<String>> certificatePem() {
         return Optional.ofNullable(this.certificatePem);
     }
@@ -82,27 +86,31 @@ public final class CertificateSelfManagedArgs extends com.pulumi.resources.Resou
 
     /**
      * (Optional, Deprecated)
-     * **Deprecated** The private key of the leaf certificate in PEM-encoded form.
+     * The private key of the leaf certificate in PEM-encoded form.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
+     * &gt; **Warning:** `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead.
+     * 
      * @deprecated
-     * Deprecated in favor of `pem_private_key`
+     * `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead.
      * 
      */
-    @Deprecated /* Deprecated in favor of `pem_private_key` */
+    @Deprecated /* `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead. */
     @Import(name="privateKeyPem")
     private @Nullable Output<String> privateKeyPem;
 
     /**
      * @return (Optional, Deprecated)
-     * **Deprecated** The private key of the leaf certificate in PEM-encoded form.
+     * The private key of the leaf certificate in PEM-encoded form.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
+     * &gt; **Warning:** `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead.
+     * 
      * @deprecated
-     * Deprecated in favor of `pem_private_key`
+     * `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead.
      * 
      */
-    @Deprecated /* Deprecated in favor of `pem_private_key` */
+    @Deprecated /* `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead. */
     public Optional<Output<String>> privateKeyPem() {
         return Optional.ofNullable(this.privateKeyPem);
     }
@@ -136,17 +144,19 @@ public final class CertificateSelfManagedArgs extends com.pulumi.resources.Resou
 
         /**
          * @param certificatePem (Optional, Deprecated)
-         * **Deprecated** The certificate chain in PEM-encoded form.
+         * The certificate chain in PEM-encoded form.
          * Leaf certificate comes first, followed by intermediate ones if any.
          * **Note**: This property is sensitive and will not be displayed in the plan.
+         * 
+         * &gt; **Warning:** `certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Deprecated in favor of `pem_certificate`
+         * `certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead.
          * 
          */
-        @Deprecated /* Deprecated in favor of `pem_certificate` */
+        @Deprecated /* `certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead. */
         public Builder certificatePem(@Nullable Output<String> certificatePem) {
             $.certificatePem = certificatePem;
             return this;
@@ -154,17 +164,19 @@ public final class CertificateSelfManagedArgs extends com.pulumi.resources.Resou
 
         /**
          * @param certificatePem (Optional, Deprecated)
-         * **Deprecated** The certificate chain in PEM-encoded form.
+         * The certificate chain in PEM-encoded form.
          * Leaf certificate comes first, followed by intermediate ones if any.
          * **Note**: This property is sensitive and will not be displayed in the plan.
+         * 
+         * &gt; **Warning:** `certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Deprecated in favor of `pem_certificate`
+         * `certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead.
          * 
          */
-        @Deprecated /* Deprecated in favor of `pem_certificate` */
+        @Deprecated /* `certificate_pem` is deprecated and will be removed in a future major release. Use `pem_certificate` instead. */
         public Builder certificatePem(String certificatePem) {
             return certificatePem(Output.of(certificatePem));
         }
@@ -219,16 +231,18 @@ public final class CertificateSelfManagedArgs extends com.pulumi.resources.Resou
 
         /**
          * @param privateKeyPem (Optional, Deprecated)
-         * **Deprecated** The private key of the leaf certificate in PEM-encoded form.
+         * The private key of the leaf certificate in PEM-encoded form.
          * **Note**: This property is sensitive and will not be displayed in the plan.
+         * 
+         * &gt; **Warning:** `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Deprecated in favor of `pem_private_key`
+         * `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead.
          * 
          */
-        @Deprecated /* Deprecated in favor of `pem_private_key` */
+        @Deprecated /* `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead. */
         public Builder privateKeyPem(@Nullable Output<String> privateKeyPem) {
             $.privateKeyPem = privateKeyPem;
             return this;
@@ -236,16 +250,18 @@ public final class CertificateSelfManagedArgs extends com.pulumi.resources.Resou
 
         /**
          * @param privateKeyPem (Optional, Deprecated)
-         * **Deprecated** The private key of the leaf certificate in PEM-encoded form.
+         * The private key of the leaf certificate in PEM-encoded form.
          * **Note**: This property is sensitive and will not be displayed in the plan.
+         * 
+         * &gt; **Warning:** `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Deprecated in favor of `pem_private_key`
+         * `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead.
          * 
          */
-        @Deprecated /* Deprecated in favor of `pem_private_key` */
+        @Deprecated /* `private_key_pem` is deprecated and will be removed in a future major release. Use `pem_private_key` instead. */
         public Builder privateKeyPem(String privateKeyPem) {
             return privateKeyPem(Output.of(privateKeyPem));
         }

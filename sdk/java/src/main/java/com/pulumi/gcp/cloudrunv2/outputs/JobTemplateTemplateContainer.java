@@ -45,11 +45,13 @@ public final class JobTemplateTemplateContainer {
      * This field is not supported in Cloud Run Job currently.
      * Structure is documented below.
      * 
+     * &gt; **Warning:** `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+     * 
      * @deprecated
-     * Cloud Run Job does not support liveness probe and `liveness_probe` field will be removed in a future major release.
+     * `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
      * 
      */
-    @Deprecated /* Cloud Run Job does not support liveness probe and `liveness_probe` field will be removed in a future major release. */
+    @Deprecated /* `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
     private @Nullable JobTemplateTemplateContainerLivenessProbe livenessProbe;
     /**
      * @return Name of the container specified as a DNS_LABEL.
@@ -75,11 +77,13 @@ public final class JobTemplateTemplateContainer {
      * This field is not supported in Cloud Run Job currently.
      * Structure is documented below.
      * 
+     * &gt; **Warning:** `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+     * 
      * @deprecated
-     * Cloud Run Job does not support startup probe and `startup_probe` field will be removed in a future major release.
+     * `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
      * 
      */
-    @Deprecated /* Cloud Run Job does not support startup probe and `startup_probe` field will be removed in a future major release. */
+    @Deprecated /* `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
     private @Nullable JobTemplateTemplateContainerStartupProbe startupProbe;
     /**
      * @return Volume to mount into the container&#39;s filesystem.
@@ -129,11 +133,13 @@ public final class JobTemplateTemplateContainer {
      * This field is not supported in Cloud Run Job currently.
      * Structure is documented below.
      * 
+     * &gt; **Warning:** `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+     * 
      * @deprecated
-     * Cloud Run Job does not support liveness probe and `liveness_probe` field will be removed in a future major release.
+     * `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
      * 
      */
-    @Deprecated /* Cloud Run Job does not support liveness probe and `liveness_probe` field will be removed in a future major release. */
+    @Deprecated /* `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
     public Optional<JobTemplateTemplateContainerLivenessProbe> livenessProbe() {
         return Optional.ofNullable(this.livenessProbe);
     }
@@ -167,11 +173,13 @@ public final class JobTemplateTemplateContainer {
      * This field is not supported in Cloud Run Job currently.
      * Structure is documented below.
      * 
+     * &gt; **Warning:** `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+     * 
      * @deprecated
-     * Cloud Run Job does not support startup probe and `startup_probe` field will be removed in a future major release.
+     * `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
      * 
      */
-    @Deprecated /* Cloud Run Job does not support startup probe and `startup_probe` field will be removed in a future major release. */
+    @Deprecated /* `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
     public Optional<JobTemplateTemplateContainerStartupProbe> startupProbe() {
         return Optional.ofNullable(this.startupProbe);
     }

@@ -172,6 +172,81 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
+    /// ### Artifact Registry Repository Cleanup
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_repo = new Gcp.ArtifactRegistry.Repository("my-repo", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         RepositoryId = "my-repository",
+    ///         Description = "example docker repository with cleanup policies",
+    ///         Format = "DOCKER",
+    ///         CleanupPolicyDryRun = false,
+    ///         CleanupPolicies = new[]
+    ///         {
+    ///             new Gcp.ArtifactRegistry.Inputs.RepositoryCleanupPolicyArgs
+    ///             {
+    ///                 Id = "delete-prerelease",
+    ///                 Action = "DELETE",
+    ///                 Condition = new Gcp.ArtifactRegistry.Inputs.RepositoryCleanupPolicyConditionArgs
+    ///                 {
+    ///                     TagState = "TAGGED",
+    ///                     TagPrefixes = new[]
+    ///                     {
+    ///                         "alpha",
+    ///                         "v0",
+    ///                     },
+    ///                     OlderThan = "2592000s",
+    ///                 },
+    ///             },
+    ///             new Gcp.ArtifactRegistry.Inputs.RepositoryCleanupPolicyArgs
+    ///             {
+    ///                 Id = "keep-tagged-release",
+    ///                 Action = "KEEP",
+    ///                 Condition = new Gcp.ArtifactRegistry.Inputs.RepositoryCleanupPolicyConditionArgs
+    ///                 {
+    ///                     TagState = "TAGGED",
+    ///                     TagPrefixes = new[]
+    ///                     {
+    ///                         "release",
+    ///                     },
+    ///                     PackageNamePrefixes = new[]
+    ///                     {
+    ///                         "webapp",
+    ///                         "mobile",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new Gcp.ArtifactRegistry.Inputs.RepositoryCleanupPolicyArgs
+    ///             {
+    ///                 Id = "keep-minimum-versions",
+    ///                 Action = "KEEP",
+    ///                 MostRecentVersions = new Gcp.ArtifactRegistry.Inputs.RepositoryCleanupPolicyMostRecentVersionsArgs
+    ///                 {
+    ///                     PackageNamePrefixes = new[]
+    ///                     {
+    ///                         "webapp",
+    ///                         "mobile",
+    ///                         "sandbox",
+    ///                     },
+    ///                     KeepCount = 5,
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -196,6 +271,20 @@ namespace Pulumi.Gcp.ArtifactRegistry
     [GcpResourceType("gcp:artifactregistry/repository:Repository")]
     public partial class Repository : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
+        /// deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
+        /// under 128 characters in length.
+        /// </summary>
+        [Output("cleanupPolicies")]
+        public Output<ImmutableArray<Outputs.RepositoryCleanupPolicy>> CleanupPolicies { get; private set; } = null!;
+
+        /// <summary>
+        /// If true, the cleanup pipeline is prevented from deleting versions in this repository.
+        /// </summary>
+        [Output("cleanupPolicyDryRun")]
+        public Output<bool?> CleanupPolicyDryRun { get; private set; } = null!;
+
         /// <summary>
         /// The time when the repository was created.
         /// </summary>
@@ -356,6 +445,26 @@ namespace Pulumi.Gcp.ArtifactRegistry
 
     public sealed class RepositoryArgs : global::Pulumi.ResourceArgs
     {
+        [Input("cleanupPolicies")]
+        private InputList<Inputs.RepositoryCleanupPolicyArgs>? _cleanupPolicies;
+
+        /// <summary>
+        /// Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
+        /// deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
+        /// under 128 characters in length.
+        /// </summary>
+        public InputList<Inputs.RepositoryCleanupPolicyArgs> CleanupPolicies
+        {
+            get => _cleanupPolicies ?? (_cleanupPolicies = new InputList<Inputs.RepositoryCleanupPolicyArgs>());
+            set => _cleanupPolicies = value;
+        }
+
+        /// <summary>
+        /// If true, the cleanup pipeline is prevented from deleting versions in this repository.
+        /// </summary>
+        [Input("cleanupPolicyDryRun")]
+        public Input<bool>? CleanupPolicyDryRun { get; set; }
+
         /// <summary>
         /// The user-provided description of the repository.
         /// </summary>
@@ -465,6 +574,26 @@ namespace Pulumi.Gcp.ArtifactRegistry
 
     public sealed class RepositoryState : global::Pulumi.ResourceArgs
     {
+        [Input("cleanupPolicies")]
+        private InputList<Inputs.RepositoryCleanupPolicyGetArgs>? _cleanupPolicies;
+
+        /// <summary>
+        /// Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
+        /// deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
+        /// under 128 characters in length.
+        /// </summary>
+        public InputList<Inputs.RepositoryCleanupPolicyGetArgs> CleanupPolicies
+        {
+            get => _cleanupPolicies ?? (_cleanupPolicies = new InputList<Inputs.RepositoryCleanupPolicyGetArgs>());
+            set => _cleanupPolicies = value;
+        }
+
+        /// <summary>
+        /// If true, the cleanup pipeline is prevented from deleting versions in this repository.
+        /// </summary>
+        [Input("cleanupPolicyDryRun")]
+        public Input<bool>? CleanupPolicyDryRun { get; set; }
+
         /// <summary>
         /// The time when the repository was created.
         /// </summary>

@@ -82,7 +82,7 @@ namespace Pulumi.Gcp.Iot
     /// 
     /// ## Import
     /// 
-    /// Device can be imported using any of these accepted formats
+    /// Device can be imported using any of these accepted formats:
     /// 
     /// ```sh
     ///  $ pulumi import gcp:iot/device:Device default {{registry}}/devices/{{name}}

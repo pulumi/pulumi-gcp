@@ -107,8 +107,9 @@ export class RegionTargetHttpsProxy extends pulumi.CustomResource {
      */
     public readonly sslCertificates!: pulumi.Output<string[]>;
     /**
-     * A reference to the Region SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the
-     * TargetHttpsProxy resource will not have any SSL policy configured.
+     * A reference to the Region SslPolicy resource that will be associated with
+     * the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
+     * resource will not have any SSL policy configured.
      */
     public readonly sslPolicy!: pulumi.Output<string | undefined>;
     /**
@@ -214,8 +215,9 @@ export interface RegionTargetHttpsProxyState {
      */
     sslCertificates?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A reference to the Region SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the
-     * TargetHttpsProxy resource will not have any SSL policy configured.
+     * A reference to the Region SslPolicy resource that will be associated with
+     * the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
+     * resource will not have any SSL policy configured.
      */
     sslPolicy?: pulumi.Input<string>;
     /**
@@ -263,8 +265,9 @@ export interface RegionTargetHttpsProxyArgs {
      */
     sslCertificates: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A reference to the Region SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the
-     * TargetHttpsProxy resource will not have any SSL policy configured.
+     * A reference to the Region SslPolicy resource that will be associated with
+     * the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
+     * resource will not have any SSL policy configured.
      */
     sslPolicy?: pulumi.Input<string>;
     /**

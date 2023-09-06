@@ -2975,7 +2975,8 @@ type DatabaseInstanceSettingsIpConfiguration struct {
 	// Specifying a network enables private IP.
 	// At least `ipv4Enabled` must be enabled or a `privateNetwork` must be configured.
 	// This setting can be updated, but it cannot be removed after it is set.
-	PrivateNetwork *string `pulumi:"privateNetwork"`
+	PrivateNetwork *string                                            `pulumi:"privateNetwork"`
+	PscConfigs     []DatabaseInstanceSettingsIpConfigurationPscConfig `pulumi:"pscConfigs"`
 	// Whether SSL connections over IP are enforced or not.
 	RequireSsl *bool `pulumi:"requireSsl"`
 }
@@ -3006,7 +3007,8 @@ type DatabaseInstanceSettingsIpConfigurationArgs struct {
 	// Specifying a network enables private IP.
 	// At least `ipv4Enabled` must be enabled or a `privateNetwork` must be configured.
 	// This setting can be updated, but it cannot be removed after it is set.
-	PrivateNetwork pulumi.StringPtrInput `pulumi:"privateNetwork"`
+	PrivateNetwork pulumi.StringPtrInput                                      `pulumi:"privateNetwork"`
+	PscConfigs     DatabaseInstanceSettingsIpConfigurationPscConfigArrayInput `pulumi:"pscConfigs"`
 	// Whether SSL connections over IP are enforced or not.
 	RequireSsl pulumi.BoolPtrInput `pulumi:"requireSsl"`
 }
@@ -3122,6 +3124,12 @@ func (o DatabaseInstanceSettingsIpConfigurationOutput) PrivateNetwork() pulumi.S
 	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfiguration) *string { return v.PrivateNetwork }).(pulumi.StringPtrOutput)
 }
 
+func (o DatabaseInstanceSettingsIpConfigurationOutput) PscConfigs() DatabaseInstanceSettingsIpConfigurationPscConfigArrayOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfiguration) []DatabaseInstanceSettingsIpConfigurationPscConfig {
+		return v.PscConfigs
+	}).(DatabaseInstanceSettingsIpConfigurationPscConfigArrayOutput)
+}
+
 // Whether SSL connections over IP are enforced or not.
 func (o DatabaseInstanceSettingsIpConfigurationOutput) RequireSsl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfiguration) *bool { return v.RequireSsl }).(pulumi.BoolPtrOutput)
@@ -3204,6 +3212,15 @@ func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) PrivateNetwork() pulum
 		}
 		return v.PrivateNetwork
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) PscConfigs() DatabaseInstanceSettingsIpConfigurationPscConfigArrayOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsIpConfiguration) []DatabaseInstanceSettingsIpConfigurationPscConfig {
+		if v == nil {
+			return nil
+		}
+		return v.PscConfigs
+	}).(DatabaseInstanceSettingsIpConfigurationPscConfigArrayOutput)
 }
 
 // Whether SSL connections over IP are enforced or not.
@@ -3338,6 +3355,112 @@ func (o DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayOutput) Ind
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork {
 		return vs[0].([]DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork)[vs[1].(int)]
 	}).(DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkOutput)
+}
+
+type DatabaseInstanceSettingsIpConfigurationPscConfig struct {
+	// List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
+	AllowedConsumerProjects []string `pulumi:"allowedConsumerProjects"`
+	// Whether PSC connectivity is enabled for this instance.
+	PscEnabled *bool `pulumi:"pscEnabled"`
+}
+
+// DatabaseInstanceSettingsIpConfigurationPscConfigInput is an input type that accepts DatabaseInstanceSettingsIpConfigurationPscConfigArgs and DatabaseInstanceSettingsIpConfigurationPscConfigOutput values.
+// You can construct a concrete instance of `DatabaseInstanceSettingsIpConfigurationPscConfigInput` via:
+//
+//	DatabaseInstanceSettingsIpConfigurationPscConfigArgs{...}
+type DatabaseInstanceSettingsIpConfigurationPscConfigInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceSettingsIpConfigurationPscConfigOutput() DatabaseInstanceSettingsIpConfigurationPscConfigOutput
+	ToDatabaseInstanceSettingsIpConfigurationPscConfigOutputWithContext(context.Context) DatabaseInstanceSettingsIpConfigurationPscConfigOutput
+}
+
+type DatabaseInstanceSettingsIpConfigurationPscConfigArgs struct {
+	// List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
+	AllowedConsumerProjects pulumi.StringArrayInput `pulumi:"allowedConsumerProjects"`
+	// Whether PSC connectivity is enabled for this instance.
+	PscEnabled pulumi.BoolPtrInput `pulumi:"pscEnabled"`
+}
+
+func (DatabaseInstanceSettingsIpConfigurationPscConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceSettingsIpConfigurationPscConfig)(nil)).Elem()
+}
+
+func (i DatabaseInstanceSettingsIpConfigurationPscConfigArgs) ToDatabaseInstanceSettingsIpConfigurationPscConfigOutput() DatabaseInstanceSettingsIpConfigurationPscConfigOutput {
+	return i.ToDatabaseInstanceSettingsIpConfigurationPscConfigOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceSettingsIpConfigurationPscConfigArgs) ToDatabaseInstanceSettingsIpConfigurationPscConfigOutputWithContext(ctx context.Context) DatabaseInstanceSettingsIpConfigurationPscConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsIpConfigurationPscConfigOutput)
+}
+
+// DatabaseInstanceSettingsIpConfigurationPscConfigArrayInput is an input type that accepts DatabaseInstanceSettingsIpConfigurationPscConfigArray and DatabaseInstanceSettingsIpConfigurationPscConfigArrayOutput values.
+// You can construct a concrete instance of `DatabaseInstanceSettingsIpConfigurationPscConfigArrayInput` via:
+//
+//	DatabaseInstanceSettingsIpConfigurationPscConfigArray{ DatabaseInstanceSettingsIpConfigurationPscConfigArgs{...} }
+type DatabaseInstanceSettingsIpConfigurationPscConfigArrayInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceSettingsIpConfigurationPscConfigArrayOutput() DatabaseInstanceSettingsIpConfigurationPscConfigArrayOutput
+	ToDatabaseInstanceSettingsIpConfigurationPscConfigArrayOutputWithContext(context.Context) DatabaseInstanceSettingsIpConfigurationPscConfigArrayOutput
+}
+
+type DatabaseInstanceSettingsIpConfigurationPscConfigArray []DatabaseInstanceSettingsIpConfigurationPscConfigInput
+
+func (DatabaseInstanceSettingsIpConfigurationPscConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabaseInstanceSettingsIpConfigurationPscConfig)(nil)).Elem()
+}
+
+func (i DatabaseInstanceSettingsIpConfigurationPscConfigArray) ToDatabaseInstanceSettingsIpConfigurationPscConfigArrayOutput() DatabaseInstanceSettingsIpConfigurationPscConfigArrayOutput {
+	return i.ToDatabaseInstanceSettingsIpConfigurationPscConfigArrayOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceSettingsIpConfigurationPscConfigArray) ToDatabaseInstanceSettingsIpConfigurationPscConfigArrayOutputWithContext(ctx context.Context) DatabaseInstanceSettingsIpConfigurationPscConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsIpConfigurationPscConfigArrayOutput)
+}
+
+type DatabaseInstanceSettingsIpConfigurationPscConfigOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceSettingsIpConfigurationPscConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceSettingsIpConfigurationPscConfig)(nil)).Elem()
+}
+
+func (o DatabaseInstanceSettingsIpConfigurationPscConfigOutput) ToDatabaseInstanceSettingsIpConfigurationPscConfigOutput() DatabaseInstanceSettingsIpConfigurationPscConfigOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsIpConfigurationPscConfigOutput) ToDatabaseInstanceSettingsIpConfigurationPscConfigOutputWithContext(ctx context.Context) DatabaseInstanceSettingsIpConfigurationPscConfigOutput {
+	return o
+}
+
+// List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
+func (o DatabaseInstanceSettingsIpConfigurationPscConfigOutput) AllowedConsumerProjects() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfigurationPscConfig) []string { return v.AllowedConsumerProjects }).(pulumi.StringArrayOutput)
+}
+
+// Whether PSC connectivity is enabled for this instance.
+func (o DatabaseInstanceSettingsIpConfigurationPscConfigOutput) PscEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfigurationPscConfig) *bool { return v.PscEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type DatabaseInstanceSettingsIpConfigurationPscConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceSettingsIpConfigurationPscConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabaseInstanceSettingsIpConfigurationPscConfig)(nil)).Elem()
+}
+
+func (o DatabaseInstanceSettingsIpConfigurationPscConfigArrayOutput) ToDatabaseInstanceSettingsIpConfigurationPscConfigArrayOutput() DatabaseInstanceSettingsIpConfigurationPscConfigArrayOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsIpConfigurationPscConfigArrayOutput) ToDatabaseInstanceSettingsIpConfigurationPscConfigArrayOutputWithContext(ctx context.Context) DatabaseInstanceSettingsIpConfigurationPscConfigArrayOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsIpConfigurationPscConfigArrayOutput) Index(i pulumi.IntInput) DatabaseInstanceSettingsIpConfigurationPscConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabaseInstanceSettingsIpConfigurationPscConfig {
+		return vs[0].([]DatabaseInstanceSettingsIpConfigurationPscConfig)[vs[1].(int)]
+	}).(DatabaseInstanceSettingsIpConfigurationPscConfigOutput)
 }
 
 type DatabaseInstanceSettingsLocationPreference struct {
@@ -6415,6 +6538,7 @@ type GetDatabaseInstanceSettingIpConfiguration struct {
 	EnablePrivatePathForGoogleCloudServices bool                                                         `pulumi:"enablePrivatePathForGoogleCloudServices"`
 	Ipv4Enabled                             bool                                                         `pulumi:"ipv4Enabled"`
 	PrivateNetwork                          string                                                       `pulumi:"privateNetwork"`
+	PscConfigs                              []GetDatabaseInstanceSettingIpConfigurationPscConfig         `pulumi:"pscConfigs"`
 	RequireSsl                              bool                                                         `pulumi:"requireSsl"`
 }
 
@@ -6435,6 +6559,7 @@ type GetDatabaseInstanceSettingIpConfigurationArgs struct {
 	EnablePrivatePathForGoogleCloudServices pulumi.BoolInput                                                     `pulumi:"enablePrivatePathForGoogleCloudServices"`
 	Ipv4Enabled                             pulumi.BoolInput                                                     `pulumi:"ipv4Enabled"`
 	PrivateNetwork                          pulumi.StringInput                                                   `pulumi:"privateNetwork"`
+	PscConfigs                              GetDatabaseInstanceSettingIpConfigurationPscConfigArrayInput         `pulumi:"pscConfigs"`
 	RequireSsl                              pulumi.BoolInput                                                     `pulumi:"requireSsl"`
 }
 
@@ -6511,6 +6636,12 @@ func (o GetDatabaseInstanceSettingIpConfigurationOutput) Ipv4Enabled() pulumi.Bo
 
 func (o GetDatabaseInstanceSettingIpConfigurationOutput) PrivateNetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSettingIpConfiguration) string { return v.PrivateNetwork }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstanceSettingIpConfigurationOutput) PscConfigs() GetDatabaseInstanceSettingIpConfigurationPscConfigArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingIpConfiguration) []GetDatabaseInstanceSettingIpConfigurationPscConfig {
+		return v.PscConfigs
+	}).(GetDatabaseInstanceSettingIpConfigurationPscConfigArrayOutput)
 }
 
 func (o GetDatabaseInstanceSettingIpConfigurationOutput) RequireSsl() pulumi.BoolOutput {
@@ -6644,6 +6775,106 @@ func (o GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput) I
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork {
 		return vs[0].([]GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork)[vs[1].(int)]
 	}).(GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkOutput)
+}
+
+type GetDatabaseInstanceSettingIpConfigurationPscConfig struct {
+	AllowedConsumerProjects []string `pulumi:"allowedConsumerProjects"`
+	PscEnabled              bool     `pulumi:"pscEnabled"`
+}
+
+// GetDatabaseInstanceSettingIpConfigurationPscConfigInput is an input type that accepts GetDatabaseInstanceSettingIpConfigurationPscConfigArgs and GetDatabaseInstanceSettingIpConfigurationPscConfigOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceSettingIpConfigurationPscConfigInput` via:
+//
+//	GetDatabaseInstanceSettingIpConfigurationPscConfigArgs{...}
+type GetDatabaseInstanceSettingIpConfigurationPscConfigInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceSettingIpConfigurationPscConfigOutput() GetDatabaseInstanceSettingIpConfigurationPscConfigOutput
+	ToGetDatabaseInstanceSettingIpConfigurationPscConfigOutputWithContext(context.Context) GetDatabaseInstanceSettingIpConfigurationPscConfigOutput
+}
+
+type GetDatabaseInstanceSettingIpConfigurationPscConfigArgs struct {
+	AllowedConsumerProjects pulumi.StringArrayInput `pulumi:"allowedConsumerProjects"`
+	PscEnabled              pulumi.BoolInput        `pulumi:"pscEnabled"`
+}
+
+func (GetDatabaseInstanceSettingIpConfigurationPscConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceSettingIpConfigurationPscConfig)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceSettingIpConfigurationPscConfigArgs) ToGetDatabaseInstanceSettingIpConfigurationPscConfigOutput() GetDatabaseInstanceSettingIpConfigurationPscConfigOutput {
+	return i.ToGetDatabaseInstanceSettingIpConfigurationPscConfigOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceSettingIpConfigurationPscConfigArgs) ToGetDatabaseInstanceSettingIpConfigurationPscConfigOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingIpConfigurationPscConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingIpConfigurationPscConfigOutput)
+}
+
+// GetDatabaseInstanceSettingIpConfigurationPscConfigArrayInput is an input type that accepts GetDatabaseInstanceSettingIpConfigurationPscConfigArray and GetDatabaseInstanceSettingIpConfigurationPscConfigArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceSettingIpConfigurationPscConfigArrayInput` via:
+//
+//	GetDatabaseInstanceSettingIpConfigurationPscConfigArray{ GetDatabaseInstanceSettingIpConfigurationPscConfigArgs{...} }
+type GetDatabaseInstanceSettingIpConfigurationPscConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceSettingIpConfigurationPscConfigArrayOutput() GetDatabaseInstanceSettingIpConfigurationPscConfigArrayOutput
+	ToGetDatabaseInstanceSettingIpConfigurationPscConfigArrayOutputWithContext(context.Context) GetDatabaseInstanceSettingIpConfigurationPscConfigArrayOutput
+}
+
+type GetDatabaseInstanceSettingIpConfigurationPscConfigArray []GetDatabaseInstanceSettingIpConfigurationPscConfigInput
+
+func (GetDatabaseInstanceSettingIpConfigurationPscConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceSettingIpConfigurationPscConfig)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceSettingIpConfigurationPscConfigArray) ToGetDatabaseInstanceSettingIpConfigurationPscConfigArrayOutput() GetDatabaseInstanceSettingIpConfigurationPscConfigArrayOutput {
+	return i.ToGetDatabaseInstanceSettingIpConfigurationPscConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceSettingIpConfigurationPscConfigArray) ToGetDatabaseInstanceSettingIpConfigurationPscConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingIpConfigurationPscConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingIpConfigurationPscConfigArrayOutput)
+}
+
+type GetDatabaseInstanceSettingIpConfigurationPscConfigOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceSettingIpConfigurationPscConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceSettingIpConfigurationPscConfig)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceSettingIpConfigurationPscConfigOutput) ToGetDatabaseInstanceSettingIpConfigurationPscConfigOutput() GetDatabaseInstanceSettingIpConfigurationPscConfigOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingIpConfigurationPscConfigOutput) ToGetDatabaseInstanceSettingIpConfigurationPscConfigOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingIpConfigurationPscConfigOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingIpConfigurationPscConfigOutput) AllowedConsumerProjects() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingIpConfigurationPscConfig) []string { return v.AllowedConsumerProjects }).(pulumi.StringArrayOutput)
+}
+
+func (o GetDatabaseInstanceSettingIpConfigurationPscConfigOutput) PscEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingIpConfigurationPscConfig) bool { return v.PscEnabled }).(pulumi.BoolOutput)
+}
+
+type GetDatabaseInstanceSettingIpConfigurationPscConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceSettingIpConfigurationPscConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceSettingIpConfigurationPscConfig)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceSettingIpConfigurationPscConfigArrayOutput) ToGetDatabaseInstanceSettingIpConfigurationPscConfigArrayOutput() GetDatabaseInstanceSettingIpConfigurationPscConfigArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingIpConfigurationPscConfigArrayOutput) ToGetDatabaseInstanceSettingIpConfigurationPscConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingIpConfigurationPscConfigArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingIpConfigurationPscConfigArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstanceSettingIpConfigurationPscConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstanceSettingIpConfigurationPscConfig {
+		return vs[0].([]GetDatabaseInstanceSettingIpConfigurationPscConfig)[vs[1].(int)]
+	}).(GetDatabaseInstanceSettingIpConfigurationPscConfigOutput)
 }
 
 type GetDatabaseInstanceSettingLocationPreference struct {
@@ -7095,6 +7326,7 @@ type GetDatabaseInstancesInstance struct {
 	// To filter out the Cloud SQL instances which are of the specified database version.
 	DatabaseVersion    string                                  `pulumi:"databaseVersion"`
 	DeletionProtection bool                                    `pulumi:"deletionProtection"`
+	DnsName            string                                  `pulumi:"dnsName"`
 	EncryptionKeyName  string                                  `pulumi:"encryptionKeyName"`
 	FirstIpAddress     string                                  `pulumi:"firstIpAddress"`
 	InstanceType       string                                  `pulumi:"instanceType"`
@@ -7104,8 +7336,9 @@ type GetDatabaseInstancesInstance struct {
 	Name               string                                  `pulumi:"name"`
 	PrivateIpAddress   string                                  `pulumi:"privateIpAddress"`
 	// The ID of the project in which the resources belong. If it is not provided, the provider project is used.
-	Project         string `pulumi:"project"`
-	PublicIpAddress string `pulumi:"publicIpAddress"`
+	Project                  string `pulumi:"project"`
+	PscServiceAttachmentLink string `pulumi:"pscServiceAttachmentLink"`
+	PublicIpAddress          string `pulumi:"publicIpAddress"`
 	// To filter out the Cloud SQL instances which are located in the specified region.
 	Region                     string                                             `pulumi:"region"`
 	ReplicaConfigurations      []GetDatabaseInstancesInstanceReplicaConfiguration `pulumi:"replicaConfigurations"`
@@ -7135,6 +7368,7 @@ type GetDatabaseInstancesInstanceArgs struct {
 	// To filter out the Cloud SQL instances which are of the specified database version.
 	DatabaseVersion    pulumi.StringInput                              `pulumi:"databaseVersion"`
 	DeletionProtection pulumi.BoolInput                                `pulumi:"deletionProtection"`
+	DnsName            pulumi.StringInput                              `pulumi:"dnsName"`
 	EncryptionKeyName  pulumi.StringInput                              `pulumi:"encryptionKeyName"`
 	FirstIpAddress     pulumi.StringInput                              `pulumi:"firstIpAddress"`
 	InstanceType       pulumi.StringInput                              `pulumi:"instanceType"`
@@ -7144,8 +7378,9 @@ type GetDatabaseInstancesInstanceArgs struct {
 	Name               pulumi.StringInput                              `pulumi:"name"`
 	PrivateIpAddress   pulumi.StringInput                              `pulumi:"privateIpAddress"`
 	// The ID of the project in which the resources belong. If it is not provided, the provider project is used.
-	Project         pulumi.StringInput `pulumi:"project"`
-	PublicIpAddress pulumi.StringInput `pulumi:"publicIpAddress"`
+	Project                  pulumi.StringInput `pulumi:"project"`
+	PscServiceAttachmentLink pulumi.StringInput `pulumi:"pscServiceAttachmentLink"`
+	PublicIpAddress          pulumi.StringInput `pulumi:"publicIpAddress"`
 	// To filter out the Cloud SQL instances which are located in the specified region.
 	Region                     pulumi.StringInput                                         `pulumi:"region"`
 	ReplicaConfigurations      GetDatabaseInstancesInstanceReplicaConfigurationArrayInput `pulumi:"replicaConfigurations"`
@@ -7229,6 +7464,10 @@ func (o GetDatabaseInstancesInstanceOutput) DeletionProtection() pulumi.BoolOutp
 	return o.ApplyT(func(v GetDatabaseInstancesInstance) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
 }
 
+func (o GetDatabaseInstancesInstanceOutput) DnsName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstance) string { return v.DnsName }).(pulumi.StringOutput)
+}
+
 func (o GetDatabaseInstancesInstanceOutput) EncryptionKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstance) string { return v.EncryptionKeyName }).(pulumi.StringOutput)
 }
@@ -7264,6 +7503,10 @@ func (o GetDatabaseInstancesInstanceOutput) PrivateIpAddress() pulumi.StringOutp
 // The ID of the project in which the resources belong. If it is not provided, the provider project is used.
 func (o GetDatabaseInstancesInstanceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstance) string { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceOutput) PscServiceAttachmentLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstance) string { return v.PscServiceAttachmentLink }).(pulumi.StringOutput)
 }
 
 func (o GetDatabaseInstancesInstanceOutput) PublicIpAddress() pulumi.StringOutput {
@@ -9057,6 +9300,7 @@ type GetDatabaseInstancesInstanceSettingIpConfiguration struct {
 	EnablePrivatePathForGoogleCloudServices bool                                                                  `pulumi:"enablePrivatePathForGoogleCloudServices"`
 	Ipv4Enabled                             bool                                                                  `pulumi:"ipv4Enabled"`
 	PrivateNetwork                          string                                                                `pulumi:"privateNetwork"`
+	PscConfigs                              []GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig         `pulumi:"pscConfigs"`
 	RequireSsl                              bool                                                                  `pulumi:"requireSsl"`
 }
 
@@ -9077,6 +9321,7 @@ type GetDatabaseInstancesInstanceSettingIpConfigurationArgs struct {
 	EnablePrivatePathForGoogleCloudServices pulumi.BoolInput                                                              `pulumi:"enablePrivatePathForGoogleCloudServices"`
 	Ipv4Enabled                             pulumi.BoolInput                                                              `pulumi:"ipv4Enabled"`
 	PrivateNetwork                          pulumi.StringInput                                                            `pulumi:"privateNetwork"`
+	PscConfigs                              GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayInput         `pulumi:"pscConfigs"`
 	RequireSsl                              pulumi.BoolInput                                                              `pulumi:"requireSsl"`
 }
 
@@ -9153,6 +9398,12 @@ func (o GetDatabaseInstancesInstanceSettingIpConfigurationOutput) Ipv4Enabled() 
 
 func (o GetDatabaseInstancesInstanceSettingIpConfigurationOutput) PrivateNetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingIpConfiguration) string { return v.PrivateNetwork }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingIpConfigurationOutput) PscConfigs() GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingIpConfiguration) []GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig {
+		return v.PscConfigs
+	}).(GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayOutput)
 }
 
 func (o GetDatabaseInstancesInstanceSettingIpConfigurationOutput) RequireSsl() pulumi.BoolOutput {
@@ -9285,6 +9536,108 @@ func (o GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArray
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork {
 		return vs[0].([]GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetwork)[vs[1].(int)]
 	}).(GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig struct {
+	AllowedConsumerProjects []string `pulumi:"allowedConsumerProjects"`
+	PscEnabled              bool     `pulumi:"pscEnabled"`
+}
+
+// GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigInput is an input type that accepts GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArgs and GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArgs{...}
+type GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutput() GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutput
+	ToGetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutput
+}
+
+type GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArgs struct {
+	AllowedConsumerProjects pulumi.StringArrayInput `pulumi:"allowedConsumerProjects"`
+	PscEnabled              pulumi.BoolInput        `pulumi:"pscEnabled"`
+}
+
+func (GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArgs) ToGetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutput() GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArgs) ToGetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutput)
+}
+
+// GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayInput is an input type that accepts GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArray and GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArray{ GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArgs{...} }
+type GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayOutput() GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayOutput
+	ToGetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayOutput
+}
+
+type GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArray []GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigInput
+
+func (GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArray) ToGetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayOutput() GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArray) ToGetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutput) ToGetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutput() GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutput) ToGetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutput) AllowedConsumerProjects() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig) []string {
+		return v.AllowedConsumerProjects
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutput) PscEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig) bool { return v.PscEnabled }).(pulumi.BoolOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayOutput) ToGetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayOutput() GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayOutput) ToGetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig {
+		return vs[0].([]GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig)[vs[1].(int)]
+	}).(GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutput)
 }
 
 type GetDatabaseInstancesInstanceSettingLocationPreference struct {
@@ -10037,6 +10390,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsIpConfigurationPtrInput)(nil)).Elem(), DatabaseInstanceSettingsIpConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkInput)(nil)).Elem(), DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayInput)(nil)).Elem(), DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsIpConfigurationPscConfigInput)(nil)).Elem(), DatabaseInstanceSettingsIpConfigurationPscConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsIpConfigurationPscConfigArrayInput)(nil)).Elem(), DatabaseInstanceSettingsIpConfigurationPscConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsLocationPreferenceInput)(nil)).Elem(), DatabaseInstanceSettingsLocationPreferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsLocationPreferencePtrInput)(nil)).Elem(), DatabaseInstanceSettingsLocationPreferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsMaintenanceWindowInput)(nil)).Elem(), DatabaseInstanceSettingsMaintenanceWindowArgs{})
@@ -10085,6 +10440,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingIpConfigurationArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingIpConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkInput)(nil)).Elem(), GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingIpConfigurationPscConfigInput)(nil)).Elem(), GetDatabaseInstanceSettingIpConfigurationPscConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingIpConfigurationPscConfigArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingIpConfigurationPscConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingLocationPreferenceInput)(nil)).Elem(), GetDatabaseInstanceSettingLocationPreferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingLocationPreferenceArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingLocationPreferenceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingMaintenanceWindowInput)(nil)).Elem(), GetDatabaseInstanceSettingMaintenanceWindowArgs{})
@@ -10127,6 +10484,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingIpConfigurationArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingIpConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingLocationPreferenceInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingLocationPreferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingLocationPreferenceArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingLocationPreferenceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingMaintenanceWindowInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingMaintenanceWindowArgs{})
@@ -10171,6 +10530,8 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsIpConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceSettingsIpConfigurationPscConfigOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceSettingsIpConfigurationPscConfigArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsLocationPreferenceOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsLocationPreferencePtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsMaintenanceWindowOutput{})
@@ -10219,6 +10580,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingIpConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceSettingIpConfigurationPscConfigOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceSettingIpConfigurationPscConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingLocationPreferenceOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingLocationPreferenceArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingMaintenanceWindowOutput{})
@@ -10261,6 +10624,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingIpConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingLocationPreferenceOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingLocationPreferenceArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingMaintenanceWindowOutput{})

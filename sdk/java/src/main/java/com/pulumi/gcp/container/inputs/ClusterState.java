@@ -369,6 +369,23 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * )
+     * Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
+     * 
+     */
+    @Import(name="enableFqdnNetworkPolicy")
+    private @Nullable Output<Boolean> enableFqdnNetworkPolicy;
+
+    /**
+     * @return )
+     * Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
+     * 
+     */
+    public Optional<Output<Boolean>> enableFqdnNetworkPolicy() {
+        return Optional.ofNullable(this.enableFqdnNetworkPolicy);
+    }
+
+    /**
      * Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
      * 
      */
@@ -1447,6 +1464,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.dnsConfig = $.dnsConfig;
         this.enableAutopilot = $.enableAutopilot;
         this.enableBinaryAuthorization = $.enableBinaryAuthorization;
+        this.enableFqdnNetworkPolicy = $.enableFqdnNetworkPolicy;
         this.enableIntranodeVisibility = $.enableIntranodeVisibility;
         this.enableK8sBetaApis = $.enableK8sBetaApis;
         this.enableKubernetesAlpha = $.enableKubernetesAlpha;
@@ -1935,6 +1953,29 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         @Deprecated /* Deprecated in favor of binary_authorization. */
         public Builder enableBinaryAuthorization(Boolean enableBinaryAuthorization) {
             return enableBinaryAuthorization(Output.of(enableBinaryAuthorization));
+        }
+
+        /**
+         * @param enableFqdnNetworkPolicy )
+         * Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableFqdnNetworkPolicy(@Nullable Output<Boolean> enableFqdnNetworkPolicy) {
+            $.enableFqdnNetworkPolicy = enableFqdnNetworkPolicy;
+            return this;
+        }
+
+        /**
+         * @param enableFqdnNetworkPolicy )
+         * Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableFqdnNetworkPolicy(Boolean enableFqdnNetworkPolicy) {
+            return enableFqdnNetworkPolicy(Output.of(enableFqdnNetworkPolicy));
         }
 
         /**

@@ -71,6 +71,7 @@ namespace Pulumi.Gcp.Firebase
     [OutputType]
     public sealed class GetAndroidAppResult
     {
+        public readonly string ApiKeyId;
         /// <summary>
         /// Immutable. The globally unique, Firebase-assigned identifier of the AndroidApp.
         /// This identifier should be treated as an opaque token, as the data format is not specified.
@@ -111,6 +112,8 @@ namespace Pulumi.Gcp.Firebase
 
         [OutputConstructor]
         private GetAndroidAppResult(
+            string apiKeyId,
+
             string appId,
 
             string deletionPolicy,
@@ -131,6 +134,7 @@ namespace Pulumi.Gcp.Firebase
 
             ImmutableArray<string> sha256Hashes)
         {
+            ApiKeyId = apiKeyId;
             AppId = appId;
             DeletionPolicy = deletionPolicy;
             DisplayName = displayName;

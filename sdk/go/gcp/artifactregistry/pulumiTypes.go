@@ -13,6 +13,479 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type RepositoryCleanupPolicy struct {
+	Action    *string                           `pulumi:"action"`
+	Condition *RepositoryCleanupPolicyCondition `pulumi:"condition"`
+	// The identifier for this object. Format specified above.
+	Id                 string                                     `pulumi:"id"`
+	MostRecentVersions *RepositoryCleanupPolicyMostRecentVersions `pulumi:"mostRecentVersions"`
+}
+
+// RepositoryCleanupPolicyInput is an input type that accepts RepositoryCleanupPolicyArgs and RepositoryCleanupPolicyOutput values.
+// You can construct a concrete instance of `RepositoryCleanupPolicyInput` via:
+//
+//	RepositoryCleanupPolicyArgs{...}
+type RepositoryCleanupPolicyInput interface {
+	pulumi.Input
+
+	ToRepositoryCleanupPolicyOutput() RepositoryCleanupPolicyOutput
+	ToRepositoryCleanupPolicyOutputWithContext(context.Context) RepositoryCleanupPolicyOutput
+}
+
+type RepositoryCleanupPolicyArgs struct {
+	Action    pulumi.StringPtrInput                    `pulumi:"action"`
+	Condition RepositoryCleanupPolicyConditionPtrInput `pulumi:"condition"`
+	// The identifier for this object. Format specified above.
+	Id                 pulumi.StringInput                                `pulumi:"id"`
+	MostRecentVersions RepositoryCleanupPolicyMostRecentVersionsPtrInput `pulumi:"mostRecentVersions"`
+}
+
+func (RepositoryCleanupPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryCleanupPolicy)(nil)).Elem()
+}
+
+func (i RepositoryCleanupPolicyArgs) ToRepositoryCleanupPolicyOutput() RepositoryCleanupPolicyOutput {
+	return i.ToRepositoryCleanupPolicyOutputWithContext(context.Background())
+}
+
+func (i RepositoryCleanupPolicyArgs) ToRepositoryCleanupPolicyOutputWithContext(ctx context.Context) RepositoryCleanupPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryCleanupPolicyOutput)
+}
+
+// RepositoryCleanupPolicyArrayInput is an input type that accepts RepositoryCleanupPolicyArray and RepositoryCleanupPolicyArrayOutput values.
+// You can construct a concrete instance of `RepositoryCleanupPolicyArrayInput` via:
+//
+//	RepositoryCleanupPolicyArray{ RepositoryCleanupPolicyArgs{...} }
+type RepositoryCleanupPolicyArrayInput interface {
+	pulumi.Input
+
+	ToRepositoryCleanupPolicyArrayOutput() RepositoryCleanupPolicyArrayOutput
+	ToRepositoryCleanupPolicyArrayOutputWithContext(context.Context) RepositoryCleanupPolicyArrayOutput
+}
+
+type RepositoryCleanupPolicyArray []RepositoryCleanupPolicyInput
+
+func (RepositoryCleanupPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RepositoryCleanupPolicy)(nil)).Elem()
+}
+
+func (i RepositoryCleanupPolicyArray) ToRepositoryCleanupPolicyArrayOutput() RepositoryCleanupPolicyArrayOutput {
+	return i.ToRepositoryCleanupPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i RepositoryCleanupPolicyArray) ToRepositoryCleanupPolicyArrayOutputWithContext(ctx context.Context) RepositoryCleanupPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryCleanupPolicyArrayOutput)
+}
+
+type RepositoryCleanupPolicyOutput struct{ *pulumi.OutputState }
+
+func (RepositoryCleanupPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryCleanupPolicy)(nil)).Elem()
+}
+
+func (o RepositoryCleanupPolicyOutput) ToRepositoryCleanupPolicyOutput() RepositoryCleanupPolicyOutput {
+	return o
+}
+
+func (o RepositoryCleanupPolicyOutput) ToRepositoryCleanupPolicyOutputWithContext(ctx context.Context) RepositoryCleanupPolicyOutput {
+	return o
+}
+
+func (o RepositoryCleanupPolicyOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryCleanupPolicy) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+func (o RepositoryCleanupPolicyOutput) Condition() RepositoryCleanupPolicyConditionPtrOutput {
+	return o.ApplyT(func(v RepositoryCleanupPolicy) *RepositoryCleanupPolicyCondition { return v.Condition }).(RepositoryCleanupPolicyConditionPtrOutput)
+}
+
+// The identifier for this object. Format specified above.
+func (o RepositoryCleanupPolicyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v RepositoryCleanupPolicy) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o RepositoryCleanupPolicyOutput) MostRecentVersions() RepositoryCleanupPolicyMostRecentVersionsPtrOutput {
+	return o.ApplyT(func(v RepositoryCleanupPolicy) *RepositoryCleanupPolicyMostRecentVersions {
+		return v.MostRecentVersions
+	}).(RepositoryCleanupPolicyMostRecentVersionsPtrOutput)
+}
+
+type RepositoryCleanupPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (RepositoryCleanupPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RepositoryCleanupPolicy)(nil)).Elem()
+}
+
+func (o RepositoryCleanupPolicyArrayOutput) ToRepositoryCleanupPolicyArrayOutput() RepositoryCleanupPolicyArrayOutput {
+	return o
+}
+
+func (o RepositoryCleanupPolicyArrayOutput) ToRepositoryCleanupPolicyArrayOutputWithContext(ctx context.Context) RepositoryCleanupPolicyArrayOutput {
+	return o
+}
+
+func (o RepositoryCleanupPolicyArrayOutput) Index(i pulumi.IntInput) RepositoryCleanupPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RepositoryCleanupPolicy {
+		return vs[0].([]RepositoryCleanupPolicy)[vs[1].(int)]
+	}).(RepositoryCleanupPolicyOutput)
+}
+
+type RepositoryCleanupPolicyCondition struct {
+	NewerThan           *string  `pulumi:"newerThan"`
+	OlderThan           *string  `pulumi:"olderThan"`
+	PackageNamePrefixes []string `pulumi:"packageNamePrefixes"`
+	TagPrefixes         []string `pulumi:"tagPrefixes"`
+	TagState            *string  `pulumi:"tagState"`
+	VersionNamePrefixes []string `pulumi:"versionNamePrefixes"`
+}
+
+// RepositoryCleanupPolicyConditionInput is an input type that accepts RepositoryCleanupPolicyConditionArgs and RepositoryCleanupPolicyConditionOutput values.
+// You can construct a concrete instance of `RepositoryCleanupPolicyConditionInput` via:
+//
+//	RepositoryCleanupPolicyConditionArgs{...}
+type RepositoryCleanupPolicyConditionInput interface {
+	pulumi.Input
+
+	ToRepositoryCleanupPolicyConditionOutput() RepositoryCleanupPolicyConditionOutput
+	ToRepositoryCleanupPolicyConditionOutputWithContext(context.Context) RepositoryCleanupPolicyConditionOutput
+}
+
+type RepositoryCleanupPolicyConditionArgs struct {
+	NewerThan           pulumi.StringPtrInput   `pulumi:"newerThan"`
+	OlderThan           pulumi.StringPtrInput   `pulumi:"olderThan"`
+	PackageNamePrefixes pulumi.StringArrayInput `pulumi:"packageNamePrefixes"`
+	TagPrefixes         pulumi.StringArrayInput `pulumi:"tagPrefixes"`
+	TagState            pulumi.StringPtrInput   `pulumi:"tagState"`
+	VersionNamePrefixes pulumi.StringArrayInput `pulumi:"versionNamePrefixes"`
+}
+
+func (RepositoryCleanupPolicyConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryCleanupPolicyCondition)(nil)).Elem()
+}
+
+func (i RepositoryCleanupPolicyConditionArgs) ToRepositoryCleanupPolicyConditionOutput() RepositoryCleanupPolicyConditionOutput {
+	return i.ToRepositoryCleanupPolicyConditionOutputWithContext(context.Background())
+}
+
+func (i RepositoryCleanupPolicyConditionArgs) ToRepositoryCleanupPolicyConditionOutputWithContext(ctx context.Context) RepositoryCleanupPolicyConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryCleanupPolicyConditionOutput)
+}
+
+func (i RepositoryCleanupPolicyConditionArgs) ToRepositoryCleanupPolicyConditionPtrOutput() RepositoryCleanupPolicyConditionPtrOutput {
+	return i.ToRepositoryCleanupPolicyConditionPtrOutputWithContext(context.Background())
+}
+
+func (i RepositoryCleanupPolicyConditionArgs) ToRepositoryCleanupPolicyConditionPtrOutputWithContext(ctx context.Context) RepositoryCleanupPolicyConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryCleanupPolicyConditionOutput).ToRepositoryCleanupPolicyConditionPtrOutputWithContext(ctx)
+}
+
+// RepositoryCleanupPolicyConditionPtrInput is an input type that accepts RepositoryCleanupPolicyConditionArgs, RepositoryCleanupPolicyConditionPtr and RepositoryCleanupPolicyConditionPtrOutput values.
+// You can construct a concrete instance of `RepositoryCleanupPolicyConditionPtrInput` via:
+//
+//	        RepositoryCleanupPolicyConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type RepositoryCleanupPolicyConditionPtrInput interface {
+	pulumi.Input
+
+	ToRepositoryCleanupPolicyConditionPtrOutput() RepositoryCleanupPolicyConditionPtrOutput
+	ToRepositoryCleanupPolicyConditionPtrOutputWithContext(context.Context) RepositoryCleanupPolicyConditionPtrOutput
+}
+
+type repositoryCleanupPolicyConditionPtrType RepositoryCleanupPolicyConditionArgs
+
+func RepositoryCleanupPolicyConditionPtr(v *RepositoryCleanupPolicyConditionArgs) RepositoryCleanupPolicyConditionPtrInput {
+	return (*repositoryCleanupPolicyConditionPtrType)(v)
+}
+
+func (*repositoryCleanupPolicyConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryCleanupPolicyCondition)(nil)).Elem()
+}
+
+func (i *repositoryCleanupPolicyConditionPtrType) ToRepositoryCleanupPolicyConditionPtrOutput() RepositoryCleanupPolicyConditionPtrOutput {
+	return i.ToRepositoryCleanupPolicyConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *repositoryCleanupPolicyConditionPtrType) ToRepositoryCleanupPolicyConditionPtrOutputWithContext(ctx context.Context) RepositoryCleanupPolicyConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryCleanupPolicyConditionPtrOutput)
+}
+
+type RepositoryCleanupPolicyConditionOutput struct{ *pulumi.OutputState }
+
+func (RepositoryCleanupPolicyConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryCleanupPolicyCondition)(nil)).Elem()
+}
+
+func (o RepositoryCleanupPolicyConditionOutput) ToRepositoryCleanupPolicyConditionOutput() RepositoryCleanupPolicyConditionOutput {
+	return o
+}
+
+func (o RepositoryCleanupPolicyConditionOutput) ToRepositoryCleanupPolicyConditionOutputWithContext(ctx context.Context) RepositoryCleanupPolicyConditionOutput {
+	return o
+}
+
+func (o RepositoryCleanupPolicyConditionOutput) ToRepositoryCleanupPolicyConditionPtrOutput() RepositoryCleanupPolicyConditionPtrOutput {
+	return o.ToRepositoryCleanupPolicyConditionPtrOutputWithContext(context.Background())
+}
+
+func (o RepositoryCleanupPolicyConditionOutput) ToRepositoryCleanupPolicyConditionPtrOutputWithContext(ctx context.Context) RepositoryCleanupPolicyConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryCleanupPolicyCondition) *RepositoryCleanupPolicyCondition {
+		return &v
+	}).(RepositoryCleanupPolicyConditionPtrOutput)
+}
+
+func (o RepositoryCleanupPolicyConditionOutput) NewerThan() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryCleanupPolicyCondition) *string { return v.NewerThan }).(pulumi.StringPtrOutput)
+}
+
+func (o RepositoryCleanupPolicyConditionOutput) OlderThan() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryCleanupPolicyCondition) *string { return v.OlderThan }).(pulumi.StringPtrOutput)
+}
+
+func (o RepositoryCleanupPolicyConditionOutput) PackageNamePrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RepositoryCleanupPolicyCondition) []string { return v.PackageNamePrefixes }).(pulumi.StringArrayOutput)
+}
+
+func (o RepositoryCleanupPolicyConditionOutput) TagPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RepositoryCleanupPolicyCondition) []string { return v.TagPrefixes }).(pulumi.StringArrayOutput)
+}
+
+func (o RepositoryCleanupPolicyConditionOutput) TagState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryCleanupPolicyCondition) *string { return v.TagState }).(pulumi.StringPtrOutput)
+}
+
+func (o RepositoryCleanupPolicyConditionOutput) VersionNamePrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RepositoryCleanupPolicyCondition) []string { return v.VersionNamePrefixes }).(pulumi.StringArrayOutput)
+}
+
+type RepositoryCleanupPolicyConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (RepositoryCleanupPolicyConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryCleanupPolicyCondition)(nil)).Elem()
+}
+
+func (o RepositoryCleanupPolicyConditionPtrOutput) ToRepositoryCleanupPolicyConditionPtrOutput() RepositoryCleanupPolicyConditionPtrOutput {
+	return o
+}
+
+func (o RepositoryCleanupPolicyConditionPtrOutput) ToRepositoryCleanupPolicyConditionPtrOutputWithContext(ctx context.Context) RepositoryCleanupPolicyConditionPtrOutput {
+	return o
+}
+
+func (o RepositoryCleanupPolicyConditionPtrOutput) Elem() RepositoryCleanupPolicyConditionOutput {
+	return o.ApplyT(func(v *RepositoryCleanupPolicyCondition) RepositoryCleanupPolicyCondition {
+		if v != nil {
+			return *v
+		}
+		var ret RepositoryCleanupPolicyCondition
+		return ret
+	}).(RepositoryCleanupPolicyConditionOutput)
+}
+
+func (o RepositoryCleanupPolicyConditionPtrOutput) NewerThan() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryCleanupPolicyCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NewerThan
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RepositoryCleanupPolicyConditionPtrOutput) OlderThan() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryCleanupPolicyCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OlderThan
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RepositoryCleanupPolicyConditionPtrOutput) PackageNamePrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RepositoryCleanupPolicyCondition) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PackageNamePrefixes
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o RepositoryCleanupPolicyConditionPtrOutput) TagPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RepositoryCleanupPolicyCondition) []string {
+		if v == nil {
+			return nil
+		}
+		return v.TagPrefixes
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o RepositoryCleanupPolicyConditionPtrOutput) TagState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryCleanupPolicyCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TagState
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RepositoryCleanupPolicyConditionPtrOutput) VersionNamePrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RepositoryCleanupPolicyCondition) []string {
+		if v == nil {
+			return nil
+		}
+		return v.VersionNamePrefixes
+	}).(pulumi.StringArrayOutput)
+}
+
+type RepositoryCleanupPolicyMostRecentVersions struct {
+	KeepCount           *int     `pulumi:"keepCount"`
+	PackageNamePrefixes []string `pulumi:"packageNamePrefixes"`
+}
+
+// RepositoryCleanupPolicyMostRecentVersionsInput is an input type that accepts RepositoryCleanupPolicyMostRecentVersionsArgs and RepositoryCleanupPolicyMostRecentVersionsOutput values.
+// You can construct a concrete instance of `RepositoryCleanupPolicyMostRecentVersionsInput` via:
+//
+//	RepositoryCleanupPolicyMostRecentVersionsArgs{...}
+type RepositoryCleanupPolicyMostRecentVersionsInput interface {
+	pulumi.Input
+
+	ToRepositoryCleanupPolicyMostRecentVersionsOutput() RepositoryCleanupPolicyMostRecentVersionsOutput
+	ToRepositoryCleanupPolicyMostRecentVersionsOutputWithContext(context.Context) RepositoryCleanupPolicyMostRecentVersionsOutput
+}
+
+type RepositoryCleanupPolicyMostRecentVersionsArgs struct {
+	KeepCount           pulumi.IntPtrInput      `pulumi:"keepCount"`
+	PackageNamePrefixes pulumi.StringArrayInput `pulumi:"packageNamePrefixes"`
+}
+
+func (RepositoryCleanupPolicyMostRecentVersionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryCleanupPolicyMostRecentVersions)(nil)).Elem()
+}
+
+func (i RepositoryCleanupPolicyMostRecentVersionsArgs) ToRepositoryCleanupPolicyMostRecentVersionsOutput() RepositoryCleanupPolicyMostRecentVersionsOutput {
+	return i.ToRepositoryCleanupPolicyMostRecentVersionsOutputWithContext(context.Background())
+}
+
+func (i RepositoryCleanupPolicyMostRecentVersionsArgs) ToRepositoryCleanupPolicyMostRecentVersionsOutputWithContext(ctx context.Context) RepositoryCleanupPolicyMostRecentVersionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryCleanupPolicyMostRecentVersionsOutput)
+}
+
+func (i RepositoryCleanupPolicyMostRecentVersionsArgs) ToRepositoryCleanupPolicyMostRecentVersionsPtrOutput() RepositoryCleanupPolicyMostRecentVersionsPtrOutput {
+	return i.ToRepositoryCleanupPolicyMostRecentVersionsPtrOutputWithContext(context.Background())
+}
+
+func (i RepositoryCleanupPolicyMostRecentVersionsArgs) ToRepositoryCleanupPolicyMostRecentVersionsPtrOutputWithContext(ctx context.Context) RepositoryCleanupPolicyMostRecentVersionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryCleanupPolicyMostRecentVersionsOutput).ToRepositoryCleanupPolicyMostRecentVersionsPtrOutputWithContext(ctx)
+}
+
+// RepositoryCleanupPolicyMostRecentVersionsPtrInput is an input type that accepts RepositoryCleanupPolicyMostRecentVersionsArgs, RepositoryCleanupPolicyMostRecentVersionsPtr and RepositoryCleanupPolicyMostRecentVersionsPtrOutput values.
+// You can construct a concrete instance of `RepositoryCleanupPolicyMostRecentVersionsPtrInput` via:
+//
+//	        RepositoryCleanupPolicyMostRecentVersionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type RepositoryCleanupPolicyMostRecentVersionsPtrInput interface {
+	pulumi.Input
+
+	ToRepositoryCleanupPolicyMostRecentVersionsPtrOutput() RepositoryCleanupPolicyMostRecentVersionsPtrOutput
+	ToRepositoryCleanupPolicyMostRecentVersionsPtrOutputWithContext(context.Context) RepositoryCleanupPolicyMostRecentVersionsPtrOutput
+}
+
+type repositoryCleanupPolicyMostRecentVersionsPtrType RepositoryCleanupPolicyMostRecentVersionsArgs
+
+func RepositoryCleanupPolicyMostRecentVersionsPtr(v *RepositoryCleanupPolicyMostRecentVersionsArgs) RepositoryCleanupPolicyMostRecentVersionsPtrInput {
+	return (*repositoryCleanupPolicyMostRecentVersionsPtrType)(v)
+}
+
+func (*repositoryCleanupPolicyMostRecentVersionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryCleanupPolicyMostRecentVersions)(nil)).Elem()
+}
+
+func (i *repositoryCleanupPolicyMostRecentVersionsPtrType) ToRepositoryCleanupPolicyMostRecentVersionsPtrOutput() RepositoryCleanupPolicyMostRecentVersionsPtrOutput {
+	return i.ToRepositoryCleanupPolicyMostRecentVersionsPtrOutputWithContext(context.Background())
+}
+
+func (i *repositoryCleanupPolicyMostRecentVersionsPtrType) ToRepositoryCleanupPolicyMostRecentVersionsPtrOutputWithContext(ctx context.Context) RepositoryCleanupPolicyMostRecentVersionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryCleanupPolicyMostRecentVersionsPtrOutput)
+}
+
+type RepositoryCleanupPolicyMostRecentVersionsOutput struct{ *pulumi.OutputState }
+
+func (RepositoryCleanupPolicyMostRecentVersionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryCleanupPolicyMostRecentVersions)(nil)).Elem()
+}
+
+func (o RepositoryCleanupPolicyMostRecentVersionsOutput) ToRepositoryCleanupPolicyMostRecentVersionsOutput() RepositoryCleanupPolicyMostRecentVersionsOutput {
+	return o
+}
+
+func (o RepositoryCleanupPolicyMostRecentVersionsOutput) ToRepositoryCleanupPolicyMostRecentVersionsOutputWithContext(ctx context.Context) RepositoryCleanupPolicyMostRecentVersionsOutput {
+	return o
+}
+
+func (o RepositoryCleanupPolicyMostRecentVersionsOutput) ToRepositoryCleanupPolicyMostRecentVersionsPtrOutput() RepositoryCleanupPolicyMostRecentVersionsPtrOutput {
+	return o.ToRepositoryCleanupPolicyMostRecentVersionsPtrOutputWithContext(context.Background())
+}
+
+func (o RepositoryCleanupPolicyMostRecentVersionsOutput) ToRepositoryCleanupPolicyMostRecentVersionsPtrOutputWithContext(ctx context.Context) RepositoryCleanupPolicyMostRecentVersionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryCleanupPolicyMostRecentVersions) *RepositoryCleanupPolicyMostRecentVersions {
+		return &v
+	}).(RepositoryCleanupPolicyMostRecentVersionsPtrOutput)
+}
+
+func (o RepositoryCleanupPolicyMostRecentVersionsOutput) KeepCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RepositoryCleanupPolicyMostRecentVersions) *int { return v.KeepCount }).(pulumi.IntPtrOutput)
+}
+
+func (o RepositoryCleanupPolicyMostRecentVersionsOutput) PackageNamePrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RepositoryCleanupPolicyMostRecentVersions) []string { return v.PackageNamePrefixes }).(pulumi.StringArrayOutput)
+}
+
+type RepositoryCleanupPolicyMostRecentVersionsPtrOutput struct{ *pulumi.OutputState }
+
+func (RepositoryCleanupPolicyMostRecentVersionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryCleanupPolicyMostRecentVersions)(nil)).Elem()
+}
+
+func (o RepositoryCleanupPolicyMostRecentVersionsPtrOutput) ToRepositoryCleanupPolicyMostRecentVersionsPtrOutput() RepositoryCleanupPolicyMostRecentVersionsPtrOutput {
+	return o
+}
+
+func (o RepositoryCleanupPolicyMostRecentVersionsPtrOutput) ToRepositoryCleanupPolicyMostRecentVersionsPtrOutputWithContext(ctx context.Context) RepositoryCleanupPolicyMostRecentVersionsPtrOutput {
+	return o
+}
+
+func (o RepositoryCleanupPolicyMostRecentVersionsPtrOutput) Elem() RepositoryCleanupPolicyMostRecentVersionsOutput {
+	return o.ApplyT(func(v *RepositoryCleanupPolicyMostRecentVersions) RepositoryCleanupPolicyMostRecentVersions {
+		if v != nil {
+			return *v
+		}
+		var ret RepositoryCleanupPolicyMostRecentVersions
+		return ret
+	}).(RepositoryCleanupPolicyMostRecentVersionsOutput)
+}
+
+func (o RepositoryCleanupPolicyMostRecentVersionsPtrOutput) KeepCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RepositoryCleanupPolicyMostRecentVersions) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepCount
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o RepositoryCleanupPolicyMostRecentVersionsPtrOutput) PackageNamePrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RepositoryCleanupPolicyMostRecentVersions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PackageNamePrefixes
+	}).(pulumi.StringArrayOutput)
+}
+
 type RepositoryDockerConfig struct {
 	// The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.
 	ImmutableTags *bool `pulumi:"immutableTags"`
@@ -1726,6 +2199,344 @@ func (o RepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput) Index(i pulu
 	}).(RepositoryVirtualRepositoryConfigUpstreamPolicyOutput)
 }
 
+type GetRepositoryCleanupPolicy struct {
+	Action             string                                        `pulumi:"action"`
+	Conditions         []GetRepositoryCleanupPolicyCondition         `pulumi:"conditions"`
+	Id                 string                                        `pulumi:"id"`
+	MostRecentVersions []GetRepositoryCleanupPolicyMostRecentVersion `pulumi:"mostRecentVersions"`
+}
+
+// GetRepositoryCleanupPolicyInput is an input type that accepts GetRepositoryCleanupPolicyArgs and GetRepositoryCleanupPolicyOutput values.
+// You can construct a concrete instance of `GetRepositoryCleanupPolicyInput` via:
+//
+//	GetRepositoryCleanupPolicyArgs{...}
+type GetRepositoryCleanupPolicyInput interface {
+	pulumi.Input
+
+	ToGetRepositoryCleanupPolicyOutput() GetRepositoryCleanupPolicyOutput
+	ToGetRepositoryCleanupPolicyOutputWithContext(context.Context) GetRepositoryCleanupPolicyOutput
+}
+
+type GetRepositoryCleanupPolicyArgs struct {
+	Action             pulumi.StringInput                                    `pulumi:"action"`
+	Conditions         GetRepositoryCleanupPolicyConditionArrayInput         `pulumi:"conditions"`
+	Id                 pulumi.StringInput                                    `pulumi:"id"`
+	MostRecentVersions GetRepositoryCleanupPolicyMostRecentVersionArrayInput `pulumi:"mostRecentVersions"`
+}
+
+func (GetRepositoryCleanupPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryCleanupPolicy)(nil)).Elem()
+}
+
+func (i GetRepositoryCleanupPolicyArgs) ToGetRepositoryCleanupPolicyOutput() GetRepositoryCleanupPolicyOutput {
+	return i.ToGetRepositoryCleanupPolicyOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryCleanupPolicyArgs) ToGetRepositoryCleanupPolicyOutputWithContext(ctx context.Context) GetRepositoryCleanupPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryCleanupPolicyOutput)
+}
+
+// GetRepositoryCleanupPolicyArrayInput is an input type that accepts GetRepositoryCleanupPolicyArray and GetRepositoryCleanupPolicyArrayOutput values.
+// You can construct a concrete instance of `GetRepositoryCleanupPolicyArrayInput` via:
+//
+//	GetRepositoryCleanupPolicyArray{ GetRepositoryCleanupPolicyArgs{...} }
+type GetRepositoryCleanupPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetRepositoryCleanupPolicyArrayOutput() GetRepositoryCleanupPolicyArrayOutput
+	ToGetRepositoryCleanupPolicyArrayOutputWithContext(context.Context) GetRepositoryCleanupPolicyArrayOutput
+}
+
+type GetRepositoryCleanupPolicyArray []GetRepositoryCleanupPolicyInput
+
+func (GetRepositoryCleanupPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoryCleanupPolicy)(nil)).Elem()
+}
+
+func (i GetRepositoryCleanupPolicyArray) ToGetRepositoryCleanupPolicyArrayOutput() GetRepositoryCleanupPolicyArrayOutput {
+	return i.ToGetRepositoryCleanupPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryCleanupPolicyArray) ToGetRepositoryCleanupPolicyArrayOutputWithContext(ctx context.Context) GetRepositoryCleanupPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryCleanupPolicyArrayOutput)
+}
+
+type GetRepositoryCleanupPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryCleanupPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryCleanupPolicy)(nil)).Elem()
+}
+
+func (o GetRepositoryCleanupPolicyOutput) ToGetRepositoryCleanupPolicyOutput() GetRepositoryCleanupPolicyOutput {
+	return o
+}
+
+func (o GetRepositoryCleanupPolicyOutput) ToGetRepositoryCleanupPolicyOutputWithContext(ctx context.Context) GetRepositoryCleanupPolicyOutput {
+	return o
+}
+
+func (o GetRepositoryCleanupPolicyOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRepositoryCleanupPolicy) string { return v.Action }).(pulumi.StringOutput)
+}
+
+func (o GetRepositoryCleanupPolicyOutput) Conditions() GetRepositoryCleanupPolicyConditionArrayOutput {
+	return o.ApplyT(func(v GetRepositoryCleanupPolicy) []GetRepositoryCleanupPolicyCondition { return v.Conditions }).(GetRepositoryCleanupPolicyConditionArrayOutput)
+}
+
+func (o GetRepositoryCleanupPolicyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRepositoryCleanupPolicy) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetRepositoryCleanupPolicyOutput) MostRecentVersions() GetRepositoryCleanupPolicyMostRecentVersionArrayOutput {
+	return o.ApplyT(func(v GetRepositoryCleanupPolicy) []GetRepositoryCleanupPolicyMostRecentVersion {
+		return v.MostRecentVersions
+	}).(GetRepositoryCleanupPolicyMostRecentVersionArrayOutput)
+}
+
+type GetRepositoryCleanupPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryCleanupPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoryCleanupPolicy)(nil)).Elem()
+}
+
+func (o GetRepositoryCleanupPolicyArrayOutput) ToGetRepositoryCleanupPolicyArrayOutput() GetRepositoryCleanupPolicyArrayOutput {
+	return o
+}
+
+func (o GetRepositoryCleanupPolicyArrayOutput) ToGetRepositoryCleanupPolicyArrayOutputWithContext(ctx context.Context) GetRepositoryCleanupPolicyArrayOutput {
+	return o
+}
+
+func (o GetRepositoryCleanupPolicyArrayOutput) Index(i pulumi.IntInput) GetRepositoryCleanupPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRepositoryCleanupPolicy {
+		return vs[0].([]GetRepositoryCleanupPolicy)[vs[1].(int)]
+	}).(GetRepositoryCleanupPolicyOutput)
+}
+
+type GetRepositoryCleanupPolicyCondition struct {
+	NewerThan           string   `pulumi:"newerThan"`
+	OlderThan           string   `pulumi:"olderThan"`
+	PackageNamePrefixes []string `pulumi:"packageNamePrefixes"`
+	TagPrefixes         []string `pulumi:"tagPrefixes"`
+	TagState            string   `pulumi:"tagState"`
+	VersionNamePrefixes []string `pulumi:"versionNamePrefixes"`
+}
+
+// GetRepositoryCleanupPolicyConditionInput is an input type that accepts GetRepositoryCleanupPolicyConditionArgs and GetRepositoryCleanupPolicyConditionOutput values.
+// You can construct a concrete instance of `GetRepositoryCleanupPolicyConditionInput` via:
+//
+//	GetRepositoryCleanupPolicyConditionArgs{...}
+type GetRepositoryCleanupPolicyConditionInput interface {
+	pulumi.Input
+
+	ToGetRepositoryCleanupPolicyConditionOutput() GetRepositoryCleanupPolicyConditionOutput
+	ToGetRepositoryCleanupPolicyConditionOutputWithContext(context.Context) GetRepositoryCleanupPolicyConditionOutput
+}
+
+type GetRepositoryCleanupPolicyConditionArgs struct {
+	NewerThan           pulumi.StringInput      `pulumi:"newerThan"`
+	OlderThan           pulumi.StringInput      `pulumi:"olderThan"`
+	PackageNamePrefixes pulumi.StringArrayInput `pulumi:"packageNamePrefixes"`
+	TagPrefixes         pulumi.StringArrayInput `pulumi:"tagPrefixes"`
+	TagState            pulumi.StringInput      `pulumi:"tagState"`
+	VersionNamePrefixes pulumi.StringArrayInput `pulumi:"versionNamePrefixes"`
+}
+
+func (GetRepositoryCleanupPolicyConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryCleanupPolicyCondition)(nil)).Elem()
+}
+
+func (i GetRepositoryCleanupPolicyConditionArgs) ToGetRepositoryCleanupPolicyConditionOutput() GetRepositoryCleanupPolicyConditionOutput {
+	return i.ToGetRepositoryCleanupPolicyConditionOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryCleanupPolicyConditionArgs) ToGetRepositoryCleanupPolicyConditionOutputWithContext(ctx context.Context) GetRepositoryCleanupPolicyConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryCleanupPolicyConditionOutput)
+}
+
+// GetRepositoryCleanupPolicyConditionArrayInput is an input type that accepts GetRepositoryCleanupPolicyConditionArray and GetRepositoryCleanupPolicyConditionArrayOutput values.
+// You can construct a concrete instance of `GetRepositoryCleanupPolicyConditionArrayInput` via:
+//
+//	GetRepositoryCleanupPolicyConditionArray{ GetRepositoryCleanupPolicyConditionArgs{...} }
+type GetRepositoryCleanupPolicyConditionArrayInput interface {
+	pulumi.Input
+
+	ToGetRepositoryCleanupPolicyConditionArrayOutput() GetRepositoryCleanupPolicyConditionArrayOutput
+	ToGetRepositoryCleanupPolicyConditionArrayOutputWithContext(context.Context) GetRepositoryCleanupPolicyConditionArrayOutput
+}
+
+type GetRepositoryCleanupPolicyConditionArray []GetRepositoryCleanupPolicyConditionInput
+
+func (GetRepositoryCleanupPolicyConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoryCleanupPolicyCondition)(nil)).Elem()
+}
+
+func (i GetRepositoryCleanupPolicyConditionArray) ToGetRepositoryCleanupPolicyConditionArrayOutput() GetRepositoryCleanupPolicyConditionArrayOutput {
+	return i.ToGetRepositoryCleanupPolicyConditionArrayOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryCleanupPolicyConditionArray) ToGetRepositoryCleanupPolicyConditionArrayOutputWithContext(ctx context.Context) GetRepositoryCleanupPolicyConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryCleanupPolicyConditionArrayOutput)
+}
+
+type GetRepositoryCleanupPolicyConditionOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryCleanupPolicyConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryCleanupPolicyCondition)(nil)).Elem()
+}
+
+func (o GetRepositoryCleanupPolicyConditionOutput) ToGetRepositoryCleanupPolicyConditionOutput() GetRepositoryCleanupPolicyConditionOutput {
+	return o
+}
+
+func (o GetRepositoryCleanupPolicyConditionOutput) ToGetRepositoryCleanupPolicyConditionOutputWithContext(ctx context.Context) GetRepositoryCleanupPolicyConditionOutput {
+	return o
+}
+
+func (o GetRepositoryCleanupPolicyConditionOutput) NewerThan() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRepositoryCleanupPolicyCondition) string { return v.NewerThan }).(pulumi.StringOutput)
+}
+
+func (o GetRepositoryCleanupPolicyConditionOutput) OlderThan() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRepositoryCleanupPolicyCondition) string { return v.OlderThan }).(pulumi.StringOutput)
+}
+
+func (o GetRepositoryCleanupPolicyConditionOutput) PackageNamePrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRepositoryCleanupPolicyCondition) []string { return v.PackageNamePrefixes }).(pulumi.StringArrayOutput)
+}
+
+func (o GetRepositoryCleanupPolicyConditionOutput) TagPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRepositoryCleanupPolicyCondition) []string { return v.TagPrefixes }).(pulumi.StringArrayOutput)
+}
+
+func (o GetRepositoryCleanupPolicyConditionOutput) TagState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRepositoryCleanupPolicyCondition) string { return v.TagState }).(pulumi.StringOutput)
+}
+
+func (o GetRepositoryCleanupPolicyConditionOutput) VersionNamePrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRepositoryCleanupPolicyCondition) []string { return v.VersionNamePrefixes }).(pulumi.StringArrayOutput)
+}
+
+type GetRepositoryCleanupPolicyConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryCleanupPolicyConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoryCleanupPolicyCondition)(nil)).Elem()
+}
+
+func (o GetRepositoryCleanupPolicyConditionArrayOutput) ToGetRepositoryCleanupPolicyConditionArrayOutput() GetRepositoryCleanupPolicyConditionArrayOutput {
+	return o
+}
+
+func (o GetRepositoryCleanupPolicyConditionArrayOutput) ToGetRepositoryCleanupPolicyConditionArrayOutputWithContext(ctx context.Context) GetRepositoryCleanupPolicyConditionArrayOutput {
+	return o
+}
+
+func (o GetRepositoryCleanupPolicyConditionArrayOutput) Index(i pulumi.IntInput) GetRepositoryCleanupPolicyConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRepositoryCleanupPolicyCondition {
+		return vs[0].([]GetRepositoryCleanupPolicyCondition)[vs[1].(int)]
+	}).(GetRepositoryCleanupPolicyConditionOutput)
+}
+
+type GetRepositoryCleanupPolicyMostRecentVersion struct {
+	KeepCount           int      `pulumi:"keepCount"`
+	PackageNamePrefixes []string `pulumi:"packageNamePrefixes"`
+}
+
+// GetRepositoryCleanupPolicyMostRecentVersionInput is an input type that accepts GetRepositoryCleanupPolicyMostRecentVersionArgs and GetRepositoryCleanupPolicyMostRecentVersionOutput values.
+// You can construct a concrete instance of `GetRepositoryCleanupPolicyMostRecentVersionInput` via:
+//
+//	GetRepositoryCleanupPolicyMostRecentVersionArgs{...}
+type GetRepositoryCleanupPolicyMostRecentVersionInput interface {
+	pulumi.Input
+
+	ToGetRepositoryCleanupPolicyMostRecentVersionOutput() GetRepositoryCleanupPolicyMostRecentVersionOutput
+	ToGetRepositoryCleanupPolicyMostRecentVersionOutputWithContext(context.Context) GetRepositoryCleanupPolicyMostRecentVersionOutput
+}
+
+type GetRepositoryCleanupPolicyMostRecentVersionArgs struct {
+	KeepCount           pulumi.IntInput         `pulumi:"keepCount"`
+	PackageNamePrefixes pulumi.StringArrayInput `pulumi:"packageNamePrefixes"`
+}
+
+func (GetRepositoryCleanupPolicyMostRecentVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryCleanupPolicyMostRecentVersion)(nil)).Elem()
+}
+
+func (i GetRepositoryCleanupPolicyMostRecentVersionArgs) ToGetRepositoryCleanupPolicyMostRecentVersionOutput() GetRepositoryCleanupPolicyMostRecentVersionOutput {
+	return i.ToGetRepositoryCleanupPolicyMostRecentVersionOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryCleanupPolicyMostRecentVersionArgs) ToGetRepositoryCleanupPolicyMostRecentVersionOutputWithContext(ctx context.Context) GetRepositoryCleanupPolicyMostRecentVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryCleanupPolicyMostRecentVersionOutput)
+}
+
+// GetRepositoryCleanupPolicyMostRecentVersionArrayInput is an input type that accepts GetRepositoryCleanupPolicyMostRecentVersionArray and GetRepositoryCleanupPolicyMostRecentVersionArrayOutput values.
+// You can construct a concrete instance of `GetRepositoryCleanupPolicyMostRecentVersionArrayInput` via:
+//
+//	GetRepositoryCleanupPolicyMostRecentVersionArray{ GetRepositoryCleanupPolicyMostRecentVersionArgs{...} }
+type GetRepositoryCleanupPolicyMostRecentVersionArrayInput interface {
+	pulumi.Input
+
+	ToGetRepositoryCleanupPolicyMostRecentVersionArrayOutput() GetRepositoryCleanupPolicyMostRecentVersionArrayOutput
+	ToGetRepositoryCleanupPolicyMostRecentVersionArrayOutputWithContext(context.Context) GetRepositoryCleanupPolicyMostRecentVersionArrayOutput
+}
+
+type GetRepositoryCleanupPolicyMostRecentVersionArray []GetRepositoryCleanupPolicyMostRecentVersionInput
+
+func (GetRepositoryCleanupPolicyMostRecentVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoryCleanupPolicyMostRecentVersion)(nil)).Elem()
+}
+
+func (i GetRepositoryCleanupPolicyMostRecentVersionArray) ToGetRepositoryCleanupPolicyMostRecentVersionArrayOutput() GetRepositoryCleanupPolicyMostRecentVersionArrayOutput {
+	return i.ToGetRepositoryCleanupPolicyMostRecentVersionArrayOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryCleanupPolicyMostRecentVersionArray) ToGetRepositoryCleanupPolicyMostRecentVersionArrayOutputWithContext(ctx context.Context) GetRepositoryCleanupPolicyMostRecentVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryCleanupPolicyMostRecentVersionArrayOutput)
+}
+
+type GetRepositoryCleanupPolicyMostRecentVersionOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryCleanupPolicyMostRecentVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryCleanupPolicyMostRecentVersion)(nil)).Elem()
+}
+
+func (o GetRepositoryCleanupPolicyMostRecentVersionOutput) ToGetRepositoryCleanupPolicyMostRecentVersionOutput() GetRepositoryCleanupPolicyMostRecentVersionOutput {
+	return o
+}
+
+func (o GetRepositoryCleanupPolicyMostRecentVersionOutput) ToGetRepositoryCleanupPolicyMostRecentVersionOutputWithContext(ctx context.Context) GetRepositoryCleanupPolicyMostRecentVersionOutput {
+	return o
+}
+
+func (o GetRepositoryCleanupPolicyMostRecentVersionOutput) KeepCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRepositoryCleanupPolicyMostRecentVersion) int { return v.KeepCount }).(pulumi.IntOutput)
+}
+
+func (o GetRepositoryCleanupPolicyMostRecentVersionOutput) PackageNamePrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRepositoryCleanupPolicyMostRecentVersion) []string { return v.PackageNamePrefixes }).(pulumi.StringArrayOutput)
+}
+
+type GetRepositoryCleanupPolicyMostRecentVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryCleanupPolicyMostRecentVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoryCleanupPolicyMostRecentVersion)(nil)).Elem()
+}
+
+func (o GetRepositoryCleanupPolicyMostRecentVersionArrayOutput) ToGetRepositoryCleanupPolicyMostRecentVersionArrayOutput() GetRepositoryCleanupPolicyMostRecentVersionArrayOutput {
+	return o
+}
+
+func (o GetRepositoryCleanupPolicyMostRecentVersionArrayOutput) ToGetRepositoryCleanupPolicyMostRecentVersionArrayOutputWithContext(ctx context.Context) GetRepositoryCleanupPolicyMostRecentVersionArrayOutput {
+	return o
+}
+
+func (o GetRepositoryCleanupPolicyMostRecentVersionArrayOutput) Index(i pulumi.IntInput) GetRepositoryCleanupPolicyMostRecentVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRepositoryCleanupPolicyMostRecentVersion {
+		return vs[0].([]GetRepositoryCleanupPolicyMostRecentVersion)[vs[1].(int)]
+	}).(GetRepositoryCleanupPolicyMostRecentVersionOutput)
+}
+
 type GetRepositoryDockerConfig struct {
 	ImmutableTags bool `pulumi:"immutableTags"`
 }
@@ -2625,6 +3436,12 @@ func (o GetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput) Index(i p
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryCleanupPolicyInput)(nil)).Elem(), RepositoryCleanupPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryCleanupPolicyArrayInput)(nil)).Elem(), RepositoryCleanupPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryCleanupPolicyConditionInput)(nil)).Elem(), RepositoryCleanupPolicyConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryCleanupPolicyConditionPtrInput)(nil)).Elem(), RepositoryCleanupPolicyConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryCleanupPolicyMostRecentVersionsInput)(nil)).Elem(), RepositoryCleanupPolicyMostRecentVersionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryCleanupPolicyMostRecentVersionsPtrInput)(nil)).Elem(), RepositoryCleanupPolicyMostRecentVersionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryDockerConfigInput)(nil)).Elem(), RepositoryDockerConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryDockerConfigPtrInput)(nil)).Elem(), RepositoryDockerConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryIamBindingConditionInput)(nil)).Elem(), RepositoryIamBindingConditionArgs{})
@@ -2647,6 +3464,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryVirtualRepositoryConfigPtrInput)(nil)).Elem(), RepositoryVirtualRepositoryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryVirtualRepositoryConfigUpstreamPolicyInput)(nil)).Elem(), RepositoryVirtualRepositoryConfigUpstreamPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryVirtualRepositoryConfigUpstreamPolicyArrayInput)(nil)).Elem(), RepositoryVirtualRepositoryConfigUpstreamPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryCleanupPolicyInput)(nil)).Elem(), GetRepositoryCleanupPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryCleanupPolicyArrayInput)(nil)).Elem(), GetRepositoryCleanupPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryCleanupPolicyConditionInput)(nil)).Elem(), GetRepositoryCleanupPolicyConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryCleanupPolicyConditionArrayInput)(nil)).Elem(), GetRepositoryCleanupPolicyConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryCleanupPolicyMostRecentVersionInput)(nil)).Elem(), GetRepositoryCleanupPolicyMostRecentVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryCleanupPolicyMostRecentVersionArrayInput)(nil)).Elem(), GetRepositoryCleanupPolicyMostRecentVersionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryDockerConfigInput)(nil)).Elem(), GetRepositoryDockerConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryDockerConfigArrayInput)(nil)).Elem(), GetRepositoryDockerConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryMavenConfigInput)(nil)).Elem(), GetRepositoryMavenConfigArgs{})
@@ -2665,6 +3488,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryVirtualRepositoryConfigArrayInput)(nil)).Elem(), GetRepositoryVirtualRepositoryConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryVirtualRepositoryConfigUpstreamPolicyInput)(nil)).Elem(), GetRepositoryVirtualRepositoryConfigUpstreamPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayInput)(nil)).Elem(), GetRepositoryVirtualRepositoryConfigUpstreamPolicyArray{})
+	pulumi.RegisterOutputType(RepositoryCleanupPolicyOutput{})
+	pulumi.RegisterOutputType(RepositoryCleanupPolicyArrayOutput{})
+	pulumi.RegisterOutputType(RepositoryCleanupPolicyConditionOutput{})
+	pulumi.RegisterOutputType(RepositoryCleanupPolicyConditionPtrOutput{})
+	pulumi.RegisterOutputType(RepositoryCleanupPolicyMostRecentVersionsOutput{})
+	pulumi.RegisterOutputType(RepositoryCleanupPolicyMostRecentVersionsPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryDockerConfigOutput{})
 	pulumi.RegisterOutputType(RepositoryDockerConfigPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryIamBindingConditionOutput{})
@@ -2687,6 +3516,12 @@ func init() {
 	pulumi.RegisterOutputType(RepositoryVirtualRepositoryConfigPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryVirtualRepositoryConfigUpstreamPolicyOutput{})
 	pulumi.RegisterOutputType(RepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetRepositoryCleanupPolicyOutput{})
+	pulumi.RegisterOutputType(GetRepositoryCleanupPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetRepositoryCleanupPolicyConditionOutput{})
+	pulumi.RegisterOutputType(GetRepositoryCleanupPolicyConditionArrayOutput{})
+	pulumi.RegisterOutputType(GetRepositoryCleanupPolicyMostRecentVersionOutput{})
+	pulumi.RegisterOutputType(GetRepositoryCleanupPolicyMostRecentVersionArrayOutput{})
 	pulumi.RegisterOutputType(GetRepositoryDockerConfigOutput{})
 	pulumi.RegisterOutputType(GetRepositoryDockerConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetRepositoryMavenConfigOutput{})

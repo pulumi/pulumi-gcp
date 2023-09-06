@@ -22,7 +22,11 @@ namespace Pulumi.Gcp.DataPlex.Inputs
         public Input<string>? Mode { get; set; }
 
         /// <summary>
-        /// The name of the field.
+        /// A mutable name for the rule.
+        /// The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+        /// The maximum length is 63 characters.
+        /// Must start with a letter.
+        /// Must end with a number or a letter.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

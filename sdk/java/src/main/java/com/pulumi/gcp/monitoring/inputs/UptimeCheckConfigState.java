@@ -9,6 +9,7 @@ import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigContentMatcherArgs;
 import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigHttpCheckArgs;
 import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigMonitoredResourceArgs;
 import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigResourceGroupArgs;
+import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigSyntheticMonitorArgs;
 import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigTcpCheckArgs;
 import java.lang.String;
 import java.util.List;
@@ -105,14 +106,14 @@ public final class UptimeCheckConfigState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * A unique resource name for this UptimeCheckConfig. The format is projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
+     * The fully qualified name of the cloud function resource.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return A unique resource name for this UptimeCheckConfig. The format is projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
+     * @return The fully qualified name of the cloud function resource.
      * 
      */
     public Optional<Output<String>> name() {
@@ -184,6 +185,23 @@ public final class UptimeCheckConfigState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * A Synthetic Monitor deployed to a Cloud Functions V2 instance.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="syntheticMonitor")
+    private @Nullable Output<UptimeCheckConfigSyntheticMonitorArgs> syntheticMonitor;
+
+    /**
+     * @return A Synthetic Monitor deployed to a Cloud Functions V2 instance.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<UptimeCheckConfigSyntheticMonitorArgs>> syntheticMonitor() {
+        return Optional.ofNullable(this.syntheticMonitor);
+    }
+
+    /**
      * Contains information needed to make a TCP check.
      * Structure is documented below.
      * 
@@ -247,6 +265,7 @@ public final class UptimeCheckConfigState extends com.pulumi.resources.ResourceA
         this.project = $.project;
         this.resourceGroup = $.resourceGroup;
         this.selectedRegions = $.selectedRegions;
+        this.syntheticMonitor = $.syntheticMonitor;
         this.tcpCheck = $.tcpCheck;
         this.timeout = $.timeout;
         this.uptimeCheckId = $.uptimeCheckId;
@@ -395,7 +414,7 @@ public final class UptimeCheckConfigState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name A unique resource name for this UptimeCheckConfig. The format is projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
+         * @param name The fully qualified name of the cloud function resource.
          * 
          * @return builder
          * 
@@ -406,7 +425,7 @@ public final class UptimeCheckConfigState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name A unique resource name for this UptimeCheckConfig. The format is projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
+         * @param name The fully qualified name of the cloud function resource.
          * 
          * @return builder
          * 
@@ -511,6 +530,29 @@ public final class UptimeCheckConfigState extends com.pulumi.resources.ResourceA
          */
         public Builder selectedRegions(String... selectedRegions) {
             return selectedRegions(List.of(selectedRegions));
+        }
+
+        /**
+         * @param syntheticMonitor A Synthetic Monitor deployed to a Cloud Functions V2 instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder syntheticMonitor(@Nullable Output<UptimeCheckConfigSyntheticMonitorArgs> syntheticMonitor) {
+            $.syntheticMonitor = syntheticMonitor;
+            return this;
+        }
+
+        /**
+         * @param syntheticMonitor A Synthetic Monitor deployed to a Cloud Functions V2 instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder syntheticMonitor(UptimeCheckConfigSyntheticMonitorArgs syntheticMonitor) {
+            return syntheticMonitor(Output.of(syntheticMonitor));
         }
 
         /**

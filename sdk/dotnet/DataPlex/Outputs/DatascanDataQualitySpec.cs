@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.DataPlex.Outputs
     public sealed class DatascanDataQualitySpec
     {
         /// <summary>
+        /// Actions to take upon job completion.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.DatascanDataQualitySpecPostScanActions? PostScanActions;
+        /// <summary>
         /// A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 &gt;= 0 AND col2 &lt; 10
         /// </summary>
         public readonly string? RowFilter;
@@ -24,17 +29,22 @@ namespace Pulumi.Gcp.DataPlex.Outputs
         public readonly ImmutableArray<Outputs.DatascanDataQualitySpecRule> Rules;
         /// <summary>
         /// The percentage of the records to be selected from the dataset for DataScan.
+        /// Value can range between 0.0 and 100.0 with up to 3 significant decimal digits.
+        /// Sampling is not applied if `sampling_percent` is not specified, 0 or 100.
         /// </summary>
         public readonly double? SamplingPercent;
 
         [OutputConstructor]
         private DatascanDataQualitySpec(
+            Outputs.DatascanDataQualitySpecPostScanActions? postScanActions,
+
             string? rowFilter,
 
             ImmutableArray<Outputs.DatascanDataQualitySpecRule> rules,
 
             double? samplingPercent)
         {
+            PostScanActions = postScanActions;
             RowFilter = rowFilter;
             Rules = rules;
             SamplingPercent = samplingPercent;

@@ -86,6 +86,23 @@ public final class WorkstationConfigHostGceInstanceArgs extends com.pulumi.resou
     }
 
     /**
+     * Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
+     * See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+     * 
+     */
+    @Import(name="enableNestedVirtualization")
+    private @Nullable Output<Boolean> enableNestedVirtualization;
+
+    /**
+     * @return Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
+     * See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+     * 
+     */
+    public Optional<Output<Boolean>> enableNestedVirtualization() {
+        return Optional.ofNullable(this.enableNestedVirtualization);
+    }
+
+    /**
      * The name of a Compute Engine machine type.
      * 
      */
@@ -169,6 +186,7 @@ public final class WorkstationConfigHostGceInstanceArgs extends com.pulumi.resou
         this.bootDiskSizeGb = $.bootDiskSizeGb;
         this.confidentialInstanceConfig = $.confidentialInstanceConfig;
         this.disablePublicIpAddresses = $.disablePublicIpAddresses;
+        this.enableNestedVirtualization = $.enableNestedVirtualization;
         this.machineType = $.machineType;
         this.poolSize = $.poolSize;
         this.serviceAccount = $.serviceAccount;
@@ -291,6 +309,29 @@ public final class WorkstationConfigHostGceInstanceArgs extends com.pulumi.resou
          */
         public Builder disablePublicIpAddresses(Boolean disablePublicIpAddresses) {
             return disablePublicIpAddresses(Output.of(disablePublicIpAddresses));
+        }
+
+        /**
+         * @param enableNestedVirtualization Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
+         * See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableNestedVirtualization(@Nullable Output<Boolean> enableNestedVirtualization) {
+            $.enableNestedVirtualization = enableNestedVirtualization;
+            return this;
+        }
+
+        /**
+         * @param enableNestedVirtualization Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
+         * See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableNestedVirtualization(Boolean enableNestedVirtualization) {
+            return enableNestedVirtualization(Output.of(enableNestedVirtualization));
         }
 
         /**

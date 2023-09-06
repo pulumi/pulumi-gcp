@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigAdvancedMachineFeatures;
+import com.pulumi.gcp.container.outputs.NodePoolNodeConfigConfidentialNodes;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigEphemeralStorageConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigEphemeralStorageLocalSsdConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigGcfsConfig;
@@ -33,6 +34,7 @@ import javax.annotation.Nullable;
 public final class NodePoolNodeConfig {
     private @Nullable NodePoolNodeConfigAdvancedMachineFeatures advancedMachineFeatures;
     private @Nullable String bootDiskKmsKey;
+    private @Nullable NodePoolNodeConfigConfidentialNodes confidentialNodes;
     private @Nullable Integer diskSizeGb;
     private @Nullable String diskType;
     private @Nullable NodePoolNodeConfigEphemeralStorageConfig ephemeralStorageConfig;
@@ -71,6 +73,9 @@ public final class NodePoolNodeConfig {
     }
     public Optional<String> bootDiskKmsKey() {
         return Optional.ofNullable(this.bootDiskKmsKey);
+    }
+    public Optional<NodePoolNodeConfigConfidentialNodes> confidentialNodes() {
+        return Optional.ofNullable(this.confidentialNodes);
     }
     public Optional<Integer> diskSizeGb() {
         return Optional.ofNullable(this.diskSizeGb);
@@ -177,6 +182,7 @@ public final class NodePoolNodeConfig {
     public static final class Builder {
         private @Nullable NodePoolNodeConfigAdvancedMachineFeatures advancedMachineFeatures;
         private @Nullable String bootDiskKmsKey;
+        private @Nullable NodePoolNodeConfigConfidentialNodes confidentialNodes;
         private @Nullable Integer diskSizeGb;
         private @Nullable String diskType;
         private @Nullable NodePoolNodeConfigEphemeralStorageConfig ephemeralStorageConfig;
@@ -213,6 +219,7 @@ public final class NodePoolNodeConfig {
     	      Objects.requireNonNull(defaults);
     	      this.advancedMachineFeatures = defaults.advancedMachineFeatures;
     	      this.bootDiskKmsKey = defaults.bootDiskKmsKey;
+    	      this.confidentialNodes = defaults.confidentialNodes;
     	      this.diskSizeGb = defaults.diskSizeGb;
     	      this.diskType = defaults.diskType;
     	      this.ephemeralStorageConfig = defaults.ephemeralStorageConfig;
@@ -254,6 +261,11 @@ public final class NodePoolNodeConfig {
         @CustomType.Setter
         public Builder bootDiskKmsKey(@Nullable String bootDiskKmsKey) {
             this.bootDiskKmsKey = bootDiskKmsKey;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder confidentialNodes(@Nullable NodePoolNodeConfigConfidentialNodes confidentialNodes) {
+            this.confidentialNodes = confidentialNodes;
             return this;
         }
         @CustomType.Setter
@@ -427,6 +439,7 @@ public final class NodePoolNodeConfig {
             final var o = new NodePoolNodeConfig();
             o.advancedMachineFeatures = advancedMachineFeatures;
             o.bootDiskKmsKey = bootDiskKmsKey;
+            o.confidentialNodes = confidentialNodes;
             o.diskSizeGb = diskSizeGb;
             o.diskType = diskType;
             o.ephemeralStorageConfig = ephemeralStorageConfig;

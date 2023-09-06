@@ -123,6 +123,21 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The dns name of the instance.
+     * 
+     */
+    @Import(name="dnsName")
+    private @Nullable Output<String> dnsName;
+
+    /**
+     * @return The dns name of the instance.
+     * 
+     */
+    public Optional<Output<String>> dnsName() {
+        return Optional.ofNullable(this.dnsName);
+    }
+
+    /**
      * The full path to the encryption key used for the CMEK disk encryption.  Setting
      * up disk encryption currently requires manual steps outside of this provider.
      * The provided key must be in the same region as the SQL instance.  In order
@@ -273,6 +288,21 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
+    }
+
+    /**
+     * The link to service attachment of PSC instance.
+     * 
+     */
+    @Import(name="pscServiceAttachmentLink")
+    private @Nullable Output<String> pscServiceAttachmentLink;
+
+    /**
+     * @return The link to service attachment of PSC instance.
+     * 
+     */
+    public Optional<Output<String>> pscServiceAttachmentLink() {
+        return Optional.ofNullable(this.pscServiceAttachmentLink);
     }
 
     /**
@@ -428,6 +458,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         this.connectionName = $.connectionName;
         this.databaseVersion = $.databaseVersion;
         this.deletionProtection = $.deletionProtection;
+        this.dnsName = $.dnsName;
         this.encryptionKeyName = $.encryptionKeyName;
         this.firstIpAddress = $.firstIpAddress;
         this.instanceType = $.instanceType;
@@ -437,6 +468,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         this.name = $.name;
         this.privateIpAddress = $.privateIpAddress;
         this.project = $.project;
+        this.pscServiceAttachmentLink = $.pscServiceAttachmentLink;
         this.publicIpAddress = $.publicIpAddress;
         this.region = $.region;
         this.replicaConfiguration = $.replicaConfiguration;
@@ -603,6 +635,27 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
          */
         public Builder deletionProtection(Boolean deletionProtection) {
             return deletionProtection(Output.of(deletionProtection));
+        }
+
+        /**
+         * @param dnsName The dns name of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnsName(@Nullable Output<String> dnsName) {
+            $.dnsName = dnsName;
+            return this;
+        }
+
+        /**
+         * @param dnsName The dns name of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnsName(String dnsName) {
+            return dnsName(Output.of(dnsName));
         }
 
         /**
@@ -810,6 +863,27 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param pscServiceAttachmentLink The link to service attachment of PSC instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscServiceAttachmentLink(@Nullable Output<String> pscServiceAttachmentLink) {
+            $.pscServiceAttachmentLink = pscServiceAttachmentLink;
+            return this;
+        }
+
+        /**
+         * @param pscServiceAttachmentLink The link to service attachment of PSC instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscServiceAttachmentLink(String pscServiceAttachmentLink) {
+            return pscServiceAttachmentLink(Output.of(pscServiceAttachmentLink));
         }
 
         /**

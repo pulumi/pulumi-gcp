@@ -5,10 +5,18 @@ package com.pulumi.gcp.iam.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class WorkforcePoolProviderOidcWebSsoConfig {
+    /**
+     * @return Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested.
+     * Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be configured.
+     * 
+     */
+    private @Nullable List<String> additionalScopes;
     /**
      * @return The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
      * * MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS: Merge the UserInfo Endpoint Claims with ID Token Claims, preferring UserInfo Claim Values for the same Claim Name. This option is available only for the Authorization Code Flow.
@@ -28,6 +36,14 @@ public final class WorkforcePoolProviderOidcWebSsoConfig {
     private String responseType;
 
     private WorkforcePoolProviderOidcWebSsoConfig() {}
+    /**
+     * @return Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested.
+     * Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be configured.
+     * 
+     */
+    public List<String> additionalScopes() {
+        return this.additionalScopes == null ? List.of() : this.additionalScopes;
+    }
     /**
      * @return The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
      * * MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS: Merge the UserInfo Endpoint Claims with ID Token Claims, preferring UserInfo Claim Values for the same Claim Name. This option is available only for the Authorization Code Flow.
@@ -59,15 +75,25 @@ public final class WorkforcePoolProviderOidcWebSsoConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<String> additionalScopes;
         private String assertionClaimsBehavior;
         private String responseType;
         public Builder() {}
         public Builder(WorkforcePoolProviderOidcWebSsoConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.additionalScopes = defaults.additionalScopes;
     	      this.assertionClaimsBehavior = defaults.assertionClaimsBehavior;
     	      this.responseType = defaults.responseType;
         }
 
+        @CustomType.Setter
+        public Builder additionalScopes(@Nullable List<String> additionalScopes) {
+            this.additionalScopes = additionalScopes;
+            return this;
+        }
+        public Builder additionalScopes(String... additionalScopes) {
+            return additionalScopes(List.of(additionalScopes));
+        }
         @CustomType.Setter
         public Builder assertionClaimsBehavior(String assertionClaimsBehavior) {
             this.assertionClaimsBehavior = Objects.requireNonNull(assertionClaimsBehavior);
@@ -80,6 +106,7 @@ public final class WorkforcePoolProviderOidcWebSsoConfig {
         }
         public WorkforcePoolProviderOidcWebSsoConfig build() {
             final var o = new WorkforcePoolProviderOidcWebSsoConfig();
+            o.additionalScopes = additionalScopes;
             o.assertionClaimsBehavior = assertionClaimsBehavior;
             o.responseType = responseType;
             return o;

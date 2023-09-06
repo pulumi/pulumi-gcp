@@ -5,7 +5,9 @@ package com.pulumi.gcp.diagflow.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.diagflow.inputs.CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs;
 import com.pulumi.gcp.diagflow.inputs.CxFlowTransitionRouteTriggerFulfillmentMessageArgs;
+import com.pulumi.gcp.diagflow.inputs.CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -17,6 +19,23 @@ import javax.annotation.Nullable;
 public final class CxFlowTransitionRouteTriggerFulfillmentArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final CxFlowTransitionRouteTriggerFulfillmentArgs Empty = new CxFlowTransitionRouteTriggerFulfillmentArgs();
+
+    /**
+     * Conditional cases for this fulfillment.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="conditionalCases")
+    private @Nullable Output<List<CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs>> conditionalCases;
+
+    /**
+     * @return Conditional cases for this fulfillment.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs>>> conditionalCases() {
+        return Optional.ofNullable(this.conditionalCases);
+    }
 
     /**
      * The list of rich message responses to present to the user.
@@ -48,6 +67,23 @@ public final class CxFlowTransitionRouteTriggerFulfillmentArgs extends com.pulum
      */
     public Optional<Output<Boolean>> returnPartialResponses() {
         return Optional.ofNullable(this.returnPartialResponses);
+    }
+
+    /**
+     * Set parameter values before executing the webhook.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="setParameterActions")
+    private @Nullable Output<List<CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs>> setParameterActions;
+
+    /**
+     * @return Set parameter values before executing the webhook.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs>>> setParameterActions() {
+        return Optional.ofNullable(this.setParameterActions);
     }
 
     /**
@@ -83,8 +119,10 @@ public final class CxFlowTransitionRouteTriggerFulfillmentArgs extends com.pulum
     private CxFlowTransitionRouteTriggerFulfillmentArgs() {}
 
     private CxFlowTransitionRouteTriggerFulfillmentArgs(CxFlowTransitionRouteTriggerFulfillmentArgs $) {
+        this.conditionalCases = $.conditionalCases;
         this.messages = $.messages;
         this.returnPartialResponses = $.returnPartialResponses;
+        this.setParameterActions = $.setParameterActions;
         this.tag = $.tag;
         this.webhook = $.webhook;
     }
@@ -105,6 +143,40 @@ public final class CxFlowTransitionRouteTriggerFulfillmentArgs extends com.pulum
 
         public Builder(CxFlowTransitionRouteTriggerFulfillmentArgs defaults) {
             $ = new CxFlowTransitionRouteTriggerFulfillmentArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param conditionalCases Conditional cases for this fulfillment.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder conditionalCases(@Nullable Output<List<CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs>> conditionalCases) {
+            $.conditionalCases = conditionalCases;
+            return this;
+        }
+
+        /**
+         * @param conditionalCases Conditional cases for this fulfillment.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder conditionalCases(List<CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs> conditionalCases) {
+            return conditionalCases(Output.of(conditionalCases));
+        }
+
+        /**
+         * @param conditionalCases Conditional cases for this fulfillment.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder conditionalCases(CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs... conditionalCases) {
+            return conditionalCases(List.of(conditionalCases));
         }
 
         /**
@@ -160,6 +232,40 @@ public final class CxFlowTransitionRouteTriggerFulfillmentArgs extends com.pulum
          */
         public Builder returnPartialResponses(Boolean returnPartialResponses) {
             return returnPartialResponses(Output.of(returnPartialResponses));
+        }
+
+        /**
+         * @param setParameterActions Set parameter values before executing the webhook.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder setParameterActions(@Nullable Output<List<CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs>> setParameterActions) {
+            $.setParameterActions = setParameterActions;
+            return this;
+        }
+
+        /**
+         * @param setParameterActions Set parameter values before executing the webhook.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder setParameterActions(List<CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs> setParameterActions) {
+            return setParameterActions(Output.of(setParameterActions));
+        }
+
+        /**
+         * @param setParameterActions Set parameter values before executing the webhook.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder setParameterActions(CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs... setParameterActions) {
+            return setParameterActions(List.of(setParameterActions));
         }
 
         /**

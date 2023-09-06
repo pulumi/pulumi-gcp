@@ -258,7 +258,9 @@ type Hl7Store struct {
 	// A nested object resource
 	// Structure is documented below.
 	//
-	// Deprecated: This field has been replaced by notificationConfigs
+	// > **Warning:** `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
+	//
+	// Deprecated: `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
 	NotificationConfig Hl7StoreNotificationConfigPtrOutput `pulumi:"notificationConfig"`
 	// A list of notification configs. Each configuration uses a filter to determine whether to publish a
 	// message (both Ingest & Create) on the corresponding notification destination. Only the message name
@@ -326,7 +328,9 @@ type hl7StoreState struct {
 	// A nested object resource
 	// Structure is documented below.
 	//
-	// Deprecated: This field has been replaced by notificationConfigs
+	// > **Warning:** `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
+	//
+	// Deprecated: `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
 	NotificationConfig *Hl7StoreNotificationConfig `pulumi:"notificationConfig"`
 	// A list of notification configs. Each configuration uses a filter to determine whether to publish a
 	// message (both Ingest & Create) on the corresponding notification destination. Only the message name
@@ -362,7 +366,9 @@ type Hl7StoreState struct {
 	// A nested object resource
 	// Structure is documented below.
 	//
-	// Deprecated: This field has been replaced by notificationConfigs
+	// > **Warning:** `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
+	//
+	// Deprecated: `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
 	NotificationConfig Hl7StoreNotificationConfigPtrInput
 	// A list of notification configs. Each configuration uses a filter to determine whether to publish a
 	// message (both Ingest & Create) on the corresponding notification destination. Only the message name
@@ -402,7 +408,9 @@ type hl7StoreArgs struct {
 	// A nested object resource
 	// Structure is documented below.
 	//
-	// Deprecated: This field has been replaced by notificationConfigs
+	// > **Warning:** `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
+	//
+	// Deprecated: `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
 	NotificationConfig *Hl7StoreNotificationConfig `pulumi:"notificationConfig"`
 	// A list of notification configs. Each configuration uses a filter to determine whether to publish a
 	// message (both Ingest & Create) on the corresponding notification destination. Only the message name
@@ -437,7 +445,9 @@ type Hl7StoreArgs struct {
 	// A nested object resource
 	// Structure is documented below.
 	//
-	// Deprecated: This field has been replaced by notificationConfigs
+	// > **Warning:** `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
+	//
+	// Deprecated: `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
 	NotificationConfig Hl7StoreNotificationConfigPtrInput
 	// A list of notification configs. Each configuration uses a filter to determine whether to publish a
 	// message (both Ingest & Create) on the corresponding notification destination. Only the message name
@@ -566,7 +576,9 @@ func (o Hl7StoreOutput) Name() pulumi.StringOutput {
 // A nested object resource
 // Structure is documented below.
 //
-// Deprecated: This field has been replaced by notificationConfigs
+// > **Warning:** `notificationConfig` is deprecated and will be removed in a future major release. Use `notificationConfigs` instead.
+//
+// Deprecated: `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
 func (o Hl7StoreOutput) NotificationConfig() Hl7StoreNotificationConfigPtrOutput {
 	return o.ApplyT(func(v *Hl7Store) Hl7StoreNotificationConfigPtrOutput { return v.NotificationConfig }).(Hl7StoreNotificationConfigPtrOutput)
 }

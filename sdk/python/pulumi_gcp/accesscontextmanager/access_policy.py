@@ -245,7 +245,7 @@ class AccessPolicy(pulumi.CustomResource):
 
         ## Import
 
-        AccessPolicy can be imported using any of these accepted formats
+        AccessPolicy can be imported using any of these accepted formats:
 
         ```sh
          $ pulumi import gcp:accesscontextmanager/accessPolicy:AccessPolicy default {{name}}
@@ -315,7 +315,7 @@ class AccessPolicy(pulumi.CustomResource):
 
         ## Import
 
-        AccessPolicy can be imported using any of these accepted formats
+        AccessPolicy can be imported using any of these accepted formats:
 
         ```sh
          $ pulumi import gcp:accesscontextmanager/accessPolicy:AccessPolicy default {{name}}

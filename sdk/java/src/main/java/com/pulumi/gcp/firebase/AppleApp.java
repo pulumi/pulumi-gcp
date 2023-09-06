@@ -57,6 +57,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.projects.ApiKey;
+ * import com.pulumi.gcp.projects.ApiKeyArgs;
+ * import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsArgs;
+ * import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsIosKeyRestrictionsArgs;
  * import com.pulumi.gcp.firebase.AppleApp;
  * import com.pulumi.gcp.firebase.AppleAppArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -73,12 +77,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var apple = new ApiKey(&#34;apple&#34;, ApiKeyArgs.builder()        
+ *             .displayName(&#34;Display Name Full&#34;)
+ *             .project(&#34;my-project-name&#34;)
+ *             .restrictions(ApiKeyRestrictionsArgs.builder()
+ *                 .iosKeyRestrictions(ApiKeyRestrictionsIosKeyRestrictionsArgs.builder()
+ *                     .allowedBundleIds(&#34;apple.app.12345&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
  *         var full = new AppleApp(&#34;full&#34;, AppleAppArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .displayName(&#34;Display Name Full&#34;)
  *             .bundleId(&#34;apple.app.12345&#34;)
  *             .appStoreId(&#34;12345&#34;)
  *             .teamId(&#34;9987654321&#34;)
+ *             .apiKeyId(apple.uid())
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)
  *                 .build());
@@ -114,6 +131,24 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:firebase/appleApp:AppleApp")
 public class AppleApp extends com.pulumi.resources.CustomResource {
+    /**
+     * The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AppleApp.
+     * If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AppleApp.
+     * This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+     * 
+     */
+    @Export(name="apiKeyId", type=String.class, parameters={})
+    private Output<String> apiKeyId;
+
+    /**
+     * @return The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AppleApp.
+     * If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AppleApp.
+     * This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+     * 
+     */
+    public Output<String> apiKeyId() {
+        return this.apiKeyId;
+    }
     /**
      * The globally unique, Firebase-assigned identifier of the App.
      * This identifier should be treated as an opaque token, as the data format is not specified.

@@ -26,12 +26,24 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * const apple = new gcp.projects.ApiKey("apple", {
+ *     displayName: "Display Name Full",
+ *     project: "my-project-name",
+ *     restrictions: {
+ *         iosKeyRestrictions: {
+ *             allowedBundleIds: ["apple.app.12345"],
+ *         },
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
  * const full = new gcp.firebase.AppleApp("full", {
  *     project: "my-project-name",
  *     displayName: "Display Name Full",
  *     bundleId: "apple.app.12345",
  *     appStoreId: "12345",
  *     teamId: "9987654321",
+ *     apiKeyId: apple.uid,
  * }, {
  *     provider: google_beta,
  * });
@@ -90,6 +102,12 @@ export class AppleApp extends pulumi.CustomResource {
     }
 
     /**
+     * The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AppleApp.
+     * If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AppleApp.
+     * This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+     */
+    public readonly apiKeyId!: pulumi.Output<string>;
+    /**
      * The globally unique, Firebase-assigned identifier of the App.
      * This identifier should be treated as an opaque token, as the data format is not specified.
      */
@@ -143,6 +161,7 @@ export class AppleApp extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AppleAppState | undefined;
+            resourceInputs["apiKeyId"] = state ? state.apiKeyId : undefined;
             resourceInputs["appId"] = state ? state.appId : undefined;
             resourceInputs["appStoreId"] = state ? state.appStoreId : undefined;
             resourceInputs["bundleId"] = state ? state.bundleId : undefined;
@@ -159,6 +178,7 @@ export class AppleApp extends pulumi.CustomResource {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
+            resourceInputs["apiKeyId"] = args ? args.apiKeyId : undefined;
             resourceInputs["appStoreId"] = args ? args.appStoreId : undefined;
             resourceInputs["bundleId"] = args ? args.bundleId : undefined;
             resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
@@ -177,6 +197,12 @@ export class AppleApp extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AppleApp resources.
  */
 export interface AppleAppState {
+    /**
+     * The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AppleApp.
+     * If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AppleApp.
+     * This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+     */
+    apiKeyId?: pulumi.Input<string>;
     /**
      * The globally unique, Firebase-assigned identifier of the App.
      * This identifier should be treated as an opaque token, as the data format is not specified.
@@ -223,6 +249,12 @@ export interface AppleAppState {
  * The set of arguments for constructing a AppleApp resource.
  */
 export interface AppleAppArgs {
+    /**
+     * The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AppleApp.
+     * If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AppleApp.
+     * This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+     */
+    apiKeyId?: pulumi.Input<string>;
     /**
      * The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
      */

@@ -142,7 +142,7 @@ import (
 //
 // ## Import
 //
-// # Field can be imported using any of these accepted formats
+// Field can be imported using any of these accepted formats:
 //
 // ```sh
 //

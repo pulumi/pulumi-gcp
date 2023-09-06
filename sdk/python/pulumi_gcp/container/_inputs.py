@@ -101,6 +101,7 @@ __all__ = [
     'ClusterGatewayApiConfigArgs',
     'ClusterIdentityServiceConfigArgs',
     'ClusterIpAllocationPolicyArgs',
+    'ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs',
     'ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs',
     'ClusterLoggingConfigArgs',
     'ClusterMaintenancePolicyArgs',
@@ -119,6 +120,7 @@ __all__ = [
     'ClusterNetworkPolicyArgs',
     'ClusterNodeConfigArgs',
     'ClusterNodeConfigAdvancedMachineFeaturesArgs',
+    'ClusterNodeConfigConfidentialNodesArgs',
     'ClusterNodeConfigEphemeralStorageConfigArgs',
     'ClusterNodeConfigEphemeralStorageLocalSsdConfigArgs',
     'ClusterNodeConfigGcfsConfigArgs',
@@ -151,6 +153,7 @@ __all__ = [
     'ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs',
     'ClusterNodePoolNodeConfigArgs',
     'ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs',
+    'ClusterNodePoolNodeConfigConfidentialNodesArgs',
     'ClusterNodePoolNodeConfigEphemeralStorageConfigArgs',
     'ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs',
     'ClusterNodePoolNodeConfigGcfsConfigArgs',
@@ -197,6 +200,7 @@ __all__ = [
     'NodePoolNetworkConfigPodCidrOverprovisionConfigArgs',
     'NodePoolNodeConfigArgs',
     'NodePoolNodeConfigAdvancedMachineFeaturesArgs',
+    'NodePoolNodeConfigConfidentialNodesArgs',
     'NodePoolNodeConfigEphemeralStorageConfigArgs',
     'NodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs',
     'NodePoolNodeConfigGcfsConfigArgs',
@@ -4509,6 +4513,7 @@ class ClusterIdentityServiceConfigArgs:
 @pulumi.input_type
 class ClusterIpAllocationPolicyArgs:
     def __init__(__self__, *,
+                 additional_pod_ranges_config: Optional[pulumi.Input['ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs']] = None,
                  cluster_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  cluster_secondary_range_name: Optional[pulumi.Input[str]] = None,
                  pod_cidr_overprovision_config: Optional[pulumi.Input['ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs']] = None,
@@ -4516,6 +4521,9 @@ class ClusterIpAllocationPolicyArgs:
                  services_secondary_range_name: Optional[pulumi.Input[str]] = None,
                  stack_type: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input['ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs'] additional_pod_ranges_config: The configuration for additional pod secondary ranges at
+               the cluster level. Used for Autopilot clusters and Standard clusters with which control of the
+               secondary Pod IP address assignment to node pools isn't needed. Structure is documented below.
         :param pulumi.Input[str] cluster_ipv4_cidr_block: The IP address range for the cluster pod IPs.
                Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
                to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14)
@@ -4537,6 +4545,8 @@ class ClusterIpAllocationPolicyArgs:
                Default value is `IPV4`.
                Possible values are `IPV4` and `IPV4_IPV6`.
         """
+        if additional_pod_ranges_config is not None:
+            pulumi.set(__self__, "additional_pod_ranges_config", additional_pod_ranges_config)
         if cluster_ipv4_cidr_block is not None:
             pulumi.set(__self__, "cluster_ipv4_cidr_block", cluster_ipv4_cidr_block)
         if cluster_secondary_range_name is not None:
@@ -4549,6 +4559,20 @@ class ClusterIpAllocationPolicyArgs:
             pulumi.set(__self__, "services_secondary_range_name", services_secondary_range_name)
         if stack_type is not None:
             pulumi.set(__self__, "stack_type", stack_type)
+
+    @property
+    @pulumi.getter(name="additionalPodRangesConfig")
+    def additional_pod_ranges_config(self) -> Optional[pulumi.Input['ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs']]:
+        """
+        The configuration for additional pod secondary ranges at
+        the cluster level. Used for Autopilot clusters and Standard clusters with which control of the
+        secondary Pod IP address assignment to node pools isn't needed. Structure is documented below.
+        """
+        return pulumi.get(self, "additional_pod_ranges_config")
+
+    @additional_pod_ranges_config.setter
+    def additional_pod_ranges_config(self, value: Optional[pulumi.Input['ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs']]):
+        pulumi.set(self, "additional_pod_ranges_config", value)
 
     @property
     @pulumi.getter(name="clusterIpv4CidrBlock")
@@ -4633,6 +4657,28 @@ class ClusterIpAllocationPolicyArgs:
     @stack_type.setter
     def stack_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "stack_type", value)
+
+
+@pulumi.input_type
+class ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs:
+    def __init__(__self__, *,
+                 pod_range_names: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_range_names: The names of the Pod ranges to add to the cluster.
+        """
+        pulumi.set(__self__, "pod_range_names", pod_range_names)
+
+    @property
+    @pulumi.getter(name="podRangeNames")
+    def pod_range_names(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The names of the Pod ranges to add to the cluster.
+        """
+        return pulumi.get(self, "pod_range_names")
+
+    @pod_range_names.setter
+    def pod_range_names(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "pod_range_names", value)
 
 
 @pulumi.input_type
@@ -5293,6 +5339,7 @@ class ClusterNodeConfigArgs:
     def __init__(__self__, *,
                  advanced_machine_features: Optional[pulumi.Input['ClusterNodeConfigAdvancedMachineFeaturesArgs']] = None,
                  boot_disk_kms_key: Optional[pulumi.Input[str]] = None,
+                 confidential_nodes: Optional[pulumi.Input['ClusterNodeConfigConfidentialNodesArgs']] = None,
                  disk_size_gb: Optional[pulumi.Input[int]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
                  ephemeral_storage_config: Optional[pulumi.Input['ClusterNodeConfigEphemeralStorageConfigArgs']] = None,
@@ -5328,6 +5375,7 @@ class ClusterNodeConfigArgs:
         :param pulumi.Input['ClusterNodeConfigAdvancedMachineFeaturesArgs'] advanced_machine_features: Specifies options for controlling
                advanced machine features. Structure is documented below.
         :param pulumi.Input[str] boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
+        :param pulumi.Input['ClusterNodeConfigConfidentialNodesArgs'] confidential_nodes: Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
         :param pulumi.Input[int] disk_size_gb: Size of the disk attached to each node, specified
                in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
         :param pulumi.Input[str] disk_type: Type of the disk attached to each node
@@ -5438,6 +5486,8 @@ class ClusterNodeConfigArgs:
             pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
         if boot_disk_kms_key is not None:
             pulumi.set(__self__, "boot_disk_kms_key", boot_disk_kms_key)
+        if confidential_nodes is not None:
+            pulumi.set(__self__, "confidential_nodes", confidential_nodes)
         if disk_size_gb is not None:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         if disk_type is not None:
@@ -5525,6 +5575,18 @@ class ClusterNodeConfigArgs:
     @boot_disk_kms_key.setter
     def boot_disk_kms_key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "boot_disk_kms_key", value)
+
+    @property
+    @pulumi.getter(name="confidentialNodes")
+    def confidential_nodes(self) -> Optional[pulumi.Input['ClusterNodeConfigConfidentialNodesArgs']]:
+        """
+        Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+        """
+        return pulumi.get(self, "confidential_nodes")
+
+    @confidential_nodes.setter
+    def confidential_nodes(self, value: Optional[pulumi.Input['ClusterNodeConfigConfidentialNodesArgs']]):
+        pulumi.set(self, "confidential_nodes", value)
 
     @property
     @pulumi.getter(name="diskSizeGb")
@@ -5989,6 +6051,28 @@ class ClusterNodeConfigAdvancedMachineFeaturesArgs:
     @threads_per_core.setter
     def threads_per_core(self, value: pulumi.Input[int]):
         pulumi.set(self, "threads_per_core", value)
+
+
+@pulumi.input_type
+class ClusterNodeConfigConfidentialNodesArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[bool] enabled: Enable Confidential Nodes for this cluster.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Enable Confidential Nodes for this cluster.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
 
 
 @pulumi.input_type
@@ -7431,6 +7515,7 @@ class ClusterNodePoolNodeConfigArgs:
     def __init__(__self__, *,
                  advanced_machine_features: Optional[pulumi.Input['ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs']] = None,
                  boot_disk_kms_key: Optional[pulumi.Input[str]] = None,
+                 confidential_nodes: Optional[pulumi.Input['ClusterNodePoolNodeConfigConfidentialNodesArgs']] = None,
                  disk_size_gb: Optional[pulumi.Input[int]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
                  ephemeral_storage_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigEphemeralStorageConfigArgs']] = None,
@@ -7466,6 +7551,7 @@ class ClusterNodePoolNodeConfigArgs:
         :param pulumi.Input['ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs'] advanced_machine_features: Specifies options for controlling
                advanced machine features. Structure is documented below.
         :param pulumi.Input[str] boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
+        :param pulumi.Input['ClusterNodePoolNodeConfigConfidentialNodesArgs'] confidential_nodes: Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
         :param pulumi.Input[int] disk_size_gb: Size of the disk attached to each node, specified
                in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
         :param pulumi.Input[str] disk_type: Type of the disk attached to each node
@@ -7576,6 +7662,8 @@ class ClusterNodePoolNodeConfigArgs:
             pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
         if boot_disk_kms_key is not None:
             pulumi.set(__self__, "boot_disk_kms_key", boot_disk_kms_key)
+        if confidential_nodes is not None:
+            pulumi.set(__self__, "confidential_nodes", confidential_nodes)
         if disk_size_gb is not None:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         if disk_type is not None:
@@ -7663,6 +7751,18 @@ class ClusterNodePoolNodeConfigArgs:
     @boot_disk_kms_key.setter
     def boot_disk_kms_key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "boot_disk_kms_key", value)
+
+    @property
+    @pulumi.getter(name="confidentialNodes")
+    def confidential_nodes(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigConfidentialNodesArgs']]:
+        """
+        Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+        """
+        return pulumi.get(self, "confidential_nodes")
+
+    @confidential_nodes.setter
+    def confidential_nodes(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigConfidentialNodesArgs']]):
+        pulumi.set(self, "confidential_nodes", value)
 
     @property
     @pulumi.getter(name="diskSizeGb")
@@ -8127,6 +8227,28 @@ class ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs:
     @threads_per_core.setter
     def threads_per_core(self, value: pulumi.Input[int]):
         pulumi.set(self, "threads_per_core", value)
+
+
+@pulumi.input_type
+class ClusterNodePoolNodeConfigConfidentialNodesArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[bool] enabled: Enable Confidential Nodes for this cluster.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Enable Confidential Nodes for this cluster.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
 
 
 @pulumi.input_type
@@ -10114,6 +10236,7 @@ class NodePoolNodeConfigArgs:
     def __init__(__self__, *,
                  advanced_machine_features: Optional[pulumi.Input['NodePoolNodeConfigAdvancedMachineFeaturesArgs']] = None,
                  boot_disk_kms_key: Optional[pulumi.Input[str]] = None,
+                 confidential_nodes: Optional[pulumi.Input['NodePoolNodeConfigConfidentialNodesArgs']] = None,
                  disk_size_gb: Optional[pulumi.Input[int]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
                  ephemeral_storage_config: Optional[pulumi.Input['NodePoolNodeConfigEphemeralStorageConfigArgs']] = None,
@@ -10149,6 +10272,8 @@ class NodePoolNodeConfigArgs:
             pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
         if boot_disk_kms_key is not None:
             pulumi.set(__self__, "boot_disk_kms_key", boot_disk_kms_key)
+        if confidential_nodes is not None:
+            pulumi.set(__self__, "confidential_nodes", confidential_nodes)
         if disk_size_gb is not None:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         if disk_type is not None:
@@ -10229,6 +10354,15 @@ class NodePoolNodeConfigArgs:
     @boot_disk_kms_key.setter
     def boot_disk_kms_key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "boot_disk_kms_key", value)
+
+    @property
+    @pulumi.getter(name="confidentialNodes")
+    def confidential_nodes(self) -> Optional[pulumi.Input['NodePoolNodeConfigConfidentialNodesArgs']]:
+        return pulumi.get(self, "confidential_nodes")
+
+    @confidential_nodes.setter
+    def confidential_nodes(self, value: Optional[pulumi.Input['NodePoolNodeConfigConfidentialNodesArgs']]):
+        pulumi.set(self, "confidential_nodes", value)
 
     @property
     @pulumi.getter(name="diskSizeGb")
@@ -10524,6 +10658,22 @@ class NodePoolNodeConfigAdvancedMachineFeaturesArgs:
     @threads_per_core.setter
     def threads_per_core(self, value: pulumi.Input[int]):
         pulumi.set(self, "threads_per_core", value)
+
+
+@pulumi.input_type
+class NodePoolNodeConfigConfidentialNodesArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool]):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
 
 
 @pulumi.input_type

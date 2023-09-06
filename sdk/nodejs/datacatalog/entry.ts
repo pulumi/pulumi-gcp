@@ -108,7 +108,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Entry can be imported using any of these accepted formats
+ * Entry can be imported using any of these accepted formats:
  *
  * ```sh
  *  $ pulumi import gcp:datacatalog/entry:Entry default {{name}}

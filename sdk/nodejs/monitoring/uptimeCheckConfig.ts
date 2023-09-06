@@ -152,10 +152,53 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Uptime Check Config Synthetic Monitor
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const bucket = new gcp.storage.Bucket("bucket", {
+ *     location: "US",
+ *     uniformBucketLevelAccess: true,
+ * });
+ * const object = new gcp.storage.BucketObject("object", {
+ *     bucket: bucket.name,
+ *     source: new pulumi.asset.FileAsset("synthetic-fn-source.zip"),
+ * });
+ * // Add path to the zipped function source code
+ * const _function = new gcp.cloudfunctionsv2.Function("function", {
+ *     location: "us-central1",
+ *     buildConfig: {
+ *         runtime: "nodejs16",
+ *         entryPoint: "SyntheticFunction",
+ *         source: {
+ *             storageSource: {
+ *                 bucket: bucket.name,
+ *                 object: object.name,
+ *             },
+ *         },
+ *     },
+ *     serviceConfig: {
+ *         maxInstanceCount: 1,
+ *         availableMemory: "256M",
+ *         timeoutSeconds: 60,
+ *     },
+ * });
+ * const syntheticMonitor = new gcp.monitoring.UptimeCheckConfig("syntheticMonitor", {
+ *     displayName: "synthetic_monitor",
+ *     timeout: "60s",
+ *     syntheticMonitor: {
+ *         cloudFunctionV2: {
+ *             name: _function.id,
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
- * UptimeCheckConfig can be imported using any of these accepted formats
+ * UptimeCheckConfig can be imported using any of these accepted formats:
  *
  * ```sh
  *  $ pulumi import gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig default {{name}}
@@ -214,7 +257,7 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
      */
     public readonly monitoredResource!: pulumi.Output<outputs.monitoring.UptimeCheckConfigMonitoredResource | undefined>;
     /**
-     * A unique resource name for this UptimeCheckConfig. The format is projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
+     * The fully qualified name of the cloud function resource.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -235,6 +278,11 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
      * The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions to include a minimum of 3 locations must be provided, or an error message is returned. Not specifying this field will result in uptime checks running from all regions.
      */
     public readonly selectedRegions!: pulumi.Output<string[] | undefined>;
+    /**
+     * A Synthetic Monitor deployed to a Cloud Functions V2 instance.
+     * Structure is documented below.
+     */
+    public readonly syntheticMonitor!: pulumi.Output<outputs.monitoring.UptimeCheckConfigSyntheticMonitor | undefined>;
     /**
      * Contains information needed to make a TCP check.
      * Structure is documented below.
@@ -275,6 +323,7 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["resourceGroup"] = state ? state.resourceGroup : undefined;
             resourceInputs["selectedRegions"] = state ? state.selectedRegions : undefined;
+            resourceInputs["syntheticMonitor"] = state ? state.syntheticMonitor : undefined;
             resourceInputs["tcpCheck"] = state ? state.tcpCheck : undefined;
             resourceInputs["timeout"] = state ? state.timeout : undefined;
             resourceInputs["uptimeCheckId"] = state ? state.uptimeCheckId : undefined;
@@ -295,6 +344,7 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["resourceGroup"] = args ? args.resourceGroup : undefined;
             resourceInputs["selectedRegions"] = args ? args.selectedRegions : undefined;
+            resourceInputs["syntheticMonitor"] = args ? args.syntheticMonitor : undefined;
             resourceInputs["tcpCheck"] = args ? args.tcpCheck : undefined;
             resourceInputs["timeout"] = args ? args.timeout : undefined;
             resourceInputs["name"] = undefined /*out*/;
@@ -334,7 +384,7 @@ export interface UptimeCheckConfigState {
      */
     monitoredResource?: pulumi.Input<inputs.monitoring.UptimeCheckConfigMonitoredResource>;
     /**
-     * A unique resource name for this UptimeCheckConfig. The format is projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
+     * The fully qualified name of the cloud function resource.
      */
     name?: pulumi.Input<string>;
     /**
@@ -355,6 +405,11 @@ export interface UptimeCheckConfigState {
      * The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions to include a minimum of 3 locations must be provided, or an error message is returned. Not specifying this field will result in uptime checks running from all regions.
      */
     selectedRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A Synthetic Monitor deployed to a Cloud Functions V2 instance.
+     * Structure is documented below.
+     */
+    syntheticMonitor?: pulumi.Input<inputs.monitoring.UptimeCheckConfigSyntheticMonitor>;
     /**
      * Contains information needed to make a TCP check.
      * Structure is documented below.
@@ -419,6 +474,11 @@ export interface UptimeCheckConfigArgs {
      * The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions to include a minimum of 3 locations must be provided, or an error message is returned. Not specifying this field will result in uptime checks running from all regions.
      */
     selectedRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A Synthetic Monitor deployed to a Cloud Functions V2 instance.
+     * Structure is documented below.
+     */
+    syntheticMonitor?: pulumi.Input<inputs.monitoring.UptimeCheckConfigSyntheticMonitor>;
     /**
      * Contains information needed to make a TCP check.
      * Structure is documented below.

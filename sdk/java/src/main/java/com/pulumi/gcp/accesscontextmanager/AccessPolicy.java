@@ -105,7 +105,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * AccessPolicy can be imported using any of these accepted formats
+ * AccessPolicy can be imported using any of these accepted formats:
  * 
  * ```sh
  *  $ pulumi import gcp:accesscontextmanager/accessPolicy:AccessPolicy default {{name}}

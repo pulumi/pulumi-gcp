@@ -31,7 +31,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ServicePerimeterEgressPolicy can be imported using any of these accepted formats
+ * ServicePerimeterEgressPolicy can be imported using any of these accepted formats:
  * 
  * ```sh
  *  $ pulumi import gcp:accesscontextmanager/servicePerimeterEgressPolicy:ServicePerimeterEgressPolicy default {{perimeter}}

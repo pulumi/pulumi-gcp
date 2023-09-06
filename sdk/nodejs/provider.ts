@@ -41,6 +41,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly backupDrCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly beyondcorpCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly bigQueryCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly biglakeCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly bigqueryAnalyticsHubCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly bigqueryConnectionCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly bigqueryDataTransferCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -195,6 +196,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["batching"] = pulumi.output(args ? args.batching : undefined).apply(JSON.stringify);
             resourceInputs["beyondcorpCustomEndpoint"] = args ? args.beyondcorpCustomEndpoint : undefined;
             resourceInputs["bigQueryCustomEndpoint"] = args ? args.bigQueryCustomEndpoint : undefined;
+            resourceInputs["biglakeCustomEndpoint"] = args ? args.biglakeCustomEndpoint : undefined;
             resourceInputs["bigqueryAnalyticsHubCustomEndpoint"] = args ? args.bigqueryAnalyticsHubCustomEndpoint : undefined;
             resourceInputs["bigqueryConnectionCustomEndpoint"] = args ? args.bigqueryConnectionCustomEndpoint : undefined;
             resourceInputs["bigqueryDataTransferCustomEndpoint"] = args ? args.bigqueryDataTransferCustomEndpoint : undefined;
@@ -351,6 +353,7 @@ export interface ProviderArgs {
     batching?: pulumi.Input<inputs.ProviderBatching>;
     beyondcorpCustomEndpoint?: pulumi.Input<string>;
     bigQueryCustomEndpoint?: pulumi.Input<string>;
+    biglakeCustomEndpoint?: pulumi.Input<string>;
     bigqueryAnalyticsHubCustomEndpoint?: pulumi.Input<string>;
     bigqueryConnectionCustomEndpoint?: pulumi.Input<string>;
     bigqueryDataTransferCustomEndpoint?: pulumi.Input<string>;

@@ -6,12 +6,32 @@ package com.pulumi.gcp.iam.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class WorkforcePoolProviderOidcWebSsoConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final WorkforcePoolProviderOidcWebSsoConfigArgs Empty = new WorkforcePoolProviderOidcWebSsoConfigArgs();
+
+    /**
+     * Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested.
+     * Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be configured.
+     * 
+     */
+    @Import(name="additionalScopes")
+    private @Nullable Output<List<String>> additionalScopes;
+
+    /**
+     * @return Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested.
+     * Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be configured.
+     * 
+     */
+    public Optional<Output<List<String>>> additionalScopes() {
+        return Optional.ofNullable(this.additionalScopes);
+    }
 
     /**
      * The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
@@ -60,6 +80,7 @@ public final class WorkforcePoolProviderOidcWebSsoConfigArgs extends com.pulumi.
     private WorkforcePoolProviderOidcWebSsoConfigArgs() {}
 
     private WorkforcePoolProviderOidcWebSsoConfigArgs(WorkforcePoolProviderOidcWebSsoConfigArgs $) {
+        this.additionalScopes = $.additionalScopes;
         this.assertionClaimsBehavior = $.assertionClaimsBehavior;
         this.responseType = $.responseType;
     }
@@ -80,6 +101,40 @@ public final class WorkforcePoolProviderOidcWebSsoConfigArgs extends com.pulumi.
 
         public Builder(WorkforcePoolProviderOidcWebSsoConfigArgs defaults) {
             $ = new WorkforcePoolProviderOidcWebSsoConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param additionalScopes Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested.
+         * Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be configured.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalScopes(@Nullable Output<List<String>> additionalScopes) {
+            $.additionalScopes = additionalScopes;
+            return this;
+        }
+
+        /**
+         * @param additionalScopes Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested.
+         * Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be configured.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalScopes(List<String> additionalScopes) {
+            return additionalScopes(Output.of(additionalScopes));
+        }
+
+        /**
+         * @param additionalScopes Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested.
+         * Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be configured.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalScopes(String... additionalScopes) {
+            return additionalScopes(List.of(additionalScopes));
         }
 
         /**

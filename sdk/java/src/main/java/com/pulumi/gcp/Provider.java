@@ -106,6 +106,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> bigQueryCustomEndpoint() {
         return Codegen.optional(this.bigQueryCustomEndpoint);
     }
+    @Export(name="biglakeCustomEndpoint", type=String.class, parameters={})
+    private Output</* @Nullable */ String> biglakeCustomEndpoint;
+
+    public Output<Optional<String>> biglakeCustomEndpoint() {
+        return Codegen.optional(this.biglakeCustomEndpoint);
+    }
     @Export(name="bigqueryAnalyticsHubCustomEndpoint", type=String.class, parameters={})
     private Output</* @Nullable */ String> bigqueryAnalyticsHubCustomEndpoint;
 

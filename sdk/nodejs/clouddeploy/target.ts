@@ -194,7 +194,7 @@ export class Target extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * (Beta only) Information specifying a multiTarget.
+     * Information specifying a multiTarget.
      */
     public readonly multiTarget!: pulumi.Output<outputs.clouddeploy.TargetMultiTarget | undefined>;
     /**
@@ -335,7 +335,7 @@ export interface TargetState {
      */
     location?: pulumi.Input<string>;
     /**
-     * (Beta only) Information specifying a multiTarget.
+     * Information specifying a multiTarget.
      */
     multiTarget?: pulumi.Input<inputs.clouddeploy.TargetMultiTarget>;
     /**
@@ -409,7 +409,7 @@ export interface TargetArgs {
      */
     location: pulumi.Input<string>;
     /**
-     * (Beta only) Information specifying a multiTarget.
+     * Information specifying a multiTarget.
      */
     multiTarget?: pulumi.Input<inputs.clouddeploy.TargetMultiTarget>;
     /**

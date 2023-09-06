@@ -3493,6 +3493,106 @@ func (o MembershipAuthorityPtrOutput) Issuer() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type MembershipBindingStateType struct {
+	// (Output)
+	// Code describes the state of a MembershipBinding resource.
+	Code *string `pulumi:"code"`
+}
+
+// MembershipBindingStateTypeInput is an input type that accepts MembershipBindingStateTypeArgs and MembershipBindingStateTypeOutput values.
+// You can construct a concrete instance of `MembershipBindingStateTypeInput` via:
+//
+//	MembershipBindingStateTypeArgs{...}
+type MembershipBindingStateTypeInput interface {
+	pulumi.Input
+
+	ToMembershipBindingStateTypeOutput() MembershipBindingStateTypeOutput
+	ToMembershipBindingStateTypeOutputWithContext(context.Context) MembershipBindingStateTypeOutput
+}
+
+type MembershipBindingStateTypeArgs struct {
+	// (Output)
+	// Code describes the state of a MembershipBinding resource.
+	Code pulumi.StringPtrInput `pulumi:"code"`
+}
+
+func (MembershipBindingStateTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MembershipBindingStateType)(nil)).Elem()
+}
+
+func (i MembershipBindingStateTypeArgs) ToMembershipBindingStateTypeOutput() MembershipBindingStateTypeOutput {
+	return i.ToMembershipBindingStateTypeOutputWithContext(context.Background())
+}
+
+func (i MembershipBindingStateTypeArgs) ToMembershipBindingStateTypeOutputWithContext(ctx context.Context) MembershipBindingStateTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MembershipBindingStateTypeOutput)
+}
+
+// MembershipBindingStateTypeArrayInput is an input type that accepts MembershipBindingStateTypeArray and MembershipBindingStateTypeArrayOutput values.
+// You can construct a concrete instance of `MembershipBindingStateTypeArrayInput` via:
+//
+//	MembershipBindingStateTypeArray{ MembershipBindingStateTypeArgs{...} }
+type MembershipBindingStateTypeArrayInput interface {
+	pulumi.Input
+
+	ToMembershipBindingStateTypeArrayOutput() MembershipBindingStateTypeArrayOutput
+	ToMembershipBindingStateTypeArrayOutputWithContext(context.Context) MembershipBindingStateTypeArrayOutput
+}
+
+type MembershipBindingStateTypeArray []MembershipBindingStateTypeInput
+
+func (MembershipBindingStateTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MembershipBindingStateType)(nil)).Elem()
+}
+
+func (i MembershipBindingStateTypeArray) ToMembershipBindingStateTypeArrayOutput() MembershipBindingStateTypeArrayOutput {
+	return i.ToMembershipBindingStateTypeArrayOutputWithContext(context.Background())
+}
+
+func (i MembershipBindingStateTypeArray) ToMembershipBindingStateTypeArrayOutputWithContext(ctx context.Context) MembershipBindingStateTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MembershipBindingStateTypeArrayOutput)
+}
+
+type MembershipBindingStateTypeOutput struct{ *pulumi.OutputState }
+
+func (MembershipBindingStateTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MembershipBindingStateType)(nil)).Elem()
+}
+
+func (o MembershipBindingStateTypeOutput) ToMembershipBindingStateTypeOutput() MembershipBindingStateTypeOutput {
+	return o
+}
+
+func (o MembershipBindingStateTypeOutput) ToMembershipBindingStateTypeOutputWithContext(ctx context.Context) MembershipBindingStateTypeOutput {
+	return o
+}
+
+// (Output)
+// Code describes the state of a MembershipBinding resource.
+func (o MembershipBindingStateTypeOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MembershipBindingStateType) *string { return v.Code }).(pulumi.StringPtrOutput)
+}
+
+type MembershipBindingStateTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (MembershipBindingStateTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MembershipBindingStateType)(nil)).Elem()
+}
+
+func (o MembershipBindingStateTypeArrayOutput) ToMembershipBindingStateTypeArrayOutput() MembershipBindingStateTypeArrayOutput {
+	return o
+}
+
+func (o MembershipBindingStateTypeArrayOutput) ToMembershipBindingStateTypeArrayOutputWithContext(ctx context.Context) MembershipBindingStateTypeArrayOutput {
+	return o
+}
+
+func (o MembershipBindingStateTypeArrayOutput) Index(i pulumi.IntInput) MembershipBindingStateTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MembershipBindingStateType {
+		return vs[0].([]MembershipBindingStateType)[vs[1].(int)]
+	}).(MembershipBindingStateTypeOutput)
+}
+
 type MembershipEndpoint struct {
 	// If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
 	// Structure is documented below.
@@ -4093,6 +4193,1030 @@ func (o MembershipIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type MembershipRbacRoleBindingRole struct {
+	// PredefinedRole is an ENUM representation of the default Kubernetes Roles
+	// Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`, `ANTHOS_SUPPORT`.
+	//
+	// ***
+	PredefinedRole string `pulumi:"predefinedRole"`
+}
+
+// MembershipRbacRoleBindingRoleInput is an input type that accepts MembershipRbacRoleBindingRoleArgs and MembershipRbacRoleBindingRoleOutput values.
+// You can construct a concrete instance of `MembershipRbacRoleBindingRoleInput` via:
+//
+//	MembershipRbacRoleBindingRoleArgs{...}
+type MembershipRbacRoleBindingRoleInput interface {
+	pulumi.Input
+
+	ToMembershipRbacRoleBindingRoleOutput() MembershipRbacRoleBindingRoleOutput
+	ToMembershipRbacRoleBindingRoleOutputWithContext(context.Context) MembershipRbacRoleBindingRoleOutput
+}
+
+type MembershipRbacRoleBindingRoleArgs struct {
+	// PredefinedRole is an ENUM representation of the default Kubernetes Roles
+	// Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`, `ANTHOS_SUPPORT`.
+	//
+	// ***
+	PredefinedRole pulumi.StringInput `pulumi:"predefinedRole"`
+}
+
+func (MembershipRbacRoleBindingRoleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MembershipRbacRoleBindingRole)(nil)).Elem()
+}
+
+func (i MembershipRbacRoleBindingRoleArgs) ToMembershipRbacRoleBindingRoleOutput() MembershipRbacRoleBindingRoleOutput {
+	return i.ToMembershipRbacRoleBindingRoleOutputWithContext(context.Background())
+}
+
+func (i MembershipRbacRoleBindingRoleArgs) ToMembershipRbacRoleBindingRoleOutputWithContext(ctx context.Context) MembershipRbacRoleBindingRoleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MembershipRbacRoleBindingRoleOutput)
+}
+
+func (i MembershipRbacRoleBindingRoleArgs) ToMembershipRbacRoleBindingRolePtrOutput() MembershipRbacRoleBindingRolePtrOutput {
+	return i.ToMembershipRbacRoleBindingRolePtrOutputWithContext(context.Background())
+}
+
+func (i MembershipRbacRoleBindingRoleArgs) ToMembershipRbacRoleBindingRolePtrOutputWithContext(ctx context.Context) MembershipRbacRoleBindingRolePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MembershipRbacRoleBindingRoleOutput).ToMembershipRbacRoleBindingRolePtrOutputWithContext(ctx)
+}
+
+// MembershipRbacRoleBindingRolePtrInput is an input type that accepts MembershipRbacRoleBindingRoleArgs, MembershipRbacRoleBindingRolePtr and MembershipRbacRoleBindingRolePtrOutput values.
+// You can construct a concrete instance of `MembershipRbacRoleBindingRolePtrInput` via:
+//
+//	        MembershipRbacRoleBindingRoleArgs{...}
+//
+//	or:
+//
+//	        nil
+type MembershipRbacRoleBindingRolePtrInput interface {
+	pulumi.Input
+
+	ToMembershipRbacRoleBindingRolePtrOutput() MembershipRbacRoleBindingRolePtrOutput
+	ToMembershipRbacRoleBindingRolePtrOutputWithContext(context.Context) MembershipRbacRoleBindingRolePtrOutput
+}
+
+type membershipRbacRoleBindingRolePtrType MembershipRbacRoleBindingRoleArgs
+
+func MembershipRbacRoleBindingRolePtr(v *MembershipRbacRoleBindingRoleArgs) MembershipRbacRoleBindingRolePtrInput {
+	return (*membershipRbacRoleBindingRolePtrType)(v)
+}
+
+func (*membershipRbacRoleBindingRolePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MembershipRbacRoleBindingRole)(nil)).Elem()
+}
+
+func (i *membershipRbacRoleBindingRolePtrType) ToMembershipRbacRoleBindingRolePtrOutput() MembershipRbacRoleBindingRolePtrOutput {
+	return i.ToMembershipRbacRoleBindingRolePtrOutputWithContext(context.Background())
+}
+
+func (i *membershipRbacRoleBindingRolePtrType) ToMembershipRbacRoleBindingRolePtrOutputWithContext(ctx context.Context) MembershipRbacRoleBindingRolePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MembershipRbacRoleBindingRolePtrOutput)
+}
+
+type MembershipRbacRoleBindingRoleOutput struct{ *pulumi.OutputState }
+
+func (MembershipRbacRoleBindingRoleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MembershipRbacRoleBindingRole)(nil)).Elem()
+}
+
+func (o MembershipRbacRoleBindingRoleOutput) ToMembershipRbacRoleBindingRoleOutput() MembershipRbacRoleBindingRoleOutput {
+	return o
+}
+
+func (o MembershipRbacRoleBindingRoleOutput) ToMembershipRbacRoleBindingRoleOutputWithContext(ctx context.Context) MembershipRbacRoleBindingRoleOutput {
+	return o
+}
+
+func (o MembershipRbacRoleBindingRoleOutput) ToMembershipRbacRoleBindingRolePtrOutput() MembershipRbacRoleBindingRolePtrOutput {
+	return o.ToMembershipRbacRoleBindingRolePtrOutputWithContext(context.Background())
+}
+
+func (o MembershipRbacRoleBindingRoleOutput) ToMembershipRbacRoleBindingRolePtrOutputWithContext(ctx context.Context) MembershipRbacRoleBindingRolePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MembershipRbacRoleBindingRole) *MembershipRbacRoleBindingRole {
+		return &v
+	}).(MembershipRbacRoleBindingRolePtrOutput)
+}
+
+// PredefinedRole is an ENUM representation of the default Kubernetes Roles
+// Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`, `ANTHOS_SUPPORT`.
+//
+// ***
+func (o MembershipRbacRoleBindingRoleOutput) PredefinedRole() pulumi.StringOutput {
+	return o.ApplyT(func(v MembershipRbacRoleBindingRole) string { return v.PredefinedRole }).(pulumi.StringOutput)
+}
+
+type MembershipRbacRoleBindingRolePtrOutput struct{ *pulumi.OutputState }
+
+func (MembershipRbacRoleBindingRolePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MembershipRbacRoleBindingRole)(nil)).Elem()
+}
+
+func (o MembershipRbacRoleBindingRolePtrOutput) ToMembershipRbacRoleBindingRolePtrOutput() MembershipRbacRoleBindingRolePtrOutput {
+	return o
+}
+
+func (o MembershipRbacRoleBindingRolePtrOutput) ToMembershipRbacRoleBindingRolePtrOutputWithContext(ctx context.Context) MembershipRbacRoleBindingRolePtrOutput {
+	return o
+}
+
+func (o MembershipRbacRoleBindingRolePtrOutput) Elem() MembershipRbacRoleBindingRoleOutput {
+	return o.ApplyT(func(v *MembershipRbacRoleBindingRole) MembershipRbacRoleBindingRole {
+		if v != nil {
+			return *v
+		}
+		var ret MembershipRbacRoleBindingRole
+		return ret
+	}).(MembershipRbacRoleBindingRoleOutput)
+}
+
+// PredefinedRole is an ENUM representation of the default Kubernetes Roles
+// Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`, `ANTHOS_SUPPORT`.
+//
+// ***
+func (o MembershipRbacRoleBindingRolePtrOutput) PredefinedRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MembershipRbacRoleBindingRole) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PredefinedRole
+	}).(pulumi.StringPtrOutput)
+}
+
+type MembershipRbacRoleBindingStateType struct {
+	// (Output)
+	// Code describes the state of a RBAC Role Binding resource.
+	Code *string `pulumi:"code"`
+}
+
+// MembershipRbacRoleBindingStateTypeInput is an input type that accepts MembershipRbacRoleBindingStateTypeArgs and MembershipRbacRoleBindingStateTypeOutput values.
+// You can construct a concrete instance of `MembershipRbacRoleBindingStateTypeInput` via:
+//
+//	MembershipRbacRoleBindingStateTypeArgs{...}
+type MembershipRbacRoleBindingStateTypeInput interface {
+	pulumi.Input
+
+	ToMembershipRbacRoleBindingStateTypeOutput() MembershipRbacRoleBindingStateTypeOutput
+	ToMembershipRbacRoleBindingStateTypeOutputWithContext(context.Context) MembershipRbacRoleBindingStateTypeOutput
+}
+
+type MembershipRbacRoleBindingStateTypeArgs struct {
+	// (Output)
+	// Code describes the state of a RBAC Role Binding resource.
+	Code pulumi.StringPtrInput `pulumi:"code"`
+}
+
+func (MembershipRbacRoleBindingStateTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MembershipRbacRoleBindingStateType)(nil)).Elem()
+}
+
+func (i MembershipRbacRoleBindingStateTypeArgs) ToMembershipRbacRoleBindingStateTypeOutput() MembershipRbacRoleBindingStateTypeOutput {
+	return i.ToMembershipRbacRoleBindingStateTypeOutputWithContext(context.Background())
+}
+
+func (i MembershipRbacRoleBindingStateTypeArgs) ToMembershipRbacRoleBindingStateTypeOutputWithContext(ctx context.Context) MembershipRbacRoleBindingStateTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MembershipRbacRoleBindingStateTypeOutput)
+}
+
+// MembershipRbacRoleBindingStateTypeArrayInput is an input type that accepts MembershipRbacRoleBindingStateTypeArray and MembershipRbacRoleBindingStateTypeArrayOutput values.
+// You can construct a concrete instance of `MembershipRbacRoleBindingStateTypeArrayInput` via:
+//
+//	MembershipRbacRoleBindingStateTypeArray{ MembershipRbacRoleBindingStateTypeArgs{...} }
+type MembershipRbacRoleBindingStateTypeArrayInput interface {
+	pulumi.Input
+
+	ToMembershipRbacRoleBindingStateTypeArrayOutput() MembershipRbacRoleBindingStateTypeArrayOutput
+	ToMembershipRbacRoleBindingStateTypeArrayOutputWithContext(context.Context) MembershipRbacRoleBindingStateTypeArrayOutput
+}
+
+type MembershipRbacRoleBindingStateTypeArray []MembershipRbacRoleBindingStateTypeInput
+
+func (MembershipRbacRoleBindingStateTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MembershipRbacRoleBindingStateType)(nil)).Elem()
+}
+
+func (i MembershipRbacRoleBindingStateTypeArray) ToMembershipRbacRoleBindingStateTypeArrayOutput() MembershipRbacRoleBindingStateTypeArrayOutput {
+	return i.ToMembershipRbacRoleBindingStateTypeArrayOutputWithContext(context.Background())
+}
+
+func (i MembershipRbacRoleBindingStateTypeArray) ToMembershipRbacRoleBindingStateTypeArrayOutputWithContext(ctx context.Context) MembershipRbacRoleBindingStateTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MembershipRbacRoleBindingStateTypeArrayOutput)
+}
+
+type MembershipRbacRoleBindingStateTypeOutput struct{ *pulumi.OutputState }
+
+func (MembershipRbacRoleBindingStateTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MembershipRbacRoleBindingStateType)(nil)).Elem()
+}
+
+func (o MembershipRbacRoleBindingStateTypeOutput) ToMembershipRbacRoleBindingStateTypeOutput() MembershipRbacRoleBindingStateTypeOutput {
+	return o
+}
+
+func (o MembershipRbacRoleBindingStateTypeOutput) ToMembershipRbacRoleBindingStateTypeOutputWithContext(ctx context.Context) MembershipRbacRoleBindingStateTypeOutput {
+	return o
+}
+
+// (Output)
+// Code describes the state of a RBAC Role Binding resource.
+func (o MembershipRbacRoleBindingStateTypeOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MembershipRbacRoleBindingStateType) *string { return v.Code }).(pulumi.StringPtrOutput)
+}
+
+type MembershipRbacRoleBindingStateTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (MembershipRbacRoleBindingStateTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MembershipRbacRoleBindingStateType)(nil)).Elem()
+}
+
+func (o MembershipRbacRoleBindingStateTypeArrayOutput) ToMembershipRbacRoleBindingStateTypeArrayOutput() MembershipRbacRoleBindingStateTypeArrayOutput {
+	return o
+}
+
+func (o MembershipRbacRoleBindingStateTypeArrayOutput) ToMembershipRbacRoleBindingStateTypeArrayOutputWithContext(ctx context.Context) MembershipRbacRoleBindingStateTypeArrayOutput {
+	return o
+}
+
+func (o MembershipRbacRoleBindingStateTypeArrayOutput) Index(i pulumi.IntInput) MembershipRbacRoleBindingStateTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MembershipRbacRoleBindingStateType {
+		return vs[0].([]MembershipRbacRoleBindingStateType)[vs[1].(int)]
+	}).(MembershipRbacRoleBindingStateTypeOutput)
+}
+
+type NamespaceStateType struct {
+	// (Output)
+	// Code describes the state of a Namespace resource.
+	Code *string `pulumi:"code"`
+}
+
+// NamespaceStateTypeInput is an input type that accepts NamespaceStateTypeArgs and NamespaceStateTypeOutput values.
+// You can construct a concrete instance of `NamespaceStateTypeInput` via:
+//
+//	NamespaceStateTypeArgs{...}
+type NamespaceStateTypeInput interface {
+	pulumi.Input
+
+	ToNamespaceStateTypeOutput() NamespaceStateTypeOutput
+	ToNamespaceStateTypeOutputWithContext(context.Context) NamespaceStateTypeOutput
+}
+
+type NamespaceStateTypeArgs struct {
+	// (Output)
+	// Code describes the state of a Namespace resource.
+	Code pulumi.StringPtrInput `pulumi:"code"`
+}
+
+func (NamespaceStateTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceStateType)(nil)).Elem()
+}
+
+func (i NamespaceStateTypeArgs) ToNamespaceStateTypeOutput() NamespaceStateTypeOutput {
+	return i.ToNamespaceStateTypeOutputWithContext(context.Background())
+}
+
+func (i NamespaceStateTypeArgs) ToNamespaceStateTypeOutputWithContext(ctx context.Context) NamespaceStateTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceStateTypeOutput)
+}
+
+// NamespaceStateTypeArrayInput is an input type that accepts NamespaceStateTypeArray and NamespaceStateTypeArrayOutput values.
+// You can construct a concrete instance of `NamespaceStateTypeArrayInput` via:
+//
+//	NamespaceStateTypeArray{ NamespaceStateTypeArgs{...} }
+type NamespaceStateTypeArrayInput interface {
+	pulumi.Input
+
+	ToNamespaceStateTypeArrayOutput() NamespaceStateTypeArrayOutput
+	ToNamespaceStateTypeArrayOutputWithContext(context.Context) NamespaceStateTypeArrayOutput
+}
+
+type NamespaceStateTypeArray []NamespaceStateTypeInput
+
+func (NamespaceStateTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceStateType)(nil)).Elem()
+}
+
+func (i NamespaceStateTypeArray) ToNamespaceStateTypeArrayOutput() NamespaceStateTypeArrayOutput {
+	return i.ToNamespaceStateTypeArrayOutputWithContext(context.Background())
+}
+
+func (i NamespaceStateTypeArray) ToNamespaceStateTypeArrayOutputWithContext(ctx context.Context) NamespaceStateTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceStateTypeArrayOutput)
+}
+
+type NamespaceStateTypeOutput struct{ *pulumi.OutputState }
+
+func (NamespaceStateTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceStateType)(nil)).Elem()
+}
+
+func (o NamespaceStateTypeOutput) ToNamespaceStateTypeOutput() NamespaceStateTypeOutput {
+	return o
+}
+
+func (o NamespaceStateTypeOutput) ToNamespaceStateTypeOutputWithContext(ctx context.Context) NamespaceStateTypeOutput {
+	return o
+}
+
+// (Output)
+// Code describes the state of a Namespace resource.
+func (o NamespaceStateTypeOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceStateType) *string { return v.Code }).(pulumi.StringPtrOutput)
+}
+
+type NamespaceStateTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (NamespaceStateTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceStateType)(nil)).Elem()
+}
+
+func (o NamespaceStateTypeArrayOutput) ToNamespaceStateTypeArrayOutput() NamespaceStateTypeArrayOutput {
+	return o
+}
+
+func (o NamespaceStateTypeArrayOutput) ToNamespaceStateTypeArrayOutputWithContext(ctx context.Context) NamespaceStateTypeArrayOutput {
+	return o
+}
+
+func (o NamespaceStateTypeArrayOutput) Index(i pulumi.IntInput) NamespaceStateTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceStateType {
+		return vs[0].([]NamespaceStateType)[vs[1].(int)]
+	}).(NamespaceStateTypeOutput)
+}
+
+type ScopeIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// ScopeIamBindingConditionInput is an input type that accepts ScopeIamBindingConditionArgs and ScopeIamBindingConditionOutput values.
+// You can construct a concrete instance of `ScopeIamBindingConditionInput` via:
+//
+//	ScopeIamBindingConditionArgs{...}
+type ScopeIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToScopeIamBindingConditionOutput() ScopeIamBindingConditionOutput
+	ToScopeIamBindingConditionOutputWithContext(context.Context) ScopeIamBindingConditionOutput
+}
+
+type ScopeIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (ScopeIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScopeIamBindingCondition)(nil)).Elem()
+}
+
+func (i ScopeIamBindingConditionArgs) ToScopeIamBindingConditionOutput() ScopeIamBindingConditionOutput {
+	return i.ToScopeIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i ScopeIamBindingConditionArgs) ToScopeIamBindingConditionOutputWithContext(ctx context.Context) ScopeIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScopeIamBindingConditionOutput)
+}
+
+func (i ScopeIamBindingConditionArgs) ToScopeIamBindingConditionPtrOutput() ScopeIamBindingConditionPtrOutput {
+	return i.ToScopeIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i ScopeIamBindingConditionArgs) ToScopeIamBindingConditionPtrOutputWithContext(ctx context.Context) ScopeIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScopeIamBindingConditionOutput).ToScopeIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// ScopeIamBindingConditionPtrInput is an input type that accepts ScopeIamBindingConditionArgs, ScopeIamBindingConditionPtr and ScopeIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `ScopeIamBindingConditionPtrInput` via:
+//
+//	        ScopeIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ScopeIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToScopeIamBindingConditionPtrOutput() ScopeIamBindingConditionPtrOutput
+	ToScopeIamBindingConditionPtrOutputWithContext(context.Context) ScopeIamBindingConditionPtrOutput
+}
+
+type scopeIamBindingConditionPtrType ScopeIamBindingConditionArgs
+
+func ScopeIamBindingConditionPtr(v *ScopeIamBindingConditionArgs) ScopeIamBindingConditionPtrInput {
+	return (*scopeIamBindingConditionPtrType)(v)
+}
+
+func (*scopeIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScopeIamBindingCondition)(nil)).Elem()
+}
+
+func (i *scopeIamBindingConditionPtrType) ToScopeIamBindingConditionPtrOutput() ScopeIamBindingConditionPtrOutput {
+	return i.ToScopeIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *scopeIamBindingConditionPtrType) ToScopeIamBindingConditionPtrOutputWithContext(ctx context.Context) ScopeIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScopeIamBindingConditionPtrOutput)
+}
+
+type ScopeIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (ScopeIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScopeIamBindingCondition)(nil)).Elem()
+}
+
+func (o ScopeIamBindingConditionOutput) ToScopeIamBindingConditionOutput() ScopeIamBindingConditionOutput {
+	return o
+}
+
+func (o ScopeIamBindingConditionOutput) ToScopeIamBindingConditionOutputWithContext(ctx context.Context) ScopeIamBindingConditionOutput {
+	return o
+}
+
+func (o ScopeIamBindingConditionOutput) ToScopeIamBindingConditionPtrOutput() ScopeIamBindingConditionPtrOutput {
+	return o.ToScopeIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o ScopeIamBindingConditionOutput) ToScopeIamBindingConditionPtrOutputWithContext(ctx context.Context) ScopeIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScopeIamBindingCondition) *ScopeIamBindingCondition {
+		return &v
+	}).(ScopeIamBindingConditionPtrOutput)
+}
+
+func (o ScopeIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScopeIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o ScopeIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v ScopeIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o ScopeIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ScopeIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type ScopeIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (ScopeIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScopeIamBindingCondition)(nil)).Elem()
+}
+
+func (o ScopeIamBindingConditionPtrOutput) ToScopeIamBindingConditionPtrOutput() ScopeIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o ScopeIamBindingConditionPtrOutput) ToScopeIamBindingConditionPtrOutputWithContext(ctx context.Context) ScopeIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o ScopeIamBindingConditionPtrOutput) Elem() ScopeIamBindingConditionOutput {
+	return o.ApplyT(func(v *ScopeIamBindingCondition) ScopeIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret ScopeIamBindingCondition
+		return ret
+	}).(ScopeIamBindingConditionOutput)
+}
+
+func (o ScopeIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScopeIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ScopeIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScopeIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ScopeIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScopeIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type ScopeIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// ScopeIamMemberConditionInput is an input type that accepts ScopeIamMemberConditionArgs and ScopeIamMemberConditionOutput values.
+// You can construct a concrete instance of `ScopeIamMemberConditionInput` via:
+//
+//	ScopeIamMemberConditionArgs{...}
+type ScopeIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToScopeIamMemberConditionOutput() ScopeIamMemberConditionOutput
+	ToScopeIamMemberConditionOutputWithContext(context.Context) ScopeIamMemberConditionOutput
+}
+
+type ScopeIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (ScopeIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScopeIamMemberCondition)(nil)).Elem()
+}
+
+func (i ScopeIamMemberConditionArgs) ToScopeIamMemberConditionOutput() ScopeIamMemberConditionOutput {
+	return i.ToScopeIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i ScopeIamMemberConditionArgs) ToScopeIamMemberConditionOutputWithContext(ctx context.Context) ScopeIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScopeIamMemberConditionOutput)
+}
+
+func (i ScopeIamMemberConditionArgs) ToScopeIamMemberConditionPtrOutput() ScopeIamMemberConditionPtrOutput {
+	return i.ToScopeIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i ScopeIamMemberConditionArgs) ToScopeIamMemberConditionPtrOutputWithContext(ctx context.Context) ScopeIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScopeIamMemberConditionOutput).ToScopeIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// ScopeIamMemberConditionPtrInput is an input type that accepts ScopeIamMemberConditionArgs, ScopeIamMemberConditionPtr and ScopeIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `ScopeIamMemberConditionPtrInput` via:
+//
+//	        ScopeIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ScopeIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToScopeIamMemberConditionPtrOutput() ScopeIamMemberConditionPtrOutput
+	ToScopeIamMemberConditionPtrOutputWithContext(context.Context) ScopeIamMemberConditionPtrOutput
+}
+
+type scopeIamMemberConditionPtrType ScopeIamMemberConditionArgs
+
+func ScopeIamMemberConditionPtr(v *ScopeIamMemberConditionArgs) ScopeIamMemberConditionPtrInput {
+	return (*scopeIamMemberConditionPtrType)(v)
+}
+
+func (*scopeIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScopeIamMemberCondition)(nil)).Elem()
+}
+
+func (i *scopeIamMemberConditionPtrType) ToScopeIamMemberConditionPtrOutput() ScopeIamMemberConditionPtrOutput {
+	return i.ToScopeIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *scopeIamMemberConditionPtrType) ToScopeIamMemberConditionPtrOutputWithContext(ctx context.Context) ScopeIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScopeIamMemberConditionPtrOutput)
+}
+
+type ScopeIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (ScopeIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScopeIamMemberCondition)(nil)).Elem()
+}
+
+func (o ScopeIamMemberConditionOutput) ToScopeIamMemberConditionOutput() ScopeIamMemberConditionOutput {
+	return o
+}
+
+func (o ScopeIamMemberConditionOutput) ToScopeIamMemberConditionOutputWithContext(ctx context.Context) ScopeIamMemberConditionOutput {
+	return o
+}
+
+func (o ScopeIamMemberConditionOutput) ToScopeIamMemberConditionPtrOutput() ScopeIamMemberConditionPtrOutput {
+	return o.ToScopeIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o ScopeIamMemberConditionOutput) ToScopeIamMemberConditionPtrOutputWithContext(ctx context.Context) ScopeIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScopeIamMemberCondition) *ScopeIamMemberCondition {
+		return &v
+	}).(ScopeIamMemberConditionPtrOutput)
+}
+
+func (o ScopeIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScopeIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o ScopeIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v ScopeIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o ScopeIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ScopeIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type ScopeIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (ScopeIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScopeIamMemberCondition)(nil)).Elem()
+}
+
+func (o ScopeIamMemberConditionPtrOutput) ToScopeIamMemberConditionPtrOutput() ScopeIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o ScopeIamMemberConditionPtrOutput) ToScopeIamMemberConditionPtrOutputWithContext(ctx context.Context) ScopeIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o ScopeIamMemberConditionPtrOutput) Elem() ScopeIamMemberConditionOutput {
+	return o.ApplyT(func(v *ScopeIamMemberCondition) ScopeIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret ScopeIamMemberCondition
+		return ret
+	}).(ScopeIamMemberConditionOutput)
+}
+
+func (o ScopeIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScopeIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ScopeIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScopeIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ScopeIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScopeIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type ScopeRbacRoleBindingRole struct {
+	// PredefinedRole is an ENUM representation of the default Kubernetes Roles
+	// Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
+	//
+	// ***
+	PredefinedRole *string `pulumi:"predefinedRole"`
+}
+
+// ScopeRbacRoleBindingRoleInput is an input type that accepts ScopeRbacRoleBindingRoleArgs and ScopeRbacRoleBindingRoleOutput values.
+// You can construct a concrete instance of `ScopeRbacRoleBindingRoleInput` via:
+//
+//	ScopeRbacRoleBindingRoleArgs{...}
+type ScopeRbacRoleBindingRoleInput interface {
+	pulumi.Input
+
+	ToScopeRbacRoleBindingRoleOutput() ScopeRbacRoleBindingRoleOutput
+	ToScopeRbacRoleBindingRoleOutputWithContext(context.Context) ScopeRbacRoleBindingRoleOutput
+}
+
+type ScopeRbacRoleBindingRoleArgs struct {
+	// PredefinedRole is an ENUM representation of the default Kubernetes Roles
+	// Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
+	//
+	// ***
+	PredefinedRole pulumi.StringPtrInput `pulumi:"predefinedRole"`
+}
+
+func (ScopeRbacRoleBindingRoleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScopeRbacRoleBindingRole)(nil)).Elem()
+}
+
+func (i ScopeRbacRoleBindingRoleArgs) ToScopeRbacRoleBindingRoleOutput() ScopeRbacRoleBindingRoleOutput {
+	return i.ToScopeRbacRoleBindingRoleOutputWithContext(context.Background())
+}
+
+func (i ScopeRbacRoleBindingRoleArgs) ToScopeRbacRoleBindingRoleOutputWithContext(ctx context.Context) ScopeRbacRoleBindingRoleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScopeRbacRoleBindingRoleOutput)
+}
+
+func (i ScopeRbacRoleBindingRoleArgs) ToScopeRbacRoleBindingRolePtrOutput() ScopeRbacRoleBindingRolePtrOutput {
+	return i.ToScopeRbacRoleBindingRolePtrOutputWithContext(context.Background())
+}
+
+func (i ScopeRbacRoleBindingRoleArgs) ToScopeRbacRoleBindingRolePtrOutputWithContext(ctx context.Context) ScopeRbacRoleBindingRolePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScopeRbacRoleBindingRoleOutput).ToScopeRbacRoleBindingRolePtrOutputWithContext(ctx)
+}
+
+// ScopeRbacRoleBindingRolePtrInput is an input type that accepts ScopeRbacRoleBindingRoleArgs, ScopeRbacRoleBindingRolePtr and ScopeRbacRoleBindingRolePtrOutput values.
+// You can construct a concrete instance of `ScopeRbacRoleBindingRolePtrInput` via:
+//
+//	        ScopeRbacRoleBindingRoleArgs{...}
+//
+//	or:
+//
+//	        nil
+type ScopeRbacRoleBindingRolePtrInput interface {
+	pulumi.Input
+
+	ToScopeRbacRoleBindingRolePtrOutput() ScopeRbacRoleBindingRolePtrOutput
+	ToScopeRbacRoleBindingRolePtrOutputWithContext(context.Context) ScopeRbacRoleBindingRolePtrOutput
+}
+
+type scopeRbacRoleBindingRolePtrType ScopeRbacRoleBindingRoleArgs
+
+func ScopeRbacRoleBindingRolePtr(v *ScopeRbacRoleBindingRoleArgs) ScopeRbacRoleBindingRolePtrInput {
+	return (*scopeRbacRoleBindingRolePtrType)(v)
+}
+
+func (*scopeRbacRoleBindingRolePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScopeRbacRoleBindingRole)(nil)).Elem()
+}
+
+func (i *scopeRbacRoleBindingRolePtrType) ToScopeRbacRoleBindingRolePtrOutput() ScopeRbacRoleBindingRolePtrOutput {
+	return i.ToScopeRbacRoleBindingRolePtrOutputWithContext(context.Background())
+}
+
+func (i *scopeRbacRoleBindingRolePtrType) ToScopeRbacRoleBindingRolePtrOutputWithContext(ctx context.Context) ScopeRbacRoleBindingRolePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScopeRbacRoleBindingRolePtrOutput)
+}
+
+type ScopeRbacRoleBindingRoleOutput struct{ *pulumi.OutputState }
+
+func (ScopeRbacRoleBindingRoleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScopeRbacRoleBindingRole)(nil)).Elem()
+}
+
+func (o ScopeRbacRoleBindingRoleOutput) ToScopeRbacRoleBindingRoleOutput() ScopeRbacRoleBindingRoleOutput {
+	return o
+}
+
+func (o ScopeRbacRoleBindingRoleOutput) ToScopeRbacRoleBindingRoleOutputWithContext(ctx context.Context) ScopeRbacRoleBindingRoleOutput {
+	return o
+}
+
+func (o ScopeRbacRoleBindingRoleOutput) ToScopeRbacRoleBindingRolePtrOutput() ScopeRbacRoleBindingRolePtrOutput {
+	return o.ToScopeRbacRoleBindingRolePtrOutputWithContext(context.Background())
+}
+
+func (o ScopeRbacRoleBindingRoleOutput) ToScopeRbacRoleBindingRolePtrOutputWithContext(ctx context.Context) ScopeRbacRoleBindingRolePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScopeRbacRoleBindingRole) *ScopeRbacRoleBindingRole {
+		return &v
+	}).(ScopeRbacRoleBindingRolePtrOutput)
+}
+
+// PredefinedRole is an ENUM representation of the default Kubernetes Roles
+// Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
+//
+// ***
+func (o ScopeRbacRoleBindingRoleOutput) PredefinedRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScopeRbacRoleBindingRole) *string { return v.PredefinedRole }).(pulumi.StringPtrOutput)
+}
+
+type ScopeRbacRoleBindingRolePtrOutput struct{ *pulumi.OutputState }
+
+func (ScopeRbacRoleBindingRolePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScopeRbacRoleBindingRole)(nil)).Elem()
+}
+
+func (o ScopeRbacRoleBindingRolePtrOutput) ToScopeRbacRoleBindingRolePtrOutput() ScopeRbacRoleBindingRolePtrOutput {
+	return o
+}
+
+func (o ScopeRbacRoleBindingRolePtrOutput) ToScopeRbacRoleBindingRolePtrOutputWithContext(ctx context.Context) ScopeRbacRoleBindingRolePtrOutput {
+	return o
+}
+
+func (o ScopeRbacRoleBindingRolePtrOutput) Elem() ScopeRbacRoleBindingRoleOutput {
+	return o.ApplyT(func(v *ScopeRbacRoleBindingRole) ScopeRbacRoleBindingRole {
+		if v != nil {
+			return *v
+		}
+		var ret ScopeRbacRoleBindingRole
+		return ret
+	}).(ScopeRbacRoleBindingRoleOutput)
+}
+
+// PredefinedRole is an ENUM representation of the default Kubernetes Roles
+// Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
+//
+// ***
+func (o ScopeRbacRoleBindingRolePtrOutput) PredefinedRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScopeRbacRoleBindingRole) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PredefinedRole
+	}).(pulumi.StringPtrOutput)
+}
+
+type ScopeRbacRoleBindingStateType struct {
+	// (Output)
+	// Code describes the state of a RBAC Role Binding resource.
+	Code *string `pulumi:"code"`
+}
+
+// ScopeRbacRoleBindingStateTypeInput is an input type that accepts ScopeRbacRoleBindingStateTypeArgs and ScopeRbacRoleBindingStateTypeOutput values.
+// You can construct a concrete instance of `ScopeRbacRoleBindingStateTypeInput` via:
+//
+//	ScopeRbacRoleBindingStateTypeArgs{...}
+type ScopeRbacRoleBindingStateTypeInput interface {
+	pulumi.Input
+
+	ToScopeRbacRoleBindingStateTypeOutput() ScopeRbacRoleBindingStateTypeOutput
+	ToScopeRbacRoleBindingStateTypeOutputWithContext(context.Context) ScopeRbacRoleBindingStateTypeOutput
+}
+
+type ScopeRbacRoleBindingStateTypeArgs struct {
+	// (Output)
+	// Code describes the state of a RBAC Role Binding resource.
+	Code pulumi.StringPtrInput `pulumi:"code"`
+}
+
+func (ScopeRbacRoleBindingStateTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScopeRbacRoleBindingStateType)(nil)).Elem()
+}
+
+func (i ScopeRbacRoleBindingStateTypeArgs) ToScopeRbacRoleBindingStateTypeOutput() ScopeRbacRoleBindingStateTypeOutput {
+	return i.ToScopeRbacRoleBindingStateTypeOutputWithContext(context.Background())
+}
+
+func (i ScopeRbacRoleBindingStateTypeArgs) ToScopeRbacRoleBindingStateTypeOutputWithContext(ctx context.Context) ScopeRbacRoleBindingStateTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScopeRbacRoleBindingStateTypeOutput)
+}
+
+// ScopeRbacRoleBindingStateTypeArrayInput is an input type that accepts ScopeRbacRoleBindingStateTypeArray and ScopeRbacRoleBindingStateTypeArrayOutput values.
+// You can construct a concrete instance of `ScopeRbacRoleBindingStateTypeArrayInput` via:
+//
+//	ScopeRbacRoleBindingStateTypeArray{ ScopeRbacRoleBindingStateTypeArgs{...} }
+type ScopeRbacRoleBindingStateTypeArrayInput interface {
+	pulumi.Input
+
+	ToScopeRbacRoleBindingStateTypeArrayOutput() ScopeRbacRoleBindingStateTypeArrayOutput
+	ToScopeRbacRoleBindingStateTypeArrayOutputWithContext(context.Context) ScopeRbacRoleBindingStateTypeArrayOutput
+}
+
+type ScopeRbacRoleBindingStateTypeArray []ScopeRbacRoleBindingStateTypeInput
+
+func (ScopeRbacRoleBindingStateTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScopeRbacRoleBindingStateType)(nil)).Elem()
+}
+
+func (i ScopeRbacRoleBindingStateTypeArray) ToScopeRbacRoleBindingStateTypeArrayOutput() ScopeRbacRoleBindingStateTypeArrayOutput {
+	return i.ToScopeRbacRoleBindingStateTypeArrayOutputWithContext(context.Background())
+}
+
+func (i ScopeRbacRoleBindingStateTypeArray) ToScopeRbacRoleBindingStateTypeArrayOutputWithContext(ctx context.Context) ScopeRbacRoleBindingStateTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScopeRbacRoleBindingStateTypeArrayOutput)
+}
+
+type ScopeRbacRoleBindingStateTypeOutput struct{ *pulumi.OutputState }
+
+func (ScopeRbacRoleBindingStateTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScopeRbacRoleBindingStateType)(nil)).Elem()
+}
+
+func (o ScopeRbacRoleBindingStateTypeOutput) ToScopeRbacRoleBindingStateTypeOutput() ScopeRbacRoleBindingStateTypeOutput {
+	return o
+}
+
+func (o ScopeRbacRoleBindingStateTypeOutput) ToScopeRbacRoleBindingStateTypeOutputWithContext(ctx context.Context) ScopeRbacRoleBindingStateTypeOutput {
+	return o
+}
+
+// (Output)
+// Code describes the state of a RBAC Role Binding resource.
+func (o ScopeRbacRoleBindingStateTypeOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScopeRbacRoleBindingStateType) *string { return v.Code }).(pulumi.StringPtrOutput)
+}
+
+type ScopeRbacRoleBindingStateTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (ScopeRbacRoleBindingStateTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScopeRbacRoleBindingStateType)(nil)).Elem()
+}
+
+func (o ScopeRbacRoleBindingStateTypeArrayOutput) ToScopeRbacRoleBindingStateTypeArrayOutput() ScopeRbacRoleBindingStateTypeArrayOutput {
+	return o
+}
+
+func (o ScopeRbacRoleBindingStateTypeArrayOutput) ToScopeRbacRoleBindingStateTypeArrayOutputWithContext(ctx context.Context) ScopeRbacRoleBindingStateTypeArrayOutput {
+	return o
+}
+
+func (o ScopeRbacRoleBindingStateTypeArrayOutput) Index(i pulumi.IntInput) ScopeRbacRoleBindingStateTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScopeRbacRoleBindingStateType {
+		return vs[0].([]ScopeRbacRoleBindingStateType)[vs[1].(int)]
+	}).(ScopeRbacRoleBindingStateTypeOutput)
+}
+
+type ScopeStateType struct {
+	// (Output)
+	// Code describes the state of a Scope resource.
+	Code *string `pulumi:"code"`
+}
+
+// ScopeStateTypeInput is an input type that accepts ScopeStateTypeArgs and ScopeStateTypeOutput values.
+// You can construct a concrete instance of `ScopeStateTypeInput` via:
+//
+//	ScopeStateTypeArgs{...}
+type ScopeStateTypeInput interface {
+	pulumi.Input
+
+	ToScopeStateTypeOutput() ScopeStateTypeOutput
+	ToScopeStateTypeOutputWithContext(context.Context) ScopeStateTypeOutput
+}
+
+type ScopeStateTypeArgs struct {
+	// (Output)
+	// Code describes the state of a Scope resource.
+	Code pulumi.StringPtrInput `pulumi:"code"`
+}
+
+func (ScopeStateTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScopeStateType)(nil)).Elem()
+}
+
+func (i ScopeStateTypeArgs) ToScopeStateTypeOutput() ScopeStateTypeOutput {
+	return i.ToScopeStateTypeOutputWithContext(context.Background())
+}
+
+func (i ScopeStateTypeArgs) ToScopeStateTypeOutputWithContext(ctx context.Context) ScopeStateTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScopeStateTypeOutput)
+}
+
+// ScopeStateTypeArrayInput is an input type that accepts ScopeStateTypeArray and ScopeStateTypeArrayOutput values.
+// You can construct a concrete instance of `ScopeStateTypeArrayInput` via:
+//
+//	ScopeStateTypeArray{ ScopeStateTypeArgs{...} }
+type ScopeStateTypeArrayInput interface {
+	pulumi.Input
+
+	ToScopeStateTypeArrayOutput() ScopeStateTypeArrayOutput
+	ToScopeStateTypeArrayOutputWithContext(context.Context) ScopeStateTypeArrayOutput
+}
+
+type ScopeStateTypeArray []ScopeStateTypeInput
+
+func (ScopeStateTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScopeStateType)(nil)).Elem()
+}
+
+func (i ScopeStateTypeArray) ToScopeStateTypeArrayOutput() ScopeStateTypeArrayOutput {
+	return i.ToScopeStateTypeArrayOutputWithContext(context.Background())
+}
+
+func (i ScopeStateTypeArray) ToScopeStateTypeArrayOutputWithContext(ctx context.Context) ScopeStateTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScopeStateTypeArrayOutput)
+}
+
+type ScopeStateTypeOutput struct{ *pulumi.OutputState }
+
+func (ScopeStateTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScopeStateType)(nil)).Elem()
+}
+
+func (o ScopeStateTypeOutput) ToScopeStateTypeOutput() ScopeStateTypeOutput {
+	return o
+}
+
+func (o ScopeStateTypeOutput) ToScopeStateTypeOutputWithContext(ctx context.Context) ScopeStateTypeOutput {
+	return o
+}
+
+// (Output)
+// Code describes the state of a Scope resource.
+func (o ScopeStateTypeOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScopeStateType) *string { return v.Code }).(pulumi.StringPtrOutput)
+}
+
+type ScopeStateTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (ScopeStateTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScopeStateType)(nil)).Elem()
+}
+
+func (o ScopeStateTypeArrayOutput) ToScopeStateTypeArrayOutput() ScopeStateTypeArrayOutput {
+	return o
+}
+
+func (o ScopeStateTypeArrayOutput) ToScopeStateTypeArrayOutputWithContext(ctx context.Context) ScopeStateTypeArrayOutput {
+	return o
+}
+
+func (o ScopeStateTypeArrayOutput) Index(i pulumi.IntInput) ScopeStateTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScopeStateType {
+		return vs[0].([]ScopeStateType)[vs[1].(int)]
+	}).(ScopeStateTypeOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureIamBindingConditionInput)(nil)).Elem(), FeatureIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureIamBindingConditionPtrInput)(nil)).Elem(), FeatureIamBindingConditionArgs{})
@@ -4136,6 +5260,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureStateStateArrayInput)(nil)).Elem(), FeatureStateStateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipAuthorityInput)(nil)).Elem(), MembershipAuthorityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipAuthorityPtrInput)(nil)).Elem(), MembershipAuthorityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MembershipBindingStateTypeInput)(nil)).Elem(), MembershipBindingStateTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MembershipBindingStateTypeArrayInput)(nil)).Elem(), MembershipBindingStateTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipEndpointInput)(nil)).Elem(), MembershipEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipEndpointPtrInput)(nil)).Elem(), MembershipEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipEndpointGkeClusterInput)(nil)).Elem(), MembershipEndpointGkeClusterArgs{})
@@ -4144,6 +5270,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipIamBindingConditionPtrInput)(nil)).Elem(), MembershipIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipIamMemberConditionInput)(nil)).Elem(), MembershipIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipIamMemberConditionPtrInput)(nil)).Elem(), MembershipIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MembershipRbacRoleBindingRoleInput)(nil)).Elem(), MembershipRbacRoleBindingRoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MembershipRbacRoleBindingRolePtrInput)(nil)).Elem(), MembershipRbacRoleBindingRoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MembershipRbacRoleBindingStateTypeInput)(nil)).Elem(), MembershipRbacRoleBindingStateTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MembershipRbacRoleBindingStateTypeArrayInput)(nil)).Elem(), MembershipRbacRoleBindingStateTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceStateTypeInput)(nil)).Elem(), NamespaceStateTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NamespaceStateTypeArrayInput)(nil)).Elem(), NamespaceStateTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScopeIamBindingConditionInput)(nil)).Elem(), ScopeIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScopeIamBindingConditionPtrInput)(nil)).Elem(), ScopeIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScopeIamMemberConditionInput)(nil)).Elem(), ScopeIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScopeIamMemberConditionPtrInput)(nil)).Elem(), ScopeIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScopeRbacRoleBindingRoleInput)(nil)).Elem(), ScopeRbacRoleBindingRoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScopeRbacRoleBindingRolePtrInput)(nil)).Elem(), ScopeRbacRoleBindingRoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScopeRbacRoleBindingStateTypeInput)(nil)).Elem(), ScopeRbacRoleBindingStateTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScopeRbacRoleBindingStateTypeArrayInput)(nil)).Elem(), ScopeRbacRoleBindingStateTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScopeStateTypeInput)(nil)).Elem(), ScopeStateTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScopeStateTypeArrayInput)(nil)).Elem(), ScopeStateTypeArray{})
 	pulumi.RegisterOutputType(FeatureIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(FeatureIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(FeatureIamMemberConditionOutput{})
@@ -4186,6 +5328,8 @@ func init() {
 	pulumi.RegisterOutputType(FeatureStateStateArrayOutput{})
 	pulumi.RegisterOutputType(MembershipAuthorityOutput{})
 	pulumi.RegisterOutputType(MembershipAuthorityPtrOutput{})
+	pulumi.RegisterOutputType(MembershipBindingStateTypeOutput{})
+	pulumi.RegisterOutputType(MembershipBindingStateTypeArrayOutput{})
 	pulumi.RegisterOutputType(MembershipEndpointOutput{})
 	pulumi.RegisterOutputType(MembershipEndpointPtrOutput{})
 	pulumi.RegisterOutputType(MembershipEndpointGkeClusterOutput{})
@@ -4194,4 +5338,20 @@ func init() {
 	pulumi.RegisterOutputType(MembershipIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(MembershipIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(MembershipIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(MembershipRbacRoleBindingRoleOutput{})
+	pulumi.RegisterOutputType(MembershipRbacRoleBindingRolePtrOutput{})
+	pulumi.RegisterOutputType(MembershipRbacRoleBindingStateTypeOutput{})
+	pulumi.RegisterOutputType(MembershipRbacRoleBindingStateTypeArrayOutput{})
+	pulumi.RegisterOutputType(NamespaceStateTypeOutput{})
+	pulumi.RegisterOutputType(NamespaceStateTypeArrayOutput{})
+	pulumi.RegisterOutputType(ScopeIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(ScopeIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(ScopeIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(ScopeIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(ScopeRbacRoleBindingRoleOutput{})
+	pulumi.RegisterOutputType(ScopeRbacRoleBindingRolePtrOutput{})
+	pulumi.RegisterOutputType(ScopeRbacRoleBindingStateTypeOutput{})
+	pulumi.RegisterOutputType(ScopeRbacRoleBindingStateTypeArrayOutput{})
+	pulumi.RegisterOutputType(ScopeStateTypeOutput{})
+	pulumi.RegisterOutputType(ScopeStateTypeArrayOutput{})
 }

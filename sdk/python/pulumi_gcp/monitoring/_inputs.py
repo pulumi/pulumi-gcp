@@ -61,6 +61,8 @@ __all__ = [
     'UptimeCheckConfigHttpCheckAuthInfoArgs',
     'UptimeCheckConfigMonitoredResourceArgs',
     'UptimeCheckConfigResourceGroupArgs',
+    'UptimeCheckConfigSyntheticMonitorArgs',
+    'UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args',
     'UptimeCheckConfigTcpCheckArgs',
 ]
 
@@ -4035,6 +4037,58 @@ class UptimeCheckConfigResourceGroupArgs:
     @resource_type.setter
     def resource_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resource_type", value)
+
+
+@pulumi.input_type
+class UptimeCheckConfigSyntheticMonitorArgs:
+    def __init__(__self__, *,
+                 cloud_function_v2: pulumi.Input['UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args']):
+        """
+        :param pulumi.Input['UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args'] cloud_function_v2: Target a Synthetic Monitor GCFv2 Instance
+               Structure is documented below.
+               
+               
+               <a name="nested_cloud_function_v2"></a>The `cloud_function_v2` block supports:
+        """
+        pulumi.set(__self__, "cloud_function_v2", cloud_function_v2)
+
+    @property
+    @pulumi.getter(name="cloudFunctionV2")
+    def cloud_function_v2(self) -> pulumi.Input['UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args']:
+        """
+        Target a Synthetic Monitor GCFv2 Instance
+        Structure is documented below.
+
+
+        <a name="nested_cloud_function_v2"></a>The `cloud_function_v2` block supports:
+        """
+        return pulumi.get(self, "cloud_function_v2")
+
+    @cloud_function_v2.setter
+    def cloud_function_v2(self, value: pulumi.Input['UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args']):
+        pulumi.set(self, "cloud_function_v2", value)
+
+
+@pulumi.input_type
+class UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] name: The fully qualified name of the cloud function resource.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The fully qualified name of the cloud function resource.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
 
 
 @pulumi.input_type

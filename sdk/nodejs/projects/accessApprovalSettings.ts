@@ -152,9 +152,11 @@ export class AccessApprovalSettings extends pulumi.CustomResource {
     public readonly notificationEmails!: pulumi.Output<string[]>;
     /**
      * (Optional, Deprecated)
-     * Deprecated in favor of `projectId`
+     * Project id.
      *
-     * @deprecated Deprecated in favor of `project_id`
+     * > **Warning:** `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
+     *
+     * @deprecated `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
      */
     public readonly project!: pulumi.Output<string | undefined>;
     /**
@@ -252,9 +254,11 @@ export interface AccessApprovalSettingsState {
     notificationEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * (Optional, Deprecated)
-     * Deprecated in favor of `projectId`
+     * Project id.
      *
-     * @deprecated Deprecated in favor of `project_id`
+     * > **Warning:** `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
+     *
+     * @deprecated `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
      */
     project?: pulumi.Input<string>;
     /**
@@ -289,9 +293,11 @@ export interface AccessApprovalSettingsArgs {
     notificationEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * (Optional, Deprecated)
-     * Deprecated in favor of `projectId`
+     * Project id.
      *
-     * @deprecated Deprecated in favor of `project_id`
+     * > **Warning:** `project` is deprecated and will be removed in a future major release. Use `projectId` instead.
+     *
+     * @deprecated `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
      */
     project?: pulumi.Input<string>;
     /**

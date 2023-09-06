@@ -115,7 +115,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Document can be imported using any of these accepted formats
+ * Document can be imported using any of these accepted formats:
  * 
  * ```sh
  *  $ pulumi import gcp:firestore/document:Document default {{name}}

@@ -32,6 +32,7 @@ type Provider struct {
 	BackupDrCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"backupDrCustomEndpoint"`
 	BeyondcorpCustomEndpoint               pulumi.StringPtrOutput `pulumi:"beyondcorpCustomEndpoint"`
 	BigQueryCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"bigQueryCustomEndpoint"`
+	BiglakeCustomEndpoint                  pulumi.StringPtrOutput `pulumi:"biglakeCustomEndpoint"`
 	BigqueryAnalyticsHubCustomEndpoint     pulumi.StringPtrOutput `pulumi:"bigqueryAnalyticsHubCustomEndpoint"`
 	BigqueryConnectionCustomEndpoint       pulumi.StringPtrOutput `pulumi:"bigqueryConnectionCustomEndpoint"`
 	BigqueryDataTransferCustomEndpoint     pulumi.StringPtrOutput `pulumi:"bigqueryDataTransferCustomEndpoint"`
@@ -208,6 +209,7 @@ type providerArgs struct {
 	Batching                               *ProviderBatching `pulumi:"batching"`
 	BeyondcorpCustomEndpoint               *string           `pulumi:"beyondcorpCustomEndpoint"`
 	BigQueryCustomEndpoint                 *string           `pulumi:"bigQueryCustomEndpoint"`
+	BiglakeCustomEndpoint                  *string           `pulumi:"biglakeCustomEndpoint"`
 	BigqueryAnalyticsHubCustomEndpoint     *string           `pulumi:"bigqueryAnalyticsHubCustomEndpoint"`
 	BigqueryConnectionCustomEndpoint       *string           `pulumi:"bigqueryConnectionCustomEndpoint"`
 	BigqueryDataTransferCustomEndpoint     *string           `pulumi:"bigqueryDataTransferCustomEndpoint"`
@@ -358,6 +360,7 @@ type ProviderArgs struct {
 	Batching                               ProviderBatchingPtrInput
 	BeyondcorpCustomEndpoint               pulumi.StringPtrInput
 	BigQueryCustomEndpoint                 pulumi.StringPtrInput
+	BiglakeCustomEndpoint                  pulumi.StringPtrInput
 	BigqueryAnalyticsHubCustomEndpoint     pulumi.StringPtrInput
 	BigqueryConnectionCustomEndpoint       pulumi.StringPtrInput
 	BigqueryDataTransferCustomEndpoint     pulumi.StringPtrInput
@@ -582,6 +585,10 @@ func (o ProviderOutput) BeyondcorpCustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) BigQueryCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.BigQueryCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) BiglakeCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.BiglakeCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) BigqueryAnalyticsHubCustomEndpoint() pulumi.StringPtrOutput {

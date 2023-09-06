@@ -33,12 +33,28 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &FeatureMembership{}
 	case "gcp:gkehub/membership:Membership":
 		r = &Membership{}
+	case "gcp:gkehub/membershipBinding:MembershipBinding":
+		r = &MembershipBinding{}
 	case "gcp:gkehub/membershipIamBinding:MembershipIamBinding":
 		r = &MembershipIamBinding{}
 	case "gcp:gkehub/membershipIamMember:MembershipIamMember":
 		r = &MembershipIamMember{}
 	case "gcp:gkehub/membershipIamPolicy:MembershipIamPolicy":
 		r = &MembershipIamPolicy{}
+	case "gcp:gkehub/membershipRbacRoleBinding:MembershipRbacRoleBinding":
+		r = &MembershipRbacRoleBinding{}
+	case "gcp:gkehub/namespace:Namespace":
+		r = &Namespace{}
+	case "gcp:gkehub/scope:Scope":
+		r = &Scope{}
+	case "gcp:gkehub/scopeIamBinding:ScopeIamBinding":
+		r = &ScopeIamBinding{}
+	case "gcp:gkehub/scopeIamMember:ScopeIamMember":
+		r = &ScopeIamMember{}
+	case "gcp:gkehub/scopeIamPolicy:ScopeIamPolicy":
+		r = &ScopeIamPolicy{}
+	case "gcp:gkehub/scopeRbacRoleBinding:ScopeRbacRoleBinding":
+		r = &ScopeRbacRoleBinding{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -84,6 +100,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"gkehub/membershipBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"gkehub/membershipIamBinding",
 		&module{version},
 	)
@@ -95,6 +116,41 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"gkehub/membershipIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"gkehub/membershipRbacRoleBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"gkehub/namespace",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"gkehub/scope",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"gkehub/scopeIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"gkehub/scopeIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"gkehub/scopeIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"gkehub/scopeRbacRoleBinding",
 		&module{version},
 	)
 }

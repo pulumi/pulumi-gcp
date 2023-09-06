@@ -40,10 +40,20 @@ export const getMembershipIamPolicy: typeof import("./getMembershipIamPolicy").g
 export const getMembershipIamPolicyOutput: typeof import("./getMembershipIamPolicy").getMembershipIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getMembershipIamPolicy","getMembershipIamPolicyOutput"], () => require("./getMembershipIamPolicy"));
 
+export { GetScopeIamPolicyArgs, GetScopeIamPolicyResult, GetScopeIamPolicyOutputArgs } from "./getScopeIamPolicy";
+export const getScopeIamPolicy: typeof import("./getScopeIamPolicy").getScopeIamPolicy = null as any;
+export const getScopeIamPolicyOutput: typeof import("./getScopeIamPolicy").getScopeIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getScopeIamPolicy","getScopeIamPolicyOutput"], () => require("./getScopeIamPolicy"));
+
 export { MembershipArgs, MembershipState } from "./membership";
 export type Membership = import("./membership").Membership;
 export const Membership: typeof import("./membership").Membership = null as any;
 utilities.lazyLoad(exports, ["Membership"], () => require("./membership"));
+
+export { MembershipBindingArgs, MembershipBindingState } from "./membershipBinding";
+export type MembershipBinding = import("./membershipBinding").MembershipBinding;
+export const MembershipBinding: typeof import("./membershipBinding").MembershipBinding = null as any;
+utilities.lazyLoad(exports, ["MembershipBinding"], () => require("./membershipBinding"));
 
 export { MembershipIamBindingArgs, MembershipIamBindingState } from "./membershipIamBinding";
 export type MembershipIamBinding = import("./membershipIamBinding").MembershipIamBinding;
@@ -59,6 +69,41 @@ export { MembershipIamPolicyArgs, MembershipIamPolicyState } from "./membershipI
 export type MembershipIamPolicy = import("./membershipIamPolicy").MembershipIamPolicy;
 export const MembershipIamPolicy: typeof import("./membershipIamPolicy").MembershipIamPolicy = null as any;
 utilities.lazyLoad(exports, ["MembershipIamPolicy"], () => require("./membershipIamPolicy"));
+
+export { MembershipRbacRoleBindingArgs, MembershipRbacRoleBindingState } from "./membershipRbacRoleBinding";
+export type MembershipRbacRoleBinding = import("./membershipRbacRoleBinding").MembershipRbacRoleBinding;
+export const MembershipRbacRoleBinding: typeof import("./membershipRbacRoleBinding").MembershipRbacRoleBinding = null as any;
+utilities.lazyLoad(exports, ["MembershipRbacRoleBinding"], () => require("./membershipRbacRoleBinding"));
+
+export { NamespaceArgs, NamespaceState } from "./namespace";
+export type Namespace = import("./namespace").Namespace;
+export const Namespace: typeof import("./namespace").Namespace = null as any;
+utilities.lazyLoad(exports, ["Namespace"], () => require("./namespace"));
+
+export { ScopeArgs, ScopeState } from "./scope";
+export type Scope = import("./scope").Scope;
+export const Scope: typeof import("./scope").Scope = null as any;
+utilities.lazyLoad(exports, ["Scope"], () => require("./scope"));
+
+export { ScopeIamBindingArgs, ScopeIamBindingState } from "./scopeIamBinding";
+export type ScopeIamBinding = import("./scopeIamBinding").ScopeIamBinding;
+export const ScopeIamBinding: typeof import("./scopeIamBinding").ScopeIamBinding = null as any;
+utilities.lazyLoad(exports, ["ScopeIamBinding"], () => require("./scopeIamBinding"));
+
+export { ScopeIamMemberArgs, ScopeIamMemberState } from "./scopeIamMember";
+export type ScopeIamMember = import("./scopeIamMember").ScopeIamMember;
+export const ScopeIamMember: typeof import("./scopeIamMember").ScopeIamMember = null as any;
+utilities.lazyLoad(exports, ["ScopeIamMember"], () => require("./scopeIamMember"));
+
+export { ScopeIamPolicyArgs, ScopeIamPolicyState } from "./scopeIamPolicy";
+export type ScopeIamPolicy = import("./scopeIamPolicy").ScopeIamPolicy;
+export const ScopeIamPolicy: typeof import("./scopeIamPolicy").ScopeIamPolicy = null as any;
+utilities.lazyLoad(exports, ["ScopeIamPolicy"], () => require("./scopeIamPolicy"));
+
+export { ScopeRbacRoleBindingArgs, ScopeRbacRoleBindingState } from "./scopeRbacRoleBinding";
+export type ScopeRbacRoleBinding = import("./scopeRbacRoleBinding").ScopeRbacRoleBinding;
+export const ScopeRbacRoleBinding: typeof import("./scopeRbacRoleBinding").ScopeRbacRoleBinding = null as any;
+utilities.lazyLoad(exports, ["ScopeRbacRoleBinding"], () => require("./scopeRbacRoleBinding"));
 
 
 const _module = {
@@ -77,12 +122,28 @@ const _module = {
                 return new FeatureMembership(name, <any>undefined, { urn })
             case "gcp:gkehub/membership:Membership":
                 return new Membership(name, <any>undefined, { urn })
+            case "gcp:gkehub/membershipBinding:MembershipBinding":
+                return new MembershipBinding(name, <any>undefined, { urn })
             case "gcp:gkehub/membershipIamBinding:MembershipIamBinding":
                 return new MembershipIamBinding(name, <any>undefined, { urn })
             case "gcp:gkehub/membershipIamMember:MembershipIamMember":
                 return new MembershipIamMember(name, <any>undefined, { urn })
             case "gcp:gkehub/membershipIamPolicy:MembershipIamPolicy":
                 return new MembershipIamPolicy(name, <any>undefined, { urn })
+            case "gcp:gkehub/membershipRbacRoleBinding:MembershipRbacRoleBinding":
+                return new MembershipRbacRoleBinding(name, <any>undefined, { urn })
+            case "gcp:gkehub/namespace:Namespace":
+                return new Namespace(name, <any>undefined, { urn })
+            case "gcp:gkehub/scope:Scope":
+                return new Scope(name, <any>undefined, { urn })
+            case "gcp:gkehub/scopeIamBinding:ScopeIamBinding":
+                return new ScopeIamBinding(name, <any>undefined, { urn })
+            case "gcp:gkehub/scopeIamMember:ScopeIamMember":
+                return new ScopeIamMember(name, <any>undefined, { urn })
+            case "gcp:gkehub/scopeIamPolicy:ScopeIamPolicy":
+                return new ScopeIamPolicy(name, <any>undefined, { urn })
+            case "gcp:gkehub/scopeRbacRoleBinding:ScopeRbacRoleBinding":
+                return new ScopeRbacRoleBinding(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -94,6 +155,14 @@ pulumi.runtime.registerResourceModule("gcp", "gkehub/featureIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "gkehub/featureIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "gkehub/featureMembership", _module)
 pulumi.runtime.registerResourceModule("gcp", "gkehub/membership", _module)
+pulumi.runtime.registerResourceModule("gcp", "gkehub/membershipBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "gkehub/membershipIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "gkehub/membershipIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "gkehub/membershipIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "gkehub/membershipRbacRoleBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "gkehub/namespace", _module)
+pulumi.runtime.registerResourceModule("gcp", "gkehub/scope", _module)
+pulumi.runtime.registerResourceModule("gcp", "gkehub/scopeIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "gkehub/scopeIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "gkehub/scopeIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "gkehub/scopeRbacRoleBinding", _module)

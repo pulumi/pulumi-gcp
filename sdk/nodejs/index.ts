@@ -24,6 +24,7 @@ import * as artifactregistry from "./artifactregistry";
 import * as assuredworkloads from "./assuredworkloads";
 import * as backupdisasterrecovery from "./backupdisasterrecovery";
 import * as beyondcorp from "./beyondcorp";
+import * as biglake from "./biglake";
 import * as bigquery from "./bigquery";
 import * as bigqueryanalyticshub from "./bigqueryanalyticshub";
 import * as bigquerydatapolicy from "./bigquerydatapolicy";
@@ -131,6 +132,7 @@ export {
     assuredworkloads,
     backupdisasterrecovery,
     beyondcorp,
+    biglake,
     bigquery,
     bigqueryanalyticshub,
     bigquerydatapolicy,

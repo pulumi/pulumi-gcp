@@ -1270,7 +1270,7 @@ func (o ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArrayOutput) Index(i 
 }
 
 type ClusterBackupSource struct {
-	// The name of the backup resource.
+	// The name of the backup that this cluster is restored from.
 	BackupName *string `pulumi:"backupName"`
 }
 
@@ -1286,7 +1286,7 @@ type ClusterBackupSourceInput interface {
 }
 
 type ClusterBackupSourceArgs struct {
-	// The name of the backup resource.
+	// The name of the backup that this cluster is restored from.
 	BackupName pulumi.StringPtrInput `pulumi:"backupName"`
 }
 
@@ -1341,7 +1341,7 @@ func (o ClusterBackupSourceOutput) ToClusterBackupSourceOutputWithContext(ctx co
 	return o
 }
 
-// The name of the backup resource.
+// The name of the backup that this cluster is restored from.
 func (o ClusterBackupSourceOutput) BackupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterBackupSource) *string { return v.BackupName }).(pulumi.StringPtrOutput)
 }
@@ -2465,6 +2465,299 @@ func (o ClusterMigrationSourceArrayOutput) Index(i pulumi.IntInput) ClusterMigra
 	}).(ClusterMigrationSourceOutput)
 }
 
+type ClusterRestoreBackupSource struct {
+	// The name of the backup that this cluster is restored from.
+	BackupName string `pulumi:"backupName"`
+}
+
+// ClusterRestoreBackupSourceInput is an input type that accepts ClusterRestoreBackupSourceArgs and ClusterRestoreBackupSourceOutput values.
+// You can construct a concrete instance of `ClusterRestoreBackupSourceInput` via:
+//
+//	ClusterRestoreBackupSourceArgs{...}
+type ClusterRestoreBackupSourceInput interface {
+	pulumi.Input
+
+	ToClusterRestoreBackupSourceOutput() ClusterRestoreBackupSourceOutput
+	ToClusterRestoreBackupSourceOutputWithContext(context.Context) ClusterRestoreBackupSourceOutput
+}
+
+type ClusterRestoreBackupSourceArgs struct {
+	// The name of the backup that this cluster is restored from.
+	BackupName pulumi.StringInput `pulumi:"backupName"`
+}
+
+func (ClusterRestoreBackupSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterRestoreBackupSource)(nil)).Elem()
+}
+
+func (i ClusterRestoreBackupSourceArgs) ToClusterRestoreBackupSourceOutput() ClusterRestoreBackupSourceOutput {
+	return i.ToClusterRestoreBackupSourceOutputWithContext(context.Background())
+}
+
+func (i ClusterRestoreBackupSourceArgs) ToClusterRestoreBackupSourceOutputWithContext(ctx context.Context) ClusterRestoreBackupSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRestoreBackupSourceOutput)
+}
+
+func (i ClusterRestoreBackupSourceArgs) ToClusterRestoreBackupSourcePtrOutput() ClusterRestoreBackupSourcePtrOutput {
+	return i.ToClusterRestoreBackupSourcePtrOutputWithContext(context.Background())
+}
+
+func (i ClusterRestoreBackupSourceArgs) ToClusterRestoreBackupSourcePtrOutputWithContext(ctx context.Context) ClusterRestoreBackupSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRestoreBackupSourceOutput).ToClusterRestoreBackupSourcePtrOutputWithContext(ctx)
+}
+
+// ClusterRestoreBackupSourcePtrInput is an input type that accepts ClusterRestoreBackupSourceArgs, ClusterRestoreBackupSourcePtr and ClusterRestoreBackupSourcePtrOutput values.
+// You can construct a concrete instance of `ClusterRestoreBackupSourcePtrInput` via:
+//
+//	        ClusterRestoreBackupSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterRestoreBackupSourcePtrInput interface {
+	pulumi.Input
+
+	ToClusterRestoreBackupSourcePtrOutput() ClusterRestoreBackupSourcePtrOutput
+	ToClusterRestoreBackupSourcePtrOutputWithContext(context.Context) ClusterRestoreBackupSourcePtrOutput
+}
+
+type clusterRestoreBackupSourcePtrType ClusterRestoreBackupSourceArgs
+
+func ClusterRestoreBackupSourcePtr(v *ClusterRestoreBackupSourceArgs) ClusterRestoreBackupSourcePtrInput {
+	return (*clusterRestoreBackupSourcePtrType)(v)
+}
+
+func (*clusterRestoreBackupSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterRestoreBackupSource)(nil)).Elem()
+}
+
+func (i *clusterRestoreBackupSourcePtrType) ToClusterRestoreBackupSourcePtrOutput() ClusterRestoreBackupSourcePtrOutput {
+	return i.ToClusterRestoreBackupSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *clusterRestoreBackupSourcePtrType) ToClusterRestoreBackupSourcePtrOutputWithContext(ctx context.Context) ClusterRestoreBackupSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRestoreBackupSourcePtrOutput)
+}
+
+type ClusterRestoreBackupSourceOutput struct{ *pulumi.OutputState }
+
+func (ClusterRestoreBackupSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterRestoreBackupSource)(nil)).Elem()
+}
+
+func (o ClusterRestoreBackupSourceOutput) ToClusterRestoreBackupSourceOutput() ClusterRestoreBackupSourceOutput {
+	return o
+}
+
+func (o ClusterRestoreBackupSourceOutput) ToClusterRestoreBackupSourceOutputWithContext(ctx context.Context) ClusterRestoreBackupSourceOutput {
+	return o
+}
+
+func (o ClusterRestoreBackupSourceOutput) ToClusterRestoreBackupSourcePtrOutput() ClusterRestoreBackupSourcePtrOutput {
+	return o.ToClusterRestoreBackupSourcePtrOutputWithContext(context.Background())
+}
+
+func (o ClusterRestoreBackupSourceOutput) ToClusterRestoreBackupSourcePtrOutputWithContext(ctx context.Context) ClusterRestoreBackupSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterRestoreBackupSource) *ClusterRestoreBackupSource {
+		return &v
+	}).(ClusterRestoreBackupSourcePtrOutput)
+}
+
+// The name of the backup that this cluster is restored from.
+func (o ClusterRestoreBackupSourceOutput) BackupName() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterRestoreBackupSource) string { return v.BackupName }).(pulumi.StringOutput)
+}
+
+type ClusterRestoreBackupSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterRestoreBackupSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterRestoreBackupSource)(nil)).Elem()
+}
+
+func (o ClusterRestoreBackupSourcePtrOutput) ToClusterRestoreBackupSourcePtrOutput() ClusterRestoreBackupSourcePtrOutput {
+	return o
+}
+
+func (o ClusterRestoreBackupSourcePtrOutput) ToClusterRestoreBackupSourcePtrOutputWithContext(ctx context.Context) ClusterRestoreBackupSourcePtrOutput {
+	return o
+}
+
+func (o ClusterRestoreBackupSourcePtrOutput) Elem() ClusterRestoreBackupSourceOutput {
+	return o.ApplyT(func(v *ClusterRestoreBackupSource) ClusterRestoreBackupSource {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterRestoreBackupSource
+		return ret
+	}).(ClusterRestoreBackupSourceOutput)
+}
+
+// The name of the backup that this cluster is restored from.
+func (o ClusterRestoreBackupSourcePtrOutput) BackupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterRestoreBackupSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BackupName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterRestoreContinuousBackupSource struct {
+	// The name of the source cluster that this cluster is restored from.
+	Cluster string `pulumi:"cluster"`
+	// The point in time that this cluster is restored to, in RFC 3339 format.
+	PointInTime string `pulumi:"pointInTime"`
+}
+
+// ClusterRestoreContinuousBackupSourceInput is an input type that accepts ClusterRestoreContinuousBackupSourceArgs and ClusterRestoreContinuousBackupSourceOutput values.
+// You can construct a concrete instance of `ClusterRestoreContinuousBackupSourceInput` via:
+//
+//	ClusterRestoreContinuousBackupSourceArgs{...}
+type ClusterRestoreContinuousBackupSourceInput interface {
+	pulumi.Input
+
+	ToClusterRestoreContinuousBackupSourceOutput() ClusterRestoreContinuousBackupSourceOutput
+	ToClusterRestoreContinuousBackupSourceOutputWithContext(context.Context) ClusterRestoreContinuousBackupSourceOutput
+}
+
+type ClusterRestoreContinuousBackupSourceArgs struct {
+	// The name of the source cluster that this cluster is restored from.
+	Cluster pulumi.StringInput `pulumi:"cluster"`
+	// The point in time that this cluster is restored to, in RFC 3339 format.
+	PointInTime pulumi.StringInput `pulumi:"pointInTime"`
+}
+
+func (ClusterRestoreContinuousBackupSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterRestoreContinuousBackupSource)(nil)).Elem()
+}
+
+func (i ClusterRestoreContinuousBackupSourceArgs) ToClusterRestoreContinuousBackupSourceOutput() ClusterRestoreContinuousBackupSourceOutput {
+	return i.ToClusterRestoreContinuousBackupSourceOutputWithContext(context.Background())
+}
+
+func (i ClusterRestoreContinuousBackupSourceArgs) ToClusterRestoreContinuousBackupSourceOutputWithContext(ctx context.Context) ClusterRestoreContinuousBackupSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRestoreContinuousBackupSourceOutput)
+}
+
+func (i ClusterRestoreContinuousBackupSourceArgs) ToClusterRestoreContinuousBackupSourcePtrOutput() ClusterRestoreContinuousBackupSourcePtrOutput {
+	return i.ToClusterRestoreContinuousBackupSourcePtrOutputWithContext(context.Background())
+}
+
+func (i ClusterRestoreContinuousBackupSourceArgs) ToClusterRestoreContinuousBackupSourcePtrOutputWithContext(ctx context.Context) ClusterRestoreContinuousBackupSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRestoreContinuousBackupSourceOutput).ToClusterRestoreContinuousBackupSourcePtrOutputWithContext(ctx)
+}
+
+// ClusterRestoreContinuousBackupSourcePtrInput is an input type that accepts ClusterRestoreContinuousBackupSourceArgs, ClusterRestoreContinuousBackupSourcePtr and ClusterRestoreContinuousBackupSourcePtrOutput values.
+// You can construct a concrete instance of `ClusterRestoreContinuousBackupSourcePtrInput` via:
+//
+//	        ClusterRestoreContinuousBackupSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterRestoreContinuousBackupSourcePtrInput interface {
+	pulumi.Input
+
+	ToClusterRestoreContinuousBackupSourcePtrOutput() ClusterRestoreContinuousBackupSourcePtrOutput
+	ToClusterRestoreContinuousBackupSourcePtrOutputWithContext(context.Context) ClusterRestoreContinuousBackupSourcePtrOutput
+}
+
+type clusterRestoreContinuousBackupSourcePtrType ClusterRestoreContinuousBackupSourceArgs
+
+func ClusterRestoreContinuousBackupSourcePtr(v *ClusterRestoreContinuousBackupSourceArgs) ClusterRestoreContinuousBackupSourcePtrInput {
+	return (*clusterRestoreContinuousBackupSourcePtrType)(v)
+}
+
+func (*clusterRestoreContinuousBackupSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterRestoreContinuousBackupSource)(nil)).Elem()
+}
+
+func (i *clusterRestoreContinuousBackupSourcePtrType) ToClusterRestoreContinuousBackupSourcePtrOutput() ClusterRestoreContinuousBackupSourcePtrOutput {
+	return i.ToClusterRestoreContinuousBackupSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *clusterRestoreContinuousBackupSourcePtrType) ToClusterRestoreContinuousBackupSourcePtrOutputWithContext(ctx context.Context) ClusterRestoreContinuousBackupSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterRestoreContinuousBackupSourcePtrOutput)
+}
+
+type ClusterRestoreContinuousBackupSourceOutput struct{ *pulumi.OutputState }
+
+func (ClusterRestoreContinuousBackupSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterRestoreContinuousBackupSource)(nil)).Elem()
+}
+
+func (o ClusterRestoreContinuousBackupSourceOutput) ToClusterRestoreContinuousBackupSourceOutput() ClusterRestoreContinuousBackupSourceOutput {
+	return o
+}
+
+func (o ClusterRestoreContinuousBackupSourceOutput) ToClusterRestoreContinuousBackupSourceOutputWithContext(ctx context.Context) ClusterRestoreContinuousBackupSourceOutput {
+	return o
+}
+
+func (o ClusterRestoreContinuousBackupSourceOutput) ToClusterRestoreContinuousBackupSourcePtrOutput() ClusterRestoreContinuousBackupSourcePtrOutput {
+	return o.ToClusterRestoreContinuousBackupSourcePtrOutputWithContext(context.Background())
+}
+
+func (o ClusterRestoreContinuousBackupSourceOutput) ToClusterRestoreContinuousBackupSourcePtrOutputWithContext(ctx context.Context) ClusterRestoreContinuousBackupSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterRestoreContinuousBackupSource) *ClusterRestoreContinuousBackupSource {
+		return &v
+	}).(ClusterRestoreContinuousBackupSourcePtrOutput)
+}
+
+// The name of the source cluster that this cluster is restored from.
+func (o ClusterRestoreContinuousBackupSourceOutput) Cluster() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterRestoreContinuousBackupSource) string { return v.Cluster }).(pulumi.StringOutput)
+}
+
+// The point in time that this cluster is restored to, in RFC 3339 format.
+func (o ClusterRestoreContinuousBackupSourceOutput) PointInTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterRestoreContinuousBackupSource) string { return v.PointInTime }).(pulumi.StringOutput)
+}
+
+type ClusterRestoreContinuousBackupSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterRestoreContinuousBackupSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterRestoreContinuousBackupSource)(nil)).Elem()
+}
+
+func (o ClusterRestoreContinuousBackupSourcePtrOutput) ToClusterRestoreContinuousBackupSourcePtrOutput() ClusterRestoreContinuousBackupSourcePtrOutput {
+	return o
+}
+
+func (o ClusterRestoreContinuousBackupSourcePtrOutput) ToClusterRestoreContinuousBackupSourcePtrOutputWithContext(ctx context.Context) ClusterRestoreContinuousBackupSourcePtrOutput {
+	return o
+}
+
+func (o ClusterRestoreContinuousBackupSourcePtrOutput) Elem() ClusterRestoreContinuousBackupSourceOutput {
+	return o.ApplyT(func(v *ClusterRestoreContinuousBackupSource) ClusterRestoreContinuousBackupSource {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterRestoreContinuousBackupSource
+		return ret
+	}).(ClusterRestoreContinuousBackupSourceOutput)
+}
+
+// The name of the source cluster that this cluster is restored from.
+func (o ClusterRestoreContinuousBackupSourcePtrOutput) Cluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterRestoreContinuousBackupSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Cluster
+	}).(pulumi.StringPtrOutput)
+}
+
+// The point in time that this cluster is restored to, in RFC 3339 format.
+func (o ClusterRestoreContinuousBackupSourcePtrOutput) PointInTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterRestoreContinuousBackupSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PointInTime
+	}).(pulumi.StringPtrOutput)
+}
+
 type InstanceMachineConfig struct {
 	// The number of CPU's in the VM instance.
 	CpuCount *int `pulumi:"cpuCount"`
@@ -3177,6 +3470,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterInitialUserPtrInput)(nil)).Elem(), ClusterInitialUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMigrationSourceInput)(nil)).Elem(), ClusterMigrationSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMigrationSourceArrayInput)(nil)).Elem(), ClusterMigrationSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterRestoreBackupSourceInput)(nil)).Elem(), ClusterRestoreBackupSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterRestoreBackupSourcePtrInput)(nil)).Elem(), ClusterRestoreBackupSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterRestoreContinuousBackupSourceInput)(nil)).Elem(), ClusterRestoreContinuousBackupSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterRestoreContinuousBackupSourcePtrInput)(nil)).Elem(), ClusterRestoreContinuousBackupSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMachineConfigInput)(nil)).Elem(), InstanceMachineConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMachineConfigPtrInput)(nil)).Elem(), InstanceMachineConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceReadPoolConfigInput)(nil)).Elem(), InstanceReadPoolConfigArgs{})
@@ -3221,6 +3518,10 @@ func init() {
 	pulumi.RegisterOutputType(ClusterInitialUserPtrOutput{})
 	pulumi.RegisterOutputType(ClusterMigrationSourceOutput{})
 	pulumi.RegisterOutputType(ClusterMigrationSourceArrayOutput{})
+	pulumi.RegisterOutputType(ClusterRestoreBackupSourceOutput{})
+	pulumi.RegisterOutputType(ClusterRestoreBackupSourcePtrOutput{})
+	pulumi.RegisterOutputType(ClusterRestoreContinuousBackupSourceOutput{})
+	pulumi.RegisterOutputType(ClusterRestoreContinuousBackupSourcePtrOutput{})
 	pulumi.RegisterOutputType(InstanceMachineConfigOutput{})
 	pulumi.RegisterOutputType(InstanceMachineConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceReadPoolConfigOutput{})

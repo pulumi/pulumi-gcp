@@ -130,7 +130,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * AddressGroup can be imported using any of these accepted formats
+ * AddressGroup can be imported using any of these accepted formats:
  * 
  * ```sh
  *  $ pulumi import gcp:networksecurity/addressGroup:AddressGroup default {{parent}}/locations/{{location}}/addressGroups/{{name}}

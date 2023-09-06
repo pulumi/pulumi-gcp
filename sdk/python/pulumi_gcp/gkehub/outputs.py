@@ -32,10 +32,19 @@ __all__ = [
     'FeatureState',
     'FeatureStateState',
     'MembershipAuthority',
+    'MembershipBindingState',
     'MembershipEndpoint',
     'MembershipEndpointGkeCluster',
     'MembershipIamBindingCondition',
     'MembershipIamMemberCondition',
+    'MembershipRbacRoleBindingRole',
+    'MembershipRbacRoleBindingState',
+    'NamespaceState',
+    'ScopeIamBindingCondition',
+    'ScopeIamMemberCondition',
+    'ScopeRbacRoleBindingRole',
+    'ScopeRbacRoleBindingState',
+    'ScopeState',
 ]
 
 @pulumi.output_type
@@ -1115,6 +1124,27 @@ class MembershipAuthority(dict):
 
 
 @pulumi.output_type
+class MembershipBindingState(dict):
+    def __init__(__self__, *,
+                 code: Optional[str] = None):
+        """
+        :param str code: (Output)
+               Code describes the state of a MembershipBinding resource.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[str]:
+        """
+        (Output)
+        Code describes the state of a MembershipBinding resource.
+        """
+        return pulumi.get(self, "code")
+
+
+@pulumi.output_type
 class MembershipEndpoint(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -1233,5 +1263,226 @@ class MembershipIamMemberCondition(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class MembershipRbacRoleBindingRole(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "predefinedRole":
+            suggest = "predefined_role"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MembershipRbacRoleBindingRole. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MembershipRbacRoleBindingRole.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MembershipRbacRoleBindingRole.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 predefined_role: str):
+        """
+        :param str predefined_role: PredefinedRole is an ENUM representation of the default Kubernetes Roles
+               Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`, `ANTHOS_SUPPORT`.
+               
+               - - -
+        """
+        pulumi.set(__self__, "predefined_role", predefined_role)
+
+    @property
+    @pulumi.getter(name="predefinedRole")
+    def predefined_role(self) -> str:
+        """
+        PredefinedRole is an ENUM representation of the default Kubernetes Roles
+        Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`, `ANTHOS_SUPPORT`.
+
+        - - -
+        """
+        return pulumi.get(self, "predefined_role")
+
+
+@pulumi.output_type
+class MembershipRbacRoleBindingState(dict):
+    def __init__(__self__, *,
+                 code: Optional[str] = None):
+        """
+        :param str code: (Output)
+               Code describes the state of a RBAC Role Binding resource.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[str]:
+        """
+        (Output)
+        Code describes the state of a RBAC Role Binding resource.
+        """
+        return pulumi.get(self, "code")
+
+
+@pulumi.output_type
+class NamespaceState(dict):
+    def __init__(__self__, *,
+                 code: Optional[str] = None):
+        """
+        :param str code: (Output)
+               Code describes the state of a Namespace resource.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[str]:
+        """
+        (Output)
+        Code describes the state of a Namespace resource.
+        """
+        return pulumi.get(self, "code")
+
+
+@pulumi.output_type
+class ScopeIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class ScopeIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class ScopeRbacRoleBindingRole(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "predefinedRole":
+            suggest = "predefined_role"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ScopeRbacRoleBindingRole. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ScopeRbacRoleBindingRole.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ScopeRbacRoleBindingRole.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 predefined_role: Optional[str] = None):
+        """
+        :param str predefined_role: PredefinedRole is an ENUM representation of the default Kubernetes Roles
+               Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
+               
+               - - -
+        """
+        if predefined_role is not None:
+            pulumi.set(__self__, "predefined_role", predefined_role)
+
+    @property
+    @pulumi.getter(name="predefinedRole")
+    def predefined_role(self) -> Optional[str]:
+        """
+        PredefinedRole is an ENUM representation of the default Kubernetes Roles
+        Possible values are: `UNKNOWN`, `ADMIN`, `EDIT`, `VIEW`.
+
+        - - -
+        """
+        return pulumi.get(self, "predefined_role")
+
+
+@pulumi.output_type
+class ScopeRbacRoleBindingState(dict):
+    def __init__(__self__, *,
+                 code: Optional[str] = None):
+        """
+        :param str code: (Output)
+               Code describes the state of a RBAC Role Binding resource.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[str]:
+        """
+        (Output)
+        Code describes the state of a RBAC Role Binding resource.
+        """
+        return pulumi.get(self, "code")
+
+
+@pulumi.output_type
+class ScopeState(dict):
+    def __init__(__self__, *,
+                 code: Optional[str] = None):
+        """
+        :param str code: (Output)
+               Code describes the state of a Scope resource.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[str]:
+        """
+        (Output)
+        Code describes the state of a Scope resource.
+        """
+        return pulumi.get(self, "code")
 
 

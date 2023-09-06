@@ -43,8 +43,9 @@ class RegionTargetHttpsProxyArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The Region in which the created target https proxy should reside.
                If it is not provided, the provider region is used.
-        :param pulumi.Input[str] ssl_policy: A reference to the Region SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the
-               TargetHttpsProxy resource will not have any SSL policy configured.
+        :param pulumi.Input[str] ssl_policy: A reference to the Region SslPolicy resource that will be associated with
+               the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
+               resource will not have any SSL policy configured.
         """
         pulumi.set(__self__, "ssl_certificates", ssl_certificates)
         pulumi.set(__self__, "url_map", url_map)
@@ -149,8 +150,9 @@ class RegionTargetHttpsProxyArgs:
     @pulumi.getter(name="sslPolicy")
     def ssl_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        A reference to the Region SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the
-        TargetHttpsProxy resource will not have any SSL policy configured.
+        A reference to the Region SslPolicy resource that will be associated with
+        the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
+        resource will not have any SSL policy configured.
         """
         return pulumi.get(self, "ssl_policy")
 
@@ -192,8 +194,9 @@ class _RegionTargetHttpsProxyState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssl_certificates: A list of RegionSslCertificate resources that are used to authenticate
                connections between users and the load balancer. Currently, exactly
                one SSL certificate must be specified.
-        :param pulumi.Input[str] ssl_policy: A reference to the Region SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the
-               TargetHttpsProxy resource will not have any SSL policy configured.
+        :param pulumi.Input[str] ssl_policy: A reference to the Region SslPolicy resource that will be associated with
+               the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
+               resource will not have any SSL policy configured.
         :param pulumi.Input[str] url_map: A reference to the RegionUrlMap resource that defines the mapping from URL
                to the RegionBackendService.
                
@@ -331,8 +334,9 @@ class _RegionTargetHttpsProxyState:
     @pulumi.getter(name="sslPolicy")
     def ssl_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        A reference to the Region SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the
-        TargetHttpsProxy resource will not have any SSL policy configured.
+        A reference to the Region SslPolicy resource that will be associated with
+        the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
+        resource will not have any SSL policy configured.
         """
         return pulumi.get(self, "ssl_policy")
 
@@ -419,8 +423,9 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssl_certificates: A list of RegionSslCertificate resources that are used to authenticate
                connections between users and the load balancer. Currently, exactly
                one SSL certificate must be specified.
-        :param pulumi.Input[str] ssl_policy: A reference to the Region SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the
-               TargetHttpsProxy resource will not have any SSL policy configured.
+        :param pulumi.Input[str] ssl_policy: A reference to the Region SslPolicy resource that will be associated with
+               the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
+               resource will not have any SSL policy configured.
         :param pulumi.Input[str] url_map: A reference to the RegionUrlMap resource that defines the mapping from URL
                to the RegionBackendService.
                
@@ -555,8 +560,9 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssl_certificates: A list of RegionSslCertificate resources that are used to authenticate
                connections between users and the load balancer. Currently, exactly
                one SSL certificate must be specified.
-        :param pulumi.Input[str] ssl_policy: A reference to the Region SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the
-               TargetHttpsProxy resource will not have any SSL policy configured.
+        :param pulumi.Input[str] ssl_policy: A reference to the Region SslPolicy resource that will be associated with
+               the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
+               resource will not have any SSL policy configured.
         :param pulumi.Input[str] url_map: A reference to the RegionUrlMap resource that defines the mapping from URL
                to the RegionBackendService.
                
@@ -657,8 +663,9 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
     @pulumi.getter(name="sslPolicy")
     def ssl_policy(self) -> pulumi.Output[Optional[str]]:
         """
-        A reference to the Region SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the
-        TargetHttpsProxy resource will not have any SSL policy configured.
+        A reference to the Region SslPolicy resource that will be associated with
+        the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
+        resource will not have any SSL policy configured.
         """
         return pulumi.get(self, "ssl_policy")
 

@@ -45,7 +45,7 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported using the following format
+    /// This resource can be imported using the following format:
     /// 
     /// ```sh
     ///  $ pulumi import gcp:logging/folderBucketConfig:FolderBucketConfig default folders/{{folder}}/locations/{{location}}/buckets/{{bucket_id}}

@@ -36,7 +36,7 @@ namespace Pulumi.Gcp.DataPlex
     ///             Resource = "//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare",
     ///         },
     ///         DataProfileSpec = null,
-    ///         DataScanId = "tf-test-datascan%{random_suffix}",
+    ///         DataScanId = "dataprofile-basic",
     ///         ExecutionSpec = new Gcp.DataPlex.Inputs.DatascanExecutionSpecArgs
     ///         {
     ///             Trigger = new Gcp.DataPlex.Inputs.DatascanExecutionSpecTriggerArgs
@@ -60,20 +60,29 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var source = new Gcp.BigQuery.Dataset("source", new()
+    ///     {
+    ///         DatasetId = "dataplex_dataset",
+    ///         FriendlyName = "test",
+    ///         Description = "This is a test description",
+    ///         Location = "US",
+    ///         DeleteContentsOnDestroy = true,
+    ///     });
+    /// 
     ///     var fullProfile = new Gcp.DataPlex.Datascan("fullProfile", new()
     ///     {
+    ///         Location = "us-central1",
+    ///         DisplayName = "Full Datascan Profile",
+    ///         DataScanId = "dataprofile-full",
+    ///         Description = "Example resource - Full Datascan Profile",
+    ///         Labels = 
+    ///         {
+    ///             { "author", "billing" },
+    ///         },
     ///         Data = new Gcp.DataPlex.Inputs.DatascanDataArgs
     ///         {
     ///             Resource = "//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare",
     ///         },
-    ///         DataProfileSpec = new Gcp.DataPlex.Inputs.DatascanDataProfileSpecArgs
-    ///         {
-    ///             RowFilter = "word_count &gt; 10",
-    ///             SamplingPercent = 80,
-    ///         },
-    ///         DataScanId = "tf-test-datascan%{random_suffix}",
-    ///         Description = "Example resource - Full Datascan Profile",
-    ///         DisplayName = "Full Datascan Profile",
     ///         ExecutionSpec = new Gcp.DataPlex.Inputs.DatascanExecutionSpecArgs
     ///         {
     ///             Trigger = new Gcp.DataPlex.Inputs.DatascanExecutionSpecTriggerArgs
@@ -84,12 +93,39 @@ namespace Pulumi.Gcp.DataPlex
     ///                 },
     ///             },
     ///         },
-    ///         Labels = 
+    ///         DataProfileSpec = new Gcp.DataPlex.Inputs.DatascanDataProfileSpecArgs
     ///         {
-    ///             { "author", "billing" },
+    ///             SamplingPercent = 80,
+    ///             RowFilter = "word_count &gt; 10",
+    ///             IncludeFields = new Gcp.DataPlex.Inputs.DatascanDataProfileSpecIncludeFieldsArgs
+    ///             {
+    ///                 FieldNames = new[]
+    ///                 {
+    ///                     "word_count",
+    ///                 },
+    ///             },
+    ///             ExcludeFields = new Gcp.DataPlex.Inputs.DatascanDataProfileSpecExcludeFieldsArgs
+    ///             {
+    ///                 FieldNames = new[]
+    ///                 {
+    ///                     "property_type",
+    ///                 },
+    ///             },
+    ///             PostScanActions = new Gcp.DataPlex.Inputs.DatascanDataProfileSpecPostScanActionsArgs
+    ///             {
+    ///                 BigqueryExport = new Gcp.DataPlex.Inputs.DatascanDataProfileSpecPostScanActionsBigqueryExportArgs
+    ///                 {
+    ///                     ResultsTable = "//bigquery.googleapis.com/projects/my-project-name/datasets/dataplex_dataset/tables/profile_export",
+    ///                 },
+    ///             },
     ///         },
-    ///         Location = "us-central1",
     ///         Project = "my-project-name",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             source,
+    ///         },
     ///     });
     /// 
     /// });
@@ -116,7 +152,9 @@ namespace Pulumi.Gcp.DataPlex
     ///             {
     ///                 new Gcp.DataPlex.Inputs.DatascanDataQualitySpecRuleArgs
     ///                 {
+    ///                     Description = "rule 1 for validity dimension",
     ///                     Dimension = "VALIDITY",
+    ///                     Name = "rule1",
     ///                     TableConditionExpectation = new Gcp.DataPlex.Inputs.DatascanDataQualitySpecRuleTableConditionExpectationArgs
     ///                     {
     ///                         SqlExpression = "COUNT(*) &gt; 0",
@@ -124,7 +162,7 @@ namespace Pulumi.Gcp.DataPlex
     ///                 },
     ///             },
     ///         },
-    ///         DataScanId = "tf-test-datascan%{random_suffix}",
+    ///         DataScanId = "dataquality-basic",
     ///         ExecutionSpec = new Gcp.DataPlex.Inputs.DatascanExecutionSpecArgs
     ///         {
     ///             Trigger = new Gcp.DataPlex.Inputs.DatascanExecutionSpecTriggerArgs
@@ -243,7 +281,7 @@ namespace Pulumi.Gcp.DataPlex
     ///             },
     ///             SamplingPercent = 5,
     ///         },
-    ///         DataScanId = "tf-test-datascan%{random_suffix}",
+    ///         DataScanId = "dataquality-full",
     ///         Description = "Example resource - Full Datascan Quality",
     ///         DisplayName = "Full Datascan Quality",
     ///         ExecutionSpec = new Gcp.DataPlex.Inputs.DatascanExecutionSpecArgs
@@ -305,6 +343,7 @@ namespace Pulumi.Gcp.DataPlex
         public Output<Outputs.DatascanData> Data { get; private set; } = null!;
 
         /// <summary>
+        /// (Deprecated)
         /// The result of the data profile scan.
         /// Structure is documented below.
         /// </summary>
@@ -319,6 +358,7 @@ namespace Pulumi.Gcp.DataPlex
         public Output<Outputs.DatascanDataProfileSpec?> DataProfileSpec { get; private set; } = null!;
 
         /// <summary>
+        /// (Deprecated)
         /// The result of the data quality scan.
         /// Structure is documented below.
         /// </summary>
@@ -340,6 +380,10 @@ namespace Pulumi.Gcp.DataPlex
 
         /// <summary>
         /// Description of the scan.
+        /// 
+        /// (Optional)
+        /// Description of the rule.
+        /// The maximum length is 1,024 characters.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -377,7 +421,11 @@ namespace Pulumi.Gcp.DataPlex
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the field.
+        /// A mutable name for the rule.
+        /// The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+        /// The maximum length is 63 characters.
+        /// Must start with a letter.
+        /// Must end with a number or a letter.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -488,6 +536,10 @@ namespace Pulumi.Gcp.DataPlex
 
         /// <summary>
         /// Description of the scan.
+        /// 
+        /// (Optional)
+        /// Description of the rule.
+        /// The maximum length is 1,024 characters.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -555,9 +607,11 @@ namespace Pulumi.Gcp.DataPlex
         private InputList<Inputs.DatascanDataProfileResultGetArgs>? _dataProfileResults;
 
         /// <summary>
+        /// (Deprecated)
         /// The result of the data profile scan.
         /// Structure is documented below.
         /// </summary>
+        [Obsolete(@"`data_profile_result` is deprecated and will be removed in a future major release.")]
         public InputList<Inputs.DatascanDataProfileResultGetArgs> DataProfileResults
         {
             get => _dataProfileResults ?? (_dataProfileResults = new InputList<Inputs.DatascanDataProfileResultGetArgs>());
@@ -575,9 +629,11 @@ namespace Pulumi.Gcp.DataPlex
         private InputList<Inputs.DatascanDataQualityResultGetArgs>? _dataQualityResults;
 
         /// <summary>
+        /// (Deprecated)
         /// The result of the data quality scan.
         /// Structure is documented below.
         /// </summary>
+        [Obsolete(@"`data_quality_result` is deprecated and will be removed in a future major release.")]
         public InputList<Inputs.DatascanDataQualityResultGetArgs> DataQualityResults
         {
             get => _dataQualityResults ?? (_dataQualityResults = new InputList<Inputs.DatascanDataQualityResultGetArgs>());
@@ -599,6 +655,10 @@ namespace Pulumi.Gcp.DataPlex
 
         /// <summary>
         /// Description of the scan.
+        /// 
+        /// (Optional)
+        /// Description of the rule.
+        /// The maximum length is 1,024 characters.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -648,7 +708,11 @@ namespace Pulumi.Gcp.DataPlex
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The name of the field.
+        /// A mutable name for the rule.
+        /// The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+        /// The maximum length is 63 characters.
+        /// Must start with a letter.
+        /// Must end with a number or a letter.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -45,6 +45,8 @@ class InstanceArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] zone: (Optional, Deprecated)
                The name of the Filestore zone of the instance.
+               
+               > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
         """
         pulumi.set(__self__, "file_shares", file_shares)
         pulumi.set(__self__, "networks", networks)
@@ -62,8 +64,8 @@ class InstanceArgs:
         if project is not None:
             pulumi.set(__self__, "project", project)
         if zone is not None:
-            warnings.warn("""Deprecated in favor of location.""", DeprecationWarning)
-            pulumi.log.warn("""zone is deprecated: Deprecated in favor of location.""")
+            warnings.warn("""`zone` is deprecated and will be removed in a future major release. Use `location` instead.""", DeprecationWarning)
+            pulumi.log.warn("""zone is deprecated: `zone` is deprecated and will be removed in a future major release. Use `location` instead.""")
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
 
@@ -187,9 +189,11 @@ class InstanceArgs:
         """
         (Optional, Deprecated)
         The name of the Filestore zone of the instance.
+
+        > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
         """
-        warnings.warn("""Deprecated in favor of location.""", DeprecationWarning)
-        pulumi.log.warn("""zone is deprecated: Deprecated in favor of location.""")
+        warnings.warn("""`zone` is deprecated and will be removed in a future major release. Use `location` instead.""", DeprecationWarning)
+        pulumi.log.warn("""zone is deprecated: `zone` is deprecated and will be removed in a future major release. Use `location` instead.""")
 
         return pulumi.get(self, "zone")
 
@@ -235,6 +239,8 @@ class _InstanceState:
                Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE
         :param pulumi.Input[str] zone: (Optional, Deprecated)
                The name of the Filestore zone of the instance.
+               
+               > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -259,8 +265,8 @@ class _InstanceState:
         if tier is not None:
             pulumi.set(__self__, "tier", tier)
         if zone is not None:
-            warnings.warn("""Deprecated in favor of location.""", DeprecationWarning)
-            pulumi.log.warn("""zone is deprecated: Deprecated in favor of location.""")
+            warnings.warn("""`zone` is deprecated and will be removed in a future major release. Use `location` instead.""", DeprecationWarning)
+            pulumi.log.warn("""zone is deprecated: `zone` is deprecated and will be removed in a future major release. Use `location` instead.""")
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
 
@@ -409,9 +415,11 @@ class _InstanceState:
         """
         (Optional, Deprecated)
         The name of the Filestore zone of the instance.
+
+        > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
         """
-        warnings.warn("""Deprecated in favor of location.""", DeprecationWarning)
-        pulumi.log.warn("""zone is deprecated: Deprecated in favor of location.""")
+        warnings.warn("""`zone` is deprecated and will be removed in a future major release. Use `location` instead.""", DeprecationWarning)
+        pulumi.log.warn("""zone is deprecated: `zone` is deprecated and will be removed in a future major release. Use `location` instead.""")
 
         return pulumi.get(self, "zone")
 
@@ -556,6 +564,8 @@ class Instance(pulumi.CustomResource):
                Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE
         :param pulumi.Input[str] zone: (Optional, Deprecated)
                The name of the Filestore zone of the instance.
+               
+               > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
         """
         ...
     @overload
@@ -714,8 +724,8 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'tier'")
             __props__.__dict__["tier"] = tier
             if zone is not None and not opts.urn:
-                warnings.warn("""Deprecated in favor of location.""", DeprecationWarning)
-                pulumi.log.warn("""zone is deprecated: Deprecated in favor of location.""")
+                warnings.warn("""`zone` is deprecated and will be removed in a future major release. Use `location` instead.""", DeprecationWarning)
+                pulumi.log.warn("""zone is deprecated: `zone` is deprecated and will be removed in a future major release. Use `location` instead.""")
             __props__.__dict__["zone"] = zone
             __props__.__dict__["create_time"] = None
             __props__.__dict__["etag"] = None
@@ -768,6 +778,8 @@ class Instance(pulumi.CustomResource):
                Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD and ENTERPRISE
         :param pulumi.Input[str] zone: (Optional, Deprecated)
                The name of the Filestore zone of the instance.
+               
+               > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -888,9 +900,11 @@ class Instance(pulumi.CustomResource):
         """
         (Optional, Deprecated)
         The name of the Filestore zone of the instance.
+
+        > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
         """
-        warnings.warn("""Deprecated in favor of location.""", DeprecationWarning)
-        pulumi.log.warn("""zone is deprecated: Deprecated in favor of location.""")
+        warnings.warn("""`zone` is deprecated and will be removed in a future major release. Use `location` instead.""", DeprecationWarning)
+        pulumi.log.warn("""zone is deprecated: `zone` is deprecated and will be removed in a future major release. Use `location` instead.""")
 
         return pulumi.get(self, "zone")
 

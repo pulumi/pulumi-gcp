@@ -18,6 +18,11 @@ namespace Pulumi.Gcp.DataPlex.Outputs
         /// </summary>
         public readonly string? Column;
         /// <summary>
+        /// Description of the rule.
+        /// The maximum length is 1,024 characters.
+        /// </summary>
+        public readonly string? Description;
+        /// <summary>
         /// The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are ["COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"]
         /// </summary>
         public readonly string Dimension;
@@ -25,6 +30,14 @@ namespace Pulumi.Gcp.DataPlex.Outputs
         /// Rows with null values will automatically fail a rule, unless ignoreNull is true. In that case, such null rows are trivially considered passing. Only applicable to ColumnMap rules.
         /// </summary>
         public readonly bool? IgnoreNull;
+        /// <summary>
+        /// A mutable name for the rule.
+        /// The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+        /// The maximum length is 63 characters.
+        /// Must start with a letter.
+        /// Must end with a number or a letter.
+        /// </summary>
+        public readonly string? Name;
         /// <summary>
         /// ColumnMap rule which evaluates whether each column value is null.
         /// </summary>
@@ -64,7 +77,7 @@ namespace Pulumi.Gcp.DataPlex.Outputs
         /// </summary>
         public readonly double? Threshold;
         /// <summary>
-        /// ColumnAggregate rule which evaluates whether the column has duplicates.
+        /// Row-level rule which evaluates whether each column value is unique.
         /// </summary>
         public readonly Outputs.DatascanDataQualitySpecRuleUniquenessExpectation? UniquenessExpectation;
 
@@ -72,9 +85,13 @@ namespace Pulumi.Gcp.DataPlex.Outputs
         private DatascanDataQualitySpecRule(
             string? column,
 
+            string? description,
+
             string dimension,
 
             bool? ignoreNull,
+
+            string? name,
 
             Outputs.DatascanDataQualitySpecRuleNonNullExpectation? nonNullExpectation,
 
@@ -95,8 +112,10 @@ namespace Pulumi.Gcp.DataPlex.Outputs
             Outputs.DatascanDataQualitySpecRuleUniquenessExpectation? uniquenessExpectation)
         {
             Column = column;
+            Description = description;
             Dimension = dimension;
             IgnoreNull = ignoreNull;
+            Name = name;
             NonNullExpectation = nonNullExpectation;
             RangeExpectation = rangeExpectation;
             RegexExpectation = regexExpectation;

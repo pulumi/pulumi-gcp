@@ -90,7 +90,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Field can be imported using any of these accepted formats
+ * Field can be imported using any of these accepted formats:
  *
  * ```sh
  *  $ pulumi import gcp:firestore/field:Field default {{name}}

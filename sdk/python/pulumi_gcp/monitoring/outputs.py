@@ -62,6 +62,8 @@ __all__ = [
     'UptimeCheckConfigHttpCheckAuthInfo',
     'UptimeCheckConfigMonitoredResource',
     'UptimeCheckConfigResourceGroup',
+    'UptimeCheckConfigSyntheticMonitor',
+    'UptimeCheckConfigSyntheticMonitorCloudFunctionV2',
     'UptimeCheckConfigTcpCheck',
     'GetAppEngineServiceTelemetryResult',
     'GetClusterIstioServiceTelemetryResult',
@@ -4128,6 +4130,67 @@ class UptimeCheckConfigResourceGroup(dict):
         Possible values are: `RESOURCE_TYPE_UNSPECIFIED`, `INSTANCE`, `AWS_ELB_LOAD_BALANCER`.
         """
         return pulumi.get(self, "resource_type")
+
+
+@pulumi.output_type
+class UptimeCheckConfigSyntheticMonitor(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudFunctionV2":
+            suggest = "cloud_function_v2"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UptimeCheckConfigSyntheticMonitor. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UptimeCheckConfigSyntheticMonitor.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UptimeCheckConfigSyntheticMonitor.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cloud_function_v2: 'outputs.UptimeCheckConfigSyntheticMonitorCloudFunctionV2'):
+        """
+        :param 'UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args' cloud_function_v2: Target a Synthetic Monitor GCFv2 Instance
+               Structure is documented below.
+               
+               
+               <a name="nested_cloud_function_v2"></a>The `cloud_function_v2` block supports:
+        """
+        pulumi.set(__self__, "cloud_function_v2", cloud_function_v2)
+
+    @property
+    @pulumi.getter(name="cloudFunctionV2")
+    def cloud_function_v2(self) -> 'outputs.UptimeCheckConfigSyntheticMonitorCloudFunctionV2':
+        """
+        Target a Synthetic Monitor GCFv2 Instance
+        Structure is documented below.
+
+
+        <a name="nested_cloud_function_v2"></a>The `cloud_function_v2` block supports:
+        """
+        return pulumi.get(self, "cloud_function_v2")
+
+
+@pulumi.output_type
+class UptimeCheckConfigSyntheticMonitorCloudFunctionV2(dict):
+    def __init__(__self__, *,
+                 name: str):
+        """
+        :param str name: The fully qualified name of the cloud function resource.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The fully qualified name of the cloud function resource.
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type

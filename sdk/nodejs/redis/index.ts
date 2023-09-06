@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { ClusterArgs, ClusterState } from "./cluster";
+export type Cluster = import("./cluster").Cluster;
+export const Cluster: typeof import("./cluster").Cluster = null as any;
+utilities.lazyLoad(exports, ["Cluster"], () => require("./cluster"));
+
 export { GetInstanceArgs, GetInstanceResult, GetInstanceOutputArgs } from "./getInstance";
 export const getInstance: typeof import("./getInstance").getInstance = null as any;
 export const getInstanceOutput: typeof import("./getInstance").getInstanceOutput = null as any;
@@ -20,6 +25,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:redis/cluster:Cluster":
+                return new Cluster(name, <any>undefined, { urn })
             case "gcp:redis/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
             default:
@@ -27,4 +34,5 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "redis/cluster", _module)
 pulumi.runtime.registerResourceModule("gcp", "redis/instance", _module)

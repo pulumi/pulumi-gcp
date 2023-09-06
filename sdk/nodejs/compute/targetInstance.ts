@@ -173,6 +173,10 @@ export class TargetInstance extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The resource URL for the security policy associated with this target instance.
+     */
+    public readonly securityPolicy!: pulumi.Output<string | undefined>;
+    /**
      * The URI of the created resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
@@ -201,6 +205,7 @@ export class TargetInstance extends pulumi.CustomResource {
             resourceInputs["natPolicy"] = state ? state.natPolicy : undefined;
             resourceInputs["network"] = state ? state.network : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["securityPolicy"] = state ? state.securityPolicy : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
@@ -214,6 +219,7 @@ export class TargetInstance extends pulumi.CustomResource {
             resourceInputs["natPolicy"] = args ? args.natPolicy : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["securityPolicy"] = args ? args.securityPolicy : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
@@ -274,6 +280,10 @@ export interface TargetInstanceState {
      */
     project?: pulumi.Input<string>;
     /**
+     * The resource URL for the security policy associated with this target instance.
+     */
+    securityPolicy?: pulumi.Input<string>;
+    /**
      * The URI of the created resource.
      */
     selfLink?: pulumi.Input<string>;
@@ -329,6 +339,10 @@ export interface TargetInstanceArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The resource URL for the security policy associated with this target instance.
+     */
+    securityPolicy?: pulumi.Input<string>;
     /**
      * URL of the zone where the target instance resides.
      */

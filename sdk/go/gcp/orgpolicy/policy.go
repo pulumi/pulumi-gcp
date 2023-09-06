@@ -195,7 +195,7 @@ import (
 //
 // ## Import
 //
-// # Policy can be imported using any of these accepted formats
+// Policy can be imported using any of these accepted formats:
 //
 // ```sh
 //

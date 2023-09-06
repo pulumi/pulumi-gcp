@@ -11,6 +11,9 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'RepositoryCleanupPolicy',
+    'RepositoryCleanupPolicyCondition',
+    'RepositoryCleanupPolicyMostRecentVersions',
     'RepositoryDockerConfig',
     'RepositoryIamBindingCondition',
     'RepositoryIamMemberCondition',
@@ -22,6 +25,9 @@ __all__ = [
     'RepositoryRemoteRepositoryConfigPythonRepository',
     'RepositoryVirtualRepositoryConfig',
     'RepositoryVirtualRepositoryConfigUpstreamPolicy',
+    'GetRepositoryCleanupPolicyResult',
+    'GetRepositoryCleanupPolicyConditionResult',
+    'GetRepositoryCleanupPolicyMostRecentVersionResult',
     'GetRepositoryDockerConfigResult',
     'GetRepositoryMavenConfigResult',
     'GetRepositoryRemoteRepositoryConfigResult',
@@ -32,6 +38,185 @@ __all__ = [
     'GetRepositoryVirtualRepositoryConfigResult',
     'GetRepositoryVirtualRepositoryConfigUpstreamPolicyResult',
 ]
+
+@pulumi.output_type
+class RepositoryCleanupPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mostRecentVersions":
+            suggest = "most_recent_versions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RepositoryCleanupPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RepositoryCleanupPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RepositoryCleanupPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 id: str,
+                 action: Optional[str] = None,
+                 condition: Optional['outputs.RepositoryCleanupPolicyCondition'] = None,
+                 most_recent_versions: Optional['outputs.RepositoryCleanupPolicyMostRecentVersions'] = None):
+        """
+        :param str id: The identifier for this object. Format specified above.
+        """
+        pulumi.set(__self__, "id", id)
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+        if most_recent_versions is not None:
+            pulumi.set(__self__, "most_recent_versions", most_recent_versions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[str]:
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional['outputs.RepositoryCleanupPolicyCondition']:
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter(name="mostRecentVersions")
+    def most_recent_versions(self) -> Optional['outputs.RepositoryCleanupPolicyMostRecentVersions']:
+        return pulumi.get(self, "most_recent_versions")
+
+
+@pulumi.output_type
+class RepositoryCleanupPolicyCondition(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "newerThan":
+            suggest = "newer_than"
+        elif key == "olderThan":
+            suggest = "older_than"
+        elif key == "packageNamePrefixes":
+            suggest = "package_name_prefixes"
+        elif key == "tagPrefixes":
+            suggest = "tag_prefixes"
+        elif key == "tagState":
+            suggest = "tag_state"
+        elif key == "versionNamePrefixes":
+            suggest = "version_name_prefixes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RepositoryCleanupPolicyCondition. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RepositoryCleanupPolicyCondition.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RepositoryCleanupPolicyCondition.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 newer_than: Optional[str] = None,
+                 older_than: Optional[str] = None,
+                 package_name_prefixes: Optional[Sequence[str]] = None,
+                 tag_prefixes: Optional[Sequence[str]] = None,
+                 tag_state: Optional[str] = None,
+                 version_name_prefixes: Optional[Sequence[str]] = None):
+        if newer_than is not None:
+            pulumi.set(__self__, "newer_than", newer_than)
+        if older_than is not None:
+            pulumi.set(__self__, "older_than", older_than)
+        if package_name_prefixes is not None:
+            pulumi.set(__self__, "package_name_prefixes", package_name_prefixes)
+        if tag_prefixes is not None:
+            pulumi.set(__self__, "tag_prefixes", tag_prefixes)
+        if tag_state is not None:
+            pulumi.set(__self__, "tag_state", tag_state)
+        if version_name_prefixes is not None:
+            pulumi.set(__self__, "version_name_prefixes", version_name_prefixes)
+
+    @property
+    @pulumi.getter(name="newerThan")
+    def newer_than(self) -> Optional[str]:
+        return pulumi.get(self, "newer_than")
+
+    @property
+    @pulumi.getter(name="olderThan")
+    def older_than(self) -> Optional[str]:
+        return pulumi.get(self, "older_than")
+
+    @property
+    @pulumi.getter(name="packageNamePrefixes")
+    def package_name_prefixes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "package_name_prefixes")
+
+    @property
+    @pulumi.getter(name="tagPrefixes")
+    def tag_prefixes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "tag_prefixes")
+
+    @property
+    @pulumi.getter(name="tagState")
+    def tag_state(self) -> Optional[str]:
+        return pulumi.get(self, "tag_state")
+
+    @property
+    @pulumi.getter(name="versionNamePrefixes")
+    def version_name_prefixes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "version_name_prefixes")
+
+
+@pulumi.output_type
+class RepositoryCleanupPolicyMostRecentVersions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "keepCount":
+            suggest = "keep_count"
+        elif key == "packageNamePrefixes":
+            suggest = "package_name_prefixes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RepositoryCleanupPolicyMostRecentVersions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RepositoryCleanupPolicyMostRecentVersions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RepositoryCleanupPolicyMostRecentVersions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 keep_count: Optional[int] = None,
+                 package_name_prefixes: Optional[Sequence[str]] = None):
+        if keep_count is not None:
+            pulumi.set(__self__, "keep_count", keep_count)
+        if package_name_prefixes is not None:
+            pulumi.set(__self__, "package_name_prefixes", package_name_prefixes)
+
+    @property
+    @pulumi.getter(name="keepCount")
+    def keep_count(self) -> Optional[int]:
+        return pulumi.get(self, "keep_count")
+
+    @property
+    @pulumi.getter(name="packageNamePrefixes")
+    def package_name_prefixes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "package_name_prefixes")
+
 
 @pulumi.output_type
 class RepositoryDockerConfig(dict):
@@ -520,6 +705,105 @@ class RepositoryVirtualRepositoryConfigUpstreamPolicy(dict):
         "projects/p1/locations/us-central1/repository/repo1".
         """
         return pulumi.get(self, "repository")
+
+
+@pulumi.output_type
+class GetRepositoryCleanupPolicyResult(dict):
+    def __init__(__self__, *,
+                 action: str,
+                 conditions: Sequence['outputs.GetRepositoryCleanupPolicyConditionResult'],
+                 id: str,
+                 most_recent_versions: Sequence['outputs.GetRepositoryCleanupPolicyMostRecentVersionResult']):
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "conditions", conditions)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "most_recent_versions", most_recent_versions)
+
+    @property
+    @pulumi.getter
+    def action(self) -> str:
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> Sequence['outputs.GetRepositoryCleanupPolicyConditionResult']:
+        return pulumi.get(self, "conditions")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="mostRecentVersions")
+    def most_recent_versions(self) -> Sequence['outputs.GetRepositoryCleanupPolicyMostRecentVersionResult']:
+        return pulumi.get(self, "most_recent_versions")
+
+
+@pulumi.output_type
+class GetRepositoryCleanupPolicyConditionResult(dict):
+    def __init__(__self__, *,
+                 newer_than: str,
+                 older_than: str,
+                 package_name_prefixes: Sequence[str],
+                 tag_prefixes: Sequence[str],
+                 tag_state: str,
+                 version_name_prefixes: Sequence[str]):
+        pulumi.set(__self__, "newer_than", newer_than)
+        pulumi.set(__self__, "older_than", older_than)
+        pulumi.set(__self__, "package_name_prefixes", package_name_prefixes)
+        pulumi.set(__self__, "tag_prefixes", tag_prefixes)
+        pulumi.set(__self__, "tag_state", tag_state)
+        pulumi.set(__self__, "version_name_prefixes", version_name_prefixes)
+
+    @property
+    @pulumi.getter(name="newerThan")
+    def newer_than(self) -> str:
+        return pulumi.get(self, "newer_than")
+
+    @property
+    @pulumi.getter(name="olderThan")
+    def older_than(self) -> str:
+        return pulumi.get(self, "older_than")
+
+    @property
+    @pulumi.getter(name="packageNamePrefixes")
+    def package_name_prefixes(self) -> Sequence[str]:
+        return pulumi.get(self, "package_name_prefixes")
+
+    @property
+    @pulumi.getter(name="tagPrefixes")
+    def tag_prefixes(self) -> Sequence[str]:
+        return pulumi.get(self, "tag_prefixes")
+
+    @property
+    @pulumi.getter(name="tagState")
+    def tag_state(self) -> str:
+        return pulumi.get(self, "tag_state")
+
+    @property
+    @pulumi.getter(name="versionNamePrefixes")
+    def version_name_prefixes(self) -> Sequence[str]:
+        return pulumi.get(self, "version_name_prefixes")
+
+
+@pulumi.output_type
+class GetRepositoryCleanupPolicyMostRecentVersionResult(dict):
+    def __init__(__self__, *,
+                 keep_count: int,
+                 package_name_prefixes: Sequence[str]):
+        pulumi.set(__self__, "keep_count", keep_count)
+        pulumi.set(__self__, "package_name_prefixes", package_name_prefixes)
+
+    @property
+    @pulumi.getter(name="keepCount")
+    def keep_count(self) -> int:
+        return pulumi.get(self, "keep_count")
+
+    @property
+    @pulumi.getter(name="packageNamePrefixes")
+    def package_name_prefixes(self) -> Sequence[str]:
+        return pulumi.get(self, "package_name_prefixes")
 
 
 @pulumi.output_type

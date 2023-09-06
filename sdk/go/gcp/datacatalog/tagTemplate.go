@@ -89,7 +89,7 @@ import (
 //
 // ## Import
 //
-// # TagTemplate can be imported using any of these accepted formats
+// TagTemplate can be imported using any of these accepted formats:
 //
 // ```sh
 //

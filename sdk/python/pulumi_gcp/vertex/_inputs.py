@@ -915,8 +915,8 @@ class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs:
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if monitoring_interval is not None:
-            warnings.warn("""This field is unavailable in the GA provider and will be removed from the beta provider in a future release.""", DeprecationWarning)
-            pulumi.log.warn("""monitoring_interval is deprecated: This field is unavailable in the GA provider and will be removed from the beta provider in a future release.""")
+            warnings.warn("""`monitoring_interval` is deprecated and will be removed in a future release.""", DeprecationWarning)
+            pulumi.log.warn("""monitoring_interval is deprecated: `monitoring_interval` is deprecated and will be removed in a future release.""")
         if monitoring_interval is not None:
             pulumi.set(__self__, "monitoring_interval", monitoring_interval)
         if monitoring_interval_days is not None:
@@ -939,8 +939,8 @@ class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs:
     @property
     @pulumi.getter(name="monitoringInterval")
     def monitoring_interval(self) -> Optional[pulumi.Input[str]]:
-        warnings.warn("""This field is unavailable in the GA provider and will be removed from the beta provider in a future release.""", DeprecationWarning)
-        pulumi.log.warn("""monitoring_interval is deprecated: This field is unavailable in the GA provider and will be removed from the beta provider in a future release.""")
+        warnings.warn("""`monitoring_interval` is deprecated and will be removed in a future release.""", DeprecationWarning)
+        pulumi.log.warn("""monitoring_interval is deprecated: `monitoring_interval` is deprecated and will be removed in a future release.""")
 
         return pulumi.get(self, "monitoring_interval")
 

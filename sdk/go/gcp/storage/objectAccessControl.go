@@ -76,7 +76,7 @@ import (
 //
 // ## Import
 //
-// # ObjectAccessControl can be imported using any of these accepted formats
+// ObjectAccessControl can be imported using any of these accepted formats:
 //
 // ```sh
 //

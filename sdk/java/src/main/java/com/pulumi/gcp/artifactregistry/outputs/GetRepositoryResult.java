@@ -4,10 +4,12 @@
 package com.pulumi.gcp.artifactregistry.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryCleanupPolicy;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryDockerConfig;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryMavenConfig;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryRemoteRepositoryConfig;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryVirtualRepositoryConfig;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +19,8 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRepositoryResult {
+    private List<GetRepositoryCleanupPolicy> cleanupPolicies;
+    private Boolean cleanupPolicyDryRun;
     private String createTime;
     private String description;
     private List<GetRepositoryDockerConfig> dockerConfigs;
@@ -39,6 +43,12 @@ public final class GetRepositoryResult {
     private List<GetRepositoryVirtualRepositoryConfig> virtualRepositoryConfigs;
 
     private GetRepositoryResult() {}
+    public List<GetRepositoryCleanupPolicy> cleanupPolicies() {
+        return this.cleanupPolicies;
+    }
+    public Boolean cleanupPolicyDryRun() {
+        return this.cleanupPolicyDryRun;
+    }
     public String createTime() {
         return this.createTime;
     }
@@ -101,6 +111,8 @@ public final class GetRepositoryResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetRepositoryCleanupPolicy> cleanupPolicies;
+        private Boolean cleanupPolicyDryRun;
         private String createTime;
         private String description;
         private List<GetRepositoryDockerConfig> dockerConfigs;
@@ -120,6 +132,8 @@ public final class GetRepositoryResult {
         public Builder() {}
         public Builder(GetRepositoryResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.cleanupPolicies = defaults.cleanupPolicies;
+    	      this.cleanupPolicyDryRun = defaults.cleanupPolicyDryRun;
     	      this.createTime = defaults.createTime;
     	      this.description = defaults.description;
     	      this.dockerConfigs = defaults.dockerConfigs;
@@ -138,6 +152,19 @@ public final class GetRepositoryResult {
     	      this.virtualRepositoryConfigs = defaults.virtualRepositoryConfigs;
         }
 
+        @CustomType.Setter
+        public Builder cleanupPolicies(List<GetRepositoryCleanupPolicy> cleanupPolicies) {
+            this.cleanupPolicies = Objects.requireNonNull(cleanupPolicies);
+            return this;
+        }
+        public Builder cleanupPolicies(GetRepositoryCleanupPolicy... cleanupPolicies) {
+            return cleanupPolicies(List.of(cleanupPolicies));
+        }
+        @CustomType.Setter
+        public Builder cleanupPolicyDryRun(Boolean cleanupPolicyDryRun) {
+            this.cleanupPolicyDryRun = Objects.requireNonNull(cleanupPolicyDryRun);
+            return this;
+        }
         @CustomType.Setter
         public Builder createTime(String createTime) {
             this.createTime = Objects.requireNonNull(createTime);
@@ -232,6 +259,8 @@ public final class GetRepositoryResult {
         }
         public GetRepositoryResult build() {
             final var o = new GetRepositoryResult();
+            o.cleanupPolicies = cleanupPolicies;
+            o.cleanupPolicyDryRun = cleanupPolicyDryRun;
             o.createTime = createTime;
             o.description = description;
             o.dockerConfigs = dockerConfigs;

@@ -131,8 +131,9 @@ export class ServiceConnectionPolicy extends pulumi.CustomResource {
     public readonly pscConfig!: pulumi.Output<outputs.networkconnectivity.ServiceConnectionPolicyPscConfig | undefined>;
     /**
      * Information about each Private Service Connect connection.
+     * Structure is documented below.
      */
-    public /*out*/ readonly pscConnections!: pulumi.Output<string[]>;
+    public /*out*/ readonly pscConnections!: pulumi.Output<outputs.networkconnectivity.ServiceConnectionPolicyPscConnection[]>;
     /**
      * The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass.
      * It is provided by the Service Producer. Google services have a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.
@@ -250,8 +251,9 @@ export interface ServiceConnectionPolicyState {
     pscConfig?: pulumi.Input<inputs.networkconnectivity.ServiceConnectionPolicyPscConfig>;
     /**
      * Information about each Private Service Connect connection.
+     * Structure is documented below.
      */
-    pscConnections?: pulumi.Input<pulumi.Input<string>[]>;
+    pscConnections?: pulumi.Input<pulumi.Input<inputs.networkconnectivity.ServiceConnectionPolicyPscConnection>[]>;
     /**
      * The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass.
      * It is provided by the Service Producer. Google services have a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For example, test-service-a3dfcx.

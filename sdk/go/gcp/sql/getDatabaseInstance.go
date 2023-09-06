@@ -63,6 +63,7 @@ type LookupDatabaseInstanceResult struct {
 	ConnectionName               string                     `pulumi:"connectionName"`
 	DatabaseVersion              string                     `pulumi:"databaseVersion"`
 	DeletionProtection           bool                       `pulumi:"deletionProtection"`
+	DnsName                      string                     `pulumi:"dnsName"`
 	EncryptionKeyName            string                     `pulumi:"encryptionKeyName"`
 	FirstIpAddress               string                     `pulumi:"firstIpAddress"`
 	// The provider-assigned unique ID for this managed resource.
@@ -74,6 +75,7 @@ type LookupDatabaseInstanceResult struct {
 	Name                       string                                    `pulumi:"name"`
 	PrivateIpAddress           string                                    `pulumi:"privateIpAddress"`
 	Project                    *string                                   `pulumi:"project"`
+	PscServiceAttachmentLink   string                                    `pulumi:"pscServiceAttachmentLink"`
 	PublicIpAddress            string                                    `pulumi:"publicIpAddress"`
 	Region                     string                                    `pulumi:"region"`
 	ReplicaConfigurations      []GetDatabaseInstanceReplicaConfiguration `pulumi:"replicaConfigurations"`
@@ -145,6 +147,10 @@ func (o LookupDatabaseInstanceResultOutput) DeletionProtection() pulumi.BoolOutp
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
 }
 
+func (o LookupDatabaseInstanceResultOutput) DnsName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.DnsName }).(pulumi.StringOutput)
+}
+
 func (o LookupDatabaseInstanceResultOutput) EncryptionKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.EncryptionKeyName }).(pulumi.StringOutput)
 }
@@ -184,6 +190,10 @@ func (o LookupDatabaseInstanceResultOutput) PrivateIpAddress() pulumi.StringOutp
 
 func (o LookupDatabaseInstanceResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupDatabaseInstanceResultOutput) PscServiceAttachmentLink() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.PscServiceAttachmentLink }).(pulumi.StringOutput)
 }
 
 func (o LookupDatabaseInstanceResultOutput) PublicIpAddress() pulumi.StringOutput {

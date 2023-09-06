@@ -26,6 +26,7 @@ __all__ = [
     'DatabaseInstanceSettingsInsightsConfigArgs',
     'DatabaseInstanceSettingsIpConfigurationArgs',
     'DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs',
+    'DatabaseInstanceSettingsIpConfigurationPscConfigArgs',
     'DatabaseInstanceSettingsLocationPreferenceArgs',
     'DatabaseInstanceSettingsMaintenanceWindowArgs',
     'DatabaseInstanceSettingsPasswordValidationPolicyArgs',
@@ -1301,6 +1302,7 @@ class DatabaseInstanceSettingsIpConfigurationArgs:
                  enable_private_path_for_google_cloud_services: Optional[pulumi.Input[bool]] = None,
                  ipv4_enabled: Optional[pulumi.Input[bool]] = None,
                  private_network: Optional[pulumi.Input[str]] = None,
+                 psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigArgs']]]] = None,
                  require_ssl: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
@@ -1325,6 +1327,8 @@ class DatabaseInstanceSettingsIpConfigurationArgs:
             pulumi.set(__self__, "ipv4_enabled", ipv4_enabled)
         if private_network is not None:
             pulumi.set(__self__, "private_network", private_network)
+        if psc_configs is not None:
+            pulumi.set(__self__, "psc_configs", psc_configs)
         if require_ssl is not None:
             pulumi.set(__self__, "require_ssl", require_ssl)
 
@@ -1390,6 +1394,15 @@ class DatabaseInstanceSettingsIpConfigurationArgs:
     @private_network.setter
     def private_network(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "private_network", value)
+
+    @property
+    @pulumi.getter(name="pscConfigs")
+    def psc_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigArgs']]]]:
+        return pulumi.get(self, "psc_configs")
+
+    @psc_configs.setter
+    def psc_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigArgs']]]]):
+        pulumi.set(self, "psc_configs", value)
 
     @property
     @pulumi.getter(name="requireSsl")
@@ -1462,6 +1475,45 @@ class DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class DatabaseInstanceSettingsIpConfigurationPscConfigArgs:
+    def __init__(__self__, *,
+                 allowed_consumer_projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 psc_enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_consumer_projects: List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
+        :param pulumi.Input[bool] psc_enabled: Whether PSC connectivity is enabled for this instance.
+        """
+        if allowed_consumer_projects is not None:
+            pulumi.set(__self__, "allowed_consumer_projects", allowed_consumer_projects)
+        if psc_enabled is not None:
+            pulumi.set(__self__, "psc_enabled", psc_enabled)
+
+    @property
+    @pulumi.getter(name="allowedConsumerProjects")
+    def allowed_consumer_projects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
+        """
+        return pulumi.get(self, "allowed_consumer_projects")
+
+    @allowed_consumer_projects.setter
+    def allowed_consumer_projects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_consumer_projects", value)
+
+    @property
+    @pulumi.getter(name="pscEnabled")
+    def psc_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether PSC connectivity is enabled for this instance.
+        """
+        return pulumi.get(self, "psc_enabled")
+
+    @psc_enabled.setter
+    def psc_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "psc_enabled", value)
 
 
 @pulumi.input_type

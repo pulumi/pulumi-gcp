@@ -93,7 +93,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Cluster can be imported using any of these accepted formats
+ * Cluster can be imported using any of these accepted formats:
  *
  * ```sh
  *  $ pulumi import gcp:vmwareengine/cluster:Cluster default {{parent}}/clusters/{{name}}

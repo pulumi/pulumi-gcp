@@ -135,7 +135,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// ## Import
     /// 
-    /// FeaturestoreEntitytypeFeature can be imported using any of these accepted formats
+    /// FeaturestoreEntitytypeFeature can be imported using any of these accepted formats:
     /// 
     /// ```sh
     ///  $ pulumi import gcp:vertex/aiFeatureStoreEntityTypeFeature:AiFeatureStoreEntityTypeFeature default {{entitytype}}/features/{{name}}

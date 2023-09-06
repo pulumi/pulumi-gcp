@@ -384,7 +384,7 @@ class BillingAccountSink(pulumi.CustomResource):
 
         ## Import
 
-        Billing account logging sinks can be imported using this format
+        Billing account logging sinks can be imported using this format:
 
         ```sh
          $ pulumi import gcp:logging/billingAccountSink:BillingAccountSink my_sink billingAccounts/{{billing_account_id}}/sinks/{{sink_id}}
@@ -446,7 +446,7 @@ class BillingAccountSink(pulumi.CustomResource):
 
         ## Import
 
-        Billing account logging sinks can be imported using this format
+        Billing account logging sinks can be imported using this format:
 
         ```sh
          $ pulumi import gcp:logging/billingAccountSink:BillingAccountSink my_sink billingAccounts/{{billing_account_id}}/sinks/{{sink_id}}

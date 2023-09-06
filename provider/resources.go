@@ -46,6 +46,7 @@ const (
 	gcpAssuredWorkloads         = "AssuredWorkloads"         // AssuredWorkloads resources
 	gcpBackupDR                 = "BackupDisasterRecovery"   // Backup and Disaster Recovery resources
 	gcpBeyondcorp               = "Beyondcorp"               // Beyondcorp resources
+	gcpBigLake                  = "BigLake"                  // BigLake resources
 	gcpBigQueryAnalyticsHub     = "BigQueryAnalyticsHub"     // BigQuery Analytics Hub resources
 	gcpBigQueryDataPolicy       = "BigQueryDataPolicy"       // BigQuery Data Policy resources
 	gcpBigQuery                 = "BigQuery"                 // BigQuery resources
@@ -152,6 +153,7 @@ var moduleMapping = map[string]string{
 	"assured_workloads":               gcpAssuredWorkloads,
 	"backup_dr":                       gcpBackupDR,
 	"beyondcorp":                      gcpBeyondcorp,
+	"biglake":                         gcpBigLake,
 	"bigquery_analytics_hub":          gcpBigQueryAnalyticsHub,
 	"bigquery_datapolicy_data_policy": gcpBigQueryDataPolicy,
 	"bigquery":                        gcpBigQuery,
@@ -847,6 +849,24 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: gcpResource(gcpFolder, "IamAuditConfig"),
 				Docs: &tfbridge.DocInfo{
 					Source: "google_folder_iam.html.markdown",
+				},
+			},
+			"google_gke_hub_scope_iam_binding": {
+				Tok: gcpResource(gcpGkeHub, "ScopeIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "gke_hub_scope_iam.html.markdown",
+				},
+			},
+			"google_gke_hub_scope_iam_member": {
+				Tok: gcpResource(gcpGkeHub, "ScopeIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "gke_hub_scope_iam.html.markdown",
+				},
+			},
+			"google_gke_hub_scope_iam_policy": {
+				Tok: gcpResource(gcpGkeHub, "ScopeIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "gke_hub_scope_iam.html.markdown",
 				},
 			},
 			"google_organization_policy": {

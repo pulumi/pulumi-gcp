@@ -36,7 +36,9 @@ class AccessApprovalSettingsArgs:
                Notifications relating to a resource will be sent to all emails in the settings of ancestor
                resources of that resource. A maximum of 50 email addresses are allowed.
         :param pulumi.Input[str] project: (Optional, Deprecated)
-               Deprecated in favor of `project_id`
+               Project id.
+               
+               > **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
         """
         pulumi.set(__self__, "enrolled_services", enrolled_services)
         pulumi.set(__self__, "project_id", project_id)
@@ -45,8 +47,8 @@ class AccessApprovalSettingsArgs:
         if notification_emails is not None:
             pulumi.set(__self__, "notification_emails", notification_emails)
         if project is not None:
-            warnings.warn("""Deprecated in favor of `project_id`""", DeprecationWarning)
-            pulumi.log.warn("""project is deprecated: Deprecated in favor of `project_id`""")
+            warnings.warn("""`project` is deprecated and will be removed in a future major release. Use `project_id` instead.""", DeprecationWarning)
+            pulumi.log.warn("""project is deprecated: `project` is deprecated and will be removed in a future major release. Use `project_id` instead.""")
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -111,10 +113,12 @@ class AccessApprovalSettingsArgs:
     def project(self) -> Optional[pulumi.Input[str]]:
         """
         (Optional, Deprecated)
-        Deprecated in favor of `project_id`
+        Project id.
+
+        > **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
         """
-        warnings.warn("""Deprecated in favor of `project_id`""", DeprecationWarning)
-        pulumi.log.warn("""project is deprecated: Deprecated in favor of `project_id`""")
+        warnings.warn("""`project` is deprecated and will be removed in a future major release. Use `project_id` instead.""", DeprecationWarning)
+        pulumi.log.warn("""project is deprecated: `project` is deprecated and will be removed in a future major release. Use `project_id` instead.""")
 
         return pulumi.get(self, "project")
 
@@ -156,7 +160,9 @@ class _AccessApprovalSettingsState:
                Notifications relating to a resource will be sent to all emails in the settings of ancestor
                resources of that resource. A maximum of 50 email addresses are allowed.
         :param pulumi.Input[str] project: (Optional, Deprecated)
-               Deprecated in favor of `project_id`
+               Project id.
+               
+               > **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
         :param pulumi.Input[str] project_id: ID of the project of the access approval settings.
         """
         if active_key_version is not None:
@@ -174,8 +180,8 @@ class _AccessApprovalSettingsState:
         if notification_emails is not None:
             pulumi.set(__self__, "notification_emails", notification_emails)
         if project is not None:
-            warnings.warn("""Deprecated in favor of `project_id`""", DeprecationWarning)
-            pulumi.log.warn("""project is deprecated: Deprecated in favor of `project_id`""")
+            warnings.warn("""`project` is deprecated and will be removed in a future major release. Use `project_id` instead.""", DeprecationWarning)
+            pulumi.log.warn("""project is deprecated: `project` is deprecated and will be removed in a future major release. Use `project_id` instead.""")
         if project is not None:
             pulumi.set(__self__, "project", project)
         if project_id is not None:
@@ -281,10 +287,12 @@ class _AccessApprovalSettingsState:
     def project(self) -> Optional[pulumi.Input[str]]:
         """
         (Optional, Deprecated)
-        Deprecated in favor of `project_id`
+        Project id.
+
+        > **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
         """
-        warnings.warn("""Deprecated in favor of `project_id`""", DeprecationWarning)
-        pulumi.log.warn("""project is deprecated: Deprecated in favor of `project_id`""")
+        warnings.warn("""`project` is deprecated and will be removed in a future major release. Use `project_id` instead.""", DeprecationWarning)
+        pulumi.log.warn("""project is deprecated: `project` is deprecated and will be removed in a future major release. Use `project_id` instead.""")
 
         return pulumi.get(self, "project")
 
@@ -397,7 +405,9 @@ class AccessApprovalSettings(pulumi.CustomResource):
                Notifications relating to a resource will be sent to all emails in the settings of ancestor
                resources of that resource. A maximum of 50 email addresses are allowed.
         :param pulumi.Input[str] project: (Optional, Deprecated)
-               Deprecated in favor of `project_id`
+               Project id.
+               
+               > **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
         :param pulumi.Input[str] project_id: ID of the project of the access approval settings.
         """
         ...
@@ -508,8 +518,8 @@ class AccessApprovalSettings(pulumi.CustomResource):
             __props__.__dict__["enrolled_services"] = enrolled_services
             __props__.__dict__["notification_emails"] = notification_emails
             if project is not None and not opts.urn:
-                warnings.warn("""Deprecated in favor of `project_id`""", DeprecationWarning)
-                pulumi.log.warn("""project is deprecated: Deprecated in favor of `project_id`""")
+                warnings.warn("""`project` is deprecated and will be removed in a future major release. Use `project_id` instead.""", DeprecationWarning)
+                pulumi.log.warn("""project is deprecated: `project` is deprecated and will be removed in a future major release. Use `project_id` instead.""")
             __props__.__dict__["project"] = project
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
@@ -563,7 +573,9 @@ class AccessApprovalSettings(pulumi.CustomResource):
                Notifications relating to a resource will be sent to all emails in the settings of ancestor
                resources of that resource. A maximum of 50 email addresses are allowed.
         :param pulumi.Input[str] project: (Optional, Deprecated)
-               Deprecated in favor of `project_id`
+               Project id.
+               
+               > **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
         :param pulumi.Input[str] project_id: ID of the project of the access approval settings.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -653,10 +665,12 @@ class AccessApprovalSettings(pulumi.CustomResource):
     def project(self) -> pulumi.Output[Optional[str]]:
         """
         (Optional, Deprecated)
-        Deprecated in favor of `project_id`
+        Project id.
+
+        > **Warning:** `project` is deprecated and will be removed in a future major release. Use `project_id` instead.
         """
-        warnings.warn("""Deprecated in favor of `project_id`""", DeprecationWarning)
-        pulumi.log.warn("""project is deprecated: Deprecated in favor of `project_id`""")
+        warnings.warn("""`project` is deprecated and will be removed in a future major release. Use `project_id` instead.""", DeprecationWarning)
+        pulumi.log.warn("""project is deprecated: `project` is deprecated and will be removed in a future major release. Use `project_id` instead.""")
 
         return pulumi.get(self, "project")
 

@@ -29,7 +29,6 @@ import javax.annotation.Nullable;
  * ```sh
  *  $ pulumi import gcp:sql/user:User users my-project/main-instance/my-domain.com/me
  * ```
- * 
  *  SQL users for PostgreSQL databases can be imported using the `project`, `instance` and `name`, e.g.
  * 
  * ```sh

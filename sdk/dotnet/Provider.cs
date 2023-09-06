@@ -60,6 +60,9 @@ namespace Pulumi.Gcp
         [Output("bigQueryCustomEndpoint")]
         public Output<string?> BigQueryCustomEndpoint { get; private set; } = null!;
 
+        [Output("biglakeCustomEndpoint")]
+        public Output<string?> BiglakeCustomEndpoint { get; private set; } = null!;
+
         [Output("bigqueryAnalyticsHubCustomEndpoint")]
         public Output<string?> BigqueryAnalyticsHubCustomEndpoint { get; private set; } = null!;
 
@@ -513,6 +516,9 @@ namespace Pulumi.Gcp
 
         [Input("bigQueryCustomEndpoint")]
         public Input<string>? BigQueryCustomEndpoint { get; set; }
+
+        [Input("biglakeCustomEndpoint")]
+        public Input<string>? BiglakeCustomEndpoint { get; set; }
 
         [Input("bigqueryAnalyticsHubCustomEndpoint")]
         public Input<string>? BigqueryAnalyticsHubCustomEndpoint { get; set; }

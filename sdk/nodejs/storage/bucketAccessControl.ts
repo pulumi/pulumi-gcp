@@ -45,7 +45,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * BucketAccessControl can be imported using any of these accepted formats
+ * BucketAccessControl can be imported using any of these accepted formats:
  *
  * ```sh
  *  $ pulumi import gcp:storage/bucketAccessControl:BucketAccessControl default {{bucket}}/{{entity}}

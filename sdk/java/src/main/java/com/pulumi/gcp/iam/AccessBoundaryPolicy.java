@@ -25,7 +25,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * AccessBoundaryPolicy can be imported using any of these accepted formats
+ * AccessBoundaryPolicy can be imported using any of these accepted formats:
  * 
  * ```sh
  *  $ pulumi import gcp:iam/accessBoundaryPolicy:AccessBoundaryPolicy default {{parent}}/{{name}}

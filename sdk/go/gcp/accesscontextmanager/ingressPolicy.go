@@ -20,7 +20,7 @@ import (
 //
 // ## Import
 //
-// # IngressPolicy can be imported using any of these accepted formats
+// IngressPolicy can be imported using any of these accepted formats:
 //
 // ```sh
 //

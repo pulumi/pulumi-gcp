@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Billing Subaccounts can be imported using any of these accepted formats
+ * Billing Subaccounts can be imported using any of these accepted formats:
  *
  * ```sh
  *  $ pulumi import gcp:billing/subAccount:SubAccount default billingAccounts/{billing_account_id}

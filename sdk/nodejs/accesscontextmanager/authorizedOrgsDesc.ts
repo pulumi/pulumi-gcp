@@ -48,7 +48,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * AuthorizedOrgsDesc can be imported using any of these accepted formats
+ * AuthorizedOrgsDesc can be imported using any of these accepted formats:
  *
  * ```sh
  *  $ pulumi import gcp:accesscontextmanager/authorizedOrgsDesc:AuthorizedOrgsDesc default {{name}}

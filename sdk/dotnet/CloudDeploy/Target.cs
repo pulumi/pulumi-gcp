@@ -236,7 +236,7 @@ namespace Pulumi.Gcp.CloudDeploy
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// (Beta only) Information specifying a multiTarget.
+        /// Information specifying a multiTarget.
         /// </summary>
         [Output("multiTarget")]
         public Output<Outputs.TargetMultiTarget?> MultiTarget { get; private set; } = null!;
@@ -406,7 +406,7 @@ namespace Pulumi.Gcp.CloudDeploy
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// (Beta only) Information specifying a multiTarget.
+        /// Information specifying a multiTarget.
         /// </summary>
         [Input("multiTarget")]
         public Input<Inputs.TargetMultiTargetArgs>? MultiTarget { get; set; }
@@ -532,7 +532,7 @@ namespace Pulumi.Gcp.CloudDeploy
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// (Beta only) Information specifying a multiTarget.
+        /// Information specifying a multiTarget.
         /// </summary>
         [Input("multiTarget")]
         public Input<Inputs.TargetMultiTargetGetArgs>? MultiTarget { get; set; }

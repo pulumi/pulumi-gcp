@@ -173,6 +173,121 @@ func (o AppProfileSingleClusterRoutingPtrOutput) ClusterId() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+type BiReservationPreferredTable struct {
+	// The ID of the dataset in the above project.
+	DatasetId *string `pulumi:"datasetId"`
+	// The assigned project ID of the project.
+	ProjectId *string `pulumi:"projectId"`
+	// The ID of the table in the above dataset.
+	TableId *string `pulumi:"tableId"`
+}
+
+// BiReservationPreferredTableInput is an input type that accepts BiReservationPreferredTableArgs and BiReservationPreferredTableOutput values.
+// You can construct a concrete instance of `BiReservationPreferredTableInput` via:
+//
+//	BiReservationPreferredTableArgs{...}
+type BiReservationPreferredTableInput interface {
+	pulumi.Input
+
+	ToBiReservationPreferredTableOutput() BiReservationPreferredTableOutput
+	ToBiReservationPreferredTableOutputWithContext(context.Context) BiReservationPreferredTableOutput
+}
+
+type BiReservationPreferredTableArgs struct {
+	// The ID of the dataset in the above project.
+	DatasetId pulumi.StringPtrInput `pulumi:"datasetId"`
+	// The assigned project ID of the project.
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	// The ID of the table in the above dataset.
+	TableId pulumi.StringPtrInput `pulumi:"tableId"`
+}
+
+func (BiReservationPreferredTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BiReservationPreferredTable)(nil)).Elem()
+}
+
+func (i BiReservationPreferredTableArgs) ToBiReservationPreferredTableOutput() BiReservationPreferredTableOutput {
+	return i.ToBiReservationPreferredTableOutputWithContext(context.Background())
+}
+
+func (i BiReservationPreferredTableArgs) ToBiReservationPreferredTableOutputWithContext(ctx context.Context) BiReservationPreferredTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BiReservationPreferredTableOutput)
+}
+
+// BiReservationPreferredTableArrayInput is an input type that accepts BiReservationPreferredTableArray and BiReservationPreferredTableArrayOutput values.
+// You can construct a concrete instance of `BiReservationPreferredTableArrayInput` via:
+//
+//	BiReservationPreferredTableArray{ BiReservationPreferredTableArgs{...} }
+type BiReservationPreferredTableArrayInput interface {
+	pulumi.Input
+
+	ToBiReservationPreferredTableArrayOutput() BiReservationPreferredTableArrayOutput
+	ToBiReservationPreferredTableArrayOutputWithContext(context.Context) BiReservationPreferredTableArrayOutput
+}
+
+type BiReservationPreferredTableArray []BiReservationPreferredTableInput
+
+func (BiReservationPreferredTableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BiReservationPreferredTable)(nil)).Elem()
+}
+
+func (i BiReservationPreferredTableArray) ToBiReservationPreferredTableArrayOutput() BiReservationPreferredTableArrayOutput {
+	return i.ToBiReservationPreferredTableArrayOutputWithContext(context.Background())
+}
+
+func (i BiReservationPreferredTableArray) ToBiReservationPreferredTableArrayOutputWithContext(ctx context.Context) BiReservationPreferredTableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BiReservationPreferredTableArrayOutput)
+}
+
+type BiReservationPreferredTableOutput struct{ *pulumi.OutputState }
+
+func (BiReservationPreferredTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BiReservationPreferredTable)(nil)).Elem()
+}
+
+func (o BiReservationPreferredTableOutput) ToBiReservationPreferredTableOutput() BiReservationPreferredTableOutput {
+	return o
+}
+
+func (o BiReservationPreferredTableOutput) ToBiReservationPreferredTableOutputWithContext(ctx context.Context) BiReservationPreferredTableOutput {
+	return o
+}
+
+// The ID of the dataset in the above project.
+func (o BiReservationPreferredTableOutput) DatasetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BiReservationPreferredTable) *string { return v.DatasetId }).(pulumi.StringPtrOutput)
+}
+
+// The assigned project ID of the project.
+func (o BiReservationPreferredTableOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BiReservationPreferredTable) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the table in the above dataset.
+func (o BiReservationPreferredTableOutput) TableId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BiReservationPreferredTable) *string { return v.TableId }).(pulumi.StringPtrOutput)
+}
+
+type BiReservationPreferredTableArrayOutput struct{ *pulumi.OutputState }
+
+func (BiReservationPreferredTableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BiReservationPreferredTable)(nil)).Elem()
+}
+
+func (o BiReservationPreferredTableArrayOutput) ToBiReservationPreferredTableArrayOutput() BiReservationPreferredTableArrayOutput {
+	return o
+}
+
+func (o BiReservationPreferredTableArrayOutput) ToBiReservationPreferredTableArrayOutputWithContext(ctx context.Context) BiReservationPreferredTableArrayOutput {
+	return o
+}
+
+func (o BiReservationPreferredTableArrayOutput) Index(i pulumi.IntInput) BiReservationPreferredTableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BiReservationPreferredTable {
+		return vs[0].([]BiReservationPreferredTable)[vs[1].(int)]
+	}).(BiReservationPreferredTableOutput)
+}
+
 type ConnectionAws struct {
 	// Authentication using Google owned service account to assume into customer's AWS IAM Role.
 	// Structure is documented below.
@@ -9419,7 +9534,7 @@ type TableExternalDataConfiguration struct {
 	// Let BigQuery try to autodetect the schema
 	// and format of the table.
 	Autodetect bool `pulumi:"autodetect"`
-	// Additional options if `sourceFormat` is set to\
+	// Additional options if `sourceFormat` is set to
 	// "AVRO".  Structure is documented below.
 	AvroOptions *TableExternalDataConfigurationAvroOptions `pulumi:"avroOptions"`
 	// The compression type of the data source.
@@ -9429,6 +9544,10 @@ type TableExternalDataConfiguration struct {
 	// external storage, such as Azure Blob, Cloud Storage, or S3. The `connectionId` can have
 	// the form `{{project}}.{{location}}.{{connection_id}}`
 	// or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
+	//
+	// ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
+	// table schema must be specified using the top-level `schema` field
+	// documented above.
 	ConnectionId *string `pulumi:"connectionId"`
 	// Additional properties to set if
 	// `sourceFormat` is set to "CSV". Structure is documented below.
@@ -9479,6 +9598,10 @@ type TableExternalDataConfiguration struct {
 	// This schema is effectively only applied when creating a table from an external
 	// datasource, after creation the computed schema will be stored in
 	// `google_bigquery_table.schema`
+	//
+	// ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
+	// table schema must be specified using the top-level `schema` field
+	// documented above.
 	Schema *string `pulumi:"schema"`
 	// The data format. Please see sourceFormat under
 	// [ExternalDataConfiguration](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#externaldataconfiguration)
@@ -9505,7 +9628,7 @@ type TableExternalDataConfigurationArgs struct {
 	// Let BigQuery try to autodetect the schema
 	// and format of the table.
 	Autodetect pulumi.BoolInput `pulumi:"autodetect"`
-	// Additional options if `sourceFormat` is set to\
+	// Additional options if `sourceFormat` is set to
 	// "AVRO".  Structure is documented below.
 	AvroOptions TableExternalDataConfigurationAvroOptionsPtrInput `pulumi:"avroOptions"`
 	// The compression type of the data source.
@@ -9515,6 +9638,10 @@ type TableExternalDataConfigurationArgs struct {
 	// external storage, such as Azure Blob, Cloud Storage, or S3. The `connectionId` can have
 	// the form `{{project}}.{{location}}.{{connection_id}}`
 	// or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
+	//
+	// ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
+	// table schema must be specified using the top-level `schema` field
+	// documented above.
 	ConnectionId pulumi.StringPtrInput `pulumi:"connectionId"`
 	// Additional properties to set if
 	// `sourceFormat` is set to "CSV". Structure is documented below.
@@ -9565,6 +9692,10 @@ type TableExternalDataConfigurationArgs struct {
 	// This schema is effectively only applied when creating a table from an external
 	// datasource, after creation the computed schema will be stored in
 	// `google_bigquery_table.schema`
+	//
+	// ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
+	// table schema must be specified using the top-level `schema` field
+	// documented above.
 	Schema pulumi.StringPtrInput `pulumi:"schema"`
 	// The data format. Please see sourceFormat under
 	// [ExternalDataConfiguration](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#externaldataconfiguration)
@@ -9659,7 +9790,7 @@ func (o TableExternalDataConfigurationOutput) Autodetect() pulumi.BoolOutput {
 	return o.ApplyT(func(v TableExternalDataConfiguration) bool { return v.Autodetect }).(pulumi.BoolOutput)
 }
 
-// Additional options if `sourceFormat` is set to\
+// Additional options if `sourceFormat` is set to
 // "AVRO".  Structure is documented below.
 func (o TableExternalDataConfigurationOutput) AvroOptions() TableExternalDataConfigurationAvroOptionsPtrOutput {
 	return o.ApplyT(func(v TableExternalDataConfiguration) *TableExternalDataConfigurationAvroOptions {
@@ -9677,6 +9808,10 @@ func (o TableExternalDataConfigurationOutput) Compression() pulumi.StringPtrOutp
 // external storage, such as Azure Blob, Cloud Storage, or S3. The `connectionId` can have
 // the form `{{project}}.{{location}}.{{connection_id}}`
 // or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
+//
+// ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
+// table schema must be specified using the top-level `schema` field
+// documented above.
 func (o TableExternalDataConfigurationOutput) ConnectionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TableExternalDataConfiguration) *string { return v.ConnectionId }).(pulumi.StringPtrOutput)
 }
@@ -9771,6 +9906,10 @@ func (o TableExternalDataConfigurationOutput) ReferenceFileSchemaUri() pulumi.St
 // This schema is effectively only applied when creating a table from an external
 // datasource, after creation the computed schema will be stored in
 // `google_bigquery_table.schema`
+//
+// ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
+// table schema must be specified using the top-level `schema` field
+// documented above.
 func (o TableExternalDataConfigurationOutput) Schema() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TableExternalDataConfiguration) *string { return v.Schema }).(pulumi.StringPtrOutput)
 }
@@ -9824,7 +9963,7 @@ func (o TableExternalDataConfigurationPtrOutput) Autodetect() pulumi.BoolPtrOutp
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Additional options if `sourceFormat` is set to\
+// Additional options if `sourceFormat` is set to
 // "AVRO".  Structure is documented below.
 func (o TableExternalDataConfigurationPtrOutput) AvroOptions() TableExternalDataConfigurationAvroOptionsPtrOutput {
 	return o.ApplyT(func(v *TableExternalDataConfiguration) *TableExternalDataConfigurationAvroOptions {
@@ -9850,6 +9989,10 @@ func (o TableExternalDataConfigurationPtrOutput) Compression() pulumi.StringPtrO
 // external storage, such as Azure Blob, Cloud Storage, or S3. The `connectionId` can have
 // the form `{{project}}.{{location}}.{{connection_id}}`
 // or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
+//
+// ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
+// table schema must be specified using the top-level `schema` field
+// documented above.
 func (o TableExternalDataConfigurationPtrOutput) ConnectionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TableExternalDataConfiguration) *string {
 		if v == nil {
@@ -9996,6 +10139,10 @@ func (o TableExternalDataConfigurationPtrOutput) ReferenceFileSchemaUri() pulumi
 // This schema is effectively only applied when creating a table from an external
 // datasource, after creation the computed schema will be stored in
 // `google_bigquery_table.schema`
+//
+// ~>**NOTE:** If you set `external_data_configuration.connection_id`, the
+// table schema must be specified using the top-level `schema` field
+// documented above.
 func (o TableExternalDataConfigurationPtrOutput) Schema() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TableExternalDataConfiguration) *string {
 		if v == nil {
@@ -10030,7 +10177,7 @@ func (o TableExternalDataConfigurationPtrOutput) SourceUris() pulumi.StringArray
 }
 
 type TableExternalDataConfigurationAvroOptions struct {
-	// If is set to true, indicates whether\
+	// If is set to true, indicates whether
 	// to interpret logical types as the corresponding BigQuery data type
 	// (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
 	UseAvroLogicalTypes bool `pulumi:"useAvroLogicalTypes"`
@@ -10048,7 +10195,7 @@ type TableExternalDataConfigurationAvroOptionsInput interface {
 }
 
 type TableExternalDataConfigurationAvroOptionsArgs struct {
-	// If is set to true, indicates whether\
+	// If is set to true, indicates whether
 	// to interpret logical types as the corresponding BigQuery data type
 	// (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
 	UseAvroLogicalTypes pulumi.BoolInput `pulumi:"useAvroLogicalTypes"`
@@ -10131,7 +10278,7 @@ func (o TableExternalDataConfigurationAvroOptionsOutput) ToTableExternalDataConf
 	}).(TableExternalDataConfigurationAvroOptionsPtrOutput)
 }
 
-// If is set to true, indicates whether\
+// If is set to true, indicates whether
 // to interpret logical types as the corresponding BigQuery data type
 // (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
 func (o TableExternalDataConfigurationAvroOptionsOutput) UseAvroLogicalTypes() pulumi.BoolOutput {
@@ -10162,7 +10309,7 @@ func (o TableExternalDataConfigurationAvroOptionsPtrOutput) Elem() TableExternal
 	}).(TableExternalDataConfigurationAvroOptionsOutput)
 }
 
-// If is set to true, indicates whether\
+// If is set to true, indicates whether
 // to interpret logical types as the corresponding BigQuery data type
 // (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
 func (o TableExternalDataConfigurationAvroOptionsPtrOutput) UseAvroLogicalTypes() pulumi.BoolPtrOutput {
@@ -12061,6 +12208,8 @@ func (o TableViewPtrOutput) UseLegacySql() pulumi.BoolPtrOutput {
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppProfileSingleClusterRoutingInput)(nil)).Elem(), AppProfileSingleClusterRoutingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppProfileSingleClusterRoutingPtrInput)(nil)).Elem(), AppProfileSingleClusterRoutingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BiReservationPreferredTableInput)(nil)).Elem(), BiReservationPreferredTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BiReservationPreferredTableArrayInput)(nil)).Elem(), BiReservationPreferredTableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionAwsInput)(nil)).Elem(), ConnectionAwsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionAwsPtrInput)(nil)).Elem(), ConnectionAwsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionAwsAccessRoleInput)(nil)).Elem(), ConnectionAwsAccessRoleArgs{})
@@ -12183,6 +12332,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TableViewPtrInput)(nil)).Elem(), TableViewArgs{})
 	pulumi.RegisterOutputType(AppProfileSingleClusterRoutingOutput{})
 	pulumi.RegisterOutputType(AppProfileSingleClusterRoutingPtrOutput{})
+	pulumi.RegisterOutputType(BiReservationPreferredTableOutput{})
+	pulumi.RegisterOutputType(BiReservationPreferredTableArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionAwsOutput{})
 	pulumi.RegisterOutputType(ConnectionAwsPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionAwsAccessRoleOutput{})

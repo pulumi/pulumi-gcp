@@ -6,6 +6,7 @@ package com.pulumi.gcp.container.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigAdvancedMachineFeaturesArgs;
+import com.pulumi.gcp.container.inputs.NodePoolNodeConfigConfidentialNodesArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigEphemeralStorageConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigGcfsConfigArgs;
@@ -47,6 +48,13 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
 
     public Optional<Output<String>> bootDiskKmsKey() {
         return Optional.ofNullable(this.bootDiskKmsKey);
+    }
+
+    @Import(name="confidentialNodes")
+    private @Nullable Output<NodePoolNodeConfigConfidentialNodesArgs> confidentialNodes;
+
+    public Optional<Output<NodePoolNodeConfigConfidentialNodesArgs>> confidentialNodes() {
+        return Optional.ofNullable(this.confidentialNodes);
     }
 
     @Import(name="diskSizeGb")
@@ -271,6 +279,7 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
     private NodePoolNodeConfigArgs(NodePoolNodeConfigArgs $) {
         this.advancedMachineFeatures = $.advancedMachineFeatures;
         this.bootDiskKmsKey = $.bootDiskKmsKey;
+        this.confidentialNodes = $.confidentialNodes;
         this.diskSizeGb = $.diskSizeGb;
         this.diskType = $.diskType;
         this.ephemeralStorageConfig = $.ephemeralStorageConfig;
@@ -338,6 +347,15 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
 
         public Builder bootDiskKmsKey(String bootDiskKmsKey) {
             return bootDiskKmsKey(Output.of(bootDiskKmsKey));
+        }
+
+        public Builder confidentialNodes(@Nullable Output<NodePoolNodeConfigConfidentialNodesArgs> confidentialNodes) {
+            $.confidentialNodes = confidentialNodes;
+            return this;
+        }
+
+        public Builder confidentialNodes(NodePoolNodeConfigConfidentialNodesArgs confidentialNodes) {
+            return confidentialNodes(Output.of(confidentialNodes));
         }
 
         public Builder diskSizeGb(@Nullable Output<Integer> diskSizeGb) {

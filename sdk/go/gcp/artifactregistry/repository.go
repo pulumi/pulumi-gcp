@@ -209,6 +209,75 @@ import (
 //	}
 //
 // ```
+// ### Artifact Registry Repository Cleanup
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/artifactregistry"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := artifactregistry.NewRepository(ctx, "my-repo", &artifactregistry.RepositoryArgs{
+//				Location:            pulumi.String("us-central1"),
+//				RepositoryId:        pulumi.String("my-repository"),
+//				Description:         pulumi.String("example docker repository with cleanup policies"),
+//				Format:              pulumi.String("DOCKER"),
+//				CleanupPolicyDryRun: pulumi.Bool(false),
+//				CleanupPolicies: artifactregistry.RepositoryCleanupPolicyArray{
+//					&artifactregistry.RepositoryCleanupPolicyArgs{
+//						Id:     pulumi.String("delete-prerelease"),
+//						Action: pulumi.String("DELETE"),
+//						Condition: &artifactregistry.RepositoryCleanupPolicyConditionArgs{
+//							TagState: pulumi.String("TAGGED"),
+//							TagPrefixes: pulumi.StringArray{
+//								pulumi.String("alpha"),
+//								pulumi.String("v0"),
+//							},
+//							OlderThan: pulumi.String("2592000s"),
+//						},
+//					},
+//					&artifactregistry.RepositoryCleanupPolicyArgs{
+//						Id:     pulumi.String("keep-tagged-release"),
+//						Action: pulumi.String("KEEP"),
+//						Condition: &artifactregistry.RepositoryCleanupPolicyConditionArgs{
+//							TagState: pulumi.String("TAGGED"),
+//							TagPrefixes: pulumi.StringArray{
+//								pulumi.String("release"),
+//							},
+//							PackageNamePrefixes: pulumi.StringArray{
+//								pulumi.String("webapp"),
+//								pulumi.String("mobile"),
+//							},
+//						},
+//					},
+//					&artifactregistry.RepositoryCleanupPolicyArgs{
+//						Id:     pulumi.String("keep-minimum-versions"),
+//						Action: pulumi.String("KEEP"),
+//						MostRecentVersions: &artifactregistry.RepositoryCleanupPolicyMostRecentVersionsArgs{
+//							PackageNamePrefixes: pulumi.StringArray{
+//								pulumi.String("webapp"),
+//								pulumi.String("mobile"),
+//								pulumi.String("sandbox"),
+//							},
+//							KeepCount: pulumi.Int(5),
+//						},
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -240,6 +309,12 @@ import (
 type Repository struct {
 	pulumi.CustomResourceState
 
+	// Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
+	// deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
+	// under 128 characters in length.
+	CleanupPolicies RepositoryCleanupPolicyArrayOutput `pulumi:"cleanupPolicies"`
+	// If true, the cleanup pipeline is prevented from deleting versions in this repository.
+	CleanupPolicyDryRun pulumi.BoolPtrOutput `pulumi:"cleanupPolicyDryRun"`
 	// The time when the repository was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The user-provided description of the repository.
@@ -331,6 +406,12 @@ func GetRepository(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Repository resources.
 type repositoryState struct {
+	// Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
+	// deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
+	// under 128 characters in length.
+	CleanupPolicies []RepositoryCleanupPolicy `pulumi:"cleanupPolicies"`
+	// If true, the cleanup pipeline is prevented from deleting versions in this repository.
+	CleanupPolicyDryRun *bool `pulumi:"cleanupPolicyDryRun"`
 	// The time when the repository was created.
 	CreateTime *string `pulumi:"createTime"`
 	// The user-provided description of the repository.
@@ -387,6 +468,12 @@ type repositoryState struct {
 }
 
 type RepositoryState struct {
+	// Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
+	// deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
+	// under 128 characters in length.
+	CleanupPolicies RepositoryCleanupPolicyArrayInput
+	// If true, the cleanup pipeline is prevented from deleting versions in this repository.
+	CleanupPolicyDryRun pulumi.BoolPtrInput
 	// The time when the repository was created.
 	CreateTime pulumi.StringPtrInput
 	// The user-provided description of the repository.
@@ -447,6 +534,12 @@ func (RepositoryState) ElementType() reflect.Type {
 }
 
 type repositoryArgs struct {
+	// Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
+	// deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
+	// under 128 characters in length.
+	CleanupPolicies []RepositoryCleanupPolicy `pulumi:"cleanupPolicies"`
+	// If true, the cleanup pipeline is prevented from deleting versions in this repository.
+	CleanupPolicyDryRun *bool `pulumi:"cleanupPolicyDryRun"`
 	// The user-provided description of the repository.
 	Description *string `pulumi:"description"`
 	// Docker repository config contains repository level configuration for the repositories of docker type.
@@ -497,6 +590,12 @@ type repositoryArgs struct {
 
 // The set of arguments for constructing a Repository resource.
 type RepositoryArgs struct {
+	// Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
+	// deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
+	// under 128 characters in length.
+	CleanupPolicies RepositoryCleanupPolicyArrayInput
+	// If true, the cleanup pipeline is prevented from deleting versions in this repository.
+	CleanupPolicyDryRun pulumi.BoolPtrInput
 	// The user-provided description of the repository.
 	Description pulumi.StringPtrInput
 	// Docker repository config contains repository level configuration for the repositories of docker type.
@@ -630,6 +729,18 @@ func (o RepositoryOutput) ToRepositoryOutput() RepositoryOutput {
 
 func (o RepositoryOutput) ToRepositoryOutputWithContext(ctx context.Context) RepositoryOutput {
 	return o
+}
+
+// Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
+// deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
+// under 128 characters in length.
+func (o RepositoryOutput) CleanupPolicies() RepositoryCleanupPolicyArrayOutput {
+	return o.ApplyT(func(v *Repository) RepositoryCleanupPolicyArrayOutput { return v.CleanupPolicies }).(RepositoryCleanupPolicyArrayOutput)
+}
+
+// If true, the cleanup pipeline is prevented from deleting versions in this repository.
+func (o RepositoryOutput) CleanupPolicyDryRun() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Repository) pulumi.BoolPtrOutput { return v.CleanupPolicyDryRun }).(pulumi.BoolPtrOutput)
 }
 
 // The time when the repository was created.

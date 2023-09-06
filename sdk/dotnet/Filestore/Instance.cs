@@ -254,6 +254,8 @@ namespace Pulumi.Gcp.Filestore
         /// <summary>
         /// (Optional, Deprecated)
         /// The name of the Filestore zone of the instance.
+        /// 
+        /// &gt; **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
         /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
@@ -379,6 +381,8 @@ namespace Pulumi.Gcp.Filestore
         /// <summary>
         /// (Optional, Deprecated)
         /// The name of the Filestore zone of the instance.
+        /// 
+        /// &gt; **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
@@ -479,6 +483,8 @@ namespace Pulumi.Gcp.Filestore
         /// <summary>
         /// (Optional, Deprecated)
         /// The name of the Filestore zone of the instance.
+        /// 
+        /// &gt; **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

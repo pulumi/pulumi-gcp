@@ -124,24 +124,30 @@ public final class RegionDiskState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Deprecated)
      * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
      * 
+     * &gt; **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
+     * 
      * @deprecated
-     * This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.
+     * `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
      * 
      */
-    @Deprecated /* This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config. */
+    @Deprecated /* `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment. */
     @Import(name="interface")
     private @Nullable Output<String> interface_;
 
     /**
-     * @return Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+     * @return (Optional, Deprecated)
+     * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+     * 
+     * &gt; **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
      * 
      * @deprecated
-     * This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.
+     * `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
      * 
      */
-    @Deprecated /* This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config. */
+    @Deprecated /* `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment. */
     public Optional<Output<String>> interface_() {
         return Optional.ofNullable(this.interface_);
     }
@@ -707,30 +713,36 @@ public final class RegionDiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param interface_ Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+         * @param interface_ (Optional, Deprecated)
+         * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+         * 
+         * &gt; **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
          * 
          * @return builder
          * 
          * @deprecated
-         * This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.
+         * `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
          * 
          */
-        @Deprecated /* This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config. */
+        @Deprecated /* `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment. */
         public Builder interface_(@Nullable Output<String> interface_) {
             $.interface_ = interface_;
             return this;
         }
 
         /**
-         * @param interface_ Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+         * @param interface_ (Optional, Deprecated)
+         * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+         * 
+         * &gt; **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
          * 
          * @return builder
          * 
          * @deprecated
-         * This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.
+         * `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
          * 
          */
-        @Deprecated /* This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config. */
+        @Deprecated /* `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment. */
         public Builder interface_(String interface_) {
             return interface_(Output.of(interface_));
         }

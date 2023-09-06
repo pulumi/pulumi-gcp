@@ -69,7 +69,7 @@ import (
 //
 // ## Import
 //
-// # DefaultObjectAccessControl can be imported using any of these accepted formats
+// DefaultObjectAccessControl can be imported using any of these accepted formats:
 //
 // ```sh
 //

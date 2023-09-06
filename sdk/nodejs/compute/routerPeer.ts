@@ -210,7 +210,7 @@ export class RouterPeer extends pulumi.CustomResource {
     public readonly advertiseMode!: pulumi.Output<string | undefined>;
     /**
      * User-specified list of prefix groups to advertise in custom
-     * mode, which can take one of the following options:
+     * mode, which currently supports the following option:
      */
     public readonly advertisedGroups!: pulumi.Output<string[] | undefined>;
     /**
@@ -396,7 +396,7 @@ export interface RouterPeerState {
     advertiseMode?: pulumi.Input<string>;
     /**
      * User-specified list of prefix groups to advertise in custom
-     * mode, which can take one of the following options:
+     * mode, which currently supports the following option:
      */
     advertisedGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -515,7 +515,7 @@ export interface RouterPeerArgs {
     advertiseMode?: pulumi.Input<string>;
     /**
      * User-specified list of prefix groups to advertise in custom
-     * mode, which can take one of the following options:
+     * mode, which currently supports the following option:
      */
     advertisedGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**

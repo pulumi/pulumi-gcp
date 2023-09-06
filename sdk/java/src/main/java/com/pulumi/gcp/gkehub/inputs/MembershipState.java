@@ -40,24 +40,30 @@ public final class MembershipState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Deprecated)
      * The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
      * 
+     * &gt; **Warning:** `description` is deprecated and will be removed in a future major release.
+     * 
      * @deprecated
-     * This field is unavailable in the GA provider and will be removed from the beta provider in a future release.
+     * `description` is deprecated and will be removed in a future major release.
      * 
      */
-    @Deprecated /* This field is unavailable in the GA provider and will be removed from the beta provider in a future release. */
+    @Deprecated /* `description` is deprecated and will be removed in a future major release. */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
+     * @return (Optional, Deprecated)
+     * The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
+     * 
+     * &gt; **Warning:** `description` is deprecated and will be removed in a future major release.
      * 
      * @deprecated
-     * This field is unavailable in the GA provider and will be removed from the beta provider in a future release.
+     * `description` is deprecated and will be removed in a future major release.
      * 
      */
-    @Deprecated /* This field is unavailable in the GA provider and will be removed from the beta provider in a future release. */
+    @Deprecated /* `description` is deprecated and will be removed in a future major release. */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
@@ -203,30 +209,36 @@ public final class MembershipState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
+         * @param description (Optional, Deprecated)
+         * The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
+         * 
+         * &gt; **Warning:** `description` is deprecated and will be removed in a future major release.
          * 
          * @return builder
          * 
          * @deprecated
-         * This field is unavailable in the GA provider and will be removed from the beta provider in a future release.
+         * `description` is deprecated and will be removed in a future major release.
          * 
          */
-        @Deprecated /* This field is unavailable in the GA provider and will be removed from the beta provider in a future release. */
+        @Deprecated /* `description` is deprecated and will be removed in a future major release. */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
         /**
-         * @param description The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
+         * @param description (Optional, Deprecated)
+         * The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
+         * 
+         * &gt; **Warning:** `description` is deprecated and will be removed in a future major release.
          * 
          * @return builder
          * 
          * @deprecated
-         * This field is unavailable in the GA provider and will be removed from the beta provider in a future release.
+         * `description` is deprecated and will be removed in a future major release.
          * 
          */
-        @Deprecated /* This field is unavailable in the GA provider and will be removed from the beta provider in a future release. */
+        @Deprecated /* `description` is deprecated and will be removed in a future major release. */
         public Builder description(String description) {
             return description(Output.of(description));
         }

@@ -193,6 +193,8 @@ type TargetInstance struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The resource URL for the security policy associated with this target instance.
+	SecurityPolicy pulumi.StringPtrOutput `pulumi:"securityPolicy"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// URL of the zone where the target instance resides.
@@ -263,6 +265,8 @@ type targetInstanceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The resource URL for the security policy associated with this target instance.
+	SecurityPolicy *string `pulumi:"securityPolicy"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// URL of the zone where the target instance resides.
@@ -301,6 +305,8 @@ type TargetInstanceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The resource URL for the security policy associated with this target instance.
+	SecurityPolicy pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
 	// URL of the zone where the target instance resides.
@@ -341,6 +347,8 @@ type targetInstanceArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The resource URL for the security policy associated with this target instance.
+	SecurityPolicy *string `pulumi:"securityPolicy"`
 	// URL of the zone where the target instance resides.
 	Zone *string `pulumi:"zone"`
 }
@@ -376,6 +384,8 @@ type TargetInstanceArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The resource URL for the security policy associated with this target instance.
+	SecurityPolicy pulumi.StringPtrInput
 	// URL of the zone where the target instance resides.
 	Zone pulumi.StringPtrInput
 }
@@ -517,6 +527,11 @@ func (o TargetInstanceOutput) Network() pulumi.StringPtrOutput {
 // If it is not provided, the provider project is used.
 func (o TargetInstanceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *TargetInstance) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The resource URL for the security policy associated with this target instance.
+func (o TargetInstanceOutput) SecurityPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TargetInstance) pulumi.StringPtrOutput { return v.SecurityPolicy }).(pulumi.StringPtrOutput)
 }
 
 // The URI of the created resource.

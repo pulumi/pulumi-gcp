@@ -68,6 +68,7 @@ public final class GetClusterResult {
     private List<GetClusterDnsConfig> dnsConfigs;
     private Boolean enableAutopilot;
     private Boolean enableBinaryAuthorization;
+    private Boolean enableFqdnNetworkPolicy;
     private Boolean enableIntranodeVisibility;
     private List<GetClusterEnableK8sBetaApi> enableK8sBetaApis;
     private Boolean enableKubernetesAlpha;
@@ -180,6 +181,9 @@ public final class GetClusterResult {
     }
     public Boolean enableBinaryAuthorization() {
         return this.enableBinaryAuthorization;
+    }
+    public Boolean enableFqdnNetworkPolicy() {
+        return this.enableFqdnNetworkPolicy;
     }
     public Boolean enableIntranodeVisibility() {
         return this.enableIntranodeVisibility;
@@ -380,6 +384,7 @@ public final class GetClusterResult {
         private List<GetClusterDnsConfig> dnsConfigs;
         private Boolean enableAutopilot;
         private Boolean enableBinaryAuthorization;
+        private Boolean enableFqdnNetworkPolicy;
         private Boolean enableIntranodeVisibility;
         private List<GetClusterEnableK8sBetaApi> enableK8sBetaApis;
         private Boolean enableKubernetesAlpha;
@@ -456,6 +461,7 @@ public final class GetClusterResult {
     	      this.dnsConfigs = defaults.dnsConfigs;
     	      this.enableAutopilot = defaults.enableAutopilot;
     	      this.enableBinaryAuthorization = defaults.enableBinaryAuthorization;
+    	      this.enableFqdnNetworkPolicy = defaults.enableFqdnNetworkPolicy;
     	      this.enableIntranodeVisibility = defaults.enableIntranodeVisibility;
     	      this.enableK8sBetaApis = defaults.enableK8sBetaApis;
     	      this.enableKubernetesAlpha = defaults.enableKubernetesAlpha;
@@ -627,6 +633,11 @@ public final class GetClusterResult {
         @CustomType.Setter
         public Builder enableBinaryAuthorization(Boolean enableBinaryAuthorization) {
             this.enableBinaryAuthorization = Objects.requireNonNull(enableBinaryAuthorization);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableFqdnNetworkPolicy(Boolean enableFqdnNetworkPolicy) {
+            this.enableFqdnNetworkPolicy = Objects.requireNonNull(enableFqdnNetworkPolicy);
             return this;
         }
         @CustomType.Setter
@@ -1009,6 +1020,7 @@ public final class GetClusterResult {
             o.dnsConfigs = dnsConfigs;
             o.enableAutopilot = enableAutopilot;
             o.enableBinaryAuthorization = enableBinaryAuthorization;
+            o.enableFqdnNetworkPolicy = enableFqdnNetworkPolicy;
             o.enableIntranodeVisibility = enableIntranodeVisibility;
             o.enableK8sBetaApis = enableK8sBetaApis;
             o.enableKubernetesAlpha = enableKubernetesAlpha;

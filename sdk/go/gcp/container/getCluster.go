@@ -85,6 +85,7 @@ type LookupClusterResult struct {
 	DnsConfigs                 []GetClusterDnsConfig                 `pulumi:"dnsConfigs"`
 	EnableAutopilot            bool                                  `pulumi:"enableAutopilot"`
 	EnableBinaryAuthorization  bool                                  `pulumi:"enableBinaryAuthorization"`
+	EnableFqdnNetworkPolicy    bool                                  `pulumi:"enableFqdnNetworkPolicy"`
 	EnableIntranodeVisibility  bool                                  `pulumi:"enableIntranodeVisibility"`
 	EnableK8sBetaApis          []GetClusterEnableK8sBetaApi          `pulumi:"enableK8sBetaApis"`
 	EnableKubernetesAlpha      bool                                  `pulumi:"enableKubernetesAlpha"`
@@ -255,6 +256,10 @@ func (o LookupClusterResultOutput) EnableAutopilot() pulumi.BoolOutput {
 
 func (o LookupClusterResultOutput) EnableBinaryAuthorization() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupClusterResult) bool { return v.EnableBinaryAuthorization }).(pulumi.BoolOutput)
+}
+
+func (o LookupClusterResultOutput) EnableFqdnNetworkPolicy() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupClusterResult) bool { return v.EnableFqdnNetworkPolicy }).(pulumi.BoolOutput)
 }
 
 func (o LookupClusterResultOutput) EnableIntranodeVisibility() pulumi.BoolOutput {

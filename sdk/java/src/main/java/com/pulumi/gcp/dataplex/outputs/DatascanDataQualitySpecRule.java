@@ -27,6 +27,12 @@ public final class DatascanDataQualitySpecRule {
      */
     private @Nullable String column;
     /**
+     * @return Description of the rule.
+     * The maximum length is 1,024 characters.
+     * 
+     */
+    private @Nullable String description;
+    /**
      * @return The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are [&#34;COMPLETENESS&#34;, &#34;ACCURACY&#34;, &#34;CONSISTENCY&#34;, &#34;VALIDITY&#34;, &#34;UNIQUENESS&#34;, &#34;INTEGRITY&#34;]
      * 
      */
@@ -36,6 +42,15 @@ public final class DatascanDataQualitySpecRule {
      * 
      */
     private @Nullable Boolean ignoreNull;
+    /**
+     * @return A mutable name for the rule.
+     * The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+     * The maximum length is 63 characters.
+     * Must start with a letter.
+     * Must end with a number or a letter.
+     * 
+     */
+    private @Nullable String name;
     /**
      * @return ColumnMap rule which evaluates whether each column value is null.
      * 
@@ -83,7 +98,7 @@ public final class DatascanDataQualitySpecRule {
      */
     private @Nullable Double threshold;
     /**
-     * @return ColumnAggregate rule which evaluates whether the column has duplicates.
+     * @return Row-level rule which evaluates whether each column value is unique.
      * 
      */
     private @Nullable DatascanDataQualitySpecRuleUniquenessExpectation uniquenessExpectation;
@@ -95,6 +110,14 @@ public final class DatascanDataQualitySpecRule {
      */
     public Optional<String> column() {
         return Optional.ofNullable(this.column);
+    }
+    /**
+     * @return Description of the rule.
+     * The maximum length is 1,024 characters.
+     * 
+     */
+    public Optional<String> description() {
+        return Optional.ofNullable(this.description);
     }
     /**
      * @return The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are [&#34;COMPLETENESS&#34;, &#34;ACCURACY&#34;, &#34;CONSISTENCY&#34;, &#34;VALIDITY&#34;, &#34;UNIQUENESS&#34;, &#34;INTEGRITY&#34;]
@@ -109,6 +132,17 @@ public final class DatascanDataQualitySpecRule {
      */
     public Optional<Boolean> ignoreNull() {
         return Optional.ofNullable(this.ignoreNull);
+    }
+    /**
+     * @return A mutable name for the rule.
+     * The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+     * The maximum length is 63 characters.
+     * Must start with a letter.
+     * Must end with a number or a letter.
+     * 
+     */
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
     /**
      * @return ColumnMap rule which evaluates whether each column value is null.
@@ -173,7 +207,7 @@ public final class DatascanDataQualitySpecRule {
         return Optional.ofNullable(this.threshold);
     }
     /**
-     * @return ColumnAggregate rule which evaluates whether the column has duplicates.
+     * @return Row-level rule which evaluates whether each column value is unique.
      * 
      */
     public Optional<DatascanDataQualitySpecRuleUniquenessExpectation> uniquenessExpectation() {
@@ -190,8 +224,10 @@ public final class DatascanDataQualitySpecRule {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String column;
+        private @Nullable String description;
         private String dimension;
         private @Nullable Boolean ignoreNull;
+        private @Nullable String name;
         private @Nullable DatascanDataQualitySpecRuleNonNullExpectation nonNullExpectation;
         private @Nullable DatascanDataQualitySpecRuleRangeExpectation rangeExpectation;
         private @Nullable DatascanDataQualitySpecRuleRegexExpectation regexExpectation;
@@ -205,8 +241,10 @@ public final class DatascanDataQualitySpecRule {
         public Builder(DatascanDataQualitySpecRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.column = defaults.column;
+    	      this.description = defaults.description;
     	      this.dimension = defaults.dimension;
     	      this.ignoreNull = defaults.ignoreNull;
+    	      this.name = defaults.name;
     	      this.nonNullExpectation = defaults.nonNullExpectation;
     	      this.rangeExpectation = defaults.rangeExpectation;
     	      this.regexExpectation = defaults.regexExpectation;
@@ -224,6 +262,11 @@ public final class DatascanDataQualitySpecRule {
             return this;
         }
         @CustomType.Setter
+        public Builder description(@Nullable String description) {
+            this.description = description;
+            return this;
+        }
+        @CustomType.Setter
         public Builder dimension(String dimension) {
             this.dimension = Objects.requireNonNull(dimension);
             return this;
@@ -231,6 +274,11 @@ public final class DatascanDataQualitySpecRule {
         @CustomType.Setter
         public Builder ignoreNull(@Nullable Boolean ignoreNull) {
             this.ignoreNull = ignoreNull;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder name(@Nullable String name) {
+            this.name = name;
             return this;
         }
         @CustomType.Setter
@@ -281,8 +329,10 @@ public final class DatascanDataQualitySpecRule {
         public DatascanDataQualitySpecRule build() {
             final var o = new DatascanDataQualitySpecRule();
             o.column = column;
+            o.description = description;
             o.dimension = dimension;
             o.ignoreNull = ignoreNull;
+            o.name = name;
             o.nonNullExpectation = nonNullExpectation;
             o.rangeExpectation = rangeExpectation;
             o.regexExpectation = regexExpectation;

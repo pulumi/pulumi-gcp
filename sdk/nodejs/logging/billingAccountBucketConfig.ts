@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * This resource can be imported using the following format
+ * This resource can be imported using the following format:
  *
  * ```sh
  *  $ pulumi import gcp:logging/billingAccountBucketConfig:BillingAccountBucketConfig default billingAccounts/{{billingAccount}}/locations/{{location}}/buckets/{{bucket_id}}

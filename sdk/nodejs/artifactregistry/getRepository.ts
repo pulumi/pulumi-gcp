@@ -58,6 +58,8 @@ export interface GetRepositoryArgs {
  * A collection of values returned by getRepository.
  */
 export interface GetRepositoryResult {
+    readonly cleanupPolicies: outputs.artifactregistry.GetRepositoryCleanupPolicy[];
+    readonly cleanupPolicyDryRun: boolean;
     readonly createTime: string;
     readonly description: string;
     readonly dockerConfigs: outputs.artifactregistry.GetRepositoryDockerConfig[];

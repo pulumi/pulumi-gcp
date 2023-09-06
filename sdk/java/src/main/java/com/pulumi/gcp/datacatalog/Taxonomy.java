@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Taxonomy can be imported using any of these accepted formats
+ * Taxonomy can be imported using any of these accepted formats:
  * 
  * ```sh
  *  $ pulumi import gcp:datacatalog/taxonomy:Taxonomy default {{name}}

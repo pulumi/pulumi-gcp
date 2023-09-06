@@ -18,6 +18,8 @@ import com.pulumi.gcp.alloydb.outputs.ClusterEncryptionConfig;
 import com.pulumi.gcp.alloydb.outputs.ClusterEncryptionInfo;
 import com.pulumi.gcp.alloydb.outputs.ClusterInitialUser;
 import com.pulumi.gcp.alloydb.outputs.ClusterMigrationSource;
+import com.pulumi.gcp.alloydb.outputs.ClusterRestoreBackupSource;
+import com.pulumi.gcp.alloydb.outputs.ClusterRestoreContinuousBackupSource;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -139,6 +141,114 @@ import javax.annotation.Nullable;
  *                 .labels(Map.of(&#34;test&#34;, &#34;alloydb-cluster-full&#34;))
  *                 .build())
  *             .labels(Map.of(&#34;test&#34;, &#34;alloydb-cluster-full&#34;))
+ *             .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *     }
+ * }
+ * ```
+ * ### Alloydb Cluster Restore
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.ComputeFunctions;
+ * import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
+ * import com.pulumi.gcp.alloydb.Cluster;
+ * import com.pulumi.gcp.alloydb.ClusterArgs;
+ * import com.pulumi.gcp.alloydb.inputs.ClusterInitialUserArgs;
+ * import com.pulumi.gcp.compute.GlobalAddress;
+ * import com.pulumi.gcp.compute.GlobalAddressArgs;
+ * import com.pulumi.gcp.servicenetworking.Connection;
+ * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
+ * import com.pulumi.gcp.alloydb.Instance;
+ * import com.pulumi.gcp.alloydb.InstanceArgs;
+ * import com.pulumi.gcp.alloydb.inputs.InstanceMachineConfigArgs;
+ * import com.pulumi.gcp.alloydb.Backup;
+ * import com.pulumi.gcp.alloydb.BackupArgs;
+ * import com.pulumi.gcp.alloydb.inputs.ClusterRestoreBackupSourceArgs;
+ * import com.pulumi.gcp.alloydb.inputs.ClusterRestoreContinuousBackupSourceArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var default = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
+ *             .name(&#34;alloydb-network&#34;)
+ *             .build());
+ * 
+ *         var sourceCluster = new Cluster(&#34;sourceCluster&#34;, ClusterArgs.builder()        
+ *             .clusterId(&#34;alloydb-source-cluster&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .network(default_.id())
+ *             .initialUser(ClusterInitialUserArgs.builder()
+ *                 .password(&#34;alloydb-source-cluster&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var privateIpAlloc = new GlobalAddress(&#34;privateIpAlloc&#34;, GlobalAddressArgs.builder()        
+ *             .addressType(&#34;INTERNAL&#34;)
+ *             .purpose(&#34;VPC_PEERING&#34;)
+ *             .prefixLength(16)
+ *             .network(default_.id())
+ *             .build());
+ * 
+ *         var vpcConnection = new Connection(&#34;vpcConnection&#34;, ConnectionArgs.builder()        
+ *             .network(default_.id())
+ *             .service(&#34;servicenetworking.googleapis.com&#34;)
+ *             .reservedPeeringRanges(privateIpAlloc.name())
+ *             .build());
+ * 
+ *         var sourceInstance = new Instance(&#34;sourceInstance&#34;, InstanceArgs.builder()        
+ *             .cluster(sourceCluster.name())
+ *             .instanceId(&#34;alloydb-instance&#34;)
+ *             .instanceType(&#34;PRIMARY&#34;)
+ *             .machineConfig(InstanceMachineConfigArgs.builder()
+ *                 .cpuCount(2)
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(vpcConnection)
+ *                 .build());
+ * 
+ *         var sourceBackup = new Backup(&#34;sourceBackup&#34;, BackupArgs.builder()        
+ *             .backupId(&#34;alloydb-backup&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .clusterName(sourceCluster.name())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(sourceInstance)
+ *                 .build());
+ * 
+ *         var restoredFromBackup = new Cluster(&#34;restoredFromBackup&#34;, ClusterArgs.builder()        
+ *             .clusterId(&#34;alloydb-backup-restored&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .network(default_.id())
+ *             .restoreBackupSource(ClusterRestoreBackupSourceArgs.builder()
+ *                 .backupName(sourceBackup.name())
+ *                 .build())
+ *             .build());
+ * 
+ *         var restoredViaPitr = new Cluster(&#34;restoredViaPitr&#34;, ClusterArgs.builder()        
+ *             .clusterId(&#34;alloydb-pitr-restored&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .network(default_.id())
+ *             .restoreContinuousBackupSource(ClusterRestoreContinuousBackupSourceArgs.builder()
+ *                 .cluster(sourceCluster.name())
+ *                 .pointInTime(&#34;2023-08-03T19:19:00.094Z&#34;)
+ *                 .build())
  *             .build());
  * 
  *         final var project = OrganizationsFunctions.getProject();
@@ -421,6 +531,38 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * The source when restoring from a backup. Conflicts with &#39;restore_continuous_backup_source&#39;, both can&#39;t be set together.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="restoreBackupSource", type=ClusterRestoreBackupSource.class, parameters={})
+    private Output</* @Nullable */ ClusterRestoreBackupSource> restoreBackupSource;
+
+    /**
+     * @return The source when restoring from a backup. Conflicts with &#39;restore_continuous_backup_source&#39;, both can&#39;t be set together.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ClusterRestoreBackupSource>> restoreBackupSource() {
+        return Codegen.optional(this.restoreBackupSource);
+    }
+    /**
+     * The source when restoring via point in time recovery (PITR). Conflicts with &#39;restore_backup_source&#39;, both can&#39;t be set together.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="restoreContinuousBackupSource", type=ClusterRestoreContinuousBackupSource.class, parameters={})
+    private Output</* @Nullable */ ClusterRestoreContinuousBackupSource> restoreContinuousBackupSource;
+
+    /**
+     * @return The source when restoring via point in time recovery (PITR). Conflicts with &#39;restore_backup_source&#39;, both can&#39;t be set together.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ClusterRestoreContinuousBackupSource>> restoreContinuousBackupSource() {
+        return Codegen.optional(this.restoreContinuousBackupSource);
     }
     /**
      * The system-generated UID of the resource.

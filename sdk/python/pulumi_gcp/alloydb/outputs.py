@@ -28,6 +28,8 @@ __all__ = [
     'ClusterEncryptionInfo',
     'ClusterInitialUser',
     'ClusterMigrationSource',
+    'ClusterRestoreBackupSource',
+    'ClusterRestoreContinuousBackupSource',
     'InstanceMachineConfig',
     'InstanceReadPoolConfig',
     'GetLocationsLocationResult',
@@ -489,7 +491,7 @@ class ClusterBackupSource(dict):
     def __init__(__self__, *,
                  backup_name: Optional[str] = None):
         """
-        :param str backup_name: The name of the backup resource.
+        :param str backup_name: The name of the backup that this cluster is restored from.
         """
         if backup_name is not None:
             pulumi.set(__self__, "backup_name", backup_name)
@@ -498,7 +500,7 @@ class ClusterBackupSource(dict):
     @pulumi.getter(name="backupName")
     def backup_name(self) -> Optional[str]:
         """
-        The name of the backup resource.
+        The name of the backup that this cluster is restored from.
         """
         return pulumi.get(self, "backup_name")
 
@@ -929,6 +931,87 @@ class ClusterMigrationSource(dict):
         Type of migration source.
         """
         return pulumi.get(self, "source_type")
+
+
+@pulumi.output_type
+class ClusterRestoreBackupSource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "backupName":
+            suggest = "backup_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterRestoreBackupSource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterRestoreBackupSource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterRestoreBackupSource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 backup_name: str):
+        """
+        :param str backup_name: The name of the backup that this cluster is restored from.
+        """
+        pulumi.set(__self__, "backup_name", backup_name)
+
+    @property
+    @pulumi.getter(name="backupName")
+    def backup_name(self) -> str:
+        """
+        The name of the backup that this cluster is restored from.
+        """
+        return pulumi.get(self, "backup_name")
+
+
+@pulumi.output_type
+class ClusterRestoreContinuousBackupSource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pointInTime":
+            suggest = "point_in_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterRestoreContinuousBackupSource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterRestoreContinuousBackupSource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterRestoreContinuousBackupSource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cluster: str,
+                 point_in_time: str):
+        """
+        :param str cluster: The name of the source cluster that this cluster is restored from.
+        :param str point_in_time: The point in time that this cluster is restored to, in RFC 3339 format.
+        """
+        pulumi.set(__self__, "cluster", cluster)
+        pulumi.set(__self__, "point_in_time", point_in_time)
+
+    @property
+    @pulumi.getter
+    def cluster(self) -> str:
+        """
+        The name of the source cluster that this cluster is restored from.
+        """
+        return pulumi.get(self, "cluster")
+
+    @property
+    @pulumi.getter(name="pointInTime")
+    def point_in_time(self) -> str:
+        """
+        The point in time that this cluster is restored to, in RFC 3339 format.
+        """
+        return pulumi.get(self, "point_in_time")
 
 
 @pulumi.output_type

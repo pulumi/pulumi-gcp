@@ -227,7 +227,9 @@ type Instance struct {
 	// (Optional, Deprecated)
 	// The name of the Filestore zone of the instance.
 	//
-	// Deprecated: Deprecated in favor of location.
+	// > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
+	//
+	// Deprecated: `zone` is deprecated and will be removed in a future major release. Use `location` instead.
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
@@ -302,7 +304,9 @@ type instanceState struct {
 	// (Optional, Deprecated)
 	// The name of the Filestore zone of the instance.
 	//
-	// Deprecated: Deprecated in favor of location.
+	// > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
+	//
+	// Deprecated: `zone` is deprecated and will be removed in a future major release. Use `location` instead.
 	Zone *string `pulumi:"zone"`
 }
 
@@ -339,7 +343,9 @@ type InstanceState struct {
 	// (Optional, Deprecated)
 	// The name of the Filestore zone of the instance.
 	//
-	// Deprecated: Deprecated in favor of location.
+	// > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
+	//
+	// Deprecated: `zone` is deprecated and will be removed in a future major release. Use `location` instead.
 	Zone pulumi.StringPtrInput
 }
 
@@ -375,7 +381,9 @@ type instanceArgs struct {
 	// (Optional, Deprecated)
 	// The name of the Filestore zone of the instance.
 	//
-	// Deprecated: Deprecated in favor of location.
+	// > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
+	//
+	// Deprecated: `zone` is deprecated and will be removed in a future major release. Use `location` instead.
 	Zone *string `pulumi:"zone"`
 }
 
@@ -408,7 +416,9 @@ type InstanceArgs struct {
 	// (Optional, Deprecated)
 	// The name of the Filestore zone of the instance.
 	//
-	// Deprecated: Deprecated in favor of location.
+	// > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
+	//
+	// Deprecated: `zone` is deprecated and will be removed in a future major release. Use `location` instead.
 	Zone pulumi.StringPtrInput
 }
 
@@ -564,7 +574,9 @@ func (o InstanceOutput) Tier() pulumi.StringOutput {
 // (Optional, Deprecated)
 // The name of the Filestore zone of the instance.
 //
-// Deprecated: Deprecated in favor of location.
+// > **Warning:** `zone` is deprecated and will be removed in a future major release. Use `location` instead.
+//
+// Deprecated: `zone` is deprecated and will be removed in a future major release. Use `location` instead.
 func (o InstanceOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }

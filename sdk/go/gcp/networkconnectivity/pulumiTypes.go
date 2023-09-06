@@ -263,6 +263,525 @@ func (o ServiceConnectionPolicyPscConfigPtrOutput) Subnetworks() pulumi.StringAr
 	}).(pulumi.StringArrayOutput)
 }
 
+type ServiceConnectionPolicyPscConnection struct {
+	// The resource reference of the consumer address.
+	ConsumerAddress *string `pulumi:"consumerAddress"`
+	// The resource reference of the PSC Forwarding Rule within the consumer VPC.
+	ConsumerForwardingRule *string `pulumi:"consumerForwardingRule"`
+	// The project where the PSC connection is created.
+	ConsumerTargetProject *string `pulumi:"consumerTargetProject"`
+	// The most recent error during operating this connection.
+	// Structure is documented below.
+	Error *ServiceConnectionPolicyPscConnectionError `pulumi:"error"`
+	// The error info for the latest error during operating this connection.
+	// Structure is documented below.
+	ErrorInfo *ServiceConnectionPolicyPscConnectionErrorInfo `pulumi:"errorInfo"`
+	// The error type indicates whether the error is consumer facing, producer
+	// facing or system internal.
+	// Possible values are: `CONNECTION_ERROR_TYPE_UNSPECIFIED`, `ERROR_INTERNAL`, `ERROR_CONSUMER_SIDE`, `ERROR_PRODUCER_SIDE`.
+	ErrorType *string `pulumi:"errorType"`
+	// The last Compute Engine operation to setup PSC connection.
+	GceOperation *string `pulumi:"gceOperation"`
+	// The PSC connection id of the PSC forwarding rule.
+	PscConnectionId *string `pulumi:"pscConnectionId"`
+	// The state of the PSC connection.
+	// Possible values are: `STATE_UNSPECIFIED`, `ACTIVE`, `CREATING`, `DELETING`, `FAILED`.
+	State *string `pulumi:"state"`
+}
+
+// ServiceConnectionPolicyPscConnectionInput is an input type that accepts ServiceConnectionPolicyPscConnectionArgs and ServiceConnectionPolicyPscConnectionOutput values.
+// You can construct a concrete instance of `ServiceConnectionPolicyPscConnectionInput` via:
+//
+//	ServiceConnectionPolicyPscConnectionArgs{...}
+type ServiceConnectionPolicyPscConnectionInput interface {
+	pulumi.Input
+
+	ToServiceConnectionPolicyPscConnectionOutput() ServiceConnectionPolicyPscConnectionOutput
+	ToServiceConnectionPolicyPscConnectionOutputWithContext(context.Context) ServiceConnectionPolicyPscConnectionOutput
+}
+
+type ServiceConnectionPolicyPscConnectionArgs struct {
+	// The resource reference of the consumer address.
+	ConsumerAddress pulumi.StringPtrInput `pulumi:"consumerAddress"`
+	// The resource reference of the PSC Forwarding Rule within the consumer VPC.
+	ConsumerForwardingRule pulumi.StringPtrInput `pulumi:"consumerForwardingRule"`
+	// The project where the PSC connection is created.
+	ConsumerTargetProject pulumi.StringPtrInput `pulumi:"consumerTargetProject"`
+	// The most recent error during operating this connection.
+	// Structure is documented below.
+	Error ServiceConnectionPolicyPscConnectionErrorPtrInput `pulumi:"error"`
+	// The error info for the latest error during operating this connection.
+	// Structure is documented below.
+	ErrorInfo ServiceConnectionPolicyPscConnectionErrorInfoPtrInput `pulumi:"errorInfo"`
+	// The error type indicates whether the error is consumer facing, producer
+	// facing or system internal.
+	// Possible values are: `CONNECTION_ERROR_TYPE_UNSPECIFIED`, `ERROR_INTERNAL`, `ERROR_CONSUMER_SIDE`, `ERROR_PRODUCER_SIDE`.
+	ErrorType pulumi.StringPtrInput `pulumi:"errorType"`
+	// The last Compute Engine operation to setup PSC connection.
+	GceOperation pulumi.StringPtrInput `pulumi:"gceOperation"`
+	// The PSC connection id of the PSC forwarding rule.
+	PscConnectionId pulumi.StringPtrInput `pulumi:"pscConnectionId"`
+	// The state of the PSC connection.
+	// Possible values are: `STATE_UNSPECIFIED`, `ACTIVE`, `CREATING`, `DELETING`, `FAILED`.
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (ServiceConnectionPolicyPscConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceConnectionPolicyPscConnection)(nil)).Elem()
+}
+
+func (i ServiceConnectionPolicyPscConnectionArgs) ToServiceConnectionPolicyPscConnectionOutput() ServiceConnectionPolicyPscConnectionOutput {
+	return i.ToServiceConnectionPolicyPscConnectionOutputWithContext(context.Background())
+}
+
+func (i ServiceConnectionPolicyPscConnectionArgs) ToServiceConnectionPolicyPscConnectionOutputWithContext(ctx context.Context) ServiceConnectionPolicyPscConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceConnectionPolicyPscConnectionOutput)
+}
+
+// ServiceConnectionPolicyPscConnectionArrayInput is an input type that accepts ServiceConnectionPolicyPscConnectionArray and ServiceConnectionPolicyPscConnectionArrayOutput values.
+// You can construct a concrete instance of `ServiceConnectionPolicyPscConnectionArrayInput` via:
+//
+//	ServiceConnectionPolicyPscConnectionArray{ ServiceConnectionPolicyPscConnectionArgs{...} }
+type ServiceConnectionPolicyPscConnectionArrayInput interface {
+	pulumi.Input
+
+	ToServiceConnectionPolicyPscConnectionArrayOutput() ServiceConnectionPolicyPscConnectionArrayOutput
+	ToServiceConnectionPolicyPscConnectionArrayOutputWithContext(context.Context) ServiceConnectionPolicyPscConnectionArrayOutput
+}
+
+type ServiceConnectionPolicyPscConnectionArray []ServiceConnectionPolicyPscConnectionInput
+
+func (ServiceConnectionPolicyPscConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceConnectionPolicyPscConnection)(nil)).Elem()
+}
+
+func (i ServiceConnectionPolicyPscConnectionArray) ToServiceConnectionPolicyPscConnectionArrayOutput() ServiceConnectionPolicyPscConnectionArrayOutput {
+	return i.ToServiceConnectionPolicyPscConnectionArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceConnectionPolicyPscConnectionArray) ToServiceConnectionPolicyPscConnectionArrayOutputWithContext(ctx context.Context) ServiceConnectionPolicyPscConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceConnectionPolicyPscConnectionArrayOutput)
+}
+
+type ServiceConnectionPolicyPscConnectionOutput struct{ *pulumi.OutputState }
+
+func (ServiceConnectionPolicyPscConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceConnectionPolicyPscConnection)(nil)).Elem()
+}
+
+func (o ServiceConnectionPolicyPscConnectionOutput) ToServiceConnectionPolicyPscConnectionOutput() ServiceConnectionPolicyPscConnectionOutput {
+	return o
+}
+
+func (o ServiceConnectionPolicyPscConnectionOutput) ToServiceConnectionPolicyPscConnectionOutputWithContext(ctx context.Context) ServiceConnectionPolicyPscConnectionOutput {
+	return o
+}
+
+// The resource reference of the consumer address.
+func (o ServiceConnectionPolicyPscConnectionOutput) ConsumerAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceConnectionPolicyPscConnection) *string { return v.ConsumerAddress }).(pulumi.StringPtrOutput)
+}
+
+// The resource reference of the PSC Forwarding Rule within the consumer VPC.
+func (o ServiceConnectionPolicyPscConnectionOutput) ConsumerForwardingRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceConnectionPolicyPscConnection) *string { return v.ConsumerForwardingRule }).(pulumi.StringPtrOutput)
+}
+
+// The project where the PSC connection is created.
+func (o ServiceConnectionPolicyPscConnectionOutput) ConsumerTargetProject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceConnectionPolicyPscConnection) *string { return v.ConsumerTargetProject }).(pulumi.StringPtrOutput)
+}
+
+// The most recent error during operating this connection.
+// Structure is documented below.
+func (o ServiceConnectionPolicyPscConnectionOutput) Error() ServiceConnectionPolicyPscConnectionErrorPtrOutput {
+	return o.ApplyT(func(v ServiceConnectionPolicyPscConnection) *ServiceConnectionPolicyPscConnectionError {
+		return v.Error
+	}).(ServiceConnectionPolicyPscConnectionErrorPtrOutput)
+}
+
+// The error info for the latest error during operating this connection.
+// Structure is documented below.
+func (o ServiceConnectionPolicyPscConnectionOutput) ErrorInfo() ServiceConnectionPolicyPscConnectionErrorInfoPtrOutput {
+	return o.ApplyT(func(v ServiceConnectionPolicyPscConnection) *ServiceConnectionPolicyPscConnectionErrorInfo {
+		return v.ErrorInfo
+	}).(ServiceConnectionPolicyPscConnectionErrorInfoPtrOutput)
+}
+
+// The error type indicates whether the error is consumer facing, producer
+// facing or system internal.
+// Possible values are: `CONNECTION_ERROR_TYPE_UNSPECIFIED`, `ERROR_INTERNAL`, `ERROR_CONSUMER_SIDE`, `ERROR_PRODUCER_SIDE`.
+func (o ServiceConnectionPolicyPscConnectionOutput) ErrorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceConnectionPolicyPscConnection) *string { return v.ErrorType }).(pulumi.StringPtrOutput)
+}
+
+// The last Compute Engine operation to setup PSC connection.
+func (o ServiceConnectionPolicyPscConnectionOutput) GceOperation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceConnectionPolicyPscConnection) *string { return v.GceOperation }).(pulumi.StringPtrOutput)
+}
+
+// The PSC connection id of the PSC forwarding rule.
+func (o ServiceConnectionPolicyPscConnectionOutput) PscConnectionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceConnectionPolicyPscConnection) *string { return v.PscConnectionId }).(pulumi.StringPtrOutput)
+}
+
+// The state of the PSC connection.
+// Possible values are: `STATE_UNSPECIFIED`, `ACTIVE`, `CREATING`, `DELETING`, `FAILED`.
+func (o ServiceConnectionPolicyPscConnectionOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceConnectionPolicyPscConnection) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type ServiceConnectionPolicyPscConnectionArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceConnectionPolicyPscConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceConnectionPolicyPscConnection)(nil)).Elem()
+}
+
+func (o ServiceConnectionPolicyPscConnectionArrayOutput) ToServiceConnectionPolicyPscConnectionArrayOutput() ServiceConnectionPolicyPscConnectionArrayOutput {
+	return o
+}
+
+func (o ServiceConnectionPolicyPscConnectionArrayOutput) ToServiceConnectionPolicyPscConnectionArrayOutputWithContext(ctx context.Context) ServiceConnectionPolicyPscConnectionArrayOutput {
+	return o
+}
+
+func (o ServiceConnectionPolicyPscConnectionArrayOutput) Index(i pulumi.IntInput) ServiceConnectionPolicyPscConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceConnectionPolicyPscConnection {
+		return vs[0].([]ServiceConnectionPolicyPscConnection)[vs[1].(int)]
+	}).(ServiceConnectionPolicyPscConnectionOutput)
+}
+
+type ServiceConnectionPolicyPscConnectionError struct {
+	// The status code, which should be an enum value of [google.rpc.Code][].
+	Code *int `pulumi:"code"`
+	// A developer-facing error message.
+	Message *string `pulumi:"message"`
+}
+
+// ServiceConnectionPolicyPscConnectionErrorInput is an input type that accepts ServiceConnectionPolicyPscConnectionErrorArgs and ServiceConnectionPolicyPscConnectionErrorOutput values.
+// You can construct a concrete instance of `ServiceConnectionPolicyPscConnectionErrorInput` via:
+//
+//	ServiceConnectionPolicyPscConnectionErrorArgs{...}
+type ServiceConnectionPolicyPscConnectionErrorInput interface {
+	pulumi.Input
+
+	ToServiceConnectionPolicyPscConnectionErrorOutput() ServiceConnectionPolicyPscConnectionErrorOutput
+	ToServiceConnectionPolicyPscConnectionErrorOutputWithContext(context.Context) ServiceConnectionPolicyPscConnectionErrorOutput
+}
+
+type ServiceConnectionPolicyPscConnectionErrorArgs struct {
+	// The status code, which should be an enum value of [google.rpc.Code][].
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// A developer-facing error message.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (ServiceConnectionPolicyPscConnectionErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceConnectionPolicyPscConnectionError)(nil)).Elem()
+}
+
+func (i ServiceConnectionPolicyPscConnectionErrorArgs) ToServiceConnectionPolicyPscConnectionErrorOutput() ServiceConnectionPolicyPscConnectionErrorOutput {
+	return i.ToServiceConnectionPolicyPscConnectionErrorOutputWithContext(context.Background())
+}
+
+func (i ServiceConnectionPolicyPscConnectionErrorArgs) ToServiceConnectionPolicyPscConnectionErrorOutputWithContext(ctx context.Context) ServiceConnectionPolicyPscConnectionErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceConnectionPolicyPscConnectionErrorOutput)
+}
+
+func (i ServiceConnectionPolicyPscConnectionErrorArgs) ToServiceConnectionPolicyPscConnectionErrorPtrOutput() ServiceConnectionPolicyPscConnectionErrorPtrOutput {
+	return i.ToServiceConnectionPolicyPscConnectionErrorPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceConnectionPolicyPscConnectionErrorArgs) ToServiceConnectionPolicyPscConnectionErrorPtrOutputWithContext(ctx context.Context) ServiceConnectionPolicyPscConnectionErrorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceConnectionPolicyPscConnectionErrorOutput).ToServiceConnectionPolicyPscConnectionErrorPtrOutputWithContext(ctx)
+}
+
+// ServiceConnectionPolicyPscConnectionErrorPtrInput is an input type that accepts ServiceConnectionPolicyPscConnectionErrorArgs, ServiceConnectionPolicyPscConnectionErrorPtr and ServiceConnectionPolicyPscConnectionErrorPtrOutput values.
+// You can construct a concrete instance of `ServiceConnectionPolicyPscConnectionErrorPtrInput` via:
+//
+//	        ServiceConnectionPolicyPscConnectionErrorArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceConnectionPolicyPscConnectionErrorPtrInput interface {
+	pulumi.Input
+
+	ToServiceConnectionPolicyPscConnectionErrorPtrOutput() ServiceConnectionPolicyPscConnectionErrorPtrOutput
+	ToServiceConnectionPolicyPscConnectionErrorPtrOutputWithContext(context.Context) ServiceConnectionPolicyPscConnectionErrorPtrOutput
+}
+
+type serviceConnectionPolicyPscConnectionErrorPtrType ServiceConnectionPolicyPscConnectionErrorArgs
+
+func ServiceConnectionPolicyPscConnectionErrorPtr(v *ServiceConnectionPolicyPscConnectionErrorArgs) ServiceConnectionPolicyPscConnectionErrorPtrInput {
+	return (*serviceConnectionPolicyPscConnectionErrorPtrType)(v)
+}
+
+func (*serviceConnectionPolicyPscConnectionErrorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceConnectionPolicyPscConnectionError)(nil)).Elem()
+}
+
+func (i *serviceConnectionPolicyPscConnectionErrorPtrType) ToServiceConnectionPolicyPscConnectionErrorPtrOutput() ServiceConnectionPolicyPscConnectionErrorPtrOutput {
+	return i.ToServiceConnectionPolicyPscConnectionErrorPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceConnectionPolicyPscConnectionErrorPtrType) ToServiceConnectionPolicyPscConnectionErrorPtrOutputWithContext(ctx context.Context) ServiceConnectionPolicyPscConnectionErrorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceConnectionPolicyPscConnectionErrorPtrOutput)
+}
+
+type ServiceConnectionPolicyPscConnectionErrorOutput struct{ *pulumi.OutputState }
+
+func (ServiceConnectionPolicyPscConnectionErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceConnectionPolicyPscConnectionError)(nil)).Elem()
+}
+
+func (o ServiceConnectionPolicyPscConnectionErrorOutput) ToServiceConnectionPolicyPscConnectionErrorOutput() ServiceConnectionPolicyPscConnectionErrorOutput {
+	return o
+}
+
+func (o ServiceConnectionPolicyPscConnectionErrorOutput) ToServiceConnectionPolicyPscConnectionErrorOutputWithContext(ctx context.Context) ServiceConnectionPolicyPscConnectionErrorOutput {
+	return o
+}
+
+func (o ServiceConnectionPolicyPscConnectionErrorOutput) ToServiceConnectionPolicyPscConnectionErrorPtrOutput() ServiceConnectionPolicyPscConnectionErrorPtrOutput {
+	return o.ToServiceConnectionPolicyPscConnectionErrorPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceConnectionPolicyPscConnectionErrorOutput) ToServiceConnectionPolicyPscConnectionErrorPtrOutputWithContext(ctx context.Context) ServiceConnectionPolicyPscConnectionErrorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceConnectionPolicyPscConnectionError) *ServiceConnectionPolicyPscConnectionError {
+		return &v
+	}).(ServiceConnectionPolicyPscConnectionErrorPtrOutput)
+}
+
+// The status code, which should be an enum value of [google.rpc.Code][].
+func (o ServiceConnectionPolicyPscConnectionErrorOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceConnectionPolicyPscConnectionError) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// A developer-facing error message.
+func (o ServiceConnectionPolicyPscConnectionErrorOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceConnectionPolicyPscConnectionError) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type ServiceConnectionPolicyPscConnectionErrorPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceConnectionPolicyPscConnectionErrorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceConnectionPolicyPscConnectionError)(nil)).Elem()
+}
+
+func (o ServiceConnectionPolicyPscConnectionErrorPtrOutput) ToServiceConnectionPolicyPscConnectionErrorPtrOutput() ServiceConnectionPolicyPscConnectionErrorPtrOutput {
+	return o
+}
+
+func (o ServiceConnectionPolicyPscConnectionErrorPtrOutput) ToServiceConnectionPolicyPscConnectionErrorPtrOutputWithContext(ctx context.Context) ServiceConnectionPolicyPscConnectionErrorPtrOutput {
+	return o
+}
+
+func (o ServiceConnectionPolicyPscConnectionErrorPtrOutput) Elem() ServiceConnectionPolicyPscConnectionErrorOutput {
+	return o.ApplyT(func(v *ServiceConnectionPolicyPscConnectionError) ServiceConnectionPolicyPscConnectionError {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceConnectionPolicyPscConnectionError
+		return ret
+	}).(ServiceConnectionPolicyPscConnectionErrorOutput)
+}
+
+// The status code, which should be an enum value of [google.rpc.Code][].
+func (o ServiceConnectionPolicyPscConnectionErrorPtrOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceConnectionPolicyPscConnectionError) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Code
+	}).(pulumi.IntPtrOutput)
+}
+
+// A developer-facing error message.
+func (o ServiceConnectionPolicyPscConnectionErrorPtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceConnectionPolicyPscConnectionError) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceConnectionPolicyPscConnectionErrorInfo struct {
+	// The logical grouping to which the "reason" belongs.
+	Domain *string `pulumi:"domain"`
+	// Additional structured details about this error.
+	Metadata map[string]string `pulumi:"metadata"`
+	// The reason of the error.
+	Reason *string `pulumi:"reason"`
+}
+
+// ServiceConnectionPolicyPscConnectionErrorInfoInput is an input type that accepts ServiceConnectionPolicyPscConnectionErrorInfoArgs and ServiceConnectionPolicyPscConnectionErrorInfoOutput values.
+// You can construct a concrete instance of `ServiceConnectionPolicyPscConnectionErrorInfoInput` via:
+//
+//	ServiceConnectionPolicyPscConnectionErrorInfoArgs{...}
+type ServiceConnectionPolicyPscConnectionErrorInfoInput interface {
+	pulumi.Input
+
+	ToServiceConnectionPolicyPscConnectionErrorInfoOutput() ServiceConnectionPolicyPscConnectionErrorInfoOutput
+	ToServiceConnectionPolicyPscConnectionErrorInfoOutputWithContext(context.Context) ServiceConnectionPolicyPscConnectionErrorInfoOutput
+}
+
+type ServiceConnectionPolicyPscConnectionErrorInfoArgs struct {
+	// The logical grouping to which the "reason" belongs.
+	Domain pulumi.StringPtrInput `pulumi:"domain"`
+	// Additional structured details about this error.
+	Metadata pulumi.StringMapInput `pulumi:"metadata"`
+	// The reason of the error.
+	Reason pulumi.StringPtrInput `pulumi:"reason"`
+}
+
+func (ServiceConnectionPolicyPscConnectionErrorInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceConnectionPolicyPscConnectionErrorInfo)(nil)).Elem()
+}
+
+func (i ServiceConnectionPolicyPscConnectionErrorInfoArgs) ToServiceConnectionPolicyPscConnectionErrorInfoOutput() ServiceConnectionPolicyPscConnectionErrorInfoOutput {
+	return i.ToServiceConnectionPolicyPscConnectionErrorInfoOutputWithContext(context.Background())
+}
+
+func (i ServiceConnectionPolicyPscConnectionErrorInfoArgs) ToServiceConnectionPolicyPscConnectionErrorInfoOutputWithContext(ctx context.Context) ServiceConnectionPolicyPscConnectionErrorInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceConnectionPolicyPscConnectionErrorInfoOutput)
+}
+
+func (i ServiceConnectionPolicyPscConnectionErrorInfoArgs) ToServiceConnectionPolicyPscConnectionErrorInfoPtrOutput() ServiceConnectionPolicyPscConnectionErrorInfoPtrOutput {
+	return i.ToServiceConnectionPolicyPscConnectionErrorInfoPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceConnectionPolicyPscConnectionErrorInfoArgs) ToServiceConnectionPolicyPscConnectionErrorInfoPtrOutputWithContext(ctx context.Context) ServiceConnectionPolicyPscConnectionErrorInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceConnectionPolicyPscConnectionErrorInfoOutput).ToServiceConnectionPolicyPscConnectionErrorInfoPtrOutputWithContext(ctx)
+}
+
+// ServiceConnectionPolicyPscConnectionErrorInfoPtrInput is an input type that accepts ServiceConnectionPolicyPscConnectionErrorInfoArgs, ServiceConnectionPolicyPscConnectionErrorInfoPtr and ServiceConnectionPolicyPscConnectionErrorInfoPtrOutput values.
+// You can construct a concrete instance of `ServiceConnectionPolicyPscConnectionErrorInfoPtrInput` via:
+//
+//	        ServiceConnectionPolicyPscConnectionErrorInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceConnectionPolicyPscConnectionErrorInfoPtrInput interface {
+	pulumi.Input
+
+	ToServiceConnectionPolicyPscConnectionErrorInfoPtrOutput() ServiceConnectionPolicyPscConnectionErrorInfoPtrOutput
+	ToServiceConnectionPolicyPscConnectionErrorInfoPtrOutputWithContext(context.Context) ServiceConnectionPolicyPscConnectionErrorInfoPtrOutput
+}
+
+type serviceConnectionPolicyPscConnectionErrorInfoPtrType ServiceConnectionPolicyPscConnectionErrorInfoArgs
+
+func ServiceConnectionPolicyPscConnectionErrorInfoPtr(v *ServiceConnectionPolicyPscConnectionErrorInfoArgs) ServiceConnectionPolicyPscConnectionErrorInfoPtrInput {
+	return (*serviceConnectionPolicyPscConnectionErrorInfoPtrType)(v)
+}
+
+func (*serviceConnectionPolicyPscConnectionErrorInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceConnectionPolicyPscConnectionErrorInfo)(nil)).Elem()
+}
+
+func (i *serviceConnectionPolicyPscConnectionErrorInfoPtrType) ToServiceConnectionPolicyPscConnectionErrorInfoPtrOutput() ServiceConnectionPolicyPscConnectionErrorInfoPtrOutput {
+	return i.ToServiceConnectionPolicyPscConnectionErrorInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceConnectionPolicyPscConnectionErrorInfoPtrType) ToServiceConnectionPolicyPscConnectionErrorInfoPtrOutputWithContext(ctx context.Context) ServiceConnectionPolicyPscConnectionErrorInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceConnectionPolicyPscConnectionErrorInfoPtrOutput)
+}
+
+type ServiceConnectionPolicyPscConnectionErrorInfoOutput struct{ *pulumi.OutputState }
+
+func (ServiceConnectionPolicyPscConnectionErrorInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceConnectionPolicyPscConnectionErrorInfo)(nil)).Elem()
+}
+
+func (o ServiceConnectionPolicyPscConnectionErrorInfoOutput) ToServiceConnectionPolicyPscConnectionErrorInfoOutput() ServiceConnectionPolicyPscConnectionErrorInfoOutput {
+	return o
+}
+
+func (o ServiceConnectionPolicyPscConnectionErrorInfoOutput) ToServiceConnectionPolicyPscConnectionErrorInfoOutputWithContext(ctx context.Context) ServiceConnectionPolicyPscConnectionErrorInfoOutput {
+	return o
+}
+
+func (o ServiceConnectionPolicyPscConnectionErrorInfoOutput) ToServiceConnectionPolicyPscConnectionErrorInfoPtrOutput() ServiceConnectionPolicyPscConnectionErrorInfoPtrOutput {
+	return o.ToServiceConnectionPolicyPscConnectionErrorInfoPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceConnectionPolicyPscConnectionErrorInfoOutput) ToServiceConnectionPolicyPscConnectionErrorInfoPtrOutputWithContext(ctx context.Context) ServiceConnectionPolicyPscConnectionErrorInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceConnectionPolicyPscConnectionErrorInfo) *ServiceConnectionPolicyPscConnectionErrorInfo {
+		return &v
+	}).(ServiceConnectionPolicyPscConnectionErrorInfoPtrOutput)
+}
+
+// The logical grouping to which the "reason" belongs.
+func (o ServiceConnectionPolicyPscConnectionErrorInfoOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceConnectionPolicyPscConnectionErrorInfo) *string { return v.Domain }).(pulumi.StringPtrOutput)
+}
+
+// Additional structured details about this error.
+func (o ServiceConnectionPolicyPscConnectionErrorInfoOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ServiceConnectionPolicyPscConnectionErrorInfo) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+}
+
+// The reason of the error.
+func (o ServiceConnectionPolicyPscConnectionErrorInfoOutput) Reason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceConnectionPolicyPscConnectionErrorInfo) *string { return v.Reason }).(pulumi.StringPtrOutput)
+}
+
+type ServiceConnectionPolicyPscConnectionErrorInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceConnectionPolicyPscConnectionErrorInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceConnectionPolicyPscConnectionErrorInfo)(nil)).Elem()
+}
+
+func (o ServiceConnectionPolicyPscConnectionErrorInfoPtrOutput) ToServiceConnectionPolicyPscConnectionErrorInfoPtrOutput() ServiceConnectionPolicyPscConnectionErrorInfoPtrOutput {
+	return o
+}
+
+func (o ServiceConnectionPolicyPscConnectionErrorInfoPtrOutput) ToServiceConnectionPolicyPscConnectionErrorInfoPtrOutputWithContext(ctx context.Context) ServiceConnectionPolicyPscConnectionErrorInfoPtrOutput {
+	return o
+}
+
+func (o ServiceConnectionPolicyPscConnectionErrorInfoPtrOutput) Elem() ServiceConnectionPolicyPscConnectionErrorInfoOutput {
+	return o.ApplyT(func(v *ServiceConnectionPolicyPscConnectionErrorInfo) ServiceConnectionPolicyPscConnectionErrorInfo {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceConnectionPolicyPscConnectionErrorInfo
+		return ret
+	}).(ServiceConnectionPolicyPscConnectionErrorInfoOutput)
+}
+
+// The logical grouping to which the "reason" belongs.
+func (o ServiceConnectionPolicyPscConnectionErrorInfoPtrOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceConnectionPolicyPscConnectionErrorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Domain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Additional structured details about this error.
+func (o ServiceConnectionPolicyPscConnectionErrorInfoPtrOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ServiceConnectionPolicyPscConnectionErrorInfo) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Metadata
+	}).(pulumi.StringMapOutput)
+}
+
+// The reason of the error.
+func (o ServiceConnectionPolicyPscConnectionErrorInfoPtrOutput) Reason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceConnectionPolicyPscConnectionErrorInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Reason
+	}).(pulumi.StringPtrOutput)
+}
+
 type SpokeLinkedInterconnectAttachments struct {
 	// A value that controls whether site-to-site data transfer is enabled for these resources. Note that data transfer is available only in supported locations.
 	SiteToSiteDataTransfer bool `pulumi:"siteToSiteDataTransfer"`
@@ -850,6 +1369,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HubRoutingVpcArrayInput)(nil)).Elem(), HubRoutingVpcArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceConnectionPolicyPscConfigInput)(nil)).Elem(), ServiceConnectionPolicyPscConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceConnectionPolicyPscConfigPtrInput)(nil)).Elem(), ServiceConnectionPolicyPscConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceConnectionPolicyPscConnectionInput)(nil)).Elem(), ServiceConnectionPolicyPscConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceConnectionPolicyPscConnectionArrayInput)(nil)).Elem(), ServiceConnectionPolicyPscConnectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceConnectionPolicyPscConnectionErrorInput)(nil)).Elem(), ServiceConnectionPolicyPscConnectionErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceConnectionPolicyPscConnectionErrorPtrInput)(nil)).Elem(), ServiceConnectionPolicyPscConnectionErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceConnectionPolicyPscConnectionErrorInfoInput)(nil)).Elem(), ServiceConnectionPolicyPscConnectionErrorInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceConnectionPolicyPscConnectionErrorInfoPtrInput)(nil)).Elem(), ServiceConnectionPolicyPscConnectionErrorInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpokeLinkedInterconnectAttachmentsInput)(nil)).Elem(), SpokeLinkedInterconnectAttachmentsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpokeLinkedInterconnectAttachmentsPtrInput)(nil)).Elem(), SpokeLinkedInterconnectAttachmentsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpokeLinkedRouterApplianceInstancesInput)(nil)).Elem(), SpokeLinkedRouterApplianceInstancesArgs{})
@@ -862,6 +1387,12 @@ func init() {
 	pulumi.RegisterOutputType(HubRoutingVpcArrayOutput{})
 	pulumi.RegisterOutputType(ServiceConnectionPolicyPscConfigOutput{})
 	pulumi.RegisterOutputType(ServiceConnectionPolicyPscConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServiceConnectionPolicyPscConnectionOutput{})
+	pulumi.RegisterOutputType(ServiceConnectionPolicyPscConnectionArrayOutput{})
+	pulumi.RegisterOutputType(ServiceConnectionPolicyPscConnectionErrorOutput{})
+	pulumi.RegisterOutputType(ServiceConnectionPolicyPscConnectionErrorPtrOutput{})
+	pulumi.RegisterOutputType(ServiceConnectionPolicyPscConnectionErrorInfoOutput{})
+	pulumi.RegisterOutputType(ServiceConnectionPolicyPscConnectionErrorInfoPtrOutput{})
 	pulumi.RegisterOutputType(SpokeLinkedInterconnectAttachmentsOutput{})
 	pulumi.RegisterOutputType(SpokeLinkedInterconnectAttachmentsPtrOutput{})
 	pulumi.RegisterOutputType(SpokeLinkedRouterApplianceInstancesOutput{})

@@ -13,6 +13,12 @@ namespace Pulumi.Gcp.Diagflow.Inputs
     public sealed class CxPageFormParameterGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The default value of an optional parameter. If the parameter is required, the default value will be ignored.
+        /// </summary>
+        [Input("defaultValue")]
+        public Input<string>? DefaultValue { get; set; }
+
+        /// <summary>
         /// The human-readable name of the parameter, unique within the form.
         /// </summary>
         [Input("displayName")]

@@ -752,6 +752,10 @@ class WorkforcePoolProvider(pulumi.CustomResource):
                 web_sso_config=gcp.iam.WorkforcePoolProviderOidcWebSsoConfigArgs(
                     response_type="CODE",
                     assertion_claims_behavior="MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS",
+                    additional_scopes=[
+                        "groups",
+                        "roles",
+                    ],
                 ),
             ),
             display_name="Display name",
@@ -969,6 +973,10 @@ class WorkforcePoolProvider(pulumi.CustomResource):
                 web_sso_config=gcp.iam.WorkforcePoolProviderOidcWebSsoConfigArgs(
                     response_type="CODE",
                     assertion_claims_behavior="MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS",
+                    additional_scopes=[
+                        "groups",
+                        "roles",
+                    ],
                 ),
             ),
             display_name="Display name",

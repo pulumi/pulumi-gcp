@@ -102,11 +102,9 @@ import javax.annotation.Nullable;
  * ```sh
  *  $ pulumi import gcp:runtimeconfig/variable:Variable myvariable myconfig/myvariable
  * ```
- * 
  * ```sh
- *  $ pulumi import gcp:runtimeconfig/variable:Variable myvariable projects/my-gcp-project/configs/myconfig/variables/myvariable
+ * $ pulumi import gcp:runtimeconfig/variable:Variable myvariable projects/my-gcp-project/configs/myconfig/variables/myvariable
  * ```
- * 
  *  When importing using only the name, the provider project must be set.
  * 
  */

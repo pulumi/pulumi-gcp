@@ -235,10 +235,10 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
      * Required. Expected to be in leaf-to-root order according to RFC 5246.
      * 
      * @deprecated
-     * Deprecated in favor of `pem_certificate_chain`.
+     * `pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead.
      * 
      */
-    @Deprecated /* Deprecated in favor of `pem_certificate_chain`. */
+    @Deprecated /* `pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead. */
     @Import(name="pemCertificates")
     private @Nullable Output<List<String>> pemCertificates;
 
@@ -247,10 +247,10 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
      * Required. Expected to be in leaf-to-root order according to RFC 5246.
      * 
      * @deprecated
-     * Deprecated in favor of `pem_certificate_chain`.
+     * `pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead.
      * 
      */
-    @Deprecated /* Deprecated in favor of `pem_certificate_chain`. */
+    @Deprecated /* `pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead. */
     public Optional<Output<List<String>>> pemCertificates() {
         return Optional.ofNullable(this.pemCertificates);
     }
@@ -689,10 +689,10 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Deprecated in favor of `pem_certificate_chain`.
+         * `pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead.
          * 
          */
-        @Deprecated /* Deprecated in favor of `pem_certificate_chain`. */
+        @Deprecated /* `pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead. */
         public Builder pemCertificates(@Nullable Output<List<String>> pemCertificates) {
             $.pemCertificates = pemCertificates;
             return this;
@@ -705,10 +705,10 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Deprecated in favor of `pem_certificate_chain`.
+         * `pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead.
          * 
          */
-        @Deprecated /* Deprecated in favor of `pem_certificate_chain`. */
+        @Deprecated /* `pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead. */
         public Builder pemCertificates(List<String> pemCertificates) {
             return pemCertificates(Output.of(pemCertificates));
         }
@@ -720,10 +720,10 @@ public final class CertificateState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Deprecated in favor of `pem_certificate_chain`.
+         * `pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead.
          * 
          */
-        @Deprecated /* Deprecated in favor of `pem_certificate_chain`. */
+        @Deprecated /* `pem_certificates` is deprecated and will be removed in a future major release. Use `pem_certificate_chain` instead. */
         public Builder pemCertificates(String... pemCertificates) {
             return pemCertificates(List.of(pemCertificates));
         }

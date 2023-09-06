@@ -27,6 +27,8 @@ __all__ = [
     'ClusterEncryptionInfoArgs',
     'ClusterInitialUserArgs',
     'ClusterMigrationSourceArgs',
+    'ClusterRestoreBackupSourceArgs',
+    'ClusterRestoreContinuousBackupSourceArgs',
     'InstanceMachineConfigArgs',
     'InstanceReadPoolConfigArgs',
 ]
@@ -433,7 +435,7 @@ class ClusterBackupSourceArgs:
     def __init__(__self__, *,
                  backup_name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] backup_name: The name of the backup resource.
+        :param pulumi.Input[str] backup_name: The name of the backup that this cluster is restored from.
         """
         if backup_name is not None:
             pulumi.set(__self__, "backup_name", backup_name)
@@ -442,7 +444,7 @@ class ClusterBackupSourceArgs:
     @pulumi.getter(name="backupName")
     def backup_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the backup resource.
+        The name of the backup that this cluster is restored from.
         """
         return pulumi.get(self, "backup_name")
 
@@ -816,6 +818,65 @@ class ClusterMigrationSourceArgs:
     @source_type.setter
     def source_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "source_type", value)
+
+
+@pulumi.input_type
+class ClusterRestoreBackupSourceArgs:
+    def __init__(__self__, *,
+                 backup_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] backup_name: The name of the backup that this cluster is restored from.
+        """
+        pulumi.set(__self__, "backup_name", backup_name)
+
+    @property
+    @pulumi.getter(name="backupName")
+    def backup_name(self) -> pulumi.Input[str]:
+        """
+        The name of the backup that this cluster is restored from.
+        """
+        return pulumi.get(self, "backup_name")
+
+    @backup_name.setter
+    def backup_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "backup_name", value)
+
+
+@pulumi.input_type
+class ClusterRestoreContinuousBackupSourceArgs:
+    def __init__(__self__, *,
+                 cluster: pulumi.Input[str],
+                 point_in_time: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] cluster: The name of the source cluster that this cluster is restored from.
+        :param pulumi.Input[str] point_in_time: The point in time that this cluster is restored to, in RFC 3339 format.
+        """
+        pulumi.set(__self__, "cluster", cluster)
+        pulumi.set(__self__, "point_in_time", point_in_time)
+
+    @property
+    @pulumi.getter
+    def cluster(self) -> pulumi.Input[str]:
+        """
+        The name of the source cluster that this cluster is restored from.
+        """
+        return pulumi.get(self, "cluster")
+
+    @cluster.setter
+    def cluster(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cluster", value)
+
+    @property
+    @pulumi.getter(name="pointInTime")
+    def point_in_time(self) -> pulumi.Input[str]:
+        """
+        The point in time that this cluster is restored to, in RFC 3339 format.
+        """
+        return pulumi.get(self, "point_in_time")
+
+    @point_in_time.setter
+    def point_in_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "point_in_time", value)
 
 
 @pulumi.input_type

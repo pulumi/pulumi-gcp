@@ -87,7 +87,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ServicePerimeterResource can be imported using any of these accepted formats
+ * ServicePerimeterResource can be imported using any of these accepted formats:
  * 
  * ```sh
  *  $ pulumi import gcp:accesscontextmanager/servicePerimeterResource:ServicePerimeterResource default {{perimeter_name}}/{{resource}}

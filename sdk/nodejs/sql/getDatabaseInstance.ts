@@ -52,6 +52,7 @@ export interface GetDatabaseInstanceResult {
     readonly connectionName: string;
     readonly databaseVersion: string;
     readonly deletionProtection: boolean;
+    readonly dnsName: string;
     readonly encryptionKeyName: string;
     readonly firstIpAddress: string;
     /**
@@ -65,6 +66,7 @@ export interface GetDatabaseInstanceResult {
     readonly name: string;
     readonly privateIpAddress: string;
     readonly project?: string;
+    readonly pscServiceAttachmentLink: string;
     readonly publicIpAddress: string;
     readonly region: string;
     readonly replicaConfigurations: outputs.sql.GetDatabaseInstanceReplicaConfiguration[];

@@ -676,6 +676,56 @@ class AzureCluster(pulumi.CustomResource):
             project="my-project-name",
             resource_group_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster")
         ```
+        ### Beta_basic_enum_azure_cluster
+        A basic example of a containerazure azure cluster with lowercase enums (beta)
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        versions = gcp.container.get_azure_versions(project="my-project-name",
+            location="us-west1")
+        basic = gcp.container.AzureClient("basic",
+            application_id="12345678-1234-1234-1234-123456789111",
+            location="us-west1",
+            tenant_id="12345678-1234-1234-1234-123456789111",
+            project="my-project-name",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        primary = gcp.container.AzureCluster("primary",
+            authorization=gcp.container.AzureClusterAuthorizationArgs(
+                admin_users=[gcp.container.AzureClusterAuthorizationAdminUserArgs(
+                    username="mmv2@google.com",
+                )],
+            ),
+            azure_region="westus2",
+            client=basic.name.apply(lambda name: f"projects/my-project-number/locations/us-west1/azureClients/{name}"),
+            control_plane=gcp.container.AzureClusterControlPlaneArgs(
+                ssh_config=gcp.container.AzureClusterControlPlaneSshConfigArgs(
+                    authorized_key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers",
+                ),
+                subnet_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default",
+                version=versions.valid_versions[0],
+            ),
+            fleet=gcp.container.AzureClusterFleetArgs(
+                project="my-project-number",
+            ),
+            location="us-west1",
+            networking=gcp.container.AzureClusterNetworkingArgs(
+                pod_address_cidr_blocks=["10.200.0.0/16"],
+                service_address_cidr_blocks=["10.32.0.0/24"],
+                virtual_network_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet",
+            ),
+            resource_group_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster",
+            project="my-project-name",
+            logging_config=gcp.container.AzureClusterLoggingConfigArgs(
+                component_config=gcp.container.AzureClusterLoggingConfigComponentConfigArgs(
+                    enable_components=[
+                        "system_components",
+                        "workloads",
+                    ],
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -764,6 +814,56 @@ class AzureCluster(pulumi.CustomResource):
             ),
             project="my-project-name",
             resource_group_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster")
+        ```
+        ### Beta_basic_enum_azure_cluster
+        A basic example of a containerazure azure cluster with lowercase enums (beta)
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        versions = gcp.container.get_azure_versions(project="my-project-name",
+            location="us-west1")
+        basic = gcp.container.AzureClient("basic",
+            application_id="12345678-1234-1234-1234-123456789111",
+            location="us-west1",
+            tenant_id="12345678-1234-1234-1234-123456789111",
+            project="my-project-name",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        primary = gcp.container.AzureCluster("primary",
+            authorization=gcp.container.AzureClusterAuthorizationArgs(
+                admin_users=[gcp.container.AzureClusterAuthorizationAdminUserArgs(
+                    username="mmv2@google.com",
+                )],
+            ),
+            azure_region="westus2",
+            client=basic.name.apply(lambda name: f"projects/my-project-number/locations/us-west1/azureClients/{name}"),
+            control_plane=gcp.container.AzureClusterControlPlaneArgs(
+                ssh_config=gcp.container.AzureClusterControlPlaneSshConfigArgs(
+                    authorized_key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC8yaayO6lnb2v+SedxUMa2c8vtIEzCzBjM3EJJsv8Vm9zUDWR7dXWKoNGARUb2mNGXASvI6mFIDXTIlkQ0poDEPpMaXR0g2cb5xT8jAAJq7fqXL3+0rcJhY/uigQ+MrT6s+ub0BFVbsmGHNrMQttXX9gtmwkeAEvj3mra9e5pkNf90qlKnZz6U0SVArxVsLx07vHPHDIYrl0OPG4zUREF52igbBPiNrHJFDQJT/4YlDMJmo/QT/A1D6n9ocemvZSzhRx15/Arjowhr+VVKSbaxzPtEfY0oIg2SrqJnnr/l3Du5qIefwh5VmCZe4xopPUaDDoOIEFriZ88sB+3zz8ib8sk8zJJQCgeP78tQvXCgS+4e5W3TUg9mxjB6KjXTyHIVhDZqhqde0OI3Fy1UuVzRUwnBaLjBnAwP5EoFQGRmDYk/rEYe7HTmovLeEBUDQocBQKT4Ripm/xJkkWY7B07K/tfo56dGUCkvyIVXKBInCh+dLK7gZapnd4UWkY0xBYcwo1geMLRq58iFTLA2j/JmpmHXp7m0l7jJii7d44uD3tTIFYThn7NlOnvhLim/YcBK07GMGIN7XwrrKZKmxXaspw6KBWVhzuw1UPxctxshYEaMLfFg/bwOw8HvMPr9VtrElpSB7oiOh91PDIPdPBgHCi7N2QgQ5l/ZDBHieSpNrQ== thomasrodgers",
+                ),
+                subnet_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet/subnets/default",
+                version=versions.valid_versions[0],
+            ),
+            fleet=gcp.container.AzureClusterFleetArgs(
+                project="my-project-number",
+            ),
+            location="us-west1",
+            networking=gcp.container.AzureClusterNetworkingArgs(
+                pod_address_cidr_blocks=["10.200.0.0/16"],
+                service_address_cidr_blocks=["10.32.0.0/24"],
+                virtual_network_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-byo/providers/Microsoft.Network/virtualNetworks/my--dev-vnet",
+            ),
+            resource_group_id="/subscriptions/12345678-1234-1234-1234-123456789111/resourceGroups/my--dev-cluster",
+            project="my-project-name",
+            logging_config=gcp.container.AzureClusterLoggingConfigArgs(
+                component_config=gcp.container.AzureClusterLoggingConfigComponentConfigArgs(
+                    enable_components=[
+                        "system_components",
+                        "workloads",
+                    ],
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import

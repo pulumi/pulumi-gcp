@@ -6,6 +6,7 @@ package com.pulumi.gcp.sql.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs;
+import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationPscConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -97,6 +98,13 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
         return Optional.ofNullable(this.privateNetwork);
     }
 
+    @Import(name="pscConfigs")
+    private @Nullable Output<List<DatabaseInstanceSettingsIpConfigurationPscConfigArgs>> pscConfigs;
+
+    public Optional<Output<List<DatabaseInstanceSettingsIpConfigurationPscConfigArgs>>> pscConfigs() {
+        return Optional.ofNullable(this.pscConfigs);
+    }
+
     /**
      * Whether SSL connections over IP are enforced or not.
      * 
@@ -120,6 +128,7 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
         this.enablePrivatePathForGoogleCloudServices = $.enablePrivatePathForGoogleCloudServices;
         this.ipv4Enabled = $.ipv4Enabled;
         this.privateNetwork = $.privateNetwork;
+        this.pscConfigs = $.pscConfigs;
         this.requireSsl = $.requireSsl;
     }
 
@@ -248,6 +257,19 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
          */
         public Builder privateNetwork(String privateNetwork) {
             return privateNetwork(Output.of(privateNetwork));
+        }
+
+        public Builder pscConfigs(@Nullable Output<List<DatabaseInstanceSettingsIpConfigurationPscConfigArgs>> pscConfigs) {
+            $.pscConfigs = pscConfigs;
+            return this;
+        }
+
+        public Builder pscConfigs(List<DatabaseInstanceSettingsIpConfigurationPscConfigArgs> pscConfigs) {
+            return pscConfigs(Output.of(pscConfigs));
+        }
+
+        public Builder pscConfigs(DatabaseInstanceSettingsIpConfigurationPscConfigArgs... pscConfigs) {
+            return pscConfigs(List.of(pscConfigs));
         }
 
         /**

@@ -58,7 +58,7 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// ## Import
     /// 
-    /// DefaultObjectAccessControl can be imported using any of these accepted formats
+    /// DefaultObjectAccessControl can be imported using any of these accepted formats:
     /// 
     /// ```sh
     ///  $ pulumi import gcp:storage/defaultObjectAccessControl:DefaultObjectAccessControl default {{bucket}}/{{entity}}

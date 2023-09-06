@@ -104,6 +104,10 @@ export class TargetPool extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
+     * ) The resource URL for the security policy associated with this target pool.
+     */
+    public readonly securityPolicy!: pulumi.Output<string | undefined>;
+    /**
      * The URI of the created resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
@@ -135,6 +139,7 @@ export class TargetPool extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["securityPolicy"] = state ? state.securityPolicy : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["sessionAffinity"] = state ? state.sessionAffinity : undefined;
         } else {
@@ -147,6 +152,7 @@ export class TargetPool extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["securityPolicy"] = args ? args.securityPolicy : undefined;
             resourceInputs["sessionAffinity"] = args ? args.sessionAffinity : undefined;
             resourceInputs["selfLink"] = undefined /*out*/;
         }
@@ -203,6 +209,10 @@ export interface TargetPoolState {
      * region.
      */
     region?: pulumi.Input<string>;
+    /**
+     * ) The resource URL for the security policy associated with this target pool.
+     */
+    securityPolicy?: pulumi.Input<string>;
     /**
      * The URI of the created resource.
      */
@@ -263,6 +273,10 @@ export interface TargetPoolArgs {
      * region.
      */
     region?: pulumi.Input<string>;
+    /**
+     * ) The resource URL for the security policy associated with this target pool.
+     */
+    securityPolicy?: pulumi.Input<string>;
     /**
      * How to distribute load. Options are "NONE" (no
      * affinity). "CLIENT\_IP" (hash of the source/dest addresses / ports), and

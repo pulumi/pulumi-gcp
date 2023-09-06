@@ -291,7 +291,7 @@ class PolicyTag(pulumi.CustomResource):
 
         ## Import
 
-        PolicyTag can be imported using any of these accepted formats
+        PolicyTag can be imported using any of these accepted formats:
 
         ```sh
          $ pulumi import gcp:datacatalog/policyTag:PolicyTag default {{name}}
@@ -374,7 +374,7 @@ class PolicyTag(pulumi.CustomResource):
 
         ## Import
 
-        PolicyTag can be imported using any of these accepted formats
+        PolicyTag can be imported using any of these accepted formats:
 
         ```sh
          $ pulumi import gcp:datacatalog/policyTag:PolicyTag default {{name}}

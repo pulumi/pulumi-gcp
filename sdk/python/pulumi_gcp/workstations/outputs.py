@@ -415,6 +415,8 @@ class WorkstationConfigHostGceInstance(dict):
             suggest = "confidential_instance_config"
         elif key == "disablePublicIpAddresses":
             suggest = "disable_public_ip_addresses"
+        elif key == "enableNestedVirtualization":
+            suggest = "enable_nested_virtualization"
         elif key == "machineType":
             suggest = "machine_type"
         elif key == "poolSize":
@@ -440,6 +442,7 @@ class WorkstationConfigHostGceInstance(dict):
                  boot_disk_size_gb: Optional[int] = None,
                  confidential_instance_config: Optional['outputs.WorkstationConfigHostGceInstanceConfidentialInstanceConfig'] = None,
                  disable_public_ip_addresses: Optional[bool] = None,
+                 enable_nested_virtualization: Optional[bool] = None,
                  machine_type: Optional[str] = None,
                  pool_size: Optional[int] = None,
                  service_account: Optional[str] = None,
@@ -452,6 +455,8 @@ class WorkstationConfigHostGceInstance(dict):
         :param 'WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs' confidential_instance_config: A set of Compute Engine Confidential VM instance options.
                Structure is documented below.
         :param bool disable_public_ip_addresses: Whether instances have no public IP address.
+        :param bool enable_nested_virtualization: Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
+               See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
         :param str machine_type: The name of a Compute Engine machine type.
         :param int pool_size: Number of instances to pool for faster workstation startup.
         :param str service_account: Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
@@ -467,6 +472,8 @@ class WorkstationConfigHostGceInstance(dict):
             pulumi.set(__self__, "confidential_instance_config", confidential_instance_config)
         if disable_public_ip_addresses is not None:
             pulumi.set(__self__, "disable_public_ip_addresses", disable_public_ip_addresses)
+        if enable_nested_virtualization is not None:
+            pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
         if machine_type is not None:
             pulumi.set(__self__, "machine_type", machine_type)
         if pool_size is not None:
@@ -511,6 +518,15 @@ class WorkstationConfigHostGceInstance(dict):
         Whether instances have no public IP address.
         """
         return pulumi.get(self, "disable_public_ip_addresses")
+
+    @property
+    @pulumi.getter(name="enableNestedVirtualization")
+    def enable_nested_virtualization(self) -> Optional[bool]:
+        """
+        Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
+        See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+        """
+        return pulumi.get(self, "enable_nested_virtualization")
 
     @property
     @pulumi.getter(name="machineType")

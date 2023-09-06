@@ -39,7 +39,7 @@ class TargetArgs:
         :param pulumi.Input[Sequence[pulumi.Input['TargetExecutionConfigArgs']]] execution_configs: Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
         :param pulumi.Input['TargetGkeArgs'] gke: Information specifying a GKE Cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
-        :param pulumi.Input['TargetMultiTargetArgs'] multi_target: (Beta only) Information specifying a multiTarget.
+        :param pulumi.Input['TargetMultiTargetArgs'] multi_target: Information specifying a multiTarget.
         :param pulumi.Input[str] name: Name of the `Target`. Format is [a-z][a-z0-9\\-]{0,62}.
                
                
@@ -175,7 +175,7 @@ class TargetArgs:
     @pulumi.getter(name="multiTarget")
     def multi_target(self) -> Optional[pulumi.Input['TargetMultiTargetArgs']]:
         """
-        (Beta only) Information specifying a multiTarget.
+        Information specifying a multiTarget.
         """
         return pulumi.get(self, "multi_target")
 
@@ -269,7 +269,7 @@ class _TargetState:
         :param pulumi.Input['TargetGkeArgs'] gke: Information specifying a GKE Cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input['TargetMultiTargetArgs'] multi_target: (Beta only) Information specifying a multiTarget.
+        :param pulumi.Input['TargetMultiTargetArgs'] multi_target: Information specifying a multiTarget.
         :param pulumi.Input[str] name: Name of the `Target`. Format is [a-z][a-z0-9\\-]{0,62}.
                
                
@@ -443,7 +443,7 @@ class _TargetState:
     @pulumi.getter(name="multiTarget")
     def multi_target(self) -> Optional[pulumi.Input['TargetMultiTargetArgs']]:
         """
-        (Beta only) Information specifying a multiTarget.
+        Information specifying a multiTarget.
         """
         return pulumi.get(self, "multi_target")
 
@@ -683,7 +683,7 @@ class Target(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['TargetGkeArgs']] gke: Information specifying a GKE Cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[pulumi.InputType['TargetMultiTargetArgs']] multi_target: (Beta only) Information specifying a multiTarget.
+        :param pulumi.Input[pulumi.InputType['TargetMultiTargetArgs']] multi_target: Information specifying a multiTarget.
         :param pulumi.Input[str] name: Name of the `Target`. Format is [a-z][a-z0-9\\-]{0,62}.
                
                
@@ -915,7 +915,7 @@ class Target(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['TargetGkeArgs']] gke: Information specifying a GKE Cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[pulumi.InputType['TargetMultiTargetArgs']] multi_target: (Beta only) Information specifying a multiTarget.
+        :param pulumi.Input[pulumi.InputType['TargetMultiTargetArgs']] multi_target: Information specifying a multiTarget.
         :param pulumi.Input[str] name: Name of the `Target`. Format is [a-z][a-z0-9\\-]{0,62}.
                
                
@@ -1036,7 +1036,7 @@ class Target(pulumi.CustomResource):
     @pulumi.getter(name="multiTarget")
     def multi_target(self) -> pulumi.Output[Optional['outputs.TargetMultiTarget']]:
         """
-        (Beta only) Information specifying a multiTarget.
+        Information specifying a multiTarget.
         """
         return pulumi.get(self, "multi_target")
 

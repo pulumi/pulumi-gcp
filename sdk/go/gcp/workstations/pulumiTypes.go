@@ -1027,6 +1027,9 @@ type WorkstationConfigHostGceInstance struct {
 	ConfidentialInstanceConfig *WorkstationConfigHostGceInstanceConfidentialInstanceConfig `pulumi:"confidentialInstanceConfig"`
 	// Whether instances have no public IP address.
 	DisablePublicIpAddresses *bool `pulumi:"disablePublicIpAddresses"`
+	// Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
+	// See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+	EnableNestedVirtualization *bool `pulumi:"enableNestedVirtualization"`
 	// The name of a Compute Engine machine type.
 	MachineType *string `pulumi:"machineType"`
 	// Number of instances to pool for faster workstation startup.
@@ -1062,6 +1065,9 @@ type WorkstationConfigHostGceInstanceArgs struct {
 	ConfidentialInstanceConfig WorkstationConfigHostGceInstanceConfidentialInstanceConfigPtrInput `pulumi:"confidentialInstanceConfig"`
 	// Whether instances have no public IP address.
 	DisablePublicIpAddresses pulumi.BoolPtrInput `pulumi:"disablePublicIpAddresses"`
+	// Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
+	// See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+	EnableNestedVirtualization pulumi.BoolPtrInput `pulumi:"enableNestedVirtualization"`
 	// The name of a Compute Engine machine type.
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
 	// Number of instances to pool for faster workstation startup.
@@ -1178,6 +1184,12 @@ func (o WorkstationConfigHostGceInstanceOutput) DisablePublicIpAddresses() pulum
 	return o.ApplyT(func(v WorkstationConfigHostGceInstance) *bool { return v.DisablePublicIpAddresses }).(pulumi.BoolPtrOutput)
 }
 
+// Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
+// See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+func (o WorkstationConfigHostGceInstanceOutput) EnableNestedVirtualization() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigHostGceInstance) *bool { return v.EnableNestedVirtualization }).(pulumi.BoolPtrOutput)
+}
+
 // The name of a Compute Engine machine type.
 func (o WorkstationConfigHostGceInstanceOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkstationConfigHostGceInstance) *string { return v.MachineType }).(pulumi.StringPtrOutput)
@@ -1269,6 +1281,17 @@ func (o WorkstationConfigHostGceInstancePtrOutput) DisablePublicIpAddresses() pu
 			return nil
 		}
 		return v.DisablePublicIpAddresses
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enable nested virtualization on the Compute Engine VMs backing the Workstations.
+// See https://cloud.google.com/workstations/docs/reference/rest/v1beta/projects.locations.workstationClusters.workstationConfigs#GceInstance.FIELDS.enable_nested_virtualization
+func (o WorkstationConfigHostGceInstancePtrOutput) EnableNestedVirtualization() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkstationConfigHostGceInstance) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableNestedVirtualization
 	}).(pulumi.BoolPtrOutput)
 }
 

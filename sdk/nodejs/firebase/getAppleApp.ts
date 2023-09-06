@@ -35,6 +35,7 @@ export interface GetAppleAppArgs {
  * A collection of values returned by getAppleApp.
  */
 export interface GetAppleAppResult {
+    readonly apiKeyId: string;
     /**
      * Immutable. The globally unique, Firebase-assigned identifier of the App.
      * This identifier should be treated as an opaque token, as the data format is not specified.

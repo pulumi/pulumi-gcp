@@ -30,13 +30,65 @@ import (
 //			_, err := firebase.NewAndroidApp(ctx, "basic", &firebase.AndroidAppArgs{
 //				Project:     pulumi.String("my-project-name"),
 //				DisplayName: pulumi.String("Display Name Basic"),
-//				PackageName: pulumi.String(""),
+//				PackageName: pulumi.String("android.package.app"),
 //				Sha1Hashes: pulumi.StringArray{
 //					pulumi.String("2145bdf698b8715039bd0e83f2069bed435ac21c"),
 //				},
 //				Sha256Hashes: pulumi.StringArray{
 //					pulumi.String("2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc"),
 //				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Firebase Android App Custom Api Key
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/firebase"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			android, err := projects.NewApiKey(ctx, "android", &projects.ApiKeyArgs{
+//				DisplayName: pulumi.String("Display Name"),
+//				Project:     pulumi.String("my-project-name"),
+//				Restrictions: &projects.ApiKeyRestrictionsArgs{
+//					AndroidKeyRestrictions: &projects.ApiKeyRestrictionsAndroidKeyRestrictionsArgs{
+//						AllowedApplications: projects.ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArray{
+//							&projects.ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs{
+//								PackageName:     pulumi.String("android.package.app"),
+//								Sha1Fingerprint: pulumi.String("2145bdf698b8715039bd0e83f2069bed435ac21c"),
+//							},
+//						},
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firebase.NewAndroidApp(ctx, "default", &firebase.AndroidAppArgs{
+//				Project:     pulumi.String("my-project-name"),
+//				DisplayName: pulumi.String("Display Name"),
+//				PackageName: pulumi.String("android.package.app"),
+//				Sha1Hashes: pulumi.StringArray{
+//					pulumi.String("2145bdf698b8715039bd0e83f2069bed435ac21c"),
+//				},
+//				Sha256Hashes: pulumi.StringArray{
+//					pulumi.String("2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc"),
+//				},
+//				ApiKeyId: android.Uid,
 //			}, pulumi.Provider(google_beta))
 //			if err != nil {
 //				return err
@@ -83,6 +135,10 @@ import (
 type AndroidApp struct {
 	pulumi.CustomResourceState
 
+	// The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AndroidApp.
+	// If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AndroidApp.
+	// This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+	ApiKeyId pulumi.StringOutput `pulumi:"apiKeyId"`
 	// The globally unique, Firebase-assigned identifier of the AndroidApp.
 	// This identifier should be treated as an opaque token, as the data format is not specified.
 	AppId pulumi.StringOutput `pulumi:"appId"`
@@ -145,6 +201,10 @@ func GetAndroidApp(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AndroidApp resources.
 type androidAppState struct {
+	// The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AndroidApp.
+	// If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AndroidApp.
+	// This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+	ApiKeyId *string `pulumi:"apiKeyId"`
 	// The globally unique, Firebase-assigned identifier of the AndroidApp.
 	// This identifier should be treated as an opaque token, as the data format is not specified.
 	AppId *string `pulumi:"appId"`
@@ -175,6 +235,10 @@ type androidAppState struct {
 }
 
 type AndroidAppState struct {
+	// The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AndroidApp.
+	// If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AndroidApp.
+	// This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+	ApiKeyId pulumi.StringPtrInput
 	// The globally unique, Firebase-assigned identifier of the AndroidApp.
 	// This identifier should be treated as an opaque token, as the data format is not specified.
 	AppId pulumi.StringPtrInput
@@ -209,6 +273,10 @@ func (AndroidAppState) ElementType() reflect.Type {
 }
 
 type androidAppArgs struct {
+	// The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AndroidApp.
+	// If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AndroidApp.
+	// This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+	ApiKeyId *string `pulumi:"apiKeyId"`
 	// (Optional) Set to 'ABANDON' to allow the AndroidApp to be untracked from terraform state rather than deleted upon
 	// 'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
 	// AndroidApp. Defaults to 'DELETE'.
@@ -231,6 +299,10 @@ type androidAppArgs struct {
 
 // The set of arguments for constructing a AndroidApp resource.
 type AndroidAppArgs struct {
+	// The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AndroidApp.
+	// If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AndroidApp.
+	// This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+	ApiKeyId pulumi.StringPtrInput
 	// (Optional) Set to 'ABANDON' to allow the AndroidApp to be untracked from terraform state rather than deleted upon
 	// 'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
 	// AndroidApp. Defaults to 'DELETE'.
@@ -336,6 +408,13 @@ func (o AndroidAppOutput) ToAndroidAppOutput() AndroidAppOutput {
 
 func (o AndroidAppOutput) ToAndroidAppOutputWithContext(ctx context.Context) AndroidAppOutput {
 	return o
+}
+
+// The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AndroidApp.
+// If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AndroidApp.
+// This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+func (o AndroidAppOutput) ApiKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AndroidApp) pulumi.StringOutput { return v.ApiKeyId }).(pulumi.StringOutput)
 }
 
 // The globally unique, Firebase-assigned identifier of the AndroidApp.

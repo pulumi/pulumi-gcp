@@ -20,10 +20,10 @@ public final class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis {
     private @Nullable Boolean disabled;
     /**
      * @deprecated
-     * This field is unavailable in the GA provider and will be removed from the beta provider in a future release.
+     * `monitoring_interval` is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* This field is unavailable in the GA provider and will be removed from the beta provider in a future release. */
+    @Deprecated /* `monitoring_interval` is deprecated and will be removed in a future release. */
     private @Nullable String monitoringInterval;
     /**
      * @return Configuration of the snapshot analysis based monitoring pipeline running interval. The value indicates number of days. The default value is 1.
@@ -47,10 +47,10 @@ public final class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis {
     }
     /**
      * @deprecated
-     * This field is unavailable in the GA provider and will be removed from the beta provider in a future release.
+     * `monitoring_interval` is deprecated and will be removed in a future release.
      * 
      */
-    @Deprecated /* This field is unavailable in the GA provider and will be removed from the beta provider in a future release. */
+    @Deprecated /* `monitoring_interval` is deprecated and will be removed in a future release. */
     public Optional<String> monitoringInterval() {
         return Optional.ofNullable(this.monitoringInterval);
     }

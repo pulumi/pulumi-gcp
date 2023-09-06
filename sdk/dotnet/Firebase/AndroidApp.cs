@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.Firebase
     ///     {
     ///         Project = "my-project-name",
     ///         DisplayName = "Display Name Basic",
-    ///         PackageName = "",
+    ///         PackageName = "android.package.app",
     ///         Sha1Hashes = new[]
     ///         {
     ///             "2145bdf698b8715039bd0e83f2069bed435ac21c",
@@ -34,6 +34,60 @@ namespace Pulumi.Gcp.Firebase
     ///         {
     ///             "2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc",
     ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Firebase Android App Custom Api Key
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var android = new Gcp.Projects.ApiKey("android", new()
+    ///     {
+    ///         DisplayName = "Display Name",
+    ///         Project = "my-project-name",
+    ///         Restrictions = new Gcp.Projects.Inputs.ApiKeyRestrictionsArgs
+    ///         {
+    ///             AndroidKeyRestrictions = new Gcp.Projects.Inputs.ApiKeyRestrictionsAndroidKeyRestrictionsArgs
+    ///             {
+    ///                 AllowedApplications = new[]
+    ///                 {
+    ///                     new Gcp.Projects.Inputs.ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs
+    ///                     {
+    ///                         PackageName = "android.package.app",
+    ///                         Sha1Fingerprint = "2145bdf698b8715039bd0e83f2069bed435ac21c",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Firebase.AndroidApp("default", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         DisplayName = "Display Name",
+    ///         PackageName = "android.package.app",
+    ///         Sha1Hashes = new[]
+    ///         {
+    ///             "2145bdf698b8715039bd0e83f2069bed435ac21c",
+    ///         },
+    ///         Sha256Hashes = new[]
+    ///         {
+    ///             "2145bdf698b8715039bd0e83f2069bed435ac21ca1b2c3d4e5f6123456789abc",
+    ///         },
+    ///         ApiKeyId = android.Uid,
     ///     }, new CustomResourceOptions
     ///     {
     ///         Provider = google_beta,
@@ -69,6 +123,14 @@ namespace Pulumi.Gcp.Firebase
     [GcpResourceType("gcp:firebase/androidApp:AndroidApp")]
     public partial class AndroidApp : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AndroidApp.
+        /// If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AndroidApp.
+        /// This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+        /// </summary>
+        [Output("apiKeyId")]
+        public Output<string> ApiKeyId { get; private set; } = null!;
+
         /// <summary>
         /// The globally unique, Firebase-assigned identifier of the AndroidApp.
         /// This identifier should be treated as an opaque token, as the data format is not specified.
@@ -180,6 +242,14 @@ namespace Pulumi.Gcp.Firebase
     public sealed class AndroidAppArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AndroidApp.
+        /// If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AndroidApp.
+        /// This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+        /// </summary>
+        [Input("apiKeyId")]
+        public Input<string>? ApiKeyId { get; set; }
+
+        /// <summary>
         /// (Optional) Set to 'ABANDON' to allow the AndroidApp to be untracked from terraform state rather than deleted upon
         /// 'terraform destroy'. This is useful because the AndroidApp may be serving traffic. Set to 'DELETE' to delete the
         /// AndroidApp. Defaults to 'DELETE'.
@@ -242,6 +312,14 @@ namespace Pulumi.Gcp.Firebase
 
     public sealed class AndroidAppState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AndroidApp.
+        /// If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AndroidApp.
+        /// This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
+        /// </summary>
+        [Input("apiKeyId")]
+        public Input<string>? ApiKeyId { get; set; }
+
         /// <summary>
         /// The globally unique, Firebase-assigned identifier of the AndroidApp.
         /// This identifier should be treated as an opaque token, as the data format is not specified.

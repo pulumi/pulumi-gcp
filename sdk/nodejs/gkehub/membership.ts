@@ -113,9 +113,12 @@ export class Membership extends pulumi.CustomResource {
      */
     public readonly authority!: pulumi.Output<outputs.gkehub.MembershipAuthority | undefined>;
     /**
+     * (Optional, Deprecated)
      * The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
      *
-     * @deprecated This field is unavailable in the GA provider and will be removed from the beta provider in a future release.
+     * > **Warning:** `description` is deprecated and will be removed in a future major release.
+     *
+     * @deprecated `description` is deprecated and will be removed in a future major release.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -194,9 +197,12 @@ export interface MembershipState {
      */
     authority?: pulumi.Input<inputs.gkehub.MembershipAuthority>;
     /**
+     * (Optional, Deprecated)
      * The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
      *
-     * @deprecated This field is unavailable in the GA provider and will be removed from the beta provider in a future release.
+     * > **Warning:** `description` is deprecated and will be removed in a future major release.
+     *
+     * @deprecated `description` is deprecated and will be removed in a future major release.
      */
     description?: pulumi.Input<string>;
     /**
@@ -238,9 +244,12 @@ export interface MembershipArgs {
      */
     authority?: pulumi.Input<inputs.gkehub.MembershipAuthority>;
     /**
+     * (Optional, Deprecated)
      * The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
      *
-     * @deprecated This field is unavailable in the GA provider and will be removed from the beta provider in a future release.
+     * > **Warning:** `description` is deprecated and will be removed in a future major release.
+     *
+     * @deprecated `description` is deprecated and will be removed in a future major release.
      */
     description?: pulumi.Input<string>;
     /**

@@ -27,7 +27,7 @@ public final class TableExternalDataConfiguration {
      */
     private Boolean autodetect;
     /**
-     * @return Additional options if `source_format` is set to\
+     * @return Additional options if `source_format` is set to
      * &#34;AVRO&#34;.  Structure is documented below.
      * 
      */
@@ -43,6 +43,10 @@ public final class TableExternalDataConfiguration {
      * external storage, such as Azure Blob, Cloud Storage, or S3. The `connection_id` can have
      * the form `{{project}}.{{location}}.{{connection_id}}`
      * or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
+     * 
+     * ~&gt;**NOTE:** If you set `external_data_configuration.connection_id`, the
+     * table schema must be specified using the top-level `schema` field
+     * documented above.
      * 
      */
     private @Nullable String connectionId;
@@ -130,6 +134,10 @@ public final class TableExternalDataConfiguration {
      * datasource, after creation the computed schema will be stored in
      * `google_bigquery_table.schema`
      * 
+     * ~&gt;**NOTE:** If you set `external_data_configuration.connection_id`, the
+     * table schema must be specified using the top-level `schema` field
+     * documented above.
+     * 
      */
     private @Nullable String schema;
     /**
@@ -157,7 +165,7 @@ public final class TableExternalDataConfiguration {
         return this.autodetect;
     }
     /**
-     * @return Additional options if `source_format` is set to\
+     * @return Additional options if `source_format` is set to
      * &#34;AVRO&#34;.  Structure is documented below.
      * 
      */
@@ -177,6 +185,10 @@ public final class TableExternalDataConfiguration {
      * external storage, such as Azure Blob, Cloud Storage, or S3. The `connection_id` can have
      * the form `{{project}}.{{location}}.{{connection_id}}`
      * or `projects/{{project}}/locations/{{location}}/connections/{{connection_id}}`.
+     * 
+     * ~&gt;**NOTE:** If you set `external_data_configuration.connection_id`, the
+     * table schema must be specified using the top-level `schema` field
+     * documented above.
      * 
      */
     public Optional<String> connectionId() {
@@ -287,6 +299,10 @@ public final class TableExternalDataConfiguration {
      * This schema is effectively only applied when creating a table from an external
      * datasource, after creation the computed schema will be stored in
      * `google_bigquery_table.schema`
+     * 
+     * ~&gt;**NOTE:** If you set `external_data_configuration.connection_id`, the
+     * table schema must be specified using the top-level `schema` field
+     * documented above.
      * 
      */
     public Optional<String> schema() {

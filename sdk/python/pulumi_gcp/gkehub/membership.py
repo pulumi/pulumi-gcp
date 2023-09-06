@@ -32,7 +32,10 @@ class MembershipArgs:
                See the workload identity documentation for more details:
                https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
                Structure is documented below.
-        :param pulumi.Input[str] description: The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
+        :param pulumi.Input[str] description: (Optional, Deprecated)
+               The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
+               
+               > **Warning:** `description` is deprecated and will be removed in a future major release.
         :param pulumi.Input['MembershipEndpointArgs'] endpoint: If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this membership.
@@ -43,8 +46,8 @@ class MembershipArgs:
         if authority is not None:
             pulumi.set(__self__, "authority", authority)
         if description is not None:
-            warnings.warn("""This field is unavailable in the GA provider and will be removed from the beta provider in a future release.""", DeprecationWarning)
-            pulumi.log.warn("""description is deprecated: This field is unavailable in the GA provider and will be removed from the beta provider in a future release.""")
+            warnings.warn("""`description` is deprecated and will be removed in a future major release.""", DeprecationWarning)
+            pulumi.log.warn("""description is deprecated: `description` is deprecated and will be removed in a future major release.""")
         if description is not None:
             pulumi.set(__self__, "description", description)
         if endpoint is not None:
@@ -88,10 +91,13 @@ class MembershipArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
+        (Optional, Deprecated)
         The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
+
+        > **Warning:** `description` is deprecated and will be removed in a future major release.
         """
-        warnings.warn("""This field is unavailable in the GA provider and will be removed from the beta provider in a future release.""", DeprecationWarning)
-        pulumi.log.warn("""description is deprecated: This field is unavailable in the GA provider and will be removed from the beta provider in a future release.""")
+        warnings.warn("""`description` is deprecated and will be removed in a future major release.""", DeprecationWarning)
+        pulumi.log.warn("""description is deprecated: `description` is deprecated and will be removed in a future major release.""")
 
         return pulumi.get(self, "description")
 
@@ -154,7 +160,10 @@ class _MembershipState:
                See the workload identity documentation for more details:
                https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
                Structure is documented below.
-        :param pulumi.Input[str] description: The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
+        :param pulumi.Input[str] description: (Optional, Deprecated)
+               The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
+               
+               > **Warning:** `description` is deprecated and will be removed in a future major release.
         :param pulumi.Input['MembershipEndpointArgs'] endpoint: If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this membership.
@@ -169,8 +178,8 @@ class _MembershipState:
         if authority is not None:
             pulumi.set(__self__, "authority", authority)
         if description is not None:
-            warnings.warn("""This field is unavailable in the GA provider and will be removed from the beta provider in a future release.""", DeprecationWarning)
-            pulumi.log.warn("""description is deprecated: This field is unavailable in the GA provider and will be removed from the beta provider in a future release.""")
+            warnings.warn("""`description` is deprecated and will be removed in a future major release.""", DeprecationWarning)
+            pulumi.log.warn("""description is deprecated: `description` is deprecated and will be removed in a future major release.""")
         if description is not None:
             pulumi.set(__self__, "description", description)
         if endpoint is not None:
@@ -203,10 +212,13 @@ class _MembershipState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
+        (Optional, Deprecated)
         The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
+
+        > **Warning:** `description` is deprecated and will be removed in a future major release.
         """
-        warnings.warn("""This field is unavailable in the GA provider and will be removed from the beta provider in a future release.""", DeprecationWarning)
-        pulumi.log.warn("""description is deprecated: This field is unavailable in the GA provider and will be removed from the beta provider in a future release.""")
+        warnings.warn("""`description` is deprecated and will be removed in a future major release.""", DeprecationWarning)
+        pulumi.log.warn("""description is deprecated: `description` is deprecated and will be removed in a future major release.""")
 
         return pulumi.get(self, "description")
 
@@ -365,7 +377,10 @@ class Membership(pulumi.CustomResource):
                See the workload identity documentation for more details:
                https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
                Structure is documented below.
-        :param pulumi.Input[str] description: The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
+        :param pulumi.Input[str] description: (Optional, Deprecated)
+               The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
+               
+               > **Warning:** `description` is deprecated and will be removed in a future major release.
         :param pulumi.Input[pulumi.InputType['MembershipEndpointArgs']] endpoint: If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this membership.
@@ -481,8 +496,8 @@ class Membership(pulumi.CustomResource):
 
             __props__.__dict__["authority"] = authority
             if description is not None and not opts.urn:
-                warnings.warn("""This field is unavailable in the GA provider and will be removed from the beta provider in a future release.""", DeprecationWarning)
-                pulumi.log.warn("""description is deprecated: This field is unavailable in the GA provider and will be removed from the beta provider in a future release.""")
+                warnings.warn("""`description` is deprecated and will be removed in a future major release.""", DeprecationWarning)
+                pulumi.log.warn("""description is deprecated: `description` is deprecated and will be removed in a future major release.""")
             __props__.__dict__["description"] = description
             __props__.__dict__["endpoint"] = endpoint
             __props__.__dict__["labels"] = labels
@@ -519,7 +534,10 @@ class Membership(pulumi.CustomResource):
                See the workload identity documentation for more details:
                https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
                Structure is documented below.
-        :param pulumi.Input[str] description: The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
+        :param pulumi.Input[str] description: (Optional, Deprecated)
+               The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
+               
+               > **Warning:** `description` is deprecated and will be removed in a future major release.
         :param pulumi.Input[pulumi.InputType['MembershipEndpointArgs']] endpoint: If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this membership.
@@ -559,10 +577,13 @@ class Membership(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
+        (Optional, Deprecated)
         The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
+
+        > **Warning:** `description` is deprecated and will be removed in a future major release.
         """
-        warnings.warn("""This field is unavailable in the GA provider and will be removed from the beta provider in a future release.""", DeprecationWarning)
-        pulumi.log.warn("""description is deprecated: This field is unavailable in the GA provider and will be removed from the beta provider in a future release.""")
+        warnings.warn("""`description` is deprecated and will be removed in a future major release.""", DeprecationWarning)
+        pulumi.log.warn("""description is deprecated: `description` is deprecated and will be removed in a future major release.""")
 
         return pulumi.get(self, "description")
 

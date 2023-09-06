@@ -46,11 +46,13 @@ public final class ServiceTemplateContainerLivenessProbe {
      * TCPSocket specifies an action involving a TCP port. This field is not supported in liveness probe currently.
      * Structure is documented below.
      * 
+     * &gt; **Warning:** `tcp_socket` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+     * 
      * @deprecated
-     * Cloud Run does not support tcp socket in liveness probe and `liveness_probe.tcp_socket` field will be removed in a future major release.
+     * `tcp_socket` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
      * 
      */
-    @Deprecated /* Cloud Run does not support tcp socket in liveness probe and `liveness_probe.tcp_socket` field will be removed in a future major release. */
+    @Deprecated /* `tcp_socket` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
     private @Nullable ServiceTemplateContainerLivenessProbeTcpSocket tcpSocket;
     /**
      * @return Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
@@ -101,11 +103,13 @@ public final class ServiceTemplateContainerLivenessProbe {
      * TCPSocket specifies an action involving a TCP port. This field is not supported in liveness probe currently.
      * Structure is documented below.
      * 
+     * &gt; **Warning:** `tcp_socket` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+     * 
      * @deprecated
-     * Cloud Run does not support tcp socket in liveness probe and `liveness_probe.tcp_socket` field will be removed in a future major release.
+     * `tcp_socket` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
      * 
      */
-    @Deprecated /* Cloud Run does not support tcp socket in liveness probe and `liveness_probe.tcp_socket` field will be removed in a future major release. */
+    @Deprecated /* `tcp_socket` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API. */
     public Optional<ServiceTemplateContainerLivenessProbeTcpSocket> tcpSocket() {
         return Optional.ofNullable(this.tcpSocket);
     }

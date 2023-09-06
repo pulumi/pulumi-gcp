@@ -158,7 +158,7 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
 
         ## Import
 
-        ApplicationUrlDispatchRules can be imported using any of these accepted formats
+        ApplicationUrlDispatchRules can be imported using any of these accepted formats:
 
         ```sh
          $ pulumi import gcp:appengine/applicationUrlDispatchRules:ApplicationUrlDispatchRules default {{project}}
@@ -227,7 +227,7 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
 
         ## Import
 
-        ApplicationUrlDispatchRules can be imported using any of these accepted formats
+        ApplicationUrlDispatchRules can be imported using any of these accepted formats:
 
         ```sh
          $ pulumi import gcp:appengine/applicationUrlDispatchRules:ApplicationUrlDispatchRules default {{project}}

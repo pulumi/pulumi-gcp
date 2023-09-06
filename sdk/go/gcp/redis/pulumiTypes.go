@@ -13,6 +13,790 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type ClusterDiscoveryEndpoint struct {
+	// Output only. The IP allocated on the consumer network for the PSC forwarding rule.
+	Address *string `pulumi:"address"`
+	// Output only. The port number of the exposed Redis endpoint.
+	Port *int `pulumi:"port"`
+	// Output only. Customer configuration for where the endpoint
+	// is created and accessed from.
+	// Structure is documented below.
+	PscConfig *ClusterDiscoveryEndpointPscConfig `pulumi:"pscConfig"`
+}
+
+// ClusterDiscoveryEndpointInput is an input type that accepts ClusterDiscoveryEndpointArgs and ClusterDiscoveryEndpointOutput values.
+// You can construct a concrete instance of `ClusterDiscoveryEndpointInput` via:
+//
+//	ClusterDiscoveryEndpointArgs{...}
+type ClusterDiscoveryEndpointInput interface {
+	pulumi.Input
+
+	ToClusterDiscoveryEndpointOutput() ClusterDiscoveryEndpointOutput
+	ToClusterDiscoveryEndpointOutputWithContext(context.Context) ClusterDiscoveryEndpointOutput
+}
+
+type ClusterDiscoveryEndpointArgs struct {
+	// Output only. The IP allocated on the consumer network for the PSC forwarding rule.
+	Address pulumi.StringPtrInput `pulumi:"address"`
+	// Output only. The port number of the exposed Redis endpoint.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Output only. Customer configuration for where the endpoint
+	// is created and accessed from.
+	// Structure is documented below.
+	PscConfig ClusterDiscoveryEndpointPscConfigPtrInput `pulumi:"pscConfig"`
+}
+
+func (ClusterDiscoveryEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterDiscoveryEndpoint)(nil)).Elem()
+}
+
+func (i ClusterDiscoveryEndpointArgs) ToClusterDiscoveryEndpointOutput() ClusterDiscoveryEndpointOutput {
+	return i.ToClusterDiscoveryEndpointOutputWithContext(context.Background())
+}
+
+func (i ClusterDiscoveryEndpointArgs) ToClusterDiscoveryEndpointOutputWithContext(ctx context.Context) ClusterDiscoveryEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterDiscoveryEndpointOutput)
+}
+
+// ClusterDiscoveryEndpointArrayInput is an input type that accepts ClusterDiscoveryEndpointArray and ClusterDiscoveryEndpointArrayOutput values.
+// You can construct a concrete instance of `ClusterDiscoveryEndpointArrayInput` via:
+//
+//	ClusterDiscoveryEndpointArray{ ClusterDiscoveryEndpointArgs{...} }
+type ClusterDiscoveryEndpointArrayInput interface {
+	pulumi.Input
+
+	ToClusterDiscoveryEndpointArrayOutput() ClusterDiscoveryEndpointArrayOutput
+	ToClusterDiscoveryEndpointArrayOutputWithContext(context.Context) ClusterDiscoveryEndpointArrayOutput
+}
+
+type ClusterDiscoveryEndpointArray []ClusterDiscoveryEndpointInput
+
+func (ClusterDiscoveryEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterDiscoveryEndpoint)(nil)).Elem()
+}
+
+func (i ClusterDiscoveryEndpointArray) ToClusterDiscoveryEndpointArrayOutput() ClusterDiscoveryEndpointArrayOutput {
+	return i.ToClusterDiscoveryEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterDiscoveryEndpointArray) ToClusterDiscoveryEndpointArrayOutputWithContext(ctx context.Context) ClusterDiscoveryEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterDiscoveryEndpointArrayOutput)
+}
+
+type ClusterDiscoveryEndpointOutput struct{ *pulumi.OutputState }
+
+func (ClusterDiscoveryEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterDiscoveryEndpoint)(nil)).Elem()
+}
+
+func (o ClusterDiscoveryEndpointOutput) ToClusterDiscoveryEndpointOutput() ClusterDiscoveryEndpointOutput {
+	return o
+}
+
+func (o ClusterDiscoveryEndpointOutput) ToClusterDiscoveryEndpointOutputWithContext(ctx context.Context) ClusterDiscoveryEndpointOutput {
+	return o
+}
+
+// Output only. The IP allocated on the consumer network for the PSC forwarding rule.
+func (o ClusterDiscoveryEndpointOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterDiscoveryEndpoint) *string { return v.Address }).(pulumi.StringPtrOutput)
+}
+
+// Output only. The port number of the exposed Redis endpoint.
+func (o ClusterDiscoveryEndpointOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterDiscoveryEndpoint) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// Output only. Customer configuration for where the endpoint
+// is created and accessed from.
+// Structure is documented below.
+func (o ClusterDiscoveryEndpointOutput) PscConfig() ClusterDiscoveryEndpointPscConfigPtrOutput {
+	return o.ApplyT(func(v ClusterDiscoveryEndpoint) *ClusterDiscoveryEndpointPscConfig { return v.PscConfig }).(ClusterDiscoveryEndpointPscConfigPtrOutput)
+}
+
+type ClusterDiscoveryEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterDiscoveryEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterDiscoveryEndpoint)(nil)).Elem()
+}
+
+func (o ClusterDiscoveryEndpointArrayOutput) ToClusterDiscoveryEndpointArrayOutput() ClusterDiscoveryEndpointArrayOutput {
+	return o
+}
+
+func (o ClusterDiscoveryEndpointArrayOutput) ToClusterDiscoveryEndpointArrayOutputWithContext(ctx context.Context) ClusterDiscoveryEndpointArrayOutput {
+	return o
+}
+
+func (o ClusterDiscoveryEndpointArrayOutput) Index(i pulumi.IntInput) ClusterDiscoveryEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterDiscoveryEndpoint {
+		return vs[0].([]ClusterDiscoveryEndpoint)[vs[1].(int)]
+	}).(ClusterDiscoveryEndpointOutput)
+}
+
+type ClusterDiscoveryEndpointPscConfig struct {
+	// Required. The consumer network where the network address of
+	// the discovery endpoint will be reserved, in the form of
+	// projects/{network_project_id_or_number}/global/networks/{network_id}.
+	//
+	// ***
+	Network *string `pulumi:"network"`
+}
+
+// ClusterDiscoveryEndpointPscConfigInput is an input type that accepts ClusterDiscoveryEndpointPscConfigArgs and ClusterDiscoveryEndpointPscConfigOutput values.
+// You can construct a concrete instance of `ClusterDiscoveryEndpointPscConfigInput` via:
+//
+//	ClusterDiscoveryEndpointPscConfigArgs{...}
+type ClusterDiscoveryEndpointPscConfigInput interface {
+	pulumi.Input
+
+	ToClusterDiscoveryEndpointPscConfigOutput() ClusterDiscoveryEndpointPscConfigOutput
+	ToClusterDiscoveryEndpointPscConfigOutputWithContext(context.Context) ClusterDiscoveryEndpointPscConfigOutput
+}
+
+type ClusterDiscoveryEndpointPscConfigArgs struct {
+	// Required. The consumer network where the network address of
+	// the discovery endpoint will be reserved, in the form of
+	// projects/{network_project_id_or_number}/global/networks/{network_id}.
+	//
+	// ***
+	Network pulumi.StringPtrInput `pulumi:"network"`
+}
+
+func (ClusterDiscoveryEndpointPscConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterDiscoveryEndpointPscConfig)(nil)).Elem()
+}
+
+func (i ClusterDiscoveryEndpointPscConfigArgs) ToClusterDiscoveryEndpointPscConfigOutput() ClusterDiscoveryEndpointPscConfigOutput {
+	return i.ToClusterDiscoveryEndpointPscConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterDiscoveryEndpointPscConfigArgs) ToClusterDiscoveryEndpointPscConfigOutputWithContext(ctx context.Context) ClusterDiscoveryEndpointPscConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterDiscoveryEndpointPscConfigOutput)
+}
+
+func (i ClusterDiscoveryEndpointPscConfigArgs) ToClusterDiscoveryEndpointPscConfigPtrOutput() ClusterDiscoveryEndpointPscConfigPtrOutput {
+	return i.ToClusterDiscoveryEndpointPscConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterDiscoveryEndpointPscConfigArgs) ToClusterDiscoveryEndpointPscConfigPtrOutputWithContext(ctx context.Context) ClusterDiscoveryEndpointPscConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterDiscoveryEndpointPscConfigOutput).ToClusterDiscoveryEndpointPscConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterDiscoveryEndpointPscConfigPtrInput is an input type that accepts ClusterDiscoveryEndpointPscConfigArgs, ClusterDiscoveryEndpointPscConfigPtr and ClusterDiscoveryEndpointPscConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterDiscoveryEndpointPscConfigPtrInput` via:
+//
+//	        ClusterDiscoveryEndpointPscConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterDiscoveryEndpointPscConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterDiscoveryEndpointPscConfigPtrOutput() ClusterDiscoveryEndpointPscConfigPtrOutput
+	ToClusterDiscoveryEndpointPscConfigPtrOutputWithContext(context.Context) ClusterDiscoveryEndpointPscConfigPtrOutput
+}
+
+type clusterDiscoveryEndpointPscConfigPtrType ClusterDiscoveryEndpointPscConfigArgs
+
+func ClusterDiscoveryEndpointPscConfigPtr(v *ClusterDiscoveryEndpointPscConfigArgs) ClusterDiscoveryEndpointPscConfigPtrInput {
+	return (*clusterDiscoveryEndpointPscConfigPtrType)(v)
+}
+
+func (*clusterDiscoveryEndpointPscConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterDiscoveryEndpointPscConfig)(nil)).Elem()
+}
+
+func (i *clusterDiscoveryEndpointPscConfigPtrType) ToClusterDiscoveryEndpointPscConfigPtrOutput() ClusterDiscoveryEndpointPscConfigPtrOutput {
+	return i.ToClusterDiscoveryEndpointPscConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterDiscoveryEndpointPscConfigPtrType) ToClusterDiscoveryEndpointPscConfigPtrOutputWithContext(ctx context.Context) ClusterDiscoveryEndpointPscConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterDiscoveryEndpointPscConfigPtrOutput)
+}
+
+type ClusterDiscoveryEndpointPscConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterDiscoveryEndpointPscConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterDiscoveryEndpointPscConfig)(nil)).Elem()
+}
+
+func (o ClusterDiscoveryEndpointPscConfigOutput) ToClusterDiscoveryEndpointPscConfigOutput() ClusterDiscoveryEndpointPscConfigOutput {
+	return o
+}
+
+func (o ClusterDiscoveryEndpointPscConfigOutput) ToClusterDiscoveryEndpointPscConfigOutputWithContext(ctx context.Context) ClusterDiscoveryEndpointPscConfigOutput {
+	return o
+}
+
+func (o ClusterDiscoveryEndpointPscConfigOutput) ToClusterDiscoveryEndpointPscConfigPtrOutput() ClusterDiscoveryEndpointPscConfigPtrOutput {
+	return o.ToClusterDiscoveryEndpointPscConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterDiscoveryEndpointPscConfigOutput) ToClusterDiscoveryEndpointPscConfigPtrOutputWithContext(ctx context.Context) ClusterDiscoveryEndpointPscConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterDiscoveryEndpointPscConfig) *ClusterDiscoveryEndpointPscConfig {
+		return &v
+	}).(ClusterDiscoveryEndpointPscConfigPtrOutput)
+}
+
+// Required. The consumer network where the network address of
+// the discovery endpoint will be reserved, in the form of
+// projects/{network_project_id_or_number}/global/networks/{network_id}.
+//
+// ***
+func (o ClusterDiscoveryEndpointPscConfigOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterDiscoveryEndpointPscConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+type ClusterDiscoveryEndpointPscConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterDiscoveryEndpointPscConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterDiscoveryEndpointPscConfig)(nil)).Elem()
+}
+
+func (o ClusterDiscoveryEndpointPscConfigPtrOutput) ToClusterDiscoveryEndpointPscConfigPtrOutput() ClusterDiscoveryEndpointPscConfigPtrOutput {
+	return o
+}
+
+func (o ClusterDiscoveryEndpointPscConfigPtrOutput) ToClusterDiscoveryEndpointPscConfigPtrOutputWithContext(ctx context.Context) ClusterDiscoveryEndpointPscConfigPtrOutput {
+	return o
+}
+
+func (o ClusterDiscoveryEndpointPscConfigPtrOutput) Elem() ClusterDiscoveryEndpointPscConfigOutput {
+	return o.ApplyT(func(v *ClusterDiscoveryEndpointPscConfig) ClusterDiscoveryEndpointPscConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterDiscoveryEndpointPscConfig
+		return ret
+	}).(ClusterDiscoveryEndpointPscConfigOutput)
+}
+
+// Required. The consumer network where the network address of
+// the discovery endpoint will be reserved, in the form of
+// projects/{network_project_id_or_number}/global/networks/{network_id}.
+//
+// ***
+func (o ClusterDiscoveryEndpointPscConfigPtrOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterDiscoveryEndpointPscConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Network
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterPscConfig struct {
+	// Required. The consumer network where the network address of
+	// the discovery endpoint will be reserved, in the form of
+	// projects/{network_project_id_or_number}/global/networks/{network_id}.
+	//
+	// ***
+	Network string `pulumi:"network"`
+}
+
+// ClusterPscConfigInput is an input type that accepts ClusterPscConfigArgs and ClusterPscConfigOutput values.
+// You can construct a concrete instance of `ClusterPscConfigInput` via:
+//
+//	ClusterPscConfigArgs{...}
+type ClusterPscConfigInput interface {
+	pulumi.Input
+
+	ToClusterPscConfigOutput() ClusterPscConfigOutput
+	ToClusterPscConfigOutputWithContext(context.Context) ClusterPscConfigOutput
+}
+
+type ClusterPscConfigArgs struct {
+	// Required. The consumer network where the network address of
+	// the discovery endpoint will be reserved, in the form of
+	// projects/{network_project_id_or_number}/global/networks/{network_id}.
+	//
+	// ***
+	Network pulumi.StringInput `pulumi:"network"`
+}
+
+func (ClusterPscConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPscConfig)(nil)).Elem()
+}
+
+func (i ClusterPscConfigArgs) ToClusterPscConfigOutput() ClusterPscConfigOutput {
+	return i.ToClusterPscConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterPscConfigArgs) ToClusterPscConfigOutputWithContext(ctx context.Context) ClusterPscConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPscConfigOutput)
+}
+
+// ClusterPscConfigArrayInput is an input type that accepts ClusterPscConfigArray and ClusterPscConfigArrayOutput values.
+// You can construct a concrete instance of `ClusterPscConfigArrayInput` via:
+//
+//	ClusterPscConfigArray{ ClusterPscConfigArgs{...} }
+type ClusterPscConfigArrayInput interface {
+	pulumi.Input
+
+	ToClusterPscConfigArrayOutput() ClusterPscConfigArrayOutput
+	ToClusterPscConfigArrayOutputWithContext(context.Context) ClusterPscConfigArrayOutput
+}
+
+type ClusterPscConfigArray []ClusterPscConfigInput
+
+func (ClusterPscConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterPscConfig)(nil)).Elem()
+}
+
+func (i ClusterPscConfigArray) ToClusterPscConfigArrayOutput() ClusterPscConfigArrayOutput {
+	return i.ToClusterPscConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterPscConfigArray) ToClusterPscConfigArrayOutputWithContext(ctx context.Context) ClusterPscConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPscConfigArrayOutput)
+}
+
+type ClusterPscConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterPscConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPscConfig)(nil)).Elem()
+}
+
+func (o ClusterPscConfigOutput) ToClusterPscConfigOutput() ClusterPscConfigOutput {
+	return o
+}
+
+func (o ClusterPscConfigOutput) ToClusterPscConfigOutputWithContext(ctx context.Context) ClusterPscConfigOutput {
+	return o
+}
+
+// Required. The consumer network where the network address of
+// the discovery endpoint will be reserved, in the form of
+// projects/{network_project_id_or_number}/global/networks/{network_id}.
+//
+// ***
+func (o ClusterPscConfigOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterPscConfig) string { return v.Network }).(pulumi.StringOutput)
+}
+
+type ClusterPscConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterPscConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterPscConfig)(nil)).Elem()
+}
+
+func (o ClusterPscConfigArrayOutput) ToClusterPscConfigArrayOutput() ClusterPscConfigArrayOutput {
+	return o
+}
+
+func (o ClusterPscConfigArrayOutput) ToClusterPscConfigArrayOutputWithContext(ctx context.Context) ClusterPscConfigArrayOutput {
+	return o
+}
+
+func (o ClusterPscConfigArrayOutput) Index(i pulumi.IntInput) ClusterPscConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterPscConfig {
+		return vs[0].([]ClusterPscConfig)[vs[1].(int)]
+	}).(ClusterPscConfigOutput)
+}
+
+type ClusterPscConnection struct {
+	// Output only. The IP allocated on the consumer network for the PSC forwarding rule.
+	Address *string `pulumi:"address"`
+	// Output only. The URI of the consumer side forwarding rule. Example: projects/{projectNumOrId}/regions/us-east1/forwardingRules/{resourceId}.
+	ForwardingRule *string `pulumi:"forwardingRule"`
+	// Required. The consumer network where the network address of
+	// the discovery endpoint will be reserved, in the form of
+	// projects/{network_project_id_or_number}/global/networks/{network_id}.
+	//
+	// ***
+	Network *string `pulumi:"network"`
+	// Output only. The consumer projectId where the forwarding rule is created from.
+	ProjectId *string `pulumi:"projectId"`
+	// Output only. The PSC connection id of the forwarding rule connected to the service attachment.
+	PscConnectionId *string `pulumi:"pscConnectionId"`
+}
+
+// ClusterPscConnectionInput is an input type that accepts ClusterPscConnectionArgs and ClusterPscConnectionOutput values.
+// You can construct a concrete instance of `ClusterPscConnectionInput` via:
+//
+//	ClusterPscConnectionArgs{...}
+type ClusterPscConnectionInput interface {
+	pulumi.Input
+
+	ToClusterPscConnectionOutput() ClusterPscConnectionOutput
+	ToClusterPscConnectionOutputWithContext(context.Context) ClusterPscConnectionOutput
+}
+
+type ClusterPscConnectionArgs struct {
+	// Output only. The IP allocated on the consumer network for the PSC forwarding rule.
+	Address pulumi.StringPtrInput `pulumi:"address"`
+	// Output only. The URI of the consumer side forwarding rule. Example: projects/{projectNumOrId}/regions/us-east1/forwardingRules/{resourceId}.
+	ForwardingRule pulumi.StringPtrInput `pulumi:"forwardingRule"`
+	// Required. The consumer network where the network address of
+	// the discovery endpoint will be reserved, in the form of
+	// projects/{network_project_id_or_number}/global/networks/{network_id}.
+	//
+	// ***
+	Network pulumi.StringPtrInput `pulumi:"network"`
+	// Output only. The consumer projectId where the forwarding rule is created from.
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	// Output only. The PSC connection id of the forwarding rule connected to the service attachment.
+	PscConnectionId pulumi.StringPtrInput `pulumi:"pscConnectionId"`
+}
+
+func (ClusterPscConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPscConnection)(nil)).Elem()
+}
+
+func (i ClusterPscConnectionArgs) ToClusterPscConnectionOutput() ClusterPscConnectionOutput {
+	return i.ToClusterPscConnectionOutputWithContext(context.Background())
+}
+
+func (i ClusterPscConnectionArgs) ToClusterPscConnectionOutputWithContext(ctx context.Context) ClusterPscConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPscConnectionOutput)
+}
+
+// ClusterPscConnectionArrayInput is an input type that accepts ClusterPscConnectionArray and ClusterPscConnectionArrayOutput values.
+// You can construct a concrete instance of `ClusterPscConnectionArrayInput` via:
+//
+//	ClusterPscConnectionArray{ ClusterPscConnectionArgs{...} }
+type ClusterPscConnectionArrayInput interface {
+	pulumi.Input
+
+	ToClusterPscConnectionArrayOutput() ClusterPscConnectionArrayOutput
+	ToClusterPscConnectionArrayOutputWithContext(context.Context) ClusterPscConnectionArrayOutput
+}
+
+type ClusterPscConnectionArray []ClusterPscConnectionInput
+
+func (ClusterPscConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterPscConnection)(nil)).Elem()
+}
+
+func (i ClusterPscConnectionArray) ToClusterPscConnectionArrayOutput() ClusterPscConnectionArrayOutput {
+	return i.ToClusterPscConnectionArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterPscConnectionArray) ToClusterPscConnectionArrayOutputWithContext(ctx context.Context) ClusterPscConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPscConnectionArrayOutput)
+}
+
+type ClusterPscConnectionOutput struct{ *pulumi.OutputState }
+
+func (ClusterPscConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPscConnection)(nil)).Elem()
+}
+
+func (o ClusterPscConnectionOutput) ToClusterPscConnectionOutput() ClusterPscConnectionOutput {
+	return o
+}
+
+func (o ClusterPscConnectionOutput) ToClusterPscConnectionOutputWithContext(ctx context.Context) ClusterPscConnectionOutput {
+	return o
+}
+
+// Output only. The IP allocated on the consumer network for the PSC forwarding rule.
+func (o ClusterPscConnectionOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterPscConnection) *string { return v.Address }).(pulumi.StringPtrOutput)
+}
+
+// Output only. The URI of the consumer side forwarding rule. Example: projects/{projectNumOrId}/regions/us-east1/forwardingRules/{resourceId}.
+func (o ClusterPscConnectionOutput) ForwardingRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterPscConnection) *string { return v.ForwardingRule }).(pulumi.StringPtrOutput)
+}
+
+// Required. The consumer network where the network address of
+// the discovery endpoint will be reserved, in the form of
+// projects/{network_project_id_or_number}/global/networks/{network_id}.
+//
+// ***
+func (o ClusterPscConnectionOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterPscConnection) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// Output only. The consumer projectId where the forwarding rule is created from.
+func (o ClusterPscConnectionOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterPscConnection) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+}
+
+// Output only. The PSC connection id of the forwarding rule connected to the service attachment.
+func (o ClusterPscConnectionOutput) PscConnectionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterPscConnection) *string { return v.PscConnectionId }).(pulumi.StringPtrOutput)
+}
+
+type ClusterPscConnectionArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterPscConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterPscConnection)(nil)).Elem()
+}
+
+func (o ClusterPscConnectionArrayOutput) ToClusterPscConnectionArrayOutput() ClusterPscConnectionArrayOutput {
+	return o
+}
+
+func (o ClusterPscConnectionArrayOutput) ToClusterPscConnectionArrayOutputWithContext(ctx context.Context) ClusterPscConnectionArrayOutput {
+	return o
+}
+
+func (o ClusterPscConnectionArrayOutput) Index(i pulumi.IntInput) ClusterPscConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterPscConnection {
+		return vs[0].([]ClusterPscConnection)[vs[1].(int)]
+	}).(ClusterPscConnectionOutput)
+}
+
+type ClusterStateInfo struct {
+	// A nested object resource
+	// Structure is documented below.
+	UpdateInfo *ClusterStateInfoUpdateInfo `pulumi:"updateInfo"`
+}
+
+// ClusterStateInfoInput is an input type that accepts ClusterStateInfoArgs and ClusterStateInfoOutput values.
+// You can construct a concrete instance of `ClusterStateInfoInput` via:
+//
+//	ClusterStateInfoArgs{...}
+type ClusterStateInfoInput interface {
+	pulumi.Input
+
+	ToClusterStateInfoOutput() ClusterStateInfoOutput
+	ToClusterStateInfoOutputWithContext(context.Context) ClusterStateInfoOutput
+}
+
+type ClusterStateInfoArgs struct {
+	// A nested object resource
+	// Structure is documented below.
+	UpdateInfo ClusterStateInfoUpdateInfoPtrInput `pulumi:"updateInfo"`
+}
+
+func (ClusterStateInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterStateInfo)(nil)).Elem()
+}
+
+func (i ClusterStateInfoArgs) ToClusterStateInfoOutput() ClusterStateInfoOutput {
+	return i.ToClusterStateInfoOutputWithContext(context.Background())
+}
+
+func (i ClusterStateInfoArgs) ToClusterStateInfoOutputWithContext(ctx context.Context) ClusterStateInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterStateInfoOutput)
+}
+
+// ClusterStateInfoArrayInput is an input type that accepts ClusterStateInfoArray and ClusterStateInfoArrayOutput values.
+// You can construct a concrete instance of `ClusterStateInfoArrayInput` via:
+//
+//	ClusterStateInfoArray{ ClusterStateInfoArgs{...} }
+type ClusterStateInfoArrayInput interface {
+	pulumi.Input
+
+	ToClusterStateInfoArrayOutput() ClusterStateInfoArrayOutput
+	ToClusterStateInfoArrayOutputWithContext(context.Context) ClusterStateInfoArrayOutput
+}
+
+type ClusterStateInfoArray []ClusterStateInfoInput
+
+func (ClusterStateInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterStateInfo)(nil)).Elem()
+}
+
+func (i ClusterStateInfoArray) ToClusterStateInfoArrayOutput() ClusterStateInfoArrayOutput {
+	return i.ToClusterStateInfoArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterStateInfoArray) ToClusterStateInfoArrayOutputWithContext(ctx context.Context) ClusterStateInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterStateInfoArrayOutput)
+}
+
+type ClusterStateInfoOutput struct{ *pulumi.OutputState }
+
+func (ClusterStateInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterStateInfo)(nil)).Elem()
+}
+
+func (o ClusterStateInfoOutput) ToClusterStateInfoOutput() ClusterStateInfoOutput {
+	return o
+}
+
+func (o ClusterStateInfoOutput) ToClusterStateInfoOutputWithContext(ctx context.Context) ClusterStateInfoOutput {
+	return o
+}
+
+// A nested object resource
+// Structure is documented below.
+func (o ClusterStateInfoOutput) UpdateInfo() ClusterStateInfoUpdateInfoPtrOutput {
+	return o.ApplyT(func(v ClusterStateInfo) *ClusterStateInfoUpdateInfo { return v.UpdateInfo }).(ClusterStateInfoUpdateInfoPtrOutput)
+}
+
+type ClusterStateInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterStateInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterStateInfo)(nil)).Elem()
+}
+
+func (o ClusterStateInfoArrayOutput) ToClusterStateInfoArrayOutput() ClusterStateInfoArrayOutput {
+	return o
+}
+
+func (o ClusterStateInfoArrayOutput) ToClusterStateInfoArrayOutputWithContext(ctx context.Context) ClusterStateInfoArrayOutput {
+	return o
+}
+
+func (o ClusterStateInfoArrayOutput) Index(i pulumi.IntInput) ClusterStateInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterStateInfo {
+		return vs[0].([]ClusterStateInfo)[vs[1].(int)]
+	}).(ClusterStateInfoOutput)
+}
+
+type ClusterStateInfoUpdateInfo struct {
+	// Target number of replica nodes per shard.
+	TargetReplicaCount *int `pulumi:"targetReplicaCount"`
+	// Target number of shards for redis cluster.
+	TargetShardCount *int `pulumi:"targetShardCount"`
+}
+
+// ClusterStateInfoUpdateInfoInput is an input type that accepts ClusterStateInfoUpdateInfoArgs and ClusterStateInfoUpdateInfoOutput values.
+// You can construct a concrete instance of `ClusterStateInfoUpdateInfoInput` via:
+//
+//	ClusterStateInfoUpdateInfoArgs{...}
+type ClusterStateInfoUpdateInfoInput interface {
+	pulumi.Input
+
+	ToClusterStateInfoUpdateInfoOutput() ClusterStateInfoUpdateInfoOutput
+	ToClusterStateInfoUpdateInfoOutputWithContext(context.Context) ClusterStateInfoUpdateInfoOutput
+}
+
+type ClusterStateInfoUpdateInfoArgs struct {
+	// Target number of replica nodes per shard.
+	TargetReplicaCount pulumi.IntPtrInput `pulumi:"targetReplicaCount"`
+	// Target number of shards for redis cluster.
+	TargetShardCount pulumi.IntPtrInput `pulumi:"targetShardCount"`
+}
+
+func (ClusterStateInfoUpdateInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterStateInfoUpdateInfo)(nil)).Elem()
+}
+
+func (i ClusterStateInfoUpdateInfoArgs) ToClusterStateInfoUpdateInfoOutput() ClusterStateInfoUpdateInfoOutput {
+	return i.ToClusterStateInfoUpdateInfoOutputWithContext(context.Background())
+}
+
+func (i ClusterStateInfoUpdateInfoArgs) ToClusterStateInfoUpdateInfoOutputWithContext(ctx context.Context) ClusterStateInfoUpdateInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterStateInfoUpdateInfoOutput)
+}
+
+func (i ClusterStateInfoUpdateInfoArgs) ToClusterStateInfoUpdateInfoPtrOutput() ClusterStateInfoUpdateInfoPtrOutput {
+	return i.ToClusterStateInfoUpdateInfoPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterStateInfoUpdateInfoArgs) ToClusterStateInfoUpdateInfoPtrOutputWithContext(ctx context.Context) ClusterStateInfoUpdateInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterStateInfoUpdateInfoOutput).ToClusterStateInfoUpdateInfoPtrOutputWithContext(ctx)
+}
+
+// ClusterStateInfoUpdateInfoPtrInput is an input type that accepts ClusterStateInfoUpdateInfoArgs, ClusterStateInfoUpdateInfoPtr and ClusterStateInfoUpdateInfoPtrOutput values.
+// You can construct a concrete instance of `ClusterStateInfoUpdateInfoPtrInput` via:
+//
+//	        ClusterStateInfoUpdateInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterStateInfoUpdateInfoPtrInput interface {
+	pulumi.Input
+
+	ToClusterStateInfoUpdateInfoPtrOutput() ClusterStateInfoUpdateInfoPtrOutput
+	ToClusterStateInfoUpdateInfoPtrOutputWithContext(context.Context) ClusterStateInfoUpdateInfoPtrOutput
+}
+
+type clusterStateInfoUpdateInfoPtrType ClusterStateInfoUpdateInfoArgs
+
+func ClusterStateInfoUpdateInfoPtr(v *ClusterStateInfoUpdateInfoArgs) ClusterStateInfoUpdateInfoPtrInput {
+	return (*clusterStateInfoUpdateInfoPtrType)(v)
+}
+
+func (*clusterStateInfoUpdateInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterStateInfoUpdateInfo)(nil)).Elem()
+}
+
+func (i *clusterStateInfoUpdateInfoPtrType) ToClusterStateInfoUpdateInfoPtrOutput() ClusterStateInfoUpdateInfoPtrOutput {
+	return i.ToClusterStateInfoUpdateInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterStateInfoUpdateInfoPtrType) ToClusterStateInfoUpdateInfoPtrOutputWithContext(ctx context.Context) ClusterStateInfoUpdateInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterStateInfoUpdateInfoPtrOutput)
+}
+
+type ClusterStateInfoUpdateInfoOutput struct{ *pulumi.OutputState }
+
+func (ClusterStateInfoUpdateInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterStateInfoUpdateInfo)(nil)).Elem()
+}
+
+func (o ClusterStateInfoUpdateInfoOutput) ToClusterStateInfoUpdateInfoOutput() ClusterStateInfoUpdateInfoOutput {
+	return o
+}
+
+func (o ClusterStateInfoUpdateInfoOutput) ToClusterStateInfoUpdateInfoOutputWithContext(ctx context.Context) ClusterStateInfoUpdateInfoOutput {
+	return o
+}
+
+func (o ClusterStateInfoUpdateInfoOutput) ToClusterStateInfoUpdateInfoPtrOutput() ClusterStateInfoUpdateInfoPtrOutput {
+	return o.ToClusterStateInfoUpdateInfoPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterStateInfoUpdateInfoOutput) ToClusterStateInfoUpdateInfoPtrOutputWithContext(ctx context.Context) ClusterStateInfoUpdateInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterStateInfoUpdateInfo) *ClusterStateInfoUpdateInfo {
+		return &v
+	}).(ClusterStateInfoUpdateInfoPtrOutput)
+}
+
+// Target number of replica nodes per shard.
+func (o ClusterStateInfoUpdateInfoOutput) TargetReplicaCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterStateInfoUpdateInfo) *int { return v.TargetReplicaCount }).(pulumi.IntPtrOutput)
+}
+
+// Target number of shards for redis cluster.
+func (o ClusterStateInfoUpdateInfoOutput) TargetShardCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterStateInfoUpdateInfo) *int { return v.TargetShardCount }).(pulumi.IntPtrOutput)
+}
+
+type ClusterStateInfoUpdateInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterStateInfoUpdateInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterStateInfoUpdateInfo)(nil)).Elem()
+}
+
+func (o ClusterStateInfoUpdateInfoPtrOutput) ToClusterStateInfoUpdateInfoPtrOutput() ClusterStateInfoUpdateInfoPtrOutput {
+	return o
+}
+
+func (o ClusterStateInfoUpdateInfoPtrOutput) ToClusterStateInfoUpdateInfoPtrOutputWithContext(ctx context.Context) ClusterStateInfoUpdateInfoPtrOutput {
+	return o
+}
+
+func (o ClusterStateInfoUpdateInfoPtrOutput) Elem() ClusterStateInfoUpdateInfoOutput {
+	return o.ApplyT(func(v *ClusterStateInfoUpdateInfo) ClusterStateInfoUpdateInfo {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterStateInfoUpdateInfo
+		return ret
+	}).(ClusterStateInfoUpdateInfoOutput)
+}
+
+// Target number of replica nodes per shard.
+func (o ClusterStateInfoUpdateInfoPtrOutput) TargetReplicaCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterStateInfoUpdateInfo) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TargetReplicaCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Target number of shards for redis cluster.
+func (o ClusterStateInfoUpdateInfoPtrOutput) TargetShardCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterStateInfoUpdateInfo) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TargetShardCount
+	}).(pulumi.IntPtrOutput)
+}
+
 type InstanceMaintenancePolicy struct {
 	// (Output)
 	// Output only. The time when the policy was created.
@@ -2003,6 +2787,18 @@ func (o GetInstanceServerCaCertArrayOutput) Index(i pulumi.IntInput) GetInstance
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDiscoveryEndpointInput)(nil)).Elem(), ClusterDiscoveryEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDiscoveryEndpointArrayInput)(nil)).Elem(), ClusterDiscoveryEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDiscoveryEndpointPscConfigInput)(nil)).Elem(), ClusterDiscoveryEndpointPscConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDiscoveryEndpointPscConfigPtrInput)(nil)).Elem(), ClusterDiscoveryEndpointPscConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPscConfigInput)(nil)).Elem(), ClusterPscConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPscConfigArrayInput)(nil)).Elem(), ClusterPscConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPscConnectionInput)(nil)).Elem(), ClusterPscConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPscConnectionArrayInput)(nil)).Elem(), ClusterPscConnectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterStateInfoInput)(nil)).Elem(), ClusterStateInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterStateInfoArrayInput)(nil)).Elem(), ClusterStateInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterStateInfoUpdateInfoInput)(nil)).Elem(), ClusterStateInfoUpdateInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterStateInfoUpdateInfoPtrInput)(nil)).Elem(), ClusterStateInfoUpdateInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenancePolicyInput)(nil)).Elem(), InstanceMaintenancePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenancePolicyPtrInput)(nil)).Elem(), InstanceMaintenancePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenancePolicyWeeklyMaintenanceWindowInput)(nil)).Elem(), InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs{})
@@ -2030,6 +2826,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePersistenceConfigArrayInput)(nil)).Elem(), GetInstancePersistenceConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceServerCaCertInput)(nil)).Elem(), GetInstanceServerCaCertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceServerCaCertArrayInput)(nil)).Elem(), GetInstanceServerCaCertArray{})
+	pulumi.RegisterOutputType(ClusterDiscoveryEndpointOutput{})
+	pulumi.RegisterOutputType(ClusterDiscoveryEndpointArrayOutput{})
+	pulumi.RegisterOutputType(ClusterDiscoveryEndpointPscConfigOutput{})
+	pulumi.RegisterOutputType(ClusterDiscoveryEndpointPscConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterPscConfigOutput{})
+	pulumi.RegisterOutputType(ClusterPscConfigArrayOutput{})
+	pulumi.RegisterOutputType(ClusterPscConnectionOutput{})
+	pulumi.RegisterOutputType(ClusterPscConnectionArrayOutput{})
+	pulumi.RegisterOutputType(ClusterStateInfoOutput{})
+	pulumi.RegisterOutputType(ClusterStateInfoArrayOutput{})
+	pulumi.RegisterOutputType(ClusterStateInfoUpdateInfoOutput{})
+	pulumi.RegisterOutputType(ClusterStateInfoUpdateInfoPtrOutput{})
 	pulumi.RegisterOutputType(InstanceMaintenancePolicyOutput{})
 	pulumi.RegisterOutputType(InstanceMaintenancePolicyPtrOutput{})
 	pulumi.RegisterOutputType(InstanceMaintenancePolicyWeeklyMaintenanceWindowOutput{})

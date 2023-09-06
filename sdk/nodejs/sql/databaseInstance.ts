@@ -174,6 +174,10 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
+     * The dns name of the instance.
+     */
+    public /*out*/ readonly dnsName!: pulumi.Output<string>;
+    /**
      * The full path to the encryption key used for the CMEK disk encryption.  Setting
      * up disk encryption currently requires manual steps outside of this provider.
      * The provided key must be in the same region as the SQL instance.  In order
@@ -219,6 +223,10 @@ export class DatabaseInstance extends pulumi.CustomResource {
      * is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The link to service attachment of PSC instance.
+     */
+    public /*out*/ readonly pscServiceAttachmentLink!: pulumi.Output<string>;
     /**
      * The first public (`PRIMARY`) IPv4 address assigned.
      */
@@ -280,6 +288,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             resourceInputs["connectionName"] = state ? state.connectionName : undefined;
             resourceInputs["databaseVersion"] = state ? state.databaseVersion : undefined;
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
+            resourceInputs["dnsName"] = state ? state.dnsName : undefined;
             resourceInputs["encryptionKeyName"] = state ? state.encryptionKeyName : undefined;
             resourceInputs["firstIpAddress"] = state ? state.firstIpAddress : undefined;
             resourceInputs["instanceType"] = state ? state.instanceType : undefined;
@@ -289,6 +298,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["privateIpAddress"] = state ? state.privateIpAddress : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pscServiceAttachmentLink"] = state ? state.pscServiceAttachmentLink : undefined;
             resourceInputs["publicIpAddress"] = state ? state.publicIpAddress : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["replicaConfiguration"] = state ? state.replicaConfiguration : undefined;
@@ -319,9 +329,11 @@ export class DatabaseInstance extends pulumi.CustomResource {
             resourceInputs["settings"] = args ? args.settings : undefined;
             resourceInputs["availableMaintenanceVersions"] = undefined /*out*/;
             resourceInputs["connectionName"] = undefined /*out*/;
+            resourceInputs["dnsName"] = undefined /*out*/;
             resourceInputs["firstIpAddress"] = undefined /*out*/;
             resourceInputs["ipAddresses"] = undefined /*out*/;
             resourceInputs["privateIpAddress"] = undefined /*out*/;
+            resourceInputs["pscServiceAttachmentLink"] = undefined /*out*/;
             resourceInputs["publicIpAddress"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["serverCaCerts"] = undefined /*out*/;
@@ -371,6 +383,10 @@ export interface DatabaseInstanceState {
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**
+     * The dns name of the instance.
+     */
+    dnsName?: pulumi.Input<string>;
+    /**
      * The full path to the encryption key used for the CMEK disk encryption.  Setting
      * up disk encryption currently requires manual steps outside of this provider.
      * The provided key must be in the same region as the SQL instance.  In order
@@ -416,6 +432,10 @@ export interface DatabaseInstanceState {
      * is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The link to service attachment of PSC instance.
+     */
+    pscServiceAttachmentLink?: pulumi.Input<string>;
     /**
      * The first public (`PRIMARY`) IPv4 address assigned.
      */

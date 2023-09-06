@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataplex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.dataplex.outputs.DatascanDataQualitySpecPostScanActions;
 import com.pulumi.gcp.dataplex.outputs.DatascanDataQualitySpecRule;
 import java.lang.Double;
 import java.lang.String;
@@ -14,6 +15,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DatascanDataQualitySpec {
+    /**
+     * @return Actions to take upon job completion.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable DatascanDataQualitySpecPostScanActions postScanActions;
     /**
      * @return A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 &gt;= 0 AND col2 &lt; 10
      * 
@@ -27,11 +34,21 @@ public final class DatascanDataQualitySpec {
     private @Nullable List<DatascanDataQualitySpecRule> rules;
     /**
      * @return The percentage of the records to be selected from the dataset for DataScan.
+     * Value can range between 0.0 and 100.0 with up to 3 significant decimal digits.
+     * Sampling is not applied if `sampling_percent` is not specified, 0 or 100.
      * 
      */
     private @Nullable Double samplingPercent;
 
     private DatascanDataQualitySpec() {}
+    /**
+     * @return Actions to take upon job completion.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<DatascanDataQualitySpecPostScanActions> postScanActions() {
+        return Optional.ofNullable(this.postScanActions);
+    }
     /**
      * @return A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 &gt;= 0 AND col2 &lt; 10
      * 
@@ -49,6 +66,8 @@ public final class DatascanDataQualitySpec {
     }
     /**
      * @return The percentage of the records to be selected from the dataset for DataScan.
+     * Value can range between 0.0 and 100.0 with up to 3 significant decimal digits.
+     * Sampling is not applied if `sampling_percent` is not specified, 0 or 100.
      * 
      */
     public Optional<Double> samplingPercent() {
@@ -64,17 +83,24 @@ public final class DatascanDataQualitySpec {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable DatascanDataQualitySpecPostScanActions postScanActions;
         private @Nullable String rowFilter;
         private @Nullable List<DatascanDataQualitySpecRule> rules;
         private @Nullable Double samplingPercent;
         public Builder() {}
         public Builder(DatascanDataQualitySpec defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.postScanActions = defaults.postScanActions;
     	      this.rowFilter = defaults.rowFilter;
     	      this.rules = defaults.rules;
     	      this.samplingPercent = defaults.samplingPercent;
         }
 
+        @CustomType.Setter
+        public Builder postScanActions(@Nullable DatascanDataQualitySpecPostScanActions postScanActions) {
+            this.postScanActions = postScanActions;
+            return this;
+        }
         @CustomType.Setter
         public Builder rowFilter(@Nullable String rowFilter) {
             this.rowFilter = rowFilter;
@@ -95,6 +121,7 @@ public final class DatascanDataQualitySpec {
         }
         public DatascanDataQualitySpec build() {
             final var o = new DatascanDataQualitySpec();
+            o.postScanActions = postScanActions;
             o.rowFilter = rowFilter;
             o.rules = rules;
             o.samplingPercent = samplingPercent;

@@ -4,7 +4,9 @@
 package com.pulumi.gcp.diagflow.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.diagflow.outputs.CxPageEntryFulfillmentConditionalCase;
 import com.pulumi.gcp.diagflow.outputs.CxPageEntryFulfillmentMessage;
+import com.pulumi.gcp.diagflow.outputs.CxPageEntryFulfillmentSetParameterAction;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -14,6 +16,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class CxPageEntryFulfillment {
+    /**
+     * @return Conditional cases for this fulfillment.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<CxPageEntryFulfillmentConditionalCase> conditionalCases;
     /**
      * @return The list of rich message responses to present to the user.
      * Structure is documented below.
@@ -26,6 +34,12 @@ public final class CxPageEntryFulfillment {
      */
     private @Nullable Boolean returnPartialResponses;
     /**
+     * @return Set parameter values before executing the webhook.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<CxPageEntryFulfillmentSetParameterAction> setParameterActions;
+    /**
      * @return The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
      * 
      */
@@ -37,6 +51,14 @@ public final class CxPageEntryFulfillment {
     private @Nullable String webhook;
 
     private CxPageEntryFulfillment() {}
+    /**
+     * @return Conditional cases for this fulfillment.
+     * Structure is documented below.
+     * 
+     */
+    public List<CxPageEntryFulfillmentConditionalCase> conditionalCases() {
+        return this.conditionalCases == null ? List.of() : this.conditionalCases;
+    }
     /**
      * @return The list of rich message responses to present to the user.
      * Structure is documented below.
@@ -51,6 +73,14 @@ public final class CxPageEntryFulfillment {
      */
     public Optional<Boolean> returnPartialResponses() {
         return Optional.ofNullable(this.returnPartialResponses);
+    }
+    /**
+     * @return Set parameter values before executing the webhook.
+     * Structure is documented below.
+     * 
+     */
+    public List<CxPageEntryFulfillmentSetParameterAction> setParameterActions() {
+        return this.setParameterActions == null ? List.of() : this.setParameterActions;
     }
     /**
      * @return The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
@@ -76,19 +106,31 @@ public final class CxPageEntryFulfillment {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<CxPageEntryFulfillmentConditionalCase> conditionalCases;
         private @Nullable List<CxPageEntryFulfillmentMessage> messages;
         private @Nullable Boolean returnPartialResponses;
+        private @Nullable List<CxPageEntryFulfillmentSetParameterAction> setParameterActions;
         private @Nullable String tag;
         private @Nullable String webhook;
         public Builder() {}
         public Builder(CxPageEntryFulfillment defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.conditionalCases = defaults.conditionalCases;
     	      this.messages = defaults.messages;
     	      this.returnPartialResponses = defaults.returnPartialResponses;
+    	      this.setParameterActions = defaults.setParameterActions;
     	      this.tag = defaults.tag;
     	      this.webhook = defaults.webhook;
         }
 
+        @CustomType.Setter
+        public Builder conditionalCases(@Nullable List<CxPageEntryFulfillmentConditionalCase> conditionalCases) {
+            this.conditionalCases = conditionalCases;
+            return this;
+        }
+        public Builder conditionalCases(CxPageEntryFulfillmentConditionalCase... conditionalCases) {
+            return conditionalCases(List.of(conditionalCases));
+        }
         @CustomType.Setter
         public Builder messages(@Nullable List<CxPageEntryFulfillmentMessage> messages) {
             this.messages = messages;
@@ -103,6 +145,14 @@ public final class CxPageEntryFulfillment {
             return this;
         }
         @CustomType.Setter
+        public Builder setParameterActions(@Nullable List<CxPageEntryFulfillmentSetParameterAction> setParameterActions) {
+            this.setParameterActions = setParameterActions;
+            return this;
+        }
+        public Builder setParameterActions(CxPageEntryFulfillmentSetParameterAction... setParameterActions) {
+            return setParameterActions(List.of(setParameterActions));
+        }
+        @CustomType.Setter
         public Builder tag(@Nullable String tag) {
             this.tag = tag;
             return this;
@@ -114,8 +164,10 @@ public final class CxPageEntryFulfillment {
         }
         public CxPageEntryFulfillment build() {
             final var o = new CxPageEntryFulfillment();
+            o.conditionalCases = conditionalCases;
             o.messages = messages;
             o.returnPartialResponses = returnPartialResponses;
+            o.setParameterActions = setParameterActions;
             o.tag = tag;
             o.webhook = webhook;
             return o;

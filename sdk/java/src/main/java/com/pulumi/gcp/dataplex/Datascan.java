@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *                 .resource(&#34;//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare&#34;)
  *                 .build())
  *             .dataProfileSpec()
- *             .dataScanId(&#34;tf-test-datascan%{random_suffix}&#34;)
+ *             .dataScanId(&#34;dataprofile-basic&#34;)
  *             .executionSpec(DatascanExecutionSpecArgs.builder()
  *                 .trigger(DatascanExecutionSpecTriggerArgs.builder()
  *                     .onDemand()
@@ -85,13 +85,20 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
  * import com.pulumi.gcp.dataplex.Datascan;
  * import com.pulumi.gcp.dataplex.DatascanArgs;
  * import com.pulumi.gcp.dataplex.inputs.DatascanDataArgs;
- * import com.pulumi.gcp.dataplex.inputs.DatascanDataProfileSpecArgs;
  * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecArgs;
  * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecTriggerArgs;
  * import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecTriggerScheduleArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataProfileSpecArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataProfileSpecIncludeFieldsArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataProfileSpecExcludeFieldsArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataProfileSpecPostScanActionsArgs;
+ * import com.pulumi.gcp.dataplex.inputs.DatascanDataProfileSpecPostScanActionsBigqueryExportArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -105,17 +112,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var source = new Dataset(&#34;source&#34;, DatasetArgs.builder()        
+ *             .datasetId(&#34;dataplex_dataset&#34;)
+ *             .friendlyName(&#34;test&#34;)
+ *             .description(&#34;This is a test description&#34;)
+ *             .location(&#34;US&#34;)
+ *             .deleteContentsOnDestroy(true)
+ *             .build());
+ * 
  *         var fullProfile = new Datascan(&#34;fullProfile&#34;, DatascanArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .displayName(&#34;Full Datascan Profile&#34;)
+ *             .dataScanId(&#34;dataprofile-full&#34;)
+ *             .description(&#34;Example resource - Full Datascan Profile&#34;)
+ *             .labels(Map.of(&#34;author&#34;, &#34;billing&#34;))
  *             .data(DatascanDataArgs.builder()
  *                 .resource(&#34;//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare&#34;)
  *                 .build())
- *             .dataProfileSpec(DatascanDataProfileSpecArgs.builder()
- *                 .rowFilter(&#34;word_count &gt; 10&#34;)
- *                 .samplingPercent(80)
- *                 .build())
- *             .dataScanId(&#34;tf-test-datascan%{random_suffix}&#34;)
- *             .description(&#34;Example resource - Full Datascan Profile&#34;)
- *             .displayName(&#34;Full Datascan Profile&#34;)
  *             .executionSpec(DatascanExecutionSpecArgs.builder()
  *                 .trigger(DatascanExecutionSpecTriggerArgs.builder()
  *                     .schedule(DatascanExecutionSpecTriggerScheduleArgs.builder()
@@ -123,10 +136,25 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
- *             .labels(Map.of(&#34;author&#34;, &#34;billing&#34;))
- *             .location(&#34;us-central1&#34;)
+ *             .dataProfileSpec(DatascanDataProfileSpecArgs.builder()
+ *                 .samplingPercent(80)
+ *                 .rowFilter(&#34;word_count &gt; 10&#34;)
+ *                 .includeFields(DatascanDataProfileSpecIncludeFieldsArgs.builder()
+ *                     .fieldNames(&#34;word_count&#34;)
+ *                     .build())
+ *                 .excludeFields(DatascanDataProfileSpecExcludeFieldsArgs.builder()
+ *                     .fieldNames(&#34;property_type&#34;)
+ *                     .build())
+ *                 .postScanActions(DatascanDataProfileSpecPostScanActionsArgs.builder()
+ *                     .bigqueryExport(DatascanDataProfileSpecPostScanActionsBigqueryExportArgs.builder()
+ *                         .resultsTable(&#34;//bigquery.googleapis.com/projects/my-project-name/datasets/dataplex_dataset/tables/profile_export&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .build())
  *             .project(&#34;my-project-name&#34;)
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(source)
+ *                 .build());
  * 
  *     }
  * }
@@ -164,13 +192,15 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .dataQualitySpec(DatascanDataQualitySpecArgs.builder()
  *                 .rules(DatascanDataQualitySpecRuleArgs.builder()
+ *                     .description(&#34;rule 1 for validity dimension&#34;)
  *                     .dimension(&#34;VALIDITY&#34;)
+ *                     .name(&#34;rule1&#34;)
  *                     .tableConditionExpectation(DatascanDataQualitySpecRuleTableConditionExpectationArgs.builder()
  *                         .sqlExpression(&#34;COUNT(*) &gt; 0&#34;)
  *                         .build())
  *                     .build())
  *                 .build())
- *             .dataScanId(&#34;tf-test-datascan%{random_suffix}&#34;)
+ *             .dataScanId(&#34;dataquality-basic&#34;)
  *             .executionSpec(DatascanExecutionSpecArgs.builder()
  *                 .trigger(DatascanExecutionSpecTriggerArgs.builder()
  *                     .onDemand()
@@ -284,7 +314,7 @@ import javax.annotation.Nullable;
  *                         .build())
  *                 .samplingPercent(5)
  *                 .build())
- *             .dataScanId(&#34;tf-test-datascan%{random_suffix}&#34;)
+ *             .dataScanId(&#34;dataquality-full&#34;)
  *             .description(&#34;Example resource - Full Datascan Quality&#34;)
  *             .displayName(&#34;Full Datascan Quality&#34;)
  *             .executionSpec(DatascanExecutionSpecArgs.builder()
@@ -358,15 +388,21 @@ public class Datascan extends com.pulumi.resources.CustomResource {
         return this.data;
     }
     /**
+     * (Deprecated)
      * The result of the data profile scan.
      * Structure is documented below.
      * 
+     * @deprecated
+     * `data_profile_result` is deprecated and will be removed in a future major release.
+     * 
      */
+    @Deprecated /* `data_profile_result` is deprecated and will be removed in a future major release. */
     @Export(name="dataProfileResults", type=List.class, parameters={DatascanDataProfileResult.class})
     private Output<List<DatascanDataProfileResult>> dataProfileResults;
 
     /**
-     * @return The result of the data profile scan.
+     * @return (Deprecated)
+     * The result of the data profile scan.
      * Structure is documented below.
      * 
      */
@@ -390,15 +426,21 @@ public class Datascan extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dataProfileSpec);
     }
     /**
+     * (Deprecated)
      * The result of the data quality scan.
      * Structure is documented below.
      * 
+     * @deprecated
+     * `data_quality_result` is deprecated and will be removed in a future major release.
+     * 
      */
+    @Deprecated /* `data_quality_result` is deprecated and will be removed in a future major release. */
     @Export(name="dataQualityResults", type=List.class, parameters={DatascanDataQualityResult.class})
     private Output<List<DatascanDataQualityResult>> dataQualityResults;
 
     /**
-     * @return The result of the data quality scan.
+     * @return (Deprecated)
+     * The result of the data quality scan.
      * Structure is documented below.
      * 
      */
@@ -438,12 +480,20 @@ public class Datascan extends com.pulumi.resources.CustomResource {
     /**
      * Description of the scan.
      * 
+     * (Optional)
+     * Description of the rule.
+     * The maximum length is 1,024 characters.
+     * 
      */
     @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
      * @return Description of the scan.
+     * 
+     * (Optional)
+     * Description of the rule.
+     * The maximum length is 1,024 characters.
      * 
      */
     public Output<Optional<String>> description() {
@@ -524,14 +574,22 @@ public class Datascan extends com.pulumi.resources.CustomResource {
         return this.location;
     }
     /**
-     * The name of the field.
+     * A mutable name for the rule.
+     * The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+     * The maximum length is 63 characters.
+     * Must start with a letter.
+     * Must end with a number or a letter.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The name of the field.
+     * @return A mutable name for the rule.
+     * The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+     * The maximum length is 63 characters.
+     * Must start with a letter.
+     * Must end with a number or a letter.
      * 
      */
     public Output<String> name() {

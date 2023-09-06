@@ -614,18 +614,18 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.region;
     }
     /**
-     * Deprecated. Use &#39;tenant_project_id&#39; instead to extract the tenant project ID.
+     * Service account which will be used to access resources in the customer project.
      * 
      * @deprecated
-     * Use `tenant_project_id` instead to extract the tenant project ID.
+     * `service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID.
      * 
      */
-    @Deprecated /* Use `tenant_project_id` instead to extract the tenant project ID. */
+    @Deprecated /* `service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID. */
     @Export(name="serviceAccount", type=String.class, parameters={})
     private Output<String> serviceAccount;
 
     /**
-     * @return Deprecated. Use &#39;tenant_project_id&#39; instead to extract the tenant project ID.
+     * @return Service account which will be used to access resources in the customer project.
      * 
      */
     public Output<String> serviceAccount() {

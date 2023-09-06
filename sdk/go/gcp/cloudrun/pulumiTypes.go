@@ -2742,7 +2742,9 @@ type ServiceTemplateSpec struct {
 	// It is expected
 	// that the system will manipulate this based on routability and load.
 	//
-	// Deprecated: Not supported by Cloud Run fully managed
+	// > **Warning:** `servingState` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+	//
+	// Deprecated: `serving_state` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
 	ServingState *string `pulumi:"servingState"`
 	// TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
 	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
@@ -2780,7 +2782,9 @@ type ServiceTemplateSpecArgs struct {
 	// It is expected
 	// that the system will manipulate this based on routability and load.
 	//
-	// Deprecated: Not supported by Cloud Run fully managed
+	// > **Warning:** `servingState` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+	//
+	// Deprecated: `serving_state` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
 	ServingState pulumi.StringPtrInput `pulumi:"servingState"`
 	// TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
 	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
@@ -2892,7 +2896,9 @@ func (o ServiceTemplateSpecOutput) ServiceAccountName() pulumi.StringPtrOutput {
 // It is expected
 // that the system will manipulate this based on routability and load.
 //
-// Deprecated: Not supported by Cloud Run fully managed
+// > **Warning:** `servingState` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+//
+// Deprecated: `serving_state` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
 func (o ServiceTemplateSpecOutput) ServingState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateSpec) *string { return v.ServingState }).(pulumi.StringPtrOutput)
 }
@@ -2973,7 +2979,9 @@ func (o ServiceTemplateSpecPtrOutput) ServiceAccountName() pulumi.StringPtrOutpu
 // It is expected
 // that the system will manipulate this based on routability and load.
 //
-// Deprecated: Not supported by Cloud Run fully managed
+// > **Warning:** `servingState` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+//
+// Deprecated: `serving_state` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
 func (o ServiceTemplateSpecPtrOutput) ServingState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateSpec) *string {
 		if v == nil {
@@ -3019,7 +3027,9 @@ type ServiceTemplateSpecContainer struct {
 	// precedence.
 	// Structure is documented below.
 	//
-	// Deprecated: Not supported by Cloud Run fully managed
+	// > **Warning:** `envFrom` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+	//
+	// Deprecated: `env_from` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
 	EnvFroms []ServiceTemplateSpecContainerEnvFrom `pulumi:"envFroms"`
 	// List of environment variables to set in the container.
 	// Structure is documented below.
@@ -3053,7 +3063,9 @@ type ServiceTemplateSpecContainer struct {
 	// If not specified, the container runtime's default will be used, which
 	// might be configured in the container image.
 	//
-	// Deprecated: Not supported by Cloud Run fully managed
+	// > **Warning:** `workingDir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+	//
+	// Deprecated: `working_dir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
 	WorkingDir *string `pulumi:"workingDir"`
 }
 
@@ -3083,7 +3095,9 @@ type ServiceTemplateSpecContainerArgs struct {
 	// precedence.
 	// Structure is documented below.
 	//
-	// Deprecated: Not supported by Cloud Run fully managed
+	// > **Warning:** `envFrom` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+	//
+	// Deprecated: `env_from` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
 	EnvFroms ServiceTemplateSpecContainerEnvFromArrayInput `pulumi:"envFroms"`
 	// List of environment variables to set in the container.
 	// Structure is documented below.
@@ -3117,7 +3131,9 @@ type ServiceTemplateSpecContainerArgs struct {
 	// If not specified, the container runtime's default will be used, which
 	// might be configured in the container image.
 	//
-	// Deprecated: Not supported by Cloud Run fully managed
+	// > **Warning:** `workingDir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+	//
+	// Deprecated: `working_dir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
 	WorkingDir pulumi.StringPtrInput `pulumi:"workingDir"`
 }
 
@@ -3192,7 +3208,9 @@ func (o ServiceTemplateSpecContainerOutput) Commands() pulumi.StringArrayOutput 
 // precedence.
 // Structure is documented below.
 //
-// Deprecated: Not supported by Cloud Run fully managed
+// > **Warning:** `envFrom` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+//
+// Deprecated: `env_from` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
 func (o ServiceTemplateSpecContainerOutput) EnvFroms() ServiceTemplateSpecContainerEnvFromArrayOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecContainer) []ServiceTemplateSpecContainerEnvFrom { return v.EnvFroms }).(ServiceTemplateSpecContainerEnvFromArrayOutput)
 }
@@ -3255,7 +3273,9 @@ func (o ServiceTemplateSpecContainerOutput) VolumeMounts() ServiceTemplateSpecCo
 // If not specified, the container runtime's default will be used, which
 // might be configured in the container image.
 //
-// Deprecated: Not supported by Cloud Run fully managed
+// > **Warning:** `workingDir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+//
+// Deprecated: `working_dir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
 func (o ServiceTemplateSpecContainerOutput) WorkingDir() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecContainer) *string { return v.WorkingDir }).(pulumi.StringPtrOutput)
 }

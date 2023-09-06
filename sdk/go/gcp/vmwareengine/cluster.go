@@ -136,7 +136,7 @@ import (
 //
 // ## Import
 //
-// # Cluster can be imported using any of these accepted formats
+// Cluster can be imported using any of these accepted formats:
 //
 // ```sh
 //

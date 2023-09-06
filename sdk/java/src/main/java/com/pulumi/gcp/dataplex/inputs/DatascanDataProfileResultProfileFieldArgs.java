@@ -38,14 +38,22 @@ public final class DatascanDataProfileResultProfileFieldArgs extends com.pulumi.
     }
 
     /**
-     * The name of the field.
+     * A mutable name for the rule.
+     * The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+     * The maximum length is 63 characters.
+     * Must start with a letter.
+     * Must end with a number or a letter.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the field.
+     * @return A mutable name for the rule.
+     * The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+     * The maximum length is 63 characters.
+     * Must start with a letter.
+     * Must end with a number or a letter.
      * 
      */
     public Optional<Output<String>> name() {
@@ -139,7 +147,11 @@ public final class DatascanDataProfileResultProfileFieldArgs extends com.pulumi.
         }
 
         /**
-         * @param name The name of the field.
+         * @param name A mutable name for the rule.
+         * The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+         * The maximum length is 63 characters.
+         * Must start with a letter.
+         * Must end with a number or a letter.
          * 
          * @return builder
          * 
@@ -150,7 +162,11 @@ public final class DatascanDataProfileResultProfileFieldArgs extends com.pulumi.
         }
 
         /**
-         * @param name The name of the field.
+         * @param name A mutable name for the rule.
+         * The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+         * The maximum length is 63 characters.
+         * Must start with a letter.
+         * Must end with a number or a letter.
          * 
          * @return builder
          * 

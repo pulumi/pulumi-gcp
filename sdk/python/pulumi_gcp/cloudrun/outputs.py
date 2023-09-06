@@ -1318,6 +1318,8 @@ class ServiceTemplateSpec(dict):
                are in for this Revision.
                It is expected
                that the system will manipulate this based on routability and load.
+               
+               > **Warning:** `serving_state` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
         :param int timeout_seconds: TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
         :param Sequence['ServiceTemplateSpecVolumeArgs'] volumes: Volume represents a named volume in a container.
                Structure is documented below.
@@ -1373,9 +1375,11 @@ class ServiceTemplateSpec(dict):
         are in for this Revision.
         It is expected
         that the system will manipulate this based on routability and load.
+
+        > **Warning:** `serving_state` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
         """
-        warnings.warn("""Not supported by Cloud Run fully managed""", DeprecationWarning)
-        pulumi.log.warn("""serving_state is deprecated: Not supported by Cloud Run fully managed""")
+        warnings.warn("""`serving_state` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.""", DeprecationWarning)
+        pulumi.log.warn("""serving_state is deprecated: `serving_state` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.""")
 
         return pulumi.get(self, "serving_state")
 
@@ -1451,6 +1455,8 @@ class ServiceTemplateSpecContainer(dict):
                take precedence. Values defined by an Env with a duplicate key will take
                precedence.
                Structure is documented below.
+               
+               > **Warning:** `env_from` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
         :param Sequence['ServiceTemplateSpecContainerEnvArgs'] envs: List of environment variables to set in the container.
                Structure is documented below.
         :param 'ServiceTemplateSpecContainerLivenessProbeArgs' liveness_probe: Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
@@ -1472,6 +1478,8 @@ class ServiceTemplateSpecContainer(dict):
                Container's working directory.
                If not specified, the container runtime's default will be used, which
                might be configured in the container image.
+               
+               > **Warning:** `working_dir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
         """
         pulumi.set(__self__, "image", image)
         if args is not None:
@@ -1535,9 +1543,11 @@ class ServiceTemplateSpecContainer(dict):
         take precedence. Values defined by an Env with a duplicate key will take
         precedence.
         Structure is documented below.
+
+        > **Warning:** `env_from` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
         """
-        warnings.warn("""Not supported by Cloud Run fully managed""", DeprecationWarning)
-        pulumi.log.warn("""env_froms is deprecated: Not supported by Cloud Run fully managed""")
+        warnings.warn("""`env_from` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.""", DeprecationWarning)
+        pulumi.log.warn("""env_froms is deprecated: `env_from` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.""")
 
         return pulumi.get(self, "env_froms")
 
@@ -1615,9 +1625,11 @@ class ServiceTemplateSpecContainer(dict):
         Container's working directory.
         If not specified, the container runtime's default will be used, which
         might be configured in the container image.
+
+        > **Warning:** `working_dir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
         """
-        warnings.warn("""Not supported by Cloud Run fully managed""", DeprecationWarning)
-        pulumi.log.warn("""working_dir is deprecated: Not supported by Cloud Run fully managed""")
+        warnings.warn("""`working_dir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.""", DeprecationWarning)
+        pulumi.log.warn("""working_dir is deprecated: `working_dir` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.""")
 
         return pulumi.get(self, "working_dir")
 

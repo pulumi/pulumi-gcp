@@ -24,6 +24,7 @@ namespace Pulumi.Gcp.Diagflow
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
+    /// using System.Text.Json;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
     /// 
@@ -57,6 +58,16 @@ namespace Pulumi.Gcp.Diagflow
     ///         DisplayName = "MyPage2",
     ///     });
     /// 
+    ///     var myWebhook = new Gcp.Diagflow.CxWebhook("myWebhook", new()
+    ///     {
+    ///         Parent = agent.Id,
+    ///         DisplayName = "MyWebhook",
+    ///         GenericWebService = new Gcp.Diagflow.Inputs.CxWebhookGenericWebServiceArgs
+    ///         {
+    ///             Uri = "https://example.com",
+    ///         },
+    ///     });
+    /// 
     ///     var basicPage = new Gcp.Diagflow.CxPage("basicPage", new()
     ///     {
     ///         Parent = agent.StartFlow,
@@ -67,11 +78,333 @@ namespace Pulumi.Gcp.Diagflow
     ///             {
     ///                 new Gcp.Diagflow.Inputs.CxPageEntryFulfillmentMessageArgs
     ///                 {
+    ///                     Channel = "some-channel",
     ///                     Text = new Gcp.Diagflow.Inputs.CxPageEntryFulfillmentMessageTextArgs
     ///                     {
     ///                         Texts = new[]
     ///                         {
     ///                             "Welcome to page",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 new Gcp.Diagflow.Inputs.CxPageEntryFulfillmentMessageArgs
+    ///                 {
+    ///                     Payload = @"        {""some-key"": ""some-value"", ""other-key"": [""other-value""]}
+    /// ",
+    ///                 },
+    ///                 new Gcp.Diagflow.Inputs.CxPageEntryFulfillmentMessageArgs
+    ///                 {
+    ///                     ConversationSuccess = new Gcp.Diagflow.Inputs.CxPageEntryFulfillmentMessageConversationSuccessArgs
+    ///                     {
+    ///                         Metadata = @"          {""some-metadata-key"": ""some-value"", ""other-metadata-key"": 1234}
+    /// ",
+    ///                     },
+    ///                 },
+    ///                 new Gcp.Diagflow.Inputs.CxPageEntryFulfillmentMessageArgs
+    ///                 {
+    ///                     OutputAudioText = new Gcp.Diagflow.Inputs.CxPageEntryFulfillmentMessageOutputAudioTextArgs
+    ///                     {
+    ///                         Text = "some output text",
+    ///                     },
+    ///                 },
+    ///                 new Gcp.Diagflow.Inputs.CxPageEntryFulfillmentMessageArgs
+    ///                 {
+    ///                     OutputAudioText = new Gcp.Diagflow.Inputs.CxPageEntryFulfillmentMessageOutputAudioTextArgs
+    ///                     {
+    ///                         Ssml = @"          &lt;speak&gt;Some example &lt;say-as interpret-as=""characters""&gt;SSML XML&lt;/say-as&gt;&lt;/speak&gt;
+    /// ",
+    ///                     },
+    ///                 },
+    ///                 new Gcp.Diagflow.Inputs.CxPageEntryFulfillmentMessageArgs
+    ///                 {
+    ///                     LiveAgentHandoff = new Gcp.Diagflow.Inputs.CxPageEntryFulfillmentMessageLiveAgentHandoffArgs
+    ///                     {
+    ///                         Metadata = @"          {""some-metadata-key"": ""some-value"", ""other-metadata-key"": 1234}
+    /// ",
+    ///                     },
+    ///                 },
+    ///                 new Gcp.Diagflow.Inputs.CxPageEntryFulfillmentMessageArgs
+    ///                 {
+    ///                     PlayAudio = new Gcp.Diagflow.Inputs.CxPageEntryFulfillmentMessagePlayAudioArgs
+    ///                     {
+    ///                         AudioUri = "http://example.com/some-audio-file.mp3",
+    ///                     },
+    ///                 },
+    ///                 new Gcp.Diagflow.Inputs.CxPageEntryFulfillmentMessageArgs
+    ///                 {
+    ///                     TelephonyTransferCall = new Gcp.Diagflow.Inputs.CxPageEntryFulfillmentMessageTelephonyTransferCallArgs
+    ///                     {
+    ///                         PhoneNumber = "1-234-567-8901",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             SetParameterActions = new[]
+    ///             {
+    ///                 new Gcp.Diagflow.Inputs.CxPageEntryFulfillmentSetParameterActionArgs
+    ///                 {
+    ///                     Parameter = "some-param",
+    ///                     Value = "123.45",
+    ///                 },
+    ///                 new Gcp.Diagflow.Inputs.CxPageEntryFulfillmentSetParameterActionArgs
+    ///                 {
+    ///                     Parameter = "another-param",
+    ///                     Value = JsonSerializer.Serialize("abc"),
+    ///                 },
+    ///                 new Gcp.Diagflow.Inputs.CxPageEntryFulfillmentSetParameterActionArgs
+    ///                 {
+    ///                     Parameter = "other-param",
+    ///                     Value = JsonSerializer.Serialize(new[]
+    ///                     {
+    ///                         "foo",
+    ///                     }),
+    ///                 },
+    ///             },
+    ///             ConditionalCases = new[]
+    ///             {
+    ///                 new Gcp.Diagflow.Inputs.CxPageEntryFulfillmentConditionalCaseArgs
+    ///                 {
+    ///                     Cases = JsonSerializer.Serialize(new[]
+    ///                     {
+    ///                         new Dictionary&lt;string, object?&gt;
+    ///                         {
+    ///                             ["condition"] = "$sys.func.RAND() &lt; 0.5",
+    ///                             ["caseContent"] = new[]
+    ///                             {
+    ///                                 new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["message"] = new Dictionary&lt;string, object?&gt;
+    ///                                     {
+    ///                                         ["text"] = new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["text"] = new[]
+    ///                                             {
+    ///                                                 "First case",
+    ///                                             },
+    ///                                         },
+    ///                                     },
+    ///                                 },
+    ///                                 new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["additionalCases"] = new Dictionary&lt;string, object?&gt;
+    ///                                     {
+    ///                                         ["cases"] = new[]
+    ///                                         {
+    ///                                             new Dictionary&lt;string, object?&gt;
+    ///                                             {
+    ///                                                 ["condition"] = "$sys.func.RAND() &lt; 0.2",
+    ///                                                 ["caseContent"] = new[]
+    ///                                                 {
+    ///                                                     new Dictionary&lt;string, object?&gt;
+    ///                                                     {
+    ///                                                         ["message"] = new Dictionary&lt;string, object?&gt;
+    ///                                                         {
+    ///                                                             ["text"] = new Dictionary&lt;string, object?&gt;
+    ///                                                             {
+    ///                                                                 ["text"] = new[]
+    ///                                                                 {
+    ///                                                                     "Nested case",
+    ///                                                                 },
+    ///                                                             },
+    ///                                                         },
+    ///                                                     },
+    ///                                                 },
+    ///                                             },
+    ///                                         },
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                         new Dictionary&lt;string, object?&gt;
+    ///                         {
+    ///                             ["caseContent"] = new[]
+    ///                             {
+    ///                                 new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["message"] = new Dictionary&lt;string, object?&gt;
+    ///                                     {
+    ///                                         ["text"] = new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["text"] = new[]
+    ///                                             {
+    ///                                                 "Final case",
+    ///                                             },
+    ///                                         },
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     }),
+    ///                 },
+    ///             },
+    ///         },
+    ///         EventHandlers = new[]
+    ///         {
+    ///             new Gcp.Diagflow.Inputs.CxPageEventHandlerArgs
+    ///             {
+    ///                 Event = "some-event",
+    ///                 TriggerFulfillment = new Gcp.Diagflow.Inputs.CxPageEventHandlerTriggerFulfillmentArgs
+    ///                 {
+    ///                     ReturnPartialResponses = true,
+    ///                     Messages = new[]
+    ///                     {
+    ///                         new Gcp.Diagflow.Inputs.CxPageEventHandlerTriggerFulfillmentMessageArgs
+    ///                         {
+    ///                             Channel = "some-channel",
+    ///                             Text = new Gcp.Diagflow.Inputs.CxPageEventHandlerTriggerFulfillmentMessageTextArgs
+    ///                             {
+    ///                                 Texts = new[]
+    ///                                 {
+    ///                                     "Some text",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                         new Gcp.Diagflow.Inputs.CxPageEventHandlerTriggerFulfillmentMessageArgs
+    ///                         {
+    ///                             Payload = @"          {""some-key"": ""some-value"", ""other-key"": [""other-value""]}
+    /// ",
+    ///                         },
+    ///                         new Gcp.Diagflow.Inputs.CxPageEventHandlerTriggerFulfillmentMessageArgs
+    ///                         {
+    ///                             ConversationSuccess = new Gcp.Diagflow.Inputs.CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgs
+    ///                             {
+    ///                                 Metadata = @"            {""some-metadata-key"": ""some-value"", ""other-metadata-key"": 1234}
+    /// ",
+    ///                             },
+    ///                         },
+    ///                         new Gcp.Diagflow.Inputs.CxPageEventHandlerTriggerFulfillmentMessageArgs
+    ///                         {
+    ///                             OutputAudioText = new Gcp.Diagflow.Inputs.CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs
+    ///                             {
+    ///                                 Text = "some output text",
+    ///                             },
+    ///                         },
+    ///                         new Gcp.Diagflow.Inputs.CxPageEventHandlerTriggerFulfillmentMessageArgs
+    ///                         {
+    ///                             OutputAudioText = new Gcp.Diagflow.Inputs.CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs
+    ///                             {
+    ///                                 Ssml = @"            &lt;speak&gt;Some example &lt;say-as interpret-as=""characters""&gt;SSML XML&lt;/say-as&gt;&lt;/speak&gt;
+    /// ",
+    ///                             },
+    ///                         },
+    ///                         new Gcp.Diagflow.Inputs.CxPageEventHandlerTriggerFulfillmentMessageArgs
+    ///                         {
+    ///                             LiveAgentHandoff = new Gcp.Diagflow.Inputs.CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs
+    ///                             {
+    ///                                 Metadata = @"            {""some-metadata-key"": ""some-value"", ""other-metadata-key"": 1234}
+    /// ",
+    ///                             },
+    ///                         },
+    ///                         new Gcp.Diagflow.Inputs.CxPageEventHandlerTriggerFulfillmentMessageArgs
+    ///                         {
+    ///                             PlayAudio = new Gcp.Diagflow.Inputs.CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgs
+    ///                             {
+    ///                                 AudioUri = "http://example.com/some-audio-file.mp3",
+    ///                             },
+    ///                         },
+    ///                         new Gcp.Diagflow.Inputs.CxPageEventHandlerTriggerFulfillmentMessageArgs
+    ///                         {
+    ///                             TelephonyTransferCall = new Gcp.Diagflow.Inputs.CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs
+    ///                             {
+    ///                                 PhoneNumber = "1-234-567-8901",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     SetParameterActions = new[]
+    ///                     {
+    ///                         new Gcp.Diagflow.Inputs.CxPageEventHandlerTriggerFulfillmentSetParameterActionArgs
+    ///                         {
+    ///                             Parameter = "some-param",
+    ///                             Value = "123.45",
+    ///                         },
+    ///                         new Gcp.Diagflow.Inputs.CxPageEventHandlerTriggerFulfillmentSetParameterActionArgs
+    ///                         {
+    ///                             Parameter = "another-param",
+    ///                             Value = JsonSerializer.Serialize("abc"),
+    ///                         },
+    ///                         new Gcp.Diagflow.Inputs.CxPageEventHandlerTriggerFulfillmentSetParameterActionArgs
+    ///                         {
+    ///                             Parameter = "other-param",
+    ///                             Value = JsonSerializer.Serialize(new[]
+    ///                             {
+    ///                                 "foo",
+    ///                             }),
+    ///                         },
+    ///                     },
+    ///                     ConditionalCases = new[]
+    ///                     {
+    ///                         new Gcp.Diagflow.Inputs.CxPageEventHandlerTriggerFulfillmentConditionalCaseArgs
+    ///                         {
+    ///                             Cases = JsonSerializer.Serialize(new[]
+    ///                             {
+    ///                                 new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["condition"] = "$sys.func.RAND() &lt; 0.5",
+    ///                                     ["caseContent"] = new[]
+    ///                                     {
+    ///                                         new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["message"] = new Dictionary&lt;string, object?&gt;
+    ///                                             {
+    ///                                                 ["text"] = new Dictionary&lt;string, object?&gt;
+    ///                                                 {
+    ///                                                     ["text"] = new[]
+    ///                                                     {
+    ///                                                         "First case",
+    ///                                                     },
+    ///                                                 },
+    ///                                             },
+    ///                                         },
+    ///                                         new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["additionalCases"] = new Dictionary&lt;string, object?&gt;
+    ///                                             {
+    ///                                                 ["cases"] = new[]
+    ///                                                 {
+    ///                                                     new Dictionary&lt;string, object?&gt;
+    ///                                                     {
+    ///                                                         ["condition"] = "$sys.func.RAND() &lt; 0.2",
+    ///                                                         ["caseContent"] = new[]
+    ///                                                         {
+    ///                                                             new Dictionary&lt;string, object?&gt;
+    ///                                                             {
+    ///                                                                 ["message"] = new Dictionary&lt;string, object?&gt;
+    ///                                                                 {
+    ///                                                                     ["text"] = new Dictionary&lt;string, object?&gt;
+    ///                                                                     {
+    ///                                                                         ["text"] = new[]
+    ///                                                                         {
+    ///                                                                             "Nested case",
+    ///                                                                         },
+    ///                                                                     },
+    ///                                                                 },
+    ///                                                             },
+    ///                                                         },
+    ///                                                     },
+    ///                                                 },
+    ///                                             },
+    ///                                         },
+    ///                                     },
+    ///                                 },
+    ///                                 new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["caseContent"] = new[]
+    ///                                     {
+    ///                                         new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["message"] = new Dictionary&lt;string, object?&gt;
+    ///                                             {
+    ///                                                 ["text"] = new Dictionary&lt;string, object?&gt;
+    ///                                                 {
+    ///                                                     ["text"] = new[]
+    ///                                                     {
+    ///                                                         "Final case",
+    ///                                                     },
+    ///                                                 },
+    ///                                             },
+    ///                                         },
+    ///                                     },
+    ///                                 },
+    ///                             }),
     ///                         },
     ///                     },
     ///                 },
@@ -85,6 +418,7 @@ namespace Pulumi.Gcp.Diagflow
     ///                 {
     ///                     DisplayName = "param1",
     ///                     EntityType = "projects/-/locations/-/agents/-/entityTypes/sys.date",
+    ///                     DefaultValue = JsonSerializer.Serialize("2000-01-01"),
     ///                     FillBehavior = new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorArgs
     ///                     {
     ///                         InitialPromptFulfillment = new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs
@@ -93,6 +427,7 @@ namespace Pulumi.Gcp.Diagflow
     ///                             {
     ///                                 new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs
     ///                                 {
+    ///                                     Channel = "some-channel",
     ///                                     Text = new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgs
     ///                                     {
     ///                                         Texts = new[]
@@ -101,6 +436,339 @@ namespace Pulumi.Gcp.Diagflow
     ///                                         },
     ///                                     },
     ///                                 },
+    ///                                 new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs
+    ///                                 {
+    ///                                     Payload = @"              {""some-key"": ""some-value"", ""other-key"": [""other-value""]}
+    /// ",
+    ///                                 },
+    ///                                 new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs
+    ///                                 {
+    ///                                     ConversationSuccess = new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgs
+    ///                                     {
+    ///                                         Metadata = @"                {""some-metadata-key"": ""some-value"", ""other-metadata-key"": 1234}
+    /// ",
+    ///                                     },
+    ///                                 },
+    ///                                 new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs
+    ///                                 {
+    ///                                     OutputAudioText = new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgs
+    ///                                     {
+    ///                                         Text = "some output text",
+    ///                                     },
+    ///                                 },
+    ///                                 new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs
+    ///                                 {
+    ///                                     OutputAudioText = new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgs
+    ///                                     {
+    ///                                         Ssml = @"                &lt;speak&gt;Some example &lt;say-as interpret-as=""characters""&gt;SSML XML&lt;/say-as&gt;&lt;/speak&gt;
+    /// ",
+    ///                                     },
+    ///                                 },
+    ///                                 new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs
+    ///                                 {
+    ///                                     LiveAgentHandoff = new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgs
+    ///                                     {
+    ///                                         Metadata = @"                {""some-metadata-key"": ""some-value"", ""other-metadata-key"": 1234}
+    /// ",
+    ///                                     },
+    ///                                 },
+    ///                                 new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs
+    ///                                 {
+    ///                                     PlayAudio = new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgs
+    ///                                     {
+    ///                                         AudioUri = "http://example.com/some-audio-file.mp3",
+    ///                                     },
+    ///                                 },
+    ///                                 new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs
+    ///                                 {
+    ///                                     TelephonyTransferCall = new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgs
+    ///                                     {
+    ///                                         PhoneNumber = "1-234-567-8901",
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                             SetParameterActions = new[]
+    ///                             {
+    ///                                 new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgs
+    ///                                 {
+    ///                                     Parameter = "some-param",
+    ///                                     Value = "123.45",
+    ///                                 },
+    ///                                 new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgs
+    ///                                 {
+    ///                                     Parameter = "another-param",
+    ///                                     Value = JsonSerializer.Serialize("abc"),
+    ///                                 },
+    ///                                 new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgs
+    ///                                 {
+    ///                                     Parameter = "other-param",
+    ///                                     Value = JsonSerializer.Serialize(new[]
+    ///                                     {
+    ///                                         "foo",
+    ///                                     }),
+    ///                                 },
+    ///                             },
+    ///                             ConditionalCases = new[]
+    ///                             {
+    ///                                 new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArgs
+    ///                                 {
+    ///                                     Cases = JsonSerializer.Serialize(new[]
+    ///                                     {
+    ///                                         new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["condition"] = "$sys.func.RAND() &lt; 0.5",
+    ///                                             ["caseContent"] = new[]
+    ///                                             {
+    ///                                                 new Dictionary&lt;string, object?&gt;
+    ///                                                 {
+    ///                                                     ["message"] = new Dictionary&lt;string, object?&gt;
+    ///                                                     {
+    ///                                                         ["text"] = new Dictionary&lt;string, object?&gt;
+    ///                                                         {
+    ///                                                             ["text"] = new[]
+    ///                                                             {
+    ///                                                                 "First case",
+    ///                                                             },
+    ///                                                         },
+    ///                                                     },
+    ///                                                 },
+    ///                                                 new Dictionary&lt;string, object?&gt;
+    ///                                                 {
+    ///                                                     ["additionalCases"] = new Dictionary&lt;string, object?&gt;
+    ///                                                     {
+    ///                                                         ["cases"] = new[]
+    ///                                                         {
+    ///                                                             new Dictionary&lt;string, object?&gt;
+    ///                                                             {
+    ///                                                                 ["condition"] = "$sys.func.RAND() &lt; 0.2",
+    ///                                                                 ["caseContent"] = new[]
+    ///                                                                 {
+    ///                                                                     new Dictionary&lt;string, object?&gt;
+    ///                                                                     {
+    ///                                                                         ["message"] = new Dictionary&lt;string, object?&gt;
+    ///                                                                         {
+    ///                                                                             ["text"] = new Dictionary&lt;string, object?&gt;
+    ///                                                                             {
+    ///                                                                                 ["text"] = new[]
+    ///                                                                                 {
+    ///                                                                                     "Nested case",
+    ///                                                                                 },
+    ///                                                                             },
+    ///                                                                         },
+    ///                                                                     },
+    ///                                                                 },
+    ///                                                             },
+    ///                                                         },
+    ///                                                     },
+    ///                                                 },
+    ///                                             },
+    ///                                         },
+    ///                                         new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["caseContent"] = new[]
+    ///                                             {
+    ///                                                 new Dictionary&lt;string, object?&gt;
+    ///                                                 {
+    ///                                                     ["message"] = new Dictionary&lt;string, object?&gt;
+    ///                                                     {
+    ///                                                         ["text"] = new Dictionary&lt;string, object?&gt;
+    ///                                                         {
+    ///                                                             ["text"] = new[]
+    ///                                                             {
+    ///                                                                 "Final case",
+    ///                                                             },
+    ///                                                         },
+    ///                                                     },
+    ///                                                 },
+    ///                                             },
+    ///                                         },
+    ///                                     }),
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                         RepromptEventHandlers = new[]
+    ///                         {
+    ///                             new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorRepromptEventHandlerArgs
+    ///                             {
+    ///                                 Event = "sys.no-match-1",
+    ///                                 TriggerFulfillment = new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs
+    ///                                 {
+    ///                                     ReturnPartialResponses = true,
+    ///                                     Webhook = myWebhook.Id,
+    ///                                     Tag = "some-tag",
+    ///                                     Messages = new[]
+    ///                                     {
+    ///                                         new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs
+    ///                                         {
+    ///                                             Channel = "some-channel",
+    ///                                             Text = new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgs
+    ///                                             {
+    ///                                                 Texts = new[]
+    ///                                                 {
+    ///                                                     "Please provide param1",
+    ///                                                 },
+    ///                                             },
+    ///                                         },
+    ///                                         new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs
+    ///                                         {
+    ///                                             Payload = @"                {""some-key"": ""some-value"", ""other-key"": [""other-value""]}
+    /// ",
+    ///                                         },
+    ///                                         new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs
+    ///                                         {
+    ///                                             ConversationSuccess = new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgs
+    ///                                             {
+    ///                                                 Metadata = @"                  {""some-metadata-key"": ""some-value"", ""other-metadata-key"": 1234}
+    /// ",
+    ///                                             },
+    ///                                         },
+    ///                                         new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs
+    ///                                         {
+    ///                                             OutputAudioText = new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs
+    ///                                             {
+    ///                                                 Text = "some output text",
+    ///                                             },
+    ///                                         },
+    ///                                         new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs
+    ///                                         {
+    ///                                             OutputAudioText = new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs
+    ///                                             {
+    ///                                                 Ssml = @"                  &lt;speak&gt;Some example &lt;say-as interpret-as=""characters""&gt;SSML XML&lt;/say-as&gt;&lt;/speak&gt;
+    /// ",
+    ///                                             },
+    ///                                         },
+    ///                                         new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs
+    ///                                         {
+    ///                                             LiveAgentHandoff = new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs
+    ///                                             {
+    ///                                                 Metadata = @"                  {""some-metadata-key"": ""some-value"", ""other-metadata-key"": 1234}
+    /// ",
+    ///                                             },
+    ///                                         },
+    ///                                         new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs
+    ///                                         {
+    ///                                             PlayAudio = new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgs
+    ///                                             {
+    ///                                                 AudioUri = "http://example.com/some-audio-file.mp3",
+    ///                                             },
+    ///                                         },
+    ///                                         new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs
+    ///                                         {
+    ///                                             TelephonyTransferCall = new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs
+    ///                                             {
+    ///                                                 PhoneNumber = "1-234-567-8901",
+    ///                                             },
+    ///                                         },
+    ///                                     },
+    ///                                     SetParameterActions = new[]
+    ///                                     {
+    ///                                         new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgs
+    ///                                         {
+    ///                                             Parameter = "some-param",
+    ///                                             Value = "123.45",
+    ///                                         },
+    ///                                         new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgs
+    ///                                         {
+    ///                                             Parameter = "another-param",
+    ///                                             Value = JsonSerializer.Serialize("abc"),
+    ///                                         },
+    ///                                         new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgs
+    ///                                         {
+    ///                                             Parameter = "other-param",
+    ///                                             Value = JsonSerializer.Serialize(new[]
+    ///                                             {
+    ///                                                 "foo",
+    ///                                             }),
+    ///                                         },
+    ///                                     },
+    ///                                     ConditionalCases = new[]
+    ///                                     {
+    ///                                         new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArgs
+    ///                                         {
+    ///                                             Cases = JsonSerializer.Serialize(new[]
+    ///                                             {
+    ///                                                 new Dictionary&lt;string, object?&gt;
+    ///                                                 {
+    ///                                                     ["condition"] = "$sys.func.RAND() &lt; 0.5",
+    ///                                                     ["caseContent"] = new[]
+    ///                                                     {
+    ///                                                         new Dictionary&lt;string, object?&gt;
+    ///                                                         {
+    ///                                                             ["message"] = new Dictionary&lt;string, object?&gt;
+    ///                                                             {
+    ///                                                                 ["text"] = new Dictionary&lt;string, object?&gt;
+    ///                                                                 {
+    ///                                                                     ["text"] = new[]
+    ///                                                                     {
+    ///                                                                         "First case",
+    ///                                                                     },
+    ///                                                                 },
+    ///                                                             },
+    ///                                                         },
+    ///                                                         new Dictionary&lt;string, object?&gt;
+    ///                                                         {
+    ///                                                             ["additionalCases"] = new Dictionary&lt;string, object?&gt;
+    ///                                                             {
+    ///                                                                 ["cases"] = new[]
+    ///                                                                 {
+    ///                                                                     new Dictionary&lt;string, object?&gt;
+    ///                                                                     {
+    ///                                                                         ["condition"] = "$sys.func.RAND() &lt; 0.2",
+    ///                                                                         ["caseContent"] = new[]
+    ///                                                                         {
+    ///                                                                             new Dictionary&lt;string, object?&gt;
+    ///                                                                             {
+    ///                                                                                 ["message"] = new Dictionary&lt;string, object?&gt;
+    ///                                                                                 {
+    ///                                                                                     ["text"] = new Dictionary&lt;string, object?&gt;
+    ///                                                                                     {
+    ///                                                                                         ["text"] = new[]
+    ///                                                                                         {
+    ///                                                                                             "Nested case",
+    ///                                                                                         },
+    ///                                                                                     },
+    ///                                                                                 },
+    ///                                                                             },
+    ///                                                                         },
+    ///                                                                     },
+    ///                                                                 },
+    ///                                                             },
+    ///                                                         },
+    ///                                                     },
+    ///                                                 },
+    ///                                                 new Dictionary&lt;string, object?&gt;
+    ///                                                 {
+    ///                                                     ["caseContent"] = new[]
+    ///                                                     {
+    ///                                                         new Dictionary&lt;string, object?&gt;
+    ///                                                         {
+    ///                                                             ["message"] = new Dictionary&lt;string, object?&gt;
+    ///                                                             {
+    ///                                                                 ["text"] = new Dictionary&lt;string, object?&gt;
+    ///                                                                 {
+    ///                                                                     ["text"] = new[]
+    ///                                                                     {
+    ///                                                                         "Final case",
+    ///                                                                     },
+    ///                                                                 },
+    ///                                                             },
+    ///                                                         },
+    ///                                                     },
+    ///                                                 },
+    ///                                             }),
+    ///                                         },
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                             new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorRepromptEventHandlerArgs
+    ///                             {
+    ///                                 Event = "sys.no-match-2",
+    ///                                 TargetFlow = agent.StartFlow,
+    ///                             },
+    ///                             new Gcp.Diagflow.Inputs.CxPageFormParameterFillBehaviorRepromptEventHandlerArgs
+    ///                             {
+    ///                                 Event = "sys.no-match-3",
+    ///                                 TargetPage = myPage2.Id,
     ///                             },
     ///                         },
     ///                     },
@@ -120,6 +788,7 @@ namespace Pulumi.Gcp.Diagflow
     ///                     {
     ///                         new Gcp.Diagflow.Inputs.CxPageTransitionRouteTriggerFulfillmentMessageArgs
     ///                         {
+    ///                             Channel = "some-channel",
     ///                             Text = new Gcp.Diagflow.Inputs.CxPageTransitionRouteTriggerFulfillmentMessageTextArgs
     ///                             {
     ///                                 Texts = new[]
@@ -127,6 +796,154 @@ namespace Pulumi.Gcp.Diagflow
     ///                                     "information completed, navigating to page 2",
     ///                                 },
     ///                             },
+    ///                         },
+    ///                         new Gcp.Diagflow.Inputs.CxPageTransitionRouteTriggerFulfillmentMessageArgs
+    ///                         {
+    ///                             Payload = @"          {""some-key"": ""some-value"", ""other-key"": [""other-value""]}
+    /// ",
+    ///                         },
+    ///                         new Gcp.Diagflow.Inputs.CxPageTransitionRouteTriggerFulfillmentMessageArgs
+    ///                         {
+    ///                             ConversationSuccess = new Gcp.Diagflow.Inputs.CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs
+    ///                             {
+    ///                                 Metadata = @"            {""some-metadata-key"": ""some-value"", ""other-metadata-key"": 1234}
+    /// ",
+    ///                             },
+    ///                         },
+    ///                         new Gcp.Diagflow.Inputs.CxPageTransitionRouteTriggerFulfillmentMessageArgs
+    ///                         {
+    ///                             OutputAudioText = new Gcp.Diagflow.Inputs.CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs
+    ///                             {
+    ///                                 Text = "some output text",
+    ///                             },
+    ///                         },
+    ///                         new Gcp.Diagflow.Inputs.CxPageTransitionRouteTriggerFulfillmentMessageArgs
+    ///                         {
+    ///                             OutputAudioText = new Gcp.Diagflow.Inputs.CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs
+    ///                             {
+    ///                                 Ssml = @"            &lt;speak&gt;Some example &lt;say-as interpret-as=""characters""&gt;SSML XML&lt;/say-as&gt;&lt;/speak&gt;
+    /// ",
+    ///                             },
+    ///                         },
+    ///                         new Gcp.Diagflow.Inputs.CxPageTransitionRouteTriggerFulfillmentMessageArgs
+    ///                         {
+    ///                             LiveAgentHandoff = new Gcp.Diagflow.Inputs.CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs
+    ///                             {
+    ///                                 Metadata = @"            {""some-metadata-key"": ""some-value"", ""other-metadata-key"": 1234}
+    /// ",
+    ///                             },
+    ///                         },
+    ///                         new Gcp.Diagflow.Inputs.CxPageTransitionRouteTriggerFulfillmentMessageArgs
+    ///                         {
+    ///                             PlayAudio = new Gcp.Diagflow.Inputs.CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgs
+    ///                             {
+    ///                                 AudioUri = "http://example.com/some-audio-file.mp3",
+    ///                             },
+    ///                         },
+    ///                         new Gcp.Diagflow.Inputs.CxPageTransitionRouteTriggerFulfillmentMessageArgs
+    ///                         {
+    ///                             TelephonyTransferCall = new Gcp.Diagflow.Inputs.CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs
+    ///                             {
+    ///                                 PhoneNumber = "1-234-567-8901",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     SetParameterActions = new[]
+    ///                     {
+    ///                         new Gcp.Diagflow.Inputs.CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs
+    ///                         {
+    ///                             Parameter = "some-param",
+    ///                             Value = "123.45",
+    ///                         },
+    ///                         new Gcp.Diagflow.Inputs.CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs
+    ///                         {
+    ///                             Parameter = "another-param",
+    ///                             Value = JsonSerializer.Serialize("abc"),
+    ///                         },
+    ///                         new Gcp.Diagflow.Inputs.CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs
+    ///                         {
+    ///                             Parameter = "other-param",
+    ///                             Value = JsonSerializer.Serialize(new[]
+    ///                             {
+    ///                                 "foo",
+    ///                             }),
+    ///                         },
+    ///                     },
+    ///                     ConditionalCases = new[]
+    ///                     {
+    ///                         new Gcp.Diagflow.Inputs.CxPageTransitionRouteTriggerFulfillmentConditionalCaseArgs
+    ///                         {
+    ///                             Cases = JsonSerializer.Serialize(new[]
+    ///                             {
+    ///                                 new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["condition"] = "$sys.func.RAND() &lt; 0.5",
+    ///                                     ["caseContent"] = new[]
+    ///                                     {
+    ///                                         new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["message"] = new Dictionary&lt;string, object?&gt;
+    ///                                             {
+    ///                                                 ["text"] = new Dictionary&lt;string, object?&gt;
+    ///                                                 {
+    ///                                                     ["text"] = new[]
+    ///                                                     {
+    ///                                                         "First case",
+    ///                                                     },
+    ///                                                 },
+    ///                                             },
+    ///                                         },
+    ///                                         new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["additionalCases"] = new Dictionary&lt;string, object?&gt;
+    ///                                             {
+    ///                                                 ["cases"] = new[]
+    ///                                                 {
+    ///                                                     new Dictionary&lt;string, object?&gt;
+    ///                                                     {
+    ///                                                         ["condition"] = "$sys.func.RAND() &lt; 0.2",
+    ///                                                         ["caseContent"] = new[]
+    ///                                                         {
+    ///                                                             new Dictionary&lt;string, object?&gt;
+    ///                                                             {
+    ///                                                                 ["message"] = new Dictionary&lt;string, object?&gt;
+    ///                                                                 {
+    ///                                                                     ["text"] = new Dictionary&lt;string, object?&gt;
+    ///                                                                     {
+    ///                                                                         ["text"] = new[]
+    ///                                                                         {
+    ///                                                                             "Nested case",
+    ///                                                                         },
+    ///                                                                     },
+    ///                                                                 },
+    ///                                                             },
+    ///                                                         },
+    ///                                                     },
+    ///                                                 },
+    ///                                             },
+    ///                                         },
+    ///                                     },
+    ///                                 },
+    ///                                 new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     ["caseContent"] = new[]
+    ///                                     {
+    ///                                         new Dictionary&lt;string, object?&gt;
+    ///                                         {
+    ///                                             ["message"] = new Dictionary&lt;string, object?&gt;
+    ///                                             {
+    ///                                                 ["text"] = new Dictionary&lt;string, object?&gt;
+    ///                                                 {
+    ///                                                     ["text"] = new[]
+    ///                                                     {
+    ///                                                         "Final case",
+    ///                                                     },
+    ///                                                 },
+    ///                                             },
+    ///                                         },
+    ///                                     },
+    ///                                 },
+    ///                             }),
     ///                         },
     ///                     },
     ///                 },
@@ -201,6 +1018,9 @@ namespace Pulumi.Gcp.Diagflow
         public Output<string?> LanguageCode { get; private set; } = null!;
 
         /// <summary>
+        /// (Output)
+        /// The unique identifier of this event handler.
+        /// 
         /// (Output)
         /// The unique identifier of this transition route.
         /// 
@@ -443,6 +1263,9 @@ namespace Pulumi.Gcp.Diagflow
         public Input<string>? LanguageCode { get; set; }
 
         /// <summary>
+        /// (Output)
+        /// The unique identifier of this event handler.
+        /// 
         /// (Output)
         /// The unique identifier of this transition route.
         /// 

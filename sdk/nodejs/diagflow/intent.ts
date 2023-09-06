@@ -81,7 +81,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Intent can be imported using any of these accepted formats
+ * Intent can be imported using any of these accepted formats:
  *
  * ```sh
  *  $ pulumi import gcp:diagflow/intent:Intent default {{name}}

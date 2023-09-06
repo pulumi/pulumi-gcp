@@ -102,6 +102,7 @@ __all__ = [
     'ClusterGatewayApiConfig',
     'ClusterIdentityServiceConfig',
     'ClusterIpAllocationPolicy',
+    'ClusterIpAllocationPolicyAdditionalPodRangesConfig',
     'ClusterIpAllocationPolicyPodCidrOverprovisionConfig',
     'ClusterLoggingConfig',
     'ClusterMaintenancePolicy',
@@ -120,6 +121,7 @@ __all__ = [
     'ClusterNetworkPolicy',
     'ClusterNodeConfig',
     'ClusterNodeConfigAdvancedMachineFeatures',
+    'ClusterNodeConfigConfidentialNodes',
     'ClusterNodeConfigEphemeralStorageConfig',
     'ClusterNodeConfigEphemeralStorageLocalSsdConfig',
     'ClusterNodeConfigGcfsConfig',
@@ -152,6 +154,7 @@ __all__ = [
     'ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig',
     'ClusterNodePoolNodeConfig',
     'ClusterNodePoolNodeConfigAdvancedMachineFeatures',
+    'ClusterNodePoolNodeConfigConfidentialNodes',
     'ClusterNodePoolNodeConfigEphemeralStorageConfig',
     'ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig',
     'ClusterNodePoolNodeConfigGcfsConfig',
@@ -198,6 +201,7 @@ __all__ = [
     'NodePoolNetworkConfigPodCidrOverprovisionConfig',
     'NodePoolNodeConfig',
     'NodePoolNodeConfigAdvancedMachineFeatures',
+    'NodePoolNodeConfigConfidentialNodes',
     'NodePoolNodeConfigEphemeralStorageConfig',
     'NodePoolNodeConfigEphemeralStorageLocalSsdConfig',
     'NodePoolNodeConfigGcfsConfig',
@@ -254,6 +258,7 @@ __all__ = [
     'GetClusterGatewayApiConfigResult',
     'GetClusterIdentityServiceConfigResult',
     'GetClusterIpAllocationPolicyResult',
+    'GetClusterIpAllocationPolicyAdditionalPodRangesConfigResult',
     'GetClusterIpAllocationPolicyPodCidrOverprovisionConfigResult',
     'GetClusterLoggingConfigResult',
     'GetClusterMaintenancePolicyResult',
@@ -272,6 +277,7 @@ __all__ = [
     'GetClusterNetworkPolicyResult',
     'GetClusterNodeConfigResult',
     'GetClusterNodeConfigAdvancedMachineFeatureResult',
+    'GetClusterNodeConfigConfidentialNodeResult',
     'GetClusterNodeConfigEphemeralStorageConfigResult',
     'GetClusterNodeConfigEphemeralStorageLocalSsdConfigResult',
     'GetClusterNodeConfigGcfsConfigResult',
@@ -304,6 +310,7 @@ __all__ = [
     'GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigResult',
     'GetClusterNodePoolNodeConfigResult',
     'GetClusterNodePoolNodeConfigAdvancedMachineFeatureResult',
+    'GetClusterNodePoolNodeConfigConfidentialNodeResult',
     'GetClusterNodePoolNodeConfigEphemeralStorageConfigResult',
     'GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigResult',
     'GetClusterNodePoolNodeConfigGcfsConfigResult',
@@ -5023,7 +5030,9 @@ class ClusterIpAllocationPolicy(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "clusterIpv4CidrBlock":
+        if key == "additionalPodRangesConfig":
+            suggest = "additional_pod_ranges_config"
+        elif key == "clusterIpv4CidrBlock":
             suggest = "cluster_ipv4_cidr_block"
         elif key == "clusterSecondaryRangeName":
             suggest = "cluster_secondary_range_name"
@@ -5048,6 +5057,7 @@ class ClusterIpAllocationPolicy(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 additional_pod_ranges_config: Optional['outputs.ClusterIpAllocationPolicyAdditionalPodRangesConfig'] = None,
                  cluster_ipv4_cidr_block: Optional[str] = None,
                  cluster_secondary_range_name: Optional[str] = None,
                  pod_cidr_overprovision_config: Optional['outputs.ClusterIpAllocationPolicyPodCidrOverprovisionConfig'] = None,
@@ -5055,6 +5065,9 @@ class ClusterIpAllocationPolicy(dict):
                  services_secondary_range_name: Optional[str] = None,
                  stack_type: Optional[str] = None):
         """
+        :param 'ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs' additional_pod_ranges_config: The configuration for additional pod secondary ranges at
+               the cluster level. Used for Autopilot clusters and Standard clusters with which control of the
+               secondary Pod IP address assignment to node pools isn't needed. Structure is documented below.
         :param str cluster_ipv4_cidr_block: The IP address range for the cluster pod IPs.
                Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14)
                to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14)
@@ -5076,6 +5089,8 @@ class ClusterIpAllocationPolicy(dict):
                Default value is `IPV4`.
                Possible values are `IPV4` and `IPV4_IPV6`.
         """
+        if additional_pod_ranges_config is not None:
+            pulumi.set(__self__, "additional_pod_ranges_config", additional_pod_ranges_config)
         if cluster_ipv4_cidr_block is not None:
             pulumi.set(__self__, "cluster_ipv4_cidr_block", cluster_ipv4_cidr_block)
         if cluster_secondary_range_name is not None:
@@ -5088,6 +5103,16 @@ class ClusterIpAllocationPolicy(dict):
             pulumi.set(__self__, "services_secondary_range_name", services_secondary_range_name)
         if stack_type is not None:
             pulumi.set(__self__, "stack_type", stack_type)
+
+    @property
+    @pulumi.getter(name="additionalPodRangesConfig")
+    def additional_pod_ranges_config(self) -> Optional['outputs.ClusterIpAllocationPolicyAdditionalPodRangesConfig']:
+        """
+        The configuration for additional pod secondary ranges at
+        the cluster level. Used for Autopilot clusters and Standard clusters with which control of the
+        secondary Pod IP address assignment to node pools isn't needed. Structure is documented below.
+        """
+        return pulumi.get(self, "additional_pod_ranges_config")
 
     @property
     @pulumi.getter(name="clusterIpv4CidrBlock")
@@ -5148,6 +5173,41 @@ class ClusterIpAllocationPolicy(dict):
         Possible values are `IPV4` and `IPV4_IPV6`.
         """
         return pulumi.get(self, "stack_type")
+
+
+@pulumi.output_type
+class ClusterIpAllocationPolicyAdditionalPodRangesConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "podRangeNames":
+            suggest = "pod_range_names"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterIpAllocationPolicyAdditionalPodRangesConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterIpAllocationPolicyAdditionalPodRangesConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterIpAllocationPolicyAdditionalPodRangesConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 pod_range_names: Sequence[str]):
+        """
+        :param Sequence[str] pod_range_names: The names of the Pod ranges to add to the cluster.
+        """
+        pulumi.set(__self__, "pod_range_names", pod_range_names)
+
+    @property
+    @pulumi.getter(name="podRangeNames")
+    def pod_range_names(self) -> Sequence[str]:
+        """
+        The names of the Pod ranges to add to the cluster.
+        """
+        return pulumi.get(self, "pod_range_names")
 
 
 @pulumi.output_type
@@ -5912,6 +5972,8 @@ class ClusterNodeConfig(dict):
             suggest = "advanced_machine_features"
         elif key == "bootDiskKmsKey":
             suggest = "boot_disk_kms_key"
+        elif key == "confidentialNodes":
+            suggest = "confidential_nodes"
         elif key == "diskSizeGb":
             suggest = "disk_size_gb"
         elif key == "diskType":
@@ -5975,6 +6037,7 @@ class ClusterNodeConfig(dict):
     def __init__(__self__, *,
                  advanced_machine_features: Optional['outputs.ClusterNodeConfigAdvancedMachineFeatures'] = None,
                  boot_disk_kms_key: Optional[str] = None,
+                 confidential_nodes: Optional['outputs.ClusterNodeConfigConfidentialNodes'] = None,
                  disk_size_gb: Optional[int] = None,
                  disk_type: Optional[str] = None,
                  ephemeral_storage_config: Optional['outputs.ClusterNodeConfigEphemeralStorageConfig'] = None,
@@ -6010,6 +6073,7 @@ class ClusterNodeConfig(dict):
         :param 'ClusterNodeConfigAdvancedMachineFeaturesArgs' advanced_machine_features: Specifies options for controlling
                advanced machine features. Structure is documented below.
         :param str boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
+        :param 'ClusterNodeConfigConfidentialNodesArgs' confidential_nodes: Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
         :param int disk_size_gb: Size of the disk attached to each node, specified
                in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
         :param str disk_type: Type of the disk attached to each node
@@ -6120,6 +6184,8 @@ class ClusterNodeConfig(dict):
             pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
         if boot_disk_kms_key is not None:
             pulumi.set(__self__, "boot_disk_kms_key", boot_disk_kms_key)
+        if confidential_nodes is not None:
+            pulumi.set(__self__, "confidential_nodes", confidential_nodes)
         if disk_size_gb is not None:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         if disk_type is not None:
@@ -6199,6 +6265,14 @@ class ClusterNodeConfig(dict):
         The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
         """
         return pulumi.get(self, "boot_disk_kms_key")
+
+    @property
+    @pulumi.getter(name="confidentialNodes")
+    def confidential_nodes(self) -> Optional['outputs.ClusterNodeConfigConfidentialNodes']:
+        """
+        Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+        """
+        return pulumi.get(self, "confidential_nodes")
 
     @property
     @pulumi.getter(name="diskSizeGb")
@@ -6552,6 +6626,24 @@ class ClusterNodeConfigAdvancedMachineFeatures(dict):
         The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
         """
         return pulumi.get(self, "threads_per_core")
+
+
+@pulumi.output_type
+class ClusterNodeConfigConfidentialNodes(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        :param bool enabled: Enable Confidential Nodes for this cluster.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Enable Confidential Nodes for this cluster.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -8102,6 +8194,8 @@ class ClusterNodePoolNodeConfig(dict):
             suggest = "advanced_machine_features"
         elif key == "bootDiskKmsKey":
             suggest = "boot_disk_kms_key"
+        elif key == "confidentialNodes":
+            suggest = "confidential_nodes"
         elif key == "diskSizeGb":
             suggest = "disk_size_gb"
         elif key == "diskType":
@@ -8165,6 +8259,7 @@ class ClusterNodePoolNodeConfig(dict):
     def __init__(__self__, *,
                  advanced_machine_features: Optional['outputs.ClusterNodePoolNodeConfigAdvancedMachineFeatures'] = None,
                  boot_disk_kms_key: Optional[str] = None,
+                 confidential_nodes: Optional['outputs.ClusterNodePoolNodeConfigConfidentialNodes'] = None,
                  disk_size_gb: Optional[int] = None,
                  disk_type: Optional[str] = None,
                  ephemeral_storage_config: Optional['outputs.ClusterNodePoolNodeConfigEphemeralStorageConfig'] = None,
@@ -8200,6 +8295,7 @@ class ClusterNodePoolNodeConfig(dict):
         :param 'ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs' advanced_machine_features: Specifies options for controlling
                advanced machine features. Structure is documented below.
         :param str boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
+        :param 'ClusterNodePoolNodeConfigConfidentialNodesArgs' confidential_nodes: Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
         :param int disk_size_gb: Size of the disk attached to each node, specified
                in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
         :param str disk_type: Type of the disk attached to each node
@@ -8310,6 +8406,8 @@ class ClusterNodePoolNodeConfig(dict):
             pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
         if boot_disk_kms_key is not None:
             pulumi.set(__self__, "boot_disk_kms_key", boot_disk_kms_key)
+        if confidential_nodes is not None:
+            pulumi.set(__self__, "confidential_nodes", confidential_nodes)
         if disk_size_gb is not None:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         if disk_type is not None:
@@ -8389,6 +8487,14 @@ class ClusterNodePoolNodeConfig(dict):
         The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: <https://cloud.google.com/compute/docs/disks/customer-managed-encryption>
         """
         return pulumi.get(self, "boot_disk_kms_key")
+
+    @property
+    @pulumi.getter(name="confidentialNodes")
+    def confidential_nodes(self) -> Optional['outputs.ClusterNodePoolNodeConfigConfidentialNodes']:
+        """
+        Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+        """
+        return pulumi.get(self, "confidential_nodes")
 
     @property
     @pulumi.getter(name="diskSizeGb")
@@ -8742,6 +8848,24 @@ class ClusterNodePoolNodeConfigAdvancedMachineFeatures(dict):
         The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
         """
         return pulumi.get(self, "threads_per_core")
+
+
+@pulumi.output_type
+class ClusterNodePoolNodeConfigConfidentialNodes(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        :param bool enabled: Enable Confidential Nodes for this cluster.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Enable Confidential Nodes for this cluster.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -10914,6 +11038,8 @@ class NodePoolNodeConfig(dict):
             suggest = "advanced_machine_features"
         elif key == "bootDiskKmsKey":
             suggest = "boot_disk_kms_key"
+        elif key == "confidentialNodes":
+            suggest = "confidential_nodes"
         elif key == "diskSizeGb":
             suggest = "disk_size_gb"
         elif key == "diskType":
@@ -10977,6 +11103,7 @@ class NodePoolNodeConfig(dict):
     def __init__(__self__, *,
                  advanced_machine_features: Optional['outputs.NodePoolNodeConfigAdvancedMachineFeatures'] = None,
                  boot_disk_kms_key: Optional[str] = None,
+                 confidential_nodes: Optional['outputs.NodePoolNodeConfigConfidentialNodes'] = None,
                  disk_size_gb: Optional[int] = None,
                  disk_type: Optional[str] = None,
                  ephemeral_storage_config: Optional['outputs.NodePoolNodeConfigEphemeralStorageConfig'] = None,
@@ -11012,6 +11139,8 @@ class NodePoolNodeConfig(dict):
             pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
         if boot_disk_kms_key is not None:
             pulumi.set(__self__, "boot_disk_kms_key", boot_disk_kms_key)
+        if confidential_nodes is not None:
+            pulumi.set(__self__, "confidential_nodes", confidential_nodes)
         if disk_size_gb is not None:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         if disk_type is not None:
@@ -11084,6 +11213,11 @@ class NodePoolNodeConfig(dict):
     @pulumi.getter(name="bootDiskKmsKey")
     def boot_disk_kms_key(self) -> Optional[str]:
         return pulumi.get(self, "boot_disk_kms_key")
+
+    @property
+    @pulumi.getter(name="confidentialNodes")
+    def confidential_nodes(self) -> Optional['outputs.NodePoolNodeConfigConfidentialNodes']:
+        return pulumi.get(self, "confidential_nodes")
 
     @property
     @pulumi.getter(name="diskSizeGb")
@@ -11268,6 +11402,18 @@ class NodePoolNodeConfigAdvancedMachineFeatures(dict):
     @pulumi.getter(name="threadsPerCore")
     def threads_per_core(self) -> int:
         return pulumi.get(self, "threads_per_core")
+
+
+@pulumi.output_type
+class NodePoolNodeConfigConfidentialNodes(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -12789,18 +12935,25 @@ class GetClusterIdentityServiceConfigResult(dict):
 @pulumi.output_type
 class GetClusterIpAllocationPolicyResult(dict):
     def __init__(__self__, *,
+                 additional_pod_ranges_configs: Sequence['outputs.GetClusterIpAllocationPolicyAdditionalPodRangesConfigResult'],
                  cluster_ipv4_cidr_block: str,
                  cluster_secondary_range_name: str,
                  pod_cidr_overprovision_configs: Sequence['outputs.GetClusterIpAllocationPolicyPodCidrOverprovisionConfigResult'],
                  services_ipv4_cidr_block: str,
                  services_secondary_range_name: str,
                  stack_type: str):
+        pulumi.set(__self__, "additional_pod_ranges_configs", additional_pod_ranges_configs)
         pulumi.set(__self__, "cluster_ipv4_cidr_block", cluster_ipv4_cidr_block)
         pulumi.set(__self__, "cluster_secondary_range_name", cluster_secondary_range_name)
         pulumi.set(__self__, "pod_cidr_overprovision_configs", pod_cidr_overprovision_configs)
         pulumi.set(__self__, "services_ipv4_cidr_block", services_ipv4_cidr_block)
         pulumi.set(__self__, "services_secondary_range_name", services_secondary_range_name)
         pulumi.set(__self__, "stack_type", stack_type)
+
+    @property
+    @pulumi.getter(name="additionalPodRangesConfigs")
+    def additional_pod_ranges_configs(self) -> Sequence['outputs.GetClusterIpAllocationPolicyAdditionalPodRangesConfigResult']:
+        return pulumi.get(self, "additional_pod_ranges_configs")
 
     @property
     @pulumi.getter(name="clusterIpv4CidrBlock")
@@ -12831,6 +12984,18 @@ class GetClusterIpAllocationPolicyResult(dict):
     @pulumi.getter(name="stackType")
     def stack_type(self) -> str:
         return pulumi.get(self, "stack_type")
+
+
+@pulumi.output_type
+class GetClusterIpAllocationPolicyAdditionalPodRangesConfigResult(dict):
+    def __init__(__self__, *,
+                 pod_range_names: Sequence[str]):
+        pulumi.set(__self__, "pod_range_names", pod_range_names)
+
+    @property
+    @pulumi.getter(name="podRangeNames")
+    def pod_range_names(self) -> Sequence[str]:
+        return pulumi.get(self, "pod_range_names")
 
 
 @pulumi.output_type
@@ -13149,6 +13314,7 @@ class GetClusterNodeConfigResult(dict):
     def __init__(__self__, *,
                  advanced_machine_features: Sequence['outputs.GetClusterNodeConfigAdvancedMachineFeatureResult'],
                  boot_disk_kms_key: str,
+                 confidential_nodes: Sequence['outputs.GetClusterNodeConfigConfidentialNodeResult'],
                  disk_size_gb: int,
                  disk_type: str,
                  ephemeral_storage_configs: Sequence['outputs.GetClusterNodeConfigEphemeralStorageConfigResult'],
@@ -13182,6 +13348,7 @@ class GetClusterNodeConfigResult(dict):
                  workload_metadata_configs: Sequence['outputs.GetClusterNodeConfigWorkloadMetadataConfigResult']):
         pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
         pulumi.set(__self__, "boot_disk_kms_key", boot_disk_kms_key)
+        pulumi.set(__self__, "confidential_nodes", confidential_nodes)
         pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         pulumi.set(__self__, "disk_type", disk_type)
         pulumi.set(__self__, "ephemeral_storage_configs", ephemeral_storage_configs)
@@ -13223,6 +13390,11 @@ class GetClusterNodeConfigResult(dict):
     @pulumi.getter(name="bootDiskKmsKey")
     def boot_disk_kms_key(self) -> str:
         return pulumi.get(self, "boot_disk_kms_key")
+
+    @property
+    @pulumi.getter(name="confidentialNodes")
+    def confidential_nodes(self) -> Sequence['outputs.GetClusterNodeConfigConfidentialNodeResult']:
+        return pulumi.get(self, "confidential_nodes")
 
     @property
     @pulumi.getter(name="diskSizeGb")
@@ -13390,6 +13562,18 @@ class GetClusterNodeConfigAdvancedMachineFeatureResult(dict):
     @pulumi.getter(name="threadsPerCore")
     def threads_per_core(self) -> int:
         return pulumi.get(self, "threads_per_core")
+
+
+@pulumi.output_type
+class GetClusterNodeConfigConfidentialNodeResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -14071,6 +14255,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
     def __init__(__self__, *,
                  advanced_machine_features: Sequence['outputs.GetClusterNodePoolNodeConfigAdvancedMachineFeatureResult'],
                  boot_disk_kms_key: str,
+                 confidential_nodes: Sequence['outputs.GetClusterNodePoolNodeConfigConfidentialNodeResult'],
                  disk_size_gb: int,
                  disk_type: str,
                  ephemeral_storage_configs: Sequence['outputs.GetClusterNodePoolNodeConfigEphemeralStorageConfigResult'],
@@ -14104,6 +14289,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
                  workload_metadata_configs: Sequence['outputs.GetClusterNodePoolNodeConfigWorkloadMetadataConfigResult']):
         pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
         pulumi.set(__self__, "boot_disk_kms_key", boot_disk_kms_key)
+        pulumi.set(__self__, "confidential_nodes", confidential_nodes)
         pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         pulumi.set(__self__, "disk_type", disk_type)
         pulumi.set(__self__, "ephemeral_storage_configs", ephemeral_storage_configs)
@@ -14145,6 +14331,11 @@ class GetClusterNodePoolNodeConfigResult(dict):
     @pulumi.getter(name="bootDiskKmsKey")
     def boot_disk_kms_key(self) -> str:
         return pulumi.get(self, "boot_disk_kms_key")
+
+    @property
+    @pulumi.getter(name="confidentialNodes")
+    def confidential_nodes(self) -> Sequence['outputs.GetClusterNodePoolNodeConfigConfidentialNodeResult']:
+        return pulumi.get(self, "confidential_nodes")
 
     @property
     @pulumi.getter(name="diskSizeGb")
@@ -14312,6 +14503,18 @@ class GetClusterNodePoolNodeConfigAdvancedMachineFeatureResult(dict):
     @pulumi.getter(name="threadsPerCore")
     def threads_per_core(self) -> int:
         return pulumi.get(self, "threads_per_core")
+
+
+@pulumi.output_type
+class GetClusterNodePoolNodeConfigConfidentialNodeResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type

@@ -293,7 +293,7 @@ class OrganizationBucketConfig(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using the following format
+        This resource can be imported using the following format:
 
         ```sh
          $ pulumi import gcp:logging/organizationBucketConfig:OrganizationBucketConfig default organizations/{{organization}}/locations/{{location}}/buckets/{{bucket_id}}
@@ -339,7 +339,7 @@ class OrganizationBucketConfig(pulumi.CustomResource):
 
         ## Import
 
-        This resource can be imported using the following format
+        This resource can be imported using the following format:
 
         ```sh
          $ pulumi import gcp:logging/organizationBucketConfig:OrganizationBucketConfig default organizations/{{organization}}/locations/{{location}}/buckets/{{bucket_id}}

@@ -51,7 +51,7 @@ class InstanceArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb instance.
         :param pulumi.Input['InstanceMachineConfigArgs'] machine_config: Configurations for the machines that host the underlying database engine.
                Structure is documented below.
-        :param pulumi.Input['InstanceReadPoolConfigArgs'] read_pool_config: Read pool specific config.
+        :param pulumi.Input['InstanceReadPoolConfigArgs'] read_pool_config: Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
                Structure is documented below.
         """
         pulumi.set(__self__, "cluster", cluster)
@@ -210,7 +210,7 @@ class InstanceArgs:
     @pulumi.getter(name="readPoolConfig")
     def read_pool_config(self) -> Optional[pulumi.Input['InstanceReadPoolConfigArgs']]:
         """
-        Read pool specific config.
+        Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
         Structure is documented below.
         """
         return pulumi.get(self, "read_pool_config")
@@ -268,7 +268,7 @@ class _InstanceState:
         :param pulumi.Input['InstanceMachineConfigArgs'] machine_config: Configurations for the machines that host the underlying database engine.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the instance resource.
-        :param pulumi.Input['InstanceReadPoolConfigArgs'] read_pool_config: Read pool specific config.
+        :param pulumi.Input['InstanceReadPoolConfigArgs'] read_pool_config: Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
                Structure is documented below.
         :param pulumi.Input[bool] reconciling: Set to true if the current state of Instance does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
         :param pulumi.Input[str] state: The current state of the alloydb instance.
@@ -484,7 +484,7 @@ class _InstanceState:
     @pulumi.getter(name="readPoolConfig")
     def read_pool_config(self) -> Optional[pulumi.Input['InstanceReadPoolConfigArgs']]:
         """
-        Read pool specific config.
+        Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
         Structure is documented below.
         """
         return pulumi.get(self, "read_pool_config")
@@ -608,11 +608,15 @@ class Instance(pulumi.CustomResource):
         Instance can be imported using any of these accepted formats
 
         ```sh
-         $ pulumi import gcp:alloydb/instance:Instance default {{cluster}}/instances/{{instance_id}}
+         $ pulumi import gcp:alloydb/instance:Instance default projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/instances/{{instance_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:alloydb/instance:Instance default {{cluster}}/{{instance_id}}
+         $ pulumi import gcp:alloydb/instance:Instance default {{project}}/{{location}}/{{cluster}}/{{instance_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:alloydb/instance:Instance default {{location}}/{{cluster}}/{{instance_id}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -639,7 +643,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb instance.
         :param pulumi.Input[pulumi.InputType['InstanceMachineConfigArgs']] machine_config: Configurations for the machines that host the underlying database engine.
                Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['InstanceReadPoolConfigArgs']] read_pool_config: Read pool specific config.
+        :param pulumi.Input[pulumi.InputType['InstanceReadPoolConfigArgs']] read_pool_config: Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
                Structure is documented below.
         """
         ...
@@ -697,11 +701,15 @@ class Instance(pulumi.CustomResource):
         Instance can be imported using any of these accepted formats
 
         ```sh
-         $ pulumi import gcp:alloydb/instance:Instance default {{cluster}}/instances/{{instance_id}}
+         $ pulumi import gcp:alloydb/instance:Instance default projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/instances/{{instance_id}}
         ```
 
         ```sh
-         $ pulumi import gcp:alloydb/instance:Instance default {{cluster}}/{{instance_id}}
+         $ pulumi import gcp:alloydb/instance:Instance default {{project}}/{{location}}/{{cluster}}/{{instance_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:alloydb/instance:Instance default {{location}}/{{cluster}}/{{instance_id}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -823,7 +831,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['InstanceMachineConfigArgs']] machine_config: Configurations for the machines that host the underlying database engine.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the instance resource.
-        :param pulumi.Input[pulumi.InputType['InstanceReadPoolConfigArgs']] read_pool_config: Read pool specific config.
+        :param pulumi.Input[pulumi.InputType['InstanceReadPoolConfigArgs']] read_pool_config: Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
                Structure is documented below.
         :param pulumi.Input[bool] reconciling: Set to true if the current state of Instance does not match the user's intended state, and the service is actively updating the resource to reconcile them. This can happen due to user-triggered updates or system actions like failover or maintenance.
         :param pulumi.Input[str] state: The current state of the alloydb instance.
@@ -974,7 +982,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="readPoolConfig")
     def read_pool_config(self) -> pulumi.Output[Optional['outputs.InstanceReadPoolConfig']]:
         """
-        Read pool specific config.
+        Read pool specific config. If the instance type is READ_POOL, this configuration must be provided.
         Structure is documented below.
         """
         return pulumi.get(self, "read_pool_config")

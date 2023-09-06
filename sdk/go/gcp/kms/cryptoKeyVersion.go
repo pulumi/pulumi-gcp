@@ -64,7 +64,7 @@ import (
 //
 // ## Import
 //
-// # CryptoKeyVersion can be imported using any of these accepted formats
+// CryptoKeyVersion can be imported using any of these accepted formats:
 //
 // ```sh
 //

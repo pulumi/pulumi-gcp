@@ -14,6 +14,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CxPageFormParameter {
     /**
+     * @return The default value of an optional parameter. If the parameter is required, the default value will be ignored.
+     * 
+     */
+    private @Nullable String defaultValue;
+    /**
      * @return The human-readable name of the parameter, unique within the form.
      * 
      */
@@ -49,6 +54,13 @@ public final class CxPageFormParameter {
     private @Nullable Boolean required;
 
     private CxPageFormParameter() {}
+    /**
+     * @return The default value of an optional parameter. If the parameter is required, the default value will be ignored.
+     * 
+     */
+    public Optional<String> defaultValue() {
+        return Optional.ofNullable(this.defaultValue);
+    }
     /**
      * @return The human-readable name of the parameter, unique within the form.
      * 
@@ -105,6 +117,7 @@ public final class CxPageFormParameter {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String defaultValue;
         private @Nullable String displayName;
         private @Nullable String entityType;
         private @Nullable CxPageFormParameterFillBehavior fillBehavior;
@@ -114,6 +127,7 @@ public final class CxPageFormParameter {
         public Builder() {}
         public Builder(CxPageFormParameter defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.defaultValue = defaults.defaultValue;
     	      this.displayName = defaults.displayName;
     	      this.entityType = defaults.entityType;
     	      this.fillBehavior = defaults.fillBehavior;
@@ -122,6 +136,11 @@ public final class CxPageFormParameter {
     	      this.required = defaults.required;
         }
 
+        @CustomType.Setter
+        public Builder defaultValue(@Nullable String defaultValue) {
+            this.defaultValue = defaultValue;
+            return this;
+        }
         @CustomType.Setter
         public Builder displayName(@Nullable String displayName) {
             this.displayName = displayName;
@@ -154,6 +173,7 @@ public final class CxPageFormParameter {
         }
         public CxPageFormParameter build() {
             final var o = new CxPageFormParameter();
+            o.defaultValue = defaultValue;
             o.displayName = displayName;
             o.entityType = entityType;
             o.fillBehavior = fillBehavior;

@@ -134,7 +134,7 @@ class DocumentAiProcessorDefaultVersion(pulumi.CustomResource):
 
         ## Import
 
-        ProcessorDefaultVersion can be imported using any of these accepted formats
+        ProcessorDefaultVersion can be imported using any of these accepted formats:
 
         ```sh
          $ pulumi import gcp:essentialcontacts/documentAiProcessorDefaultVersion:DocumentAiProcessorDefaultVersion default {{processor}}
@@ -176,7 +176,7 @@ class DocumentAiProcessorDefaultVersion(pulumi.CustomResource):
 
         ## Import
 
-        ProcessorDefaultVersion can be imported using any of these accepted formats
+        ProcessorDefaultVersion can be imported using any of these accepted formats:
 
         ```sh
          $ pulumi import gcp:essentialcontacts/documentAiProcessorDefaultVersion:DocumentAiProcessorDefaultVersion default {{processor}}

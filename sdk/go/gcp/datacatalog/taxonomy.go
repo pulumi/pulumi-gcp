@@ -53,7 +53,7 @@ import (
 //
 // ## Import
 //
-// # Taxonomy can be imported using any of these accepted formats
+// Taxonomy can be imported using any of these accepted formats:
 //
 // ```sh
 //

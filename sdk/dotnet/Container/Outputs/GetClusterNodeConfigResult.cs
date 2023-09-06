@@ -15,6 +15,7 @@ namespace Pulumi.Gcp.Container.Outputs
     {
         public readonly ImmutableArray<Outputs.GetClusterNodeConfigAdvancedMachineFeatureResult> AdvancedMachineFeatures;
         public readonly string BootDiskKmsKey;
+        public readonly ImmutableArray<Outputs.GetClusterNodeConfigConfidentialNodeResult> ConfidentialNodes;
         public readonly int DiskSizeGb;
         public readonly string DiskType;
         public readonly ImmutableArray<Outputs.GetClusterNodeConfigEphemeralStorageConfigResult> EphemeralStorageConfigs;
@@ -52,6 +53,8 @@ namespace Pulumi.Gcp.Container.Outputs
             ImmutableArray<Outputs.GetClusterNodeConfigAdvancedMachineFeatureResult> advancedMachineFeatures,
 
             string bootDiskKmsKey,
+
+            ImmutableArray<Outputs.GetClusterNodeConfigConfidentialNodeResult> confidentialNodes,
 
             int diskSizeGb,
 
@@ -117,6 +120,7 @@ namespace Pulumi.Gcp.Container.Outputs
         {
             AdvancedMachineFeatures = advancedMachineFeatures;
             BootDiskKmsKey = bootDiskKmsKey;
+            ConfidentialNodes = confidentialNodes;
             DiskSizeGb = diskSizeGb;
             DiskType = diskType;
             EphemeralStorageConfigs = ephemeralStorageConfigs;

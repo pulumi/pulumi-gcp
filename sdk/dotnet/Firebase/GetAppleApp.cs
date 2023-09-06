@@ -71,6 +71,7 @@ namespace Pulumi.Gcp.Firebase
     [OutputType]
     public sealed class GetAppleAppResult
     {
+        public readonly string ApiKeyId;
         /// <summary>
         /// Immutable. The globally unique, Firebase-assigned identifier of the App.
         /// This identifier should be treated as an opaque token, as the data format is not specified.
@@ -106,6 +107,8 @@ namespace Pulumi.Gcp.Firebase
 
         [OutputConstructor]
         private GetAppleAppResult(
+            string apiKeyId,
+
             string appId,
 
             string appStoreId,
@@ -124,6 +127,7 @@ namespace Pulumi.Gcp.Firebase
 
             string teamId)
         {
+            ApiKeyId = apiKeyId;
             AppId = appId;
             AppStoreId = appStoreId;
             BundleId = bundleId;

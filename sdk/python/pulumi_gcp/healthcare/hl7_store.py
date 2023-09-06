@@ -42,6 +42,8 @@ class Hl7StoreArgs:
         :param pulumi.Input['Hl7StoreNotificationConfigArgs'] notification_config: (Optional, Deprecated)
                A nested object resource
                Structure is documented below.
+               
+               > **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
         :param pulumi.Input[Sequence[pulumi.Input['Hl7StoreNotificationConfigsArgs']]] notification_configs: A list of notification configs. Each configuration uses a filter to determine whether to publish a
                message (both Ingest & Create) on the corresponding notification destination. Only the message name
                is sent as part of the notification. Supplied by the client.
@@ -55,8 +57,8 @@ class Hl7StoreArgs:
         if name is not None:
             pulumi.set(__self__, "name", name)
         if notification_config is not None:
-            warnings.warn("""This field has been replaced by notificationConfigs""", DeprecationWarning)
-            pulumi.log.warn("""notification_config is deprecated: This field has been replaced by notificationConfigs""")
+            warnings.warn("""`notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""", DeprecationWarning)
+            pulumi.log.warn("""notification_config is deprecated: `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""")
         if notification_config is not None:
             pulumi.set(__self__, "notification_config", notification_config)
         if notification_configs is not None:
@@ -119,9 +121,11 @@ class Hl7StoreArgs:
         (Optional, Deprecated)
         A nested object resource
         Structure is documented below.
+
+        > **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
         """
-        warnings.warn("""This field has been replaced by notificationConfigs""", DeprecationWarning)
-        pulumi.log.warn("""notification_config is deprecated: This field has been replaced by notificationConfigs""")
+        warnings.warn("""`notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""", DeprecationWarning)
+        pulumi.log.warn("""notification_config is deprecated: `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""")
 
         return pulumi.get(self, "notification_config")
 
@@ -188,6 +192,8 @@ class _Hl7StoreState:
         :param pulumi.Input['Hl7StoreNotificationConfigArgs'] notification_config: (Optional, Deprecated)
                A nested object resource
                Structure is documented below.
+               
+               > **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
         :param pulumi.Input[Sequence[pulumi.Input['Hl7StoreNotificationConfigsArgs']]] notification_configs: A list of notification configs. Each configuration uses a filter to determine whether to publish a
                message (both Ingest & Create) on the corresponding notification destination. Only the message name
                is sent as part of the notification. Supplied by the client.
@@ -203,8 +209,8 @@ class _Hl7StoreState:
         if name is not None:
             pulumi.set(__self__, "name", name)
         if notification_config is not None:
-            warnings.warn("""This field has been replaced by notificationConfigs""", DeprecationWarning)
-            pulumi.log.warn("""notification_config is deprecated: This field has been replaced by notificationConfigs""")
+            warnings.warn("""`notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""", DeprecationWarning)
+            pulumi.log.warn("""notification_config is deprecated: `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""")
         if notification_config is not None:
             pulumi.set(__self__, "notification_config", notification_config)
         if notification_configs is not None:
@@ -269,9 +275,11 @@ class _Hl7StoreState:
         (Optional, Deprecated)
         A nested object resource
         Structure is documented below.
+
+        > **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
         """
-        warnings.warn("""This field has been replaced by notificationConfigs""", DeprecationWarning)
-        pulumi.log.warn("""notification_config is deprecated: This field has been replaced by notificationConfigs""")
+        warnings.warn("""`notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""", DeprecationWarning)
+        pulumi.log.warn("""notification_config is deprecated: `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""")
 
         return pulumi.get(self, "notification_config")
 
@@ -505,6 +513,8 @@ class Hl7Store(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigArgs']] notification_config: (Optional, Deprecated)
                A nested object resource
                Structure is documented below.
+               
+               > **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigsArgs']]]] notification_configs: A list of notification configs. Each configuration uses a filter to determine whether to publish a
                message (both Ingest & Create) on the corresponding notification destination. Only the message name
                is sent as part of the notification. Supplied by the client.
@@ -707,8 +717,8 @@ class Hl7Store(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             if notification_config is not None and not opts.urn:
-                warnings.warn("""This field has been replaced by notificationConfigs""", DeprecationWarning)
-                pulumi.log.warn("""notification_config is deprecated: This field has been replaced by notificationConfigs""")
+                warnings.warn("""`notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""", DeprecationWarning)
+                pulumi.log.warn("""notification_config is deprecated: `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""")
             __props__.__dict__["notification_config"] = notification_config
             __props__.__dict__["notification_configs"] = notification_configs
             __props__.__dict__["parser_config"] = parser_config
@@ -755,6 +765,8 @@ class Hl7Store(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigArgs']] notification_config: (Optional, Deprecated)
                A nested object resource
                Structure is documented below.
+               
+               > **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['Hl7StoreNotificationConfigsArgs']]]] notification_configs: A list of notification configs. Each configuration uses a filter to determine whether to publish a
                message (both Ingest & Create) on the corresponding notification destination. Only the message name
                is sent as part of the notification. Supplied by the client.
@@ -819,9 +831,11 @@ class Hl7Store(pulumi.CustomResource):
         (Optional, Deprecated)
         A nested object resource
         Structure is documented below.
+
+        > **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
         """
-        warnings.warn("""This field has been replaced by notificationConfigs""", DeprecationWarning)
-        pulumi.log.warn("""notification_config is deprecated: This field has been replaced by notificationConfigs""")
+        warnings.warn("""`notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""", DeprecationWarning)
+        pulumi.log.warn("""notification_config is deprecated: `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.""")
 
         return pulumi.get(self, "notification_config")
 

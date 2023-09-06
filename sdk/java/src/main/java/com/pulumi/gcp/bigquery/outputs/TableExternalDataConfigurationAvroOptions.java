@@ -10,7 +10,7 @@ import java.util.Objects;
 @CustomType
 public final class TableExternalDataConfigurationAvroOptions {
     /**
-     * @return If is set to true, indicates whether\
+     * @return If is set to true, indicates whether
      * to interpret logical types as the corresponding BigQuery data type
      * (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
      * 
@@ -19,7 +19,7 @@ public final class TableExternalDataConfigurationAvroOptions {
 
     private TableExternalDataConfigurationAvroOptions() {}
     /**
-     * @return If is set to true, indicates whether\
+     * @return If is set to true, indicates whether
      * to interpret logical types as the corresponding BigQuery data type
      * (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
      * 

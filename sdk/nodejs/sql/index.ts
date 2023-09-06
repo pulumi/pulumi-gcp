@@ -35,6 +35,11 @@ export const getDatabaseInstance: typeof import("./getDatabaseInstance").getData
 export const getDatabaseInstanceOutput: typeof import("./getDatabaseInstance").getDatabaseInstanceOutput = null as any;
 utilities.lazyLoad(exports, ["getDatabaseInstance","getDatabaseInstanceOutput"], () => require("./getDatabaseInstance"));
 
+export { GetDatabaseInstanceLatestRecoveryTimeArgs, GetDatabaseInstanceLatestRecoveryTimeResult, GetDatabaseInstanceLatestRecoveryTimeOutputArgs } from "./getDatabaseInstanceLatestRecoveryTime";
+export const getDatabaseInstanceLatestRecoveryTime: typeof import("./getDatabaseInstanceLatestRecoveryTime").getDatabaseInstanceLatestRecoveryTime = null as any;
+export const getDatabaseInstanceLatestRecoveryTimeOutput: typeof import("./getDatabaseInstanceLatestRecoveryTime").getDatabaseInstanceLatestRecoveryTimeOutput = null as any;
+utilities.lazyLoad(exports, ["getDatabaseInstanceLatestRecoveryTime","getDatabaseInstanceLatestRecoveryTimeOutput"], () => require("./getDatabaseInstanceLatestRecoveryTime"));
+
 export { GetDatabaseInstancesArgs, GetDatabaseInstancesResult, GetDatabaseInstancesOutputArgs } from "./getDatabaseInstances";
 export const getDatabaseInstances: typeof import("./getDatabaseInstances").getDatabaseInstances = null as any;
 export const getDatabaseInstancesOutput: typeof import("./getDatabaseInstances").getDatabaseInstancesOutput = null as any;

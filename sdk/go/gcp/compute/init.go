@@ -135,6 +135,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MangedSslCertificate{}
 	case "gcp:compute/network:Network":
 		r = &Network{}
+	case "gcp:compute/networkAttachment:NetworkAttachment":
+		r = &NetworkAttachment{}
 	case "gcp:compute/networkEdgeSecurityService:NetworkEdgeSecurityService":
 		r = &NetworkEdgeSecurityService{}
 	case "gcp:compute/networkEndpoint:NetworkEndpoint":
@@ -591,6 +593,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"compute/network",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/networkAttachment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -15,6 +15,10 @@ __all__ = [
     'RepositoryReleaseConfigCodeCompilationConfig',
     'RepositoryReleaseConfigRecentScheduledReleaseRecord',
     'RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus',
+    'RepositoryWorkflowConfigInvocationConfig',
+    'RepositoryWorkflowConfigInvocationConfigIncludedTarget',
+    'RepositoryWorkflowConfigRecentScheduledExecutionRecord',
+    'RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus',
     'RepositoryWorkspaceCompilationOverrides',
 ]
 
@@ -305,6 +309,264 @@ class RepositoryReleaseConfigRecentScheduledReleaseRecord(dict):
 
 @pulumi.output_type
 class RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus(dict):
+    def __init__(__self__, *,
+                 code: Optional[int] = None,
+                 message: Optional[str] = None):
+        """
+        :param int code: (Output)
+               The status code, which should be an enum value of google.rpc.Code.
+        :param str message: (Output)
+               A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[int]:
+        """
+        (Output)
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[str]:
+        """
+        (Output)
+        A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class RepositoryWorkflowConfigInvocationConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fullyRefreshIncrementalTablesEnabled":
+            suggest = "fully_refresh_incremental_tables_enabled"
+        elif key == "includedTags":
+            suggest = "included_tags"
+        elif key == "includedTargets":
+            suggest = "included_targets"
+        elif key == "serviceAccount":
+            suggest = "service_account"
+        elif key == "transitiveDependenciesIncluded":
+            suggest = "transitive_dependencies_included"
+        elif key == "transitiveDependentsIncluded":
+            suggest = "transitive_dependents_included"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RepositoryWorkflowConfigInvocationConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RepositoryWorkflowConfigInvocationConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RepositoryWorkflowConfigInvocationConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 fully_refresh_incremental_tables_enabled: Optional[bool] = None,
+                 included_tags: Optional[Sequence[str]] = None,
+                 included_targets: Optional[Sequence['outputs.RepositoryWorkflowConfigInvocationConfigIncludedTarget']] = None,
+                 service_account: Optional[str] = None,
+                 transitive_dependencies_included: Optional[bool] = None,
+                 transitive_dependents_included: Optional[bool] = None):
+        """
+        :param bool fully_refresh_incremental_tables_enabled: Optional. When set to true, any incremental tables will be fully refreshed.
+        :param Sequence[str] included_tags: Optional. The set of tags to include.
+        :param Sequence['RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs'] included_targets: Optional. The set of action identifiers to include.
+               Structure is documented below.
+        :param str service_account: Optional. The service account to run workflow invocations under.
+        :param bool transitive_dependencies_included: Optional. When set to true, transitive dependencies of included actions will be executed.
+        :param bool transitive_dependents_included: Optional. When set to true, transitive dependents of included actions will be executed.
+        """
+        if fully_refresh_incremental_tables_enabled is not None:
+            pulumi.set(__self__, "fully_refresh_incremental_tables_enabled", fully_refresh_incremental_tables_enabled)
+        if included_tags is not None:
+            pulumi.set(__self__, "included_tags", included_tags)
+        if included_targets is not None:
+            pulumi.set(__self__, "included_targets", included_targets)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
+        if transitive_dependencies_included is not None:
+            pulumi.set(__self__, "transitive_dependencies_included", transitive_dependencies_included)
+        if transitive_dependents_included is not None:
+            pulumi.set(__self__, "transitive_dependents_included", transitive_dependents_included)
+
+    @property
+    @pulumi.getter(name="fullyRefreshIncrementalTablesEnabled")
+    def fully_refresh_incremental_tables_enabled(self) -> Optional[bool]:
+        """
+        Optional. When set to true, any incremental tables will be fully refreshed.
+        """
+        return pulumi.get(self, "fully_refresh_incremental_tables_enabled")
+
+    @property
+    @pulumi.getter(name="includedTags")
+    def included_tags(self) -> Optional[Sequence[str]]:
+        """
+        Optional. The set of tags to include.
+        """
+        return pulumi.get(self, "included_tags")
+
+    @property
+    @pulumi.getter(name="includedTargets")
+    def included_targets(self) -> Optional[Sequence['outputs.RepositoryWorkflowConfigInvocationConfigIncludedTarget']]:
+        """
+        Optional. The set of action identifiers to include.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "included_targets")
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[str]:
+        """
+        Optional. The service account to run workflow invocations under.
+        """
+        return pulumi.get(self, "service_account")
+
+    @property
+    @pulumi.getter(name="transitiveDependenciesIncluded")
+    def transitive_dependencies_included(self) -> Optional[bool]:
+        """
+        Optional. When set to true, transitive dependencies of included actions will be executed.
+        """
+        return pulumi.get(self, "transitive_dependencies_included")
+
+    @property
+    @pulumi.getter(name="transitiveDependentsIncluded")
+    def transitive_dependents_included(self) -> Optional[bool]:
+        """
+        Optional. When set to true, transitive dependents of included actions will be executed.
+        """
+        return pulumi.get(self, "transitive_dependents_included")
+
+
+@pulumi.output_type
+class RepositoryWorkflowConfigInvocationConfigIncludedTarget(dict):
+    def __init__(__self__, *,
+                 database: Optional[str] = None,
+                 name: Optional[str] = None,
+                 schema: Optional[str] = None):
+        """
+        :param str database: The action's database (Google Cloud project ID).
+        :param str name: The action's name, within database and schema.
+        :param str schema: The action's schema (BigQuery dataset ID), within database.
+        """
+        if database is not None:
+            pulumi.set(__self__, "database", database)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
+
+    @property
+    @pulumi.getter
+    def database(self) -> Optional[str]:
+        """
+        The action's database (Google Cloud project ID).
+        """
+        return pulumi.get(self, "database")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The action's name, within database and schema.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def schema(self) -> Optional[str]:
+        """
+        The action's schema (BigQuery dataset ID), within database.
+        """
+        return pulumi.get(self, "schema")
+
+
+@pulumi.output_type
+class RepositoryWorkflowConfigRecentScheduledExecutionRecord(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "errorStatuses":
+            suggest = "error_statuses"
+        elif key == "executionTime":
+            suggest = "execution_time"
+        elif key == "workflowInvocation":
+            suggest = "workflow_invocation"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RepositoryWorkflowConfigRecentScheduledExecutionRecord. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RepositoryWorkflowConfigRecentScheduledExecutionRecord.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RepositoryWorkflowConfigRecentScheduledExecutionRecord.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 error_statuses: Optional[Sequence['outputs.RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus']] = None,
+                 execution_time: Optional[str] = None,
+                 workflow_invocation: Optional[str] = None):
+        """
+        :param Sequence['RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgs'] error_statuses: (Output)
+               The error status encountered upon this attempt to create the workflow invocation, if the attempt was unsuccessful.
+               Structure is documented below.
+        :param str execution_time: (Output)
+               The timestamp of this workflow attempt.
+        :param str workflow_invocation: (Output)
+               The name of the created workflow invocation, if one was successfully created. In the format projects/*/locations/*/repositories/*/workflowInvocations/*.
+        """
+        if error_statuses is not None:
+            pulumi.set(__self__, "error_statuses", error_statuses)
+        if execution_time is not None:
+            pulumi.set(__self__, "execution_time", execution_time)
+        if workflow_invocation is not None:
+            pulumi.set(__self__, "workflow_invocation", workflow_invocation)
+
+    @property
+    @pulumi.getter(name="errorStatuses")
+    def error_statuses(self) -> Optional[Sequence['outputs.RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus']]:
+        """
+        (Output)
+        The error status encountered upon this attempt to create the workflow invocation, if the attempt was unsuccessful.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "error_statuses")
+
+    @property
+    @pulumi.getter(name="executionTime")
+    def execution_time(self) -> Optional[str]:
+        """
+        (Output)
+        The timestamp of this workflow attempt.
+        """
+        return pulumi.get(self, "execution_time")
+
+    @property
+    @pulumi.getter(name="workflowInvocation")
+    def workflow_invocation(self) -> Optional[str]:
+        """
+        (Output)
+        The name of the created workflow invocation, if one was successfully created. In the format projects/*/locations/*/repositories/*/workflowInvocations/*.
+        """
+        return pulumi.get(self, "workflow_invocation")
+
+
+@pulumi.output_type
+class RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus(dict):
     def __init__(__self__, *,
                  code: Optional[int] = None,
                  message: Optional[str] = None):

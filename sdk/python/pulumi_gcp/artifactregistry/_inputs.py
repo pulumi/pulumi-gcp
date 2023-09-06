@@ -10,6 +10,9 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'RepositoryCleanupPolicyArgs',
+    'RepositoryCleanupPolicyConditionArgs',
+    'RepositoryCleanupPolicyMostRecentVersionsArgs',
     'RepositoryDockerConfigArgs',
     'RepositoryIamBindingConditionArgs',
     'RepositoryIamMemberConditionArgs',
@@ -22,6 +25,170 @@ __all__ = [
     'RepositoryVirtualRepositoryConfigArgs',
     'RepositoryVirtualRepositoryConfigUpstreamPolicyArgs',
 ]
+
+@pulumi.input_type
+class RepositoryCleanupPolicyArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 action: Optional[pulumi.Input[str]] = None,
+                 condition: Optional[pulumi.Input['RepositoryCleanupPolicyConditionArgs']] = None,
+                 most_recent_versions: Optional[pulumi.Input['RepositoryCleanupPolicyMostRecentVersionsArgs']] = None):
+        """
+        :param pulumi.Input[str] id: The identifier for this object. Format specified above.
+        """
+        pulumi.set(__self__, "id", id)
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+        if most_recent_versions is not None:
+            pulumi.set(__self__, "most_recent_versions", most_recent_versions)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[pulumi.Input['RepositoryCleanupPolicyConditionArgs']]:
+        return pulumi.get(self, "condition")
+
+    @condition.setter
+    def condition(self, value: Optional[pulumi.Input['RepositoryCleanupPolicyConditionArgs']]):
+        pulumi.set(self, "condition", value)
+
+    @property
+    @pulumi.getter(name="mostRecentVersions")
+    def most_recent_versions(self) -> Optional[pulumi.Input['RepositoryCleanupPolicyMostRecentVersionsArgs']]:
+        return pulumi.get(self, "most_recent_versions")
+
+    @most_recent_versions.setter
+    def most_recent_versions(self, value: Optional[pulumi.Input['RepositoryCleanupPolicyMostRecentVersionsArgs']]):
+        pulumi.set(self, "most_recent_versions", value)
+
+
+@pulumi.input_type
+class RepositoryCleanupPolicyConditionArgs:
+    def __init__(__self__, *,
+                 newer_than: Optional[pulumi.Input[str]] = None,
+                 older_than: Optional[pulumi.Input[str]] = None,
+                 package_name_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tag_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tag_state: Optional[pulumi.Input[str]] = None,
+                 version_name_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        if newer_than is not None:
+            pulumi.set(__self__, "newer_than", newer_than)
+        if older_than is not None:
+            pulumi.set(__self__, "older_than", older_than)
+        if package_name_prefixes is not None:
+            pulumi.set(__self__, "package_name_prefixes", package_name_prefixes)
+        if tag_prefixes is not None:
+            pulumi.set(__self__, "tag_prefixes", tag_prefixes)
+        if tag_state is not None:
+            pulumi.set(__self__, "tag_state", tag_state)
+        if version_name_prefixes is not None:
+            pulumi.set(__self__, "version_name_prefixes", version_name_prefixes)
+
+    @property
+    @pulumi.getter(name="newerThan")
+    def newer_than(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "newer_than")
+
+    @newer_than.setter
+    def newer_than(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "newer_than", value)
+
+    @property
+    @pulumi.getter(name="olderThan")
+    def older_than(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "older_than")
+
+    @older_than.setter
+    def older_than(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "older_than", value)
+
+    @property
+    @pulumi.getter(name="packageNamePrefixes")
+    def package_name_prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "package_name_prefixes")
+
+    @package_name_prefixes.setter
+    def package_name_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "package_name_prefixes", value)
+
+    @property
+    @pulumi.getter(name="tagPrefixes")
+    def tag_prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "tag_prefixes")
+
+    @tag_prefixes.setter
+    def tag_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tag_prefixes", value)
+
+    @property
+    @pulumi.getter(name="tagState")
+    def tag_state(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "tag_state")
+
+    @tag_state.setter
+    def tag_state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tag_state", value)
+
+    @property
+    @pulumi.getter(name="versionNamePrefixes")
+    def version_name_prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "version_name_prefixes")
+
+    @version_name_prefixes.setter
+    def version_name_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "version_name_prefixes", value)
+
+
+@pulumi.input_type
+class RepositoryCleanupPolicyMostRecentVersionsArgs:
+    def __init__(__self__, *,
+                 keep_count: Optional[pulumi.Input[int]] = None,
+                 package_name_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        if keep_count is not None:
+            pulumi.set(__self__, "keep_count", keep_count)
+        if package_name_prefixes is not None:
+            pulumi.set(__self__, "package_name_prefixes", package_name_prefixes)
+
+    @property
+    @pulumi.getter(name="keepCount")
+    def keep_count(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "keep_count")
+
+    @keep_count.setter
+    def keep_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "keep_count", value)
+
+    @property
+    @pulumi.getter(name="packageNamePrefixes")
+    def package_name_prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "package_name_prefixes")
+
+    @package_name_prefixes.setter
+    def package_name_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "package_name_prefixes", value)
+
 
 @pulumi.input_type
 class RepositoryDockerConfigArgs:

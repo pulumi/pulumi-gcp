@@ -43,7 +43,7 @@ public final class RouterPeerArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * User-specified list of prefix groups to advertise in custom
-     * mode, which can take one of the following options:
+     * mode, which currently supports the following option:
      * 
      */
     @Import(name="advertisedGroups")
@@ -51,7 +51,7 @@ public final class RouterPeerArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return User-specified list of prefix groups to advertise in custom
-     * mode, which can take one of the following options:
+     * mode, which currently supports the following option:
      * 
      */
     public Optional<Output<List<String>>> advertisedGroups() {
@@ -432,7 +432,7 @@ public final class RouterPeerArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param advertisedGroups User-specified list of prefix groups to advertise in custom
-         * mode, which can take one of the following options:
+         * mode, which currently supports the following option:
          * 
          * @return builder
          * 
@@ -444,7 +444,7 @@ public final class RouterPeerArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param advertisedGroups User-specified list of prefix groups to advertise in custom
-         * mode, which can take one of the following options:
+         * mode, which currently supports the following option:
          * 
          * @return builder
          * 
@@ -455,7 +455,7 @@ public final class RouterPeerArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param advertisedGroups User-specified list of prefix groups to advertise in custom
-         * mode, which can take one of the following options:
+         * mode, which currently supports the following option:
          * 
          * @return builder
          * 

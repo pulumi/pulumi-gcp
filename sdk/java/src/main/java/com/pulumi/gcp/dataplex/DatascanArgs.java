@@ -89,12 +89,20 @@ public final class DatascanArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Description of the scan.
      * 
+     * (Optional)
+     * Description of the rule.
+     * The maximum length is 1,024 characters.
+     * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
      * @return Description of the scan.
+     * 
+     * (Optional)
+     * Description of the rule.
+     * The maximum length is 1,024 characters.
      * 
      */
     public Optional<Output<String>> description() {
@@ -306,6 +314,10 @@ public final class DatascanArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param description Description of the scan.
          * 
+         * (Optional)
+         * Description of the rule.
+         * The maximum length is 1,024 characters.
+         * 
          * @return builder
          * 
          */
@@ -316,6 +328,10 @@ public final class DatascanArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param description Description of the scan.
+         * 
+         * (Optional)
+         * Description of the rule.
+         * The maximum length is 1,024 characters.
          * 
          * @return builder
          * 

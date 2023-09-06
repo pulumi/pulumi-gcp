@@ -141,9 +141,12 @@ type Membership struct {
 	// https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
 	// Structure is documented below.
 	Authority MembershipAuthorityPtrOutput `pulumi:"authority"`
+	// (Optional, Deprecated)
 	// The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
 	//
-	// Deprecated: This field is unavailable in the GA provider and will be removed from the beta provider in a future release.
+	// > **Warning:** `description` is deprecated and will be removed in a future major release.
+	//
+	// Deprecated: `description` is deprecated and will be removed in a future major release.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
 	// Structure is documented below.
@@ -199,9 +202,12 @@ type membershipState struct {
 	// https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
 	// Structure is documented below.
 	Authority *MembershipAuthority `pulumi:"authority"`
+	// (Optional, Deprecated)
 	// The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
 	//
-	// Deprecated: This field is unavailable in the GA provider and will be removed from the beta provider in a future release.
+	// > **Warning:** `description` is deprecated and will be removed in a future major release.
+	//
+	// Deprecated: `description` is deprecated and will be removed in a future major release.
 	Description *string `pulumi:"description"`
 	// If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
 	// Structure is documented below.
@@ -225,9 +231,12 @@ type MembershipState struct {
 	// https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
 	// Structure is documented below.
 	Authority MembershipAuthorityPtrInput
+	// (Optional, Deprecated)
 	// The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
 	//
-	// Deprecated: This field is unavailable in the GA provider and will be removed from the beta provider in a future release.
+	// > **Warning:** `description` is deprecated and will be removed in a future major release.
+	//
+	// Deprecated: `description` is deprecated and will be removed in a future major release.
 	Description pulumi.StringPtrInput
 	// If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
 	// Structure is documented below.
@@ -255,9 +264,12 @@ type membershipArgs struct {
 	// https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
 	// Structure is documented below.
 	Authority *MembershipAuthority `pulumi:"authority"`
+	// (Optional, Deprecated)
 	// The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
 	//
-	// Deprecated: This field is unavailable in the GA provider and will be removed from the beta provider in a future release.
+	// > **Warning:** `description` is deprecated and will be removed in a future major release.
+	//
+	// Deprecated: `description` is deprecated and will be removed in a future major release.
 	Description *string `pulumi:"description"`
 	// If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
 	// Structure is documented below.
@@ -280,9 +292,12 @@ type MembershipArgs struct {
 	// https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
 	// Structure is documented below.
 	Authority MembershipAuthorityPtrInput
+	// (Optional, Deprecated)
 	// The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
 	//
-	// Deprecated: This field is unavailable in the GA provider and will be removed from the beta provider in a future release.
+	// > **Warning:** `description` is deprecated and will be removed in a future major release.
+	//
+	// Deprecated: `description` is deprecated and will be removed in a future major release.
 	Description pulumi.StringPtrInput
 	// If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
 	// Structure is documented below.
@@ -393,9 +408,12 @@ func (o MembershipOutput) Authority() MembershipAuthorityPtrOutput {
 	return o.ApplyT(func(v *Membership) MembershipAuthorityPtrOutput { return v.Authority }).(MembershipAuthorityPtrOutput)
 }
 
+// (Optional, Deprecated)
 // The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
 //
-// Deprecated: This field is unavailable in the GA provider and will be removed from the beta provider in a future release.
+// > **Warning:** `description` is deprecated and will be removed in a future major release.
+//
+// Deprecated: `description` is deprecated and will be removed in a future major release.
 func (o MembershipOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Membership) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }

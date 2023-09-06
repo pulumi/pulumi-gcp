@@ -1359,7 +1359,9 @@ type JobTemplateTemplateContainer struct {
 	// This field is not supported in Cloud Run Job currently.
 	// Structure is documented below.
 	//
-	// Deprecated: Cloud Run Job does not support liveness probe and `liveness_probe` field will be removed in a future major release.
+	// > **Warning:** `livenessProbe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+	//
+	// Deprecated: `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
 	LivenessProbe *JobTemplateTemplateContainerLivenessProbe `pulumi:"livenessProbe"`
 	// Name of the container specified as a DNS_LABEL.
 	Name *string `pulumi:"name"`
@@ -1375,7 +1377,9 @@ type JobTemplateTemplateContainer struct {
 	// This field is not supported in Cloud Run Job currently.
 	// Structure is documented below.
 	//
-	// Deprecated: Cloud Run Job does not support startup probe and `startup_probe` field will be removed in a future major release.
+	// > **Warning:** `startupProbe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+	//
+	// Deprecated: `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
 	StartupProbe *JobTemplateTemplateContainerStartupProbe `pulumi:"startupProbe"`
 	// Volume to mount into the container's filesystem.
 	// Structure is documented below.
@@ -1410,7 +1414,9 @@ type JobTemplateTemplateContainerArgs struct {
 	// This field is not supported in Cloud Run Job currently.
 	// Structure is documented below.
 	//
-	// Deprecated: Cloud Run Job does not support liveness probe and `liveness_probe` field will be removed in a future major release.
+	// > **Warning:** `livenessProbe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+	//
+	// Deprecated: `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
 	LivenessProbe JobTemplateTemplateContainerLivenessProbePtrInput `pulumi:"livenessProbe"`
 	// Name of the container specified as a DNS_LABEL.
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -1426,7 +1432,9 @@ type JobTemplateTemplateContainerArgs struct {
 	// This field is not supported in Cloud Run Job currently.
 	// Structure is documented below.
 	//
-	// Deprecated: Cloud Run Job does not support startup probe and `startup_probe` field will be removed in a future major release.
+	// > **Warning:** `startupProbe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+	//
+	// Deprecated: `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
 	StartupProbe JobTemplateTemplateContainerStartupProbePtrInput `pulumi:"startupProbe"`
 	// Volume to mount into the container's filesystem.
 	// Structure is documented below.
@@ -1512,7 +1520,9 @@ func (o JobTemplateTemplateContainerOutput) Image() pulumi.StringOutput {
 // This field is not supported in Cloud Run Job currently.
 // Structure is documented below.
 //
-// Deprecated: Cloud Run Job does not support liveness probe and `liveness_probe` field will be removed in a future major release.
+// > **Warning:** `livenessProbe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+//
+// Deprecated: `liveness_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
 func (o JobTemplateTemplateContainerOutput) LivenessProbe() JobTemplateTemplateContainerLivenessProbePtrOutput {
 	return o.ApplyT(func(v JobTemplateTemplateContainer) *JobTemplateTemplateContainerLivenessProbe {
 		return v.LivenessProbe
@@ -1542,7 +1552,9 @@ func (o JobTemplateTemplateContainerOutput) Resources() JobTemplateTemplateConta
 // This field is not supported in Cloud Run Job currently.
 // Structure is documented below.
 //
-// Deprecated: Cloud Run Job does not support startup probe and `startup_probe` field will be removed in a future major release.
+// > **Warning:** `startupProbe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+//
+// Deprecated: `startup_probe` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
 func (o JobTemplateTemplateContainerOutput) StartupProbe() JobTemplateTemplateContainerStartupProbePtrOutput {
 	return o.ApplyT(func(v JobTemplateTemplateContainer) *JobTemplateTemplateContainerStartupProbe { return v.StartupProbe }).(JobTemplateTemplateContainerStartupProbePtrOutput)
 }
@@ -4255,7 +4267,7 @@ func (o JobTemplateTemplateVolumeSecretPtrOutput) Secret() pulumi.StringPtrOutpu
 
 type JobTemplateTemplateVolumeSecretItem struct {
 	// Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
-	Mode int `pulumi:"mode"`
+	Mode *int `pulumi:"mode"`
 	// The relative path of the secret in the container.
 	Path string `pulumi:"path"`
 	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
@@ -4275,7 +4287,7 @@ type JobTemplateTemplateVolumeSecretItemInput interface {
 
 type JobTemplateTemplateVolumeSecretItemArgs struct {
 	// Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
-	Mode pulumi.IntInput `pulumi:"mode"`
+	Mode pulumi.IntPtrInput `pulumi:"mode"`
 	// The relative path of the secret in the container.
 	Path pulumi.StringInput `pulumi:"path"`
 	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
@@ -4334,8 +4346,8 @@ func (o JobTemplateTemplateVolumeSecretItemOutput) ToJobTemplateTemplateVolumeSe
 }
 
 // Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
-func (o JobTemplateTemplateVolumeSecretItemOutput) Mode() pulumi.IntOutput {
-	return o.ApplyT(func(v JobTemplateTemplateVolumeSecretItem) int { return v.Mode }).(pulumi.IntOutput)
+func (o JobTemplateTemplateVolumeSecretItemOutput) Mode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v JobTemplateTemplateVolumeSecretItem) *int { return v.Mode }).(pulumi.IntPtrOutput)
 }
 
 // The relative path of the secret in the container.
@@ -6453,7 +6465,9 @@ type ServiceTemplateContainerLivenessProbe struct {
 	// TCPSocket specifies an action involving a TCP port. This field is not supported in liveness probe currently.
 	// Structure is documented below.
 	//
-	// Deprecated: Cloud Run does not support tcp socket in liveness probe and `liveness_probe.tcp_socket` field will be removed in a future major release.
+	// > **Warning:** `tcpSocket` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+	//
+	// Deprecated: `tcp_socket` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
 	TcpSocket *ServiceTemplateContainerLivenessProbeTcpSocket `pulumi:"tcpSocket"`
 	// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
@@ -6487,7 +6501,9 @@ type ServiceTemplateContainerLivenessProbeArgs struct {
 	// TCPSocket specifies an action involving a TCP port. This field is not supported in liveness probe currently.
 	// Structure is documented below.
 	//
-	// Deprecated: Cloud Run does not support tcp socket in liveness probe and `liveness_probe.tcp_socket` field will be removed in a future major release.
+	// > **Warning:** `tcpSocket` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+	//
+	// Deprecated: `tcp_socket` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
 	TcpSocket ServiceTemplateContainerLivenessProbeTcpSocketPtrInput `pulumi:"tcpSocket"`
 	// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
@@ -6605,7 +6621,9 @@ func (o ServiceTemplateContainerLivenessProbeOutput) PeriodSeconds() pulumi.IntP
 // TCPSocket specifies an action involving a TCP port. This field is not supported in liveness probe currently.
 // Structure is documented below.
 //
-// Deprecated: Cloud Run does not support tcp socket in liveness probe and `liveness_probe.tcp_socket` field will be removed in a future major release.
+// > **Warning:** `tcpSocket` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+//
+// Deprecated: `tcp_socket` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
 func (o ServiceTemplateContainerLivenessProbeOutput) TcpSocket() ServiceTemplateContainerLivenessProbeTcpSocketPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateContainerLivenessProbe) *ServiceTemplateContainerLivenessProbeTcpSocket {
 		return v.TcpSocket
@@ -6697,7 +6715,9 @@ func (o ServiceTemplateContainerLivenessProbePtrOutput) PeriodSeconds() pulumi.I
 // TCPSocket specifies an action involving a TCP port. This field is not supported in liveness probe currently.
 // Structure is documented below.
 //
-// Deprecated: Cloud Run does not support tcp socket in liveness probe and `liveness_probe.tcp_socket` field will be removed in a future major release.
+// > **Warning:** `tcpSocket` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
+//
+// Deprecated: `tcp_socket` is deprecated and will be removed in a future major release. This field is not supported by the Cloud Run API.
 func (o ServiceTemplateContainerLivenessProbePtrOutput) TcpSocket() ServiceTemplateContainerLivenessProbeTcpSocketPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateContainerLivenessProbe) *ServiceTemplateContainerLivenessProbeTcpSocket {
 		if v == nil {
@@ -9344,7 +9364,7 @@ func (o ServiceTemplateVolumeSecretPtrOutput) Secret() pulumi.StringPtrOutput {
 
 type ServiceTemplateVolumeSecretItem struct {
 	// Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
-	Mode int `pulumi:"mode"`
+	Mode *int `pulumi:"mode"`
 	// The relative path of the secret in the container.
 	Path string `pulumi:"path"`
 	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
@@ -9364,7 +9384,7 @@ type ServiceTemplateVolumeSecretItemInput interface {
 
 type ServiceTemplateVolumeSecretItemArgs struct {
 	// Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
-	Mode pulumi.IntInput `pulumi:"mode"`
+	Mode pulumi.IntPtrInput `pulumi:"mode"`
 	// The relative path of the secret in the container.
 	Path pulumi.StringInput `pulumi:"path"`
 	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version
@@ -9423,8 +9443,8 @@ func (o ServiceTemplateVolumeSecretItemOutput) ToServiceTemplateVolumeSecretItem
 }
 
 // Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used.
-func (o ServiceTemplateVolumeSecretItemOutput) Mode() pulumi.IntOutput {
-	return o.ApplyT(func(v ServiceTemplateVolumeSecretItem) int { return v.Mode }).(pulumi.IntOutput)
+func (o ServiceTemplateVolumeSecretItemOutput) Mode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateVolumeSecretItem) *int { return v.Mode }).(pulumi.IntPtrOutput)
 }
 
 // The relative path of the secret in the container.

@@ -27,6 +27,7 @@ __all__ = [
     'DatabaseInstanceSettingsInsightsConfig',
     'DatabaseInstanceSettingsIpConfiguration',
     'DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork',
+    'DatabaseInstanceSettingsIpConfigurationPscConfig',
     'DatabaseInstanceSettingsLocationPreference',
     'DatabaseInstanceSettingsMaintenanceWindow',
     'DatabaseInstanceSettingsPasswordValidationPolicy',
@@ -51,6 +52,7 @@ __all__ = [
     'GetDatabaseInstanceSettingInsightsConfigResult',
     'GetDatabaseInstanceSettingIpConfigurationResult',
     'GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkResult',
+    'GetDatabaseInstanceSettingIpConfigurationPscConfigResult',
     'GetDatabaseInstanceSettingLocationPreferenceResult',
     'GetDatabaseInstanceSettingMaintenanceWindowResult',
     'GetDatabaseInstanceSettingPasswordValidationPolicyResult',
@@ -72,6 +74,7 @@ __all__ = [
     'GetDatabaseInstancesInstanceSettingInsightsConfigResult',
     'GetDatabaseInstancesInstanceSettingIpConfigurationResult',
     'GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkResult',
+    'GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigResult',
     'GetDatabaseInstancesInstanceSettingLocationPreferenceResult',
     'GetDatabaseInstancesInstanceSettingMaintenanceWindowResult',
     'GetDatabaseInstancesInstanceSettingPasswordValidationPolicyResult',
@@ -1353,6 +1356,8 @@ class DatabaseInstanceSettingsIpConfiguration(dict):
             suggest = "ipv4_enabled"
         elif key == "privateNetwork":
             suggest = "private_network"
+        elif key == "pscConfigs":
+            suggest = "psc_configs"
         elif key == "requireSsl":
             suggest = "require_ssl"
 
@@ -1373,6 +1378,7 @@ class DatabaseInstanceSettingsIpConfiguration(dict):
                  enable_private_path_for_google_cloud_services: Optional[bool] = None,
                  ipv4_enabled: Optional[bool] = None,
                  private_network: Optional[str] = None,
+                 psc_configs: Optional[Sequence['outputs.DatabaseInstanceSettingsIpConfigurationPscConfig']] = None,
                  require_ssl: Optional[bool] = None):
         """
         :param str allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
@@ -1397,6 +1403,8 @@ class DatabaseInstanceSettingsIpConfiguration(dict):
             pulumi.set(__self__, "ipv4_enabled", ipv4_enabled)
         if private_network is not None:
             pulumi.set(__self__, "private_network", private_network)
+        if psc_configs is not None:
+            pulumi.set(__self__, "psc_configs", psc_configs)
         if require_ssl is not None:
             pulumi.set(__self__, "require_ssl", require_ssl)
 
@@ -1442,6 +1450,11 @@ class DatabaseInstanceSettingsIpConfiguration(dict):
         This setting can be updated, but it cannot be removed after it is set.
         """
         return pulumi.get(self, "private_network")
+
+    @property
+    @pulumi.getter(name="pscConfigs")
+    def psc_configs(self) -> Optional[Sequence['outputs.DatabaseInstanceSettingsIpConfigurationPscConfig']]:
+        return pulumi.get(self, "psc_configs")
 
     @property
     @pulumi.getter(name="requireSsl")
@@ -1515,6 +1528,56 @@ class DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork(dict):
         A name for this whitelist entry.
         """
         return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class DatabaseInstanceSettingsIpConfigurationPscConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedConsumerProjects":
+            suggest = "allowed_consumer_projects"
+        elif key == "pscEnabled":
+            suggest = "psc_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseInstanceSettingsIpConfigurationPscConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseInstanceSettingsIpConfigurationPscConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseInstanceSettingsIpConfigurationPscConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowed_consumer_projects: Optional[Sequence[str]] = None,
+                 psc_enabled: Optional[bool] = None):
+        """
+        :param Sequence[str] allowed_consumer_projects: List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
+        :param bool psc_enabled: Whether PSC connectivity is enabled for this instance.
+        """
+        if allowed_consumer_projects is not None:
+            pulumi.set(__self__, "allowed_consumer_projects", allowed_consumer_projects)
+        if psc_enabled is not None:
+            pulumi.set(__self__, "psc_enabled", psc_enabled)
+
+    @property
+    @pulumi.getter(name="allowedConsumerProjects")
+    def allowed_consumer_projects(self) -> Optional[Sequence[str]]:
+        """
+        List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
+        """
+        return pulumi.get(self, "allowed_consumer_projects")
+
+    @property
+    @pulumi.getter(name="pscEnabled")
+    def psc_enabled(self) -> Optional[bool]:
+        """
+        Whether PSC connectivity is enabled for this instance.
+        """
+        return pulumi.get(self, "psc_enabled")
 
 
 @pulumi.output_type
@@ -2677,12 +2740,14 @@ class GetDatabaseInstanceSettingIpConfigurationResult(dict):
                  enable_private_path_for_google_cloud_services: bool,
                  ipv4_enabled: bool,
                  private_network: str,
+                 psc_configs: Sequence['outputs.GetDatabaseInstanceSettingIpConfigurationPscConfigResult'],
                  require_ssl: bool):
         pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
         pulumi.set(__self__, "authorized_networks", authorized_networks)
         pulumi.set(__self__, "enable_private_path_for_google_cloud_services", enable_private_path_for_google_cloud_services)
         pulumi.set(__self__, "ipv4_enabled", ipv4_enabled)
         pulumi.set(__self__, "private_network", private_network)
+        pulumi.set(__self__, "psc_configs", psc_configs)
         pulumi.set(__self__, "require_ssl", require_ssl)
 
     @property
@@ -2709,6 +2774,11 @@ class GetDatabaseInstanceSettingIpConfigurationResult(dict):
     @pulumi.getter(name="privateNetwork")
     def private_network(self) -> str:
         return pulumi.get(self, "private_network")
+
+    @property
+    @pulumi.getter(name="pscConfigs")
+    def psc_configs(self) -> Sequence['outputs.GetDatabaseInstanceSettingIpConfigurationPscConfigResult']:
+        return pulumi.get(self, "psc_configs")
 
     @property
     @pulumi.getter(name="requireSsl")
@@ -2746,6 +2816,25 @@ class GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkResult(dict):
     @pulumi.getter
     def value(self) -> str:
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetDatabaseInstanceSettingIpConfigurationPscConfigResult(dict):
+    def __init__(__self__, *,
+                 allowed_consumer_projects: Sequence[str],
+                 psc_enabled: bool):
+        pulumi.set(__self__, "allowed_consumer_projects", allowed_consumer_projects)
+        pulumi.set(__self__, "psc_enabled", psc_enabled)
+
+    @property
+    @pulumi.getter(name="allowedConsumerProjects")
+    def allowed_consumer_projects(self) -> Sequence[str]:
+        return pulumi.get(self, "allowed_consumer_projects")
+
+    @property
+    @pulumi.getter(name="pscEnabled")
+    def psc_enabled(self) -> bool:
+        return pulumi.get(self, "psc_enabled")
 
 
 @pulumi.output_type
@@ -2881,6 +2970,7 @@ class GetDatabaseInstancesInstanceResult(dict):
                  connection_name: str,
                  database_version: str,
                  deletion_protection: bool,
+                 dns_name: str,
                  encryption_key_name: str,
                  first_ip_address: str,
                  instance_type: str,
@@ -2890,6 +2980,7 @@ class GetDatabaseInstancesInstanceResult(dict):
                  name: str,
                  private_ip_address: str,
                  project: str,
+                 psc_service_attachment_link: str,
                  public_ip_address: str,
                  region: str,
                  replica_configurations: Sequence['outputs.GetDatabaseInstancesInstanceReplicaConfigurationResult'],
@@ -2909,6 +3000,7 @@ class GetDatabaseInstancesInstanceResult(dict):
         pulumi.set(__self__, "connection_name", connection_name)
         pulumi.set(__self__, "database_version", database_version)
         pulumi.set(__self__, "deletion_protection", deletion_protection)
+        pulumi.set(__self__, "dns_name", dns_name)
         pulumi.set(__self__, "encryption_key_name", encryption_key_name)
         pulumi.set(__self__, "first_ip_address", first_ip_address)
         pulumi.set(__self__, "instance_type", instance_type)
@@ -2918,6 +3010,7 @@ class GetDatabaseInstancesInstanceResult(dict):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "private_ip_address", private_ip_address)
         pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "psc_service_attachment_link", psc_service_attachment_link)
         pulumi.set(__self__, "public_ip_address", public_ip_address)
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "replica_configurations", replica_configurations)
@@ -2955,6 +3048,11 @@ class GetDatabaseInstancesInstanceResult(dict):
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> bool:
         return pulumi.get(self, "deletion_protection")
+
+    @property
+    @pulumi.getter(name="dnsName")
+    def dns_name(self) -> str:
+        return pulumi.get(self, "dns_name")
 
     @property
     @pulumi.getter(name="encryptionKeyName")
@@ -3003,6 +3101,11 @@ class GetDatabaseInstancesInstanceResult(dict):
         The ID of the project in which the resources belong. If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="pscServiceAttachmentLink")
+    def psc_service_attachment_link(self) -> str:
+        return pulumi.get(self, "psc_service_attachment_link")
 
     @property
     @pulumi.getter(name="publicIpAddress")
@@ -3668,12 +3771,14 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationResult(dict):
                  enable_private_path_for_google_cloud_services: bool,
                  ipv4_enabled: bool,
                  private_network: str,
+                 psc_configs: Sequence['outputs.GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigResult'],
                  require_ssl: bool):
         pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
         pulumi.set(__self__, "authorized_networks", authorized_networks)
         pulumi.set(__self__, "enable_private_path_for_google_cloud_services", enable_private_path_for_google_cloud_services)
         pulumi.set(__self__, "ipv4_enabled", ipv4_enabled)
         pulumi.set(__self__, "private_network", private_network)
+        pulumi.set(__self__, "psc_configs", psc_configs)
         pulumi.set(__self__, "require_ssl", require_ssl)
 
     @property
@@ -3700,6 +3805,11 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationResult(dict):
     @pulumi.getter(name="privateNetwork")
     def private_network(self) -> str:
         return pulumi.get(self, "private_network")
+
+    @property
+    @pulumi.getter(name="pscConfigs")
+    def psc_configs(self) -> Sequence['outputs.GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigResult']:
+        return pulumi.get(self, "psc_configs")
 
     @property
     @pulumi.getter(name="requireSsl")
@@ -3731,6 +3841,25 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkResult(
     @pulumi.getter
     def value(self) -> str:
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigResult(dict):
+    def __init__(__self__, *,
+                 allowed_consumer_projects: Sequence[str],
+                 psc_enabled: bool):
+        pulumi.set(__self__, "allowed_consumer_projects", allowed_consumer_projects)
+        pulumi.set(__self__, "psc_enabled", psc_enabled)
+
+    @property
+    @pulumi.getter(name="allowedConsumerProjects")
+    def allowed_consumer_projects(self) -> Sequence[str]:
+        return pulumi.get(self, "allowed_consumer_projects")
+
+    @property
+    @pulumi.getter(name="pscEnabled")
+    def psc_enabled(self) -> bool:
+        return pulumi.get(self, "psc_enabled")
 
 
 @pulumi.output_type

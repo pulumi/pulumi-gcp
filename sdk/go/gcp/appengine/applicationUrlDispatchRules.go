@@ -98,7 +98,7 @@ import (
 //
 // ## Import
 //
-// # ApplicationUrlDispatchRules can be imported using any of these accepted formats
+// ApplicationUrlDispatchRules can be imported using any of these accepted formats:
 //
 // ```sh
 //

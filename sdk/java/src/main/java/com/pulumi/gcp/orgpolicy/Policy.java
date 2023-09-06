@@ -203,7 +203,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Policy can be imported using any of these accepted formats
+ * Policy can be imported using any of these accepted formats:
  * 
  * ```sh
  *  $ pulumi import gcp:orgpolicy/policy:Policy default {{parent}}/policies/{{name}}

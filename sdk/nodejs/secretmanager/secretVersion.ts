@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * SecretVersion can be imported using any of these accepted formats
+ * SecretVersion can be imported using any of these accepted formats:
  *
  * ```sh
  *  $ pulumi import gcp:secretmanager/secretVersion:SecretVersion default projects/{{project}}/secrets/{{secret_id}}/versions/{{version}}

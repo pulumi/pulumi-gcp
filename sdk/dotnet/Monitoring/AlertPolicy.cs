@@ -158,7 +158,7 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     /// ## Import
     /// 
-    /// AlertPolicy can be imported using any of these accepted formats
+    /// AlertPolicy can be imported using any of these accepted formats:
     /// 
     /// ```sh
     ///  $ pulumi import gcp:monitoring/alertPolicy:AlertPolicy default {{name}}

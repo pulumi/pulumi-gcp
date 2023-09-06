@@ -186,6 +186,51 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Cloud SQL Instance with PSC connectivity
+ * 
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.sql.DatabaseInstance;
+ * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsBackupConfigurationArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var main = new DatabaseInstance(&#34;main&#34;, DatabaseInstanceArgs.builder()        
+ *             .databaseVersion(&#34;MYSQL_8_0&#34;)
+ *             .settings(DatabaseInstanceSettingsArgs.builder()
+ *                 .availabilityType(&#34;REGIONAL&#34;)
+ *                 .backupConfiguration(DatabaseInstanceSettingsBackupConfigurationArgs.builder()
+ *                     .binaryLogEnabled(true)
+ *                     .enabled(true)
+ *                     .build())
+ *                 .ipConfiguration(DatabaseInstanceSettingsIpConfigurationArgs.builder()
+ *                     .ipv4Enabled(false)
+ *                     .pscConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *                     .build())
+ *                 .tier(&#34;db-f1-micro&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -301,6 +346,20 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> deletionProtection() {
         return Codegen.optional(this.deletionProtection);
+    }
+    /**
+     * The dns name of the instance.
+     * 
+     */
+    @Export(name="dnsName", type=String.class, parameters={})
+    private Output<String> dnsName;
+
+    /**
+     * @return The dns name of the instance.
+     * 
+     */
+    public Output<String> dnsName() {
+        return this.dnsName;
     }
     /**
      * The full path to the encryption key used for the CMEK disk encryption.  Setting
@@ -445,6 +504,20 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * The link to service attachment of PSC instance.
+     * 
+     */
+    @Export(name="pscServiceAttachmentLink", type=String.class, parameters={})
+    private Output<String> pscServiceAttachmentLink;
+
+    /**
+     * @return The link to service attachment of PSC instance.
+     * 
+     */
+    public Output<String> pscServiceAttachmentLink() {
+        return this.pscServiceAttachmentLink;
     }
     /**
      * The first public (`PRIMARY`) IPv4 address assigned.

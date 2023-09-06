@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *         resource: "//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare",
  *     },
  *     dataProfileSpec: {},
- *     dataScanId: "tf-test-datascan%{random_suffix}",
+ *     dataScanId: "dataprofile-basic",
  *     executionSpec: {
  *         trigger: {
  *             onDemand: {},
@@ -43,17 +43,24 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * const source = new gcp.bigquery.Dataset("source", {
+ *     datasetId: "dataplex_dataset",
+ *     friendlyName: "test",
+ *     description: "This is a test description",
+ *     location: "US",
+ *     deleteContentsOnDestroy: true,
+ * });
  * const fullProfile = new gcp.dataplex.Datascan("fullProfile", {
+ *     location: "us-central1",
+ *     displayName: "Full Datascan Profile",
+ *     dataScanId: "dataprofile-full",
+ *     description: "Example resource - Full Datascan Profile",
+ *     labels: {
+ *         author: "billing",
+ *     },
  *     data: {
  *         resource: "//bigquery.googleapis.com/projects/bigquery-public-data/datasets/samples/tables/shakespeare",
  *     },
- *     dataProfileSpec: {
- *         rowFilter: "word_count > 10",
- *         samplingPercent: 80,
- *     },
- *     dataScanId: "tf-test-datascan%{random_suffix}",
- *     description: "Example resource - Full Datascan Profile",
- *     displayName: "Full Datascan Profile",
  *     executionSpec: {
  *         trigger: {
  *             schedule: {
@@ -61,11 +68,24 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *     },
- *     labels: {
- *         author: "billing",
+ *     dataProfileSpec: {
+ *         samplingPercent: 80,
+ *         rowFilter: "word_count > 10",
+ *         includeFields: {
+ *             fieldNames: ["word_count"],
+ *         },
+ *         excludeFields: {
+ *             fieldNames: ["property_type"],
+ *         },
+ *         postScanActions: {
+ *             bigqueryExport: {
+ *                 resultsTable: "//bigquery.googleapis.com/projects/my-project-name/datasets/dataplex_dataset/tables/profile_export",
+ *             },
+ *         },
  *     },
- *     location: "us-central1",
  *     project: "my-project-name",
+ * }, {
+ *     dependsOn: [source],
  * });
  * ```
  * ### Dataplex Datascan Basic Quality
@@ -80,13 +100,15 @@ import * as utilities from "../utilities";
  *     },
  *     dataQualitySpec: {
  *         rules: [{
+ *             description: "rule 1 for validity dimension",
  *             dimension: "VALIDITY",
+ *             name: "rule1",
  *             tableConditionExpectation: {
  *                 sqlExpression: "COUNT(*) > 0",
  *             },
  *         }],
  *     },
- *     dataScanId: "tf-test-datascan%{random_suffix}",
+ *     dataScanId: "dataquality-basic",
  *     executionSpec: {
  *         trigger: {
  *             onDemand: {},
@@ -178,7 +200,7 @@ import * as utilities from "../utilities";
  *         ],
  *         samplingPercent: 5,
  *     },
- *     dataScanId: "tf-test-datascan%{random_suffix}",
+ *     dataScanId: "dataquality-full",
  *     description: "Example resource - Full Datascan Quality",
  *     displayName: "Full Datascan Quality",
  *     executionSpec: {
@@ -255,8 +277,11 @@ export class Datascan extends pulumi.CustomResource {
      */
     public readonly data!: pulumi.Output<outputs.dataplex.DatascanData>;
     /**
+     * (Deprecated)
      * The result of the data profile scan.
      * Structure is documented below.
+     *
+     * @deprecated `data_profile_result` is deprecated and will be removed in a future major release.
      */
     public /*out*/ readonly dataProfileResults!: pulumi.Output<outputs.dataplex.DatascanDataProfileResult[]>;
     /**
@@ -265,8 +290,11 @@ export class Datascan extends pulumi.CustomResource {
      */
     public readonly dataProfileSpec!: pulumi.Output<outputs.dataplex.DatascanDataProfileSpec | undefined>;
     /**
+     * (Deprecated)
      * The result of the data quality scan.
      * Structure is documented below.
+     *
+     * @deprecated `data_quality_result` is deprecated and will be removed in a future major release.
      */
     public /*out*/ readonly dataQualityResults!: pulumi.Output<outputs.dataplex.DatascanDataQualityResult[]>;
     /**
@@ -280,6 +308,10 @@ export class Datascan extends pulumi.CustomResource {
     public readonly dataScanId!: pulumi.Output<string>;
     /**
      * Description of the scan.
+     *
+     * (Optional)
+     * Description of the rule.
+     * The maximum length is 1,024 characters.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -305,7 +337,11 @@ export class Datascan extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * The name of the field.
+     * A mutable name for the rule.
+     * The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+     * The maximum length is 63 characters.
+     * Must start with a letter.
+     * Must end with a number or a letter.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -415,8 +451,11 @@ export interface DatascanState {
      */
     data?: pulumi.Input<inputs.dataplex.DatascanData>;
     /**
+     * (Deprecated)
      * The result of the data profile scan.
      * Structure is documented below.
+     *
+     * @deprecated `data_profile_result` is deprecated and will be removed in a future major release.
      */
     dataProfileResults?: pulumi.Input<pulumi.Input<inputs.dataplex.DatascanDataProfileResult>[]>;
     /**
@@ -425,8 +464,11 @@ export interface DatascanState {
      */
     dataProfileSpec?: pulumi.Input<inputs.dataplex.DatascanDataProfileSpec>;
     /**
+     * (Deprecated)
      * The result of the data quality scan.
      * Structure is documented below.
+     *
+     * @deprecated `data_quality_result` is deprecated and will be removed in a future major release.
      */
     dataQualityResults?: pulumi.Input<pulumi.Input<inputs.dataplex.DatascanDataQualityResult>[]>;
     /**
@@ -440,6 +482,10 @@ export interface DatascanState {
     dataScanId?: pulumi.Input<string>;
     /**
      * Description of the scan.
+     *
+     * (Optional)
+     * Description of the rule.
+     * The maximum length is 1,024 characters.
      */
     description?: pulumi.Input<string>;
     /**
@@ -465,7 +511,11 @@ export interface DatascanState {
      */
     location?: pulumi.Input<string>;
     /**
-     * The name of the field.
+     * A mutable name for the rule.
+     * The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+     * The maximum length is 63 characters.
+     * Must start with a letter.
+     * Must end with a number or a letter.
      */
     name?: pulumi.Input<string>;
     /**
@@ -516,6 +566,10 @@ export interface DatascanArgs {
     dataScanId: pulumi.Input<string>;
     /**
      * Description of the scan.
+     *
+     * (Optional)
+     * Description of the rule.
+     * The maximum length is 1,024 characters.
      */
     description?: pulumi.Input<string>;
     /**

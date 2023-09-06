@@ -60,7 +60,7 @@ import (
 //
 // ## Import
 //
-// # LogView can be imported using any of these accepted formats
+// LogView can be imported using any of these accepted formats:
 //
 // ```sh
 //

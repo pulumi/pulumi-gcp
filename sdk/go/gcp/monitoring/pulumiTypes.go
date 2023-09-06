@@ -10611,6 +10611,294 @@ func (o UptimeCheckConfigResourceGroupPtrOutput) ResourceType() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+type UptimeCheckConfigSyntheticMonitor struct {
+	// Target a Synthetic Monitor GCFv2 Instance
+	// Structure is documented below.
+	//
+	// <a name="nestedCloudFunctionV2"></a>The `cloudFunctionV2` block supports:
+	CloudFunctionV2 UptimeCheckConfigSyntheticMonitorCloudFunctionV2 `pulumi:"cloudFunctionV2"`
+}
+
+// UptimeCheckConfigSyntheticMonitorInput is an input type that accepts UptimeCheckConfigSyntheticMonitorArgs and UptimeCheckConfigSyntheticMonitorOutput values.
+// You can construct a concrete instance of `UptimeCheckConfigSyntheticMonitorInput` via:
+//
+//	UptimeCheckConfigSyntheticMonitorArgs{...}
+type UptimeCheckConfigSyntheticMonitorInput interface {
+	pulumi.Input
+
+	ToUptimeCheckConfigSyntheticMonitorOutput() UptimeCheckConfigSyntheticMonitorOutput
+	ToUptimeCheckConfigSyntheticMonitorOutputWithContext(context.Context) UptimeCheckConfigSyntheticMonitorOutput
+}
+
+type UptimeCheckConfigSyntheticMonitorArgs struct {
+	// Target a Synthetic Monitor GCFv2 Instance
+	// Structure is documented below.
+	//
+	// <a name="nestedCloudFunctionV2"></a>The `cloudFunctionV2` block supports:
+	CloudFunctionV2 UptimeCheckConfigSyntheticMonitorCloudFunctionV2Input `pulumi:"cloudFunctionV2"`
+}
+
+func (UptimeCheckConfigSyntheticMonitorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UptimeCheckConfigSyntheticMonitor)(nil)).Elem()
+}
+
+func (i UptimeCheckConfigSyntheticMonitorArgs) ToUptimeCheckConfigSyntheticMonitorOutput() UptimeCheckConfigSyntheticMonitorOutput {
+	return i.ToUptimeCheckConfigSyntheticMonitorOutputWithContext(context.Background())
+}
+
+func (i UptimeCheckConfigSyntheticMonitorArgs) ToUptimeCheckConfigSyntheticMonitorOutputWithContext(ctx context.Context) UptimeCheckConfigSyntheticMonitorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigSyntheticMonitorOutput)
+}
+
+func (i UptimeCheckConfigSyntheticMonitorArgs) ToUptimeCheckConfigSyntheticMonitorPtrOutput() UptimeCheckConfigSyntheticMonitorPtrOutput {
+	return i.ToUptimeCheckConfigSyntheticMonitorPtrOutputWithContext(context.Background())
+}
+
+func (i UptimeCheckConfigSyntheticMonitorArgs) ToUptimeCheckConfigSyntheticMonitorPtrOutputWithContext(ctx context.Context) UptimeCheckConfigSyntheticMonitorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigSyntheticMonitorOutput).ToUptimeCheckConfigSyntheticMonitorPtrOutputWithContext(ctx)
+}
+
+// UptimeCheckConfigSyntheticMonitorPtrInput is an input type that accepts UptimeCheckConfigSyntheticMonitorArgs, UptimeCheckConfigSyntheticMonitorPtr and UptimeCheckConfigSyntheticMonitorPtrOutput values.
+// You can construct a concrete instance of `UptimeCheckConfigSyntheticMonitorPtrInput` via:
+//
+//	        UptimeCheckConfigSyntheticMonitorArgs{...}
+//
+//	or:
+//
+//	        nil
+type UptimeCheckConfigSyntheticMonitorPtrInput interface {
+	pulumi.Input
+
+	ToUptimeCheckConfigSyntheticMonitorPtrOutput() UptimeCheckConfigSyntheticMonitorPtrOutput
+	ToUptimeCheckConfigSyntheticMonitorPtrOutputWithContext(context.Context) UptimeCheckConfigSyntheticMonitorPtrOutput
+}
+
+type uptimeCheckConfigSyntheticMonitorPtrType UptimeCheckConfigSyntheticMonitorArgs
+
+func UptimeCheckConfigSyntheticMonitorPtr(v *UptimeCheckConfigSyntheticMonitorArgs) UptimeCheckConfigSyntheticMonitorPtrInput {
+	return (*uptimeCheckConfigSyntheticMonitorPtrType)(v)
+}
+
+func (*uptimeCheckConfigSyntheticMonitorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UptimeCheckConfigSyntheticMonitor)(nil)).Elem()
+}
+
+func (i *uptimeCheckConfigSyntheticMonitorPtrType) ToUptimeCheckConfigSyntheticMonitorPtrOutput() UptimeCheckConfigSyntheticMonitorPtrOutput {
+	return i.ToUptimeCheckConfigSyntheticMonitorPtrOutputWithContext(context.Background())
+}
+
+func (i *uptimeCheckConfigSyntheticMonitorPtrType) ToUptimeCheckConfigSyntheticMonitorPtrOutputWithContext(ctx context.Context) UptimeCheckConfigSyntheticMonitorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigSyntheticMonitorPtrOutput)
+}
+
+type UptimeCheckConfigSyntheticMonitorOutput struct{ *pulumi.OutputState }
+
+func (UptimeCheckConfigSyntheticMonitorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UptimeCheckConfigSyntheticMonitor)(nil)).Elem()
+}
+
+func (o UptimeCheckConfigSyntheticMonitorOutput) ToUptimeCheckConfigSyntheticMonitorOutput() UptimeCheckConfigSyntheticMonitorOutput {
+	return o
+}
+
+func (o UptimeCheckConfigSyntheticMonitorOutput) ToUptimeCheckConfigSyntheticMonitorOutputWithContext(ctx context.Context) UptimeCheckConfigSyntheticMonitorOutput {
+	return o
+}
+
+func (o UptimeCheckConfigSyntheticMonitorOutput) ToUptimeCheckConfigSyntheticMonitorPtrOutput() UptimeCheckConfigSyntheticMonitorPtrOutput {
+	return o.ToUptimeCheckConfigSyntheticMonitorPtrOutputWithContext(context.Background())
+}
+
+func (o UptimeCheckConfigSyntheticMonitorOutput) ToUptimeCheckConfigSyntheticMonitorPtrOutputWithContext(ctx context.Context) UptimeCheckConfigSyntheticMonitorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UptimeCheckConfigSyntheticMonitor) *UptimeCheckConfigSyntheticMonitor {
+		return &v
+	}).(UptimeCheckConfigSyntheticMonitorPtrOutput)
+}
+
+// Target a Synthetic Monitor GCFv2 Instance
+// Structure is documented below.
+//
+// <a name="nestedCloudFunctionV2"></a>The `cloudFunctionV2` block supports:
+func (o UptimeCheckConfigSyntheticMonitorOutput) CloudFunctionV2() UptimeCheckConfigSyntheticMonitorCloudFunctionV2Output {
+	return o.ApplyT(func(v UptimeCheckConfigSyntheticMonitor) UptimeCheckConfigSyntheticMonitorCloudFunctionV2 {
+		return v.CloudFunctionV2
+	}).(UptimeCheckConfigSyntheticMonitorCloudFunctionV2Output)
+}
+
+type UptimeCheckConfigSyntheticMonitorPtrOutput struct{ *pulumi.OutputState }
+
+func (UptimeCheckConfigSyntheticMonitorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UptimeCheckConfigSyntheticMonitor)(nil)).Elem()
+}
+
+func (o UptimeCheckConfigSyntheticMonitorPtrOutput) ToUptimeCheckConfigSyntheticMonitorPtrOutput() UptimeCheckConfigSyntheticMonitorPtrOutput {
+	return o
+}
+
+func (o UptimeCheckConfigSyntheticMonitorPtrOutput) ToUptimeCheckConfigSyntheticMonitorPtrOutputWithContext(ctx context.Context) UptimeCheckConfigSyntheticMonitorPtrOutput {
+	return o
+}
+
+func (o UptimeCheckConfigSyntheticMonitorPtrOutput) Elem() UptimeCheckConfigSyntheticMonitorOutput {
+	return o.ApplyT(func(v *UptimeCheckConfigSyntheticMonitor) UptimeCheckConfigSyntheticMonitor {
+		if v != nil {
+			return *v
+		}
+		var ret UptimeCheckConfigSyntheticMonitor
+		return ret
+	}).(UptimeCheckConfigSyntheticMonitorOutput)
+}
+
+// Target a Synthetic Monitor GCFv2 Instance
+// Structure is documented below.
+//
+// <a name="nestedCloudFunctionV2"></a>The `cloudFunctionV2` block supports:
+func (o UptimeCheckConfigSyntheticMonitorPtrOutput) CloudFunctionV2() UptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutput {
+	return o.ApplyT(func(v *UptimeCheckConfigSyntheticMonitor) *UptimeCheckConfigSyntheticMonitorCloudFunctionV2 {
+		if v == nil {
+			return nil
+		}
+		return &v.CloudFunctionV2
+	}).(UptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutput)
+}
+
+type UptimeCheckConfigSyntheticMonitorCloudFunctionV2 struct {
+	// The fully qualified name of the cloud function resource.
+	Name string `pulumi:"name"`
+}
+
+// UptimeCheckConfigSyntheticMonitorCloudFunctionV2Input is an input type that accepts UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args and UptimeCheckConfigSyntheticMonitorCloudFunctionV2Output values.
+// You can construct a concrete instance of `UptimeCheckConfigSyntheticMonitorCloudFunctionV2Input` via:
+//
+//	UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args{...}
+type UptimeCheckConfigSyntheticMonitorCloudFunctionV2Input interface {
+	pulumi.Input
+
+	ToUptimeCheckConfigSyntheticMonitorCloudFunctionV2Output() UptimeCheckConfigSyntheticMonitorCloudFunctionV2Output
+	ToUptimeCheckConfigSyntheticMonitorCloudFunctionV2OutputWithContext(context.Context) UptimeCheckConfigSyntheticMonitorCloudFunctionV2Output
+}
+
+type UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args struct {
+	// The fully qualified name of the cloud function resource.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*UptimeCheckConfigSyntheticMonitorCloudFunctionV2)(nil)).Elem()
+}
+
+func (i UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args) ToUptimeCheckConfigSyntheticMonitorCloudFunctionV2Output() UptimeCheckConfigSyntheticMonitorCloudFunctionV2Output {
+	return i.ToUptimeCheckConfigSyntheticMonitorCloudFunctionV2OutputWithContext(context.Background())
+}
+
+func (i UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args) ToUptimeCheckConfigSyntheticMonitorCloudFunctionV2OutputWithContext(ctx context.Context) UptimeCheckConfigSyntheticMonitorCloudFunctionV2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigSyntheticMonitorCloudFunctionV2Output)
+}
+
+func (i UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args) ToUptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutput() UptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutput {
+	return i.ToUptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutputWithContext(context.Background())
+}
+
+func (i UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args) ToUptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutputWithContext(ctx context.Context) UptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigSyntheticMonitorCloudFunctionV2Output).ToUptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutputWithContext(ctx)
+}
+
+// UptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrInput is an input type that accepts UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args, UptimeCheckConfigSyntheticMonitorCloudFunctionV2Ptr and UptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutput values.
+// You can construct a concrete instance of `UptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrInput` via:
+//
+//	        UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args{...}
+//
+//	or:
+//
+//	        nil
+type UptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrInput interface {
+	pulumi.Input
+
+	ToUptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutput() UptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutput
+	ToUptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutputWithContext(context.Context) UptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutput
+}
+
+type uptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrType UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args
+
+func UptimeCheckConfigSyntheticMonitorCloudFunctionV2Ptr(v *UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args) UptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrInput {
+	return (*uptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrType)(v)
+}
+
+func (*uptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UptimeCheckConfigSyntheticMonitorCloudFunctionV2)(nil)).Elem()
+}
+
+func (i *uptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrType) ToUptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutput() UptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutput {
+	return i.ToUptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutputWithContext(context.Background())
+}
+
+func (i *uptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrType) ToUptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutputWithContext(ctx context.Context) UptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutput)
+}
+
+type UptimeCheckConfigSyntheticMonitorCloudFunctionV2Output struct{ *pulumi.OutputState }
+
+func (UptimeCheckConfigSyntheticMonitorCloudFunctionV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*UptimeCheckConfigSyntheticMonitorCloudFunctionV2)(nil)).Elem()
+}
+
+func (o UptimeCheckConfigSyntheticMonitorCloudFunctionV2Output) ToUptimeCheckConfigSyntheticMonitorCloudFunctionV2Output() UptimeCheckConfigSyntheticMonitorCloudFunctionV2Output {
+	return o
+}
+
+func (o UptimeCheckConfigSyntheticMonitorCloudFunctionV2Output) ToUptimeCheckConfigSyntheticMonitorCloudFunctionV2OutputWithContext(ctx context.Context) UptimeCheckConfigSyntheticMonitorCloudFunctionV2Output {
+	return o
+}
+
+func (o UptimeCheckConfigSyntheticMonitorCloudFunctionV2Output) ToUptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutput() UptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutput {
+	return o.ToUptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutputWithContext(context.Background())
+}
+
+func (o UptimeCheckConfigSyntheticMonitorCloudFunctionV2Output) ToUptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutputWithContext(ctx context.Context) UptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UptimeCheckConfigSyntheticMonitorCloudFunctionV2) *UptimeCheckConfigSyntheticMonitorCloudFunctionV2 {
+		return &v
+	}).(UptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutput)
+}
+
+// The fully qualified name of the cloud function resource.
+func (o UptimeCheckConfigSyntheticMonitorCloudFunctionV2Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v UptimeCheckConfigSyntheticMonitorCloudFunctionV2) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type UptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutput struct{ *pulumi.OutputState }
+
+func (UptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UptimeCheckConfigSyntheticMonitorCloudFunctionV2)(nil)).Elem()
+}
+
+func (o UptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutput) ToUptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutput() UptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutput {
+	return o
+}
+
+func (o UptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutput) ToUptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutputWithContext(ctx context.Context) UptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutput {
+	return o
+}
+
+func (o UptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutput) Elem() UptimeCheckConfigSyntheticMonitorCloudFunctionV2Output {
+	return o.ApplyT(func(v *UptimeCheckConfigSyntheticMonitorCloudFunctionV2) UptimeCheckConfigSyntheticMonitorCloudFunctionV2 {
+		if v != nil {
+			return *v
+		}
+		var ret UptimeCheckConfigSyntheticMonitorCloudFunctionV2
+		return ret
+	}).(UptimeCheckConfigSyntheticMonitorCloudFunctionV2Output)
+}
+
+// The fully qualified name of the cloud function resource.
+func (o UptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UptimeCheckConfigSyntheticMonitorCloudFunctionV2) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
 type UptimeCheckConfigTcpCheck struct {
 	// The port to the page to run the check against. Will be combined with host (specified within the MonitoredResource) to construct the full URL.
 	Port int `pulumi:"port"`
@@ -11496,6 +11784,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*UptimeCheckConfigMonitoredResourcePtrInput)(nil)).Elem(), UptimeCheckConfigMonitoredResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UptimeCheckConfigResourceGroupInput)(nil)).Elem(), UptimeCheckConfigResourceGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UptimeCheckConfigResourceGroupPtrInput)(nil)).Elem(), UptimeCheckConfigResourceGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UptimeCheckConfigSyntheticMonitorInput)(nil)).Elem(), UptimeCheckConfigSyntheticMonitorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UptimeCheckConfigSyntheticMonitorPtrInput)(nil)).Elem(), UptimeCheckConfigSyntheticMonitorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UptimeCheckConfigSyntheticMonitorCloudFunctionV2Input)(nil)).Elem(), UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrInput)(nil)).Elem(), UptimeCheckConfigSyntheticMonitorCloudFunctionV2Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UptimeCheckConfigTcpCheckInput)(nil)).Elem(), UptimeCheckConfigTcpCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UptimeCheckConfigTcpCheckPtrInput)(nil)).Elem(), UptimeCheckConfigTcpCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppEngineServiceTelemetryInput)(nil)).Elem(), GetAppEngineServiceTelemetryArgs{})
@@ -11612,6 +11904,10 @@ func init() {
 	pulumi.RegisterOutputType(UptimeCheckConfigMonitoredResourcePtrOutput{})
 	pulumi.RegisterOutputType(UptimeCheckConfigResourceGroupOutput{})
 	pulumi.RegisterOutputType(UptimeCheckConfigResourceGroupPtrOutput{})
+	pulumi.RegisterOutputType(UptimeCheckConfigSyntheticMonitorOutput{})
+	pulumi.RegisterOutputType(UptimeCheckConfigSyntheticMonitorPtrOutput{})
+	pulumi.RegisterOutputType(UptimeCheckConfigSyntheticMonitorCloudFunctionV2Output{})
+	pulumi.RegisterOutputType(UptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutput{})
 	pulumi.RegisterOutputType(UptimeCheckConfigTcpCheckOutput{})
 	pulumi.RegisterOutputType(UptimeCheckConfigTcpCheckPtrOutput{})
 	pulumi.RegisterOutputType(GetAppEngineServiceTelemetryOutput{})

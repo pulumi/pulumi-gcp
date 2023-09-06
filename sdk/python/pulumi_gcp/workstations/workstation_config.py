@@ -686,9 +686,10 @@ class WorkstationConfig(pulumi.CustomResource):
             location="us-central1",
             host=gcp.workstations.WorkstationConfigHostArgs(
                 gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArgs(
-                    machine_type="e2-standard-4",
+                    machine_type="n1-standard-4",
                     boot_disk_size_gb=35,
                     disable_public_ip_addresses=True,
+                    enable_nested_virtualization=True,
                 ),
             ),
             container=gcp.workstations.WorkstationConfigContainerArgs(
@@ -1055,9 +1056,10 @@ class WorkstationConfig(pulumi.CustomResource):
             location="us-central1",
             host=gcp.workstations.WorkstationConfigHostArgs(
                 gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArgs(
-                    machine_type="e2-standard-4",
+                    machine_type="n1-standard-4",
                     boot_disk_size_gb=35,
                     disable_public_ip_addresses=True,
+                    enable_nested_virtualization=True,
                 ),
             ),
             container=gcp.workstations.WorkstationConfigContainerArgs(

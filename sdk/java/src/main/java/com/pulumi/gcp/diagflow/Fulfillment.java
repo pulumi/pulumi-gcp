@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Fulfillment can be imported using any of these accepted formats
+ * Fulfillment can be imported using any of these accepted formats:
  * 
  * ```sh
  *  $ pulumi import gcp:diagflow/fulfillment:Fulfillment default {{name}}

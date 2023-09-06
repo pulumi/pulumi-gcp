@@ -377,7 +377,7 @@ import (
 //
 // ## Import
 //
-// # Tag can be imported using any of these accepted formats
+// Tag can be imported using any of these accepted formats:
 //
 // ```sh
 //

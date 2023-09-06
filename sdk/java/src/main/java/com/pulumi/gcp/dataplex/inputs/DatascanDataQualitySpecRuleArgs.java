@@ -41,6 +41,23 @@ public final class DatascanDataQualitySpecRuleArgs extends com.pulumi.resources.
     }
 
     /**
+     * Description of the rule.
+     * The maximum length is 1,024 characters.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return Description of the rule.
+     * The maximum length is 1,024 characters.
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    /**
      * The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are [&#34;COMPLETENESS&#34;, &#34;ACCURACY&#34;, &#34;CONSISTENCY&#34;, &#34;VALIDITY&#34;, &#34;UNIQUENESS&#34;, &#34;INTEGRITY&#34;]
      * 
      */
@@ -68,6 +85,29 @@ public final class DatascanDataQualitySpecRuleArgs extends com.pulumi.resources.
      */
     public Optional<Output<Boolean>> ignoreNull() {
         return Optional.ofNullable(this.ignoreNull);
+    }
+
+    /**
+     * A mutable name for the rule.
+     * The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+     * The maximum length is 63 characters.
+     * Must start with a letter.
+     * Must end with a number or a letter.
+     * 
+     */
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    /**
+     * @return A mutable name for the rule.
+     * The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+     * The maximum length is 63 characters.
+     * Must start with a letter.
+     * Must end with a number or a letter.
+     * 
+     */
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
     /**
@@ -203,14 +243,14 @@ public final class DatascanDataQualitySpecRuleArgs extends com.pulumi.resources.
     }
 
     /**
-     * ColumnAggregate rule which evaluates whether the column has duplicates.
+     * Row-level rule which evaluates whether each column value is unique.
      * 
      */
     @Import(name="uniquenessExpectation")
     private @Nullable Output<DatascanDataQualitySpecRuleUniquenessExpectationArgs> uniquenessExpectation;
 
     /**
-     * @return ColumnAggregate rule which evaluates whether the column has duplicates.
+     * @return Row-level rule which evaluates whether each column value is unique.
      * 
      */
     public Optional<Output<DatascanDataQualitySpecRuleUniquenessExpectationArgs>> uniquenessExpectation() {
@@ -221,8 +261,10 @@ public final class DatascanDataQualitySpecRuleArgs extends com.pulumi.resources.
 
     private DatascanDataQualitySpecRuleArgs(DatascanDataQualitySpecRuleArgs $) {
         this.column = $.column;
+        this.description = $.description;
         this.dimension = $.dimension;
         this.ignoreNull = $.ignoreNull;
+        this.name = $.name;
         this.nonNullExpectation = $.nonNullExpectation;
         this.rangeExpectation = $.rangeExpectation;
         this.regexExpectation = $.regexExpectation;
@@ -274,6 +316,29 @@ public final class DatascanDataQualitySpecRuleArgs extends com.pulumi.resources.
         }
 
         /**
+         * @param description Description of the rule.
+         * The maximum length is 1,024 characters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description Description of the rule.
+         * The maximum length is 1,024 characters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
+        }
+
+        /**
          * @param dimension The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are [&#34;COMPLETENESS&#34;, &#34;ACCURACY&#34;, &#34;CONSISTENCY&#34;, &#34;VALIDITY&#34;, &#34;UNIQUENESS&#34;, &#34;INTEGRITY&#34;]
          * 
          * @return builder
@@ -313,6 +378,35 @@ public final class DatascanDataQualitySpecRuleArgs extends com.pulumi.resources.
          */
         public Builder ignoreNull(Boolean ignoreNull) {
             return ignoreNull(Output.of(ignoreNull));
+        }
+
+        /**
+         * @param name A mutable name for the rule.
+         * The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+         * The maximum length is 63 characters.
+         * Must start with a letter.
+         * Must end with a number or a letter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param name A mutable name for the rule.
+         * The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+         * The maximum length is 63 characters.
+         * Must start with a letter.
+         * Must end with a number or a letter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            return name(Output.of(name));
         }
 
         /**
@@ -496,7 +590,7 @@ public final class DatascanDataQualitySpecRuleArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param uniquenessExpectation ColumnAggregate rule which evaluates whether the column has duplicates.
+         * @param uniquenessExpectation Row-level rule which evaluates whether each column value is unique.
          * 
          * @return builder
          * 
@@ -507,7 +601,7 @@ public final class DatascanDataQualitySpecRuleArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param uniquenessExpectation ColumnAggregate rule which evaluates whether the column has duplicates.
+         * @param uniquenessExpectation Row-level rule which evaluates whether each column value is unique.
          * 
          * @return builder
          * 

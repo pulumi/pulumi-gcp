@@ -19,6 +19,13 @@ namespace Pulumi.Gcp.DataPlex.Inputs
         public Input<string>? Column { get; set; }
 
         /// <summary>
+        /// Description of the rule.
+        /// The maximum length is 1,024 characters.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
         /// The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are ["COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"]
         /// </summary>
         [Input("dimension", required: true)]
@@ -29,6 +36,16 @@ namespace Pulumi.Gcp.DataPlex.Inputs
         /// </summary>
         [Input("ignoreNull")]
         public Input<bool>? IgnoreNull { get; set; }
+
+        /// <summary>
+        /// A mutable name for the rule.
+        /// The name must contain only letters (a-z, A-Z), numbers (0-9), or hyphens (-).
+        /// The maximum length is 63 characters.
+        /// Must start with a letter.
+        /// Must end with a number or a letter.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// ColumnMap rule which evaluates whether each column value is null.
@@ -85,7 +102,7 @@ namespace Pulumi.Gcp.DataPlex.Inputs
         public Input<double>? Threshold { get; set; }
 
         /// <summary>
-        /// ColumnAggregate rule which evaluates whether the column has duplicates.
+        /// Row-level rule which evaluates whether each column value is unique.
         /// </summary>
         [Input("uniquenessExpectation")]
         public Input<Inputs.DatascanDataQualitySpecRuleUniquenessExpectationGetArgs>? UniquenessExpectation { get; set; }

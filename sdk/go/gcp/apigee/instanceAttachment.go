@@ -158,7 +158,7 @@ type InstanceAttachment struct {
 	// The resource ID of the environment.
 	Environment pulumi.StringOutput `pulumi:"environment"`
 	// The Apigee instance associated with the Apigee environment,
-	// in the format `organisations/{{org_name}}/instances/{{instance_name}}`.
+	// in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
 	//
 	// ***
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
@@ -205,7 +205,7 @@ type instanceAttachmentState struct {
 	// The resource ID of the environment.
 	Environment *string `pulumi:"environment"`
 	// The Apigee instance associated with the Apigee environment,
-	// in the format `organisations/{{org_name}}/instances/{{instance_name}}`.
+	// in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
 	//
 	// ***
 	InstanceId *string `pulumi:"instanceId"`
@@ -217,7 +217,7 @@ type InstanceAttachmentState struct {
 	// The resource ID of the environment.
 	Environment pulumi.StringPtrInput
 	// The Apigee instance associated with the Apigee environment,
-	// in the format `organisations/{{org_name}}/instances/{{instance_name}}`.
+	// in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
 	//
 	// ***
 	InstanceId pulumi.StringPtrInput
@@ -233,7 +233,7 @@ type instanceAttachmentArgs struct {
 	// The resource ID of the environment.
 	Environment string `pulumi:"environment"`
 	// The Apigee instance associated with the Apigee environment,
-	// in the format `organisations/{{org_name}}/instances/{{instance_name}}`.
+	// in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
 	//
 	// ***
 	InstanceId string `pulumi:"instanceId"`
@@ -244,7 +244,7 @@ type InstanceAttachmentArgs struct {
 	// The resource ID of the environment.
 	Environment pulumi.StringInput
 	// The Apigee instance associated with the Apigee environment,
-	// in the format `organisations/{{org_name}}/instances/{{instance_name}}`.
+	// in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
 	//
 	// ***
 	InstanceId pulumi.StringInput
@@ -343,7 +343,7 @@ func (o InstanceAttachmentOutput) Environment() pulumi.StringOutput {
 }
 
 // The Apigee instance associated with the Apigee environment,
-// in the format `organisations/{{org_name}}/instances/{{instance_name}}`.
+// in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
 //
 // ***
 func (o InstanceAttachmentOutput) InstanceId() pulumi.StringOutput {

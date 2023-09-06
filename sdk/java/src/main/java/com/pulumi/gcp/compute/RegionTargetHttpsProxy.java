@@ -266,16 +266,18 @@ public class RegionTargetHttpsProxy extends com.pulumi.resources.CustomResource 
         return this.sslCertificates;
     }
     /**
-     * A reference to the Region SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the
-     * TargetHttpsProxy resource will not have any SSL policy configured.
+     * A reference to the Region SslPolicy resource that will be associated with
+     * the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
+     * resource will not have any SSL policy configured.
      * 
      */
     @Export(name="sslPolicy", type=String.class, parameters={})
     private Output</* @Nullable */ String> sslPolicy;
 
     /**
-     * @return A reference to the Region SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the
-     * TargetHttpsProxy resource will not have any SSL policy configured.
+     * @return A reference to the Region SslPolicy resource that will be associated with
+     * the TargetHttpsProxy resource. If not set, the TargetHttpsProxy
+     * resource will not have any SSL policy configured.
      * 
      */
     public Output<Optional<String>> sslPolicy() {

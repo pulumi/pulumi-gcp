@@ -114,6 +114,107 @@ namespace Pulumi.Gcp.Alloydb
     /// 
     /// });
     /// ```
+    /// ### Alloydb Cluster Restore
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = Gcp.Compute.GetNetwork.Invoke(new()
+    ///     {
+    ///         Name = "alloydb-network",
+    ///     });
+    /// 
+    ///     var sourceCluster = new Gcp.Alloydb.Cluster("sourceCluster", new()
+    ///     {
+    ///         ClusterId = "alloydb-source-cluster",
+    ///         Location = "us-central1",
+    ///         Network = @default.Apply(@default =&gt; @default.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
+    ///         InitialUser = new Gcp.Alloydb.Inputs.ClusterInitialUserArgs
+    ///         {
+    ///             Password = "alloydb-source-cluster",
+    ///         },
+    ///     });
+    /// 
+    ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("privateIpAlloc", new()
+    ///     {
+    ///         AddressType = "INTERNAL",
+    ///         Purpose = "VPC_PEERING",
+    ///         PrefixLength = 16,
+    ///         Network = @default.Apply(@default =&gt; @default.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
+    ///     });
+    /// 
+    ///     var vpcConnection = new Gcp.ServiceNetworking.Connection("vpcConnection", new()
+    ///     {
+    ///         Network = @default.Apply(@default =&gt; @default.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
+    ///         Service = "servicenetworking.googleapis.com",
+    ///         ReservedPeeringRanges = new[]
+    ///         {
+    ///             privateIpAlloc.Name,
+    ///         },
+    ///     });
+    /// 
+    ///     var sourceInstance = new Gcp.Alloydb.Instance("sourceInstance", new()
+    ///     {
+    ///         Cluster = sourceCluster.Name,
+    ///         InstanceId = "alloydb-instance",
+    ///         InstanceType = "PRIMARY",
+    ///         MachineConfig = new Gcp.Alloydb.Inputs.InstanceMachineConfigArgs
+    ///         {
+    ///             CpuCount = 2,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             vpcConnection,
+    ///         },
+    ///     });
+    /// 
+    ///     var sourceBackup = new Gcp.Alloydb.Backup("sourceBackup", new()
+    ///     {
+    ///         BackupId = "alloydb-backup",
+    ///         Location = "us-central1",
+    ///         ClusterName = sourceCluster.Name,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             sourceInstance,
+    ///         },
+    ///     });
+    /// 
+    ///     var restoredFromBackup = new Gcp.Alloydb.Cluster("restoredFromBackup", new()
+    ///     {
+    ///         ClusterId = "alloydb-backup-restored",
+    ///         Location = "us-central1",
+    ///         Network = @default.Apply(@default =&gt; @default.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
+    ///         RestoreBackupSource = new Gcp.Alloydb.Inputs.ClusterRestoreBackupSourceArgs
+    ///         {
+    ///             BackupName = sourceBackup.Name,
+    ///         },
+    ///     });
+    /// 
+    ///     var restoredViaPitr = new Gcp.Alloydb.Cluster("restoredViaPitr", new()
+    ///     {
+    ///         ClusterId = "alloydb-pitr-restored",
+    ///         Location = "us-central1",
+    ///         Network = @default.Apply(@default =&gt; @default.Apply(getNetworkResult =&gt; getNetworkResult.Id)),
+    ///         RestoreContinuousBackupSource = new Gcp.Alloydb.Inputs.ClusterRestoreContinuousBackupSourceArgs
+    ///         {
+    ///             Cluster = sourceCluster.Name,
+    ///             PointInTime = "2023-08-03T19:19:00.094Z",
+    ///         },
+    ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -250,6 +351,20 @@ namespace Pulumi.Gcp.Alloydb
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("restoreBackupSource")]
+        public Output<Outputs.ClusterRestoreBackupSource?> RestoreBackupSource { get; private set; } = null!;
+
+        /// <summary>
+        /// The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("restoreContinuousBackupSource")]
+        public Output<Outputs.ClusterRestoreContinuousBackupSource?> RestoreContinuousBackupSource { get; private set; } = null!;
+
+        /// <summary>
         /// The system-generated UID of the resource.
         /// </summary>
         [Output("uid")]
@@ -376,6 +491,20 @@ namespace Pulumi.Gcp.Alloydb
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("restoreBackupSource")]
+        public Input<Inputs.ClusterRestoreBackupSourceArgs>? RestoreBackupSource { get; set; }
+
+        /// <summary>
+        /// The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("restoreContinuousBackupSource")]
+        public Input<Inputs.ClusterRestoreContinuousBackupSourceArgs>? RestoreContinuousBackupSource { get; set; }
 
         public ClusterArgs()
         {
@@ -525,6 +654,20 @@ namespace Pulumi.Gcp.Alloydb
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The source when restoring from a backup. Conflicts with 'restore_continuous_backup_source', both can't be set together.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("restoreBackupSource")]
+        public Input<Inputs.ClusterRestoreBackupSourceGetArgs>? RestoreBackupSource { get; set; }
+
+        /// <summary>
+        /// The source when restoring via point in time recovery (PITR). Conflicts with 'restore_backup_source', both can't be set together.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("restoreContinuousBackupSource")]
+        public Input<Inputs.ClusterRestoreContinuousBackupSourceGetArgs>? RestoreContinuousBackupSource { get; set; }
 
         /// <summary>
         /// The system-generated UID of the resource.

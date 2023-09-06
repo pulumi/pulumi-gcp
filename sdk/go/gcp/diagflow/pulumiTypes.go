@@ -617,11 +617,17 @@ func (o CxFlowEventHandlerArrayOutput) Index(i pulumi.IntInput) CxFlowEventHandl
 }
 
 type CxFlowEventHandlerTriggerFulfillment struct {
+	// Conditional cases for this fulfillment.
+	// Structure is documented below.
+	ConditionalCases []CxFlowEventHandlerTriggerFulfillmentConditionalCase `pulumi:"conditionalCases"`
 	// The list of rich message responses to present to the user.
 	// Structure is documented below.
 	Messages []CxFlowEventHandlerTriggerFulfillmentMessage `pulumi:"messages"`
 	// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
 	ReturnPartialResponses *bool `pulumi:"returnPartialResponses"`
+	// Set parameter values before executing the webhook.
+	// Structure is documented below.
+	SetParameterActions []CxFlowEventHandlerTriggerFulfillmentSetParameterAction `pulumi:"setParameterActions"`
 	// The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
 	Tag *string `pulumi:"tag"`
 	// The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
@@ -640,11 +646,17 @@ type CxFlowEventHandlerTriggerFulfillmentInput interface {
 }
 
 type CxFlowEventHandlerTriggerFulfillmentArgs struct {
+	// Conditional cases for this fulfillment.
+	// Structure is documented below.
+	ConditionalCases CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayInput `pulumi:"conditionalCases"`
 	// The list of rich message responses to present to the user.
 	// Structure is documented below.
 	Messages CxFlowEventHandlerTriggerFulfillmentMessageArrayInput `pulumi:"messages"`
 	// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
 	ReturnPartialResponses pulumi.BoolPtrInput `pulumi:"returnPartialResponses"`
+	// Set parameter values before executing the webhook.
+	// Structure is documented below.
+	SetParameterActions CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayInput `pulumi:"setParameterActions"`
 	// The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
 	Tag pulumi.StringPtrInput `pulumi:"tag"`
 	// The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
@@ -728,6 +740,14 @@ func (o CxFlowEventHandlerTriggerFulfillmentOutput) ToCxFlowEventHandlerTriggerF
 	}).(CxFlowEventHandlerTriggerFulfillmentPtrOutput)
 }
 
+// Conditional cases for this fulfillment.
+// Structure is documented below.
+func (o CxFlowEventHandlerTriggerFulfillmentOutput) ConditionalCases() CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayOutput {
+	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillment) []CxFlowEventHandlerTriggerFulfillmentConditionalCase {
+		return v.ConditionalCases
+	}).(CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayOutput)
+}
+
 // The list of rich message responses to present to the user.
 // Structure is documented below.
 func (o CxFlowEventHandlerTriggerFulfillmentOutput) Messages() CxFlowEventHandlerTriggerFulfillmentMessageArrayOutput {
@@ -739,6 +759,14 @@ func (o CxFlowEventHandlerTriggerFulfillmentOutput) Messages() CxFlowEventHandle
 // Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
 func (o CxFlowEventHandlerTriggerFulfillmentOutput) ReturnPartialResponses() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillment) *bool { return v.ReturnPartialResponses }).(pulumi.BoolPtrOutput)
+}
+
+// Set parameter values before executing the webhook.
+// Structure is documented below.
+func (o CxFlowEventHandlerTriggerFulfillmentOutput) SetParameterActions() CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayOutput {
+	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillment) []CxFlowEventHandlerTriggerFulfillmentSetParameterAction {
+		return v.SetParameterActions
+	}).(CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayOutput)
 }
 
 // The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
@@ -775,6 +803,17 @@ func (o CxFlowEventHandlerTriggerFulfillmentPtrOutput) Elem() CxFlowEventHandler
 	}).(CxFlowEventHandlerTriggerFulfillmentOutput)
 }
 
+// Conditional cases for this fulfillment.
+// Structure is documented below.
+func (o CxFlowEventHandlerTriggerFulfillmentPtrOutput) ConditionalCases() CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayOutput {
+	return o.ApplyT(func(v *CxFlowEventHandlerTriggerFulfillment) []CxFlowEventHandlerTriggerFulfillmentConditionalCase {
+		if v == nil {
+			return nil
+		}
+		return v.ConditionalCases
+	}).(CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayOutput)
+}
+
 // The list of rich message responses to present to the user.
 // Structure is documented below.
 func (o CxFlowEventHandlerTriggerFulfillmentPtrOutput) Messages() CxFlowEventHandlerTriggerFulfillmentMessageArrayOutput {
@@ -794,6 +833,17 @@ func (o CxFlowEventHandlerTriggerFulfillmentPtrOutput) ReturnPartialResponses() 
 		}
 		return v.ReturnPartialResponses
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Set parameter values before executing the webhook.
+// Structure is documented below.
+func (o CxFlowEventHandlerTriggerFulfillmentPtrOutput) SetParameterActions() CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayOutput {
+	return o.ApplyT(func(v *CxFlowEventHandlerTriggerFulfillment) []CxFlowEventHandlerTriggerFulfillmentSetParameterAction {
+		if v == nil {
+			return nil
+		}
+		return v.SetParameterActions
+	}).(CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayOutput)
 }
 
 // The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
@@ -816,7 +866,134 @@ func (o CxFlowEventHandlerTriggerFulfillmentPtrOutput) Webhook() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+type CxFlowEventHandlerTriggerFulfillmentConditionalCase struct {
+	// A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+	// See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+	Cases *string `pulumi:"cases"`
+}
+
+// CxFlowEventHandlerTriggerFulfillmentConditionalCaseInput is an input type that accepts CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs and CxFlowEventHandlerTriggerFulfillmentConditionalCaseOutput values.
+// You can construct a concrete instance of `CxFlowEventHandlerTriggerFulfillmentConditionalCaseInput` via:
+//
+//	CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs{...}
+type CxFlowEventHandlerTriggerFulfillmentConditionalCaseInput interface {
+	pulumi.Input
+
+	ToCxFlowEventHandlerTriggerFulfillmentConditionalCaseOutput() CxFlowEventHandlerTriggerFulfillmentConditionalCaseOutput
+	ToCxFlowEventHandlerTriggerFulfillmentConditionalCaseOutputWithContext(context.Context) CxFlowEventHandlerTriggerFulfillmentConditionalCaseOutput
+}
+
+type CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs struct {
+	// A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+	// See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+	Cases pulumi.StringPtrInput `pulumi:"cases"`
+}
+
+func (CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowEventHandlerTriggerFulfillmentConditionalCase)(nil)).Elem()
+}
+
+func (i CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs) ToCxFlowEventHandlerTriggerFulfillmentConditionalCaseOutput() CxFlowEventHandlerTriggerFulfillmentConditionalCaseOutput {
+	return i.ToCxFlowEventHandlerTriggerFulfillmentConditionalCaseOutputWithContext(context.Background())
+}
+
+func (i CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs) ToCxFlowEventHandlerTriggerFulfillmentConditionalCaseOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentConditionalCaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentConditionalCaseOutput)
+}
+
+// CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayInput is an input type that accepts CxFlowEventHandlerTriggerFulfillmentConditionalCaseArray and CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayOutput values.
+// You can construct a concrete instance of `CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayInput` via:
+//
+//	CxFlowEventHandlerTriggerFulfillmentConditionalCaseArray{ CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs{...} }
+type CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayInput interface {
+	pulumi.Input
+
+	ToCxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayOutput() CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayOutput
+	ToCxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayOutputWithContext(context.Context) CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayOutput
+}
+
+type CxFlowEventHandlerTriggerFulfillmentConditionalCaseArray []CxFlowEventHandlerTriggerFulfillmentConditionalCaseInput
+
+func (CxFlowEventHandlerTriggerFulfillmentConditionalCaseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxFlowEventHandlerTriggerFulfillmentConditionalCase)(nil)).Elem()
+}
+
+func (i CxFlowEventHandlerTriggerFulfillmentConditionalCaseArray) ToCxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayOutput() CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayOutput {
+	return i.ToCxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayOutputWithContext(context.Background())
+}
+
+func (i CxFlowEventHandlerTriggerFulfillmentConditionalCaseArray) ToCxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayOutput)
+}
+
+type CxFlowEventHandlerTriggerFulfillmentConditionalCaseOutput struct{ *pulumi.OutputState }
+
+func (CxFlowEventHandlerTriggerFulfillmentConditionalCaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowEventHandlerTriggerFulfillmentConditionalCase)(nil)).Elem()
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentConditionalCaseOutput) ToCxFlowEventHandlerTriggerFulfillmentConditionalCaseOutput() CxFlowEventHandlerTriggerFulfillmentConditionalCaseOutput {
+	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentConditionalCaseOutput) ToCxFlowEventHandlerTriggerFulfillmentConditionalCaseOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentConditionalCaseOutput {
+	return o
+}
+
+// A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+// See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+func (o CxFlowEventHandlerTriggerFulfillmentConditionalCaseOutput) Cases() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillmentConditionalCase) *string { return v.Cases }).(pulumi.StringPtrOutput)
+}
+
+type CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayOutput struct{ *pulumi.OutputState }
+
+func (CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxFlowEventHandlerTriggerFulfillmentConditionalCase)(nil)).Elem()
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayOutput) ToCxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayOutput() CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayOutput {
+	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayOutput) ToCxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayOutput {
+	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayOutput) Index(i pulumi.IntInput) CxFlowEventHandlerTriggerFulfillmentConditionalCaseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxFlowEventHandlerTriggerFulfillmentConditionalCase {
+		return vs[0].([]CxFlowEventHandlerTriggerFulfillmentConditionalCase)[vs[1].(int)]
+	}).(CxFlowEventHandlerTriggerFulfillmentConditionalCaseOutput)
+}
+
 type CxFlowEventHandlerTriggerFulfillmentMessage struct {
+	// The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+	Channel *string `pulumi:"channel"`
+	// Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+	// Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+	// You may set this, for example:
+	// * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+	// * In a webhook response when you determine that you handled the customer issue.
+	//   Structure is documented below.
+	ConversationSuccess *CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess `pulumi:"conversationSuccess"`
+	// Indicates that the conversation should be handed off to a live agent.
+	// Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+	// You may set this, for example:
+	// * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+	// * In a webhook response when you determine that the customer issue can only be handled by a human.
+	//   Structure is documented below.
+	LiveAgentHandoff *CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff `pulumi:"liveAgentHandoff"`
+	// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+	// Structure is documented below.
+	OutputAudioText *CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText `pulumi:"outputAudioText"`
+	// A custom, platform-specific payload.
+	Payload *string `pulumi:"payload"`
+	// Specifies an audio clip to be played by the client as part of the response.
+	// Structure is documented below.
+	PlayAudio *CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio `pulumi:"playAudio"`
+	// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+	// Structure is documented below.
+	TelephonyTransferCall *CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall `pulumi:"telephonyTransferCall"`
 	// The text response message.
 	// Structure is documented below.
 	Text *CxFlowEventHandlerTriggerFulfillmentMessageText `pulumi:"text"`
@@ -834,6 +1011,33 @@ type CxFlowEventHandlerTriggerFulfillmentMessageInput interface {
 }
 
 type CxFlowEventHandlerTriggerFulfillmentMessageArgs struct {
+	// The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+	Channel pulumi.StringPtrInput `pulumi:"channel"`
+	// Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+	// Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+	// You may set this, for example:
+	// * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+	// * In a webhook response when you determine that you handled the customer issue.
+	//   Structure is documented below.
+	ConversationSuccess CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrInput `pulumi:"conversationSuccess"`
+	// Indicates that the conversation should be handed off to a live agent.
+	// Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+	// You may set this, for example:
+	// * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+	// * In a webhook response when you determine that the customer issue can only be handled by a human.
+	//   Structure is documented below.
+	LiveAgentHandoff CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrInput `pulumi:"liveAgentHandoff"`
+	// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+	// Structure is documented below.
+	OutputAudioText CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrInput `pulumi:"outputAudioText"`
+	// A custom, platform-specific payload.
+	Payload pulumi.StringPtrInput `pulumi:"payload"`
+	// Specifies an audio clip to be played by the client as part of the response.
+	// Structure is documented below.
+	PlayAudio CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrInput `pulumi:"playAudio"`
+	// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+	// Structure is documented below.
+	TelephonyTransferCall CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrInput `pulumi:"telephonyTransferCall"`
 	// The text response message.
 	// Structure is documented below.
 	Text CxFlowEventHandlerTriggerFulfillmentMessageTextPtrInput `pulumi:"text"`
@@ -890,6 +1094,64 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessageOutput) ToCxFlowEventHandlerT
 	return o
 }
 
+// The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+func (o CxFlowEventHandlerTriggerFulfillmentMessageOutput) Channel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillmentMessage) *string { return v.Channel }).(pulumi.StringPtrOutput)
+}
+
+// Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+// Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+// You may set this, for example:
+//   - In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+//   - In a webhook response when you determine that you handled the customer issue.
+//     Structure is documented below.
+func (o CxFlowEventHandlerTriggerFulfillmentMessageOutput) ConversationSuccess() CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillmentMessage) *CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess {
+		return v.ConversationSuccess
+	}).(CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput)
+}
+
+// Indicates that the conversation should be handed off to a live agent.
+// Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+// You may set this, for example:
+//   - In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+//   - In a webhook response when you determine that the customer issue can only be handled by a human.
+//     Structure is documented below.
+func (o CxFlowEventHandlerTriggerFulfillmentMessageOutput) LiveAgentHandoff() CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillmentMessage) *CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff {
+		return v.LiveAgentHandoff
+	}).(CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput)
+}
+
+// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+// Structure is documented below.
+func (o CxFlowEventHandlerTriggerFulfillmentMessageOutput) OutputAudioText() CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillmentMessage) *CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText {
+		return v.OutputAudioText
+	}).(CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput)
+}
+
+// A custom, platform-specific payload.
+func (o CxFlowEventHandlerTriggerFulfillmentMessageOutput) Payload() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillmentMessage) *string { return v.Payload }).(pulumi.StringPtrOutput)
+}
+
+// Specifies an audio clip to be played by the client as part of the response.
+// Structure is documented below.
+func (o CxFlowEventHandlerTriggerFulfillmentMessageOutput) PlayAudio() CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillmentMessage) *CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio {
+		return v.PlayAudio
+	}).(CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput)
+}
+
+// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+// Structure is documented below.
+func (o CxFlowEventHandlerTriggerFulfillmentMessageOutput) TelephonyTransferCall() CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillmentMessage) *CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall {
+		return v.TelephonyTransferCall
+	}).(CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput)
+}
+
 // The text response message.
 // Structure is documented below.
 func (o CxFlowEventHandlerTriggerFulfillmentMessageOutput) Text() CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput {
@@ -916,6 +1178,758 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessageArrayOutput) Index(i pulumi.I
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxFlowEventHandlerTriggerFulfillmentMessage {
 		return vs[0].([]CxFlowEventHandlerTriggerFulfillmentMessage)[vs[1].(int)]
 	}).(CxFlowEventHandlerTriggerFulfillmentMessageOutput)
+}
+
+type CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess struct {
+	// Custom metadata. Dialogflow doesn't impose any structure on this.
+	Metadata *string `pulumi:"metadata"`
+}
+
+// CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessInput is an input type that accepts CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs and CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessOutput values.
+// You can construct a concrete instance of `CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessInput` via:
+//
+//	CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs{...}
+type CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessInput interface {
+	pulumi.Input
+
+	ToCxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessOutput() CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessOutput
+	ToCxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessOutputWithContext(context.Context) CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessOutput
+}
+
+type CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs struct {
+	// Custom metadata. Dialogflow doesn't impose any structure on this.
+	Metadata pulumi.StringPtrInput `pulumi:"metadata"`
+}
+
+func (CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess)(nil)).Elem()
+}
+
+func (i CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs) ToCxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessOutput() CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessOutput {
+	return i.ToCxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessOutputWithContext(context.Background())
+}
+
+func (i CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs) ToCxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessOutput)
+}
+
+func (i CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs) ToCxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput() CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return i.ToCxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(context.Background())
+}
+
+func (i CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs) ToCxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessOutput).ToCxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx)
+}
+
+// CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrInput is an input type that accepts CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs, CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtr and CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput values.
+// You can construct a concrete instance of `CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrInput` via:
+//
+//	        CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrInput interface {
+	pulumi.Input
+
+	ToCxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput() CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput
+	ToCxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(context.Context) CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput
+}
+
+type cxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrType CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs
+
+func CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtr(v *CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs) CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrInput {
+	return (*cxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrType)(v)
+}
+
+func (*cxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess)(nil)).Elem()
+}
+
+func (i *cxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrType) ToCxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput() CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return i.ToCxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(context.Background())
+}
+
+func (i *cxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrType) ToCxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput)
+}
+
+type CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessOutput struct{ *pulumi.OutputState }
+
+func (CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess)(nil)).Elem()
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessOutput() CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessOutput {
+	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessOutput {
+	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput() CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return o.ToCxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(context.Background())
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess) *CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess {
+		return &v
+	}).(CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput)
+}
+
+// Custom metadata. Dialogflow doesn't impose any structure on this.
+func (o CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess) *string { return v.Metadata }).(pulumi.StringPtrOutput)
+}
+
+type CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput struct{ *pulumi.OutputState }
+
+func (CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess)(nil)).Elem()
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput() CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput) Elem() CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessOutput {
+	return o.ApplyT(func(v *CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess) CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess {
+		if v != nil {
+			return *v
+		}
+		var ret CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess
+		return ret
+	}).(CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessOutput)
+}
+
+// Custom metadata. Dialogflow doesn't impose any structure on this.
+func (o CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Metadata
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff struct {
+	// Custom metadata. Dialogflow doesn't impose any structure on this.
+	Metadata *string `pulumi:"metadata"`
+}
+
+// CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffInput is an input type that accepts CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs and CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput values.
+// You can construct a concrete instance of `CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffInput` via:
+//
+//	CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs{...}
+type CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffInput interface {
+	pulumi.Input
+
+	ToCxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput() CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput
+	ToCxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutputWithContext(context.Context) CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput
+}
+
+type CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs struct {
+	// Custom metadata. Dialogflow doesn't impose any structure on this.
+	Metadata pulumi.StringPtrInput `pulumi:"metadata"`
+}
+
+func (CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff)(nil)).Elem()
+}
+
+func (i CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs) ToCxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput() CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput {
+	return i.ToCxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutputWithContext(context.Background())
+}
+
+func (i CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs) ToCxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput)
+}
+
+func (i CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs) ToCxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput() CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return i.ToCxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Background())
+}
+
+func (i CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs) ToCxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput).ToCxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx)
+}
+
+// CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrInput is an input type that accepts CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs, CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtr and CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput values.
+// You can construct a concrete instance of `CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrInput` via:
+//
+//	        CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrInput interface {
+	pulumi.Input
+
+	ToCxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput() CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput
+	ToCxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Context) CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput
+}
+
+type cxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrType CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs
+
+func CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtr(v *CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs) CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrInput {
+	return (*cxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrType)(v)
+}
+
+func (*cxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff)(nil)).Elem()
+}
+
+func (i *cxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrType) ToCxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput() CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return i.ToCxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Background())
+}
+
+func (i *cxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrType) ToCxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput)
+}
+
+type CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput struct{ *pulumi.OutputState }
+
+func (CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff)(nil)).Elem()
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput() CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput {
+	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput {
+	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput() CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return o.ToCxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Background())
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff) *CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff {
+		return &v
+	}).(CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput)
+}
+
+// Custom metadata. Dialogflow doesn't impose any structure on this.
+func (o CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff) *string { return v.Metadata }).(pulumi.StringPtrOutput)
+}
+
+type CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput struct{ *pulumi.OutputState }
+
+func (CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff)(nil)).Elem()
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput() CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) Elem() CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput {
+	return o.ApplyT(func(v *CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff) CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff {
+		if v != nil {
+			return *v
+		}
+		var ret CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff
+		return ret
+	}).(CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput)
+}
+
+// Custom metadata. Dialogflow doesn't impose any structure on this.
+func (o CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Metadata
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText struct {
+	// (Output)
+	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
+	// The SSML text to be synthesized. For more information, see SSML.
+	Ssml *string `pulumi:"ssml"`
+	// The raw text to be synthesized.
+	Text *string `pulumi:"text"`
+}
+
+// CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextInput is an input type that accepts CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs and CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput values.
+// You can construct a concrete instance of `CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextInput` via:
+//
+//	CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs{...}
+type CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextInput interface {
+	pulumi.Input
+
+	ToCxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput() CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput
+	ToCxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextOutputWithContext(context.Context) CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput
+}
+
+type CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs struct {
+	// (Output)
+	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
+	// The SSML text to be synthesized. For more information, see SSML.
+	Ssml pulumi.StringPtrInput `pulumi:"ssml"`
+	// The raw text to be synthesized.
+	Text pulumi.StringPtrInput `pulumi:"text"`
+}
+
+func (CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText)(nil)).Elem()
+}
+
+func (i CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs) ToCxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput() CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput {
+	return i.ToCxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextOutputWithContext(context.Background())
+}
+
+func (i CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs) ToCxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput)
+}
+
+func (i CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs) ToCxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput() CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return i.ToCxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Background())
+}
+
+func (i CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs) ToCxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput).ToCxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx)
+}
+
+// CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrInput is an input type that accepts CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs, CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtr and CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput values.
+// You can construct a concrete instance of `CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrInput` via:
+//
+//	        CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrInput interface {
+	pulumi.Input
+
+	ToCxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput() CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput
+	ToCxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Context) CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput
+}
+
+type cxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrType CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs
+
+func CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtr(v *CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs) CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrInput {
+	return (*cxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrType)(v)
+}
+
+func (*cxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText)(nil)).Elem()
+}
+
+func (i *cxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrType) ToCxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput() CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return i.ToCxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Background())
+}
+
+func (i *cxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrType) ToCxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput)
+}
+
+type CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput struct{ *pulumi.OutputState }
+
+func (CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText)(nil)).Elem()
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput() CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput {
+	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput {
+	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput() CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return o.ToCxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Background())
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText) *CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText {
+		return &v
+	}).(CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput)
+}
+
+// (Output)
+// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+func (o CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText) *bool {
+		return v.AllowPlaybackInterruption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The SSML text to be synthesized. For more information, see SSML.
+func (o CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) Ssml() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText) *string { return v.Ssml }).(pulumi.StringPtrOutput)
+}
+
+// The raw text to be synthesized.
+func (o CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText) *string { return v.Text }).(pulumi.StringPtrOutput)
+}
+
+type CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput struct{ *pulumi.OutputState }
+
+func (CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText)(nil)).Elem()
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput() CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) Elem() CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput {
+	return o.ApplyT(func(v *CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText) CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText {
+		if v != nil {
+			return *v
+		}
+		var ret CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText
+		return ret
+	}).(CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput)
+}
+
+// (Output)
+// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+func (o CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowPlaybackInterruption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The SSML text to be synthesized. For more information, see SSML.
+func (o CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) Ssml() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ssml
+	}).(pulumi.StringPtrOutput)
+}
+
+// The raw text to be synthesized.
+func (o CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Text
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio struct {
+	// (Output)
+	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
+	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+	AudioUri string `pulumi:"audioUri"`
+}
+
+// CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioInput is an input type that accepts CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs and CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioOutput values.
+// You can construct a concrete instance of `CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioInput` via:
+//
+//	CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs{...}
+type CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioInput interface {
+	pulumi.Input
+
+	ToCxFlowEventHandlerTriggerFulfillmentMessagePlayAudioOutput() CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioOutput
+	ToCxFlowEventHandlerTriggerFulfillmentMessagePlayAudioOutputWithContext(context.Context) CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioOutput
+}
+
+type CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs struct {
+	// (Output)
+	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
+	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+	AudioUri pulumi.StringInput `pulumi:"audioUri"`
+}
+
+func (CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio)(nil)).Elem()
+}
+
+func (i CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs) ToCxFlowEventHandlerTriggerFulfillmentMessagePlayAudioOutput() CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioOutput {
+	return i.ToCxFlowEventHandlerTriggerFulfillmentMessagePlayAudioOutputWithContext(context.Background())
+}
+
+func (i CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs) ToCxFlowEventHandlerTriggerFulfillmentMessagePlayAudioOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioOutput)
+}
+
+func (i CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs) ToCxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput() CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return i.ToCxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(context.Background())
+}
+
+func (i CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs) ToCxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioOutput).ToCxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx)
+}
+
+// CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrInput is an input type that accepts CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs, CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtr and CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput values.
+// You can construct a concrete instance of `CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrInput` via:
+//
+//	        CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrInput interface {
+	pulumi.Input
+
+	ToCxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput() CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput
+	ToCxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(context.Context) CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput
+}
+
+type cxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrType CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs
+
+func CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtr(v *CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs) CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrInput {
+	return (*cxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrType)(v)
+}
+
+func (*cxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio)(nil)).Elem()
+}
+
+func (i *cxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrType) ToCxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput() CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return i.ToCxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(context.Background())
+}
+
+func (i *cxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrType) ToCxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput)
+}
+
+type CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioOutput struct{ *pulumi.OutputState }
+
+func (CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio)(nil)).Elem()
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioOutput) ToCxFlowEventHandlerTriggerFulfillmentMessagePlayAudioOutput() CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioOutput {
+	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioOutput) ToCxFlowEventHandlerTriggerFulfillmentMessagePlayAudioOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioOutput {
+	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioOutput) ToCxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput() CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return o.ToCxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(context.Background())
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioOutput) ToCxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio) *CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio {
+		return &v
+	}).(CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput)
+}
+
+// (Output)
+// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+func (o CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio) *bool { return v.AllowPlaybackInterruption }).(pulumi.BoolPtrOutput)
+}
+
+// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+func (o CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioOutput) AudioUri() pulumi.StringOutput {
+	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio) string { return v.AudioUri }).(pulumi.StringOutput)
+}
+
+type CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput struct{ *pulumi.OutputState }
+
+func (CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio)(nil)).Elem()
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) ToCxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput() CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) ToCxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) Elem() CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioOutput {
+	return o.ApplyT(func(v *CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio) CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio {
+		if v != nil {
+			return *v
+		}
+		var ret CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio
+		return ret
+	}).(CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioOutput)
+}
+
+// (Output)
+// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+func (o CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowPlaybackInterruption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+func (o CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) AudioUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AudioUri
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall struct {
+	// Transfer the call to a phone number in E.164 format.
+	PhoneNumber string `pulumi:"phoneNumber"`
+}
+
+// CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallInput is an input type that accepts CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs and CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput values.
+// You can construct a concrete instance of `CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallInput` via:
+//
+//	CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs{...}
+type CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallInput interface {
+	pulumi.Input
+
+	ToCxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput() CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput
+	ToCxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutputWithContext(context.Context) CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput
+}
+
+type CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs struct {
+	// Transfer the call to a phone number in E.164 format.
+	PhoneNumber pulumi.StringInput `pulumi:"phoneNumber"`
+}
+
+func (CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall)(nil)).Elem()
+}
+
+func (i CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs) ToCxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput() CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput {
+	return i.ToCxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutputWithContext(context.Background())
+}
+
+func (i CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs) ToCxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput)
+}
+
+func (i CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs) ToCxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput() CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return i.ToCxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Background())
+}
+
+func (i CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs) ToCxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput).ToCxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx)
+}
+
+// CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrInput is an input type that accepts CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs, CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtr and CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput values.
+// You can construct a concrete instance of `CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrInput` via:
+//
+//	        CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrInput interface {
+	pulumi.Input
+
+	ToCxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput() CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput
+	ToCxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Context) CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput
+}
+
+type cxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrType CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs
+
+func CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtr(v *CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs) CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrInput {
+	return (*cxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrType)(v)
+}
+
+func (*cxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall)(nil)).Elem()
+}
+
+func (i *cxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrType) ToCxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput() CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return i.ToCxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Background())
+}
+
+func (i *cxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrType) ToCxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput)
+}
+
+type CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput struct{ *pulumi.OutputState }
+
+func (CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall)(nil)).Elem()
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput() CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput {
+	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput {
+	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput() CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return o.ToCxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Background())
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall) *CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall {
+		return &v
+	}).(CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput)
+}
+
+// Transfer the call to a phone number in E.164 format.
+func (o CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput) PhoneNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall) string { return v.PhoneNumber }).(pulumi.StringOutput)
+}
+
+type CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput struct{ *pulumi.OutputState }
+
+func (CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall)(nil)).Elem()
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput() CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) ToCxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) Elem() CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput {
+	return o.ApplyT(func(v *CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall) CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall {
+		if v != nil {
+			return *v
+		}
+		var ret CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall
+		return ret
+	}).(CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput)
+}
+
+// Transfer the call to a phone number in E.164 format.
+func (o CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) PhoneNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PhoneNumber
+	}).(pulumi.StringPtrOutput)
 }
 
 type CxFlowEventHandlerTriggerFulfillmentMessageText struct {
@@ -1076,6 +2090,112 @@ func (o CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput) Texts() pulumi
 		}
 		return v.Texts
 	}).(pulumi.StringArrayOutput)
+}
+
+type CxFlowEventHandlerTriggerFulfillmentSetParameterAction struct {
+	// Display name of the parameter.
+	Parameter *string `pulumi:"parameter"`
+	// The new JSON-encoded value of the parameter. A null value clears the parameter.
+	Value *string `pulumi:"value"`
+}
+
+// CxFlowEventHandlerTriggerFulfillmentSetParameterActionInput is an input type that accepts CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs and CxFlowEventHandlerTriggerFulfillmentSetParameterActionOutput values.
+// You can construct a concrete instance of `CxFlowEventHandlerTriggerFulfillmentSetParameterActionInput` via:
+//
+//	CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs{...}
+type CxFlowEventHandlerTriggerFulfillmentSetParameterActionInput interface {
+	pulumi.Input
+
+	ToCxFlowEventHandlerTriggerFulfillmentSetParameterActionOutput() CxFlowEventHandlerTriggerFulfillmentSetParameterActionOutput
+	ToCxFlowEventHandlerTriggerFulfillmentSetParameterActionOutputWithContext(context.Context) CxFlowEventHandlerTriggerFulfillmentSetParameterActionOutput
+}
+
+type CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs struct {
+	// Display name of the parameter.
+	Parameter pulumi.StringPtrInput `pulumi:"parameter"`
+	// The new JSON-encoded value of the parameter. A null value clears the parameter.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowEventHandlerTriggerFulfillmentSetParameterAction)(nil)).Elem()
+}
+
+func (i CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs) ToCxFlowEventHandlerTriggerFulfillmentSetParameterActionOutput() CxFlowEventHandlerTriggerFulfillmentSetParameterActionOutput {
+	return i.ToCxFlowEventHandlerTriggerFulfillmentSetParameterActionOutputWithContext(context.Background())
+}
+
+func (i CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs) ToCxFlowEventHandlerTriggerFulfillmentSetParameterActionOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentSetParameterActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentSetParameterActionOutput)
+}
+
+// CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayInput is an input type that accepts CxFlowEventHandlerTriggerFulfillmentSetParameterActionArray and CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayOutput values.
+// You can construct a concrete instance of `CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayInput` via:
+//
+//	CxFlowEventHandlerTriggerFulfillmentSetParameterActionArray{ CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs{...} }
+type CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayInput interface {
+	pulumi.Input
+
+	ToCxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayOutput() CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayOutput
+	ToCxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayOutputWithContext(context.Context) CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayOutput
+}
+
+type CxFlowEventHandlerTriggerFulfillmentSetParameterActionArray []CxFlowEventHandlerTriggerFulfillmentSetParameterActionInput
+
+func (CxFlowEventHandlerTriggerFulfillmentSetParameterActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxFlowEventHandlerTriggerFulfillmentSetParameterAction)(nil)).Elem()
+}
+
+func (i CxFlowEventHandlerTriggerFulfillmentSetParameterActionArray) ToCxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayOutput() CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayOutput {
+	return i.ToCxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayOutputWithContext(context.Background())
+}
+
+func (i CxFlowEventHandlerTriggerFulfillmentSetParameterActionArray) ToCxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayOutput)
+}
+
+type CxFlowEventHandlerTriggerFulfillmentSetParameterActionOutput struct{ *pulumi.OutputState }
+
+func (CxFlowEventHandlerTriggerFulfillmentSetParameterActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowEventHandlerTriggerFulfillmentSetParameterAction)(nil)).Elem()
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentSetParameterActionOutput) ToCxFlowEventHandlerTriggerFulfillmentSetParameterActionOutput() CxFlowEventHandlerTriggerFulfillmentSetParameterActionOutput {
+	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentSetParameterActionOutput) ToCxFlowEventHandlerTriggerFulfillmentSetParameterActionOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentSetParameterActionOutput {
+	return o
+}
+
+// Display name of the parameter.
+func (o CxFlowEventHandlerTriggerFulfillmentSetParameterActionOutput) Parameter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillmentSetParameterAction) *string { return v.Parameter }).(pulumi.StringPtrOutput)
+}
+
+// The new JSON-encoded value of the parameter. A null value clears the parameter.
+func (o CxFlowEventHandlerTriggerFulfillmentSetParameterActionOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowEventHandlerTriggerFulfillmentSetParameterAction) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayOutput struct{ *pulumi.OutputState }
+
+func (CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxFlowEventHandlerTriggerFulfillmentSetParameterAction)(nil)).Elem()
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayOutput) ToCxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayOutput() CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayOutput {
+	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayOutput) ToCxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayOutputWithContext(ctx context.Context) CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayOutput {
+	return o
+}
+
+func (o CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayOutput) Index(i pulumi.IntInput) CxFlowEventHandlerTriggerFulfillmentSetParameterActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxFlowEventHandlerTriggerFulfillmentSetParameterAction {
+		return vs[0].([]CxFlowEventHandlerTriggerFulfillmentSetParameterAction)[vs[1].(int)]
+	}).(CxFlowEventHandlerTriggerFulfillmentSetParameterActionOutput)
 }
 
 type CxFlowNluSettings struct {
@@ -1442,11 +2562,17 @@ func (o CxFlowTransitionRouteArrayOutput) Index(i pulumi.IntInput) CxFlowTransit
 }
 
 type CxFlowTransitionRouteTriggerFulfillment struct {
+	// Conditional cases for this fulfillment.
+	// Structure is documented below.
+	ConditionalCases []CxFlowTransitionRouteTriggerFulfillmentConditionalCase `pulumi:"conditionalCases"`
 	// The list of rich message responses to present to the user.
 	// Structure is documented below.
 	Messages []CxFlowTransitionRouteTriggerFulfillmentMessage `pulumi:"messages"`
 	// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
 	ReturnPartialResponses *bool `pulumi:"returnPartialResponses"`
+	// Set parameter values before executing the webhook.
+	// Structure is documented below.
+	SetParameterActions []CxFlowTransitionRouteTriggerFulfillmentSetParameterAction `pulumi:"setParameterActions"`
 	// The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
 	Tag *string `pulumi:"tag"`
 	// The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
@@ -1465,11 +2591,17 @@ type CxFlowTransitionRouteTriggerFulfillmentInput interface {
 }
 
 type CxFlowTransitionRouteTriggerFulfillmentArgs struct {
+	// Conditional cases for this fulfillment.
+	// Structure is documented below.
+	ConditionalCases CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayInput `pulumi:"conditionalCases"`
 	// The list of rich message responses to present to the user.
 	// Structure is documented below.
 	Messages CxFlowTransitionRouteTriggerFulfillmentMessageArrayInput `pulumi:"messages"`
 	// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
 	ReturnPartialResponses pulumi.BoolPtrInput `pulumi:"returnPartialResponses"`
+	// Set parameter values before executing the webhook.
+	// Structure is documented below.
+	SetParameterActions CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayInput `pulumi:"setParameterActions"`
 	// The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
 	Tag pulumi.StringPtrInput `pulumi:"tag"`
 	// The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
@@ -1553,6 +2685,14 @@ func (o CxFlowTransitionRouteTriggerFulfillmentOutput) ToCxFlowTransitionRouteTr
 	}).(CxFlowTransitionRouteTriggerFulfillmentPtrOutput)
 }
 
+// Conditional cases for this fulfillment.
+// Structure is documented below.
+func (o CxFlowTransitionRouteTriggerFulfillmentOutput) ConditionalCases() CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput {
+	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillment) []CxFlowTransitionRouteTriggerFulfillmentConditionalCase {
+		return v.ConditionalCases
+	}).(CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput)
+}
+
 // The list of rich message responses to present to the user.
 // Structure is documented below.
 func (o CxFlowTransitionRouteTriggerFulfillmentOutput) Messages() CxFlowTransitionRouteTriggerFulfillmentMessageArrayOutput {
@@ -1564,6 +2704,14 @@ func (o CxFlowTransitionRouteTriggerFulfillmentOutput) Messages() CxFlowTransiti
 // Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
 func (o CxFlowTransitionRouteTriggerFulfillmentOutput) ReturnPartialResponses() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillment) *bool { return v.ReturnPartialResponses }).(pulumi.BoolPtrOutput)
+}
+
+// Set parameter values before executing the webhook.
+// Structure is documented below.
+func (o CxFlowTransitionRouteTriggerFulfillmentOutput) SetParameterActions() CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput {
+	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillment) []CxFlowTransitionRouteTriggerFulfillmentSetParameterAction {
+		return v.SetParameterActions
+	}).(CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput)
 }
 
 // The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
@@ -1600,6 +2748,17 @@ func (o CxFlowTransitionRouteTriggerFulfillmentPtrOutput) Elem() CxFlowTransitio
 	}).(CxFlowTransitionRouteTriggerFulfillmentOutput)
 }
 
+// Conditional cases for this fulfillment.
+// Structure is documented below.
+func (o CxFlowTransitionRouteTriggerFulfillmentPtrOutput) ConditionalCases() CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput {
+	return o.ApplyT(func(v *CxFlowTransitionRouteTriggerFulfillment) []CxFlowTransitionRouteTriggerFulfillmentConditionalCase {
+		if v == nil {
+			return nil
+		}
+		return v.ConditionalCases
+	}).(CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput)
+}
+
 // The list of rich message responses to present to the user.
 // Structure is documented below.
 func (o CxFlowTransitionRouteTriggerFulfillmentPtrOutput) Messages() CxFlowTransitionRouteTriggerFulfillmentMessageArrayOutput {
@@ -1619,6 +2778,17 @@ func (o CxFlowTransitionRouteTriggerFulfillmentPtrOutput) ReturnPartialResponses
 		}
 		return v.ReturnPartialResponses
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Set parameter values before executing the webhook.
+// Structure is documented below.
+func (o CxFlowTransitionRouteTriggerFulfillmentPtrOutput) SetParameterActions() CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput {
+	return o.ApplyT(func(v *CxFlowTransitionRouteTriggerFulfillment) []CxFlowTransitionRouteTriggerFulfillmentSetParameterAction {
+		if v == nil {
+			return nil
+		}
+		return v.SetParameterActions
+	}).(CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput)
 }
 
 // The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
@@ -1641,7 +2811,134 @@ func (o CxFlowTransitionRouteTriggerFulfillmentPtrOutput) Webhook() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+type CxFlowTransitionRouteTriggerFulfillmentConditionalCase struct {
+	// A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+	// See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+	Cases *string `pulumi:"cases"`
+}
+
+// CxFlowTransitionRouteTriggerFulfillmentConditionalCaseInput is an input type that accepts CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs and CxFlowTransitionRouteTriggerFulfillmentConditionalCaseOutput values.
+// You can construct a concrete instance of `CxFlowTransitionRouteTriggerFulfillmentConditionalCaseInput` via:
+//
+//	CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs{...}
+type CxFlowTransitionRouteTriggerFulfillmentConditionalCaseInput interface {
+	pulumi.Input
+
+	ToCxFlowTransitionRouteTriggerFulfillmentConditionalCaseOutput() CxFlowTransitionRouteTriggerFulfillmentConditionalCaseOutput
+	ToCxFlowTransitionRouteTriggerFulfillmentConditionalCaseOutputWithContext(context.Context) CxFlowTransitionRouteTriggerFulfillmentConditionalCaseOutput
+}
+
+type CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs struct {
+	// A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+	// See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+	Cases pulumi.StringPtrInput `pulumi:"cases"`
+}
+
+func (CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowTransitionRouteTriggerFulfillmentConditionalCase)(nil)).Elem()
+}
+
+func (i CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs) ToCxFlowTransitionRouteTriggerFulfillmentConditionalCaseOutput() CxFlowTransitionRouteTriggerFulfillmentConditionalCaseOutput {
+	return i.ToCxFlowTransitionRouteTriggerFulfillmentConditionalCaseOutputWithContext(context.Background())
+}
+
+func (i CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs) ToCxFlowTransitionRouteTriggerFulfillmentConditionalCaseOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentConditionalCaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentConditionalCaseOutput)
+}
+
+// CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayInput is an input type that accepts CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArray and CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput values.
+// You can construct a concrete instance of `CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayInput` via:
+//
+//	CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArray{ CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs{...} }
+type CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayInput interface {
+	pulumi.Input
+
+	ToCxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput() CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput
+	ToCxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayOutputWithContext(context.Context) CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput
+}
+
+type CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArray []CxFlowTransitionRouteTriggerFulfillmentConditionalCaseInput
+
+func (CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxFlowTransitionRouteTriggerFulfillmentConditionalCase)(nil)).Elem()
+}
+
+func (i CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArray) ToCxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput() CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput {
+	return i.ToCxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayOutputWithContext(context.Background())
+}
+
+func (i CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArray) ToCxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput)
+}
+
+type CxFlowTransitionRouteTriggerFulfillmentConditionalCaseOutput struct{ *pulumi.OutputState }
+
+func (CxFlowTransitionRouteTriggerFulfillmentConditionalCaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowTransitionRouteTriggerFulfillmentConditionalCase)(nil)).Elem()
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentConditionalCaseOutput) ToCxFlowTransitionRouteTriggerFulfillmentConditionalCaseOutput() CxFlowTransitionRouteTriggerFulfillmentConditionalCaseOutput {
+	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentConditionalCaseOutput) ToCxFlowTransitionRouteTriggerFulfillmentConditionalCaseOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentConditionalCaseOutput {
+	return o
+}
+
+// A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+// See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+func (o CxFlowTransitionRouteTriggerFulfillmentConditionalCaseOutput) Cases() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillmentConditionalCase) *string { return v.Cases }).(pulumi.StringPtrOutput)
+}
+
+type CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput struct{ *pulumi.OutputState }
+
+func (CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxFlowTransitionRouteTriggerFulfillmentConditionalCase)(nil)).Elem()
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput) ToCxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput() CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput {
+	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput) ToCxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput {
+	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput) Index(i pulumi.IntInput) CxFlowTransitionRouteTriggerFulfillmentConditionalCaseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxFlowTransitionRouteTriggerFulfillmentConditionalCase {
+		return vs[0].([]CxFlowTransitionRouteTriggerFulfillmentConditionalCase)[vs[1].(int)]
+	}).(CxFlowTransitionRouteTriggerFulfillmentConditionalCaseOutput)
+}
+
 type CxFlowTransitionRouteTriggerFulfillmentMessage struct {
+	// The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+	Channel *string `pulumi:"channel"`
+	// Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+	// Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+	// You may set this, for example:
+	// * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+	// * In a webhook response when you determine that you handled the customer issue.
+	//   Structure is documented below.
+	ConversationSuccess *CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccess `pulumi:"conversationSuccess"`
+	// Indicates that the conversation should be handed off to a live agent.
+	// Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+	// You may set this, for example:
+	// * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+	// * In a webhook response when you determine that the customer issue can only be handled by a human.
+	//   Structure is documented below.
+	LiveAgentHandoff *CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff `pulumi:"liveAgentHandoff"`
+	// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+	// Structure is documented below.
+	OutputAudioText *CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText `pulumi:"outputAudioText"`
+	// A custom, platform-specific payload.
+	Payload *string `pulumi:"payload"`
+	// Specifies an audio clip to be played by the client as part of the response.
+	// Structure is documented below.
+	PlayAudio *CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio `pulumi:"playAudio"`
+	// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+	// Structure is documented below.
+	TelephonyTransferCall *CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall `pulumi:"telephonyTransferCall"`
 	// The text response message.
 	// Structure is documented below.
 	Text *CxFlowTransitionRouteTriggerFulfillmentMessageText `pulumi:"text"`
@@ -1659,6 +2956,33 @@ type CxFlowTransitionRouteTriggerFulfillmentMessageInput interface {
 }
 
 type CxFlowTransitionRouteTriggerFulfillmentMessageArgs struct {
+	// The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+	Channel pulumi.StringPtrInput `pulumi:"channel"`
+	// Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+	// Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+	// You may set this, for example:
+	// * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+	// * In a webhook response when you determine that you handled the customer issue.
+	//   Structure is documented below.
+	ConversationSuccess CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrInput `pulumi:"conversationSuccess"`
+	// Indicates that the conversation should be handed off to a live agent.
+	// Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+	// You may set this, for example:
+	// * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+	// * In a webhook response when you determine that the customer issue can only be handled by a human.
+	//   Structure is documented below.
+	LiveAgentHandoff CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrInput `pulumi:"liveAgentHandoff"`
+	// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+	// Structure is documented below.
+	OutputAudioText CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrInput `pulumi:"outputAudioText"`
+	// A custom, platform-specific payload.
+	Payload pulumi.StringPtrInput `pulumi:"payload"`
+	// Specifies an audio clip to be played by the client as part of the response.
+	// Structure is documented below.
+	PlayAudio CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrInput `pulumi:"playAudio"`
+	// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+	// Structure is documented below.
+	TelephonyTransferCall CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrInput `pulumi:"telephonyTransferCall"`
 	// The text response message.
 	// Structure is documented below.
 	Text CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrInput `pulumi:"text"`
@@ -1715,6 +3039,64 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutput) ToCxFlowTransition
 	return o
 }
 
+// The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutput) Channel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillmentMessage) *string { return v.Channel }).(pulumi.StringPtrOutput)
+}
+
+// Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+// Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+// You may set this, for example:
+//   - In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+//   - In a webhook response when you determine that you handled the customer issue.
+//     Structure is documented below.
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutput) ConversationSuccess() CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillmentMessage) *CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccess {
+		return v.ConversationSuccess
+	}).(CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput)
+}
+
+// Indicates that the conversation should be handed off to a live agent.
+// Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+// You may set this, for example:
+//   - In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+//   - In a webhook response when you determine that the customer issue can only be handled by a human.
+//     Structure is documented below.
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutput) LiveAgentHandoff() CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillmentMessage) *CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff {
+		return v.LiveAgentHandoff
+	}).(CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput)
+}
+
+// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+// Structure is documented below.
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutput) OutputAudioText() CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillmentMessage) *CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText {
+		return v.OutputAudioText
+	}).(CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput)
+}
+
+// A custom, platform-specific payload.
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutput) Payload() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillmentMessage) *string { return v.Payload }).(pulumi.StringPtrOutput)
+}
+
+// Specifies an audio clip to be played by the client as part of the response.
+// Structure is documented below.
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutput) PlayAudio() CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillmentMessage) *CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio {
+		return v.PlayAudio
+	}).(CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput)
+}
+
+// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+// Structure is documented below.
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutput) TelephonyTransferCall() CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillmentMessage) *CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall {
+		return v.TelephonyTransferCall
+	}).(CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput)
+}
+
 // The text response message.
 // Structure is documented below.
 func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutput) Text() CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput {
@@ -1741,6 +3123,762 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessageArrayOutput) Index(i pulum
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxFlowTransitionRouteTriggerFulfillmentMessage {
 		return vs[0].([]CxFlowTransitionRouteTriggerFulfillmentMessage)[vs[1].(int)]
 	}).(CxFlowTransitionRouteTriggerFulfillmentMessageOutput)
+}
+
+type CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccess struct {
+	// Custom metadata. Dialogflow doesn't impose any structure on this.
+	Metadata *string `pulumi:"metadata"`
+}
+
+// CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessInput is an input type that accepts CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs and CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput values.
+// You can construct a concrete instance of `CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessInput` via:
+//
+//	CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs{...}
+type CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessInput interface {
+	pulumi.Input
+
+	ToCxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput() CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput
+	ToCxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessOutputWithContext(context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput
+}
+
+type CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs struct {
+	// Custom metadata. Dialogflow doesn't impose any structure on this.
+	Metadata pulumi.StringPtrInput `pulumi:"metadata"`
+}
+
+func (CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccess)(nil)).Elem()
+}
+
+func (i CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs) ToCxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput() CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput {
+	return i.ToCxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessOutputWithContext(context.Background())
+}
+
+func (i CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs) ToCxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput)
+}
+
+func (i CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs) ToCxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput() CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return i.ToCxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(context.Background())
+}
+
+func (i CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs) ToCxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput).ToCxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx)
+}
+
+// CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrInput is an input type that accepts CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs, CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtr and CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput values.
+// You can construct a concrete instance of `CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrInput` via:
+//
+//	        CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrInput interface {
+	pulumi.Input
+
+	ToCxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput() CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput
+	ToCxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput
+}
+
+type cxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrType CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs
+
+func CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtr(v *CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs) CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrInput {
+	return (*cxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrType)(v)
+}
+
+func (*cxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccess)(nil)).Elem()
+}
+
+func (i *cxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrType) ToCxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput() CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return i.ToCxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(context.Background())
+}
+
+func (i *cxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrType) ToCxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput)
+}
+
+type CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput struct{ *pulumi.OutputState }
+
+func (CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccess)(nil)).Elem()
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput() CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput {
+	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput {
+	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput() CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return o.ToCxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(context.Background())
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccess) *CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccess {
+		return &v
+	}).(CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput)
+}
+
+// Custom metadata. Dialogflow doesn't impose any structure on this.
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccess) *string { return v.Metadata }).(pulumi.StringPtrOutput)
+}
+
+type CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput struct{ *pulumi.OutputState }
+
+func (CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccess)(nil)).Elem()
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput() CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput) Elem() CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput {
+	return o.ApplyT(func(v *CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccess) CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccess {
+		if v != nil {
+			return *v
+		}
+		var ret CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccess
+		return ret
+	}).(CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput)
+}
+
+// Custom metadata. Dialogflow doesn't impose any structure on this.
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Metadata
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff struct {
+	// Custom metadata. Dialogflow doesn't impose any structure on this.
+	Metadata *string `pulumi:"metadata"`
+}
+
+// CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffInput is an input type that accepts CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs and CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput values.
+// You can construct a concrete instance of `CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffInput` via:
+//
+//	CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs{...}
+type CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffInput interface {
+	pulumi.Input
+
+	ToCxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput() CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput
+	ToCxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutputWithContext(context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput
+}
+
+type CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs struct {
+	// Custom metadata. Dialogflow doesn't impose any structure on this.
+	Metadata pulumi.StringPtrInput `pulumi:"metadata"`
+}
+
+func (CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff)(nil)).Elem()
+}
+
+func (i CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs) ToCxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput() CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput {
+	return i.ToCxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutputWithContext(context.Background())
+}
+
+func (i CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs) ToCxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput)
+}
+
+func (i CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs) ToCxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput() CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return i.ToCxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Background())
+}
+
+func (i CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs) ToCxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput).ToCxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx)
+}
+
+// CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrInput is an input type that accepts CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs, CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtr and CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput values.
+// You can construct a concrete instance of `CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrInput` via:
+//
+//	        CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrInput interface {
+	pulumi.Input
+
+	ToCxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput() CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput
+	ToCxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput
+}
+
+type cxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrType CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs
+
+func CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtr(v *CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs) CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrInput {
+	return (*cxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrType)(v)
+}
+
+func (*cxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff)(nil)).Elem()
+}
+
+func (i *cxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrType) ToCxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput() CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return i.ToCxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Background())
+}
+
+func (i *cxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrType) ToCxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput)
+}
+
+type CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput struct{ *pulumi.OutputState }
+
+func (CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff)(nil)).Elem()
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput() CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput {
+	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput {
+	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput() CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return o.ToCxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Background())
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff) *CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff {
+		return &v
+	}).(CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput)
+}
+
+// Custom metadata. Dialogflow doesn't impose any structure on this.
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff) *string { return v.Metadata }).(pulumi.StringPtrOutput)
+}
+
+type CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput struct{ *pulumi.OutputState }
+
+func (CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff)(nil)).Elem()
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput() CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) Elem() CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput {
+	return o.ApplyT(func(v *CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff) CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff {
+		if v != nil {
+			return *v
+		}
+		var ret CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff
+		return ret
+	}).(CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput)
+}
+
+// Custom metadata. Dialogflow doesn't impose any structure on this.
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Metadata
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText struct {
+	// (Output)
+	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
+	// The SSML text to be synthesized. For more information, see SSML.
+	Ssml *string `pulumi:"ssml"`
+	// The raw text to be synthesized.
+	Text *string `pulumi:"text"`
+}
+
+// CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextInput is an input type that accepts CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs and CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput values.
+// You can construct a concrete instance of `CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextInput` via:
+//
+//	CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs{...}
+type CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextInput interface {
+	pulumi.Input
+
+	ToCxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput() CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput
+	ToCxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutputWithContext(context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput
+}
+
+type CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs struct {
+	// (Output)
+	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
+	// The SSML text to be synthesized. For more information, see SSML.
+	Ssml pulumi.StringPtrInput `pulumi:"ssml"`
+	// The raw text to be synthesized.
+	Text pulumi.StringPtrInput `pulumi:"text"`
+}
+
+func (CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText)(nil)).Elem()
+}
+
+func (i CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs) ToCxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput() CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput {
+	return i.ToCxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutputWithContext(context.Background())
+}
+
+func (i CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs) ToCxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput)
+}
+
+func (i CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs) ToCxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput() CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return i.ToCxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Background())
+}
+
+func (i CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs) ToCxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput).ToCxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx)
+}
+
+// CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrInput is an input type that accepts CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs, CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtr and CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput values.
+// You can construct a concrete instance of `CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrInput` via:
+//
+//	        CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrInput interface {
+	pulumi.Input
+
+	ToCxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput() CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput
+	ToCxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput
+}
+
+type cxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrType CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs
+
+func CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtr(v *CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs) CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrInput {
+	return (*cxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrType)(v)
+}
+
+func (*cxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText)(nil)).Elem()
+}
+
+func (i *cxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrType) ToCxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput() CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return i.ToCxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Background())
+}
+
+func (i *cxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrType) ToCxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput)
+}
+
+type CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput struct{ *pulumi.OutputState }
+
+func (CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText)(nil)).Elem()
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput() CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput {
+	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput {
+	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput() CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return o.ToCxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Background())
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText) *CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText {
+		return &v
+	}).(CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput)
+}
+
+// (Output)
+// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText) *bool {
+		return v.AllowPlaybackInterruption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The SSML text to be synthesized. For more information, see SSML.
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput) Ssml() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText) *string { return v.Ssml }).(pulumi.StringPtrOutput)
+}
+
+// The raw text to be synthesized.
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText) *string { return v.Text }).(pulumi.StringPtrOutput)
+}
+
+type CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput struct{ *pulumi.OutputState }
+
+func (CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText)(nil)).Elem()
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput() CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput) Elem() CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput {
+	return o.ApplyT(func(v *CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText) CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText {
+		if v != nil {
+			return *v
+		}
+		var ret CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText
+		return ret
+	}).(CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput)
+}
+
+// (Output)
+// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowPlaybackInterruption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The SSML text to be synthesized. For more information, see SSML.
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput) Ssml() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ssml
+	}).(pulumi.StringPtrOutput)
+}
+
+// The raw text to be synthesized.
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Text
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio struct {
+	// (Output)
+	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
+	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+	AudioUri string `pulumi:"audioUri"`
+}
+
+// CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioInput is an input type that accepts CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs and CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioOutput values.
+// You can construct a concrete instance of `CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioInput` via:
+//
+//	CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs{...}
+type CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioInput interface {
+	pulumi.Input
+
+	ToCxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioOutput() CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioOutput
+	ToCxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioOutputWithContext(context.Context) CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioOutput
+}
+
+type CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs struct {
+	// (Output)
+	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
+	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+	AudioUri pulumi.StringInput `pulumi:"audioUri"`
+}
+
+func (CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio)(nil)).Elem()
+}
+
+func (i CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs) ToCxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioOutput() CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioOutput {
+	return i.ToCxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioOutputWithContext(context.Background())
+}
+
+func (i CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs) ToCxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioOutput)
+}
+
+func (i CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs) ToCxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput() CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return i.ToCxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(context.Background())
+}
+
+func (i CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs) ToCxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioOutput).ToCxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx)
+}
+
+// CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrInput is an input type that accepts CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs, CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtr and CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput values.
+// You can construct a concrete instance of `CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrInput` via:
+//
+//	        CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrInput interface {
+	pulumi.Input
+
+	ToCxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput() CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput
+	ToCxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(context.Context) CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput
+}
+
+type cxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrType CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs
+
+func CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtr(v *CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs) CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrInput {
+	return (*cxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrType)(v)
+}
+
+func (*cxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio)(nil)).Elem()
+}
+
+func (i *cxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrType) ToCxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput() CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return i.ToCxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(context.Background())
+}
+
+func (i *cxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrType) ToCxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput)
+}
+
+type CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioOutput struct{ *pulumi.OutputState }
+
+func (CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio)(nil)).Elem()
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioOutput() CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioOutput {
+	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioOutput {
+	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput() CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return o.ToCxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(context.Background())
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio) *CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio {
+		return &v
+	}).(CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput)
+}
+
+// (Output)
+// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+func (o CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio) *bool {
+		return v.AllowPlaybackInterruption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+func (o CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioOutput) AudioUri() pulumi.StringOutput {
+	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio) string { return v.AudioUri }).(pulumi.StringOutput)
+}
+
+type CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput struct{ *pulumi.OutputState }
+
+func (CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio)(nil)).Elem()
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput() CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput) Elem() CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioOutput {
+	return o.ApplyT(func(v *CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio) CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio {
+		if v != nil {
+			return *v
+		}
+		var ret CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio
+		return ret
+	}).(CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioOutput)
+}
+
+// (Output)
+// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+func (o CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowPlaybackInterruption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+func (o CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput) AudioUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudio) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AudioUri
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall struct {
+	// Transfer the call to a phone number in E.164 format.
+	PhoneNumber string `pulumi:"phoneNumber"`
+}
+
+// CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallInput is an input type that accepts CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs and CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput values.
+// You can construct a concrete instance of `CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallInput` via:
+//
+//	CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs{...}
+type CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallInput interface {
+	pulumi.Input
+
+	ToCxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput() CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput
+	ToCxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutputWithContext(context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput
+}
+
+type CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs struct {
+	// Transfer the call to a phone number in E.164 format.
+	PhoneNumber pulumi.StringInput `pulumi:"phoneNumber"`
+}
+
+func (CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall)(nil)).Elem()
+}
+
+func (i CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs) ToCxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput() CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput {
+	return i.ToCxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutputWithContext(context.Background())
+}
+
+func (i CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs) ToCxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput)
+}
+
+func (i CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs) ToCxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput() CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return i.ToCxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Background())
+}
+
+func (i CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs) ToCxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput).ToCxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx)
+}
+
+// CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrInput is an input type that accepts CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs, CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtr and CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput values.
+// You can construct a concrete instance of `CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrInput` via:
+//
+//	        CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrInput interface {
+	pulumi.Input
+
+	ToCxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput() CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput
+	ToCxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput
+}
+
+type cxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrType CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs
+
+func CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtr(v *CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs) CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrInput {
+	return (*cxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrType)(v)
+}
+
+func (*cxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall)(nil)).Elem()
+}
+
+func (i *cxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrType) ToCxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput() CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return i.ToCxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Background())
+}
+
+func (i *cxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrType) ToCxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput)
+}
+
+type CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput struct{ *pulumi.OutputState }
+
+func (CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall)(nil)).Elem()
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput() CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput {
+	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput {
+	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput() CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return o.ToCxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Background())
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall) *CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall {
+		return &v
+	}).(CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput)
+}
+
+// Transfer the call to a phone number in E.164 format.
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput) PhoneNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall) string {
+		return v.PhoneNumber
+	}).(pulumi.StringOutput)
+}
+
+type CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput struct{ *pulumi.OutputState }
+
+func (CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall)(nil)).Elem()
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput() CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) ToCxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) Elem() CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput {
+	return o.ApplyT(func(v *CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall) CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall {
+		if v != nil {
+			return *v
+		}
+		var ret CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall
+		return ret
+	}).(CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput)
+}
+
+// Transfer the call to a phone number in E.164 format.
+func (o CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) PhoneNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PhoneNumber
+	}).(pulumi.StringPtrOutput)
 }
 
 type CxFlowTransitionRouteTriggerFulfillmentMessageText struct {
@@ -1901,6 +4039,112 @@ func (o CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput) Texts() pul
 		}
 		return v.Texts
 	}).(pulumi.StringArrayOutput)
+}
+
+type CxFlowTransitionRouteTriggerFulfillmentSetParameterAction struct {
+	// Display name of the parameter.
+	Parameter *string `pulumi:"parameter"`
+	// The new JSON-encoded value of the parameter. A null value clears the parameter.
+	Value *string `pulumi:"value"`
+}
+
+// CxFlowTransitionRouteTriggerFulfillmentSetParameterActionInput is an input type that accepts CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs and CxFlowTransitionRouteTriggerFulfillmentSetParameterActionOutput values.
+// You can construct a concrete instance of `CxFlowTransitionRouteTriggerFulfillmentSetParameterActionInput` via:
+//
+//	CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs{...}
+type CxFlowTransitionRouteTriggerFulfillmentSetParameterActionInput interface {
+	pulumi.Input
+
+	ToCxFlowTransitionRouteTriggerFulfillmentSetParameterActionOutput() CxFlowTransitionRouteTriggerFulfillmentSetParameterActionOutput
+	ToCxFlowTransitionRouteTriggerFulfillmentSetParameterActionOutputWithContext(context.Context) CxFlowTransitionRouteTriggerFulfillmentSetParameterActionOutput
+}
+
+type CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs struct {
+	// Display name of the parameter.
+	Parameter pulumi.StringPtrInput `pulumi:"parameter"`
+	// The new JSON-encoded value of the parameter. A null value clears the parameter.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowTransitionRouteTriggerFulfillmentSetParameterAction)(nil)).Elem()
+}
+
+func (i CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs) ToCxFlowTransitionRouteTriggerFulfillmentSetParameterActionOutput() CxFlowTransitionRouteTriggerFulfillmentSetParameterActionOutput {
+	return i.ToCxFlowTransitionRouteTriggerFulfillmentSetParameterActionOutputWithContext(context.Background())
+}
+
+func (i CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs) ToCxFlowTransitionRouteTriggerFulfillmentSetParameterActionOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentSetParameterActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentSetParameterActionOutput)
+}
+
+// CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayInput is an input type that accepts CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArray and CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput values.
+// You can construct a concrete instance of `CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayInput` via:
+//
+//	CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArray{ CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs{...} }
+type CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayInput interface {
+	pulumi.Input
+
+	ToCxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput() CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput
+	ToCxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayOutputWithContext(context.Context) CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput
+}
+
+type CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArray []CxFlowTransitionRouteTriggerFulfillmentSetParameterActionInput
+
+func (CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxFlowTransitionRouteTriggerFulfillmentSetParameterAction)(nil)).Elem()
+}
+
+func (i CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArray) ToCxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput() CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput {
+	return i.ToCxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayOutputWithContext(context.Background())
+}
+
+func (i CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArray) ToCxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput)
+}
+
+type CxFlowTransitionRouteTriggerFulfillmentSetParameterActionOutput struct{ *pulumi.OutputState }
+
+func (CxFlowTransitionRouteTriggerFulfillmentSetParameterActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxFlowTransitionRouteTriggerFulfillmentSetParameterAction)(nil)).Elem()
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentSetParameterActionOutput) ToCxFlowTransitionRouteTriggerFulfillmentSetParameterActionOutput() CxFlowTransitionRouteTriggerFulfillmentSetParameterActionOutput {
+	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentSetParameterActionOutput) ToCxFlowTransitionRouteTriggerFulfillmentSetParameterActionOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentSetParameterActionOutput {
+	return o
+}
+
+// Display name of the parameter.
+func (o CxFlowTransitionRouteTriggerFulfillmentSetParameterActionOutput) Parameter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillmentSetParameterAction) *string { return v.Parameter }).(pulumi.StringPtrOutput)
+}
+
+// The new JSON-encoded value of the parameter. A null value clears the parameter.
+func (o CxFlowTransitionRouteTriggerFulfillmentSetParameterActionOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxFlowTransitionRouteTriggerFulfillmentSetParameterAction) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput struct{ *pulumi.OutputState }
+
+func (CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxFlowTransitionRouteTriggerFulfillmentSetParameterAction)(nil)).Elem()
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput) ToCxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput() CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput {
+	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput) ToCxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayOutputWithContext(ctx context.Context) CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput {
+	return o
+}
+
+func (o CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput) Index(i pulumi.IntInput) CxFlowTransitionRouteTriggerFulfillmentSetParameterActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxFlowTransitionRouteTriggerFulfillmentSetParameterAction {
+		return vs[0].([]CxFlowTransitionRouteTriggerFulfillmentSetParameterAction)[vs[1].(int)]
+	}).(CxFlowTransitionRouteTriggerFulfillmentSetParameterActionOutput)
 }
 
 type CxIntentParameter struct {
@@ -2279,11 +4523,17 @@ func (o CxIntentTrainingPhrasePartArrayOutput) Index(i pulumi.IntInput) CxIntent
 }
 
 type CxPageEntryFulfillment struct {
+	// Conditional cases for this fulfillment.
+	// Structure is documented below.
+	ConditionalCases []CxPageEntryFulfillmentConditionalCase `pulumi:"conditionalCases"`
 	// The list of rich message responses to present to the user.
 	// Structure is documented below.
 	Messages []CxPageEntryFulfillmentMessage `pulumi:"messages"`
 	// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
 	ReturnPartialResponses *bool `pulumi:"returnPartialResponses"`
+	// Set parameter values before executing the webhook.
+	// Structure is documented below.
+	SetParameterActions []CxPageEntryFulfillmentSetParameterAction `pulumi:"setParameterActions"`
 	// The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
 	Tag *string `pulumi:"tag"`
 	// The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
@@ -2302,11 +4552,17 @@ type CxPageEntryFulfillmentInput interface {
 }
 
 type CxPageEntryFulfillmentArgs struct {
+	// Conditional cases for this fulfillment.
+	// Structure is documented below.
+	ConditionalCases CxPageEntryFulfillmentConditionalCaseArrayInput `pulumi:"conditionalCases"`
 	// The list of rich message responses to present to the user.
 	// Structure is documented below.
 	Messages CxPageEntryFulfillmentMessageArrayInput `pulumi:"messages"`
 	// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
 	ReturnPartialResponses pulumi.BoolPtrInput `pulumi:"returnPartialResponses"`
+	// Set parameter values before executing the webhook.
+	// Structure is documented below.
+	SetParameterActions CxPageEntryFulfillmentSetParameterActionArrayInput `pulumi:"setParameterActions"`
 	// The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
 	Tag pulumi.StringPtrInput `pulumi:"tag"`
 	// The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
@@ -2390,6 +4646,12 @@ func (o CxPageEntryFulfillmentOutput) ToCxPageEntryFulfillmentPtrOutputWithConte
 	}).(CxPageEntryFulfillmentPtrOutput)
 }
 
+// Conditional cases for this fulfillment.
+// Structure is documented below.
+func (o CxPageEntryFulfillmentOutput) ConditionalCases() CxPageEntryFulfillmentConditionalCaseArrayOutput {
+	return o.ApplyT(func(v CxPageEntryFulfillment) []CxPageEntryFulfillmentConditionalCase { return v.ConditionalCases }).(CxPageEntryFulfillmentConditionalCaseArrayOutput)
+}
+
 // The list of rich message responses to present to the user.
 // Structure is documented below.
 func (o CxPageEntryFulfillmentOutput) Messages() CxPageEntryFulfillmentMessageArrayOutput {
@@ -2399,6 +4661,14 @@ func (o CxPageEntryFulfillmentOutput) Messages() CxPageEntryFulfillmentMessageAr
 // Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
 func (o CxPageEntryFulfillmentOutput) ReturnPartialResponses() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CxPageEntryFulfillment) *bool { return v.ReturnPartialResponses }).(pulumi.BoolPtrOutput)
+}
+
+// Set parameter values before executing the webhook.
+// Structure is documented below.
+func (o CxPageEntryFulfillmentOutput) SetParameterActions() CxPageEntryFulfillmentSetParameterActionArrayOutput {
+	return o.ApplyT(func(v CxPageEntryFulfillment) []CxPageEntryFulfillmentSetParameterAction {
+		return v.SetParameterActions
+	}).(CxPageEntryFulfillmentSetParameterActionArrayOutput)
 }
 
 // The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
@@ -2435,6 +4705,17 @@ func (o CxPageEntryFulfillmentPtrOutput) Elem() CxPageEntryFulfillmentOutput {
 	}).(CxPageEntryFulfillmentOutput)
 }
 
+// Conditional cases for this fulfillment.
+// Structure is documented below.
+func (o CxPageEntryFulfillmentPtrOutput) ConditionalCases() CxPageEntryFulfillmentConditionalCaseArrayOutput {
+	return o.ApplyT(func(v *CxPageEntryFulfillment) []CxPageEntryFulfillmentConditionalCase {
+		if v == nil {
+			return nil
+		}
+		return v.ConditionalCases
+	}).(CxPageEntryFulfillmentConditionalCaseArrayOutput)
+}
+
 // The list of rich message responses to present to the user.
 // Structure is documented below.
 func (o CxPageEntryFulfillmentPtrOutput) Messages() CxPageEntryFulfillmentMessageArrayOutput {
@@ -2454,6 +4735,17 @@ func (o CxPageEntryFulfillmentPtrOutput) ReturnPartialResponses() pulumi.BoolPtr
 		}
 		return v.ReturnPartialResponses
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Set parameter values before executing the webhook.
+// Structure is documented below.
+func (o CxPageEntryFulfillmentPtrOutput) SetParameterActions() CxPageEntryFulfillmentSetParameterActionArrayOutput {
+	return o.ApplyT(func(v *CxPageEntryFulfillment) []CxPageEntryFulfillmentSetParameterAction {
+		if v == nil {
+			return nil
+		}
+		return v.SetParameterActions
+	}).(CxPageEntryFulfillmentSetParameterActionArrayOutput)
 }
 
 // The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
@@ -2476,7 +4768,134 @@ func (o CxPageEntryFulfillmentPtrOutput) Webhook() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type CxPageEntryFulfillmentConditionalCase struct {
+	// A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+	// See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+	Cases *string `pulumi:"cases"`
+}
+
+// CxPageEntryFulfillmentConditionalCaseInput is an input type that accepts CxPageEntryFulfillmentConditionalCaseArgs and CxPageEntryFulfillmentConditionalCaseOutput values.
+// You can construct a concrete instance of `CxPageEntryFulfillmentConditionalCaseInput` via:
+//
+//	CxPageEntryFulfillmentConditionalCaseArgs{...}
+type CxPageEntryFulfillmentConditionalCaseInput interface {
+	pulumi.Input
+
+	ToCxPageEntryFulfillmentConditionalCaseOutput() CxPageEntryFulfillmentConditionalCaseOutput
+	ToCxPageEntryFulfillmentConditionalCaseOutputWithContext(context.Context) CxPageEntryFulfillmentConditionalCaseOutput
+}
+
+type CxPageEntryFulfillmentConditionalCaseArgs struct {
+	// A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+	// See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+	Cases pulumi.StringPtrInput `pulumi:"cases"`
+}
+
+func (CxPageEntryFulfillmentConditionalCaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageEntryFulfillmentConditionalCase)(nil)).Elem()
+}
+
+func (i CxPageEntryFulfillmentConditionalCaseArgs) ToCxPageEntryFulfillmentConditionalCaseOutput() CxPageEntryFulfillmentConditionalCaseOutput {
+	return i.ToCxPageEntryFulfillmentConditionalCaseOutputWithContext(context.Background())
+}
+
+func (i CxPageEntryFulfillmentConditionalCaseArgs) ToCxPageEntryFulfillmentConditionalCaseOutputWithContext(ctx context.Context) CxPageEntryFulfillmentConditionalCaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentConditionalCaseOutput)
+}
+
+// CxPageEntryFulfillmentConditionalCaseArrayInput is an input type that accepts CxPageEntryFulfillmentConditionalCaseArray and CxPageEntryFulfillmentConditionalCaseArrayOutput values.
+// You can construct a concrete instance of `CxPageEntryFulfillmentConditionalCaseArrayInput` via:
+//
+//	CxPageEntryFulfillmentConditionalCaseArray{ CxPageEntryFulfillmentConditionalCaseArgs{...} }
+type CxPageEntryFulfillmentConditionalCaseArrayInput interface {
+	pulumi.Input
+
+	ToCxPageEntryFulfillmentConditionalCaseArrayOutput() CxPageEntryFulfillmentConditionalCaseArrayOutput
+	ToCxPageEntryFulfillmentConditionalCaseArrayOutputWithContext(context.Context) CxPageEntryFulfillmentConditionalCaseArrayOutput
+}
+
+type CxPageEntryFulfillmentConditionalCaseArray []CxPageEntryFulfillmentConditionalCaseInput
+
+func (CxPageEntryFulfillmentConditionalCaseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxPageEntryFulfillmentConditionalCase)(nil)).Elem()
+}
+
+func (i CxPageEntryFulfillmentConditionalCaseArray) ToCxPageEntryFulfillmentConditionalCaseArrayOutput() CxPageEntryFulfillmentConditionalCaseArrayOutput {
+	return i.ToCxPageEntryFulfillmentConditionalCaseArrayOutputWithContext(context.Background())
+}
+
+func (i CxPageEntryFulfillmentConditionalCaseArray) ToCxPageEntryFulfillmentConditionalCaseArrayOutputWithContext(ctx context.Context) CxPageEntryFulfillmentConditionalCaseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentConditionalCaseArrayOutput)
+}
+
+type CxPageEntryFulfillmentConditionalCaseOutput struct{ *pulumi.OutputState }
+
+func (CxPageEntryFulfillmentConditionalCaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageEntryFulfillmentConditionalCase)(nil)).Elem()
+}
+
+func (o CxPageEntryFulfillmentConditionalCaseOutput) ToCxPageEntryFulfillmentConditionalCaseOutput() CxPageEntryFulfillmentConditionalCaseOutput {
+	return o
+}
+
+func (o CxPageEntryFulfillmentConditionalCaseOutput) ToCxPageEntryFulfillmentConditionalCaseOutputWithContext(ctx context.Context) CxPageEntryFulfillmentConditionalCaseOutput {
+	return o
+}
+
+// A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+// See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+func (o CxPageEntryFulfillmentConditionalCaseOutput) Cases() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageEntryFulfillmentConditionalCase) *string { return v.Cases }).(pulumi.StringPtrOutput)
+}
+
+type CxPageEntryFulfillmentConditionalCaseArrayOutput struct{ *pulumi.OutputState }
+
+func (CxPageEntryFulfillmentConditionalCaseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxPageEntryFulfillmentConditionalCase)(nil)).Elem()
+}
+
+func (o CxPageEntryFulfillmentConditionalCaseArrayOutput) ToCxPageEntryFulfillmentConditionalCaseArrayOutput() CxPageEntryFulfillmentConditionalCaseArrayOutput {
+	return o
+}
+
+func (o CxPageEntryFulfillmentConditionalCaseArrayOutput) ToCxPageEntryFulfillmentConditionalCaseArrayOutputWithContext(ctx context.Context) CxPageEntryFulfillmentConditionalCaseArrayOutput {
+	return o
+}
+
+func (o CxPageEntryFulfillmentConditionalCaseArrayOutput) Index(i pulumi.IntInput) CxPageEntryFulfillmentConditionalCaseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxPageEntryFulfillmentConditionalCase {
+		return vs[0].([]CxPageEntryFulfillmentConditionalCase)[vs[1].(int)]
+	}).(CxPageEntryFulfillmentConditionalCaseOutput)
+}
+
 type CxPageEntryFulfillmentMessage struct {
+	// The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+	Channel *string `pulumi:"channel"`
+	// Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+	// Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+	// You may set this, for example:
+	// * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+	// * In a webhook response when you determine that you handled the customer issue.
+	//   Structure is documented below.
+	ConversationSuccess *CxPageEntryFulfillmentMessageConversationSuccess `pulumi:"conversationSuccess"`
+	// Indicates that the conversation should be handed off to a live agent.
+	// Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+	// You may set this, for example:
+	// * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+	// * In a webhook response when you determine that the customer issue can only be handled by a human.
+	//   Structure is documented below.
+	LiveAgentHandoff *CxPageEntryFulfillmentMessageLiveAgentHandoff `pulumi:"liveAgentHandoff"`
+	// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+	// Structure is documented below.
+	OutputAudioText *CxPageEntryFulfillmentMessageOutputAudioText `pulumi:"outputAudioText"`
+	// A custom, platform-specific payload.
+	Payload *string `pulumi:"payload"`
+	// Specifies an audio clip to be played by the client as part of the response.
+	// Structure is documented below.
+	PlayAudio *CxPageEntryFulfillmentMessagePlayAudio `pulumi:"playAudio"`
+	// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+	// Structure is documented below.
+	TelephonyTransferCall *CxPageEntryFulfillmentMessageTelephonyTransferCall `pulumi:"telephonyTransferCall"`
 	// The text response message.
 	// Structure is documented below.
 	Text *CxPageEntryFulfillmentMessageText `pulumi:"text"`
@@ -2494,6 +4913,33 @@ type CxPageEntryFulfillmentMessageInput interface {
 }
 
 type CxPageEntryFulfillmentMessageArgs struct {
+	// The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+	Channel pulumi.StringPtrInput `pulumi:"channel"`
+	// Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+	// Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+	// You may set this, for example:
+	// * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+	// * In a webhook response when you determine that you handled the customer issue.
+	//   Structure is documented below.
+	ConversationSuccess CxPageEntryFulfillmentMessageConversationSuccessPtrInput `pulumi:"conversationSuccess"`
+	// Indicates that the conversation should be handed off to a live agent.
+	// Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+	// You may set this, for example:
+	// * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+	// * In a webhook response when you determine that the customer issue can only be handled by a human.
+	//   Structure is documented below.
+	LiveAgentHandoff CxPageEntryFulfillmentMessageLiveAgentHandoffPtrInput `pulumi:"liveAgentHandoff"`
+	// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+	// Structure is documented below.
+	OutputAudioText CxPageEntryFulfillmentMessageOutputAudioTextPtrInput `pulumi:"outputAudioText"`
+	// A custom, platform-specific payload.
+	Payload pulumi.StringPtrInput `pulumi:"payload"`
+	// Specifies an audio clip to be played by the client as part of the response.
+	// Structure is documented below.
+	PlayAudio CxPageEntryFulfillmentMessagePlayAudioPtrInput `pulumi:"playAudio"`
+	// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+	// Structure is documented below.
+	TelephonyTransferCall CxPageEntryFulfillmentMessageTelephonyTransferCallPtrInput `pulumi:"telephonyTransferCall"`
 	// The text response message.
 	// Structure is documented below.
 	Text CxPageEntryFulfillmentMessageTextPtrInput `pulumi:"text"`
@@ -2550,6 +4996,62 @@ func (o CxPageEntryFulfillmentMessageOutput) ToCxPageEntryFulfillmentMessageOutp
 	return o
 }
 
+// The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+func (o CxPageEntryFulfillmentMessageOutput) Channel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageEntryFulfillmentMessage) *string { return v.Channel }).(pulumi.StringPtrOutput)
+}
+
+// Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+// Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+// You may set this, for example:
+//   - In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+//   - In a webhook response when you determine that you handled the customer issue.
+//     Structure is documented below.
+func (o CxPageEntryFulfillmentMessageOutput) ConversationSuccess() CxPageEntryFulfillmentMessageConversationSuccessPtrOutput {
+	return o.ApplyT(func(v CxPageEntryFulfillmentMessage) *CxPageEntryFulfillmentMessageConversationSuccess {
+		return v.ConversationSuccess
+	}).(CxPageEntryFulfillmentMessageConversationSuccessPtrOutput)
+}
+
+// Indicates that the conversation should be handed off to a live agent.
+// Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+// You may set this, for example:
+//   - In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+//   - In a webhook response when you determine that the customer issue can only be handled by a human.
+//     Structure is documented below.
+func (o CxPageEntryFulfillmentMessageOutput) LiveAgentHandoff() CxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return o.ApplyT(func(v CxPageEntryFulfillmentMessage) *CxPageEntryFulfillmentMessageLiveAgentHandoff {
+		return v.LiveAgentHandoff
+	}).(CxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutput)
+}
+
+// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+// Structure is documented below.
+func (o CxPageEntryFulfillmentMessageOutput) OutputAudioText() CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput {
+	return o.ApplyT(func(v CxPageEntryFulfillmentMessage) *CxPageEntryFulfillmentMessageOutputAudioText {
+		return v.OutputAudioText
+	}).(CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput)
+}
+
+// A custom, platform-specific payload.
+func (o CxPageEntryFulfillmentMessageOutput) Payload() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageEntryFulfillmentMessage) *string { return v.Payload }).(pulumi.StringPtrOutput)
+}
+
+// Specifies an audio clip to be played by the client as part of the response.
+// Structure is documented below.
+func (o CxPageEntryFulfillmentMessageOutput) PlayAudio() CxPageEntryFulfillmentMessagePlayAudioPtrOutput {
+	return o.ApplyT(func(v CxPageEntryFulfillmentMessage) *CxPageEntryFulfillmentMessagePlayAudio { return v.PlayAudio }).(CxPageEntryFulfillmentMessagePlayAudioPtrOutput)
+}
+
+// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+// Structure is documented below.
+func (o CxPageEntryFulfillmentMessageOutput) TelephonyTransferCall() CxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return o.ApplyT(func(v CxPageEntryFulfillmentMessage) *CxPageEntryFulfillmentMessageTelephonyTransferCall {
+		return v.TelephonyTransferCall
+	}).(CxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutput)
+}
+
 // The text response message.
 // Structure is documented below.
 func (o CxPageEntryFulfillmentMessageOutput) Text() CxPageEntryFulfillmentMessageTextPtrOutput {
@@ -2574,6 +5076,756 @@ func (o CxPageEntryFulfillmentMessageArrayOutput) Index(i pulumi.IntInput) CxPag
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxPageEntryFulfillmentMessage {
 		return vs[0].([]CxPageEntryFulfillmentMessage)[vs[1].(int)]
 	}).(CxPageEntryFulfillmentMessageOutput)
+}
+
+type CxPageEntryFulfillmentMessageConversationSuccess struct {
+	// Custom metadata. Dialogflow doesn't impose any structure on this.
+	Metadata *string `pulumi:"metadata"`
+}
+
+// CxPageEntryFulfillmentMessageConversationSuccessInput is an input type that accepts CxPageEntryFulfillmentMessageConversationSuccessArgs and CxPageEntryFulfillmentMessageConversationSuccessOutput values.
+// You can construct a concrete instance of `CxPageEntryFulfillmentMessageConversationSuccessInput` via:
+//
+//	CxPageEntryFulfillmentMessageConversationSuccessArgs{...}
+type CxPageEntryFulfillmentMessageConversationSuccessInput interface {
+	pulumi.Input
+
+	ToCxPageEntryFulfillmentMessageConversationSuccessOutput() CxPageEntryFulfillmentMessageConversationSuccessOutput
+	ToCxPageEntryFulfillmentMessageConversationSuccessOutputWithContext(context.Context) CxPageEntryFulfillmentMessageConversationSuccessOutput
+}
+
+type CxPageEntryFulfillmentMessageConversationSuccessArgs struct {
+	// Custom metadata. Dialogflow doesn't impose any structure on this.
+	Metadata pulumi.StringPtrInput `pulumi:"metadata"`
+}
+
+func (CxPageEntryFulfillmentMessageConversationSuccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageEntryFulfillmentMessageConversationSuccess)(nil)).Elem()
+}
+
+func (i CxPageEntryFulfillmentMessageConversationSuccessArgs) ToCxPageEntryFulfillmentMessageConversationSuccessOutput() CxPageEntryFulfillmentMessageConversationSuccessOutput {
+	return i.ToCxPageEntryFulfillmentMessageConversationSuccessOutputWithContext(context.Background())
+}
+
+func (i CxPageEntryFulfillmentMessageConversationSuccessArgs) ToCxPageEntryFulfillmentMessageConversationSuccessOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessageConversationSuccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentMessageConversationSuccessOutput)
+}
+
+func (i CxPageEntryFulfillmentMessageConversationSuccessArgs) ToCxPageEntryFulfillmentMessageConversationSuccessPtrOutput() CxPageEntryFulfillmentMessageConversationSuccessPtrOutput {
+	return i.ToCxPageEntryFulfillmentMessageConversationSuccessPtrOutputWithContext(context.Background())
+}
+
+func (i CxPageEntryFulfillmentMessageConversationSuccessArgs) ToCxPageEntryFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessageConversationSuccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentMessageConversationSuccessOutput).ToCxPageEntryFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx)
+}
+
+// CxPageEntryFulfillmentMessageConversationSuccessPtrInput is an input type that accepts CxPageEntryFulfillmentMessageConversationSuccessArgs, CxPageEntryFulfillmentMessageConversationSuccessPtr and CxPageEntryFulfillmentMessageConversationSuccessPtrOutput values.
+// You can construct a concrete instance of `CxPageEntryFulfillmentMessageConversationSuccessPtrInput` via:
+//
+//	        CxPageEntryFulfillmentMessageConversationSuccessArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxPageEntryFulfillmentMessageConversationSuccessPtrInput interface {
+	pulumi.Input
+
+	ToCxPageEntryFulfillmentMessageConversationSuccessPtrOutput() CxPageEntryFulfillmentMessageConversationSuccessPtrOutput
+	ToCxPageEntryFulfillmentMessageConversationSuccessPtrOutputWithContext(context.Context) CxPageEntryFulfillmentMessageConversationSuccessPtrOutput
+}
+
+type cxPageEntryFulfillmentMessageConversationSuccessPtrType CxPageEntryFulfillmentMessageConversationSuccessArgs
+
+func CxPageEntryFulfillmentMessageConversationSuccessPtr(v *CxPageEntryFulfillmentMessageConversationSuccessArgs) CxPageEntryFulfillmentMessageConversationSuccessPtrInput {
+	return (*cxPageEntryFulfillmentMessageConversationSuccessPtrType)(v)
+}
+
+func (*cxPageEntryFulfillmentMessageConversationSuccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageEntryFulfillmentMessageConversationSuccess)(nil)).Elem()
+}
+
+func (i *cxPageEntryFulfillmentMessageConversationSuccessPtrType) ToCxPageEntryFulfillmentMessageConversationSuccessPtrOutput() CxPageEntryFulfillmentMessageConversationSuccessPtrOutput {
+	return i.ToCxPageEntryFulfillmentMessageConversationSuccessPtrOutputWithContext(context.Background())
+}
+
+func (i *cxPageEntryFulfillmentMessageConversationSuccessPtrType) ToCxPageEntryFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessageConversationSuccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentMessageConversationSuccessPtrOutput)
+}
+
+type CxPageEntryFulfillmentMessageConversationSuccessOutput struct{ *pulumi.OutputState }
+
+func (CxPageEntryFulfillmentMessageConversationSuccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageEntryFulfillmentMessageConversationSuccess)(nil)).Elem()
+}
+
+func (o CxPageEntryFulfillmentMessageConversationSuccessOutput) ToCxPageEntryFulfillmentMessageConversationSuccessOutput() CxPageEntryFulfillmentMessageConversationSuccessOutput {
+	return o
+}
+
+func (o CxPageEntryFulfillmentMessageConversationSuccessOutput) ToCxPageEntryFulfillmentMessageConversationSuccessOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessageConversationSuccessOutput {
+	return o
+}
+
+func (o CxPageEntryFulfillmentMessageConversationSuccessOutput) ToCxPageEntryFulfillmentMessageConversationSuccessPtrOutput() CxPageEntryFulfillmentMessageConversationSuccessPtrOutput {
+	return o.ToCxPageEntryFulfillmentMessageConversationSuccessPtrOutputWithContext(context.Background())
+}
+
+func (o CxPageEntryFulfillmentMessageConversationSuccessOutput) ToCxPageEntryFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessageConversationSuccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageEntryFulfillmentMessageConversationSuccess) *CxPageEntryFulfillmentMessageConversationSuccess {
+		return &v
+	}).(CxPageEntryFulfillmentMessageConversationSuccessPtrOutput)
+}
+
+// Custom metadata. Dialogflow doesn't impose any structure on this.
+func (o CxPageEntryFulfillmentMessageConversationSuccessOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageEntryFulfillmentMessageConversationSuccess) *string { return v.Metadata }).(pulumi.StringPtrOutput)
+}
+
+type CxPageEntryFulfillmentMessageConversationSuccessPtrOutput struct{ *pulumi.OutputState }
+
+func (CxPageEntryFulfillmentMessageConversationSuccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageEntryFulfillmentMessageConversationSuccess)(nil)).Elem()
+}
+
+func (o CxPageEntryFulfillmentMessageConversationSuccessPtrOutput) ToCxPageEntryFulfillmentMessageConversationSuccessPtrOutput() CxPageEntryFulfillmentMessageConversationSuccessPtrOutput {
+	return o
+}
+
+func (o CxPageEntryFulfillmentMessageConversationSuccessPtrOutput) ToCxPageEntryFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessageConversationSuccessPtrOutput {
+	return o
+}
+
+func (o CxPageEntryFulfillmentMessageConversationSuccessPtrOutput) Elem() CxPageEntryFulfillmentMessageConversationSuccessOutput {
+	return o.ApplyT(func(v *CxPageEntryFulfillmentMessageConversationSuccess) CxPageEntryFulfillmentMessageConversationSuccess {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageEntryFulfillmentMessageConversationSuccess
+		return ret
+	}).(CxPageEntryFulfillmentMessageConversationSuccessOutput)
+}
+
+// Custom metadata. Dialogflow doesn't impose any structure on this.
+func (o CxPageEntryFulfillmentMessageConversationSuccessPtrOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageEntryFulfillmentMessageConversationSuccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Metadata
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxPageEntryFulfillmentMessageLiveAgentHandoff struct {
+	// Custom metadata. Dialogflow doesn't impose any structure on this.
+	Metadata *string `pulumi:"metadata"`
+}
+
+// CxPageEntryFulfillmentMessageLiveAgentHandoffInput is an input type that accepts CxPageEntryFulfillmentMessageLiveAgentHandoffArgs and CxPageEntryFulfillmentMessageLiveAgentHandoffOutput values.
+// You can construct a concrete instance of `CxPageEntryFulfillmentMessageLiveAgentHandoffInput` via:
+//
+//	CxPageEntryFulfillmentMessageLiveAgentHandoffArgs{...}
+type CxPageEntryFulfillmentMessageLiveAgentHandoffInput interface {
+	pulumi.Input
+
+	ToCxPageEntryFulfillmentMessageLiveAgentHandoffOutput() CxPageEntryFulfillmentMessageLiveAgentHandoffOutput
+	ToCxPageEntryFulfillmentMessageLiveAgentHandoffOutputWithContext(context.Context) CxPageEntryFulfillmentMessageLiveAgentHandoffOutput
+}
+
+type CxPageEntryFulfillmentMessageLiveAgentHandoffArgs struct {
+	// Custom metadata. Dialogflow doesn't impose any structure on this.
+	Metadata pulumi.StringPtrInput `pulumi:"metadata"`
+}
+
+func (CxPageEntryFulfillmentMessageLiveAgentHandoffArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageEntryFulfillmentMessageLiveAgentHandoff)(nil)).Elem()
+}
+
+func (i CxPageEntryFulfillmentMessageLiveAgentHandoffArgs) ToCxPageEntryFulfillmentMessageLiveAgentHandoffOutput() CxPageEntryFulfillmentMessageLiveAgentHandoffOutput {
+	return i.ToCxPageEntryFulfillmentMessageLiveAgentHandoffOutputWithContext(context.Background())
+}
+
+func (i CxPageEntryFulfillmentMessageLiveAgentHandoffArgs) ToCxPageEntryFulfillmentMessageLiveAgentHandoffOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessageLiveAgentHandoffOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentMessageLiveAgentHandoffOutput)
+}
+
+func (i CxPageEntryFulfillmentMessageLiveAgentHandoffArgs) ToCxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutput() CxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return i.ToCxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Background())
+}
+
+func (i CxPageEntryFulfillmentMessageLiveAgentHandoffArgs) ToCxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentMessageLiveAgentHandoffOutput).ToCxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx)
+}
+
+// CxPageEntryFulfillmentMessageLiveAgentHandoffPtrInput is an input type that accepts CxPageEntryFulfillmentMessageLiveAgentHandoffArgs, CxPageEntryFulfillmentMessageLiveAgentHandoffPtr and CxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutput values.
+// You can construct a concrete instance of `CxPageEntryFulfillmentMessageLiveAgentHandoffPtrInput` via:
+//
+//	        CxPageEntryFulfillmentMessageLiveAgentHandoffArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxPageEntryFulfillmentMessageLiveAgentHandoffPtrInput interface {
+	pulumi.Input
+
+	ToCxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutput() CxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutput
+	ToCxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Context) CxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutput
+}
+
+type cxPageEntryFulfillmentMessageLiveAgentHandoffPtrType CxPageEntryFulfillmentMessageLiveAgentHandoffArgs
+
+func CxPageEntryFulfillmentMessageLiveAgentHandoffPtr(v *CxPageEntryFulfillmentMessageLiveAgentHandoffArgs) CxPageEntryFulfillmentMessageLiveAgentHandoffPtrInput {
+	return (*cxPageEntryFulfillmentMessageLiveAgentHandoffPtrType)(v)
+}
+
+func (*cxPageEntryFulfillmentMessageLiveAgentHandoffPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageEntryFulfillmentMessageLiveAgentHandoff)(nil)).Elem()
+}
+
+func (i *cxPageEntryFulfillmentMessageLiveAgentHandoffPtrType) ToCxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutput() CxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return i.ToCxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Background())
+}
+
+func (i *cxPageEntryFulfillmentMessageLiveAgentHandoffPtrType) ToCxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutput)
+}
+
+type CxPageEntryFulfillmentMessageLiveAgentHandoffOutput struct{ *pulumi.OutputState }
+
+func (CxPageEntryFulfillmentMessageLiveAgentHandoffOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageEntryFulfillmentMessageLiveAgentHandoff)(nil)).Elem()
+}
+
+func (o CxPageEntryFulfillmentMessageLiveAgentHandoffOutput) ToCxPageEntryFulfillmentMessageLiveAgentHandoffOutput() CxPageEntryFulfillmentMessageLiveAgentHandoffOutput {
+	return o
+}
+
+func (o CxPageEntryFulfillmentMessageLiveAgentHandoffOutput) ToCxPageEntryFulfillmentMessageLiveAgentHandoffOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessageLiveAgentHandoffOutput {
+	return o
+}
+
+func (o CxPageEntryFulfillmentMessageLiveAgentHandoffOutput) ToCxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutput() CxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return o.ToCxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Background())
+}
+
+func (o CxPageEntryFulfillmentMessageLiveAgentHandoffOutput) ToCxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageEntryFulfillmentMessageLiveAgentHandoff) *CxPageEntryFulfillmentMessageLiveAgentHandoff {
+		return &v
+	}).(CxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutput)
+}
+
+// Custom metadata. Dialogflow doesn't impose any structure on this.
+func (o CxPageEntryFulfillmentMessageLiveAgentHandoffOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageEntryFulfillmentMessageLiveAgentHandoff) *string { return v.Metadata }).(pulumi.StringPtrOutput)
+}
+
+type CxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutput struct{ *pulumi.OutputState }
+
+func (CxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageEntryFulfillmentMessageLiveAgentHandoff)(nil)).Elem()
+}
+
+func (o CxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutput) ToCxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutput() CxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return o
+}
+
+func (o CxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutput) ToCxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return o
+}
+
+func (o CxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutput) Elem() CxPageEntryFulfillmentMessageLiveAgentHandoffOutput {
+	return o.ApplyT(func(v *CxPageEntryFulfillmentMessageLiveAgentHandoff) CxPageEntryFulfillmentMessageLiveAgentHandoff {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageEntryFulfillmentMessageLiveAgentHandoff
+		return ret
+	}).(CxPageEntryFulfillmentMessageLiveAgentHandoffOutput)
+}
+
+// Custom metadata. Dialogflow doesn't impose any structure on this.
+func (o CxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageEntryFulfillmentMessageLiveAgentHandoff) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Metadata
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxPageEntryFulfillmentMessageOutputAudioText struct {
+	// (Output)
+	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
+	// The SSML text to be synthesized. For more information, see SSML.
+	Ssml *string `pulumi:"ssml"`
+	// The raw text to be synthesized.
+	Text *string `pulumi:"text"`
+}
+
+// CxPageEntryFulfillmentMessageOutputAudioTextInput is an input type that accepts CxPageEntryFulfillmentMessageOutputAudioTextArgs and CxPageEntryFulfillmentMessageOutputAudioTextOutput values.
+// You can construct a concrete instance of `CxPageEntryFulfillmentMessageOutputAudioTextInput` via:
+//
+//	CxPageEntryFulfillmentMessageOutputAudioTextArgs{...}
+type CxPageEntryFulfillmentMessageOutputAudioTextInput interface {
+	pulumi.Input
+
+	ToCxPageEntryFulfillmentMessageOutputAudioTextOutput() CxPageEntryFulfillmentMessageOutputAudioTextOutput
+	ToCxPageEntryFulfillmentMessageOutputAudioTextOutputWithContext(context.Context) CxPageEntryFulfillmentMessageOutputAudioTextOutput
+}
+
+type CxPageEntryFulfillmentMessageOutputAudioTextArgs struct {
+	// (Output)
+	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
+	// The SSML text to be synthesized. For more information, see SSML.
+	Ssml pulumi.StringPtrInput `pulumi:"ssml"`
+	// The raw text to be synthesized.
+	Text pulumi.StringPtrInput `pulumi:"text"`
+}
+
+func (CxPageEntryFulfillmentMessageOutputAudioTextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageEntryFulfillmentMessageOutputAudioText)(nil)).Elem()
+}
+
+func (i CxPageEntryFulfillmentMessageOutputAudioTextArgs) ToCxPageEntryFulfillmentMessageOutputAudioTextOutput() CxPageEntryFulfillmentMessageOutputAudioTextOutput {
+	return i.ToCxPageEntryFulfillmentMessageOutputAudioTextOutputWithContext(context.Background())
+}
+
+func (i CxPageEntryFulfillmentMessageOutputAudioTextArgs) ToCxPageEntryFulfillmentMessageOutputAudioTextOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessageOutputAudioTextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentMessageOutputAudioTextOutput)
+}
+
+func (i CxPageEntryFulfillmentMessageOutputAudioTextArgs) ToCxPageEntryFulfillmentMessageOutputAudioTextPtrOutput() CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput {
+	return i.ToCxPageEntryFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Background())
+}
+
+func (i CxPageEntryFulfillmentMessageOutputAudioTextArgs) ToCxPageEntryFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentMessageOutputAudioTextOutput).ToCxPageEntryFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx)
+}
+
+// CxPageEntryFulfillmentMessageOutputAudioTextPtrInput is an input type that accepts CxPageEntryFulfillmentMessageOutputAudioTextArgs, CxPageEntryFulfillmentMessageOutputAudioTextPtr and CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput values.
+// You can construct a concrete instance of `CxPageEntryFulfillmentMessageOutputAudioTextPtrInput` via:
+//
+//	        CxPageEntryFulfillmentMessageOutputAudioTextArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxPageEntryFulfillmentMessageOutputAudioTextPtrInput interface {
+	pulumi.Input
+
+	ToCxPageEntryFulfillmentMessageOutputAudioTextPtrOutput() CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput
+	ToCxPageEntryFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Context) CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput
+}
+
+type cxPageEntryFulfillmentMessageOutputAudioTextPtrType CxPageEntryFulfillmentMessageOutputAudioTextArgs
+
+func CxPageEntryFulfillmentMessageOutputAudioTextPtr(v *CxPageEntryFulfillmentMessageOutputAudioTextArgs) CxPageEntryFulfillmentMessageOutputAudioTextPtrInput {
+	return (*cxPageEntryFulfillmentMessageOutputAudioTextPtrType)(v)
+}
+
+func (*cxPageEntryFulfillmentMessageOutputAudioTextPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageEntryFulfillmentMessageOutputAudioText)(nil)).Elem()
+}
+
+func (i *cxPageEntryFulfillmentMessageOutputAudioTextPtrType) ToCxPageEntryFulfillmentMessageOutputAudioTextPtrOutput() CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput {
+	return i.ToCxPageEntryFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Background())
+}
+
+func (i *cxPageEntryFulfillmentMessageOutputAudioTextPtrType) ToCxPageEntryFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput)
+}
+
+type CxPageEntryFulfillmentMessageOutputAudioTextOutput struct{ *pulumi.OutputState }
+
+func (CxPageEntryFulfillmentMessageOutputAudioTextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageEntryFulfillmentMessageOutputAudioText)(nil)).Elem()
+}
+
+func (o CxPageEntryFulfillmentMessageOutputAudioTextOutput) ToCxPageEntryFulfillmentMessageOutputAudioTextOutput() CxPageEntryFulfillmentMessageOutputAudioTextOutput {
+	return o
+}
+
+func (o CxPageEntryFulfillmentMessageOutputAudioTextOutput) ToCxPageEntryFulfillmentMessageOutputAudioTextOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessageOutputAudioTextOutput {
+	return o
+}
+
+func (o CxPageEntryFulfillmentMessageOutputAudioTextOutput) ToCxPageEntryFulfillmentMessageOutputAudioTextPtrOutput() CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput {
+	return o.ToCxPageEntryFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Background())
+}
+
+func (o CxPageEntryFulfillmentMessageOutputAudioTextOutput) ToCxPageEntryFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageEntryFulfillmentMessageOutputAudioText) *CxPageEntryFulfillmentMessageOutputAudioText {
+		return &v
+	}).(CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput)
+}
+
+// (Output)
+// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+func (o CxPageEntryFulfillmentMessageOutputAudioTextOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxPageEntryFulfillmentMessageOutputAudioText) *bool { return v.AllowPlaybackInterruption }).(pulumi.BoolPtrOutput)
+}
+
+// The SSML text to be synthesized. For more information, see SSML.
+func (o CxPageEntryFulfillmentMessageOutputAudioTextOutput) Ssml() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageEntryFulfillmentMessageOutputAudioText) *string { return v.Ssml }).(pulumi.StringPtrOutput)
+}
+
+// The raw text to be synthesized.
+func (o CxPageEntryFulfillmentMessageOutputAudioTextOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageEntryFulfillmentMessageOutputAudioText) *string { return v.Text }).(pulumi.StringPtrOutput)
+}
+
+type CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput struct{ *pulumi.OutputState }
+
+func (CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageEntryFulfillmentMessageOutputAudioText)(nil)).Elem()
+}
+
+func (o CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput) ToCxPageEntryFulfillmentMessageOutputAudioTextPtrOutput() CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput {
+	return o
+}
+
+func (o CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput) ToCxPageEntryFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput {
+	return o
+}
+
+func (o CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput) Elem() CxPageEntryFulfillmentMessageOutputAudioTextOutput {
+	return o.ApplyT(func(v *CxPageEntryFulfillmentMessageOutputAudioText) CxPageEntryFulfillmentMessageOutputAudioText {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageEntryFulfillmentMessageOutputAudioText
+		return ret
+	}).(CxPageEntryFulfillmentMessageOutputAudioTextOutput)
+}
+
+// (Output)
+// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+func (o CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxPageEntryFulfillmentMessageOutputAudioText) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowPlaybackInterruption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The SSML text to be synthesized. For more information, see SSML.
+func (o CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput) Ssml() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageEntryFulfillmentMessageOutputAudioText) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ssml
+	}).(pulumi.StringPtrOutput)
+}
+
+// The raw text to be synthesized.
+func (o CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageEntryFulfillmentMessageOutputAudioText) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Text
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxPageEntryFulfillmentMessagePlayAudio struct {
+	// (Output)
+	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
+	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+	AudioUri string `pulumi:"audioUri"`
+}
+
+// CxPageEntryFulfillmentMessagePlayAudioInput is an input type that accepts CxPageEntryFulfillmentMessagePlayAudioArgs and CxPageEntryFulfillmentMessagePlayAudioOutput values.
+// You can construct a concrete instance of `CxPageEntryFulfillmentMessagePlayAudioInput` via:
+//
+//	CxPageEntryFulfillmentMessagePlayAudioArgs{...}
+type CxPageEntryFulfillmentMessagePlayAudioInput interface {
+	pulumi.Input
+
+	ToCxPageEntryFulfillmentMessagePlayAudioOutput() CxPageEntryFulfillmentMessagePlayAudioOutput
+	ToCxPageEntryFulfillmentMessagePlayAudioOutputWithContext(context.Context) CxPageEntryFulfillmentMessagePlayAudioOutput
+}
+
+type CxPageEntryFulfillmentMessagePlayAudioArgs struct {
+	// (Output)
+	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
+	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+	AudioUri pulumi.StringInput `pulumi:"audioUri"`
+}
+
+func (CxPageEntryFulfillmentMessagePlayAudioArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageEntryFulfillmentMessagePlayAudio)(nil)).Elem()
+}
+
+func (i CxPageEntryFulfillmentMessagePlayAudioArgs) ToCxPageEntryFulfillmentMessagePlayAudioOutput() CxPageEntryFulfillmentMessagePlayAudioOutput {
+	return i.ToCxPageEntryFulfillmentMessagePlayAudioOutputWithContext(context.Background())
+}
+
+func (i CxPageEntryFulfillmentMessagePlayAudioArgs) ToCxPageEntryFulfillmentMessagePlayAudioOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessagePlayAudioOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentMessagePlayAudioOutput)
+}
+
+func (i CxPageEntryFulfillmentMessagePlayAudioArgs) ToCxPageEntryFulfillmentMessagePlayAudioPtrOutput() CxPageEntryFulfillmentMessagePlayAudioPtrOutput {
+	return i.ToCxPageEntryFulfillmentMessagePlayAudioPtrOutputWithContext(context.Background())
+}
+
+func (i CxPageEntryFulfillmentMessagePlayAudioArgs) ToCxPageEntryFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessagePlayAudioPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentMessagePlayAudioOutput).ToCxPageEntryFulfillmentMessagePlayAudioPtrOutputWithContext(ctx)
+}
+
+// CxPageEntryFulfillmentMessagePlayAudioPtrInput is an input type that accepts CxPageEntryFulfillmentMessagePlayAudioArgs, CxPageEntryFulfillmentMessagePlayAudioPtr and CxPageEntryFulfillmentMessagePlayAudioPtrOutput values.
+// You can construct a concrete instance of `CxPageEntryFulfillmentMessagePlayAudioPtrInput` via:
+//
+//	        CxPageEntryFulfillmentMessagePlayAudioArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxPageEntryFulfillmentMessagePlayAudioPtrInput interface {
+	pulumi.Input
+
+	ToCxPageEntryFulfillmentMessagePlayAudioPtrOutput() CxPageEntryFulfillmentMessagePlayAudioPtrOutput
+	ToCxPageEntryFulfillmentMessagePlayAudioPtrOutputWithContext(context.Context) CxPageEntryFulfillmentMessagePlayAudioPtrOutput
+}
+
+type cxPageEntryFulfillmentMessagePlayAudioPtrType CxPageEntryFulfillmentMessagePlayAudioArgs
+
+func CxPageEntryFulfillmentMessagePlayAudioPtr(v *CxPageEntryFulfillmentMessagePlayAudioArgs) CxPageEntryFulfillmentMessagePlayAudioPtrInput {
+	return (*cxPageEntryFulfillmentMessagePlayAudioPtrType)(v)
+}
+
+func (*cxPageEntryFulfillmentMessagePlayAudioPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageEntryFulfillmentMessagePlayAudio)(nil)).Elem()
+}
+
+func (i *cxPageEntryFulfillmentMessagePlayAudioPtrType) ToCxPageEntryFulfillmentMessagePlayAudioPtrOutput() CxPageEntryFulfillmentMessagePlayAudioPtrOutput {
+	return i.ToCxPageEntryFulfillmentMessagePlayAudioPtrOutputWithContext(context.Background())
+}
+
+func (i *cxPageEntryFulfillmentMessagePlayAudioPtrType) ToCxPageEntryFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessagePlayAudioPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentMessagePlayAudioPtrOutput)
+}
+
+type CxPageEntryFulfillmentMessagePlayAudioOutput struct{ *pulumi.OutputState }
+
+func (CxPageEntryFulfillmentMessagePlayAudioOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageEntryFulfillmentMessagePlayAudio)(nil)).Elem()
+}
+
+func (o CxPageEntryFulfillmentMessagePlayAudioOutput) ToCxPageEntryFulfillmentMessagePlayAudioOutput() CxPageEntryFulfillmentMessagePlayAudioOutput {
+	return o
+}
+
+func (o CxPageEntryFulfillmentMessagePlayAudioOutput) ToCxPageEntryFulfillmentMessagePlayAudioOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessagePlayAudioOutput {
+	return o
+}
+
+func (o CxPageEntryFulfillmentMessagePlayAudioOutput) ToCxPageEntryFulfillmentMessagePlayAudioPtrOutput() CxPageEntryFulfillmentMessagePlayAudioPtrOutput {
+	return o.ToCxPageEntryFulfillmentMessagePlayAudioPtrOutputWithContext(context.Background())
+}
+
+func (o CxPageEntryFulfillmentMessagePlayAudioOutput) ToCxPageEntryFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessagePlayAudioPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageEntryFulfillmentMessagePlayAudio) *CxPageEntryFulfillmentMessagePlayAudio {
+		return &v
+	}).(CxPageEntryFulfillmentMessagePlayAudioPtrOutput)
+}
+
+// (Output)
+// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+func (o CxPageEntryFulfillmentMessagePlayAudioOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxPageEntryFulfillmentMessagePlayAudio) *bool { return v.AllowPlaybackInterruption }).(pulumi.BoolPtrOutput)
+}
+
+// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+func (o CxPageEntryFulfillmentMessagePlayAudioOutput) AudioUri() pulumi.StringOutput {
+	return o.ApplyT(func(v CxPageEntryFulfillmentMessagePlayAudio) string { return v.AudioUri }).(pulumi.StringOutput)
+}
+
+type CxPageEntryFulfillmentMessagePlayAudioPtrOutput struct{ *pulumi.OutputState }
+
+func (CxPageEntryFulfillmentMessagePlayAudioPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageEntryFulfillmentMessagePlayAudio)(nil)).Elem()
+}
+
+func (o CxPageEntryFulfillmentMessagePlayAudioPtrOutput) ToCxPageEntryFulfillmentMessagePlayAudioPtrOutput() CxPageEntryFulfillmentMessagePlayAudioPtrOutput {
+	return o
+}
+
+func (o CxPageEntryFulfillmentMessagePlayAudioPtrOutput) ToCxPageEntryFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessagePlayAudioPtrOutput {
+	return o
+}
+
+func (o CxPageEntryFulfillmentMessagePlayAudioPtrOutput) Elem() CxPageEntryFulfillmentMessagePlayAudioOutput {
+	return o.ApplyT(func(v *CxPageEntryFulfillmentMessagePlayAudio) CxPageEntryFulfillmentMessagePlayAudio {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageEntryFulfillmentMessagePlayAudio
+		return ret
+	}).(CxPageEntryFulfillmentMessagePlayAudioOutput)
+}
+
+// (Output)
+// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+func (o CxPageEntryFulfillmentMessagePlayAudioPtrOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxPageEntryFulfillmentMessagePlayAudio) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowPlaybackInterruption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+func (o CxPageEntryFulfillmentMessagePlayAudioPtrOutput) AudioUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageEntryFulfillmentMessagePlayAudio) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AudioUri
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxPageEntryFulfillmentMessageTelephonyTransferCall struct {
+	// Transfer the call to a phone number in E.164 format.
+	PhoneNumber string `pulumi:"phoneNumber"`
+}
+
+// CxPageEntryFulfillmentMessageTelephonyTransferCallInput is an input type that accepts CxPageEntryFulfillmentMessageTelephonyTransferCallArgs and CxPageEntryFulfillmentMessageTelephonyTransferCallOutput values.
+// You can construct a concrete instance of `CxPageEntryFulfillmentMessageTelephonyTransferCallInput` via:
+//
+//	CxPageEntryFulfillmentMessageTelephonyTransferCallArgs{...}
+type CxPageEntryFulfillmentMessageTelephonyTransferCallInput interface {
+	pulumi.Input
+
+	ToCxPageEntryFulfillmentMessageTelephonyTransferCallOutput() CxPageEntryFulfillmentMessageTelephonyTransferCallOutput
+	ToCxPageEntryFulfillmentMessageTelephonyTransferCallOutputWithContext(context.Context) CxPageEntryFulfillmentMessageTelephonyTransferCallOutput
+}
+
+type CxPageEntryFulfillmentMessageTelephonyTransferCallArgs struct {
+	// Transfer the call to a phone number in E.164 format.
+	PhoneNumber pulumi.StringInput `pulumi:"phoneNumber"`
+}
+
+func (CxPageEntryFulfillmentMessageTelephonyTransferCallArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageEntryFulfillmentMessageTelephonyTransferCall)(nil)).Elem()
+}
+
+func (i CxPageEntryFulfillmentMessageTelephonyTransferCallArgs) ToCxPageEntryFulfillmentMessageTelephonyTransferCallOutput() CxPageEntryFulfillmentMessageTelephonyTransferCallOutput {
+	return i.ToCxPageEntryFulfillmentMessageTelephonyTransferCallOutputWithContext(context.Background())
+}
+
+func (i CxPageEntryFulfillmentMessageTelephonyTransferCallArgs) ToCxPageEntryFulfillmentMessageTelephonyTransferCallOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessageTelephonyTransferCallOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentMessageTelephonyTransferCallOutput)
+}
+
+func (i CxPageEntryFulfillmentMessageTelephonyTransferCallArgs) ToCxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutput() CxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return i.ToCxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Background())
+}
+
+func (i CxPageEntryFulfillmentMessageTelephonyTransferCallArgs) ToCxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentMessageTelephonyTransferCallOutput).ToCxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx)
+}
+
+// CxPageEntryFulfillmentMessageTelephonyTransferCallPtrInput is an input type that accepts CxPageEntryFulfillmentMessageTelephonyTransferCallArgs, CxPageEntryFulfillmentMessageTelephonyTransferCallPtr and CxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutput values.
+// You can construct a concrete instance of `CxPageEntryFulfillmentMessageTelephonyTransferCallPtrInput` via:
+//
+//	        CxPageEntryFulfillmentMessageTelephonyTransferCallArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxPageEntryFulfillmentMessageTelephonyTransferCallPtrInput interface {
+	pulumi.Input
+
+	ToCxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutput() CxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutput
+	ToCxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Context) CxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutput
+}
+
+type cxPageEntryFulfillmentMessageTelephonyTransferCallPtrType CxPageEntryFulfillmentMessageTelephonyTransferCallArgs
+
+func CxPageEntryFulfillmentMessageTelephonyTransferCallPtr(v *CxPageEntryFulfillmentMessageTelephonyTransferCallArgs) CxPageEntryFulfillmentMessageTelephonyTransferCallPtrInput {
+	return (*cxPageEntryFulfillmentMessageTelephonyTransferCallPtrType)(v)
+}
+
+func (*cxPageEntryFulfillmentMessageTelephonyTransferCallPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageEntryFulfillmentMessageTelephonyTransferCall)(nil)).Elem()
+}
+
+func (i *cxPageEntryFulfillmentMessageTelephonyTransferCallPtrType) ToCxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutput() CxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return i.ToCxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Background())
+}
+
+func (i *cxPageEntryFulfillmentMessageTelephonyTransferCallPtrType) ToCxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutput)
+}
+
+type CxPageEntryFulfillmentMessageTelephonyTransferCallOutput struct{ *pulumi.OutputState }
+
+func (CxPageEntryFulfillmentMessageTelephonyTransferCallOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageEntryFulfillmentMessageTelephonyTransferCall)(nil)).Elem()
+}
+
+func (o CxPageEntryFulfillmentMessageTelephonyTransferCallOutput) ToCxPageEntryFulfillmentMessageTelephonyTransferCallOutput() CxPageEntryFulfillmentMessageTelephonyTransferCallOutput {
+	return o
+}
+
+func (o CxPageEntryFulfillmentMessageTelephonyTransferCallOutput) ToCxPageEntryFulfillmentMessageTelephonyTransferCallOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessageTelephonyTransferCallOutput {
+	return o
+}
+
+func (o CxPageEntryFulfillmentMessageTelephonyTransferCallOutput) ToCxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutput() CxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return o.ToCxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Background())
+}
+
+func (o CxPageEntryFulfillmentMessageTelephonyTransferCallOutput) ToCxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageEntryFulfillmentMessageTelephonyTransferCall) *CxPageEntryFulfillmentMessageTelephonyTransferCall {
+		return &v
+	}).(CxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutput)
+}
+
+// Transfer the call to a phone number in E.164 format.
+func (o CxPageEntryFulfillmentMessageTelephonyTransferCallOutput) PhoneNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v CxPageEntryFulfillmentMessageTelephonyTransferCall) string { return v.PhoneNumber }).(pulumi.StringOutput)
+}
+
+type CxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutput struct{ *pulumi.OutputState }
+
+func (CxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageEntryFulfillmentMessageTelephonyTransferCall)(nil)).Elem()
+}
+
+func (o CxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutput) ToCxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutput() CxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return o
+}
+
+func (o CxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutput) ToCxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return o
+}
+
+func (o CxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutput) Elem() CxPageEntryFulfillmentMessageTelephonyTransferCallOutput {
+	return o.ApplyT(func(v *CxPageEntryFulfillmentMessageTelephonyTransferCall) CxPageEntryFulfillmentMessageTelephonyTransferCall {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageEntryFulfillmentMessageTelephonyTransferCall
+		return ret
+	}).(CxPageEntryFulfillmentMessageTelephonyTransferCallOutput)
+}
+
+// Transfer the call to a phone number in E.164 format.
+func (o CxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutput) PhoneNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageEntryFulfillmentMessageTelephonyTransferCall) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PhoneNumber
+	}).(pulumi.StringPtrOutput)
 }
 
 type CxPageEntryFulfillmentMessageText struct {
@@ -2736,6 +5988,112 @@ func (o CxPageEntryFulfillmentMessageTextPtrOutput) Texts() pulumi.StringArrayOu
 	}).(pulumi.StringArrayOutput)
 }
 
+type CxPageEntryFulfillmentSetParameterAction struct {
+	// Display name of the parameter.
+	Parameter *string `pulumi:"parameter"`
+	// The new JSON-encoded value of the parameter. A null value clears the parameter.
+	Value *string `pulumi:"value"`
+}
+
+// CxPageEntryFulfillmentSetParameterActionInput is an input type that accepts CxPageEntryFulfillmentSetParameterActionArgs and CxPageEntryFulfillmentSetParameterActionOutput values.
+// You can construct a concrete instance of `CxPageEntryFulfillmentSetParameterActionInput` via:
+//
+//	CxPageEntryFulfillmentSetParameterActionArgs{...}
+type CxPageEntryFulfillmentSetParameterActionInput interface {
+	pulumi.Input
+
+	ToCxPageEntryFulfillmentSetParameterActionOutput() CxPageEntryFulfillmentSetParameterActionOutput
+	ToCxPageEntryFulfillmentSetParameterActionOutputWithContext(context.Context) CxPageEntryFulfillmentSetParameterActionOutput
+}
+
+type CxPageEntryFulfillmentSetParameterActionArgs struct {
+	// Display name of the parameter.
+	Parameter pulumi.StringPtrInput `pulumi:"parameter"`
+	// The new JSON-encoded value of the parameter. A null value clears the parameter.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (CxPageEntryFulfillmentSetParameterActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageEntryFulfillmentSetParameterAction)(nil)).Elem()
+}
+
+func (i CxPageEntryFulfillmentSetParameterActionArgs) ToCxPageEntryFulfillmentSetParameterActionOutput() CxPageEntryFulfillmentSetParameterActionOutput {
+	return i.ToCxPageEntryFulfillmentSetParameterActionOutputWithContext(context.Background())
+}
+
+func (i CxPageEntryFulfillmentSetParameterActionArgs) ToCxPageEntryFulfillmentSetParameterActionOutputWithContext(ctx context.Context) CxPageEntryFulfillmentSetParameterActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentSetParameterActionOutput)
+}
+
+// CxPageEntryFulfillmentSetParameterActionArrayInput is an input type that accepts CxPageEntryFulfillmentSetParameterActionArray and CxPageEntryFulfillmentSetParameterActionArrayOutput values.
+// You can construct a concrete instance of `CxPageEntryFulfillmentSetParameterActionArrayInput` via:
+//
+//	CxPageEntryFulfillmentSetParameterActionArray{ CxPageEntryFulfillmentSetParameterActionArgs{...} }
+type CxPageEntryFulfillmentSetParameterActionArrayInput interface {
+	pulumi.Input
+
+	ToCxPageEntryFulfillmentSetParameterActionArrayOutput() CxPageEntryFulfillmentSetParameterActionArrayOutput
+	ToCxPageEntryFulfillmentSetParameterActionArrayOutputWithContext(context.Context) CxPageEntryFulfillmentSetParameterActionArrayOutput
+}
+
+type CxPageEntryFulfillmentSetParameterActionArray []CxPageEntryFulfillmentSetParameterActionInput
+
+func (CxPageEntryFulfillmentSetParameterActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxPageEntryFulfillmentSetParameterAction)(nil)).Elem()
+}
+
+func (i CxPageEntryFulfillmentSetParameterActionArray) ToCxPageEntryFulfillmentSetParameterActionArrayOutput() CxPageEntryFulfillmentSetParameterActionArrayOutput {
+	return i.ToCxPageEntryFulfillmentSetParameterActionArrayOutputWithContext(context.Background())
+}
+
+func (i CxPageEntryFulfillmentSetParameterActionArray) ToCxPageEntryFulfillmentSetParameterActionArrayOutputWithContext(ctx context.Context) CxPageEntryFulfillmentSetParameterActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageEntryFulfillmentSetParameterActionArrayOutput)
+}
+
+type CxPageEntryFulfillmentSetParameterActionOutput struct{ *pulumi.OutputState }
+
+func (CxPageEntryFulfillmentSetParameterActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageEntryFulfillmentSetParameterAction)(nil)).Elem()
+}
+
+func (o CxPageEntryFulfillmentSetParameterActionOutput) ToCxPageEntryFulfillmentSetParameterActionOutput() CxPageEntryFulfillmentSetParameterActionOutput {
+	return o
+}
+
+func (o CxPageEntryFulfillmentSetParameterActionOutput) ToCxPageEntryFulfillmentSetParameterActionOutputWithContext(ctx context.Context) CxPageEntryFulfillmentSetParameterActionOutput {
+	return o
+}
+
+// Display name of the parameter.
+func (o CxPageEntryFulfillmentSetParameterActionOutput) Parameter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageEntryFulfillmentSetParameterAction) *string { return v.Parameter }).(pulumi.StringPtrOutput)
+}
+
+// The new JSON-encoded value of the parameter. A null value clears the parameter.
+func (o CxPageEntryFulfillmentSetParameterActionOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageEntryFulfillmentSetParameterAction) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type CxPageEntryFulfillmentSetParameterActionArrayOutput struct{ *pulumi.OutputState }
+
+func (CxPageEntryFulfillmentSetParameterActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxPageEntryFulfillmentSetParameterAction)(nil)).Elem()
+}
+
+func (o CxPageEntryFulfillmentSetParameterActionArrayOutput) ToCxPageEntryFulfillmentSetParameterActionArrayOutput() CxPageEntryFulfillmentSetParameterActionArrayOutput {
+	return o
+}
+
+func (o CxPageEntryFulfillmentSetParameterActionArrayOutput) ToCxPageEntryFulfillmentSetParameterActionArrayOutputWithContext(ctx context.Context) CxPageEntryFulfillmentSetParameterActionArrayOutput {
+	return o
+}
+
+func (o CxPageEntryFulfillmentSetParameterActionArrayOutput) Index(i pulumi.IntInput) CxPageEntryFulfillmentSetParameterActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxPageEntryFulfillmentSetParameterAction {
+		return vs[0].([]CxPageEntryFulfillmentSetParameterAction)[vs[1].(int)]
+	}).(CxPageEntryFulfillmentSetParameterActionOutput)
+}
+
 type CxPageEventHandler struct {
 	// The name of the event to handle.
 	Event *string `pulumi:"event"`
@@ -2882,11 +6240,17 @@ func (o CxPageEventHandlerArrayOutput) Index(i pulumi.IntInput) CxPageEventHandl
 }
 
 type CxPageEventHandlerTriggerFulfillment struct {
+	// Conditional cases for this fulfillment.
+	// Structure is documented below.
+	ConditionalCases []CxPageEventHandlerTriggerFulfillmentConditionalCase `pulumi:"conditionalCases"`
 	// The list of rich message responses to present to the user.
 	// Structure is documented below.
 	Messages []CxPageEventHandlerTriggerFulfillmentMessage `pulumi:"messages"`
 	// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
 	ReturnPartialResponses *bool `pulumi:"returnPartialResponses"`
+	// Set parameter values before executing the webhook.
+	// Structure is documented below.
+	SetParameterActions []CxPageEventHandlerTriggerFulfillmentSetParameterAction `pulumi:"setParameterActions"`
 	// The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
 	Tag *string `pulumi:"tag"`
 	// The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
@@ -2905,11 +6269,17 @@ type CxPageEventHandlerTriggerFulfillmentInput interface {
 }
 
 type CxPageEventHandlerTriggerFulfillmentArgs struct {
+	// Conditional cases for this fulfillment.
+	// Structure is documented below.
+	ConditionalCases CxPageEventHandlerTriggerFulfillmentConditionalCaseArrayInput `pulumi:"conditionalCases"`
 	// The list of rich message responses to present to the user.
 	// Structure is documented below.
 	Messages CxPageEventHandlerTriggerFulfillmentMessageArrayInput `pulumi:"messages"`
 	// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
 	ReturnPartialResponses pulumi.BoolPtrInput `pulumi:"returnPartialResponses"`
+	// Set parameter values before executing the webhook.
+	// Structure is documented below.
+	SetParameterActions CxPageEventHandlerTriggerFulfillmentSetParameterActionArrayInput `pulumi:"setParameterActions"`
 	// The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
 	Tag pulumi.StringPtrInput `pulumi:"tag"`
 	// The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
@@ -2993,6 +6363,14 @@ func (o CxPageEventHandlerTriggerFulfillmentOutput) ToCxPageEventHandlerTriggerF
 	}).(CxPageEventHandlerTriggerFulfillmentPtrOutput)
 }
 
+// Conditional cases for this fulfillment.
+// Structure is documented below.
+func (o CxPageEventHandlerTriggerFulfillmentOutput) ConditionalCases() CxPageEventHandlerTriggerFulfillmentConditionalCaseArrayOutput {
+	return o.ApplyT(func(v CxPageEventHandlerTriggerFulfillment) []CxPageEventHandlerTriggerFulfillmentConditionalCase {
+		return v.ConditionalCases
+	}).(CxPageEventHandlerTriggerFulfillmentConditionalCaseArrayOutput)
+}
+
 // The list of rich message responses to present to the user.
 // Structure is documented below.
 func (o CxPageEventHandlerTriggerFulfillmentOutput) Messages() CxPageEventHandlerTriggerFulfillmentMessageArrayOutput {
@@ -3004,6 +6382,14 @@ func (o CxPageEventHandlerTriggerFulfillmentOutput) Messages() CxPageEventHandle
 // Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
 func (o CxPageEventHandlerTriggerFulfillmentOutput) ReturnPartialResponses() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CxPageEventHandlerTriggerFulfillment) *bool { return v.ReturnPartialResponses }).(pulumi.BoolPtrOutput)
+}
+
+// Set parameter values before executing the webhook.
+// Structure is documented below.
+func (o CxPageEventHandlerTriggerFulfillmentOutput) SetParameterActions() CxPageEventHandlerTriggerFulfillmentSetParameterActionArrayOutput {
+	return o.ApplyT(func(v CxPageEventHandlerTriggerFulfillment) []CxPageEventHandlerTriggerFulfillmentSetParameterAction {
+		return v.SetParameterActions
+	}).(CxPageEventHandlerTriggerFulfillmentSetParameterActionArrayOutput)
 }
 
 // The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
@@ -3040,6 +6426,17 @@ func (o CxPageEventHandlerTriggerFulfillmentPtrOutput) Elem() CxPageEventHandler
 	}).(CxPageEventHandlerTriggerFulfillmentOutput)
 }
 
+// Conditional cases for this fulfillment.
+// Structure is documented below.
+func (o CxPageEventHandlerTriggerFulfillmentPtrOutput) ConditionalCases() CxPageEventHandlerTriggerFulfillmentConditionalCaseArrayOutput {
+	return o.ApplyT(func(v *CxPageEventHandlerTriggerFulfillment) []CxPageEventHandlerTriggerFulfillmentConditionalCase {
+		if v == nil {
+			return nil
+		}
+		return v.ConditionalCases
+	}).(CxPageEventHandlerTriggerFulfillmentConditionalCaseArrayOutput)
+}
+
 // The list of rich message responses to present to the user.
 // Structure is documented below.
 func (o CxPageEventHandlerTriggerFulfillmentPtrOutput) Messages() CxPageEventHandlerTriggerFulfillmentMessageArrayOutput {
@@ -3059,6 +6456,17 @@ func (o CxPageEventHandlerTriggerFulfillmentPtrOutput) ReturnPartialResponses() 
 		}
 		return v.ReturnPartialResponses
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Set parameter values before executing the webhook.
+// Structure is documented below.
+func (o CxPageEventHandlerTriggerFulfillmentPtrOutput) SetParameterActions() CxPageEventHandlerTriggerFulfillmentSetParameterActionArrayOutput {
+	return o.ApplyT(func(v *CxPageEventHandlerTriggerFulfillment) []CxPageEventHandlerTriggerFulfillmentSetParameterAction {
+		if v == nil {
+			return nil
+		}
+		return v.SetParameterActions
+	}).(CxPageEventHandlerTriggerFulfillmentSetParameterActionArrayOutput)
 }
 
 // The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
@@ -3081,7 +6489,134 @@ func (o CxPageEventHandlerTriggerFulfillmentPtrOutput) Webhook() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+type CxPageEventHandlerTriggerFulfillmentConditionalCase struct {
+	// A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+	// See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+	Cases *string `pulumi:"cases"`
+}
+
+// CxPageEventHandlerTriggerFulfillmentConditionalCaseInput is an input type that accepts CxPageEventHandlerTriggerFulfillmentConditionalCaseArgs and CxPageEventHandlerTriggerFulfillmentConditionalCaseOutput values.
+// You can construct a concrete instance of `CxPageEventHandlerTriggerFulfillmentConditionalCaseInput` via:
+//
+//	CxPageEventHandlerTriggerFulfillmentConditionalCaseArgs{...}
+type CxPageEventHandlerTriggerFulfillmentConditionalCaseInput interface {
+	pulumi.Input
+
+	ToCxPageEventHandlerTriggerFulfillmentConditionalCaseOutput() CxPageEventHandlerTriggerFulfillmentConditionalCaseOutput
+	ToCxPageEventHandlerTriggerFulfillmentConditionalCaseOutputWithContext(context.Context) CxPageEventHandlerTriggerFulfillmentConditionalCaseOutput
+}
+
+type CxPageEventHandlerTriggerFulfillmentConditionalCaseArgs struct {
+	// A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+	// See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+	Cases pulumi.StringPtrInput `pulumi:"cases"`
+}
+
+func (CxPageEventHandlerTriggerFulfillmentConditionalCaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageEventHandlerTriggerFulfillmentConditionalCase)(nil)).Elem()
+}
+
+func (i CxPageEventHandlerTriggerFulfillmentConditionalCaseArgs) ToCxPageEventHandlerTriggerFulfillmentConditionalCaseOutput() CxPageEventHandlerTriggerFulfillmentConditionalCaseOutput {
+	return i.ToCxPageEventHandlerTriggerFulfillmentConditionalCaseOutputWithContext(context.Background())
+}
+
+func (i CxPageEventHandlerTriggerFulfillmentConditionalCaseArgs) ToCxPageEventHandlerTriggerFulfillmentConditionalCaseOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentConditionalCaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentConditionalCaseOutput)
+}
+
+// CxPageEventHandlerTriggerFulfillmentConditionalCaseArrayInput is an input type that accepts CxPageEventHandlerTriggerFulfillmentConditionalCaseArray and CxPageEventHandlerTriggerFulfillmentConditionalCaseArrayOutput values.
+// You can construct a concrete instance of `CxPageEventHandlerTriggerFulfillmentConditionalCaseArrayInput` via:
+//
+//	CxPageEventHandlerTriggerFulfillmentConditionalCaseArray{ CxPageEventHandlerTriggerFulfillmentConditionalCaseArgs{...} }
+type CxPageEventHandlerTriggerFulfillmentConditionalCaseArrayInput interface {
+	pulumi.Input
+
+	ToCxPageEventHandlerTriggerFulfillmentConditionalCaseArrayOutput() CxPageEventHandlerTriggerFulfillmentConditionalCaseArrayOutput
+	ToCxPageEventHandlerTriggerFulfillmentConditionalCaseArrayOutputWithContext(context.Context) CxPageEventHandlerTriggerFulfillmentConditionalCaseArrayOutput
+}
+
+type CxPageEventHandlerTriggerFulfillmentConditionalCaseArray []CxPageEventHandlerTriggerFulfillmentConditionalCaseInput
+
+func (CxPageEventHandlerTriggerFulfillmentConditionalCaseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxPageEventHandlerTriggerFulfillmentConditionalCase)(nil)).Elem()
+}
+
+func (i CxPageEventHandlerTriggerFulfillmentConditionalCaseArray) ToCxPageEventHandlerTriggerFulfillmentConditionalCaseArrayOutput() CxPageEventHandlerTriggerFulfillmentConditionalCaseArrayOutput {
+	return i.ToCxPageEventHandlerTriggerFulfillmentConditionalCaseArrayOutputWithContext(context.Background())
+}
+
+func (i CxPageEventHandlerTriggerFulfillmentConditionalCaseArray) ToCxPageEventHandlerTriggerFulfillmentConditionalCaseArrayOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentConditionalCaseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentConditionalCaseArrayOutput)
+}
+
+type CxPageEventHandlerTriggerFulfillmentConditionalCaseOutput struct{ *pulumi.OutputState }
+
+func (CxPageEventHandlerTriggerFulfillmentConditionalCaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageEventHandlerTriggerFulfillmentConditionalCase)(nil)).Elem()
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentConditionalCaseOutput) ToCxPageEventHandlerTriggerFulfillmentConditionalCaseOutput() CxPageEventHandlerTriggerFulfillmentConditionalCaseOutput {
+	return o
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentConditionalCaseOutput) ToCxPageEventHandlerTriggerFulfillmentConditionalCaseOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentConditionalCaseOutput {
+	return o
+}
+
+// A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+// See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+func (o CxPageEventHandlerTriggerFulfillmentConditionalCaseOutput) Cases() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageEventHandlerTriggerFulfillmentConditionalCase) *string { return v.Cases }).(pulumi.StringPtrOutput)
+}
+
+type CxPageEventHandlerTriggerFulfillmentConditionalCaseArrayOutput struct{ *pulumi.OutputState }
+
+func (CxPageEventHandlerTriggerFulfillmentConditionalCaseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxPageEventHandlerTriggerFulfillmentConditionalCase)(nil)).Elem()
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentConditionalCaseArrayOutput) ToCxPageEventHandlerTriggerFulfillmentConditionalCaseArrayOutput() CxPageEventHandlerTriggerFulfillmentConditionalCaseArrayOutput {
+	return o
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentConditionalCaseArrayOutput) ToCxPageEventHandlerTriggerFulfillmentConditionalCaseArrayOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentConditionalCaseArrayOutput {
+	return o
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentConditionalCaseArrayOutput) Index(i pulumi.IntInput) CxPageEventHandlerTriggerFulfillmentConditionalCaseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxPageEventHandlerTriggerFulfillmentConditionalCase {
+		return vs[0].([]CxPageEventHandlerTriggerFulfillmentConditionalCase)[vs[1].(int)]
+	}).(CxPageEventHandlerTriggerFulfillmentConditionalCaseOutput)
+}
+
 type CxPageEventHandlerTriggerFulfillmentMessage struct {
+	// The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+	Channel *string `pulumi:"channel"`
+	// Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+	// Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+	// You may set this, for example:
+	// * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+	// * In a webhook response when you determine that you handled the customer issue.
+	//   Structure is documented below.
+	ConversationSuccess *CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess `pulumi:"conversationSuccess"`
+	// Indicates that the conversation should be handed off to a live agent.
+	// Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+	// You may set this, for example:
+	// * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+	// * In a webhook response when you determine that the customer issue can only be handled by a human.
+	//   Structure is documented below.
+	LiveAgentHandoff *CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff `pulumi:"liveAgentHandoff"`
+	// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+	// Structure is documented below.
+	OutputAudioText *CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText `pulumi:"outputAudioText"`
+	// A custom, platform-specific payload.
+	Payload *string `pulumi:"payload"`
+	// Specifies an audio clip to be played by the client as part of the response.
+	// Structure is documented below.
+	PlayAudio *CxPageEventHandlerTriggerFulfillmentMessagePlayAudio `pulumi:"playAudio"`
+	// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+	// Structure is documented below.
+	TelephonyTransferCall *CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall `pulumi:"telephonyTransferCall"`
 	// The text response message.
 	// Structure is documented below.
 	Text *CxPageEventHandlerTriggerFulfillmentMessageText `pulumi:"text"`
@@ -3099,6 +6634,33 @@ type CxPageEventHandlerTriggerFulfillmentMessageInput interface {
 }
 
 type CxPageEventHandlerTriggerFulfillmentMessageArgs struct {
+	// The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+	Channel pulumi.StringPtrInput `pulumi:"channel"`
+	// Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+	// Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+	// You may set this, for example:
+	// * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+	// * In a webhook response when you determine that you handled the customer issue.
+	//   Structure is documented below.
+	ConversationSuccess CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrInput `pulumi:"conversationSuccess"`
+	// Indicates that the conversation should be handed off to a live agent.
+	// Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+	// You may set this, for example:
+	// * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+	// * In a webhook response when you determine that the customer issue can only be handled by a human.
+	//   Structure is documented below.
+	LiveAgentHandoff CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrInput `pulumi:"liveAgentHandoff"`
+	// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+	// Structure is documented below.
+	OutputAudioText CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrInput `pulumi:"outputAudioText"`
+	// A custom, platform-specific payload.
+	Payload pulumi.StringPtrInput `pulumi:"payload"`
+	// Specifies an audio clip to be played by the client as part of the response.
+	// Structure is documented below.
+	PlayAudio CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrInput `pulumi:"playAudio"`
+	// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+	// Structure is documented below.
+	TelephonyTransferCall CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrInput `pulumi:"telephonyTransferCall"`
 	// The text response message.
 	// Structure is documented below.
 	Text CxPageEventHandlerTriggerFulfillmentMessageTextPtrInput `pulumi:"text"`
@@ -3155,6 +6717,64 @@ func (o CxPageEventHandlerTriggerFulfillmentMessageOutput) ToCxPageEventHandlerT
 	return o
 }
 
+// The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+func (o CxPageEventHandlerTriggerFulfillmentMessageOutput) Channel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageEventHandlerTriggerFulfillmentMessage) *string { return v.Channel }).(pulumi.StringPtrOutput)
+}
+
+// Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+// Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+// You may set this, for example:
+//   - In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+//   - In a webhook response when you determine that you handled the customer issue.
+//     Structure is documented below.
+func (o CxPageEventHandlerTriggerFulfillmentMessageOutput) ConversationSuccess() CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return o.ApplyT(func(v CxPageEventHandlerTriggerFulfillmentMessage) *CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess {
+		return v.ConversationSuccess
+	}).(CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput)
+}
+
+// Indicates that the conversation should be handed off to a live agent.
+// Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+// You may set this, for example:
+//   - In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+//   - In a webhook response when you determine that the customer issue can only be handled by a human.
+//     Structure is documented below.
+func (o CxPageEventHandlerTriggerFulfillmentMessageOutput) LiveAgentHandoff() CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return o.ApplyT(func(v CxPageEventHandlerTriggerFulfillmentMessage) *CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff {
+		return v.LiveAgentHandoff
+	}).(CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput)
+}
+
+// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+// Structure is documented below.
+func (o CxPageEventHandlerTriggerFulfillmentMessageOutput) OutputAudioText() CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return o.ApplyT(func(v CxPageEventHandlerTriggerFulfillmentMessage) *CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText {
+		return v.OutputAudioText
+	}).(CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput)
+}
+
+// A custom, platform-specific payload.
+func (o CxPageEventHandlerTriggerFulfillmentMessageOutput) Payload() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageEventHandlerTriggerFulfillmentMessage) *string { return v.Payload }).(pulumi.StringPtrOutput)
+}
+
+// Specifies an audio clip to be played by the client as part of the response.
+// Structure is documented below.
+func (o CxPageEventHandlerTriggerFulfillmentMessageOutput) PlayAudio() CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return o.ApplyT(func(v CxPageEventHandlerTriggerFulfillmentMessage) *CxPageEventHandlerTriggerFulfillmentMessagePlayAudio {
+		return v.PlayAudio
+	}).(CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput)
+}
+
+// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+// Structure is documented below.
+func (o CxPageEventHandlerTriggerFulfillmentMessageOutput) TelephonyTransferCall() CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return o.ApplyT(func(v CxPageEventHandlerTriggerFulfillmentMessage) *CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall {
+		return v.TelephonyTransferCall
+	}).(CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput)
+}
+
 // The text response message.
 // Structure is documented below.
 func (o CxPageEventHandlerTriggerFulfillmentMessageOutput) Text() CxPageEventHandlerTriggerFulfillmentMessageTextPtrOutput {
@@ -3181,6 +6801,758 @@ func (o CxPageEventHandlerTriggerFulfillmentMessageArrayOutput) Index(i pulumi.I
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxPageEventHandlerTriggerFulfillmentMessage {
 		return vs[0].([]CxPageEventHandlerTriggerFulfillmentMessage)[vs[1].(int)]
 	}).(CxPageEventHandlerTriggerFulfillmentMessageOutput)
+}
+
+type CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess struct {
+	// Custom metadata. Dialogflow doesn't impose any structure on this.
+	Metadata *string `pulumi:"metadata"`
+}
+
+// CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessInput is an input type that accepts CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgs and CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessOutput values.
+// You can construct a concrete instance of `CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessInput` via:
+//
+//	CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgs{...}
+type CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessInput interface {
+	pulumi.Input
+
+	ToCxPageEventHandlerTriggerFulfillmentMessageConversationSuccessOutput() CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessOutput
+	ToCxPageEventHandlerTriggerFulfillmentMessageConversationSuccessOutputWithContext(context.Context) CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessOutput
+}
+
+type CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgs struct {
+	// Custom metadata. Dialogflow doesn't impose any structure on this.
+	Metadata pulumi.StringPtrInput `pulumi:"metadata"`
+}
+
+func (CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess)(nil)).Elem()
+}
+
+func (i CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgs) ToCxPageEventHandlerTriggerFulfillmentMessageConversationSuccessOutput() CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessOutput {
+	return i.ToCxPageEventHandlerTriggerFulfillmentMessageConversationSuccessOutputWithContext(context.Background())
+}
+
+func (i CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgs) ToCxPageEventHandlerTriggerFulfillmentMessageConversationSuccessOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessOutput)
+}
+
+func (i CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgs) ToCxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput() CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return i.ToCxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(context.Background())
+}
+
+func (i CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgs) ToCxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessOutput).ToCxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx)
+}
+
+// CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrInput is an input type that accepts CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgs, CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtr and CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput values.
+// You can construct a concrete instance of `CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrInput` via:
+//
+//	        CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrInput interface {
+	pulumi.Input
+
+	ToCxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput() CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput
+	ToCxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(context.Context) CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput
+}
+
+type cxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrType CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgs
+
+func CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtr(v *CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgs) CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrInput {
+	return (*cxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrType)(v)
+}
+
+func (*cxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess)(nil)).Elem()
+}
+
+func (i *cxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrType) ToCxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput() CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return i.ToCxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(context.Background())
+}
+
+func (i *cxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrType) ToCxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput)
+}
+
+type CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessOutput struct{ *pulumi.OutputState }
+
+func (CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess)(nil)).Elem()
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessOutput) ToCxPageEventHandlerTriggerFulfillmentMessageConversationSuccessOutput() CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessOutput {
+	return o
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessOutput) ToCxPageEventHandlerTriggerFulfillmentMessageConversationSuccessOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessOutput {
+	return o
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessOutput) ToCxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput() CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return o.ToCxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(context.Background())
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessOutput) ToCxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess) *CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess {
+		return &v
+	}).(CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput)
+}
+
+// Custom metadata. Dialogflow doesn't impose any structure on this.
+func (o CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess) *string { return v.Metadata }).(pulumi.StringPtrOutput)
+}
+
+type CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput struct{ *pulumi.OutputState }
+
+func (CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess)(nil)).Elem()
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput) ToCxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput() CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return o
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput) ToCxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return o
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput) Elem() CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessOutput {
+	return o.ApplyT(func(v *CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess) CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess
+		return ret
+	}).(CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessOutput)
+}
+
+// Custom metadata. Dialogflow doesn't impose any structure on this.
+func (o CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageEventHandlerTriggerFulfillmentMessageConversationSuccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Metadata
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff struct {
+	// Custom metadata. Dialogflow doesn't impose any structure on this.
+	Metadata *string `pulumi:"metadata"`
+}
+
+// CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffInput is an input type that accepts CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs and CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput values.
+// You can construct a concrete instance of `CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffInput` via:
+//
+//	CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs{...}
+type CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffInput interface {
+	pulumi.Input
+
+	ToCxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput() CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput
+	ToCxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutputWithContext(context.Context) CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput
+}
+
+type CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs struct {
+	// Custom metadata. Dialogflow doesn't impose any structure on this.
+	Metadata pulumi.StringPtrInput `pulumi:"metadata"`
+}
+
+func (CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff)(nil)).Elem()
+}
+
+func (i CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs) ToCxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput() CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput {
+	return i.ToCxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutputWithContext(context.Background())
+}
+
+func (i CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs) ToCxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput)
+}
+
+func (i CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs) ToCxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput() CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return i.ToCxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Background())
+}
+
+func (i CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs) ToCxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput).ToCxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx)
+}
+
+// CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrInput is an input type that accepts CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs, CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtr and CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput values.
+// You can construct a concrete instance of `CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrInput` via:
+//
+//	        CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrInput interface {
+	pulumi.Input
+
+	ToCxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput() CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput
+	ToCxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Context) CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput
+}
+
+type cxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrType CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs
+
+func CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtr(v *CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs) CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrInput {
+	return (*cxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrType)(v)
+}
+
+func (*cxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff)(nil)).Elem()
+}
+
+func (i *cxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrType) ToCxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput() CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return i.ToCxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Background())
+}
+
+func (i *cxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrType) ToCxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput)
+}
+
+type CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput struct{ *pulumi.OutputState }
+
+func (CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff)(nil)).Elem()
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput) ToCxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput() CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput {
+	return o
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput) ToCxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput {
+	return o
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput) ToCxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput() CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return o.ToCxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Background())
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput) ToCxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff) *CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff {
+		return &v
+	}).(CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput)
+}
+
+// Custom metadata. Dialogflow doesn't impose any structure on this.
+func (o CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff) *string { return v.Metadata }).(pulumi.StringPtrOutput)
+}
+
+type CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput struct{ *pulumi.OutputState }
+
+func (CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff)(nil)).Elem()
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) ToCxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput() CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return o
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) ToCxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return o
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) Elem() CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput {
+	return o.ApplyT(func(v *CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff) CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff
+		return ret
+	}).(CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput)
+}
+
+// Custom metadata. Dialogflow doesn't impose any structure on this.
+func (o CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoff) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Metadata
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText struct {
+	// (Output)
+	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
+	// The SSML text to be synthesized. For more information, see SSML.
+	Ssml *string `pulumi:"ssml"`
+	// The raw text to be synthesized.
+	Text *string `pulumi:"text"`
+}
+
+// CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextInput is an input type that accepts CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs and CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput values.
+// You can construct a concrete instance of `CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextInput` via:
+//
+//	CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs{...}
+type CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextInput interface {
+	pulumi.Input
+
+	ToCxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput() CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput
+	ToCxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextOutputWithContext(context.Context) CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput
+}
+
+type CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs struct {
+	// (Output)
+	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
+	// The SSML text to be synthesized. For more information, see SSML.
+	Ssml pulumi.StringPtrInput `pulumi:"ssml"`
+	// The raw text to be synthesized.
+	Text pulumi.StringPtrInput `pulumi:"text"`
+}
+
+func (CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText)(nil)).Elem()
+}
+
+func (i CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs) ToCxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput() CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput {
+	return i.ToCxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextOutputWithContext(context.Background())
+}
+
+func (i CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs) ToCxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput)
+}
+
+func (i CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs) ToCxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput() CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return i.ToCxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Background())
+}
+
+func (i CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs) ToCxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput).ToCxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx)
+}
+
+// CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrInput is an input type that accepts CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs, CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtr and CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput values.
+// You can construct a concrete instance of `CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrInput` via:
+//
+//	        CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrInput interface {
+	pulumi.Input
+
+	ToCxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput() CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput
+	ToCxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Context) CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput
+}
+
+type cxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrType CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs
+
+func CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtr(v *CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs) CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrInput {
+	return (*cxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrType)(v)
+}
+
+func (*cxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText)(nil)).Elem()
+}
+
+func (i *cxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrType) ToCxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput() CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return i.ToCxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Background())
+}
+
+func (i *cxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrType) ToCxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput)
+}
+
+type CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput struct{ *pulumi.OutputState }
+
+func (CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText)(nil)).Elem()
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) ToCxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput() CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput {
+	return o
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) ToCxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput {
+	return o
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) ToCxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput() CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return o.ToCxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Background())
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) ToCxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText) *CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText {
+		return &v
+	}).(CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput)
+}
+
+// (Output)
+// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+func (o CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText) *bool {
+		return v.AllowPlaybackInterruption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The SSML text to be synthesized. For more information, see SSML.
+func (o CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) Ssml() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText) *string { return v.Ssml }).(pulumi.StringPtrOutput)
+}
+
+// The raw text to be synthesized.
+func (o CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText) *string { return v.Text }).(pulumi.StringPtrOutput)
+}
+
+type CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput struct{ *pulumi.OutputState }
+
+func (CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText)(nil)).Elem()
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) ToCxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput() CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return o
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) ToCxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return o
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) Elem() CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput {
+	return o.ApplyT(func(v *CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText) CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText
+		return ret
+	}).(CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput)
+}
+
+// (Output)
+// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+func (o CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowPlaybackInterruption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The SSML text to be synthesized. For more information, see SSML.
+func (o CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) Ssml() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ssml
+	}).(pulumi.StringPtrOutput)
+}
+
+// The raw text to be synthesized.
+func (o CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Text
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxPageEventHandlerTriggerFulfillmentMessagePlayAudio struct {
+	// (Output)
+	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
+	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+	AudioUri string `pulumi:"audioUri"`
+}
+
+// CxPageEventHandlerTriggerFulfillmentMessagePlayAudioInput is an input type that accepts CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgs and CxPageEventHandlerTriggerFulfillmentMessagePlayAudioOutput values.
+// You can construct a concrete instance of `CxPageEventHandlerTriggerFulfillmentMessagePlayAudioInput` via:
+//
+//	CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgs{...}
+type CxPageEventHandlerTriggerFulfillmentMessagePlayAudioInput interface {
+	pulumi.Input
+
+	ToCxPageEventHandlerTriggerFulfillmentMessagePlayAudioOutput() CxPageEventHandlerTriggerFulfillmentMessagePlayAudioOutput
+	ToCxPageEventHandlerTriggerFulfillmentMessagePlayAudioOutputWithContext(context.Context) CxPageEventHandlerTriggerFulfillmentMessagePlayAudioOutput
+}
+
+type CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgs struct {
+	// (Output)
+	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
+	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+	AudioUri pulumi.StringInput `pulumi:"audioUri"`
+}
+
+func (CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageEventHandlerTriggerFulfillmentMessagePlayAudio)(nil)).Elem()
+}
+
+func (i CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgs) ToCxPageEventHandlerTriggerFulfillmentMessagePlayAudioOutput() CxPageEventHandlerTriggerFulfillmentMessagePlayAudioOutput {
+	return i.ToCxPageEventHandlerTriggerFulfillmentMessagePlayAudioOutputWithContext(context.Background())
+}
+
+func (i CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgs) ToCxPageEventHandlerTriggerFulfillmentMessagePlayAudioOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessagePlayAudioOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentMessagePlayAudioOutput)
+}
+
+func (i CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgs) ToCxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput() CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return i.ToCxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(context.Background())
+}
+
+func (i CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgs) ToCxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentMessagePlayAudioOutput).ToCxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx)
+}
+
+// CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrInput is an input type that accepts CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgs, CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtr and CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput values.
+// You can construct a concrete instance of `CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrInput` via:
+//
+//	        CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrInput interface {
+	pulumi.Input
+
+	ToCxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput() CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput
+	ToCxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(context.Context) CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput
+}
+
+type cxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrType CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgs
+
+func CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtr(v *CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgs) CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrInput {
+	return (*cxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrType)(v)
+}
+
+func (*cxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageEventHandlerTriggerFulfillmentMessagePlayAudio)(nil)).Elem()
+}
+
+func (i *cxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrType) ToCxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput() CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return i.ToCxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(context.Background())
+}
+
+func (i *cxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrType) ToCxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput)
+}
+
+type CxPageEventHandlerTriggerFulfillmentMessagePlayAudioOutput struct{ *pulumi.OutputState }
+
+func (CxPageEventHandlerTriggerFulfillmentMessagePlayAudioOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageEventHandlerTriggerFulfillmentMessagePlayAudio)(nil)).Elem()
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentMessagePlayAudioOutput) ToCxPageEventHandlerTriggerFulfillmentMessagePlayAudioOutput() CxPageEventHandlerTriggerFulfillmentMessagePlayAudioOutput {
+	return o
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentMessagePlayAudioOutput) ToCxPageEventHandlerTriggerFulfillmentMessagePlayAudioOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessagePlayAudioOutput {
+	return o
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentMessagePlayAudioOutput) ToCxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput() CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return o.ToCxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(context.Background())
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentMessagePlayAudioOutput) ToCxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageEventHandlerTriggerFulfillmentMessagePlayAudio) *CxPageEventHandlerTriggerFulfillmentMessagePlayAudio {
+		return &v
+	}).(CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput)
+}
+
+// (Output)
+// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+func (o CxPageEventHandlerTriggerFulfillmentMessagePlayAudioOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxPageEventHandlerTriggerFulfillmentMessagePlayAudio) *bool { return v.AllowPlaybackInterruption }).(pulumi.BoolPtrOutput)
+}
+
+// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+func (o CxPageEventHandlerTriggerFulfillmentMessagePlayAudioOutput) AudioUri() pulumi.StringOutput {
+	return o.ApplyT(func(v CxPageEventHandlerTriggerFulfillmentMessagePlayAudio) string { return v.AudioUri }).(pulumi.StringOutput)
+}
+
+type CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput struct{ *pulumi.OutputState }
+
+func (CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageEventHandlerTriggerFulfillmentMessagePlayAudio)(nil)).Elem()
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) ToCxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput() CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return o
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) ToCxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return o
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) Elem() CxPageEventHandlerTriggerFulfillmentMessagePlayAudioOutput {
+	return o.ApplyT(func(v *CxPageEventHandlerTriggerFulfillmentMessagePlayAudio) CxPageEventHandlerTriggerFulfillmentMessagePlayAudio {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageEventHandlerTriggerFulfillmentMessagePlayAudio
+		return ret
+	}).(CxPageEventHandlerTriggerFulfillmentMessagePlayAudioOutput)
+}
+
+// (Output)
+// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+func (o CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxPageEventHandlerTriggerFulfillmentMessagePlayAudio) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowPlaybackInterruption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+func (o CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) AudioUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageEventHandlerTriggerFulfillmentMessagePlayAudio) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AudioUri
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall struct {
+	// Transfer the call to a phone number in E.164 format.
+	PhoneNumber string `pulumi:"phoneNumber"`
+}
+
+// CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallInput is an input type that accepts CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs and CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput values.
+// You can construct a concrete instance of `CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallInput` via:
+//
+//	CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs{...}
+type CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallInput interface {
+	pulumi.Input
+
+	ToCxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput() CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput
+	ToCxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutputWithContext(context.Context) CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput
+}
+
+type CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs struct {
+	// Transfer the call to a phone number in E.164 format.
+	PhoneNumber pulumi.StringInput `pulumi:"phoneNumber"`
+}
+
+func (CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall)(nil)).Elem()
+}
+
+func (i CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs) ToCxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput() CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput {
+	return i.ToCxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutputWithContext(context.Background())
+}
+
+func (i CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs) ToCxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput)
+}
+
+func (i CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs) ToCxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput() CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return i.ToCxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Background())
+}
+
+func (i CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs) ToCxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput).ToCxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx)
+}
+
+// CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrInput is an input type that accepts CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs, CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtr and CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput values.
+// You can construct a concrete instance of `CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrInput` via:
+//
+//	        CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrInput interface {
+	pulumi.Input
+
+	ToCxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput() CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput
+	ToCxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Context) CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput
+}
+
+type cxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrType CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs
+
+func CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtr(v *CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs) CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrInput {
+	return (*cxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrType)(v)
+}
+
+func (*cxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall)(nil)).Elem()
+}
+
+func (i *cxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrType) ToCxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput() CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return i.ToCxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Background())
+}
+
+func (i *cxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrType) ToCxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput)
+}
+
+type CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput struct{ *pulumi.OutputState }
+
+func (CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall)(nil)).Elem()
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput) ToCxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput() CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput {
+	return o
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput) ToCxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput {
+	return o
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput) ToCxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput() CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return o.ToCxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Background())
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput) ToCxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall) *CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall {
+		return &v
+	}).(CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput)
+}
+
+// Transfer the call to a phone number in E.164 format.
+func (o CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput) PhoneNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall) string { return v.PhoneNumber }).(pulumi.StringOutput)
+}
+
+type CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput struct{ *pulumi.OutputState }
+
+func (CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall)(nil)).Elem()
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) ToCxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput() CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return o
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) ToCxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return o
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) Elem() CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput {
+	return o.ApplyT(func(v *CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall) CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall
+		return ret
+	}).(CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput)
+}
+
+// Transfer the call to a phone number in E.164 format.
+func (o CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) PhoneNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PhoneNumber
+	}).(pulumi.StringPtrOutput)
 }
 
 type CxPageEventHandlerTriggerFulfillmentMessageText struct {
@@ -3343,6 +7715,112 @@ func (o CxPageEventHandlerTriggerFulfillmentMessageTextPtrOutput) Texts() pulumi
 	}).(pulumi.StringArrayOutput)
 }
 
+type CxPageEventHandlerTriggerFulfillmentSetParameterAction struct {
+	// Display name of the parameter.
+	Parameter *string `pulumi:"parameter"`
+	// The new JSON-encoded value of the parameter. A null value clears the parameter.
+	Value *string `pulumi:"value"`
+}
+
+// CxPageEventHandlerTriggerFulfillmentSetParameterActionInput is an input type that accepts CxPageEventHandlerTriggerFulfillmentSetParameterActionArgs and CxPageEventHandlerTriggerFulfillmentSetParameterActionOutput values.
+// You can construct a concrete instance of `CxPageEventHandlerTriggerFulfillmentSetParameterActionInput` via:
+//
+//	CxPageEventHandlerTriggerFulfillmentSetParameterActionArgs{...}
+type CxPageEventHandlerTriggerFulfillmentSetParameterActionInput interface {
+	pulumi.Input
+
+	ToCxPageEventHandlerTriggerFulfillmentSetParameterActionOutput() CxPageEventHandlerTriggerFulfillmentSetParameterActionOutput
+	ToCxPageEventHandlerTriggerFulfillmentSetParameterActionOutputWithContext(context.Context) CxPageEventHandlerTriggerFulfillmentSetParameterActionOutput
+}
+
+type CxPageEventHandlerTriggerFulfillmentSetParameterActionArgs struct {
+	// Display name of the parameter.
+	Parameter pulumi.StringPtrInput `pulumi:"parameter"`
+	// The new JSON-encoded value of the parameter. A null value clears the parameter.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (CxPageEventHandlerTriggerFulfillmentSetParameterActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageEventHandlerTriggerFulfillmentSetParameterAction)(nil)).Elem()
+}
+
+func (i CxPageEventHandlerTriggerFulfillmentSetParameterActionArgs) ToCxPageEventHandlerTriggerFulfillmentSetParameterActionOutput() CxPageEventHandlerTriggerFulfillmentSetParameterActionOutput {
+	return i.ToCxPageEventHandlerTriggerFulfillmentSetParameterActionOutputWithContext(context.Background())
+}
+
+func (i CxPageEventHandlerTriggerFulfillmentSetParameterActionArgs) ToCxPageEventHandlerTriggerFulfillmentSetParameterActionOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentSetParameterActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentSetParameterActionOutput)
+}
+
+// CxPageEventHandlerTriggerFulfillmentSetParameterActionArrayInput is an input type that accepts CxPageEventHandlerTriggerFulfillmentSetParameterActionArray and CxPageEventHandlerTriggerFulfillmentSetParameterActionArrayOutput values.
+// You can construct a concrete instance of `CxPageEventHandlerTriggerFulfillmentSetParameterActionArrayInput` via:
+//
+//	CxPageEventHandlerTriggerFulfillmentSetParameterActionArray{ CxPageEventHandlerTriggerFulfillmentSetParameterActionArgs{...} }
+type CxPageEventHandlerTriggerFulfillmentSetParameterActionArrayInput interface {
+	pulumi.Input
+
+	ToCxPageEventHandlerTriggerFulfillmentSetParameterActionArrayOutput() CxPageEventHandlerTriggerFulfillmentSetParameterActionArrayOutput
+	ToCxPageEventHandlerTriggerFulfillmentSetParameterActionArrayOutputWithContext(context.Context) CxPageEventHandlerTriggerFulfillmentSetParameterActionArrayOutput
+}
+
+type CxPageEventHandlerTriggerFulfillmentSetParameterActionArray []CxPageEventHandlerTriggerFulfillmentSetParameterActionInput
+
+func (CxPageEventHandlerTriggerFulfillmentSetParameterActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxPageEventHandlerTriggerFulfillmentSetParameterAction)(nil)).Elem()
+}
+
+func (i CxPageEventHandlerTriggerFulfillmentSetParameterActionArray) ToCxPageEventHandlerTriggerFulfillmentSetParameterActionArrayOutput() CxPageEventHandlerTriggerFulfillmentSetParameterActionArrayOutput {
+	return i.ToCxPageEventHandlerTriggerFulfillmentSetParameterActionArrayOutputWithContext(context.Background())
+}
+
+func (i CxPageEventHandlerTriggerFulfillmentSetParameterActionArray) ToCxPageEventHandlerTriggerFulfillmentSetParameterActionArrayOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentSetParameterActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageEventHandlerTriggerFulfillmentSetParameterActionArrayOutput)
+}
+
+type CxPageEventHandlerTriggerFulfillmentSetParameterActionOutput struct{ *pulumi.OutputState }
+
+func (CxPageEventHandlerTriggerFulfillmentSetParameterActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageEventHandlerTriggerFulfillmentSetParameterAction)(nil)).Elem()
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentSetParameterActionOutput) ToCxPageEventHandlerTriggerFulfillmentSetParameterActionOutput() CxPageEventHandlerTriggerFulfillmentSetParameterActionOutput {
+	return o
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentSetParameterActionOutput) ToCxPageEventHandlerTriggerFulfillmentSetParameterActionOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentSetParameterActionOutput {
+	return o
+}
+
+// Display name of the parameter.
+func (o CxPageEventHandlerTriggerFulfillmentSetParameterActionOutput) Parameter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageEventHandlerTriggerFulfillmentSetParameterAction) *string { return v.Parameter }).(pulumi.StringPtrOutput)
+}
+
+// The new JSON-encoded value of the parameter. A null value clears the parameter.
+func (o CxPageEventHandlerTriggerFulfillmentSetParameterActionOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageEventHandlerTriggerFulfillmentSetParameterAction) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type CxPageEventHandlerTriggerFulfillmentSetParameterActionArrayOutput struct{ *pulumi.OutputState }
+
+func (CxPageEventHandlerTriggerFulfillmentSetParameterActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxPageEventHandlerTriggerFulfillmentSetParameterAction)(nil)).Elem()
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentSetParameterActionArrayOutput) ToCxPageEventHandlerTriggerFulfillmentSetParameterActionArrayOutput() CxPageEventHandlerTriggerFulfillmentSetParameterActionArrayOutput {
+	return o
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentSetParameterActionArrayOutput) ToCxPageEventHandlerTriggerFulfillmentSetParameterActionArrayOutputWithContext(ctx context.Context) CxPageEventHandlerTriggerFulfillmentSetParameterActionArrayOutput {
+	return o
+}
+
+func (o CxPageEventHandlerTriggerFulfillmentSetParameterActionArrayOutput) Index(i pulumi.IntInput) CxPageEventHandlerTriggerFulfillmentSetParameterActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxPageEventHandlerTriggerFulfillmentSetParameterAction {
+		return vs[0].([]CxPageEventHandlerTriggerFulfillmentSetParameterAction)[vs[1].(int)]
+	}).(CxPageEventHandlerTriggerFulfillmentSetParameterActionOutput)
+}
+
 type CxPageForm struct {
 	// Parameters to collect from the user.
 	// Structure is documented below.
@@ -3485,6 +7963,8 @@ func (o CxPageFormPtrOutput) Parameters() CxPageFormParameterArrayOutput {
 }
 
 type CxPageFormParameter struct {
+	// The default value of an optional parameter. If the parameter is required, the default value will be ignored.
+	DefaultValue *string `pulumi:"defaultValue"`
 	// The human-readable name of the parameter, unique within the form.
 	DisplayName *string `pulumi:"displayName"`
 	// The entity type of the parameter.
@@ -3515,6 +7995,8 @@ type CxPageFormParameterInput interface {
 }
 
 type CxPageFormParameterArgs struct {
+	// The default value of an optional parameter. If the parameter is required, the default value will be ignored.
+	DefaultValue pulumi.StringPtrInput `pulumi:"defaultValue"`
 	// The human-readable name of the parameter, unique within the form.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// The entity type of the parameter.
@@ -3584,6 +8066,11 @@ func (o CxPageFormParameterOutput) ToCxPageFormParameterOutputWithContext(ctx co
 	return o
 }
 
+// The default value of an optional parameter. If the parameter is required, the default value will be ignored.
+func (o CxPageFormParameterOutput) DefaultValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameter) *string { return v.DefaultValue }).(pulumi.StringPtrOutput)
+}
+
 // The human-readable name of the parameter, unique within the form.
 func (o CxPageFormParameterOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxPageFormParameter) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
@@ -3642,6 +8129,19 @@ type CxPageFormParameterFillBehavior struct {
 	// The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
 	// Structure is documented below.
 	InitialPromptFulfillment *CxPageFormParameterFillBehaviorInitialPromptFulfillment `pulumi:"initialPromptFulfillment"`
+	// The handlers for parameter-level events, used to provide reprompt for the parameter or transition to a different page/flow. The supported events are:
+	// * sys.no-match-<N>, where N can be from 1 to 6
+	// * sys.no-match-default
+	// * sys.no-input-<N>, where N can be from 1 to 6
+	// * sys.no-input-default
+	// * sys.invalid-parameter
+	//   [initialPromptFulfillment][initialPromptFulfillment] provides the first prompt for the parameter.
+	//   If the user's response does not fill the parameter, a no-match/no-input event will be triggered, and the fulfillment associated with the sys.no-match-1/sys.no-input-1 handler (if defined) will be called to provide a prompt. The sys.no-match-2/sys.no-input-2 handler (if defined) will respond to the next no-match/no-input event, and so on.
+	//   A sys.no-match-default or sys.no-input-default handler will be used to handle all following no-match/no-input events after all numbered no-match/no-input handlers for the parameter are consumed.
+	//   A sys.invalid-parameter handler can be defined to handle the case where the parameter values have been invalidated by webhook. For example, if the user's response fill the parameter, however the parameter was invalidated by webhook, the fulfillment associated with the sys.invalid-parameter handler (if defined) will be called to provide a prompt.
+	//   If the event handler for the corresponding event can't be found on the parameter, initialPromptFulfillment will be re-prompted.
+	//   Structure is documented below.
+	RepromptEventHandlers []CxPageFormParameterFillBehaviorRepromptEventHandler `pulumi:"repromptEventHandlers"`
 }
 
 // CxPageFormParameterFillBehaviorInput is an input type that accepts CxPageFormParameterFillBehaviorArgs and CxPageFormParameterFillBehaviorOutput values.
@@ -3659,6 +8159,19 @@ type CxPageFormParameterFillBehaviorArgs struct {
 	// The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
 	// Structure is documented below.
 	InitialPromptFulfillment CxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrInput `pulumi:"initialPromptFulfillment"`
+	// The handlers for parameter-level events, used to provide reprompt for the parameter or transition to a different page/flow. The supported events are:
+	// * sys.no-match-<N>, where N can be from 1 to 6
+	// * sys.no-match-default
+	// * sys.no-input-<N>, where N can be from 1 to 6
+	// * sys.no-input-default
+	// * sys.invalid-parameter
+	//   [initialPromptFulfillment][initialPromptFulfillment] provides the first prompt for the parameter.
+	//   If the user's response does not fill the parameter, a no-match/no-input event will be triggered, and the fulfillment associated with the sys.no-match-1/sys.no-input-1 handler (if defined) will be called to provide a prompt. The sys.no-match-2/sys.no-input-2 handler (if defined) will respond to the next no-match/no-input event, and so on.
+	//   A sys.no-match-default or sys.no-input-default handler will be used to handle all following no-match/no-input events after all numbered no-match/no-input handlers for the parameter are consumed.
+	//   A sys.invalid-parameter handler can be defined to handle the case where the parameter values have been invalidated by webhook. For example, if the user's response fill the parameter, however the parameter was invalidated by webhook, the fulfillment associated with the sys.invalid-parameter handler (if defined) will be called to provide a prompt.
+	//   If the event handler for the corresponding event can't be found on the parameter, initialPromptFulfillment will be re-prompted.
+	//   Structure is documented below.
+	RepromptEventHandlers CxPageFormParameterFillBehaviorRepromptEventHandlerArrayInput `pulumi:"repromptEventHandlers"`
 }
 
 func (CxPageFormParameterFillBehaviorArgs) ElementType() reflect.Type {
@@ -3746,6 +8259,24 @@ func (o CxPageFormParameterFillBehaviorOutput) InitialPromptFulfillment() CxPage
 	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrOutput)
 }
 
+// The handlers for parameter-level events, used to provide reprompt for the parameter or transition to a different page/flow. The supported events are:
+//   - sys.no-match-<N>, where N can be from 1 to 6
+//   - sys.no-match-default
+//   - sys.no-input-<N>, where N can be from 1 to 6
+//   - sys.no-input-default
+//   - sys.invalid-parameter
+//     [initialPromptFulfillment][initialPromptFulfillment] provides the first prompt for the parameter.
+//     If the user's response does not fill the parameter, a no-match/no-input event will be triggered, and the fulfillment associated with the sys.no-match-1/sys.no-input-1 handler (if defined) will be called to provide a prompt. The sys.no-match-2/sys.no-input-2 handler (if defined) will respond to the next no-match/no-input event, and so on.
+//     A sys.no-match-default or sys.no-input-default handler will be used to handle all following no-match/no-input events after all numbered no-match/no-input handlers for the parameter are consumed.
+//     A sys.invalid-parameter handler can be defined to handle the case where the parameter values have been invalidated by webhook. For example, if the user's response fill the parameter, however the parameter was invalidated by webhook, the fulfillment associated with the sys.invalid-parameter handler (if defined) will be called to provide a prompt.
+//     If the event handler for the corresponding event can't be found on the parameter, initialPromptFulfillment will be re-prompted.
+//     Structure is documented below.
+func (o CxPageFormParameterFillBehaviorOutput) RepromptEventHandlers() CxPageFormParameterFillBehaviorRepromptEventHandlerArrayOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehavior) []CxPageFormParameterFillBehaviorRepromptEventHandler {
+		return v.RepromptEventHandlers
+	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerArrayOutput)
+}
+
 type CxPageFormParameterFillBehaviorPtrOutput struct{ *pulumi.OutputState }
 
 func (CxPageFormParameterFillBehaviorPtrOutput) ElementType() reflect.Type {
@@ -3781,12 +8312,39 @@ func (o CxPageFormParameterFillBehaviorPtrOutput) InitialPromptFulfillment() CxP
 	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrOutput)
 }
 
+// The handlers for parameter-level events, used to provide reprompt for the parameter or transition to a different page/flow. The supported events are:
+//   - sys.no-match-<N>, where N can be from 1 to 6
+//   - sys.no-match-default
+//   - sys.no-input-<N>, where N can be from 1 to 6
+//   - sys.no-input-default
+//   - sys.invalid-parameter
+//     [initialPromptFulfillment][initialPromptFulfillment] provides the first prompt for the parameter.
+//     If the user's response does not fill the parameter, a no-match/no-input event will be triggered, and the fulfillment associated with the sys.no-match-1/sys.no-input-1 handler (if defined) will be called to provide a prompt. The sys.no-match-2/sys.no-input-2 handler (if defined) will respond to the next no-match/no-input event, and so on.
+//     A sys.no-match-default or sys.no-input-default handler will be used to handle all following no-match/no-input events after all numbered no-match/no-input handlers for the parameter are consumed.
+//     A sys.invalid-parameter handler can be defined to handle the case where the parameter values have been invalidated by webhook. For example, if the user's response fill the parameter, however the parameter was invalidated by webhook, the fulfillment associated with the sys.invalid-parameter handler (if defined) will be called to provide a prompt.
+//     If the event handler for the corresponding event can't be found on the parameter, initialPromptFulfillment will be re-prompted.
+//     Structure is documented below.
+func (o CxPageFormParameterFillBehaviorPtrOutput) RepromptEventHandlers() CxPageFormParameterFillBehaviorRepromptEventHandlerArrayOutput {
+	return o.ApplyT(func(v *CxPageFormParameterFillBehavior) []CxPageFormParameterFillBehaviorRepromptEventHandler {
+		if v == nil {
+			return nil
+		}
+		return v.RepromptEventHandlers
+	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerArrayOutput)
+}
+
 type CxPageFormParameterFillBehaviorInitialPromptFulfillment struct {
+	// Conditional cases for this fulfillment.
+	// Structure is documented below.
+	ConditionalCases []CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase `pulumi:"conditionalCases"`
 	// The list of rich message responses to present to the user.
 	// Structure is documented below.
 	Messages []CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage `pulumi:"messages"`
 	// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
 	ReturnPartialResponses *bool `pulumi:"returnPartialResponses"`
+	// Set parameter values before executing the webhook.
+	// Structure is documented below.
+	SetParameterActions []CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction `pulumi:"setParameterActions"`
 	// The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
 	Tag *string `pulumi:"tag"`
 	// The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
@@ -3805,11 +8363,17 @@ type CxPageFormParameterFillBehaviorInitialPromptFulfillmentInput interface {
 }
 
 type CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs struct {
+	// Conditional cases for this fulfillment.
+	// Structure is documented below.
+	ConditionalCases CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayInput `pulumi:"conditionalCases"`
 	// The list of rich message responses to present to the user.
 	// Structure is documented below.
 	Messages CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrayInput `pulumi:"messages"`
 	// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
 	ReturnPartialResponses pulumi.BoolPtrInput `pulumi:"returnPartialResponses"`
+	// Set parameter values before executing the webhook.
+	// Structure is documented below.
+	SetParameterActions CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayInput `pulumi:"setParameterActions"`
 	// The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
 	Tag pulumi.StringPtrInput `pulumi:"tag"`
 	// The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
@@ -3893,6 +8457,14 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentOutput) ToCxPageF
 	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrOutput)
 }
 
+// Conditional cases for this fulfillment.
+// Structure is documented below.
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentOutput) ConditionalCases() CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorInitialPromptFulfillment) []CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase {
+		return v.ConditionalCases
+	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayOutput)
+}
+
 // The list of rich message responses to present to the user.
 // Structure is documented below.
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentOutput) Messages() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrayOutput {
@@ -3904,6 +8476,14 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentOutput) Messages(
 // Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentOutput) ReturnPartialResponses() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CxPageFormParameterFillBehaviorInitialPromptFulfillment) *bool { return v.ReturnPartialResponses }).(pulumi.BoolPtrOutput)
+}
+
+// Set parameter values before executing the webhook.
+// Structure is documented below.
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentOutput) SetParameterActions() CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorInitialPromptFulfillment) []CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction {
+		return v.SetParameterActions
+	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayOutput)
 }
 
 // The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
@@ -3940,6 +8520,17 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrOutput) Elem()
 	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentOutput)
 }
 
+// Conditional cases for this fulfillment.
+// Structure is documented below.
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrOutput) ConditionalCases() CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayOutput {
+	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorInitialPromptFulfillment) []CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase {
+		if v == nil {
+			return nil
+		}
+		return v.ConditionalCases
+	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayOutput)
+}
+
 // The list of rich message responses to present to the user.
 // Structure is documented below.
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrOutput) Messages() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrayOutput {
@@ -3959,6 +8550,17 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrOutput) Return
 		}
 		return v.ReturnPartialResponses
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Set parameter values before executing the webhook.
+// Structure is documented below.
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrOutput) SetParameterActions() CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayOutput {
+	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorInitialPromptFulfillment) []CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction {
+		if v == nil {
+			return nil
+		}
+		return v.SetParameterActions
+	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayOutput)
 }
 
 // The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
@@ -3981,7 +8583,134 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrOutput) Webhoo
 	}).(pulumi.StringPtrOutput)
 }
 
+type CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase struct {
+	// A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+	// See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+	Cases *string `pulumi:"cases"`
+}
+
+// CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseInput is an input type that accepts CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArgs and CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseOutput values.
+// You can construct a concrete instance of `CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseInput` via:
+//
+//	CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArgs{...}
+type CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseInput interface {
+	pulumi.Input
+
+	ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseOutput
+	ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseOutputWithContext(context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseOutput
+}
+
+type CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArgs struct {
+	// A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+	// See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+	Cases pulumi.StringPtrInput `pulumi:"cases"`
+}
+
+func (CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase)(nil)).Elem()
+}
+
+func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArgs) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseOutput {
+	return i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseOutputWithContext(context.Background())
+}
+
+func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArgs) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseOutput)
+}
+
+// CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayInput is an input type that accepts CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArray and CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayOutput values.
+// You can construct a concrete instance of `CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayInput` via:
+//
+//	CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArray{ CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArgs{...} }
+type CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayInput interface {
+	pulumi.Input
+
+	ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayOutput
+	ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayOutputWithContext(context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayOutput
+}
+
+type CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArray []CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseInput
+
+func (CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase)(nil)).Elem()
+}
+
+func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArray) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayOutput {
+	return i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayOutputWithContext(context.Background())
+}
+
+func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArray) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayOutput)
+}
+
+type CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseOutput struct{ *pulumi.OutputState }
+
+func (CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase)(nil)).Elem()
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseOutput {
+	return o
+}
+
+// A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+// See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseOutput) Cases() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase) *string { return v.Cases }).(pulumi.StringPtrOutput)
+}
+
+type CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayOutput struct{ *pulumi.OutputState }
+
+func (CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase)(nil)).Elem()
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayOutput) Index(i pulumi.IntInput) CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase {
+		return vs[0].([]CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCase)[vs[1].(int)]
+	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseOutput)
+}
+
 type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage struct {
+	// The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+	Channel *string `pulumi:"channel"`
+	// Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+	// Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+	// You may set this, for example:
+	// * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+	// * In a webhook response when you determine that you handled the customer issue.
+	//   Structure is documented below.
+	ConversationSuccess *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess `pulumi:"conversationSuccess"`
+	// Indicates that the conversation should be handed off to a live agent.
+	// Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+	// You may set this, for example:
+	// * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+	// * In a webhook response when you determine that the customer issue can only be handled by a human.
+	//   Structure is documented below.
+	LiveAgentHandoff *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff `pulumi:"liveAgentHandoff"`
+	// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+	// Structure is documented below.
+	OutputAudioText *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText `pulumi:"outputAudioText"`
+	// A custom, platform-specific payload.
+	Payload *string `pulumi:"payload"`
+	// Specifies an audio clip to be played by the client as part of the response.
+	// Structure is documented below.
+	PlayAudio *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio `pulumi:"playAudio"`
+	// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+	// Structure is documented below.
+	TelephonyTransferCall *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall `pulumi:"telephonyTransferCall"`
 	// The text response message.
 	// Structure is documented below.
 	Text *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText `pulumi:"text"`
@@ -3999,6 +8728,33 @@ type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageInput interfa
 }
 
 type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs struct {
+	// The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+	Channel pulumi.StringPtrInput `pulumi:"channel"`
+	// Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+	// Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+	// You may set this, for example:
+	// * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+	// * In a webhook response when you determine that you handled the customer issue.
+	//   Structure is documented below.
+	ConversationSuccess CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrInput `pulumi:"conversationSuccess"`
+	// Indicates that the conversation should be handed off to a live agent.
+	// Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+	// You may set this, for example:
+	// * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+	// * In a webhook response when you determine that the customer issue can only be handled by a human.
+	//   Structure is documented below.
+	LiveAgentHandoff CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrInput `pulumi:"liveAgentHandoff"`
+	// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+	// Structure is documented below.
+	OutputAudioText CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrInput `pulumi:"outputAudioText"`
+	// A custom, platform-specific payload.
+	Payload pulumi.StringPtrInput `pulumi:"payload"`
+	// Specifies an audio clip to be played by the client as part of the response.
+	// Structure is documented below.
+	PlayAudio CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrInput `pulumi:"playAudio"`
+	// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+	// Structure is documented below.
+	TelephonyTransferCall CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrInput `pulumi:"telephonyTransferCall"`
 	// The text response message.
 	// Structure is documented below.
 	Text CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrInput `pulumi:"text"`
@@ -4055,6 +8811,64 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutput) To
 	return o
 }
 
+// The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutput) Channel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage) *string { return v.Channel }).(pulumi.StringPtrOutput)
+}
+
+// Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+// Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+// You may set this, for example:
+//   - In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+//   - In a webhook response when you determine that you handled the customer issue.
+//     Structure is documented below.
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutput) ConversationSuccess() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage) *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess {
+		return v.ConversationSuccess
+	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutput)
+}
+
+// Indicates that the conversation should be handed off to a live agent.
+// Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+// You may set this, for example:
+//   - In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+//   - In a webhook response when you determine that the customer issue can only be handled by a human.
+//     Structure is documented below.
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutput) LiveAgentHandoff() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage) *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff {
+		return v.LiveAgentHandoff
+	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutput)
+}
+
+// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+// Structure is documented below.
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutput) OutputAudioText() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage) *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText {
+		return v.OutputAudioText
+	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput)
+}
+
+// A custom, platform-specific payload.
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutput) Payload() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage) *string { return v.Payload }).(pulumi.StringPtrOutput)
+}
+
+// Specifies an audio clip to be played by the client as part of the response.
+// Structure is documented below.
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutput) PlayAudio() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage) *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio {
+		return v.PlayAudio
+	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput)
+}
+
+// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+// Structure is documented below.
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutput) TelephonyTransferCall() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage) *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall {
+		return v.TelephonyTransferCall
+	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutput)
+}
+
 // The text response message.
 // Structure is documented below.
 func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutput) Text() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrOutput {
@@ -4081,6 +8895,772 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrayOutpu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage {
 		return vs[0].([]CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage)[vs[1].(int)]
 	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutput)
+}
+
+type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess struct {
+	// Custom metadata. Dialogflow doesn't impose any structure on this.
+	Metadata *string `pulumi:"metadata"`
+}
+
+// CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessInput is an input type that accepts CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgs and CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessOutput values.
+// You can construct a concrete instance of `CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessInput` via:
+//
+//	CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgs{...}
+type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessInput interface {
+	pulumi.Input
+
+	ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessOutput
+	ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessOutputWithContext(context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessOutput
+}
+
+type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgs struct {
+	// Custom metadata. Dialogflow doesn't impose any structure on this.
+	Metadata pulumi.StringPtrInput `pulumi:"metadata"`
+}
+
+func (CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess)(nil)).Elem()
+}
+
+func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgs) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessOutput {
+	return i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessOutputWithContext(context.Background())
+}
+
+func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgs) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessOutput)
+}
+
+func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgs) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutput {
+	return i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutputWithContext(context.Background())
+}
+
+func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgs) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessOutput).ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx)
+}
+
+// CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrInput is an input type that accepts CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgs, CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtr and CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutput values.
+// You can construct a concrete instance of `CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrInput` via:
+//
+//	        CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrInput interface {
+	pulumi.Input
+
+	ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutput
+	ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutputWithContext(context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutput
+}
+
+type cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrType CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgs
+
+func CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtr(v *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgs) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrInput {
+	return (*cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrType)(v)
+}
+
+func (*cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess)(nil)).Elem()
+}
+
+func (i *cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrType) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutput {
+	return i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutputWithContext(context.Background())
+}
+
+func (i *cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrType) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutput)
+}
+
+type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessOutput struct{ *pulumi.OutputState }
+
+func (CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess)(nil)).Elem()
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutput {
+	return o.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutputWithContext(context.Background())
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess) *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess {
+		return &v
+	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutput)
+}
+
+// Custom metadata. Dialogflow doesn't impose any structure on this.
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess) *string {
+		return v.Metadata
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutput struct{ *pulumi.OutputState }
+
+func (CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess)(nil)).Elem()
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutput) Elem() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessOutput {
+	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess
+		return ret
+	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessOutput)
+}
+
+// Custom metadata. Dialogflow doesn't impose any structure on this.
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Metadata
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff struct {
+	// Custom metadata. Dialogflow doesn't impose any structure on this.
+	Metadata *string `pulumi:"metadata"`
+}
+
+// CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffInput is an input type that accepts CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgs and CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffOutput values.
+// You can construct a concrete instance of `CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffInput` via:
+//
+//	CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgs{...}
+type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffInput interface {
+	pulumi.Input
+
+	ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffOutput
+	ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffOutputWithContext(context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffOutput
+}
+
+type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgs struct {
+	// Custom metadata. Dialogflow doesn't impose any structure on this.
+	Metadata pulumi.StringPtrInput `pulumi:"metadata"`
+}
+
+func (CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff)(nil)).Elem()
+}
+
+func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgs) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffOutput {
+	return i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffOutputWithContext(context.Background())
+}
+
+func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgs) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffOutput)
+}
+
+func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgs) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Background())
+}
+
+func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgs) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffOutput).ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx)
+}
+
+// CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrInput is an input type that accepts CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgs, CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtr and CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutput values.
+// You can construct a concrete instance of `CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrInput` via:
+//
+//	        CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrInput interface {
+	pulumi.Input
+
+	ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutput
+	ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutput
+}
+
+type cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrType CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgs
+
+func CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtr(v *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgs) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrInput {
+	return (*cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrType)(v)
+}
+
+func (*cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff)(nil)).Elem()
+}
+
+func (i *cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrType) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Background())
+}
+
+func (i *cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrType) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutput)
+}
+
+type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffOutput struct{ *pulumi.OutputState }
+
+func (CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff)(nil)).Elem()
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return o.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Background())
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff) *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff {
+		return &v
+	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutput)
+}
+
+// Custom metadata. Dialogflow doesn't impose any structure on this.
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff) *string {
+		return v.Metadata
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutput struct{ *pulumi.OutputState }
+
+func (CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff)(nil)).Elem()
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutput) Elem() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffOutput {
+	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff
+		return ret
+	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffOutput)
+}
+
+// Custom metadata. Dialogflow doesn't impose any structure on this.
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Metadata
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText struct {
+	// (Output)
+	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
+	// The SSML text to be synthesized. For more information, see SSML.
+	Ssml *string `pulumi:"ssml"`
+	// The raw text to be synthesized.
+	Text *string `pulumi:"text"`
+}
+
+// CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextInput is an input type that accepts CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgs and CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextOutput values.
+// You can construct a concrete instance of `CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextInput` via:
+//
+//	CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgs{...}
+type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextInput interface {
+	pulumi.Input
+
+	ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextOutput
+	ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextOutputWithContext(context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextOutput
+}
+
+type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgs struct {
+	// (Output)
+	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
+	// The SSML text to be synthesized. For more information, see SSML.
+	Ssml pulumi.StringPtrInput `pulumi:"ssml"`
+	// The raw text to be synthesized.
+	Text pulumi.StringPtrInput `pulumi:"text"`
+}
+
+func (CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText)(nil)).Elem()
+}
+
+func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgs) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextOutput {
+	return i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextOutputWithContext(context.Background())
+}
+
+func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgs) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextOutput)
+}
+
+func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgs) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput {
+	return i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Background())
+}
+
+func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgs) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextOutput).ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx)
+}
+
+// CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrInput is an input type that accepts CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgs, CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtr and CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput values.
+// You can construct a concrete instance of `CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrInput` via:
+//
+//	        CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrInput interface {
+	pulumi.Input
+
+	ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput
+	ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput
+}
+
+type cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrType CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgs
+
+func CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtr(v *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgs) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrInput {
+	return (*cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrType)(v)
+}
+
+func (*cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText)(nil)).Elem()
+}
+
+func (i *cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrType) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput {
+	return i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Background())
+}
+
+func (i *cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrType) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput)
+}
+
+type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextOutput struct{ *pulumi.OutputState }
+
+func (CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText)(nil)).Elem()
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput {
+	return o.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Background())
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText) *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText {
+		return &v
+	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput)
+}
+
+// (Output)
+// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText) *bool {
+		return v.AllowPlaybackInterruption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The SSML text to be synthesized. For more information, see SSML.
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextOutput) Ssml() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText) *string {
+		return v.Ssml
+	}).(pulumi.StringPtrOutput)
+}
+
+// The raw text to be synthesized.
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText) *string {
+		return v.Text
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput struct{ *pulumi.OutputState }
+
+func (CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText)(nil)).Elem()
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput) Elem() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextOutput {
+	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText
+		return ret
+	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextOutput)
+}
+
+// (Output)
+// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowPlaybackInterruption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The SSML text to be synthesized. For more information, see SSML.
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput) Ssml() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ssml
+	}).(pulumi.StringPtrOutput)
+}
+
+// The raw text to be synthesized.
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioText) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Text
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio struct {
+	// (Output)
+	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
+	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+	AudioUri string `pulumi:"audioUri"`
+}
+
+// CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioInput is an input type that accepts CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgs and CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioOutput values.
+// You can construct a concrete instance of `CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioInput` via:
+//
+//	CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgs{...}
+type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioInput interface {
+	pulumi.Input
+
+	ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioOutput
+	ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioOutputWithContext(context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioOutput
+}
+
+type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgs struct {
+	// (Output)
+	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
+	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+	AudioUri pulumi.StringInput `pulumi:"audioUri"`
+}
+
+func (CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio)(nil)).Elem()
+}
+
+func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgs) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioOutput {
+	return i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioOutputWithContext(context.Background())
+}
+
+func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgs) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioOutput)
+}
+
+func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgs) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput {
+	return i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutputWithContext(context.Background())
+}
+
+func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgs) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioOutput).ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutputWithContext(ctx)
+}
+
+// CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrInput is an input type that accepts CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgs, CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtr and CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput values.
+// You can construct a concrete instance of `CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrInput` via:
+//
+//	        CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrInput interface {
+	pulumi.Input
+
+	ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput
+	ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutputWithContext(context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput
+}
+
+type cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrType CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgs
+
+func CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtr(v *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgs) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrInput {
+	return (*cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrType)(v)
+}
+
+func (*cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio)(nil)).Elem()
+}
+
+func (i *cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrType) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput {
+	return i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutputWithContext(context.Background())
+}
+
+func (i *cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrType) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput)
+}
+
+type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioOutput struct{ *pulumi.OutputState }
+
+func (CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio)(nil)).Elem()
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput {
+	return o.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutputWithContext(context.Background())
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio) *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio {
+		return &v
+	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput)
+}
+
+// (Output)
+// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio) *bool {
+		return v.AllowPlaybackInterruption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioOutput) AudioUri() pulumi.StringOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio) string {
+		return v.AudioUri
+	}).(pulumi.StringOutput)
+}
+
+type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput struct{ *pulumi.OutputState }
+
+func (CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio)(nil)).Elem()
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput) Elem() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioOutput {
+	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio
+		return ret
+	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioOutput)
+}
+
+// (Output)
+// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowPlaybackInterruption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput) AudioUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudio) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AudioUri
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall struct {
+	// Transfer the call to a phone number in E.164 format.
+	PhoneNumber string `pulumi:"phoneNumber"`
+}
+
+// CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallInput is an input type that accepts CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgs and CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallOutput values.
+// You can construct a concrete instance of `CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallInput` via:
+//
+//	CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgs{...}
+type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallInput interface {
+	pulumi.Input
+
+	ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallOutput
+	ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallOutputWithContext(context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallOutput
+}
+
+type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgs struct {
+	// Transfer the call to a phone number in E.164 format.
+	PhoneNumber pulumi.StringInput `pulumi:"phoneNumber"`
+}
+
+func (CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall)(nil)).Elem()
+}
+
+func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgs) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallOutput {
+	return i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallOutputWithContext(context.Background())
+}
+
+func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgs) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallOutput)
+}
+
+func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgs) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Background())
+}
+
+func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgs) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallOutput).ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx)
+}
+
+// CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrInput is an input type that accepts CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgs, CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtr and CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutput values.
+// You can construct a concrete instance of `CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrInput` via:
+//
+//	        CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrInput interface {
+	pulumi.Input
+
+	ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutput
+	ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutput
+}
+
+type cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrType CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgs
+
+func CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtr(v *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgs) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrInput {
+	return (*cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrType)(v)
+}
+
+func (*cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall)(nil)).Elem()
+}
+
+func (i *cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrType) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Background())
+}
+
+func (i *cxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrType) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutput)
+}
+
+type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallOutput struct{ *pulumi.OutputState }
+
+func (CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall)(nil)).Elem()
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return o.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Background())
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall) *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall {
+		return &v
+	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutput)
+}
+
+// Transfer the call to a phone number in E.164 format.
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallOutput) PhoneNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall) string {
+		return v.PhoneNumber
+	}).(pulumi.StringOutput)
+}
+
+type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutput struct{ *pulumi.OutputState }
+
+func (CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall)(nil)).Elem()
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutput) Elem() CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallOutput {
+	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall) CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall
+		return ret
+	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallOutput)
+}
+
+// Transfer the call to a phone number in E.164 format.
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutput) PhoneNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCall) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PhoneNumber
+	}).(pulumi.StringPtrOutput)
 }
 
 type CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageText struct {
@@ -4245,6 +9825,1877 @@ func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrOut
 	}).(pulumi.StringArrayOutput)
 }
 
+type CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction struct {
+	// Display name of the parameter.
+	Parameter *string `pulumi:"parameter"`
+	// The new JSON-encoded value of the parameter. A null value clears the parameter.
+	Value *string `pulumi:"value"`
+}
+
+// CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionInput is an input type that accepts CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgs and CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionOutput values.
+// You can construct a concrete instance of `CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionInput` via:
+//
+//	CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgs{...}
+type CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionInput interface {
+	pulumi.Input
+
+	ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionOutput
+	ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionOutputWithContext(context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionOutput
+}
+
+type CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgs struct {
+	// Display name of the parameter.
+	Parameter pulumi.StringPtrInput `pulumi:"parameter"`
+	// The new JSON-encoded value of the parameter. A null value clears the parameter.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction)(nil)).Elem()
+}
+
+func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgs) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionOutput {
+	return i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionOutputWithContext(context.Background())
+}
+
+func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgs) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionOutput)
+}
+
+// CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayInput is an input type that accepts CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArray and CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayOutput values.
+// You can construct a concrete instance of `CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayInput` via:
+//
+//	CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArray{ CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgs{...} }
+type CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayInput interface {
+	pulumi.Input
+
+	ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayOutput
+	ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayOutputWithContext(context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayOutput
+}
+
+type CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArray []CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionInput
+
+func (CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction)(nil)).Elem()
+}
+
+func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArray) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayOutput {
+	return i.ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayOutputWithContext(context.Background())
+}
+
+func (i CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArray) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayOutput)
+}
+
+type CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionOutput struct{ *pulumi.OutputState }
+
+func (CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction)(nil)).Elem()
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionOutput {
+	return o
+}
+
+// Display name of the parameter.
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionOutput) Parameter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction) *string {
+		return v.Parameter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The new JSON-encoded value of the parameter. A null value clears the parameter.
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction) *string {
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayOutput struct{ *pulumi.OutputState }
+
+func (CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction)(nil)).Elem()
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayOutput() CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayOutput) ToCxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayOutput) Index(i pulumi.IntInput) CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction {
+		return vs[0].([]CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterAction)[vs[1].(int)]
+	}).(CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionOutput)
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandler struct {
+	// The name of the event to handle.
+	Event *string `pulumi:"event"`
+	// (Output)
+	// The unique identifier of this event handler.
+	Name *string `pulumi:"name"`
+	// The target flow to transition to.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+	TargetFlow *string `pulumi:"targetFlow"`
+	// The target page to transition to.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+	TargetPage *string `pulumi:"targetPage"`
+	// The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+	// Structure is documented below.
+	TriggerFulfillment *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment `pulumi:"triggerFulfillment"`
+}
+
+// CxPageFormParameterFillBehaviorRepromptEventHandlerInput is an input type that accepts CxPageFormParameterFillBehaviorRepromptEventHandlerArgs and CxPageFormParameterFillBehaviorRepromptEventHandlerOutput values.
+// You can construct a concrete instance of `CxPageFormParameterFillBehaviorRepromptEventHandlerInput` via:
+//
+//	CxPageFormParameterFillBehaviorRepromptEventHandlerArgs{...}
+type CxPageFormParameterFillBehaviorRepromptEventHandlerInput interface {
+	pulumi.Input
+
+	ToCxPageFormParameterFillBehaviorRepromptEventHandlerOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerOutput
+	ToCxPageFormParameterFillBehaviorRepromptEventHandlerOutputWithContext(context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerOutput
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerArgs struct {
+	// The name of the event to handle.
+	Event pulumi.StringPtrInput `pulumi:"event"`
+	// (Output)
+	// The unique identifier of this event handler.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The target flow to transition to.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+	TargetFlow pulumi.StringPtrInput `pulumi:"targetFlow"`
+	// The target page to transition to.
+	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+	TargetPage pulumi.StringPtrInput `pulumi:"targetPage"`
+	// The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+	// Structure is documented below.
+	TriggerFulfillment CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrInput `pulumi:"triggerFulfillment"`
+}
+
+func (CxPageFormParameterFillBehaviorRepromptEventHandlerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandler)(nil)).Elem()
+}
+
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerOutput {
+	return i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerOutputWithContext(context.Background())
+}
+
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerOutput)
+}
+
+// CxPageFormParameterFillBehaviorRepromptEventHandlerArrayInput is an input type that accepts CxPageFormParameterFillBehaviorRepromptEventHandlerArray and CxPageFormParameterFillBehaviorRepromptEventHandlerArrayOutput values.
+// You can construct a concrete instance of `CxPageFormParameterFillBehaviorRepromptEventHandlerArrayInput` via:
+//
+//	CxPageFormParameterFillBehaviorRepromptEventHandlerArray{ CxPageFormParameterFillBehaviorRepromptEventHandlerArgs{...} }
+type CxPageFormParameterFillBehaviorRepromptEventHandlerArrayInput interface {
+	pulumi.Input
+
+	ToCxPageFormParameterFillBehaviorRepromptEventHandlerArrayOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerArrayOutput
+	ToCxPageFormParameterFillBehaviorRepromptEventHandlerArrayOutputWithContext(context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerArrayOutput
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerArray []CxPageFormParameterFillBehaviorRepromptEventHandlerInput
+
+func (CxPageFormParameterFillBehaviorRepromptEventHandlerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxPageFormParameterFillBehaviorRepromptEventHandler)(nil)).Elem()
+}
+
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerArray) ToCxPageFormParameterFillBehaviorRepromptEventHandlerArrayOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerArrayOutput {
+	return i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerArrayOutputWithContext(context.Background())
+}
+
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerArray) ToCxPageFormParameterFillBehaviorRepromptEventHandlerArrayOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerArrayOutput)
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerOutput struct{ *pulumi.OutputState }
+
+func (CxPageFormParameterFillBehaviorRepromptEventHandlerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandler)(nil)).Elem()
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerOutput {
+	return o
+}
+
+// The name of the event to handle.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerOutput) Event() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandler) *string { return v.Event }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The unique identifier of this event handler.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandler) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The target flow to transition to.
+// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerOutput) TargetFlow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandler) *string { return v.TargetFlow }).(pulumi.StringPtrOutput)
+}
+
+// The target page to transition to.
+// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerOutput) TargetPage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandler) *string { return v.TargetPage }).(pulumi.StringPtrOutput)
+}
+
+// The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+// Structure is documented below.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerOutput) TriggerFulfillment() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandler) *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment {
+		return v.TriggerFulfillment
+	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput)
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerArrayOutput struct{ *pulumi.OutputState }
+
+func (CxPageFormParameterFillBehaviorRepromptEventHandlerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxPageFormParameterFillBehaviorRepromptEventHandler)(nil)).Elem()
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerArrayOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerArrayOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerArrayOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerArrayOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerArrayOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerArrayOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerArrayOutput) Index(i pulumi.IntInput) CxPageFormParameterFillBehaviorRepromptEventHandlerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxPageFormParameterFillBehaviorRepromptEventHandler {
+		return vs[0].([]CxPageFormParameterFillBehaviorRepromptEventHandler)[vs[1].(int)]
+	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerOutput)
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment struct {
+	// Conditional cases for this fulfillment.
+	// Structure is documented below.
+	ConditionalCases []CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCase `pulumi:"conditionalCases"`
+	// The list of rich message responses to present to the user.
+	// Structure is documented below.
+	Messages []CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage `pulumi:"messages"`
+	// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+	ReturnPartialResponses *bool `pulumi:"returnPartialResponses"`
+	// Set parameter values before executing the webhook.
+	// Structure is documented below.
+	SetParameterActions []CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction `pulumi:"setParameterActions"`
+	// The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+	Tag *string `pulumi:"tag"`
+	// The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+	Webhook *string `pulumi:"webhook"`
+}
+
+// CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentInput is an input type that accepts CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs and CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentOutput values.
+// You can construct a concrete instance of `CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentInput` via:
+//
+//	CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs{...}
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentInput interface {
+	pulumi.Input
+
+	ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentOutput
+	ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentOutputWithContext(context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentOutput
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs struct {
+	// Conditional cases for this fulfillment.
+	// Structure is documented below.
+	ConditionalCases CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayInput `pulumi:"conditionalCases"`
+	// The list of rich message responses to present to the user.
+	// Structure is documented below.
+	Messages CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrayInput `pulumi:"messages"`
+	// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+	ReturnPartialResponses pulumi.BoolPtrInput `pulumi:"returnPartialResponses"`
+	// Set parameter values before executing the webhook.
+	// Structure is documented below.
+	SetParameterActions CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayInput `pulumi:"setParameterActions"`
+	// The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+	Tag pulumi.StringPtrInput `pulumi:"tag"`
+	// The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+	Webhook pulumi.StringPtrInput `pulumi:"webhook"`
+}
+
+func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment)(nil)).Elem()
+}
+
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentOutput {
+	return i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentOutputWithContext(context.Background())
+}
+
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentOutput)
+}
+
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput {
+	return i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutputWithContext(context.Background())
+}
+
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentOutput).ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutputWithContext(ctx)
+}
+
+// CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrInput is an input type that accepts CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs, CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtr and CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput values.
+// You can construct a concrete instance of `CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrInput` via:
+//
+//	        CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrInput interface {
+	pulumi.Input
+
+	ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput
+	ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutputWithContext(context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput
+}
+
+type cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrType CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs
+
+func CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtr(v *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrInput {
+	return (*cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrType)(v)
+}
+
+func (*cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment)(nil)).Elem()
+}
+
+func (i *cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrType) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput {
+	return i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutputWithContext(context.Background())
+}
+
+func (i *cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrType) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput)
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentOutput struct{ *pulumi.OutputState }
+
+func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment)(nil)).Elem()
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput {
+	return o.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutputWithContext(context.Background())
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment) *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment {
+		return &v
+	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput)
+}
+
+// Conditional cases for this fulfillment.
+// Structure is documented below.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentOutput) ConditionalCases() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment) []CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCase {
+		return v.ConditionalCases
+	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayOutput)
+}
+
+// The list of rich message responses to present to the user.
+// Structure is documented below.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentOutput) Messages() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrayOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment) []CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage {
+		return v.Messages
+	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrayOutput)
+}
+
+// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentOutput) ReturnPartialResponses() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment) *bool {
+		return v.ReturnPartialResponses
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Set parameter values before executing the webhook.
+// Structure is documented below.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentOutput) SetParameterActions() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment) []CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction {
+		return v.SetParameterActions
+	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayOutput)
+}
+
+// The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment) *string { return v.Tag }).(pulumi.StringPtrOutput)
+}
+
+// The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentOutput) Webhook() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment) *string {
+		return v.Webhook
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput struct{ *pulumi.OutputState }
+
+func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment)(nil)).Elem()
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput) Elem() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentOutput {
+	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment
+		return ret
+	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentOutput)
+}
+
+// Conditional cases for this fulfillment.
+// Structure is documented below.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput) ConditionalCases() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayOutput {
+	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment) []CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCase {
+		if v == nil {
+			return nil
+		}
+		return v.ConditionalCases
+	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayOutput)
+}
+
+// The list of rich message responses to present to the user.
+// Structure is documented below.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput) Messages() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrayOutput {
+	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment) []CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage {
+		if v == nil {
+			return nil
+		}
+		return v.Messages
+	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrayOutput)
+}
+
+// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput) ReturnPartialResponses() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReturnPartialResponses
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Set parameter values before executing the webhook.
+// Structure is documented below.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput) SetParameterActions() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayOutput {
+	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment) []CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction {
+		if v == nil {
+			return nil
+		}
+		return v.SetParameterActions
+	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayOutput)
+}
+
+// The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tag
+	}).(pulumi.StringPtrOutput)
+}
+
+// The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput) Webhook() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Webhook
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCase struct {
+	// A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+	// See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+	Cases *string `pulumi:"cases"`
+}
+
+// CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseInput is an input type that accepts CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArgs and CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseOutput values.
+// You can construct a concrete instance of `CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseInput` via:
+//
+//	CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArgs{...}
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseInput interface {
+	pulumi.Input
+
+	ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseOutput
+	ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseOutputWithContext(context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseOutput
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArgs struct {
+	// A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+	// See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+	Cases pulumi.StringPtrInput `pulumi:"cases"`
+}
+
+func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCase)(nil)).Elem()
+}
+
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseOutput {
+	return i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseOutputWithContext(context.Background())
+}
+
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseOutput)
+}
+
+// CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayInput is an input type that accepts CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArray and CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayOutput values.
+// You can construct a concrete instance of `CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayInput` via:
+//
+//	CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArray{ CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArgs{...} }
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayInput interface {
+	pulumi.Input
+
+	ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayOutput
+	ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayOutputWithContext(context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayOutput
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArray []CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseInput
+
+func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCase)(nil)).Elem()
+}
+
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArray) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayOutput {
+	return i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayOutputWithContext(context.Background())
+}
+
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArray) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayOutput)
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseOutput struct{ *pulumi.OutputState }
+
+func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCase)(nil)).Elem()
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseOutput {
+	return o
+}
+
+// A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+// See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseOutput) Cases() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCase) *string {
+		return v.Cases
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayOutput struct{ *pulumi.OutputState }
+
+func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCase)(nil)).Elem()
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayOutput) Index(i pulumi.IntInput) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCase {
+		return vs[0].([]CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCase)[vs[1].(int)]
+	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseOutput)
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage struct {
+	// The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+	Channel *string `pulumi:"channel"`
+	// Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+	// Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+	// You may set this, for example:
+	// * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+	// * In a webhook response when you determine that you handled the customer issue.
+	//   Structure is documented below.
+	ConversationSuccess *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess `pulumi:"conversationSuccess"`
+	// Indicates that the conversation should be handed off to a live agent.
+	// Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+	// You may set this, for example:
+	// * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+	// * In a webhook response when you determine that the customer issue can only be handled by a human.
+	//   Structure is documented below.
+	LiveAgentHandoff *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff `pulumi:"liveAgentHandoff"`
+	// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+	// Structure is documented below.
+	OutputAudioText *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText `pulumi:"outputAudioText"`
+	// A custom, platform-specific payload.
+	Payload *string `pulumi:"payload"`
+	// Specifies an audio clip to be played by the client as part of the response.
+	// Structure is documented below.
+	PlayAudio *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio `pulumi:"playAudio"`
+	// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+	// Structure is documented below.
+	TelephonyTransferCall *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall `pulumi:"telephonyTransferCall"`
+	// The text response message.
+	// Structure is documented below.
+	Text *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText `pulumi:"text"`
+}
+
+// CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageInput is an input type that accepts CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs and CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput values.
+// You can construct a concrete instance of `CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageInput` via:
+//
+//	CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs{...}
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageInput interface {
+	pulumi.Input
+
+	ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput
+	ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputWithContext(context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs struct {
+	// The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+	Channel pulumi.StringPtrInput `pulumi:"channel"`
+	// Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+	// Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+	// You may set this, for example:
+	// * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+	// * In a webhook response when you determine that you handled the customer issue.
+	//   Structure is documented below.
+	ConversationSuccess CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrInput `pulumi:"conversationSuccess"`
+	// Indicates that the conversation should be handed off to a live agent.
+	// Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+	// You may set this, for example:
+	// * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+	// * In a webhook response when you determine that the customer issue can only be handled by a human.
+	//   Structure is documented below.
+	LiveAgentHandoff CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrInput `pulumi:"liveAgentHandoff"`
+	// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+	// Structure is documented below.
+	OutputAudioText CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrInput `pulumi:"outputAudioText"`
+	// A custom, platform-specific payload.
+	Payload pulumi.StringPtrInput `pulumi:"payload"`
+	// Specifies an audio clip to be played by the client as part of the response.
+	// Structure is documented below.
+	PlayAudio CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrInput `pulumi:"playAudio"`
+	// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+	// Structure is documented below.
+	TelephonyTransferCall CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrInput `pulumi:"telephonyTransferCall"`
+	// The text response message.
+	// Structure is documented below.
+	Text CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrInput `pulumi:"text"`
+}
+
+func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage)(nil)).Elem()
+}
+
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput {
+	return i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputWithContext(context.Background())
+}
+
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput)
+}
+
+// CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrayInput is an input type that accepts CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArray and CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrayOutput values.
+// You can construct a concrete instance of `CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrayInput` via:
+//
+//	CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArray{ CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs{...} }
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrayInput interface {
+	pulumi.Input
+
+	ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrayOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrayOutput
+	ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrayOutputWithContext(context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrayOutput
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArray []CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageInput
+
+func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage)(nil)).Elem()
+}
+
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArray) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrayOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrayOutput {
+	return i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrayOutputWithContext(context.Background())
+}
+
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArray) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrayOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrayOutput)
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput struct{ *pulumi.OutputState }
+
+func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage)(nil)).Elem()
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput {
+	return o
+}
+
+// The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput) Channel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage) *string {
+		return v.Channel
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+// Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+// You may set this, for example:
+//   - In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+//   - In a webhook response when you determine that you handled the customer issue.
+//     Structure is documented below.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput) ConversationSuccess() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage) *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess {
+		return v.ConversationSuccess
+	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput)
+}
+
+// Indicates that the conversation should be handed off to a live agent.
+// Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+// You may set this, for example:
+//   - In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+//   - In a webhook response when you determine that the customer issue can only be handled by a human.
+//     Structure is documented below.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput) LiveAgentHandoff() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage) *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff {
+		return v.LiveAgentHandoff
+	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput)
+}
+
+// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+// Structure is documented below.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput) OutputAudioText() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage) *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText {
+		return v.OutputAudioText
+	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput)
+}
+
+// A custom, platform-specific payload.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput) Payload() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage) *string {
+		return v.Payload
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies an audio clip to be played by the client as part of the response.
+// Structure is documented below.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput) PlayAudio() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage) *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio {
+		return v.PlayAudio
+	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput)
+}
+
+// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+// Structure is documented below.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput) TelephonyTransferCall() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage) *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall {
+		return v.TelephonyTransferCall
+	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput)
+}
+
+// The text response message.
+// Structure is documented below.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput) Text() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage) *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText {
+		return v.Text
+	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput)
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrayOutput struct{ *pulumi.OutputState }
+
+func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage)(nil)).Elem()
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrayOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrayOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrayOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrayOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrayOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrayOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrayOutput) Index(i pulumi.IntInput) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage {
+		return vs[0].([]CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessage)[vs[1].(int)]
+	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput)
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess struct {
+	// Custom metadata. Dialogflow doesn't impose any structure on this.
+	Metadata *string `pulumi:"metadata"`
+}
+
+// CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessInput is an input type that accepts CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgs and CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessOutput values.
+// You can construct a concrete instance of `CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessInput` via:
+//
+//	CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgs{...}
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessInput interface {
+	pulumi.Input
+
+	ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessOutput
+	ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessOutputWithContext(context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessOutput
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgs struct {
+	// Custom metadata. Dialogflow doesn't impose any structure on this.
+	Metadata pulumi.StringPtrInput `pulumi:"metadata"`
+}
+
+func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess)(nil)).Elem()
+}
+
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessOutput {
+	return i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessOutputWithContext(context.Background())
+}
+
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessOutput)
+}
+
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(context.Background())
+}
+
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessOutput).ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx)
+}
+
+// CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrInput is an input type that accepts CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgs, CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtr and CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput values.
+// You can construct a concrete instance of `CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrInput` via:
+//
+//	        CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrInput interface {
+	pulumi.Input
+
+	ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput
+	ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput
+}
+
+type cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrType CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgs
+
+func CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtr(v *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgs) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrInput {
+	return (*cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrType)(v)
+}
+
+func (*cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess)(nil)).Elem()
+}
+
+func (i *cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrType) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(context.Background())
+}
+
+func (i *cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrType) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput)
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessOutput struct{ *pulumi.OutputState }
+
+func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess)(nil)).Elem()
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return o.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(context.Background())
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess) *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess {
+		return &v
+	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput)
+}
+
+// Custom metadata. Dialogflow doesn't impose any structure on this.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess) *string {
+		return v.Metadata
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput struct{ *pulumi.OutputState }
+
+func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess)(nil)).Elem()
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput) Elem() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessOutput {
+	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess
+		return ret
+	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessOutput)
+}
+
+// Custom metadata. Dialogflow doesn't impose any structure on this.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Metadata
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff struct {
+	// Custom metadata. Dialogflow doesn't impose any structure on this.
+	Metadata *string `pulumi:"metadata"`
+}
+
+// CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffInput is an input type that accepts CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs and CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput values.
+// You can construct a concrete instance of `CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffInput` via:
+//
+//	CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs{...}
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffInput interface {
+	pulumi.Input
+
+	ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput
+	ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutputWithContext(context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs struct {
+	// Custom metadata. Dialogflow doesn't impose any structure on this.
+	Metadata pulumi.StringPtrInput `pulumi:"metadata"`
+}
+
+func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff)(nil)).Elem()
+}
+
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput {
+	return i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutputWithContext(context.Background())
+}
+
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput)
+}
+
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Background())
+}
+
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput).ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx)
+}
+
+// CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrInput is an input type that accepts CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs, CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtr and CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput values.
+// You can construct a concrete instance of `CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrInput` via:
+//
+//	        CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrInput interface {
+	pulumi.Input
+
+	ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput
+	ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput
+}
+
+type cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrType CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs
+
+func CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtr(v *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrInput {
+	return (*cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrType)(v)
+}
+
+func (*cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff)(nil)).Elem()
+}
+
+func (i *cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrType) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Background())
+}
+
+func (i *cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrType) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput)
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput struct{ *pulumi.OutputState }
+
+func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff)(nil)).Elem()
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return o.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Background())
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff) *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff {
+		return &v
+	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput)
+}
+
+// Custom metadata. Dialogflow doesn't impose any structure on this.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff) *string {
+		return v.Metadata
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput struct{ *pulumi.OutputState }
+
+func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff)(nil)).Elem()
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) Elem() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput {
+	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff
+		return ret
+	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput)
+}
+
+// Custom metadata. Dialogflow doesn't impose any structure on this.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Metadata
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText struct {
+	// (Output)
+	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
+	// The SSML text to be synthesized. For more information, see SSML.
+	Ssml *string `pulumi:"ssml"`
+	// The raw text to be synthesized.
+	Text *string `pulumi:"text"`
+}
+
+// CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextInput is an input type that accepts CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs and CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput values.
+// You can construct a concrete instance of `CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextInput` via:
+//
+//	CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs{...}
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextInput interface {
+	pulumi.Input
+
+	ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput
+	ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextOutputWithContext(context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs struct {
+	// (Output)
+	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
+	// The SSML text to be synthesized. For more information, see SSML.
+	Ssml pulumi.StringPtrInput `pulumi:"ssml"`
+	// The raw text to be synthesized.
+	Text pulumi.StringPtrInput `pulumi:"text"`
+}
+
+func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText)(nil)).Elem()
+}
+
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput {
+	return i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextOutputWithContext(context.Background())
+}
+
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput)
+}
+
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Background())
+}
+
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput).ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx)
+}
+
+// CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrInput is an input type that accepts CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs, CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtr and CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput values.
+// You can construct a concrete instance of `CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrInput` via:
+//
+//	        CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrInput interface {
+	pulumi.Input
+
+	ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput
+	ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput
+}
+
+type cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrType CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs
+
+func CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtr(v *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrInput {
+	return (*cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrType)(v)
+}
+
+func (*cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText)(nil)).Elem()
+}
+
+func (i *cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrType) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Background())
+}
+
+func (i *cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrType) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput)
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput struct{ *pulumi.OutputState }
+
+func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText)(nil)).Elem()
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return o.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Background())
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText) *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText {
+		return &v
+	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput)
+}
+
+// (Output)
+// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText) *bool {
+		return v.AllowPlaybackInterruption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The SSML text to be synthesized. For more information, see SSML.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) Ssml() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText) *string {
+		return v.Ssml
+	}).(pulumi.StringPtrOutput)
+}
+
+// The raw text to be synthesized.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText) *string {
+		return v.Text
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput struct{ *pulumi.OutputState }
+
+func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText)(nil)).Elem()
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) Elem() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput {
+	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText
+		return ret
+	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput)
+}
+
+// (Output)
+// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowPlaybackInterruption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The SSML text to be synthesized. For more information, see SSML.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) Ssml() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ssml
+	}).(pulumi.StringPtrOutput)
+}
+
+// The raw text to be synthesized.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioText) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Text
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio struct {
+	// (Output)
+	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
+	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+	AudioUri string `pulumi:"audioUri"`
+}
+
+// CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioInput is an input type that accepts CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgs and CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioOutput values.
+// You can construct a concrete instance of `CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioInput` via:
+//
+//	CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgs{...}
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioInput interface {
+	pulumi.Input
+
+	ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioOutput
+	ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioOutputWithContext(context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioOutput
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgs struct {
+	// (Output)
+	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
+	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+	AudioUri pulumi.StringInput `pulumi:"audioUri"`
+}
+
+func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio)(nil)).Elem()
+}
+
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioOutput {
+	return i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioOutputWithContext(context.Background())
+}
+
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioOutput)
+}
+
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(context.Background())
+}
+
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioOutput).ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx)
+}
+
+// CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrInput is an input type that accepts CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgs, CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtr and CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput values.
+// You can construct a concrete instance of `CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrInput` via:
+//
+//	        CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrInput interface {
+	pulumi.Input
+
+	ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput
+	ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput
+}
+
+type cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrType CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgs
+
+func CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtr(v *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgs) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrInput {
+	return (*cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrType)(v)
+}
+
+func (*cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio)(nil)).Elem()
+}
+
+func (i *cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrType) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(context.Background())
+}
+
+func (i *cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrType) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput)
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioOutput struct{ *pulumi.OutputState }
+
+func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio)(nil)).Elem()
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return o.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(context.Background())
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio) *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio {
+		return &v
+	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput)
+}
+
+// (Output)
+// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio) *bool {
+		return v.AllowPlaybackInterruption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioOutput) AudioUri() pulumi.StringOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio) string {
+		return v.AudioUri
+	}).(pulumi.StringOutput)
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput struct{ *pulumi.OutputState }
+
+func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio)(nil)).Elem()
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) Elem() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioOutput {
+	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio
+		return ret
+	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioOutput)
+}
+
+// (Output)
+// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowPlaybackInterruption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput) AudioUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AudioUri
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall struct {
+	// Transfer the call to a phone number in E.164 format.
+	PhoneNumber string `pulumi:"phoneNumber"`
+}
+
+// CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallInput is an input type that accepts CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs and CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput values.
+// You can construct a concrete instance of `CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallInput` via:
+//
+//	CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs{...}
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallInput interface {
+	pulumi.Input
+
+	ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput
+	ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutputWithContext(context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs struct {
+	// Transfer the call to a phone number in E.164 format.
+	PhoneNumber pulumi.StringInput `pulumi:"phoneNumber"`
+}
+
+func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall)(nil)).Elem()
+}
+
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput {
+	return i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutputWithContext(context.Background())
+}
+
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput)
+}
+
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Background())
+}
+
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput).ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx)
+}
+
+// CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrInput is an input type that accepts CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs, CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtr and CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput values.
+// You can construct a concrete instance of `CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrInput` via:
+//
+//	        CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrInput interface {
+	pulumi.Input
+
+	ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput
+	ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput
+}
+
+type cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrType CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs
+
+func CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtr(v *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrInput {
+	return (*cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrType)(v)
+}
+
+func (*cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall)(nil)).Elem()
+}
+
+func (i *cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrType) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Background())
+}
+
+func (i *cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrType) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput)
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput struct{ *pulumi.OutputState }
+
+func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall)(nil)).Elem()
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return o.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Background())
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall) *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall {
+		return &v
+	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput)
+}
+
+// Transfer the call to a phone number in E.164 format.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput) PhoneNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall) string {
+		return v.PhoneNumber
+	}).(pulumi.StringOutput)
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput struct{ *pulumi.OutputState }
+
+func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall)(nil)).Elem()
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) Elem() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput {
+	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall
+		return ret
+	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput)
+}
+
+// Transfer the call to a phone number in E.164 format.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) PhoneNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PhoneNumber
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText struct {
+	// (Output)
+	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
+	// A collection of text responses.
+	Texts []string `pulumi:"texts"`
+}
+
+// CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextInput is an input type that accepts CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgs and CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextOutput values.
+// You can construct a concrete instance of `CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextInput` via:
+//
+//	CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgs{...}
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextInput interface {
+	pulumi.Input
+
+	ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextOutput
+	ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextOutputWithContext(context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextOutput
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgs struct {
+	// (Output)
+	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
+	// A collection of text responses.
+	Texts pulumi.StringArrayInput `pulumi:"texts"`
+}
+
+func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText)(nil)).Elem()
+}
+
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextOutput {
+	return i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextOutputWithContext(context.Background())
+}
+
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextOutput)
+}
+
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput {
+	return i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutputWithContext(context.Background())
+}
+
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextOutput).ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutputWithContext(ctx)
+}
+
+// CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrInput is an input type that accepts CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgs, CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtr and CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput values.
+// You can construct a concrete instance of `CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrInput` via:
+//
+//	        CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrInput interface {
+	pulumi.Input
+
+	ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput
+	ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutputWithContext(context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput
+}
+
+type cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrType CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgs
+
+func CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtr(v *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgs) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrInput {
+	return (*cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrType)(v)
+}
+
+func (*cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText)(nil)).Elem()
+}
+
+func (i *cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrType) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput {
+	return i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutputWithContext(context.Background())
+}
+
+func (i *cxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrType) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput)
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextOutput struct{ *pulumi.OutputState }
+
+func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText)(nil)).Elem()
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput {
+	return o.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutputWithContext(context.Background())
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText) *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText {
+		return &v
+	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput)
+}
+
+// (Output)
+// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText) *bool {
+		return v.AllowPlaybackInterruption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A collection of text responses.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextOutput) Texts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText) []string {
+		return v.Texts
+	}).(pulumi.StringArrayOutput)
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput struct{ *pulumi.OutputState }
+
+func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText)(nil)).Elem()
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput) Elem() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextOutput {
+	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText
+		return ret
+	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextOutput)
+}
+
+// (Output)
+// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowPlaybackInterruption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A collection of text responses.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput) Texts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageText) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Texts
+	}).(pulumi.StringArrayOutput)
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction struct {
+	// Display name of the parameter.
+	Parameter *string `pulumi:"parameter"`
+	// The new JSON-encoded value of the parameter. A null value clears the parameter.
+	Value *string `pulumi:"value"`
+}
+
+// CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionInput is an input type that accepts CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgs and CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionOutput values.
+// You can construct a concrete instance of `CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionInput` via:
+//
+//	CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgs{...}
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionInput interface {
+	pulumi.Input
+
+	ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionOutput
+	ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionOutputWithContext(context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionOutput
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgs struct {
+	// Display name of the parameter.
+	Parameter pulumi.StringPtrInput `pulumi:"parameter"`
+	// The new JSON-encoded value of the parameter. A null value clears the parameter.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction)(nil)).Elem()
+}
+
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionOutput {
+	return i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionOutputWithContext(context.Background())
+}
+
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgs) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionOutput)
+}
+
+// CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayInput is an input type that accepts CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArray and CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayOutput values.
+// You can construct a concrete instance of `CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayInput` via:
+//
+//	CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArray{ CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgs{...} }
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayInput interface {
+	pulumi.Input
+
+	ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayOutput
+	ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayOutputWithContext(context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayOutput
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArray []CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionInput
+
+func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction)(nil)).Elem()
+}
+
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArray) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayOutput {
+	return i.ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayOutputWithContext(context.Background())
+}
+
+func (i CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArray) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayOutput)
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionOutput struct{ *pulumi.OutputState }
+
+func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction)(nil)).Elem()
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionOutput {
+	return o
+}
+
+// Display name of the parameter.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionOutput) Parameter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction) *string {
+		return v.Parameter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The new JSON-encoded value of the parameter. A null value clears the parameter.
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction) *string {
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayOutput struct{ *pulumi.OutputState }
+
+func (CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction)(nil)).Elem()
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayOutput() CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayOutput) ToCxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayOutputWithContext(ctx context.Context) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayOutput {
+	return o
+}
+
+func (o CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayOutput) Index(i pulumi.IntInput) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction {
+		return vs[0].([]CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterAction)[vs[1].(int)]
+	}).(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionOutput)
+}
+
 type CxPageTransitionRoute struct {
 	// The condition to evaluate against form parameters or session parameters.
 	// At least one of intent or condition must be specified. When both intent and condition are specified, the transition can only happen when both are fulfilled.
@@ -4261,7 +11712,7 @@ type CxPageTransitionRoute struct {
 	// The target page to transition to.
 	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
 	TargetPage *string `pulumi:"targetPage"`
-	// The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+	// The fulfillment to call when the condition is satisfied. At least one of triggerFulfillment and target must be specified. When both are defined, triggerFulfillment is executed first.
 	// Structure is documented below.
 	TriggerFulfillment *CxPageTransitionRouteTriggerFulfillment `pulumi:"triggerFulfillment"`
 }
@@ -4293,7 +11744,7 @@ type CxPageTransitionRouteArgs struct {
 	// The target page to transition to.
 	// Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>/pages/<Page ID>.
 	TargetPage pulumi.StringPtrInput `pulumi:"targetPage"`
-	// The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+	// The fulfillment to call when the condition is satisfied. At least one of triggerFulfillment and target must be specified. When both are defined, triggerFulfillment is executed first.
 	// Structure is documented below.
 	TriggerFulfillment CxPageTransitionRouteTriggerFulfillmentPtrInput `pulumi:"triggerFulfillment"`
 }
@@ -4379,7 +11830,7 @@ func (o CxPageTransitionRouteOutput) TargetPage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CxPageTransitionRoute) *string { return v.TargetPage }).(pulumi.StringPtrOutput)
 }
 
-// The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
+// The fulfillment to call when the condition is satisfied. At least one of triggerFulfillment and target must be specified. When both are defined, triggerFulfillment is executed first.
 // Structure is documented below.
 func (o CxPageTransitionRouteOutput) TriggerFulfillment() CxPageTransitionRouteTriggerFulfillmentPtrOutput {
 	return o.ApplyT(func(v CxPageTransitionRoute) *CxPageTransitionRouteTriggerFulfillment { return v.TriggerFulfillment }).(CxPageTransitionRouteTriggerFulfillmentPtrOutput)
@@ -4406,11 +11857,17 @@ func (o CxPageTransitionRouteArrayOutput) Index(i pulumi.IntInput) CxPageTransit
 }
 
 type CxPageTransitionRouteTriggerFulfillment struct {
+	// Conditional cases for this fulfillment.
+	// Structure is documented below.
+	ConditionalCases []CxPageTransitionRouteTriggerFulfillmentConditionalCase `pulumi:"conditionalCases"`
 	// The list of rich message responses to present to the user.
 	// Structure is documented below.
 	Messages []CxPageTransitionRouteTriggerFulfillmentMessage `pulumi:"messages"`
 	// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
 	ReturnPartialResponses *bool `pulumi:"returnPartialResponses"`
+	// Set parameter values before executing the webhook.
+	// Structure is documented below.
+	SetParameterActions []CxPageTransitionRouteTriggerFulfillmentSetParameterAction `pulumi:"setParameterActions"`
 	// The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
 	Tag *string `pulumi:"tag"`
 	// The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
@@ -4429,11 +11886,17 @@ type CxPageTransitionRouteTriggerFulfillmentInput interface {
 }
 
 type CxPageTransitionRouteTriggerFulfillmentArgs struct {
+	// Conditional cases for this fulfillment.
+	// Structure is documented below.
+	ConditionalCases CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayInput `pulumi:"conditionalCases"`
 	// The list of rich message responses to present to the user.
 	// Structure is documented below.
 	Messages CxPageTransitionRouteTriggerFulfillmentMessageArrayInput `pulumi:"messages"`
 	// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
 	ReturnPartialResponses pulumi.BoolPtrInput `pulumi:"returnPartialResponses"`
+	// Set parameter values before executing the webhook.
+	// Structure is documented below.
+	SetParameterActions CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayInput `pulumi:"setParameterActions"`
 	// The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
 	Tag pulumi.StringPtrInput `pulumi:"tag"`
 	// The webhook to call. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/webhooks/<Webhook ID>.
@@ -4517,6 +11980,14 @@ func (o CxPageTransitionRouteTriggerFulfillmentOutput) ToCxPageTransitionRouteTr
 	}).(CxPageTransitionRouteTriggerFulfillmentPtrOutput)
 }
 
+// Conditional cases for this fulfillment.
+// Structure is documented below.
+func (o CxPageTransitionRouteTriggerFulfillmentOutput) ConditionalCases() CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput {
+	return o.ApplyT(func(v CxPageTransitionRouteTriggerFulfillment) []CxPageTransitionRouteTriggerFulfillmentConditionalCase {
+		return v.ConditionalCases
+	}).(CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput)
+}
+
 // The list of rich message responses to present to the user.
 // Structure is documented below.
 func (o CxPageTransitionRouteTriggerFulfillmentOutput) Messages() CxPageTransitionRouteTriggerFulfillmentMessageArrayOutput {
@@ -4528,6 +11999,14 @@ func (o CxPageTransitionRouteTriggerFulfillmentOutput) Messages() CxPageTransiti
 // Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
 func (o CxPageTransitionRouteTriggerFulfillmentOutput) ReturnPartialResponses() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CxPageTransitionRouteTriggerFulfillment) *bool { return v.ReturnPartialResponses }).(pulumi.BoolPtrOutput)
+}
+
+// Set parameter values before executing the webhook.
+// Structure is documented below.
+func (o CxPageTransitionRouteTriggerFulfillmentOutput) SetParameterActions() CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput {
+	return o.ApplyT(func(v CxPageTransitionRouteTriggerFulfillment) []CxPageTransitionRouteTriggerFulfillmentSetParameterAction {
+		return v.SetParameterActions
+	}).(CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput)
 }
 
 // The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
@@ -4564,6 +12043,17 @@ func (o CxPageTransitionRouteTriggerFulfillmentPtrOutput) Elem() CxPageTransitio
 	}).(CxPageTransitionRouteTriggerFulfillmentOutput)
 }
 
+// Conditional cases for this fulfillment.
+// Structure is documented below.
+func (o CxPageTransitionRouteTriggerFulfillmentPtrOutput) ConditionalCases() CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput {
+	return o.ApplyT(func(v *CxPageTransitionRouteTriggerFulfillment) []CxPageTransitionRouteTriggerFulfillmentConditionalCase {
+		if v == nil {
+			return nil
+		}
+		return v.ConditionalCases
+	}).(CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput)
+}
+
 // The list of rich message responses to present to the user.
 // Structure is documented below.
 func (o CxPageTransitionRouteTriggerFulfillmentPtrOutput) Messages() CxPageTransitionRouteTriggerFulfillmentMessageArrayOutput {
@@ -4583,6 +12073,17 @@ func (o CxPageTransitionRouteTriggerFulfillmentPtrOutput) ReturnPartialResponses
 		}
 		return v.ReturnPartialResponses
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Set parameter values before executing the webhook.
+// Structure is documented below.
+func (o CxPageTransitionRouteTriggerFulfillmentPtrOutput) SetParameterActions() CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput {
+	return o.ApplyT(func(v *CxPageTransitionRouteTriggerFulfillment) []CxPageTransitionRouteTriggerFulfillmentSetParameterAction {
+		if v == nil {
+			return nil
+		}
+		return v.SetParameterActions
+	}).(CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput)
 }
 
 // The tag used by the webhook to identify which fulfillment is being called. This field is required if webhook is specified.
@@ -4605,7 +12106,134 @@ func (o CxPageTransitionRouteTriggerFulfillmentPtrOutput) Webhook() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+type CxPageTransitionRouteTriggerFulfillmentConditionalCase struct {
+	// A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+	// See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+	Cases *string `pulumi:"cases"`
+}
+
+// CxPageTransitionRouteTriggerFulfillmentConditionalCaseInput is an input type that accepts CxPageTransitionRouteTriggerFulfillmentConditionalCaseArgs and CxPageTransitionRouteTriggerFulfillmentConditionalCaseOutput values.
+// You can construct a concrete instance of `CxPageTransitionRouteTriggerFulfillmentConditionalCaseInput` via:
+//
+//	CxPageTransitionRouteTriggerFulfillmentConditionalCaseArgs{...}
+type CxPageTransitionRouteTriggerFulfillmentConditionalCaseInput interface {
+	pulumi.Input
+
+	ToCxPageTransitionRouteTriggerFulfillmentConditionalCaseOutput() CxPageTransitionRouteTriggerFulfillmentConditionalCaseOutput
+	ToCxPageTransitionRouteTriggerFulfillmentConditionalCaseOutputWithContext(context.Context) CxPageTransitionRouteTriggerFulfillmentConditionalCaseOutput
+}
+
+type CxPageTransitionRouteTriggerFulfillmentConditionalCaseArgs struct {
+	// A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+	// See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+	Cases pulumi.StringPtrInput `pulumi:"cases"`
+}
+
+func (CxPageTransitionRouteTriggerFulfillmentConditionalCaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageTransitionRouteTriggerFulfillmentConditionalCase)(nil)).Elem()
+}
+
+func (i CxPageTransitionRouteTriggerFulfillmentConditionalCaseArgs) ToCxPageTransitionRouteTriggerFulfillmentConditionalCaseOutput() CxPageTransitionRouteTriggerFulfillmentConditionalCaseOutput {
+	return i.ToCxPageTransitionRouteTriggerFulfillmentConditionalCaseOutputWithContext(context.Background())
+}
+
+func (i CxPageTransitionRouteTriggerFulfillmentConditionalCaseArgs) ToCxPageTransitionRouteTriggerFulfillmentConditionalCaseOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentConditionalCaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentConditionalCaseOutput)
+}
+
+// CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayInput is an input type that accepts CxPageTransitionRouteTriggerFulfillmentConditionalCaseArray and CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput values.
+// You can construct a concrete instance of `CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayInput` via:
+//
+//	CxPageTransitionRouteTriggerFulfillmentConditionalCaseArray{ CxPageTransitionRouteTriggerFulfillmentConditionalCaseArgs{...} }
+type CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayInput interface {
+	pulumi.Input
+
+	ToCxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput() CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput
+	ToCxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayOutputWithContext(context.Context) CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput
+}
+
+type CxPageTransitionRouteTriggerFulfillmentConditionalCaseArray []CxPageTransitionRouteTriggerFulfillmentConditionalCaseInput
+
+func (CxPageTransitionRouteTriggerFulfillmentConditionalCaseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxPageTransitionRouteTriggerFulfillmentConditionalCase)(nil)).Elem()
+}
+
+func (i CxPageTransitionRouteTriggerFulfillmentConditionalCaseArray) ToCxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput() CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput {
+	return i.ToCxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayOutputWithContext(context.Background())
+}
+
+func (i CxPageTransitionRouteTriggerFulfillmentConditionalCaseArray) ToCxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput)
+}
+
+type CxPageTransitionRouteTriggerFulfillmentConditionalCaseOutput struct{ *pulumi.OutputState }
+
+func (CxPageTransitionRouteTriggerFulfillmentConditionalCaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageTransitionRouteTriggerFulfillmentConditionalCase)(nil)).Elem()
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentConditionalCaseOutput) ToCxPageTransitionRouteTriggerFulfillmentConditionalCaseOutput() CxPageTransitionRouteTriggerFulfillmentConditionalCaseOutput {
+	return o
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentConditionalCaseOutput) ToCxPageTransitionRouteTriggerFulfillmentConditionalCaseOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentConditionalCaseOutput {
+	return o
+}
+
+// A JSON encoded list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
+// See [Case](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/Fulfillment#case) for the schema.
+func (o CxPageTransitionRouteTriggerFulfillmentConditionalCaseOutput) Cases() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageTransitionRouteTriggerFulfillmentConditionalCase) *string { return v.Cases }).(pulumi.StringPtrOutput)
+}
+
+type CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput struct{ *pulumi.OutputState }
+
+func (CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxPageTransitionRouteTriggerFulfillmentConditionalCase)(nil)).Elem()
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput) ToCxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput() CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput {
+	return o
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput) ToCxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput {
+	return o
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput) Index(i pulumi.IntInput) CxPageTransitionRouteTriggerFulfillmentConditionalCaseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxPageTransitionRouteTriggerFulfillmentConditionalCase {
+		return vs[0].([]CxPageTransitionRouteTriggerFulfillmentConditionalCase)[vs[1].(int)]
+	}).(CxPageTransitionRouteTriggerFulfillmentConditionalCaseOutput)
+}
+
 type CxPageTransitionRouteTriggerFulfillmentMessage struct {
+	// The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+	Channel *string `pulumi:"channel"`
+	// Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+	// Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+	// You may set this, for example:
+	// * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+	// * In a webhook response when you determine that you handled the customer issue.
+	//   Structure is documented below.
+	ConversationSuccess *CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess `pulumi:"conversationSuccess"`
+	// Indicates that the conversation should be handed off to a live agent.
+	// Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+	// You may set this, for example:
+	// * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+	// * In a webhook response when you determine that the customer issue can only be handled by a human.
+	//   Structure is documented below.
+	LiveAgentHandoff *CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff `pulumi:"liveAgentHandoff"`
+	// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+	// Structure is documented below.
+	OutputAudioText *CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText `pulumi:"outputAudioText"`
+	// A custom, platform-specific payload.
+	Payload *string `pulumi:"payload"`
+	// Specifies an audio clip to be played by the client as part of the response.
+	// Structure is documented below.
+	PlayAudio *CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio `pulumi:"playAudio"`
+	// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+	// Structure is documented below.
+	TelephonyTransferCall *CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall `pulumi:"telephonyTransferCall"`
 	// The text response message.
 	// Structure is documented below.
 	Text *CxPageTransitionRouteTriggerFulfillmentMessageText `pulumi:"text"`
@@ -4623,6 +12251,33 @@ type CxPageTransitionRouteTriggerFulfillmentMessageInput interface {
 }
 
 type CxPageTransitionRouteTriggerFulfillmentMessageArgs struct {
+	// The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+	Channel pulumi.StringPtrInput `pulumi:"channel"`
+	// Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+	// Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+	// You may set this, for example:
+	// * In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+	// * In a webhook response when you determine that you handled the customer issue.
+	//   Structure is documented below.
+	ConversationSuccess CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrInput `pulumi:"conversationSuccess"`
+	// Indicates that the conversation should be handed off to a live agent.
+	// Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+	// You may set this, for example:
+	// * In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+	// * In a webhook response when you determine that the customer issue can only be handled by a human.
+	//   Structure is documented below.
+	LiveAgentHandoff CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrInput `pulumi:"liveAgentHandoff"`
+	// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+	// Structure is documented below.
+	OutputAudioText CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrInput `pulumi:"outputAudioText"`
+	// A custom, platform-specific payload.
+	Payload pulumi.StringPtrInput `pulumi:"payload"`
+	// Specifies an audio clip to be played by the client as part of the response.
+	// Structure is documented below.
+	PlayAudio CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrInput `pulumi:"playAudio"`
+	// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+	// Structure is documented below.
+	TelephonyTransferCall CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrInput `pulumi:"telephonyTransferCall"`
 	// The text response message.
 	// Structure is documented below.
 	Text CxPageTransitionRouteTriggerFulfillmentMessageTextPtrInput `pulumi:"text"`
@@ -4679,6 +12334,64 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessageOutput) ToCxPageTransition
 	return o
 }
 
+// The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+func (o CxPageTransitionRouteTriggerFulfillmentMessageOutput) Channel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageTransitionRouteTriggerFulfillmentMessage) *string { return v.Channel }).(pulumi.StringPtrOutput)
+}
+
+// Indicates that the conversation succeeded, i.e., the bot handled the issue that the customer talked to it about.
+// Dialogflow only uses this to determine which conversations should be counted as successful and doesn't process the metadata in this message in any way. Note that Dialogflow also considers conversations that get to the conversation end page as successful even if they don't return ConversationSuccess.
+// You may set this, for example:
+//   - In the entryFulfillment of a Page if entering the page indicates that the conversation succeeded.
+//   - In a webhook response when you determine that you handled the customer issue.
+//     Structure is documented below.
+func (o CxPageTransitionRouteTriggerFulfillmentMessageOutput) ConversationSuccess() CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return o.ApplyT(func(v CxPageTransitionRouteTriggerFulfillmentMessage) *CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess {
+		return v.ConversationSuccess
+	}).(CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput)
+}
+
+// Indicates that the conversation should be handed off to a live agent.
+// Dialogflow only uses this to determine which conversations were handed off to a human agent for measurement purposes. What else to do with this signal is up to you and your handoff procedures.
+// You may set this, for example:
+//   - In the entryFulfillment of a Page if entering the page indicates something went extremely wrong in the conversation.
+//   - In a webhook response when you determine that the customer issue can only be handled by a human.
+//     Structure is documented below.
+func (o CxPageTransitionRouteTriggerFulfillmentMessageOutput) LiveAgentHandoff() CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return o.ApplyT(func(v CxPageTransitionRouteTriggerFulfillmentMessage) *CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff {
+		return v.LiveAgentHandoff
+	}).(CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput)
+}
+
+// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
+// Structure is documented below.
+func (o CxPageTransitionRouteTriggerFulfillmentMessageOutput) OutputAudioText() CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return o.ApplyT(func(v CxPageTransitionRouteTriggerFulfillmentMessage) *CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText {
+		return v.OutputAudioText
+	}).(CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput)
+}
+
+// A custom, platform-specific payload.
+func (o CxPageTransitionRouteTriggerFulfillmentMessageOutput) Payload() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageTransitionRouteTriggerFulfillmentMessage) *string { return v.Payload }).(pulumi.StringPtrOutput)
+}
+
+// Specifies an audio clip to be played by the client as part of the response.
+// Structure is documented below.
+func (o CxPageTransitionRouteTriggerFulfillmentMessageOutput) PlayAudio() CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return o.ApplyT(func(v CxPageTransitionRouteTriggerFulfillmentMessage) *CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio {
+		return v.PlayAudio
+	}).(CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput)
+}
+
+// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
+// Structure is documented below.
+func (o CxPageTransitionRouteTriggerFulfillmentMessageOutput) TelephonyTransferCall() CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return o.ApplyT(func(v CxPageTransitionRouteTriggerFulfillmentMessage) *CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall {
+		return v.TelephonyTransferCall
+	}).(CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput)
+}
+
 // The text response message.
 // Structure is documented below.
 func (o CxPageTransitionRouteTriggerFulfillmentMessageOutput) Text() CxPageTransitionRouteTriggerFulfillmentMessageTextPtrOutput {
@@ -4705,6 +12418,762 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessageArrayOutput) Index(i pulum
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxPageTransitionRouteTriggerFulfillmentMessage {
 		return vs[0].([]CxPageTransitionRouteTriggerFulfillmentMessage)[vs[1].(int)]
 	}).(CxPageTransitionRouteTriggerFulfillmentMessageOutput)
+}
+
+type CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess struct {
+	// Custom metadata. Dialogflow doesn't impose any structure on this.
+	Metadata *string `pulumi:"metadata"`
+}
+
+// CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessInput is an input type that accepts CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs and CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput values.
+// You can construct a concrete instance of `CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessInput` via:
+//
+//	CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs{...}
+type CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessInput interface {
+	pulumi.Input
+
+	ToCxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput() CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput
+	ToCxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessOutputWithContext(context.Context) CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput
+}
+
+type CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs struct {
+	// Custom metadata. Dialogflow doesn't impose any structure on this.
+	Metadata pulumi.StringPtrInput `pulumi:"metadata"`
+}
+
+func (CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess)(nil)).Elem()
+}
+
+func (i CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs) ToCxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput() CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput {
+	return i.ToCxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessOutputWithContext(context.Background())
+}
+
+func (i CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs) ToCxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput)
+}
+
+func (i CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs) ToCxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput() CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return i.ToCxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(context.Background())
+}
+
+func (i CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs) ToCxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput).ToCxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx)
+}
+
+// CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrInput is an input type that accepts CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs, CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtr and CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput values.
+// You can construct a concrete instance of `CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrInput` via:
+//
+//	        CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrInput interface {
+	pulumi.Input
+
+	ToCxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput() CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput
+	ToCxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(context.Context) CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput
+}
+
+type cxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrType CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs
+
+func CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtr(v *CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs) CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrInput {
+	return (*cxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrType)(v)
+}
+
+func (*cxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess)(nil)).Elem()
+}
+
+func (i *cxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrType) ToCxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput() CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return i.ToCxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(context.Background())
+}
+
+func (i *cxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrType) ToCxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput)
+}
+
+type CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput struct{ *pulumi.OutputState }
+
+func (CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess)(nil)).Elem()
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput) ToCxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput() CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput {
+	return o
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput) ToCxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput {
+	return o
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput) ToCxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput() CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return o.ToCxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(context.Background())
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput) ToCxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess) *CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess {
+		return &v
+	}).(CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput)
+}
+
+// Custom metadata. Dialogflow doesn't impose any structure on this.
+func (o CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess) *string { return v.Metadata }).(pulumi.StringPtrOutput)
+}
+
+type CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput struct{ *pulumi.OutputState }
+
+func (CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess)(nil)).Elem()
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput) ToCxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput() CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return o
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput) ToCxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput {
+	return o
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput) Elem() CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput {
+	return o.ApplyT(func(v *CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess) CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess
+		return ret
+	}).(CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput)
+}
+
+// Custom metadata. Dialogflow doesn't impose any structure on this.
+func (o CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Metadata
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff struct {
+	// Custom metadata. Dialogflow doesn't impose any structure on this.
+	Metadata *string `pulumi:"metadata"`
+}
+
+// CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffInput is an input type that accepts CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs and CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput values.
+// You can construct a concrete instance of `CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffInput` via:
+//
+//	CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs{...}
+type CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffInput interface {
+	pulumi.Input
+
+	ToCxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput() CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput
+	ToCxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutputWithContext(context.Context) CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput
+}
+
+type CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs struct {
+	// Custom metadata. Dialogflow doesn't impose any structure on this.
+	Metadata pulumi.StringPtrInput `pulumi:"metadata"`
+}
+
+func (CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff)(nil)).Elem()
+}
+
+func (i CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs) ToCxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput() CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput {
+	return i.ToCxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutputWithContext(context.Background())
+}
+
+func (i CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs) ToCxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput)
+}
+
+func (i CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs) ToCxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput() CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return i.ToCxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Background())
+}
+
+func (i CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs) ToCxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput).ToCxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx)
+}
+
+// CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrInput is an input type that accepts CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs, CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtr and CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput values.
+// You can construct a concrete instance of `CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrInput` via:
+//
+//	        CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrInput interface {
+	pulumi.Input
+
+	ToCxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput() CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput
+	ToCxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Context) CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput
+}
+
+type cxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrType CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs
+
+func CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtr(v *CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs) CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrInput {
+	return (*cxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrType)(v)
+}
+
+func (*cxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff)(nil)).Elem()
+}
+
+func (i *cxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrType) ToCxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput() CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return i.ToCxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Background())
+}
+
+func (i *cxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrType) ToCxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput)
+}
+
+type CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput struct{ *pulumi.OutputState }
+
+func (CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff)(nil)).Elem()
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput) ToCxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput() CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput {
+	return o
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput) ToCxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput {
+	return o
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput) ToCxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput() CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return o.ToCxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(context.Background())
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput) ToCxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff) *CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff {
+		return &v
+	}).(CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput)
+}
+
+// Custom metadata. Dialogflow doesn't impose any structure on this.
+func (o CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff) *string { return v.Metadata }).(pulumi.StringPtrOutput)
+}
+
+type CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput struct{ *pulumi.OutputState }
+
+func (CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff)(nil)).Elem()
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) ToCxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput() CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return o
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) ToCxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput {
+	return o
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) Elem() CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput {
+	return o.ApplyT(func(v *CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff) CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff
+		return ret
+	}).(CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput)
+}
+
+// Custom metadata. Dialogflow doesn't impose any structure on this.
+func (o CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput) Metadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Metadata
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText struct {
+	// (Output)
+	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
+	// The SSML text to be synthesized. For more information, see SSML.
+	Ssml *string `pulumi:"ssml"`
+	// The raw text to be synthesized.
+	Text *string `pulumi:"text"`
+}
+
+// CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextInput is an input type that accepts CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs and CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput values.
+// You can construct a concrete instance of `CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextInput` via:
+//
+//	CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs{...}
+type CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextInput interface {
+	pulumi.Input
+
+	ToCxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput() CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput
+	ToCxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutputWithContext(context.Context) CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput
+}
+
+type CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs struct {
+	// (Output)
+	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
+	// The SSML text to be synthesized. For more information, see SSML.
+	Ssml pulumi.StringPtrInput `pulumi:"ssml"`
+	// The raw text to be synthesized.
+	Text pulumi.StringPtrInput `pulumi:"text"`
+}
+
+func (CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText)(nil)).Elem()
+}
+
+func (i CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs) ToCxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput() CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput {
+	return i.ToCxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutputWithContext(context.Background())
+}
+
+func (i CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs) ToCxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput)
+}
+
+func (i CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs) ToCxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput() CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return i.ToCxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Background())
+}
+
+func (i CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs) ToCxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput).ToCxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx)
+}
+
+// CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrInput is an input type that accepts CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs, CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtr and CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput values.
+// You can construct a concrete instance of `CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrInput` via:
+//
+//	        CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrInput interface {
+	pulumi.Input
+
+	ToCxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput() CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput
+	ToCxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Context) CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput
+}
+
+type cxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrType CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs
+
+func CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtr(v *CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs) CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrInput {
+	return (*cxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrType)(v)
+}
+
+func (*cxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText)(nil)).Elem()
+}
+
+func (i *cxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrType) ToCxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput() CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return i.ToCxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Background())
+}
+
+func (i *cxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrType) ToCxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput)
+}
+
+type CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput struct{ *pulumi.OutputState }
+
+func (CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText)(nil)).Elem()
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput) ToCxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput() CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput {
+	return o
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput) ToCxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput {
+	return o
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput) ToCxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput() CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return o.ToCxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(context.Background())
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput) ToCxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText) *CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText {
+		return &v
+	}).(CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput)
+}
+
+// (Output)
+// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+func (o CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText) *bool {
+		return v.AllowPlaybackInterruption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The SSML text to be synthesized. For more information, see SSML.
+func (o CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput) Ssml() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText) *string { return v.Ssml }).(pulumi.StringPtrOutput)
+}
+
+// The raw text to be synthesized.
+func (o CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText) *string { return v.Text }).(pulumi.StringPtrOutput)
+}
+
+type CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput struct{ *pulumi.OutputState }
+
+func (CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText)(nil)).Elem()
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput) ToCxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput() CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return o
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput) ToCxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput {
+	return o
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput) Elem() CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput {
+	return o.ApplyT(func(v *CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText) CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText
+		return ret
+	}).(CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput)
+}
+
+// (Output)
+// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+func (o CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowPlaybackInterruption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The SSML text to be synthesized. For more information, see SSML.
+func (o CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput) Ssml() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ssml
+	}).(pulumi.StringPtrOutput)
+}
+
+// The raw text to be synthesized.
+func (o CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Text
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio struct {
+	// (Output)
+	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	AllowPlaybackInterruption *bool `pulumi:"allowPlaybackInterruption"`
+	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+	AudioUri string `pulumi:"audioUri"`
+}
+
+// CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioInput is an input type that accepts CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgs and CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioOutput values.
+// You can construct a concrete instance of `CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioInput` via:
+//
+//	CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgs{...}
+type CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioInput interface {
+	pulumi.Input
+
+	ToCxPageTransitionRouteTriggerFulfillmentMessagePlayAudioOutput() CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioOutput
+	ToCxPageTransitionRouteTriggerFulfillmentMessagePlayAudioOutputWithContext(context.Context) CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioOutput
+}
+
+type CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgs struct {
+	// (Output)
+	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+	AllowPlaybackInterruption pulumi.BoolPtrInput `pulumi:"allowPlaybackInterruption"`
+	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+	AudioUri pulumi.StringInput `pulumi:"audioUri"`
+}
+
+func (CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio)(nil)).Elem()
+}
+
+func (i CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgs) ToCxPageTransitionRouteTriggerFulfillmentMessagePlayAudioOutput() CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioOutput {
+	return i.ToCxPageTransitionRouteTriggerFulfillmentMessagePlayAudioOutputWithContext(context.Background())
+}
+
+func (i CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgs) ToCxPageTransitionRouteTriggerFulfillmentMessagePlayAudioOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioOutput)
+}
+
+func (i CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgs) ToCxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput() CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return i.ToCxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(context.Background())
+}
+
+func (i CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgs) ToCxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioOutput).ToCxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx)
+}
+
+// CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrInput is an input type that accepts CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgs, CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtr and CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput values.
+// You can construct a concrete instance of `CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrInput` via:
+//
+//	        CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrInput interface {
+	pulumi.Input
+
+	ToCxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput() CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput
+	ToCxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(context.Context) CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput
+}
+
+type cxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrType CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgs
+
+func CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtr(v *CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgs) CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrInput {
+	return (*cxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrType)(v)
+}
+
+func (*cxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio)(nil)).Elem()
+}
+
+func (i *cxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrType) ToCxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput() CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return i.ToCxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(context.Background())
+}
+
+func (i *cxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrType) ToCxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput)
+}
+
+type CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioOutput struct{ *pulumi.OutputState }
+
+func (CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio)(nil)).Elem()
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioOutput) ToCxPageTransitionRouteTriggerFulfillmentMessagePlayAudioOutput() CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioOutput {
+	return o
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioOutput) ToCxPageTransitionRouteTriggerFulfillmentMessagePlayAudioOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioOutput {
+	return o
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioOutput) ToCxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput() CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return o.ToCxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(context.Background())
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioOutput) ToCxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio) *CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio {
+		return &v
+	}).(CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput)
+}
+
+// (Output)
+// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+func (o CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio) *bool {
+		return v.AllowPlaybackInterruption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+func (o CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioOutput) AudioUri() pulumi.StringOutput {
+	return o.ApplyT(func(v CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio) string { return v.AudioUri }).(pulumi.StringOutput)
+}
+
+type CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput struct{ *pulumi.OutputState }
+
+func (CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio)(nil)).Elem()
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput) ToCxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput() CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return o
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput) ToCxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput {
+	return o
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput) Elem() CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioOutput {
+	return o.ApplyT(func(v *CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio) CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio
+		return ret
+	}).(CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioOutput)
+}
+
+// (Output)
+// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
+func (o CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput) AllowPlaybackInterruption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowPlaybackInterruption
+	}).(pulumi.BoolPtrOutput)
+}
+
+// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+func (o CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput) AudioUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AudioUri
+	}).(pulumi.StringPtrOutput)
+}
+
+type CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall struct {
+	// Transfer the call to a phone number in E.164 format.
+	PhoneNumber string `pulumi:"phoneNumber"`
+}
+
+// CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallInput is an input type that accepts CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs and CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput values.
+// You can construct a concrete instance of `CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallInput` via:
+//
+//	CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs{...}
+type CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallInput interface {
+	pulumi.Input
+
+	ToCxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput() CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput
+	ToCxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutputWithContext(context.Context) CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput
+}
+
+type CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs struct {
+	// Transfer the call to a phone number in E.164 format.
+	PhoneNumber pulumi.StringInput `pulumi:"phoneNumber"`
+}
+
+func (CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall)(nil)).Elem()
+}
+
+func (i CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs) ToCxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput() CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput {
+	return i.ToCxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutputWithContext(context.Background())
+}
+
+func (i CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs) ToCxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput)
+}
+
+func (i CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs) ToCxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput() CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return i.ToCxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Background())
+}
+
+func (i CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs) ToCxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput).ToCxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx)
+}
+
+// CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrInput is an input type that accepts CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs, CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtr and CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput values.
+// You can construct a concrete instance of `CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrInput` via:
+//
+//	        CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs{...}
+//
+//	or:
+//
+//	        nil
+type CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrInput interface {
+	pulumi.Input
+
+	ToCxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput() CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput
+	ToCxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Context) CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput
+}
+
+type cxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrType CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs
+
+func CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtr(v *CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs) CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrInput {
+	return (*cxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrType)(v)
+}
+
+func (*cxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall)(nil)).Elem()
+}
+
+func (i *cxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrType) ToCxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput() CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return i.ToCxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Background())
+}
+
+func (i *cxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrType) ToCxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput)
+}
+
+type CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput struct{ *pulumi.OutputState }
+
+func (CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall)(nil)).Elem()
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput) ToCxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput() CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput {
+	return o
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput) ToCxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput {
+	return o
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput) ToCxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput() CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return o.ToCxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(context.Background())
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput) ToCxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall) *CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall {
+		return &v
+	}).(CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput)
+}
+
+// Transfer the call to a phone number in E.164 format.
+func (o CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput) PhoneNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall) string {
+		return v.PhoneNumber
+	}).(pulumi.StringOutput)
+}
+
+type CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput struct{ *pulumi.OutputState }
+
+func (CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall)(nil)).Elem()
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) ToCxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput() CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return o
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) ToCxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput {
+	return o
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) Elem() CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput {
+	return o.ApplyT(func(v *CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall) CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall {
+		if v != nil {
+			return *v
+		}
+		var ret CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall
+		return ret
+	}).(CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput)
+}
+
+// Transfer the call to a phone number in E.164 format.
+func (o CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput) PhoneNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PhoneNumber
+	}).(pulumi.StringPtrOutput)
 }
 
 type CxPageTransitionRouteTriggerFulfillmentMessageText struct {
@@ -4865,6 +13334,112 @@ func (o CxPageTransitionRouteTriggerFulfillmentMessageTextPtrOutput) Texts() pul
 		}
 		return v.Texts
 	}).(pulumi.StringArrayOutput)
+}
+
+type CxPageTransitionRouteTriggerFulfillmentSetParameterAction struct {
+	// Display name of the parameter.
+	Parameter *string `pulumi:"parameter"`
+	// The new JSON-encoded value of the parameter. A null value clears the parameter.
+	Value *string `pulumi:"value"`
+}
+
+// CxPageTransitionRouteTriggerFulfillmentSetParameterActionInput is an input type that accepts CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs and CxPageTransitionRouteTriggerFulfillmentSetParameterActionOutput values.
+// You can construct a concrete instance of `CxPageTransitionRouteTriggerFulfillmentSetParameterActionInput` via:
+//
+//	CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs{...}
+type CxPageTransitionRouteTriggerFulfillmentSetParameterActionInput interface {
+	pulumi.Input
+
+	ToCxPageTransitionRouteTriggerFulfillmentSetParameterActionOutput() CxPageTransitionRouteTriggerFulfillmentSetParameterActionOutput
+	ToCxPageTransitionRouteTriggerFulfillmentSetParameterActionOutputWithContext(context.Context) CxPageTransitionRouteTriggerFulfillmentSetParameterActionOutput
+}
+
+type CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs struct {
+	// Display name of the parameter.
+	Parameter pulumi.StringPtrInput `pulumi:"parameter"`
+	// The new JSON-encoded value of the parameter. A null value clears the parameter.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageTransitionRouteTriggerFulfillmentSetParameterAction)(nil)).Elem()
+}
+
+func (i CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs) ToCxPageTransitionRouteTriggerFulfillmentSetParameterActionOutput() CxPageTransitionRouteTriggerFulfillmentSetParameterActionOutput {
+	return i.ToCxPageTransitionRouteTriggerFulfillmentSetParameterActionOutputWithContext(context.Background())
+}
+
+func (i CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs) ToCxPageTransitionRouteTriggerFulfillmentSetParameterActionOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentSetParameterActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentSetParameterActionOutput)
+}
+
+// CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayInput is an input type that accepts CxPageTransitionRouteTriggerFulfillmentSetParameterActionArray and CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput values.
+// You can construct a concrete instance of `CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayInput` via:
+//
+//	CxPageTransitionRouteTriggerFulfillmentSetParameterActionArray{ CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs{...} }
+type CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayInput interface {
+	pulumi.Input
+
+	ToCxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput() CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput
+	ToCxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutputWithContext(context.Context) CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput
+}
+
+type CxPageTransitionRouteTriggerFulfillmentSetParameterActionArray []CxPageTransitionRouteTriggerFulfillmentSetParameterActionInput
+
+func (CxPageTransitionRouteTriggerFulfillmentSetParameterActionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxPageTransitionRouteTriggerFulfillmentSetParameterAction)(nil)).Elem()
+}
+
+func (i CxPageTransitionRouteTriggerFulfillmentSetParameterActionArray) ToCxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput() CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput {
+	return i.ToCxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutputWithContext(context.Background())
+}
+
+func (i CxPageTransitionRouteTriggerFulfillmentSetParameterActionArray) ToCxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput)
+}
+
+type CxPageTransitionRouteTriggerFulfillmentSetParameterActionOutput struct{ *pulumi.OutputState }
+
+func (CxPageTransitionRouteTriggerFulfillmentSetParameterActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CxPageTransitionRouteTriggerFulfillmentSetParameterAction)(nil)).Elem()
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentSetParameterActionOutput) ToCxPageTransitionRouteTriggerFulfillmentSetParameterActionOutput() CxPageTransitionRouteTriggerFulfillmentSetParameterActionOutput {
+	return o
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentSetParameterActionOutput) ToCxPageTransitionRouteTriggerFulfillmentSetParameterActionOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentSetParameterActionOutput {
+	return o
+}
+
+// Display name of the parameter.
+func (o CxPageTransitionRouteTriggerFulfillmentSetParameterActionOutput) Parameter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageTransitionRouteTriggerFulfillmentSetParameterAction) *string { return v.Parameter }).(pulumi.StringPtrOutput)
+}
+
+// The new JSON-encoded value of the parameter. A null value clears the parameter.
+func (o CxPageTransitionRouteTriggerFulfillmentSetParameterActionOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CxPageTransitionRouteTriggerFulfillmentSetParameterAction) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput struct{ *pulumi.OutputState }
+
+func (CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CxPageTransitionRouteTriggerFulfillmentSetParameterAction)(nil)).Elem()
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput) ToCxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput() CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput {
+	return o
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput) ToCxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutputWithContext(ctx context.Context) CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput {
+	return o
+}
+
+func (o CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput) Index(i pulumi.IntInput) CxPageTransitionRouteTriggerFulfillmentSetParameterActionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CxPageTransitionRouteTriggerFulfillmentSetParameterAction {
+		return vs[0].([]CxPageTransitionRouteTriggerFulfillmentSetParameterAction)[vs[1].(int)]
+	}).(CxPageTransitionRouteTriggerFulfillmentSetParameterActionOutput)
 }
 
 type CxVersionNluSetting struct {
@@ -6067,20 +14642,48 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowEventHandlerArrayInput)(nil)).Elem(), CxFlowEventHandlerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowEventHandlerTriggerFulfillmentInput)(nil)).Elem(), CxFlowEventHandlerTriggerFulfillmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowEventHandlerTriggerFulfillmentPtrInput)(nil)).Elem(), CxFlowEventHandlerTriggerFulfillmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowEventHandlerTriggerFulfillmentConditionalCaseInput)(nil)).Elem(), CxFlowEventHandlerTriggerFulfillmentConditionalCaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayInput)(nil)).Elem(), CxFlowEventHandlerTriggerFulfillmentConditionalCaseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowEventHandlerTriggerFulfillmentMessageInput)(nil)).Elem(), CxFlowEventHandlerTriggerFulfillmentMessageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowEventHandlerTriggerFulfillmentMessageArrayInput)(nil)).Elem(), CxFlowEventHandlerTriggerFulfillmentMessageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessInput)(nil)).Elem(), CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrInput)(nil)).Elem(), CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffInput)(nil)).Elem(), CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrInput)(nil)).Elem(), CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextInput)(nil)).Elem(), CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrInput)(nil)).Elem(), CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioInput)(nil)).Elem(), CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrInput)(nil)).Elem(), CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallInput)(nil)).Elem(), CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrInput)(nil)).Elem(), CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowEventHandlerTriggerFulfillmentMessageTextInput)(nil)).Elem(), CxFlowEventHandlerTriggerFulfillmentMessageTextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowEventHandlerTriggerFulfillmentMessageTextPtrInput)(nil)).Elem(), CxFlowEventHandlerTriggerFulfillmentMessageTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowEventHandlerTriggerFulfillmentSetParameterActionInput)(nil)).Elem(), CxFlowEventHandlerTriggerFulfillmentSetParameterActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayInput)(nil)).Elem(), CxFlowEventHandlerTriggerFulfillmentSetParameterActionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowNluSettingsInput)(nil)).Elem(), CxFlowNluSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowNluSettingsPtrInput)(nil)).Elem(), CxFlowNluSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowTransitionRouteInput)(nil)).Elem(), CxFlowTransitionRouteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowTransitionRouteArrayInput)(nil)).Elem(), CxFlowTransitionRouteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowTransitionRouteTriggerFulfillmentInput)(nil)).Elem(), CxFlowTransitionRouteTriggerFulfillmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowTransitionRouteTriggerFulfillmentPtrInput)(nil)).Elem(), CxFlowTransitionRouteTriggerFulfillmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowTransitionRouteTriggerFulfillmentConditionalCaseInput)(nil)).Elem(), CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayInput)(nil)).Elem(), CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowTransitionRouteTriggerFulfillmentMessageInput)(nil)).Elem(), CxFlowTransitionRouteTriggerFulfillmentMessageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowTransitionRouteTriggerFulfillmentMessageArrayInput)(nil)).Elem(), CxFlowTransitionRouteTriggerFulfillmentMessageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessInput)(nil)).Elem(), CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrInput)(nil)).Elem(), CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffInput)(nil)).Elem(), CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrInput)(nil)).Elem(), CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextInput)(nil)).Elem(), CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrInput)(nil)).Elem(), CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioInput)(nil)).Elem(), CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrInput)(nil)).Elem(), CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallInput)(nil)).Elem(), CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrInput)(nil)).Elem(), CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowTransitionRouteTriggerFulfillmentMessageTextInput)(nil)).Elem(), CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrInput)(nil)).Elem(), CxFlowTransitionRouteTriggerFulfillmentMessageTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowTransitionRouteTriggerFulfillmentSetParameterActionInput)(nil)).Elem(), CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayInput)(nil)).Elem(), CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxIntentParameterInput)(nil)).Elem(), CxIntentParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxIntentParameterArrayInput)(nil)).Elem(), CxIntentParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxIntentTrainingPhraseInput)(nil)).Elem(), CxIntentTrainingPhraseArgs{})
@@ -6089,18 +14692,46 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CxIntentTrainingPhrasePartArrayInput)(nil)).Elem(), CxIntentTrainingPhrasePartArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageEntryFulfillmentInput)(nil)).Elem(), CxPageEntryFulfillmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageEntryFulfillmentPtrInput)(nil)).Elem(), CxPageEntryFulfillmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageEntryFulfillmentConditionalCaseInput)(nil)).Elem(), CxPageEntryFulfillmentConditionalCaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageEntryFulfillmentConditionalCaseArrayInput)(nil)).Elem(), CxPageEntryFulfillmentConditionalCaseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageEntryFulfillmentMessageInput)(nil)).Elem(), CxPageEntryFulfillmentMessageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageEntryFulfillmentMessageArrayInput)(nil)).Elem(), CxPageEntryFulfillmentMessageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageEntryFulfillmentMessageConversationSuccessInput)(nil)).Elem(), CxPageEntryFulfillmentMessageConversationSuccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageEntryFulfillmentMessageConversationSuccessPtrInput)(nil)).Elem(), CxPageEntryFulfillmentMessageConversationSuccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageEntryFulfillmentMessageLiveAgentHandoffInput)(nil)).Elem(), CxPageEntryFulfillmentMessageLiveAgentHandoffArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageEntryFulfillmentMessageLiveAgentHandoffPtrInput)(nil)).Elem(), CxPageEntryFulfillmentMessageLiveAgentHandoffArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageEntryFulfillmentMessageOutputAudioTextInput)(nil)).Elem(), CxPageEntryFulfillmentMessageOutputAudioTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageEntryFulfillmentMessageOutputAudioTextPtrInput)(nil)).Elem(), CxPageEntryFulfillmentMessageOutputAudioTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageEntryFulfillmentMessagePlayAudioInput)(nil)).Elem(), CxPageEntryFulfillmentMessagePlayAudioArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageEntryFulfillmentMessagePlayAudioPtrInput)(nil)).Elem(), CxPageEntryFulfillmentMessagePlayAudioArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageEntryFulfillmentMessageTelephonyTransferCallInput)(nil)).Elem(), CxPageEntryFulfillmentMessageTelephonyTransferCallArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageEntryFulfillmentMessageTelephonyTransferCallPtrInput)(nil)).Elem(), CxPageEntryFulfillmentMessageTelephonyTransferCallArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageEntryFulfillmentMessageTextInput)(nil)).Elem(), CxPageEntryFulfillmentMessageTextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageEntryFulfillmentMessageTextPtrInput)(nil)).Elem(), CxPageEntryFulfillmentMessageTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageEntryFulfillmentSetParameterActionInput)(nil)).Elem(), CxPageEntryFulfillmentSetParameterActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageEntryFulfillmentSetParameterActionArrayInput)(nil)).Elem(), CxPageEntryFulfillmentSetParameterActionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageEventHandlerInput)(nil)).Elem(), CxPageEventHandlerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageEventHandlerArrayInput)(nil)).Elem(), CxPageEventHandlerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageEventHandlerTriggerFulfillmentInput)(nil)).Elem(), CxPageEventHandlerTriggerFulfillmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageEventHandlerTriggerFulfillmentPtrInput)(nil)).Elem(), CxPageEventHandlerTriggerFulfillmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageEventHandlerTriggerFulfillmentConditionalCaseInput)(nil)).Elem(), CxPageEventHandlerTriggerFulfillmentConditionalCaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageEventHandlerTriggerFulfillmentConditionalCaseArrayInput)(nil)).Elem(), CxPageEventHandlerTriggerFulfillmentConditionalCaseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageEventHandlerTriggerFulfillmentMessageInput)(nil)).Elem(), CxPageEventHandlerTriggerFulfillmentMessageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageEventHandlerTriggerFulfillmentMessageArrayInput)(nil)).Elem(), CxPageEventHandlerTriggerFulfillmentMessageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessInput)(nil)).Elem(), CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrInput)(nil)).Elem(), CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffInput)(nil)).Elem(), CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrInput)(nil)).Elem(), CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextInput)(nil)).Elem(), CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrInput)(nil)).Elem(), CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageEventHandlerTriggerFulfillmentMessagePlayAudioInput)(nil)).Elem(), CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrInput)(nil)).Elem(), CxPageEventHandlerTriggerFulfillmentMessagePlayAudioArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallInput)(nil)).Elem(), CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrInput)(nil)).Elem(), CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageEventHandlerTriggerFulfillmentMessageTextInput)(nil)).Elem(), CxPageEventHandlerTriggerFulfillmentMessageTextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageEventHandlerTriggerFulfillmentMessageTextPtrInput)(nil)).Elem(), CxPageEventHandlerTriggerFulfillmentMessageTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageEventHandlerTriggerFulfillmentSetParameterActionInput)(nil)).Elem(), CxPageEventHandlerTriggerFulfillmentSetParameterActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageEventHandlerTriggerFulfillmentSetParameterActionArrayInput)(nil)).Elem(), CxPageEventHandlerTriggerFulfillmentSetParameterActionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormInput)(nil)).Elem(), CxPageFormArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormPtrInput)(nil)).Elem(), CxPageFormArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterInput)(nil)).Elem(), CxPageFormParameterArgs{})
@@ -6109,18 +14740,68 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorPtrInput)(nil)).Elem(), CxPageFormParameterFillBehaviorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorInitialPromptFulfillmentInput)(nil)).Elem(), CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrInput)(nil)).Elem(), CxPageFormParameterFillBehaviorInitialPromptFulfillmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseInput)(nil)).Elem(), CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayInput)(nil)).Elem(), CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageInput)(nil)).Elem(), CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrayInput)(nil)).Elem(), CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessInput)(nil)).Elem(), CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrInput)(nil)).Elem(), CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffInput)(nil)).Elem(), CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrInput)(nil)).Elem(), CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextInput)(nil)).Elem(), CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrInput)(nil)).Elem(), CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioInput)(nil)).Elem(), CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrInput)(nil)).Elem(), CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallInput)(nil)).Elem(), CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrInput)(nil)).Elem(), CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextInput)(nil)).Elem(), CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrInput)(nil)).Elem(), CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionInput)(nil)).Elem(), CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayInput)(nil)).Elem(), CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandlerInput)(nil)).Elem(), CxPageFormParameterFillBehaviorRepromptEventHandlerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandlerArrayInput)(nil)).Elem(), CxPageFormParameterFillBehaviorRepromptEventHandlerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentInput)(nil)).Elem(), CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrInput)(nil)).Elem(), CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseInput)(nil)).Elem(), CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayInput)(nil)).Elem(), CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageInput)(nil)).Elem(), CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrayInput)(nil)).Elem(), CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessInput)(nil)).Elem(), CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrInput)(nil)).Elem(), CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffInput)(nil)).Elem(), CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrInput)(nil)).Elem(), CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextInput)(nil)).Elem(), CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrInput)(nil)).Elem(), CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioInput)(nil)).Elem(), CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrInput)(nil)).Elem(), CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallInput)(nil)).Elem(), CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrInput)(nil)).Elem(), CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextInput)(nil)).Elem(), CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrInput)(nil)).Elem(), CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionInput)(nil)).Elem(), CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayInput)(nil)).Elem(), CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageTransitionRouteInput)(nil)).Elem(), CxPageTransitionRouteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageTransitionRouteArrayInput)(nil)).Elem(), CxPageTransitionRouteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageTransitionRouteTriggerFulfillmentInput)(nil)).Elem(), CxPageTransitionRouteTriggerFulfillmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageTransitionRouteTriggerFulfillmentPtrInput)(nil)).Elem(), CxPageTransitionRouteTriggerFulfillmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageTransitionRouteTriggerFulfillmentConditionalCaseInput)(nil)).Elem(), CxPageTransitionRouteTriggerFulfillmentConditionalCaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayInput)(nil)).Elem(), CxPageTransitionRouteTriggerFulfillmentConditionalCaseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageTransitionRouteTriggerFulfillmentMessageInput)(nil)).Elem(), CxPageTransitionRouteTriggerFulfillmentMessageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageTransitionRouteTriggerFulfillmentMessageArrayInput)(nil)).Elem(), CxPageTransitionRouteTriggerFulfillmentMessageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessInput)(nil)).Elem(), CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrInput)(nil)).Elem(), CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffInput)(nil)).Elem(), CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrInput)(nil)).Elem(), CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextInput)(nil)).Elem(), CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrInput)(nil)).Elem(), CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioInput)(nil)).Elem(), CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrInput)(nil)).Elem(), CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallInput)(nil)).Elem(), CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrInput)(nil)).Elem(), CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageTransitionRouteTriggerFulfillmentMessageTextInput)(nil)).Elem(), CxPageTransitionRouteTriggerFulfillmentMessageTextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxPageTransitionRouteTriggerFulfillmentMessageTextPtrInput)(nil)).Elem(), CxPageTransitionRouteTriggerFulfillmentMessageTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageTransitionRouteTriggerFulfillmentSetParameterActionInput)(nil)).Elem(), CxPageTransitionRouteTriggerFulfillmentSetParameterActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayInput)(nil)).Elem(), CxPageTransitionRouteTriggerFulfillmentSetParameterActionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxVersionNluSettingInput)(nil)).Elem(), CxVersionNluSettingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxVersionNluSettingArrayInput)(nil)).Elem(), CxVersionNluSettingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CxWebhookGenericWebServiceInput)(nil)).Elem(), CxWebhookGenericWebServiceArgs{})
@@ -6149,20 +14830,48 @@ func init() {
 	pulumi.RegisterOutputType(CxFlowEventHandlerArrayOutput{})
 	pulumi.RegisterOutputType(CxFlowEventHandlerTriggerFulfillmentOutput{})
 	pulumi.RegisterOutputType(CxFlowEventHandlerTriggerFulfillmentPtrOutput{})
+	pulumi.RegisterOutputType(CxFlowEventHandlerTriggerFulfillmentConditionalCaseOutput{})
+	pulumi.RegisterOutputType(CxFlowEventHandlerTriggerFulfillmentConditionalCaseArrayOutput{})
 	pulumi.RegisterOutputType(CxFlowEventHandlerTriggerFulfillmentMessageOutput{})
 	pulumi.RegisterOutputType(CxFlowEventHandlerTriggerFulfillmentMessageArrayOutput{})
+	pulumi.RegisterOutputType(CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessOutput{})
+	pulumi.RegisterOutputType(CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput{})
+	pulumi.RegisterOutputType(CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput{})
+	pulumi.RegisterOutputType(CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput{})
+	pulumi.RegisterOutputType(CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput{})
+	pulumi.RegisterOutputType(CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput{})
+	pulumi.RegisterOutputType(CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioOutput{})
+	pulumi.RegisterOutputType(CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput{})
+	pulumi.RegisterOutputType(CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput{})
+	pulumi.RegisterOutputType(CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput{})
 	pulumi.RegisterOutputType(CxFlowEventHandlerTriggerFulfillmentMessageTextOutput{})
 	pulumi.RegisterOutputType(CxFlowEventHandlerTriggerFulfillmentMessageTextPtrOutput{})
+	pulumi.RegisterOutputType(CxFlowEventHandlerTriggerFulfillmentSetParameterActionOutput{})
+	pulumi.RegisterOutputType(CxFlowEventHandlerTriggerFulfillmentSetParameterActionArrayOutput{})
 	pulumi.RegisterOutputType(CxFlowNluSettingsOutput{})
 	pulumi.RegisterOutputType(CxFlowNluSettingsPtrOutput{})
 	pulumi.RegisterOutputType(CxFlowTransitionRouteOutput{})
 	pulumi.RegisterOutputType(CxFlowTransitionRouteArrayOutput{})
 	pulumi.RegisterOutputType(CxFlowTransitionRouteTriggerFulfillmentOutput{})
 	pulumi.RegisterOutputType(CxFlowTransitionRouteTriggerFulfillmentPtrOutput{})
+	pulumi.RegisterOutputType(CxFlowTransitionRouteTriggerFulfillmentConditionalCaseOutput{})
+	pulumi.RegisterOutputType(CxFlowTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput{})
 	pulumi.RegisterOutputType(CxFlowTransitionRouteTriggerFulfillmentMessageOutput{})
 	pulumi.RegisterOutputType(CxFlowTransitionRouteTriggerFulfillmentMessageArrayOutput{})
+	pulumi.RegisterOutputType(CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput{})
+	pulumi.RegisterOutputType(CxFlowTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput{})
+	pulumi.RegisterOutputType(CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput{})
+	pulumi.RegisterOutputType(CxFlowTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput{})
+	pulumi.RegisterOutputType(CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput{})
+	pulumi.RegisterOutputType(CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput{})
+	pulumi.RegisterOutputType(CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioOutput{})
+	pulumi.RegisterOutputType(CxFlowTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput{})
+	pulumi.RegisterOutputType(CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput{})
+	pulumi.RegisterOutputType(CxFlowTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput{})
 	pulumi.RegisterOutputType(CxFlowTransitionRouteTriggerFulfillmentMessageTextOutput{})
 	pulumi.RegisterOutputType(CxFlowTransitionRouteTriggerFulfillmentMessageTextPtrOutput{})
+	pulumi.RegisterOutputType(CxFlowTransitionRouteTriggerFulfillmentSetParameterActionOutput{})
+	pulumi.RegisterOutputType(CxFlowTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput{})
 	pulumi.RegisterOutputType(CxIntentParameterOutput{})
 	pulumi.RegisterOutputType(CxIntentParameterArrayOutput{})
 	pulumi.RegisterOutputType(CxIntentTrainingPhraseOutput{})
@@ -6171,18 +14880,46 @@ func init() {
 	pulumi.RegisterOutputType(CxIntentTrainingPhrasePartArrayOutput{})
 	pulumi.RegisterOutputType(CxPageEntryFulfillmentOutput{})
 	pulumi.RegisterOutputType(CxPageEntryFulfillmentPtrOutput{})
+	pulumi.RegisterOutputType(CxPageEntryFulfillmentConditionalCaseOutput{})
+	pulumi.RegisterOutputType(CxPageEntryFulfillmentConditionalCaseArrayOutput{})
 	pulumi.RegisterOutputType(CxPageEntryFulfillmentMessageOutput{})
 	pulumi.RegisterOutputType(CxPageEntryFulfillmentMessageArrayOutput{})
+	pulumi.RegisterOutputType(CxPageEntryFulfillmentMessageConversationSuccessOutput{})
+	pulumi.RegisterOutputType(CxPageEntryFulfillmentMessageConversationSuccessPtrOutput{})
+	pulumi.RegisterOutputType(CxPageEntryFulfillmentMessageLiveAgentHandoffOutput{})
+	pulumi.RegisterOutputType(CxPageEntryFulfillmentMessageLiveAgentHandoffPtrOutput{})
+	pulumi.RegisterOutputType(CxPageEntryFulfillmentMessageOutputAudioTextOutput{})
+	pulumi.RegisterOutputType(CxPageEntryFulfillmentMessageOutputAudioTextPtrOutput{})
+	pulumi.RegisterOutputType(CxPageEntryFulfillmentMessagePlayAudioOutput{})
+	pulumi.RegisterOutputType(CxPageEntryFulfillmentMessagePlayAudioPtrOutput{})
+	pulumi.RegisterOutputType(CxPageEntryFulfillmentMessageTelephonyTransferCallOutput{})
+	pulumi.RegisterOutputType(CxPageEntryFulfillmentMessageTelephonyTransferCallPtrOutput{})
 	pulumi.RegisterOutputType(CxPageEntryFulfillmentMessageTextOutput{})
 	pulumi.RegisterOutputType(CxPageEntryFulfillmentMessageTextPtrOutput{})
+	pulumi.RegisterOutputType(CxPageEntryFulfillmentSetParameterActionOutput{})
+	pulumi.RegisterOutputType(CxPageEntryFulfillmentSetParameterActionArrayOutput{})
 	pulumi.RegisterOutputType(CxPageEventHandlerOutput{})
 	pulumi.RegisterOutputType(CxPageEventHandlerArrayOutput{})
 	pulumi.RegisterOutputType(CxPageEventHandlerTriggerFulfillmentOutput{})
 	pulumi.RegisterOutputType(CxPageEventHandlerTriggerFulfillmentPtrOutput{})
+	pulumi.RegisterOutputType(CxPageEventHandlerTriggerFulfillmentConditionalCaseOutput{})
+	pulumi.RegisterOutputType(CxPageEventHandlerTriggerFulfillmentConditionalCaseArrayOutput{})
 	pulumi.RegisterOutputType(CxPageEventHandlerTriggerFulfillmentMessageOutput{})
 	pulumi.RegisterOutputType(CxPageEventHandlerTriggerFulfillmentMessageArrayOutput{})
+	pulumi.RegisterOutputType(CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessOutput{})
+	pulumi.RegisterOutputType(CxPageEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput{})
+	pulumi.RegisterOutputType(CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput{})
+	pulumi.RegisterOutputType(CxPageEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput{})
+	pulumi.RegisterOutputType(CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput{})
+	pulumi.RegisterOutputType(CxPageEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput{})
+	pulumi.RegisterOutputType(CxPageEventHandlerTriggerFulfillmentMessagePlayAudioOutput{})
+	pulumi.RegisterOutputType(CxPageEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput{})
+	pulumi.RegisterOutputType(CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput{})
+	pulumi.RegisterOutputType(CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput{})
 	pulumi.RegisterOutputType(CxPageEventHandlerTriggerFulfillmentMessageTextOutput{})
 	pulumi.RegisterOutputType(CxPageEventHandlerTriggerFulfillmentMessageTextPtrOutput{})
+	pulumi.RegisterOutputType(CxPageEventHandlerTriggerFulfillmentSetParameterActionOutput{})
+	pulumi.RegisterOutputType(CxPageEventHandlerTriggerFulfillmentSetParameterActionArrayOutput{})
 	pulumi.RegisterOutputType(CxPageFormOutput{})
 	pulumi.RegisterOutputType(CxPageFormPtrOutput{})
 	pulumi.RegisterOutputType(CxPageFormParameterOutput{})
@@ -6191,18 +14928,68 @@ func init() {
 	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorPtrOutput{})
 	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorInitialPromptFulfillmentOutput{})
 	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorInitialPromptFulfillmentPtrOutput{})
+	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseOutput{})
+	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorInitialPromptFulfillmentConditionalCaseArrayOutput{})
 	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutput{})
 	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageArrayOutput{})
+	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessOutput{})
+	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageConversationSuccessPtrOutput{})
+	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffOutput{})
+	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoffPtrOutput{})
+	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextOutput{})
+	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageOutputAudioTextPtrOutput{})
+	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioOutput{})
+	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessagePlayAudioPtrOutput{})
+	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallOutput{})
+	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTelephonyTransferCallPtrOutput{})
 	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextOutput{})
 	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageTextPtrOutput{})
+	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionOutput{})
+	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorInitialPromptFulfillmentSetParameterActionArrayOutput{})
+	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorRepromptEventHandlerOutput{})
+	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorRepromptEventHandlerArrayOutput{})
+	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentOutput{})
+	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentPtrOutput{})
+	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseOutput{})
+	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentConditionalCaseArrayOutput{})
+	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutput{})
+	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageArrayOutput{})
+	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessOutput{})
+	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageConversationSuccessPtrOutput{})
+	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffOutput{})
+	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoffPtrOutput{})
+	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextOutput{})
+	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageOutputAudioTextPtrOutput{})
+	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioOutput{})
+	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudioPtrOutput{})
+	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallOutput{})
+	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCallPtrOutput{})
+	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextOutput{})
+	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTextPtrOutput{})
+	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionOutput{})
+	pulumi.RegisterOutputType(CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentSetParameterActionArrayOutput{})
 	pulumi.RegisterOutputType(CxPageTransitionRouteOutput{})
 	pulumi.RegisterOutputType(CxPageTransitionRouteArrayOutput{})
 	pulumi.RegisterOutputType(CxPageTransitionRouteTriggerFulfillmentOutput{})
 	pulumi.RegisterOutputType(CxPageTransitionRouteTriggerFulfillmentPtrOutput{})
+	pulumi.RegisterOutputType(CxPageTransitionRouteTriggerFulfillmentConditionalCaseOutput{})
+	pulumi.RegisterOutputType(CxPageTransitionRouteTriggerFulfillmentConditionalCaseArrayOutput{})
 	pulumi.RegisterOutputType(CxPageTransitionRouteTriggerFulfillmentMessageOutput{})
 	pulumi.RegisterOutputType(CxPageTransitionRouteTriggerFulfillmentMessageArrayOutput{})
+	pulumi.RegisterOutputType(CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessOutput{})
+	pulumi.RegisterOutputType(CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccessPtrOutput{})
+	pulumi.RegisterOutputType(CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffOutput{})
+	pulumi.RegisterOutputType(CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoffPtrOutput{})
+	pulumi.RegisterOutputType(CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextOutput{})
+	pulumi.RegisterOutputType(CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioTextPtrOutput{})
+	pulumi.RegisterOutputType(CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioOutput{})
+	pulumi.RegisterOutputType(CxPageTransitionRouteTriggerFulfillmentMessagePlayAudioPtrOutput{})
+	pulumi.RegisterOutputType(CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallOutput{})
+	pulumi.RegisterOutputType(CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCallPtrOutput{})
 	pulumi.RegisterOutputType(CxPageTransitionRouteTriggerFulfillmentMessageTextOutput{})
 	pulumi.RegisterOutputType(CxPageTransitionRouteTriggerFulfillmentMessageTextPtrOutput{})
+	pulumi.RegisterOutputType(CxPageTransitionRouteTriggerFulfillmentSetParameterActionOutput{})
+	pulumi.RegisterOutputType(CxPageTransitionRouteTriggerFulfillmentSetParameterActionArrayOutput{})
 	pulumi.RegisterOutputType(CxVersionNluSettingOutput{})
 	pulumi.RegisterOutputType(CxVersionNluSettingArrayOutput{})
 	pulumi.RegisterOutputType(CxWebhookGenericWebServiceOutput{})
