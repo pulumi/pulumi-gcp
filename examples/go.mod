@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-gcp/examples/v5
+module github.com/pulumi/pulumi-gcp/examples/v6
 
 go 1.21
 
@@ -6,6 +6,8 @@ require (
 	github.com/pulumi/pulumi/pkg/v3 v3.17.0
 	github.com/stretchr/testify v1.7.0
 )
+
+replace github.com/pulumi/pulumi-gcp/sdk/v6 => ../sdk
 
 require (
 	cloud.google.com/go v0.81.0 // indirect

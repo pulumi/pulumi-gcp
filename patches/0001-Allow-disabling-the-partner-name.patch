@@ -1,18 +1,18 @@
-From 32b5559ce04aa464c2f1d25585e9ffc1ac609f4a Mon Sep 17 00:00:00 2001
+From 3567d0c808a88ea37a72643df662a7efe5c3aa36 Mon Sep 17 00:00:00 2001
 From: Daniel Bradley <daniel@pulumi.com>
 Date: Tue, 7 Mar 2023 11:09:59 +0000
-Subject: [PATCH 1/9] Allow disabling the partner name
+Subject: [PATCH 01/10] Allow disabling the partner name
 
 Add options to set or disable partner name.
 ---
  google-beta/provider/provider.go | 28 ++++++++++++++++++++++++++++
- 1 file changed, 25 insertions(+), 3 deletions(-)
+ 1 file changed, 28 insertions(+)
 
 diff --git a/google-beta/provider/provider.go b/google-beta/provider/provider.go
-index 2b894c5fb..6944d78b0 100644
+index a3d895d6e..3a28d7733 100644
 --- a/google-beta/provider/provider.go
 +++ b/google-beta/provider/provider.go
-@@ -231,6 +231,19 @@ func Provider() *schema.Provider {
+@@ -232,6 +232,19 @@ func Provider() *schema.Provider {
  				Optional: true,
  			},
  
@@ -32,7 +32,7 @@ index 2b894c5fb..6944d78b0 100644
  			"request_reason": {
  				Type:     schema.TypeString,
  				Optional: true,
-@@ -1870,6 +1883,21 @@ func providerConfigure(ctx context.Context, d *schema.ResourceData, p *schema.Pr
+@@ -1893,6 +1906,21 @@ func ProviderConfigure(ctx context.Context, d *schema.ResourceData, p *schema.Pr
  		UserAgent:           p.UserAgent("terraform-provider-google-beta", version.ProviderVersion),
  	}
  
@@ -55,5 +55,5 @@ index 2b894c5fb..6944d78b0 100644
  	if ext := os.Getenv("GOOGLE_TERRAFORM_USERAGENT_EXTENSION"); ext != "" {
  		ua := config.UserAgent
 -- 
-2.39.2 (Apple Git-143)
+2.41.0
 
