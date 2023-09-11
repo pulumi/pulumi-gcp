@@ -1,7 +1,7 @@
-From 14d85b3a5fe0975cd5f9ce2552de04810f14b589 Mon Sep 17 00:00:00 2001
+From 33848f89c973001401d2fd9d2c428bbbdd8d6381 Mon Sep 17 00:00:00 2001
 From: Daniel Bradley <daniel@pulumi.com>
 Date: Tue, 7 Mar 2023 11:16:06 +0000
-Subject: [PATCH 6/9] website/docs/d tweaks
+Subject: [PATCH 06/10] website/docs/d tweaks
 
 ---
  website/docs/d/cloud_run_service.html.markdown      |  2 +-
@@ -503,5 +503,5 @@ index d0494f08b..0ebec0d7e 100644
  For more information see
  [the API reference](https://cloud.google.com/storage/docs/json_api/v1/projects/serviceAccount).
 -- 
-2.39.2 (Apple Git-143)
+2.41.0
 

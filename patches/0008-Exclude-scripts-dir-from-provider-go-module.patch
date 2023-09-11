@@ -1,7 +1,7 @@
-From d26eb90269af5e9fb7fe12bb81f790b49d897189 Mon Sep 17 00:00:00 2001
+From 8c6e7d861c735753558178b0dad8f4201c7a7118 Mon Sep 17 00:00:00 2001
 From: Aaron Friel <mayreply@aaronfriel.com>
 Date: Thu, 22 Jun 2023 09:45:36 -0700
-Subject: [PATCH 8/9] Exclude scripts dir from provider go module
+Subject: [PATCH 08/10] Exclude scripts dir from provider go module
 
 This directory references a private Go module, which we cannot "go vet" or check.
 ---
@@ -19,5 +19,5 @@ index 000000000..ddd2cb8ff
 +
 +go 1.20
 -- 
-2.39.2 (Apple Git-143)
+2.41.0
 
