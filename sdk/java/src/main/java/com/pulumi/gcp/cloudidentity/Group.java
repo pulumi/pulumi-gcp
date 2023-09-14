@@ -84,7 +84,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * The time when the Group was created.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -99,7 +99,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * Must not be longer than 4,096 characters.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -114,7 +114,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * The display name of the Group.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> displayName;
 
     /**
@@ -129,7 +129,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="groupKey", type=GroupGroupKey.class, parameters={})
+    @Export(name="groupKey", refs={GroupGroupKey.class}, tree="[0]")
     private Output<GroupGroupKey> groupKey;
 
     /**
@@ -149,7 +149,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * Possible values are: `INITIAL_GROUP_CONFIG_UNSPECIFIED`, `WITH_INITIAL_OWNER`, `EMPTY`.
      * 
      */
-    @Export(name="initialGroupConfig", type=String.class, parameters={})
+    @Export(name="initialGroupConfig", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> initialGroupConfig;
 
     /**
@@ -172,7 +172,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * Identity-mapped groups for Cloud Search have a label with a key of system/groups/external and an empty value.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> labels;
 
     /**
@@ -191,7 +191,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * is the unique ID assigned to the Group.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -209,7 +209,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * groups or customers/{customer_id} for Google Groups.
      * 
      */
-    @Export(name="parent", type=String.class, parameters={})
+    @Export(name="parent", refs={String.class}, tree="[0]")
     private Output<String> parent;
 
     /**
@@ -226,7 +226,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * The time when the Group was last updated.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

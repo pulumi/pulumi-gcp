@@ -93,7 +93,7 @@ public class FolderSink extends com.pulumi.resources.CustomResource {
      * Options that affect sinks exporting data to BigQuery. Structure documented below.
      * 
      */
-    @Export(name="bigqueryOptions", type=FolderSinkBigqueryOptions.class, parameters={})
+    @Export(name="bigqueryOptions", refs={FolderSinkBigqueryOptions.class}, tree="[0]")
     private Output<FolderSinkBigqueryOptions> bigqueryOptions;
 
     /**
@@ -107,7 +107,7 @@ public class FolderSink extends com.pulumi.resources.CustomResource {
      * A description of this sink. The maximum length of the description is 8000 characters.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -129,7 +129,7 @@ public class FolderSink extends com.pulumi.resources.CustomResource {
      * The writer associated with the sink must have access to write to the above resource.
      * 
      */
-    @Export(name="destination", type=String.class, parameters={})
+    @Export(name="destination", refs={String.class}, tree="[0]")
     private Output<String> destination;
 
     /**
@@ -151,7 +151,7 @@ public class FolderSink extends com.pulumi.resources.CustomResource {
      * If set to True, then this sink is disabled and it does not export any log entries.
      * 
      */
-    @Export(name="disabled", type=Boolean.class, parameters={})
+    @Export(name="disabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disabled;
 
     /**
@@ -165,7 +165,7 @@ public class FolderSink extends com.pulumi.resources.CustomResource {
      * Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
      * 
      */
-    @Export(name="exclusions", type=List.class, parameters={FolderSinkExclusion.class})
+    @Export(name="exclusions", refs={List.class,FolderSinkExclusion.class}, tree="[0,1]")
     private Output</* @Nullable */ List<FolderSinkExclusion>> exclusions;
 
     /**
@@ -181,7 +181,7 @@ public class FolderSink extends com.pulumi.resources.CustomResource {
      * write a filter.
      * 
      */
-    @Export(name="filter", type=String.class, parameters={})
+    @Export(name="filter", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> filter;
 
     /**
@@ -198,7 +198,7 @@ public class FolderSink extends com.pulumi.resources.CustomResource {
      * accepted.
      * 
      */
-    @Export(name="folder", type=String.class, parameters={})
+    @Export(name="folder", refs={String.class}, tree="[0]")
     private Output<String> folder;
 
     /**
@@ -214,7 +214,7 @@ public class FolderSink extends com.pulumi.resources.CustomResource {
      * associated with child projects are also exported; otherwise only logs relating to the provided folder are included.
      * 
      */
-    @Export(name="includeChildren", type=Boolean.class, parameters={})
+    @Export(name="includeChildren", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> includeChildren;
 
     /**
@@ -229,7 +229,7 @@ public class FolderSink extends com.pulumi.resources.CustomResource {
      * The name of the logging sink.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -244,7 +244,7 @@ public class FolderSink extends com.pulumi.resources.CustomResource {
      * configured `destination`.
      * 
      */
-    @Export(name="writerIdentity", type=String.class, parameters={})
+    @Export(name="writerIdentity", refs={String.class}, tree="[0]")
     private Output<String> writerIdentity;
 
     /**

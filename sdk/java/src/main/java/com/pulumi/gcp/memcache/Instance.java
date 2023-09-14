@@ -133,7 +133,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * &#39;default&#39; will be used.
      * 
      */
-    @Export(name="authorizedNetwork", type=String.class, parameters={})
+    @Export(name="authorizedNetwork", refs={String.class}, tree="[0]")
     private Output<String> authorizedNetwork;
 
     /**
@@ -151,7 +151,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * resolution and up to nine fractional digits
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -168,7 +168,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Endpoint for Discovery API
      * 
      */
-    @Export(name="discoveryEndpoint", type=String.class, parameters={})
+    @Export(name="discoveryEndpoint", refs={String.class}, tree="[0]")
     private Output<String> discoveryEndpoint;
 
     /**
@@ -182,7 +182,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * A user-visible name for the instance.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -196,7 +196,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Resource labels to represent user-provided metadata.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -211,7 +211,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="maintenancePolicy", type=InstanceMaintenancePolicy.class, parameters={})
+    @Export(name="maintenancePolicy", refs={InstanceMaintenancePolicy.class}, tree="[0]")
     private Output</* @Nullable */ InstanceMaintenancePolicy> maintenancePolicy;
 
     /**
@@ -227,7 +227,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="maintenanceSchedules", type=List.class, parameters={InstanceMaintenanceSchedule.class})
+    @Export(name="maintenanceSchedules", refs={List.class,InstanceMaintenanceSchedule.class}, tree="[0,1]")
     private Output<List<InstanceMaintenanceSchedule>> maintenanceSchedules;
 
     /**
@@ -242,7 +242,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The full version of memcached server running on this instance.
      * 
      */
-    @Export(name="memcacheFullVersion", type=String.class, parameters={})
+    @Export(name="memcacheFullVersion", refs={String.class}, tree="[0]")
     private Output<String> memcacheFullVersion;
 
     /**
@@ -257,7 +257,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="memcacheNodes", type=List.class, parameters={InstanceMemcacheNode.class})
+    @Export(name="memcacheNodes", refs={List.class,InstanceMemcacheNode.class}, tree="[0,1]")
     private Output<List<InstanceMemcacheNode>> memcacheNodes;
 
     /**
@@ -273,7 +273,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="memcacheParameters", type=InstanceMemcacheParameters.class, parameters={})
+    @Export(name="memcacheParameters", refs={InstanceMemcacheParameters.class}, tree="[0]")
     private Output</* @Nullable */ InstanceMemcacheParameters> memcacheParameters;
 
     /**
@@ -292,7 +292,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Possible values are: `MEMCACHE_1_5`.
      * 
      */
-    @Export(name="memcacheVersion", type=String.class, parameters={})
+    @Export(name="memcacheVersion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> memcacheVersion;
 
     /**
@@ -310,7 +310,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The resource name of the instance.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -325,7 +325,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="nodeConfig", type=InstanceNodeConfig.class, parameters={})
+    @Export(name="nodeConfig", refs={InstanceNodeConfig.class}, tree="[0]")
     private Output<InstanceNodeConfig> nodeConfig;
 
     /**
@@ -340,7 +340,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Number of nodes in the memcache instance.
      * 
      */
-    @Export(name="nodeCount", type=Integer.class, parameters={})
+    @Export(name="nodeCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> nodeCount;
 
     /**
@@ -355,7 +355,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -370,7 +370,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The region of the Memcache instance. If it is not provided, the provider region is used.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -385,7 +385,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * provided, all zones will be used.
      * 
      */
-    @Export(name="zones", type=List.class, parameters={String.class})
+    @Export(name="zones", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> zones;
 
     /**

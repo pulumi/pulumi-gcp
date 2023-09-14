@@ -166,7 +166,7 @@ public class RepositoryIamPolicy extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the IAM policy.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -181,7 +181,7 @@ public class RepositoryIamPolicy extends com.pulumi.resources.CustomResource {
      * a `gcp.organizations.getIAMPolicy` data source.
      * 
      */
-    @Export(name="policyData", type=String.class, parameters={})
+    @Export(name="policyData", refs={String.class}, tree="[0]")
     private Output<String> policyData;
 
     /**
@@ -209,7 +209,7 @@ public class RepositoryIamPolicy extends com.pulumi.resources.CustomResource {
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -232,7 +232,7 @@ public class RepositoryIamPolicy extends com.pulumi.resources.CustomResource {
     public Output<String> project() {
         return this.project;
     }
-    @Export(name="repository", type=String.class, parameters={})
+    @Export(name="repository", refs={String.class}, tree="[0]")
     private Output<String> repository;
 
     public Output<String> repository() {

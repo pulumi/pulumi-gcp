@@ -70,7 +70,7 @@ public class ProjectExclusion extends com.pulumi.resources.CustomResource {
      * A human-readable description.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -85,7 +85,7 @@ public class ProjectExclusion extends com.pulumi.resources.CustomResource {
      * false.
      * 
      */
-    @Export(name="disabled", type=Boolean.class, parameters={})
+    @Export(name="disabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disabled;
 
     /**
@@ -102,7 +102,7 @@ public class ProjectExclusion extends com.pulumi.resources.CustomResource {
      * write a filter.
      * 
      */
-    @Export(name="filter", type=String.class, parameters={})
+    @Export(name="filter", refs={String.class}, tree="[0]")
     private Output<String> filter;
 
     /**
@@ -118,7 +118,7 @@ public class ProjectExclusion extends com.pulumi.resources.CustomResource {
      * The name of the logging exclusion.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -133,7 +133,7 @@ public class ProjectExclusion extends com.pulumi.resources.CustomResource {
      * used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**

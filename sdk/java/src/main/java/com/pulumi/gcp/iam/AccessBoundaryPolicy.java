@@ -38,7 +38,7 @@ public class AccessBoundaryPolicy extends com.pulumi.resources.CustomResource {
      * The display name of the rule.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> displayName;
 
     /**
@@ -52,7 +52,7 @@ public class AccessBoundaryPolicy extends com.pulumi.resources.CustomResource {
      * The hash of the resource. Used internally during updates.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -66,7 +66,7 @@ public class AccessBoundaryPolicy extends com.pulumi.resources.CustomResource {
      * The name of the policy.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -80,7 +80,7 @@ public class AccessBoundaryPolicy extends com.pulumi.resources.CustomResource {
      * The attachment point is identified by its URL-encoded full resource name.
      * 
      */
-    @Export(name="parent", type=String.class, parameters={})
+    @Export(name="parent", refs={String.class}, tree="[0]")
     private Output<String> parent;
 
     /**
@@ -95,7 +95,7 @@ public class AccessBoundaryPolicy extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="rules", type=List.class, parameters={AccessBoundaryPolicyRule.class})
+    @Export(name="rules", refs={List.class,AccessBoundaryPolicyRule.class}, tree="[0,1]")
     private Output<List<AccessBoundaryPolicyRule>> rules;
 
     /**

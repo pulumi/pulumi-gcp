@@ -103,7 +103,7 @@ public class GoogleChannelConfig extends com.pulumi.resources.CustomResource {
      * Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*`.
      * 
      */
-    @Export(name="cryptoKeyName", type=String.class, parameters={})
+    @Export(name="cryptoKeyName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cryptoKeyName;
 
     /**
@@ -117,7 +117,7 @@ public class GoogleChannelConfig extends com.pulumi.resources.CustomResource {
      * The location for the resource
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -133,7 +133,7 @@ public class GoogleChannelConfig extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -149,7 +149,7 @@ public class GoogleChannelConfig extends com.pulumi.resources.CustomResource {
      * The project for the resource
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -163,7 +163,7 @@ public class GoogleChannelConfig extends com.pulumi.resources.CustomResource {
      * Output only. The last-modified time.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

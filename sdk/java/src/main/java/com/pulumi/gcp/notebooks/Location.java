@@ -39,7 +39,7 @@ public class Location extends com.pulumi.resources.CustomResource {
      * Name of the Location resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -54,7 +54,7 @@ public class Location extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -69,7 +69,7 @@ public class Location extends com.pulumi.resources.CustomResource {
      * The URI of the created resource.
      * 
      */
-    @Export(name="selfLink", type=String.class, parameters={})
+    @Export(name="selfLink", refs={String.class}, tree="[0]")
     private Output<String> selfLink;
 
     /**

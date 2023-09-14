@@ -99,7 +99,7 @@ public class DataPolicy extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="dataMaskingPolicy", type=DataPolicyDataMaskingPolicy.class, parameters={})
+    @Export(name="dataMaskingPolicy", refs={DataPolicyDataMaskingPolicy.class}, tree="[0]")
     private Output</* @Nullable */ DataPolicyDataMaskingPolicy> dataMaskingPolicy;
 
     /**
@@ -114,7 +114,7 @@ public class DataPolicy extends com.pulumi.resources.CustomResource {
      * User-assigned (human readable) ID of the data policy that needs to be unique within a project. Used as {dataPolicyId} in part of the resource name.
      * 
      */
-    @Export(name="dataPolicyId", type=String.class, parameters={})
+    @Export(name="dataPolicyId", refs={String.class}, tree="[0]")
     private Output<String> dataPolicyId;
 
     /**
@@ -131,7 +131,7 @@ public class DataPolicy extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="dataPolicyType", type=String.class, parameters={})
+    @Export(name="dataPolicyType", refs={String.class}, tree="[0]")
     private Output<String> dataPolicyType;
 
     /**
@@ -148,7 +148,7 @@ public class DataPolicy extends com.pulumi.resources.CustomResource {
      * The name of the location of the data policy.
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -162,7 +162,7 @@ public class DataPolicy extends com.pulumi.resources.CustomResource {
      * Resource name of this data policy, in the format of projects/{project_number}/locations/{locationId}/dataPolicies/{dataPolicyId}.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -176,7 +176,7 @@ public class DataPolicy extends com.pulumi.resources.CustomResource {
      * Policy tag resource name, in the format of projects/{project_number}/locations/{locationId}/taxonomies/{taxonomyId}/policyTags/{policyTag_id}.
      * 
      */
-    @Export(name="policyTag", type=String.class, parameters={})
+    @Export(name="policyTag", refs={String.class}, tree="[0]")
     private Output<String> policyTag;
 
     /**
@@ -191,7 +191,7 @@ public class DataPolicy extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**

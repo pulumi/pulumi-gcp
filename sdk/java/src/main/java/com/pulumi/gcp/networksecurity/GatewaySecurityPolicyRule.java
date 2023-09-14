@@ -135,7 +135,7 @@ public class GatewaySecurityPolicyRule extends com.pulumi.resources.CustomResour
      * CEL expression for matching on L7/application level criteria.
      * 
      */
-    @Export(name="applicationMatcher", type=String.class, parameters={})
+    @Export(name="applicationMatcher", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> applicationMatcher;
 
     /**
@@ -150,7 +150,7 @@ public class GatewaySecurityPolicyRule extends com.pulumi.resources.CustomResour
      * Possible values are: `BASIC_PROFILE_UNSPECIFIED`, `ALLOW`, `DENY`.
      * 
      */
-    @Export(name="basicProfile", type=String.class, parameters={})
+    @Export(name="basicProfile", refs={String.class}, tree="[0]")
     private Output<String> basicProfile;
 
     /**
@@ -167,7 +167,7 @@ public class GatewaySecurityPolicyRule extends com.pulumi.resources.CustomResour
      * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -183,7 +183,7 @@ public class GatewaySecurityPolicyRule extends com.pulumi.resources.CustomResour
      * Free-text description of the resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -197,7 +197,7 @@ public class GatewaySecurityPolicyRule extends com.pulumi.resources.CustomResour
      * Whether the rule is enforced.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
@@ -213,7 +213,7 @@ public class GatewaySecurityPolicyRule extends com.pulumi.resources.CustomResour
      * ***
      * 
      */
-    @Export(name="gatewaySecurityPolicy", type=String.class, parameters={})
+    @Export(name="gatewaySecurityPolicy", refs={String.class}, tree="[0]")
     private Output<String> gatewaySecurityPolicy;
 
     /**
@@ -229,7 +229,7 @@ public class GatewaySecurityPolicyRule extends com.pulumi.resources.CustomResour
      * The location of the gateway security policy.
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -244,7 +244,7 @@ public class GatewaySecurityPolicyRule extends com.pulumi.resources.CustomResour
      * rule should match the pattern: (^a-z?$).
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -259,7 +259,7 @@ public class GatewaySecurityPolicyRule extends com.pulumi.resources.CustomResour
      * Priority of the rule. Lower number corresponds to higher precedence.
      * 
      */
-    @Export(name="priority", type=Integer.class, parameters={})
+    @Export(name="priority", refs={Integer.class}, tree="[0]")
     private Output<Integer> priority;
 
     /**
@@ -274,7 +274,7 @@ public class GatewaySecurityPolicyRule extends com.pulumi.resources.CustomResour
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -289,7 +289,7 @@ public class GatewaySecurityPolicyRule extends com.pulumi.resources.CustomResour
      * Server-defined URL of this resource.
      * 
      */
-    @Export(name="selfLink", type=String.class, parameters={})
+    @Export(name="selfLink", refs={String.class}, tree="[0]")
     private Output<String> selfLink;
 
     /**
@@ -303,7 +303,7 @@ public class GatewaySecurityPolicyRule extends com.pulumi.resources.CustomResour
      * CEL expression for matching on session criteria.
      * 
      */
-    @Export(name="sessionMatcher", type=String.class, parameters={})
+    @Export(name="sessionMatcher", refs={String.class}, tree="[0]")
     private Output<String> sessionMatcher;
 
     /**
@@ -318,7 +318,7 @@ public class GatewaySecurityPolicyRule extends com.pulumi.resources.CustomResour
      * parent GatewaySecurityPolicy references a TLSInspectionConfig.
      * 
      */
-    @Export(name="tlsInspectionEnabled", type=Boolean.class, parameters={})
+    @Export(name="tlsInspectionEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> tlsInspectionEnabled;
 
     /**
@@ -335,7 +335,7 @@ public class GatewaySecurityPolicyRule extends com.pulumi.resources.CustomResour
      * Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

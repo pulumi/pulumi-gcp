@@ -124,7 +124,7 @@ public class AccessLevels extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="accessLevels", type=List.class, parameters={AccessLevelsAccessLevel.class})
+    @Export(name="accessLevels", refs={List.class,AccessLevelsAccessLevel.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AccessLevelsAccessLevel>> accessLevels;
 
     /**
@@ -142,7 +142,7 @@ public class AccessLevels extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="parent", type=String.class, parameters={})
+    @Export(name="parent", refs={String.class}, tree="[0]")
     private Output<String> parent;
 
     /**

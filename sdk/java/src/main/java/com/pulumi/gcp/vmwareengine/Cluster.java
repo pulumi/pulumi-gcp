@@ -176,7 +176,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * There can only be one management cluster in a private cloud and it has to be the first one.
      * 
      */
-    @Export(name="management", type=Boolean.class, parameters={})
+    @Export(name="management", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> management;
 
     /**
@@ -193,7 +193,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -211,7 +211,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="nodeTypeConfigs", type=List.class, parameters={ClusterNodeTypeConfig.class})
+    @Export(name="nodeTypeConfigs", refs={List.class,ClusterNodeTypeConfig.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ClusterNodeTypeConfig>> nodeTypeConfigs;
 
     /**
@@ -229,7 +229,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * For example: projects/my-project/locations/us-west1-a/privateClouds/my-cloud
      * 
      */
-    @Export(name="parent", type=String.class, parameters={})
+    @Export(name="parent", refs={String.class}, tree="[0]")
     private Output<String> parent;
 
     /**
@@ -245,7 +245,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * State of the Cluster.
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
@@ -259,7 +259,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * System-generated unique identifier for the resource.
      * 
      */
-    @Export(name="uid", type=String.class, parameters={})
+    @Export(name="uid", refs={String.class}, tree="[0]")
     private Output<String> uid;
 
     /**

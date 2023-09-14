@@ -89,7 +89,7 @@ public class LiteReservation extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -106,7 +106,7 @@ public class LiteReservation extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -121,7 +121,7 @@ public class LiteReservation extends com.pulumi.resources.CustomResource {
      * The region of the pubsub lite reservation.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> region;
 
     /**
@@ -137,7 +137,7 @@ public class LiteReservation extends com.pulumi.resources.CustomResource {
      * messages.
      * 
      */
-    @Export(name="throughputCapacity", type=Integer.class, parameters={})
+    @Export(name="throughputCapacity", refs={Integer.class}, tree="[0]")
     private Output<Integer> throughputCapacity;
 
     /**

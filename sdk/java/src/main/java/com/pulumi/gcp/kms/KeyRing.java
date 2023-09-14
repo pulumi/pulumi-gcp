@@ -83,7 +83,7 @@ public class KeyRing extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -100,7 +100,7 @@ public class KeyRing extends com.pulumi.resources.CustomResource {
      * The resource name for the KeyRing.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -115,7 +115,7 @@ public class KeyRing extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**

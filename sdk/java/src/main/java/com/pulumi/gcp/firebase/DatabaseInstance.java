@@ -178,7 +178,7 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      * or https://{instance-id}.{region}.firebasedatabase.app in other regions.
      * 
      */
-    @Export(name="databaseUrl", type=String.class, parameters={})
+    @Export(name="databaseUrl", refs={String.class}, tree="[0]")
     private Output<String> databaseUrl;
 
     /**
@@ -193,7 +193,7 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      * The intended database state.
      * 
      */
-    @Export(name="desiredState", type=String.class, parameters={})
+    @Export(name="desiredState", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> desiredState;
 
     /**
@@ -210,7 +210,7 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -230,7 +230,7 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      * Learn more about using project identifiers in Google&#39;s [AIP 2510 standard](https://google.aip.dev/cloud/2510).
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -248,7 +248,7 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -264,7 +264,7 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      * Check all [available regions](https://firebase.google.com/docs/projects/locations#rtdb-locations)
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
@@ -279,7 +279,7 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      * The current database state. Set desired_state to :DISABLED to disable the database and :ACTIVE to reenable the database
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
@@ -298,7 +298,7 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      * Possible values are: `DEFAULT_DATABASE`, `USER_DATABASE`.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**

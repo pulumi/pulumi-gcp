@@ -91,7 +91,7 @@ public class DomainTrust extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="domain", type=String.class, parameters={})
+    @Export(name="domain", refs={String.class}, tree="[0]")
     private Output<String> domain;
 
     /**
@@ -109,7 +109,7 @@ public class DomainTrust extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -124,7 +124,7 @@ public class DomainTrust extends com.pulumi.resources.CustomResource {
      * Whether the trusted side has forest/domain wide access or selective access to an approved set of resources.
      * 
      */
-    @Export(name="selectiveAuthentication", type=Boolean.class, parameters={})
+    @Export(name="selectiveAuthentication", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> selectiveAuthentication;
 
     /**
@@ -138,7 +138,7 @@ public class DomainTrust extends com.pulumi.resources.CustomResource {
      * The target DNS server IP addresses which can resolve the remote domain involved in the trust.
      * 
      */
-    @Export(name="targetDnsIpAddresses", type=List.class, parameters={String.class})
+    @Export(name="targetDnsIpAddresses", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> targetDnsIpAddresses;
 
     /**
@@ -152,7 +152,7 @@ public class DomainTrust extends com.pulumi.resources.CustomResource {
      * The fully qualified target domain name which will be in trust with the current domain.
      * 
      */
-    @Export(name="targetDomainName", type=String.class, parameters={})
+    @Export(name="targetDomainName", refs={String.class}, tree="[0]")
     private Output<String> targetDomainName;
 
     /**
@@ -167,7 +167,7 @@ public class DomainTrust extends com.pulumi.resources.CustomResource {
      * Possible values are: `INBOUND`, `OUTBOUND`, `BIDIRECTIONAL`.
      * 
      */
-    @Export(name="trustDirection", type=String.class, parameters={})
+    @Export(name="trustDirection", refs={String.class}, tree="[0]")
     private Output<String> trustDirection;
 
     /**
@@ -183,7 +183,7 @@ public class DomainTrust extends com.pulumi.resources.CustomResource {
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    @Export(name="trustHandshakeSecret", type=String.class, parameters={})
+    @Export(name="trustHandshakeSecret", refs={String.class}, tree="[0]")
     private Output<String> trustHandshakeSecret;
 
     /**
@@ -199,7 +199,7 @@ public class DomainTrust extends com.pulumi.resources.CustomResource {
      * Possible values are: `FOREST`, `EXTERNAL`.
      * 
      */
-    @Export(name="trustType", type=String.class, parameters={})
+    @Export(name="trustType", refs={String.class}, tree="[0]")
     private Output<String> trustType;
 
     /**

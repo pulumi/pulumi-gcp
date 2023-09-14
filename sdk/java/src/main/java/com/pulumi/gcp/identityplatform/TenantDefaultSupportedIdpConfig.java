@@ -86,7 +86,7 @@ public class TenantDefaultSupportedIdpConfig extends com.pulumi.resources.Custom
      * OAuth client ID
      * 
      */
-    @Export(name="clientId", type=String.class, parameters={})
+    @Export(name="clientId", refs={String.class}, tree="[0]")
     private Output<String> clientId;
 
     /**
@@ -102,7 +102,7 @@ public class TenantDefaultSupportedIdpConfig extends com.pulumi.resources.Custom
      * ***
      * 
      */
-    @Export(name="clientSecret", type=String.class, parameters={})
+    @Export(name="clientSecret", refs={String.class}, tree="[0]")
     private Output<String> clientSecret;
 
     /**
@@ -118,7 +118,7 @@ public class TenantDefaultSupportedIdpConfig extends com.pulumi.resources.Custom
      * If this IDP allows the user to sign in
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -142,7 +142,7 @@ public class TenantDefaultSupportedIdpConfig extends com.pulumi.resources.Custom
      * * `yahoo.com`
      * 
      */
-    @Export(name="idpId", type=String.class, parameters={})
+    @Export(name="idpId", refs={String.class}, tree="[0]")
     private Output<String> idpId;
 
     /**
@@ -166,7 +166,7 @@ public class TenantDefaultSupportedIdpConfig extends com.pulumi.resources.Custom
      * The name of the default supported IDP config resource
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -181,7 +181,7 @@ public class TenantDefaultSupportedIdpConfig extends com.pulumi.resources.Custom
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -196,7 +196,7 @@ public class TenantDefaultSupportedIdpConfig extends com.pulumi.resources.Custom
      * The name of the tenant where this DefaultSupportedIdpConfig resource exists
      * 
      */
-    @Export(name="tenant", type=String.class, parameters={})
+    @Export(name="tenant", refs={String.class}, tree="[0]")
     private Output<String> tenant;
 
     /**

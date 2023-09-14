@@ -69,7 +69,7 @@ public class PeeredDnsDomain extends com.pulumi.resources.CustomResource {
      * The DNS domain suffix of the peered DNS domain. Make sure to suffix with a `.` (dot).
      * 
      */
-    @Export(name="dnsSuffix", type=String.class, parameters={})
+    @Export(name="dnsSuffix", refs={String.class}, tree="[0]")
     private Output<String> dnsSuffix;
 
     /**
@@ -83,7 +83,7 @@ public class PeeredDnsDomain extends com.pulumi.resources.CustomResource {
      * Internal name used for the peered DNS domain.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -97,7 +97,7 @@ public class PeeredDnsDomain extends com.pulumi.resources.CustomResource {
      * The network in the consumer project.
      * 
      */
-    @Export(name="network", type=String.class, parameters={})
+    @Export(name="network", refs={String.class}, tree="[0]")
     private Output<String> network;
 
     /**
@@ -111,7 +111,7 @@ public class PeeredDnsDomain extends com.pulumi.resources.CustomResource {
      * an identifier for the resource with format `services/{{service}}/projects/{{project}}/global/networks/{{network}}`
      * 
      */
-    @Export(name="parent", type=String.class, parameters={})
+    @Export(name="parent", refs={String.class}, tree="[0]")
     private Output<String> parent;
 
     /**
@@ -125,7 +125,7 @@ public class PeeredDnsDomain extends com.pulumi.resources.CustomResource {
      * The producer project number. If not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -139,7 +139,7 @@ public class PeeredDnsDomain extends com.pulumi.resources.CustomResource {
      * Private service connection between service and consumer network, defaults to `servicenetworking.googleapis.com`
      * 
      */
-    @Export(name="service", type=String.class, parameters={})
+    @Export(name="service", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> service;
 
     /**

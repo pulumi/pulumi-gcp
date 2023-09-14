@@ -137,7 +137,7 @@ public class EndpointPolicy extends com.pulumi.resources.CustomResource {
      * This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic at the matched endpoints.
      * 
      */
-    @Export(name="authorizationPolicy", type=String.class, parameters={})
+    @Export(name="authorizationPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> authorizationPolicy;
 
     /**
@@ -151,7 +151,7 @@ public class EndpointPolicy extends com.pulumi.resources.CustomResource {
      * A URL referring to a ClientTlsPolicy resource. ClientTlsPolicy can be set to specify the authentication for traffic from the proxy to the actual endpoints.
      * 
      */
-    @Export(name="clientTlsPolicy", type=String.class, parameters={})
+    @Export(name="clientTlsPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientTlsPolicy;
 
     /**
@@ -165,7 +165,7 @@ public class EndpointPolicy extends com.pulumi.resources.CustomResource {
      * Time the TcpRoute was created in UTC.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -179,7 +179,7 @@ public class EndpointPolicy extends com.pulumi.resources.CustomResource {
      * A free-text description of the resource. Max length 1024 characters.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -194,7 +194,7 @@ public class EndpointPolicy extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="endpointMatcher", type=EndpointPolicyEndpointMatcher.class, parameters={})
+    @Export(name="endpointMatcher", refs={EndpointPolicyEndpointMatcher.class}, tree="[0]")
     private Output<EndpointPolicyEndpointMatcher> endpointMatcher;
 
     /**
@@ -209,7 +209,7 @@ public class EndpointPolicy extends com.pulumi.resources.CustomResource {
      * Set of label tags associated with the TcpRoute resource.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -223,7 +223,7 @@ public class EndpointPolicy extends com.pulumi.resources.CustomResource {
      * Name of the EndpointPolicy resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -238,7 +238,7 @@ public class EndpointPolicy extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -253,7 +253,7 @@ public class EndpointPolicy extends com.pulumi.resources.CustomResource {
      * A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends.
      * 
      */
-    @Export(name="serverTlsPolicy", type=String.class, parameters={})
+    @Export(name="serverTlsPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serverTlsPolicy;
 
     /**
@@ -268,7 +268,7 @@ public class EndpointPolicy extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="trafficPortSelector", type=EndpointPolicyTrafficPortSelector.class, parameters={})
+    @Export(name="trafficPortSelector", refs={EndpointPolicyTrafficPortSelector.class}, tree="[0]")
     private Output</* @Nullable */ EndpointPolicyTrafficPortSelector> trafficPortSelector;
 
     /**
@@ -284,7 +284,7 @@ public class EndpointPolicy extends com.pulumi.resources.CustomResource {
      * Possible values are: `SIDECAR_PROXY`, `GRPC_SERVER`.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -299,7 +299,7 @@ public class EndpointPolicy extends com.pulumi.resources.CustomResource {
      * Time the TcpRoute was updated in UTC.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

@@ -92,7 +92,7 @@ public class HmacKey extends com.pulumi.resources.CustomResource {
      * The access ID of the HMAC Key.
      * 
      */
-    @Export(name="accessId", type=String.class, parameters={})
+    @Export(name="accessId", refs={String.class}, tree="[0]")
     private Output<String> accessId;
 
     /**
@@ -107,7 +107,7 @@ public class HmacKey extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -123,7 +123,7 @@ public class HmacKey extends com.pulumi.resources.CustomResource {
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    @Export(name="secret", type=String.class, parameters={})
+    @Export(name="secret", refs={String.class}, tree="[0]")
     private Output<String> secret;
 
     /**
@@ -140,7 +140,7 @@ public class HmacKey extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="serviceAccountEmail", type=String.class, parameters={})
+    @Export(name="serviceAccountEmail", refs={String.class}, tree="[0]")
     private Output<String> serviceAccountEmail;
 
     /**
@@ -158,7 +158,7 @@ public class HmacKey extends com.pulumi.resources.CustomResource {
      * Possible values are: `ACTIVE`, `INACTIVE`.
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> state;
 
     /**
@@ -174,7 +174,7 @@ public class HmacKey extends com.pulumi.resources.CustomResource {
      * &#39;The creation time of the HMAC key in RFC 3339 format. &#39;
      * 
      */
-    @Export(name="timeCreated", type=String.class, parameters={})
+    @Export(name="timeCreated", refs={String.class}, tree="[0]")
     private Output<String> timeCreated;
 
     /**
@@ -188,7 +188,7 @@ public class HmacKey extends com.pulumi.resources.CustomResource {
      * &#39;The last modification time of the HMAC key metadata in RFC 3339 format.&#39;
      * 
      */
-    @Export(name="updated", type=String.class, parameters={})
+    @Export(name="updated", refs={String.class}, tree="[0]")
     private Output<String> updated;
 
     /**

@@ -88,7 +88,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * The GCP project display name
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -103,7 +103,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -118,7 +118,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * The number of the google project that firebase is enabled on.
      * 
      */
-    @Export(name="projectNumber", type=String.class, parameters={})
+    @Export(name="projectNumber", refs={String.class}, tree="[0]")
     private Output<String> projectNumber;
 
     /**

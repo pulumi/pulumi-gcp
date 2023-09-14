@@ -351,7 +351,7 @@ public class IAMMember extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="condition", type=IAMMemberCondition.class, parameters={})
+    @Export(name="condition", refs={IAMMemberCondition.class}, tree="[0]")
     private Output</* @Nullable */ IAMMemberCondition> condition;
 
     /**
@@ -366,7 +366,7 @@ public class IAMMember extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the folder&#39;s IAM policy.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -380,7 +380,7 @@ public class IAMMember extends com.pulumi.resources.CustomResource {
      * The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
      * 
      */
-    @Export(name="folder", type=String.class, parameters={})
+    @Export(name="folder", refs={String.class}, tree="[0]")
     private Output<String> folder;
 
     /**
@@ -390,7 +390,7 @@ public class IAMMember extends com.pulumi.resources.CustomResource {
     public Output<String> folder() {
         return this.folder;
     }
-    @Export(name="member", type=String.class, parameters={})
+    @Export(name="member", refs={String.class}, tree="[0]")
     private Output<String> member;
 
     public Output<String> member() {
@@ -402,7 +402,7 @@ public class IAMMember extends com.pulumi.resources.CustomResource {
      * `organizations/{{org_id}}/roles/{{role_id}}`.
      * 
      */
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     /**

@@ -253,7 +253,7 @@ public class EnterpriseKey extends com.pulumi.resources.CustomResource {
      * Settings for keys that can be used by Android apps.
      * 
      */
-    @Export(name="androidSettings", type=EnterpriseKeyAndroidSettings.class, parameters={})
+    @Export(name="androidSettings", refs={EnterpriseKeyAndroidSettings.class}, tree="[0]")
     private Output</* @Nullable */ EnterpriseKeyAndroidSettings> androidSettings;
 
     /**
@@ -267,7 +267,7 @@ public class EnterpriseKey extends com.pulumi.resources.CustomResource {
      * The timestamp corresponding to the creation of this Key.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -283,7 +283,7 @@ public class EnterpriseKey extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -299,7 +299,7 @@ public class EnterpriseKey extends com.pulumi.resources.CustomResource {
      * Settings for keys that can be used by iOS apps.
      * 
      */
-    @Export(name="iosSettings", type=EnterpriseKeyIosSettings.class, parameters={})
+    @Export(name="iosSettings", refs={EnterpriseKeyIosSettings.class}, tree="[0]")
     private Output</* @Nullable */ EnterpriseKeyIosSettings> iosSettings;
 
     /**
@@ -313,7 +313,7 @@ public class EnterpriseKey extends com.pulumi.resources.CustomResource {
      * See [Creating and managing labels](https://cloud.google.com/recaptcha-enterprise/docs/labels).
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -327,7 +327,7 @@ public class EnterpriseKey extends com.pulumi.resources.CustomResource {
      * The resource name for the Key in the format &#34;projects/{project}/keys/{key}&#34;.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -341,7 +341,7 @@ public class EnterpriseKey extends com.pulumi.resources.CustomResource {
      * The project for the resource
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -355,7 +355,7 @@ public class EnterpriseKey extends com.pulumi.resources.CustomResource {
      * Options for user acceptance testing.
      * 
      */
-    @Export(name="testingOptions", type=EnterpriseKeyTestingOptions.class, parameters={})
+    @Export(name="testingOptions", refs={EnterpriseKeyTestingOptions.class}, tree="[0]")
     private Output</* @Nullable */ EnterpriseKeyTestingOptions> testingOptions;
 
     /**
@@ -369,7 +369,7 @@ public class EnterpriseKey extends com.pulumi.resources.CustomResource {
      * Settings for keys that can be used by websites.
      * 
      */
-    @Export(name="webSettings", type=EnterpriseKeyWebSettings.class, parameters={})
+    @Export(name="webSettings", refs={EnterpriseKeyWebSettings.class}, tree="[0]")
     private Output</* @Nullable */ EnterpriseKeyWebSettings> webSettings;
 
     /**

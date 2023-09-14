@@ -288,7 +288,7 @@ public class WebIamBinding extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="condition", type=WebIamBindingCondition.class, parameters={})
+    @Export(name="condition", refs={WebIamBindingCondition.class}, tree="[0]")
     private Output</* @Nullable */ WebIamBindingCondition> condition;
 
     /**
@@ -303,7 +303,7 @@ public class WebIamBinding extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the IAM policy.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -313,7 +313,7 @@ public class WebIamBinding extends com.pulumi.resources.CustomResource {
     public Output<String> etag() {
         return this.etag;
     }
-    @Export(name="members", type=List.class, parameters={String.class})
+    @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> members;
 
     public Output<List<String>> members() {
@@ -336,7 +336,7 @@ public class WebIamBinding extends com.pulumi.resources.CustomResource {
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -365,7 +365,7 @@ public class WebIamBinding extends com.pulumi.resources.CustomResource {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     /**

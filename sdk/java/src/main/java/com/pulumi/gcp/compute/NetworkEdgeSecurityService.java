@@ -77,7 +77,7 @@ public class NetworkEdgeSecurityService extends com.pulumi.resources.CustomResou
      * Creation timestamp in RFC3339 text format.
      * 
      */
-    @Export(name="creationTimestamp", type=String.class, parameters={})
+    @Export(name="creationTimestamp", refs={String.class}, tree="[0]")
     private Output<String> creationTimestamp;
 
     /**
@@ -91,7 +91,7 @@ public class NetworkEdgeSecurityService extends com.pulumi.resources.CustomResou
      * Free-text description of the resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -106,7 +106,7 @@ public class NetworkEdgeSecurityService extends com.pulumi.resources.CustomResou
      * An up-to-date fingerprint must be provided in order to update the NetworkEdgeSecurityService, otherwise the request will fail with error 412 conditionNotMet.
      * 
      */
-    @Export(name="fingerprint", type=String.class, parameters={})
+    @Export(name="fingerprint", refs={String.class}, tree="[0]")
     private Output<String> fingerprint;
 
     /**
@@ -123,7 +123,7 @@ public class NetworkEdgeSecurityService extends com.pulumi.resources.CustomResou
      * ***
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -140,7 +140,7 @@ public class NetworkEdgeSecurityService extends com.pulumi.resources.CustomResou
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -155,7 +155,7 @@ public class NetworkEdgeSecurityService extends com.pulumi.resources.CustomResou
      * The region of the gateway security policy.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> region;
 
     /**
@@ -169,7 +169,7 @@ public class NetworkEdgeSecurityService extends com.pulumi.resources.CustomResou
      * The resource URL for the network edge security service associated with this network edge security service.
      * 
      */
-    @Export(name="securityPolicy", type=String.class, parameters={})
+    @Export(name="securityPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> securityPolicy;
 
     /**
@@ -183,7 +183,7 @@ public class NetworkEdgeSecurityService extends com.pulumi.resources.CustomResou
      * Server-defined URL for the resource.
      * 
      */
-    @Export(name="selfLink", type=String.class, parameters={})
+    @Export(name="selfLink", refs={String.class}, tree="[0]")
     private Output<String> selfLink;
 
     /**
@@ -197,7 +197,7 @@ public class NetworkEdgeSecurityService extends com.pulumi.resources.CustomResou
      * Server-defined URL for this resource with the resource id.
      * 
      */
-    @Export(name="selfLinkWithServiceId", type=String.class, parameters={})
+    @Export(name="selfLinkWithServiceId", refs={String.class}, tree="[0]")
     private Output<String> selfLinkWithServiceId;
 
     /**
@@ -211,7 +211,7 @@ public class NetworkEdgeSecurityService extends com.pulumi.resources.CustomResou
      * The unique identifier for the resource. This identifier is defined by the server.
      * 
      */
-    @Export(name="serviceId", type=String.class, parameters={})
+    @Export(name="serviceId", refs={String.class}, tree="[0]")
     private Output<String> serviceId;
 
     /**

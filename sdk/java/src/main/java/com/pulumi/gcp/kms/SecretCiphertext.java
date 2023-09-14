@@ -108,7 +108,7 @@ public class SecretCiphertext extends com.pulumi.resources.CustomResource {
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    @Export(name="additionalAuthenticatedData", type=String.class, parameters={})
+    @Export(name="additionalAuthenticatedData", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> additionalAuthenticatedData;
 
     /**
@@ -123,7 +123,7 @@ public class SecretCiphertext extends com.pulumi.resources.CustomResource {
      * Contains the result of encrypting the provided plaintext, encoded in base64.
      * 
      */
-    @Export(name="ciphertext", type=String.class, parameters={})
+    @Export(name="ciphertext", refs={String.class}, tree="[0]")
     private Output<String> ciphertext;
 
     /**
@@ -140,7 +140,7 @@ public class SecretCiphertext extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="cryptoKey", type=String.class, parameters={})
+    @Export(name="cryptoKey", refs={String.class}, tree="[0]")
     private Output<String> cryptoKey;
 
     /**
@@ -158,7 +158,7 @@ public class SecretCiphertext extends com.pulumi.resources.CustomResource {
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
-    @Export(name="plaintext", type=String.class, parameters={})
+    @Export(name="plaintext", refs={String.class}, tree="[0]")
     private Output<String> plaintext;
 
     /**

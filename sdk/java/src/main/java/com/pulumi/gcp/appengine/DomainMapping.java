@@ -86,7 +86,7 @@ public class DomainMapping extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="domainName", type=String.class, parameters={})
+    @Export(name="domainName", refs={String.class}, tree="[0]")
     private Output<String> domainName;
 
     /**
@@ -102,7 +102,7 @@ public class DomainMapping extends com.pulumi.resources.CustomResource {
      * Relative name of the object affected by this record. Only applicable for CNAME records. Example: &#39;www&#39;.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -119,7 +119,7 @@ public class DomainMapping extends com.pulumi.resources.CustomResource {
      * Possible values are: `STRICT`, `OVERRIDE`.
      * 
      */
-    @Export(name="overrideStrategy", type=String.class, parameters={})
+    @Export(name="overrideStrategy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> overrideStrategy;
 
     /**
@@ -137,7 +137,7 @@ public class DomainMapping extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -154,7 +154,7 @@ public class DomainMapping extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="resourceRecords", type=List.class, parameters={DomainMappingResourceRecord.class})
+    @Export(name="resourceRecords", refs={List.class,DomainMappingResourceRecord.class}, tree="[0,1]")
     private Output<List<DomainMappingResourceRecord>> resourceRecords;
 
     /**
@@ -171,7 +171,7 @@ public class DomainMapping extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="sslSettings", type=DomainMappingSslSettings.class, parameters={})
+    @Export(name="sslSettings", refs={DomainMappingSslSettings.class}, tree="[0]")
     private Output</* @Nullable */ DomainMappingSslSettings> sslSettings;
 
     /**

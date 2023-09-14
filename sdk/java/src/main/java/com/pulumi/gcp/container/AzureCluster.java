@@ -218,7 +218,7 @@ public class AzureCluster extends com.pulumi.resources.CustomResource {
      * Optional. Annotations on the cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Keys can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, String.class})
+    @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> annotations;
 
     /**
@@ -232,7 +232,7 @@ public class AzureCluster extends com.pulumi.resources.CustomResource {
      * Configuration related to the cluster RBAC settings.
      * 
      */
-    @Export(name="authorization", type=AzureClusterAuthorization.class, parameters={})
+    @Export(name="authorization", refs={AzureClusterAuthorization.class}, tree="[0]")
     private Output<AzureClusterAuthorization> authorization;
 
     /**
@@ -246,7 +246,7 @@ public class AzureCluster extends com.pulumi.resources.CustomResource {
      * The Azure region where the cluster runs. Each Google Cloud region supports a subset of nearby Azure regions. You can call to list all supported Azure regions within a given Google Cloud region.
      * 
      */
-    @Export(name="azureRegion", type=String.class, parameters={})
+    @Export(name="azureRegion", refs={String.class}, tree="[0]")
     private Output<String> azureRegion;
 
     /**
@@ -260,7 +260,7 @@ public class AzureCluster extends com.pulumi.resources.CustomResource {
      * Azure authentication configuration for management of Azure resources
      * 
      */
-    @Export(name="azureServicesAuthentication", type=AzureClusterAzureServicesAuthentication.class, parameters={})
+    @Export(name="azureServicesAuthentication", refs={AzureClusterAzureServicesAuthentication.class}, tree="[0]")
     private Output</* @Nullable */ AzureClusterAzureServicesAuthentication> azureServicesAuthentication;
 
     /**
@@ -274,7 +274,7 @@ public class AzureCluster extends com.pulumi.resources.CustomResource {
      * Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/&lt;project-number&gt;/locations/&lt;region&gt;/azureClients/&lt;client-id&gt;`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
      * 
      */
-    @Export(name="client", type=String.class, parameters={})
+    @Export(name="client", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> client;
 
     /**
@@ -288,7 +288,7 @@ public class AzureCluster extends com.pulumi.resources.CustomResource {
      * Configuration related to the cluster control plane.
      * 
      */
-    @Export(name="controlPlane", type=AzureClusterControlPlane.class, parameters={})
+    @Export(name="controlPlane", refs={AzureClusterControlPlane.class}, tree="[0]")
     private Output<AzureClusterControlPlane> controlPlane;
 
     /**
@@ -302,7 +302,7 @@ public class AzureCluster extends com.pulumi.resources.CustomResource {
      * Output only. The time at which this cluster was created.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -316,7 +316,7 @@ public class AzureCluster extends com.pulumi.resources.CustomResource {
      * Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -330,7 +330,7 @@ public class AzureCluster extends com.pulumi.resources.CustomResource {
      * Output only. The endpoint of the cluster&#39;s API server.
      * 
      */
-    @Export(name="endpoint", type=String.class, parameters={})
+    @Export(name="endpoint", refs={String.class}, tree="[0]")
     private Output<String> endpoint;
 
     /**
@@ -344,7 +344,7 @@ public class AzureCluster extends com.pulumi.resources.CustomResource {
      * Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -358,7 +358,7 @@ public class AzureCluster extends com.pulumi.resources.CustomResource {
      * Fleet configuration.
      * 
      */
-    @Export(name="fleet", type=AzureClusterFleet.class, parameters={})
+    @Export(name="fleet", refs={AzureClusterFleet.class}, tree="[0]")
     private Output<AzureClusterFleet> fleet;
 
     /**
@@ -372,7 +372,7 @@ public class AzureCluster extends com.pulumi.resources.CustomResource {
      * The location for the resource
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -386,7 +386,7 @@ public class AzureCluster extends com.pulumi.resources.CustomResource {
      * (Beta only) Logging configuration.
      * 
      */
-    @Export(name="loggingConfig", type=AzureClusterLoggingConfig.class, parameters={})
+    @Export(name="loggingConfig", refs={AzureClusterLoggingConfig.class}, tree="[0]")
     private Output<AzureClusterLoggingConfig> loggingConfig;
 
     /**
@@ -400,7 +400,7 @@ public class AzureCluster extends com.pulumi.resources.CustomResource {
      * The name of this resource.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -414,7 +414,7 @@ public class AzureCluster extends com.pulumi.resources.CustomResource {
      * Cluster-wide networking configuration.
      * 
      */
-    @Export(name="networking", type=AzureClusterNetworking.class, parameters={})
+    @Export(name="networking", refs={AzureClusterNetworking.class}, tree="[0]")
     private Output<AzureClusterNetworking> networking;
 
     /**
@@ -431,7 +431,7 @@ public class AzureCluster extends com.pulumi.resources.CustomResource {
      * The project for the resource
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -448,7 +448,7 @@ public class AzureCluster extends com.pulumi.resources.CustomResource {
      * Output only. If set, there are currently changes in flight to the cluster.
      * 
      */
-    @Export(name="reconciling", type=Boolean.class, parameters={})
+    @Export(name="reconciling", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> reconciling;
 
     /**
@@ -462,7 +462,7 @@ public class AzureCluster extends com.pulumi.resources.CustomResource {
      * The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*{@literal /}resourceGroups/*`
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -476,7 +476,7 @@ public class AzureCluster extends com.pulumi.resources.CustomResource {
      * Output only. The current state of the cluster. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
@@ -490,7 +490,7 @@ public class AzureCluster extends com.pulumi.resources.CustomResource {
      * Output only. A globally unique identifier for the cluster.
      * 
      */
-    @Export(name="uid", type=String.class, parameters={})
+    @Export(name="uid", refs={String.class}, tree="[0]")
     private Output<String> uid;
 
     /**
@@ -504,7 +504,7 @@ public class AzureCluster extends com.pulumi.resources.CustomResource {
      * Output only. The time at which this cluster was last updated.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**
@@ -518,7 +518,7 @@ public class AzureCluster extends com.pulumi.resources.CustomResource {
      * Output only. Workload Identity settings.
      * 
      */
-    @Export(name="workloadIdentityConfigs", type=List.class, parameters={AzureClusterWorkloadIdentityConfig.class})
+    @Export(name="workloadIdentityConfigs", refs={List.class,AzureClusterWorkloadIdentityConfig.class}, tree="[0,1]")
     private Output<List<AzureClusterWorkloadIdentityConfig>> workloadIdentityConfigs;
 
     /**

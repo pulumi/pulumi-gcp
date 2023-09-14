@@ -298,7 +298,7 @@ public class Feature extends com.pulumi.resources.CustomResource {
      * Output only. When the Feature resource was created.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -312,7 +312,7 @@ public class Feature extends com.pulumi.resources.CustomResource {
      * Output only. When the Feature resource was deleted.
      * 
      */
-    @Export(name="deleteTime", type=String.class, parameters={})
+    @Export(name="deleteTime", refs={String.class}, tree="[0]")
     private Output<String> deleteTime;
 
     /**
@@ -326,7 +326,7 @@ public class Feature extends com.pulumi.resources.CustomResource {
      * GCP labels for this Feature.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -342,7 +342,7 @@ public class Feature extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -358,7 +358,7 @@ public class Feature extends com.pulumi.resources.CustomResource {
      * The full, unique name of this Feature resource
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -373,7 +373,7 @@ public class Feature extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -389,7 +389,7 @@ public class Feature extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="resourceStates", type=List.class, parameters={FeatureResourceState.class})
+    @Export(name="resourceStates", refs={List.class,FeatureResourceState.class}, tree="[0,1]")
     private Output<List<FeatureResourceState>> resourceStates;
 
     /**
@@ -405,7 +405,7 @@ public class Feature extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="spec", type=FeatureSpec.class, parameters={})
+    @Export(name="spec", refs={FeatureSpec.class}, tree="[0]")
     private Output</* @Nullable */ FeatureSpec> spec;
 
     /**
@@ -422,7 +422,7 @@ public class Feature extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="states", type=List.class, parameters={FeatureState.class})
+    @Export(name="states", refs={List.class,FeatureState.class}, tree="[0,1]")
     private Output<List<FeatureState>> states;
 
     /**
@@ -439,7 +439,7 @@ public class Feature extends com.pulumi.resources.CustomResource {
      * The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

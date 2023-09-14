@@ -90,7 +90,7 @@ public class NotificationConfig extends com.pulumi.resources.CustomResource {
      * This must be unique within the organization.
      * 
      */
-    @Export(name="configId", type=String.class, parameters={})
+    @Export(name="configId", refs={String.class}, tree="[0]")
     private Output<String> configId;
 
     /**
@@ -104,7 +104,7 @@ public class NotificationConfig extends com.pulumi.resources.CustomResource {
      * The description of the notification config (max of 1024 characters).
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -119,7 +119,7 @@ public class NotificationConfig extends com.pulumi.resources.CustomResource {
      * `organizations/{{organization}}/notificationConfigs/{{config_id}}`.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -135,7 +135,7 @@ public class NotificationConfig extends com.pulumi.resources.CustomResource {
      * Config lives in.
      * 
      */
-    @Export(name="organization", type=String.class, parameters={})
+    @Export(name="organization", refs={String.class}, tree="[0]")
     private Output<String> organization;
 
     /**
@@ -151,7 +151,7 @@ public class NotificationConfig extends com.pulumi.resources.CustomResource {
      * &#34;projects/[project_id]/topics/[topic]&#34;.
      * 
      */
-    @Export(name="pubsubTopic", type=String.class, parameters={})
+    @Export(name="pubsubTopic", refs={String.class}, tree="[0]")
     private Output<String> pubsubTopic;
 
     /**
@@ -167,7 +167,7 @@ public class NotificationConfig extends com.pulumi.resources.CustomResource {
      * publish to the Pub/Sub topic.
      * 
      */
-    @Export(name="serviceAccount", type=String.class, parameters={})
+    @Export(name="serviceAccount", refs={String.class}, tree="[0]")
     private Output<String> serviceAccount;
 
     /**
@@ -183,7 +183,7 @@ public class NotificationConfig extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="streamingConfig", type=NotificationConfigStreamingConfig.class, parameters={})
+    @Export(name="streamingConfig", refs={NotificationConfigStreamingConfig.class}, tree="[0]")
     private Output<NotificationConfigStreamingConfig> streamingConfig;
 
     /**

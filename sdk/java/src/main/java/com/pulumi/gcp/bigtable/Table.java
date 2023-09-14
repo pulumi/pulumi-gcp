@@ -103,7 +103,7 @@ public class Table extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="changeStreamRetention", type=String.class, parameters={})
+    @Export(name="changeStreamRetention", refs={String.class}, tree="[0]")
     private Output<String> changeStreamRetention;
 
     /**
@@ -119,7 +119,7 @@ public class Table extends com.pulumi.resources.CustomResource {
      * A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
      * 
      */
-    @Export(name="columnFamilies", type=List.class, parameters={TableColumnFamily.class})
+    @Export(name="columnFamilies", refs={List.class,TableColumnFamily.class}, tree="[0,1]")
     private Output</* @Nullable */ List<TableColumnFamily>> columnFamilies;
 
     /**
@@ -133,7 +133,7 @@ public class Table extends com.pulumi.resources.CustomResource {
      * A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
      * 
      */
-    @Export(name="deletionProtection", type=String.class, parameters={})
+    @Export(name="deletionProtection", refs={String.class}, tree="[0]")
     private Output<String> deletionProtection;
 
     /**
@@ -147,7 +147,7 @@ public class Table extends com.pulumi.resources.CustomResource {
      * The name of the Bigtable instance.
      * 
      */
-    @Export(name="instanceName", type=String.class, parameters={})
+    @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output<String> instanceName;
 
     /**
@@ -161,7 +161,7 @@ public class Table extends com.pulumi.resources.CustomResource {
      * The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -176,7 +176,7 @@ public class Table extends com.pulumi.resources.CustomResource {
      * is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -193,7 +193,7 @@ public class Table extends com.pulumi.resources.CustomResource {
      * to delete/recreate the entire `gcp.bigtable.Table` resource.
      * 
      */
-    @Export(name="splitKeys", type=List.class, parameters={String.class})
+    @Export(name="splitKeys", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> splitKeys;
 
     /**

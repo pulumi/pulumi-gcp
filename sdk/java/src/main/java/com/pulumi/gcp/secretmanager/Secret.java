@@ -144,7 +144,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, String.class})
+    @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> annotations;
 
     /**
@@ -167,7 +167,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * The time at which the Secret was created.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -182,7 +182,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;.
      * 
      */
-    @Export(name="expireTime", type=String.class, parameters={})
+    @Export(name="expireTime", refs={String.class}, tree="[0]")
     private Output<String> expireTime;
 
     /**
@@ -204,7 +204,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -226,7 +226,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * For publication to succeed, the Secret Manager Service Agent service account must have pubsub.publisher permissions on the topic.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -242,7 +242,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -259,7 +259,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="replication", type=SecretReplication.class, parameters={})
+    @Export(name="replication", refs={SecretReplication.class}, tree="[0]")
     private Output<SecretReplication> replication;
 
     /**
@@ -276,7 +276,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="rotation", type=SecretRotation.class, parameters={})
+    @Export(name="rotation", refs={SecretRotation.class}, tree="[0]")
     private Output</* @Nullable */ SecretRotation> rotation;
 
     /**
@@ -291,7 +291,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * This must be unique within the project.
      * 
      */
-    @Export(name="secretId", type=String.class, parameters={})
+    @Export(name="secretId", refs={String.class}, tree="[0]")
     private Output<String> secretId;
 
     /**
@@ -306,7 +306,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="topics", type=List.class, parameters={SecretTopic.class})
+    @Export(name="topics", refs={List.class,SecretTopic.class}, tree="[0,1]")
     private Output</* @Nullable */ List<SecretTopic>> topics;
 
     /**
@@ -322,7 +322,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
      */
-    @Export(name="ttl", type=String.class, parameters={})
+    @Export(name="ttl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ttl;
 
     /**
@@ -343,7 +343,7 @@ public class Secret extends com.pulumi.resources.CustomResource {
      * { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
      * 
      */
-    @Export(name="versionAliases", type=Map.class, parameters={String.class, String.class})
+    @Export(name="versionAliases", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> versionAliases;
 
     /**

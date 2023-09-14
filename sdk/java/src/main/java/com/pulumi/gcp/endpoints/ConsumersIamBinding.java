@@ -58,13 +58,13 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:endpoints/consumersIamBinding:ConsumersIamBinding")
 public class ConsumersIamBinding extends com.pulumi.resources.CustomResource {
-    @Export(name="condition", type=ConsumersIamBindingCondition.class, parameters={})
+    @Export(name="condition", refs={ConsumersIamBindingCondition.class}, tree="[0]")
     private Output</* @Nullable */ ConsumersIamBindingCondition> condition;
 
     public Output<Optional<ConsumersIamBindingCondition>> condition() {
         return Codegen.optional(this.condition);
     }
-    @Export(name="consumerProject", type=String.class, parameters={})
+    @Export(name="consumerProject", refs={String.class}, tree="[0]")
     private Output<String> consumerProject;
 
     public Output<String> consumerProject() {
@@ -74,7 +74,7 @@ public class ConsumersIamBinding extends com.pulumi.resources.CustomResource {
      * (Computed) The etag of the IAM policy.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -84,7 +84,7 @@ public class ConsumersIamBinding extends com.pulumi.resources.CustomResource {
     public Output<String> etag() {
         return this.etag;
     }
-    @Export(name="members", type=List.class, parameters={String.class})
+    @Export(name="members", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> members;
 
     public Output<List<String>> members() {
@@ -96,7 +96,7 @@ public class ConsumersIamBinding extends com.pulumi.resources.CustomResource {
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     /**
@@ -108,7 +108,7 @@ public class ConsumersIamBinding extends com.pulumi.resources.CustomResource {
     public Output<String> role() {
         return this.role;
     }
-    @Export(name="serviceName", type=String.class, parameters={})
+    @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     public Output<String> serviceName() {

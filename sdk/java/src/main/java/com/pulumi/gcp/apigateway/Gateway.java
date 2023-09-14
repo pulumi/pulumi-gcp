@@ -112,7 +112,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * When changing api configs please ensure the new config is a new resource and the lifecycle rule `create_before_destroy` is set.
      * 
      */
-    @Export(name="apiConfig", type=String.class, parameters={})
+    @Export(name="apiConfig", refs={String.class}, tree="[0]")
     private Output<String> apiConfig;
 
     /**
@@ -127,7 +127,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * The default API Gateway host name of the form {gatewayId}-{hash}.{region_code}.gateway.dev.
      * 
      */
-    @Export(name="defaultHostname", type=String.class, parameters={})
+    @Export(name="defaultHostname", refs={String.class}, tree="[0]")
     private Output<String> defaultHostname;
 
     /**
@@ -141,7 +141,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * A user-visible name for the API.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -157,7 +157,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="gatewayId", type=String.class, parameters={})
+    @Export(name="gatewayId", refs={String.class}, tree="[0]")
     private Output<String> gatewayId;
 
     /**
@@ -173,7 +173,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * Resource labels to represent user-provided metadata.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -187,7 +187,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * Resource name of the Gateway. Format: projects/{project}/locations/{region}/gateways/{gateway}
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -202,7 +202,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -217,7 +217,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * The region of the gateway for the API.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**

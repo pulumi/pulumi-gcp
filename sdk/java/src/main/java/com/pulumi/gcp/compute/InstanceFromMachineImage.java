@@ -82,7 +82,7 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      * Controls for advanced machine-related behavior features.
      * 
      */
-    @Export(name="advancedMachineFeatures", type=InstanceFromMachineImageAdvancedMachineFeatures.class, parameters={})
+    @Export(name="advancedMachineFeatures", refs={InstanceFromMachineImageAdvancedMachineFeatures.class}, tree="[0]")
     private Output<InstanceFromMachineImageAdvancedMachineFeatures> advancedMachineFeatures;
 
     /**
@@ -97,7 +97,7 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      * stopping the instance without setting this field, the update will fail.
      * 
      */
-    @Export(name="allowStoppingForUpdate", type=Boolean.class, parameters={})
+    @Export(name="allowStoppingForUpdate", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> allowStoppingForUpdate;
 
     /**
@@ -112,7 +112,7 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      * List of disks attached to the instance
      * 
      */
-    @Export(name="attachedDisks", type=List.class, parameters={InstanceFromMachineImageAttachedDisk.class})
+    @Export(name="attachedDisks", refs={List.class,InstanceFromMachineImageAttachedDisk.class}, tree="[0,1]")
     private Output<List<InstanceFromMachineImageAttachedDisk>> attachedDisks;
 
     /**
@@ -126,7 +126,7 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      * The boot disk for the instance.
      * 
      */
-    @Export(name="bootDisks", type=List.class, parameters={InstanceFromMachineImageBootDisk.class})
+    @Export(name="bootDisks", refs={List.class,InstanceFromMachineImageBootDisk.class}, tree="[0,1]")
     private Output<List<InstanceFromMachineImageBootDisk>> bootDisks;
 
     /**
@@ -140,7 +140,7 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      * Whether sending and receiving of packets with non-matching source or destination IPs is allowed.
      * 
      */
-    @Export(name="canIpForward", type=Boolean.class, parameters={})
+    @Export(name="canIpForward", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> canIpForward;
 
     /**
@@ -155,7 +155,7 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      * to create.
      * 
      */
-    @Export(name="confidentialInstanceConfig", type=InstanceFromMachineImageConfidentialInstanceConfig.class, parameters={})
+    @Export(name="confidentialInstanceConfig", refs={InstanceFromMachineImageConfidentialInstanceConfig.class}, tree="[0]")
     private Output<InstanceFromMachineImageConfidentialInstanceConfig> confidentialInstanceConfig;
 
     /**
@@ -170,7 +170,7 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      * The CPU platform used by this instance.
      * 
      */
-    @Export(name="cpuPlatform", type=String.class, parameters={})
+    @Export(name="cpuPlatform", refs={String.class}, tree="[0]")
     private Output<String> cpuPlatform;
 
     /**
@@ -186,7 +186,7 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      * life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
      * 
      */
-    @Export(name="currentStatus", type=String.class, parameters={})
+    @Export(name="currentStatus", refs={String.class}, tree="[0]")
     private Output<String> currentStatus;
 
     /**
@@ -202,7 +202,7 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      * Whether deletion protection is enabled on this instance.
      * 
      */
-    @Export(name="deletionProtection", type=Boolean.class, parameters={})
+    @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> deletionProtection;
 
     /**
@@ -216,7 +216,7 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      * A brief description of the resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -230,7 +230,7 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      * Desired status of the instance. Either &#34;RUNNING&#34; or &#34;TERMINATED&#34;.
      * 
      */
-    @Export(name="desiredStatus", type=String.class, parameters={})
+    @Export(name="desiredStatus", refs={String.class}, tree="[0]")
     private Output<String> desiredStatus;
 
     /**
@@ -244,7 +244,7 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      * Whether the instance has virtual displays enabled.
      * 
      */
-    @Export(name="enableDisplay", type=Boolean.class, parameters={})
+    @Export(name="enableDisplay", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableDisplay;
 
     /**
@@ -258,7 +258,7 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      * List of the type and count of accelerator cards attached to the instance.
      * 
      */
-    @Export(name="guestAccelerators", type=List.class, parameters={InstanceFromMachineImageGuestAccelerator.class})
+    @Export(name="guestAccelerators", refs={List.class,InstanceFromMachineImageGuestAccelerator.class}, tree="[0,1]")
     private Output<List<InstanceFromMachineImageGuestAccelerator>> guestAccelerators;
 
     /**
@@ -274,7 +274,7 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      * entire hostname must not exceed 253 characters. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="hostname", type=String.class, parameters={})
+    @Export(name="hostname", refs={String.class}, tree="[0]")
     private Output<String> hostname;
 
     /**
@@ -290,7 +290,7 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      * The server-assigned unique identifier of this instance.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -304,7 +304,7 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      * The unique fingerprint of the labels.
      * 
      */
-    @Export(name="labelFingerprint", type=String.class, parameters={})
+    @Export(name="labelFingerprint", refs={String.class}, tree="[0]")
     private Output<String> labelFingerprint;
 
     /**
@@ -318,7 +318,7 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      * A set of key/value label pairs assigned to the instance.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> labels;
 
     /**
@@ -332,7 +332,7 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      * The machine type to create.
      * 
      */
-    @Export(name="machineType", type=String.class, parameters={})
+    @Export(name="machineType", refs={String.class}, tree="[0]")
     private Output<String> machineType;
 
     /**
@@ -346,7 +346,7 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      * Metadata key/value pairs made available within the instance.
      * 
      */
-    @Export(name="metadata", type=Map.class, parameters={String.class, String.class})
+    @Export(name="metadata", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> metadata;
 
     /**
@@ -360,7 +360,7 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      * The unique fingerprint of the metadata.
      * 
      */
-    @Export(name="metadataFingerprint", type=String.class, parameters={})
+    @Export(name="metadataFingerprint", refs={String.class}, tree="[0]")
     private Output<String> metadataFingerprint;
 
     /**
@@ -374,7 +374,7 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      * Metadata startup scripts made available within the instance.
      * 
      */
-    @Export(name="metadataStartupScript", type=String.class, parameters={})
+    @Export(name="metadataStartupScript", refs={String.class}, tree="[0]")
     private Output<String> metadataStartupScript;
 
     /**
@@ -388,7 +388,7 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      * The minimum CPU platform specified for the VM instance.
      * 
      */
-    @Export(name="minCpuPlatform", type=String.class, parameters={})
+    @Export(name="minCpuPlatform", refs={String.class}, tree="[0]")
     private Output<String> minCpuPlatform;
 
     /**
@@ -403,7 +403,7 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      * Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -418,7 +418,7 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      * The networks attached to the instance.
      * 
      */
-    @Export(name="networkInterfaces", type=List.class, parameters={InstanceFromMachineImageNetworkInterface.class})
+    @Export(name="networkInterfaces", refs={List.class,InstanceFromMachineImageNetworkInterface.class}, tree="[0,1]")
     private Output<List<InstanceFromMachineImageNetworkInterface>> networkInterfaces;
 
     /**
@@ -433,7 +433,7 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      * default network performance configuration.
      * 
      */
-    @Export(name="networkPerformanceConfig", type=InstanceFromMachineImageNetworkPerformanceConfig.class, parameters={})
+    @Export(name="networkPerformanceConfig", refs={InstanceFromMachineImageNetworkPerformanceConfig.class}, tree="[0]")
     private Output<InstanceFromMachineImageNetworkPerformanceConfig> networkPerformanceConfig;
 
     /**
@@ -448,7 +448,7 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      * Stores additional params passed with the request, but not persisted as part of resource payload.
      * 
      */
-    @Export(name="params", type=InstanceFromMachineImageParams.class, parameters={})
+    @Export(name="params", refs={InstanceFromMachineImageParams.class}, tree="[0]")
     private Output<InstanceFromMachineImageParams> params;
 
     /**
@@ -463,7 +463,7 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      * self_link nor project are provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -478,7 +478,7 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      * Specifies the reservations that this instance can consume from.
      * 
      */
-    @Export(name="reservationAffinity", type=InstanceFromMachineImageReservationAffinity.class, parameters={})
+    @Export(name="reservationAffinity", refs={InstanceFromMachineImageReservationAffinity.class}, tree="[0]")
     private Output<InstanceFromMachineImageReservationAffinity> reservationAffinity;
 
     /**
@@ -492,7 +492,7 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      * A list of self_links of resource policies to attach to the instance. Currently a max of 1 resource policy is supported.
      * 
      */
-    @Export(name="resourcePolicies", type=String.class, parameters={})
+    @Export(name="resourcePolicies", refs={String.class}, tree="[0]")
     private Output<String> resourcePolicies;
 
     /**
@@ -506,7 +506,7 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      * The scheduling strategy being used by the instance.
      * 
      */
-    @Export(name="scheduling", type=InstanceFromMachineImageScheduling.class, parameters={})
+    @Export(name="scheduling", refs={InstanceFromMachineImageScheduling.class}, tree="[0]")
     private Output<InstanceFromMachineImageScheduling> scheduling;
 
     /**
@@ -520,7 +520,7 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      * The scratch disks attached to the instance.
      * 
      */
-    @Export(name="scratchDisks", type=List.class, parameters={InstanceFromMachineImageScratchDisk.class})
+    @Export(name="scratchDisks", refs={List.class,InstanceFromMachineImageScratchDisk.class}, tree="[0,1]")
     private Output<List<InstanceFromMachineImageScratchDisk>> scratchDisks;
 
     /**
@@ -534,7 +534,7 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      * The URI of the created resource.
      * 
      */
-    @Export(name="selfLink", type=String.class, parameters={})
+    @Export(name="selfLink", refs={String.class}, tree="[0]")
     private Output<String> selfLink;
 
     /**
@@ -548,7 +548,7 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      * The service account to attach to the instance.
      * 
      */
-    @Export(name="serviceAccount", type=InstanceFromMachineImageServiceAccount.class, parameters={})
+    @Export(name="serviceAccount", refs={InstanceFromMachineImageServiceAccount.class}, tree="[0]")
     private Output<InstanceFromMachineImageServiceAccount> serviceAccount;
 
     /**
@@ -562,7 +562,7 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      * The shielded vm config being used by the instance.
      * 
      */
-    @Export(name="shieldedInstanceConfig", type=InstanceFromMachineImageShieldedInstanceConfig.class, parameters={})
+    @Export(name="shieldedInstanceConfig", refs={InstanceFromMachineImageShieldedInstanceConfig.class}, tree="[0]")
     private Output<InstanceFromMachineImageShieldedInstanceConfig> shieldedInstanceConfig;
 
     /**
@@ -579,7 +579,7 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      * ***
      * 
      */
-    @Export(name="sourceMachineImage", type=String.class, parameters={})
+    @Export(name="sourceMachineImage", refs={String.class}, tree="[0]")
     private Output<String> sourceMachineImage;
 
     /**
@@ -596,7 +596,7 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      * The list of tags attached to the instance.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> tags;
 
     /**
@@ -610,7 +610,7 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      * The unique fingerprint of the tags.
      * 
      */
-    @Export(name="tagsFingerprint", type=String.class, parameters={})
+    @Export(name="tagsFingerprint", refs={String.class}, tree="[0]")
     private Output<String> tagsFingerprint;
 
     /**
@@ -631,7 +631,7 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      * &gt; **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the &#34;boot_disk&#34;, &#34;attached_disk&#34;, and &#34;scratch_disk&#34; fields.
      * 
      */
-    @Export(name="zone", type=String.class, parameters={})
+    @Export(name="zone", refs={String.class}, tree="[0]")
     private Output<String> zone;
 
     /**

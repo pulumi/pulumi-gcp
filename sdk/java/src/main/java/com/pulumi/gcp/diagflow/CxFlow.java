@@ -363,7 +363,7 @@ public class CxFlow extends com.pulumi.resources.CustomResource {
      * The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -379,7 +379,7 @@ public class CxFlow extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -399,7 +399,7 @@ public class CxFlow extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="eventHandlers", type=List.class, parameters={CxFlowEventHandler.class})
+    @Export(name="eventHandlers", refs={List.class,CxFlowEventHandler.class}, tree="[0,1]")
     private Output<List<CxFlowEventHandler>> eventHandlers;
 
     /**
@@ -422,7 +422,7 @@ public class CxFlow extends com.pulumi.resources.CustomResource {
      * If not specified, the agent&#39;s default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
      * 
      */
-    @Export(name="languageCode", type=String.class, parameters={})
+    @Export(name="languageCode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> languageCode;
 
     /**
@@ -445,7 +445,7 @@ public class CxFlow extends com.pulumi.resources.CustomResource {
      * The unique identifier of this event handler.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -464,7 +464,7 @@ public class CxFlow extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="nluSettings", type=CxFlowNluSettings.class, parameters={})
+    @Export(name="nluSettings", refs={CxFlowNluSettings.class}, tree="[0]")
     private Output</* @Nullable */ CxFlowNluSettings> nluSettings;
 
     /**
@@ -480,7 +480,7 @@ public class CxFlow extends com.pulumi.resources.CustomResource {
      * Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;.
      * 
      */
-    @Export(name="parent", type=String.class, parameters={})
+    @Export(name="parent", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> parent;
 
     /**
@@ -498,7 +498,7 @@ public class CxFlow extends com.pulumi.resources.CustomResource {
      * Format:projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agents/&lt;Agent ID&gt;/flows/&lt;Flow ID&gt;/transitionRouteGroups/&lt;TransitionRouteGroup ID&gt;.
      * 
      */
-    @Export(name="transitionRouteGroups", type=List.class, parameters={String.class})
+    @Export(name="transitionRouteGroups", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> transitionRouteGroups;
 
     /**
@@ -522,7 +522,7 @@ public class CxFlow extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="transitionRoutes", type=List.class, parameters={CxFlowTransitionRoute.class})
+    @Export(name="transitionRoutes", refs={List.class,CxFlowTransitionRoute.class}, tree="[0,1]")
     private Output</* @Nullable */ List<CxFlowTransitionRoute>> transitionRoutes;
 
     /**

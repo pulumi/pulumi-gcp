@@ -106,7 +106,7 @@ public class Peering extends com.pulumi.resources.CustomResource {
      * The full names of the Google Compute Engine networks to which the instance is connected. Caller needs to make sure that CIDR subnets do not overlap between networks, else peering creation will fail.
      * 
      */
-    @Export(name="authorizedNetwork", type=String.class, parameters={})
+    @Export(name="authorizedNetwork", refs={String.class}, tree="[0]")
     private Output<String> authorizedNetwork;
 
     /**
@@ -120,7 +120,7 @@ public class Peering extends com.pulumi.resources.CustomResource {
      * Full domain resource path for the Managed AD Domain involved in peering. The resource path should be in the form projects/{projectId}/locations/global/domains/{domainName}
      * 
      */
-    @Export(name="domainResource", type=String.class, parameters={})
+    @Export(name="domainResource", refs={String.class}, tree="[0]")
     private Output<String> domainResource;
 
     /**
@@ -134,7 +134,7 @@ public class Peering extends com.pulumi.resources.CustomResource {
      * Resource labels that can contain user-provided metadata
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -148,7 +148,7 @@ public class Peering extends com.pulumi.resources.CustomResource {
      * Unique name of the peering in this scope including projects and location using the form: projects/{projectId}/locations/global/peerings/{peeringId}.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -162,7 +162,7 @@ public class Peering extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="peeringId", type=String.class, parameters={})
+    @Export(name="peeringId", refs={String.class}, tree="[0]")
     private Output<String> peeringId;
 
     /**
@@ -177,7 +177,7 @@ public class Peering extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -192,7 +192,7 @@ public class Peering extends com.pulumi.resources.CustomResource {
      * The current state of this Peering.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> status;
 
     /**
@@ -206,7 +206,7 @@ public class Peering extends com.pulumi.resources.CustomResource {
      * Additional information about the current status of this peering, if available.
      * 
      */
-    @Export(name="statusMessage", type=String.class, parameters={})
+    @Export(name="statusMessage", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> statusMessage;
 
     /**

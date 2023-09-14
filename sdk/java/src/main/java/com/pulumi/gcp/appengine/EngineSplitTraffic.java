@@ -48,7 +48,7 @@ public class EngineSplitTraffic extends com.pulumi.resources.CustomResource {
      * If set to true traffic will be migrated to this version.
      * 
      */
-    @Export(name="migrateTraffic", type=Boolean.class, parameters={})
+    @Export(name="migrateTraffic", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> migrateTraffic;
 
     /**
@@ -63,7 +63,7 @@ public class EngineSplitTraffic extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -78,7 +78,7 @@ public class EngineSplitTraffic extends com.pulumi.resources.CustomResource {
      * The name of the service these settings apply to.
      * 
      */
-    @Export(name="service", type=String.class, parameters={})
+    @Export(name="service", refs={String.class}, tree="[0]")
     private Output<String> service;
 
     /**
@@ -93,7 +93,7 @@ public class EngineSplitTraffic extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="split", type=EngineSplitTrafficSplit.class, parameters={})
+    @Export(name="split", refs={EngineSplitTrafficSplit.class}, tree="[0]")
     private Output<EngineSplitTrafficSplit> split;
 
     /**

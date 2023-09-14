@@ -109,7 +109,7 @@ public class EndpointAttachment extends com.pulumi.resources.CustomResource {
      * State of the endpoint attachment connection to the service attachment.
      * 
      */
-    @Export(name="connectionState", type=String.class, parameters={})
+    @Export(name="connectionState", refs={String.class}, tree="[0]")
     private Output<String> connectionState;
 
     /**
@@ -125,7 +125,7 @@ public class EndpointAttachment extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="endpointAttachmentId", type=String.class, parameters={})
+    @Export(name="endpointAttachmentId", refs={String.class}, tree="[0]")
     private Output<String> endpointAttachmentId;
 
     /**
@@ -141,7 +141,7 @@ public class EndpointAttachment extends com.pulumi.resources.CustomResource {
      * Host that can be used in either HTTP Target Endpoint directly, or as the host in Target Server.
      * 
      */
-    @Export(name="host", type=String.class, parameters={})
+    @Export(name="host", refs={String.class}, tree="[0]")
     private Output<String> host;
 
     /**
@@ -155,7 +155,7 @@ public class EndpointAttachment extends com.pulumi.resources.CustomResource {
      * Location of the endpoint attachment.
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -170,7 +170,7 @@ public class EndpointAttachment extends com.pulumi.resources.CustomResource {
      * organizations/{organization}/endpointAttachments/{endpointAttachment}.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -186,7 +186,7 @@ public class EndpointAttachment extends com.pulumi.resources.CustomResource {
      * in the format `organizations/{{org_name}}`.
      * 
      */
-    @Export(name="orgId", type=String.class, parameters={})
+    @Export(name="orgId", refs={String.class}, tree="[0]")
     private Output<String> orgId;
 
     /**
@@ -201,7 +201,7 @@ public class EndpointAttachment extends com.pulumi.resources.CustomResource {
      * Format: projects/*{@literal /}regions/*{@literal /}serviceAttachments/*
      * 
      */
-    @Export(name="serviceAttachment", type=String.class, parameters={})
+    @Export(name="serviceAttachment", refs={String.class}, tree="[0]")
     private Output<String> serviceAttachment;
 
     /**

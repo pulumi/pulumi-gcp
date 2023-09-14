@@ -358,7 +358,7 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
      * admin clusters are modeled as their own resources.
      * 
      */
-    @Export(name="adminClusterMembership", type=String.class, parameters={})
+    @Export(name="adminClusterMembership", refs={String.class}, tree="[0]")
     private Output<String> adminClusterMembership;
 
     /**
@@ -382,7 +382,7 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
      * with dashes (-), underscores (_), dots (.), and alphanumerics between.
      * 
      */
-    @Export(name="annotations", type=Map.class, parameters={String.class, String.class})
+    @Export(name="annotations", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> annotations;
 
     /**
@@ -405,7 +405,7 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="antiAffinityGroups", type=VMwareClusterAntiAffinityGroups.class, parameters={})
+    @Export(name="antiAffinityGroups", refs={VMwareClusterAntiAffinityGroups.class}, tree="[0]")
     private Output<VMwareClusterAntiAffinityGroups> antiAffinityGroups;
 
     /**
@@ -422,7 +422,7 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="authorization", type=VMwareClusterAuthorization.class, parameters={})
+    @Export(name="authorization", refs={VMwareClusterAuthorization.class}, tree="[0]")
     private Output</* @Nullable */ VMwareClusterAuthorization> authorization;
 
     /**
@@ -438,7 +438,7 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="autoRepairConfig", type=VMwareClusterAutoRepairConfig.class, parameters={})
+    @Export(name="autoRepairConfig", refs={VMwareClusterAutoRepairConfig.class}, tree="[0]")
     private Output<VMwareClusterAutoRepairConfig> autoRepairConfig;
 
     /**
@@ -454,7 +454,7 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="controlPlaneNode", type=VMwareClusterControlPlaneNode.class, parameters={})
+    @Export(name="controlPlaneNode", refs={VMwareClusterControlPlaneNode.class}, tree="[0]")
     private Output<VMwareClusterControlPlaneNode> controlPlaneNode;
 
     /**
@@ -469,7 +469,7 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
      * The time at which VMware User Cluster was created.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -484,7 +484,7 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="dataplaneV2", type=VMwareClusterDataplaneV2.class, parameters={})
+    @Export(name="dataplaneV2", refs={VMwareClusterDataplaneV2.class}, tree="[0]")
     private Output<VMwareClusterDataplaneV2> dataplaneV2;
 
     /**
@@ -499,7 +499,7 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
      * The time at which VMware User Cluster was deleted.
      * 
      */
-    @Export(name="deleteTime", type=String.class, parameters={})
+    @Export(name="deleteTime", refs={String.class}, tree="[0]")
     private Output<String> deleteTime;
 
     /**
@@ -513,7 +513,7 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
      * A human readable description of this VMware User Cluster.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -527,7 +527,7 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
      * Enable control plane V2. Default to false.
      * 
      */
-    @Export(name="enableControlPlaneV2", type=Boolean.class, parameters={})
+    @Export(name="enableControlPlaneV2", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableControlPlaneV2;
 
     /**
@@ -541,7 +541,7 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
      * The DNS name of VMware User Cluster&#39;s API server.
      * 
      */
-    @Export(name="endpoint", type=String.class, parameters={})
+    @Export(name="endpoint", refs={String.class}, tree="[0]")
     private Output<String> endpoint;
 
     /**
@@ -559,7 +559,7 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
      * through optimistic concurrency control.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -578,7 +578,7 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="fleets", type=List.class, parameters={VMwareClusterFleet.class})
+    @Export(name="fleets", refs={List.class,VMwareClusterFleet.class}, tree="[0,1]")
     private Output<List<VMwareClusterFleet>> fleets;
 
     /**
@@ -594,7 +594,7 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="loadBalancer", type=VMwareClusterLoadBalancer.class, parameters={})
+    @Export(name="loadBalancer", refs={VMwareClusterLoadBalancer.class}, tree="[0]")
     private Output</* @Nullable */ VMwareClusterLoadBalancer> loadBalancer;
 
     /**
@@ -618,7 +618,7 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
      * cluster controller logs.
      * 
      */
-    @Export(name="localName", type=String.class, parameters={})
+    @Export(name="localName", refs={String.class}, tree="[0]")
     private Output<String> localName;
 
     /**
@@ -641,7 +641,7 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
      * The location of the resource.
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -655,7 +655,7 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
      * The VMware cluster name.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -670,7 +670,7 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="networkConfig", type=VMwareClusterNetworkConfig.class, parameters={})
+    @Export(name="networkConfig", refs={VMwareClusterNetworkConfig.class}, tree="[0]")
     private Output</* @Nullable */ VMwareClusterNetworkConfig> networkConfig;
 
     /**
@@ -685,7 +685,7 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
      * The Anthos clusters on the VMware version for your user cluster.
      * 
      */
-    @Export(name="onPremVersion", type=String.class, parameters={})
+    @Export(name="onPremVersion", refs={String.class}, tree="[0]")
     private Output<String> onPremVersion;
 
     /**
@@ -700,7 +700,7 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -715,7 +715,7 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
      * If set, there are currently changes in flight to the VMware User Cluster.
      * 
      */
-    @Export(name="reconciling", type=Boolean.class, parameters={})
+    @Export(name="reconciling", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> reconciling;
 
     /**
@@ -730,7 +730,7 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
      * The lifecycle state of the condition.
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
@@ -747,7 +747,7 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="statuses", type=List.class, parameters={VMwareClusterStatus.class})
+    @Export(name="statuses", refs={List.class,VMwareClusterStatus.class}, tree="[0,1]")
     private Output<List<VMwareClusterStatus>> statuses;
 
     /**
@@ -764,7 +764,7 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="storage", type=VMwareClusterStorage.class, parameters={})
+    @Export(name="storage", refs={VMwareClusterStorage.class}, tree="[0]")
     private Output<VMwareClusterStorage> storage;
 
     /**
@@ -779,7 +779,7 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
      * The unique identifier of the VMware User Cluster.
      * 
      */
-    @Export(name="uid", type=String.class, parameters={})
+    @Export(name="uid", refs={String.class}, tree="[0]")
     private Output<String> uid;
 
     /**
@@ -793,7 +793,7 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
      * The time at which VMware User Cluster was last updated.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**
@@ -808,7 +808,7 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="validationChecks", type=List.class, parameters={VMwareClusterValidationCheck.class})
+    @Export(name="validationChecks", refs={List.class,VMwareClusterValidationCheck.class}, tree="[0,1]")
     private Output<List<VMwareClusterValidationCheck>> validationChecks;
 
     /**
@@ -825,7 +825,7 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="vcenters", type=List.class, parameters={VMwareClusterVcenter.class})
+    @Export(name="vcenters", refs={List.class,VMwareClusterVcenter.class}, tree="[0,1]")
     private Output<List<VMwareClusterVcenter>> vcenters;
 
     /**
@@ -841,7 +841,7 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
      * Enable VM tracking.
      * 
      */
-    @Export(name="vmTrackingEnabled", type=Boolean.class, parameters={})
+    @Export(name="vmTrackingEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> vmTrackingEnabled;
 
     /**

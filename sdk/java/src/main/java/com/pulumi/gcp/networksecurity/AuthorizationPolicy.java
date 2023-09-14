@@ -135,7 +135,7 @@ public class AuthorizationPolicy extends com.pulumi.resources.CustomResource {
      * Possible values are: `ALLOW`, `DENY`.
      * 
      */
-    @Export(name="action", type=String.class, parameters={})
+    @Export(name="action", refs={String.class}, tree="[0]")
     private Output<String> action;
 
     /**
@@ -150,7 +150,7 @@ public class AuthorizationPolicy extends com.pulumi.resources.CustomResource {
      * Time the AuthorizationPolicy was created in UTC.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -164,7 +164,7 @@ public class AuthorizationPolicy extends com.pulumi.resources.CustomResource {
      * A free-text description of the resource. Max length 1024 characters.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -178,7 +178,7 @@ public class AuthorizationPolicy extends com.pulumi.resources.CustomResource {
      * Set of label tags associated with the AuthorizationPolicy resource.
      * 
      */
-    @Export(name="labels", type=Map.class, parameters={String.class, String.class})
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
@@ -193,7 +193,7 @@ public class AuthorizationPolicy extends com.pulumi.resources.CustomResource {
      * The default value is `global`.
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> location;
 
     /**
@@ -210,7 +210,7 @@ public class AuthorizationPolicy extends com.pulumi.resources.CustomResource {
      * ***
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -227,7 +227,7 @@ public class AuthorizationPolicy extends com.pulumi.resources.CustomResource {
      * If it is not provided, the provider project is used.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -244,7 +244,7 @@ public class AuthorizationPolicy extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    @Export(name="rules", type=List.class, parameters={AuthorizationPolicyRule.class})
+    @Export(name="rules", refs={List.class,AuthorizationPolicyRule.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AuthorizationPolicyRule>> rules;
 
     /**
@@ -260,7 +260,7 @@ public class AuthorizationPolicy extends com.pulumi.resources.CustomResource {
      * Time the AuthorizationPolicy was updated in UTC.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

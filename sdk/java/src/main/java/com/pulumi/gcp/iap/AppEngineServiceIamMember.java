@@ -298,7 +298,7 @@ public class AppEngineServiceIamMember extends com.pulumi.resources.CustomResour
      * Id of the App Engine application. Used to find the parent resource to bind the IAM policy to
      * 
      */
-    @Export(name="appId", type=String.class, parameters={})
+    @Export(name="appId", refs={String.class}, tree="[0]")
     private Output<String> appId;
 
     /**
@@ -313,7 +313,7 @@ public class AppEngineServiceIamMember extends com.pulumi.resources.CustomResour
      * Structure is documented below.
      * 
      */
-    @Export(name="condition", type=AppEngineServiceIamMemberCondition.class, parameters={})
+    @Export(name="condition", refs={AppEngineServiceIamMemberCondition.class}, tree="[0]")
     private Output</* @Nullable */ AppEngineServiceIamMemberCondition> condition;
 
     /**
@@ -328,7 +328,7 @@ public class AppEngineServiceIamMember extends com.pulumi.resources.CustomResour
      * (Computed) The etag of the IAM policy.
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -338,7 +338,7 @@ public class AppEngineServiceIamMember extends com.pulumi.resources.CustomResour
     public Output<String> etag() {
         return this.etag;
     }
-    @Export(name="member", type=String.class, parameters={})
+    @Export(name="member", refs={String.class}, tree="[0]")
     private Output<String> member;
 
     public Output<String> member() {
@@ -361,7 +361,7 @@ public class AppEngineServiceIamMember extends com.pulumi.resources.CustomResour
      * * **projectViewer:projectid**: Viewers of the given project. For example, &#34;projectViewer:my-example-project&#34;
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -390,7 +390,7 @@ public class AppEngineServiceIamMember extends com.pulumi.resources.CustomResour
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
      */
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     /**
@@ -406,7 +406,7 @@ public class AppEngineServiceIamMember extends com.pulumi.resources.CustomResour
      * Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
      * 
      */
-    @Export(name="service", type=String.class, parameters={})
+    @Export(name="service", refs={String.class}, tree="[0]")
     private Output<String> service;
 
     /**
