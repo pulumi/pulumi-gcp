@@ -257,7 +257,8 @@ utilities.lazyLoad(exports, ["getInstanceTemplate","getInstanceTemplateOutput"],
 
 export { GetLBIPRangesResult } from "./getLBIPRanges";
 export const getLBIPRanges: typeof import("./getLBIPRanges").getLBIPRanges = null as any;
-utilities.lazyLoad(exports, ["getLBIPRanges"], () => require("./getLBIPRanges"));
+export const getLBIPRangesOutput: typeof import("./getLBIPRanges").getLBIPRangesOutput = null as any;
+utilities.lazyLoad(exports, ["getLBIPRanges","getLBIPRangesOutput"], () => require("./getLBIPRanges"));
 
 export { GetMachineImageIamPolicyArgs, GetMachineImageIamPolicyResult, GetMachineImageIamPolicyOutputArgs } from "./getMachineImageIamPolicy";
 export const getMachineImageIamPolicy: typeof import("./getMachineImageIamPolicy").getMachineImageIamPolicy = null as any;

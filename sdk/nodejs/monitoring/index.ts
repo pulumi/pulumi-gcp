@@ -57,7 +57,8 @@ utilities.lazyLoad(exports, ["getSecretVersion","getSecretVersionOutput"], () =>
 
 export { GetUptimeCheckIPsResult } from "./getUptimeCheckIPs";
 export const getUptimeCheckIPs: typeof import("./getUptimeCheckIPs").getUptimeCheckIPs = null as any;
-utilities.lazyLoad(exports, ["getUptimeCheckIPs"], () => require("./getUptimeCheckIPs"));
+export const getUptimeCheckIPsOutput: typeof import("./getUptimeCheckIPs").getUptimeCheckIPsOutput = null as any;
+utilities.lazyLoad(exports, ["getUptimeCheckIPs","getUptimeCheckIPsOutput"], () => require("./getUptimeCheckIPs"));
 
 export { GroupArgs, GroupState } from "./group";
 export type Group = import("./group").Group;
